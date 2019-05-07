@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        "reports/": true,
+        "out/": false
+    },
+    "search.exclude": {
+        "out/": true
+    },
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4
+}
