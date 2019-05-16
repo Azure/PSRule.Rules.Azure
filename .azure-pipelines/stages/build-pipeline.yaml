@@ -50,7 +50,7 @@ steps:
     #reportDirectory: # Optional
     #additionalCodeCoverageFiles: # Optional
     #failIfCoverageEmpty: false # Optional
-  condition: eq(parameters['coverage'], 'true')
+  condition: ${{ eq(parameters.coverage, 'true') }}
 
 # Generate artifacts
 - task: PublishBuildArtifacts@1
@@ -58,4 +58,4 @@ steps:
   inputs:
     PathtoPublish: out/modules/PSRule.Rules.Azure
     ArtifactName: PSRule.Rules.Azure
-  condition: and(succeeded(), eq(parameters['publishModule'], 'true'))
+  condition: and(succeeded(), ${{ eq(parameters.publishModule, 'true') }})
