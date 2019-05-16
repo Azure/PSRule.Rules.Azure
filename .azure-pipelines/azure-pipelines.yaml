@@ -1,4 +1,10 @@
 
+ # Use build number format, i.e. 0.1.0-B181101
+name: $(version)-B$(date:yyMM)$(rev:rr)
+
+trigger:
+- master
+
 stages:
 - stage: Build
   displayName: Build stage
@@ -17,15 +23,8 @@ stages:
           coverage: 'true'
     variables:
       version: '0.1.0'
-          
-      # Use build number format, i.e. 0.1.0-B181101
-      name: $(version)-B$(date:yyMM)$(rev:rr)
-
-      trigger:
-      - master
-
-      pool:
-        vmImage: $(imageName)
+    pool:
+      vmImage: $(imageName)
     steps:
     - template: stages/build-pipeline.yaml
       parameters:
