@@ -50,7 +50,7 @@ steps:
     #reportDirectory: # Optional
     #additionalCodeCoverageFiles: # Optional
     #failIfCoverageEmpty: false # Optional
-  condition: ${{ eq(parameters.runExtendedTests, 'true') }}
+  condition: ${{ eq(parameters.coverage, 'true') }}
 
 # Generate artifacts
 - task: PublishBuildArtifacts@1
