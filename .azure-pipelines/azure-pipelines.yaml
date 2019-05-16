@@ -1,0 +1,6 @@
+
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - template: stages/build-pipeline.yaml

@@ -1,0 +1,78 @@
+# Azure DevOps
+# Build pipeline for PSRule.Rules.Azure
+
+strategy:
+  matrix:
+    Linux:
+      imageName: 'ubuntu-16.04'
+    MacOS:
+      imageName: 'macos-10.13'
+    Windows:
+      imageName: 'vs2017-win2016'
+      publishModule: 'true'
+      analysis: 'true'
+      coverage: 'true'
+
+variables:
+  buildConfiguration: 'Release'
+  version: '0.1.0'
+
+# Use build number format, i.e. 0.1.0-B181101
+name: $(version)-B$(date:yyMM)$(rev:rr)
+
+trigger:
+- master
+
+pool:
+  vmImage: $(imageName)
+
+steps:
+
+# Install pipeline dependencies and build module
+- powershell: ./scripts/pipeline-build.ps1 -File ./pipeline.build.ps1 -Configuration $(buildConfiguration) -ModuleVersion $(Build.BuildNumber) -ReleaseVersion "$(Release.Version)"
+  displayName: 'Build module'
+
+# Pester test results
+- task: PublishTestResults@2
+  displayName: 'Publish Pester results'
+  inputs:
+    testRunTitle: 'Pester on $(imageName)'
+    testRunner: NUnit
+    testResultsFiles: 'reports/pester-unit.xml'
+    mergeTestResults: true
+    platform: $(imageName)
+    configuration: $(buildConfiguration)
+    publishRunAttachments: true
+  condition: succeededOrFailed()
+
+# PSRule results
+# - task: PublishTestResults@2
+#   displayName: 'Publish PSRule results'
+#   inputs:
+#     testRunTitle: 'PSRule on $(imageName)'
+#     testRunner: NUnit
+#     testResultsFiles: 'reports/rule.report.xml'
+#     mergeTestResults: true
+#     platform: $(imageName)
+#     configuration: $(buildConfiguration)
+#     publishRunAttachments: true
+#   condition: succeededOrFailed()
+
+# Publish Code Coverage Results
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish Pester code coverage'
+  inputs:
+    codeCoverageTool: 'JaCoCo'
+    summaryFileLocation: 'reports/pester-coverage.xml'
+    #reportDirectory: # Optional
+    #additionalCodeCoverageFiles: # Optional
+    #failIfCoverageEmpty: false # Optional
+  condition: eq(variables['coverage'], 'true')
+
+# Generate artifacts
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish module'
+  inputs:
+    PathtoPublish: out/modules/PSRule.Rules.Azure
+    ArtifactName: PSRule.Rules.Azure
+  condition: and(succeeded(), eq(variables['publishModule'], 'true'))
