@@ -11,7 +11,7 @@ Azure.ACR.MinSku | ACR should use the Premium or Standard SKU for production dep
 Azure.AKS.MinNodeCount | AKS clusters should have minimum number of nodes for failover and updates
 Azure.AKS.Version | AKS cluster should meet the minimum version
 Azure.AKS.UseRBAC | AKS cluster should use role-based access control
-Azure.AppService.PlanInstanceCount | App Service Plan has multiple instances
+Azure.AppService.PlanInstanceCount | Use an App Service Plan with at least two (2) instances
 Azure.AppService.MinPlan | Use at least a Standard App Service Plan
 Azure.AppService.ARRAfinity | Disable client affinity for stateless services
 Azure.AppService.UseHTTPS | Use HTTPS only

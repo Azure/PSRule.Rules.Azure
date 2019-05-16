@@ -2,10 +2,8 @@
 # Validation rules for Azure App Services
 #
 
-# Description: App Service Plan has multiple instances
+# Description: Use an App Service Plan with at least two (2) instances
 Rule 'Azure.AppService.PlanInstanceCount' -If { ResourceType 'Microsoft.Web/serverfarms' } -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
-    Hint 'Use at least two (2) instances'
-
     $TargetObject.Sku.capacity -ge 2
 }
 
