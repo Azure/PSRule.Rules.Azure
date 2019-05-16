@@ -1,0 +1,127 @@
+[
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-A",
+        "Location": "region",
+        "ResourceName": "cluster-A",
+        "Name": "cluster-A",
+        "Properties": {
+            "kubernetesVersion": "1.13.5",
+            "dnsPrefix": "cluster-A",
+            "fqdn": "cluster-A-00000000.nnn.region.azmk8s.io",
+            "agentPoolProfiles": [
+                {
+                    "name": "agentpool",
+                    "count": 3,
+                    "vmSize": "Standard_F2s_v2",
+                    "osDiskSizeGB": 30,
+                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                    "maxPods": 30,
+                    "type": "AvailabilitySet",
+                    "orchestratorVersion": "1.13.5",
+                    "osType": "Linux"
+                }
+            ],
+            "servicePrincipalProfile": {
+                "clientId": "00000000-0000-0000-0000-000000000000"
+            },
+            "addonProfiles": {
+                "aciconnectorlinux": {
+                    "enabled": true,
+                    "config": {
+                        "subnetname": "subnet-A"
+                    }
+                },
+                "httpapplicationrouting": {
+                    "enabled": true,
+                    "config": {
+                        "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
+                    }
+                },
+                "omsagent": {
+                    "enabled": true,
+                    "config": {
+                        "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
+                    }
+                }
+            },
+            "nodeResourceGroup": "MC_test-rg_cluster-A_region",
+            "enableRBAC": true,
+            "networkProfile": {
+                "networkPlugin": "azure",
+                "loadBalancerSku": "Basic",
+                "serviceCidr": "10.4.1.0/24",
+                "dnsServiceIP": "10.4.1.10",
+                "dockerBridgeCidr": "172.17.0.1/16"
+            },
+            "maxAgentPools": 1
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerService/managedClusters",
+        "ResourceType": "Microsoft.ContainerService/managedClusters",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-B",
+        "Location": "region",
+        "ResourceName": "cluster-B",
+        "Name": "cluster-B",
+        "Properties": {
+            "kubernetesVersion": "1.11.4",
+            "dnsPrefix": "cluster-B",
+            "fqdn": "cluster-B-00000000.nnn.region.azmk8s.io",
+            "agentPoolProfiles": [
+                {
+                    "name": "agentpool",
+                    "count": 1,
+                    "vmSize": "Standard_F2s_v2",
+                    "osDiskSizeGB": 30,
+                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                    "maxPods": 30,
+                    "type": "AvailabilitySet",
+                    "orchestratorVersion": "1.11.4",
+                    "osType": "Linux"
+                }
+            ],
+            "servicePrincipalProfile": {
+                "clientId": "00000000-0000-0000-0000-000000000000"
+            },
+            "addonProfiles": {
+                "aciconnectorlinux": {
+                    "enabled": true,
+                    "config": {
+                        "subnetname": "subnet-A"
+                    }
+                },
+                "httpapplicationrouting": {
+                    "enabled": true,
+                    "config": {
+                        "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
+                    }
+                },
+                "omsagent": {
+                    "enabled": true,
+                    "config": {
+                        "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
+                    }
+                }
+            },
+            "nodeResourceGroup": "MC_test-rg_cluster-B_region",
+            "networkProfile": {
+                "networkPlugin": "azure",
+                "loadBalancerSku": "Basic",
+                "serviceCidr": "10.5.1.0/24",
+                "dnsServiceIP": "10.5.1.10",
+                "dockerBridgeCidr": "172.17.0.1/16"
+            },
+            "maxAgentPools": 1
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerService/managedClusters",
+        "ResourceType": "Microsoft.ContainerService/managedClusters",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    }
+]

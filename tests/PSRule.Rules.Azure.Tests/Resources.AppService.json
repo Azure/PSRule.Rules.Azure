@@ -1,0 +1,427 @@
+[
+    {
+        "Name": "plan-A",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/serverfarms/plan-A",
+        "ResourceName": "plan-A",
+        "ResourceType": "Microsoft.Web/serverfarms",
+        "Kind": "app",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Tags": null,
+        "Properties": {
+            "name": "plan-A",
+            "workerSize": "Default",
+            "workerSizeId": 0,
+            "workerTierName": null,
+            "numberOfWorkers": 1,
+            "currentWorkerSize": "Default",
+            "currentWorkerSizeId": 0,
+            "currentNumberOfWorkers": 1,
+            "adminSiteName": null,
+            "hostingEnvironment": null,
+            "hostingEnvironmentProfile": null,
+            "maximumNumberOfWorkers": 10,
+            "planName": "VirtualDedicatedPlan",
+            "adminRuntimeSiteName": null,
+            "computeMode": "Dedicated",
+            "siteMode": null,
+            "geoRegion": "region",
+            "perSiteScaling": false,
+            "maximumElasticWorkerCount": 0,
+            "numberOfSites": 2,
+            "hostingEnvironmentId": null,
+            "isSpot": false,
+            "spotExpirationTime": null,
+            "freeOfferExpirationTime": null,
+            "tags": null,
+            "kind": "app",
+            "resourceGroup": "test-rg",
+            "reserved": false,
+            "isXenon": false,
+            "hyperV": false,
+            "targetWorkerCount": 0,
+            "targetWorkerSizeId": 0,
+            "webSiteId": null
+        },
+        "Sku": {
+            "name": "S1",
+            "tier": "Standard",
+            "size": "S1",
+            "family": "S",
+            "capacity": 2
+        }
+    },
+    {
+        "Name": "site-A",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/site-A",
+        "ResourceName": "site-A",
+        "ResourceType": "Microsoft.Web/sites",
+        "Kind": "app",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+            "name": "site-A",
+            "state": "Running",
+            "hostNames": [
+                "site-A.azurewebsites.net"
+            ],
+            "repositorySiteName": "site-A",
+            "owner": null,
+            "usageState": "Normal",
+            "enabled": true,
+            "adminEnabled": true,
+            "enabledHostNames": [
+                "site-A.azurewebsites.net",
+                "site-A.scm.azurewebsites.net"
+            ],
+            "siteProperties": {
+                "metadata": null,
+                "properties": [
+                    {
+                        "name": "LinuxFxVersion",
+                        "value": ""
+                    },
+                    {
+                        "name": "WindowsFxVersion",
+                        "value": null
+                    }
+                ],
+                "appSettings": null
+            },
+            "availabilityState": "Normal",
+            "sslCertificates": null,
+            "csrs": [],
+            "cers": null,
+            "siteMode": null,
+            "hostNameSslStates": [
+                {
+                    "name": "site-A.azurewebsites.net",
+                    "sslState": "Disabled",
+                    "ipBasedSslResult": null,
+                    "virtualIP": null,
+                    "thumbprint": null,
+                    "toUpdate": null,
+                    "toUpdateIpBasedSsl": null,
+                    "ipBasedSslState": "NotConfigured",
+                    "hostType": "Standard"
+                },
+                {
+                    "name": "site-A.scm.azurewebsites.net",
+                    "sslState": "Disabled",
+                    "ipBasedSslResult": null,
+                    "virtualIP": null,
+                    "thumbprint": null,
+                    "toUpdate": null,
+                    "toUpdateIpBasedSsl": null,
+                    "ipBasedSslState": "NotConfigured",
+                    "hostType": "Repository"
+                }
+            ],
+            "computeMode": null,
+            "serverFarm": null,
+            "serverFarmId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/serverfarms/plan-A",
+            "reserved": false,
+            "isXenon": false,
+            "hyperV": false,
+            "storageRecoveryDefaultState": "Running",
+            "contentAvailabilityState": "Normal",
+            "runtimeAvailabilityState": "Normal",
+            "siteConfig": null,
+            "trafficManagerHostNames": null,
+            "sku": "Standard",
+            "scmSiteAlsoStopped": false,
+            "targetSwapSlot": null,
+            "hostingEnvironment": null,
+            "hostingEnvironmentProfile": null,
+            "clientAffinityEnabled": false,
+            "clientCertEnabled": false,
+            "hostNamesDisabled": false,
+            "domainVerificationIdentifiers": null,
+            "kind": "app",
+            "containerSize": 0,
+            "dailyMemoryTimeQuota": 0,
+            "suspendedTill": null,
+            "siteDisabledReason": 0,
+            "functionExecutionUnitsCache": null,
+            "maxNumberOfWorkers": null,
+            "cloningInfo": null,
+            "hostingEnvironmentId": null,
+            "tags": null,
+            "resourceGroup": "test-rg",
+            "defaultHostName": "site-A.azurewebsites.net",
+            "slotSwapStatus": {
+                "sourceSlotName": "staging",
+                "destinationSlotName": "Production"
+            },
+            "httpsOnly": true
+        }
+    },
+    {
+        "Name": "site-A/staging",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/site-A/slots/staging",
+        "ResourceName": "site-A/staging",
+        "ResourceType": "Microsoft.Web/sites/slots",
+        "Kind": "app",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+            "name": "site-A(staging)",
+            "state": "Running",
+            "hostNames": [
+                "site-A-staging.azurewebsites.net"
+            ],
+            "repositorySiteName": "site-A",
+            "owner": null,
+            "usageState": "Normal",
+            "enabled": true,
+            "adminEnabled": true,
+            "enabledHostNames": [
+                "site-A-staging.azurewebsites.net",
+                "site-A-staging.scm.azurewebsites.net"
+            ],
+            "siteProperties": {
+                "metadata": null,
+                "properties": [
+                    {
+                        "name": "LinuxFxVersion",
+                        "value": ""
+                    },
+                    {
+                        "name": "WindowsFxVersion",
+                        "value": null
+                    }
+                ],
+                "appSettings": null
+            },
+            "availabilityState": "Normal",
+            "sslCertificates": null,
+            "csrs": [],
+            "cers": null,
+            "siteMode": null,
+            "hostNameSslStates": [
+                {
+                    "name": "site-A-staging.azurewebsites.net",
+                    "sslState": "Disabled",
+                    "ipBasedSslResult": null,
+                    "virtualIP": null,
+                    "thumbprint": null,
+                    "toUpdate": null,
+                    "toUpdateIpBasedSsl": null,
+                    "ipBasedSslState": "NotConfigured",
+                    "hostType": "Standard"
+                },
+                {
+                    "name": "site-A-staging.scm.azurewebsites.net",
+                    "sslState": "Disabled",
+                    "ipBasedSslResult": null,
+                    "virtualIP": null,
+                    "thumbprint": null,
+                    "toUpdate": null,
+                    "toUpdateIpBasedSsl": null,
+                    "ipBasedSslState": "NotConfigured",
+                    "hostType": "Repository"
+                }
+            ],
+            "computeMode": null,
+            "serverFarm": null,
+            "serverFarmId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/serverfarms/plan-A",
+            "reserved": false,
+            "isXenon": false,
+            "hyperV": false,
+            "storageRecoveryDefaultState": "Running",
+            "contentAvailabilityState": "Normal",
+            "runtimeAvailabilityState": "Normal",
+            "siteConfig": null,
+            "deploymentId": "site-A",
+            "trafficManagerHostNames": null,
+            "sku": "Standard",
+            "scmSiteAlsoStopped": false,
+            "targetSwapSlot": null,
+            "hostingEnvironment": null,
+            "hostingEnvironmentProfile": null,
+            "clientAffinityEnabled": false,
+            "clientCertEnabled": false,
+            "hostNamesDisabled": false,
+            "domainVerificationIdentifiers": null,
+            "kind": "app",
+            "containerSize": 0,
+            "dailyMemoryTimeQuota": 0,
+            "suspendedTill": null,
+            "siteDisabledReason": 0,
+            "functionExecutionUnitsCache": null,
+            "maxNumberOfWorkers": null,
+            "cloningInfo": null,
+            "hostingEnvironmentId": null,
+            "tags": null,
+            "resourceGroup": "test-rg",
+            "defaultHostName": "site-A-staging.azurewebsites.net",
+            "slotSwapStatus": {
+                "sourceSlotName": "staging",
+                "destinationSlotName": "Production"
+            },
+            "httpsOnly": true
+        }
+    },
+    {
+        "Name": "plan-B",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/serverfarms/plan-B",
+        "ResourceName": "plan-B",
+        "ResourceType": "Microsoft.Web/serverfarms",
+        "Kind": "app",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Tags": null,
+        "Properties": {
+            "name": "plan-B",
+            "workerSize": "Default",
+            "workerSizeId": 0,
+            "workerTierName": null,
+            "numberOfWorkers": 1,
+            "currentWorkerSize": "Default",
+            "currentWorkerSizeId": 0,
+            "currentNumberOfWorkers": 1,
+            "adminSiteName": null,
+            "hostingEnvironment": null,
+            "hostingEnvironmentProfile": null,
+            "maximumNumberOfWorkers": 10,
+            "planName": "VirtualDedicatedPlan",
+            "adminRuntimeSiteName": null,
+            "computeMode": "Dedicated",
+            "siteMode": null,
+            "geoRegion": "region",
+            "perSiteScaling": false,
+            "maximumElasticWorkerCount": 0,
+            "numberOfSites": 2,
+            "hostingEnvironmentId": null,
+            "isSpot": false,
+            "spotExpirationTime": null,
+            "freeOfferExpirationTime": null,
+            "tags": null,
+            "kind": "app",
+            "resourceGroup": "test-rg",
+            "reserved": false,
+            "isXenon": false,
+            "hyperV": false,
+            "targetWorkerCount": 0,
+            "targetWorkerSizeId": 0,
+            "webSiteId": null
+        },
+        "Sku": {
+            "name": "B1",
+            "tier": "Basic",
+            "size": "B1",
+            "family": "B",
+            "capacity": 1
+        }
+    },
+    {
+        "Name": "site-B",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/site-B",
+        "ResourceName": "site-B",
+        "ResourceType": "Microsoft.Web/sites",
+        "Kind": "app",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+            "name": "site-B",
+            "state": "Running",
+            "hostNames": [
+                "site-B.azurewebsites.net"
+            ],
+            "repositorySiteName": "site-B",
+            "owner": null,
+            "usageState": "Normal",
+            "enabled": true,
+            "adminEnabled": true,
+            "enabledHostNames": [
+                "site-B.azurewebsites.net",
+                "site-B.scm.azurewebsites.net"
+            ],
+            "siteProperties": {
+                "metadata": null,
+                "properties": [
+                    {
+                        "name": "LinuxFxVersion",
+                        "value": ""
+                    },
+                    {
+                        "name": "WindowsFxVersion",
+                        "value": null
+                    }
+                ],
+                "appSettings": null
+            },
+            "availabilityState": "Normal",
+            "sslCertificates": null,
+            "csrs": [],
+            "cers": null,
+            "siteMode": null,
+            "hostNameSslStates": [
+                {
+                    "name": "site-B.azurewebsites.net",
+                    "sslState": "Disabled",
+                    "ipBasedSslResult": null,
+                    "virtualIP": null,
+                    "thumbprint": null,
+                    "toUpdate": null,
+                    "toUpdateIpBasedSsl": null,
+                    "ipBasedSslState": "NotConfigured",
+                    "hostType": "Standard"
+                },
+                {
+                    "name": "site-B.scm.azurewebsites.net",
+                    "sslState": "Disabled",
+                    "ipBasedSslResult": null,
+                    "virtualIP": null,
+                    "thumbprint": null,
+                    "toUpdate": null,
+                    "toUpdateIpBasedSsl": null,
+                    "ipBasedSslState": "NotConfigured",
+                    "hostType": "Repository"
+                }
+            ],
+            "computeMode": null,
+            "serverFarm": null,
+            "serverFarmId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/serverfarms/plan-B",
+            "reserved": false,
+            "isXenon": false,
+            "hyperV": false,
+            "storageRecoveryDefaultState": "Running",
+            "contentAvailabilityState": "Normal",
+            "runtimeAvailabilityState": "Normal",
+            "siteConfig": null,
+            "trafficManagerHostNames": null,
+            "sku": "Standard",
+            "scmSiteAlsoStopped": false,
+            "targetSwapSlot": null,
+            "hostingEnvironment": null,
+            "hostingEnvironmentProfile": null,
+            "clientAffinityEnabled": true,
+            "clientCertEnabled": false,
+            "hostNamesDisabled": false,
+            "domainVerificationIdentifiers": null,
+            "kind": "app",
+            "containerSize": 0,
+            "dailyMemoryTimeQuota": 0,
+            "suspendedTill": null,
+            "siteDisabledReason": 0,
+            "functionExecutionUnitsCache": null,
+            "maxNumberOfWorkers": null,
+            "cloningInfo": null,
+            "hostingEnvironmentId": null,
+            "tags": null,
+            "resourceGroup": "test-rg",
+            "defaultHostName": "site-B.azurewebsites.net",
+            "slotSwapStatus": {
+                "sourceSlotName": "staging",
+                "destinationSlotName": "Production"
+            },
+            "httpsOnly": false
+        }
+    }
+]

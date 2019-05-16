@@ -1,0 +1,179 @@
+[
+    {
+        "Name": "server-A",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A",
+        "ResourceName": "server-A",
+        "ResourceType": "Microsoft.Sql/servers",
+        "Kind": "v12.0",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Tags": null,
+        "Properties": {
+            "fullyQualifiedDomainName": "server-A.database.windows.net",
+            "administratorLogin": "db-admin",
+            "administratorLoginPassword": null,
+            "externalAdministratorLogin": null,
+            "externalAdministratorSid": null,
+            "version": "12.0",
+            "state": "Ready"
+        },
+        "resources": [
+            {
+                "ResourceGroupName": "test-rg",
+                "ServerName": "server-A",
+                "StartIpAddress": "10.1.1.0",
+                "EndIpAddress": "10.1.1.255",
+                "FirewallRuleName": "AllowSubnet",
+                "type": "Microsoft.Sql/servers/firewallRules"
+            },
+            {
+                "type": "Microsoft.Sql/servers/auditingSettings",
+                "ResourceGroupName": "test-rg",
+                "ServerName": "server-A",
+                "AuditState": 0,
+                "AuditActionGroup": [],
+                "PredicateExpression": "",
+                "StorageAccountName": null,
+                "StorageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "StorageKeyType": 0,
+                "RetentionInDays": 0
+            },
+            {
+                "type": "Microsoft.Sql/servers/securityAlertPolicies",
+                "ServerName": "server-A",
+                "ResourceGroupName": "test-rg",
+                "ThreatDetectionState": 0,
+                "NotificationRecipientsEmails": "",
+                "StorageAccountName": "",
+                "EmailAdmins": false,
+                "ExcludedDetectionTypes": [],
+                "RetentionInDays": 0
+            }
+        ]
+    },
+    {
+        "Name": "server-B",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-B",
+        "ResourceName": "server-B",
+        "ResourceType": "Microsoft.Sql/servers",
+        "Kind": "v12.0",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Tags": null,
+        "Properties": {
+            "fullyQualifiedDomainName": "server-B.database.windows.net",
+            "administratorLogin": "db-admin",
+            "administratorLoginPassword": null,
+            "externalAdministratorLogin": null,
+            "externalAdministratorSid": null,
+            "version": "12.0",
+            "state": "Ready"
+        },
+        "resources": [
+            {
+                "ResourceGroupName": "test-rg",
+                "ServerName": "server-B",
+                "StartIpAddress": "0.0.0.0",
+                "EndIpAddress": "0.0.0.0",
+                "FirewallRuleName": "AllowAllWindowsAzureIps",
+                "type": "Microsoft.Sql/servers/firewallRules"
+            },
+            {
+                "ResourceGroupName": "test-rg",
+                "ServerName": "server-A",
+                "StartIpAddress": "10.1.1.0",
+                "EndIpAddress": "10.1.1.255",
+                "FirewallRuleName": "AllowSubnet-A",
+                "type": "Microsoft.Sql/servers/firewallRules"
+            },
+            {
+                "ResourceGroupName": "test-rg",
+                "ServerName": "server-A",
+                "StartIpAddress": "10.1.2.0",
+                "EndIpAddress": "10.1.2.255",
+                "FirewallRuleName": "AllowSubnet-B",
+                "type": "Microsoft.Sql/servers/firewallRules"
+            },
+            {
+                "ResourceGroupName": "test-rg",
+                "ServerName": "server-A",
+                "StartIpAddress": "10.1.3.0",
+                "EndIpAddress": "10.1.3.255",
+                "FirewallRuleName": "AllowSubnet-C",
+                "type": "Microsoft.Sql/servers/firewallRules"
+            },
+            {
+                "ResourceGroupName": "test-rg",
+                "ServerName": "server-A",
+                "StartIpAddress": "10.1.4.0",
+                "EndIpAddress": "10.1.4.255",
+                "FirewallRuleName": "AllowSubnet-D",
+                "type": "Microsoft.Sql/servers/firewallRules"
+            },
+            {
+                "ResourceGroupName": "test-rg",
+                "ServerName": "server-A",
+                "StartIpAddress": "10.0.0.0",
+                "EndIpAddress": "10.255.255.255",
+                "FirewallRuleName": "AllowSubnet",
+                "type": "Microsoft.Sql/servers/firewallRules"
+            }
+        ]
+    },
+    {
+        "Name": "master",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/master",
+        "ResourceName": "server-A/master",
+        "ResourceType": "Microsoft.Sql/servers/databases",
+        "Kind": "v12.0,system",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+            "edition": "System",
+            "status": "Online",
+            "serviceLevelObjective": "System1",
+            "collation": "SQL_Latin1_General_CP1_CI_AS",
+            "maxSizeBytes": "32212254720",
+            "requestedServiceObjectiveName": "System1",
+            "sampleName": null,
+            "defaultSecondaryLocation": "region-B",
+            "earliestRestoreDate": null,
+            "elasticPoolName": null,
+            "containmentState": 2,
+            "readScale": "Disabled",
+            "failoverGroupId": null,
+            "zoneRedundant": false,
+            "isUpgradeRequested": false
+        }
+    },
+    {
+        "Name": "database-A",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/database-A",
+        "ResourceName": "server-A/database-A",
+        "ResourceType": "Microsoft.Sql/servers/databases",
+        "Kind": "v12.0,user",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+            "edition": "Standard",
+            "status": "Online",
+            "serviceLevelObjective": "S2",
+            "collation": "SQL_Latin1_General_CP1_CI_AS",
+            "maxSizeBytes": "268435456000",
+            "requestedServiceObjectiveName": "S2",
+            "sampleName": null,
+            "defaultSecondaryLocation": "region-B",
+            "earliestRestoreDate": "2019-01-01T00:00:00Z",
+            "elasticPoolName": null,
+            "containmentState": 2,
+            "readScale": "Disabled",
+            "failoverGroupId": null,
+            "zoneRedundant": false,
+            "isUpgradeRequested": false
+        }
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-A",
+        "Location": "region",
+        "ResourceName": "ip-A",
+        "Name": "ip-A",
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "ipAddress": "0.0.0.0",
+            "publicIPAddressVersion": "IPv4",
+            "publicIPAllocationMethod": "Static",
+            "idleTimeoutInMinutes": 4,
+            "ipTags": [],
+            "ipConfiguration": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/frontendIPConfigurations/lb-configuration"
+            }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/publicIPAddresses",
+        "ResourceType": "Microsoft.Network/publicIPAddresses",
+        "Sku": {
+            "Name": "Basic",
+            "Tier": "Regional",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-B",
+        "Location": "region",
+        "ResourceName": "ip-B",
+        "Name": "ip-B",
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "ipAddress": "0.0.0.0",
+            "publicIPAddressVersion": "IPv4",
+            "publicIPAllocationMethod": "Static",
+            "idleTimeoutInMinutes": 4,
+            "ipTags": [],
+            "ipConfiguration": { }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/publicIPAddresses",
+        "ResourceType": "Microsoft.Network/publicIPAddresses",
+        "Sku": {
+            "Name": "Basic",
+            "Tier": "Regional",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    }
+]

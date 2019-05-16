@@ -1,0 +1,157 @@
+[
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A",
+        "Kind": "Storage",
+        "Location": "region",
+        "ResourceName": "storage-A",
+        "Name": "storage-A",
+        "Properties": {
+            "networkAcls": {
+                "bypass": "AzureServices",
+                "virtualNetworkRules": [],
+                "ipRules": [],
+                "defaultAction": "Allow"
+            },
+            "supportsHttpsTrafficOnly": true,
+            "encryption": {
+                "services": {
+                    "file": {
+                        "enabled": true
+                    },
+                    "blob": {
+                        "enabled": true
+                    }
+                },
+                "keySource": "Microsoft.Storage"
+            },
+            "primaryEndpoints": {
+                "blob": "https://storage-A.blob.core.windows.net/",
+                "queue": "https://storage-A.queue.core.windows.net/",
+                "table": "https://storage-A.table.core.windows.net/",
+                "file": "https://storage-A.file.core.windows.net/"
+            },
+            "primaryLocation": "region",
+            "statusOfPrimary": "available",
+            "statusOfSecondary": "available"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Storage/storageAccounts",
+        "ResourceType": "Microsoft.Storage/storageAccounts",
+        "Sku": {
+            "Name": "Standard_GRS",
+            "Tier": "Standard",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "Logging": {
+                    "Version": "1.0",
+                    "LoggingOperations": 0,
+                    "RetentionDays": null
+                },
+                "HourMetrics": {
+                    "Version": "1.0",
+                    "MetricsLevel": 2,
+                    "RetentionDays": 7
+                },
+                "Cors": [],
+                "MinuteMetrics": {
+                    "Version": "1.0",
+                    "MetricsLevel": 0,
+                    "RetentionDays": null
+                },
+                "DefaultServiceVersion": null,
+                "DeleteRetentionPolicy": {
+                    "Enabled": true,
+                    "RetentionDays": 30
+                },
+                "StaticWebsite": null,
+                "ResourceType": "serviceProperties",
+                "Type": "PSSeriviceProperties"
+            }
+        ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B",
+        "Kind": "Storage",
+        "Location": "region",
+        "ResourceName": "storage-B",
+        "Name": "storage-B",
+        "Properties": {
+            "networkAcls": {
+                "bypass": "AzureServices",
+                "virtualNetworkRules": [],
+                "ipRules": [],
+                "defaultAction": "Allow"
+            },
+            "supportsHttpsTrafficOnly": false,
+            "encryption": {
+                "services": {
+                    "file": {
+                        "enabled": false
+                    },
+                    "blob": {
+                        "enabled": false
+                    }
+                },
+                "keySource": "Microsoft.Storage"
+            },
+            "primaryEndpoints": {
+                "blob": "https://storage-B.blob.core.windows.net/",
+                "queue": "https://storage-B.queue.core.windows.net/",
+                "table": "https://storage-B.table.core.windows.net/",
+                "file": "https://storage-B.file.core.windows.net/"
+            },
+            "primaryLocation": "region",
+            "statusOfPrimary": "available"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Storage/storageAccounts",
+        "ResourceType": "Microsoft.Storage/storageAccounts",
+        "Sku": {
+            "Name": "Standard_LRS",
+            "Tier": "Standard",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "Logging": {
+                    "Version": "1.0",
+                    "LoggingOperations": 0,
+                    "RetentionDays": null
+                },
+                "HourMetrics": {
+                    "Version": "1.0",
+                    "MetricsLevel": 2,
+                    "RetentionDays": 7
+                },
+                "Cors": [],
+                "MinuteMetrics": {
+                    "Version": "1.0",
+                    "MetricsLevel": 0,
+                    "RetentionDays": null
+                },
+                "DefaultServiceVersion": null,
+                "DeleteRetentionPolicy": {
+                    "Enabled": false,
+                    "RetentionDays": null
+                },
+                "StaticWebsite": null,
+                "ResourceType": "serviceProperties",
+                "Type": "PSSeriviceProperties"
+            }
+        ]
+    }
+]
