@@ -58,4 +58,4 @@ steps:
   inputs:
     PathtoPublish: out/modules/PSRule.Rules.Azure
     ArtifactName: PSRule.Rules.Azure
-  condition: and(succeeded(), eq(${{ eq(parameters.publishModule }}, 'true'))
+  condition: and(succeeded(), eq(${{ parameters.publishModule }}, 'true'))
