@@ -1,0 +1,35 @@
+[
+    {
+        "Name": "adf-B",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.DataFactory/datafactories/adf-B",
+        "ResourceName": "adf-B",
+        "ResourceType": "Microsoft.DataFactory/datafactories",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Tags": null,
+        "Properties": {
+            "dataFactoryId": "00000000-0000-0000-0000-000000000000",
+            "error": null,
+            "errorMessage": null
+        }
+    },
+    {
+        "Name": "adf-A",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DataFactory/factories/adf-A",
+        "ResourceName": "adf-A",
+        "ResourceType": "Microsoft.DataFactory/factories",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Tags": null,
+        "Properties": {
+            "version": "2018-06-01"
+        },
+        "Identity": {
+            "type": "SystemAssigned",
+            "principalId": "00000000-0000-0000-0000-000000000000",
+            "tenantId": "00000000-0000-0000-0000-000000000000"
+        }
+    }
+]

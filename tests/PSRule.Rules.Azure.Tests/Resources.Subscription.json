@@ -1,0 +1,86 @@
+[
+    {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Name": "subscription-A",
+        "State": "Enabled",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "TenantId": "00000000-0000-0000-0000-000000000000",
+        "ExtendedProperties": {
+            "Account": "account",
+            "Tenants": "00000000-0000-0000-0000-000000000000",
+            "Environment": "AzureCloud"
+        },
+        "ResourceType": "Microsoft.Subscription",
+        "resources": [
+            {
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/autoProvisioningSettings/default",
+                "Name": "default",
+                "AutoProvision": "On",
+                "ResourceType": "Microsoft.Security/autoProvisioningSettings"
+            },
+            {
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/securityContacts/default",
+                "Name": "default",
+                "Email": "email",
+                "Phone": "",
+                "AlertNotifications": "On",
+                "AlertsToAdmins": "On",
+                "ResourceType": "Microsoft.Security/securityContacts"
+            }
+        ]
+    },
+    {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Name": "subscription-B",
+        "State": "Enabled",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "TenantId": "00000000-0000-0000-0000-000000000000",
+        "ExtendedProperties": {
+            "Account": "account",
+            "Tenants": "00000000-0000-0000-0000-000000000000",
+            "Environment": "AzureCloud"
+        },
+        "ResourceType": "Microsoft.Subscription",
+        "resources": [
+            {
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/autoProvisioningSettings/default",
+                "Name": "default",
+                "AutoProvision": "Off",
+                "ResourceType": "Microsoft.Security/autoProvisioningSettings"
+            },
+            {
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/securityContacts/default",
+                "Name": "default",
+                "Email": "",
+                "Phone": "",
+                "AlertNotifications": "On",
+                "AlertsToAdmins": "On",
+                "ResourceType": "Microsoft.Security/securityContacts"
+            }
+        ]
+    },
+    {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Name": "subscription-C",
+        "State": "Enabled",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "TenantId": "00000000-0000-0000-0000-000000000000",
+        "ExtendedProperties": {
+            "Account": "account",
+            "Tenants": "00000000-0000-0000-0000-000000000000",
+            "Environment": "AzureCloud"
+        },
+        "ResourceType": "Microsoft.Subscription",
+        "resources": [
+            {
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/securityContacts/default",
+                "Name": "default",
+                "Email": "email",
+                "Phone": "number",
+                "AlertNotifications": "On",
+                "AlertsToAdmins": "On",
+                "ResourceType": "Microsoft.Security/securityContacts"
+            }
+        ]
+    }
+]

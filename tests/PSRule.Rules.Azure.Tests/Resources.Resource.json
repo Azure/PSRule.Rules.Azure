@@ -1,0 +1,52 @@
+[
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-A",
+        "Location": "region-A",
+        "ResourceName": "registry-A",
+        "Name": "registry-A",
+        "Properties": {
+            "loginServer": "registry-A.azurecr.io",
+            "adminUserEnabled": true
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerRegistry/registries",
+        "ResourceType": "Microsoft.ContainerRegistry/registries",
+        "Sku": {
+            "Name": "Basic",
+            "Tier": "Basic",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": {
+            "environment": "production"
+        },
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B",
+        "Location": "region-B",
+        "ResourceName": "registry-B",
+        "Name": "registry-B",
+        "Properties": {
+            "loginServer": "registry-B.azurecr.io",
+            "adminUserEnabled": true
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerRegistry/registries",
+        "ResourceType": "Microsoft.ContainerRegistry/registries",
+        "Sku": {
+            "Name": "Basic",
+            "Tier": "Basic",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    }
+]

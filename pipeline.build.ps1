@@ -96,6 +96,9 @@ task VersionModule PSRule, {
             Update-ModuleManifest -Path (Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure/PSRule.Rules.Azure.psd1) -Prerelease $revision;
         }
     }
+
+    $manifest = Get-Content -Path (Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure/PSRule.Rules.Azure.psd1) -Raw;
+    $manifest.Replace('RequiredModules = @()', "RequiredModules = @(@{ ModuleName = 'PSRule'; ModuleVersion = '0.5.0' }, @{ ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0' }, @{ ModuleName = 'Az.StorageSync'; ModuleVersion = '0.8.0' }, @{ ModuleName = 'Az.Security'; ModuleVersion = '0.7.4' }, @{ ModuleName = 'Az.Storage'; ModuleVersion = '1.1.1' }, @{ ModuleName = 'Az.Websites'; ModuleVersion = '1.1.2' }, @{ ModuleName = 'Az.Sql'; ModuleVersion = '1.7.0' })") | Set-Content -Path (Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure/PSRule.Rules.Azure.psd1);
 }
 
 task ReleaseModule VersionModule, {
