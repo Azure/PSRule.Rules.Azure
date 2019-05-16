@@ -4,6 +4,10 @@
 parameters:
   version: ''
   buildConfiguration: 'Release'
+  imageName: ''
+  publishModule: 'false'
+  analysis: 'false'
+  coverage: 'false'
 
 steps:
 
@@ -15,12 +19,12 @@ steps:
 - task: PublishTestResults@2
   displayName: 'Publish Pester results'
   inputs:
-    testRunTitle: 'Pester on $(imageName)'
+    testRunTitle: 'Pester on ${{ parameters.imageName }}'
     testRunner: NUnit
     testResultsFiles: 'reports/pester-unit.xml'
     mergeTestResults: true
-    platform: $(imageName)
-    configuration: $(buildConfiguration)
+    platform: ${{ parameters.imageName }}
+    configuration: ${{ parameters.buildConfiguration }}
     publishRunAttachments: true
   condition: succeededOrFailed()
 
@@ -46,7 +50,7 @@ steps:
     #reportDirectory: # Optional
     #additionalCodeCoverageFiles: # Optional
     #failIfCoverageEmpty: false # Optional
-  condition: eq(variables['coverage'], 'true')
+  condition: eq(parameters['coverage'], 'true')
 
 # Generate artifacts
 - task: PublishBuildArtifacts@1
@@ -54,4 +58,4 @@ steps:
   inputs:
     PathtoPublish: out/modules/PSRule.Rules.Azure
     ArtifactName: PSRule.Rules.Azure
-  condition: and(succeeded(), eq(variables['publishModule'], 'true'))
+  condition: and(succeeded(), eq(parameters['publishModule'], 'true'))
