@@ -1,35 +1,14 @@
 # Azure DevOps
 # Build pipeline for PSRule.Rules.Azure
 
-strategy:
-  matrix:
-    Linux:
-      imageName: 'ubuntu-16.04'
-    MacOS:
-      imageName: 'macos-10.13'
-    Windows:
-      imageName: 'vs2017-win2016'
-      publishModule: 'true'
-      analysis: 'true'
-      coverage: 'true'
-
-variables:
+parameters:
+  version: ''
   buildConfiguration: 'Release'
-  version: '0.1.0'
-
-# Use build number format, i.e. 0.1.0-B181101
-name: $(version)-B$(date:yyMM)$(rev:rr)
-
-trigger:
-- master
-
-pool:
-  vmImage: $(imageName)
 
 steps:
 
 # Install pipeline dependencies and build module
-- powershell: ./scripts/pipeline-build.ps1 -File ./pipeline.build.ps1 -Configuration $(buildConfiguration) -ModuleVersion $(Build.BuildNumber) -ReleaseVersion "$(Release.Version)"
+- powershell: ./scripts/pipeline-build.ps1 -File ./pipeline.build.ps1 -Configuration ${{ parameters.buildConfiguration }} -ModuleVersion $(Build.BuildNumber) -ReleaseVersion "$(Release.Version)"
   displayName: 'Build module'
 
 # Pester test results
