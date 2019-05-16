@@ -154,22 +154,22 @@ task platyPS {
 
 task RequiredModules NuGet, {
     if ($Null -eq (Get-InstalledModule -Name Az.Accounts -ErrorAction Ignore)) {
-        Install-Module -Name Az.Accounts -Scope CurrentUser -Force;
+        Install-Module -Name Az.Accounts -Scope CurrentUser -Force -AllowClobber;
     }
     if ($Null -eq (Get-InstalledModule -Name Az.StorageSync -ErrorAction Ignore)) {
-        Install-Module -Name Az.StorageSync -Scope CurrentUser -Force;
+        Install-Module -Name Az.StorageSync -Scope CurrentUser -Force -AllowClobber;
     }
     if ($Null -eq (Get-InstalledModule -Name Az.Security -ErrorAction Ignore)) {
-        Install-Module -Name Az.Security -Scope CurrentUser -Force;
+        Install-Module -Name Az.Security -Scope CurrentUser -Force -AllowClobber;
     }
     if ($Null -eq (Get-InstalledModule -Name Az.Storage -ErrorAction Ignore)) {
-        Install-Module -Name Az.Storage -Scope CurrentUser -Force;
+        Install-Module -Name Az.Storage -Scope CurrentUser -Force -AllowClobber;
     }
     if ($Null -eq (Get-InstalledModule -Name Az.Websites -ErrorAction Ignore)) {
-        Install-Module -Name Az.Websites -Scope CurrentUser -Force;
+        Install-Module -Name Az.Websites -Scope CurrentUser -Force -AllowClobber;
     }
     if ($Null -eq (Get-InstalledModule -Name Az.Sql -ErrorAction Ignore)) {
-        Install-Module -Name Az.Sql -Scope CurrentUser -Force;
+        Install-Module -Name Az.Sql -Scope CurrentUser -Force -AllowClobber;
     }
 }
 
