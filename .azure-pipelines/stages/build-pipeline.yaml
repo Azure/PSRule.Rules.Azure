@@ -43,21 +43,21 @@ steps:
 
 # Publish Code Coverage Results
 - ${{ if eq(parameters.coverage, 'true') }}:
-- task: PublishCodeCoverageResults@1
-  displayName: 'Publish Pester code coverage'
-  inputs:
-    codeCoverageTool: 'JaCoCo'
-    summaryFileLocation: 'reports/pester-coverage.xml'
-    #reportDirectory: # Optional
-    #additionalCodeCoverageFiles: # Optional
-    #failIfCoverageEmpty: false # Optional
-  # condition: eq(${{ parameters['coverage'] }}, 'true')
+  - task: PublishCodeCoverageResults@1
+    displayName: 'Publish Pester code coverage'
+    inputs:
+      codeCoverageTool: 'JaCoCo'
+      summaryFileLocation: 'reports/pester-coverage.xml'
+      #reportDirectory: # Optional
+      #additionalCodeCoverageFiles: # Optional
+      #failIfCoverageEmpty: false # Optional
+    # condition: eq(${{ parameters['coverage'] }}, 'true')
 
 # Generate artifacts
 - ${{ if eq(parameters.publishModule, 'true') }}:
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish module'
-  inputs:
-    PathtoPublish: out/modules/PSRule.Rules.Azure
-    ArtifactName: PSRule.Rules.Azure
-  condition: succeeded()
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish module'
+    inputs:
+      PathtoPublish: out/modules/PSRule.Rules.Azure
+      ArtifactName: PSRule.Rules.Azure
+    condition: succeeded()
