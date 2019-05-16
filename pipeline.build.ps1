@@ -59,7 +59,7 @@ function CopyModuleFiles {
     }
 }
 
-task VersionModule PSRule, {
+task VersionModule PSRule, RequiredModules, {
     if (![String]::IsNullOrEmpty($ReleaseVersion)) {
         Write-Verbose -Message "[VersionModule] -- ReleaseVersion: $ReleaseVersion";
         $ModuleVersion = $ReleaseVersion;
@@ -150,6 +150,27 @@ task platyPS {
         Install-Module -Name PlatyPS -Scope CurrentUser -MinimumVersion '0.14.0' -Force;
     }
     Import-Module -Name PlatyPS -Verbose:$False;
+}
+
+task RequiredModules NuGet, {
+    if ($Null -eq (Get-InstalledModule -Name Az.Accounts -ErrorAction Ignore)) {
+        Install-Module -Name Az.Accounts -Scope CurrentUser -Force;
+    }
+    if ($Null -eq (Get-InstalledModule -Name Az.StorageSync -ErrorAction Ignore)) {
+        Install-Module -Name Az.StorageSync -Scope CurrentUser -Force;
+    }
+    if ($Null -eq (Get-InstalledModule -Name Az.Security -ErrorAction Ignore)) {
+        Install-Module -Name Az.Security -Scope CurrentUser -Force;
+    }
+    if ($Null -eq (Get-InstalledModule -Name Az.Storage -ErrorAction Ignore)) {
+        Install-Module -Name Az.Storage -Scope CurrentUser -Force;
+    }
+    if ($Null -eq (Get-InstalledModule -Name Az.Websites -ErrorAction Ignore)) {
+        Install-Module -Name Az.Websites -Scope CurrentUser -Force;
+    }
+    if ($Null -eq (Get-InstalledModule -Name Az.Sql -ErrorAction Ignore)) {
+        Install-Module -Name Az.Sql -Scope CurrentUser -Force;
+    }
 }
 
 task CopyModule {
