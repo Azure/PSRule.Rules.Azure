@@ -1,3 +1,5 @@
+# Azure DevOps
+# CI pipeline for PSRule.Rules.Azure
 
 variables:
   version: '0.1.0'
@@ -7,7 +9,12 @@ variables:
 name: $(version)-B$(date:yyMM)$(rev:rr)
 
 trigger:
-- master
+  branches:
+    include:
+    - 'master'
+  tags:
+    include:
+    - 'v0.*'
 
 pr:
   branches:
@@ -15,8 +22,10 @@ pr:
     - 'master'
 
 stages:
+
+# Build pipeline
 - stage: Build
-  displayName: Build stage
+  displayName: Build
   jobs:
   - job:
     strategy:
@@ -70,16 +79,32 @@ stages:
       inputs:
         codeCoverageTool: 'JaCoCo'
         summaryFileLocation: 'reports/pester-coverage.xml'
-        #reportDirectory: # Optional
-        #additionalCodeCoverageFiles: # Optional
-        #failIfCoverageEmpty: false # Optional
       condition: eq(variables['coverage'], 'true')
 
     # Generate artifacts
-    - task: PublishBuildArtifacts@1
+    - task: PublishPipelineArtifact@0
       displayName: 'Publish module'
       inputs:
-        PathtoPublish: out/modules/PSRule.Rules.Azure
-        ArtifactName: PSRule.Rules.Azure
+        artifactName: PSRule.Rules.Azure
+        targetPath: out/modules/PSRule.Rules.Azure
       condition: and(succeeded(), eq(variables['publishModule'], 'true'))
 
+# Release pipeline
+- stage: Release
+  displayName: Release
+  dependsOn: Build
+  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v0.')
+  jobs:
+  - job:
+    displayName: Live
+    pool:
+      vmImage: 'ubuntu-16.04'
+    steps:
+    - task: DownloadPipelineArtifact@1
+      displayName: 'Download module'
+      inputs:
+        artifactName: PSRule.Rules.Azure
+        downloadPath: $(Build.SourcesDirectory)/out/modules/PSRule.Rules.Azure
+      # Install pipeline dependencies and build module
+    - powershell: ./scripts/pipeline-build.ps1 -File ./pipeline.build.ps1 -Task Release -NuGetApiKey $(apiKey)
+      displayName: 'Publish module'

@@ -29,6 +29,9 @@ if ($Env:Coverage -eq 'true') {
     $CodeCoverage = $True;
 }
 
+Write-Verbose -Message "[Pipeline] -- PWD: $PWD";
+Write-Verbose -Message "[Pipeline] -- ArtifactPath: $ArtifactPath";
+
 # Copy the PowerShell modules files to the destination path
 function CopyModuleFiles {
 
@@ -60,6 +63,10 @@ function CopyModuleFiles {
 }
 
 task VersionModule PSRule, {
+    $modulePath = Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure;
+    $manifestPath = Join-Path -Path $modulePath -ChildPath PSRule.Rules.Azure.psd1;
+    Write-Verbose -Message "[VersionModule] -- Checking module path: $modulePath";
+
     if (![String]::IsNullOrEmpty($ReleaseVersion)) {
         Write-Verbose -Message "[VersionModule] -- ReleaseVersion: $ReleaseVersion";
         $ModuleVersion = $ReleaseVersion;
@@ -87,24 +94,30 @@ task VersionModule PSRule, {
         # Update module version
         if (![String]::IsNullOrEmpty($version)) {
             Write-Verbose -Message "[VersionModule] -- Updating module manifest ModuleVersion";
-            Update-ModuleManifest -Path (Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure/PSRule.Rules.Azure.psd1) -ModuleVersion $version;
+            Update-ModuleManifest -Path $manifestPath -ModuleVersion $version;
         }
 
         # Update pre-release version
         if (![String]::IsNullOrEmpty($revision)) {
             Write-Verbose -Message "[VersionModule] -- Updating module manifest Prerelease";
-            Update-ModuleManifest -Path (Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure/PSRule.Rules.Azure.psd1) -Prerelease $revision;
+            Update-ModuleManifest -Path $manifestPath -Prerelease $revision;
         }
     }
 
-    $manifest = Get-Content -Path (Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure/PSRule.Rules.Azure.psd1) -Raw;
-    $manifest.Replace('RequiredModules = @()', "RequiredModules = @(@{ ModuleName = 'PSRule'; ModuleVersion = '0.5.0' }, @{ ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0' }, @{ ModuleName = 'Az.StorageSync'; ModuleVersion = '0.8.0' }, @{ ModuleName = 'Az.Security'; ModuleVersion = '0.7.4' }, @{ ModuleName = 'Az.Storage'; ModuleVersion = '1.1.1' }, @{ ModuleName = 'Az.Websites'; ModuleVersion = '1.1.2' }, @{ ModuleName = 'Az.Sql'; ModuleVersion = '1.7.0' })") | Set-Content -Path (Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure/PSRule.Rules.Azure.psd1);
+    $manifest = Get-Content -Path $manifestPath -Raw;
+    $manifest.Replace('RequiredModules = @()', "RequiredModules = @(@{ ModuleName = 'PSRule'; ModuleVersion = '0.5.0' }, @{ ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0' }, @{ ModuleName = 'Az.StorageSync'; ModuleVersion = '0.8.0' }, @{ ModuleName = 'Az.Security'; ModuleVersion = '0.7.4' }, @{ ModuleName = 'Az.Storage'; ModuleVersion = '1.1.1' }, @{ ModuleName = 'Az.Websites'; ModuleVersion = '1.1.2' }, @{ ModuleName = 'Az.Sql'; ModuleVersion = '1.7.0' })") | Set-Content -Path $manifestPath;
 }
 
 task ReleaseModule VersionModule, {
-    if (![String]::IsNullOrEmpty($NuGetApiKey)) {
+    $modulePath = (Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure);
+    Write-Verbose -Message "[ReleaseModule] -- Checking module path: $modulePath";
+
+    if (!(Test-Path -Path $modulePath)) {
+        Write-Error -Message "[ReleaseModule] -- Module path does not exist";
+    }
+    elseif (![String]::IsNullOrEmpty($NuGetApiKey)) {
         # Publish to PowerShell Gallery
-        Publish-Module -Path (Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure) -NuGetApiKey $NuGetApiKey;
+        Publish-Module -Path $modulePath -NuGetApiKey $NuGetApiKey;
     }
 }
 
