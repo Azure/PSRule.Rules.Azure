@@ -21,7 +21,7 @@ Set-StrictMode -Version latest;
 # .ExternalHelp PSRule.Rules.Azure-Help.xml
 function Export-AzRuleData {
     [CmdletBinding()]
-    [OutputType9([void])]
+    [OutputType([void])]
     param (
         [Parameter(Position = 0, Mandatory = $False)]
         [String]$OutputPath = $PWD,
