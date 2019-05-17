@@ -67,6 +67,7 @@ function CopyModuleFiles {
 
 task VersionModule PSRule, {
     $modulePath = Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure;
+    $manifestPath = Join-Path -Path $modulePath -ChildPath PSRule.Rules.Azure.psd1;
     Write-Verbose -Message "[VersionModule] -- Checking module path: $modulePath";
 
     if (![String]::IsNullOrEmpty($ReleaseVersion)) {
@@ -92,8 +93,6 @@ task VersionModule PSRule, {
 
             Write-Verbose -Message "[VersionModule] -- Using Revision: $revision";
         }
-
-        $manifestPath = Join-Path -Path $modulePath -ChildPath PSRule.Rules.Azure.psd1;
 
         # Update module version
         if (![String]::IsNullOrEmpty($version)) {

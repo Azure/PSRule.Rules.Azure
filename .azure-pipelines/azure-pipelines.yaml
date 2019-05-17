@@ -97,7 +97,7 @@ stages:
       displayName: 'Download module'
       inputs:
         artifactName: PSRule.Rules.Azure
-        downloadPath: out/modules
+        downloadPath: $(Build.SourcesDirectory)/out/modules/PSRule.Rules.Azure
       # Install pipeline dependencies and build module
     - powershell: ./scripts/pipeline-build.ps1 -Task 'Release' -File ./pipeline.build.ps1 -Configuration $(buildConfiguration)
       displayName: 'Test'
