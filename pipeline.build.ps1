@@ -31,9 +31,6 @@ if ($Env:Coverage -eq 'true') {
 
 Write-Verbose -Message "[Pipeline] -- PWD: $PWD";
 Write-Verbose -Message "[Pipeline] -- ArtifactPath: $ArtifactPath";
-Write-Verbose -Message "[Pipeline] -- System.DefaultWorkingDirectory: $($Env:System_DefaultWorkingDirectory)";
-
-get-childitem -Path 'ENV:' | % { Write-Verbose "$($_.Key)=$($_.Value)"};
 
 # Copy the PowerShell modules files to the destination path
 function CopyModuleFiles {
