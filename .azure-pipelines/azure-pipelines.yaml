@@ -18,7 +18,7 @@ stages:
 
 # Build pipeline
 - stage: Build
-  displayName: Build stage
+  displayName: Build
   jobs:
   - job:
     strategy:
@@ -93,6 +93,9 @@ stages:
     pool:
       vmImage: 'ubuntu-16.04'
     steps:
+    - download:
+      displayName: 'Download module'
+      artifact: PSRule.Rules.Azure
       # Install pipeline dependencies and build module
     - powershell: ./scripts/pipeline-build.ps1 -Task 'Release' -File ./pipeline.build.ps1 -Configuration $(buildConfiguration)
       displayName: 'Test'
