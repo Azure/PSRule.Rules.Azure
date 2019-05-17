@@ -15,6 +15,8 @@ pr:
     - 'master'
 
 stages:
+
+# Build pipeline
 - stage: Build
   displayName: Build stage
   jobs:
@@ -70,9 +72,6 @@ stages:
       inputs:
         codeCoverageTool: 'JaCoCo'
         summaryFileLocation: 'reports/pester-coverage.xml'
-        #reportDirectory: # Optional
-        #additionalCodeCoverageFiles: # Optional
-        #failIfCoverageEmpty: false # Optional
       condition: eq(variables['coverage'], 'true')
 
     # Generate artifacts
@@ -83,3 +82,17 @@ stages:
         ArtifactName: PSRule.Rules.Azure
       condition: and(succeeded(), eq(variables['publishModule'], 'true'))
 
+# Release pipeline
+- stage: Release
+  displayName: Release
+  dependsOn: Build
+  # condition: eq(variables['Build.SourceBranch'], 'refs/heads/releases')
+  jobs:
+  - job:
+    displayName: Live
+    pool:
+      vmImage: 'ubuntu-16.04'
+    steps:
+      # Install pipeline dependencies and build module
+    - powershell: ./scripts/pipeline-build.ps1 -Task 'Release' -File ./pipeline.build.ps1 -Configuration $(buildConfiguration)
+      displayName: 'Test'
