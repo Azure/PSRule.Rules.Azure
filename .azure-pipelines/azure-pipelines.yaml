@@ -1,3 +1,5 @@
+# Azure DevOps
+# CI pipeline for PSRule.Rules.Azure
 
 variables:
   version: '0.1.0'
@@ -7,7 +9,12 @@ variables:
 name: $(version)-B$(date:yyMM)$(rev:rr)
 
 trigger:
-- master
+  branches:
+    include:
+    - 'master'
+  tags:
+    include:
+    - 'v0.*'
 
 pr:
   branches:
@@ -86,7 +93,7 @@ stages:
 - stage: Release
   displayName: Release
   dependsOn: Build
-  # condition: eq(variables['Build.SourceBranch'], 'refs/heads/releases')
+  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v0.')
   jobs:
   - job:
     displayName: Live
