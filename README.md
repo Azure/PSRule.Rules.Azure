@@ -68,6 +68,52 @@ For example:
 Export-AzRuleData -Subscription 'Contoso Production', 'Contoso Non-production'
 ```
 
+To filter results to only failed rules, use `Invoke-PSRule -Outcome Fail`. Passed, failed and error results are shown by default.
+
+For example:
+
+```powershell
+# Only show failed results
+Invoke-PSRule -InputPath .\*.json -Module 'PSRule.Rules.Azure' -Outcome Fail;
+```
+
+The output of this example is:
+
+```text
+   TargetName: storage
+
+RuleName                            Outcome    Message
+--------                            -------    -------
+Azure.Storage.UseReplication        Fail       Storage accounts not using GRS may be at risk
+Azure.Storage.SecureTransferRequ... Fail       Storage accounts should only allow secure traffic
+Azure.Storage.SoftDelete            Fail       Soft delete is enabled on Storage Accounts
+```
+
+A summary of results can be displayed by using `Invoke-PSRule -As Summary`.
+
+For example:
+
+```powershell
+# Display as summary results
+Invoke-PSRule -InputPath .\*.json -Module 'PSRule.Rules.Azure' -As Summary;
+```
+
+The output of this example is:
+
+```text
+RuleName                            Pass  Fail  Outcome
+--------                            ----  ----  -------
+Azure.ACR.MinSku                    0     1     Fail
+Azure.AppService.PlanInstanceCount  0     1     Fail
+Azure.AppService.UseHTTPS           0     2     Fail
+Azure.Resource.UseTags              73    36    Fail
+Azure.SQL.ThreatDetection           0     1     Fail
+Azure.SQL.Auditing                  0     1     Fail
+Azure.Storage.UseReplication        1     7     Fail
+Azure.Storage.SecureTransferRequ... 2     6     Fail
+Azure.Storage.SoftDelete            0     8     Fail
+```
+
 ## Rule reference
 
 The following rules are included in the `PSRule.Rules.Azure` module:
