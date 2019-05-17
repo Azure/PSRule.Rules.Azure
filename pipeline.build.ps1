@@ -29,6 +29,10 @@ if ($Env:Coverage -eq 'true') {
     $CodeCoverage = $True;
 }
 
+Write-Verbose -Message "[Pipeline] -- PWD: $PWD";
+Write-Verbose -Message "[Pipeline] -- ArtifactPath: $ArtifactPath";
+Write-Verbose -Message "[Pipeline] -- System.DefaultWorkingDirectory: $($Env:System_DefaultWorkingDirectory)";
+
 # Copy the PowerShell modules files to the destination path
 function CopyModuleFiles {
 
@@ -102,9 +106,15 @@ task VersionModule PSRule, {
 }
 
 task ReleaseModule VersionModule, {
-    if (![String]::IsNullOrEmpty($NuGetApiKey)) {
+    $modulePath = (Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure);
+    Write-Verbose -Message "[ReleaseModule] -- Checking module path: $modulePath";
+
+    if (!(Test-Path -Path $modulePath)) {
+        Write-Error -Message "[ReleaseModule] -- Module path does not exist";
+    }
+    elseif (![String]::IsNullOrEmpty($NuGetApiKey)) {
         # Publish to PowerShell Gallery
-        Publish-Module -Path (Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure) -NuGetApiKey $NuGetApiKey;
+        Publish-Module -Path $modulePath -NuGetApiKey $NuGetApiKey;
     }
 }
 
