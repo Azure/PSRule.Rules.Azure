@@ -93,7 +93,7 @@ stages:
     pool:
       vmImage: 'ubuntu-16.04'
     steps:
-    - download:
+    - download: PSRule.Rules.Azure-CI
       displayName: 'Download module'
       artifact: PSRule.Rules.Azure
       # Install pipeline dependencies and build module
