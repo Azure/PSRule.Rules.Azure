@@ -62,7 +62,7 @@ function CopyModuleFiles {
     }
 }
 
-task VersionModule PSRule, {
+task VersionModule ModuleDependencies, {
     $modulePath = Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure;
     $manifestPath = Join-Path -Path $modulePath -ChildPath PSRule.Rules.Azure.psd1;
     Write-Verbose -Message "[VersionModule] -- Checking module path: $modulePath";
@@ -172,7 +172,9 @@ task ModuleDependencies NuGet, PSRule, {
     if ($Null -eq (Get-InstalledModule -Name Az.Accounts -ErrorAction Ignore)) {
         Install-Module -Name Az.Accounts -Scope CurrentUser -Force;
     }
-    Import-Module -Name Az.Accounts -Verbose:$False;
+    if ($Null -eq (Get-InstalledModule -Name Az.Resources -ErrorAction Ignore)) {
+        Install-Module -Name Az.Resources -Scope CurrentUser -Force;
+    }
 }
 
 task CopyModule {
@@ -186,7 +188,7 @@ task CopyModule {
 # Synopsis: Build modules only
 task BuildModule CopyModule
 
-task TestRules PSRule, Pester, PSScriptAnalyzer, ModuleDependencies, {
+task TestRules PSRule, Pester, PSScriptAnalyzer, {
     # Run Pester tests
     $pesterParams = @{ Path = $PWD; OutputFile = 'reports/pester-unit.xml'; OutputFormat = 'NUnitXml'; PesterOption = @{ IncludeVSCodeMarker = $True }; PassThru = $True; };
 
