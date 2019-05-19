@@ -176,10 +176,16 @@ task ModuleDependencies NuGet, PSRule, {
         Install-Module -Name Az.Resources -Scope CurrentUser -Force;
     }
     if ($Null -eq (Get-InstalledModule -Name Az.Storage -ErrorAction Ignore)) {
-        Install-Module -Name Az.Storage -Scope CurrentUser -Force;
+        Install-Module -Name Az.Storage -Scope CurrentUser -Force -AllowClobber;
     }
     if ($Null -eq (Get-InstalledModule -Name Az.Security -ErrorAction Ignore)) {
         Install-Module -Name Az.Security -Scope CurrentUser -Force;
+    }
+    if ($Null -eq (Get-InstalledModule -Name Az.Sql -ErrorAction Ignore)) {
+        Install-Module -Name Az.Sql -Scope CurrentUser -Force;
+    }
+    if ($Null -eq (Get-InstalledModule -Name Az.Websites -ErrorAction Ignore)) {
+        Install-Module -Name Az.Websites -Scope CurrentUser -Force;
     }
 }
 

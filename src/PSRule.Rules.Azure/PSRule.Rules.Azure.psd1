@@ -53,6 +53,8 @@ RequiredModules = @(
     @{ ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.2' }
     @{ ModuleName = 'Az.Security'; ModuleVersion = '0.7.4' }
     @{ ModuleName = 'Az.Storage'; ModuleVersion = '1.3.0' }
+    @{ ModuleName = 'Az.Sql'; ModuleVersion = '1.9.0' }
+    @{ ModuleName = 'Az.Websites'; ModuleVersion = '1.2.1' }
 )
 
 # Assemblies that must be loaded prior to importing this module
