@@ -26,10 +26,10 @@ Azure.SQL.FirewallRuleCount | Determine if there is an excessive number of firew
 Azure.SQL.AllowAzureAccess | Determine if access from Azure servers is required
 Azure.SQL.ThreatDetection | Enable threat detection for Azure SQL logical server
 Azure.SQL.Auditing | Enable auditing for Azure SQL logical server
-Azure.Storage.UseReplication | Use GRS for storage accounts that don't store disks
-Azure.Storage.SecureTransferRequired | Configure storage accounts to only access encrypted traffic i.e. HTTPS/SMB
+Azure.Storage.UseReplication | Storage accounts not using GRS may be at risk
+Azure.Storage.SecureTransferRequired | Storage accounts should only accept secure traffic
 Azure.Storage.UseEncryption | Storage Service Encryption (SSE) should be enabled
-Azure.Storage.SoftDelete | Soft delete is enabled on Storage Accounts
+Azure.Storage.SoftDelete | Enable soft delete on Storage Accounts
 Azure.Subscription.SecurityCenterContact | Security Center email and phone contact details should be set
 Azure.Subscription.SecurityCenterProvisioning | Enable auto-provisioning on VMs to improve Security Center insights
 Azure.VirtualMachine.UseManagedDisks | Virtual machines should use managed disks

@@ -85,8 +85,8 @@ The output of this example is:
 RuleName                            Outcome    Message
 --------                            -------    -------
 Azure.Storage.UseReplication        Fail       Storage accounts not using GRS may be at risk
-Azure.Storage.SecureTransferRequ... Fail       Storage accounts should only allow secure traffic
-Azure.Storage.SoftDelete            Fail       Soft delete is enabled on Storage Accounts
+Azure.Storage.SecureTransferRequ... Fail       Storage accounts should only accept secure traffic
+Azure.Storage.SoftDelete            Fail       Enable soft delete on Storage Accounts
 ```
 
 A summary of results can be displayed by using `Invoke-PSRule -As Summary`.

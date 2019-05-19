@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+- Add units tests for Export-AzRuleData and update filters. [#28](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/28)
+
 ## v0.1.0-B190543
 
 - Fix cannot find the type for custom attribute error. [#21](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/21)
