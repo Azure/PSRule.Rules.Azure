@@ -61,6 +61,7 @@ function Export-AzRuleData {
 
 function FindAzureContext {
     [CmdletBinding()]
+    # [OutputType([Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer[]])]
     param (
         [Parameter(Mandatory = $False)]
         [String[]]$Subscription = $Null,
@@ -89,6 +90,7 @@ function FindAzureContext {
 
 function GetAzureContext {
     [CmdletBinding()]
+    # [OutputType([Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer[]])]
     param ( )
     process {
         # Get contexts
@@ -100,7 +102,8 @@ function GetAzureResource {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True)]
-        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+        $Context
+        # [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
 
     process {
