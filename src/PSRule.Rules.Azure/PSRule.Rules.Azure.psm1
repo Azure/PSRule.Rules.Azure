@@ -36,7 +36,7 @@ function Export-AzRuleData {
     process {
 
         # Get subscriptions
-        $context = GetAzureContext -Subscription $Subscription -Tenant $Tenant -Verbose:$VerbosePreference;
+        $context = FindAzureContext -Subscription $Subscription -Tenant $Tenant -Verbose:$VerbosePreference;
 
         if ($Null -eq $context) {
             return;
@@ -48,30 +48,31 @@ function Export-AzRuleData {
 
         foreach ($c in $context) {
             $filePath = Join-Path -Path $OutputPath -ChildPath "$($c.Subscription.Id).json";
-            GetAzureResource -Context $c -Verbose:$VerbosePreference | ConvertTo-Json -Depth 10 | Set-Content -Path $filePath;
+            GetAzureResource -Context $c -Verbose:$VerbosePreference | ExportAzureResource -Path $filePath -Verbose:$VerbosePreference
         }
     }
 }
 
-#endreigon Public functions
+#endregion Public functions
 
 #
 # Helper functions
 #
 
-function GetAzureContext {
+function FindAzureContext {
     [CmdletBinding()]
+    [OutputType([Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer[]])]
     param (
         [Parameter(Mandatory = $False)]
-        [String[]]$Subscription,
+        [String[]]$Subscription = $Null,
 
         [Parameter(Mandatory = $False)]
-        [String[]]$Tenant
+        [String[]]$Tenant = $Null
     )
 
     process {
-        # Get subscriptions
-        $context = Get-AzContext -ListAvailable;
+        # Get subscription contexts
+        $context = GetAzureContext;
 
         if ($Null -eq $context) {
             Write-Error -Message "Could not find an existing context. Use Connect-AzAccount to establish a PowerShell context with Azure.";
@@ -79,11 +80,21 @@ function GetAzureContext {
         }
 
         $filteredContext = $context | Where-Object -FilterScript {
-            ($Null -eq $Tenant -or $Tenant.Length -eq 0 -or $Tenant -contains $_.Tenant.Id) -and
-            ($Null -eq $Subscription -or $Subscription.Length -eq 0 -or $Subscription -contains $_.Subscription.Id -or $Subscription -contains $_.Subscription.Name)
+            ($Null -eq $Tenant -or $Tenant.Length -eq 0 -or ($_.Tenant.Id -in $Tenant)) -and
+            ($Null -eq $Subscription -or $Subscription.Length -eq 0 -or ($_.Subscription.Id -in $Subscription) -or ($_.Subscription.Name -in $Subscription))
         }
 
         return $filteredContext;
+    }
+}
+
+function GetAzureContext {
+    [CmdletBinding()]
+    [OutputType([Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer[]])]
+    param ( )
+    process {
+        # Get contexts
+        return Get-AzContext -ListAvailable;
     }
 }
 
@@ -97,6 +108,22 @@ function GetAzureResource {
     process {
         Get-AzResource -ExpandProperties -DefaultProfile $Context | ExpandResource -Context $Context -Verbose:$VerbosePreference;
         Get-AzSubscription -SubscriptionId $Context.DefaultContext.Subscription.Id | SetResourceType 'Microsoft.Subscription' | ExpandResource -Context $Context -Verbose:$VerbosePreference;
+    }
+}
+
+function ExportAzureResource {
+    [CmdletBinding()]
+    [OutputType([void])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [String]$Path,
+
+        [Parameter(Mandatory = $False, ValueFromPipeline = $True)]
+        [PSObject]$InputObject
+    )
+
+    process {
+        $InputObject | ConvertTo-Json -Depth 100 | Set-Content -Path $Path;
     }
 }
 
@@ -310,4 +337,4 @@ function SetResourceType {
 # Export module
 #
 
-Export-ModuleMember -Function 'Export-AzRuleData'
+Export-ModuleMember -Function 'Export-AzRuleData';
