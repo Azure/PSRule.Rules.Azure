@@ -4,10 +4,6 @@
 
 Set-StrictMode -Version latest;
 
-# Set up some helper variables to make it easier to work with the module
-# $PSModule = $ExecutionContext.SessionState.Module;
-# $PSModuleRoot = $PSModule.ModuleBase;
-
 #
 # Localization
 #
@@ -309,7 +305,7 @@ function ExpandResource {
             "Microsoft.Sql/servers" { VisitSqlServer @PSBoundParameters; }
             "Microsoft.DataFactory/factories" { VisitDataFactoryV2 @PSBoundParameters; }
             # "Microsoft.Storage/storageAccounts" { VisitStorageAccount @PSBoundParameters; }
-            "Microsoft.StorageSync/storageSyncServices" { VisitStorageSyncService @PSBoundParameters; }
+            # "Microsoft.StorageSync/storageSyncServices" { VisitStorageSyncService @PSBoundParameters; }
             # "Microsoft.Web/sites" { VisitWebApp @PSBoundParameters; }
             "Microsoft.RecoveryServices/vaults" { VisitRecoveryServices @PSBoundParameters; }
             "Microsoft.Compute/virtualMachines" { VisitVirtualMachine @PSBoundParameters; }

@@ -55,7 +55,6 @@ RequiredModules = @(
     @{ ModuleName = 'Az.Storage'; ModuleVersion = '1.3.0' }
     @{ ModuleName = 'Az.Sql'; ModuleVersion = '1.9.0' }
     @{ ModuleName = 'Az.Websites'; ModuleVersion = '1.2.1' }
-    @{ ModuleName = 'Az.StorageSync'; ModuleVersion = '0.8.1' }
 )
 
 # Assemblies that must be loaded prior to importing this module

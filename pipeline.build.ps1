@@ -103,11 +103,9 @@ task VersionModule ModuleDependencies, {
             Update-ModuleManifest -Path $manifestPath -Prerelease $revision;
         }
     }
-
-    # $manifest = Get-Content -Path $manifestPath -Raw;
-    # $manifest.Replace("RequiredModules = @(", "RequiredModules = @(@{ ModuleName = 'Az.StorageSync'; ModuleVersion = '0.8.0' }, @{ ModuleName = 'Az.Security'; ModuleVersion = '0.7.4' }, @{ ModuleName = 'Az.Storage'; ModuleVersion = '1.1.1' }, @{ ModuleName = 'Az.Websites'; ModuleVersion = '1.1.2' }, @{ ModuleName = 'Az.Sql'; ModuleVersion = '1.7.0' })") | Set-Content -Path $manifestPath;
 }
 
+# Synopsis: Publish to PowerShell Gallery
 task ReleaseModule VersionModule, {
     $modulePath = (Join-Path -Path $ArtifactPath -ChildPath PSRule.Rules.Azure);
     Write-Verbose -Message "[ReleaseModule] -- Checking module path: $modulePath";
@@ -116,7 +114,6 @@ task ReleaseModule VersionModule, {
         Write-Error -Message "[ReleaseModule] -- Module path does not exist";
     }
     elseif (![String]::IsNullOrEmpty($NuGetApiKey)) {
-        # Publish to PowerShell Gallery
         Publish-Module -Path $modulePath -NuGetApiKey $NuGetApiKey;
     }
 }
@@ -168,6 +165,7 @@ task platyPS {
     Import-Module -Name PlatyPS -Verbose:$False;
 }
 
+# Synopsis: Install module dependencies
 task ModuleDependencies NuGet, PSRule, {
     if ($Null -eq (Get-InstalledModule -Name Az.Accounts -ErrorAction Ignore)) {
         Install-Module -Name Az.Accounts -Scope CurrentUser -Force;
@@ -186,9 +184,6 @@ task ModuleDependencies NuGet, PSRule, {
     }
     if ($Null -eq (Get-InstalledModule -Name Az.Websites -ErrorAction Ignore)) {
         Install-Module -Name Az.Websites -Scope CurrentUser -Force;
-    }
-    if ($Null -eq (Get-InstalledModule -Name Az.StorageSync -ErrorAction Ignore)) {
-        Install-Module -Name Az.StorageSync -Scope CurrentUser -Force;
     }
 }
 
