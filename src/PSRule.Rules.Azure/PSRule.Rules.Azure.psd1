@@ -48,7 +48,10 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ ModuleName = 'PSRule'; ModuleVersion = '0.5.0' }, @{ ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0' })
+RequiredModules = @(
+    @{ ModuleName = 'PSRule'; ModuleVersion = '0.5.0' }
+    @{ ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.2' }
+)
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
