@@ -105,7 +105,7 @@ task VersionModule PSRule, {
     }
 
     $manifest = Get-Content -Path $manifestPath -Raw;
-    $manifest.Replace('RequiredModules = @()', "RequiredModules = @(@{ ModuleName = 'PSRule'; ModuleVersion = '0.5.0' }, @{ ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0' }, @{ ModuleName = 'Az.StorageSync'; ModuleVersion = '0.8.0' }, @{ ModuleName = 'Az.Security'; ModuleVersion = '0.7.4' }, @{ ModuleName = 'Az.Storage'; ModuleVersion = '1.1.1' }, @{ ModuleName = 'Az.Websites'; ModuleVersion = '1.1.2' }, @{ ModuleName = 'Az.Sql'; ModuleVersion = '1.7.0' })") | Set-Content -Path $manifestPath;
+    $manifest.Replace("RequiredModules = @('Az.Accounts', 'PSRule')", "RequiredModules = @(@{ ModuleName = 'PSRule'; ModuleVersion = '0.5.0' }, @{ ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0' }, @{ ModuleName = 'Az.StorageSync'; ModuleVersion = '0.8.0' }, @{ ModuleName = 'Az.Security'; ModuleVersion = '0.7.4' }, @{ ModuleName = 'Az.Storage'; ModuleVersion = '1.1.1' }, @{ ModuleName = 'Az.Websites'; ModuleVersion = '1.1.2' }, @{ ModuleName = 'Az.Sql'; ModuleVersion = '1.7.0' })") | Set-Content -Path $manifestPath;
 }
 
 task ReleaseModule VersionModule, {
@@ -168,6 +168,13 @@ task platyPS {
     Import-Module -Name PlatyPS -Verbose:$False;
 }
 
+task ModuleDependencies NuGet, PSRule, {
+    if ($Null -eq (Get-InstalledModule -Name Az.Accounts -ErrorAction Ignore)) {
+        Install-Module -Name Az.Accounts -Scope CurrentUser -Force;
+    }
+    Import-Module -Name Az.Accounts -Verbose:$False;
+}
+
 task CopyModule {
     CopyModuleFiles -Path src/PSRule.Rules.Azure -DestinationPath out/modules/PSRule.Rules.Azure;
 
@@ -179,9 +186,14 @@ task CopyModule {
 # Synopsis: Build modules only
 task BuildModule CopyModule
 
-task TestRules PSRule, Pester, PSScriptAnalyzer, {
+task TestRules PSRule, Pester, PSScriptAnalyzer, ModuleDependencies, {
     # Run Pester tests
     $pesterParams = @{ Path = $PWD; OutputFile = 'reports/pester-unit.xml'; OutputFormat = 'NUnitXml'; PesterOption = @{ IncludeVSCodeMarker = $True }; PassThru = $True; };
+
+    if ($CodeCoverage) {
+        $pesterParams.Add('CodeCoverage', (Join-Path -Path $PWD -ChildPath 'out/modules/**/*.psm1'));
+        $pesterParams.Add('CodeCoverageOutputFile', (Join-Path -Path $PWD -ChildPath reports/pester-coverage.xml));
+    }
 
     if (!(Test-Path -Path reports)) {
         $Null = New-Item -Path reports -ItemType Directory -Force;
