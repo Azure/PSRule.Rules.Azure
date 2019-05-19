@@ -51,6 +51,8 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(
     @{ ModuleName = 'PSRule'; ModuleVersion = '0.5.0' }
     @{ ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.2' }
+    @{ ModuleName = 'Az.Security'; ModuleVersion = '0.7.4' }
+    @{ ModuleName = 'Az.Storage'; ModuleVersion = '1.3.0' }
 )
 
 # Assemblies that must be loaded prior to importing this module

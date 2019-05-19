@@ -175,6 +175,12 @@ task ModuleDependencies NuGet, PSRule, {
     if ($Null -eq (Get-InstalledModule -Name Az.Resources -ErrorAction Ignore)) {
         Install-Module -Name Az.Resources -Scope CurrentUser -Force;
     }
+    if ($Null -eq (Get-InstalledModule -Name Az.Storage -ErrorAction Ignore)) {
+        Install-Module -Name Az.Storage -Scope CurrentUser -Force;
+    }
+    if ($Null -eq (Get-InstalledModule -Name Az.Security -ErrorAction Ignore)) {
+        Install-Module -Name Az.Security -Scope CurrentUser -Force;
+    }
 }
 
 task CopyModule {
