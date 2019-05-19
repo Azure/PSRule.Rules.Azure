@@ -14,7 +14,7 @@ Export resource configuration data from one or more Azure subscriptions.
 ## SYNTAX
 
 ```text
-Export-AzRuleData [[-OutputPath] <String>] [[-Subscription] <String[]>] [[-Tenant] <String[]>]
+Export-AzRuleData [[-OutputPath] <String>] [[-Subscription] <String[]>] [[-Tenant] <String[]>] [-PassThru]
  [<CommonParameters>]
 ```
 
@@ -86,6 +86,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+
+By default, FileInfo objects are returned to the pipeline for each JSON file created. When -PassThru is specified, JSON files are not created and Azure resource objects are returned to the pipeline instead.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -96,7 +112,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Object
+### System.IO.FileInfo
+
+### PSObject
 
 ## NOTES
 

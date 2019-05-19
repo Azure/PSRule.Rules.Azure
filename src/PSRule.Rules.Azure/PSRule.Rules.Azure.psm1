@@ -17,7 +17,8 @@ Set-StrictMode -Version latest;
 # .ExternalHelp PSRule.Rules.Azure-Help.xml
 function Export-AzRuleData {
     [CmdletBinding()]
-    [OutputType([void])]
+    [OutputType([System.IO.FileInfo])]
+    [OutputType([PSObject])]
     param (
         [Parameter(Position = 0, Mandatory = $False)]
         [String]$OutputPath = $PWD,
@@ -26,7 +27,10 @@ function Export-AzRuleData {
         [String[]]$Subscription,
 
         [Parameter(Mandatory = $False)]
-        [String[]]$Tenant
+        [String[]]$Tenant,
+
+        [Parameter(Mandatory = $False)]
+        [Switch]$PassThru = $False
     )
 
     process {
@@ -44,7 +48,7 @@ function Export-AzRuleData {
 
         foreach ($c in $context) {
             $filePath = Join-Path -Path $OutputPath -ChildPath "$($c.Subscription.Id).json";
-            GetAzureResource -Context $c -Verbose:$VerbosePreference | ExportAzureResource -Path $filePath -Verbose:$VerbosePreference
+            GetAzureResource -Context $c -Verbose:$VerbosePreference | ExportAzureResource -Path $filePath -PassThru $PassThru -Verbose:$VerbosePreference;
         }
     }
 }
@@ -109,17 +113,32 @@ function GetAzureResource {
 
 function ExportAzureResource {
     [CmdletBinding()]
-    [OutputType([void])]
+    [OutputType([System.IO.FileInfo])]
+    [OutputType([PSObject])]
     param (
         [Parameter(Mandatory = $True)]
         [String]$Path,
 
         [Parameter(Mandatory = $False, ValueFromPipeline = $True)]
-        [PSObject]$InputObject
+        [PSObject]$InputObject,
+
+        [Parameter(Mandatory = $False)]
+        [System.Boolean]$PassThru = $False
     )
 
     process {
-        $InputObject | ConvertTo-Json -Depth 100 | Set-Content -Path $Path;
+        if ($PassThru) {
+            $InputObject;
+        }
+        else {
+            $InputObject | ConvertTo-Json -Depth 100 | Set-Content -Path $Path;
+        }
+    }
+
+    end {
+        if (!$PassThru) {
+            Get-Item -Path $Path;
+        }
     }
 }
 

@@ -18,6 +18,9 @@ if ($Env:SYSTEM_DEBUG -eq 'true') {
 # Setup tests paths
 $rootPath = $PWD;
 Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+$outputPath = Join-Path -Path $rootPath -ChildPath out/tests/PSRule.Rules.Azure.Tests/Cmdlet;
+Remove-Item -Path $outputPath -Force -Recurse -Confirm:$False -ErrorAction Ignore;
+$Null = New-Item -Path $outputPath -ItemType Directory -Force;
 
 #region Mocks
 
@@ -76,12 +79,22 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet' {
                 Name = 'Resource1'
             }
         }
-        Mock -CommandName 'ExportAzureResource' -ModuleName 'PSRule.Rules.Azure' -Verifiable;
-        $Null = Export-AzRuleData;
 
         It 'Exports resources' {
+            $result = @(Export-AzRuleData -OutputPath $outputPath);
+
             Assert-VerifiableMock;
             Assert-MockCalled -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -Times 3;
+            $result.Length | SHould -Be 3;
+            $result | Should -BeOfType System.IO.FileInfo;
+        }
+
+        It 'Return resources' {
+            $result = @(Export-AzRuleData -PassThru);
+
+            $result.Length | SHould -Be 3;
+            $result | Should -BeOfType PSCustomObject;
+            $result.Name | Should -BeIn 'Resource1';
         }
     }
 
