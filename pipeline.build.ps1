@@ -187,6 +187,9 @@ task ModuleDependencies NuGet, PSRule, {
     if ($Null -eq (Get-InstalledModule -Name Az.Websites -ErrorAction Ignore)) {
         Install-Module -Name Az.Websites -Scope CurrentUser -Force;
     }
+    if ($Null -eq (Get-InstalledModule -Name Az.StorageSync -ErrorAction Ignore)) {
+        Install-Module -Name Az.StorageSync -Scope CurrentUser -Force;
+    }
 }
 
 task CopyModule {
