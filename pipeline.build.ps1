@@ -242,6 +242,11 @@ task BuildHelp BuildModule, PlatyPS, BuildRuleDocs, {
     $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/ -Destination out/modules/PSRule.Rules.Azure/en-AU/ -Recurse;
 }
 
+task ScaffoldHelp Build, {
+    Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    Update-MarkdownHelp -Path '.\docs\commands\PSRule.Rules.Azure\en-US';
+}
+
 # Synopsis: Remove temp files.
 task Clean {
     Remove-Item -Path out,reports -Recurse -Force -ErrorAction SilentlyContinue;

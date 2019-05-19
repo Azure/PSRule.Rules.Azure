@@ -58,6 +58,18 @@
                 "clear": true,
                 "panel": "dedicated"
             }
+        },
+        {
+            "label": "build-docs",
+            "type": "shell",
+            "command": "Invoke-Build BuildHelp",
+            "problemMatcher": []
+        },
+        {
+            "label": "scaffold-docs",
+            "type": "shell",
+            "command": "Invoke-Build ScaffoldHelp",
+            "problemMatcher": []
         }
     ]
 }
