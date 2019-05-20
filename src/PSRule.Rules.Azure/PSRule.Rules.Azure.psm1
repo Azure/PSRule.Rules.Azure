@@ -16,39 +16,43 @@ Set-StrictMode -Version latest;
 
 # .ExternalHelp PSRule.Rules.Azure-Help.xml
 function Export-AzRuleData {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $True, DefaultParameterSetName = 'Default')]
     [OutputType([System.IO.FileInfo])]
     [OutputType([PSObject])]
     param (
         [Parameter(Position = 0, Mandatory = $False)]
         [String]$OutputPath = $PWD,
 
-        [Parameter(Mandatory = $False)]
-        [String[]]$Subscription,
+        [Parameter(Mandatory = $False, ParameterSetName = 'Default')]
+        [String[]]$Subscription = $Null,
+
+        [Parameter(Mandatory = $False, ParameterSetName = 'Default')]
+        [String[]]$Tenant = $Null,
 
         [Parameter(Mandatory = $False)]
-        [String[]]$Tenant,
+        [Switch]$PassThru = $False,
 
-        [Parameter(Mandatory = $False)]
-        [Switch]$PassThru = $False
+        [Parameter(Mandatory = $False, ParameterSetName = 'All')]
+        [Switch]$All = $False
     )
 
     process {
-
         # Get subscriptions
-        $context = FindAzureContext -Subscription $Subscription -Tenant $Tenant -Verbose:$VerbosePreference;
+        $context = FindAzureContext -Subscription $Subscription -Tenant $Tenant -All:$All -Verbose:$VerbosePreference;
 
         if ($Null -eq $context) {
             return;
         }
 
         if (!(Test-Path -Path $OutputPath)) {
-            $Null = New-Item -Path $OutputPath -ItemType Directory -Force;
+            if ($PSCmdlet.ShouldProcess('Create output directory', $OutputPath)) {
+                $Null = New-Item -Path $OutputPath -ItemType Directory -Force;
+            }
         }
 
         foreach ($c in $context) {
             $filePath = Join-Path -Path $OutputPath -ChildPath "$($c.Subscription.Id).json";
-            GetAzureResource -Context $c -Verbose:$VerbosePreference | ExportAzureResource -Path $filePath -PassThru $PassThru -Verbose:$VerbosePreference;
+            GetAzureResource -Context $c -Verbose:$VerbosePreference | ExportAzureResource -Path $filePath -PassThru $PassThru -Verbose:$VerbosePreference
         }
     }
 }
@@ -67,12 +71,21 @@ function FindAzureContext {
         [String[]]$Subscription = $Null,
 
         [Parameter(Mandatory = $False)]
-        [String[]]$Tenant = $Null
+        [String[]]$Tenant = $Null,
+
+        [Parameter(Mandatory = $False)]
+        [System.Boolean]$All = $False
     )
 
     process {
+        $listAvailable = $False;
+
+        if ($Null -ne $Subscription -or $Null -ne $Tenant -or $All) {
+            $listAvailable = $True;
+        }
+
         # Get subscription contexts
-        $context = GetAzureContext;
+        $context = GetAzureContext -ListAvailable:$listAvailable;
 
         if ($Null -eq $context) {
             Write-Error -Message "Could not find an existing context. Use Connect-AzAccount to establish a PowerShell context with Azure.";
@@ -91,10 +104,19 @@ function FindAzureContext {
 function GetAzureContext {
     [CmdletBinding()]
     [OutputType([Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer[]])]
-    param ( )
+    param (
+        [Parameter(Mandatory = $False)]
+        [System.Boolean]$ListAvailable = $False
+    )
     process {
+        $getParams = @{ };
+
+        if ($ListAvailable) {
+            $getParams['ListAvailable'] = $True;
+        }
+
         # Get contexts
-        return Get-AzContext -ListAvailable;
+        return Get-AzContext @getParams;
     }
 }
 
@@ -112,7 +134,7 @@ function GetAzureResource {
 }
 
 function ExportAzureResource {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $True)]
     [OutputType([System.IO.FileInfo])]
     [OutputType([PSObject])]
     param (
