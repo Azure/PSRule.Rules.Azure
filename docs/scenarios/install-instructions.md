@@ -11,7 +11,6 @@ The following modules are required for `PSRule.Rules.Azure` to work:
 
 - PSRule
 - Az.Accounts
-- Az.StorageSync
 - Az.Security
 - Az.Storage
 - Az.Websites

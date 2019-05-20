@@ -54,9 +54,9 @@ Invoke-PSRule -InputPath .\*.json -Module 'PSRule.Rules.Azure';
 
 ### Additional options
 
-By default, resource data for all subscriptions will be exported to the current working directory as JSON files; one per subscription.
+By default, resource data for the current subscription context will be exported to the current working directory as JSON.
 
-To limit collection to specific subscriptions use:
+To extract resource data for specific subscriptions use:
 
 - `-Subscription` - to specify subscriptions by id or name.
 - `-Tenant` - to specify subscriptions within an Azure Active Directory Tenant by id.
@@ -64,7 +64,7 @@ To limit collection to specific subscriptions use:
 For example:
 
 ```powershell
-# Export data only from specific subscriptions
+# Export data from specific subscriptions
 Export-AzRuleData -Subscription 'Contoso Production', 'Contoso Non-production'
 ```
 
