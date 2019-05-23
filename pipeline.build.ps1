@@ -36,6 +36,7 @@ if ($Env:Build_SourceBranchName -like "v0.") {
 Write-Verbose -Message "[Pipeline] -- PWD: $PWD";
 Write-Verbose -Message "[Pipeline] -- ArtifactPath: $ArtifactPath";
 Write-Verbose -Message "[Pipeline] -- ModuleVersion: $ModuleVersion";
+Write-Verbose -Message "[Pipeline] -- SourceBranchName: $($Env:Build_SourceBranchName)";
 
 # Copy the PowerShell modules files to the destination path
 function CopyModuleFiles {
