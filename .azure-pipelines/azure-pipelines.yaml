@@ -43,8 +43,12 @@ stages:
       vmImage: $(imageName)
     steps:
 
-    # Install pipeline dependencies and build module
-    - powershell: ./scripts/pipeline-build.ps1 -File ./pipeline.build.ps1 -Configuration $(buildConfiguration) -ModuleVersion $(Build.BuildNumber) -ReleaseVersion "$(Release.Version)"
+    # Install pipeline dependencies
+    - powershell: ./.azure-pipelines/pipeline-deps.ps1
+      displayName: 'Install dependencies'
+
+    # Build module
+    - powershell: ./.azure-pipelines/pipeline-build.ps1 -File ./pipeline.build.ps1 -Configuration $(buildConfiguration) -ModuleVersion $(Build.BuildNumber) -ReleaseVersion "$(Release.Version)"
       displayName: 'Build module'
 
     # Pester test results
