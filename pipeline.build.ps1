@@ -25,12 +25,18 @@ if ($Env:SYSTEM_DEBUG -eq 'true') {
     $VerbosePreference = 'Continue';
 }
 
-if ($Env:Coverage -eq 'true') {
+if ($Env:COVERAGE -eq 'true') {
     $CodeCoverage = $True;
+}
+
+if ($Env:BUILD_SOURCEBRANCHNAME -like "v0.") {
+    $ModuleVersion = $Env:BUILD_SOURCEBRANCHNAME.Substring(1);
 }
 
 Write-Verbose -Message "[Pipeline] -- PWD: $PWD";
 Write-Verbose -Message "[Pipeline] -- ArtifactPath: $ArtifactPath";
+Write-Verbose -Message "[Pipeline] -- ModuleVersion: $ModuleVersion";
+Write-Verbose -Message "[Pipeline] -- SourceBranchName: $($Env:BUILD_SOURCEBRANCHNAME)";
 
 # Copy the PowerShell modules files to the destination path
 function CopyModuleFiles {
