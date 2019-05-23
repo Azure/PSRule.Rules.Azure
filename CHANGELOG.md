@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+- Fix exported resource data overwritten. [#34](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/34)
+
 ## v0.1.0-B190562 (pre-release)
 
 - Add units tests for `Export-AzRuleData` and update filters. [#28](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/28)

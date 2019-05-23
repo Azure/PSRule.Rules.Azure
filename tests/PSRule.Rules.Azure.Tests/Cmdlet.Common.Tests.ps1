@@ -75,9 +75,14 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet' {
     Context 'With defaults' {
         Mock -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith ${function:MockContext};
         Mock -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith {
-            return [PSCustomObject]@{
-                Name = 'Resource1'
-            }
+            return @(
+                [PSCustomObject]@{
+                    Name = 'Resource1'
+                }
+                [PSCustomObject]@{
+                    Name = 'Resource2'
+                }
+            )
         }
 
         It 'Exports resources' {
@@ -93,14 +98,20 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet' {
             }
             $result.Length | Should -Be 3;
             $result | Should -BeOfType System.IO.FileInfo;
+
+            # Check exported data
+            $data = Get-Content -Path $result[0].FullName | ConvertFrom-Json;
+            $data -is [System.Array] | Should -Be $True;
+            $data.Length | Should -Be 2;
+            $data.Name | Should -BeIn 'Resource1', 'Resource2';
         }
 
         It 'Return resources' {
             $result = @(Export-AzRuleData -PassThru);
 
-            $result.Length | Should -Be 3;
+            $result.Length | Should -Be 6;
             $result | Should -BeOfType PSCustomObject;
-            $result.Name | Should -BeIn 'Resource1';
+            $result.Name | Should -BeIn 'Resource1', 'Resource2';
         }
     }
 
