@@ -148,17 +148,24 @@ function ExportAzureResource {
         [System.Boolean]$PassThru = $False
     )
 
+    begin {
+        $resources = @();
+    }
+
     process {
         if ($PassThru) {
             $InputObject;
         }
         else {
-            $InputObject | ConvertTo-Json -Depth 100 | Set-Content -Path $Path;
+            # Collect passed through resources
+            $resources += $InputObject;
         }
     }
 
     end {
         if (!$PassThru) {
+            # Save to JSON
+            $resources | ConvertTo-Json -Depth 100 | Set-Content -Path $Path;
             Get-Item -Path $Path;
         }
     }
