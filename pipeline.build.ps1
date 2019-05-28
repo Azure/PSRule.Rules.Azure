@@ -195,10 +195,6 @@ task ModuleDependencies NuGet, PSRule, {
 
 task CopyModule {
     CopyModuleFiles -Path src/PSRule.Rules.Azure -DestinationPath out/modules/PSRule.Rules.Azure;
-
-    # Copy generated help into module out path
-    # $Null = Copy-Item -Path docs/commands/PSRule.Rules.Azure/en-US/* -Destination out/modules/PSrule.Rules.Azure/en-US/;
-    # $Null = Copy-Item -Path docs/commands/PSRule.Rules.Azure/en-US/* -Destination out/modules/PSrule.Rules.Azure/en-AU/;
 }
 
 # Synopsis: Build modules only
@@ -246,6 +242,8 @@ task BuildHelp BuildModule, PlatyPS, BuildRuleDocs, {
     # Copy generated help into module out path
     $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/ -Destination out/modules/PSRule.Rules.Azure/en-US/ -Recurse;
     $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/ -Destination out/modules/PSRule.Rules.Azure/en-AU/ -Recurse;
+    $Null = Copy-Item -Path docs/rules/en-US/*.md -Destination out/modules/PSRule.Rules.Azure/en-US/;
+    $Null = Copy-Item -Path docs/rules/en-US/*.md -Destination out/modules/PSRule.Rules.Azure/en-AU/;
 }
 
 task ScaffoldHelp Build, {
