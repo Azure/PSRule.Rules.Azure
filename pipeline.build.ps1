@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param (
     [Parameter(Mandatory = $False)]
-    [String]$ModuleVersion,
+    [String]$ModuleVersion = '0.0.1',
 
     [Parameter(Mandatory = $False)]
     [AllowNull()]
@@ -21,26 +21,48 @@ param (
     [String]$ArtifactPath = (Join-Path -Path $PWD -ChildPath out/modules)
 )
 
+Write-Host -Object "[Pipeline] -- PWD: $PWD" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- ArtifactPath: $ArtifactPath" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- BuildNumber: $($Env:BUILD_BUILDNUMBER)" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- SourceBranch: $($Env:BUILD_SOURCEBRANCH)" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- SourceBranchName: $($Env:BUILD_SOURCEBRANCHNAME)" -ForegroundColor Green;
+
 if ($Env:SYSTEM_DEBUG -eq 'true') {
     $VerbosePreference = 'Continue';
 }
 
-if ($Env:COVERAGE -eq 'true') {
+if ($Env:coverage -eq 'true') {
     $CodeCoverage = $True;
 }
 
-if ($Env:BUILD_SOURCEBRANCHNAME -like "v0.") {
+if ($Env:BUILD_SOURCEBRANCH -like '*/tags/*' -and $Env:BUILD_SOURCEBRANCHNAME -like 'v0.*') {
     $ModuleVersion = $Env:BUILD_SOURCEBRANCHNAME.Substring(1);
 }
 
-Write-Verbose -Message "[Pipeline] -- PWD: $PWD";
-Write-Verbose -Message "[Pipeline] -- ArtifactPath: $ArtifactPath";
-Write-Verbose -Message "[Pipeline] -- ModuleVersion: $ModuleVersion";
-Write-Verbose -Message "[Pipeline] -- SourceBranchName: $($Env:BUILD_SOURCEBRANCHNAME)";
+if (![String]::IsNullOrEmpty($ReleaseVersion)) {
+    Write-Host -Object "[Pipeline] -- ReleaseVersion: $ReleaseVersion" -ForegroundColor Green;
+    $ModuleVersion = $ReleaseVersion;
+}
+
+Write-Host -Object "[Pipeline] -- ModuleVersion: $ModuleVersion" -ForegroundColor Green;
+
+$version = $ModuleVersion;
+$versionSuffix = [String]::Empty;
+
+if ($version -like '*-*') {
+    [String[]]$versionParts = $version.Split('-', [System.StringSplitOptions]::RemoveEmptyEntries);
+    $version = $versionParts[0];
+
+    if ($versionParts.Length -eq 2) {
+        $versionSuffix = $versionParts[1];
+    }
+}
+
+Write-Host -Object "[Pipeline] -- Using version: $version" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- Using versionSuffix: $versionSuffix" -ForegroundColor Green;
 
 # Copy the PowerShell modules files to the destination path
 function CopyModuleFiles {
-
     param (
         [Parameter(Mandatory = $True)]
         [String]$Path,
@@ -73,29 +95,8 @@ task VersionModule ModuleDependencies, {
     $manifestPath = Join-Path -Path $modulePath -ChildPath PSRule.Rules.Azure.psd1;
     Write-Verbose -Message "[VersionModule] -- Checking module path: $modulePath";
 
-    if (![String]::IsNullOrEmpty($ReleaseVersion)) {
-        Write-Verbose -Message "[VersionModule] -- ReleaseVersion: $ReleaseVersion";
-        $ModuleVersion = $ReleaseVersion;
-    }
-
     if (![String]::IsNullOrEmpty($ModuleVersion)) {
         Write-Verbose -Message "[VersionModule] -- ModuleVersion: $ModuleVersion";
-
-        $version = $ModuleVersion;
-        $revision = [String]::Empty;
-
-        Write-Verbose -Message "[VersionModule] -- Using Version: $version";
-
-        if ($version -like '*-*') {
-            [String[]]$versionParts = $version.Split('-', [System.StringSplitOptions]::RemoveEmptyEntries);
-            $version = $versionParts[0];
-
-            if ($versionParts.Length -eq 2) {
-                $revision = $versionParts[1];
-            }
-
-            Write-Verbose -Message "[VersionModule] -- Using Revision: $revision";
-        }
 
         # Update module version
         if (![String]::IsNullOrEmpty($version)) {
@@ -104,11 +105,22 @@ task VersionModule ModuleDependencies, {
         }
 
         # Update pre-release version
-        if (![String]::IsNullOrEmpty($revision)) {
+        if (![String]::IsNullOrEmpty($versionSuffix)) {
             Write-Verbose -Message "[VersionModule] -- Updating module manifest Prerelease";
-            Update-ModuleManifest -Path $manifestPath -Prerelease $revision;
+            Update-ModuleManifest -Path $manifestPath -Prerelease $versionSuffix;
         }
     }
+
+    $manifest = Test-ModuleManifest -Path $manifestPath;
+    $requiredModules = $manifest.RequiredModules | ForEach-Object -Process {
+        if ($_.Name -eq 'PSRule' -and $Configuration -eq 'Release') {
+            @{ ModuleName = 'PSRule'; ModuleVersion = '0.5.0' }
+        }
+        else {
+            @{ ModuleName = $_.Name; ModuleVersion = $_.Version }
+        }
+    };
+    Update-ModuleManifest -Path $manifestPath -RequiredModules $requiredModules;
 }
 
 # Synopsis: Publish to PowerShell Gallery
