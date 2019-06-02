@@ -17,14 +17,14 @@ Rule 'Azure.AppService.MinPlan' -If { ResourceType 'Microsoft.Web/serverfarms' }
 }
 
 # Description: Disable client affinity for stateless services
-Rule 'Azure.AppService.ARRAfinity' -If { ResourceType 'Microsoft.Web/sites' } -Tag @{ severity = 'Awareness'; category = 'Performance' } {
+Rule 'Azure.AppService.ARRAffinity' -If { ResourceType 'Microsoft.Web/sites' } -Tag @{ severity = 'Awareness'; category = 'Performance' } {
     Hint 'Disable ARR affinity when not required'
 
     $TargetObject.Properties.clientAffinityEnabled -eq $False
 }
 
 # Description: Use HTTPS only
-Rule 'Azure.AppService.UseHTTPS' -If { ResourceType 'Microsoft.Web/sites' } -Tag @{ severity = 'Important'; category = 'Performance' } {
+Rule 'Azure.AppService.UseHTTPS' -If { ResourceType 'Microsoft.Web/sites' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
     Hint 'Disable HTTP when not required'
 
     $TargetObject.Properties.httpsOnly -eq $True
