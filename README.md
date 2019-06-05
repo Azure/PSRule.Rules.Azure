@@ -26,9 +26,11 @@ PSRule.Rules.Azure | Validate Azure resources | [latest][module] / [instructions
 
 ### Export resource data
 
-To validate Azure resources running in a subscription, extract the configuration data with the `Export-AzRuleData` cmdlet.
+To validate Azure resources running in a subscription, export the resource data with the `Export-AzRuleData` cmdlet.
 
 The `Export-AzRuleData` cmdlet exports a resource graph for one or more subscriptions that can be used for analysis with the rules in this module.
+
+By default, resources for the current subscription context are exported. See below for more options.
 
 Before running this command you should connect to Azure by using the `Connect-AzAccount` cmdlet.
 
@@ -56,7 +58,7 @@ Invoke-PSRule -InputPath .\*.json -Module 'PSRule.Rules.Azure';
 
 By default, resource data for the current subscription context will be exported to the current working directory as JSON.
 
-To extract resource data for specific subscriptions use:
+To export resource data for specific subscriptions use:
 
 - `-Subscription` - to specify subscriptions by id or name.
 - `-Tenant` - to specify subscriptions within an Azure Active Directory Tenant by id.
@@ -66,6 +68,17 @@ For example:
 ```powershell
 # Export data from specific subscriptions
 Export-AzRuleData -Subscription 'Contoso Production', 'Contoso Non-production'
+```
+
+To export resource data for all subscription contexts use:
+
+- `-All` - to export resource data for all subscription contexts.
+
+For example:
+
+```powershell
+# Export data from all subscription contexts
+Export-AzRuleData -All;
 ```
 
 To filter results to only failed rules, use `Invoke-PSRule -Outcome Fail`. Passed, failed and error results are shown by default.
