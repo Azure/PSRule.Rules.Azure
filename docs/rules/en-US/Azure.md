@@ -13,7 +13,7 @@ RuleName | Description
 [Azure.AKS.UseRBAC](Azure.AKS.UseRBAC.md) | AKS cluster should use role-based access control
 [Azure.AppService.PlanInstanceCount](Azure.AppService.PlanInstanceCount.md) | Use an App Service Plan with at least two (2) instances
 [Azure.AppService.MinPlan](Azure.AppService.MinPlan.md) | Use at least a Standard App Service Plan
-[Azure.AppService.ARRAfinity](Azure.AppService.ARRAfinity.md) | Disable client affinity for stateless services
+[Azure.AppService.ARRAffinity](Azure.AppService.ARRAffinity.md) | Disable client affinity for stateless services
 [Azure.AppService.UseHTTPS](Azure.AppService.UseHTTPS.md) | Use HTTPS only
 [Azure.DataFactory.Version](Azure.DataFactory.Version.md) | Consider migrating to DataFactory v2
 [Azure.MySQL.UseSSL](Azure.MySQL.UseSSL.md) | Use encrypted MySQL connections
