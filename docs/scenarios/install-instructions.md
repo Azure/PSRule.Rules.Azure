@@ -20,6 +20,8 @@ The required version of each module will automatically be installed along-side `
 
 ## Getting the modules
 
+> Currently, only a pre-release version of the module is available. See below for instructions to install the pre-release version.
+
 Install from [PowerShell Gallery][module] for all users (requires permissions):
 
 ```powershell
@@ -42,5 +44,9 @@ Save-Module -Name 'PSRule', 'PSRule.Rules.Azure', 'Az.Accounts', 'Az.StorageSync
 ```
 
 > For pre-release versions the `-AllowPrerelease` switch must be added when calling `Install-Module` or `Save-Module`.
+>
+> To install pre-release module versions, upgrading to the latest version of _PowerShellGet_ may be required. To do this use:
+>
+> `Install-Module -Name PowerShellGet -Repository PSGallery -Scope CurrentUser -Force`
 
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
