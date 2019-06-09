@@ -6,11 +6,15 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 
 # Azure.AKS.UseRBAC
 
-## Synopsis
+## SYNOPSIS
 
 AKS cluster should use role-based access control (RBAC).
 
-## Recommendation
+## DESCRIPTION
+
+AKS cluster should use role-based access control (RBAC).
+
+## RECOMMENDATION
 
 Azure AD integration with AKS provides granular access control for Kubernetes resources using RBAC.
 

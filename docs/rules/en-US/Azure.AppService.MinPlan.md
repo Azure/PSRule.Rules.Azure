@@ -6,10 +6,14 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 
 # Azure.AppService.MinPlan
 
-## Synopsis
+## SYNOPSIS
 
 Use at least a Standard App Service Plan.
 
-## Recommendation
+## DESCRIPTION
+
+Use at least a Standard App Service Plan.
+
+## RECOMMENDATION
 
 Use a Standard or high plans for production services.

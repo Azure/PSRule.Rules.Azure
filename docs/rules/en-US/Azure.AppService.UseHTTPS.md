@@ -6,10 +6,14 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 
 # Azure.AppService.UseHTTPS
 
-## Synopsis
+## SYNOPSIS
 
-Use HTTPS only.
+Use HTTPS only. Disable HTTP when not required.
 
-## Recommendation
+## DESCRIPTION
 
-Disable HTTP when not required.
+Use HTTPS only. Disable HTTP when not required.
+
+## RECOMMENDATION
+
+If access through HTTP is not required consider disabling HTTP. When HTTP is enabled, both HTTP and HTTPS will be accepted by Azure App Service.

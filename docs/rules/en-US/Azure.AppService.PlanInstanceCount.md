@@ -6,10 +6,14 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 
 # Azure.AppService.PlanInstanceCount
 
-## Synopsis
+## SYNOPSIS
 
 Use an App Service Plan with at least two (2) instances.
 
-## Recommendation
+## DESCRIPTION
+
+Use an App Service Plan with at least two (2) instances.
+
+## RECOMMENDATION
 
 Use an App Service Plan with at least two (2) instances.

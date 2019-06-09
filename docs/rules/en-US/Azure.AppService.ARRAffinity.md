@@ -6,11 +6,15 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 
 # Azure.AppService.ARRAffinity
 
-## Synopsis
+## SYNOPSIS
 
 Disable client affinity for stateless services.
 
-## Recommendation
+## DESCRIPTION
+
+Disable client affinity for stateless services.
+
+## RECOMMENDATION
 
 Azure App Service sites make use of Application Request Routing (ARR) by default.
 

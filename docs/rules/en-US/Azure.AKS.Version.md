@@ -6,10 +6,14 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 
 # Azure.AKS.Version
 
-## Synopsis
+## SYNOPSIS
 
 AKS clusters should meet the minimum version.
 
-## Recommendation
+## DESCRIPTION
+
+AKS clusters should meet the minimum version.
+
+## RECOMMENDATION
 
 Upgrade Kubernetes to the latest version of Kubernetes.

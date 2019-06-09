@@ -6,11 +6,15 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 
 # Azure.ACR.MinSku
 
-## Synopsis
+## SYNOPSIS
 
 ACR should use the Premium or Standard SKU for production deployments.
 
-## Recommendation
+## DESCRIPTION
+
+ACR should use the Premium or Standard SKU for production deployments.
+
+## RECOMMENDATION
 
 Use a minimum of Standard for production container registries. Basic container registries are only recommended for non-production deployments.
 

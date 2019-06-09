@@ -6,11 +6,15 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 
 # Azure.ACR.AdminUser
 
-## Synopsis
+## SYNOPSIS
 
 Use RBAC for delegating access to ACR instead of the registry admin user.
 
-## Recommendation
+## DESCRIPTION
+
+Use RBAC for delegating access to ACR instead of the registry admin user.
+
+## RECOMMENDATION
 
 The Admin user account is a single user account with administrative access to the registry. This account is designed for single user access for test and development.
 
