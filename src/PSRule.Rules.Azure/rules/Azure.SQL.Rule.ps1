@@ -4,15 +4,15 @@
 
 # Synopsis: Determine if there is an excessive number of firewall rules
 Rule 'Azure.SQL.FirewallRuleCount' -If { ResourceType 'Microsoft.Sql/servers' } -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
-    Hint 'SQL Server has <= 5 firewall rules, some rules may not be needed';
+    Hint 'SQL Server has > 10 firewall rules, some rules may not be needed';
 
     $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
         $_.Type -eq 'Microsoft.Sql/servers/firewallRules'
     })
-    $firewallRules.Length -le 5;
+    $firewallRules.Length -gt 10;
 }
 
-# Synopsis: Determine if access from Azure servers is required
+# Synopsis: Determine if access from Azure services is required
 Rule 'Azure.SQL.AllowAzureAccess' -If { ResourceType 'Microsoft.Sql/servers' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
     $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
         $_.Type -eq 'Microsoft.Sql/servers/firewallRules' -and
