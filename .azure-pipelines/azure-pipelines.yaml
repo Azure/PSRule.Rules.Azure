@@ -48,7 +48,7 @@ stages:
       displayName: 'Install dependencies'
 
     # Build module
-    - powershell: ./.azure-pipelines/pipeline-build.ps1 -File ./pipeline.build.ps1 -Configuration $(buildConfiguration) -ModuleVersion $(Build.BuildNumber) -ReleaseVersion "$(Release.Version)"
+    - powershell: Invoke-Build -Configuration $(buildConfiguration) -Build $(Build.BuildNumber)
       displayName: 'Build module'
 
     # Pester test results
@@ -113,5 +113,5 @@ stages:
     - powershell: ./.azure-pipelines/pipeline-deps.ps1
       displayName: 'Install dependencies'
     # Install pipeline dependencies and build module
-    - powershell: ./.azure-pipelines/pipeline-build.ps1 -File ./pipeline.build.ps1 -Task Release -NuGetApiKey $(apiKey)
+    - powershell: Invoke-Build Release -ApiKey $(apiKey)
       displayName: 'Publish module'

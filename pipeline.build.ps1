@@ -2,17 +2,13 @@
 [CmdletBinding()]
 param (
     [Parameter(Mandatory = $False)]
-    [String]$ModuleVersion = '0.0.1',
-
-    [Parameter(Mandatory = $False)]
-    [AllowNull()]
-    [String]$ReleaseVersion,
+    [String]$Build = '0.0.1',
 
     [Parameter(Mandatory = $False)]
     [String]$Configuration = 'Debug',
 
     [Parameter(Mandatory = $False)]
-    [String]$NuGetApiKey,
+    [String]$ApiKey,
 
     [Parameter(Mandatory = $False)]
     [Switch]$CodeCoverage = $False,
@@ -31,22 +27,11 @@ if ($Env:SYSTEM_DEBUG -eq 'true') {
     $VerbosePreference = 'Continue';
 }
 
-if ($Env:coverage -eq 'true') {
-    $CodeCoverage = $True;
-}
-
 if ($Env:BUILD_SOURCEBRANCH -like '*/tags/*' -and $Env:BUILD_SOURCEBRANCHNAME -like 'v0.*') {
-    $ModuleVersion = $Env:BUILD_SOURCEBRANCHNAME.Substring(1);
+    $Build = $Env:BUILD_SOURCEBRANCHNAME.Substring(1);
 }
 
-if (![String]::IsNullOrEmpty($ReleaseVersion)) {
-    Write-Host -Object "[Pipeline] -- ReleaseVersion: $ReleaseVersion" -ForegroundColor Green;
-    $ModuleVersion = $ReleaseVersion;
-}
-
-Write-Host -Object "[Pipeline] -- ModuleVersion: $ModuleVersion" -ForegroundColor Green;
-
-$version = $ModuleVersion;
+$version = $Build;
 $versionSuffix = [String]::Empty;
 
 if ($version -like '*-*') {
@@ -95,9 +80,7 @@ task VersionModule ModuleDependencies, {
     $manifestPath = Join-Path -Path $modulePath -ChildPath PSRule.Rules.Azure.psd1;
     Write-Verbose -Message "[VersionModule] -- Checking module path: $modulePath";
 
-    if (![String]::IsNullOrEmpty($ModuleVersion)) {
-        Write-Verbose -Message "[VersionModule] -- ModuleVersion: $ModuleVersion";
-
+    if (![String]::IsNullOrEmpty($Build)) {
         # Update module version
         if (![String]::IsNullOrEmpty($version)) {
             Write-Verbose -Message "[VersionModule] -- Updating module manifest ModuleVersion";
@@ -114,7 +97,7 @@ task VersionModule ModuleDependencies, {
     $manifest = Test-ModuleManifest -Path $manifestPath;
     $requiredModules = $manifest.RequiredModules | ForEach-Object -Process {
         if ($_.Name -eq 'PSRule' -and $Configuration -eq 'Release') {
-            @{ ModuleName = 'PSRule'; ModuleVersion = '0.5.0' }
+            @{ ModuleName = 'PSRule'; ModuleVersion = '0.6.0' }
         }
         else {
             @{ ModuleName = $_.Name; ModuleVersion = $_.Version }
@@ -161,8 +144,8 @@ task PSScriptAnalyzer NuGet, {
 
 # Synopsis: Install PSRule
 task PSRule NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.5.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -MinimumVersion 0.5.0 -AllowPrerelease -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.6.0 -ErrorAction Ignore)) {
+        Install-Module -Name PSRule -MinimumVersion 0.6.0 -AllowPrerelease -Scope CurrentUser -Force;
     }
     Import-Module -Name PSRule -Verbose:$False;
 }
@@ -177,8 +160,8 @@ task PSDocs NuGet, {
 
 # Synopsis: Install PlatyPS module
 task platyPS {
-    if ($Null -eq (Get-InstalledModule -Name PlatyPS -MinimumVersion '0.14.0' -ErrorAction Ignore)) {
-        Install-Module -Name PlatyPS -Scope CurrentUser -MinimumVersion '0.14.0' -Force;
+    if ($Null -eq (Get-InstalledModule -Name PlatyPS -MinimumVersion 0.14.0 -ErrorAction Ignore)) {
+        Install-Module -Name PlatyPS -Scope CurrentUser -MinimumVersion 0.14.0 -Force;
     }
     Import-Module -Name PlatyPS -Verbose:$False;
 }
