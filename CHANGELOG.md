@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+## v0.1.0-B190607 (pre-release)
+
 - Added rule documentation. [#40](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/40)
 
 ## v0.1.0-B190569 (pre-release)
