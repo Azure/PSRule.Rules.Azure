@@ -49,13 +49,3 @@ Document 'RuleHelp' {
         $rule.Notes;
     }
 }
-
-# Ignore null metadata hashtable
-# Invoke-PSDocument : Cannot bind argument to parameter 'Body' because it is null.
-# At line:1 char:18
-# + ... s.Info | %{ Invoke-PSDocument -Path .\RuleHelp.Doc.ps1 -OutputPath .\ ...
-# +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#     + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvokeDocumentException
-#     + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Metadata,Invoke-PSDocument
-
-# $rules | %{ Invoke-PSDocument -Path .\RuleHelp.Doc.ps1 -OutputPath .\docs\rules\en-US\ -InstanceName $_.Info.Name -inputObject $_  }

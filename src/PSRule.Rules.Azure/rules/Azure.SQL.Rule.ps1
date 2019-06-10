@@ -9,7 +9,7 @@ Rule 'Azure.SQL.FirewallRuleCount' -If { ResourceType 'Microsoft.Sql/servers' } 
     $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
         $_.Type -eq 'Microsoft.Sql/servers/firewallRules'
     })
-    $firewallRules.Length -gt 10;
+    $firewallRules.Length -le 10;
 }
 
 # Synopsis: Determine if access from Azure services is required
