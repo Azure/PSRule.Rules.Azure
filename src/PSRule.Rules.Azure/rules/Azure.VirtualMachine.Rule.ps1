@@ -14,7 +14,7 @@ Rule 'Azure.VirtualMachine.UseManagedDisks' -If { ResourceType 'Microsoft.Comput
     }
 }
 
-# Synopsis: VMs much use premium disks or use availablity sets/ zones to meet SLA requirements
+# Synopsis: VMs much use premium disks or use availability sets/ zones to meet SLA requirements
 Rule 'Azure.VirtualMachine.Standalone' -If { ResourceType 'Microsoft.Compute/virtualMachines' } -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
     Hint 'Virtual machines should use availability sets or only premium disks'
 
@@ -26,7 +26,7 @@ Rule 'Azure.VirtualMachine.Standalone' -If { ResourceType 'Microsoft.Compute/vir
     $premiumCount = $types | Where-Object { $_ -eq 'Premium_LRS' };
 
     AnyOf {
-        # A member of an availablity set
+        # A member of an availability set
         $Null -ne $TargetObject.properties.availabilitySet.id
 
         $premiumCount -eq (($TargetObject.properties.storageProfile.dataDisks | Measure-Object).Count + 1)
@@ -100,12 +100,12 @@ Rule 'Azure.VirtualMachine.AcceleratedNetworking' -If { (SupportsAcceleratedNetw
     }
 }
 
-# Synopsis: Availablity sets should be aligned
+# Synopsis: Availability sets should be aligned
 Rule 'Azure.VirtualMachine.ASAlignment' -If { ResourceType 'Microsoft.Compute/availabilitySets' } -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
     $TargetObject.sku.name -eq 'aligned'
 }
 
-# Synopsis: Availablity sets should be deployed with at least two members
+# Synopsis: Availability sets should be deployed with at least two members
 Rule 'Azure.VirtualMachine.ASMinMembers' -If { ResourceType 'Microsoft.Compute/availabilitySets' } -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
     ($TargetObject.properties.virtualmachines.id | Measure-Object).Count -ge 2
 }
