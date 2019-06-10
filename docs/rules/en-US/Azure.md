@@ -23,7 +23,7 @@ RuleName | Description
 [Azure.Resource.UseTags](Azure.Resource.UseTags.md) | Resources should be tagged
 [Azure.Resource.AllowedRegions](Azure.Resource.AllowedRegions.md) | Resources should be deployed to allowed regions
 [Azure.SQL.FirewallRuleCount](Azure.SQL.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules
-[Azure.SQL.AllowAzureAccess](Azure.SQL.AllowAzureAccess.md) | Determine if access from Azure servers is required
+[Azure.SQL.AllowAzureAccess](Azure.SQL.AllowAzureAccess.md) | Determine if access from Azure services is required
 [Azure.SQL.ThreatDetection](Azure.SQL.ThreatDetection.md) | Enable threat detection for Azure SQL logical server
 [Azure.SQL.Auditing](Azure.SQL.Auditing.md) | Enable auditing for Azure SQL logical server
 [Azure.Storage.UseReplication](Azure.Storage.UseReplication.md) | Storage accounts not using GRS may be at risk
@@ -33,15 +33,15 @@ RuleName | Description
 [Azure.Subscription.SecurityCenterContact](Azure.Subscription.SecurityCenterContact.md) | Security Center email and phone contact details should be set
 [Azure.Subscription.SecurityCenterProvisioning](Azure.Subscription.SecurityCenterProvisioning.md) | Enable auto-provisioning on VMs to improve Security Center insights
 [Azure.VirtualMachine.UseManagedDisks](Azure.VirtualMachine.UseManagedDisks.md) | Virtual machines should use managed disks
-[Azure.VirtualMachine.Standalone](Azure.VirtualMachine.Standalone.md) | VMs much use premium disks or use availablity sets/ zones to meet SLA requirements
+[Azure.VirtualMachine.Standalone](Azure.VirtualMachine.Standalone.md) | VMs much use premium disks or use availability sets/ zones to meet SLA requirements
 [Azure.VirtualMachine.DiskCaching](Azure.VirtualMachine.DiskCaching.md) | Check disk caching is configured correctly for the workload
 [Azure.VirtualMachine.UniqueDns](Azure.VirtualMachine.UniqueDns.md) | Network interfaces should inherit from virtual network
 [Azure.VirtualMachine.DiskAttached](Azure.VirtualMachine.DiskAttached.md) | Managed disks should be attached to virtual machines
 [Azure.VirtualMachine.DiskSizeAlignment](Azure.VirtualMachine.DiskSizeAlignment.md) | Managed disk is smaller than SKU size
 [Azure.VirtualMachine.UseHybridUseBenefit](Azure.VirtualMachine.UseHybridUseBenefit.md) | Use Hybrid Use Benefit
 [Azure.VirtualMachine.AcceleratedNetworking](Azure.VirtualMachine.AcceleratedNetworking.md) | Enabled accelerated networking for supported operating systems
-[Azure.VirtualMachine.ASAlignment](Azure.VirtualMachine.ASAlignment.md) | Availablity sets should be aligned
-[Azure.VirtualMachine.ASMinMembers](Azure.VirtualMachine.ASMinMembers.md) | Availablity sets should be deployed with at least two members
+[Azure.VirtualMachine.ASAlignment](Azure.VirtualMachine.ASAlignment.md) | Availability sets should be aligned
+[Azure.VirtualMachine.ASMinMembers](Azure.VirtualMachine.ASMinMembers.md) | Availability sets should be deployed with at least two members
 [Azure.VirtualNetwork.UseNSGs](Azure.VirtualNetwork.UseNSGs.md) | Subnets should have NSGs assigned, except for the GatewaySubnet
 [Azure.VirtualNetwork.SingleDNS](Azure.VirtualNetwork.SingleDNS.md) | VNETs should have at least two DNS servers assigned
 [Azure.VirtualNetwork.NSGAnyInboundSource](Azure.VirtualNetwork.NSGAnyInboundSource.md) | Network security groups should avoid any inbound rules
