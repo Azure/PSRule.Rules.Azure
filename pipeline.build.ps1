@@ -114,8 +114,8 @@ task ReleaseModule VersionModule, {
     if (!(Test-Path -Path $modulePath)) {
         Write-Error -Message "[ReleaseModule] -- Module path does not exist";
     }
-    elseif (![String]::IsNullOrEmpty($NuGetApiKey)) {
-        Publish-Module -Path $modulePath -NuGetApiKey $NuGetApiKey;
+    elseif (![String]::IsNullOrEmpty($ApiKey)) {
+        Publish-Module -Path $modulePath -NuGetApiKey $ApiKey;
     }
 }
 
