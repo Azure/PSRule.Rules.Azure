@@ -8,14 +8,14 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 
 ## SYNOPSIS
 
-Use RBAC for delegating access to ACR instead of the registry admin user.
+Use Azure AD accounts instead of using the registry admin user.
 
 ## DESCRIPTION
 
-Use RBAC for delegating access to ACR instead of the registry admin user.
+Use role-based access control (RBAC) for delegating an Azure AD (AAD) account access to Azure Container Registry (ACR) instead of using the registry admin user.
 
 ## RECOMMENDATION
 
-The Admin user account is a single user account with administrative access to the registry. This account is designed for single user access for test and development.
+The Admin user account is a single user account with administrative access to the registry. This account provides single user access for test and development.
 
 Consider using an AAD-based identity with roles based access granted. Also consider disabling the Admin user account.

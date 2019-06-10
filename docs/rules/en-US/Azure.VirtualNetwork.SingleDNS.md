@@ -12,8 +12,10 @@ VNETs should have at least two DNS servers assigned.
 
 ## DESCRIPTION
 
-VNETs should have at least two DNS servers assigned.
+Virtual networks (VNETs) should have at least two (2) DNS servers assigned.
 
 ## RECOMMENDATION
 
-VNETs should have at least two DNS servers assigned.
+Virtual networks should have at least two (2) DNS servers set when not using Azure-provided DNS.
+
+Using a single DNS server may indicate a single point of failure where the DNS IP address is not load balanced.

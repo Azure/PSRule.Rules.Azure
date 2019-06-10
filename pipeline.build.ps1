@@ -226,11 +226,15 @@ task Analyze Build, PSScriptAnalyzer, {
 
 # Synopsis: Build table of content for rules
 task BuildRuleDocs PSRule, PSDocs, {
-    Invoke-PSDocument -Name Azure -OutputPath .\docs\rules\en-US\ -Path .\RuleToc.Document.ps1
+    Invoke-PSDocument -Name Azure -OutputPath .\docs\rules\en-US\ -Path .\RuleToc.Doc.ps1;
+    $rules = Import-Module out/modules/PSRule.Rules.Azure -Force;
+    $rules | ForEach-Object -Process {
+        Invoke-PSDocument -Path .\RuleHelp.Doc.ps1 -OutputPath .\docs\rules\en-US\ -InstanceName $_.Info.Name -inputObject $_;
+    }
 }
 
 # Synopsis: Build help
-task BuildHelp BuildModule, PlatyPS, BuildRuleDocs, {
+task BuildHelp BuildModule, PlatyPS, {
     # Generate MAML and about topics
     $Null = New-ExternalHelp -OutputPath out/docs/PSRule.Rules.Azure -Path '.\docs\commands\PSRule.Rules.Azure\en-US' -Force;
 
@@ -241,7 +245,7 @@ task BuildHelp BuildModule, PlatyPS, BuildRuleDocs, {
     $Null = Copy-Item -Path docs/rules/en-US/*.md -Destination out/modules/PSRule.Rules.Azure/en-AU/;
 }
 
-task ScaffoldHelp Build, {
+task ScaffoldHelp Build, BuildRuleDocs, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     Update-MarkdownHelp -Path '.\docs\commands\PSRule.Rules.Azure\en-US';
 }

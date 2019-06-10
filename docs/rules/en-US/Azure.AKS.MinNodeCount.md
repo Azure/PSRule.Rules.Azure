@@ -12,7 +12,7 @@ AKS clusters should have minimum number of nodes for failover and updates.
 
 ## DESCRIPTION
 
-AKS clusters should have minimum number of nodes for failover and updates.
+Kubernetes clusters should have minimum number of three (3) nodes for high availability and planned maintenance.
 
 ## RECOMMENDATION
 
