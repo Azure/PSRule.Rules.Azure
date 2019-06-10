@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+- Added rule documentation. [#40](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/40)
+
 ## v0.1.0-B190569 (pre-release)
 
 - Fix exported resource data overwritten. [#34](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/34)

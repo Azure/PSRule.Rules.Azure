@@ -58,8 +58,8 @@ Describe 'Azure.AppService' {
             $ruleResult.TargetName | Should -Be 'plan-A';
         }
 
-        It 'Azure.AppService.ARRAfinity' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.ARRAfinity' };
+        It 'Azure.AppService.ARRAffinity' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.ARRAffinity' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

@@ -115,6 +115,46 @@
             {
                 "ResourceGroupName": "test-rg",
                 "ServerName": "server-A",
+                "StartIpAddress": "10.1.5.0",
+                "EndIpAddress": "10.1.5.255",
+                "FirewallRuleName": "AllowSubnet-E",
+                "type": "Microsoft.Sql/servers/firewallRules"
+            },
+            {
+                "ResourceGroupName": "test-rg",
+                "ServerName": "server-A",
+                "StartIpAddress": "10.1.6.0",
+                "EndIpAddress": "10.1.6.255",
+                "FirewallRuleName": "AllowSubnet-F",
+                "type": "Microsoft.Sql/servers/firewallRules"
+            },
+            {
+                "ResourceGroupName": "test-rg",
+                "ServerName": "server-A",
+                "StartIpAddress": "10.1.7.0",
+                "EndIpAddress": "10.1.7.255",
+                "FirewallRuleName": "AllowSubnet-G",
+                "type": "Microsoft.Sql/servers/firewallRules"
+            },
+            {
+                "ResourceGroupName": "test-rg",
+                "ServerName": "server-A",
+                "StartIpAddress": "10.1.8.0",
+                "EndIpAddress": "10.1.8.255",
+                "FirewallRuleName": "AllowSubnet-H",
+                "type": "Microsoft.Sql/servers/firewallRules"
+            },
+            {
+                "ResourceGroupName": "test-rg",
+                "ServerName": "server-A",
+                "StartIpAddress": "10.1.9.0",
+                "EndIpAddress": "10.1.9.255",
+                "FirewallRuleName": "AllowSubnet-I",
+                "type": "Microsoft.Sql/servers/firewallRules"
+            },
+            {
+                "ResourceGroupName": "test-rg",
+                "ServerName": "server-A",
                 "StartIpAddress": "10.0.0.0",
                 "EndIpAddress": "10.255.255.255",
                 "FirewallRuleName": "AllowSubnet",
