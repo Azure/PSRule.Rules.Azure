@@ -190,6 +190,45 @@ function VisitSqlServer {
     }
 }
 
+
+function VisitPostgreSqlServer {
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+
+    process {
+        $sqlServer = $resource;
+        $resources = @();
+
+        # Get Postgre SQL Server firewall rules
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.DBforPostgreSQL/servers/firewallRules' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-12-01' -ExpandProperties;
+        $sqlServer | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
+
+function VisitMySqlServer {
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+
+    process {
+        $sqlServer = $resource;
+        $resources = @();
+
+        # Get MySQL Server firewall rules
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.DBforMySQL/servers/firewallRules' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-12-01' -ExpandProperties;
+        $sqlServer | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
+
 function VisitDataFactoryV2 {
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
@@ -351,6 +390,8 @@ function ExpandResource {
     process {
         switch ($Resource.ResourceType) {
             "Microsoft.Sql/servers" { VisitSqlServer @PSBoundParameters; }
+            "Microsoft.DBforPostgreSQL/servers" { VisitPostgreSqlServer @PSBoundParameters; }
+            "Microsoft.DBforMySQL/servers" { VisitMySqlServer @PSBoundParameters; }
             "Microsoft.DataFactory/factories" { VisitDataFactoryV2 @PSBoundParameters; }
             # "Microsoft.Storage/storageAccounts" { VisitStorageAccount @PSBoundParameters; }
             # "Microsoft.StorageSync/storageSyncServices" { VisitStorageSyncService @PSBoundParameters; }
