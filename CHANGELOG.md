@@ -1,6 +1,9 @@
 
 ## Unreleased
 
+- Added rule to check if allow access to Azure services enabled for MySQL. [#4](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/4)
+- Added rule to count the number of database server firewall rules for MySQL. [#2](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/2)
+
 ## v0.1.0-B190607 (pre-release)
 
 - Added rule documentation. [#40](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/40)

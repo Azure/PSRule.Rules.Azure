@@ -26,8 +26,8 @@ Describe 'Rule quality' {
         foreach ($rule in $result) {
             It $rule.RuleName {
                 $rule.Description | Should -Not -BeNullOrEmpty;
-                $rule.Tag.severity | Should -Not -BeNullOrEmpty;
-                $rule.Tag.category | Should -Not -BeNullOrEmpty;
+                $rule.Info.Annotations.severity | Should -Not -BeNullOrEmpty;
+                $rule.Info.Annotations.category | Should -Not -BeNullOrEmpty;
             }
         }
     }
