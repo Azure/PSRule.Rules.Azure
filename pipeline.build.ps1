@@ -250,6 +250,13 @@ task ScaffoldHelp Build, BuildRuleDocs, {
     Update-MarkdownHelp -Path '.\docs\commands\PSRule.Rules.Azure\en-US';
 }
 
+# Synopsis: Add shipit build tag
+task TagBuild {
+    if ($Null -ne $Env:BUILD_DEFINITIONNAME) {
+        Write-Host "`#`#vso[build.addbuildtag]shipit";
+    }
+}
+
 # Synopsis: Remove temp files.
 task Clean {
     Remove-Item -Path out,reports -Recurse -Force -ErrorAction SilentlyContinue;
@@ -259,6 +266,6 @@ task Build Clean, BuildModule, VersionModule, BuildHelp
 
 task Test Build, TestRules
 
-task Release ReleaseModule
+task Release ReleaseModule, TagBuild
 
 task . Build, Test
