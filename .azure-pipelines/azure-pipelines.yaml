@@ -2,7 +2,7 @@
 # CI pipeline for PSRule.Rules.Azure
 
 variables:
-  version: '0.1.0'
+  version: '0.2.0'
   buildConfiguration: 'Release'
 
  # Use build number format, i.e. 0.1.0-B181101
