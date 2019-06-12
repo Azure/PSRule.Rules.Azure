@@ -95,8 +95,8 @@ The output of this example is:
 ```text
    TargetName: storage
 
-RuleName                            Outcome    Message
---------                            -------    -------
+RuleName                            Outcome    Recommendation
+--------                            -------    --------------
 Azure.Storage.UseReplication        Fail       Storage accounts not using GRS may be at risk
 Azure.Storage.SecureTransferRequ... Fail       Storage accounts should only accept secure traffic
 Azure.Storage.SoftDelete            Fail       Enable soft delete on Storage Accounts
