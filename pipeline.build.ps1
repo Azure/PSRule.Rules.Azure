@@ -225,9 +225,10 @@ task Analyze Build, PSScriptAnalyzer, {
 }
 
 # Synopsis: Build table of content for rules
-task BuildRuleDocs PSRule, PSDocs, {
-    Invoke-PSDocument -Name Azure -OutputPath .\docs\rules\en-US\ -Path .\RuleToc.Doc.ps1;
-    $rules = Import-Module out/modules/PSRule.Rules.Azure -Force;
+task BuildRuleDocs Build, PSRule, PSDocs, {
+    Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $Null = Invoke-PSDocument -Name Azure -OutputPath .\docs\rules\en-US\ -Path .\RuleToc.Doc.ps1;
+    $rules = Get-PSRule -Module 'PSRule.Rules.Azure';
     $rules | ForEach-Object -Process {
         Invoke-PSDocument -Path .\RuleHelp.Doc.ps1 -OutputPath .\docs\rules\en-US\ -InstanceName $_.Info.Name -inputObject $_;
     }
