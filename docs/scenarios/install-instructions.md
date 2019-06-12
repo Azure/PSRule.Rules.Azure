@@ -11,10 +11,11 @@ The following modules are required for `PSRule.Rules.Azure` to work:
 
 - PSRule
 - Az.Accounts
+- Az.Resources
 - Az.Security
+- Az.Sql
 - Az.Storage
 - Az.Websites
-- Az.Sql
 
 The required version of each module will automatically be installed along-side `PSRule.Rules.Azure` when using `Install-Module` or `Update-Module` cmdlets.
 

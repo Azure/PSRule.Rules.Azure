@@ -16,8 +16,6 @@ Azure Redis Cache is configured to accept unencrypted connections using a non-SS
 
 Unencrypted communication to Redis Cache could allow disclosure of information to an untrusted party.
 
-This does not indicate that unencrypted connections are being used.
-
 ## RECOMMENDATION
 
 Azure Redis Cache should be configured to only accept secure connections.
