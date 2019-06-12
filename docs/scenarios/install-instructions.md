@@ -39,7 +39,7 @@ Save for offline use from PowerShell Gallery:
 
 ```powershell
 # Save module, in the .\modules directory
-Save-Module -Name 'PSRule', 'PSRule.Rules.Azure', 'Az.Accounts', 'Az.StorageSync', 'Az.Security', 'Az.Storage', 'Az.Websites', 'Az.Sql' -Path '.\modules';
+Save-Module -Name 'PSRule', 'PSRule.Rules.Azure', 'Az.Accounts', 'Az.Resources', 'Az.Security', 'Az.Sql', 'Az.Storage', 'Az.Websites' -Path '.\modules';
 ```
 
 > For pre-release versions the `-AllowPrerelease` switch must be added when calling `Install-Module` or `Save-Module`.
