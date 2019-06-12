@@ -115,3 +115,15 @@ stages:
     # Install pipeline dependencies and build module
     - powershell: Invoke-Build Release -ApiKey $(apiKey)
       displayName: 'Publish module'
+    # Update GitHub release
+    - task: GitHubRelease@0
+      displayName: 'GitHub release'
+      inputs:
+        gitHubConnection: 'PSRule.Rules.Azure'
+        repositoryName: '$(Build.Repository.Name)'
+        action: edit
+        tag: '$(Build.SourceBranchName)'
+        releaseNotesSource: input
+        releaseNotes: 'See [change log](https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/CHANGELOG.md)'
+        assetUploadMode: replace
+        addChangeLog: true
