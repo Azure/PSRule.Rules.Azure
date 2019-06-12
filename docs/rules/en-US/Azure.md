@@ -1,7 +1,3 @@
----
-generated-by: PSDocs
----
-
 # Azure rules
 
 RuleName | Description
@@ -17,6 +13,11 @@ RuleName | Description
 [Azure.AppService.UseHTTPS](Azure.AppService.UseHTTPS.md) | Use HTTPS only
 [Azure.DataFactory.Version](Azure.DataFactory.Version.md) | Consider migrating to DataFactory v2
 [Azure.MySQL.UseSSL](Azure.MySQL.UseSSL.md) | Use encrypted MySQL connections
+[Azure.MySQL.FirewallRuleCount](Azure.MySQL.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules
+[Azure.MySQL.AllowAzureAccess](Azure.MySQL.AllowAzureAccess.md) | Determine if access from Azure services is required
+[Azure.PostgreSQL.UseSSL](Azure.PostgreSQL.UseSSL.md) | Use encrypted PostgreSQL connections
+[Azure.PostgreSQL.FirewallRuleCount](Azure.PostgreSQL.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules
+[Azure.PostgreSQL.AllowAzureAccess](Azure.PostgreSQL.AllowAzureAccess.md) | Determine if access from Azure services is required
 [Azure.PublicIP.IsAttached](Azure.PublicIP.IsAttached.md) | Public IP addresses should be attached or cleaned up if not in use
 [Azure.Redis.NonSslPort](Azure.Redis.NonSslPort.md) | Redis Cache should only accept secure connections
 [Azure.Redis.MinTLS](Azure.Redis.MinTLS.md) | Redis Cache should reject TLS versions older then 1.2
