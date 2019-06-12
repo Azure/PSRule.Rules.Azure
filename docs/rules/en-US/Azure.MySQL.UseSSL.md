@@ -8,12 +8,20 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 
 ## SYNOPSIS
 
-Use encrypted MySQL connections.
+Enforce encrypted MySQL connections.
 
 ## DESCRIPTION
 
-Use encrypted MySQL connections.
+Azure Database for MySQL is configured to accept unencrypted connections. Unencrypted connections are disabled by default.
+
+Unencrypted communication to MySQL server instances could allow disclosure of information to an untrusted party.
 
 ## RECOMMENDATION
 
-Use encrypted MySQL connections.
+Azure Database for MySQL should be configured to only accept encrypted connections.
+
+When enforce SSL connections is disabled, encrypted and unencrypted connections are permitted. To prevent unencrypted connections, enable SSL connection enforcement.
+
+Unless explicitly required, consider enabling SSL connection enforcement.
+
+For more information see [SSL connectivity in Azure Database for MySQL](https://docs.microsoft.com/en-us/azure/mysql/concepts-ssl-connection-security)

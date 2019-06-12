@@ -168,23 +168,23 @@ task platyPS {
 
 # Synopsis: Install module dependencies
 task ModuleDependencies NuGet, PSRule, {
-    if ($Null -eq (Get-InstalledModule -Name Az.Accounts -ErrorAction Ignore)) {
-        Install-Module -Name Az.Accounts -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name Az.Accounts -MinimumVersion 1.5.2 -ErrorAction Ignore)) {
+        Install-Module -Name Az.Accounts -Scope CurrentUser -MinimumVersion 1.5.2 -Force;
     }
-    if ($Null -eq (Get-InstalledModule -Name Az.Resources -ErrorAction Ignore)) {
-        Install-Module -Name Az.Resources -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name Az.Resources -MinimumVersion 1.4.0 -ErrorAction Ignore)) {
+        Install-Module -Name Az.Resources -Scope CurrentUser -MinimumVersion 1.4.0 -Force;
     }
-    if ($Null -eq (Get-InstalledModule -Name Az.Storage -ErrorAction Ignore)) {
-        Install-Module -Name Az.Storage -Scope CurrentUser -Force -AllowClobber;
+    if ($Null -eq (Get-InstalledModule -Name Az.Security -MinimumVersion 0.7.4 -ErrorAction Ignore)) {
+        Install-Module -Name Az.Security -Scope CurrentUser -MinimumVersion 0.7.4 -Force;
     }
-    if ($Null -eq (Get-InstalledModule -Name Az.Security -ErrorAction Ignore)) {
-        Install-Module -Name Az.Security -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name Az.Storage -MinimumVersion 1.3.0 -ErrorAction Ignore)) {
+        Install-Module -Name Az.Storage -Scope CurrentUser -MinimumVersion 1.3.0 -Force -AllowClobber;
     }
-    if ($Null -eq (Get-InstalledModule -Name Az.Sql -ErrorAction Ignore)) {
-        Install-Module -Name Az.Sql -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name Az.Sql -MinimumVersion 1.9.0 -ErrorAction Ignore)) {
+        Install-Module -Name Az.Sql -Scope CurrentUser -MinimumVersion 1.9.0 -Force;
     }
-    if ($Null -eq (Get-InstalledModule -Name Az.Websites -ErrorAction Ignore)) {
-        Install-Module -Name Az.Websites -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name Az.Websites -MinimumVersion 1.2.1 -ErrorAction Ignore)) {
+        Install-Module -Name Az.Websites -Scope CurrentUser -MinimumVersion 1.2.1 -Force;
     }
 }
 
@@ -241,8 +241,10 @@ task BuildHelp BuildModule, PlatyPS, {
     # Copy generated help into module out path
     $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/ -Destination out/modules/PSRule.Rules.Azure/en-US/ -Recurse;
     $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/ -Destination out/modules/PSRule.Rules.Azure/en-AU/ -Recurse;
+    $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/ -Destination out/modules/PSRule.Rules.Azure/en-GB/ -Recurse;
     $Null = Copy-Item -Path docs/rules/en-US/*.md -Destination out/modules/PSRule.Rules.Azure/en-US/;
     $Null = Copy-Item -Path docs/rules/en-US/*.md -Destination out/modules/PSRule.Rules.Azure/en-AU/;
+    $Null = Copy-Item -Path docs/rules/en-US/*.md -Destination out/modules/PSRule.Rules.Azure/en-GB/;
 }
 
 task ScaffoldHelp Build, BuildRuleDocs, {

@@ -1,5 +1,5 @@
 #
-# Unit tests for Azure Database for MySQL rules
+# Unit tests for Azure Database for PostgreSQL rules
 #
 
 [CmdletBinding()]
@@ -20,14 +20,14 @@ $rootPath = $PWD;
 Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
 $here = (Resolve-Path $PSScriptRoot).Path;
 
-Describe 'Azure.MySQL' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.MySQL.json';
+Describe 'Azure.PostgreSQL' {
+    $dataPath = Join-Path -Path $here -ChildPath 'Resources.PostgreSQL.json';
 
     Context 'Conditions' {
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -WarningAction Ignore;
 
-        It 'Azure.MySQL.UseSSL' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.UseSSL' };
+        It 'Azure.PostgreSQL.UseSSL' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PostgreSQL.UseSSL' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -42,8 +42,8 @@ Describe 'Azure.MySQL' {
             $ruleResult.TargetName | Should -Be 'server-A';
         }
 
-        It 'Azure.MySQL.FirewallRuleCount' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.FirewallRuleCount' };
+        It 'Azure.PostgreSQL.FirewallRuleCount' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PostgreSQL.FirewallRuleCount' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -58,8 +58,8 @@ Describe 'Azure.MySQL' {
             $ruleResult.TargetName | Should -Be 'server-A';
         }
 
-        It 'Azure.MySQL.AllowAzureAccess' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.AllowAzureAccess' };
+        It 'Azure.PostgreSQL.AllowAzureAccess' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PostgreSQL.AllowAzureAccess' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

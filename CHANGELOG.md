@@ -3,6 +3,9 @@
 
 - Added rule to check if allow access to Azure services enabled for MySQL. [#4](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/4)
 - Added rule to count the number of database server firewall rules for MySQL. [#2](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/2)
+- Added rule to check if allow access to Azure services enabled for PostgreSQL. [#50](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/50)
+- Added rule to count the number of database server firewall rules for PostgreSQL. [#51](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/51)
+- Added rule to check if SSL is enforced for PostgreSQL. [#49](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/49)
 
 ## v0.1.0-B190607 (pre-release)
 

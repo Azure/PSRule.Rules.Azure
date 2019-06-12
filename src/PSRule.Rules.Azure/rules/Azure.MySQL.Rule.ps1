@@ -9,7 +9,7 @@ Rule 'Azure.MySQL.UseSSL' -If { ResourceType 'Microsoft.DBforMySQL/servers' } -T
 
 # Synopsis: Determine if there is an excessive number of firewall rules
 Rule 'Azure.MySQL.FirewallRuleCount' -If { ResourceType 'Microsoft.DBforMySQL/servers' } -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
-    Hint 'SQL Server has > 10 firewall rules, some rules may not be needed';
+    Hint 'MySQL Server has > 10 firewall rules, some rules may not be needed';
 
     $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
         $_.Type -eq 'Microsoft.DBforMySQL/servers/firewallRules'
