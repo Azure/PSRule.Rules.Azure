@@ -119,7 +119,7 @@ stages:
     - task: GitHubRelease@0
       displayName: 'GitHub release'
       inputs:
-        gitHubConnection: 'PSRule.Rules.Azure'
+        gitHubConnection: 'AzureDevOps-PSRule.Rules.Azure'
         repositoryName: '$(Build.Repository.Name)'
         action: edit
         tag: '$(Build.SourceBranchName)'
