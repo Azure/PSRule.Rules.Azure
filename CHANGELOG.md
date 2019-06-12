@@ -1,6 +1,14 @@
 
 ## Unreleased
 
+## v0.1.0
+
+- Initial release.
+
+What's changed since pre-release v0.1.0-B190624:
+
+- No additional changes.
+
 ## v0.1.0-B190624 (pre-release)
 
 - Added rule to check if allow access to Azure services enabled for MySQL. [#4](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/4)
@@ -31,4 +39,4 @@
 
 ## v0.1.0-B190536 (pre-release)
 
-- Initial pre-release
+- Initial pre-release.
