@@ -21,8 +21,6 @@ The required version of each module will automatically be installed along-side `
 
 ## Getting the modules
 
-> Currently, only a pre-release version of the module is available. See below for instructions to install the pre-release version.
-
 Install from [PowerShell Gallery][module] for all users (requires permissions):
 
 ```powershell
