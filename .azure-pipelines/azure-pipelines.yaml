@@ -126,4 +126,5 @@ stages:
         releaseNotesSource: input
         releaseNotes: 'See [change log](https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/CHANGELOG.md)'
         assetUploadMode: replace
-        addChangeLog: true
+        addChangeLog: false
+        isPreRelease: $[ contains(variables['Build.SourceBranchName'], '-B') ]
