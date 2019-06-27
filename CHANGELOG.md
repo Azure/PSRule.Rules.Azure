@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+- Fix rule `Azure.AKS.UseRBAC` returns null. [#60](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/60)
+
 ## v0.1.0
 
 - Initial release.
