@@ -16,14 +16,15 @@ Export resource configuration data from one or more Azure subscriptions.
 ### Default (Default)
 
 ```text
-Export-AzRuleData [[-OutputPath] <String>] [[-Subscription] <String[]>] [[-Tenant] <String[]>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Export-AzRuleData [[-OutputPath] <String>] [[-Subscription] <String[]>] [[-Tenant] <String[]>]
+ [-ResourceGroupName <String[]>] [-Tag <Hashtable>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### All
 
 ```text
-Export-AzRuleData [[-OutputPath] <String>] [-PassThru] [-All] [-WhatIf] [-Confirm] [<CommonParameters>]
+Export-AzRuleData [[-OutputPath] <String>] [-ResourceGroupName <String[]>] [-Tag <Hashtable>] [-PassThru]
+ [-All] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,6 +92,38 @@ Aliases:
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+
+Optionally filter resources by Resource Group name.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+
+Optionally filter resources based on tag.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

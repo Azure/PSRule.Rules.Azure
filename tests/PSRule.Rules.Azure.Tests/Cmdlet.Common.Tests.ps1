@@ -163,6 +163,13 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet' {
             $result.Length | Should -Be 1;
             $result[0].Name | Should -Be 'Resource2'
         }
+
+        It '-Tag filter' {
+            $Null = Export-AzRuleData -Subscription 'Test subscription 1' -Tag @{ environment = 'production' } -PassThru;
+            Assert-MockCalled -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -Times 1 -ParameterFilter {
+                $Tag.environment -eq 'production'
+            }
+        }
     }
 }
 
