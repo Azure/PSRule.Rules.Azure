@@ -78,9 +78,11 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet' {
             return @(
                 [PSCustomObject]@{
                     Name = 'Resource1'
+                    ResourceType = ''
                 }
                 [PSCustomObject]@{
                     Name = 'Resource2'
+                    ResourceType = ''
                 }
             )
         }
@@ -108,7 +110,6 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet' {
 
         It 'Return resources' {
             $result = @(Export-AzRuleData -PassThru);
-
             $result.Length | Should -Be 6;
             $result | Should -BeOfType PSCustomObject;
             $result.Name | Should -BeIn 'Resource1', 'Resource2';
@@ -116,34 +117,51 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet' {
     }
 
     Context 'With filters' {
-        Mock -CommandName 'ExportAzureResource' -ModuleName 'PSRule.Rules.Azure';
         Mock -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -MockWith ${function:MockContext};
+        Mock -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -MockWith {
+            return @(
+                [PSCustomObject]@{
+                    Name = 'Resource1'
+                    ResourceGroupName = 'rg-test-1'
+                    ResourceType = ''
+                }
+                [PSCustomObject]@{
+                    Name = 'Resource2'
+                    ResourceGroupName = 'rg-test-2'
+                    ResourceType = ''
+                }
+            )
+        }
 
-        It 'Uses subscription name filter' {
-            Mock -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure';
-            $Null = Export-AzRuleData -Subscription 'Test subscription 1';
+        It '-Subscription with name filter' {
+            $Null = Export-AzRuleData -Subscription 'Test subscription 1' -PassThru;
             Assert-MockCalled -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -Times 1;
             Assert-MockCalled -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -Times 1 -ParameterFilter {
                 $ListAvailable -eq $True
             }
         }
 
-        It 'Uses subscription Id filter' {
-            Mock -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure';
-            $Null = Export-AzRuleData -Subscription '00000000-0000-0000-0000-000000000002';
+        It '-Subscription with Id filter' {
+            $Null = Export-AzRuleData -Subscription '00000000-0000-0000-0000-000000000002' -PassThru;
             Assert-MockCalled -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -Times 1;
             Assert-MockCalled -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -Times 1 -ParameterFilter {
                 $ListAvailable -eq $True
             }
         }
 
-        It 'Uses tenant Id filter' {
-            Mock -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure';
-            $Null = Export-AzRuleData -Tenant '00000000-0000-0000-0000-000000000002';
+        It '-Tenant filter' {
+            $Null = Export-AzRuleData -Tenant '00000000-0000-0000-0000-000000000002' -PassThru;
             Assert-MockCalled -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -Times 2;
             Assert-MockCalled -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -Times 1 -ParameterFilter {
                 $ListAvailable -eq $True
             }
+        }
+
+        It '-ResourceGroupName filter' {
+            $result = @(Export-AzRuleData -Subscription 'Test subscription 1' -ResourceGroupName 'rg-test-2' -PassThru);
+            $result | Should -Not -BeNullOrEmpty;
+            $result.Length | Should -Be 1;
+            $result[0].Name | Should -Be 'Resource2'
         }
     }
 }
