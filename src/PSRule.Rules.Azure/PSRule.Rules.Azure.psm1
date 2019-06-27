@@ -23,11 +23,21 @@ function Export-AzRuleData {
         [Parameter(Position = 0, Mandatory = $False)]
         [String]$OutputPath = $PWD,
 
+        # Filter by Subscription name or id
         [Parameter(Mandatory = $False, ParameterSetName = 'Default')]
         [String[]]$Subscription = $Null,
 
+        # Filter by Tenant id
         [Parameter(Mandatory = $False, ParameterSetName = 'Default')]
         [String[]]$Tenant = $Null,
+
+        # Filter by Resource Group name
+        [Parameter(Mandatory = $False)]
+        [String[]]$ResourceGroupName = $Null,
+
+        # Filter by Tag
+        [Parameter(Mandatory = $False)]
+        [Hashtable]$Tag,
 
         [Parameter(Mandatory = $False)]
         [Switch]$PassThru = $False,
@@ -50,9 +60,22 @@ function Export-AzRuleData {
             }
         }
 
+        $getParams = @{ };
+        $filterParams = @{};
+
+        if ($PSBoundParameters.ContainsKey('Tag')) {
+            $getParams['Tag'] = $Tag;
+        }
+
+        if ($PSBoundParameters.ContainsKey('ResourceGroupName')) {
+            $filterParams['ResourceGroupName'] = $ResourceGroupName;
+        }
+
         foreach ($c in $context) {
             $filePath = Join-Path -Path $OutputPath -ChildPath "$($c.Subscription.Id).json";
-            GetAzureResource -Context $c -Verbose:$VerbosePreference | ExportAzureResource -Path $filePath -PassThru $PassThru -Verbose:$VerbosePreference
+            GetAzureResource @getParams -Context $c -Verbose:$VerbosePreference `
+                | FilterAzureResource @filterParams -Verbose:$VerbosePreference `
+                | ExportAzureResource -Path $filePath -PassThru $PassThru -Verbose:$VerbosePreference;
         }
     }
 }
@@ -122,14 +145,44 @@ function GetAzureContext {
 
 function GetAzureResource {
     [CmdletBinding()]
+    [OutputType([PSObject])]
     param (
         [Parameter(Mandatory = $True)]
-        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context,
+
+        [Parameter(Mandatory = $False)]
+        [Hashtable]$Tag
     )
 
     process {
-        Get-AzResource -ExpandProperties -DefaultProfile $Context | ExpandResource -Context $Context -Verbose:$VerbosePreference;
-        Get-AzSubscription -SubscriptionId $Context.DefaultContext.Subscription.Id | SetResourceType 'Microsoft.Subscription' | ExpandResource -Context $Context -Verbose:$VerbosePreference;
+        $getParams = @{ };
+
+        if ($PSBoundParameters.ContainsKey('Tag')) {
+            $getParams['Tag'] = $Tag;
+        }
+
+        Get-AzResource @getParams -ExpandProperties -DefaultProfile $Context `
+            | ExpandResource -Context $Context -Verbose:$VerbosePreference;
+        Get-AzSubscription -SubscriptionId $Context.DefaultContext.Subscription.Id `
+            | SetResourceType 'Microsoft.Subscription' | ExpandResource -Context $Context -Verbose:$VerbosePreference;
+    }
+}
+
+function FilterAzureResource {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param (
+        [Parameter(Mandatory = $False)]
+        [String[]]$ResourceGroupName = $Null,
+
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$InputObject
+    )
+
+    process {
+        if (($Null -eq $ResourceGroupName) -or ($InputObject.ResourceType -eq 'Microsoft.Subscription') -or ($InputObject.ResourceGroupName -in $ResourceGroupName)) {
+            return $InputObject;
+        }
     }
 }
 
@@ -141,7 +194,7 @@ function ExportAzureResource {
         [Parameter(Mandatory = $True)]
         [String]$Path,
 
-        [Parameter(Mandatory = $False, ValueFromPipeline = $True)]
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$InputObject,
 
         [Parameter(Mandatory = $False)]

@@ -1,6 +1,10 @@
 
 ## Unreleased
 
+- Fix rule `Azure.AKS.UseRBAC` returns null. [#60](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/60)
+- Added parameters to filter resource export by resource group and/ or tag. [#59](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/59)
+  - Added `-ResourceGroupName` and `-Tag` parameters to `Export-AzRuleData` cmdlet.
+
 ## v0.1.0
 
 - Initial release.

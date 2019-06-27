@@ -20,5 +20,6 @@ Rule 'Azure.AKS.Version' -If { ResourceType 'Microsoft.ContainerService/managedC
 
 # Synopsis: AKS cluster should use role-based access control
 Rule 'Azure.AKS.UseRBAC' -If { ResourceType 'Microsoft.ContainerService/managedClusters' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
-    $TargetObject.Properties.enableRBAC
+    Exists 'Properties.enableRBAC'
+    $TargetObject.Properties.enableRBAC -eq $True
 }
