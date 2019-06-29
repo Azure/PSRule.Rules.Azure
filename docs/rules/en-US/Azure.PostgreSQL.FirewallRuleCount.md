@@ -12,8 +12,8 @@ Determine if there is an excessive number of firewall rules.
 
 ## DESCRIPTION
 
-Typically number of firewall rules required is minimal, with management connectivity from on-premises and cloud application connectivity the most common.
+Typically the number of firewall rules required is minimal, with management connectivity from on-premises and cloud application connectivity the most common.
 
 ## RECOMMENDATION
 
-PostgreSQL Server has greater then ten (10) firewall rules. Some rules may not be needed.
+The PostgreSQL server has greater then ten (10) firewall rules. Some rules may not be needed.

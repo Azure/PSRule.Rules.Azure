@@ -124,3 +124,81 @@ function global:SupportsTags {
         return $True;
     }
 }
+
+function global:GetIPAddressCount {
+    [CmdletBinding()]
+    [OutputType([System.UInt64])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [String]$Start,
+
+        [Parameter(Mandatory = $True)]
+        [String]$End
+    )
+    process {
+        $startIP = [System.Net.IPAddress]::Parse($Start);
+        $endIP = [System.Net.IPAddress]::Parse($End);
+
+        $startAddress = ConvertToUInt64 -IP $startIP;
+        $endAddress = ConvertToUInt64 -IP $endIP;
+
+        if ($endAddress -ge $startAddress) {
+            return $endAddress - $startAddress + 1;
+        }
+        else {
+            return $startAddress - $endAddress + 1;
+        }
+    }
+}
+
+function global:GetIPAddressSummary {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param ()
+    process {
+        $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
+            $_.Type -like "*/firewallRules"
+        } | ForEach-Object -Process {
+            if (!($_.ResourceName -eq 'AllowAllWindowsAzureIps' -or ($_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0'))) {
+                $_;
+            }
+        })
+
+        function ConvertToUInt64 {
+            param (
+                [Parameter(Mandatory = $True)]
+                [System.Net.IPAddress]$IP
+            )
+
+            process {
+                $bytes = $IP.GetAddressBytes();
+                $size = $bytes.Length;
+
+                [System.UInt64]$result = 0;
+
+                for ($i = 0; $i -lt $size; $i++) {
+                    $result = ($result -shl 8) + $bytes[$i];
+                }
+
+                return $result;
+            }
+        }
+
+        $private = 0;
+        $public = 0;
+
+        foreach ($fwRule in $firewallRules) {
+            if ($fwRule.Properties.startIpAddress -like "10.*" -or $fwRule.Properties.startIpAddress -like "172.*" -or $fwRule.Properties.startIpAddress -like "192.168.*") {
+                $private += GetIPAddressCount -Start $fwRule.Properties.startIpAddress -End $fwRule.Properties.endIpAddress;
+            }
+            else {
+                $public += GetIPAddressCount -Start $fwRule.Properties.startIpAddress -End $fwRule.Properties.endIpAddress;
+            }
+        }
+
+        return [PSCustomObject]@{
+            Private = $private
+            Public = $public
+        }
+    }
+}

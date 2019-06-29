@@ -159,8 +159,8 @@
                 "ResourceName": "ClientIPAddress_10",
                 "Name": "ClientIPAddress_10",
                 "Properties": {
-                    "startIpAddress": "10.1.10.1",
-                    "endIpAddress": "10.1.10.1"
+                    "startIpAddress": "17.1.10.1",
+                    "endIpAddress": "17.1.10.255"
                 },
                 "ResourceGroupName": "test-rg",
                 "Type": "Microsoft.DBforPostgreSQL/servers/firewallRules",

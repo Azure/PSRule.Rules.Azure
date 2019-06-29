@@ -238,7 +238,7 @@ function VisitSqlServer {
         $resources = @();
 
         # Get SQL Server firewall rules
-        $resources += Get-AzSqlServerFirewallRule -ServerName $resource.Name -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context | Add-Member -MemberType NoteProperty -Name 'type' -Value 'firewallRules' -PassThru;
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.SQL/servers/firewallRules' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2014-04-01' -ExpandProperties;
         $sqlServer | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
