@@ -24,7 +24,7 @@ Describe 'Azure.ACR' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.ACR.json';
 
     Context 'Conditions' {
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -WarningAction Ignore;
+        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -WarningAction Ignore -ErrorAction Stop;
 
         It 'Azure.ACR.AdminUser' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACR.AdminUser' };

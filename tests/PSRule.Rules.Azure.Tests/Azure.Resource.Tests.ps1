@@ -25,7 +25,7 @@ Describe 'Azure.Resource' {
 
     Context 'Conditions' {
         $options = New-PSRuleOption -BaselineConfiguration @{ 'azureAllowedRegions' = @('region-A') };
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -Option $options -InputPath $dataPath -WarningAction Ignore;
+        $result = Invoke-PSRule -Module PSRule.Rules.Azure -Option $options -InputPath $dataPath -WarningAction Ignore -ErrorAction Stop;
 
         It 'Azure.Resource.UseTags' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Resource.UseTags' };

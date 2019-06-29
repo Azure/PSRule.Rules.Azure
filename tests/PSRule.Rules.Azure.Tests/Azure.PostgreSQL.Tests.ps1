@@ -24,7 +24,7 @@ Describe 'Azure.PostgreSQL' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.PostgreSQL.json';
 
     Context 'Conditions' {
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -WarningAction Ignore;
+        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -WarningAction Ignore -ErrorAction Stop;
 
         It 'Azure.PostgreSQL.UseSSL' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PostgreSQL.UseSSL' };
