@@ -73,5 +73,21 @@ Describe 'Azure.MySQL' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'server-A';
         }
+
+        It 'Azure.MySQL.FirewallIPRange' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.FirewallIPRange' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'server-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'server-A';
+        }
     }
 }

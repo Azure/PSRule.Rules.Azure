@@ -17,11 +17,17 @@ Rule 'Azure.SQL.AllowAzureAccess' -If { ResourceType 'Microsoft.Sql/servers' } -
     $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
         $_.Type -eq 'Microsoft.Sql/servers/firewallRules' -and
         (
-            $_.FirewallRuleName -eq 'AllowAllWindowsAzureIps' -or
-            ($_.StartIpAddress -eq '0.0.0.0' -and $_.EndIpAddress -eq '0.0.0.0')
+            $_.ResourceName -eq 'AllowAllWindowsAzureIps' -or
+            ($_.properties.StartIpAddress -eq '0.0.0.0' -and $_.properties.EndIpAddress -eq '0.0.0.0')
         )
     })
     $firewallRules.Length -eq 0;
+}
+
+# Synopsis: Determine if there is an excessive number of permitted IP addresses
+Rule 'Azure.SQL.FirewallIPRange' -If { ResourceType 'Microsoft.Sql/servers' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
+    $summary = GetIPAddressSummary
+    $summary.Public -le 10;
 }
 
 # Synopsis: Enable threat detection for Azure SQL logical server

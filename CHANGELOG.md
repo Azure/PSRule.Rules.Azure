@@ -2,6 +2,8 @@
 ## Unreleased
 
 - Fix rule `Azure.Storage.SoftDelete` and `Azure.Storage.SecureTransferRequired` returns null. [#64](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/64)
+- Added SQL firewall rule range check to determine an excessive number of permitted IP addresses. [#3](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/3) [#10](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/10) [#54](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/54)
+  - The rules `Azure.SQL.FirewallIPRange`, `Azure.MySQL.FirewallIPRange` and `Azure.PostgreSQL.FirewallIPRange` were added to check SQL, MySQL and PostgreSQL.
 
 ## v0.2.0-B190604 (pre-release)
 

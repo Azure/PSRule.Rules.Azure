@@ -28,3 +28,9 @@ Rule 'Azure.MySQL.AllowAzureAccess' -If { ResourceType 'Microsoft.DBforMySQL/ser
     })
     $firewallRules.Length -eq 0;
 }
+
+# Synopsis: Determine if there is an excessive number of permitted IP addresses
+Rule 'Azure.MySQL.FirewallIPRange' -If { ResourceType 'Microsoft.DBforMySQL/servers' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
+    $summary = GetIPAddressSummary
+    $summary.Public -le 10;
+}

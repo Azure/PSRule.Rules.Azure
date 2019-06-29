@@ -73,5 +73,21 @@ Describe 'Azure.PostgreSQL' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'server-A';
         }
+
+        It 'Azure.PostgreSQL.FirewallIPRange' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PostgreSQL.FirewallIPRange' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'server-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'server-A';
+        }
     }
 }

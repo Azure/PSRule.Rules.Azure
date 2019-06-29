@@ -20,12 +20,16 @@
         },
         "resources": [
             {
+                "ResourceName": "ClientIPAddress_1",
+                "Name": "ClientIPAddress_1",
+                "Properties": {
+                    "startIpAddress": "10.1.1.1",
+                    "endIpAddress": "10.1.1.1"
+                },
                 "ResourceGroupName": "test-rg",
-                "ServerName": "server-A",
-                "StartIpAddress": "10.1.1.0",
-                "EndIpAddress": "10.1.1.255",
-                "FirewallRuleName": "AllowSubnet",
-                "type": "Microsoft.Sql/servers/firewallRules"
+                "Type": "Microsoft.Sql/servers/firewallRules",
+                "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
                 "type": "Microsoft.Sql/servers/auditingSettings",
@@ -73,92 +77,136 @@
         },
         "resources": [
             {
+                "ResourceName": "AllowAllWindowsAzureIps",
+                "Name": "AllowAllWindowsAzureIps",
+                "Properties": {
+                    "startIpAddress": "0.0.0.0",
+                    "endIpAddress": "0.0.0.0"
+                },
                 "ResourceGroupName": "test-rg",
-                "ServerName": "server-B",
-                "StartIpAddress": "0.0.0.0",
-                "EndIpAddress": "0.0.0.0",
-                "FirewallRuleName": "AllowAllWindowsAzureIps",
-                "type": "Microsoft.Sql/servers/firewallRules"
+                "Type": "Microsoft.Sql/servers/firewallRules",
+                "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
+                "ResourceName": "ClientIPAddress_1",
+                "Name": "ClientIPAddress_1",
+                "Properties": {
+                    "startIpAddress": "10.1.1.1",
+                    "endIpAddress": "10.1.1.1"
+                },
                 "ResourceGroupName": "test-rg",
-                "ServerName": "server-A",
-                "StartIpAddress": "10.1.1.0",
-                "EndIpAddress": "10.1.1.255",
-                "FirewallRuleName": "AllowSubnet-A",
-                "type": "Microsoft.Sql/servers/firewallRules"
+                "Type": "Microsoft.Sql/servers/firewallRules",
+                "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
+                "ResourceName": "ClientIPAddress_2",
+                "Name": "ClientIPAddress_2",
+                "Properties": {
+                    "startIpAddress": "10.1.2.1",
+                    "endIpAddress": "10.1.2.1"
+                },
                 "ResourceGroupName": "test-rg",
-                "ServerName": "server-A",
-                "StartIpAddress": "10.1.2.0",
-                "EndIpAddress": "10.1.2.255",
-                "FirewallRuleName": "AllowSubnet-B",
-                "type": "Microsoft.Sql/servers/firewallRules"
+                "Type": "Microsoft.Sql/servers/firewallRules",
+                "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
+                "ResourceName": "ClientIPAddress_3",
+                "Name": "ClientIPAddress_3",
+                "Properties": {
+                    "startIpAddress": "10.1.3.1",
+                    "endIpAddress": "10.1.3.1"
+                },
                 "ResourceGroupName": "test-rg",
-                "ServerName": "server-A",
-                "StartIpAddress": "10.1.3.0",
-                "EndIpAddress": "10.1.3.255",
-                "FirewallRuleName": "AllowSubnet-C",
-                "type": "Microsoft.Sql/servers/firewallRules"
+                "Type": "Microsoft.Sql/servers/firewallRules",
+                "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
+                "ResourceName": "ClientIPAddress_4",
+                "Name": "ClientIPAddress_4",
+                "Properties": {
+                    "startIpAddress": "10.1.4.1",
+                    "endIpAddress": "10.1.4.1"
+                },
                 "ResourceGroupName": "test-rg",
-                "ServerName": "server-A",
-                "StartIpAddress": "10.1.4.0",
-                "EndIpAddress": "10.1.4.255",
-                "FirewallRuleName": "AllowSubnet-D",
-                "type": "Microsoft.Sql/servers/firewallRules"
+                "Type": "Microsoft.Sql/servers/firewallRules",
+                "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
+                "ResourceName": "ClientIPAddress_5",
+                "Name": "ClientIPAddress_5",
+                "Properties": {
+                    "startIpAddress": "10.1.5.1",
+                    "endIpAddress": "10.1.5.1"
+                },
                 "ResourceGroupName": "test-rg",
-                "ServerName": "server-A",
-                "StartIpAddress": "10.1.5.0",
-                "EndIpAddress": "10.1.5.255",
-                "FirewallRuleName": "AllowSubnet-E",
-                "type": "Microsoft.Sql/servers/firewallRules"
+                "Type": "Microsoft.Sql/servers/firewallRules",
+                "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
+                "ResourceName": "ClientIPAddress_6",
+                "Name": "ClientIPAddress_6",
+                "Properties": {
+                    "startIpAddress": "10.1.6.1",
+                    "endIpAddress": "10.1.6.1"
+                },
                 "ResourceGroupName": "test-rg",
-                "ServerName": "server-A",
-                "StartIpAddress": "10.1.6.0",
-                "EndIpAddress": "10.1.6.255",
-                "FirewallRuleName": "AllowSubnet-F",
-                "type": "Microsoft.Sql/servers/firewallRules"
+                "Type": "Microsoft.Sql/servers/firewallRules",
+                "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
+                "ResourceName": "ClientIPAddress_7",
+                "Name": "ClientIPAddress_7",
+                "Properties": {
+                    "startIpAddress": "10.1.7.1",
+                    "endIpAddress": "10.1.7.1"
+                },
                 "ResourceGroupName": "test-rg",
-                "ServerName": "server-A",
-                "StartIpAddress": "10.1.7.0",
-                "EndIpAddress": "10.1.7.255",
-                "FirewallRuleName": "AllowSubnet-G",
-                "type": "Microsoft.Sql/servers/firewallRules"
+                "Type": "Microsoft.Sql/servers/firewallRules",
+                "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
+                "ResourceName": "ClientIPAddress_8",
+                "Name": "ClientIPAddress_8",
+                "Properties": {
+                    "startIpAddress": "10.1.8.1",
+                    "endIpAddress": "10.1.8.1"
+                },
                 "ResourceGroupName": "test-rg",
-                "ServerName": "server-A",
-                "StartIpAddress": "10.1.8.0",
-                "EndIpAddress": "10.1.8.255",
-                "FirewallRuleName": "AllowSubnet-H",
-                "type": "Microsoft.Sql/servers/firewallRules"
+                "Type": "Microsoft.Sql/servers/firewallRules",
+                "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
+                "ResourceName": "ClientIPAddress_9",
+                "Name": "ClientIPAddress_9",
+                "Properties": {
+                    "startIpAddress": "10.1.9.1",
+                    "endIpAddress": "10.1.9.1"
+                },
                 "ResourceGroupName": "test-rg",
-                "ServerName": "server-A",
-                "StartIpAddress": "10.1.9.0",
-                "EndIpAddress": "10.1.9.255",
-                "FirewallRuleName": "AllowSubnet-I",
-                "type": "Microsoft.Sql/servers/firewallRules"
+                "Type": "Microsoft.Sql/servers/firewallRules",
+                "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
+                "ResourceName": "ClientIPAddress_10",
+                "Name": "ClientIPAddress_10",
+                "Properties": {
+                    "startIpAddress": "17.1.10.1",
+                    "endIpAddress": "17.1.10.255"
+                },
                 "ResourceGroupName": "test-rg",
-                "ServerName": "server-A",
-                "StartIpAddress": "10.0.0.0",
-                "EndIpAddress": "10.255.255.255",
-                "FirewallRuleName": "AllowSubnet",
-                "type": "Microsoft.Sql/servers/firewallRules"
+                "Type": "Microsoft.Sql/servers/firewallRules",
+                "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             }
         ]
     },
