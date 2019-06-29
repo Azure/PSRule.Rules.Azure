@@ -153,5 +153,49 @@
                 "Type": "PSSeriviceProperties"
             }
         ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-C",
+        "Kind": "Storage",
+        "Location": "region",
+        "ResourceName": "storage-C",
+        "Name": "storage-C",
+        "Properties": {
+            "networkAcls": {
+                "bypass": "AzureServices",
+                "virtualNetworkRules": [],
+                "ipRules": [],
+                "defaultAction": "Allow"
+            },
+            "encryption": {
+                "services": {
+                    "file": {},
+                    "blob": {}
+                },
+                "keySource": "Microsoft.Storage"
+            },
+            "primaryEndpoints": {
+                "blob": "https://storage-C.blob.core.windows.net/",
+                "queue": "https://storage-C.queue.core.windows.net/",
+                "table": "https://storage-C.table.core.windows.net/",
+                "file": "https://storage-C.file.core.windows.net/"
+            },
+            "primaryLocation": "region",
+            "statusOfPrimary": "available"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Storage/storageAccounts",
+        "ResourceType": "Microsoft.Storage/storageAccounts",
+        "Sku": {
+            "Name": "Standard_LRS",
+            "Tier": "Standard",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
     }
 ]

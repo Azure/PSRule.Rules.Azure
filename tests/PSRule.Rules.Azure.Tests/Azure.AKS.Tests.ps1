@@ -24,7 +24,7 @@ Describe 'Azure.AKS' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.AKS.json';
 
     Context 'Conditions' {
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -WarningAction Ignore;
+        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -WarningAction Ignore -ErrorAction Stop;
 
         It 'Azure.AKS.MinNodeCount' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.MinNodeCount' };

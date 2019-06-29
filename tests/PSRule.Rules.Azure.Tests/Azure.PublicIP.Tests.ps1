@@ -24,7 +24,7 @@ Describe 'Azure.PublicIP' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.PublicIP.json';
 
     Context 'Conditions' {
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -WarningAction Ignore;
+        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -WarningAction Ignore -ErrorAction Stop;
 
         It 'Azure.PublicIP.IsAttached' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PublicIP.IsAttached' };
