@@ -382,12 +382,9 @@ function VisitRecoveryServices {
     process {
         $resources = @();
 
-        $vault = Get-AzRecoveryServicesVault -Name $Resource.Name -ResourceGroupName $Resource.ResourceGroupName -DefaultProfile $Context;
-        $Null = Set-AzRecoveryServicesVaultContext -Vault $vault -DefaultProfile $Context;
-        $Null = Set-AzRecoveryServicesAsrVaultContext -Vault $vault -DefaultProfile $Context;
-        $resources += Get-AzRecoveryServicesAsrAlertSetting | SetResourceType -ResourceType 'Microsoft.RecoveryServices/vaults/replicationAlertSettings';
-        $resources += Get-AzRecoveryServicesBackupProperty -Vault $vault -DefaultProfile $Context | SetResourceType -ResourceType 'Microsoft.RecoveryServices/vaults/backupProperty';
-
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.RecoveryServices/vaults/replicationRecoveryPlans' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2018-07-10' -ExpandProperties;
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.RecoveryServices/vaults/replicationAlertSettings' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2018-07-10' -ExpandProperties;
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.RecoveryServices/vaults/backupstorageconfig/vaultstorageconfig' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2018-07-10' -ExpandProperties;
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }

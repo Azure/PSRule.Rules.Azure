@@ -3,6 +3,7 @@
         "ms-vscode.powershell",
         "ms-azure-devops.azure-pipelines",
         "redhat.vscode-yaml",
-        "bewhite.psrule-vscode-preview"
+        "bewhite.psrule-vscode-preview",
+        "streetsidesoftware.code-spell-checker"
     ]
 }

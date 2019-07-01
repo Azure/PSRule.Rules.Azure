@@ -16,5 +16,8 @@
     },
     "files.associations": {
         "**/.azure-pipelines/*.yaml": "azure-pipelines"
-    }
+    },
+    "cSpell.words": [
+        "cmdlet"
+    ]
 }
