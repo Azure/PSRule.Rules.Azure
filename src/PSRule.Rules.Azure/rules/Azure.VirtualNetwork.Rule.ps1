@@ -45,17 +45,23 @@ Rule 'Azure.VirtualNetwork.NSGAnyInboundSource' -If { ResourceType 'Microsoft.Ne
 
 # Synopsis: Application Gateway should use a minimum of two instances
 Rule 'Azure.VirtualNetwork.AppGwMinInstance' -If { ResourceType 'Microsoft.Network/applicationGateways' } -Tag @{ severity = 'Important'; category = 'Reliability' } {
-    $TargetObject.Properties.sku.capacity -ge 2
+    AnyOf {
+        # Applies to v1 and v2 without autoscale
+        $TargetObject.Properties.sku.capacity -ge 2
+
+        # Applies to v2 with autoscale
+        $TargetObject.Properties.autoscaleConfiguration.minCapacity -ge 2
+    }
 }
 
 # Synopsis: Application Gateway should use a minimum of Medium
 Rule 'Azure.VirtualNetwork.AppGwMinSku' -If { ResourceType 'Microsoft.Network/applicationGateways' } -Tag @{ severity = 'Important'; category = 'Performance' } {
-    Within 'Properties.sku.name' 'WAF_Medium', 'Standard_Medium', 'WAF_Large', 'Standard_Large'
+    Within 'Properties.sku.name' 'WAF_Medium', 'Standard_Medium', 'WAF_Large', 'Standard_Large', 'WAF_v2', 'Standard_v2'
 }
 
 # Synopsis: Internet accessible Application Gateways should use WAF
 Rule 'Azure.VirtualNetwork.AppGwUseWAF' -If { (ResourceType 'Microsoft.Network/applicationGateways') -and (IsAppGwPublic) } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
-    Within 'Properties.sku.tier' 'WAF'
+    Within 'Properties.sku.tier' 'WAF', 'WAF_v2'
 }
 
 # Synopsis: Application Gateway should only accept a minimum of TLS 1.2

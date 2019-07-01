@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+- Added support for Application Gateway v2. [#75](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/75)
+
 ## v0.2.0-B190706 (pre-release)
 
 - Fix rule `Azure.AKS.UseRBAC` returns null. [#60](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/60)

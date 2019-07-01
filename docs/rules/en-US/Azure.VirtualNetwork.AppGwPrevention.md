@@ -12,8 +12,13 @@ Internet exposed Application Gateways should use prevention mode to protect back
 
 ## DESCRIPTION
 
-Internet exposed Application Gateways should use prevention mode to protect backend resources.
+Application Gateways with Web Application Firewall (WAF) enabled support two modes of operation, detection and prevention.
+
+- Detection - monitors and logs all threat alerts. In this mode, the web application firewall doesn't block incoming requests.
+- Protection - blocks intrusions and attacks that the rules detect.
 
 ## RECOMMENDATION
 
-Internet exposed Application Gateways should use prevention mode to protect backend resources.
+Consider switching Internet exposed Application Gateways to use prevention mode to protect backend resources.
+
+For more information see [Application Gateway WAF modes](https://docs.microsoft.com/en-us/azure/application-gateway/waf-overview#waf-modes).
