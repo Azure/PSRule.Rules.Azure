@@ -26,9 +26,7 @@ PSRule.Rules.Azure | Validate Azure resources | [latest][module] / [instructions
 
 ### Export resource data
 
-To validate Azure resources running in a subscription, export the resource data with the `Export-AzRuleData` cmdlet.
-
-The `Export-AzRuleData` cmdlet exports a resource graph for one or more subscriptions that can be used for analysis with the rules in this module.
+To validate Azure resources running in a subscription, export the resource data with the `Export-AzRuleData` cmdlet. The `Export-AzRuleData` cmdlet exports a resource graph for one or more subscriptions that can be used for analysis with the rules in this module.
 
 By default, resources for the current subscription context are exported. See below for more options.
 
@@ -66,8 +64,20 @@ To export resource data for specific subscriptions use:
 For example:
 
 ```powershell
-# Export data from specific subscriptions
+# Export data from two specific subscriptions
 Export-AzRuleData -Subscription 'Contoso Production', 'Contoso Non-production'
+```
+
+To export specific resource data use:
+
+- `-ResourceGroupName` - to filter resources by Resource Group.
+- `-Tag` - to filter resources based on tag.
+
+For example:
+
+```powershell
+# Export information from two resource groups within the current subscription context
+Export-AzRuleData -ResourceGroupName 'rg-app1-web', 'rg-app1-db'
 ```
 
 To export resource data for all subscription contexts use:

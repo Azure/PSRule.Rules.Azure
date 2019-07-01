@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - Windows PowerShell 5.1 with .NET Framework 4.7.2+ or
-- PowerShell Core 6.0 or greater on Windows, macOS and Linux
+- PowerShell Core 6.0 or greater on Windows, MacOS and Linux
 
 For a list of platforms that PowerShell Core is supported on [see](https://github.com/PowerShell/PowerShell#get-powershell).
 
@@ -13,7 +13,6 @@ The following modules are required for `PSRule.Rules.Azure` to work:
 - Az.Accounts
 - Az.Resources
 - Az.Security
-- Az.Sql
 - Az.Storage
 - Az.Websites
 
@@ -39,7 +38,7 @@ Save for offline use from PowerShell Gallery:
 
 ```powershell
 # Save module, in the .\modules directory
-Save-Module -Name 'PSRule', 'PSRule.Rules.Azure', 'Az.Accounts', 'Az.Resources', 'Az.Security', 'Az.Sql', 'Az.Storage', 'Az.Websites' -Path '.\modules';
+Save-Module -Name 'PSRule', 'PSRule.Rules.Azure', 'Az.Accounts', 'Az.Resources', 'Az.Security', 'Az.Storage', 'Az.Websites' -Path '.\modules';
 ```
 
 > For pre-release versions the `-AllowPrerelease` switch must be added when calling `Install-Module` or `Save-Module`.
