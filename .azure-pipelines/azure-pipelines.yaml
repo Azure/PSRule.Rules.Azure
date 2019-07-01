@@ -36,7 +36,7 @@ stages:
           imageName: 'macos-10.13'
         Windows:
           imageName: 'vs2017-win2016'
-          publishModule: 'true'
+          publish: 'true'
           analysis: 'true'
           coverage: 'true'
     pool:
@@ -91,13 +91,13 @@ stages:
       inputs:
         artifactName: PSRule.Rules.Azure
         targetPath: out/modules/PSRule.Rules.Azure
-      condition: and(succeeded(), eq(variables['publishModule'], 'true'))
+      condition: and(succeeded(), eq(variables['publish'], 'true'))
 
 # Release pipeline
 - stage: Release
   displayName: Release
   dependsOn: Build
-  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v0.')
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v0.'))
   jobs:
   - job:
     displayName: Live
@@ -127,4 +127,4 @@ stages:
         releaseNotes: 'See [change log](https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/CHANGELOG.md)'
         assetUploadMode: replace
         addChangeLog: false
-        isPreRelease: $[ contains(variables['Build.SourceBranchName'], '-B') ]
+        isPreRelease: $(contains(variables['Build.SourceBranchName'], '-B'))
