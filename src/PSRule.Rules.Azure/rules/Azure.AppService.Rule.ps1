@@ -9,7 +9,7 @@ Rule 'Azure.AppService.PlanInstanceCount' -If { ResourceType 'Microsoft.Web/serv
 
 # Synopsis: Use at least a Standard App Service Plan
 Rule 'Azure.AppService.MinPlan' -If { ResourceType 'Microsoft.Web/serverfarms' } -Tag @{ severity = 'Important'; category = 'Performance' } {
-    Hint 'Use a Standard or high plans for production services'
+    Recommend 'Use a Standard or high plans for production services'
 
     ($TargetObject.Sku.tier -eq 'PremiumV2') -or
     ($TargetObject.Sku.tier -eq 'Premium') -or
@@ -18,14 +18,14 @@ Rule 'Azure.AppService.MinPlan' -If { ResourceType 'Microsoft.Web/serverfarms' }
 
 # Synopsis: Disable client affinity for stateless services
 Rule 'Azure.AppService.ARRAffinity' -If { ResourceType 'Microsoft.Web/sites' } -Tag @{ severity = 'Awareness'; category = 'Performance' } {
-    Hint 'Disable ARR affinity when not required'
+    Recommend 'Disable ARR affinity when not required'
 
     $TargetObject.Properties.clientAffinityEnabled -eq $False
 }
 
 # Synopsis: Use HTTPS only
 Rule 'Azure.AppService.UseHTTPS' -If { ResourceType 'Microsoft.Web/sites' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
-    Hint 'Disable HTTP when not required'
+    Recommend 'Disable HTTP when not required'
 
     $TargetObject.Properties.httpsOnly -eq $True
 }
