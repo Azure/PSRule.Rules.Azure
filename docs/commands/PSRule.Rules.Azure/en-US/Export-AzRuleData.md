@@ -42,10 +42,51 @@ Resource data will be exported to the current working directory by default as JS
 ### Example 1
 
 ```powershell
+PS C:\> Export-AzRuleData
+```
+
+```text
+    Directory: C:\
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----         1/07/2019 10:03 AM        7304948 00000000-0000-0000-0000-000000000001.json
+```
+
+Export information from current subscription context.
+
+### Example 2
+
+```powershell
 PS C:\> Export-AzRuleData -Subscription 'Contoso Production', 'Contoso Non-production'
 ```
 
+```text
+    Directory: C:\
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----         1/07/2019 10:03 AM        7304948 00000000-0000-0000-0000-000000000001.json
+-a----         1/07/2019 10:03 AM        7304948 00000000-0000-0000-0000-000000000002.json
+```
+
 Export information from subscriptions by name.
+
+### Example 3
+
+```powershell
+PS C:\> Export-AzRuleData -ResourceGroupName 'rg-app1-web', 'rg-app1-db'
+```
+
+```text
+    Directory: C:\
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----         1/07/2019 10:03 AM        7304948 00000000-0000-0000-0000-000000000001.json
+```
+
+Export information from two resource groups within the current subscription context.
 
 ## PARAMETERS
 
@@ -131,7 +172,7 @@ Accept wildcard characters: False
 
 ### -PassThru
 
-By default, FileInfo objects are returned to the pipeline for each JSON file created. When -PassThru is specified, JSON files are not created and Azure resource objects are returned to the pipeline instead.
+By default, FileInfo objects are returned to the pipeline for each JSON file created. When `-PassThru` is specified, JSON files are not created and Azure resource objects are returned to the pipeline instead.
 
 ```yaml
 Type: SwitchParameter
