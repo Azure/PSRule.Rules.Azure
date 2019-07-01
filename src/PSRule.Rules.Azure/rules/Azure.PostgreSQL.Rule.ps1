@@ -9,7 +9,7 @@ Rule 'Azure.PostgreSQL.UseSSL' -If { ResourceType 'Microsoft.DBforPostgreSQL/ser
 
 # Synopsis: Determine if there is an excessive number of firewall rules
 Rule 'Azure.PostgreSQL.FirewallRuleCount' -If { ResourceType 'Microsoft.DBforPostgreSQL/servers' } -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
-    Hint 'PostgreSQL Server has > 10 firewall rules, some rules may not be needed';
+    Recommend 'PostgreSQL Server has > 10 firewall rules, some rules may not be needed';
 
     $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
         $_.Type -eq 'Microsoft.DBforPostgreSQL/servers/firewallRules'

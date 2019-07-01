@@ -16,7 +16,7 @@ Rule 'Azure.VirtualMachine.UseManagedDisks' -If { ResourceType 'Microsoft.Comput
 
 # Synopsis: VMs much use premium disks or use availability sets/ zones to meet SLA requirements
 Rule 'Azure.VirtualMachine.Standalone' -If { ResourceType 'Microsoft.Compute/virtualMachines' } -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
-    Hint 'Virtual machines should use availability sets or only premium disks'
+    Recommend 'Virtual machines should use availability sets or only premium disks'
 
     $types = @(
         $TargetObject.properties.storageProfile.osDisk.managedDisk.storageAccountType
@@ -53,14 +53,14 @@ Rule 'Azure.VirtualMachine.DiskCaching' -If { ResourceType 'Microsoft.Compute/vi
 
 # Synopsis: Network interfaces should inherit from virtual network
 Rule 'Azure.VirtualMachine.UniqueDns' -If { ResourceType 'Microsoft.Network/networkInterfaces' } -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
-    Hint 'Network interfaces with DNS settings may increase complexity'
+    Recommend 'Network interfaces with DNS settings may increase complexity'
 
     $TargetObject.Properties.dnsSettings.dnsServers.Length -eq 0
 }
 
 # Synopsis: Managed disks should be attached to virtual machines
 Rule 'Azure.VirtualMachine.DiskAttached' -If { (ResourceType 'Microsoft.Compute/disks') -and ($TargetObject.ResourceName -notlike '*-ASRReplica') } -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
-    Hint 'Disks that are not attached may not be required'
+    Recommend 'Disks that are not attached may not be required'
 
     # Disks should be attached unless they are used by ASR, which are not attached until failover
     # Disks for VMs that are off are marked as Reserved

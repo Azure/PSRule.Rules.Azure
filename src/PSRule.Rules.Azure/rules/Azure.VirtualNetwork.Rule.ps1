@@ -4,7 +4,7 @@
 
 # Synopsis: Subnets should have NSGs assigned, except for the GatewaySubnet
 Rule 'Azure.VirtualNetwork.UseNSGs' -If { ResourceType 'Microsoft.Network/virtualNetworks' } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
-    Hint 'Subnets should have NSGs assigned'
+    Recommend 'Subnets should have NSGs assigned'
 
     # Get subnets
     $subnets = $TargetObject.properties.subnets | Where-Object { $_.Name -ne 'GatewaySubnet' };
@@ -32,7 +32,7 @@ Rule 'Azure.VirtualNetwork.SingleDNS'  -If { ResourceType 'Microsoft.Network/vir
 
 # Synopsis: Network security groups should avoid any inbound rules
 Rule 'Azure.VirtualNetwork.NSGAnyInboundSource' -If { ResourceType 'Microsoft.Network/networkSecurityGroups' } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
-    Hint 'Avoid rules that apply to all source addresses'
+    Recommend 'Avoid rules that apply to all source addresses'
 
     $rules = $TargetObject.properties.securityRules | Where-Object {
         $_.properties.direction -eq 'Inbound' -and
