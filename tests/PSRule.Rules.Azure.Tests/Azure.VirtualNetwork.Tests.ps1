@@ -86,8 +86,8 @@ Describe 'Azure.VirtualNetwork' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'appgw-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C';
         }
 
         It 'Azure.VirtualNetwork.AppGwMinSku' {
@@ -102,8 +102,8 @@ Describe 'Azure.VirtualNetwork' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'appgw-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C';
         }
 
         It 'Azure.VirtualNetwork.AppGwUseWAF' {
@@ -118,8 +118,8 @@ Describe 'Azure.VirtualNetwork' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'appgw-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C';
         }
 
         It 'Azure.VirtualNetwork.AppGwSSLPolicy' {
@@ -128,8 +128,8 @@ Describe 'Azure.VirtualNetwork' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'appgw-B';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgw-B', 'appgw-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -150,8 +150,8 @@ Describe 'Azure.VirtualNetwork' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'appgw-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C';
         }
     }
 }
