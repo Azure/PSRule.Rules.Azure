@@ -8,12 +8,16 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 
 ## SYNOPSIS
 
-Application Gateway should use a minimum of two instances.
+Application Gateways should use a minimum of two instances.
 
 ## DESCRIPTION
 
-Application Gateway should use a minimum of two instances.
+Application Gateways should use two or more instances to be covered by the Service Level Agreement (SLA).
 
 ## RECOMMENDATION
 
-Application Gateway should use a minimum of two instances.
+When using Application Gateway v1 or v2 with auto-scaling disabled, specify the number of instances to be two or more.
+
+When auto-scaling is enabled with Application Gateway v2, configure the minimum number of instances to be two or more.
+
+For more information see [Azure Application Gateway SLA](https://azure.microsoft.com/en-au/support/legal/sla/application-gateway/).
