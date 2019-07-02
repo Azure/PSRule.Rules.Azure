@@ -13,8 +13,7 @@ Set-StrictMode -Version latest;
 
 if ($Env:SYSTEM_DEBUG -eq 'true') {
     $VerbosePreference = 'Continue';
-}$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+}
 
 # Setup tests paths
 $rootPath = $PWD;
