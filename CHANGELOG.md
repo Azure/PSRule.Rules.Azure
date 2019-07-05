@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+## v0.2.0-B190715 (pre-release)
+
 - Added support for Application Gateway v2. [#75](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/75)
 - Added VNET rule to check for local DNS. [#68](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/68)
 - Added WAF hardening rules for Application Gateway. [#78](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/78)
