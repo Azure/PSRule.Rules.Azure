@@ -2,7 +2,8 @@
 Document 'Azure' {
     Title 'Azure rules'
 
-    Get-PSRule -WarningAction SilentlyContinue | Table -Property @{ Name = 'RuleName'; Expression = {
+    Import-Module .\out\modules\PSRule.Rules.Azure
+    Get-PSRule -Module PSRule.Rules.Azure -WarningAction SilentlyContinue | Table -Property @{ Name = 'RuleName'; Expression = {
         "[$($_.RuleName)]($($_.RuleName).md)"
     }}, Description
 }

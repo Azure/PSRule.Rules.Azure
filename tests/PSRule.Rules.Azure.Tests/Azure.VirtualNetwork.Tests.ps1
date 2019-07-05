@@ -20,7 +20,7 @@ $rootPath = $PWD;
 Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
 $here = (Resolve-Path $PSScriptRoot).Path;
 
-Describe 'Azure.VirtualNetwork' {
+Describe 'Azure.VirtualNetwork' -Tag 'Network' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
 
     Context 'Conditions' {
@@ -44,6 +44,22 @@ Describe 'Azure.VirtualNetwork' {
 
         It 'Azure.VirtualNetwork.SingleDNS' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.SingleDNS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vnet-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vnet-A';
+        }
+
+        It 'Azure.VirtualNetwork.LocalDNS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.LocalDNS' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -152,6 +168,54 @@ Describe 'Azure.VirtualNetwork' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C';
+        }
+
+        It 'Azure.VirtualNetwork.AppGwWAFEnabled' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.AppGwWAFEnabled' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'appgw-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C';
+        }
+
+        It 'Azure.VirtualNetwork.AppGwOWASP' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.AppGwOWASP' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'appgw-A';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'appgw-C';
+        }
+
+        It 'Azure.VirtualNetwork.AppGwWAFRules' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.AppGwWAFRules' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'appgw-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'appgw-A';
         }
     }
 }

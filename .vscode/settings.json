@@ -18,6 +18,9 @@
         "**/.azure-pipelines/*.yaml": "azure-pipelines"
     },
     "cSpell.words": [
-        "cmdlet"
+        "OWASP",
+        "VNET",
+        "cmdlet",
+        "vnets"
     ]
 }
