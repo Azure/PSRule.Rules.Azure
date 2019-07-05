@@ -30,6 +30,24 @@ Rule 'Azure.VirtualNetwork.SingleDNS'  -If { ResourceType 'Microsoft.Network/vir
     }
 }
 
+# Synopsis: VNETs should use Azure local DNS servers
+Rule 'Azure.VirtualNetwork.LocalDNS' -If { ResourceType 'Microsoft.Network/virtualNetworks' } {
+    if (!(Exists 'properties.dhcpOptions.dnsServers')) {
+        $True;
+    }
+    else {
+        # Primary DNS server must be within VNET address space or peered VNET
+        $dnsServers = @($TargetObject.Properties.dhcpOptions.dnsServers)
+        $primary = $dnsServers[0]
+        $localRanges = @();
+        $localRanges += $TargetObject.Properties.addressSpace.addressPrefixes
+        $localRanges += $TargetObject.Properties.virtualNetworkPeerings.properties.remoteAddressSpace.addressPrefixes
+
+        # Determine if the primary is in range
+        WithinCIDR -IP $primary -CIDR $localRanges
+    }
+}
+
 # Synopsis: Network security groups should avoid any inbound rules
 Rule 'Azure.VirtualNetwork.NSGAnyInboundSource' -If { ResourceType 'Microsoft.Network/networkSecurityGroups' } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
     Recommend 'Avoid rules that apply to all source addresses'
@@ -60,7 +78,7 @@ Rule 'Azure.VirtualNetwork.AppGwMinSku' -If { ResourceType 'Microsoft.Network/ap
 }
 
 # Synopsis: Internet accessible Application Gateways should use WAF
-Rule 'Azure.VirtualNetwork.AppGwUseWAF' -If { (ResourceType 'Microsoft.Network/applicationGateways') -and (IsAppGwPublic) } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
+Rule 'Azure.VirtualNetwork.AppGwUseWAF' -If { (IsAppGwPublic) } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
     Within 'Properties.sku.tier' 'WAF', 'WAF_v2'
 }
 
@@ -74,6 +92,23 @@ Rule 'Azure.VirtualNetwork.AppGwSSLPolicy' -If { ResourceType 'Microsoft.Network
 }
 
 # Synopsis: Internet exposed Application Gateways should use prevention mode to protect backend resources
-Rule 'Azure.VirtualNetwork.AppGwPrevention' -If { (ResourceType 'Microsoft.Network/applicationGateways') -and (IsAppGwPublic) } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
+Rule 'Azure.VirtualNetwork.AppGwPrevention' -If { (IsAppGwPublic) } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
     Within 'Properties.webApplicationFirewallConfiguration.firewallMode' 'Prevention'
+}
+
+# Synopsis: Application Gateway WAF must be enabled to protect backend resources
+Rule 'Azure.VirtualNetwork.AppGwWAFEnabled' -If { (IsAppGwPublic) } {
+    Within 'Properties.webApplicationFirewallConfiguration.enabled' $True
+}
+
+# Synopsis: Application Gateway WAF should use OWASP 3.0 rules
+Rule 'Azure.VirtualNetwork.AppGwOWASP' -If { (IsAppGwWAF) } {
+    Within 'Properties.webApplicationFirewallConfiguration.ruleSetType' 'OWASP'
+    Within 'Properties.webApplicationFirewallConfiguration.ruleSetVersion' '3.0'
+}
+
+# Synopsis: Application Gateway WAF should not disable rules
+Rule 'Azure.VirtualNetwork.AppGwWAFRules' -If { (IsAppGwWAF) } {
+    $disabledRules = @($TargetObject.Properties.webApplicationFirewallConfiguration.disabledRuleGroups)
+    $disabledRules.Count -eq 0
 }

@@ -79,13 +79,37 @@ function global:IsAppGwPublic {
     [OutputType([System.Boolean])]
     param ()
     process {
+        if ($TargetObject.ResourceType -ne 'Microsoft.Network/applicationGateways') {
+            return $False;
+        }
+
         $result = $False;
+
         foreach ($ip in $TargetObject.Properties.frontendIPConfigurations) {
             if (Exists 'properties.publicIPAddress.id' -InputObject $ip) {
                 $result = $True;
             }
         }
         return $result;
+    }
+}
+
+# Determine if the resource is an Application Gateway with WAF enabled
+function global:IsAppGwWAF {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($TargetObject.ResourceType -ne 'Microsoft.Network/applicationGateways') {
+            return $False;
+        }
+        if ($TargetObject.Properties.sku.tier -notin ('WAF', 'WAF_v2')) {
+            return $False;
+        }
+        if ($TargetObject.Properties.webApplicationFirewallConfiguration.enabled -ne $True) {
+            return $False;
+        }
+        return $True;
     }
 }
 
@@ -122,6 +146,26 @@ function global:SupportsTags {
         }
 
         return $True;
+    }
+}
+
+function global:ConvertToUInt64 {
+    param (
+        [Parameter(Mandatory = $True)]
+        [System.Net.IPAddress]$IP
+    )
+
+    process {
+        $bytes = $IP.GetAddressBytes();
+        $size = $bytes.Length;
+
+        [System.UInt64]$result = 0;
+
+        for ($i = 0; $i -lt $size; $i++) {
+            $result = ($result -shl 8) + $bytes[$i];
+        }
+
+        return $result;
     }
 }
 
@@ -164,26 +208,6 @@ function global:GetIPAddressSummary {
             }
         })
 
-        function ConvertToUInt64 {
-            param (
-                [Parameter(Mandatory = $True)]
-                [System.Net.IPAddress]$IP
-            )
-
-            process {
-                $bytes = $IP.GetAddressBytes();
-                $size = $bytes.Length;
-
-                [System.UInt64]$result = 0;
-
-                for ($i = 0; $i -lt $size; $i++) {
-                    $result = ($result -shl 8) + $bytes[$i];
-                }
-
-                return $result;
-            }
-        }
-
         $private = 0;
         $public = 0;
 
@@ -200,5 +224,48 @@ function global:GetIPAddressSummary {
             Private = $private
             Public = $public
         }
+    }
+}
+
+function global:GetCIDRMask {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [String]$CIDR
+    )
+    process {
+        $cidrParts = $CIDR.Split('/');
+        $ip = ConvertToUInt64 -IP ([System.Net.IPAddress]::Parse($cidrParts[0]));
+        [System.UInt64]$mask = 4294967295;
+        if ($cidrParts.Length -eq 2) {
+            $mask = [System.UInt64](4294967295 -shl (32-([System.Byte]::Parse($cidrParts[1])))) -band 4294967295;
+        }
+        return [PSCustomObject]@{
+            Mask = $mask
+            IP = $ip;
+        }
+    }
+}
+
+function global:WithinCIDR {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [String]$IP,
+
+        [Parameter(Mandatory = $True)]
+        [String[]]$CIDR
+    )
+    process {
+        [System.UInt64]$address = ConvertToUInt64 -IP ([System.Net.IPAddress]::Parse($IP));
+        $result = $False;
+
+        for ($i = 0; (($i -lt $CIDR.Length) -and (!$result)); $i++) {
+            $mask = GetCIDRMask -CIDR $CIDR[$i];
+            $result = ($mask.Mask -band $address) -eq $mask.IP;
+        }
+        return $result;
     }
 }
