@@ -1,6 +1,29 @@
 
 ## Unreleased
 
+## v0.2.0
+
+What's changed since v0.1.0:
+
+- Fix rule `Azure.AKS.UseRBAC` returns null. [#60](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/60)
+- Fix rule `Azure.Storage.SoftDelete` and `Azure.Storage.SecureTransferRequired` returns null. [#64](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/64)
+- Fix collection of ASR vault configuration for cmdlet deprecation. [#63](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/63)
+- Updated rules to use `Recommend` keyword instead of `Hint` alias. [#71](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/71)
+- Added SQL firewall rule range check to determine an excessive number of permitted IP addresses. [#3](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/3) [#10](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/10) [#54](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/54)
+  - The rules `Azure.SQL.FirewallIPRange`, `Azure.MySQL.FirewallIPRange` and `Azure.PostgreSQL.FirewallIPRange` were added to check SQL, MySQL and PostgreSQL.
+- Added parameters to filter resource export by resource group and/ or tag. [#59](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/59)
+  - Added `-ResourceGroupName` and `-Tag` parameters to `Export-AzRuleData` cmdlet.
+- Added support for Application Gateway v2. [#75](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/75)
+- Added VNET rule to check for local DNS. [#68](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/68)
+- Added WAF hardening rules for Application Gateway. [#78](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/78)
+  - Application Gateways use OWASP 3.x rules.
+  - Application Gateways have WAF enabled.
+  - Application Gateways have all OWASP rules enabled.
+
+What's changed since pre-release v0.2.0-B190715:
+
+- No additional changes.
+
 ## v0.2.0-B190715 (pre-release)
 
 - Added support for Application Gateway v2. [#75](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/75)
