@@ -170,7 +170,7 @@
             "subnets": [
                 {
                     "name": "GatewaySubnet",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/GatewaySubnet",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-B/subnets/GatewaySubnet",
                     "properties": {
                         "addressPrefix": "10.2.0.0/27",
                         "serviceEndpoints": [],
@@ -180,7 +180,7 @@
                 },
                 {
                     "name": "subnet-A",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-B/subnets/subnet-A",
                     "properties": {
                         "addressPrefix": "10.2.0.32/28",
                         "networkSecurityGroup": {
@@ -196,7 +196,7 @@
                 },
                 {
                     "name": "subnet-B",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-B",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-B/subnets/subnet-B",
                     "properties": {
                         "addressPrefix": "10.2.0.48/28",
                         "routeTable": {
@@ -209,7 +209,7 @@
                 },
                 {
                     "name": "subnet-C",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-C",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-B/subnets/subnet-C",
                     "properties": {
                         "addressPrefix": "10.2.0.64/28",
                         "networkSecurityGroup": null,
@@ -223,7 +223,7 @@
                 },
                 {
                     "name": "subnet-D",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-D",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-B/subnets/subnet-D",
                     "properties": {
                         "addressPrefix": "10.2.0.80/28",
                         "networkSecurityGroup": {},
@@ -239,7 +239,124 @@
             "virtualNetworkPeerings": [
                 {
                     "name": "peer-A",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/virtualNetworkPeerings/peer-A",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-B/virtualNetworkPeerings/peer-A",
+                    "properties": {
+                        "peeringState": "Connected",
+                        "remoteVirtualNetwork": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A"
+                        },
+                        "allowVirtualNetworkAc2cess": true,
+                        "allowForwardedTraffic": false,
+                        "allowGatewayTransit": false,
+                        "useRemoteGateways": false,
+                        "doNotVerifyRemoteGateways": false,
+                        "remoteAddressSpace": {
+                            "addressPrefixes": [
+                                "10.1.0.0/24"
+                            ]
+                        },
+                        "routeServiceVips": {}
+                    },
+                    "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
+                }
+            ],
+            "enableDdosProtection": false,
+            "enableVmProtection": false
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/virtualNetworks",
+        "ResourceType": "Microsoft.Network/virtualNetworks",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-C",
+        "Location": "region",
+        "ResourceName": "vnet-C",
+        "Name": "vnet-C",
+        "Properties": {
+            "addressSpace": {
+                "addressPrefixes": [
+                    "10.3.0.0/24"
+                ]
+            },
+            "dhcpOptions": {
+                "dnsServers": []
+            },
+            "subnets": [
+                {
+                    "name": "GatewaySubnet",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-C/subnets/GatewaySubnet",
+                    "properties": {
+                        "addressPrefix": "10.3.0.0/27",
+                        "serviceEndpoints": [],
+                        "delegations": []
+                    },
+                    "type": "Microsoft.Network/virtualNetworks/subnets"
+                },
+                {
+                    "name": "subnet-A",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-C/subnets/subnet-A",
+                    "properties": {
+                        "addressPrefix": "10.3.0.32/28",
+                        "networkSecurityGroup": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
+                        },
+                        "routeTable": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+                        },
+                        "serviceEndpoints": [],
+                        "delegations": []
+                    },
+                    "type": "Microsoft.Network/virtualNetworks/subnets"
+                },
+                {
+                    "name": "subnet-B",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-C/subnets/subnet-B",
+                    "properties": {
+                        "addressPrefix": "10.3.0.48/28",
+                        "routeTable": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+                        },
+                        "serviceEndpoints": [],
+                        "delegations": []
+                    },
+                    "type": "Microsoft.Network/virtualNetworks/subnets"
+                },
+                {
+                    "name": "subnet-C",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-C/subnets/subnet-C",
+                    "properties": {
+                        "addressPrefix": "10.3.0.64/28",
+                        "networkSecurityGroup": null,
+                        "routeTable": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+                        },
+                        "serviceEndpoints": [],
+                        "delegations": []
+                    },
+                    "type": "Microsoft.Network/virtualNetworks/subnets"
+                },
+                {
+                    "name": "subnet-D",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-C/subnets/subnet-D",
+                    "properties": {
+                        "addressPrefix": "10.3.0.80/28",
+                        "networkSecurityGroup": {},
+                        "routeTable": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+                        },
+                        "serviceEndpoints": [],
+                        "delegations": []
+                    },
+                    "type": "Microsoft.Network/virtualNetworks/subnets"
+                }
+            ],
+            "virtualNetworkPeerings": [
+                {
+                    "name": "peer-A",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-C/virtualNetworkPeerings/peer-A",
                     "properties": {
                         "peeringState": "Connected",
                         "remoteVirtualNetwork": {
