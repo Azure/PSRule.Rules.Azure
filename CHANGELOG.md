@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+- Updated AKS version in `Azure.AKS.Version` to 1.13.7. [#83](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/83)
+
 ## v0.2.0
 
 What's changed since v0.1.0:

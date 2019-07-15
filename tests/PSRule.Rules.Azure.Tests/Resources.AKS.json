@@ -6,7 +6,7 @@
         "ResourceName": "cluster-A",
         "Name": "cluster-A",
         "Properties": {
-            "kubernetesVersion": "1.13.5",
+            "kubernetesVersion": "1.13.7",
             "dnsPrefix": "cluster-A",
             "fqdn": "cluster-A-00000000.nnn.region.azmk8s.io",
             "agentPoolProfiles": [
@@ -18,7 +18,7 @@
                     "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
                     "maxPods": 30,
                     "type": "AvailabilitySet",
-                    "orchestratorVersion": "1.13.5",
+                    "orchestratorVersion": "1.13.7",
                     "osType": "Linux"
                 }
             ],
