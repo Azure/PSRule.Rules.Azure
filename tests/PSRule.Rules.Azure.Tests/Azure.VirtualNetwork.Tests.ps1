@@ -32,8 +32,8 @@ Describe 'Azure.VirtualNetwork' -Tag 'Network' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vnet-B';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'vnet-B', 'vnet-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -54,8 +54,8 @@ Describe 'Azure.VirtualNetwork' -Tag 'Network' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vnet-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'vnet-A', 'vnet-C';
         }
 
         It 'Azure.VirtualNetwork.LocalDNS' {
@@ -70,8 +70,8 @@ Describe 'Azure.VirtualNetwork' -Tag 'Network' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vnet-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'vnet-A', 'vnet-C';
         }
 
         It 'Azure.VirtualNetwork.NSGAnyInboundSource' {

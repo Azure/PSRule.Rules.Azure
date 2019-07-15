@@ -22,7 +22,7 @@ Rule 'Azure.VirtualNetwork.UseNSGs' -If { ResourceType 'Microsoft.Network/virtua
 # Synopsis: VNETs should have at least two DNS servers assigned
 Rule 'Azure.VirtualNetwork.SingleDNS'  -If { ResourceType 'Microsoft.Network/virtualNetworks' } -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
     # If DNS servers are customsied, at least two IP addresses should be defined
-    if (!(Exists 'properties.dhcpOptions.dnsServers')) {
+    if (!(Exists 'properties.dhcpOptions.dnsServers') -or ($TargetObject.properties.dhcpOptions.dnsServers.Count -eq 0)) {
         $True;
     }
     else {
@@ -32,7 +32,7 @@ Rule 'Azure.VirtualNetwork.SingleDNS'  -If { ResourceType 'Microsoft.Network/vir
 
 # Synopsis: VNETs should use Azure local DNS servers
 Rule 'Azure.VirtualNetwork.LocalDNS' -If { ResourceType 'Microsoft.Network/virtualNetworks' } {
-    if (!(Exists 'properties.dhcpOptions.dnsServers')) {
+    if (!(Exists 'properties.dhcpOptions.dnsServers') -or ($TargetObject.properties.dhcpOptions.dnsServers.Count -eq 0)) {
         $True;
     }
     else {
