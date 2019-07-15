@@ -12,8 +12,12 @@ AKS clusters should meet the minimum version.
 
 ## DESCRIPTION
 
-AKS clusters should meet the minimum version.
+The Kubernetes support policy for AKS includes four stable minor releases, and two patch releases for each minor version.
+
+A list of available Kubernetes versions can be found using the `az aks get-versions -o table --location <location>` CLI command.
 
 ## RECOMMENDATION
 
-Upgrade Kubernetes to the latest version of Kubernetes.
+Upgrade Kubernetes to the latest stable version of Kubernetes.
+
+For more information see [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions).
