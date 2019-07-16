@@ -33,6 +33,16 @@ Rule 'Azure.VirtualMachine.Standalone' -If { ResourceType 'Microsoft.Compute/vir
     }
 }
 
+# Synopsis: VMs should not use expired promo SKU
+Rule 'Azure.VirtualMachine.PromoSku' -If { (IsVMPromoSku) } {
+    Match 'Properties.hardwareProfile.vmSize' -Not -Expression 'Standard_DS{0,1}1{0,1}[1-9]{1}_v2_Promo'
+}
+
+# Synopsis: VMs should not use Basic SKU
+Rule 'Azure.VirtualMachine.BasicSku' -If { ResourceType 'Microsoft.Compute/virtualMachines' } {
+    Match 'Properties.hardwareProfile.vmSize' -Not -Expression 'Basic_A[0-4]'
+}
+
 # Synopsis: Check disk caching is configured correctly for the workload
 Rule 'Azure.VirtualMachine.DiskCaching' -If { ResourceType 'Microsoft.Compute/virtualMachines' } -Tag @{ severity = 'Important'; category = 'Performance' } {
     # Check OS disk
@@ -70,7 +80,7 @@ Rule 'Azure.VirtualMachine.DiskAttached' -If { (ResourceType 'Microsoft.Compute/
 # TODO: Check IOPS
 
 # Synopsis: Managed disk is smaller than SKU size
-Rule 'Azure.VirtualMachine.DiskSizeAlignment'  -If { ResourceType 'Microsoft.Compute/disks' } -Tag @{ severity = 'Awareness'; category = 'Cost optimisation' } {
+Rule 'Azure.VirtualMachine.DiskSizeAlignment'  -If { ResourceType 'Microsoft.Compute/disks' } -Tag @{ severity = 'Awareness'; category = 'Cost management' } {
     $diskSize = @(32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768)
     $actualSize = $TargetObject.properties.diskSizeGB
 
@@ -87,7 +97,7 @@ Rule 'Azure.VirtualMachine.DiskSizeAlignment'  -If { ResourceType 'Microsoft.Com
 # TODO: Check number of disks
 
 # Synopsis: Use Hybrid Use Benefit
-Rule 'Azure.VirtualMachine.UseHybridUseBenefit' -If { (IsWindowsOS) } -Tag @{ severity = 'Awareness'; category = 'Cost optimisation' } {
+Rule 'Azure.VirtualMachine.UseHybridUseBenefit' -If { (IsWindowsOS) } -Tag @{ severity = 'Awareness'; category = 'Cost management' } {
     Within 'properties.licenseType' 'Windows_Server'
 }
 
