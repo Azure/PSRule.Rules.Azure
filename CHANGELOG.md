@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+## v0.3.0-B190710 (pre-release)
+
 - Fix handling of empty DNS servers in `Azure.VirtualNetwork.LocalDNS`. [#84](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/84)
 - Fix handling of no peering connections in `Azure.VirtualNetwork.LocalDNS`. [#89](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/89)
 - Updated AKS version in `Azure.AKS.Version` to 1.13.7. [#83](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/83)
