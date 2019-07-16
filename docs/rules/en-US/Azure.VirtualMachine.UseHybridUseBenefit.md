@@ -1,6 +1,6 @@
 ---
 severity: Awareness
-category: Cost optimisation
+category: Cost management
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.VirtualMachine.UseHybridUseBenefit.md
 ---
 

@@ -1,9 +1,12 @@
 
 ## Unreleased
 
-- Updated AKS version in `Azure.AKS.Version` to 1.13.7. [#83](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/83)
 - Fix handling of empty DNS servers in `Azure.VirtualNetwork.LocalDNS`. [#84](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/84)
 - Fix handling of no peering connections in `Azure.VirtualNetwork.LocalDNS`. [#89](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/89)
+- Updated AKS version in `Azure.AKS.Version` to 1.13.7. [#83](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/83)
+- Added VM SKU rules:
+  - VMs should avoid using expired promo SKUs. [#87](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/87)
+  - VMs should avoid using basic SKUs. [#69](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/69)
 
 ## v0.2.0
 

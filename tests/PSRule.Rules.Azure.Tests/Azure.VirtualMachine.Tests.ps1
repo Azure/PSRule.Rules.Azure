@@ -58,6 +58,99 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult.TargetName | Should -BeIn 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3';
         }
 
+        It 'Azure.VirtualMachine.PromoSku' {
+            $expiredSku = @(
+                'Standard_DS2_v2_Promo'
+                'Standard_DS3_v2_Promo'
+                'Standard_DS4_v2_Promo'
+                'Standard_DS5_v2_Promo'
+                'Standard_DS11_v2_Promo'
+                'Standard_DS12_v2_Promo'
+                'Standard_DS13_v2_Promo'
+                'Standard_DS14_v2_Promo'
+                'Standard_D2_v2_Promo'
+                'Standard_D3_v2_Promo'
+                'Standard_D4_v2_Promo'
+                'Standard_D5_v2_Promo'
+                'Standard_D11_v2_Promo'
+                'Standard_D12_v2_Promo'
+                'Standard_D13_v2_Promo'
+                'Standard_D14_v2_Promo'
+            )
+            $notExpiredSku = @(
+                'Standard_H8_Promo'
+                'Standard_H16_Promo'
+            )
+            $notPromo = @(
+                'Standard_D4s_v3'
+            )
+            $vmObject = [PSCustomObject]@{
+                Name = "vm-A"
+                ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
+                ResourceName = "vm-A"
+                ResourceType = "Microsoft.Compute/virtualMachines"
+                Properties = [PSCustomObject]@{
+                    hardwareProfile = [PSCustomObject]@{
+                        vmSize = "nn"
+                    }
+                }
+            }
+            foreach ($sku in $expiredSku) {
+                $vmObject.Properties.hardwareProfile.vmSize = $sku;
+                $result = $vmObject | Invoke-PSRule -Name 'Azure.VirtualMachine.PromoSku' -Module PSRule.Rules.Azure -WarningAction Ignore;
+                $result | Should -Not -BeNullOrEmpty;
+                $result.IsSuccess() | Should -Be $False;
+            }
+            foreach ($sku in $notExpiredSku) {
+                $vmObject.Properties.hardwareProfile.vmSize = $sku;
+                $result = $vmObject | Invoke-PSRule -Name 'Azure.VirtualMachine.PromoSku' -Module PSRule.Rules.Azure -WarningAction Ignore;
+                $result | Should -Not -BeNullOrEmpty;
+                $result.IsSuccess() | Should -Be $True;
+            }
+            foreach ($sku in $notPromo) {
+                $vmObject.Properties.hardwareProfile.vmSize = $sku;
+                $result = $vmObject | Invoke-PSRule -Name 'Azure.VirtualMachine.PromoSku' -Module PSRule.Rules.Azure -WarningAction Ignore -Outcome All;
+                $result | Should -Not -BeNullOrEmpty;
+                $result.Outcome | Should -Be 'None';
+            }
+        }
+
+        It 'Azure.VirtualMachine.BasicSku' {
+            $basicSku = @(
+                'Basic_A0'
+                'Basic_A1'
+                'Basic_A2'
+                'Basic_A3'
+                'Basic_A4'
+            )
+            $otherSku = @(
+                'Standard_D4s_v3'
+            )
+            $vmObject = [PSCustomObject]@{
+                Name = "vm-A"
+                ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
+                ResourceName = "vm-A"
+                ResourceType = "Microsoft.Compute/virtualMachines"
+                Properties = [PSCustomObject]@{
+                    hardwareProfile = [PSCustomObject]@{
+                        vmSize = "nn"
+                    }
+                }
+            }
+            foreach ($sku in $basicSku) {
+                $vmObject.Properties.hardwareProfile.vmSize = $sku;
+                $result = $vmObject | Invoke-PSRule -Name 'Azure.VirtualMachine.BasicSku' -Module PSRule.Rules.Azure -WarningAction Ignore;
+                $result | Should -Not -BeNullOrEmpty;
+                $result.IsSuccess() | Should -Be $False;
+            }
+            foreach ($sku in $otherSku) {
+                $vmObject.Properties.hardwareProfile.vmSize = $sku;
+                $result = $vmObject | Invoke-PSRule -Name 'Azure.VirtualMachine.BasicSku' -Module PSRule.Rules.Azure -WarningAction Ignore;
+                $result | Should -Not -BeNullOrEmpty;
+                $result.IsSuccess() | Should -Be $True;
+            }
+        }
+
         It 'Azure.VirtualMachine.DiskCaching' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualMachine.DiskCaching' };
 

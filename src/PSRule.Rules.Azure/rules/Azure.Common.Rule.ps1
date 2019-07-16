@@ -269,3 +269,13 @@ function global:WithinCIDR {
         return $result;
     }
 }
+
+# Determine if the VM is using a promo SKU.
+function global:IsVMPromoSku {
+    process {
+        if ($TargetObject.ResourceType -ne 'Microsoft.Compute/virtualMachines') {
+            return $False;
+        }
+        return $TargetObject.Properties.hardwareProfile.vmSize -like '*_Promo';
+    }
+}
