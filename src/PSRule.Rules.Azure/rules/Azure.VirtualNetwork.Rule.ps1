@@ -41,7 +41,9 @@ Rule 'Azure.VirtualNetwork.LocalDNS' -If { ResourceType 'Microsoft.Network/virtu
         $primary = $dnsServers[0]
         $localRanges = @();
         $localRanges += $TargetObject.Properties.addressSpace.addressPrefixes
-        $localRanges += $TargetObject.Properties.virtualNetworkPeerings.properties.remoteAddressSpace.addressPrefixes
+        if ($Null -ne $TargetObject.Properties.virtualNetworkPeerings -and $TargetObject.Properties.virtualNetworkPeerings.Length -gt 0) {
+            $localRanges += $TargetObject.Properties.virtualNetworkPeerings.properties.remoteAddressSpace.addressPrefixes
+        }
 
         # Determine if the primary is in range
         WithinCIDR -IP $primary -CIDR $localRanges
