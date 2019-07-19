@@ -48,5 +48,65 @@
         },
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C",
+        "Location": "global",
+        "ResourceName": "registry-C",
+        "Name": "registry-C",
+        "Properties": {
+            "loginServer": "registry-C.azurecr.io",
+            "adminUserEnabled": true
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerRegistry/registries",
+        "ResourceType": "Microsoft.ContainerRegistry/registries",
+        "Sku": {
+            "Name": "Basic",
+            "Tier": "Basic",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/trafficManagerProfiles/trafficManager-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/trafficManagerProfiles/trafficManager-A",
+        "Location": "nnnn",
+        "ResourceName": "trafficManager-A",
+        "Name": "trafficManager-A",
+        "Properties": {
+            "profileStatus": "Enabled",
+            "trafficRoutingMethod": "Performance",
+            "dnsConfig": {
+                "relativeName": "trafficManager-A",
+                "fqdn": "trafficManager-A.trafficmanager.net",
+                "ttl": 60
+            },
+            "monitorConfig": {
+                "profileMonitorStatus": "Inactive",
+                "protocol": "HTTP",
+                "port": 80,
+                "path": "/",
+                "intervalInSeconds": 30,
+                "toleratedNumberOfFailures": 3,
+                "timeoutInSeconds": 10
+            },
+            "endpoints": [],
+            "trafficViewEnrollmentStatus": "Disabled",
+            "maxReturn": 0
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/trafficManagerProfiles",
+        "ResourceType": "Microsoft.Network/trafficManagerProfiles",
+        "Sku": null,
+        "Tags": {
+            "environment": "production"
+        },
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
     }
 ]

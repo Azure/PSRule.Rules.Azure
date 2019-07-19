@@ -14,6 +14,6 @@ Rule 'Azure.Resource.UseTags' -If { (SupportsTags) } -Tag @{ severity = 'Awarene
 }
 
 # Synopsis: Resources should be deployed to allowed regions
-Rule 'Azure.Resource.AllowedRegions' -If { $Null -ne $Configuration.azureAllowedRegions } -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
+Rule 'Azure.Resource.AllowedRegions' -If { ($Null -ne $Configuration.azureAllowedRegions) -and (SupportsRegions) } -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
     IsAllowedRegion
 }

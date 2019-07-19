@@ -25,6 +25,9 @@
         "VNET",
         "cmdlet",
         "cmdlets",
-        "vnets"
+        "NSGs",
+        "subnet",
+        "subnets",
+        "VNETs"
     ]
 }

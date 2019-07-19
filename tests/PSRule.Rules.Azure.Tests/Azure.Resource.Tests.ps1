@@ -25,7 +25,7 @@ Describe 'Azure.Resource' {
 
     Context 'Conditions' {
         $options = New-PSRuleOption -BaselineConfiguration @{ 'azureAllowedRegions' = @('region-A') };
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -Option $options -InputPath $dataPath -WarningAction Ignore -ErrorAction Stop;
+        $result = Invoke-PSRule -Module PSRule.Rules.Azure -Option $options -Outcome All -InputPath $dataPath -WarningAction Ignore -ErrorAction Stop;
 
         It 'Azure.Resource.UseTags' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Resource.UseTags' };
@@ -33,14 +33,14 @@ Describe 'Azure.Resource' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'registry-B';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'registry-B', 'registry-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'registry-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'registry-A', 'trafficManager-A';
         }
 
         It 'Azure.Resource.AllowedRegions' {
@@ -57,6 +57,12 @@ Describe 'Azure.Resource' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'registry-A';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'registry-C', 'trafficManager-A';
         }
     }
 }
