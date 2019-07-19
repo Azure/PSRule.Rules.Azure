@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+- Excluded global services from Azure.Resource.AllowedRegions. [#96](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/96)
+
 ## v0.3.0-B190710 (pre-release)
 
 - Fix handling of empty DNS servers in `Azure.VirtualNetwork.LocalDNS`. [#84](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/84)

@@ -125,6 +125,7 @@ function global:IsWindowsOS {
     }
 }
 
+# Determines if the object supports tags
 function global:SupportsTags {
     [CmdletBinding()]
     [OutputType([System.Boolean])]
@@ -141,6 +142,25 @@ function global:SupportsTags {
             ($TargetObject.ResourceType -like 'Microsoft.Security/*') -or
             ($TargetObject.ResourceType -like 'microsoft.support/*') -or
             ($TargetObject.ResourceType -like 'Microsoft.WorkloadMonitor/*')
+        ) {
+            return $False;
+        }
+
+        return $True;
+    }
+}
+
+# Determines if the object supports regions
+function global:SupportsRegions {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if (
+            ($TargetObject.ResourceType -eq 'Microsoft.Subscription') -or
+            ($TargetObject.ResourceType -eq 'Microsoft.AzureActiveDirectory/b2cDirectories') -or
+            ($TargetObject.ResourceType -eq 'Microsoft.Network/trafficManagerProfiles') -or
+            ($TargetObject.Location -eq 'global')
         ) {
             return $False;
         }
