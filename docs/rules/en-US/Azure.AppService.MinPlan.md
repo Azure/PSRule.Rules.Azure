@@ -2,6 +2,7 @@
 severity: Important
 category: Performance
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.AppService.MinPlan.md
+ms-content-id: 97b58cfa-7b7e-4630-ac13-4596defe1795
 ---
 
 # Azure.AppService.MinPlan

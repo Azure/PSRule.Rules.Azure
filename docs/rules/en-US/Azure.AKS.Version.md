@@ -2,6 +2,7 @@
 severity: Important
 category: Operations management
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.AKS.Version.md
+ms-content-id: b0bd4e66-af2f-4d0a-82ae-e4738418bb7e
 ---
 
 # Azure.AKS.Version
