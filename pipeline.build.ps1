@@ -144,8 +144,8 @@ task PSScriptAnalyzer NuGet, {
 
 # Synopsis: Install PSRule
 task PSRule NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.7.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -MinimumVersion 0.7.0 -AllowPrerelease -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.8.0-B190716 -AllowPrerelease -ErrorAction Ignore)) {
+        Install-Module -Name PSRule -MinimumVersion 0.8.0-B190716 -AllowPrerelease -Scope CurrentUser -Force;
     }
     Import-Module -Name PSRule -Verbose:$False;
 }
