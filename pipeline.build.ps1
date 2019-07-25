@@ -144,8 +144,8 @@ task PSScriptAnalyzer NuGet, {
 
 # Synopsis: Install PSRule
 task PSRule NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.7.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -MinimumVersion 0.7.0 -AllowPrerelease -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.8.0-B190716 -AllowPrerelease -ErrorAction Ignore)) {
+        Install-Module -Name PSRule -MinimumVersion 0.8.0-B190716 -AllowPrerelease -Scope CurrentUser -Force;
     }
     Import-Module -Name PSRule -Verbose:$False;
 }
@@ -179,9 +179,6 @@ task ModuleDependencies NuGet, PSRule, {
     }
     if ($Null -eq (Get-InstalledModule -Name Az.Storage -MinimumVersion 1.3.0 -ErrorAction Ignore)) {
         Install-Module -Name Az.Storage -Scope CurrentUser -MinimumVersion 1.3.0 -Force -AllowClobber;
-    }
-    if ($Null -eq (Get-InstalledModule -Name Az.Websites -MinimumVersion 1.2.1 -ErrorAction Ignore)) {
-        Install-Module -Name Az.Websites -Scope CurrentUser -MinimumVersion 1.2.1 -Force;
     }
 }
 

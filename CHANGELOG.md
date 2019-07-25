@@ -2,6 +2,9 @@
 ## Unreleased
 
 - Excluded global services from Azure.Resource.AllowedRegions. [#96](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/96)
+- Enforce minimum TLS version for App Service. [#99](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/99)
+- Updated App Service site rules to include slots. [#100](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/100)
+  - `Azure.AppService.ARRAffinity` and `Azure.AppService.UseHTTPS` now run against slots.
 
 ## v0.3.0-B190710 (pre-release)
 

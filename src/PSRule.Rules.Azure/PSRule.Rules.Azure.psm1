@@ -364,9 +364,15 @@ function VisitWebApp {
 
     process {
         $resources = @();
+        $configResourceType = 'Microsoft.Web/sites/config';
 
-        $resources += Get-AzWebApp -ResourceGroupName $Resource.ResourceGroupName -Name $Resource.Name -DefaultProfile $Context;
-        $resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+        # Handle slots
+        if ($Resource.ResourceType -eq 'Microsoft.Web/sites/slots') {
+            $configResourceType = 'Microsoft.Web/sites/slots/config';
+        }
+
+        $resources += Get-AzResource -Name $Resource.Name -ResourceType $configResourceType -ResourceGroupName $Resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2018-11-01' -ExpandProperties;
+        $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
 
@@ -445,7 +451,8 @@ function ExpandResource {
             "Microsoft.DataFactory/factories" { VisitDataFactoryV2 @PSBoundParameters; }
             # "Microsoft.Storage/storageAccounts" { VisitStorageAccount @PSBoundParameters; }
             # "Microsoft.StorageSync/storageSyncServices" { VisitStorageSyncService @PSBoundParameters; }
-            # "Microsoft.Web/sites" { VisitWebApp @PSBoundParameters; }
+            "Microsoft.Web/sites" { VisitWebApp @PSBoundParameters; }
+            "Microsoft.Web/sites/slots" { VisitWebApp @PSBoundParameters; }
             "Microsoft.RecoveryServices/vaults" { VisitRecoveryServices @PSBoundParameters; }
             "Microsoft.Compute/virtualMachines" { VisitVirtualMachine @PSBoundParameters; }
             "Microsoft.Subscription" { VisitSubscription @PSBoundParameters; }

@@ -17,15 +17,24 @@ Rule 'Azure.AppService.MinPlan' -If { ResourceType 'Microsoft.Web/serverfarms' }
 }
 
 # Synopsis: Disable client affinity for stateless services
-Rule 'Azure.AppService.ARRAffinity' -If { ResourceType 'Microsoft.Web/sites' } -Tag @{ severity = 'Awareness'; category = 'Performance' } {
+Rule 'Azure.AppService.ARRAffinity' -If { (ResourceType 'Microsoft.Web/sites') -or (ResourceType 'Microsoft.Web/sites/slots') } -Tag @{ severity = 'Awareness'; category = 'Performance' } {
     Recommend 'Disable ARR affinity when not required'
 
     $TargetObject.Properties.clientAffinityEnabled -eq $False
 }
 
 # Synopsis: Use HTTPS only
-Rule 'Azure.AppService.UseHTTPS' -If { ResourceType 'Microsoft.Web/sites' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
+Rule 'Azure.AppService.UseHTTPS' -If { (ResourceType 'Microsoft.Web/sites') -or (ResourceType 'Microsoft.Web/sites/slots') } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
     Recommend 'Disable HTTP when not required'
 
     $TargetObject.Properties.httpsOnly -eq $True
+}
+
+# Synopsis: Use at least TLS 1.2
+Rule 'Azure.AppService.MinTLS' -If { (ResourceType 'Microsoft.Web/sites') -or (ResourceType 'Microsoft.Web/sites/slots') } {
+    $siteConfig = @($TargetObject.resources | Where-Object -FilterScript {
+        ($_.Type -eq 'Microsoft.Web/sites/config') -or 
+        ($_.Type -eq 'Microsoft.Web/sites/slots/config')
+    })
+    $siteConfig.Properties | Within 'minTlsVersion' '1.2' -Reason ($LocalizedData.MinTLSVersion -f $siteConfig.Properties.minTlsVersion)
 }
