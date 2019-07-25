@@ -32,6 +32,14 @@ function global:IsExport {
     }
 }
 
+# Get a sorted list of NSG rules
+function global:GetOrderedNSGRules {
+    param ()
+    process {
+        $TargetObject.properties.securityRules | Sort-Object @{ Expression = { $_.Properties.priority }; Descending = $False }
+    }
+}
+
 function global:SupportsAcceleratedNetworking {
     process {
         if ($TargetObject.ResourceType -ne 'Microsoft.Compute/virtualMachines' -or !(IsExport)) {

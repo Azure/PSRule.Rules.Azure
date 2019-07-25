@@ -86,6 +86,54 @@ Describe 'Azure.VirtualNetwork' -Tag 'Network' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'nsg-A', 'nsg-C';
+        }
+
+        It 'Azure.VirtualNetwork.NSGDenyAllInbound' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.NSGDenyAllInbound' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'nsg-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'nsg-A', 'nsg-B';
+        }
+
+        It 'Azure.VirtualNetwork.LateralTraversal' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.LateralTraversal' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'nsg-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'nsg-A', 'nsg-B';
+        }
+
+        It 'Azure.VirtualNetwork.NSGAssociated' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.NSGAssociated' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'nsg-B', 'nsg-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'nsg-A';
         }
@@ -216,6 +264,22 @@ Describe 'Azure.VirtualNetwork' -Tag 'Network' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'appgw-A';
+        }
+
+        It 'Azure.VirtualNetwork.NICAttached' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.NICAttached' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'nic-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'nic-A';
         }
     }
 }
