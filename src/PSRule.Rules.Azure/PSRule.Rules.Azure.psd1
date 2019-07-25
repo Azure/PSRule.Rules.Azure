@@ -54,7 +54,6 @@ RequiredModules = @(
     @{ ModuleName = 'Az.Resources'; ModuleVersion = '1.4.0' }
     @{ ModuleName = 'Az.Security'; ModuleVersion = '0.7.4' }
     @{ ModuleName = 'Az.Storage'; ModuleVersion = '1.3.0' }
-    @{ ModuleName = 'Az.Websites'; ModuleVersion = '1.2.1' }
 )
 
 # Assemblies that must be loaded prior to importing this module
@@ -97,9 +96,7 @@ AliasesToExport = @()
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
-
     PSData = @{
-
         # Tags applied to this module. These help with module discovery in online galleries.
         Tags = @('Rule', 'PSRule', 'Azure')
 
@@ -114,7 +111,6 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = 'https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/CHANGELOG.md'
-
     } # End of PSData hashtable
 
 } # End of PrivateData hashtable

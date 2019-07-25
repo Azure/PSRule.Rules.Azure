@@ -180,9 +180,6 @@ task ModuleDependencies NuGet, PSRule, {
     if ($Null -eq (Get-InstalledModule -Name Az.Storage -MinimumVersion 1.3.0 -ErrorAction Ignore)) {
         Install-Module -Name Az.Storage -Scope CurrentUser -MinimumVersion 1.3.0 -Force -AllowClobber;
     }
-    if ($Null -eq (Get-InstalledModule -Name Az.Websites -MinimumVersion 1.2.1 -ErrorAction Ignore)) {
-        Install-Module -Name Az.Websites -Scope CurrentUser -MinimumVersion 1.2.1 -Force;
-    }
 }
 
 task CopyModule {
