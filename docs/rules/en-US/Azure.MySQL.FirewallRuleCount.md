@@ -2,6 +2,7 @@
 severity: Awareness
 category: Operations management
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.MySQL.FirewallRuleCount.md
+ms-content-id: 9debdffb-0da1-4b8d-8a17-3f480f1015ec
 ---
 
 # Azure.MySQL.FirewallRuleCount

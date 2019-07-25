@@ -2,6 +2,7 @@
 severity: Important
 category: Security configuration
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.AppService.UseHTTPS.md
+ms-content-id: b26053bc-db4a-487a-8fb1-11c438c8d493
 ---
 
 # Azure.AppService.UseHTTPS

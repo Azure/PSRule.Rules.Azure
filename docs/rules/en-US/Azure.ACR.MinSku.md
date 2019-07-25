@@ -2,6 +2,7 @@
 severity: Important
 category: Performance
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.ACR.MinSku.md
+ms-content-id: a70d16d4-3717-4eef-b588-8a0204860d6e
 ---
 
 # Azure.ACR.MinSku

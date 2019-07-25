@@ -2,6 +2,7 @@
 severity: Important
 category: Reliability
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.AKS.MinNodeCount.md
+ms-content-id: 320afea5-5c19-45ad-b9a5-c1a63ae6e114
 ---
 
 # Azure.AKS.MinNodeCount

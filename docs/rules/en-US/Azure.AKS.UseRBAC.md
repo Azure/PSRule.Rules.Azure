@@ -2,6 +2,7 @@
 severity: Important
 category: Security configuration
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.AKS.UseRBAC.md
+ms-content-id: 61ff3a23-9bfd-4e91-8959-798b43237775
 ---
 
 # Azure.AKS.UseRBAC

@@ -2,6 +2,7 @@
 severity: Important
 category: Data recovery
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.Storage.SoftDelete.md
+ms-content-id: 9927b427-e694-4485-9abf-61545e63956e
 ---
 
 # Azure.Storage.SoftDelete

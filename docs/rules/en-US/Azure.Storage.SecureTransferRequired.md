@@ -2,6 +2,7 @@
 severity: Important
 category: Security configuration
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.Storage.SecureTransferRequired.md
+ms-content-id: 539cb7b9-5510-4aa3-b422-41a049a10a88
 ---
 
 # Azure.Storage.SecureTransferRequired

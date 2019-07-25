@@ -2,6 +2,7 @@
 severity: Important
 category: Security configuration
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.MySQL.AllowAzureAccess.md
+ms-content-id: 8a159312-1dcd-4c64-91a8-4dd17f97efdb
 ---
 
 # Azure.MySQL.AllowAzureAccess
