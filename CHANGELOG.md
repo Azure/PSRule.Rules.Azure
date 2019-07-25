@@ -5,6 +5,11 @@
 - Enforce minimum TLS version for App Service. [#99](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/99)
 - Updated App Service site rules to include slots. [#100](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/100)
   - `Azure.AppService.ARRAffinity` and `Azure.AppService.UseHTTPS` now run against slots.
+- Added rule to detect deny all inbound NSG rule. [#94](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/94)
+- Added unused resource rules.
+  - Network security groups that are not associated. [#93](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/93)
+  - Unattached network interfaces. [#92](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/92)
+- Added NSG rule to check for lateral traversal security rules. [#103](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/103)
 
 ## v0.3.0-B190710 (pre-release)
 

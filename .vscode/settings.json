@@ -19,15 +19,29 @@
     },
     "cSpell.words": [
         "Kubernetes",
+        "NSGs",
         "OWASP",
         "RBAC",
         "SKUs",
         "VNET",
+        "VNETs",
         "cmdlet",
         "cmdlets",
-        "NSGs",
+        "endregion",
+        "lifecycle",
+        "nics",
+        "stateful",
         "subnet",
-        "subnets",
-        "VNETs"
+        "subnets"
+    ],
+    "cSpell.enabledLanguageIds": [
+        "csharp",
+        "git-commit", 
+        "markdown",
+        "plaintext",
+        "powershell",
+        "text",
+        "yaml",
+        "yml"
     ]
 }

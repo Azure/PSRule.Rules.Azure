@@ -11,6 +11,7 @@ RuleName | Description | Category
 [Azure.AppService.MinPlan](Azure.AppService.MinPlan.md) | Use at least a Standard App Service Plan. | Performance
 [Azure.AppService.ARRAffinity](Azure.AppService.ARRAffinity.md) | Disable client affinity for stateless services. | Performance
 [Azure.AppService.UseHTTPS](Azure.AppService.UseHTTPS.md) | Use HTTPS only. Disable HTTP when not required. | Security configuration
+[Azure.AppService.MinTLS](Azure.AppService.MinTLS.md) | App Service should reject TLS versions older then 1.2. | Security configuration
 [Azure.DataFactory.Version](Azure.DataFactory.Version.md) | Consider migrating to DataFactory v2. | Operations management
 [Azure.MySQL.UseSSL](Azure.MySQL.UseSSL.md) | Enforce encrypted MySQL connections. | Security configuration
 [Azure.MySQL.FirewallRuleCount](Azure.MySQL.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules. | Operations management
@@ -52,6 +53,9 @@ RuleName | Description | Category
 [Azure.VirtualNetwork.SingleDNS](Azure.VirtualNetwork.SingleDNS.md) | VNETs should have at least two DNS servers assigned. | Reliability
 [Azure.VirtualNetwork.LocalDNS](Azure.VirtualNetwork.LocalDNS.md) | Virtual networks (VNETs) should use Azure local DNS servers. | Reliability
 [Azure.VirtualNetwork.NSGAnyInboundSource](Azure.VirtualNetwork.NSGAnyInboundSource.md) | Network security groups should avoid any inbound rules. | Security configuration
+[Azure.VirtualNetwork.NSGDenyAllInbound](Azure.VirtualNetwork.NSGDenyAllInbound.md) | Avoid denying all inbound traffic. | Reliability
+[Azure.VirtualNetwork.LateralTraversal](Azure.VirtualNetwork.LateralTraversal.md) | Deny outbound management connections from non-management hosts. | Security configuration
+[Azure.VirtualNetwork.NSGAssociated](Azure.VirtualNetwork.NSGAssociated.md) | Network Security Groups (NSGs) should be associated. | Operations management
 [Azure.VirtualNetwork.AppGwMinInstance](Azure.VirtualNetwork.AppGwMinInstance.md) | Application Gateways should use a minimum of two instances. | Reliability
 [Azure.VirtualNetwork.AppGwMinSku](Azure.VirtualNetwork.AppGwMinSku.md) | Application Gateway should use a minimum instance size of Medium. | Performance
 [Azure.VirtualNetwork.AppGwUseWAF](Azure.VirtualNetwork.AppGwUseWAF.md) | Internet accessible Application Gateways should use WAF. | Security configuration
@@ -60,3 +64,4 @@ RuleName | Description | Category
 [Azure.VirtualNetwork.AppGwWAFEnabled](Azure.VirtualNetwork.AppGwWAFEnabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | Security configuration
 [Azure.VirtualNetwork.AppGwOWASP](Azure.VirtualNetwork.AppGwOWASP.md) | Application Gateway Web Application Firewall (WAF) should use OWASP 3.x rules. | Security configuration
 [Azure.VirtualNetwork.AppGwWAFRules](Azure.VirtualNetwork.AppGwWAFRules.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | Security configuration
+[Azure.VirtualNetwork.NICAttached](Azure.VirtualNetwork.NICAttached.md) | Network interfaces (NICs) should be attached. | Operations management

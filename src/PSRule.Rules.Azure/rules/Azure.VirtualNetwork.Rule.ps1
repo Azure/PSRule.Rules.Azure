@@ -2,6 +2,8 @@
 # Validation rules for virtual networking
 #
 
+#region Virtual Network
+
 # Synopsis: Subnets should have NSGs assigned, except for the GatewaySubnet
 Rule 'Azure.VirtualNetwork.UseNSGs' -If { ResourceType 'Microsoft.Network/virtualNetworks' } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
     Recommend 'Subnets should have NSGs assigned'
@@ -21,7 +23,7 @@ Rule 'Azure.VirtualNetwork.UseNSGs' -If { ResourceType 'Microsoft.Network/virtua
 
 # Synopsis: VNETs should have at least two DNS servers assigned
 Rule 'Azure.VirtualNetwork.SingleDNS'  -If { ResourceType 'Microsoft.Network/virtualNetworks' } -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
-    # If DNS servers are customsied, at least two IP addresses should be defined
+    # If DNS servers are customized, at least two IP addresses should be defined
     if (!(Exists 'properties.dhcpOptions.dnsServers') -or ($TargetObject.properties.dhcpOptions.dnsServers.Count -eq 0)) {
         $True;
     }
@@ -50,6 +52,10 @@ Rule 'Azure.VirtualNetwork.LocalDNS' -If { ResourceType 'Microsoft.Network/virtu
     }
 }
 
+#endregion Virtual Network
+
+#region Network Security Group
+
 # Synopsis: Network security groups should avoid any inbound rules
 Rule 'Azure.VirtualNetwork.NSGAnyInboundSource' -If { ResourceType 'Microsoft.Network/networkSecurityGroups' } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
     Recommend 'Avoid rules that apply to all source addresses'
@@ -62,6 +68,47 @@ Rule 'Azure.VirtualNetwork.NSGAnyInboundSource' -If { ResourceType 'Microsoft.Ne
 
     $Null -eq $rules;
 }
+
+# Synopsis: Avoid blocking all inbound network traffic
+Rule 'Azure.VirtualNetwork.NSGDenyAllInbound' -If { ResourceType 'Microsoft.Network/networkSecurityGroups' } {
+    $denyRules = @(GetOrderedNSGRules | Where-Object {
+        $_.properties.direction -eq 'Inbound' -and
+        $_.properties.access -eq 'Deny' -and
+        $_.properties.sourceAddressPrefix -eq '*'
+    })
+    $inboundRules = @(GetOrderedNSGRules | Where-Object {
+        $_.properties.direction -eq 'Inbound'
+    })
+
+    $Null -eq $denyRules -or $denyRules.Length -eq 0 -or $denyRules[0].name -ne $inboundRules[0].name
+}
+
+# Synopsis: Lateral traversal from application servers should be blocked
+Rule 'Azure.VirtualNetwork.LateralTraversal' -If { ResourceType 'Microsoft.Network/networkSecurityGroups' } {
+    $rules = @($TargetObject.properties.securityRules | Where-Object {
+        $_.properties.direction -eq 'Outbound' -and
+        $_.properties.access -eq 'Deny' -and
+        (
+            $_.properties.destinationPortRange -eq '3389' -or
+            $_.properties.destinationPortRange -eq '22'
+        )
+    })
+
+    $Null -ne $rules -and $rules.Length -gt 0
+}
+
+# Synopsis: Network security groups should be associated to either a subnet or network interface
+Rule 'Azure.VirtualNetwork.NSGAssociated' -If { ResourceType 'Microsoft.Network/networkSecurityGroups' } {
+    $subnets = ($TargetObject.Properties.subnets | Measure-Object).Count;
+    $interfaces = ($TargetObject.Properties.networkInterfaces | Measure-Object).Count;
+
+    # NSG should be associated to either a subnet or network interface
+    $subnets -gt 0 -or $interfaces -gt 0
+}
+
+#endregion Network Security Group
+
+#region Application Gateway
 
 # Synopsis: Application Gateway should use a minimum of two instances
 Rule 'Azure.VirtualNetwork.AppGwMinInstance' -If { ResourceType 'Microsoft.Network/applicationGateways' } -Tag @{ severity = 'Important'; category = 'Reliability' } {
@@ -114,3 +161,14 @@ Rule 'Azure.VirtualNetwork.AppGwWAFRules' -If { (IsAppGwWAF) } {
     $disabledRules = @($TargetObject.Properties.webApplicationFirewallConfiguration.disabledRuleGroups)
     $disabledRules.Count -eq 0
 }
+
+#endregion Application Gateway
+
+#region Network Interface
+
+# Synopsis: Network interfaces should be attached
+Rule 'Azure.VirtualNetwork.NICAttached' -If { ResourceType 'Microsoft.Network/networkInterfaces' } {
+    Exists 'Properties.virtualMachine.id'
+}
+
+#endregion Network Interface
