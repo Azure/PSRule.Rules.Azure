@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+## v0.3.0-B190723 (pre-release)
+
 - Excluded global services from Azure.Resource.AllowedRegions. [#96](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/96)
 - Enforce minimum TLS version for App Service. [#99](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/99)
 - Updated App Service site rules to include slots. [#100](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/100)
@@ -10,6 +12,10 @@
   - Network security groups that are not associated. [#93](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/93)
   - Unattached network interfaces. [#92](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/92)
 - Added NSG rule to check for lateral traversal security rules. [#103](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/103)
+
+Additional notes:
+
+- Requires pre-release v0.8.0-B190716 of PSRule.
 
 ## v0.3.0-B190710 (pre-release)
 
