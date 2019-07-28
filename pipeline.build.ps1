@@ -46,6 +46,10 @@ if ($version -like '*-*') {
 Write-Host -Object "[Pipeline] -- Using version: $version" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- Using versionSuffix: $versionSuffix" -ForegroundColor Green;
 
+if ($Env:coverage -eq 'true') {
+    $CodeCoverage = $True;
+}
+
 # Copy the PowerShell modules files to the destination path
 function CopyModuleFiles {
     param (

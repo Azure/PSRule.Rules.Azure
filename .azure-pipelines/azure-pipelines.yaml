@@ -31,16 +31,20 @@ stages:
     strategy:
       matrix:
         Linux:
+          displayName: 'Linux'
           imageName: 'ubuntu-16.04'
         MacOS:
+          displayName: 'MacOS'
           imageName: 'macos-10.13'
         Windows:
+          displayName: 'Windows'
           imageName: 'vs2017-win2016'
           publish: 'true'
           analysis: 'true'
           coverage: 'true'
     pool:
       vmImage: $(imageName)
+    displayName: 'PowerShell'
     steps:
 
     # Install pipeline dependencies
@@ -77,12 +81,24 @@ stages:
     #     publishRunAttachments: true
     #   condition: succeededOrFailed()
 
-    # Publish Code Coverage Results
+    # Generate Code Coverage report
+    - task: Palmmedia.reportgenerator.reportgenerator-build-release-task.reportgenerator@4
+      displayName: 'Code coverage report generator'
+      inputs:
+        reports: 'reports\pester-coverage.xml'
+        targetdir: 'reports\coverage'
+        sourcedirs: 'src\PSRule.Rules.Azure'
+        reporttypes: 'HtmlInline_AzurePipelines;Cobertura;Badges'
+        tag: $(Build.BuildNumber)
+      condition: eq(variables['coverage'], 'true')
+
+    # Publish Code Coverage report
     - task: PublishCodeCoverageResults@1
       displayName: 'Publish Pester code coverage'
       inputs:
-        codeCoverageTool: 'JaCoCo'
-        summaryFileLocation: 'reports/pester-coverage.xml'
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: 'reports/coverage/Cobertura.xml'
+        reportDirectory: 'reports/coverage'
       condition: eq(variables['coverage'], 'true')
 
     # Generate artifacts
@@ -103,6 +119,8 @@ stages:
     displayName: Live
     pool:
       vmImage: 'ubuntu-16.04'
+    variables:
+      isPreRelease: $[contains(variables['Build.SourceBranchName'], '-B')]
     steps:
     - task: DownloadPipelineArtifact@1
       displayName: 'Download module'
@@ -127,4 +145,4 @@ stages:
         releaseNotes: 'See [change log](https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/CHANGELOG.md)'
         assetUploadMode: replace
         addChangeLog: false
-        isPreRelease: $(contains(variables['Build.SourceBranchName'], '-B'))
+        isPreRelease: $(isPreRelease)
