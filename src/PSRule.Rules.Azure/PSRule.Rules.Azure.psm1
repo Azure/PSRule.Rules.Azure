@@ -163,6 +163,8 @@ function GetAzureResource {
 
         Get-AzResource @getParams -ExpandProperties -DefaultProfile $Context `
             | ExpandResource -Context $Context -Verbose:$VerbosePreference;
+        Get-AzResourceGroup @getParams -DefaultProfile $Context `
+            | SetResourceType 'Microsoft.Resources/resourceGroups' | ExpandResource -Context $Context -Verbose:$VerbosePreference;
         Get-AzSubscription -SubscriptionId $Context.DefaultContext.Subscription.Id `
             | SetResourceType 'Microsoft.Subscription' | ExpandResource -Context $Context -Verbose:$VerbosePreference;
     }
@@ -433,6 +435,27 @@ function VisitSubscription {
     }
 }
 
+function VisitResourceGroup {
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+
+    process {
+        $resources = @();
+        $resources += Get-AzRoleAssignment -DefaultProfile $Context -Scope $Resource.ResourceId `
+            | Where-Object { $_.Scope.StartsWith($Resource.ResourceId) } `
+            | SetResourceType 'Microsoft.Authorization/roleAssignments';
+        $resources += Get-AzResourceLock -DefaultProfile $Context -ResourceGroupName $Resource.ResourceGroupName | SetResourceType 'Microsoft.Authorization/locks';
+        $Resource `
+            | Add-Member -MemberType NoteProperty -Name Name -Value $Resource.ResourceGroupName -PassThru `
+            | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
+
 # Add additional information to resources with child resources
 function ExpandResource {
     param (
@@ -445,17 +468,18 @@ function ExpandResource {
 
     process {
         switch ($Resource.ResourceType) {
-            "Microsoft.Sql/servers" { VisitSqlServer @PSBoundParameters; }
-            "Microsoft.DBforPostgreSQL/servers" { VisitPostgreSqlServer @PSBoundParameters; }
-            "Microsoft.DBforMySQL/servers" { VisitMySqlServer @PSBoundParameters; }
-            "Microsoft.DataFactory/factories" { VisitDataFactoryV2 @PSBoundParameters; }
+            'Microsoft.Sql/servers' { VisitSqlServer @PSBoundParameters; }
+            'Microsoft.DBforPostgreSQL/servers' { VisitPostgreSqlServer @PSBoundParameters; }
+            'Microsoft.DBforMySQL/servers' { VisitMySqlServer @PSBoundParameters; }
+            'Microsoft.DataFactory/factories' { VisitDataFactoryV2 @PSBoundParameters; }
             # "Microsoft.Storage/storageAccounts" { VisitStorageAccount @PSBoundParameters; }
             # "Microsoft.StorageSync/storageSyncServices" { VisitStorageSyncService @PSBoundParameters; }
-            "Microsoft.Web/sites" { VisitWebApp @PSBoundParameters; }
-            "Microsoft.Web/sites/slots" { VisitWebApp @PSBoundParameters; }
-            "Microsoft.RecoveryServices/vaults" { VisitRecoveryServices @PSBoundParameters; }
-            "Microsoft.Compute/virtualMachines" { VisitVirtualMachine @PSBoundParameters; }
-            "Microsoft.Subscription" { VisitSubscription @PSBoundParameters; }
+            'Microsoft.Web/sites' { VisitWebApp @PSBoundParameters; }
+            'Microsoft.Web/sites/slots' { VisitWebApp @PSBoundParameters; }
+            'Microsoft.RecoveryServices/vaults' { VisitRecoveryServices @PSBoundParameters; }
+            'Microsoft.Compute/virtualMachines' { VisitVirtualMachine @PSBoundParameters; }
+            'Microsoft.Subscription' { VisitSubscription @PSBoundParameters; }
+            'Microsoft.Resources/resourceGroups' { VisitResourceGroup @PSBoundParameters; }
             default { $Resource; }
         }
     }
