@@ -6,7 +6,7 @@
         "ResourceName": "cluster-A",
         "Name": "cluster-A",
         "Properties": {
-            "kubernetesVersion": "1.13.7",
+            "kubernetesVersion": "1.14.5",
             "dnsPrefix": "cluster-A",
             "fqdn": "cluster-A-00000000.nnn.region.azmk8s.io",
             "agentPoolProfiles": [
@@ -69,7 +69,7 @@
         "ResourceName": "cluster-B",
         "Name": "cluster-B",
         "Properties": {
-            "kubernetesVersion": "1.11.4",
+            "kubernetesVersion": "1.13.8",
             "dnsPrefix": "cluster-B",
             "fqdn": "cluster-B-00000000.nnn.region.azmk8s.io",
             "agentPoolProfiles": [
