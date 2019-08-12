@@ -122,17 +122,22 @@ stages:
     variables:
       isPreRelease: $[contains(variables['Build.SourceBranchName'], '-B')]
     steps:
+
+    # Download module from build
     - task: DownloadPipelineArtifact@1
       displayName: 'Download module'
       inputs:
         artifactName: PSRule.Rules.Azure
         downloadPath: $(Build.SourcesDirectory)/out/modules/PSRule.Rules.Azure
+
     # Install pipeline dependencies
     - powershell: ./.azure-pipelines/pipeline-deps.ps1
       displayName: 'Install dependencies'
+
     # Install pipeline dependencies and build module
     - powershell: Invoke-Build Release -ApiKey $(apiKey)
       displayName: 'Publish module'
+
     # Update GitHub release
     - task: GitHubRelease@0
       displayName: 'GitHub release'
