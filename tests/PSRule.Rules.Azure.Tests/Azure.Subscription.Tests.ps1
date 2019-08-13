@@ -26,6 +26,70 @@ Describe 'Azure.Subscription' {
     Context 'Conditions' {
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -WarningAction Ignore -ErrorAction Stop;
 
+        It 'Azure.Subscription.UseGroups' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Subscription.UseGroups' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'subscription-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -BeIn 2;
+            $ruleResult.TargetName | Should -BeIn 'subscription-A', 'subscription-C';
+        }
+
+        It 'Azure.Subscription.LimitOwner' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Subscription.LimitOwner' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'subscription-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'subscription-A', 'subscription-C';
+        }
+
+        It 'Azure.Subscription.LimitMGDelegation' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Subscription.LimitMGDelegation' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'subscription-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'subscription-B', 'subscription-A';
+        }
+
+        It 'Azure.Subscription.UseRGDelegation' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Subscription.UseRGDelegation' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'test-rg-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'test-rg-A';
+        }
+
         It 'Azure.Subscription.SecurityCenterContact' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Subscription.SecurityCenterContact' };
 

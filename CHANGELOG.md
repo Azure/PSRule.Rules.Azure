@@ -2,6 +2,11 @@
 ## Unreleased
 
 - Updated `Azure.AKS.Version` to 1.14.5. [#109](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/109)
+- Added subscription RBAC delegation rules. [#107](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/107)
+  - Check for number of subscription owners.
+  - Check for RBAC inheritance from management groups.
+  - Check for user RBAC assignments.
+  - Check for RBAC delegation on individual resources.
 
 ## v0.3.0-B190723 (pre-release)
 

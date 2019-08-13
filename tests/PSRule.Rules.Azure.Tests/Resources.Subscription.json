@@ -26,6 +26,30 @@
                 "AlertNotifications": "On",
                 "AlertsToAdmins": "On",
                 "ResourceType": "Microsoft.Security/securityContacts"
+            },
+            {
+                "RoleAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+                "DisplayName": "User 1",
+                "SignInName": "user1@contoso.com",
+                "RoleDefinitionName": "Owner",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
+            },
+            {
+                "RoleAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test",
+                "DisplayName": "User 2",
+                "SignInName": "user2@contoso.com",
+                "RoleDefinitionName": "Contributor",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
             }
         ]
     },
@@ -56,6 +80,78 @@
                 "AlertNotifications": "On",
                 "AlertsToAdmins": "On",
                 "ResourceType": "Microsoft.Security/securityContacts"
+            },
+            {
+                "RoleAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+                "DisplayName": "User 1",
+                "SignInName": "user1@contoso.com",
+                "RoleDefinitionName": "Owner",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
+            },
+            {
+                "RoleAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+                "DisplayName": "User 2",
+                "SignInName": "user2@contoso.com",
+                "RoleDefinitionName": "Owner",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
+            },
+            {
+                "RoleAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+                "DisplayName": "User 3",
+                "SignInName": "user3@contoso.com",
+                "RoleDefinitionName": "Owner",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
+            },
+            {
+                "RoleAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+                "DisplayName": "User 4",
+                "SignInName": "user4@contoso.com",
+                "RoleDefinitionName": "Owner",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
+            },
+            {
+                "RoleAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+                "DisplayName": "User 5",
+                "SignInName": "user5@contoso.com",
+                "RoleDefinitionName": "Owner",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
+            },
+            {
+                "RoleAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+                "DisplayName": "User 6",
+                "SignInName": "user6@contoso.com",
+                "RoleDefinitionName": "Owner",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
             }
         ]
     },
@@ -80,6 +176,104 @@
                 "AlertNotifications": "On",
                 "AlertsToAdmins": "On",
                 "ResourceType": "Microsoft.Security/securityContacts"
+            },
+            {
+                "RoleAssignmentId": "/providers/Microsoft.Management/managementGroups/test-management-group/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/providers/Microsoft.Management/managementGroups/test-management-group",
+                "DisplayName": "User 1",
+                "SignInName": "user1@contoso.com",
+                "RoleDefinitionName": "Owner",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
+            },
+            {
+                "RoleAssignmentId": "/providers/Microsoft.Management/managementGroups/test-management-group/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/providers/Microsoft.Management/managementGroups/test-management-group",
+                "DisplayName": "User 2",
+                "SignInName": "user2@contoso.com",
+                "RoleDefinitionName": "Contributor",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
+            },
+            {
+                "RoleAssignmentId": "/providers/Microsoft.Management/managementGroups/test-management-group/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/providers/Microsoft.Management/managementGroups/test-management-group",
+                "DisplayName": "User 3",
+                "SignInName": "user3@contoso.com",
+                "RoleDefinitionName": "Reader",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
+            },
+            {
+                "RoleAssignmentId": "/providers/Microsoft.Management/managementGroups/test-management-group/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/providers/Microsoft.Management/managementGroups/test-management-group",
+                "DisplayName": "User 4",
+                "SignInName": "user4@contoso.com",
+                "RoleDefinitionName": "User Access Administrator",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
+            }
+        ]
+    },
+    {
+        "ResourceGroupName": "test-rg-A",
+        "Location": "region",
+        "ProvisioningState": "Succeeded",
+        "Tags": {},
+        "TagsTable": null,
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg-A",
+        "ManagedBy": null,
+        "ResourceType": "Microsoft.Resources/resourceGroups",
+        "Name": "test-rg-A",
+        "resources": [
+            {
+                "RoleAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg-A/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg-A",
+                "DisplayName": "User 1",
+                "SignInName": "user1@contoso.com",
+                "RoleDefinitionName": "Monitoring Reader",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
+            }
+        ]
+    },
+    {
+        "ResourceGroupName": "test-rg-B",
+        "Location": "region",
+        "ProvisioningState": "Succeeded",
+        "Tags": {},
+        "TagsTable": null,
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg-B",
+        "ManagedBy": null,
+        "ResourceType": "Microsoft.Resources/resourceGroups",
+        "Name": "test-rg-B",
+        "resources": [
+            {
+                "RoleAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg-B/providers/Microsoft.KeyVault/vaults/keyvault-B/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
+                "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg-B/providers/Microsoft.KeyVault/vaults/keyvault-B",
+                "DisplayName": "User 1",
+                "SignInName": "user1@contoso.com",
+                "RoleDefinitionName": "Monitoring Reader",
+                "RoleDefinitionId": "00000000-0000-0000-0000-000000000000",
+                "ObjectId": "00000000-0000-0000-0000-000000000000",
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
             }
         ]
     }

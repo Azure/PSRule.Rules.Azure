@@ -35,15 +35,19 @@ RuleName | Description | Category
 [Azure.Storage.SecureTransferRequired](Azure.Storage.SecureTransferRequired.md) | Storage accounts should only accept secure traffic. | Security configuration
 [Azure.Storage.UseEncryption](Azure.Storage.UseEncryption.md) | Storage Service Encryption (SSE) should be enabled. | Security configuration
 [Azure.Storage.SoftDelete](Azure.Storage.SoftDelete.md) | Enable soft delete on Storage Accounts. | Data recovery
+[Azure.Subscription.UseGroups](Azure.Subscription.UseGroups.md) | Use groups for assigning permissions instead of individual user accounts. | Security operations
+[Azure.Subscription.LimitOwner](Azure.Subscription.LimitOwner.md) | Limit the number of subscription Owners. | Security operations
+[Azure.Subscription.LimitMGDelegation](Azure.Subscription.LimitMGDelegation.md) | Limit Role-Base Access Control (RBAC) inheritance from Management Groups. | Security operations
 [Azure.Subscription.SecurityCenterContact](Azure.Subscription.SecurityCenterContact.md) | Security Center email and phone contact details should be set. | Security operations
 [Azure.Subscription.SecurityCenterProvisioning](Azure.Subscription.SecurityCenterProvisioning.md) | Enable auto-provisioning on VMs to improve Security Center insights. | Security operations
+[Azure.Subscription.UseRGDelegation](Azure.Subscription.UseRGDelegation.md) | Use RBAC assignments on resource groups instead of individual resources. | Security operations
 [Azure.VirtualMachine.UseManagedDisks](Azure.VirtualMachine.UseManagedDisks.md) | Virtual machines should use managed disks. | Reliability
 [Azure.VirtualMachine.Standalone](Azure.VirtualMachine.Standalone.md) | VMs much use premium disks or use availability sets/ zones to meet SLA requirements. | Reliability
 [Azure.VirtualMachine.PromoSku](Azure.VirtualMachine.PromoSku.md) | Virtual machines (VMs) should not use expired promotional SKU. | Cost management
 [Azure.VirtualMachine.BasicSku](Azure.VirtualMachine.BasicSku.md) | Virtual machines (VMs) should not use Basic sizes. | Performance
 [Azure.VirtualMachine.DiskCaching](Azure.VirtualMachine.DiskCaching.md) | Check disk caching is configured correctly for the workload. | Performance
-[Azure.VirtualMachine.UniqueDns](Azure.VirtualMachine.UniqueDns.md) | Network interfaces should inherit from virtual network. | Operations management
-[Azure.VirtualMachine.DiskAttached](Azure.VirtualMachine.DiskAttached.md) | Managed disks should be attached to virtual machines. | Operations management
+[Azure.VirtualMachine.UniqueDns](Azure.VirtualMachine.UniqueDns.md) | Network interfaces (NICs) should inherit DNS from virtual networks. | Operations management
+[Azure.VirtualMachine.DiskAttached](Azure.VirtualMachine.DiskAttached.md) | Managed disks should be attached to virtual machines. | Cost management
 [Azure.VirtualMachine.DiskSizeAlignment](Azure.VirtualMachine.DiskSizeAlignment.md) | Managed disk is smaller than SKU size. | Cost management
 [Azure.VirtualMachine.UseHybridUseBenefit](Azure.VirtualMachine.UseHybridUseBenefit.md) | Use Hybrid Use Benefit. | Cost management
 [Azure.VirtualMachine.AcceleratedNetworking](Azure.VirtualMachine.AcceleratedNetworking.md) | Enabled accelerated networking for supported operating systems. | Performance optimisation
