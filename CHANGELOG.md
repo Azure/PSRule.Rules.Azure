@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+- Updated `Azure.AKS.Version` to 1.14.5. [#109](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/109)
+
 ## v0.3.0-B190723 (pre-release)
 
 - Excluded global services from Azure.Resource.AllowedRegions. [#96](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/96)
@@ -12,10 +14,6 @@
   - Network security groups that are not associated. [#93](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/93)
   - Unattached network interfaces. [#92](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/92)
 - Added NSG rule to check for lateral traversal security rules. [#103](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/103)
-
-Additional notes:
-
-- Requires pre-release v0.8.0-B190716 of PSRule.
 
 ## v0.3.0-B190710 (pre-release)
 
