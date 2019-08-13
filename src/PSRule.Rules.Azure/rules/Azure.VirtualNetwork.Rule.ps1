@@ -24,7 +24,7 @@ Rule 'Azure.VirtualNetwork.UseNSGs' -If { ResourceType 'Microsoft.Network/virtua
 # Synopsis: VNETs should have at least two DNS servers assigned
 Rule 'Azure.VirtualNetwork.SingleDNS'  -If { ResourceType 'Microsoft.Network/virtualNetworks' } -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
     # If DNS servers are customized, at least two IP addresses should be defined
-    if (!(Exists 'properties.dhcpOptions.dnsServers') -or ($TargetObject.properties.dhcpOptions.dnsServers.Count -eq 0)) {
+    if ($Assert.NullOrEmpty($TargetObject, 'properties.dhcpOptions.dnsServers').Result) {
         $True;
     }
     else {
@@ -34,7 +34,8 @@ Rule 'Azure.VirtualNetwork.SingleDNS'  -If { ResourceType 'Microsoft.Network/vir
 
 # Synopsis: VNETs should use Azure local DNS servers
 Rule 'Azure.VirtualNetwork.LocalDNS' -If { ResourceType 'Microsoft.Network/virtualNetworks' } {
-    if (!(Exists 'properties.dhcpOptions.dnsServers') -or ($TargetObject.properties.dhcpOptions.dnsServers.Count -eq 0)) {
+    # If DNS servers are customized, check what range the IPs are in
+    if ($Assert.NullOrEmpty($TargetObject, 'properties.dhcpOptions.dnsServers').Result) {
         $True;
     }
     else {
@@ -43,7 +44,7 @@ Rule 'Azure.VirtualNetwork.LocalDNS' -If { ResourceType 'Microsoft.Network/virtu
         $primary = $dnsServers[0]
         $localRanges = @();
         $localRanges += $TargetObject.Properties.addressSpace.addressPrefixes
-        if ($Null -ne $TargetObject.Properties.virtualNetworkPeerings -and $TargetObject.Properties.virtualNetworkPeerings.Length -gt 0) {
+        if ($Assert.HasFieldValue($TargetObject, 'Properties.virtualNetworkPeerings').Result) {
             $localRanges += $TargetObject.Properties.virtualNetworkPeerings.properties.remoteAddressSpace.addressPrefixes
         }
 

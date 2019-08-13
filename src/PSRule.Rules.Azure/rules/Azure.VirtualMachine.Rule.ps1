@@ -46,7 +46,7 @@ Rule 'Azure.VirtualMachine.BasicSku' -If { ResourceType 'Microsoft.Compute/virtu
 # Synopsis: Check disk caching is configured correctly for the workload
 Rule 'Azure.VirtualMachine.DiskCaching' -If { ResourceType 'Microsoft.Compute/virtualMachines' } -Tag @{ severity = 'Important'; category = 'Performance' } {
     # Check OS disk
-    $TargetObject.properties.storageProfile.osDisk.caching -eq 'ReadWrite'
+    Within 'properties.storageProfile.osDisk.caching' 'ReadWrite'
 
     # Check data disks
     $dataDisks = @($TargetObject.properties.storageProfile.dataDisks)
@@ -63,18 +63,14 @@ Rule 'Azure.VirtualMachine.DiskCaching' -If { ResourceType 'Microsoft.Compute/vi
 
 # Synopsis: Network interfaces should inherit from virtual network
 Rule 'Azure.VirtualMachine.UniqueDns' -If { ResourceType 'Microsoft.Network/networkInterfaces' } -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
-    Recommend 'Network interfaces with DNS settings may increase complexity'
-
-    $TargetObject.Properties.dnsSettings.dnsServers.Length -eq 0
+    $Assert.NullOrEmpty($TargetObject, 'Properties.dnsSettings.dnsServers')
 }
 
 # Synopsis: Managed disks should be attached to virtual machines
 Rule 'Azure.VirtualMachine.DiskAttached' -If { (ResourceType 'Microsoft.Compute/disks') -and ($TargetObject.ResourceName -notlike '*-ASRReplica') } -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
-    Recommend 'Disks that are not attached may not be required'
-
-    # Disks should be attached unless they are used by ASR, which are not attached until failover
+    # Disks should be attached unless they are used by ASR, which are not attached until fail over
     # Disks for VMs that are off are marked as Reserved
-    $TargetObject.properties.diskState -eq 'Attached' -or $TargetObject.properties.diskState -eq 'Reserved'
+    Within 'properties.diskState' 'Attached', 'Reserved'
 }
 
 # TODO: Check IOPS
@@ -112,7 +108,7 @@ Rule 'Azure.VirtualMachine.AcceleratedNetworking' -If { (SupportsAcceleratedNetw
 
 # Synopsis: Availability sets should be aligned
 Rule 'Azure.VirtualMachine.ASAlignment' -If { ResourceType 'Microsoft.Compute/availabilitySets' } -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
-    $TargetObject.sku.name -eq 'aligned'
+    Within 'sku.name' 'aligned'
 }
 
 # Synopsis: Availability sets should be deployed with at least two members

@@ -1,10 +1,10 @@
 ---
 severity: Awareness
-category: Operations management
+category: Cost management
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.VirtualMachine.DiskAttached.md
 ---
 
-# Azure.VirtualMachine.DiskAttached
+# Unattached managed disks
 
 ## SYNOPSIS
 
@@ -12,8 +12,10 @@ Managed disks should be attached to virtual machines.
 
 ## DESCRIPTION
 
-Managed disks should be attached to virtual machines.
+Unattached managed disks are charged but not in use. Unattached managed disks still consume storage and are charged on their size.
 
 ## RECOMMENDATION
 
-Managed disks should be attached to virtual machines.
+Consider removing managed disks are no longer required to reduce complexity and storage costs.
+
+For more information see [Managed Disk pricing](https://azure.microsoft.com/en-us/pricing/details/managed-disks/).

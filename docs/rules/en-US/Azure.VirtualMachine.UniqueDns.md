@@ -4,16 +4,20 @@ category: Operations management
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.VirtualMachine.UniqueDns.md
 ---
 
-# Azure.VirtualMachine.UniqueDns
+# NICs with custom DNS settings
 
 ## SYNOPSIS
 
-Network interfaces should inherit from virtual network.
+Network interfaces (NICs) should inherit DNS from virtual networks.
 
 ## DESCRIPTION
 
-Network interfaces should inherit from virtual network.
+By default Virtual machine (VM) NICs automatically use a DNS configuration inherited from the virtual network they connect to. Optionally, DNS servers can be overridden on a per NIC basis with a custom configuration.
+
+Using network interfaces with individual DNS server settings may increase management overhead and complexity.
 
 ## RECOMMENDATION
 
-Network interfaces should inherit from virtual network.
+Consider updating NIC DNS server settings to inherit from virtual network.
+
+For more information see [Change DNS servers](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface#change-dns-servers).
