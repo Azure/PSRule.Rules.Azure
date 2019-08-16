@@ -2,6 +2,7 @@
 severity: Critical
 category: Security configuration
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.MySQL.UseSSL.md
+ms-content-id: 2569c452-b0d4-45ca-a6df-72ff7e911be3
 ---
 
 # Azure.MySQL.UseSSL

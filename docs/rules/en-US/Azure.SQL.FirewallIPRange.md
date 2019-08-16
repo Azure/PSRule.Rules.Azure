@@ -2,6 +2,7 @@
 severity: Important
 category: Security configuration
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.SQL.FirewallIPRange.md
+ms-content-id: a25b1927-f04c-4a6a-8a3d-42d59d4722ff
 ---
 
 # Azure.SQL.FirewallIPRange

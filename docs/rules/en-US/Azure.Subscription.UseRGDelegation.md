@@ -2,6 +2,7 @@
 severity: Important
 category: Security operations
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.Subscription.UseRGDelegation.md
+ms-content-id: b31d32cc-1e9f-4ab8-93ab-1cd98354ad15
 ---
 
 # Use Resource Group delegation

@@ -2,6 +2,7 @@
 severity: Awareness
 category: Cost management
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.VirtualMachine.DiskAttached.md
+ms-content-id: 23a06a0e-7965-4d43-8e29-bb9ac6eeffcc
 ---
 
 # Unattached managed disks

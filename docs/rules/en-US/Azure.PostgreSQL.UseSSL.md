@@ -2,6 +2,7 @@
 severity: Critical
 category: Security configuration
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.PostgreSQL.UseSSL.md
+ms-content-id: 80d34e65-8ab5-4cf3-a0dd-3b5e56e06f40
 ---
 
 # Azure.PostgreSQL.UseSSL
