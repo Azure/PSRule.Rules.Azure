@@ -2,6 +2,7 @@
 severity: Important
 category: Security configuration
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.AppService.MinTLS.md
+ms-content-id: e19fbe7e-da05-47d4-8de1-2fdf52ada662
 ---
 
 # Use minimum TLS version

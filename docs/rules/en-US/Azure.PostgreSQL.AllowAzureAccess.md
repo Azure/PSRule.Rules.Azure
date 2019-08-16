@@ -2,6 +2,7 @@
 severity: Important
 category: Security configuration
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.PostgreSQL.AllowAzureAccess.md
+ms-content-id: 07659a25-0a40-4979-99cd-cae83a5e3145
 ---
 
 # Azure.PostgreSQL.AllowAzureAccess

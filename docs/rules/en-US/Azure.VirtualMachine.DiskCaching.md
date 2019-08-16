@@ -2,6 +2,7 @@
 severity: Important
 category: Performance
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.VirtualMachine.DiskCaching.md
+ms-content-id: d28da16e-4639-466f-95e5-4ab6bf61aec7
 ---
 
 # Azure.VirtualMachine.DiskCaching

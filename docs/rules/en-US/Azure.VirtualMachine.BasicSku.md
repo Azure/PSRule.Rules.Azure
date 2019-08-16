@@ -2,6 +2,7 @@
 severity: Important
 category: Performance
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.VirtualMachine.BasicSku.md
+ms-content-id: 49cef14e-19f0-4a54-be14-7c27a0347b4c
 ---
 
 # Azure.VirtualMachine.BasicSku
