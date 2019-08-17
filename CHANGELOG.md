@@ -1,6 +1,42 @@
 
 ## Unreleased
 
+## v0.3.0
+
+What's changed since v0.2.0:
+
+- New rules:
+  - App Services:
+    - Enforce minimum TLS version for App Service. [#99](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/99)
+  - Resource clean up:
+    - Network security groups that are not associated. [#93](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/93)
+    - Unattached network interfaces. [#92](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/92)
+  - Role assignment:
+    - Added subscription RBAC delegation rules. [#107](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/107)
+      - Check for number of subscription owners.
+      - Check for RBAC inheritance from management groups.
+      - Check for user RBAC assignments.
+      - Check for RBAC delegation on individual resources.
+  - Virtual machines:
+    - VMs should avoid using expired promo SKUs. [#87](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/87)
+    - VMs should avoid using basic SKUs. [#69](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/69)
+  - Virtual networking:
+    - Added NSG rule to check for lateral traversal security rules. [#103](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/103)
+    - Added rule to detect deny all inbound NSG rule. [#94](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/94)
+- Updated rules:
+  - App Services:
+    - Updated App Service site rules to include slots. [#100](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/100)
+    - `Azure.AppService.ARRAffinity` and `Azure.AppService.UseHTTPS` now run against slots.
+  - Azure Kubernetes Services:
+    - Updated `Azure.AKS.Version` to 1.14.5. [#109](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/109)
+- Bug fixes:
+  - Fix handling of empty DNS servers in `Azure.VirtualNetwork.LocalDNS`. [#84](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/84)
+  - Fix handling of no peering connections in `Azure.VirtualNetwork.LocalDNS`. [#89](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/89)
+  - Fix export of additional properties for `Microsoft.Sql/servers`. [#114](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/114)
+  - Excluded global services from Azure.Resource.AllowedRegions. [#96](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/96)
+
+What's changed since pre-release v0.3.0-B190807:
+
 - Fix export of additional properties for `Microsoft.Sql/servers`. [#114](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/114)
 
 ## v0.3.0-B190807 (pre-release)
