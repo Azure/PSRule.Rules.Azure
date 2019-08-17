@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+- Fix export of additional properties for `Microsoft.Sql/servers`. [#114](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/114)
+
 ## v0.3.0-B190807 (pre-release)
 
 - Updated `Azure.AKS.Version` to 1.14.5. [#109](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/109)

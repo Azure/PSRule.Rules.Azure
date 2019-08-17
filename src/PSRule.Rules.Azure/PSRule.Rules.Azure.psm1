@@ -240,7 +240,10 @@ function VisitSqlServer {
         $resources = @();
 
         # Get SQL Server firewall rules
-        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.SQL/servers/firewallRules' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2014-04-01' -ExpandProperties;
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Sql/servers/firewallRules' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2015-05-01-preview' -ExpandProperties;
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Sql/servers/securityAlertPolicies' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-03-01-preview' -ExpandProperties;
+        # $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Sql/servers/vulnerabilityAssessments' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2018-06-01-preview' -ExpandProperties;
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Sql/servers/auditingSettings' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-03-01-preview' -ExpandProperties;
         $sqlServer | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }

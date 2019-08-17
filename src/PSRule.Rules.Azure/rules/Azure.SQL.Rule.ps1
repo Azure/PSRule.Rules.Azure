@@ -32,22 +32,16 @@ Rule 'Azure.SQL.FirewallIPRange' -If { ResourceType 'Microsoft.Sql/servers' } -T
 
 # Synopsis: Enable threat detection for Azure SQL logical server
 Rule 'Azure.SQL.ThreatDetection' -If { ResourceType 'Microsoft.Sql/servers' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
-    $threatPolicy = $TargetObject.resources | Where-Object -FilterScript {
+    $policy = $TargetObject.resources | Where-Object -FilterScript {
         $_.Type -eq 'Microsoft.Sql/servers/securityAlertPolicies'
     }
-    $Null -ne $threatPolicy;
-    if ($Null -ne $threatPolicy) {
-        $threatPolicy.ThreatDetectionState -eq 0 # 0 = Enabled, 1 = Disabled
-    }
+    $policy | Within 'Properties.state' 'Enabled'
 }
 
 # Synopsis: Enable auditing for Azure SQL logical server
 Rule 'Azure.SQL.Auditing' -If { ResourceType 'Microsoft.Sql/servers' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
-    $auditPolicy = $TargetObject.resources | Where-Object -FilterScript {
+    $policy = $TargetObject.resources | Where-Object -FilterScript {
         $_.Type -eq 'Microsoft.Sql/servers/auditingSettings'
     }
-    $Null -ne $auditPolicy;
-    if ($Null -ne $auditPolicy) {
-        $auditPolicy.AuditState -eq 0 # 0 = Enabled, 1 = Disabled
-    }
+    $policy | Within 'Properties.state' 'Enabled'
 }

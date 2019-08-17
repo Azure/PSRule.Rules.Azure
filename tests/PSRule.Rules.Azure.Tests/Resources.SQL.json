@@ -32,27 +32,68 @@
                 "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
-                "type": "Microsoft.Sql/servers/auditingSettings",
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/securityAlertPolicies/Default",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/securityAlertPolicies/Default",
+                "ResourceName": "Default",
+                "Name": "Default",
+                "Properties": {
+                    "state": "Enabled",
+                    "disabledAlerts": [
+                        ""
+                    ],
+                    "emailAddresses": [
+                        ""
+                    ],
+                    "emailAccountAdmins": true,
+                    "storageEndpoint": "",
+                    "storageAccountAccessKey": "",
+                    "retentionDays": 0
+                },
                 "ResourceGroupName": "test-rg",
-                "ServerName": "server-A",
-                "AuditState": 0,
-                "AuditActionGroup": [],
-                "PredicateExpression": "",
-                "StorageAccountName": null,
-                "StorageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "StorageKeyType": 0,
-                "RetentionInDays": 0
+                "Type": "Microsoft.Sql/servers/securityAlertPolicies",
+                "ResourceType": "Microsoft.Sql/servers/securityAlertPolicies",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
-                "type": "Microsoft.Sql/servers/securityAlertPolicies",
-                "ServerName": "server-A",
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/vulnerabilityAssessments/Default",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/vulnerabilityAssessments/Default",
+                "ResourceName": "Default",
+                "Name": "Default",
+                "Properties": {
+                    "storageContainerPath": "https://storage-A.blob.core.windows.net/",
+                    "recurringScans": {
+                        "isEnabled": true,
+                        "emailSubscriptionAdmins": true,
+                        "emails": []
+                    }
+                },
                 "ResourceGroupName": "test-rg",
-                "ThreatDetectionState": 0,
-                "NotificationRecipientsEmails": "",
-                "StorageAccountName": "",
-                "EmailAdmins": false,
-                "ExcludedDetectionTypes": [],
-                "RetentionInDays": 0
+                "Type": "Microsoft.Sql/servers/vulnerabilityAssessments",
+                "ResourceType": "Microsoft.Sql/servers/vulnerabilityAssessments",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/auditingSettings/Default",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/auditingSettings/Default",
+                "ResourceName": "Default",
+                "Name": "Default",
+                "Properties": {
+                    "state": "Enabled",
+                    "storageEndpoint": "https://storage-A.blob.core.windows.net/",
+                    "retentionDays": 730,
+                    "auditActionsAndGroups": [
+                        "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
+                        "FAILED_DATABASE_AUTHENTICATION_GROUP",
+                        "BATCH_COMPLETED_GROUP"
+                    ],
+                    "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000",
+                    "isStorageSecondaryKeyInUse": false,
+                    "isAzureMonitorTargetEnabled": false
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Sql/servers/auditingSettings",
+                "ResourceType": "Microsoft.Sql/servers/auditingSettings",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             }
         ]
     },
@@ -206,6 +247,104 @@
                 "ResourceGroupName": "test-rg",
                 "Type": "Microsoft.Sql/servers/firewallRules",
                 "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+            }
+        ]
+    },
+    {
+        "Name": "server-C",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C",
+        "ResourceName": "server-C",
+        "ResourceType": "Microsoft.Sql/servers",
+        "Kind": "v12.0",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Tags": null,
+        "Properties": {
+            "fullyQualifiedDomainName": "server-C.database.windows.net",
+            "administratorLogin": "db-admin",
+            "administratorLoginPassword": null,
+            "externalAdministratorLogin": null,
+            "externalAdministratorSid": null,
+            "version": "12.0",
+            "state": "Ready"
+        },
+        "resources": [
+            {
+                "ResourceName": "ClientIPAddress_1",
+                "Name": "ClientIPAddress_1",
+                "Properties": {
+                    "startIpAddress": "10.1.1.1",
+                    "endIpAddress": "10.1.1.1"
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Sql/servers/firewallRules",
+                "ResourceType": "Microsoft.Sql/servers/firewallRules",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/securityAlertPolicies/Default",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/securityAlertPolicies/Default",
+                "ResourceName": "Default",
+                "Name": "Default",
+                "Properties": {
+                    "state": "Disabled",
+                    "disabledAlerts": [
+                        ""
+                    ],
+                    "emailAddresses": [
+                        ""
+                    ],
+                    "emailAccountAdmins": true,
+                    "storageEndpoint": "",
+                    "storageAccountAccessKey": "",
+                    "retentionDays": 0
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Sql/servers/securityAlertPolicies",
+                "ResourceType": "Microsoft.Sql/servers/securityAlertPolicies",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/vulnerabilityAssessments/Default",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/vulnerabilityAssessments/Default",
+                "ResourceName": "Default",
+                "Name": "Default",
+                "Properties": {
+                    "storageContainerPath": "https://storage-A.blob.core.windows.net/",
+                    "recurringScans": {
+                        "isEnabled": false,
+                        "emailSubscriptionAdmins": true,
+                        "emails": []
+                    }
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Sql/servers/vulnerabilityAssessments",
+                "ResourceType": "Microsoft.Sql/servers/vulnerabilityAssessments",
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/auditingSettings/Default",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/auditingSettings/Default",
+                "ResourceName": "Default",
+                "Name": "Default",
+                "Properties": {
+                    "state": "Disabled",
+                    "storageEndpoint": "https://storage-A.blob.core.windows.net/",
+                    "retentionDays": 730,
+                    "auditActionsAndGroups": [
+                        "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
+                        "FAILED_DATABASE_AUTHENTICATION_GROUP",
+                        "BATCH_COMPLETED_GROUP"
+                    ],
+                    "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000",
+                    "isStorageSecondaryKeyInUse": false,
+                    "isAzureMonitorTargetEnabled": false
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Sql/servers/auditingSettings",
+                "ResourceType": "Microsoft.Sql/servers/auditingSettings",
                 "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             }
         ]
