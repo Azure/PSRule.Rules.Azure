@@ -38,8 +38,8 @@ Describe 'Azure.SQL' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'server-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-C';
         }
 
         It 'Azure.SQL.AllowAzureAccess' {
@@ -54,8 +54,8 @@ Describe 'Azure.SQL' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'server-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-C';
         }
 
         It 'Azure.SQL.FirewallIPRange' {
@@ -70,8 +70,8 @@ Describe 'Azure.SQL' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'server-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-C';
         }
 
         It 'Azure.SQL.ThreatDetection' {
@@ -80,8 +80,8 @@ Describe 'Azure.SQL' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'server-B';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'server-B', 'server-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -96,8 +96,8 @@ Describe 'Azure.SQL' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'server-B';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'server-B', 'server-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
