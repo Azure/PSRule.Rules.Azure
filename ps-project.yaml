@@ -1,0 +1,26 @@
+#
+# PSRule for Azure
+#
+
+info:
+  name: PSRule.Rules.Azure
+  description: |
+    A suite of rules to validate Azure resources using PSRule.
+  url: https://berniewhite.github.io/PSRule.Rules.Azure/
+
+repository:
+  type: git
+  url: https://github.com/BernieWhite/PSRule.Rules.Azure.git
+
+bugs:
+  url: https://github.com/BernieWhite/PSRule.Rules.Azure/issues
+
+tasks:
+  clear:
+    steps:
+      - gitPrune:
+          name: origin
+          removeGone: true
+  build:
+    steps:
+      - powershell: Invoke-Build Build
