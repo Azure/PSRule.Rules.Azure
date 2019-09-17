@@ -28,6 +28,10 @@ Describe 'Rule quality' {
                 $rule.Description | Should -Not -BeNullOrEmpty;
                 $rule.Info.Annotations.severity | Should -Not -BeNullOrEmpty;
                 $rule.Info.Annotations.category | Should -Not -BeNullOrEmpty;
+
+                if ($rule.RuleName.Length -gt 35) {
+                    Write-Warning -Message "Rule name $($rule.RuleName) if longer than 35 characters.";
+                }
             }
         }
     }

@@ -2,7 +2,9 @@
     "files.exclude": {
         "reports/": true,
         "out/": true,
-        ".vs/": true
+        ".vs/": true,
+        "**/bin/": true,
+        "**/obj/": true
     },
     "search.exclude": {
         "out/": true

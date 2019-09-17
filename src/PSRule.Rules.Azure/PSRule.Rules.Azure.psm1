@@ -99,7 +99,6 @@ function FindAzureContext {
         [Parameter(Mandatory = $False)]
         [System.Boolean]$All = $False
     )
-
     process {
         $listAvailable = $False;
 
@@ -153,7 +152,6 @@ function GetAzureResource {
         [Parameter(Mandatory = $False)]
         [Hashtable]$Tag
     )
-
     process {
         $getParams = @{ };
 
@@ -180,7 +178,6 @@ function FilterAzureResource {
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$InputObject
     )
-
     process {
         if (($Null -eq $ResourceGroupName) -or ($InputObject.ResourceType -eq 'Microsoft.Subscription') -or ($InputObject.ResourceGroupName -in $ResourceGroupName)) {
             return $InputObject;
@@ -234,7 +231,6 @@ function VisitSqlServer {
         [Parameter(Mandatory = $True)]
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
-
     process {
         $sqlServer = $resource;
         $resources = @();
@@ -248,7 +244,6 @@ function VisitSqlServer {
     }
 }
 
-
 function VisitPostgreSqlServer {
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
@@ -257,7 +252,6 @@ function VisitPostgreSqlServer {
         [Parameter(Mandatory = $True)]
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
-
     process {
         $sqlServer = $resource;
         $resources = @();
@@ -276,7 +270,6 @@ function VisitMySqlServer {
         [Parameter(Mandatory = $True)]
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
-
     process {
         $sqlServer = $resource;
         $resources = @();
@@ -287,7 +280,7 @@ function VisitMySqlServer {
     }
 }
 
-function VisitDataFactoryV2 {
+function VisitSqlManagedInstance {
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -295,29 +288,48 @@ function VisitDataFactoryV2 {
         [Parameter(Mandatory = $True)]
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
-
     process {
-        $df = $resource;
+        $sqlMI = $resource;
         $resources = @();
 
-        # Get linked services
-        $resources += Get-AzDataFactoryV2LinkedService -DataFactoryName $resource.Name -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context | ForEach-Object -Process {
-            $linkedService = $_;
-            $type = $linkedService.Properties.GetType().Name;
-            $linkedService.Properties.AdditionalProperties = $Null;
-            if ($Null -ne $linkedService.Properties.EncryptedCredential) {
-                $linkedService.Properties.EncryptedCredential = $Null;
-            }
-
-            $linkedService | Add-Member -MemberType NoteProperty -Name 'ResourceType' -Value 'linkedServices';
-            $linkedService | Add-Member -MemberType NoteProperty -Name 'Type' -Value $type;
-            $linkedService;
-        };
-        $df | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Sql/managedInstances/securityAlertPolicies' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-03-01-preview' -ExpandProperties;
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Sql/managedInstances/vulnerabilityAssessments' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2018-06-01-preview' -ExpandProperties;
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Sql/managedInstances/administrators' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-03-01-preview' -ExpandProperties;
+        $sqlMI | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
 
+# function VisitDataFactoryV2 {
+#     param (
+#         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+#         [PSObject]$Resource,
+
+#         [Parameter(Mandatory = $True)]
+#         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+#     )
+#     process {
+#         $df = $resource;
+#         $resources = @();
+
+#         # Get linked services
+#         $resources += Get-AzDataFactoryV2LinkedService -DataFactoryName $resource.Name -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context | ForEach-Object -Process {
+#             $linkedService = $_;
+#             $type = $linkedService.Properties.GetType().Name;
+#             $linkedService.Properties.AdditionalProperties = $Null;
+#             if ($Null -ne $linkedService.Properties.EncryptedCredential) {
+#                 $linkedService.Properties.EncryptedCredential = $Null;
+#             }
+
+#             $linkedService | Add-Member -MemberType NoteProperty -Name 'ResourceType' -Value 'linkedServices';
+#             $linkedService | Add-Member -MemberType NoteProperty -Name 'Type' -Value $type;
+#             $linkedService;
+#         };
+#         $df | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+#     }
+# }
+
 function VisitStorageAccount {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -325,19 +337,9 @@ function VisitStorageAccount {
         [Parameter(Mandatory = $True)]
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
-
     process {
         $resources = @();
-
-        $resources += Get-AzStorageAccount -Name $Resource.Name -ResourceGroupName $Resource.ResourceGroupName -DefaultProfile $Context | Get-AzStorageServiceProperty -ServiceType Blob | ForEach-Object -Process {
-            $serviceProperties = $_;
-            $type = $serviceProperties.GetType().Name;
-
-            $serviceProperties | Add-Member -MemberType NoteProperty -Name 'ResourceType' -Value 'serviceProperties';
-            $serviceProperties | Add-Member -MemberType NoteProperty -Name 'Type' -Value $type;
-            $serviceProperties;
-        };
-
+        $resources += Get-AzResource -Name $Resource.Name -ResourceType 'Microsoft.Storage/storageAccounts/blobServices' -ResourceGroupName $Resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2019-04-01' -ExpandProperties;
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
@@ -350,7 +352,6 @@ function VisitStorageSyncService {
         [Parameter(Mandatory = $True)]
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
-
     process {
         $resources = @();
         $resources += Get-AzStorageSyncServer -ParentResourceId $Resource.ResourceId -DefaultProfile $Context;
@@ -366,7 +367,6 @@ function VisitWebApp {
         [Parameter(Mandatory = $True)]
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
-
     process {
         $resources = @();
         $configResourceType = 'Microsoft.Web/sites/config';
@@ -389,7 +389,6 @@ function VisitRecoveryServices {
         [Parameter(Mandatory = $True)]
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
-
     process {
         $resources = @();
 
@@ -408,7 +407,6 @@ function VisitVirtualMachine {
         [Parameter(Mandatory = $True)]
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
-
     process {
         $resources = @();
 
@@ -428,12 +426,12 @@ function VisitSubscription {
         [Parameter(Mandatory = $True)]
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
-
     process {
         $resources = @();
         $resources += Get-AzRoleAssignment -DefaultProfile $Context | SetResourceType 'Microsoft.Authorization/roleAssignments';
         $resources += Get-AzSecurityAutoProvisioningSetting -DefaultProfile $Context | SetResourceType 'Microsoft.Security/autoProvisioningSettings';
         $resources += Get-AzSecurityContact -DefaultProfile $Context | SetResourceType 'Microsoft.Security/securityContacts';
+        $resources += Get-AzResource -DefaultProfile $Context -ApiVersion '2018-06-01' -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Security/pricings";
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
@@ -446,7 +444,6 @@ function VisitResourceGroup {
         [Parameter(Mandatory = $True)]
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
-
     process {
         $resources = @();
         $resources += Get-AzRoleAssignment -DefaultProfile $Context -Scope $Resource.ResourceId `
@@ -468,14 +465,14 @@ function ExpandResource {
         [Parameter(Mandatory = $True)]
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
-
     process {
         switch ($Resource.ResourceType) {
             'Microsoft.Sql/servers' { VisitSqlServer @PSBoundParameters; }
             'Microsoft.DBforPostgreSQL/servers' { VisitPostgreSqlServer @PSBoundParameters; }
             'Microsoft.DBforMySQL/servers' { VisitMySqlServer @PSBoundParameters; }
-            'Microsoft.DataFactory/factories' { VisitDataFactoryV2 @PSBoundParameters; }
-            # "Microsoft.Storage/storageAccounts" { VisitStorageAccount @PSBoundParameters; }
+            # 'Microsoft.Sql/managedInstances' { VisitSqlManagedInstance @PSBoundParameters; }
+            # 'Microsoft.DataFactory/factories' { VisitDataFactoryV2 @PSBoundParameters; }
+            'Microsoft.Storage/storageAccounts' { VisitStorageAccount @PSBoundParameters; }
             # "Microsoft.StorageSync/storageSyncServices" { VisitStorageSyncService @PSBoundParameters; }
             'Microsoft.Web/sites' { VisitWebApp @PSBoundParameters; }
             'Microsoft.Web/sites/slots' { VisitWebApp @PSBoundParameters; }
@@ -496,7 +493,6 @@ function SetResourceType {
         [Parameter(Mandatory = $True, Position = 0)]
         [String]$ResourceType
     )
-
     process {
         $Resource | Add-Member -MemberType NoteProperty -Name ResourceType -Value $ResourceType -PassThru -Force;
     }

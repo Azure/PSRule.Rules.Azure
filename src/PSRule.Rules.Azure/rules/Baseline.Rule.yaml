@@ -1,0 +1,9 @@
+
+---
+kind: Baseline
+metadata:
+  name: DefaultBaseline
+spec:
+  binding:
+    targetType:
+    - ResourceType

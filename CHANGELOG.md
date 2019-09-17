@@ -1,6 +1,12 @@
 
 ## Unreleased
 
+- Added rule to verify connectivity of VNET peers. [#120](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/120)
+- Added rule to check configuration of HTTP/ HTTPS load balancer probes. [#121](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/121)
+- Added rule to verify Azure Disk Encryption. [#122](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/122)
+- Added rule to check if public key is used for Linux. [#123](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/123)
+- Removed dependency on Az.Storage module. [#105](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/105)
+
 ## v0.3.0
 
 What's changed since v0.2.0:

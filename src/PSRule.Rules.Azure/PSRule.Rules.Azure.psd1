@@ -53,7 +53,6 @@ RequiredModules = @(
     @{ ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.2' }
     @{ ModuleName = 'Az.Resources'; ModuleVersion = '1.4.0' }
     @{ ModuleName = 'Az.Security'; ModuleVersion = '0.7.4' }
-    @{ ModuleName = 'Az.Storage'; ModuleVersion = '1.3.0' }
 )
 
 # Assemblies that must be loaded prior to importing this module
@@ -112,7 +111,9 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = 'https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/CHANGELOG.md'
     } # End of PSData hashtable
-
+    PSRule = @{
+        Baseline = 'DefaultBaseline'
+    }
 } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
