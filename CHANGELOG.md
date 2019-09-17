@@ -1,6 +1,8 @@
 
 ## Unreleased
 
+## v0.4.0-B190902 (pre-release)
+
 - Added rule to verify connectivity of VNET peers. [#120](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/120)
 - Added rule to check configuration of HTTP/ HTTPS load balancer probes. [#121](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/121)
 - Added rule to verify Azure Disk Encryption. [#122](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/122)
