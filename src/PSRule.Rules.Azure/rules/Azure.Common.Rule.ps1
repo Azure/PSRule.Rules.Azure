@@ -27,8 +27,28 @@ function global:IsAllowedRegion {
 
 # Certain rules only apply if resource data has been exported
 function global:IsExport {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
     process {
         return $Null -ne $TargetObject.PSObject.Properties.Match('SubscriptionId');
+    }
+}
+
+function global:HasPeerNetwork {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($TargetObject.ResourceType -ne 'Microsoft.Network/virtualNetworks') {
+            return $False;
+        }
+        $peers = $TargetObject.Properties.virtualNetworkPeerings;
+        if ($Null -eq $peers) {
+            return $False;
+        }
+        $item = @($peers);
+        return $item.Length -gt 0;
     }
 }
 
@@ -129,7 +149,19 @@ function global:IsWindowsOS {
         if ($TargetObject.ResourceType -ne 'Microsoft.Compute/virtualMachines') {
             return $False;
         }
-        return $TargetObject.Properties.storageProfile.osDisk.osType -eq "Windows";
+        return $TargetObject.Properties.storageProfile.osDisk.osType -eq 'Windows';
+    }
+}
+
+function global:IsLinuxOS {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($TargetObject.ResourceType -ne 'Microsoft.Compute/virtualMachines') {
+            return $False;
+        }
+        return $TargetObject.Properties.storageProfile.osDisk.osType -eq 'Linux';
     }
 }
 

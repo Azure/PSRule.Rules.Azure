@@ -14,19 +14,14 @@ Rule 'Azure.Storage.SecureTransferRequired' -If { ResourceType 'Microsoft.Storag
 
 # Synopsis: Storage Service Encryption (SSE) should be enabled
 Rule 'Azure.Storage.UseEncryption' -If { ResourceType 'Microsoft.Storage/storageAccounts' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
-    ($Null -ne $TargetObject.Properties.encryption) -and
-    ($Null -ne $TargetObject.Properties.encryption.services.blob) -and
-    ($Null -ne $TargetObject.Properties.encryption.services.file) -and
-    (
-        ($TargetObject.Properties.encryption.services.blob.enabled -eq $True) -and
-        ($TargetObject.Properties.encryption.services.file.enabled -eq $True)
-    )
+    Within 'Properties.encryption.services.blob.enabled' $True
+    Within 'Properties.encryption.services.file.enabled' $True
 }
 
 # Synopsis: Enable soft delete on Storage Accounts
 Rule 'Azure.Storage.SoftDelete' -If { ResourceType 'Microsoft.Storage/storageAccounts' } -Tag @{ severity = 'Important'; category = 'Data recovery' } {
     $serviceProperties = $TargetObject.resources | Where-Object -FilterScript {
-        $_.ResourceType -eq 'serviceProperties'
+        $_.ResourceType -eq 'Microsoft.Storage/storageAccounts/blobServices'
     }
-    $serviceProperties.DeleteRetentionPolicy.Enabled -eq $True
+    $serviceProperties.properties.deleteRetentionPolicy.enabled -eq $True
 }

@@ -47,6 +47,26 @@
             "diskSizeGB": 127,
             "diskIOPSReadWrite": 500,
             "diskMBpsReadWrite": 100,
+            "encryptionSettingsCollection": {
+                "enabled": true,
+                "encryptionSettings": [
+                    {
+                        "diskEncryptionKey": {
+                            "sourceVault": {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/keyvault-A"
+                            },
+                            "secretUrl": "https://keyvault-A.vault.azure.net/secrets/secret-A/version-A"
+                        },
+                        "keyEncryptionKey": {
+                            "sourceVault": {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/keyvault-A"
+                            },
+                            "keyUrl": "https://keyvault-A.vault.azure.net/keys/key-A/version-A"
+                        }
+                    }
+                ],
+                "encryptionSettingsVersion": "1.1"
+            },
             "provisioningState": "Succeeded",
             "diskState": "Attached"
         },
@@ -107,6 +127,46 @@
             "diskSizeGB": 100,
             "diskIOPSReadWrite": 500,
             "diskMBpsReadWrite": 100,
+            "encryptionSettingsCollection": {
+                "enabled": false,
+                "encryptionSettings": [],
+                "encryptionSettingsVersion": "1.0"
+            },
+            "provisioningState": "Succeeded",
+            "diskState": "Unattached"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/disks",
+        "ResourceType": "Microsoft.Compute/disks",
+        "Sku": {
+            "Name": "Premium_LRS",
+            "Tier": "Premium",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-C",
+        "Location": "region",
+        "ResourceName": "disk-C",
+        "Name": "disk-C",
+        "Properties": {
+            "creationData": {
+                "createOption": "Empty"
+            },
+            "diskSizeGB": 100,
+            "diskIOPSReadWrite": 500,
+            "diskMBpsReadWrite": 100,
+            "encryptionSettingsCollection": {
+                "enabled": false,
+                "encryptionSettings": [],
+                "encryptionSettingsVersion": "1.0"
+            },
             "provisioningState": "Succeeded",
             "diskState": "Unattached"
         },
@@ -1076,5 +1136,122 @@
         },
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C",
+        "Identity": {
+            "PrincipalId": "00000000-0000-0000-0000-000000000000",
+            "TenantId": "00000000-0000-0000-0000-000000000000",
+            "Type": "SystemAssigned",
+            "UserAssignedIdentities": null
+        },
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "vm-C",
+        "Name": "vm-C",
+        "Properties": {
+            "vmId": "00000000-0000-0000-0000-000000000000",
+            "hardwareProfile": {
+                "vmSize": "Standard_D8s_v3"
+            },
+            "storageProfile": {
+                "imageReference": {
+                    "publisher": "Canonical",
+                    "offer": "UbuntuServer",
+                    "sku": "16.04-LTS",
+                    "version": "latest",
+                    "exactVersion": "16.04.201708151"
+                },
+                "osDisk": {
+                    "osType": "Linux",
+                    "name": "vm-C_OsDisk_1",
+                    "createOption": "FromImage",
+                    "caching": "ReadWrite",
+                    "managedDisk": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-C_OsDisk_1"
+                    }
+                },
+                "dataDisks": []
+            },
+            "osProfile": {
+                "computerName": "vm-C",
+                "adminUsername": "admin-account",
+                "linuxConfiguration": {
+                    "disablePasswordAuthentication": false
+                },
+                "secrets": []
+            },
+            "networkProfile": {
+                "networkInterfaces": [
+                    {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC"
+                    }
+                ]
+            },
+            "provisioningState": "Succeeded"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachines",
+        "ResourceType": "Microsoft.Compute/virtualMachines",
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC",
+                "Identity": null,
+                "Kind": null,
+                "Location": "region",
+                "ManagedBy": null,
+                "ResourceName": "vm-C-NIC",
+                "Name": "vm-C-NIC",
+                "Properties": {
+                    "provisioningState": "Succeeded",
+                    "ipConfigurations": [
+                        {
+                            "name": "ipconfig1",
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC/ipConfigurations/ipconfig1",
+                            "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+                            "properties": {
+                                "provisioningState": "Succeeded",
+                                "privateIPAddress": "10.5.0.4",
+                                "privateIPAllocationMethod": "Dynamic",
+                                "publicIPAddress": {
+                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/vm-C-ip"
+                                },
+                                "subnet": {
+                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+                                },
+                                "primary": true,
+                                "privateIPAddressVersion": "IPv4"
+                            }
+                        }
+                    ],
+                    "dnsSettings": {
+                        "dnsServers": [],
+                        "appliedDnsServers": []
+                    },
+                    "macAddress": "00-00-00-00-00-00",
+                    "enableAcceleratedNetworking": false,
+                    "enableIPForwarding": false,
+                    "networkSecurityGroup": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
+                    },
+                    "primary": true,
+                    "virtualMachine": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C"
+                    }
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Network/networkInterfaces",
+                "ResourceType": "Microsoft.Network/networkInterfaces",
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": null
+            }
+        ]
     }
 ]

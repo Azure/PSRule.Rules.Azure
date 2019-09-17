@@ -22,7 +22,7 @@ Rule 'Azure.VirtualNetwork.UseNSGs' -If { ResourceType 'Microsoft.Network/virtua
 # TODO: Check that NSG on GatewaySubnet is not defined
 
 # Synopsis: VNETs should have at least two DNS servers assigned
-Rule 'Azure.VirtualNetwork.SingleDNS'  -If { ResourceType 'Microsoft.Network/virtualNetworks' } -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
+Rule 'Azure.VirtualNetwork.SingleDNS' -If { ResourceType 'Microsoft.Network/virtualNetworks' } -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
     # If DNS servers are customized, at least two IP addresses should be defined
     if ($Assert.NullOrEmpty($TargetObject, 'properties.dhcpOptions.dnsServers').Result) {
         $True;
@@ -50,6 +50,14 @@ Rule 'Azure.VirtualNetwork.LocalDNS' -If { ResourceType 'Microsoft.Network/virtu
 
         # Determine if the primary is in range
         WithinCIDR -IP $primary -CIDR $localRanges
+    }
+}
+
+# Synopsis: VNET peers should be connected
+Rule 'Azure.VirtualNetwork.PeerState' -If { (HasPeerNetwork) } {
+    $peers = @($TargetObject.Properties.virtualNetworkPeerings);
+    foreach ($peer in $peers) {
+        $peer | Within 'Properties.peeringState' 'Connected'
     }
 }
 
@@ -173,3 +181,25 @@ Rule 'Azure.VirtualNetwork.NICAttached' -If { ResourceType 'Microsoft.Network/ne
 }
 
 #endregion Network Interface
+
+#region Load Balancer
+
+# Synopsis: Use specific network probe
+Rule 'Azure.VirtualNetwork.LBProbe' -If { ResourceType 'Microsoft.Network/loadBalancers' } {
+    $probes = $TargetObject.Properties.probes;
+    foreach ($probe in $probes) {
+        if ($probe.properties.port -in 80, 443, 8080) {
+            if ($probe.properties.protocol -in 'Http', 'Https') {
+                $Assert.Create(($probe.properties.requestPath -ne '/'), ($LocalizedData.RootHttpProbePath -f $probe.name, $probe.properties.requestPath))
+            }
+            else {
+                $Assert.Create($False, ($LocalizedData.TcpHealthProbe -f $probe.name))
+            }
+        }
+        else {
+            $True;
+        }
+    }
+}
+
+#endregion Load Balancer

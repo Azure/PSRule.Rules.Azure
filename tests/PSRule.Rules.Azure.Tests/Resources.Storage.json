@@ -50,30 +50,28 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "resources": [
             {
-                "Logging": {
-                    "Version": "1.0",
-                    "LoggingOperations": 0,
-                    "RetentionDays": null
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A/blobServices/default",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A/blobServices/default",
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "default",
+                "Name": "default",
+                "Properties": {
+                    "cors": {
+                        "corsRules": []
+                    },
+                    "deleteRetentionPolicy": {
+                        "enabled": true,
+                        "days": 30
+                    }
                 },
-                "HourMetrics": {
-                    "Version": "1.0",
-                    "MetricsLevel": 2,
-                    "RetentionDays": 7
-                },
-                "Cors": [],
-                "MinuteMetrics": {
-                    "Version": "1.0",
-                    "MetricsLevel": 0,
-                    "RetentionDays": null
-                },
-                "DefaultServiceVersion": null,
-                "DeleteRetentionPolicy": {
-                    "Enabled": true,
-                    "RetentionDays": 30
-                },
-                "StaticWebsite": null,
-                "ResourceType": "serviceProperties",
-                "Type": "PSSeriviceProperties"
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Storage/storageAccounts/blobServices",
+                "ResourceType": "Microsoft.Storage/storageAccounts/blobServices",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             }
         ]
     },
@@ -127,30 +125,27 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "resources": [
             {
-                "Logging": {
-                    "Version": "1.0",
-                    "LoggingOperations": 0,
-                    "RetentionDays": null
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B/blobServices/default",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B/blobServices/default",
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "default",
+                "Name": "default",
+                "Properties": {
+                    "cors": {
+                        "corsRules": []
+                    },
+                    "deleteRetentionPolicy": {
+                        "enabled": false
+                    }
                 },
-                "HourMetrics": {
-                    "Version": "1.0",
-                    "MetricsLevel": 2,
-                    "RetentionDays": 7
-                },
-                "Cors": [],
-                "MinuteMetrics": {
-                    "Version": "1.0",
-                    "MetricsLevel": 0,
-                    "RetentionDays": null
-                },
-                "DefaultServiceVersion": null,
-                "DeleteRetentionPolicy": {
-                    "Enabled": false,
-                    "RetentionDays": null
-                },
-                "StaticWebsite": null,
-                "ResourceType": "serviceProperties",
-                "Type": "PSSeriviceProperties"
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Storage/storageAccounts/blobServices",
+                "ResourceType": "Microsoft.Storage/storageAccounts/blobServices",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             }
         ]
     },

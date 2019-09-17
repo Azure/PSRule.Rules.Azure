@@ -76,7 +76,7 @@ Rule 'Azure.VirtualMachine.DiskAttached' -If { (ResourceType 'Microsoft.Compute/
 # TODO: Check IOPS
 
 # Synopsis: Managed disk is smaller than SKU size
-Rule 'Azure.VirtualMachine.DiskSizeAlignment'  -If { ResourceType 'Microsoft.Compute/disks' } -Tag @{ severity = 'Awareness'; category = 'Cost management' } {
+Rule 'Azure.VirtualMachine.DiskSizeAlignment' -If { ResourceType 'Microsoft.Compute/disks' } -Tag @{ severity = 'Awareness'; category = 'Cost management' } {
     $diskSize = @(32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768)
     $actualSize = $TargetObject.properties.diskSizeGB
 
@@ -100,7 +100,6 @@ Rule 'Azure.VirtualMachine.UseHybridUseBenefit' -If { (IsWindowsOS) } -Tag @{ se
 # Synopsis: Enabled accelerated networking for supported operating systems
 Rule 'Azure.VirtualMachine.AcceleratedNetworking' -If { (SupportsAcceleratedNetworking) } -Tag @{ severity = 'Important'; category = 'Performance optimisation' } {
     $networkInterfaces = $TargetObject.resources | Where-Object { $_.ResourceType -eq 'Microsoft.Network/networkInterfaces' };
-
     foreach ($interface in $networkInterfaces) {
         ($interface.Properties.enableAcceleratedNetworking -eq $True)
     }
@@ -114,4 +113,15 @@ Rule 'Azure.VirtualMachine.ASAlignment' -If { ResourceType 'Microsoft.Compute/av
 # Synopsis: Availability sets should be deployed with at least two members
 Rule 'Azure.VirtualMachine.ASMinMembers' -If { ResourceType 'Microsoft.Compute/availabilitySets' } -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
     ($TargetObject.properties.virtualmachines.id | Measure-Object).Count -ge 2
+}
+
+# Synopsis: Use Azure Disk Encryption
+Rule 'Azure.VirtualMachine.ADE' -If { ResourceType 'Microsoft.Compute/disks' } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.encryptionSettingsCollection.enabled', $True)
+    $Assert.HasFieldValue($TargetObject, 'Properties.encryptionSettingsCollection.encryptionSettings')
+}
+
+# Synopsis: Linux VMs should use public key pair
+Rule 'Azure.VirtualMachine.PublicKey' -If { (IsLinuxOS) } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.osProfile.linuxConfiguration.disablePasswordAuthentication', $True)
 }

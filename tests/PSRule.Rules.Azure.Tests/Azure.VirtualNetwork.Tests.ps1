@@ -74,6 +74,28 @@ Describe 'Azure.VirtualNetwork' -Tag 'Network' {
             $ruleResult.TargetName | Should -Be 'vnet-A', 'vnet-C';
         }
 
+        It 'Azure.VirtualNetwork.PeerState' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.PeerState' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vnet-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'vnet-A', 'vnet-B';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetObject.ResourceType -eq 'Microsoft.Network/virtualNetworks' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vnet-D';
+        }
+
         It 'Azure.VirtualNetwork.NSGAnyInboundSource' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.NSGAnyInboundSource' };
 
@@ -280,6 +302,22 @@ Describe 'Azure.VirtualNetwork' -Tag 'Network' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'nic-A';
+        }
+
+        It 'Azure.VirtualNetwork.LBProbe' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.LBProbe' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'lb-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'kubernetes', 'lb-A';
         }
     }
 }

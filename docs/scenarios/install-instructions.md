@@ -13,7 +13,6 @@ The following modules are required for `PSRule.Rules.Azure` to work:
 - Az.Accounts
 - Az.Resources
 - Az.Security
-- Az.Storage
 
 The required version of each module will automatically be installed along-side `PSRule.Rules.Azure` when using `Install-Module` or `Update-Module` cmdlets.
 
@@ -37,7 +36,7 @@ Save for offline use from PowerShell Gallery:
 
 ```powershell
 # Save module, in the .\modules directory
-Save-Module -Name 'PSRule', 'PSRule.Rules.Azure', 'Az.Accounts', 'Az.Resources', 'Az.Security', 'Az.Storage' -Path '.\modules';
+Save-Module -Name 'PSRule', 'PSRule.Rules.Azure', 'Az.Accounts', 'Az.Resources', 'Az.Security' -Path '.\modules';
 ```
 
 > For pre-release versions the `-AllowPrerelease` switch must be added when calling `Install-Module` or `Save-Module`.
