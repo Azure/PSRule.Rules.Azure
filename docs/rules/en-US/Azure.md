@@ -53,9 +53,12 @@ RuleName | Description | Category
 [Azure.VirtualMachine.AcceleratedNetworking](Azure.VirtualMachine.AcceleratedNetworking.md) | Enabled accelerated networking for supported operating systems. | Performance optimisation
 [Azure.VirtualMachine.ASAlignment](Azure.VirtualMachine.ASAlignment.md) | Availability sets should be aligned. | Reliability
 [Azure.VirtualMachine.ASMinMembers](Azure.VirtualMachine.ASMinMembers.md) | Availability sets should be deployed with at least two members. | Reliability
+[Azure.VirtualMachine.ADE](Azure.VirtualMachine.ADE.md) | Use Azure Disk Encryption. | Security configuration
+[Azure.VirtualMachine.PublicKey](Azure.VirtualMachine.PublicKey.md) | Linux virtual machines should use public keys. | Security configuration
 [Azure.VirtualNetwork.UseNSGs](Azure.VirtualNetwork.UseNSGs.md) | Subnets should have NSGs assigned. | Security configuration
 [Azure.VirtualNetwork.SingleDNS](Azure.VirtualNetwork.SingleDNS.md) | VNETs should have at least two DNS servers assigned. | Reliability
 [Azure.VirtualNetwork.LocalDNS](Azure.VirtualNetwork.LocalDNS.md) | Virtual networks (VNETs) should use Azure local DNS servers. | Reliability
+[Azure.VirtualNetwork.PeerState](Azure.VirtualNetwork.PeerState.md) | VNET peering connections must be connected. | Operations management
 [Azure.VirtualNetwork.NSGAnyInboundSource](Azure.VirtualNetwork.NSGAnyInboundSource.md) | Network security groups should avoid any inbound rules. | Security configuration
 [Azure.VirtualNetwork.NSGDenyAllInbound](Azure.VirtualNetwork.NSGDenyAllInbound.md) | Avoid denying all inbound traffic. | Reliability
 [Azure.VirtualNetwork.LateralTraversal](Azure.VirtualNetwork.LateralTraversal.md) | Deny outbound management connections from non-management hosts. | Security configuration
@@ -69,3 +72,4 @@ RuleName | Description | Category
 [Azure.VirtualNetwork.AppGwOWASP](Azure.VirtualNetwork.AppGwOWASP.md) | Application Gateway Web Application Firewall (WAF) should use OWASP 3.x rules. | Security configuration
 [Azure.VirtualNetwork.AppGwWAFRules](Azure.VirtualNetwork.AppGwWAFRules.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | Security configuration
 [Azure.VirtualNetwork.NICAttached](Azure.VirtualNetwork.NICAttached.md) | Network interfaces (NICs) should be attached. | Operations management
+[Azure.VirtualNetwork.LBProbe](Azure.VirtualNetwork.LBProbe.md) | Use a specific probe for web protocols. | Resiliency

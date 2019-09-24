@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+## v0.4.0
+
+What's changed since v0.3.0:
+
+- New rules:
+  - Virtual machines:
+    - Added rule to verify Azure Disk Encryption. [#122](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/122)
+    - Added rule to check if public key is used for Linux. [#123](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/123)
+  - Virtual networking:
+    - Added rule to verify connectivity of VNET peers. [#120](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/120)
+    - Added rule to check configuration of HTTP/ HTTPS load balancer probes. [#121](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/121)
+- General improvements:
+  - Removed dependency on Az.Storage module. [#105](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/105)
+
+What's changed since pre-release v0.4.0-B190902:
+
 - Added default baseline to module. [#126](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/126)
 
 ## v0.4.0-B190902 (pre-release)
