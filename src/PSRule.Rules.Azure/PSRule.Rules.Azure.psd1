@@ -112,7 +112,7 @@ PrivateData = @{
         ReleaseNotes = 'https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/CHANGELOG.md'
     } # End of PSData hashtable
     PSRule = @{
-        Baseline = 'DefaultBaseline'
+        Baseline = 'Azure.SubscriptionDefault'
     }
 } # End of PrivateData hashtable
 

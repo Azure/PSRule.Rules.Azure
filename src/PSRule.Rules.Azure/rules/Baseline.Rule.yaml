@@ -1,8 +1,9 @@
 
 ---
+# Synopsis: Default baseline for Azure rules
 kind: Baseline
 metadata:
-  name: DefaultBaseline
+  name: Azure.SubscriptionDefault
 spec:
   binding:
     targetType:

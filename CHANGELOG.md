@@ -1,5 +1,8 @@
+# Change log
 
 ## Unreleased
+
+- Added default baseline to module. [#126](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/126)
 
 ## v0.4.0-B190902 (pre-release)
 
