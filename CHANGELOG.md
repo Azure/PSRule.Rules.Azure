@@ -15,6 +15,7 @@ What's changed since v0.3.0:
     - Added rule to check configuration of HTTP/ HTTPS load balancer probes. [#121](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/121)
 - General improvements:
   - Removed dependency on Az.Storage module. [#105](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/105)
+  - Added default baseline to module. [#126](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/126)
 
 What's changed since pre-release v0.4.0-B190902:
 
