@@ -63,7 +63,7 @@ function CopyModuleFiles {
     process {
         $sourcePath = Resolve-Path -Path $Path;
 
-        Get-ChildItem -Path $sourcePath -Recurse -File -Include *.ps1,*.psm1,*.psd1,*.ps1xml | Where-Object -FilterScript {
+        Get-ChildItem -Path $sourcePath -Recurse -File -Include *.ps1,*.psm1,*.psd1,*.ps1xml,*.yaml | Where-Object -FilterScript {
             ($_.FullName -notmatch '(\.(cs|csproj)|(\\|\/)(obj|bin))')
         } | ForEach-Object -Process {
             $filePath = $_.FullName.Replace($sourcePath, $destinationPath);
@@ -108,6 +108,9 @@ task VersionModule ModuleDependencies, {
         }
     };
     Update-ModuleManifest -Path $manifestPath -RequiredModules $requiredModules;
+    $manifestContent = Get-Content -Path $manifestPath -Raw;
+    $manifestContent = $manifestContent -replace 'PSRule = ''System.Collections.Hashtable''', 'PSRule = @{ Baseline = ''Azure.SubscriptionDefault'' }';
+    $manifestContent | Set-Content -Path $manifestPath;
 }
 
 # Synopsis: Publish to PowerShell Gallery
