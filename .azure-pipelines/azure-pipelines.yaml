@@ -2,11 +2,11 @@
 # CI pipeline for PSRule.Rules.Azure
 
 variables:
-  version: '0.4.0'
+  version: '0.5.0'
   buildConfiguration: 'Release'
 
- # Use build number format, i.e. 0.1.0-B181101
-name: $(version)-B$(date:yyMM)$(rev:rr)
+ # Use build number format, i.e. 0.1.0-B1811001
+name: $(version)-B$(date:yyMM)$(rev:rrr)
 
 trigger:
   branches:
