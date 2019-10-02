@@ -101,7 +101,7 @@ task VersionModule ModuleDependencies, {
     $manifest = Test-ModuleManifest -Path $manifestPath;
     $requiredModules = $manifest.RequiredModules | ForEach-Object -Process {
         if ($_.Name -eq 'PSRule' -and $Configuration -eq 'Release') {
-            @{ ModuleName = 'PSRule'; ModuleVersion = '0.8.0' }
+            @{ ModuleName = 'PSRule'; ModuleVersion = '0.10.0' }
         }
         else {
             @{ ModuleName = $_.Name; ModuleVersion = $_.Version }
@@ -151,8 +151,8 @@ task PSScriptAnalyzer NuGet, {
 
 # Synopsis: Install PSRule
 task PSRule NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.8.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -MinimumVersion 0.8.0 -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.10.0 -AllowPrerelease -ErrorAction Ignore)) {
+        Install-Module -Name PSRule -MinimumVersion 0.10.0 -Scope CurrentUser -AllowPrerelease -Force;
     }
     Import-Module -Name PSRule -Verbose:$False;
 }
@@ -229,10 +229,10 @@ task Analyze Build, PSScriptAnalyzer, {
 task BuildRuleDocs Build, PSRule, PSDocs, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     $Null = Invoke-PSDocument -Name Azure -OutputPath .\docs\rules\en-US\ -Path .\RuleToc.Doc.ps1;
-    $rules = Get-PSRule -Module 'PSRule.Rules.Azure';
-    $rules | ForEach-Object -Process {
-        Invoke-PSDocument -Path .\RuleHelp.Doc.ps1 -OutputPath .\docs\rules\en-US\ -InstanceName $_.Info.Name -inputObject $_;
-    }
+    # $rules = Get-PSRule -Module 'PSRule.Rules.Azure';
+    # $rules | ForEach-Object -Process {
+    #     Invoke-PSDocument -Path .\RuleHelp.Doc.ps1 -OutputPath .\docs\rules\en-US\ -InstanceName $_.Info.Name -inputObject $_;
+    # }
 }
 
 # Synopsis: Build help

@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 category: Operations management
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.VirtualMachine.UniqueDns.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.VM.UniqueDns.md
 ---
 
 # NICs with custom DNS settings

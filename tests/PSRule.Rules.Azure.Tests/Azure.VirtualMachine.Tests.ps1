@@ -26,8 +26,8 @@ Describe 'Azure.VirtualMachine' {
     Context 'Conditions' {
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -Outcome All -WarningAction Ignore -ErrorAction Stop;
 
-        It 'Azure.VirtualMachine.UseManagedDisks' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualMachine.UseManagedDisks' };
+        It 'Azure.VM.UseManagedDisks' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.UseManagedDisks' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -42,8 +42,8 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult.TargetName | Should -BeIn 'vm-A', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-C';
         }
 
-        It 'Azure.VirtualMachine.Standalone' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualMachine.Standalone' };
+        It 'Azure.VM.Standalone' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.Standalone' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -58,7 +58,7 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult.TargetName | Should -BeIn 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3';
         }
 
-        It 'Azure.VirtualMachine.PromoSku' {
+        It 'Azure.VM.PromoSku' {
             $expiredSku = @(
                 'Standard_DS2_v2_Promo'
                 'Standard_DS3_v2_Promo'
@@ -97,25 +97,25 @@ Describe 'Azure.VirtualMachine' {
             }
             foreach ($sku in $expiredSku) {
                 $vmObject.Properties.hardwareProfile.vmSize = $sku;
-                $result = $vmObject | Invoke-PSRule -Name 'Azure.VirtualMachine.PromoSku' -Module PSRule.Rules.Azure -WarningAction Ignore;
+                $result = $vmObject | Invoke-PSRule -Name 'Azure.VM.PromoSku' -Module PSRule.Rules.Azure -WarningAction Ignore;
                 $result | Should -Not -BeNullOrEmpty;
                 $result.IsSuccess() | Should -Be $False;
             }
             foreach ($sku in $notExpiredSku) {
                 $vmObject.Properties.hardwareProfile.vmSize = $sku;
-                $result = $vmObject | Invoke-PSRule -Name 'Azure.VirtualMachine.PromoSku' -Module PSRule.Rules.Azure -WarningAction Ignore;
+                $result = $vmObject | Invoke-PSRule -Name 'Azure.VM.PromoSku' -Module PSRule.Rules.Azure -WarningAction Ignore;
                 $result | Should -Not -BeNullOrEmpty;
                 $result.IsSuccess() | Should -Be $True;
             }
             foreach ($sku in $notPromo) {
                 $vmObject.Properties.hardwareProfile.vmSize = $sku;
-                $result = $vmObject | Invoke-PSRule -Name 'Azure.VirtualMachine.PromoSku' -Module PSRule.Rules.Azure -WarningAction Ignore -Outcome All;
+                $result = $vmObject | Invoke-PSRule -Name 'Azure.VM.PromoSku' -Module PSRule.Rules.Azure -WarningAction Ignore -Outcome All;
                 $result | Should -Not -BeNullOrEmpty;
                 $result.Outcome | Should -Be 'None';
             }
         }
 
-        It 'Azure.VirtualMachine.BasicSku' {
+        It 'Azure.VM.BasicSku' {
             $basicSku = @(
                 'Basic_A0'
                 'Basic_A1'
@@ -139,20 +139,20 @@ Describe 'Azure.VirtualMachine' {
             }
             foreach ($sku in $basicSku) {
                 $vmObject.Properties.hardwareProfile.vmSize = $sku;
-                $result = $vmObject | Invoke-PSRule -Name 'Azure.VirtualMachine.BasicSku' -Module PSRule.Rules.Azure -WarningAction Ignore;
+                $result = $vmObject | Invoke-PSRule -Name 'Azure.VM.BasicSku' -Module PSRule.Rules.Azure -WarningAction Ignore;
                 $result | Should -Not -BeNullOrEmpty;
                 $result.IsSuccess() | Should -Be $False;
             }
             foreach ($sku in $otherSku) {
                 $vmObject.Properties.hardwareProfile.vmSize = $sku;
-                $result = $vmObject | Invoke-PSRule -Name 'Azure.VirtualMachine.BasicSku' -Module PSRule.Rules.Azure -WarningAction Ignore;
+                $result = $vmObject | Invoke-PSRule -Name 'Azure.VM.BasicSku' -Module PSRule.Rules.Azure -WarningAction Ignore;
                 $result | Should -Not -BeNullOrEmpty;
                 $result.IsSuccess() | Should -Be $True;
             }
         }
 
-        It 'Azure.VirtualMachine.DiskCaching' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualMachine.DiskCaching' };
+        It 'Azure.VM.DiskCaching' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.DiskCaching' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -167,8 +167,8 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult.TargetName | Should -BeIn 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-C';
         }
 
-        It 'Azure.VirtualMachine.UniqueDns' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualMachine.UniqueDns' };
+        It 'Azure.VM.UniqueDns' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.UniqueDns' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -183,8 +183,8 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult.TargetName | Should -BeIn 'aks-agentpool-00000000-nic-1', 'aks-agentpool-00000000-nic-2', 'aks-agentpool-00000000-nic-3';
         }
 
-        It 'Azure.VirtualMachine.DiskAttached' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualMachine.DiskAttached' };
+        It 'Azure.VM.DiskAttached' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.DiskAttached' };
 
             # Ignore ASR disks
             $ruleResult = @($filteredResult | Where-Object { $_.TargetName -eq 'ReplicaVM_DataDisk_0-ASRReplica' });
@@ -206,8 +206,8 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult.TargetName | Should -Be 'disk-A';
         }
 
-        It 'Azure.VirtualMachine.DiskSizeAlignment' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualMachine.DiskSizeAlignment' };
+        It 'Azure.VM.DiskSizeAlignment' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.DiskSizeAlignment' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -222,8 +222,8 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult.TargetName | Should -Be 'disk-A';
         }
 
-        It 'Azure.VirtualMachine.UseHybridUseBenefit' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualMachine.UseHybridUseBenefit' };
+        It 'Azure.VM.UseHybridUseBenefit' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.UseHybridUseBenefit' };
 
             # Skip Linux
             $ruleResult = @($filteredResult | Where-Object {
@@ -245,8 +245,8 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult.TargetName | Should -Be 'vm-A';
         }
 
-        It 'Azure.VirtualMachine.AcceleratedNetworking' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualMachine.AcceleratedNetworking' };
+        It 'Azure.VM.AcceleratedNetworking' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.AcceleratedNetworking' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -261,8 +261,8 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult.TargetName | Should -Be 'vm-A';
         }
 
-        It 'Azure.VirtualMachine.ASAlignment' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualMachine.ASAlignment' };
+        It 'Azure.VM.ASAlignment' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ASAlignment' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -277,8 +277,8 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult.TargetName | Should -Be 'agentpool-availabilitySet-00000000';
         }
 
-        It 'Azure.VirtualMachine.ASMinMembers' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualMachine.ASMinMembers' };
+        It 'Azure.VM.ASMinMembers' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ASMinMembers' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -293,8 +293,8 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult.TargetName | Should -Be 'agentpool-availabilitySet-00000000';
         }
 
-        It 'Azure.VirtualMachine.ADE' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualMachine.ADE' };
+        It 'Azure.VM.ADE' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ADE' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -309,8 +309,8 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult.TargetName | Should -Be 'disk-A';
         }
 
-        It 'Azure.VirtualMachine.PublicKey' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualMachine.PublicKey' };
+        It 'Azure.VM.PublicKey' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.PublicKey' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -323,6 +323,38 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3';
+        }
+
+        It 'Azure.VM.Agent' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.Agent' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vm-C', 'vm-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3';
+        }
+
+        It 'Azure.VM.Updates' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.Updates' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vm-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vm-A';
         }
     }
 }

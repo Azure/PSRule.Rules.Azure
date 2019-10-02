@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Added rule to verify Windows automatic updates are enabled. [#132](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/132)
+- Added rule to verify VM agent is automatically provisioned. [#131](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/131)
+- Updated `Azure.AKS.Version` to 1.14.6. [#130](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/130)
+- **Breaking change**: Renamed `Azure.VirtualMachine.*` rules to `Azure.VM.*` [#119](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/119)
+
 ## v0.4.0
 
 What's changed since v0.3.0:

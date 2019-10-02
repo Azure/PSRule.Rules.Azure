@@ -41,20 +41,22 @@ RuleName | Description | Category
 [Azure.Subscription.SecurityCenterContact](Azure.Subscription.SecurityCenterContact.md) | Security Center email and phone contact details should be set. | Security operations
 [Azure.Subscription.SecurityCenterProvisioning](Azure.Subscription.SecurityCenterProvisioning.md) | Enable auto-provisioning on VMs to improve Security Center insights. | Security operations
 [Azure.Subscription.UseRGDelegation](Azure.Subscription.UseRGDelegation.md) | Use RBAC assignments on resource groups instead of individual resources. | Security operations
-[Azure.VirtualMachine.UseManagedDisks](Azure.VirtualMachine.UseManagedDisks.md) | Virtual machines should use managed disks. | Reliability
-[Azure.VirtualMachine.Standalone](Azure.VirtualMachine.Standalone.md) | VMs much use premium disks or use availability sets/ zones to meet SLA requirements. | Reliability
-[Azure.VirtualMachine.PromoSku](Azure.VirtualMachine.PromoSku.md) | Virtual machines (VMs) should not use expired promotional SKU. | Cost management
-[Azure.VirtualMachine.BasicSku](Azure.VirtualMachine.BasicSku.md) | Virtual machines (VMs) should not use Basic sizes. | Performance
-[Azure.VirtualMachine.DiskCaching](Azure.VirtualMachine.DiskCaching.md) | Check disk caching is configured correctly for the workload. | Performance
-[Azure.VirtualMachine.UniqueDns](Azure.VirtualMachine.UniqueDns.md) | Network interfaces (NICs) should inherit DNS from virtual networks. | Operations management
-[Azure.VirtualMachine.DiskAttached](Azure.VirtualMachine.DiskAttached.md) | Managed disks should be attached to virtual machines. | Cost management
-[Azure.VirtualMachine.DiskSizeAlignment](Azure.VirtualMachine.DiskSizeAlignment.md) | Managed disk is smaller than SKU size. | Cost management
-[Azure.VirtualMachine.UseHybridUseBenefit](Azure.VirtualMachine.UseHybridUseBenefit.md) | Use Hybrid Use Benefit. | Cost management
-[Azure.VirtualMachine.AcceleratedNetworking](Azure.VirtualMachine.AcceleratedNetworking.md) | Enabled accelerated networking for supported operating systems. | Performance optimisation
-[Azure.VirtualMachine.ASAlignment](Azure.VirtualMachine.ASAlignment.md) | Availability sets should be aligned. | Reliability
-[Azure.VirtualMachine.ASMinMembers](Azure.VirtualMachine.ASMinMembers.md) | Availability sets should be deployed with at least two members. | Reliability
-[Azure.VirtualMachine.ADE](Azure.VirtualMachine.ADE.md) | Use Azure Disk Encryption. | Security configuration
-[Azure.VirtualMachine.PublicKey](Azure.VirtualMachine.PublicKey.md) | Linux virtual machines should use public keys. | Security configuration
+[Azure.VM.UseManagedDisks](Azure.VM.UseManagedDisks.md) | Virtual machines should use managed disks. | Reliability
+[Azure.VM.Standalone](Azure.VM.Standalone.md) | VMs much use premium disks or use availability sets/ zones to meet SLA requirements. | Reliability
+[Azure.VM.PromoSku](Azure.VM.PromoSku.md) | Virtual machines (VMs) should not use expired promotional SKU. | Cost management
+[Azure.VM.BasicSku](Azure.VM.BasicSku.md) | Virtual machines (VMs) should not use Basic sizes. | Performance
+[Azure.VM.DiskCaching](Azure.VM.DiskCaching.md) | Check disk caching is configured correctly for the workload. | Performance
+[Azure.VM.UniqueDns](Azure.VM.UniqueDns.md) | Network interfaces (NICs) should inherit DNS from virtual networks. | Operations management
+[Azure.VM.DiskAttached](Azure.VM.DiskAttached.md) | Managed disks should be attached to virtual machines. | Cost management
+[Azure.VM.DiskSizeAlignment](Azure.VM.DiskSizeAlignment.md) | Managed disk is smaller than SKU size. | Cost management
+[Azure.VM.UseHybridUseBenefit](Azure.VM.UseHybridUseBenefit.md) | Use Hybrid Use Benefit. | Cost management
+[Azure.VM.AcceleratedNetworking](Azure.VM.AcceleratedNetworking.md) | Enabled accelerated networking for supported operating systems. | Performance optimisation
+[Azure.VM.ASAlignment](Azure.VM.ASAlignment.md) | Availability sets should be aligned. | Reliability
+[Azure.VM.ASMinMembers](Azure.VM.ASMinMembers.md) | Availability sets should be deployed with at least two members. | Reliability
+[Azure.VM.ADE](Azure.VM.ADE.md) | Use Azure Disk Encryption. | Security configuration
+[Azure.VM.PublicKey](Azure.VM.PublicKey.md) | Linux virtual machines should use public keys. | Security configuration
+[Azure.VM.Agent](Azure.VM.Agent.md) | Ensure the VM agent is provisioned automatically. | Operations management
+[Azure.VM.Updates](Azure.VM.Updates.md) | Ensure automatic updates are enabled at deployment. | Operations management
 [Azure.VirtualNetwork.UseNSGs](Azure.VirtualNetwork.UseNSGs.md) | Subnets should have NSGs assigned. | Security configuration
 [Azure.VirtualNetwork.SingleDNS](Azure.VirtualNetwork.SingleDNS.md) | VNETs should have at least two DNS servers assigned. | Reliability
 [Azure.VirtualNetwork.LocalDNS](Azure.VirtualNetwork.LocalDNS.md) | Virtual networks (VNETs) should use Azure local DNS servers. | Reliability
