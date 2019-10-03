@@ -135,24 +135,24 @@ task NuGet {
 
 # Synopsis: Install Pester module
 task Pester NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name Pester -MinimumVersion 4.0.0 -ErrorAction Ignore)) {
-        Install-Module -Name Pester -MinimumVersion 4.0.0 -Scope CurrentUser -Force -SkipPublisherCheck;
+    if ($Null -eq (Get-InstalledModule -Name Pester -MinimumVersion 4.9.0 -ErrorAction Ignore)) {
+        Install-Module -Name Pester -MinimumVersion 4.9.0 -Scope CurrentUser -Force -SkipPublisherCheck;
     }
     Import-Module -Name Pester -Verbose:$False;
 }
 
 # Synopsis: Install PSScriptAnalyzer module
 task PSScriptAnalyzer NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSScriptAnalyzer -MinimumVersion 1.17.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSScriptAnalyzer -MinimumVersion 1.17.0 -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSScriptAnalyzer -MinimumVersion 1.18.3 -ErrorAction Ignore)) {
+        Install-Module -Name PSScriptAnalyzer -MinimumVersion 1.18.3 -Scope CurrentUser -Force;
     }
     Import-Module -Name PSScriptAnalyzer -Verbose:$False;
 }
 
 # Synopsis: Install PSRule
 task PSRule NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.10.0 -AllowPrerelease -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -MinimumVersion 0.10.0 -Scope CurrentUser -AllowPrerelease -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.10.0 -ErrorAction Ignore)) {
+        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 0.10.0 -AllowPrerelease -Scope CurrentUser -Force;
     }
     Import-Module -Name PSRule -Verbose:$False;
 }
@@ -160,7 +160,7 @@ task PSRule NuGet, {
 # Synopsis: Install PSDocs
 task PSDocs NuGet, {
     if ($Null -eq (Get-InstalledModule -Name PSDocs -MinimumVersion 0.6.1 -ErrorAction Ignore)) {
-        Install-Module -Name PSDocs -MinimumVersion 0.6.1 -AllowPrerelease -Scope CurrentUser -Force;
+        Install-Module -Name PSDocs -Repository PSGallery -MinimumVersion 0.6.1 -AllowPrerelease -Scope CurrentUser -Force;
     }
     Import-Module -Name PSDocs -Verbose:$False;
 }
@@ -183,9 +183,6 @@ task ModuleDependencies NuGet, PSRule, {
     }
     if ($Null -eq (Get-InstalledModule -Name Az.Security -MinimumVersion 0.7.4 -ErrorAction Ignore)) {
         Install-Module -Name Az.Security -Scope CurrentUser -MinimumVersion 0.7.4 -Force;
-    }
-    if ($Null -eq (Get-InstalledModule -Name Az.Storage -MinimumVersion 1.3.0 -ErrorAction Ignore)) {
-        Install-Module -Name Az.Storage -Scope CurrentUser -MinimumVersion 1.3.0 -Force -AllowClobber;
     }
 }
 
