@@ -404,11 +404,11 @@
                 "computerName": "vm-B",
                 "adminUsername": "vm-admin",
                 "windowsConfiguration": {
-                    "provisionVMAgent": true,
-                    "enableAutomaticUpdates": true
+                    "provisionVMAgent": false,
+                    "enableAutomaticUpdates": false
                 },
                 "secrets": [],
-                "allowExtensionOperations": true
+                "allowExtensionOperations": false
             },
             "networkProfile": {
                 "networkInterfaces": [
@@ -1179,7 +1179,8 @@
                 "computerName": "vm-C",
                 "adminUsername": "admin-account",
                 "linuxConfiguration": {
-                    "disablePasswordAuthentication": false
+                    "disablePasswordAuthentication": false,
+                    "provisionVMAgent": false
                 },
                 "secrets": []
             },

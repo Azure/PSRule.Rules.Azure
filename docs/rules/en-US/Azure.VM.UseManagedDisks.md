@@ -1,10 +1,10 @@
 ---
 severity: Single point of failure
 category: Reliability
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.VirtualMachine.UseManagedDisks.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.VM.UseManagedDisks.md
 ---
 
-# Azure.VirtualMachine.UseManagedDisks
+# Use Managed Disks
 
 ## SYNOPSIS
 
