@@ -10,7 +10,7 @@ This project is to be considered a **proof-of-concept** and **not a supported pr
 
 For issues with rules and documentation please check our GitHub [issues](https://github.com/BernieWhite/PSRule.Rules.Azure/issues) page. If you do not see your problem captured, please file a new issue and follow the provided template.
 
-If you have any problems with the [PSRule][engine] engine, please check the project GitHub [issues](https://github.com/BernieWhite/PSRule/issues) page instead.
+If you have any problems with the [PSRule][engine] engine, please check the project GitHub [issues](https://github.com/Microsoft/PSRule/issues) page instead.
 
 ## Getting the modules
 
@@ -170,4 +170,4 @@ This project is [licensed under the MIT License](LICENSE).
 [install]: docs/scenarios/install-instructions.md
 [ci-badge]: https://dev.azure.com/bewhite/PSRule.Rules.Azure/_apis/build/status/PSRule.Rules.Azure-CI?branchName=master
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
-[engine]: https://github.com/BernieWhite/PSRule
+[engine]: https://github.com/Microsoft/PSRule
