@@ -152,15 +152,15 @@ task PSScriptAnalyzer NuGet, {
 # Synopsis: Install PSRule
 task PSRule NuGet, {
     if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.10.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 0.10.0-B1910011 -AllowPrerelease -Scope CurrentUser -Force;
+        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 0.10.0 -Scope CurrentUser -Force;
     }
     Import-Module -Name PSRule -Verbose:$False;
 }
 
 # Synopsis: Install PSDocs
 task PSDocs NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSDocs -MinimumVersion 0.6.1 -ErrorAction Ignore)) {
-        Install-Module -Name PSDocs -Repository PSGallery -MinimumVersion 0.6.1 -AllowPrerelease -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSDocs -MinimumVersion 0.6.3 -ErrorAction Ignore)) {
+        Install-Module -Name PSDocs -Repository PSGallery -MinimumVersion 0.6.3 -Scope CurrentUser -Force;
     }
     Import-Module -Name PSDocs -Verbose:$False;
 }
