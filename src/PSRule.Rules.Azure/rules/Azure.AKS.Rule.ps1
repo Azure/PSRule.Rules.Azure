@@ -16,7 +16,7 @@ Rule 'Azure.AKS.Version' -If { ResourceType 'Microsoft.ContainerService/managedC
     Recommend "Upgrade Kubernetes to at least $minVersion"
 
     ([Version]$TargetObject.Properties.kubernetesVersion) -ge $minVersion
-} -Configure @{ minAKSVersion = '1.14.6' }
+} -Configure @{ minAKSVersion = '1.14.7' }
 
 # Synopsis: AKS cluster should use role-based access control
 Rule 'Azure.AKS.UseRBAC' -If { ResourceType 'Microsoft.ContainerService/managedClusters' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
