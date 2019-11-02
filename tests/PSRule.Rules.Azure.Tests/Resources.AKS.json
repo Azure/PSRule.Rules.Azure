@@ -6,7 +6,7 @@
         "ResourceName": "cluster-A",
         "Name": "cluster-A",
         "Properties": {
-            "kubernetesVersion": "1.14.7",
+            "kubernetesVersion": "1.14.8",
             "dnsPrefix": "cluster-A",
             "fqdn": "cluster-A-00000000.nnn.region.azmk8s.io",
             "agentPoolProfiles": [
@@ -18,7 +18,7 @@
                     "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
                     "maxPods": 30,
                     "type": "AvailabilitySet",
-                    "orchestratorVersion": "1.14.7",
+                    "orchestratorVersion": "1.14.8",
                     "osType": "Linux"
                 }
             ],
@@ -117,6 +117,81 @@
                 "dockerBridgeCidr": "172.17.0.1/16"
             },
             "maxAgentPools": 1
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerService/managedClusters",
+        "ResourceType": "Microsoft.ContainerService/managedClusters",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-C",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "cluster-C",
+        "Name": "cluster-C",
+        "ParentResource": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "kubernetesVersion": "1.14.8",
+            "dnsPrefix": "cluster-C",
+            "fqdn": "cluster-C-00000000.nnn.region.azmk8s.io",
+            "agentPoolProfiles": [
+                {
+                    "name": "agentpool",
+                    "count": 3,
+                    "vmSize": "Standard_B2ms",
+                    "osDiskSizeGB": 100,
+                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-C",
+                    "maxPods": 50,
+                    "type": "VirtualMachineScaleSets",
+                    "provisioningState": "Succeeded",
+                    "orchestratorVersion": "1.14.8",
+                    "osType": "Linux"
+                }
+            ],
+            "servicePrincipalProfile": {
+                "clientId": "00000000-0000-0000-0000-000000000000"
+            },
+            "addonProfiles": {
+                "aciConnectorLinux": {
+                    "enabled": true,
+                    "config": {
+                        "SubnetName": "subnet-E"
+                    }
+                },
+                "azurepolicy": {
+                    "enabled": true,
+                    "config": null
+                },
+                "httpApplicationRouting": {
+                    "enabled": true,
+                    "config": {
+                        "HTTPApplicationRoutingZoneName": "test-dns-zone.region.aksapp.io"
+                    }
+                },
+                "omsagent": {
+                    "enabled": true,
+                    "config": {
+                        "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
+                    }
+                }
+            },
+            "nodeResourceGroup": "MC_test-rg_cluster-C_region",
+            "enableRBAC": true,
+            "enablePodSecurityPolicy": true,
+            "networkProfile": {
+                "networkPlugin": "azure",
+                "networkPolicy": "azure",
+                "loadBalancerSku": "Basic",
+                "serviceCidr": "192.168.0.0/16",
+                "dnsServiceIP": "192.168.0.4",
+                "dockerBridgeCidr": "172.17.0.1/16"
+            },
+            "maxAgentPools": 8
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.ContainerService/managedClusters",
