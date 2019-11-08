@@ -3,14 +3,14 @@
 #
 
 # Synopsis: AKS clusters should have minimum number of nodes for failover and updates
-Rule 'Azure.AKS.MinNodeCount' -If { ResourceType 'Microsoft.ContainerService/managedClusters' } -Tag @{ severity = 'Important'; category = 'Reliability' } {
+Rule 'Azure.AKS.MinNodeCount' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ severity = 'Important'; category = 'Reliability' } {
     Recommend 'Use at least three (3) agent nodes'
 
     $TargetObject.Properties.agentPoolProfiles[0].count -ge 3
 }
 
 # Synopsis: AKS cluster should meet the minimum version
-Rule 'Azure.AKS.Version' -If { ResourceType 'Microsoft.ContainerService/managedClusters' } -Tag @{ severity = 'Important'; category = 'Operations management' } {
+Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ severity = 'Important'; category = 'Operations management' } {
     $minVersion = [Version]$Configuration.minAKSVersion
 
     Recommend "Upgrade Kubernetes to at least $minVersion"
@@ -19,7 +19,7 @@ Rule 'Azure.AKS.Version' -If { ResourceType 'Microsoft.ContainerService/managedC
 } -Configure @{ minAKSVersion = '1.14.8' }
 
 # Synopsis: AKS cluster should use role-based access control
-Rule 'Azure.AKS.UseRBAC' -If { ResourceType 'Microsoft.ContainerService/managedClusters' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
+Rule 'Azure.AKS.UseRBAC' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ severity = 'Important'; category = 'Security configuration' } {
     Exists 'Properties.enableRBAC'
     $TargetObject.Properties.enableRBAC -eq $True
 }

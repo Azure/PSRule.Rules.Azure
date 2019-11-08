@@ -3,7 +3,7 @@
 #
 
 # Synopsis: Use groups for assigning permissions instead of individual user accounts
-Rule 'Azure.Subscription.UseGroups' -If { ResourceType 'Microsoft.Subscription' } {
+Rule 'Azure.Subscription.UseGroups' -Type 'Microsoft.Subscription' {
     $userAssignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.ObjectType -eq 'User'
@@ -12,7 +12,7 @@ Rule 'Azure.Subscription.UseGroups' -If { ResourceType 'Microsoft.Subscription' 
 }
 
 # Synopsis: Limit the number of subscription Owners
-Rule 'Azure.Subscription.LimitOwner' -If { ResourceType 'Microsoft.Subscription' } {
+Rule 'Azure.Subscription.LimitOwner' -Type 'Microsoft.Subscription' {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.RoleDefinitionName -eq 'Owner' -and
@@ -23,7 +23,7 @@ Rule 'Azure.Subscription.LimitOwner' -If { ResourceType 'Microsoft.Subscription'
 }
 
 # Synopsis: Limit RBAC inheritance from Management Groups
-Rule 'Azure.Subscription.LimitMGDelegation' -If { ResourceType 'Microsoft.Subscription' } {
+Rule 'Azure.Subscription.LimitMGDelegation' -Type 'Microsoft.Subscription' {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         ($_.Scope -like "/providers/Microsoft.Management/managementGroups/*")
@@ -32,7 +32,7 @@ Rule 'Azure.Subscription.LimitMGDelegation' -If { ResourceType 'Microsoft.Subscr
 }
 
 # Synopsis: Security Center email and phone contact details should be set
-Rule 'Azure.Subscription.SecurityCenterContact' -If { ResourceType 'Microsoft.Subscription' } -Tag @{ severity = 'Important'; category = 'Security operations' } {
+Rule 'Azure.Subscription.SecurityCenterContact' -Type 'Microsoft.Subscription' -Tag @{ severity = 'Important'; category = 'Security operations' } {
     $contacts = $TargetObject.resources | Where-Object { $_.ResourceType -eq 'Microsoft.Security/securityContacts' };
     $Null -ne $contacts;
     foreach ($c in $contacts) {
@@ -43,7 +43,7 @@ Rule 'Azure.Subscription.SecurityCenterContact' -If { ResourceType 'Microsoft.Su
 # TODO: Check Security Center recommendations
 
 # Synopsis: Enable auto-provisioning on VMs to improve Security Center insights
-Rule 'Azure.Subscription.SecurityCenterProvisioning' -If { ResourceType 'Microsoft.Subscription' } -Tag @{ severity = 'Important'; category = 'Security operations' } {
+Rule 'Azure.Subscription.SecurityCenterProvisioning' -Type 'Microsoft.Subscription' -Tag @{ severity = 'Important'; category = 'Security operations' } {
     $provisioning = $TargetObject.resources | Where-Object { $_.ResourceType -eq 'Microsoft.Security/autoProvisioningSettings' };
     $Null -ne $provisioning;
     foreach ($s in $provisioning) {
@@ -52,7 +52,7 @@ Rule 'Azure.Subscription.SecurityCenterProvisioning' -If { ResourceType 'Microso
 }
 
 # Synopsis: Use RBAC assignments on resource groups instead of individual resources
-Rule 'Azure.Subscription.UseRGDelegation' -If { ResourceType 'Microsoft.Resources/resourceGroups' } {
+Rule 'Azure.Subscription.UseRGDelegation' -Type 'Microsoft.Resources/resourceGroups' {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.Scope -like "/subscriptions/*/resourceGroups/*/providers/*"

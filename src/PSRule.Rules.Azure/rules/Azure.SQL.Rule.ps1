@@ -5,7 +5,7 @@
 #region SQL Database
 
 # Synopsis: Determine if there is an excessive number of firewall rules
-Rule 'Azure.SQL.FirewallRuleCount' -If { ResourceType 'Microsoft.Sql/servers' } -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
+Rule 'Azure.SQL.FirewallRuleCount' -Type 'Microsoft.Sql/servers' -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
     Recommend 'SQL Server has > 10 firewall rules, some rules may not be needed';
 
     $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
@@ -15,7 +15,7 @@ Rule 'Azure.SQL.FirewallRuleCount' -If { ResourceType 'Microsoft.Sql/servers' } 
 }
 
 # Synopsis: Determine if access from Azure services is required
-Rule 'Azure.SQL.AllowAzureAccess' -If { ResourceType 'Microsoft.Sql/servers' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
+Rule 'Azure.SQL.AllowAzureAccess' -Type 'Microsoft.Sql/servers' -Tag @{ severity = 'Important'; category = 'Security configuration' } {
     $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
         $_.Type -eq 'Microsoft.Sql/servers/firewallRules' -and
         (
@@ -27,13 +27,13 @@ Rule 'Azure.SQL.AllowAzureAccess' -If { ResourceType 'Microsoft.Sql/servers' } -
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses
-Rule 'Azure.SQL.FirewallIPRange' -If { ResourceType 'Microsoft.Sql/servers' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
+Rule 'Azure.SQL.FirewallIPRange' -Type 'Microsoft.Sql/servers' -Tag @{ severity = 'Important'; category = 'Security configuration' } {
     $summary = GetIPAddressSummary
     $summary.Public -le 10;
 }
 
 # Synopsis: Enable threat detection for Azure SQL logical server
-Rule 'Azure.SQL.ThreatDetection' -If { ResourceType 'Microsoft.Sql/servers' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
+Rule 'Azure.SQL.ThreatDetection' -Type 'Microsoft.Sql/servers' -Tag @{ severity = 'Important'; category = 'Security configuration' } {
     $policy = $TargetObject.resources | Where-Object -FilterScript {
         $_.Type -eq 'Microsoft.Sql/servers/securityAlertPolicies'
     }
@@ -41,7 +41,7 @@ Rule 'Azure.SQL.ThreatDetection' -If { ResourceType 'Microsoft.Sql/servers' } -T
 }
 
 # Synopsis: Enable auditing for Azure SQL logical server
-Rule 'Azure.SQL.Auditing' -If { ResourceType 'Microsoft.Sql/servers' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
+Rule 'Azure.SQL.Auditing' -Type 'Microsoft.Sql/servers' -Tag @{ severity = 'Important'; category = 'Security configuration' } {
     $policy = $TargetObject.resources | Where-Object -FilterScript {
         $_.Type -eq 'Microsoft.Sql/servers/auditingSettings'
     }

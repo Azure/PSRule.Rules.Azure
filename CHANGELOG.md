@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Updated `Azure.AKS.Version` to 1.14.8. [#140](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/140)
+- Updated rules to use type pre-conditions. [#144](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/144)
 
 ## v0.5.0
 

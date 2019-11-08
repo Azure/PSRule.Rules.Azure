@@ -3,12 +3,12 @@
 #
 
 # Synopsis: Use encrypted PostgreSQL connections
-Rule 'Azure.PostgreSQL.UseSSL' -If { ResourceType 'Microsoft.DBforPostgreSQL/servers' } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
+Rule 'Azure.PostgreSQL.UseSSL' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
     Within 'Properties.sslEnforcement' 'Enabled'
 }
 
 # Synopsis: Determine if there is an excessive number of firewall rules
-Rule 'Azure.PostgreSQL.FirewallRuleCount' -If { ResourceType 'Microsoft.DBforPostgreSQL/servers' } -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
+Rule 'Azure.PostgreSQL.FirewallRuleCount' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
     Recommend 'PostgreSQL Server has > 10 firewall rules, some rules may not be needed';
 
     $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
@@ -18,7 +18,7 @@ Rule 'Azure.PostgreSQL.FirewallRuleCount' -If { ResourceType 'Microsoft.DBforPos
 }
 
 # Synopsis: Determine if access from Azure services is required
-Rule 'Azure.PostgreSQL.AllowAzureAccess' -If { ResourceType 'Microsoft.DBforPostgreSQL/servers' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
+Rule 'Azure.PostgreSQL.AllowAzureAccess' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ severity = 'Important'; category = 'Security configuration' } {
     $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
         $_.Type -eq 'Microsoft.DBforPostgreSQL/servers/firewallRules' -and
         (
@@ -30,7 +30,7 @@ Rule 'Azure.PostgreSQL.AllowAzureAccess' -If { ResourceType 'Microsoft.DBforPost
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses
-Rule 'Azure.PostgreSQL.FirewallIPRange' -If { ResourceType 'Microsoft.DBforPostgreSQL/servers' } -Tag @{ severity = 'Important'; category = 'Security configuration' } {
+Rule 'Azure.PostgreSQL.FirewallIPRange' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ severity = 'Important'; category = 'Security configuration' } {
     $summary = GetIPAddressSummary
     $summary.Public -le 10;
 }
