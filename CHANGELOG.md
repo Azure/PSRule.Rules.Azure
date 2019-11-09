@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.6.0-B1911011 (pre-release)
+
 - Updated `Azure.AKS.Version` to 1.14.8. [#140](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/140)
 - Updated rules to use type pre-conditions. [#144](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/144)
 - **Experimental**: Added support for exporting rule data from templates. [#145](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/145)
