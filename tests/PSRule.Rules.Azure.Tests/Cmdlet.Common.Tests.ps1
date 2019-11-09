@@ -21,6 +21,7 @@ Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azu
 $outputPath = Join-Path -Path $rootPath -ChildPath out/tests/PSRule.Rules.Azure.Tests/Cmdlet;
 Remove-Item -Path $outputPath -Force -Recurse -Confirm:$False -ErrorAction Ignore;
 $Null = New-Item -Path $outputPath -ItemType Directory -Force;
+$here = (Resolve-Path $PSScriptRoot).Path;
 
 #region Mocks
 
@@ -71,7 +72,7 @@ function MockContext {
 
 #region Export-AzRuleData
 
-Describe 'Export-AzRuleData' -Tag 'Cmdlet' {
+Describe 'Export-AzRuleData' -Tag 'Cmdlet','Export-AzRuleData' {
     Context 'With defaults' {
         Mock -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith ${function:MockContext};
         Mock -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith {
@@ -174,3 +175,92 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet' {
 }
 
 #endregion Export-AzRuleData
+
+#region Export-AzTemplateRuleData
+
+Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
+    $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
+    $parametersPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
+
+
+    Context 'With defaults' {
+        It 'Exports template' {
+            $outputFile = Join-Path -Path $outputPath -ChildPath 'template-with-defaults.json'
+            $exportParams = @{
+                TemplateFile = $templatePath
+                ParameterFile = $parametersPath
+                OutputPath = $outputFile
+            }
+            $Null = Export-AzTemplateRuleData @exportParams;
+            $result = Get-Content -Path $outputFile -Raw | ConvertFrom-Json;
+            $result | Should -Not -BeNullOrEmpty;
+            $result.Length | Should -Be 5;
+            $result[0].name | Should -Be 'vnet-001';
+            $result[0].properties.subnets.Length | Should -Be 3;
+            $result[0].properties.subnets[0].name | Should -Be 'GatewaySubnet';
+            $result[0].properties.subnets[0].properties.addressPrefix | Should -Be '10.1.0.0/27';
+            $result[0].properties.subnets[2].name | Should -Be 'subnet2';
+            $result[0].properties.subnets[2].properties.addressPrefix | Should -Be '10.1.0.64/28';
+            $result[0].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
+            $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/routeTables/route-subnet2$';
+        }
+    }
+
+    Context 'With -Subscription' {
+        Mock -CommandName 'GetSubscription' -ModuleName 'PSRule.Rules.Azure' -MockWith {
+            return [PSCustomObject]@{
+                SubscriptionId = '00000000-0000-0000-0000-000000000000'
+                TenantId = '00000000-0000-0000-0000-000000000000'
+                Name = 'test-sub'
+            }
+        }
+        It 'Exports template' {
+            $outputFile = Join-Path -Path $outputPath -ChildPath 'template-with-sub.json'
+            $exportParams = @{
+                TemplateFile = $templatePath
+                ParameterFile = $parametersPath
+                OutputPath = $outputFile
+                Subscription = 'test-sub'
+            }
+            $Null = Export-AzTemplateRuleData @exportParams;
+            $result = Get-Content -Path $outputFile -Raw | ConvertFrom-Json;
+            $result | Should -Not -BeNullOrEmpty;
+            $result.Length | Should -Be 5;
+            $result[0].properties.subnets.Length | Should -Be 3;
+            $result[0].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
+            $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/routeTables/route-subnet2$';
+        }
+    }
+
+    Context 'With -ResourceGroup' {
+        Mock -CommandName 'GetResourceGroup' -ModuleName 'PSRule.Rules.Azure' -MockWith {
+            return [PSCustomObject]@{
+                ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg'
+                ResourceGroupName = 'test-rg'
+                Location = 'region'
+                ManagedBy = 'testuser'
+                Tags = @{
+                    test = 'true'
+                }
+            }
+        }
+        It 'Exports template' {
+            $outputFile = Join-Path -Path $outputPath -ChildPath 'template-with-rg.json'
+            $exportParams = @{
+                TemplateFile = $templatePath
+                ParameterFile = $parametersPath
+                OutputPath = $outputFile
+                ResourceGroupName = 'test-rg'
+            }
+            $Null = Export-AzTemplateRuleData @exportParams;
+            $result = Get-Content -Path $outputFile -Raw | ConvertFrom-Json;
+            $result | Should -Not -BeNullOrEmpty;
+            $result.Length | Should -Be 5;
+            $result[0].properties.subnets.Length | Should -Be 3;
+            $result[0].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/test-rg/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
+            $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/test-rg/providers/Microsoft\.Network/routeTables/route-subnet2$';
+        }
+    }
+}
+
+#endregion Export-AzTemplateRuleData

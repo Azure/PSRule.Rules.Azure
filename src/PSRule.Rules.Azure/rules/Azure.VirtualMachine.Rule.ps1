@@ -67,7 +67,7 @@ Rule 'Azure.VM.UniqueDns' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ se
 }
 
 # Synopsis: Managed disks should be attached to virtual machines
-Rule 'Azure.VM.DiskAttached' -If { (ResourceType 'Microsoft.Compute/disks') -and ($TargetObject.ResourceName -notlike '*-ASRReplica') } -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
+Rule 'Azure.VM.DiskAttached' -Type 'Microsoft.Compute/disks' -If { ($TargetObject.ResourceName -notlike '*-ASRReplica') } -Tag @{ severity = 'Awareness'; category = 'Operations management' } {
     # Disks should be attached unless they are used by ASR, which are not attached until fail over
     # Disks for VMs that are off are marked as Reserved
     Within 'properties.diskState' 'Attached', 'Reserved'
