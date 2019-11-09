@@ -1,0 +1,108 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "name": "vnet-hub",
+        "description": "This template creates a hub virtual network."
+    },
+    "parameters": {
+        "vnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the virtual network."
+            }
+        },
+        "addressPrefix": {
+            "type": "array",
+            "minLength": 1,
+            "metadata": {
+                "description": ""
+            }
+        },
+        "subnets": {
+            "type": "array",
+            "metadata": {
+                "description": ""
+            }
+        }
+    },
+    "variables": {
+        "gatewaySubnet": [
+            {
+                "name": "GatewaySubnet",
+                "properties": {
+                    "addressPrefix": "[concat(split(parameters('addressPrefix')[0], '/')[0], '/27')]"
+                }
+            }
+        ],
+        "definedSubnets": {
+            "copy": [
+                {
+                    "name": "subnets",
+                    "count": "[length(parameters('subnets'))]",
+                    "input": {
+                        "name": "[parameters('subnets')[copyIndex('subnets')].name]",
+                        "properties": {
+                            "addressPrefix": "[parameters('subnets')[copyIndex('subnets')].addressPrefix]",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', concat('nsg-', parameters('subnets')[copyIndex('subnets')].name))]"
+                            },
+                            "routeTable": {
+                                "id": "[resourceId('Microsoft.Network/routeTables', concat('route-', parameters('subnets')[copyIndex('subnets')].name))]"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "allSubnets": "[union(variables('gatewaySubnet'), variables('definedSubnets').subnets)]"
+    },
+    "resources": [
+        {
+            "comments": "Hub virtual network",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('vnetName')]",
+            "apiVersion": "2019-04-01",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "routeIndex",
+                "nsgIndex"
+            ],
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": "[parameters('addressPrefix')]"
+                },
+                "subnets": "[variables('allSubnets')]"
+            }
+        },
+        {
+            "comments": "A subnet Route Table",
+            "type": "Microsoft.Network/routeTables",
+            "name": "[concat('route-', parameters('subnets')[copyIndex('routeIndex')].name)]",
+            "apiVersion": "2019-04-01",
+            "location": "[resourceGroup().location]",
+            "copy": {
+                "name": "routeIndex",
+                "count": "[length(parameters('subnets'))]"
+            },
+            "properties": {
+                "disableBgpRoutePropagation": false
+            }
+        },
+        {
+            "comments": "A subnet Network Security Group",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[concat('nsg-', parameters('subnets')[copyIndex()].name)]",
+            "apiVersion": "2019-04-01",
+            "location": "[resourceGroup().location]",
+            "copy": {
+                "name": "nsgIndex",
+                "count": "[length(parameters('subnets'))]"
+            },
+            "properties": {
+                "securityRules": "[parameters('subnets')[copyIndex()].securityRules]"
+            },
+            "dependsOn": []
+        }
+    ]
+}

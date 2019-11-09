@@ -16,7 +16,7 @@ Export resource configuration data from one or more Azure subscriptions.
 ### Default (Default)
 
 ```text
-Export-AzRuleData [[-OutputPath] <String>] [[-Subscription] <String[]>] [[-Tenant] <String[]>]
+Export-AzRuleData [[-OutputPath] <String>] [-Subscription <String[]>] [-Tenant <String[]>]
  [-ResourceGroupName <String[]>] [-Tag <Hashtable>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,11 +29,12 @@ Export-AzRuleData [[-OutputPath] <String>] [-ResourceGroupName <String[]>] [-Tag
 
 ## DESCRIPTION
 
-Export resource configuration data from one or more Azure subscriptions.
+Export resource configuration data from deployed resources in one or more Azure subscriptions.
 
 If no filters are specified then the current subscription context will be exported. i.e. `Get-AzContext`
 
-To export all subscriptions contexts use the `-All` switch. When the `-All` switch is used, all subscriptions contexts will be exported. i.e. `Get-AzContext -ListAvailable`
+To export all subscriptions contexts use the `-All` switch.
+When the `-All` switch is used, all subscriptions contexts will be exported. i.e. `Get-AzContext -ListAvailable`
 
 Resource data will be exported to the current working directory by default as JSON files, one per subscription.
 
@@ -46,14 +47,14 @@ PS C:\> Export-AzRuleData
 ```
 
 ```text
-    Directory: C:\
+Directory: C:\
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
 -a----         1/07/2019 10:03 AM        7304948 00000000-0000-0000-0000-000000000001.json
 ```
 
-Export information from current subscription context.
+Export resource configuration data from current subscription context.
 
 ### Example 2
 
@@ -62,7 +63,7 @@ PS C:\> Export-AzRuleData -Subscription 'Contoso Production', 'Contoso Non-produ
 ```
 
 ```text
-    Directory: C:\
+Directory: C:\
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
@@ -70,7 +71,7 @@ Mode                LastWriteTime         Length Name
 -a----         1/07/2019 10:03 AM        7304948 00000000-0000-0000-0000-000000000002.json
 ```
 
-Export information from subscriptions by name.
+Export resource configuration data from subscriptions by name.
 
 ### Example 3
 
@@ -79,16 +80,33 @@ PS C:\> Export-AzRuleData -ResourceGroupName 'rg-app1-web', 'rg-app1-db'
 ```
 
 ```text
-    Directory: C:\
+Directory: C:\
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
 -a----         1/07/2019 10:03 AM        7304948 00000000-0000-0000-0000-000000000001.json
 ```
 
-Export information from two resource groups within the current subscription context.
+Export resource configuration data from two resource groups within the current subscription context.
 
 ## PARAMETERS
+
+### -All
+
+By default, resources from the current subscription context are extracted.
+Use `-All` to extract resource data for all subscription contexts instead.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: All
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -OutputPath
 
@@ -106,33 +124,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Subscription
+### -PassThru
 
-Optionally filter resources by subscription, Id or Name.
+By default, FileInfo objects are returned to the pipeline for each JSON file created.
+When `-PassThru` is specified, JSON files are not created and Azure resource objects are returned to the pipeline instead.
 
 ```yaml
-Type: String[]
-Parameter Sets: Default
+Type: SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tenant
-
-Optionally filter resources by a unique Tenant identifer.
-
-```yaml
-Type: String[]
-Parameter Sets: Default
-Aliases:
-
-Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -145,6 +148,22 @@ Optionally filter resources by Resource Group name.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Subscription
+
+Optionally filter resources by subscription, Id or Name.
+
+```yaml
+Type: String[]
+Parameter Sets: Default
 Aliases:
 
 Required: False
@@ -170,29 +189,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
+### -Tenant
 
-By default, FileInfo objects are returned to the pipeline for each JSON file created. When `-PassThru` is specified, JSON files are not created and Azure resource objects are returned to the pipeline instead.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -All
-
-By default, resources from the current subscription context are extracted. Use `-All` to extract resource data for all subscription contexts instead.
+Optionally filter resources by a unique Tenant identifer.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: All
+Type: String[]
+Parameter Sets: Default
 Aliases:
 
 Required: False
@@ -246,7 +249,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.IO.FileInfo
 
+Return `FileInfo` for each of the output files created, one per subscription.
+This is the default.
+
 ### PSObject
+
+Return an object for each Azure resource, and configuration exported.
+This is returned when the `-PassThru` switch is used.
 
 ## NOTES
 

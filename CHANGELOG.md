@@ -4,6 +4,9 @@
 
 - Updated `Azure.AKS.Version` to 1.14.8. [#140](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/140)
 - Updated rules to use type pre-conditions. [#144](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/144)
+- **Experimental**: Added support for exporting rule data from templates. [#145](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/145)
+  - Added `Export-AzTemplateRuleData` cmdlet to export templates. See cmdlet help for limitations.
+  - Template and parameters are merged, resolving functions, copy loops and conditions.
 
 ## v0.5.0
 

@@ -5,7 +5,7 @@
 #region Virtual Network
 
 # Synopsis: Subnets should have NSGs assigned, except for the GatewaySubnet
-Rule 'Azure.VirtualNetwork.UseNSGs' -If { ResourceType 'Microsoft.Network/virtualNetworks' } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
+Rule 'Azure.VirtualNetwork.UseNSGs' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
     Recommend 'Subnets should have NSGs assigned'
 
     # Get subnets
@@ -22,7 +22,7 @@ Rule 'Azure.VirtualNetwork.UseNSGs' -If { ResourceType 'Microsoft.Network/virtua
 # TODO: Check that NSG on GatewaySubnet is not defined
 
 # Synopsis: VNETs should have at least two DNS servers assigned
-Rule 'Azure.VirtualNetwork.SingleDNS' -If { ResourceType 'Microsoft.Network/virtualNetworks' } -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
+Rule 'Azure.VirtualNetwork.SingleDNS' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
     # If DNS servers are customized, at least two IP addresses should be defined
     if ($Assert.NullOrEmpty($TargetObject, 'properties.dhcpOptions.dnsServers').Result) {
         $True;
@@ -33,7 +33,7 @@ Rule 'Azure.VirtualNetwork.SingleDNS' -If { ResourceType 'Microsoft.Network/virt
 }
 
 # Synopsis: VNETs should use Azure local DNS servers
-Rule 'Azure.VirtualNetwork.LocalDNS' -If { ResourceType 'Microsoft.Network/virtualNetworks' } {
+Rule 'Azure.VirtualNetwork.LocalDNS' -Type 'Microsoft.Network/virtualNetworks' {
     # If DNS servers are customized, check what range the IPs are in
     if ($Assert.NullOrEmpty($TargetObject, 'properties.dhcpOptions.dnsServers').Result) {
         $True;
@@ -66,7 +66,7 @@ Rule 'Azure.VirtualNetwork.PeerState' -If { (HasPeerNetwork) } {
 #region Network Security Group
 
 # Synopsis: Network security groups should avoid any inbound rules
-Rule 'Azure.VirtualNetwork.NSGAnyInboundSource' -If { ResourceType 'Microsoft.Network/networkSecurityGroups' } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
+Rule 'Azure.VirtualNetwork.NSGAnyInboundSource' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
     Recommend 'Avoid rules that apply to all source addresses'
 
     $rules = $TargetObject.properties.securityRules | Where-Object {
@@ -79,7 +79,7 @@ Rule 'Azure.VirtualNetwork.NSGAnyInboundSource' -If { ResourceType 'Microsoft.Ne
 }
 
 # Synopsis: Avoid blocking all inbound network traffic
-Rule 'Azure.VirtualNetwork.NSGDenyAllInbound' -If { ResourceType 'Microsoft.Network/networkSecurityGroups' } {
+Rule 'Azure.VirtualNetwork.NSGDenyAllInbound' -Type 'Microsoft.Network/networkSecurityGroups' {
     $denyRules = @(GetOrderedNSGRules | Where-Object {
         $_.properties.direction -eq 'Inbound' -and
         $_.properties.access -eq 'Deny' -and
@@ -93,7 +93,7 @@ Rule 'Azure.VirtualNetwork.NSGDenyAllInbound' -If { ResourceType 'Microsoft.Netw
 }
 
 # Synopsis: Lateral traversal from application servers should be blocked
-Rule 'Azure.VirtualNetwork.LateralTraversal' -If { ResourceType 'Microsoft.Network/networkSecurityGroups' } {
+Rule 'Azure.VirtualNetwork.LateralTraversal' -Type 'Microsoft.Network/networkSecurityGroups' {
     $rules = @($TargetObject.properties.securityRules | Where-Object {
         $_.properties.direction -eq 'Outbound' -and
         $_.properties.access -eq 'Deny' -and
@@ -107,7 +107,7 @@ Rule 'Azure.VirtualNetwork.LateralTraversal' -If { ResourceType 'Microsoft.Netwo
 }
 
 # Synopsis: Network security groups should be associated to either a subnet or network interface
-Rule 'Azure.VirtualNetwork.NSGAssociated' -If { ResourceType 'Microsoft.Network/networkSecurityGroups' } {
+Rule 'Azure.VirtualNetwork.NSGAssociated' -Type 'Microsoft.Network/networkSecurityGroups' {
     $subnets = ($TargetObject.Properties.subnets | Measure-Object).Count;
     $interfaces = ($TargetObject.Properties.networkInterfaces | Measure-Object).Count;
 
@@ -120,7 +120,7 @@ Rule 'Azure.VirtualNetwork.NSGAssociated' -If { ResourceType 'Microsoft.Network/
 #region Application Gateway
 
 # Synopsis: Application Gateway should use a minimum of two instances
-Rule 'Azure.VirtualNetwork.AppGwMinInstance' -If { ResourceType 'Microsoft.Network/applicationGateways' } -Tag @{ severity = 'Important'; category = 'Reliability' } {
+Rule 'Azure.VirtualNetwork.AppGwMinInstance' -Type 'Microsoft.Network/applicationGateways' -Tag @{ severity = 'Important'; category = 'Reliability' } {
     AnyOf {
         # Applies to v1 and v2 without autoscale
         $TargetObject.Properties.sku.capacity -ge 2
@@ -131,7 +131,7 @@ Rule 'Azure.VirtualNetwork.AppGwMinInstance' -If { ResourceType 'Microsoft.Netwo
 }
 
 # Synopsis: Application Gateway should use a minimum of Medium
-Rule 'Azure.VirtualNetwork.AppGwMinSku' -If { ResourceType 'Microsoft.Network/applicationGateways' } -Tag @{ severity = 'Important'; category = 'Performance' } {
+Rule 'Azure.VirtualNetwork.AppGwMinSku' -Type 'Microsoft.Network/applicationGateways' -Tag @{ severity = 'Important'; category = 'Performance' } {
     Within 'Properties.sku.name' 'WAF_Medium', 'Standard_Medium', 'WAF_Large', 'Standard_Large', 'WAF_v2', 'Standard_v2'
 }
 
@@ -141,7 +141,7 @@ Rule 'Azure.VirtualNetwork.AppGwUseWAF' -If { (IsAppGwPublic) } -Tag @{ severity
 }
 
 # Synopsis: Application Gateway should only accept a minimum of TLS 1.2
-Rule 'Azure.VirtualNetwork.AppGwSSLPolicy' -If { ResourceType 'Microsoft.Network/applicationGateways' } -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
+Rule 'Azure.VirtualNetwork.AppGwSSLPolicy' -Type 'Microsoft.Network/applicationGateways' -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
     Exists 'Properties.sslPolicy'
     AnyOf {
         Within 'Properties.sslPolicy.policyName' 'AppGwSslPolicy20170401S'
@@ -176,7 +176,7 @@ Rule 'Azure.VirtualNetwork.AppGwWAFRules' -If { (IsAppGwWAF) } {
 #region Network Interface
 
 # Synopsis: Network interfaces should be attached
-Rule 'Azure.VirtualNetwork.NICAttached' -If { ResourceType 'Microsoft.Network/networkInterfaces' } {
+Rule 'Azure.VirtualNetwork.NICAttached' -Type 'Microsoft.Network/networkInterfaces' {
     Exists 'Properties.virtualMachine.id'
 }
 
@@ -185,7 +185,7 @@ Rule 'Azure.VirtualNetwork.NICAttached' -If { ResourceType 'Microsoft.Network/ne
 #region Load Balancer
 
 # Synopsis: Use specific network probe
-Rule 'Azure.VirtualNetwork.LBProbe' -If { ResourceType 'Microsoft.Network/loadBalancers' } {
+Rule 'Azure.VirtualNetwork.LBProbe' -Type 'Microsoft.Network/loadBalancers' {
     $probes = $TargetObject.Properties.probes;
     foreach ($probe in $probes) {
         if ($probe.properties.port -in 80, 443, 8080) {

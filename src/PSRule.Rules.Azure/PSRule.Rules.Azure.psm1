@@ -4,6 +4,8 @@
 
 Set-StrictMode -Version latest;
 
+[PSRule.Rules.Azure.Configuration.PSRuleOption]::UseExecutionContext($ExecutionContext);
+
 #
 # Localization
 #
@@ -45,7 +47,6 @@ function Export-AzRuleData {
         [Parameter(Mandatory = $False, ParameterSetName = 'All')]
         [Switch]$All = $False
     )
-
     process {
         # Get subscriptions
         $context = FindAzureContext -Subscription $Subscription -Tenant $Tenant -All:$All -Verbose:$VerbosePreference;
@@ -80,11 +81,117 @@ function Export-AzRuleData {
     }
 }
 
+# .ExternalHelp PSRule.Rules.Azure-Help.xml
+function Export-AzTemplateRuleData {
+    [CmdletBinding()]
+    [OutputType([System.IO.FileInfo])]
+    [OutputType([PSObject])]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
+        [String]$TemplateFile,
+
+        [Parameter(Mandatory = $False, ValueFromPipelineByPropertyName = $True)]
+        [Alias('TemplateParameterFile')]
+        [String[]]$ParameterFile,
+
+        [Parameter(Mandatory = $False)]
+        [String]$ResourceGroupName,
+
+        [Parameter(Mandatory = $False)]
+        [String]$Subscription,
+
+        [Parameter(Mandatory = $False)]
+        [String]$OutputPath = $PWD,
+
+        [Parameter(Mandatory = $False)]
+        [Switch]$PassThru
+    )
+    begin {
+        Write-Verbose -Message '[Export-AzTemplateRuleData] BEGIN::';
+
+        # Build the pipeline
+        $builder = [PSRule.Rules.Azure.Pipeline.PipelineBuilder]::Template();
+        $builder.PassThru($PassThru);
+        $builder.OutputPath($OutputPath);
+
+        # Bind to subscription context
+        if ($PSBoundParameters.ContainsKey('Subscription')) {
+            $subscriptionObject = GetSubscription -Subscription $Subscription -ErrorAction SilentlyContinue;
+            if ($Null -ne $subscriptionObject) {
+                $builder.Subscription($subscriptionObject);
+            }
+        }
+        # Bind to resource group
+        if ($PSBoundParameters.ContainsKey('ResourceGroupName')) {
+            $resourceGroupObject = GetResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue;
+            if ($Null -ne $resourceGroupObject) {
+                $builder.ResourceGroup($resourceGroupObject);
+            }
+        }
+
+        $builder.UseCommandRuntime($PSCmdlet.CommandRuntime);
+        $builder.UseExecutionContext($ExecutionContext);
+        try {
+            $pipeline = $builder.Build();
+            $pipeline.Begin();
+        }
+        catch {
+            $pipeline.Dispose();
+        }
+    }
+    process {
+        
+        if ($Null -ne (Get-Variable -Name pipeline -ErrorAction SilentlyContinue)) {
+            try {
+                $source = [PSRule.Rules.Azure.Pipeline.TemplateSource]::new($TemplateFile, $ParameterFile);
+                $pipeline.Process($source);
+            }
+            catch {
+                $pipeline.Dispose();
+                throw;
+            }
+        }
+    }
+    end {
+        if ($Null -ne (Get-Variable -Name pipeline -ErrorAction SilentlyContinue)) {
+            try {
+                $pipeline.End();
+            }
+            finally {
+                $pipeline.Dispose();
+            }
+        }
+        Write-Verbose -Message '[Export-AzTemplateRuleData] END::';
+    }
+}
+
 #endregion Public functions
 
 #
 # Helper functions
 #
+
+function GetResourceGroup {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True)]
+        [String]$Name
+    )
+    process {
+        return Get-AzResourceGroup -Name $Name -ErrorAction SilentlyContinue;
+    }
+}
+
+function GetSubscription {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True)]
+        [String]$Subscription
+    )
+    process {
+        return (Set-AzContext -Subscription $Subscription -ErrorAction SilentlyContinue).Subscription;
+    }
+}
 
 function FindAzureContext {
     [CmdletBinding()]
@@ -502,4 +609,4 @@ function SetResourceType {
 # Export module
 #
 
-Export-ModuleMember -Function 'Export-AzRuleData';
+Export-ModuleMember -Function 'Export-AzRuleData', 'Export-AzTemplateRuleData';

@@ -151,8 +151,8 @@ task PSScriptAnalyzer NuGet, {
 
 # Synopsis: Install PSRule
 task PSRule NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.10.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 0.10.0 -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.11.0 -ErrorAction Ignore)) {
+        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 0.11.0 -Scope CurrentUser -Force;
     }
     Import-Module -Name PSRule -Verbose:$False;
 }
@@ -186,14 +186,37 @@ task ModuleDependencies NuGet, PSRule, {
     }
 }
 
+task BuildDotNet {
+    exec {
+        # Build library
+        # Add build version -p:versionPrefix=$ModuleVersion
+        dotnet publish src/PSRule.Rules.Azure -c $Configuration -f netstandard2.0 -o $(Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure)
+    }
+}
+
+task TestDotNet {
+    if ($CodeCoverage) {
+        exec {
+            # Test library
+            dotnet test --collect:"Code Coverage" --logger trx -r (Join-Path $PWD -ChildPath reports/) tests/PSRule.Rules.Azure.Tests
+        }
+    }
+    else {
+        exec {
+            # Test library
+            dotnet test --logger trx -r (Join-Path $PWD -ChildPath reports/) tests/PSRule.Rules.Azure.Tests
+        }
+    }
+}
+
 task CopyModule {
     CopyModuleFiles -Path src/PSRule.Rules.Azure -DestinationPath out/modules/PSRule.Rules.Azure;
 }
 
 # Synopsis: Build modules only
-task BuildModule CopyModule
+task BuildModule BuildDotNet, CopyModule
 
-task TestRules PSRule, Pester, PSScriptAnalyzer, {
+task TestRules TestDotNet, PSRule, Pester, PSScriptAnalyzer, {
     # Run Pester tests
     $pesterParams = @{ Path = $PWD; OutputFile = 'reports/pester-unit.xml'; OutputFormat = 'NUnitXml'; PesterOption = @{ IncludeVSCodeMarker = $True }; PassThru = $True; };
 

@@ -1,0 +1,1415 @@
+﻿using Microsoft.Azure.Management.ContainerRegistry.Fluent;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Resources;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
+using System.Web;
+using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
+
+namespace PSRule.Rules.Azure.Data.Template
+{
+    /// <summary>
+    /// Implementation of Azure Resource Manager template functions as ExpressionFn.
+    /// </summary>
+    internal static class Functions
+    {
+        internal readonly static IFunctionDescriptor[] Builtin = new IFunctionDescriptor[]
+        {
+            // Array and object
+            // array
+            // coalesce
+            new FunctionDescriptor("concat", Concat),
+            new FunctionDescriptor("contains", Contains),
+            // createArray
+            new FunctionDescriptor("empty", Empty),
+            new FunctionDescriptor("first", First),
+            // intersection
+            new FunctionDescriptor("json", Json),
+            new FunctionDescriptor("last", Last),
+            new FunctionDescriptor("length", Length),
+            new FunctionDescriptor("min", Min),
+            new FunctionDescriptor("max", Max),
+            new FunctionDescriptor("range", Range),
+            new FunctionDescriptor("skip", Skip),
+            new FunctionDescriptor("take", Take),
+            new FunctionDescriptor("union", Union),
+
+            // Comparison
+            new FunctionDescriptor("equals", Equals),
+            new FunctionDescriptor("greater", Greater),
+            new FunctionDescriptor("greaterOrEquals", GreaterOrEquals),
+            new FunctionDescriptor("less", Less),
+            new FunctionDescriptor("lessOrEquals", LessOrEquals),
+
+            // Deployment
+            // deployment
+            new FunctionDescriptor("parameters", Parameters),
+            new FunctionDescriptor("variables", Variables),
+
+            // Logical
+            new FunctionDescriptor("and", And),
+            new FunctionDescriptor("bool", Bool),
+            new FunctionDescriptor("if", If),
+            new FunctionDescriptor("not", Not),
+            new FunctionDescriptor("or", Or),
+
+            // Numeric
+            new FunctionDescriptor("add", Add),
+            new FunctionDescriptor("copyIndex", CopyIndex),
+            new FunctionDescriptor("div", Div),
+            new FunctionDescriptor("float", Float),
+            new FunctionDescriptor("int", Int),
+            // min - also in array and object
+            // max - also in array and object
+            new FunctionDescriptor("mod", Mod),
+            new FunctionDescriptor("mul", Mul),
+            new FunctionDescriptor("sub", Sub),
+
+            // Resource
+            new FunctionDescriptor("extensionResourceId", ExtensionResourceId),
+            new FunctionDescriptor("list", List), // Includes listAccountSas, listKeys, listSecrets, list*
+            // providers
+            new FunctionDescriptor("reference", Reference),
+            new FunctionDescriptor("resourceGroup", ResourceGroup),
+            new FunctionDescriptor("resourceId", ResourceId),
+            new FunctionDescriptor("subscription", Subscription),
+            new FunctionDescriptor("subscriptionResourceId", SubscriptionResourceId),
+            new FunctionDescriptor("tenantResourceId", TenantResourceId),
+
+            // String
+            new FunctionDescriptor("base64", Base64),
+            new FunctionDescriptor("base64ToJson", Base64ToJson),
+            new FunctionDescriptor("base64ToString", Base64ToString),
+            // concat - also in array and object
+            // contains - also in array and object
+            // dataUri
+            // dataUriToString
+            // empty - also in array and object
+            new FunctionDescriptor("endsWith", EndsWith),
+            // first - also in array and object
+            new FunctionDescriptor("format", Format),
+            new FunctionDescriptor("guid", Guid),
+            new FunctionDescriptor("indexOf", IndexOf),
+            // last - also in array and object
+            new FunctionDescriptor("lastIndexOf", LastIndexOf),
+            // length - also in array and object
+            new FunctionDescriptor("newGuid", NewGuid),
+            new FunctionDescriptor("padLeft", PadLeft),
+            new FunctionDescriptor("replace", Replace),
+            // skip - also in array and object
+            new FunctionDescriptor("split", Split),
+            new FunctionDescriptor("startsWith", StartsWith),
+            new FunctionDescriptor("string", String),
+            new FunctionDescriptor("substring", Substring),
+            // take - also in array and object
+            new FunctionDescriptor("toLower", ToLower),
+            new FunctionDescriptor("toUpper", ToUpper),
+            new FunctionDescriptor("trim", Trim),
+            new FunctionDescriptor("uniqueString", UniqueString),
+            new FunctionDescriptor("uri", Uri),
+            new FunctionDescriptor("uriComponent", UriComponent),
+            new FunctionDescriptor("uriComponentToString", UriComponentToString),
+            new FunctionDescriptor("utcNow", UtcNow),
+        };
+
+        #region Array and object
+
+        internal static object Concat(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length == 0)
+                throw new ArgumentOutOfRangeException();
+
+            // String
+            if (args[0] is string || (args[0] is JToken jToken && jToken.Type == JTokenType.String))
+            {
+                var s = new string[args.Length];
+                for (var i = 0; i < args.Length; i++)
+                {
+                    if (TryString(args[i], out string svalue))
+                        s[i] = svalue;
+                }
+                return string.Concat(s);
+            }
+            // Array
+            else if (args[0] is Array || args[0] is JArray)
+            {
+                var result = new List<object>();
+                for (var i = 0; i < args.Length; i++)
+                {
+                    if (args[i] is Array array)
+                    {
+                        for (var j = 0; j < array.Length; j++)
+                            result.Add(array.GetValue(j));
+                    }
+                    else if (args[i] is JArray jArray)
+                    {
+                        for (var j = 0; j < jArray.Count; j++)
+                            result.Add(jArray[j]);
+                    }
+                }
+                return result.ToArray();
+            }
+            throw new ArgumentException();
+        }
+
+        internal static Array Concat(Array[] array)
+        {
+            var result = new List<object>();
+            for (var i = 0; i < array.Length; i++)
+            {
+                for (var j = 0; j < array[i].Length; j++)
+                    result.Add(array[i].GetValue(j));
+            }
+            return result.ToArray();
+        }
+
+        internal static object Empty(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (args[0] == null)
+                return true;
+            else if (args[0] is Array avalue)
+                return avalue.Length == 0;
+            else if (args[0] is JArray jArray)
+                return jArray.Count == 0;
+            else if (args[0] is string svalue)
+                return string.IsNullOrEmpty(svalue);
+            else if (args[0] is JObject jObject)
+                return jObject.Properties().Count() == 0;
+
+            return false;
+        }
+
+        internal static object Contains(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 2)
+                throw new ArgumentOutOfRangeException();
+
+            var objectToFind = args[1];
+
+            if (args[0] is Array avalue)
+                return Contains(avalue, objectToFind);
+            else if (args[0] is JArray jArray)
+                return jArray.Contains(JToken.FromObject(objectToFind));
+            else if (args[0] is string svalue)
+                return svalue.Contains(objectToFind.ToString());
+            else if (args[0] is JObject jObject)
+                return jObject.ContainsKey(objectToFind.ToString());
+
+            return false;
+        }
+
+        internal static object First(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (args[0] is Array avalue)
+                return avalue.GetValue(0);
+            else if (args[0] is JArray jArray)
+                return jArray[0];
+            else if (args[0] is string svalue)
+                return svalue[0];
+
+            return null;
+        }
+
+        internal static object Json(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 1 || !TryString(args[0], out string json))
+                throw new ArgumentOutOfRangeException();
+
+            return JsonConvert.DeserializeObject(json);
+        }
+
+        internal static object Last(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (args[0] is Array avalue)
+                return avalue.GetValue(avalue.Length - 1);
+            else if (args[0] is JArray jArray)
+                return jArray[jArray.Count - 1];
+            else if (args[0] is string svalue)
+                return svalue[svalue.Length - 1];
+
+            return null;
+        }
+
+        internal static object Length(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (args[0] is string s)
+                return s.Length;
+            else if (args[0] is Array a)
+                return a.Length;
+            else if (args[0] is JArray jArray)
+                return jArray.Count;
+
+            return args[0].GetType().GetProperties().Length;
+        }
+
+        internal static object Min(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) == 0)
+                throw new ArgumentOutOfRangeException();
+
+            int? result = null;
+            for (var i = 0; i < args.Length; i++)
+            {
+                if (TryInt(args[i], out int value))
+                {
+                    result = !result.HasValue || value < result ? value : result;
+                }
+                // Enumerate array arg
+                else if (TryJArray(args[i], out JArray array))
+                {
+                    for (var j = 0; j < array.Count; j++)
+                    {
+                        if (TryInt(array[j], out value))
+                        {
+                            result = !result.HasValue || value < result ? value : result;
+                        }
+                        else
+                            throw new ArgumentException();
+                    }
+                }
+                else
+                    throw new ArgumentException();
+            }
+            return result;
+        }
+
+        internal static object Max(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) == 0)
+                throw new ArgumentOutOfRangeException();
+
+            int? result = null;
+            for (var i = 0; i < args.Length; i++)
+            {
+                if (TryInt(args[i], out int value))
+                {
+                    result = !result.HasValue || value > result ? value : result;
+                }
+                // Enumerate array arg
+                else if (TryJArray(args[i], out JArray array))
+                {
+                    for (var j = 0; j < array.Count; j++)
+                    {
+                        if (TryInt(array[j], out value))
+                        {
+                            result = !result.HasValue || value > result ? value : result;
+                        }
+                        else
+                            throw new ArgumentException();
+                    }
+                }
+                else
+                    throw new ArgumentException();
+            }
+            return result;
+        }
+
+        internal static object Range(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryInt(args[0], out int startingInteger))
+                throw new ArgumentException();
+
+            if (!TryInt(args[1], out int numberofElements))
+                throw new ArgumentException();
+
+            var result = new int[numberofElements];
+            for (var i = 0; i < numberofElements; i++)
+                result[i] = startingInteger++;
+
+            return new JArray(result);
+        }
+
+        internal static object Skip(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryInt(args[1], out int numberToSkip))
+                throw new ArgumentException();
+
+            int skip = numberToSkip <= 0 ? 0 : numberToSkip;
+            if (TryString(args[0], out string soriginalValue))
+            {
+                if (skip >= soriginalValue.Length)
+                    return string.Empty;
+
+                return soriginalValue.Substring(skip);
+            }
+            else if (TryJArray(args[0], out JArray aoriginalvalue))
+            {
+                if (skip >= aoriginalvalue.Count)
+                    return new JArray();
+
+                var result = new JArray();
+                for (var i = skip; i < aoriginalvalue.Count; i++)
+                    result.Add(aoriginalvalue[i]);
+
+                return result;
+            }
+
+            throw new ArgumentException();
+        }
+
+        internal static object Take(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryInt(args[1], out int numberToTake))
+                throw new ArgumentException();
+
+            int take = numberToTake <= 0 ? 0 : numberToTake;
+            if (TryString(args[0], out string soriginalValue))
+            {
+                if (take <= 0)
+                    return string.Empty;
+
+                take = take > soriginalValue.Length ? soriginalValue.Length : take;
+                return soriginalValue.Substring(0, take);
+            }
+            else if (TryJArray(args[0], out JArray aoriginalvalue))
+            {
+                if (take <= 0)
+                    return new JArray();
+
+                var result = new JArray();
+                for (var i = 0; i < aoriginalvalue.Count && i < take; i++)
+                    result.Add(aoriginalvalue[i]);
+
+                return result;
+            }
+
+            throw new ArgumentException();
+        }
+
+        internal static object Union(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length < 2)
+                throw new ArgumentException();
+
+            // Array
+            if (args[0] is Array)
+            {
+                Array[] arrays = new Array[args.Length];
+                args.CopyTo(arrays, 0);
+                return Union(arrays);
+            }
+            else if (args[0] is JArray)
+            {
+                JArray[] arrays = new JArray[args.Length];
+                for (var i = 0; i < arrays.Length; i++)
+                {
+                    arrays[i] = args[i] as JArray;
+                }
+                return Union(arrays);
+            }
+
+            // Object
+
+            // TODO: Complete object
+
+            return null;
+        }
+
+        private static Array Union(Array[] arrays)
+        {
+            var result = new List<object>();
+            for (var i = 0; i < arrays.Length; i++)
+            {
+                for (var j = 0; arrays[i] != null && j < arrays[i].Length; j++)
+                {
+                    var value = arrays[i].GetValue(j);
+                    if (!result.Contains(value))
+                        result.Add(value);
+                }
+            }
+            return result.ToArray();
+        }
+
+        private static JArray Union(JArray[] arrays)
+        {
+            var result = new JArray();
+            for (var i = 0; i < arrays.Length; i++)
+            {
+                for (var j = 0; j < arrays[i].Count; j++)
+                {
+                    var element = arrays[i][j];
+                    if (!result.Contains(element))
+                        result.Add(element);
+                }
+
+            }
+            return result;
+        }
+
+        #endregion Array and object
+
+        #region Deployment
+
+        internal static object Parameters(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 1 || !(args[0] is string parameterName))
+                throw new ArgumentException();
+
+            return Parameters(context, parameterName);
+        }
+
+        private static object Parameters(TemplateContext context, string parameterName)
+        {
+            return context.Parameters[parameterName];
+        }
+
+        internal static object Variables(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 1 || !(args[0] is string variableName))
+                throw new ArgumentException();
+
+            return Variables(context, variableName);
+        }
+
+        private static object Variables(TemplateContext context, string variableName)
+        {
+            return context.Variables[variableName];
+        }
+
+        #endregion Deployment
+
+        #region Resource
+
+        /// <summary>
+        /// extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
+        /// </summary>
+        /// <returns>
+        /// {scope}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+        /// </returns>
+        internal static object ExtensionResourceId(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) < 3)
+                throw new ArgumentOutOfRangeException();
+
+            var segments = new string[args.Length];
+            for (var i = 0; i < segments.Length; i++)
+            {
+                if (!TryString(args[i], out string value))
+                    throw new ArgumentException();
+
+                segments[i] = value;
+            }
+
+            var resourceId = segments[0];
+            if (!segments[1].Contains('/'))
+                throw new ArgumentException();
+
+            var resourceType = segments[1];
+            var nameDepth = resourceType.Split('/').Length - 1;
+            if ((segments.Length - 2) != nameDepth)
+                throw new ArgumentException();
+
+            var name = new string[nameDepth];
+            Array.Copy(segments, 2, name, 0, nameDepth);
+            var nameParts = string.Join("/", name);
+            return string.Concat(resourceId, "/providers/", resourceType, "/", nameParts);
+        }
+
+        /// <summary>
+        /// list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
+        /// </summary>
+        internal static object List(TemplateContext context, object[] args)
+        {
+            var argCount = CountArgs(args);
+            if (argCount < 2 || argCount > 3)
+                throw new ArgumentOutOfRangeException();
+
+            return new MockResourceList();
+        }
+
+        internal static object Reference(TemplateContext context, object[] args)
+        {
+            var argCount = CountArgs(args);
+            if (argCount < 1 || argCount > 3)
+                throw new ArgumentOutOfRangeException();
+
+            return new MockResource();
+        }
+
+        /// <summary>
+        /// resourceGroup()
+        /// </summary>
+        internal static object ResourceGroup(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw new ArgumentOutOfRangeException();
+
+            return context.ResourceGroup;
+        }
+
+        /// <summary>
+        /// resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
+        /// </summary>
+        /// <returns>
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// </returns>
+        internal static object ResourceId(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) < 2)
+                throw new ArgumentOutOfRangeException();
+
+            var segments = new string[args.Length];
+            for (var i = 0; i < segments.Length; i++)
+            {
+                if (!TryString(args[i], out string value))
+                    throw new ArgumentException();
+
+                segments[i] = value;
+            }
+
+            string subscriptionId = context.Subscription.SubscriptionId;
+            string resourceGroup = context.ResourceGroup.Name;
+            string resourceType = null;
+            string nameParts = null;
+
+            for (var i = 0; resourceType == null && i < segments.Length; i++)
+            {
+                if (segments[i].Contains('/'))
+                {
+                    // Copy earlier segments
+                    if (i == 1)
+                        resourceGroup = segments[0];
+                    else if (i == 2)
+                    {
+                        resourceGroup = segments[1];
+                        subscriptionId = segments[0];
+                    }
+                    resourceType = segments[i];
+                    var nameDepth = resourceType.Split('/').Length - 1;
+
+                    if ((segments.Length - 1 - i) != nameDepth)
+                        throw new ArgumentException();
+
+                    string[] name = new string[nameDepth];
+                    Array.Copy(segments, i + 1, name, 0, nameDepth);
+                    nameParts = string.Join("/", name);
+                }
+            }
+            return string.Concat("/subscriptions/", subscriptionId, "/resourceGroups/", resourceGroup, "/providers/", resourceType, "/", nameParts);
+        }
+        
+        /// <summary>
+        /// subscription()
+        /// </summary>
+        internal static object Subscription(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw new ArgumentOutOfRangeException();
+
+            return context.Subscription;
+        }
+
+        /// <summary>
+        /// subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)
+        /// </summary>
+        /// <returns>
+        /// /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// </returns>
+        internal static object SubscriptionResourceId(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) < 2)
+                throw new ArgumentOutOfRangeException();
+
+            var segments = new string[args.Length];
+            for (var i = 0; i < segments.Length; i++)
+            {
+                if (!TryString(args[i], out string value))
+                    throw new ArgumentException();
+
+                segments[i] = value;
+            }
+
+            string subscriptionId = context.Subscription.SubscriptionId;
+            string resourceType = null;
+            string nameParts = null;
+
+            for (var i = 0; resourceType == null && i < segments.Length; i++)
+            {
+                if (segments[i].Contains('/'))
+                {
+                    // Copy earlier segments
+                    if (i == 1)
+                        subscriptionId = segments[0];
+
+                    resourceType = segments[i];
+                    var nameDepth = resourceType.Split('/').Length - 1;
+
+                    if ((segments.Length - 1 - i) != nameDepth)
+                        throw new ArgumentException();
+
+                    string[] name = new string[nameDepth];
+                    Array.Copy(segments, i + 1, name, 0, nameDepth);
+                    nameParts = string.Join("/", name);
+                }
+            }
+            return string.Concat("/subscriptions/", subscriptionId, "/providers/", resourceType, "/", nameParts);
+        }
+
+        /// <summary>
+        /// tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
+        /// </summary>
+        /// <returns>
+        /// /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// </returns>
+        internal static object TenantResourceId(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) < 2)
+                throw new ArgumentOutOfRangeException();
+
+            var segments = new string[args.Length];
+            for (var i = 0; i < segments.Length; i++)
+            {
+                if (!TryString(args[i], out string value))
+                    throw new ArgumentException();
+
+                segments[i] = value;
+            }
+
+            string resourceType = null;
+            string nameParts = null;
+
+            for (var i = 0; resourceType == null && i < segments.Length; i++)
+            {
+                if (segments[i].Contains('/'))
+                {
+                    resourceType = segments[i];
+                    var nameDepth = resourceType.Split('/').Length - 1;
+
+                    if ((segments.Length - 1 - i) != nameDepth)
+                        throw new ArgumentException();
+
+                    string[] name = new string[nameDepth];
+                    Array.Copy(segments, i + 1, name, 0, nameDepth);
+                    nameParts = string.Join("/", name);
+                }
+            }
+            return string.Concat("/providers/", resourceType, "/", nameParts);
+        }
+
+        #endregion Resource
+
+        #region Numeric
+
+        internal static object Add(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryInt(args[0], out int operand1))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
+
+            if (!TryInt(args[1], out int operand2))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand2");
+
+            return operand1 + operand2;
+        }
+
+        internal static object CopyIndex(TemplateContext context, object[] args)
+        {
+            string loopName = CountArgs(args) >= 1 && args[0] is string svalue ? svalue : null;
+            int offset = CountArgs(args) >= 1 && args[0] is int ivalue ? ivalue : 0;
+            if (CountArgs(args) == 2 && offset == 0 && args[1] is int ivalue2)
+                offset = ivalue2;
+
+            if (!context.CopyIndex.TryGetValue(loopName, out TemplateContext.CopyIndexState value))
+                throw new ArgumentException();
+
+            return offset + value.Index;
+        }
+
+        internal static object Div(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryInt(args[0], out int operand1))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
+
+            if (!TryInt(args[1], out int operand2))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand2");
+
+            if (operand2 == 0)
+                throw new DivideByZeroException();
+
+            return operand1 / operand2;
+        }
+
+        internal static object Float(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (TryInt(args[0], out int ivalue))
+                return (float)ivalue;
+            else if (TryString(args[0], out string svalue))
+                return float.Parse(svalue, new CultureInfo("en-us"));
+
+            throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "valueToConvert");
+        }
+
+        internal static object Int(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if(TryInt(args[0], out int ivalue))
+                return ivalue;
+            else if (TryString(args[0], out string svalue))
+                return int.Parse(svalue);
+            
+            throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "valueToConvert");
+        }
+
+        internal static object Mod(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryInt(args[0], out int operand1))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
+
+            if (!TryInt(args[1], out int operand2))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand2");
+
+            if (operand2 == 0)
+                throw new DivideByZeroException();
+
+            return operand1 % operand2;
+        }
+
+        internal static object Mul(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryInt(args[0], out int operand1))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
+
+            if (!TryInt(args[1], out int operand2))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand2");
+
+            return operand1 * operand2;
+        }
+
+        internal static object Sub(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryInt(args[0], out int operand1))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
+
+            if (!TryInt(args[1], out int operand2))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand2");
+
+            return operand1 - operand2;
+        }
+
+        #endregion Numeric
+
+        #region Comparison
+
+        /// <summary>
+        /// equals(arg1, arg2)
+        /// </summary>
+        internal static object Equals(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 2)
+                throw new ArgumentOutOfRangeException();
+
+            // One null
+            if (args[0] == null || args[1] == null)
+                return args[0] == args[1];
+
+            // Arrays
+            if (args[0] is Array array1 && args[1] is Array array2)
+                return SequenceEqual(array1, array2);
+            else if (args[0] is Array || args[1] is Array)
+                return false;
+
+            // String and int
+            if (args[0] is string s1 && args[1] is string s2)
+                return s1 == s2;
+            else if (args[0] is string || args[1] is string)
+                return false;
+            else if (args[0] is int i1 && args[1] is int i2)
+                return i1 == i2;
+            else if (args[0] is int || args[1] is int)
+                return false;
+
+            // Objects
+            return ObjectEquals(args[0], args[1]);
+        }
+
+        /// <summary>
+        /// greater(arg1, arg2)
+        /// </summary>
+        internal static object Greater(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 2)
+                throw new ArgumentOutOfRangeException();
+
+            return Compare(args[0], args[1]) > 0;
+        }
+
+
+        /// <summary>
+        /// greaterOrEquals(arg1, arg2)
+        /// </summary>
+        internal static object GreaterOrEquals(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 2)
+                throw new ArgumentOutOfRangeException();
+
+            return Compare(args[0], args[1]) >= 0;
+        }
+
+
+        /// <summary>
+        /// less(arg1, arg2)
+        /// </summary>
+        internal static object Less(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 2)
+                throw new ArgumentOutOfRangeException();
+
+            return Compare(args[0], args[1]) < 0;
+        }
+
+        /// <summary>
+        /// lessOrEquals(arg1, arg2)
+        /// </summary>
+        internal static object LessOrEquals(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 2)
+                throw new ArgumentOutOfRangeException();
+
+            return Compare(args[0], args[1]) <= 0;
+        }
+
+        #endregion Comparison
+
+        #region Logical
+
+        /// <summary>
+        /// and(arg1, arg2, ...)
+        /// </summary>
+        internal static object And(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length < 2)
+                throw new ArgumentOutOfRangeException();
+
+            var bools = new bool[args.Length];
+            args.CopyTo(bools, 0);
+            for (var i = 0; i < bools.Length; i++)
+            {
+                if (!bools[i])
+                    return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// bool(arg1)
+        /// </summary>
+        internal static object Bool(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (args[0] is string svalue)
+                return bool.Parse(svalue);
+            else if (args[0] is int ivalue)
+                return ivalue > 0;
+
+            return false;
+        }
+
+        /// <summary>
+        /// if(condition, trueValue, falseValue)
+        /// </summary>
+        internal static object If(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 3)
+                throw new ArgumentOutOfRangeException();
+
+            return args[0] is bool condition && condition == true ? args[1] : args[2];
+        }
+
+        /// <summary>
+        /// not(arg1)
+        /// </summary>
+        internal static object Not(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 1)
+                throw new ArgumentOutOfRangeException();
+
+            return !(bool)args[0];
+        }
+
+        /// <summary>
+        /// or(arg1, arg2, ...)
+        /// </summary>
+        internal static object Or(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length < 2)
+                throw new ArgumentOutOfRangeException();
+
+            var bools = new bool[args.Length];
+            args.CopyTo(bools, 0);
+            for (var i = 0; i < bools.Length; i++)
+            {
+                if (bools[i])
+                    return true;
+            }
+            return false;
+        }
+
+        #endregion Logical
+
+        #region String
+
+        internal static object Base64(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string value))
+                throw new ArgumentException();
+
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(value));
+        }
+
+        internal static object Base64ToJson(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string value))
+                throw new ArgumentException();
+
+            return JObject.Parse(Encoding.UTF8.GetString(Convert.FromBase64String(value)));
+        }
+
+        internal static object Base64ToString(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string value))
+                throw new ArgumentException();
+
+            return Encoding.UTF8.GetString(Convert.FromBase64String(value));
+        }
+
+        internal static object EndsWith(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 2 || !TryString(args[0], out string s1) || !TryString(args[1], out string s2))
+                throw new ArgumentOutOfRangeException();
+
+            return s1.EndsWith(s2, StringComparison.OrdinalIgnoreCase);
+        }
+
+        internal static object Format(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) < 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string formatString))
+                throw new ArgumentException();
+
+            var remaining = new object[args.Length - 1];
+            Array.Copy(args, 1, remaining, 0, remaining.Length);
+            return string.Format(formatString, remaining);
+        }
+
+        internal static object Guid(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) < 1)
+                throw new ArgumentOutOfRangeException();
+
+            var hash = GetUnique(args);
+            var guidBytes = new byte[16];
+            Array.Copy(hash, 0, guidBytes, 0, 16);
+            return new Guid(guidBytes).ToString();
+        }
+
+        internal static object IndexOf(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string stringToSearch))
+                throw new ArgumentException();
+
+            if (!TryString(args[1], out string stringToFind))
+                throw new ArgumentException();
+
+            return stringToSearch.IndexOf(stringToFind, StringComparison.OrdinalIgnoreCase);
+        }
+
+        internal static object LastIndexOf(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string stringToSearch))
+                throw new ArgumentException();
+
+            if (!TryString(args[1], out string stringToFind))
+                throw new ArgumentException();
+
+            return stringToSearch.LastIndexOf(stringToFind, StringComparison.OrdinalIgnoreCase);
+        }
+
+        internal static object NewGuid(TemplateContext context, object[] args)
+        {
+            if (!(args == null || args.Length == 0))
+                throw new ArgumentOutOfRangeException();
+
+            return System.Guid.NewGuid().ToString();
+        }
+
+        internal static object PadLeft(TemplateContext context, object[] args)
+        {
+            var argCount = CountArgs(args);
+            if (argCount < 2 || argCount > 3)
+                throw new ArgumentOutOfRangeException();
+
+            string paddingCharacter = " ";
+
+            if (!TryInt(args[1], out int totalLength))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "totalLength");
+
+            if (argCount == 3 && (!TryString(args[2], out paddingCharacter) || paddingCharacter.Length > 1))
+                throw new ArgumentException();
+
+            if (TryString(args[0], out string svalue))
+                return svalue.PadLeft(totalLength, paddingCharacter[0]);
+            else if (TryInt(args[1], out int ivalue))
+                return ivalue.ToString(new CultureInfo("en-us")).PadLeft(totalLength, paddingCharacter[0]);
+
+            throw new ArgumentException();
+        }
+
+        internal static object StartsWith(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 2 || !TryString(args[0], out string s1) || !TryString(args[1], out string s2))
+                throw new ArgumentOutOfRangeException();
+
+            return s1.StartsWith(s2, StringComparison.OrdinalIgnoreCase);
+        }
+
+        internal static object String(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 1)
+                throw new ArgumentOutOfRangeException();
+
+            return JsonConvert.SerializeObject(args[0]);
+        }
+
+        internal static object Substring(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length < 1 || args.Length > 3 || !TryString(args[0], out string value))
+                throw new ArgumentOutOfRangeException();
+
+            if (args.Length == 2 && args[1] is int startIndex)
+                return value.Substring(startIndex);
+            else if (args.Length == 3 && args[1] is int startIndex2 && args[2] is int length)
+                return value.Substring(startIndex2, length);
+
+            throw new ArgumentException();
+        }
+
+        internal static object ToLower(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string stringToChange))
+                throw new ArgumentException();
+
+            return stringToChange.ToLower();
+        }
+
+        internal static object ToUpper(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string stringToChange))
+                throw new ArgumentException();
+
+            return stringToChange.ToUpper();
+        }
+
+        internal static object Trim(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string stringToTrim))
+                throw new ArgumentException();
+
+            return stringToTrim.Trim();
+        }
+
+        internal static object UniqueString(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) == 0)
+                throw new ArgumentOutOfRangeException();
+
+            var hash = GetUnique(args);
+            var builder = new StringBuilder();
+            var culture = new CultureInfo("en-us");
+            for (int i = 0; i < hash.Length && i < 7; i++)
+            {
+                builder.Append(hash[i].ToString("x2", culture));
+            }
+            return builder.ToString().Substring(0, 13);
+        }
+
+        internal static object Uri(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string baseUri))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidString, "baseUri");
+
+            if (!TryString(args[1], out string relativeUri))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidString, "relativeUri");
+
+            var result = new Uri(new Uri(baseUri), relativeUri);
+            return result.ToString();
+        }
+
+        internal static object UriComponent(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string stringToEncode))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidString, "stringToEncode");
+
+            return HttpUtility.UrlEncode(stringToEncode);
+        }
+
+        internal static object UriComponentToString(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string uriEncodedString))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidString, "uriEncodedString");
+
+            return HttpUtility.UrlDecode(uriEncodedString);
+        }
+
+        internal static object UtcNow(TemplateContext context, object[] args)
+        {
+            var argCount = CountArgs(args);
+            if (CountArgs(args) > 1)
+                throw new ArgumentOutOfRangeException();
+
+            var format = "yyyyMMddTHHmmssZ";
+            if (argCount == 1 && !TryString(args[0], out format))
+                throw new ArgumentException(PSRuleResources.FunctionInvalidString, "format");
+
+            return DateTime.UtcNow.ToString(format);
+        }
+
+        internal static object Replace(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 3)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string originalString) || !TryString(args[1], out string oldString) || !TryString(args[2], out string newString))
+                throw new ArgumentException();
+
+            return originalString.Replace(oldString, newString);
+        }
+
+        internal static object Split(TemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 2 || !TryString(args[0], out string value))
+                throw new ArgumentOutOfRangeException();
+
+            string[] delimiter = null;
+
+            if (TryString(args[1], out string single))
+            {
+                delimiter = new string[] { single };
+            }
+            else if (args[1] is Array delimiters)
+            {
+                delimiter = new string[delimiters.Length];
+                delimiters.CopyTo(delimiter, 0);
+            }
+            else if (args[1] is JArray jArray)
+            {
+                delimiter = jArray.Values<string>().ToArray();
+            }
+            else
+                throw new ArgumentException();
+
+            return value.Split(delimiter, StringSplitOptions.None);
+        }
+
+        #endregion String
+
+        #region Helper functions
+
+        private static int Compare(object left, object right)
+        {
+            return Comparer.Default.Compare(left, right);
+        }
+
+        private static bool SequenceEqual(Array array1, Array array2)
+        {
+            if (array1.Length != array2.Length)
+                return false;
+
+            for (var i = 0; i < array1.Length; i++)
+            {
+                if (array1.GetValue(i) != array2.GetValue(i))
+                    return false;
+            }
+            return true;
+        }
+
+        private static bool ObjectEquals(object o1, object o2)
+        {
+            var objectType = o1.GetType();
+            if (objectType != o2.GetType())
+                return false;
+
+            var props = objectType.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.GetProperty);
+            for (var i = 0; i < props.Length; i++)
+            {
+                if (!object.Equals(props[i].GetValue(o1), props[i].GetValue(o2)))
+                    return false;
+            }
+            return true;
+        }
+
+        private static bool TryString(object o, out string value)
+        {
+            if (o is string s)
+            {
+                value = s;
+                return true;
+            }
+            else if (o is JToken token && token.Type == JTokenType.String)
+            {
+                value = token.Value<string>();
+                return true;
+            }
+            value = null;
+            return false;
+        }
+
+        private static bool TryInt(object o, out int value)
+        {
+            if (o is int i)
+            {
+                value = i;
+                return true;
+            }
+            else if (o is JToken token && token.Type == JTokenType.Integer)
+            {
+                value = token.Value<int>();
+                return true;
+            }
+            value = 0;
+            return false;
+        }
+
+        private static bool TryJArray(object o, out JArray value)
+        {
+            value = null;
+            if (o is JArray jArray)
+            {
+                value = jArray;
+                return true;
+            }
+            return false;
+        }
+
+        private static bool Contains(Array array, object o)
+        {
+            var objectToFind = o;
+            if (objectToFind is JToken jToken)
+                objectToFind = jToken.Value<object>();
+
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (ObjectEquals(array.GetValue(i), objectToFind))
+                    return true;
+            }
+            return false;
+        }
+
+        private static int CountArgs(object[] args)
+        {
+            return args == null ? 0 : args.Length;
+        }
+
+        private static byte[] GetUnique(object[] args)
+        {
+            // Not actual hash algorithm used in Azure
+            using (var algorithm = SHA256.Create())
+            {
+                byte[] url_uid = new Guid("6ba7b811-9dad-11d1-80b4-00c04fd430c8").ToByteArray();
+                algorithm.TransformBlock(url_uid, 0, url_uid.Length, null, 0);
+
+                for (var i = 0; i < args.Length; i++)
+                {
+                    if (TryString(args[i], out string svalue))
+                    {
+                        var bvalue = Encoding.UTF8.GetBytes(svalue);
+                        if (i == args.Length - 1)
+                            algorithm.TransformFinalBlock(bvalue, 0, bvalue.Length);
+                        else
+                            algorithm.TransformBlock(bvalue, 0, bvalue.Length, null, 0);
+                    }
+                    else
+                    {
+                        throw new ArgumentException();
+                    }
+                }
+                return algorithm.Hash;
+            }
+        }
+
+        #endregion Helper functions
+    }
+}

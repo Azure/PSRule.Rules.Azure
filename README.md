@@ -8,7 +8,8 @@ A suite of rules to validate Azure resources using PSRule.
 
 This project is to be considered a **proof-of-concept** and **not a supported product**.
 
-For issues with rules and documentation please check our GitHub [issues](https://github.com/BernieWhite/PSRule.Rules.Azure/issues) page. If you do not see your problem captured, please file a new issue and follow the provided template.
+For issues with rules and documentation please check our GitHub [issues](https://github.com/BernieWhite/PSRule.Rules.Azure/issues) page.
+If you do not see your problem captured, please file a new issue and follow the provided template.
 
 If you have any problems with the [PSRule][engine] engine, please check the project GitHub [issues](https://github.com/Microsoft/PSRule/issues) page instead.
 
@@ -26,7 +27,8 @@ PSRule.Rules.Azure | Validate Azure resources | [latest][module] / [instructions
 
 ### Export resource data
 
-To validate Azure resources running in a subscription, export the resource data with the `Export-AzRuleData` cmdlet. The `Export-AzRuleData` cmdlet exports a resource graph for one or more subscriptions that can be used for analysis with the rules in this module.
+To validate Azure resources running in a subscription, export the resource data with the `Export-AzRuleData` cmdlet.
+The `Export-AzRuleData` cmdlet exports a resource graph for one or more subscriptions that can be used for analysis with the rules in this module.
 
 By default, resources for the current subscription context are exported. See below for more options.
 
@@ -91,7 +93,8 @@ For example:
 Export-AzRuleData -All;
 ```
 
-To filter results to only failed rules, use `Invoke-PSRule -Outcome Fail`. Passed, failed and error results are shown by default.
+To filter results to only failed rules, use `Invoke-PSRule -Outcome Fail`.
+Passed, failed and error results are shown by default.
 
 For example:
 
@@ -145,17 +148,20 @@ The following rules are included in the `PSRule.Rules.Azure` module:
 
 ## Language reference
 
-PSRule.Rules.Azure extends PowerShell the following cmdlets.
+PSRule.Rules.Azure extends PowerShell with the following cmdlets.
 
 ### Commands
 
 The following commands exist in the `PSRule.Rules.Azure` module:
 
 - [Export-AzRuleData](docs/commands/PSRule.Rules.Azure/en-US/Export-AzRuleData.md) - Export resource configuration data from one or more Azure subscriptions.
+- [Export-AzTemplateRuleData](docs/commands/PSRule.Rules.Azure/en-US/Export-AzTemplateRuleData.md) - Export resource configuration data from Azure templates.
 
 ## Changes and versioning
 
-Modules in this repository will use the [semantic versioning](http://semver.org/) model to declare breaking changes from v1.0.0. Prior to v1.0.0, breaking changes may be introduced in minor (0.x.0) version increments. For a list of module changes please see the [change log](CHANGELOG.md).
+Modules in this repository will use the [semantic versioning](http://semver.org/) model to declare breaking changes from v1.0.0.
+Prior to v1.0.0, breaking changes may be introduced in minor (0.x.0) version increments.
+For a list of module changes please see the [change log](CHANGELOG.md).
 
 > Pre-release module versions are created on major commits and can be installed from the PowerShell Gallery. Pre-release versions should be considered experimental. Modules and change log details for pre-releases will be removed as standard releases are made available.
 

@@ -32,10 +32,10 @@ stages:
       matrix:
         Linux:
           displayName: 'Linux'
-          imageName: 'ubuntu-16.04'
+          imageName: 'ubuntu-latest'
         MacOS:
           displayName: 'MacOS'
-          imageName: 'macos-10.13'
+          imageName: 'macOS-latest'
         Windows:
           displayName: 'Windows'
           imageName: 'vs2017-win2016'
@@ -54,6 +54,36 @@ stages:
     # Build module
     - powershell: Invoke-Build -Configuration $(buildConfiguration) -Build $(Build.BuildNumber)
       displayName: 'Build module'
+
+    # Run SonarCloud analysis
+    - powershell: dotnet tool install --global dotnet-sonarscanner
+      displayName: 'Install Sonar scanner'
+      condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['analysis'], 'true'))
+
+    - script: dotnet sonarscanner begin /k:"BernieWhite_PSRule_Rules_Azure" /o:"berniewhite-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login=$(sonarQubeToken) /v:"$(Build.BuildNumber)" /d:sonar.cs.vscoveragexml.reportsPaths="reports/" /d:sonar.cs.xunit.reportsPaths="reports/"
+      displayName: 'Prepare SonarCloud'
+      condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['analysis'], 'true'))
+
+    - script: dotnet build
+      displayName: 'Build solution for analysis'
+      condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['analysis'], 'true'))
+
+    - script: dotnet sonarscanner end /d:sonar.login=$(sonarQubeToken)
+      displayName: 'Complete SonarCloud'
+      condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['analysis'], 'true'))
+
+    # DotNet test results
+    - task: PublishTestResults@2
+      displayName: 'Publish unit test results'
+      inputs:
+        testRunTitle: 'DotNet on $(imageName)'
+        testRunner: VSTest
+        testResultsFiles: 'reports/*.trx'
+        mergeTestResults: true
+        platform: $(imageName)
+        configuration: $(buildConfiguration)
+        publishRunAttachments: true
+      condition: succeededOrFailed()
 
     # Pester test results
     - task: PublishTestResults@2
