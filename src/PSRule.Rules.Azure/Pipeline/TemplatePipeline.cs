@@ -65,7 +65,7 @@ namespace PSRule.Rules.Azure.Pipeline
 
         private T GetProperty<T>(PSObject obj, string propertyName)
         {
-            return null == obj.Properties[propertyName] ? default : (T)obj.Properties[propertyName].Value;
+            return null == obj.Properties[propertyName] ? default(T) : (T)obj.Properties[propertyName].Value;
         }
 
         protected override PipelineWriter PrepareWriter()
@@ -125,7 +125,7 @@ namespace PSRule.Rules.Azure.Pipeline
         private static T ReadFile<T>(string path)
         {
             if (string.IsNullOrEmpty(path) || !File.Exists(path))
-                return default;
+                return default(T);
 
             return JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
         }
