@@ -189,7 +189,7 @@ namespace PSRule.Rules.Azure
         private static T ReadFile<T>(string path)
         {
             if (string.IsNullOrEmpty(path) || !File.Exists(path))
-                return default;
+                return default(T);
 
             return JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
         }
