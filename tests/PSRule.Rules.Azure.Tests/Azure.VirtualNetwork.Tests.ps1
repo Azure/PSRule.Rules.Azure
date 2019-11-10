@@ -320,4 +320,136 @@ Describe 'Azure.VirtualNetwork' -Tag 'Network' {
             $ruleResult.TargetName | Should -BeIn 'kubernetes', 'lb-A';
         }
     }
+
+    Context 'With Template' {
+        $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
+        $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
+        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualNetwork.json;
+        Export-AzTemplateRuleData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
+        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+
+        It 'Azure.VirtualNetwork.UseNSGs' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.UseNSGs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vnet-001';
+        }
+
+        It 'Azure.VirtualNetwork.SingleDNS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.SingleDNS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vnet-001';
+        }
+
+        It 'Azure.VirtualNetwork.LocalDNS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.LocalDNS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vnet-001';
+        }
+
+        It 'Azure.VirtualNetwork.PeerState' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.PeerState' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetType -eq 'Microsoft.Network/virtualNetworks' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vnet-001';
+        }
+
+        It 'Azure.VirtualNetwork.NSGAnyInboundSource' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.NSGAnyInboundSource' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'nsg-subnet1', 'nsg-subnet2';
+        }
+
+        It 'Azure.VirtualNetwork.NSGDenyAllInbound' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.NSGDenyAllInbound' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'nsg-subnet1';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'nsg-subnet2';
+        }
+
+        It 'Azure.VirtualNetwork.LateralTraversal' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.LateralTraversal' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'nsg-subnet2';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'nsg-subnet1';
+        }
+
+        It 'Azure.VirtualNetwork.NSGAssociated' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VirtualNetwork.NSGAssociated' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetType -eq 'Microsoft.Network/networkSecurityGroups' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'nsg-subnet1', 'nsg-subnet2';
+        }
+    }
 }

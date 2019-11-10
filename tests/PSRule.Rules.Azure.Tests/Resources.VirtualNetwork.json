@@ -814,14 +814,15 @@
                         "description": "Prevent outbound RDP.",
                         "protocol": "Tcp",
                         "sourcePortRange": "*",
-                        "destinationPortRange": "3389",
                         "sourceAddressPrefix": "VirtualNetwork",
                         "destinationAddressPrefix": "*",
                         "access": "Deny",
                         "priority": 200,
                         "direction": "Outbound",
                         "sourcePortRanges": [],
-                        "destinationPortRanges": [],
+                        "destinationPortRanges": [
+                            "3389"
+                        ],
                         "sourceAddressPrefixes": [],
                         "destinationAddressPrefixes": []
                     }

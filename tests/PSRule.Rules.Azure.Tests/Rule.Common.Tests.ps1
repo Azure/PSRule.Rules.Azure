@@ -30,7 +30,7 @@ Describe 'Rule quality' {
                 $rule.Info.Annotations.category | Should -Not -BeNullOrEmpty;
 
                 if ($rule.RuleName.Length -gt 35) {
-                    Write-Warning -Message "Rule name $($rule.RuleName) if longer than 35 characters.";
+                    Write-Warning -Message "Rule name $($rule.RuleName) is longer than 35 characters.";
                 }
             }
         }

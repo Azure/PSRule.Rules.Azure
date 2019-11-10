@@ -67,47 +67,41 @@ Rule 'Azure.VirtualNetwork.PeerState' -If { (HasPeerNetwork) } {
 
 # Synopsis: Network security groups should avoid any inbound rules
 Rule 'Azure.VirtualNetwork.NSGAnyInboundSource' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ severity = 'Critical'; category = 'Security configuration' } {
-    Recommend 'Avoid rules that apply to all source addresses'
-
-    $rules = $TargetObject.properties.securityRules | Where-Object {
-        $_.properties.direction -eq 'Inbound' -and
+    $inboundRules = @(GetOrderedNSGRules -Direction Inbound);
+    $rules = $inboundRules | Where-Object {
         $_.properties.access -eq 'Allow' -and
         $_.properties.sourceAddressPrefix -eq '*'
     }
-
     $Null -eq $rules;
 }
 
 # Synopsis: Avoid blocking all inbound network traffic
 Rule 'Azure.VirtualNetwork.NSGDenyAllInbound' -Type 'Microsoft.Network/networkSecurityGroups' {
-    $denyRules = @(GetOrderedNSGRules | Where-Object {
-        $_.properties.direction -eq 'Inbound' -and
+    $inboundRules = @(GetOrderedNSGRules -Direction Inbound);
+    $denyRules = @($inboundRules | Where-Object {
         $_.properties.access -eq 'Deny' -and
         $_.properties.sourceAddressPrefix -eq '*'
     })
-    $inboundRules = @(GetOrderedNSGRules | Where-Object {
-        $_.properties.direction -eq 'Inbound'
-    })
-
     $Null -eq $denyRules -or $denyRules.Length -eq 0 -or $denyRules[0].name -ne $inboundRules[0].name
 }
 
 # Synopsis: Lateral traversal from application servers should be blocked
 Rule 'Azure.VirtualNetwork.LateralTraversal' -Type 'Microsoft.Network/networkSecurityGroups' {
-    $rules = @($TargetObject.properties.securityRules | Where-Object {
-        $_.properties.direction -eq 'Outbound' -and
+    $outboundRules = @(GetOrderedNSGRules -Direction Outbound);
+    $rules = @($outboundRules | Where-Object {
         $_.properties.access -eq 'Deny' -and
         (
             $_.properties.destinationPortRange -eq '3389' -or
-            $_.properties.destinationPortRange -eq '22'
+            $_.properties.destinationPortRange -eq '22' -or 
+            $_.properties.destinationPortRanges -contains '3389' -or 
+            $_.properties.destinationPortRanges -contains '22'
         )
     })
-
     $Null -ne $rules -and $rules.Length -gt 0
 }
 
 # Synopsis: Network security groups should be associated to either a subnet or network interface
-Rule 'Azure.VirtualNetwork.NSGAssociated' -Type 'Microsoft.Network/networkSecurityGroups' {
+Rule 'Azure.VirtualNetwork.NSGAssociated' -Type 'Microsoft.Network/networkSecurityGroups' -If { IsExport } {
     $subnets = ($TargetObject.Properties.subnets | Measure-Object).Count;
     $interfaces = ($TargetObject.Properties.networkInterfaces | Measure-Object).Count;
 
