@@ -30,7 +30,7 @@ function global:IsExport {
     [OutputType([System.Boolean])]
     param ()
     process {
-        return $Null -ne $TargetObject.PSObject.Properties.Match('SubscriptionId');
+        return $Null -ne $TargetObject.SubscriptionId;
     }
 }
 
@@ -53,9 +53,15 @@ function global:HasPeerNetwork {
 
 # Get a sorted list of NSG rules
 function global:GetOrderedNSGRules {
-    param ()
+    param (
+        [Parameter(Mandatory = $True)]
+        [ValidateSet('Inbound', 'Outbound')]
+        [String]$Direction
+    )
     process {
-        $TargetObject.properties.securityRules | Sort-Object @{ Expression = { $_.Properties.priority }; Descending = $False }
+        $TargetObject.properties.securityRules |
+            Where-Object { $_.properties.direction -eq $Direction } |
+            Sort-Object @{ Expression = { $_.Properties.priority }; Descending = $False }
     }
 }
 

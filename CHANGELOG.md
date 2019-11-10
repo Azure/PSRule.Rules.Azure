@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Fix processing of `Azure.VirtualNetwork.NSGAssociated` for templates. [#150](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/150)
+- Fix processing of `Azure.VirtualNetwork.LateralTraversal` when `destinationPortRanges` is used. [#149](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/149)
+
 ## v0.6.0-B1911011 (pre-release)
 
 - Updated `Azure.AKS.Version` to 1.14.8. [#140](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/140)
