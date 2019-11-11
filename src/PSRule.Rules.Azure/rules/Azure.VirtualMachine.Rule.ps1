@@ -14,7 +14,7 @@ Rule 'Azure.VM.UseManagedDisks' -Type 'Microsoft.Compute/virtualMachines' -Tag @
     }
 }
 
-# Synopsis: VMs much use premium disks or use availability sets/ zones to meet SLA requirements
+# Synopsis: VMs must use premium disks or use availability sets/ zones to meet SLA requirements
 Rule 'Azure.VM.Standalone' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ severity = 'Single point of failure'; category = 'Reliability' } {
     Recommend 'Virtual machines should use availability sets or only premium disks'
 

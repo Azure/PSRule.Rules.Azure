@@ -42,7 +42,7 @@ RuleName | Description | Category
 [Azure.Subscription.SecurityCenterProvisioning](Azure.Subscription.SecurityCenterProvisioning.md) | Enable auto-provisioning on VMs to improve Security Center insights. | Security operations
 [Azure.Subscription.UseRGDelegation](Azure.Subscription.UseRGDelegation.md) | Use RBAC assignments on resource groups instead of individual resources. | Security operations
 [Azure.VM.UseManagedDisks](Azure.VM.UseManagedDisks.md) | Virtual machines should use managed disks. | Reliability
-[Azure.VM.Standalone](Azure.VM.Standalone.md) | VMs much use premium disks or use availability sets/ zones to meet SLA requirements. | Reliability
+[Azure.VM.Standalone](Azure.VM.Standalone.md) | VMs must use premium disks or use availability sets/ zones to meet SLA requirements. | Reliability
 [Azure.VM.PromoSku](Azure.VM.PromoSku.md) | Virtual machines (VMs) should not use expired promotional SKU. | Cost management
 [Azure.VM.BasicSku](Azure.VM.BasicSku.md) | Virtual machines (VMs) should not use Basic sizes. | Performance
 [Azure.VM.DiskCaching](Azure.VM.DiskCaching.md) | Check disk caching is configured correctly for the workload. | Performance
