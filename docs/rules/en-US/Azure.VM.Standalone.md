@@ -8,12 +8,12 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 
 ## SYNOPSIS
 
-VMs much use premium disks or use availability sets/ zones to meet SLA requirements.
+VMs must use premium disks or use availability sets/ zones to meet SLA requirements.
 
 ## DESCRIPTION
 
-VMs much use premium disks or use availability sets/ zones to meet SLA requirements.
+VMs must use premium disks or use availability sets/ zones to meet SLA requirements.
 
 ## RECOMMENDATION
 
-VMs much use premium disks or use availability sets/ zones to meet SLA requirements.
+VMs must use premium disks or use availability sets/ zones to meet SLA requirements.
