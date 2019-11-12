@@ -17,8 +17,6 @@ namespace PSRule.Rules.Azure.Data.Template
         /// The current character position in the expression string. Call Next() to change the position.
         /// </summary>
         private int _Position;
-        private int _Line;
-        private int _Column;
         private char _Current;
         private char _Previous;
         private int _EscapeLength;
@@ -47,17 +45,12 @@ namespace PSRule.Rules.Azure.Data.Template
             _Source = expression;
             _Length = _Source.Length;
             _Position = 0;
-            _Line = 0;
-            _Column = 0;
             _EscapeLength = 0;
 
             if (_Length < 0 || _Length > MaxLength)
                 throw new ArgumentOutOfRangeException(nameof(expression));
 
             UpdateCurrent();
-
-            if (_Source.Length > 0)
-                _Line = 1;
         }
 
         #region Properties
@@ -67,32 +60,12 @@ namespace PSRule.Rules.Azure.Data.Template
             get { return _Position >= _Length; }
         }
 
-        public bool IsStartOfLine
-        {
-            get { return _Column == 0; }
-        }
-
         /// <summary>
         /// The character at the current position in the stream.
         /// </summary>
         public char Current
         {
             get { return _Current; }
-        }
-
-        public char Previous
-        {
-            get { return _Previous; }
-        }
-
-        public int Line
-        {
-            get { return _Line; }
-        }
-
-        public int Column
-        {
-            get { return _Column; }
         }
 
 #if DEBUG
@@ -110,11 +83,6 @@ namespace PSRule.Rules.Azure.Data.Template
         public int Position
         {
             get { return _Position; }
-        }
-
-        private int Remaining
-        {
-            get { return _Length - Position; }
         }
 
         public bool IsEscaped

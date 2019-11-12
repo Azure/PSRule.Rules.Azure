@@ -24,6 +24,13 @@
             "metadata": {
                 "description": ""
             }
+        },
+        "delegate": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": ""
+            }
         }
     },
     "variables": {
@@ -55,7 +62,11 @@
                 }
             ]
         },
-        "allSubnets": "[union(variables('gatewaySubnet'), variables('definedSubnets').subnets)]"
+        "allSubnets": "[union(variables('gatewaySubnet'), variables('definedSubnets').subnets)]",
+        "networkOperatorRoleId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7')]",
+        "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
+        "clusterSubnetId": "[concat(variables('vnetId'), '/subnets/',parameters('clusterSubnet'))]",
+        "aciSubnetId": "[concat(variables('vnetId'), '/subnets/',parameters('aciSubnet'))]"
     },
     "resources": [
         {
@@ -73,6 +84,69 @@
                     "addressPrefixes": "[parameters('addressPrefix')]"
                 },
                 "subnets": "[variables('allSubnets')]"
+            }
+        },
+        {
+            "condition": "[parameters('delegate')]",
+            "comments": "VNET delegation for AKS cluster",
+            "apiVersion": "2017-05-10",
+            "type": "Microsoft.Resources/deployments",
+            "name": "vnetDelegation",
+            "resourceGroup": "[resourceGroup().name]",
+            "subscriptionId": "[subscription().subscriptionId]",
+            "properties": {
+                "mode": "Incremental",
+                "parameters": {
+                },
+                "template": {
+                    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                    },
+                    "resources": [
+                        {
+                            "apiVersion": "2019-04-01",
+                            "name": "[concat(parameters('vnetName'), '/', parameters('aciSubnet'))]",
+                            "type": "Microsoft.Network/virtualNetworks/subnets",
+                            "properties": {
+                                "addressPrefix": "[reference(variables('aciSubnetId'), '2019-07-01').addressPrefix]",
+                                "serviceEndpoints": [
+                                ],
+                                "delegations": [
+                                    {
+                                        "name": "aciDelegation",
+                                        "properties": {
+                                            "serviceName": "Microsoft.ContainerInstance/containerGroups",
+                                            "actions": [
+                                                "Microsoft.Network/virtualNetworks/subnets/action"
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "Microsoft.Network/virtualNetworks/subnets/providers/roleAssignments",
+                            "apiVersion": "2017-05-01",
+                            "name": "[concat(parameters('vnetName'), '/', parameters('clusterSubnet'), '/Microsoft.Authorization/', guid(parameters('clusterSubnet')))]",
+                            "properties": {
+                                "roleDefinitionId": "[variables('networkOperatorRoleId')]",
+                                "principalId": "[parameters('clusterObjectId')]",
+                                "scope": "[variables('clusterSubnetId')]"
+                            }
+                        },
+                        {
+                            "type": "Microsoft.Network/virtualNetworks/subnets/providers/roleAssignments",
+                            "apiVersion": "2017-05-01",
+                            "name": "[concat(parameters('vnetName'), '/', parameters('aciSubnet'), '/Microsoft.Authorization/', guid(parameters('aciSubnet')))]",
+                            "properties": {
+                                "roleDefinitionId": "[variables('networkOperatorRoleId')]",
+                                "principalId": "[parameters('clusterObjectId')]",
+                                "scope": "[variables('aciSubnetId')]"
+                            }
+                        }
+                    ]
+                }
             }
         },
         {

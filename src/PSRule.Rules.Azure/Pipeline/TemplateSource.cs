@@ -2,8 +2,8 @@
 {
     public sealed class TemplateSource
     {
-        public readonly string TemplateFile;
-        public readonly string[] ParametersFile;
+        internal readonly string TemplateFile;
+        internal readonly string[] ParametersFile;
 
         public TemplateSource(string templateFile, string[] parametersFile)
         {

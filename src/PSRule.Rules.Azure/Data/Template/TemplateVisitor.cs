@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Security.Principal;
 using static PSRule.Rules.Azure.Data.Template.DeploymentTemplate;
 
 namespace PSRule.Rules.Azure.Data.Template
@@ -13,16 +15,11 @@ namespace PSRule.Rules.Azure.Data.Template
     /// </summary>
     internal abstract class TemplateVisitor
     {
-        private readonly Subscription _Subscription;
-        private readonly ResourceGroup _ResourceGroup;
-
-        private TemplateContext _Context;
-
-        internal TemplateVisitor(Subscription subscription, ResourceGroup resourceGroup)
-        {
-            _Subscription = subscription;
-            _ResourceGroup = resourceGroup;
-        }
+        private const string RESOURCETYPE_DEPLOYMENT = "Microsoft.Resources/deployments";
+        private const string PROPERTY_TYPE = "type";
+        private const string PROPERTY_PROPERTIES = "properties";
+        private const string PROPERTY_TEMPLATE = "template";
+        private const string PROPERTY_COPY = "copy";
 
         public sealed class TemplateContext
         {
@@ -148,28 +145,28 @@ namespace PSRule.Rules.Azure.Data.Template
             }
         }
 
-        public PSObject[] Visit(DeploymentTemplate template, DeploymentParameters parameters)
+        public void Visit(TemplateContext context, JObject template)
         {
-            // Load context
-            _Context = new TemplateContext(_Subscription, _ResourceGroup);
-            _Context.Load(parameters);
+            Template(context, template);
+        }
 
+        protected virtual void Template(TemplateContext context, JObject template)
+        {
             // Process template sections
-            Schema(_Context, template.Schema);
-            ContentVersion(_Context, template.ContentVersion);
-            Parameters(_Context, template.Parameters);
-            Variables(_Context, template.Variables);
-            Resources(_Context, template.Resources);
+            // Schema(_Context, template.Schema);
+            // ContentVersion(_Context, template.ContentVersion);
 
-            // Return results
-            var results = new List<PSObject>();
-            var serializer = new JsonSerializer();
-            serializer.Converters.Add(new PSObjectJsonConverter());
-            foreach (var resource in _Context.Resources)
-            {
-                results.Add(resource.ToObject<PSObject>(serializer));
-            }
-            return results.ToArray();
+            if (TryObjectProperty(template, "parameters", out JObject parameters))
+                Parameters(context, parameters);
+
+            if (TryObjectProperty(template, "variables", out JObject variables))
+                Variables(context, variables);
+
+            if (TryArrayProperty(template, "resources", out JArray resources))
+                Resources(context, resources.Values<JObject>());
+
+            if (TryObjectProperty(template, "outputs", out JObject outputs))
+                Outputs(context, outputs);
         }
 
         protected virtual void Schema(TemplateContext context, string schema)
@@ -182,25 +179,41 @@ namespace PSRule.Rules.Azure.Data.Template
 
         }
 
-        protected virtual void Parameters(TemplateContext context, Dictionary<string, TemplateParameter> parameters)
+        #region Parameters
+
+        protected virtual void Parameters(TemplateContext context, JObject parameters)
         {
             if (parameters == null || parameters.Count == 0)
                 return;
 
             foreach (var parameter in parameters)
-            {
-                Parameter(context, parameter.Key, parameter.Value);
-            }
+                Parameter(context, parameter.Key, parameter.Value as JObject);
         }
 
-        protected virtual void Parameter(TemplateContext context, string parameterName, TemplateParameter parameter)
+        protected virtual void Parameter(TemplateContext context, string parameterName, JObject parameter)
         {
-            if (parameter.DefaultValue == null)
+            if (context.Parameters.ContainsKey(parameterName) || parameter == null || !parameter.ContainsKey("defaultValue"))
                 return;
 
-            if (!context.Parameters.ContainsKey(parameterName))
-                context.Parameters.Add(parameterName, ExpandProperty<object>(context, parameter.DefaultValue));
+            var type = parameter["type"].ToObject<ParameterType>();
+            var defaultValue = parameter["defaultValue"];
+            if (type == ParameterType.Bool)
+                context.Parameters.Add(parameterName, ExpandProperty<bool>(context, defaultValue));
+            else if (type == ParameterType.Int)
+                context.Parameters.Add(parameterName, ExpandProperty<int>(context, defaultValue));
+            else if (type == ParameterType.String)
+                context.Parameters.Add(parameterName, ExpandProperty<string>(context, defaultValue));
+            else if (type == ParameterType.Array)
+                context.Parameters.Add(parameterName, ExpandProperty<JArray>(context, defaultValue));
+            else if (type == ParameterType.Object)
+                context.Parameters.Add(parameterName, ExpandProperty<JObject>(context, defaultValue));
+            else
+                context.Parameters.Add(parameterName, ExpandPropertyToken(context, defaultValue));
         }
+
+        #endregion Parameters
+
+        #region Functions
 
         protected virtual void Functions(TemplateContext context)
         {
@@ -212,15 +225,22 @@ namespace PSRule.Rules.Azure.Data.Template
 
         }
 
+        #endregion Functions
+
+        #region Resources
+
         protected virtual void Resources(TemplateContext context, IEnumerable<JObject> resources)
         {
+            if (resources == null)
+                return;
+
             foreach (var resource in resources)
             {
-                Resource(context, resource);
+                ResourceOuter(context, resource);
             }
         }
 
-        protected virtual void Resource(TemplateContext context, JObject resource)
+        private void ResourceOuter(TemplateContext context, JObject resource)
         {
             var condition = !resource.ContainsKey("condition") || ExpandProperty<bool>(context, resource, "condition");
             if (!condition)
@@ -230,14 +250,18 @@ namespace PSRule.Rules.Azure.Data.Template
             while (copyIndex.Next())
             {
                 var instance = copyIndex.Input.DeepClone() as JObject;
-                ResourceInstance(context, instance);
+                Resource(context, instance);
             }
             if (copyIndex.IsCopy())
                 context.CopyIndex.Pop();
         }
 
-        protected virtual void ResourceInstance(TemplateContext context, JObject resource)
+        protected virtual void Resource(TemplateContext context, JObject resource)
         {
+            // Get resource type
+            if (TryDeploymentResource(context, resource))
+                return;
+
             // Expand resource properties
             foreach (var property in resource.Properties())
                 ResolveProperty(context, resource, property.Name);
@@ -245,9 +269,30 @@ namespace PSRule.Rules.Azure.Data.Template
             Emit(context, resource);
         }
 
+        /// <summary>
+        /// Handle a nested deployment resource.
+        /// </summary>
+        private bool TryDeploymentResource(TemplateContext context, JObject resource)
+        {
+            var resourceType = ExpandProperty<string>(context, resource, PROPERTY_TYPE);
+            if (!string.Equals(resourceType, RESOURCETYPE_DEPLOYMENT, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            if (!TryObjectProperty(resource, PROPERTY_PROPERTIES, out JObject properties))
+                return false;
+
+            if (!TryObjectProperty(properties, PROPERTY_TEMPLATE, out JObject template))
+                return false;
+
+            Template(context, template);
+            return true;
+        }
+
+        #endregion Resources
+
         #region Variables
 
-        protected virtual void Variables(TemplateContext context, Dictionary<string, JToken> variables)
+        protected virtual void Variables(TemplateContext context, JObject variables)
         {
             if (variables == null || variables.Count == 0)
                 return;
@@ -291,16 +336,6 @@ namespace PSRule.Rules.Azure.Data.Template
             context.Variables.Add(variableName, VariableInstance(context, value));
         }
 
-        private bool TryArrayProperty(JObject obj, string propertyName, out JArray propertyValue)
-        {
-            propertyValue = null;
-            if (!obj.TryGetValue(propertyName, out JToken value) || value.Type != JTokenType.Array)
-                return false;
-
-            propertyValue = value.Value<JArray>();
-            return true;
-        }
-
         protected virtual JToken VariableInstance(TemplateContext context, JToken value)
         {
             if (value.Type == JTokenType.Object)
@@ -332,20 +367,25 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #endregion Variables
 
-        protected virtual void Outputs()
+        #region Outputs
+
+        protected virtual void Outputs(TemplateContext context, JObject outputs)
         {
 
         }
+
+        #endregion Outputs
 
         protected StringExpression<T> Expression<T>(TemplateContext context, string s)
         {
             var builder = new ExpressionBuilder();
-            return () => EvaluateExpression<T>(builder.Build(s));
+            return () => EvaluateExpression<T>(context, builder.Build(s));
         }
 
-        private T EvaluateExpression<T>(ExpressionFnOuter fn)
+        private T EvaluateExpression<T>(TemplateContext context, ExpressionFnOuter fn)
         {
-            return (T)fn(_Context);
+            var result = fn(context);
+            return result is JToken token && !typeof(JToken).IsAssignableFrom(typeof(T)) ? token.Value<T>() : (T)result;
         }
 
         private T ExpandProperty<T>(TemplateContext context, object value)
@@ -377,14 +417,6 @@ namespace PSRule.Rules.Azure.Data.Template
 
             var propertyValue = value[propertyName].Value<JValue>().Value;
             return (propertyValue is string svalue) ? ExpandProperty<T>(context, propertyValue) : (T)propertyValue;
-        }
-
-        private void ResolvePropertyExpression(TemplateContext context, JObject value, string propertyName)
-        {
-            if (!value.ContainsKey(propertyName))
-                return;
-            
-            value[propertyName] = ExpandProperty<string>(context, value, propertyName);
         }
 
         private void ResolveProperty(TemplateContext context, JObject obj, string propertyName)
@@ -424,7 +456,7 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             if (token is JObject jObject)
             {
-                return ExpandObject2(context, jObject);
+                return ExpandObject(context, jObject);
             }
             else if (token is JArray jArray)
             {
@@ -443,14 +475,14 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             var result = new TemplateContext.CopyIndexState();
             result.Input = value;
-            if (value.ContainsKey("copy"))
+            if (value.ContainsKey(PROPERTY_COPY))
             {
-                var copyObject = value["copy"].Value<JObject>();
+                var copyObject = value[PROPERTY_COPY].Value<JObject>();
                 result.Name = ExpandProperty<string>(context, copyObject, "name");
                 result.Input = copyObject["input"];
                 result.Count = ExpandProperty<int>(context, copyObject, "count");
                 context.CopyIndex.Push(result);
-                value.Remove("copy");
+                value.Remove(PROPERTY_COPY);
             }
             return result;
         }
@@ -462,18 +494,18 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             var result = new TemplateContext.CopyIndexState();
             result.Input = value;
-            if (value.ContainsKey("copy"))
+            if (value.ContainsKey(PROPERTY_COPY))
             {
-                var copyObject = value["copy"].Value<JObject>();
+                var copyObject = value[PROPERTY_COPY].Value<JObject>();
                 result.Name = ExpandProperty<string>(context, copyObject, "name");
                 result.Count = ExpandProperty<int>(context, copyObject, "count");
                 context.CopyIndex.Push(result);
-                value.Remove("copy");
+                value.Remove(PROPERTY_COPY);
             }
             return result;
         }
 
-        private JToken ExpandObject2(TemplateContext context, JObject obj)
+        private JToken ExpandObject(TemplateContext context, JObject obj)
         {
             var copyIndex = GetPropertyIterator(context, obj);
             if (copyIndex.IsCopy())
@@ -513,7 +545,7 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 if (array[i] is JObject jObject)
                 {
-                    result.Add(ExpandObject2(context, jObject));
+                    result.Add(ExpandObject(context, jObject));
                 }
                 else if (array[i] is JArray jArray)
                 {
@@ -537,6 +569,9 @@ namespace PSRule.Rules.Azure.Data.Template
             return exp();
         }
 
+        /// <summary>
+        /// Check if the script uses an expression.
+        /// </summary>
         protected bool IsExpressionString(string value)
         {
             return value != null &&
@@ -555,10 +590,30 @@ namespace PSRule.Rules.Azure.Data.Template
             return IsExpressionString(value);
         }
 
+        private bool TryArrayProperty(JObject obj, string propertyName, out JArray propertyValue)
+        {
+            propertyValue = null;
+            if (!obj.TryGetValue(propertyName, out JToken value) || value.Type != JTokenType.Array)
+                return false;
+
+            propertyValue = value.Value<JArray>();
+            return true;
+        }
+
+        private bool TryObjectProperty(JObject obj, string propertyName, out JObject propertyValue)
+        {
+            propertyValue = null;
+            if (!obj.TryGetValue(propertyName, out JToken value) || value.Type != JTokenType.Object)
+                return false;
+
+            propertyValue = value as JObject;
+            return true;
+        }
+
         /// <summary>
         /// Emit a resource object.
         /// </summary>
-        protected void Emit(TemplateContext context, JObject resource)
+        protected virtual void Emit(TemplateContext context, JObject resource)
         {
             context.Resources.Add(resource);
         }
@@ -569,10 +624,7 @@ namespace PSRule.Rules.Azure.Data.Template
     /// </summary>
     internal sealed class RuleDataExportVisitor : TemplateVisitor
     {
-        internal RuleDataExportVisitor(Subscription subscription, ResourceGroup resourceGroup)
-            : base (subscription, resourceGroup) { }
-
-        protected override void ResourceInstance(TemplateContext context, JObject resource)
+        protected override void Resource(TemplateContext context, JObject resource)
         {
             // Remove resource properties that not required in rule data
             if (resource.ContainsKey("apiVersion"))
@@ -587,7 +639,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (resource.ContainsKey("dependsOn"))
                 resource.Remove("dependsOn");
 
-            base.ResourceInstance(context, resource);
+            base.Resource(context, resource);
         }
     }
 }

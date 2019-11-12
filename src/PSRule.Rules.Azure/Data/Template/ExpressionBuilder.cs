@@ -25,7 +25,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return Lexer(Parse(s));
         }
 
-        private TokenStream Parse(string s)
+        private static TokenStream Parse(string s)
         {
             return ExpressionParser.Parse(s);
         }

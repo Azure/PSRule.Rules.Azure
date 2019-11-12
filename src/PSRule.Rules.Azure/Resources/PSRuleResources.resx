@@ -126,6 +126,9 @@
   <data name="FunctionNotFound" xml:space="preserve">
     <value>The function "{0}" was not found.</value>
   </data>
+  <data name="MismatchingResourceSegments" xml:space="preserve">
+    <value>The number of resource segments needs to match the provided resource type.</value>
+  </data>
   <data name="ReadJsonFailed" xml:space="preserve">
     <value>Read JSON failed.</value>
   </data>

@@ -192,7 +192,7 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
             $Null = Export-AzTemplateRuleData @exportParams;
             $result = Get-Content -Path $outputFile -Raw | ConvertFrom-Json;
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 5;
+            $result.Length | Should -Be 8;
             $result[0].name | Should -Be 'vnet-001';
             $result[0].properties.subnets.Length | Should -Be 3;
             $result[0].properties.subnets[0].name | Should -Be 'GatewaySubnet';
@@ -223,7 +223,7 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
             $Null = Export-AzTemplateRuleData @exportParams;
             $result = Get-Content -Path $outputFile -Raw | ConvertFrom-Json;
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 5;
+            $result.Length | Should -Be 8;
             $result[0].properties.subnets.Length | Should -Be 3;
             $result[0].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
             $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/routeTables/route-subnet2$';
@@ -253,7 +253,7 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
             $Null = Export-AzTemplateRuleData @exportParams;
             $result = Get-Content -Path $outputFile -Raw | ConvertFrom-Json;
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 5;
+            $result.Length | Should -Be 8;
             $result[0].properties.subnets.Length | Should -Be 3;
             $result[0].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/test-rg/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
             $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/test-rg/providers/Microsoft\.Network/routeTables/route-subnet2$';

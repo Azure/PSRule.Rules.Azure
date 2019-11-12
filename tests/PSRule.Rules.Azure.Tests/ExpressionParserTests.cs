@@ -1,30 +1,11 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using PSRule.Rules.Azure.Data.Template;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using PSRule.Rules.Azure.Data.Template;
 using Xunit;
 using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure
 {
-    public sealed class TemplateResolverTests
+    public sealed class ExpressionParserTests
     {
-        [Fact]
-        public void ResolveTemplateTest()
-        {
-            var resources = ProcessTemplate(GetSourcePath("Resources.Template.json"), GetSourcePath("Resources.Parameters.json"));
-            Assert.Equal(5, resources.Length);
-
-            var actual1 = resources[0];
-            Assert.Equal("vnet-001", actual1["name"]);
-            Assert.Equal("10.1.0.0/24", actual1["properties"]["addressSpace"]["addressPrefixes"][0]);
-            Assert.Equal(3, actual1["properties"]["subnets"].Value<JArray>().Count);
-            Assert.Equal("10.1.0.32/28", actual1["properties"]["subnets"][1]["properties"]["addressPrefix"]);
-
-        }
-
         [Fact]
         public void ParseExpression1()
         {
@@ -170,58 +151,6 @@ namespace PSRule.Rules.Azure
             var actual = fn(context);
 
             Assert.Equal("route-routeB", actual);
-        }
-
-        private static string GetSourcePath(string fileName)
-        {
-            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
-        }
-
-        private static JObject[] ProcessTemplate(string templateFile, string parametersFile)
-        {
-            var templateObject = ReadFile<DeploymentTemplate>(templateFile);
-            var parametersObject = ReadFile<DeploymentParameters>(parametersFile);
-            var visitor = new TestTemplateVisitor();
-            visitor.Visit(templateObject, parametersObject);
-            return visitor.TestResources.ToArray();
-        }
-
-        private static T ReadFile<T>(string path)
-        {
-            if (string.IsNullOrEmpty(path) || !File.Exists(path))
-                return default(T);
-
-            return JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
-        }
-    }
-
-    internal sealed class TestSubnet
-    {
-        internal TestSubnet(string n, string[] r)
-        {
-            name = n;
-            route = r;
-        }
-
-        public string name { get; private set; }
-
-        public string[] route { get; private set; }
-    }
-
-    internal sealed class TestTemplateVisitor : TemplateVisitor
-    {
-        internal TestTemplateVisitor()
-            : base(null, null)
-        {
-            TestResources = new List<JObject>();
-        }
-
-        public List<JObject> TestResources { get; }
-
-        protected override void ResourceInstance(TemplateContext context, JObject resource)
-        {
-            base.ResourceInstance(context, resource);
-            TestResources.Add(resource);
         }
     }
 }

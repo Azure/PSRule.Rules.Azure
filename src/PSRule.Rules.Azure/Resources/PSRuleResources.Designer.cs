@@ -88,6 +88,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The number of resource segments needs to match the provided resource type..
+        /// </summary>
+        internal static string MismatchingResourceSegments {
+            get {
+                return ResourceManager.GetString("MismatchingResourceSegments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Read JSON failed..
         /// </summary>
         internal static string ReadJsonFailed {

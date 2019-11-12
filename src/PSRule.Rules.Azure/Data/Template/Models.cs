@@ -1,10 +1,29 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
+    [JsonConverter(typeof(StringEnumConverter))]
+    internal enum ParameterType
+    {
+        Array,
+
+        Bool,
+
+        Int,
+
+        Object,
+
+        String,
+
+        SecureString,
+
+        SecureObject
+    }
+
     public sealed class Subscription
     {
         private const string DEFAULT_ID = "/subscriptions/{{Subscription.SubscriptionId}}";

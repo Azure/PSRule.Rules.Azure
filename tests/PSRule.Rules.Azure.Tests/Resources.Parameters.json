@@ -55,6 +55,15 @@
                     "securityRules": []
                 }
             ]
+        },
+        "aciSubnet": {
+            "value": "subnet2"
+        },
+        "clusterSubnet": {
+            "value": "subnet1"
+        },
+        "clusterObjectId": {
+            "value": "00000000-0000-0000-0000-000000000000"
         }
     }
 }
