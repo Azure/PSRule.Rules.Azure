@@ -2,8 +2,10 @@
 
 ## Unreleased
 
-- Fix processing of `Azure.VirtualNetwork.NSGAssociated` for templates. [#150](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/150)
-- Fix processing of `Azure.VirtualNetwork.LateralTraversal` when `destinationPortRanges` is used. [#149](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/149)
+## v0.6.0-B1911020 (pre-release)
+
+- Fixed processing of `Azure.VirtualNetwork.NSGAssociated` for templates. [#150](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/150)
+- Fixed processing of `Azure.VirtualNetwork.LateralTraversal` when `destinationPortRanges` is used. [#149](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/149)
 - Improved template support of `Export-AzTemplateRuleData` cmdlet. [#145](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/145)
   - Added support for nested templates.
   - Added support for `array`, `createArray`, `coalesce`, `intersection`, `dataUri` and `dataUriToString` functions.
