@@ -34,14 +34,13 @@ This function does not check template files for strict compliance with Azure sch
 
 Currently the following limitations also apply:
 
-- Deployments are not expanded. Deployment is returned instead of resources in deployment.
+- Nested templates are expanded, external templates are not.
+  - Deployment resources that link to an external template are returned as a resource.
 - The following functions are not supported:
-  - Array: `array`, `coalesce`, `createArray`, `intersection`
   - Deployment: `deployment`
   - Resource: `providers`
-  - String: `dataUri`, `dataUriToString`
 - References to Key Vault secrets are not expanded. A placeholder value is used instead.
-- Multi-line strings are not supported.
+- Multi-line strings and user-defined functions are not supported.
 
 ## EXAMPLES
 

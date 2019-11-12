@@ -22,6 +22,45 @@ namespace PSRule.Rules.Azure
 
         [Fact]
         [Trait(TRAIT, TRAIT_ARRAY)]
+        public void Array()
+        {
+            var context = GetContext();
+
+            var actual1 = Functions.Array(context, new object[] { 1 }) as JArray;
+            var actual2 = Functions.Array(context, new object[] { "efgh" }) as JArray;
+            var actual3 = Functions.Array(context, new object[] { JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }") }) as JArray;
+            Assert.Equal(1, actual1[0]);
+            Assert.Equal("efgh", actual2[0]);
+            Assert.Equal("b", actual3[0]["a"]);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Array(context, null));
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Array(context, new object[] { }));
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Array(context, new object[] { "abcd", "efgh" }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_ARRAY)]
+        public void Coalesce()
+        {
+            var context = GetContext();
+
+            var actual1 = Functions.Coalesce(context, new object[] { null, null, 1, 2, 3 });
+            var actual2 = Functions.Coalesce(context, new object[] { null, null, "a", "b", "c" });
+            var actual3 = Functions.Coalesce(context, new object[] { null, JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }") }) as JToken;
+            var actual4 = Functions.Coalesce(context, new object[] { null });
+            var actual5 = Functions.Coalesce(context, new object[] { null, null });
+            Assert.Equal(1, actual1);
+            Assert.Equal("a", actual2);
+            Assert.Equal("b", actual3["a"]);
+            Assert.Null(actual4);
+            Assert.Null(actual5);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Coalesce(context, null));
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Coalesce(context, new object[] { }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_ARRAY)]
         public void Concat()
         {
             var context = GetContext();
@@ -50,6 +89,25 @@ namespace PSRule.Rules.Azure
             // Object
 
             // Array
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_ARRAY)]
+        public void CreateArray()
+        {
+            var context = GetContext();
+
+            var actual1 = Functions.CreateArray(context, new object[] { 1, 2, 3 }) as JArray;
+            var actual2 = Functions.CreateArray(context, new object[] { "efgh" }) as JArray;
+            var actual3 = Functions.CreateArray(context, new object[] { JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }"), JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }") }) as JArray;
+            Assert.Equal(3, actual1.Count);
+            Assert.Equal(1, actual1[0]);
+            Assert.Equal("efgh", actual2[0]);
+            Assert.Equal("b", actual3[0]["a"]);
+            Assert.Equal("h", actual3[1]["g"]);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.CreateArray(context, null));
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.CreateArray(context, new object[] { }));
         }
 
         [Fact]
@@ -90,6 +148,32 @@ namespace PSRule.Rules.Azure
             // Array
             var actual2 = Functions.First(context, new object[] { new string[] { "one", "two", "three" } }) as string;
             Assert.Equal("one", actual2);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.First(context, null));
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.First(context, new object[] { }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_ARRAY)]
+        public void Intersection()
+        {
+            var context = GetContext();
+
+            // String
+            var actual1 = Functions.Intersection(context, new object[] { new JArray("one", "two", "three"), new JArray("two", "three") }) as JArray;
+            Assert.Equal(2, actual1.Count);
+            Assert.Equal("two", actual1[0]);
+            Assert.Equal("three", actual1[1]);
+
+            // Array
+            var actual2 = Functions.Intersection(context, new object[] { JObject.Parse("{ \"one\": \"a\", \"two\": \"b\", \"three\": \"c\" }"), JObject.Parse("{ \"one\": \"a\", \"two\": \"z\", \"three\": \"c\" }") }) as JObject;
+            Assert.Equal(2, actual2.Count);
+            Assert.Equal("a", actual2["one"]);
+            Assert.Equal("c", actual2["three"]);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Intersection(context, null));
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Intersection(context, new object[] { }));
+            Assert.Throws<ArgumentException>(() => Functions.Intersection(context, new object[] { "one", "two", "three" }));
         }
 
         [Fact]
@@ -100,6 +184,9 @@ namespace PSRule.Rules.Azure
 
             var actual1 = Functions.Json(context, new object[] { "{ \"a\": \"b\" }" }) as JObject;
             Assert.Equal("b", actual1["a"]);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Json(context, null));
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Json(context, new object[] { }));
         }
 
         [Fact]
@@ -312,7 +399,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.ExtensionResourceId(context, null));
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.ExtensionResourceId(context, new object[] { "Extension.Test/type", "a" }));
-            Assert.Throws<ArgumentException>(() => Functions.ExtensionResourceId(context, new object[] { parentId, "Extension.Test/type", "a", "b" }));
+            Assert.Throws<TemplateFunctionException>(() => Functions.ExtensionResourceId(context, new object[] { parentId, "Extension.Test/type", "a", "b" }));
             Assert.Throws<ArgumentException>(() => Functions.ExtensionResourceId(context, new object[] { parentId, "Extension.Test/type", 1 }));
         }
 
@@ -373,7 +460,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.ResourceId(context, null));
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.ResourceId(context, new object[] { "Unit.Test/type" }));
-            Assert.Throws<ArgumentException>(() => Functions.ResourceId(context, new object[] { "Unit.Test/type", "a", "b" }));
+            Assert.Throws<TemplateFunctionException>(() => Functions.ResourceId(context, new object[] { "Unit.Test/type", "a", "b" }));
             Assert.Throws<ArgumentException>(() => Functions.ResourceId(context, new object[] { "Unit.Test/type", 1 }));
         }
 
@@ -404,7 +491,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.SubscriptionResourceId(context, null));
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.SubscriptionResourceId(context, new object[] { "Unit.Test/type" }));
-            Assert.Throws<ArgumentException>(() => Functions.SubscriptionResourceId(context, new object[] { "Unit.Test/type", "a", "b" }));
+            Assert.Throws<TemplateFunctionException>(() => Functions.SubscriptionResourceId(context, new object[] { "Unit.Test/type", "a", "b" }));
             Assert.Throws<ArgumentException>(() => Functions.SubscriptionResourceId(context, new object[] { "Unit.Test/type", 1 }));
         }
 
@@ -423,8 +510,8 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.TenantResourceId(context, null));
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.TenantResourceId(context, new object[] { "Unit.Test/type" }));
-            Assert.Throws<ArgumentException>(() => Functions.TenantResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "Unit.Test/type" }));
-            Assert.Throws<ArgumentException>(() => Functions.TenantResourceId(context, new object[] { "Unit.Test/type", "a", "b" }));
+            Assert.Throws<TemplateFunctionException>(() => Functions.TenantResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "Unit.Test/type" }));
+            Assert.Throws<TemplateFunctionException>(() => Functions.TenantResourceId(context, new object[] { "Unit.Test/type", "a", "b" }));
             Assert.Throws<ArgumentException>(() => Functions.TenantResourceId(context, new object[] { "Unit.Test/type", 1 }));
         }
 
@@ -836,6 +923,39 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Base64ToString(context, null));
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Base64ToString(context, new object[] { }));
             Assert.Throws<ArgumentException>(() => Functions.Base64ToString(context, new object[] { 1 }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_STRING)]
+        public void DataUri()
+        {
+            var context = GetContext();
+
+            var actual1 = Functions.DataUri(context, new object[] { "Hello" }) as string;
+            Assert.Equal("data:text/plain;charset=utf8;base64,SGVsbG8=", actual1);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.DataUri(context, null));
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.DataUri(context, new object[] { }));
+            Assert.Throws<ArgumentException>(() => Functions.DataUri(context, new object[] { 1 }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_STRING)]
+        public void DataUriToString()
+        {
+            var context = GetContext();
+
+            var actual1 = Functions.DataUriToString(context, new object[] { "data:;base64,SGVsbG8sIFdvcmxkIQ==" }) as string;
+            var actual2 = Functions.DataUriToString(context, new object[] { "data:,SGVsbG8sIFdvcmxkIQ==" }) as string;
+            var actual3 = Functions.DataUriToString(context, new object[] { "data:text/plain;charset=utf8;base64,SGVsbG8=" }) as string;
+            Assert.Equal("Hello, World!", actual1);
+            Assert.Equal("SGVsbG8sIFdvcmxkIQ==", actual2);
+            Assert.Equal("Hello", actual3);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.DataUriToString(context, null));
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.DataUriToString(context, new object[] { }));
+            Assert.Throws<ArgumentException>(() => Functions.DataUriToString(context, new object[] { 1 }));
+            Assert.Throws<ArgumentException>(() => Functions.DataUriToString(context, new object[] { "SGVsbG8sIFdvcmxkIQ==" }));
         }
 
         [Fact]

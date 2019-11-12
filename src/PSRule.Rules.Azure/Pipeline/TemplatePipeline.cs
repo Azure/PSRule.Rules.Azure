@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using System.Text;
@@ -113,13 +115,27 @@ namespace PSRule.Rules.Azure.Pipeline
 
         internal PSObject[] ProcessTemplate(string templateFile, string parametersFile)
         {
-            var templateObject = ReadFile<DeploymentTemplate>(PSRuleOption.GetRootedPath(templateFile));
+            var templateObject = ReadFile<JObject>(PSRuleOption.GetRootedPath(templateFile));
             if (templateObject == null)
                 throw new FileNotFoundException();
 
             var parametersObject = ReadFile<DeploymentParameters>(PSRuleOption.GetRootedPath(parametersFile));
-            var visitor = new RuleDataExportVisitor(_Subscription, _ResourceGroup);
-            return visitor.Visit(templateObject, parametersObject);
+            var visitor = new RuleDataExportVisitor();
+
+            // Load context
+            var context = new TemplateVisitor.TemplateContext(_Subscription, _ResourceGroup);
+            context.Load(parametersObject);
+            visitor.Visit(context, templateObject);
+
+            // Return results
+            var results = new List<PSObject>();
+            var serializer = new JsonSerializer();
+            serializer.Converters.Add(new PSObjectJsonConverter());
+            foreach (var resource in context.Resources)
+            {
+                results.Add(resource.ToObject<PSObject>(serializer));
+            }
+            return results.ToArray();
         }
 
         private static T ReadFile<T>(string path)

@@ -1,5 +1,4 @@
-﻿using Microsoft.Azure.Management.ContainerRegistry.Fluent;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Resources;
 using System;
@@ -23,14 +22,14 @@ namespace PSRule.Rules.Azure.Data.Template
         internal readonly static IFunctionDescriptor[] Builtin = new IFunctionDescriptor[]
         {
             // Array and object
-            // array
-            // coalesce
+            new FunctionDescriptor("array", Array),
+            new FunctionDescriptor("coalesce", Coalesce),
             new FunctionDescriptor("concat", Concat),
             new FunctionDescriptor("contains", Contains),
-            // createArray
+            new FunctionDescriptor("createArray", CreateArray),
             new FunctionDescriptor("empty", Empty),
             new FunctionDescriptor("first", First),
-            // intersection
+            new FunctionDescriptor("intersection", Intersection),
             new FunctionDescriptor("json", Json),
             new FunctionDescriptor("last", Last),
             new FunctionDescriptor("length", Length),
@@ -89,8 +88,8 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("base64ToString", Base64ToString),
             // concat - also in array and object
             // contains - also in array and object
-            // dataUri
-            // dataUriToString
+            new FunctionDescriptor("dataUri", DataUri),
+            new FunctionDescriptor("dataUriToString", DataUriToString),
             // empty - also in array and object
             new FunctionDescriptor("endsWith", EndsWith),
             // first - also in array and object
@@ -121,13 +120,34 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region Array and object
 
+        internal static object Array(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            return new JArray(args[0]);
+        }
+
+        internal static object Coalesce(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) < 1)
+                throw new ArgumentOutOfRangeException();
+
+            for (var i = 0; i < args.Length; i++)
+            {
+                if (!IsNull(args[i]))
+                    return args[i];
+            }
+            return args[0];
+        }
+
         internal static object Concat(TemplateContext context, object[] args)
         {
-            if (args == null || args.Length == 0)
+            if (CountArgs(args) < 1)
                 throw new ArgumentOutOfRangeException();
 
             // String
-            if (args[0] is string || (args[0] is JToken jToken && jToken.Type == JTokenType.String))
+            if (IsString(args[0]))
             {
                 var s = new string[args.Length];
                 for (var i = 0; i < args.Length; i++)
@@ -208,6 +228,14 @@ namespace PSRule.Rules.Azure.Data.Template
             return false;
         }
 
+        internal static object CreateArray(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) < 1)
+                throw new ArgumentOutOfRangeException();
+
+            return new JArray(args);
+        }
+
         internal static object First(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
@@ -221,6 +249,45 @@ namespace PSRule.Rules.Azure.Data.Template
                 return svalue[0];
 
             return null;
+        }
+
+        internal static object Intersection(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) < 2)
+                throw new ArgumentOutOfRangeException();
+
+            // Array
+            if (args[0] is JArray jArray)
+            {
+                IEnumerable<JToken> intersection = jArray;
+                for (var i = 1; i < args.Length; i++)
+                {
+                    if (!TryJArray(args[i], out JArray value))
+                        throw new ArgumentException();
+
+                    intersection = intersection.Intersect(value);
+                }
+                return new JArray(intersection.ToArray());
+            }
+
+            // Object
+            if (args[0] is JObject jObject)
+            {
+                var intersection = jObject.DeepClone() as JObject;
+                for (var i = 1; i < args.Length; i++)
+                {
+                    if (!TryJObject(args[i], out JObject value))
+                        throw new ArgumentException();
+
+                    foreach (var prop in intersection.Properties().ToArray())
+                    {
+                        if (!(value.ContainsKey(prop.Name) && JToken.DeepEquals(value[prop.Name], prop.Value)))
+                            intersection.Remove(prop.Name);
+                    }
+                }
+                return intersection;
+            }
+            throw new ArgumentException();
         }
 
         internal static object Json(TemplateContext context, object[] args)
@@ -406,8 +473,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static object Union(TemplateContext context, object[] args)
         {
-            if (args == null || args.Length < 2)
-                throw new ArgumentException();
+            if (CountArgs(args) < 2)
+                throw new ArgumentOutOfRangeException();
 
             // Array
             if (args[0] is Array)
@@ -470,27 +537,29 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static object Parameters(TemplateContext context, object[] args)
         {
-            if (args == null || args.Length != 1 || !(args[0] is string parameterName))
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string parameterName))
                 throw new ArgumentException();
 
-            return Parameters(context, parameterName);
-        }
+            if (!context.Parameters.ContainsKey(parameterName))
+                throw new KeyNotFoundException();
 
-        private static object Parameters(TemplateContext context, string parameterName)
-        {
             return context.Parameters[parameterName];
         }
 
         internal static object Variables(TemplateContext context, object[] args)
         {
-            if (args == null || args.Length != 1 || !(args[0] is string variableName))
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string variableName))
                 throw new ArgumentException();
 
-            return Variables(context, variableName);
-        }
+            if (!context.Variables.ContainsKey(variableName))
+                throw new KeyNotFoundException();
 
-        private static object Variables(TemplateContext context, string variableName)
-        {
             return context.Variables[variableName];
         }
 
@@ -525,10 +594,10 @@ namespace PSRule.Rules.Azure.Data.Template
             var resourceType = segments[1];
             var nameDepth = resourceType.Split('/').Length - 1;
             if ((segments.Length - 2) != nameDepth)
-                throw new ArgumentException();
+                throw new TemplateFunctionException(nameof(ExtensionResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
 
             var name = new string[nameDepth];
-            Array.Copy(segments, 2, name, 0, nameDepth);
+            System.Array.Copy(segments, 2, name, 0, nameDepth);
             var nameParts = string.Join("/", name);
             return string.Concat(resourceId, "/providers/", resourceType, "/", nameParts);
         }
@@ -606,10 +675,10 @@ namespace PSRule.Rules.Azure.Data.Template
                     var nameDepth = resourceType.Split('/').Length - 1;
 
                     if ((segments.Length - 1 - i) != nameDepth)
-                        throw new ArgumentException();
+                        throw new TemplateFunctionException(nameof(ResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
 
                     string[] name = new string[nameDepth];
-                    Array.Copy(segments, i + 1, name, 0, nameDepth);
+                    System.Array.Copy(segments, i + 1, name, 0, nameDepth);
                     nameParts = string.Join("/", name);
                 }
             }
@@ -663,10 +732,10 @@ namespace PSRule.Rules.Azure.Data.Template
                     var nameDepth = resourceType.Split('/').Length - 1;
 
                     if ((segments.Length - 1 - i) != nameDepth)
-                        throw new ArgumentException();
+                        throw new TemplateFunctionException(nameof(SubscriptionResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
 
                     string[] name = new string[nameDepth];
-                    Array.Copy(segments, i + 1, name, 0, nameDepth);
+                    System.Array.Copy(segments, i + 1, name, 0, nameDepth);
                     nameParts = string.Join("/", name);
                 }
             }
@@ -704,10 +773,10 @@ namespace PSRule.Rules.Azure.Data.Template
                     var nameDepth = resourceType.Split('/').Length - 1;
 
                     if ((segments.Length - 1 - i) != nameDepth)
-                        throw new ArgumentException();
+                        throw new TemplateFunctionException(nameof(TenantResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
 
                     string[] name = new string[nameDepth];
-                    Array.Copy(segments, i + 1, name, 0, nameDepth);
+                    System.Array.Copy(segments, i + 1, name, 0, nameDepth);
                     nameParts = string.Join("/", name);
                 }
             }
@@ -1030,6 +1099,42 @@ namespace PSRule.Rules.Azure.Data.Template
             return Encoding.UTF8.GetString(Convert.FromBase64String(value));
         }
 
+        internal static object DataUri(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string value))
+                throw new ArgumentException();
+
+            return string.Concat("data:text/plain;charset=utf8;base64,", Convert.ToBase64String(Encoding.UTF8.GetBytes(value)));
+        }
+
+        internal static object DataUriToString(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw new ArgumentOutOfRangeException();
+
+            if (!TryString(args[0], out string value))
+                throw new ArgumentException();
+
+            var scheme = value.Substring(0, 5);
+            if (scheme != "data:")
+                throw new ArgumentException();
+
+            var dataStart = value.IndexOf(',');
+            var mediaType = value.Substring(5, dataStart - 5);
+            var base64 = false;
+            if (mediaType.EndsWith(";base64"))
+            {
+                base64 = true;
+                mediaType = mediaType.Remove(mediaType.Length - 7);
+            }
+            var encoding = Encoding.UTF8;
+            var data = value.Substring(dataStart + 1);
+            return base64 ? encoding.GetString(Convert.FromBase64String(data)) : data;
+        }
+
         internal static object EndsWith(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2 || !TryString(args[0], out string s1) || !TryString(args[1], out string s2))
@@ -1047,7 +1152,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw new ArgumentException();
 
             var remaining = new object[args.Length - 1];
-            Array.Copy(args, 1, remaining, 0, remaining.Length);
+            System.Array.Copy(args, 1, remaining, 0, remaining.Length);
             return string.Format(formatString, remaining);
         }
 
@@ -1058,7 +1163,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             var hash = GetUnique(args);
             var guidBytes = new byte[16];
-            Array.Copy(hash, 0, guidBytes, 0, 16);
+            System.Array.Copy(hash, 0, guidBytes, 0, 16);
             return new Guid(guidBytes).ToString();
         }
 
@@ -1321,6 +1426,16 @@ namespace PSRule.Rules.Azure.Data.Template
             return true;
         }
 
+        private static bool IsNull(object o)
+        {
+            return o == null || (o is JToken token && token.Type == JTokenType.Null);
+        }
+
+        private static bool IsString(object o)
+        {
+            return o is string || (o is JToken token && token.Type == JTokenType.String);
+        }
+
         private static bool TryString(object o, out string value)
         {
             if (o is string s)
@@ -1359,6 +1474,17 @@ namespace PSRule.Rules.Azure.Data.Template
             if (o is JArray jArray)
             {
                 value = jArray;
+                return true;
+            }
+            return false;
+        }
+
+        private static bool TryJObject(object o, out JObject value)
+        {
+            value = null;
+            if (o is JObject jObject)
+            {
+                value = jObject;
                 return true;
             }
             return false;
