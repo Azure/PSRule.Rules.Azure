@@ -74,7 +74,7 @@
             "type": "Microsoft.Network/virtualNetworks",
             "name": "[parameters('vnetName')]",
             "apiVersion": "2019-04-01",
-            "location": "[resourceGroup().location]",
+            "location": "region-A",
             "dependsOn": [
                 "routeIndex",
                 "nsgIndex"
@@ -84,6 +84,9 @@
                     "addressPrefixes": "[parameters('addressPrefix')]"
                 },
                 "subnets": "[variables('allSubnets')]"
+            },
+            "tags": {
+                "role": "Networking"
             }
         },
         {
