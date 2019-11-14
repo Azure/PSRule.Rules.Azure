@@ -186,7 +186,8 @@ function global:SupportsTags {
             ($Rule.TargetType -like 'Microsoft.Resources/*') -or
             ($Rule.TargetType -like 'Microsoft.Security/*') -or
             ($Rule.TargetType -like 'microsoft.support/*') -or
-            ($Rule.TargetType -like 'Microsoft.WorkloadMonitor/*')
+            ($Rule.TargetType -like 'Microsoft.WorkloadMonitor/*') -or
+            ($Rule.TargetType -like '*/providers/roleAssignments')
         ) {
             return $False;
         }
@@ -205,6 +206,9 @@ function global:SupportsRegions {
             ($Rule.TargetType -eq 'Microsoft.Subscription') -or
             ($Rule.TargetType -eq 'Microsoft.AzureActiveDirectory/b2cDirectories') -or
             ($Rule.TargetType -eq 'Microsoft.Network/trafficManagerProfiles') -or
+            ($Rule.TargetType -like 'Microsoft.Authorization/*') -or
+            ($Rule.TargetType -like 'Microsoft.Consumption/*') -or
+            ($Rule.TargetType -like '*/providers/roleAssignments') -or
             ($TargetObject.Location -eq 'global')
         ) {
             return $False;
