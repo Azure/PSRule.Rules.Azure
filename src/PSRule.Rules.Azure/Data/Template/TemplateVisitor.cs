@@ -1,10 +1,6 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Management.Automation;
-using System.Security.Principal;
-using static PSRule.Rules.Azure.Data.Template.DeploymentTemplate;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -572,7 +568,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// Check if the script uses an expression.
         /// </summary>
-        protected bool IsExpressionString(string value)
+        protected static bool IsExpressionString(string value)
         {
             return value != null &&
                 value.Length >= 5 && // [f()]
@@ -580,7 +576,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 value[value.Length - 1] == ']';
         }
 
-        protected bool TryExpressionString(JToken token, out string value)
+        protected static bool TryExpressionString(JToken token, out string value)
         {
             value = null;
             if (token.Type != JTokenType.String)
@@ -590,7 +586,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return IsExpressionString(value);
         }
 
-        private bool TryArrayProperty(JObject obj, string propertyName, out JArray propertyValue)
+        private static bool TryArrayProperty(JObject obj, string propertyName, out JArray propertyValue)
         {
             propertyValue = null;
             if (!obj.TryGetValue(propertyName, out JToken value) || value.Type != JTokenType.Array)
@@ -600,7 +596,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return true;
         }
 
-        private bool TryObjectProperty(JObject obj, string propertyName, out JObject propertyValue)
+        private static bool TryObjectProperty(JObject obj, string propertyName, out JObject propertyValue)
         {
             propertyValue = null;
             if (!obj.TryGetValue(propertyName, out JToken value) || value.Type != JTokenType.Object)
