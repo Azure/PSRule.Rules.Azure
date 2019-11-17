@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.6.0-B1911027 (pre-release)
+
 - Fixed processing of `Azure.Resource.UseTags` to exclude `*/providers/roleAssignments`. [#155](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/155)
   - Provider role assignments do not support tags.
 - Fixed processing of `Azure.Resource.AllowedRegions`. [#156](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/156)
