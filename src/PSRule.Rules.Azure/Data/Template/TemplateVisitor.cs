@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Resources;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -16,9 +18,13 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_PROPERTIES = "properties";
         private const string PROPERTY_TEMPLATE = "template";
         private const string PROPERTY_COPY = "copy";
+        private const string PROPERTY_NAME = "name";
 
         public sealed class TemplateContext
         {
+            private readonly Stack<JObject> _Deployment;
+            private JObject _Parameters;
+
             internal TemplateContext()
             {
                 Resources = new List<JObject>();
@@ -27,6 +33,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 CopyIndex = new CopyIndexStore();
                 ResourceGroup = new ResourceGroup();
                 Subscription = new Subscription();
+                _Deployment = new Stack<JObject>();
             }
 
             internal TemplateContext(Subscription subscription, ResourceGroup resourceGroup)
@@ -51,22 +58,32 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public Subscription Subscription { get; internal set; }
 
-            internal void Load(DeploymentParameters parameters)
+            public JObject Deployment
             {
-                foreach (var parameter in parameters.Parameters)
+                get { return _Deployment.Peek(); }
+            }
+
+            internal void Load(JObject parameters)
+            {
+                if (!parameters.ContainsKey("parameters"))
+                    return;
+
+                _Parameters = parameters["parameters"] as JObject;
+                foreach (JProperty property in _Parameters.Properties())
                 {
-                    if (parameter.Value.Reference != null)
-                    {
-                        Parameters.Add(parameter.Key, SecretPlaceholder(parameter.Value.Reference.SecretName));
-                    }
-                    else if (parameter.Value.Value != null)
-                    {
-                        Parameters.Add(parameter.Key, parameter.Value.Value);
-                    }
+                    if (!(property.Value is JObject parameter))
+                        throw new TemplateParameterException(parameterName: property.Name, message: string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateParameterInvalid, property.Name));
+
+                    if (parameter.ContainsKey("value"))
+                        Parameters.Add(property.Name, parameter["value"]);
+                    else if (parameter.ContainsKey("reference"))
+                        Parameters.Add(property.Name, SecretPlaceholder(parameter["reference"]["secretName"].Value<string>()));
+                    else
+                        throw new TemplateParameterException(parameterName: property.Name, message: string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateParameterInvalid, property.Name));
                 }
             }
 
-            private string SecretPlaceholder(string secretName)
+            private static string SecretPlaceholder(string secretName)
             {
                 return string.Concat("{{SecretReference:", secretName, "}}");
             }
@@ -139,30 +156,59 @@ namespace PSRule.Rules.Azure.Data.Template
                     return _Index.TryGetValue(name, out state);
                 }
             }
+
+            internal void EnterDeployment(string deploymentName, JObject template)
+            {
+                var properties = new JObject();
+                properties.Add("template", template);
+                properties.Add("parameters", _Parameters);
+                properties.Add("mode", "Incremental");
+                properties.Add("provisioningState", "Accepted");
+
+                var deployment = new JObject();
+                deployment.Add("name", deploymentName);
+                deployment.Add("properties", properties);
+
+                _Deployment.Push(deployment);
+            }
+
+            internal void ExitDeployment()
+            {
+                _Deployment.Pop();
+            }
         }
 
-        public void Visit(TemplateContext context, JObject template)
+        public void Visit(TemplateContext context, string deploymentName, JObject template)
         {
-            Template(context, template);
+            Template(context, deploymentName, template);
         }
 
-        protected virtual void Template(TemplateContext context, JObject template)
+        protected virtual void Template(TemplateContext context, string deploymentName, JObject template)
         {
-            // Process template sections
-            // Schema(_Context, template.Schema);
-            // ContentVersion(_Context, template.ContentVersion);
+            try
+            {
+                context.EnterDeployment(deploymentName, template);
 
-            if (TryObjectProperty(template, "parameters", out JObject parameters))
-                Parameters(context, parameters);
+                // Process template sections
+                // Schema(_Context, template.Schema);
+                // ContentVersion(_Context, template.ContentVersion);
 
-            if (TryObjectProperty(template, "variables", out JObject variables))
-                Variables(context, variables);
+                if (TryObjectProperty(template, "parameters", out JObject parameters))
+                    Parameters(context, parameters);
 
-            if (TryArrayProperty(template, "resources", out JArray resources))
-                Resources(context, resources.Values<JObject>());
+                if (TryObjectProperty(template, "variables", out JObject variables))
+                    Variables(context, variables);
 
-            if (TryObjectProperty(template, "outputs", out JObject outputs))
-                Outputs(context, outputs);
+                if (TryArrayProperty(template, "resources", out JArray resources))
+                    Resources(context, resources.Values<JObject>());
+
+                if (TryObjectProperty(template, "outputs", out JObject outputs))
+                    Outputs(context, outputs);
+            }
+            finally
+            {
+                context.ExitDeployment();
+            }
         }
 
         protected virtual void Schema(TemplateContext context, string schema)
@@ -274,13 +320,17 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!string.Equals(resourceType, RESOURCETYPE_DEPLOYMENT, StringComparison.OrdinalIgnoreCase))
                 return false;
 
+            var deploymentName = ExpandProperty<string>(context, resource, PROPERTY_NAME);
+            if (string.IsNullOrEmpty(deploymentName))
+                return false;
+
             if (!TryObjectProperty(resource, PROPERTY_PROPERTIES, out JObject properties))
                 return false;
 
             if (!TryObjectProperty(properties, PROPERTY_TEMPLATE, out JObject template))
                 return false;
 
-            Template(context, template);
+            Template(context, deploymentName, template);
             return true;
         }
 

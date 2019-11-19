@@ -28,6 +28,44 @@ namespace PSRule.Rules.Azure.Data.Template
         }
     }
 
+    [Serializable]
+    public sealed class TemplateParameterException : TemplateException
+    {
+        public TemplateParameterException()
+        {
+        }
+
+        public TemplateParameterException(string message)
+            : base(message) { }
+
+        public TemplateParameterException(string message, Exception innerException)
+            : base(message, innerException) { }
+
+        internal TemplateParameterException(string parameterName, string message)
+            : base(message)
+        {
+            ParameterName = parameterName;
+        }
+
+        internal TemplateParameterException(string parameterName, string message, Exception innerException)
+            : base(message, innerException)
+        {
+            ParameterName = parameterName;
+        }
+
+        private TemplateParameterException(SerializationInfo info, StreamingContext context)
+            : base(info, context) { }
+
+        public string ParameterName { get; }
+
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null) throw new ArgumentNullException(nameof(info));
+            base.GetObjectData(info, context);
+        }
+    }
+
     public enum FunctionErrorType
     {
         MismatchingResourceSegments

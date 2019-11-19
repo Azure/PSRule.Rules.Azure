@@ -48,7 +48,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("lessOrEquals", LessOrEquals),
 
             // Deployment
-            // deployment
+            new FunctionDescriptor("deployment", Deployment),
             new FunctionDescriptor("parameters", Parameters),
             new FunctionDescriptor("variables", Variables),
 
@@ -534,6 +534,14 @@ namespace PSRule.Rules.Azure.Data.Template
         #endregion Array and object
 
         #region Deployment
+
+        internal static object Deployment(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw new ArgumentOutOfRangeException();
+
+            return context.Deployment;
+        }
 
         internal static object Parameters(TemplateContext context, object[] args)
         {

@@ -14,9 +14,8 @@ Export resource configuration data from Azure templates.
 ## SYNTAX
 
 ```text
-Export-AzTemplateRuleData [-TemplateFile] <String> [[-ParameterFile] <String[]>]
- [[-ResourceGroupName] <String>] [[-Subscription] <String>] [[-OutputPath] <String>] [-PassThru]
- [<CommonParameters>]
+Export-AzTemplateRuleData [[-Name] <String>] -TemplateFile <String> [-ParameterFile <String[]>]
+ [-ResourceGroupName <String>] [-Subscription <String>] [-OutputPath <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,9 +35,7 @@ Currently the following limitations also apply:
 
 - Nested templates are expanded, external templates are not.
   - Deployment resources that link to an external template are returned as a resource.
-- The following functions are not supported:
-  - Deployment: `deployment`
-  - Resource: `providers`
+- The `providers` template function is not supported.
 - References to Key Vault secrets are not expanded. A placeholder value is used instead.
 - Multi-line strings and user-defined functions are not supported.
 
@@ -47,12 +44,30 @@ Currently the following limitations also apply:
 ### Example 1
 
 ```powershell
-PS C:\> Export-AzTemplateRuleData -TemplateFile .\azuredeploy.json -ParameterFile .\azuredeploy.parameters.json -OutputPath .\out-deploy.json
+PS C:\> Export-AzTemplateRuleData -Name 'hub-network' -TemplateFile .\template.json -ParameterFile .\parameters.json;
 ```
 
 Export resource configuration data based on merging a template and parameter file together.
 
 ## PARAMETERS
+
+### -Name
+
+The name of the deployment.
+
+This parameter is used by the `deployment()` function.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -TemplateFile
 
@@ -64,7 +79,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -80,7 +95,7 @@ Parameter Sets: (All)
 Aliases: TemplateParameterFile
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -90,14 +105,20 @@ Accept wildcard characters: False
 
 The path to store generated JSON files containing resources.
 
+If this parameter is not specified, output will be written to the current working path.
+The file name `resources-<name>.json` will be used when this parameter is not set or a directory is specified.
+Where `<name>` is the name of the deployment specified by `-Name`.
+
+This parameter has no affect when `-PassThru` is used.
+
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
-Default value: None
+Position: Named
+Default value: $PWD
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -132,7 +153,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -151,7 +172,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
