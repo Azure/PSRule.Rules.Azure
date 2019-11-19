@@ -25,6 +25,15 @@
                 "description": ""
             }
         },
+        "aciSubnet": {
+            "type": "string"
+        },
+        "clusterSubnet": {
+            "type": "string"
+        },
+        "clusterObjectId": {
+            "type": "string"
+        },
         "delegate": {
             "type": "bool",
             "defaultValue": true,
@@ -65,8 +74,8 @@
         "allSubnets": "[union(variables('gatewaySubnet'), variables('definedSubnets').subnets)]",
         "networkOperatorRoleId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7')]",
         "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
-        "clusterSubnetId": "[concat(variables('vnetId'), '/subnets/',parameters('clusterSubnet'))]",
-        "aciSubnetId": "[concat(variables('vnetId'), '/subnets/',parameters('aciSubnet'))]"
+        "clusterSubnetId": "[concat(variables('vnetId'), '/subnets/', parameters('clusterSubnet'))]",
+        "aciSubnetId": "[concat(variables('vnetId'), '/subnets/', parameters('aciSubnet'))]"
     },
     "resources": [
         {
@@ -117,7 +126,7 @@
                                 ],
                                 "delegations": [
                                     {
-                                        "name": "aciDelegation",
+                                        "name": "[deployment().name]",
                                         "properties": {
                                             "serviceName": "Microsoft.ContainerInstance/containerGroups",
                                             "actions": [

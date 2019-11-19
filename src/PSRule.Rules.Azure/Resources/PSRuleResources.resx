@@ -141,4 +141,8 @@
   <data name="ShouldWriteFile" xml:space="preserve">
     <value>Write file</value>
   </data>
+  <data name="TemplateParameterInvalid" xml:space="preserve">
+    <value>The template parameter '{0}' does not use the required format.</value>
+    <comment>The structure of the template parameter within the parameter file is invalid.</comment>
+  </data>
 </root>

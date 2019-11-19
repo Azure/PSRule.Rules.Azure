@@ -85,11 +85,15 @@ namespace PSRule.Rules.Azure.Pipeline
         /// Write output to file.
         /// </summary>
         /// <param name="path">The file path to write.</param>
+        /// <param name="defaultFile">The default file name to use when a directory is specified.</param>
         /// <param name="encoding">The file encoding to use.</param>
         /// <param name="o">The text to write.</param>
-        protected static void WriteToFile(string path, ShouldProcess shouldProcess, Encoding encoding, object o)
+        protected static void WriteToFile(string path, string defaultFile, ShouldProcess shouldProcess, Encoding encoding, object o)
         {
             var rootedPath = PSRuleOption.GetRootedPath(path: path);
+            if (!Path.HasExtension(rootedPath) || Directory.Exists(rootedPath))
+                rootedPath = Path.Combine(rootedPath, defaultFile);
+
             var parentPath = Directory.GetParent(rootedPath);
             if (!parentPath.Exists && shouldProcess(target: parentPath.FullName, action: PSRuleResources.ShouldCreatePath))
             {

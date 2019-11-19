@@ -517,6 +517,23 @@ namespace PSRule.Rules.Azure
 
         #endregion Resource
 
+        #region Deployment
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_DEPLOYMENT)]
+        public void Deployment()
+        {
+            var context = GetContext();
+            context.EnterDeployment("unit-test", JObject.Parse("{ \"contentVersion\": \"1.0.0.0\" }"));
+
+            var actual1 = Functions.Deployment(context, null) as JObject;
+            Assert.Equal("unit-test", actual1["name"]);
+            Assert.Equal("1.0.0.0", actual1["properties"]["template"]["contentVersion"]);
+            Assert.Equal("abcdef", actual1["properties"]["parameters"]["name"]["value"]);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Deployment(context, new object[] { 123 }));
+        }
+
         [Fact]
         [Trait(TRAIT, TRAIT_DEPLOYMENT)]
         public void Parameters()
@@ -550,6 +567,8 @@ namespace PSRule.Rules.Azure
             var actual2 = Functions.Variables(context, new object[] { "test" }) as TestLengthObject;
             Assert.Equal("two", actual2.propB);
         }
+
+        #endregion Deployment
 
         #region Comparison
 
@@ -1270,6 +1289,7 @@ namespace PSRule.Rules.Azure
             var context = new TemplateContext();
             context.ResourceGroup = new ResourceGroup();
             context.Subscription = new Subscription();
+            context.Load(JObject.Parse("{ \"parameters\": { \"name\": { \"value\": \"abcdef\" } } }"));
             return context;
         }
     }

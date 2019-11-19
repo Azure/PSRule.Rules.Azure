@@ -131,5 +131,14 @@ namespace PSRule.Rules.Azure.Resources {
                 return ResourceManager.GetString("ShouldWriteFile", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The template parameter &apos;{0}&apos; does not use the required format..
+        /// </summary>
+        internal static string TemplateParameterInvalid {
+            get {
+                return ResourceManager.GetString("TemplateParameterInvalid", resourceCulture);
+            }
+        }
     }
 }

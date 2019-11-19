@@ -87,6 +87,9 @@ function Export-AzTemplateRuleData {
     [OutputType([System.IO.FileInfo])]
     [OutputType([PSObject])]
     param (
+        [Parameter(Position = 0, Mandatory = $False)]
+        [String]$Name,
+
         [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
         [String]$TemplateFile,
 
@@ -104,13 +107,14 @@ function Export-AzTemplateRuleData {
         [String]$OutputPath = $PWD,
 
         [Parameter(Mandatory = $False)]
-        [Switch]$PassThru
+        [Switch]$PassThru = $False
     )
     begin {
         Write-Verbose -Message '[Export-AzTemplateRuleData] BEGIN::';
 
         # Build the pipeline
         $builder = [PSRule.Rules.Azure.Pipeline.PipelineBuilder]::Template();
+        $builder.Deployment($Name);
         $builder.PassThru($PassThru);
         $builder.OutputPath($OutputPath);
 
@@ -140,7 +144,6 @@ function Export-AzTemplateRuleData {
         }
     }
     process {
-        
         if ($Null -ne (Get-Variable -Name pipeline -ErrorAction SilentlyContinue)) {
             try {
                 $source = [PSRule.Rules.Azure.Pipeline.TemplateSource]::new($TemplateFile, $ParameterFile);

@@ -25,6 +25,7 @@ namespace PSRule.Rules.Azure
 
             var actual2 = resources[1];
             Assert.Equal("vnet-001/subnet2", actual2["name"]);
+            Assert.Equal("vnetDelegation", actual2["properties"]["delegations"][0]["name"]);
 
             var actual3 = resources[2];
             Assert.Equal("vnet-001/subnet1/Microsoft.Authorization/924b5b06-fe70-9ab7-03f4-14671370765e", actual3["name"]);
@@ -38,11 +39,11 @@ namespace PSRule.Rules.Azure
         private static JObject[] ProcessTemplate(string templateFile, string parametersFile)
         {
             var templateObject = ReadFile<JObject>(templateFile);
-            var parametersObject = ReadFile<DeploymentParameters>(parametersFile);
+            var parametersObject = ReadFile<JObject>(parametersFile);
             var visitor = new TestTemplateVisitor();
             var context = new TemplateContext();
             context.Load(parametersObject);
-            visitor.Visit(context, templateObject);
+            visitor.Visit(context, "deployment", templateObject);
             return visitor.TestResources.ToArray();
         }
 

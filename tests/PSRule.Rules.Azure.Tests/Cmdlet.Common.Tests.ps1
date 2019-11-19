@@ -180,7 +180,6 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
     $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
     $parametersPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
 
-
     Context 'With defaults' {
         It 'Exports template' {
             $outputFile = Join-Path -Path $outputPath -ChildPath 'template-with-defaults.json'
@@ -204,6 +203,26 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
         }
     }
 
+    Context 'With -PassThru' {
+        It 'Exports template' {
+            $exportParams = @{
+                TemplateFile = $templatePath
+                ParameterFile = $parametersPath
+            }
+            $result = @(Export-AzTemplateRuleData @exportParams -PassThru);
+            $result | Should -Not -BeNullOrEmpty;
+            $result.Length | Should -Be 8;
+            $result[0].name | Should -Be 'vnet-001';
+            $result[0].properties.subnets.Length | Should -Be 3;
+            $result[0].properties.subnets[0].name | Should -Be 'GatewaySubnet';
+            $result[0].properties.subnets[0].properties.addressPrefix | Should -Be '10.1.0.0/27';
+            $result[0].properties.subnets[2].name | Should -Be 'subnet2';
+            $result[0].properties.subnets[2].properties.addressPrefix | Should -Be '10.1.0.64/28';
+            $result[0].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
+            $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/routeTables/route-subnet2$';
+        }
+    }
+
     Context 'With -Subscription' {
         Mock -CommandName 'GetSubscription' -ModuleName 'PSRule.Rules.Azure' -MockWith {
             return [PSCustomObject]@{
@@ -213,15 +232,12 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
             }
         }
         It 'Exports template' {
-            $outputFile = Join-Path -Path $outputPath -ChildPath 'template-with-sub.json'
             $exportParams = @{
                 TemplateFile = $templatePath
                 ParameterFile = $parametersPath
-                OutputPath = $outputFile
                 Subscription = 'test-sub'
             }
-            $Null = Export-AzTemplateRuleData @exportParams;
-            $result = Get-Content -Path $outputFile -Raw | ConvertFrom-Json;
+            $result = Export-AzTemplateRuleData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
             $result.Length | Should -Be 8;
             $result[0].properties.subnets.Length | Should -Be 3;
@@ -243,15 +259,12 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
             }
         }
         It 'Exports template' {
-            $outputFile = Join-Path -Path $outputPath -ChildPath 'template-with-rg.json'
             $exportParams = @{
                 TemplateFile = $templatePath
                 ParameterFile = $parametersPath
-                OutputPath = $outputFile
                 ResourceGroupName = 'test-rg'
             }
-            $Null = Export-AzTemplateRuleData @exportParams;
-            $result = Get-Content -Path $outputFile -Raw | ConvertFrom-Json;
+            $result = Export-AzTemplateRuleData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
             $result.Length | Should -Be 8;
             $result[0].properties.subnets.Length | Should -Be 3;

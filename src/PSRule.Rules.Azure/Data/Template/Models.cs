@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -130,72 +129,6 @@ namespace PSRule.Rules.Azure.Data.Template
         {
 
         }
-    }
-
-    public sealed class DeploymentTemplate
-    {
-        public sealed class TemplateResourceSku
-        {
-        
-        }
-
-        public sealed class TemplateParameter
-        {
-            public string Type { get; set; }
-
-            public JToken DefaultValue { get; set; }
-        }
-
-        public sealed class TemplateResource
-        {
-            public string Condition { get; set; }
-
-            public string Type { get; set; }
-
-            public string Name { get; set; }
-
-            public string ApiVersion { get; set; }
-
-            public string Location { get; set; }
-
-            public TemplateResourceSku Sku { get; set; }
-
-            public string Kind { get; set; }
-
-            public Dictionary<string, object> Properties { get; set; }
-
-            public TemplateResourceCopy Copy { get; set; }
-        }
-
-        [JsonProperty("$schema")]
-        public string Schema { get; set; }
-
-        [JsonProperty("contentVersion")]
-        public string ContentVersion { get; set; }
-
-        public Dictionary<string, TemplateParameter> Parameters { get; set; }
-
-        [JsonProperty("variables")]
-        public Dictionary<string, JToken> Variables { get; set; }
-
-        //public Dictionary<string, object> Functions { get; set; }
-
-        [JsonProperty("resources")]
-        public List<JObject> Resources { get; set; }
-
-        [JsonProperty("outputs")]
-        public Dictionary<string, object> Outputs { get; set; }
-    }
-
-    public sealed class TemplateResourceCopy
-    {
-        public string Name { get; set; }
-
-        public int Count { get; set; }
-
-        public string Mode { get; set; }
-
-        public int BatchSize { get; set; }
     }
 
     public sealed class DeploymentParameters
