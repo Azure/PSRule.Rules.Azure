@@ -15,7 +15,7 @@ namespace PSRule.Rules.Azure
         public void ResolveTemplateTest()
         {
             var resources = ProcessTemplate(GetSourcePath("Resources.Template.json"), GetSourcePath("Resources.Parameters.json"));
-            Assert.Equal(8, resources.Length);
+            Assert.Equal(9, resources.Length);
 
             var actual1 = resources[0];
             Assert.Equal("vnet-001", actual1["name"]);
