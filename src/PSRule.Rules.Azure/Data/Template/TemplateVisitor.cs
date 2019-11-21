@@ -19,6 +19,8 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_TEMPLATE = "template";
         private const string PROPERTY_COPY = "copy";
         private const string PROPERTY_NAME = "name";
+        private const string PROPERTY_COUNT = "count";
+        private const string PROPERTY_INPUT = "input";
 
         public sealed class TemplateContext
         {
@@ -354,16 +356,16 @@ namespace PSRule.Rules.Azure.Data.Template
             if (value.Type == JTokenType.Object)
             {
                 var jobj = value.Value<JObject>();
-                if (TryArrayProperty(jobj, "copy", out JArray copyArray))
+                if (TryArrayProperty(jobj, PROPERTY_COPY, out JArray copyArray))
                 {
                     var arrayValue = new List<JToken>();
                     foreach (var copy in copyArray)
                     {
                         var copyObject = copy.Value<JObject>();
                         var copyIndex = new TemplateContext.CopyIndexState();
-                        copyIndex.Count = ExpandProperty<int>(context, copyObject, "count");
-                        copyIndex.Name = ExpandProperty<string>(context, copyObject, "name");
-                        copyIndex.Input = copyObject["input"];
+                        copyIndex.Count = ExpandProperty<int>(context, copyObject, PROPERTY_COUNT);
+                        copyIndex.Name = ExpandProperty<string>(context, copyObject, PROPERTY_NAME);
+                        copyIndex.Input = copyObject[PROPERTY_INPUT];
                         context.CopyIndex.Push(copyIndex);
                         for (var i = 0; i < copyIndex.Count; i++)
                         {
@@ -372,7 +374,7 @@ namespace PSRule.Rules.Azure.Data.Template
                             arrayValue.Add(VariableInstance(context, instance));
                         }
                         context.CopyIndex.Pop();
-                        jobj.Remove("copy");
+                        jobj.Remove(PROPERTY_COPY);
                         jobj.Add(copyIndex.Name, new JArray(arrayValue.ToArray()));
                     }
                 }
@@ -461,8 +463,8 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!value.ContainsKey(propertyName))
                 return default(T);
 
-            var propertyValue = value[propertyName].Value<JValue>().Value;
-            return (propertyValue is string svalue) ? ExpandProperty<T>(context, propertyValue) : (T)propertyValue;
+            var propertyValue = value[propertyName].Value<JValue>();
+            return (propertyValue.Type == JTokenType.String) ? ExpandProperty<T>(context, propertyValue) : (T)propertyValue.Value<T>();
         }
 
         private void ResolveProperty(TemplateContext context, JObject obj, string propertyName)
@@ -473,19 +475,21 @@ namespace PSRule.Rules.Azure.Data.Template
             var value = obj[propertyName];
             if (value is JObject jObject)
             {
-                var copyIndex = GetPropertyIterator(context, jObject);
-                if (copyIndex.IsCopy())
+                foreach (var copyIndex in GetPropertyIterator(context, jObject))
                 {
-                    while (copyIndex.Next())
+                    if (copyIndex.IsCopy())
                     {
-                        var instance = copyIndex.Input.DeepClone();
-                        jObject[copyIndex.Name] = ResolveToken(context, instance);
+                        while (copyIndex.Next())
+                        {
+                            var instance = copyIndex.Input.DeepClone();
+                            jObject[copyIndex.Name] = ResolveToken(context, instance);
+                        }
+                        context.CopyIndex.Pop();
                     }
-                    context.CopyIndex.Pop();
-                }
-                else
-                {
-                    obj[propertyName] = ResolveToken(context, jObject);
+                    else
+                    {
+                        obj[propertyName] = ResolveToken(context, jObject);
+                    }
                 }
             }
             else if (value is JArray jArray)
@@ -517,20 +521,26 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// Get a property based iterator copy.
         /// </summary>
-        private TemplateContext.CopyIndexState GetPropertyIterator(TemplateContext context, JObject value)
+        private TemplateContext.CopyIndexState[] GetPropertyIterator(TemplateContext context, JObject value)
         {
-            var result = new TemplateContext.CopyIndexState();
-            result.Input = value;
             if (value.ContainsKey(PROPERTY_COPY))
             {
-                var copyObject = value[PROPERTY_COPY].Value<JObject>();
-                result.Name = ExpandProperty<string>(context, copyObject, "name");
-                result.Input = copyObject["input"];
-                result.Count = ExpandProperty<int>(context, copyObject, "count");
-                context.CopyIndex.Push(result);
-                value.Remove(PROPERTY_COPY);
+                var result = new List<TemplateContext.CopyIndexState>();
+                var copyObjectArray = value[PROPERTY_COPY].Value<JArray>();
+                for (var i = 0; i < copyObjectArray.Count; i++)
+                {
+                    var copyObject = copyObjectArray[i] as JObject;
+                    var state = new TemplateContext.CopyIndexState();
+                    state.Name = ExpandProperty<string>(context, copyObject, "name");
+                    state.Input = copyObject["input"];
+                    state.Count = ExpandProperty<int>(context, copyObject, "count");
+                    context.CopyIndex.Push(state);
+                    value.Remove(PROPERTY_COPY);
+                }
+                return result.ToArray();
             }
-            return result;
+            else
+                return new TemplateContext.CopyIndexState[] { new TemplateContext.CopyIndexState { Input = value } };
         }
 
         /// <summary>
@@ -553,23 +563,25 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private JToken ExpandObject(TemplateContext context, JObject obj)
         {
-            var copyIndex = GetPropertyIterator(context, obj);
-            if (copyIndex.IsCopy())
+            foreach (var copyIndex in GetPropertyIterator(context, obj))
             {
-                var array = new JArray();
-                while (copyIndex.Next())
+                if (copyIndex.IsCopy())
                 {
-                    var instance = copyIndex.Input.DeepClone();
-                    array.Add(ResolveToken(context, instance));
+                    var array = new JArray();
+                    while (copyIndex.Next())
+                    {
+                        var instance = copyIndex.Input.DeepClone();
+                        array.Add(ResolveToken(context, instance));
+                    }
+                    obj[copyIndex.Name] = array;
+                    context.CopyIndex.Pop();
                 }
-                obj[copyIndex.Name] = array;
-                context.CopyIndex.Pop();
-            }
-            else
-            {
-                foreach (var property in obj.Properties())
+                else
                 {
-                    ResolveProperty(context, obj, property.Name);
+                    foreach (var property in obj.Properties())
+                    {
+                        ResolveProperty(context, obj, property.Name);
+                    }
                 }
             }
             return obj;

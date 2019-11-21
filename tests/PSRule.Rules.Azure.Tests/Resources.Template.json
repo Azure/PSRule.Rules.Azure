@@ -108,13 +108,11 @@
             "subscriptionId": "[subscription().subscriptionId]",
             "properties": {
                 "mode": "Incremental",
-                "parameters": {
-                },
+                "parameters": {},
                 "template": {
                     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
                     "contentVersion": "1.0.0.0",
-                    "parameters": {
-                    },
+                    "parameters": {},
                     "resources": [
                         {
                             "apiVersion": "2019-04-01",
@@ -122,8 +120,7 @@
                             "type": "Microsoft.Network/virtualNetworks/subnets",
                             "properties": {
                                 "addressPrefix": "[reference(variables('aciSubnetId'), '2019-07-01').addressPrefix]",
-                                "serviceEndpoints": [
-                                ],
+                                "serviceEndpoints": [],
                                 "delegations": [
                                     {
                                         "name": "[deployment().name]",
@@ -187,6 +184,37 @@
             },
             "properties": {
                 "securityRules": "[parameters('subnets')[copyIndex()].securityRules]"
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "A subnet Network Security Group",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "nsg-extra",
+            "apiVersion": "2019-04-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "copy": [
+                    {
+                        "name": "securityRules",
+                        "count": 3,
+                        "input": {
+                            "name": "[concat('rule-', copyIndex('securityRules', 200))]",
+                            "properties": {
+                                "protocol": "Tcp",
+                                "sourcePortRange": "*",
+                                "destinationPortRanges": [
+                                    "3389"
+                                ],
+                                "access": "Deny",
+                                "priority": "[copyIndex('securityRules', 200)]",
+                                "direction": "Inbound",
+                                "sourceAddressPrefix": "*",
+                                "destinationAddressPrefix": "VirtualNetwork"
+                            }
+                        }
+                    }
+                ]
             },
             "dependsOn": []
         }
