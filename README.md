@@ -140,6 +140,12 @@ Azure.Storage.SecureTransferRequ... 2     6     Fail
 Azure.Storage.SoftDelete            0     8     Fail
 ```
 
+## Scenarios
+
+For walk through examples of `PSRule.Rules.Azure` module usage see:
+
+- [Validate Azure templates with continuous integration](docs/scenarios/azure-template-ci/azure-template-ci.md)
+
 ## Rule reference
 
 The following rules are included in the `PSRule.Rules.Azure` module:
