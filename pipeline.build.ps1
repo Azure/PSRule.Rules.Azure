@@ -218,7 +218,7 @@ task BuildModule BuildDotNet, CopyModule
 
 task TestRules TestDotNet, PSRule, Pester, PSScriptAnalyzer, {
     # Run Pester tests
-    $pesterParams = @{ Path = $PWD; OutputFile = 'reports/pester-unit.xml'; OutputFormat = 'NUnitXml'; PesterOption = @{ IncludeVSCodeMarker = $True }; PassThru = $True; };
+    $pesterParams = @{ Path = (Join-Path -Path $PWD -ChildPath tests/PSRule.Rules.Azure.Tests); OutputFile = 'reports/pester-unit.xml'; OutputFormat = 'NUnitXml'; PesterOption = @{ IncludeVSCodeMarker = $True }; PassThru = $True; };
 
     if ($CodeCoverage) {
         $pesterParams.Add('CodeCoverage', (Join-Path -Path $PWD -ChildPath 'out/modules/**/*.psm1'));

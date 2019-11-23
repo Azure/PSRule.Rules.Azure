@@ -64,7 +64,7 @@
                                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', concat('nsg-', parameters('subnets')[copyIndex('subnets')].name))]"
                             },
                             "routeTable": {
-                                "id": "[resourceId('Microsoft.Network/routeTables', concat('route-', parameters('subnets')[copyIndex('subnets')].name))]"
+                                "id": "[resourceId('Microsoft.Network/routeTables/', concat('route-', parameters('subnets')[copyIndex('subnets')].name))]"
                             }
                         }
                     }
@@ -81,7 +81,7 @@
         {
             "comments": "Hub virtual network",
             "type": "Microsoft.Network/virtualNetworks",
-            "name": "[parameters('vnetName')]",
+            "name": "[parameters('VNETName')]",
             "apiVersion": "2019-04-01",
             "location": "region-A",
             "dependsOn": [
@@ -90,9 +90,9 @@
             ],
             "properties": {
                 "addressSpace": {
-                    "addressPrefixes": "[parameters('addressPrefix')]"
+                    "addressPrefixes": "[Parameters('addressPrefix')]"
                 },
-                "subnets": "[variables('allSubnets')]"
+                "subnets": "[variabLes('AllSubnets')]"
             },
             "tags": {
                 "role": "Networking"
@@ -201,6 +201,7 @@
                         "input": {
                             "name": "[concat('rule-', copyIndex('securityRules', 200))]",
                             "properties": {
+                                "description": "[if(equals('a', 'a'), json('null'), json('null'))]",
                                 "protocol": "Tcp",
                                 "sourcePortRange": "*",
                                 "destinationPortRanges": [
