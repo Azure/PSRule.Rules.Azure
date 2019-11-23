@@ -680,7 +680,7 @@ namespace PSRule.Rules.Azure.Data.Template
                         subscriptionId = segments[0];
                     }
                     resourceType = segments[i];
-                    var nameDepth = resourceType.Split('/').Length - 1;
+                    var nameDepth = resourceType.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Length - 1;
 
                     if ((segments.Length - 1 - i) != nameDepth)
                         throw new TemplateFunctionException(nameof(ResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);

@@ -167,7 +167,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public ExpressionFactory()
         {
-            _Descriptors = new Dictionary<string, IFunctionDescriptor>();
+            _Descriptors = new Dictionary<string, IFunctionDescriptor>(StringComparer.OrdinalIgnoreCase);
             foreach (var d in Functions.Builtin)
                 With(d);
         }

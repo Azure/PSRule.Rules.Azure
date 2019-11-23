@@ -7,6 +7,9 @@
   - Fixed property copy loop.
 - Fixed `Export-AzTemplateRuleData` does not return FileInfo objects. [#162](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/162)
 - Fixed Automatically name outputs from `Export-AzTemplateRuleData`. [#163](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/163)
+- Fixed resource segmentation issue when ResourceType includes trailing slash. [#165](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/165)
+- Fixed expand resource template property as null fails. [#167](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/167)
+- Fixed Case-sensitivity of variables and parameters. [#168](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/168)
 
 ## v0.6.0-B1911027 (pre-release)
 

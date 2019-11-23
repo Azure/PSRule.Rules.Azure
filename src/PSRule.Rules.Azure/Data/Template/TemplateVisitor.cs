@@ -30,8 +30,8 @@ namespace PSRule.Rules.Azure.Data.Template
             internal TemplateContext()
             {
                 Resources = new List<JObject>();
-                Parameters = new Dictionary<string, object>();
-                Variables = new Dictionary<string, object>();
+                Parameters = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
+                Variables = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
                 CopyIndex = new CopyIndexStore();
                 ResourceGroup = new ResourceGroup();
                 Subscription = new Subscription();
@@ -455,7 +455,8 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!TryExpressionString(value, out string svalue))
                 return value;
 
-            return JToken.FromObject(EvaluteExpression<object>(context, svalue));
+            var result = EvaluteExpression<object>(context, svalue);
+            return result == null ? null : JToken.FromObject(result);
         }
 
         private T ExpandProperty<T>(TemplateContext context, JObject value, string propertyName)
