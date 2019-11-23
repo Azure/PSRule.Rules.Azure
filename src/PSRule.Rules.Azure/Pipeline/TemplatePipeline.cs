@@ -31,7 +31,6 @@ namespace PSRule.Rules.Azure.Pipeline
         private const string OUTPUTFILE_EXTENSION = ".json";
 
         private const string DEPLOYMENTNAME_PREFIX = "export-";
-        private const string DEPLOYMENTNAME_TIMEFORMAT = "yyyy-MM-dd-hh-mm";
 
         private const string RESOURCEGROUP_RESOURCEID = "ResourceId";
         private const string RESOURCEGROUP_RESOURCEGROUPNAME = "ResourceGroupName";
@@ -51,7 +50,7 @@ namespace PSRule.Rules.Azure.Pipeline
         internal TemplatePipelineBuilder()
             : base()
         {
-            _DeploymentName = string.Concat(DEPLOYMENTNAME_PREFIX, DateTime.Now.ToString(DEPLOYMENTNAME_TIMEFORMAT, new CultureInfo("en-US")));
+            _DeploymentName = string.Concat(DEPLOYMENTNAME_PREFIX, Guid.NewGuid().ToString().Substring(0, 8));
             _ResourceGroup = Data.Template.ResourceGroup.Default;
             _Subscription = Data.Template.Subscription.Default;
         }
@@ -102,7 +101,7 @@ namespace PSRule.Rules.Azure.Pipeline
         protected override PipelineWriter PrepareWriter()
         {
             var defaultFile = string.Concat(OUTPUTFILE_PREFIX, _DeploymentName, OUTPUTFILE_EXTENSION);
-            WriteOutput output = (o, enumerate) => WriteToFile(_OutputPath, defaultFile, ShouldProcess, Encoding.UTF8, o);
+            WriteOutput output = (o, enumerate) => WriteToFile(_OutputPath, defaultFile, ShouldProcess, Output, Encoding.UTF8, o);
             return _PassThru ? base.PrepareWriter() : new JsonPipelineWriter(output);
         }
 
