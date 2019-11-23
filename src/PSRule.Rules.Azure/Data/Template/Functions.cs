@@ -599,7 +599,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!segments[1].Contains('/'))
                 throw new ArgumentException();
 
-            var resourceType = segments[1];
+            var resourceType = TrimResourceType(segments[1]);
             var nameDepth = resourceType.Split('/').Length - 1;
             if ((segments.Length - 2) != nameDepth)
                 throw new TemplateFunctionException(nameof(ExtensionResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
@@ -679,8 +679,8 @@ namespace PSRule.Rules.Azure.Data.Template
                         resourceGroup = segments[1];
                         subscriptionId = segments[0];
                     }
-                    resourceType = segments[i];
-                    var nameDepth = resourceType.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Length - 1;
+                    resourceType = TrimResourceType(segments[i]);
+                    var nameDepth = resourceType.Split('/').Length - 1;
 
                     if ((segments.Length - 1 - i) != nameDepth)
                         throw new TemplateFunctionException(nameof(ResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
@@ -736,7 +736,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     if (i == 1)
                         subscriptionId = segments[0];
 
-                    resourceType = segments[i];
+                    resourceType = TrimResourceType(segments[i]);
                     var nameDepth = resourceType.Split('/').Length - 1;
 
                     if ((segments.Length - 1 - i) != nameDepth)
@@ -777,7 +777,7 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 if (segments[i].Contains('/'))
                 {
-                    resourceType = segments[i];
+                    resourceType = TrimResourceType(segments[i]);
                     var nameDepth = resourceType.Split('/').Length - 1;
 
                     if ((segments.Length - 1 - i) != nameDepth)
@@ -1542,6 +1542,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 }
                 return algorithm.Hash;
             }
+        }
+
+        private static string TrimResourceType(string resourceType)
+        {
+            return resourceType[resourceType.Length - 1] == '/' ? resourceType = resourceType.Substring(0, resourceType.Length - 1) : resourceType;
         }
 
         #endregion Helper functions
