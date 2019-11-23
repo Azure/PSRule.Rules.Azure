@@ -44,7 +44,7 @@ Currently the following limitations also apply:
 ### Example 1
 
 ```powershell
-PS C:\> Export-AzTemplateRuleData -Name 'hub-network' -TemplateFile .\template.json -ParameterFile .\parameters.json;
+PS C:\> Export-AzTemplateRuleData -TemplateFile .\template.json -ParameterFile .\parameters.json;
 ```
 
 Export resource configuration data based on merging a template and parameter file together.
@@ -54,8 +54,9 @@ Export resource configuration data based on merging a template and parameter fil
 ### -Name
 
 The name of the deployment.
+If not specified `export-<xxxxxxxx>` will be used as the name of the deployment.
 
-This parameter is used by the `deployment()` function.
+This parameter is used by the `deployment()` function and is also used to name the output file.
 
 ```yaml
 Type: String
@@ -189,6 +190,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String[]
 
 ## OUTPUTS
+
+### System.IO.FileInfo
 
 ### System.Object
 
