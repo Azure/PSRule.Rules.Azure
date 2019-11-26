@@ -32,7 +32,13 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private ExpressionFnOuter Lexer(TokenStream stream)
         {
-            return stream.TryTokenType(ExpressionTokenType.Element, out ExpressionToken element) ? Element(stream, element) : null;
+            if (stream.TryTokenType(ExpressionTokenType.Element, out ExpressionToken token))
+                return Element(stream, token);
+
+            if (stream.TryTokenType(ExpressionTokenType.String, out token))
+                return String(token);
+
+            return null;
         }
 
         private ExpressionFnOuter Element(TokenStream stream, ExpressionToken element)
@@ -85,14 +91,17 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             ExpressionFnOuter result = null;
             if (stream.TryTokenType(ExpressionTokenType.String, out ExpressionToken token))
-            {
-               result = (context) => token.Content;
-            }
-            else if (stream.TryTokenType(ExpressionTokenType.Element, out token))
-            {
+                return String(token);
+            
+            if (stream.TryTokenType(ExpressionTokenType.Element, out token))
                 result = Element(stream, token);
-            }
+
             return result;
+        }
+
+        private static ExpressionFnOuter String(ExpressionToken token)
+        {
+            return (context) => token.Content;
         }
 
         private static ExpressionFnOuter AddIndex(ExpressionFnOuter inner, ExpressionFnOuter innerInner)
@@ -129,11 +138,11 @@ namespace PSRule.Rules.Azure.Data.Template
         private static object Property(TemplateContext context, ExpressionFnOuter inner, string propertyName)
         {
             var result = inner(context);
-            if (result is JToken jt)
-                return jt[propertyName].Value<object>();
+            if (result is JToken jToken)
+                return jToken[propertyName].Value<object>();
 
-            if (result is JObject jobj)
-                return jobj[propertyName].Value<object>();
+            if (result is JObject jObject)
+                return jObject[propertyName].Value<object>();
 
             if (result is MockResource mockResource)
                 return JToken.FromObject(string.Concat("{{Resource.", propertyName, "}}"));

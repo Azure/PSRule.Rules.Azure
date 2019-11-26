@@ -68,6 +68,11 @@ namespace PSRule.Rules.Azure.Data.Template
             get { return _Current; }
         }
 
+        public string Expression
+        {
+            get { return _Source; }
+        }
+
 #if DEBUG
 
         /// <summary>
@@ -106,7 +111,7 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             SkipWhitespace();
             element = CaptureUntil(FunctionNameStopCharacter);
-            return true;
+            return !string.IsNullOrEmpty(element);
         }
 
         public bool IsGroupStart()
@@ -247,7 +252,6 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             var start = Position;
             var length = 0;
-
             while (!EOF)
             {
                 if (!IsEscaped && c.Contains(Current))

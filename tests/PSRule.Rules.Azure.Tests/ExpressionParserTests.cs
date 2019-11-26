@@ -111,6 +111,25 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
+        public void ParseExpression5()
+        {
+            var expression = "['subnet1']";
+            var actual = ExpressionParser.Parse(expression).ToArray();
+            Assert.Equal(ExpressionTokenType.String, actual[0].Type); // concat
+            Assert.Equal("subnet1", actual[0].Content);
+        }
+
+        [Fact]
+        public void ParseExpression6()
+        {
+            var expression = "[resourceId ('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), variables ('subnetName'))]";
+            var actual = ExpressionParser.Parse(expression).ToArray();
+            Assert.Equal(12, actual.Length);
+            Assert.Equal(ExpressionTokenType.Element, actual[0].Type); // resourceId
+            Assert.Equal("resourceId", actual[0].Content);
+        }
+
+        [Fact]
         public void BuildExpression1()
         {
             var expression = "[parameters('vnetName')]";
@@ -151,6 +170,18 @@ namespace PSRule.Rules.Azure
             var actual = fn(context);
 
             Assert.Equal("route-routeB", actual);
+        }
+
+        [Fact]
+        public void BuildExpression5()
+        {
+            var expression = "['subnet1']";
+            var builder = new ExpressionBuilder();
+            var context = new TemplateContext();
+            var fn = builder.Build(expression);
+            var actual = fn(context);
+
+            Assert.Equal("subnet1", actual);
         }
     }
 }
