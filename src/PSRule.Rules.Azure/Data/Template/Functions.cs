@@ -154,6 +154,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 {
                     if (TryString(args[i], out string svalue))
                         s[i] = svalue;
+
+                    if (TryInt(args[i], out int ivalue))
+                        s[i] = ivalue.ToString();
                 }
                 return string.Concat(s);
             }
@@ -551,10 +554,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!TryString(args[0], out string parameterName))
                 throw new ArgumentException();
 
-            if (!context.Parameters.ContainsKey(parameterName))
+            if (!context.TryParameter(parameterName, out object result))
                 throw new KeyNotFoundException();
 
-            return context.Parameters[parameterName];
+            return result;
         }
 
         internal static object Variables(TemplateContext context, object[] args)
@@ -565,10 +568,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!TryString(args[0], out string variableName))
                 throw new ArgumentException();
 
-            if (!context.Variables.ContainsKey(variableName))
+            if (!context.TryVariable(variableName, out object result))
                 throw new KeyNotFoundException();
 
-            return context.Variables[variableName];
+            return result;
         }
 
         #endregion Deployment
@@ -812,8 +815,8 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object CopyIndex(TemplateContext context, object[] args)
         {
             string loopName = CountArgs(args) >= 1 && args[0] is string svalue ? svalue : null;
-            int offset = CountArgs(args) >= 1 && args[0] is int ivalue ? ivalue : 0;
-            if (CountArgs(args) == 2 && offset == 0 && args[1] is int ivalue2)
+            int offset = CountArgs(args) == 1 && (args[0] is int ivalue || (args[0] is string sivalue && int.TryParse(sivalue, out ivalue))) ? ivalue : 0;
+            if (CountArgs(args) == 2 && offset == 0 && (args[1] is int ivalue2 || (args[1] is string sivalue2 && int.TryParse(sivalue2, out ivalue2))))
                 offset = ivalue2;
 
             if (!context.CopyIndex.TryGetValue(loopName, out TemplateContext.CopyIndexState value))

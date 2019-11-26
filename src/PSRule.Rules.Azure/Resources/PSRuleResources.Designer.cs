@@ -61,6 +61,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to parse expression. The expression may not be valid. Expression: &quot;{0}&quot;.
+        /// </summary>
+        internal static string ExpressionInvalid {
+            get {
+                return ResourceManager.GetString("ExpressionInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specified parameter is not a valid integer..
         /// </summary>
         internal static string FunctionInvalidInteger {

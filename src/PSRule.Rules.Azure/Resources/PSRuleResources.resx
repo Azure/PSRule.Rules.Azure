@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ExpressionInvalid" xml:space="preserve">
+    <value>Failed to parse expression. The expression may not be valid. Expression: "{0}"</value>
+    <comment>Occurs when an expression fails to be parsed.</comment>
+  </data>
   <data name="FunctionInvalidInteger" xml:space="preserve">
     <value>The specified parameter is not a valid integer.</value>
   </data>
