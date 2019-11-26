@@ -10,7 +10,7 @@
 - Fixed resource segmentation issue when ResourceType includes trailing slash. [#165](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/165)
 - Fixed expand resource template property as null fails. [#167](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/167)
 - Fixed case-sensitivity of variables, parameters and functions. [#168](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/168)
-- Fixed unordered parameter and variables cross reference. [#170](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/170)
+- Fixed out of order parameter and variables cross reference. [#170](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/170)
 - Fixed expression parser race condition. [#171](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/171)
 
 ## v0.6.0-B1911027 (pre-release)
