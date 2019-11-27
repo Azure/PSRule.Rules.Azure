@@ -67,7 +67,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             internal void Load(JObject parameters)
             {
-                if (!parameters.ContainsKey("parameters"))
+                if (parameters == null || !parameters.ContainsKey("parameters"))
                     return;
 
                 _Parameters = parameters["parameters"] as JObject;
@@ -412,7 +412,23 @@ namespace PSRule.Rules.Azure.Data.Template
 
             foreach (var variable in variables)
             {
-                Variable(context, variable.Key, variable.Value);
+                if (!string.Equals(variable.Key, PROPERTY_COPY, StringComparison.OrdinalIgnoreCase))
+                    Variable(context, variable.Key, variable.Value);
+            }
+
+            foreach (var copyIndex in GetVariableIterator(context, variables))
+            {
+                if (copyIndex.IsCopy())
+                {
+                    var jArray = new JArray();
+                    while (copyIndex.Next())
+                    {
+                        var instance = copyIndex.Input.DeepClone();
+                        jArray.Add(ResolveToken(context, instance));
+                    }
+                    Variable(context, copyIndex.Name, ResolveVariable(context, jArray));
+                    context.CopyIndex.Pop();
+                }
             }
         }
 
@@ -500,7 +516,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return (propertyValue.Type == JTokenType.String) ? ExpandProperty<T>(context, propertyValue) : (T)propertyValue.Value<T>();
         }
 
-        private static object ResolveVariable(TemplateContext context, JToken value)
+        private static JToken ResolveVariable(TemplateContext context, JToken value)
         {
             if (value is JObject jObject)
             {
