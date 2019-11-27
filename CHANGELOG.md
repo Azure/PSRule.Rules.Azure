@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.6.0-B1911046 (pre-release)
+
 - Improved template support of `Export-AzTemplateRuleData` cmdlet. [#145](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/145)
   - Added support for `deployment` function.
   - Fixed property copy loop.
