@@ -206,7 +206,7 @@ namespace PSRule.Rules.Azure.Data.Template
             else if (args[0] is string svalue)
                 return string.IsNullOrEmpty(svalue);
             else if (args[0] is JObject jObject)
-                return jObject.Properties().Any();
+                return !jObject.Properties().Any();
 
             return false;
         }
