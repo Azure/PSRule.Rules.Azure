@@ -106,6 +106,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The parameter named &apos;{0}&apos; was not set or a defaultValue was defined..
+        /// </summary>
+        internal static string ParameterNotFound {
+            get {
+                return ResourceManager.GetString("ParameterNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Read JSON failed..
         /// </summary>
         internal static string ReadJsonFailed {
@@ -147,6 +156,15 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string TemplateParameterInvalid {
             get {
                 return ResourceManager.GetString("TemplateParameterInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The variable named &apos;{0}&apos; was not defined in the template..
+        /// </summary>
+        internal static string VariableNotFound {
+            get {
+                return ResourceManager.GetString("VariableNotFound", resourceCulture);
             }
         }
     }

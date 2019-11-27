@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Collections;
-using System.Collections.Generic;
+using System.Text;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -115,51 +115,84 @@ namespace PSRule.Rules.Azure.Data.Template
         public readonly ResourceGroupProperties Properties;
     }
 
-    public sealed class MockResource
+    public abstract class MockNode
     {
-        public MockResource()
+        protected MockNode(MockNode parent)
         {
+            Parent = parent;
+        }
 
+        public MockNode Parent { get; }
+
+        internal MockMember GetMember(string name)
+        {
+            return new MockMember(this, name);
+        }
+
+        internal string BuildString()
+        {
+            var builder = new StringBuilder();
+            builder.Insert(0, GetString());
+            var parent = Parent;
+            while (parent != null)
+            {
+                builder.Insert(0, ".");
+                builder.Insert(0, parent.GetString());
+                parent = parent.Parent;
+            }
+            builder.Insert(0, "{{");
+            builder.Append("}}");
+            return builder.ToString();
+        }
+
+        protected abstract string GetString();
+    }
+
+    public sealed class MockResource : MockNode
+    {
+        internal MockResource(string resourceType)
+            : base(null)
+        {
+            ResourceType = resourceType;
+        }
+
+        public string ResourceType { get; }
+
+        protected override string GetString()
+        {
+            return "Resource";
         }
     }
 
-    public sealed class MockResourceList
+    public sealed class MockList : MockNode
     {
-        public MockResourceList()
+        internal MockList(string resourceId)
+            : base(null)
         {
+            ResourceId = resourceId;
+        }
 
+        public string ResourceId { get; }
+
+        protected override string GetString()
+        {
+            return "List";
         }
     }
 
-    public sealed class DeploymentParameters
+    public sealed class MockMember : MockNode
     {
-        [JsonProperty("$schema")]
-        public string Schema { get; set; }
-
-        [JsonProperty("contentVersion")]
-        public string ContentVersion { get; set; }
-
-        [JsonProperty("parameters")]
-        public Dictionary<string, DeploymentParameterValue> Parameters { get; set; }
-
-        public sealed class DeploymentParameterValue
+        internal MockMember(MockNode parent, string name)
+            : base(parent)
         {
-            [JsonProperty("value")]
-            public object Value { get; set; }
-
-            public DeploymentParameterKeyVaultReference Reference {get;set;}
+            Name = name;
         }
 
-        public class DeploymentParameterKeyVaultReference
+        public string Name { get; }
+
+        protected override string GetString()
         {
-            public string SecretName { get; set; }
-
-            public ResourceReference KeyVault { get; set; }
+            return Name;
         }
-    }
-
-    public sealed class ResourceReference
-    {
-        public string Id { get; set; }
     }
 }

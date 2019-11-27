@@ -75,7 +75,17 @@
         "networkOperatorRoleId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7')]",
         "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
         "clusterSubnetId": "[concat(variables('vnetId'), '/subnets/', parameters('clusterSubnet'))]",
-        "aciSubnetId": "[concat(variables('vnetId'), '/subnets/', parameters('aciSubnet'))]"
+        "aciSubnetId": "[concat(variables('vnetId'), '/subnets/', parameters('aciSubnet'))]",
+        "copy": [
+            {
+                "name": "routes",
+                "count": "[length(variables('allSubnets'))]",
+                "input": {
+                    "name": "[concat('route-', copyIndex('routes'))]",
+                    "properties": {}
+                }
+            }
+        ]
     },
     "resources": [
         {
@@ -169,7 +179,8 @@
                 "count": "[length(parameters('subnets'))]"
             },
             "properties": {
-                "disableBgpRoutePropagation": false
+                "disableBgpRoutePropagation": false,
+                "routes": "[variables('routes')]"
             }
         },
         {

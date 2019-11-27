@@ -410,7 +410,7 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
             var parentId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Unit.Test/type/a";
 
-            var actual1 = Functions.List(context, new object[] { parentId, "2019-01-01" }) as MockResourceList;
+            var actual1 = Functions.List(context, new object[] { parentId, "2019-01-01" }) as MockList;
             Assert.NotNull(actual1);
 
             // TODO: Improve test cases
@@ -784,7 +784,6 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Add(context, null));
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Add(context, new object[] { 5 }));
             Assert.Throws<ArgumentException>(() => Functions.Add(context, new object[] { "one", "two" }));
-            Assert.Throws<ArgumentException>(() => Functions.Add(context, new object[] { 1, "0" }));
         }
 
         [Fact]
@@ -800,7 +799,7 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Div(context, null));
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Div(context, new object[] { 5 }));
             Assert.Throws<ArgumentException>(() => Functions.Div(context, new object[] { "one", "two" }));
-            Assert.Throws<ArgumentException>(() => Functions.Div(context, new object[] { 1, "0" }));
+            Assert.Throws<DivideByZeroException>(() => Functions.Div(context, new object[] { 1, "0" }));
             Assert.Throws<DivideByZeroException>(() => Functions.Div(context, new object[] { 8, 0 }));
         }
 
@@ -843,7 +842,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Int(context, null));
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Int(context, new object[] { }));
-            Assert.Throws<FormatException>(() => Functions.Int(context, new object[] { "one" }));
+            Assert.Throws<ArgumentException>(() => Functions.Int(context, new object[] { "one" }));
         }
 
         [Fact]
@@ -853,13 +852,13 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // Integer
-            var actual1 = (int)Functions.Mod(context, new object[] { 7, 3 });
+            var actual1 = (int)Functions.Mod(context, new object[] { 7, "3" });
             Assert.Equal(1, actual1);
 
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Mod(context, null));
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Mod(context, new object[] { 5 }));
             Assert.Throws<ArgumentException>(() => Functions.Mod(context, new object[] { "one", "two" }));
-            Assert.Throws<ArgumentException>(() => Functions.Mod(context, new object[] { 1, "0" }));
+            Assert.Throws<DivideByZeroException>(() => Functions.Mod(context, new object[] { 1, "0" }));
             Assert.Throws<DivideByZeroException>(() => Functions.Mod(context, new object[] { 7, 0 }));
         }
 
@@ -870,13 +869,12 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // Integer
-            var actual1 = (int)Functions.Mul(context, new object[] { 5, 3 });
+            var actual1 = (int)Functions.Mul(context, new object[] { 5, "3" });
             Assert.Equal(15, actual1);
 
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Mul(context, null));
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Mul(context, new object[] { 5 }));
             Assert.Throws<ArgumentException>(() => Functions.Mul(context, new object[] { "one", "two" }));
-            Assert.Throws<ArgumentException>(() => Functions.Mul(context, new object[] { 1, "0" }));
         }
 
         [Fact]
@@ -892,7 +890,6 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Sub(context, null));
             Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Sub(context, new object[] { 5 }));
             Assert.Throws<ArgumentException>(() => Functions.Sub(context, new object[] { "one", "two" }));
-            Assert.Throws<ArgumentException>(() => Functions.Sub(context, new object[] { 1, "0" }));
         }
 
         #endregion Numeric
@@ -1107,7 +1104,7 @@ namespace PSRule.Rules.Azure
         {
             var context = GetContext();
 
-            var actual1 = Functions.Split(context, new object[] { "This is a test", new string[] { " " } }) as string[];
+            var actual1 = Functions.Split(context, new object[] { "This is a test", new string[] { " " } }) as JArray;
             Assert.Equal("This", actual1[0]);
             Assert.Equal("test", actual1[3]);
         }

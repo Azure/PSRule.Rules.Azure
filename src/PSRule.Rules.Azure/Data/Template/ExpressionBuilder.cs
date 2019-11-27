@@ -38,6 +38,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (stream.TryTokenType(ExpressionTokenType.String, out token))
                 return String(token);
 
+            if (stream.TryTokenType(ExpressionTokenType.Numeric, out token))
+                return Numeric(token);
+
             return null;
         }
 
@@ -93,6 +96,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (stream.TryTokenType(ExpressionTokenType.String, out ExpressionToken token))
                 return String(token);
             
+            if (stream.TryTokenType(ExpressionTokenType.Numeric, out token))
+                return Numeric(token);
+
             if (stream.TryTokenType(ExpressionTokenType.Element, out token))
                 result = Element(stream, token);
 
@@ -104,6 +110,11 @@ namespace PSRule.Rules.Azure.Data.Template
             return (context) => token.Content;
         }
 
+        private static ExpressionFnOuter Numeric(ExpressionToken token)
+        {
+            return (context) => token.Value;
+        }
+
         private static ExpressionFnOuter AddIndex(ExpressionFnOuter inner, ExpressionFnOuter innerInner)
         {
             return (context) => Index(context, inner, innerInner);
@@ -111,23 +122,19 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static object Index(TemplateContext context, ExpressionFnOuter inner, ExpressionFnOuter index)
         {
-            var array = inner(context);
+            var source = inner(context);
             var indexResult = index(context);
-            if (indexResult is string ixs)
-                return Index(array, int.Parse(ixs));
-            else
-                return Index(array, (int)indexResult);
-        }
 
-        private static object Index(object value, int index)
-        {
-            if (value is JArray jArray)
-                return jArray[index];
+            if (source is JArray jArray && ExpressionHelpers.TryConvertInt(indexResult, out int arrayIndex))
+                return jArray[arrayIndex];
 
-            else if (value is Array array)
-                return array.GetValue(index);
+            if (source is JObject jObject && ExpressionHelpers.TryString(indexResult, out string propertyName))
+                return jObject[propertyName];
 
-            return null;
+            if (source is MockNode mockNode && ExpressionHelpers.TryConvertString(indexResult, out string memberName))
+                return mockNode.GetMember(memberName);
+
+            throw new InvalidOperationException();
         }
 
         private static ExpressionFnOuter AddProperty(ExpressionFnOuter inner, string propertyName)
@@ -138,17 +145,14 @@ namespace PSRule.Rules.Azure.Data.Template
         private static object Property(TemplateContext context, ExpressionFnOuter inner, string propertyName)
         {
             var result = inner(context);
+            if (result is JObject jObject)
+                return jObject.Property(propertyName, StringComparison.OrdinalIgnoreCase).Value;
+
             if (result is JToken jToken)
                 return jToken[propertyName].Value<object>();
 
-            if (result is JObject jObject)
-                return jObject[propertyName].Value<object>();
-
-            if (result is MockResource mockResource)
-                return JToken.FromObject(string.Concat("{{Resource.", propertyName, "}}"));
-
-            if (result is MockResourceList mockResourceList)
-                return JToken.FromObject(string.Concat("{{List.", propertyName, "}}"));
+            if (result is MockNode mockNode)
+                return mockNode.GetMember(propertyName);
 
             return PropertyOrField(result, propertyName);
         }

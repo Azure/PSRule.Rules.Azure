@@ -52,12 +52,19 @@ namespace PSRule.Rules.Azure.Data.Template
     internal sealed class ExpressionToken
     {
         internal readonly ExpressionTokenType Type;
+        internal readonly int Value;
         internal readonly string Content;
 
         internal ExpressionToken(ExpressionTokenType type, string content)
         {
             Type = type;
             Content = content;
+        }
+
+        internal ExpressionToken(int value)
+        {
+            Type = ExpressionTokenType.Numeric;
+            Value = value;
         }
     }
 
@@ -71,9 +78,14 @@ namespace PSRule.Rules.Azure.Data.Template
             stream.Add(new ExpressionToken(ExpressionTokenType.Element, functionName));
         }
 
-        internal static void String(this TokenStream stream, string s)
+        internal static void Numeric(this TokenStream stream, int value)
         {
-            stream.Add(new ExpressionToken(ExpressionTokenType.String, s));
+            stream.Add(new ExpressionToken(value));
+        }
+
+        internal static void String(this TokenStream stream, string content)
+        {
+            stream.Add(new ExpressionToken(ExpressionTokenType.String, content));
         }
 
         internal static void Property(this TokenStream stream, string propertyName)

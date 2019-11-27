@@ -12,6 +12,9 @@
 - Fixed case-sensitivity of variables, parameters and functions. [#168](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/168)
 - Fixed out of order parameter and variables cross reference. [#170](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/170)
 - Fixed expression parser race condition. [#171](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/171)
+- Fixed handling of padding spaces in expressions. [#173](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/173)
+- Fixed property of property is parsed incorrectly. [#174](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/174)
+- Fixed root variable copy loop handling. [#175](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/175)
 
 ## v0.6.0-B1911027 (pre-release)
 

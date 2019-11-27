@@ -25,8 +25,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const int MaxLength = 24576;
 
         private const char Whitespace = ' ';
-        
-        
+
         private const char Backslash = '\\';
 
         private const char Apostrophe = '\'';
@@ -38,7 +37,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const char BracketClose = ']';
         private readonly static char[] FunctionNameStopCharacter = new char[] { '(', ']', '[', ')', '\'', ' ', ',' };
         private readonly static char[] StringStopCharacters = new char[] { '\'' };
-        private readonly static char[] PropertyStopCharacters = new char[] { '(', ']', '[', ',', ')', ' ', '\'' };
+        private readonly static char[] PropertyStopCharacters = new char[] { '(', ']', '[', ',', ')', ' ', '\'', '.' };
 
         internal ExpressionStream(string expression)
         {
@@ -110,6 +109,11 @@ namespace PSRule.Rules.Azure.Data.Template
         public bool TryElement(out string element)
         {
             SkipWhitespace();
+            if (Current == Period)
+            {
+                element = string.Empty;
+                return false;
+            }
             element = CaptureUntil(FunctionNameStopCharacter);
             return !string.IsNullOrEmpty(element);
         }

@@ -30,8 +30,13 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (stream.TryElement(out string element))
                 {
                     stream.Separator();
-                    output.Function(element);
-                    Function(stream, output, element);
+                    if (int.TryParse(element, out int numeric))
+                        output.Numeric(numeric);
+                    else
+                    {
+                        output.Function(element);
+                        Function(stream, output);
+                    }
                     processed = true;
                 }
                 if (Index(stream, output))
@@ -64,17 +69,19 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <example>
         /// function()
         /// </example>
-        private static bool Function(ExpressionStream stream, TokenStream output, string element)
+        private static bool Function(ExpressionStream stream, TokenStream output)
         {
             // Look for '('
             if (!stream.IsGroupStart())
                 return false;
 
             output.GroupStart();
+            stream.Separator();
             while (!stream.IsGroupEnd())
                 Inner(stream, output);
 
             output.GroupEnd();
+            stream.Separator();
             return true;
         }
 
@@ -120,8 +127,13 @@ namespace PSRule.Rules.Azure.Data.Template
             else if (stream.TryElement(out string element))
             {
                 stream.Separator();
-                output.Function(element);
-                Function(stream, output, element);
+                if (int.TryParse(element, out int numeric))
+                    output.Numeric(numeric);
+                else
+                {
+                    output.Function(element);
+                    Function(stream, output);
+                }
                 stream.Separator();
             }
             else

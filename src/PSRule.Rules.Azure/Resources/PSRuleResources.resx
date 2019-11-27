@@ -133,6 +133,10 @@
   <data name="MismatchingResourceSegments" xml:space="preserve">
     <value>The number of resource segments needs to match the provided resource type.</value>
   </data>
+  <data name="ParameterNotFound" xml:space="preserve">
+    <value>The parameter named '{0}' was not set or a defaultValue was defined.</value>
+    <comment>A reference to a parameter that in not in the current context.</comment>
+  </data>
   <data name="ReadJsonFailed" xml:space="preserve">
     <value>Read JSON failed.</value>
   </data>
@@ -148,5 +152,9 @@
   <data name="TemplateParameterInvalid" xml:space="preserve">
     <value>The template parameter '{0}' does not use the required format.</value>
     <comment>The structure of the template parameter within the parameter file is invalid.</comment>
+  </data>
+  <data name="VariableNotFound" xml:space="preserve">
+    <value>The variable named '{0}' was not defined in the template.</value>
+    <comment>A reference to a variable that in not in the current context.</comment>
   </data>
 </root>
