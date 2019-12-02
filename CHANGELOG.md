@@ -2,6 +2,31 @@
 
 ## Unreleased
 
+## v0.6.0
+
+What's changed since v0.5.0:
+
+- New features:
+  - Added support for exporting rule data from templates. [#145](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/145)
+    - Added `Export-AzTemplateRuleData` cmdlet to export templates. See cmdlet help for limitations.
+    - Template and parameters are merged, resolving functions, copy loops and conditions.
+- Updated rules:
+  - Azure Kubernetes Services:
+    - Updated `Azure.AKS.Version` to 1.14.8. [#140](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/140)
+- General improvements:
+  - Updated rules to use type pre-conditions. [#144](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/144)
+- Bug fixes:
+  - Fixed processing of `Azure.Resource.UseTags` to exclude `*/providers/roleAssignments`. [#155](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/155)
+    - Provider role assignments do not support tags.
+  - Fixed processing of `Azure.Resource.AllowedRegions`. [#156](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/156)
+    - Exclude `*/providers/roleAssignments`, `Microsoft.Authorization/*` and `Microsoft.Consumption/*`.
+  - Fixed processing of `Azure.VirtualNetwork.NSGAssociated` for templates. [#150](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/150)
+  - Fixed processing of `Azure.VirtualNetwork.LateralTraversal` when `destinationPortRanges` is used. [#149](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/149)
+
+What's changed since pre-release v0.6.0-B1911046:
+
+- No additional changes.
+
 ## v0.6.0-B1911046 (pre-release)
 
 - Improved template support of `Export-AzTemplateRuleData` cmdlet. [#145](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/145)
