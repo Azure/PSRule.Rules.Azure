@@ -211,6 +211,9 @@ task TestDotNet {
 
 task CopyModule {
     CopyModuleFiles -Path src/PSRule.Rules.Azure -DestinationPath out/modules/PSRule.Rules.Azure;
+
+    # Copy third party notices
+    Copy-Item -Path ThirdPartyNotices.txt -Destination out/modules/PSRule.Rules.Azure;
 }
 
 # Synopsis: Build modules only
