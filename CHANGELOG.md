@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.7.0-B1912008 (pre-release)
+
 - Fixed null reference without parameters file. [#189](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/189)
 - Added new rule to check presence of classic Co-Administrators. [#188](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/188)
 - Added new rule to check AKS node pool version matches cluster version. [#186](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/186)
