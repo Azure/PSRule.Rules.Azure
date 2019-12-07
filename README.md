@@ -4,6 +4,12 @@ A suite of rules to validate Azure resources using PSRule.
 
 ![ci-badge]
 
+Features of PSRule for Azure include:
+
+- [Ready to go](docs/features.md#ready-to-go) - Leverage over 70 pre-built rules to validate Azure resources.
+- [DevOps](docs/features.md#devops) - Validate resources pre or post-deployment.
+- [Cross-platform](docs/features.md#cross-platform) - Run on MacOS, Linux and Windows.
+
 ## Disclaimer
 
 This project is to be considered a **proof-of-concept** and **not a supported product**.
@@ -24,6 +30,13 @@ Module             | Description | Downloads / instructions
 PSRule.Rules.Azure | Validate Azure resources | [latest][module] / [instructions][install]
 
 ## Getting started
+
+PSRule for Azure provides two methods for analyzing Azure resources:
+
+- _Pre-flight_ - Before resources are deployed from Azure Resource Manager templates.
+- _In-flight_ - After resource are deployed to an Azure subscription.
+
+For additional details see the [FAQ](docs/features.md#frequently-asked-questions-faq).
 
 ### Export resource data
 
@@ -160,7 +173,7 @@ PSRule.Rules.Azure extends PowerShell with the following cmdlets.
 
 The following commands exist in the `PSRule.Rules.Azure` module:
 
-- [Export-AzRuleData](docs/commands/PSRule.Rules.Azure/en-US/Export-AzRuleData.md) - Export resource configuration data from one or more Azure subscriptions.
+- [Export-AzRuleData](docs/commands/PSRule.Rules.Azure/en-US/Export-AzRuleData.md) - Export resource configuration data from Azure subscriptions.
 - [Export-AzTemplateRuleData](docs/commands/PSRule.Rules.Azure/en-US/Export-AzTemplateRuleData.md) - Export resource configuration data from Azure templates.
 
 ## Changes and versioning
