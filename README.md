@@ -36,7 +36,7 @@ PSRule for Azure provides two methods for analyzing Azure resources:
 - _Pre-flight_ - Before resources are deployed from Azure Resource Manager templates.
 - _In-flight_ - After resource are deployed to an Azure subscription.
 
-For additional details see the [FAQ](docs/features.md#faq).
+For additional details see the [FAQ](docs/features.md#frequently-asked-questions-faq).
 
 ### Export resource data
 
