@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- Fixed null reference without parameters file. [#189](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/189)
+- Added new rule to check presence of classic Co-Administrators. [#188](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/188)
+- Added new rule to check AKS node pool version matches cluster version. [#186](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/186)
+- Added new rule to check AKS clusters use pod security policies. [#142](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/142)
+- Added new rule to check AKS clusters use network policies. [#143](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/143)
+- Added new rule to check AKS node pools use scale sets. [#187](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/187)
+- Added new baseline to include rules for preview features. [#190](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/190)
+- Updated `Azure.AKS.Version` to check for node pool version. [#191](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/191)
+- **Breaking change**: RBAC rules have been renamed from `Azure.Subscription.*` to `Azure.RBAC.*`. [#119](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/119)
+- **Breaking change**: Security Center rules have been renamed from `Azure.Subscription.*` to `Azure.SecureCenter.*`. [#119](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/119)
+- **Breaking change**: Renamed default baseline from `Azure.SubscriptionDefault` to `Azure.Default`. [#190](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/190)
+
 ## v0.6.0
 
 What's changed since v0.5.0:

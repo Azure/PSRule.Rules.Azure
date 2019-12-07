@@ -109,7 +109,7 @@ task VersionModule ModuleDependencies, {
     };
     Update-ModuleManifest -Path $manifestPath -RequiredModules $requiredModules;
     $manifestContent = Get-Content -Path $manifestPath -Raw;
-    $manifestContent = $manifestContent -replace 'PSRule = ''System.Collections.Hashtable''', 'PSRule = @{ Baseline = ''Azure.SubscriptionDefault'' }';
+    $manifestContent = $manifestContent -replace 'PSRule = ''System.Collections.Hashtable''', 'PSRule = @{ Baseline = ''Azure.Default'' }';
     $manifestContent | Set-Content -Path $manifestPath;
 }
 

@@ -132,11 +132,11 @@ namespace PSRule.Rules.Azure.Pipeline
             if (sourceObject == null || !(sourceObject.BaseObject is TemplateSource source))
                 return;
 
-            for (var i = 0; i < source.ParametersFile.Length; i++)
-            {
-                var output = ProcessTemplate(source.TemplateFile, source.ParametersFile[i]);
-                _Writer.Write(output, true);
-            }
+            if (source.ParametersFile == null || source.ParametersFile.Length == 0)
+                _Writer.Write(ProcessTemplate(source.TemplateFile, null), true);
+            else
+                for (var i = 0; i < source.ParametersFile.Length; i++)
+                    _Writer.Write(ProcessTemplate(source.TemplateFile, source.ParametersFile[i]), true);
         }
 
         public override void End()
@@ -150,7 +150,7 @@ namespace PSRule.Rules.Azure.Pipeline
             if (templateObject == null)
                 throw new FileNotFoundException();
 
-            var parametersObject = ReadFile<JObject>(PSRuleOption.GetRootedPath(parametersFile));
+            var parametersObject = parametersFile != null ? ReadFile<JObject>(PSRuleOption.GetRootedPath(parametersFile)) : null;
             var visitor = new RuleDataExportVisitor();
 
             // Load context

@@ -5,20 +5,24 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 ms-content-id: b0bd4e66-af2f-4d0a-82ae-e4738418bb7e
 ---
 
-# Azure.AKS.Version
+# Upgrade Kubernetes version
 
 ## SYNOPSIS
 
-AKS clusters should meet the minimum version.
+AKS control plane and nodes pools should use a current stable release.
 
 ## DESCRIPTION
 
-The Kubernetes support policy for AKS includes four stable minor releases, and two patch releases for each minor version.
+The AKS support policy for Kubernetes is include N-2 stable minor releases.
+Additionally two patch releases for each minor version are supported.
 
 A list of available Kubernetes versions can be found using the `az aks get-versions -o table --location <location>` CLI command.
 
 ## RECOMMENDATION
 
-Upgrade Kubernetes to the latest stable version of Kubernetes.
+Consider upgrading AKS control plan and nodes pools to the latest stable version of Kubernetes.
 
-For more information see [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions).
+## LINKS
+
+- [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions).
+- [Support policies for Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/support-policies)

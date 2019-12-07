@@ -24,7 +24,13 @@ Describe 'Azure.VirtualMachine' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.json';
 
     Context 'Conditions' {
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
 
         It 'Azure.VM.UseManagedDisks' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.UseManagedDisks' };

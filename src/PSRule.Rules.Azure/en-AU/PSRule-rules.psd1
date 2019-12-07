@@ -4,4 +4,7 @@
     AllowedRegionsNotConfigured = "The azureAllowedRegions option is not configured."
     TcpHealthProbe = "The health probe ({0}) is using TCP."
     RootHttpProbePath = "The health probe ({0}) is using '{1}'."
+    AKSVersion = "The Kubernetes version is v{0}."
+    AKSNodePoolType = "The agent pool ({0}) is not using scale sets."
+    AKSNodePoolVersion = "The agent pool ({0}) is running v{1}."
 }

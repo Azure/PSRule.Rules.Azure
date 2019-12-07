@@ -1,7 +1,7 @@
 ---
 severity: Important
 category: Security operations
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.Subscription.LimitOwner.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.RBAC.LimitOwner.md
 ms-content-id: 43075204-e28b-46a0-90a0-ea5c3b74e9ab
 ---
 

@@ -178,6 +178,30 @@
                 "ResourceType": "Microsoft.Security/securityContacts"
             },
             {
+                "RoleAssignmentId": null,
+                "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+                "DisplayName": "user1@contoso.com",
+                "SignInName": "user1@contoso.com",
+                "RoleDefinitionName": "ServiceAdministrator;AccountAdministrator",
+                "RoleDefinitionId": null,
+                "ObjectId": null,
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
+            },
+            {
+                "RoleAssignmentId": null,
+                "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+                "DisplayName": "user2@contoso.com",
+                "SignInName": "user2@contoso.com",
+                "RoleDefinitionName": "CoAdministrator",
+                "RoleDefinitionId": null,
+                "ObjectId": null,
+                "ObjectType": "User",
+                "CanDelegate": false,
+                "ResourceType": "Microsoft.Authorization/roleAssignments"
+            },
+            {
                 "RoleAssignmentId": "/providers/Microsoft.Management/managementGroups/test-management-group/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
                 "Scope": "/providers/Microsoft.Management/managementGroups/test-management-group",
                 "DisplayName": "User 1",

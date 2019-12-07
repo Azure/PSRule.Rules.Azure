@@ -1,0 +1,120 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "defaultValue": "clusterA",
+            "type": "string"
+        },
+        "clusterLocation": {
+            "defaultValue": "[resourceGroup().location]",
+            "type": "string"
+        },
+        "vnetId": {
+            "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnetA",
+            "type": "string"
+        },
+        "workspaceId": {
+            "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspaceA",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.ContainerService/managedClusters",
+            "apiVersion": "2019-10-01",
+            "name": "[parameters('clusterName')]",
+            "location": "[parameters('clusterLocation')]",
+            "properties": {
+                "kubernetesVersion": "1.14.8",
+                "dnsPrefix": "[concat('npcorp-', parameters('clusterName'))]",
+                "agentPoolProfiles": [
+                    {
+                        "name": "agentpool1",
+                        "count": 3,
+                        "vmSize": "Standard_B2ms",
+                        "osDiskSizeGB": 100,
+                        "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-01')]",
+                        "maxPods": 50,
+                        "type": "VirtualMachineScaleSets",
+                        "orchestratorVersion": "1.14.8",
+                        "osType": "Linux"
+                    }
+                ],
+                "servicePrincipalProfile": {
+                    "clientId": "00000000-0000-0000-0000-000000000000"
+                },
+                "addonProfiles": {
+                    "aciConnectorLinux": {
+                        "enabled": true,
+                        "config": {
+                            "SubnetName": "subnet-aci"
+                        }
+                    },
+                    "azurepolicy": {
+                        "enabled": true
+                    },
+                    "httpApplicationRouting": {
+                        "enabled": true
+                    },
+                    "kubeDashboard": {
+                        "enabled": false
+                    },
+                    "omsagent": {
+                        "enabled": true,
+                        "config": {
+                            "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
+                        }
+                    }
+                },
+                "enableRBAC": true,
+                "enablePodSecurityPolicy": true,
+                "networkProfile": {
+                    "networkPlugin": "azure",
+                    "networkPolicy": "azure",
+                    "loadBalancerSku": "Basic",
+                    "serviceCidr": "192.168.0.0/16",
+                    "dnsServiceIP": "192.168.0.4",
+                    "dockerBridgeCidr": "172.17.0.1/16"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ContainerService/managedClusters/agentPools",
+            "apiVersion": "2019-10-01",
+            "name": "[concat(parameters('clusterName'), '/agentpool2')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))]"
+            ],
+            "properties": {
+                "count": 3,
+                "vmSize": "Standard_B2ms",
+                "osDiskSizeGB": 100,
+                "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-02')]",
+                "maxPods": 30,
+                "type": "AvailabilitySet",
+                "orchestratorVersion": "1.11.5",
+                "osType": "Linux"
+            }
+        },
+        {
+            "type": "Microsoft.ContainerService/managedClusters/agentPools",
+            "apiVersion": "2019-10-01",
+            "name": "[concat(parameters('clusterName'), '/agentpool3')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))]"
+            ],
+            "properties": {
+                "count": 3,
+                "vmSize": "Standard_B2ms",
+                "osDiskSizeGB": 100,
+                "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-03')]",
+                "maxPods": 50,
+                "type": "VirtualMachineScaleSets",
+                "orchestratorVersion": "1.14.8",
+                "osType": "Linux"
+            }
+        }
+    ]
+}
