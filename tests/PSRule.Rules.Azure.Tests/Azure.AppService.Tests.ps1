@@ -24,7 +24,13 @@ Describe 'Azure.AppService' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppService.json';
 
     Context 'Conditions' {
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -WarningAction Ignore -ErrorAction Stop;
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.AppService.PlanInstanceCount' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.PlanInstanceCount' };

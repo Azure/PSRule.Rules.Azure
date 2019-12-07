@@ -101,7 +101,7 @@ task VersionModule ModuleDependencies, {
     $manifest = Test-ModuleManifest -Path $manifestPath;
     $requiredModules = $manifest.RequiredModules | ForEach-Object -Process {
         if ($_.Name -eq 'PSRule' -and $Configuration -eq 'Release') {
-            @{ ModuleName = 'PSRule'; ModuleVersion = '0.10.0' }
+            @{ ModuleName = 'PSRule'; ModuleVersion = '0.12.0' }
         }
         else {
             @{ ModuleName = $_.Name; ModuleVersion = $_.Version }
@@ -109,7 +109,7 @@ task VersionModule ModuleDependencies, {
     };
     Update-ModuleManifest -Path $manifestPath -RequiredModules $requiredModules;
     $manifestContent = Get-Content -Path $manifestPath -Raw;
-    $manifestContent = $manifestContent -replace 'PSRule = ''System.Collections.Hashtable''', 'PSRule = @{ Baseline = ''Azure.SubscriptionDefault'' }';
+    $manifestContent = $manifestContent -replace 'PSRule = ''System.Collections.Hashtable''', 'PSRule = @{ Baseline = ''Azure.Default'' }';
     $manifestContent | Set-Content -Path $manifestPath;
 }
 
@@ -151,8 +151,8 @@ task PSScriptAnalyzer NuGet, {
 
 # Synopsis: Install PSRule
 task PSRule NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.11.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 0.11.0 -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.12.0 -ErrorAction Ignore)) {
+        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 0.12.0 -Scope CurrentUser -Force;
     }
     Import-Module -Name PSRule -Verbose:$False;
 }

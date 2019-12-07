@@ -24,26 +24,32 @@ Describe 'Azure.Subscription' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.Subscription.json';
 
     Context 'Conditions' {
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -WarningAction Ignore -ErrorAction Stop;
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
-        It 'Azure.Subscription.UseGroups' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Subscription.UseGroups' };
+        It 'Azure.RBAC.UseGroups' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RBAC.UseGroups' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'subscription-B';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'subscription-B', 'subscription-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -BeIn 2;
-            $ruleResult.TargetName | Should -BeIn 'subscription-A', 'subscription-C';
+            $ruleResult.Length | Should -BeIn 1;
+            $ruleResult.TargetName | Should -BeIn 'subscription-A';
         }
 
-        It 'Azure.Subscription.LimitOwner' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Subscription.LimitOwner' };
+        It 'Azure.RBAC.LimitOwner' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RBAC.LimitOwner' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -58,8 +64,8 @@ Describe 'Azure.Subscription' {
             $ruleResult.TargetName | Should -BeIn 'subscription-A', 'subscription-C';
         }
 
-        It 'Azure.Subscription.LimitMGDelegation' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Subscription.LimitMGDelegation' };
+        It 'Azure.RBAC.LimitMGDelegation' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RBAC.LimitMGDelegation' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -74,8 +80,24 @@ Describe 'Azure.Subscription' {
             $ruleResult.TargetName | Should -BeIn 'subscription-B', 'subscription-A';
         }
 
-        It 'Azure.Subscription.UseRGDelegation' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Subscription.UseRGDelegation' };
+        It 'Azure.RBAC.CoAdministrator' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RBAC.CoAdministrator' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'subscription-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'subscription-B', 'subscription-A';
+        }
+
+        It 'Azure.RBAC.UseRGDelegation' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RBAC.UseRGDelegation' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -90,8 +112,8 @@ Describe 'Azure.Subscription' {
             $ruleResult.TargetName | Should -Be 'test-rg-A';
         }
 
-        It 'Azure.Subscription.SecurityCenterContact' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Subscription.SecurityCenterContact' };
+        It 'Azure.SecurityCenter.Contact' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SecurityCenter.Contact' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -106,8 +128,8 @@ Describe 'Azure.Subscription' {
             $ruleResult.TargetName | Should -Be 'subscription-C';
         }
 
-        It 'Azure.Subscription.SecurityCenterProvisioning' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Subscription.SecurityCenterProvisioning' };
+        It 'Azure.SecurityCenter.Provisioning' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SecurityCenter.Provisioning' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

@@ -24,8 +24,15 @@ Describe 'Azure.Resource' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.Resource.json';
 
     Context 'Conditions' {
-        $options = New-PSRuleOption -BaselineConfiguration @{ 'azureAllowedRegions' = @('region-A') };
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -Option $options -Outcome All -InputPath $dataPath -WarningAction Ignore -ErrorAction Stop;
+        $option = New-PSRuleOption -BaselineConfiguration @{ 'azureAllowedRegions' = @('region-A') };
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            Option = $option
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
 
         It 'Azure.Resource.UseTags' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Resource.UseTags' };
@@ -71,8 +78,15 @@ Describe 'Azure.Resource' {
         $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Resource.json;
         Export-AzTemplateRuleData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
-        $options = New-PSRuleOption -BaselineConfiguration @{ 'azureAllowedRegions' = @('region-A') };
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -Option $options -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        $option = New-PSRuleOption -BaselineConfiguration @{ 'azureAllowedRegions' = @('region-A') };
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            Option = $option
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
 
         It 'Azure.Resource.UseTags' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Resource.UseTags' };

@@ -24,7 +24,13 @@ Describe 'Azure.DataFactory' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.DataFactory.json';
 
     Context 'Conditions' {
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $dataPath -WarningAction Ignore -ErrorAction Stop;
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.DataFactory.Version' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.DataFactory.Version' };

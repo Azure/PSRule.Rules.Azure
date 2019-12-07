@@ -5,8 +5,11 @@ RuleName | Description | Category
 [Azure.ACR.AdminUser](Azure.ACR.AdminUser.md) | Use Azure AD accounts instead of using the registry admin user. | Security configuration
 [Azure.ACR.MinSku](Azure.ACR.MinSku.md) | ACR should use the Premium or Standard SKU for production deployments. | Performance
 [Azure.AKS.MinNodeCount](Azure.AKS.MinNodeCount.md) | AKS clusters should have minimum number of nodes for failover and updates. | Reliability
-[Azure.AKS.Version](Azure.AKS.Version.md) | AKS clusters should meet the minimum version. | Operations management
-[Azure.AKS.UseRBAC](Azure.AKS.UseRBAC.md) | AKS cluster should use role-based access control (RBAC). | Security configuration
+[Azure.AKS.Version](Azure.AKS.Version.md) | AKS control plane and nodes pools should use a current stable release. | Operations management
+[Azure.AKS.PoolVersion](Azure.AKS.PoolVersion.md) | AKS node pools should match Kubernetes control plane version. | Operations management
+[Azure.AKS.UseRBAC](Azure.AKS.UseRBAC.md) | Deploy AKS cluster with role-based access control (RBAC) enabled. | Security configuration
+[Azure.AKS.NetworkPolicy](Azure.AKS.NetworkPolicy.md) | Deploy AKS clusters with Azure Network Policies enabled. | Security configuration
+[Azure.AKS.PoolScaleSet](Azure.AKS.PoolScaleSet.md) | Deploy AKS clusters with nodes pools based on VM scale sets. | Scalability
 [Azure.AppService.PlanInstanceCount](Azure.AppService.PlanInstanceCount.md) | Use an App Service Plan with at least two (2) instances. | Reliability
 [Azure.AppService.MinPlan](Azure.AppService.MinPlan.md) | Use at least a Standard App Service Plan. | Performance
 [Azure.AppService.ARRAffinity](Azure.AppService.ARRAffinity.md) | Disable client affinity for stateless services. | Performance
@@ -35,12 +38,13 @@ RuleName | Description | Category
 [Azure.Storage.SecureTransferRequired](Azure.Storage.SecureTransferRequired.md) | Storage accounts should only accept secure traffic. | Security configuration
 [Azure.Storage.UseEncryption](Azure.Storage.UseEncryption.md) | Storage Service Encryption (SSE) should be enabled. | Security configuration
 [Azure.Storage.SoftDelete](Azure.Storage.SoftDelete.md) | Enable soft delete on Storage Accounts. | Data recovery
-[Azure.Subscription.UseGroups](Azure.Subscription.UseGroups.md) | Use groups for assigning permissions instead of individual user accounts. | Security operations
-[Azure.Subscription.LimitOwner](Azure.Subscription.LimitOwner.md) | Limit the number of subscription Owners. | Security operations
-[Azure.Subscription.LimitMGDelegation](Azure.Subscription.LimitMGDelegation.md) | Limit Role-Base Access Control (RBAC) inheritance from Management Groups. | Security operations
-[Azure.Subscription.SecurityCenterContact](Azure.Subscription.SecurityCenterContact.md) | Security Center email and phone contact details should be set. | Security operations
-[Azure.Subscription.SecurityCenterProvisioning](Azure.Subscription.SecurityCenterProvisioning.md) | Enable auto-provisioning on VMs to improve Security Center insights. | Security operations
-[Azure.Subscription.UseRGDelegation](Azure.Subscription.UseRGDelegation.md) | Use RBAC assignments on resource groups instead of individual resources. | Security operations
+[Azure.RBAC.UseGroups](Azure.RBAC.UseGroups.md) | Use groups for assigning permissions instead of individual user accounts. | Security operations
+[Azure.RBAC.LimitOwner](Azure.RBAC.LimitOwner.md) | Limit the number of subscription Owners. | Security operations
+[Azure.RBAC.LimitMGDelegation](Azure.RBAC.LimitMGDelegation.md) | Limit Role-Base Access Control (RBAC) inheritance from Management Groups. | Security operations
+[Azure.RBAC.CoAdministrator](Azure.RBAC.CoAdministrator.md) | Delegate access to manage Azure resources using role-based access control (RBAC). | Security operations
+[Azure.RBAC.UseRGDelegation](Azure.RBAC.UseRGDelegation.md) | Use RBAC assignments on resource groups instead of individual resources. | Security operations
+[Azure.SecurityCenter.Contact](Azure.SecurityCenter.Contact.md) | Security Center email and phone contact details should be set. | Security operations
+[Azure.SecurityCenter.Provisioning](Azure.SecurityCenter.Provisioning.md) | Enable auto-provisioning on VMs to improve Security Center insights. | Security operations
 [Azure.VM.UseManagedDisks](Azure.VM.UseManagedDisks.md) | Virtual machines should use managed disks. | Reliability
 [Azure.VM.Standalone](Azure.VM.Standalone.md) | VMs must use premium disks or use availability sets/ zones to meet SLA requirements. | Reliability
 [Azure.VM.PromoSku](Azure.VM.PromoSku.md) | Virtual machines (VMs) should not use expired promotional SKU. | Cost management

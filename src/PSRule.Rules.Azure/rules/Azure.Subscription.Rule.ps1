@@ -2,8 +2,10 @@
 # Validation rules for Azure subscriptions
 #
 
+#region RBAC
+
 # Synopsis: Use groups for assigning permissions instead of individual user accounts
-Rule 'Azure.Subscription.UseGroups' -Type 'Microsoft.Subscription' {
+Rule 'Azure.RBAC.UseGroups' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
     $userAssignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.ObjectType -eq 'User'
@@ -12,7 +14,7 @@ Rule 'Azure.Subscription.UseGroups' -Type 'Microsoft.Subscription' {
 }
 
 # Synopsis: Limit the number of subscription Owners
-Rule 'Azure.Subscription.LimitOwner' -Type 'Microsoft.Subscription' {
+Rule 'Azure.RBAC.LimitOwner' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.RoleDefinitionName -eq 'Owner' -and
@@ -23,7 +25,7 @@ Rule 'Azure.Subscription.LimitOwner' -Type 'Microsoft.Subscription' {
 }
 
 # Synopsis: Limit RBAC inheritance from Management Groups
-Rule 'Azure.Subscription.LimitMGDelegation' -Type 'Microsoft.Subscription' {
+Rule 'Azure.RBAC.LimitMGDelegation' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         ($_.Scope -like "/providers/Microsoft.Management/managementGroups/*")
@@ -31,8 +33,30 @@ Rule 'Azure.Subscription.LimitMGDelegation' -Type 'Microsoft.Subscription' {
     $assignments.Length -le 3
 }
 
+# Synopsis: Avoid using classic co-administrator roles
+Rule 'Azure.RBAC.CoAdministrator' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
+    $assignments = @($TargetObject.resources | Where-Object {
+        $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
+        $_.RoleDefinitionName -eq 'CoAdministrator'
+    })
+    $assignments.Length -eq 0
+}
+
+# Synopsis: Use RBAC assignments on resource groups instead of individual resources
+Rule 'Azure.RBAC.UseRGDelegation' -Type 'Microsoft.Resources/resourceGroups' -Tag @{ release = 'GA' } {
+    $assignments = @($TargetObject.resources | Where-Object {
+        $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
+        $_.Scope -like "/subscriptions/*/resourceGroups/*/providers/*"
+    })
+    $assignments.Length -eq 0
+}
+
+#endregion RBAC
+
+#region Security Center
+
 # Synopsis: Security Center email and phone contact details should be set
-Rule 'Azure.Subscription.SecurityCenterContact' -Type 'Microsoft.Subscription' -Tag @{ severity = 'Important'; category = 'Security operations' } {
+Rule 'Azure.SecurityCenter.Contact' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; severity = 'Important'; category = 'Security operations' } {
     $contacts = $TargetObject.resources | Where-Object { $_.ResourceType -eq 'Microsoft.Security/securityContacts' };
     $Null -ne $contacts;
     foreach ($c in $contacts) {
@@ -42,8 +66,8 @@ Rule 'Azure.Subscription.SecurityCenterContact' -Type 'Microsoft.Subscription' -
 
 # TODO: Check Security Center recommendations
 
-# Synopsis: Enable auto-provisioning on VMs to improve Security Center insights
-Rule 'Azure.Subscription.SecurityCenterProvisioning' -Type 'Microsoft.Subscription' -Tag @{ severity = 'Important'; category = 'Security operations' } {
+# Synopsis: Enable auto-provisioning on VMs to improve Azure Security Center insights
+Rule 'Azure.SecurityCenter.Provisioning' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; severity = 'Important'; category = 'Security operations' } {
     $provisioning = $TargetObject.resources | Where-Object { $_.ResourceType -eq 'Microsoft.Security/autoProvisioningSettings' };
     $Null -ne $provisioning;
     foreach ($s in $provisioning) {
@@ -51,14 +75,7 @@ Rule 'Azure.Subscription.SecurityCenterProvisioning' -Type 'Microsoft.Subscripti
     }
 }
 
-# Synopsis: Use RBAC assignments on resource groups instead of individual resources
-Rule 'Azure.Subscription.UseRGDelegation' -Type 'Microsoft.Resources/resourceGroups' {
-    $assignments = @($TargetObject.resources | Where-Object {
-        $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
-        $_.Scope -like "/subscriptions/*/resourceGroups/*/providers/*"
-    })
-    $assignments.Length -eq 0
-}
+#endregion Security Center
 
 # TODO: Use policy
 # TODO: Use resource locks

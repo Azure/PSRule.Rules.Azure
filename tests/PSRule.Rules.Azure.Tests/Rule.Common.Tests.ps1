@@ -20,18 +20,29 @@ $rootPath = $PWD;
 Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
 
 Describe 'Rule quality' {
-    Context 'Metadata' {
-        $result = Get-PSRule -Module PSRule.Rules.Azure -WarningAction Ignore;
+    $rules = Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.All' -WarningAction SilentlyContinue;
 
-        foreach ($rule in $result) {
+    Context 'Naming' {
+        foreach ($rule in $rules) {
             It $rule.RuleName {
-                $rule.Description | Should -Not -BeNullOrEmpty;
-                $rule.Info.Annotations.severity | Should -Not -BeNullOrEmpty;
-                $rule.Info.Annotations.category | Should -Not -BeNullOrEmpty;
-
+                $rule.RuleName | Should -BeLike "Azure*";
+                # $rule.RuleName.Length -le 35 | Should -Be $True;
                 if ($rule.RuleName.Length -gt 35) {
                     Write-Warning -Message "Rule name $($rule.RuleName) is longer than 35 characters.";
                 }
+            }
+        }
+    }
+
+    Context 'Metadata' {
+        foreach ($rule in $rules) {
+            It $rule.RuleName {
+                $rule.Synopsis | Should -Not -BeNullOrEmpty;
+                $rule.Description | Should -Not -BeNullOrEmpty;
+                $rule.Tag.release | Should -BeIn 'GA', 'preview';
+                $rule.Info.Annotations.severity | Should -Not -BeNullOrEmpty;
+                $rule.Info.Annotations.category | Should -Not -BeNullOrEmpty;
+                $rule.Info.GetOnlineHelpUri()  | Should -Not -BeNullOrEmpty;
             }
         }
     }

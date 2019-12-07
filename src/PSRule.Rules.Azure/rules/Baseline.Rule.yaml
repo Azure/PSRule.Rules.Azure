@@ -3,9 +3,39 @@
 # Synopsis: Default baseline for Azure rules
 kind: Baseline
 metadata:
-  name: Azure.SubscriptionDefault
+  name: Azure.Default
 spec:
   binding:
     targetType:
     - ResourceType
     - type
+  rule:
+    tag:
+      release: GA
+
+---
+# Synopsis: Includes Azure features in preview
+kind: Baseline
+metadata:
+  name: Azure.Preview
+spec:
+  binding:
+    targetType:
+    - ResourceType
+    - type
+  rule:
+    tag:
+      release: [ 'GA', 'preview' ]
+
+---
+# Synopsis: Includes all Azure rules
+kind: Baseline
+metadata:
+  name: Azure.All
+spec:
+  binding:
+    targetType:
+    - ResourceType
+    - type
+  rule:
+    tag: { }

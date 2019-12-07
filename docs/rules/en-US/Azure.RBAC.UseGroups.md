@@ -1,7 +1,7 @@
 ---
 severity: Important
 category: Security operations
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.Subscription.UseGroups.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/Azure.RBAC.UseGroups.md
 ms-content-id: 818cc242-5912-44b6-b3dc-461822079522
 ---
 
