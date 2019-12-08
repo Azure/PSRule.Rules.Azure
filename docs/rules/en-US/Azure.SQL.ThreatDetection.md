@@ -5,16 +5,21 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 ms-content-id: 720e560d-4ad3-41ca-93dd-69c5783b9dbe
 ---
 
-# Azure.SQL.ThreatDetection
+# Use Advanced Threat Protection
 
 ## SYNOPSIS
 
-Enable threat detection for Azure SQL logical server.
+Enable Advanced Thread Protection for Azure SQL logical server.
 
 ## DESCRIPTION
 
-Enable threat detection for Azure SQL logical server.
+Enable Advanced Thread Protection for Azure SQL logical server.
 
 ## RECOMMENDATION
 
-Enable threat detection for Azure SQL logical server.
+Consider enabling Advanced Data Security and configuring Advanced Thread Protection for SQL logical servers.
+
+## LINKS
+
+- [Advanced Threat Protection for Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-threat-detection-overview)
+- [Advanced data security for Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-advanced-data-security)
