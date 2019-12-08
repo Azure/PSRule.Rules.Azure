@@ -5,7 +5,7 @@ online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/do
 ms-content-id: bbf194a7-6ca3-4b1d-9170-6217eb26620d
 ---
 
-# Azure.ACR.AdminUser
+# Disable ACR admin user
 
 ## SYNOPSIS
 
@@ -17,6 +17,13 @@ Use role-based access control (RBAC) for delegating an Azure AD (AAD) account ac
 
 ## RECOMMENDATION
 
-The Admin user account is a single user account with administrative access to the registry. This account provides single user access for test and development.
+The Admin user account is a single user account with administrative access to the registry.
+This account provides single user access for test and development.
 
-Consider using an AAD-based identity with roles based access granted. Also consider disabling the Admin user account.
+Consider using an AAD-based identity with roles based access granted.
+Also consider disabling the Admin user account.
+
+## LINKS
+
+- [Authenticate with a private Docker container registry](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-authentication)
+- [Best practices for Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-best-practices#authentication)

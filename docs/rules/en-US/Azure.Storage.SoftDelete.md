@@ -14,7 +14,6 @@ Enable soft delete on Storage Accounts.
 ## DESCRIPTION
 
 Soft delete on Azure Storage Accounts is not enabled.
-
 Soft delete provides an easy way to recover deleted or modified data stored as blobs within a Storage Account within a configured interval.
 
 ## RECOMMENDATION
@@ -23,4 +22,7 @@ Consider enabling soft delete on storage accounts to protect blobs from accident
 
 Also consider implementing role-based access control (RBAC), Resource Locks and backups blobs to protect against storage accounts or blob containers being deleted.
 
-For more information see [Soft delete for Azure Storage blobs](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-soft-delete) and [RBAC operations for Storage](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations#microsoftstorage)
+## LINKS
+
+- [Soft delete for Azure Storage blobs](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-soft-delete)
+- [RBAC operations for Storage](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations#microsoftstorage)

@@ -13,10 +13,17 @@ Disable client affinity for stateless services.
 
 ## DESCRIPTION
 
-Disable client affinity for stateless services.
+Azure App Service apps use Application Request Routing (ARR) by default.
+ARR uses a cookie to route subsequent client requests back to the same instance when an app is scaled to two or more instances.
+This benefits stateful applications, which may hold session information in instance memory.
+
+For stateless applications, disabling ARR allows Azure App Service more evenly distribute load.
 
 ## RECOMMENDATION
 
 Azure App Service sites make use of Application Request Routing (ARR) by default.
+Consider disabling ARR affinity for stateless applications.
 
-Disable ARR affinity when not required.
+## LINKS
+
+- [Configure an App Service app](https://docs.microsoft.com/en-us/azure/app-service/configure-common#configure-general-settings)

@@ -32,7 +32,7 @@ Rule 'Azure.SQL.FirewallIPRange' -Type 'Microsoft.Sql/servers' -Tag @{ release =
     $summary.Public -le 10;
 }
 
-# Synopsis: Enable threat detection for Azure SQL logical server
+# Synopsis: Enable Advanced Thread Protection for Azure SQL logical server
 Rule 'Azure.SQL.ThreatDetection' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; severity = 'Important'; category = 'Security configuration' } {
     $policy = $TargetObject.resources | Where-Object -FilterScript {
         $_.Type -eq 'Microsoft.Sql/servers/securityAlertPolicies'
