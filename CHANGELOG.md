@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fixed missing cmdlet help. [#196](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/196)
+
 ## v0.7.0-B1912008 (pre-release)
 
 - Fixed null reference without parameters file. [#189](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/189)

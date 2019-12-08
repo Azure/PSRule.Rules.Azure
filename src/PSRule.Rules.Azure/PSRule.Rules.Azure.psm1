@@ -16,7 +16,7 @@ Set-StrictMode -Version latest;
 
 #region Public functions
 
-# .ExternalHelp PSRule.Rules.Azure-Help.xml
+# .ExternalHelp PSRule.Rules.Azure-help.xml
 function Export-AzRuleData {
     [CmdletBinding(SupportsShouldProcess = $True, DefaultParameterSetName = 'Default')]
     [OutputType([System.IO.FileInfo])]
@@ -81,7 +81,7 @@ function Export-AzRuleData {
     }
 }
 
-# .ExternalHelp PSRule.Rules.Azure-Help.xml
+# .ExternalHelp PSRule.Rules.Azure-help.xml
 function Export-AzTemplateRuleData {
     [CmdletBinding()]
     [OutputType([System.IO.FileInfo])]
