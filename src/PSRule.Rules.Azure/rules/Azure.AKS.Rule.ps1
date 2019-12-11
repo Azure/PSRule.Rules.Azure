@@ -15,7 +15,8 @@ Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Mi
         Reason ($LocalizedData.AKSVersion -f $TargetObject.Properties.kubernetesVersion);
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters/agentPools') {
-        ([Version]$TargetObject.Properties.orchestratorVersion) -ge $minVersion
+        $Assert.NullOrEmpty($TargetObject, 'Properties.orchestratorVersion').Result -or
+            (([Version]$TargetObject.Properties.orchestratorVersion) -ge $minVersion)
         Reason ($LocalizedData.AKSVersion -f $TargetObject.Properties.orchestratorVersion);
     }
 } -Configure @{ minAKSVersion = '1.14.8' }
@@ -24,7 +25,9 @@ Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Mi
 Rule 'Azure.AKS.PoolVersion' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA' } {
     $clusterVersion = $TargetObject.Properties.kubernetesVersion
     foreach ($pool in $TargetObject.Properties.agentPoolProfiles) {
-        $Assert.Create(($pool.orchestratorVersion -eq $clusterVersion), ($LocalizedData.AKSNodePoolVersion -f $pool.name, $pool.orchestratorVersion))
+        $result = $Assert.HasDefaultValue($pool, 'orchestratorVersion', $clusterVersion);
+        $result.AddReason(($LocalizedData.AKSNodePoolVersion -f $pool.name, $pool.orchestratorVersion));
+        $result;
     }
 }
 

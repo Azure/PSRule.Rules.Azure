@@ -38,7 +38,6 @@
                         "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-01')]",
                         "maxPods": 50,
                         "type": "VirtualMachineScaleSets",
-                        "orchestratorVersion": "1.14.8",
                         "osType": "Linux"
                     }
                 ],
@@ -113,6 +112,23 @@
                 "maxPods": 50,
                 "type": "VirtualMachineScaleSets",
                 "orchestratorVersion": "1.14.8",
+                "osType": "Linux"
+            }
+        },
+        {
+            "type": "Microsoft.ContainerService/managedClusters/agentPools",
+            "apiVersion": "2019-10-01",
+            "name": "[concat(parameters('clusterName'), '/agentpool4')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))]"
+            ],
+            "properties": {
+                "count": 3,
+                "vmSize": "Standard_B2ms",
+                "osDiskSizeGB": 100,
+                "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-04')]",
+                "maxPods": 50,
+                "type": "VirtualMachineScaleSets",
                 "osType": "Linux"
             }
         }
