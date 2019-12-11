@@ -169,8 +169,18 @@ Describe 'Azure.AKS' -Tag AKS {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterA/agentpool3';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterA/agentpool3', 'clusterA/agentpool4';
+        }
+
+        It 'Azure.AKS.PoolVersion' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.PoolVersion' };
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'clusterA';
         }
 
         It 'Azure.AKS.PoolScaleSet' {
@@ -185,8 +195,8 @@ Describe 'Azure.AKS' -Tag AKS {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterA/agentpool3';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterA/agentpool3', 'clusterA/agentpool4';
         }
     }
 }
