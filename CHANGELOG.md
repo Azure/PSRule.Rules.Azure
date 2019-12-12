@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.7.0-B1912017 (pre-release)
+
 - Fixed missing cmdlet help. [#196](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/196)
 - Fixed AKS templates without node pool orchestratorVersion fail. [#198](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/198)
 
