@@ -9,6 +9,10 @@ spec:
     targetType:
     - ResourceType
     - type
+    field:
+      resourceId: [ 'ResourceId' ]
+      subscriptionId: [ 'SubscriptionId' ]
+      resourceGroupName: [ 'ResourceGroupName' ]
   rule:
     tag:
       release: GA
@@ -23,6 +27,10 @@ spec:
     targetType:
     - ResourceType
     - type
+    field:
+      resourceId: [ 'ResourceId' ]
+      subscriptionId: [ 'SubscriptionId' ]
+      resourceGroupName: [ 'ResourceGroupName' ]
   rule:
     tag:
       release: [ 'GA', 'preview' ]
@@ -37,5 +45,9 @@ spec:
     targetType:
     - ResourceType
     - type
+    field:
+      resourceId: [ 'ResourceId' ]
+      subscriptionId: [ 'SubscriptionId' ]
+      resourceGroupName: [ 'ResourceGroupName' ]
   rule:
     tag: { }

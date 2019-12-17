@@ -42,12 +42,18 @@ Describe 'Azure.Resource' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'registry-B', 'registry-C';
+            $ruleResult.Field.subscriptionId | Should -BeIn '00000000-0000-0000-0000-000000000000';
+            $ruleResult.Field.resourceGroupName | Should -BeIn 'test-rg';
+            $ruleResult.Field.resourceId | Should -Not -BeNullOrEmpty;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'registry-A', 'trafficManager-A';
+            $ruleResult.Field.subscriptionId | Should -BeIn '00000000-0000-0000-0000-000000000000';
+            $ruleResult.Field.resourceGroupName | Should -BeIn 'test-rg';
+            $ruleResult.Field.resourceId | Should -Not -BeNullOrEmpty;
         }
 
         It 'Azure.Resource.AllowedRegions' {
@@ -94,8 +100,8 @@ Describe 'Azure.Resource' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -BeIn 'vnet-001/subnet2', 'route-subnet1', 'route-subnet2', 'nsg-subnet1', 'nsg-subnet2', 'nsg-extra';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'route-subnet1', 'route-subnet2', 'nsg-subnet1', 'nsg-subnet2', 'nsg-extra';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -106,8 +112,8 @@ Describe 'Azure.Resource' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetType | Should -BeIn 'Microsoft.Network/virtualNetworks/subnets/providers/roleAssignments';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetType | Should -BeIn 'Microsoft.Network/virtualNetworks/subnets/providers/roleAssignments', 'Microsoft.Network/virtualNetworks/subnets';
         }
 
         It 'Azure.Resource.AllowedRegions' {

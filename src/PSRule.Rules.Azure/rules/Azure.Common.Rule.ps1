@@ -187,11 +187,21 @@ function global:SupportsTags {
             ($Rule.TargetType -like 'Microsoft.Security/*') -or
             ($Rule.TargetType -like 'microsoft.support/*') -or
             ($Rule.TargetType -like 'Microsoft.WorkloadMonitor/*') -or
-            ($Rule.TargetType -like '*/providers/roleAssignments')
+            ($Rule.TargetType -like '*/providers/roleAssignments') -or
+
+            # Exclude sub-resources by default
+            ($Rule.TargetType -like 'Microsoft.*/*/*' -and !(
+                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/runbooks' -or
+                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/configurations' -or
+                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/compilationjobs' -or
+                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/modules' -or
+                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/nodeConfigurations' -or
+                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/python2Packages' -or
+                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/watchers'
+            ))
         ) {
             return $False;
         }
-
         return $True;
     }
 }
@@ -213,7 +223,6 @@ function global:SupportsRegions {
         ) {
             return $False;
         }
-
         return $True;
     }
 }
@@ -233,7 +242,6 @@ function global:ConvertToUInt64 {
         for ($i = 0; $i -lt $size; $i++) {
             $result = ($result -shl 8) + $bytes[$i];
         }
-
         return $result;
     }
 }
@@ -288,7 +296,6 @@ function global:GetIPAddressSummary {
                 $public += GetIPAddressCount -Start $fwRule.Properties.startIpAddress -End $fwRule.Properties.endIpAddress;
             }
         }
-
         return [PSCustomObject]@{
             Private = $private
             Public = $public
