@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.7.0-B1912024 (pre-release)
+
 - Fixed handling of tags for sub-resources. [#203](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/203)
 - Added custom bindings for common resource properties. [#202](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/202)
 
