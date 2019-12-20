@@ -2,6 +2,38 @@
 
 ## Unreleased
 
+## v0.7.0
+
+What's changed since v0.6.0:
+
+- New rules:
+  - Role assignment:
+    - Added new rule to check presence of classic Co-Administrators. [#188](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/188)
+  - Azure Kubernetes Services:
+    - Added new rule to check AKS node pool version matches cluster version. [#186](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/186)
+    - Added new rule to check AKS clusters use pod security policies. [#142](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/142)
+    - Added new rule to check AKS clusters use network policies. [#143](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/143)
+    - Added new rule to check AKS node pools use scale sets. [#187](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/187)
+- Updated rules:
+  - Azure Kubernetes Services:
+    - Updated `Azure.AKS.Version` to check for node pool version. [#191](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/191)
+- General improvements:
+  - Added custom bindings for common resource properties. [#202](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/202)
+  - Added new baseline to include rules for preview features. [#190](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/190)
+  - **Breaking change**: Shorten rule names to improve output display. [#119](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/119)
+    - RBAC rules have been renamed from `Azure.Subscription.*` to `Azure.RBAC.*`.
+    - Security Center rules have been renamed from `Azure.Subscription.*` to `Azure.SecureCenter.*`.
+  - **Breaking change**: Renamed default baseline from `Azure.SubscriptionDefault` to `Azure.Default`. [#190](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/190)
+- Bug fixes:
+  - Fixed handling of tags for sub-resources. [#203](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/203)
+  - Fixed missing cmdlet help. [#196](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/196)
+  - Fixed AKS templates without node pool orchestratorVersion fail. [#198](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/198)
+  - Fixed null reference without parameters file. [#189](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/189)
+
+What's changed since pre-release v0.7.0-B1912024:
+
+- No additional changes.
+
 ## v0.7.0-B1912024 (pre-release)
 
 - Fixed handling of tags for sub-resources. [#203](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/203)
