@@ -62,7 +62,7 @@ function Export-AzRuleData {
         }
 
         $getParams = @{ };
-        $filterParams = @{};
+        $filterParams = @{ };
 
         if ($PSBoundParameters.ContainsKey('Tag')) {
             $getParams['Tag'] = $Tag;
@@ -75,8 +75,8 @@ function Export-AzRuleData {
         foreach ($c in $context) {
             $filePath = Join-Path -Path $OutputPath -ChildPath "$($c.Subscription.Id).json";
             GetAzureResource @getParams -Context $c -Verbose:$VerbosePreference `
-                | FilterAzureResource @filterParams -Verbose:$VerbosePreference `
-                | ExportAzureResource -Path $filePath -PassThru $PassThru -Verbose:$VerbosePreference;
+            | FilterAzureResource @filterParams -Verbose:$VerbosePreference `
+            | ExportAzureResource -Path $filePath -PassThru $PassThru -Verbose:$VerbosePreference;
         }
     }
 }
@@ -270,11 +270,11 @@ function GetAzureResource {
         }
 
         Get-AzResource @getParams -ExpandProperties -DefaultProfile $Context `
-            | ExpandResource -Context $Context -Verbose:$VerbosePreference;
+        | ExpandResource -Context $Context -Verbose:$VerbosePreference;
         Get-AzResourceGroup @getParams -DefaultProfile $Context `
-            | SetResourceType 'Microsoft.Resources/resourceGroups' | ExpandResource -Context $Context -Verbose:$VerbosePreference;
+        | SetResourceType 'Microsoft.Resources/resourceGroups' | ExpandResource -Context $Context -Verbose:$VerbosePreference;
         Get-AzSubscription -SubscriptionId $Context.DefaultContext.Subscription.Id `
-            | SetResourceType 'Microsoft.Subscription' | ExpandResource -Context $Context -Verbose:$VerbosePreference;
+        | SetResourceType 'Microsoft.Subscription' | ExpandResource -Context $Context -Verbose:$VerbosePreference;
     }
 }
 
@@ -406,6 +406,24 @@ function VisitSqlManagedInstance {
         $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Sql/managedInstances/vulnerabilityAssessments' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2018-06-01-preview' -ExpandProperties;
         $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Sql/managedInstances/administrators' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-03-01-preview' -ExpandProperties;
         $sqlMI | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
+
+function VisitAutomationAccount {
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        $aa = $Resource
+        $resources = @();
+
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Automation/AutomationAccounts/variables' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2015-10-31' -ExpandProperties;
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Automation/AutomationAccounts/webhooks' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2015-10-31' -ExpandProperties;
+        $aa | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru; 
     }
 }
 
@@ -557,12 +575,12 @@ function VisitResourceGroup {
     process {
         $resources = @();
         $resources += Get-AzRoleAssignment -DefaultProfile $Context -Scope $Resource.ResourceId `
-            | Where-Object { $_.Scope.StartsWith($Resource.ResourceId) } `
-            | SetResourceType 'Microsoft.Authorization/roleAssignments';
+        | Where-Object { $_.Scope.StartsWith($Resource.ResourceId) } `
+        | SetResourceType 'Microsoft.Authorization/roleAssignments';
         $resources += Get-AzResourceLock -DefaultProfile $Context -ResourceGroupName $Resource.ResourceGroupName | SetResourceType 'Microsoft.Authorization/locks';
         $Resource `
-            | Add-Member -MemberType NoteProperty -Name Name -Value $Resource.ResourceGroupName -PassThru `
-            | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+        | Add-Member -MemberType NoteProperty -Name Name -Value $Resource.ResourceGroupName -PassThru `
+        | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
 
@@ -577,6 +595,7 @@ function ExpandResource {
     )
     process {
         switch ($Resource.ResourceType) {
+            'Microsoft.Automation/automationAccounts' { VisitAutomationAccount @PSBoundParameters; }
             'Microsoft.Sql/servers' { VisitSqlServer @PSBoundParameters; }
             'Microsoft.DBforPostgreSQL/servers' { VisitPostgreSqlServer @PSBoundParameters; }
             'Microsoft.DBforMySQL/servers' { VisitMySqlServer @PSBoundParameters; }
