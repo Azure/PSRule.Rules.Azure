@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## v0.8.0-B1912012 (pre-release)
+
+- Added new rule to check automation account use encrypted variables. [#211](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/211)
+- Added new rule to check automation account webhook expiry interval. [#212](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/212)
+
 ## v0.7.0
 
 What's changed since v0.6.0:
