@@ -14,7 +14,10 @@ param (
     [Switch]$CodeCoverage = $False,
 
     [Parameter(Mandatory = $False)]
-    [String]$ArtifactPath = (Join-Path -Path $PWD -ChildPath out/modules)
+    [String]$ArtifactPath = (Join-Path -Path $PWD -ChildPath out/modules),
+
+    [Parameter(Mandatory = $False)]
+    [String]$AssertStyle = 'AzurePipelines'
 )
 
 Write-Host -Object "[Pipeline] -- PWD: $PWD" -ForegroundColor Green;
@@ -219,7 +222,7 @@ task CopyModule {
 # Synopsis: Build modules only
 task BuildModule BuildDotNet, CopyModule
 
-task TestRules TestDotNet, PSRule, Pester, PSScriptAnalyzer, {
+task TestModule TestDotNet, PSRule, Pester, PSScriptAnalyzer, {
     # Run Pester tests
     $pesterParams = @{ Path = (Join-Path -Path $PWD -ChildPath tests/PSRule.Rules.Azure.Tests); OutputFile = 'reports/pester-unit.xml'; OutputFormat = 'NUnitXml'; PesterOption = @{ IncludeVSCodeMarker = $True }; PassThru = $True; };
 
@@ -241,6 +244,21 @@ task TestRules TestDotNet, PSRule, Pester, PSScriptAnalyzer, {
     elseif ($results.FailedCount -gt 0) {
         throw "$($results.FailedCount) tests failed.";
     }
+}
+
+# Synopsis: Run validation
+task Rules PSRule, {
+    $assertParams = @{
+        Path = './.ps-rule/'
+        Style = $AssertStyle
+        OutputFormat = 'NUnit3';
+    }
+    Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    # Get-RepoRuleData -Path $PWD |
+    #     Assert-PSRule @assertParams -OutputPath reports/ps-rule-file.xml;
+
+    Get-PSRule -Module PSRule.Rules.Azure |
+        Assert-PSRule @assertParams -OutputPath reports/ps-rule-file2.xml;
 }
 
 # Synopsis: Run script analyzer
@@ -291,7 +309,7 @@ task Clean {
 
 task Build Clean, BuildModule, VersionModule, BuildHelp
 
-task Test Build, TestRules
+task Test Build, Rules, TestModule
 
 task Release ReleaseModule, TagBuild
 
