@@ -257,8 +257,8 @@ task Rules PSRule, {
     # Get-RepoRuleData -Path $PWD |
     #     Assert-PSRule @assertParams -OutputPath reports/ps-rule-file.xml;
 
-    Get-PSRule -Module PSRule.Rules.Azure |
-        Assert-PSRule @assertParams -OutputPath reports/ps-rule-file2.xml;
+    $rules = Get-PSRule -Module PSRule.Rules.Azure;
+    $rules | Assert-PSRule @assertParams -OutputPath reports/ps-rule-file2.xml;
 }
 
 # Synopsis: Run script analyzer
