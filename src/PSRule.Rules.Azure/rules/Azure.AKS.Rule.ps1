@@ -3,12 +3,12 @@
 #
 
 # Synopsis: AKS clusters should have minimum number of nodes for failover and updates
-Rule 'Azure.AKS.MinNodeCount' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; severity = 'Important'; category = 'Reliability' } {
+Rule 'Azure.AKS.MinNodeCount' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA' } {
     $TargetObject.Properties.agentPoolProfiles[0].count -ge 3
 }
 
 # Synopsis: AKS clusters should meet the minimum version
-Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; severity = 'Important'; category = 'Operations management' } {
+Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA' } {
     $minVersion = [Version]$Configuration.minAKSVersion
     if ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters') {
         ([Version]$TargetObject.Properties.kubernetesVersion) -ge $minVersion
@@ -32,19 +32,18 @@ Rule 'Azure.AKS.PoolVersion' -Type 'Microsoft.ContainerService/managedClusters' 
 }
 
 # Synopsis: AKS cluster should use role-based access control
-Rule 'Azure.AKS.UseRBAC' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; severity = 'Important'; category = 'Security configuration' } {
-    Exists 'Properties.enableRBAC'
-    $TargetObject.Properties.enableRBAC -eq $True
+Rule 'Azure.AKS.UseRBAC' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA' } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.enableRBAC', $True)
 }
 
 # Synopsis: AKS clusters should use pod security policies
 Rule 'Azure.AKS.PodSecurityPolicy' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'preview' } {
-    Within 'Properties.enablePodSecurityPolicy' $True
+    $Assert.HasFieldValue($TargetObject, 'Properties.enablePodSecurityPolicy', $True)
 }
 
 # Synopsis: AKS clusters should use network policies
 Rule 'Azure.AKS.NetworkPolicy' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA' } {
-    Within 'Properties.networkProfile.networkPolicy' 'azure'
+    $Assert.HasFieldValue($TargetObject, 'Properties.networkProfile.networkPolicy', 'azure')
 }
 
 # Synopsis: AKS node pools should use scale sets

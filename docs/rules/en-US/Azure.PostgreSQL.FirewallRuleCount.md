@@ -17,4 +17,5 @@ Typically the number of firewall rules required is minimal, with management conn
 
 ## RECOMMENDATION
 
-The PostgreSQL server has greater then ten (10) firewall rules. Some rules may not be needed.
+The PostgreSQL server has greater then ten (10) firewall rules.
+Some rules may not be needed.

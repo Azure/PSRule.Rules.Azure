@@ -3,9 +3,6 @@
 #
 
 # Synopsis: Public IP addresses should be attached or cleaned up if not in use
-Rule 'Azure.PublicIP.IsAttached' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA'; severity = 'Awareness'; category = 'Operations management' } {
-    Recommend 'Public IP address should be attached'
-
-    ($Null -ne $TargetObject.Properties.ipConfiguration) -and
-    (![String]::IsNullOrEmpty($TargetObject.Properties.ipConfiguration.id))
+Rule 'Azure.PublicIP.IsAttached' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA' } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.ipConfiguration.id')
 }

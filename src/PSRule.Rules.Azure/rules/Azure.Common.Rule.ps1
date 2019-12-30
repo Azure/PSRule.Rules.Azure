@@ -4,7 +4,10 @@
 
 # Add a custom function to filter by resource type
 function global:ResourceType {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
     param (
+        [Parameter(Mandatory = $True)]
         [String]$ResourceType
     )
     process {
@@ -12,14 +15,27 @@ function global:ResourceType {
     }
 }
 
+# Get sub resources of a specific resource type
+function global:GetSubResources {
+    [CmdletBinding()]
+    [OutputType([PSObject[]])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [String[]]$ResourceType
+    )
+    process {
+        return @($TargetObject.resources | Where-Object -FilterScript {
+            $_.ResourceType -in $ResourceType -or $_.Type -in $ResourceType
+        })
+    }
+}
+
 function global:IsAllowedRegion {
     process {
         $region = $Configuration.azureAllowedRegions;
-        
         foreach ($r in $Configuration.azureAllowedRegions) {
             $region += ($r -replace ' ', '')
         }
-
         return $TargetObject.Location -in $region;
     }
 }

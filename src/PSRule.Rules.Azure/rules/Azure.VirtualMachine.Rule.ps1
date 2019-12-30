@@ -3,7 +3,7 @@
 #
 
 # Synopsis: Virtual machines should use managed disks
-Rule 'Azure.VM.UseManagedDisks' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; severity = 'Single point of failure'; category = 'Reliability' } {
+Rule 'Azure.VM.UseManagedDisks' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA' } {
     # Check OS disk
     $Null -ne $TargetObject.properties.storageProfile.osDisk.managedDisk.id
 
@@ -15,9 +15,7 @@ Rule 'Azure.VM.UseManagedDisks' -Type 'Microsoft.Compute/virtualMachines' -Tag @
 }
 
 # Synopsis: VMs must use premium disks or use availability sets/ zones to meet SLA requirements
-Rule 'Azure.VM.Standalone' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; severity = 'Single point of failure'; category = 'Reliability' } {
-    Recommend 'Virtual machines should use availability sets or only premium disks'
-
+Rule 'Azure.VM.Standalone' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA' } {
     $types = @(
         $TargetObject.properties.storageProfile.osDisk.managedDisk.storageAccountType
         $TargetObject.properties.storageProfile.dataDisks.managedDisk.storageAccountType
@@ -44,7 +42,7 @@ Rule 'Azure.VM.BasicSku' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ relea
 }
 
 # Synopsis: Check disk caching is configured correctly for the workload
-Rule 'Azure.VM.DiskCaching' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; severity = 'Important'; category = 'Performance' } {
+Rule 'Azure.VM.DiskCaching' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA' } {
     # Check OS disk
     Within 'properties.storageProfile.osDisk.caching' 'ReadWrite'
 
@@ -62,12 +60,12 @@ Rule 'Azure.VM.DiskCaching' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ re
 }
 
 # Synopsis: Network interfaces should inherit from virtual network
-Rule 'Azure.VM.UniqueDns' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ release = 'GA'; severity = 'Awareness'; category = 'Operations management' } {
+Rule 'Azure.VM.UniqueDns' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ release = 'GA' } {
     $Assert.NullOrEmpty($TargetObject, 'Properties.dnsSettings.dnsServers')
 }
 
 # Synopsis: Managed disks should be attached to virtual machines
-Rule 'Azure.VM.DiskAttached' -Type 'Microsoft.Compute/disks' -If { ($TargetObject.ResourceName -notlike '*-ASRReplica') } -Tag @{ release = 'GA'; severity = 'Awareness'; category = 'Operations management' } {
+Rule 'Azure.VM.DiskAttached' -Type 'Microsoft.Compute/disks' -If { ($TargetObject.ResourceName -notlike '*-ASRReplica') } -Tag @{ release = 'GA' } {
     # Disks should be attached unless they are used by ASR, which are not attached until fail over
     # Disks for VMs that are off are marked as Reserved
     Within 'properties.diskState' 'Attached', 'Reserved'
@@ -76,7 +74,7 @@ Rule 'Azure.VM.DiskAttached' -Type 'Microsoft.Compute/disks' -If { ($TargetObjec
 # TODO: Check IOPS
 
 # Synopsis: Managed disk is smaller than SKU size
-Rule 'Azure.VM.DiskSizeAlignment' -Type 'Microsoft.Compute/disks' -Tag @{ release = 'GA'; severity = 'Awareness'; category = 'Cost management' } {
+Rule 'Azure.VM.DiskSizeAlignment' -Type 'Microsoft.Compute/disks' -Tag @{ release = 'GA' } {
     $diskSize = @(32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768)
     $actualSize = $TargetObject.properties.diskSizeGB
 
@@ -93,25 +91,25 @@ Rule 'Azure.VM.DiskSizeAlignment' -Type 'Microsoft.Compute/disks' -Tag @{ releas
 # TODO: Check number of disks
 
 # Synopsis: Use Hybrid Use Benefit
-Rule 'Azure.VM.UseHybridUseBenefit' -If { (IsWindowsOS) } -Tag @{ release = 'GA'; severity = 'Awareness'; category = 'Cost management' } {
+Rule 'Azure.VM.UseHybridUseBenefit' -If { (IsWindowsOS) } -Tag @{ release = 'GA' } {
     Within 'properties.licenseType' 'Windows_Server'
 }
 
 # Synopsis: Enabled accelerated networking for supported operating systems
-Rule 'Azure.VM.AcceleratedNetworking' -If { (SupportsAcceleratedNetworking) } -Tag @{ release = 'GA'; severity = 'Important'; category = 'Performance optimisation' } {
-    $networkInterfaces = $TargetObject.resources | Where-Object { $_.ResourceType -eq 'Microsoft.Network/networkInterfaces' };
+Rule 'Azure.VM.AcceleratedNetworking' -If { (SupportsAcceleratedNetworking) } -Tag @{ release = 'GA' } {
+    $networkInterfaces = GetSubResources -ResourceType 'Microsoft.Network/networkInterfaces'
     foreach ($interface in $networkInterfaces) {
         ($interface.Properties.enableAcceleratedNetworking -eq $True)
     }
 }
 
 # Synopsis: Availability sets should be aligned
-Rule 'Azure.VM.ASAlignment' -Type 'Microsoft.Compute/availabilitySets' -Tag @{ release = 'GA'; severity = 'Single point of failure'; category = 'Reliability' } {
+Rule 'Azure.VM.ASAlignment' -Type 'Microsoft.Compute/availabilitySets' -Tag @{ release = 'GA' } {
     Within 'sku.name' 'aligned'
 }
 
 # Synopsis: Availability sets should be deployed with at least two members
-Rule 'Azure.VM.ASMinMembers' -Type 'Microsoft.Compute/availabilitySets' -Tag @{ release = 'GA'; severity = 'Single point of failure'; category = 'Reliability' } {
+Rule 'Azure.VM.ASMinMembers' -Type 'Microsoft.Compute/availabilitySets' -Tag @{ release = 'GA' } {
     ($TargetObject.properties.virtualmachines.id | Measure-Object).Count -ge 2
 }
 

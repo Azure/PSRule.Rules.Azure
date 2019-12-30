@@ -17,4 +17,5 @@ Typically the number of firewall rules required is minimal, with management conn
 
 ## RECOMMENDATION
 
-The MySQL server has greater then ten (10) firewall rules. Some rules may not be needed.
+The MySQL server has greater then ten (10) firewall rules.
+Some rules may not be needed.
