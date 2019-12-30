@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.8.0-B1912026 (pre-release)
+
 - Fixed Automation account handling with no webhooks or variables. [#219](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/219)
 - Rule improvements from PSRule v0.12.0. [#220](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/220)
 - Updated `Azure.AKS.Version` to 1.15.5. [#217](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/217)
