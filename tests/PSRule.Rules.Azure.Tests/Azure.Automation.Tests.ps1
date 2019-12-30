@@ -38,8 +38,8 @@ Describe 'Azure.Automation' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'automation-a';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'automation-a', 'automation-c';
         }
 
         It 'Azure.Automation.WebHookExpiry' {
@@ -54,8 +54,8 @@ Describe 'Azure.Automation' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'automation-a';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'automation-a', 'automation-c';
         }
     }
 }

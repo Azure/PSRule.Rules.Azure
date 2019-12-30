@@ -17,4 +17,5 @@ Typically the number of firewall rules required is minimal, with management conn
 
 ## RECOMMENDATION
 
-The logical SQL Server has greater then ten (10) firewall rules. Some rules may not be needed.
+The logical SQL Server has greater then ten (10) firewall rules.
+Some rules may not be needed.

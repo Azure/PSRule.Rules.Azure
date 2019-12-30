@@ -7,7 +7,7 @@ if ($Null -eq $Configuration.azureAllowedRegions) {
 }
 
 # Synopsis: Resources should be tagged
-Rule 'Azure.Resource.UseTags' -If { (SupportsTags) } -Tag @{ release = 'GA'; severity = 'Awareness'; category = 'Operations management' } {
+Rule 'Azure.Resource.UseTags' -If { (SupportsTags) } -Tag @{ release = 'GA' } {
     Reason $LocalizedData.ResourceNotTagged
     # List of resource that support tags can be found here: https://docs.microsoft.com/en-us/azure/azure-resource-manager/tag-support
     (Exists 'Tags') -and
@@ -15,6 +15,6 @@ Rule 'Azure.Resource.UseTags' -If { (SupportsTags) } -Tag @{ release = 'GA'; sev
 }
 
 # Synopsis: Resources should be deployed to allowed regions
-Rule 'Azure.Resource.AllowedRegions' -If { ($Null -ne $Configuration.azureAllowedRegions) -and (SupportsRegions) } -Tag @{ release = 'GA'; severity = 'Awareness'; category = 'Operations management' } {
+Rule 'Azure.Resource.AllowedRegions' -If { ($Null -ne $Configuration.azureAllowedRegions) -and (SupportsRegions) } -Tag @{ release = 'GA' } {
     IsAllowedRegion
 }

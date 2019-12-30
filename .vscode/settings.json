@@ -26,7 +26,6 @@
         "OWASP",
         "RBAC",
         "SKUs",
-        "unencrypted",
         "VNET",
         "VNETs",
         "cmdlet",
@@ -34,9 +33,13 @@
         "endregion",
         "lifecycle",
         "nics",
+        "runbook",
         "stateful",
         "subnet",
-        "subnets"
+        "subnets",
+        "unencrypted",
+        "webhook",
+        "webhooks"
     ],
     "cSpell.enabledLanguageIds": [
         "csharp",

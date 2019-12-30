@@ -4,12 +4,10 @@
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a",
         "Identity": null,
         "Kind": null,
-        "Location": "japaneast",
+        "Location": "region",
         "ManagedBy": null,
         "ResourceName": "automation-a",
         "Name": "automation-a",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
         "Plan": null,
         "Properties": {
             "sku": {
@@ -18,21 +16,17 @@
                 "capacity": null
             },
             "state": "Ok",
-            "RegistrationUrl": "https://jpe-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
+            "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
             "creationTime": "2019-12-23T20:31:18.75+00:00",
             "lastModifiedBy": null,
             "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
         },
-        "ResourceGroupName": "tg-test",
+        "ResourceGroupName": "rg-test",
         "Type": "Microsoft.Automation/automationAccounts",
         "ResourceType": "Microsoft.Automation/automationAccounts",
-        "ExtensionResourceType": null,
         "Sku": null,
         "Tags": {},
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null,
         "resources": [
             {
                 "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-a/variables/variable-a",
@@ -43,8 +37,6 @@
                 "ManagedBy": null,
                 "ResourceName": "variable-a",
                 "Name": "variable-a",
-                "ExtensionResourceName": null,
-                "ParentResource": null,
                 "Plan": null,
                 "Properties": {
                     "creationTime": "2019-12-23T22:21:53.827+00:00",
@@ -56,13 +48,9 @@
                 "ResourceGroupName": "rg-test",
                 "Type": "Microsoft.Automation/AutomationAccounts/variables",
                 "ResourceType": "Microsoft.Automation/AutomationAccounts/variables",
-                "ExtensionResourceType": null,
                 "Sku": null,
                 "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
                 "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-a/webhooks/webhook-a",
@@ -73,8 +61,6 @@
                 "ManagedBy": null,
                 "ResourceName": "webhook-a",
                 "Name": "webhook-a",
-                "ExtensionResourceName": null,
-                "ParentResource": null,
                 "Plan": null,
                 "Properties": {
                     "isEnabled": true,
@@ -93,13 +79,9 @@
                 "ResourceGroupName": "rg-test",
                 "Type": "Microsoft.Automation/AutomationAccounts/webhooks",
                 "ResourceType": "Microsoft.Automation/AutomationAccounts/webhooks",
-                "ExtensionResourceType": null,
                 "Sku": null,
                 "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             }
         ]
     },
@@ -108,12 +90,10 @@
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-b",
         "Identity": null,
         "Kind": null,
-        "Location": "japaneast",
+        "Location": "region",
         "ManagedBy": null,
         "ResourceName": "automation-b",
         "Name": "automation-b",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
         "Plan": null,
         "Properties": {
             "sku": {
@@ -122,21 +102,17 @@
                 "capacity": null
             },
             "state": "Ok",
-            "RegistrationUrl": "https://jpe-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
+            "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
             "creationTime": "2019-12-23T20:31:18.75+00:00",
             "lastModifiedBy": null,
             "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
         },
-        "ResourceGroupName": "tg-test",
+        "ResourceGroupName": "rg-test",
         "Type": "Microsoft.Automation/automationAccounts",
         "ResourceType": "Microsoft.Automation/automationAccounts",
-        "ExtensionResourceType": null,
         "Sku": null,
         "Tags": {},
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null,
         "resources": [
             {
                 "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-b/variables/variable-a",
@@ -147,8 +123,6 @@
                 "ManagedBy": null,
                 "ResourceName": "variable-a",
                 "Name": "variable-a",
-                "ExtensionResourceName": null,
-                "ParentResource": null,
                 "Plan": null,
                 "Properties": {
                     "creationTime": "2019-12-23T22:21:53.827+00:00",
@@ -160,13 +134,9 @@
                 "ResourceGroupName": "rg-test",
                 "Type": "Microsoft.Automation/AutomationAccounts/variables",
                 "ResourceType": "Microsoft.Automation/AutomationAccounts/variables",
-                "ExtensionResourceType": null,
                 "Sku": null,
                 "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
                 "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-b/webhooks/webhook-a",
@@ -177,8 +147,6 @@
                 "ManagedBy": null,
                 "ResourceName": "webhook-a",
                 "Name": "webhook-a",
-                "ExtensionResourceName": null,
-                "ParentResource": null,
                 "Plan": null,
                 "Properties": {
                     "isEnabled": true,
@@ -197,14 +165,41 @@
                 "ResourceGroupName": "rg-test",
                 "Type": "Microsoft.Automation/AutomationAccounts/webhooks",
                 "ResourceType": "Microsoft.Automation/AutomationAccounts/webhooks",
-                "ExtensionResourceType": null,
                 "Sku": null,
                 "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             }
+        ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-c",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-c",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "automation-c",
+        "Name": "automation-c",
+        "Plan": null,
+        "Properties": {
+            "sku": {
+                "name": "Basic",
+                "family": null,
+                "capacity": null
+            },
+            "state": "Ok",
+            "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
+            "creationTime": "2019-12-23T20:31:18.75+00:00",
+            "lastModifiedBy": null,
+            "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Automation/automationAccounts",
+        "ResourceType": "Microsoft.Automation/automationAccounts",
+        "Sku": null,
+        "Tags": {},
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
         ]
     }
 ]
