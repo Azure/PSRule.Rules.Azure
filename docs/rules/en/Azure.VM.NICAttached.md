@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 category: Operations management
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.NICAttached.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.NICAttached.md
 ---
 
 # Attach NIC or clean up

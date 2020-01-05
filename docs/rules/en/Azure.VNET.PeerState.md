@@ -1,7 +1,7 @@
 ---
 severity: Important
 category: Operations management
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.PeerState.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VNET.PeerState.md
 ---
 
 # VNET peer is not connected

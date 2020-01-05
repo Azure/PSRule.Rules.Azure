@@ -4,13 +4,3 @@ binding:
   targetName:
   - RuleName
   - FullName
-
-suppression:
-  Rule.Name:
-  - Azure.Storage.SecureTransferRequired
-  - Azure.VirtualNetwork.NSGAnyInboundSource
-  - Azure.VirtualNetwork.NSGDenyAllInbound
-  - Azure.VirtualNetwork.LateralTraversal
-  - Azure.VirtualNetwork.AppGwMinInstance
-  - Azure.VirtualNetwork.AppGwPrevention
-  - Azure.VirtualNetwork.AppGwWAFEnabled

@@ -1,10 +1,10 @@
 ---
 severity: Critical
 category: Security configuration
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.UseNSGs.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VNET.UseNSGs.md
 ---
 
-# Azure.VirtualNetwork.UseNSGs
+# Use NSGs on subnets
 
 ## SYNOPSIS
 

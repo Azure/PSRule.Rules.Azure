@@ -1,10 +1,10 @@
 ---
 severity: Critical
 category: Security configuration
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.AppGwPrevention.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppGw.Prevention.md
 ---
 
-# Azure.VirtualNetwork.AppGwPrevention
+# Use WAF prevention mode
 
 ## SYNOPSIS
 
@@ -21,4 +21,6 @@ Application Gateways with Web Application Firewall (WAF) enabled support two mod
 
 Consider switching Internet exposed Application Gateways to use prevention mode to protect backend resources.
 
-For more information see [Application Gateway WAF modes](https://docs.microsoft.com/en-us/azure/application-gateway/waf-overview#waf-modes).
+## LINKS
+
+- [Application Gateway WAF modes](https://docs.microsoft.com/en-us/azure/application-gateway/waf-overview#waf-modes)

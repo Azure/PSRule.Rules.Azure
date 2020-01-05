@@ -134,3 +134,12 @@ Rule 'Azure.VM.Agent' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release 
 Rule 'Azure.VM.Updates' -Type 'Microsoft.Compute/virtualMachines' -If { (IsWindowsOS) } -Tag @{ release = 'GA' } {
     $Assert.HasDefaultValue($TargetObject, 'Properties.osProfile.windowsConfiguration.enableAutomaticUpdates', $True)
 }
+
+#region Network Interface
+
+# Synopsis: Network interfaces should be attached
+Rule 'Azure.VM.NICAttached' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ release = 'GA' } {
+    Exists 'Properties.virtualMachine.id'
+}
+
+#endregion Network Interface

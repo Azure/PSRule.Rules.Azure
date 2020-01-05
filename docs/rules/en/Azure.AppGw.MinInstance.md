@@ -1,7 +1,7 @@
 ---
 severity: Important
 category: Reliability
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.AppGwMinInstance.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppGw.MinInstance.md
 ---
 
 # Use two or more Application Gateway instances

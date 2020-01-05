@@ -5,9 +5,7 @@
 #region Virtual Network
 
 # Synopsis: Subnets should have NSGs assigned, except for the GatewaySubnet
-Rule 'Azure.VirtualNetwork.UseNSGs' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA' } {
-    Recommend 'Subnets should have NSGs assigned'
-
+Rule 'Azure.VNET.UseNSGs' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA' } {
     # Get subnets
     $subnets = $TargetObject.properties.subnets | Where-Object { $_.Name -ne 'GatewaySubnet' };
 
@@ -22,7 +20,7 @@ Rule 'Azure.VirtualNetwork.UseNSGs' -Type 'Microsoft.Network/virtualNetworks' -T
 # TODO: Check that NSG on GatewaySubnet is not defined
 
 # Synopsis: VNETs should have at least two DNS servers assigned
-Rule 'Azure.VirtualNetwork.SingleDNS' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA' } {
+Rule 'Azure.VNET.SingleDNS' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA' } {
     # If DNS servers are customized, at least two IP addresses should be defined
     if ($Assert.NullOrEmpty($TargetObject, 'properties.dhcpOptions.dnsServers').Result) {
         $True;
@@ -33,7 +31,7 @@ Rule 'Azure.VirtualNetwork.SingleDNS' -Type 'Microsoft.Network/virtualNetworks' 
 }
 
 # Synopsis: VNETs should use Azure local DNS servers
-Rule 'Azure.VirtualNetwork.LocalDNS' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA' } {
+Rule 'Azure.VNET.LocalDNS' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA' } {
     # If DNS servers are customized, check what range the IPs are in
     if ($Assert.NullOrEmpty($TargetObject, 'properties.dhcpOptions.dnsServers').Result) {
         $True;
@@ -54,7 +52,7 @@ Rule 'Azure.VirtualNetwork.LocalDNS' -Type 'Microsoft.Network/virtualNetworks' -
 }
 
 # Synopsis: VNET peers should be connected
-Rule 'Azure.VirtualNetwork.PeerState' -If { (HasPeerNetwork) } -Tag @{ release = 'GA' } {
+Rule 'Azure.VNET.PeerState' -If { (HasPeerNetwork) } -Tag @{ release = 'GA' } {
     $peers = @($TargetObject.Properties.virtualNetworkPeerings);
     foreach ($peer in $peers) {
         $peer | Within 'Properties.peeringState' 'Connected'
@@ -66,7 +64,7 @@ Rule 'Azure.VirtualNetwork.PeerState' -If { (HasPeerNetwork) } -Tag @{ release =
 #region Network Security Group
 
 # Synopsis: Network security groups should avoid any inbound rules
-Rule 'Azure.VirtualNetwork.NSGAnyInboundSource' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA' } {
+Rule 'Azure.NSG.AnyInboundSource' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA' } {
     $inboundRules = @(GetOrderedNSGRules -Direction Inbound);
     $rules = $inboundRules | Where-Object {
         $_.properties.access -eq 'Allow' -and
@@ -76,7 +74,7 @@ Rule 'Azure.VirtualNetwork.NSGAnyInboundSource' -Type 'Microsoft.Network/network
 }
 
 # Synopsis: Avoid blocking all inbound network traffic
-Rule 'Azure.VirtualNetwork.NSGDenyAllInbound' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA' } {
+Rule 'Azure.NSG.DenyAllInbound' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA' } {
     $inboundRules = @(GetOrderedNSGRules -Direction Inbound);
     $denyRules = @($inboundRules | Where-Object {
         $_.properties.access -eq 'Deny' -and
@@ -86,7 +84,7 @@ Rule 'Azure.VirtualNetwork.NSGDenyAllInbound' -Type 'Microsoft.Network/networkSe
 }
 
 # Synopsis: Lateral traversal from application servers should be blocked
-Rule 'Azure.VirtualNetwork.LateralTraversal' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA' } {
+Rule 'Azure.NSG.LateralTraversal' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA' } {
     $outboundRules = @(GetOrderedNSGRules -Direction Outbound);
     $rules = @($outboundRules | Where-Object {
         $_.properties.access -eq 'Deny' -and
@@ -101,7 +99,7 @@ Rule 'Azure.VirtualNetwork.LateralTraversal' -Type 'Microsoft.Network/networkSec
 }
 
 # Synopsis: Network security groups should be associated to either a subnet or network interface
-Rule 'Azure.VirtualNetwork.NSGAssociated' -Type 'Microsoft.Network/networkSecurityGroups' -If { IsExport } -Tag @{ release = 'GA' } {
+Rule 'Azure.NSG.Associated' -Type 'Microsoft.Network/networkSecurityGroups' -If { IsExport } -Tag @{ release = 'GA' } {
     # NSG should be associated to either a subnet or network interface
     $Assert.HasFieldValue($TargetObject, 'Properties.subnets').Complete() -or
         $Assert.HasFieldValue($TargetObject, 'Properties.networkInterfaces').Complete()
@@ -112,7 +110,7 @@ Rule 'Azure.VirtualNetwork.NSGAssociated' -Type 'Microsoft.Network/networkSecuri
 #region Application Gateway
 
 # Synopsis: Application Gateway should use a minimum of two instances
-Rule 'Azure.VirtualNetwork.AppGwMinInstance' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA' } {
+Rule 'Azure.AppGw.MinInstance' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA' } {
     AnyOf {
         # Applies to v1 and v2 without autoscale
         $TargetObject.Properties.sku.capacity -ge 2
@@ -123,17 +121,17 @@ Rule 'Azure.VirtualNetwork.AppGwMinInstance' -Type 'Microsoft.Network/applicatio
 }
 
 # Synopsis: Application Gateway should use a minimum of Medium
-Rule 'Azure.VirtualNetwork.AppGwMinSku' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA' } {
+Rule 'Azure.AppGw.MinSku' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA' } {
     Within 'Properties.sku.name' 'WAF_Medium', 'Standard_Medium', 'WAF_Large', 'Standard_Large', 'WAF_v2', 'Standard_v2'
 }
 
 # Synopsis: Internet accessible Application Gateways should use WAF
-Rule 'Azure.VirtualNetwork.AppGwUseWAF' -If { (IsAppGwPublic) } -Tag @{ release = 'GA' } {
+Rule 'Azure.AppGw.UseWAF' -If { (IsAppGwPublic) } -Tag @{ release = 'GA' } {
     Within 'Properties.sku.tier' 'WAF', 'WAF_v2'
 }
 
 # Synopsis: Application Gateway should only accept a minimum of TLS 1.2
-Rule 'Azure.VirtualNetwork.AppGwSSLPolicy' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA' } {
+Rule 'Azure.AppGw.SSLPolicy' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA' } {
     Exists 'Properties.sslPolicy'
     AnyOf {
         Within 'Properties.sslPolicy.policyName' 'AppGwSslPolicy20170401S'
@@ -142,42 +140,33 @@ Rule 'Azure.VirtualNetwork.AppGwSSLPolicy' -Type 'Microsoft.Network/applicationG
 }
 
 # Synopsis: Internet exposed Application Gateways should use prevention mode to protect backend resources
-Rule 'Azure.VirtualNetwork.AppGwPrevention' -If { (IsAppGwPublic) } -Tag @{ release = 'GA' } {
+Rule 'Azure.AppGw.Prevention' -If { (IsAppGwPublic) } -Tag @{ release = 'GA' } {
     Within 'Properties.webApplicationFirewallConfiguration.firewallMode' 'Prevention'
 }
 
 # Synopsis: Application Gateway WAF must be enabled to protect backend resources
-Rule 'Azure.VirtualNetwork.AppGwWAFEnabled' -If { (IsAppGwPublic) } -Tag @{ release = 'GA' } {
+Rule 'Azure.AppGw.WAFEnabled' -If { (IsAppGwPublic) } -Tag @{ release = 'GA' } {
     Within 'Properties.webApplicationFirewallConfiguration.enabled' $True
 }
 
 # Synopsis: Application Gateway WAF should use OWASP 3.0 rules
-Rule 'Azure.VirtualNetwork.AppGwOWASP' -If { (IsAppGwWAF) } -Tag @{ release = 'GA' } {
+Rule 'Azure.AppGw.OWASP' -If { (IsAppGwWAF) } -Tag @{ release = 'GA' } {
     Within 'Properties.webApplicationFirewallConfiguration.ruleSetType' 'OWASP'
     Within 'Properties.webApplicationFirewallConfiguration.ruleSetVersion' '3.0'
 }
 
 # Synopsis: Application Gateway WAF should not disable rules
-Rule 'Azure.VirtualNetwork.AppGwWAFRules' -If { (IsAppGwWAF) } -Tag @{ release = 'GA' } {
+Rule 'Azure.AppGw.WAFRules' -If { (IsAppGwWAF) } -Tag @{ release = 'GA' } {
     $disabledRules = @($TargetObject.Properties.webApplicationFirewallConfiguration.disabledRuleGroups)
     $disabledRules.Count -eq 0
 }
 
 #endregion Application Gateway
 
-#region Network Interface
-
-# Synopsis: Network interfaces should be attached
-Rule 'Azure.VirtualNetwork.NICAttached' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ release = 'GA' } {
-    Exists 'Properties.virtualMachine.id'
-}
-
-#endregion Network Interface
-
 #region Load Balancer
 
 # Synopsis: Use specific network probe
-Rule 'Azure.VirtualNetwork.LBProbe' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 'GA' } {
+Rule 'Azure.LB.Probe' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 'GA' } {
     $probes = $TargetObject.Properties.probes;
     foreach ($probe in $probes) {
         if ($probe.properties.port -in 80, 443, 8080) {

@@ -48,8 +48,8 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.TargetName | Should -Be 'storage-A';
         }
 
-        It 'Azure.Storage.SecureTransferRequired' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.SecureTransferRequired' };
+        It 'Azure.Storage.SecureTransfer' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.SecureTransfer' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

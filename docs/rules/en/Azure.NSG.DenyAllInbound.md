@@ -1,7 +1,7 @@
 ---
 severity: Important
 category: Reliability
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.NSGDenyAllInbound.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.NSG.DenyAllInbound.md
 ---
 
 # Avoid denying all inbound traffic

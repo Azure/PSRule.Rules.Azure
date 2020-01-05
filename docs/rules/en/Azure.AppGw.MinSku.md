@@ -1,7 +1,7 @@
 ---
 severity: Important
 category: Performance
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.AppGwMinSku.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppGw.MinSku.md
 ---
 
 # Use production Application Gateway SKU
