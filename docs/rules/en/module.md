@@ -4,6 +4,13 @@
 
 The following rules are included within `PSRule.Rules.Azure`.
 
+### Automation
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.File.Parameters](Azure.File.Parameters.md) | Use ARM template parameter files that are valid. | Important
+[Azure.File.Template](Azure.File.Template.md) | Use ARM template files that are valid. | Important
+
 ### Cost management
 
 Name | Synopsis | Severity

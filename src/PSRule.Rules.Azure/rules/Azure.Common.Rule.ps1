@@ -193,27 +193,33 @@ function global:SupportsTags {
     param ()
     process {
         if (
-            ($Rule.TargetType -eq 'Microsoft.Subscription') -or
-            ($Rule.TargetType -like 'Microsoft.Authorization/*') -or
-            ($Rule.TargetType -like 'Microsoft.Billing/*') -or
-            ($Rule.TargetType -like 'Microsoft.Classic*') -or
-            ($Rule.TargetType -like 'Microsoft.Consumption/*') -or
-            ($Rule.TargetType -like 'Microsoft.Gallery/*') -or
-            ($Rule.TargetType -like 'Microsoft.Resources/*') -or
-            ($Rule.TargetType -like 'Microsoft.Security/*') -or
-            ($Rule.TargetType -like 'microsoft.support/*') -or
-            ($Rule.TargetType -like 'Microsoft.WorkloadMonitor/*') -or
-            ($Rule.TargetType -like '*/providers/roleAssignments') -or
+            ($PSRule.TargetType -eq 'Microsoft.Subscription') -or
+            ($PSRule.TargetType -like 'Microsoft.Authorization/*') -or
+            ($PSRule.TargetType -like 'Microsoft.Billing/*') -or
+            ($PSRule.TargetType -like 'Microsoft.Classic*') -or
+            ($PSRule.TargetType -like 'Microsoft.Consumption/*') -or
+            ($PSRule.TargetType -like 'Microsoft.Gallery/*') -or
+            ($PSRule.TargetType -like 'Microsoft.Security/*') -or
+            ($PSRule.TargetType -like 'microsoft.support/*') -or
+            ($PSRule.TargetType -like 'Microsoft.WorkloadMonitor/*') -or
+            ($PSRule.TargetType -like '*/providers/roleAssignments') -or
 
             # Exclude sub-resources by default
-            ($Rule.TargetType -like 'Microsoft.*/*/*' -and !(
-                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/runbooks' -or
-                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/configurations' -or
-                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/compilationjobs' -or
-                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/modules' -or
-                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/nodeConfigurations' -or
-                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/python2Packages' -or
-                $Rule.TargetType -eq 'Microsoft.Automation/automationAccounts/watchers'
+            ($PSRule.TargetType -like 'Microsoft.*/*/*' -and !(
+                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/runbooks' -or
+                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/configurations' -or
+                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/compilationjobs' -or
+                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/modules' -or
+                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/nodeConfigurations' -or
+                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/python2Packages' -or
+                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/watchers'
+            )) -or
+
+            # Some exception to resources (https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support#microsoftresources)
+            ($PSRule.TargetType -like 'Microsoft.Resources/*' -and !(
+                $PSRule.TargetType -eq 'Microsoft.Resources/deployments' -or
+                $PSRule.TargetType -eq 'Microsoft.Resources/deploymentScripts' -or
+                $PSRule.TargetType -eq 'Microsoft.Resources/resourceGroups'
             ))
         ) {
             return $False;
@@ -369,5 +375,59 @@ function global:IsVMPromoSku {
             return $False;
         }
         return $TargetObject.Properties.hardwareProfile.vmSize -like '*_Promo';
+    }
+}
+
+# Determines if the object is a Azure Resource Manager template file
+function global:IsTemplateFile {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($TargetObject.Extension -ne '.json') {
+            return $False;
+        }
+        try {
+            $jsonObject = Get-Content -Path $TargetObject.FullName -Raw -ErrorAction SilentlyContinue | ConvertFrom-Json -ErrorAction SilentlyContinue;
+            return (
+                $jsonObject.'$schema' -eq "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json`#" -or
+                $jsonObject.'$schema' -eq "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json`#"
+            )
+        }
+        catch {
+            return $False;
+        }
+    }
+}
+
+# Determines if the object is a Azure Resource Manager parameter file
+function global:IsParameterFile {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($TargetObject.Extension -ne '.json') {
+            return $False;
+        }
+        try {
+            $jsonObject = Get-Content -Path $TargetObject.FullName -Raw -ErrorAction SilentlyContinue | ConvertFrom-Json -ErrorAction SilentlyContinue;
+            return $jsonObject.'$schema' -eq "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json`#"
+        }
+        catch {
+            return $False;
+        }
+    }
+}
+
+# Read a file as JSON
+function global:ReadJsonFile {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [String]$Path
+    )
+    process {
+        return Get-Content -Path $TargetObject.FullName -Raw -ErrorAction SilentlyContinue | ConvertFrom-Json -ErrorAction SilentlyContinue;
     }
 }
