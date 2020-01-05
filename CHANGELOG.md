@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Updated documentation to use parent culture `en`. [#224](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/224)
+- Added rules for ARM template and parameter file structure. [#225](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/225)
 
 ## v0.8.0-B1912026 (pre-release)
 
