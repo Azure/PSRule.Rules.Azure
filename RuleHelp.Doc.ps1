@@ -16,7 +16,7 @@ Document 'RuleHelp' {
     }
 
     if (!$annotations.Contains('online version')) {
-        $annotations['online version'] = "https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en-US/$($rule.Name).md";
+        $annotations['online version'] = "https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/$($rule.Name).md";
     }
 
     Metadata $annotations;

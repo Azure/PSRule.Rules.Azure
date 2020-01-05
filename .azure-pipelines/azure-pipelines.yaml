@@ -100,17 +100,17 @@ stages:
       condition: succeededOrFailed()
 
     # PSRule results
-    # - task: PublishTestResults@2
-    #   displayName: 'Publish PSRule results'
-    #   inputs:
-    #     testRunTitle: 'PSRule on $(imageName)'
-    #     testRunner: NUnit
-    #     testResultsFiles: 'reports/rule.report.xml'
-    #     mergeTestResults: true
-    #     platform: $(imageName)
-    #     configuration: $(buildConfiguration)
-    #     publishRunAttachments: true
-    #   condition: succeededOrFailed()
+    - task: PublishTestResults@2
+      displayName: 'Publish PSRule results'
+      inputs:
+        testRunTitle: 'PSRule on $(imageName)'
+        testRunner: NUnit
+        testResultsFiles: 'reports/ps-rule*.xml'
+        mergeTestResults: true
+        platform: $(imageName)
+        configuration: $(buildConfiguration)
+        publishRunAttachments: true
+      condition: succeededOrFailed()
 
     # Generate Code Coverage report
     - task: Palmmedia.reportgenerator.reportgenerator-build-release-task.reportgenerator@4
@@ -153,11 +153,11 @@ stages:
     steps:
 
     # Download module from build
-    - task: DownloadPipelineArtifact@1
+    - task: DownloadPipelineArtifact@2
       displayName: 'Download module'
       inputs:
-        artifactName: PSRule.Rules.Azure
-        downloadPath: $(Build.SourcesDirectory)/out/modules/PSRule.Rules.Azure
+        artifact: PSRule.Rules.Azure
+        path: $(Build.SourcesDirectory)/out/modules/PSRule.Rules.Azure
 
     # Install pipeline dependencies
     - powershell: ./.azure-pipelines/pipeline-deps.ps1
