@@ -1,10 +1,10 @@
 ---
 severity: Single point of failure
 category: Reliability
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.SingleDNS.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VNET.SingleDNS.md
 ---
 
-# Azure.VirtualNetwork.SingleDNS
+# Use redundant DNS servers
 
 ## SYNOPSIS
 

@@ -1,10 +1,10 @@
 ---
 severity: Critical
 category: Security configuration
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.AppGwSSLPolicy.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppGw.SSLPolicy.md
 ---
 
-# Azure.VirtualNetwork.AppGwSSLPolicy
+# Application Gateways use a minimum TLS 1.2
 
 ## SYNOPSIS
 

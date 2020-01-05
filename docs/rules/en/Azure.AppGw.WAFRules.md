@@ -1,10 +1,10 @@
 ---
 severity: Important
 category: Security configuration
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.AppGwWAFRules.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppGw.WAFRules.md
 ---
 
-# Azure.VirtualNetwork.AppGwWAFRules
+# Application Gateway rules are enabled
 
 ## SYNOPSIS
 

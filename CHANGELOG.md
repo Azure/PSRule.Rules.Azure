@@ -4,6 +4,12 @@
 
 - Updated documentation to use parent culture `en`. [#224](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/224)
 - Added rules for ARM template and parameter file structure. [#225](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/225)
+- **Breaking change**: Application Gateway rules have been renamed from `Azure.VirtualNetwork.*` to `Azure.AppGW.*`. [#119](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/119)
+- **Breaking change**: Load balancer rules have been renamed from `Azure.VirtualNetwork.*` to `Azure.LB.*`. [#119](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/119)
+- **Breaking change**: NSG rules have been renamed from `Azure.VirtualNetwork.*` to `Azure.NSG.*`. [#119](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/119)
+- **Breaking change**: VNET rules have been renamed from `Azure.VirtualNetwork.*` to `Azure.VNET.*`. [#119](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/119)
+- **Breaking change**: NIC rules have been renamed from `Azure.VirtualNetwork.*` to `Azure.VM.*`. [#119](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/119)
+- **Breaking change**: Renamed storage account rule `Azure.Storage.SecureTransferRequired` to `Azure.Storage.SecureTransfer`. [#119](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/119)
 
 ## v0.8.0-B1912026 (pre-release)
 

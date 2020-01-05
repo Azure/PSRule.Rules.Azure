@@ -1,10 +1,10 @@
 ---
 severity: Critical
 category: Security configuration
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.AppGwUseWAF.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppGw.UseWAF.md
 ---
 
-# Azure.VirtualNetwork.AppGwUseWAF
+# Application Gateway uses WAF SKU
 
 ## SYNOPSIS
 

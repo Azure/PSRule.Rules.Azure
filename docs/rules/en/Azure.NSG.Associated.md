@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 category: Operations management
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.NSGAssociated.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.NSG.Associated.md
 ---
 
 # Associate NSGs or clean up

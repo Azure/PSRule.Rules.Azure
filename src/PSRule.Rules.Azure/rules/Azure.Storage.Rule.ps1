@@ -8,7 +8,7 @@ Rule 'Azure.Storage.UseReplication' -Type 'Microsoft.Storage/storageAccounts' -T
 }
 
 # Synopsis: Storage accounts should only accept secure traffic
-Rule 'Azure.Storage.SecureTransferRequired' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA' } {
+Rule 'Azure.Storage.SecureTransfer' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA' } {
     $TargetObject.Properties.supportsHttpsTrafficOnly -eq $True
 }
 

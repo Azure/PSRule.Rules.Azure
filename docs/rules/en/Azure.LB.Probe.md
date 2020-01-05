@@ -1,7 +1,7 @@
 ---
 severity: Important
 category: Resiliency
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.LBProbe.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.LB.Probe.md
 ---
 
 # Use specific load balancer probe

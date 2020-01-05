@@ -1254,5 +1254,106 @@
                 "SubscriptionId": null
             }
         ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-B",
+        "Location": "region",
+        "ResourceName": "nic-B",
+        "Name": "nic-B",
+        "Properties": {
+            "ipConfigurations": [
+                {
+                    "name": "ipconfig1",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-B/ipConfigurations/ipconfig1",
+                    "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "privateIPAddress": "10.0.0.4",
+                        "privateIPAllocationMethod": "Static",
+                        "publicIPAddress": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-B-pip"
+                        },
+                        "subnet": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+                        },
+                        "primary": true,
+                        "privateIPAddressVersion": "IPv4"
+                    }
+                }
+            ],
+            "dnsSettings": {
+                "dnsServers": [
+                    "8.8.8.8"
+                ],
+                "appliedDnsServers": [
+                    "8.8.8.8"
+                ],
+                "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
+            },
+            "macAddress": "00-00-00-00-00-00",
+            "enableAcceleratedNetworking": false,
+            "enableIPForwarding": false,
+            "primary": true,
+            "virtualMachine": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
+            },
+            "hostedWorkloads": [],
+            "tapConfigurations": []
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/networkInterfaces",
+        "ResourceType": "Microsoft.Network/networkInterfaces",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-C",
+        "Location": "region",
+        "ResourceName": "nic-C",
+        "Name": "nic-C",
+        "Properties": {
+            "ipConfigurations": [
+                {
+                    "name": "ipconfig1",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-C/ipConfigurations/ipconfig1",
+                    "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "privateIPAddress": "10.0.0.5",
+                        "privateIPAllocationMethod": "Static",
+                        "publicIPAddress": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-C-pip"
+                        },
+                        "subnet": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+                        },
+                        "primary": true,
+                        "privateIPAddressVersion": "IPv4"
+                    }
+                }
+            ],
+            "dnsSettings": {
+                "dnsServers": [
+                    "8.8.8.8"
+                ],
+                "appliedDnsServers": [
+                    "8.8.8.8"
+                ],
+                "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
+            },
+            "macAddress": "00-00-00-00-00-00",
+            "enableAcceleratedNetworking": false,
+            "enableIPForwarding": false,
+            "primary": true,
+            "hostedWorkloads": [],
+            "tapConfigurations": []
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/networkInterfaces",
+        "ResourceType": "Microsoft.Network/networkInterfaces",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
     }
 ]

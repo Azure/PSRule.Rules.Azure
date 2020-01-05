@@ -1,10 +1,10 @@
 ---
 severity: Critical
 category: Security configuration
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.NSGAnyInboundSource.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.NSG.AnyInboundSource.md
 ---
 
-# Azure.VirtualNetwork.NSGAnyInboundSource
+# Avoid any inbound rules
 
 ## SYNOPSIS
 

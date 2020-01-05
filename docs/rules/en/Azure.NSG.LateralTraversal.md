@@ -1,7 +1,7 @@
 ---
 severity: Important
 category: Security configuration
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.LateralTraversal.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.NSG.LateralTraversal.md
 ---
 
 # Limit lateral traversal

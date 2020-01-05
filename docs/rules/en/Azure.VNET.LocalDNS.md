@@ -1,10 +1,10 @@
 ---
 severity: Important
 category: Reliability
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VirtualNetwork.LocalDNS.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VNET.LocalDNS.md
 ---
 
-# Azure.VirtualNetwork.LocalDNS
+# Use local DNS servers
 
 ## SYNOPSIS
 
