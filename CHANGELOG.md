@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Updated documentation to use parent culture `en`. [#224](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/224)
+
 ## v0.8.0-B1912026 (pre-release)
 
 - Fixed Automation account handling with no webhooks or variables. [#219](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/219)

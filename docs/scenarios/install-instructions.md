@@ -43,7 +43,8 @@ Save-Module -Name 'PSRule', 'PSRule.Rules.Azure', 'Az.Accounts', 'Az.Resources',
 
 > For pre-release versions the `-AllowPrerelease` switch must be added when calling `Install-Module` or `Save-Module`.
 >
-> To install pre-release module versions, upgrading to the latest version of _PowerShellGet_ may be required. To do this use:
+> To install pre-release module versions, upgrading to the latest version of _PowerShellGet_ may be required.
+To do this use:
 >
 > `Install-Module -Name PowerShellGet -Repository PSGallery -Scope CurrentUser -Force`
 

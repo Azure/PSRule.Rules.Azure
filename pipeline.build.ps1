@@ -104,7 +104,7 @@ task VersionModule ModuleDependencies, {
     $manifest = Test-ModuleManifest -Path $manifestPath;
     $requiredModules = $manifest.RequiredModules | ForEach-Object -Process {
         if ($_.Name -eq 'PSRule' -and $Configuration -eq 'Release') {
-            @{ ModuleName = 'PSRule'; ModuleVersion = '0.12.0' }
+            @{ ModuleName = 'PSRule'; ModuleVersion = '0.13.0' }
         }
         else {
             @{ ModuleName = $_.Name; ModuleVersion = $_.Version }
@@ -154,8 +154,8 @@ task PSScriptAnalyzer NuGet, {
 
 # Synopsis: Install PSRule
 task PSRule NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.12.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 0.12.0 -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.13.0 -ErrorAction Ignore)) {
+        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 0.13.0 -Scope CurrentUser -Force;
     }
     Import-Module -Name PSRule -Verbose:$False;
 }
@@ -269,11 +269,7 @@ task Analyze Build, PSScriptAnalyzer, {
 # Synopsis: Build table of content for rules
 task BuildRuleDocs Build, PSRule, PSDocs, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-    $Null = Invoke-PSDocument -Name Azure -OutputPath .\docs\rules\en-US\ -Path .\RuleToc.Doc.ps1;
-    # $rules = Get-PSRule -Module 'PSRule.Rules.Azure';
-    # $rules | ForEach-Object -Process {
-    #     Invoke-PSDocument -Path .\RuleHelp.Doc.ps1 -OutputPath .\docs\rules\en-US\ -InstanceName $_.Info.Name -inputObject $_;
-    # }
+    $Null = Invoke-PSDocument -Name module -OutputPath .\docs\rules\en\ -Path .\RuleToc.Doc.ps1;
 }
 
 # Synopsis: Build help
@@ -281,13 +277,15 @@ task BuildHelp BuildModule, PlatyPS, {
     # Generate MAML and about topics
     $Null = New-ExternalHelp -OutputPath out/docs/PSRule.Rules.Azure -Path '.\docs\commands\PSRule.Rules.Azure\en-US' -Force;
 
+    if (!(Test-Path out/modules/PSRule.Rules.Azure/en/)) {
+        $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en/ -ItemType Directory -Force;
+    }
+
     # Copy generated help into module out path
     $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-US/ -Recurse;
     $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-AU/ -Recurse;
     $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-GB/ -Recurse;
-    $Null = Copy-Item -Path docs/rules/en-US/*.md -Destination out/modules/PSRule.Rules.Azure/en-US/;
-    $Null = Copy-Item -Path docs/rules/en-US/*.md -Destination out/modules/PSRule.Rules.Azure/en-AU/;
-    $Null = Copy-Item -Path docs/rules/en-US/*.md -Destination out/modules/PSRule.Rules.Azure/en-GB/;
+    $Null = Copy-Item -Path docs/rules/en/*.md -Destination out/modules/PSRule.Rules.Azure/en/;
 }
 
 task ScaffoldHelp Build, BuildRuleDocs, {

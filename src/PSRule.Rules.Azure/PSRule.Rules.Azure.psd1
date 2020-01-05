@@ -100,7 +100,7 @@ AliasesToExport = @()
 PrivateData = @{
     PSData = @{
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('Rule', 'PSRule', 'Azure')
+        Tags = @('PSRule', 'PSRule-rules', 'Rule', 'Azure', 'Cloud')
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/LICENSE'
