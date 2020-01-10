@@ -193,7 +193,7 @@ function global:SupportsTags {
     param ()
     process {
         if (
-            ($PSRule.TargetType -eq 'Microsoft.Subscription') -or
+            ($PSRule.TargetType -notlike 'Microsoft.*/*') -or
             ($PSRule.TargetType -like 'Microsoft.Authorization/*') -or
             ($PSRule.TargetType -like 'Microsoft.Billing/*') -or
             ($PSRule.TargetType -like 'Microsoft.Classic*') -or

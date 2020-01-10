@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix `Azure.Resource.UseTags` applying to template and parameter files. [#230](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/230)
+
 ## v0.8.0-B2001006 (pre-release)
 
 - Updated documentation to use parent culture `en`. [#224](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/224)
