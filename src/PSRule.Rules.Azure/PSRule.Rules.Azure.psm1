@@ -228,7 +228,6 @@ function FindAzureContext {
             ($Null -eq $Tenant -or $Tenant.Length -eq 0 -or ($_.Tenant.Id -in $Tenant)) -and
             ($Null -eq $Subscription -or $Subscription.Length -eq 0 -or ($_.Subscription.Id -in $Subscription) -or ($_.Subscription.Name -in $Subscription))
         }
-
         return $filteredContext;
     }
 }
@@ -309,11 +308,9 @@ function ExportAzureResource {
         [Parameter(Mandatory = $False)]
         [System.Boolean]$PassThru = $False
     )
-
     begin {
         $resources = @();
     }
-
     process {
         if ($PassThru) {
             $InputObject;
@@ -323,13 +320,65 @@ function ExportAzureResource {
             $resources += $InputObject;
         }
     }
-
     end {
         if (!$PassThru) {
             # Save to JSON
             $resources | ConvertTo-Json -Depth 100 | Set-Content -Path $Path;
             Get-Item -Path $Path;
         }
+    }
+}
+
+function GetSubResource {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context,
+
+        [Parameter(Mandatory = $True)]
+        [String]$ResourceType,
+
+        [Parameter(Mandatory = $True)]
+        [String]$ApiVersion
+    )
+    process {
+        $getParams = @{
+            Name = $Resource.Name
+            ResourceType = $ResourceType
+            ResourceGroupName = $Resource.ResourceGroupName
+            DefaultProfile = $Context
+            ApiVersion = $ApiVersion
+        }
+        try {
+            Get-AzResource @getParams -ExpandProperties;
+        }
+        catch {
+            Write-Verbose -Message "Failed to read: $ResourceType";
+        }
+    }
+}
+
+function VisitAPIManagement {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        $resources = @();
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/apis' -ApiVersion '2019-01-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/backends' -ApiVersion '2019-01-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/properties' -ApiVersion '2019-01-01' | ForEach-Object {
+            $_.properties.value = '*** MASKED ***';
+            $_;
+        }
+        $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
 
@@ -595,6 +644,7 @@ function ExpandResource {
     )
     process {
         switch ($Resource.ResourceType) {
+            'Microsoft.ApiManagement/service' { VisitAPIManagement @PSBoundParameters; }
             'Microsoft.Automation/automationAccounts' { VisitAutomationAccount @PSBoundParameters; }
             'Microsoft.Sql/servers' { VisitSqlServer @PSBoundParameters; }
             'Microsoft.DBforPostgreSQL/servers' { VisitPostgreSqlServer @PSBoundParameters; }

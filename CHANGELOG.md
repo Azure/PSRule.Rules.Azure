@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Fix `Azure.Resource.UseTags` applying to template and parameter files. [#230](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/230)
+- Fix ARM template and parameter schemas used to detect files. [#234](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/234)
 
 ## v0.8.0-B2001006 (pre-release)
 

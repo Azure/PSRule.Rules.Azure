@@ -389,10 +389,22 @@ function global:IsTemplateFile {
         }
         try {
             $jsonObject = Get-Content -Path $TargetObject.FullName -Raw -ErrorAction SilentlyContinue | ConvertFrom-Json -ErrorAction SilentlyContinue;
-            return (
-                $jsonObject.'$schema' -eq "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json`#" -or
-                $jsonObject.'$schema' -eq "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json`#"
+            $schemas = @(
+                # Https
+                "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json`#"
+                "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json`#"
+                "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json`#"
+                "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json`#"
+                "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json`#"
+
+                # Http
+                "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json`#"
+                "http://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json`#"
+                "http://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json`#"
+                "http://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json`#"
+                "http://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json`#"
             )
+            return $jsonObject.'$schema' -in $schemas;
         }
         catch {
             return $False;
@@ -411,7 +423,14 @@ function global:IsParameterFile {
         }
         try {
             $jsonObject = Get-Content -Path $TargetObject.FullName -Raw -ErrorAction SilentlyContinue | ConvertFrom-Json -ErrorAction SilentlyContinue;
-            return $jsonObject.'$schema' -eq "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json`#"
+            $schemas = @(
+                # Https
+                "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json`#"
+
+                # Http
+                "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json`#"
+            )
+            return $jsonObject.'$schema' -in $schemas;
         }
         catch {
             return $False;
