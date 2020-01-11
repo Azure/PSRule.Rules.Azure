@@ -29,35 +29,39 @@ Describe 'Azure.File' {
             ErrorAction = 'Stop'
         }
         It 'Azure.File.Template' {
-            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Template*.json';
             $result = Get-Item -Path $dataPath | Invoke-PSRule @invokeParams -Name 'Azure.File.Template';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.File.Template' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -BeNullOrEmpty;
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeLike "*Resources.Template2.json";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be $dataPath;
+            $ruleResult.TargetName | Should -BeLike "*Resources.Template.json";
         }
 
         It 'Azure.File.Parameters' {
-            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Parameters*.json';
             $result = Get-Item -Path $dataPath | Invoke-PSRule @invokeParams -Name 'Azure.File.Parameters';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.File.Parameters' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -BeNullOrEmpty;
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeLike "*Resources.Parameters2.json";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be $dataPath;
+            $ruleResult.TargetName | Should -BeLike "*Resources.Parameters.json";
         }
     }
 }

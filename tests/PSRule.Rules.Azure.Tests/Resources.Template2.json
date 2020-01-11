@@ -1,0 +1,84 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vaultName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the Key Vault."
+            }
+        },
+        "role": {
+            "type": "string",
+            "defaultValue": "App secrets",
+            "metadata": {
+                "description": "The role of the service."
+            }
+        },
+        "accessPolicies": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "The access policies defined for this vault."
+            }
+        },
+        "useDeployment": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Determines if Azure can deploy certificates from this Key Vault."
+            }
+        },
+        "useTemplate": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Determines if templates can reference secrets from this Key Vault."
+            }
+        },
+        "useDiskEncryption": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Determines if this Key Vault can be used for Azure Disk Encryption."
+            }
+        },
+        "networkAcls": {
+            "type": "object",
+            "defaultValue": {
+                "defaultAction": "Allow",
+                "bypass": "AzureServices",
+                "ipRules": [],
+                "virtualNetworkRules": []
+            },
+            "metadata": {
+                "description": "The network firewall defined for this vault."
+            }
+        }
+    },
+    "resources": [
+        {
+            "comments": "Application Key Vault",
+            "type": "Microsoft.KeyVault/vaults",
+            "name": "[parameters('vaultName')]",
+            "apiVersion": "2016-10-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "enabledForDeployment": "[parameters('useDeployment')]",
+                "enabledForTemplateDeployment": "[parameters('useTemplate')]",
+                "enabledForDiskEncryption": "[parameters('useDiskEncryption')]",
+                "accessPolicies": "[parameters('accessPolicies')]",
+                "tenantId": "[subscription().tenantId]",
+                "sku": {
+                    "name": "standard",
+                    "family": "A"
+                },
+                "networkAcls": "[parameters('networkAcls')]"
+            },
+            "tags": {
+                "role": "[parameters('role')]"
+            }
+        }
+    ],
+    "other": {}
+}
