@@ -1,6 +1,7 @@
 ---
 severity: Awareness
 category: Operations management
+resource: Azure Database for PostgreSQL
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.PostgreSQL.FirewallRuleCount.md
 ms-content-id: 7113d8e6-5629-4505-a19b-9c1ff9e17a3b
 ---

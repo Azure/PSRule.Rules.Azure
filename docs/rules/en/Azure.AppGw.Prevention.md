@@ -1,6 +1,7 @@
 ---
 severity: Critical
 category: Security configuration
+resource: Application Gateway
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppGw.Prevention.md
 ---
 
@@ -14,7 +15,8 @@ Internet exposed Application Gateways should use prevention mode to protect back
 
 Application Gateways with Web Application Firewall (WAF) enabled support two modes of operation, detection and prevention.
 
-- Detection - monitors and logs all threat alerts. In this mode, the web application firewall doesn't block incoming requests.
+- Detection - monitors and logs all threat alerts.
+In this mode, the web application firewall doesn't block incoming requests.
 - Protection - blocks intrusions and attacks that the rules detect.
 
 ## RECOMMENDATION

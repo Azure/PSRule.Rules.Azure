@@ -1,6 +1,7 @@
 ---
 severity: Important
 category: Resiliency
+resource: Load Balancer
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.LB.Probe.md
 ---
 

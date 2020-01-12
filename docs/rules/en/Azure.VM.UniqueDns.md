@@ -1,6 +1,7 @@
 ---
 severity: Awareness
 category: Operations management
+resource: Virtual Machine
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.UniqueDns.md
 ---
 
@@ -21,4 +22,6 @@ Using network interfaces with individual DNS server settings may increase manage
 
 Consider updating NIC DNS server settings to inherit from virtual network.
 
-For more information see [Change DNS servers](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface#change-dns-servers).
+## LINKS
+
+- [Change DNS servers](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface#change-dns-servers).

@@ -1,6 +1,7 @@
 ---
 severity: Important
 category: Security configuration
+resource: Virtual Machine
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.ADE.md
 ---
 

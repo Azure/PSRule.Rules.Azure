@@ -1,6 +1,7 @@
 ---
 severity: Important
 category: Security operations
+resource: Subscription
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.RBAC.CoAdministrator.md
 ---
 

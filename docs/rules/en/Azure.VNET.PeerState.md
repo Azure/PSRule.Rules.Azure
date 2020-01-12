@@ -1,6 +1,7 @@
 ---
 severity: Important
 category: Operations management
+resource: Virtual Network
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VNET.PeerState.md
 ---
 

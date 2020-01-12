@@ -1,6 +1,7 @@
 ---
 severity: Important
 category: Security configuration
+resource: Application Gateway
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppGw.WAFRules.md
 ---
 

@@ -1,6 +1,7 @@
 ---
 severity: Awareness
 category: Operations management
+resource: Network Security Group
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.NSG.Associated.md
 ---
 

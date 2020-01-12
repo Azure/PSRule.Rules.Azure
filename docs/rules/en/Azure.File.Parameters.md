@@ -1,6 +1,7 @@
 ---
 severity: Important
 category: Automation
+resource: All resources
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.File.Parameters.md
 ---
 
