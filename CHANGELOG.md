@@ -4,6 +4,11 @@
 
 - Fix `Azure.Resource.UseTags` applying to template and parameter files. [#230](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/230)
 - Fix ARM template and parameter schemas used to detect files. [#234](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/234)
+- Added new rule to check API Management uses secure protocol versions. [#237](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/237)
+- Added new rule to check API Management published APIs use HTTPS. [#236](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/236)
+- Added new rule to check API Management backend connections use HTTPS. [#238](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/238)
+- Added new rule to check API Management named values are encrypted. [#239](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/239)
+- Added new rule to check Azure CDN connections use HTTPS. [#242](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/242)
 
 ## v0.8.0-B2001006 (pre-release)
 
