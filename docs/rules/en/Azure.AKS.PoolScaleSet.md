@@ -1,6 +1,7 @@
 ---
 severity: Important
 category: Scalability
+resource: Azure Kubernetes Service
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AKS.PoolScaleSet.md
 ---
 

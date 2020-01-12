@@ -1,6 +1,7 @@
 ---
 severity: Important
 category: Security configuration
+resource: Azure Database for MySQL
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.MySQL.FirewallIPRange.md
 ms-content-id: d8bf9741-541c-4229-86cb-2e2dad32d9a9
 ---
@@ -17,4 +18,5 @@ Typically the number of IP address rules permitted through the firewall is minim
 
 ## RECOMMENDATION
 
-The MySQL server has greater then ten (10) public IP addresses that are permitted network access. Some rules may not be needed or can be reduced.
+The MySQL server has greater then ten (10) public IP addresses that are permitted network access.
+Some rules may not be needed or can be reduced.

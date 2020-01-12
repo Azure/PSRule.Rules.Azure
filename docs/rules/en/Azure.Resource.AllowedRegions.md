@@ -1,6 +1,7 @@
 ---
 severity: Awareness
 category: Operations management
+resource: All resources
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.Resource.AllowedRegions.md
 ---
 

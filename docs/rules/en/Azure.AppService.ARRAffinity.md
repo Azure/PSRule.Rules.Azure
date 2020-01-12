@@ -1,6 +1,7 @@
 ---
 severity: Awareness
 category: Performance
+resource: App Service
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppService.ARRAffinity.md
 ms-content-id: 3f07def6-6e5e-4f87-8b5d-3a0baf6631e5
 ---

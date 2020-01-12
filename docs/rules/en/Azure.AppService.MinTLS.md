@@ -1,6 +1,7 @@
 ---
 severity: Important
 category: Security configuration
+resource: App Service
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppService.MinTLS.md
 ms-content-id: e19fbe7e-da05-47d4-8de1-2fdf52ada662
 ---

@@ -1,6 +1,7 @@
 ---
 severity: Important
 category: Performance
+resource: Virtual Machine
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.BasicSku.md
 ms-content-id: 49cef14e-19f0-4a54-be14-7c27a0347b4c
 ---
@@ -21,4 +22,7 @@ Basic VM sizes are suitable only for entry level development scenarios.
 Basic VM sizes are not suitable for production workloads or intensive development workloads.
 Consider migration to an alternative Standard VM size.
 
-For more information see [Sizes for Windows virtual machines in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes) and [Sizes for Linux virtual machines in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes).
+## LINKS
+
+- [Sizes for Windows virtual machines in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes)
+- [Sizes for Linux virtual machines in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes)

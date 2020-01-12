@@ -1,6 +1,7 @@
 ---
 severity: Awareness
 category: Cost management
+resource: Virtual Machine
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.DiskAttached.md
 ms-content-id: 23a06a0e-7965-4d43-8e29-bb9ac6eeffcc
 ---
@@ -20,4 +21,6 @@ Unattached managed disks still consume storage and are charged on their size.
 
 Consider removing managed disks are no longer required to reduce complexity and storage costs.
 
-For more information see [Managed Disk pricing](https://azure.microsoft.com/en-us/pricing/details/managed-disks/).
+## LINKS
+
+- [Managed Disk pricing](https://azure.microsoft.com/en-us/pricing/details/managed-disks/)

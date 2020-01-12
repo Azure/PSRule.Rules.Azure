@@ -1,6 +1,7 @@
 ---
 severity: Important
 category: Security operations
+resource: Security Center
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.SecurityCenter.Provisioning.md
 ms-content-id: 966390bc-0358-43dd-8b5f-6b0ae2b16edd
 ---

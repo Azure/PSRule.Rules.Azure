@@ -1,11 +1,12 @@
 ---
 severity: Awareness
 category: Security configuration
+resource: Automation Service
 online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.Automation.WebHookExpiry.md
 ms-content-id: 7b8aa617-6278-42e4-b8ae-d9da6e3d8ade
 ---
 
-# Azure.Automation.WebHookExpiry
+# Use short lived web hooks
 
 ## SYNOPSIS
 
