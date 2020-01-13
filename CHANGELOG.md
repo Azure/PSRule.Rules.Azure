@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.8.0-B2001018 (pre-release)
+
 - Fix `Azure.Resource.UseTags` applying to template and parameter files. [#230](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/230)
 - Fix ARM template and parameter schemas used to detect files. [#234](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/234)
 - Added new rule to check API Management uses secure protocol versions. [#237](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/237)
