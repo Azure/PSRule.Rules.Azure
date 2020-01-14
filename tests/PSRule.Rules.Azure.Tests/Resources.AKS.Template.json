@@ -27,7 +27,7 @@
             "name": "[parameters('clusterName')]",
             "location": "[parameters('clusterLocation')]",
             "properties": {
-                "kubernetesVersion": "1.15.5",
+                "kubernetesVersion": "1.15.7",
                 "dnsPrefix": "[concat('npcorp-', parameters('clusterName'))]",
                 "agentPoolProfiles": [
                     {
@@ -111,7 +111,7 @@
                 "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-03')]",
                 "maxPods": 50,
                 "type": "VirtualMachineScaleSets",
-                "orchestratorVersion": "1.15.5",
+                "orchestratorVersion": "1.15.7",
                 "osType": "Linux"
             }
         },

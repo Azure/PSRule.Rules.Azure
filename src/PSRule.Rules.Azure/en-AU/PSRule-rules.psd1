@@ -7,4 +7,5 @@
     AKSVersion = "The Kubernetes version is v{0}."
     AKSNodePoolType = "The agent pool ({0}) is not using scale sets."
     AKSNodePoolVersion = "The agent pool ({0}) is running v{1}."
+    SubnetNSGNotConfigured = "The subnet ({0}) has no NSG associated."
 }

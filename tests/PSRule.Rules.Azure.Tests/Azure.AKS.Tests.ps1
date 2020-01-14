@@ -55,13 +55,13 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'cluster-B';
+            $ruleResult.TargetName | Should -BeIn 'cluster-B';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-C';
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-C';
         }
 
         It 'Azure.AKS.PoolVersion' {

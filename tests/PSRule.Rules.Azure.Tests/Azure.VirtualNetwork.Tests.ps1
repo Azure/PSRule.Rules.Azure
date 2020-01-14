@@ -39,13 +39,14 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'vnet-B', 'vnet-C', 'vnet-D';
+            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D';
+            $ruleResult.Reason | Should -BeLike 'The subnet (*) has no NSG associated.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vnet-A';
+            $ruleResult.TargetName | Should -BeIn 'vnet-A';
         }
 
         It 'Azure.VNET.SingleDNS' {
@@ -115,13 +116,16 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -BeNullOrEmpty;
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vnet-001/subnet2';
+            $ruleResult.Reason | Should -BeLike 'The subnet (*) has no NSG associated.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vnet-001';
+            $ruleResult.TargetName | Should -BeIn 'vnet-001';
         }
 
         It 'Azure.VNET.SingleDNS' {
