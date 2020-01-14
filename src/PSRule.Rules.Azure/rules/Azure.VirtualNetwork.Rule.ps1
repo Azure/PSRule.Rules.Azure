@@ -5,15 +5,22 @@
 #region Virtual Network
 
 # Synopsis: Subnets should have NSGs assigned, except for the GatewaySubnet
-Rule 'Azure.VNET.UseNSGs' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA' } {
-    # Get subnets
-    $subnets = $TargetObject.properties.subnets | Where-Object { $_.Name -ne 'GatewaySubnet' };
-
-    if ($Null -ne $subnets) {
-        $withNSGCount = ($subnets | Where-Object { $Null -ne $_.properties.networkSecurityGroup.id } | Measure-Object).Count
-
-        # Are there subnets without NSGs configured
-        return $withNSGCount -eq $subnets.Count
+Rule 'Azure.VNET.UseNSGs' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'GA' } {
+    $subnet = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
+        # Get subnets
+        $subnet = @($TargetObject.properties.subnets | Where-Object { $_.Name -ne 'GatewaySubnet' });
+        if ($subnet.Length -eq 0) {
+            return $True;
+        }
+    }
+    elseif ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks/subnets' -and $PSRule.TargetName -eq 'GatewaySubnet') {
+        return $True;
+    }
+    foreach ($sn in $subnet) {
+        $Assert.
+            HasFieldValue($sn, 'properties.networkSecurityGroup.id').
+            WithReason(($LocalizedData.SubnetNSGNotConfigured -f $en.Name), $True);
     }
 }
 
