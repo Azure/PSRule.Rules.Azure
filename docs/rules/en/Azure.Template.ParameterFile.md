@@ -1,8 +1,8 @@
 ---
 severity: Important
-category: Automation
+category: Resource deployment
 resource: All resources
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.File.Parameters.md
+online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.Template.ParameterFile.md
 ---
 
 # Use ARM parameter file structure

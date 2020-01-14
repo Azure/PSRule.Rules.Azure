@@ -4,6 +4,7 @@
 
 - Updated `Azure.VNET.UseNSGs` to apply to subnet resources from templates. [#246](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/246)
 - Updated `Azure.AKS.Version` to 1.15.7. [#247](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/247)
+- **Breaking change**: Renamed `Azure.File.*` rules to `Azure.Template.*`. [#252](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/252)
 
 ## v0.8.0-B2001018 (pre-release)
 

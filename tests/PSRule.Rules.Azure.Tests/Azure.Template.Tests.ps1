@@ -1,5 +1,5 @@
 #
-# Unit tests for Azure template and parameters
+# Unit tests for Azure template and parameter files
 #
 
 [CmdletBinding()]
@@ -20,7 +20,7 @@ $rootPath = $PWD;
 Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
 $here = (Resolve-Path $PSScriptRoot).Path;
 
-Describe 'Azure.File' {
+Describe 'Azure.Template' {
     Context 'Conditions' {
         $invokeParams = @{
             Baseline = 'Azure.All'
@@ -28,10 +28,10 @@ Describe 'Azure.File' {
             WarningAction = 'SilentlyContinue'
             ErrorAction = 'Stop'
         }
-        It 'Azure.File.Template' {
+        It 'Azure.Template.TemplateFile' {
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Template*.json';
-            $result = Get-Item -Path $dataPath | Invoke-PSRule @invokeParams -Name 'Azure.File.Template';
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.File.Template' };
+            $result = Get-Item -Path $dataPath | Invoke-PSRule @invokeParams -Name 'Azure.Template.TemplateFile';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.TemplateFile' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -46,10 +46,10 @@ Describe 'Azure.File' {
             $ruleResult.TargetName | Should -BeLike "*Resources.Template.json";
         }
 
-        It 'Azure.File.Parameters' {
+        It 'Azure.Template.ParameterFile' {
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Parameters*.json';
-            $result = Get-Item -Path $dataPath | Invoke-PSRule @invokeParams -Name 'Azure.File.Parameters';
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.File.Parameters' };
+            $result = Get-Item -Path $dataPath | Invoke-PSRule @invokeParams -Name 'Azure.Template.ParameterFile';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.ParameterFile' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

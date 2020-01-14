@@ -4,13 +4,6 @@
 
 The following rules are included within `PSRule.Rules.Azure`.
 
-### Automation
-
-Name | Synopsis | Severity
----- | -------- | --------
-[Azure.File.Parameters](Azure.File.Parameters.md) | Use ARM template parameter files that are valid. | Important
-[Azure.File.Template](Azure.File.Template.md) | Use ARM template files that are valid. | Important
-
 ### Cost management
 
 Name | Synopsis | Severity
@@ -84,6 +77,13 @@ Name | Synopsis | Severity
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.LB.Probe](Azure.LB.Probe.md) | Use a specific probe for web protocols. | Important
+
+### Resource deployment
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.Template.ParameterFile](Azure.Template.ParameterFile.md) | Use ARM template parameter files that are valid. | Important
+[Azure.Template.TemplateFile](Azure.Template.TemplateFile.md) | Use ARM template files that are valid. | Important
 
 ### Scalability
 

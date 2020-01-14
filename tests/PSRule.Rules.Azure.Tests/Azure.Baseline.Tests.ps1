@@ -48,7 +48,7 @@ Describe 'Baselines' -Tag Baseline {
             $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.Preview' -WarningAction Ignore);
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA', 'preview'});
             $filteredResult | Should -Not -BeNullOrEmpty;
-            $filteredResult.Length | Should -BeGreaterThan 70;
+            $filteredResult.Length | Should -BeGreaterThan 80;
         }
     }
 }
