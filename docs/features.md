@@ -8,21 +8,29 @@ The following sections describe key features of PSRule for Azure.
 
 ## Ready to go
 
-PSRule for Azure includes over 70 rules for validating resources against configuration recommendations.
+PSRule for Azure includes over 80 rules for validating resources against configuration recommendations.
+Each rule includes additional information to help remediate validation issues.
 
 Use the built-in rules to start enforcing release processes quickly.
 Then layer on your own rules as your organization's requirements mature.
+Custom rules can be implemented quickly and work side-by-side with built-in rules.
+
+As new built-in rules are added and improved, download the latest PowerShell module to start using them.
 
 ## DevOps
 
-Azure resources can be validated early in the lifecycle to support a DevOps culture.
+Azure resources can be validated throughout their lifecycle to support a DevOps culture.
 
-- Validate templates before deployment to identify configuration issues pre-flight in continuous integration (CI) processes.
-- Validate resources after deployment to implement quality gates in-flight between environments such as dev, test, production.
+From as early as authoring a Azure Resource Manager (ARM) template, resources can be validated offline.
+Pre-flight validation can be integrated into a continuous integration (CI) processes to:
+
+- Identify configuration issues and provide fast feedback in a pull request.
+- Implement quality gates between environments such as development, test and production.
+- Perform ongoing checks for configuration optimization opportunities.
 
 PSRule for Azure provides the following cmdlets that extract data for analysis:
 
-- [Export-AzTemplateRuleData](commands/PSRule.Rules.Azure/en-US/Export-AzTemplateRuleData.md) - Used for pre-flight analysis of one or more Azure Resource Manager templates.
+- [Export-AzTemplateRuleData](commands/PSRule.Rules.Azure/en-US/Export-AzTemplateRuleData.md) - Used for pre-flight analysis of one or more ARM templates.
 - [Export-AzRuleData](commands/PSRule.Rules.Azure/en-US/Export-AzRuleData.md) - Used for in-flight analysis of resources deployed to one or more Azure subscriptions.
 
 ## Cross-platform
