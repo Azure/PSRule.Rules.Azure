@@ -20,7 +20,7 @@ Rule 'Azure.VNET.UseNSGs' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.
     foreach ($sn in $subnet) {
         $Assert.
             HasFieldValue($sn, 'properties.networkSecurityGroup.id').
-            WithReason(($LocalizedData.SubnetNSGNotConfigured -f $en.Name), $True);
+            WithReason(($LocalizedData.SubnetNSGNotConfigured -f $sn.Name), $True);
     }
 }
 
