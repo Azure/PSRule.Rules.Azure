@@ -280,6 +280,15 @@ task BuildHelp BuildModule, PlatyPS, {
     if (!(Test-Path out/modules/PSRule.Rules.Azure/en/)) {
         $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en/ -ItemType Directory -Force;
     }
+    if (!(Test-Path out/modules/PSRule.Rules.Azure/en-US/)) {
+        $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en-US/ -ItemType Directory -Force;
+    }
+    if (!(Test-Path out/modules/PSRule.Rules.Azure/en-AU/)) {
+        $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en-AU/ -ItemType Directory -Force;
+    }
+    if (!(Test-Path out/modules/PSRule.Rules.Azure/en-GB/)) {
+        $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en-GB/ -ItemType Directory -Force;
+    }
 
     # Copy generated help into module out path
     $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-US/ -Recurse;

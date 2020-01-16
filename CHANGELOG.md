@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Fixed `Azure.VNET.UseNSGs` not populating subnet name in reason message. [#256](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/256)
+- Updated reason strings to use parent culture `en`. [#257](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/257)
+
 ## v0.8.0-B2001029 (pre-release)
 
 - Updated `Azure.VNET.UseNSGs` to apply to subnet resources from templates. [#246](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/246)
