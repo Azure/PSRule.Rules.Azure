@@ -2,6 +2,44 @@
 
 ## Unreleased
 
+## v0.8.0
+
+What's changed since v0.7.0:
+
+- New rules:
+  - API Management:
+    - Added new rule to check API Management uses secure protocol versions. [#237](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/237)
+    - Added new rule to check API Management published APIs use HTTPS. [#236](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/236)
+    - Added new rule to check API Management backend connections use HTTPS. [#238](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/238)
+    - Added new rule to check API Management named values are encrypted. [#239](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/239)
+  - Automation Accounts:
+    - Added new rule to check automation accounts use encrypted variables. [#211](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/211)
+    - Added new rule to check automation account webhook expiry interval. [#212](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/212)
+  - CDN:
+    - Added new rule to check Azure CDN connections use HTTPS. [#242](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/242)
+  - Resource Manager Templates:
+    - Added rules for checking template and parameter file structure. [#225](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/225)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.15.7. [#247](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/247)
+  - Virtual networks:
+    - Updated `Azure.VNET.UseNSGs` to apply to subnet resources from templates. [#246](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/246)
+- General improvements:
+  - Improvements to rule help wording and usage of links section. [#220](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/220) [#224](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/224) [#257](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/257)
+    - Documentation and reasons messages are now available for all `en` cultures.
+  - Various updates to rule implementation to take advantage of PSRule v0.12.0 language features. [#220](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/220)
+  - **Breaking change**: Shorten rule names to improve output display. [#119](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/119)
+    - Application Gateway rules have been renamed from `Azure.VirtualNetwork.*` to `Azure.AppGW.*`.
+    - Load balancer rules have been renamed from `Azure.VirtualNetwork.*` to `Azure.LB.*`.
+    - NSG rules have been renamed from `Azure.VirtualNetwork.*` to `Azure.NSG.*`.
+    - VNET rules have been renamed from `Azure.VirtualNetwork.*` to `Azure.VNET.*`.
+    - NIC rules have been renamed from `Azure.VirtualNetwork.*` to `Azure.VM.*`.
+    - Renamed storage account rule `Azure.Storage.SecureTransferRequired` to `Azure.Storage.SecureTransfer`.
+- Bug fixes:
+  - Fix `Azure.Resource.UseTags` applying to template and parameter files. [#230](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/230)
+
+What's changed since pre-release v0.8.0-B2001029:
+
 - Fixed `Azure.VNET.UseNSGs` not populating subnet name in reason message. [#256](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/256)
 - Updated reason strings to use parent culture `en`. [#257](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/257)
 
@@ -50,13 +88,13 @@ What's changed since v0.6.0:
 - New rules:
   - Role assignment:
     - Added new rule to check presence of classic Co-Administrators. [#188](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/188)
-  - Azure Kubernetes Services:
+  - Azure Kubernetes Service:
     - Added new rule to check AKS node pool version matches cluster version. [#186](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/186)
     - Added new rule to check AKS clusters use pod security policies. [#142](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/142)
     - Added new rule to check AKS clusters use network policies. [#143](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/143)
     - Added new rule to check AKS node pools use scale sets. [#187](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/187)
 - Updated rules:
-  - Azure Kubernetes Services:
+  - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to check for node pool version. [#191](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/191)
 - General improvements:
   - Added custom bindings for common resource properties. [#202](https://github.com/BernieWhite/PSRule.Rules.Azure/issues/202)
