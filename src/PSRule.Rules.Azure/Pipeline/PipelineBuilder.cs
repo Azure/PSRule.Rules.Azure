@@ -1,4 +1,7 @@
-﻿using PSRule.Rules.Azure.Configuration;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Resources;
 using System;
 using System.IO;

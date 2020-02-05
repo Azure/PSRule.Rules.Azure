@@ -10,10 +10,10 @@
     <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
     <Authors>Bernie White</Authors>
     <AssemblyTitle>PSRule</AssemblyTitle>
-    <RepositoryUrl>https://github.com/BernieWhite/PSRule.Rules.Azure</RepositoryUrl>
-    <PackageLicenseExpression>https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/LICENSE</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/Microsoft/PSRule.Rules.Azure</RepositoryUrl>
+    <PackageLicenseExpression>https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/LICENSE</PackageLicenseExpression>
     <!--<Version>0.0.1</Version>-->
-    <Copyright>Copyright (c)Bernie White. All rights reserved. Licensed under the MIT License.</Copyright>
+    <Copyright>(c) Microsoft Corporation. All rights reserved. Licensed under the MIT License.</Copyright>
     <Description>Validate Azure resources using PSRule.
 
 This project is to be considered a proof-of-concept and not a supported product.</Description>

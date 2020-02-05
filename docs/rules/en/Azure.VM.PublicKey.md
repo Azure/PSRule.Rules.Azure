@@ -2,7 +2,7 @@
 severity: Important
 category: Security configuration
 resource: Virtual Machine
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.PublicKey.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.PublicKey.md
 ---
 
 # Use public keys for Linux

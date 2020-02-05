@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Resources;
 using System;
 using System.Collections.Generic;

@@ -2,7 +2,7 @@
 severity: Important
 category: Security configuration
 resource: Azure Database for PostgreSQL
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.PostgreSQL.AllowAzureAccess.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.PostgreSQL.AllowAzureAccess.md
 ms-content-id: 07659a25-0a40-4979-99cd-cae83a5e3145
 ---
 

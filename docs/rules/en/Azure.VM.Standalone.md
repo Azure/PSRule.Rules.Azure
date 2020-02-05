@@ -2,7 +2,7 @@
 severity: Single point of failure
 category: Reliability
 resource: Virtual Machine
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.Standalone.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.Standalone.md
 ---
 
 # Azure.VirtualMachine.Standalone

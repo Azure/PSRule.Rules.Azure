@@ -2,7 +2,7 @@
 severity: Important
 category: Security configuration
 resource: Azure SQL Database
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.SQL.AllowAzureAccess.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.SQL.AllowAzureAccess.md
 ms-content-id: 30a551f6-54e0-4e51-b068-f9695d891a89
 ---
 

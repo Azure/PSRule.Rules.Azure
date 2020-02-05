@@ -2,7 +2,7 @@
 severity: Important
 category: Security operations
 resource: Subscription
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.RBAC.LimitMGDelegation.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.RBAC.LimitMGDelegation.md
 ms-content-id: 0f0a1cc8-9528-46b7-8f31-b9fe76cc0d66
 ---
 

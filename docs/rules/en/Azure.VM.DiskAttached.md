@@ -2,7 +2,7 @@
 severity: Awareness
 category: Cost management
 resource: Virtual Machine
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.DiskAttached.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.DiskAttached.md
 ms-content-id: 23a06a0e-7965-4d43-8e29-bb9ac6eeffcc
 ---
 

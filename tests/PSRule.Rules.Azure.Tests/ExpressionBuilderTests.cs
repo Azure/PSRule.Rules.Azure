@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Data.Template;
 using Xunit;
 using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;

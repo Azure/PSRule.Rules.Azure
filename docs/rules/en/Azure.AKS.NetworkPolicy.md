@@ -2,7 +2,7 @@
 severity: Important
 category: Security configuration
 resource: Azure Kubernetes Service
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AKS.NetworkPolicy.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AKS.NetworkPolicy.md
 ---
 
 # AKS clusters use Azure Network Policies

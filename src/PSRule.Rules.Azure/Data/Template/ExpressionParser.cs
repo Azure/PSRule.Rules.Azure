@@ -1,4 +1,7 @@
-﻿using PSRule.Rules.Azure.Resources;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using PSRule.Rules.Azure.Resources;
 using System.Threading;
 
 namespace PSRule.Rules.Azure.Data.Template

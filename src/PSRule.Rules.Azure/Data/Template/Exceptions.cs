@@ -1,4 +1,7 @@
-﻿using PSRule.Rules.Azure.Pipeline;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using PSRule.Rules.Azure.Pipeline;
 using System;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
