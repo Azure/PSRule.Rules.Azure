@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.9.0-B2002011 (pre-release)
+
 - Fixed incorrect string formatting in POSIX culture.  [#262](https://github.com/Microsoft/PSRule.Rules.Azure/issues/262)
 - Fixed `Azure.VNET.UseNSGs` to exclude `AzureFirewallSubnet`. [#261](https://github.com/Microsoft/PSRule.Rules.Azure/issues/261)
 
