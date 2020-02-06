@@ -122,6 +122,8 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("utcNow", UtcNow),
         };
 
+        private static readonly CultureInfo AzureCulture = new CultureInfo("en-US");
+
         #region Array and object
 
         internal static object Array(TemplateContext context, object[] args)
@@ -1138,7 +1140,7 @@ namespace PSRule.Rules.Azure.Data.Template
             var dataStart = value.IndexOf(',');
             var mediaType = value.Substring(5, dataStart - 5);
             var base64 = false;
-            if (mediaType.EndsWith(";base64"))
+            if (mediaType.EndsWith(";base64", ignoreCase: true, culture: AzureCulture))
             {
                 base64 = true;
                 mediaType = mediaType.Remove(mediaType.Length - 7);
@@ -1166,7 +1168,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             var remaining = new object[args.Length - 1];
             System.Array.Copy(args, 1, remaining, 0, remaining.Length);
-            return string.Format(CultureInfo.InvariantCulture, formatString, remaining);
+            return string.Format(AzureCulture, formatString, remaining);
         }
 
         internal static object Guid(TemplateContext context, object[] args)
@@ -1275,7 +1277,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!ExpressionHelpers.TryString(args[0], out string stringToChange))
                 throw new ArgumentException();
 
-            return stringToChange.ToLower();
+            return stringToChange.ToLower(AzureCulture);
         }
 
         internal static object ToUpper(TemplateContext context, object[] args)
@@ -1286,7 +1288,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!ExpressionHelpers.TryString(args[0], out string stringToChange))
                 throw new ArgumentException();
 
-            return stringToChange.ToUpper();
+            return stringToChange.ToUpper(AzureCulture);
         }
 
         internal static object Trim(TemplateContext context, object[] args)
@@ -1362,7 +1364,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (argCount == 1 && !ExpressionHelpers.TryString(args[0], out format))
                 throw new ArgumentException(PSRuleResources.FunctionInvalidString, "format");
 
-            return DateTime.UtcNow.ToString(format);
+            return DateTime.UtcNow.ToString(format, AzureCulture);
         }
 
         internal static object Replace(TemplateContext context, object[] args)

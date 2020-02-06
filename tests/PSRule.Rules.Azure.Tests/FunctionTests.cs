@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Data.Template;
 using System;
+using System.Globalization;
 using Xunit;
 using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
@@ -1278,8 +1279,8 @@ namespace PSRule.Rules.Azure
             var actual2 = Functions.UtcNow(context, new object[] { "d" }) as string;
             var actual3 = Functions.UtcNow(context, new object[] { "M d" }) as string;
             Assert.Matches("[0-9]{8}T[0-9]{6}Z", actual1);
-            Assert.Equal(utc.ToString("d"), actual2);
-            Assert.Equal(utc.ToString("M d"), actual3);
+            Assert.Equal(utc.ToString("d", new CultureInfo("en-US")), actual2);
+            Assert.Equal(utc.ToString("M d", new CultureInfo("en-US")), actual3);
         }
 
         #endregion String
