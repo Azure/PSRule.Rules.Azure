@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fixed incorrect string formatting in POSIX culture.  [#262](https://github.com/Microsoft/PSRule.Rules.Azure/issues/262)
+
 ## v0.8.0
 
 What's changed since v0.7.0:
