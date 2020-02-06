@@ -115,6 +115,16 @@
                         "delegations": []
                     },
                     "type": "Microsoft.Network/virtualNetworks/subnets"
+                },
+                {
+                    "name": "AzureFirewallSubnet",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/AzureFirewallSubnet",
+                    "properties": {
+                        "addressPrefix": "10.1.0.128/26",
+                        "serviceEndpoints": [],
+                        "delegations": []
+                    },
+                    "type": "Microsoft.Network/virtualNetworks/subnets"
                 }
             ],
             "virtualNetworkPeerings": [
