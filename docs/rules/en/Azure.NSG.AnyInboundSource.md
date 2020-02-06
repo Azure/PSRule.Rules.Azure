@@ -2,7 +2,7 @@
 severity: Critical
 category: Security configuration
 resource: Network Security Group
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.NSG.AnyInboundSource.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.NSG.AnyInboundSource.md
 ---
 
 # Avoid any inbound rules

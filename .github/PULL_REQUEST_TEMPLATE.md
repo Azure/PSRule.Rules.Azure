@@ -12,8 +12,8 @@
   - [ ] Unit tests created/ updated
   - [ ] Rule documentation created/ updated
   - [ ] Link to a filed issue
-  - [ ] [Change log](https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/CHANGELOG.md) has been updated with change under unreleased section
+  - [ ] [Change log](https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/CHANGELOG.md) has been updated with change under unreleased section
 - **Other code changes**
   - [ ] Unit tests created/ updated
   - [ ] Link to a filed issue
-  - [ ] [Change log](https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/CHANGELOG.md) has been updated with change under unreleased section
+  - [ ] [Change log](https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/CHANGELOG.md) has been updated with change under unreleased section

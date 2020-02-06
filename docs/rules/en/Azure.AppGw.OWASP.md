@@ -2,7 +2,7 @@
 severity: Important
 category: Security configuration
 resource: Application Gateway
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppGw.OWASP.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppGw.OWASP.md
 ---
 
 # Use OWASP 3.x rules

@@ -2,7 +2,7 @@
 severity: Awareness
 category: Operations management
 resource: Public IP address
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.PublicIP.IsAttached.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.PublicIP.IsAttached.md
 ms-content-id: 9222ec9f-7eea-4301-bee6-3022c9008874
 ---
 

@@ -1,4 +1,7 @@
-﻿using PSRule.Rules.Azure.Data.Template;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using PSRule.Rules.Azure.Data.Template;
 using Xunit;
 
 namespace PSRule.Rules.Azure

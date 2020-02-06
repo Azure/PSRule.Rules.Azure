@@ -2,7 +2,7 @@
 severity: Important
 category: Security configuration
 resource: API Management
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.APIM.Protocols.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.APIM.Protocols.md
 ---
 
 # Use secure protocols

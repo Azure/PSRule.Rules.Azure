@@ -2,7 +2,7 @@
 # CI pipeline for PSRule.Rules.Azure
 
 variables:
-  version: '0.8.0'
+  version: '0.9.0'
   buildConfiguration: 'Release'
   disable.coverage.autogenerate: 'true'
 
@@ -176,7 +176,7 @@ stages:
         action: edit
         tag: '$(Build.SourceBranchName)'
         releaseNotesSource: inline
-        releaseNotesInline: 'See [change log](https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/CHANGELOG.md)'
+        releaseNotesInline: 'See [change log](https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/CHANGELOG.md)'
         assetUploadMode: replace
         addChangeLog: false
         isPreRelease: $(isPreRelease)

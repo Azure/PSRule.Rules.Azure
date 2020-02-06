@@ -2,7 +2,7 @@
 severity: Important
 category: Operations management
 resource: Virtual Machine
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.Agent.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.Agent.md
 ms-content-id: e4f6f6e7-593c-4507-811d-778ee8ec9ac4
 ---
 

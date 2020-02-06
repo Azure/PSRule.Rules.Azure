@@ -14,7 +14,7 @@ Features of PSRule for Azure include:
 
 This project is to be considered a **proof-of-concept** and **not a supported product**.
 
-For issues with rules and documentation please check our GitHub [issues](https://github.com/BernieWhite/PSRule.Rules.Azure/issues) page.
+For issues with rules and documentation please check our GitHub [issues](https://github.com/Microsoft/PSRule.Rules.Azure/issues) page.
 If you do not see your problem captured, please file a new issue and follow the provided template.
 
 If you have any problems with the [PSRule][engine] engine, please check the project GitHub [issues](https://github.com/Microsoft/PSRule/issues) page instead.
@@ -185,6 +185,17 @@ For a list of module changes please see the [change log](CHANGELOG.md).
 > Pre-release module versions are created on major commits and can be installed from the PowerShell Gallery.
 > Pre-release versions should be considered experimental.
 > Modules and change log details for pre-releases will be removed as standard releases are made available.
+
+## Contributing
+
+This project welcomes contributions and suggestions.
+If you are ready to contribute, please visit the [contribution guide](CONTRIBUTING.md).
+
+## Code of Conduct
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
+or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Maintainers
 

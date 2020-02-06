@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 #
 # PSRule.Rules.Azure
 #
@@ -16,13 +19,13 @@ CompatiblePSEditions = 'Core', 'Desktop'
 GUID = 'bce66f73-3809-4740-b3c3-f52958e7ab51'
 
 # Author of this module
-Author = 'Bernie White'
+Author = 'Microsoft Corporation'
 
 # Company or vendor of this module
-CompanyName = 'Bernie White'
+CompanyName = 'Microsoft Corporation'
 
 # Copyright statement for this module
-Copyright = '(c) Bernie White. All rights reserved.'
+Copyright = '(c) Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'Validate Azure resources using PSRule.
@@ -103,16 +106,16 @@ PrivateData = @{
         Tags = @('PSRule', 'PSRule-rules', 'Rule', 'Azure', 'Cloud')
 
         # A URL to the license for this module.
-        LicenseUri = 'https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/LICENSE'
+        LicenseUri = 'https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/LICENSE'
 
         # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/BernieWhite/PSRule.Rules.Azure'
+        ProjectUri = 'https://github.com/Microsoft/PSRule.Rules.Azure'
 
         # A URL to an icon representing this module.
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/CHANGELOG.md'
+        ReleaseNotes = 'https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/CHANGELOG.md'
     } # End of PSData hashtable
     PSRule = @{
         Baseline = 'Azure.Default'

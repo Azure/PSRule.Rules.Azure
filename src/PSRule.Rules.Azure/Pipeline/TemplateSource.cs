@@ -1,4 +1,7 @@
-﻿namespace PSRule.Rules.Azure.Pipeline
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace PSRule.Rules.Azure.Pipeline
 {
     public sealed class TemplateSource
     {

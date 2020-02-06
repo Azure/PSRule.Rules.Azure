@@ -2,7 +2,7 @@
 severity: Critical
 category: Security configuration
 resource: Application Gateway
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppGw.WAFEnabled.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppGw.WAFEnabled.md
 ---
 
 # Application Gateway WAF is enabled

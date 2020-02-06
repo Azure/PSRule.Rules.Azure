@@ -2,7 +2,7 @@
 severity: Important
 category: Security configuration
 resource: Automation Service
-online version: https://github.com/BernieWhite/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.Automation.EncryptVariables.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.Automation.EncryptVariables.md
 ms-content-id: 3c74b891-bf52-44a8-8b71-f7219f83c2ce
 ---
 
