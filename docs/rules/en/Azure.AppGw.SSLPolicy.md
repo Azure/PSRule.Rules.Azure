@@ -17,4 +17,9 @@ Application Gateway should only accept a minimum of TLS 1.2.
 
 ## RECOMMENDATION
 
-Application Gateway should only accept a minimum of TLS 1.2.
+Consider configuring Application Gateway to accept a minimum of TLS 1.2.
+
+## LINKS
+
+- [Application Gateway SSL policy overview](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-ssl-policy-overview)
+- [Configure SSL policy versions and cipher suites on Application Gateway](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-configure-ssl-policy-powershell)
