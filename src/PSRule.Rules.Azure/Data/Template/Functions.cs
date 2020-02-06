@@ -1166,7 +1166,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             var remaining = new object[args.Length - 1];
             System.Array.Copy(args, 1, remaining, 0, remaining.Length);
-            return string.Format(formatString, remaining);
+            return string.Format(CultureInfo.InvariantCulture, formatString, remaining);
         }
 
         internal static object Guid(TemplateContext context, object[] args)
