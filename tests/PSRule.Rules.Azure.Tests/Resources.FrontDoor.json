@@ -1,0 +1,656 @@
+[
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoors/frontdoor-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoors/frontdoor-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "frontdoor-A",
+        "Name": "frontdoor-A",
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "resourceState": "Enabled",
+            "backendPools": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-A/BackendPools/backend-A",
+                    "name": "backend-A",
+                    "type": "Microsoft.Network/Frontdoors/BackendPools",
+                    "properties": {
+                        "backends": [
+                            {
+                                "address": "ww1.contoso.com",
+                                "httpPort": 80,
+                                "httpsPort": 443,
+                                "priority": 2,
+                                "weight": 50,
+                                "backendHostHeader": "ww1.contoso.com",
+                                "enabledState": "Disabled"
+                            },
+                            {
+                                "address": "ww2.contoso.com",
+                                "httpPort": 80,
+                                "httpsPort": 443,
+                                "priority": 1,
+                                "weight": 50,
+                                "backendHostHeader": "ww2.contoso.com",
+                                "enabledState": "Enabled"
+                            }
+                        ],
+                        "healthProbeSettings": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-A/HealthProbeSettings/frontdoor-A-backend-health"
+                        },
+                        "loadBalancingSettings": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-A/LoadBalancingSettings/frontdoor-A-lb"
+                        },
+                        "resourceState": "Enabled"
+                    }
+                }
+            ],
+            "healthProbeSettings": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-A/HealthProbeSettings/frontdoor-A-backend-health",
+                    "name": "frontdoor-A-backend-health",
+                    "type": "Microsoft.Network/Frontdoors/HealthProbeSettings",
+                    "properties": {
+                        "intervalInSeconds": 255,
+                        "path": "/",
+                        "protocol": "Https",
+                        "resourceState": "Enabled",
+                        "enabledState": "Enabled",
+                        "healthProbeMethod": "Get"
+                    }
+                }
+            ],
+            "frontendEndpoints": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-A/FrontendEndpoints/frontdoor-A",
+                    "name": "frontdoor-A",
+                    "type": "Microsoft.Network/Frontdoors/FrontendEndpoints",
+                    "properties": {
+                        "hostName": "frontdoor-A.azurefd.net",
+                        "sessionAffinityEnabledState": "Disabled",
+                        "sessionAffinityTtlSeconds": 0,
+                        "webApplicationFirewallPolicyLink": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoor-waf-A"
+                        },
+                        "customHttpsProvisioningState": null,
+                        "customHttpsProvisioningSubstate": null,
+                        "customHttpsConfiguration": null,
+                        "resourceState": "Enabled"
+                    }
+                }
+            ],
+            "loadBalancingSettings": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-A/LoadBalancingSettings/frontdoor-A-lb",
+                    "name": "frontdoor-A-lb",
+                    "type": "Microsoft.Network/Frontdoors/LoadBalancingSettings",
+                    "properties": {
+                        "additionalLatencyMilliseconds": 0,
+                        "sampleSize": 4,
+                        "successfulSamplesRequired": 2,
+                        "resourceState": "Enabled"
+                    }
+                }
+            ],
+            "routingRules": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-A/RoutingRules/https-forward",
+                    "name": "https-forward",
+                    "type": "Microsoft.Network/Frontdoors/RoutingRules",
+                    "properties": {
+                        "frontendEndpoints": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-A/FrontendEndpoints/frontdoor-A"
+                            }
+                        ],
+                        "acceptedProtocols": [
+                            "Https"
+                        ],
+                        "patternsToMatch": [
+                            "/*"
+                        ],
+                        "enabledState": "Enabled",
+                        "resourceState": "Enabled",
+                        "routeConfiguration": {
+                            "@odata.type": "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration",
+                            "customForwardingPath": null,
+                            "forwardingProtocol": "HttpsOnly",
+                            "cacheConfiguration": {
+                                "queryParameterStripDirective": "StripNone",
+                                "dynamicCompression": "Disabled"
+                            },
+                            "backendPool": {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-A/BackendPools/backend-A"
+                            }
+                        }
+                    }
+                },
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-A/RoutingRules/http-Redirect",
+                    "name": "http-Redirect",
+                    "type": "Microsoft.Network/Frontdoors/RoutingRules",
+                    "properties": {
+                        "frontendEndpoints": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-A/FrontendEndpoints/frontdoor-A"
+                            }
+                        ],
+                        "acceptedProtocols": [
+                            "Http"
+                        ],
+                        "patternsToMatch": [
+                            "/*"
+                        ],
+                        "enabledState": "Enabled",
+                        "resourceState": "Enabled",
+                        "routeConfiguration": {
+                            "@odata.type": "#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration",
+                            "customFragment": null,
+                            "customHost": "frontdoor-A.azurefd.net",
+                            "customPath": "",
+                            "redirectProtocol": "HttpsOnly",
+                            "customQueryString": null,
+                            "redirectType": "Found"
+                        }
+                    }
+                }
+            ],
+            "backendPoolsSettings": {
+                "enforceCertificateNameCheck": "Disabled",
+                "sendRecvTimeoutSeconds": 30
+            },
+            "enabledState": "Enabled",
+            "cName": "frontdoor-A.azurefd.net",
+            "friendlyName": ""
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/frontdoors",
+        "ResourceType": "Microsoft.Network/frontdoors",
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ETag": null
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoors/frontdoor-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoors/frontdoor-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "frontdoor-B",
+        "Name": "frontdoor-B",
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "resourceState": "Enabled",
+            "backendPools": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-B/BackendPools/backend-A",
+                    "name": "backend-A",
+                    "type": "Microsoft.Network/Frontdoors/BackendPools",
+                    "properties": {
+                        "backends": [
+                            {
+                                "address": "ww1.contoso.com",
+                                "httpPort": 80,
+                                "httpsPort": 443,
+                                "priority": 2,
+                                "weight": 50,
+                                "backendHostHeader": "ww1.contoso.com",
+                                "enabledState": "Disabled"
+                            },
+                            {
+                                "address": "ww2.contoso.com",
+                                "httpPort": 80,
+                                "httpsPort": 443,
+                                "priority": 1,
+                                "weight": 50,
+                                "backendHostHeader": "ww2.contoso.com",
+                                "enabledState": "Enabled"
+                            }
+                        ],
+                        "healthProbeSettings": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-B/HealthProbeSettings/frontdoor-B-backend-health"
+                        },
+                        "loadBalancingSettings": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-B/LoadBalancingSettings/frontdoor-B-lb"
+                        },
+                        "resourceState": "Enabled"
+                    }
+                }
+            ],
+            "healthProbeSettings": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-B/HealthProbeSettings/frontdoor-B-backend-health",
+                    "name": "frontdoor-B-backend-health",
+                    "type": "Microsoft.Network/Frontdoors/HealthProbeSettings",
+                    "properties": {
+                        "intervalInSeconds": 255,
+                        "path": "/",
+                        "protocol": "Https",
+                        "resourceState": "Enabled",
+                        "enabledState": "Enabled",
+                        "healthProbeMethod": "Get"
+                    }
+                }
+            ],
+            "frontendEndpoints": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-B/FrontendEndpoints/frontdoor-B",
+                    "name": "frontdoor-B",
+                    "type": "Microsoft.Network/Frontdoors/FrontendEndpoints",
+                    "properties": {
+                        "hostName": "frontdoor-B.azurefd.net",
+                        "sessionAffinityEnabledState": "Disabled",
+                        "sessionAffinityTtlSeconds": 0,
+                        "customHttpsProvisioningState": null,
+                        "customHttpsProvisioningSubstate": null,
+                        "customHttpsConfiguration": {
+                            "minimumTlsVersion": "1.0"
+                        },
+                        "resourceState": "Enabled"
+                    }
+                }
+            ],
+            "loadBalancingSettings": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-B/LoadBalancingSettings/frontdoor-B-lb",
+                    "name": "frontdoor-B-lb",
+                    "type": "Microsoft.Network/Frontdoors/LoadBalancingSettings",
+                    "properties": {
+                        "additionalLatencyMilliseconds": 0,
+                        "sampleSize": 4,
+                        "successfulSamplesRequired": 2,
+                        "resourceState": "Enabled"
+                    }
+                }
+            ],
+            "routingRules": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-B/RoutingRules/https-forward",
+                    "name": "https-forward",
+                    "type": "Microsoft.Network/Frontdoors/RoutingRules",
+                    "properties": {
+                        "frontendEndpoints": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-B/FrontendEndpoints/frontdoor-B"
+                            }
+                        ],
+                        "acceptedProtocols": [
+                            "Https"
+                        ],
+                        "patternsToMatch": [
+                            "/*"
+                        ],
+                        "enabledState": "Enabled",
+                        "resourceState": "Enabled",
+                        "routeConfiguration": {
+                            "@odata.type": "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration",
+                            "customForwardingPath": null,
+                            "forwardingProtocol": "HttpsOnly",
+                            "cacheConfiguration": {
+                                "queryParameterStripDirective": "StripNone",
+                                "dynamicCompression": "Disabled"
+                            },
+                            "backendPool": {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-B/BackendPools/backend-A"
+                            }
+                        }
+                    }
+                },
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-B/RoutingRules/http-Redirect",
+                    "name": "http-Redirect",
+                    "type": "Microsoft.Network/Frontdoors/RoutingRules",
+                    "properties": {
+                        "frontendEndpoints": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-B/FrontendEndpoints/frontdoor-B"
+                            }
+                        ],
+                        "acceptedProtocols": [
+                            "Http"
+                        ],
+                        "patternsToMatch": [
+                            "/*"
+                        ],
+                        "enabledState": "Enabled",
+                        "resourceState": "Enabled",
+                        "routeConfiguration": {
+                            "@odata.type": "#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration",
+                            "customFragment": null,
+                            "customHost": "frontdoor-B.azurefd.net",
+                            "customPath": "",
+                            "redirectProtocol": "HttpsOnly",
+                            "customQueryString": null,
+                            "redirectType": "Found"
+                        }
+                    }
+                }
+            ],
+            "backendPoolsSettings": {
+                "enforceCertificateNameCheck": "Disabled",
+                "sendRecvTimeoutSeconds": 30
+            },
+            "enabledState": "Disabled",
+            "cName": "frontdoor-B.azurefd.net",
+            "friendlyName": ""
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/frontdoors",
+        "ResourceType": "Microsoft.Network/frontdoors",
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ETag": null
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoors/frontdoor-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoors/frontdoor-C",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "frontdoor-C",
+        "Name": "frontdoor-C",
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "resourceState": "Enabled",
+            "backendPools": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-C/BackendPools/backend-A",
+                    "name": "backend-A",
+                    "type": "Microsoft.Network/Frontdoors/BackendPools",
+                    "properties": {
+                        "backends": [
+                            {
+                                "address": "ww1.contoso.com",
+                                "httpPort": 80,
+                                "httpsPort": 443,
+                                "priority": 2,
+                                "weight": 50,
+                                "backendHostHeader": "ww1.contoso.com",
+                                "enabledState": "Disabled"
+                            },
+                            {
+                                "address": "ww2.contoso.com",
+                                "httpPort": 80,
+                                "httpsPort": 443,
+                                "priority": 1,
+                                "weight": 50,
+                                "backendHostHeader": "ww2.contoso.com",
+                                "enabledState": "Enabled"
+                            }
+                        ],
+                        "healthProbeSettings": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-C/HealthProbeSettings/frontdoor-C-backend-health"
+                        },
+                        "loadBalancingSettings": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-C/LoadBalancingSettings/frontdoor-C-lb"
+                        },
+                        "resourceState": "Enabled"
+                    }
+                }
+            ],
+            "healthProbeSettings": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-C/HealthProbeSettings/frontdoor-C-backend-health",
+                    "name": "frontdoor-C-backend-health",
+                    "type": "Microsoft.Network/Frontdoors/HealthProbeSettings",
+                    "properties": {
+                        "intervalInSeconds": 255,
+                        "path": "/",
+                        "protocol": "Https",
+                        "resourceState": "Enabled",
+                        "enabledState": "Enabled",
+                        "healthProbeMethod": "Get"
+                    }
+                }
+            ],
+            "frontendEndpoints": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-C/FrontendEndpoints/frontdoor-C",
+                    "name": "frontdoor-C",
+                    "type": "Microsoft.Network/Frontdoors/FrontendEndpoints",
+                    "properties": {
+                        "hostName": "frontdoor-C.azurefd.net",
+                        "sessionAffinityEnabledState": "Disabled",
+                        "sessionAffinityTtlSeconds": 0,
+                        "webApplicationFirewallPolicyLink": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoor-waf-A"
+                        },
+                        "customHttpsProvisioningState": null,
+                        "customHttpsProvisioningSubstate": null,
+                        "customHttpsConfiguration": {
+                            "minimumTlsVersion": "1.2"
+                        },
+                        "resourceState": "Enabled"
+                    }
+                }
+            ],
+            "loadBalancingSettings": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-C/LoadBalancingSettings/frontdoor-C-lb",
+                    "name": "frontdoor-C-lb",
+                    "type": "Microsoft.Network/Frontdoors/LoadBalancingSettings",
+                    "properties": {
+                        "additionalLatencyMilliseconds": 0,
+                        "sampleSize": 4,
+                        "successfulSamplesRequired": 2,
+                        "resourceState": "Enabled"
+                    }
+                }
+            ],
+            "routingRules": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-C/RoutingRules/https-forward",
+                    "name": "https-forward",
+                    "type": "Microsoft.Network/Frontdoors/RoutingRules",
+                    "properties": {
+                        "frontendEndpoints": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-C/FrontendEndpoints/frontdoor-C"
+                            }
+                        ],
+                        "acceptedProtocols": [
+                            "Https"
+                        ],
+                        "patternsToMatch": [
+                            "/*"
+                        ],
+                        "enabledState": "Enabled",
+                        "resourceState": "Enabled",
+                        "routeConfiguration": {
+                            "@odata.type": "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration",
+                            "customForwardingPath": null,
+                            "forwardingProtocol": "HttpsOnly",
+                            "cacheConfiguration": {
+                                "queryParameterStripDirective": "StripNone",
+                                "dynamicCompression": "Disabled"
+                            },
+                            "backendPool": {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-C/BackendPools/backend-A"
+                            }
+                        }
+                    }
+                },
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-C/RoutingRules/http-Redirect",
+                    "name": "http-Redirect",
+                    "type": "Microsoft.Network/Frontdoors/RoutingRules",
+                    "properties": {
+                        "frontendEndpoints": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-C/FrontendEndpoints/frontdoor-C"
+                            }
+                        ],
+                        "acceptedProtocols": [
+                            "Http"
+                        ],
+                        "patternsToMatch": [
+                            "/*"
+                        ],
+                        "enabledState": "Enabled",
+                        "resourceState": "Enabled",
+                        "routeConfiguration": {
+                            "@odata.type": "#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration",
+                            "customFragment": null,
+                            "customHost": "frontdoor-C.azurefd.net",
+                            "customPath": "",
+                            "redirectProtocol": "HttpsOnly",
+                            "customQueryString": null,
+                            "redirectType": "Found"
+                        }
+                    }
+                }
+            ],
+            "backendPoolsSettings": {
+                "enforceCertificateNameCheck": "Disabled",
+                "sendRecvTimeoutSeconds": 30
+            },
+            "enabledState": "Disabled",
+            "cName": "frontdoor-C.azurefd.net",
+            "friendlyName": ""
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/frontdoors",
+        "ResourceType": "Microsoft.Network/frontdoors",
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ETag": null
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoor-waf-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoor-waf-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": "Global",
+        "ManagedBy": null,
+        "ResourceName": "frontdoor-waf-A",
+        "Name": "frontdoor-waf-A",
+        "Properties": {
+            "resourceState": "Enabled",
+            "provisioningState": "Succeeded",
+            "policySettings": {
+                "enabledState": "Enabled",
+                "mode": "Prevention",
+                "redirectUrl": null,
+                "customBlockResponseStatusCode": 403,
+                "customBlockResponseBody": ""
+            },
+            "customRules": {
+                "rules": [
+                    {
+                        "name": "IPBlacklist",
+                        "enabledState": "Disabled",
+                        "priority": 1,
+                        "ruleType": "MatchRule",
+                        "rateLimitDurationInMinutes": 1,
+                        "rateLimitThreshold": 10,
+                        "matchConditions": [
+                            {
+                                "matchVariable": "RemoteAddr",
+                                "selector": null,
+                                "operator": "IPMatch",
+                                "negateCondition": false,
+                                "matchValue": [
+                                    "10.0.0.0"
+                                ],
+                                "transforms": []
+                            }
+                        ],
+                        "action": "Block"
+                    }
+                ]
+            },
+            "managedRules": {
+                "managedRuleSets": [
+                    {
+                        "ruleSetType": "DefaultRuleSet",
+                        "ruleSetVersion": "1.0",
+                        "ruleGroupOverrides": [],
+                        "exclusions": []
+                    }
+                ]
+            },
+            "frontendEndpointLinks": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoors/frontdoor-A/frontendendpoints/frontdoor-A"
+                }
+            ]
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/frontdoorwebapplicationfirewallpolicies",
+        "ResourceType": "Microsoft.Network/frontdoorwebapplicationfirewallpolicies",
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ETag": null
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoor-waf-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoor-waf-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": "Global",
+        "ManagedBy": null,
+        "ResourceName": "frontdoor-waf-B",
+        "Name": "frontdoor-waf-B",
+        "Properties": {
+            "resourceState": "Enabled",
+            "provisioningState": "Succeeded",
+            "policySettings": {
+                "enabledState": "Disabled",
+                "mode": "Detection",
+                "redirectUrl": null,
+                "customBlockResponseStatusCode": 403,
+                "customBlockResponseBody": ""
+            },
+            "customRules": {
+                "rules": [
+                    {
+                        "name": "IPBlacklist",
+                        "enabledState": "Disabled",
+                        "priority": 1,
+                        "ruleType": "MatchRule",
+                        "rateLimitDurationInMinutes": 1,
+                        "rateLimitThreshold": 10,
+                        "matchConditions": [
+                            {
+                                "matchVariable": "RemoteAddr",
+                                "selector": null,
+                                "operator": "IPMatch",
+                                "negateCondition": false,
+                                "matchValue": [
+                                    "10.0.0.0"
+                                ],
+                                "transforms": []
+                            }
+                        ],
+                        "action": "Block"
+                    }
+                ]
+            },
+            "managedRules": {
+                "managedRuleSets": [
+                    {
+                        "ruleSetType": "DefaultRuleSet",
+                        "ruleSetVersion": "1.0",
+                        "ruleGroupOverrides": [],
+                        "exclusions": []
+                    }
+                ]
+            },
+            "frontendEndpointLinks": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoors/frontdoor-B/frontendendpoints/frontdoor-B"
+                }
+            ]
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/frontdoorwebapplicationfirewallpolicies",
+        "ResourceType": "Microsoft.Network/frontdoorwebapplicationfirewallpolicies",
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ETag": null
+    }
+]

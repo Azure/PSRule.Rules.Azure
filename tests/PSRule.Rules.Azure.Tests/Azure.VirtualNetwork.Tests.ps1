@@ -572,3 +572,127 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
         }
     }
 }
+
+Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
+    $dataPath = Join-Path -Path $here -ChildPath 'Resources.Firewall.json';
+
+    Context 'Conditions' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
+
+        It 'Azure.Firewall.Mode' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Firewall.Mode' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'firewall-A';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'firewall-B';
+        }
+    }
+}
+
+Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
+    $dataPath = Join-Path -Path $here -ChildPath 'Resources.FrontDoor.json';
+
+    Context 'Conditions' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
+
+        It 'Azure.FrontDoor.State' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.State' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-B', 'frontdoor-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A';
+        }
+
+        It 'Azure.FrontDoor.MinTLS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.MinTLS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'frontdoor-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+        }
+
+        It 'Azure.FrontDoor.UseWAF' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.UseWAF' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'frontdoor-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+        }
+
+        It 'Azure.FrontDoor.WAF.Mode' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.WAF.Mode' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'frontdoor-waf-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-waf-A';
+        }
+
+        It 'Azure.FrontDoor.WAF.Enabled' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.WAF.Enabled' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'frontdoor-waf-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'frontdoor-waf-A';
+        }
+    }
+}
