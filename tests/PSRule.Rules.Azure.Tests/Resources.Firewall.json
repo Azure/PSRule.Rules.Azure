@@ -1,0 +1,127 @@
+[
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "firewall-A",
+        "Name": "firewall-A",
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "sku": {
+                "name": "AZFW_VNet",
+                "tier": "Standard"
+            },
+            "threatIntelMode": "Alert",
+            "additionalProperties": {},
+            "ipConfigurations": [
+                {
+                    "name": "configuration",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-A/azureFirewallIpConfigurations/configuration",
+                    "type": "Microsoft.Network/azureFirewalls/azureFirewallIpConfigurations",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "privateIPAddress": "10.0.0.4",
+                        "privateIPAllocationMethod": "Dynamic",
+                        "publicIPAddress": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-A-pip"
+                        },
+                        "subnet": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/AzureFirewallSubnet"
+                        }
+                    }
+                }
+            ],
+            "networkRuleCollections": [],
+            "applicationRuleCollections": [],
+            "natRuleCollections": []
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/azureFirewalls",
+        "ResourceType": "Microsoft.Network/azureFirewalls",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "firewall-B",
+        "Name": "firewall-B",
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "sku": {
+                "name": "AZFW_VNet",
+                "tier": "Standard"
+            },
+            "threatIntelMode": "Deny",
+            "additionalProperties": {},
+            "ipConfigurations": [
+                {
+                    "name": "configuration",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-B/azureFirewallIpConfigurations/configuration",
+                    "type": "Microsoft.Network/azureFirewalls/azureFirewallIpConfigurations",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "privateIPAddress": "10.0.0.4",
+                        "privateIPAllocationMethod": "Dynamic",
+                        "publicIPAddress": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-B-pip"
+                        },
+                        "subnet": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/AzureFirewallSubnet"
+                        }
+                    }
+                }
+            ],
+            "networkRuleCollections": [],
+            "applicationRuleCollections": [],
+            "natRuleCollections": []
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/azureFirewalls",
+        "ResourceType": "Microsoft.Network/azureFirewalls",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-A-pip",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-A-pip",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "firewall-A-pip",
+        "Name": "firewall-A-pip",
+        "Properties": {
+            "ipAddress": "0.0.0.0",
+            "publicIPAddressVersion": "IPv4",
+            "publicIPAllocationMethod": "Static",
+            "idleTimeoutInMinutes": 4,
+            "ipTags": [],
+            "ipConfiguration": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-A/azureFirewallIpConfigurations/configuration"
+            }
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/publicIPAddresses",
+        "ResourceType": "Microsoft.Network/publicIPAddresses",
+        "ExtensionResourceType": null,
+        "Sku": {
+            "Name": "Standard",
+            "Tier": null,
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    }
+]

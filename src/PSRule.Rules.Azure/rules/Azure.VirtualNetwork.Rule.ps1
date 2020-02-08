@@ -194,3 +194,55 @@ Rule 'Azure.LB.Probe' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 
 }
 
 #endregion Load Balancer
+
+#region Azure Firewall
+
+# Synopsis: Threat intelligence denies high confidence malicious IP addresses and domains
+Rule 'Azure.Firewall.Mode' -Type 'Microsoft.Network/azureFirewalls' -Tag @{ release = 'GA' } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.threatIntelMode', 'Deny');
+}
+
+#endregion Azure Firewall
+
+#region Front Door
+
+# Synopsis: Front Door instance should be enabled
+Rule 'Azure.FrontDoor.State' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA' } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.enabledState', 'Enabled');
+}
+
+# Synopsis: Use a minimum of TLS 1.2
+Rule 'Azure.FrontDoor.MinTLS' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA' } {
+    $endpoints = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
+        $endpoints = @($TargetObject.Properties.frontendEndpoints);
+    }
+    foreach ($endpoint in $endpoints) {
+        $Assert.HasDefaultValue($endpoint, 'properties.customHttpsConfiguration.minimumTlsVersion', '1.2');
+    }
+    # properties.frontendEndpoints[].properties.customHttpsConfiguration.minimumTlsVersion
+}
+
+# Synopsis: Enable WAF policy of each endpoint
+Rule 'Azure.FrontDoor.UseWAF' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA' } {
+    # properties.frontendEndpoints[].properties.customHttpsConfiguration.minimumTlsVersion
+    $endpoints = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
+        $endpoints = @($TargetObject.Properties.frontendEndpoints);
+    }
+    foreach ($endpoint in $endpoints) {
+        $Assert.HasFieldValue($endpoint, 'properties.webApplicationFirewallPolicyLink.id');
+    }
+}
+
+# Synopsis: Use Front Door WAF policy in prevention mode
+Rule 'Azure.FrontDoor.WAF.Mode' -Type 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies' -Tag @{ release = 'GA' } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.policySettings.mode', 'Prevention');
+}
+
+# Synopsis: Enable Front Door WAF policy
+Rule 'Azure.FrontDoor.WAF.Enabled' -Type 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies' -Tag @{ release = 'GA' } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.policySettings.enabledState', 'Enabled');
+}
+
+#endregion Front Door

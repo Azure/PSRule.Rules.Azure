@@ -57,7 +57,6 @@ function Export-AzRuleData {
         if ($Null -eq $context) {
             return;
         }
-
         if (!(Test-Path -Path $OutputPath)) {
             if ($PSCmdlet.ShouldProcess('Create output directory', $OutputPath)) {
                 $Null = New-Item -Path $OutputPath -ItemType Directory -Force;
@@ -70,12 +69,12 @@ function Export-AzRuleData {
         if ($PSBoundParameters.ContainsKey('Tag')) {
             $getParams['Tag'] = $Tag;
         }
-
         if ($PSBoundParameters.ContainsKey('ResourceGroupName')) {
             $filterParams['ResourceGroupName'] = $ResourceGroupName;
         }
 
         foreach ($c in $context) {
+            Write-Verbose -Message "Using subscription: $($c.Subscription.Name)";
             $filePath = Join-Path -Path $OutputPath -ChildPath "$($c.Subscription.Id).json";
             GetAzureResource @getParams -Context $c -Verbose:$VerbosePreference `
             | FilterAzureResource @filterParams -Verbose:$VerbosePreference `
@@ -266,17 +265,23 @@ function GetAzureResource {
     )
     process {
         $getParams = @{ };
-
         if ($PSBoundParameters.ContainsKey('Tag')) {
             $getParams['Tag'] = $Tag;
         }
 
-        Get-AzResource @getParams -ExpandProperties -DefaultProfile $Context `
-        | ExpandResource -Context $Context -Verbose:$VerbosePreference;
-        Get-AzResourceGroup @getParams -DefaultProfile $Context `
-        | SetResourceType 'Microsoft.Resources/resourceGroups' | ExpandResource -Context $Context -Verbose:$VerbosePreference;
-        Get-AzSubscription -SubscriptionId $Context.DefaultContext.Subscription.Id `
-        | SetResourceType 'Microsoft.Subscription' | ExpandResource -Context $Context -Verbose:$VerbosePreference;
+        Write-Verbose -Message "Getting resources for subscription: $($Context.DefaultContext.Subscription.Name)";
+        Get-AzResource @getParams -ExpandProperties -DefaultProfile $Context |
+            ExpandResource -Context $Context -Verbose:$VerbosePreference;
+
+        Write-Verbose -Message "Getting resource groups for subscription: $($Context.DefaultContext.Subscription.Name)";
+        Get-AzResourceGroup @getParams -DefaultProfile $Context |
+            SetResourceType 'Microsoft.Resources/resourceGroups' |
+            ExpandResource -Context $Context -Verbose:$VerbosePreference;
+
+        Write-Verbose -Message "Getting subscription: $($Context.DefaultContext.Subscription.Name)";
+        Get-AzSubscription -SubscriptionId $Context.DefaultContext.Subscription.Id |
+            SetResourceType 'Microsoft.Subscription' |
+            ExpandResource -Context $Context -Verbose:$VerbosePreference;
     }
 }
 
@@ -386,6 +391,7 @@ function VisitAPIManagement {
 }
 
 function VisitSqlServer {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -407,6 +413,7 @@ function VisitSqlServer {
 }
 
 function VisitPostgreSqlServer {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -425,6 +432,7 @@ function VisitPostgreSqlServer {
 }
 
 function VisitMySqlServer {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -443,6 +451,7 @@ function VisitMySqlServer {
 }
 
 function VisitSqlManagedInstance {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -462,6 +471,7 @@ function VisitSqlManagedInstance {
 }
 
 function VisitAutomationAccount {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -525,6 +535,7 @@ function VisitStorageAccount {
 }
 
 function VisitStorageSyncService {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -540,6 +551,7 @@ function VisitStorageSyncService {
 }
 
 function VisitWebApp {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -562,6 +574,7 @@ function VisitWebApp {
 }
 
 function VisitRecoveryServices {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -580,6 +593,7 @@ function VisitRecoveryServices {
 }
 
 function VisitVirtualMachine {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -599,6 +613,7 @@ function VisitVirtualMachine {
 }
 
 function VisitSubscription {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -617,6 +632,7 @@ function VisitSubscription {
 }
 
 function VisitResourceGroup {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -638,6 +654,7 @@ function VisitResourceGroup {
 
 # Add additional information to resources with child resources
 function ExpandResource {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,
@@ -646,6 +663,11 @@ function ExpandResource {
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
     process {
+        $resourceId = $Resource.ResourceId;
+        if ($Resource.ResourceType -eq 'Microsoft.Subscription') {
+            $resourceId = $Resource.Id;
+        }
+        Write-Verbose -Message "Expanding: $resourceId";
         switch ($Resource.ResourceType) {
             'Microsoft.ApiManagement/service' { VisitAPIManagement @PSBoundParameters; }
             'Microsoft.Automation/automationAccounts' { VisitAutomationAccount @PSBoundParameters; }
@@ -668,6 +690,7 @@ function ExpandResource {
 }
 
 function SetResourceType {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [PSObject]$Resource,

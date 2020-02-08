@@ -18,7 +18,7 @@ The minimum version of TLS that Azure App Service accepts is configurable.
 Older TLS versions are no longer considered secure by industry standards, such as PCI DSS.
 
 App Service lets you disable outdated protocols and enforce TLS 1.2.
-By default use of a minimum of TLS 1.2 is enforced.
+By default, a minimum of TLS 1.2 is enforced.
 
 ## RECOMMENDATION
 
