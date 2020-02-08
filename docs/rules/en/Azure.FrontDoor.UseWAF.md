@@ -1,5 +1,5 @@
 ---
-severity: Important
+severity: Critical
 category: Security configuration
 resource: Front Door
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.FrontDoor.UseWAF.md
