@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.9.0-B2002019 (pre-release)
+
 - Added new rule to check Azure Firewall threat intelligence is configured as deny. [#266](https://github.com/Microsoft/PSRule.Rules.Azure/issues/266)
 - Added new rule to check Front Door is enabled. [#267](https://github.com/Microsoft/PSRule.Rules.Azure/issues/267)
 - Added new rule to check Front Door uses TLS 1.2. [#268](https://github.com/Microsoft/PSRule.Rules.Azure/issues/268)
