@@ -11,4 +11,7 @@
     AKSNodePoolType = "The agent pool ({0}) is not using scale sets."
     AKSNodePoolVersion = "The agent pool ({0}) is running v{1}."
     SubnetNSGNotConfigured = "The subnet ({0}) has no NSG associated."
+    ServiceUrlNotHttps = "The service URL for '{0}' is not a HTTPS endpoint."
+    BackendUrlNotHttps = "The backend URL for '{0}' is not a HTTPS endpoint."
+    ResourceNotAssociated = "The resource is not associated."
 }

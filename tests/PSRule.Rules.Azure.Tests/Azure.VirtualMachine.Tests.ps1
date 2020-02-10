@@ -207,6 +207,7 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'disk-B', 'disk-C';
+            $ruleResult.Reason | Should -BeLike 'The resource is not associated.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
