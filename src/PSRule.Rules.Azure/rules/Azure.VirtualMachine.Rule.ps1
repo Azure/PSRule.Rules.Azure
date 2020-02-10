@@ -71,7 +71,7 @@ Rule 'Azure.VM.UniqueDns' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ re
 Rule 'Azure.VM.DiskAttached' -Type 'Microsoft.Compute/disks' -If { ($TargetObject.ResourceName -notlike '*-ASRReplica') } -Tag @{ release = 'GA' } {
     # Disks should be attached unless they are used by ASR, which are not attached until fail over
     # Disks for VMs that are off are marked as Reserved
-    Within 'properties.diskState' 'Attached', 'Reserved'
+    Within 'properties.diskState' 'Attached', 'Reserved' -Reason $LocalizedData.ResourceNotAssociated
 }
 
 # TODO: Check IOPS

@@ -41,21 +41,29 @@ Rule 'Azure.APIM.HTTPBackend' -Type 'Microsoft.ApiManagement/service', 'Microsof
             $True;
         }
         foreach ($backend in $backends) {
-            $Assert.StartsWith($backend, 'properties.url', 'https://')
+            $Assert.
+                StartsWith($backend, 'properties.url', 'https://').
+                WithReason(($LocalizedData.BackendUrlNotHttps -f $backend.name), $True);
         }
         $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis')
         if ($apis.Length -eq 0) {
             $True;
         }
         foreach ($api in $apis) {
-            $Assert.StartsWith($api, 'properties.serviceUrl', 'https://')
+            $Assert.
+                StartsWith($api, 'properties.serviceUrl', 'https://').
+                WithReason(($LocalizedData.ServiceUrlNotHttps -f $api.name), $True);
         }
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/apis') {
-        $Assert.StartsWith($TargetObject, 'properties.serviceUrl', 'https://')
+        $Assert.
+            StartsWith($TargetObject, 'properties.serviceUrl', 'https://').
+            WithReason(($LocalizedData.ServiceUrlNotHttps -f $PSRule.TargetName), $True);
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/backends') {
-        $Assert.StartsWith($TargetObject, 'properties.url', 'https://')
+        $Assert.
+            StartsWith($TargetObject, 'properties.url', 'https://').
+            WithReason(($LocalizedData.BackendUrlNotHttps -f $PSRule.TargetName), $True);
     }
 }
 

@@ -73,6 +73,7 @@ Describe 'Azure.ACR' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'apim-A';
+            $ruleResult[0].Reason | Should -BeLike "The * URL for '*' is not a HTTPS endpoint.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

@@ -9,12 +9,16 @@ online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs
 
 ## SYNOPSIS
 
-Use Hybrid Use Benefit.
+Use Hybrid Use Benefit (HUB) for applicable virtual machine (VM) workloads.
 
 ## DESCRIPTION
 
-Use Hybrid Use Benefit.
+HUB is a pricing benefit that can reduce costs for running Windows Server and/ or SQL workloads in Azure.
 
 ## RECOMMENDATION
 
-Use Hybrid Use Benefit.
+Consider using Hybrid Use Benefit for eligible workloads.
+
+## LINKS
+
+- [Azure Hybrid Benefit FAQ](https://azure.microsoft.com/en-us/pricing/hybrid-benefit/faq/)

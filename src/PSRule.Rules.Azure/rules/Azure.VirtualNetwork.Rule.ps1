@@ -111,8 +111,9 @@ Rule 'Azure.NSG.LateralTraversal' -Type 'Microsoft.Network/networkSecurityGroups
 # Synopsis: Network security groups should be associated to either a subnet or network interface
 Rule 'Azure.NSG.Associated' -Type 'Microsoft.Network/networkSecurityGroups' -If { IsExport } -Tag @{ release = 'GA' } {
     # NSG should be associated to either a subnet or network interface
-    $Assert.HasFieldValue($TargetObject, 'Properties.subnets').Complete() -or
-        $Assert.HasFieldValue($TargetObject, 'Properties.networkInterfaces').Complete()
+    Reason $LocalizedData.ResourceNotAssociated
+    $Assert.HasFieldValue($TargetObject, 'Properties.subnets').Result -or
+        $Assert.HasFieldValue($TargetObject, 'Properties.networkInterfaces').Result
 }
 
 #endregion Network Security Group

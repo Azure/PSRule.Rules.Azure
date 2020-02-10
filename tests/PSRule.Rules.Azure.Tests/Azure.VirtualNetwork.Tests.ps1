@@ -491,6 +491,7 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'nsg-B', 'nsg-C';
+            $ruleResult.Reason | Should -BeLike 'The resource is not associated.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
