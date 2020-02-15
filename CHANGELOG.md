@@ -2,14 +2,19 @@
 
 ## Unreleased
 
+- Added new rules for Traffic Manager:
+  - Check web-based endpoints are monitored with HTTPS. [#240](https://github.com/Microsoft/PSRule.Rules.Azure/issues/240)
+  - Check at least two endpoints are enabled. [#241](https://github.com/Microsoft/PSRule.Rules.Azure/issues/241)
+
 ## v0.9.0-B2002019 (pre-release)
 
 - Added new rule to check Azure Firewall threat intelligence is configured as deny. [#266](https://github.com/Microsoft/PSRule.Rules.Azure/issues/266)
-- Added new rule to check Front Door is enabled. [#267](https://github.com/Microsoft/PSRule.Rules.Azure/issues/267)
-- Added new rule to check Front Door uses TLS 1.2. [#268](https://github.com/Microsoft/PSRule.Rules.Azure/issues/268)
-- Added new rule to check Front Door uses WAF. [#269](https://github.com/Microsoft/PSRule.Rules.Azure/issues/269)
-- Added new rule to check Front Door WAF policy is configured in prevention mode. [#271](https://github.com/Microsoft/PSRule.Rules.Azure/issues/271)
-- Added new rule to check Front Door WAF policy is enabled. [#270](https://github.com/Microsoft/PSRule.Rules.Azure/issues/270)
+- Added new rules for Front Door:
+  - Check Front Door is enabled. [#267](https://github.com/Microsoft/PSRule.Rules.Azure/issues/267)
+  - Check Front Door uses TLS 1.2. [#268](https://github.com/Microsoft/PSRule.Rules.Azure/issues/268)
+  - Check Front Door has a configured WAF policy. [#269](https://github.com/Microsoft/PSRule.Rules.Azure/issues/269)
+  - Check Front Door WAF policy is configured in prevention mode. [#271](https://github.com/Microsoft/PSRule.Rules.Azure/issues/271)
+  - Check Front Door WAF policy is enabled. [#270](https://github.com/Microsoft/PSRule.Rules.Azure/issues/270)
 
 ## v0.9.0-B2002011 (pre-release)
 

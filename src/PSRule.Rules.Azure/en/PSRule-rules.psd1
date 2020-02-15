@@ -14,4 +14,5 @@
     ServiceUrlNotHttps = "The service URL for '{0}' is not a HTTPS endpoint."
     BackendUrlNotHttps = "The backend URL for '{0}' is not a HTTPS endpoint."
     ResourceNotAssociated = "The resource is not associated."
+    EnabledEndpoints = "The number of enabled endpoints is {0}."
 }

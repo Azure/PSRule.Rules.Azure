@@ -1,0 +1,198 @@
+[
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/profile-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/profile-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": "global",
+        "ManagedBy": null,
+        "ResourceName": "profile-A",
+        "Name": "profile-A",
+        "Properties": {
+            "profileStatus": "Enabled",
+            "trafficRoutingMethod": "Geographic",
+            "dnsConfig": {
+                "relativeName": "profile-A",
+                "fqdn": "profile-A.trafficmanager.net",
+                "ttl": 60
+            },
+            "monitorConfig": {
+                "profileMonitorStatus": "Degraded",
+                "protocol": "HTTP",
+                "port": 80,
+                "path": "/",
+                "intervalInSeconds": 30,
+                "toleratedNumberOfFailures": 3,
+                "timeoutInSeconds": 10
+            },
+            "endpoints": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/profile-A/externalEndpoints/endpoint-A",
+                    "name": "endpoint-A",
+                    "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+                    "properties": {
+                        "endpointStatus": "Enabled",
+                        "endpointMonitorStatus": "Degraded",
+                        "target": "endpoint-A01.azureedge.net",
+                        "weight": 1,
+                        "priority": 1,
+                        "endpointLocation": null,
+                        "geoMapping": [
+                            "WORLD"
+                        ]
+                    }
+                },
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/profile-A/externalEndpoints/endpoint-B",
+                    "name": "endpoint-B",
+                    "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+                    "properties": {
+                        "endpointStatus": "Enabled",
+                        "endpointMonitorStatus": "Degraded",
+                        "target": "endpoint-B01.azureedge.net",
+                        "weight": 1,
+                        "priority": 1,
+                        "endpointLocation": null,
+                        "geoMapping": [
+                            "WORLD"
+                        ]
+                    }
+                }
+            ],
+            "trafficViewEnrollmentStatus": "Disabled",
+            "maxReturn": 0
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/trafficManagerProfiles",
+        "ResourceType": "Microsoft.Network/trafficManagerProfiles",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": {},
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/profile-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/profile-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": "global",
+        "ManagedBy": null,
+        "ResourceName": "profile-B",
+        "Name": "profile-B",
+        "Properties": {
+            "profileStatus": "Enabled",
+            "trafficRoutingMethod": "Geographic",
+            "dnsConfig": {
+                "relativeName": "profile-B",
+                "fqdn": "profile-B.trafficmanager.net",
+                "ttl": 60
+            },
+            "monitorConfig": {
+                "profileMonitorStatus": "Degraded",
+                "protocol": "TCP",
+                "port": 1433,
+                "intervalInSeconds": 30,
+                "toleratedNumberOfFailures": 3,
+                "timeoutInSeconds": 10
+            },
+            "endpoints": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/profile-B/externalEndpoints/endpoint-A",
+                    "name": "endpoint-A",
+                    "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+                    "properties": {
+                        "endpointStatus": "Enabled",
+                        "endpointMonitorStatus": "Degraded",
+                        "target": "endpoint-A01.azureedge.net",
+                        "weight": 1,
+                        "priority": 1,
+                        "endpointLocation": null,
+                        "geoMapping": [
+                            "WORLD"
+                        ]
+                    }
+                },
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/profile-B/externalEndpoints/endpoint-B",
+                    "name": "endpoint-B",
+                    "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+                    "properties": {
+                        "endpointStatus": "Disabled",
+                        "endpointMonitorStatus": "Degraded",
+                        "target": "endpoint-B01.azureedge.net",
+                        "weight": 1,
+                        "priority": 1,
+                        "endpointLocation": null,
+                        "geoMapping": [
+                            "WORLD"
+                        ]
+                    }
+                }
+            ],
+            "trafficViewEnrollmentStatus": "Disabled",
+            "maxReturn": 0
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/trafficManagerProfiles",
+        "ResourceType": "Microsoft.Network/trafficManagerProfiles",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": {},
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/profile-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/profile-C",
+        "Identity": null,
+        "Kind": null,
+        "Location": "global",
+        "ManagedBy": null,
+        "ResourceName": "profile-C",
+        "Name": "profile-C",
+        "Properties": {
+            "profileStatus": "Enabled",
+            "trafficRoutingMethod": "Geographic",
+            "dnsConfig": {
+                "relativeName": "profile-C",
+                "fqdn": "profile-C.trafficmanager.net",
+                "ttl": 60
+            },
+            "monitorConfig": {
+                "profileMonitorStatus": "Degraded",
+                "protocol": "HTTPS",
+                "port": 443,
+                "path": "/",
+                "intervalInSeconds": 30,
+                "toleratedNumberOfFailures": 3,
+                "timeoutInSeconds": 10
+            },
+            "endpoints": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/profile-C/externalEndpoints/endpoint-A",
+                    "name": "endpoint-A",
+                    "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+                    "properties": {
+                        "endpointStatus": "Enabled",
+                        "endpointMonitorStatus": "Degraded",
+                        "target": "endpoint-A01.azureedge.net",
+                        "weight": 1,
+                        "priority": 1,
+                        "endpointLocation": null,
+                        "geoMapping": [
+                            "WORLD"
+                        ]
+                    }
+                }
+            ],
+            "trafficViewEnrollmentStatus": "Disabled",
+            "maxReturn": 0
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/trafficManagerProfiles",
+        "ResourceType": "Microsoft.Network/trafficManagerProfiles",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": {},
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    }
+]
