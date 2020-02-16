@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.9.0-B2002026 (pre-release)
+
 - Added new rules for Traffic Manager:
   - Check web-based endpoints are monitored with HTTPS. [#240](https://github.com/Microsoft/PSRule.Rules.Azure/issues/240)
   - Check at least two endpoints are enabled. [#241](https://github.com/Microsoft/PSRule.Rules.Azure/issues/241)
