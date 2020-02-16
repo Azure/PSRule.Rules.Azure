@@ -5,6 +5,10 @@
 - Added new rules for Traffic Manager:
   - Check web-based endpoints are monitored with HTTPS. [#240](https://github.com/Microsoft/PSRule.Rules.Azure/issues/240)
   - Check at least two endpoints are enabled. [#241](https://github.com/Microsoft/PSRule.Rules.Azure/issues/241)
+- Added new rules for Key Vault:
+  - Check soft delete is enabled. [#277](https://github.com/Microsoft/PSRule.Rules.Azure/issues/277)
+  - Check purge protection is enabled. [#280](https://github.com/Microsoft/PSRule.Rules.Azure/issues/280)
+  - Check least privileges permissions assigned in access policy. [#281](https://github.com/Microsoft/PSRule.Rules.Azure/issues/281)
 
 ## v0.9.0-B2002019 (pre-release)
 

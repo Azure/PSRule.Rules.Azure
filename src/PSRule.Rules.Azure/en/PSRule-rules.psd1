@@ -15,4 +15,5 @@
     BackendUrlNotHttps = "The backend URL for '{0}' is not a HTTPS endpoint."
     ResourceNotAssociated = "The resource is not associated."
     EnabledEndpoints = "The number of enabled endpoints is {0}."
+    AccessPolicyLeastPrivilege = "One or more access policies grant all or purge permission."
 }

@@ -1,0 +1,131 @@
+[
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "keyvault-A",
+        "Name": "keyvault-A",
+        "Properties": {
+            "sku": {
+                "family": "A",
+                "name": "Premium"
+            },
+            "tenantId": "00000000-0000-0000-0000-000000000000",
+            "accessPolicies": [
+                {
+                    "tenantId": "00000000-0000-0000-0000-000000000000",
+                    "objectId": "00000000-0000-0000-0000-000000000000",
+                    "permissions": {
+                        "certificates": [
+                            "Get",
+                            "List"
+                        ],
+                        "keys": [
+                            "Get",
+                            "List"
+                        ],
+                        "secrets": [
+                            "Get",
+                            "List",
+                            "Set"
+                        ]
+                    }
+                }
+            ],
+            "enabledForDeployment": true,
+            "enabledForDiskEncryption": true,
+            "enabledForTemplateDeployment": true,
+            "enableSoftDelete": true,
+            "enablePurgeProtection": true,
+            "vaultUri": "https://keyvault-A.vault.azure.net/",
+            "provisioningState": "Succeeded"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.KeyVault/vaults",
+        "ResourceType": "Microsoft.KeyVault/vaults",
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "keyvault-B",
+        "Name": "keyvault-B",
+        "Properties": {
+            "sku": {
+                "family": "A",
+                "name": "Premium"
+            },
+            "tenantId": "00000000-0000-0000-0000-000000000000",
+            "accessPolicies": [
+                {
+                    "tenantId": "00000000-0000-0000-0000-000000000000",
+                    "objectId": "00000000-0000-0000-0000-000000000000",
+                    "permissions": {
+                        "certificates": [
+                            "All"
+                        ],
+                        "keys": [
+                            "All"
+                        ],
+                        "secrets": [
+                            "Get",
+                            "Set",
+                            "List",
+                            "Purge"
+                        ]
+                    }
+                }
+            ],
+            "enabledForDeployment": true,
+            "enabledForDiskEncryption": true,
+            "enabledForTemplateDeployment": true,
+            "enableSoftDelete": false,
+            "vaultUri": "https://keyvault-B.vault.azure.net/",
+            "provisioningState": "Succeeded"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.KeyVault/vaults",
+        "ResourceType": "Microsoft.KeyVault/vaults",
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-C",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "keyvault-C",
+        "Name": "keyvault-C",
+        "Properties": {
+            "sku": {
+                "family": "A",
+                "name": "Premium"
+            },
+            "tenantId": "00000000-0000-0000-0000-000000000000",
+            "accessPolicies": [
+            ],
+            "enabledForDeployment": true,
+            "enabledForDiskEncryption": true,
+            "enabledForTemplateDeployment": true,
+            "enableSoftDelete": true,
+            "enablePurgeProtection": false,
+            "vaultUri": "https://keyvault-C.vault.azure.net/",
+            "provisioningState": "Succeeded"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.KeyVault/vaults",
+        "ResourceType": "Microsoft.KeyVault/vaults",
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    }
+]
