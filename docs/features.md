@@ -77,10 +77,10 @@ PSRule complements Azure Security Center, Azure Advisor and Azure Policy feature
 
 ### Traditional unit testing vs PSRule for Azure?
 
-For general PSRule/ Pester comparison see [How is PSRule different to Pester?][compare-pester].
-
 You may already be using a unit test framework such as Pester to test infrastructure code.
-If you are, then you may have encountered the following challenges:
+If you are, then you may have encountered the following challenges.
+
+For a general PSRule/ Pester comparison see [How is PSRule different to Pester?][compare-pester]
 
 #### Unit testing more than basic JSON structure
 
@@ -95,8 +95,10 @@ PSRule resolves template/ parameters to allow analysis of the resources that wou
 When building unit tests for Azure resources starting with an empty repository can be a daunting experience.
 While there are several open source repositories and samples around to get you started, you need to integrate these yourself.
 
-PSRule for Azure is distributed as a PowerShell module using the PowerShell Gallery.
+_PSRule for Azure_ is distributed as a PowerShell module using the PowerShell Gallery.
 Using a PowerShell module makes it easy to install and update.
-An example of integrating PSRule for Azure into a CI pipeline can be found [here](scenarios/azure-template-ci/azure-template-ci.md).
+The built-in rules allow you starting testing resources quickly, with minimal integration.
+
+A detailed example of integrating _PSRule for Azure_ into a CI pipeline can be found [here](scenarios/azure-template-ci/azure-template-ci.md).
 
 [compare-pester]: https://github.com/microsoft/PSRule/blob/master/docs/features.md#how-is-psrule-different-to-pester
