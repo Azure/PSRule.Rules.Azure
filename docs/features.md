@@ -24,9 +24,9 @@ Azure resources can be validated throughout their lifecycle to support a DevOps 
 From as early as authoring a Azure Resource Manager (ARM) template, resources can be validated offline.
 Pre-flight validation can be integrated into a continuous integration (CI) processes to:
 
-- Identify configuration issues and provide fast feedback in a pull request.
-- Implement quality gates between environments such as development, test and production.
-- Perform ongoing checks for configuration optimization opportunities.
+- **Shift-left:** Identify configuration issues and provide fast feedback in pull requests.
+- **Add qualify gates:** Implement quality gates between environments such as development, test and production.
+- **Monitor continuously:** Perform ongoing checks for configuration optimization opportunities.
 
 PSRule for Azure provides the following cmdlets that extract data for analysis:
 
@@ -74,3 +74,31 @@ PSRule complements Azure Security Center, Azure Advisor and Azure Policy feature
   - Additionally analysis can be performed in a continuous integration (CI) process.
 - Providing the ability to layer on organization specific rules, as required.
 - Data collection requires limited permission and requires no additional configuration.
+
+### Traditional unit testing vs PSRule for Azure?
+
+You may already be using a unit test framework such as Pester to test infrastructure code.
+If you are, then you may have encountered the following challenges.
+
+For a general PSRule/ Pester comparison see [How is PSRule different to Pester?][compare-pester]
+
+#### Unit testing more than basic JSON structure
+
+Unit tests are unable to effectively test resources contained within Azure templates.
+Templates should be reusable, but this creates problems for testing when functions, conditions and copy loops are used.
+Template parameters could completely change the type, number of, or configuration of resources.
+
+PSRule resolves template/ parameters to allow analysis of the resources that would be deployed based on provided parameters.
+
+#### Standard library of tests
+
+When building unit tests for Azure resources starting with an empty repository can be a daunting experience.
+While there are several open source repositories and samples around to get you started, you need to integrate these yourself.
+
+_PSRule for Azure_ is distributed as a PowerShell module using the PowerShell Gallery.
+Using a PowerShell module makes it easy to install and update.
+The built-in rules allow you starting testing resources quickly, with minimal integration.
+
+A detailed example of integrating _PSRule for Azure_ into a CI pipeline can be found [here](scenarios/azure-template-ci/azure-template-ci.md).
+
+[compare-pester]: https://github.com/microsoft/PSRule/blob/master/docs/features.md#how-is-psrule-different-to-pester
