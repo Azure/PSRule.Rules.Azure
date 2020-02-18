@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- Exclude cloud shell storage accounts from data rules. [#278](https://github.com/Microsoft/PSRule.Rules.Azure/issues/278)
+- Added new rule for Subscriptions:
+  - Check if service health alerts are configured. [#290](https://github.com/Microsoft/PSRule.Rules.Azure/issues/290)
+- Added new rule for Key Vault:
+  - Check if diagnostic logs are configured. [#288](https://github.com/Microsoft/PSRule.Rules.Azure/issues/288)
+- Added new rule for Front Door:
+  - Check if diagnostic logs are configured. [#289](https://github.com/Microsoft/PSRule.Rules.Azure/issues/289)
+- Removed module dependency on `Az.Security`. [#105](https://github.com/Microsoft/PSRule.Rules.Azure/issues/105)
+
 ## v0.9.0-B2002026 (pre-release)
 
 - Added new rules for Traffic Manager:

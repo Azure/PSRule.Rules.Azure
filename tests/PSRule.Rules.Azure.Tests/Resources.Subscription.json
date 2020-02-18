@@ -13,19 +13,47 @@
         "ResourceType": "Microsoft.Subscription",
         "resources": [
             {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/autoProvisioningSettings/default",
                 "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/autoProvisioningSettings/default",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "default",
                 "Name": "default",
-                "AutoProvision": "On",
-                "ResourceType": "Microsoft.Security/autoProvisioningSettings"
+                "Properties": {
+                    "autoProvision": "On"
+                },
+                "ResourceGroupName": null,
+                "Type": "Microsoft.Security/autoProvisioningSettings",
+                "ResourceType": "Microsoft.Security/autoProvisioningSettings",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/securityContacts/default",
-                "Name": "default",
-                "Email": "email",
-                "Phone": "",
-                "AlertNotifications": "On",
-                "AlertsToAdmins": "On",
-                "ResourceType": "Microsoft.Security/securityContacts"
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/securityContacts/default1",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/securityContacts/default1",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "default1",
+                "Name": "default1",
+                "Properties": {
+                    "email": "email",
+                    "phone": "",
+                    "alertNotifications": "On",
+                    "alertsToAdmins": "Off"
+                },
+                "ResourceGroupName": null,
+                "Type": "Microsoft.Security/securityContacts",
+                "ResourceType": "Microsoft.Security/securityContacts",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
                 "RoleAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
@@ -67,19 +95,47 @@
         "ResourceType": "Microsoft.Subscription",
         "resources": [
             {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/autoProvisioningSettings/default",
                 "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/autoProvisioningSettings/default",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "default",
                 "Name": "default",
-                "AutoProvision": "Off",
-                "ResourceType": "Microsoft.Security/autoProvisioningSettings"
+                "Properties": {
+                    "autoProvision": "Off"
+                },
+                "ResourceGroupName": null,
+                "Type": "Microsoft.Security/autoProvisioningSettings",
+                "ResourceType": "Microsoft.Security/autoProvisioningSettings",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/securityContacts/default",
-                "Name": "default",
-                "Email": "",
-                "Phone": "",
-                "AlertNotifications": "On",
-                "AlertsToAdmins": "On",
-                "ResourceType": "Microsoft.Security/securityContacts"
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/securityContacts/default1",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/securityContacts/default1",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "default1",
+                "Name": "default1",
+                "Properties": {
+                    "email": "",
+                    "phone": "",
+                    "alertNotifications": "On",
+                    "alertsToAdmins": "On"
+                },
+                "ResourceGroupName": null,
+                "Type": "Microsoft.Security/securityContacts",
+                "ResourceType": "Microsoft.Security/securityContacts",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
                 "RoleAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000",
@@ -152,6 +208,69 @@
                 "ObjectType": "User",
                 "CanDelegate": false,
                 "ResourceType": "Microsoft.Authorization/roleAssignments"
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.insights/activityLogAlerts/serviceAlert-A",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.insights/activityLogAlerts/serviceAlert-A",
+                "Identity": null,
+                "Kind": null,
+                "Location": "Global",
+                "ManagedBy": null,
+                "ResourceName": "serviceAlert-A",
+                "Name": "serviceAlert-A",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "scopes": [
+                        "/subscriptions/00000000-0000-0000-0000-000000000000"
+                    ],
+                    "condition": {
+                        "allOf": [
+                            {
+                                "field": "category",
+                                "equals": "ServiceHealth",
+                                "containsAny": null,
+                                "odata.type": null
+                            },
+                            {
+                                "field": "properties.impactedServices[*].ImpactedRegions[*].RegionName",
+                                "equals": null,
+                                "containsAny": [
+                                    "Central US",
+                                    "East US",
+                                    "East US 2",
+                                    "West US",
+                                    "Australia East",
+                                    "Australia Southeast",
+                                    "West US 2",
+                                    "Australia Central",
+                                    "Australia Central 2",
+                                    "Global"
+                                ],
+                                "odata.type": null
+                            }
+                        ],
+                        "odata.type": null
+                    },
+                    "actions": {
+                        "actionGroups": [
+                            {
+                                "actionGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.insights/actiongroups/actionGroup-A",
+                                "webhookProperties": {}
+                            }
+                        ]
+                    },
+                    "enabled": true,
+                    "description": "serviceAlert-A."
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "microsoft.insights/activityLogAlerts",
+                "ResourceType": "microsoft.insights/activityLogAlerts",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": {},
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             }
         ]
     },
@@ -169,13 +288,27 @@
         "ResourceType": "Microsoft.Subscription",
         "resources": [
             {
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/securityContacts/default",
-                "Name": "default",
-                "Email": "email",
-                "Phone": "number",
-                "AlertNotifications": "On",
-                "AlertsToAdmins": "On",
-                "ResourceType": "Microsoft.Security/securityContacts"
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/securityContacts/default1",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/securityContacts/default1",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "default1",
+                "Name": "default1",
+                "Properties": {
+                    "email": "email",
+                    "phone": "number",
+                    "alertNotifications": "On",
+                    "alertsToAdmins": "Off"
+                },
+                "ResourceGroupName": null,
+                "Type": "Microsoft.Security/securityContacts",
+                "ResourceType": "Microsoft.Security/securityContacts",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
                 "RoleAssignmentId": null,
@@ -248,6 +381,69 @@
                 "ObjectType": "User",
                 "CanDelegate": false,
                 "ResourceType": "Microsoft.Authorization/roleAssignments"
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.insights/activityLogAlerts/serviceAlert-B",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.insights/activityLogAlerts/serviceAlert-B",
+                "Identity": null,
+                "Kind": null,
+                "Location": "Global",
+                "ManagedBy": null,
+                "ResourceName": "serviceAlert-B",
+                "Name": "serviceAlert-B",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "scopes": [
+                        "/subscriptions/00000000-0000-0000-0000-000000000000"
+                    ],
+                    "condition": {
+                        "allOf": [
+                            {
+                                "field": "category",
+                                "equals": "ServiceHealth",
+                                "containsAny": null,
+                                "odata.type": null
+                            },
+                            {
+                                "field": "properties.impactedServices[*].ImpactedRegions[*].RegionName",
+                                "equals": null,
+                                "containsAny": [
+                                    "Central US",
+                                    "East US",
+                                    "East US 2",
+                                    "West US",
+                                    "Australia East",
+                                    "Australia Southeast",
+                                    "West US 2",
+                                    "Australia Central",
+                                    "Australia Central 2",
+                                    "Global"
+                                ],
+                                "odata.type": null
+                            }
+                        ],
+                        "odata.type": null
+                    },
+                    "actions": {
+                        "actionGroups": [
+                            {
+                                "actionGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.insights/actiongroups/actionGroup-A",
+                                "webhookProperties": {}
+                            }
+                        ]
+                    },
+                    "enabled": false,
+                    "description": "serviceAlert-B."
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "microsoft.insights/activityLogAlerts",
+                "ResourceType": "microsoft.insights/activityLogAlerts",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": {},
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             }
         ]
     },

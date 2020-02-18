@@ -39,8 +39,8 @@ Describe 'Azure.Template' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeLike "*Resources.Template2.json";
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeLike "*Resources.Template[2-3].json";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

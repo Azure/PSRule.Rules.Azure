@@ -6,7 +6,7 @@ A suite of rules to validate Azure resources using PSRule.
 
 Features of PSRule for Azure include:
 
-- [Ready to go](docs/features.md#ready-to-go) - Leverage over 80 pre-built rules to validate Azure resources.
+- [Ready to go](docs/features.md#ready-to-go) - Leverage over 100 pre-built rules to validate Azure resources.
 - [DevOps](docs/features.md#devops) - Validate resources pre or post-deployment.
 - [Cross-platform](docs/features.md#cross-platform) - Run on MacOS, Linux and Windows.
 
