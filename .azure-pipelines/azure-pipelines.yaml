@@ -33,10 +33,10 @@ stages:
       matrix:
         Linux:
           displayName: 'Linux'
-          imageName: 'ubuntu-latest'
+          imageName: 'ubuntu-18.04'
         MacOS:
           displayName: 'MacOS'
-          imageName: 'macOS-latest'
+          imageName: 'macOS-10.15'
         Windows:
           displayName: 'Windows'
           imageName: 'vs2017-win2016'
