@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.9.0-B2002036 (pre-release)
+
 - Exclude cloud shell storage accounts from data rules. [#278](https://github.com/Microsoft/PSRule.Rules.Azure/issues/278)
 - Added new rule for Subscriptions:
   - Check if service health alerts are configured. [#290](https://github.com/Microsoft/PSRule.Rules.Azure/issues/290)
