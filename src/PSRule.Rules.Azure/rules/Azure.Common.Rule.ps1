@@ -28,7 +28,7 @@ function global:GetSubResources {
     )
     process {
         return @($TargetObject.resources | Where-Object -FilterScript {
-            $_.ResourceType -in $ResourceType -or $_.Type -in $ResourceType
+            $_.ResourceType -in $ResourceType -or $_.Type -in $ResourceType -or $_.ExtensionResourceType -in $ResourceType
         })
     }
 }
@@ -50,6 +50,18 @@ function global:IsExport {
     param ()
     process {
         return $Null -ne $TargetObject.SubscriptionId;
+    }
+}
+
+function global:IsCloudShell {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($Rule.TargetType -ne 'Microsoft.Storage/storageAccounts') {
+            return $False;
+        }
+        return $TargetObject.Tags.'ms-resource-usage' -eq 'azure-cloud-shell';
     }
 }
 

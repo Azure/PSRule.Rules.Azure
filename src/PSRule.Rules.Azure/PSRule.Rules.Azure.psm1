@@ -485,7 +485,7 @@ function VisitAutomationAccount {
 
         $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Automation/AutomationAccounts/variables' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2015-10-31' -ExpandProperties;
         $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Automation/AutomationAccounts/webhooks' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2015-10-31' -ExpandProperties;
-        $aa | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru; 
+        $aa | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
 
@@ -584,7 +584,6 @@ function VisitRecoveryServices {
     )
     process {
         $resources = @();
-
         $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.RecoveryServices/vaults/replicationRecoveryPlans' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2018-07-10' -ExpandProperties;
         $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.RecoveryServices/vaults/replicationAlertSettings' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2018-07-10' -ExpandProperties;
         $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.RecoveryServices/vaults/backupstorageconfig/vaultstorageconfig' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2018-07-10' -ExpandProperties;
@@ -603,11 +602,45 @@ function VisitVirtualMachine {
     )
     process {
         $resources = @();
-
         $networkInterfaceId = $Resource.Properties.networkProfile.networkInterfaces.id;
         foreach ($id in $networkInterfaceId) {
             $resources += Get-AzResource -ResourceId $id -ExpandProperties -DefaultProfile $Context;
         }
+        $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
+
+function VisitKeyVault {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        $resources = @();
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.KeyVault/vaults/providers/microsoft.insights/diagnosticSettings' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-05-01-preview' -ExpandProperties;
+        $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
+
+function VisitFrontDoor {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        # Patch Front Door properties not fully returned from the default API version
+        $Resource = Get-AzResource -Name $resource.Name  -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ResourceType 'Microsoft.Network/frontdoors' -ExpandProperties -ApiVersion '2018-08-01';
+
+        $resources = @();
+        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Network/frontdoors/providers/microsoft.insights/diagnosticSettings' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-05-01-preview' -ExpandProperties;
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
@@ -624,9 +657,10 @@ function VisitSubscription {
     process {
         $resources = @();
         $resources += Get-AzRoleAssignment -DefaultProfile $Context -IncludeClassicAdministrators | SetResourceType 'Microsoft.Authorization/roleAssignments';
-        $resources += Get-AzSecurityAutoProvisioningSetting -DefaultProfile $Context | SetResourceType 'Microsoft.Security/autoProvisioningSettings';
-        $resources += Get-AzSecurityContact -DefaultProfile $Context | SetResourceType 'Microsoft.Security/securityContacts';
+        $resources += Get-AzResource -DefaultProfile $Context -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Security/autoProvisioningSettings";
+        $resources += Get-AzResource -DefaultProfile $Context -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Security/securityContacts";
         $resources += Get-AzResource -DefaultProfile $Context -ApiVersion '2018-06-01' -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Security/pricings";
+        $resources += Get-AzResource -ResourceType 'microsoft.insights/activityLogAlerts' -DefaultProfile $Context -ExpandProperties;
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
@@ -663,9 +697,12 @@ function ExpandResource {
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
     )
     process {
-        $resourceId = $Resource.ResourceId;
+        $resourceId = '';
         if ($Resource.ResourceType -eq 'Microsoft.Subscription') {
             $resourceId = $Resource.Id;
+        }
+        else {
+            $resourceId = $Resource.ResourceId;
         }
         Write-Verbose -Message "Expanding: $resourceId";
         switch ($Resource.ResourceType) {
@@ -682,6 +719,8 @@ function ExpandResource {
             'Microsoft.Web/sites/slots' { VisitWebApp @PSBoundParameters; }
             'Microsoft.RecoveryServices/vaults' { VisitRecoveryServices @PSBoundParameters; }
             'Microsoft.Compute/virtualMachines' { VisitVirtualMachine @PSBoundParameters; }
+            'Microsoft.KeyVault/vaults' { VisitKeyVault @PSBoundParameters; }
+            'Microsoft.Network/frontDoors' { VisitFrontDoor @PSBoundParameters; }
             'Microsoft.Subscription' { VisitSubscription @PSBoundParameters; }
             'Microsoft.Resources/resourceGroups' { VisitResourceGroup @PSBoundParameters; }
             default { $Resource; }

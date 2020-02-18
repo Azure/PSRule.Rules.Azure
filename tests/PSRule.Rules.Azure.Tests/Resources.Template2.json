@@ -54,6 +54,10 @@
             "metadata": {
                 "description": "The network firewall defined for this vault."
             }
+        },
+        "diagnosticStorageAccountName": {
+            "type": "string",
+            "defaultValue": "kvstoragediag01"
         }
     },
     "resources": [
@@ -67,6 +71,8 @@
                 "enabledForDeployment": "[parameters('useDeployment')]",
                 "enabledForTemplateDeployment": "[parameters('useTemplate')]",
                 "enabledForDiskEncryption": "[parameters('useDiskEncryption')]",
+                "enableSoftDelete": true,
+                "enablePurgeProtection": true,
                 "accessPolicies": "[parameters('accessPolicies')]",
                 "tenantId": "[subscription().tenantId]",
                 "sku": {
@@ -77,7 +83,43 @@
             },
             "tags": {
                 "role": "[parameters('role')]"
-            }
+            },
+            "resources": [
+                {
+                    "type": "Microsoft.KeyVault/vaults/providers/diagnosticsettings",
+                    "name": "[concat(parameters('vaultName'), '/Microsoft.Insights/service')]",
+                    "apiVersion": "2016-09-01",
+                    "Location": "[resourceGroup().location]",
+                    "dependsOn": [
+                        "[concat('Microsoft.KeyVault/vaults/', parameters('vaultName'))]",
+                        "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticStorageAccountName'))]"
+                    ],
+                    "properties": {
+                        "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('diagnosticStorageAccountName'))]",
+                        "logs": [
+                            {
+                                "category": "AuditEvent",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "enabled": true,
+                                    "days": 7
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('diagnosticStorageAccountName')]",
+            "apiVersion": "2016-12-01",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
         }
     ],
     "other": {}

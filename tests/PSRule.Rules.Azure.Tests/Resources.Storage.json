@@ -192,5 +192,51 @@
         },
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-D",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-D",
+        "Kind": "Storage",
+        "Location": "region",
+        "ResourceName": "storage-D",
+        "Name": "storage-D",
+        "Properties": {
+            "networkAcls": {
+                "bypass": "AzureServices",
+                "virtualNetworkRules": [],
+                "ipRules": [],
+                "defaultAction": "Allow"
+            },
+            "encryption": {
+                "services": {
+                    "file": {},
+                    "blob": {}
+                },
+                "keySource": "Microsoft.Storage"
+            },
+            "primaryEndpoints": {
+                "blob": "https://storage-D.blob.core.windows.net/",
+                "queue": "https://storage-D.queue.core.windows.net/",
+                "table": "https://storage-D.table.core.windows.net/",
+                "file": "https://storage-D.file.core.windows.net/"
+            },
+            "primaryLocation": "region",
+            "statusOfPrimary": "available"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Storage/storageAccounts",
+        "ResourceType": "Microsoft.Storage/storageAccounts",
+        "Sku": {
+            "Name": "Standard_LRS",
+            "Tier": "Standard",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": {
+            "ms-resource-usage": "azure-cloud-shell"
+        },
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
     }
 ]

@@ -648,6 +648,22 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
         }
 
+        It 'Azure.FrontDoor.Logs' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.Logs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'frontdoor-B', 'frontdoor-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A';
+        }
+
         It 'Azure.FrontDoor.UseWAF' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.UseWAF' };
 
@@ -694,6 +710,43 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'frontdoor-waf-A';
+        }
+    }
+
+    Context 'With Template' {
+        $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template3.json';
+        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.FrontDoor.json;
+        Export-AzTemplateRuleData -TemplateFile $templatePath -OutputPath $outputFile;
+        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+
+        It 'Azure.FrontDoor.State' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.State' };
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A';
+        }
+
+        It 'Azure.FrontDoor.MinTLS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.MinTLS' };
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A';
+        }
+
+        It 'Azure.FrontDoor.Logs' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.Logs' };
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A';
         }
     }
 }

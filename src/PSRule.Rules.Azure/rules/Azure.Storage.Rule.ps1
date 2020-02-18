@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Storage accounts not using GRS may be at risk
-Rule 'Azure.Storage.UseReplication' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA' } {
+Rule 'Azure.Storage.UseReplication' -Type 'Microsoft.Storage/storageAccounts' -If { !(IsCloudShell) } -Tag @{ release = 'GA' } {
     Within 'sku.name' 'Standard_GRS', 'Standard_RAGRS'
 }
 
@@ -22,7 +22,7 @@ Rule 'Azure.Storage.UseEncryption' -Type 'Microsoft.Storage/storageAccounts' -Ta
 }
 
 # Synopsis: Enable soft delete on Storage Accounts
-Rule 'Azure.Storage.SoftDelete' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA' } {
+Rule 'Azure.Storage.SoftDelete' -Type 'Microsoft.Storage/storageAccounts' -If { !(IsCloudShell) } -Tag @{ release = 'GA' } {
     $serviceProperties = GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices'
     $serviceProperties.properties.deleteRetentionPolicy.enabled -eq $True
 }

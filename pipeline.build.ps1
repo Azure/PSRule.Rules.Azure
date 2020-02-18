@@ -226,9 +226,6 @@ task ModuleDependencies NuGet, PSRule, {
     if ($Null -eq (Get-InstalledModule -Name Az.Resources -MinimumVersion 1.4.0 -ErrorAction Ignore)) {
         Install-Module -Name Az.Resources -Scope CurrentUser -MinimumVersion 1.4.0 -Force;
     }
-    if ($Null -eq (Get-InstalledModule -Name Az.Security -MinimumVersion 0.7.4 -ErrorAction Ignore)) {
-        Install-Module -Name Az.Security -Scope CurrentUser -MinimumVersion 0.7.4 -Force;
-    }
 }
 
 task BuildDotNet {

@@ -32,3 +32,14 @@ Rule 'Azure.KeyVault.AccessPolicy' -Type 'Microsoft.KeyVault/vaults', 'Microsoft
         $policy.permissions.storage -notin 'All', 'Purge'
     }
 }
+
+# Synopsis: Use diagnostics to audit Key Vault access
+Rule 'Azure.KeyVault.Logs' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA' } {
+    $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.KeyVault/vaults/providers/diagnosticSettings' | Where-Object {
+        $_.Properties.logs[0].category -eq 'AuditEvent'
+    });
+    $Null -ne $diagnostics -and $diagnostics.Length -gt 0;
+    foreach ($setting in $diagnostics) {
+        $Assert.HasFieldValue($setting, 'Properties.logs[0].enabled', $True);
+    }
+}

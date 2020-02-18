@@ -23,7 +23,7 @@ $rootPath = $PWD;
 Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
 $here = (Resolve-Path $PSScriptRoot).Path;
 
-Describe 'Azure.Subscription' {
+Describe 'Azure.RBAC' -Tag 'Subscription', 'RBAC' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.Subscription.json';
 
     Context 'Conditions' {
@@ -114,6 +114,20 @@ Describe 'Azure.Subscription' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'test-rg-A';
         }
+    }
+}
+
+Describe 'Azure.SecurityCenter' -Tag 'Subscription', 'SecurityCenter' {
+    $dataPath = Join-Path -Path $here -ChildPath 'Resources.Subscription.json';
+
+    Context 'Conditions' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.SecurityCenter.Contact' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SecurityCenter.Contact' };
@@ -145,6 +159,37 @@ Describe 'Azure.Subscription' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'subscription-A';
+        }
+    }
+}
+
+
+Describe 'Azure.Monitor' -Tag 'Subscription', 'Monitor' {
+    $dataPath = Join-Path -Path $here -ChildPath 'Resources.Subscription.json';
+
+    Context 'Conditions' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+
+        It 'Azure.Monitor.ServiceHealth' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Monitor.ServiceHealth' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'subscription-A', 'subscription-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'subscription-B';
         }
     }
 }

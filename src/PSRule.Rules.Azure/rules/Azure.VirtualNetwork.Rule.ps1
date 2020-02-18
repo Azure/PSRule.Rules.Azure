@@ -224,9 +224,19 @@ Rule 'Azure.FrontDoor.MinTLS' -Type 'Microsoft.Network/frontDoors', 'Microsoft.N
     # properties.frontendEndpoints[].properties.customHttpsConfiguration.minimumTlsVersion
 }
 
+# Synopsis: Use diagnostics to audit Front Door access
+Rule 'Azure.FrontDoor.Logs' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA' } {
+    $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.Network/frontDoors/providers/diagnosticSettings' | Where-Object {
+        $_.Properties.logs[0].category -eq 'FrontdoorAccessLog'
+    });
+    $Null -ne $diagnostics -and $diagnostics.Length -gt 0;
+    foreach ($setting in $diagnostics) {
+        $Assert.HasFieldValue($setting, 'Properties.logs[0].enabled', $True);
+    }
+}
+
 # Synopsis: Enable WAF policy of each endpoint
 Rule 'Azure.FrontDoor.UseWAF' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA' } {
-    # properties.frontendEndpoints[].properties.customHttpsConfiguration.minimumTlsVersion
     $endpoints = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $endpoints = @($TargetObject.Properties.frontendEndpoints);

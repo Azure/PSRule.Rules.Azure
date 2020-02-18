@@ -47,7 +47,55 @@
         "Type": "Microsoft.KeyVault/vaults",
         "ResourceType": "Microsoft.KeyVault/vaults",
         "Sku": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-A/providers/microsoft.insights/diagnosticSettings/monitor",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-A/providers/microsoft.insights/diagnosticSettings/monitor",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "monitor",
+                "Name": "monitor",
+                "ExtensionResourceName": "monitor",
+                "Properties": {
+                    "storageAccountId": null,
+                    "serviceBusRuleId": null,
+                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
+                    "eventHubAuthorizationRuleId": null,
+                    "eventHubName": null,
+                    "metrics": [
+                        {
+                            "category": "AllMetrics",
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "category": "AuditEvent",
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logAnalyticsDestinationType": null
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "microsoft.keyvault/vaults",
+                "ResourceType": "microsoft.keyvault/vaults",
+                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+            }
+        ]
     },
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-B",
@@ -112,8 +160,7 @@
                 "name": "Premium"
             },
             "tenantId": "00000000-0000-0000-0000-000000000000",
-            "accessPolicies": [
-            ],
+            "accessPolicies": [],
             "enabledForDeployment": true,
             "enabledForDiskEncryption": true,
             "enabledForTemplateDeployment": true,
@@ -126,6 +173,54 @@
         "Type": "Microsoft.KeyVault/vaults",
         "ResourceType": "Microsoft.KeyVault/vaults",
         "Sku": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-B/providers/microsoft.insights/diagnosticSettings/monitor",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-B/providers/microsoft.insights/diagnosticSettings/monitor",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "monitor",
+                "Name": "monitor",
+                "ExtensionResourceName": "monitor",
+                "Properties": {
+                    "storageAccountId": null,
+                    "serviceBusRuleId": null,
+                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
+                    "eventHubAuthorizationRuleId": null,
+                    "eventHubName": null,
+                    "metrics": [
+                        {
+                            "category": "AllMetrics",
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "category": "AuditEvent",
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logAnalyticsDestinationType": null
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "microsoft.keyvault/vaults",
+                "ResourceType": "microsoft.keyvault/vaults",
+                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+            }
+        ]
     }
 ]

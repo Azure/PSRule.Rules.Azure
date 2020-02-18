@@ -59,22 +59,23 @@ Rule 'Azure.RBAC.UseRGDelegation' -Type 'Microsoft.Resources/resourceGroups' -Ta
 #region Security Center
 
 # Synopsis: Security Center email and phone contact details should be set
-Rule 'Azure.SecurityCenter.Contact' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; severity = 'Important'; category = 'Security operations' } {
-    $contacts = $TargetObject.resources | Where-Object { $_.ResourceType -eq 'Microsoft.Security/securityContacts' };
-    $Null -ne $contacts;
+Rule 'Azure.SecurityCenter.Contact' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
+    $contacts = @(GetSubResources -ResourceType 'Microsoft.Security/securityContacts');
+    $Null -ne $contacts -and $contacts.Length -gt 0;
     foreach ($c in $contacts) {
-        (![String]::IsNullOrEmpty($c.Email)) -and (![String]::IsNullOrEmpty($c.Phone));
+        $Assert.HasFieldValue($c, 'Properties.Email')
+        $Assert.HasFieldValue($c, 'Properties.Phone');
     }
 }
 
 # TODO: Check Security Center recommendations
 
 # Synopsis: Enable auto-provisioning on VMs to improve Azure Security Center insights
-Rule 'Azure.SecurityCenter.Provisioning' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; severity = 'Important'; category = 'Security operations' } {
-    $provisioning = $TargetObject.resources | Where-Object { $_.ResourceType -eq 'Microsoft.Security/autoProvisioningSettings' };
-    $Null -ne $provisioning;
+Rule 'Azure.SecurityCenter.Provisioning' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
+    $provisioning = @(GetSubResources -ResourceType 'Microsoft.Security/autoProvisioningSettings');
+    $Null -ne $provisioning -and $provisioning.Length -gt 0;
     foreach ($s in $provisioning) {
-        Within 'AutoProvision' -InputObject $s -AllowedValue 'On';
+        $Assert.HasFieldValue($s, 'Properties.autoProvision', 'On');
     }
 }
 
@@ -82,3 +83,18 @@ Rule 'Azure.SecurityCenter.Provisioning' -Type 'Microsoft.Subscription' -Tag @{ 
 
 # TODO: Use policy
 # TODO: Use resource locks
+
+#region Monitor
+
+# Synopsis: Configure Azure service logs
+Rule 'Azure.Monitor.ServiceHealth' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
+    $alerts = @(GetSubResources -ResourceType 'microsoft.insights/activityLogAlerts' | Where-Object {
+        @($_.Properties.condition.allOf | Where-Object { $_.field -eq 'category' -and $_.equals -eq 'ServiceHealth' }).Length -gt 0
+    });
+    $Null -ne $alerts -and $alerts.Length -gt 0;
+    foreach ($alert in $alerts) {
+        $Assert.HasFieldValue($alert, 'Properties.enabled', $True);
+    }
+}
+
+#endregion Monitor
