@@ -48,24 +48,32 @@ To do this use:
 >
 > `Install-Module -Name PowerShellGet -Repository PSGallery -Scope CurrentUser -Force`
 
-### Docker images
+## Building from source
 
-A preinstalled Docker image is available for Linux or Windows with Linux containers.
+To build this module from source run `./build.ps1`.
+This build script will compile the module and documentation then output the result into `out/modules/PSRule.Rules.Azure`.
 
-To download this image from Docker CLI:
+The following PowerShell modules will be automatically downloaded if the required versions are not present:
 
-```bash
-docker login docker.pkg.github.com -u <username> -p <pat_token>
-docker pull docker.pkg.github.com/berniewhite/images/ps-rule-azure:latest-alpine
+- PlatyPS
+- Pester
+- PSScriptAnalyzer
+- PowerShellGet
+- PackageManagement
+- InvokeBuild
+
+These additional modules are only required for building PSRule and are not required for running PSRule.
+
+If you are on a network that does not permit Internet access to the PowerShell Gallery, download these modules on an alternative device that has access.
+The following script can be used to download the required modules to an alternative device.
+After downloading the modules copy the module directories to devices with restricted Internet access.
+
+```powershell
+# Save modules, in the .\modules directory
+Save-Module -Name PlatyPS, Pester, PSScriptAnalyzer, PowerShellGet, PackageManagement, InvokeBuild -Repository PSGallery -Path '.\modules';
 ```
 
-To use this image from Docker CLI:
-
-```bash
-docker run -it docker.pkg.github.com/berniewhite/images/ps-rule-azure:latest-alpine
-```
-
-A list of available tags is available [here][docker-image].
+Additionally .NET Core SDK v2.1 is required. .NET Core will not be automatically downloaded and installed.
+To download and install .NET Core SDK see [Download .NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.1).
 
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
-[docker-image]: https://github.com/BernieWhite/images/blob/master/docker/ps-rule-azure/README.md
