@@ -35,6 +35,7 @@ Rule 'Azure.KeyVault.AccessPolicy' -Type 'Microsoft.KeyVault/vaults', 'Microsoft
 
 # Synopsis: Use diagnostics to audit Key Vault access
 Rule 'Azure.KeyVault.Logs' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA' } {
+    Reason $LocalizedData.DiagnosticSettingsNotConfigured;
     $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.KeyVault/vaults/providers/diagnosticSettings' | Where-Object {
         $_.Properties.logs[0].category -eq 'AuditEvent'
     });

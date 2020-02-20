@@ -16,4 +16,5 @@
     ResourceNotAssociated = "The resource is not associated."
     EnabledEndpoints = "The number of enabled endpoints is {0}."
     AccessPolicyLeastPrivilege = "One or more access policies grant all or purge permission."
+    DiagnosticSettingsNotConfigured = "Diagnostic settings are not configured."
 }

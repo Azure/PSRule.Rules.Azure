@@ -30,3 +30,4 @@ Consider enabling purge protection on Key Vaults to enforce retention of vaults 
 ## LINKS
 
 - [Azure Key Vault soft-delete overview](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-ovw-soft-delete)
+- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.keyvault/2018-02-14/vaults#vaultproperties-object)
