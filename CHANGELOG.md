@@ -2,6 +2,43 @@
 
 ## Unreleased
 
+## v0.9.0
+
+What's changed since v0.8.0:
+
+- New rules:
+  - Azure Firewall:
+    - Check threat intelligence is configured as deny. [#266](https://github.com/Microsoft/PSRule.Rules.Azure/issues/266)
+  - Front Door:
+    - Check Front Door is enabled. [#267](https://github.com/Microsoft/PSRule.Rules.Azure/issues/267)
+    - Check Front Door uses TLS 1.2. [#268](https://github.com/Microsoft/PSRule.Rules.Azure/issues/268)
+    - Check Front Door has a configured WAF policy. [#269](https://github.com/Microsoft/PSRule.Rules.Azure/issues/269)
+    - Check Front Door WAF policy is configured in prevention mode. [#271](https://github.com/Microsoft/PSRule.Rules.Azure/issues/271)
+    - Check Front Door WAF policy is enabled. [#270](https://github.com/Microsoft/PSRule.Rules.Azure/issues/270)
+    - Check if diagnostic logs are configured. [#289](https://github.com/Microsoft/PSRule.Rules.Azure/issues/289)
+  - Traffic Manager:
+    - Check web-based endpoints are monitored with HTTPS. [#240](https://github.com/Microsoft/PSRule.Rules.Azure/issues/240)
+    - Check at least two endpoints are enabled. [#241](https://github.com/Microsoft/PSRule.Rules.Azure/issues/241)
+  - Key Vault:
+    - Check soft delete is enabled. [#277](https://github.com/Microsoft/PSRule.Rules.Azure/issues/277)
+    - Check purge protection is enabled. [#280](https://github.com/Microsoft/PSRule.Rules.Azure/issues/280)
+    - Check least privileges permissions assigned in access policy. [#281](https://github.com/Microsoft/PSRule.Rules.Azure/issues/281)
+    - Check if diagnostic logs are configured. [#288](https://github.com/Microsoft/PSRule.Rules.Azure/issues/288)
+  - Subscriptions:
+    - Check if service health alerts are configured. [#290](https://github.com/Microsoft/PSRule.Rules.Azure/issues/290)
+- Updated rules:
+  - Exclude cloud shell storage accounts from data rules. [#278](https://github.com/Microsoft/PSRule.Rules.Azure/issues/278)
+    - `Azure.Storage.UseReplication` and `Azure.Storage.SoftDelete` ignore cloud shell storage accounts.
+- General improvements:
+  - Removed module dependency on `Az.Security`. [#105](https://github.com/Microsoft/PSRule.Rules.Azure/issues/105)
+- Bug fixes:
+  - Fixed incorrect string formatting in POSIX culture.  [#262](https://github.com/Microsoft/PSRule.Rules.Azure/issues/262)
+  - Fixed `Azure.VNET.UseNSGs` to exclude `AzureFirewallSubnet`. [#261](https://github.com/Microsoft/PSRule.Rules.Azure/issues/261)
+
+What's changed since pre-release v0.9.0-B2002036:
+
+- No additional changes.
+
 ## v0.9.0-B2002036 (pre-release)
 
 - Exclude cloud shell storage accounts from data rules. [#278](https://github.com/Microsoft/PSRule.Rules.Azure/issues/278)
@@ -44,17 +81,17 @@ What's changed since v0.7.0:
 
 - New rules:
   - API Management:
-    - Added new rule to check API Management uses secure protocol versions. [#237](https://github.com/Microsoft/PSRule.Rules.Azure/issues/237)
-    - Added new rule to check API Management published APIs use HTTPS. [#236](https://github.com/Microsoft/PSRule.Rules.Azure/issues/236)
-    - Added new rule to check API Management backend connections use HTTPS. [#238](https://github.com/Microsoft/PSRule.Rules.Azure/issues/238)
-    - Added new rule to check API Management named values are encrypted. [#239](https://github.com/Microsoft/PSRule.Rules.Azure/issues/239)
+    - Check API Management uses secure protocol versions. [#237](https://github.com/Microsoft/PSRule.Rules.Azure/issues/237)
+    - Check API Management published APIs use HTTPS. [#236](https://github.com/Microsoft/PSRule.Rules.Azure/issues/236)
+    - Check API Management backend connections use HTTPS. [#238](https://github.com/Microsoft/PSRule.Rules.Azure/issues/238)
+    - Check API Management named values are encrypted. [#239](https://github.com/Microsoft/PSRule.Rules.Azure/issues/239)
   - Automation Accounts:
-    - Added new rule to check automation accounts use encrypted variables. [#211](https://github.com/Microsoft/PSRule.Rules.Azure/issues/211)
-    - Added new rule to check automation account webhook expiry interval. [#212](https://github.com/Microsoft/PSRule.Rules.Azure/issues/212)
+    - Check automation accounts use encrypted variables. [#211](https://github.com/Microsoft/PSRule.Rules.Azure/issues/211)
+    - Check automation account webhook expiry interval. [#212](https://github.com/Microsoft/PSRule.Rules.Azure/issues/212)
   - CDN:
-    - Added new rule to check Azure CDN connections use HTTPS. [#242](https://github.com/Microsoft/PSRule.Rules.Azure/issues/242)
+    - Check Azure CDN connections use HTTPS. [#242](https://github.com/Microsoft/PSRule.Rules.Azure/issues/242)
   - Resource Manager Templates:
-    - Added rules for checking template and parameter file structure. [#225](https://github.com/Microsoft/PSRule.Rules.Azure/issues/225)
+    - Check ARM template and parameter file structure. [#225](https://github.com/Microsoft/PSRule.Rules.Azure/issues/225)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to 1.15.7. [#247](https://github.com/Microsoft/PSRule.Rules.Azure/issues/247)
@@ -123,12 +160,12 @@ What's changed since v0.6.0:
 
 - New rules:
   - Role assignment:
-    - Added new rule to check presence of classic Co-Administrators. [#188](https://github.com/Microsoft/PSRule.Rules.Azure/issues/188)
+    - Check presence of classic Co-Administrators. [#188](https://github.com/Microsoft/PSRule.Rules.Azure/issues/188)
   - Azure Kubernetes Service:
-    - Added new rule to check AKS node pool version matches cluster version. [#186](https://github.com/Microsoft/PSRule.Rules.Azure/issues/186)
-    - Added new rule to check AKS clusters use pod security policies. [#142](https://github.com/Microsoft/PSRule.Rules.Azure/issues/142)
-    - Added new rule to check AKS clusters use network policies. [#143](https://github.com/Microsoft/PSRule.Rules.Azure/issues/143)
-    - Added new rule to check AKS node pools use scale sets. [#187](https://github.com/Microsoft/PSRule.Rules.Azure/issues/187)
+    - Check AKS node pool version matches cluster version. [#186](https://github.com/Microsoft/PSRule.Rules.Azure/issues/186)
+    - Check AKS clusters use pod security policies. [#142](https://github.com/Microsoft/PSRule.Rules.Azure/issues/142)
+    - Check AKS clusters use network policies. [#143](https://github.com/Microsoft/PSRule.Rules.Azure/issues/143)
+    - Check AKS node pools use scale sets. [#187](https://github.com/Microsoft/PSRule.Rules.Azure/issues/187)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to check for node pool version. [#191](https://github.com/Microsoft/PSRule.Rules.Azure/issues/191)
@@ -243,8 +280,8 @@ What's changed since v0.4.0:
 
 - New rules:
   - Virtual machines:
-    - Added rule to verify Windows automatic updates are enabled. [#132](https://github.com/Microsoft/PSRule.Rules.Azure/issues/132)
-    - Added rule to verify VM agent is automatically provisioned. [#131](https://github.com/Microsoft/PSRule.Rules.Azure/issues/131)
+    - Check Windows automatic updates are enabled. [#132](https://github.com/Microsoft/PSRule.Rules.Azure/issues/132)
+    - Check VM agent is automatically provisioned. [#131](https://github.com/Microsoft/PSRule.Rules.Azure/issues/131)
 - Updated rules:
   - Azure Kubernetes Services:
     - Updated `Azure.AKS.Version` to 1.14.6. [#130](https://github.com/Microsoft/PSRule.Rules.Azure/issues/130)
