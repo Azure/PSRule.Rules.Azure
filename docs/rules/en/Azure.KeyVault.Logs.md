@@ -20,7 +20,7 @@ Management operations for Key Vault is captured automatically within Azure Activ
 
 ## RECOMMENDATION
 
-Consider configuring diagnostics setting to log access for Key Vault data.
+Consider configuring diagnostic settings to log access for Key Vault data.
 Also consider, storing the access data into Azure Monitor and using Key Vault Analytics.
 
 ## LINKS
