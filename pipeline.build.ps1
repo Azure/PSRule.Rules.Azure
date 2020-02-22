@@ -232,7 +232,7 @@ task BuildDotNet {
     exec {
         # Build library
         # Add build version -p:versionPrefix=$ModuleVersion
-        dotnet publish src/PSRule.Rules.Azure -c $Configuration -f netstandard2.0 -o $(Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure)
+        dotnet publish src/PSRule.Rules.Azure -c $Configuration -f netstandard2.0 -o $(Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -p:version=$Build
     }
 }
 
