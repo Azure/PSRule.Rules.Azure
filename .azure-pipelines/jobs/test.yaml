@@ -1,16 +1,19 @@
 
 parameters:
   name: ''
+  displayName: ''
   buildConfiguration: 'Release'
   imageName: ''
   coverage: 'false'
 
 jobs:
 - job: ${{ parameters.name }}
+  displayName: ${{ parameters.displayName }}
   pool:
     vmImage: ${{ parameters.imageName }}
   variables:
     COVERAGE: ${{ parameters.coverage }}
+    skipComponentGovernanceDetection: true
   steps:
 
   # Install pipeline dependencies

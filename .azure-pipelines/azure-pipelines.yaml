@@ -5,6 +5,7 @@ variables:
   version: '0.10.0'
   buildConfiguration: 'Release'
   disable.coverage.autogenerate: 'true'
+  imageName: 'ubuntu-18.04'
 
  # Use build number format, i.e. 0.10.0-B2002001
 name: $(version)-B$(date:yyMM)$(rev:rrr)
@@ -27,8 +28,6 @@ stages:
 # Build pipeline
 - stage: Build
   displayName: Build
-  variables:
-    imageName: 'ubuntu-18.04'
   jobs:
   - job:
     pool:
@@ -36,34 +35,15 @@ stages:
     displayName: 'Module'
     variables:
       analysis: not(eq(variables['Build.Reason'], 'PullRequest')))
-      # coverage: True
-      # isPR: eq(variables['Build.Reason'], 'PullRequest'))
     steps:
 
     # Install pipeline dependencies
     - powershell: ./.azure-pipelines/pipeline-deps.ps1
       displayName: 'Install dependencies'
 
-    # Run SonarCloud analysis
-    - script: dotnet tool install --global dotnet-sonarscanner
-      displayName: 'Install Sonar scanner'
-      condition: variables['analysis']
-
-    - script: $HOME/.dotnet/tools/dotnet-sonarscanner begin /k:"BernieWhite_PSRule_Rules_Azure" /o:"berniewhite-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login=$(sonarQubeToken) /v:"$(Build.BuildNumber)" /d:sonar.cs.vscoveragexml.reportsPaths="reports/" /d:sonar.cs.xunit.reportsPaths="reports/"
-      displayName: 'Prepare SonarCloud'
-      condition: variables['analysis']
-
-    - script: dotnet build
-      displayName: 'Build solution for analysis'
-      condition: variables['analysis']
-
     # Build module
     - powershell: Invoke-Build -Configuration $(buildConfiguration) -Build $(Build.BuildNumber)
       displayName: 'Build module'
-
-    - script: $HOME/.dotnet/tools/dotnet-sonarscanner end /d:sonar.login=$(sonarQubeToken)
-      displayName: 'Complete SonarCloud'
-      condition: variables['analysis']
 
     # DotNet test results
     - task: PublishTestResults@2
@@ -100,15 +80,10 @@ stages:
 - stage: Test
   jobs:
 
-  # - template: jobs/test.yaml
-  #   parameters:
-  #     name: Linux
-  #     imageName: 'ubuntu-18.04'
-  #     coverage: 'true'
-
   - template: jobs/test.yaml
     parameters:
-      name: MacOS
+      name: macOS_10_15
+      displayName: 'PowerShell 6.2.4 - macOS-10.15'
       imageName: 'macOS-10.15'
 
   - template: jobs/test.yaml
@@ -144,7 +119,7 @@ stages:
   - job:
     displayName: Live
     pool:
-      vmImage: 'ubuntu-18.04'
+      vmImage: $(imageName)
     variables:
       isPreRelease: $[contains(variables['Build.SourceBranchName'], '-B')]
     steps:
@@ -177,3 +152,51 @@ stages:
         assetUploadMode: replace
         addChangeLog: false
         isPreRelease: $(isPreRelease)
+
+# Analysis pipeline
+- stage: Analysis
+  displayName: Analysis
+  dependsOn: []
+  jobs:
+  - job:
+    pool:
+      vmImage: $(imageName)
+    displayName: 'SonarCloud'
+    condition: not(eq(variables['Build.Reason'], 'PullRequest')))
+    variables:
+      analysis: not(eq(variables['Build.Reason'], 'PullRequest')))
+    steps:
+
+    # Run SonarCloud analysis
+    - script: dotnet tool install --global dotnet-sonarscanner
+      displayName: 'Install Sonar scanner'
+
+    - script: $HOME/.dotnet/tools/dotnet-sonarscanner begin /k:"BernieWhite_PSRule_Rules_Azure" /o:"berniewhite-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login=$(sonarQubeToken) /v:"$(Build.BuildNumber)" /d:sonar.cs.vscoveragexml.reportsPaths="reports/" /d:sonar.cs.xunit.reportsPaths="reports/"
+      displayName: 'Prepare SonarCloud'
+
+    - script: dotnet build
+      displayName: 'Build solution for analysis'
+
+    - script: $HOME/.dotnet/tools/dotnet-sonarscanner end /d:sonar.login=$(sonarQubeToken)
+      displayName: 'Complete SonarCloud'
+
+  - job: Secret_Scan
+    pool: 'Hosted VS2017'
+    displayName: Secret Scan
+
+    steps:
+    - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+      displayName: 'Scan for secrets'
+      inputs:
+        debugMode: false
+        toolMajorVersion: V2
+
+    - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
+      displayName: 'Publish Secret Scan Logs to Build Artifacts'
+      continueOnError: true
+
+    - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1
+      displayName: 'Check for Failures'
+      inputs:
+        CredScan: true
+        ToolLogsNotFoundAction: Error
