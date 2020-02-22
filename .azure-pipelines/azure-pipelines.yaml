@@ -128,13 +128,21 @@ stages:
 
   - template: jobs/test.yaml
     parameters:
+      name: ps_6_ubuntu_18_04
+      imageName: 'ubuntu-18.04'
+      displayName: 'PowerShell 6.2.4 - ubuntu-18.04'
+      coverage: 'true'
+
+  - template: jobs/test.yaml
+    parameters:
       name: macOS_10_15
       displayName: 'PowerShell 6.2.4 - macOS-10.15'
       imageName: 'macOS-10.15'
 
   - template: jobs/test.yaml
     parameters:
-      name: Windows
+      name: windows
+      displayName: 'PowerShell 5.1 - win2016'
       imageName: 'vs2017-win2016'
 
   # - template: jobs/testContainer.yaml
@@ -142,13 +150,6 @@ stages:
   #     name: alpine_3_10
   #     displayName: 'PowerShell 7.0 RC3 - alpine-3.10'
   #     imageName: 'mcr.microsoft.com/powershell:7.0.0-rc.3-alpine-3.10'
-
-  - template: jobs/testContainer.yaml
-    parameters:
-      name: ps_6_ubuntu_18_04
-      displayName: 'PowerShell 6.2.4 - ubuntu-18.04'
-      imageName: 'mcr.microsoft.com/powershell:6.2.4-ubuntu-18.04'
-      coverage: 'true'
 
   - template: jobs/testContainer.yaml
     parameters:
