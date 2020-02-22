@@ -9,6 +9,8 @@ jobs:
 - job: ${{ parameters.name }}
   pool:
     vmImage: ${{ parameters.imageName }}
+  variables:
+    COVERAGE: ${{ parameters.coverage }}
   steps:
 
   # Install pipeline dependencies
@@ -50,7 +52,7 @@ jobs:
       sourcedirs: 'src/PSRule.Rules.Azure'
       reporttypes: 'HtmlInline_AzurePipelines;Cobertura;SonarQube;Badges'
       tag: $(Build.BuildNumber)
-      condition: eq('${{ parameters.coverage }}', 'true') }}
+    condition: eq(variables['COVERAGE'], 'true')
 
   # Publish Code Coverage report
   - task: PublishCodeCoverageResults@1
@@ -59,4 +61,4 @@ jobs:
       codeCoverageTool: 'Cobertura'
       summaryFileLocation: 'reports/coverage/Cobertura.xml'
       reportDirectory: 'reports/coverage'
-      condition: eq('${{ parameters.coverage }}', 'true') }}
+    condition: eq(variables['COVERAGE'], 'true')

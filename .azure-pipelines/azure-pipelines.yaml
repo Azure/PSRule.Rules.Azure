@@ -116,11 +116,11 @@ stages:
       name: Windows
       imageName: 'vs2017-win2016'
 
-  - template: jobs/testContainer.yaml
-    parameters:
-      name: alpine_3_10
-      displayName: 'PowerShell 7.0 RC3 - alpine-3.10'
-      imageName: 'mcr.microsoft.com/powershell:7.0.0-rc.3-alpine-3.10'
+  # - template: jobs/testContainer.yaml
+  #   parameters:
+  #     name: alpine_3_10
+  #     displayName: 'PowerShell 7.0 RC3 - alpine-3.10'
+  #     imageName: 'mcr.microsoft.com/powershell:7.0.0-rc.3-alpine-3.10'
 
   - template: jobs/testContainer.yaml
     parameters:
@@ -137,7 +137,7 @@ stages:
   - job:
     displayName: Live
     pool:
-      vmImage: 'ubuntu-latest'
+      vmImage: 'ubuntu-18.04'
     variables:
       isPreRelease: $[contains(variables['Build.SourceBranchName'], '-B')]
     steps:
