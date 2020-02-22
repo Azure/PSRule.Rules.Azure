@@ -1,6 +1,7 @@
 
 parameters:
   name: ''
+  displayName: ''
   buildConfiguration: 'Release'
   vmImage: 'ubuntu-16.04'
   imageName: ''
@@ -8,6 +9,7 @@ parameters:
 
 jobs:
 - job: ${{ parameters.name }}
+  displayName: ${{ parameters.displayName }}
   pool:
     vmImage: ${{ parameters.vmImage }}
   container:
@@ -51,7 +53,7 @@ jobs:
       sourcedirs: 'src\PSRule.Rules.Azure'
       reporttypes: 'HtmlInline_AzurePipelines;Cobertura;SonarQube;Badges'
       tag: $(Build.BuildNumber)
-    condition: eq(variables['coverage'], 'true')
+    condition: ${{ eq(parameters.coverage, 'true') }}
 
   # Publish Code Coverage report
   - task: PublishCodeCoverageResults@1
@@ -60,4 +62,4 @@ jobs:
       codeCoverageTool: 'Cobertura'
       summaryFileLocation: 'reports/coverage/Cobertura.xml'
       reportDirectory: 'reports/coverage'
-    condition: eq(variables['coverage'], 'true')
+      condition: ${{ eq(parameters.coverage, 'true') }}
