@@ -1,3 +1,5 @@
+# Azure DevOps
+# CI job for running VM pipelines
 
 parameters:
   name: ''
