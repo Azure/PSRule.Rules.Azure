@@ -50,6 +50,9 @@ function Export-AzRuleData {
         [Parameter(Mandatory = $False, ParameterSetName = 'All')]
         [Switch]$All = $False
     )
+    begin {
+        Write-Verbose -Message "[Export-AzRuleData] BEGIN::";
+    }
     process {
         # Get subscriptions
         $context = FindAzureContext -Subscription $Subscription -Tenant $Tenant -All:$All -Verbose:$VerbosePreference;
@@ -70,16 +73,20 @@ function Export-AzRuleData {
             $getParams['Tag'] = $Tag;
         }
         if ($PSBoundParameters.ContainsKey('ResourceGroupName')) {
+            $getParams['ResourceGroupName'] = $ResourceGroupName;
             $filterParams['ResourceGroupName'] = $ResourceGroupName;
         }
 
         foreach ($c in $context) {
-            Write-Verbose -Message "Using subscription: $($c.Subscription.Name)";
+            Write-Verbose -Message "[Export] -- Using subscription: $($c.Subscription.Name)";
             $filePath = Join-Path -Path $OutputPath -ChildPath "$($c.Subscription.Id).json";
             GetAzureResource @getParams -Context $c -Verbose:$VerbosePreference `
             | FilterAzureResource @filterParams -Verbose:$VerbosePreference `
             | ExportAzureResource -Path $filePath -PassThru $PassThru -Verbose:$VerbosePreference;
         }
+    }
+    end {
+        Write-Verbose -Message "[Export-AzRuleData] END::";
     }
 }
 
@@ -261,27 +268,59 @@ function GetAzureResource {
         [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context,
 
         [Parameter(Mandatory = $False)]
-        [Hashtable]$Tag
+        [Hashtable]$Tag,
+
+        [Parameter(Mandatory = $False)]
+        [String[]]$ResourceGroupName = $Null
     )
+    begin {
+        $watch = New-Object -TypeName System.Diagnostics.Stopwatch;
+    }
+
     process {
-        $getParams = @{ };
+        $resourceParams = @{ };
+        $rgParams = @{ };
+
         if ($PSBoundParameters.ContainsKey('Tag')) {
-            $getParams['Tag'] = $Tag;
+            $resourceParams['Tag'] = $Tag;
+            $rgParams['Tag'] = $Tag;
         }
 
-        Write-Verbose -Message "Getting resources for subscription: $($Context.DefaultContext.Subscription.Name)";
-        Get-AzResource @getParams -ExpandProperties -DefaultProfile $Context |
-            ExpandResource -Context $Context -Verbose:$VerbosePreference;
+        try {
+            Write-Verbose -Message "[Export] -- Getting Azure resources";
+            $watch.Restart();
 
-        Write-Verbose -Message "Getting resource groups for subscription: $($Context.DefaultContext.Subscription.Name)";
-        Get-AzResourceGroup @getParams -DefaultProfile $Context |
-            SetResourceType 'Microsoft.Resources/resourceGroups' |
-            ExpandResource -Context $Context -Verbose:$VerbosePreference;
+            if ($PSBoundParameters.ContainsKey('ResourceGroupName')) {
+                foreach ($rg in $ResourceGroupName) {
+                    Write-Verbose -Message "[Export] -- Getting Azure resources for Resource Group: $rg";
+                    Get-AzResource @resourceParams -ResourceGroupName $rg -ExpandProperties -ODataQuery "SubscriptionId EQ '$($Context.DefaultContext.Subscription.Id)'" -DefaultProfile $Context `
+                        | ExpandResource -Context $Context -Verbose:$VerbosePreference;
+                    Get-AzResourceGroup @rgParams -Name $rg -DefaultProfile $Context |
+                        SetResourceType 'Microsoft.Resources/resourceGroups' |
+                        ExpandResource -Context $Context -Verbose:$VerbosePreference;
+                }
+            }
+            else {
+                Get-AzResource @resourceParams -ExpandProperties -DefaultProfile $Context |
+                    ExpandResource -Context $Context -Verbose:$VerbosePreference;
+                Get-AzResourceGroup @rgParams -DefaultProfile $Context |
+                    SetResourceType 'Microsoft.Resources/resourceGroups' |
+                    ExpandResource -Context $Context -Verbose:$VerbosePreference;
+            }
 
-        Write-Verbose -Message "Getting subscription: $($Context.DefaultContext.Subscription.Name)";
-        Get-AzSubscription -SubscriptionId $Context.DefaultContext.Subscription.Id |
-            SetResourceType 'Microsoft.Subscription' |
-            ExpandResource -Context $Context -Verbose:$VerbosePreference;
+            Write-Verbose -Message "[Export] -- Azure resources exported in [$($watch.ElapsedMilliseconds) ms]";
+            $watch.Restart();
+
+            Write-Verbose -Message "[Export] -- Getting Azure subscription: $($Context.DefaultContext.Subscription.Id)";
+            Get-AzSubscription -SubscriptionId $Context.DefaultContext.Subscription.Id |
+                SetResourceType 'Microsoft.Subscription' |
+                ExpandResource -Context $Context -Verbose:$VerbosePreference;
+
+            Write-Verbose -Message "[Export] -- Azure subscription exported in [$($watch.ElapsedMilliseconds) ms]";
+        }
+        finally {
+            $watch.Stop();
+        }
     }
 }
 
@@ -329,11 +368,17 @@ function ExportAzureResource {
         }
     }
     end {
+        $watch = New-Object -TypeName System.Diagnostics.Stopwatch;
+        Write-Verbose -Message "[Export] -- Exporting to JSON";
+        $watch.Restart();
+
         if (!$PassThru) {
             # Save to JSON
             $resources | ConvertTo-Json -Depth 100 | Set-Content -Path $Path;
             Get-Item -Path $Path;
         }
+        $watch.Stop();
+        Write-Verbose -Message "[Export] -- Exported to JSON in [$($watch.ElapsedMilliseconds) ms]";
     }
 }
 
@@ -704,7 +749,7 @@ function ExpandResource {
         else {
             $resourceId = $Resource.ResourceId;
         }
-        Write-Verbose -Message "Expanding: $resourceId";
+        Write-Verbose -Message "[Export] -- Expanding: $($Resource.Id)";
         switch ($Resource.ResourceType) {
             'Microsoft.ApiManagement/service' { VisitAPIManagement @PSBoundParameters; }
             'Microsoft.Automation/automationAccounts' { VisitAutomationAccount @PSBoundParameters; }
@@ -738,6 +783,9 @@ function SetResourceType {
         [String]$ResourceType
     )
     process {
+        if ($ResourceType -eq 'Microsoft.Resources/resourceGroups') {
+            $Resource = $Resource | Add-Member -MemberType NoteProperty -Name Id -Value $Resource.ResourceId -PassThru -Force;
+        }
         $Resource | Add-Member -MemberType NoteProperty -Name ResourceType -Value $ResourceType -PassThru -Force;
     }
 }
