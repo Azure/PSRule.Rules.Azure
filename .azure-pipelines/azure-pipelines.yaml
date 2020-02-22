@@ -33,8 +33,6 @@ stages:
     pool:
       vmImage: $(imageName)
     displayName: 'Module'
-    variables:
-      analysis: not(eq(variables['Build.Reason'], 'PullRequest')))
     steps:
 
     # Install pipeline dependencies
@@ -162,9 +160,9 @@ stages:
     pool:
       vmImage: $(imageName)
     displayName: 'SonarCloud'
-    condition: not(eq(variables['Build.Reason'], 'PullRequest')))
+    condition: not(eq(variables['Build.Reason'], 'PullRequest'))
     variables:
-      analysis: not(eq(variables['Build.Reason'], 'PullRequest')))
+      analysis: not(eq(variables['Build.Reason'], 'PullRequest'))
     steps:
 
     # Run SonarCloud analysis
