@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <OutputType>Library</OutputType>
+    <ProjectGuid>{bce66f73-3809-4740-b3c3-f52958e7ab51}</ProjectGuid>
     <!-- <DebugType>portable</DebugType> -->
     <NeutralLanguage>en-US</NeutralLanguage>
     <DebugSymbols>true</DebugSymbols>
@@ -12,8 +13,8 @@
     <AssemblyTitle>PSRule</AssemblyTitle>
     <RepositoryUrl>https://github.com/Microsoft/PSRule.Rules.Azure</RepositoryUrl>
     <PackageLicenseExpression>https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/LICENSE</PackageLicenseExpression>
-    <!--<Version>0.0.1</Version>-->
-    <Copyright>(c) Microsoft Corporation. All rights reserved. Licensed under the MIT License.</Copyright>
+    <Version>0.0.1</Version>
+    <Copyright>Copyright (c) Microsoft Corporation. Licensed under the MIT License.</Copyright>
     <Description>Validate Azure resources using PSRule.
 
 This project is to be considered a proof-of-concept and not a supported product.</Description>
