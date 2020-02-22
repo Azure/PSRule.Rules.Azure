@@ -24,6 +24,8 @@ jobs:
 
   # Build module
   - powershell: Invoke-Build TestModule -Configuration ${{ parameters.buildConfiguration }} -Build $(Build.BuildNumber)
+    env:
+      COVERAGE: ${{ parameters.coverage }}
     displayName: 'Test module'
 
   # Pester test results
@@ -43,9 +45,9 @@ jobs:
   - task: Palmmedia.reportgenerator.reportgenerator-build-release-task.reportgenerator@4
     displayName: 'Code coverage report generator'
     inputs:
-      reports: 'reports\pester-coverage.xml'
-      targetdir: 'reports\coverage'
-      sourcedirs: 'src\PSRule.Rules.Azure'
+      reports: 'reports/pester-coverage.xml'
+      targetdir: 'reports/coverage'
+      sourcedirs: 'src/PSRule.Rules.Azure'
       reporttypes: 'HtmlInline_AzurePipelines;Cobertura;SonarQube;Badges'
       tag: $(Build.BuildNumber)
       condition: ${{ eq(parameters.coverage, 'true') }}

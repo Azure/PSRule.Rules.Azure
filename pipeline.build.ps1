@@ -53,7 +53,7 @@ if ($version -like '*-*') {
 Write-Host -Object "[Pipeline] -- Using version: $version" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- Using versionSuffix: $versionSuffix" -ForegroundColor Green;
 
-if ($Env:coverage -eq 'true') {
+if ($Env:COVERAGE -eq 'true') {
     $CodeCoverage = $True;
 }
 
@@ -261,13 +261,13 @@ task CopyModule {
 # Synopsis: Build modules only
 task BuildModule BuildDotNet, CopyModule
 
-task TestModule TestDotNet, ModuleDependencies, Pester, PSScriptAnalyzer, {
+task TestModule ModuleDependencies, Pester, PSScriptAnalyzer, {
     # Run Pester tests
     $pesterParams = @{ Path = (Join-Path -Path $PWD -ChildPath tests/PSRule.Rules.Azure.Tests); OutputFile = 'reports/pester-unit.xml'; OutputFormat = 'NUnitXml'; PesterOption = @{ IncludeVSCodeMarker = $True }; PassThru = $True; };
 
     if ($CodeCoverage) {
         $pesterParams.Add('CodeCoverage', (Join-Path -Path $PWD -ChildPath 'out/modules/**/*.psm1'));
-        $pesterParams.Add('CodeCoverageOutputFile', (Join-Path -Path $PWD -ChildPath reports/pester-coverage.xml));
+        $pesterParams.Add('CodeCoverageOutputFile', (Join-Path -Path $PWD -ChildPath 'reports/pester-coverage.xml'));
     }
 
     if (!(Test-Path -Path reports)) {
@@ -355,8 +355,9 @@ task Clean {
 
 task Build Clean, BuildModule, VersionModule, BuildHelp
 
-task Test Build, Rules, TestModule
+task Test Build, Rules, TestDotNet, TestModule
 
 task Release ReleaseModule, TagBuild
 
-task . Build, Test
+# Synopsis: Build and test. Entry point for CI Build stage
+task . Build, Rules, TestDotNet
