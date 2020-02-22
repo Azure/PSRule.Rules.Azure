@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Improvements to verbose logging of `Export-AzRuleData`. [#301](https://github.com/Microsoft/PSRule.Rules.Azure/issues/301)
+
 ## v0.9.0
 
 What's changed since v0.8.0:
