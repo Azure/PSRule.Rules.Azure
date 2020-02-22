@@ -100,11 +100,11 @@ stages:
 - stage: Test
   jobs:
 
-  - template: jobs/test.yaml
-    parameters:
-      name: Linux
-      imageName: 'ubuntu-18.04'
-      coverage: 'true'
+  # - template: jobs/test.yaml
+  #   parameters:
+  #     name: Linux
+  #     imageName: 'ubuntu-18.04'
+  #     coverage: 'true'
 
   - template: jobs/test.yaml
     parameters:
@@ -124,7 +124,14 @@ stages:
 
   - template: jobs/testContainer.yaml
     parameters:
-      name: ubuntu_18_04
+      name: ps_6_ubuntu_18_04
+      displayName: 'PowerShell 6.2.4 - ubuntu-18.04'
+      imageName: 'mcr.microsoft.com/powershell:6.2.4-ubuntu-18.04'
+      coverage: 'true'
+
+  - template: jobs/testContainer.yaml
+    parameters:
+      name: ps_7_ubuntu_18_04
       displayName: 'PowerShell 7.0 RC3 - ubuntu-18.04'
       imageName: 'mcr.microsoft.com/powershell:7.0.0-rc.3-ubuntu-18.04'
 
