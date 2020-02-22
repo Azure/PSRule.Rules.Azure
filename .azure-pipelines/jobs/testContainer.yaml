@@ -5,7 +5,6 @@ parameters:
   buildConfiguration: 'Release'
   vmImage: 'ubuntu-16.04'
   imageName: ''
-  coverage: 'false'
 
 jobs:
 - job: ${{ parameters.name }}
@@ -43,23 +42,3 @@ jobs:
       configuration: ${{ parameters.buildConfiguration }}
       publishRunAttachments: true
     condition: succeededOrFailed()
-
-  # Generate Code Coverage report
-  - task: Palmmedia.reportgenerator.reportgenerator-build-release-task.reportgenerator@4
-    displayName: 'Code coverage report generator'
-    inputs:
-      reports: 'reports\pester-coverage.xml'
-      targetdir: 'reports\coverage'
-      sourcedirs: 'src\PSRule.Rules.Azure'
-      reporttypes: 'HtmlInline_AzurePipelines;Cobertura;SonarQube;Badges'
-      tag: $(Build.BuildNumber)
-    condition: ${{ eq(parameters.coverage, 'true') }}
-
-  # Publish Code Coverage report
-  - task: PublishCodeCoverageResults@1
-    displayName: 'Publish Pester code coverage'
-    inputs:
-      codeCoverageTool: 'Cobertura'
-      summaryFileLocation: 'reports/coverage/Cobertura.xml'
-      reportDirectory: 'reports/coverage'
-      condition: ${{ eq(parameters.coverage, 'true') }}
