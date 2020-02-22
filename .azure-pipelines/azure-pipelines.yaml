@@ -27,17 +27,17 @@ stages:
 # Build pipeline
 - stage: Build
   displayName: Build
+  variables:
+    imageName: 'ubuntu-18.04'
   jobs:
   - job:
     pool:
-      vmImage: 'ubuntu-latest'
+      vmImage: $(imageName)
     displayName: 'Module'
     variables:
-      publish: 'true'
-      analysis: 'true'
-      coverage: 'true'
+      analysis: True
+      # coverage: True
       isPR: eq(variables['Build.Reason'], 'PullRequest'))
-      imageName: 'ubuntu-latest'
     steps:
 
     # Install pipeline dependencies
@@ -47,15 +47,15 @@ stages:
     # Run SonarCloud analysis
     - script: dotnet tool install --global dotnet-sonarscanner
       displayName: 'Install Sonar scanner'
-      condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['analysis'], 'true'))
+      condition: and(not(variables['isPR']), variables['analysis'])
 
     - script: $HOME/.dotnet/tools/dotnet-sonarscanner begin /k:"BernieWhite_PSRule_Rules_Azure" /o:"berniewhite-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login=$(sonarQubeToken) /v:"$(Build.BuildNumber)" /d:sonar.cs.vscoveragexml.reportsPaths="reports/" /d:sonar.cs.xunit.reportsPaths="reports/"
       displayName: 'Prepare SonarCloud'
-      condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['analysis'], 'true'))
+      condition: and(not(variables['isPR']), variables['analysis'])
 
     - script: dotnet build
       displayName: 'Build solution for analysis'
-      condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['analysis'], 'true'))
+      condition: and(not(variables['isPR']), variables['analysis'])
 
     # Build module
     - powershell: Invoke-Build -Configuration $(buildConfiguration) -Build $(Build.BuildNumber)
@@ -63,7 +63,7 @@ stages:
 
     - script: $HOME/.dotnet/tools/dotnet-sonarscanner end /d:sonar.login=$(sonarQubeToken)
       displayName: 'Complete SonarCloud'
-      condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['analysis'], 'true'))
+      condition: and(not(variables['isPR']), variables['analysis'])
 
     # DotNet test results
     - task: PublishTestResults@2
@@ -91,16 +91,16 @@ stages:
         publishRunAttachments: true
       condition: succeededOrFailed()
 
-      # Generate Code Coverage report
-    - task: Palmmedia.reportgenerator.reportgenerator-build-release-task.reportgenerator@4
-      displayName: 'Code coverage report generator'
-      inputs:
-        reports: 'reports/coverage.cobertura.xml'
-        targetdir: 'reports/coverage'
-        sourcedirs: 'src/PSRule.Rules.Azure'
-        reporttypes: 'HtmlInline_AzurePipelines;Cobertura;SonarQube;Badges'
-        tag: $(Build.BuildNumber)
-      condition: eq(variables['coverage'], 'true')
+    #   # Generate Code Coverage report
+    # - task: Palmmedia.reportgenerator.reportgenerator-build-release-task.reportgenerator@4
+    #   displayName: 'Code coverage report generator'
+    #   inputs:
+    #     reports: 'reports/coverage.cobertura.xml'
+    #     targetdir: 'reports/coverage'
+    #     sourcedirs: 'src/PSRule.Rules.Azure'
+    #     reporttypes: 'HtmlInline_AzurePipelines;Cobertura;SonarQube;Badges'
+    #     tag: $(Build.BuildNumber)
+    #   condition: eq(variables['coverage'], 'true')
 
     # Generate artifacts
     - publish: out/modules/PSRule.Rules.Azure
