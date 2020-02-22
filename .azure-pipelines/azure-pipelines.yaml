@@ -28,6 +28,7 @@ stages:
 # Build pipeline
 - stage: Build
   displayName: Build
+  dependsOn: []
   jobs:
   - job:
     pool:
@@ -84,8 +85,6 @@ stages:
       vmImage: $(imageName)
     displayName: 'SonarCloud'
     condition: not(eq(variables['Build.Reason'], 'PullRequest'))
-    variables:
-      analysis: not(eq(variables['Build.Reason'], 'PullRequest'))
     steps:
 
     # Run SonarCloud analysis
@@ -124,6 +123,7 @@ stages:
 
 # Test pipeline
 - stage: Test
+  dependsOn: Build
   jobs:
 
   - template: jobs/test.yaml
