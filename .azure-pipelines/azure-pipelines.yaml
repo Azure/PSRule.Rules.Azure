@@ -74,6 +74,54 @@ stages:
       displayName: 'Publish module'
       artifact: PSRule.Rules.Azure
 
+# Analysis pipeline
+- stage: Analysis
+  displayName: Analysis
+  dependsOn: []
+  jobs:
+  - job:
+    pool:
+      vmImage: $(imageName)
+    displayName: 'SonarCloud'
+    condition: not(eq(variables['Build.Reason'], 'PullRequest'))
+    variables:
+      analysis: not(eq(variables['Build.Reason'], 'PullRequest'))
+    steps:
+
+    # Run SonarCloud analysis
+    - script: dotnet tool install --global dotnet-sonarscanner
+      displayName: 'Install Sonar scanner'
+
+    - script: $HOME/.dotnet/tools/dotnet-sonarscanner begin /k:"BernieWhite_PSRule_Rules_Azure" /o:"berniewhite-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login=$(sonarQubeToken) /v:"$(Build.BuildNumber)" /d:sonar.cs.vscoveragexml.reportsPaths="reports/" /d:sonar.cs.xunit.reportsPaths="reports/"
+      displayName: 'Prepare SonarCloud'
+
+    - script: dotnet build
+      displayName: 'Build solution for analysis'
+
+    - script: $HOME/.dotnet/tools/dotnet-sonarscanner end /d:sonar.login=$(sonarQubeToken)
+      displayName: 'Complete SonarCloud'
+
+  - job: Secret_Scan
+    pool: 'Hosted VS2017'
+    displayName: Secret scan
+
+    steps:
+    - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+      displayName: 'Scan for secrets'
+      inputs:
+        debugMode: false
+        toolMajorVersion: V2
+
+    - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
+      displayName: 'Publish scan logs'
+      continueOnError: true
+
+    - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1
+      displayName: 'Check for failures'
+      inputs:
+        CredScan: true
+        ToolLogsNotFoundAction: Error
+
 # Test pipeline
 - stage: Test
   jobs:
@@ -111,7 +159,7 @@ stages:
 # Release pipeline
 - stage: Release
   displayName: Release
-  dependsOn: Test
+  dependsOn: [ 'Test', 'Analysis' ]
   condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v0.'))
   jobs:
   - job:
@@ -150,51 +198,3 @@ stages:
         assetUploadMode: replace
         addChangeLog: false
         isPreRelease: $(isPreRelease)
-
-# Analysis pipeline
-- stage: Analysis
-  displayName: Analysis
-  dependsOn: []
-  jobs:
-  - job:
-    pool:
-      vmImage: $(imageName)
-    displayName: 'SonarCloud'
-    condition: not(eq(variables['Build.Reason'], 'PullRequest'))
-    variables:
-      analysis: not(eq(variables['Build.Reason'], 'PullRequest'))
-    steps:
-
-    # Run SonarCloud analysis
-    - script: dotnet tool install --global dotnet-sonarscanner
-      displayName: 'Install Sonar scanner'
-
-    - script: $HOME/.dotnet/tools/dotnet-sonarscanner begin /k:"BernieWhite_PSRule_Rules_Azure" /o:"berniewhite-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login=$(sonarQubeToken) /v:"$(Build.BuildNumber)" /d:sonar.cs.vscoveragexml.reportsPaths="reports/" /d:sonar.cs.xunit.reportsPaths="reports/"
-      displayName: 'Prepare SonarCloud'
-
-    - script: dotnet build
-      displayName: 'Build solution for analysis'
-
-    - script: $HOME/.dotnet/tools/dotnet-sonarscanner end /d:sonar.login=$(sonarQubeToken)
-      displayName: 'Complete SonarCloud'
-
-  - job: Secret_Scan
-    pool: 'Hosted VS2017'
-    displayName: Secret Scan
-
-    steps:
-    - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
-      displayName: 'Scan for secrets'
-      inputs:
-        debugMode: false
-        toolMajorVersion: V2
-
-    - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
-      displayName: 'Publish Secret Scan Logs to Build Artifacts'
-      continueOnError: true
-
-    - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1
-      displayName: 'Check for Failures'
-      inputs:
-        CredScan: true
-        ToolLogsNotFoundAction: Error

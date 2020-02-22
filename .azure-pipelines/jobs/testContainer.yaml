@@ -16,6 +16,8 @@ jobs:
     image: ${{ parameters.imageName }}
     env:
       COVERAGE: ${{ parameters.coverage }}
+  variables:
+    COVERAGE: ${{ parameters.coverage }}
   steps:
 
   # Install pipeline dependencies
