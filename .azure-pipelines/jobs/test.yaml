@@ -3,6 +3,7 @@ parameters:
   name: ''
   buildConfiguration: 'Release'
   imageName: ''
+  coverage: 'false'
 
 jobs:
 - job: ${{ parameters.name }}

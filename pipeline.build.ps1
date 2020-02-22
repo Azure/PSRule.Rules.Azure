@@ -261,7 +261,7 @@ task CopyModule {
 # Synopsis: Build modules only
 task BuildModule BuildDotNet, CopyModule
 
-task TestModule TestDotNet, PSRule, Pester, PSScriptAnalyzer, {
+task TestModule TestDotNet, ModuleDependencies, Pester, PSScriptAnalyzer, {
     # Run Pester tests
     $pesterParams = @{ Path = (Join-Path -Path $PWD -ChildPath tests/PSRule.Rules.Azure.Tests); OutputFile = 'reports/pester-unit.xml'; OutputFormat = 'NUnitXml'; PesterOption = @{ IncludeVSCodeMarker = $True }; PassThru = $True; };
 

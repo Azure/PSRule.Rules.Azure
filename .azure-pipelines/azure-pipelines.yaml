@@ -35,9 +35,9 @@ stages:
       vmImage: $(imageName)
     displayName: 'Module'
     variables:
-      analysis: True
+      analysis: not(eq(variables['Build.Reason'], 'PullRequest')))
       # coverage: True
-      isPR: eq(variables['Build.Reason'], 'PullRequest'))
+      # isPR: eq(variables['Build.Reason'], 'PullRequest'))
     steps:
 
     # Install pipeline dependencies
@@ -47,15 +47,15 @@ stages:
     # Run SonarCloud analysis
     - script: dotnet tool install --global dotnet-sonarscanner
       displayName: 'Install Sonar scanner'
-      condition: and(not(variables['isPR']), variables['analysis'])
+      condition: variables['analysis']
 
     - script: $HOME/.dotnet/tools/dotnet-sonarscanner begin /k:"BernieWhite_PSRule_Rules_Azure" /o:"berniewhite-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login=$(sonarQubeToken) /v:"$(Build.BuildNumber)" /d:sonar.cs.vscoveragexml.reportsPaths="reports/" /d:sonar.cs.xunit.reportsPaths="reports/"
       displayName: 'Prepare SonarCloud'
-      condition: and(not(variables['isPR']), variables['analysis'])
+      condition: variables['analysis']
 
     - script: dotnet build
       displayName: 'Build solution for analysis'
-      condition: and(not(variables['isPR']), variables['analysis'])
+      condition: variables['analysis']
 
     # Build module
     - powershell: Invoke-Build -Configuration $(buildConfiguration) -Build $(Build.BuildNumber)
@@ -63,7 +63,7 @@ stages:
 
     - script: $HOME/.dotnet/tools/dotnet-sonarscanner end /d:sonar.login=$(sonarQubeToken)
       displayName: 'Complete SonarCloud'
-      condition: and(not(variables['isPR']), variables['analysis'])
+      condition: variables['analysis']
 
     # DotNet test results
     - task: PublishTestResults@2
@@ -91,17 +91,6 @@ stages:
         publishRunAttachments: true
       condition: succeededOrFailed()
 
-    #   # Generate Code Coverage report
-    # - task: Palmmedia.reportgenerator.reportgenerator-build-release-task.reportgenerator@4
-    #   displayName: 'Code coverage report generator'
-    #   inputs:
-    #     reports: 'reports/coverage.cobertura.xml'
-    #     targetdir: 'reports/coverage'
-    #     sourcedirs: 'src/PSRule.Rules.Azure'
-    #     reporttypes: 'HtmlInline_AzurePipelines;Cobertura;SonarQube;Badges'
-    #     tag: $(Build.BuildNumber)
-    #   condition: eq(variables['coverage'], 'true')
-
     # Generate artifacts
     - publish: out/modules/PSRule.Rules.Azure
       displayName: 'Publish module'
@@ -115,6 +104,7 @@ stages:
     parameters:
       name: Linux
       imageName: 'ubuntu-18.04'
+      coverage: 'true'
 
   - template: jobs/test.yaml
     parameters:
