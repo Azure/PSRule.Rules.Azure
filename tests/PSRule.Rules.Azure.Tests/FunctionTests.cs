@@ -379,6 +379,13 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // Union objects
+            var actual1 = Functions.Union(context, new object[] { JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }"), JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }"), JObject.Parse("{ \"i\": \"j\" }") }) as JObject;
+            Assert.True(actual1.ContainsKey("a"));
+            Assert.Equal("b", actual1["a"]);
+            Assert.True(actual1.ContainsKey("e"));
+            Assert.Equal("f", actual1["e"]);
+            Assert.True(actual1.ContainsKey("i"));
+            Assert.Equal("j", actual1["i"]);
 
             // Union arrays
             var actual2 = Functions.Union(context, new string[][] { new string[] { "one", "two", "three" }, new string[] { "three", "four" } }) as object[];
