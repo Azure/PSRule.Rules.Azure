@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.10.0-B2002023 (pre-release)
+
 - Improvements to verbose logging of `Export-AzRuleData`. [#301](https://github.com/Microsoft/PSRule.Rules.Azure/issues/301)
 - Fixed union of object properties in templates. [#303](https://github.com/Microsoft/PSRule.Rules.Azure/issues/303)
 
