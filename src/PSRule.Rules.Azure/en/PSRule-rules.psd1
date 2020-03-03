@@ -17,4 +17,7 @@
     EnabledEndpoints = "The number of enabled endpoints is {0}."
     AccessPolicyLeastPrivilege = "One or more access policies grant all or purge permission."
     DiagnosticSettingsNotConfigured = "Diagnostic settings are not configured."
+    SecurityCenterNotConfigured = "Security Center are not configured."
+    LateralTraversalNotRestricted = "A rule to limit lateral traversal was not found."
+    AllInboundRestricted = "The first inbound rule denies traffic from all sources."
 }

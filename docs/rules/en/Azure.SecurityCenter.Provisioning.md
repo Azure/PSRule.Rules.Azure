@@ -21,7 +21,7 @@ By turning auto-provisioning on, Security Center automatically deploys an Azure 
 
 ## RECOMMENDATION
 
-Consider enabling auto-provisioning on to improve Azure Security Center insights.
+Consider enabling auto-provisioning to improve Azure Security Center VM insights.
 
 ## LINKS
 
