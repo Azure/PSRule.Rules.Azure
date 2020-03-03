@@ -60,6 +60,7 @@ Rule 'Azure.RBAC.UseRGDelegation' -Type 'Microsoft.Resources/resourceGroups' -Ta
 
 # Synopsis: Security Center email and phone contact details should be set
 Rule 'Azure.SecurityCenter.Contact' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
+    Reason $LocalizedData.SecurityCenterNotConfigured;
     $contacts = @(GetSubResources -ResourceType 'Microsoft.Security/securityContacts');
     $Null -ne $contacts -and $contacts.Length -gt 0;
     foreach ($c in $contacts) {

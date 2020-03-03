@@ -85,6 +85,7 @@ Rule 'Azure.NSG.AnyInboundSource' -Type 'Microsoft.Network/networkSecurityGroups
 
 # Synopsis: Avoid blocking all inbound network traffic
 Rule 'Azure.NSG.DenyAllInbound' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA' } {
+    Reason $LocalizedData.AllInboundRestricted;
     $inboundRules = @(GetOrderedNSGRules -Direction Inbound);
     $denyRules = @($inboundRules | Where-Object {
         $_.properties.access -eq 'Deny' -and
@@ -95,6 +96,7 @@ Rule 'Azure.NSG.DenyAllInbound' -Type 'Microsoft.Network/networkSecurityGroups' 
 
 # Synopsis: Lateral traversal from application servers should be blocked
 Rule 'Azure.NSG.LateralTraversal' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA' } {
+    Reason $LocalizedData.LateralTraversalNotRestricted;
     $outboundRules = @(GetOrderedNSGRules -Direction Outbound);
     $rules = @($outboundRules | Where-Object {
         $_.properties.access -eq 'Deny' -and
@@ -226,6 +228,7 @@ Rule 'Azure.FrontDoor.MinTLS' -Type 'Microsoft.Network/frontDoors', 'Microsoft.N
 
 # Synopsis: Use diagnostics to audit Front Door access
 Rule 'Azure.FrontDoor.Logs' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA' } {
+    Reason $LocalizedData.DiagnosticSettingsNotConfigured;
     $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.Network/frontDoors/providers/diagnosticSettings' | Where-Object {
         $_.Properties.logs[0].category -eq 'FrontdoorAccessLog'
     });
