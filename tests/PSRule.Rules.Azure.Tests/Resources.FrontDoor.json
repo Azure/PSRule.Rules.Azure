@@ -184,40 +184,32 @@
                 "ParentResource": null,
                 "Plan": null,
                 "Properties": {
-                  "storageAccountId": null,
-                  "serviceBusRuleId": null,
-                  "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cb-dev-shd/providers/microsoft.operationalinsights/workspaces/be-cb-la",
-                  "eventHubAuthorizationRuleId": null,
-                  "eventHubName": null,
-                  "metrics": [
-                    {
-                      "category": "AllMetrics",
-                      "enabled": false,
-                      "retentionPolicy": {
-                        "enabled": false,
-                        "days": 0
-                      }
-                    }
-                  ],
-                  "logs": [
-                    {
-                      "category": "FrontdoorAccessLog",
-                      "enabled": true,
-                      "retentionPolicy": {
-                        "enabled": false,
-                        "days": 0
-                      }
-                    },
-                    {
-                      "category": "FrontdoorWebApplicationFirewallLog",
-                      "enabled": true,
-                      "retentionPolicy": {
-                        "enabled": false,
-                        "days": 0
-                      }
-                    }
-                  ],
-                  "logAnalyticsDestinationType": null
+                    "storageAccountId": null,
+                    "serviceBusRuleId": null,
+                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
+                    "eventHubAuthorizationRuleId": null,
+                    "eventHubName": null,
+                    "metrics": [
+                        {
+                            "category": "AllMetrics",
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "category": "FrontdoorAccessLog",
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logAnalyticsDestinationType": null
                 },
                 "ResourceGroupName": "rg-test",
                 "Type": "microsoft.network/frontdoors",
@@ -229,7 +221,7 @@
                 "CreatedTime": null,
                 "ChangedTime": null,
                 "ETag": null
-              }
+            }
         ]
     },
     {
@@ -577,7 +569,67 @@
         "ResourceType": "Microsoft.Network/frontdoors",
         "Sku": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "ETag": null
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.network/frontdoors/frontdoor-C/providers/microsoft.insights/diagnosticSettings/access-logs",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.network/frontdoors/frontdoor-C/providers/microsoft.insights/diagnosticSettings/access-logs",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "access-logs",
+                "Name": "access-logs",
+                "ExtensionResourceName": "access-logs",
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "storageAccountId": null,
+                    "serviceBusRuleId": null,
+                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
+                    "eventHubAuthorizationRuleId": null,
+                    "eventHubName": null,
+                    "metrics": [
+                        {
+                            "category": "AllMetrics",
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "category": "FrontdoorWebApplicationFirewallLog",
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "FrontdoorAccessLog",
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logAnalyticsDestinationType": null
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "microsoft.network/frontdoors",
+                "ResourceType": "microsoft.network/frontdoors",
+                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
     },
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoor-waf-A",

@@ -654,14 +654,14 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'frontdoor-B', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'frontdoor-B';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
         }
 
         It 'Azure.FrontDoor.UseWAF' {
