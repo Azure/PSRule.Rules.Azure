@@ -229,13 +229,15 @@ Rule 'Azure.FrontDoor.MinTLS' -Type 'Microsoft.Network/frontDoors', 'Microsoft.N
 # Synopsis: Use diagnostics to audit Front Door access
 Rule 'Azure.FrontDoor.Logs' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA' } {
     Reason $LocalizedData.DiagnosticSettingsNotConfigured;
-    $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.Network/frontDoors/providers/diagnosticSettings' | Where-Object {
-        $_.Properties.logs[0].category -eq 'FrontdoorAccessLog'
+    $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.Network/frontDoors/providers/diagnosticSettings');
+    $logCategories = @($diagnostics | ForEach-Object {
+        foreach ($log in $_.Properties.logs) {
+            if ($log.category -eq 'FrontdoorAccessLog' -and $log.enabled -eq $True) {
+                $log;
+            }
+        }
     });
-    $Null -ne $diagnostics -and $diagnostics.Length -gt 0;
-    foreach ($setting in $diagnostics) {
-        $Assert.HasFieldValue($setting, 'Properties.logs[0].enabled', $True);
-    }
+    $Null -ne $logCategories -and $logCategories.Length -gt 0;
 }
 
 # Synopsis: Enable WAF policy of each endpoint

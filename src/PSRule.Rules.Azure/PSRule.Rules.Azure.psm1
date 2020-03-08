@@ -682,11 +682,27 @@ function VisitFrontDoor {
     )
     process {
         # Patch Front Door properties not fully returned from the default API version
-        $Resource = Get-AzResource -Name $resource.Name  -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ResourceType 'Microsoft.Network/frontdoors' -ExpandProperties -ApiVersion '2018-08-01';
+        $Resource = Get-AzResource -Name $resource.Name -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ResourceType 'Microsoft.Network/frontdoors' -ExpandProperties -ApiVersion '2018-08-01';
 
         $resources = @();
         $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Network/frontdoors/providers/microsoft.insights/diagnosticSettings' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-05-01-preview' -ExpandProperties;
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
+
+function VisitFrontDoorWAFPolicy {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        # Patch Front Door WAF policy properties not fully returned from the default API version
+        $Resource = Get-AzResource -Name $resource.Name -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ResourceType 'Microsoft.Network/FrontDoorWebApplicationFirewallPolicies' -ExpandProperties -ApiVersion '2019-10-01';
+        $Resource;
     }
 }
 
@@ -766,6 +782,7 @@ function ExpandResource {
             'Microsoft.Compute/virtualMachines' { VisitVirtualMachine @PSBoundParameters; }
             'Microsoft.KeyVault/vaults' { VisitKeyVault @PSBoundParameters; }
             'Microsoft.Network/frontDoors' { VisitFrontDoor @PSBoundParameters; }
+            'Microsoft.Network/FrontDoorWebApplicationFirewallPolicies' { VisitFrontDoorWAFPolicy @PSBoundParameters; }
             'Microsoft.Subscription' { VisitSubscription @PSBoundParameters; }
             'Microsoft.Resources/resourceGroups' { VisitResourceGroup @PSBoundParameters; }
             default { $Resource; }
