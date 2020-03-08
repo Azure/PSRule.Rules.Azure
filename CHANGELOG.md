@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.10.0-B2003004 (pre-release)
+
 - Fixed detection of diagnostic logging for Front Door. [#307](https://github.com/Microsoft/PSRule.Rules.Azure/issues/307)
 - Fixed Front Door WAF Policy export. [#308](https://github.com/Microsoft/PSRule.Rules.Azure/issues/308)
 
