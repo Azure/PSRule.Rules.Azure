@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Fixed unused VM resource false positives in templates. [#312](https://github.com/Microsoft/PSRule.Rules.Azure/issues/312)
+- Fixed handling SKU for accelerated networking. [#314](https://github.com/Microsoft/PSRule.Rules.Azure/issues/314)
+- Fixed detection of hybrid use benefit in templates. [#313](https://github.com/Microsoft/PSRule.Rules.Azure/issues/313)
+
 ## v0.10.0-B2003004 (pre-release)
 
 - Fixed detection of diagnostic logging for Front Door. [#307](https://github.com/Microsoft/PSRule.Rules.Azure/issues/307)

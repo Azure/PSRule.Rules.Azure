@@ -35,7 +35,7 @@ Rule 'Azure.VM.Standalone' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ rel
 }
 
 # Synopsis: VMs should not use expired promo SKU
-Rule 'Azure.VM.PromoSku' -If { (IsVMPromoSku) } -Tag @{ release = 'GA' } {
+Rule 'Azure.VM.PromoSku' -If { IsVMPromoSku } -Tag @{ release = 'GA' } {
     Match 'Properties.hardwareProfile.vmSize' -Not -Expression 'Standard_DS{0,1}1{0,1}[1-9]{1}_v2_Promo'
 }
 
@@ -47,17 +47,16 @@ Rule 'Azure.VM.BasicSku' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ relea
 # Synopsis: Check disk caching is configured correctly for the workload
 Rule 'Azure.VM.DiskCaching' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA' } {
     # Check OS disk
-    Within 'properties.storageProfile.osDisk.caching' 'ReadWrite'
+    $Assert.HasFieldValue($TargetObject, 'properties.storageProfile.osDisk.caching', 'ReadWrite');
 
     # Check data disks
     $dataDisks = @($TargetObject.properties.storageProfile.dataDisks)
-
     foreach ($disk in $dataDisks) {
         if ($disk.managedDisk.storageAccountType -eq 'Premium_LRS') {
-            $disk.caching -eq 'ReadOnly'
+            $Assert.HasFieldValue($disk, 'caching', 'ReadOnly');
         }
         else {
-            $disk.caching -eq 'None'
+            $Assert.HasFieldValue($disk, 'caching', 'None');
         }
     }
 }
@@ -68,7 +67,7 @@ Rule 'Azure.VM.UniqueDns' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ re
 }
 
 # Synopsis: Managed disks should be attached to virtual machines
-Rule 'Azure.VM.DiskAttached' -Type 'Microsoft.Compute/disks' -If { ($TargetObject.ResourceName -notlike '*-ASRReplica') } -Tag @{ release = 'GA' } {
+Rule 'Azure.VM.DiskAttached' -Type 'Microsoft.Compute/disks' -If { ($TargetObject.ResourceName -notlike '*-ASRReplica') -and (IsExport) } -Tag @{ release = 'GA' } {
     # Disks should be attached unless they are used by ASR, which are not attached until fail over
     # Disks for VMs that are off are marked as Reserved
     Within 'properties.diskState' 'Attached', 'Reserved' -Reason $LocalizedData.ResourceNotAssociated
@@ -94,13 +93,14 @@ Rule 'Azure.VM.DiskSizeAlignment' -Type 'Microsoft.Compute/disks' -Tag @{ releas
 # TODO: Check number of disks
 
 # Synopsis: Use Hybrid Use Benefit
-Rule 'Azure.VM.UseHybridUseBenefit' -If { (IsWindowsOS) } -Tag @{ release = 'GA' } {
-    Within 'properties.licenseType' 'Windows_Server'
+Rule 'Azure.VM.UseHybridUseBenefit' -If { IsWindowsOS } -Tag @{ release = 'GA' } {
+    $Assert.HasFieldValue($TargetObject, 'properties.licenseType', 'Windows_Server');
 }
 
 # Synopsis: Enabled accelerated networking for supported operating systems
-Rule 'Azure.VM.AcceleratedNetworking' -If { (SupportsAcceleratedNetworking) } -Tag @{ release = 'GA' } {
-    $networkInterfaces = GetSubResources -ResourceType 'Microsoft.Network/networkInterfaces'
+Rule 'Azure.VM.AcceleratedNetworking' -If { SupportsAcceleratedNetworking } -Tag @{ release = 'GA' } {
+    $networkInterfaces = GetSubResources -ResourceType 'Microsoft.Network/networkInterfaces';
+    $Null -ne $networkInterfaces;
     foreach ($interface in $networkInterfaces) {
         ($interface.Properties.enableAcceleratedNetworking -eq $True)
     }
@@ -108,12 +108,12 @@ Rule 'Azure.VM.AcceleratedNetworking' -If { (SupportsAcceleratedNetworking) } -T
 
 # Synopsis: Availability sets should be aligned
 Rule 'Azure.VM.ASAlignment' -Type 'Microsoft.Compute/availabilitySets' -Tag @{ release = 'GA' } {
-    Within 'sku.name' 'aligned'
+    $Assert.HasFieldValue($TargetObject, 'sku.name', 'aligned');
 }
 
 # Synopsis: Availability sets should be deployed with at least two members
 Rule 'Azure.VM.ASMinMembers' -Type 'Microsoft.Compute/availabilitySets' -Tag @{ release = 'GA' } {
-    ($TargetObject.properties.virtualmachines.id | Measure-Object).Count -ge 2
+    $Assert.GreaterOrEqual($TargetObject, 'properties.virtualmachines', 2)
 }
 
 # Synopsis: Use Azure Disk Encryption
@@ -134,15 +134,15 @@ Rule 'Azure.VM.Agent' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release 
 }
 
 # Synopsis: Ensure automatic updates are enabled at deployment
-Rule 'Azure.VM.Updates' -Type 'Microsoft.Compute/virtualMachines' -If { (IsWindowsOS) } -Tag @{ release = 'GA' } {
+Rule 'Azure.VM.Updates' -Type 'Microsoft.Compute/virtualMachines' -If { IsWindowsOS } -Tag @{ release = 'GA' } {
     $Assert.HasDefaultValue($TargetObject, 'Properties.osProfile.windowsConfiguration.enableAutomaticUpdates', $True)
 }
 
 #region Network Interface
 
 # Synopsis: Network interfaces should be attached
-Rule 'Azure.VM.NICAttached' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ release = 'GA' } {
-    Exists 'Properties.virtualMachine.id'
+Rule 'Azure.VM.NICAttached' -Type 'Microsoft.Network/networkInterfaces' -If { IsExport } -Tag @{ release = 'GA' } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.virtualMachine.id');
 }
 
 #endregion Network Interface
