@@ -110,7 +110,7 @@
         },
         "adminPassword": {
             "type": "secureString",
-            "defaultValue": "00000000-0000-0000-0000-000000000000"
+            "defaultValue": "$CREDENTIAL_PLACEHOLDER$"
         },
         "sqlStorageWorkloadType": {
             "type": "string",
