@@ -1,0 +1,9 @@
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+        {
+            "placeholder": "$CREDENTIAL_PLACEHOLDER$",
+            "_justification": "This is dummy credential used as a placeholder for unit testing."
+        }
+    ]
+}

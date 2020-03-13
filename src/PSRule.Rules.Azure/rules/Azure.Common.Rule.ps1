@@ -97,23 +97,27 @@ function global:GetOrderedNSGRules {
 }
 
 function global:SupportsAcceleratedNetworking {
+    [CmdletBinding()]
+    param ()
     process {
         if ($Rule.TargetType -ne 'Microsoft.Compute/virtualMachines' -or !(IsExport)) {
             return $False;
         }
-
         if ($Null -eq ($TargetObject.Resources | Where-Object { $_.ResourceType -eq 'Microsoft.Network/networkInterfaces'})) {
             return $False;
         }
 
         $vmSize = $TargetObject.Properties.hardwareProfile.vmSize;
-
         if ($vmSize -notlike 'Standard_*_*') {
-            return $False;
+            if ($vmSize -match '^Standard_(F|B[1-2][0-9]ms)') {
+                return $True;
+            }
+            else {
+                return $False;
+            }
         }
 
         $vmSizeParts = $vmSize.Split('_');
-        
         if ($Null -eq $vmSizeParts) {
             return $False;
         }
@@ -123,17 +127,16 @@ function global:SupportsAcceleratedNetworking {
 
         # Generation v2
         if ($generation -eq 'v2') {
-            if ($size -notmatch 'Standard_(A|NC|DS1_|D1_)') {
+            if ($size -notmatch '^(A|NC|DS1$|D1$|F[1-2]s)') {
                 return $True;
             }
         }
         # Generation v3
         elseif ($generation -eq 'v3') {
-            if ($size -notmatch 'Standard_(E2s?_|E[2-8]-2|D2s?|NC)') {
+            if ($size -notmatch '^(E2s?|E[2-8]-2|D2s?|NC)') {
                 return $True;
             }
         }
-
         return $False;
     }
 }
@@ -148,7 +151,6 @@ function global:IsAppGwPublic {
         }
 
         $result = $False;
-
         foreach ($ip in $TargetObject.Properties.frontendIPConfigurations) {
             if (Exists 'properties.publicIPAddress.id' -InputObject $ip) {
                 $result = $True;
@@ -185,7 +187,8 @@ function global:IsWindowsOS {
         if ($Rule.TargetType -ne 'Microsoft.Compute/virtualMachines') {
             return $False;
         }
-        return $TargetObject.Properties.storageProfile.osDisk.osType -eq 'Windows';
+        return ($TargetObject.Properties.storageProfile.osDisk.osType -eq 'Windows') -or
+            ($TargetObject.Properties.storageProfile.imageReference.publisher -in 'MicrosoftSQLServer', 'MicrosoftWindowsServer');
     }
 }
 

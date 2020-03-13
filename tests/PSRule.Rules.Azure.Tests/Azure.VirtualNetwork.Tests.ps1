@@ -713,7 +713,7 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
         }
     }
 
-    Context 'With Template' {
+    Context 'With template' {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template3.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.FrontDoor.json;
         Export-AzTemplateRuleData -TemplateFile $templatePath -OutputPath $outputFile;
