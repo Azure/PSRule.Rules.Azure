@@ -30,8 +30,6 @@ Write-Host -Object "[Pipeline] -- SourceBranch: $($Env:BUILD_SOURCEBRANCH)" -For
 Write-Host -Object "[Pipeline] -- SourceBranchName: $($Env:BUILD_SOURCEBRANCHNAME)" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- Culture: $((Get-Culture).Name), $((Get-Culture).Parent)" -ForegroundColor Green;
 
-Set-Culture -CultureInfo 'en-US';
-
 if ($Env:SYSTEM_DEBUG -eq 'true') {
     $VerbosePreference = 'Continue';
 }
@@ -297,7 +295,7 @@ task Rules PSRule, {
     Get-RepoRuleData -Path $PWD |
         Assert-PSRule @assertParams -OutputPath reports/ps-rule-file.xml;
 
-    $rules = Get-PSRule -Module PSRule.Rules.Azure;
+    $rules = Get-PSRule -Module PSRule.Rules.Azure -Culture 'en-US';
     $rules | Assert-PSRule @assertParams -OutputPath reports/ps-rule-file2.xml;
 }
 
