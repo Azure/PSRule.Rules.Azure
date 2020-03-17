@@ -32,6 +32,7 @@ Describe 'Azure.VirtualMachine' {
             Module = 'PSRule.Rules.Azure'
             WarningAction = 'Ignore'
             ErrorAction = 'Stop'
+            Culture = 'en-US'
         }
         $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
 
