@@ -5,13 +5,14 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
+using PSRule.Rules.Azure.Resources;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Text;
+using System.Threading;
 
 namespace PSRule.Rules.Azure.Pipeline
 {
@@ -149,16 +150,26 @@ namespace PSRule.Rules.Azure.Pipeline
 
         internal PSObject[] ProcessTemplate(string templateFile, string parametersFile)
         {
-            var templateObject = ReadFile<JObject>(PSRuleOption.GetRootedPath(templateFile));
-            if (templateObject == null)
-                throw new FileNotFoundException();
+            var rootedTemplateFile = PSRuleOption.GetRootedPath(templateFile);
+            if (!File.Exists(rootedTemplateFile))
+                throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateFileNotFound, rootedTemplateFile), rootedTemplateFile);
 
-            var parametersObject = parametersFile != null ? ReadFile<JObject>(PSRuleOption.GetRootedPath(parametersFile)) : null;
+            var templateObject = ReadFile<JObject>(rootedTemplateFile);
             var visitor = new RuleDataExportVisitor();
 
             // Load context
             var context = new TemplateVisitor.TemplateContext(_Subscription, _ResourceGroup);
-            context.Load(parametersObject);
+            if (!string.IsNullOrEmpty(parametersFile))
+            {
+                var rootedParameterFile = PSRuleOption.GetRootedPath(parametersFile);
+                if (!File.Exists(rootedParameterFile))
+                    throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ParameterFileNotFound, rootedParameterFile), rootedParameterFile);
+
+                var parametersObject = ReadFile<JObject>(rootedParameterFile);
+                context.Load(parametersObject);
+            }
+
+            // Process
             visitor.Visit(context, _DeploymentName, templateObject);
 
             // Return results
@@ -166,17 +177,13 @@ namespace PSRule.Rules.Azure.Pipeline
             var serializer = new JsonSerializer();
             serializer.Converters.Add(new PSObjectJsonConverter());
             foreach (var resource in context.Resources)
-            {
                 results.Add(resource.ToObject<PSObject>(serializer));
-            }
+
             return results.ToArray();
         }
 
         private static T ReadFile<T>(string path)
         {
-            if (string.IsNullOrEmpty(path) || !File.Exists(path))
-                return default(T);
-
             return JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
         }
     }

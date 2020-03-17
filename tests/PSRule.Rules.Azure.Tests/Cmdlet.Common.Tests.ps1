@@ -204,6 +204,24 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
             $result[0].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
             $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/routeTables/route-subnet2$';
         }
+
+        It 'Returns file not found' {
+            $exportParams = @{
+                PassThru = $True
+            }
+
+            # Invalid template file
+            $exportParams['TemplateFile'] = 'notafile.json';
+            $exportParams['ParameterFile'] = $parametersPath;
+            $errorOut = { $Null = Export-AzTemplateRuleData @exportParams -ErrorVariable exportErrors -ErrorAction SilentlyContinue; $exportErrors; } | Should -Throw -PassThru;
+            $errorOut[0].Exception.Message | Should -BeLike "Unable to find the specified template file '*'.";
+
+            # Invalid parameter file
+            $exportParams['TemplateFile'] = $templatePath;
+            $exportParams['ParameterFile'] = 'notafile.json';
+            $errorOut = { $Null = Export-AzTemplateRuleData @exportParams -ErrorVariable exportErrors -ErrorAction SilentlyContinue; $exportErrors; } | Should -Throw -PassThru;
+            $errorOut[0].Exception.Message | Should -BeLike "Unable to find the specified parameter file '*'.";
+        }
     }
 
     Context 'With -PassThru' {
