@@ -44,7 +44,7 @@ Currently the following limitations also apply:
 ### Example 1
 
 ```powershell
-PS C:\> Export-AzTemplateRuleData -TemplateFile .\template.json -ParameterFile .\parameters.json;
+Export-AzTemplateRuleData -TemplateFile .\template.json -ParameterFile .\parameters.json;
 ```
 
 Export resource configuration data based on merging a template and parameter file together.
