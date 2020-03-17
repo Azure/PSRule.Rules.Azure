@@ -293,10 +293,10 @@ task Rules PSRule, {
     }
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     Get-RepoRuleData -Path $PWD |
-        Assert-PSRule @assertParams -OutputPath reports/ps-rule-file.xml;
+        Assert-PSRule @assertParams -OutputPath reports/ps-rule-file.xml -ErrorAction Stop;
 
     $rules = Get-PSRule -Module PSRule.Rules.Azure -Culture 'en-US';
-    $rules | Assert-PSRule @assertParams -OutputPath reports/ps-rule-file2.xml;
+    $rules | Assert-PSRule @assertParams -OutputPath reports/ps-rule-file2.xml -ErrorAction Stop;
 }
 
 # Synopsis: Run script analyzer
