@@ -313,11 +313,13 @@ task BuildRuleDocs Build, PSRule, PSDocs, {
 # Synopsis: Build help
 task BuildHelp BuildModule, PlatyPS, {
     # Avoid YamlDotNet issue in same app domain
-    $pwsh = (Get-Process -Id $PID).Path;
-    &$pwsh -WorkingDirectory "$PWD" -Command {
-        # Generate MAML and about topics
-        Import-Module -Name PlatyPS -Verbose:$False;
-        $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path '.\docs\commands\PSRule.Rules.Azure\en-US' -Force;
+    exec {
+        $pwsh = (Get-Process -Id $PID).Path;
+        &$pwsh -WorkingDirectory "$PWD" -Command {
+            # Generate MAML and about topics
+            Import-Module -Name PlatyPS -Verbose:$False;
+            $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path '.\docs\commands\PSRule.Rules.Azure\en-US' -Force;
+        }
     }
 
     if (!(Test-Path -Path 'out/docs/PSRule.Rules.Azure/PSRule.Rules.Azure-help.xml')) {
