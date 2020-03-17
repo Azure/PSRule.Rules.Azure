@@ -72,7 +72,9 @@ After downloading the modules copy the module directories to devices with restri
 Save-Module -Name PlatyPS, Pester, PSScriptAnalyzer, PowerShellGet, PackageManagement, InvokeBuild -Repository PSGallery -Path '.\modules';
 ```
 
-Additionally .NET Core SDK v2.1 is required. .NET Core will not be automatically downloaded and installed.
-To download and install .NET Core SDK see [Download .NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.1).
+Additionally .NET Core SDK v3.1 is required.
+.NET Core will not be automatically downloaded and installed.
+To download and install the latest SDK see [Download .NET Core 3.1][dotnet].
 
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
+[dotnet]: https://dotnet.microsoft.com/download/dotnet-core/3.1
