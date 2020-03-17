@@ -215,7 +215,6 @@ task platyPS {
     if ($Null -eq (Get-InstalledModule -Name PlatyPS -MinimumVersion 0.14.0 -ErrorAction Ignore)) {
         Install-Module -Name PlatyPS -Scope CurrentUser -MinimumVersion 0.14.0 -Force;
     }
-    Import-Module -Name PlatyPS -Verbose:$False;
 }
 
 # Synopsis: Install module dependencies
@@ -313,20 +312,12 @@ task BuildRuleDocs Build, PSRule, PSDocs, {
 
 # Synopsis: Build help
 task BuildHelp BuildModule, PlatyPS, {
-    # Generate MAML and about topics
-    $runspace = [RunspaceFactory]::CreateRunspace();
-    $ps = [PowerShell]::Create();
-    $ps.runspace = $runspace;
-    $runspace.Open();
-    try {
-        $Null = $ps.AddScript({
-            $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path '.\docs\commands\PSRule.Rules.Azure\en-US' -Force;
-        });
-        $Null = $ps.Invoke();
-    }
-    finally {
-        $ps.Dispose();
-        $runspace.Dispose();
+    # Avoid YamlDotNet issue in same app domain
+    $pwsh = (Get-Process -Id $PID).Path;
+    &$pwsh -WorkingDirectory "$PWD" -Command {
+        # Generate MAML and about topics
+        Import-Module -Name PlatyPS -Verbose:$False;
+        $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path '.\docs\commands\PSRule.Rules.Azure\en-US' -Force;
     }
 
     if (!(Test-Path -Path 'out/docs/PSRule.Rules.Azure/PSRule.Rules.Azure-help.xml')) {
