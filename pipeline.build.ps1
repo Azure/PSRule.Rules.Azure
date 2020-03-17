@@ -312,20 +312,6 @@ task BuildRuleDocs Build, PSRule, PSDocs, {
 
 # Synopsis: Build help
 task BuildHelp BuildModule, PlatyPS, {
-    # Avoid YamlDotNet issue in same app domain
-    exec {
-        $pwsh = (Get-Process -Id $PID).Path;
-        &$pwsh -WorkingDirectory "$PWD" -Command {
-            # Generate MAML and about topics
-            Import-Module -Name PlatyPS -Verbose:$False;
-            $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path '.\docs\commands\PSRule.Rules.Azure\en-US' -Force;
-        }
-    }
-
-    if (!(Test-Path -Path 'out/docs/PSRule.Rules.Azure/PSRule.Rules.Azure-help.xml')) {
-        throw 'Failed find generated cmdlet help.';
-    }
-
     if (!(Test-Path out/modules/PSRule.Rules.Azure/en/)) {
         $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en/ -ItemType Directory -Force;
     }
@@ -337,6 +323,20 @@ task BuildHelp BuildModule, PlatyPS, {
     }
     if (!(Test-Path out/modules/PSRule.Rules.Azure/en-GB/)) {
         $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en-GB/ -ItemType Directory -Force;
+    }
+
+    # Avoid YamlDotNet issue in same app domain
+    exec {
+        $pwshPath = (Get-Process -Id $PID).Path;
+        &$pwshPath -Command {
+            # Generate MAML and about topics
+            Import-Module -Name PlatyPS -Verbose:$False;
+            $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path '.\docs\commands\PSRule.Rules.Azure\en-US' -Force;
+        }
+    }
+
+    if (!(Test-Path -Path 'out/docs/PSRule.Rules.Azure/PSRule.Rules.Azure-help.xml')) {
+        throw 'Failed find generated cmdlet help.';
     }
 
     # Copy generated help into module out path
