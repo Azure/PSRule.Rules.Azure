@@ -21,7 +21,7 @@ $rootPath = $PWD;
 Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
 $here = (Resolve-Path $PSScriptRoot).Path;
 
-Describe 'Azure.ACR' {
+Describe 'Azure.APIM' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.APIM.json';
 
     Context 'Conditions' {
@@ -30,6 +30,7 @@ Describe 'Azure.ACR' {
             Module = 'PSRule.Rules.Azure'
             WarningAction = 'Ignore'
             ErrorAction = 'Stop'
+            Culture = 'en-US'
         }
         $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 

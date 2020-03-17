@@ -215,7 +215,6 @@ task platyPS {
     if ($Null -eq (Get-InstalledModule -Name PlatyPS -MinimumVersion 0.14.0 -ErrorAction Ignore)) {
         Install-Module -Name PlatyPS -Scope CurrentUser -MinimumVersion 0.14.0 -Force;
     }
-    Import-Module -Name PlatyPS -Verbose:$False;
 }
 
 # Synopsis: Install module dependencies
@@ -294,10 +293,10 @@ task Rules PSRule, {
     }
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     Get-RepoRuleData -Path $PWD |
-        Assert-PSRule @assertParams -OutputPath reports/ps-rule-file.xml;
+        Assert-PSRule @assertParams -OutputPath reports/ps-rule-file.xml -ErrorAction Stop;
 
-    $rules = Get-PSRule -Module PSRule.Rules.Azure;
-    $rules | Assert-PSRule @assertParams -OutputPath reports/ps-rule-file2.xml;
+    $rules = Get-PSRule -Module PSRule.Rules.Azure -Culture 'en-US';
+    $rules | Assert-PSRule @assertParams -OutputPath reports/ps-rule-file2.xml -ErrorAction Stop;
 }
 
 # Synopsis: Run script analyzer
@@ -313,9 +312,6 @@ task BuildRuleDocs Build, PSRule, PSDocs, {
 
 # Synopsis: Build help
 task BuildHelp BuildModule, PlatyPS, {
-    # Generate MAML and about topics
-    $Null = New-ExternalHelp -OutputPath out/docs/PSRule.Rules.Azure -Path '.\docs\commands\PSRule.Rules.Azure\en-US' -Force;
-
     if (!(Test-Path out/modules/PSRule.Rules.Azure/en/)) {
         $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en/ -ItemType Directory -Force;
     }
@@ -329,11 +325,26 @@ task BuildHelp BuildModule, PlatyPS, {
         $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en-GB/ -ItemType Directory -Force;
     }
 
-    # Copy generated help into module out path
-    $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-US/ -Recurse;
-    $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-AU/ -Recurse;
-    $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-GB/ -Recurse;
     $Null = Copy-Item -Path docs/rules/en/*.md -Destination out/modules/PSRule.Rules.Azure/en/;
+
+    # Avoid YamlDotNet issue in same app domain
+    exec {
+        $pwshPath = (Get-Process -Id $PID).Path;
+        &$pwshPath -Command {
+            # Generate MAML and about topics
+            Import-Module -Name PlatyPS -Verbose:$False;
+            $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path '.\docs\commands\PSRule.Rules.Azure\en-US' -Force;
+
+             # Copy generated help into module out path
+            $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-US/ -Recurse;
+            $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-AU/ -Recurse;
+            $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-GB/ -Recurse;
+        }
+    }
+
+    if (!(Test-Path -Path 'out/docs/PSRule.Rules.Azure/PSRule.Rules.Azure-help.xml')) {
+        throw 'Failed find generated cmdlet help.';
+    }
 }
 
 task ScaffoldHelp Build, BuildRuleDocs, {

@@ -32,6 +32,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             Module = 'PSRule.Rules.Azure'
             WarningAction = 'Ignore'
             ErrorAction = 'Stop'
+            Culture = 'en-US'
         }
         $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
 
@@ -112,7 +113,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
         $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualNetwork.json;
         Export-AzTemplateRuleData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop -Culture 'en-US';
 
         It 'Azure.VNET.UseNSGs' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.UseNSGs' };
@@ -432,6 +433,7 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             Module = 'PSRule.Rules.Azure'
             WarningAction = 'Ignore'
             ErrorAction = 'Stop'
+            Culture = 'en-US'
         }
         $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
 

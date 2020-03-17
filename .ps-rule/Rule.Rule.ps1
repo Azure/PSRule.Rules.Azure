@@ -4,9 +4,9 @@
 # Synopsis: Use short rule names
 Rule 'Rule.Name' -Type 'PSRule.Rules.Rule' {
     Recommend 'Rule name should be less than 35 characters to prevent being truncated.'
-    Reason "The rule name is too long."
-    $TargetObject.RuleName.Length -le 35
-    $TargetObject.RuleName.StartsWith('Azure.')
+    Reason 'The rule name is too long.'
+    $Assert.LessOrEqual($TargetObject, 'RuleName', 35)
+    $Assert.StartsWith($TargetObject, 'RuleName', 'Azure.')
 }
 
 # Synopsis: Complete help documentation

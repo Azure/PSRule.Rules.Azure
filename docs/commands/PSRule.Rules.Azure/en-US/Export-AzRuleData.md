@@ -43,7 +43,7 @@ Resource data will be exported to the current working directory by default as JS
 ### Example 1
 
 ```powershell
-PS C:\> Export-AzRuleData
+Export-AzRuleData
 ```
 
 ```text
@@ -59,7 +59,7 @@ Export resource configuration data from current subscription context.
 ### Example 2
 
 ```powershell
-PS C:\> Export-AzRuleData -Subscription 'Contoso Production', 'Contoso Non-production'
+Export-AzRuleData -Subscription 'Contoso Production', 'Contoso Non-production'
 ```
 
 ```text
@@ -76,7 +76,7 @@ Export resource configuration data from subscriptions by name.
 ### Example 3
 
 ```powershell
-PS C:\> Export-AzRuleData -ResourceGroupName 'rg-app1-web', 'rg-app1-db'
+Export-AzRuleData -ResourceGroupName 'rg-app1-web', 'rg-app1-db'
 ```
 
 ```text
