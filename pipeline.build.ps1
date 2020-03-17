@@ -326,9 +326,10 @@ task BuildHelp BuildModule, PlatyPS, {
     }
     finally {
         $ps.Dispose();
+        $runspace.Dispose();
     }
 
-    if (!(Test-Path -Path 'out/docs/PSRule.Rules.Azure/PSRule-help.xml')) {
+    if (!(Test-Path -Path 'out/docs/PSRule.Rules.Azure/PSRule.Rules.Azure-help.xml')) {
         throw 'Failed find generated cmdlet help.';
     }
 
