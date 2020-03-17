@@ -314,7 +314,23 @@ task BuildRuleDocs Build, PSRule, PSDocs, {
 # Synopsis: Build help
 task BuildHelp BuildModule, PlatyPS, {
     # Generate MAML and about topics
-    $Null = New-ExternalHelp -OutputPath out/docs/PSRule.Rules.Azure -Path '.\docs\commands\PSRule.Rules.Azure\en-US' -Force;
+    $runspace = [RunspaceFactory]::CreateRunspace();
+    $ps = [PowerShell]::Create();
+    $ps.runspace = $runspace;
+    $runspace.Open();
+    try {
+        $Null = $ps.AddScript({
+            $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path '.\docs\commands\PSRule.Rules.Azure\en-US' -Force;
+        });
+        $Null = $ps.Invoke();
+    }
+    finally {
+        $ps.Dispose();
+    }
+
+    if (!(Test-Path -Path 'out/docs/PSRule.Rules.Azure/PSRule-help.xml')) {
+        throw 'Failed find generated cmdlet help.';
+    }
 
     if (!(Test-Path out/modules/PSRule.Rules.Azure/en/)) {
         $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en/ -ItemType Directory -Force;
