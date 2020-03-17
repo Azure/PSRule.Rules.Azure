@@ -106,6 +106,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to find the specified parameter file &apos;{0}&apos;..
+        /// </summary>
+        internal static string ParameterFileNotFound {
+            get {
+                return ResourceManager.GetString("ParameterFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The parameter named &apos;{0}&apos; was not set or a defaultValue was defined..
         /// </summary>
         internal static string ParameterNotFound {
@@ -147,6 +156,15 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string ShouldWriteFile {
             get {
                 return ResourceManager.GetString("ShouldWriteFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find the specified template file &apos;{0}&apos;..
+        /// </summary>
+        internal static string TemplateFileNotFound {
+            get {
+                return ResourceManager.GetString("TemplateFileNotFound", resourceCulture);
             }
         }
         

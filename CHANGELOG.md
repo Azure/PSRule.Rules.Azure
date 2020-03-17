@@ -5,6 +5,7 @@
 - Fixed unused VM resource false positives in templates. [#312](https://github.com/Microsoft/PSRule.Rules.Azure/issues/312)
 - Fixed handling SKU for accelerated networking. [#314](https://github.com/Microsoft/PSRule.Rules.Azure/issues/314)
 - Fixed detection of hybrid use benefit in templates. [#313](https://github.com/Microsoft/PSRule.Rules.Azure/issues/313)
+- Fixed exception message when a template or parameter file is not found. [#316](https://github.com/Microsoft/PSRule.Rules.Azure/issues/316)
 
 ## v0.10.0-B2003004 (pre-release)
 
