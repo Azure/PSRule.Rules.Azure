@@ -2,25 +2,36 @@
 
 ## Unreleased
 
-- Added support for linking parameter and template files for analysis with metadata. [#324](https://github.com/Microsoft/PSRule.Rules.Azure/issues/324)
-- Removed warning message for `azureAllowedRegions` option. [#328](https://github.com/Microsoft/PSRule.Rules.Azure/issues/328)
+- New features:
+  - Added support for linking parameter and template files for analysis with metadata. [#324](https://github.com/Microsoft/PSRule.Rules.Azure/issues/324)
+    - Added `Get-AzRuleTemplateLink` cmdlet to get metadata link to template files.
+    - See cmdlet help for usage.
+- General improvements:
+  - Removed warning message for `azureAllowedRegions` option. [#328](https://github.com/Microsoft/PSRule.Rules.Azure/issues/328)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.16.7. [#330](https://github.com/Microsoft/PSRule.Rules.Azure/issues/330)
 
 ## v0.10.0-B2003032 (pre-release)
 
-- Fixed unused VM resource false positives in templates. [#312](https://github.com/Microsoft/PSRule.Rules.Azure/issues/312)
-- Fixed handling SKU for accelerated networking. [#314](https://github.com/Microsoft/PSRule.Rules.Azure/issues/314)
-- Fixed detection of hybrid use benefit in templates. [#313](https://github.com/Microsoft/PSRule.Rules.Azure/issues/313)
-- Fixed exception message when a template or parameter file is not found. [#316](https://github.com/Microsoft/PSRule.Rules.Azure/issues/316)
+- Bug fixes:
+  - Fixed unused VM resource false positives in templates. [#312](https://github.com/Microsoft/PSRule.Rules.Azure/issues/312)
+  - Fixed handling SKU for accelerated networking. [#314](https://github.com/Microsoft/PSRule.Rules.Azure/issues/314)
+  - Fixed detection of hybrid use benefit in templates. [#313](https://github.com/Microsoft/PSRule.Rules.Azure/issues/313)
+  - Fixed exception message when a template or parameter file is not found. [#316](https://github.com/Microsoft/PSRule.Rules.Azure/issues/316)
 
 ## v0.10.0-B2003004 (pre-release)
 
-- Fixed detection of diagnostic logging for Front Door. [#307](https://github.com/Microsoft/PSRule.Rules.Azure/issues/307)
-- Fixed Front Door WAF Policy export. [#308](https://github.com/Microsoft/PSRule.Rules.Azure/issues/308)
+- Bug fixes:
+  - Fixed detection of diagnostic logging for Front Door. [#307](https://github.com/Microsoft/PSRule.Rules.Azure/issues/307)
+  - Fixed Front Door WAF Policy export. [#308](https://github.com/Microsoft/PSRule.Rules.Azure/issues/308)
 
 ## v0.10.0-B2002023 (pre-release)
 
-- Improvements to verbose logging of `Export-AzRuleData`. [#301](https://github.com/Microsoft/PSRule.Rules.Azure/issues/301)
-- Fixed union of object properties in templates. [#303](https://github.com/Microsoft/PSRule.Rules.Azure/issues/303)
+- General improvements:
+  - Improvements to verbose logging of `Export-AzRuleData`. [#301](https://github.com/Microsoft/PSRule.Rules.Azure/issues/301)
+- Bug fixes:
+  - Fixed union of object properties in templates. [#303](https://github.com/Microsoft/PSRule.Rules.Azure/issues/303)
 
 ## v0.9.0
 
@@ -144,8 +155,8 @@ What's changed since pre-release v0.8.0-B2001029:
 
 ## v0.8.0-B2001018 (pre-release)
 
-- Fix `Azure.Resource.UseTags` applying to template and parameter files. [#230](https://github.com/Microsoft/PSRule.Rules.Azure/issues/230)
-- Fix ARM template and parameter schemas used to detect files. [#234](https://github.com/Microsoft/PSRule.Rules.Azure/issues/234)
+- Fixed `Azure.Resource.UseTags` applying to template and parameter files. [#230](https://github.com/Microsoft/PSRule.Rules.Azure/issues/230)
+- Fixed ARM template and parameter schemas used to detect files. [#234](https://github.com/Microsoft/PSRule.Rules.Azure/issues/234)
 - Added new rule to check API Management uses secure protocol versions. [#237](https://github.com/Microsoft/PSRule.Rules.Azure/issues/237)
 - Added new rule to check API Management published APIs use HTTPS. [#236](https://github.com/Microsoft/PSRule.Rules.Azure/issues/236)
 - Added new rule to check API Management backend connections use HTTPS. [#238](https://github.com/Microsoft/PSRule.Rules.Azure/issues/238)
