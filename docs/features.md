@@ -9,7 +9,7 @@ The following sections describe key features of PSRule for Azure.
 ## Ready to go
 
 PSRule for Azure includes over 100 rules for validating resources against configuration recommendations.
-Each rule includes additional information to help remediate validation issues.
+Each rule includes additional information to help remediate issues.
 
 Use the built-in rules to start enforcing release processes quickly.
 Then layer on your own rules as your organization's requirements mature.
@@ -35,10 +35,10 @@ PSRule for Azure provides the following cmdlets that extract data for analysis:
 
 ## Cross-platform
 
-PSRule uses modern PowerShell libraries at its core, allowing it to go anywhere Windows PowerShell 5.1 or PowerShell Core 6.2 can go.
+PSRule uses modern PowerShell libraries at its core, allowing it to go anywhere PowerShell can go.
 PSRule runs on MacOS, Linux and Windows.
 
-To install PSRule for Azure use the `Install-Module` cmdlet within Windows PowerShell or PowerShell Core.
+To install PSRule for Azure use the `Install-Module` cmdlet within PowerShell.
 
 ```powershell
 Install-Module -Name PSRule.Rules.Azure -Scope CurrentUser;
@@ -70,10 +70,10 @@ PSRule complements Azure Security Center, Azure Advisor and Azure Policy feature
 - Recommending turning on and using features of Azure Security Center, Azure Advisor or Azure Policy.
 - Providing offline analysis in split environments where the analyst has no access to Azure subscriptions.
   - Rule data for analysis can be exported out to a JSON file.
-- Providing the ability to analyze resources in Azure Resource Manager template before deployment.
+- Providing the ability to analyze resources in Azure Resource Manager templates before deployment.
   - Additionally analysis can be performed in a continuous integration (CI) process.
 - Providing the ability to layer on organization specific rules, as required.
-- Data collection requires limited permission and requires no additional configuration.
+- Data collection requires limited permissions and requires no additional configuration.
 
 ### Traditional unit testing vs PSRule for Azure?
 
@@ -88,11 +88,11 @@ Unit tests are unable to effectively test resources contained within Azure templ
 Templates should be reusable, but this creates problems for testing when functions, conditions and copy loops are used.
 Template parameters could completely change the type, number of, or configuration of resources.
 
-PSRule resolves template/ parameters to allow analysis of the resources that would be deployed based on provided parameters.
+PSRule resolves templates to allow analysis of the resources that would be deployed based on provided parameters.
 
 #### Standard library of tests
 
-When building unit tests for Azure resources starting with an empty repository can be a daunting experience.
+When building unit tests for Azure resources, starting with an empty repository can be a daunting experience.
 While there are several open source repositories and samples around to get you started, you need to integrate these yourself.
 
 _PSRule for Azure_ is distributed as a PowerShell module using the PowerShell Gallery.
