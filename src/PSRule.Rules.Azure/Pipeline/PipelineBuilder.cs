@@ -2,11 +2,9 @@
 // Licensed under the MIT License.
 
 using PSRule.Rules.Azure.Configuration;
-using PSRule.Rules.Azure.Resources;
+using PSRule.Rules.Azure.Pipeline.Output;
 using System;
-using System.IO;
 using System.Management.Automation;
-using System.Text;
 
 namespace PSRule.Rules.Azure.Pipeline
 {
@@ -17,15 +15,20 @@ namespace PSRule.Rules.Azure.Pipeline
     /// </summary>
     public static class PipelineBuilder
     {
-        public static ITemplatePipelineBuilder Template()
+        public static ITemplatePipelineBuilder Template(PSRuleOption option)
         {
-            return new TemplatePipelineBuilder();
+            return new TemplatePipelineBuilder(option);
+        }
+
+        public static ITemplateLinkPipelineBuilder TemplateLink(string path)
+        {
+            return new TemplateLinkPipelineBuilder(path);
         }
     }
 
     public interface IPipelineBuilder
     {
-        void UseCommandRuntime(ICommandRuntime2 commandRuntime);
+        void UseCommandRuntime(PSCmdlet commandRuntime);
 
         void UseExecutionContext(EngineIntrinsics executionContext);
 
@@ -45,30 +48,37 @@ namespace PSRule.Rules.Azure.Pipeline
 
     internal abstract class PipelineBuilderBase : IPipelineBuilder
     {
+        private readonly PSPipelineWriter _Output;
+
         protected readonly PSRuleOption Option;
 
-        protected WriteOutput Output;
-        protected ShouldProcess ShouldProcess;
+        protected PSCmdlet CmdletContext;
+        protected EngineIntrinsics ExecutionContext;
 
         protected PipelineBuilderBase()
         {
             Option = new PSRuleOption();
+            _Output = new PSPipelineWriter(Option);
         }
 
-        public virtual void UseCommandRuntime(ICommandRuntime2 commandRuntime)
+        public virtual void UseCommandRuntime(PSCmdlet commandRuntime)
         {
-            //Logger.UseCommandRuntime(commandRuntime);
-            Output = commandRuntime.WriteObject;
-            ShouldProcess = commandRuntime.ShouldProcess;
+            CmdletContext = commandRuntime;
+            _Output.UseCommandRuntime(commandRuntime);
         }
 
         public void UseExecutionContext(EngineIntrinsics executionContext)
         {
-            //Logger.UseExecutionContext(executionContext);
+            ExecutionContext = executionContext;
+            _Output.UseExecutionContext(executionContext);
         }
 
         public virtual IPipelineBuilder Configure(PSRuleOption option)
         {
+            if (option == null)
+                return this;
+
+            Option.Output = new OutputOption(option.Output);
             return this;
         }
 
@@ -81,47 +91,31 @@ namespace PSRule.Rules.Azure.Pipeline
 
         protected virtual PipelineWriter PrepareWriter()
         {
-            return new PowerShellWriter(Output);
+            var writer = new PSPipelineWriter(Option);
+            writer.UseCommandRuntime(CmdletContext);
+            writer.UseExecutionContext(ExecutionContext);
+            return writer;
         }
 
-        /// <summary>
-        /// Write output to file.
-        /// </summary>
-        /// <param name="path">The file path to write.</param>
-        /// <param name="defaultFile">The default file name to use when a directory is specified.</param>
-        /// <param name="encoding">The file encoding to use.</param>
-        /// <param name="o">The text to write.</param>
-        protected static void WriteToFile(string path, string defaultFile, ShouldProcess shouldProcess, WriteOutput output, Encoding encoding, object o)
+        protected virtual PipelineWriter GetOutput()
         {
-            var rootedPath = PSRuleOption.GetRootedPath(path: path);
-            if (!Path.HasExtension(rootedPath) || Directory.Exists(rootedPath))
-                rootedPath = Path.Combine(rootedPath, defaultFile);
-
-            var parentPath = Directory.GetParent(rootedPath);
-            if (!parentPath.Exists && shouldProcess(target: parentPath.FullName, action: PSRuleResources.ShouldCreatePath))
-            {
-                Directory.CreateDirectory(path: parentPath.FullName);
-            }
-            if (shouldProcess(target: rootedPath, action: PSRuleResources.ShouldWriteFile))
-            {
-                File.WriteAllText(path: rootedPath, contents: o.ToString(), encoding: encoding);
-                var info = new FileInfo(rootedPath);
-                output(info, false);
-            }
+            return _Output;
         }
     }
 
     internal abstract class PipelineBase : IDisposable, IPipeline
     {
         protected readonly PipelineContext Context;
+        protected readonly PipelineWriter Writer;
 
         // Track whether Dispose has been called.
         private bool _Disposed = false;
         
 
-        protected PipelineBase(PipelineContext context)
+        protected PipelineBase(PipelineContext context, PipelineWriter writer)
         {
             Context = context;
+            Writer = writer;
         }
 
         #region IPipeline
@@ -138,7 +132,7 @@ namespace PSRule.Rules.Azure.Pipeline
 
         public virtual void End()
         {
-            //Writer.End();
+            Writer.End();
         }
 
         #endregion IPipeline

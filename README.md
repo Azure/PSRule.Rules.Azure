@@ -177,6 +177,13 @@ The following commands exist in the `PSRule.Rules.Azure` module:
 
 - [Export-AzRuleData](docs/commands/PSRule.Rules.Azure/en-US/Export-AzRuleData.md) - Export resource configuration data from Azure subscriptions.
 - [Export-AzTemplateRuleData](docs/commands/PSRule.Rules.Azure/en-US/Export-AzTemplateRuleData.md) - Export resource configuration data from Azure templates.
+- [Get-AzRuleTemplateLink](docs/commands/PSRule.Rules.Azure/en-US/Get-AzRuleTemplateLink.md) - Get a metadata link to a Azure template file.
+
+### Concepts
+
+The following conceptual topics exist in the `PSRule.Rules.Azure` module:
+
+- [Azure metadata link](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Metadata_Link.md)
 
 ## Changes and versioning
 
