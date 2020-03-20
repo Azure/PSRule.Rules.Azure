@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Added support for linking parameter and template files for analysis with metadata. [#324](https://github.com/Microsoft/PSRule.Rules.Azure/issues/324)
+- Removed warning message for `azureAllowedRegions` option. [#328](https://github.com/Microsoft/PSRule.Rules.Azure/issues/328)
 
 ## v0.10.0-B2003032 (pre-release)
 

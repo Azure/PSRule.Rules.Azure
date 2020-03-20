@@ -5,10 +5,6 @@
 # Validation rules for Azure resources
 #
 
-if ($Null -eq $Configuration.azureAllowedRegions) {
-    Write-Warning -Message 'The azureAllowedRegions option is not configured';
-}
-
 # Synopsis: Resources should be tagged
 Rule 'Azure.Resource.UseTags' -If { (SupportsTags) } -Tag @{ release = 'GA' } {
     Reason $LocalizedData.ResourceNotTagged
