@@ -121,11 +121,13 @@ function Export-AzTemplateRuleData {
     begin {
         Write-Verbose -Message '[Export-AzTemplateRuleData] BEGIN::';
 
+        $Option = [PSRule.Rules.Azure.Configuration.PSRuleOption]::new();
+        $Option.Output.Path = $OutputPath;
+
         # Build the pipeline
-        $builder = [PSRule.Rules.Azure.Pipeline.PipelineBuilder]::Template();
+        $builder = [PSRule.Rules.Azure.Pipeline.PipelineBuilder]::Template($Option);
         $builder.Deployment($Name);
         $builder.PassThru($PassThru);
-        $builder.OutputPath($OutputPath);
 
         # Bind to subscription context
         if ($PSBoundParameters.ContainsKey('Subscription')) {
@@ -142,7 +144,7 @@ function Export-AzTemplateRuleData {
             }
         }
 
-        $builder.UseCommandRuntime($PSCmdlet.CommandRuntime);
+        $builder.UseCommandRuntime($PSCmdlet);
         $builder.UseExecutionContext($ExecutionContext);
         try {
             $pipeline = $builder.Build();
@@ -174,6 +176,68 @@ function Export-AzTemplateRuleData {
             }
         }
         Write-Verbose -Message '[Export-AzTemplateRuleData] END::';
+    }
+}
+
+# .ExternalHelp PSRule.Rules.Azure-help.xml
+function Get-AzRuleTemplateLink {
+    [CmdletBinding()]
+    [OutputType([PSRule.Rules.Azure.Data.Metadata.ITemplateLink])]
+    param (
+        [Parameter(Position = 1, Mandatory = $False, ValueFromPipelineByPropertyName = $True)]
+        [Alias('f', 'TemplateParameterFile', 'FullName')]
+        [SupportsWildcards()]
+        [String[]]$InputPath = '*.parameters.json',
+
+        [Parameter(Mandatory = $False)]
+        [Switch]$SkipUnlinked,
+
+        [Parameter(Position = 0, Mandatory = $False)]
+        [Alias('p')]
+        [String]$Path = $PWD
+    )
+    begin {
+        Write-Verbose -Message '[Get-AzRuleTemplateLink] BEGIN::';
+
+        # Build the pipeline
+        $builder = [PSRule.Rules.Azure.Pipeline.PipelineBuilder]::TemplateLink($Path);
+        $builder.SkipUnlinked($SkipUnlinked);
+        $builder.UseCommandRuntime($PSCmdlet);
+        $builder.UseExecutionContext($ExecutionContext);
+        $pipeline = $builder.Build();
+        if ($Null -ne (Get-Variable -Name pipeline -ErrorAction SilentlyContinue)) {
+            try {
+                $pipeline.Begin();
+            }
+            catch {
+                $pipeline.Dispose();
+                throw;
+            }
+        }
+    }
+    process {
+        if ($Null -ne (Get-Variable -Name pipeline -ErrorAction SilentlyContinue)) {
+            try {
+                foreach ($p in $InputPath) {
+                    $pipeline.Process($p);
+                }
+            }
+            catch {
+                $pipeline.Dispose();
+                throw;
+            }
+        }
+    }
+    end {
+        if ($Null -ne (Get-Variable -Name pipeline -ErrorAction SilentlyContinue)) {
+            try {
+                $pipeline.End();
+            }
+            finally {
+                $pipeline.Dispose();
+            }
+        }
+        Write-Verbose -Message '[Get-AzRuleTemplateLink] END::';
     }
 }
 
@@ -811,4 +875,8 @@ function SetResourceType {
 # Export module
 #
 
-Export-ModuleMember -Function 'Export-AzRuleData', 'Export-AzTemplateRuleData';
+Export-ModuleMember -Function @(
+    'Export-AzRuleData'
+    'Export-AzTemplateRuleData'
+    'Get-AzRuleTemplateLink'
+);

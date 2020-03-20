@@ -333,7 +333,7 @@ task BuildHelp BuildModule, PlatyPS, {
         &$pwshPath -Command {
             # Generate MAML and about topics
             Import-Module -Name PlatyPS -Verbose:$False;
-            $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path '.\docs\commands\PSRule.Rules.Azure\en-US' -Force;
+            $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path '.\docs\commands\PSRule.Rules.Azure\en-US', '.\docs\concepts\PSRule.Rules.Azure\en-US' -Force;
 
              # Copy generated help into module out path
             $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-US/ -Recurse;

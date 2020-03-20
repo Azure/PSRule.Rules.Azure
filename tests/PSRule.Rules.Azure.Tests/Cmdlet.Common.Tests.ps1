@@ -296,3 +296,81 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
 }
 
 #endregion Export-AzTemplateRuleData
+
+#region Get-AzRuleTemplateLink
+
+Describe 'Get-AzRuleTemplateLink' -Tag 'Cmdlet', 'Get-AzRuleTemplateLink' {
+    # Setup structure for scanning parameter files
+    $templateScanPath = Join-Path -Path $outputPath -ChildPath 'templates/';
+    $examplePath = Join-Path -Path $outputPath -ChildPath 'templates/example/';
+    $Null = New-Item -Path $examplePath -ItemType Directory -Force;
+    $Null = Copy-Item -Path (Join-Path -Path $here -ChildPath 'Resources.Parameters*.json') -Destination $templateScanPath -Force;
+    $Null = Copy-Item -Path (Join-Path -Path $here -ChildPath 'Resources.Template*.json') -Destination $templateScanPath -Force;
+    $Null = Copy-Item -Path (Join-Path -Path $here -ChildPath 'Resources.Parameters*.json') -Destination $examplePath -Force;
+    $Null = Copy-Item -Path (Join-Path -Path $here -ChildPath 'Resources.Template*.json') -Destination $examplePath -Force;
+
+    Context 'With defaults' {
+        It 'Exports template' {
+            $getParams = @{
+                Path = $templateScanPath
+                InputPath = Join-Path -Path $templateScanPath -ChildPath 'Resources.Parameters*.json'
+            }
+
+            # Get files in specific path
+            $result = @(Get-AzRuleTemplateLink @getParams);
+            $result | Should -Not -BeNullOrEmpty;
+            $result.Length | Should -Be 2;
+            $result.ParameterFile | Should -BeIn @(
+                (Join-Path -Path $templateScanPath -ChildPath 'Resources.Parameters.json')
+                (Join-Path -Path $templateScanPath -ChildPath 'Resources.Parameters2.json')
+            );
+
+            # Get Resources.Parameters.json or Resources.Parameters2.json files in shallow path
+            $result = @(Get-AzRuleTemplateLink -Path $templateScanPath -InputPath './Resources.Parameters?.json');
+            $result | Should -Not -BeNullOrEmpty;
+            $result.Length | Should -Be 2;
+
+            # Get Resources.Parameters.json or Resources.Parameters2.json files in recursive path
+            $getParams['InputPath'] = 'Resources.Parameters*.json';
+            $result = @(Get-AzRuleTemplateLink @getParams);
+            $result | Should -Not -BeNullOrEmpty;
+            $result.Length | Should -Be 4;
+
+            # Get Resources.Parameters.json files in recursive path
+            $result = @(Get-AzRuleTemplateLink -Path $templateScanPath -f '*.Parameters.json');
+            $result | Should -Not -BeNullOrEmpty;
+            $result.Length | Should -Be 2;
+            $result.ParameterFile | Should -BeIn @(
+                (Join-Path -Path $templateScanPath -ChildPath 'Resources.Parameters.json')
+                (Join-Path -Path $examplePath -ChildPath 'Resources.Parameters.json')
+            );
+        }
+
+        It 'Handles exceptions' {
+            $getParams = @{
+                InputPath = Join-Path -Path $here -ChildPath 'Resources.ParameterFile.Fail.json'
+            }
+
+            # Non-relative path
+            $Null = Get-AzRuleTemplateLink @getParams -ErrorVariable errorOut -ErrorAction SilentlyContinue;
+            $errorOut[0].Exception.Message | Should -BeLike "Unable to find template referenced within parameter file '*'.";
+
+            # File does not exist
+            $getParams['InputPath'] = Join-Path -Path $here -ChildPath 'Resources.ParameterFile.Fail2.json';
+            $Null = Get-AzRuleTemplateLink @getParams -ErrorVariable errorOut -ErrorAction SilentlyContinue;
+            $errorOut[0].Exception.Message | Should -BeLike "Unable to find template referenced within parameter file '*'.";
+
+            # No metadata property
+            $getParams['InputPath'] = Join-Path -Path $here -ChildPath 'Resources.ParameterFile.Fail3.json';
+            $Null = Get-AzRuleTemplateLink @getParams -ErrorVariable errorOut -ErrorAction SilentlyContinue;
+            $errorOut[0].Exception.Message | Should -BeLike "The parameter file '*' does not contain a metadata property.";
+
+            # metadata.template property not set
+            $getParams['InputPath'] = Join-Path -Path $here -ChildPath 'Resources.ParameterFile.Fail4.json';
+            $Null = Get-AzRuleTemplateLink @getParams -ErrorVariable errorOut -ErrorAction SilentlyContinue;
+            $errorOut[0].Exception.Message | Should -BeLike "The parameter file '*' does not reference a linked template.";
+        }
+    }
+}
+
+#endregion Get-AzRuleTemplateLink

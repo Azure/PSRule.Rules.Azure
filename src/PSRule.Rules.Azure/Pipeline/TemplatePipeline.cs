@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
+using PSRule.Rules.Azure.Pipeline.Output;
 using PSRule.Rules.Azure.Resources;
 using System;
 using System.Collections;
@@ -25,8 +26,6 @@ namespace PSRule.Rules.Azure.Pipeline
         void Subscription(PSObject subscription);
 
         void PassThru(bool passThru);
-
-        void OutputPath(string outputPath);
     }
 
     internal sealed class TemplatePipelineBuilder : PipelineBuilderBase, ITemplatePipelineBuilder
@@ -49,14 +48,14 @@ namespace PSRule.Rules.Azure.Pipeline
         private ResourceGroup _ResourceGroup;
         private Subscription _Subscription;
         private bool _PassThru;
-        private string _OutputPath;
 
-        internal TemplatePipelineBuilder()
+        internal TemplatePipelineBuilder(PSRuleOption option)
             : base()
         {
             _DeploymentName = string.Concat(DEPLOYMENTNAME_PREFIX, Guid.NewGuid().ToString().Substring(0, 8));
             _ResourceGroup = Data.Template.ResourceGroup.Default;
             _Subscription = Data.Template.Subscription.Default;
+            Configure(option);
         }
 
         public void Deployment(string deploymentName)
@@ -92,40 +91,77 @@ namespace PSRule.Rules.Azure.Pipeline
             _PassThru = passThru;
         }
 
-        public void OutputPath(string outputPath)
-        {
-            _OutputPath = outputPath;
-        }
-
         private T GetProperty<T>(PSObject obj, string propertyName)
         {
             return null == obj.Properties[propertyName] ? default(T) : (T)obj.Properties[propertyName].Value;
         }
 
+        protected override PipelineWriter GetOutput()
+        {
+            // Redirect to file instead
+            if (!string.IsNullOrEmpty(Option.Output.Path))
+            {
+                return new FileOutputWriter(
+                    inner: base.GetOutput(),
+                    option: Option,
+                    encoding: GetEncoding(Option.Output.Encoding),
+                    path: Option.Output.Path,
+                    defaultFile: string.Concat(OUTPUTFILE_PREFIX, _DeploymentName, OUTPUTFILE_EXTENSION),
+                    shouldProcess: CmdletContext.ShouldProcess
+                );
+            }
+            return base.GetOutput();
+        }
+
         protected override PipelineWriter PrepareWriter()
         {
-            var defaultFile = string.Concat(OUTPUTFILE_PREFIX, _DeploymentName, OUTPUTFILE_EXTENSION);
-            WriteOutput output = (o, enumerate) => WriteToFile(_OutputPath, defaultFile, ShouldProcess, Output, Encoding.UTF8, o);
-            return _PassThru ? base.PrepareWriter() : new JsonPipelineWriter(output);
+            return _PassThru ? base.PrepareWriter() : new JsonOutputWriter(GetOutput(), Option);
         }
 
         public override IPipeline Build()
         {
             return new TemplatePipeline(PrepareContext(), PrepareWriter(), _DeploymentName, _ResourceGroup, _Subscription);
         }
+
+        /// <summary>
+        /// Get the character encoding for the specified output encoding.
+        /// </summary>
+        /// <param name="encoding"></param>
+        /// <returns></returns>
+        private static Encoding GetEncoding(OutputEncoding? encoding)
+        {
+            switch (encoding)
+            {
+                case OutputEncoding.UTF8:
+                    return Encoding.UTF8;
+
+                case OutputEncoding.UTF7:
+                    return Encoding.UTF7;
+
+                case OutputEncoding.Unicode:
+                    return Encoding.Unicode;
+
+                case OutputEncoding.UTF32:
+                    return Encoding.UTF32;
+
+                case OutputEncoding.ASCII:
+                    return Encoding.ASCII;
+
+                default:
+                    return new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
+            }
+        }
     }
 
     internal sealed class TemplatePipeline : PipelineBase
     {
-        private readonly PipelineWriter _Writer;
         private readonly string _DeploymentName;
         private readonly ResourceGroup _ResourceGroup;
         private readonly Subscription _Subscription;
 
         internal TemplatePipeline(PipelineContext context, PipelineWriter writer, string deploymentName, ResourceGroup resourceGroup, Subscription subscription)
-            : base(context)
+            : base(context, writer)
         {
-            _Writer = writer;
             _DeploymentName = deploymentName;
             _ResourceGroup = resourceGroup;
             _Subscription = subscription;
@@ -137,15 +173,10 @@ namespace PSRule.Rules.Azure.Pipeline
                 return;
 
             if (source.ParametersFile == null || source.ParametersFile.Length == 0)
-                _Writer.Write(ProcessTemplate(source.TemplateFile, null), true);
+                Writer.WriteObject(ProcessTemplate(source.TemplateFile, null), true);
             else
                 for (var i = 0; i < source.ParametersFile.Length; i++)
-                    _Writer.Write(ProcessTemplate(source.TemplateFile, source.ParametersFile[i]), true);
-        }
-
-        public override void End()
-        {
-            _Writer.End();
+                    Writer.WriteObject(ProcessTemplate(source.TemplateFile, source.ParametersFile[i]), true);
         }
 
         internal PSObject[] ProcessTemplate(string templateFile, string parametersFile)

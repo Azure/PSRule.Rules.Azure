@@ -97,6 +97,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The parameter file &apos;{0}&apos; does not contain a metadata property..
+        /// </summary>
+        internal static string MetadataNotFound {
+            get {
+                return ResourceManager.GetString("MetadataNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The number of resource segments needs to match the provided resource type..
         /// </summary>
         internal static string MismatchingResourceSegments {
@@ -120,6 +129,15 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string ParameterNotFound {
             get {
                 return ResourceManager.GetString("ParameterNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The template file &apos;{0}&apos; must be within the current working directory..
+        /// </summary>
+        internal static string PathTraversal {
+            get {
+                return ResourceManager.GetString("PathTraversal", resourceCulture);
             }
         }
         
@@ -165,6 +183,24 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string TemplateFileNotFound {
             get {
                 return ResourceManager.GetString("TemplateFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find template referenced within parameter file &apos;{0}&apos;..
+        /// </summary>
+        internal static string TemplateFileReferenceNotFound {
+            get {
+                return ResourceManager.GetString("TemplateFileReferenceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter file &apos;{0}&apos; does not reference a linked template..
+        /// </summary>
+        internal static string TemplateLinkNotFound {
+            get {
+                return ResourceManager.GetString("TemplateLinkNotFound", resourceCulture);
             }
         }
         

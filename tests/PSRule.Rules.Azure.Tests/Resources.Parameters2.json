@@ -2,7 +2,7 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "metadata": {
-        "template": "templates/keyvault/v1.0/template.json"
+        "template": "./Resources.Template2.json"
     },
     "parameters": {
         "vaultName": {

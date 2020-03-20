@@ -23,23 +23,19 @@ namespace PSRule.Rules.Azure.Pipeline
         /// Creates a pipeline exception.
         /// </summary>
         /// <param name="message">The detail of the exception.</param>
-        protected PipelineException(string message) : base(message)
-        {
-        }
+        protected PipelineException(string message)
+            : base(message) { }
 
         /// <summary>
         /// Creates a pipeline exception.
         /// </summary>
         /// <param name="message">The detail of the exception.</param>
         /// <param name="innerException">A nested exception that caused the issue.</param>
-        protected PipelineException(string message, Exception innerException) : base(message, innerException)
-        {
-        }
+        protected PipelineException(string message, Exception innerException)
+            : base(message, innerException) { }
 
         protected PipelineException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
+            : base(info, context) { }
     }
 
     /// <summary>
@@ -59,22 +55,60 @@ namespace PSRule.Rules.Azure.Pipeline
         /// Creates a serialization exception.
         /// </summary>
         /// <param name="message">The detail of the exception.</param>
-        public PipelineSerializationException(string message) : base(message)
-        {
-        }
+        public PipelineSerializationException(string message)
+            : base(message) { }
 
         /// <summary>
         /// Creates a serialization exception.
         /// </summary>
         /// <param name="message">The detail of the exception.</param>
         /// <param name="innerException">A nested exception that caused the issue.</param>
-        public PipelineSerializationException(string message, Exception innerException) : base(message, innerException)
+        public PipelineSerializationException(string message, Exception innerException)
+            : base(message, innerException) { }
+
+        private PipelineSerializationException(SerializationInfo info, StreamingContext context)
+            : base(info, context) { }
+
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null)
+                throw new ArgumentNullException(nameof(info));
+
+            base.GetObjectData(info, context);
+        }
+    }
+
+    /// <summary>
+    /// An exception related to template linking.
+    /// </summary>
+    [Serializable]
+    public sealed class InvalidTemplateLinkException : PipelineException
+    {
+        /// <summary>
+        /// Creates a template linking exception.
+        /// </summary>
+        public InvalidTemplateLinkException()
         {
         }
 
-        private PipelineSerializationException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
+        /// <summary>
+        /// Creates a template linking exception.
+        /// </summary>
+        /// <param name="message">The detail of the exception.</param>
+        public InvalidTemplateLinkException(string message)
+            : base(message) { }
+
+        /// <summary>
+        /// Creates a template linking exception.
+        /// </summary>
+        /// <param name="message">The detail of the exception.</param>
+        /// <param name="innerException">A nested exception that caused the issue.</param>
+        public InvalidTemplateLinkException(string message, Exception innerException)
+            : base(message, innerException) { }
+
+        private InvalidTemplateLinkException(SerializationInfo info, StreamingContext context)
+            : base(info, context) { }
 
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
