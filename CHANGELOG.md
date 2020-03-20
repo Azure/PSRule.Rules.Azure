@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.10.0-B2003051 (pre-release)
+
 - New features:
   - Added support for linking parameter and template files for analysis with metadata. [#324](https://github.com/Microsoft/PSRule.Rules.Azure/issues/324)
     - Added `Get-AzRuleTemplateLink` cmdlet to get metadata link to template files.
