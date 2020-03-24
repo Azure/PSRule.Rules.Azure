@@ -2,6 +2,33 @@
 
 ## Unreleased
 
+## v0.10.0
+
+What's changed since v0.9.0:
+
+- New features:
+  - Added support for linking parameter and template files for analysis with metadata. [#324](https://github.com/Microsoft/PSRule.Rules.Azure/issues/324)
+    - Added `Get-AzRuleTemplateLink` cmdlet to get metadata link to template files.
+    - See cmdlet help for usage.
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.16.7. [#330](https://github.com/Microsoft/PSRule.Rules.Azure/issues/330)
+- General improvements:
+  - Removed warning message for `azureAllowedRegions` option. [#328](https://github.com/Microsoft/PSRule.Rules.Azure/issues/328)
+  - Improvements to verbose logging of `Export-AzRuleData`. [#301](https://github.com/Microsoft/PSRule.Rules.Azure/issues/301)
+- Bug fixes:
+  - Fixed unused VM resource false positives in templates. [#312](https://github.com/Microsoft/PSRule.Rules.Azure/issues/312)
+  - Fixed handling SKU for accelerated networking. [#314](https://github.com/Microsoft/PSRule.Rules.Azure/issues/314)
+  - Fixed detection of hybrid use benefit in templates. [#313](https://github.com/Microsoft/PSRule.Rules.Azure/issues/313)
+  - Fixed exception message when a template or parameter file is not found. [#316](https://github.com/Microsoft/PSRule.Rules.Azure/issues/316)
+  - Fixed detection of diagnostic logging for Front Door. [#307](https://github.com/Microsoft/PSRule.Rules.Azure/issues/307)
+  - Fixed Front Door WAF Policy export. [#308](https://github.com/Microsoft/PSRule.Rules.Azure/issues/308)
+  - Fixed union of object properties in templates. [#303](https://github.com/Microsoft/PSRule.Rules.Azure/issues/303)
+
+What's changed since pre-release v0.10.0-B2003051:
+
+- No additional changes.
+
 ## v0.10.0-B2003051 (pre-release)
 
 - New features:
