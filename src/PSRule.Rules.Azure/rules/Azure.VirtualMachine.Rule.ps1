@@ -8,12 +8,11 @@
 # Synopsis: Virtual machines should use managed disks
 Rule 'Azure.VM.UseManagedDisks' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA' } {
     # Check OS disk
-    $Null -ne $TargetObject.properties.storageProfile.osDisk.managedDisk.id
+    $Assert.NullOrEmpty($TargetObject, 'properties.storageProfile.osDisk.vhd.uri');
 
     # Check data disks
-    if ($TargetObject.properties.storageProfile.dataDisks.Count -gt 0) {
-        $count = ($TargetObject.properties.storageProfile.dataDisks.managedDisk.id | Measure-Object).Count
-        $count -eq $TargetObject.properties.storageProfile.dataDisks.Count
+    foreach ($dataDisk in $TargetObject.properties.storageProfile.dataDisks) {
+        $Assert.NullOrEmpty($dataDisk, 'vhd.uri');
     }
 }
 
@@ -50,13 +49,17 @@ Rule 'Azure.VM.DiskCaching' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ re
     $Assert.HasFieldValue($TargetObject, 'properties.storageProfile.osDisk.caching', 'ReadWrite');
 
     # Check data disks
-    $dataDisks = @($TargetObject.properties.storageProfile.dataDisks)
-    foreach ($disk in $dataDisks) {
-        if ($disk.managedDisk.storageAccountType -eq 'Premium_LRS') {
-            $Assert.HasFieldValue($disk, 'caching', 'ReadOnly');
-        }
-        else {
-            $Assert.HasFieldValue($disk, 'caching', 'None');
+    $dataDisks = @($TargetObject.properties.storageProfile.dataDisks | Where-Object {
+        $Null -ne $_
+    })
+    if ($dataDisks.Length -gt 0) {
+        foreach ($disk in $dataDisks) {
+            if ($disk.managedDisk.storageAccountType -eq 'Premium_LRS') {
+                $Assert.HasFieldValue($disk, 'caching', 'ReadOnly');
+            }
+            else {
+                $Assert.HasFieldValue($disk, 'caching', 'None');
+            }
         }
     }
 }
