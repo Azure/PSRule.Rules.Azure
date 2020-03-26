@@ -396,7 +396,10 @@
                         "name": "vm-B_disk2_0000000000000000000000000000000",
                         "createOption": "Empty",
                         "caching": "ReadOnly",
-                        "diskSizeGB": 1023
+                        "diskSizeGB": 1023,
+                        "vhd": {
+                            "uri": "[concat('http://testsa.blob.core.windows.net/vhds/vm-B_disk2_0000000000000000000000000000000.vhd')]"
+                        }
                     }
                 ]
             },
@@ -509,8 +512,7 @@
                         "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/disks/aks-agentpool-00000000-1_OsDisk_1_0000000000000000000000000000000"
                     },
                     "diskSizeGB": 30
-                },
-                "dataDisks": []
+                }
             },
             "osProfile": {
                 "computerName": "aks-agentpool-00000000-1",

@@ -51,4 +51,32 @@ Describe 'Azure.PublicIP' {
             $ruleResult.TargetName | Should -Be 'ip-A';
         }
     }
+
+    Context 'With template' {
+        $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template3.json';
+        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.PublicIP.json;
+        Export-AzTemplateRuleData -TemplateFile $templatePath -OutputPath $outputFile;
+        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+
+        It 'Azure.PublicIP.IsAttached' {
+            $filteredResult = $result | Where-Object {
+                $_.RuleName -eq 'Azure.PublicIP.IsAttached' -and
+                $_.TargetType -eq 'Microsoft.Network/publicIPAddresses'
+            };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'pip-001';
+        }
+    }
 }

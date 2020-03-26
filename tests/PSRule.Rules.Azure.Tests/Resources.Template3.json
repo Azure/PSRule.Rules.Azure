@@ -19,7 +19,9 @@
             "defaultValue": "fddiag01"
         }
     },
-    "variables": {},
+    "variables": {
+        "publicIPName": "pip-001"
+    },
     "resources": [
         {
             "apiVersion": "2019-04-01",
@@ -177,6 +179,15 @@
             },
             "kind": "Storage",
             "properties": {}
+        },
+        {
+            "apiVersion": "2016-03-30",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[variables('publicIPName')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publicIPAllocationMethod": "Dynamic"
+            }
         }
     ],
     "outputs": {},
