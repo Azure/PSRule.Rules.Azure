@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.10.1
+
+What's changed since v0.10.0:
+
 - Bug fixes:
   - Fixed false positive for unused public IP in templates. [#336](https://github.com/Microsoft/PSRule.Rules.Azure/issues/336)
   - Fixed false positive for use of managed disks in templates. [#337](https://github.com/Microsoft/PSRule.Rules.Azure/issues/337)
