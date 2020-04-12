@@ -309,6 +309,7 @@ task Analyze Build, PSScriptAnalyzer, {
 task BuildRuleDocs Build, PSRule, PSDocs, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     $Null = Invoke-PSDocument -Name module -OutputPath .\docs\rules\en\ -Path .\RuleToc.Doc.ps1;
+    $Null = Invoke-PSDocument -Name resource -OutputPath .\docs\rules\en\ -Path .\RuleToc.Doc.ps1;
 }
 
 # Synopsis: Build help
