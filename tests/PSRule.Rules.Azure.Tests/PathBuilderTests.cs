@@ -4,6 +4,7 @@
 using PSRule.Rules.Azure.Pipeline;
 using System;
 using System.IO;
+using System.Linq;
 using Xunit;
 
 namespace PSRule.Rules.Azure
@@ -28,14 +29,14 @@ namespace PSRule.Rules.Azure
             builder.Add(GetSourcePath("*Parameters*.json"));
             var actual3 = builder.Build();
             Assert.Equal(2, actual3.Length);
-            Assert.Equal(GetSourcePath("Resources.Parameters.json"), actual3[0].FullName);
-            Assert.Equal(GetSourcePath("Resources.Parameters2.json"), actual3[1].FullName);
+            Assert.NotNull(actual3.SingleOrDefault(f => f.FullName == GetSourcePath("Resources.Parameters.json")));
+            Assert.NotNull(actual3.SingleOrDefault(f => f.FullName == GetSourcePath("Resources.Parameters2.json")));
 
             builder.Add(GetSourcePath("*Parameters?.json"));
             var actual4 = builder.Build();
             Assert.Equal(2, actual4.Length);
-            Assert.Equal(GetSourcePath("Resources.Parameters.json"), actual4[0].FullName);
-            Assert.Equal(GetSourcePath("Resources.Parameters2.json"), actual4[1].FullName);
+            Assert.NotNull(actual4.SingleOrDefault(f => f.FullName == GetSourcePath("Resources.Parameters.json")));
+            Assert.NotNull(actual4.SingleOrDefault(f => f.FullName == GetSourcePath("Resources.Parameters2.json")));
         }
 
         private static string GetSourcePath(string fileName)
