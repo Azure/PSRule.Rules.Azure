@@ -146,6 +146,22 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'cluster-C';
         }
+
+        It 'Azure.AKS.NodeMinPods' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.NodeMinPods' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'cluster-C';
+        }
     }
 
     Context 'With Template' {
@@ -188,6 +204,22 @@ Describe 'Azure.AKS' -Tag AKS {
 
         It 'Azure.AKS.PoolScaleSet' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.PoolScaleSet' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'clusterA/agentpool2';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterA/agentpool3', 'clusterA/agentpool4';
+        }
+
+        It 'Azure.AKS.NodeMinPods' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.NodeMinPods' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
