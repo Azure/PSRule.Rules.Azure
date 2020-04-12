@@ -68,9 +68,9 @@ Rule 'Azure.APIM.HTTPBackend' -Type 'Microsoft.ApiManagement/service', 'Microsof
 }
 
 # Synopsis: Encrypt all named values
-Rule 'Azure.APIM.EncryptValues' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/properties' -Tag @{ release = 'GA' } {
+Rule 'Azure.APIM.EncryptValues' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues' -Tag @{ release = 'GA' } {
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
-        $properties = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/properties')
+        $properties = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues')
         if ($properties.Length -eq 0) {
             $True;
         }
@@ -78,7 +78,76 @@ Rule 'Azure.APIM.EncryptValues' -Type 'Microsoft.ApiManagement/service', 'Micros
             $Assert.HasFieldValue($prop, 'properties.secret', $True)
         }
     }
-    elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/properties') {
+    elseif ($PSRule.TargetType -in 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues') {
         $Assert.HasFieldValue($TargetObject, 'properties.secret', $True)
     }
 }
+
+# Synopsis: Require subscription for products
+Rule 'Azure.APIM.ProductSubscription' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA' } {
+    $products = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
+        $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
+        if ($products.Length -eq 0) {
+            $True;
+        }
+    }
+    foreach ($product in $products) {
+        $Assert.
+            HasFieldValue($product, 'Properties.subscriptionRequired', $True).
+            WithReason(($LocalizedData.APIMProductSubscription -f $product.Name), $True);
+    }
+}
+
+# Synopsis: Require approval for products
+Rule 'Azure.APIM.ProductApproval' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA' } {
+    $products = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
+        $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
+        if ($products.Length -eq 0) {
+            $True;
+        }
+    }
+    foreach ($product in $products) {
+        $Assert.
+            HasFieldValue($product, 'Properties.approvalRequired', $True).
+            WithReason(($LocalizedData.APIMProductApproval -f $product.Name), $True);
+    }
+}
+
+# Synopsis: Remove sample products
+Rule 'Azure.APIM.SampleProducts' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA' } {
+    $products = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
+        $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
+        if ($products.Length -eq 0) {
+            $True;
+        }
+    }
+    foreach ($product in $products) {
+        $product | Within 'Name' -Not 'unlimited', 'starter'
+    }
+}
+
+# Synopsis: Provision a managed identity
+Rule 'Azure.APIM.ManagedIdentity' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA' } {
+    Within 'Identity.Type' 'SystemAssigned', 'UserAssigned'
+}
+
+# Synopsis: Renew expired certificates
+Rule 'Azure.APIM.CertificateExpiry' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA' } {
+    $configurations = @($TargetObject.Properties.hostnameConfigurations | Where-Object {
+        $Null -ne $_.certificate
+    })
+    if ($configurations.Length -eq 0) {
+        $True;
+    }
+    else {
+        foreach ($configuration in $configurations) {
+            $remaining = ($configuration.certificate.expiry - [DateTime]::Now).Days;
+            $Assert.
+                GreaterOrEqual($remaining, '.', $Configuration.Azure_MinimumCertificateLifetime).
+                WithReason(($LocalizedData.APIMCertificateExpiry -f $configuration.hostName, $configuration.certificate.expiry.ToString('yyyy/MM/dd')), $True);
+        }
+    }
+} -Configure @{ Azure_MinimumCertificateLifetime = 30 }

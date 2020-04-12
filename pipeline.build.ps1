@@ -196,8 +196,8 @@ task PSScriptAnalyzer NuGet, {
 
 # Synopsis: Install PSRule
 task PSRule NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.15.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 0.15.0 -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.16.0 -ErrorAction Ignore)) {
+        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 0.16.0 -Scope CurrentUser -Force;
     }
     Import-Module -Name PSRule -Verbose:$False;
 }
@@ -289,14 +289,15 @@ task Rules PSRule, {
     $assertParams = @{
         Path = './.ps-rule/'
         Style = $AssertStyle
-        OutputFormat = 'NUnit3';
+        OutputFormat = 'NUnit3'
+        ErrorAction = 'Stop'
     }
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     Get-RepoRuleData -Path $PWD |
-        Assert-PSRule @assertParams -OutputPath reports/ps-rule-file.xml -ErrorAction Stop;
+        Assert-PSRule @assertParams -OutputPath reports/ps-rule-file.xml;
 
-    $rules = Get-PSRule -Module PSRule.Rules.Azure -Culture 'en-US';
-    $rules | Assert-PSRule @assertParams -OutputPath reports/ps-rule-file2.xml -ErrorAction Stop;
+    $rules = Get-PSRule -Module PSRule.Rules.Azure;
+    $rules | Assert-PSRule @assertParams -OutputPath reports/ps-rule-file2.xml;
 }
 
 # Synopsis: Run script analyzer
