@@ -26,6 +26,7 @@ Rule 'Rule.Tags' -Type 'PSRule.Rules.Rule' {
 Rule 'Rule.Annotations' -Type 'PSRule.Rules.Rule' {
     $Assert.HasFieldValue($TargetObject, 'Info.Annotations.severity')
     $Assert.HasFieldValue($TargetObject, 'Info.Annotations.category')
+    $Assert.HasFieldValue($TargetObject, 'Info.Annotations.resource')
 }
 
 # Synopsis: Use online help

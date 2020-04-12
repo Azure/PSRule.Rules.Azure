@@ -68,3 +68,20 @@ Rule 'Azure.AKS.PoolScaleSet' -Type 'Microsoft.ContainerService/managedClusters'
     }
     return $result
 }
+
+# Synopsis: AKS nodes should use a minimum number of pods
+Rule 'Azure.AKS.NodeMinPods' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA' } {
+    $agentPools = $Null;
+    if ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters') {
+        $agentPools = @($TargetObject.Properties.agentPoolProfiles);
+        if ($agentPools.Length -eq 0) {
+            $True;
+        }
+    }
+    elseif ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters/agentPools') {
+        $agentPools = @($TargetObject.Properties);
+    }
+    foreach ($agentPool in $agentPools) {
+        $Assert.GreaterOrEqual($agentPool, 'maxPods', $Configuration.Azure_AKSNodeMinimumPods)
+    }
+} -Configure @{ Azure_AKSNodeMinimumPods = 50 }

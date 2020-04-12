@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- New rules:
+  - Azure Kubernetes Service:
+    - Check AKS nodes use a minimum number of pods. [#274](https://github.com/Microsoft/PSRule.Rules.Azure/issues/274)
+
 ## v0.11.0-B2004005 (pre-release)
 
 - New rules:
