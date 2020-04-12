@@ -473,7 +473,7 @@ function GetSubResource {
             Get-AzResource @getParams -ExpandProperties;
         }
         catch {
-            Write-Verbose -Message "Failed to read: $ResourceType";
+            Write-Warning -Message "Failed to read: $ResourceType";
         }
     }
 }
@@ -489,12 +489,28 @@ function VisitAPIManagement {
     )
     process {
         $resources = @();
-        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/apis' -ApiVersion '2019-01-01';
-        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/backends' -ApiVersion '2019-01-01';
-        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/properties' -ApiVersion '2019-01-01' | ForEach-Object {
-            $_.properties.value = '*** MASKED ***';
-            $_;
+        $apis += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/apis' -ApiVersion '2019-12-01';
+        foreach ($api in $apis) {
+            $resources += $api;
+            $apiParams = @{
+                Name = "$($Resource.Name)/$($api.Name)"
+                ResourceType = 'Microsoft.ApiManagement/service/apis/policies'
+                ResourceGroupName = $Resource.ResourceGroupName
+                DefaultProfile = $Context
+                ApiVersion = '2019-12-01'
+            };
+            $resources += Get-AzResource @apiParams;
         }
+
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/backends' -ApiVersion '2019-12-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/products' -ApiVersion '2019-12-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/policies' -ApiVersion '2019-12-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/identityProviders' -ApiVersion '2019-12-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/diagnostics' -ApiVersion '2019-12-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/loggers' -ApiVersion '2019-12-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/certificates' -ApiVersion '2019-12-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/namedValues' -ApiVersion '2019-12-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/portalsettings' -ApiVersion '2019-12-01';
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }

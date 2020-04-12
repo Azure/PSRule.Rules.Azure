@@ -4,3 +4,7 @@ binding:
   targetName:
   - RuleName
   - FullName
+
+output:
+  culture:
+  - en-US

@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- New rules:
+  - API Management:
+    - Check API Management products require a subscription. [#342](https://github.com/Microsoft/PSRule.Rules.Azure/issues/342)
+    - Check API Management products require approval. [#343](https://github.com/Microsoft/PSRule.Rules.Azure/issues/343)
+    - Check API Management sample products have been removed. [#344](https://github.com/Microsoft/PSRule.Rules.Azure/issues/344)
+    - Check API Management uses a managed identity. [#345](https://github.com/Microsoft/PSRule.Rules.Azure/issues/345)
+    - Check API Management certificates are not expired. [#346](https://github.com/Microsoft/PSRule.Rules.Azure/issues/346)
+
 ## v0.10.1
 
 What's changed since v0.10.0:
