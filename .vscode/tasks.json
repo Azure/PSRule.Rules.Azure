@@ -70,6 +70,12 @@
             "type": "shell",
             "command": "Invoke-Build ScaffoldHelp",
             "problemMatcher": []
+        },
+        {
+            "label": "build-rule-docs",
+            "type": "shell",
+            "command": "Invoke-Build BuildRuleDocs",
+            "problemMatcher": []
         }
     ]
 }

@@ -165,7 +165,8 @@ For walk through examples of `PSRule.Rules.Azure` module usage see:
 
 For a list of rules included in the `PSRule.Rules.Azure` module see:
 
-- [Module rule reference](docs/rules/en/module.md)
+- [Rules by category](docs/rules/en/module.md)
+- [Rules by resource](docs/rules/en/resource.md)
 
 ## Language reference
 

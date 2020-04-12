@@ -1,4 +1,4 @@
-# Module rule reference
+# Rules by category
 
 ## Rules
 
