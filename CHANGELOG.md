@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.11.0-B2004005 (pre-release)
+
 - New rules:
   - API Management:
     - Check API Management products require a subscription. [#342](https://github.com/Microsoft/PSRule.Rules.Azure/issues/342)
