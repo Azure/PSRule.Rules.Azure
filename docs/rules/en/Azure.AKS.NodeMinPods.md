@@ -27,11 +27,11 @@ Consider deploying node pools with a minimum number of pods per node.
 
 ## NOTES
 
-By default, this rule fails when node pools have a maxPods set to less than 50.
+By default, this rule fails when node pools have `maxPods` set to less than 50.
 
 To configure this rule:
 
-- Override the Azure_AKSNodeMinimumPods configuration value with the minimum number of pods.
+- Override the `Azure_AKSNodeMinimumMaxPods` configuration value with the minimum maxPods.
 
 ## LINKS
 

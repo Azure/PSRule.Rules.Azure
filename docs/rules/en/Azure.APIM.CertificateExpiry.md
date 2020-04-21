@@ -29,7 +29,7 @@ By default, this rule fails when certificates have less than 30 days remaining b
 
 To configure this rule:
 
-- Override the Azure_MinimumCertificateLifetime configuration value with the minimum number of days until expiry that should pass.
+- Override the `Azure_MinimumCertificateLifetime` configuration value with the minimum number of days until expiry.
 
 ## LINKS
 
