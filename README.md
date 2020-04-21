@@ -185,6 +185,11 @@ The following commands exist in the `PSRule.Rules.Azure` module:
 The following conceptual topics exist in the `PSRule.Rules.Azure` module:
 
 - [Azure metadata link](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Metadata_Link.md)
+- [Configuration](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md)
+  - [Azure_AKSMinimumVersion](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_aksminimumversion)
+  - [Azure_AKSNodeMinimumMaxPods](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_aksnodeminimummaxpods)
+  - [Azure_AllowedRegions](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_allowedregions)
+  - [Azure_MinimumCertificateLifetime](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_minimumcertificatelifetime)
 
 ## Changes and versioning
 

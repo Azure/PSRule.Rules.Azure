@@ -5,6 +5,10 @@
 # Validation rules for Azure Kubernetes Service (AKS)
 #
 
+if ($Null -ne $Configuration.minAKSVersion) {
+    Write-Warning -Message ($LocalizedData.ConfigurationOptionReplaced -f 'minAKSVersion', 'Azure_AKSMinimumVersion');
+}
+
 # Synopsis: AKS clusters should have minimum number of nodes for failover and updates
 Rule 'Azure.AKS.MinNodeCount' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA' } {
     $TargetObject.Properties.agentPoolProfiles[0].count -ge 3
@@ -12,7 +16,7 @@ Rule 'Azure.AKS.MinNodeCount' -Type 'Microsoft.ContainerService/managedClusters'
 
 # Synopsis: AKS clusters should meet the minimum version
 Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA' } {
-    $minVersion = [Version]$Configuration.minAKSVersion
+    $minVersion = [Version]$Configuration.Azure_AKSMinimumVersion
     if ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters') {
         ([Version]$TargetObject.Properties.kubernetesVersion) -ge $minVersion
         Reason ($LocalizedData.AKSVersion -f $TargetObject.Properties.kubernetesVersion);
@@ -22,7 +26,7 @@ Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Mi
             (([Version]$TargetObject.Properties.orchestratorVersion) -ge $minVersion)
         Reason ($LocalizedData.AKSVersion -f $TargetObject.Properties.orchestratorVersion);
     }
-} -Configure @{ minAKSVersion = '1.16.7' }
+} -Configure @{ Azure_AKSMinimumVersion = '1.16.7' }
 
 # Synopsis: AKS agent pools should run the same Kubernetes version as the cluster
 Rule 'Azure.AKS.PoolVersion' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA' } {
@@ -82,6 +86,6 @@ Rule 'Azure.AKS.NodeMinPods' -Type 'Microsoft.ContainerService/managedClusters',
         $agentPools = @($TargetObject.Properties);
     }
     foreach ($agentPool in $agentPools) {
-        $Assert.GreaterOrEqual($agentPool, 'maxPods', $Configuration.Azure_AKSNodeMinimumPods)
+        $Assert.GreaterOrEqual($agentPool, 'maxPods', $Configuration.Azure_AKSNodeMinimumMaxPods)
     }
-} -Configure @{ Azure_AKSNodeMinimumPods = 50 }
+} -Configure @{ Azure_AKSNodeMinimumMaxPods = 50 }

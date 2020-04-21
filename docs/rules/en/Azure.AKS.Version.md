@@ -23,6 +23,12 @@ A list of available Kubernetes versions can be found using the `az aks get-versi
 
 Consider upgrading AKS control plan and nodes pools to the latest stable version of Kubernetes.
 
+## NOTES
+
+To configure this rule:
+
+- Override the `Azure_AKSMinimumVersion` configuration value with the minimum Kubernetes version.
+
 ## LINKS
 
 - [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions).

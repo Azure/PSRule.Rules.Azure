@@ -34,9 +34,12 @@ function global:GetSubResources {
 }
 
 function global:IsAllowedRegion {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
     process {
-        $region = $Configuration.azureAllowedRegions;
-        foreach ($r in $Configuration.azureAllowedRegions) {
+        $region = @($Configuration.Azure_AllowedRegions);
+        foreach ($r in $Configuration.Azure_AllowedRegions) {
             $region += ($r -replace ' ', '')
         }
         return $TargetObject.Location -in $region;
@@ -84,6 +87,7 @@ function global:HasPeerNetwork {
 
 # Get a sorted list of NSG rules
 function global:GetOrderedNSGRules {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True)]
         [ValidateSet('Inbound', 'Outbound')]
