@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- General improvements:
+  - Add name and type bindings for template files. [#353](https://github.com/Microsoft/PSRule.Rules.Azure/issues/353)
+
 ## v0.11.0-B2004012 (pre-release)
 
 - New rules:

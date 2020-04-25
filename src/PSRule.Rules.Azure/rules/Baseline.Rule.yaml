@@ -6,9 +6,14 @@ metadata:
   name: Azure.Default
 spec:
   binding:
+    targetName:
+    - ResourceName
+    - FullName
+    - name
     targetType:
     - ResourceType
     - type
+    - Extension
     field:
       resourceId: [ 'ResourceId' ]
       subscriptionId: [ 'SubscriptionId' ]
@@ -24,9 +29,14 @@ metadata:
   name: Azure.Preview
 spec:
   binding:
+    targetName:
+    - ResourceName
+    - FullName
+    - name
     targetType:
     - ResourceType
     - type
+    - Extension
     field:
       resourceId: [ 'ResourceId' ]
       subscriptionId: [ 'SubscriptionId' ]
@@ -42,9 +52,14 @@ metadata:
   name: Azure.All
 spec:
   binding:
+    targetName:
+    - ResourceName
+    - FullName
+    - name
     targetType:
     - ResourceType
     - type
+    - Extension
     field:
       resourceId: [ 'ResourceId' ]
       subscriptionId: [ 'SubscriptionId' ]
