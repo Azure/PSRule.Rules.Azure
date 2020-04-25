@@ -2,12 +2,12 @@
 # CI pipeline for PSRule.Rules.Azure
 
 variables:
-  version: '0.11.0'
+  version: '0.12.0'
   buildConfiguration: 'Release'
   disable.coverage.autogenerate: 'true'
   imageName: 'ubuntu-18.04'
 
- # Use build number format, i.e. 0.11.0-B2002001
+ # Use build number format, i.e. 0.12.0-B2004001
 name: $(version)-B$(date:yyMM)$(rev:rrr)
 
 trigger:
