@@ -654,7 +654,11 @@ function VisitStorageAccount {
     )
     process {
         $resources = @();
-        $resources += Get-AzResource -Name $Resource.Name -ResourceType 'Microsoft.Storage/storageAccounts/blobServices' -ResourceGroupName $Resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2019-04-01' -ExpandProperties;
+        $blobServices += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Storage/storageAccounts/blobServices' -ApiVersion '2019-04-01';
+        foreach ($blobService in $blobServices) {
+            $resources += $blobService;
+            $resources += Get-AzResource -Name "$($Resource.Name)/$($blobService.Name)" -ResourceType 'Microsoft.Storage/storageAccounts/blobServices/containers' -ResourceGroupName $Resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2019-04-01' -ExpandProperties;
+        }
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }

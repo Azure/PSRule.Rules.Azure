@@ -1,0 +1,52 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "template": "./Resources.Storage.Template.json"
+    },
+    "parameters": {
+        "storageAccountName": {
+            "value": "storage1"
+        },
+        "location": {
+            "value": "region"
+        },
+        "containers": {
+            "value": [
+                {
+                    "name": "arm"
+                }
+            ]
+        },
+        "lifecycleRules": {
+            "value": [
+                {
+                    "enabled": true,
+                    "name": "Cleanup-ARM",
+                    "type": "Lifecycle",
+                    "definition": {
+                        "actions": {
+                            "baseBlob": {
+                                "delete": {
+                                    "daysAfterModificationGreaterThan": 7
+                                }
+                            }
+                        },
+                        "filters": {
+                            "blobTypes": [
+                                "blockBlob"
+                            ],
+                            "prefixMatch": [
+                                "arm/configurations",
+                                "arm/runbooks"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "softDeleteDays": {
+            "value": 7
+        }
+    }
+}

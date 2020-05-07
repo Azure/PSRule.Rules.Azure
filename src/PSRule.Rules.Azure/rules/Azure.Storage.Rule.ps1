@@ -26,3 +26,19 @@ Rule 'Azure.Storage.SoftDelete' -Type 'Microsoft.Storage/storageAccounts' -If { 
     $serviceProperties = GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices'
     $serviceProperties.properties.deleteRetentionPolicy.enabled -eq $True
 }
+
+# Synopsis: Avoid using Blob or Container access type
+Rule 'Azure.Storage.BlobAccessType' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices/containers' -Tag @{ release = 'GA' } {
+    $containers = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
+        $containers = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices/containers');
+    }
+    if ($containers.Length -eq 0) {
+        return $True;
+    }
+    foreach ($container in $containers) {
+        $Assert.
+            HasFieldValue($container, 'Properties.publicAccess', 'None').
+            WithReason(($LocalizedData.PublicAccessStorageContainer -f $container.name, $container.Properties.publicAccess), $True);
+    }
+}

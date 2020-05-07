@@ -72,6 +72,36 @@
                 "Sku": null,
                 "Tags": null,
                 "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A/blobServices/default/containers/container1",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A/blobServices/default/containers/container1",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "container1",
+                "Name": "container1",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "publicAccess": "None",
+                    "legalHold": {
+                        "hasLegalHold": false,
+                        "tags": []
+                    },
+                    "hasImmutabilityPolicy": false,
+                    "hasLegalHold": false
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+                "ResourceType": "Microsoft.Storage/storageAccounts/blobServices/containers",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             }
         ]
     },
@@ -145,6 +175,36 @@
                 "ExtensionResourceType": null,
                 "Sku": null,
                 "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B/blobServices/default/containers/container1",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B/blobServices/default/containers/container1",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "container1",
+                "Name": "container1",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "publicAccess": "Blob",
+                    "legalHold": {
+                        "hasLegalHold": false,
+                        "tags": []
+                    },
+                    "hasImmutabilityPolicy": false,
+                    "hasLegalHold": false
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+                "ResourceType": "Microsoft.Storage/storageAccounts/blobServices/containers",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
                 "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             }
         ]
