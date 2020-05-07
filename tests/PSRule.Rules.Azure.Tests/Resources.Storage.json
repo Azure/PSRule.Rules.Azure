@@ -178,8 +178,8 @@
                 "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             },
             {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A/blobServices/default/containers/container1",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A/blobServices/default/containers/container1",
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B/blobServices/default/containers/container1",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B/blobServices/default/containers/container1",
                 "Identity": null,
                 "Kind": null,
                 "Location": null,
