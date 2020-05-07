@@ -23,4 +23,5 @@
     APIMProductSubscription = "The product '{0}' does not require a subscription to use."
     APIMProductApproval = "The product '{0}' does not require approval."
     APIMCertificateExpiry = "The certificate for host name '{0}' expires or expired on '{1}'."
+    PublicAccessStorageContainer = "The container '{0}' is configured with access type '{1}'."
 }
