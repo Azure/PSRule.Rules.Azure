@@ -164,6 +164,12 @@ Name | Synopsis | Severity
 [Azure.NSG.DenyAllInbound](Azure.NSG.DenyAllInbound.md) | Avoid denying all inbound traffic. | Important
 [Azure.NSG.LateralTraversal](Azure.NSG.LateralTraversal.md) | Deny outbound management connections from non-management hosts. | Important
 
+### Policy
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.Policy.Descriptors](Azure.Policy.Descriptors.md) | Policy and initiative definitions should use a display name and description. | Awareness
+
 ### Public IP address
 
 Name | Synopsis | Severity
@@ -183,6 +189,12 @@ Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.SecurityCenter.Contact](Azure.SecurityCenter.Contact.md) | Security Center email and phone contact details should be set. | Important
 [Azure.SecurityCenter.Provisioning](Azure.SecurityCenter.Provisioning.md) | Enable auto-provisioning on to improve Azure Security Center insights. | Important
+
+### Storage
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.Storage.BlobAccessType](Azure.Storage.BlobAccessType.md) | Storage Accounts use containers configured with an access type other than Private. | Important
 
 ### Storage Account
 

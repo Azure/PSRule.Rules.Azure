@@ -1,0 +1,106 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.1.1.0",
+    "metadata": {
+        "name": "Policy",
+        "description": "Create or update policy definitions and assignments."
+    },
+    "parameters": {
+        "policies": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "The definitions for one or more policies to deploy."
+            }
+        },
+        "initiatives": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "The definitions for one or more initiatives to deploy."
+            }
+        },
+        "assignments": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "The assignments for one or more initiatives."
+            }
+        }
+    },
+    "variables": {
+        "initiativeWithSubscription": "[json(replace(string(parameters('initiatives')), '00000000-0000-0000-0000-000000000000', subscription().subscriptionId))]"
+    },
+    "resources": [
+        {
+            "comments": "Policy defintion",
+            "condition": "[not(empty(parameters('policies')))]",
+            "name": "[parameters('policies')[copyIndex('policyIndex')].name]",
+            "type": "Microsoft.Authorization/policyDefinitions",
+            "copy": {
+                "count": "[length(parameters('policies'))]",
+                "name": "policyIndex"
+            },
+            "apiVersion": "2019-06-01",
+            "properties": {
+                "policyType": "Custom",
+                "mode": "All",
+                "displayName": "[parameters('policies')[copyIndex('policyIndex')].displayName]",
+                "description": "[parameters('policies')[copyIndex('policyIndex')].description]",
+                "policyRule": "[parameters('policies')[copyIndex('policyIndex')].policyRule]",
+                "metadata": {
+                    "category": "[parameters('policies')[copyIndex('policyIndex')].category]"
+                },
+                "parameters": "[parameters('policies')[copyIndex('policyIndex')].parameters]"
+            }
+        },
+        {
+            "comments": "Initiative definition",
+            "condition": "[not(empty(parameters('initiatives')))]",
+            "name": "[parameters('initiatives')[copyIndex('initiativeIndex')].name]",
+            "type": "Microsoft.Authorization/policySetDefinitions",
+            "copy": {
+                "count": "[length(parameters('initiatives'))]",
+                "name": "initiativeIndex"
+            },
+            "dependsOn": [
+                "policyIndex"
+            ],
+            "apiVersion": "2019-06-01",
+            "properties": {
+                "policyType": "Custom",
+                "displayName": "[parameters('initiatives')[copyIndex('initiativeIndex')].displayName]",
+                "description": "[parameters('initiatives')[copyIndex('initiativeIndex')].description]",
+                "metadata": {
+                    "category": "[parameters('initiatives')[copyIndex('initiativeIndex')].category]"
+                },
+                "parameters": "[parameters('initiatives')[copyIndex('initiativeIndex')].parameters]",
+                "policyDefinitions": "[variables('initiativeWithSubscription')[copyIndex('initiativeIndex')].policyDefinitions]"
+            }
+        },
+        {
+            "comments": "Initiative assignment",
+            "condition": "[not(equals(length(parameters('assignments')), 0))]",
+            "name": "[if(equals(length(parameters('assignments')), 0), 'empty', parameters('assignments')[copyIndex('assignmentIndex')].name)]",
+            "type": "Microsoft.Authorization/policyAssignments",
+            "copy": {
+                "mode": "Parallel",
+                "count": "[if(equals(length(parameters('assignments')), 0), 1, length(parameters('assignments')))]",
+                "name": "assignmentIndex"
+            },
+            "dependsOn": [
+                "initiativeIndex"
+            ],
+            "apiVersion": "2019-06-01",
+            "properties": {
+                "displayName": "[parameters('assignments')[copyIndex('assignmentIndex')].displayName]",
+                "description": "[parameters('assignments')[copyIndex('assignmentIndex')].description]",
+                "policyDefinitionId": "[concat(subscription().id, '/providers/Microsoft.Authorization/policySetDefinitions/', parameters('assignments')[copyIndex('assignmentIndex')].initiatives)]",
+                "scope": "[subscription().id]",
+                "parameters": {},
+                "metadata": {},
+                "enforcementMode": "[if(empty(parameters('assignments')[copyIndex('assignmentIndex')].enforcementMode), 'Default', parameters('assignments')[copyIndex('assignmentIndex')].enforcementMode)]"
+            }
+        }
+    ]
+}

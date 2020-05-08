@@ -805,8 +805,12 @@ function VisitSubscription {
         $resources += Get-AzResource -DefaultProfile $Context -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Security/autoProvisioningSettings";
         $resources += Get-AzResource -DefaultProfile $Context -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Security/securityContacts";
         $resources += Get-AzResource -DefaultProfile $Context -ApiVersion '2018-06-01' -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Security/pricings";
+        $resources += Get-AzResource -DefaultProfile $Context -ApiVersion '2019-06-01' -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Authorization/policyAssignments";
         $resources += Get-AzResource -ResourceType 'microsoft.insights/activityLogAlerts' -DefaultProfile $Context -ExpandProperties;
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+
+        Get-AzPolicyDefinition -Custom -DefaultProfile $Context;
+        Get-AzPolicySetDefinition -Custom -DefaultProfile $Context;
     }
 }
 

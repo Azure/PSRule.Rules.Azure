@@ -1,0 +1,334 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "template": "./Resources.Policy.Template.json"
+    },
+    "parameters": {
+        "policies": {
+            "value": [
+                {
+                    "name": "inheritTagPolicy",
+                    "displayName": "Inherit tag from Resource Group",
+                    "description": "Resources inherits tags from their parent resource group when not set.",
+                    "category": "Metadata",
+                    "policyRule": {
+                        "$schema": "https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json#",
+                        "if": {
+                            "allOf": [
+                                {
+                                    "anyOf": [
+                                        {
+                                            "field": "[concat('tags[', parameters('tagName'), ']')]",
+                                            "exists": "false"
+                                        },
+                                        {
+                                            "field": "[concat('tags[', parameters('tagName'), ']')]",
+                                            "notEquals": "[resourceGroup().tags[parameters('tagName')]]"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "not": {
+                                        "field": "type",
+                                        "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+                                    }
+                                }
+                            ]
+                        },
+                        "then": {
+                            "effect": "append",
+                            "details": [
+                                {
+                                    "field": "[concat('tags[', parameters('tagName'), ']')]",
+                                    "value": "[resourceGroup().tags[parameters('tagName')]]"
+                                }
+                            ]
+                        }
+                    },
+                    "parameters": {
+                        "tagName": {
+                            "type": "String",
+                            "metadata": {
+                                "description": "The name of the tag to inherit.",
+                                "displayName": "Tag name"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "rgRequireTagPolicy",
+                    "displayName": "Resource Group requires tag",
+                    "description": "Resource group requires tag to be set.",
+                    "category": "Metadata",
+                    "parameters": {
+                        "tagName": {
+                            "type": "String",
+                            "metadata": {
+                                "displayName": "Tag name",
+                                "description": "The name of the tag to require"
+                            }
+                        }
+                    },
+                    "policyRule": {
+                        "$schema": "https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json#",
+                        "if": {
+                            "allOf": [
+                                {
+                                    "field": "[concat('tags[', parameters('tagName'), ']')]",
+                                    "exists": "false"
+                                },
+                                {
+                                    "field": "type",
+                                    "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+                                }
+                            ]
+                        },
+                        "then": {
+                            "effect": "deny"
+                        }
+                    }
+                },
+                {
+                    "name": "rgApplyTagPolicy",
+                    "displayName": "Apply tag to Resource Group",
+                    "description": "This policy automatically applies a tag based on Resource Group name prefix.",
+                    "category": "Metadata",
+                    "parameters": {
+                        "tagName": {
+                            "type": "String",
+                            "metadata": {
+                                "description": "The name of the tag to require.",
+                                "displayName": "Tag name"
+                            }
+                        },
+                        "tagValue": {
+                            "type": "String",
+                            "metadata": {
+                                "description": "The value to automatically apply.",
+                                "displayName": "Tag value"
+                            }
+                        },
+                        "namePrefix": {
+                            "type": "String",
+                            "metadata": {
+                                "description": "The resource group name prefix.",
+                                "displayName": "Name prefix"
+                            }
+                        }
+                    },
+                    "policyRule": {
+                        "$schema": "https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json#",
+                        "if": {
+                            "allOf": [
+                                {
+                                    "field": "[concat('tags[', parameters('tagName'), ']')]",
+                                    "exists": "false"
+                                },
+                                {
+                                    "field": "name",
+                                    "like": "[concat(parameters('namePrefix'), '*')]"
+                                },
+                                {
+                                    "field": "type",
+                                    "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+                                }
+                            ]
+                        },
+                        "then": {
+                            "effect": "append",
+                            "details": [
+                                {
+                                    "field": "[concat('tags[', parameters('tagName'), ']')]",
+                                    "value": "[parameters('tagValue')]"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "initiatives": {
+            "value": [
+                {
+                    "name": "standards",
+                    "displayName": "Metadata standards",
+                    "description": "This is a initiative to enforce naming and tagging standards for resources.",
+                    "category": "Metadata",
+                    "parameters": {},
+                    "policyDefinitions": [
+                        {
+                            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/rgRequireTagPolicy",
+                            "parameters": {
+                                "tagName": {
+                                    "value": "environment"
+                                }
+                            }
+                        },
+                        {
+                            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/rgRequireTagPolicy",
+                            "parameters": {
+                                "tagName": {
+                                    "value": "service"
+                                }
+                            }
+                        },
+                        {
+                            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/inheritTagPolicy",
+                            "parameters": {
+                                "tagName": {
+                                    "value": "environment"
+                                }
+                            }
+                        },
+                        {
+                            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/inheritTagPolicy",
+                            "parameters": {
+                                "tagName": {
+                                    "value": "service"
+                                }
+                            }
+                        },
+                        {
+                            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/rgApplyTagPolicy",
+                            "parameters": {
+                                "tagName": {
+                                    "value": "cleanup-group"
+                                },
+                                "tagValue": {
+                                    "value": "demo"
+                                },
+                                "namePrefix": {
+                                    "value": "demo-"
+                                }
+                            }
+                        },
+                        {
+                            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/rgApplyTagPolicy",
+                            "parameters": {
+                                "tagName": {
+                                    "value": "environment"
+                                },
+                                "tagValue": {
+                                    "value": "production"
+                                },
+                                "namePrefix": {
+                                    "value": "cloud-shell-storage-"
+                                }
+                            }
+                        },
+                        {
+                            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/rgApplyTagPolicy",
+                            "parameters": {
+                                "tagName": {
+                                    "value": "service"
+                                },
+                                "tagValue": {
+                                    "value": "Cloud Shell"
+                                },
+                                "namePrefix": {
+                                    "value": "cloud-shell-storage-"
+                                }
+                            }
+                        },
+                        {
+                            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/rgApplyTagPolicy",
+                            "parameters": {
+                                "tagName": {
+                                    "value": "environment"
+                                },
+                                "tagValue": {
+                                    "value": "production"
+                                },
+                                "namePrefix": {
+                                    "value": "NetworkWatcherRG"
+                                }
+                            }
+                        },
+                        {
+                            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/rgApplyTagPolicy",
+                            "parameters": {
+                                "tagName": {
+                                    "value": "service"
+                                },
+                                "tagValue": {
+                                    "value": "Monitoring"
+                                },
+                                "namePrefix": {
+                                    "value": "NetworkWatcherRG"
+                                }
+                            }
+                        },
+                        {
+                            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/rgApplyTagPolicy",
+                            "parameters": {
+                                "tagName": {
+                                    "value": "environment"
+                                },
+                                "tagValue": {
+                                    "value": "production"
+                                },
+                                "namePrefix": {
+                                    "value": "dashboards"
+                                }
+                            }
+                        },
+                        {
+                            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/rgApplyTagPolicy",
+                            "parameters": {
+                                "tagName": {
+                                    "value": "service"
+                                },
+                                "tagValue": {
+                                    "value": "Monitoring"
+                                },
+                                "namePrefix": {
+                                    "value": "dashboards"
+                                }
+                            }
+                        },
+                        {
+                            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/rgApplyTagPolicy",
+                            "parameters": {
+                                "tagName": {
+                                    "value": "environment"
+                                },
+                                "tagValue": {
+                                    "value": "production"
+                                },
+                                "namePrefix": {
+                                    "value": "DefaultResourceGroup-"
+                                }
+                            }
+                        },
+                        {
+                            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/rgApplyTagPolicy",
+                            "parameters": {
+                                "tagName": {
+                                    "value": "service"
+                                },
+                                "tagValue": {
+                                    "value": "Monitoring"
+                                },
+                                "namePrefix": {
+                                    "value": "DefaultResourceGroup-"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "assignments": {
+            "value": [
+                {
+                    "name": "standards-assignment",
+                    "displayName": "Metadata standards",
+                    "description": "Enforces naming and tagging standards for resources.",
+                    "initiatives": "standards",
+                    "enforcementMode": "Default"
+                }
+            ]
+        }
+    }
+}

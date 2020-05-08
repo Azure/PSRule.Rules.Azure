@@ -5,6 +5,8 @@
 - New rules:
   - Storage:
     - Check Storage blob containers use private access type. [#365](https://github.com/Microsoft/PSRule.Rules.Azure/issues/365)
+  - Policy:
+    - Check Policy definitions use descriptive fields. [#364](https://github.com/Microsoft/PSRule.Rules.Azure/issues/364)
 
 ## v0.11.0
 
