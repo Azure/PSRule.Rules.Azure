@@ -1,0 +1,275 @@
+[
+    {
+        "Name": "initiative-001",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/initiative-001",
+        "ResourceName": "initiative-001",
+        "ResourceType": "Microsoft.Authorization/policySetDefinitions",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+            "displayName": "initiative-001",
+            "policyType": "Custom",
+            "description": "This is an initiative.",
+            "metadata": {
+                "category": "Metadata",
+                "createdBy": "00000000-0000-0000-0000-000000000000",
+                "updatedBy": "00000000-0000-0000-0000-000000000000"
+            },
+            "parameters": {},
+            "policyDefinitions": [
+                {
+                    "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/policy-001",
+                    "parameters": {}
+                }
+            ]
+        },
+        "PolicySetDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/initiative-001"
+    },
+    {
+        "Name": "initiative-002",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/initiative-002",
+        "ResourceName": "initiative-002",
+        "ResourceType": "Microsoft.Authorization/policySetDefinitions",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+            "displayName": "initiative-002",
+            "policyType": "Custom",
+            "metadata": {
+                "category": "Metadata",
+                "createdBy": "00000000-0000-0000-0000-000000000000",
+                "updatedBy": "00000000-0000-0000-0000-000000000000"
+            },
+            "parameters": {},
+            "policyDefinitions": [
+                {
+                    "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/policy-001",
+                    "parameters": {}
+                }
+            ]
+        },
+        "PolicySetDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/initiative-002"
+    },
+    {
+        "Name": "initiative-003",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/initiative-003",
+        "ResourceName": "initiative-003",
+        "ResourceType": "Microsoft.Authorization/policySetDefinitions",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+            "policyType": "Custom",
+            "description": "This is an initiative.",
+            "metadata": {
+                "category": "Metadata",
+                "createdBy": "00000000-0000-0000-0000-000000000000",
+                "updatedBy": "00000000-0000-0000-0000-000000000000"
+            },
+            "parameters": {},
+            "policyDefinitions": [
+                {
+                    "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/policy-001",
+                    "parameters": {}
+                }
+            ]
+        },
+        "PolicySetDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/initiative-003"
+    },
+    {
+        "Name": "policy-001",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/policy-001",
+        "ResourceName": "policy-001",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+            "displayName": "Inherit tag from Resource Group",
+            "policyType": "Custom",
+            "mode": "All",
+            "description": "Resources inherits tags from their parent resource group when not set.",
+            "metadata": {
+                "category": "Metadata",
+                "createdBy": "00000000-0000-0000-0000-000000000000",
+                "updatedBy": "00000000-0000-0000-0000-000000000000"
+            },
+            "parameters": {
+                "tagName": {
+                    "type": "String",
+                    "metadata": {
+                        "description": "The name of the tag to inherit.",
+                        "displayName": "Tag name"
+                    }
+                }
+            },
+            "policyRule": {
+                "$schema": "https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json#",
+                "if": {
+                    "allOf": [
+                        {
+                            "anyOf": [
+                                {
+                                    "field": "[concat('tags[', parameters('tagName'), ']')]",
+                                    "exists": "false"
+                                },
+                                {
+                                    "field": "[concat('tags[', parameters('tagName'), ']')]",
+                                    "notEquals": "[resourceGroup().tags[parameters('tagName')]]"
+                                }
+                            ]
+                        },
+                        {
+                            "not": {
+                                "field": "type",
+                                "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+                            }
+                        }
+                    ]
+                },
+                "then": {
+                    "effect": "append",
+                    "details": [
+                        {
+                            "field": "[concat('tags[', parameters('tagName'), ']')]",
+                            "value": "[resourceGroup().tags[parameters('tagName')]]"
+                        }
+                    ]
+                }
+            }
+        },
+        "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/policy-001"
+    },
+    {
+        "Name": "policy-002",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/policy-002",
+        "ResourceName": "policy-002",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+            "policyType": "Custom",
+            "mode": "All",
+            "description": "This policy automatically applies a tag based on Resource Group name prefix.",
+            "metadata": {
+                "category": "Metadata",
+                "createdBy": "00000000-0000-0000-0000-000000000000",
+                "updatedBy": "00000000-0000-0000-0000-000000000000"
+            },
+            "parameters": {
+                "tagName": {
+                    "type": "String",
+                    "metadata": {
+                        "description": "The name of the tag to require.",
+                        "displayName": "Tag name"
+                    }
+                },
+                "tagValue": {
+                    "type": "String",
+                    "metadata": {
+                        "description": "The value to automatically apply.",
+                        "displayName": "Tag value"
+                    }
+                },
+                "namePrefix": {
+                    "type": "String",
+                    "metadata": {
+                        "description": "The resource group name prefix.",
+                        "displayName": "Name prefix"
+                    }
+                }
+            },
+            "policyRule": {
+                "$schema": "https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json#",
+                "if": {
+                    "allOf": [
+                        {
+                            "field": "[concat('tags[', parameters('tagName'), ']')]",
+                            "exists": "false"
+                        },
+                        {
+                            "field": "name",
+                            "like": "[concat(parameters('namePrefix'), '*')]"
+                        },
+                        {
+                            "field": "type",
+                            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+                        }
+                    ]
+                },
+                "then": {
+                    "effect": "append",
+                    "details": [
+                        {
+                            "field": "[concat('tags[', parameters('tagName'), ']')]",
+                            "value": "[parameters('tagValue')]"
+                        }
+                    ]
+                }
+            }
+        },
+        "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/policy-002"
+    },
+    {
+        "Name": "policy-003",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/policy-003",
+        "ResourceName": "policy-003",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+            "displayName": "Resource Group requires tag",
+            "policyType": "Custom",
+            "mode": "All",
+            "metadata": {
+                "category": "Metadata",
+                "createdBy": "00000000-0000-0000-0000-000000000000",
+                "updatedBy": "00000000-0000-0000-0000-000000000000"
+            },
+            "parameters": {
+                "tagName": {
+                    "type": "String",
+                    "metadata": {
+                        "displayName": "Tag name",
+                        "description": "The name of the tag to require"
+                    }
+                }
+            },
+            "policyRule": {
+                "$schema": "https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json#",
+                "if": {
+                    "allOf": [
+                        {
+                            "field": "[concat('tags[', parameters('tagName'), ']')]",
+                            "exists": "false"
+                        },
+                        {
+                            "field": "type",
+                            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+                        }
+                    ]
+                },
+                "then": {
+                    "effect": "deny"
+                }
+            }
+        },
+        "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/policy-003"
+    },
+    {
+        "Name": "assignment-001",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment-001",
+        "ResourceName": "assignment-001",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+            "displayName": "assignment-001 (subscription: 00000000-0000-0000-0000-000000000000)",
+            "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/00000000-0000-0000-0000-000000000000",
+            "scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+            "description": "An example description",
+            "metadata": {
+                "assignedBy": "Security Center",
+                "createdBy": "00000000-0000-0000-0000-000000000000",
+                "updatedBy": "00000000-0000-0000-0000-000000000000"
+            },
+            "enforcementMode": "Default"
+        },
+        "Sku": {
+            "name": "A1",
+            "tier": "Standard"
+        },
+        "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment-001"
+    }
+]
