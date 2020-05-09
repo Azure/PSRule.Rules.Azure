@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.12.0-B2005005 (pre-release)
+
 - New rules:
   - Storage:
     - Check Storage blob containers use private access type. [#365](https://github.com/Microsoft/PSRule.Rules.Azure/issues/365)
