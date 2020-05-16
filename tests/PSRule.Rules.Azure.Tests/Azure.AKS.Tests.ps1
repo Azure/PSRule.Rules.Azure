@@ -164,6 +164,105 @@ Describe 'Azure.AKS' -Tag AKS {
         }
     }
 
+    Context 'Resource name' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'cluster1'
+            'CLUSTER-1'
+            'cluster_1'
+            '1-cluster'
+        )
+        $invalidNames = @(
+            '_cluster1'
+            '-cluster1'
+            'cluster1_'
+            'cluster1-'
+            'cluster.1'
+            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.ContainerService/managedClusters'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AKS.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AKS.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
+    Context 'DNS prefix' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'cluster1'
+            'CLUSTER-1'
+            '1-cluster'
+        )
+        $invalidNames = @(
+            '_cluster1'
+            '-cluster1'
+            'cluster1_'
+            'cluster1-'
+            'cluster_1'
+            'cluster.1'
+            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            Properties = [PSCustomObject]@{
+                DNSPrefix = ''
+            }
+            ResourceType = 'Microsoft.ContainerService/managedClusters'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $testObject.Properties.DNSPrefix = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AKS.DNSPrefix';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $testObject.Properties.DNSPrefix = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AKS.DNSPrefix';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
     Context 'With Template' {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.AKS.Template.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.AKS.json;

@@ -69,6 +69,20 @@ Rule 'Azure.VNET.PeerState' -If { (HasPeerNetwork) } -Tag @{ release = 'GA' } {
     }
 }
 
+# Synopsis: Use VNET naming requirements
+Rule 'Azure.VNET.Name' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA' } {
+    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
+
+    # Between 2 and 64 characters long
+    $Assert.GreaterOrEqual($TargetObject, 'Name', 2)
+    $Assert.LessOrEqual($TargetObject, 'Name', 64)
+
+    # Alphanumerics, underscores, periods, and hyphens
+    # Start with alphanumeric
+    # End alphanumeric or underscore
+    Match 'Name' '^[A-Za-z0-9](-|\w|\.){0,}\w$'
+}
+
 #endregion Virtual Network
 
 #region Network Security Group

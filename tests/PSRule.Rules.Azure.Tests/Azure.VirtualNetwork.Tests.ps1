@@ -108,6 +108,50 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
         }
     }
 
+    Context 'Resource name' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'vnet-001'
+            'vnet-001_'
+            'VNET.001'
+        )
+        $invalidNames = @(
+            '_vnet-001'
+            '-vnet-001'
+            'v'
+            'vnet-001.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Network/virtualNetworks'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNET.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNET.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
     Context 'With Template' {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
         $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';

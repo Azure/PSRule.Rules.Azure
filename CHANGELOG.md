@@ -3,8 +3,19 @@
 ## Unreleased
 
 - New rules:
+  - Azure Kubernetes Service:
+    - Check AKS cluster name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+    - Check AKS cluster DNS prefix requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+  - Container Registry:
+    - Check registry name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
   - ExpressRoute Gateway:
     - Check ExpressRoute Gateway uses current SKU. [#369](https://github.com/Microsoft/PSRule.Rules.Azure/issues/369)
+  - Front Door:
+    - Check Front Door name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+  - SignalR Service:
+    - Check SignalR Service name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+  - Virtual Network:
+    - Check VNET name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
   - VPN Gateway:
     - Check VPN Gateway uses current SKU. [#370](https://github.com/Microsoft/PSRule.Rules.Azure/issues/370)
     - Check VPN Gateway uses active-active configuration. [#371](https://github.com/Microsoft/PSRule.Rules.Azure/issues/371)
