@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- New rules:
+  - ExpressRoute Gateway:
+    - Check ExpressRoute Gateway uses current SKU. [#369](https://github.com/Microsoft/PSRule.Rules.Azure/issues/369)
+  - VPN Gateway:
+    - Check VPN Gateway uses current SKU. [#370](https://github.com/Microsoft/PSRule.Rules.Azure/issues/370)
+    - Check VPN Gateway uses active-active configuration. [#371](https://github.com/Microsoft/PSRule.Rules.Azure/issues/371)
+
 ## v0.12.0-B2005005 (pre-release)
 
 - New rules:

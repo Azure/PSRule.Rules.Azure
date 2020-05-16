@@ -752,3 +752,134 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
         }
     }
 }
+
+Describe 'Azure.VPNGateway' -Tag 'Network', 'VPN' {
+    $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
+
+    Context 'Conditions' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
+
+        It 'Azure.VPNGateway.LegacySKU' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VPNGateway.LegacySKU' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'gateway-A';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'gateway-B';
+        }
+
+        It 'Azure.VPNGateway.ActiveActive' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VPNGateway.ActiveActive' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'gateway-A';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'gateway-B';
+        }
+    }
+
+    Context 'With template' {
+        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VPN.json;
+        Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.VPN.Parameters.json' | Export-AzTemplateRuleData -OutputPath $outputFile;
+        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+
+        It 'Azure.VPNGateway.LegacySKU' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VPNGateway.LegacySKU' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'gateway-A';
+        }
+
+        It 'Azure.VPNGateway.ActiveActive' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VPNGateway.ActiveActive' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'gateway-A';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -BeNullOrEmpty;
+        }
+    }
+}
+
+Describe 'Azure.ERGateway' -Tag 'Network', 'ExpressRoute' {
+    $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
+
+    Context 'Conditions' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
+
+        It 'Azure.ERGateway.LegacySKU' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ERGateway.LegacySKU' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'gateway-D';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'gateway-C';
+        }
+
+    }
+
+    Context 'With template' {
+        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.ExpressRoute.json;
+        Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.ExpressRoute.Parameters.json' | Export-AzTemplateRuleData -OutputPath $outputFile;
+        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+
+        It 'Azure.ERGateway.LegacySKU' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ERGateway.LegacySKU' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'gateway-A';
+        }
+    }
+}
