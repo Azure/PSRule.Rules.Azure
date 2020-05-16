@@ -117,6 +117,12 @@ Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.DataFactory.Version](Azure.DataFactory.Version.md) | Consider migrating to DataFactory v2. | Awareness
 
+### ExpressRoute
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.ERGateway.LegacySKU](Azure.ERGateway.LegacySKU.md) | Migrate from legacy SKUs to improve reliability and performance of ExpressRoute (ER) gateways. | Important
+
 ### Firewall
 
 Name | Synopsis | Severity
@@ -168,7 +174,7 @@ Name | Synopsis | Severity
 
 Name | Synopsis | Severity
 ---- | -------- | --------
-[Azure.Policy.Descriptors](Azure.Policy.Descriptors.md) | Policy and initiative definitions should use a display name and description. | Awareness
+[Azure.Policy.Descriptors](Azure.Policy.Descriptors.md) | Policy and initiative definitions should use a display name, description and category. | Awareness
 
 ### Public IP address
 
@@ -252,3 +258,10 @@ Name | Synopsis | Severity
 [Azure.VNET.PeerState](Azure.VNET.PeerState.md) | VNET peering connections must be connected. | Important
 [Azure.VNET.SingleDNS](Azure.VNET.SingleDNS.md) | VNETs should have at least two DNS servers assigned. | Single point of failure
 [Azure.VNET.UseNSGs](Azure.VNET.UseNSGs.md) | Subnets should have NSGs assigned. | Critical
+
+### VPN Gateway
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.VPNGateway.ActiveActive](Azure.VPNGateway.ActiveActive.md) | Use VPN gateways configured to operate in an Active-Active configuration to reduce connectivity downtime. | Important
+[Azure.VPNGateway.LegacySKU](Azure.VPNGateway.LegacySKU.md) | Migrate from legacy SKUs to improve reliability and performance of VPN gateways. | Important
