@@ -221,62 +221,6 @@ Rule 'Azure.Firewall.Mode' -Type 'Microsoft.Network/azureFirewalls' -Tag @{ rele
 
 #endregion Azure Firewall
 
-#region Front Door
-
-# Synopsis: Front Door instance should be enabled
-Rule 'Azure.FrontDoor.State' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.enabledState', 'Enabled');
-}
-
-# Synopsis: Use a minimum of TLS 1.2
-Rule 'Azure.FrontDoor.MinTLS' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA' } {
-    $endpoints = @($TargetObject);
-    if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
-        $endpoints = @($TargetObject.Properties.frontendEndpoints);
-    }
-    foreach ($endpoint in $endpoints) {
-        $Assert.HasDefaultValue($endpoint, 'properties.customHttpsConfiguration.minimumTlsVersion', '1.2');
-    }
-    # properties.frontendEndpoints[].properties.customHttpsConfiguration.minimumTlsVersion
-}
-
-# Synopsis: Use diagnostics to audit Front Door access
-Rule 'Azure.FrontDoor.Logs' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA' } {
-    Reason $LocalizedData.DiagnosticSettingsNotConfigured;
-    $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.Network/frontDoors/providers/diagnosticSettings');
-    $logCategories = @($diagnostics | ForEach-Object {
-        foreach ($log in $_.Properties.logs) {
-            if ($log.category -eq 'FrontdoorAccessLog' -and $log.enabled -eq $True) {
-                $log;
-            }
-        }
-    });
-    $Null -ne $logCategories -and $logCategories.Length -gt 0;
-}
-
-# Synopsis: Enable WAF policy of each endpoint
-Rule 'Azure.FrontDoor.UseWAF' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA' } {
-    $endpoints = @($TargetObject);
-    if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
-        $endpoints = @($TargetObject.Properties.frontendEndpoints);
-    }
-    foreach ($endpoint in $endpoints) {
-        $Assert.HasFieldValue($endpoint, 'properties.webApplicationFirewallPolicyLink.id');
-    }
-}
-
-# Synopsis: Use Front Door WAF policy in prevention mode
-Rule 'Azure.FrontDoor.WAF.Mode' -Type 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies' -Tag @{ release = 'GA' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.policySettings.mode', 'Prevention');
-}
-
-# Synopsis: Enable Front Door WAF policy
-Rule 'Azure.FrontDoor.WAF.Enabled' -Type 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies' -Tag @{ release = 'GA' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.policySettings.enabledState', 'Enabled');
-}
-
-#endregion Front Door
-
 #region VPN Gateways
 
 # Synopsis: Migrate from legacy VPN gateway SKUs
