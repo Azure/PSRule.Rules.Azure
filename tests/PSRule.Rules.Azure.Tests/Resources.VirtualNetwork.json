@@ -2227,5 +2227,222 @@
         },
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "gateway-A",
+        "Name": "gateway-A",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "packetCaptureDiagnosticState": "None",
+            "enablePrivateIpAddress": false,
+            "ipConfigurations": [
+                {
+                    "name": "default",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-A/ipConfigurations/default",
+                    "type": "Microsoft.Network/virtualNetworkGateways/ipConfigurations",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "privateIPAllocationMethod": "Dynamic",
+                        "publicIPAddress": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/pip-A"
+                        },
+                        "subnet": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/GatewaySubnet"
+                        }
+                    }
+                }
+            ],
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard",
+                "capacity": 2
+            },
+            "gatewayType": "Vpn",
+            "vpnType": "RouteBased",
+            "enableBgp": false,
+            "activeActive": false,
+            "bgpSettings": {},
+            "vpnGatewayGeneration": "Generation1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/virtualNetworkGateways",
+        "ResourceType": "Microsoft.Network/virtualNetworkGateways",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "gateway-B",
+        "Name": "gateway-B",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "packetCaptureDiagnosticState": "None",
+            "enablePrivateIpAddress": false,
+            "ipConfigurations": [
+                {
+                    "name": "default",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-B/ipConfigurations/default",
+                    "type": "Microsoft.Network/virtualNetworkGateways/ipConfigurations",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "privateIPAllocationMethod": "Dynamic",
+                        "publicIPAddress": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/pip-B"
+                        },
+                        "subnet": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-B/subnets/GatewaySubnet"
+                        }
+                    }
+                }
+            ],
+            "sku": {
+                "name": "VpnGw2",
+                "tier": "VpnGw2",
+                "capacity": 2
+            },
+            "gatewayType": "Vpn",
+            "vpnType": "RouteBased",
+            "enableBgp": false,
+            "activeActive": true,
+            "bgpSettings": {},
+            "vpnGatewayGeneration": "Generation1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/virtualNetworkGateways",
+        "ResourceType": "Microsoft.Network/virtualNetworkGateways",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-C",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "gateway-C",
+        "Name": "gateway-C",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "packetCaptureDiagnosticState": "None",
+            "enablePrivateIpAddress": false,
+            "ipConfigurations": [
+                {
+                    "name": "default",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-C/ipConfigurations/default",
+                    "type": "Microsoft.Network/virtualNetworkGateways/ipConfigurations",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "privateIPAllocationMethod": "Dynamic",
+                        "publicIPAddress": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/pip-C"
+                        },
+                        "subnet": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-C/subnets/GatewaySubnet"
+                        }
+                    }
+                }
+            ],
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard",
+                "capacity": 2
+            },
+            "gatewayType": "ExpressRoute",
+            "vpnType": "PolicyBased",
+            "enableBgp": false,
+            "activeActive": false,
+            "remoteVirtualNetworkPeerings": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-D/virtualNetworkPeerings/peer-CD"
+                }
+            ],
+            "vpnGatewayGeneration": "None"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/virtualNetworkGateways",
+        "ResourceType": "Microsoft.Network/virtualNetworkGateways",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-D",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-D",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "gateway-D",
+        "Name": "gateway-D",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "packetCaptureDiagnosticState": "None",
+            "enablePrivateIpAddress": false,
+            "ipConfigurations": [
+                {
+                    "name": "default",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-D/ipConfigurations/default",
+                    "type": "Microsoft.Network/virtualNetworkGateways/ipConfigurations",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "privateIPAllocationMethod": "Dynamic",
+                        "publicIPAddress": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/pip-D"
+                        },
+                        "subnet": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-D/subnets/GatewaySubnet"
+                        }
+                    }
+                }
+            ],
+            "sku": {
+                "name": "Basic",
+                "tier": "Basic",
+                "capacity": 1
+            },
+            "gatewayType": "ExpressRoute",
+            "vpnType": "PolicyBased",
+            "enableBgp": false,
+            "activeActive": false,
+            "remoteVirtualNetworkPeerings": [
+            ],
+            "vpnGatewayGeneration": "None"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/virtualNetworkGateways",
+        "ResourceType": "Microsoft.Network/virtualNetworkGateways",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
     }
 ]

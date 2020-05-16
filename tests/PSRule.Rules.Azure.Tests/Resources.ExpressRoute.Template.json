@@ -1,0 +1,134 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "name": "ExpressRoute Gateway",
+        "description": "A generic ExpressRoute virtual network gateway."
+    },
+    "parameters": {
+        "gatewayName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the virtual network gateway."
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "The Azure region to deploy to."
+            }
+        },
+        "sku": {
+            "type": "string",
+            "allowedValues": [
+                "Standard",
+                "HighPerformance",
+                "UltraPerformance",
+                "ErGw1AZ",
+                "ErGw2AZ",
+                "ErGw3AZ"
+            ],
+            "metadata": {
+                "description": "The size of the virtual network gateway."
+            }
+        },
+        "subnetId": {
+            "type": "string",
+            "metadata": {
+                "description": "The resource ID of the subnet where the gateway will be deployed."
+            }
+        },
+        "connections": {
+            "type": "array",
+            "defaultValue": [
+            ],
+            "metadata": {
+                "description": "Additional connections to create."
+            }
+        },
+        "tags": {
+            "type": "object",
+            "defaultValue": {
+            },
+            "metadata": {
+                "description": "Tags to be applied to the resource."
+            }
+        }
+    },
+    "variables": {
+        "publicIpName": "[concat('pip-', parameters('gatewayName'))]"
+    },
+    "resources": [
+        {
+            "comments": "Virtual network gateway",
+            "apiVersion": "2019-11-01",
+            "name": "[parameters('gatewayName')]",
+            "type": "Microsoft.Network/virtualNetworkGateways",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIpName'))]"
+            ],
+            "tags": "[parameters('tags')]",
+            "properties": {
+                "gatewayType": "ExpressRoute",
+                "ipConfigurations": [
+                    {
+                        "name": "default",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[parameters('subnetId')]"
+                            },
+                            "publicIpAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIpName'))]"
+                            }
+                        }
+                    }
+                ],
+                "vpnType": "RouteBased",
+                "vpnGatewayGeneration": "None",
+                "sku": {
+                    "name": "[parameters('sku')]",
+                    "tier": "[parameters('sku')]"
+                }
+            }
+        },
+        {
+            "comments": "Public IP address",
+            "apiVersion": "2019-11-01",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[variables('publicIpName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "publicIPAllocationMethod": "Dynamic"
+            },
+            "tags": "[parameters('tags')]"
+        },
+        {
+            "comments": "Connection",
+            "type": "Microsoft.Network/connections",
+            "apiVersion": "2019-11-01",
+            "name": "[parameters('connections')[copyIndex('connections')].connectionName]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]"
+            ],
+            "copy": {
+                "name": "connections",
+                "count": "[length(parameters('connections'))]"
+            },
+            "properties": {
+                "virtualNetworkGateway1": {
+                    "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('gatewayName'))]"
+                },
+                "peer": {
+                    "id": "[resourceId('Microsoft.Network/expressRouteCircuits',  parameters('connections')[copyIndex('connections')].circuitName)]"
+                },
+                "connectionType": "ExpressRoute",
+                "routingWeight": 0
+            },
+            "tags": "[parameters('tags')]"
+        }
+    ]
+}

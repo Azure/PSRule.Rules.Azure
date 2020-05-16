@@ -262,3 +262,48 @@ Rule 'Azure.FrontDoor.WAF.Enabled' -Type 'Microsoft.Network/frontdoorwebapplicat
 }
 
 #endregion Front Door
+
+#region VPN Gateways
+
+# Synopsis: Migrate from legacy VPN gateway SKUs
+Rule 'Azure.VPNGateway.LegacySKU' -Type 'Microsoft.Network/virtualNetworkGateways' -If { IsVPNGateway } -Tag @{ release = 'GA' } {
+    Within 'Properties.sku.name' -Not 'Basic', 'Standard', 'HighPerformance';
+}
+
+# Synopsis: Use Active-Active configuration
+Rule 'Azure.VPNGateway.ActiveActive' -Type 'Microsoft.Network/virtualNetworkGateways' -If { IsVPNGateway } -Tag @{ release = 'GA' } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.activeActive', $True);
+}
+
+#endregion VPN Gateways
+
+#region ExpressRoute
+
+# Synopsis: Migrate from legacy ExpressRoute gateway SKUs
+Rule 'Azure.ERGateway.LegacySKU' -Type 'Microsoft.Network/virtualNetworkGateways' -If { IsERGateway } -Tag @{ release = 'GA' } {
+    Within 'Properties.sku.name' -Not 'Basic';
+}
+
+#endregion ExpressRoute
+
+#region Helper functions
+
+function global:IsVPNGateway {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        return $Assert.HasFieldValue($TargetObject, 'Properties.gatewayType', 'Vpn').Result;
+    }
+}
+
+function global:IsERGateway {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        return $Assert.HasFieldValue($TargetObject, 'Properties.gatewayType', 'ExpressRoute').Result;
+    }
+}
+
+#endregion Helper functions

@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "template": "./Resources.ExpressRoute.Template.json"
+    },
+    "parameters": {
+        "gatewayName": {
+            "value": "gateway-A"
+        },
+        "sku": {
+            "value": "Standard"
+        },
+        "subnetId": {
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/GatewaySubnet"
+        }
+    }
+}
