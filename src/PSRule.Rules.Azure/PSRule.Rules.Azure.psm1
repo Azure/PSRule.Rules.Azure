@@ -529,11 +529,39 @@ function VisitSqlServer {
         $resources = @();
 
         # Get SQL Server firewall rules
-        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Sql/servers/firewallRules' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2015-05-01-preview' -ExpandProperties;
-        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Sql/servers/securityAlertPolicies' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-03-01-preview' -ExpandProperties;
-        # $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Sql/servers/vulnerabilityAssessments' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2018-06-01-preview' -ExpandProperties;
-        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Sql/servers/auditingSettings' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-03-01-preview' -ExpandProperties;
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Sql/servers/firewallRules' -ApiVersion '2015-05-01-preview';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Sql/servers/administrators' -ApiVersion '2014-04-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Sql/servers/securityAlertPolicies' -ApiVersion '2017-03-01-preview';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Sql/servers/vulnerabilityAssessments' -ApiVersion '2018-06-01-preview';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Sql/servers/auditingSettings' -ApiVersion '2017-03-01-preview';
         $sqlServer | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
+
+function VisitSqlDatabase {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        $resources = @();
+        $getParams = @{
+            ResourceGroupName = $Resource.ResourceGroupName
+            DefaultProfile = $Context
+            ErrorAction = 'SilentlyContinue'
+        }
+        $idParts = $Resource.ResourceId.Split('/');
+        $serverName = $idParts[-3];
+        $resourceName = "$serverName/$($Resource.Name)";
+        $resources += Get-AzResource @getParams -Name $resourceName -ResourceType 'Microsoft.Sql/servers/databases/dataMaskingPolicies' -ApiVersion '2014-04-01' -ExpandProperties
+        $resources += Get-AzResource @getParams -Name $resourceName -ResourceType 'Microsoft.Sql/servers/databases/transparentDataEncryption' -ApiVersion '2014-04-01' -ExpandProperties;
+        $resources += Get-AzResource @getParams -Name $resourceName -ResourceType 'Microsoft.Sql/servers/databases/connectionPolicies' -ApiVersion '2014-04-01' -ExpandProperties;
+        $resources += Get-AzResource @getParams -Name $resourceName -ResourceType 'Microsoft.Sql/servers/databases/geoBackupPolicies' -ApiVersion '2014-04-01' -ExpandProperties;
+        $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
 
@@ -607,9 +635,8 @@ function VisitAutomationAccount {
     process {
         $aa = $Resource
         $resources = @();
-
-        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Automation/AutomationAccounts/variables' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2015-10-31' -ExpandProperties;
-        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.Automation/AutomationAccounts/webhooks' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2015-10-31' -ExpandProperties;
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Automation/AutomationAccounts/variables' -ApiVersion '2015-10-31';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Automation/AutomationAccounts/webhooks' -ApiVersion '2015-10-31';
         $aa | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
@@ -858,6 +885,7 @@ function ExpandResource {
             'Microsoft.ApiManagement/service' { VisitAPIManagement @PSBoundParameters; }
             'Microsoft.Automation/automationAccounts' { VisitAutomationAccount @PSBoundParameters; }
             'Microsoft.Sql/servers' { VisitSqlServer @PSBoundParameters; }
+            'Microsoft.Sql/servers/databases' { VisitSqlDatabase @PSBoundParameters; }
             'Microsoft.DBforPostgreSQL/servers' { VisitPostgreSqlServer @PSBoundParameters; }
             'Microsoft.DBforMySQL/servers' { VisitMySqlServer @PSBoundParameters; }
             # 'Microsoft.Sql/managedInstances' { VisitSqlManagedInstance @PSBoundParameters; }

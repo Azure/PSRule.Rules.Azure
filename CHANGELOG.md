@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- New rules:
+  - SQL Database:
+    - Check SQL Database uses TDE. [#379](https://github.com/Microsoft/PSRule.Rules.Azure/issues/379)
+    - Check SQL Database uses AAD authentication. [#378](https://github.com/Microsoft/PSRule.Rules.Azure/issues/378)
+
 ## v0.12.0-B2005019 (pre-release)
 
 - New rules:

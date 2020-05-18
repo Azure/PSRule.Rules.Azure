@@ -40,8 +40,38 @@ Rule 'Azure.SQL.Auditing' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA' }
     $policy | Within 'Properties.state' 'Enabled'
 }
 
+# Synopsis: Use Azure AD administrators
+Rule 'Azure.SQL.AAD' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA' } {
+    $config = GetSubResources -ResourceType 'Microsoft.Sql/servers/administrators';
+    $Assert.HasFieldValue($config, 'Properties.administratorType', 'ActiveDirectory');
+}
+
+# Synopsis: Enable transparent data encryption
+Rule 'Azure.SQL.TDE' -Type 'Microsoft.Sql/servers/databases' -If { !(IsMasterDatabase) } -Tag @{ release = 'GA' } {
+    $config = GetSubResources -ResourceType 'Microsoft.Sql/servers/databases/transparentDataEncryption';
+    $Assert.HasFieldValue($config, 'Properties.status', 'Enabled');
+}
+
 #endregion SQL Database
 
 #region SQL Managed Instance
 
 #endregion SQL Managed Instance
+
+#region Helper functions
+
+function global:IsMasterDatabase {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        return (
+            $PSRule.TargetType -eq 'Microsoft.Sql/servers/databases' -and (
+                $PSRule.TargetName -like '*/master' -or
+                $PSRule.TargetName -eq 'master'
+            )
+        );
+    }
+}
+
+#endregion Helper functions
