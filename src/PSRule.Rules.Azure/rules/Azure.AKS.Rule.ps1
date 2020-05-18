@@ -89,3 +89,27 @@ Rule 'Azure.AKS.NodeMinPods' -Type 'Microsoft.ContainerService/managedClusters',
         $Assert.GreaterOrEqual($agentPool, 'maxPods', $Configuration.Azure_AKSNodeMinimumMaxPods)
     }
 } -Configure @{ Azure_AKSNodeMinimumMaxPods = 50 }
+
+# Synopsis: Use AKS naming requirements
+Rule 'Azure.AKS.Name' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA' } {
+    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcontainerservice
+
+    # Between 1 and 63 characters long
+    $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
+    $Assert.LessOrEqual($TargetObject, 'Name', 63)
+
+    # Alphanumerics, underscores, and hyphens
+    # Start and end with alphanumeric
+    Match 'Name' '^[A-Za-z0-9](-|\w)*[A-Za-z0-9]$'
+}
+
+# Synopsis: Use AKS naming requirements for DNS prefix
+Rule 'Azure.AKS.DNSPrefix' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA' } {
+    # Between 1 and 54 characters long
+    $Assert.GreaterOrEqual($TargetObject, 'Properties.dnsPrefix', 1)
+    $Assert.LessOrEqual($TargetObject, 'Properties.dnsPrefix', 54)
+
+    # Alphanumerics and hyphens
+    # Start and end with alphanumeric
+    Match 'Properties.dnsPrefix' '^[A-Za-z0-9]((-|[A-Za-z0-9]){0,}[A-Za-z0-9]){0,}$'
+}
