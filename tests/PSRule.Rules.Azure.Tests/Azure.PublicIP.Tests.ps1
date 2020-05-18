@@ -52,6 +52,51 @@ Describe 'Azure.PublicIP' {
         }
     }
 
+    Context 'Resource name' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'pip-001'
+            'pip-001_'
+            'PIP.001'
+            'p'
+        )
+        $invalidNames = @(
+            '_pip-001'
+            '-pip-001'
+            'pip-001-'
+            'pip-001.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Network/publicIPAddresses'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
     Context 'With template' {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template3.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.PublicIP.json;

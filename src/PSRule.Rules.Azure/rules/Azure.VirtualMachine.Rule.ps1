@@ -8,11 +8,15 @@
 # Synopsis: Virtual machines should use managed disks
 Rule 'Azure.VM.UseManagedDisks' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA' } {
     # Check OS disk
-    $Assert.NullOrEmpty($TargetObject, 'properties.storageProfile.osDisk.vhd.uri');
+    $Assert.
+        NullOrEmpty($TargetObject, 'properties.storageProfile.osDisk.vhd.uri').
+        WithReason(($LocalizedData.UnmanagedDisk -f $TargetObject.properties.storageProfile.osDisk.name), $True);
 
     # Check data disks
     foreach ($dataDisk in $TargetObject.properties.storageProfile.dataDisks) {
-        $Assert.NullOrEmpty($dataDisk, 'vhd.uri');
+        $Assert.
+            NullOrEmpty($dataDisk, 'vhd.uri').
+            WithReason(($LocalizedData.UnmanagedDisk -f $dataDisk.name), $True);
     }
 }
 
@@ -81,7 +85,7 @@ Rule 'Azure.VM.DiskAttached' -Type 'Microsoft.Compute/disks' -If { ($TargetObjec
 # Synopsis: Managed disk is smaller than SKU size
 Rule 'Azure.VM.DiskSizeAlignment' -Type 'Microsoft.Compute/disks' -Tag @{ release = 'GA' } {
     $diskSize = @(32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768)
-    $actualSize = $TargetObject.properties.diskSizeGB
+    $actualSize = $TargetObject.Properties.diskSizeGB
 
     # Find the closest disk size
     $i = 0;
@@ -90,7 +94,7 @@ Rule 'Azure.VM.DiskSizeAlignment' -Type 'Microsoft.Compute/disks' -Tag @{ releas
     }
 
     # Actual disk size should be the disk size within 5GB
-    $actualSize -ge ($diskSize[$i] - 5);
+    $Assert.GreaterOrEqual($TargetObject, 'Properties.diskSizeGB', ($diskSize[$i] - 5));
 }
 
 # TODO: Check number of disks
@@ -105,7 +109,7 @@ Rule 'Azure.VM.AcceleratedNetworking' -If { SupportsAcceleratedNetworking } -Tag
     $networkInterfaces = GetSubResources -ResourceType 'Microsoft.Network/networkInterfaces';
     $Null -ne $networkInterfaces;
     foreach ($interface in $networkInterfaces) {
-        ($interface.Properties.enableAcceleratedNetworking -eq $True)
+        $Assert.HasFieldValue($interface, 'Properties.enableAcceleratedNetworking', $True);
     }
 }
 

@@ -12,19 +12,19 @@ Rule 'Azure.Storage.UseReplication' -Type 'Microsoft.Storage/storageAccounts' -I
 
 # Synopsis: Storage accounts should only accept secure traffic
 Rule 'Azure.Storage.SecureTransfer' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA' } {
-    $TargetObject.Properties.supportsHttpsTrafficOnly -eq $True
+    $Assert.HasFieldValue($TargetObject, 'Properties.supportsHttpsTrafficOnly', $True);
 }
 
 # Synopsis: Storage Service Encryption (SSE) should be enabled
 Rule 'Azure.Storage.UseEncryption' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA' } {
-    Within 'Properties.encryption.services.blob.enabled' $True
-    Within 'Properties.encryption.services.file.enabled' $True
+    $Assert.HasFieldValue($TargetObject, 'Properties.encryption.services.blob.enabled', $True);
+    $Assert.HasFieldValue($TargetObject, 'Properties.encryption.services.file.enabled', $True);
 }
 
 # Synopsis: Enable soft delete on Storage Accounts
 Rule 'Azure.Storage.SoftDelete' -Type 'Microsoft.Storage/storageAccounts' -If { !(IsCloudShell) } -Tag @{ release = 'GA' } {
     $serviceProperties = GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices'
-    $serviceProperties.properties.deleteRetentionPolicy.enabled -eq $True
+    $Assert.HasFieldValue($serviceProperties, 'properties.deleteRetentionPolicy.enabled', $True);
 }
 
 # Synopsis: Avoid using Blob or Container access type

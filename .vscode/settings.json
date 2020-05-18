@@ -41,6 +41,7 @@
         "subnet",
         "subnets",
         "unencrypted",
+        "unmanaged",
         "webhook",
         "webhooks"
     ],

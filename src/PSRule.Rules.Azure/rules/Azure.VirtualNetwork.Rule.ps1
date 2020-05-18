@@ -83,7 +83,7 @@ Rule 'Azure.VNET.Name' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release
     Match 'Name' '^[A-Za-z0-9](-|\w|\.){0,}\w$'
 }
 
-# Synopsis: Use standard subnets names
+# Synopsis: Use subnets naming requirements
 Rule 'Azure.VNET.SubnetName' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'GA' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
 
@@ -123,7 +123,7 @@ Rule 'Azure.VNET.SubnetName' -Type 'Microsoft.Network/virtualNetworks', 'Microso
 
 #region Route tables
 
-# Synopsis: Use standard route table names
+# Synopsis: Use route table naming requirements
 Rule 'Azure.Route.Name' -Type 'Microsoft.Network/routeTables' -Tag @{ release = 'GA' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
 
@@ -185,7 +185,7 @@ Rule 'Azure.NSG.Associated' -Type 'Microsoft.Network/networkSecurityGroups' -If 
         $Assert.HasFieldValue($TargetObject, 'Properties.networkInterfaces').Result
 }
 
-# Synopsis: Use standard network security group names
+# Synopsis: Use network security group naming requirements
 Rule 'Azure.NSG.Name' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
 
@@ -256,23 +256,6 @@ Rule 'Azure.AppGw.WAFRules' -If { (IsAppGwWAF) } -Tag @{ release = 'GA' } {
 
 #endregion Application Gateway
 
-#region Public IP
-
-# Synopsis: Use standard public IP address names
-Rule 'Azure.PublicIP.Name' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA' } {
-    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
-
-    # Between 1 and 80 characters long
-    $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
-    $Assert.LessOrEqual($TargetObject, 'Name', 80)
-
-    # Alphanumerics, underscores, periods, and hyphens.
-    # Start with alphanumeric. End alphanumeric or underscore.
-    Match 'Name' '^[\w][-\w_\.]*[\w_]$'
-}
-
-#endregion Public IP
-
 #region Load Balancer
 
 # Synopsis: Use specific network probe
@@ -293,7 +276,7 @@ Rule 'Azure.LB.Probe' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 
     }
 }
 
-# Synopsis: Use standard load balancer names
+# Synopsis: Use load balancer naming requirements
 Rule 'Azure.LB.Name' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 'GA' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
 
@@ -334,7 +317,7 @@ Rule 'Azure.VNG.ERLegacySKU' -Type 'Microsoft.Network/virtualNetworkGateways' -I
     Within 'Properties.sku.name' -Not 'Basic';
 }
 
-# Synopsis: Use standard virtual network gateway names
+# Synopsis: Use virtual network gateway naming requirements
 Rule 'Azure.VNG.Name' -Type 'Microsoft.Network/virtualNetworkGateways' -Tag @{ release = 'GA' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
 
@@ -347,7 +330,7 @@ Rule 'Azure.VNG.Name' -Type 'Microsoft.Network/virtualNetworkGateways' -Tag @{ r
     Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
 }
 
-# Synopsis: Use standard virtual networks gateway connection names
+# Synopsis: Use virtual networks gateway connection naming requirements
 Rule 'Azure.VNG.ConnectionName' -Type 'Microsoft.Network/connections' -Tag @{ release = 'GA' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
 
