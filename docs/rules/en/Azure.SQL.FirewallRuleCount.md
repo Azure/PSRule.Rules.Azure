@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 category: Operations management
-resource: Azure SQL Database
+resource: SQL Database
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.SQL.FirewallRuleCount.md
 ms-content-id: b877a8ba-bc56-4bfe-9674-4b52b75cd13b
 ---

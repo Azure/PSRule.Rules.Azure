@@ -114,5 +114,37 @@ Describe 'Azure.SQL' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'server-A';
         }
+
+        It 'Azure.SQL.AAD' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQL.AAD' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-B', 'server-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'server-A';
+        }
+
+        It 'Azure.SQL.TDE' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQL.TDE' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'server-A/database-A';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'server-A/database-B';
+        }
     }
 }
