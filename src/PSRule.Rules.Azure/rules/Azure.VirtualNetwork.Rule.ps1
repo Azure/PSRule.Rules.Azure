@@ -83,7 +83,60 @@ Rule 'Azure.VNET.Name' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release
     Match 'Name' '^[A-Za-z0-9](-|\w|\.){0,}\w$'
 }
 
+# Synopsis: Use standard subnets names
+Rule 'Azure.VNET.SubnetName' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'GA' } {
+    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
+
+    if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
+        foreach ($subnet in $TargetObject.Properties.subnets) {
+            if ($subnet.name -eq 'GatewaySubnet') {
+                $Assert.Pass();
+            }
+            else {
+                # Between 1 and 80 characters long
+                $Assert.GreaterOrEqual($subnet, 'Name', 1)
+                $Assert.LessOrEqual($subnet, 'Name', 80)
+
+                # Alphanumerics, underscores, periods, and hyphens.
+                # Start with alphanumeric. End alphanumeric or underscore.
+                $subnet | Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
+            }
+        }
+    }
+    elseif ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks/subnets') {
+        if ($PSRule.TargetName -eq 'GatewaySubnet') {
+            $Assert.Pass();
+        }
+        else {
+            # Between 1 and 80 characters long
+            $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
+            $Assert.LessOrEqual($TargetObject, 'Name', 80)
+
+            # Alphanumerics, underscores, periods, and hyphens.
+            # Start with alphanumeric. End alphanumeric or underscore.
+            $TargetObject | Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
+        }
+    }
+}
+
 #endregion Virtual Network
+
+#region Route tables
+
+# Synopsis: Use standard route table names
+Rule 'Azure.Route.Name' -Type 'Microsoft.Network/routeTables' -Tag @{ release = 'GA' } {
+    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
+
+    # Between 1 and 80 characters long
+    $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
+    $Assert.LessOrEqual($TargetObject, 'Name', 80)
+
+    # Alphanumerics, underscores, periods, and hyphens.
+    # Start with alphanumeric. End alphanumeric or underscore.
+    Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
+}
+
+#endregion Route tables
 
 #region Network Security Group
 
@@ -130,6 +183,19 @@ Rule 'Azure.NSG.Associated' -Type 'Microsoft.Network/networkSecurityGroups' -If 
     Reason $LocalizedData.ResourceNotAssociated
     $Assert.HasFieldValue($TargetObject, 'Properties.subnets').Result -or
         $Assert.HasFieldValue($TargetObject, 'Properties.networkInterfaces').Result
+}
+
+# Synopsis: Use standard network security group names
+Rule 'Azure.NSG.Name' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA' } {
+    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
+
+    # Between 1 and 80 characters long
+    $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
+    $Assert.LessOrEqual($TargetObject, 'Name', 80)
+
+    # Alphanumerics, underscores, periods, and hyphens.
+    # Start with alphanumeric. End alphanumeric or underscore.
+    Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
 }
 
 #endregion Network Security Group
@@ -190,6 +256,23 @@ Rule 'Azure.AppGw.WAFRules' -If { (IsAppGwWAF) } -Tag @{ release = 'GA' } {
 
 #endregion Application Gateway
 
+#region Public IP
+
+# Synopsis: Use standard public IP address names
+Rule 'Azure.PublicIP.Name' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA' } {
+    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
+
+    # Between 1 and 80 characters long
+    $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
+    $Assert.LessOrEqual($TargetObject, 'Name', 80)
+
+    # Alphanumerics, underscores, periods, and hyphens.
+    # Start with alphanumeric. End alphanumeric or underscore.
+    Match 'Name' '^[\w][-\w_\.]*[\w_]$'
+}
+
+#endregion Public IP
+
 #region Load Balancer
 
 # Synopsis: Use specific network probe
@@ -210,6 +293,19 @@ Rule 'Azure.LB.Probe' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 
     }
 }
 
+# Synopsis: Use standard load balancer names
+Rule 'Azure.LB.Name' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 'GA' } {
+    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
+
+    # Between 1 and 80 characters long
+    $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
+    $Assert.LessOrEqual($TargetObject, 'Name', 80)
+
+    # Alphanumerics, underscores, periods, and hyphens.
+    # Start with alphanumeric. End alphanumeric or underscore.
+    Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
+}
+
 #endregion Load Balancer
 
 #region Azure Firewall
@@ -221,28 +317,50 @@ Rule 'Azure.Firewall.Mode' -Type 'Microsoft.Network/azureFirewalls' -Tag @{ rele
 
 #endregion Azure Firewall
 
-#region VPN Gateways
+#region Virtual Network Gateway
 
 # Synopsis: Migrate from legacy VPN gateway SKUs
-Rule 'Azure.VPNGateway.LegacySKU' -Type 'Microsoft.Network/virtualNetworkGateways' -If { IsVPNGateway } -Tag @{ release = 'GA' } {
+Rule 'Azure.VNG.VPNLegacySKU' -Type 'Microsoft.Network/virtualNetworkGateways' -If { IsVPNGateway } -Tag @{ release = 'GA' } {
     Within 'Properties.sku.name' -Not 'Basic', 'Standard', 'HighPerformance';
 }
 
 # Synopsis: Use Active-Active configuration
-Rule 'Azure.VPNGateway.ActiveActive' -Type 'Microsoft.Network/virtualNetworkGateways' -If { IsVPNGateway } -Tag @{ release = 'GA' } {
+Rule 'Azure.VNG.VPNActiveActive' -Type 'Microsoft.Network/virtualNetworkGateways' -If { IsVPNGateway } -Tag @{ release = 'GA' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.activeActive', $True);
 }
 
-#endregion VPN Gateways
-
-#region ExpressRoute
-
 # Synopsis: Migrate from legacy ExpressRoute gateway SKUs
-Rule 'Azure.ERGateway.LegacySKU' -Type 'Microsoft.Network/virtualNetworkGateways' -If { IsERGateway } -Tag @{ release = 'GA' } {
+Rule 'Azure.VNG.ERLegacySKU' -Type 'Microsoft.Network/virtualNetworkGateways' -If { IsERGateway } -Tag @{ release = 'GA' } {
     Within 'Properties.sku.name' -Not 'Basic';
 }
 
-#endregion ExpressRoute
+# Synopsis: Use standard virtual network gateway names
+Rule 'Azure.VNG.Name' -Type 'Microsoft.Network/virtualNetworkGateways' -Tag @{ release = 'GA' } {
+    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
+
+    # Between 1 and 80 characters long
+    $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
+    $Assert.LessOrEqual($TargetObject, 'Name', 80)
+
+    # Alphanumerics, underscores, periods, and hyphens.
+    # Start with alphanumeric. End alphanumeric or underscore.
+    Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
+}
+
+# Synopsis: Use standard virtual networks gateway connection names
+Rule 'Azure.VNG.ConnectionName' -Type 'Microsoft.Network/connections' -Tag @{ release = 'GA' } {
+    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
+
+    # Between 1 and 80 characters long
+    $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
+    $Assert.LessOrEqual($TargetObject, 'Name', 80)
+
+    # Alphanumerics, underscores, periods, and hyphens.
+    # Start with alphanumeric. End alphanumeric or underscore.
+    Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
+}
+
+#endregion Virtual Network Gateway
 
 #region Helper functions
 

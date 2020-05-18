@@ -42,3 +42,15 @@ Rule 'Azure.Storage.BlobAccessType' -Type 'Microsoft.Storage/storageAccounts', '
             WithReason(($LocalizedData.PublicAccessStorageContainer -f $container.name, $container.Properties.publicAccess), $True);
     }
 }
+
+# Synopsis: Use Storage naming requirements
+Rule 'Azure.Storage.Name' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA' } {
+    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage
+
+    # Between 3 and 24 characters long
+    $Assert.GreaterOrEqual($TargetObject, 'Name', 3)
+    $Assert.LessOrEqual($TargetObject, 'Name', 24)
+
+    # Lowercase letters and numbers
+    Match 'Name' '^[a-z0-9]{3,24}$' -CaseSensitive
+}

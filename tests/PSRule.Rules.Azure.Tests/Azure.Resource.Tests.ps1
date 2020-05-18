@@ -6,9 +6,7 @@
 #
 
 [CmdletBinding()]
-param (
-
-)
+param ()
 
 # Setup error handling
 $ErrorActionPreference = 'Stop';
@@ -23,7 +21,7 @@ $rootPath = $PWD;
 Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
 $here = (Resolve-Path $PSScriptRoot).Path;
 
-Describe 'Azure.Resource' {
+Describe 'Azure.Resource' -Tag 'Resource' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.Resource.json';
 
     Context 'Conditions' {
@@ -139,6 +137,56 @@ Describe 'Azure.Resource' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetType | Should -BeIn 'Microsoft.Network/virtualNetworks/subnets/providers/roleAssignments';
+        }
+    }
+}
+
+Describe 'Azure.ResourceGroup' -Tag 'ResourceGroup' {
+    Context 'Resource name' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'rg'
+            'rg-'
+            'rg_'
+            'rg(1)'
+            'resourceGroup.1'
+            'NetworkWatcherRG'
+            'AzureBackupRG_eastus'
+            'DefaultResourceGroup-eus'
+            'cloud-shell-storage-eastus'
+            'MC_app-kubernetes-cluster-1'
+        )
+        $invalidNames = @(
+            'group.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Resources/resourceGroups'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ResourceGroup.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ResourceGroup.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
         }
     }
 }

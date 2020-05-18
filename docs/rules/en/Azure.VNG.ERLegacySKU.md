@@ -1,8 +1,8 @@
 ---
 severity: Important
 category: Reliability
-resource: ExpressRoute
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.ERGateway.LegacySKU.md
+resource: Virtual Network Gateway
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VNG.ERLegacySKU.md
 ---
 
 # Migrate from legacy ER gateway SKUs

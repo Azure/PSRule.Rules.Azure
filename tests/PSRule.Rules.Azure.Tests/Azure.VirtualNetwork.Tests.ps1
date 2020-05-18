@@ -108,7 +108,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
         }
     }
 
-    Context 'Resource name' {
+    Context 'Resource name - Azure.VNET.Name' {
         $invokeParams = @{
             Baseline = 'Azure.All'
             Module = 'PSRule.Rules.Azure'
@@ -123,6 +123,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
         $invalidNames = @(
             '_vnet-001'
             '-vnet-001'
+            'vnet-001-'
             'v'
             'vnet-001.'
         )
@@ -146,6 +147,51 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             It $name {
                 $testObject.Name = $name;
                 $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNET.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
+    Context 'Resource name - Azure.VNET.SubnetName' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'snet-001'
+            'snet-001_'
+            'SNET.001'
+            's'
+        )
+        $invalidNames = @(
+            '_snet-001'
+            '-snet-001'
+            'snet-001-'
+            'snet-001.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Network/virtualNetworks/subnets'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNET.SubnetName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNET.SubnetName';
                 $ruleResult | Should -Not -BeNullOrEmpty;
                 $ruleResult.Outcome | Should -Be 'Fail';
             }
@@ -395,75 +441,96 @@ Describe 'Azure.LB' -Tag 'Network', 'LB' {
         }
     }
 
-    Context 'With Template' {
-        $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
-        $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
-        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualNetwork.json;
-        Export-AzTemplateRuleData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
-
-        It 'Azure.NSG.AnyInboundSource' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.NSG.AnyInboundSource' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -BeNullOrEmpty;
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'nsg-subnet1', 'nsg-subnet2', 'nsg-extra';
+    Context 'Resource name' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'lb-001'
+            'lb-001_'
+            'LB.001'
+            'l'
+        )
+        $invalidNames = @(
+            '_lb-001'
+            '-lb-001'
+            'lb-001-'
+            'lb-001.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Network/loadBalancers'
         }
 
-        It 'Azure.NSG.DenyAllInbound' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.NSG.DenyAllInbound' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'nsg-subnet1', 'nsg-extra';
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'nsg-subnet2';
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.LB.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
         }
 
-        It 'Azure.NSG.LateralTraversal' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.NSG.LateralTraversal' };
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.LB.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+}
 
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'nsg-subnet2', 'nsg-extra';
+Describe 'Azure.Route' -Tag 'Network', 'Route' {
 
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'nsg-subnet1';
+    Context 'Resource name' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'rt-001'
+            'rt-001_'
+            'RT.001'
+            'r'
+        )
+        $invalidNames = @(
+            '_rt-001'
+            '-rt-001'
+            'rt-001-'
+            'rt-001.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Network/routeTables'
         }
 
-        It 'Azure.NSG.Associated' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.NSG.Associated' };
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Route.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
 
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -BeNullOrEmpty;
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -BeNullOrEmpty;
-
-            # None
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetType -eq 'Microsoft.Network/networkSecurityGroups' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'nsg-subnet1', 'nsg-subnet2', 'nsg-extra';
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Route.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
         }
     }
 }
@@ -544,6 +611,51 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'nsg-A';
+        }
+    }
+
+    Context 'Resource name' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'nsg-001'
+            'nsg-001_'
+            'NSG.001'
+            'n'
+        )
+        $invalidNames = @(
+            '_nsg-001'
+            '-nsg-001'
+            'nsg-001-'
+            'nsg-001.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Network/networkSecurityGroups'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.NSG.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.NSG.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
         }
     }
 
@@ -797,7 +909,7 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
     }
 }
 
-Describe 'Azure.VPNGateway' -Tag 'Network', 'VPN' {
+Describe 'Azure.VNG' -Tag 'Network', 'VNG', 'VPN', 'ExpressRoute' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
 
     Context 'Conditions' {
@@ -809,8 +921,8 @@ Describe 'Azure.VPNGateway' -Tag 'Network', 'VPN' {
         }
         $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
 
-        It 'Azure.VPNGateway.LegacySKU' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VPNGateway.LegacySKU' };
+        It 'Azure.VNG.VPNLegacySKU' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNG.VPNLegacySKU' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -825,8 +937,8 @@ Describe 'Azure.VPNGateway' -Tag 'Network', 'VPN' {
             $ruleResult.TargetName | Should -BeIn 'gateway-B';
         }
 
-        It 'Azure.VPNGateway.ActiveActive' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VPNGateway.ActiveActive' };
+        It 'Azure.VNG.VPNActiveActive' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNG.VPNActiveActive' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -840,57 +952,9 @@ Describe 'Azure.VPNGateway' -Tag 'Network', 'VPN' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'gateway-B';
         }
-    }
 
-    Context 'With template' {
-        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VPN.json;
-        Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.VPN.Parameters.json' | Export-AzTemplateRuleData -OutputPath $outputFile;
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
-
-        It 'Azure.VPNGateway.LegacySKU' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VPNGateway.LegacySKU' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -BeNullOrEmpty;
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'gateway-A';
-        }
-
-        It 'Azure.VPNGateway.ActiveActive' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VPNGateway.ActiveActive' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'gateway-A';
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -BeNullOrEmpty;
-        }
-    }
-}
-
-Describe 'Azure.ERGateway' -Tag 'Network', 'ExpressRoute' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
-
-    Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
-        }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
-
-        It 'Azure.ERGateway.LegacySKU' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ERGateway.LegacySKU' };
+        It 'Azure.VNG.ERLegacySKU' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNG.ERLegacySKU' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -904,16 +968,137 @@ Describe 'Azure.ERGateway' -Tag 'Network', 'ExpressRoute' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'gateway-C';
         }
+    }
 
+    Context 'Resource name - Azure.VNG.Name' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'vng-001'
+            'vng-001_'
+            'VNG.001'
+            'v'
+        )
+        $invalidNames = @(
+            '_vng-001'
+            '-vng-001'
+            'vng-001-'
+            'vng-001.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Network/virtualNetworkGateways'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNG.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNG.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
+    Context 'Resource name - Azure.VNG.ConnectionName' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'cn-001'
+            'cn-001_'
+            'CN.001'
+            'c'
+        )
+        $invalidNames = @(
+            '_cn-001'
+            '-cn-001'
+            'cn-001-'
+            'cn-001.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Network/connections'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNG.ConnectionName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNG.ConnectionName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
     }
 
     Context 'With template' {
+        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VPN.json;
+        Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.VPN.Parameters.json' | Export-AzTemplateRuleData -OutputPath $outputFile;
+        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+
+        It 'Azure.VNG.VPNLegacySKU' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNG.VPNLegacySKU' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'gateway-A';
+        }
+
+        It 'Azure.VNG.VPNActiveActive' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNG.VPNActiveActive' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'gateway-A';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -BeNullOrEmpty;
+        }
+
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.ExpressRoute.json;
         Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.ExpressRoute.Parameters.json' | Export-AzTemplateRuleData -OutputPath $outputFile;
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
 
-        It 'Azure.ERGateway.LegacySKU' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ERGateway.LegacySKU' };
+        It 'Azure.VNG.ERLegacySKU' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNG.ERLegacySKU' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
