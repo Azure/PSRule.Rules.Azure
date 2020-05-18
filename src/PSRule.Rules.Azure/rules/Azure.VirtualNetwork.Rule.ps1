@@ -77,10 +77,9 @@ Rule 'Azure.VNET.Name' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release
     $Assert.GreaterOrEqual($TargetObject, 'Name', 2)
     $Assert.LessOrEqual($TargetObject, 'Name', 64)
 
-    # Alphanumerics, underscores, periods, and hyphens
-    # Start with alphanumeric
-    # End alphanumeric or underscore
-    Match 'Name' '^[A-Za-z0-9](-|\w|\.){0,}\w$'
+    # Alphanumerics, underscores, periods, and hyphens.
+    # Start with alphanumeric. End alphanumeric or underscore.
+    Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){1,63}$'
 }
 
 # Synopsis: Use subnets naming requirements
@@ -89,33 +88,26 @@ Rule 'Azure.VNET.SubnetName' -Type 'Microsoft.Network/virtualNetworks', 'Microso
 
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
         foreach ($subnet in $TargetObject.Properties.subnets) {
-            if ($subnet.name -eq 'GatewaySubnet') {
-                $Assert.Pass();
-            }
-            else {
-                # Between 1 and 80 characters long
-                $Assert.GreaterOrEqual($subnet, 'Name', 1)
-                $Assert.LessOrEqual($subnet, 'Name', 80)
-
-                # Alphanumerics, underscores, periods, and hyphens.
-                # Start with alphanumeric. End alphanumeric or underscore.
-                $subnet | Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
-            }
-        }
-    }
-    elseif ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks/subnets') {
-        if ($PSRule.TargetName -eq 'GatewaySubnet') {
-            $Assert.Pass();
-        }
-        else {
             # Between 1 and 80 characters long
-            $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
-            $Assert.LessOrEqual($TargetObject, 'Name', 80)
+            $Assert.GreaterOrEqual($subnet, 'Name', 1)
+            $Assert.LessOrEqual($subnet, 'Name', 80)
 
             # Alphanumerics, underscores, periods, and hyphens.
             # Start with alphanumeric. End alphanumeric or underscore.
-            $TargetObject | Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
+            $subnet | Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
         }
+    }
+    elseif ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks/subnets') {
+        $nameParts = $PSRule.TargetName.Split('/');
+        $name = $nameParts[-1];
+
+        # Between 1 and 80 characters long
+        $Assert.GreaterOrEqual($name, '.', 1)
+        $Assert.LessOrEqual($name, '.', 80)
+
+        # Alphanumerics, underscores, periods, and hyphens.
+        # Start with alphanumeric. End alphanumeric or underscore.
+        $name | Match '.' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
     }
 }
 

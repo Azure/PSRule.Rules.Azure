@@ -6,6 +6,8 @@
   - SQL Database:
     - Check SQL Database uses TDE. [#379](https://github.com/Microsoft/PSRule.Rules.Azure/issues/379)
     - Check SQL Database uses AAD authentication. [#378](https://github.com/Microsoft/PSRule.Rules.Azure/issues/378)
+- Bug fixes:
+  - Fixed handling of subnet sub-resource name with slash. [#381](https://github.com/Microsoft/PSRule.Rules.Azure/issues/381)
 
 ## v0.12.0-B2005019 (pre-release)
 
