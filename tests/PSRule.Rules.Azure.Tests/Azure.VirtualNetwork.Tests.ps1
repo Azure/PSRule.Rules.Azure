@@ -165,6 +165,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             'snet-001_'
             'SNET.001'
             's'
+            'vnet-001/GatewaySubnet'
         )
         $invalidNames = @(
             '_snet-001'
