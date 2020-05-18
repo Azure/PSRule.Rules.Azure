@@ -9,11 +9,13 @@
 
 # Synopsis: Use groups for assigning permissions instead of individual user accounts
 Rule 'Azure.RBAC.UseGroups' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
-    $userAssignments = @($TargetObject.resources | Where-Object {
+    $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.ObjectType -eq 'User'
     })
-    $userAssignments.Length -le 5
+    $Assert.
+        LessOrEqual($assignments, 'Length', 5).
+        WithReason(($LocalizedData.RoleAssignmentCount -f $assignments.Length), $True)
 }
 
 # Synopsis: Limit the number of subscription Owners
@@ -24,7 +26,9 @@ Rule 'Azure.RBAC.LimitOwner' -Type 'Microsoft.Subscription' -Tag @{ release = 'G
         ($_.Scope -like "/subscriptions/*" -or "/providers/Microsoft.Management/managementGroups/*") -and
         $_.Scope -notlike "/subscriptions/*/resourceGroups/*"
     })
-    $assignments.Length -le 3
+    $Assert.
+        LessOrEqual($assignments, 'Length', 3).
+        WithReason(($LocalizedData.RoleAssignmentCount -f $assignments.Length), $True)
 }
 
 # Synopsis: Limit RBAC inheritance from Management Groups
@@ -33,7 +37,9 @@ Rule 'Azure.RBAC.LimitMGDelegation' -Type 'Microsoft.Subscription' -Tag @{ relea
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         ($_.Scope -like "/providers/Microsoft.Management/managementGroups/*")
     })
-    $assignments.Length -le 3
+    $Assert.
+        LessOrEqual($assignments, 'Length', 3).
+        WithReason(($LocalizedData.RoleAssignmentCount -f $assignments.Length), $True)
 }
 
 # Synopsis: Avoid using classic co-administrator roles
@@ -42,7 +48,9 @@ Rule 'Azure.RBAC.CoAdministrator' -Type 'Microsoft.Subscription' -Tag @{ release
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.RoleDefinitionName -eq 'CoAdministrator'
     })
-    $assignments.Length -eq 0
+    $Assert.
+        LessOrEqual($assignments, 'Length', 0).
+        WithReason(($LocalizedData.RoleAssignmentCount -f $assignments.Length), $True)
 }
 
 # Synopsis: Use RBAC assignments on resource groups instead of individual resources
@@ -51,7 +59,9 @@ Rule 'Azure.RBAC.UseRGDelegation' -Type 'Microsoft.Resources/resourceGroups' -Ta
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.Scope -like "/subscriptions/*/resourceGroups/*/providers/*"
     })
-    $assignments.Length -eq 0
+    $Assert.
+        LessOrEqual($assignments, 'Length', 0).
+        WithReason(($LocalizedData.RoleAssignmentCount -f $assignments.Length), $True)
 }
 
 #endregion RBAC
