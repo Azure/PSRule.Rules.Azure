@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.12.0-B2005019 (pre-release)
+
 - New rules:
   - Azure Kubernetes Service:
     - Check AKS cluster name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
