@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.12.0-B2005026 (pre-release)
+
 - New rules:
   - SQL Database:
     - Check SQL Database uses TDE. [#379](https://github.com/Microsoft/PSRule.Rules.Azure/issues/379)
