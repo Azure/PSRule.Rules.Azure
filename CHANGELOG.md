@@ -2,6 +2,52 @@
 
 ## Unreleased
 
+## v0.12.0
+
+What's changed since v0.11.0:
+
+- New rules:
+  - Azure Kubernetes Service:
+    - Check AKS cluster name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+    - Check AKS cluster DNS prefix requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+  - Container Registry:
+    - Check registry name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+  - Front Door:
+    - Check Front Door name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+  - Load Balancer:
+    - Check Load Balancer name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+  - Network Security Group:
+    - Check NSG name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+  - Public IP:
+    - Check Public IP name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+  - Policy:
+    - Check Policy definitions use descriptive fields. [#364](https://github.com/Microsoft/PSRule.Rules.Azure/issues/364)
+  - Resource Group:
+    - Check Resource Group name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+  - Route table
+    - Check Route table name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+  - SignalR Service:
+    - Check SignalR Service name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+  - SQL Database:
+    - Check SQL Database uses TDE. [#379](https://github.com/Microsoft/PSRule.Rules.Azure/issues/379)
+    - Check SQL Database uses AAD authentication. [#378](https://github.com/Microsoft/PSRule.Rules.Azure/issues/378)
+  - Storage:
+    - Check Storage Account name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+    - Check Storage blob containers use private access type. [#365](https://github.com/Microsoft/PSRule.Rules.Azure/issues/365)
+  - Virtual Network:
+    - Check VNET name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+    - Check VNET subnet name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+  - Virtual Network Gateway:
+    - Check VNG name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+    - Check VNG connection name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
+    - Check ExpressRoute Gateway uses current SKU. [#369](https://github.com/Microsoft/PSRule.Rules.Azure/issues/369)
+    - Check VPN Gateway uses current SKU. [#370](https://github.com/Microsoft/PSRule.Rules.Azure/issues/370)
+    - Check VPN Gateway uses active-active configuration. [#371](https://github.com/Microsoft/PSRule.Rules.Azure/issues/371)
+
+What's changed since pre-release v0.12.0-B2005026:
+
+- No additional changes.
+
 ## v0.12.0-B2005026 (pre-release)
 
 - New rules:
