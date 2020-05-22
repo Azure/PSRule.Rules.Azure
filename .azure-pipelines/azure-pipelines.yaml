@@ -2,12 +2,12 @@
 # CI pipeline for PSRule.Rules.Azure
 
 variables:
-  version: '0.12.0'
+  version: '0.13.0'
   buildConfiguration: 'Release'
   disable.coverage.autogenerate: 'true'
   imageName: 'ubuntu-18.04'
 
- # Use build number format, i.e. 0.12.0-B2004001
+ # Use build number format, i.e. 0.13.0-B2005001
 name: $(version)-B$(date:yyMM)$(rev:rrr)
 
 trigger:
@@ -137,7 +137,7 @@ stages:
   - template: jobs/test.yaml
     parameters:
       name: macOS_10_15
-      displayName: 'PowerShell 7.0.0 - macOS-10.15'
+      displayName: 'PowerShell 7.0 - macOS-10.15'
       imageName: 'macOS-10.15'
 
   - template: jobs/test.yaml
