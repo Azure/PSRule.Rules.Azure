@@ -85,16 +85,21 @@ Rule 'Azure.VNET.Name' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release
 # Synopsis: Use subnets naming requirements
 Rule 'Azure.VNET.SubnetName' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'GA' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
-
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
-        foreach ($subnet in $TargetObject.Properties.subnets) {
-            # Between 1 and 80 characters long
-            $Assert.GreaterOrEqual($subnet, 'Name', 1)
-            $Assert.LessOrEqual($subnet, 'Name', 80)
-
-            # Alphanumerics, underscores, periods, and hyphens.
-            # Start with alphanumeric. End alphanumeric or underscore.
-            $subnet | Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
+        $subnets = @($TargetObject.Properties.subnets)
+        if ($subnets.Length -eq 0) {
+            $Assert.Pass();
+        }
+        else {
+            foreach ($subnet in $subnets) {
+                # Between 1 and 80 characters long
+                $Assert.GreaterOrEqual($subnet, 'Name', 1)
+                $Assert.LessOrEqual($subnet, 'Name', 80)
+    
+                # Alphanumerics, underscores, periods, and hyphens.
+                # Start with alphanumeric. End alphanumeric or underscore.
+                $subnet | Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
+            }
         }
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks/subnets') {
