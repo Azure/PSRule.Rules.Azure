@@ -6,8 +6,8 @@
 #
 
 # Install PSRule.Rules.Azure module
-if ($Null -eq (Get-InstalledModule -Name PSRule.Rules.Azure -MinimumVersion '0.6.0' -ErrorAction SilentlyContinue)) {
-    $Null = Install-Module -Name PSRule.Rules.Azure -Scope CurrentUser -MinimumVersion '0.6.0' -Force;
+if ($Null -eq (Get-InstalledModule -Name PSRule.Rules.Azure -MinimumVersion '0.12.1' -ErrorAction SilentlyContinue)) {
+    $Null = Install-Module -Name PSRule.Rules.Azure -Scope CurrentUser -MinimumVersion '0.12.1' -Force;
 }
 
 # Resolve resources
