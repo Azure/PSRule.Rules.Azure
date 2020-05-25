@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.12.1
+
+What's changed since v0.12.0:
+
 - Bug fixes:
   - Fixed subnet name check for VNET with no subnets. [#386](https://github.com/Microsoft/PSRule.Rules.Azure/issues/386)
 
