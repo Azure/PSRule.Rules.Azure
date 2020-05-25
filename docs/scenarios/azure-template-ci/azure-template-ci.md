@@ -1,6 +1,14 @@
-# Validation pipeline example
+# Validate Azure resources from templates with continuous integration (CI)
 
-This example covers how PSRule can be used to validate Azure resource templates within a continuous integration (CI) pipeline.
+Azure Resource Manager (ARM) templates are a JSON-based file structure.
+ARM templates are typically not static, they include parameters, functions and conditions.
+Depending on the parameters provided to a template, resources may differ significantly.
+
+Important resource properties that should be validated are often variables, parameters or deployed conditionally.
+Under these circumstances, to correctly validate resources in a template, parameters must be resolved.
+
+The following scenario shows how to validate Azure resources from templates.
+The examples provided can be integrated into a continuous integration (CI) pipeline able to run PowerShell.
 
 This scenario covers the following:
 
@@ -57,8 +65,8 @@ if ($Null -eq (Get-InstalledModule -Name PowerShellGet -MinimumVersion 2.2.1 -Er
     Install-Module PowerShellGet -MinimumVersion 2.2.1 -Scope CurrentUser -Force -AllowClobber;
 }
 
-if ($Null -eq (Get-InstalledModule -Name PSRule.Rules.Azure -MinimumVersion '0.6.0' -ErrorAction SilentlyContinue)) {
-    $Null = Install-Module -Name PSRule.Rules.Azure -Scope CurrentUser -MinimumVersion '0.6.0' -Force;
+if ($Null -eq (Get-InstalledModule -Name PSRule.Rules.Azure -MinimumVersion '0.12.1' -ErrorAction SilentlyContinue)) {
+    $Null = Install-Module -Name PSRule.Rules.Azure -Scope CurrentUser -MinimumVersion '0.12.1' -Force;
 }
 ```
 
@@ -66,13 +74,6 @@ Add `-AllowPrerelease` to install pre-release versions.
 See the [change log](https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/CHANGELOG.md) for the latest version.
 
 ## Exporting rule data for analysis
-
-Azure Resource Manager (ARM) templates are a JSON-based file structure.
-While JSON can be natively read by PSRule, ARM templates are typically not static.
-Depending on the parameters provided to a template, resources may differ significantly.
-
-Important resource properties that should be validated are often variables, parameters or deployed conditionally.
-Under these circumstances, to correctly validate resources in a template, expressions must be resolved.
 
 In PSRule, the `Export-AzTemplateRuleData` cmdlet resolves a template and returns a resultant set of resources.
 The resultant set of resources can then be validated.
@@ -217,25 +218,6 @@ Assert-PSRule -OutputFormat NUnit3 -OutputPath .\reports\rule-report.xml -Module
 
 The output path will be created if it does not exist.
 
-### Publishing NUnit report with Azure DevOps
-
-With Azure DevOps, an NUnit report can be published using [Publish Test Results task][publish-test-results].
-
-An example YAML snippet is included below:
-
-```yaml
-# PSRule results
-- task: PublishTestResults@2
-  displayName: 'Publish PSRule results'
-  inputs:
-    testRunTitle: 'PSRule'
-    testRunner: NUnit
-    testResultsFiles: 'reports/rule-report.xml'
-    mergeTestResults: true
-    publishRunAttachments: true
-  condition: succeededOrFailed()
-```
-
 ## Complete example
 
 Putting each of these steps together.
@@ -257,8 +239,8 @@ if ($Null -eq (Get-InstalledModule -Name PowerShellGet -MinimumVersion 2.2.1 -Er
 
 ```powershell
 # Install PSRule.Rules.Azure module
-if ($Null -eq (Get-InstalledModule -Name PSRule.Rules.Azure -MinimumVersion '0.6.0' -ErrorAction SilentlyContinue)) {
-    $Null = Install-Module -Name PSRule.Rules.Azure -Scope CurrentUser -MinimumVersion '0.6.0' -Force;
+if ($Null -eq (Get-InstalledModule -Name PSRule.Rules.Azure -MinimumVersion '0.12.1' -ErrorAction SilentlyContinue)) {
+    $Null = Install-Module -Name PSRule.Rules.Azure -Scope CurrentUser -MinimumVersion '0.12.1' -Force;
 }
 
 # Resolve resources
@@ -275,31 +257,6 @@ $assertParams = @{
 Assert-PSRule @assertParams;
 ```
 
-### Azure DevOps Pipeline
-
-```yaml
-steps:
-
-# Install dependencies
-- powershell: ./pipeline-deps.ps1
-  displayName: 'Install dependencies'
-
-# Validate templates
-- powershell: ./validate-template.ps1
-  displayName: 'Validate templates'
-
-# Publish pipeline results
-- task: PublishTestResults@2
-  displayName: 'Publish PSRule results'
-  inputs:
-    testRunTitle: 'PSRule'
-    testRunner: NUnit
-    testResultsFiles: 'reports/rule-report.xml'
-    mergeTestResults: true
-    publishRunAttachments: true
-  condition: succeededOrFailed()
-```
-
 ## Additional options
 
 ### Using Invoke-Build
@@ -312,8 +269,8 @@ The following example shows an example of using _PSRule.Rules.Azure_ with _Invok
 ```powershell
 # Synopsis: Install PSRule modules
 task InstallPSRule {
-    if ($Null -eq (Get-InstalledModule -Name PSRule.Rules.Azure -MinimumVersion '0.6.0' -ErrorAction SilentlyContinue)) {
-        $Null = Install-Module -Name PSRule.Rules.Azure -Scope CurrentUser -MinimumVersion '0.6.0' -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSRule.Rules.Azure -MinimumVersion '0.12.1' -ErrorAction SilentlyContinue)) {
+        $Null = Install-Module -Name PSRule.Rules.Azure -Scope CurrentUser -MinimumVersion '0.12.1' -Force;
     }
 }
 
@@ -380,7 +337,6 @@ Describe 'Azure' {
 
 - [pipeline-deps.ps1](pipeline-deps.ps1) - Example script installing pipeline dependencies.
 - [validate-template.ps1](validate-template.ps1) - Example script for running template validation.
-- [azure-pipelines.yaml](azure-pipelines.yaml) - An example Azure DevOps Pipeline.
 - [template.json](template.json) - Example template file.
 - [parameters.json](parameters.json) - Example parameters file.
 

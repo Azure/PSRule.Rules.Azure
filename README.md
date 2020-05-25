@@ -159,7 +159,8 @@ Azure.Storage.SoftDelete            0     8     Fail
 
 For walk through examples of `PSRule.Rules.Azure` module usage see:
 
-- [Validate Azure templates with continuous integration](docs/scenarios/azure-template-ci/azure-template-ci.md)
+- [Validate Azure resources from templates with Azure Pipelines](docs/scenarios/azure-pipelines-ci/azure-pipelines-ci.md)
+- [Validate Azure resources from templates with continuous integration (CI)](docs/scenarios/azure-template-ci/azure-template-ci.md)
 
 ## Rule reference
 
