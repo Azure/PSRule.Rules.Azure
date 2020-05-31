@@ -8,19 +8,19 @@ kind: ModuleConfig
 metadata:
   name: PSRule.Rules.Azure
 spec:
-  binding:
-    targetName:
-    - ResourceName
-    - FullName
-    - name
-    targetType:
-    - ResourceType
-    - type
-    - Extension
-    field:
-      resourceId: [ 'ResourceId' ]
-      subscriptionId: [ 'SubscriptionId' ]
-      resourceGroupName: [ 'ResourceGroupName' ]
+  # binding:
+  #   targetName:
+  #   - ResourceName
+  #   - FullName
+  #   - name
+  #   targetType:
+  #   - ResourceType
+  #   - type
+  #   - Extension
+  #   field:
+  #     resourceId: [ 'ResourceId' ]
+  #     subscriptionId: [ 'SubscriptionId' ]
+  #     resourceGroupName: [ 'ResourceGroupName' ]
   output:
     culture:
     - en
