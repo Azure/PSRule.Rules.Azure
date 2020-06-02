@@ -5,6 +5,8 @@
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to 1.16.9. [#394](https://github.com/Microsoft/PSRule.Rules.Azure/issues/394)
+- Bug fixes:
+  - Fixed module default culture. [#390](https://github.com/Microsoft/PSRule.Rules.Azure/issues/390)
 
 ## v0.12.1
 
