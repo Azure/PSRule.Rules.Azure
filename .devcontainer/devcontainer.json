@@ -1,0 +1,9 @@
+{
+    "extensions": [
+        "ms-azure-devops.azure-pipelines",
+        "ms-vscode.powershell",
+        "davidanson.vscode-markdownlint",
+        "redhat.vscode-yaml",
+        "bewhite.psrule-vscode-preview"
+    ]
+}
