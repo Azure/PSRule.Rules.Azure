@@ -48,6 +48,13 @@ For additional installation options see [install instructions](scenarios/install
 
 ## Frequently Asked Questions (FAQ)
 
+Continue reading for FAQ relating to _PSRule for Azure_.
+For general FAQ see [PSRule - Frequently Asked Questions (FAQ)][ps-rule-faq], including:
+
+- [How is PSRule different to Pester?][compare-pester]
+- [How do I configure PSRule?][ps-rule-configure]
+- [How do I ignore a rule?][ignore-rule]
+
 ### What permissions do I need to export data?
 
 The default built-in _Reader_ role to a subscription is required for:
@@ -102,3 +109,6 @@ The built-in rules allow you starting testing resources quickly, with minimal in
 A detailed example of integrating _PSRule for Azure_ into a CI pipeline can be found [here](scenarios/azure-template-ci/azure-template-ci.md).
 
 [compare-pester]: https://github.com/microsoft/PSRule/blob/master/docs/features.md#how-is-psrule-different-to-pester
+[ignore-rule]: https://github.com/microsoft/PSRule/blob/master/docs/features.md#how-do-i-ignore-a-rule
+[ps-rule-configure]: https://github.com/microsoft/PSRule/blob/master/docs/features.md#how-do-i-configure-psrule
+[ps-rule-faq]: https://github.com/microsoft/PSRule/blob/master/docs/features.md#frequently-asked-questions-faq
