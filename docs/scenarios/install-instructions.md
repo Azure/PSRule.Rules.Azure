@@ -6,7 +6,7 @@
 - PowerShell Core 6.2 or greater on Windows, MacOS and Linux or
 - PowerShell 7.0 or greater on Windows, MacOS and Linux
 
-For a list of platforms that PowerShell Core is supported on [see](https://github.com/PowerShell/PowerShell#get-powershell).
+For a list of platforms that PowerShell 7.0 is supported on [see](https://github.com/PowerShell/PowerShell#get-powershell).
 
 The following modules are required for `PSRule.Rules.Azure` to work:
 
