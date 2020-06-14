@@ -106,7 +106,10 @@ _PSRule for Azure_ is distributed as a PowerShell module using the PowerShell Ga
 Using a PowerShell module makes it easy to install and update.
 The built-in rules allow you starting testing resources quickly, with minimal integration.
 
-A detailed example of integrating _PSRule for Azure_ into a CI pipeline can be found [here](scenarios/azure-template-ci/azure-template-ci.md).
+For details examples see:
+
+- [Validate Azure resources from templates with Azure Pipelines](scenarios/azure-pipelines-ci/azure-pipelines-ci.md)
+- [Validate Azure resources from templates with continuous integration (CI)](scenarios/azure-template-ci/azure-template-ci.md)
 
 [compare-pester]: https://github.com/microsoft/PSRule/blob/master/docs/features.md#how-is-psrule-different-to-pester
 [ignore-rule]: https://github.com/microsoft/PSRule/blob/master/docs/features.md#how-do-i-ignore-a-rule
