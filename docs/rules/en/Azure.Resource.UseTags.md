@@ -22,10 +22,23 @@ Azure stores tags as name/ value pairs such as `environment = production` or `co
 A well defined tagging approach improves the management, billing and automation operations of resources.
 When planning tags, identify information that is meaningful to business and technical staff.
 
+Azure provides several built-in policies to managed tags.
+Using these policies help enforce a tagging standard can reduce overall management
+Resource tags can be inherited from subscriptions or resource groups using Azure Policy.
+
 ## RECOMMENDATION
 
 Consider tagging resources using a standard convention.
-Identify mandatory and optional tags then tag all resources using this standard.
+Identify mandatory and optional tags then tag all resources and resource groups using this standard.
+
+Also consider using Azure Policy to enforce mandatory tags.
+
+### NOTES
+
+Azure Policy includes the following built-in policies to enforce tagging:
+
+- Require a tag on resources
+- Require a tag on resource groups
 
 ## LINKS
 
