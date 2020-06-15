@@ -198,5 +198,151 @@
         "ResourceType": "Microsoft.ContainerService/managedClusters",
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    }
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-D",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-D",
+        "Identity": {
+          "PrincipalId": "00000000-0000-0000-0000-000000000000",
+          "TenantId": "00000000-0000-0000-0000-000000000000",
+          "Type": "SystemAssigned",
+          "UserAssignedIdentities": null
+        },
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "cluster-D",
+        "Name": "cluster-D",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "kubernetesVersion": "1.16.9",
+          "dnsPrefix": "cluster-D",
+          "fqdn": "cluster-D-nnnnnnnn.hcp.region.azmk8s.io",
+          "agentPoolProfiles": [
+            {
+              "name": "agentpool",
+              "count": 1,
+              "vmSize": "Standard_B2ms",
+              "osDiskSizeGB": 100,
+              "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+              "maxPods": 50,
+              "type": "VirtualMachineScaleSets",
+              "provisioningState": "Succeeded",
+              "orchestratorVersion": "1.16.9",
+              "nodeLabels": {},
+              "mode": "System",
+              "osType": "Linux",
+              "nodeImageVersion": "AKSUbuntu:1604:2020.05.13"
+            }
+          ],
+          "windowsProfile": {
+            "adminUsername": "azureuser"
+          },
+          "servicePrincipalProfile": {
+            "clientId": "msi"
+          },
+          "addonProfiles": {
+            "aciConnectorLinux": {
+              "enabled": true,
+              "config": {
+                "SubnetName": "subnet-B"
+              },
+              "identity": {
+                "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aciconnectorlinux-cluster-D",
+                "clientId": "00000000-0000-0000-0000-000000000000",
+                "objectId": "00000000-0000-0000-0000-000000000000"
+              }
+            },
+            "azurePolicy": {
+              "enabled": true,
+              "config": {
+                "version": "v2"
+              },
+              "identity": {
+                "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurepolicy-cluster-D",
+                "clientId": "00000000-0000-0000-0000-000000000000",
+                "objectId": "00000000-0000-0000-0000-000000000000"
+              }
+            },
+            "httpApplicationRouting": {
+              "enabled": true,
+              "config": {
+                "HTTPApplicationRoutingZoneName": "dca47a62fed041939528.region.aksapp.io"
+              },
+              "identity": {
+                "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/httpapplicationrouting-cluster-D",
+                "clientId": "00000000-0000-0000-0000-000000000000",
+                "objectId": "00000000-0000-0000-0000-000000000000"
+              }
+            },
+            "kubeDashboard": {
+              "enabled": false,
+              "config": null
+            },
+            "omsagent": {
+              "enabled": true,
+              "config": {
+                "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
+              },
+              "identity": {
+                "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/omsagent-cluster-D",
+                "clientId": "00000000-0000-0000-0000-000000000000",
+                "objectId": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          },
+          "nodeResourceGroup": "MC_test-rg_cluster-D_region",
+          "enableRBAC": true,
+          "enablePodSecurityPolicy": true,
+          "networkProfile": {
+            "networkPlugin": "azure",
+            "networkPolicy": "azure",
+            "loadBalancerSku": "Standard",
+            "loadBalancerProfile": {
+              "managedOutboundIPs": {
+                "count": 1
+              },
+              "effectiveOutboundIPs": [
+                {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg_cluster-D_region/providers/Microsoft.Network/publicIPAddresses/00000000-0000-0000-0000-000000000000"
+                }
+              ]
+            },
+            "serviceCidr": "192.168.0.0/16",
+            "dnsServiceIP": "192.168.0.4",
+            "dockerBridgeCidr": "172.17.0.1/16",
+            "outboundType": "loadBalancer"
+          },
+          "aadProfile": {
+            "managed": true,
+            "adminGroupObjectIDs": null,
+            "tenantID": "00000000-0000-0000-0000-000000000000"
+          },
+          "maxAgentPools": 10,
+          "identityProfile": {
+            "kubeletidentity": {
+              "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cluster-D-agentpool",
+              "clientId": "00000000-0000-0000-0000-000000000000",
+              "objectId": "00000000-0000-0000-0000-000000000000"
+            }
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerService/managedClusters",
+        "ResourceType": "Microsoft.ContainerService/managedClusters",
+        "ExtensionResourceType": null,
+        "Sku": {
+          "Name": "Basic",
+          "Tier": "Free",
+          "Size": null,
+          "Family": null,
+          "Model": null,
+          "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
 ]
