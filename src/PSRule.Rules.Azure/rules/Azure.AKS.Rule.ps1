@@ -10,12 +10,12 @@ if ($Null -ne $Configuration.minAKSVersion) {
 }
 
 # Synopsis: AKS clusters should have minimum number of nodes for failover and updates
-Rule 'Azure.AKS.MinNodeCount' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA' } {
+Rule 'Azure.AKS.MinNodeCount' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; group = '2020_06' } {
     $TargetObject.Properties.agentPoolProfiles[0].count -ge 3
 }
 
 # Synopsis: AKS clusters should meet the minimum version
-Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA' } {
+Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; group = '2020_06' } {
     $minVersion = [Version]$Configuration.Azure_AKSMinimumVersion
     if ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters') {
         ([Version]$TargetObject.Properties.kubernetesVersion) -ge $minVersion
@@ -29,7 +29,7 @@ Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Mi
 } -Configure @{ Azure_AKSMinimumVersion = '1.16.9' }
 
 # Synopsis: AKS agent pools should run the same Kubernetes version as the cluster
-Rule 'Azure.AKS.PoolVersion' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA' } {
+Rule 'Azure.AKS.PoolVersion' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; group = '2020_06' } {
     $clusterVersion = $TargetObject.Properties.kubernetesVersion
     foreach ($pool in $TargetObject.Properties.agentPoolProfiles) {
         $result = $Assert.HasDefaultValue($pool, 'orchestratorVersion', $clusterVersion);
@@ -44,17 +44,17 @@ Rule 'Azure.AKS.UseRBAC' -Type 'Microsoft.ContainerService/managedClusters' -Tag
 }
 
 # Synopsis: AKS clusters should use pod security policies
-Rule 'Azure.AKS.PodSecurityPolicy' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'preview' } {
+Rule 'Azure.AKS.PodSecurityPolicy' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'preview'; group = '2020_06' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.enablePodSecurityPolicy', $True)
 }
 
 # Synopsis: AKS clusters should use network policies
-Rule 'Azure.AKS.NetworkPolicy' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA' } {
+Rule 'Azure.AKS.NetworkPolicy' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; group = '2020_06' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.networkProfile.networkPolicy', 'azure')
 }
 
 # Synopsis: AKS node pools should use scale sets
-Rule 'Azure.AKS.PoolScaleSet' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA' } {
+Rule 'Azure.AKS.PoolScaleSet' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; group = '2020_06' } {
     $result = $True
     if ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters') {
         $TargetObject.Properties.agentPoolProfiles | ForEach-Object {
@@ -74,7 +74,7 @@ Rule 'Azure.AKS.PoolScaleSet' -Type 'Microsoft.ContainerService/managedClusters'
 }
 
 # Synopsis: AKS nodes should use a minimum number of pods
-Rule 'Azure.AKS.NodeMinPods' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA' } {
+Rule 'Azure.AKS.NodeMinPods' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; group = '2020_06' } {
     $agentPools = $Null;
     if ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters') {
         $agentPools = @($TargetObject.Properties.agentPoolProfiles);
@@ -91,7 +91,7 @@ Rule 'Azure.AKS.NodeMinPods' -Type 'Microsoft.ContainerService/managedClusters',
 } -Configure @{ Azure_AKSNodeMinimumMaxPods = 50 }
 
 # Synopsis: Use AKS naming requirements
-Rule 'Azure.AKS.Name' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA' } {
+Rule 'Azure.AKS.Name' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; group = '2020_06' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcontainerservice
 
     # Between 1 and 63 characters long
@@ -104,7 +104,7 @@ Rule 'Azure.AKS.Name' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{
 }
 
 # Synopsis: Use AKS naming requirements for DNS prefix
-Rule 'Azure.AKS.DNSPrefix' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA' } {
+Rule 'Azure.AKS.DNSPrefix' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; group = '2020_06' } {
     # Between 1 and 54 characters long
     $Assert.GreaterOrEqual($TargetObject, 'Properties.dnsPrefix', 1)
     $Assert.LessOrEqual($TargetObject, 'Properties.dnsPrefix', 54)
@@ -112,4 +112,19 @@ Rule 'Azure.AKS.DNSPrefix' -Type 'Microsoft.ContainerService/managedClusters' -T
     # Alphanumerics and hyphens
     # Start and end with alphanumeric
     Match 'Properties.dnsPrefix' '^[A-Za-z0-9]((-|[A-Za-z0-9]){0,}[A-Za-z0-9]){0,}$'
+}
+
+# Synopsis: Use a managed identity with AKS clusters
+Rule 'Azure.AKS.ManagedIdentity' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; group = '2020_06' } {
+    $Assert.HasFieldValue($TargetObject, 'Identity.Type', 'SystemAssigned')
+}
+
+# Synopsis: Use a Standard load-balancer with AKS clusters
+Rule 'Azure.AKS.StandardLB' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; group = '2020_06' } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.networkProfile.loadBalancerSku', 'standard')
+}
+
+# Synopsis: AKS clusters should use Azure Policy add-on
+Rule 'Azure.AKS.AzurePolicyAddOn' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'preview'; group = '2020_06' } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.addonProfiles.azurePolicy.enabled', $True)
 }

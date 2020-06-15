@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- New rules:
+  - Azure Kubernetes Service:
+    - Check AKS clusters use a Standard load balancer SKU. [#334](https://github.com/Microsoft/PSRule.Rules.Azure/issues/334)
+    - Check AKS clusters use Managed Identities for cluster infrastructure. [#333](https://github.com/Microsoft/PSRule.Rules.Azure/issues/333)
+    - Check AKS clusters use Azure Policy add-on (preview). [#405](https://github.com/Microsoft/PSRule.Rules.Azure/issues/405)
+
 ## v0.13.0-B2006003 (pre-release)
 
 - Updated rules:

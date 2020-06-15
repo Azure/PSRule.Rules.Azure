@@ -1,6 +1,6 @@
 ---
 severity: Important
-category: Operations management
+category: Scalability
 resource: Azure Kubernetes Service
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AKS.NodeMinPods.md
 ---

@@ -26,6 +26,9 @@
             "apiVersion": "2019-10-01",
             "name": "[parameters('clusterName')]",
             "location": "[parameters('clusterLocation')]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
             "properties": {
                 "kubernetesVersion": "1.16.9",
                 "dnsPrefix": "[concat('npcorp-', parameters('clusterName'))]",
@@ -51,7 +54,7 @@
                             "SubnetName": "subnet-aci"
                         }
                     },
-                    "azurepolicy": {
+                    "azurePolicy": {
                         "enabled": true
                     },
                     "httpApplicationRouting": {
@@ -72,7 +75,7 @@
                 "networkProfile": {
                     "networkPlugin": "azure",
                     "networkPolicy": "azure",
-                    "loadBalancerSku": "Basic",
+                    "loadBalancerSku": "Standard",
                     "serviceCidr": "192.168.0.0/16",
                     "dnsServiceIP": "192.168.0.4",
                     "dockerBridgeCidr": "172.17.0.1/16"
