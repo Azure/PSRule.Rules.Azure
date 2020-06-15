@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.13.0-B2006017 (pre-release)
+
 - New rules:
   - Azure Kubernetes Service:
     - Check AKS clusters use a Standard load balancer SKU. [#334](https://github.com/Microsoft/PSRule.Rules.Azure/issues/334)
