@@ -50,9 +50,37 @@ Describe 'Azure.PublicIP' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'ip-A';
         }
+
+        It 'Azure.PublicIP.Name' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PublicIP.Name' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'ip-A', 'ip-B';
+        }
+
+        It 'Azure.PublicIP.DNSLabel' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PublicIP.DNSLabel' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'ip-B';
+        }
     }
 
-    Context 'Resource name' {
+    Context 'Resource name -- Azure.PublicIP.Name' {
         $invokeParams = @{
             Baseline = 'Azure.All'
             Module = 'PSRule.Rules.Azure'
@@ -97,6 +125,57 @@ Describe 'Azure.PublicIP' {
         }
     }
 
+    Context 'Resource name -- Azure.PublicIP.DNSLabel' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'pip-001'
+            'pip'
+        )
+        $invalidNames = @(
+            'PIP-001'
+            '_pip-001'
+            '-pip-001'
+            'pip.001'
+            'pip-001-'
+            'pip-001.'
+            'pip-001_'
+            'p'
+        )
+        $testObject = [PSCustomObject]@{
+            ResourceType = 'Microsoft.Network/publicIPAddresses'
+            Properties = [PSCustomObject]@{
+                dnsSettings = [PSCustomObject]@{
+                    domainNameLabel = ''
+                }
+            }
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Properties.dnsSettings.domainNameLabel = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.DNSLabel';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Properties.dnsSettings.domainNameLabel = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.DNSLabel';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
     Context 'With template' {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template3.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.PublicIP.json;
@@ -106,6 +185,48 @@ Describe 'Azure.PublicIP' {
         It 'Azure.PublicIP.IsAttached' {
             $filteredResult = $result | Where-Object {
                 $_.RuleName -eq 'Azure.PublicIP.IsAttached' -and
+                $_.TargetType -eq 'Microsoft.Network/publicIPAddresses'
+            };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'pip-001';
+        }
+
+        It 'Azure.PublicIP.Name' {
+            $filteredResult = $result | Where-Object {
+                $_.RuleName -eq 'Azure.PublicIP.Name' -and
+                $_.TargetType -eq 'Microsoft.Network/publicIPAddresses'
+            };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'pip-001';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -BeNullOrEmpty;
+        }
+
+        It 'Azure.PublicIP.DNSLabel' {
+            $filteredResult = $result | Where-Object {
+                $_.RuleName -eq 'Azure.PublicIP.DNSLabel' -and
                 $_.TargetType -eq 'Microsoft.Network/publicIPAddresses'
             };
 
