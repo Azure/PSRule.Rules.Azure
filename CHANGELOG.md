@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+- New rules:
+  - Public IP:
+    - Check Public IP domain name label requirements. [#389](https://github.com/Microsoft/PSRule.Rules.Azure/issues/389)
+  - Virtual Machines:
+    - Check Availability Set name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+    - Check Computer name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+    - Check Managed Disk name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+    - Check Network Interface name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+    - Check Virtual Machine name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+    - Check Proximity Placement Group name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+  - Virtual Machine Scale Sets:
+    - Check Computer name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+    - Check Virtual Machine Scale Set name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+
 ## v0.13.0-B2006017 (pre-release)
 
 - New rules:

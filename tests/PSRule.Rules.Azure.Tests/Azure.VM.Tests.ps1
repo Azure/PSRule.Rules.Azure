@@ -23,7 +23,7 @@ $rootPath = $PWD;
 Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
 $here = (Resolve-Path $PSScriptRoot).Path;
 
-Describe 'Azure.VirtualMachine' {
+Describe 'Azure.VM' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.json';
 
     Context 'Conditions' {
@@ -448,11 +448,393 @@ Describe 'Azure.VirtualMachine' {
             $ruleResult.Length | Should -Be 5;
             $ruleResult.TargetName | Should -BeIn 'nic-A', 'nic-B', 'aks-agentpool-00000000-nic-1', 'aks-agentpool-00000000-nic-2', 'aks-agentpool-00000000-nic-3';
         }
+
+        It 'Azure.VM.Name' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.Name' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'vm-C', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3';
+        }
+
+        It 'Azure.VM.ComputerName' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ComputerName' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'vm-C', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3';
+        }
+
+        It 'Azure.VM.DiskName' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.DiskName' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'ReplicaVM_DataDisk_0-ASRReplica', 'disk-A', 'disk-B', 'disk-C';
+        }
+    }
+
+    Context 'Resource name - Azure.VM.Name' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'vm-001'
+            'vm-001_'
+            'VM.001'
+            '000000'
+        )
+        $invalidNames = @(
+            '_vm-001'
+            '-vm-001'
+            'vm-001-'
+            'vm-001.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Compute/virtualMachines'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
+    Context 'Resource name - Azure.VM.ComputerName (Windows)' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'vm-001'
+            '-vm-001-'
+            'v'
+            'virtualMachine1'
+            'v00000'
+        )
+        $invalidNames = @(
+            'vm_001'
+            'vm.001'
+            '0000000'
+            'virtualMachine01'
+        )
+        $testObject = [PSCustomObject]@{
+            ResourceType = 'Microsoft.Compute/virtualMachines'
+            Properties = [PSCustomObject]@{
+                storageProfile = [PSCustomObject]@{
+                    osDisk = [PSCustomObject]@{
+                        osType = 'Windows'
+                    }
+                }
+                osProfile = [PSCustomObject]@{
+                    computerName = ''
+                }
+            }
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Properties.osProfile.computerName = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.ComputerName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Properties.osProfile.computerName = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.ComputerName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
+    Context 'Resource name - Azure.VM.ComputerName (Linux)' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'vm-001'
+            'VM.001'
+            '000000'
+            'vm-001-'
+            'vm-001.'
+            'v'
+            'virtualMachine01'
+        )
+        $invalidNames = @(
+            'vm_001'
+            '-vm-001'
+        )
+        $testObject = [PSCustomObject]@{
+            ResourceType = 'Microsoft.Compute/virtualMachines'
+            Properties = [PSCustomObject]@{
+                storageProfile = [PSCustomObject]@{
+                    osDisk = [PSCustomObject]@{
+                        osType = 'Linux'
+                    }
+                }
+                osProfile = [PSCustomObject]@{
+                    computerName = ''
+                }
+            }
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Properties.osProfile.computerName = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.ComputerName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Properties.osProfile.computerName = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.ComputerName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
+    Context 'Resource name - Azure.VM.DiskName' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'disk-001'
+            'disk-001_'
+            'DISK.001'
+            'd'
+        )
+        $invalidNames = @(
+            '_disk-001'
+            '-disk-001'
+            '.disk-001'
+            'disk-001-'
+            'disk-001.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Compute/disks'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.DiskName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.DiskName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
+    Context 'Resource name - Azure.VM.ASName' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'as-001'
+            'as-001_'
+            'AS.001'
+            'a'
+        )
+        $invalidNames = @(
+            '_as-001'
+            '-as-001'
+            '.as-001'
+            'as-001-'
+            'as-001.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Compute/availabilitySets'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.ASName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.ASName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
+    Context 'Resource name - Azure.VM.NICName' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'nic-001'
+            'nic-001_'
+            'NIC.001'
+            'n'
+        )
+        $invalidNames = @(
+            '_nic-001'
+            '-nic-001'
+            '.nic-001'
+            'nic-001-'
+            'nic-001.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Network/networkInterfaces'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.NICName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.NICName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
+    Context 'Resource name - Azure.VM.PPGName' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'ppg_001'
+            'ppg-001'
+            'PPG.001'
+            'p'
+        )
+        $invalidNames = @(
+            '_ppg-001'
+            '-ppg-001'
+            '.ppg-001'
+            'ppg-001_'
+            'ppg-001-'
+            'ppg-001.'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Compute/proximityPlacementGroups'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.PPGName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.PPGName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
     }
 
     Context 'With template' {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.Template.json';
-        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualMNachine.json;
+        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualMachine.json;
         Export-AzTemplateRuleData -TemplateFile $templatePath -OutputPath $outputFile;
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
 

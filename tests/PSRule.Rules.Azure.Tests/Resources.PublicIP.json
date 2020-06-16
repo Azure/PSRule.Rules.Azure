@@ -43,7 +43,10 @@
             "publicIPAllocationMethod": "Static",
             "idleTimeoutInMinutes": 4,
             "ipTags": [],
-            "ipConfiguration": { }
+            "ipConfiguration": { },
+            "dnsSettings": {
+                "domainNameLabel": "ip-b"
+            }
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Network/publicIPAddresses",
