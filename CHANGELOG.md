@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.13.0-B2006023 (pre-release)
+
 - New rules:
   - Public IP:
     - Check Public IP domain name label requirements. [#389](https://github.com/Microsoft/PSRule.Rules.Azure/issues/389)
