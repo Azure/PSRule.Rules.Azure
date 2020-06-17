@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Data.Template;
+using System;
 using Xunit;
 using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
@@ -64,6 +65,19 @@ namespace PSRule.Rules.Azure
 
             var actual = Build(context, expression) as JToken;
             Assert.Equal("dev-", actual.Value<string>());
+        }
+
+        [Fact]
+        public void BuildExpressionWithNullProperty()
+        {
+            var context = GetContext();
+            context.Variables.Add("environments", JObject.Parse("{ }"));
+            context.Variables.Add("items", JArray.Parse("[ ]"));
+
+            Assert.Throws<ExpressionReferenceException>(() => Build(context, "[variables('environments').prod]"));
+            Assert.Throws<ExpressionReferenceException>(() => Build(context, "[variables('environments')['prod']]"));
+            Assert.Throws<InvalidOperationException>(() => Build(context, "[variables('environments')[0]]"));
+            Assert.Throws<ArgumentOutOfRangeException>(() => Build(context, "[variables('items')[0]]"));
         }
 
         private static object Build(TemplateContext context, string expression)

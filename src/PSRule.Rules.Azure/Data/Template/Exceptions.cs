@@ -153,4 +153,42 @@ namespace PSRule.Rules.Azure.Data.Template
             base.GetObjectData(info, context);
         }
     }
+
+    [Serializable]
+    public sealed class ExpressionReferenceException : TemplateException
+    {
+        public ExpressionReferenceException()
+        {
+        }
+
+        public ExpressionReferenceException(string message)
+            : base(message) { }
+
+        public ExpressionReferenceException(string message, Exception innerException)
+            : base(message, innerException) { }
+
+        internal ExpressionReferenceException(string expression, string message)
+            : base(message)
+        {
+            Expression = expression;
+        }
+
+        internal ExpressionReferenceException(string expression, string message, Exception innerException)
+            : base(message, innerException)
+        {
+            Expression = expression;
+        }
+
+        private ExpressionReferenceException(SerializationInfo info, StreamingContext context)
+            : base(info, context) { }
+
+        public string Expression { get; }
+
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null) throw new ArgumentNullException(nameof(info));
+            base.GetObjectData(info, context);
+        }
+    }
 }

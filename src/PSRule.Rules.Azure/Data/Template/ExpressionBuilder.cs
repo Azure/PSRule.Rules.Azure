@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
+using System.Threading;
 using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template
@@ -55,7 +56,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (stream.Skip(ExpressionTokenType.GroupStart))
             {
                 if (!_Functions.TryDescriptor(element.Content, out IFunctionDescriptor descriptor))
-                    throw new NotImplementedException(string.Format(PSRuleResources.FunctionNotFound, element.Content));
+                    throw new NotImplementedException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.FunctionNotFound, element.Content));
 
                 var fnParams = new List<ExpressionFnOuter>();
                 while (!stream.Skip(ExpressionTokenType.GroupEnd))
@@ -132,12 +133,18 @@ namespace PSRule.Rules.Azure.Data.Template
                 return jArray[arrayIndex];
 
             if (source is JObject jObject && ExpressionHelpers.TryString(indexResult, out string propertyName))
-                return jObject[propertyName];
+            {
+                var property = jObject[propertyName];
+                if (property == null)
+                    throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
+
+                return property;
+            }
 
             if (source is MockNode mockNode && ExpressionHelpers.TryConvertString(indexResult, out string memberName))
                 return mockNode.GetMember(memberName);
 
-            throw new InvalidOperationException();
+            throw new InvalidOperationException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.IndexInvalid, indexResult));
         }
 
         private static ExpressionFnOuter AddProperty(ExpressionFnOuter inner, string propertyName)
@@ -149,10 +156,22 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             var result = inner(context);
             if (result is JObject jObject)
-                return jObject.Property(propertyName, StringComparison.OrdinalIgnoreCase).Value;
+            {
+                var property = jObject.Property(propertyName, StringComparison.OrdinalIgnoreCase);
+                if (property == null)
+                    throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
+
+                return property.Value;
+            }
 
             if (result is JToken jToken)
-                return jToken[propertyName].Value<object>();
+            {
+                var property = jToken[propertyName];
+                if (property == null)
+                    throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
+
+                return property.Value<object>();
+            }
 
             if (result is MockNode mockNode)
                 return mockNode.GetMember(propertyName);
@@ -171,7 +190,7 @@ namespace PSRule.Rules.Azure.Data.Template
             // Try field
             var field = resultType.GetField(propertyName, BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.GetField | BindingFlags.Public);
             if (field == null)
-                throw new ArgumentException();
+                throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
 
             return field.GetValue(obj);
         }
