@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Bug fixes:
+  - Fixed exception message for object property that does not exist. [#362](https://github.com/Microsoft/PSRule.Rules.Azure/issues/362)
+
 ## v0.13.0-B2006023 (pre-release)
 
 - New rules:

@@ -97,6 +97,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The language expression index &apos;{0}&apos; is not valid for the object..
+        /// </summary>
+        internal static string IndexInvalid {
+            get {
+                return ResourceManager.GetString("IndexInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The parameter file &apos;{0}&apos; does not contain a metadata property..
         /// </summary>
         internal static string MetadataNotFound {
@@ -138,6 +147,15 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string PathTraversal {
             get {
                 return ResourceManager.GetString("PathTraversal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The language expression property &apos;{0}&apos; doesn&apos;t exist..
+        /// </summary>
+        internal static string PropertyNotFound {
+            get {
+                return ResourceManager.GetString("PropertyNotFound", resourceCulture);
             }
         }
         
