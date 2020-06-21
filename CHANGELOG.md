@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- New features:
+  - Added `Azure.GA_2020_06` baseline. [#399](https://github.com/Microsoft/PSRule.Rules.Azure/issues/399)
+    - Includes rules released before or during `June 2020` for Azure GA features.
 - Bug fixes:
   - Fixed exception message for object property that does not exist. [#362](https://github.com/Microsoft/PSRule.Rules.Azure/issues/362)
 

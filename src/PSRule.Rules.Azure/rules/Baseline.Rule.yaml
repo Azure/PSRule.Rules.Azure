@@ -3,7 +3,7 @@
 #
 
 ---
-# Synopsis: Default baseline for Azure rules
+# Synopsis: Default baseline for Azure rules.
 kind: Baseline
 metadata:
   name: Azure.Default
@@ -26,7 +26,7 @@ spec:
       release: GA
 
 ---
-# Synopsis: Includes Azure features in preview
+# Synopsis: Includes Azure features in preview.
 kind: Baseline
 metadata:
   name: Azure.Preview
@@ -49,7 +49,7 @@ spec:
       release: [ 'GA', 'preview' ]
 
 ---
-# Synopsis: Includes all Azure rules
+# Synopsis: Includes all Azure rules.
 kind: Baseline
 metadata:
   name: Azure.All
@@ -69,3 +69,28 @@ spec:
       resourceGroupName: [ 'ResourceGroupName' ]
   rule:
     tag: { }
+
+---
+# Synopsis: Include rules released June 2020 or prior for Azure GA features.
+kind: Baseline
+metadata:
+  name: Azure.GA_2020_06
+spec:
+  binding:
+    targetName:
+    - ResourceName
+    - FullName
+    - name
+    targetType:
+    - ResourceType
+    - type
+    - Extension
+    field:
+      resourceId: [ 'ResourceId' ]
+      subscriptionId: [ 'SubscriptionId' ]
+      resourceGroupName: [ 'ResourceGroupName' ]
+  rule:
+    tag:
+      release: GA
+      ruleSet:
+      - '2020_06'

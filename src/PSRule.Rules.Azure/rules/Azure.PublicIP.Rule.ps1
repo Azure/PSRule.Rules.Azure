@@ -6,12 +6,12 @@
 #
 
 # Synopsis: Public IP addresses should be attached or cleaned up if not in use
-Rule 'Azure.PublicIP.IsAttached' -Type 'Microsoft.Network/publicIPAddresses' -If { IsExport } -Tag @{ release = 'GA' } {
+Rule 'Azure.PublicIP.IsAttached' -Type 'Microsoft.Network/publicIPAddresses' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.ipConfiguration.id')
 }
 
 # Synopsis: Use public IP address naming requirements
-Rule 'Azure.PublicIP.Name' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA' } {
+Rule 'Azure.PublicIP.Name' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
 
     # Between 1 and 80 characters long
@@ -24,7 +24,7 @@ Rule 'Azure.PublicIP.Name' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ r
 }
 
 # Synopsis: Use public IP DNS label naming requirements
-Rule 'Azure.PublicIP.DNSLabel' -Type 'Microsoft.Network/publicIPAddresses' -If { $Assert.HasFieldValue($TargetObject, 'Properties.dnsSettings.domainNameLabel') } -Tag @{ release = 'GA' } {
+Rule 'Azure.PublicIP.DNSLabel' -Type 'Microsoft.Network/publicIPAddresses' -If { $Assert.HasFieldValue($TargetObject, 'Properties.dnsSettings.domainNameLabel') } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
 
     # Between 3 and 63 characters long

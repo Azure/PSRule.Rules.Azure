@@ -312,6 +312,15 @@ task BuildRuleDocs Build, PSRule, PSDocs, {
     $Null = Invoke-PSDocument -Name resource -OutputPath .\docs\rules\en\ -Path .\RuleToc.Doc.ps1;
 }
 
+# Synopsis: Build table of content for baselines
+task BuildBaselineDocs Build, PSRule, PSDocs, {
+    Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $baselines = Get-PSRuleBaseline -Module PSRule.Rules.Azure -WarningAction SilentlyContinue;
+    $Null = $baselines | ForEach-Object {
+        $_ | Invoke-PSDocument -Name baseline -InstanceName $_.Name -OutputPath .\docs\baselines\en\ -Path .\BaselineToc.Doc.ps1;
+    }
+}
+
 # Synopsis: Build help
 task BuildHelp BuildModule, PlatyPS, {
     if (!(Test-Path out/modules/PSRule.Rules.Azure/en/)) {

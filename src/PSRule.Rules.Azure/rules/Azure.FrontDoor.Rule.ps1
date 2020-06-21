@@ -8,12 +8,12 @@
 #region Front Door
 
 # Synopsis: Front Door instance should be enabled
-Rule 'Azure.FrontDoor.State' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA' } {
+Rule 'Azure.FrontDoor.State' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.enabledState', 'Enabled');
 }
 
 # Synopsis: Use a minimum of TLS 1.2
-Rule 'Azure.FrontDoor.MinTLS' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA' } {
+Rule 'Azure.FrontDoor.MinTLS' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $endpoints = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $endpoints = @($TargetObject.Properties.frontendEndpoints);
@@ -25,7 +25,7 @@ Rule 'Azure.FrontDoor.MinTLS' -Type 'Microsoft.Network/frontDoors', 'Microsoft.N
 }
 
 # Synopsis: Use diagnostics to audit Front Door access
-Rule 'Azure.FrontDoor.Logs' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA' } {
+Rule 'Azure.FrontDoor.Logs' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     Reason $LocalizedData.DiagnosticSettingsNotConfigured;
     $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.Network/frontDoors/providers/diagnosticSettings');
     $logCategories = @($diagnostics | ForEach-Object {
@@ -39,7 +39,7 @@ Rule 'Azure.FrontDoor.Logs' -Type 'Microsoft.Network/frontDoors' -Tag @{ release
 }
 
 # Synopsis: Enable WAF policy of each endpoint
-Rule 'Azure.FrontDoor.UseWAF' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA' } {
+Rule 'Azure.FrontDoor.UseWAF' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $endpoints = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $endpoints = @($TargetObject.Properties.frontendEndpoints);
@@ -50,7 +50,7 @@ Rule 'Azure.FrontDoor.UseWAF' -Type 'Microsoft.Network/frontDoors', 'Microsoft.N
 }
 
 # Synopsis: Use Front Door naming requirements
-Rule 'Azure.FrontDoor.Name' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA' } {
+Rule 'Azure.FrontDoor.Name' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
 
     # Between 5 and 64 characters long
@@ -63,12 +63,12 @@ Rule 'Azure.FrontDoor.Name' -Type 'Microsoft.Network/frontDoors' -Tag @{ release
 }
 
 # Synopsis: Use Front Door WAF policy in prevention mode
-Rule 'Azure.FrontDoor.WAF.Mode' -Type 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies' -Tag @{ release = 'GA' } {
+Rule 'Azure.FrontDoor.WAF.Mode' -Type 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.policySettings.mode', 'Prevention');
 }
 
 # Synopsis: Enable Front Door WAF policy
-Rule 'Azure.FrontDoor.WAF.Enabled' -Type 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies' -Tag @{ release = 'GA' } {
+Rule 'Azure.FrontDoor.WAF.Enabled' -Type 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.policySettings.enabledState', 'Enabled');
 }
 

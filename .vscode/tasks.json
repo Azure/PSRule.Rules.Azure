@@ -5,6 +5,7 @@
     "tasks": [
         {
             "label": "test",
+            "detail": "Build and run unit tests.",
             "type": "shell",
             "command": "Invoke-Build Test -AssertStyle Client",
             "group": {
@@ -31,6 +32,7 @@
         },
         {
             "label": "build",
+            "detail": "Build module.",
             "type": "shell",
             "command": "Invoke-Build Build",
             "group": {
@@ -72,9 +74,17 @@
             "problemMatcher": []
         },
         {
-            "label": "build-rule-docs",
+            "label": "Rule docs",
+            "detail": "Generate rule table of contents.",
             "type": "shell",
             "command": "Invoke-Build BuildRuleDocs",
+            "problemMatcher": []
+        },
+        {
+            "label": "Baseline docs",
+            "detail": "Generate baseline documentation.",
+            "type": "shell",
+            "command": "Invoke-Build BuildBaselineDocs",
             "problemMatcher": []
         }
     ]

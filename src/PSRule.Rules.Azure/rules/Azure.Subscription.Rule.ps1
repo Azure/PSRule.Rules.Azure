@@ -8,7 +8,7 @@
 #region RBAC
 
 # Synopsis: Use groups for assigning permissions instead of individual user accounts
-Rule 'Azure.RBAC.UseGroups' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
+Rule 'Azure.RBAC.UseGroups' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.ObjectType -eq 'User'
@@ -19,7 +19,7 @@ Rule 'Azure.RBAC.UseGroups' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA
 }
 
 # Synopsis: Limit the number of subscription Owners
-Rule 'Azure.RBAC.LimitOwner' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
+Rule 'Azure.RBAC.LimitOwner' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.RoleDefinitionName -eq 'Owner' -and
@@ -32,7 +32,7 @@ Rule 'Azure.RBAC.LimitOwner' -Type 'Microsoft.Subscription' -Tag @{ release = 'G
 }
 
 # Synopsis: Limit RBAC inheritance from Management Groups
-Rule 'Azure.RBAC.LimitMGDelegation' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
+Rule 'Azure.RBAC.LimitMGDelegation' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         ($_.Scope -like "/providers/Microsoft.Management/managementGroups/*")
@@ -43,7 +43,7 @@ Rule 'Azure.RBAC.LimitMGDelegation' -Type 'Microsoft.Subscription' -Tag @{ relea
 }
 
 # Synopsis: Avoid using classic co-administrator roles
-Rule 'Azure.RBAC.CoAdministrator' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
+Rule 'Azure.RBAC.CoAdministrator' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.RoleDefinitionName -eq 'CoAdministrator'
@@ -54,7 +54,7 @@ Rule 'Azure.RBAC.CoAdministrator' -Type 'Microsoft.Subscription' -Tag @{ release
 }
 
 # Synopsis: Use RBAC assignments on resource groups instead of individual resources
-Rule 'Azure.RBAC.UseRGDelegation' -Type 'Microsoft.Resources/resourceGroups' -Tag @{ release = 'GA' } {
+Rule 'Azure.RBAC.UseRGDelegation' -Type 'Microsoft.Resources/resourceGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.Scope -like "/subscriptions/*/resourceGroups/*/providers/*"
@@ -69,7 +69,7 @@ Rule 'Azure.RBAC.UseRGDelegation' -Type 'Microsoft.Resources/resourceGroups' -Ta
 #region Security Center
 
 # Synopsis: Security Center email and phone contact details should be set
-Rule 'Azure.SecurityCenter.Contact' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
+Rule 'Azure.SecurityCenter.Contact' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     Reason $LocalizedData.SecurityCenterNotConfigured;
     $contacts = @(GetSubResources -ResourceType 'Microsoft.Security/securityContacts');
     $Null -ne $contacts -and $contacts.Length -gt 0;
@@ -82,7 +82,7 @@ Rule 'Azure.SecurityCenter.Contact' -Type 'Microsoft.Subscription' -Tag @{ relea
 # TODO: Check Security Center recommendations
 
 # Synopsis: Enable auto-provisioning on VMs to improve Azure Security Center insights
-Rule 'Azure.SecurityCenter.Provisioning' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
+Rule 'Azure.SecurityCenter.Provisioning' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $provisioning = @(GetSubResources -ResourceType 'Microsoft.Security/autoProvisioningSettings');
     $Null -ne $provisioning -and $provisioning.Length -gt 0;
     foreach ($s in $provisioning) {
@@ -98,7 +98,7 @@ Rule 'Azure.SecurityCenter.Provisioning' -Type 'Microsoft.Subscription' -Tag @{ 
 #region Monitor
 
 # Synopsis: Configure Azure service logs
-Rule 'Azure.Monitor.ServiceHealth' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA' } {
+Rule 'Azure.Monitor.ServiceHealth' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $alerts = @(GetSubResources -ResourceType 'microsoft.insights/activityLogAlerts' | Where-Object {
         @($_.Properties.condition.allOf | Where-Object { $_.field -eq 'category' -and $_.equals -eq 'ServiceHealth' }).Length -gt 0
     });

@@ -169,6 +169,12 @@ For a list of rules included in the `PSRule.Rules.Azure` module see:
 - [Rules by category](docs/rules/en/module.md)
 - [Rules by resource](docs/rules/en/resource.md)
 
+## Baseline reference
+
+For a list of baselines included in the `PSRule.Rules.Azure` module see:
+
+- [Baselines](docs/baselines/en/index.md)
+
 ## Language reference
 
 PSRule.Rules.Azure extends PowerShell with the following cmdlets.
