@@ -180,7 +180,7 @@ The following baselines are included within `PSRule.Rules.Azure`.
 
 ## Language reference
 
-PSRule.Rules.Azure extends PowerShell with the following cmdlets.
+PSRule for Azure extends PowerShell with the following cmdlets.
 
 ### Commands
 
