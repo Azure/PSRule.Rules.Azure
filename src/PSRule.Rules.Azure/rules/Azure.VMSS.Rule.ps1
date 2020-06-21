@@ -8,7 +8,7 @@
 #region Virtual machine scale set
 
 # Synopsis: Use VM naming requirements
-Rule 'Azure.VMSS.Name' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA' } {
+Rule 'Azure.VMSS.Name' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcompute
 
     # Between 1 and 64 characters long
@@ -22,7 +22,7 @@ Rule 'Azure.VMSS.Name' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{
 }
 
 # Synopsis: Use VM naming requirements
-Rule 'Azure.VMSS.ComputerName' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA' } {
+Rule 'Azure.VMSS.ComputerName' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcompute
 
     $maxLength = 64

@@ -169,9 +169,18 @@ For a list of rules included in the `PSRule.Rules.Azure` module see:
 - [Rules by category](docs/rules/en/module.md)
 - [Rules by resource](docs/rules/en/resource.md)
 
+## Baseline reference
+
+The following baselines are included within `PSRule.Rules.Azure`.
+
+- [Azure.Default](docs/baselines/en/Azure.Default.md) - Default baseline for Azure rules.
+- [Azure.Preview](docs/baselines/en/Azure.Preview.md) - Includes Azure features in preview.
+- [Azure.All](docs/baselines/en/Azure.All.md) - Includes all Azure rules.
+- [Azure.GA_2020_06](docs/baselines/en/Azure.GA_2020_06.md) - Baseline for GA rules released June 2020 or prior.
+
 ## Language reference
 
-PSRule.Rules.Azure extends PowerShell with the following cmdlets.
+PSRule for Azure extends PowerShell with the following cmdlets.
 
 ### Commands
 

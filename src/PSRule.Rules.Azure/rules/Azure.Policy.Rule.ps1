@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Policy and initiative definitions require display name, description and category set
-Rule 'Azure.Policy.Descriptors' -Type 'Microsoft.Authorization/policyDefinitions', 'Microsoft.Authorization/policySetDefinitions' -Tag @{ release = 'GA' } {
+Rule 'Azure.Policy.Descriptors' -Type 'Microsoft.Authorization/policyDefinitions', 'Microsoft.Authorization/policySetDefinitions' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.HasFieldValue($TargetObject, 'properties.displayName');
     $Assert.HasFieldValue($TargetObject, 'properties.description');
     $Assert.HasFieldValue($TargetObject, 'properties.metadata.category');

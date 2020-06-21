@@ -10,7 +10,7 @@ if ($Null -ne $Configuration.azureAllowedRegions) {
 }
 
 # Synopsis: Resources should be tagged
-Rule 'Azure.Resource.UseTags' -If { SupportsTags } -Tag @{ release = 'GA' } {
+Rule 'Azure.Resource.UseTags' -If { SupportsTags } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     Reason $LocalizedData.ResourceNotTagged
     # List of resource that support tags can be found here: https://docs.microsoft.com/en-us/azure/azure-resource-manager/tag-support
     (Exists 'Tags') -and
@@ -18,12 +18,12 @@ Rule 'Azure.Resource.UseTags' -If { SupportsTags } -Tag @{ release = 'GA' } {
 }
 
 # Synopsis: Resources should be deployed to allowed regions
-Rule 'Azure.Resource.AllowedRegions' -If { ($Null -ne $Configuration.Azure_AllowedRegions) -and ($Configuration.Azure_AllowedRegions.Length -gt 0) -and (SupportsRegions) } -Tag @{ release = 'GA' } {
+Rule 'Azure.Resource.AllowedRegions' -If { ($Null -ne $Configuration.Azure_AllowedRegions) -and ($Configuration.Azure_AllowedRegions.Length -gt 0) -and (SupportsRegions) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     IsAllowedRegion
 }
 
 # Synopsis: Use Resource Group naming requirements
-Rule 'Azure.ResourceGroup.Name' -Type 'Microsoft.Resources/resourceGroups' -Tag @{ release = 'GA' } {
+Rule 'Azure.ResourceGroup.Name' -Type 'Microsoft.Resources/resourceGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftresources
 
     # Between 1 and 90 characters long
