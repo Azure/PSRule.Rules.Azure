@@ -4,9 +4,7 @@ Default baseline for Azure rules.
 
 ## Rules
 
-The following rules are included within `Azure.Default`.
-
-This baseline includes a total of 139 rules.
+The following rules are included within `Azure.Default`. This baseline includes a total of 139 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------

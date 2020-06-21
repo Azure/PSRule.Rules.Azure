@@ -4,9 +4,7 @@ Includes Azure features in preview.
 
 ## Rules
 
-The following rules are included within `Azure.Preview`.
-
-This baseline includes a total of 141 rules.
+The following rules are included within `Azure.Preview`. This baseline includes a total of 141 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
