@@ -41,6 +41,9 @@ namespace PSRule.Rules.Azure.Data.Template
             return false;
         }
 
+        /// <summary>
+        /// Try to get an int from the existing object.
+        /// </summary>
         internal static bool TryInt(object o, out int value)
         {
             if (o is int i)
@@ -57,6 +60,9 @@ namespace PSRule.Rules.Azure.Data.Template
             return false;
         }
 
+        /// <summary>
+        /// Try to get an int from the existing type and allow conversion from string.
+        /// </summary>
         internal static bool TryConvertInt(object o, out int value)
         {
             if (TryInt(o, out value))

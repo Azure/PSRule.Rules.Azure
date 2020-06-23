@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Bug fixes:
+  - Fixed substring raises an exception processing sub expressions. [#413](https://github.com/Microsoft/PSRule.Rules.Azure/issues/413)
+
 ## v0.13.0-B2006032 (pre-release)
 
 - New features:
