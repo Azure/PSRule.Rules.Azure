@@ -2,6 +2,40 @@
 
 ## Unreleased
 
+## v0.13.0
+
+What's changed since v0.12.1:
+
+- New features:
+  - Added `Azure.GA_2020_06` baseline. [#399](https://github.com/Microsoft/PSRule.Rules.Azure/issues/399)
+    - Includes rules released before or during June 2020 for Azure GA features.
+- New rules:
+  - Azure Kubernetes Service:
+    - Check AKS clusters use a Standard load balancer SKU. [#334](https://github.com/Microsoft/PSRule.Rules.Azure/issues/334)
+    - Check AKS clusters use Managed Identities for cluster infrastructure. [#333](https://github.com/Microsoft/PSRule.Rules.Azure/issues/333)
+    - Check AKS clusters use Azure Policy add-on (preview). [#405](https://github.com/Microsoft/PSRule.Rules.Azure/issues/405)
+  - Public IP:
+    - Check Public IP domain name label requirements. [#389](https://github.com/Microsoft/PSRule.Rules.Azure/issues/389)
+  - Virtual Machines:
+    - Check Availability Set name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+    - Check Computer name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+    - Check Managed Disk name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+    - Check Network Interface name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+    - Check Virtual Machine name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+    - Check Proximity Placement Group name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+  - Virtual Machine Scale Sets:
+    - Check Computer name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+    - Check Virtual Machine Scale Set name requirements. [#387](https://github.com/Microsoft/PSRule.Rules.Azure/issues/387)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.16.9. [#394](https://github.com/Microsoft/PSRule.Rules.Azure/issues/394)
+- Bug fixes:
+  - Fixed module default culture. [#390](https://github.com/Microsoft/PSRule.Rules.Azure/issues/390)
+  - Fixed exception message for object property that does not exist. [#362](https://github.com/Microsoft/PSRule.Rules.Azure/issues/362)
+  - Fixed substring raises an exception processing sub expressions. [#413](https://github.com/Microsoft/PSRule.Rules.Azure/issues/413)
+
+What's changed since pre-release v0.13.0-B2006032:
+
 - Bug fixes:
   - Fixed substring raises an exception processing sub expressions. [#413](https://github.com/Microsoft/PSRule.Rules.Azure/issues/413)
 
