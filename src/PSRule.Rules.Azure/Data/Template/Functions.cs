@@ -129,7 +129,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Array(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Array), args);
 
             return new JArray(args[0]);
         }
@@ -137,7 +137,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Coalesce(TemplateContext context, object[] args)
         {
             if (CountArgs(args) < 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Coalesce), args);
 
             for (var i = 0; i < args.Length; i++)
             {
@@ -150,7 +150,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Concat(TemplateContext context, object[] args)
         {
             if (CountArgs(args) < 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Concat), args);
 
             // String
             if (ExpressionHelpers.TryConvertString(args[0], out string value))
@@ -200,7 +200,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Empty(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Empty), args);
 
             if (args[0] == null)
                 return true;
@@ -219,7 +219,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Contains(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Contains), args);
 
             var objectToFind = args[1];
 
@@ -238,7 +238,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object CreateArray(TemplateContext context, object[] args)
         {
             if (CountArgs(args) < 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(CreateArray), args);
 
             return new JArray(args);
         }
@@ -246,7 +246,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object First(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(First), args);
 
             if (args[0] is Array avalue)
                 return avalue.GetValue(0);
@@ -261,7 +261,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Intersection(TemplateContext context, object[] args)
         {
             if (CountArgs(args) < 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Intersection), args);
 
             // Array
             if (args[0] is JArray jArray)
@@ -308,7 +308,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Last(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Last), args);
 
             if (args[0] is Array avalue)
                 return avalue.GetValue(avalue.Length - 1);
@@ -323,7 +323,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Length(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Length), args);
 
             if (args[0] is string s)
                 return s.Length;
@@ -338,7 +338,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Min(TemplateContext context, object[] args)
         {
             if (CountArgs(args) == 0)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Min), args);
 
             int? result = null;
             for (var i = 0; i < args.Length; i++)
@@ -369,7 +369,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Max(TemplateContext context, object[] args)
         {
             if (CountArgs(args) == 0)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Max), args);
 
             int? result = null;
             for (var i = 0; i < args.Length; i++)
@@ -400,7 +400,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Range(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Range), args);
 
             if (!ExpressionHelpers.TryInt(args[0], out int startingInteger))
                 throw new ArgumentException();
@@ -418,7 +418,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Skip(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Skip), args);
 
             if (!ExpressionHelpers.TryInt(args[1], out int numberToSkip))
                 throw new ArgumentException();
@@ -449,7 +449,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Take(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Take), args);
 
             if (!ExpressionHelpers.TryInt(args[1], out int numberToTake))
                 throw new ArgumentException();
@@ -481,7 +481,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Union(TemplateContext context, object[] args)
         {
             if (CountArgs(args) < 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Union), args);
 
             // Array
             if (args[0] is Array)
@@ -555,7 +555,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Deployment(TemplateContext context, object[] args)
         {
             if (CountArgs(args) > 0)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Deployment), args);
 
             return context.Deployment;
         }
@@ -563,7 +563,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Parameters(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Parameters), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string parameterName))
                 throw new ArgumentException();
@@ -577,7 +577,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Variables(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Variables), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string variableName))
                 throw new ArgumentException();
@@ -601,7 +601,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object ExtensionResourceId(TemplateContext context, object[] args)
         {
             if (CountArgs(args) < 3)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(ExtensionResourceId), args);
 
             var segments = new string[args.Length];
             for (var i = 0; i < segments.Length; i++)
@@ -634,7 +634,7 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             var argCount = CountArgs(args);
             if (argCount < 2 || argCount > 3)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(List), args);
 
             ExpressionHelpers.TryString(args[0], out string resourceId);
             return new MockList(resourceId);
@@ -644,7 +644,7 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             var argCount = CountArgs(args);
             if (argCount < 1 || argCount > 3)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Reference), args);
 
             ExpressionHelpers.TryString(args[0], out string resourceType);
             return new MockResource(resourceType);
@@ -656,7 +656,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object ResourceGroup(TemplateContext context, object[] args)
         {
             if (CountArgs(args) > 0)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(ResourceGroup), args);
 
             return context.ResourceGroup;
         }
@@ -670,7 +670,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object ResourceId(TemplateContext context, object[] args)
         {
             if (CountArgs(args) < 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(ResourceId), args);
 
             var segments = new string[args.Length];
             for (var i = 0; i < segments.Length; i++)
@@ -718,7 +718,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Subscription(TemplateContext context, object[] args)
         {
             if (CountArgs(args) > 0)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Subscription), args);
 
             return context.Subscription;
         }
@@ -732,7 +732,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object SubscriptionResourceId(TemplateContext context, object[] args)
         {
             if (CountArgs(args) < 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(SubscriptionResourceId), args);
 
             var segments = new string[args.Length];
             for (var i = 0; i < segments.Length; i++)
@@ -778,7 +778,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object TenantResourceId(TemplateContext context, object[] args)
         {
             if (CountArgs(args) < 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(TenantResourceId), args);
 
             var segments = new string[args.Length];
             for (var i = 0; i < segments.Length; i++)
@@ -817,7 +817,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Add(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Add), args);
 
             if (!ExpressionHelpers.TryConvertInt(args[0], out int operand1))
                 throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
@@ -844,7 +844,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Div(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Div), args);
 
             if (!ExpressionHelpers.TryConvertInt(args[0], out int operand1))
                 throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
@@ -861,7 +861,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Float(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Float), args);
 
             if (ExpressionHelpers.TryConvertInt(args[0], out int ivalue))
                 return (float)ivalue;
@@ -874,9 +874,9 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Int(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Int), args);
 
-            if(ExpressionHelpers.TryConvertInt(args[0], out int value))
+            if (ExpressionHelpers.TryConvertInt(args[0], out int value))
                 return value;
             
             throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "valueToConvert");
@@ -885,7 +885,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Mod(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Mod), args);
 
             if (!ExpressionHelpers.TryConvertInt(args[0], out int operand1))
                 throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
@@ -902,7 +902,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Mul(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Mul), args);
 
             if (!ExpressionHelpers.TryConvertInt(args[0], out int operand1))
                 throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
@@ -916,7 +916,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Sub(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Sub), args);
 
             if (!ExpressionHelpers.TryConvertInt(args[0], out int operand1))
                 throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
@@ -937,7 +937,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Equals(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Equals), args);
 
             // One null
             if (args[0] == null || args[1] == null)
@@ -969,7 +969,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Greater(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Greater), args);
 
             return Compare(args[0], args[1]) > 0;
         }
@@ -981,7 +981,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object GreaterOrEquals(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(GreaterOrEquals), args);
 
             return Compare(args[0], args[1]) >= 0;
         }
@@ -993,7 +993,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Less(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Less), args);
 
             return Compare(args[0], args[1]) < 0;
         }
@@ -1004,7 +1004,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object LessOrEquals(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(LessOrEquals), args);
 
             return Compare(args[0], args[1]) <= 0;
         }
@@ -1019,7 +1019,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object And(TemplateContext context, object[] args)
         {
             if (args == null || args.Length < 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(And), args);
 
             var bools = new bool[args.Length];
             args.CopyTo(bools, 0);
@@ -1037,7 +1037,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Bool(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Bool), args);
 
             if (args[0] is string svalue)
                 return bool.Parse(svalue);
@@ -1053,7 +1053,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object If(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 3)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(If), args);
 
             return args[0] is bool condition && condition == true ? args[1] : args[2];
         }
@@ -1064,7 +1064,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Not(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Not), args);
 
             return !(bool)args[0];
         }
@@ -1075,7 +1075,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Or(TemplateContext context, object[] args)
         {
             if (args == null || args.Length < 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Or), args);
 
             var bools = new bool[args.Length];
             args.CopyTo(bools, 0);
@@ -1094,7 +1094,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Base64(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Base64), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string value))
                 throw new ArgumentException();
@@ -1105,7 +1105,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Base64ToJson(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Base64ToJson), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string value))
                 throw new ArgumentException();
@@ -1116,7 +1116,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Base64ToString(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Base64ToString), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string value))
                 throw new ArgumentException();
@@ -1127,7 +1127,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object DataUri(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(DataUri), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string value))
                 throw new ArgumentException();
@@ -1138,7 +1138,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object DataUriToString(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(DataUriToString), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string value))
                 throw new ArgumentException();
@@ -1171,7 +1171,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Format(TemplateContext context, object[] args)
         {
             if (CountArgs(args) < 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Format), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string formatString))
                 throw new ArgumentException();
@@ -1184,7 +1184,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Guid(TemplateContext context, object[] args)
         {
             if (CountArgs(args) < 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Guid), args);
 
             var hash = GetUnique(args);
             var guidBytes = new byte[16];
@@ -1195,7 +1195,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object IndexOf(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(IndexOf), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string stringToSearch))
                 throw new ArgumentException();
@@ -1209,7 +1209,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object LastIndexOf(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(LastIndexOf), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string stringToSearch))
                 throw new ArgumentException();
@@ -1223,7 +1223,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object NewGuid(TemplateContext context, object[] args)
         {
             if (!(args == null || args.Length == 0))
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(NewGuid), args);
 
             return System.Guid.NewGuid().ToString();
         }
@@ -1232,7 +1232,7 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             var argCount = CountArgs(args);
             if (argCount < 2 || argCount > 3)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(PadLeft), args);
 
             string paddingCharacter = " ";
 
@@ -1261,7 +1261,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object String(TemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(String), args);
 
             return JsonConvert.SerializeObject(args[0]);
         }
@@ -1269,20 +1269,20 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Substring(TemplateContext context, object[] args)
         {
             if (args == null || args.Length < 1 || args.Length > 3 || !ExpressionHelpers.TryString(args[0], out string value))
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Substring), args);
 
-            if (args.Length == 2 && args[1] is int startIndex)
+            if (args.Length == 2 && ExpressionHelpers.TryInt(args[1], out int startIndex))
                 return value.Substring(startIndex);
-            else if (args.Length == 3 && args[1] is int startIndex2 && args[2] is int length)
+            else if (args.Length == 3 && ExpressionHelpers.TryInt(args[1], out int startIndex2) && ExpressionHelpers.TryInt(args[2], out int length))
                 return value.Substring(startIndex2, length);
 
-            throw new ArgumentException();
+            throw ArgumentFormatInvalid(nameof(Substring));
         }
 
         internal static object ToLower(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(ToLower), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string stringToChange))
                 throw new ArgumentException();
@@ -1293,7 +1293,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object ToUpper(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(ToUpper), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string stringToChange))
                 throw new ArgumentException();
@@ -1304,7 +1304,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Trim(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Trim), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string stringToTrim))
                 throw new ArgumentException();
@@ -1315,7 +1315,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object UniqueString(TemplateContext context, object[] args)
         {
             if (CountArgs(args) == 0)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(UniqueString), args);
 
             var hash = GetUnique(args);
             var builder = new StringBuilder();
@@ -1330,7 +1330,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Uri(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Uri), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string baseUri))
                 throw new ArgumentException(PSRuleResources.FunctionInvalidString, "baseUri");
@@ -1345,7 +1345,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object UriComponent(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(UriComponent), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string stringToEncode))
                 throw new ArgumentException(PSRuleResources.FunctionInvalidString, "stringToEncode");
@@ -1356,7 +1356,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object UriComponentToString(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(UriComponentToString), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string uriEncodedString))
                 throw new ArgumentException(PSRuleResources.FunctionInvalidString, "uriEncodedString");
@@ -1368,7 +1368,7 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             var argCount = CountArgs(args);
             if (CountArgs(args) > 1)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(UtcNow), args);
 
             var format = "yyyyMMddTHHmmssZ";
             if (argCount == 1 && !ExpressionHelpers.TryString(args[0], out format))
@@ -1380,7 +1380,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Replace(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 3)
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Replace), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string originalString) || !ExpressionHelpers.TryString(args[1], out string oldString) || !ExpressionHelpers.TryString(args[2], out string newString))
                 throw new ArgumentException();
@@ -1535,5 +1535,26 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         #endregion Helper functions
+
+        #region Exceptions
+
+        private static ExpressionArgumentException ArgumentsOutOfRange(string expression, object[] args)
+        {
+            var length = args == null ? 0 : args.Length;
+            return new ExpressionArgumentException(
+                expression,
+                string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentsOutOfRange, expression, length)
+            );
+        }
+
+        private static ExpressionArgumentException ArgumentFormatInvalid(string expression)
+        {
+            return new ExpressionArgumentException(
+                expression,
+                string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentFormatInvalid, expression)
+            );
+        }
+
+        #endregion Exceptions
     }
 }

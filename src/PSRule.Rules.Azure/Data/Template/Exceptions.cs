@@ -116,6 +116,43 @@ namespace PSRule.Rules.Azure.Data.Template
         public FunctionErrorType ErrorType { get; }
     }
 
+    public abstract class ExpressionException : TemplateException
+    {
+        public ExpressionException()
+        {
+        }
+
+        public ExpressionException(string message)
+            : base(message) { }
+
+        public ExpressionException(string message, Exception innerException)
+            : base(message, innerException) { }
+
+        internal ExpressionException(string expression, string message)
+            : base(message)
+        {
+            Expression = expression;
+        }
+
+        protected ExpressionException(string expression, string message, Exception innerException)
+            : base(message, innerException)
+        {
+            Expression = expression;
+        }
+
+        protected ExpressionException(SerializationInfo info, StreamingContext context)
+            : base(info, context) { }
+
+        public string Expression { get; }
+
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null) throw new ArgumentNullException(nameof(info));
+            base.GetObjectData(info, context);
+        }
+    }
+
     [Serializable]
     public sealed class ExpressionParseException : TemplateException
     {
@@ -183,6 +220,33 @@ namespace PSRule.Rules.Azure.Data.Template
             : base(info, context) { }
 
         public string Expression { get; }
+
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null) throw new ArgumentNullException(nameof(info));
+            base.GetObjectData(info, context);
+        }
+    }
+
+    [Serializable]
+    public sealed class ExpressionArgumentException : ExpressionException
+    {
+        public ExpressionArgumentException()
+        {
+        }
+
+        public ExpressionArgumentException(string message)
+            : base(message) { }
+
+        public ExpressionArgumentException(string message, Exception innerException)
+            : base(message, innerException) { }
+
+        internal ExpressionArgumentException(string expression, string message)
+            : base(expression, message) { }
+
+        private ExpressionArgumentException(SerializationInfo info, StreamingContext context)
+            : base(info, context) { }
 
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)

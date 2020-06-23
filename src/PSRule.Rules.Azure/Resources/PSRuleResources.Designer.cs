@@ -61,6 +61,24 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The arguments for &apos;{0}&apos; are not in the expected format or type..
+        /// </summary>
+        internal static string ArgumentFormatInvalid {
+            get {
+                return ResourceManager.GetString("ArgumentFormatInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of arguments &apos;{1}&apos; is not within the allowed range for &apos;{0}&apos;..
+        /// </summary>
+        internal static string ArgumentsOutOfRange {
+            get {
+                return ResourceManager.GetString("ArgumentsOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to parse expression. The expression may not be valid. Expression: &quot;{0}&quot;.
         /// </summary>
         internal static string ExpressionInvalid {
