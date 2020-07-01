@@ -12,10 +12,10 @@ Features of PSRule for Azure include:
 
 ## Disclaimer
 
-This project is to be considered a **proof-of-concept** and **not a supported product**.
+This project is open source and **not a supported product**.
 
-For issues with rules and documentation please check our GitHub [issues](https://github.com/Microsoft/PSRule.Rules.Azure/issues) page.
-If you do not see your problem captured, please file a new issue and follow the provided template.
+If you are experiencing problems, have a feature request, or a question, please check for an [issue] on GitHub.
+If you do not see your problem captured, please file a new issue, and follow the provided template.
 
 If you have any problems with the [PSRule][engine] engine, please check the project GitHub [issues](https://github.com/Microsoft/PSRule/issues) page instead.
 
@@ -230,6 +230,7 @@ or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any addi
 
 This project is [licensed under the MIT License](LICENSE).
 
+[issue]: https://github.com/Microsoft/PSRule.Rules.Azure/issues
 [install]: docs/scenarios/install-instructions.md
 [ci-badge]: https://dev.azure.com/bewhite/PSRule.Rules.Azure/_apis/build/status/PSRule.Rules.Azure-CI?branchName=master
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
