@@ -2,7 +2,7 @@
 severity: Important
 category: Reliability
 resource: Monitor
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.Monitor.ServiceHealth.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Monitor.ServiceHealth.md
 ---
 
 # Alert on service events

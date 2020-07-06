@@ -2,7 +2,7 @@
 severity: Awareness
 category: Naming
 resource: Resource Group
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.ResourceGroup.Name.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.ResourceGroup.Name.md
 ---
 
 # Use valid resource group names

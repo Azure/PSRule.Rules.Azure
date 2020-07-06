@@ -2,7 +2,7 @@
 severity: Single point of failure
 category: Reliability
 resource: Virtual Machine
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.UseManagedDisks.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.VM.UseManagedDisks.md
 ---
 
 # Use Managed Disks

@@ -187,7 +187,7 @@ Putting each of these steps together.
 #
 
 trigger:
-- master
+- main
 
 pool:
   vmImage: 'ubuntu-latest'

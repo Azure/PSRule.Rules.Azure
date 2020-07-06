@@ -2,7 +2,7 @@
 severity: Awareness
 category: Naming
 resource: Front Door
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.FrontDoor.Name.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.FrontDoor.Name.md
 ---
 
 # Use valid Front Door names

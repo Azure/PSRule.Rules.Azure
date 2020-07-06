@@ -2,7 +2,7 @@
 severity: Important
 category: Security operations
 resource: Key Vault
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.KeyVault.Logs.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.KeyVault.Logs.md
 ---
 
 # Audit Key Vault data access

@@ -2,7 +2,7 @@
 severity: Awareness
 category: Naming
 resource: Public IP address
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.PublicIP.Name.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.PublicIP.Name.md
 ---
 
 # Use valid Public IP names

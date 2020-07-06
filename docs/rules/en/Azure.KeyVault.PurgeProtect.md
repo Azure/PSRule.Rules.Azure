@@ -2,7 +2,7 @@
 severity: Important
 category: Data recovery
 resource: Key Vault
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.KeyVault.PurgeProtect.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.KeyVault.PurgeProtect.md
 ---
 
 # Use Key Vault Purge Protection

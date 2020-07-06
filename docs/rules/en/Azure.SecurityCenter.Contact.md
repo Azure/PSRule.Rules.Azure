@@ -2,7 +2,7 @@
 severity: Important
 category: Security operations
 resource: Security Center
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.SecurityCenter.Contact.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.SecurityCenter.Contact.md
 ms-content-id: 18fcf75f-a5e6-4a34-baba-74bd49502cd7
 ---
 

@@ -19,7 +19,7 @@ Document 'RuleHelp' {
     }
 
     if (!$annotations.Contains('online version')) {
-        $annotations['online version'] = "https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/$($rule.Name).md";
+        $annotations['online version'] = "https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/$($rule.Name).md";
     }
 
     Metadata $annotations;

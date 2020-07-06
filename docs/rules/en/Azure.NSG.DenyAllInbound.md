@@ -2,7 +2,7 @@
 severity: Important
 category: Reliability
 resource: Network Security Group
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.NSG.DenyAllInbound.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.NSG.DenyAllInbound.md
 ---
 
 # Avoid denying all inbound traffic

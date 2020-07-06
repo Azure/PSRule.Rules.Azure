@@ -2,7 +2,7 @@
 severity: Important
 category: Security operations
 resource: Key Vault
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.KeyVault.AccessPolicy.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.KeyVault.AccessPolicy.md
 ---
 
 # Limit access to Key Vault data

@@ -2,7 +2,7 @@
 severity: Awareness
 category: Naming
 resource: Network Security Group
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.NSG.Name.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.NSG.Name.md
 ---
 
 # Use valid NSG names

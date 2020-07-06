@@ -2,7 +2,7 @@
 severity: Awareness
 category: Operations management
 resource: Policy
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.Policy.Descriptors.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Policy.Descriptors.md
 ---
 
 # Use descriptive policies

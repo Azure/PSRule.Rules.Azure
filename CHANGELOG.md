@@ -203,7 +203,7 @@ What's changed since v0.10.1:
     - Update configuration settings to use the new name, old configuration names are ignored.
     - Renamed `minAKSVersion` to `Azure_AKSMinimumVersion`.
     - Renamed `azureAllowedRegions` to `Azure_AllowedRegions`.
-    - Added configuration option documentation. See [about_PSRule_Azure_Configuration](https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md) for details.
+    - Added configuration option documentation. See [about_PSRule_Azure_Configuration](https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md) for details.
 
 What's changed since pre-release v0.11.0-B2004012:
 
@@ -221,7 +221,7 @@ What's changed since pre-release v0.11.0-B2004012:
     - Update configuration settings to use the new name, old configuration names are ignored.
     - Renamed `minAKSVersion` to `Azure_AKSMinimumVersion`.
     - Renamed `azureAllowedRegions` to `Azure_AllowedRegions`.
-    - Added configuration option documentation. See [about_PSRule_Azure_Configuration](https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md) for details.
+    - Added configuration option documentation. See [about_PSRule_Azure_Configuration](https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md) for details.
 
 ## v0.11.0-B2004005 (pre-release)
 

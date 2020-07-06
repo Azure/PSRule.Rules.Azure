@@ -2,7 +2,7 @@
 severity: Important
 category: Security configuration
 resource: Front Door
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.FrontDoor.State.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.FrontDoor.State.md
 ---
 
 # Enable Front Door instance

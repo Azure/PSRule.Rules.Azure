@@ -2,7 +2,7 @@
 severity: Awareness
 category: Naming
 resource: Route table
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.Route.Name.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Route.Name.md
 ---
 
 # Use valid Route table names
