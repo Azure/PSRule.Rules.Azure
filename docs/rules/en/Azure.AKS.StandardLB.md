@@ -34,3 +34,4 @@ AKS clusters can not be updated to use a Standard load balancer SKU after deploy
 ## LINKS
 
 - [Use a Standard SKU load balancer in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/load-balancer-standard)
+- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.containerservice/managedclusters#containerservicenetworkprofile-object)

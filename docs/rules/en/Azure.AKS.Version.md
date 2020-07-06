@@ -21,7 +21,7 @@ A list of available Kubernetes versions can be found using the `az aks get-versi
 
 ## RECOMMENDATION
 
-Consider upgrading AKS control plan and nodes pools to the latest stable version of Kubernetes.
+Consider upgrading AKS control plane and nodes pools to the latest stable version of Kubernetes.
 
 ## NOTES
 
@@ -31,5 +31,6 @@ To configure this rule:
 
 ## LINKS
 
-- [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions).
+- [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions)
 - [Support policies for Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/support-policies)
+- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.containerservice/managedclusters)

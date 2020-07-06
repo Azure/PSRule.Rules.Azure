@@ -35,4 +35,4 @@ To configure this rule:
 
 ## LINKS
 
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.containerservice/2020-02-01/managedclusters/agentpools#ManagedClusterAgentPoolProfileProperties)
+- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.containerservice/managedclusters/agentpools#ManagedClusterAgentPoolProfileProperties)
