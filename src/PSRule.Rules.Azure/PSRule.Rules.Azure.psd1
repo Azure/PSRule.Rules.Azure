@@ -106,7 +106,7 @@ PrivateData = @{
         Tags = @('PSRule', 'PSRule-rules', 'Rule', 'Azure', 'Cloud')
 
         # A URL to the license for this module.
-        LicenseUri = 'https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/LICENSE'
+        LicenseUri = 'https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/LICENSE'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/Microsoft/PSRule.Rules.Azure'
@@ -115,7 +115,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/CHANGELOG.md'
+        ReleaseNotes = 'https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/CHANGELOG.md'
     } # End of PSData hashtable
     PSRule = @{
         Baseline = 'Azure.Default'

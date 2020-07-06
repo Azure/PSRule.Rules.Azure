@@ -2,7 +2,7 @@
 severity: Important
 category: Resiliency
 resource: Load Balancer
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.LB.Probe.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.LB.Probe.md
 ---
 
 # Use specific load balancer probe

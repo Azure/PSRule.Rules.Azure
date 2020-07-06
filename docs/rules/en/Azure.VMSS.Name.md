@@ -2,7 +2,7 @@
 severity: Awareness
 category: Naming
 resource: Virtual Machine Scale Sets
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VMSS.Name.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.VMSS.Name.md
 ---
 
 # Use valid VMSS names

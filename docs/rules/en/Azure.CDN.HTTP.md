@@ -2,7 +2,7 @@
 severity: Important
 category: Security configuration
 resource: Content Delivery Network
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.CDN.HTTP.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.CDN.HTTP.md
 ---
 
 # Use HTTPS client connections

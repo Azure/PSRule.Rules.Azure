@@ -2,7 +2,7 @@
 severity: Critical
 category: Security configuration
 resource: Virtual Network
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VNET.UseNSGs.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.VNET.UseNSGs.md
 ---
 
 # Use NSGs on subnets

@@ -141,7 +141,7 @@ configuration:
 
 ## NOTE
 
-An online version of this document is available at https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md.
+An online version of this document is available at https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md.
 
 ## KEYWORDS
 

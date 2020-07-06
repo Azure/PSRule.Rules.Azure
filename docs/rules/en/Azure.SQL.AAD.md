@@ -2,7 +2,7 @@
 severity: Critical
 category: Security configuration
 resource: SQL Database
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.SQL.AAD.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.SQL.AAD.md
 ---
 
 # Use AAD authentication with SQL databases

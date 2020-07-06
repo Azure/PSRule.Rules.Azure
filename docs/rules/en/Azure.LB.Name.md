@@ -2,7 +2,7 @@
 severity: Awareness
 category: Naming
 resource: Load Balancer
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.LB.Name.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.LB.Name.md
 ---
 
 # Use valid Load Balancer names

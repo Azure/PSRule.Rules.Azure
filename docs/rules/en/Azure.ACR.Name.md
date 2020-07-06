@@ -2,7 +2,7 @@
 severity: Awareness
 category: Naming
 resource: Container Registry
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.ACR.Name.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.ACR.Name.md
 ---
 
 # Use valid registry names

@@ -2,7 +2,7 @@
 severity: Important
 category: Security configuration
 resource: Azure Kubernetes Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AKS.UseRBAC.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AKS.UseRBAC.md
 ms-content-id: 61ff3a23-9bfd-4e91-8959-798b43237775
 ---
 

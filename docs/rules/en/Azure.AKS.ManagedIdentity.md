@@ -2,7 +2,7 @@
 severity: Important
 category: Reliability
 resource: Azure Kubernetes Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AKS.ManagedIdentity.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AKS.ManagedIdentity.md
 ---
 
 # Use managed identities for AKS cluster authentication

@@ -2,7 +2,7 @@
 severity: Important
 category: Security configuration
 resource: Traffic Manager
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.TrafficManager.Protocol.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.TrafficManager.Protocol.md
 ---
 
 # Use HTTPS to monitor web-based endpoints

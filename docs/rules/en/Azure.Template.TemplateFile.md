@@ -2,7 +2,7 @@
 severity: Important
 category: Resource deployment
 resource: All resources
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.Template.TemplateFile.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Template.TemplateFile.md
 ---
 
 # Use ARM template file structure

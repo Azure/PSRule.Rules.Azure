@@ -2,7 +2,7 @@
 severity: Single point of failure
 category: Reliability
 resource: App Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppService.PlanInstanceCount.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AppService.PlanInstanceCount.md
 ms-content-id: 6f3eff05-1bd0-4c82-a5a5-573fc8e0beda
 ---
 

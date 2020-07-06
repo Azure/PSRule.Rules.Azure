@@ -2,7 +2,7 @@
 severity: Critical
 category: Security configuration
 resource: Application Gateway
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AppGw.Prevention.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AppGw.Prevention.md
 ---
 
 # Use WAF prevention mode

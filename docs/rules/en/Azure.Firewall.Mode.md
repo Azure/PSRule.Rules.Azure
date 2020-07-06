@@ -2,7 +2,7 @@
 severity: Critical
 category: Security configuration
 resource: Firewall
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.Firewall.Mode.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Firewall.Mode.md
 ---
 
 # Configure deny on threat intel

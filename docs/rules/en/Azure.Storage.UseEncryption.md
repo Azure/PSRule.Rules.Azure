@@ -2,7 +2,7 @@
 severity: Important
 category: Security configuration
 resource: Storage Account
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.Storage.UseEncryption.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Storage.UseEncryption.md
 ms-content-id: 595c6ca0-1464-4e53-a692-6cf3c2f91cd5
 ---
 

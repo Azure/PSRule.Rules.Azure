@@ -2,7 +2,7 @@
 severity: Critical
 category: Security configuration
 resource: SQL Database
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.SQL.TDE.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.SQL.TDE.md
 ---
 
 # Use SQL database TDE

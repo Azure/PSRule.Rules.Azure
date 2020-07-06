@@ -2,7 +2,7 @@
 severity: Important
 category: Operations management
 resource: Azure Kubernetes Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AKS.Version.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AKS.Version.md
 ms-content-id: b0bd4e66-af2f-4d0a-82ae-e4738418bb7e
 ---
 

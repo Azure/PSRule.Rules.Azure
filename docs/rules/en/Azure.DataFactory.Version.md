@@ -2,7 +2,7 @@
 severity: Awareness
 category: Operations management
 resource: Data Factory
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.DataFactory.Version.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.DataFactory.Version.md
 ---
 
 # Use Data Factory v2

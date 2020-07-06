@@ -111,7 +111,7 @@ For details examples see:
 - [Validate Azure resources from templates with Azure Pipelines](scenarios/azure-pipelines-ci/azure-pipelines-ci.md)
 - [Validate Azure resources from templates with continuous integration (CI)](scenarios/azure-template-ci/azure-template-ci.md)
 
-[compare-pester]: https://github.com/microsoft/PSRule/blob/master/docs/features.md#how-is-psrule-different-to-pester
-[ignore-rule]: https://github.com/microsoft/PSRule/blob/master/docs/features.md#how-do-i-ignore-a-rule
-[ps-rule-configure]: https://github.com/microsoft/PSRule/blob/master/docs/features.md#how-do-i-configure-psrule
-[ps-rule-faq]: https://github.com/microsoft/PSRule/blob/master/docs/features.md#frequently-asked-questions-faq
+[compare-pester]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-is-psrule-different-to-pester
+[ignore-rule]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-ignore-a-rule
+[ps-rule-configure]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-configure-psrule
+[ps-rule-faq]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#frequently-asked-questions-faq

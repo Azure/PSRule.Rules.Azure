@@ -2,7 +2,7 @@
 severity: Awareness
 category: Cost management
 resource: Virtual Machine
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.DiskSizeAlignment.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.VM.DiskSizeAlignment.md
 ---
 
 # Azure.VirtualMachine.DiskSizeAlignment

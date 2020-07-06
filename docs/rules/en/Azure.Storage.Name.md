@@ -2,7 +2,7 @@
 severity: Awareness
 category: Naming
 resource: Storage Account
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.Storage.Name.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Storage.Name.md
 ---
 
 # Use valid storage account names

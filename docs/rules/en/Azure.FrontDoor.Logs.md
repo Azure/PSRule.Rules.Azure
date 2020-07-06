@@ -2,7 +2,7 @@
 severity: Important
 category: Security operations
 resource: Front Door
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.FrontDoor.Logs.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.FrontDoor.Logs.md
 ---
 
 # Audit Front Door access

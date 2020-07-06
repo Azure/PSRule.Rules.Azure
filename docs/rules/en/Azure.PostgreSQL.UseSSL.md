@@ -2,7 +2,7 @@
 severity: Critical
 category: Security configuration
 resource: Azure Database for PostgreSQL
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.PostgreSQL.UseSSL.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.PostgreSQL.UseSSL.md
 ms-content-id: 80d34e65-8ab5-4cf3-a0dd-3b5e56e06f40
 ---
 

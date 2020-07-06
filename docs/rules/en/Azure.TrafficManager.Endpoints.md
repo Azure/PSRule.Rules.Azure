@@ -2,7 +2,7 @@
 severity: Single point of failure
 category: Reliability
 resource: Traffic Manager
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.TrafficManager.Endpoints.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.TrafficManager.Endpoints.md
 ---
 
 # Use at least two Traffic Manager endpoints

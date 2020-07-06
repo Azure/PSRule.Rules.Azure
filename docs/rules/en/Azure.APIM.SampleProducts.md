@@ -2,7 +2,7 @@
 severity: Awareness
 category: Security configuration
 resource: API Management
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.APIM.SampleProducts.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.APIM.SampleProducts.md
 ---
 
 # Remove default products

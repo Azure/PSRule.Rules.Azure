@@ -2,7 +2,7 @@
 severity: Important
 category: Security configuration
 resource: Virtual Machine
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.VM.ADE.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.VM.ADE.md
 ---
 
 # Use Azure Disk Encryption

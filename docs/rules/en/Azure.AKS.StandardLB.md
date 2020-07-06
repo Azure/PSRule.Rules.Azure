@@ -2,7 +2,7 @@
 severity: Important
 category: Scalability
 resource: Azure Kubernetes Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/master/docs/rules/en/Azure.AKS.StandardLB.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AKS.StandardLB.md
 ---
 
 # Use the Standard load balancer SKU
