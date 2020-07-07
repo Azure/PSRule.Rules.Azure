@@ -64,6 +64,17 @@ Rule 'Azure.RBAC.UseRGDelegation' -Type 'Microsoft.Resources/resourceGroups' -Ta
         WithReason(($LocalizedData.RoleAssignmentCount -f $assignments.Length), $True)
 }
 
+# Synopsis: Use JiT role activation with PIM
+Rule 'Azure.RBAC.PIM' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+    # Get PIM assignment
+    $assignments = @(GetSubResources -ResourceType 'Microsoft.Authorization/roleAssignments' | Where-Object {
+        $_.DisplayName -eq 'MS-PIM' -and $_.ObjectType -eq 'ServicePrincipal'
+    })
+    $Assert.
+        HasFieldValue($assignments, 'Length', 1).
+        WithReason($LocalizedData.UnmanagedSubscription, $True)
+}
+
 #endregion RBAC
 
 #region Security Center
