@@ -26,4 +26,5 @@
     PublicAccessStorageContainer = "The container '{0}' is configured with access type '{1}'."
     RoleAssignmentCount = "The number of assignments is {0}."
     UnmanagedDisk = "The VM disk '{0}' is unmanaged."
+    UnmanagedSubscription = "The subscription is not managed."
 }

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- New rules:
+  - Subscriptions:
+    - Check subscription is managed by PIM. [#422](https://github.com/Microsoft/PSRule.Rules.Azure/issues/422)
+
 ## v0.13.0
 
 What's changed since v0.12.1:
