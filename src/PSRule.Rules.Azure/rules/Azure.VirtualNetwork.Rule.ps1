@@ -36,7 +36,7 @@ Rule 'Azure.VNET.SingleDNS' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ re
         $True;
     }
     else {
-        $TargetObject.properties.dhcpOptions.dnsServers.Count -ge 2;
+        $Assert.GreaterOrEqual($TargetObject, 'properties.dhcpOptions.dnsServers', 2);
     }
 }
 
@@ -65,7 +65,7 @@ Rule 'Azure.VNET.LocalDNS' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ rel
 Rule 'Azure.VNET.PeerState' -If { (HasPeerNetwork) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $peers = @($TargetObject.Properties.virtualNetworkPeerings);
     foreach ($peer in $peers) {
-        $peer | Within 'Properties.peeringState' 'Connected'
+        $Assert.HasFieldValue($peer, 'Properties.peeringState', 'Connected');
     }
 }
 
@@ -166,8 +166,8 @@ Rule 'Azure.NSG.LateralTraversal' -Type 'Microsoft.Network/networkSecurityGroups
         $_.properties.access -eq 'Deny' -and
         (
             $_.properties.destinationPortRange -eq '3389' -or
-            $_.properties.destinationPortRange -eq '22' -or 
-            $_.properties.destinationPortRanges -contains '3389' -or 
+            $_.properties.destinationPortRange -eq '22' -or
+            $_.properties.destinationPortRanges -contains '3389' -or
             $_.properties.destinationPortRanges -contains '22'
         )
     })
@@ -203,10 +203,10 @@ Rule 'Azure.NSG.Name' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ re
 Rule 'Azure.AppGw.MinInstance' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     AnyOf {
         # Applies to v1 and v2 without autoscale
-        $TargetObject.Properties.sku.capacity -ge 2
+        $Assert.GreaterOrEqual($TargetObject, 'Properties.sku.capacity', 2);
 
         # Applies to v2 with autoscale
-        $TargetObject.Properties.autoscaleConfiguration.minCapacity -ge 2
+        $Assert.GreaterOrEqual($TargetObject, 'Properties.autoscaleConfiguration.minCapacity', 2);
     }
 }
 
@@ -231,18 +231,18 @@ Rule 'Azure.AppGw.SSLPolicy' -Type 'Microsoft.Network/applicationGateways' -Tag 
 
 # Synopsis: Internet exposed Application Gateways should use prevention mode to protect backend resources
 Rule 'Azure.AppGw.Prevention' -If { (IsAppGwPublic) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Within 'Properties.webApplicationFirewallConfiguration.firewallMode' 'Prevention'
+    $Assert.HasFieldValue($TargetObject, 'Properties.webApplicationFirewallConfiguration.firewallMode', 'Prevention');
 }
 
 # Synopsis: Application Gateway WAF must be enabled to protect backend resources
 Rule 'Azure.AppGw.WAFEnabled' -If { (IsAppGwPublic) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Within 'Properties.webApplicationFirewallConfiguration.enabled' $True
+    $Assert.HasFieldValue($TargetObject, 'Properties.webApplicationFirewallConfiguration.enabled', $True);
 }
 
 # Synopsis: Application Gateway WAF should use OWASP 3.0 rules
 Rule 'Azure.AppGw.OWASP' -If { (IsAppGwWAF) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Within 'Properties.webApplicationFirewallConfiguration.ruleSetType' 'OWASP'
-    Within 'Properties.webApplicationFirewallConfiguration.ruleSetVersion' '3.0'
+    $Assert.HasFieldValue($TargetObject, 'Properties.webApplicationFirewallConfiguration.ruleSetType', 'OWASP');
+    $Assert.Version($TargetObject, 'Properties.webApplicationFirewallConfiguration.ruleSetVersion', '^3.0');
 }
 
 # Synopsis: Application Gateway WAF should not disable rules
