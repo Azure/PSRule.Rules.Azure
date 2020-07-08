@@ -11,7 +11,7 @@ if ($Null -ne $Configuration.minAKSVersion) {
 
 # Synopsis: AKS clusters should have minimum number of nodes for failover and updates
 Rule 'Azure.AKS.MinNodeCount' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $TargetObject.Properties.agentPoolProfiles[0].count -ge 3
+    $Assert.GreaterOrEqual($TargetObject, 'Properties.agentPoolProfiles[0].count', 3);
 }
 
 # Synopsis: AKS clusters should meet the minimum version

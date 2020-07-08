@@ -7,7 +7,7 @@
 
 # Synopsis: Use an App Service Plan with at least two (2) instances
 Rule 'Azure.AppService.PlanInstanceCount' -Type 'Microsoft.Web/serverfarms' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $TargetObject.Sku.capacity -ge 2
+    $Assert.GreaterOrEqual($TargetObject, 'Sku.capacity', 2);
 }
 
 # Synopsis: Use at least a Standard App Service Plan

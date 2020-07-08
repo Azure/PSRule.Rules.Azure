@@ -59,6 +59,7 @@ Describe 'Azure.MySQL' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'server-B';
+            $ruleResult.Reason | Should -BeLike "The number of firewall rules (*) exceeded 10.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -91,6 +92,7 @@ Describe 'Azure.MySQL' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'server-B';
+            $ruleResult.Reason | Should -BeLike "The number of public IP addresses permitted (*) exceeded 10.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

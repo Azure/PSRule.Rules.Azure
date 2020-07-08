@@ -9,8 +9,10 @@
 
 # Synopsis: Determine if there is an excessive number of firewall rules
 Rule 'Azure.SQL.FirewallRuleCount' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $firewallRules = GetSubResources -ResourceType 'Microsoft.Sql/servers/firewallRules'
-    $firewallRules.Length -le 10;
+    $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/firewallRules');
+    $Assert.
+        LessOrEqual($firewallRules, '.', 10).
+        WithReason(($LocalizedData.DBServerFirewallRuleCount -f $firewallRules.Length, 10), $True);
 }
 
 # Synopsis: Determine if access from Azure services is required
@@ -25,7 +27,9 @@ Rule 'Azure.SQL.AllowAzureAccess' -Type 'Microsoft.Sql/servers' -Tag @{ release 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses
 Rule 'Azure.SQL.FirewallIPRange' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $summary = GetIPAddressSummary
-    $summary.Public -le 10;
+    $Assert.
+        LessOrEqual($summary, 'Public', 10).
+        WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True);
 }
 
 # Synopsis: Enable Advanced Thread Protection for Azure SQL logical server
