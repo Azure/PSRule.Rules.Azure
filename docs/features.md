@@ -25,7 +25,7 @@ From as early as authoring a Azure Resource Manager (ARM) template, resources ca
 Pre-flight validation can be integrated into a continuous integration (CI) processes to:
 
 - **Shift-left:** Identify configuration issues and provide fast feedback in pull requests.
-- **Add qualify gates:** Implement quality gates between environments such as development, test and production.
+- **Quality gates:** Implement quality gates between environments such as development, test and production.
 - **Monitor continuously:** Perform ongoing checks for configuration optimization opportunities.
 
 PSRule for Azure provides the following cmdlets that extract data for analysis:
