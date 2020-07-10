@@ -5,6 +5,9 @@
 - New rules:
   - Subscriptions:
     - Check subscription is managed by PIM. [#422](https://github.com/Microsoft/PSRule.Rules.Azure/issues/422)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.17.7. [#427](https://github.com/Microsoft/PSRule.Rules.Azure/issues/427)
 - General improvements:
   - Updated rule reasons and logic. [#424](https://github.com/Microsoft/PSRule.Rules.Azure/issues/424)
 
