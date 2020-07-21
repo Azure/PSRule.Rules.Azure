@@ -23,6 +23,7 @@
         "**/tests/**/Resources*.Template*.json": "arm-template"
     },
     "cSpell.words": [
+        "Hashtable",
         "Kubernetes",
         "NSGs",
         "OWASP",
