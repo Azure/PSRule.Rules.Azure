@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Bug fixes:
+  - Fixed masking for network connection resource configuration. [#434](https://github.com/Microsoft/PSRule.Rules.Azure/issues/434)
+
 ## v0.14.0-B2007020 (pre-release)
 
 - New rules:

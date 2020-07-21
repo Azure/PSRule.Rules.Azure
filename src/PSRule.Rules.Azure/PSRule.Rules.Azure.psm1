@@ -340,7 +340,6 @@ function GetAzureResource {
     begin {
         $watch = New-Object -TypeName System.Diagnostics.Stopwatch;
     }
-
     process {
         $resourceParams = @{ };
         $rgParams = @{ };
@@ -817,6 +816,22 @@ function VisitFrontDoorWAFPolicy {
     }
 }
 
+function VisitNetworkConnection {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        # Patch connections
+        $Resource.Properties.sharedKey = "*** MASKED ***";
+        $Resource;
+    }
+}
+
 function VisitSubscription {
     [CmdletBinding()]
     param (
@@ -899,6 +914,7 @@ function ExpandResource {
             'Microsoft.KeyVault/vaults' { VisitKeyVault @PSBoundParameters; }
             'Microsoft.Network/frontDoors' { VisitFrontDoor @PSBoundParameters; }
             'Microsoft.Network/FrontDoorWebApplicationFirewallPolicies' { VisitFrontDoorWAFPolicy @PSBoundParameters; }
+            'Microsoft.Network/connections' { VisitNetworkConnection @PSBoundParameters; }
             'Microsoft.Subscription' { VisitSubscription @PSBoundParameters; }
             'Microsoft.Resources/resourceGroups' { VisitResourceGroup @PSBoundParameters; }
             default { $Resource; }
