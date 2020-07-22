@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- New rules:
+  - API Management:
+    - Check API Management service name requirements. [#437](https://github.com/Microsoft/PSRule.Rules.Azure/issues/437)
+    - Check API Management products have legal terms. [#438](https://github.com/Microsoft/PSRule.Rules.Azure/issues/438)
+    - Check API Management products have a display name and description. [#439](https://github.com/Microsoft/PSRule.Rules.Azure/issues/439)
+    - Check API Management APIs have a display name and description. [#440](https://github.com/Microsoft/PSRule.Rules.Azure/issues/440)
 - Bug fixes:
   - Fixed masking for network connection resource configuration. [#434](https://github.com/Microsoft/PSRule.Rules.Azure/issues/434)
 

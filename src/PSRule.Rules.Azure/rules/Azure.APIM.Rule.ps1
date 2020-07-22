@@ -16,7 +16,7 @@ Rule 'Azure.APIM.Protocols' -Type 'Microsoft.ApiManagement/service' -Tag @{ rele
     $Assert.HasDefaultValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30''', 'False')
 }
 
-# Synopsis: Use HTTPS apis
+# Synopsis: Use HTTPS APIs
 Rule 'Azure.APIM.HTTPEndpoint' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     Reason 'http is in use'
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
@@ -30,6 +30,25 @@ Rule 'Azure.APIM.HTTPEndpoint' -Type 'Microsoft.ApiManagement/service', 'Microso
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/apis') {
         'http' -notin @($TargetObject.properties.protocols)
+    }
+}
+
+# Synopsis: APIs should have descriptors set
+Rule 'Azure.APIM.APIDescriptors' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+    $apis = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
+        $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis');
+        if ($apis.Length -eq 0) {
+            $True;
+        }
+    }
+    foreach ($api in $apis) {
+        $Assert.
+            HasFieldValue($api, 'Properties.displayName').
+            WithReason(($LocalizedData.APIMDescriptors -f 'API', $api.name, 'displayName'), $True);
+        $Assert.
+            HasFieldValue($api, 'Properties.description').
+            WithReason(($LocalizedData.APIMDescriptors -f 'API', $api.name, 'description'), $True);
     }
 }
 
@@ -69,17 +88,17 @@ Rule 'Azure.APIM.HTTPBackend' -Type 'Microsoft.ApiManagement/service', 'Microsof
 
 # Synopsis: Encrypt all named values
 Rule 'Azure.APIM.EncryptValues' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+    $properties = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
-        $properties = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues')
+        $properties = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues');
         if ($properties.Length -eq 0) {
             $True;
         }
-        foreach ($prop in $properties) {
-            $Assert.HasFieldValue($prop, 'properties.secret', $True)
-        }
     }
-    elseif ($PSRule.TargetType -in 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues') {
-        $Assert.HasFieldValue($TargetObject, 'properties.secret', $True)
+    foreach ($property in $properties) {
+        $Assert.
+            HasFieldValue($property, 'properties.secret', $True).
+            WithReason(($LocalizedData.APIMSecretNamedValues -f $property.name), $True);
     }
 }
 
@@ -129,6 +148,41 @@ Rule 'Azure.APIM.SampleProducts' -Type 'Microsoft.ApiManagement/service', 'Micro
     }
 }
 
+# Synopsis: Products should have descriptors set
+Rule 'Azure.APIM.ProductDescriptors' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+    $products = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
+        $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
+        if ($products.Length -eq 0) {
+            $True;
+        }
+    }
+    foreach ($product in $products) {
+        $Assert.
+            HasFieldValue($product, 'Properties.displayName').
+            WithReason(($LocalizedData.APIMDescriptors -f 'product', $product.name, 'displayName'), $True);
+        $Assert.
+            HasFieldValue($product, 'Properties.description').
+            WithReason(($LocalizedData.APIMDescriptors -f 'product', $product.name, 'description'), $True);
+    }
+}
+
+# Synopsis: Use product terms
+Rule 'Azure.APIM.ProductTerms' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+    $products = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
+        $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
+        if ($products.Length -eq 0) {
+            $True;
+        }
+    }
+    foreach ($product in $products) {
+        $Assert.
+            HasFieldValue($product, 'Properties.terms').
+            WithReason(($LocalizedData.APIMProductTerms -f $product.name), $True);
+    }
+}
+
 # Synopsis: Provision a managed identity
 Rule 'Azure.APIM.ManagedIdentity' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     Within 'Identity.Type' 'SystemAssigned', 'UserAssigned'
@@ -151,3 +205,17 @@ Rule 'Azure.APIM.CertificateExpiry' -Type 'Microsoft.ApiManagement/service' -Tag
         }
     }
 } -Configure @{ Azure_MinimumCertificateLifetime = 30 }
+
+# Synopsis: Use API Management service naming requirements
+Rule 'Azure.APIM.Name' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftapimanagement
+
+    # Between 1 and 50 characters long
+    $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
+    $Assert.LessOrEqual($TargetObject, 'Name', 50)
+
+    # Alphanumerics and hyphens
+    # Start with a letter
+    # End with letter or number
+    Match 'Name' '^[a-zA-Z]([A-Za-z0-9-]*[a-zA-Z0-9]){0,49}$'
+}
