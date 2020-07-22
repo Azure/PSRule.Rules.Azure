@@ -23,7 +23,7 @@ Rule 'Azure.VM.UseManagedDisks' -Type 'Microsoft.Compute/virtualMachines' -Tag @
 }
 
 # Synopsis: VMs must use premium disks or use availability sets/ zones to meet SLA requirements
-Rule 'Azure.VM.Standalone' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VM.Standalone' -Type 'Microsoft.Compute/virtualMachines' -If { !(IsWindowsClientOS) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $types = @(
         $TargetObject.properties.storageProfile.osDisk.managedDisk.storageAccountType
         $TargetObject.properties.storageProfile.dataDisks.managedDisk.storageAccountType

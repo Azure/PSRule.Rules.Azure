@@ -1357,5 +1357,129 @@
         "ResourceType": "Microsoft.Network/networkInterfaces",
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-D",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-D",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "vm-D",
+        "Name": "vm-D",
+        "Plan": null,
+        "Properties": {
+            "hardwareProfile": {
+                "vmSize": "Standard_DS2_v2"
+            },
+            "storageProfile": {
+                "imageReference": {
+                    "publisher": "MicrosoftWindowsDesktop",
+                    "offer": "windows-10",
+                    "sku": "19h2-pro",
+                    "version": "latest"
+                },
+                "osDisk": {
+                    "osType": "Windows",
+                    "name": "vm-D-os",
+                    "createOption": "FromImage",
+                    "caching": "ReadWrite",
+                    "writeAcceleratorEnabled": false,
+                    "managedDisk": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-D-os"
+                    }
+                },
+                "dataDisks": []
+            },
+            "osProfile": {
+                "computerName": "vm-D",
+                "adminUsername": "vm-admin",
+                "windowsConfiguration": {
+                    "provisionVMAgent": true,
+                    "enableAutomaticUpdates": false,
+                    "patchSettings": {
+                        "patchMode": "Manual"
+                    }
+                },
+                "secrets": [],
+                "allowExtensionOperations": true,
+                "requireGuestProvisionSignal": true
+            },
+            "networkProfile": {
+                "networkInterfaces": [
+                    {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic"
+                    }
+                ]
+            },
+            "diagnosticsProfile": {
+                "bootDiagnostics": {
+                    "enabled": true,
+                    "storageUri": "https://storage-A.blob.core.windows.net/"
+                }
+            },
+            "licenseType": "Windows_Client",
+            "provisioningState": "Succeeded"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachines",
+        "ResourceType": "Microsoft.Compute/virtualMachines",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic",
+                "Identity": null,
+                "Kind": null,
+                "Location": "region",
+                "ManagedBy": null,
+                "ResourceName": "vm-D-nic",
+                "Name": "vm-D-nic",
+                "Plan": null,
+                "Properties": {
+                    "provisioningState": "Succeeded",
+                    "ipConfigurations": [
+                        {
+                            "name": "ipconfig1",
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic/ipConfigurations/ipconfig1",
+                            "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+                            "properties": {
+                                "provisioningState": "Succeeded",
+                                "privateIPAddress": "10.0.0.10",
+                                "privateIPAllocationMethod": "Dynamic",
+                                "subnet": {
+                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+                                },
+                                "primary": true,
+                                "privateIPAddressVersion": "IPv4"
+                            }
+                        }
+                    ],
+                    "dnsSettings": {
+                        "dnsServers": [],
+                        "appliedDnsServers": []
+                    },
+                    "enableAcceleratedNetworking": false,
+                    "enableIPForwarding": false,
+                    "networkSecurityGroup": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/vm-D-nsg"
+                    },
+                    "primary": true,
+                    "virtualMachine": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-D"
+                    }
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Network/networkInterfaces",
+                "ResourceType": "Microsoft.Network/networkInterfaces",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": null
+            }
+        ]
     }
 ]

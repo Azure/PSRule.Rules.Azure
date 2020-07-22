@@ -10,6 +10,8 @@
     - Check API Management APIs have a display name and description. [#440](https://github.com/Microsoft/PSRule.Rules.Azure/issues/440)
 - Bug fixes:
   - Fixed masking for network connection resource configuration. [#434](https://github.com/Microsoft/PSRule.Rules.Azure/issues/434)
+  - Fixed hybrid use benefit rule to exclude Windows client OSs. [#433](https://github.com/Microsoft/PSRule.Rules.Azure/issues/433)
+  - Fixed VM standalone rule to exclude Windows client OSs. [#442](https://github.com/Microsoft/PSRule.Rules.Azure/issues/442)
 
 ## v0.14.0-B2007020 (pre-release)
 
