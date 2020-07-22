@@ -202,6 +202,18 @@ function global:IsWindowsOS {
     }
 }
 
+function global:IsWindowsClientOS {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($Rule.TargetType -notin 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachineScaleSets') {
+            return $False;
+        }
+        return $TargetObject.Properties.storageProfile.imageReference.publisher -eq 'MicrosoftWindowsDesktop';
+    }
+}
+
 function global:SupportsHybridUse {
     [CmdletBinding()]
     [OutputType([System.Boolean])]
@@ -210,8 +222,10 @@ function global:SupportsHybridUse {
         if ($Rule.TargetType -ne 'Microsoft.Compute/virtualMachines') {
             return $False;
         }
-        return ($TargetObject.Properties.storageProfile.osDisk.osType -eq 'Windows') -or
+        return (
+            ($TargetObject.Properties.storageProfile.osDisk.osType -eq 'Windows') -or
             ($TargetObject.Properties.storageProfile.imageReference.publisher -in 'MicrosoftSQLServer', 'MicrosoftWindowsServer')
+        ) -and !(IsWindowsClientOS);
     }
 }
 
