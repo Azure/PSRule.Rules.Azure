@@ -112,7 +112,7 @@
                 "Properties": {
                     "displayName": "api-A",
                     "apiRevision": "1",
-                    "description": "Azure Logic App.",
+                    "description": "An API for an application.",
                     "serviceUrl": "https://endpoint-a.contoso.com",
                     "path": "api-a",
                     "protocols": [
@@ -150,7 +150,7 @@
                 "Properties": {
                     "displayName": "api-B",
                     "apiRevision": "1",
-                    "description": "",
+                    "description": "An API for an application.",
                     "subscriptionRequired": false,
                     "serviceUrl": "http://endpoint-b.contoso.com",
                     "path": "api-b",
@@ -298,7 +298,7 @@
                 "ExtensionResourceName": null,
                 "Properties": {
                     "displayName": "product-A",
-                    "description": "An example product for unit tests.",
+                    "description": "",
                     "terms": null,
                     "subscriptionRequired": true,
                     "approvalRequired": true,
@@ -325,7 +325,7 @@
                 "ExtensionResourceName": null,
                 "Properties": {
                     "displayName": "product-B",
-                    "description": "An example product for unit tests.",
+                    "description": null,
                     "terms": null,
                     "subscriptionRequired": true,
                     "approvalRequired": true,
@@ -395,6 +395,42 @@
                 "Sku": null,
                 "Tags": null,
                 "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-A/portalsettings/signup",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-A/portalsettings/signup",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "signup",
+                "Name": "signup",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "url": null,
+                    "validationKey": null,
+                    "subscriptions": null,
+                    "userRegistration": null,
+                    "enabled": false,
+                    "termsOfService": {
+                        "text": "Enter terms.",
+                        "enabled": true,
+                        "consentRequired": true
+                    }
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "Microsoft.ApiManagement/service/portalsettings",
+                "ResourceType": "Microsoft.ApiManagement/service/portalsettings",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
             }
         ]
     },
@@ -557,7 +593,7 @@
                 "Properties": {
                     "displayName": "product-A",
                     "description": "An example product for unit tests.",
-                    "terms": null,
+                    "terms": "For unit testing only.",
                     "subscriptionRequired": true,
                     "approvalRequired": true,
                     "subscriptionsLimit": null,
@@ -584,7 +620,7 @@
                 "Properties": {
                     "displayName": "product-B",
                     "description": "An example product for unit tests.",
-                    "terms": null,
+                    "terms": "For unit testing only.",
                     "subscriptionRequired": false,
                     "approvalRequired": true,
                     "subscriptionsLimit": null,
@@ -1043,6 +1079,39 @@
                 "ExtensionResourceType": null,
                 "Sku": null,
                 "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-C/portalsettings/signup",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-C/portalsettings/signup",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "signup",
+                "Name": "signup",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "url": null,
+                    "validationKey": null,
+                    "subscriptions": null,
+                    "userRegistration": null,
+                    "enabled": false,
+                    "termsOfService": {
+                        "text": "Enter terms.",
+                        "enabled": true,
+                        "consentRequired": true
+                    }
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "Microsoft.ApiManagement/service/portalsettings",
+                "ResourceType": "Microsoft.ApiManagement/service/portalsettings",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
                 "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             }
         ]

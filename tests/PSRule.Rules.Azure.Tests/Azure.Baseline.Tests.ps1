@@ -53,5 +53,12 @@ Describe 'Baselines' -Tag Baseline {
             $filteredResult | Should -Not -BeNullOrEmpty;
             $filteredResult.Length | Should -BeGreaterThan 80;
         }
+
+        It 'With Azure.GA_2020_06' {
+            $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2020_06' -WarningAction Ignore);
+            $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
+            $filteredResult | Should -Not -BeNullOrEmpty;
+            $filteredResult.Length | Should -Be 139;
+        }
     }
 }

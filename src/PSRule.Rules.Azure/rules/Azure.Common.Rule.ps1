@@ -24,11 +24,15 @@ function global:GetSubResources {
     [OutputType([PSObject[]])]
     param (
         [Parameter(Mandatory = $True)]
-        [String[]]$ResourceType
+        [String[]]$ResourceType,
+
+        [Parameter(Mandatory = $False)]
+        [String[]]$Name
     )
     process {
         return @($TargetObject.resources | Where-Object -FilterScript {
-            $_.ResourceType -in $ResourceType -or $_.Type -in $ResourceType -or $_.ExtensionResourceType -in $ResourceType
+            ($_.ResourceType -in $ResourceType -or $_.Type -in $ResourceType -or $_.ExtensionResourceType -in $ResourceType) -and
+            ($Null -eq $Name -or $Name.Length -eq 0 -or $_.Name -in $Name -or $_.ResourceName -in $Name)
         })
     }
 }
