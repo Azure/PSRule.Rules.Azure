@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.14.0-B2007031 (pre-release)
+
 - New rules:
   - API Management:
     - Check API Management service name requirements. [#437](https://github.com/Microsoft/PSRule.Rules.Azure/issues/437)
