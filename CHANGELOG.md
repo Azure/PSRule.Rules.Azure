@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.14.1
+
+What's changed since v0.14.1:
+
 - Bug fixes:
   - Fixed resource tags rule to exclude diagnostic settings. [#448](https://github.com/Microsoft/PSRule.Rules.Azure/issues/448)
 
