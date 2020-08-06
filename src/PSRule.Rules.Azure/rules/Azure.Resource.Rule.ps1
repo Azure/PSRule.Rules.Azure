@@ -10,7 +10,7 @@ if ($Null -ne $Configuration.azureAllowedRegions) {
 }
 
 # Synopsis: Resources should be tagged
-Rule 'Azure.Resource.UseTags' -If { SupportsTags } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Resource.UseTags' -If { (SupportsTags) -and $PSRule.TargetType -ne 'Microsoft.Subscription' } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     Reason $LocalizedData.ResourceNotTagged
     # List of resource that support tags can be found here: https://docs.microsoft.com/en-us/azure/azure-resource-manager/tag-support
     (Exists 'Tags') -and

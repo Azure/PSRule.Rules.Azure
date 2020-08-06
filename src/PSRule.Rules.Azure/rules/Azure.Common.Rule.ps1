@@ -248,16 +248,23 @@ function global:SupportsTags {
     param ()
     process {
         if (
+            ($PSRule.TargetType -eq 'Microsoft.Subscription') -or
             ($PSRule.TargetType -notlike 'Microsoft.*/*') -or
+            ($PSRule.TargetType -like 'Microsoft.Addons/*') -or
+            ($PSRule.TargetType -like 'Microsoft.Advisor/*') -or
             ($PSRule.TargetType -like 'Microsoft.Authorization/*') -or
             ($PSRule.TargetType -like 'Microsoft.Billing/*') -or
+            ($PSRule.TargetType -like 'Microsoft.Blueprint/*') -or
+            ($PSRule.TargetType -like 'Microsoft.Capacity/*') -or
             ($PSRule.TargetType -like 'Microsoft.Classic*') -or
             ($PSRule.TargetType -like 'Microsoft.Consumption/*') -or
             ($PSRule.TargetType -like 'Microsoft.Gallery/*') -or
             ($PSRule.TargetType -like 'Microsoft.Security/*') -or
             ($PSRule.TargetType -like 'microsoft.support/*') -or
+            ($PSRule.TargetType -like 'microsoft.insights/diagnosticSettings') -or
             ($PSRule.TargetType -like 'Microsoft.WorkloadMonitor/*') -or
             ($PSRule.TargetType -like '*/providers/roleAssignments') -or
+            ($PSRule.TargetType -like '*/providers/diagnosticSettings') -or
 
             # Exclude sub-resources by default
             ($PSRule.TargetType -like 'Microsoft.*/*/*' -and !(
@@ -275,6 +282,11 @@ function global:SupportsTags {
                 $PSRule.TargetType -eq 'Microsoft.Resources/deployments' -or
                 $PSRule.TargetType -eq 'Microsoft.Resources/deploymentScripts' -or
                 $PSRule.TargetType -eq 'Microsoft.Resources/resourceGroups'
+            )) -or
+
+            # Some exceptions to resources (https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support#microsoftcostmanagement)
+            ($PSRule.TargetType -like 'Microsoft.CostManagement/*' -and !(
+                $PSRule.TargetType -eq 'Microsoft.CostManagement/Connectors'
             ))
         ) {
             return $False;
