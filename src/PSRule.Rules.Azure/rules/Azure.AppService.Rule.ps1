@@ -12,7 +12,7 @@ Rule 'Azure.AppService.PlanInstanceCount' -Type 'Microsoft.Web/serverfarms' -Tag
 
 # Synopsis: Use at least a Standard App Service Plan
 Rule 'Azure.AppService.MinPlan' -Type 'Microsoft.Web/serverfarms' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Within 'Sku.tier' 'PremiumV2', 'Premium', 'Standard'
+    $Assert.In($TargetObject, 'Sku.tier', @('PremiumV2', 'Premium', 'Standard'))
 }
 
 # Synopsis: Disable client affinity for stateless services
