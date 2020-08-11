@@ -32,7 +32,6 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             Module = 'PSRule.Rules.Azure'
             WarningAction = 'Ignore'
             ErrorAction = 'Stop'
-            Culture = 'en-US'
         }
         $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
 
@@ -573,7 +572,6 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             Module = 'PSRule.Rules.Azure'
             WarningAction = 'Ignore'
             ErrorAction = 'Stop'
-            Culture = 'en-US'
         }
         $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
 

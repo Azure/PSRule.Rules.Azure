@@ -12,7 +12,7 @@ Rule 'Azure.ACR.AdminUser' -Type 'Microsoft.ContainerRegistry/registries' -Tag @
 
 # Synopsis: ACR should use the Premium or Standard SKU for production deployments
 Rule 'Azure.ACR.MinSku' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Within 'Sku.tier' 'Premium', 'Standard'
+    $Assert.In($TargetObject, 'Sku.tier', @('Premium', 'Standard'))
 }
 
 # Synopsis: Use ACR naming requirements
@@ -24,5 +24,5 @@ Rule 'Azure.ACR.Name' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ rel
     $Assert.LessOrEqual($TargetObject, 'Name', 50)
 
     # Alphanumerics
-    Match 'Name' '^[a-zA-Z0-9]*$'
+    $Assert.Match($TargetObject, 'Name', '^[a-zA-Z0-9]*$')
 }

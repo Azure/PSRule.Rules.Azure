@@ -25,11 +25,11 @@ Rule 'Azure.APIM.HTTPEndpoint' -Type 'Microsoft.ApiManagement/service', 'Microso
             $True;
         }
         foreach ($api in $apis) {
-            'http' -notin @($api.properties.protocols)
+            $Assert.NotIn($api, 'properties.protocols', @('http'))
         }
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/apis') {
-        'http' -notin @($TargetObject.properties.protocols)
+        $Assert.NotIn($TargetObject, 'properties.protocols', @('http'))
     }
 }
 
@@ -39,16 +39,16 @@ Rule 'Azure.APIM.APIDescriptors' -Type 'Microsoft.ApiManagement/service', 'Micro
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis');
         if ($apis.Length -eq 0) {
-            $True;
+            $Assert.Pass();
         }
     }
     foreach ($api in $apis) {
         $Assert.
             HasFieldValue($api, 'Properties.displayName').
-            WithReason(($LocalizedData.APIMDescriptors -f 'API', $api.name, 'displayName'), $True);
+            Reason($LocalizedData.APIMDescriptors, 'API', $api.name, 'displayName');
         $Assert.
             HasFieldValue($api, 'Properties.description').
-            WithReason(($LocalizedData.APIMDescriptors -f 'API', $api.name, 'description'), $True);
+            Reason($LocalizedData.APIMDescriptors, 'API', $api.name, 'description');
     }
 }
 
@@ -57,32 +57,32 @@ Rule 'Azure.APIM.HTTPBackend' -Type 'Microsoft.ApiManagement/service', 'Microsof
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $backends = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/backends')
         if ($backends.Length -eq 0) {
-            $True;
+            $Assert.Pass();
         }
         foreach ($backend in $backends) {
             $Assert.
                 StartsWith($backend, 'properties.url', 'https://').
-                WithReason(($LocalizedData.BackendUrlNotHttps -f $backend.name), $True);
+                Reason($LocalizedData.BackendUrlNotHttps, $backend.name);
         }
         $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis')
         if ($apis.Length -eq 0) {
-            $True;
+            $Assert.Pass();
         }
         foreach ($api in $apis) {
             $Assert.
                 StartsWith($api, 'properties.serviceUrl', 'https://').
-                WithReason(($LocalizedData.ServiceUrlNotHttps -f $api.name), $True);
+                Reason($LocalizedData.ServiceUrlNotHttps, $api.name);
         }
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/apis') {
         $Assert.
             StartsWith($TargetObject, 'properties.serviceUrl', 'https://').
-            WithReason(($LocalizedData.ServiceUrlNotHttps -f $PSRule.TargetName), $True);
+            Reason($LocalizedData.ServiceUrlNotHttps, $PSRule.TargetName);
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/backends') {
         $Assert.
             StartsWith($TargetObject, 'properties.url', 'https://').
-            WithReason(($LocalizedData.BackendUrlNotHttps -f $PSRule.TargetName), $True);
+            Reason($LocalizedData.BackendUrlNotHttps, $PSRule.TargetName);
     }
 }
 
@@ -92,7 +92,7 @@ Rule 'Azure.APIM.EncryptValues' -Type 'Microsoft.ApiManagement/service', 'Micros
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $properties = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues');
         if ($properties.Length -eq 0) {
-            $True;
+            $Assert.Pass();
         }
     }
     foreach ($property in $properties) {
@@ -124,7 +124,7 @@ Rule 'Azure.APIM.ProductApproval' -Type 'Microsoft.ApiManagement/service', 'Micr
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
         if ($products.Length -eq 0) {
-            $True;
+            $Assert.Pass();
         }
     }
     foreach ($product in $products) {
@@ -140,11 +140,11 @@ Rule 'Azure.APIM.SampleProducts' -Type 'Microsoft.ApiManagement/service', 'Micro
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
         if ($products.Length -eq 0) {
-            $True;
+            $Assert.Pass();
         }
     }
     foreach ($product in $products) {
-        $product | Within 'Name' -Not 'unlimited', 'starter'
+        $Assert.NotIn($product, 'Name', @('unlimited', 'starter'))
     }
 }
 
@@ -154,7 +154,7 @@ Rule 'Azure.APIM.ProductDescriptors' -Type 'Microsoft.ApiManagement/service', 'M
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
         if ($products.Length -eq 0) {
-            $True;
+            $Assert.Pass();
         }
     }
     foreach ($product in $products) {
@@ -185,7 +185,7 @@ Rule 'Azure.APIM.ProductTerms' -Type 'Microsoft.ApiManagement/service', 'Microso
 
 # Synopsis: Provision a managed identity
 Rule 'Azure.APIM.ManagedIdentity' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Within 'Identity.Type' 'SystemAssigned', 'UserAssigned'
+    $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'))
 }
 
 # Synopsis: Renew expired certificates
@@ -194,7 +194,7 @@ Rule 'Azure.APIM.CertificateExpiry' -Type 'Microsoft.ApiManagement/service' -Tag
         $Null -ne $_.certificate
     })
     if ($configurations.Length -eq 0) {
-        $True;
+        $Assert.Pass();
     }
     else {
         foreach ($configuration in $configurations) {
@@ -217,5 +217,5 @@ Rule 'Azure.APIM.Name' -Type 'Microsoft.ApiManagement/service' -Tag @{ release =
     # Alphanumerics and hyphens
     # Start with a letter
     # End with letter or number
-    Match 'Name' '^[a-zA-Z]([A-Za-z0-9-]*[a-zA-Z0-9]){0,49}$'
+    $Assert.Match($TargetObject, 'Name', '^[a-zA-Z]([A-Za-z0-9-]*[a-zA-Z0-9]){0,49}$')
 }
