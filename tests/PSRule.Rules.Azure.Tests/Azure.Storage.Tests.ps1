@@ -109,6 +109,22 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.TargetName | Should -Be 'storage-D';
         }
 
+        It 'Azure.Storage.BlobPublicAccess' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.BlobPublicAccess' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-D';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'storage-A';
+        }
+
         It 'Azure.Storage.BlobAccessType' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.BlobAccessType' };
 
@@ -122,7 +138,23 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'storage-A', 'storage-C', 'storage-D';
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-C', 'storage-D';
+        }
+
+        It 'Azure.Storage.MinTLS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.MinTLS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-D';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-A';
         }
     }
 
