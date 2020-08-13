@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- New rules:
+  - Storage Account:
+    - Check Storage Accounts reject TLS versions older than 1.2. [#455](https://github.com/Microsoft/PSRule.Rules.Azure/issues/455)
+    - Check Storage Accounts only accept authorized requests. [#456](https://github.com/Microsoft/PSRule.Rules.Azure/issues/456)
+
 ## v0.14.1
 
 What's changed since v0.14.1:
@@ -172,7 +177,7 @@ What's changed since v0.11.0:
   - SQL Database:
     - Check SQL Database uses TDE. [#379](https://github.com/Microsoft/PSRule.Rules.Azure/issues/379)
     - Check SQL Database uses AAD authentication. [#378](https://github.com/Microsoft/PSRule.Rules.Azure/issues/378)
-  - Storage:
+  - Storage Account:
     - Check Storage Account name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
     - Check Storage blob containers use private access type. [#365](https://github.com/Microsoft/PSRule.Rules.Azure/issues/365)
   - Virtual Network:
@@ -220,7 +225,7 @@ What's changed since pre-release v0.12.0-B2005026:
     - Check Route table name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
   - SignalR Service:
     - Check SignalR Service name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
-  - Storage:
+  - Storage Account:
     - Check Storage Account name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
   - Virtual Network:
     - Check VNET name requirements. [#373](https://github.com/Microsoft/PSRule.Rules.Azure/issues/373)
@@ -235,7 +240,7 @@ What's changed since pre-release v0.12.0-B2005026:
 ## v0.12.0-B2005005 (pre-release)
 
 - New rules:
-  - Storage:
+  - Storage Account:
     - Check Storage blob containers use private access type. [#365](https://github.com/Microsoft/PSRule.Rules.Azure/issues/365)
   - Policy:
     - Check Policy definitions use descriptive fields. [#364](https://github.com/Microsoft/PSRule.Rules.Azure/issues/364)

@@ -27,6 +27,12 @@ Rule 'Azure.Storage.SoftDelete' -Type 'Microsoft.Storage/storageAccounts' -If { 
     $Assert.HasFieldValue($serviceProperties, 'properties.deleteRetentionPolicy.enabled', $True);
 }
 
+# Synopsis: Disallow blob containers with public access types.
+Rule 'Azure.Storage.BlobPublicAccess' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+    $Assert.
+        HasFieldValue($TargetObject, 'Properties.allowBlobPublicAccess', $False);
+}
+
 # Synopsis: Avoid using Blob or Container access type
 Rule 'Azure.Storage.BlobAccessType' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices/containers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $containers = @($TargetObject);
@@ -41,6 +47,13 @@ Rule 'Azure.Storage.BlobAccessType' -Type 'Microsoft.Storage/storageAccounts', '
             HasFieldValue($container, 'Properties.publicAccess', 'None').
             WithReason(($LocalizedData.PublicAccessStorageContainer -f $container.name, $container.Properties.publicAccess), $True);
     }
+}
+
+# Synopsis: Use at least TLS 1.2.
+Rule 'Azure.Storage.MinTLS' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+    $Assert.
+        HasFieldValue($TargetObject, 'Properties.minimumTlsVersion', 'TLS1_2').
+        Reason($LocalizedData.MinTLSVersion, $TargetObject.Properties.minimumTlsVersion);
 }
 
 # Synopsis: Use Storage naming requirements

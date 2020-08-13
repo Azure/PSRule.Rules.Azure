@@ -14,6 +14,8 @@
                 "defaultAction": "Allow"
             },
             "supportsHttpsTrafficOnly": true,
+            "allowBlobPublicAccess": false,
+            "minimumTlsVersion": "TLS1_2",
             "encryption": {
                 "services": {
                     "file": {
@@ -120,6 +122,8 @@
                 "defaultAction": "Allow"
             },
             "supportsHttpsTrafficOnly": false,
+            "allowBlobPublicAccess": true,
+            "minimumTlsVersion": "TLS1_0",
             "encryption": {
                 "services": {
                     "file": {
@@ -138,7 +142,7 @@
                 "file": "https://storage-B.file.core.windows.net/"
             },
             "primaryLocation": "region",
-            "statusOfPrimary": "available"
+            "statusOfPrimary": "available",
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Storage/storageAccounts",
