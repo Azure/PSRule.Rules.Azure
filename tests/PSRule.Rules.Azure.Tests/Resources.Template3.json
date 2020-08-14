@@ -4,23 +4,36 @@
     "parameters": {
         "frontDoorName": {
             "type": "string",
-            "defaultValue": "frontdoor-A"
+            "defaultValue": "frontdoor-A",
+            "metadata": {
+                "description": "The name of the Azure Front Door service."
+            }
         },
         "customDomainName": {
             "type": "string",
-            "defaultValue": "fd-a.azure.net"
+            "defaultValue": "fd-a.azure.net",
+            "metadata": {
+                "description": "A custom DNS name to assign to the Azure Front Door service."
+            }
         },
         "backendAddress": {
             "type": "string",
-            "defaultValue": "0.0.0.0"
+            "defaultValue": "0.0.0.0",
+            "metadata": {
+                "description": "Backend address for the published service."
+            }
         },
         "diagnosticStorageAccountName": {
             "type": "string",
-            "defaultValue": "fddiag01"
+            "defaultValue": "fddiag01",
+            "metadata": {
+                "description": "A storage account name for diagnostics."
+            }
         }
     },
     "variables": {
-        "publicIPName": "pip-001"
+        "publicIPName": "pip-001",
+        "backendPoolName": "backendPool1"
     },
     "resources": [
         {
@@ -49,7 +62,7 @@
                                 "@odata.type": "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration",
                                 "forwardingProtocol": "MatchRequest",
                                 "backendPool": {
-                                    "id": "[resourceId('Microsoft.Network/frontDoors/backendPools', parameters('frontDoorName'), 'backendPool1')]"
+                                    "id": "[resourceId('Microsoft.Network/frontDoors/backendPools', parameters('frontDoorName'), variables('backendPoolName'))]"
                                 }
                             },
                             "enabledState": "Enabled"
@@ -106,7 +119,7 @@
                         "properties": {
                             "backends": [
                                 {
-                                    "address": "[parameters('backendAddress')]",
+                                    "address": "[ parameters( 'backendAddress' ) ]",
                                     "httpPort": 80,
                                     "httpsPort": 443,
                                     "weight": 50,
@@ -135,7 +148,7 @@
                     {
                         "name": "frontendEndpoint2",
                         "properties": {
-                            "hostName": "[parameters('customDomainName')]",
+                            "hostName": "[parameters( 'customDomainName' )]",
                             "sessionAffinityEnabledState": "Disabled",
                             "sessionAffinityTtlSeconds": 0
                         }
@@ -183,7 +196,7 @@
         {
             "apiVersion": "2016-03-30",
             "type": "Microsoft.Network/publicIPAddresses",
-            "name": "[variables('publicIPName')]",
+            "name": "[variables( 'publicIPName' ) ]",
             "location": "[resourceGroup().location]",
             "properties": {
                 "publicIPAllocationMethod": "Dynamic"

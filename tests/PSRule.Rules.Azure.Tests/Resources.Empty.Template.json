@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "frontDoorName": {
+            "type": "string",
+            "defaultValue": "frontdoor-A",
+            "metadata": {
+                "description": "The name of the Azure Front Door service."
+            }
+        },
+        "customDomainName": {
+            "type": "string",
+            "defaultValue": "fd-a.azure.net",
+            "metadata": {
+                "description": "A custom DNS name to assign to the Azure Front Door service."
+            }
+        },
+        "backendAddress": {
+            "type": "string",
+            "defaultValue": "0.0.0.0",
+            "metadata": {
+                "description": "Backend address for the published service."
+            }
+        },
+        "diagnosticStorageAccountName": {
+            "type": "string",
+            "defaultValue": "fddiag01",
+            "metadata": {
+                "description": "A storage account name for diagnostics."
+            }
+        }
+    },
+    "variables": {
+        "publicIPName": "[concat(parameters('frontDoorName'), '-pip')]",
+        "otherVariable": "[concat(variables('publicIPName'), '-other')]",
+        "otherVariable2": "[concat(variables('publicIPName'), '-other2')]"
+    },
+    "resources": [
+    ],
+    "outputs": {}
+}

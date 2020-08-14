@@ -550,8 +550,8 @@ namespace PSRule.Rules.Azure
         public void Parameters()
         {
             var context = GetContext();
-            context.Parameters["vnetName"] = "vnet1";
-            context.Parameters["test"] = new TestLengthObject();
+            context.Parameter("vnetName", "vnet1");
+            context.Parameter("test", new TestLengthObject());
 
             // Parameters string
             var actual1 = Functions.Parameters(context, new object[] { "vnetName" });
@@ -567,8 +567,8 @@ namespace PSRule.Rules.Azure
         public void Variables()
         {
             var context = GetContext();
-            context.Variables["vnetName"] = "vnet1";
-            context.Variables["test"] = new TestLengthObject();
+            context.Variable("vnetName", "vnet1");
+            context.Variable("test", new TestLengthObject());
 
             // Parameters string
             var actual1 = Functions.Variables(context, new object[] { "vnetName" });

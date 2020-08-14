@@ -3,6 +3,11 @@
 ## Unreleased
 
 - New rules:
+  - All resources:
+    - Check ARM template parameters are used. [#232](https://github.com/Microsoft/PSRule.Rules.Azure/issues/232)
+    - Check ARM template variables are used. [#233](https://github.com/Microsoft/PSRule.Rules.Azure/issues/233)
+    - Check ARM template parameters include a metadata description. [#360](https://github.com/Microsoft/PSRule.Rules.Azure/issues/360)
+    - Check ARM templates define at least one resource. [#359](https://github.com/Microsoft/PSRule.Rules.Azure/issues/359)
   - Storage Account:
     - Check Storage Accounts reject TLS versions older than 1.2. [#455](https://github.com/Microsoft/PSRule.Rules.Azure/issues/455)
     - Check Storage Accounts only accept authorized requests. [#456](https://github.com/Microsoft/PSRule.Rules.Azure/issues/456)
