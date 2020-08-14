@@ -6,6 +6,9 @@
   - Storage Account:
     - Check Storage Accounts reject TLS versions older than 1.2. [#455](https://github.com/Microsoft/PSRule.Rules.Azure/issues/455)
     - Check Storage Accounts only accept authorized requests. [#456](https://github.com/Microsoft/PSRule.Rules.Azure/issues/456)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.17.9. [#452](https://github.com/Microsoft/PSRule.Rules.Azure/issues/452)
 
 ## v0.14.1
 

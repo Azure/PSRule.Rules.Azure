@@ -30,7 +30,7 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "kubernetesVersion": "1.17.7",
+                "kubernetesVersion": "1.17.9",
                 "dnsPrefix": "[concat('dns-', parameters('clusterName'))]",
                 "agentPoolProfiles": [
                     {
@@ -114,7 +114,7 @@
                 "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-03')]",
                 "maxPods": 50,
                 "type": "VirtualMachineScaleSets",
-                "orchestratorVersion": "1.17.7",
+                "orchestratorVersion": "1.17.9",
                 "osType": "Linux"
             }
         },
