@@ -2,7 +2,7 @@
 severity: Awareness
 category: Resource deployment
 resource: All resources
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Template.ParamDescription.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Template.ParameterMetadata.md
 ---
 
 # Use template parameter descriptions
