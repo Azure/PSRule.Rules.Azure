@@ -6,7 +6,7 @@
         "ResourceName": "cluster-A",
         "Name": "cluster-A",
         "Properties": {
-            "kubernetesVersion": "1.17.7",
+            "kubernetesVersion": "1.17.9",
             "dnsPrefix": "cluster-A",
             "fqdn": "cluster-A-00000000.nnn.region.azmk8s.io",
             "agentPoolProfiles": [
@@ -18,7 +18,7 @@
                     "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
                     "maxPods": 30,
                     "type": "AvailabilitySet",
-                    "orchestratorVersion": "1.17.7",
+                    "orchestratorVersion": "1.17.9",
                     "osType": "Linux"
                 }
             ],
@@ -136,7 +136,7 @@
         "ParentResource": null,
         "Properties": {
             "provisioningState": "Succeeded",
-            "kubernetesVersion": "1.17.7",
+            "kubernetesVersion": "1.17.9",
             "dnsPrefix": "cluster-C",
             "fqdn": "cluster-C-00000000.nnn.region.azmk8s.io",
             "agentPoolProfiles": [
@@ -149,7 +149,7 @@
                     "maxPods": 50,
                     "type": "VirtualMachineScaleSets",
                     "provisioningState": "Succeeded",
-                    "orchestratorVersion": "1.17.7",
+                    "orchestratorVersion": "1.17.9",
                     "osType": "Linux"
                 }
             ],
@@ -218,7 +218,7 @@
         "Plan": null,
         "Properties": {
           "provisioningState": "Succeeded",
-          "kubernetesVersion": "1.17.7",
+          "kubernetesVersion": "1.17.9",
           "dnsPrefix": "cluster-D",
           "fqdn": "cluster-D-nnnnnnnn.hcp.region.azmk8s.io",
           "agentPoolProfiles": [
@@ -231,7 +231,7 @@
               "maxPods": 50,
               "type": "VirtualMachineScaleSets",
               "provisioningState": "Succeeded",
-              "orchestratorVersion": "1.17.7",
+              "orchestratorVersion": "1.17.9",
               "nodeLabels": {},
               "mode": "System",
               "osType": "Linux",
