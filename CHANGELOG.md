@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.15.0-B2008026 (pre-release)
+
 - New rules:
   - All resources:
     - Check ARM template parameters are used. [#232](https://github.com/Microsoft/PSRule.Rules.Azure/issues/232)
