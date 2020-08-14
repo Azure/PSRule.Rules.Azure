@@ -17,6 +17,12 @@ namespace PSRule.Rules.Azure.Data.Template
     internal abstract class TemplateVisitor
     {
         private const string RESOURCETYPE_DEPLOYMENT = "Microsoft.Resources/deployments";
+        private const string PROPERTY_PARAMETERS = "parameters";
+        private const string PROPERTY_VARIABLES = "variables";
+        private const string PROPERTY_RESOURCES = "resources";
+        private const string PROPERTY_OUTPUTS = "outputs";
+        private const string PROPERTY_REFERENCE = "reference";
+        private const string PROPERTY_VALUE = "value";
         private const string PROPERTY_TYPE = "type";
         private const string PROPERTY_PROPERTIES = "properties";
         private const string PROPERTY_TEMPLATE = "template";
@@ -24,6 +30,8 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_NAME = "name";
         private const string PROPERTY_COUNT = "count";
         private const string PROPERTY_INPUT = "input";
+        private const string PROPERTY_MODE = "mode";
+        private const string PROPERTY_DEFAULTVALUE = "defaultValue";
 
         public sealed class TemplateContext
         {
@@ -53,9 +61,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public List<JObject> Resources { get; }
 
-            public Dictionary<string, object> Parameters { get; }
+            private Dictionary<string, object> Parameters { get; }
 
-            public Dictionary<string, object> Variables { get; }
+            private Dictionary<string, object> Variables { get; }
 
             public CopyIndexStore CopyIndex { get; }
 
@@ -70,19 +78,19 @@ namespace PSRule.Rules.Azure.Data.Template
 
             internal void Load(JObject parameters)
             {
-                if (parameters == null || !parameters.ContainsKey("parameters"))
+                if (parameters == null || !parameters.ContainsKey(PROPERTY_PARAMETERS))
                     return;
 
-                _Parameters = parameters["parameters"] as JObject;
+                _Parameters = parameters[PROPERTY_PARAMETERS] as JObject;
                 foreach (JProperty property in _Parameters.Properties())
                 {
                     if (!(property.Value is JObject parameter))
                         throw new TemplateParameterException(parameterName: property.Name, message: string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateParameterInvalid, property.Name));
 
-                    if (parameter.ContainsKey("value"))
-                        Parameters.Add(property.Name, parameter["value"]);
-                    else if (parameter.ContainsKey("reference"))
-                        Parameters.Add(property.Name, SecretPlaceholder(parameter["reference"]["secretName"].Value<string>()));
+                    if (parameter.ContainsKey(PROPERTY_VALUE))
+                        Parameters.Add(property.Name, parameter[PROPERTY_VALUE]);
+                    else if (parameter.ContainsKey(PROPERTY_REFERENCE))
+                        Parameters.Add(property.Name, SecretPlaceholder(parameter[PROPERTY_REFERENCE]["secretName"].Value<string>()));
                     else
                         throw new TemplateParameterException(parameterName: property.Name, message: string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateParameterInvalid, property.Name));
                 }
@@ -165,14 +173,14 @@ namespace PSRule.Rules.Azure.Data.Template
             internal void EnterDeployment(string deploymentName, JObject template)
             {
                 var properties = new JObject();
-                properties.Add("template", template);
-                properties.Add("parameters", _Parameters);
-                properties.Add("mode", "Incremental");
+                properties.Add(PROPERTY_TEMPLATE, template);
+                properties.Add(PROPERTY_PARAMETERS, _Parameters);
+                properties.Add(PROPERTY_MODE, "Incremental");
                 properties.Add("provisioningState", "Accepted");
 
                 var deployment = new JObject();
-                deployment.Add("name", deploymentName);
-                deployment.Add("properties", properties);
+                deployment.Add(PROPERTY_NAME, deploymentName);
+                deployment.Add(PROPERTY_PROPERTIES, properties);
 
                 _Deployment.Push(deployment);
             }
@@ -182,13 +190,16 @@ namespace PSRule.Rules.Azure.Data.Template
                 _Deployment.Pop();
             }
 
+            internal void Parameter(string parameterName, object value)
+            {
+                Parameters.Add(parameterName, value);
+            }
+
             internal bool TryParameter(string parameterName, out object value)
             {
-                value = null;
-                if (!Parameters.ContainsKey(parameterName))
+                if (!Parameters.TryGetValue(parameterName, out value))
                     return false;
 
-                value = Parameters[parameterName];
                 if (value is LazyValue weakValue)
                 {
                     value = weakValue.GetValue(this);
@@ -197,13 +208,21 @@ namespace PSRule.Rules.Azure.Data.Template
                 return true;
             }
 
+            internal bool TryParameter(string parameterName)
+            {
+                return Parameters.ContainsKey(parameterName);
+            }
+
+            internal void Variable(string variableName, object value)
+            {
+                Variables.Add(variableName, value);
+            }
+
             internal bool TryVariable(string variableName, out object value)
             {
-                value = null;
-                if (!Variables.ContainsKey(variableName))
+                if (!Variables.TryGetValue(variableName, out value))
                     return false;
 
-                value = Variables[variableName];
                 if (value is LazyValue weakValue)
                 {
                     value = weakValue.GetValue(this);
@@ -263,16 +282,16 @@ namespace PSRule.Rules.Azure.Data.Template
                 // Schema(_Context, template.Schema);
                 // ContentVersion(_Context, template.ContentVersion);
 
-                if (TryObjectProperty(template, "parameters", out JObject parameters))
+                if (TryObjectProperty(template, PROPERTY_PARAMETERS, out JObject parameters))
                     Parameters(context, parameters);
 
-                if (TryObjectProperty(template, "variables", out JObject variables))
+                if (TryObjectProperty(template, PROPERTY_VARIABLES, out JObject variables))
                     Variables(context, variables);
 
-                if (TryArrayProperty(template, "resources", out JArray resources))
+                if (TryArrayProperty(template, PROPERTY_RESOURCES, out JArray resources))
                     Resources(context, resources.Values<JObject>());
 
-                if (TryObjectProperty(template, "outputs", out JObject outputs))
+                if (TryObjectProperty(template, PROPERTY_OUTPUTS, out JObject outputs))
                     Outputs(context, outputs);
             }
             finally
@@ -304,23 +323,23 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected virtual void Parameter(TemplateContext context, string parameterName, JObject parameter)
         {
-            if (context.Parameters.ContainsKey(parameterName) || parameter == null || !parameter.ContainsKey("defaultValue"))
+            if (context.TryParameter(parameterName) || parameter == null || !parameter.ContainsKey(PROPERTY_DEFAULTVALUE))
                 return;
 
-            var type = parameter["type"].ToObject<ParameterType>();
-            var defaultValue = parameter["defaultValue"];
+            var type = parameter[PROPERTY_TYPE].ToObject<ParameterType>();
+            var defaultValue = parameter[PROPERTY_DEFAULTVALUE];
             if (type == ParameterType.Bool)
-                context.Parameters.Add(parameterName, new LazyParameter<bool>(defaultValue));
+                context.Parameter(parameterName, new LazyParameter<bool>(defaultValue));
             else if (type == ParameterType.Int)
-                context.Parameters.Add(parameterName, new LazyParameter<int>(defaultValue));
+                context.Parameter(parameterName, new LazyParameter<int>(defaultValue));
             else if (type == ParameterType.String)
-                context.Parameters.Add(parameterName, new LazyParameter<string>(defaultValue));
+                context.Parameter(parameterName, new LazyParameter<string>(defaultValue));
             else if (type == ParameterType.Array)
-                context.Parameters.Add(parameterName, new LazyParameter<JArray>(defaultValue));
+                context.Parameter(parameterName, new LazyParameter<JArray>(defaultValue));
             else if (type == ParameterType.Object)
-                context.Parameters.Add(parameterName, new LazyParameter<JObject>(defaultValue));
+                context.Parameter(parameterName, new LazyParameter<JObject>(defaultValue));
             else
-                context.Parameters.Add(parameterName, ExpandPropertyToken(context, defaultValue));
+                context.Parameter(parameterName, ExpandPropertyToken(context, defaultValue));
         }
 
         #endregion Parameters
@@ -347,9 +366,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return;
 
             foreach (var resource in resources)
-            {
                 ResourceOuter(context, resource);
-            }
         }
 
         private void ResourceOuter(TemplateContext context, JObject resource)
@@ -437,7 +454,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected virtual void Variable(TemplateContext context, string variableName, JToken value)
         {
-            context.Variables.Add(variableName, new LazyVariable(value));
+            context.Variable(variableName, new LazyVariable(value));
         }
 
         protected virtual JToken VariableInstance(TemplateContext context, JToken value)
@@ -666,8 +683,8 @@ namespace PSRule.Rules.Azure.Data.Template
             if (value.ContainsKey(PROPERTY_COPY))
             {
                 var copyObject = value[PROPERTY_COPY].Value<JObject>();
-                result.Name = ExpandProperty<string>(context, copyObject, "name");
-                result.Count = ExpandProperty<int>(context, copyObject, "count");
+                result.Name = ExpandProperty<string>(context, copyObject, PROPERTY_NAME);
+                result.Count = ExpandProperty<int>(context, copyObject, PROPERTY_COUNT);
                 context.CopyIndex.Push(result);
                 value.Remove(PROPERTY_COPY);
             }
@@ -813,4 +830,6 @@ namespace PSRule.Rules.Azure.Data.Template
             base.Resource(context, resource);
         }
     }
+
+    
 }

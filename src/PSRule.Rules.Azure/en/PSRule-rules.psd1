@@ -32,4 +32,7 @@
     UnmanagedSubscription = "The subscription is not managed."
     DBServerFirewallRuleCount = "The number of firewall rules ({0}) exceeded {1}."
     DBServerFirewallPublicIPRange = "The number of public IP addresses permitted ({0}) exceeded {1}."
+    TemplateParameterDescription = "The parameter '{0}' does not name a description set."
+    ParameterNotFound = "The parameter '{0}' was not used within the template."
+    VariableNotFound = "The variable '{0}' was not used within the template."
 }

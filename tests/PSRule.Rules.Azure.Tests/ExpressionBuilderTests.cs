@@ -16,7 +16,7 @@ namespace PSRule.Rules.Azure
         {
             var expression = "[parameters('vnetName')]";
             var context = GetContext();
-            context.Parameters["vnetName"] = "vnet1";
+            context.Parameter("vnetName", "vnet1");
 
             var actual = Build(context, expression);
 
@@ -29,7 +29,7 @@ namespace PSRule.Rules.Azure
             var expression = "[concat('route-', parameters('subnets')[copyIndex('routeIndex')].name)]";
             var context = GetContext();
             context.CopyIndex.Push(new TemplateContext.CopyIndexState() { Name = "routeIndex", Index = 0 });
-            context.Parameters["subnets"] = JArray.Parse("[ { \"name\": \"subnet1\", \"route\": [ \"routeA\", \"routeB\" ] } ]");
+            context.Parameter("subnets", JArray.Parse("[ { \"name\": \"subnet1\", \"route\": [ \"routeA\", \"routeB\" ] } ]"));
 
             var actual = Build(context, expression);
 
@@ -41,7 +41,7 @@ namespace PSRule.Rules.Azure
         {
             var expression = "[concat('route-', parameters('subnets')[0].route[1])]";
             var context = GetContext();
-            context.Parameters["subnets"] = JArray.Parse("[ { \"name\": \"subnet1\", \"route\": [ \"routeA\", \"routeB\" ] } ]");
+            context.Parameter("subnets", JArray.Parse("[ { \"name\": \"subnet1\", \"route\": [ \"routeA\", \"routeB\" ] } ]"));
 
             var actual = Build(context, expression);
 
@@ -61,7 +61,7 @@ namespace PSRule.Rules.Azure
         {
             var expression = "[variables('environments')['dev'].prefix[1]]";
             var context = GetContext();
-            context.Variables.Add("environments", JObject.Parse("{ \"test\": { \"prefix\": \"tst-\" }, \"dev\": { \"prefix\": [ \"d-\", \"dev-\" ] } }"));
+            context.Variable("environments", JObject.Parse("{ \"test\": { \"prefix\": \"tst-\" }, \"dev\": { \"prefix\": [ \"d-\", \"dev-\" ] } }"));
 
             var actual = Build(context, expression) as JToken;
             Assert.Equal("dev-", actual.Value<string>());
@@ -71,8 +71,8 @@ namespace PSRule.Rules.Azure
         public void BuildExpressionWithNullProperty()
         {
             var context = GetContext();
-            context.Variables.Add("environments", JObject.Parse("{ }"));
-            context.Variables.Add("items", JArray.Parse("[ ]"));
+            context.Variable("environments", JObject.Parse("{ }"));
+            context.Variable("items", JArray.Parse("[ ]"));
 
             Assert.Throws<ExpressionReferenceException>(() => Build(context, "[variables('environments').prod]"));
             Assert.Throws<ExpressionReferenceException>(() => Build(context, "[variables('environments')['prod']]"));
