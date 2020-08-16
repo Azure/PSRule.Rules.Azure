@@ -6,7 +6,7 @@
 - PowerShell Core 6.2 or greater on Windows, MacOS and Linux or
 - PowerShell 7.0 or greater on Windows, MacOS and Linux
 
-For a list of platforms that PowerShell 7.0 is supported on [see](https://github.com/PowerShell/PowerShell#get-powershell).
+For a list of platforms that PowerShell 7.0 is supported on [see][get-powershell].
 
 The following modules are required for `PSRule.Rules.Azure` to work:
 
@@ -64,7 +64,8 @@ The following PowerShell modules will be automatically downloaded if the require
 
 These additional modules are only required for building PSRule and are not required for running PSRule.
 
-If you are on a network that does not permit Internet access to the PowerShell Gallery, download these modules on an alternative device that has access.
+If you are on a network that does not permit Internet access to the PowerShell Gallery,
+download these modules on an alternative device that has access.
 The following script can be used to download the required modules to an alternative device.
 After downloading the modules copy the module directories to devices with restricted Internet access.
 
@@ -78,4 +79,5 @@ Additionally .NET Core SDK v3.1 is required.
 To download and install the latest SDK see [Download .NET Core 3.1][dotnet].
 
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
+[get-powershell]: https://github.com/PowerShell/PowerShell#get-powershell
 [dotnet]: https://dotnet.microsoft.com/download/dotnet-core/3.1
