@@ -681,7 +681,7 @@ function VisitStorageAccount {
     process {
         $resources = @();
         if ($Resource.Kind -ne 'FileStorage') {
-            $blobServices += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Storage/storageAccounts/blobServices' -ApiVersion '2019-04-01';
+            $blobServices = @(GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Storage/storageAccounts/blobServices' -ApiVersion '2019-04-01');
             foreach ($blobService in $blobServices) {
                 $resources += $blobService;
                 $resources += Get-AzResource -Name "$($Resource.Name)/$($blobService.Name)" -ResourceType 'Microsoft.Storage/storageAccounts/blobServices/containers' -ResourceGroupName $Resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2019-04-01' -ExpandProperties;
