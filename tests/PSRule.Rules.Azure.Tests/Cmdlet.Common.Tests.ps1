@@ -69,6 +69,25 @@ function MockContext {
     }
 }
 
+function MockSingleSubscription {
+    process {
+        return @(
+            (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
+                [PSCustomObject]@{
+                    Subscription = [PSCustomObject]@{
+                        Id = '00000000-0000-0000-0000-000000000001'
+                        Name = 'Test subscription 1'
+                        State = 'Enabled'
+                    }
+                    Tenant = [PSCustomObject]@{
+                        Id = '00000000-0000-0000-0000-000000000001'
+                    }
+                }
+            ))
+        )
+    }
+}
+
 #endregion Mocks
 
 #region Export-AzRuleData
@@ -171,6 +190,62 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet','Export-AzRuleData' {
             Assert-MockCalled -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -Times 1 -ParameterFilter {
                 $Tag.environment -eq 'production'
             }
+        }
+    }
+
+    Context 'With data' {
+        Mock -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -MockWith ${function:MockSingleSubscription};
+
+        It 'Microsoft.Network/connections' {
+            Mock -CommandName 'Get-AzResourceGroup' -ModuleName 'PSRule.Rules.Azure';
+            Mock -CommandName 'Get-AzSubscription' -ModuleName 'PSRule.Rules.Azure';
+            Mock -CommandName 'Get-AzResource' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith {
+                return @(
+                    [PSCustomObject]@{
+                        Name = 'Resource1'
+                        ResourceType = 'Microsoft.Network/connections'
+                        Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn001'
+                        ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn001'
+                        Properties = [PSCustomObject]@{ sharedKey = 'test123' }
+                    }
+                    [PSCustomObject]@{
+                        Name = 'Resource2'
+                        ResourceType = 'Microsoft.Network/connections'
+                        Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn002'
+                        ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn002'
+                        Properties = [PSCustomObject]@{ dummy = 'value' }
+                    }
+                )
+            }
+            $result = @(Export-AzRuleData -OutputPath $outputPath -PassThru);
+            $result.Length | Should -Be 2;
+            $result[0].Properties.sharedKey | Should -Be '*** MASKED ***';
+        }
+
+        It 'Microsoft.Storage/storageAccounts' {
+            Mock -CommandName 'Get-AzResourceGroup' -ModuleName 'PSRule.Rules.Azure';
+            Mock -CommandName 'Get-AzSubscription' -ModuleName 'PSRule.Rules.Azure';
+            Mock -CommandName 'GetSubResource' -ModuleName 'PSRule.Rules.Azure' -Verifiable;
+            Mock -CommandName 'Get-AzResource' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith {
+                return @(
+                    [PSCustomObject]@{
+                        Name = 'Resource1'
+                        ResourceType = 'Microsoft.Storage/storageAccounts'
+                        Kind = 'StorageV2'
+                        Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/sa001'
+                        ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/sa001'
+                    }
+                    [PSCustomObject]@{
+                        Name = 'Resource2'
+                        ResourceType = 'Microsoft.Storage/storageAccounts'
+                        Kind = 'FileServices'
+                        Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/sa002'
+                        ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/sa002'
+                    }
+                )
+            }
+            $Null = @(Export-AzRuleData -OutputPath $outputPath);
+            Assert-MockCalled -CommandName 'GetSubResource' -ModuleName 'PSRule.Rules.Azure' -Times 1;
         }
     }
 }
