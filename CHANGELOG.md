@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Bug fixes:
+  - Fixed export of non-blob Storage Accounts. [#464](https://github.com/Microsoft/PSRule.Rules.Azure/issues/464)
+  - Fixed export of subscription Security Center data based on API version. [#465](https://github.com/Microsoft/PSRule.Rules.Azure/issues/465)
+  - Fixed masking of sharedKey when property does not exist. [#466](https://github.com/Microsoft/PSRule.Rules.Azure/issues/466)
+
 ## v0.15.0-B2008026 (pre-release)
 
 - New rules:

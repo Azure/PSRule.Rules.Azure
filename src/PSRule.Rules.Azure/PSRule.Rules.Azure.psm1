@@ -680,10 +680,12 @@ function VisitStorageAccount {
     )
     process {
         $resources = @();
-        $blobServices += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Storage/storageAccounts/blobServices' -ApiVersion '2019-04-01';
-        foreach ($blobService in $blobServices) {
-            $resources += $blobService;
-            $resources += Get-AzResource -Name "$($Resource.Name)/$($blobService.Name)" -ResourceType 'Microsoft.Storage/storageAccounts/blobServices/containers' -ResourceGroupName $Resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2019-04-01' -ExpandProperties;
+        if ($Resource.Kind -ne 'FileStorage') {
+            $blobServices += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Storage/storageAccounts/blobServices' -ApiVersion '2019-04-01';
+            foreach ($blobService in $blobServices) {
+                $resources += $blobService;
+                $resources += Get-AzResource -Name "$($Resource.Name)/$($blobService.Name)" -ResourceType 'Microsoft.Storage/storageAccounts/blobServices/containers' -ResourceGroupName $Resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2019-04-01' -ExpandProperties;
+            }
         }
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
@@ -827,7 +829,9 @@ function VisitNetworkConnection {
     )
     process {
         # Patch connections
-        $Resource.Properties.sharedKey = "*** MASKED ***";
+        if (@($Resource.Properties.PSObject.Properties.Match('sharedKey')).Length -gt 0) {
+            $Resource.Properties.sharedKey = "*** MASKED ***";
+        }
         $Resource;
     }
 }
@@ -844,11 +848,11 @@ function VisitSubscription {
     process {
         $resources = @();
         $resources += Get-AzRoleAssignment -DefaultProfile $Context -IncludeClassicAdministrators | SetResourceType 'Microsoft.Authorization/roleAssignments';
-        $resources += Get-AzResource -DefaultProfile $Context -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Security/autoProvisioningSettings";
-        $resources += Get-AzResource -DefaultProfile $Context -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Security/securityContacts";
+        $resources += Get-AzResource -DefaultProfile $Context -ApiVersion '2017-08-01-preview' -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Security/autoProvisioningSettings";
+        $resources += Get-AzResource -DefaultProfile $Context -ApiVersion '2017-08-01-preview' -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Security/securityContacts";
         $resources += Get-AzResource -DefaultProfile $Context -ApiVersion '2018-06-01' -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Security/pricings";
         $resources += Get-AzResource -DefaultProfile $Context -ApiVersion '2019-06-01' -ResourceId "/subscriptions/$($Resource.Id)/providers/Microsoft.Authorization/policyAssignments";
-        $resources += Get-AzResource -ResourceType 'microsoft.insights/activityLogAlerts' -DefaultProfile $Context -ExpandProperties;
+        $resources += Get-AzResource -DefaultProfile $Context -ResourceType 'microsoft.insights/activityLogAlerts' -ExpandProperties;
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
 
         Get-AzPolicyDefinition -Custom -DefaultProfile $Context;
