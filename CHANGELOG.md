@@ -2,12 +2,18 @@
 
 ## Unreleased
 
+## v0.15.0-B2008034 (pre-release)
+
+What's changed since pre-release v0.15.0-B2008026:
+
 - Bug fixes:
   - Fixed export of non-blob Storage Accounts. [#464](https://github.com/Microsoft/PSRule.Rules.Azure/issues/464)
   - Fixed export of subscription Security Center data based on API version. [#465](https://github.com/Microsoft/PSRule.Rules.Azure/issues/465)
   - Fixed masking of sharedKey when property does not exist. [#466](https://github.com/Microsoft/PSRule.Rules.Azure/issues/466)
 
 ## v0.15.0-B2008026 (pre-release)
+
+What's changed since v0.14.1:
 
 - New rules:
   - All resources:
@@ -24,7 +30,7 @@
 
 ## v0.14.1
 
-What's changed since v0.14.1:
+What's changed since v0.14.0:
 
 - Bug fixes:
   - Fixed resource tags rule to exclude diagnostic settings. [#448](https://github.com/Microsoft/PSRule.Rules.Azure/issues/448)
