@@ -10,6 +10,11 @@ Rule 'Azure.MySQL.UseSSL' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release =
     $Assert.HasFieldValue($TargetObject, 'Properties.sslEnforcement', 'Enabled');
 }
 
+# Synopsis: Consider configuring the minimum supported TLS version to be 1.2.
+Rule 'Azure.MySQL.MinTLS' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.minimalTlsVersion', 'TLS1_2');
+}
+
 # Synopsis: Determine if there is an excessive number of firewall rules
 Rule 'Azure.MySQL.FirewallRuleCount' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/servers/firewallRules');

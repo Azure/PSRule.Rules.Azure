@@ -185,8 +185,48 @@
             },
             "version": "5.7",
             "sslEnforcement": "Enabled",
+            "minimalTlsVersion": "TLS1_2",
+            "publicNetworkAccess": "Enabled",
             "userVisibleState": "Ready",
             "fullyQualifiedDomainName": "server-A.mysql.database.azure.com",
+            "replicationRole": "None",
+            "masterServerId": "",
+            "replicaCapacity": 5
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMySQL/servers",
+        "ResourceType": "Microsoft.DBforMySQL/servers",
+        "Sku": {
+            "Name": "GP_Gen5_4",
+            "Tier": "GeneralPurpose",
+            "Size": null,
+            "Family": "Gen5",
+            "Model": null,
+            "Capacity": 4
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/servers/server-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/servers/server-C",
+        "Location": "region",
+        "ResourceName": "server-C",
+        "Name": "server-C",
+        "Properties": {
+            "administratorLogin": "db-admin",
+            "storageProfile": {
+                "storageMB": 5120,
+                "backupRetentionDays": 7,
+                "geoRedundantBackup": "Disabled",
+                "storageAutoGrow": "Disabled"
+            },
+            "version": "5.7",
+            "sslEnforcement": "Enabled",
+            "minimalTlsVersion": "TLS1_0",
+            "publicNetworkAccess": "Enabled",
+            "userVisibleState": "Ready",
+            "fullyQualifiedDomainName": "server-C.mysql.database.azure.com",
             "replicationRole": "None",
             "masterServerId": "",
             "replicaCapacity": 5

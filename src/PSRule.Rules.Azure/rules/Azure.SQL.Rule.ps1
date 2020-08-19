@@ -50,6 +50,11 @@ Rule 'Azure.SQL.AAD' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleS
     $Assert.HasFieldValue($config, 'Properties.administratorType', 'ActiveDirectory');
 }
 
+# Synopsis: Consider configuring the minimum supported TLS version to be 1.2.
+Rule 'Azure.SQL.MinTLS' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+    $Assert.Version($TargetObject, 'Properties.minimalTlsVersion', '>=1.2');
+}
+
 # Synopsis: Enable transparent data encryption
 Rule 'Azure.SQL.TDE' -Type 'Microsoft.Sql/servers/databases' -If { !(IsMasterDatabase) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $config = GetSubResources -ResourceType 'Microsoft.Sql/servers/databases/transparentDataEncryption';
