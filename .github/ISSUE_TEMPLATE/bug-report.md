@@ -5,7 +5,7 @@ about: Report errors or unexpected behaviour
 
 **Description of the issue**
 
-A clear and concise description of what the bug is.
+<!-- A clear and concise description of what the bug is. -->
 
 **To Reproduce**
 
@@ -17,11 +17,11 @@ Steps to reproduce the issue:
 
 **Expected behaviour**
 
-A clear and concise description of what you expected to happen.
+<!-- A clear and concise description of what you expected to happen. -->
 
 **Error output**
 
-Capture any error messages and or verbose messages with `-Verbose`.
+<!-- Capture any error messages and or verbose messages with `-Verbose`. -->
 
 ```text
 

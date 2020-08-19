@@ -231,7 +231,7 @@ or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any addi
 This project is [licensed under the MIT License](LICENSE).
 
 [issue]: https://github.com/Microsoft/PSRule.Rules.Azure/issues
-[install]: docs/scenarios/install-instructions.md
+[install]: docs/install-instructions.md
 [ci-badge]: https://dev.azure.com/bewhite/PSRule.Rules.Azure/_apis/build/status/PSRule.Rules.Azure-CI?branchName=main
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
 [engine]: https://github.com/Microsoft/PSRule

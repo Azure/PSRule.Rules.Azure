@@ -44,7 +44,7 @@ To install PSRule for Azure use the `Install-Module` cmdlet within PowerShell.
 Install-Module -Name PSRule.Rules.Azure -Scope CurrentUser;
 ```
 
-For additional installation options see [install instructions](scenarios/install-instructions.md).
+For additional installation options see [install instructions](install-instructions.md).
 
 ## Frequently Asked Questions (FAQ)
 
