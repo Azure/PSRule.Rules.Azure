@@ -17,7 +17,10 @@ Rule 'Azure.Template.TemplateFile' -Type 'System.IO.FileInfo','.json' -If { (IsT
 # Synopsis: Use template parameter descriptions.
 Rule 'Azure.Template.ParameterMetadata' -Type 'System.IO.FileInfo','.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
-    $parameters = @($jsonObject.parameters.PSObject.Properties);
+    $parameters = @($jsonObject.parameters.PSObject.Properties | Where-Object { $_.MemberType -eq 'NoteProperty' });
+    if ($parameters.Length -eq 0) {
+        $Assert.Pass();
+    }
     foreach ($parameter in $parameters) {
         $Assert.
             HasFieldValue($parameter.value, 'metadata.description').
@@ -35,7 +38,7 @@ Rule 'Azure.Template.Resources' -Type 'System.IO.FileInfo','.json' -If { (IsTemp
 Rule 'Azure.Template.UseParameters' -Type 'System.IO.FileInfo','.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
     $jsonContent = Get-Content -Path $TargetObject.FullName -Raw;
-    $parameters = @($jsonObject.parameters.PSObject.Properties);
+    $parameters = @($jsonObject.parameters.PSObject.Properties | Where-Object { $_.MemberType -eq 'NoteProperty' });
     if ($parameters.Length -eq 0) {
         $Assert.Pass();
     }
@@ -50,7 +53,7 @@ Rule 'Azure.Template.UseParameters' -Type 'System.IO.FileInfo','.json' -If { (Is
 Rule 'Azure.Template.UseVariables' -Type 'System.IO.FileInfo','.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
     $jsonContent = Get-Content -Path $TargetObject.FullName -Raw;
-    $variables = @($jsonObject.variables.PSObject.Properties);
+    $variables = @($jsonObject.variables.PSObject.Properties | Where-Object { $_.MemberType -eq 'NoteProperty' });
     if ($variables.Length -eq 0) {
         $Assert.Pass();
     }
