@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.15.0-B2008043 (pre-release)
+
+What's changed since pre-release v0.15.0-B2008034:
+
 - New rules:
   - Database for MySQL:
     - Check database servers reject TLS versions older than 1.2. [#469](https://github.com/Microsoft/PSRule.Rules.Azure/issues/469)
