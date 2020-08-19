@@ -47,7 +47,7 @@ Use a reaction in place of a "+1" comment:
 ## Improving documentation
 
 This project contains a wide range of documentation, stored in `docs/`.
-Some of the documentation that you might like to add to or improve might include:
+Some of the documentation that you might like to improve include:
 
 - Rule recommendations (`docs/rules/`).
 - Scenarios and examples (`docs/scenarios/`).
@@ -57,26 +57,41 @@ Some of the documentation that you might like to add to or improve might include
 
 Before improving rule recommendations familiarize yourself with writing [rule markdown documentation](https://microsoft.github.io/PSRule/scenarios/rule-docs/rule-docs.html#writing-markdown-documentation).
 
+Rule documentation requires the following annotations:
+
+- `severity`
+- `category`
+- `online version`
+
 ## Adding or improving rules
 
-- Rules are stored in `src/PSRule.Rules.Azure/rules`.
+- Rules are stored in `src/PSRule.Rules.Azure/rules/`.
 - Rules are organized into separate `.Rule.ps1` files based on service.
-- Rule documentation in English is stored in `docs/rules/en`.
-  - Additional cultures can be added in a subdirectory under `docs/rules`.
+- Rule documentation in English is stored in `docs/rules/en/`.
+  - Additional cultures can be added in a subdirectory under `docs/rules/`.
 - Use pre-conditions to limit the type of resource a rule applies to.
 
 Each rule **must** meet the following requirements:
 
 - Named with the `Azure.` prefix.
 - The rule name must not be longer than 35 characters.
-- Have a release tag either `GA` or `preview`. e.g. `-Tag @{ release = 'GA' }`
+- Have documentation and unit tests.
+- Have a `release` tag either `GA` or `preview`. e.g. `-Tag @{ release = 'GA' }`
   - Rules are marked as `GA` if they relate to generally available Azure features.
   - Rules are marked as `preview` if they relate to _preview_ Azure features.
+- Have a `ruleSet` tag. e.g. `-Tag @{ release = 'GA'; ruleSet = '2020_09' }`
+  - The rule set tag identifies the quarter that the rule was first released.
+  - This is used to include rules in quarterly baselines.
 - Include an inline `Synopsis: ` comment above each rule.
-- Rule documentation with the following metadata has been created.
-  - `severity`
-  - `category`
-  - `online version`
+
+For example:
+
+```powershell
+# Synopsis: Consider configuring a managed identity for each API Management instance.
+Rule 'Azure.APIM.ManagedIdentity' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+    $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'))
+}
+```
 
 **Tips for authoring rules:**
 
