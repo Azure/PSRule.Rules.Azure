@@ -16,6 +16,8 @@
             "externalAdministratorLogin": null,
             "externalAdministratorSid": null,
             "version": "12.0",
+            "minimalTlsVersion": "1.2",
+            "publicNetworkAccess": "Enabled",
             "state": "Ready"
         },
         "resources": [
@@ -140,6 +142,8 @@
             "externalAdministratorLogin": null,
             "externalAdministratorSid": null,
             "version": "12.0",
+            "minimalTlsVersion": "1.0",
+            "publicNetworkAccess": "Enabled",
             "state": "Ready"
         },
         "resources": [

@@ -185,8 +185,48 @@
             },
             "version": "10",
             "sslEnforcement": "Enabled",
+            "minimalTlsVersion": "TLS1_2",
+            "publicNetworkAccess": "Enabled",
             "userVisibleState": "Ready",
             "fullyQualifiedDomainName": "server-A.postgres.database.azure.com",
+            "replicationRole": "None",
+            "masterServerId": "",
+            "replicaCapacity": 5
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforPostgreSQL/servers",
+        "ResourceType": "Microsoft.DBforPostgreSQL/servers",
+        "Sku": {
+            "Name": "GP_Gen5_4",
+            "Tier": "GeneralPurpose",
+            "Size": null,
+            "Family": "Gen5",
+            "Model": null,
+            "Capacity": 4
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforPostgreSQL/servers/server-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforPostgreSQL/servers/server-C",
+        "Location": "region",
+        "ResourceName": "server-C",
+        "Name": "server-C",
+        "Properties": {
+            "administratorLogin": "dbadmin",
+            "storageProfile": {
+                "storageMB": 102400,
+                "backupRetentionDays": 7,
+                "geoRedundantBackup": "Disabled",
+                "storageAutoGrow": "Enabled"
+            },
+            "version": "10",
+            "sslEnforcement": "Enabled",
+            "minimalTlsVersion": "TLS1_0",
+            "publicNetworkAccess": "Enabled",
+            "userVisibleState": "Ready",
+            "fullyQualifiedDomainName": "server-c.postgres.database.azure.com",
             "replicationRole": "None",
             "masterServerId": "",
             "replicaCapacity": 5

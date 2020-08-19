@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- New rules:
+  - Database for MySQL:
+    - Check database servers reject TLS versions older than 1.2. [#469](https://github.com/Microsoft/PSRule.Rules.Azure/issues/469)
+  - Database for PostgreSQL:
+    - Check database servers reject TLS versions older than 1.2. [#470](https://github.com/Microsoft/PSRule.Rules.Azure/issues/470)
+  - SQL Database:
+    - Check database servers reject TLS versions older than 1.2. [#471](https://github.com/Microsoft/PSRule.Rules.Azure/issues/471)
+
 ## v0.15.0-B2008034 (pre-release)
 
 What's changed since pre-release v0.15.0-B2008026:
