@@ -64,6 +64,19 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeLike "*Resources.Template3.json";
+
+            # With empty template
+            $dataPath = @(
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.2.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.3.json')
+            );
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.ParameterMetadata';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.ParameterMetadata' };
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
         }
 
         It 'Azure.Template.Resources' {
@@ -91,6 +104,8 @@ Describe 'Azure.Template' -Tag 'Template' {
             $dataPath = @(
                 (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.json')
                 (Join-Path -Path $here -ChildPath 'Resources.Template3.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.2.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.3.json')
             );
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.UseParameters';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.UseParameters' };
@@ -106,14 +121,15 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeLike "*Resources.Template3.json";
+            $ruleResult.Length | Should -Be 3;
         }
 
         It 'Azure.Template.UseVariables' {
             $dataPath = @(
                 (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.json')
                 (Join-Path -Path $here -ChildPath 'Resources.Template3.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.2.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.3.json')
             );
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.UseVariables';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.UseVariables' };
@@ -129,8 +145,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeLike "*Resources.Template3.json";
+            $ruleResult.Length | Should -Be 3;
         }
 
         It 'Azure.Template.ParameterFile' {

@@ -9,6 +9,8 @@
     - Check database servers reject TLS versions older than 1.2. [#470](https://github.com/Microsoft/PSRule.Rules.Azure/issues/470)
   - SQL Database:
     - Check database servers reject TLS versions older than 1.2. [#471](https://github.com/Microsoft/PSRule.Rules.Azure/issues/471)
+- Bug fixes:
+  - Fixed use variables check when no variables are defined. [#462](https://github.com/Microsoft/PSRule.Rules.Azure/issues/462)
 
 ## v0.15.0-B2008034 (pre-release)
 
