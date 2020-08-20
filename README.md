@@ -1,13 +1,13 @@
 # PSRule for Azure
 
-A suite of rules to validate Azure resources using PSRule.
+A suite of rules to validate Azure resources and infrastructure as code (IaC) using PSRule.
 
 ![ci-badge]
 
 Features of PSRule for Azure include:
 
 - [Ready to go](docs/features.md#ready-to-go) - Leverage over 100 pre-built rules to validate Azure resources.
-- [DevOps](docs/features.md#devops) - Validate resources pre or post-deployment.
+- [DevOps](docs/features.md#devops) - Validate resources and infrastructure code pre or post-deployment.
 - [Cross-platform](docs/features.md#cross-platform) - Run on MacOS, Linux and Windows.
 
 ## Disclaimer
@@ -27,7 +27,7 @@ You can download and install these modules from the PowerShell Gallery.
 
 Module             | Description | Downloads / instructions
 ------             | ----------- | ------------------------
-PSRule.Rules.Azure | Validate Azure resources | [latest][module] / [instructions][install]
+PSRule.Rules.Azure | Validate Azure resources and infrastructure as code using PSRule. | [latest][module] / [instructions][install]
 
 ## Getting started
 
@@ -201,6 +201,17 @@ The following conceptual topics exist in the `PSRule.Rules.Azure` module:
   - [Azure_AllowedRegions](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_allowedregions)
   - [Azure_MinimumCertificateLifetime](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_minimumcertificatelifetime)
 
+## Related projects
+
+The following projects can also be used with PSRule for Azure.
+
+Name                      | Description
+----                      | -----------
+[PSRule.Rules.CAF]        | A suite of rules to validate Azure resources against the Cloud Adoption Framework (CAF) using PSRule.
+[PSRule.Monitor]          | Send and query PSRule analysis results in Azure Monitor.
+[PSRule-pipelines]        | An Azure DevOps extension for using PSRule within Azure Pipelines.
+[ps-rule]                 | Validate infrastructure as code (IaC) and DevOps repositories using GitHub Actions.
+
 ## Changes and versioning
 
 Modules in this repository will use the [semantic versioning](http://semver.org/) model to declare breaking changes from v1.0.0.
@@ -235,3 +246,7 @@ This project is [licensed under the MIT License](LICENSE).
 [ci-badge]: https://dev.azure.com/bewhite/PSRule.Rules.Azure/_apis/build/status/PSRule.Rules.Azure-CI?branchName=main
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
 [engine]: https://github.com/Microsoft/PSRule
+[PSRule.Rules.CAF]: https://github.com/microsoft/PSRule.Rules.CAF
+[PSRule.Monitor]: https://github.com/microsoft/PSRule.Monitor
+[PSRule-pipelines]: https://github.com/microsoft/PSRule-pipelines
+[ps-rule]: https://github.com/microsoft/ps-rule

@@ -28,7 +28,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = '(c) Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Validate Azure resources using PSRule.
+Description = 'Validate Azure resources and infrastructure as code using PSRule.
 
 This project is open source and not a supported product.'
 
@@ -103,7 +103,7 @@ AliasesToExport = @()
 PrivateData = @{
     PSData = @{
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('PSRule', 'PSRule-rules', 'Rule', 'Azure', 'Cloud')
+        Tags = @('PSRule', 'PSRule-rules', 'Rule', 'Azure', 'Cloud', 'DevOps', 'Testing', 'Infrastructure')
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/LICENSE'
