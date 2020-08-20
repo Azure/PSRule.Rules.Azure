@@ -15,7 +15,7 @@
     <PackageLicenseExpression>https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/LICENSE</PackageLicenseExpression>
     <Version>0.0.1</Version>
     <Copyright>Copyright (c) Microsoft Corporation. Licensed under the MIT License.</Copyright>
-    <Description>Validate Azure resources using PSRule.
+    <Description>Validate Azure resources and infrastructure as code using PSRule.
 
 This project is open source and not a supported product.</Description>
   </PropertyGroup>

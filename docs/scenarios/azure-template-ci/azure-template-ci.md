@@ -7,8 +7,10 @@ Depending on the parameters provided to a template, resources may differ signifi
 Important resource properties that should be validated are often variables, parameters or deployed conditionally.
 Under these circumstances, to correctly validate resources in a template, parameters must be resolved.
 
-The following scenario shows how to validate Azure resources from templates.
+The following scenario shows how to validate Azure resources from templates using a generic pipeline.
 The examples provided can be integrated into a continuous integration (CI) pipeline able to run PowerShell.
+
+For integrating into Azure DevOps see [Validate Azure resources from templates with Azure Pipelines](../azure-pipelines-ci/azure-pipelines-ci.md).
 
 This scenario covers the following:
 
