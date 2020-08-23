@@ -2,6 +2,37 @@
 
 ## Unreleased
 
+## v0.15.0
+
+What's changed since v0.14.1:
+
+- New rules:
+  - All resources:
+    - Check ARM template parameters are used. [#232](https://github.com/Microsoft/PSRule.Rules.Azure/issues/232)
+    - Check ARM template variables are used. [#233](https://github.com/Microsoft/PSRule.Rules.Azure/issues/233)
+    - Check ARM template parameters include a metadata description. [#360](https://github.com/Microsoft/PSRule.Rules.Azure/issues/360)
+    - Check ARM templates define at least one resource. [#359](https://github.com/Microsoft/PSRule.Rules.Azure/issues/359)
+  - Database for MySQL:
+    - Check database servers reject TLS versions older than 1.2. [#469](https://github.com/Microsoft/PSRule.Rules.Azure/issues/469)
+  - Database for PostgreSQL:
+    - Check database servers reject TLS versions older than 1.2. [#470](https://github.com/Microsoft/PSRule.Rules.Azure/issues/470)
+  - SQL Database:
+    - Check database servers reject TLS versions older than 1.2. [#471](https://github.com/Microsoft/PSRule.Rules.Azure/issues/471)
+  - Storage Account:
+    - Check Storage Accounts reject TLS versions older than 1.2. [#455](https://github.com/Microsoft/PSRule.Rules.Azure/issues/455)
+    - Check Storage Accounts only accept authorized requests. [#456](https://github.com/Microsoft/PSRule.Rules.Azure/issues/456)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.17.9. [#452](https://github.com/Microsoft/PSRule.Rules.Azure/issues/452)
+- Bug fixes:
+  - Fixed export of non-blob Storage Accounts. [#464](https://github.com/Microsoft/PSRule.Rules.Azure/issues/464)
+  - Fixed export of subscription Security Center data based on API version. [#465](https://github.com/Microsoft/PSRule.Rules.Azure/issues/465)
+  - Fixed masking of sharedKey when property does not exist. [#466](https://github.com/Microsoft/PSRule.Rules.Azure/issues/466)
+
+What's changed since pre-release v0.15.0-B2008034:
+
+- No additional changes.
+
 ## v0.15.0-B2008043 (pre-release)
 
 What's changed since pre-release v0.15.0-B2008034:
