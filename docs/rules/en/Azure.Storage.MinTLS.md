@@ -1,5 +1,5 @@
 ---
-severity: Important
+severity: Critical
 category: Security configuration
 resource: Storage Account
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Storage.MinTLS.md
