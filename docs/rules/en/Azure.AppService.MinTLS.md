@@ -1,12 +1,12 @@
 ---
-severity: Important
+severity: Critical
 category: Security configuration
 resource: App Service
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AppService.MinTLS.md
 ms-content-id: e19fbe7e-da05-47d4-8de1-2fdf52ada662
 ---
 
-# Use minimum TLS version
+# App Service minimum TLS version
 
 ## SYNOPSIS
 
@@ -27,5 +27,6 @@ Also consider using Azure Policy to audit or enforce this configuration.
 
 ## LINKS
 
-- [Enforce TLS versions](https://docs.microsoft.com/en-us/Azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions)
-- [insecure protocols](https://docs.microsoft.com/en-us/Azure/app-service/overview-security#insecure-protocols-http-tls-10-ftp)
+- [Enforce TLS versions](https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-bindings#enforce-tls-versions)
+- [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/en-us/updates/azuretls12/)
+- [Insecure protocols](https://docs.microsoft.com/en-us/Azure/app-service/overview-security#insecure-protocols-http-tls-10-ftp)
