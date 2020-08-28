@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Scalability
+pillar: Performance Efficiency
+category: Capacity planning
 resource: Azure Kubernetes Service
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AKS.StandardLB.md
 ---

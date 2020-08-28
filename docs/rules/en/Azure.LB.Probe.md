@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Resiliency
+pillar: Reliability
+category: Load balancing and failover
 resource: Load Balancer
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.LB.Probe.md
 ---

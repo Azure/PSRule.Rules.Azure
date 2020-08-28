@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Security configuration
+pillar: Security
+category: Encryption
 resource: Traffic Manager
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.TrafficManager.Protocol.md
 ---

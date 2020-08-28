@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Operations management
+pillar: Operational Excellence
+category: Deployment
 resource: Virtual Network
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.VNET.PeerState.md
 ---

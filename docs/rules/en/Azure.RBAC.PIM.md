@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Security operations
+pillar: Security
+category: Identity and access management
 resource: Subscription
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.RBAC.PIM.md
 ---

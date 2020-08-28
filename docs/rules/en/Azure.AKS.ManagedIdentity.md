@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Reliability
+pillar: Operational Excellence
+category: Configuration
 resource: Azure Kubernetes Service
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AKS.ManagedIdentity.md
 ---

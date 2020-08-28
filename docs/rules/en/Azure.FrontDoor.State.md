@@ -1,6 +1,7 @@
 ---
-severity: Important
-category: Security configuration
+severity: Awareness
+pillar: Cost Optimization
+category: Resource usage
 resource: Front Door
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.FrontDoor.State.md
 ---

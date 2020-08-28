@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Operations management
+pillar: Operational Excellence
+category: Monitoring
 resource: Virtual Machine
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.VM.Agent.md
 ms-content-id: e4f6f6e7-593c-4507-811d-778ee8ec9ac4

@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Data recovery
+pillar: Reliability
+category: Data management
 resource: Key Vault
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.KeyVault.SoftDelete.md
 ---

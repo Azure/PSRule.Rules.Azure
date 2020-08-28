@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Reliability
+pillar: Operational Excellence
+category: Monitoring
 resource: Monitor
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Monitor.ServiceHealth.md
 ---

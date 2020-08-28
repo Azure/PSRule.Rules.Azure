@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Performance
+pillar: Operational Excellence
+category: Deployment
 resource: Application Gateway
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AppGw.MinSku.md
 ---

@@ -29,6 +29,18 @@ Rule 'Rule.RuleSet' -Type 'PSRule.Rules.Rule' {
 }
 
 # Synopsis: Use severity and category annotations
+Rule 'Rule.Pillar' -Type 'PSRule.Rules.Rule' {
+    $Assert.HasFieldValue($TargetObject, 'Info.Annotations.pillar')
+    $Assert.In($TargetObject, 'Info.Annotations.pillar', @(
+        'Cost Optimization'
+        'Operational Excellence'
+        'Performance Efficiency'
+        'Reliability'
+        'Security'
+    ))
+}
+
+# Synopsis: Use severity and category annotations
 Rule 'Rule.Annotations' -Type 'PSRule.Rules.Rule' {
     $Assert.HasFieldValue($TargetObject, 'Info.Annotations.severity')
     $Assert.HasFieldValue($TargetObject, 'Info.Annotations.category')

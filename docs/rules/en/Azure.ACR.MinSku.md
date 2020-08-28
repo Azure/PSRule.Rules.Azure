@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Performance
+pillar: Operational Excellence
+category: Deployment
 resource: Container Registry
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.ACR.MinSku.md
 ms-content-id: a70d16d4-3717-4eef-b588-8a0204860d6e

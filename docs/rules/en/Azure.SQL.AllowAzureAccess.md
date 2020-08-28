@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Security configuration
+pillar: Security
+category: Network security and containment
 resource: SQL Database
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.SQL.AllowAzureAccess.md
 ms-content-id: 30a551f6-54e0-4e51-b068-f9695d891a89

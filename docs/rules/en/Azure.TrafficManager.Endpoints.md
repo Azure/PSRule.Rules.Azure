@@ -1,6 +1,7 @@
 ---
-severity: Single point of failure
-category: Reliability
+severity: Important
+pillar: Reliability
+category: Load balancing and failover
 resource: Traffic Manager
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.TrafficManager.Endpoints.md
 ---
