@@ -1,6 +1,7 @@
 ---
 severity: Awareness
-category: Operations management
+pillar: Security
+category: Network security and containment
 resource: Azure Database for MySQL
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.MySQL.FirewallRuleCount.md
 ms-content-id: 9debdffb-0da1-4b8d-8a17-3f480f1015ec

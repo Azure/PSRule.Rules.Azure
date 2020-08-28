@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Security operations
+pillar: Security
+category: Identity and access management
 resource: Subscription
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.RBAC.LimitMGDelegation.md
 ms-content-id: 0f0a1cc8-9528-46b7-8f31-b9fe76cc0d66

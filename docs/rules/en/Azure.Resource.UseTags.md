@@ -1,6 +1,7 @@
 ---
 severity: Awareness
-category: Operations management
+pillar: Operational Excellence
+category: Tagging and resource naming
 resource: All resources
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Resource.UseTags.md
 ms-content-id: d8480c0d-e41c-441a-9b03-0dc9c340c149

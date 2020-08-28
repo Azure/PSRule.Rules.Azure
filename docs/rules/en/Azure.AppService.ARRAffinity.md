@@ -1,6 +1,7 @@
 ---
 severity: Awareness
-category: Performance
+pillar: Performance Efficiency
+category: Application design
 resource: App Service
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AppService.ARRAffinity.md
 ms-content-id: 3f07def6-6e5e-4f87-8b5d-3a0baf6631e5

@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Security configuration
+pillar: Security
+category: Identity and access management
 resource: Virtual Machine
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.VM.PublicKey.md
 ---

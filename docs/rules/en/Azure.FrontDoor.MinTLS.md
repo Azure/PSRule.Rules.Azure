@@ -1,6 +1,7 @@
 ---
 severity: Critical
-category: Security configuration
+pillar: Security
+category: Encryption
 resource: Front Door
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.FrontDoor.MinTLS.md
 ---

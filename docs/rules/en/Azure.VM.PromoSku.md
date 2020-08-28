@@ -1,11 +1,12 @@
 ---
 severity: Awareness
-category: Cost management
+pillar: Cost Optimization
+category: Pricing and billing model
 resource: Virtual Machine
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.VM.PromoSku.md
 ---
 
-# Azure.VirtualMachine.PromoSku
+# Use current VM SKUs
 
 ## SYNOPSIS
 
@@ -25,3 +26,7 @@ VMs should not use expired promo SKU.
 
 Consider moving from promotional SKUs to SKUs eligible for reserved instances for VMs with an extended life cycle.
 Consider moving from promotional SKUs to the regular SKU once the promotional period has expired.
+
+## LINKS
+
+- [Virtual Machine pricing](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)

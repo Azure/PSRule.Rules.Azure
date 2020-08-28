@@ -1,5 +1,6 @@
 ---
 severity: Important
+pillar: Performance Efficiency
 category: Performance
 resource: Virtual Machine
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.VM.AcceleratedNetworking.md

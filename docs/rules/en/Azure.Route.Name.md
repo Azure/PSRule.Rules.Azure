@@ -1,6 +1,7 @@
 ---
 severity: Awareness
-category: Naming
+pillar: Operational Excellence
+category: Tagging and resource naming
 resource: Route table
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Route.Name.md
 ---

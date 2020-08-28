@@ -164,9 +164,17 @@ For walk through examples of `PSRule.Rules.Azure` module usage see:
 
 ## Rule reference
 
-For a list of rules included in the `PSRule.Rules.Azure` module see:
+PSRule for Azure includes rules across five pillars of the [Microsoft Azure Well-Architected Framework][AWAF].
 
-- [Rules by category](docs/rules/en/module.md)
+- [Rules for architecture excellence](docs/rules/en/module.md)
+  - [Cost Optimization](docs/rules/en/module.md#cost-optimization)
+  - [Operational Excellence](docs/rules/en/module.md#operational-excellence)
+  - [Performance Efficiency](docs/rules/en/module.md#performance-efficiency)
+  - [Reliability](docs/rules/en/module.md#reliability)
+  - [Security](docs/rules/en/module.md#security)
+
+To view a list of rules by Azure resources see:
+
 - [Rules by resource](docs/rules/en/resource.md)
 
 ## Baseline reference
@@ -250,3 +258,4 @@ This project is [licensed under the MIT License](LICENSE).
 [PSRule.Monitor]: https://github.com/microsoft/PSRule.Monitor
 [PSRule-pipelines]: https://github.com/microsoft/PSRule-pipelines
 [ps-rule]: https://github.com/microsoft/ps-rule
+[AWAF]: https://docs.microsoft.com/en-gb/azure/architecture/framework/

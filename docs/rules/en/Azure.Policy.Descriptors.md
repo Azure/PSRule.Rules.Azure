@@ -1,6 +1,7 @@
 ---
 severity: Awareness
-category: Operations management
+pillar: Operational Excellence
+category: Tagging and resource naming
 resource: Policy
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Policy.Descriptors.md
 ---

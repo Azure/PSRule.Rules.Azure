@@ -1,6 +1,7 @@
 ---
 severity: Critical
-category: Security configuration
+pillar: Security
+category: Encryption
 resource: SQL Database
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.SQL.TDE.md
 ---

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- General improvements:
+  - Updated rule content to align with Microsoft Azure Well-Architected Framework pillars. [#481](https://github.com/Microsoft/PSRule.Rules.Azure/issues/481)
+
 ## v0.15.0
 
 What's changed since v0.14.1:

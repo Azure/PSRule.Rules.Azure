@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Security configuration
+pillar: Security
+category: Network security and containment
 resource: Azure Database for MySQL
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.MySQL.FirewallIPRange.md
 ms-content-id: d8bf9741-541c-4229-86cb-2e2dad32d9a9

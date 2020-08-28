@@ -1,6 +1,7 @@
 ---
 severity: Critical
-category: Security configuration
+pillar: Security
+category: Identity and access management
 resource: Container Registry
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.ACR.AdminUser.md
 ms-content-id: bbf194a7-6ca3-4b1d-9170-6217eb26620d

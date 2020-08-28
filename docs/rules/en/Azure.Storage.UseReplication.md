@@ -1,6 +1,7 @@
 ---
-severity: Single point of failure
-category: Reliability
+severity: Important
+pillar: Reliability
+category: Data management
 resource: Storage Account
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Storage.UseReplication.md
 ---

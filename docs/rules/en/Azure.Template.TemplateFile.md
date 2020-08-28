@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Resource deployment
+pillar: Operational Excellence
+category: Deployment
 resource: All resources
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Template.TemplateFile.md
 ---

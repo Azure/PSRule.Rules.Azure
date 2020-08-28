@@ -1,6 +1,7 @@
 ---
 severity: Critical
-category: Security configuration
+pillar: Security
+category: Encryption
 resource: Redis
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Redis.NonSslPort.md
 ms-content-id: cf433410-8a30-4b74-b046-0b8c7c708368

@@ -36,15 +36,17 @@ PSRule for Azure provides the following cmdlets that extract data for analysis:
 ## Cross-platform
 
 PSRule uses modern PowerShell libraries at its core, allowing it to go anywhere PowerShell can go.
+The companion extension for Visual Studio Code provides snippets for authoring rules and documentation.
 PSRule runs on MacOS, Linux and Windows.
 
-To install PSRule for Azure use the `Install-Module` cmdlet within PowerShell.
-
-```powershell
-Install-Module -Name PSRule.Rules.Azure -Scope CurrentUser;
-```
-
+PSRule for Azure (`PSRule.Rules.Azure`) can be installed locally using `Install-Module` within PowerShell.
 For additional installation options see [install instructions](install-instructions.md).
+
+PowerShell makes it easy to integrate PSRule into populate CI systems.
+Additionally, PSRule has extensions for:
+
+- [Azure Pipeline (Azure DevOps)][extension-pipelines]
+- [GitHub Actions (GitHub)][extension-github]
 
 ## Frequently Asked Questions (FAQ)
 
@@ -115,3 +117,5 @@ For details examples see:
 [ignore-rule]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-ignore-a-rule
 [ps-rule-configure]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-configure-psrule
 [ps-rule-faq]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#frequently-asked-questions-faq
+[extension-pipelines]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
+[extension-github]: https://github.com/marketplace/actions/psrule

@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Security configuration
+pillar: Security
+category: Security operations
 resource: SQL Database
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.SQL.ThreatDetection.md
 ms-content-id: 720e560d-4ad3-41ca-93dd-69c5783b9dbe

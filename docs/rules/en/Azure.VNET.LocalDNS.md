@@ -1,6 +1,7 @@
 ---
 severity: Important
-category: Reliability
+pillar: Reliability
+category: Availability
 resource: Virtual Network
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.VNET.LocalDNS.md
 ---

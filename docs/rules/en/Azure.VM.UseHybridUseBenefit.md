@@ -1,6 +1,7 @@
 ---
 severity: Awareness
-category: Cost management
+pillar: Cost Optimization
+category: Pricing and billing model
 resource: Virtual Machine
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.VM.UseHybridUseBenefit.md
 ---
