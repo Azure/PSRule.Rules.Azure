@@ -54,7 +54,7 @@ namespace PSRule.Rules.Azure
             return result;
         }
 
-        private void ReadObject(PSObject value, JsonReader reader)
+        private static void ReadObject(PSObject value, JsonReader reader)
         {
             if (reader.TokenType != JsonToken.StartObject)
                 throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
@@ -98,7 +98,7 @@ namespace PSRule.Rules.Azure
             }
         }
 
-        private object ReadValue(JsonReader reader)
+        private static object ReadValue(JsonReader reader)
         {
             if (reader.TokenType != JsonToken.StartObject)
                 return reader.Value;
@@ -108,7 +108,7 @@ namespace PSRule.Rules.Azure
             return value;
         }
 
-        private void WriteFileSystemInfo(JsonWriter writer, FileSystemInfo value, JsonSerializer serializer)
+        private static void WriteFileSystemInfo(JsonWriter writer, FileSystemInfo value, JsonSerializer serializer)
         {
             serializer.Serialize(writer, value.FullName);
         }
@@ -156,7 +156,7 @@ namespace PSRule.Rules.Azure
             return result.ToArray();
         }
 
-        private PSObject ReadObject(JsonReader reader)
+        private static PSObject ReadObject(JsonReader reader)
         {
             if (reader.TokenType != JsonToken.StartObject)
                 throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
@@ -194,7 +194,7 @@ namespace PSRule.Rules.Azure
             return result;
         }
 
-        private PSObject[] ReadArray(JsonReader reader)
+        private static PSObject[] ReadArray(JsonReader reader)
         {
             if (reader.TokenType != JsonToken.StartArray)
                 throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);

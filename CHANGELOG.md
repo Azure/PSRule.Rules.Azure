@@ -4,6 +4,7 @@
 
 - General improvements:
   - Updated rule content to align with Microsoft Azure Well-Architected Framework pillars. [#481](https://github.com/Microsoft/PSRule.Rules.Azure/issues/481)
+  - Improve output of template processing exceptions. [#484](https://github.com/Microsoft/PSRule.Rules.Azure/issues/484)
 
 ## v0.15.0
 

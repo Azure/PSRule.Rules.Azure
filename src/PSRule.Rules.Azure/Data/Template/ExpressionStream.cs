@@ -21,7 +21,6 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         private int _Position;
         private char _Current;
-        private char _Previous;
         private int _EscapeLength;
 
         // The maximum length of a template expression
@@ -236,8 +235,6 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             // Handle escape sequences
             _EscapeLength = ignoreEscaping ? 0 : GetEscapeCount(_Position);
-
-            _Previous = _Current;
             _Current = _Source[_Position + _EscapeLength];
         }
 

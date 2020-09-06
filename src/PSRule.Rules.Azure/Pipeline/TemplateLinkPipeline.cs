@@ -10,6 +10,7 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
+using System.Threading;
 
 namespace PSRule.Rules.Azure.Pipeline
 {
@@ -140,6 +141,10 @@ namespace PSRule.Rules.Azure.Pipeline
             {
                 // Discard exception
                 return default(T);
+            }
+            catch (Exception inner)
+            {
+                throw new TemplateReadException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.JsonFileFormatInvalid, path, inner.Message), inner, path, null);
             }
         }
 

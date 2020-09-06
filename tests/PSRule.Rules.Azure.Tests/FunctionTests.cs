@@ -411,7 +411,7 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ExpressionArgumentException>(() => Functions.ExtensionResourceId(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.ExtensionResourceId(context, new object[] { "Extension.Test/type", "a" }));
             Assert.Throws<TemplateFunctionException>(() => Functions.ExtensionResourceId(context, new object[] { parentId, "Extension.Test/type", "a", "b" }));
-            Assert.Throws<ArgumentException>(() => Functions.ExtensionResourceId(context, new object[] { parentId, "Extension.Test/type", 1 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ExtensionResourceId(context, new object[] { parentId, "Extension.Test/type", 1 }));
         }
 
         [Fact]
@@ -472,7 +472,7 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ExpressionArgumentException>(() => Functions.ResourceId(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.ResourceId(context, new object[] { "Unit.Test/type" }));
             Assert.Throws<TemplateFunctionException>(() => Functions.ResourceId(context, new object[] { "Unit.Test/type", "a", "b" }));
-            Assert.Throws<ArgumentException>(() => Functions.ResourceId(context, new object[] { "Unit.Test/type", 1 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ResourceId(context, new object[] { "Unit.Test/type", 1 }));
         }
 
         [Fact]
@@ -503,7 +503,7 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ExpressionArgumentException>(() => Functions.SubscriptionResourceId(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.SubscriptionResourceId(context, new object[] { "Unit.Test/type" }));
             Assert.Throws<TemplateFunctionException>(() => Functions.SubscriptionResourceId(context, new object[] { "Unit.Test/type", "a", "b" }));
-            Assert.Throws<ArgumentException>(() => Functions.SubscriptionResourceId(context, new object[] { "Unit.Test/type", 1 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.SubscriptionResourceId(context, new object[] { "Unit.Test/type", 1 }));
         }
 
         [Fact]
@@ -523,7 +523,7 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ExpressionArgumentException>(() => Functions.TenantResourceId(context, new object[] { "Unit.Test/type" }));
             Assert.Throws<TemplateFunctionException>(() => Functions.TenantResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "Unit.Test/type" }));
             Assert.Throws<TemplateFunctionException>(() => Functions.TenantResourceId(context, new object[] { "Unit.Test/type", "a", "b" }));
-            Assert.Throws<ArgumentException>(() => Functions.TenantResourceId(context, new object[] { "Unit.Test/type", 1 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.TenantResourceId(context, new object[] { "Unit.Test/type", 1 }));
         }
 
         #endregion Resource
@@ -794,7 +794,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Add(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Add(context, new object[] { 5 }));
-            Assert.Throws<ArgumentException>(() => Functions.Add(context, new object[] { "one", "two" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Add(context, new object[] { "one", "two" }));
         }
 
         [Fact]
@@ -809,7 +809,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Div(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Div(context, new object[] { 5 }));
-            Assert.Throws<ArgumentException>(() => Functions.Div(context, new object[] { "one", "two" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Div(context, new object[] { "one", "two" }));
             Assert.Throws<DivideByZeroException>(() => Functions.Div(context, new object[] { 1, "0" }));
             Assert.Throws<DivideByZeroException>(() => Functions.Div(context, new object[] { 8, 0 }));
         }
@@ -853,7 +853,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Int(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Int(context, new object[] { }));
-            Assert.Throws<ArgumentException>(() => Functions.Int(context, new object[] { "one" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Int(context, new object[] { "one" }));
         }
 
         [Fact]
@@ -868,7 +868,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Mod(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Mod(context, new object[] { 5 }));
-            Assert.Throws<ArgumentException>(() => Functions.Mod(context, new object[] { "one", "two" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Mod(context, new object[] { "one", "two" }));
             Assert.Throws<DivideByZeroException>(() => Functions.Mod(context, new object[] { 1, "0" }));
             Assert.Throws<DivideByZeroException>(() => Functions.Mod(context, new object[] { 7, 0 }));
         }
@@ -885,7 +885,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Mul(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Mul(context, new object[] { 5 }));
-            Assert.Throws<ArgumentException>(() => Functions.Mul(context, new object[] { "one", "two" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Mul(context, new object[] { "one", "two" }));
         }
 
         [Fact]
@@ -900,7 +900,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Sub(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Sub(context, new object[] { 5 }));
-            Assert.Throws<ArgumentException>(() => Functions.Sub(context, new object[] { "one", "two" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Sub(context, new object[] { "one", "two" }));
         }
 
         #endregion Numeric
@@ -1091,7 +1091,7 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ExpressionArgumentException>(() => Functions.PadLeft(context, new object[] { }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.PadLeft(context, new object[] { "test" }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.PadLeft(context, new object[] { "test", 10, "test", "test" }));
-            Assert.Throws<ArgumentException>(() => Functions.PadLeft(context, new object[] { 10, "10" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.PadLeft(context, new object[] { 10, "10" }));
         }
 
         [Fact]
