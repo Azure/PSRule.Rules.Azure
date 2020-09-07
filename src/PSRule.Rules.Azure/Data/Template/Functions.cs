@@ -153,15 +153,8 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Concat), args);
 
             // String
-            if (ExpressionHelpers.TryConvertString(args[0], out string value))
+            if (ExpressionHelpers.TryConvertStringArray(args, out string[] s))
             {
-                var s = new string[args.Length];
-                s[0] = value;
-                for (var i = 1; i < args.Length; i++)
-                {
-                    if (ExpressionHelpers.TryConvertString(args[i], out value))
-                        s[i] = value;
-                }
                 return string.Concat(s);
             }
             // Array
@@ -183,7 +176,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 }
                 return result.ToArray();
             }
-            throw new ArgumentException();
+            throw ArgumentFormatInvalid(nameof(Concat));
         }
 
         internal static Array Concat(Array[] array)
@@ -566,7 +559,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Parameters), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string parameterName))
-                throw new ArgumentException();
+                throw ArgumentFormatInvalid(nameof(Parameters));
 
             if (!context.TryParameter(parameterName, out object result))
                 throw new KeyNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ParameterNotFound, parameterName));
@@ -580,7 +573,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Variables), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string variableName))
-                throw new ArgumentException();
+                throw ArgumentFormatInvalid(nameof(Variables));
 
             if (!context.TryVariable(variableName, out object result))
                 throw new KeyNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.VariableNotFound, variableName));
@@ -607,7 +600,7 @@ namespace PSRule.Rules.Azure.Data.Template
             for (var i = 0; i < segments.Length; i++)
             {
                 if (!ExpressionHelpers.TryString(args[i], out string value))
-                    throw new ArgumentException();
+                    throw ArgumentFormatInvalid(nameof(ExtensionResourceId));
 
                 segments[i] = value;
             }
@@ -676,7 +669,7 @@ namespace PSRule.Rules.Azure.Data.Template
             for (var i = 0; i < segments.Length; i++)
             {
                 if (!ExpressionHelpers.TryString(args[i], out string value))
-                    throw new ArgumentException();
+                    throw ArgumentFormatInvalid(nameof(ResourceId));
 
                 segments[i] = value;
             }
@@ -738,7 +731,7 @@ namespace PSRule.Rules.Azure.Data.Template
             for (var i = 0; i < segments.Length; i++)
             {
                 if (!ExpressionHelpers.TryString(args[i], out string value))
-                    throw new ArgumentException();
+                    throw ArgumentFormatInvalid(nameof(SubscriptionResourceId));
 
                 segments[i] = value;
             }
@@ -784,7 +777,7 @@ namespace PSRule.Rules.Azure.Data.Template
             for (var i = 0; i < segments.Length; i++)
             {
                 if (!ExpressionHelpers.TryString(args[i], out string value))
-                    throw new ArgumentException();
+                    throw ArgumentFormatInvalid(nameof(TenantResourceId));
 
                 segments[i] = value;
             }
@@ -820,10 +813,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Add), args);
 
             if (!ExpressionHelpers.TryConvertInt(args[0], out int operand1))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
+                throw ArgumentInvalidInteger(nameof(Add), "operand1");
 
             if (!ExpressionHelpers.TryConvertInt(args[1], out int operand2))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand2");
+                throw ArgumentInvalidInteger(nameof(Add), "operand2");
 
             return operand1 + operand2;
         }
@@ -847,10 +840,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Div), args);
 
             if (!ExpressionHelpers.TryConvertInt(args[0], out int operand1))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
+                throw ArgumentInvalidInteger(nameof(Div), "operand1");
 
             if (!ExpressionHelpers.TryConvertInt(args[1], out int operand2))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand2");
+                throw ArgumentInvalidInteger(nameof(Div), "operand2");
 
             if (operand2 == 0)
                 throw new DivideByZeroException();
@@ -868,7 +861,7 @@ namespace PSRule.Rules.Azure.Data.Template
             else if (ExpressionHelpers.TryString(args[0], out string svalue))
                 return float.Parse(svalue, new CultureInfo("en-us"));
 
-            throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "valueToConvert");
+            throw ArgumentInvalidInteger(nameof(Float), "valueToConvert");
         }
 
         internal static object Int(TemplateContext context, object[] args)
@@ -878,8 +871,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
             if (ExpressionHelpers.TryConvertInt(args[0], out int value))
                 return value;
-            
-            throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "valueToConvert");
+
+            throw ArgumentInvalidInteger(nameof(Int), "valueToConvert");
         }
 
         internal static object Mod(TemplateContext context, object[] args)
@@ -888,10 +881,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Mod), args);
 
             if (!ExpressionHelpers.TryConvertInt(args[0], out int operand1))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
+                throw ArgumentInvalidInteger(nameof(Mod), "operand1");
 
             if (!ExpressionHelpers.TryConvertInt(args[1], out int operand2))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand2");
+                throw ArgumentInvalidInteger(nameof(Mod), "operand2");
 
             if (operand2 == 0)
                 throw new DivideByZeroException();
@@ -905,10 +898,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Mul), args);
 
             if (!ExpressionHelpers.TryConvertInt(args[0], out int operand1))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
+                throw ArgumentInvalidInteger(nameof(Mul), "operand1");
 
             if (!ExpressionHelpers.TryConvertInt(args[1], out int operand2))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand2");
+                throw ArgumentInvalidInteger(nameof(Mul), "operand2");
 
             return operand1 * operand2;
         }
@@ -919,10 +912,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Sub), args);
 
             if (!ExpressionHelpers.TryConvertInt(args[0], out int operand1))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand1");
+                throw ArgumentInvalidInteger(nameof(Sub), "operand1");
 
             if (!ExpressionHelpers.TryConvertInt(args[1], out int operand2))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "operand2");
+                throw ArgumentInvalidInteger(nameof(Sub), "operand2");
 
             return operand1 - operand2;
         }
@@ -1237,7 +1230,7 @@ namespace PSRule.Rules.Azure.Data.Template
             string paddingCharacter = " ";
 
             if (!ExpressionHelpers.TryInt(args[1], out int totalLength))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidInteger, "totalLength");
+                throw ArgumentInvalidInteger(nameof(PadLeft), "totalLength");
 
             if (argCount == 3 && (!ExpressionHelpers.TryString(args[2], out paddingCharacter) || paddingCharacter.Length > 1))
                 throw new ArgumentException();
@@ -1552,6 +1545,14 @@ namespace PSRule.Rules.Azure.Data.Template
             return new ExpressionArgumentException(
                 expression,
                 string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentFormatInvalid, expression)
+            );
+        }
+
+        private static ExpressionArgumentException ArgumentInvalidInteger(string expression, string operand)
+        {
+            return new ExpressionArgumentException(
+                expression,
+                string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentInvalidInteger, operand, expression)
             );
         }
 

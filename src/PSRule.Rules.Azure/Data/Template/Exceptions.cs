@@ -118,17 +118,17 @@ namespace PSRule.Rules.Azure.Data.Template
 
     public abstract class ExpressionException : TemplateException
     {
-        public ExpressionException()
+        protected ExpressionException()
         {
         }
 
-        public ExpressionException(string message)
+        protected ExpressionException(string message)
             : base(message) { }
 
-        public ExpressionException(string message, Exception innerException)
+        protected ExpressionException(string message, Exception innerException)
             : base(message, innerException) { }
 
-        internal ExpressionException(string expression, string message)
+        protected ExpressionException(string expression, string message)
             : base(message)
         {
             Expression = expression;

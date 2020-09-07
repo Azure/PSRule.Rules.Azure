@@ -120,15 +120,15 @@
   <data name="ArgumentFormatInvalid" xml:space="preserve">
     <value>The arguments for '{0}' are not in the expected format or type.</value>
   </data>
+  <data name="ArgumentInvalidInteger" xml:space="preserve">
+    <value>The argument '{0}' for '{1}' is not a valid integer.</value>
+  </data>
   <data name="ArgumentsOutOfRange" xml:space="preserve">
     <value>The number of arguments '{1}' is not within the allowed range for '{0}'.</value>
   </data>
   <data name="ExpressionInvalid" xml:space="preserve">
     <value>Failed to parse expression. The expression may not be valid. Expression: "{0}"</value>
     <comment>Occurs when an expression fails to be parsed.</comment>
-  </data>
-  <data name="FunctionInvalidInteger" xml:space="preserve">
-    <value>The specified parameter is not a valid integer.</value>
   </data>
   <data name="FunctionInvalidString" xml:space="preserve">
     <value>The specified parameter is not a valid string.</value>
@@ -139,6 +139,9 @@
   <data name="IndexInvalid" xml:space="preserve">
     <value>The language expression index '{0}' is not valid for the object.</value>
     <comment>Occurs when an index is not valid.</comment>
+  </data>
+  <data name="JsonFileFormatInvalid" xml:space="preserve">
+    <value>Unable to read file '{0}' because the JSON format was not valid. {1}</value>
   </data>
   <data name="MetadataNotFound" xml:space="preserve">
     <value>The parameter file '{0}' does not contain a metadata property.</value>
@@ -174,6 +177,9 @@
   </data>
   <data name="ShouldWriteFile" xml:space="preserve">
     <value>Write file</value>
+  </data>
+  <data name="TemplateExpandInvalid" xml:space="preserve">
+    <value>Unable to expand resources because the template '{0}' was not valid with parameters '{1}'. {2}</value>
   </data>
   <data name="TemplateFileNotFound" xml:space="preserve">
     <value>Unable to find the specified template file '{0}'.</value>

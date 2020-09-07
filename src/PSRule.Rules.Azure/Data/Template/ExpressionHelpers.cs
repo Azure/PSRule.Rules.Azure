@@ -2,6 +2,8 @@
 // Licensed under the MIT License.
 
 using Newtonsoft.Json.Linq;
+using System;
+using System.Threading;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -35,10 +37,26 @@ namespace PSRule.Rules.Azure.Data.Template
 
             if (TryInt(o, out int ivalue))
             {
-                value = ivalue.ToString();
+                value = ivalue.ToString(Thread.CurrentThread.CurrentCulture);
                 return true;
             }
             return false;
+        }
+
+        internal static bool TryConvertStringArray(object[] o, out string[] value)
+        {
+            value = Array.Empty<string>();
+            if (o == null || o.Length == 0 || !TryConvertString(o[0], out string s))
+                return false;
+
+            value = new string[o.Length];
+            value[0] = s;
+            for (var i = 1; i < o.Length; i++)
+            {
+                if (TryConvertString(o[i], out s))
+                    value[i] = s;
+            }
+            return true;
         }
 
         /// <summary>

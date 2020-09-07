@@ -70,6 +70,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The argument &apos;{0}&apos; for &apos;{1}&apos; is not a valid integer..
+        /// </summary>
+        internal static string ArgumentInvalidInteger {
+            get {
+                return ResourceManager.GetString("ArgumentInvalidInteger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The number of arguments &apos;{1}&apos; is not within the allowed range for &apos;{0}&apos;..
         /// </summary>
         internal static string ArgumentsOutOfRange {
@@ -84,15 +93,6 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string ExpressionInvalid {
             get {
                 return ResourceManager.GetString("ExpressionInvalid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The specified parameter is not a valid integer..
-        /// </summary>
-        internal static string FunctionInvalidInteger {
-            get {
-                return ResourceManager.GetString("FunctionInvalidInteger", resourceCulture);
             }
         }
         
@@ -120,6 +120,15 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string IndexInvalid {
             get {
                 return ResourceManager.GetString("IndexInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to read file &apos;{0}&apos; because the JSON format was not valid. {1}.
+        /// </summary>
+        internal static string JsonFileFormatInvalid {
+            get {
+                return ResourceManager.GetString("JsonFileFormatInvalid", resourceCulture);
             }
         }
         
@@ -210,6 +219,15 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string ShouldWriteFile {
             get {
                 return ResourceManager.GetString("ShouldWriteFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to expand resources because the template &apos;{0}&apos; was not valid with parameters &apos;{1}&apos;. {2}.
+        /// </summary>
+        internal static string TemplateExpandInvalid {
+            get {
+                return ResourceManager.GetString("TemplateExpandInvalid", resourceCulture);
             }
         }
         

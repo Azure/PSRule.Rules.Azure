@@ -173,13 +173,29 @@ namespace PSRule.Rules.Azure.Pipeline
                 return;
 
             if (source.ParametersFile == null || source.ParametersFile.Length == 0)
-                Writer.WriteObject(ProcessTemplate(source.TemplateFile, null), true);
+                ProcessCatch(source.TemplateFile, null);
             else
                 for (var i = 0; i < source.ParametersFile.Length; i++)
-                    Writer.WriteObject(ProcessTemplate(source.TemplateFile, source.ParametersFile[i]), true);
+                    ProcessCatch(source.TemplateFile, source.ParametersFile[i]);
         }
 
-        internal PSObject[] ProcessTemplate(string templateFile, string parametersFile)
+        private void ProcessCatch(string templateFile, string parameterFile)
+        {
+            try
+            {
+                Writer.WriteObject(ProcessTemplate(templateFile, parameterFile), true);
+            }
+            catch (PipelineException ex)
+            {
+                Writer.WriteError(ex, nameof(PipelineException), ErrorCategory.InvalidData, parameterFile);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        internal PSObject[] ProcessTemplate(string templateFile, string parameterFile)
         {
             var rootedTemplateFile = PSRuleOption.GetRootedPath(templateFile);
             if (!File.Exists(rootedTemplateFile))
@@ -190,9 +206,9 @@ namespace PSRule.Rules.Azure.Pipeline
 
             // Load context
             var context = new TemplateVisitor.TemplateContext(_Subscription, _ResourceGroup);
-            if (!string.IsNullOrEmpty(parametersFile))
+            if (!string.IsNullOrEmpty(parameterFile))
             {
-                var rootedParameterFile = PSRuleOption.GetRootedPath(parametersFile);
+                var rootedParameterFile = PSRuleOption.GetRootedPath(parameterFile);
                 if (!File.Exists(rootedParameterFile))
                     throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ParameterFileNotFound, rootedParameterFile), rootedParameterFile);
 
@@ -201,7 +217,14 @@ namespace PSRule.Rules.Azure.Pipeline
             }
 
             // Process
-            visitor.Visit(context, _DeploymentName, templateObject);
+            try
+            {
+                visitor.Visit(context, _DeploymentName, templateObject);
+            }
+            catch (Exception inner)
+            {
+                throw new TemplateReadException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateExpandInvalid, templateFile, parameterFile, inner.Message), inner, templateFile, parameterFile);
+            }
 
             // Return results
             var results = new List<PSObject>();
