@@ -472,7 +472,145 @@ function GetSubResource {
             Get-AzResource @getParams -ExpandProperties;
         }
         catch {
-            Write-Warning -Message "Failed to read: $ResourceType";
+            Write-Warning -Message "Failed to read $($Resource.Name): $ResourceType";
+        }
+    }
+}
+
+function GetResourceById {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True)]
+        [PSObject]$ResourceId,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context,
+
+        [Parameter(Mandatory = $True)]
+        [String]$ApiVersion
+    )
+    process {
+        $getParams = @{
+            ResourceId = $ResourceId
+            DefaultProfile = $Context
+            ApiVersion = $ApiVersion
+        }
+        try {
+            Get-AzResource @getParams -ExpandProperties;
+        }
+        catch {
+            Write-Warning -Message "Failed to read $ResourceId";
+        }
+    }
+}
+
+function GetSubResourceId {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context,
+
+        [Parameter(Mandatory = $True)]
+        [String]$Property,
+
+        [Parameter(Mandatory = $True)]
+        [String]$ApiVersion
+    )
+    process {
+        $getParams = @{
+            ResourceId = [String]::Concat($Resource.Id, '/', $Property)
+            DefaultProfile = $Context
+            ApiVersion = $ApiVersion
+        }
+        try {
+            Get-AzResource @getParams -ExpandProperties;
+        }
+        catch {
+            Write-Warning -Message "Failed to read $($Resource.Name): $Property";
+        }
+    }
+}
+
+function GetRestProperty {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context,
+
+        [Parameter(Mandatory = $True)]
+        [String]$Property,
+
+        [Parameter(Mandatory = $True)]
+        [String]$ApiVersion
+    )
+    process {
+        try {
+            $token = GetRestToken -Context $Context;
+            $getParams = @{
+                Uri = [String]::Concat('https://management.azure.com', $Resource.Id, '/', $Property, '?api-version=', $ApiVersion)
+                Headers = @{
+                    Authorization = "Bearer $($token)"
+                }
+            }
+            Invoke-RestMethod -Method Get @getParams -UseBasicParsing -Verbose:$VerbosePreference;
+        }
+        catch {
+            Write-Warning -Message "Failed to read $($Resource.Name): $Property";
+        }
+    }
+}
+
+function GetRestToken {
+    [CmdletBinding()]
+    [OutputType([String])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        return ($Context.DefaultContext.TokenCache.ReadItems() | Where-Object {
+            $_.TenantId -eq $Context.DefaultContext.Tenant.Id -and
+            $_.Resource -eq 'https://management.core.windows.net/' -and
+            $_.Authority -eq "https://login.windows.net/$($Context.DefaultContext.Tenant.Id)/"
+        }).AccessToken;
+    }
+}
+
+function GetSubProvider {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context,
+
+        [Parameter(Mandatory = $True)]
+        [String]$ResourceType,
+
+        [Parameter(Mandatory = $True)]
+        [String]$ApiVersion,
+
+        [Parameter(Mandatory = $False)]
+        [Switch]$ExpandProperties
+    )
+    process {
+        $getParams = @{
+            ResourceId = [String]::Concat($Resource.Id, '/providers/', $ResourceType)
+            DefaultProfile = $Context
+            ApiVersion = $ApiVersion
+        }
+        try {
+            Get-AzResource @getParams -ExpandProperties:$ExpandProperties;
+        }
+        catch {
+            Write-Warning -Message "Failed to read $($Resource.Name): $ResourceType";
         }
     }
 }
@@ -578,7 +716,9 @@ function VisitPostgreSqlServer {
         $resources = @();
 
         # Get Postgre SQL Server firewall rules
-        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.DBforPostgreSQL/servers/firewallRules' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-12-01' -ExpandProperties;
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.DBforPostgreSQL/servers/firewallRules' -ApiVersion '2017-12-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.DBforPostgreSQL/servers/securityAlertPolicies' -ApiVersion '2017-12-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.DBforPostgreSQL/servers/configurations' -ApiVersion '2017-12-01';
         $sqlServer | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
@@ -597,7 +737,9 @@ function VisitMySqlServer {
         $resources = @();
 
         # Get MySQL Server firewall rules
-        $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.DBforMySQL/servers/firewallRules' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-12-01' -ExpandProperties;
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.DBforMySQL/servers/firewallRules' -ApiVersion '2017-12-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.DBforMySQL/servers/securityAlertPolicies' -ApiVersion '2017-12-01';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.DBforMySQL/servers/configurations' -ApiVersion '2017-12-01';
         $sqlServer | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
@@ -668,6 +810,62 @@ function VisitAutomationAccount {
 #         $df | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
 #     }
 # }
+
+function VisitCDNEndpoint {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        $resources = @();
+        $resources += GetSubResourceId @PSBoundParameters -Property 'customdomains' -ApiVersion '2019-04-15';
+        $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
+
+function VisitContainerRegistry {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        $resources = @();
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ContainerRegistry/registries/replications' -ApiVersion '2019-12-01-preview';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ContainerRegistry/registries/webhooks' -ApiVersion '2019-12-01-preview';
+        $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ContainerRegistry/registries/tasks' -ApiVersion '2019-06-01-preview';
+        $resources += GetRestProperty @PSBoundParameters -Property 'listUsages' -ApiVersion '2019-05-01' | SetResourceType 'Microsoft.ContainerRegistry/registries/listUsages';
+        $resources += GetSubProvider @PSBoundParameters -ResourceType 'Microsoft.Security/assessments' -ApiVersion '2019-01-01-preview';
+        $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
+
+function VisitAKSCluster {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        $resources = @();
+        $nodePools = @($Resource.Properties.agentPoolProfiles);
+        foreach ($nodePool in $nodePools) {
+            $vnetId = $nodePool.vnetSubnetID;
+            $resources += GetResourceById -ResourceId $vnetId -ApiVersion '2020-05-01' -Context $Context;
+        }
+        $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
 
 function VisitStorageAccount {
     [CmdletBinding()]
@@ -903,6 +1101,9 @@ function ExpandResource {
         switch ($Resource.ResourceType) {
             'Microsoft.ApiManagement/service' { VisitAPIManagement @PSBoundParameters; }
             'Microsoft.Automation/automationAccounts' { VisitAutomationAccount @PSBoundParameters; }
+            'Microsoft.Cdn/profiles/endpoints' { VisitCDNEndpoint @PSBoundParameters; }
+            'Microsoft.ContainerRegistry/registries' { VisitContainerRegistry @PSBoundParameters; }
+            'Microsoft.ContainerService/managedClusters' { VisitAKSCluster @PSBoundParameters; }
             'Microsoft.Sql/servers' { VisitSqlServer @PSBoundParameters; }
             'Microsoft.Sql/servers/databases' { VisitSqlDatabase @PSBoundParameters; }
             'Microsoft.DBforPostgreSQL/servers' { VisitPostgreSqlServer @PSBoundParameters; }

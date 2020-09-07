@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- New rules:
+  - CDN:
+    - Check CDN endpoint naming requirements. [#486](https://github.com/Microsoft/PSRule.Rules.Azure/issues/486)
+    - Check CDN endpoints use TLS 1.2. [#487](https://github.com/Microsoft/PSRule.Rules.Azure/issues/487)
 - General improvements:
   - Updated rule content to align with Microsoft Azure Well-Architected Framework pillars. [#481](https://github.com/Microsoft/PSRule.Rules.Azure/issues/481)
   - Improve output of template processing exceptions. [#484](https://github.com/Microsoft/PSRule.Rules.Azure/issues/484)
