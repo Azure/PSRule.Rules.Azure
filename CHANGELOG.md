@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.16.0-B2009004 (pre-release)
+
+What's changed since v0.15.0:
+
 - New rules:
   - CDN:
     - Check CDN endpoint naming requirements. [#486](https://github.com/Microsoft/PSRule.Rules.Azure/issues/486)
