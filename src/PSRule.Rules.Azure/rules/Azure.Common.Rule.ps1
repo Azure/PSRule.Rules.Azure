@@ -14,7 +14,7 @@ function global:ResourceType {
         [String]$ResourceType
     )
     process {
-        return $Rule.TargetType -eq $ResourceType;
+        return $PSRule.TargetType -eq $ResourceType;
     }
 }
 
@@ -65,7 +65,7 @@ function global:IsCloudShell {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($Rule.TargetType -ne 'Microsoft.Storage/storageAccounts') {
+        if ($PSRule.TargetType -ne 'Microsoft.Storage/storageAccounts') {
             return $False;
         }
         return $TargetObject.Tags.'ms-resource-usage' -eq 'azure-cloud-shell';
@@ -77,7 +77,7 @@ function global:HasPeerNetwork {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($Rule.TargetType -ne 'Microsoft.Network/virtualNetworks') {
+        if ($PSRule.TargetType -ne 'Microsoft.Network/virtualNetworks') {
             return $False;
         }
         $peers = $TargetObject.Properties.virtualNetworkPeerings;
@@ -108,7 +108,7 @@ function global:SupportsAcceleratedNetworking {
     [CmdletBinding()]
     param ()
     process {
-        if ($Rule.TargetType -ne 'Microsoft.Compute/virtualMachines' -or !(IsExport)) {
+        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachines' -or !(IsExport)) {
             return $False;
         }
         if ($Null -eq ($TargetObject.Resources | Where-Object { $_.ResourceType -eq 'Microsoft.Network/networkInterfaces'})) {
@@ -154,7 +154,7 @@ function global:IsAppGwPublic {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($Rule.TargetType -ne 'Microsoft.Network/applicationGateways') {
+        if ($PSRule.TargetType -ne 'Microsoft.Network/applicationGateways') {
             return $False;
         }
 
@@ -174,7 +174,7 @@ function global:IsAppGwWAF {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($Rule.TargetType -ne 'Microsoft.Network/applicationGateways') {
+        if ($PSRule.TargetType -ne 'Microsoft.Network/applicationGateways') {
             return $False;
         }
         if ($TargetObject.Properties.sku.tier -notin ('WAF', 'WAF_v2')) {
@@ -192,7 +192,7 @@ function global:IsWindowsOS {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($Rule.TargetType -notin 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachineScaleSets') {
+        if ($PSRule.TargetType -notin 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachineScaleSets') {
             return $False;
         }
         return ($TargetObject.Properties.storageProfile.osDisk.osType -eq 'Windows') -or
@@ -207,7 +207,7 @@ function global:IsWindowsClientOS {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($Rule.TargetType -notin 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachineScaleSets') {
+        if ($PSRule.TargetType -notin 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachineScaleSets') {
             return $False;
         }
         return $TargetObject.Properties.storageProfile.imageReference.publisher -eq 'MicrosoftWindowsDesktop';
@@ -219,7 +219,7 @@ function global:SupportsHybridUse {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($Rule.TargetType -ne 'Microsoft.Compute/virtualMachines') {
+        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachines') {
             return $False;
         }
         return (
@@ -234,7 +234,7 @@ function global:IsLinuxOS {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($Rule.TargetType -ne 'Microsoft.Compute/virtualMachines') {
+        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachines') {
             return $False;
         }
         return $TargetObject.Properties.storageProfile.osDisk.osType -eq 'Linux';
@@ -302,12 +302,12 @@ function global:SupportsRegions {
     param ()
     process {
         if (
-            ($Rule.TargetType -eq 'Microsoft.Subscription') -or
-            ($Rule.TargetType -eq 'Microsoft.AzureActiveDirectory/b2cDirectories') -or
-            ($Rule.TargetType -eq 'Microsoft.Network/trafficManagerProfiles') -or
-            ($Rule.TargetType -like 'Microsoft.Authorization/*') -or
-            ($Rule.TargetType -like 'Microsoft.Consumption/*') -or
-            ($Rule.TargetType -like '*/providers/roleAssignments') -or
+            ($PSRule.TargetType -eq 'Microsoft.Subscription') -or
+            ($PSRule.TargetType -eq 'Microsoft.AzureActiveDirectory/b2cDirectories') -or
+            ($PSRule.TargetType -eq 'Microsoft.Network/trafficManagerProfiles') -or
+            ($PSRule.TargetType -like 'Microsoft.Authorization/*') -or
+            ($PSRule.TargetType -like 'Microsoft.Consumption/*') -or
+            ($PSRule.TargetType -like '*/providers/roleAssignments') -or
             ($TargetObject.Location -eq 'global')
         ) {
             return $False;
@@ -438,7 +438,7 @@ function global:WithinCIDR {
 # Determine if the VM is using a promo SKU.
 function global:IsVMPromoSku {
     process {
-        if ($Rule.TargetType -ne 'Microsoft.Compute/virtualMachines') {
+        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachines') {
             return $False;
         }
         return $TargetObject.Properties.hardwareProfile.vmSize -like '*_Promo';
