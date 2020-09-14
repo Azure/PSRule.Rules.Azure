@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.16.0-B2009011 (pre-release)
+
+What's changed since pre-release v0.16.0-B2009004:
+
 - Bug fixes:
   - Fixed deprecated `$Rule` properties. [#491](https://github.com/microsoft/PSRule.Rules.Azure/issues/491)
 
