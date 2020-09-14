@@ -127,6 +127,8 @@ What's changed since pre-release v0.14.0-B2007031:
 
 ## v0.14.0-B2007031 (pre-release)
 
+What's changed since pre-release v0.14.0-B2007020:
+
 - New rules:
   - API Management:
     - Check API Management service name requirements. [#437](https://github.com/Microsoft/PSRule.Rules.Azure/issues/437)
@@ -139,6 +141,8 @@ What's changed since pre-release v0.14.0-B2007031:
   - Fixed VM standalone rule to exclude Windows client OSs. [#442](https://github.com/Microsoft/PSRule.Rules.Azure/issues/442)
 
 ## v0.14.0-B2007020 (pre-release)
+
+What's changed since v0.13.0:
 
 - New rules:
   - Subscriptions:
