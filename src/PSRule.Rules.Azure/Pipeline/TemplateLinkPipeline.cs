@@ -157,7 +157,8 @@ namespace PSRule.Rules.Azure.Pipeline
                 return false;
 
             return StringComparer.OrdinalIgnoreCase.Equals(schemaUri.Host, "schema.management.azure.com") &&
-                StringComparer.OrdinalIgnoreCase.Equals(schemaUri.PathAndQuery, "/schemas/2015-01-01/deploymentParameters.json");
+                schemaUri.PathAndQuery.StartsWith("/schemas/", StringComparison.OrdinalIgnoreCase) &&
+                schemaUri.PathAndQuery.EndsWith("/deploymentParameters.json", StringComparison.OrdinalIgnoreCase);
         }
 
         private bool TryMetadata(string parameterFile, out JObject metadata)
