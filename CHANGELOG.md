@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.16.0-B2009019 (pre-release)
+
+What's changed since pre-release v0.16.0-B2009011:
+
 - Bug fixes:
   - Fixed parameter file detection with `2019-04-01` schema. [#495](https://github.com/microsoft/PSRule.Rules.Azure/issues/495)
 
