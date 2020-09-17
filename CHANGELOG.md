@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- New rules:
+  - Azure Cache for Redis:
+    - Check cache instances Standard C1 or greater. [#501](https://github.com/microsoft/PSRule.Rules.Azure/issues/501)
+    - Cache cache instances configure `maxmemory-reserved` setting. [#502](https://github.com/microsoft/PSRule.Rules.Azure/issues/502)
+
 ## v0.16.0-B2009024 (pre-release)
 
 What's changed since pre-release v0.16.0-B2009019:

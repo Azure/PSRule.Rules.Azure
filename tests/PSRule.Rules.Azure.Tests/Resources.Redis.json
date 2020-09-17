@@ -55,5 +55,114 @@
             "sslPort": 6380,
             "linkedServers": []
         }
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-C",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "redis-C",
+        "Name": "redis-C",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "redisVersion": "4.0.14",
+            "sku": {
+                "name": "Standard",
+                "family": "C",
+                "capacity": 0
+            },
+            "enableNonSslPort": false,
+            "instances": [
+                {
+                    "sslPort": 15000,
+                    "isMaster": true
+                },
+                {
+                    "sslPort": 15001,
+                    "isMaster": false
+                }
+            ],
+            "redisConfiguration": {
+                "maxclients": "256",
+                "maxmemory-reserved": "2",
+                "maxfragmentationmemory-reserved": "12",
+                "maxmemory-delta": "2"
+            },
+            "accessKeys": null,
+            "hostName": "redis-C.redis.cache.windows.net",
+            "port": 6379,
+            "sslPort": 6380,
+            "linkedServers": []
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Cache/Redis",
+        "ResourceType": "Microsoft.Cache/Redis",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": null,
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-D",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-D",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "redis-D",
+        "Name": "redis-D",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "redisVersion": "4.0.14",
+            "sku": {
+                "name": "Standard",
+                "family": "C",
+                "capacity": 1
+            },
+            "enableNonSslPort": false,
+            "instances": [
+                {
+                    "sslPort": 15000,
+                    "isMaster": true
+                },
+                {
+                    "sslPort": 15001,
+                    "isMaster": false
+                }
+            ],
+            "redisConfiguration": {
+                "maxclients": "1000",
+                "maxmemory-reserved": "150",
+                "maxfragmentationmemory-reserved": "0",
+                "maxmemory-policy": "volatile-lru",
+                "maxmemory-delta": "50"
+            },
+            "accessKeys": null,
+            "hostName": "redis-D.redis.cache.windows.net",
+            "port": 6379,
+            "sslPort": 6380,
+            "linkedServers": []
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Cache/Redis",
+        "ResourceType": "Microsoft.Cache/Redis",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": null,
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
     }
 ]
