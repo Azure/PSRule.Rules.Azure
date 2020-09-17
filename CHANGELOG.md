@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.16.0-B2009024 (pre-release)
+
+What's changed since pre-release v0.16.0-B2009019:
+
 - Bug fixed:
   - Fixed Data Factory version not detected with template. [#498](https://github.com/microsoft/PSRule.Rules.Azure/issues/498)
 
