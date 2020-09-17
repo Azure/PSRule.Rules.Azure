@@ -7,5 +7,5 @@
 
 # Synopsis: Consider migrating to DataFactory v2
 Rule 'Azure.DataFactory.Version' -Type 'Microsoft.DataFactory/datafactories', 'Microsoft.DataFactory/factories' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $TargetObject.ResourceType -eq 'Microsoft.DataFactory/factories'
+    $Assert.HasFieldValue($PSRule.TargetType, '.', 'Microsoft.DataFactory/factories');
 }
