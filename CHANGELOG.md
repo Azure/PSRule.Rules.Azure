@@ -2,9 +2,15 @@
 
 ## Unreleased
 
+- New features:
+  - Added `Azure.GA_2020_09` baseline. [#488](https://github.com/Microsoft/PSRule.Rules.Azure/issues/488)
+    - Includes rules released before or during September 2020 for Azure GA features.
+    - Marked baseline `Azure.GA_2020_06` as obsolete.
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to 1.18.8. [#504](https://github.com/Microsoft/PSRule.Rules.Azure/issues/504)
+- Engineering:
+  - Bump PSRule dependency to v0.20.0.
 
 ## v0.16.0-B2009024 (pre-release)
 
@@ -61,6 +67,8 @@ What's changed since v0.14.1:
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to 1.17.9. [#452](https://github.com/Microsoft/PSRule.Rules.Azure/issues/452)
+- Engineering:
+  - Bump PSRule dependency to v0.19.0.
 - Bug fixes:
   - Fixed export of non-blob Storage Accounts. [#464](https://github.com/Microsoft/PSRule.Rules.Azure/issues/464)
   - Fixed export of subscription Security Center data based on API version. [#465](https://github.com/Microsoft/PSRule.Rules.Azure/issues/465)
