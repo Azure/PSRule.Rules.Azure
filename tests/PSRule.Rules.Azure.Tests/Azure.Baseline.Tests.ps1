@@ -51,7 +51,7 @@ Describe 'Baselines' -Tag Baseline {
             $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.Preview' -WarningAction Ignore);
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA', 'preview'});
             $filteredResult | Should -Not -BeNullOrEmpty;
-            $filteredResult.Length | Should -BeGreaterThan 80;
+            $filteredResult.Length | Should -BeGreaterThan 150;
         }
 
         It 'With Azure.GA_2020_06' {
@@ -59,6 +59,13 @@ Describe 'Baselines' -Tag Baseline {
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
             $filteredResult | Should -Not -BeNullOrEmpty;
             $filteredResult.Length | Should -Be 139;
+        }
+
+        It 'With Azure.GA_2020_09' {
+            $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2020_09' -WarningAction Ignore);
+            $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
+            $filteredResult | Should -Not -BeNullOrEmpty;
+            $filteredResult.Length | Should -Be 155;
         }
     }
 }
