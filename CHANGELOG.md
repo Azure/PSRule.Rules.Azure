@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.16.0-B2009033 (pre-release)
+
+What's changed since pre-release v0.16.0-B2009024:
+
 - New features:
   - Added `Azure.GA_2020_09` baseline. [#488](https://github.com/Microsoft/PSRule.Rules.Azure/issues/488)
     - Includes rules released before or during September 2020 for Azure GA features.
