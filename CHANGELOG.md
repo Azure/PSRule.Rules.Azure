@@ -27,7 +27,7 @@ What's changed since v0.15.0:
   - Fixed parameter file detection with `2019-04-01` schema. [#495](https://github.com/microsoft/PSRule.Rules.Azure/issues/495)
   - Fixed deprecated `$Rule` properties. [#491](https://github.com/microsoft/PSRule.Rules.Azure/issues/491)
 
-What's changed since pre-release v0.16.0-B2009024:
+What's changed since pre-release v0.16.0-B2009033:
 
 - No additional changes.
 
