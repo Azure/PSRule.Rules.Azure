@@ -1,6 +1,6 @@
 ---
 name: Question
-about: If you have a question \U0001F4AC, please check out our Gitter room
+about: If you have a question, please check out our Gitter room
 labels: 'question'
 ---
 
