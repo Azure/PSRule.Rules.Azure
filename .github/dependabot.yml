@@ -7,11 +7,23 @@
 
 version: 2
 updates:
-  - package-ecosystem: "nuget" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    schedule:
-      interval: "daily"
-    labels:
-    - "dependencies"
-    reviewers:
-    - "microsoft/psrule-rules-azure"
+
+# Maintain dependencies for .NET Core
+- package-ecosystem: 'nuget'
+  directory: '/'
+  schedule:
+    interval: 'daily'
+  labels:
+  - 'dependencies'
+  reviewers:
+  - 'microsoft/psrule-rules-azure'
+
+# Maintain dependencies for GitHub Actions
+- package-ecosystem: 'github-actions'
+  directory: '/'
+  schedule:
+    interval: 'daily'
+  labels:
+  - 'ci-quality'
+  reviewers:
+  - 'microsoft/psrule-rules-azure'

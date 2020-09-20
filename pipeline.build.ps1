@@ -293,8 +293,7 @@ task Rules PSRule, {
         ErrorAction = 'Stop'
     }
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-    Get-RepoRuleData -Path $PWD |
-        Assert-PSRule @assertParams -OutputPath reports/ps-rule-file.xml;
+    Assert-PSRule @assertParams -InputPath $PWD -Format File -OutputPath reports/ps-rule-file.xml;
 
     $rules = Get-PSRule -Module PSRule.Rules.Azure;
     $rules | Assert-PSRule @assertParams -OutputPath reports/ps-rule-file2.xml;
