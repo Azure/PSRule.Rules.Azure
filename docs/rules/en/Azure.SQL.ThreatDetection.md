@@ -23,5 +23,5 @@ Consider enabling Advanced Data Security and configuring Advanced Thread Protect
 
 ## LINKS
 
-- [Advanced Threat Protection for Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-threat-detection-overview)
-- [Advanced data security for Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-advanced-data-security)
+- [Advanced Threat Protection for Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+- [Advanced data security for Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)

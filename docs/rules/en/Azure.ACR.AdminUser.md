@@ -11,21 +11,27 @@ ms-content-id: bbf194a7-6ca3-4b1d-9170-6217eb26620d
 
 ## SYNOPSIS
 
-Use Azure AD accounts instead of using the registry admin user.
+Use Azure AD identities instead of using the registry admin user.
 
 ## DESCRIPTION
 
-Use role-based access control (RBAC) for delegating an Azure AD (AAD) account access to Azure Container Registry (ACR) instead of using the registry admin user.
+Azure Container Registry (ACR) includes a built-in admin user account.
+The admin user account is a single user account with administrative access to the registry.
+This account provides single user access for early test and development.
+The admin user account is not intended for use with production container registries.
+
+Instead use role-based access control (RBAC).
+RBAC can be used to delegate registry permissions to an Azure AD (AAD) identity.
 
 ## RECOMMENDATION
 
-The Admin user account is a single user account with administrative access to the registry.
-This account provides single user access for test and development.
-
-Consider using an AAD-based identity with roles based access granted.
-Also consider disabling the Admin user account.
+Consider disabling the admin user account and only using AAD-based identities for registry operations.
 
 ## LINKS
 
-- [Authenticate with a private Docker container registry](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-authentication)
-- [Best practices for Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-best-practices#authentication)
+- [Authenticate with a private Docker container registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication)
+- [Best practices for Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#authentication)
+- [Use role-based access control (RBAC)](https://docs.microsoft.com/azure/architecture/framework/security/design-identity#use-role-based-access-control-rbac)
+- [Azure Container Registry authentication with service principals](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal)
+- [Use an Azure managed identity to authenticate to an Azure container registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity)
+- [Azure Container Registry roles and permissions](https://docs.microsoft.com/azure/container-registry/container-registry-roles)

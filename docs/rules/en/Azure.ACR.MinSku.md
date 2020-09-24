@@ -26,6 +26,6 @@ Consider upgrading ACR to Premium and enabling geo-replication between Azure reg
 
 ## LINKS
 
-- [Azure Container Registry SKUs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-skus)
-- [Geo-replication in Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-geo-replication)
-- [Best practices for Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)
+- [Azure Container Registry SKUs](https://docs.microsoft.com/azure/container-registry/container-registry-skus)
+- [Geo-replication in Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)
+- [Best practices for Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)

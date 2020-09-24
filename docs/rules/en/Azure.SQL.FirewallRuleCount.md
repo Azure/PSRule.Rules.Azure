@@ -7,7 +7,7 @@ online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/r
 ms-content-id: b877a8ba-bc56-4bfe-9674-4b52b75cd13b
 ---
 
-# Azure.SQL.FirewallRuleCount
+# Cleanup SQL logical server firewall rules
 
 ## SYNOPSIS
 
@@ -21,3 +21,8 @@ Typically the number of firewall rules required is minimal, with management conn
 
 The logical SQL Server has greater then ten (10) firewall rules.
 Some rules may not be needed.
+
+## LINKS
+
+- [Azure SQL Database and Azure Synapse IP firewall rules](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure)
+- [Create and manage IP firewall rules](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure#create-and-manage-ip-firewall-rules)
