@@ -7,7 +7,7 @@ online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/r
 ms-content-id: d8bf9741-541c-4229-86cb-2e2dad32d9a9
 ---
 
-# Azure.MySQL.FirewallIPRange
+# Limit MySQL server firewall rule range
 
 ## SYNOPSIS
 
@@ -21,3 +21,8 @@ Typically the number of IP address rules permitted through the firewall is minim
 
 The MySQL server has greater then ten (10) public IP addresses that are permitted network access.
 Some rules may not be needed or can be reduced.
+
+## LINKS
+
+- [Create and manage Azure Database for MySQL firewall rules by using the Azure portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal)
+- [Create and manage Azure Database for MySQL VNet service endpoints and VNet rules by using the Azure portal](https://docs.microsoft.com/azure/mysql/howto-manage-vnet-using-portal)
