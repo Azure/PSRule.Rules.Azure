@@ -30,7 +30,7 @@ Copyright = '(c) Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Validate Azure resources and infrastructure as code using PSRule.
 
-This project is open source and not a supported product.'
+This project uses GitHub Issues to track bugs and feature requests. See GitHub project for more information.'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.1'
