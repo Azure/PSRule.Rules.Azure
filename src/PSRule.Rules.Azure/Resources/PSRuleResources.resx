@@ -123,6 +123,12 @@
   <data name="ArgumentInvalidInteger" xml:space="preserve">
     <value>The argument '{0}' for '{1}' is not a valid integer.</value>
   </data>
+  <data name="ArgumentInvalidResourceType" xml:space="preserve">
+    <value>The resource type '{1}/{2}' for '{0}' is not known.</value>
+  </data>
+  <data name="ArgumentInvalidString" xml:space="preserve">
+    <value>The argument '{0}' for '{1}' is not a valid string.</value>
+  </data>
   <data name="ArgumentsOutOfRange" xml:space="preserve">
     <value>The number of arguments '{1}' is not within the allowed range for '{0}'.</value>
   </data>

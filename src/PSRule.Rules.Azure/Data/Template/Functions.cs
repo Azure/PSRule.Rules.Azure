@@ -14,6 +14,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Web;
+using System.Xml;
 using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template
@@ -27,14 +28,12 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             // Array and object
             new FunctionDescriptor("array", Array),
-            new FunctionDescriptor("coalesce", Coalesce),
             new FunctionDescriptor("concat", Concat),
             new FunctionDescriptor("contains", Contains),
             new FunctionDescriptor("createArray", CreateArray),
             new FunctionDescriptor("empty", Empty),
             new FunctionDescriptor("first", First),
             new FunctionDescriptor("intersection", Intersection),
-            new FunctionDescriptor("json", Json),
             new FunctionDescriptor("last", Last),
             new FunctionDescriptor("length", Length),
             new FunctionDescriptor("min", Min),
@@ -45,14 +44,20 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("union", Union),
 
             // Comparison
+            new FunctionDescriptor("coalesce", Coalesce),
             new FunctionDescriptor("equals", Equals),
             new FunctionDescriptor("greater", Greater),
             new FunctionDescriptor("greaterOrEquals", GreaterOrEquals),
             new FunctionDescriptor("less", Less),
             new FunctionDescriptor("lessOrEquals", LessOrEquals),
 
+            // Date
+            new FunctionDescriptor("dateTimeAdd", DateTimeAdd),
+            new FunctionDescriptor("utcNow", UtcNow),
+
             // Deployment
             new FunctionDescriptor("deployment", Deployment),
+            // environment
             new FunctionDescriptor("parameters", Parameters),
             new FunctionDescriptor("variables", Variables),
 
@@ -75,10 +80,14 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("mul", Mul),
             new FunctionDescriptor("sub", Sub),
 
+            // Object
+            new FunctionDescriptor("json", Json),
+
             // Resource
             new FunctionDescriptor("extensionResourceId", ExtensionResourceId),
             new FunctionDescriptor("list", List), // Includes listAccountSas, listKeys, listSecrets, list*
-            // providers
+            // pickZones
+            new FunctionDescriptor("providers", Providers),
             new FunctionDescriptor("reference", Reference),
             new FunctionDescriptor("resourceGroup", ResourceGroup),
             new FunctionDescriptor("resourceId", ResourceId),
@@ -119,7 +128,6 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("uri", Uri),
             new FunctionDescriptor("uriComponent", UriComponent),
             new FunctionDescriptor("uriComponentToString", UriComponentToString),
-            new FunctionDescriptor("utcNow", UtcNow),
         };
 
         private static readonly CultureInfo AzureCulture = new CultureInfo("en-US");
@@ -395,15 +403,15 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Range), args);
 
-            if (!ExpressionHelpers.TryInt(args[0], out int startingInteger))
-                throw new ArgumentException();
+            if (!ExpressionHelpers.TryInt(args[0], out int startIndex))
+                throw ArgumentInvalidInteger(nameof(Range), nameof(startIndex));
 
-            if (!ExpressionHelpers.TryInt(args[1], out int numberofElements))
-                throw new ArgumentException();
+            if (!ExpressionHelpers.TryInt(args[1], out int count))
+                throw ArgumentInvalidInteger(nameof(Range), nameof(count));
 
-            var result = new int[numberofElements];
-            for (var i = 0; i < numberofElements; i++)
-                result[i] = startingInteger++;
+            var result = new int[count];
+            for (var i = 0; i < count; i++)
+                result[i] = startIndex++;
 
             return new JArray(result);
         }
@@ -414,7 +422,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Skip), args);
 
             if (!ExpressionHelpers.TryInt(args[1], out int numberToSkip))
-                throw new ArgumentException();
+                throw ArgumentInvalidInteger(nameof(Skip), nameof(numberToSkip));
 
             int skip = numberToSkip <= 0 ? 0 : numberToSkip;
             if (ExpressionHelpers.TryString(args[0], out string soriginalValue))
@@ -435,7 +443,6 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 return result;
             }
-
             throw new ArgumentException();
         }
 
@@ -631,6 +638,29 @@ namespace PSRule.Rules.Azure.Data.Template
 
             ExpressionHelpers.TryString(args[0], out string resourceId);
             return new MockList(resourceId);
+        }
+
+        internal static object Providers(TemplateContext context, object[] args)
+        {
+            var argCount = CountArgs(args);
+            if (argCount < 1 || argCount > 2)
+                throw ArgumentsOutOfRange(nameof(Providers), args);
+
+            if (!ExpressionHelpers.TryString(args[0], out string providerNamespace))
+                throw ArgumentFormatInvalid(nameof(Providers));
+
+            string resourceType = null;
+            if (argCount > 1 && !ExpressionHelpers.TryString(args[1], out resourceType))
+                throw ArgumentFormatInvalid(nameof(Providers));
+
+            var resourceTypes = context.GetResourceType(providerNamespace, resourceType);
+            if (resourceType == null)
+                return resourceTypes;
+
+            if (resourceTypes == null || resourceTypes.Length == 0)
+                throw ArgumentInvalidResourceType(nameof(Providers), providerNamespace, resourceType);
+
+            return resourceTypes[0];
         }
 
         internal static object Reference(TemplateContext context, object[] args)
@@ -1004,6 +1034,45 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #endregion Comparison
 
+        #region Date
+
+        internal static object DateTimeAdd(TemplateContext context, object[] args)
+        {
+            var argCount = CountArgs(args);
+            if (argCount < 2 || argCount > 3)
+                throw ArgumentsOutOfRange(nameof(DateTimeAdd), args);
+
+            if (!ExpressionHelpers.TryString(args[0], out string start))
+                throw ArgumentInvalidString(nameof(DateTimeAdd), "base");
+
+            if (!ExpressionHelpers.TryString(args[1], out string duration))
+                throw ArgumentInvalidString(nameof(DateTimeAdd), nameof(duration));
+
+            string format = null;
+            if (argCount == 3 && !ExpressionHelpers.TryString(args[2], out format))
+                throw ArgumentInvalidString(nameof(DateTimeAdd), nameof(format));
+
+            var startTime = DateTime.Parse(start, AzureCulture);
+            var timeToAdd = XmlConvert.ToTimeSpan(duration);
+            var result = startTime.Add(timeToAdd);
+            return format == null ? result.ToString(AzureCulture) : result.ToString(format, AzureCulture);
+        }
+
+        internal static object UtcNow(TemplateContext context, object[] args)
+        {
+            var argCount = CountArgs(args);
+            if (CountArgs(args) > 1)
+                throw ArgumentsOutOfRange(nameof(UtcNow), args);
+
+            var format = "yyyyMMddTHHmmssZ";
+            if (argCount == 1 && !ExpressionHelpers.TryString(args[0], out format))
+                throw ArgumentInvalidString(nameof(UtcNow), nameof(format));
+
+            return DateTime.UtcNow.ToString(format, AzureCulture);
+        }
+
+        #endregion Date
+
         #region Logical
 
         /// <summary>
@@ -1089,10 +1158,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Base64), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string value))
-                throw new ArgumentException();
+            if (!ExpressionHelpers.TryString(args[0], out string inputString))
+                throw ArgumentInvalidString(nameof(Base64), nameof(inputString));
 
-            return Convert.ToBase64String(Encoding.UTF8.GetBytes(value));
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(inputString));
         }
 
         internal static object Base64ToJson(TemplateContext context, object[] args)
@@ -1100,10 +1169,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Base64ToJson), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string value))
-                throw new ArgumentException();
+            if (!ExpressionHelpers.TryString(args[0], out string base64Value))
+                throw ArgumentInvalidString(nameof(Base64ToJson), nameof(base64Value));
 
-            return JObject.Parse(Encoding.UTF8.GetString(Convert.FromBase64String(value)));
+            return JObject.Parse(Encoding.UTF8.GetString(Convert.FromBase64String(base64Value)));
         }
 
         internal static object Base64ToString(TemplateContext context, object[] args)
@@ -1111,10 +1180,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Base64ToString), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string value))
-                throw new ArgumentException();
+            if (!ExpressionHelpers.TryString(args[0], out string base64Value))
+                throw ArgumentInvalidString(nameof(Base64ToString), nameof(base64Value));
 
-            return Encoding.UTF8.GetString(Convert.FromBase64String(value));
+            return Encoding.UTF8.GetString(Convert.FromBase64String(base64Value));
         }
 
         internal static object DataUri(TemplateContext context, object[] args)
@@ -1326,10 +1395,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Uri), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string baseUri))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidString, "baseUri");
+                throw ArgumentInvalidString(nameof(Uri), "baseUri");
 
             if (!ExpressionHelpers.TryString(args[1], out string relativeUri))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidString, "relativeUri");
+                throw ArgumentInvalidString(nameof(Uri), "relativeUri");
 
             var result = new Uri(new Uri(baseUri), relativeUri);
             return result.ToString();
@@ -1341,7 +1410,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(UriComponent), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string stringToEncode))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidString, "stringToEncode");
+                throw ArgumentInvalidString(nameof(UriComponent), "stringToEncode");
 
             return HttpUtility.UrlEncode(stringToEncode);
         }
@@ -1352,22 +1421,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(UriComponentToString), args);
 
             if (!ExpressionHelpers.TryString(args[0], out string uriEncodedString))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidString, "uriEncodedString");
+                throw ArgumentInvalidString(nameof(UriComponentToString), "uriEncodedString");
 
             return HttpUtility.UrlDecode(uriEncodedString);
-        }
-
-        internal static object UtcNow(TemplateContext context, object[] args)
-        {
-            var argCount = CountArgs(args);
-            if (CountArgs(args) > 1)
-                throw ArgumentsOutOfRange(nameof(UtcNow), args);
-
-            var format = "yyyyMMddTHHmmssZ";
-            if (argCount == 1 && !ExpressionHelpers.TryString(args[0], out format))
-                throw new ArgumentException(PSRuleResources.FunctionInvalidString, "format");
-
-            return DateTime.UtcNow.ToString(format, AzureCulture);
         }
 
         internal static object Replace(TemplateContext context, object[] args)
@@ -1387,7 +1443,6 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw new ArgumentOutOfRangeException();
 
             string[] delimiter = null;
-
             if (ExpressionHelpers.TryString(args[1], out string single))
             {
                 delimiter = new string[] { single };
@@ -1553,6 +1608,22 @@ namespace PSRule.Rules.Azure.Data.Template
             return new ExpressionArgumentException(
                 expression,
                 string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentInvalidInteger, operand, expression)
+            );
+        }
+
+        private static ExpressionArgumentException ArgumentInvalidString(string expression, string operand)
+        {
+            return new ExpressionArgumentException(
+                expression,
+                string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentInvalidString, operand, expression)
+            );
+        }
+
+        private static ExpressionArgumentException ArgumentInvalidResourceType(string expression, string providerNamespace, string resourceType)
+        {
+            return new ExpressionArgumentException(
+                expression,
+                string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentInvalidResourceType, expression, providerNamespace, resourceType)
             );
         }
 

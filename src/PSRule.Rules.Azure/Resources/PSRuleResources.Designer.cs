@@ -79,6 +79,24 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The resource type &apos;{1}/{2}&apos; for &apos;{0}&apos; is not known..
+        /// </summary>
+        internal static string ArgumentInvalidResourceType {
+            get {
+                return ResourceManager.GetString("ArgumentInvalidResourceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The argument &apos;{0}&apos; for &apos;{1}&apos; is not a valid string..
+        /// </summary>
+        internal static string ArgumentInvalidString {
+            get {
+                return ResourceManager.GetString("ArgumentInvalidString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The number of arguments &apos;{1}&apos; is not within the allowed range for &apos;{0}&apos;..
         /// </summary>
         internal static string ArgumentsOutOfRange {

@@ -17,6 +17,7 @@ namespace PSRule.Rules.Azure
         private const string TRAIT_ARRAY = "Array";
         private const string TRAIT_LOGICAL = "Logical";
         private const string TRAIT_COMPARISON = "Comparison";
+        private const string TRAIT_DATE = "Date";
         private const string TRAIT_DEPLOYMENT = "Deployment";
         private const string TRAIT_NUMERIC = "Numeric";
         private const string TRAIT_STRING = "String";
@@ -307,8 +308,8 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, new object[] { }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, new object[] { 1 }));
-            Assert.Throws<ArgumentException>(() => Functions.Range(context, new object[] { "one", "two" }));
-            Assert.Throws<ArgumentException>(() => Functions.Range(context, new object[] { 1, "0" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, new object[] { "one", "two" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, new object[] { 1, "0" }));
         }
 
         [Fact]
@@ -326,7 +327,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("one two three", actual3);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Skip(context, new object[] { "one two three" }));
-            Assert.Throws<ArgumentException>(() => Functions.Skip(context, new object[] { "one two three", "0" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Skip(context, new object[] { "one two three", "0" }));
 
             // Array
             var actual4 = Functions.Skip(context, new object[] { JArray.Parse("[ \"one\", \"two\", \"three\" ]"), 2 }) as JArray;
@@ -337,8 +338,8 @@ namespace PSRule.Rules.Azure
             Assert.Equal(3, actual6.Count);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Skip(context, new object[] { JArray.Parse("[ \"one\", \"two\", \"three\" ]") }));
-            Assert.Throws<ArgumentException>(() => Functions.Skip(context, new object[] { JArray.Parse("[ \"one\", \"two\", \"three\" ]"), "0" }));
-            Assert.Throws<ArgumentException>(() => Functions.Skip(context, new object[] { 1, "0" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Skip(context, new object[] { JArray.Parse("[ \"one\", \"two\", \"three\" ]"), "0" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Skip(context, new object[] { 1, "0" }));
         }
 
         [Fact]
@@ -425,6 +426,33 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(actual1);
 
             // TODO: Improve test cases
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_RESOURCE)]
+        public void Providers()
+        {
+            var context = GetContext();
+            
+            var actual1 = Functions.Providers(context, new object[] { "Microsoft.Web", "sites" }) as ResourceProviderType;
+            Assert.NotNull(actual1);
+            Assert.Equal("sites", actual1.ResourceType);
+            Assert.Equal("2020-06-01", actual1.ApiVersions[0]);
+            Assert.Equal("South Central US", actual1.Locations[0]);
+
+            var actual2 = Functions.Providers(context, new object[] { "Microsoft.Web" }) as ResourceProviderType[];
+            Assert.NotNull(actual1);
+            Assert.Equal(51, actual2.Length);
+
+            var actual3 = Functions.Providers(context, new object[] { "microsoft.web", "Sites" }) as ResourceProviderType;
+            Assert.NotNull(actual3);
+            Assert.Equal("sites", actual3.ResourceType);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Providers(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Providers(context, new object[] { 1 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Providers(context, new object[] { "Microsoft.Web", 1 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Providers(context, new object[] { "Microsoft.Web", "n/a" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Providers(context, new object[] { "n/a", "n/a" }));
         }
 
         [Fact]
@@ -712,6 +740,46 @@ namespace PSRule.Rules.Azure
 
         #endregion Comparison
 
+        #region Date
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_DATE)]
+        public void DateTimeAdd()
+        {
+            var context = GetContext();
+            var utc = DateTime.Parse("2020-04-07 14:53:14Z", new CultureInfo("en-US"));
+
+            var actual1 = DateTime.Parse(Functions.DateTimeAdd(context, new object[] { utc.ToString("u"), "P3Y" }) as string, new CultureInfo("en-US"));
+            var actual2 = DateTime.Parse(Functions.DateTimeAdd(context, new object[] { utc.ToString("u"), "-P9D" }) as string, new CultureInfo("en-US"));
+            var actual3 = DateTime.Parse(Functions.DateTimeAdd(context, new object[] { utc.ToString("u"), "PT1H" }) as string, new CultureInfo("en-US"));
+
+            Assert.Equal(utc.AddYears(3), actual1.ToUniversalTime());
+            Assert.Equal(utc.AddDays(-9), actual2.ToUniversalTime());
+            Assert.Equal(utc.AddHours(1), actual3.ToUniversalTime());
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, new object[] { 1, 2 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, new object[] { utc.ToString("u"), 2 }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_DATE)]
+        public void UtcNow()
+        {
+            var context = GetContext();
+            var utc = DateTime.UtcNow;
+
+            var actual1 = Functions.UtcNow(context, new object[] { }) as string;
+            var actual2 = Functions.UtcNow(context, new object[] { "d" }) as string;
+            var actual3 = Functions.UtcNow(context, new object[] { "M d" }) as string;
+            Assert.Matches("[0-9]{8}T[0-9]{6}Z", actual1);
+            Assert.Equal(utc.ToString("d", new CultureInfo("en-US")), actual2);
+            Assert.Equal(utc.ToString("M d", new CultureInfo("en-US")), actual3);
+        }
+
+        #endregion Date
+
         #region Logical
 
         [Fact]
@@ -920,7 +988,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Base64(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Base64(context, new object[] { }));
-            Assert.Throws<ArgumentException>(() => Functions.Base64(context, new object[] { 1 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Base64(context, new object[] { 1 }));
         }
 
         [Fact]
@@ -935,7 +1003,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToJson(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToJson(context, new object[] { }));
-            Assert.Throws<ArgumentException>(() => Functions.Base64ToJson(context, new object[] { 1 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToJson(context, new object[] { 1 }));
         }
 
         [Fact]
@@ -949,7 +1017,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToString(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToString(context, new object[] { }));
-            Assert.Throws<ArgumentException>(() => Functions.Base64ToString(context, new object[] { 1 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToString(context, new object[] { 1 }));
         }
 
         [Fact]
@@ -1244,7 +1312,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Uri(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Uri(context, new object[] { }));
-            Assert.Throws<ArgumentException>(() => Functions.Uri(context, new object[] { "http://contoso.org/firstpath", 2 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Uri(context, new object[] { "http://contoso.org/firstpath", 2 }));
         }
 
         [Fact]
@@ -1258,7 +1326,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponent(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponent(context, new object[] { }));
-            Assert.Throws<ArgumentException>(() => Functions.UriComponent(context, new object[] { 2 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponent(context, new object[] { 2 }));
         }
 
         [Fact]
@@ -1272,22 +1340,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponentToString(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponentToString(context, new object[] { }));
-            Assert.Throws<ArgumentException>(() => Functions.UriComponentToString(context, new object[] { 2 }));
-        }
-
-        [Fact]
-        [Trait(TRAIT, TRAIT_STRING)]
-        public void UtcNow()
-        {
-            var context = GetContext();
-            var utc = DateTime.UtcNow;
-
-            var actual1 = Functions.UtcNow(context, new object[] { }) as string;
-            var actual2 = Functions.UtcNow(context, new object[] { "d" }) as string;
-            var actual3 = Functions.UtcNow(context, new object[] { "M d" }) as string;
-            Assert.Matches("[0-9]{8}T[0-9]{6}Z", actual1);
-            Assert.Equal(utc.ToString("d", new CultureInfo("en-US")), actual2);
-            Assert.Equal(utc.ToString("M d", new CultureInfo("en-US")), actual3);
+            Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponentToString(context, new object[] { 2 }));
         }
 
         #endregion String

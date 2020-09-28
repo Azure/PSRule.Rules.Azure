@@ -1,10 +1,13 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Resources;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Threading;
 
 namespace PSRule.Rules.Azure.Data.Template
@@ -37,6 +40,7 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             private readonly Stack<JObject> _Deployment;
             private JObject _Parameters;
+            private readonly Dictionary<string, ResourceProvider> _Providers;
 
             internal TemplateContext()
             {
@@ -47,6 +51,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 ResourceGroup = new ResourceGroup();
                 Subscription = new Subscription();
                 _Deployment = new Stack<JObject>();
+                _Providers = ReadProviders();
             }
 
             internal TemplateContext(Subscription subscription, ResourceGroup resourceGroup)
@@ -229,6 +234,33 @@ namespace PSRule.Rules.Azure.Data.Template
                     Variables[variableName] = value;
                 }
                 return true;
+            }
+
+            private static Dictionary<string, ResourceProvider> ReadProviders()
+            {
+                var providersFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "providers.json");
+                if (!File.Exists(providersFile))
+                    return null;
+
+                var json = File.ReadAllText(providersFile);
+                var settings = new JsonSerializerSettings();
+                settings.Converters.Add(new ResourceProviderConverter());
+                var result = JsonConvert.DeserializeObject<Dictionary<string, ResourceProvider>>(json, settings);
+                return result;
+            }
+
+            internal ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
+            {
+                if (_Providers == null || _Providers.Count == 0 || !_Providers.TryGetValue(providerNamespace, out ResourceProvider provider))
+                    return Array.Empty<ResourceProviderType>();
+
+                if (resourceType == null)
+                    return provider.Types.Values.ToArray();
+
+                if (!provider.Types.ContainsKey(resourceType))
+                    return Array.Empty<ResourceProviderType>();
+
+                return new ResourceProviderType[] { provider.Types[resourceType] };
             }
         }
 

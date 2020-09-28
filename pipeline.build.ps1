@@ -212,7 +212,25 @@ task TestDotNet {
     }
 }
 
-task CopyModule {
+task MinifyData {
+    $dataPath = Join-Path -Path $PWD -ChildPath 'data';
+    $dataOutPath = Join-Path -Path $PWD -ChildPath 'out/data';
+    if (!(Test-Path -Path $dataOutPath)) {
+        $Null = New-Item -Path $dataOutPath -ItemType Directory -Force;
+    }
+
+    # Providers
+    $filePath = Join-Path -Path $dataPath -ChildPath 'providers.json';
+    $fileOutPath = Join-Path -Path $dataOutPath -ChildPath 'providers.json';
+    Get-Content -Path $filePath -Raw | ConvertFrom-Json | ConvertTo-Json -Depth 100 -Compress | Set-Content -Path $fileOutPath;
+
+    # Environments
+    $filePath = Join-Path -Path $dataPath -ChildPath 'environments.json';
+    $fileOutPath = Join-Path -Path $dataOutPath -ChildPath 'environments.json';
+    Get-Content -Path $filePath -Raw | ConvertFrom-Json | ConvertTo-Json -Depth 100 -Compress | Set-Content -Path $fileOutPath;
+}
+
+task CopyModule MinifyData, {
     CopyModuleFiles -Path src/PSRule.Rules.Azure -DestinationPath out/modules/PSRule.Rules.Azure;
 
     # Copy LICENSE
@@ -220,6 +238,9 @@ task CopyModule {
 
     # Copy third party notices
     Copy-Item -Path ThirdPartyNotices.txt -Destination out/modules/PSRule.Rules.Azure;
+
+    # Copy data
+    Copy-Item -Path 'out/data/*.json' -Destination out/modules/PSRule.Rules.Azure -Recurse;
 }
 
 # Synopsis: Build modules only
@@ -248,6 +269,26 @@ task TestModule ModuleDependencies, Pester, PSScriptAnalyzer, {
         throw "$($results.FailedCount) tests failed.";
     }
 }
+
+task IntegrationTest ModuleDependencies, Pester, PSScriptAnalyzer, {
+    # Run Pester tests
+    $pesterParams = @{ Path = (Join-Path -Path $PWD -ChildPath tests/Integration); OutputFile = 'reports/pester-unit.xml'; OutputFormat = 'NUnitXml'; PesterOption = @{ IncludeVSCodeMarker = $True }; PassThru = $True; };
+
+    if (!(Test-Path -Path reports)) {
+        $Null = New-Item -Path reports -ItemType Directory -Force;
+    }
+
+    $results = Invoke-Pester @pesterParams;
+
+    # Throw an error if pester tests failed
+    if ($Null -eq $results) {
+        throw 'Failed to get Pester test results.';
+    }
+    elseif ($results.FailedCount -gt 0) {
+        throw "$($results.FailedCount) tests failed.";
+    }
+}
+
 
 # Synopsis: Run validation
 task Rules PSRule, {
@@ -326,6 +367,38 @@ task ScaffoldHelp Build, BuildRuleDocs, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     Update-MarkdownHelp -Path '.\docs\commands\PSRule.Rules.Azure\en-US';
 }
+
+task ExportProviders {
+    $providers = Get-AzResourceProvider -ListAvailable;
+    $index = @{}
+    foreach ($provider in $providers) {
+        $namespace = $provider.ProviderNamespace;
+        $provider.PSObject.Properties.Remove('RegistrationState');
+        $provider.PSObject.Properties.Remove('ProviderNamespace');
+
+        $resourceTypes = @{};
+        $provider.ResourceTypes | ForEach-Object {
+            $info = @{
+                resourceType = $_.ResourceTypeName
+                apiVersions = $_.ApiVersions
+                locations = $_.Locations
+            }
+            $resourceTypes.Add($info.resourceType, $info);
+        };
+        $entry = @{
+            types = $resourceTypes
+        }
+        $index.Add($namespace, $entry);
+    }
+
+    $dataPath = Join-Path -Path $PWD -ChildPath 'data';
+    if (!(Test-Path -Path $dataPath)) {
+        $Null = New-Item -Path $dataPath -ItemType Directory -Force;
+    }
+    $index | ConvertTo-Json -Depth 20 | Set-Content ./data/providers.json;
+}
+
+task ExportData ExportProviders
 
 # Synopsis: Add shipit build tag
 task TagBuild {

@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "test",
+            "label": "Test",
             "detail": "Build and run unit tests.",
             "type": "shell",
             "command": "Invoke-Build Test -AssertStyle Client",
@@ -31,7 +31,7 @@
             }
         },
         {
-            "label": "build",
+            "label": "Build",
             "detail": "Build module.",
             "type": "shell",
             "command": "Invoke-Build Build",
@@ -85,6 +85,13 @@
             "detail": "Generate baseline documentation.",
             "type": "shell",
             "command": "Invoke-Build BuildBaselineDocs",
+            "problemMatcher": []
+        },
+        {
+            "label": "Export data",
+            "detail": "Export a list of resource providers from an Azure subscription.",
+            "type": "shell",
+            "command": "Invoke-Build ExportData",
             "problemMatcher": []
         }
     ]
