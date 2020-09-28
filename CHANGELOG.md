@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.17.0-B2009009 (pre-release)
+
+What's changed since v0.16.0:
+
 - General improvements:
   - Added support for `providers` template function. [#177](https://github.com/Microsoft/PSRule.Rules.Azure/issues/177)
   - Added support for `dateTimeAdd` template function. [#516](https://github.com/Microsoft/PSRule.Rules.Azure/issues/516)
