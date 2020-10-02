@@ -7,7 +7,7 @@ online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/r
 ms-content-id: 3f07def6-6e5e-4f87-8b5d-3a0baf6631e5
 ---
 
-# Azure.AppService.ARRAffinity
+# Disable Application Request Routing
 
 ## SYNOPSIS
 
@@ -28,4 +28,7 @@ Consider disabling ARR affinity for stateless applications.
 
 ## LINKS
 
-- [Configure an App Service app](https://docs.microsoft.com/en-us/azure/app-service/configure-common#configure-general-settings)
+- [Configure an App Service app](https://docs.microsoft.com/azure/app-service/configure-common#configure-general-settings)
+- [Overview of the performance efficiency pillar](https://docs.microsoft.com/azure/architecture/framework/scalability/overview)
+- [Session affinity](https://docs.microsoft.com/azure/architecture/framework/scalability/app-design#session-affinity)
+- [Performance efficiency checklist](https://docs.microsoft.com/azure/architecture/framework/scalability/performance-efficiency)
