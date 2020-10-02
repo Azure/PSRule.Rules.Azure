@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- New rules:
+  - App Service:
+    - Check App Service apps use Always On. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+    - Check App Service apps have remote debugging disabled. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+    - Check App Service apps use newer .NET Framework versions. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+    - Check App Service apps use newer PHP runtime versions. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+
 ## v0.17.0-B2009009 (pre-release)
 
 What's changed since v0.16.0:

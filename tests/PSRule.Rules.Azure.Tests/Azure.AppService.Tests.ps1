@@ -6,9 +6,7 @@
 #
 
 [CmdletBinding()]
-param (
-
-)
+param ()
 
 # Setup error handling
 $ErrorActionPreference = 'Stop';
@@ -23,7 +21,7 @@ $rootPath = $PWD;
 Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
 $here = (Resolve-Path $PSScriptRoot).Path;
 
-Describe 'Azure.AppService' {
+Describe 'Azure.AppService' -Tag 'AppService' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppService.json';
 
     Context 'Conditions' {
@@ -101,6 +99,70 @@ Describe 'Azure.AppService' {
 
         It 'Azure.AppService.MinTLS' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.MinTLS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'site-A', 'site-A/staging';
+        }
+
+        It 'Azure.AppService.RemoteDebug' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.RemoteDebug' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'site-A', 'site-A/staging';
+        }
+
+        It 'Azure.AppService.NETVersion' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.NETVersion' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'site-A', 'site-A/staging';
+        }
+
+        It 'Azure.AppService.PHPVersion' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.PHPVersion' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'site-A', 'site-A/staging';
+        }
+
+        It 'Azure.AppService.AlwaysOn' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.AlwaysOn' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
