@@ -8,16 +8,21 @@ Features of PSRule for Azure include:
 
 - [Ready to go](docs/features.md#ready-to-go) - Leverage over 100 pre-built rules to validate Azure resources.
 - [DevOps](docs/features.md#devops) - Validate resources and infrastructure code pre or post-deployment.
-- [Cross-platform](docs/features.md#cross-platform) - Run on MacOS, Linux and Windows.
+- [Cross-platform](docs/features.md#cross-platform) - Run on MacOS, Linux, and Windows.
 
-## Disclaimer
+## Support
 
-This project is open source and **not a supported product**.
+This project uses GitHub Issues to track bugs and feature requests.
+Please search the existing issues before filing new issues to avoid duplicates.
 
-If you are experiencing problems, have a feature request, or a question, please check for an [issue] on GitHub.
-If you do not see your problem captured, please file a new issue, and follow the provided template.
+- For new issues, file your bug or feature request as a new [Issue].
+- For help and questions about using this project, we have a Gitter room which you can join below.
+
+[![Join the chat][chat-badge]][chat]
 
 If you have any problems with the [PSRule][engine] engine, please check the project GitHub [issues](https://github.com/Microsoft/PSRule/issues) page instead.
+
+Support for this project/ product is limited to the resources listed above.
 
 ## Getting the modules
 
@@ -185,6 +190,7 @@ The following baselines are included within `PSRule.Rules.Azure`.
 - [Azure.Preview](docs/baselines/en/Azure.Preview.md) - Includes Azure features in preview.
 - [Azure.All](docs/baselines/en/Azure.All.md) - Includes all Azure rules.
 - [Azure.GA_2020_06](docs/baselines/en/Azure.GA_2020_06.md) - Baseline for GA rules released June 2020 or prior.
+- [Azure.GA_2020_09](docs/baselines/en/Azure.GA_2020_09.md) - Baseline for GA rules released September 2020 or prior.
 
 ## Language reference
 
@@ -259,3 +265,5 @@ This project is [licensed under the MIT License](LICENSE).
 [PSRule-pipelines]: https://github.com/microsoft/PSRule-pipelines
 [ps-rule]: https://github.com/microsoft/ps-rule
 [AWAF]: https://docs.microsoft.com/en-gb/azure/architecture/framework/
+[chat]: https://gitter.im/PSRule/PSRule.Rules.Azure?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+[chat-badge]: https://img.shields.io/static/v1.svg?label=chat&message=on%20gitter&color=informational&logo=gitter

@@ -3,7 +3,9 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 
 namespace PSRule.Rules.Azure.Data.Template
@@ -116,6 +118,25 @@ namespace PSRule.Rules.Azure.Data.Template
         public readonly Hashtable Tags;
 
         public readonly ResourceGroupProperties Properties;
+    }
+
+    public sealed class ResourceProvider
+    {
+        internal ResourceProvider()
+        {
+            Types = new Dictionary<string, ResourceProviderType>(StringComparer.OrdinalIgnoreCase);
+        }
+
+        public Dictionary<string, ResourceProviderType> Types { get; }
+    }
+
+    public sealed class ResourceProviderType
+    {
+        public string ResourceType { get; set; }
+
+        public string[] Locations { get; set; }
+
+        public string[] ApiVersions { get; set; }
     }
 
     public abstract class MockNode

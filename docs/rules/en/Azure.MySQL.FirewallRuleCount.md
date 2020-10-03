@@ -7,7 +7,7 @@ online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/r
 ms-content-id: 9debdffb-0da1-4b8d-8a17-3f480f1015ec
 ---
 
-# Azure.MySQL.FirewallRuleCount
+# Cleanup MySQL server firewall rules
 
 ## SYNOPSIS
 
@@ -21,3 +21,8 @@ Typically the number of firewall rules required is minimal, with management conn
 
 The MySQL server has greater then ten (10) firewall rules.
 Some rules may not be needed.
+
+## LINKS
+
+- [Create and manage Azure Database for MySQL firewall rules by using the Azure portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal)
+- [Create and manage Azure Database for MySQL VNet service endpoints and VNet rules by using the Azure portal](https://docs.microsoft.com/azure/mysql/howto-manage-vnet-using-portal)

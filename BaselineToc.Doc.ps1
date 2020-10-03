@@ -3,8 +3,13 @@
 
 Document 'baseline' {
     $baselineName = $InputObject.Name;
+    $obsolete = $InputObject.metadata.annotations.obsolete -eq $True;
 
     Title $baselineName;
+
+    if ($obsolete) {
+        'Obsolete' | BlockQuote
+    }
 
     Import-Module .\out\modules\PSRule.Rules.Azure;
     $rules = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline $baselineName -WarningAction SilentlyContinue);

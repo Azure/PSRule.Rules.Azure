@@ -21,11 +21,11 @@ As new built-in rules are added and improved, download the latest PowerShell mod
 
 Azure resources can be validated throughout their lifecycle to support a DevOps culture.
 
-From as early as authoring a Azure Resource Manager (ARM) template, resources can be validated offline.
-Pre-flight validation can be integrated into a continuous integration (CI) processes to:
+From as early as authoring an Azure Resource Manager (ARM) template, resources can be validated offline.
+Pre-flight validation can be integrated into a continuous integration (CI) pipeline to:
 
 - **Shift-left:** Identify configuration issues and provide fast feedback in pull requests.
-- **Quality gates:** Implement quality gates between environments such as development, test and production.
+- **Quality gates:** Implement quality gates between environments such as development, test, and production.
 - **Monitor continuously:** Perform ongoing checks for configuration optimization opportunities.
 
 PSRule for Azure provides the following cmdlets that extract data for analysis:
@@ -39,14 +39,15 @@ PSRule uses modern PowerShell libraries at its core, allowing it to go anywhere 
 The companion extension for Visual Studio Code provides snippets for authoring rules and documentation.
 PSRule runs on MacOS, Linux and Windows.
 
-PSRule for Azure (`PSRule.Rules.Azure`) can be installed locally using `Install-Module` within PowerShell.
-For additional installation options see [install instructions](install-instructions.md).
-
-PowerShell makes it easy to integrate PSRule into populate CI systems.
+PowerShell makes it easy to integrate PSRule into popular CI systems.
 Additionally, PSRule has extensions for:
 
 - [Azure Pipeline (Azure DevOps)][extension-pipelines]
 - [GitHub Actions (GitHub)][extension-github]
+
+PSRule for Azure (`PSRule.Rules.Azure`) can be installed locally, within a container, or Azure Cloud Shell.
+To install, use the `Install-Module` cmdlet within PowerShell.
+For installation options see [install instructions](install-instructions.md).
 
 ## Frequently Asked Questions (FAQ)
 
@@ -63,7 +64,7 @@ The default built-in _Reader_ role to a subscription is required for:
 
 - Exporting rule data with `Export-AzRuleData`.
 - Exporting rule data from templates with `Export-AzTemplateRuleData` when online features are used.
-  - Optionally `-ResourceGroupName` and `-Subscription` parameter can be used, these require access _Reader_ access.
+  - Optionally `-ResourceGroupName` and `-Subscription` parameter can be used; these require access _Reader_ access.
 
 ### What permissions do I need to analyze exported data?
 
@@ -80,7 +81,7 @@ PSRule complements Azure Security Center, Azure Advisor and Azure Policy feature
 - Providing offline analysis in split environments where the analyst has no access to Azure subscriptions.
   - Rule data for analysis can be exported out to a JSON file.
 - Providing the ability to analyze resources in Azure Resource Manager templates before deployment.
-  - Additionally analysis can be performed in a continuous integration (CI) process.
+  - Additionally, analysis can be performed in a continuous integration (CI) process.
 - Providing the ability to layer on organization specific rules, as required.
 - Data collection requires limited permissions and requires no additional configuration.
 

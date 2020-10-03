@@ -6,12 +6,68 @@
   - Azure Cache for Redis:
     - Check cache instances Standard C1 or greater. [#501](https://github.com/microsoft/PSRule.Rules.Azure/issues/501)
     - Cache cache instances configure `maxmemory-reserved` setting. [#502](https://github.com/microsoft/PSRule.Rules.Azure/issues/502)
+  - App Service:
+    - Check App Service apps use Always On. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+    - Check App Service apps have remote debugging disabled. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+    - Check App Service apps use newer .NET Framework versions. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+    - Check App Service apps use newer PHP runtime versions. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+
+## v0.17.0-B2009009 (pre-release)
+
+What's changed since v0.16.0:
+
+- General improvements:
+  - Added support for `providers` template function. [#177](https://github.com/Microsoft/PSRule.Rules.Azure/issues/177)
+  - Added support for `dateTimeAdd` template function. [#516](https://github.com/Microsoft/PSRule.Rules.Azure/issues/516)
+
+## v0.16.0
+
+What's changed since v0.15.0:
+
+- New features:
+  - Added `Azure.GA_2020_09` baseline. [#488](https://github.com/Microsoft/PSRule.Rules.Azure/issues/488)
+    - Includes rules released before or during September 2020 for Azure GA features.
+    - Marked baseline `Azure.GA_2020_06` as obsolete.
+- New rules:
+  - CDN:
+    - Check CDN endpoint naming requirements. [#486](https://github.com/Microsoft/PSRule.Rules.Azure/issues/486)
+    - Check CDN endpoints use TLS 1.2. [#487](https://github.com/Microsoft/PSRule.Rules.Azure/issues/487)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.18.8. [#504](https://github.com/Microsoft/PSRule.Rules.Azure/issues/504)
+- General improvements:
+  - Updated rule content to align with Microsoft Azure Well-Architected Framework pillars. [#481](https://github.com/Microsoft/PSRule.Rules.Azure/issues/481)
+  - Improve output of template processing exceptions. [#484](https://github.com/Microsoft/PSRule.Rules.Azure/issues/484)
+- Engineering:
+  - Bump PSRule dependency to v0.20.0.
+- Bug fixes:
+  - Fixed Data Factory version not detected with template. [#498](https://github.com/microsoft/PSRule.Rules.Azure/issues/498)
+  - Fixed parameter file detection with `2019-04-01` schema. [#495](https://github.com/microsoft/PSRule.Rules.Azure/issues/495)
+  - Fixed deprecated `$Rule` properties. [#491](https://github.com/microsoft/PSRule.Rules.Azure/issues/491)
+
+What's changed since pre-release v0.16.0-B2009033:
+
+- No additional changes.
+
+## v0.16.0-B2009033 (pre-release)
+
+What's changed since pre-release v0.16.0-B2009024:
+
+- New features:
+  - Added `Azure.GA_2020_09` baseline. [#488](https://github.com/Microsoft/PSRule.Rules.Azure/issues/488)
+    - Includes rules released before or during September 2020 for Azure GA features.
+    - Marked baseline `Azure.GA_2020_06` as obsolete.
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.18.8. [#504](https://github.com/Microsoft/PSRule.Rules.Azure/issues/504)
+- Engineering:
+  - Bump PSRule dependency to v0.20.0.
 
 ## v0.16.0-B2009024 (pre-release)
 
 What's changed since pre-release v0.16.0-B2009019:
 
-- Bug fixed:
+- Bug fixes:
   - Fixed Data Factory version not detected with template. [#498](https://github.com/microsoft/PSRule.Rules.Azure/issues/498)
 
 ## v0.16.0-B2009019 (pre-release)
@@ -62,6 +118,8 @@ What's changed since v0.14.1:
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to 1.17.9. [#452](https://github.com/Microsoft/PSRule.Rules.Azure/issues/452)
+- Engineering:
+  - Bump PSRule dependency to v0.19.0.
 - Bug fixes:
   - Fixed export of non-blob Storage Accounts. [#464](https://github.com/Microsoft/PSRule.Rules.Azure/issues/464)
   - Fixed export of subscription Security Center data based on API version. [#465](https://github.com/Microsoft/PSRule.Rules.Azure/issues/465)

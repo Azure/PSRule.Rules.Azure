@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using Newtonsoft.Json;
+using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
 using System;
@@ -219,6 +220,118 @@ namespace PSRule.Rules.Azure
                 reader.Read();
             }
             return result.ToArray();
+        }
+    }
+
+    internal sealed class ResourceProviderConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(ResourceProvider) || objectType == typeof(Dictionary<string, ResourceProvider>);
+        }
+
+        public override bool CanRead => true;
+
+        public override bool CanWrite => false;
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            if (objectType == typeof(ResourceProvider))
+            {
+                var resultObject = existingValue as ResourceProvider ?? new ResourceProvider();
+                ReadObject(resultObject, reader, serializer);
+                return resultObject;
+            }
+
+            var resultDictionary = existingValue as Dictionary<string, ResourceProvider> ?? new Dictionary<string, ResourceProvider>(StringComparer.OrdinalIgnoreCase);
+            ReadDictionary(resultDictionary, reader, serializer);
+            return resultDictionary;
+        }
+
+        private static void ReadObject(ResourceProvider value, JsonReader reader, JsonSerializer serializer)
+        {
+            if (reader.TokenType != JsonToken.StartObject)
+                throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
+
+            reader.Read();
+            string name = null;
+
+            // Read each token
+            while (reader.TokenType != JsonToken.EndObject)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.PropertyName:
+                        name = reader.Value.ToString();
+                        break;
+
+                    case JsonToken.StartObject:
+                        if (name == "types")
+                        {
+                            ReadType(value, reader, serializer);
+                        }
+                        break;
+                }
+                reader.Read();
+            }
+        }
+
+        private static void ReadType(ResourceProvider value, JsonReader reader, JsonSerializer serializer)
+        {
+            if (reader.TokenType != JsonToken.StartObject)
+                throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
+
+            reader.Read();
+            string name = null;
+
+            // Read each token
+            while (reader.TokenType != JsonToken.EndObject)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.PropertyName:
+                        name = reader.Value.ToString();
+                        break;
+
+                    case JsonToken.StartObject:
+                        var resourceType = serializer.Deserialize<ResourceProviderType>(reader);
+                        value.Types.Add(name, resourceType);
+                        break;
+                }
+                reader.Read();
+            }
+        }
+
+        private static void ReadDictionary(Dictionary<string, ResourceProvider> value, JsonReader reader, JsonSerializer serializer)
+        {
+            if (reader.TokenType != JsonToken.StartObject)
+                throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
+
+            reader.Read();
+            string name = null;
+
+            // Read each token
+            while (reader.TokenType != JsonToken.EndObject)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.PropertyName:
+                        name = reader.Value.ToString();
+                        break;
+
+                    case JsonToken.StartObject:
+                        var provider = new ResourceProvider();
+                        ReadObject(provider, reader, serializer);
+                        value.Add(name, provider);
+                        break;
+                }
+                reader.Read();
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/r
 ms-content-id: fc3b5764-5b4a-4915-9311-75ec6a0d0d55
 ---
 
-# Azure.PostgreSQL.FirewallIPRange
+# Limit PostgreSQL server firewall rule range
 
 ## SYNOPSIS
 
@@ -20,3 +20,8 @@ Typically the number of IP address rules permitted through the firewall is minim
 ## RECOMMENDATION
 
 The PostgreSQL server has greater then ten (10) public IP addresses that are permitted network access. Some rules may not be needed or can be reduced.
+
+## LINKS
+
+- [Firewall rules in Azure Database for PostgreSQL - Single Server](https://docs.microsoft.com/en-us/azure/postgresql/concepts-firewall-rules)
+- [Create and manage firewall rules for Azure Database for PostgreSQL - Single Server using the Azure portal](https://docs.microsoft.com/azure/postgresql/howto-manage-firewall-using-portal)

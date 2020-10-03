@@ -17,7 +17,7 @@
     <Copyright>Copyright (c) Microsoft Corporation. Licensed under the MIT License.</Copyright>
     <Description>Validate Azure resources and infrastructure as code using PSRule.
 
-This project is open source and not a supported product.</Description>
+This project uses GitHub Issues to track bugs and feature requests. See GitHub project for more information.</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
