@@ -8,6 +8,12 @@
     - Check App Service apps have remote debugging disabled. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
     - Check App Service apps use newer .NET Framework versions. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
     - Check App Service apps use newer PHP runtime versions. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Promote `Azure.AKS.AzurePolicyAddOn` to GA rule set. [#524](https://github.com/Microsoft/PSRule.Rules.Azure/issues/524)
+- Removed rules:
+  - Azure Kubernetes Service:
+    - Remove `Azure.AKS.PodSecurityPolicy` as this AKS feature is replaced by Azure Policy. [#523](https://github.com/Microsoft/PSRule.Rules.Azure/issues/523)
 
 ## v0.17.0-B2009009 (pre-release)
 

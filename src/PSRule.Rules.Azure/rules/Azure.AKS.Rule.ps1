@@ -43,11 +43,6 @@ Rule 'Azure.AKS.UseRBAC' -Type 'Microsoft.ContainerService/managedClusters' -Tag
     $Assert.HasFieldValue($TargetObject, 'Properties.enableRBAC', $True)
 }
 
-# Synopsis: AKS clusters should use pod security policies
-Rule 'Azure.AKS.PodSecurityPolicy' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'preview'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.enablePodSecurityPolicy', $True)
-}
-
 # Synopsis: AKS clusters should use network policies
 Rule 'Azure.AKS.NetworkPolicy' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.networkProfile.networkPolicy', 'azure')
@@ -125,6 +120,6 @@ Rule 'Azure.AKS.StandardLB' -Type 'Microsoft.ContainerService/managedClusters' -
 }
 
 # Synopsis: AKS clusters should use Azure Policy add-on
-Rule 'Azure.AKS.AzurePolicyAddOn' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'preview'; ruleSet = '2020_06' } {
+Rule 'Azure.AKS.AzurePolicyAddOn' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.addonProfiles.azurePolicy.enabled', $True)
 }
