@@ -99,22 +99,6 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-C', 'cluster-D';
         }
 
-        It 'Azure.AKS.PodSecurityPolicy' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.PodSecurityPolicy' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B';
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'cluster-C', 'cluster-D';
-        }
-
         It 'Azure.AKS.NetworkPolicy' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.NetworkPolicy' };
 
