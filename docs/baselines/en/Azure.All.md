@@ -4,7 +4,7 @@ Includes all Azure rules.
 
 ## Rules
 
-The following rules are included within `Azure.All`. This baseline includes a total of 159 rules.
+The following rules are included within `Azure.All`. This baseline includes a total of 163 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
