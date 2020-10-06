@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.17.0-B2010006 (pre-release)
+
+What's changed since pre-release v0.17.0-B2009009:
+
 - New rules:
   - App Configuration:
     - Check App Configuration stores meet name requirements. [#528](https://github.com/Microsoft/PSRule.Rules.Azure/issues/528)
