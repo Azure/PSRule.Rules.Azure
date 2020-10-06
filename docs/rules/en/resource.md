@@ -162,6 +162,12 @@ Name | Synopsis | Severity
 [Azure.LB.Name](Azure.LB.Name.md) | Load Balancer names should meet naming requirements. | Awareness
 [Azure.LB.Probe](Azure.LB.Probe.md) | Use a specific probe for web protocols. | Important
 
+### Logic App
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.LogicApp.LimitHTTPTrigger](Azure.LogicApp.LimitHTTPTrigger.md) | Limit HTTP request trigger access to trusted IP addresses. | Critical
+
 ### Monitor
 
 Name | Synopsis | Severity
