@@ -8,6 +8,8 @@
     - Check App Service apps have remote debugging disabled. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
     - Check App Service apps use newer .NET Framework versions. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
     - Check App Service apps use newer PHP runtime versions. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+  - Logic App:
+    - Check Logic App apps limit IP range for HTTP triggers. [#526](https://github.com/Microsoft/PSRule.Rules.Azure/issues/526)
 - Updated rules:
   - Azure Kubernetes Service:
     - Promote `Azure.AKS.AzurePolicyAddOn` to GA rule set. [#524](https://github.com/Microsoft/PSRule.Rules.Azure/issues/524)
