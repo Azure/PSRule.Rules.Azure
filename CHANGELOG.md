@@ -3,6 +3,9 @@
 ## Unreleased
 
 - New rules:
+  - App Configuration:
+    - Check App Configuration stores meet name requirements. [#528](https://github.com/Microsoft/PSRule.Rules.Azure/issues/528)
+    - Check App Configuration stores use standard SKU. [#528](https://github.com/Microsoft/PSRule.Rules.Azure/issues/528)
   - App Service:
     - Check App Service apps use Always On. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
     - Check App Service apps have remote debugging disabled. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
