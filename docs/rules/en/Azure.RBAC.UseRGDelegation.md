@@ -21,3 +21,9 @@ Permissions can be scoped to management group, subscription, resource group or i
 ## RECOMMENDATION
 
 Consider using RBAC assignments on resource groups instead of individual resources.
+
+## LINKS
+
+- [Avoid granular and custom permissions](https://docs.microsoft.com/azure/architecture/framework/security/design-admins#avoid-granular-and-custom-permissions)
+- [What is Azure role-based access control (Azure RBAC)?](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Best practices for Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/best-practices)

@@ -109,9 +109,9 @@ Rule 'Azure.AKS.DNSPrefix' -Type 'Microsoft.ContainerService/managedClusters' -T
     $Assert.Match($TargetObject, 'Properties.dnsPrefix', '^[A-Za-z0-9]((-|[A-Za-z0-9]){0,}[A-Za-z0-9]){0,}$')
 }
 
-# Synopsis: Use a managed identity with AKS clusters
+# Synopsis: Configure AKS clusters to use managed identities for managing cluster infrastructure.
 Rule 'Azure.AKS.ManagedIdentity' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Identity.Type', 'SystemAssigned')
+    $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'));
 }
 
 # Synopsis: Use a Standard load-balancer with AKS clusters
