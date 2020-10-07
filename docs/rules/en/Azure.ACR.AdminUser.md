@@ -35,3 +35,4 @@ Consider disabling the admin user account and only using AAD-based identities fo
 - [Azure Container Registry authentication with service principals](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal)
 - [Use an Azure managed identity to authenticate to an Azure container registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity)
 - [Azure Container Registry roles and permissions](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- [What is Azure role-based access control (Azure RBAC)?](https://docs.microsoft.com/azure/role-based-access-control/overview)
