@@ -39,8 +39,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'storage-B', 'storage-C';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'storage-B';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -51,8 +51,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'storage-D';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-C';
         }
 
         It 'Azure.Storage.SecureTransfer' {

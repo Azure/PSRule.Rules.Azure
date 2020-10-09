@@ -27,7 +27,12 @@ Rule 'Azure.AppService.UseHTTPS' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sit
 
 # Synopsis: Use at least TLS 1.2
 Rule 'Azure.AppService.MinTLS' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $siteConfigs = GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config'
+    $siteConfigs = @(GetWebSiteConfig);
+    if ($siteConfigs.Length -eq 0) {
+        return $Assert.
+            HasFieldValue($TargetObject, 'Properties.siteConfig.minTlsVersion', '1.2').
+            Reason($LocalizedData.MinTLSVersion, $TargetObject.Properties.siteConfig.minTlsVersion);
+    }
     foreach ($siteConfig in $siteConfigs) {
         $Assert.
             HasFieldValue($siteConfig, 'Properties.minTlsVersion', '1.2').
@@ -37,9 +42,9 @@ Rule 'Azure.AppService.MinTLS' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites
 
 # Synopsis: Disable remote debugging
 Rule 'Azure.AppService.RemoteDebug' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
-    $siteConfigs = GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config'
+    $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
-        return $Assert.Pass();
+        return $Assert.HasDefaultValue($TargetObject, 'Properties.siteConfig.remoteDebuggingEnabled', $False);
     }
     foreach ($siteConfig in $siteConfigs) {
         $Assert.HasDefaultValue($siteConfig, 'Properties.remoteDebuggingEnabled', $False);
@@ -48,37 +53,54 @@ Rule 'Azure.AppService.RemoteDebug' -Type 'Microsoft.Web/sites', 'Microsoft.Web/
 
 # Synopsis: Configure applications to use newer .NET Framework versions.
 Rule 'Azure.AppService.NETVersion' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
-    $siteConfigs = @(GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config' | Where-Object {
-        ![String]::IsNullOrEmpty($_.Properties.netFrameworkVersion) -and $_.Properties.netFrameworkVersion -ne 'OFF'
+    $siteConfigs = @(GetWebSiteConfig | Where-Object {
+        ![String]::IsNullOrEmpty($_.Properties.netFrameworkVersion)
     })
     if ($siteConfigs.Length -eq 0) {
-        return $Assert.Pass();
+        return AnyOf {
+            $Assert.HasDefaultValue($TargetObject, 'Properties.siteConfig.netFrameworkVersion', 'OFF')
+            $Assert.Version($TargetObject, 'Properties.siteConfig.netFrameworkVersion', '^4.0')
+        }
     }
     foreach ($siteConfig in $siteConfigs) {
-        $Assert.Version($siteConfig, 'Properties.netFrameworkVersion', '^4.0')
+        AnyOf {
+            $Assert.HasFieldValue($siteConfig, 'Properties.netFrameworkVersion', 'OFF')
+            $Assert.Version($siteConfig, 'Properties.netFrameworkVersion', '^4.0')
+        }
     }
 }
 
 # Synopsis: Configure applications to use newer PHP runtime versions.
 Rule 'Azure.AppService.PHPVersion' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
-    $siteConfigs = @(GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config' | Where-Object {
-        ![String]::IsNullOrEmpty($_.Properties.phpVersion) -and $_.Properties.phpVersion -ne 'OFF'
+    $siteConfigs = @(GetWebSiteConfig | Where-Object {
+        ![String]::IsNullOrEmpty($_.Properties.phpVersion)
     })
     if ($siteConfigs.Length -eq 0) {
-        return $Assert.Pass();
+        return AnyOf {
+            $Assert.HasDefaultValue($TargetObject, 'Properties.siteConfig.phpVersion', 'OFF')
+            $Assert.Version($TargetObject, 'Properties.siteConfig.phpVersion', '^7.0')
+        }
     }
     foreach ($siteConfig in $siteConfigs) {
-        $Assert.Version($siteConfig, 'Properties.phpVersion', '^7.0')
+        AnyOf {
+            $Assert.HasFieldValue($siteConfig, 'Properties.phpVersion', 'OFF')
+            $Assert.Version($siteConfig, 'Properties.phpVersion', '^7.0')
+        }
     }
 }
 
 # Synopsis: Configure Always On for App Service apps.
 Rule 'Azure.AppService.AlwaysOn' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
-    $siteConfigs = GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config'
+    $siteConfigs = @(GetWebSiteConfig);
+    if ($siteConfigs.Length -eq 0) {
+        return $Assert.HasFieldValue($TargetObject, 'Properties.siteConfig.alwaysOn', $True);
+    }
     foreach ($siteConfig in $siteConfigs) {
         $Assert.HasFieldValue($siteConfig, 'Properties.alwaysOn', $True);
     }
 }
+
+#region Helper functions
 
 function global:IsConsumptionPlan {
     [CmdletBinding()]
@@ -90,3 +112,16 @@ function global:IsConsumptionPlan {
         );
     }
 }
+
+function global:GetWebSiteConfig {
+    [CmdletBinding()]
+    param ()
+    process {
+        $siteConfigs = @(GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config' | Where-Object {
+            $_.Name -notlike "*/*" -or $_.Name -like "*/web"
+        })
+        $siteConfigs;
+    }
+}
+
+#endregion Helper functions
