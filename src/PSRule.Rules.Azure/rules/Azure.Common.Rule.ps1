@@ -60,18 +60,6 @@ function global:IsExport {
     }
 }
 
-function global:IsCloudShell {
-    [CmdletBinding()]
-    [OutputType([System.Boolean])]
-    param ()
-    process {
-        if ($PSRule.TargetType -ne 'Microsoft.Storage/storageAccounts') {
-            return $False;
-        }
-        return $TargetObject.Tags.'ms-resource-usage' -eq 'azure-cloud-shell';
-    }
-}
-
 function global:HasPeerNetwork {
     [CmdletBinding()]
     [OutputType([System.Boolean])]

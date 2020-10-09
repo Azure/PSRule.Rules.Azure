@@ -6,8 +6,13 @@
 #
 
 # Synopsis: Storage accounts not using GRS may be at risk
-Rule 'Azure.Storage.UseReplication' -Type 'Microsoft.Storage/storageAccounts' -If { !(IsCloudShell) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Within 'sku.name' 'Standard_GRS', 'Standard_RAGRS'
+Rule 'Azure.Storage.UseReplication' -Type 'Microsoft.Storage/storageAccounts' -If { (ShouldStorageReplicate) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+    $Assert.In($TargetObject, 'sku.name', @(
+        'Standard_GRS'
+        'Standard_RAGRS'
+        'Standard_GZRS'
+        'Standard_RAGZRS'
+    ));
 }
 
 # Synopsis: Storage accounts should only accept secure traffic
@@ -23,14 +28,13 @@ Rule 'Azure.Storage.UseEncryption' -Type 'Microsoft.Storage/storageAccounts' -Ta
 
 # Synopsis: Enable soft delete on Storage Accounts
 Rule 'Azure.Storage.SoftDelete' -Type 'Microsoft.Storage/storageAccounts' -If { !(IsCloudShell) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $serviceProperties = GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices'
+    $serviceProperties = GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices';
     $Assert.HasFieldValue($serviceProperties, 'properties.deleteRetentionPolicy.enabled', $True);
 }
 
 # Synopsis: Disallow blob containers with public access types.
 Rule 'Azure.Storage.BlobPublicAccess' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
-    $Assert.
-        HasFieldValue($TargetObject, 'Properties.allowBlobPublicAccess', $False);
+    $Assert.HasFieldValue($TargetObject, 'Properties.allowBlobPublicAccess', $False);
 }
 
 # Synopsis: Avoid using Blob or Container access type
@@ -40,7 +44,7 @@ Rule 'Azure.Storage.BlobAccessType' -Type 'Microsoft.Storage/storageAccounts', '
         $containers = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices/containers');
     }
     if ($containers.Length -eq 0) {
-        return $True;
+        return $Assert.Pass();
     }
     foreach ($container in $containers) {
         $Assert.
@@ -67,3 +71,64 @@ Rule 'Azure.Storage.Name' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ rele
     # Lowercase letters and numbers
     Match 'Name' '^[a-z0-9]{3,24}$' -CaseSensitive
 }
+
+#region Helper functions
+
+function global:ShouldStorageReplicate {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        return (IsStandardStorage) -and !(IsCloudShell) -and !(IsFunctionStorage) -and !(IsMonitorStorage);
+    }
+}
+
+function global:IsStandardStorage {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($PSRule.TargetType -ne 'Microsoft.Storage/storageAccounts') {
+            return $False;
+        }
+        return $TargetObject.sku.name -like 'Standard_*';
+    }
+}
+
+function global:IsCloudShell {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($PSRule.TargetType -ne 'Microsoft.Storage/storageAccounts') {
+            return $False;
+        }
+        return $TargetObject.Tags.'ms-resource-usage' -eq 'azure-cloud-shell';
+    }
+}
+
+function global:IsFunctionStorage {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($PSRule.TargetType -ne 'Microsoft.Storage/storageAccounts') {
+            return $False;
+        }
+        return $TargetObject.Tags.'resource-usage' -eq 'azure-functions';
+    }
+}
+
+function global:IsMonitorStorage {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($PSRule.TargetType -ne 'Microsoft.Storage/storageAccounts') {
+            return $False;
+        }
+        return $TargetObject.Tags.'resource-usage' -eq 'azure-monitor';
+    }
+}
+
+#endregion Helper functions

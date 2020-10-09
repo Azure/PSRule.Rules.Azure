@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Updated rules:
+  - Storage:
+    - Updated `Azure.Storage.UseReplication` for additional use cases.
+      - Added support for geo-zone-redundant storage. [#535](https://github.com/Microsoft/PSRule.Rules.Azure/issues/534)
+      - Exclude storage tagged with `resource-usage = 'azure-functions'` or `resource-usage = 'azure-monitor'`. [#534](https://github.com/Microsoft/PSRule.Rules.Azure/issues/534)
+- Bug fixes:
+  - Fixed App Service rule site config false positives in templates. [#533](https://github.com/Microsoft/PSRule.Rules.Azure/issues/533)
+
 ## v0.17.0-B2010006 (pre-release)
 
 What's changed since pre-release v0.17.0-B2009009:
