@@ -61,6 +61,11 @@
         "ResourceGroupName": "test-rg",
         "Location": "region",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Identity": {
+            "principalId": "00000000-0000-0000-0000-000000000000",
+            "tenantId": "00000000-0000-0000-0000-000000000000",
+            "type": "SystemAssigned"
+        },
         "Properties": {
             "name": "site-A",
             "state": "Running",
@@ -267,7 +272,7 @@
                     "ipSecurityRestrictions": null,
                     "scmIpSecurityRestrictions": null,
                     "scmIpSecurityRestrictionsUseMain": null,
-                    "http20Enabled": false,
+                    "http20Enabled": true,
                     "minTlsVersion": "1.2",
                     "ftpsState": "Disabled",
                     "reservedInstanceCount": 0,
@@ -296,6 +301,11 @@
         "ResourceGroupName": "test-rg",
         "Location": "region",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Identity": {
+            "principalId": "00000000-0000-0000-0000-000000000000",
+            "tenantId": "00000000-0000-0000-0000-000000000000",
+            "type": "SystemAssigned"
+        },
         "Properties": {
             "name": "site-A(staging)",
             "state": "Running",
@@ -525,7 +535,7 @@
                         }
                     ],
                     "scmIpSecurityRestrictionsUseMain": false,
-                    "http20Enabled": false,
+                    "http20Enabled": true,
                     "minTlsVersion": "1.2",
                     "ftpsState": "Disabled",
                     "reservedInstanceCount": 0,

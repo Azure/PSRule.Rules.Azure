@@ -129,6 +129,7 @@
                     "phpVersion": "OFF",
                     "alwaysOn": "[parameters('alwaysOn')]",
                     "minTlsVersion": "1.2",
+                    "http20Enabled": true,
                     "siteAuthEnabled": "[variables('useAuth')]",
                     "siteAuthSettings": "[variables('aadAuth')[string(variables('useAuth'))]]"
                 },

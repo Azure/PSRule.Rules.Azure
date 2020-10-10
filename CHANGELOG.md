@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- New rules:
+  - App Service:
+    - Check App Service apps use HTTP/2. [#538](https://github.com/Microsoft/PSRule.Rules.Azure/issues/538)
+    - Check App Service apps use managed identities. [#537](https://github.com/Microsoft/PSRule.Rules.Azure/issues/537)
 - Updated rules:
   - Storage:
     - Updated `Azure.Storage.UseReplication` for additional use cases.
