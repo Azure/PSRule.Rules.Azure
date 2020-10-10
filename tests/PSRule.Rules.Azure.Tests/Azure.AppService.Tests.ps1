@@ -176,6 +176,38 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'site-A', 'site-A/staging';
         }
+
+        It 'Azure.AppService.HTTP2' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.HTTP2' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'site-A', 'site-A/staging';
+        }
+
+        It 'Azure.AppService.ManagedIdentity' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.ManagedIdentity' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'site-A', 'site-A/staging';
+        }
     }
 
     Context 'With Template' {
@@ -247,6 +279,20 @@ Describe 'Azure.AppService' -Tag 'AppService' {
 
         It 'Azure.AppService.AlwaysOn' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.AlwaysOn' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'app-a';
+        }
+
+        It 'Azure.AppService.HTTP2' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.HTTP2' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

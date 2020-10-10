@@ -4,7 +4,7 @@ Includes Azure features in preview.
 
 ## Rules
 
-The following rules are included within `Azure.Preview`. This baseline includes a total of 163 rules.
+The following rules are included within `Azure.Preview`. This baseline includes a total of 165 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -48,6 +48,8 @@ Name | Synopsis | Severity
 [Azure.AppGw.WAFRules](Azure.AppGw.WAFRules.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | Important
 [Azure.AppService.AlwaysOn](Azure.AppService.AlwaysOn.md) | Configure Always On for App Service apps. | Important
 [Azure.AppService.ARRAffinity](Azure.AppService.ARRAffinity.md) | Disable client affinity for stateless services. | Awareness
+[Azure.AppService.HTTP2](Azure.AppService.HTTP2.md) | Use HTTP/2 instead of HTTP/1.x to improve protocol efficiency. | Awareness
+[Azure.AppService.ManagedIdentity](Azure.AppService.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important
 [Azure.AppService.MinPlan](Azure.AppService.MinPlan.md) | Use at least a Standard App Service Plan. | Important
 [Azure.AppService.MinTLS](Azure.AppService.MinTLS.md) | App Service should reject TLS versions older then 1.2. | Critical
 [Azure.AppService.NETVersion](Azure.AppService.NETVersion.md) | Configure applications to use newer .NET Framework versions. | Important

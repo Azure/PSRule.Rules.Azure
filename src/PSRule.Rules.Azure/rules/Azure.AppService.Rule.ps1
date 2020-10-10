@@ -100,6 +100,22 @@ Rule 'Azure.AppService.AlwaysOn' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sit
     }
 }
 
+# Synopsis: Use HTTP/2 for App Service apps.
+Rule 'Azure.AppService.HTTP2' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+    $siteConfigs = @(GetWebSiteConfig);
+    if ($siteConfigs.Length -eq 0) {
+        return $Assert.HasFieldValue($TargetObject, 'Properties.siteConfig.http20Enabled', $True);
+    }
+    foreach ($siteConfig in $siteConfigs) {
+        $Assert.HasFieldValue($siteConfig, 'Properties.http20Enabled', $True);
+    }
+}
+
+# Synopsis: Use a Managed Identities with Azure Service apps.
+Rule 'Azure.AppService.ManagedIdentity' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+    $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'));
+}
+
 #region Helper functions
 
 function global:IsConsumptionPlan {
