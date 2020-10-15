@@ -472,6 +472,7 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 if (copyIndex.IsCopy())
                 {
+                    context.CopyIndex.Push(copyIndex);
                     var jArray = new JArray();
                     while (copyIndex.Next())
                     {
@@ -576,6 +577,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 {
                     if (copyIndex.IsCopy())
                     {
+                        context.CopyIndex.Push(copyIndex);
                         var jArray = new JArray();
                         while (copyIndex.Next())
                         {

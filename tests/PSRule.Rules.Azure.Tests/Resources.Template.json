@@ -84,6 +84,14 @@
                     "name": "[concat('route-', copyIndex('routes'))]",
                     "properties": {}
                 }
+            },
+            {
+                "name": "routes2",
+                "count": "[length(variables('allSubnets'))]",
+                "input": {
+                    "name": "[concat('route-', copyIndex('routes2'))]",
+                    "properties": {}
+                }
             }
         ]
     },
@@ -181,6 +189,22 @@
             "properties": {
                 "disableBgpRoutePropagation": false,
                 "routes": "[variables('routes')]"
+            }
+        },
+        {
+            "condition": "[bool('false')]",
+            "comments": "A subnet Route Table",
+            "type": "Microsoft.Network/routeTables",
+            "name": "[concat('route-', parameters('subnets')[copyIndex('routeIndex')].name)]",
+            "apiVersion": "2019-04-01",
+            "location": "[resourceGroup().location]",
+            "copy": {
+                "name": "routeIndex",
+                "count": "[length(parameters('subnets'))]"
+            },
+            "properties": {
+                "disableBgpRoutePropagation": false,
+                "routes": "[variables('routes2')]"
             }
         },
         {
