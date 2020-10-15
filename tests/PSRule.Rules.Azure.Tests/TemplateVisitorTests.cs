@@ -34,6 +34,13 @@ namespace PSRule.Rules.Azure
             Assert.Equal("vnet-001/subnet1/Microsoft.Authorization/924b5b06-fe70-9ab7-03f4-14671370765e", actual3["name"]);
         }
 
+        [Fact]
+        public void AdvancedTemplateParsing()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Resources.FrontDoor.Template.json"), null);
+            Assert.NotNull(resources);
+        }
+
         private static string GetSourcePath(string fileName)
         {
             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
