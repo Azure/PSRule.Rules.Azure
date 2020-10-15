@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.17.0-B2010022 (pre-release)
+
+What's changed since pre-release v0.17.0-B2010017:
+
 - Bug fixes:
   - Fixed expansion of templates with multiple variables copy blocks. [#541](https://github.com/Microsoft/PSRule.Rules.Azure/issues/541)
 
