@@ -1,0 +1,253 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "name": "Front Door",
+        "description": "Creates or updates an Azure Front Door."
+    },
+    "parameters": {
+        "frontdoorName": {
+            "type": "string",
+            "defaultValue": "my-frontdoor",
+            "metadata": {
+                "description": "Optional. The name of the Front Door."
+            }
+        },
+        "policyName": {
+            "type": "string",
+            "defaultValue": "mywadpolicy",
+            "metadata": {
+                "description": "Optional. The name of the Web Application Firewall (WAF) policy."
+            }
+        },
+        "frontends": {
+            "type": "array",
+            "defaultValue": [
+                {
+                    "name": "<name>",
+                    "hostName": "<hostName>"
+                }
+            ],
+            "metadata": {
+                "description": "Optional. An array of front ends to configure."
+            }
+        },
+        "backendPools": {
+            "type": "array",
+            "defaultValue": [
+                {
+                    "name": "<poolName>",
+                    "backends": [
+                        {
+                            "address": "<hostName>",
+                            "httpPort": 80,
+                            "httpsPort": 443,
+                            "priority": 1,
+                            "weight": 50,
+                            "backendHostHeader": "<hostName>",
+                            "enabledState": "Enabled"
+                        }
+                    ],
+                    "health": {
+                        "intervalInSeconds": 30,
+                        "path": "/index.html",
+                        "protocol": "Https",
+                        "enabledState": "Enabled",
+                        "healthProbeMethod": "Head"
+                    },
+                    "settings": {
+                        "additionalLatencyMilliseconds": 0,
+                        "sampleSize": 4,
+                        "successfulSamplesRequired": 2
+                    },
+                    "forward": {
+                        "frontend": "<name_or_frontDoorName>",
+                        "patterns": [
+                            "/data/*"
+                        ]
+                    }
+                }
+            ],
+            "metadata": {
+                "description": "Optional. One or more backends to connect to."
+            }
+        },
+        "tags": {
+            "type": "object",
+            "defaultValue": {},
+            "metadata": {
+                "description": "Optional. Tags to apply to the resource."
+            }
+        }
+    },
+    "variables": {
+        "wafPolicyLink": {
+            "enabled": {
+                "id": "[resourceId('Microsoft.Network/frontDoorWebApplicationFirewallPolicies', parameters('policyName'))]"
+            },
+            "disabled": null
+        },
+        "wafPolicy": "[if(empty(parameters('policyName')), variables('wafPolicyLink').disabled, variables('wafPolicyLink').enabled)]",
+        "builtinFrontends": [
+            {
+                "name": "[concat(parameters('frontdoorName'))]",
+                "properties": {
+                    "hostName": "[concat(parameters('frontdoorName'), '.azurefd.net')]",
+                    "sessionAffinityEnabledState": "Disabled",
+                    "sessionAffinityTtlSeconds": 0,
+                    "webApplicationFirewallPolicyLink": "[variables('wafPolicy')]"
+                }
+            }
+        ],
+        "customFrontends": {
+            "copy": [
+                {
+                    "name": "frontends",
+                    "count": "[length(parameters('frontends'))]",
+                    "input": {
+                        "name": "[parameters('frontends')[copyIndex('frontends')].name]",
+                        "properties": {
+                            "hostName": "[parameters('frontends')[copyIndex('frontends')].hostName]",
+                            "sessionAffinityEnabledState": "Disabled",
+                            "sessionAffinityTtlSeconds": 0,
+                            "webApplicationFirewallPolicyLink": "[variables('wafPolicy')]"
+                        }
+                    }
+                }
+            ]
+        },
+        "frontends": "[union(variables('builtinFrontends'), variables('customFrontends').frontends)]",
+        "backend": {
+            "copy": [
+                {
+                    "name": "health",
+                    "count": "[length(parameters('backendPools'))]",
+                    "input": {
+                        "name": "[concat('health-', parameters('backendPools')[copyIndex('health')].name)]",
+                        "properties": "[parameters('backendPools')[copyIndex('health')].health]"
+                    }
+                },
+                {
+                    "name": "settings",
+                    "count": "[length(parameters('backendPools'))]",
+                    "input": {
+                        "name": "[concat('settings-', parameters('backendPools')[copyIndex('settings')].name)]",
+                        "properties": "[parameters('backendPools')[copyIndex('settings')].settings]"
+                    }
+                },
+                {
+                    "name": "pools",
+                    "count": "[length(parameters('backendPools'))]",
+                    "input": {
+                        "name": "[parameters('backendPools')[copyIndex('pools')].name]",
+                        "properties": {
+                            "backends": "[parameters('backendPools')[copyIndex('pools')].backends]",
+                            "healthProbeSettings": {
+                                "id": "[concat(resourceId('Microsoft.Network/frontdoors', parameters('frontdoorName')), '/HealthProbeSettings/health-', parameters('backendPools')[copyIndex('pools')].name)]"
+                            },
+                            "loadBalancingSettings": {
+                                "id": "[concat(resourceId('Microsoft.Network/frontdoors', parameters('frontdoorName')), '/LoadBalancingSettings/settings-', parameters('backendPools')[copyIndex('pools')].name)]"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "rules",
+                    "count": "[length(parameters('backendPools'))]",
+                    "input": {
+                        "name": "[parameters('backendPools')[copyIndex('rules')].name]",
+                        "properties": {
+                            "frontendEndpoints": [
+                                {
+                                    "id": "[concat(resourceId('Microsoft.Network/frontdoors', parameters('frontdoorName')), '/FrontendEndpoints/', parameters('backendPools')[copyIndex('rules')].forward.frontend)]"
+                                }
+                            ],
+                            "acceptedProtocols": [
+                                "Http",
+                                "Https"
+                            ],
+                            "patternsToMatch": "[parameters('backendPools')[copyIndex('rules')].forward.patterns]",
+                            "enabledState": "Enabled",
+                            "routeConfiguration": {
+                                "@odata.type": "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration",
+                                "forwardingProtocol": "HttpsOnly",
+                                "cacheConfiguration": {
+                                    "queryParameterStripDirective": "StripAll",
+                                    "dynamicCompression": "Enabled"
+                                },
+                                "backendPool": {
+                                    "id": "[concat(resourceId('Microsoft.Network/frontdoors', parameters('frontdoorName')), '/backendPools/', parameters('backendPools')[copyIndex('rules')].name)]"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/frontdoors",
+            "apiVersion": "2020-05-01",
+            "name": "[parameters('frontdoorName')]",
+            "location": "Global",
+            "dependsOn": [
+                "policy"
+            ],
+            "tags": "[parameters('tags')]",
+            "properties": {
+                "backendPools": "[variables('backend').pools]",
+                "healthProbeSettings": "[variables('backend').health]",
+                "frontendEndpoints": "[variables('frontends')]",
+                "loadBalancingSettings": "[variables('backend').settings]",
+                "routingRules": "[variables('backend').rules]",
+                "backendPoolsSettings": {
+                    "enforceCertificateNameCheck": "Enabled",
+                    "sendRecvTimeoutSeconds": 30
+                },
+                "enabledState": "Enabled",
+                "friendlyName": "[parameters('frontdoorName')]"
+            }
+        },
+        {
+            "comments": "Creates or updates a Web Application Firewall policy.",
+            "condition": "[not(empty(parameters('policyName')))]",
+            "apiVersion": "2020-04-01",
+            "type": "Microsoft.Network/frontDoorWebApplicationFirewallPolicies",
+            "name": "[if(empty(parameters('policyName')), 'empty', parameters('policyName'))]",
+            "location": "Global",
+            "copy": {
+                "name": "policy",
+                "count": "[if(empty(parameters('policyName')), 0, 1)]"
+            },
+            "tags": "[parameters('tags')]",
+            "properties": {
+                "policySettings": {
+                    "enabledState": "Enabled",
+                    "mode": "Prevention",
+                    "redirectUrl": null,
+                    "customBlockResponseStatusCode": 403
+                },
+                "customRules": {
+                    "rules": []
+                },
+                "managedRules": {
+                    "managedRuleSets": [
+                        {
+                            "ruleSetType": "DefaultRuleSet",
+                            "ruleSetVersion": "1.0",
+                            "ruleGroupOverrides": [],
+                            "exclusions": []
+                        },
+                        {
+                            "ruleSetType": "Microsoft_BotManagerRuleSet",
+                            "ruleSetVersion": "1.0",
+                            "ruleGroupOverrides": [],
+                            "exclusions": []
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

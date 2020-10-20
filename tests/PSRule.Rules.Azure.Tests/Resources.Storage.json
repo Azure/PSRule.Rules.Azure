@@ -142,7 +142,7 @@
                 "file": "https://storage-B.file.core.windows.net/"
             },
             "primaryLocation": "region",
-            "statusOfPrimary": "available",
+            "statusOfPrimary": "available"
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Storage/storageAccounts",
@@ -254,7 +254,9 @@
             "Model": null,
             "Capacity": null
         },
-        "Tags": null,
+        "Tags": {
+            "resource-usage": "azure-functions"
+        },
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
     },
     {

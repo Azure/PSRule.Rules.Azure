@@ -185,7 +185,7 @@ Rule 'Azure.APIM.ProductTerms' -Type 'Microsoft.ApiManagement/service', 'Microso
 
 # Synopsis: Consider configuring a managed identity for each API Management instance.
 Rule 'Azure.APIM.ManagedIdentity' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'))
+    $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'));
 }
 
 # Synopsis: Renew expired certificates

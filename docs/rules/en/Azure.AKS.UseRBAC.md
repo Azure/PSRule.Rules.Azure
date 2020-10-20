@@ -27,7 +27,8 @@ Consider redeploying the AKS cluster with RBAC enabled.
 
 ## LINKS
 
-- [Access and identity options for Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/concepts-identity#azure-active-directory-integration)
-- [Best practices for authentication and authorization in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-identity#use-azure-active-directory)
+- [Access and identity options for Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/concepts-identity#azure-active-directory-integration)
+- [Best practices for authentication and authorization in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-identity#use-azure-active-directory)
 - [Using RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.containerservice/2020-04-01/managedclusters#managedclusterproperties-object)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#managedclusterproperties-object)
+- [Use role-based access control (RBAC)](https://docs.microsoft.com/azure/architecture/framework/security/design-identity#use-role-based-access-control-rbac)

@@ -284,23 +284,28 @@ function FindAzureContext {
     )
     process {
         $listAvailable = $False;
-
         if ($Null -ne $Subscription -or $Null -ne $Tenant -or $All) {
             $listAvailable = $True;
         }
 
         # Get subscription contexts
-        $context = GetAzureContext -ListAvailable:$listAvailable;
-
-        if ($Null -eq $context) {
-            Write-Error -Message "Could not find an existing context. Use Connect-AzAccount to establish a PowerShell context with Azure.";
+        $context = @(GetAzureContext -ListAvailable:$listAvailable);
+        if ($Null -eq $context -and $context.Length -gt 0) {
+            Write-Error -Message 'Could not find an existing context. Use Connect-AzAccount to establish a PowerShell context with Azure.';
             return;
         }
 
-        $filteredContext = $context | Where-Object -FilterScript {
-            ($Null -eq $Tenant -or $Tenant.Length -eq 0 -or ($_.Tenant.Id -in $Tenant)) -and
-            ($Null -eq $Subscription -or $Subscription.Length -eq 0 -or ($_.Subscription.Id -in $Subscription) -or ($_.Subscription.Name -in $Subscription))
-        }
+        Write-Verbose "[Context] -- Found ($($context.Length)) subscription contexts";
+        $filteredContext = @($context | ForEach-Object -Process {
+            if (
+                ($Null -eq $Tenant -or $Tenant.Length -eq 0 -or ($_.Tenant.Id -in $Tenant)) -and
+                ($Null -eq $Subscription -or $Subscription.Length -eq 0 -or ($_.Subscription.Id -in $Subscription) -or ($_.Subscription.Name -in $Subscription))
+            ) {
+                $_;
+                Write-Verbose "[Context] -- Using subscription: $($_.Subscription.Name)";
+            }
+        })
+        Write-Verbose "[Context] -- Using [$($filteredContext.Length)/$($context.Length)] subscription contexts";
         return $filteredContext;
     }
 }
@@ -314,7 +319,6 @@ function GetAzureContext {
     )
     process {
         $getParams = @{ };
-
         if ($ListAvailable) {
             $getParams['ListAvailable'] = $True;
         }

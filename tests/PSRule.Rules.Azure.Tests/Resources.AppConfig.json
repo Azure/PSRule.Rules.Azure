@@ -1,0 +1,72 @@
+[
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "app-config-A",
+        "Name": "app-config-A",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "endpoint": "https://app-config-A.azconfig.io",
+            "encryption": {
+                "keyVaultProperties": null
+            },
+            "privateEndpointConnections": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.AppConfiguration/configurationStores",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+        "ExtensionResourceType": null,
+        "Sku": {
+            "Name": "standard",
+            "Tier": null,
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "app-config-B",
+        "Name": "app-config-B",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "endpoint": "https://app-config-B.azconfig.io",
+            "encryption": {
+                "keyVaultProperties": null
+            },
+            "privateEndpointConnections": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.AppConfiguration/configurationStores",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+        "ExtensionResourceType": null,
+        "Sku": {
+            "Name": "free",
+            "Tier": null,
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    }
+]

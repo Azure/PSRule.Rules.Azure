@@ -10,7 +10,7 @@ online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/r
 
 ## SYNOPSIS
 
-Use managed identities to access Azure resources.
+Configure managed identities to access Azure resources.
 
 ## DESCRIPTION
 
@@ -24,6 +24,6 @@ Also consider using managed identities to authenticate to related Azure services
 
 ## LINKS
 
-- [Use managed identities in Azure API Management](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-use-managed-service-identity)
-- [Authenticate with managed identity](https://docs.microsoft.com/en-us/azure/api-management/api-management-authentication-policies#ManagedIdentity)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.apimanagement/2019-12-01/service#ApiManagementServiceIdentity)
+- [Use managed identities in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity)
+- [Authenticate with managed identity](https://docs.microsoft.com/azure/api-management/api-management-authentication-policies#ManagedIdentity)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/2019-12-01/service#ApiManagementServiceIdentity)

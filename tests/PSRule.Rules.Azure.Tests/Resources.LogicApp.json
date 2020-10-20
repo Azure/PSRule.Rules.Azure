@@ -1,0 +1,321 @@
+[
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Logic/workflows/workflow-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Logic/workflows/workflow-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "workflow-A",
+        "Name": "workflow-A",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "state": "Enabled",
+            "version": "00000000000000000000",
+            "accessEndpoint": "https://prod-91.region.logic.azure.com:443/workflows/00000000000000000000000000000000",
+            "definition": {
+                "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {},
+                "triggers": {
+                    "manual": {
+                        "type": "Request",
+                        "kind": "Http",
+                        "inputs": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "actions": {},
+                "outputs": {}
+            },
+            "parameters": {},
+            "accessControl": {
+                "triggers": {
+                    "allowedCallerIpAddresses": [
+                        {
+                            "addressRange": "10.0.0.0/8"
+                        }
+                    ]
+                },
+                "actions": {
+                    "allowedCallerIpAddresses": [
+                        {
+                            "addressRange": "10.0.0.0/8"
+                        }
+                    ]
+                }
+            },
+            "endpointsConfiguration": {
+                "workflow": {
+                    "outgoingIpAddresses": [],
+                    "accessEndpointIpAddresses": []
+                },
+                "connector": {
+                    "outgoingIpAddresses": []
+                }
+            }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Logic/workflows",
+        "ResourceType": "Microsoft.Logic/workflows",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": {},
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Logic/workflows/workflow-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Logic/workflows/workflow-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "workflow-B",
+        "Name": "workflow-B",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "state": "Enabled",
+            "version": "00000000000000000000",
+            "accessEndpoint": "https://prod-91.region.logic.azure.com:443/workflows/00000000000000000000000000000000",
+            "definition": {
+                "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {},
+                "triggers": {
+                    "manual": {
+                        "type": "Request",
+                        "kind": "Http",
+                        "inputs": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "actions": {},
+                "outputs": {}
+            },
+            "parameters": {},
+            "accessControl": {},
+            "endpointsConfiguration": {
+                "workflow": {
+                    "outgoingIpAddresses": [],
+                    "accessEndpointIpAddresses": []
+                },
+                "connector": {
+                    "outgoingIpAddresses": []
+                }
+            }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Logic/workflows",
+        "ResourceType": "Microsoft.Logic/workflows",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": {},
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Logic/workflows/workflow-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Logic/workflows/workflow-C",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "workflow-C",
+        "Name": "workflow-C",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "state": "Enabled",
+            "version": "00000000000000000000",
+            "accessEndpoint": "https://prod-91.region.logic.azure.com:443/workflows/00000000000000000000000000000000",
+            "definition": {
+                "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {},
+                "triggers": {
+                    "manual": {
+                        "type": "Request",
+                        "kind": "Http",
+                        "inputs": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "actions": {},
+                "outputs": {}
+            },
+            "parameters": {},
+            "endpointsConfiguration": {
+                "workflow": {
+                    "outgoingIpAddresses": [],
+                    "accessEndpointIpAddresses": []
+                },
+                "connector": {
+                    "outgoingIpAddresses": []
+                }
+            }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Logic/workflows",
+        "ResourceType": "Microsoft.Logic/workflows",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": {},
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Logic/workflows/workflow-D",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Logic/workflows/workflow-D",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "workflow-D",
+        "Name": "workflow-D",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "state": "Enabled",
+            "version": "00000000000000000000",
+            "accessEndpoint": "https://prod-91.region.logic.azure.com:443/workflows/00000000000000000000000000000000",
+            "definition": {
+                "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {},
+                "triggers": {
+                    "manual": {
+                        "type": "Request",
+                        "kind": "Http",
+                        "inputs": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "actions": {},
+                "outputs": {}
+            },
+            "parameters": {},
+            "accessControl": {
+                "triggers": {
+                    "allowedCallerIpAddresses": []
+                },
+                "actions": {
+                    "allowedCallerIpAddresses": []
+                }
+            },
+            "endpointsConfiguration": {
+                "workflow": {
+                    "outgoingIpAddresses": [],
+                    "accessEndpointIpAddresses": []
+                },
+                "connector": {
+                    "outgoingIpAddresses": []
+                }
+            }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Logic/workflows",
+        "ResourceType": "Microsoft.Logic/workflows",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": {},
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Logic/workflows/workflow-E",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Logic/workflows/workflow-E",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "workflow-E",
+        "Name": "workflow-E",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "state": "Enabled",
+            "version": "00000000000000000000",
+            "accessEndpoint": "https://prod-91.region.logic.azure.com:443/workflows/00000000000000000000000000000000",
+            "definition": {
+                "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {},
+                "triggers": {
+                    "Recurrence": {
+                        "recurrence": {
+                            "frequency": "Day",
+                            "interval": 3
+                        },
+                        "type": "Recurrence"
+                    }
+                },
+                "actions": {},
+                "outputs": {}
+            },
+            "parameters": {},
+            "accessControl": {},
+            "endpointsConfiguration": {
+                "workflow": {
+                    "outgoingIpAddresses": [],
+                    "accessEndpointIpAddresses": []
+                },
+                "connector": {
+                    "outgoingIpAddresses": []
+                }
+            }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Logic/workflows",
+        "ResourceType": "Microsoft.Logic/workflows",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": {},
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    }
+]

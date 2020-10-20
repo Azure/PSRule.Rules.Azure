@@ -42,6 +42,6 @@ AKS clusters can not be updated to use managed identities for cluster infrastruc
 
 ## LINKS
 
-- [Use managed identities in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity)
-- [What are managed identities for Azure resources?](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
+- [Use managed identities in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/use-managed-identity)
+- [What are managed identities for Azure resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 - [AAD Pod Identity](https://github.com/Azure/aad-pod-identity)
