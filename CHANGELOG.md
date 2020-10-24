@@ -2,6 +2,47 @@
 
 ## Unreleased
 
+## v0.17.0
+
+What's changed since v0.16.0:
+
+- New rules:
+  - Azure Cache for Redis:
+    - Check cache instances use Standard C1 or greater SKU. [#501](https://github.com/microsoft/PSRule.Rules.Azure/issues/501)
+    - Cache cache instances configure `maxmemory-reserved` setting. [#502](https://github.com/microsoft/PSRule.Rules.Azure/issues/502)
+  - App Configuration:
+    - Check App Configuration stores meet name requirements. [#528](https://github.com/Microsoft/PSRule.Rules.Azure/issues/528)
+    - Check App Configuration stores use standard SKU. [#528](https://github.com/Microsoft/PSRule.Rules.Azure/issues/528)
+  - App Service:
+    - Check App Service apps use HTTP/2. [#538](https://github.com/Microsoft/PSRule.Rules.Azure/issues/538)
+    - Check App Service apps use managed identities. [#537](https://github.com/Microsoft/PSRule.Rules.Azure/issues/537)
+    - Check App Service apps use Always On. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+    - Check App Service apps have remote debugging disabled. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+    - Check App Service apps use newer .NET Framework versions. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+    - Check App Service apps use newer PHP runtime versions. [#521](https://github.com/Microsoft/PSRule.Rules.Azure/issues/521)
+  - Logic App:
+    - Check Logic App apps limit IP range for HTTP triggers. [#526](https://github.com/Microsoft/PSRule.Rules.Azure/issues/526)
+- Updated rules:
+  - Storage:
+    - Updated `Azure.Storage.UseReplication` for additional use cases.
+      - Added support for geo-zone-redundant storage. [#535](https://github.com/Microsoft/PSRule.Rules.Azure/issues/534)
+      - Exclude storage tagged with `resource-usage = 'azure-functions'` or `resource-usage = 'azure-monitor'`. [#534](https://github.com/Microsoft/PSRule.Rules.Azure/issues/534)
+  - Azure Kubernetes Service:
+    - Promote `Azure.AKS.AzurePolicyAddOn` to GA rule set. [#524](https://github.com/Microsoft/PSRule.Rules.Azure/issues/524)
+- Removed rules:
+  - Azure Kubernetes Service:
+    - Remove `Azure.AKS.PodSecurityPolicy` as this AKS feature is replaced by Azure Policy. [#523](https://github.com/Microsoft/PSRule.Rules.Azure/issues/523)
+- General improvements:
+  - Added support for `providers` template function. [#177](https://github.com/Microsoft/PSRule.Rules.Azure/issues/177)
+  - Added support for `dateTimeAdd` template function. [#516](https://github.com/Microsoft/PSRule.Rules.Azure/issues/516)
+- Bug fixes:
+  - Fixed expansion of templates with multiple variables copy blocks. [#541](https://github.com/Microsoft/PSRule.Rules.Azure/issues/541)
+  - Fixed App Service rule site config false positives in templates. [#533](https://github.com/Microsoft/PSRule.Rules.Azure/issues/533)
+
+What's changed since pre-release v0.17.0-B2010028:
+
+- No additional changes.
+
 ## v0.17.0-B2010028 (pre-release)
 
 What's changed since pre-release v0.17.0-B2010022:
