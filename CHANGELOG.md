@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- New rules:
+  - Front Door:
+    - Check Front Door WAF policy name requirements. [#552](https://github.com/Microsoft/PSRule.Rules.Azure/issues/552)
 - Bug fixes:
   - Fixed HNS storage accounts so they are excluded from blob soft delete rule. [#554](https://github.com/microsoft/PSRule.Rules.Azure/issues/554)
 
