@@ -27,7 +27,7 @@ Rule 'Azure.Storage.UseEncryption' -Type 'Microsoft.Storage/storageAccounts' -Ta
 }
 
 # Synopsis: Enable soft delete on Storage Accounts
-Rule 'Azure.Storage.SoftDelete' -Type 'Microsoft.Storage/storageAccounts' -If { !(IsCloudShell) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Storage.SoftDelete' -Type 'Microsoft.Storage/storageAccounts' -If { !(IsCloudShell) -and !(IsHnsStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $serviceProperties = GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices';
     $Assert.HasFieldValue($serviceProperties, 'properties.deleteRetentionPolicy.enabled', $True);
 }
@@ -128,6 +128,19 @@ function global:IsMonitorStorage {
             return $False;
         }
         return $TargetObject.Tags.'resource-usage' -eq 'azure-monitor';
+    }
+}
+
+# Some features are not supported with hierarchical namespace
+function global:IsHnsStorage {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($PSRule.TargetType -ne 'Microsoft.Storage/storageAccounts') {
+            return $False;
+        }
+        return $Assert.HasFieldValue($TargetObject, 'Properties.isHnsEnabled', $True).Result;
     }
 }
 

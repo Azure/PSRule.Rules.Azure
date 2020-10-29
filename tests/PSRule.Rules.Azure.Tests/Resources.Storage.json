@@ -304,5 +304,111 @@
             "ms-resource-usage": "azure-cloud-shell"
         },
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-E",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-E",
+        "Identity": null,
+        "Kind": "StorageV2",
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "storage-E",
+        "Name": "storage-E",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "privateEndpointConnections": [],
+            "minimumTlsVersion": "TLS1_2",
+            "allowBlobPublicAccess": true,
+            "isHnsEnabled": true,
+            "networkAcls": {
+                "bypass": "AzureServices",
+                "virtualNetworkRules": [],
+                "ipRules": [],
+                "defaultAction": "Allow"
+            },
+            "supportsHttpsTrafficOnly": true,
+            "encryption": {
+                "services": {
+                    "file": {
+                        "keyType": "Account",
+                        "enabled": true
+                    },
+                    "blob": {
+                        "keyType": "Account",
+                        "enabled": true
+                    }
+                },
+                "keySource": "Microsoft.Storage"
+            },
+            "accessTier": "Hot",
+            "provisioningState": "Succeeded",
+            "primaryEndpoints": {
+                "dfs": "https://storage-E.dfs.core.windows.net/",
+                "web": "https://storage-E.z13.web.core.windows.net/",
+                "blob": "https://storage-E.blob.core.windows.net/",
+                "queue": "https://storage-E.queue.core.windows.net/",
+                "table": "https://storage-E.table.core.windows.net/",
+                "file": "https://storage-E.file.core.windows.net/"
+            },
+            "primaryLocation": "region",
+            "statusOfPrimary": "available"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Storage/storageAccounts",
+        "ResourceType": "Microsoft.Storage/storageAccounts",
+        "ExtensionResourceType": null,
+        "Sku": {
+            "Name": "Standard_LRS",
+            "Tier": "Standard",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null,
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-E/blobServices/default",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-E/blobServices/default",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "default",
+                "Name": "default",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "containerDeleteRetentionPolicy": {
+                        "enabled": true,
+                        "days": 7
+                    },
+                    "cors": {
+                        "corsRules": []
+                    },
+                    "deleteRetentionPolicy": {
+                        "enabled": false
+                    }
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Storage/storageAccounts/blobServices",
+                "ResourceType": "Microsoft.Storage/storageAccounts/blobServices",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
     }
 ]
