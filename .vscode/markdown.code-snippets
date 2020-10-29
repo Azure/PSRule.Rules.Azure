@@ -1,0 +1,39 @@
+{
+    "rule-azure": {
+        "scope": "markdown",
+        "prefix": "rule-azure",
+        "description": "Azure rule documentation",
+        "body": [
+            "---",
+            "severity:",
+            "pillar:",
+            "category:",
+            "resource:",
+            "online version:",
+            "---",
+            "",
+            "# ${1:Name of rule}",
+            "",
+            "## SYNOPSIS",
+            "",
+            "{{ A brief summary of the rule }}",
+            "",
+            "## DESCRIPTION",
+            "",
+            "{{ A detailed description of the rule }}",
+            "",
+            "## RECOMMENDATION",
+            "",
+            "{{ A detailed explanation of the steps required to pass the rule }}",
+            "",
+            "## NOTES",
+            "",
+            "{{ Additional information or configuration options }}",
+            "",
+            "## LINKS",
+            "",
+            "{{ Links to external references }}",
+            ""
+        ]
+    }
+}
