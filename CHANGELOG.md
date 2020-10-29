@@ -3,6 +3,14 @@
 ## Unreleased
 
 - New rules:
+  - Container Registry:
+    - Check registries use container image scanning. [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
+    - Check registries image scanning results are healthy. [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
+    - Check registries use content trust. [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
+    - Check registries are geo-replicated. [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
+    - Check registries uses storage space less than included storage. [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
+    - Check registries have a retention set of untagged manifests (preview). [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
+    - Check registries use image quarantine pattern (preview). [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
   - Front Door:
     - Check Front Door WAF policy name requirements. [#552](https://github.com/Microsoft/PSRule.Rules.Azure/issues/552)
 - Bug fixes:
