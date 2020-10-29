@@ -33,4 +33,6 @@ This rule does not check if Front Door names are unique.
 
 ## LINKS
 
-- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules)
+- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/frontdoors)
+- [Tagging and resource naming](https://docs.microsoft.com/azure/architecture/framework/devops/app-design#tagging-and-resource-naming)

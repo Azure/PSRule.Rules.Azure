@@ -132,7 +132,7 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
         }
     }
 
-    Context 'Resource name' {
+    Context 'Resource name - Azure.FrontDoor.Name' {
         $invokeParams = @{
             Baseline = 'Azure.All'
             Module = 'PSRule.Rules.Azure'
@@ -172,6 +172,52 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             It $name {
                 $testObject.Name = $name;
                 $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.FrontDoor.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
+        }
+    }
+
+    Context 'Resource name - Azure.FrontDoor.WAF.Name' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'policy1'
+            'PolicyA'
+        )
+        $invalidNames = @(
+            '_policy-1'
+            '_policy1'
+            '-policy1'
+            'policy.1'
+            'policy1_'
+            'policy1-'
+            '1policy'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.FrontDoor.WAF.Name';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.FrontDoor.WAF.Name';
                 $ruleResult | Should -Not -BeNullOrEmpty;
                 $ruleResult.Outcome | Should -Be 'Fail';
             }

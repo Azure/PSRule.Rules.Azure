@@ -18,6 +18,18 @@ function global:ResourceType {
     }
 }
 
+function global:ExtensionResourceType {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [String]$ResourceType
+    )
+    process {
+        return $TargetObject.ExtensionResourceType -eq $ResourceType;
+    }
+}
+
 # Get sub resources of a specific resource type
 function global:GetSubResources {
     [CmdletBinding()]
@@ -430,5 +442,18 @@ function global:IsVMPromoSku {
             return $False;
         }
         return $TargetObject.Properties.hardwareProfile.vmSize -like '*_Promo';
+    }
+}
+
+# Normalizes the location for comparison.
+function global:GetNormalLocation {
+    [CmdletBinding()]
+    [OutputType([String])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [String]$Location
+    )
+    process {
+        return $Location.Replace(' ', '').ToLower();
     }
 }
