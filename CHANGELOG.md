@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Bug fixes:
+  - Fixed HNS storage accounts so they are excluded from blob soft delete rule. [#554](https://github.com/microsoft/PSRule.Rules.Azure/issues/554)
+
 ## v0.17.0
 
 What's changed since v0.16.0:
