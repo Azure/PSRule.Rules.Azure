@@ -31,7 +31,20 @@
         "Name": "registry-B",
         "Properties": {
             "loginServer": "registry-B.azurecr.io",
-            "adminUserEnabled": false
+            "adminUserEnabled": false,
+            "policies": {
+                "quarantinePolicy": {
+                    "status": "disabled"
+                },
+                "trustPolicy": {
+                    "type": "Notary",
+                    "status": "enabled"
+                },
+                "retentionPolicy": {
+                    "days": 180,
+                    "status": "enabled"
+                }
+            }
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.ContainerRegistry/registries",
@@ -45,6 +58,275 @@
             "Capacity": null
         },
         "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/replications/region2",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/replications/region2",
+                "Identity": null,
+                "Kind": null,
+                "Location": "region2",
+                "ManagedBy": null,
+                "ResourceName": "region2",
+                "Name": "region2",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "provisioningState": "Succeeded",
+                    "status": {
+                        "displayStatus": "Ready"
+                    },
+                    "regionEndpointEnabled": true
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.ContainerRegistry/registries/replications",
+                "ResourceType": "Microsoft.ContainerRegistry/registries/replications",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/replications/region",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/replications/region",
+                "Identity": null,
+                "Kind": null,
+                "Location": "region",
+                "ManagedBy": null,
+                "ResourceName": "region",
+                "Name": "region",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "provisioningState": "Succeeded",
+                    "status": {
+                        "displayStatus": "Ready"
+                    },
+                    "regionEndpointEnabled": true
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.ContainerRegistry/registries/replications",
+                "ResourceType": "Microsoft.ContainerRegistry/registries/replications",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            },
+            {
+                "value": [
+                    {
+                        "name": "Size",
+                        "limit": 536870912000,
+                        "currentValue": 531502202880,
+                        "unit": "Bytes"
+                    },
+                    {
+                        "name": "Webhooks",
+                        "limit": 500,
+                        "currentValue": 0,
+                        "unit": "Count"
+                    }
+                ],
+                "ResourceType": "Microsoft.ContainerRegistry/registries/listUsages"
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/providers/Microsoft.Security/assessments/00000000-0000-0000-0000-000000000000",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/providers/Microsoft.Security/assessments/00000000-0000-0000-0000-000000000000",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "00000000-0000-0000-0000-000000000000",
+                "Name": "00000000-0000-0000-0000-000000000000",
+                "ExtensionResourceName": "00000000-0000-0000-0000-000000000000",
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "resourceDetails": {
+                        "Source": "Azure",
+                        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B"
+                    },
+                    "displayName": "Vulnerabilities in Azure Container Registry images should be remediated (powered by Qualys)",
+                    "status": {
+                        "code": "Unhealthy"
+                    },
+                    "additionalData": {
+                        "subAssessmentsLink": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/providers/Microsoft.Security/assessments/00000000-0000-0000-0000-000000000000/subAssessments"
+                    }
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.ContainerRegistry/registries",
+                "ResourceType": "Microsoft.ContainerRegistry/registries",
+                "ExtensionResourceType": "Microsoft.Security/assessments",
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C",
+        "Location": "region",
+        "ResourceName": "registry-C",
+        "Name": "registry-C",
+        "Properties": {
+            "loginServer": "registry-C.azurecr.io",
+            "adminUserEnabled": false,
+            "policies": {
+                "quarantinePolicy": {
+                    "status": "enabled"
+                },
+                "trustPolicy": {
+                    "type": "Notary",
+                    "status": "enabled"
+                },
+                "retentionPolicy": {
+                    "days": 180,
+                    "status": "enabled"
+                }
+            }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerRegistry/registries",
+        "ResourceType": "Microsoft.ContainerRegistry/registries",
+        "Sku": {
+            "Name": "Standard",
+            "Tier": "Standard",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/replications/region2",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/replications/region2",
+                "Identity": null,
+                "Kind": null,
+                "Location": "region2",
+                "ManagedBy": null,
+                "ResourceName": "region2",
+                "Name": "region2",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "provisioningState": "Succeeded",
+                    "status": {
+                        "displayStatus": "Ready"
+                    },
+                    "regionEndpointEnabled": true
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.ContainerRegistry/registries/replications",
+                "ResourceType": "Microsoft.ContainerRegistry/registries/replications",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/replications/region",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/replications/region",
+                "Identity": null,
+                "Kind": null,
+                "Location": "region",
+                "ManagedBy": null,
+                "ResourceName": "region",
+                "Name": "region",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "provisioningState": "Succeeded",
+                    "status": {
+                        "displayStatus": "Ready"
+                    },
+                    "regionEndpointEnabled": true
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.ContainerRegistry/registries/replications",
+                "ResourceType": "Microsoft.ContainerRegistry/registries/replications",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            },
+            {
+                "value": [
+                    {
+                        "name": "Size",
+                        "limit": 536870912000,
+                        "currentValue": 1073741824,
+                        "unit": "Bytes"
+                    },
+                    {
+                        "name": "Webhooks",
+                        "limit": 500,
+                        "currentValue": 0,
+                        "unit": "Count"
+                    }
+                ],
+                "ResourceType": "Microsoft.ContainerRegistry/registries/listUsages"
+            },
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/providers/Microsoft.Security/assessments/00000000-0000-0000-0000-000000000000",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/providers/Microsoft.Security/assessments/00000000-0000-0000-0000-000000000000",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "00000000-0000-0000-0000-000000000000",
+                "Name": "00000000-0000-0000-0000-000000000000",
+                "ExtensionResourceName": "00000000-0000-0000-0000-000000000000",
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "resourceDetails": {
+                        "Source": "Azure",
+                        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C"
+                    },
+                    "displayName": "Vulnerabilities in Azure Container Registry images should be remediated (powered by Qualys)",
+                    "status": {
+                        "code": "Healthy"
+                    },
+                    "additionalData": {
+                        "subAssessmentsLink": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/providers/Microsoft.Security/assessments/00000000-0000-0000-0000-000000000000/subAssessments"
+                    }
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.ContainerRegistry/registries",
+                "ResourceType": "Microsoft.ContainerRegistry/registries",
+                "ExtensionResourceType": "Microsoft.Security/assessments",
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
     }
 ]

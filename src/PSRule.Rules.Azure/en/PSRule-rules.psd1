@@ -35,4 +35,6 @@
     TemplateParameterDescription = "The parameter '{0}' does not name a description set."
     ParameterNotFound = "The parameter '{0}' was not used within the template."
     VariableNotFound = "The variable '{0}' was not used within the template."
+    AssessmentUnhealthy = "An assessment is reporting one or more issues."
+    AssessmentNotFound = "The results for a valid assessment was not found."
 }
