@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.18.0-B2010016 (pre-release)
+
+What's changed since v0.17.0:
+
 - New rules:
   - Container Registry:
     - Check registries use container image scanning. [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
