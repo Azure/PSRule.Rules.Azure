@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+What's changed since pre-release v0.18.0-B2010016:
+
+- Bug fixes:
+  - Fixed ResourceGroupName property cannot be found on this object. [#561](https://github.com/microsoft/PSRule.Rules.Azure/issues/561)
+
 ## v0.18.0-B2010016 (pre-release)
 
 What's changed since v0.17.0:

@@ -402,7 +402,10 @@ function FilterAzureResource {
         [PSObject]$InputObject
     )
     process {
-        if (($Null -eq $ResourceGroupName) -or ($InputObject.ResourceType -eq 'Microsoft.Subscription') -or ($InputObject.ResourceGroupName -in $ResourceGroupName)) {
+        if (($Null -eq $ResourceGroupName) -or ($InputObject.ResourceType -eq 'Microsoft.Subscription') -or (@($InputObject.PSObject.Properties | Where-Object { $_.Name -eq 'ResourceGroupName' }).Length -eq 0)) {
+            return $InputObject;
+        }
+        elseif ($InputObject.ResourceGroupName -in $ResourceGroupName) {
             return $InputObject;
         }
     }
