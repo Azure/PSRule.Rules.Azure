@@ -17,6 +17,10 @@ updates:
   - 'dependencies'
   reviewers:
   - 'microsoft/psrule-rules-azure'
+  ignore:
+  # Ignore upgrades to PS 7.1 for tool chain components at this time
+  # Testing against PS 7.1 is already completed
+  - dependency-name: 'Microsoft.PowerShell.SDK'
 
 # Maintain dependencies for GitHub Actions
 - package-ecosystem: 'github-actions'
