@@ -37,6 +37,12 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, actual4.Length);
             Assert.NotNull(actual4.SingleOrDefault(f => f.FullName == GetSourcePath("Resources.Parameters.json")));
             Assert.NotNull(actual4.SingleOrDefault(f => f.FullName == GetSourcePath("Resources.Parameters2.json")));
+
+            // With file path
+            builder = new PathBuilder(new NullLogger(), GetSourcePath("Resources.Parameters.json"), "*.json");
+            builder.Add("*.parameters.json");
+            var actual5 = builder.Build();
+            Assert.NotNull(actual5.SingleOrDefault(f => f.FullName == GetSourcePath("Resources.Parameters.json")));
         }
 
         private static string GetSourcePath(string fileName)

@@ -1,0 +1,499 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.1.0.0",
+    "metadata": {
+        "name": "Recovery Services Vault",
+        "description": "Create or update a Recovery Services Vault."
+    },
+    "parameters": {
+        "vaultName": {
+            "type": "string",
+            "defaultValue": "test-vault",
+            "metadata": {
+                "description": "Required. The name of the Recovery Services Vault."
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Optional. The Azure region to deploy to.",
+                "example": "EastUS"
+            }
+        },
+        "vaultStorageType": {
+            "type": "string",
+            "defaultValue": "GeoRedundant",
+            "allowedValues": [
+                "LocallyRedundant",
+                "GeoRedundant"
+            ],
+            "metadata": {
+                "description": "Optional. The storage redundency for protected items. This can not be changed after first backup item."
+            }
+        },
+        "backupPolicies": {
+            "type": "array",
+            "defaultValue": [
+                {
+                    "name": "<policy_name>",
+                    "properties": {
+                        "backupManagementType": "AzureIaasVM",
+                        "instantRPDetails": {},
+                        "schedulePolicy": {
+                            "schedulePolicyType": "SimpleSchedulePolicy",
+                            "scheduleRunFrequency": "Daily",
+                            "scheduleRunTimes": [
+                                "2020-10-23T02:30:00Z"
+                            ],
+                            "scheduleWeeklyFrequency": 0
+                        },
+                        "retentionPolicy": {
+                            "retentionPolicyType": "LongTermRetentionPolicy",
+                            "dailySchedule": {
+                                "retentionTimes": [
+                                    "2020-10-23T02:30:00Z"
+                                ],
+                                "retentionDuration": {
+                                    "count": 180,
+                                    "durationType": "Days"
+                                }
+                            }
+                        },
+                        "instantRpRetentionRangeInDays": 2,
+                        "timeZone": "UTC"
+                    }
+                }
+            ],
+            "metadata": {
+                "description": "Optional. Configure vault backup policies."
+            }
+        },
+        "replicationPolicies": {
+            "type": "array",
+            "defaultValue": [
+                {
+                    "name": "<policy_name>",
+                    "properties": {
+                        "instanceType": "A2A",
+                        "appConsistentFrequencyInMinutes": 60,
+                        "crashConsistentFrequencyInMinutes": 5,
+                        "recoveryPointHistory": 1440
+                    }
+                }
+            ],
+            "metadata": {
+                "description": "Optional. Configure vault replication policies."
+            }
+        },
+        "replication": {
+            "type": "array",
+            "defaultValue": [
+                {
+                    "sourceContainer": "<source_container>",
+                    "targetContainer": "<target_container>",
+                    "sourceLocation": "<source_location>",
+                    "policyName": "<policy_name>"
+                }
+            ],
+            "metadata": {
+                "description": "Optional. Configures replication containers from a source to vault location."
+            }
+        },
+        "networkMap": {
+            "type": "array",
+            "defaultValue": [
+                {
+                    "sourceLocation": "<source_location>",
+                    "sourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers/Microsoft.Network/virtualNetworks/vnet-test-1",
+                    "targetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-2/providers/Microsoft.Network/virtualNetworks/vnet-test-2"
+                }
+            ],
+            "metadata": {
+                "description": "Optional. Configures Azure network mapping for replication."
+            }
+        },
+        "workspaceId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Required. The workspace to store recovery events."
+            }
+        },
+        "tags": {
+            "type": "object",
+            "defaultValue": {},
+            "metadata": {
+                "description": "Optional. Tags to apply to the resource."
+            }
+        }
+    },
+    "variables": {
+        "fabricSuffix": "-fabric",
+        "target": {
+            "fabricName": "[toLower(concat(parameters('location'), variables('fabricSuffix')))]",
+            "fabricResourceName": "[concat(parameters('vaultName'), '/', toLower(parameters('location')), variables('fabricSuffix'))]"
+        },
+        "containers": {
+            "copy": [
+                {
+                    "name": "containerFabrics",
+                    "count": "[length(parameters('replication'))]",
+                    "input": "[parameters('replication')[copyIndex('containerFabrics')].sourceLocation]"
+                },
+                {
+                    "name": "containerNames",
+                    "count": "[length(parameters('replication'))]",
+                    "input": "[toLower(concat(parameters('replication')[copyIndex('containerNames')].sourceLocation, variables('fabricSuffix'), '/', parameters('replication')[copyIndex('containerNames')].sourceContainer))]"
+                },
+                {
+                    "name": "containerObjects",
+                    "count": "[length(parameters('replication'))]",
+                    "input": {
+                        "fabricName": "[toLower(concat(parameters('replication')[copyIndex('containerObjects')].sourceLocation, variables('fabricSuffix')))]",
+                        "fabricResourceName": "[concat(parameters('vaultName'), '/', toLower(concat(parameters('replication')[copyIndex('containerObjects')].sourceLocation, variables('fabricSuffix'))))]",
+                        "sourceContainer": "[toLower(parameters('replication')[copyIndex('containerObjects')].sourceContainer)]",
+                        "targetContainer": "[toLower(parameters('replication')[copyIndex('containerObjects')].targetContainer)]",
+                        "sourceResourceName": "[concat(parameters('vaultName'), '/', toLower(concat(parameters('replication')[copyIndex('containerObjects')].sourceLocation, variables('fabricSuffix'), '/', toLower(parameters('replication')[copyIndex('containerObjects')].sourceContainer))))]",
+                        "sourceResourceId": "[resourceId('Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers', parameters('vaultName'), concat(parameters('replication')[copyIndex('containerObjects')].sourceLocation, variables('fabricSuffix')), parameters('replication')[copyIndex('containerObjects')].sourceContainer)]",
+                        "targetResourceName": "[concat(variables('target').fabricResourceName, '/', toLower(parameters('replication')[copyIndex('containerObjects')].sourceContainer))]",
+                        "targetResourceId": "[resourceId('Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers', parameters('vaultName'), variables('target').fabricName, parameters('replication')[copyIndex('containerObjects')].targetContainer)]",
+                        "policyId": "[resourceId('Microsoft.RecoveryServices/vaults/replicationPolicies', parameters('vaultName'), parameters('replication')[copyIndex('containerObjects')].policyName)]",
+                        "sourceMapName": "[concat(parameters('vaultName'), '/', parameters('replication')[copyIndex('containerObjects')].sourceLocation, variables('fabricSuffix'), '/', parameters('replication')[copyIndex('containerObjects')].sourceContainer, '/', parameters('replication')[copyIndex('containerObjects')].sourceLocation, '-', parameters('replication')[copyIndex('containerObjects')].targetContainer, '-', parameters('replication')[copyIndex('containerObjects')].policyName)]",
+                        "targetMapName": "[concat(variables('target').fabricResourceName, '/', parameters('replication')[copyIndex('containerObjects')].targetContainer, '/', parameters('replication')[copyIndex('containerObjects')].sourceLocation, '-', parameters('replication')[copyIndex('containerObjects')].sourceContainer, '-', parameters('replication')[copyIndex('containerObjects')].policyName)]"
+                    }
+                }
+            ]
+        },
+        "fabricsLocations": "[coalesce(union(variables('containers').containerFabrics, createArray(parameters('location'))))]",
+        "replication": {
+            "containers": "[coalesce(variables('containers').containerNames)]",
+            "copy": [
+                {
+                    "name": "fabrics",
+                    "count": "[length(variables('fabricsLocations'))]",
+                    "input": {
+                        "name": "[toLower(concat(variables('fabricsLocations')[copyIndex('fabrics')], variables('fabricSuffix')))]",
+                        "location": "[variables('fabricsLocations')[copyIndex('fabrics')]]"
+                    }
+                },
+                {
+                    "name": "sourceMap",
+                    "count": "[length(variables('containers').containerObjects)]",
+                    "input": {
+                        "name": "[variables('containers').containerObjects[copyIndex('sourceMap')].sourceMapName]",
+                        "properties": {
+                            "policyId": "[variables('containers').containerObjects[copyIndex('sourceMap')].policyId]",
+                            "targetProtectionContainerId": "[variables('containers').containerObjects[copyIndex('sourceMap')].targetResourceId]",
+                            "providerSpecificInput": {
+                                "instanceType": "ReplicationProviderSpecificContainerMappingInput"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "targetMap",
+                    "count": "[length(variables('containers').containerObjects)]",
+                    "input": {
+                        "name": "[variables('containers').containerObjects[copyIndex('targetMap')].TargetMapName]",
+                        "properties": {
+                            "policyId": "[variables('containers').containerObjects[copyIndex('targetMap')].policyId]",
+                            "targetProtectionContainerId": "[variables('containers').containerObjects[copyIndex('targetMap')].sourceResourceId]",
+                            "providerSpecificInput": {
+                                "instanceType": "ReplicationProviderSpecificContainerMappingInput"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "resources": [
+        {
+            "comments": "Create or update a Recovery Services Vault",
+            "type": "Microsoft.RecoveryServices/vaults",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('vaultName')]",
+            "location": "[parameters('location')]",
+            "tags": "[parameters('tags')]",
+            "sku": {
+                "name": "RS0",
+                "tier": "Standard"
+            },
+            "properties": {
+            },
+            "resources": [
+                {
+                    "comments": "Set diagnostic settings for a Recovery Services Vault",
+                    "type": "Microsoft.RecoveryServices/vaults/providers/diagnosticSettings",
+                    "apiVersion": "2017-05-01-preview",
+                    "name": "[concat(parameters('vaultName'),'/Microsoft.Insights/backup')]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.RecoveryServices/vaults', parameters('vaultName'))]"
+                    ],
+                    "properties": {
+                        "workspaceId": "[parameters('workspaceId')]",
+                        "logAnalyticsDestinationType": "Dedicated",
+                        "logs": [
+                            {
+                                "category": "CoreAzureBackup",
+                                "enabled": true
+                            },
+                            {
+                                "category": "AddonAzureBackupJobs",
+                                "enabled": true
+                            },
+                            {
+                                "category": "AddonAzureBackupAlerts",
+                                "enabled": true
+                            },
+                            {
+                                "category": "AddonAzureBackupPolicy",
+                                "enabled": true
+                            },
+                            {
+                                "category": "AddonAzureBackupStorage",
+                                "enabled": true
+                            },
+                            {
+                                "category": "AddonAzureBackupProtectedInstance",
+                                "enabled": true
+                            }
+                        ],
+                        "metrics": [
+                        ]
+                    }
+                },
+                {
+                    "comments": "Set diagnostic settings for a Recovery Services Vault",
+                    "type": "Microsoft.RecoveryServices/vaults/providers/diagnosticSettings",
+                    "apiVersion": "2017-05-01-preview",
+                    "name": "[concat(parameters('vaultName'),'/Microsoft.Insights/recovery')]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.RecoveryServices/vaults', parameters('vaultName'))]"
+                    ],
+                    "properties": {
+                        "workspaceId": "[parameters('workspaceId')]",
+                        "logAnalyticsDestinationType": null,
+                        "logs": [
+                            {
+                                "category": "AzureSiteRecoveryJobs",
+                                "enabled": true
+                            },
+                            {
+                                "category": "AzureSiteRecoveryEvents",
+                                "enabled": true
+                            },
+                            {
+                                "category": "AzureSiteRecoveryReplicatedItems",
+                                "enabled": true
+                            },
+                            {
+                                "category": "AzureSiteRecoveryReplicationStats",
+                                "enabled": true
+                            },
+                            {
+                                "category": "AzureSiteRecoveryRecoveryPoints",
+                                "enabled": true
+                            },
+                            {
+                                "category": "AzureSiteRecoveryReplicationDataUploadRate",
+                                "enabled": true
+                            },
+                            {
+                                "category": "AzureSiteRecoveryProtectedDiskDataChurn",
+                                "enabled": true
+                            }
+                        ],
+                        "metrics": [
+                        ]
+                    }
+                },
+                {
+                    "comments": "Set backup configuration for a Recovery Services Vault",
+                    "type": "Microsoft.RecoveryServices/vaults/backupconfig",
+                    "apiVersion": "2019-05-13",
+                    "name": "[concat(parameters('vaultName'), '/vaultconfig')]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.RecoveryServices/vaults/', parameters('vaultName'))]"
+                    ],
+                    "properties": {
+                        "enhancedSecurityState": "Enabled",
+                        "softDeleteFeatureState": "Enabled",
+                        "storageType": "[parameters('vaultStorageType')]"
+                    }
+                }
+            ]
+        },
+        {
+            "comments": "Create or update a backup policy",
+            "condition": "[not(empty(parameters('backupPolicies')))]",
+            "name": "[concat(parameters('vaultName'), '/', if(equals(length(parameters('backupPolicies')), 0), 'empty', parameters('backupPolicies')[copyIndex('policyIndex')].name))]",
+            "type": "Microsoft.RecoveryServices/vaults/backupPolicies",
+            "apiVersion": "2019-06-15",
+            "copy": {
+                "mode": "Parallel",
+                "count": "[if(equals(length(parameters('backupPolicies')), 0), 1, length(parameters('backupPolicies')))]",
+                "name": "policyIndex"
+            },
+            "properties": "[parameters('backupPolicies')[copyIndex('policyIndex')].properties]",
+            "dependsOn": [
+                "[resourceId('Microsoft.RecoveryServices/vaults', parameters('vaultName'))]"
+            ]
+        },
+        {
+            "comments": "Create or update a replication policy",
+            "condition": "[not(empty(parameters('replicationPolicies')))]",
+            "name": "[concat(parameters('vaultName'), '/', if(equals(length(parameters('replicationPolicies')), 0), 'empty', parameters('replicationPolicies')[copyIndex('replicationPolicyIndex')].name))]",
+            "apiVersion": "2018-07-10",
+            "type": "Microsoft.RecoveryServices/vaults/replicationPolicies",
+            "copy": {
+                "mode": "Parallel",
+                "count": "[if(equals(length(parameters('replicationPolicies')), 0), 1, length(parameters('replicationPolicies')))]",
+                "name": "replicationPolicyIndex"
+            },
+            "properties": {
+                "providerSpecificInput": "[parameters('replicationPolicies')[copyIndex('replicationPolicyIndex')].properties]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.RecoveryServices/vaults', parameters('vaultName'))]"
+            ]
+        },
+        {
+            "comments": "Create or update a replication fabric.",
+            "condition": "[not(empty(variables('replication').fabrics))]",
+            "type": "Microsoft.RecoveryServices/vaults/replicationFabrics",
+            "apiVersion": "2018-07-10",
+            "name": "[concat(parameters('vaultName'), '/', if(empty(variables('replication').fabrics), 'empty', variables('replication').fabrics[copyIndex('fabricIndex')].name))]",
+            "dependsOn": [
+                "[resourceId('Microsoft.RecoveryServices/vaults', parameters('vaultName'))]"
+            ],
+            "copy": {
+                "mode": "Parallel",
+                "count": "[length(variables('replication').fabrics)]",
+                "name": "fabricIndex"
+            },
+            "properties": {
+                "customDetails": {
+                    "instanceType": "Azure",
+                    "location": "[variables('replication').fabrics[copyIndex()].location]"
+                }
+            }
+        },
+        {
+            "comments": "Create or update a replication fabric container.",
+            "condition": "[not(empty(variables('replication').containers))]",
+            "type": "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers",
+            "apiVersion": "2018-07-10",
+            "name": "[concat(parameters('vaultName'), '/', if(empty(variables('replication').containers), 'empty/empty', variables('replication').containers[copyIndex('containerIndex')]))]",
+            "dependsOn": [
+                "fabricIndex",
+                "[resourceId('Microsoft.RecoveryServices/vaults', parameters('vaultName'))]"
+            ],
+            "copy": {
+                "mode": "Parallel",
+                "count": "[length(variables('replication').containers)]",
+                "name": "containerIndex"
+            },
+            "properties": {
+                "providerSpecificInput": [
+                    {
+                        "instanceType": "A2A"
+                    }
+                ]
+            }
+        },
+        {
+            "condition": "[not(or(empty(variables('replication').fabrics), empty(parameters('networkMap'))))]",
+            "apiVersion": "2018-07-10",
+            "type": "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings",
+            "name": "[concat(parameters('vaultName'), '/', if(empty(parameters('networkMap')), 'empty/azureNetwork/empty', concat(toLower(parameters('networkMap')[copyIndex('networkMapIndex')].sourceLocation), '-fabric', '/azureNetwork/', toLower(split(parameters('networkMap')[copyIndex('networkMapIndex')].targetId, '/')[8]))))]",
+            "dependsOn": [
+                "fabricIndex"
+            ],
+            "copy": {
+                "mode": "Parallel",
+                "count": "[length(parameters('networkMap'))]",
+                "name": "networkMapIndex"
+            },
+            "properties": {
+                "recoveryFabricName": "[concat(toLower(parameters('location')), '-fabric')]",
+                "recoveryNetworkId": "[parameters('networkMap')[copyIndex('networkMapIndex')].targetId]",
+                "fabricSpecificDetails": {
+                    "instanceType": "AzureToAzure",
+                    "primaryNetworkId": "[parameters('networkMap')[copyIndex('networkMapIndex')].sourceId]"
+                }
+            }
+        },
+        {
+            "condition": "[not(or(empty(variables('replication').fabrics), empty(parameters('networkMap'))))]",
+            "apiVersion": "2018-07-10",
+            "type": "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings",
+            "name": "[concat(parameters('vaultName'), '/', toLower(parameters('location')), '-fabric', '/azureNetwork/', if(empty(parameters('networkMap')), 'empty', toLower(split(parameters('networkMap')[copyIndex('networkMapIndex')].sourceId, '/')[8])))]",
+            "dependsOn": [
+                "fabricIndex"
+            ],
+            "copy": {
+                "mode": "Parallel",
+                "count": "[length(parameters('networkMap'))]",
+                "name": "networkMapIndex"
+            },
+            "properties": {
+                "recoveryFabricName": "[concat(toLower(parameters('networkMap')[copyIndex('networkMapIndex')].sourceLocation), '-fabric')]",
+                "recoveryNetworkId": "[parameters('networkMap')[copyIndex('networkMapIndex')].sourceId]",
+                "fabricSpecificDetails": {
+                    "instanceType": "AzureToAzure",
+                    "primaryNetworkId": "[parameters('networkMap')[copyIndex('networkMapIndex')].targetId]"
+                }
+            }
+        },
+        {
+            "condition": "[not(empty(variables('replication').sourceMap))]",
+            "apiVersion": "2018-07-10",
+            "type": "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings",
+            "name": "[if(empty(variables('replication').sourceMap), concat(parameters('vaultName'), '/empty/empty/source'), variables('replication').sourceMap[copyIndex('sourceContainerMap')].name)]",
+            "copy": {
+                "name": "sourceContainerMap",
+                "count": "[length(variables('replication').sourceMap)]",
+                "mode": "Parallel"
+            },
+            "properties": "[variables('replication').sourceMap[copyIndex('sourceContainerMap')].properties]",
+            "dependsOn": [
+                "containerIndex",
+                "replicationPolicyIndex"
+            ]
+        },
+        {
+            "condition": "[not(empty(variables('replication').targetMap))]",
+            "apiVersion": "2018-07-10",
+            "type": "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings",
+            "name": "[if(empty(variables('replication').sourceMap), concat(parameters('vaultName'), '/empty/empty/target'), variables('replication').targetMap[copyIndex('targetContainerMap')].name)]",
+            "copy": {
+                "name": "targetContainerMap",
+                "count": "[length(variables('replication').targetMap)]",
+                "mode": "Parallel"
+            },
+            "properties": "[variables('replication').targetMap[copyIndex('targetContainerMap')].properties]",
+            "dependsOn": [
+                "containerIndex",
+                "replicationPolicyIndex"
+            ]
+        }
+    ],
+    "outputs": {
+        "vaultName": {
+            "type": "string",
+            "value": "[parameters('vaultName')]",
+            "metadata": {
+                "description": "The name of the Recovery Services Vault."
+            }
+        },
+        "vaultResourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.RecoveryServices/vaults/', parameters('vaultName'))]",
+            "metadata": {
+                "description": "The resource Id of the Recovery Services Vault."
+            }
+        }
+    }
+}
