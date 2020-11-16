@@ -71,6 +71,9 @@ namespace PSRule.Rules.Azure.Pipeline
                 return;
 
             var pathLiteral = GetSearchParameters(path, out string searchPattern, out SearchOption searchOption);
+            if (TryAddFile(pathLiteral))
+                return;
+
             var files = Directory.EnumerateFiles(pathLiteral, searchPattern, searchOption);
             foreach (var file in files)
                 AddFile(file);

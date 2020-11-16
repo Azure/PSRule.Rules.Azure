@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+What's changed since pre-release v0.18.0-B2011005:
+
+- Bug fixes:
+  - Fixed reason typo on template parameter metadata. [#567](https://github.com/microsoft/PSRule.Rules.Azure/issues/567)
+  - Fixed `Get-AzRuleTemplateLink` reports incorrect parameter with file path. [#568](https://github.com/microsoft/PSRule.Rules.Azure/issues/568)
+
 ## v0.18.0-B2011005 (pre-release)
 
 What's changed since pre-release v0.18.0-B2010016:

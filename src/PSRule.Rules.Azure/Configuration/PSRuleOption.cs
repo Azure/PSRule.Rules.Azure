@@ -74,7 +74,7 @@ namespace PSRule.Rules.Azure.Configuration
             if (rootedPath.Length > 0 && IsSeparator(rootedPath[rootedPath.Length - 1]))
                 return rootedPath;
 
-            return string.Concat(rootedPath, Path.DirectorySeparatorChar);
+            return File.Exists(rootedPath) ? rootedPath : string.Concat(rootedPath, Path.DirectorySeparatorChar);
         }
 
         [DebuggerStepThrough]
