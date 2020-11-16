@@ -46,7 +46,8 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeLike "*Resources.Template.json";
+            $ruleResult[0].TargetName | Should -BeLike "*Resources.Template.json";
+            $ruleResult[1].TargetName | Should -BeLike "*Resources.Template4.json";
         }
 
         It 'Azure.Template.ParameterMetadata' {
@@ -63,7 +64,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeLike "*Resources.Template3.json";
+            $ruleResult.TargetName | Should -BeLike "*Resources.Template[3-4].json";
 
             # With empty template
             $dataPath = @(
