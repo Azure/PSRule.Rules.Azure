@@ -587,12 +587,8 @@ namespace PSRule.Rules.Azure.Data.Template
                         jObject[copyIndex.Name] = jArray;
                         context.CopyIndex.Pop();
                     }
-                    else
-                    {
-                        return ResolveToken(context, jObject);
-                    }
                 }
-                return jObject;
+                return ResolveToken(context, jObject);
             }
             else if (value is JArray jArray)
             {

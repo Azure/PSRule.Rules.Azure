@@ -35,9 +35,16 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
-        public void AdvancedTemplateParsing()
+        public void AdvancedTemplateParsing1()
         {
             var resources = ProcessTemplate(GetSourcePath("Resources.FrontDoor.Template.json"), null);
+            Assert.NotNull(resources);
+        }
+
+        [Fact]
+        public void AdvancedTemplateParsing2()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Resources.Template4.json"), null);
             Assert.NotNull(resources);
         }
 
