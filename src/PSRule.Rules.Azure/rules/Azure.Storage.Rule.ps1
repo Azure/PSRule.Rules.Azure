@@ -27,18 +27,18 @@ Rule 'Azure.Storage.UseEncryption' -Type 'Microsoft.Storage/storageAccounts' -Ta
 }
 
 # Synopsis: Enable soft delete on Storage Accounts
-Rule 'Azure.Storage.SoftDelete' -Type 'Microsoft.Storage/storageAccounts' -If { !(IsCloudShell) -and !(IsHnsStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Storage.SoftDelete' -Type 'Microsoft.Storage/storageAccounts' -If { !(IsCloudShell) -and !(IsHnsStorage) -and !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $serviceProperties = GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices';
     $Assert.HasFieldValue($serviceProperties, 'properties.deleteRetentionPolicy.enabled', $True);
 }
 
 # Synopsis: Disallow blob containers with public access types.
-Rule 'Azure.Storage.BlobPublicAccess' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.Storage.BlobPublicAccess' -Type 'Microsoft.Storage/storageAccounts' -If { !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.allowBlobPublicAccess', $False);
 }
 
 # Synopsis: Avoid using Blob or Container access type
-Rule 'Azure.Storage.BlobAccessType' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices/containers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Storage.BlobAccessType' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices/containers' -If { !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $containers = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
         $containers = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices/containers');
@@ -49,7 +49,7 @@ Rule 'Azure.Storage.BlobAccessType' -Type 'Microsoft.Storage/storageAccounts', '
     foreach ($container in $containers) {
         $Assert.
             HasFieldValue($container, 'Properties.publicAccess', 'None').
-            WithReason(($LocalizedData.PublicAccessStorageContainer -f $container.name, $container.Properties.publicAccess), $True);
+            Reason($LocalizedData.PublicAccessStorageContainer, $container.name, $container.Properties.publicAccess);
     }
 }
 
@@ -128,6 +128,18 @@ function global:IsMonitorStorage {
             return $False;
         }
         return $TargetObject.Tags.'resource-usage' -eq 'azure-monitor';
+    }
+}
+
+function global:IsFileStorage {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($PSRule.TargetType -ne 'Microsoft.Storage/storageAccounts') {
+            return $False;
+        }
+        return $Assert.HasFieldValue($TargetObject, 'Kind', 'FileStorage').Result;
     }
 }
 

@@ -51,8 +51,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-C', 'storage-F';
         }
 
         It 'Azure.Storage.SecureTransfer' {
@@ -67,8 +67,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-F';
         }
 
         It 'Azure.Storage.UseEncryption' {
@@ -83,8 +83,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-F';
         }
 
         It 'Azure.Storage.SoftDelete' {
@@ -105,8 +105,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-E';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-E', 'storage-F';
         }
 
         It 'Azure.Storage.BlobPublicAccess' {
@@ -123,6 +123,12 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'storage-A';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-F';
         }
 
         It 'Azure.Storage.BlobAccessType' {
@@ -139,6 +145,12 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-C', 'storage-D', 'storage-E';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-F';
         }
 
         It 'Azure.Storage.MinTLS' {
@@ -147,8 +159,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-D';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-D', 'storage-F';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

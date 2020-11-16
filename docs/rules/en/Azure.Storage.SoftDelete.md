@@ -28,7 +28,10 @@ Also consider implementing role-based access control (RBAC), Resource Locks, and
 Cloud Shell storage with the tag `ms-resource-usage = 'azure-cloud-shell'` is excluded.
 Storage accounts used for Cloud Shell are not intended to store data.
 
-Storage accounts with hierarchical namespace enabled to not support blob soft delete.
+Storage accounts with:
+
+- Hierarchical namespace enabled to not support blob soft delete.
+- Deployed as a `FileStorage` storage account do not support blob soft delete.
 
 ## LINKS
 

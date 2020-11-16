@@ -410,5 +410,65 @@
                 "ETag": null
             }
         ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-F",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-F",
+        "Identity": null,
+        "Kind": "FileStorage",
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "storage-F",
+        "Name": "storage-F",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "largeFileSharesState": "Enabled",
+            "networkAcls": {
+                "bypass": "AzureServices",
+                "virtualNetworkRules": [],
+                "ipRules": [],
+                "defaultAction": "Deny"
+            },
+            "supportsHttpsTrafficOnly": true,
+            "encryption": {
+                "services": {
+                    "file": {
+                        "keyType": "Account",
+                        "enabled": true
+                    },
+                    "blob": {
+                        "keyType": "Account",
+                        "enabled": true
+                    }
+                },
+                "keySource": "Microsoft.Storage"
+            },
+            "primaryEndpoints": {
+                "file": "https://storage-F.file.core.windows.net/"
+            },
+            "primaryLocation": "region",
+            "statusOfPrimary": "available"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Storage/storageAccounts",
+        "ResourceType": "Microsoft.Storage/storageAccounts",
+        "ExtensionResourceType": null,
+        "Sku": {
+            "Name": "Premium_LRS",
+            "Tier": "Premium",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": {},
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null,
+        "resources": []
     }
 ]
