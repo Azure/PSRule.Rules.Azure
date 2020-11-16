@@ -45,7 +45,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
+            $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeLike "*Resources.Template.json";
         }
 
@@ -62,7 +62,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
+            $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeLike "*Resources.Template3.json";
 
             # With empty template
