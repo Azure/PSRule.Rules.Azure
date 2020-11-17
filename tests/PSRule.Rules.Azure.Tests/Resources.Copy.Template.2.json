@@ -1,0 +1,43 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "names": {
+            "type": "string",
+            "defaultValue": [
+                "storage1",
+                "storage2"
+            ]
+        }
+    },
+    "variables": {
+        "sku": "Standard_LRS",
+        "copy": [
+            {
+                "name": "accounts",
+                "count": "[length(parameters('names'))]",
+                "input": {
+                    "name": "[parameters('names')[copyIndex('accounts')]]"
+                }
+            }
+        ]
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('names')[copyIndex()]]",
+            "apiVersion": "2016-12-01",
+            "location": "[resourceGroup().location]",
+            "copy": {
+                "name": "names",
+                "count": "[length(parameters('names'))]"
+            },
+            "sku": {
+                "name": "[variables('sku')]"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ],
+    "outputs": {}
+}

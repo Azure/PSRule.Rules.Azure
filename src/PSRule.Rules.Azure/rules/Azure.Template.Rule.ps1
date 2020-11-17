@@ -19,7 +19,7 @@ Rule 'Azure.Template.ParameterMetadata' -Type 'System.IO.FileInfo','.json' -If {
     $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
     $parameters = @($jsonObject.parameters.PSObject.Properties | Where-Object { $_.MemberType -eq 'NoteProperty' });
     if ($parameters.Length -eq 0) {
-        $Assert.Pass();
+        return $Assert.Pass();
     }
     foreach ($parameter in $parameters) {
         $Assert.
@@ -40,7 +40,7 @@ Rule 'Azure.Template.UseParameters' -Type 'System.IO.FileInfo','.json' -If { (Is
     $jsonContent = Get-Content -Path $TargetObject.FullName -Raw;
     $parameters = @($jsonObject.parameters.PSObject.Properties | Where-Object { $_.MemberType -eq 'NoteProperty' });
     if ($parameters.Length -eq 0) {
-        $Assert.Pass();
+        return $Assert.Pass();
     }
     foreach ($parameter in $parameters) {
         $Assert.
@@ -53,14 +53,24 @@ Rule 'Azure.Template.UseParameters' -Type 'System.IO.FileInfo','.json' -If { (Is
 Rule 'Azure.Template.UseVariables' -Type 'System.IO.FileInfo','.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
     $jsonContent = Get-Content -Path $TargetObject.FullName -Raw;
-    $variables = @($jsonObject.variables.PSObject.Properties | Where-Object { $_.MemberType -eq 'NoteProperty' });
-    if ($variables.Length -eq 0) {
-        $Assert.Pass();
+    $variableNames = @($jsonObject.variables.PSObject.Properties | Where-Object { $_.MemberType -eq 'NoteProperty' } | ForEach-Object {
+        $variable = $_;
+        if ($variable.name -eq 'copy') {
+            $variable.value | ForEach-Object {
+                $_.name;
+            }
+        }
+        else {
+            $variable.name;
+        }
+    });
+    if ($variableNames.Length -eq 0) {
+        return $Assert.Pass();
     }
-    foreach ($variable in $variables) {
+    foreach ($variableName in $variableNames) {
         $Assert.
-            Match($jsonContent, '.', "\`"\[.*variables\(\s{0,}'$($variable.name)'\s{0,}\).*\]\`"").
-            Reason($LocalizedData.VariableNotFound, $variable.name);
+            Match($jsonContent, '.', "\`"\[.*variables\(\s{0,}'$($variableName)'\s{0,}\).*\]\`"").
+            Reason($LocalizedData.VariableNotFound, $variableName);
     }
 }
 

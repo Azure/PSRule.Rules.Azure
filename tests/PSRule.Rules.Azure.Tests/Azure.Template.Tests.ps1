@@ -131,6 +131,8 @@ Describe 'Azure.Template' -Tag 'Template' {
                 (Join-Path -Path $here -ChildPath 'Resources.Template3.json')
                 (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.2.json')
                 (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.3.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Copy.Template.1.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Copy.Template.2.json')
             );
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.UseVariables';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.UseVariables' };
@@ -138,15 +140,16 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeLike "*Resources.Empty.Template.json";
-            $ruleResult.Reason | Should -BeLike "The variable '*' was not used within the template.";
-            $ruleResult.Reason.Length | Should -Be 2;
+            $ruleResult.Length | Should -Be 2;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Empty.Template.json', 'Resources.Copy.Template.2.json';
+            $ruleResult[0].Reason | Should -BeLike "The variable '*' was not used within the template.";
+            $ruleResult[0].Reason.Length | Should -Be 2;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
+            $ruleResult.Length | Should -Be 4;
         }
 
         It 'Azure.Template.ParameterFile' {
