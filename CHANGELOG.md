@@ -2,6 +2,34 @@
 
 ## Unreleased
 
+## v0.18.0
+
+What's changed since v0.17.0:
+
+- New rules:
+  - Container Registry:
+    - Check registries use container image scanning. [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
+    - Check registries image scanning results are healthy. [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
+    - Check registries use content trust. [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
+    - Check registries are geo-replicated. [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
+    - Check registries uses storage space less than included storage. [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
+    - Check registries have a retention set of untagged manifests (preview). [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
+    - Check registries use image quarantine pattern (preview). [#558](https://github.com/microsoft/PSRule.Rules.Azure/issues/558)
+  - Front Door:
+    - Check Front Door WAF policy name requirements. [#552](https://github.com/Microsoft/PSRule.Rules.Azure/issues/552)
+- Bug fixes:
+  - Fixed HNS storage accounts so they are excluded from blob soft delete rule. [#554](https://github.com/microsoft/PSRule.Rules.Azure/issues/554)
+  - Fixed reason typo on template parameter metadata. [#567](https://github.com/microsoft/PSRule.Rules.Azure/issues/567)
+  - Fixed `Get-AzRuleTemplateLink` reports incorrect parameter with file path. [#568](https://github.com/microsoft/PSRule.Rules.Azure/issues/568)
+  - Fixed variable property not resolved with copy peer. [#571](https://github.com/microsoft/PSRule.Rules.Azure/issues/571)
+  - Fixed blob soft delete for FileStorage storage accounts. [#573](https://github.com/microsoft/PSRule.Rules.Azure/issues/573)
+  - Fixed top level variable copy detected as unused variable.[#569](https://github.com/microsoft/PSRule.Rules.Azure/issues/569)
+  - Fixed ResourceGroupName property cannot be found on this object. [#561](https://github.com/microsoft/PSRule.Rules.Azure/issues/561)
+
+What's changed since pre-release v0.18.0-B2011023:
+
+- No additional changes.
+
 ## v0.18.0-B2011023 (pre-release)
 
 What's changed since pre-release v0.18.0-B2011005:
