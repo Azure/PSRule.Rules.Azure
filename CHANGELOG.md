@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+What's changed since v0.18.0:
+
+- General improvements:
+  - Added support for `true`, `false`, and `null` template functions. [#579](https://github.com/Microsoft/PSRule.Rules.Azure/issues/579)
+
 ## v0.18.0
 
 What's changed since v0.17.0:

@@ -100,7 +100,7 @@
             "comments": "Hub virtual network",
             "type": "Microsoft.Network/virtualNetworks",
             "name": "[parameters('VNETName')]",
-            "apiVersion": "2019-04-01",
+            "apiVersion": "2020-06-01",
             "location": "region-A",
             "dependsOn": [
                 "routeIndex",
@@ -177,6 +177,7 @@
             }
         },
         {
+            "condition": "[empty(null())]",
             "comments": "A subnet Route Table",
             "type": "Microsoft.Network/routeTables",
             "name": "[concat('route-', parameters('subnets')[copyIndex('routeIndex')].name)]",
@@ -187,7 +188,7 @@
                 "count": "[length(parameters('subnets'))]"
             },
             "properties": {
-                "disableBgpRoutePropagation": false,
+                "disableBgpRoutePropagation": "[false()]",
                 "routes": "[variables('routes')]"
             }
         },
@@ -208,6 +209,7 @@
             }
         },
         {
+            "condition": "[true()]",
             "comments": "A subnet Network Security Group",
             "type": "Microsoft.Network/networkSecurityGroups",
             "name": "[concat('nsg-', parameters('subnets')[copyIndex()].name)]",

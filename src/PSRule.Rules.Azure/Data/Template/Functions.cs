@@ -64,9 +64,11 @@ namespace PSRule.Rules.Azure.Data.Template
             // Logical
             new FunctionDescriptor("and", And),
             new FunctionDescriptor("bool", Bool),
+            new FunctionDescriptor("false", False),
             new FunctionDescriptor("if", If),
             new FunctionDescriptor("not", Not),
             new FunctionDescriptor("or", Or),
+            new FunctionDescriptor("true", True),
 
             // Numeric
             new FunctionDescriptor("add", Add),
@@ -82,6 +84,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             // Object
             new FunctionDescriptor("json", Json),
+            new FunctionDescriptor("null", Null),
 
             // Resource
             new FunctionDescriptor("extensionResourceId", ExtensionResourceId),
@@ -304,6 +307,17 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw new ArgumentOutOfRangeException();
 
             return JsonConvert.DeserializeObject(json);
+        }
+
+        /// <summary>
+        /// null()
+        /// </summary>
+        internal static object Null(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw ArgumentsOutOfRange(nameof(Null), args);
+
+            return null;
         }
 
         internal static object Last(TemplateContext context, object[] args)
@@ -1110,6 +1124,17 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         /// <summary>
+        /// false()
+        /// </summary>
+        internal static object False(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw ArgumentsOutOfRange(nameof(False), args);
+
+            return false;
+        }
+
+        /// <summary>
         /// if(condition, trueValue, falseValue)
         /// </summary>
         internal static object If(TemplateContext context, object[] args)
@@ -1147,6 +1172,17 @@ namespace PSRule.Rules.Azure.Data.Template
                     return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// true()
+        /// </summary>
+        internal static object True(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw ArgumentsOutOfRange(nameof(True), args);
+
+            return true;
         }
 
         #endregion Logical

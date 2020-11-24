@@ -64,7 +64,6 @@ namespace PSRule.Rules.Azure.Data.Template
                     fnParams.Add(Inner(stream));
                 }
                 var aParams = fnParams.ToArray();
-
                 result = (context) => descriptor.Invoke(context, aParams);
 
                 while (stream.TryTokenType(ExpressionTokenType.IndexStart, out ExpressionToken token) || stream.TryTokenType(ExpressionTokenType.Property, out token))
