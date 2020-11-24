@@ -6,6 +6,7 @@ What's changed since v0.18.0:
 
 - General improvements:
   - Added support for `true`, `false`, and `null` template functions. [#579](https://github.com/Microsoft/PSRule.Rules.Azure/issues/579)
+  - Added support for `createObject` template function. [#580](https://github.com/Microsoft/PSRule.Rules.Azure/issues/580)
 
 ## v0.18.0
 

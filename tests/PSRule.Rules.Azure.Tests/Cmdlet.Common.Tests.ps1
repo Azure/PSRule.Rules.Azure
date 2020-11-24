@@ -271,6 +271,7 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
             $result | Should -Not -BeNullOrEmpty;
             $result.Length | Should -Be 9;
             $result[0].name | Should -Be 'vnet-001';
+            $result[0].properties.addressSpace.addressPrefixes | Should -Be "10.1.0.0/24";
             $result[0].properties.subnets.Length | Should -Be 3;
             $result[0].properties.subnets[0].name | Should -Be 'GatewaySubnet';
             $result[0].properties.subnets[0].properties.addressPrefix | Should -Be '10.1.0.0/27';

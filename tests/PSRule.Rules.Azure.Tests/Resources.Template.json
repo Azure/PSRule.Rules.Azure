@@ -93,7 +93,8 @@
                     "properties": {}
                 }
             }
-        ]
+        ],
+        "vnetAddressSpace": "[createObject('addressPrefixes', Parameters('addressPrefix'))]"
     },
     "resources": [
         {
@@ -107,9 +108,7 @@
                 "nsgIndex"
             ],
             "properties": {
-                "addressSpace": {
-                    "addressPrefixes": "[Parameters('addressPrefix')]"
-                },
+                "addressSpace": "[variables('vnetAddressSpace')]",
                 "subnets": "[variabLes('AllSubnets')]"
             },
             "tags": {

@@ -31,6 +31,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("concat", Concat),
             new FunctionDescriptor("contains", Contains),
             new FunctionDescriptor("createArray", CreateArray),
+            new FunctionDescriptor("createObject", CreateObject),
             new FunctionDescriptor("empty", Empty),
             new FunctionDescriptor("first", First),
             new FunctionDescriptor("intersection", Intersection),
@@ -239,12 +240,35 @@ namespace PSRule.Rules.Azure.Data.Template
             return false;
         }
 
+        /// <summary>
+        /// createArray (arg1, arg2, arg3, ...)
+        /// </summary>
         internal static object CreateArray(TemplateContext context, object[] args)
         {
             if (CountArgs(args) < 1)
                 throw ArgumentsOutOfRange(nameof(CreateArray), args);
 
             return new JArray(args);
+        }
+
+        /// <summary>
+        /// createObject(key1, value1, key2, value2, ...)
+        /// </summary>
+        internal static object CreateObject(TemplateContext context, object[] args)
+        {
+            var argCount = CountArgs(args);
+            if (argCount < 2 || argCount % 2 != 0)
+                throw ArgumentsOutOfRange(nameof(CreateObject), args);
+
+            var properties = new JProperty[argCount / 2];
+            for (var i = 0; i < argCount / 2; i++)
+            {
+                if (!ExpressionHelpers.TryString(args[i * 2], out string name))
+                    throw ArgumentInvalidString(nameof(CreateObject), $"key{i + 1}");
+
+                properties[i] = new JProperty(name, args[i * 2 + 1]);
+            }
+            return new JObject(properties);
         }
 
         internal static object First(TemplateContext context, object[] args)
