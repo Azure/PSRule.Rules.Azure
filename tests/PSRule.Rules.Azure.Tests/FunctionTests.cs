@@ -117,6 +117,31 @@ namespace PSRule.Rules.Azure
 
         [Fact]
         [Trait(TRAIT, TRAIT_ARRAY)]
+        public void CreateObject()
+        {
+            var context = GetContext();
+
+            var actual1 = Functions.CreateObject(context, new object[] {
+                "intProp", 1,
+                "stringProp", "abc",
+                "boolProp", true,
+                "arrayProp", Functions.CreateArray(context, new object[] { "a", "b", "c" }),
+                "objectProp", Functions.CreateObject(context, new object[] { "key1", "value1" }),
+            }) as JObject;
+
+            Assert.Equal(1, actual1["intProp"]);
+            Assert.Equal("abc", actual1["stringProp"]);
+            Assert.Equal(true, actual1["boolProp"]);
+            Assert.Equal("b", actual1["arrayProp"][1]);
+            Assert.Equal("value1", actual1["objectProp"]["key1"]);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.CreateObject(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.CreateObject(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.CreateObject(context, new object[] { "intProp", 1, "stringProp" }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_ARRAY)]
         public void Empty()
         {
             var context = GetContext();
