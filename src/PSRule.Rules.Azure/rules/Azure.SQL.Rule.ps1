@@ -5,7 +5,7 @@
 # Validation rules for Azure SQL Database
 #
 
-#region SQL Database
+#region SQL Logical Server
 
 # Synopsis: Determine if there is an excessive number of firewall rules
 Rule 'Azure.SQL.FirewallRuleCount' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
@@ -55,17 +55,67 @@ Rule 'Azure.SQL.MinTLS' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ru
     $Assert.Version($TargetObject, 'Properties.minimalTlsVersion', '>=1.2');
 }
 
+# Synopsis: Azure SQL logical server names should meet naming requirements.
+Rule 'Azure.SQL.ServerName' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+    # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql
+
+    # Between 1 and 63 characters long
+    $Assert.GreaterOrEqual($PSRule, 'TargetName', 1);
+    $Assert.LessOrEqual($PSRule, 'TargetName', 63);
+
+    # Lowercase letters, numbers, and hyphens
+    # Can't start or end with a hyphen
+    $Assert.Match($PSRule, 'TargetName', '^[a-z0-9]([a-z0-9-]*[a-z0-9]){0,62}$', $True);
+}
+
+#endregion SQL Logical Server
+
+#region SQL Database
+
 # Synopsis: Enable transparent data encryption
 Rule 'Azure.SQL.TDE' -Type 'Microsoft.Sql/servers/databases' -If { !(IsMasterDatabase) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $config = GetSubResources -ResourceType 'Microsoft.Sql/servers/databases/transparentDataEncryption';
     $Assert.HasFieldValue($config, 'Properties.status', 'Enabled');
 }
 
+# Synopsis: Azure SQL Database names should meet naming requirements.
+Rule 'Azure.SQL.DBName' -Type 'Microsoft.Sql/servers/databases' -If { !(IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+    # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql
+
+    $name = $PSRule.TargetName.Split('/', 2, [System.StringSplitOptions]::RemoveEmptyEntries)[-1];
+
+    # Between 1 and 128 characters long
+    $Assert.GreaterOrEqual($name, '.', 1);
+    $Assert.LessOrEqual($name, '.', 128);
+
+    # Can't use: <>*%&:\/?
+    # Can't end with period or space
+    $Assert.Match($name, '.', '^(\w|[-=+!$()@~`]|\s|\.){0,127}(\w|[-=+!$()@~`])$');
+
+    # Exclude reserved names
+    $Assert.NotIn($name, '.', @('master', 'model', 'tempdb'));
+}
+
 #endregion SQL Database
 
-#region SQL Managed Instance
+#region Failover group
 
-#endregion SQL Managed Instance
+# Synopsis: Azure SQL failover group names should meet naming requirements.
+Rule 'Azure.SQL.FGName' -Type 'Microsoft.Sql/servers/failoverGroups' -If { !(IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+    # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql
+
+    $name = $PSRule.TargetName.Split('/')[-1];
+
+    # Between 1 and 63 characters long
+    $Assert.GreaterOrEqual($name, '.', 1);
+    $Assert.LessOrEqual($name, '.', 63);
+
+    # Lowercase letters, numbers, and hyphens
+    # Can't start or end with a hyphen
+    $Assert.Match($name, '.', '^[a-z0-9]([a-z0-9-]*[a-z0-9]){0,62}$', $True);
+}
+
+#endregion Failover group
 
 #region Helper functions
 
