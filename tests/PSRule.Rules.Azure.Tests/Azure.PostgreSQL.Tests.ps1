@@ -6,9 +6,7 @@
 #
 
 [CmdletBinding()]
-param (
-
-)
+param ()
 
 # Setup error handling
 $ErrorActionPreference = 'Stop';
@@ -23,7 +21,7 @@ $rootPath = $PWD;
 Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
 $here = (Resolve-Path $PSScriptRoot).Path;
 
-Describe 'Azure.PostgreSQL' {
+Describe 'Azure.PostgreSQL' -Tag 'PostgreSQL' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.PostgreSQL.json';
 
     Context 'Conditions' {
@@ -115,6 +113,51 @@ Describe 'Azure.PostgreSQL' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'server-A', 'server-C';
+        }
+    }
+
+    Context 'Resource name - Azure.PostgreSQL.ServerName' {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+        $validNames = @(
+            'sqlserver1'
+            'sqlserver-1'
+            '1sqlserver'
+        )
+        $invalidNames = @(
+            '-sqlserver1'
+            'sqlserver1-'
+            'sqlserver.1'
+            'sqlserver_1'
+            'SQLServer1'
+        )
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.DBforPostgreSQL/servers'
+        }
+
+        # Pass
+        foreach ($name in $validNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PostgreSQL.ServerName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Pass';
+            }
+        }
+
+        # Fail
+        foreach ($name in $invalidNames) {
+            It $name {
+                $testObject.Name = $name;
+                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PostgreSQL.ServerName';
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Outcome | Should -Be 'Fail';
+            }
         }
     }
 }

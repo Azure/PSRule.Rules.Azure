@@ -4,6 +4,17 @@
 
 What's changed since v0.18.0:
 
+- New rules:
+  - Database for MySQL:
+    - Check database servers meet name requirements. [#583](https://github.com/Microsoft/PSRule.Rules.Azure/issues/583)
+  - Database for PostgreSQL:
+    - Check database servers meet name requirements. [#583](https://github.com/Microsoft/PSRule.Rules.Azure/issues/583)
+  - SQL Database:
+    - Check SQL logical servers meet name requirements. [#583](https://github.com/Microsoft/PSRule.Rules.Azure/issues/583)
+    - Check SQL failover groups meet name requirements. [#583](https://github.com/Microsoft/PSRule.Rules.Azure/issues/583)
+    - Check SQL databases meet name requirements. [#583](https://github.com/Microsoft/PSRule.Rules.Azure/issues/583)
+  - SQL Managed Instance:
+    - Check SQL Managed Instances meet name requirements. [#583](https://github.com/Microsoft/PSRule.Rules.Azure/issues/583)
 - General improvements:
   - Added support for `true`, `false`, and `null` template functions. [#579](https://github.com/Microsoft/PSRule.Rules.Azure/issues/579)
   - Added support for `createObject` template function. [#580](https://github.com/Microsoft/PSRule.Rules.Azure/issues/580)

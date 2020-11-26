@@ -39,3 +39,16 @@ Rule 'Azure.PostgreSQL.FirewallIPRange' -Type 'Microsoft.DBforPostgreSQL/servers
         LessOrEqual($summary, 'Public', 10).
         WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True);
 }
+
+# Synopsis: Azure SQL logical server names should meet naming requirements.
+Rule 'Azure.PostgreSQL.ServerName' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+    # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftdbforpostgresql
+
+    # Between 3 and 63 characters long
+    $Assert.GreaterOrEqual($PSRule, 'TargetName', 3);
+    $Assert.LessOrEqual($PSRule, 'TargetName', 63);
+
+    # Lowercase letters, numbers, and hyphens
+    # Can't start or end with a hyphen
+    $Assert.Match($PSRule, 'TargetName', '^[a-z0-9]([a-z0-9-]*[a-z0-9]){2,62}$', $True);
+}
