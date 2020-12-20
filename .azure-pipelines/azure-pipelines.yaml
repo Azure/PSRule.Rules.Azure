@@ -138,7 +138,7 @@ stages:
   - template: jobs/test.yaml
     parameters:
       name: macOS_10_15
-      displayName: 'PowerShell 7.0 - macOS-10.15'
+      displayName: 'PowerShell 7.1 - macOS-10.15'
       imageName: 'macOS-10.15'
 
   - template: jobs/test.yaml
