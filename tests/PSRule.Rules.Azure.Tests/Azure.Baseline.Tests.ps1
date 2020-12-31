@@ -6,9 +6,7 @@
 #
 
 [CmdletBinding()]
-param (
-
-)
+param ()
 
 # Setup error handling
 $ErrorActionPreference = 'Stop';
@@ -66,6 +64,13 @@ Describe 'Baselines' -Tag Baseline {
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
             $filteredResult | Should -Not -BeNullOrEmpty;
             $filteredResult.Length | Should -Be 155;
+        }
+
+        It 'With Azure.GA_2020_12' {
+            $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2020_12' -WarningAction Ignore);
+            $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
+            $filteredResult | Should -Not -BeNullOrEmpty;
+            $filteredResult.Length | Should -Be 179;
         }
     }
 }
