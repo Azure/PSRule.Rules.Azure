@@ -2,6 +2,34 @@
 
 ## Unreleased
 
+## v0.19.0
+
+What's changed since v0.18.0:
+
+- New features:
+  - Added `Azure.GA_2020_12` baseline. [#593](https://github.com/Microsoft/PSRule.Rules.Azure/issues/593)
+    - Includes rules released before or during December 2020 for Azure GA features.
+    - Marked baseline `Azure.GA_2020_09` as obsolete.
+- New rules:
+  - Database for MySQL:
+    - Check database servers meet name requirements. [#583](https://github.com/Microsoft/PSRule.Rules.Azure/issues/583)
+  - Database for PostgreSQL:
+    - Check database servers meet name requirements. [#583](https://github.com/Microsoft/PSRule.Rules.Azure/issues/583)
+  - SQL Database:
+    - Check SQL logical servers meet name requirements. [#583](https://github.com/Microsoft/PSRule.Rules.Azure/issues/583)
+    - Check SQL failover groups meet name requirements. [#583](https://github.com/Microsoft/PSRule.Rules.Azure/issues/583)
+    - Check SQL databases meet name requirements. [#583](https://github.com/Microsoft/PSRule.Rules.Azure/issues/583)
+  - SQL Managed Instance:
+    - Check SQL Managed Instances meet name requirements. [#583](https://github.com/Microsoft/PSRule.Rules.Azure/issues/583)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.19.3. [#590](https://github.com/Microsoft/PSRule.Rules.Azure/issues/590)
+- General improvements:
+  - Added support for `true`, `false`, and `null` template functions. [#579](https://github.com/Microsoft/PSRule.Rules.Azure/issues/579)
+  - Added support for `createObject` template function. [#580](https://github.com/Microsoft/PSRule.Rules.Azure/issues/580)
+- Engineering:
+  - Bump PSRule dependency to v1.0.0. [#588](https://github.com/Microsoft/PSRule.Rules.Azure/issues/588)
+
 What's changed since pre-release v0.19.0-B2012008:
 
 - New features:
