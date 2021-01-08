@@ -1,10 +1,11 @@
 ---
 name: Question
-about: If you have a question, please check out our Gitter room
+about: If you have a question, please check out Discussions
 labels: 'question'
 ---
 
-We primarily use GitHub as an issue tracker; for help and support questions, please check out these resources below. Thanks! 😁.
+We use Issues as an issue tracker; for help, discussion, and support questions, please use Discussions.
 
-- https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/SUPPORT.md
-- https://gitter.im/PSRule/PSRule.Rules.Azure
+Thanks! 😁.
+
+- https://github.com/microsoft/PSRule.Rules.Azure/discussions

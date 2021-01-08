@@ -15,10 +15,8 @@ Features of PSRule for Azure include:
 This project uses GitHub Issues to track bugs and feature requests.
 Please search the existing issues before filing new issues to avoid duplicates.
 
-- For new issues, file your bug or feature request as a new [Issue].
-- For help and questions about using this project, we have a Gitter room which you can join below.
-
-[![Join the chat][chat-badge]][chat]
+- For new issues, file your bug or feature request as a new [issue].
+- For help, discussion, and support questions about using this project, join or start a [discussion].
 
 If you have any problems with the [PSRule][engine] engine, please check the project GitHub [issues](https://github.com/Microsoft/PSRule/issues) page instead.
 
@@ -41,42 +39,150 @@ PSRule for Azure provides two methods for analyzing Azure resources:
 - _Pre-flight_ - Before resources are deployed from Azure Resource Manager templates.
 - _In-flight_ - After resource are deployed to an Azure subscription.
 
-The following example shows basic _In-flight_ usage. For specific use cases see [scenarios](#scenarios).
-
+For specific use cases see [scenarios](#scenarios).
 For additional details see the [FAQ](docs/features.md#frequently-asked-questions-faq).
 
-### Export resource data
+### Using with GitHub Actions
 
-To validate Azure resources running in a subscription, export the resource data with the `Export-AzRuleData` cmdlet.
-The `Export-AzRuleData` cmdlet exports a resource graph for one or more subscriptions that can be used for analysis with the rules in this module.
+The following example shows how to setup Github Actions to validate templates pre-flight.
 
-By default, resources for the current subscription context are exported. See below for more options.
-
-Before running this command you should connect to Azure by using the `Connect-AzAccount` cmdlet.
+1. See [Creating a workflow file][create-workflow].
+2. Export rule data from templates using PowerShell.
+3. Reference `Microsoft/ps-rule` with `modules: 'PSRule.Rules.Azure'`.
 
 For example:
 
-```powershell
-# Authenticate to Azure, only required if not currently connected
-Connect-AzAccount;
+```yaml
+# Example: .github/workflows/analyze-arm.yaml
 
-# Export resource data
-Export-AzRuleData;
+#
+# STEP 1: Template validation
+#
+name: Analyze templates
+on:
+- pull_request
+jobs:
+  analyze_arm:
+    name: Analyze templates
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # STEP 2: Export template data for analysis
+    - name: Export templates
+      run: Install-Module PSRule.Rules.Azure -Force; Get-AzRuleTemplateLink | Export-AzTemplateRuleData -OutputPath 'out/templates/';
+      shell: pwsh
+
+    # STEP 3: Run analysis against exported data
+    - name: Analyze Azure template files
+      uses: Microsoft/ps-rule@main
+      with:
+        modules: 'PSRule.Rules.Azure'  # Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.
+        inputPath: 'out/templates/'    # Read objects from JSON files in 'out/templates/'.
 ```
 
-### Validate resources
+### Using with Azure Pipelines
 
-To validate Azure resources use the extracted data with the `Invoke-PSRule` cmdlet.
+The following example shows how to setup Azure Pipelines to validate templates pre-flight.
+
+1. Install [PSRule extension][extension] for Azure DevOps marketplace.
+2. Create a new YAML pipeline with the _Starter pipeline_ template.
+3. Add the `Install PSRule module` task.
+   - Set module to `PSRule.Rules.Azure`.
+4. Export rule data from templates using PowerShell.
+5. Add the `PSRule analysis` task.
+   - Set input type to `Input Path`.
+   - Set input files to the location rule data is exported to.
+   - Set modules to `PSRule.Rules.Azure`.
+
+For example:
+
+```yaml
+# Example: .azure-pipelines/analyze-arm.yaml
+
+#
+# STEP 2: Template validation
+#
+jobs:
+- job: 'analyze_arm'
+  displayName: 'Analyze templates'
+  pool:
+    vmImage: 'ubuntu-18.04'
+  steps:
+
+  # STEP 3: Install PSRule.Rules.Azure from the PowerShell Gallery
+  - task: ps-rule-install@0
+    displayName: Install PSRule.Rules.Azure
+    inputs:
+      module: 'PSRule.Rules.Azure'   # Install PSRule.Rules.Azure from the PowerShell Gallery.
+
+  # STEP 4: Export template data for analysis
+  - powershell: Get-AzRuleTemplateLink | Export-AzTemplateRuleData -OutputPath 'out/templates/';
+    displayName: 'Export template data'
+
+  # STEP 5: Run analysis against exported data
+  - task: ps-rule-assert@0
+    displayName: Analyze Azure template files
+    inputs:
+      inputType: inputPath
+      inputPath: 'out/templates/'     # Read objects from JSON files in 'out/templates/'.
+      modules: 'PSRule.Rules.Azure'   # Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.
+```
+
+### Using locally
+
+The following example shows how to setup PSRule locally to validate templates pre-flight.
+
+1. Install the `PSRule.Rules.Azure` module and dependencies from the PowerShell Gallery.
+2. Export rule data from templates using PowerShell.
+3. Run analysis against exported data.
 
 For example:
 
 ```powershell
-Invoke-PSRule -InputPath .\*.json -Module 'PSRule.Rules.Azure';
+# STEP 1: Install PSRule.Rules.Azure from the PowerShell Gallery
+Install-Module -Name 'PSRule.Rules.Azure' -Scope CurrentUser;
+
+# STEP 2: Export template data for analysis
+Get-AzRuleTemplateLink | Export-AzTemplateRuleData -OutputPath 'out/templates/';
+
+# STEP 3: Run analysis against exported data
+Assert-PSRule -Module 'PSRule.Rules.Azure' -InputPath 'out/templates/';
+```
+
+### Export in-flight resource data
+
+The following example shows how to setup PSRule locally to validate resources running in a subscription.
+
+1. Install the `PSRule.Rules.Azure` module and dependencies from the PowerShell Gallery.
+2. Connect and set context to an Azure subscription from PowerShell.
+3. Export the resource data with the `Export-AzRuleData` cmdlet.
+4. Run analysis against exported data.
+
+For example:
+
+```powershell
+# STEP 1: Install PSRule.Rules.Azure from the PowerShell Gallery
+Install-Module -Name 'PSRule.Rules.Azure' -Scope CurrentUser;
+
+# STEP 2: Authenticate to Azure, only required if not currently connected
+Connect-AzAccount;
+
+# Confirm the current subscription context
+Get-AzContext;
+
+# STEP 3: Exports a resource graph stored as JSON for analysis
+Export-AzRuleData -OutputPath 'out/templates/';
+
+# STEP 4: Run analysis against exported data
+Assert-PSRule -Module 'PSRule.Rules.Azure' -InputPath 'out/templates/';
 ```
 
 ### Additional options
 
-By default, resource data for the current subscription context will be exported to the current working directory as JSON.
+By default, resource data for the current subscription context will be exported.
 
 To export resource data for specific subscriptions use:
 
@@ -87,7 +193,7 @@ For example:
 
 ```powershell
 # Export data from two specific subscriptions
-Export-AzRuleData -Subscription 'Contoso Production', 'Contoso Non-production'
+Export-AzRuleData -Subscription 'Contoso Production', 'Contoso Non-production';
 ```
 
 To export specific resource data use:
@@ -99,7 +205,7 @@ For example:
 
 ```powershell
 # Export information from two resource groups within the current subscription context
-Export-AzRuleData -ResourceGroupName 'rg-app1-web', 'rg-app1-db'
+Export-AzRuleData -ResourceGroupName 'rg-app1-web', 'rg-app1-db';
 ```
 
 To export resource data for all subscription contexts use:
@@ -120,7 +226,7 @@ For example:
 
 ```powershell
 # Only show failed results
-Invoke-PSRule -InputPath .\*.json -Module 'PSRule.Rules.Azure' -Outcome Fail;
+Invoke-PSRule -InputPath 'out/templates/' -Module 'PSRule.Rules.Azure' -Outcome Fail;
 ```
 
 The output of this example is:
@@ -141,7 +247,7 @@ For example:
 
 ```powershell
 # Display as summary results
-Invoke-PSRule -InputPath .\*.json -Module 'PSRule.Rules.Azure' -As Summary;
+Invoke-PSRule -InputPath 'out/templates/' -Module 'PSRule.Rules.Azure' -As Summary;
 ```
 
 The output of this example is:
@@ -256,7 +362,8 @@ or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any addi
 
 This project is [licensed under the MIT License](LICENSE).
 
-[issue]: https://github.com/Microsoft/PSRule.Rules.Azure/issues
+[issue]: https://github.com/microsoft/PSRule.Rules.Azure/issues
+[discussion]: https://github.com/microsoft/PSRule.Rules.Azure/discussions
 [install]: docs/install-instructions.md
 [ci-badge]: https://dev.azure.com/bewhite/PSRule.Rules.Azure/_apis/build/status/PSRule.Rules.Azure-CI?branchName=main
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
@@ -266,5 +373,5 @@ This project is [licensed under the MIT License](LICENSE).
 [PSRule-pipelines]: https://github.com/microsoft/PSRule-pipelines
 [ps-rule]: https://github.com/microsoft/ps-rule
 [AWAF]: https://docs.microsoft.com/en-gb/azure/architecture/framework/
-[chat]: https://gitter.im/PSRule/PSRule.Rules.Azure?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-[chat-badge]: https://img.shields.io/static/v1.svg?label=chat&message=on%20gitter&color=informational&logo=gitter
+[create-workflow]: https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file
+[extension]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
