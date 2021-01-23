@@ -10,6 +10,18 @@ Features of PSRule for Azure include:
 - [DevOps](docs/features.md#devops) - Validate resources and infrastructure code pre or post-deployment.
 - [Cross-platform](docs/features.md#cross-platform) - Run on MacOS, Linux, and Windows.
 
+## Project objectives
+
+1. **Ready to go**:
+   - Provide a [Azure Well-Architected Framework][AWAF] aligned suite of rules for validating Azure resources.
+   - Provide meaningful information to allow remediation.
+2. **DevOps**:
+   - Resources and templates can be validated before deployment within DevOps workflows.
+   - Allow pull request (PR) validation to prevent invalid configuration being merged.
+3. **Enterprise ready**:
+   - Rules can be directly adopted and additional enterprise specific rules can be layed on.
+   - Provide regular baselines to allow progressive adoption.
+
 ## Support
 
 This project uses GitHub Issues to track bugs and feature requests.
