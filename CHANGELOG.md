@@ -7,6 +7,8 @@ What's changed since v0.19.0:
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to 1.19.6. [#603](https://github.com/Microsoft/PSRule.Rules.Azure/issues/603)
+- General improvements:
+  - Added support for `environment` template function. [#517](https://github.com/Microsoft/PSRule.Rules.Azure/issues/517)
 
 ## v0.19.0
 

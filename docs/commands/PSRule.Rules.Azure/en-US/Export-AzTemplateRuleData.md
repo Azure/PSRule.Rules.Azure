@@ -35,8 +35,10 @@ Currently the following limitations also apply:
 
 - Nested templates are expanded, external templates are not.
   - Deployment resources that link to an external template are returned as a resource.
-- The `environment`, and `pickZones` template functions are not supported.
-- References to Key Vault secrets are not expanded. A placeholder value is used instead.
+- The `pickZones` template function is not supported.
+- The `environment` template function always returns values for Azure public cloud.
+- References to Key Vault secrets are not expanded.
+A placeholder value is used instead.
 - Multi-line strings and user-defined functions are not supported.
 
 ## EXAMPLES

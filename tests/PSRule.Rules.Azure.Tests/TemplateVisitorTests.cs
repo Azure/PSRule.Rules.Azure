@@ -39,6 +39,8 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Resources.FrontDoor.Template.json"), null);
             Assert.NotNull(resources);
+            Assert.Equal("my-frontdoor", resources[0]["properties"]["frontendEndpoints"][0]["name"]);
+            Assert.Equal("my-frontdoor.azurefd.net", resources[0]["properties"]["frontendEndpoints"][0]["properties"]["hostName"]);
         }
 
         [Fact]
