@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+What's changed since v0.19.0:
+
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.19.6. [#603](https://github.com/Microsoft/PSRule.Rules.Azure/issues/603)
+
 ## v0.19.0
 
 What's changed since v0.18.0:
