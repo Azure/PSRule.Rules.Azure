@@ -58,7 +58,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             // Deployment
             new FunctionDescriptor("deployment", Deployment),
-            // environment
+            new FunctionDescriptor("environment", Environment),
             new FunctionDescriptor("parameters", Parameters),
             new FunctionDescriptor("variables", Variables),
 
@@ -590,6 +590,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region Deployment
 
+        /// <summary>
+        /// deployment()
+        /// </summary>
         internal static object Deployment(TemplateContext context, object[] args)
         {
             if (CountArgs(args) > 0)
@@ -598,6 +601,20 @@ namespace PSRule.Rules.Azure.Data.Template
             return context.Deployment;
         }
 
+        /// <summary>
+        /// environment()
+        /// </summary>
+        internal static object Environment(TemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw ArgumentsOutOfRange(nameof(Environment), args);
+
+            return JObject.FromObject(context.GetEnvironment());
+        }
+
+        /// <summary>
+        /// parameters(parameterName)
+        /// </summary>
         internal static object Parameters(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
@@ -612,6 +629,9 @@ namespace PSRule.Rules.Azure.Data.Template
             return result;
         }
 
+        /// <summary>
+        /// variables(variableName)
+        /// </summary>
         internal static object Variables(TemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)

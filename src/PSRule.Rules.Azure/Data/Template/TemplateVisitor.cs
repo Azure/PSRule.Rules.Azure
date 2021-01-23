@@ -38,9 +38,14 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public sealed class TemplateContext
         {
+            private const string DATAFILE_PROVIDERS = "providers.json";
+            private const string DATAFILE_ENVIRONMENTS = "environments.json";
+            private const string CLOUD_PUBLIC = "AzureCloud";
+
             private readonly Stack<JObject> _Deployment;
             private JObject _Parameters;
             private readonly Dictionary<string, ResourceProvider> _Providers;
+            private readonly Dictionary<string, CloudEnvironment> _Environments;
 
             internal TemplateContext()
             {
@@ -52,6 +57,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 Subscription = new Subscription();
                 _Deployment = new Stack<JObject>();
                 _Providers = ReadProviders();
+                _Environments = ReadEnvironments();
             }
 
             internal TemplateContext(Subscription subscription, ResourceGroup resourceGroup)
@@ -238,15 +244,12 @@ namespace PSRule.Rules.Azure.Data.Template
 
             private static Dictionary<string, ResourceProvider> ReadProviders()
             {
-                var providersFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "providers.json");
-                if (!File.Exists(providersFile))
-                    return null;
+                return ReadDataFile<ResourceProvider>(DATAFILE_PROVIDERS);
+            }
 
-                var json = File.ReadAllText(providersFile);
-                var settings = new JsonSerializerSettings();
-                settings.Converters.Add(new ResourceProviderConverter());
-                var result = JsonConvert.DeserializeObject<Dictionary<string, ResourceProvider>>(json, settings);
-                return result;
+            private static Dictionary<string, CloudEnvironment> ReadEnvironments()
+            {
+                return ReadDataFile<CloudEnvironment>(DATAFILE_ENVIRONMENTS);
             }
 
             internal ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
@@ -261,6 +264,24 @@ namespace PSRule.Rules.Azure.Data.Template
                     return Array.Empty<ResourceProviderType>();
 
                 return new ResourceProviderType[] { provider.Types[resourceType] };
+            }
+
+            internal CloudEnvironment GetEnvironment()
+            {
+                return _Environments[CLOUD_PUBLIC];
+            }
+
+            private static Dictionary<string, T> ReadDataFile<T>(string fileName)
+            {
+                var providersFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+                if (!File.Exists(providersFile))
+                    return null;
+
+                var json = File.ReadAllText(providersFile);
+                var settings = new JsonSerializerSettings();
+                settings.Converters.Add(new ResourceProviderConverter());
+                var result = JsonConvert.DeserializeObject<Dictionary<string, T>>(json, settings);
+                return result;
             }
         }
 

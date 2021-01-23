@@ -92,7 +92,7 @@
             {
                 "name": "[concat(parameters('frontdoorName'))]",
                 "properties": {
-                    "hostName": "[concat(parameters('frontdoorName'), '.azurefd.net')]",
+                    "hostName": "[concat(parameters('frontdoorName'), '.', environment().suffixes.azureFrontDoorEndpointSuffix)]",
                     "sessionAffinityEnabledState": "Disabled",
                     "sessionAffinityTtlSeconds": 0,
                     "webApplicationFirewallPolicyLink": "[variables('wafPolicy')]"

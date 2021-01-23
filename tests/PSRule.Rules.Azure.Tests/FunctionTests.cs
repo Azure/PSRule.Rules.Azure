@@ -613,6 +613,19 @@ namespace PSRule.Rules.Azure
 
         [Fact]
         [Trait(TRAIT, TRAIT_DEPLOYMENT)]
+        public void Environment()
+        {
+            var context = GetContext();
+
+            var actual1 = Functions.Environment(context, null) as JObject;
+            Assert.Equal("AzureCloud", actual1["name"]);
+            Assert.Equal("https://graph.windows.net/", actual1["graph"]);
+            Assert.Equal("https://management.azure.com/", actual1["resourceManager"]);
+            Assert.Equal("https://login.microsoftonline.com/", actual1["authentication"]["loginEndpoint"]);
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_DEPLOYMENT)]
         public void Parameters()
         {
             var context = GetContext();
