@@ -117,7 +117,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeLike "*Resources.Empty.Template.json";
             $ruleResult.Reason | Should -BeLike "The parameter '*' was not used within the template.";
-            $ruleResult.Reason.Length | Should -Be 3;
+            $ruleResult.Reason.Length | Should -Be 4;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -150,6 +150,37 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 4;
+        }
+
+        It 'Azure.Template.LocationDefault' {
+            $dataPath = @(
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Template3.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Template4.json')
+            );
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Format None -Name 'Azure.Template.LocationDefault';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.LocationDefault' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Empty.Template.json';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Template4.json';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Template3.json';
         }
 
         It 'Azure.Template.ParameterFile' {

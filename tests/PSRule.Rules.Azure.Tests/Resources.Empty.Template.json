@@ -29,6 +29,13 @@
             "metadata": {
                 "description": "A storage account name for diagnostics."
             }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "eastus",
+            "metadata": {
+                "description": "A location to deploy resources."
+            }
         }
     },
     "variables": {
