@@ -7,6 +7,10 @@ What's changed since v0.19.0:
 - New rules:
   - All resources:
     - Check location parameter defaults to resource group. [#361](https://github.com/Microsoft/PSRule.Rules.Azure/issues/361)
+  - Front Door:
+    - Check Front Door uses a health probe for each backend pool. [#546](https://github.com/Microsoft/PSRule.Rules.Azure/issues/546)
+    - Check Front Door uses a dedicated health probe path backend pools. [#547](https://github.com/Microsoft/PSRule.Rules.Azure/issues/547)
+    - Check Front Door uses HEAD requests for backend health probes. [#613](https://github.com/Microsoft/PSRule.Rules.Azure/issues/613)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to 1.19.6. [#603](https://github.com/Microsoft/PSRule.Rules.Azure/issues/603)
