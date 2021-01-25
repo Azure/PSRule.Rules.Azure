@@ -34,7 +34,7 @@ if ($Env:SYSTEM_DEBUG -eq 'true') {
     $VerbosePreference = 'Continue';
 }
 
-if ($Env:BUILD_SOURCEBRANCH -like '*/tags/*' -and $Env:BUILD_SOURCEBRANCHNAME -like 'v0.*') {
+if ($Env:BUILD_SOURCEBRANCH -like '*/tags/*' -and $Env:BUILD_SOURCEBRANCHNAME -like 'v1.*') {
     $Build = $Env:BUILD_SOURCEBRANCHNAME.Substring(1);
 }
 
