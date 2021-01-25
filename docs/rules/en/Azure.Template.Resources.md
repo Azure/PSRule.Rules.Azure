@@ -23,5 +23,5 @@ Consider removing Azure template files that do not deploy any resources.
 
 ## LINKS
 
-- [Resources](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-syntax#resources)
-- [Tutorial: Create and deploy your first ARM template](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+- [Resources](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-syntax#resources)
+- [Tutorial: Create and deploy your first ARM template](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
