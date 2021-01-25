@@ -6,9 +6,7 @@
 #
 
 [CmdletBinding()]
-param (
-
-)
+param ()
 
 # Setup error handling
 $ErrorActionPreference = 'Stop';
@@ -69,6 +67,54 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
 
         It 'Azure.FrontDoor.Logs' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.Logs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'frontdoor-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+        }
+
+        It 'Azure.FrontDoor.Probe' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.Probe' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'frontdoor-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+        }
+
+        It 'Azure.FrontDoor.ProbeMethod' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.ProbeMethod' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'frontdoor-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+        }
+
+        It 'Azure.FrontDoor.ProbePath' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.ProbePath' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

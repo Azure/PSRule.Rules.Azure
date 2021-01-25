@@ -37,6 +37,39 @@ Rule 'Azure.FrontDoor.Logs' -Type 'Microsoft.Network/frontDoors' -Tag @{ release
     $Null -ne $logCategories -and $logCategories.Length -gt 0;
 }
 
+# Synopsis: Configure and enable health probes for each backend pool.
+Rule 'Azure.FrontDoor.Probe' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+    $probes = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
+        $probes = @($TargetObject.Properties.healthProbeSettings);
+    }
+    foreach ($probe in $probes) {
+        $Assert.HasFieldValue($probe, 'properties.enabledState', 'Enabled');
+    }
+}
+
+# Synopsis: Configure health probes to use HEAD instead of GET requests.
+Rule 'Azure.FrontDoor.ProbeMethod' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+    $probes = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
+        $probes = @($TargetObject.Properties.healthProbeSettings);
+    }
+    foreach ($probe in $probes) {
+        $Assert.HasFieldValue($probe, 'properties.healthProbeMethod', 'Head');
+    }
+}
+
+# Synopsis: Configure a dedicated path for health probe requests.
+Rule 'Azure.FrontDoor.ProbePath' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+    $probes = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
+        $probes = @($TargetObject.Properties.healthProbeSettings);
+    }
+    foreach ($probe in $probes) {
+        $Assert.NotIn($probe, 'properties.path', '/');
+    }
+}
+
 # Synopsis: Enable WAF policy of each endpoint
 Rule 'Azure.FrontDoor.UseWAF' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $endpoints = @($TargetObject);

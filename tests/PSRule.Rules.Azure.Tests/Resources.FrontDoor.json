@@ -54,11 +54,11 @@
                     "type": "Microsoft.Network/Frontdoors/HealthProbeSettings",
                     "properties": {
                         "intervalInSeconds": 255,
-                        "path": "/",
+                        "path": "/healthz/",
                         "protocol": "Https",
                         "resourceState": "Enabled",
                         "enabledState": "Enabled",
-                        "healthProbeMethod": "Get"
+                        "healthProbeMethod": "Head"
                     }
                 }
             ],
@@ -282,7 +282,7 @@
                         "path": "/",
                         "protocol": "Https",
                         "resourceState": "Enabled",
-                        "enabledState": "Enabled",
+                        "enabledState": "Disabled",
                         "healthProbeMethod": "Get"
                     }
                 }
@@ -451,11 +451,11 @@
                     "type": "Microsoft.Network/Frontdoors/HealthProbeSettings",
                     "properties": {
                         "intervalInSeconds": 255,
-                        "path": "/",
+                        "path": "/healthz/",
                         "protocol": "Https",
                         "resourceState": "Enabled",
                         "enabledState": "Enabled",
-                        "healthProbeMethod": "Get"
+                        "healthProbeMethod": "Head"
                     }
                 }
             ],
