@@ -25,4 +25,5 @@ Also consider using Visual Studio Code to assist with authoring these files.
 
 ## LINKS
 
-- [Parameters in Azure Resource Manager templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-parameters)
+- [Create Resource Manager parameter file](https://docs.microsoft.com/azure/azure-resource-manager/templates/parameter-files)
+- [Parameters in Azure Resource Manager templates](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-parameters)

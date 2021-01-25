@@ -1,6 +1,6 @@
 ---
 severity: Awareness
-pillar: Operational Excellence
+pillar: Reliability
 category: Resource deployment
 resource: All resources
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Template.Location.md
@@ -10,7 +10,7 @@ online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/r
 
 ## SYNOPSIS
 
-Set the default value for the location parameter within an ARM template to `[resourceGroup().location]`.
+Set the default value for the location parameter within an ARM template to resource group location.
 
 ## DESCRIPTION
 

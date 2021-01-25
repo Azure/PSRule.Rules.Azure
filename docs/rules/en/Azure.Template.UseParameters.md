@@ -23,4 +23,5 @@ Consider removing unused parameters from Azure template files.
 
 ## LINKS
 
-- [ARM template best practices](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-best-practices#general-recommendations-for-parameters)
+- [Parameters](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-syntax#parameters)
+- [ARM template best practices](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#general-recommendations-for-parameters)

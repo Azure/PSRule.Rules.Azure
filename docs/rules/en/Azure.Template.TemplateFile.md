@@ -25,4 +25,4 @@ Also consider using Visual Studio Code to assist with authoring these files.
 
 ## LINKS
 
-- [Define resources in Azure Resource Manager templates](https://docs.microsoft.com/en-us/azure/templates/)
+- [Define resources in Azure Resource Manager templates](https://docs.microsoft.com/azure/templates/)
