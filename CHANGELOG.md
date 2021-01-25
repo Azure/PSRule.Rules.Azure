@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v1.0.0-B2101006 (pre-release)
+
 What's changed since v0.19.0:
 
 - New rules:
