@@ -4,7 +4,7 @@ Default baseline for Azure rules.
 
 ## Rules
 
-The following rules are included within `Azure.Default`. This baseline includes a total of 183 rules.
+The following rules are included within `Azure.Default`. This baseline includes a total of 184 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -125,6 +125,7 @@ Name | Synopsis | Severity
 [Azure.Route.Name](Azure.Route.Name.md) | Route table names should meet naming requirements. | Awareness
 [Azure.SecurityCenter.Contact](Azure.SecurityCenter.Contact.md) | Security Center email and phone contact details should be set. | Important
 [Azure.SecurityCenter.Provisioning](Azure.SecurityCenter.Provisioning.md) | Enable auto-provisioning on to improve Azure Security Center insights. | Important
+[Azure.ServiceFabric.AAD](Azure.ServiceFabric.AAD.md) | Use Azure Active Directory (AAD) client authentication for Service Fabric clusters. | Critical
 [Azure.SignalR.Name](Azure.SignalR.Name.md) | SignalR service instance names should meet naming requirements. | Awareness
 [Azure.SQL.AAD](Azure.SQL.AAD.md) | Use Azure Active Directory (AAD) authentication with Azure SQL databases. | Critical
 [Azure.SQL.AllowAzureAccess](Azure.SQL.AllowAzureAccess.md) | Determine if access from Azure services is required. | Important

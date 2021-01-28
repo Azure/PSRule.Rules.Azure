@@ -249,6 +249,12 @@ Name | Synopsis | Severity
 [Azure.SecurityCenter.Contact](Azure.SecurityCenter.Contact.md) | Security Center email and phone contact details should be set. | Important
 [Azure.SecurityCenter.Provisioning](Azure.SecurityCenter.Provisioning.md) | Enable auto-provisioning on to improve Azure Security Center insights. | Important
 
+### Service Fabric
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.ServiceFabric.AAD](Azure.ServiceFabric.AAD.md) | Use Azure Active Directory (AAD) client authentication for Service Fabric clusters. | Critical
+
 ### SignalR Service
 
 Name | Synopsis | Severity

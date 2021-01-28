@@ -1,0 +1,75 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "value": "cluster-001"
+        },
+        "clusterLocation": {
+            "value": "region"
+        },
+        "computeLocation": {
+            "value": "region"
+        },
+        "adminUserName": {
+            "value": "admin"
+        },
+        "adminPassword": {
+            "value": "$CREDENTIAL_PLACEHOLDER$"
+        },
+        "nicName": {
+            "value": "NIC-cluster-001"
+        },
+        "publicIPAddressName": {
+            "value": "pip-001"
+        },
+        "dnsName": {
+            "value": "cluster-001"
+        },
+        "virtualNetworkName": {
+            "value": "VNet-cluster-001"
+        },
+        "lbName": {
+            "value": "LB-cluster-001"
+        },
+        "lbIPName": {
+            "value": "LBIP-cluster-001"
+        },
+        "supportLogStorageAccountName": {
+            "value": "sflogs00000"
+        },
+        "sourceVaultValue": {
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/keyvault-001"
+        },
+        "certificateUrlValue": {
+            "value": "https://keyvault-001.vault.azure.net/secrets/certificate01/00000000000000000000000000000000"
+        },
+        "certificateThumbprint": {
+            "value": "0000000000000000000000000000000000000000"
+        },
+        "vmImageSku": {
+            "value": "Datacenter-Core-1803-with-Containers-smalldisk"
+        },
+        "vmImageOffer": {
+            "value": "WindowsServerSemiAnnual"
+        },
+        "nt0ephemeralStartPort": {
+            "value": 49152
+        },
+        "nt0ephemeralEndPort": {
+            "value": 65534
+        },
+        "nt0applicationStartPort": {
+            "value": 20000
+        },
+        "nt0applicationEndPort": {
+            "value": 30000
+        },
+        "nt0fabricTcpGatewayPort": {
+            "value": 19000
+        },
+        "nt0fabricHttpGatewayPort": {
+            "value": 19080
+        }
+    }
+}
