@@ -24,6 +24,21 @@ Regular checks of the monitored path allow Front Door to make load balancing dec
 
 Consider using a dedicated health probe endpoint that implements functional checks.
 
+## EXAMPLES
+
+### Configure with Azure CLI
+
+```bash
+az network front-door probe update --front-door-name '<front_door>' -n '<probe_name>' -g '<resource_group>' --path '<path>'
+```
+
+### Configure with Azure PowerShell
+
+```powershell
+$probeSetting = New-AzFrontDoorHealthProbeSettingObject -Name '<probe_name>' -Path '<path>'
+Set-AzFrontDoor -Name '<front_door>' -ResourceGroupName '<resource_group>' -HealthProbeSetting $probeSetting
+```
+
 ## LINKS
 
 - [Health probes](https://docs.microsoft.com/azure/frontdoor/front-door-health-probes)

@@ -66,7 +66,7 @@ Rule 'Azure.FrontDoor.ProbePath' -Type 'Microsoft.Network/frontdoors', 'Microsof
         $probes = @($TargetObject.Properties.healthProbeSettings);
     }
     foreach ($probe in $probes) {
-        $Assert.NotIn($probe, 'properties.path', '/');
+        $Assert.NotIn($probe, 'properties.path', '/').Reason($LocalizedData.HealthProbeNotDedicated, $probe.name);
     }
 }
 

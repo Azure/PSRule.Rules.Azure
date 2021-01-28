@@ -121,6 +121,7 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'frontdoor-B';
+            $ruleResult[0].Reason | Should -BeLike "The health probe '*' used the default path '/'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

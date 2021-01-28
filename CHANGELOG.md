@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+What's changed since pre-release v1.0.0-B2101006:
+
+- Bug fixes:
+  - Fixed reason `Azure.FrontDoor.ProbePath` so the probe name is included. [#617](https://github.com/Microsoft/PSRule.Rules.Azure/issues/617)
+
 ## v1.0.0-B2101006 (pre-release)
 
 What's changed since v0.19.0:
