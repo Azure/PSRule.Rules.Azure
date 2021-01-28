@@ -4,6 +4,9 @@
 
 What's changed since pre-release v1.0.0-B2101006:
 
+- New rules:
+  - Service Fabric:
+    - Check Service Fabric clusters use AAD client authentication. [#619](https://github.com/Microsoft/PSRule.Rules.Azure/issues/619)
 - Bug fixes:
   - Fixed reason `Azure.FrontDoor.ProbePath` so the probe name is included. [#617](https://github.com/Microsoft/PSRule.Rules.Azure/issues/617)
 
