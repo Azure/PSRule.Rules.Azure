@@ -22,6 +22,21 @@ To lower load and performance cost against backends use HEAD requests.
 
 Consider configuring health probes to query backend health endpoints using HEAD requests.
 
+## EXAMPLES
+
+### Configure with Azure CLI
+
+```bash
+az network front-door probe update --front-door-name '<front_door>' -n '<probe_name>' -g '<resource_group>' --probeMethod  'HEAD'
+```
+
+### Configure with Azure PowerShell
+
+```powershell
+$probeSetting = New-AzFrontDoorHealthProbeSettingObject -Name '<probe_name>' -HealthProbeMethod 'HEAD'
+Set-AzFrontDoor -Name '<front_door>' -ResourceGroupName '<resource_group>' -HealthProbeSetting $probeSetting
+```
+
 ## LINKS
 
 - [Supported HTTP methods for health probes](https://docs.microsoft.com/en-gb/azure/frontdoor/front-door-health-probes#supported-http-methods-for-health-probes)

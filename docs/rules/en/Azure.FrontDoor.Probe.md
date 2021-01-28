@@ -27,6 +27,21 @@ Health probes allow Front Door to select a backend endpoint able to respond to t
 
 Consider enabling a health probe for each Front Door backend endpoint.
 
+## EXAMPLES
+
+### Configure with Azure CLI
+
+```bash
+az network front-door probe update --front-door-name '<front_door>' -n '<probe_name>' -g '<resource_group>' --enabled 'Enabled'
+```
+
+### Configure with Azure PowerShell
+
+```powershell
+$probeSetting = New-AzFrontDoorHealthProbeSettingObject -Name '<probe_name>' -EnabledState 'Enabled'
+Set-AzFrontDoor -Name '<front_door>' -ResourceGroupName '<resource_group>' -HealthProbeSetting $probeSetting
+```
+
 ## LINKS
 
 - [Health probes](https://docs.microsoft.com/azure/frontdoor/front-door-health-probes)

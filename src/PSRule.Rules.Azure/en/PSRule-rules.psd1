@@ -37,4 +37,5 @@
     VariableNotFound = "The variable '{0}' was not used within the template."
     AssessmentUnhealthy = "An assessment is reporting one or more issues."
     AssessmentNotFound = "The results for a valid assessment was not found."
+    HealthProbeNotDedicated = "The health probe '{0}' used the default path '/'."
 }
