@@ -14,11 +14,11 @@ Rule 'Azure.VNET.UseNSGs' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.
         # Get subnets
         $subnet = @($TargetObject.properties.subnets | Where-Object { $_.Name -notin 'GatewaySubnet', 'AzureFirewallSubnet' });
         if ($subnet.Length -eq 0) {
-            return $True;
+            return $Assert.Pass();
         }
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks/subnets' -and $PSRule.TargetName -in 'GatewaySubnet', 'AzureFirewallSubnet') {
-        return $True;
+        return $Assert.Pass();
     }
     foreach ($sn in $subnet) {
         $Assert.
