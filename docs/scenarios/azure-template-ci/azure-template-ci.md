@@ -77,14 +77,14 @@ See the [change log](https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/C
 
 ## Exporting rule data for analysis
 
-In PSRule, the `Export-AzTemplateRuleData` cmdlet resolves a template and returns a resultant set of resources.
+In PSRule, the `Export-AzRuleTemplateData` cmdlet resolves a template and returns a resultant set of resources.
 The resultant set of resources can then be validated.
 
-No connectivity to Azure is required by default when calling `Export-AzTemplateRuleData`.
+No connectivity to Azure is required by default when calling `Export-AzRuleTemplateData`.
 
 ### Export cmdlet parameters
 
-To run `Export-AzTemplateRuleData` two key parameters are required:
+To run `Export-AzRuleTemplateData` two key parameters are required:
 
 - `-TemplateFile` - An absolute or relative path to the template JSON file.
 - `-ParameterFile` - An absolute or relative path to one or more parameter JSON files.
@@ -108,18 +108,18 @@ If `-OutputPath` is a directory or is not set, the output file will be automatic
 For example:
 
 ```powershell
-Export-AzTemplateRuleData -TemplateFile .\template.json -ParameterFile .\parameters.json;
+Export-AzRuleTemplateData -TemplateFile .\template.json -ParameterFile .\parameters.json;
 ```
 
 Multiple parameter files that map to the same template can be supplied in a single cmdlet call.
-Additional templates can be exported by calling `Export-AzTemplateRuleData` multiple times.
+Additional templates can be exported by calling `Export-AzRuleTemplateData` multiple times.
 
 ### Use of placeholder values
 
 A number of functions that can be used within Azure templates retrieve information from Azure.
 Some examples include `reference`, `subscription`, `resourceGroup`, `list*`.
 
-The default for `Export-AzTemplateRuleData` is to operate without requiring authenticated connectivity to Azure.
+The default for `Export-AzRuleTemplateData` is to operate without requiring authenticated connectivity to Azure.
 As a result, functions that retrieve information from Azure use placeholders such as `{{Subscription.SubscriptionId}}`.
 
 To provide a real value for `subscription` and `resourceGroup` use the `-Subscription` and `-ResourceGroup` parameters.
@@ -246,7 +246,7 @@ if ($Null -eq (Get-InstalledModule -Name PSRule.Rules.Azure -MinimumVersion '0.1
 }
 
 # Resolve resources
-Export-AzTemplateRuleData -TemplateFile .\template.json -ParameterFile .\parameters.json -OutputPath out/;
+Export-AzRuleTemplateData -TemplateFile .\template.json -ParameterFile .\parameters.json -OutputPath out/;
 
 # Validate resources
 $assertParams = @{
@@ -279,7 +279,7 @@ task InstallPSRule {
 # Synopsis: Run validation
 task ValidateTemplate InstallPSRule, {
     # Resolve resources
-    Export-AzTemplateRuleData -TemplateFile .\template.json -ParameterFile .\parameters.json -OutputPath out/;
+    Export-AzRuleTemplateData -TemplateFile .\template.json -ParameterFile .\parameters.json -OutputPath out/;
 
     # Validate resources
     $assertParams = @{
@@ -319,7 +319,7 @@ For example:
 Describe 'Azure' {
     Context 'Resource templates' {
         It 'Use content rules' {
-            Export-AzTemplateRuleData -TemplateFile .\template.json -ParameterFile .\parameters.json -OutputPath .\out\resources.json;
+            Export-AzRuleTemplateData -TemplateFile .\template.json -ParameterFile .\parameters.json -OutputPath .\out\resources.json;
 
             # Validate resources
             $invokeParams = @{

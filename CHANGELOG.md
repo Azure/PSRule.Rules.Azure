@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+What's changed since pre-release v1.0.0-B2101016:
+
+- General improvements:
+  - Renamed `Export-AzTemplateRuleData` to `Export-AzRuleTemplateData`. [#596](https://github.com/Microsoft/PSRule.Rules.Azure/issues/596)
+    - New name `Export-AzRuleTemplateData` aligns with prefix of other cmdlets.
+    - Use of `Export-AzTemplateRuleData` is now deprecated and will be removed in the next major version.
+    - Added alias to allow `Export-AzTemplateRuleData` to continue to be used.
+    - Using `Export-AzTemplateRuleData` returns a deprecation warning.
+
 ## v1.0.0-B2101016 (pre-release)
 
 What's changed since pre-release v1.0.0-B2101006:

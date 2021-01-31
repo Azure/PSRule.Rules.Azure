@@ -252,9 +252,9 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet','Export-AzRuleData' {
 
 #endregion Export-AzRuleData
 
-#region Export-AzTemplateRuleData
+#region Export-AzRuleTemplateData
 
-Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
+Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
     $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
     $parametersPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
 
@@ -266,7 +266,7 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
                 ParameterFile = $parametersPath
                 OutputPath = $outputFile
             }
-            $Null = Export-AzTemplateRuleData @exportParams;
+            $Null = Export-AzRuleTemplateData @exportParams;
             $result = Get-Content -Path $outputFile -Raw | ConvertFrom-Json;
             $result | Should -Not -BeNullOrEmpty;
             $result.Length | Should -Be 9;
@@ -289,13 +289,13 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
             # Invalid template file
             $exportParams['TemplateFile'] = 'notafile.json';
             $exportParams['ParameterFile'] = $parametersPath;
-            $errorOut = { $Null = Export-AzTemplateRuleData @exportParams -ErrorVariable exportErrors -ErrorAction SilentlyContinue; $exportErrors; } | Should -Throw -PassThru;
+            $errorOut = { $Null = Export-AzRuleTemplateData @exportParams -ErrorVariable exportErrors -ErrorAction SilentlyContinue; $exportErrors; } | Should -Throw -PassThru;
             $errorOut[0].Exception.Message | Should -BeLike "Unable to find the specified template file '*'.";
 
             # Invalid parameter file
             $exportParams['TemplateFile'] = $templatePath;
             $exportParams['ParameterFile'] = 'notafile.json';
-            $errorOut = { $Null = Export-AzTemplateRuleData @exportParams -ErrorVariable exportErrors -ErrorAction SilentlyContinue; $exportErrors; } | Should -Throw -PassThru;
+            $errorOut = { $Null = Export-AzRuleTemplateData @exportParams -ErrorVariable exportErrors -ErrorAction SilentlyContinue; $exportErrors; } | Should -Throw -PassThru;
             $errorOut[0].Exception.Message | Should -BeLike "Unable to find the specified parameter file '*'.";
         }
     }
@@ -306,7 +306,7 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
                 TemplateFile = $templatePath
                 ParameterFile = $parametersPath
             }
-            $result = @(Export-AzTemplateRuleData @exportParams -PassThru);
+            $result = @(Export-AzRuleTemplateData @exportParams -PassThru);
             $result | Should -Not -BeNullOrEmpty;
             $result.Length | Should -Be 9;
             $result[0].name | Should -Be 'vnet-001';
@@ -334,7 +334,7 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
                 ParameterFile = $parametersPath
                 Subscription = 'test-sub'
             }
-            $result = Export-AzTemplateRuleData @exportParams -PassThru;
+            $result = Export-AzRuleTemplateData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
             $result.Length | Should -Be 9;
             $result[0].properties.subnets.Length | Should -Be 3;
@@ -361,7 +361,7 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
                 ParameterFile = $parametersPath
                 ResourceGroupName = 'test-rg'
             }
-            $result = Export-AzTemplateRuleData @exportParams -PassThru;
+            $result = Export-AzRuleTemplateData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
             $result.Length | Should -Be 9;
             $result[0].properties.subnets.Length | Should -Be 3;
@@ -369,9 +369,23 @@ Describe 'Export-AzTemplateRuleData' -Tag 'Cmdlet','Export-AzTemplateRuleData' {
             $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/test-rg/providers/Microsoft\.Network/routeTables/route-subnet2$';
         }
     }
+
+    Context 'With Export-AzTemplateRuleData alias' {
+        It 'Returns warning' {
+            $outputFile = Join-Path -Path $outputPath -ChildPath 'template-with-defaults.json'
+            $exportParams = @{
+                TemplateFile = $templatePath
+                ParameterFile = $parametersPath
+                OutputPath = $outputFile
+            }
+            $Null = Export-AzTemplateRuleData @exportParams -WarningAction SilentlyContinue -WarningVariable warnings;
+            $warningMessages = @($warnings);
+            $warningMessages.Length | Should -Be 1;
+        }
+    }
 }
 
-#endregion Export-AzTemplateRuleData
+#endregion Export-AzRuleTemplateData
 
 #region Get-AzRuleTemplateLink
 

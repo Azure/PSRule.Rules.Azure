@@ -105,7 +105,7 @@ Describe 'Azure Quickstart Templates' -Tag integration {
                 continue;
             }
             It "$($sample.Name)" {
-                $result = Export-AzTemplateRuleData -TemplateFile $sample.TemplateFile -ParameterFile $sample.ParametersFile -OutputPath .\out\ -PassThru;
+                $result = Export-AzRuleTemplateData -TemplateFile $sample.TemplateFile -ParameterFile $sample.ParametersFile -OutputPath .\out\ -PassThru;
                 $result | Should -Not -BeNullOrEmpty;
             }
         }

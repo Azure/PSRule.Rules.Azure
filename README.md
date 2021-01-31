@@ -84,7 +84,7 @@ jobs:
 
     # STEP 2: Export template data for analysis
     - name: Export templates
-      run: Install-Module PSRule.Rules.Azure -Force; Get-AzRuleTemplateLink | Export-AzTemplateRuleData -OutputPath 'out/templates/';
+      run: Install-Module PSRule.Rules.Azure -Force; Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath 'out/templates/';
       shell: pwsh
 
     # STEP 3: Run analysis against exported data
@@ -131,7 +131,7 @@ jobs:
       module: 'PSRule.Rules.Azure'   # Install PSRule.Rules.Azure from the PowerShell Gallery.
 
   # STEP 4: Export template data for analysis
-  - powershell: Get-AzRuleTemplateLink | Export-AzTemplateRuleData -OutputPath 'out/templates/';
+  - powershell: Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath 'out/templates/';
     displayName: 'Export template data'
 
   # STEP 5: Run analysis against exported data
@@ -158,7 +158,7 @@ For example:
 Install-Module -Name 'PSRule.Rules.Azure' -Scope CurrentUser;
 
 # STEP 2: Export template data for analysis
-Get-AzRuleTemplateLink | Export-AzTemplateRuleData -OutputPath 'out/templates/';
+Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath 'out/templates/';
 
 # STEP 3: Run analysis against exported data
 Assert-PSRule -Module 'PSRule.Rules.Azure' -InputPath 'out/templates/';
@@ -320,7 +320,7 @@ PSRule for Azure extends PowerShell with the following cmdlets.
 The following commands exist in the `PSRule.Rules.Azure` module:
 
 - [Export-AzRuleData](docs/commands/PSRule.Rules.Azure/en-US/Export-AzRuleData.md) - Export resource configuration data from Azure subscriptions.
-- [Export-AzTemplateRuleData](docs/commands/PSRule.Rules.Azure/en-US/Export-AzTemplateRuleData.md) - Export resource configuration data from Azure templates.
+- [Export-AzRuleTemplateData](docs/commands/PSRule.Rules.Azure/en-US/Export-AzRuleTemplateData.md) - Export resource configuration data from Azure templates.
 - [Get-AzRuleTemplateLink](docs/commands/PSRule.Rules.Azure/en-US/Get-AzRuleTemplateLink.md) - Get a metadata link to a Azure template file.
 
 ### Concepts

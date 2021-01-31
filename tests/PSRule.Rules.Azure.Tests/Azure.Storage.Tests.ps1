@@ -218,7 +218,7 @@ Describe 'Azure.Storage' -Tag Storage {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.Storage.Template.json';
         $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Storage.Parameters.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Storage.json;
-        Export-AzTemplateRuleData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
+        Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop -Culture 'en-US';
 
         It 'Azure.Storage.UseReplication' {

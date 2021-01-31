@@ -91,7 +91,7 @@ function Export-AzRuleData {
 }
 
 # .ExternalHelp PSRule.Rules.Azure-help.xml
-function Export-AzTemplateRuleData {
+function Export-AzRuleTemplateData {
     [CmdletBinding()]
     [OutputType([System.IO.FileInfo])]
     [OutputType([PSObject])]
@@ -119,7 +119,10 @@ function Export-AzTemplateRuleData {
         [Switch]$PassThru = $False
     )
     begin {
-        Write-Verbose -Message '[Export-AzTemplateRuleData] BEGIN::';
+        Write-Verbose -Message '[Export-AzRuleTemplateData] BEGIN::';
+        if ($MyInvocation.InvocationName -eq 'Export-AzTemplateRuleData') {
+            Write-Warning -Message "The cmdlet 'Export-AzTemplateRuleData' is has been renamed to 'Export-AzRuleTemplateData'. Use of 'Export-AzTemplateRuleData' is deprecated and will be removed in the next major version."
+        }
 
         $Option = [PSRule.Rules.Azure.Configuration.PSRuleOption]::new();
         $Option.Output.Path = $OutputPath;
@@ -175,7 +178,7 @@ function Export-AzTemplateRuleData {
                 $pipeline.Dispose();
             }
         }
-        Write-Verbose -Message '[Export-AzTemplateRuleData] END::';
+        Write-Verbose -Message '[Export-AzRuleTemplateData] END::';
     }
 }
 
@@ -1155,8 +1158,14 @@ function SetResourceType {
 # Export module
 #
 
+New-Alias -Name 'Export-AzTemplateRuleData' -Value 'Export-AzRuleTemplateData' -Force;
+
 Export-ModuleMember -Function @(
     'Export-AzRuleData'
-    'Export-AzTemplateRuleData'
+    'Export-AzRuleTemplateData'
     'Get-AzRuleTemplateLink'
+);
+
+Export-ModuleMember -Alias @(
+    'Export-AzTemplateRuleData'
 );
