@@ -40,6 +40,20 @@ Is not currently supported in sovereign or national clouds (e.g. US Gov, China G
 
 Consider using Azure Defender to scan for security vulnerabilities in container images.
 
+## EXAMPLES
+
+### Enable with Azure CLI
+
+```bash
+az security pricing create -n 'ContainerRegistry' --tier 'standard'
+```
+
+### Enable with Azure PowerShell
+
+```powershell
+Set-AzSecurityPricing -Name 'ContainerRegistry' -PricingTier 'Standard'
+```
+
 ## NOTES
 
 This rule applies when analyzing resources deployed to Azure.

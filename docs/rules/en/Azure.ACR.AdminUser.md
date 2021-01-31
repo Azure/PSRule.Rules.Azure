@@ -27,6 +27,20 @@ RBAC can be used to delegate registry permissions to an Azure AD (AAD) identity.
 
 Consider disabling the admin user account and only using AAD-based identities for registry operations.
 
+## EXAMPLES
+
+### Configure with Azure CLI
+
+```bash
+az acr update --admin-enabled false -n '<name>' -g '<resource_group>'
+```
+
+### Configure with Azure PowerShell
+
+```powershell
+Update-AzContainerRegistry -ResourceGroupName '<resource_group>' -Name '<name>' -DisableAdminUser
+```
+
 ## LINKS
 
 - [Authenticate with a private Docker container registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication)
