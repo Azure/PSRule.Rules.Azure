@@ -6,9 +6,7 @@
 #
 
 [CmdletBinding()]
-param (
-
-)
+param ()
 
 # Setup error handling
 $ErrorActionPreference = 'Stop';
@@ -31,6 +29,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             WarningAction = 'SilentlyContinue'
             ErrorAction = 'Stop'
         }
+
         It 'Azure.Template.TemplateFile' {
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Template*.json';
             $result = Get-Item -Path $dataPath | Invoke-PSRule @invokeParams -Name 'Azure.Template.TemplateFile';
@@ -117,7 +116,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeLike "*Resources.Empty.Template.json";
             $ruleResult.Reason | Should -BeLike "The parameter '*' was not used within the template.";
-            $ruleResult.Reason.Length | Should -Be 4;
+            $ruleResult.Reason.Length | Should -Be 11;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -181,6 +180,34 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 1;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.Template3.json';
+        }
+
+        It 'Azure.Template.ParameterDataTypes' {
+            $dataPath = @(
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Template3.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Template4.json')
+            );
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Format None -Name 'Azure.Template.ParameterDataTypes';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.ParameterDataTypes' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Empty.Template.json';
+            $ruleResult[0].Reason.Length | Should -Be 3;
+            $ruleResult[0].Reason[0] | Should -BeLike "The default value for 'notStringParam' is not string.";
+            $ruleResult[0].Reason[1] | Should -BeLike "The default value for 'notBoolParam' is not bool.";
+            $ruleResult[0].Reason[2] | Should -BeLike "The default value for 'notArrayParam' is not array.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Template3.json', 'Resources.Template4.json';
         }
 
         It 'Azure.Template.ParameterFile' {

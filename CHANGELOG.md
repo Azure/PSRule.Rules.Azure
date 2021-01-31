@@ -4,6 +4,9 @@
 
 What's changed since pre-release v1.0.0-B2101016:
 
+- New rules:
+  - All resources:
+    - Check parameter default value type matches type. [#311](https://github.com/Microsoft/PSRule.Rules.Azure/issues/311)
 - General improvements:
   - Renamed `Export-AzTemplateRuleData` to `Export-AzRuleTemplateData`. [#596](https://github.com/Microsoft/PSRule.Rules.Azure/issues/596)
     - New name `Export-AzRuleTemplateData` aligns with prefix of other cmdlets.

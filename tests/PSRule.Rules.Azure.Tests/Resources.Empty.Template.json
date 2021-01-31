@@ -36,6 +36,34 @@
             "metadata": {
                 "description": "A location to deploy resources."
             }
+        },
+        "notStringParam": {
+            "type": "string",
+            "defaultValue": 0
+        },
+        "notBoolParam": {
+            "type": "bool",
+            "defaultValue": 0
+        },
+        "intParam": {
+            "type": "int",
+            "defaultValue": 0
+        },
+        "arrayParam": {
+            "type": "array",
+            "defaultValue": []
+        },
+        "arrayParamFn": {
+            "type": "array",
+            "defaultValue": "[createArray('a', 'b', 'c')]"
+        },
+        "notArrayParam": {
+            "type": "array",
+            "defaultValue": ""
+        },
+        "objectParam": {
+            "type": "object",
+            "defaultValue": {}
         }
     },
     "variables": {

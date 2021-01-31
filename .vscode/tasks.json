@@ -75,16 +75,9 @@
         },
         {
             "label": "Rule docs",
-            "detail": "Generate rule table of contents.",
+            "detail": "Generate rule and baseline documentation.",
             "type": "shell",
-            "command": "Invoke-Build BuildRuleDocs",
-            "problemMatcher": []
-        },
-        {
-            "label": "Baseline docs",
-            "detail": "Generate baseline documentation.",
-            "type": "shell",
-            "command": "Invoke-Build BuildBaselineDocs",
+            "command": "Invoke-Build BuildDocs",
             "problemMatcher": []
         },
         {
