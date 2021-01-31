@@ -54,7 +54,7 @@ Describe 'Azure.ServiceFabric' -Tag 'ServiceFabric' {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.ServiceFabric.Template.json';
         $parameterPath = Join-Path -Path $here -ChildPath 'Resources.ServiceFabric.Parameters.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.ServiceFabric.json;
-        Export-AzTemplateRuleData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
+        Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
 
         It 'Azure.ServiceFabric.AAD' {

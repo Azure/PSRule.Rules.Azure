@@ -848,7 +848,7 @@ Describe 'Azure.VM' {
     Context 'With template' {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.Template.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualMachine.json;
-        Export-AzTemplateRuleData -TemplateFile $templatePath -OutputPath $outputFile;
+        Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
 
         It 'Azure.VM.UseManagedDisks' {

@@ -179,7 +179,7 @@ Describe 'Azure.PublicIP' {
     Context 'With template' {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template3.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.PublicIP.json;
-        Export-AzTemplateRuleData -TemplateFile $templatePath -OutputPath $outputFile;
+        Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
 
         It 'Azure.PublicIP.IsAttached' {

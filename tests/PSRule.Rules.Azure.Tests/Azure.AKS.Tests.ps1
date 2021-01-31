@@ -298,7 +298,7 @@ Describe 'Azure.AKS' -Tag AKS {
     Context 'With Template' {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.AKS.Template.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.AKS.json;
-        Export-AzTemplateRuleData -TemplateFile $templatePath -OutputPath $outputFile;
+        Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
         $invokeParams = @{
             Baseline = 'Azure.All'
             Module = 'PSRule.Rules.Azure'

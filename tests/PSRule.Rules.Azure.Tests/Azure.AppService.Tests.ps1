@@ -212,7 +212,7 @@ Describe 'Azure.AppService' -Tag 'AppService' {
 
     Context 'With Template' {
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.AppService.json;
-        Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.AppService.Parameters.json' | Export-AzTemplateRuleData -OutputPath $outputFile;
+        Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.AppService.Parameters.json' | Export-AzRuleTemplateData -OutputPath $outputFile;
         $invokeParams = @{
             Baseline = 'Azure.All'
             Module = 'PSRule.Rules.Azure'

@@ -77,7 +77,7 @@ RequiredAssemblies = @(
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @(
     'Export-AzRuleData'
-    'Export-AzTemplateRuleData'
+    'Export-AzRuleTemplateData'
     'Get-AzRuleTemplateLink'
 )
 
@@ -88,7 +88,9 @@ CmdletsToExport = @()
 VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = @(
+    'Export-AzTemplateRuleData'
+)
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

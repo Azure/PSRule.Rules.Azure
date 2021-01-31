@@ -103,13 +103,13 @@ PSRule provides a pre-built cmdlets for finding template files within a path and
 - `Get-AzRuleTemplateLink` finds linked templates from parameter files.
 By default, parameter files with the `*.parameters.json` extension are discovered.
 Files are found recursively from the current working path.
-- `Export-AzTemplateRuleData` exports resource data from template files.
+- `Export-AzRuleTemplateData` exports resource data from template files.
 
 To generate data for analysis use a PowerShell YAML task to export resource data from linked templates.
 
 ```yaml
 # Export resource data from parameter files within the current working directory.
-- powershell: Get-AzRuleTemplateLink | Export-AzTemplateRuleData -OutputPath out/templates/;
+- powershell: Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath out/templates/;
   displayName: 'Export template data'
 ```
 
@@ -117,7 +117,7 @@ If parameter files are located in a specific sub-directory the path can be updat
 
 ```yaml
 # Export resource data from parameter files in the deployments/ sub-directory.
-- powershell: Get-AzRuleTemplateLink ./deployments/ | Export-AzTemplateRuleData -OutputPath out/templates/;
+- powershell: Get-AzRuleTemplateLink ./deployments/ | Export-AzRuleTemplateData -OutputPath out/templates/;
   displayName: 'Export template data'
 ```
 
@@ -125,7 +125,7 @@ If parameter files do not use the file extension `.parameters.json` input path c
 
 ```yaml
 # Export resource data from parameter files ending in *.json instead of default *.parameters.json.
-- powershell: Get-AzRuleTemplateLink -InputPath *.json | Export-AzTemplateRuleData -OutputPath out/templates/;
+- powershell: Get-AzRuleTemplateLink -InputPath *.json | Export-AzRuleTemplateData -OutputPath out/templates/;
   displayName: 'Export template data'
 ```
 
@@ -200,7 +200,7 @@ steps:
     module: PSRule.Rules.Azure   # Install PSRule.Rules.Azure from the PowerShell Gallery.
 
 # Export resource data from parameter files within the current working directory.
-- powershell: Get-AzRuleTemplateLink | Export-AzTemplateRuleData -OutputPath out/templates/;
+- powershell: Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath out/templates/;
   displayName: 'Export template data'
 
 # Run analysis from JSON files using the `PSRule.Rules.Azure` module and custom rules from `.ps-rule/`.

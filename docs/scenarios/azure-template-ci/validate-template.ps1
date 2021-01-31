@@ -11,7 +11,7 @@ if ($Null -eq (Get-InstalledModule -Name PSRule.Rules.Azure -MinimumVersion '0.1
 }
 
 # Resolve resources
-Export-AzTemplateRuleData -TemplateFile .\template.json -ParameterFile .\parameters.json -OutputPath out/;
+Export-AzRuleTemplateData -TemplateFile .\template.json -ParameterFile .\parameters.json -OutputPath out/;
 
 # Validate resources
 $assertParams = @{

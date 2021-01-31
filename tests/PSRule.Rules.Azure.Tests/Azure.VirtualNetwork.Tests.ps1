@@ -228,7 +228,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
         $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualNetwork.json;
-        Export-AzTemplateRuleData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
+        Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop -Culture 'en-US';
 
         It 'Azure.VNET.UseNSGs' {
@@ -688,7 +688,7 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
         $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualNetwork.json;
-        Export-AzTemplateRuleData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
+        Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
 
         It 'Azure.NSG.AnyInboundSource' {
@@ -940,7 +940,7 @@ Describe 'Azure.VNG' -Tag 'Network', 'VNG', 'VPN', 'ExpressRoute' {
 
     Context 'With template' {
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VPN.json;
-        Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.VPN.Parameters.json' | Export-AzTemplateRuleData -OutputPath $outputFile;
+        Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.VPN.Parameters.json' | Export-AzRuleTemplateData -OutputPath $outputFile;
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
 
         It 'Azure.VNG.VPNLegacySKU' {
@@ -972,7 +972,7 @@ Describe 'Azure.VNG' -Tag 'Network', 'VNG', 'VPN', 'ExpressRoute' {
         }
 
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.ExpressRoute.json;
-        Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.ExpressRoute.Parameters.json' | Export-AzTemplateRuleData -OutputPath $outputFile;
+        Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.ExpressRoute.Parameters.json' | Export-AzRuleTemplateData -OutputPath $outputFile;
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
 
         It 'Azure.VNG.ERLegacySKU' {

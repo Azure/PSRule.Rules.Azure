@@ -1,11 +1,11 @@
 ---
 external help file: PSRule.Rules.Azure-help.xml
 Module Name: PSRule.Rules.Azure
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/commands/PSRule.Rules.Azure/en-US/Export-AzTemplateRuleData.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/commands/PSRule.Rules.Azure/en-US/Export-AzRuleTemplateData.md
 schema: 2.0.0
 ---
 
-# Export-AzTemplateRuleData
+# Export-AzRuleTemplateData
 
 ## SYNOPSIS
 
@@ -14,7 +14,7 @@ Export resource configuration data from Azure templates.
 ## SYNTAX
 
 ```text
-Export-AzTemplateRuleData [[-Name] <String>] -TemplateFile <String> [-ParameterFile <String[]>]
+Export-AzRuleTemplateData [[-Name] <String>] -TemplateFile <String> [-ParameterFile <String[]>]
  [-ResourceGroupName <String>] [-Subscription <String>] [-OutputPath <String>] [-PassThru] [<CommonParameters>]
 ```
 
@@ -46,7 +46,7 @@ A placeholder value is used instead.
 ### Example 1
 
 ```powershell
-Export-AzTemplateRuleData -TemplateFile .\template.json -ParameterFile .\parameters.json;
+Export-AzRuleTemplateData -TemplateFile .\template.json -ParameterFile .\parameters.json;
 ```
 
 Export resource configuration data based on merging a template and parameter file together.

@@ -104,7 +104,7 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template2.json';
         $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters2.json';
         $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.KeyVault.json;
-        Export-AzTemplateRuleData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
+        Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
         $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
 
         It 'Azure.KeyVault.SoftDelete' {
