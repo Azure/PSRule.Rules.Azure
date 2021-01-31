@@ -10,11 +10,11 @@ Rule 'Azure.SignalR.Name' -Type 'Microsoft.SignalRService/signalR' -Tag @{ relea
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftsignalrservice
 
     # Between 3 and 63 characters long
-    $Assert.GreaterOrEqual($TargetObject, 'Name', 3)
-    $Assert.LessOrEqual($TargetObject, 'Name', 63)
+    $Assert.GreaterOrEqual($PSRule, 'TargetName', 3);
+    $Assert.LessOrEqual($PSRule, 'TargetName', 63);
 
     # Alphanumerics and hyphens
     # Start with letter
     # End with letter or number
-    Match 'Name' '^[A-Za-z](-|[A-Za-z0-9])*[A-Za-z0-9]$'
+    $Assert.Match($PSRule, 'TargetName', '^[A-Za-z](-|[A-Za-z0-9])*[A-Za-z0-9]$');
 }

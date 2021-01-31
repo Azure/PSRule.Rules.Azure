@@ -22,7 +22,7 @@ Rule 'Azure.APIM.HTTPEndpoint' -Type 'Microsoft.ApiManagement/service', 'Microso
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis')
         if ($apis.Length -eq 0) {
-            $True;
+            return $Assert.Pass();
         }
         foreach ($api in $apis) {
             $Assert.NotIn($api, 'properties.protocols', @('http'))
@@ -38,9 +38,9 @@ Rule 'Azure.APIM.APIDescriptors' -Type 'Microsoft.ApiManagement/service', 'Micro
     $apis = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis');
-        if ($apis.Length -eq 0) {
-            $Assert.Pass();
-        }
+    }
+    if ($apis.Length -eq 0) {
+        return $Assert.Pass();
     }
     foreach ($api in $apis) {
         $Assert.
@@ -91,9 +91,9 @@ Rule 'Azure.APIM.EncryptValues' -Type 'Microsoft.ApiManagement/service', 'Micros
     $properties = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $properties = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues');
-        if ($properties.Length -eq 0) {
-            $Assert.Pass();
-        }
+    }
+    if ($properties.Length -eq 0) {
+        return $Assert.Pass();
     }
     foreach ($property in $properties) {
         $Assert.
@@ -107,9 +107,9 @@ Rule 'Azure.APIM.ProductSubscription' -Type 'Microsoft.ApiManagement/service', '
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
-        if ($products.Length -eq 0) {
-            $True;
-        }
+    }
+    if ($products.Length -eq 0) {
+        return $Assert.Pass();
     }
     foreach ($product in $products) {
         $Assert.
@@ -123,9 +123,9 @@ Rule 'Azure.APIM.ProductApproval' -Type 'Microsoft.ApiManagement/service', 'Micr
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
-        if ($products.Length -eq 0) {
-            $Assert.Pass();
-        }
+    }
+    if ($products.Length -eq 0) {
+        return $Assert.Pass();
     }
     foreach ($product in $products) {
         $Assert.
@@ -139,9 +139,9 @@ Rule 'Azure.APIM.SampleProducts' -Type 'Microsoft.ApiManagement/service', 'Micro
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
-        if ($products.Length -eq 0) {
-            $Assert.Pass();
-        }
+    }
+    if ($products.Length -eq 0) {
+        return $Assert.Pass();
     }
     foreach ($product in $products) {
         $Assert.NotIn($product, 'Name', @('unlimited', 'starter'))
@@ -153,9 +153,9 @@ Rule 'Azure.APIM.ProductDescriptors' -Type 'Microsoft.ApiManagement/service', 'M
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
-        if ($products.Length -eq 0) {
-            $Assert.Pass();
-        }
+    }
+    if ($products.Length -eq 0) {
+        return $Assert.Pass();
     }
     foreach ($product in $products) {
         $Assert.
@@ -172,9 +172,9 @@ Rule 'Azure.APIM.ProductTerms' -Type 'Microsoft.ApiManagement/service', 'Microso
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
-        if ($products.Length -eq 0) {
-            $True;
-        }
+    }
+    if ($products.Length -eq 0) {
+        return $Assert.Pass();
     }
     foreach ($product in $products) {
         $Assert.
@@ -194,15 +194,13 @@ Rule 'Azure.APIM.CertificateExpiry' -Type 'Microsoft.ApiManagement/service' -Tag
         $Null -ne $_.certificate
     })
     if ($configurations.Length -eq 0) {
-        $Assert.Pass();
+        return $Assert.Pass();
     }
-    else {
-        foreach ($configuration in $configurations) {
-            $remaining = ($configuration.certificate.expiry - [DateTime]::Now).Days;
-            $Assert.
-                GreaterOrEqual($remaining, '.', $Configuration.Azure_MinimumCertificateLifetime).
-                WithReason(($LocalizedData.APIMCertificateExpiry -f $configuration.hostName, $configuration.certificate.expiry.ToString('yyyy/MM/dd')), $True);
-        }
+    foreach ($configuration in $configurations) {
+        $remaining = ($configuration.certificate.expiry - [DateTime]::Now).Days;
+        $Assert.
+            GreaterOrEqual($remaining, '.', $Configuration.Azure_MinimumCertificateLifetime).
+            WithReason(($LocalizedData.APIMCertificateExpiry -f $configuration.hostName, $configuration.certificate.expiry.ToString('yyyy/MM/dd')), $True);
     }
 } -Configure @{ Azure_MinimumCertificateLifetime = 30 }
 
@@ -211,11 +209,11 @@ Rule 'Azure.APIM.Name' -Type 'Microsoft.ApiManagement/service' -Tag @{ release =
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftapimanagement
 
     # Between 1 and 50 characters long
-    $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
-    $Assert.LessOrEqual($TargetObject, 'Name', 50)
+    $Assert.GreaterOrEqual($PSRule, 'TargetName', 1);
+    $Assert.LessOrEqual($PSRule, 'TargetName', 50);
 
     # Alphanumerics and hyphens
     # Start with a letter
     # End with letter or number
-    $Assert.Match($TargetObject, 'Name', '^[a-zA-Z]([A-Za-z0-9-]*[a-zA-Z0-9]){0,49}$')
+    $Assert.Match($PSRule, 'TargetName', '^[a-zA-Z]([A-Za-z0-9-]*[a-zA-Z0-9]){0,49}$');
 }

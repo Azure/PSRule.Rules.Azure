@@ -27,10 +27,10 @@ Rule 'Azure.ResourceGroup.Name' -Type 'Microsoft.Resources/resourceGroups' -Tag 
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftresources
 
     # Between 1 and 90 characters long
-    $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
-    $Assert.LessOrEqual($TargetObject, 'Name', 90)
+    $Assert.GreaterOrEqual($PSRule, 'TargetName', 1);
+    $Assert.LessOrEqual($PSRule, 'TargetName', 90);
 
     # Alphanumerics, underscores, parentheses, hyphens, periods
     # Can't end with period.
-    Match 'Name' '^[-\w\._\(\)]*[-\w_\(\)]$'
+    $Assert.Match($PSRule, 'TargetName', '^[-\w\._\(\)]*[-\w_\(\)]$');
 }

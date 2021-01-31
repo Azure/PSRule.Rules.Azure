@@ -23,7 +23,7 @@ Rule 'Azure.KeyVault.AccessPolicy' -Type 'Microsoft.KeyVault/vaults', 'Microsoft
         $accessPolicies = @($TargetObject.Properties.accessPolicies);
     }
     if ($accessPolicies.Length -eq 0) {
-        return $True;
+        return $Assert.Pass();
     }
     foreach ($policy in $accessPolicies) {
         $policy.permissions.keys -notin 'All', 'Purge'
