@@ -310,6 +310,9 @@ task Analyze Build, PSScriptAnalyzer, {
     Invoke-ScriptAnalyzer -Path out/modules/PSRule.Rules.Azure;
 }
 
+# Synopsis: Build documentation
+task BuildDocs BuildRuleDocs, BuildBaselineDocs
+
 # Synopsis: Build table of content for rules
 task BuildRuleDocs Build, PSRule, PSDocs, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;

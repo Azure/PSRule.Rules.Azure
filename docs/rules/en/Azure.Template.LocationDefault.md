@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Reliability
 category: Resource deployment
 resource: All resources
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Template.Location.md
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Template.LocationDefault.md
 ---
 
 # Default to resource group location

@@ -1,0 +1,64 @@
+---
+severity: Important
+pillar: Reliability
+category: Resource deployment
+resource: All resources
+online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Template.ParameterDataTypes.md
+---
+
+# Default should match type
+
+## SYNOPSIS
+
+Set the parameter default value to a value of the same type.
+
+## DESCRIPTION
+
+Azure Resource Manager (ARM) template support parameters with a range of types, including:
+
+- `bool`
+- `int`
+- `string`
+- `array`
+- `object`
+- `secureString`
+- `secureObject`
+
+When including a `defaultValue`, the default value should match the same type at the `type` property.
+For example:
+
+```json
+{
+  "boolParam": {
+    "type": "bool",
+    "defaultValue": false
+  },
+  "intParam": {
+    "type": "int",
+    "defaultValue": 5
+  },
+  "stringParam": {
+    "type": "string",
+    "defaultValue": "test-rg"
+  },
+  "arrayParam": {
+    "type": "array",
+    "defaultValue": [ 1, 2, 3 ]
+  },
+  "objectParam": {
+    "type": "object",
+    "defaultValue": {
+      "one": "a",
+      "two": "b"
+      }
+  }
+}
+```
+
+## RECOMMENDATION
+
+Consider updating the parameter default value to a value of the same type.
+
+## LINKS
+
+- [Data types](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-syntax#data-types)

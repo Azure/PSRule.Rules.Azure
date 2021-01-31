@@ -180,6 +180,7 @@ Name | Synopsis | Severity
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.Template.LocationDefault](Azure.Template.LocationDefault.md) | Set the default value for the location parameter within an ARM template to resource group location. | Awareness
+[Azure.Template.ParameterDataTypes](Azure.Template.ParameterDataTypes.md) | Set the parameter default value to a value of the same type. | Important
 
 ## Security
 
