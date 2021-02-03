@@ -86,7 +86,7 @@ stages:
     pool:
       vmImage: $(imageName)
     displayName: 'SonarCloud'
-    # condition: not(eq(variables['Build.Reason'], 'PullRequest'))
+    condition: not(eq(variables['Build.Reason'], 'PullRequest'))
     steps:
 
     - script: |
