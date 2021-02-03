@@ -86,7 +86,9 @@ stages:
     pool:
       vmImage: $(imageName)
     displayName: 'SonarCloud'
-    condition: not(eq(variables['Build.Reason'], 'PullRequest'))
+    # condition: not(eq(variables['Build.Reason'], 'PullRequest'))
+    variables:
+      JAVA_HOME: $(JAVA_HOME_11_X64)
     steps:
 
     # Run SonarCloud analysis
