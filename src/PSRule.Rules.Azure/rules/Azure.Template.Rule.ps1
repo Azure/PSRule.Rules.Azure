@@ -130,8 +130,46 @@ Rule 'Azure.Template.UseLocationParameter' -Type '.json' -If { (IsTemplateFile) 
         Reason($LocalizedData.ExpressionInTemplate, 'resourceGroup().location');
 }
 
+# Synopsis: Template parameters `minValue` and `maxValue` constraints must be valid.
+Rule 'Azure.Template.ParameterMinMaxValue' -Type '.json' -If { (HasTemplateParameters) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+    # https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/Min-And-Max-Value-Are-Numbers.test.ps1
+
+    # Get parameters with either minValue or maxValue
+    $parameters = @(GetTemplateParameters | Where-Object {
+        $Assert.HasField($_.Value, @('minValue', 'maxValue')).Result
+    });
+    if ($parameters.Length -eq 0) {
+        return $Assert.Pass();
+    }
+    foreach ($parameter in $parameters) {
+        $Assert.HasFieldValue($parameter.Value, 'type', 'int');
+        if ($Assert.HasField($parameter.Value, 'minValue').Result) {
+            $Assert.Create($parameter.Value.minValue -is [int] -or $parameter.Value.minValue -is [long], ($LocalizedData.ParameterTypeMismatch -f 'minValue', $parameter.Name, 'int'));
+        }
+        if ($Assert.HasField($parameter.Value, 'maxValue').Result) {
+            $Assert.Create($parameter.Value.maxValue -is [int] -or $parameter.Value.maxValue -is [long], ($LocalizedData.ParameterTypeMismatch -f 'maxValue', $parameter.Name, 'int'));
+        }
+    }
+}
+
+# Synopsis: Use default deployment detail level for nested deployments.
+Rule 'Azure.Template.DebugDeployment' -Type '.json' -If { (HasTemplateResources) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+    # https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/Deployment-Resources-Must-Not-Be-Debug.test.ps1
+
+    # Get deployments
+    $resources = @($PSRule.GetContent($TargetObject)[0].resources | Where-Object {
+        $Assert.HasFieldValue($_, 'type', 'Microsoft.Resources/deployments').Result
+    });
+    if ($resources.Length -eq 0) {
+        return $Assert.Pass();
+    }
+    foreach ($resource in $resources) {
+        $Assert.HasDefaultValue($resource, 'properties.debugSetting.detailLevel', 'None');
+    }
+}
+
 # Synopsis: Set the parameter default value to a value of the same type.
-Rule 'Azure.Template.ParameterDataTypes' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.Template.ParameterDataTypes' -Type '.json' -If { (HasTemplateParameters) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
     $jsonObject = $PSRule.GetContent($TargetObject)[0];
     $parameters = @($jsonObject.parameters.PSObject.Properties);
     if ($parameters.Length -eq 0) {
@@ -152,19 +190,19 @@ Rule 'Azure.Template.ParameterDataTypes' -Type '.json' -If { (IsTemplateFile) } 
             $Assert.Pass();
         }
         elseif ($parameter.Value.type -eq 'bool') {
-            $Assert.Create($parameter.Value.defaultValue -is [bool], ($LocalizedData.ParameterDefaultTypeMismatch -f $parameter.Name, $parameter.Value.type));
+            $Assert.Create($parameter.Value.defaultValue -is [bool], ($LocalizedData.ParameterTypeMismatch -f 'defaultValue', $parameter.Name, $parameter.Value.type));
         }
         elseif ($parameter.Value.type -eq 'int') {
-            $Assert.Create($parameter.Value.defaultValue -is [int] -or $parameter.Value.defaultValue -is [long], ($LocalizedData.ParameterDefaultTypeMismatch -f $parameter.Name, $parameter.Value.type));
+            $Assert.Create($parameter.Value.defaultValue -is [int] -or $parameter.Value.defaultValue -is [long], ($LocalizedData.ParameterTypeMismatch -f 'defaultValue', $parameter.Name, $parameter.Value.type));
         }
         elseif ($parameter.Value.type -eq 'array') {
-            $Assert.Create($parameter.Value.defaultValue -is [array], ($LocalizedData.ParameterDefaultTypeMismatch -f $parameter.Name, $parameter.Value.type));
+            $Assert.Create($parameter.Value.defaultValue -is [array], ($LocalizedData.ParameterTypeMismatch -f 'defaultValue', $parameter.Name, $parameter.Value.type));
         }
         elseif ($parameter.Value.type -eq 'string' -or $parameter.Value.type -eq 'secureString') {
-            $Assert.Create($parameter.Value.defaultValue -is [string], ($LocalizedData.ParameterDefaultTypeMismatch -f $parameter.Name, $parameter.Value.type));
+            $Assert.Create($parameter.Value.defaultValue -is [string], ($LocalizedData.ParameterTypeMismatch -f 'defaultValue', $parameter.Name, $parameter.Value.type));
         }
         elseif ($parameter.Value.type -eq 'object' -or $parameter.Value.type -eq 'secureObject') {
-            $Assert.Create($parameter.Value.defaultValue -is [PSObject], ($LocalizedData.ParameterDefaultTypeMismatch -f $parameter.Name, $parameter.Value.type));
+            $Assert.Create($parameter.Value.defaultValue -is [PSObject], ($LocalizedData.ParameterTypeMismatch -f 'defaultValue', $parameter.Name, $parameter.Value.type));
         }
     }
 }
@@ -274,6 +312,21 @@ function global:HasLocationParameter {
         }
         $jsonObject = $PSRule.GetContent($TargetObject)[0];
         return $Assert.HasField($jsonObject, 'parameters.location').Result;
+    }
+}
+
+function global:HasTemplateParameters {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if (!(IsTemplateFile)) {
+            return $False;
+        }
+        $parameters = @($PSRule.GetContent($TargetObject)[0].parameters.PSObject.Properties | Where-Object {
+            $_.MemberType -eq 'NoteProperty'
+        });
+        return $Assert.GreaterOrEqual($parameters, '.', 1).Result;
     }
 }
 

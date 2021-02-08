@@ -5,6 +5,11 @@
         "location": {
             "type": "string",
             "defaultValue": "global"
+        },
+        "valueInt": {
+            "type": "int",
+            "minValue": "1",
+            "maxValue": "2"
         }
     },
     "functions": [],

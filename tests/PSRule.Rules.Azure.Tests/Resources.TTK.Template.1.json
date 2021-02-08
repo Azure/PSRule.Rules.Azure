@@ -3,7 +3,9 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "type": "array"
+            "type": "array",
+            "minValue": 1,
+            "maxValue": 2
         }
     },
     "functions": [],

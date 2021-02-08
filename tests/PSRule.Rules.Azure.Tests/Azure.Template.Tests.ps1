@@ -298,6 +298,60 @@ Describe 'Azure.Template' -Tag 'Template' {
             $targetNames | Should -BeIn 'Resources.Template4.json', 'Resources.Empty.Template.json', 'Resources.TTK.Template.2.json';
         }
 
+        It 'Azure.Template.ParameterMinMaxValue' {
+            $dataPath = @(
+                (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.1.json')
+                (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.2.json')
+                (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.3.json')
+            );
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Format None -Name 'Azure.Template.ParameterMinMaxValue';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.ParameterMinMaxValue' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.TTK.Template.1.json', 'Resources.TTK.Template.2.json';
+            $ruleResult[0].Reason.Length | Should -Be 1;
+            $ruleResult[0].Reason[0] | Should -BeLike "The field 'type' is set to '*'.";
+            $ruleResult[1].Reason.Length | Should -Be 2;
+            $ruleResult[1].Reason[0] | Should -BeLike "The minValue for 'valueInt' is not int.";
+            $ruleResult[1].Reason[1] | Should -BeLike "The maxValue for 'valueInt' is not int.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.TTK.Template.3.json';
+        }
+
+        It 'Azure.Template.DebugDeployment' {
+            $dataPath = @(
+                (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.1.json')
+                (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.3.json')
+            );
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Format None -Name 'Azure.Template.DebugDeployment';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.DebugDeployment' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.TTK.Template.3.json';
+            $ruleResult[0].Reason.Length | Should -Be 1;
+            $ruleResult[0].Reason | Should -Be "The field 'properties.debugSetting.detailLevel' is set to 'requestContent'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.TTK.Template.1.json';
+        }
+
         It 'Azure.Template.ParameterDataTypes' {
             $dataPath = @(
                 (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.json')
@@ -314,9 +368,9 @@ Describe 'Azure.Template' -Tag 'Template' {
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.Empty.Template.json';
             $ruleResult[0].Reason.Length | Should -Be 3;
-            $ruleResult[0].Reason[0] | Should -BeLike "The default value for 'notStringParam' is not string.";
-            $ruleResult[0].Reason[1] | Should -BeLike "The default value for 'notBoolParam' is not bool.";
-            $ruleResult[0].Reason[2] | Should -BeLike "The default value for 'notArrayParam' is not array.";
+            $ruleResult[0].Reason[0] | Should -BeLike "The defaultValue for 'notStringParam' is not string.";
+            $ruleResult[0].Reason[1] | Should -BeLike "The defaultValue for 'notBoolParam' is not bool.";
+            $ruleResult[0].Reason[2] | Should -BeLike "The defaultValue for 'notArrayParam' is not array.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

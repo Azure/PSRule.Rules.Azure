@@ -11,6 +11,11 @@
             "metadata": {
                 "description": "Required. Specify the resource id of the OMS workspace."
             }
+        },
+        "valueInt": {
+            "type": "int",
+            "minValue": 1,
+            "maxValue": 2
         }
     },
     "functions": [],
@@ -36,6 +41,9 @@
             "subscriptionId": "[split(parameters('workspaceId'),'/')[2]]",
             "properties": {
                 "mode": "Incremental",
+                "debugSetting": {
+                    "detailLevel": "requestContent"
+                },
                 "template": {
                     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
                     "contentVersion": "1.0.0.0",
