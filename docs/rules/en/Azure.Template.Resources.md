@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Operational Excellence
-category: Deployment
+category: Release engineering
 resource: All resources
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Template.Resources.md
 ---
@@ -25,3 +25,4 @@ Consider removing Azure template files that do not deploy any resources.
 
 - [Resources](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-syntax#resources)
 - [Tutorial: Create and deploy your first ARM template](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+- [Release deployment](https://docs.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)

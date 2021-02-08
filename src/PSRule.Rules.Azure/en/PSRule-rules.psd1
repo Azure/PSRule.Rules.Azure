@@ -39,4 +39,6 @@
     AssessmentNotFound = "The results for a valid assessment was not found."
     HealthProbeNotDedicated = "The health probe '{0}' used the default path '/'."
     ParameterDefaultTypeMismatch = "The default value for '{0}' is not {1}."
+    ParameterInvalidDefaultValue = "The default value for the parameter '{0}' is '{1}'."
+    ExpressionInTemplate = "The expression '{0}' was found in the template."
 }

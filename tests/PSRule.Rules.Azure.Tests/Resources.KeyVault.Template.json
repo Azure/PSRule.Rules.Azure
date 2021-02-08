@@ -1,0 +1,164 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.1.0.0",
+    "metadata": {
+        "name": "Key Vault",
+        "description": "Create or update a Key Vault."
+    },
+    "parameters": {
+        "vaultName": {
+            "type": "string",
+            "metadata": {
+                "description": "Required. The name of the Key Vault."
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Optional. The Azure region to deploy to.",
+                "example": "EastUS"
+            }
+        },
+        "accessPolicies": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "Optional. The access policies defined for this vault.",
+                "example": [
+                    {
+                        "objectId": "<object_id>",
+                        "tenantId": "<tenant_id>",
+                        "permissions": {
+                            "secrets": [
+                                "Get",
+                                "List",
+                                "Set"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "useDeployment": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Optional. Determines if Azure can deploy certificates from this Key Vault."
+            }
+        },
+        "useTemplate": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Optional. Determines if templates can reference secrets from this Key Vault."
+            }
+        },
+        "useDiskEncryption": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Optional. Determines if this Key Vault can be used for Azure Disk Encryption."
+            }
+        },
+        "useSoftDelete": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Optional. Determine if soft delete is enabled on this Key Vault.",
+                "ignore": true
+            }
+        },
+        "usePurgeProtection": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Optional. Determine if purge protection is enabled on this Key Vault.",
+                "ignore": true
+            }
+        },
+        "networkAcls": {
+            "type": "object",
+            "defaultValue": {
+                "defaultAction": "Allow",
+                "bypass": "AzureServices",
+                "ipRules": [],
+                "virtualNetworkRules": []
+            },
+            "metadata": {
+                "description": "Optional. The network firewall defined for this vault."
+            }
+        },
+        "workspaceId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Optional. The workspace to store audit logs."
+            }
+        },
+        "tags": {
+            "type": "object",
+            "defaultValue": {},
+            "metadata": {
+                "description": "Optional. Tags to apply to the resource.",
+                "example": {
+                    "service": "<service_name>",
+                    "env": "prod"
+                }
+            }
+        }
+    },
+    "resources": [
+        {
+            "comments": "Create or update a Key Vault.",
+            "type": "Microsoft.KeyVault/vaults",
+            "name": "[parameters('vaultName')]",
+            "apiVersion": "2019-09-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "enabledForDeployment": "[parameters('useDeployment')]",
+                "enabledForTemplateDeployment": "[parameters('useTemplate')]",
+                "enabledForDiskEncryption": "[parameters('useDiskEncryption')]",
+                "accessPolicies": "[parameters('accessPolicies')]",
+                "tenantId": "[subscription().tenantId]",
+                "sku": {
+                    "name": "Standard",
+                    "family": "A"
+                },
+                "networkAcls": "[parameters('networkAcls')]",
+                "enableSoftDelete": "[parameters('useSoftDelete')]",
+                "enablePurgeProtection": "[parameters('usePurgeProtection')]"
+            },
+            "tags": "[parameters('tags')]",
+            "resources": [
+                {
+                    "comments": "Enable monitoring of Key Vault operations.",
+                    "condition": "[not(empty(parameters('workspaceId')))]",
+                    "type": "Microsoft.KeyVault/vaults/providers/diagnosticSettings",
+                    "name": "[concat(parameters('vaultName'), '/Microsoft.Insights/service')]",
+                    "apiVersion": "2016-09-01",
+                    "location": "[parameters('location')]",
+                    "dependsOn": [
+                        "[concat('Microsoft.KeyVault/vaults/', parameters('vaultName'))]"
+                    ],
+                    "properties": {
+
+                        "workspaceId": "[parameters('workspaceId')]",
+                        "logs": [
+                            {
+                                "category": "AuditEvent",
+                                "enabled": true
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "outputs": {
+        "resourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+        }
+    }
+}

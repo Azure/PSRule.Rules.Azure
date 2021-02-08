@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Operational Excellence
-category: Deployment
+category: Release engineering
 resource: All resources
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Template.ParameterFile.md
 ---
@@ -27,3 +27,4 @@ Also consider using Visual Studio Code to assist with authoring these files.
 
 - [Create Resource Manager parameter file](https://docs.microsoft.com/azure/azure-resource-manager/templates/parameter-files)
 - [Parameters in Azure Resource Manager templates](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-parameters)
+- [Release deployment](https://docs.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)

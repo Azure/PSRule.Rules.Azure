@@ -124,6 +124,30 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 3;
         }
 
+        It 'Azure.Template.DefineParameters' {
+            $dataPath = @(
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.2.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.3.json')
+            );
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.DefineParameters';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.DefineParameters' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Empty.Template.2.json', 'Resources.Empty.Template.3.json';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Empty.Template.json';
+        }
+
         It 'Azure.Template.UseVariables' {
             $dataPath = @(
                 (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.json')
@@ -154,6 +178,7 @@ Describe 'Azure.Template' -Tag 'Template' {
         It 'Azure.Template.LocationDefault' {
             $dataPath = @(
                 (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.json')
+                (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.2.json')
                 (Join-Path -Path $here -ChildPath 'Resources.Template3.json')
                 (Join-Path -Path $here -ChildPath 'Resources.Template4.json')
             );
@@ -170,9 +195,9 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
+            $ruleResult.Length | Should -Be 2;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
-            $targetNames | Should -BeIn 'Resources.Template4.json';
+            $targetNames | Should -BeIn 'Resources.Template4.json', 'Resources.TTK.Template.2.json';
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
@@ -180,6 +205,97 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 1;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.Template3.json';
+        }
+
+        It 'Azure.Template.LocationType' {
+            $dataPath = @(
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.json')
+                (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.1.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Template3.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Template4.json')
+            );
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Format None -Name 'Azure.Template.LocationType';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.LocationType' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.TTK.Template.1.json';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Template4.json', 'Resources.Empty.Template.json';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Template3.json';
+        }
+
+        It 'Azure.Template.ResourceLocation' {
+            $dataPath = @(
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.json')
+                (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.2.json')
+                (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.3.json')
+                (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.4.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Template4.json')
+                (Join-Path -Path $here -ChildPath 'Resources.KeyVault.Template.json')
+            );
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Format None -Name 'Azure.Template.ResourceLocation';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.ResourceLocation' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.TTK.Template.2.json', 'Resources.TTK.Template.3.json', 'Resources.TTK.Template.4.json';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Template4.json', 'Resources.KeyVault.Template.json';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Empty.Template.json';
+        }
+
+        It 'Azure.Template.UseLocationParameter' {
+            $dataPath = @(
+                (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.json')
+                (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.1.json')
+                (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.2.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Template4.json')
+            );
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Format None -Name 'Azure.Template.UseLocationParameter';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.UseLocationParameter' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.TTK.Template.1.json';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Template4.json', 'Resources.Empty.Template.json', 'Resources.TTK.Template.2.json';
         }
 
         It 'Azure.Template.ParameterDataTypes' {

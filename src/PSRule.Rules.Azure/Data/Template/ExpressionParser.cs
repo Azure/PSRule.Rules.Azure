@@ -23,8 +23,11 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </example>
         internal static TokenStream Parse(string expression)
         {
-            var stream = new ExpressionStream(expression);
             var output = new TokenStream();
+            if (string.IsNullOrEmpty(expression))
+                return output;
+
+            var stream = new ExpressionStream(expression);
             var processed = false;
             stream.Start();
             while (!stream.End())
@@ -64,6 +67,15 @@ namespace PSRule.Rules.Azure.Data.Template
             }
             output.MoveTo(0);
             return output;
+        }
+
+        internal static bool IsExpression(string expression)
+        {
+            if (string.IsNullOrEmpty(expression))
+                return false;
+
+            var stream = new ExpressionStream(expression);
+            return stream.Start() && !stream.Start() && stream.SkipToEnd();
         }
 
         /// <summary>

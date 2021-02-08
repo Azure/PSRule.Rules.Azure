@@ -8,50 +8,52 @@
 #region Template
 
 # Synopsis: Use ARM template file structure.
-Rule 'Azure.Template.TemplateFile' -Type 'System.IO.FileInfo','.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Template.TemplateFile' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
-    $jsonObject | Exists '$schema', 'contentVersion', 'resources' -All
-    $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters', 'functions', 'variables', 'resources', 'outputs'
+    $jsonObject | Exists '$schema', 'contentVersion', 'resources' -All;
+    $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters', 'functions', 'variables', 'resources', 'outputs';
 }
 
 # Synopsis: Use template parameter descriptions.
-Rule 'Azure.Template.ParameterMetadata' -Type 'System.IO.FileInfo','.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
-    $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
-    $parameters = @($jsonObject.parameters.PSObject.Properties | Where-Object { $_.MemberType -eq 'NoteProperty' });
+Rule 'Azure.Template.ParameterMetadata' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+    $parameters = @(GetTemplateParameters);
     if ($parameters.Length -eq 0) {
         return $Assert.Pass();
     }
     foreach ($parameter in $parameters) {
-        $Assert.
-            HasFieldValue($parameter.value, 'metadata.description').
+        $Assert.HasFieldValue($parameter.value, 'metadata.description').
             Reason($LocalizedData.TemplateParameterDescription, $parameter.name);
     }
 }
 
 # Synopsis: ARM templates should include at least one resource.
-Rule 'Azure.Template.Resources' -Type 'System.IO.FileInfo','.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
-    $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
+Rule 'Azure.Template.Resources' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+    $jsonObject = $PSRule.GetContent($TargetObject)[0];
     $Assert.GreaterOrEqual($jsonObject, 'resources', 1);
 }
 
 # Synopsis: ARM template parameters should be used at least once.
-Rule 'Azure.Template.UseParameters' -Type 'System.IO.FileInfo','.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
-    $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
+Rule 'Azure.Template.UseParameters' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $jsonContent = Get-Content -Path $TargetObject.FullName -Raw;
-    $parameters = @($jsonObject.parameters.PSObject.Properties | Where-Object { $_.MemberType -eq 'NoteProperty' });
+    $parameters = @(GetTemplateParameters);
     if ($parameters.Length -eq 0) {
         return $Assert.Pass();
     }
     foreach ($parameter in $parameters) {
-        $Assert.
-            Match($jsonContent, '.', "\`"\[.*parameters\(\s{0,}'$($parameter.name)'\s{0,}\).*\]\`"").
+        $Assert.Match($jsonContent, '.', "\`"\[.*parameters\(\s{0,}'$($parameter.name)'\s{0,}\).*\]\`"").
             Reason($LocalizedData.ParameterNotFound, $parameter.name);
     }
 }
 
+# Synopsis: Each Azure Resource Manager (ARM) template file should contain a minimal number of parameters.
+Rule 'Azure.Template.DefineParameters' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+    $parameters = @(GetTemplateParameters);
+    $Assert.GreaterOrEqual($parameters, '.', 1);
+}
+
 # Synopsis: ARM template variables should be used at least once.
-Rule 'Azure.Template.UseVariables' -Type 'System.IO.FileInfo','.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
-    $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
+Rule 'Azure.Template.UseVariables' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+    $jsonObject = $PSRule.GetContent($TargetObject)[0];
     $jsonContent = Get-Content -Path $TargetObject.FullName -Raw;
     $variableNames = @($jsonObject.variables.PSObject.Properties | Where-Object { $_.MemberType -eq 'NoteProperty' } | ForEach-Object {
         $variable = $_;
@@ -68,34 +70,69 @@ Rule 'Azure.Template.UseVariables' -Type 'System.IO.FileInfo','.json' -If { (IsT
         return $Assert.Pass();
     }
     foreach ($variableName in $variableNames) {
-        $Assert.
-            Match($jsonContent, '.', "\`"\[.*variables\(\s{0,}'$($variableName)'\s{0,}\).*\]\`"").
+        $Assert.Match($jsonContent, '.', "\`"\[.*variables\(\s{0,}'$($variableName)'\s{0,}\).*\]\`"").
             Reason($LocalizedData.VariableNotFound, $variableName);
     }
 }
 
 # Synopsis: Set the default value for location parameters within ARM template to the default value to `[resourceGroup().location]`.
-Rule 'Azure.Template.LocationDefault' -Type 'System.IO.FileInfo','.json' -If { (HasLocationParameter) } -Tag @{ release = 'GA'; ruleSet = '2021_03' } {
-    $jsonObject = $PSRule.GetContent([System.IO.FileInfo]$TargetObject.FullName);
-    $parameters = @($jsonObject.parameters.PSObject.Properties | Where-Object {
-        $_.Name -eq 'location'
-    });
-    if ($parameters.Length -eq 0) {
-        return $Assert.Pass();
-    }
+Rule 'Azure.Template.LocationDefault' -Type '.json' -If { (HasLocationParameter) } -Tag @{ release = 'GA'; ruleSet = '2021_03' } {
+    # https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/Location-Should-Not-Be-Hardcoded.test.ps1
+
+    $parameters = @(GetTemplateParameters -Name 'location');
     foreach ($parameter in $parameters) {
         if ($Assert.HasFieldValue($parameter.Value, 'defaultValue', 'global').Result) {
             $Assert.Pass();
         }
         else {
-            $Assert.HasFieldValue($parameter.Value, 'defaultValue', '[resourceGroup().location]');
+            $defaultValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($parameter.Value.defaultValue);
+            $Assert.HasFieldValue($defaultValue, '.', '[resourceGroup().location]').
+                Reason($LocalizedData.ParameterInvalidDefaultValue, $parameter.Name, $parameter.Value.defaultValue);
         }
     }
 }
 
+# Synopsis: Location parameters should use a string value.
+Rule 'Azure.Template.LocationType' -Type '.json' -If { (HasLocationParameter) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+    # https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/Location-Should-Not-Be-Hardcoded.test.ps1
+
+    $parameters = @(GetTemplateParameters -Name 'location');
+    foreach ($parameter in $parameters) {
+        $Assert.HasFieldValue($parameter.Value, 'type', 'string');
+    }
+}
+
+# Synopsis: Template resource location should be an expression or `global`.
+Rule 'Azure.Template.ResourceLocation' -Type '.json' -If { (HasTemplateResources) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+    # https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/Resources-Should-Have-Location.test.ps1
+
+    $resources = @(GetTemplateResources);
+    if ($resources.Length -eq 0) {
+        return $Assert.Pass();
+    }
+    foreach ($resource in $resources) {
+        AnyOf {
+            $resource | Exists -Not 'location';
+            $Assert.HasFieldValue($resource, 'location', 'global');
+            $Assert.Match($resource, 'location', '^\[.*\]$');
+        }
+    }
+}
+
+# Synopsis: Template should reference a location parameter to specify resource location.
+Rule 'Azure.Template.UseLocationParameter' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+    $jsonObject = $PSRule.GetContent($TargetObject)[0];
+    if ($Assert.HasField($jsonObject, 'parameters.location').Result) {
+        $jsonObject.parameters.PSObject.Properties.Remove('location')
+    }
+    $content = $jsonObject | ConvertTo-Json -Depth 100;
+    $Assert.NotMatch($content, '.', 'resourceGroup\(\s{0,}\)\.location').
+        Reason($LocalizedData.ExpressionInTemplate, 'resourceGroup().location');
+}
+
 # Synopsis: Set the parameter default value to a value of the same type.
-Rule 'Azure.Template.ParameterDataTypes' -Type 'System.IO.FileInfo','.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
-    $jsonObject = $PSRule.GetContent([System.IO.FileInfo]$TargetObject.FullName);
+Rule 'Azure.Template.ParameterDataTypes' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+    $jsonObject = $PSRule.GetContent($TargetObject)[0];
     $parameters = @($jsonObject.parameters.PSObject.Properties);
     if ($parameters.Length -eq 0) {
         return $Assert.Pass();
@@ -109,24 +146,24 @@ Rule 'Azure.Template.ParameterDataTypes' -Type 'System.IO.FileInfo','.json' -If 
             # Is function
             $Assert.Pass();
         }
+        elseif ($Null -eq $parameter.Value.defaultValue)
+        {
+            # defaultValue is null
+            $Assert.Pass();
+        }
         elseif ($parameter.Value.type -eq 'bool') {
-            Write-Debug -Message "Parameter default value is '$($parameter.Value.defaultValue.GetType().Name)'";
             $Assert.Create($parameter.Value.defaultValue -is [bool], ($LocalizedData.ParameterDefaultTypeMismatch -f $parameter.Name, $parameter.Value.type));
         }
         elseif ($parameter.Value.type -eq 'int') {
-            Write-Debug -Message "Parameter default value is '$($parameter.Value.defaultValue.GetType().Name)'";
             $Assert.Create($parameter.Value.defaultValue -is [int] -or $parameter.Value.defaultValue -is [long], ($LocalizedData.ParameterDefaultTypeMismatch -f $parameter.Name, $parameter.Value.type));
         }
         elseif ($parameter.Value.type -eq 'array') {
-            Write-Debug -Message "Parameter default value is '$($parameter.Value.defaultValue.GetType().Name)'";
             $Assert.Create($parameter.Value.defaultValue -is [array], ($LocalizedData.ParameterDefaultTypeMismatch -f $parameter.Name, $parameter.Value.type));
         }
         elseif ($parameter.Value.type -eq 'string' -or $parameter.Value.type -eq 'secureString') {
-            Write-Debug -Message "Parameter default value is '$($parameter.Value.defaultValue.GetType().Name)'";
             $Assert.Create($parameter.Value.defaultValue -is [string], ($LocalizedData.ParameterDefaultTypeMismatch -f $parameter.Name, $parameter.Value.type));
         }
         elseif ($parameter.Value.type -eq 'object' -or $parameter.Value.type -eq 'secureObject') {
-            Write-Debug -Message "Parameter default value is '$($parameter.Value.defaultValue.GetType().Name)'";
             $Assert.Create($parameter.Value.defaultValue -is [PSObject], ($LocalizedData.ParameterDefaultTypeMismatch -f $parameter.Name, $parameter.Value.type));
         }
     }
@@ -139,8 +176,8 @@ Rule 'Azure.Template.ParameterDataTypes' -Type 'System.IO.FileInfo','.json' -If 
 # Synopsis: Use ARM parameter file structure.
 Rule 'Azure.Template.ParameterFile' -Type 'System.IO.FileInfo','.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
-    $jsonObject | Exists '$schema', 'contentVersion', 'parameters' -All
-    $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters'
+    $jsonObject | Exists '$schema', 'contentVersion', 'parameters' -All;
+    $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters';
 }
 
 #endregion Parameters
@@ -160,7 +197,7 @@ function global:IsTemplateFile {
             return $False;
         }
         try {
-            $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
+            $jsonObject = $PSRule.GetContent($TargetObject)[0];
             [String]$targetSchema = $jsonObject.'$schema';
             $schemas = @(
                 # Https
@@ -195,7 +232,7 @@ function global:IsParameterFile {
             return $False;
         }
         try {
-            $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
+            $jsonObject = $PSRule.GetContent($TargetObject)[0];
             $schemas = @(
                 # Https
                 "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json`#"
@@ -218,12 +255,12 @@ function global:ReadJsonFile {
     [CmdletBinding()]
     [OutputType([PSObject])]
     param (
-        [Parameter(Mandatory = $True)]
-        [String]$Path
+        [Parameter(Mandatory = $False)]
+        [String]$Path = $TargetObject.FullName
     )
     process {
         # return $PSRule.GetContent([System.IO.FileInfo]$Path);
-        return Get-Content -Path $TargetObject.FullName -Raw -ErrorAction SilentlyContinue | ConvertFrom-Json -ErrorAction SilentlyContinue;
+        return Get-Content -Path $Path -Raw -ErrorAction SilentlyContinue | ConvertFrom-Json -ErrorAction SilentlyContinue;
     }
 }
 
@@ -235,7 +272,59 @@ function global:HasLocationParameter {
         if (!(IsTemplateFile -Suffix '/deploymentTemplate.json')) {
             return $False;
         }
-        return $Assert.HasField((ReadJsonFile -Path $TargetObject.FullName), 'parameters.location').Result;
+        $jsonObject = $PSRule.GetContent($TargetObject)[0];
+        return $Assert.HasField($jsonObject, 'parameters.location').Result;
+    }
+}
+
+function global:HasTemplateResources {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if (!(IsTemplateFile)) {
+            return $False;
+        }
+        $jsonObject = $PSRule.GetContent($TargetObject)[0].resources;
+        return $Assert.GreaterOrEqual($jsonObject, '.', 1).Result;
+    }
+}
+
+function global:GetTemplateParameters {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param (
+        [Parameter(Mandatory = $False)]
+        [String[]]$Name
+    )
+    process {
+        $parameters = @($PSRule.GetContent($TargetObject)[0].parameters.PSObject.Properties | Where-Object {
+            $_.MemberType -eq 'NoteProperty'
+        });
+        return $parameters | Where-Object {
+            $Null -eq $Name -or $_.Name -in $Name
+        };
+    }
+}
+
+function global:GetTemplateResources {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param ()
+    process {
+        $PSRule.GetContent($TargetObject)[0].resources | ForEach-Object {
+            # Emit each resource
+            $_;
+
+            # Emit resources in nested templates
+            if ($Assert.HasFieldValue($_, 'type', 'Microsoft.Resources/deployments').Result -and $Assert.GreaterOrEqual($_, 'properties.template.resources', 1).Result) {
+                $_.properties.template.resources;
+            }
+            # Emit sub-resources
+            elseif ($Assert.GreaterOrEqual($_, 'resources', 1).Result) {
+                $_.resources;
+            }
+        }
     }
 }
 
