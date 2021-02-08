@@ -108,6 +108,14 @@ namespace PSRule.Rules.Azure.Data.Template
             return Skip(BracketClose);
         }
 
+        public bool SkipToEnd()
+        {
+            while (Position < _Length - 1)
+                Next();
+
+            return Current == BracketClose;
+        }
+
         public bool TryElement(out string element)
         {
             SkipWhitespace();
@@ -203,14 +211,11 @@ namespace PSRule.Rules.Azure.Data.Template
         public int Skip(char c, int max)
         {
             var skipped = 0;
-
             while (Current == c && (max == 0 || skipped < max))
             {
                 Next();
-
                 skipped++;
             }
-
             return skipped;
         }
 
@@ -221,7 +226,6 @@ namespace PSRule.Rules.Azure.Data.Template
         public bool Next(bool ignoreEscaping = false)
         {
             _Position += _EscapeLength > 0 ? _EscapeLength + 1 : 1;
-
             if (_Position >= _Length)
             {
                 _Current = char.MinValue;

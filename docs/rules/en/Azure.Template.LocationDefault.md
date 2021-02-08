@@ -28,5 +28,6 @@ Consider updating the `location` parameter to use `[resourceGroup().location]` a
 
 ## LINKS
 
-[ARM template best practices](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#location-recommendations-for-parameters)
-[Operating in multiple regions](https://docs.microsoft.com/azure/architecture/framework/resiliency/app-design#operating-in-multiple-regions)
+- [ARM template best practices](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#location-recommendations-for-parameters)
+- [Operating in multiple regions](https://docs.microsoft.com/azure/architecture/framework/resiliency/app-design#operating-in-multiple-regions)
+- [Resource group](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#resource-group)

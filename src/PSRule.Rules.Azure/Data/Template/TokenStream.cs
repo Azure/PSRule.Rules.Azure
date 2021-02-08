@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -15,6 +16,9 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         Element,
 
+        /// <summary>
+        /// A property '.property_name'.
+        /// </summary>
         Property,
 
         /// <summary>
@@ -199,6 +203,54 @@ namespace PSRule.Rules.Azure.Data.Template
         internal ExpressionToken[] ToArray()
         {
             return _Token.ToArray();
+        }
+
+        internal string AsString()
+        {
+            var builder = new StringBuilder();
+            builder.Append("[");
+            var group = 0;
+            ExpressionToken last = null;
+            for (var i = 0; i < _Token.Count; i++)
+            {
+                var current = _Token[i];
+                if (last != null && !(current.Type == ExpressionTokenType.Property || IsStartOrEndToken(current)) && !(last.Type == ExpressionTokenType.GroupStart || last.Type == ExpressionTokenType.IndexStart))
+                    builder.Append(",");
+
+                if (current.Type == ExpressionTokenType.Property)
+                    builder.Append(".");
+                else if (current.Type == ExpressionTokenType.GroupStart)
+                {
+                    builder.Append("(");
+                    group++;
+                }
+                else if (current.Type == ExpressionTokenType.GroupEnd)
+                {
+                    builder.Append(")");
+                    group--;
+                }
+                else if (current.Type == ExpressionTokenType.IndexStart)
+                    builder.Append("[");
+                else if (current.Type == ExpressionTokenType.IndexEnd)
+                    builder.Append("]");
+                else if (current.Type == ExpressionTokenType.String)
+                    builder.Append("'");
+                else if (current.Type == ExpressionTokenType.Numeric)
+                    builder.Append(current.Value);
+
+                builder.Append(current.Content);
+                if (current.Type == ExpressionTokenType.String)
+                    builder.Append("'");
+
+                last = current;
+            }
+            builder.Append("]");
+            return builder.ToString();
+        }
+
+        private static bool IsStartOrEndToken(ExpressionToken token)
+        {
+            return token.Type == ExpressionTokenType.GroupStart || token.Type == ExpressionTokenType.GroupEnd || token.Type == ExpressionTokenType.IndexStart || token.Type == ExpressionTokenType.IndexEnd;
         }
     }
 }

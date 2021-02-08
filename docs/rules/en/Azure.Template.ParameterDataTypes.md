@@ -1,7 +1,7 @@
 ---
 severity: Important
-pillar: Reliability
-category: Resource deployment
+pillar: Operational Excellence
+category: Release engineering
 resource: All resources
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Template.ParameterDataTypes.md
 ---
@@ -62,3 +62,4 @@ Consider updating the parameter default value to a value of the same type.
 ## LINKS
 
 - [Data types](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-syntax#data-types)
+- [Release deployment](https://docs.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)

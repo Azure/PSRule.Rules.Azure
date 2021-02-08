@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Operational Excellence
-category: Deployment
+category: Release engineering
 resource: All resources
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.Template.UseParameters.md
 ---
@@ -25,3 +25,4 @@ Consider removing unused parameters from Azure template files.
 
 - [Parameters](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-syntax#parameters)
 - [ARM template best practices](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#general-recommendations-for-parameters)
+- [Release deployment](https://docs.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)
