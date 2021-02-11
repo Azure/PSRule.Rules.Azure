@@ -25,6 +25,11 @@ ADE protects disk decryption keys within Key Vault.
 
 Consider using Azure Disk Encryption (ADE) to protect VM disks from being downloaded and accessed offline.
 
+## NOTE
+
+This rule is applicable to exports of exiting resources.
+This rule will be skipped when validating Azure template files.
+
 ## LINKS
 
 - [Creating and configuring a key vault for Azure Disk Encryption](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disk-encryption-key-vault)

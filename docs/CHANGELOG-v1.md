@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+What's changed since pre-release v1.1.0-B2102001:
+
+- Bug fixes:
+  - Fixed `Azure.VM.ADE` to limit rule to exports only. [#644](https://github.com/microsoft/PSRule.Rules.Azure/issues/644)
+
 ## v1.1.0-B2102001 (pre-release)
 
 What's changed since v1.0.0:
