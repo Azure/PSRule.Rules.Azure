@@ -1076,15 +1076,11 @@ Describe 'Azure.VM' {
                 $_.TargetType -eq 'Microsoft.Compute/disks'
             };
 
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'vm-A-disk1', 'vm-A-disk2';
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -BeNullOrEmpty;
         }
 
         It 'Azure.VM.PublicKey' {
