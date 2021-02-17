@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v1.1.0-B2102010 (pre-release)
+
 What's changed since pre-release v1.1.0-B2102001:
 
 - Engineering:
