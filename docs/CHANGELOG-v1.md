@@ -4,6 +4,8 @@
 
 What's changed since pre-release v1.1.0-B2102001:
 
+- Engineering:
+  - Bump PSRule dependency to v1.0.3. [#648](https://github.com/Microsoft/PSRule.Rules.Azure/issues/648)
 - Bug fixes:
   - Fixed `Azure.VM.ADE` to limit rule to exports only. [#644](https://github.com/microsoft/PSRule.Rules.Azure/issues/644)
 
