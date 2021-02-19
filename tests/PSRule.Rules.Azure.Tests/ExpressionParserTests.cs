@@ -148,5 +148,18 @@ namespace PSRule.Rules.Azure
             Assert.Equal(ExpressionTokenType.Property, actual[5].Type); // includedEventTypes
             Assert.Equal("includedEventTypes", actual[5].Content);
         }
+
+        [Fact]
+        public void ParseExpression8()
+        {
+            var expression = "[\r\nparameters(\r\n                 'vnetName'\r\n)\r\n]";
+            var actual = ExpressionParser.Parse(expression).ToArray();
+            Assert.Equal(ExpressionTokenType.Element, actual[0].Type); // parameters
+            Assert.Equal("parameters", actual[0].Content);
+            Assert.Equal(ExpressionTokenType.GroupStart, actual[1].Type);
+            Assert.Equal(ExpressionTokenType.String, actual[2].Type); // 'vnetName'
+            Assert.Equal("vnetName", actual[2].Content);
+            Assert.Equal(ExpressionTokenType.GroupEnd, actual[3].Type);
+        }
     }
 }
