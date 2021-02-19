@@ -384,7 +384,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (type == ParameterType.Bool)
                 context.Parameter(parameterName, new LazyParameter<bool>(defaultValue));
             else if (type == ParameterType.Int)
-                context.Parameter(parameterName, new LazyParameter<int>(defaultValue));
+                context.Parameter(parameterName, new LazyParameter<long>(defaultValue));
             else if (type == ParameterType.String)
                 context.Parameter(parameterName, new LazyParameter<string>(defaultValue));
             else if (type == ParameterType.Array)
@@ -424,14 +424,14 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private void ResourceOuter(TemplateContext context, JObject resource)
         {
-            var condition = !resource.ContainsKey("condition") || ExpandProperty<bool>(context, resource, "condition");
-            if (!condition)
-                return;
-
             var copyIndex = GetResourceIterator(context, resource);
             while (copyIndex.Next())
             {
                 var instance = copyIndex.Input.DeepClone() as JObject;
+                var condition = !resource.ContainsKey("condition") || ExpandProperty<bool>(context, resource, "condition");
+                if (!condition)
+                    continue;
+
                 Resource(context, instance);
             }
             if (copyIndex.IsCopy())

@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+What's changed since pre-release v1.1.0-B2102010:
+
+- Bug fixes:
+  - Fixed `if` condition values evaluation order. [#652](https://github.com/microsoft/PSRule.Rules.Azure/issues/652)
+  - Fixed handling of `int` parameters with large values. [#653](https://github.com/microsoft/PSRule.Rules.Azure/issues/653)
+  - Fixed handling of expressions split over multiple lines. [#654](https://github.com/microsoft/PSRule.Rules.Azure/issues/654)
+  - Fixed handling of bool parameter values within logical expressions. [#655](https://github.com/microsoft/PSRule.Rules.Azure/issues/655)
+
 ## v1.1.0-B2102010 (pre-release)
 
 What's changed since pre-release v1.1.0-B2102001:

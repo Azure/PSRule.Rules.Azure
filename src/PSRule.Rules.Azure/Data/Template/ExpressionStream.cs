@@ -191,7 +191,8 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         public void SkipWhitespace()
         {
-            Skip(Whitespace, max: 0);
+            while (char.IsWhiteSpace(Current))
+                Next();
         }
 
         public bool Skip(char c)
@@ -201,22 +202,6 @@ namespace PSRule.Rules.Azure.Data.Template
 
             Next();
             return true;
-        }
-
-        /// <summary>
-        /// Skip ahead if the current character is expected. Keep skipping when the character is repeated.
-        /// </summary>
-        /// <param name="c">The character to skip.</param>
-        /// <returns>The number of characters that where skipped.</returns>
-        public int Skip(char c, int max)
-        {
-            var skipped = 0;
-            while (Current == c && (max == 0 || skipped < max))
-            {
-                Next();
-                skipped++;
-            }
-            return skipped;
         }
 
         /// <summary>

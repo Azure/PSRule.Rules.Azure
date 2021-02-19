@@ -70,6 +70,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The argument &apos;{0}&apos; for &apos;{1}&apos; is not a valid boolean..
+        /// </summary>
+        internal static string ArgumentInvalidBoolean {
+            get {
+                return ResourceManager.GetString("ArgumentInvalidBoolean", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The argument &apos;{0}&apos; for &apos;{1}&apos; is not a valid integer..
         /// </summary>
         internal static string ArgumentInvalidInteger {

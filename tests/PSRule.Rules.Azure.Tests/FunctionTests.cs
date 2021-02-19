@@ -276,17 +276,17 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // Integer
-            var actual1 = (int)Functions.Max(context, new object[] { 6, 4, 8, 1, 2 });
-            var actual2 = (int)Functions.Max(context, new object[] { 1, 1, 1 });
-            var actual3 = (int)Functions.Max(context, new object[] { 1 });
+            var actual1 = (long)Functions.Max(context, new object[] { 6, 4, 8, 1, 2 });
+            var actual2 = (long)Functions.Max(context, new object[] { 1, 1, 1 });
+            var actual3 = (long)Functions.Max(context, new object[] { 1 });
             Assert.Equal(8, actual1);
             Assert.Equal(1, actual2);
             Assert.Equal(1, actual3);
 
             // Array
-            var actual4 = (int)Functions.Max(context, new object[] { new JArray(new int[] { 6, 4, 8, 1, 2 }) });
-            var actual5 = (int)Functions.Max(context, new object[] { new JArray(new int[] { 6, 4 }), 8 });
-            var actual6 = (int)Functions.Max(context, new object[] { new JArray(new int[] { 6, 4 }), new JArray(new int[] { 8 }) });
+            var actual4 = (long)Functions.Max(context, new object[] { new JArray(new int[] { 6, 4, 8, 1, 2 }) });
+            var actual5 = (long)Functions.Max(context, new object[] { new JArray(new int[] { 6, 4 }), 8 });
+            var actual6 = (long)Functions.Max(context, new object[] { new JArray(new int[] { 6, 4 }), new JArray(new int[] { 8 }) });
             Assert.Equal(8, actual4);
             Assert.Equal(8, actual5);
             Assert.Equal(8, actual6);
@@ -304,17 +304,17 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // Integer
-            var actual1 = (int)Functions.Min(context, new object[] { 6, 4, 8, 1, 2 });
-            var actual2 = (int)Functions.Min(context, new object[] { 1, 1, 1 });
-            var actual3 = (int)Functions.Min(context, new object[] { 1 });
+            var actual1 = (long)Functions.Min(context, new object[] { 6, 4, 8, 1, 2 });
+            var actual2 = (long)Functions.Min(context, new object[] { 1, 1, 1 });
+            var actual3 = (long)Functions.Min(context, new object[] { 1 });
             Assert.Equal(1, actual1);
             Assert.Equal(1, actual2);
             Assert.Equal(1, actual3);
 
             // Array
-            var actual4 = (int)Functions.Min(context, new object[] { new JArray(new int[] { 6, 4, 8, 1, 2 }) });
-            var actual5 = (int)Functions.Min(context, new object[] { new JArray(new int[] { 6, 4 }), 8 });
-            var actual6 = (int)Functions.Min(context, new object[] { new JArray(new int[] { 6, 4 }), new JArray(new int[] { 8 }) });
+            var actual4 = (long)Functions.Min(context, new object[] { new JArray(new int[] { 6, 4, 8, 1, 2 }) });
+            var actual5 = (long)Functions.Min(context, new object[] { new JArray(new long[] { 6, 4 }), 8 });
+            var actual6 = (long)Functions.Min(context, new object[] { new JArray(new int[] { 6, 4 }), new JArray(new int[] { 8 }) });
             Assert.Equal(1, actual4);
             Assert.Equal(4, actual5);
             Assert.Equal(4, actual6);
@@ -671,7 +671,7 @@ namespace PSRule.Rules.Azure
             // int
             var actual1 = (bool)Functions.Equals(context, new object[] { 1, 2 });
             var actual2 = (bool)Functions.Equals(context, new object[] { 2, 1 });
-            var actual3 = (bool)Functions.Equals(context, new object[] { 1, 1 });
+            var actual3 = (bool)Functions.Equals(context, new object[] { new JValue(1), 1 });
             Assert.False(actual1);
             Assert.False(actual2);
             Assert.True(actual3);
@@ -842,9 +842,12 @@ namespace PSRule.Rules.Azure
             var actual1 = (bool)Functions.And(context, new object[] { true, true, true });
             var actual2 = (bool)Functions.And(context, new object[] { true, true, false });
             var actual3 = (bool)Functions.And(context, new object[] { false, false });
+            var actual4 = (bool)Functions.And(context, new object[] { new JValue(true), true });
+
             Assert.True(actual1);
             Assert.False(actual2);
             Assert.False(actual3);
+            Assert.True(actual4);
         }
 
         [Fact]
@@ -855,8 +858,14 @@ namespace PSRule.Rules.Azure
 
             var actual1 = (bool)Functions.Bool(context, new object[] { "true" });
             var actual2 = (bool)Functions.Bool(context, new object[] { "false" });
+            var actual3 = (bool)Functions.Bool(context, new object[] { 1 });
+            var actual4 = (bool)Functions.Bool(context, new object[] { 0 });
+            var actual5 = (bool)Functions.Bool(context, new object[] { new JValue(1) });
             Assert.True(actual1);
             Assert.False(actual2);
+            Assert.True(actual3);
+            Assert.False(actual4);
+            Assert.True(actual5);
         }
 
         [Fact]
@@ -881,8 +890,10 @@ namespace PSRule.Rules.Azure
 
             var actual1 = (bool)Functions.If(context, new object[] { true, true, false });
             var actual2 = (bool)Functions.If(context, new object[] { false, true, false });
+            var actual3 = (bool)Functions.If(context, new object[] { new JValue(true), true, false });
             Assert.True(actual1);
             Assert.False(actual2);
+            Assert.True(actual3);
         }
 
         [Fact]
@@ -893,8 +904,10 @@ namespace PSRule.Rules.Azure
 
             var actual1 = (bool)Functions.Not(context, new object[] { true });
             var actual2 = (bool)Functions.Not(context, new object[] { false });
+            var actual3 = (bool)Functions.Not(context, new object[] { new JValue(false) });
             Assert.False(actual1);
             Assert.True(actual2);
+            Assert.True(actual3);
         }
 
         [Fact]
@@ -906,9 +919,11 @@ namespace PSRule.Rules.Azure
             var actual1 = (bool)Functions.Or(context, new object[] { true, true, true });
             var actual2 = (bool)Functions.Or(context, new object[] { true, false });
             var actual3 = (bool)Functions.Or(context, new object[] { false, false, false });
+            var actual4 = (bool)Functions.Or(context, new object[] { new JValue(true), true });
             Assert.True(actual1);
             Assert.True(actual2);
             Assert.False(actual3);
+            Assert.True(actual4);
         }
 
         [Fact]
@@ -936,7 +951,7 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // Integer
-            var actual1 = (int)Functions.Add(context, new object[] { 5, 3 });
+            var actual1 = (long)Functions.Add(context, new object[] { 5, 3 });
             Assert.Equal(8, actual1);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Add(context, null));
@@ -951,7 +966,7 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // Integer
-            var actual1 = (int)Functions.Div(context, new object[] { 8, 3 });
+            var actual1 = (long)Functions.Div(context, new object[] { 8, 3 });
             Assert.Equal(2, actual1);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Div(context, null));
@@ -987,11 +1002,11 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // Integer
-            var actual1 = (int)Functions.Int(context, new object[] { 4 });
+            var actual1 = (long)Functions.Int(context, new object[] { 4 });
             Assert.Equal(4, actual1);
 
             // String
-            var actual2 = (int)Functions.Int(context, new object[] { "4" });
+            var actual2 = (long)Functions.Int(context, new object[] { "4" });
             Assert.Equal(4, actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Int(context, null));
@@ -1006,7 +1021,7 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // Integer
-            var actual1 = (int)Functions.Mod(context, new object[] { 7, "3" });
+            var actual1 = (long)Functions.Mod(context, new object[] { 7, "3" });
             Assert.Equal(1, actual1);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Mod(context, null));
@@ -1023,8 +1038,10 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // Integer
-            var actual1 = (int)Functions.Mul(context, new object[] { 5, "3" });
+            var actual1 = (long)Functions.Mul(context, new object[] { 5, "3" });
+            var actual2 = (long)Functions.Mul(context, new object[] { new JValue(5), (long)3 });
             Assert.Equal(15, actual1);
+            Assert.Equal(15, actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Mul(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Mul(context, new object[] { 5 }));
@@ -1038,8 +1055,10 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // Integer
-            var actual1 = (int)Functions.Sub(context, new object[] { 7, 3 });
+            var actual1 = (long)Functions.Sub(context, new object[] { 7, 3 });
+            var actual2 = (long)Functions.Sub(context, new object[] { new JValue(7), 3 });
             Assert.Equal(4, actual1);
+            Assert.Equal(4, actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Sub(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Sub(context, new object[] { 5 }));
