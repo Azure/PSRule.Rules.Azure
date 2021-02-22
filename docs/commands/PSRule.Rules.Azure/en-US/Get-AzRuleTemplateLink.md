@@ -21,11 +21,19 @@ Get-AzRuleTemplateLink [[-InputPath] <String[]>] [-SkipUnlinked] [[-Path] <Strin
 
 Gets a link between an Azure Resource Manager (ARM) parameter file and its referenced template file.
 Parameter files reference a template file by defining metadata.
+Alternatively, template files are discovered by naming convention.
 
-By default, when parameter files without a reference to a template are discovered an error is raised.
+By default, when parameter files without a matching template are discovered an error is raised.
 
 To reference a template, set the `metadata.template` property to a file path.
 Referencing templates outside of the path specified with `-Path` is not permitted.
+
+To discover template files by naming convention:
+
+- Both template and parameter files must be in the same sub-directory.
+- The parameter file must end with `.parameters.json`.
+- The parameter file must be named `<templateName>.parameters.json`.
+- The template file must be named `<templateName>.json`.
 
 For more information see the about_PSRule_Azure_Metadata_Link topic.
 
@@ -63,8 +71,8 @@ Accept wildcard characters: True
 
 ### -SkipUnlinked
 
-Use this option to ignore parameter files that are not linked to a template.
-By default, when a parameter file that does not reference a template is discovered an error will be raised.
+Use this option to ignore parameter files that have no matching template.
+By default, when parameter files without a matching template are discovered an error is raised.
 
 ```yaml
 Type: SwitchParameter

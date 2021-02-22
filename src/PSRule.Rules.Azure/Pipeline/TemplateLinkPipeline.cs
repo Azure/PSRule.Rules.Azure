@@ -51,6 +51,10 @@ namespace PSRule.Rules.Azure.Pipeline
 
         private const string DEFAULT_TEMPLATESEARCH_PATTERN = "*.parameters.json";
 
+        private const string PARAMETER_FILE_SUFFIX = ".parameters.json";
+
+        private const char SLASH = '/';
+
         private readonly string _BasePath;
         private readonly bool _SkipUnlinked;
         private readonly PathBuilder _PathBuilder;
@@ -81,11 +85,17 @@ namespace PSRule.Rules.Azure.Pipeline
                 var rootedParameterFile = PSRuleOption.GetRootedPath(parameterFile);
 
                 // Check if metadata property exists
-                if (!TryMetadata(rootedParameterFile, out JObject metadata))
-                    return;
+                string templateFile = null;
+                if (!((TryMetadata(rootedParameterFile, out JObject metadata) && TryTemplateFile(metadata, rootedParameterFile, out templateFile)) || TryTemplateByName(parameterFile, out templateFile)))
+                {
+                    if (metadata == null && !_SkipUnlinked)
+                        throw new InvalidTemplateLinkException(string.Format(CultureInfo.CurrentCulture, PSRuleResources.MetadataNotFound, parameterFile));
 
-                if (!TryTemplateFile(metadata, rootedParameterFile, out string templateFile))
+                    if (templateFile == null && !_SkipUnlinked)
+                        throw new InvalidTemplateLinkException(string.Format(CultureInfo.CurrentCulture, PSRuleResources.TemplateLinkNotFound, parameterFile));
+
                     return;
+                }
 
                 var templateLink = new TemplateLink(templateFile, rootedParameterFile);
 
@@ -176,22 +186,18 @@ namespace PSRule.Rules.Azure.Pipeline
                 return true;
             }
             Writer.VerboseMetadataNotFound(parameterFile);
-            if (!_SkipUnlinked)
-                throw new InvalidTemplateLinkException(string.Format(CultureInfo.CurrentCulture, PSRuleResources.MetadataNotFound, parameterFile));
-
             return false;
         }
 
         private bool TryTemplateFile(JObject metadata, string parameterFile, out string templateFile)
         {
-            if (!(TryStringProperty(metadata, PROPERTYNAME_TEMPLATE, out templateFile)))
+            if (!TryStringProperty(metadata, PROPERTYNAME_TEMPLATE, out templateFile))
             {
                 if (_SkipUnlinked)
                 {
                     Writer.VerboseTemplateLinkNotFound(parameterFile);
-                    return false;
                 }
-                else throw new InvalidTemplateLinkException(string.Format(CultureInfo.CurrentCulture, PSRuleResources.TemplateLinkNotFound, parameterFile));
+                return false;
             }
 
             templateFile = TrimSlash(templateFile);
@@ -213,10 +219,26 @@ namespace PSRule.Rules.Azure.Pipeline
             return true;
         }
 
+        /// <summary>
+        /// Try to match using templateName.parameters.json.
+        /// </summary>
+        private static bool TryTemplateByName(string parameterFile, out string templateFile)
+        {
+            templateFile = null;
+            var parentPath = Path.GetDirectoryName(parameterFile);
+            var parameterPrefix = Path.GetFileName(parameterFile);
+            if (string.IsNullOrEmpty(parameterPrefix) || string.IsNullOrEmpty(parentPath) || parameterPrefix.Length <= 16 || !parameterPrefix.EndsWith(PARAMETER_FILE_SUFFIX, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            parameterPrefix = parameterPrefix.Remove(parameterPrefix.Length - 16, 11);
+            templateFile = Path.Combine(parentPath, parameterPrefix);
+            return File.Exists(templateFile);
+        }
+
         private static bool TryStringProperty(JObject o, string propertyName, out string value)
         {
             value = null;
-            return o.TryGetValue(propertyName, out JToken token) && TryString(token, out value);
+            return o != null && o.TryGetValue(propertyName, out JToken token) && TryString(token, out value);
         }
 
         private static bool TryString(JToken token, out string value)
@@ -236,7 +258,7 @@ namespace PSRule.Rules.Azure.Pipeline
 
         private static string TrimSlash(string path)
         {
-            return string.IsNullOrEmpty(path) || path[0] != '/' ? path : path.TrimStart('/');
+            return string.IsNullOrEmpty(path) || path[0] != SLASH ? path : path.TrimStart(SLASH);
         }
     }
 }
