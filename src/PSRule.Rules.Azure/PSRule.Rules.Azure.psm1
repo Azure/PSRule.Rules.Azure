@@ -107,10 +107,11 @@ function Export-AzRuleTemplateData {
         [String[]]$ParameterFile,
 
         [Parameter(Mandatory = $False)]
-        [String]$ResourceGroupName,
+        [Alias('ResourceGroupName')]
+        [PSRule.Rules.Azure.Configuration.ResourceGroupReference]$ResourceGroup,
 
         [Parameter(Mandatory = $False)]
-        [String]$Subscription,
+        [PSRule.Rules.Azure.Configuration.SubscriptionReference]$Subscription,
 
         [Parameter(Mandatory = $False)]
         [String]$OutputPath = $PWD,
@@ -124,7 +125,7 @@ function Export-AzRuleTemplateData {
             Write-Warning -Message "The cmdlet 'Export-AzTemplateRuleData' is has been renamed to 'Export-AzRuleTemplateData'. Use of 'Export-AzTemplateRuleData' is deprecated and will be removed in the next major version."
         }
 
-        $Option = [PSRule.Rules.Azure.Configuration.PSRuleOption]::new();
+        $Option = [PSRule.Rules.Azure.Configuration.PSRuleOption]::FromFileOrDefault($PWD);
         $Option.Output.Path = $OutputPath;
 
         # Build the pipeline
@@ -134,16 +135,16 @@ function Export-AzRuleTemplateData {
 
         # Bind to subscription context
         if ($PSBoundParameters.ContainsKey('Subscription')) {
-            $subscriptionObject = GetSubscription -Subscription $Subscription -ErrorAction SilentlyContinue;
-            if ($Null -ne $subscriptionObject) {
-                $builder.Subscription($subscriptionObject);
+            $subscriptionOption = GetSubscription -InputObject $Subscription -ErrorAction SilentlyContinue;
+            if ($Null -ne $subscriptionOption) {
+                $builder.Subscription($subscriptionOption);
             }
         }
         # Bind to resource group
-        if ($PSBoundParameters.ContainsKey('ResourceGroupName')) {
-            $resourceGroupObject = GetResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue;
-            if ($Null -ne $resourceGroupObject) {
-                $builder.ResourceGroup($resourceGroupObject);
+        if ($PSBoundParameters.ContainsKey('ResourceGroup')) {
+            $resourceGroupOption = GetResourceGroup -InputObject $ResourceGroup -ErrorAction SilentlyContinue;
+            if ($Null -ne $resourceGroupOption) {
+                $builder.ResourceGroup($resourceGroupOption);
             }
         }
 
@@ -252,23 +253,46 @@ function Get-AzRuleTemplateLink {
 
 function GetResourceGroup {
     [CmdletBinding()]
+    [OutputType([PSRule.Rules.Azure.Configuration.ResourceGroupOption])]
     param (
         [Parameter(Mandatory = $True)]
-        [String]$Name
+        [PSRule.Rules.Azure.Configuration.ResourceGroupReference]$InputObject
     )
     process {
-        return Get-AzResourceGroup -Name $Name -ErrorAction SilentlyContinue;
+        $result = $InputObject.ToResourceGroupOption();
+        if ($InputObject.FromName) {
+            $o = Get-AzResourceGroup -Name $InputObject.Name -ErrorAction SilentlyContinue;
+            if ($Null -ne $o) {
+                $result.Name = $o.ResourceGroupName
+                $result.Location = $o.Location
+                $result.ManagedBy = $o.ManagedBy
+                $result.Properties.ProvisioningState = $o.ProvisioningState
+                $result.Tags = $o.Tags
+            }
+        }
+        return $result;
     }
 }
 
 function GetSubscription {
     [CmdletBinding()]
+    [OutputType([PSRule.Rules.Azure.Configuration.SubscriptionOption])]
     param (
         [Parameter(Mandatory = $True)]
-        [String]$Subscription
+        [PSRule.Rules.Azure.Configuration.SubscriptionReference]$InputObject
     )
     process {
-        return (Set-AzContext -Subscription $Subscription -ErrorAction SilentlyContinue).Subscription;
+        $result = $InputObject.ToSubscriptionOption();
+        if ($InputObject.FromName) {
+            $o = (Set-AzContext -Subscription $InputObject.DisplayName -ErrorAction SilentlyContinue).Subscription;
+            if ($Null -ne $o) {
+                $result.DisplayName = $o.Name
+                $result.SubscriptionId = $o.SubscriptionId
+                $result.State = $o.State
+                $result.TenantId = $o.TenantId
+            }
+        }
+        return $result;
     }
 }
 

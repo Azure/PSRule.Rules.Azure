@@ -56,6 +56,13 @@ namespace PSRule.Rules.Azure.Configuration
             }
         }
 
+        internal static OutputOption Combine(OutputOption o1, OutputOption o2)
+        {
+            var result = new OutputOption(o1);
+            result.Path = o1.Path ?? o2.Path;
+            return result;
+        }
+
         /// <summary>
         /// The encoding to use when writing results to file.
         /// </summary>

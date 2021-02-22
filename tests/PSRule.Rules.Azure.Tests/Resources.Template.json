@@ -43,6 +43,22 @@
         }
     },
     "variables": {
+        "subscriptionDefautTags": {
+            "ffffffff-ffff-ffff-ffff-ffffffffffff": {
+                "role": "Networking"
+            },
+            "nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn": {
+                "role": "Custom"
+            },
+            "00000000-0000-0000-0000-000000000000": {
+                "role": "Networking"
+            }
+        },
+        "rgLocation": {
+            "eastus": "region-A",
+            "region": "region-A",
+            "custom": "Custom"
+        },
         "gatewaySubnet": [
             {
                 "name": "GatewaySubnet",
@@ -79,7 +95,9 @@
         "copy": [
             {
                 "name": "routes",
-                "count": "[length(variables('allSubnets'))]",
+                "count": "[length(
+                    variables('allSubnets')
+                )]",
                 "input": {
                     "name": "[concat('route-', copyIndex('routes'))]",
                     "properties": {}
@@ -102,7 +120,7 @@
             "type": "Microsoft.Network/virtualNetworks",
             "name": "[parameters('VNETName')]",
             "apiVersion": "2020-06-01",
-            "location": "region-A",
+            "location": "[variables('rgLocation')[resourceGroup().location]]",
             "dependsOn": [
                 "routeIndex",
                 "nsgIndex"
@@ -111,9 +129,7 @@
                 "addressSpace": "[variables('vnetAddressSpace')]",
                 "subnets": "[variabLes('AllSubnets')]"
             },
-            "tags": {
-                "role": "Networking"
-            }
+            "tags": "[variables('subscriptionDefautTags')[subscription().subscriptionId]]"
         },
         {
             "condition": "[parameters('delegate')]",

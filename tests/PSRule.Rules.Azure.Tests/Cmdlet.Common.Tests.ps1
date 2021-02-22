@@ -320,53 +320,90 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
         }
     }
 
-    Context 'With -Subscription' {
-        Mock -CommandName 'GetSubscription' -ModuleName 'PSRule.Rules.Azure' -MockWith {
-            return [PSCustomObject]@{
-                SubscriptionId = '00000000-0000-0000-0000-000000000000'
-                TenantId = '00000000-0000-0000-0000-000000000000'
-                Name = 'test-sub'
+    Context 'With -Subscription lookup' {
+        It 'From context' {
+            Mock -CommandName 'GetSubscription' -ModuleName 'PSRule.Rules.Azure' -MockWith {
+                $result = [PSRule.Rules.Azure.Configuration.SubscriptionOption]::new();
+                $result.SubscriptionId = '00000000-0000-0000-0000-000000000000';
+                $result.TenantId = '00000000-0000-0000-0000-000000000000';
+                $result.DisplayName = 'test-sub';
+                return $result;
             }
-        }
-        It 'Exports template' {
             $exportParams = @{
                 TemplateFile = $templatePath
                 ParameterFile = $parametersPath
                 Subscription = 'test-sub'
             }
+
+            # With lookup
             $result = Export-AzRuleTemplateData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
             $result.Length | Should -Be 9;
             $result[0].properties.subnets.Length | Should -Be 3;
             $result[0].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
             $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/routeTables/route-subnet2$';
+            $result[0].tags.role | Should -Match 'Networking';
         }
     }
 
-    Context 'With -ResourceGroup' {
-        Mock -CommandName 'GetResourceGroup' -ModuleName 'PSRule.Rules.Azure' -MockWith {
-            return [PSCustomObject]@{
-                ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg'
-                ResourceGroupName = 'test-rg'
-                Location = 'region'
-                ManagedBy = 'testuser'
-                Tags = @{
-                    test = 'true'
-                }
-            }
-        }
-        It 'Exports template' {
+    Context 'With -Subscription object' {
+        It 'From hashtable' {
             $exportParams = @{
                 TemplateFile = $templatePath
                 ParameterFile = $parametersPath
-                ResourceGroupName = 'test-rg'
+                Subscription = @{
+                    SubscriptionId = 'nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn';
+                    TenantId = 'nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn';
+                }
             }
+            $result = Export-AzRuleTemplateData @exportParams -PassThru;
+            $result | Should -Not -BeNullOrEmpty;
+            $result.Length | Should -Be 9;
+            $result[0].tags.role | Should -Be 'Custom';
+        }
+    }
+
+    Context 'With -ResourceGroup lookup' {
+        It 'From context' {
+            Mock -CommandName 'GetResourceGroup' -ModuleName 'PSRule.Rules.Azure' -MockWith {
+                $result = [PSRule.Rules.Azure.Configuration.ResourceGroupOption]::new();
+                $result.Name = 'test-rg';
+                $result.Location = 'region'
+                $result.ManagedBy = 'testuser'
+                $result.Tags = @{
+                    test = 'true'
+                }
+                return $result;
+            }
+            $exportParams = @{
+                TemplateFile = $templatePath
+                ParameterFile = $parametersPath
+                ResourceGroup = 'test-rg'
+            }
+
+            # With lookup
             $result = Export-AzRuleTemplateData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
             $result.Length | Should -Be 9;
             $result[0].properties.subnets.Length | Should -Be 3;
             $result[0].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/test-rg/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
             $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/test-rg/providers/Microsoft\.Network/routeTables/route-subnet2$';
+        }
+    }
+
+    Context 'With -ResourceGroup object' {
+        It 'From hashtable' {
+            $exportParams = @{
+                TemplateFile = $templatePath
+                ParameterFile = $parametersPath
+                ResourceGroup = @{
+                    Location = 'custom';
+                }
+            }
+            $result = Export-AzRuleTemplateData @exportParams -PassThru;
+            $result | Should -Not -BeNullOrEmpty;
+            $result.Length | Should -Be 9;
+            $result[0].location | Should -Be 'Custom';
         }
     }
 

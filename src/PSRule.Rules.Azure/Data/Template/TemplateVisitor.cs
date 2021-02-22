@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Resources;
 using System;
 using System.Collections.Generic;
@@ -53,14 +54,14 @@ namespace PSRule.Rules.Azure.Data.Template
                 Parameters = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
                 Variables = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
                 CopyIndex = new CopyIndexStore();
-                ResourceGroup = new ResourceGroup();
-                Subscription = new Subscription();
+                ResourceGroup = ResourceGroupOption.Default;
+                Subscription = SubscriptionOption.Default;
                 _Deployment = new Stack<JObject>();
                 _Providers = ReadProviders();
                 _Environments = ReadEnvironments();
             }
 
-            internal TemplateContext(Subscription subscription, ResourceGroup resourceGroup)
+            internal TemplateContext(SubscriptionOption subscription, ResourceGroupOption resourceGroup)
                 : this()
             {
                 if (subscription != null)
@@ -78,9 +79,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public CopyIndexStore CopyIndex { get; }
 
-            public ResourceGroup ResourceGroup { get; internal set; }
+            public ResourceGroupOption ResourceGroup { get; internal set; }
 
-            public Subscription Subscription { get; internal set; }
+            public SubscriptionOption Subscription { get; internal set; }
 
             public JObject Deployment
             {
