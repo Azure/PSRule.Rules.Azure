@@ -15,7 +15,8 @@ Export resource configuration data from Azure templates.
 
 ```text
 Export-AzRuleTemplateData [[-Name] <String>] -TemplateFile <String> [-ParameterFile <String[]>]
- [-ResourceGroupName <String>] [-Subscription <String>] [-OutputPath <String>] [-PassThru] [<CommonParameters>]
+ [-ResourceGroup <ResourceGroupReference>] [-Subscription <SubscriptionReference>] [-OutputPath <String>]
+ [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,15 +24,31 @@ Export-AzRuleTemplateData [[-Name] <String>] -TemplateFile <String> [-ParameterF
 Export resource configuration data by merging Azure Resource Manager (ARM) template and parameter files.
 Template and parameters are merged by resolving template parameters, variables and functions.
 
+This function does not check template files for strict compliance with Azure schemas.
+
 By default this is an offline process, requiring no connectivity to Azure.
 Some functions that may be included in templates dynamically query Azure for current state.
 For these functions standard placeholder values are used by default.
+Functions that use placeholders include `reference`, `list*`.
 
-Functions that use placeholders include `subscription`, `resourceGroup`, `reference`, `list*`.
+The `subscription()` function will return the following unless overridden:
 
-This function does not check template files for strict compliance with Azure schemas.
+- subscriptionId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+- tenantId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+- displayName: 'PSRule Test Subscription'
+- state: 'NotDefined'
 
-Currently the following limitations also apply:
+The `resourceGroup()` function will return the following unless overridden:
+
+- name: 'ps-rule-test-rg'
+- location: 'eastus'
+- tags: { }
+- properties:
+  - provisioningState: 'Succeeded'
+
+To override, set the `AZURE_SUBSCRIPTION` and `AZURE_RESOURCE_GROUP` in configuration.
+
+Currently the following limitations apply:
 
 - Nested templates are expanded, external templates are not.
   - Deployment resources that link to an external template are returned as a resource.
@@ -50,6 +67,42 @@ Export-AzRuleTemplateData -TemplateFile .\template.json -ParameterFile .\paramet
 ```
 
 Export resource configuration data based on merging a template and parameter file together.
+
+### Example 2
+
+```powershell
+Get-AzRuleTemplateLink | Export-AzRuleTemplateData;
+```
+
+Recursively scan the current working path and export linked templates.
+
+### Example 3
+
+```powershell
+$subscription = @{
+  subscriptionId = 'nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn'
+  displayName = 'My Azure Subscription'
+  tenantId = 'nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn'
+}
+Get-AzRuleTemplateLink | Export-AzRuleTemplateData -Subscription $subscription;
+```
+
+Export linked templates from the current working path using a specific subscription.
+
+### Example 4
+
+```powershell
+$rg = @{
+  name = 'my-test-rg'
+  location = 'australiaeast'
+  tags = @{
+    env = 'prod'
+  }
+}
+Get-AzRuleTemplateLink | Export-AzRuleTemplateData -ResourceGroup $rg;
+```
+
+Export linked templates from the current working path using a specific resource group.
 
 ## PARAMETERS
 
@@ -143,17 +196,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 
-The name of the Resource Group where the deployment will occur.
-If this option is specified, the properties of the Resource Group will be looked up and used during export.
-
+A name or hashtable of the Resource Group where the deployment will occur.
 This Resource Group specified here will be used to resolve the `resourceGroup()` function.
 
+When the name of Resource Group is specified, the Resource Group will be looked up and used during export.
+This requires an authenticated connection to Azure with permissions to read the specified Resource Group.
+
+Alternately, a hashtable of a Resource Group object can be specified.
+This option does not require an authenticated Azure connection.
+The hashtable will override the defaults for any specified properties.
+
+For more details see about_PSRule_Azure_Configuration.
+
 ```yaml
-Type: String
+Type: ResourceGroupReference
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceGroupName
 
 Required: False
 Position: Named
@@ -164,13 +224,20 @@ Accept wildcard characters: False
 
 ### -Subscription
 
-The name of the Subscription where the deployment will occur.
-If this option is specified, the properties of the Subscription will be looked up and used during export.
-
+The name or hashtable of the Subscription where the deployment will occur.
 This subscription specified here will be used to resolve the `subscription()` function.
 
+When a subscription name is specified, the Subscription will be looked up and used during export.
+This requires an authenticated connection to Azure with permissions to read the specified Subscription.
+
+Alternately, a hashtable of a Subscription object can be specified.
+This option does not require an authenticated Azure connection.
+The hashtable will override the defaults for any specified properties.
+
+For more details see about_PSRule_Azure_Configuration.
+
 ```yaml
-Type: String
+Type: SubscriptionReference
 Parameter Sets: (All)
 Aliases:
 

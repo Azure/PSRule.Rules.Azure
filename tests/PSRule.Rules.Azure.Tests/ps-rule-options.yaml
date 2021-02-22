@@ -1,0 +1,15 @@
+# PSRule options for unit testing
+
+configuration:
+  AZURE_SUBSCRIPTION:
+    subscriptionId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+    tenantId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+    displayName: 'Unit Test Subscription'
+    state: 'NotDefined'
+  AZURE_RESOURCE_GROUP:
+    name: 'ps-rule-test-rg'
+    location: 'eastus'
+    tags:
+      env: 'prod'
+    properties:
+      provisioningState: 'Succeeded'

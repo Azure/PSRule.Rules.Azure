@@ -333,6 +333,8 @@ The following conceptual topics exist in the `PSRule.Rules.Azure` module:
   - [Azure_AKSNodeMinimumMaxPods](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_aksnodeminimummaxpods)
   - [Azure_AllowedRegions](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_allowedregions)
   - [Azure_MinimumCertificateLifetime](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_minimumcertificatelifetime)
+  - [AZURE_RESOURCE_GROUP](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_resource_group)
+  - [AZURE_SUBSCRIPTION](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_subscription)
 
 ## Related projects
 

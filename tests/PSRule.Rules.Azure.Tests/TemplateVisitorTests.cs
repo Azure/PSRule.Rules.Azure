@@ -25,6 +25,8 @@ namespace PSRule.Rules.Azure
             Assert.Equal("10.1.0.0/24", actual1["properties"]["addressSpace"]["addressPrefixes"][0]);
             Assert.Equal(3, actual1["properties"]["subnets"].Value<JArray>().Count);
             Assert.Equal("10.1.0.32/28", actual1["properties"]["subnets"][1]["properties"]["addressPrefix"]);
+            Assert.Equal("Networking", actual1["tags"]["role"].Value<string>());
+            Assert.Equal("region-A", actual1["location"].Value<string>());
 
             var actual2 = resources[1];
             Assert.Equal("vnet-001/subnet2", actual2["name"]);
