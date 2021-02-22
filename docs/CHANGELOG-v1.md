@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+What's changed since pre-release v1.1.0-B2102023:
+
+- General improvements:
+  - Added support for matching template by name. [#661](https://github.com/microsoft/PSRule.Rules.Azure/issues/661)
+    - `Get-AzRuleTemplateLink` discovers `<templateName>.json` from `<templateName>.parameters.json`.
+
 ## v1.1.0-B2102023 (pre-release)
 
 What's changed since pre-release v1.1.0-B2102015:
