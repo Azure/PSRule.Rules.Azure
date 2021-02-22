@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
 using System;
 using System.Globalization;
@@ -512,8 +513,8 @@ namespace PSRule.Rules.Azure
         {
             var context = GetContext();
 
-            var actual1 = Functions.ResourceGroup(context, null) as ResourceGroup;
-            Assert.Equal("{{ResourceGroup.Name}}", actual1.Name);
+            var actual1 = Functions.ResourceGroup(context, null) as ResourceGroupOption;
+            Assert.Equal("ps-rule-test-rg", actual1.Name);
         }
 
         [Fact]
@@ -528,11 +529,11 @@ namespace PSRule.Rules.Azure
             var actual4 = Functions.ResourceId(context, new object[] { "Unit.Test/type/subtype", "a", "b" }) as string;
             var actual5 = Functions.ResourceId(context, new object[] { "rg-test", "Unit.Test/type/subtype", "a", "b" }) as string;
             var actual6 = Functions.ResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "rg-test", "Unit.Test/type/subtype", "a", "b" }) as string;
-            Assert.Equal("/subscriptions/{{Subscription.SubscriptionId}}/resourceGroups/{{ResourceGroup.Name}}/providers/Unit.Test/type/a", actual1);
-            Assert.Equal("/subscriptions/{{Subscription.SubscriptionId}}/resourceGroups/rg-test/providers/Unit.Test/type/a", actual2);
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Unit.Test/type/a", actual1);
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-test/providers/Unit.Test/type/a", actual2);
             Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Unit.Test/type/a", actual3);
-            Assert.Equal("/subscriptions/{{Subscription.SubscriptionId}}/resourceGroups/{{ResourceGroup.Name}}/providers/Unit.Test/type/subtype/a/b", actual4);
-            Assert.Equal("/subscriptions/{{Subscription.SubscriptionId}}/resourceGroups/rg-test/providers/Unit.Test/type/subtype/a/b", actual5);
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Unit.Test/type/subtype/a/b", actual4);
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-test/providers/Unit.Test/type/subtype/a/b", actual5);
             Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Unit.Test/type/subtype/a/b", actual6);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.ResourceId(context, null));
@@ -547,8 +548,11 @@ namespace PSRule.Rules.Azure
         {
             var context = GetContext();
 
-            var actual1 = Functions.Subscription(context, null) as Subscription;
-            Assert.Equal("{{Subscription.Name}}", actual1.DisplayName);
+            var actual1 = Functions.Subscription(context, null) as SubscriptionOption;
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual1.SubscriptionId);
+            Assert.Equal("PSRule Test Subscription", actual1.DisplayName);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual1.TenantId);
+            Assert.Equal("NotDefined", actual1.State);
         }
 
         [Fact]
@@ -561,9 +565,9 @@ namespace PSRule.Rules.Azure
             var actual2 = Functions.SubscriptionResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "Unit.Test/type", "a" }) as string;
             var actual3 = Functions.SubscriptionResourceId(context, new object[] { "Unit.Test/type/subtype", "a", "b" }) as string;
             var actual4 = Functions.SubscriptionResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "Unit.Test/type/subtype", "a", "b" }) as string;
-            Assert.Equal("/subscriptions/{{Subscription.SubscriptionId}}/providers/Unit.Test/type/a", actual1);
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Unit.Test/type/a", actual1);
             Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Unit.Test/type/a", actual2);
-            Assert.Equal("/subscriptions/{{Subscription.SubscriptionId}}/providers/Unit.Test/type/subtype/a/b", actual3);
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Unit.Test/type/subtype/a/b", actual3);
             Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Unit.Test/type/subtype/a/b", actual4);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.SubscriptionResourceId(context, null));
@@ -1442,8 +1446,8 @@ namespace PSRule.Rules.Azure
         private static TemplateContext GetContext()
         {
             var context = new TemplateContext();
-            context.ResourceGroup = new ResourceGroup();
-            context.Subscription = new Subscription();
+            context.ResourceGroup = ResourceGroupOption.Default;
+            context.Subscription = SubscriptionOption.Default;
             context.Load(JObject.Parse("{ \"parameters\": { \"name\": { \"value\": \"abcdef\" } } }"));
             return context;
         }

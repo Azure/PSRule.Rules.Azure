@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+What's changed since pre-release v1.1.0-B2102015:
+
+- New features:
+  - Exporting template with `Export-AzRuleTemplateData` supports custom resource group and subscription. [#651](https://github.com/microsoft/PSRule.Rules.Azure/issues/651)
+    - Subscription and resource group used for deployment can be specified instead of using defaults.
+    - `ResourceGroupName` parameter of `Export-AzRuleTemplateData` has been renamed to `ResourceGroup`.
+    - Added a parameter alias for `ResourceGroupName` on `Export-AzRuleTemplateData`.
+
 ## v1.1.0-B2102015 (pre-release)
 
 What's changed since pre-release v1.1.0-B2102010:

@@ -79,6 +79,7 @@ namespace PSRule.Rules.Azure.Pipeline
                 return this;
 
             Option.Output = new OutputOption(option.Output);
+            Option.Configuration = new ConfigurationOption(option.Configuration);
             return this;
         }
 

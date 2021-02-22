@@ -8,7 +8,6 @@ using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline.Output;
 using PSRule.Rules.Azure.Resources;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
@@ -21,9 +20,9 @@ namespace PSRule.Rules.Azure.Pipeline
     {
         void Deployment(string deploymentName);
 
-        void ResourceGroup(PSObject resourceGroup);
+        void ResourceGroup(ResourceGroupOption resourceGroup);
 
-        void Subscription(PSObject subscription);
+        void Subscription(SubscriptionOption subscription);
 
         void PassThru(bool passThru);
     }
@@ -45,16 +44,14 @@ namespace PSRule.Rules.Azure.Pipeline
         private const string SUBSCRIPTION_NAME = "Name";
 
         private string _DeploymentName;
-        private ResourceGroup _ResourceGroup;
-        private Subscription _Subscription;
+        private ResourceGroupOption _ResourceGroup;
+        private SubscriptionOption _Subscription;
         private bool _PassThru;
 
         internal TemplatePipelineBuilder(PSRuleOption option)
             : base()
         {
             _DeploymentName = string.Concat(DEPLOYMENTNAME_PREFIX, Guid.NewGuid().ToString().Substring(0, 8));
-            _ResourceGroup = Data.Template.ResourceGroup.Default;
-            _Subscription = Data.Template.Subscription.Default;
             Configure(option);
         }
 
@@ -66,34 +63,25 @@ namespace PSRule.Rules.Azure.Pipeline
             _DeploymentName = deploymentName;
         }
 
-        public void ResourceGroup(PSObject resourceGroup)
+        public void ResourceGroup(ResourceGroupOption resourceGroup)
         {
-            _ResourceGroup = new ResourceGroup(
-                id: GetProperty<string>(resourceGroup, RESOURCEGROUP_RESOURCEID),
-                name: GetProperty<string>(resourceGroup, RESOURCEGROUP_RESOURCEGROUPNAME),
-                location: GetProperty<string>(resourceGroup, RESOURCEGROUP_LOCATION),
-                managedBy: GetProperty<string>(resourceGroup, RESOURCEGROUP_MANAGEDBY),
-                tags: GetProperty<Hashtable>(resourceGroup, RESOURCEGROUP_TAGS)
-            );
+            if (resourceGroup == null)
+                return;
+
+            _ResourceGroup = resourceGroup;
         }
 
-        public void Subscription(PSObject subscription)
+        public void Subscription(SubscriptionOption subscription)
         {
-            _Subscription = new Subscription(
-                subscriptionId: GetProperty<string>(subscription, SUBSCRIPTION_SUBSCRIPTIONID),
-                tenantId: GetProperty<string>(subscription, SUBSCRIPTION_TENANTID),
-                displayName: GetProperty<string>(subscription, SUBSCRIPTION_NAME)
-            );
+            if (subscription == null)
+                return;
+
+            _Subscription = subscription;
         }
 
         public void PassThru(bool passThru)
         {
             _PassThru = passThru;
-        }
-
-        private T GetProperty<T>(PSObject obj, string propertyName)
-        {
-            return null == obj.Properties[propertyName] ? default(T) : (T)obj.Properties[propertyName].Value;
         }
 
         protected override PipelineWriter GetOutput()
@@ -120,6 +108,10 @@ namespace PSRule.Rules.Azure.Pipeline
 
         public override IPipeline Build()
         {
+            _ResourceGroup = _ResourceGroup ?? Option.Configuration.ResourceGroup;
+            _Subscription = _Subscription ?? Option.Configuration.Subscription;
+
+            _ResourceGroup.SubscriptionId = _Subscription.SubscriptionId;
             return new TemplatePipeline(PrepareContext(), PrepareWriter(), _DeploymentName, _ResourceGroup, _Subscription);
         }
 
@@ -156,10 +148,10 @@ namespace PSRule.Rules.Azure.Pipeline
     internal sealed class TemplatePipeline : PipelineBase
     {
         private readonly string _DeploymentName;
-        private readonly ResourceGroup _ResourceGroup;
-        private readonly Subscription _Subscription;
+        private readonly ResourceGroupOption _ResourceGroup;
+        private readonly SubscriptionOption _Subscription;
 
-        internal TemplatePipeline(PipelineContext context, PipelineWriter writer, string deploymentName, ResourceGroup resourceGroup, Subscription subscription)
+        internal TemplatePipeline(PipelineContext context, PipelineWriter writer, string deploymentName, ResourceGroupOption resourceGroup, SubscriptionOption subscription)
             : base(context, writer)
         {
             _DeploymentName = deploymentName;

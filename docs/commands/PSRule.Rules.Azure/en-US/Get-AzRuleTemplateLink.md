@@ -22,12 +22,12 @@ Get-AzRuleTemplateLink [[-InputPath] <String[]>] [-SkipUnlinked] [[-Path] <Strin
 Gets a link between an Azure Resource Manager (ARM) parameter file and its referenced template file.
 Parameter files reference a template file by defining metadata.
 
-By default, when parameter files without a reference to a template are discover and error is raised.
+By default, when parameter files without a reference to a template are discovered an error is raised.
 
 To reference a template, set the `metadata.template` property to a file path.
 Referencing templates outside of the path specified with `-Path` is not permitted.
 
-For more information see the [about_PSRule_Azure_Metadata_Link] topic.
+For more information see the about_PSRule_Azure_Metadata_Link topic.
 
 ## EXAMPLES
 
@@ -110,3 +110,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[about_PSRule_Azure_Metadata_Link](../../../concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Metadata_Link.md)
