@@ -37,7 +37,7 @@ namespace PSRule.Rules.Azure.Pipeline
 
         public override IPipeline Build()
         {
-            return new TemplateLinkPipeline(PrepareContext(), PrepareWriter(), _BasePath, _SkipUnlinked);
+            return new TemplateLinkPipeline(PrepareContext(), _BasePath, _SkipUnlinked);
         }
     }
 
@@ -59,12 +59,12 @@ namespace PSRule.Rules.Azure.Pipeline
         private readonly bool _SkipUnlinked;
         private readonly PathBuilder _PathBuilder;
 
-        internal TemplateLinkPipeline(PipelineContext context, PipelineWriter writer, string basePath, bool skipUnlinked)
-            : base(context, writer)
+        internal TemplateLinkPipeline(PipelineContext context, string basePath, bool skipUnlinked)
+            : base(context)
         {
             _BasePath = PSRuleOption.GetRootedBasePath(basePath);
             _SkipUnlinked = skipUnlinked;
-            _PathBuilder = new PathBuilder(writer, basePath, DEFAULT_TEMPLATESEARCH_PATTERN);
+            _PathBuilder = new PathBuilder(context.Writer, basePath, DEFAULT_TEMPLATESEARCH_PATTERN);
         }
 
         public override void Process(PSObject sourceObject)
@@ -106,19 +106,19 @@ namespace PSRule.Rules.Azure.Pipeline
                 if (TryStringProperty(metadata, PROPERTYNAME_DESCRIPTION, out string description))
                     templateLink.Description = description;
 
-                Writer.WriteObject(templateLink, false);
+                Context.Writer.WriteObject(templateLink, false);
             }
             catch (InvalidOperationException ex)
             {
-                Writer.WriteError(ex, nameof(InvalidOperationException), ErrorCategory.InvalidOperation, parameterFile);
+                Context.Writer.WriteError(ex, nameof(InvalidOperationException), ErrorCategory.InvalidOperation, parameterFile);
             }
             catch (FileNotFoundException ex)
             {
-                Writer.WriteError(ex, nameof(FileNotFoundException), ErrorCategory.ObjectNotFound, parameterFile);
+                Context.Writer.WriteError(ex, nameof(FileNotFoundException), ErrorCategory.ObjectNotFound, parameterFile);
             }
             catch (PipelineException ex)
             {
-                Writer.WriteError(ex, nameof(PipelineException), ErrorCategory.WriteError, parameterFile);
+                Context.Writer.WriteError(ex, nameof(PipelineException), ErrorCategory.WriteError, parameterFile);
             }
         }
 
@@ -185,7 +185,7 @@ namespace PSRule.Rules.Azure.Pipeline
                 metadata = property;
                 return true;
             }
-            Writer.VerboseMetadataNotFound(parameterFile);
+            Context.Writer.VerboseMetadataNotFound(parameterFile);
             return false;
         }
 
@@ -195,7 +195,7 @@ namespace PSRule.Rules.Azure.Pipeline
             {
                 if (_SkipUnlinked)
                 {
-                    Writer.VerboseTemplateLinkNotFound(parameterFile);
+                    Context.Writer.VerboseTemplateLinkNotFound(parameterFile);
                 }
                 return false;
             }
@@ -210,7 +210,7 @@ namespace PSRule.Rules.Azure.Pipeline
 
             if (!File.Exists(templateFile))
             {
-                Writer.VerboseTemplateFileNotFound(templateFile);
+                Context.Writer.VerboseTemplateFileNotFound(templateFile);
                 throw new FileNotFoundException(
                     string.Format(CultureInfo.CurrentCulture, PSRuleResources.TemplateFileReferenceNotFound, parameterFile),
                     new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, PSRuleResources.TemplateFileNotFound, templateFile))

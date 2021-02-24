@@ -115,6 +115,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occured evaluating expression &apos;{0}&apos; line {1}. {2}.
+        /// </summary>
+        internal static string ExpressionEvaluateError {
+            get {
+                return ResourceManager.GetString("ExpressionEvaluateError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to parse expression. The expression may not be valid. Expression: &quot;{0}&quot;.
         /// </summary>
         internal static string ExpressionInvalid {

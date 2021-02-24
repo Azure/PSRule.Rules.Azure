@@ -3,6 +3,9 @@
 
 using Newtonsoft.Json.Linq;
 using System;
+using System.Globalization;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading;
 
 namespace PSRule.Rules.Azure.Data.Template
@@ -108,6 +111,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = i;
                 return true;
             }
+            if (o is long l)
+            {
+                value = (int)l;
+                return true;
+            }
             else if (o is JToken token && token.Type == JTokenType.Integer)
             {
                 value = token.Value<int>();
@@ -124,6 +132,12 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             if (TryInt(o, out value))
                 return true;
+
+            if (TryLong(o, out long lvalue))
+            {
+                value = (int)lvalue;
+                return true;
+            }
 
             if (TryString(o, out string svalue) && int.TryParse(svalue, out value))
                 return true;
@@ -170,6 +184,45 @@ namespace PSRule.Rules.Azure.Data.Template
 
             value = default(bool);
             return false;
+        }
+
+        internal static byte[] GetUnique(object[] args)
+        {
+            // Not actual hash algorithm used in Azure
+            using (var algorithm = SHA256.Create())
+            {
+                byte[] url_uid = new Guid("6ba7b811-9dad-11d1-80b4-00c04fd430c8").ToByteArray();
+                algorithm.TransformBlock(url_uid, 0, url_uid.Length, null, 0);
+
+                for (var i = 0; i < args.Length; i++)
+                {
+                    if (TryString(args[i], out string svalue))
+                    {
+                        var bvalue = Encoding.UTF8.GetBytes(svalue);
+                        if (i == args.Length - 1)
+                            algorithm.TransformFinalBlock(bvalue, 0, bvalue.Length);
+                        else
+                            algorithm.TransformBlock(bvalue, 0, bvalue.Length, null, 0);
+                    }
+                    else
+                    {
+                        throw new ArgumentException();
+                    }
+                }
+                return algorithm.Hash;
+            }
+        }
+
+        internal static string GetUniqueString(object[] args)
+        {
+            var hash = GetUnique(args);
+            var builder = new StringBuilder();
+            var culture = new CultureInfo("en-us");
+            for (int i = 0; i < hash.Length && i < 7; i++)
+            {
+                builder.Append(hash[i].ToString("x2", culture));
+            }
+            return builder.ToString();
         }
     }
 }

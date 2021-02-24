@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Web;
@@ -245,10 +244,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static object CreateArray(TemplateContext context, object[] args)
         {
-            if (CountArgs(args) < 1)
-                throw ArgumentsOutOfRange(nameof(CreateArray), args);
-
-            return new JArray(args);
+            return (args == null || args.Length == 0) ? new JArray() : new JArray(args);
         }
 
         /// <summary>
@@ -280,7 +276,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return avalue.GetValue(0);
             else if (args[0] is JArray jArray)
                 return jArray[0];
-            else if (args[0] is string svalue)
+            else if (ExpressionHelpers.TryString(args[0], out string svalue))
                 return svalue[0];
 
             return null;
@@ -353,7 +349,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return avalue.GetValue(avalue.Length - 1);
             else if (args[0] is JArray jArray)
                 return jArray[jArray.Count - 1];
-            else if (args[0] is string svalue)
+            else if (ExpressionHelpers.TryString(args[0], out string svalue))
                 return svalue[svalue.Length - 1];
 
             return null;
@@ -364,14 +360,14 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Length), args);
 
-            if (args[0] is string s)
-                return s.Length;
+            if (ExpressionHelpers.TryString(args[0], out string s))
+                return (long)s.Length;
             else if (args[0] is Array a)
-                return a.Length;
+                return (long)a.Length;
             else if (args[0] is JArray jArray)
-                return jArray.Count;
+                return (long)jArray.Count;
 
-            return args[0].GetType().GetProperties().Length;
+            return (long)args[0].GetType().GetProperties().Length;
         }
 
         internal static object Min(TemplateContext context, object[] args)
@@ -1037,7 +1033,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return false;
             else if (ExpressionHelpers.TryLong(args[0], out long i1) && ExpressionHelpers.TryLong(args[1], out long i2))
                 return i1 == i2;
-            else if (ExpressionHelpers.TryLong(args[0], out _) || ExpressionHelpers.TryLong(args[1], out _))
+            else if (ExpressionHelpers.TryLong(args[0], out long _) || ExpressionHelpers.TryLong(args[1], out long _))
                 return false;
 
             // Objects
@@ -1329,7 +1325,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) < 1)
                 throw ArgumentsOutOfRange(nameof(Guid), args);
 
-            var hash = GetUnique(args);
+            var hash = ExpressionHelpers.GetUnique(args);
             var guidBytes = new byte[16];
             System.Array.Copy(hash, 0, guidBytes, 0, 16);
             return new Guid(guidBytes).ToString();
@@ -1346,7 +1342,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!ExpressionHelpers.TryString(args[1], out string stringToFind))
                 throw new ArgumentException();
 
-            return stringToSearch.IndexOf(stringToFind, StringComparison.OrdinalIgnoreCase);
+            return (long)stringToSearch.IndexOf(stringToFind, StringComparison.OrdinalIgnoreCase);
         }
 
         internal static object LastIndexOf(TemplateContext context, object[] args)
@@ -1360,7 +1356,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!ExpressionHelpers.TryString(args[1], out string stringToFind))
                 throw new ArgumentException();
 
-            return stringToSearch.LastIndexOf(stringToFind, StringComparison.OrdinalIgnoreCase);
+            return (long)stringToSearch.LastIndexOf(stringToFind, StringComparison.OrdinalIgnoreCase);
         }
 
         internal static object NewGuid(TemplateContext context, object[] args)
@@ -1460,14 +1456,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) == 0)
                 throw ArgumentsOutOfRange(nameof(UniqueString), args);
 
-            var hash = GetUnique(args);
-            var builder = new StringBuilder();
-            var culture = new CultureInfo("en-us");
-            for (int i = 0; i < hash.Length && i < 7; i++)
-            {
-                builder.Append(hash[i].ToString("x2", culture));
-            }
-            return builder.ToString().Substring(0, 13);
+            return ExpressionHelpers.GetUniqueString(args).Substring(0, 13);
         }
 
         internal static object Uri(TemplateContext context, object[] args)
@@ -1549,6 +1538,11 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static int Compare(object left, object right)
         {
+            if (ExpressionHelpers.TryLong(left, out long longLeft) && ExpressionHelpers.TryLong(right, out long longRight))
+                return Comparer<long>.Default.Compare(longLeft, longRight);
+            else if (ExpressionHelpers.TryString(left, out string stringLeft) && ExpressionHelpers.TryString(right, out string stringRight))
+                return StringComparer.Ordinal.Compare(stringLeft, stringRight);
+
             return Comparer.Default.Compare(left, right);
         }
 
@@ -1629,33 +1623,6 @@ namespace PSRule.Rules.Azure.Data.Template
         private static int CountArgs(object[] args)
         {
             return args == null ? 0 : args.Length;
-        }
-
-        private static byte[] GetUnique(object[] args)
-        {
-            // Not actual hash algorithm used in Azure
-            using (var algorithm = SHA256.Create())
-            {
-                byte[] url_uid = new Guid("6ba7b811-9dad-11d1-80b4-00c04fd430c8").ToByteArray();
-                algorithm.TransformBlock(url_uid, 0, url_uid.Length, null, 0);
-
-                for (var i = 0; i < args.Length; i++)
-                {
-                    if (ExpressionHelpers.TryString(args[i], out string svalue))
-                    {
-                        var bvalue = Encoding.UTF8.GetBytes(svalue);
-                        if (i == args.Length - 1)
-                            algorithm.TransformFinalBlock(bvalue, 0, bvalue.Length);
-                        else
-                            algorithm.TransformBlock(bvalue, 0, bvalue.Length, null, 0);
-                    }
-                    else
-                    {
-                        throw new ArgumentException();
-                    }
-                }
-                return algorithm.Hash;
-            }
         }
 
         private static string TrimResourceType(string resourceType)

@@ -52,6 +52,13 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(resources);
         }
 
+        [Fact]
+        public void AdvancedTemplateParsing3()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.1.json"), null);
+            Assert.NotNull(resources);
+        }
+
         private static string GetSourcePath(string fileName)
         {
             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);

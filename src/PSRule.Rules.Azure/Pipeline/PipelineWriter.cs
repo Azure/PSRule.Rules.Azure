@@ -142,6 +142,16 @@ namespace PSRule.Rules.Azure.Pipeline
             _Writer.WriteDebug(debugRecord);
         }
 
+        public void WriteDebug(string format, params object[] args)
+        {
+            if (_Writer == null || string.IsNullOrEmpty(format))
+                return;
+
+            var message = args == null || args.Length == 0 ? format : string.Format(format, args);
+            var debugRecord = new DebugRecord(message);
+            _Writer.WriteDebug(debugRecord);
+        }
+
         public virtual bool ShouldWriteDebug()
         {
             return _Writer != null && _Writer.ShouldWriteDebug();
