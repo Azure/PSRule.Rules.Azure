@@ -7,11 +7,14 @@ namespace PSRule.Rules.Azure.Pipeline
 {
     internal sealed class PipelineContext
     {
-        internal readonly PSRuleOption Option;
-
-        public PipelineContext(PSRuleOption option)
+        internal PipelineContext(PSRuleOption option, PipelineWriter writer)
         {
             Option = option;
+            Writer = writer;
         }
+
+        public PSRuleOption Option { get; }
+
+        public PipelineWriter Writer { get; }
     }
 }

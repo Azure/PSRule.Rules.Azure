@@ -135,6 +135,9 @@
   <data name="ArgumentsOutOfRange" xml:space="preserve">
     <value>The number of arguments '{1}' is not within the allowed range for '{0}'.</value>
   </data>
+  <data name="ExpressionEvaluateError" xml:space="preserve">
+    <value>An error occured evaluating expression '{0}' line {1}. {2}</value>
+  </data>
   <data name="ExpressionInvalid" xml:space="preserve">
     <value>Failed to parse expression. The expression may not be valid. Expression: "{0}"</value>
     <comment>Occurs when an expression fails to be parsed.</comment>

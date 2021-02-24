@@ -112,7 +112,7 @@ namespace PSRule.Rules.Azure.Pipeline
             _Subscription = _Subscription ?? Option.Configuration.Subscription;
 
             _ResourceGroup.SubscriptionId = _Subscription.SubscriptionId;
-            return new TemplatePipeline(PrepareContext(), PrepareWriter(), _DeploymentName, _ResourceGroup, _Subscription);
+            return new TemplatePipeline(PrepareContext(), _DeploymentName, _ResourceGroup, _Subscription);
         }
 
         /// <summary>
@@ -151,8 +151,8 @@ namespace PSRule.Rules.Azure.Pipeline
         private readonly ResourceGroupOption _ResourceGroup;
         private readonly SubscriptionOption _Subscription;
 
-        internal TemplatePipeline(PipelineContext context, PipelineWriter writer, string deploymentName, ResourceGroupOption resourceGroup, SubscriptionOption subscription)
-            : base(context, writer)
+        internal TemplatePipeline(PipelineContext context, string deploymentName, ResourceGroupOption resourceGroup, SubscriptionOption subscription)
+            : base(context)
         {
             _DeploymentName = deploymentName;
             _ResourceGroup = resourceGroup;
@@ -175,11 +175,11 @@ namespace PSRule.Rules.Azure.Pipeline
         {
             try
             {
-                Writer.WriteObject(ProcessTemplate(templateFile, parameterFile), true);
+                Context.Writer.WriteObject(ProcessTemplate(templateFile, parameterFile), true);
             }
             catch (PipelineException ex)
             {
-                Writer.WriteError(ex, nameof(PipelineException), ErrorCategory.InvalidData, parameterFile);
+                Context.Writer.WriteError(ex, nameof(PipelineException), ErrorCategory.InvalidData, parameterFile);
             }
             catch
             {
@@ -193,19 +193,26 @@ namespace PSRule.Rules.Azure.Pipeline
             if (!File.Exists(rootedTemplateFile))
                 throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateFileNotFound, rootedTemplateFile), rootedTemplateFile);
 
-            var templateObject = ReadFile<JObject>(rootedTemplateFile);
+            var templateObject = ReadFile(rootedTemplateFile);
             var visitor = new RuleDataExportVisitor();
 
             // Load context
-            var context = new TemplateVisitor.TemplateContext(_Subscription, _ResourceGroup);
+            var context = new TemplateVisitor.TemplateContext(Context, _Subscription, _ResourceGroup);
             if (!string.IsNullOrEmpty(parameterFile))
             {
                 var rootedParameterFile = PSRuleOption.GetRootedPath(parameterFile);
                 if (!File.Exists(rootedParameterFile))
                     throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ParameterFileNotFound, rootedParameterFile), rootedParameterFile);
 
-                var parametersObject = ReadFile<JObject>(rootedParameterFile);
-                context.Load(parametersObject);
+                try
+                {
+                    var parametersObject = ReadFile(rootedParameterFile);
+                    context.Load(parametersObject);
+                }
+                catch (Exception inner)
+                {
+                    throw new TemplateReadException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateExpandInvalid, templateFile, parameterFile, inner.Message), inner, templateFile, parameterFile);
+                }
             }
 
             // Process
@@ -228,9 +235,15 @@ namespace PSRule.Rules.Azure.Pipeline
             return results.ToArray();
         }
 
-        private static T ReadFile<T>(string path)
+        private static JObject ReadFile(string path)
         {
-            return JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+            using (var stream = new StreamReader(path))
+            {
+                using (var reader = new JsonTextReader(stream))
+                {
+                    return JObject.Load(reader);
+                }
+            }
         }
     }
 }

@@ -230,6 +230,44 @@ namespace PSRule.Rules.Azure.Data.Template
     }
 
     [Serializable]
+    public sealed class ExpressionEvaluationException : TemplateException
+    {
+        public ExpressionEvaluationException()
+        {
+        }
+
+        public ExpressionEvaluationException(string message)
+            : base(message) { }
+
+        public ExpressionEvaluationException(string message, Exception innerException)
+            : base(message, innerException) { }
+
+        internal ExpressionEvaluationException(string expression, string message)
+            : base(message)
+        {
+            Expression = expression;
+        }
+
+        internal ExpressionEvaluationException(string expression, string message, Exception innerException)
+            : base(message, innerException)
+        {
+            Expression = expression;
+        }
+
+        private ExpressionEvaluationException(SerializationInfo info, StreamingContext context)
+            : base(info, context) { }
+
+        public string Expression { get; }
+
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null) throw new ArgumentNullException(nameof(info));
+            base.GetObjectData(info, context);
+        }
+    }
+
+    [Serializable]
     public sealed class ExpressionArgumentException : ExpressionException
     {
         public ExpressionArgumentException()

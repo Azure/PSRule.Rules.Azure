@@ -7,6 +7,10 @@ What's changed since pre-release v1.1.0-B2102023:
 - General improvements:
   - Added support for matching template by name. [#661](https://github.com/microsoft/PSRule.Rules.Azure/issues/661)
     - `Get-AzRuleTemplateLink` discovers `<templateName>.json` from `<templateName>.parameters.json`.
+- Bug fixes:
+  - Fixed copy loop value does not fall within the expected range. [#664](https://github.com/microsoft/PSRule.Rules.Azure/issues/664)
+  - Fixed template comparison functions handling of large integer values. [#666](https://github.com/microsoft/PSRule.Rules.Azure/issues/666)
+  - Fixed handling of `createArray` function with no arguments. [#667](https://github.com/microsoft/PSRule.Rules.Azure/issues/667)
 
 ## v1.1.0-B2102023 (pre-release)
 
