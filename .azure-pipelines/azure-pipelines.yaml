@@ -161,10 +161,10 @@ stages:
 
   - template: jobs/testContainer.yaml
     parameters:
-      name: ps_7_1_ubuntu_18_04
-      displayName: 'PowerShell 7.1 - ubuntu-18.04'
+      name: ps_7_1_ubuntu_20_04
+      displayName: 'PowerShell 7.1 - ubuntu-20.04'
       imageName: mcr.microsoft.com/powershell
-      imageTag: 7.1.0-ubuntu-18.04
+      imageTag: 7.1.2-ubuntu-20.04
 
   - template: jobs/testContainer.yaml
     parameters:
