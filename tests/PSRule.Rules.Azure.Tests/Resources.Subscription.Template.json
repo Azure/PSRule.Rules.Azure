@@ -1,0 +1,116 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "name": "Subscription",
+        "description": "Configures an Azure Subscription."
+    },
+    "parameters": {
+        "roleAssignments": {
+            "type": "array",
+            "defaultValue": [
+            ],
+            "metadata": {
+                "description": "Optional. Configures additional role assignments on the Subscription.",
+                "example": [
+                    {
+                        "principalId": "00000000-0000-0000-0000-000000000000",
+                        "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+                        "description": "Contributor for Automation Account RunAs account."
+                    }
+                ]
+            }
+        },
+        "workspaceId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Optional. Configures forwarding events from the Activity Log to the specified workspace."
+            }
+        },
+        "tags": {
+            "type": "object",
+            "defaultValue": {
+            },
+            "metadata": {
+                "description": "Optional. Tags to apply to the Subscription.",
+                "example": {
+                    "env": "prod"
+                }
+            }
+        }
+    },
+    "resources": [
+        {
+            "comments": "Configures role-based access control for the subscription",
+            "condition": "[not(empty(parameters('roleAssignments')))]",
+            "name": "[guid(if(equals(length(parameters('roleAssignments')), 0), 'empty', concat(parameters('roleAssignments')[copyIndex('assignmentIndex')].roleDefinitionId, '-', parameters('roleAssignments')[copyIndex('assignmentIndex')].principalId)))]",
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2020-04-01-preview",
+            "copy": {
+                "mode": "Parallel",
+                "count": "[if(equals(length(parameters('roleAssignments')), 0), 1, length(parameters('roleAssignments')))]",
+                "name": "assignmentIndex"
+            },
+            "properties": {
+                "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', parameters('roleAssignments')[copyIndex('assignmentIndex')].roleDefinitionId)]",
+                "principalId": "[parameters('roleAssignments')[copyIndex('assignmentIndex')].principalId]",
+                "scope": "[subscription().id]",
+                "description": "[parameters('roleAssignments')[copyIndex('assignmentIndex')].description]"
+            }
+        },
+        {
+            "comments": "Configures tags on the subscription",
+            "name": "default",
+            "type": "Microsoft.Resources/tags",
+            "apiVersion": "2020-06-01",
+            "properties": {
+                "tags": "[parameters('tags')]"
+            }
+        },
+        {
+            "comments": "Configures forwarding for Acitvity Logs",
+            "condition": "[not(empty(parameters('workspaceId')))]",
+            "name": "monitor",
+            "type": "microsoft.insights/diagnosticSettings",
+            "apiVersion": "2017-05-01-preview",
+            "properties": {
+                "workspaceId": "[parameters('workspaceId')]",
+                "logs": [
+                    {
+                        "category": "Administrative",
+                        "enabled": false
+                    },
+                    {
+                        "category": "Security",
+                        "enabled": false
+                    },
+                    {
+                        "category": "ServiceHealth",
+                        "enabled": true
+                    },
+                    {
+                        "category": "Alert",
+                        "enabled": false
+                    },
+                    {
+                        "category": "Recommendation",
+                        "enabled": true
+                    },
+                    {
+                        "category": "Policy",
+                        "enabled": false
+                    },
+                    {
+                        "category": "Autoscale",
+                        "enabled": false
+                    },
+                    {
+                        "category": "ResourceHealth",
+                        "enabled": true
+                    }
+                ]
+            }
+        }
+    ]
+}

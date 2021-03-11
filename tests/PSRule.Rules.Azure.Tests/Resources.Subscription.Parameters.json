@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "template": "./Resources.Subscription.Template.json"
+    },
+    "parameters": {
+        "roleAssignments": {
+            "value": [
+                {
+                    "principalId": "00000000-0000-0000-0000-000000000000",
+                    "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+                    "description": "Contributor for Automation Account RunAs account."
+                }
+            ]
+        }
+    }
+}

@@ -471,6 +471,11 @@ Describe 'Get-AzRuleTemplateLink' -Tag 'Cmdlet', 'Get-AzRuleTemplateLink' {
                 (Join-Path -Path $templateScanPath -ChildPath 'Resources.Parameters.json')
                 (Join-Path -Path $examplePath -ChildPath 'Resources.Parameters.json')
             );
+
+            # Reads subscriptionParameters.json
+            $result = @(Get-AzRuleTemplateLink -Path $here -InputPath './Resources.Subscription.Parameters.json');
+            $result | Should -Not -BeNullOrEmpty;
+            $result.Length | Should -Be 1;
         }
 
         It 'Handles exceptions' {

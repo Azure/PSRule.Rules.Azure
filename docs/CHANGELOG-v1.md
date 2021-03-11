@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+What's changed since v1.1.0:
+
+- Bug fixes:
+  - Fixes support for parameter file schemas. [#674](https://github.com/microsoft/PSRule.Rules.Azure/issues/674)
+
 ## v1.1.0
 
 What's changed since v1.0.0:

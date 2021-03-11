@@ -82,11 +82,14 @@ namespace PSRule.Rules.Azure.Pipeline
         {
             try
             {
+                // Check that the JSON file is an ARM template parameter file
                 var rootedParameterFile = PSRuleOption.GetRootedPath(parameterFile);
+                var parameterObject = ReadFile<JObject>(rootedParameterFile);
+                if (parameterObject == null || !IsParameterFile(parameterObject))
+                    return;
 
                 // Check if metadata property exists
-                string templateFile = null;
-                if (!((TryMetadata(rootedParameterFile, out JObject metadata) && TryTemplateFile(metadata, rootedParameterFile, out templateFile)) || TryTemplateByName(parameterFile, out templateFile)))
+                if (!((TryMetadata(parameterObject, rootedParameterFile, out JObject metadata, out string templateFile)) || TryTemplateByName(parameterFile, out templateFile)))
                 {
                     if (metadata == null && !_SkipUnlinked)
                         throw new InvalidTemplateLinkException(string.Format(CultureInfo.CurrentCulture, PSRuleResources.MetadataNotFound, parameterFile));
@@ -168,22 +171,25 @@ namespace PSRule.Rules.Azure.Pipeline
 
             return StringComparer.OrdinalIgnoreCase.Equals(schemaUri.Host, "schema.management.azure.com") &&
                 schemaUri.PathAndQuery.StartsWith("/schemas/", StringComparison.OrdinalIgnoreCase) &&
-                schemaUri.PathAndQuery.EndsWith("/deploymentParameters.json", StringComparison.OrdinalIgnoreCase);
+                IsDeploymentParameterFile(schemaUri);
         }
 
-        private bool TryMetadata(string parameterFile, out JObject metadata)
+        private static bool IsDeploymentParameterFile(Uri schemaUri)
         {
-            var parameterObject = ReadFile<JObject>(parameterFile);
+            return schemaUri.PathAndQuery.EndsWith("/deploymentParameters.json", StringComparison.OrdinalIgnoreCase) ||
+                schemaUri.PathAndQuery.EndsWith("/subscriptionDeploymentParameters.json", StringComparison.OrdinalIgnoreCase) ||
+                schemaUri.PathAndQuery.EndsWith("/managementGroupDeploymentParameters.json", StringComparison.OrdinalIgnoreCase) ||
+                schemaUri.PathAndQuery.EndsWith("/tenantDeploymentParameters.json", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private bool TryMetadata(JObject parameterObject, string parameterFile, out JObject metadata, out string templateFile)
+        {
             metadata = null;
-
-            // Check that the JSON file is an ARM template parameter file
-            if (parameterObject == null || !IsParameterFile(parameterObject))
-                return false;
-
+            templateFile = null;
             if (parameterObject.TryGetValue(PROPERTYNAME_METADATA, out JToken metadataToken) && metadataToken is JObject property)
             {
                 metadata = property;
-                return true;
+                return TryTemplateFile(metadata, parameterFile, out templateFile);
             }
             Context.Writer.VerboseMetadataNotFound(parameterFile);
             return false;
@@ -194,9 +200,8 @@ namespace PSRule.Rules.Azure.Pipeline
             if (!TryStringProperty(metadata, PROPERTYNAME_TEMPLATE, out templateFile))
             {
                 if (_SkipUnlinked)
-                {
                     Context.Writer.VerboseTemplateLinkNotFound(parameterFile);
-                }
+
                 return false;
             }
 
