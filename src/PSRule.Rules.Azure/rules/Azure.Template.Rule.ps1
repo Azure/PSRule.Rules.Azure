@@ -275,10 +275,17 @@ function global:IsParameterFile {
                 # Https
                 "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json`#"
                 "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json`#"
+                "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json`#"
+                "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json`#"
+                "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentParameters.json`#"
+                "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentParameters.json`#"
 
                 # Http
                 "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json`#"
                 "http://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json`#"
+                "http://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json`#"
+                "http://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentParameters.json`#"
+                "http://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentParameters.json`#"
             )
             return $jsonObject.'$schema' -in $schemas;
         }
