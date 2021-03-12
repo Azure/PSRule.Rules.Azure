@@ -66,6 +66,51 @@ namespace PSRule.Rules.Azure.Configuration
             }
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is ResourceGroupOption option && Equals(option);
+        }
+
+        public bool Equals(ResourceGroupOption other)
+        {
+            return other != null &&
+                SubscriptionId == other.SubscriptionId &&
+                Name == other.Name &&
+                Location == other.Location &&
+                ManagedBy == other.ManagedBy &&
+                Tags == other.Tags &&
+                Properties == other.Properties;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked // Overflow is fine
+            {
+                int hash = 17;
+                hash = hash * 23 + (SubscriptionId != null ? SubscriptionId.GetHashCode() : 0);
+                hash = hash * 23 + (Name != null ? Name.GetHashCode() : 0);
+                hash = hash * 23 + (Location != null ? Location.GetHashCode() : 0);
+                hash = hash * 23 + (ManagedBy != null ? ManagedBy.GetHashCode() : 0);
+                hash = hash * 23 + (Tags != null ? Tags.GetHashCode() : 0);
+                hash = hash * 23 + (Properties != null ? Properties.GetHashCode() : 0);
+                return hash;
+            }
+        }
+
+        internal static ResourceGroupOption Combine(ResourceGroupOption o1, ResourceGroupOption o2)
+        {
+            var result = new ResourceGroupOption()
+            {
+                SubscriptionId = o1.SubscriptionId ?? o2.SubscriptionId,
+                Name = o1.Name ?? o2.Name,
+                Location = o1.Location ?? o2.Location,
+                ManagedBy = o1.ManagedBy ?? o2.ManagedBy,
+                Tags = o1.Tags ?? o2.Tags,
+                Properties = o1.Properties ?? o2.Properties,
+            };
+            return result;
+        }
+
         /// <summary>
         /// The unique GUID associated with the subscription.
         /// </summary>

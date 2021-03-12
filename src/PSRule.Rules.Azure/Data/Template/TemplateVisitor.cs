@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Management.Automation;
 using System.Threading;
 
 namespace PSRule.Rules.Azure.Data.Template
@@ -58,8 +57,8 @@ namespace PSRule.Rules.Azure.Data.Template
             private readonly PipelineContext _Context;
             private readonly Stack<JObject> _Deployment;
             private JObject _Parameters;
-            private readonly Dictionary<string, ResourceProvider> _Providers;
-            private readonly Dictionary<string, CloudEnvironment> _Environments;
+            private Dictionary<string, ResourceProvider> _Providers;
+            private Dictionary<string, CloudEnvironment> _Environments;
 
             internal TemplateContext()
             {
@@ -70,8 +69,6 @@ namespace PSRule.Rules.Azure.Data.Template
                 ResourceGroup = ResourceGroupOption.Default;
                 Subscription = SubscriptionOption.Default;
                 _Deployment = new Stack<JObject>();
-                _Providers = ReadProviders();
-                _Environments = ReadEnvironments();
             }
 
             internal TemplateContext(PipelineContext context, SubscriptionOption subscription, ResourceGroupOption resourceGroup)
@@ -320,6 +317,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
             internal ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
             {
+                if (_Providers == null)
+                    _Providers = ReadProviders();
+
                 if (_Providers == null || _Providers.Count == 0 || !_Providers.TryGetValue(providerNamespace, out ResourceProvider provider))
                     return Array.Empty<ResourceProviderType>();
 
@@ -334,6 +334,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
             internal CloudEnvironment GetEnvironment()
             {
+                if (_Environments == null)
+                    _Environments = ReadEnvironments();
+
                 return _Environments[CLOUD_PUBLIC];
             }
 
@@ -367,7 +370,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public override object GetValue(TemplateContext context)
             {
-                return TemplateVisitor.ExpandProperty<T>(context, _Value);
+                return ExpandProperty<T>(context, _Value);
             }
         }
 
@@ -382,7 +385,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public override object GetValue(TemplateContext context)
             {
-                return TemplateVisitor.ResolveVariable(context, _Value);
+                return ResolveVariable(context, _Value);
             }
         }
 
@@ -713,10 +716,7 @@ namespace PSRule.Rules.Azure.Data.Template
                         jObject[copyIndex.Name] = jArray;
                         context.CopyIndex.Pop();
                     }
-                    else
-                    {
-                        obj[propertyName] = ResolveToken(context, jObject);
-                    }
+                    obj[propertyName] = ResolveToken(context, jObject);
                 }
             }
             else if (value is JArray jArray)

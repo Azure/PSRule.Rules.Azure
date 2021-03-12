@@ -5,3 +5,4 @@ out/
 **/bin/
 **/obj/
 *.zip
+*.diagsession
