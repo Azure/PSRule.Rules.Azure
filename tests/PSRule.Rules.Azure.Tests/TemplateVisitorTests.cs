@@ -18,22 +18,23 @@ namespace PSRule.Rules.Azure
         public void ResolveTemplateTest()
         {
             var resources = ProcessTemplate(GetSourcePath("Resources.Template.json"), GetSourcePath("Resources.Parameters.json"));
+            Assert.NotNull(resources);
             Assert.Equal(9, resources.Length);
 
             var actual1 = resources[0];
-            Assert.Equal("vnet-001", actual1["name"]);
-            Assert.Equal("10.1.0.0/24", actual1["properties"]["addressSpace"]["addressPrefixes"][0]);
+            Assert.Equal("vnet-001", actual1["name"].Value<string>());
+            Assert.Equal("10.1.0.0/24", actual1["properties"]["addressSpace"]["addressPrefixes"][0].Value<string>());
             Assert.Equal(3, actual1["properties"]["subnets"].Value<JArray>().Count);
-            Assert.Equal("10.1.0.32/28", actual1["properties"]["subnets"][1]["properties"]["addressPrefix"]);
+            Assert.Equal("10.1.0.32/28", actual1["properties"]["subnets"][1]["properties"]["addressPrefix"].Value<string>());
             Assert.Equal("Networking", actual1["tags"]["role"].Value<string>());
             Assert.Equal("region-A", actual1["location"].Value<string>());
 
             var actual2 = resources[1];
-            Assert.Equal("vnet-001/subnet2", actual2["name"]);
-            Assert.Equal("vnetDelegation", actual2["properties"]["delegations"][0]["name"]);
+            Assert.Equal("vnet-001/subnet2", actual2["name"].Value<string>());
+            Assert.Equal("vnetDelegation", actual2["properties"]["delegations"][0]["name"].Value<string>());
 
             var actual3 = resources[2];
-            Assert.Equal("vnet-001/subnet1/Microsoft.Authorization/924b5b06-fe70-9ab7-03f4-14671370765e", actual3["name"]);
+            Assert.Equal("vnet-001/subnet1/Microsoft.Authorization/924b5b06-fe70-9ab7-03f4-14671370765e", actual3["name"].Value<string>());
         }
 
         [Fact]
@@ -41,8 +42,8 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Resources.FrontDoor.Template.json"), null);
             Assert.NotNull(resources);
-            Assert.Equal("my-frontdoor", resources[0]["properties"]["frontendEndpoints"][0]["name"]);
-            Assert.Equal("my-frontdoor.azurefd.net", resources[0]["properties"]["frontendEndpoints"][0]["properties"]["hostName"]);
+            Assert.Equal("my-frontdoor", resources[0]["properties"]["frontendEndpoints"][0]["name"].Value<string>());
+            Assert.Equal("my-frontdoor.azurefd.net", resources[0]["properties"]["frontendEndpoints"][0]["properties"]["hostName"].Value<string>());
         }
 
         [Fact]
@@ -57,6 +58,25 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Template.Parsing.1.json"), null);
             Assert.NotNull(resources);
+        }
+
+        [Fact]
+        public void AdvancedTemplateParsing4()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.2.json"), null);
+            Assert.NotNull(resources);
+            Assert.Single(resources);
+
+            var actual1 = resources[0];
+            Assert.Equal("defaultvalue", actual1["name"].Value<string>());
+            Assert.Equal("eastus", actual1["location"].Value<string>());
+            Assert.False(actual1["properties"]["enabledForDeployment"].Value<bool>());
+            Assert.False(actual1["properties"]["enabledForTemplateDeployment"].Value<bool>());
+            Assert.False(actual1["properties"]["enabledForDiskEncryption"].Value<bool>());
+            Assert.Equal(2, actual1["properties"]["accessPolicies"].Value<JArray>().Count);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual1["properties"]["tenantId"].Value<string>());
+            Assert.True(actual1["properties"]["enableSoftDelete"].Value<bool>());
+            Assert.True(actual1["properties"]["enablePurgeProtection"].Value<bool>());
         }
 
         private static string GetSourcePath(string fileName)

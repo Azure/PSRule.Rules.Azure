@@ -2,12 +2,19 @@
 
 ## Unreleased
 
+What's changed since v1.1.1:
+
+- Bug fixes:
+  - Fixed copy peer property resolve. [#677](https://github.com/microsoft/PSRule.Rules.Azure/issues/677)
+  - Fixed partial resource group or subscription object not populating. [#678](https://github.com/microsoft/PSRule.Rules.Azure/issues/678)
+  - Fixed lazy loading of environment and resource providers. [#679](https://github.com/microsoft/PSRule.Rules.Azure/issues/679)
+
 ## v1.1.1
 
 What's changed since v1.1.0:
 
 - Bug fixes:
-  - Fixes support for parameter file schemas. [#674](https://github.com/microsoft/PSRule.Rules.Azure/issues/674)
+  - Fixed support for parameter file schemas. [#674](https://github.com/microsoft/PSRule.Rules.Azure/issues/674)
 
 ## v1.1.0
 

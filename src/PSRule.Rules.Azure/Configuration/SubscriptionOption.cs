@@ -42,6 +42,45 @@ namespace PSRule.Rules.Azure.Configuration
             State = state ?? DEFAULT_STATE;
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is SubscriptionOption option && Equals(option);
+        }
+
+        public bool Equals(SubscriptionOption other)
+        {
+            return other != null &&
+                SubscriptionId == other.SubscriptionId &&
+                TenantId == other.TenantId &&
+                DisplayName == other.DisplayName &&
+                State == other.State;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked // Overflow is fine
+            {
+                int hash = 17;
+                hash = hash * 23 + (SubscriptionId != null ? SubscriptionId.GetHashCode() : 0);
+                hash = hash * 23 + (TenantId != null ? TenantId.GetHashCode() : 0);
+                hash = hash * 23 + (DisplayName != null ? DisplayName.GetHashCode() : 0);
+                hash = hash * 23 + (State != null ? State.GetHashCode() : 0);
+                return hash;
+            }
+        }
+
+        internal static SubscriptionOption Combine(SubscriptionOption o1, SubscriptionOption o2)
+        {
+            var result = new SubscriptionOption()
+            {
+                SubscriptionId = o1.SubscriptionId ?? o2.SubscriptionId,
+                TenantId = o1.TenantId ?? o2.TenantId,
+                DisplayName = o1.DisplayName ?? o2.DisplayName,
+                State = o1.State ?? o2.State,
+            };
+            return result;
+        }
+
         /// <summary>
         /// A unique identifier for the subscription.
         /// </summary>

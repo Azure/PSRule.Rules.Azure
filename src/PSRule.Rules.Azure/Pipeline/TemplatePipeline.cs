@@ -108,9 +108,8 @@ namespace PSRule.Rules.Azure.Pipeline
 
         public override IPipeline Build()
         {
-            _ResourceGroup = _ResourceGroup ?? Option.Configuration.ResourceGroup;
-            _Subscription = _Subscription ?? Option.Configuration.Subscription;
-
+            _ResourceGroup = ResourceGroupOption.Combine(_ResourceGroup ?? Option.Configuration.ResourceGroup, ResourceGroupOption.Default);
+            _Subscription = SubscriptionOption.Combine(_Subscription ?? Option.Configuration.Subscription, SubscriptionOption.Default);
             _ResourceGroup.SubscriptionId = _Subscription.SubscriptionId;
             return new TemplatePipeline(PrepareContext(), _DeploymentName, _ResourceGroup, _Subscription);
         }
