@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+What's changed since v1.1.2:
+
+- Bug fixes:
+  - Fixed parsing of property names for functions across multiple lines. [#683](https://github.com/microsoft/PSRule.Rules.Azure/issues/683)
+
 ## v1.1.2
 
 What's changed since v1.1.1:
