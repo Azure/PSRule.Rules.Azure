@@ -26,10 +26,7 @@ namespace PSRule.Rules.Azure.Data.Template
         // The maximum length of a template expression
         private const int MaxLength = 24576;
 
-        private const char Whitespace = ' ';
-
         private const char Backslash = '\\';
-
         private const char Apostrophe = '\'';
         private const char Comma = ',';
         private const char Period = '.';
@@ -39,7 +36,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const char BracketClose = ']';
         private readonly static char[] FunctionNameStopCharacter = new char[] { '(', ']', '[', ')', '\'', ' ', ',' };
         private readonly static char[] StringStopCharacters = new char[] { '\'' };
-        private readonly static char[] PropertyStopCharacters = new char[] { '(', ']', '[', ',', ')', ' ', '\'', '.' };
+        private readonly static char[] PropertyStopCharacters = new char[] { '(', ']', '[', ',', ')', ' ', '\'', '.', '\r', '\n' };
 
         internal ExpressionStream(string expression)
         {

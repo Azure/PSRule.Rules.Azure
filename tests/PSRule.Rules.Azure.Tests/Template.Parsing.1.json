@@ -32,7 +32,9 @@
                         "name": "loop1",
                         "count": "[length(parameters('propertyArray'))]",
                         "input": {
-                            "key1": "[parameters('propertyArray')[copyIndex('loop1')].name]"
+                            "key1": "[
+                                parameters('propertyArray')[copyIndex('loop1')].name
+                            ]"
                         }
                     },
                     {
@@ -46,7 +48,9 @@
                         "name": "loop3",
                         "count": "[length(parameters('propertyArray'))]",
                         "input": {
-                            "key1": "[parameters('propertyArray')[copyIndex('loop3')].name]"
+                            "key1": "[
+                                parameters('propertyArray')[copyIndex('loop3')].name
+                            ]"
                         }
                     },
                     {

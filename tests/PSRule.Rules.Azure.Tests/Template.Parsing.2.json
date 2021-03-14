@@ -113,7 +113,9 @@
         "defaultAccessPolicies": [
             {
                 "objectId": "00000000-0000-0000-0000-000000000000",
-                "tenantId": "[subscription().tenantId]",
+                "tenantId": "[
+                    subscription().tenantId
+                ]",
                 "permissions": {
                     "secrets": [
                         "Get",
