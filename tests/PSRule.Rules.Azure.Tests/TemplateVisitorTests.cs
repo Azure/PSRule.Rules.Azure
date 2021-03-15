@@ -94,6 +94,19 @@ namespace PSRule.Rules.Azure
             Assert.Equal("NetworkWatcherRG", actual1["tags"]["resourceGroup"].Value<string>());
         }
 
+        [Fact]
+        public void AdvancedTemplateParsing6()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.4.json"), null);
+            Assert.NotNull(resources);
+            Assert.Single(resources);
+
+            var actual1 = resources[0];
+            Assert.Equal("Hello world", actual1["properties"]["keyString"].Value<string>());
+            Assert.Equal("world", actual1["properties"]["keyObject"]["message"].Value<string>());
+            Assert.Equal("Hello world", actual1["properties"]["keyObject"]["value"].Value<string>());
+        }
+
         private static string GetSourcePath(string fileName)
         {
             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);

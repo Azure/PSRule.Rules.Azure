@@ -16,6 +16,9 @@ param (
     [Switch]$CodeCoverage = $False,
 
     [Parameter(Mandatory = $False)]
+    [Switch]$Benchmark = $False,
+
+    [Parameter(Mandatory = $False)]
     [String]$ArtifactPath = (Join-Path -Path $PWD -ChildPath out/modules),
 
     [Parameter(Mandatory = $False)]
@@ -369,6 +372,12 @@ task BuildHelp BuildModule, PlatyPS, {
 task ScaffoldHelp Build, BuildRuleDocs, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     Update-MarkdownHelp -Path '.\docs\commands\PSRule.Rules.Azure\en-US';
+}
+
+task Benchmark {
+    if ($Benchmark -or $BuildTask -eq 'Benchmark') {
+        dotnet run -p src/PSRule.Rules.Azure.Benchmark -f netcoreapp3.1 -c Release -- benchmark --output $PWD;
+    }
 }
 
 task ExportProviders {

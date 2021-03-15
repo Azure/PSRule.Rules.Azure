@@ -4,5 +4,8 @@ reports/
 out/
 **/bin/
 **/obj/
+BenchmarkDotNet.Artifacts/
+results/
 *.zip
 *.diagsession
+*.log

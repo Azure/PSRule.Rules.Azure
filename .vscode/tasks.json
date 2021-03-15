@@ -86,6 +86,16 @@
             "type": "shell",
             "command": "Invoke-Build ExportData",
             "problemMatcher": []
+        },
+        {
+            "label": "benchmark",
+            "type": "shell",
+            "command": "Invoke-Build Benchmark",
+            "problemMatcher": [],
+            "presentation": {
+                "clear": true,
+                "panel": "dedicated"
+            }
         }
     ]
 }

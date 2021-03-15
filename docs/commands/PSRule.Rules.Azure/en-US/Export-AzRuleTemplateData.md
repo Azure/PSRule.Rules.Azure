@@ -56,7 +56,7 @@ Currently the following limitations apply:
 - The `environment` template function always returns values for Azure public cloud.
 - References to Key Vault secrets are not expanded.
 A placeholder value is used instead.
-- Multi-line strings and user-defined functions are not supported.
+- Multi-line strings are not supported.
 
 ## EXAMPLES
 

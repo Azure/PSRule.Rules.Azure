@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+What's changed since v1.1.4:
+
+- General improvements:
+  - Added support for user defined functions in templates. [#682](https://github.com/microsoft/PSRule.Rules.Azure/issues/682)
+
 ## v1.1.4
 
 What's changed since v1.1.3:
