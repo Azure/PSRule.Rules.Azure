@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v1.2.0-B2103024 (pre-release)
+
 What's changed since v1.1.4:
 
 - General improvements:
