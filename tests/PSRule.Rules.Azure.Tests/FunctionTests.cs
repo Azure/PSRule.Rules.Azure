@@ -968,6 +968,38 @@ namespace PSRule.Rules.Azure
 
         [Fact]
         [Trait(TRAIT, TRAIT_NUMERIC)]
+        public void CopyIndex()
+        {
+            var context = GetContext();
+            var copy = new TemplateContext.CopyIndexState
+            {
+                Name = "test1",
+                Count = 5
+            };
+            context.CopyIndex.Push(copy);
+            copy.Next();
+            
+            // Integer
+            var actual1 = (int)Functions.CopyIndex(context, new object[] { (long)3 });
+            var actual2 = (int)Functions.CopyIndex(context, new object[] { new JValue(3) });
+            Assert.Equal(3, actual1);
+            Assert.Equal(3, actual2);
+
+            // String + Integer
+            var actual3 = (int)Functions.CopyIndex(context, new object[] { "test1", 3 });
+            var actual4 = (int)Functions.CopyIndex(context, new object[] { new JValue("test1"), new JValue(3) });
+            Assert.Equal(3, actual3);
+            Assert.Equal(3, actual4);
+
+            // String
+            var actual5 = (int)Functions.CopyIndex(context, new object[] { "test1" });
+            var actual6 = (int)Functions.CopyIndex(context, new object[] { new JValue("test1") });
+            Assert.Equal(0, actual5);
+            Assert.Equal(0, actual6);
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_NUMERIC)]
         public void Div()
         {
             var context = GetContext();

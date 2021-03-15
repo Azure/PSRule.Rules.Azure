@@ -34,6 +34,17 @@ namespace PSRule.Rules.Azure.Configuration
             State = null;
         }
 
+        internal SubscriptionOption(SubscriptionOption option)
+        {
+            if (option == null)
+                return;
+
+            SubscriptionId = option.SubscriptionId;
+            TenantId = option.TenantId;
+            DisplayName = option.DisplayName;
+            State = option.State;
+        }
+
         internal SubscriptionOption(string subscriptionId, string tenantId, string displayName, string state)
         {
             SubscriptionId = subscriptionId ?? DEFAULT_SUBSCRIPTIONID;

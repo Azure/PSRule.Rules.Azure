@@ -137,7 +137,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region Array and object
 
-        internal static object Array(TemplateContext context, object[] args)
+        internal static object Array(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Array), args);
@@ -145,7 +145,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return new JArray(args[0]);
         }
 
-        internal static object Coalesce(TemplateContext context, object[] args)
+        internal static object Coalesce(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) < 1)
                 throw ArgumentsOutOfRange(nameof(Coalesce), args);
@@ -158,7 +158,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return args[0];
         }
 
-        internal static object Concat(TemplateContext context, object[] args)
+        internal static object Concat(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) < 1)
                 throw ArgumentsOutOfRange(nameof(Concat), args);
@@ -201,7 +201,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return result.ToArray();
         }
 
-        internal static object Empty(TemplateContext context, object[] args)
+        internal static object Empty(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
                 throw ArgumentsOutOfRange(nameof(Empty), args);
@@ -220,7 +220,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return false;
         }
 
-        internal static object Contains(TemplateContext context, object[] args)
+        internal static object Contains(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
                 throw ArgumentsOutOfRange(nameof(Contains), args);
@@ -242,7 +242,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// createArray (arg1, arg2, arg3, ...)
         /// </summary>
-        internal static object CreateArray(TemplateContext context, object[] args)
+        internal static object CreateArray(ITemplateContext context, object[] args)
         {
             return (args == null || args.Length == 0) ? new JArray() : new JArray(args);
         }
@@ -250,7 +250,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// createObject(key1, value1, key2, value2, ...)
         /// </summary>
-        internal static object CreateObject(TemplateContext context, object[] args)
+        internal static object CreateObject(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
             if (argCount < 2 || argCount % 2 != 0)
@@ -267,7 +267,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return new JObject(properties);
         }
 
-        internal static object First(TemplateContext context, object[] args)
+        internal static object First(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
                 throw ArgumentsOutOfRange(nameof(First), args);
@@ -282,7 +282,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return null;
         }
 
-        internal static object Intersection(TemplateContext context, object[] args)
+        internal static object Intersection(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) < 2)
                 throw ArgumentsOutOfRange(nameof(Intersection), args);
@@ -321,7 +321,7 @@ namespace PSRule.Rules.Azure.Data.Template
             throw new ArgumentException();
         }
 
-        internal static object Json(TemplateContext context, object[] args)
+        internal static object Json(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1 || !ExpressionHelpers.TryString(args[0], out string json))
                 throw new ArgumentOutOfRangeException();
@@ -332,7 +332,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// null()
         /// </summary>
-        internal static object Null(TemplateContext context, object[] args)
+        internal static object Null(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) > 0)
                 throw ArgumentsOutOfRange(nameof(Null), args);
@@ -340,7 +340,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return null;
         }
 
-        internal static object Last(TemplateContext context, object[] args)
+        internal static object Last(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
                 throw ArgumentsOutOfRange(nameof(Last), args);
@@ -355,7 +355,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return null;
         }
 
-        internal static object Length(TemplateContext context, object[] args)
+        internal static object Length(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Length), args);
@@ -370,7 +370,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return (long)args[0].GetType().GetProperties().Length;
         }
 
-        internal static object Min(TemplateContext context, object[] args)
+        internal static object Min(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) == 0)
                 throw ArgumentsOutOfRange(nameof(Min), args);
@@ -401,7 +401,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return result;
         }
 
-        internal static object Max(TemplateContext context, object[] args)
+        internal static object Max(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) == 0)
                 throw ArgumentsOutOfRange(nameof(Max), args);
@@ -432,7 +432,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return result;
         }
 
-        internal static object Range(TemplateContext context, object[] args)
+        internal static object Range(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Range), args);
@@ -450,7 +450,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return new JArray(result);
         }
 
-        internal static object Skip(TemplateContext context, object[] args)
+        internal static object Skip(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Skip), args);
@@ -480,7 +480,7 @@ namespace PSRule.Rules.Azure.Data.Template
             throw new ArgumentException();
         }
 
-        internal static object Take(TemplateContext context, object[] args)
+        internal static object Take(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Take), args);
@@ -512,7 +512,7 @@ namespace PSRule.Rules.Azure.Data.Template
             throw new ArgumentException();
         }
 
-        internal static object Union(TemplateContext context, object[] args)
+        internal static object Union(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) < 2)
                 throw ArgumentsOutOfRange(nameof(Union), args);
@@ -589,7 +589,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// deployment()
         /// </summary>
-        internal static object Deployment(TemplateContext context, object[] args)
+        internal static object Deployment(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) > 0)
                 throw ArgumentsOutOfRange(nameof(Deployment), args);
@@ -600,7 +600,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// environment()
         /// </summary>
-        internal static object Environment(TemplateContext context, object[] args)
+        internal static object Environment(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) > 0)
                 throw ArgumentsOutOfRange(nameof(Environment), args);
@@ -611,7 +611,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// parameters(parameterName)
         /// </summary>
-        internal static object Parameters(TemplateContext context, object[] args)
+        internal static object Parameters(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Parameters), args);
@@ -628,7 +628,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// variables(variableName)
         /// </summary>
-        internal static object Variables(TemplateContext context, object[] args)
+        internal static object Variables(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Variables), args);
@@ -652,7 +652,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <returns>
         /// {scope}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
         /// </returns>
-        internal static object ExtensionResourceId(TemplateContext context, object[] args)
+        internal static object ExtensionResourceId(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) < 3)
                 throw ArgumentsOutOfRange(nameof(ExtensionResourceId), args);
@@ -684,7 +684,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
         /// </summary>
-        internal static object List(TemplateContext context, object[] args)
+        internal static object List(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
             if (argCount < 2 || argCount > 3)
@@ -694,7 +694,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return new MockList(resourceId);
         }
 
-        internal static object Providers(TemplateContext context, object[] args)
+        internal static object Providers(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
             if (argCount < 1 || argCount > 2)
@@ -717,7 +717,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return resourceTypes[0];
         }
 
-        internal static object Reference(TemplateContext context, object[] args)
+        internal static object Reference(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
             if (argCount < 1 || argCount > 3)
@@ -730,7 +730,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// resourceGroup()
         /// </summary>
-        internal static object ResourceGroup(TemplateContext context, object[] args)
+        internal static object ResourceGroup(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) > 0)
                 throw ArgumentsOutOfRange(nameof(ResourceGroup), args);
@@ -744,7 +744,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <returns>
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </returns>
-        internal static object ResourceId(TemplateContext context, object[] args)
+        internal static object ResourceId(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) < 2)
                 throw ArgumentsOutOfRange(nameof(ResourceId), args);
@@ -792,7 +792,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// subscription()
         /// </summary>
-        internal static object Subscription(TemplateContext context, object[] args)
+        internal static object Subscription(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) > 0)
                 throw ArgumentsOutOfRange(nameof(Subscription), args);
@@ -806,7 +806,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <returns>
         /// /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </returns>
-        internal static object SubscriptionResourceId(TemplateContext context, object[] args)
+        internal static object SubscriptionResourceId(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) < 2)
                 throw ArgumentsOutOfRange(nameof(SubscriptionResourceId), args);
@@ -852,7 +852,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <returns>
         /// /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </returns>
-        internal static object TenantResourceId(TemplateContext context, object[] args)
+        internal static object TenantResourceId(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) < 2)
                 throw ArgumentsOutOfRange(nameof(TenantResourceId), args);
@@ -891,7 +891,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region Numeric
 
-        internal static object Add(TemplateContext context, object[] args)
+        internal static object Add(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Add), args);
@@ -905,11 +905,11 @@ namespace PSRule.Rules.Azure.Data.Template
             return operand1 + operand2;
         }
 
-        internal static object CopyIndex(TemplateContext context, object[] args)
+        internal static object CopyIndex(ITemplateContext context, object[] args)
         {
-            string loopName = CountArgs(args) >= 1 && args[0] is string svalue ? svalue : null;
-            int offset = CountArgs(args) == 1 && (args[0] is int ivalue || (args[0] is string sivalue && int.TryParse(sivalue, out ivalue))) ? ivalue : 0;
-            if (CountArgs(args) == 2 && offset == 0 && (args[1] is int ivalue2 || (args[1] is string sivalue2 && int.TryParse(sivalue2, out ivalue2))))
+            string loopName = CountArgs(args) >= 1 && ExpressionHelpers.TryString(args[0], out string svalue) ? svalue : null;
+            int offset = CountArgs(args) == 1 && ExpressionHelpers.TryConvertInt(args[0], out int ivalue) ? ivalue : 0;
+            if (CountArgs(args) == 2 && offset == 0 && ExpressionHelpers.TryConvertInt(args[1], out int ivalue2))
                 offset = ivalue2;
 
             if (!context.CopyIndex.TryGetValue(loopName, out TemplateContext.CopyIndexState value))
@@ -918,7 +918,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return offset + value.Index;
         }
 
-        internal static object Div(TemplateContext context, object[] args)
+        internal static object Div(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Div), args);
@@ -935,7 +935,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return operand1 / operand2;
         }
 
-        internal static object Float(TemplateContext context, object[] args)
+        internal static object Float(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Float), args);
@@ -948,7 +948,7 @@ namespace PSRule.Rules.Azure.Data.Template
             throw ArgumentInvalidInteger(nameof(Float), "valueToConvert");
         }
 
-        internal static object Int(TemplateContext context, object[] args)
+        internal static object Int(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Int), args);
@@ -959,7 +959,7 @@ namespace PSRule.Rules.Azure.Data.Template
             throw ArgumentInvalidInteger(nameof(Int), "valueToConvert");
         }
 
-        internal static object Mod(TemplateContext context, object[] args)
+        internal static object Mod(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Mod), args);
@@ -976,7 +976,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return operand1 % operand2;
         }
 
-        internal static object Mul(TemplateContext context, object[] args)
+        internal static object Mul(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Mul), args);
@@ -990,7 +990,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return operand1 * operand2;
         }
 
-        internal static object Sub(TemplateContext context, object[] args)
+        internal static object Sub(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Sub), args);
@@ -1011,7 +1011,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// equals(arg1, arg2)
         /// </summary>
-        internal static object Equals(TemplateContext context, object[] args)
+        internal static object Equals(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
                 throw ArgumentsOutOfRange(nameof(Equals), args);
@@ -1043,7 +1043,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// greater(arg1, arg2)
         /// </summary>
-        internal static object Greater(TemplateContext context, object[] args)
+        internal static object Greater(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
                 throw ArgumentsOutOfRange(nameof(Greater), args);
@@ -1055,7 +1055,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// greaterOrEquals(arg1, arg2)
         /// </summary>
-        internal static object GreaterOrEquals(TemplateContext context, object[] args)
+        internal static object GreaterOrEquals(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
                 throw ArgumentsOutOfRange(nameof(GreaterOrEquals), args);
@@ -1067,7 +1067,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// less(arg1, arg2)
         /// </summary>
-        internal static object Less(TemplateContext context, object[] args)
+        internal static object Less(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
                 throw ArgumentsOutOfRange(nameof(Less), args);
@@ -1078,7 +1078,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// lessOrEquals(arg1, arg2)
         /// </summary>
-        internal static object LessOrEquals(TemplateContext context, object[] args)
+        internal static object LessOrEquals(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
                 throw ArgumentsOutOfRange(nameof(LessOrEquals), args);
@@ -1090,7 +1090,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region Date
 
-        internal static object DateTimeAdd(TemplateContext context, object[] args)
+        internal static object DateTimeAdd(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
             if (argCount < 2 || argCount > 3)
@@ -1112,7 +1112,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return format == null ? result.ToString(AzureCulture) : result.ToString(format, AzureCulture);
         }
 
-        internal static object UtcNow(TemplateContext context, object[] args)
+        internal static object UtcNow(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
             if (CountArgs(args) > 1)
@@ -1132,7 +1132,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// and(arg1, arg2, ...)
         /// </summary>
-        internal static object And(TemplateContext context, object[] args)
+        internal static object And(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length < 2)
                 throw ArgumentsOutOfRange(nameof(And), args);
@@ -1148,7 +1148,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// bool(arg1)
         /// </summary>
-        internal static object Bool(TemplateContext context, object[] args)
+        internal static object Bool(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
                 throw ArgumentsOutOfRange(nameof(Bool), args);
@@ -1162,7 +1162,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// false()
         /// </summary>
-        internal static object False(TemplateContext context, object[] args)
+        internal static object False(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) > 0)
                 throw ArgumentsOutOfRange(nameof(False), args);
@@ -1173,7 +1173,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// if(condition, trueValue, falseValue)
         /// </summary>
-        internal static object If(TemplateContext context, object[] args)
+        internal static object If(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 3)
                 throw ArgumentsOutOfRange(nameof(If), args);
@@ -1188,7 +1188,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// not(arg1)
         /// </summary>
-        internal static object Not(TemplateContext context, object[] args)
+        internal static object Not(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
                 throw ArgumentsOutOfRange(nameof(Not), args);
@@ -1202,7 +1202,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// or(arg1, arg2, ...)
         /// </summary>
-        internal static object Or(TemplateContext context, object[] args)
+        internal static object Or(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length < 2)
                 throw ArgumentsOutOfRange(nameof(Or), args);
@@ -1218,7 +1218,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// true()
         /// </summary>
-        internal static object True(TemplateContext context, object[] args)
+        internal static object True(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) > 0)
                 throw ArgumentsOutOfRange(nameof(True), args);
@@ -1230,7 +1230,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region String
 
-        internal static object Base64(TemplateContext context, object[] args)
+        internal static object Base64(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Base64), args);
@@ -1241,7 +1241,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return Convert.ToBase64String(Encoding.UTF8.GetBytes(inputString));
         }
 
-        internal static object Base64ToJson(TemplateContext context, object[] args)
+        internal static object Base64ToJson(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Base64ToJson), args);
@@ -1252,7 +1252,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return JObject.Parse(Encoding.UTF8.GetString(Convert.FromBase64String(base64Value)));
         }
 
-        internal static object Base64ToString(TemplateContext context, object[] args)
+        internal static object Base64ToString(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Base64ToString), args);
@@ -1263,7 +1263,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return Encoding.UTF8.GetString(Convert.FromBase64String(base64Value));
         }
 
-        internal static object DataUri(TemplateContext context, object[] args)
+        internal static object DataUri(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(DataUri), args);
@@ -1274,7 +1274,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return string.Concat("data:text/plain;charset=utf8;base64,", Convert.ToBase64String(Encoding.UTF8.GetBytes(value)));
         }
 
-        internal static object DataUriToString(TemplateContext context, object[] args)
+        internal static object DataUriToString(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(DataUriToString), args);
@@ -1299,7 +1299,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return base64 ? encoding.GetString(Convert.FromBase64String(data)) : data;
         }
 
-        internal static object EndsWith(TemplateContext context, object[] args)
+        internal static object EndsWith(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out string s1) || !ExpressionHelpers.TryString(args[1], out string s2))
                 throw new ArgumentOutOfRangeException();
@@ -1307,7 +1307,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return s1.EndsWith(s2, StringComparison.OrdinalIgnoreCase);
         }
 
-        internal static object Format(TemplateContext context, object[] args)
+        internal static object Format(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) < 2)
                 throw ArgumentsOutOfRange(nameof(Format), args);
@@ -1320,7 +1320,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return string.Format(AzureCulture, formatString, remaining);
         }
 
-        internal static object Guid(TemplateContext context, object[] args)
+        internal static object Guid(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) < 1)
                 throw ArgumentsOutOfRange(nameof(Guid), args);
@@ -1331,7 +1331,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return new Guid(guidBytes).ToString();
         }
 
-        internal static object IndexOf(TemplateContext context, object[] args)
+        internal static object IndexOf(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(IndexOf), args);
@@ -1345,7 +1345,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return (long)stringToSearch.IndexOf(stringToFind, StringComparison.OrdinalIgnoreCase);
         }
 
-        internal static object LastIndexOf(TemplateContext context, object[] args)
+        internal static object LastIndexOf(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(LastIndexOf), args);
@@ -1359,7 +1359,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return (long)stringToSearch.LastIndexOf(stringToFind, StringComparison.OrdinalIgnoreCase);
         }
 
-        internal static object NewGuid(TemplateContext context, object[] args)
+        internal static object NewGuid(ITemplateContext context, object[] args)
         {
             if (!(args == null || args.Length == 0))
                 throw ArgumentsOutOfRange(nameof(NewGuid), args);
@@ -1367,7 +1367,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return System.Guid.NewGuid().ToString();
         }
 
-        internal static object PadLeft(TemplateContext context, object[] args)
+        internal static object PadLeft(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
             if (argCount < 2 || argCount > 3)
@@ -1389,7 +1389,7 @@ namespace PSRule.Rules.Azure.Data.Template
             throw new ArgumentException();
         }
 
-        internal static object StartsWith(TemplateContext context, object[] args)
+        internal static object StartsWith(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out string s1) || !ExpressionHelpers.TryString(args[1], out string s2))
                 throw new ArgumentOutOfRangeException();
@@ -1397,7 +1397,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return s1.StartsWith(s2, StringComparison.OrdinalIgnoreCase);
         }
 
-        internal static object String(TemplateContext context, object[] args)
+        internal static object String(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
                 throw ArgumentsOutOfRange(nameof(String), args);
@@ -1405,7 +1405,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return JsonConvert.SerializeObject(args[0]);
         }
 
-        internal static object Substring(TemplateContext context, object[] args)
+        internal static object Substring(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length < 1 || args.Length > 3 || !ExpressionHelpers.TryString(args[0], out string value))
                 throw ArgumentsOutOfRange(nameof(Substring), args);
@@ -1418,7 +1418,7 @@ namespace PSRule.Rules.Azure.Data.Template
             throw ArgumentFormatInvalid(nameof(Substring));
         }
 
-        internal static object ToLower(TemplateContext context, object[] args)
+        internal static object ToLower(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(ToLower), args);
@@ -1429,7 +1429,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return stringToChange.ToLower(AzureCulture);
         }
 
-        internal static object ToUpper(TemplateContext context, object[] args)
+        internal static object ToUpper(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(ToUpper), args);
@@ -1440,7 +1440,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return stringToChange.ToUpper(AzureCulture);
         }
 
-        internal static object Trim(TemplateContext context, object[] args)
+        internal static object Trim(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Trim), args);
@@ -1451,7 +1451,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return stringToTrim.Trim();
         }
 
-        internal static object UniqueString(TemplateContext context, object[] args)
+        internal static object UniqueString(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) == 0)
                 throw ArgumentsOutOfRange(nameof(UniqueString), args);
@@ -1459,7 +1459,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return ExpressionHelpers.GetUniqueString(args).Substring(0, 13);
         }
 
-        internal static object Uri(TemplateContext context, object[] args)
+        internal static object Uri(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Uri), args);
@@ -1474,7 +1474,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return result.ToString();
         }
 
-        internal static object UriComponent(TemplateContext context, object[] args)
+        internal static object UriComponent(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(UriComponent), args);
@@ -1485,7 +1485,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return HttpUtility.UrlEncode(stringToEncode);
         }
 
-        internal static object UriComponentToString(TemplateContext context, object[] args)
+        internal static object UriComponentToString(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(UriComponentToString), args);
@@ -1496,7 +1496,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return HttpUtility.UrlDecode(uriEncodedString);
         }
 
-        internal static object Replace(TemplateContext context, object[] args)
+        internal static object Replace(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 3)
                 throw ArgumentsOutOfRange(nameof(Replace), args);
@@ -1507,7 +1507,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return originalString.Replace(oldString, newString);
         }
 
-        internal static object Split(TemplateContext context, object[] args)
+        internal static object Split(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out string value))
                 throw new ArgumentOutOfRangeException();
@@ -1630,7 +1630,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return resourceType[resourceType.Length - 1] == '/' ? resourceType = resourceType.Substring(0, resourceType.Length - 1) : resourceType;
         }
 
-        private static object GetExpression(TemplateContext context, object o)
+        private static object GetExpression(ITemplateContext context, object o)
         {
             return o is ExpressionFnOuter fn ? fn(context) : o;
         }

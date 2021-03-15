@@ -8,20 +8,21 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading;
-using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
-    internal delegate object ExpressionFnOuter(TemplateContext context);
-    internal delegate object ExpressionFn(TemplateContext context, object[] args);
+    internal delegate object ExpressionFnOuter(ITemplateContext context);
+    internal delegate object ExpressionFn(ITemplateContext context, object[] args);
 
     internal sealed class ExpressionBuilder
     {
         private readonly ExpressionFactory _Functions;
 
-        internal ExpressionBuilder()
+        internal ExpressionBuilder() : this(new ExpressionFactory()) { }
+
+        internal ExpressionBuilder(ExpressionFactory expressionFactory)
         {
-            _Functions = new ExpressionFactory();
+            _Functions = expressionFactory;
         }
 
         internal ExpressionFnOuter Build(string s)
@@ -123,7 +124,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return (context) => Index(context, inner, innerInner);
         }
 
-        private static object Index(TemplateContext context, ExpressionFnOuter inner, ExpressionFnOuter index)
+        private static object Index(ITemplateContext context, ExpressionFnOuter inner, ExpressionFnOuter index)
         {
             var source = inner(context);
             var indexResult = index(context);
@@ -151,7 +152,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return (context) => Property(context, inner, propertyName);
         }
 
-        private static object Property(TemplateContext context, ExpressionFnOuter inner, string propertyName)
+        private static object Property(ITemplateContext context, ExpressionFnOuter inner, string propertyName)
         {
             var result = inner(context);
             if (result == null)
@@ -214,7 +215,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return IsList(name) ? _Descriptors.TryGetValue("list", out descriptor) : _Descriptors.TryGetValue(name, out descriptor);
         }
 
-        private void With(IFunctionDescriptor descriptor)
+        public void With(IFunctionDescriptor descriptor)
         {
             _Descriptors.Add(descriptor.Name, descriptor);
         }
@@ -240,7 +241,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public string Name { get; }
 
-        public object Invoke(TemplateContext context, ExpressionFnOuter[] args)
+        public object Invoke(ITemplateContext context, ExpressionFnOuter[] args)
         {
             var parameters = new object[args.Length];
             for (var i = 0; i < args.Length; i++)
@@ -254,6 +255,6 @@ namespace PSRule.Rules.Azure.Data.Template
     {
         string Name { get; }
 
-        object Invoke(TemplateContext context, ExpressionFnOuter[] args);
+        object Invoke(ITemplateContext context, ExpressionFnOuter[] args);
     }
 }

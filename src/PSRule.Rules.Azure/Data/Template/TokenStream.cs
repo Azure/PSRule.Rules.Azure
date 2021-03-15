@@ -208,43 +208,43 @@ namespace PSRule.Rules.Azure.Data.Template
         internal string AsString()
         {
             var builder = new StringBuilder();
-            builder.Append("[");
+            builder.Append('[');
             var group = 0;
             ExpressionToken last = null;
             for (var i = 0; i < _Token.Count; i++)
             {
                 var current = _Token[i];
                 if (last != null && !(current.Type == ExpressionTokenType.Property || IsStartOrEndToken(current)) && !(last.Type == ExpressionTokenType.GroupStart || last.Type == ExpressionTokenType.IndexStart))
-                    builder.Append(",");
+                    builder.Append(',');
 
                 if (current.Type == ExpressionTokenType.Property)
-                    builder.Append(".");
+                    builder.Append('.');
                 else if (current.Type == ExpressionTokenType.GroupStart)
                 {
-                    builder.Append("(");
+                    builder.Append('(');
                     group++;
                 }
                 else if (current.Type == ExpressionTokenType.GroupEnd)
                 {
-                    builder.Append(")");
+                    builder.Append(')');
                     group--;
                 }
                 else if (current.Type == ExpressionTokenType.IndexStart)
-                    builder.Append("[");
+                    builder.Append('[');
                 else if (current.Type == ExpressionTokenType.IndexEnd)
-                    builder.Append("]");
+                    builder.Append(']');
                 else if (current.Type == ExpressionTokenType.String)
-                    builder.Append("'");
+                    builder.Append('\'');
                 else if (current.Type == ExpressionTokenType.Numeric)
                     builder.Append(current.Value);
 
                 builder.Append(current.Content);
                 if (current.Type == ExpressionTokenType.String)
-                    builder.Append("'");
+                    builder.Append('\'');
 
                 last = current;
             }
-            builder.Append("]");
+            builder.Append(']');
             return builder.ToString();
         }
 

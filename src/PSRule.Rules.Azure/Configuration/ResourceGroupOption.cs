@@ -42,6 +42,18 @@ namespace PSRule.Rules.Azure.Configuration
             Properties = null;
         }
 
+        internal ResourceGroupOption(ResourceGroupOption option)
+        {
+            if (option == null)
+                return;
+
+            Name = option.Name;
+            Location = option.Location;
+            ManagedBy = option.Location;
+            Tags = option.Tags;
+            Properties = option.Properties;
+        }
+
         internal ResourceGroupOption(string name, string location, string managedBy, Hashtable tags, string provisioningState)
         {
             Name = name ?? DEFAULT_NAME;
