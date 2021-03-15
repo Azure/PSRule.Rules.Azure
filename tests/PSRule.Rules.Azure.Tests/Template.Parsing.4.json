@@ -1,0 +1,70 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+    },
+    "functions": [
+        {
+            "namespace": "unitTest",
+            "members": {
+                "helloString": {
+                    "parameters": [
+                        {
+                            "name": "message",
+                            "type": "string"
+                        }
+                    ],
+                    "output": {
+                        "value": "[
+                            concat(
+                                'Hello ',
+                                parameters('message')
+                            )
+                        ]",
+                        "type": "string"
+                    }
+                },
+                "helloObject": {
+                    "parameters": [
+                        {
+                            "name": "message",
+                            "type": "string"
+                        }
+                    ],
+                    "output": {
+                        "value": {
+                            "message": "[parameters('message')]",
+                            "value": "[
+                                concat(
+                                    'Hello ',
+                                    parameters('message')
+                                )
+                            ]"
+                        },
+                        "type": "object"
+                    }
+                }
+            }
+        }
+    ],
+    "resources": [
+        {
+            "type": "Namespace/resourceType",
+            "apiVersion": "2020-05-01",
+            "name": "resource",
+            "location": "region",
+            "properties": {
+                "keyString": "[
+                    if(
+                        true(),
+                        unitTest.helloString('world'),
+                        null()
+                    )
+                ]",
+                "keyObject": "[
+                    unitTest.helloObject('world')
+                ]"
+            }
+        }
+    ]
+}

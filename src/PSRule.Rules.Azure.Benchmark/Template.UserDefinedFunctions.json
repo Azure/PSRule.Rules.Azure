@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+    },
+    "functions": [
+        {
+            "namespace": "unitTest",
+            "members": {
+                "hello": {
+                    "parameters": [
+                        {
+                            "name": "message",
+                            "type": "string"
+                        }
+                    ],
+                    "output": {
+                        "value": "[concat('Hello ', parameters('message'))]",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ],
+    "resources": [
+        {
+            "type": "Namespace/resourceType",
+            "apiVersion": "2020-05-01",
+            "name": "resource",
+            "location": "region",
+            "properties": {
+                "key": "[unitTest.hello('world')]"
+            }
+        }
+    ]
+}

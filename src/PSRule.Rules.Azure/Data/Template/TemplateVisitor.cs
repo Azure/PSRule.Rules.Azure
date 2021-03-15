@@ -48,6 +48,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string RESOURCETYPE_DEPLOYMENT = "Microsoft.Resources/deployments";
         private const string DEPLOYMENTSCOPE_INNER = "inner";
         private const string PROPERTY_PARAMETERS = "parameters";
+        private const string PROPERTY_FUNCTIONS = "functions";
         private const string PROPERTY_VARIABLES = "variables";
         private const string PROPERTY_RESOURCES = "resources";
         private const string PROPERTY_OUTPUTS = "outputs";
@@ -73,6 +74,9 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_SCOPE = "scope";
         private const string PROPERTY_RESOURCEGROUP = "resourceGroup";
         private const string PROPERTY_SUBSCRIPTIONID = "subscriptionId";
+        private const string PROPERTY_NAMESPACE = "namespace";
+        private const string PROPERTY_MEMBERS = "members";
+        private const string PROPERTY_OUTPUT = "output";
 
         private readonly static string AssemblyPath = Path.GetDirectoryName(typeof(TemplateVisitor).Assembly.Location);
 
@@ -344,6 +348,12 @@ namespace PSRule.Rules.Azure.Data.Template
                 return true;
             }
 
+            internal void Function(string ns, string name, ExpressionFn fn)
+            {
+                var descriptor = new FunctionDescriptor(string.Concat(ns, ".", name), fn);
+                _ExpressionFactory.With(descriptor);
+            }
+
             private static Dictionary<string, ResourceProvider> ReadProviders()
             {
                 return ReadDataFile<ResourceProvider>(DATAFILE_PROVIDERS);
@@ -393,6 +403,68 @@ namespace PSRule.Rules.Azure.Data.Template
             }
         }
 
+        internal sealed class UserDefinedFunctionContext : ITemplateContext
+        {
+            private readonly ITemplateContext _Inner;
+            private readonly Dictionary<string, object> _Parameters;
+
+            public UserDefinedFunctionContext(ITemplateContext context)
+            {
+                _Inner = context;
+                _Parameters = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
+            }
+
+            public TemplateContext.CopyIndexStore CopyIndex => _Inner.CopyIndex;
+
+            public JObject Deployment => throw new NotImplementedException();
+
+            public ResourceGroupOption ResourceGroup => _Inner.ResourceGroup;
+
+            public SubscriptionOption Subscription => _Inner.Subscription;
+
+            public ExpressionFnOuter BuildExpression(string s)
+            {
+                return _Inner.BuildExpression(s);
+            }
+
+            public CloudEnvironment GetEnvironment()
+            {
+                return _Inner.GetEnvironment();
+            }
+
+            public ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
+            {
+                return _Inner.GetResourceType(providerNamespace, resourceType);
+            }
+
+            public bool TryParameter(string parameterName, out object value)
+            {
+                return _Parameters.TryGetValue(parameterName, out value);
+            }
+
+            public bool TryVariable(string variableName, out object value)
+            {
+                value = null;
+                return false;
+            }
+
+            public void WriteDebug(string message, params object[] args)
+            {
+                _Inner.WriteDebug(message, args);
+            }
+
+            internal void SetParameters(JArray parameters, object[] args)
+            {
+                if (parameters == null || parameters.Count == 0 || args == null || args.Length == 0)
+                    return;
+
+                for (var i = 0; i < parameters.Count; i++)
+                {
+                    _Parameters.Add(parameters[i]["name"].Value<string>(), args[i]);
+                }
+            }
+        }
+
         private abstract class LazyValue
         {
             public abstract object GetValue(TemplateContext context);
@@ -428,6 +500,21 @@ namespace PSRule.Rules.Azure.Data.Template
             }
         }
 
+        private sealed class LazyOutput : LazyValue
+        {
+            internal readonly JToken _Value;
+
+            public LazyOutput(JToken value)
+            {
+                _Value = value;
+            }
+
+            public override object GetValue(TemplateContext context)
+            {
+                return ResolveVariable(context, _Value);
+            }
+        }
+
         public void Visit(TemplateContext context, string deploymentName, JObject template)
         {
             Template(context, deploymentName, template);
@@ -445,6 +532,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 if (TryObjectProperty(template, PROPERTY_PARAMETERS, out JObject parameters))
                     Parameters(context, parameters);
+
+                if (TryArrayProperty(template, PROPERTY_FUNCTIONS, out JArray functions))
+                    Functions(context, functions);
 
                 if (TryObjectProperty(template, PROPERTY_VARIABLES, out JObject variables))
                     Variables(context, variables);
@@ -507,14 +597,44 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region Functions
 
-        protected virtual void Functions(TemplateContext context)
+        protected virtual void Functions(TemplateContext context, JArray functions)
         {
+            if (functions == null || functions.Count == 0)
+                return;
 
+            for (var i = 0; i < functions.Count; i++)
+                FunctionNamespace(context, functions[i].Value<JObject>());
         }
 
-        protected virtual void Function(TemplateContext context)
+        private void FunctionNamespace(TemplateContext context, JObject functionNamespace)
         {
+            if (functionNamespace == null ||
+                !TryStringProperty(functionNamespace, PROPERTY_NAMESPACE, out string ns) ||
+                !TryObjectProperty(functionNamespace, PROPERTY_MEMBERS, out JObject members))
+                return;
 
+            foreach (var property in members.Properties())
+                Function(context, ns, property.Name, property.Value.Value<JObject>());
+        }
+
+        protected virtual void Function(TemplateContext context, string ns, string name, JObject function)
+        {
+            if (!TryObjectProperty(function, PROPERTY_OUTPUT, out JObject output))
+                return;
+
+            TryArrayProperty(function, PROPERTY_PARAMETERS, out JArray parameters);
+            //var outputFn = context.Expression.Build(outputValue);
+            ExpressionFn fn = (ctx, args) => {
+                var fnContext = new UserDefinedFunctionContext(ctx);
+                fnContext.SetParameters(parameters, args);
+                return UserDefinedFunction(fnContext, output[PROPERTY_VALUE]);
+            };
+            context.Function(ns, name, fn);
+        }
+
+        private static object UserDefinedFunction(ITemplateContext context, JToken token)
+        {
+            return ResolveVariable(context, token);
         }
 
         #endregion Functions
@@ -595,7 +715,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     foreach (var parameter in innerParameters.Properties())
                         deploymentContext.Parameter(parameter.Name, ResolveVariable(context, parameter.Value[PROPERTY_VALUE]));
                 }
-            }  
+            }
 
             if (!TryObjectProperty(properties, PROPERTY_TEMPLATE, out JObject template))
                 return false;

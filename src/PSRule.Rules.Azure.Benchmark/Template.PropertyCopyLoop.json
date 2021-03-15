@@ -1,0 +1,63 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "propertyArray": {
+            "type": "array",
+            "defaultValue": [
+                {
+                    "name": "item1"
+                },
+                {
+                    "name": "item2"
+                },
+                {
+                    "name": "item3"
+                }
+            ],
+            "metadata": {
+                "description": "Test property copy loop."
+            }
+        }
+    },
+    "resources": [
+        {
+            "type": "Namespace/resourceType",
+            "apiVersion": "2020-05-01",
+            "name": "copyLoopProperty",
+            "location": "region",
+            "properties": {
+                "copy": [
+                    {
+                        "name": "loop1",
+                        "count": "[length(parameters('propertyArray'))]",
+                        "input": {
+                            "key1": "[parameters('propertyArray')[copyIndex('loop1')].name]"
+                        }
+                    },
+                    {
+                        "name": "loop2",
+                        "count": "[length(parameters('propertyArray'))]",
+                        "input": {
+                            "key1": "[parameters('propertyArray')[copyIndex('loop2')].name]"
+                        }
+                    },
+                    {
+                        "name": "loop3",
+                        "count": "[length(parameters('propertyArray'))]",
+                        "input": {
+                            "key1": "[parameters('propertyArray')[copyIndex('loop3')].name]"
+                        }
+                    },
+                    {
+                        "name": "loop4",
+                        "count": "[length(parameters('propertyArray'))]",
+                        "input": {
+                            "key1": "[parameters('propertyArray')[copyIndex('loop4')].name]"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

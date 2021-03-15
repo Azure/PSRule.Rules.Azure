@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PSRule.Rules.Azure", "src\PSRule.Rules.Azure\PSRule.Rules.Azure.csproj", "{5C6CA67C-5B17-47BD-AD84-F5D0F9D152F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PSRule.Rules.Azure", "src\PSRule.Rules.Azure\PSRule.Rules.Azure.csproj", "{BCE66F73-3809-4740-B3C3-F52958E7AB51}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PSRule.Rules.Azure.Tests", "tests\PSRule.Rules.Azure.Tests\PSRule.Rules.Azure.Tests.csproj", "{DE4D9717-0307-41F3-897D-1B40ED8235CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PSRule.Rules.Azure.Tests", "tests\PSRule.Rules.Azure.Tests\PSRule.Rules.Azure.Tests.csproj", "{28251F7F-FC8C-495B-AF73-D134F642FFB9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PSRule.Rules.Azure.Benchmark", "src\PSRule.Rules.Azure.Benchmark\PSRule.Rules.Azure.Benchmark.csproj", "{9BB90ABE-25F9-4110-AF9F-149B0618B2A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5C6CA67C-5B17-47BD-AD84-F5D0F9D152F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C6CA67C-5B17-47BD-AD84-F5D0F9D152F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C6CA67C-5B17-47BD-AD84-F5D0F9D152F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C6CA67C-5B17-47BD-AD84-F5D0F9D152F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE4D9717-0307-41F3-897D-1B40ED8235CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE4D9717-0307-41F3-897D-1B40ED8235CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE4D9717-0307-41F3-897D-1B40ED8235CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE4D9717-0307-41F3-897D-1B40ED8235CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCE66F73-3809-4740-B3C3-F52958E7AB51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE66F73-3809-4740-B3C3-F52958E7AB51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE66F73-3809-4740-B3C3-F52958E7AB51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE66F73-3809-4740-B3C3-F52958E7AB51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28251F7F-FC8C-495B-AF73-D134F642FFB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28251F7F-FC8C-495B-AF73-D134F642FFB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28251F7F-FC8C-495B-AF73-D134F642FFB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28251F7F-FC8C-495B-AF73-D134F642FFB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BB90ABE-25F9-4110-AF9F-149B0618B2A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BB90ABE-25F9-4110-AF9F-149B0618B2A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BB90ABE-25F9-4110-AF9F-149B0618B2A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BB90ABE-25F9-4110-AF9F-149B0618B2A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
