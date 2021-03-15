@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+What's changed since v1.1.3:
+
+- Bug fixes:
+  - Fixed handling of literal index with copyIndex function. [#686](https://github.com/microsoft/PSRule.Rules.Azure/issues/686)
+  - Fixed handling of inner scoped nested deployments. [#687](https://github.com/microsoft/PSRule.Rules.Azure/issues/687)
+
 ## v1.1.3
 
 What's changed since v1.1.2:

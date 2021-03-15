@@ -31,17 +31,7 @@ namespace PSRule.Rules.Azure.Pipeline
     {
         private const string OUTPUTFILE_PREFIX = "resources-";
         private const string OUTPUTFILE_EXTENSION = ".json";
-
         private const string DEPLOYMENTNAME_PREFIX = "export-";
-
-        private const string RESOURCEGROUP_RESOURCEID = "ResourceId";
-        private const string RESOURCEGROUP_RESOURCEGROUPNAME = "ResourceGroupName";
-        private const string RESOURCEGROUP_LOCATION = "Location";
-        private const string RESOURCEGROUP_MANAGEDBY = "ManagedBy";
-        private const string RESOURCEGROUP_TAGS = "Tags";
-        private const string SUBSCRIPTION_SUBSCRIPTIONID = "SubscriptionId";
-        private const string SUBSCRIPTION_TENANTID = "TenantId";
-        private const string SUBSCRIPTION_NAME = "Name";
 
         private string _DeploymentName;
         private ResourceGroupOption _ResourceGroup;

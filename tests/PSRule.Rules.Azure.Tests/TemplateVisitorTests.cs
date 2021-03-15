@@ -79,6 +79,21 @@ namespace PSRule.Rules.Azure
             Assert.True(actual1["properties"]["enablePurgeProtection"].Value<bool>());
         }
 
+        [Fact]
+        public void AdvancedTemplateParsing5()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.3.json"), null);
+            Assert.NotNull(resources);
+            Assert.Single(resources);
+
+            var actual1 = resources[0];
+            Assert.Equal("Microsoft.Network/networkWatchers/flowLogs", actual1["type"].Value<string>());
+            Assert.Equal("NetworkWatcher_eastus/FlowLog1", actual1["name"].Value<string>());
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-001", actual1["properties"]["targetResourceId"].Value<string>());
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Storage/storageAccounts/flowlogs5f3e65afb63bb", actual1["properties"]["storageId"].Value<string>());
+            Assert.Equal("NetworkWatcherRG", actual1["tags"]["resourceGroup"].Value<string>());
+        }
+
         private static string GetSourcePath(string fileName)
         {
             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);

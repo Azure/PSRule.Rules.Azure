@@ -20,6 +20,16 @@
             }
         }
     },
+    "variables": {
+        "statics": {
+            "property1": "1",
+            "property2": "2",
+            "property3": "3",
+            "property4": "4",
+            "property5": "5",
+            "property6": "6"
+        }
+    },
     "resources": [
         {
             "type": "Namespace/resourceType",
@@ -34,6 +44,9 @@
                         "input": {
                             "key1": "[
                                 parameters('propertyArray')[copyIndex('loop1')].name
+                            ]",
+                            "key2": "[
+                                variables('statics')[concat('property', copyIndex(1))]
                             ]"
                         }
                     },
@@ -41,7 +54,10 @@
                         "name": "loop2",
                         "count": "[length(parameters('propertyArray'))]",
                         "input": {
-                            "key1": "[parameters('propertyArray')[copyIndex('loop2')].name]"
+                            "key1": "[parameters('propertyArray')[copyIndex('loop2')].name]",
+                            "key2": "[
+                                variables('statics')[concat('property', copyIndex(2))]
+                            ]"
                         }
                     },
                     {
@@ -50,6 +66,9 @@
                         "input": {
                             "key1": "[
                                 parameters('propertyArray')[copyIndex('loop3')].name
+                            ]",
+                            "key2": "[
+                                variables('statics')[concat('property', copyIndex(3))]
                             ]"
                         }
                     },
@@ -57,7 +76,10 @@
                         "name": "loop4",
                         "count": "[length(parameters('propertyArray'))]",
                         "input": {
-                            "key1": "[parameters('propertyArray')[copyIndex('loop4')].name]"
+                            "key1": "[parameters('propertyArray')[copyIndex('loop4')].name]",
+                            "key2": "[
+                                variables('statics')[concat('property', copyIndex(4))]
+                            ]"
                         }
                     }
                 ]
