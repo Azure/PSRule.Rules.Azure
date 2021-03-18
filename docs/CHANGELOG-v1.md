@@ -4,6 +4,9 @@
 
 What's changed since pre-release v1.2.0-B2103024:
 
+- New rules:
+  - Key Vault:
+    - Check vaults, keys, and secrets meet name requirements. [#646](https://github.com/microsoft/PSRule.Rules.Azure/issues/646)
 - Engineering:
   - Bump PSRule dependency to v1.1.0. [#692](https://github.com/microsoft/PSRule.Rules.Azure/issues/692)
 
