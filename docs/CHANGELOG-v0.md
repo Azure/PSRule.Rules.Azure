@@ -1,6 +1,5 @@
 # Change log
 
-
 ## v0.19.0
 
 What's changed since v0.18.0:

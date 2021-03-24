@@ -130,6 +130,8 @@ spec:
 kind: Baseline
 metadata:
   name: Azure.GA_2020_12
+  annotations:
+    obsolete: true
 spec:
   binding:
     targetName:
@@ -151,3 +153,31 @@ spec:
       - '2020_06'
       - '2020_09'
       - '2020_12'
+
+---
+# Synopsis: Include rules released March 2021 or prior for Azure GA features.
+kind: Baseline
+metadata:
+  name: Azure.GA_2021_03
+spec:
+  binding:
+    targetName:
+    - ResourceName
+    - FullName
+    - name
+    targetType:
+    - ResourceType
+    - type
+    - Extension
+    field:
+      resourceId: [ 'ResourceId' ]
+      subscriptionId: [ 'SubscriptionId' ]
+      resourceGroupName: [ 'ResourceGroupName' ]
+  rule:
+    tag:
+      release: GA
+      ruleSet:
+      - '2020_06'
+      - '2020_09'
+      - '2020_12'
+      - '2021_03'
