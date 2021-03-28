@@ -2,6 +2,29 @@
 
 ## Unreleased
 
+## v1.2.0
+
+What's changed since v1.1.4:
+
+- New features:
+  - Added `Azure.GA_2021_03` baseline. [#673](https://github.com/Microsoft/PSRule.Rules.Azure/issues/673)
+    - Includes rules released before or during March 2021 for Azure GA features.
+    - Marked baseline `Azure.GA_2020_12` as obsolete.
+- New rules:
+  - Key Vault:
+    - Check vaults, keys, and secrets meet name requirements. [#646](https://github.com/microsoft/PSRule.Rules.Azure/issues/646)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.19.7. [#696](https://github.com/Microsoft/PSRule.Rules.Azure/issues/696)
+- Engineering:
+  - Bump PSRule dependency to v1.1.0. [#692](https://github.com/microsoft/PSRule.Rules.Azure/issues/692)
+- General improvements:
+  - Added support for user defined functions in templates. [#682](https://github.com/microsoft/PSRule.Rules.Azure/issues/682)
+
+What's changed since pre-release v1.2.0-B2103044:
+
+- No additional changes.
+
 ## v1.2.0-B2103044 (pre-release)
 
 What's changed since pre-release v1.2.0-B2103032:
