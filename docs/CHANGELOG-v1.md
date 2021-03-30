@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+What's changed since v1.2.0:
+
+- General improvements:
+  - Additional metadata added in parameter file is passed through with `Get-AzRuleTemplateLink`. [#706](https://github.com/Microsoft/PSRule.Rules.Azure/issues/706)
+
 ## v1.2.0
 
 What's changed since v1.1.4:

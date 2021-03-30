@@ -451,6 +451,7 @@ Describe 'Get-AzRuleTemplateLink' -Tag 'Cmdlet', 'Get-AzRuleTemplateLink' {
                 (Join-Path -Path $templateScanPath -ChildPath 'Resources.Parameters.json')
                 (Join-Path -Path $templateScanPath -ChildPath 'Resources.Parameters2.json')
             );
+            @($result | Where-Object { $_.Metadata['additional'] -eq 'metadata' }).Length | Should -Be 1;
 
             # Get Resources.Parameters.json or Resources.Parameters2.json files in shallow path
             $result = @(Get-AzRuleTemplateLink -Path $templateScanPath -InputPath './Resources.Parameters?.json');
