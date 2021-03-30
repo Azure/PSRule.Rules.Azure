@@ -109,6 +109,7 @@ namespace PSRule.Rules.Azure.Pipeline
                 if (TryStringProperty(metadata, PROPERTYNAME_DESCRIPTION, out string description))
                     templateLink.Description = description;
 
+                AddMetadata(templateLink, metadata);
                 Context.Writer.WriteObject(templateLink, false);
             }
             catch (InvalidOperationException ex)
@@ -264,6 +265,30 @@ namespace PSRule.Rules.Azure.Pipeline
         private static string TrimSlash(string path)
         {
             return string.IsNullOrEmpty(path) || path[0] != SLASH ? path : path.TrimStart(SLASH);
+        }
+
+        private static void AddMetadata(TemplateLink templateLink, JObject metadata)
+        {
+            if (metadata == null || templateLink == null)
+                return;
+
+            foreach (var prop in metadata.Properties())
+            {
+                switch (prop.Value.Type)
+                {
+                    case JTokenType.String:
+                        templateLink.Metadata[prop.Name] = prop.Value.Value<string>();
+                        break;
+
+                    case JTokenType.Integer:
+                        templateLink.Metadata[prop.Name] = prop.Value.Value<long>();
+                        break;
+
+                    case JTokenType.Boolean:
+                        templateLink.Metadata[prop.Name] = prop.Value.Value<bool>();
+                        break;
+                }
+            }
         }
     }
 }
