@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v1.3.0-B2103007 (pre-release)
+
 What's changed since v1.2.0:
 
 - Removed rules:
@@ -9,7 +11,7 @@ What's changed since v1.2.0:
     - Remove `Azure.Storage.UseEncryption` as Storage Service Encryption (SSE) is always on. [#630](https://github.com/Microsoft/PSRule.Rules.Azure/issues/630)
       - SSE is on by default and can not be disabled.
 - General improvements:
-  - Additional metadata added in parameter file is passed through with `Get-AzRuleTemplateLink`. [#706](https://github.com/Microsoft/PSRule.Rules.Azure/issues/706)
+  - Additional metadata added in parameter files is passed through with `Get-AzRuleTemplateLink`. [#706](https://github.com/Microsoft/PSRule.Rules.Azure/issues/706)
 
 ## v1.2.0
 
