@@ -71,22 +71,6 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-F';
         }
 
-        It 'Azure.Storage.UseEncryption' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.UseEncryption' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-D';
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-F';
-        }
-
         It 'Azure.Storage.SoftDelete' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.SoftDelete' };
 
@@ -237,20 +221,6 @@ Describe 'Azure.Storage' -Tag Storage {
 
         It 'Azure.Storage.SecureTransfer' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.SecureTransfer' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -BeNullOrEmpty;
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'storage1';
-        }
-
-        It 'Azure.Storage.UseEncryption' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.UseEncryption' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
