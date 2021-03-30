@@ -20,12 +20,6 @@ Rule 'Azure.Storage.SecureTransfer' -Type 'Microsoft.Storage/storageAccounts' -T
     $Assert.HasFieldValue($TargetObject, 'Properties.supportsHttpsTrafficOnly', $True);
 }
 
-# Synopsis: Storage Service Encryption (SSE) should be enabled
-Rule 'Azure.Storage.UseEncryption' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.encryption.services.blob.enabled', $True);
-    $Assert.HasFieldValue($TargetObject, 'Properties.encryption.services.file.enabled', $True);
-}
-
 # Synopsis: Enable soft delete on Storage Accounts
 Rule 'Azure.Storage.SoftDelete' -Type 'Microsoft.Storage/storageAccounts' -If { !(IsCloudShell) -and !(IsHnsStorage) -and !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $serviceProperties = GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices';
