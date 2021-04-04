@@ -16,7 +16,7 @@ bugs:
   url: https://github.com/Microsoft/PSRule.Rules.Azure/issues
 
 modules:
-  PSRule: ^1.1.0
+  PSRule: ^1.2.0
 
 tasks:
   clear:

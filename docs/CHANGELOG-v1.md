@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+What's changed since pre-release v1.3.0-B2103007:
+
+- Engineering:
+  - Bump PSRule dependency to v1.2.0. [#713](https://github.com/Microsoft/PSRule.Rules.Azure/issues/713)
+
 ## v1.3.0-B2103007 (pre-release)
 
 What's changed since v1.2.0:
