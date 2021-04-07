@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v1.2.1
+
 What's changed since v1.2.0:
 
 - Bug fixes:
