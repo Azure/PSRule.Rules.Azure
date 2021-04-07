@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-What's changed since pre-release v1.2.0:
+What's changed since v1.2.0:
 
 - Bug fixes:
   - Fixed export not expanding nested deployments. [#715](https://github.com/Microsoft/PSRule.Rules.Azure/issues/715)
