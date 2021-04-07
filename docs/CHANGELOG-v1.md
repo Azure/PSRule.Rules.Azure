@@ -20,6 +20,13 @@ What's changed since v1.2.0:
 - General improvements:
   - Additional metadata added in parameter files is passed through with `Get-AzRuleTemplateLink`. [#706](https://github.com/Microsoft/PSRule.Rules.Azure/issues/706)
 
+## v1.2.1
+
+What's changed since v1.2.0:
+
+- Bug fixes:
+  - Fixed export not expanding nested deployments. [#715](https://github.com/Microsoft/PSRule.Rules.Azure/issues/715)
+
 ## v1.2.0
 
 What's changed since v1.1.4:
