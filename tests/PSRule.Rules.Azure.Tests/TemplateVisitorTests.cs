@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Data.Template;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using Xunit;
 using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
@@ -80,7 +79,20 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
-        public void AdvancedTemplateParsing5()
+        public void UserDefinedFunctions()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.4.json"), null);
+            Assert.NotNull(resources);
+            Assert.Single(resources);
+
+            var actual1 = resources[0];
+            Assert.Equal("Hello world", actual1["properties"]["keyString"].Value<string>());
+            Assert.Equal("world", actual1["properties"]["keyObject"]["message"].Value<string>());
+            Assert.Equal("Hello world", actual1["properties"]["keyObject"]["value"].Value<string>());
+        }
+
+        [Fact]
+        public void NestedTemplateParsingInner()
         {
             var resources = ProcessTemplate(GetSourcePath("Template.Parsing.3.json"), null);
             Assert.NotNull(resources);
@@ -95,16 +107,16 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
-        public void AdvancedTemplateParsing6()
+        public void NestedTemplateParsingInner2()
         {
-            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.4.json"), null);
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.5.json"), null);
             Assert.NotNull(resources);
-            Assert.Single(resources);
+            Assert.Equal(4, resources.Length);
 
-            var actual1 = resources[0];
-            Assert.Equal("Hello world", actual1["properties"]["keyString"].Value<string>());
-            Assert.Equal("world", actual1["properties"]["keyObject"]["message"].Value<string>());
-            Assert.Equal("Hello world", actual1["properties"]["keyObject"]["value"].Value<string>());
+            Assert.Equal("myVnet/my-subnet", resources[0]["name"].Value<string>());
+            Assert.Equal("my-pip1", resources[1]["name"].Value<string>());
+            Assert.Equal("my-pip2", resources[2]["name"].Value<string>());
+            Assert.Equal("my-nic", resources[3]["name"].Value<string>());
         }
 
         private static string GetSourcePath(string fileName)
@@ -116,11 +128,11 @@ namespace PSRule.Rules.Azure
         {
             var templateObject = ReadFile<JObject>(templateFile);
             var parametersObject = ReadFile<JObject>(parametersFile);
-            var visitor = new TestTemplateVisitor();
+            var visitor = new RuleDataExportVisitor();
             var context = new TemplateContext();
             context.Load(parametersObject);
             visitor.Visit(context, "deployment", templateObject);
-            return visitor.TestResources.ToArray();
+            return context.Resources.ToArray();
         }
 
         private static T ReadFile<T>(string path)
@@ -129,35 +141,6 @@ namespace PSRule.Rules.Azure
                 return default(T);
 
             return JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
-        }
-    }
-
-    internal sealed class TestSubnet
-    {
-        internal TestSubnet(string n, string[] r)
-        {
-            name = n;
-            route = r;
-        }
-
-        public string name { get; private set; }
-
-        public string[] route { get; private set; }
-    }
-
-    internal sealed class TestTemplateVisitor : TemplateVisitor
-    {
-        internal TestTemplateVisitor()
-        {
-            TestResources = new List<JObject>();
-        }
-
-        public List<JObject> TestResources { get; }
-
-        protected override void Emit(TemplateContext context, JObject resource)
-        {
-            base.Emit(context, resource);
-            TestResources.Add(resource);
         }
     }
 }

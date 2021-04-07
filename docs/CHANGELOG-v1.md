@@ -6,6 +6,8 @@ What's changed since pre-release v1.3.0-B2103007:
 
 - Engineering:
   - Bump PSRule dependency to v1.2.0. [#713](https://github.com/Microsoft/PSRule.Rules.Azure/issues/713)
+- Bug fixes:
+  - Fixed export not expanding nested deployments. [#715](https://github.com/Microsoft/PSRule.Rules.Azure/issues/715)
 
 ## v1.3.0-B2103007 (pre-release)
 
@@ -32,10 +34,10 @@ What's changed since v1.1.4:
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to 1.19.7. [#696](https://github.com/Microsoft/PSRule.Rules.Azure/issues/696)
-- Engineering:
-  - Bump PSRule dependency to v1.1.0. [#692](https://github.com/microsoft/PSRule.Rules.Azure/issues/692)
 - General improvements:
   - Added support for user defined functions in templates. [#682](https://github.com/microsoft/PSRule.Rules.Azure/issues/682)
+- Engineering:
+  - Bump PSRule dependency to v1.1.0. [#692](https://github.com/microsoft/PSRule.Rules.Azure/issues/692)
 
 What's changed since pre-release v1.2.0-B2103044:
 

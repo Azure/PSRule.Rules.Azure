@@ -721,6 +721,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 return false;
 
             Template(deploymentContext, deploymentName, template);
+            if (deploymentContext != context && deploymentContext.Resources != null && deploymentContext.Resources.Count > 0)
+                context.Resources.AddRange(deploymentContext.Resources);
+
             return true;
         }
 
@@ -1148,6 +1151,4 @@ namespace PSRule.Rules.Azure.Data.Template
             base.Resource(context, resource);
         }
     }
-
-    
 }
