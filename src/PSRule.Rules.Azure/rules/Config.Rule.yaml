@@ -4,19 +4,19 @@
 
 ---
 # Synopsis: Module configuration for PSRule.Rules.Azure
+apiVersion: github.com/microsoft/PSRule/v1
 kind: ModuleConfig
 metadata:
   name: PSRule.Rules.Azure
 spec:
   binding:
+    preferTargetInfo: true
     targetName:
     - ResourceName
-    - FullName
     - name
     targetType:
     - ResourceType
     - type
-    - Extension
     field:
       resourceId: [ 'ResourceId' ]
       subscriptionId: [ 'SubscriptionId' ]
