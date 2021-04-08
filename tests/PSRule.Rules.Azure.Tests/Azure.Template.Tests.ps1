@@ -32,7 +32,7 @@ Describe 'Azure.Template' -Tag 'Template' {
 
         It 'Azure.Template.TemplateFile' {
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Template*.json';
-            $result = Get-Item -Path $dataPath | Invoke-PSRule @invokeParams -Name 'Azure.Template.TemplateFile';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.TemplateFile';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.TemplateFile' };
 
             # Fail
@@ -45,13 +45,13 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
-            $ruleResult[0].TargetName | Should -BeLike "*Resources.Template.json";
-            $ruleResult[1].TargetName | Should -BeLike "*Resources.Template4.json";
+            ($ruleResult | Where-Object { $_.TargetName -like "*Resources.Template.json" }).TargetName | Should -BeLike "*Resources.Template.json";
+            ($ruleResult | Where-Object { $_.TargetName -like "*Resources.Template4.json" }).TargetName | Should -BeLike "*Resources.Template4.json";
         }
 
         It 'Azure.Template.ParameterMetadata' {
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Template*.json';
-            $result = Get-Item -Path $dataPath | Invoke-PSRule @invokeParams -Name 'Azure.Template.ParameterMetadata';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.ParameterMetadata';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.ParameterMetadata' };
 
             # Fail
@@ -382,7 +382,7 @@ Describe 'Azure.Template' -Tag 'Template' {
 
         It 'Azure.Template.ParameterFile' {
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Parameters*.json';
-            $result = Get-Item -Path $dataPath | Invoke-PSRule @invokeParams -Name 'Azure.Template.ParameterFile';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.ParameterFile';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.ParameterFile' };
 
             # Fail

@@ -4,93 +4,45 @@
 
 ---
 # Synopsis: Default baseline for Azure rules.
+apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.Default
 spec:
-  binding:
-    targetName:
-    - ResourceName
-    - FullName
-    - name
-    targetType:
-    - ResourceType
-    - type
-    - Extension
-    field:
-      resourceId: [ 'ResourceId' ]
-      subscriptionId: [ 'SubscriptionId' ]
-      resourceGroupName: [ 'ResourceGroupName' ]
   rule:
     tag:
       release: GA
 
 ---
 # Synopsis: Includes Azure features in preview.
+apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.Preview
 spec:
-  binding:
-    targetName:
-    - ResourceName
-    - FullName
-    - name
-    targetType:
-    - ResourceType
-    - type
-    - Extension
-    field:
-      resourceId: [ 'ResourceId' ]
-      subscriptionId: [ 'SubscriptionId' ]
-      resourceGroupName: [ 'ResourceGroupName' ]
   rule:
     tag:
       release: [ 'GA', 'preview' ]
 
 ---
 # Synopsis: Includes all Azure rules.
+apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.All
 spec:
-  binding:
-    targetName:
-    - ResourceName
-    - FullName
-    - name
-    targetType:
-    - ResourceType
-    - type
-    - Extension
-    field:
-      resourceId: [ 'ResourceId' ]
-      subscriptionId: [ 'SubscriptionId' ]
-      resourceGroupName: [ 'ResourceGroupName' ]
   rule:
     tag: { }
 
 ---
 # Synopsis: Include rules released June 2020 or prior for Azure GA features.
+apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.GA_2020_06
   annotations:
     obsolete: true
 spec:
-  binding:
-    targetName:
-    - ResourceName
-    - FullName
-    - name
-    targetType:
-    - ResourceType
-    - type
-    - Extension
-    field:
-      resourceId: [ 'ResourceId' ]
-      subscriptionId: [ 'SubscriptionId' ]
-      resourceGroupName: [ 'ResourceGroupName' ]
   rule:
     tag:
       release: GA
@@ -99,25 +51,13 @@ spec:
 
 ---
 # Synopsis: Include rules released September 2020 or prior for Azure GA features.
+apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.GA_2020_09
   annotations:
     obsolete: true
 spec:
-  binding:
-    targetName:
-    - ResourceName
-    - FullName
-    - name
-    targetType:
-    - ResourceType
-    - type
-    - Extension
-    field:
-      resourceId: [ 'ResourceId' ]
-      subscriptionId: [ 'SubscriptionId' ]
-      resourceGroupName: [ 'ResourceGroupName' ]
   rule:
     tag:
       release: GA
@@ -127,25 +67,13 @@ spec:
 
 ---
 # Synopsis: Include rules released December 2020 or prior for Azure GA features.
+apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.GA_2020_12
   annotations:
     obsolete: true
 spec:
-  binding:
-    targetName:
-    - ResourceName
-    - FullName
-    - name
-    targetType:
-    - ResourceType
-    - type
-    - Extension
-    field:
-      resourceId: [ 'ResourceId' ]
-      subscriptionId: [ 'SubscriptionId' ]
-      resourceGroupName: [ 'ResourceGroupName' ]
   rule:
     tag:
       release: GA
@@ -156,23 +84,11 @@ spec:
 
 ---
 # Synopsis: Include rules released March 2021 or prior for Azure GA features.
+apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.GA_2021_03
 spec:
-  binding:
-    targetName:
-    - ResourceName
-    - FullName
-    - name
-    targetType:
-    - ResourceType
-    - type
-    - Extension
-    field:
-      resourceId: [ 'ResourceId' ]
-      subscriptionId: [ 'SubscriptionId' ]
-      resourceGroupName: [ 'ResourceGroupName' ]
   rule:
     tag:
       release: GA
