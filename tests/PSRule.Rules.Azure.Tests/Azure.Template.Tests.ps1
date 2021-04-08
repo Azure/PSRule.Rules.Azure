@@ -45,8 +45,8 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
-            $ruleResult[0].TargetName | Should -BeLike "*Resources.Template.json";
-            $ruleResult[1].TargetName | Should -BeLike "*Resources.Template4.json";
+            $ruleResult | Where-Object { $_.TargetName -like "*Resources.Template.json" } | Should -BeLike "*Resources.Template.json";
+            $ruleResult | Where-Object { $_.TargetName -like "*Resources.Template4.json" } | Should -BeLike "*Resources.Template4.json";
         }
 
         It 'Azure.Template.ParameterMetadata' {
