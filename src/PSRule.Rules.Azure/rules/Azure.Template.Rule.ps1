@@ -212,7 +212,7 @@ Rule 'Azure.Template.ParameterDataTypes' -Type '.json' -If { (HasTemplateParamet
 #region Parameters
 
 # Synopsis: Use ARM parameter file structure.
-Rule 'Azure.Template.ParameterFile' -Type 'System.IO.FileInfo','.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Template.ParameterFile' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
     $jsonObject | Exists '$schema', 'contentVersion', 'parameters' -All;
     $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters';
@@ -231,7 +231,7 @@ function global:IsTemplateFile {
         [String]$Suffix
     )
     process {
-        if ($TargetObject.Extension -ne '.json') {
+        if ($PSRule.TargetType -ne '.json') {
             return $False;
         }
         try {
@@ -266,7 +266,7 @@ function global:IsParameterFile {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($TargetObject.Extension -ne '.json') {
+        if ($PSRule.TargetType -ne '.json') {
             return $False;
         }
         try {
