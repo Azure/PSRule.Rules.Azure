@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v1.3.0-B2104023 (pre-release)
+
+What's changed since pre-release v1.3.0-B2104013:
+
 - General improvements:
   - Improved binding support for File inputs. [#480](https://github.com/microsoft/PSRule.Rules.Azure/issues/480)
     - Template and parameter file names now return a relative path instead of full path.
