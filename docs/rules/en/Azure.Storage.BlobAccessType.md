@@ -28,8 +28,35 @@ Use Shared Access Signatures (SAS) to provide secure access to individual blobs 
 
 Consider using SAS tokens stored securely in a key vault, rotated and only accessed by approved applications.
 
+## EXAMPLES
+
+### Azure templates
+
+To deploy storage accounts blob containers that pass this rule:
+
+- Set the `properties.publicAccess` property to `None`.
+
+For example:
+
+```json
+{
+    "comments": "Create a blob container",
+    "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    "apiVersion": "2019-06-01",
+    "name": "[concat(parameters('storageAccountName'), '/default/', parameters('containerName')))]",
+    "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccountName'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+    ],
+    "properties": {
+        "publicAccess": "None"
+    }
+}
+```
+
 ## LINKS
 
-- [Manage anonymous read access to containers and blobs](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-manage-access-to-resources)
-- [How a shared access signature works](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works)
-- [Key Vault Storage Account keys](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-ovw-storage-keys)
+- [Manage anonymous read access to containers and blobs](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-configure)
+- [How a shared access signature works](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works)
+- [Key Vault Storage Account keys](https://docs.microsoft.com/azure/key-vault/secrets/overview-storage-keys)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)

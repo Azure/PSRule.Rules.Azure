@@ -25,6 +25,47 @@ The purge permission should be rarely assigned.
 
 Consider assigning access to Key Vault data based on the principle of least privilege.
 
+## EXAMPLES
+
+### Azure templates
+
+To deploy key vaults access policies that pass this rule:
+
+- Avoid assigning `Purge` and `All` permissions for Key Vault objects.
+
+For example:
+
+```json
+{
+    "comments": "Create or update a Key Vault.",
+    "type": "Microsoft.KeyVault/vaults",
+    "name": "[parameters('vaultName')]",
+    "apiVersion": "2019-09-01",
+    "location": "[parameters('location')]",
+    "properties": {
+        "accessPolicies": [
+            {
+                "objectId": "<object_id>",
+                "tenantId": "<tenant_id>",
+                "permissions": {
+                    "secrets": [
+                        "Get",
+                        "List",
+                        "Set"
+                    ]
+                }
+            }
+        ],
+        "tenantId": "[subscription().tenantId]",
+        "sku": {
+            "name": "Standard",
+            "family": "A"
+        }
+    }
+}
+```
+
 ## LINKS
 
-- [Security recommendations for Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/security-recommendations)
+- [Best practices to use Key Vault](https://docs.microsoft.com/azure/key-vault/general/best-practices)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults)

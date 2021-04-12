@@ -26,8 +26,38 @@ When soft delete is enabled, it is possible to purge soft deleted vaults and vau
 
 Consider enabling soft delete on Key Vaults to enable recovery of vaults and vault items.
 
+## EXAMPLES
+
+### Azure templates
+
+To deploy key vaults that pass this rule:
+
+- Set the `properties.enableSoftDelete` property to `true`.
+
+For example:
+
+```json
+{
+    "comments": "Create or update a Key Vault.",
+    "type": "Microsoft.KeyVault/vaults",
+    "name": "vault-001",
+    "apiVersion": "2019-09-01",
+    "location": "eastus",
+    "properties": {
+        "accessPolicies": [],
+        "tenantId": "[subscription().tenantId]",
+        "sku": {
+            "name": "Standard",
+            "family": "A"
+        },
+        "enableSoftDelete": true,
+        "enablePurgeProtection": true
+    }
+}
+```
+
 ## LINKS
 
-- [Azure Key Vault soft-delete overview](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-ovw-soft-delete)
-- [Security recommendations for Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/security-recommendations)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.keyvault/2018-02-14/vaults#vaultproperties-object)
+- [Azure Key Vault soft-delete overview](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)
+- [Azure Key Vault security](https://docs.microsoft.com/azure/key-vault/general/security-overview#backup-and-recovery)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults)
