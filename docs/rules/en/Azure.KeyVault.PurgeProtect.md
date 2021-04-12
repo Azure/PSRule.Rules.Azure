@@ -28,7 +28,38 @@ Purge protection is not enabled by default.
 
 Consider enabling purge protection on Key Vaults to enforce retention of vaults and vault items for up to 90 days.
 
+## EXAMPLES
+
+### Azure templates
+
+To deploy key vaults that pass this rule:
+
+- Set the `properties.enablePurgeProtection` property to `true`.
+
+For example:
+
+```json
+{
+    "comments": "Create or update a Key Vault.",
+    "type": "Microsoft.KeyVault/vaults",
+    "name": "vault-001",
+    "apiVersion": "2019-09-01",
+    "location": "eastus",
+    "properties": {
+        "accessPolicies": [],
+        "tenantId": "[subscription().tenantId]",
+        "sku": {
+            "name": "Standard",
+            "family": "A"
+        },
+        "enableSoftDelete": true,
+        "enablePurgeProtection": true
+    }
+}
+```
+
 ## LINKS
 
-- [Azure Key Vault soft-delete overview](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-ovw-soft-delete)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.keyvault/2018-02-14/vaults#vaultproperties-object)
+- [Azure Key Vault soft-delete overview](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)
+- [Azure Key Vault security](https://docs.microsoft.com/azure/key-vault/general/security-overview#backup-and-recovery)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults)
