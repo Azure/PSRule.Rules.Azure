@@ -2,7 +2,6 @@
 # Licensed under the MIT License.
 
 @{
-    ConfigurationOptionReplaced = "The configuration option '{0}' has been replaced with '{1}'."
     MinTLSVersion = "Minimum TLS version is set to {0}."
     ResourceNotTagged = "The resource is not tagged."
     TcpHealthProbe = "The health probe ({0}) is using TCP."
