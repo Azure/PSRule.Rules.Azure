@@ -98,7 +98,7 @@
                 "policyDefinitionId": "[concat(subscription().id, '/providers/Microsoft.Authorization/policySetDefinitions/', parameters('assignments')[copyIndex('assignmentIndex')].initiatives)]",
                 "scope": "[subscription().id]",
                 "parameters": {},
-                "metadata": {},
+                "metadata": "[parameters('assignments')[copyIndex('assignmentIndex')].metadata]",
                 "enforcementMode": "[if(empty(parameters('assignments')[copyIndex('assignmentIndex')].enforcementMode), 'Default', parameters('assignments')[copyIndex('assignmentIndex')].enforcementMode)]"
             }
         }

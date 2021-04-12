@@ -1,0 +1,13 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+---
+# Synopsis: Policy exemptions that are waivers.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.PolicyExemptionWaiver
+spec:
+  if:
+    field: 'properties.exemptionCategory'
+    equals: 'Waiver'

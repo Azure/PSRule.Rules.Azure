@@ -326,7 +326,10 @@
                     "displayName": "Metadata standards",
                     "description": "Enforces naming and tagging standards for resources.",
                     "initiatives": "standards",
-                    "enforcementMode": "Default"
+                    "enforcementMode": "Default",
+                    "metadata": {
+                        "assignedBy": "DevOps pipeline"
+                    }
                 }
             ]
         }

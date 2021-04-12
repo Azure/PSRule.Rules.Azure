@@ -310,6 +310,7 @@ The following baselines are included within `PSRule.Rules.Azure`.
 - [Azure.GA_2020_06](docs/baselines/en/Azure.GA_2020_06.md) - Baseline for GA rules released June 2020 or prior.
 - [Azure.GA_2020_09](docs/baselines/en/Azure.GA_2020_09.md) - Baseline for GA rules released September 2020 or prior.
 - [Azure.GA_2020_12](docs/baselines/en/Azure.GA_2020_12.md) - Baseline for GA rules released December 2020 or prior.
+- [Azure.GA_2021_03](docs/baselines/en/Azure.GA_2021_03.md) - Baseline for GA rules released March 2021 or prior.
 
 ## Language reference
 
@@ -333,6 +334,7 @@ The following conceptual topics exist in the `PSRule.Rules.Azure` module:
   - [Azure_AKSNodeMinimumMaxPods](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_aksnodeminimummaxpods)
   - [Azure_AllowedRegions](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_allowedregions)
   - [Azure_MinimumCertificateLifetime](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_minimumcertificatelifetime)
+  - [AZURE_POLICY_WAIVER_MAX_EXPIRY](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_policy_waiver_max_expiry)
   - [AZURE_RESOURCE_GROUP](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_resource_group)
   - [AZURE_SUBSCRIPTION](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_subscription)
 
