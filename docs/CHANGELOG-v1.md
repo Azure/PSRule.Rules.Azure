@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+What's changed since pre-release v1.3.0-B2104023:
+
+- New rules:
+  - Policy:
+    - Check policy assignment display name and description are set. [#725](https://github.com/microsoft/PSRule.Rules.Azure/issues/725)
+    - Check policy assignment assigned by metadata is set. [#726](https://github.com/microsoft/PSRule.Rules.Azure/issues/726)
+    - Check policy exemption display name and description are set. [#723](https://github.com/microsoft/PSRule.Rules.Azure/issues/723)
+    - Check policy waiver exemptions have an expiry date set. [#724](https://github.com/microsoft/PSRule.Rules.Azure/issues/724)
+
 ## v1.3.0-B2104023 (pre-release)
 
 What's changed since pre-release v1.3.0-B2104013:

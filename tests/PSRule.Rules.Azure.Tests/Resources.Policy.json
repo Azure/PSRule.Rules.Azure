@@ -255,12 +255,9 @@
         "ResourceType": "Microsoft.Authorization/policyAssignments",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "Properties": {
-            "displayName": "assignment-001 (subscription: 00000000-0000-0000-0000-000000000000)",
             "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/00000000-0000-0000-0000-000000000000",
             "scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
-            "description": "An example description",
             "metadata": {
-                "assignedBy": "Security Center",
                 "createdBy": "00000000-0000-0000-0000-000000000000",
                 "updatedBy": "00000000-0000-0000-0000-000000000000"
             },
@@ -271,5 +268,113 @@
             "tier": "Standard"
         },
         "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment-001"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment-002",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment-002",
+        "Identity": {
+            "PrincipalId": "00000000-0000-0000-0000-000000000000",
+            "TenantId": "00000000-0000-0000-0000-000000000000",
+            "Type": "SystemAssigned",
+            "UserAssignedIdentities": null
+        },
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "assignment-002",
+        "Name": "assignment-002",
+        "Properties": {
+            "displayName": "Assignment 002",
+            "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/assignment-002",
+            "scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+            "notScopes": [],
+            "parameters": {},
+            "description": "Enforces compliance requirements for resources.",
+            "metadata": {
+                "assignedBy": "DevOps deployment",
+                "parameterScopes": {},
+                "createdBy": "00000000-0000-0000-0000-000000000000",
+                "createdOn": "2020-06-12T03:44:54.3204067Z",
+                "updatedBy": "00000000-0000-0000-0000-000000000000",
+                "updatedOn": "2021-03-30T06:03:26.1897949Z"
+            },
+            "enforcementMode": "DoNotEnforce",
+            "nonComplianceMessages": [
+                {
+                    "message": "Initiative non-compliance message"
+                },
+                {
+                    "policyDefinitionReferenceId": "16686347626800927871",
+                    "message": "Resources are required to be deployed in a specific location."
+                }
+            ]
+        },
+        "ResourceGroupName": null,
+        "Type": "Microsoft.Authorization/policyAssignments",
+        "ResourceType": "Microsoft.Authorization/policyAssignments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Authorization/policyExemptions/exemption-001",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Authorization/policyExemptions/exemption-001",
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "exemption-001",
+        "Name": "exemption-001",
+        "Properties": {
+            "policyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment-001",
+            "policyDefinitionReferenceIds": [
+                "000000000000000000000000"
+            ],
+            "exemptionCategory": "Waiver",
+            "metadata": {}
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Authorization/policyExemptions",
+        "ResourceType": "Microsoft.Authorization/policyExemptions"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Authorization/policyExemptions/exemption-002",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Authorization/policyExemptions/exemption-002",
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "exemption-002",
+        "Name": "exemption-002",
+        "Properties": {
+            "policyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment-002",
+            "policyDefinitionReferenceIds": [
+                "000000000000000000000000"
+            ],
+            "exemptionCategory": "Waiver",
+            "displayName": "An exemption",
+            "description": "An example exemption.",
+            "expiresOn": "2028-04-27T14:00:00Z",
+            "metadata": {}
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Authorization/policyExemptions",
+        "ResourceType": "Microsoft.Authorization/policyExemptions"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Authorization/policyExemptions/exemption-003",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Authorization/policyExemptions/exemption-003",
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "exemption-003",
+        "Name": "exemption-003",
+        "Properties": {
+            "policyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment-002",
+            "policyDefinitionReferenceIds": [
+                "000000000000000000000000"
+            ],
+            "exemptionCategory": "Waiver",
+            "displayName": "An exemption",
+            "description": "An example exemption.",
+            "expiresOn": "2021-04-27T14:00:00Z",
+            "metadata": {}
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Authorization/policyExemptions",
+        "ResourceType": "Microsoft.Authorization/policyExemptions"
     }
 ]

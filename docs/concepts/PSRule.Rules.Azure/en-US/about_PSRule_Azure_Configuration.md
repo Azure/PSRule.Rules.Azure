@@ -4,7 +4,7 @@
 
 ## SHORT DESCRIPTION
 
-Describes PSRule configuration options specific to `PSRule.Rules.Azure`.
+Describes PSRule configuration options specific to PSRule for Azure.
 
 ## LONG DESCRIPTION
 
@@ -21,6 +21,7 @@ The following configurations options are available for use:
 - [Azure_AKSNodeMinimumMaxPods](#azure_aksnodeminimummaxpods)
 - [Azure_AllowedRegions](#azure_allowedregions)
 - [Azure_MinimumCertificateLifetime](#azure_minimumcertificatelifetime)
+- [AZURE_POLICY_WAIVER_MAX_EXPIRY](#azure_policy_waiver_max_expiry)
 - [AZURE_RESOURCE_GROUP](#azure_resource_group)
 - [AZURE_SUBSCRIPTION](#azure_subscription)
 
@@ -41,7 +42,7 @@ Default:
 ```yaml
 # YAML: The default Azure_AKSMinimumVersion configuration option
 configuration:
-  Azure_AKSMinimumVersion: 1.16.7
+  Azure_AKSMinimumVersion: 1.19.7
 ```
 
 Example:
@@ -141,7 +142,34 @@ configuration:
   Azure_MinimumCertificateLifetime: 90
 ```
 
-### Azure_Resource_Group
+### AZURE_POLICY_WAIVER_MAX_EXPIRY
+
+This configuration option determines the maximum number of days in the future for a waiver policy exemption.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_POLICY_WAIVER_MAX_EXPIRY: integer
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option
+configuration:
+  AZURE_POLICY_WAIVER_MAX_EXPIRY: 366
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option to 90
+configuration:
+  AZURE_POLICY_WAIVER_MAX_EXPIRY: 90
+```
+
+### AZURE_RESOURCE_GROUP
 
 This configuration option sets the resource group object used by the `resourceGroup()` function.
 Configure this option to change the resource group object when using exporting templates for analysis.

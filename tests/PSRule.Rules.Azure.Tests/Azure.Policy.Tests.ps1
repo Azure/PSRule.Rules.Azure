@@ -6,9 +6,7 @@
 #
 
 [CmdletBinding()]
-param (
-
-)
+param ()
 
 # Setup error handling
 $ErrorActionPreference = 'Stop';
@@ -23,7 +21,7 @@ $rootPath = $PWD;
 Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
 $here = (Resolve-Path $PSScriptRoot).Path;
 
-Describe 'Azure.Policy' {
+Describe 'Azure.Policy' -Tag Policy {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.Policy.json';
 
     Context 'Conditions' {
@@ -50,6 +48,70 @@ Describe 'Azure.Policy' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'initiative-001', 'policy-001';
         }
+
+        It 'Azure.Policy.AssignmentDescriptors' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Policy.AssignmentDescriptors' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'assignment-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'assignment-002';
+        }
+
+        It 'Azure.Policy.AssignmentAssignedBy' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Policy.AssignmentAssignedBy' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'assignment-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'assignment-002';
+        }
+
+        It 'Azure.Policy.ExemptionDescriptors' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Policy.ExemptionDescriptors' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'exemption-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'exemption-002', 'exemption-003';
+        }
+
+        It 'Azure.Policy.WaiverExpiry' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Policy.WaiverExpiry' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'exemption-001', 'exemption-002';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'exemption-003';
+        }
     }
 
     Context 'With Template' {
@@ -67,6 +129,26 @@ Describe 'Azure.Policy' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'standards', 'inheritTagPolicy', 'rgRequireTagPolicy', 'rgApplyTagPolicy';
+        }
+
+        It 'Azure.Policy.AssignmentDescriptors' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Policy.AssignmentDescriptors' };
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'standards-assignment';
+        }
+
+        It 'Azure.Policy.AssignmentAssignedBy' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Policy.AssignmentAssignedBy' };
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'standards-assignment';
         }
     }
 }
