@@ -10,7 +10,7 @@
 # Synopsis: Use ARM template file structure.
 Rule 'Azure.Template.TemplateFile' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
-    $jsonObject | Exists '$schema', 'contentVersion', 'resources' -All;
+    $Assert.HasFields($jsonObject, @('$schema', 'contentVersion', 'resources'));
     $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters', 'functions', 'variables', 'resources', 'outputs';
 }
 
@@ -112,7 +112,7 @@ Rule 'Azure.Template.ResourceLocation' -Type '.json' -If { (HasTemplateResources
     }
     foreach ($resource in $resources) {
         AnyOf {
-            $resource | Exists -Not 'location';
+            $Assert.NotHasField($resource, 'location');
             $Assert.HasFieldValue($resource, 'location', 'global');
             $Assert.Match($resource, 'location', '^\[.*\]$');
         }
@@ -144,10 +144,12 @@ Rule 'Azure.Template.ParameterMinMaxValue' -Type '.json' -If { (HasTemplateParam
     foreach ($parameter in $parameters) {
         $Assert.HasFieldValue($parameter.Value, 'type', 'int');
         if ($Assert.HasField($parameter.Value, 'minValue').Result) {
-            $Assert.Create($parameter.Value.minValue -is [int] -or $parameter.Value.minValue -is [long], ($LocalizedData.ParameterTypeMismatch -f 'minValue', $parameter.Name, 'int'));
+            $Assert.IsInteger($parameter.Value, 'minValue').
+                Reason($LocalizedData.ParameterTypeMismatch, 'minValue', $parameter.Name, 'int');
         }
         if ($Assert.HasField($parameter.Value, 'maxValue').Result) {
-            $Assert.Create($parameter.Value.maxValue -is [int] -or $parameter.Value.maxValue -is [long], ($LocalizedData.ParameterTypeMismatch -f 'maxValue', $parameter.Name, 'int'));
+            $Assert.IsInteger($parameter.Value, 'maxValue').
+            Reason($LocalizedData.ParameterTypeMismatch, 'maxValue', $parameter.Name, 'int');
         }
     }
 }
@@ -190,19 +192,24 @@ Rule 'Azure.Template.ParameterDataTypes' -Type '.json' -If { (HasTemplateParamet
             $Assert.Pass();
         }
         elseif ($parameter.Value.type -eq 'bool') {
-            $Assert.Create($parameter.Value.defaultValue -is [bool], ($LocalizedData.ParameterTypeMismatch -f 'defaultValue', $parameter.Name, $parameter.Value.type));
+            $Assert.IsBoolean($parameter.Value, 'defaultValue').
+                Reason($LocalizedData.ParameterTypeMismatch, 'defaultValue', $parameter.Name, $parameter.Value.type);
         }
         elseif ($parameter.Value.type -eq 'int') {
-            $Assert.Create($parameter.Value.defaultValue -is [int] -or $parameter.Value.defaultValue -is [long], ($LocalizedData.ParameterTypeMismatch -f 'defaultValue', $parameter.Name, $parameter.Value.type));
+            $Assert.IsInteger($parameter.Value, 'defaultValue').
+                Reason($LocalizedData.ParameterTypeMismatch, 'defaultValue', $parameter.Name, $parameter.Value.type);
         }
         elseif ($parameter.Value.type -eq 'array') {
-            $Assert.Create($parameter.Value.defaultValue -is [array], ($LocalizedData.ParameterTypeMismatch -f 'defaultValue', $parameter.Name, $parameter.Value.type));
+            $Assert.IsArray($parameter.Value, 'defaultValue').
+                Reason($LocalizedData.ParameterTypeMismatch, 'defaultValue', $parameter.Name, $parameter.Value.type);
         }
         elseif ($parameter.Value.type -eq 'string' -or $parameter.Value.type -eq 'secureString') {
-            $Assert.Create($parameter.Value.defaultValue -is [string], ($LocalizedData.ParameterTypeMismatch -f 'defaultValue', $parameter.Name, $parameter.Value.type));
+            $Assert.IsString($parameter.Value, 'defaultValue').
+                Reason($LocalizedData.ParameterTypeMismatch, 'defaultValue', $parameter.Name, $parameter.Value.type);
         }
         elseif ($parameter.Value.type -eq 'object' -or $parameter.Value.type -eq 'secureObject') {
-            $Assert.Create($parameter.Value.defaultValue -is [PSObject], ($LocalizedData.ParameterTypeMismatch -f 'defaultValue', $parameter.Name, $parameter.Value.type));
+            $Assert.TypeOf($parameter.Value, 'defaultValue', [PSObject]).
+                Reason($LocalizedData.ParameterTypeMismatch, 'defaultValue', $parameter.Name, $parameter.Value.type);
         }
     }
 }
@@ -214,7 +221,7 @@ Rule 'Azure.Template.ParameterDataTypes' -Type '.json' -If { (HasTemplateParamet
 # Synopsis: Use ARM parameter file structure.
 Rule 'Azure.Template.ParameterFile' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
-    $jsonObject | Exists '$schema', 'contentVersion', 'parameters' -All;
+    $Assert.HasFields($jsonObject, @('$schema', 'contentVersion', 'parameters'));
     $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters';
 }
 

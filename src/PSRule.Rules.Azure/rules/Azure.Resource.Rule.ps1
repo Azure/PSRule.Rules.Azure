@@ -5,21 +5,21 @@
 # Validation rules for Azure resources
 #
 
-if ($Null -ne $Configuration.azureAllowedRegions) {
-    Write-Warning -Message ($LocalizedData.ConfigurationOptionReplaced -f 'azureAllowedRegions', 'Azure_AllowedRegions');
-}
-
 # Synopsis: Resources should be tagged
 Rule 'Azure.Resource.UseTags' -If { (SupportsTags) -and $PSRule.TargetType -ne 'Microsoft.Subscription' } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     Reason $LocalizedData.ResourceNotTagged
     # List of resource that support tags can be found here: https://docs.microsoft.com/en-us/azure/azure-resource-manager/tag-support
-    (Exists 'Tags') -and
-    (($TargetObject.Tags.PSObject.Members | Where-Object { $_.MemberType -eq 'NoteProperty' }) -ne $Null)
+    $Assert.HasField($TargetObject, 'tags')
+    $Assert.Create(($TargetObject.Tags.PSObject.Members | Where-Object { $_.MemberType -eq 'NoteProperty' }) -ne $Null)
 }
 
 # Synopsis: Resources should be deployed to allowed regions
 Rule 'Azure.Resource.AllowedRegions' -If { ($Null -ne $Configuration.Azure_AllowedRegions) -and ($Configuration.Azure_AllowedRegions.Length -gt 0) -and (SupportsRegions) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    IsAllowedRegion
+    $region = @($Configuration.Azure_AllowedRegions);
+    foreach ($r in $Configuration.Azure_AllowedRegions) {
+        $region += ($r -replace ' ', '')
+    }
+    $Assert.In($TargetObject, 'location', $region);
 }
 
 # Synopsis: Use Resource Group naming requirements

@@ -5,10 +5,6 @@
 # Validation rules for Azure Kubernetes Service (AKS)
 #
 
-if ($Null -ne $Configuration.minAKSVersion) {
-    Write-Warning -Message ($LocalizedData.ConfigurationOptionReplaced -f 'minAKSVersion', 'Azure_AKSMinimumVersion');
-}
-
 # Synopsis: AKS clusters should have minimum number of nodes for failover and updates
 Rule 'Azure.AKS.MinNodeCount' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.GreaterOrEqual($TargetObject, 'Properties.agentPoolProfiles[0].count', 3);

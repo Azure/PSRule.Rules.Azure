@@ -49,19 +49,6 @@ function global:GetSubResources {
     }
 }
 
-function global:IsAllowedRegion {
-    [CmdletBinding()]
-    [OutputType([System.Boolean])]
-    param ()
-    process {
-        $region = @($Configuration.Azure_AllowedRegions);
-        foreach ($r in $Configuration.Azure_AllowedRegions) {
-            $region += ($r -replace ' ', '')
-        }
-        return $TargetObject.Location -in $region;
-    }
-}
-
 # Certain rules only apply if resource data has been exported
 function global:IsExport {
     [CmdletBinding()]
