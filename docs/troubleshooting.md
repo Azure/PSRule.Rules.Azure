@@ -7,23 +7,21 @@ This article provides troubleshooting instructions for common errors.
 PSRule >= **v1.3.0-B2104030** uses an updated version of the YamlDotNet library.
 The current version of PSRule for Azure uses an older version of this library which may conflict.
 
-To avoid this issue PSRule for Azure <= **v1.3.0** use PSRule v1.2.0.
+To avoid this issue on PSRule for Azure <= **v1.3.0** use PSRule v1.2.0.
 
-To install version v1.2.0 of PSRule use the following commands:
+To install v1.2.0 of PSRule use the following command:
 
 ```powershell
 Install-Module -Name PSRule -RequiredVersion 1.2.0 -Scope CurrentUser;
-Install-Module -Name PSRule.Rules.Azure -Scope CurrentUser;
 ```
 
-To ensure that the correct module versions are loaded use:
+Before running PSRule or PSRule for Azure commands use:
 
 ```powershell
 Import-Module -Name PSRule -RequiredVersion 1.2.0;
-Import-Module -Name PSRule.Rules.Azure;
 ```
 
-For the PSRule GitHub Action use v1.3.0.
+For the PSRule GitHub Action, pin the version to v1.3.0.
 
 ```yaml
 - name: Run PSRule analysis
