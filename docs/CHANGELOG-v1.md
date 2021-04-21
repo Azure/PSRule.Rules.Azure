@@ -1,6 +1,17 @@
 # Change log
 
+**Important notes**:
+
+- Issue #741: `Could not load file or assembly YamlDotNet`.
+See [troubleshooting guide] for a workaround to this issue.
+
 ## Unreleased
+
+What's changed since pre-release v1.3.0-B2104034:
+
+- Bug fixes:
+  - Fixed could not load file or assembly YamlDotNet. [#741](https://github.com/microsoft/PSRule.Rules.Azure/issues/741)
+    - This fix pins the PSRule version to v1.2.0 until the next stable release of PSRule for Azure.
 
 ## v1.3.0-B2104034 (pre-release)
 
@@ -300,3 +311,5 @@ What's changed since v0.19.0:
   - Added support for `environment` template function. [#517](https://github.com/Microsoft/PSRule.Rules.Azure/issues/517)
 - Engineering:
   - Bump PSRule dependency to v1.0.1. [#611](https://github.com/Microsoft/PSRule.Rules.Azure/issues/611)
+
+[troubleshooting guide]: troubleshooting.md

@@ -25,6 +25,8 @@ Features of PSRule for Azure include:
 ## Support
 
 This project uses GitHub Issues to track bugs and feature requests.
+Before logging an issue please see our [troubleshooting guide].
+
 Please search the existing issues before filing new issues to avoid duplicates.
 
 - For new issues, file your bug or feature request as a new [issue].
@@ -391,3 +393,4 @@ This project is [licensed under the MIT License](LICENSE).
 [AWAF]: https://docs.microsoft.com/en-gb/azure/architecture/framework/
 [create-workflow]: https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file
 [extension]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
+[troubleshooting guide]: docs/troubleshooting.md
