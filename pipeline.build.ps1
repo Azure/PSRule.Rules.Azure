@@ -116,7 +116,7 @@ task VersionModule ModuleDependencies, {
     $manifest = Test-ModuleManifest -Path $manifestPath;
     $requiredModules = $manifest.RequiredModules | ForEach-Object -Process {
         if ($_.Name -eq 'PSRule' -and $Configuration -eq 'Release') {
-            @{ ModuleName = 'PSRule'; ModuleVersion = '1.2.0' }
+            @{ ModuleName = 'PSRule'; RequiredVersion = '1.2.0' }
         }
         else {
             @{ ModuleName = $_.Name; ModuleVersion = $_.Version }
