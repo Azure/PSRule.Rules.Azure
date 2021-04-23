@@ -201,7 +201,7 @@ stages:
       displayName: 'Install dependencies'
 
     # Install pipeline dependencies and build module
-    - powershell: Invoke-Build Release -ApiKey $(apiKey)
+    - powershell: Invoke-Build Release -ApiKey $(apiKey) -Configuration $(buildConfiguration)
       displayName: 'Publish module'
 
     # Update GitHub release
