@@ -7,6 +7,37 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.3.0
+
+What's changed since v1.2.1:
+
+- New rules:
+  - Policy:
+    - Check policy assignment display name and description are set. [#725](https://github.com/microsoft/PSRule.Rules.Azure/issues/725)
+    - Check policy assignment assigned by metadata is set. [#726](https://github.com/microsoft/PSRule.Rules.Azure/issues/726)
+    - Check policy exemption display name and description are set. [#723](https://github.com/microsoft/PSRule.Rules.Azure/issues/723)
+    - Check policy waiver exemptions have an expiry date set. [#724](https://github.com/microsoft/PSRule.Rules.Azure/issues/724)
+- Removed rules:
+  - Storage:
+    - Remove `Azure.Storage.UseEncryption` as Storage Service Encryption (SSE) is always on. [#630](https://github.com/Microsoft/PSRule.Rules.Azure/issues/630)
+      - SSE is on by default and can not be disabled.
+- General improvements:
+  - Additional metadata added in parameter files is passed through with `Get-AzRuleTemplateLink`. [#706](https://github.com/Microsoft/PSRule.Rules.Azure/issues/706)
+  - Improved binding support for File inputs. [#480](https://github.com/microsoft/PSRule.Rules.Azure/issues/480)
+    - Template and parameter file names now return a relative path instead of full path.
+  - Added API version for each module resource. [#729](https://github.com/microsoft/PSRule.Rules.Azure/issues/729)
+- Engineering:
+  - Clean up depreciated warning message for configuration option `azureAllowedRegions`. [#737](https://github.com/microsoft/PSRule.Rules.Azure/issues/737)
+  - Clean up depreciated warning message for configuration option `minAKSVersion`. [#738](https://github.com/microsoft/PSRule.Rules.Azure/issues/738)
+  - Bump PSRule dependency to v1.2.0. [#713](https://github.com/Microsoft/PSRule.Rules.Azure/issues/713)
+- Bug fixes:
+  - Fixed could not load file or assembly YamlDotNet. [#741](https://github.com/microsoft/PSRule.Rules.Azure/issues/741)
+    - This fix pins the PSRule version to v1.2.0 until the next stable release of PSRule for Azure.
+
+What's changed since pre-release v1.3.0-B2104040:
+
+- No additional changes.
+
 ## v1.3.0-B2104040 (pre-release)
 
 What's changed since pre-release v1.3.0-B2104034:
