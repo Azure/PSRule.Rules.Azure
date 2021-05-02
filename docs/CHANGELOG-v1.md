@@ -7,6 +7,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.3.0:
+
+- Engineering:
+  - Bump PSRule dependency to v1.3.0. [#749](https://github.com/Microsoft/PSRule.Rules.Azure/issues/749)
+  - Bump YamlDotNet dependency to v11.1.1. [#742](https://github.com/Microsoft/PSRule.Rules.Azure/issues/742)
+
 ## v1.3.0
 
 What's changed since v1.2.1:
