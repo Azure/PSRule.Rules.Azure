@@ -26,7 +26,7 @@ Also consider, storing the access data into Azure Monitor and using Key Vault An
 
 ## EXAMPLES
 
-### Azure templates
+### Configure with Azure template
 
 To deploy key vaults that pass this rule:
 

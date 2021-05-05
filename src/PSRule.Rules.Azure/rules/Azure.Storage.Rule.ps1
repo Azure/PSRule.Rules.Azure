@@ -21,9 +21,17 @@ Rule 'Azure.Storage.SecureTransfer' -Type 'Microsoft.Storage/storageAccounts' -T
 }
 
 # Synopsis: Enable soft delete on Storage Accounts
-Rule 'Azure.Storage.SoftDelete' -Type 'Microsoft.Storage/storageAccounts' -If { !(IsCloudShell) -and !(IsHnsStorage) -and !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $serviceProperties = GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices';
-    $Assert.HasFieldValue($serviceProperties, 'properties.deleteRetentionPolicy.enabled', $True);
+Rule 'Azure.Storage.SoftDelete' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices' -If { !(IsCloudShell) -and !(IsHnsStorage) -and !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+    $services = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
+        $services = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices');
+    }
+    if ($services.Length -eq 0) {
+        return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Storage/storageAccounts/blobServices');
+    }
+    foreach ($service in $services) {
+        $Assert.HasFieldValue($service, 'properties.deleteRetentionPolicy.enabled', $True);
+    }
 }
 
 # Synopsis: Disallow blob containers with public access types.

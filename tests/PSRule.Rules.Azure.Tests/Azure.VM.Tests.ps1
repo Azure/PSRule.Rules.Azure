@@ -23,7 +23,7 @@ $rootPath = $PWD;
 Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
 $here = (Resolve-Path $PSScriptRoot).Path;
 
-Describe 'Azure.VM' {
+Describe 'Azure.VM' -Tag 'VM' {
     $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.json';
 
     Context 'Conditions' {

@@ -40,4 +40,5 @@
     ParameterTypeMismatch = "The {0} for '{1}' is not {2}."
     ParameterInvalidDefaultValue = "The default value for the parameter '{0}' is '{1}'."
     ExpressionInTemplate = "The expression '{0}' was found in the template."
+    SubResourceNotFound = "A sub-resource of type '{0}' has not been specified."
 }

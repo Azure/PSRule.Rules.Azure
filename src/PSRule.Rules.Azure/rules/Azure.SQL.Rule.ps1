@@ -34,20 +34,35 @@ Rule 'Azure.SQL.FirewallIPRange' -Type 'Microsoft.Sql/servers' -Tag @{ release =
 
 # Synopsis: Enable Advanced Thread Protection for Azure SQL logical server
 Rule 'Azure.SQL.ThreatDetection' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $policy = GetSubResources -ResourceType 'Microsoft.Sql/servers/securityAlertPolicies'
-    $policy | Within 'Properties.state' 'Enabled'
+    $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/securityAlertPolicies');
+    if ($configs.Length -eq 0) {
+        return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/securityAlertPolicies');
+    }
+    foreach ($config in $configs) {
+        $Assert.HasFieldValue($config, 'Properties.state', 'Enabled');
+    }
 }
 
 # Synopsis: Enable auditing for Azure SQL logical server
 Rule 'Azure.SQL.Auditing' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $policy = GetSubResources -ResourceType 'Microsoft.Sql/servers/auditingSettings'
-    $policy | Within 'Properties.state' 'Enabled'
+    $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/auditingSettings');
+    if ($configs.Length -eq 0) {
+        return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/auditingSettings');
+    }
+    foreach ($config in $configs) {
+        $Assert.HasFieldValue($config, 'Properties.state', 'Enabled');
+    }
 }
 
 # Synopsis: Use Azure AD administrators
 Rule 'Azure.SQL.AAD' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $config = GetSubResources -ResourceType 'Microsoft.Sql/servers/administrators';
-    $Assert.HasFieldValue($config, 'Properties.administratorType', 'ActiveDirectory');
+    $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/administrators');
+    if ($configs.Length -eq 0) {
+        return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/administrators');
+    }
+    foreach ($config in $configs) {
+        $Assert.HasFieldValue($config, 'Properties.administratorType', 'ActiveDirectory');
+    }
 }
 
 # Synopsis: Consider configuring the minimum supported TLS version to be 1.2.
@@ -74,8 +89,13 @@ Rule 'Azure.SQL.ServerName' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'
 
 # Synopsis: Enable transparent data encryption
 Rule 'Azure.SQL.TDE' -Type 'Microsoft.Sql/servers/databases' -If { !(IsMasterDatabase) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $config = GetSubResources -ResourceType 'Microsoft.Sql/servers/databases/transparentDataEncryption';
-    $Assert.HasFieldValue($config, 'Properties.status', 'Enabled');
+    $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/databases/transparentDataEncryption');
+    if ($configs.Length -eq 0) {
+        return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/databases/transparentDataEncryption');
+    }
+    foreach ($config in $configs) {
+        $Assert.HasFieldValue($config, 'Properties.status', 'Enabled');
+    }
 }
 
 # Synopsis: Azure SQL Database names should meet naming requirements.
