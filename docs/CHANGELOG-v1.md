@@ -7,6 +7,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.3.2
+
 What's changed since v1.3.1:
 
 - Bug fixes:
