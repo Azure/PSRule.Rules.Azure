@@ -91,6 +91,7 @@ Describe 'Azure.SQL' -Tag 'SQL' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'server-B', 'server-C';
+            $ruleResult[0].Reason[0] | Should -Be 'A sub-resource of type ''Microsoft.Sql/servers/securityAlertPolicies'' has not been specified.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -107,6 +108,8 @@ Describe 'Azure.SQL' -Tag 'SQL' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'server-B', 'server-C';
+            $ruleResult[0].Reason[0] | Should -Be 'A sub-resource of type ''Microsoft.Sql/servers/auditingSettings'' has not been specified.';
+            $ruleResult[1].Reason[0] | Should -Be 'The field ''Properties.state'' is set to ''Disabled''.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -123,6 +126,8 @@ Describe 'Azure.SQL' -Tag 'SQL' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'server-B', 'server-C';
+            $ruleResult[0].Reason[0] | Should -Be 'A sub-resource of type ''Microsoft.Sql/servers/administrators'' has not been specified.';
+            $ruleResult[1].Reason[0] | Should -Be 'A sub-resource of type ''Microsoft.Sql/servers/administrators'' has not been specified.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -155,6 +160,7 @@ Describe 'Azure.SQL' -Tag 'SQL' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'server-A/database-A';
+            $ruleResult[0].Reason[0] | Should -Be 'A sub-resource of type ''Microsoft.Sql/servers/databases/transparentDataEncryption'' has not been specified.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

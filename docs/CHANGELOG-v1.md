@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.3.1:
+
+- Bug fixes:
+  - Fixed rule reason reported the parameter inputObject is null. [#753](https://github.com/Microsoft/PSRule.Rules.Azure/issues/753)
+
 ## v1.3.1
 
 What's changed since v1.3.0:
