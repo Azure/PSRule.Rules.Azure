@@ -7,6 +7,10 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.4.0-B2105020 (pre-release)
+
+What's changed since v1.3.2:
+
 - General improvements:
   - Automatically nest template sub-resources for analysis. [#746](https://github.com/Microsoft/PSRule.Rules.Azure/issues/746)
     - Sub-resources such as diagnostic logs or configurations are automatically nested.
