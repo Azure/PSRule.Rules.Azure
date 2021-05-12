@@ -259,8 +259,12 @@ Describe 'Azure.Storage' -Tag Storage {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'storage1', 'storage1/default/arm';
+            $ruleResult.Length | Should -Be 1;
+            @($ruleResult[0].TargetObject.resources | Where-Object {
+                $_.type -eq 'Microsoft.Storage/storageAccounts/blobServices/containers' -and
+                $_.name -eq 'storage1/default/arm'
+            }).Length | Should -Be 1
+            # $ruleResult.TargetName | Should -BeIn 'storage1', 'storage1/default/arm';
         }
     }
 }

@@ -6,6 +6,14 @@
             "defaultValue": "clusterA",
             "type": "string"
         },
+        "clusterName2": {
+            "defaultValue": "clusterB",
+            "type": "string"
+        },
+        "clusterName3": {
+            "defaultValue": "clusterC",
+            "type": "string"
+        },
         "clusterLocation": {
             "defaultValue": "[resourceGroup().location]",
             "type": "string"
@@ -101,11 +109,72 @@
             }
         },
         {
+            "type": "Microsoft.ContainerService/managedClusters",
+            "apiVersion": "2019-10-01",
+            "name": "[parameters('clusterName2')]",
+            "location": "[parameters('clusterLocation')]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "kubernetesVersion": "1.19.7",
+                "dnsPrefix": "[concat('dns-', parameters('clusterName'))]",
+                "agentPoolProfiles": [
+                    {
+                        "name": "agentpool1",
+                        "count": 3,
+                        "vmSize": "Standard_B2ms",
+                        "osDiskSizeGB": 100,
+                        "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-01')]",
+                        "maxPods": 50,
+                        "type": "VirtualMachineScaleSets",
+                        "osType": "Linux"
+                    }
+                ],
+                "servicePrincipalProfile": {
+                    "clientId": "00000000-0000-0000-0000-000000000000"
+                },
+                "addonProfiles": {
+                    "aciConnectorLinux": {
+                        "enabled": true,
+                        "config": {
+                            "SubnetName": "subnet-aci"
+                        }
+                    },
+                    "azurePolicy": {
+                        "enabled": false
+                    },
+                    "httpApplicationRouting": {
+                        "enabled": true
+                    },
+                    "kubeDashboard": {
+                        "enabled": true
+                    },
+                    "omsagent": {
+                        "enabled": true,
+                        "config": {
+                            "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
+                        }
+                    }
+                },
+                "enableRBAC": true,
+                "enablePodSecurityPolicy": false,
+                "networkProfile": {
+                    "networkPlugin": "azure",
+                    "networkPolicy": "azure",
+                    "loadBalancerSku": "Standard",
+                    "serviceCidr": "192.168.0.0/16",
+                    "dnsServiceIP": "192.168.0.4",
+                    "dockerBridgeCidr": "172.17.0.1/16"
+                }
+            }
+        },
+        {
             "type": "Microsoft.ContainerService/managedClusters/agentPools",
             "apiVersion": "2019-10-01",
-            "name": "[concat(parameters('clusterName'), '/agentpool3')]",
+            "name": "[concat(parameters('clusterName3'), '/agentpool3')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))]"
+                "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName3'))]"
             ],
             "properties": {
                 "count": 3,
@@ -121,9 +190,9 @@
         {
             "type": "Microsoft.ContainerService/managedClusters/agentPools",
             "apiVersion": "2019-10-01",
-            "name": "[concat(parameters('clusterName'), '/agentpool4')]",
+            "name": "[concat(parameters('clusterName3'), '/agentpool4')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))]"
+                "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName3'))]"
             ],
             "properties": {
                 "count": 3,

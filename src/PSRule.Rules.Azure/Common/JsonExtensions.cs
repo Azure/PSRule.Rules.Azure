@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace PSRule.Rules.Azure
 {
@@ -38,6 +39,8 @@ namespace PSRule.Rules.Azure
 
     internal static class JsonExtensions
     {
+        private const string FIELD_DEPENDSON = "dependsOn";
+
         internal static IJsonLineInfo TryLineInfo(this JToken token)
         {
             if (token == null)
@@ -74,6 +77,27 @@ namespace PSRule.Rules.Azure
             var annotation = source.Annotation<TemplateTokenAnnotation>();
             if (annotation != null)
                 token.AddAnnotation(annotation);
+        }
+
+        internal static void UseProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken, new()
+        {
+            if (!o.TryGetValue(propertyName, System.StringComparison.OrdinalIgnoreCase, out JToken v))
+            {
+                value = new TValue();
+                o.Add(propertyName, value);
+                return;
+            }
+            value = (TValue)v;
+        }
+
+        internal static bool TryGetDependencies(this JObject resource, out string[] dependencies)
+        {
+            dependencies = null;
+            if (!(resource.ContainsKey(FIELD_DEPENDSON) && resource[FIELD_DEPENDSON] is JArray d && d.Count > 0))
+                return false;
+
+            dependencies = d.Values<string>().ToArray();
+            return true;
         }
     }
 }
