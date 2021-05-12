@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Data.Template;
 using System;
 using System.IO;
+using System.Linq;
 using Xunit;
 using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
@@ -119,6 +120,44 @@ namespace PSRule.Rules.Azure
             Assert.Equal("my-nic", resources[3]["name"].Value<string>());
         }
 
+        [Fact]
+        public void NestedResources()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Resources.KeyVault.Template.json"), null);
+            Assert.NotNull(resources);
+            Assert.Single(resources);
+
+            var subResources = resources[0]["resources"].Value<JArray>();
+            Assert.Equal(2, subResources.Count);
+            Assert.Equal("keyvault1/Microsoft.Insights/service", subResources[0]["name"].Value<string>());
+            Assert.Equal("monitor", subResources[1]["name"].Value<string>());
+        }
+
+        [Fact]
+        public void TryParentResourceId()
+        {
+            const string expected1 = "Microsoft.ServiceBus/namespaces/besubns";
+            const string expected2 = "Microsoft.KeyVault/vaults/keyvault1";
+
+            var actual = JObject.Parse("{ \"type\": \"Microsoft.ServiceBus/namespaces/topics\", \"name\": \"besubns/demo1\" }");
+            TemplateContext.TryParentResourceId(actual, out string[] resourceId);
+            Assert.Equal(expected1, resourceId[0]);
+
+            actual = JObject.Parse("{ \"type\": \"Microsoft.KeyVault/vaults\", \"name\": \"keyvault1\" }");
+            TemplateContext.TryParentResourceId(actual, out resourceId);
+            Assert.Empty(resourceId);
+
+            actual = JObject.Parse("{ \"type\": \"Microsoft.KeyVault/vaults/providers/diagnosticsettings\", \"name\": \"keyvault1/Microsoft.Insights/service\" }");
+            TemplateContext.TryParentResourceId(actual, out resourceId);
+            Assert.Equal(expected2, resourceId[0]);
+
+            actual = JObject.Parse("{ \"type\": \"Microsoft.Insights/diagnosticsettings\", \"name\": \"auditing-storage\", \"scope\": \"Microsoft.KeyVault/vaults/keyvault1\" }");
+            TemplateContext.TryParentResourceId(actual, out resourceId);
+            Assert.Equal(expected2, resourceId[0]);
+        }
+
+        #region Helper methods
+
         private static string GetSourcePath(string fileName)
         {
             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
@@ -132,7 +171,7 @@ namespace PSRule.Rules.Azure
             var context = new TemplateContext();
             context.Load(parametersObject);
             visitor.Visit(context, "deployment", templateObject);
-            return context.Resources.ToArray();
+            return context.GetResources().Select(i => i.Value).ToArray();
         }
 
         private static T ReadFile<T>(string path)
@@ -142,5 +181,7 @@ namespace PSRule.Rules.Azure
 
             return JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
         }
+
+        #endregion Helper methods
     }
 }

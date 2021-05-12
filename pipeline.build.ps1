@@ -172,7 +172,11 @@ task PSRule NuGet, {
     if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 1.3.0 -ErrorAction Ignore)) {
         Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 1.3.0 -Scope CurrentUser -Force;
     }
+    if ($Null -eq (Get-InstalledModule -Name PSRule.Rules.MSFT.OSS -MinimumVersion 0.1.0 -AllowPrerelease -ErrorAction Ignore)) {
+        Install-Module -Name PSRule.Rules.MSFT.OSS -Repository PSGallery -MinimumVersion 0.1.0 -AllowPrerelease -Scope CurrentUser -Force;
+    }
     Import-Module -Name PSRule -Verbose:$False;
+    Import-Module -Name PSRule.Rules.MSFT.OSS -Verbose:$False;
 }
 
 # Synopsis: Install PSDocs
@@ -314,7 +318,7 @@ task Rules PSRule, {
         ErrorAction = 'Stop'
     }
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-    Assert-PSRule @assertParams -InputPath $PWD -Format File -OutputPath reports/ps-rule-file.xml;
+    Assert-PSRule @assertParams -InputPath $PWD -Module PSRule.Rules.MSFT.OSS -Format File -OutputPath reports/ps-rule-file.xml;
 
     $rules = Get-PSRule -Module PSRule.Rules.Azure;
     $rules | Assert-PSRule @assertParams -OutputPath reports/ps-rule-file2.xml;

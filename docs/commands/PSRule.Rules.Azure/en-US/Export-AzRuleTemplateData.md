@@ -52,6 +52,10 @@ Currently the following limitations apply:
 
 - Nested templates are expanded, external templates are not.
   - Deployment resources that link to an external template are returned as a resource.
+- Sub-resources such as diagnostic logs or configurations are automatically nested.
+Automatic nesting a sub-resource requires:
+  - The parent resource is defined in the same template.
+  - The sub-resource depends on the parent resource.
 - The `pickZones` template function is not supported.
 - The `environment` template function always returns values for Azure public cloud.
 - References to Key Vault secrets are not expanded.

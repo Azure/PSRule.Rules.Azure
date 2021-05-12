@@ -218,8 +218,8 @@ namespace PSRule.Rules.Azure.Pipeline
             var results = new List<PSObject>();
             var serializer = new JsonSerializer();
             serializer.Converters.Add(new PSObjectJsonConverter());
-            foreach (var resource in context.Resources)
-                results.Add(resource.ToObject<PSObject>(serializer));
+            foreach (var resource in context.GetResources())
+                results.Add(resource.Value.ToObject<PSObject>(serializer));
 
             return results.ToArray();
         }

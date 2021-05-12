@@ -103,7 +103,7 @@ function global:SupportsAcceleratedNetworking {
         }
 
         $vmSize = $TargetObject.Properties.hardwareProfile.vmSize;
-        if ($vmSize -notlike 'Standard_*_*') {
+        if ($vmSize -notLike 'Standard_*_*') {
             if ($vmSize -match '^Standard_(F|B[1-2][0-9]ms)') {
                 return $True;
             }
@@ -122,13 +122,13 @@ function global:SupportsAcceleratedNetworking {
 
         # Generation v2
         if ($generation -eq 'v2') {
-            if ($size -notmatch '^(A|NC|DS1$|D1$|F[1-2]s)') {
+            if ($size -notMatch '^(A|NC|DS1$|D1$|F[1-2]s)') {
                 return $True;
             }
         }
         # Generation v3
         elseif ($generation -eq 'v3') {
-            if ($size -notmatch '^(E2s?|E[2-8]-2|D2s?|NC)') {
+            if ($size -notMatch '^(E2s?|E[2-8]-2|D2s?|NC)') {
                 return $True;
             }
         }
@@ -164,7 +164,7 @@ function global:IsAppGwWAF {
         if ($PSRule.TargetType -ne 'Microsoft.Network/applicationGateways') {
             return $False;
         }
-        if ($TargetObject.Properties.sku.tier -notin ('WAF', 'WAF_v2')) {
+        if ($TargetObject.Properties.sku.tier -notIn ('WAF', 'WAF_v2')) {
             return $False;
         }
         if ($TargetObject.Properties.webApplicationFirewallConfiguration.enabled -ne $True) {
@@ -179,7 +179,7 @@ function global:IsWindowsOS {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($PSRule.TargetType -notin 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachineScaleSets') {
+        if ($PSRule.TargetType -notIn 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachineScaleSets') {
             return $False;
         }
         return ($TargetObject.Properties.storageProfile.osDisk.osType -eq 'Windows') -or
@@ -194,7 +194,7 @@ function global:IsWindowsClientOS {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($PSRule.TargetType -notin 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachineScaleSets') {
+        if ($PSRule.TargetType -notIn 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachineScaleSets') {
             return $False;
         }
         return $TargetObject.Properties.storageProfile.imageReference.publisher -eq 'MicrosoftWindowsDesktop';
@@ -236,7 +236,7 @@ function global:SupportsTags {
     process {
         if (
             ($PSRule.TargetType -eq 'Microsoft.Subscription') -or
-            ($PSRule.TargetType -notlike 'Microsoft.*/*') -or
+            ($PSRule.TargetType -notLike 'Microsoft.*/*') -or
             ($PSRule.TargetType -like 'Microsoft.Addons/*') -or
             ($PSRule.TargetType -like 'Microsoft.Advisor/*') -or
             ($PSRule.TargetType -like 'Microsoft.Authorization/*') -or

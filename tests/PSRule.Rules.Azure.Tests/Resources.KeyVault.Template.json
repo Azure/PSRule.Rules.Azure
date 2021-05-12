@@ -8,6 +8,7 @@
     "parameters": {
         "vaultName": {
             "type": "string",
+            "defaultValue": "keyvault1",
             "metadata": {
                 "description": "Required. The name of the Key Vault."
             }
@@ -91,7 +92,7 @@
         },
         "workspaceId": {
             "type": "string",
-            "defaultValue": "",
+            "defaultValue": "/subscriptions/workspaceId",
             "metadata": {
                 "description": "Optional. The workspace to store audit logs."
             }
@@ -129,30 +130,48 @@
                 "enableSoftDelete": "[parameters('useSoftDelete')]",
                 "enablePurgeProtection": "[parameters('usePurgeProtection')]"
             },
-            "tags": "[parameters('tags')]",
-            "resources": [
-                {
-                    "comments": "Enable monitoring of Key Vault operations.",
-                    "condition": "[not(empty(parameters('workspaceId')))]",
-                    "type": "Microsoft.KeyVault/vaults/providers/diagnosticSettings",
-                    "name": "[concat(parameters('vaultName'), '/Microsoft.Insights/service')]",
-                    "apiVersion": "2016-09-01",
-                    "location": "[parameters('location')]",
-                    "dependsOn": [
-                        "[concat('Microsoft.KeyVault/vaults/', parameters('vaultName'))]"
-                    ],
-                    "properties": {
-
-                        "workspaceId": "[parameters('workspaceId')]",
-                        "logs": [
-                            {
-                                "category": "AuditEvent",
-                                "enabled": true
-                            }
-                        ]
+            "tags": "[parameters('tags')]"
+        },
+        {
+            "comments": "Enable monitoring of Key Vault operations.",
+            "condition": "[not(empty(parameters('workspaceId')))]",
+            "type": "Microsoft.KeyVault/vaults/providers/diagnosticSettings",
+            "name": "[concat(parameters('vaultName'), '/Microsoft.Insights/service')]",
+            "apiVersion": "2016-09-01",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.KeyVault/vaults/', parameters('vaultName'))]"
+            ],
+            "properties": {
+                "workspaceId": "[parameters('workspaceId')]",
+                "logs": [
+                    {
+                        "category": "AuditEvent",
+                        "enabled": true
                     }
-                }
-            ]
+                ]
+            }
+        },
+        {
+            "comments": "Enable monitoring of Key Vault operations.",
+            "condition": "[not(empty(parameters('workspaceId')))]",
+            "scope": "Microsoft.KeyVault/vaults/keyvault1",
+            "type": "Microsoft.Insights/diagnosticsettings",
+            "name": "monitor",
+            "apiVersion": "2016-09-01",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.KeyVault/vaults/', parameters('vaultName'))]"
+            ],
+            "properties": {
+                "workspaceId": "[parameters('workspaceId')]",
+                "logs": [
+                    {
+                        "category": "AuditEvent",
+                        "enabled": true
+                    }
+                ]
+            }
         }
     ],
     "outputs": {
