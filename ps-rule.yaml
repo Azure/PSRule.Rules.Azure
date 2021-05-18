@@ -5,7 +5,12 @@ input:
   - '.vscode/'
   - '*.md'
   - '*.Designer.cs'
+  - '*.resx'
+  - '*.sln'
 
 output:
   culture:
   - en-US
+
+configuration:
+  RULE_HELP: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/

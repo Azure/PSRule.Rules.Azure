@@ -308,7 +308,6 @@ task IntegrationTest ModuleDependencies, Pester, PSScriptAnalyzer, {
     }
 }
 
-
 # Synopsis: Run validation
 task Rules PSRule, {
     $assertParams = @{
@@ -316,6 +315,7 @@ task Rules PSRule, {
         Style = $AssertStyle
         OutputFormat = 'NUnit3'
         ErrorAction = 'Stop'
+        As = 'Summary'
     }
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     Assert-PSRule @assertParams -InputPath $PWD -Module PSRule.Rules.MSFT.OSS -Format File -OutputPath reports/ps-rule-file.xml;
