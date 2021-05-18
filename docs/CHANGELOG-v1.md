@@ -7,6 +7,16 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.4.0-B2105020:
+
+- New rules:
+  - Cognitive Search:
+    - Check search services meet index SLA replica requirement. [#761](https://github.com/Microsoft/PSRule.Rules.Azure/issues/761)
+    - Check search services meet query SLA replica requirement. [#762](https://github.com/Microsoft/PSRule.Rules.Azure/issues/762)
+    - Check search services meet naming requirements. [#763](https://github.com/Microsoft/PSRule.Rules.Azure/issues/763)
+    - Check search services use a minimum SKU. [#764](https://github.com/Microsoft/PSRule.Rules.Azure/issues/764)
+    - Check search services use managed identities. [#765](https://github.com/Microsoft/PSRule.Rules.Azure/issues/765)
+
 ## v1.4.0-B2105020 (pre-release)
 
 What's changed since v1.3.2:

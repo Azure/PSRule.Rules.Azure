@@ -8,7 +8,7 @@ The following sections describe key features of PSRule for Azure.
 
 ## Ready to go
 
-PSRule for Azure includes over 180 rules for validating resources against configuration recommendations.
+PSRule for Azure includes over 200 rules for validating resources against configuration recommendations.
 Each rule includes additional information to help remediate issues.
 
 Use the built-in rules to start enforcing release processes quickly.
