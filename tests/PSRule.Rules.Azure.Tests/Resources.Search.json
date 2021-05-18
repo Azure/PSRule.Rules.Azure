@@ -1,0 +1,156 @@
+[
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Search/searchServices/search-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Search/searchServices/search-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "search-A",
+        "Name": "search-A",
+        "Plan": null,
+        "Properties": {
+            "replicaCount": 2,
+            "partitionCount": 1,
+            "status": "running",
+            "statusDetails": "",
+            "hostingMode": "Default",
+            "publicNetworkAccess": "Enabled",
+            "networkRuleSet": {
+                "ipRules": [],
+                "bypass": "None"
+            },
+            "privateEndpointConnections": [],
+            "sharedPrivateLinkResources": []
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Search/searchServices",
+        "ResourceType": "Microsoft.Search/searchServices",
+        "Sku": {
+            "Name": "basic",
+            "Tier": null,
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Search/searchServices/search-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Search/searchServices/search-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "search-B",
+        "Name": "search-B",
+        "Plan": null,
+        "Properties": {
+            "replicaCount": 1,
+            "partitionCount": 1,
+            "status": "running",
+            "statusDetails": "",
+            "hostingMode": "Default"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Search/searchServices",
+        "ResourceType": "Microsoft.Search/searchServices",
+        "Sku": {
+            "Name": "basic",
+            "Tier": null,
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Search/searchServices/search-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Search/searchServices/search-C",
+        "Identity": {
+            "PrincipalId": "00000000-0000-0000-0000-000000000000",
+            "TenantId": "00000000-0000-0000-0000-000000000000",
+            "Type": "SystemAssigned",
+            "UserAssignedIdentities": null
+        },
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "search-C",
+        "Name": "search-C",
+        "Plan": null,
+        "Properties": {
+            "replicaCount": 3,
+            "partitionCount": 1,
+            "status": "running",
+            "statusDetails": "",
+            "hostingMode": "Default",
+            "publicNetworkAccess": "Enabled",
+            "networkRuleSet": {
+                "ipRules": [
+                    {
+                        "value": "n.n.n.n"
+                    }
+                ],
+                "bypass": "None"
+            },
+            "privateEndpointConnections": [],
+            "sharedPrivateLinkResources": []
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Search/searchServices",
+        "ResourceType": "Microsoft.Search/searchServices",
+        "Sku": {
+            "Name": "basic",
+            "Tier": null,
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Search/searchServices/search-D",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Search/searchServices/search-D",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "search-D",
+        "Name": "search-D",
+        "Plan": null,
+        "Properties": {
+            "replicaCount": 1,
+            "partitionCount": 1,
+            "status": "running",
+            "statusDetails": "",
+            "hostingMode": "Default",
+            "publicNetworkAccess": "Enabled",
+            "networkRuleSet": {
+                "ipRules": [],
+                "bypass": "None"
+            },
+            "privateEndpointConnections": [],
+            "sharedPrivateLinkResources": []
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Search/searchServices",
+        "ResourceType": "Microsoft.Search/searchServices",
+        "Sku": {
+            "Name": "free",
+            "Tier": null,
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    }
+]

@@ -1,0 +1,44 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "serviceName": {
+            "type": "string",
+            "defaultValue": "search01"
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        },
+        "sku": {
+            "type": "string",
+            "defaultValue": "basic"
+        },
+        "hostingMode": {
+            "type": "string",
+            "defaultValue": "Default"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2020-08-01",
+            "name": "[parameters('serviceName')]",
+            "location": "[parameters('location')]",
+            "type": "Microsoft.Search/searchServices",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "sku": {
+                "name": "[parameters('sku')]"
+            },
+            "properties": {
+                "replicaCount": 2,
+                "partitionCount": 1,
+                "hostingMode": "[parameters('hostingMode')]"
+            },
+            "tags": {},
+            "dependsOn": []
+        }
+    ],
+    "outputs": {}
+}
