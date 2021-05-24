@@ -4,28 +4,23 @@ This article provides troubleshooting instructions for common errors.
 
 ## Could not load file or assembly YamlDotNet
 
-PSRule >= **v1.3.0-B2104030** uses an updated version of the YamlDotNet library.
-The current version of PSRule for Azure uses an older version of this library which may conflict.
+PSRule **>=1.3.0** uses an updated version of the YamlDotNet library.
+The PSRule for Azure **<1.3.1** uses an older version of this library which may conflict.
 
-To avoid this issue on PSRule for Azure <= **v1.3.0** use PSRule v1.2.0.
+To avoid this issue:
 
-To install v1.2.0 of PSRule use the following command:
+- Update to the latest version and use PSRule for Azure **>=1.3.1** with PSRule **>=1.3.0**.
+- Alternatively, when using PSRule for Azure **<1.3.1** use PSRule **=1.2.0**.
 
-```powershell
-Install-Module -Name PSRule -RequiredVersion 1.2.0 -Scope CurrentUser;
-```
-
-Before running PSRule or PSRule for Azure commands use:
+To install the latest module version of PSRule use the following commands:
 
 ```powershell
-Import-Module -Name PSRule -RequiredVersion 1.2.0;
+Install-Module -Name PSRule.Rules.Azure -MinimumVersion 1.3.1 -Scope CurrentUser -Force;
 ```
 
-For the PSRule GitHub Action, pin the version to v1.3.0.
+For the PSRule GitHub Action, use **>=1.4.0**.
 
 ```yaml
 - name: Run PSRule analysis
-  uses: Microsoft/ps-rule@v1.3.0
+  uses: Microsoft/ps-rule@v1.4.0
 ```
-
-> An update to the support this newer version of YamlDotNet can be tracked [here](https://github.com/microsoft/PSRule.Rules.Azure/issues/742).
