@@ -71,7 +71,6 @@ namespace PSRule.Rules.Azure.Configuration
                 _GetWorkingPath = () => Directory.GetCurrentDirectory();
                 return;
             }
-            
             _GetWorkingPath = () => executionContext.SessionState.Path.CurrentFileSystemLocation.Path;
         }
 
@@ -101,8 +100,8 @@ namespace PSRule.Rules.Azure.Configuration
         private static PSRuleOption Combine(PSRuleOption o1, PSRuleOption o2)
         {
             var result = new PSRuleOption(o1?.SourcePath ?? o2?.SourcePath, o1);
-            result.Configuration = ConfigurationOption.Combine(result.Configuration, o2?.Configuration);
-            result.Output = OutputOption.Combine(result.Output, o2?.Output);
+            result.Configuration = ConfigurationOption.Combine(o1?.Configuration, o2?.Configuration);
+            result.Output = OutputOption.Combine(o1?.Output, o2?.Output);
             return result;
         }
 

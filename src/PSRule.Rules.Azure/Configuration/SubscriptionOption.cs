@@ -84,10 +84,10 @@ namespace PSRule.Rules.Azure.Configuration
         {
             var result = new SubscriptionOption()
             {
-                SubscriptionId = o1.SubscriptionId ?? o2.SubscriptionId,
-                TenantId = o1.TenantId ?? o2.TenantId,
-                DisplayName = o1.DisplayName ?? o2.DisplayName,
-                State = o1.State ?? o2.State,
+                SubscriptionId = o1?.SubscriptionId ?? o2?.SubscriptionId,
+                TenantId = o1?.TenantId ?? o2?.TenantId,
+                DisplayName = o1?.DisplayName ?? o2?.DisplayName,
+                State = o1?.State ?? o2?.State,
             };
             return result;
         }

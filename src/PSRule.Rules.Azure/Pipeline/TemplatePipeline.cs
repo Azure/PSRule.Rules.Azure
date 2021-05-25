@@ -1,18 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline.Output;
-using PSRule.Rules.Azure.Resources;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Management.Automation;
 using System.Text;
-using System.Threading;
 
 namespace PSRule.Rules.Azure.Pipeline
 {
@@ -136,16 +130,12 @@ namespace PSRule.Rules.Azure.Pipeline
 
     internal sealed class TemplatePipeline : PipelineBase
     {
-        private readonly string _DeploymentName;
-        private readonly ResourceGroupOption _ResourceGroup;
-        private readonly SubscriptionOption _Subscription;
+        private readonly TemplateHelper _TemplateHelper;
 
         internal TemplatePipeline(PipelineContext context, string deploymentName, ResourceGroupOption resourceGroup, SubscriptionOption subscription)
             : base(context)
         {
-            _DeploymentName = deploymentName;
-            _ResourceGroup = resourceGroup;
-            _Subscription = subscription;
+            _TemplateHelper = new TemplateHelper(context, deploymentName, resourceGroup, subscription);
         }
 
         public override void Process(PSObject sourceObject)
@@ -178,61 +168,7 @@ namespace PSRule.Rules.Azure.Pipeline
 
         internal PSObject[] ProcessTemplate(string templateFile, string parameterFile)
         {
-            var rootedTemplateFile = PSRuleOption.GetRootedPath(templateFile);
-            if (!File.Exists(rootedTemplateFile))
-                throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateFileNotFound, rootedTemplateFile), rootedTemplateFile);
-
-            var templateObject = ReadFile(rootedTemplateFile);
-            var visitor = new RuleDataExportVisitor();
-
-            // Load context
-            var context = new TemplateVisitor.TemplateContext(Context, _Subscription, _ResourceGroup);
-            if (!string.IsNullOrEmpty(parameterFile))
-            {
-                var rootedParameterFile = PSRuleOption.GetRootedPath(parameterFile);
-                if (!File.Exists(rootedParameterFile))
-                    throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ParameterFileNotFound, rootedParameterFile), rootedParameterFile);
-
-                try
-                {
-                    var parametersObject = ReadFile(rootedParameterFile);
-                    context.Load(parametersObject);
-                }
-                catch (Exception inner)
-                {
-                    throw new TemplateReadException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateExpandInvalid, templateFile, parameterFile, inner.Message), inner, templateFile, parameterFile);
-                }
-            }
-
-            // Process
-            try
-            {
-                visitor.Visit(context, _DeploymentName, templateObject);
-            }
-            catch (Exception inner)
-            {
-                throw new TemplateReadException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateExpandInvalid, templateFile, parameterFile, inner.Message), inner, templateFile, parameterFile);
-            }
-
-            // Return results
-            var results = new List<PSObject>();
-            var serializer = new JsonSerializer();
-            serializer.Converters.Add(new PSObjectJsonConverter());
-            foreach (var resource in context.GetResources())
-                results.Add(resource.Value.ToObject<PSObject>(serializer));
-
-            return results.ToArray();
-        }
-
-        private static JObject ReadFile(string path)
-        {
-            using (var stream = new StreamReader(path))
-            {
-                using (var reader = new JsonTextReader(stream))
-                {
-                    return JObject.Load(reader);
-                }
-            }
+            return _TemplateHelper.ProcessTemplate(templateFile, parameterFile);
         }
     }
 }

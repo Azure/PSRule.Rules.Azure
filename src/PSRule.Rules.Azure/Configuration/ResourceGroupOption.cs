@@ -113,12 +113,12 @@ namespace PSRule.Rules.Azure.Configuration
         {
             var result = new ResourceGroupOption()
             {
-                SubscriptionId = o1.SubscriptionId ?? o2.SubscriptionId,
-                Name = o1.Name ?? o2.Name,
-                Location = o1.Location ?? o2.Location,
-                ManagedBy = o1.ManagedBy ?? o2.ManagedBy,
-                Tags = o1.Tags ?? o2.Tags,
-                Properties = o1.Properties ?? o2.Properties,
+                SubscriptionId = o1?.SubscriptionId ?? o2?.SubscriptionId,
+                Name = o1?.Name ?? o2?.Name,
+                Location = o1?.Location ?? o2?.Location,
+                ManagedBy = o1?.ManagedBy ?? o2?.ManagedBy,
+                Tags = o1?.Tags ?? o2?.Tags,
+                Properties = o1?.Properties ?? o2?.Properties,
             };
             return result;
         }
