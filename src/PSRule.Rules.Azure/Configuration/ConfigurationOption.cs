@@ -55,9 +55,9 @@ namespace PSRule.Rules.Azure.Configuration
 
         internal static ConfigurationOption Combine(ConfigurationOption o1, ConfigurationOption o2)
         {
-            var result = new ConfigurationOption(o1);
-            result.ResourceGroup = o1.ResourceGroup ?? o2.ResourceGroup;
-            result.Subscription = o1.Subscription ?? o2.Subscription;
+            var result = new ConfigurationOption();
+            result.ResourceGroup = ResourceGroupOption.Combine(o1?.ResourceGroup, o2?.ResourceGroup);
+            result.Subscription = SubscriptionOption.Combine(o1?.Subscription, o2?.Subscription);
             return result;
         }
 

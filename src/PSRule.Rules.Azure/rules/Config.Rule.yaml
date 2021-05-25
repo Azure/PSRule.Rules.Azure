@@ -24,6 +24,9 @@ spec:
       resourceId: [ 'ResourceId' ]
       subscriptionId: [ 'SubscriptionId' ]
       resourceGroupName: [ 'ResourceGroupName' ]
+  convention:
+    include:
+    - 'Azure.ExpandTemplate'
   output:
     culture:
     - en

@@ -7,6 +7,13 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.4.0-B2105027:
+
+- New features:
+  - Automatically expand template from parameter files for analysis. [#772](https://github.com/Microsoft/PSRule.Rules.Azure/issues/772)
+    - Previously templates needed to be exported with `Export-AzRuleTemplateData`.
+    - To export template data automatically use PSRule cmdlets with `-Format File`.
+
 ## v1.4.0-B2105027 (pre-release)
 
 What's changed since pre-release v1.4.0-B2105020:
