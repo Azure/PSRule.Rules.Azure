@@ -15,6 +15,7 @@ What's changed since pre-release v1.4.0-B2105027:
     - To export template data automatically use PSRule cmdlets with `-Format File`.
 - Bug fixes:
   - Fixed string index parsing in expressions with whitespace. [#775](https://github.com/Microsoft/PSRule.Rules.Azure/issues/775)
+  - Fixed base for DateTimeAdd is not a valid string. [#777](https://github.com/Microsoft/PSRule.Rules.Azure/issues/777)
 
 ## v1.4.0-B2105027 (pre-release)
 

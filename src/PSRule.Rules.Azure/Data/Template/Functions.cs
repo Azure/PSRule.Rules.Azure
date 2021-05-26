@@ -1096,7 +1096,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (argCount < 2 || argCount > 3)
                 throw ArgumentsOutOfRange(nameof(DateTimeAdd), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string start))
+            if (!ExpressionHelpers.TryConvertDateTime(args[0], out DateTime startTime))
                 throw ArgumentInvalidString(nameof(DateTimeAdd), "base");
 
             if (!ExpressionHelpers.TryString(args[1], out string duration))
@@ -1106,7 +1106,6 @@ namespace PSRule.Rules.Azure.Data.Template
             if (argCount == 3 && !ExpressionHelpers.TryString(args[2], out format))
                 throw ArgumentInvalidString(nameof(DateTimeAdd), nameof(format));
 
-            var startTime = DateTime.Parse(start, AzureCulture);
             var timeToAdd = XmlConvert.ToTimeSpan(duration);
             var result = startTime.Add(timeToAdd);
             return format == null ? result.ToString(AzureCulture) : result.ToString(format, AzureCulture);
