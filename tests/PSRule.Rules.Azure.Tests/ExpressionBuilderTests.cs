@@ -80,6 +80,21 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ArgumentOutOfRangeException>(() => Build(context, "[variables('items')[0]]"));
         }
 
+        [Fact]
+        public void BuildExpressionWithDateParameter()
+        {
+            var expression = "[dateTimeAdd(parameters('startDate'), parameters('duration'))]";
+            var context = GetContext();
+            var expected = JObject.Parse("{ \"value\": \"2021-05-01T00:00:00Z\", \"duration\": \"P10Y\" }");
+            Assert.Equal(JTokenType.Date, expected["value"].Type);
+            Assert.Equal(JTokenType.String, expected["duration"].Type);
+
+            context.Parameter("startDate", expected["value"]);
+            context.Parameter("duration", expected["duration"]);
+            var actual = Build(context, expression);
+            Assert.NotNull(actual);
+        }
+
         private static object Build(TemplateContext context, string expression)
         {
             var builder = new ExpressionBuilder();

@@ -12,6 +12,8 @@ namespace PSRule.Rules.Azure.Data.Template
 {
     internal static class ExpressionHelpers
     {
+        private static readonly CultureInfo AzureCulture = new CultureInfo("en-US");
+
         internal static bool TryString(object o, out string value)
         {
             if (o is string s)
@@ -182,7 +184,39 @@ namespace PSRule.Rules.Azure.Data.Template
             if (TryString(o, out string svalue) && bool.TryParse(svalue, out value))
                 return true;
 
-            value = default(bool);
+            return false;
+        }
+
+        /// <summary>
+        /// Try to get DateTime from the existing object.
+        /// </summary>
+        internal static bool TryDateTime(object o, out DateTime value)
+        {
+            if (o is DateTime dvalue)
+            {
+                value = dvalue;
+                return true;
+            }
+            else if (o is JToken token && token.Type == JTokenType.Date)
+            {
+                value = token.Value<DateTime>();
+                return true;
+            }
+            value = default(DateTime);
+            return false;
+        }
+
+        /// <summary>
+        /// Try to get DateTime from the existing type and allow conversion from string.
+        /// </summary>
+        internal static bool TryConvertDateTime(object o, out DateTime value)
+        {
+            if (TryDateTime(o, out value))
+                return true;
+
+            if (TryString(o, out string svalue) && DateTime.TryParse(svalue, AzureCulture, DateTimeStyles.None, out value))
+                return true;
+
             return false;
         }
 
