@@ -125,6 +125,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         private static void Inner(ExpressionStream stream, TokenStream output)
         {
+            stream.SkipWhitespace();
             if (stream.CaptureString(out string s))
             {
                 output.String(s);

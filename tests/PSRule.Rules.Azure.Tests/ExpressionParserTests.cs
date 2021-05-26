@@ -150,7 +150,7 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
-        public void ParseExpression8()
+        public void ParseExpressionMultiline()
         {
             var expression = "[\r\nparameters(\r\n                 'vnetName'\r\n)\r\n]";
             var actual = ExpressionParser.Parse(expression).ToArray();
@@ -160,6 +160,35 @@ namespace PSRule.Rules.Azure
             Assert.Equal(ExpressionTokenType.String, actual[2].Type); // 'vnetName'
             Assert.Equal("vnetName", actual[2].Content);
             Assert.Equal(ExpressionTokenType.GroupEnd, actual[3].Type);
+        }
+
+        [Fact]
+        public void ParseExpressionWithStringIndexProperty()
+        {
+            var expression = "[ variables('configurations')[ variables('environment') ][ 'defaults' ][\r\n'item1'] ]";
+            var actual = ExpressionParser.Parse(expression).ToArray();
+
+            Assert.Equal(ExpressionTokenType.Element, actual[0].Type); // variables
+            Assert.Equal("variables", actual[0].Content);
+            Assert.Equal(ExpressionTokenType.GroupStart, actual[1].Type);
+            Assert.Equal(ExpressionTokenType.String, actual[2].Type); // 'configurations'
+            Assert.Equal("configurations", actual[2].Content);
+            Assert.Equal(ExpressionTokenType.GroupEnd, actual[3].Type);
+            Assert.Equal(ExpressionTokenType.IndexStart, actual[4].Type);
+            Assert.Equal(ExpressionTokenType.Element, actual[5].Type);
+            Assert.Equal(ExpressionTokenType.GroupStart, actual[6].Type);
+            Assert.Equal(ExpressionTokenType.String, actual[7].Type); // 'environment'
+            Assert.Equal("environment", actual[7].Content);
+            Assert.Equal(ExpressionTokenType.GroupEnd, actual[8].Type);
+            Assert.Equal(ExpressionTokenType.IndexEnd, actual[9].Type);
+            Assert.Equal(ExpressionTokenType.IndexStart, actual[10].Type);
+            Assert.Equal(ExpressionTokenType.String, actual[11].Type); // 'defaults'
+            Assert.Equal("defaults", actual[11].Content);
+            Assert.Equal(ExpressionTokenType.IndexEnd, actual[12].Type);
+            Assert.Equal(ExpressionTokenType.IndexStart, actual[13].Type);
+            Assert.Equal(ExpressionTokenType.String, actual[14].Type); // 'item1'
+            Assert.Equal("item1", actual[14].Content);
+            Assert.Equal(ExpressionTokenType.IndexEnd, actual[15].Type);
         }
     }
 }
