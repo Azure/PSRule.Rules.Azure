@@ -168,7 +168,7 @@ namespace PSRule.Rules.Azure.Pipeline
 
         internal PSObject[] ProcessTemplate(string templateFile, string parameterFile)
         {
-            return _TemplateHelper.ProcessTemplate(templateFile, parameterFile);
+            return _TemplateHelper.ProcessTemplate(templateFile, parameterFile, out _);
         }
     }
 }

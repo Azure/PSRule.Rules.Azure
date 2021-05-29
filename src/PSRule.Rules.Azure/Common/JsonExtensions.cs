@@ -40,6 +40,14 @@ namespace PSRule.Rules.Azure
     internal static class JsonExtensions
     {
         private const string FIELD_DEPENDSON = "dependsOn";
+        private const string TARGETINFO_NAME = "_PSRule";
+        private const string TARGETINFO_SOURCE = "source";
+        private const string TARGETINFO_FILE = "file";
+        private const string TARGETINFO_LINE = "line";
+        private const string TARGETINFO_POSITION = "position";
+        private const string TARGETINFO_TYPE = "type";
+        private const string TARGETINFO_TYPE_TEMPLATE = "Template";
+        private const string TARGETINFO_TYPE_PARAMETER = "Parameter";
 
         internal static IJsonLineInfo TryLineInfo(this JToken token)
         {
@@ -98,6 +106,44 @@ namespace PSRule.Rules.Azure
 
             dependencies = d.Values<string>().ToArray();
             return true;
+        }
+
+        internal static void SetTargetInfo(this JObject resource, string templateFile, string parameterFile)
+        {
+            // Get line infomation
+            var lineInfo = resource.TryLineInfo();
+
+            // Populate target info
+            resource.UseProperty(TARGETINFO_NAME, out JObject targetInfo);
+
+            var sources = new JArray();
+
+            // Template file
+            if (!string.IsNullOrEmpty(templateFile))
+            {
+                var source = new JObject();
+                source[TARGETINFO_FILE] = templateFile;
+                source[TARGETINFO_TYPE] = TARGETINFO_TYPE_TEMPLATE;
+                if (lineInfo.HasLineInfo())
+                {
+                    source[TARGETINFO_LINE] = lineInfo.LineNumber;
+                    source[TARGETINFO_POSITION] = lineInfo.LinePosition;
+                }
+                sources.Add(source);
+            }
+            // Parameter file
+            if (!string.IsNullOrEmpty(parameterFile))
+            {
+                var source = new JObject();
+                source[TARGETINFO_FILE] = parameterFile;
+                source[TARGETINFO_TYPE] = TARGETINFO_TYPE_PARAMETER;
+                if (lineInfo.HasLineInfo())
+                {
+                    source[TARGETINFO_LINE] = 1;
+                }
+                sources.Add(source);
+            }
+            targetInfo.Add(TARGETINFO_SOURCE, sources);
         }
     }
 }

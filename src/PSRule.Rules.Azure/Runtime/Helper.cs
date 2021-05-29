@@ -36,7 +36,7 @@ namespace PSRule.Rules.Azure.Runtime
                 return null;
 
             var helper = new TemplateHelper(context, "helper", context.Option.Configuration.ResourceGroup, context.Option.Configuration.Subscription);
-            return helper.ProcessTemplate(link.TemplateFile, link.ParameterFile);
+            return helper.ProcessTemplate(link.TemplateFile, link.ParameterFile, out _);
         }
 
         private static PipelineContext GetContext()

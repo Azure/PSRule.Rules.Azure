@@ -23,6 +23,10 @@ namespace PSRule.Rules.Azure.Data.Template
 
         JObject Deployment { get; }
 
+        string TemplateFile { get; }
+
+        string ParameterFile { get; }
+
         ResourceGroupOption ResourceGroup { get; }
 
         SubscriptionOption Subscription { get; }
@@ -137,6 +141,10 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 get { return _Deployment.Peek(); }
             }
+
+            public string TemplateFile { get; private set; }
+
+            public string ParameterFile { get; private set; }
 
             public ExpressionFnOuter BuildExpression(string s)
             {
@@ -505,6 +513,12 @@ namespace PSRule.Rules.Azure.Data.Template
                 var result = JsonConvert.DeserializeObject<Dictionary<string, T>>(json, settings);
                 return result;
             }
+
+            internal void SetSource(string templateFile, string parameterFile)
+            {
+                TemplateFile = templateFile;
+                ParameterFile = parameterFile;
+            }
         }
 
         internal sealed class UserDefinedFunctionContext : ITemplateContext
@@ -521,6 +535,10 @@ namespace PSRule.Rules.Azure.Data.Template
             public TemplateContext.CopyIndexStore CopyIndex => _Inner.CopyIndex;
 
             public JObject Deployment => throw new NotImplementedException();
+
+            public string TemplateFile => _Inner.TemplateFile;
+
+            public string ParameterFile => _Inner.ParameterFile;
 
             public ResourceGroupOption ResourceGroup => _Inner.ResourceGroup;
 
@@ -1254,20 +1272,12 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         protected virtual void Emit(TemplateContext context, JObject resource)
         {
+            resource.SetTargetInfo(context.TemplateFile, context.ParameterFile);
             context.AddResource(resource);
         }
 
         protected virtual JObject[] SortResources(TemplateContext context, JObject[] resources)
         {
-            //var source = new List<JObject>(resources);
-            //var result = new List<JObject>(resources.Length);
-
-
-            //for (var i = 0; i < resources.Length; i++)
-            //{
-
-            //}
-            //return result.ToArray();
             return resources;
         }
     }
