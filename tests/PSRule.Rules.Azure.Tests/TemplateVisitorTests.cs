@@ -1,9 +1,10 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
+using PSRule.Rules.Azure.Pipeline;
 using System;
 using System.IO;
 using System.Linq;
@@ -156,6 +157,17 @@ namespace PSRule.Rules.Azure
             Assert.Equal(expected2, resourceId[0]);
         }
 
+        [Fact]
+        public void ResourcesWithSource()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Resources.Template.json"), GetSourcePath("Resources.Parameters.json"));
+            Assert.NotNull(resources);
+            Assert.Equal(9, resources.Length);
+
+            var actual1 = resources[0];
+            Assert.EndsWith("Resources.Template.json", actual1["_PSRule"]["source"][0]["file"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
@@ -165,21 +177,10 @@ namespace PSRule.Rules.Azure
 
         private static JObject[] ProcessTemplate(string templateFile, string parametersFile)
         {
-            var templateObject = ReadFile<JObject>(templateFile);
-            var parametersObject = ReadFile<JObject>(parametersFile);
-            var visitor = new RuleDataExportVisitor();
-            var context = new TemplateContext();
-            context.Load(parametersObject);
-            visitor.Visit(context, "deployment", templateObject);
-            return context.GetResources().Select(i => i.Value).ToArray();
-        }
-
-        private static T ReadFile<T>(string path)
-        {
-            if (string.IsNullOrEmpty(path) || !File.Exists(path))
-                return default(T);
-
-            return JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+            var context = new PipelineContext(PSRuleOption.Default, null);
+            var helper = new TemplateHelper(context, "deployment", PSRuleOption.Default.Configuration.ResourceGroup, PSRuleOption.Default.Configuration.Subscription);
+            helper.ProcessTemplate(templateFile, parametersFile, out TemplateContext templateContext);
+            return templateContext.GetResources().Select(i => i.Value).ToArray();
         }
 
         #endregion Helper methods

@@ -29,7 +29,7 @@ namespace PSRule.Rules.Azure.Data.Template
             _Subscription = subscription;
         }
 
-        internal PSObject[] ProcessTemplate(string templateFile, string parameterFile)
+        internal PSObject[] ProcessTemplate(string templateFile, string parameterFile, out TemplateVisitor.TemplateContext templateContext)
         {
             var rootedTemplateFile = PSRuleOption.GetRootedPath(templateFile);
             if (!File.Exists(rootedTemplateFile))
@@ -39,7 +39,7 @@ namespace PSRule.Rules.Azure.Data.Template
             var visitor = new RuleDataExportVisitor();
 
             // Load context
-            var context = new TemplateVisitor.TemplateContext(Context, _Subscription, _ResourceGroup);
+            templateContext = new TemplateVisitor.TemplateContext(Context, _Subscription, _ResourceGroup);
             if (!string.IsNullOrEmpty(parameterFile))
             {
                 var rootedParameterFile = PSRuleOption.GetRootedPath(parameterFile);
@@ -49,7 +49,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 try
                 {
                     var parametersObject = ReadFile(rootedParameterFile);
-                    context.Load(parametersObject);
+                    templateContext.Load(parametersObject);
                 }
                 catch (Exception inner)
                 {
@@ -60,7 +60,8 @@ namespace PSRule.Rules.Azure.Data.Template
             // Process
             try
             {
-                visitor.Visit(context, _DeploymentName, templateObject);
+                templateContext.SetSource(templateFile, parameterFile);
+                visitor.Visit(templateContext, _DeploymentName, templateObject);
             }
             catch (Exception inner)
             {
@@ -71,7 +72,7 @@ namespace PSRule.Rules.Azure.Data.Template
             var results = new List<PSObject>();
             var serializer = new JsonSerializer();
             serializer.Converters.Add(new PSObjectJsonConverter());
-            foreach (var resource in context.GetResources())
+            foreach (var resource in templateContext.GetResources())
                 results.Add(resource.Value.ToObject<PSObject>(serializer));
 
             return results.ToArray();

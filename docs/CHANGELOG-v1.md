@@ -7,6 +7,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.4.0-B2105044:
+
+- General improvements:
+  - Added support for source location references to template files. [#781](https://github.com/Microsoft/PSRule.Rules.Azure/issues/781)
+    - Output includes source location to resources exported from a templates.
+
 ## v1.4.0-B2105044 (pre-release)
 
 What's changed since pre-release v1.4.0-B2105027:
