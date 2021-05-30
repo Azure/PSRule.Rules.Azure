@@ -99,7 +99,7 @@ namespace PSRule.Rules.Azure.Data.Template
             ExpressionFnOuter result = null;
             if (stream.TryTokenType(ExpressionTokenType.String, out ExpressionToken token))
                 return String(token);
-            
+
             if (stream.TryTokenType(ExpressionTokenType.Numeric, out token))
                 return Numeric(token);
 

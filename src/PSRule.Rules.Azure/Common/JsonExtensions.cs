@@ -121,9 +121,11 @@ namespace PSRule.Rules.Azure
             // Template file
             if (!string.IsNullOrEmpty(templateFile))
             {
-                var source = new JObject();
-                source[TARGETINFO_FILE] = templateFile;
-                source[TARGETINFO_TYPE] = TARGETINFO_TYPE_TEMPLATE;
+                var source = new JObject
+                {
+                    [TARGETINFO_FILE] = templateFile,
+                    [TARGETINFO_TYPE] = TARGETINFO_TYPE_TEMPLATE
+                };
                 if (lineInfo.HasLineInfo())
                 {
                     source[TARGETINFO_LINE] = lineInfo.LineNumber;
@@ -134,9 +136,11 @@ namespace PSRule.Rules.Azure
             // Parameter file
             if (!string.IsNullOrEmpty(parameterFile))
             {
-                var source = new JObject();
-                source[TARGETINFO_FILE] = parameterFile;
-                source[TARGETINFO_TYPE] = TARGETINFO_TYPE_PARAMETER;
+                var source = new JObject
+                {
+                    [TARGETINFO_FILE] = parameterFile,
+                    [TARGETINFO_TYPE] = TARGETINFO_TYPE_PARAMETER
+                };
                 if (lineInfo.HasLineInfo())
                 {
                     source[TARGETINFO_LINE] = 1;

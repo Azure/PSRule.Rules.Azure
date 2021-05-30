@@ -7,6 +7,7 @@ using System.Text;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1720:Identifier contains type name", Justification = "Represents standard type.")]
     public enum ExpressionTokenType : byte
     {
         None,
@@ -127,6 +128,14 @@ namespace PSRule.Rules.Azure.Data.Template
     [DebuggerDisplay("Current = (Type = {Current.Type}, Content = {Current.Content})")]
     internal sealed class TokenStream
     {
+        private const char Comma = ',';
+        private const char Dot = '.';
+        private const char BackSlash = '\'';
+        private const char FunctionOpen = '(';
+        private const char FunctionClose = ')';
+        private const char IndexOpen = '[';
+        private const char IndexClose = ']';
+
         private readonly List<ExpressionToken> _Token;
 
         private int _Position;
@@ -145,18 +154,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region Properties
 
-        public ExpressionToken Current
-        {
-            get
-            {
-                return (_Token.Count <= _Position) ? null : _Token[_Position];
-            }
-        }
+        public ExpressionToken Current => (_Token.Count <= _Position) ? null : _Token[_Position];
 
-        public int Count
-        {
-            get { return _Token.Count; }
-        }
+        public int Count => _Token.Count;
 
         #endregion Properties
 
@@ -208,43 +208,43 @@ namespace PSRule.Rules.Azure.Data.Template
         internal string AsString()
         {
             var builder = new StringBuilder();
-            builder.Append('[');
+            builder.Append(IndexOpen);
             var group = 0;
             ExpressionToken last = null;
             for (var i = 0; i < _Token.Count; i++)
             {
                 var current = _Token[i];
                 if (last != null && !(current.Type == ExpressionTokenType.Property || IsStartOrEndToken(current)) && !(last.Type == ExpressionTokenType.GroupStart || last.Type == ExpressionTokenType.IndexStart))
-                    builder.Append(',');
+                    builder.Append(Comma);
 
                 if (current.Type == ExpressionTokenType.Property)
-                    builder.Append('.');
+                    builder.Append(Dot);
                 else if (current.Type == ExpressionTokenType.GroupStart)
                 {
-                    builder.Append('(');
+                    builder.Append(FunctionOpen);
                     group++;
                 }
                 else if (current.Type == ExpressionTokenType.GroupEnd)
                 {
-                    builder.Append(')');
+                    builder.Append(FunctionClose);
                     group--;
                 }
                 else if (current.Type == ExpressionTokenType.IndexStart)
-                    builder.Append('[');
+                    builder.Append(IndexOpen);
                 else if (current.Type == ExpressionTokenType.IndexEnd)
-                    builder.Append(']');
+                    builder.Append(IndexClose);
                 else if (current.Type == ExpressionTokenType.String)
-                    builder.Append('\'');
+                    builder.Append(BackSlash);
                 else if (current.Type == ExpressionTokenType.Numeric)
                     builder.Append(current.Value);
 
                 builder.Append(current.Content);
                 if (current.Type == ExpressionTokenType.String)
-                    builder.Append('\'');
+                    builder.Append(BackSlash);
 
                 last = current;
             }
-            builder.Append(']');
+            builder.Append(IndexClose);
             return builder.ToString();
         }
 

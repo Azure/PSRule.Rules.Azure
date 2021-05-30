@@ -53,45 +53,27 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region Properties
 
-        public bool EOF
-        {
-            get { return _Position >= _Length; }
-        }
+        public bool EOF => _Position >= _Length;
 
         /// <summary>
         /// The character at the current position in the stream.
         /// </summary>
-        public char Current
-        {
-            get { return _Current; }
-        }
+        public char Current => _Current;
 
-        public string Expression
-        {
-            get { return _Source; }
-        }
+        public string Expression => _Source;
 
 #if DEBUG
 
         /// <summary>
         /// Used for interactive debugging of current position and next characters in the stream.
         /// </summary>
-        public string Preview
-        {
-            get { return _Source.Substring(_Position); }
-        }
+        public string Preview => _Source.Substring(_Position);
 
 #endif
 
-        public int Position
-        {
-            get { return _Position; }
-        }
+        public int Position => _Position;
 
-        public bool IsEscaped
-        {
-            get { return _EscapeLength > 0; }
-        }
+        public bool IsEscaped => _EscapeLength > 0;
 
         #endregion Properties
 

@@ -110,7 +110,7 @@ namespace PSRule.Rules.Azure.Pipeline
 
         // Track whether Dispose has been called.
         private bool _Disposed = false;
-        
+
 
         protected PipelineBase(PipelineContext context)
         {

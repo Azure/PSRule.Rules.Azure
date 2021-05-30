@@ -129,7 +129,7 @@ namespace PSRule.Rules.Azure.Configuration
         [YamlIgnore]
         public string SubscriptionId
         {
-            get { return _SubscriptionId;  }
+            get => _SubscriptionId;
             set
             {
                 _SubscriptionId = value;
@@ -152,7 +152,7 @@ namespace PSRule.Rules.Azure.Configuration
         [DefaultValue(null)]
         public string Name
         {
-            get { return _Name;  }
+            get => _Name;
             set
             {
                 _Name = value;
