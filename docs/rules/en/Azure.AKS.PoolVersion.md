@@ -1,7 +1,7 @@
 ---
 severity: Important
-pillar: Operational Excellence
-category: Deployment
+pillar: Reliability
+category: Design
 resource: Azure Kubernetes Service
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AKS.PoolVersion.md
 ---
