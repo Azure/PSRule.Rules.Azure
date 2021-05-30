@@ -25,7 +25,7 @@ Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Mi
             (([Version]$TargetObject.Properties.orchestratorVersion) -ge $minVersion)
         Reason ($LocalizedData.AKSVersion -f $TargetObject.Properties.orchestratorVersion);
     }
-} -Configure @{ Azure_AKSMinimumVersion = '1.19.7' }
+} -Configure @{ Azure_AKSMinimumVersion = '1.20.5' }
 
 # Synopsis: AKS agent pools should run the same Kubernetes version as the cluster
 Rule 'Azure.AKS.PoolVersion' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
@@ -102,14 +102,40 @@ Rule 'Azure.AKS.ManagedIdentity' -Type 'Microsoft.ContainerService/managedCluste
     $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'));
 }
 
-# Synopsis: Use a Standard load-balancer with AKS clusters
+# Synopsis: Use a Standard load-balancer with AKS clusters.
 Rule 'Azure.AKS.StandardLB' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.networkProfile.loadBalancerSku', 'standard');
 }
 
-# Synopsis: AKS clusters should use Azure Policy add-on
+# Synopsis: AKS clusters should use Azure Policy add-on.
 Rule 'Azure.AKS.AzurePolicyAddOn' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.addonProfiles.azurePolicy.enabled', $True);
+}
+
+# Synopsis: Use AKS-managed Azure AD to simplify authorization and improve security.
+Rule 'Azure.AKS.ManagedAAD' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_06'; } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.aadProfile.managed', $True);
+}
+
+# Synopsis: Configure AKS to automatically upgrade to newer supported AKS versions as they are made available.
+Rule 'Azure.AKS.AutoUpgrade' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'preview'; ruleSet = '2021_06'; } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.autoUpgradeProfile.upgradeChannel');
+    $Assert.NotIn($TargetObject, 'Properties.autoUpgradeProfile.upgradeChannel', @('none'));
+}
+
+# Synopsis: Restrict access to API server endpoints to authorized IP addresses.
+Rule 'Azure.AKS.AuthorizedIPs' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_06'; } {
+    $Assert.GreaterOrEqual($TargetObject, 'Properties.apiServerAccessProfile.authorizedIPRanges', 1);
+}
+
+# Synopsis: Enforce named user accounts with RBAC assigned permissions.
+Rule 'Azure.AKS.LocalAccounts' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'preview'; ruleSet = '2021_06'; } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.disableLocalAccounts', $True);
+}
+
+# Synopsis: Use Azure RBAC for Kubernetes Authorization with AKS clusters.
+Rule 'Azure.AKS.AzureRBAC' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_06'; } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.aadProfile.enableAzureRbac', $True);
 }
 
 #region Helper functions

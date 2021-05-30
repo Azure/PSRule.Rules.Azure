@@ -38,7 +38,7 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "kubernetesVersion": "1.19.7",
+                "kubernetesVersion": "1.20.5",
                 "dnsPrefix": "[concat('dns-', parameters('clusterName'))]",
                 "agentPoolProfiles": [
                     {
@@ -110,14 +110,14 @@
         },
         {
             "type": "Microsoft.ContainerService/managedClusters",
-            "apiVersion": "2019-10-01",
+            "apiVersion": "2020-12-01",
             "name": "[parameters('clusterName2')]",
             "location": "[parameters('clusterLocation')]",
             "identity": {
                 "type": "SystemAssigned"
             },
             "properties": {
-                "kubernetesVersion": "1.19.7",
+                "kubernetesVersion": "1.20.5",
                 "dnsPrefix": "[concat('dns-', parameters('clusterName'))]",
                 "agentPoolProfiles": [
                     {
@@ -155,8 +155,45 @@
                         "config": {
                             "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
                         }
+                    },
+                    "azureKeyvaultSecretsProvider": {
+                        "enabled": true,
+                        "config": {
+                            "enableSecretRotation": "false"
+                        }
+                    },
+                    "openServiceMesh": {
+                        "enabled": true
                     }
                 },
+                "aadProfile": {
+                    "managed": true,
+                    "enableAzureRBAC": true,
+                    "adminGroupObjectIDs": [],
+                    "tenantID": "[subscription().tenantId]"
+                },
+                "autoUpgradeProfile": {
+                    "upgradeChannel": "rapid"
+                },
+                "autoScalerProfile": {
+                    "balance-similar-node-groups": "false",
+                    "expander": "random",
+                    "max-empty-bulk-delete": "10",
+                    "max-graceful-termination-sec": "600",
+                    "max-total-unready-percentage": "45",
+                    "new-pod-scale-up-delay": "0s",
+                    "ok-total-unready-count": "3",
+                    "scale-down-delay-after-add": "10m",
+                    "scale-down-delay-after-delete": "10s",
+                    "scale-down-delay-after-failure": "3m",
+                    "scale-down-unneeded-time": "10m",
+                    "scale-down-unready-time": "20m",
+                    "scale-down-utilization-threshold": "0.5",
+                    "scan-interval": "10s",
+                    "skip-nodes-with-local-storage": "false",
+                    "skip-nodes-with-system-pods": "true"
+                },
+                "disableLocalAccounts": true,
                 "enableRBAC": true,
                 "enablePodSecurityPolicy": false,
                 "networkProfile": {
@@ -166,6 +203,11 @@
                     "serviceCidr": "192.168.0.0/16",
                     "dnsServiceIP": "192.168.0.4",
                     "dockerBridgeCidr": "172.17.0.1/16"
+                },
+                "apiServerAccessProfile": {
+                    "authorizedIpRanges": [
+                        "0.0.0.0/32"
+                    ]
                 }
             }
         },
@@ -183,7 +225,7 @@
                 "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-03')]",
                 "maxPods": 50,
                 "type": "VirtualMachineScaleSets",
-                "orchestratorVersion": "1.19.7",
+                "orchestratorVersion": "1.20.5",
                 "osType": "Linux"
             }
         },

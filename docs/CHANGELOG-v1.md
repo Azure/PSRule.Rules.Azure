@@ -9,6 +9,16 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since pre-release v1.4.0-B2105050:
 
+- New rules:
+  - Azure Kubernetes Service:
+    - Check clusters use AKS-managed Azure AD integration. [#436](https://github.com/microsoft/PSRule.Rules.Azure/issues/436)
+    - Check clusters have local account disabled (preview). [#786](https://github.com/microsoft/PSRule.Rules.Azure/issues/786)
+    - Check clusters have an auto-upgrade channel set (preview). [#787](https://github.com/microsoft/PSRule.Rules.Azure/issues/787)
+    - Check clusters limit access network access to the API server. [#788](https://github.com/microsoft/PSRule.Rules.Azure/issues/788)
+    - Check clusters used Azure RBAC for Kubernetes authorization. [#789](https://github.com/microsoft/PSRule.Rules.Azure/issues/789)
+- Updated rules
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.20.5. [#767](https://github.com/Microsoft/PSRule.Rules.Azure/issues/767)
 - Engineering:
   - Added source link to project. [#783](https://github.com/microsoft/PSRule.Rules.Azure/issues/783)
 

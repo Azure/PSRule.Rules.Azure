@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: General
+category: Optimize
 resource: Azure Kubernetes Service
 online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AKS.AzurePolicyAddOn.md
 ---
@@ -36,5 +36,6 @@ Azure Policy for AKS Engine and Arc enabled Kubernetes are currently in preview.
 
 ## LINKS
 
+- [Governance, risk, and compliance](https://docs.microsoft.com/azure/architecture/framework/security/governance#audit-and-enforce-policy-compliance)
 - [Understand Azure Policy for Kubernetes clusters](https://docs.microsoft.com/azure/governance/policy/concepts/policy-for-kubernetes)
 - [Overview of securing pods with Azure Policy for AKS](https://docs.microsoft.com/azure/aks/use-pod-security-on-azure-policy)

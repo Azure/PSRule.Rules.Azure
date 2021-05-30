@@ -42,15 +42,15 @@ Default:
 ```yaml
 # YAML: The default Azure_AKSMinimumVersion configuration option
 configuration:
-  Azure_AKSMinimumVersion: 1.19.7
+  Azure_AKSMinimumVersion: 1.20.5
 ```
 
 Example:
 
 ```yaml
-# YAML: Set the Azure_AKSMinimumVersion configuration option to 1.17.0
+# YAML: Set the Azure_AKSMinimumVersion configuration option to 1.19.7
 configuration:
-  Azure_AKSMinimumVersion: 1.17.0
+  Azure_AKSMinimumVersion: 1.19.7
 ```
 
 ### Azure_AKSNodeMinimumMaxPods
