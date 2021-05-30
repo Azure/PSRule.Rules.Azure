@@ -7,6 +7,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.4.0-B2105057 (pre-release)
+
 What's changed since pre-release v1.4.0-B2105050:
 
 - New rules:
