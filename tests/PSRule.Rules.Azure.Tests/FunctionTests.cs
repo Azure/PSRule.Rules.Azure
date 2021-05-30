@@ -150,7 +150,7 @@ namespace PSRule.Rules.Azure
 
             // String
             var actual1 = (bool)Functions.Empty(context, new object[] { "" });
-            var actual2 = (bool)Functions.Empty(context, new object[] { "notEmpty"});
+            var actual2 = (bool)Functions.Empty(context, new object[] { "notEmpty" });
             Assert.True(actual1);
             Assert.False(actual2);
 
@@ -473,7 +473,7 @@ namespace PSRule.Rules.Azure
         public void Providers()
         {
             var context = GetContext();
-            
+
             var actual1 = Functions.Providers(context, new object[] { "Microsoft.Web", "sites" }) as ResourceProviderType;
             Assert.NotNull(actual1);
             Assert.Equal("sites", actual1.ResourceType);
@@ -562,7 +562,7 @@ namespace PSRule.Rules.Azure
         {
             var context = GetContext();
 
-            var actual1 = Functions.SubscriptionResourceId(context, new object[] { "Unit.Test/type", "a" } ) as string;
+            var actual1 = Functions.SubscriptionResourceId(context, new object[] { "Unit.Test/type", "a" }) as string;
             var actual2 = Functions.SubscriptionResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "Unit.Test/type", "a" }) as string;
             var actual3 = Functions.SubscriptionResourceId(context, new object[] { "Unit.Test/type/subtype", "a", "b" }) as string;
             var actual4 = Functions.SubscriptionResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "Unit.Test/type/subtype", "a", "b" }) as string;
@@ -696,8 +696,8 @@ namespace PSRule.Rules.Azure
             Assert.True(actual8);
 
             // object
-            var actual9 = (bool)Functions.Equals(context, new object[] { new TestLengthObject() { propC = "four", propD = null }, new TestLengthObject() { propD = null }});
-            var actual10 = (bool)Functions.Equals(context, new object[] { new TestLengthObject() { propD = null }, new TestLengthObject() { propD = null }});
+            var actual9 = (bool)Functions.Equals(context, new object[] { new TestLengthObject() { propC = "four", propD = null }, new TestLengthObject() { propD = null } });
+            var actual10 = (bool)Functions.Equals(context, new object[] { new TestLengthObject() { propD = null }, new TestLengthObject() { propD = null } });
             Assert.False(actual9);
             Assert.True(actual10);
         }
@@ -978,7 +978,7 @@ namespace PSRule.Rules.Azure
             };
             context.CopyIndex.Push(copy);
             copy.Next();
-            
+
             // Integer
             var actual1 = (int)Functions.CopyIndex(context, new object[] { (long)3 });
             var actual2 = (int)Functions.CopyIndex(context, new object[] { new JValue(3) });
@@ -1456,7 +1456,7 @@ namespace PSRule.Rules.Azure
         {
             var context = GetContext();
 
-            var actual1 = Functions.UriComponent(context, new object[] { "http://contoso.com/resources/nested/azuredeploy.json"}) as string;
+            var actual1 = Functions.UriComponent(context, new object[] { "http://contoso.com/resources/nested/azuredeploy.json" }) as string;
             Assert.Equal("http%3a%2f%2fcontoso.com%2fresources%2fnested%2fazuredeploy.json", actual1);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponent(context, null));
@@ -1482,9 +1482,11 @@ namespace PSRule.Rules.Azure
 
         private static TemplateContext GetContext()
         {
-            var context = new TemplateContext();
-            context.ResourceGroup = ResourceGroupOption.Default;
-            context.Subscription = SubscriptionOption.Default;
+            var context = new TemplateContext
+            {
+                ResourceGroup = ResourceGroupOption.Default,
+                Subscription = SubscriptionOption.Default
+            };
             context.Load(JObject.Parse("{ \"parameters\": { \"name\": { \"value\": \"abcdef\" } } }"));
             return context;
         }

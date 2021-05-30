@@ -99,9 +99,11 @@ namespace PSRule.Rules.Azure.Configuration
 
         private static PSRuleOption Combine(PSRuleOption o1, PSRuleOption o2)
         {
-            var result = new PSRuleOption(o1?.SourcePath ?? o2?.SourcePath, o1);
-            result.Configuration = ConfigurationOption.Combine(o1?.Configuration, o2?.Configuration);
-            result.Output = OutputOption.Combine(o1?.Output, o2?.Output);
+            var result = new PSRuleOption(o1?.SourcePath ?? o2?.SourcePath, o1)
+            {
+                Configuration = ConfigurationOption.Combine(o1?.Configuration, o2?.Configuration),
+                Output = OutputOption.Combine(o1?.Output, o2?.Output)
+            };
             return result;
         }
 

@@ -14,7 +14,7 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void Build()
         {
-            var builder = new PathBuilder(new NullLogger(), GetSourcePath(""),  "*.json");
+            var builder = new PathBuilder(new NullLogger(), GetSourcePath(""), "*.json");
 
             builder.Add(GetSourcePath("Resources.Parameters.json"));
             var actual1 = builder.Build();

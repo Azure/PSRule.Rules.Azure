@@ -107,7 +107,7 @@ namespace PSRule.Rules.Azure.Configuration
         [DefaultValue(null)]
         public string SubscriptionId
         {
-            get { return _SubscriptionId; }
+            get => _SubscriptionId;
             set
             {
                 _SubscriptionId = value;

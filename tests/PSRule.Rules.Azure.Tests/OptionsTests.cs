@@ -27,11 +27,13 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void SubscriptionOption()
         {
-            var hashtable = new Hashtable();
-            hashtable["SubscriptionId"] = "00000000-0000-0000-0000-000000000000";
-            hashtable["DisplayName"] = "Subscription option unit tests";
-            hashtable["TenantId"] = "Test tenant";
-            hashtable["State"] = "Test state";
+            var hashtable = new Hashtable
+            {
+                ["SubscriptionId"] = "00000000-0000-0000-0000-000000000000",
+                ["DisplayName"] = "Subscription option unit tests",
+                ["TenantId"] = "Test tenant",
+                ["State"] = "Test state"
+            };
 
             var option = SubscriptionReference.FromHashtable(hashtable).ToSubscriptionOption();
             Assert.NotNull(option);
@@ -44,12 +46,16 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void ResourceGroupOption()
         {
-            var hashtable = new Hashtable();
-            hashtable["Name"] = "RG option unit tests";
-            hashtable["Location"] = "westus";
-            hashtable["ManagedBy"] = "Test managed by";
-            var tags = new Hashtable();
-            tags["env"] = "prod";
+            var hashtable = new Hashtable
+            {
+                ["Name"] = "RG option unit tests",
+                ["Location"] = "westus",
+                ["ManagedBy"] = "Test managed by"
+            };
+            var tags = new Hashtable
+            {
+                ["env"] = "prod"
+            };
             hashtable["Tags"] = tags;
             hashtable["ProvisioningState"] = "Test";
 

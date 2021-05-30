@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.4.0-B2105050:
+
+- Engineering:
+  - Added source link to project. [#783](https://github.com/microsoft/PSRule.Rules.Azure/issues/783)
+
 ## v1.4.0-B2105050 (pre-release)
 
 What's changed since pre-release v1.4.0-B2105044:

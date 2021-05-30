@@ -38,7 +38,7 @@ namespace PSRule.Rules.Azure.Pipeline
         {
             if (_Writer == null)
                 return;
-            
+
             _Writer.Begin();
         }
 

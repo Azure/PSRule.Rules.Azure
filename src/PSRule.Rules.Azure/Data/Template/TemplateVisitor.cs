@@ -137,10 +137,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public SubscriptionOption Subscription { get; internal set; }
 
-            public JObject Deployment
-            {
-                get { return _Deployment.Peek(); }
-            }
+            public JObject Deployment => _Deployment.Peek();
 
             public string TemplateFile { get; private set; }
 
@@ -358,10 +355,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     _Current = new Stack<CopyIndexState>();
                 }
 
-                public CopyIndexState Current
-                {
-                    get { return _Current.Count > 0 ? _Current.Peek() : null; }
-                }
+                public CopyIndexState Current => _Current.Count > 0 ? _Current.Peek() : null;
 
                 public void Add(CopyIndexState state)
                 {
@@ -394,22 +388,28 @@ namespace PSRule.Rules.Azure.Data.Template
             internal void EnterDeployment(string deploymentName, JObject template)
             {
                 var templateHash = template.GetHashCode().ToString();
-                var templateLink = new JObject();
-                templateLink.Add(PROPERTY_ID, ResourceGroup.Id);
-                templateLink.Add(PROPERTY_URI, "https://deployment-uri");
+                var templateLink = new JObject
+                {
+                    { PROPERTY_ID, ResourceGroup.Id },
+                    { PROPERTY_URI, "https://deployment-uri" }
+                };
 
-                var properties = new JObject();
-                properties.Add(PROPERTY_TEMPLATE, template);
-                properties.Add(PROPERTY_TEMPLATELINK, templateLink);
-                properties.Add(PROPERTY_PARAMETERS, _Parameters);
-                properties.Add(PROPERTY_MODE, "Incremental");
-                properties.Add(PROPERTY_PROVISIONINGSTATE, "Accepted");
-                properties.Add(PROPERTY_TEMPLATEHASH, templateHash);
+                var properties = new JObject
+                {
+                    { PROPERTY_TEMPLATE, template },
+                    { PROPERTY_TEMPLATELINK, templateLink },
+                    { PROPERTY_PARAMETERS, _Parameters },
+                    { PROPERTY_MODE, "Incremental" },
+                    { PROPERTY_PROVISIONINGSTATE, "Accepted" },
+                    { PROPERTY_TEMPLATEHASH, templateHash }
+                };
 
-                var deployment = new JObject();
-                deployment.Add(PROPERTY_NAME, deploymentName);
-                deployment.Add(PROPERTY_PROPERTIES, properties);
-                deployment.Add(PROPERTY_LOCATION, ResourceGroup.Location);
+                var deployment = new JObject
+                {
+                    { PROPERTY_NAME, deploymentName },
+                    { PROPERTY_PROPERTIES, properties },
+                    { PROPERTY_LOCATION, ResourceGroup.Location }
+                };
 
                 _Deployment.Push(deployment);
             }
@@ -659,7 +659,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected virtual void BeginTemplate(TemplateContext context, string deploymentName, JObject template)
         {
-            
+
         }
 
         protected virtual void Template(TemplateContext context, string deploymentName, JObject template)
@@ -771,7 +771,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
             TryArrayProperty(function, PROPERTY_PARAMETERS, out JArray parameters);
             //var outputFn = context.Expression.Build(outputValue);
-            ExpressionFn fn = (ctx, args) => {
+            ExpressionFn fn = (ctx, args) =>
+            {
                 var fnContext = new UserDefinedFunctionContext(ctx);
                 fnContext.SetParameters(parameters, args);
                 return UserDefinedFunction(fnContext, output[PROPERTY_VALUE]);
@@ -795,7 +796,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             resources = SortResources(context, resources);
             for (var i = 0; i < resources.Length; i++)
-                ResourceOuter(context, resources[i]);  
+                ResourceOuter(context, resources[i]);
         }
 
         private void ResourceOuter(TemplateContext context, JObject resource)
@@ -1088,10 +1089,12 @@ namespace PSRule.Rules.Azure.Data.Template
                 for (var i = 0; i < copyObjectArray.Count; i++)
                 {
                     var copyObject = copyObjectArray[i] as JObject;
-                    var state = new TemplateContext.CopyIndexState();
-                    state.Name = ExpandProperty<string>(context, copyObject, PROPERTY_NAME);
-                    state.Input = copyObject[PROPERTY_INPUT];
-                    state.Count = ExpandPropertyInt(context, copyObject, PROPERTY_COUNT);
+                    var state = new TemplateContext.CopyIndexState
+                    {
+                        Name = ExpandProperty<string>(context, copyObject, PROPERTY_NAME),
+                        Input = copyObject[PROPERTY_INPUT],
+                        Count = ExpandPropertyInt(context, copyObject, PROPERTY_COUNT)
+                    };
                     context.CopyIndex.Add(state);
                     value.Remove(PROPERTY_COPY);
                     result.Add(state);
@@ -1111,10 +1114,12 @@ namespace PSRule.Rules.Azure.Data.Template
                 for (var i = 0; i < copyObjectArray.Count; i++)
                 {
                     var copyObject = copyObjectArray[i] as JObject;
-                    var state = new TemplateContext.CopyIndexState();
-                    state.Name = ExpandProperty<string>(context, copyObject, PROPERTY_NAME);
-                    state.Input = copyObject[PROPERTY_INPUT];
-                    state.Count = ExpandPropertyInt(context, copyObject, PROPERTY_COUNT);
+                    var state = new TemplateContext.CopyIndexState
+                    {
+                        Name = ExpandProperty<string>(context, copyObject, PROPERTY_NAME),
+                        Input = copyObject[PROPERTY_INPUT],
+                        Count = ExpandPropertyInt(context, copyObject, PROPERTY_COUNT)
+                    };
                     context.CopyIndex.Push(state);
                     value.Remove(PROPERTY_COPY);
                     result.Add(state);
@@ -1130,8 +1135,10 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         private static TemplateContext.CopyIndexState GetResourceIterator(TemplateContext context, JObject value)
         {
-            var result = new TemplateContext.CopyIndexState();
-            result.Input = value;
+            var result = new TemplateContext.CopyIndexState
+            {
+                Input = value
+            };
             if (value.ContainsKey(PROPERTY_COPY))
             {
                 var copyObject = value[PROPERTY_COPY].Value<JObject>();
@@ -1292,15 +1299,6 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string FIELD_APIVERSION = "apiVersion";
         private const string FIELD_CONDITION = "condition";
         private const string FIELD_RESOURCES = "resources";
-
-        private readonly List<JObject> _Resources;
-        private readonly Dictionary<string, JObject> _ResourceMap;
-
-        internal RuleDataExportVisitor()
-        {
-            _Resources = new List<JObject>();
-            _ResourceMap = new Dictionary<string, JObject>();
-        }
 
         protected override void Resource(TemplateContext context, JObject resource)
         {

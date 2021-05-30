@@ -788,7 +788,7 @@ namespace PSRule.Rules.Azure.Data.Template
             }
             return string.Concat("/subscriptions/", subscriptionId, "/resourceGroups/", resourceGroup, "/providers/", resourceType, "/", nameParts);
         }
-        
+
         /// <summary>
         /// subscription()
         /// </summary>

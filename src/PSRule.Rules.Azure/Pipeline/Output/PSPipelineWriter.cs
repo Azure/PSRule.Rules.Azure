@@ -3,7 +3,6 @@
 
 using PSRule.Rules.Azure.Configuration;
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace PSRule.Rules.Azure.Pipeline.Output

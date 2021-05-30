@@ -28,40 +28,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 return output;
 
             var stream = new ExpressionStream(expression);
-            var processed = false;
             stream.Start();
             while (!stream.End())
             {
-                processed = false;
-                if (stream.TryElement(out string element))
-                {
-                    stream.Separator();
-                    if (int.TryParse(element, out int numeric))
-                        output.Numeric(numeric);
-                    else
-                    {
-                        output.Function(element);
-                        Function(stream, output);
-                    }
-                    processed = true;
-                }
-                if (Index(stream, output))
-                {
-                    stream.Separator();
-                    processed = true;
-                }
-                if (stream.CaptureProperty(out string propertyName))
-                {
-                    output.Property(propertyName);
-                    stream.Separator();
-                    processed = true;
-                }
-                if (stream.CaptureString(out string literal))
-                {
-                    output.String(literal);
-                    stream.Separator();
-                    processed = true;
-                }
+                var processed = TryElement(stream, output) || TryIndex(stream, output) || TryProperty(stream, output) || TryString(stream, output);
                 if (!processed)
                     throw new ExpressionParseException(expression, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ExpressionInvalid, expression));
             }
@@ -78,17 +48,62 @@ namespace PSRule.Rules.Azure.Data.Template
             return stream.Start() && !stream.Start() && stream.SkipToEnd();
         }
 
+        private static bool TryProperty(ExpressionStream stream, TokenStream output)
+        {
+            if (!stream.CaptureProperty(out string propertyName))
+                return false;
+
+            output.Property(propertyName);
+            stream.Separator();
+            return true;
+        }
+
+        private static bool TryIndex(ExpressionStream stream, TokenStream output)
+        {
+            if (!Index(stream, output))
+                return false;
+
+            stream.Separator();
+            return true;
+        }
+
+        private static bool TryString(ExpressionStream stream, TokenStream output)
+        {
+            if (!stream.CaptureString(out string literal))
+                return false;
+
+            output.String(literal);
+            stream.Separator();
+            return true;
+        }
+
+        private static bool TryElement(ExpressionStream stream, TokenStream output)
+        {
+            if (!stream.TryElement(out string element))
+                return false;
+
+            stream.Separator();
+            if (int.TryParse(element, out int numeric))
+                output.Numeric(numeric);
+            else
+            {
+                output.Function(element);
+                Function(stream, output);
+            }
+            return true;
+        }
+
         /// <summary>
         /// Enter a function.
         /// </summary>
         /// <example>
         /// function()
         /// </example>
-        private static bool Function(ExpressionStream stream, TokenStream output)
+        private static void Function(ExpressionStream stream, TokenStream output)
         {
             // Look for '('
             if (!stream.IsGroupStart())
-                return false;
+                return;
 
             output.GroupStart();
             stream.Separator();
@@ -97,7 +112,6 @@ namespace PSRule.Rules.Azure.Data.Template
 
             output.GroupEnd();
             stream.Separator();
-            return true;
         }
 
         /// <summary>
@@ -126,33 +140,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private static void Inner(ExpressionStream stream, TokenStream output)
         {
             stream.SkipWhitespace();
-            if (stream.CaptureString(out string s))
-            {
-                output.String(s);
-                stream.Separator();
-            }
-            else if (Index(stream, output))
-            {
-                stream.Separator();
-            }
-            else if (stream.CaptureProperty(out string propertyName))
-            {
-                output.Property(propertyName);
-                stream.Separator();
-            }
-            else if (stream.TryElement(out string element))
-            {
-                stream.Separator();
-                if (int.TryParse(element, out int numeric))
-                    output.Numeric(numeric);
-                else
-                {
-                    output.Function(element);
-                    Function(stream, output);
-                }
-                stream.Separator();
-            }
-            else
+            if (!(TryString(stream, output) || TryIndex(stream, output) || TryProperty(stream, output) || TryElement(stream, output)))
                 throw new ExpressionParseException(stream.Expression, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ExpressionInvalid, stream.Expression));
         }
     }
