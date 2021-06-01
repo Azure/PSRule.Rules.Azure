@@ -7,6 +7,48 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.4.0
+
+What's changed since v1.3.2:
+
+- New features:
+  - Automatically expand template from parameter files for analysis. [#772](https://github.com/Microsoft/PSRule.Rules.Azure/issues/772)
+    - Previously templates needed to be exported with `Export-AzRuleTemplateData`.
+    - To export template data automatically use PSRule cmdlets with `-Format File`.
+- New rules:
+  - Cognitive Search:
+    - Check search services meet index SLA replica requirement. [#761](https://github.com/Microsoft/PSRule.Rules.Azure/issues/761)
+    - Check search services meet query SLA replica requirement. [#762](https://github.com/Microsoft/PSRule.Rules.Azure/issues/762)
+    - Check search services meet naming requirements. [#763](https://github.com/Microsoft/PSRule.Rules.Azure/issues/763)
+    - Check search services use a minimum SKU. [#764](https://github.com/Microsoft/PSRule.Rules.Azure/issues/764)
+    - Check search services use managed identities. [#765](https://github.com/Microsoft/PSRule.Rules.Azure/issues/765)
+  - Azure Kubernetes Service:
+    - Check clusters use AKS-managed Azure AD integration. [#436](https://github.com/microsoft/PSRule.Rules.Azure/issues/436)
+    - Check clusters have local account disabled (preview). [#786](https://github.com/microsoft/PSRule.Rules.Azure/issues/786)
+    - Check clusters have an auto-upgrade channel set (preview). [#787](https://github.com/microsoft/PSRule.Rules.Azure/issues/787)
+    - Check clusters limit access network access to the API server. [#788](https://github.com/microsoft/PSRule.Rules.Azure/issues/788)
+    - Check clusters used Azure RBAC for Kubernetes authorization. [#789](https://github.com/microsoft/PSRule.Rules.Azure/issues/789)
+- Updated rules
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to 1.20.5. [#767](https://github.com/Microsoft/PSRule.Rules.Azure/issues/767)
+- General improvements:
+  - Automatically nest template sub-resources for analysis. [#746](https://github.com/Microsoft/PSRule.Rules.Azure/issues/746)
+    - Sub-resources such as diagnostic logs or configurations are automatically nested.
+    - Automatic nesting a resource requires:
+      - The parent resource is defined in the same template.
+      - The sub-resource depends on the parent resource.
+  - Added support for source location references to template files. [#781](https://github.com/Microsoft/PSRule.Rules.Azure/issues/781)
+    - Output includes source location to resources exported from a templates.
+- Bug fixes:
+  - Fixed string index parsing in expressions with whitespace. [#775](https://github.com/Microsoft/PSRule.Rules.Azure/issues/775)
+  - Fixed base for DateTimeAdd is not a valid string. [#777](https://github.com/Microsoft/PSRule.Rules.Azure/issues/777)
+- Engineering:
+  - Added source link to project. [#783](https://github.com/microsoft/PSRule.Rules.Azure/issues/783)
+
+What's changed since pre-release v1.4.0-B2105057:
+
+- No additional changes.
+
 ## v1.4.0-B2105057 (pre-release)
 
 What's changed since pre-release v1.4.0-B2105050:
