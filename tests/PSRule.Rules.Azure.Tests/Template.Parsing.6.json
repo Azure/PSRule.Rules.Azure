@@ -1,0 +1,37 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "variables": {
+        "lookup": {
+            "True": {
+                "value": "True"
+            },
+            "true": {
+                "value": "true"
+            },
+            "false": {
+                "value": "false"
+            },
+            "other": {
+                "value": "other"
+            },
+            "Other": {
+                "value": "Other"
+            }
+        }
+    },
+    "resources": [
+        {
+            "type": "Namespace/resourceType",
+            "apiVersion": "2020-05-01",
+            "name": "resource",
+            "location": "region",
+            "properties": {
+                "value1": "[variables('lookup')[string(empty(''))].value]",
+                "value2": "[variables('lookup')[tolower(string(empty('')))].value]",
+                "value3": "[variables('lookup')[string(not(empty('')))].value]",
+                "value4": "[variables('lookup')['Other'].value]"
+            }
+        }
+    ]
+}

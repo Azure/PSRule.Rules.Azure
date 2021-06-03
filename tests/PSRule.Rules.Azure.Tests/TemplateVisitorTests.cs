@@ -168,6 +168,20 @@ namespace PSRule.Rules.Azure
             Assert.EndsWith("Resources.Template.json", actual1["_PSRule"]["source"][0]["file"].Value<string>());
         }
 
+        [Fact]
+        public void BooleanStringProperty()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.6.json"), null);
+            Assert.NotNull(resources);
+            Assert.Single(resources);
+
+            var actual1 = resources[0];
+            Assert.Equal("True", actual1["properties"]["value1"].Value<string>());
+            Assert.Equal("true", actual1["properties"]["value2"].Value<string>());
+            Assert.Equal("false", actual1["properties"]["value3"].Value<string>());
+            Assert.Equal("Other", actual1["properties"]["value4"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

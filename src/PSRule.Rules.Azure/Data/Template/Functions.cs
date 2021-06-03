@@ -1401,6 +1401,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args == null || args.Length != 1)
                 throw ArgumentsOutOfRange(nameof(String), args);
 
+            if (ExpressionHelpers.TryBoolString(args[0], out string value))
+                return value;
+
             return JsonConvert.SerializeObject(args[0]);
         }
 

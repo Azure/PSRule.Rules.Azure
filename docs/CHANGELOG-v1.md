@@ -7,6 +7,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.4.0:
+
+- Bug fixes:
+  - Fixed boolean string conversion case. [#793](https://github.com/Microsoft/PSRule.Rules.Azure/issues/793)
+  - Fixed case sensitive property matching. [#794](https://github.com/Microsoft/PSRule.Rules.Azure/issues/794)
+
 ## v1.4.0
 
 What's changed since v1.3.2:
