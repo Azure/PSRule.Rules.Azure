@@ -31,10 +31,19 @@ Describe 'Azure.ExpandTemplate' -Tag 'Convention' {
                 ErrorAction = 'Stop'
             }
 
+            # Default
             $parameterFile = Join-Path -Path $here -ChildPath 'Resources.Storage.Parameters.json';
             $result = @(Invoke-PSRule @invokeParams -InputPath $parameterFile -Format File);
-            $result.Length | Should -BeGreaterThan 1;
+            $result.Length | Should -Be 1;
+            $resource = $result | Where-Object { $_.TargetType -eq 'Microsoft.Storage/storageAccounts' };
+            $resource | Should -BeNullOrEmpty;
 
+            # Expand templates
+            $option = @{
+                'Configuration.AZURE_PARAMETER_FILE_EXPANSION' = $True
+            }
+            $result = @(Invoke-PSRule @invokeParams -InputPath $parameterFile -Format File -Option $option);
+            $result.Length | Should -BeGreaterThan 1;
             $resource = $result | Where-Object { $_.TargetType -eq 'Microsoft.Storage/storageAccounts' };
             $resource | Should -Not -BeNullOrEmpty;
             $resource.TargetName | Should -BeIn 'storage1'

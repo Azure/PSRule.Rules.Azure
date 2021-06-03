@@ -21,6 +21,7 @@ The following configurations options are available for use:
 - [Azure_AKSNodeMinimumMaxPods](#azure_aksnodeminimummaxpods)
 - [Azure_AllowedRegions](#azure_allowedregions)
 - [Azure_MinimumCertificateLifetime](#azure_minimumcertificatelifetime)
+- [AZURE_PARAMETER_FILE_EXPANSION](#azure_parameter_file_expansion)
 - [AZURE_POLICY_WAIVER_MAX_EXPIRY](#azure_policy_waiver_max_expiry)
 - [AZURE_RESOURCE_GROUP](#azure_resource_group)
 - [AZURE_SUBSCRIPTION](#azure_subscription)
@@ -140,6 +141,36 @@ Example:
 # YAML: Set the Azure_MinimumCertificateLifetime configuration option to 90
 configuration:
   Azure_MinimumCertificateLifetime: 90
+```
+
+### AZURE_PARAMETER_FILE_EXPANSION
+
+This configuration option determines if Azure template parameter files will automatically be expanded.
+By default, parameter files will not be automatically expanded.
+
+Parameter files are expanded when PSRule cmdlets with the `-Format File` parameter are used.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_PARAMETER_FILE_EXPANSION: bool
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_PARAMETER_FILE_EXPANSION configuration option
+configuration:
+  AZURE_PARAMETER_FILE_EXPANSION: false
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_PARAMETER_FILE_EXPANSION configuration option to enable expansion
+configuration:
+  AZURE_PARAMETER_FILE_EXPANSION: true
 ```
 
 ### AZURE_POLICY_WAIVER_MAX_EXPIRY
