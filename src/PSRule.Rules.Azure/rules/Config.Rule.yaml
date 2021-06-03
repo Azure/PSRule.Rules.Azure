@@ -24,6 +24,8 @@ spec:
       resourceId: [ 'ResourceId' ]
       subscriptionId: [ 'SubscriptionId' ]
       resourceGroupName: [ 'ResourceGroupName' ]
+  configuration:
+    AZURE_PARAMETER_FILE_EXPANSION: false
   convention:
     include:
     - 'Azure.ExpandTemplate'

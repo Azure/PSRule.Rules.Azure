@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Expand Azure resources from parameter files.
-Export-PSRuleConvention 'Azure.ExpandTemplate' -If { $TargetObject.Extension -eq '.json' -and $Assert.HasJsonSchema($PSRule.GetContentFirstOrDefault($TargetObject), @(
+Export-PSRuleConvention 'Azure.ExpandTemplate' -If { $Configuration.AZURE_PARAMETER_FILE_EXPANSION -eq $True -and $TargetObject.Extension -eq '.json' -and $Assert.HasJsonSchema($PSRule.GetContentFirstOrDefault($TargetObject), @(
     "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json`#"
     "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json`#"
 ), $True) } -Begin {

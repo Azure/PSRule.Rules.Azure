@@ -12,6 +12,9 @@ What's changed since v1.4.0:
 - Bug fixes:
   - Fixed boolean string conversion case. [#793](https://github.com/Microsoft/PSRule.Rules.Azure/issues/793)
   - Fixed case sensitive property matching. [#794](https://github.com/Microsoft/PSRule.Rules.Azure/issues/794)
+  - Fixed automatic expansion of template parameter files. [#796](https://github.com/Microsoft/PSRule.Rules.Azure/issues/796)
+    - Template parameter files are not automatically expanded by default.
+    - To enable this, set the `AZURE_PARAMETER_FILE_EXPANSION` configuration option.
 
 ## v1.4.0
 
