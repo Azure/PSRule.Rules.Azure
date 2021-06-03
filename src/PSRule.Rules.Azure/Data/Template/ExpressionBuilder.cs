@@ -134,8 +134,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             if (source is JObject jObject && ExpressionHelpers.TryString(indexResult, out string propertyName))
             {
-                var property = jObject[propertyName];
-                if (property == null)
+                if (!jObject.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out JToken property))
                     throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
 
                 return property;
@@ -160,11 +159,10 @@ namespace PSRule.Rules.Azure.Data.Template
 
             if (result is JObject jObject)
             {
-                var property = jObject.Property(propertyName, StringComparison.OrdinalIgnoreCase);
-                if (property == null)
+                if (!jObject.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out JToken property))
                     throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
 
-                return property.Value;
+                return property;
             }
 
             if (result is JToken jToken)

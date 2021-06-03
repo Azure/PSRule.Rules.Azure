@@ -12,6 +12,9 @@ namespace PSRule.Rules.Azure.Data.Template
 {
     internal static class ExpressionHelpers
     {
+        private const string TRUE = "True";
+        private const string FALSE = "False";
+
         private static readonly CultureInfo AzureCulture = new CultureInfo("en-US");
 
         internal static bool TryString(object o, out string value)
@@ -257,6 +260,27 @@ namespace PSRule.Rules.Azure.Data.Template
                 builder.Append(hash[i].ToString("x2", culture));
             }
             return builder.ToString();
+        }
+
+        internal static bool TryBoolString(object o, out string value)
+        {
+            value = null;
+            if (o is bool bValue)
+            {
+                value = GetBoolString(bValue);
+                return true;
+            }
+            if (o is JValue jValue && jValue.Type == JTokenType.Boolean)
+            {
+                value = GetBoolString(jValue.Value<bool>());
+                return true;
+            }
+            return false;
+        }
+
+        private static string GetBoolString(bool value)
+        {
+            return value ? TRUE : FALSE;
         }
     }
 }
