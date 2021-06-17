@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Identity and access management
 resource: Subscription
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.RBAC.CoAdministrator.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.RBAC.CoAdministrator.md
 ---
 
 # Use role-based access control

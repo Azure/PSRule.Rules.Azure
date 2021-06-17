@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Data management
 resource: Storage Account
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Storage.UseReplication.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Storage.UseReplication.md
 ---
 
 # Use geo-replicated storage

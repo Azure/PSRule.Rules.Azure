@@ -13,4 +13,4 @@ output:
   - en-US
 
 configuration:
-  RULE_HELP: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/rules/en/
+  RULE_HELP: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/rules/en/

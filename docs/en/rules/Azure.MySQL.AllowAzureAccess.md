@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Network security and containment
 resource: Azure Database for MySQL
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.MySQL.AllowAzureAccess.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.MySQL.AllowAzureAccess.md
 ms-content-id: 8a159312-1dcd-4c64-91a8-4dd17f97efdb
 ---
 

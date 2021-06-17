@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: API Management
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.APIM.HTTPBackend.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.APIM.HTTPBackend.md
 ---
 
 # Use HTTPS backend connections

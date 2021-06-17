@@ -73,7 +73,7 @@ if ($Null -eq (Get-InstalledModule -Name PSRule.Rules.Azure -MinimumVersion '0.1
 ```
 
 Add `-AllowPrerelease` to install pre-release versions.
-See the [change log](https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/CHANGELOG.md) for the latest version.
+See the [change log](https://github.com/Azure/PSRule.Rules.Azure/blob/main/CHANGELOG.md) for the latest version.
 
 ## Exporting rule data for analysis
 

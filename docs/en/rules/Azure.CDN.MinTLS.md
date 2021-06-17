@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: Content Delivery Network
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.CDN.MinTLS.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.CDN.MinTLS.md
 ---
 
 # Azure CDN endpoint minimum TLS version

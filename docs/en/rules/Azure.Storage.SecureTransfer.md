@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: Storage Account
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Storage.SecureTransfer.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Storage.SecureTransfer.md
 ms-content-id: 539cb7b9-5510-4aa3-b422-41a049a10a88
 ---
 

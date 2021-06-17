@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Network security and containment
 resource: Application Gateway
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.WAFRules.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.WAFRules.md
 ---
 
 # Application Gateway rules are enabled

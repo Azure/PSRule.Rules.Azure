@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Deployment
 resource: All resources
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Template.TemplateFile.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Template.TemplateFile.md
 ---
 
 # Use ARM template file structure

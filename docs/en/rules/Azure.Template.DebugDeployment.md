@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Release engineering
 resource: All resources
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Template.DebugDeployment.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Template.DebugDeployment.md
 ---
 
 # Disable debugging of nested deployments

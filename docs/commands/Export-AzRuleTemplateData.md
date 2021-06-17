@@ -1,7 +1,7 @@
 ---
 external help file: PSRule.Rules.Azure-help.xml
 Module Name: PSRule.Rules.Azure
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/commands/Export-AzRuleTemplateData.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/commands/Export-AzRuleTemplateData.md
 schema: 2.0.0
 ---
 

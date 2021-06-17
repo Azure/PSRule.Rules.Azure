@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Network security and containment
 resource: Front Door
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.UseWAF.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.UseWAF.md
 ---
 
 # Front Door endpoints should use WAF

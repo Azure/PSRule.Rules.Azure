@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Cost Optimization
 category: Resource usage
 resource: Front Door
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.State.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.State.md
 ---
 
 # Enable Front Door instance

@@ -167,4 +167,4 @@ Thank you for taking the time to contribute.
 [github-pr-create]: https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork
 [build]: docs/install-instructions.md#building-from-source
 [vscode]: https://code.visualstudio.com/
-[issues]: https://github.com/Microsoft/PSRule.Rules.Azure/issues
+[issues]: https://github.com/Azure/PSRule.Rules.Azure/issues

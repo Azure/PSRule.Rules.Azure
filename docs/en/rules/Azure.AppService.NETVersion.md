@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Deployment
 resource: App Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppService.NETVersion.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppService.NETVersion.md
 ---
 
 # Use a newer .NET Framework version

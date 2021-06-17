@@ -3,7 +3,7 @@ severity: Important
 pillar: Cost Optimization
 category: Resource usage
 resource: Public IP address
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.PublicIP.IsAttached.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.PublicIP.IsAttached.md
 ms-content-id: 9222ec9f-7eea-4301-bee6-3022c9008874
 ---
 

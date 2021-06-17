@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Design
 resource: Azure Kubernetes Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.AuthorizedIPs.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.AuthorizedIPs.md
 ---
 
 # Restrict access to AKS API server endpoints

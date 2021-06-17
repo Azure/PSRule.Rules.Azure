@@ -3,7 +3,7 @@ severity: Critical
 pillar: Performance Efficiency
 category: Capacity Planning
 resource: Cognitive Search
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Search.SKU.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Search.SKU.md
 ---
 
 # Cognitive Search minimum SKU

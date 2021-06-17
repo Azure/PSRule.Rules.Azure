@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: Azure Database for PostgreSQL
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.PostgreSQL.MinTLS.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.PostgreSQL.MinTLS.md
 ---
 
 # PostgreSQL DB server minimum TLS version

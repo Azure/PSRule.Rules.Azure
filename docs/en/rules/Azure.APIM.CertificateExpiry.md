@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Deployment
 resource: API Management
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.APIM.CertificateExpiry.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.APIM.CertificateExpiry.md
 ---
 
 # API Management uses current certificates

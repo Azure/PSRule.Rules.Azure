@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Security
 category: Network security and containment
 resource: SQL Database
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SQL.FirewallRuleCount.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SQL.FirewallRuleCount.md
 ms-content-id: b877a8ba-bc56-4bfe-9674-4b52b75cd13b
 ---
 

@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: Content Delivery Network
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.CDN.HTTP.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.CDN.HTTP.md
 ---
 
 # Use HTTPS client connections

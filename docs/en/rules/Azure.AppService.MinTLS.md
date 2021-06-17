@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: App Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppService.MinTLS.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppService.MinTLS.md
 ms-content-id: e19fbe7e-da05-47d4-8de1-2fdf52ada662
 ---
 

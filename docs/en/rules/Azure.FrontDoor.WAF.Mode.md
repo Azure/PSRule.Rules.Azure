@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Network security and containment
 resource: Front Door
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.WAF.Mode.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.WAF.Mode.md
 ---
 
 # Use Front Door WAF policy in prevention mode

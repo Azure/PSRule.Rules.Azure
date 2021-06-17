@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Availability
 resource: Virtual Machine
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.Standalone.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.Standalone.md
 ---
 
 # Azure.VirtualMachine.Standalone

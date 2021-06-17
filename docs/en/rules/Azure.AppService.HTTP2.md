@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Performance Efficiency
 category: Application design
 resource: App Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppService.HTTP2.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppService.HTTP2.md
 ---
 
 # Use HTTP/2 connections for App Service apps

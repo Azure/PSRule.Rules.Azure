@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Deployment
 resource: Virtual Network
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VNET.PeerState.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VNET.PeerState.md
 ---
 
 # VNET peer is not connected

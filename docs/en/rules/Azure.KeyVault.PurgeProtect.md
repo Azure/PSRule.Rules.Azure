@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Data management
 resource: Key Vault
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.KeyVault.PurgeProtect.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.KeyVault.PurgeProtect.md
 ---
 
 # Use Key Vault Purge Protection

@@ -16,7 +16,7 @@ updates:
   labels:
   - 'dependencies'
   reviewers:
-  - 'microsoft/psrule-rules-azure'
+  - 'azure/psrule-rules-azure'
   ignore:
   # Ignore upgrades to PS 7.1 for tool chain components at this time
   # Testing against PS 7.1 is already completed
@@ -30,4 +30,14 @@ updates:
   labels:
   - 'ci-quality'
   reviewers:
-  - 'microsoft/psrule-rules-azure'
+  - 'azure/psrule-rules-azure'
+
+# Maintain dependencies for Python
+- package-ecosystem: 'pip'
+  directory: '/'
+  schedule:
+    interval: 'daily'
+  labels:
+  - 'ci-quality'
+  reviewers:
+  - 'azure/psrule-rules-azure'

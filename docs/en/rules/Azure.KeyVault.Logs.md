@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Security operations
 resource: Key Vault
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.KeyVault.Logs.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.KeyVault.Logs.md
 ---
 
 # Audit Key Vault data access

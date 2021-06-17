@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: Application Gateway
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.SSLPolicy.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.SSLPolicy.md
 ---
 
 # Application Gateways use a minimum TLS 1.2

@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Deployment
 resource: Application Gateway
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.MinSku.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.MinSku.md
 ---
 
 # Use production Application Gateway SKU

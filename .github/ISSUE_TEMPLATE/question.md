@@ -8,4 +8,4 @@ We use Issues as an issue tracker; for help, discussion, and support questions, 
 
 Thanks! 😁.
 
-- https://github.com/microsoft/PSRule.Rules.Azure/discussions
+- https://github.com/Azure/PSRule.Rules.Azure/discussions
