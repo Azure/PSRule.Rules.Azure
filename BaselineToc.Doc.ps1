@@ -11,7 +11,7 @@ Document 'baseline' {
         'Obsolete' | BlockQuote
     }
 
-    Import-Module .\out\modules\PSRule.Rules.Azure;
+    Import-Module ./out/modules/PSRule.Rules.Azure;
     $rules = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline $baselineName -WarningAction SilentlyContinue);
     $ruleCount = $rules.Length;
 

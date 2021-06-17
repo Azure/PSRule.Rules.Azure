@@ -68,8 +68,8 @@ Rule documentation requires the following annotations:
 
 - Rules are stored in `src/PSRule.Rules.Azure/rules/`.
 - Rules are organized into separate `.Rule.ps1` files based on service.
-- Rule documentation in English is stored in `docs/rules/en/`.
-  - Additional cultures can be added in a subdirectory under `docs/rules/`.
+- Rule documentation in English is stored in `docs/en/rules/`.
+  - Additional cultures can be added in a subdirectory under `docs/`.
 - Use pre-conditions to limit the type of resource a rule applies to.
 
 Each rule **must** meet the following requirements:

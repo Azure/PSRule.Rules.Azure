@@ -4,7 +4,7 @@
 Document 'module' {
     Title 'Rules for architecture excellence'
 
-    Import-Module .\out\modules\PSRule.Rules.Azure
+    Import-Module ./out/modules/PSRule.Rules.Azure
     $rules = Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -WarningAction SilentlyContinue |
         Add-Member -MemberType ScriptProperty -Name Category -Value { $this.Info.Annotations.category } -PassThru |
         Add-Member -MemberType ScriptProperty -Name Pillar -Value { $this.Info.Annotations.pillar } -PassThru |
@@ -36,7 +36,7 @@ Document 'module' {
 Document 'resource' {
     Title 'Rules by resource'
 
-    Import-Module .\out\modules\PSRule.Rules.Azure
+    Import-Module ./out/modules/PSRule.Rules.Azure
     $rules = Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -WarningAction SilentlyContinue |
         Add-Member -MemberType ScriptProperty -Name Resource -Value { $this.Info.Annotations.resource } -PassThru |
         Sort-Object -Property Resource;

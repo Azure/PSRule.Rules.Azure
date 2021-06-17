@@ -1,4 +1,8 @@
-# Troubleshooting guide
+---
+author: BernieWhite
+---
+
+# Troubleshooting
 
 This article provides troubleshooting instructions for common errors.
 

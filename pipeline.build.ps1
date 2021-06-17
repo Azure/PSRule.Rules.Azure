@@ -207,7 +207,6 @@ task ModuleDependencies NuGet, PSRule, {
 task BuildDotNet {
     exec {
         # Build library
-        # Add build version -p:versionPrefix=$ModuleVersion
         dotnet publish src/PSRule.Rules.Azure -c $Configuration -f netstandard2.0 -o $(Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -p:version=$Build
     }
 }
@@ -335,8 +334,8 @@ task BuildDocs BuildRuleDocs, BuildBaselineDocs
 # Synopsis: Build table of content for rules
 task BuildRuleDocs Build, PSRule, PSDocs, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-    $Null = Invoke-PSDocument -Name module -OutputPath .\docs\rules\en\ -Path .\RuleToc.Doc.ps1;
-    $Null = Invoke-PSDocument -Name resource -OutputPath .\docs\rules\en\ -Path .\RuleToc.Doc.ps1;
+    $Null = Invoke-PSDocument -Name module -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
+    $Null = Invoke-PSDocument -Name resource -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
 }
 
 # Synopsis: Build table of content for baselines
@@ -344,7 +343,7 @@ task BuildBaselineDocs Build, PSRule, PSDocs, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     $baselines = Get-PSRuleBaseline -Module PSRule.Rules.Azure -WarningAction SilentlyContinue;
     $Null = $baselines | ForEach-Object {
-        $_ | Invoke-PSDocument -Name baseline -InstanceName $_.Name -OutputPath .\docs\baselines\en\ -Path .\BaselineToc.Doc.ps1;
+        $_ | Invoke-PSDocument -Name baseline -InstanceName $_.Name -OutputPath ./docs/en/baselines/ -Path ./BaselineToc.Doc.ps1;
     }
 }
 
@@ -363,7 +362,7 @@ task BuildHelp BuildModule, PlatyPS, {
         $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en-GB/ -ItemType Directory -Force;
     }
 
-    $Null = Copy-Item -Path docs/rules/en/*.md -Destination out/modules/PSRule.Rules.Azure/en/;
+    $Null = Copy-Item -Path docs/en/rules/*.md -Destination out/modules/PSRule.Rules.Azure/en/;
 
     # Avoid YamlDotNet issue in same app domain
     exec {
@@ -371,7 +370,7 @@ task BuildHelp BuildModule, PlatyPS, {
         &$pwshPath -Command {
             # Generate MAML and about topics
             Import-Module -Name PlatyPS -Verbose:$False;
-            $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path '.\docs\commands\PSRule.Rules.Azure\en-US', '.\docs\concepts\PSRule.Rules.Azure\en-US' -Force;
+            $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path './docs/commands', './docs/concepts' -Force;
 
              # Copy generated help into module out path
             $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-US/ -Recurse;
@@ -387,7 +386,7 @@ task BuildHelp BuildModule, PlatyPS, {
 
 task ScaffoldHelp Build, BuildRuleDocs, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-    Update-MarkdownHelp -Path '.\docs\commands\PSRule.Rules.Azure\en-US';
+    Update-MarkdownHelp -Path '.\docs\commands';
 }
 
 task Benchmark {
