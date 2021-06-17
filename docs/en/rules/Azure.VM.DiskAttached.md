@@ -3,7 +3,7 @@ severity: Important
 pillar: Cost Optimization
 category: Resource usage
 resource: Virtual Machine
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.DiskAttached.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.DiskAttached.md
 ms-content-id: 23a06a0e-7965-4d43-8e29-bb9ac6eeffcc
 ---
 

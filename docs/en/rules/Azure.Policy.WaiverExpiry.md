@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable Infrastructure
 resource: Policy
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Policy.WaiverExpiry.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Policy.WaiverExpiry.md
 ---
 
 # Policy waiver exemptions must expire

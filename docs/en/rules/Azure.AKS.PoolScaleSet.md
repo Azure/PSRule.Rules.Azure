@@ -3,7 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: Capacity planning
 resource: Azure Kubernetes Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.PoolScaleSet.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.PoolScaleSet.md
 ---
 
 # AKS clusters use VM scale sets

@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Load balancing and failover
 resource: Load Balancer
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.LB.Probe.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.LB.Probe.md
 ---
 
 # Use specific load balancer probe

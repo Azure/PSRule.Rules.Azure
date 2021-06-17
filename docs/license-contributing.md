@@ -13,4 +13,4 @@ Here is how you can get started:
 - :octicons-book-16: Improve documentation.
 - :octicons-git-pull-request-16: Contribute code.
 
-  [1]: https://github.com/microsoft/PSRule.Rules.Azure/blob/main/LICENSE
+  [1]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/LICENSE

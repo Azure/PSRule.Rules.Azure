@@ -1,7 +1,7 @@
 ---
 Module Name: PSRule.Rules.Azure
 Module Guid: bce66f73-3809-4740-b3c3-f52958e7ab51
-Download Help Link: https://github.com/Microsoft/PSRule.Rules.Azure
+Download Help Link: https://github.com/Azure/PSRule.Rules.Azure
 Help Version: 0.1.0.0
 Locale: en-US
 ---

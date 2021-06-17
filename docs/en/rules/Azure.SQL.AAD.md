@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Identity and access management
 resource: SQL Database
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SQL.AAD.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SQL.AAD.md
 ---
 
 # Use AAD authentication with SQL databases

@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: Storage Account
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Storage.MinTLS.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Storage.MinTLS.md
 ---
 
 # Storage Account minimum TLS version

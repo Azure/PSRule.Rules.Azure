@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: Load Balancer
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.LB.Name.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.LB.Name.md
 ---
 
 # Use valid Load Balancer names

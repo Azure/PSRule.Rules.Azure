@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Identity and access management
 resource: Subscription
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.RBAC.UseGroups.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.RBAC.UseGroups.md
 ms-content-id: 818cc242-5912-44b6-b3dc-461822079522
 ---
 

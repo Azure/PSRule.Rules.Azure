@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Identity and access management
 resource: Azure Kubernetes Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.AzureRBAC.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.AzureRBAC.md
 ---
 
 # Use Azure RBAC for Kubernetes Authorization

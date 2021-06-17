@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Applications and services
 resource: Container Registry
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.ACR.ContainerScan.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.ACR.ContainerScan.md
 ---
 
 # Scan ACR container images

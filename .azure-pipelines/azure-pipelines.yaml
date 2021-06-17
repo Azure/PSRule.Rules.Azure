@@ -213,7 +213,7 @@ stages:
         action: edit
         tag: '$(Build.SourceBranchName)'
         releaseNotesSource: inline
-        releaseNotesInline: 'See [change log](https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/CHANGELOG.md)'
+        releaseNotesInline: 'See [change log](https://github.com/Azure/PSRule.Rules.Azure/blob/main/CHANGELOG.md)'
         assetUploadMode: replace
         addChangeLog: false
         isPreRelease: $(isPreRelease)

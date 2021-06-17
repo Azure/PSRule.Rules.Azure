@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Security
 category: Identity and access management
 resource: Automation Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Automation.WebHookExpiry.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Automation.WebHookExpiry.md
 ms-content-id: 7b8aa617-6278-42e4-b8ae-d9da6e3d8ade
 ---
 

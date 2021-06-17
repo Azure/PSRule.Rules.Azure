@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Design
 resource: Azure Kubernetes Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.PoolVersion.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.PoolVersion.md
 ---
 
 # Upgrade AKS node pool version

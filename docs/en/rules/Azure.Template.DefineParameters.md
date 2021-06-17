@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Release engineering
 resource: All resources
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Template.DefineParameters.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Template.DefineParameters.md
 ---
 
 # Define template parameters

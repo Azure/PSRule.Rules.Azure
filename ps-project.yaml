@@ -6,14 +6,14 @@ info:
   name: PSRule.Rules.Azure
   description: |
     A suite of rules to validate Azure resources using PSRule.
-  url: https://github.com/Microsoft/PSRule.Rules.Azure
+  url: https://github.com/Azure/PSRule.Rules.Azure
 
 repository:
   type: git
-  url: https://github.com/Microsoft/PSRule.Rules.Azure.git
+  url: https://github.com/Azure/PSRule.Rules.Azure.git
 
 bugs:
-  url: https://github.com/Microsoft/PSRule.Rules.Azure/issues
+  url: https://github.com/Azure/PSRule.Rules.Azure/issues
 
 modules:
   PSRule: ^1.3.0

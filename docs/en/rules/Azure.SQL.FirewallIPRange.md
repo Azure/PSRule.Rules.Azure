@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Network security and containment
 resource: SQL Database
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SQL.FirewallIPRange.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SQL.FirewallIPRange.md
 ms-content-id: a25b1927-f04c-4a6a-8a3d-42d59d4722ff
 ---
 

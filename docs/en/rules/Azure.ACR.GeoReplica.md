@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Data management
 resource: Container Registry
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.ACR.GeoReplica.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.ACR.GeoReplica.md
 ---
 
 # Geo-replicate container images

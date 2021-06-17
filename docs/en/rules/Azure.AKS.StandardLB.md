@@ -3,7 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: Capacity planning
 resource: Azure Kubernetes Service
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.StandardLB.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.StandardLB.md
 ---
 
 # Use the Standard load balancer SKU

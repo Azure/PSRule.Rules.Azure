@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Availability
 resource: Virtual Machine
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.ASAlignment.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.ASAlignment.md
 ms-content-id: 28583693-11e4-4a16-b864-8caa6e408162
 ---
 

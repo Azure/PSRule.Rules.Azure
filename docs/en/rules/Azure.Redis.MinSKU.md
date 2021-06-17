@@ -3,7 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: Capacity Planning
 resource: Azure Cache for Redis
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Redis.MinSKU.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Redis.MinSKU.md
 ---
 
 # Use at least Standard C1 cache instances

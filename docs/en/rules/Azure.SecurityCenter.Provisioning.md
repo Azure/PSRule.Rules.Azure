@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Security operations
 resource: Security Center
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SecurityCenter.Provisioning.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SecurityCenter.Provisioning.md
 ms-content-id: 966390bc-0358-43dd-8b5f-6b0ae2b16edd
 ---
 

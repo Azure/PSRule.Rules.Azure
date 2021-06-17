@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Network security and containment
 resource: Network Security Group
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.NSG.AnyInboundSource.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.NSG.AnyInboundSource.md
 ---
 
 # Avoid rules that allow any inbound source

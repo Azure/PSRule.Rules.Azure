@@ -33,11 +33,11 @@ For example:
 
 ## NOTE
 
-An online version of this document is available at https://github.com/microsoft/PSRule.Rules.Azure/blob/main/docs/concepts/about_PSRule_Azure_Metadata_Link.md.
+An online version of this document is available at https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/concepts/about_PSRule_Azure_Metadata_Link.md.
 
 ## SEE ALSO
 
-- [Get-AzRuleTemplateLink](https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/commands/Get-AzRuleTemplateLink.md)
+- [Get-AzRuleTemplateLink](https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/commands/Get-AzRuleTemplateLink.md)
 
 ## KEYWORDS
 

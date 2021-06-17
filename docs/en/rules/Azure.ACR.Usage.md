@@ -3,7 +3,7 @@ severity: Important
 pillar: Cost Optimization
 category: Resource usage
 resource: Container Registry
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.ACR.Usage.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.ACR.Usage.md
 ---
 
 # Container registry storage usage

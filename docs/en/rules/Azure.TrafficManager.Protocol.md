@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: Traffic Manager
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.TrafficManager.Protocol.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.TrafficManager.Protocol.md
 ---
 
 # Use HTTPS to monitor web-based endpoints

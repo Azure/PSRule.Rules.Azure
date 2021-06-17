@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Network security and containment
 resource: Azure Database for PostgreSQL
-online version: https://github.com/Microsoft/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.PostgreSQL.FirewallIPRange.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.PostgreSQL.FirewallIPRange.md
 ms-content-id: fc3b5764-5b4a-4915-9311-75ec6a0d0d55
 ---
 
