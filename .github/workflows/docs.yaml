@@ -2,8 +2,7 @@ name: Build and deploy docs
 on:
   push:
     branches:
-    # - main
-    - bewhite/docsite
+    - main
 
 jobs:
   deploy:
