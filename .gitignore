@@ -2,8 +2,10 @@
 .vs/
 reports/
 out/
+site/
 **/bin/
 **/obj/
+**/__pycache__/
 BenchmarkDotNet.Artifacts/
 results/
 *.zip

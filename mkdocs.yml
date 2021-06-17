@@ -1,0 +1,112 @@
+site_name: PSRule for Azure
+site_url: https://azure.github.io/PSRule.Rules.Azure
+site_description: A suite of rules to validate Azure resources and infrastructure as code (IaC) using PSRule.
+site_author: Microsoft
+
+repo_url: https://github.com/Azure/PSRule.Rules.Azure/
+edit_uri: blob/main/docs/
+
+repo_issue: https://github.com/Azure/PSRule.Rules.Azure/issues
+repo_discussion: https://github.com/Azure/PSRule.Rules.Azure/discussions
+
+# copyright: MIT License - Copyright &copy; Microsoft Corporation
+extra_css:
+- assets/stylesheets/extra.css
+
+# extra_templates:
+# - home.html
+
+theme:
+  language: en
+  name: material
+  custom_dir: overrides
+  font:
+    text: Roboto
+  palette:
+    primary: black
+    accent: blue
+  logo: assets/ms_icon.png
+  favicon: assets/ms_icon.png
+  icon:
+    repo: fontawesome/brands/github
+  features:
+  - navigation.instant
+  - navigation.indexes
+  - navigation.sections:
+      level: 1
+  - navigation.tabs
+
+nav:
+  - Home: index.md
+  - Getting started:
+    - Overview: features.md
+    - Installation: install-instructions.md
+    - Using metadata: using-metadata.md
+    - Creating your pipeline: creating-your-pipeline.md
+    - Validating locally: validating-locally.md
+    - Customization:
+      - Storing custom rules: customization/index.md
+      - Enforcing custom tags: customization/enforce-custom-tags/index.md
+    - Troubleshooting: troubleshooting.md
+    # - Data privacy: data-privacy.md
+    - License and contributing: license-contributing.md
+    - Releases:
+      - Change log:
+        - v1: 'CHANGELOG-v1.md'
+        - v0: 'CHANGELOG-v0.md'
+      # - Upgrade guide: upgrading.md
+      # - Deprecations: deprecations.md
+    - Support: support.md
+  - Setup:
+    - Configuring options: setup/configuring-options.md
+    - Configuring rule defaults: setup/configuring-rules.md
+    - Configuring expansion: setup/configuring-expansion.md
+  - Reference:
+    - By module: en/rules/module.md
+    - By resource: en/rules/resource.md
+
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - pymdownx.snippets
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.pathconverter
+  - pymdownx.tabbed
+  - pymdownx.details
+  - mdx_truly_sane_lists
+  - pymdownx.tasklist
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - toc:
+      permalink: '#'
+      separator: ''
+
+plugins:
+- mkdocs-simple-hooks:
+    hooks:
+      on_page_markdown: "docs.hooks:replace_maml"
+      on_nav: "docs.hooks:build_reference_nav"
+- search
+- git-revision-date
+
+extra:
+  version:
+    provider: mike
+
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Azure/PSRule.Rules.Azure/
+
+  # alternate:
+
+  #   # Switch to English
+  #   - name: English
+  #     link: /en/
+  #     lang: en

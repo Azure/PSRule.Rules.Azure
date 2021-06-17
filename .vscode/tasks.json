@@ -18,6 +18,16 @@
             "presentation": {
                 "clear": true,
                 "panel": "dedicated"
+            },
+            "linux":{
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": [
+                            "-c"
+                        ]
+                    }
+                }
             }
         },
         {
@@ -32,6 +42,16 @@
             "presentation": {
                 "clear": true,
                 "panel": "dedicated"
+            },
+            "linux":{
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": [
+                            "-c"
+                        ]
+                    }
+                }
             }
         },
         {
@@ -59,13 +79,33 @@
             "presentation": {
                 "clear": true,
                 "panel": "dedicated"
+            },
+            "linux":{
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": [
+                            "-c"
+                        ]
+                    }
+                }
             }
         },
         {
             "label": "clean",
             "type": "shell",
             "command": "Invoke-Build Clean",
-            "problemMatcher": []
+            "problemMatcher": [],
+            "linux":{
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": [
+                            "-c"
+                        ]
+                    }
+                }
+            }
         },
         {
             "label": "script-analyzer",
@@ -81,7 +121,17 @@
             "label": "build-docs",
             "type": "shell",
             "command": "Invoke-Build BuildHelp",
-            "problemMatcher": []
+            "problemMatcher": [],
+            "linux":{
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": [
+                            "-c"
+                        ]
+                    }
+                }
+            }
         },
         {
             "label": "scaffold-docs",
@@ -94,19 +144,60 @@
             "detail": "Generate rule and baseline documentation.",
             "type": "shell",
             "command": "Invoke-Build BuildDocs",
-            "problemMatcher": []
+            "problemMatcher": [],
+            "linux":{
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": [
+                            "-c"
+                        ]
+                    }
+                }
+            }
         },
         {
             "label": "Export data",
             "detail": "Export a list of resource providers from an Azure subscription.",
             "type": "shell",
             "command": "Invoke-Build ExportData",
-            "problemMatcher": []
+            "problemMatcher": [],
+            "linux":{
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": [
+                            "-c"
+                        ]
+                    }
+                }
+            }
         },
         {
             "label": "benchmark",
             "type": "shell",
             "command": "Invoke-Build Benchmark",
+            "problemMatcher": [],
+            "presentation": {
+                "clear": true,
+                "panel": "dedicated"
+            },
+            "linux":{
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": [
+                            "-c"
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "label": "Serve docs",
+            "detail": "Build and run documentation site locally.",
+            "type": "shell",
+            "command": "mkdocs serve",
             "problemMatcher": [],
             "presentation": {
                 "clear": true,

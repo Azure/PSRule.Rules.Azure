@@ -291,28 +291,28 @@ For walk through examples of `PSRule.Rules.Azure` module usage see:
 
 PSRule for Azure includes rules across five pillars of the [Microsoft Azure Well-Architected Framework][AWAF].
 
-- [Rules for architecture excellence](docs/rules/en/module.md)
-  - [Cost Optimization](docs/rules/en/module.md#cost-optimization)
-  - [Operational Excellence](docs/rules/en/module.md#operational-excellence)
-  - [Performance Efficiency](docs/rules/en/module.md#performance-efficiency)
-  - [Reliability](docs/rules/en/module.md#reliability)
-  - [Security](docs/rules/en/module.md#security)
+- [Rules for architecture excellence](docs/en/rules/module.md)
+  - [Cost Optimization](docs/en/rules/module.md#cost-optimization)
+  - [Operational Excellence](docs/en/rules/module.md#operational-excellence)
+  - [Performance Efficiency](docs/en/rules/module.md#performance-efficiency)
+  - [Reliability](docs/en/rules/module.md#reliability)
+  - [Security](docs/en/rules/module.md#security)
 
 To view a list of rules by Azure resources see:
 
-- [Rules by resource](docs/rules/en/resource.md)
+- [Rules by resource](docs/en/rules/resource.md)
 
 ## Baseline reference
 
 The following baselines are included within `PSRule.Rules.Azure`.
 
-- [Azure.Default](docs/baselines/en/Azure.Default.md) - Default baseline for Azure rules.
-- [Azure.Preview](docs/baselines/en/Azure.Preview.md) - Includes Azure features in preview.
-- [Azure.All](docs/baselines/en/Azure.All.md) - Includes all Azure rules.
-- [Azure.GA_2020_06](docs/baselines/en/Azure.GA_2020_06.md) - Baseline for GA rules released June 2020 or prior.
-- [Azure.GA_2020_09](docs/baselines/en/Azure.GA_2020_09.md) - Baseline for GA rules released September 2020 or prior.
-- [Azure.GA_2020_12](docs/baselines/en/Azure.GA_2020_12.md) - Baseline for GA rules released December 2020 or prior.
-- [Azure.GA_2021_03](docs/baselines/en/Azure.GA_2021_03.md) - Baseline for GA rules released March 2021 or prior.
+- [Azure.Default](docs/en/baselines/Azure.Default.md) - Default baseline for Azure rules.
+- [Azure.Preview](docs/en/baselines/Azure.Preview.md) - Includes Azure features in preview.
+- [Azure.All](docs/en/baselines/Azure.All.md) - Includes all Azure rules.
+- [Azure.GA_2020_06](docs/en/baselines/Azure.GA_2020_06.md) - Baseline for GA rules released June 2020 or prior.
+- [Azure.GA_2020_09](docs/en/baselines/Azure.GA_2020_09.md) - Baseline for GA rules released September 2020 or prior.
+- [Azure.GA_2020_12](docs/en/baselines/Azure.GA_2020_12.md) - Baseline for GA rules released December 2020 or prior.
+- [Azure.GA_2021_03](docs/en/baselines/Azure.GA_2021_03.md) - Baseline for GA rules released March 2021 or prior.
 
 ## Language reference
 
@@ -322,24 +322,24 @@ PSRule for Azure extends PowerShell with the following cmdlets.
 
 The following commands exist in the `PSRule.Rules.Azure` module:
 
-- [Export-AzRuleData](docs/commands/PSRule.Rules.Azure/en-US/Export-AzRuleData.md) - Export resource configuration data from Azure subscriptions.
-- [Export-AzRuleTemplateData](docs/commands/PSRule.Rules.Azure/en-US/Export-AzRuleTemplateData.md) - Export resource configuration data from Azure templates.
-- [Get-AzRuleTemplateLink](docs/commands/PSRule.Rules.Azure/en-US/Get-AzRuleTemplateLink.md) - Get a metadata link to a Azure template file.
+- [Export-AzRuleData](docs/commands/Export-AzRuleData.md) - Export resource configuration data from Azure subscriptions.
+- [Export-AzRuleTemplateData](docs/commands/Export-AzRuleTemplateData.md) - Export resource configuration data from Azure templates.
+- [Get-AzRuleTemplateLink](docs/commands/Get-AzRuleTemplateLink.md) - Get a metadata link to a Azure template file.
 
 ### Concepts
 
 The following conceptual topics exist in the `PSRule.Rules.Azure` module:
 
-- [Azure metadata link](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Metadata_Link.md)
-- [Configuration](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md)
-  - [Azure_AKSMinimumVersion](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_aksminimumversion)
-  - [Azure_AKSNodeMinimumMaxPods](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_aksnodeminimummaxpods)
-  - [Azure_AllowedRegions](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_allowedregions)
-  - [Azure_MinimumCertificateLifetime](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_minimumcertificatelifetime)
-  - [AZURE_PARAMETER_FILE_EXPANSION](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_parameter_file_expansion)
-  - [AZURE_POLICY_WAIVER_MAX_EXPIRY](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_policy_waiver_max_expiry)
-  - [AZURE_RESOURCE_GROUP](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_resource_group)
-  - [AZURE_SUBSCRIPTION](docs/concepts/PSRule.Rules.Azure/en-US/about_PSRule_Azure_Configuration.md#azure_subscription)
+- [Azure metadata link](docs/concepts/about_PSRule_Azure_Metadata_Link.md)
+- [Configuration](docs/concepts/about_PSRule_Azure_Configuration.md)
+  - [Azure_AKSMinimumVersion](docs/concepts/about_PSRule_Azure_Configuration.md#azure_aksminimumversion)
+  - [Azure_AKSNodeMinimumMaxPods](docs/concepts/about_PSRule_Azure_Configuration.md#azure_aksnodeminimummaxpods)
+  - [Azure_AllowedRegions](docs/concepts/about_PSRule_Azure_Configuration.md#azure_allowedregions)
+  - [Azure_MinimumCertificateLifetime](docs/concepts/about_PSRule_Azure_Configuration.md#azure_minimumcertificatelifetime)
+  - [AZURE_PARAMETER_FILE_EXPANSION](docs/concepts/about_PSRule_Azure_Configuration.md#azure_parameter_file_expansion)
+  - [AZURE_POLICY_WAIVER_MAX_EXPIRY](docs/concepts/about_PSRule_Azure_Configuration.md#azure_policy_waiver_max_expiry)
+  - [AZURE_RESOURCE_GROUP](docs/concepts/about_PSRule_Azure_Configuration.md#azure_resource_group)
+  - [AZURE_SUBSCRIPTION](docs/concepts/about_PSRule_Azure_Configuration.md#azure_subscription)
 
 ## Related projects
 
