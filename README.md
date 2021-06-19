@@ -6,9 +6,9 @@ A suite of rules to validate Azure resources and infrastructure as code (IaC) us
 
 Features of PSRule for Azure include:
 
-- [Ready to go](docs/features.md#ready-to-go) - Leverage over 200 pre-built rules to validate Azure resources.
-- [DevOps](docs/features.md#devops) - Validate resources and infrastructure code pre or post-deployment.
-- [Cross-platform](docs/features.md#cross-platform) - Run on MacOS, Linux, and Windows.
+- [Ready to go](https://azure.github.io/PSRule.Rules.Azure/features/#readytogo) - Leverage over 200 pre-built rules to validate Azure resources.
+- [DevOps](https://azure.github.io/PSRule.Rules.Azure/features/#devops) - Validate resources and infrastructure code pre or post-deployment.
+- [Cross-platform](https://azure.github.io/PSRule.Rules.Azure/features/#cross-platform) - Run on MacOS, Linux, and Windows.
 
 ## Project objectives
 
@@ -54,7 +54,7 @@ PSRule for Azure provides two methods for analyzing Azure resources:
 - _In-flight_ - After resource are deployed to an Azure subscription.
 
 For specific use cases see [scenarios](#scenarios).
-For additional details see the [FAQ](docs/features.md#frequently-asked-questions-faq).
+For additional details see the [FAQ](https://azure.github.io/PSRule.Rules.Azure/features/#frequentlyaskedquestionsfaq).
 
 ### Using with GitHub Actions
 
@@ -291,28 +291,28 @@ For walk through examples of `PSRule.Rules.Azure` module usage see:
 
 PSRule for Azure includes rules across five pillars of the [Microsoft Azure Well-Architected Framework][AWAF].
 
-- [Rules for architecture excellence](docs/en/rules/module.md)
-  - [Cost Optimization](docs/en/rules/module.md#cost-optimization)
-  - [Operational Excellence](docs/en/rules/module.md#operational-excellence)
-  - [Performance Efficiency](docs/en/rules/module.md#performance-efficiency)
-  - [Reliability](docs/en/rules/module.md#reliability)
-  - [Security](docs/en/rules/module.md#security)
+- [Rules for architecture excellence](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/)
+  - [Cost Optimization](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#costoptimization)
+  - [Operational Excellence](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#operationalexcellence)
+  - [Performance Efficiency](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#performanceefficiency)
+  - [Reliability](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#reliability)
+  - [Security](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#security)
 
 To view a list of rules by Azure resources see:
 
-- [Rules by resource](docs/en/rules/resource.md)
+- [Rules by resource](https://azure.github.io/PSRule.Rules.Azure/en/rules/resource/)
 
 ## Baseline reference
 
 The following baselines are included within `PSRule.Rules.Azure`.
 
-- [Azure.Default](docs/en/baselines/Azure.Default.md) - Default baseline for Azure rules.
-- [Azure.Preview](docs/en/baselines/Azure.Preview.md) - Includes Azure features in preview.
-- [Azure.All](docs/en/baselines/Azure.All.md) - Includes all Azure rules.
-- [Azure.GA_2020_06](docs/en/baselines/Azure.GA_2020_06.md) - Baseline for GA rules released June 2020 or prior.
-- [Azure.GA_2020_09](docs/en/baselines/Azure.GA_2020_09.md) - Baseline for GA rules released September 2020 or prior.
-- [Azure.GA_2020_12](docs/en/baselines/Azure.GA_2020_12.md) - Baseline for GA rules released December 2020 or prior.
-- [Azure.GA_2021_03](docs/en/baselines/Azure.GA_2021_03.md) - Baseline for GA rules released March 2021 or prior.
+- [Azure.Default](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Default/) - Default baseline for Azure rules.
+- [Azure.Preview](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview/) - Includes Azure features in preview.
+- [Azure.All](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.All/) - Includes all Azure rules.
+- [Azure.GA_2020_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2020_06/) - Baseline for GA rules released June 2020 or prior.
+- [Azure.GA_2020_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2020_09/) - Baseline for GA rules released September 2020 or prior.
+- [Azure.GA_2020_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2020_12/) - Baseline for GA rules released December 2020 or prior.
+- [Azure.GA_2021_03](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_03/) - Baseline for GA rules released March 2021 or prior.
 
 ## Language reference
 
@@ -382,7 +382,7 @@ This project is [licensed under the MIT License](LICENSE).
 
 [issue]: https://github.com/Azure/PSRule.Rules.Azure/issues
 [discussion]: https://github.com/Azure/PSRule.Rules.Azure/discussions
-[install]: docs/install-instructions.md
+[install]: https://azure.github.io/PSRule.Rules.Azure/install-instructions/
 [ci-badge]: https://dev.azure.com/bewhite/PSRule.Rules.Azure/_apis/build/status/PSRule.Rules.Azure-CI?branchName=main
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
 [engine]: https://github.com/Microsoft/PSRule
@@ -393,4 +393,4 @@ This project is [licensed under the MIT License](LICENSE).
 [AWAF]: https://docs.microsoft.com/en-gb/azure/architecture/framework/
 [create-workflow]: https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file
 [extension]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
-[troubleshooting guide]: docs/troubleshooting.md
+[troubleshooting guide]: https://azure.github.io/PSRule.Rules.Azure/troubleshooting/

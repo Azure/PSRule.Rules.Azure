@@ -114,14 +114,6 @@ suppression:
 [:octicons-book-24: Docs][5]
 
 PSRule for Azure comes with many configuration options.
-The setup section explains in detail how to configure each option:
+The setup section explains in detail how to configure each option.
 
-- [Azure_AKSMinimumVersion](concepts/about_PSRule_Azure_Configuration.md#azure_aksminimumversion)
-- [Azure_AKSNodeMinimumMaxPods](concepts/about_PSRule_Azure_Configuration.md#azure_aksnodeminimummaxpods)
-- [Azure_AllowedRegions](concepts/about_PSRule_Azure_Configuration.md#azure_allowedregions)
-- [Azure_MinimumCertificateLifetime](concepts/about_PSRule_Azure_Configuration.md#azure_minimumcertificatelifetime)
-- [AZURE_POLICY_WAIVER_MAX_EXPIRY](concepts/about_PSRule_Azure_Configuration.md#azure_policy_waiver_max_expiry)
-- [AZURE_RESOURCE_GROUP](concepts/about_PSRule_Azure_Configuration.md#azure_resource_group)
-- [AZURE_SUBSCRIPTION](concepts/about_PSRule_Azure_Configuration.md#azure_subscription)
-
-  [5]: concepts/about_PSRule_Azure_Configuration.md
+  [5]: setup/configuring-options.md
