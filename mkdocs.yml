@@ -1,6 +1,6 @@
 site_name: PSRule for Azure
 site_url: https://azure.github.io/PSRule.Rules.Azure
-site_description: A suite of rules to validate Azure resources and infrastructure as code (IaC) using PSRule.
+site_description: Ready to go validation and governance controls for Azure Infrastructure as Code (IaC).
 site_author: Microsoft
 
 repo_url: https://github.com/Azure/PSRule.Rules.Azure/
@@ -103,6 +103,9 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Azure/PSRule.Rules.Azure/
+
+  local:
+    social_preview: https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654
 
   # alternate:
 
