@@ -46,7 +46,7 @@ Rule 'Azure.Template.UseParameters' -Type '.json' -If { (IsTemplateFile) } -Tag 
 }
 
 # Synopsis: Each Azure Resource Manager (ARM) template file should contain a minimal number of parameters.
-Rule 'Azure.Template.DefineParameters' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.Template.DefineParameters' -Type '.json' -If { (IsTemplateFile) -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
     $parameters = @(GetTemplateParameters);
     $Assert.GreaterOrEqual($parameters, '.', 1);
 }
@@ -120,7 +120,7 @@ Rule 'Azure.Template.ResourceLocation' -Type '.json' -If { (HasTemplateResources
 }
 
 # Synopsis: Template should reference a location parameter to specify resource location.
-Rule 'Azure.Template.UseLocationParameter' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.Template.UseLocationParameter' -Type '.json' -If { (IsTemplateFile) -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
     $jsonObject = $PSRule.GetContent($TargetObject)[0];
     if ($Assert.HasField($jsonObject, 'parameters.location').Result) {
         $jsonObject.parameters.PSObject.Properties.Remove('location')
@@ -391,6 +391,24 @@ function global:GetTemplateResources {
             elseif ($Assert.GreaterOrEqual($_, 'resources', 1).Result) {
                 $_.resources;
             }
+        }
+    }
+}
+
+function global:IsGenerated {
+    [CmdletBinding()]
+    param ()
+    process {
+        if ($PSRule.TargetType -ne '.json') {
+            return $False;
+        }
+        try {
+            $jsonObject = $PSRule.GetContent($TargetObject)[0];
+            return $Assert.HasFieldValue($jsonObject, 'metadata._generator.name', 'bicep').Result -or
+                $Assert.HasFieldValue($jsonObject, 'metadata._generator.name', 'psarm').Result;
+        }
+        catch {
+            return $False;
         }
     }
 }
