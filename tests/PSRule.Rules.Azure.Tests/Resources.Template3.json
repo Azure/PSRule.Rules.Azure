@@ -148,7 +148,9 @@
                     {
                         "name": "frontendEndpoint2",
                         "properties": {
-                            "hostName": "[parameters( 'customDomainName' )]",
+                            "hostName": "[
+                                parameters( 'customDomainName' )
+                            ]",
                             "sessionAffinityEnabledState": "Disabled",
                             "sessionAffinityTtlSeconds": 0
                         }
@@ -196,7 +198,9 @@
         {
             "apiVersion": "2016-03-30",
             "type": "Microsoft.Network/publicIPAddresses",
-            "name": "[variables( 'publicIPName' ) ]",
+            "name": "[
+                variables( 'publicIPName' )
+                ]",
             "location": "[resourceGroup().location]",
             "properties": {
                 "publicIPAllocationMethod": "Dynamic"

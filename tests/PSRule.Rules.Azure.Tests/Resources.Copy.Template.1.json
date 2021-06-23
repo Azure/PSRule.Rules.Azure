@@ -33,7 +33,9 @@
                 "count": "[length(variables('accounts'))]"
             },
             "sku": {
-                "name": "[variables('sku')]"
+                "name": "[
+                    variables('sku')
+                ]"
             },
             "kind": "Storage",
             "properties": {}
