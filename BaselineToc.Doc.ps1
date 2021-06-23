@@ -21,7 +21,7 @@ Document 'baseline' {
         "The following rules are included within ``$baselineName``. This baseline includes a total of $ruleCount rules."
 
         $rules | Sort-Object -Property RuleName | Table -Property @{ Name = 'Name'; Expression = {
-            "[$($_.RuleName)]($($_.RuleName).md)"
+            "[$($_.RuleName)](../rules/$($_.RuleName).md)"
         }}, Synopsis, @{ Name = 'Severity'; Expression = {
             $_.Info.Annotations.severity
         }}

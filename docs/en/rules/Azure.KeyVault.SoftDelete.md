@@ -28,9 +28,9 @@ Consider enabling soft delete on Key Vaults to enable recovery of vaults and vau
 
 ## EXAMPLES
 
-### Azure templates
+### Configure with Azure template
 
-To deploy key vaults that pass this rule:
+To deploy Key Vaults that pass this rule:
 
 - Set the `properties.enableSoftDelete` property to `true`.
 

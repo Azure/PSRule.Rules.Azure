@@ -4,7 +4,7 @@ Includes Azure features in preview.
 
 ## Rules
 
-The following rules are included within `Azure.Preview`. This baseline includes a total of 209 rules.
+The following rules are included within `Azure.Preview`. This baseline includes a total of 211 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -58,6 +58,8 @@ Name | Synopsis | Severity
 [Azure.AppGw.UseWAF](../rules/Azure.AppGw.UseWAF.md) | Internet accessible Application Gateways should use WAF. | Critical
 [Azure.AppGw.WAFEnabled](../rules/Azure.AppGw.WAFEnabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | Critical
 [Azure.AppGw.WAFRules](../rules/Azure.AppGw.WAFRules.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | Important
+[Azure.AppInsights.Name](../rules/Azure.AppInsights.Name.md) | Azure Application Insights resources names should meet naming requirements. | Awareness
+[Azure.AppInsights.Workspace](../rules/Azure.AppInsights.Workspace.md) | Configure Application Insights resources to store data in workspaces. | Important
 [Azure.AppService.AlwaysOn](../rules/Azure.AppService.AlwaysOn.md) | Configure Always On for App Service apps. | Important
 [Azure.AppService.ARRAffinity](../rules/Azure.AppService.ARRAffinity.md) | Disable client affinity for stateless services. | Awareness
 [Azure.AppService.HTTP2](../rules/Azure.AppService.HTTP2.md) | Use HTTP/2 instead of HTTP/1.x to improve protocol efficiency. | Awareness

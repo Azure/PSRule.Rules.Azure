@@ -9,6 +9,10 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since v1.4.1:
 
+- New rules:
+  - Application Insights:
+    - Check App Insights resources use workspace-based configuration. [#813](https://github.com/Azure/PSRule.Rules.Azure/issues/813)
+    - Check App Insights resources meet naming requirements. [#814](https://github.com/Azure/PSRule.Rules.Azure/issues/814)
 - General improvements:
   - Exclude not applicable rules for templates generated with Bicep and PSArm. [#815](https://github.com/Azure/PSRule.Rules.Azure/issues/815)
 - Engineering:
