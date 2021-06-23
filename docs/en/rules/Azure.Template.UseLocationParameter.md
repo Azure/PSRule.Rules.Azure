@@ -39,6 +39,11 @@ For resources that aren't available in all locations, use a separate parameter.
 Consider using `parameters('location)` instead of `resourceGroup().location`.
 Using a location parameter enabled users of the template to specify the location of deployed resources.
 
+## NOTES
+
+This rule is not applicable and ignored for templates generated with Bicep and PSArm.
+Generated templates from these tools may not require any parameters to be set.
+
 ## LINKS
 
 - [ARM template best practices](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#location-recommendations-for-parameters)

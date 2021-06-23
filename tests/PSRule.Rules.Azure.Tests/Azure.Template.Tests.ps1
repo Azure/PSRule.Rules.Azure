@@ -129,6 +129,7 @@ Describe 'Azure.Template' -Tag 'Template' {
                 (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.json')
                 (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.2.json')
                 (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.3.json')
+                (Join-Path -Path $here -ChildPath 'Template.Bicep.1.json')
             );
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.DefineParameters';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.DefineParameters' };
@@ -279,6 +280,7 @@ Describe 'Azure.Template' -Tag 'Template' {
                 (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.1.json')
                 (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.2.json')
                 (Join-Path -Path $here -ChildPath 'Resources.Template4.json')
+                (Join-Path -Path $here -ChildPath 'Template.Bicep.1.json')
             );
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Format None -Name 'Azure.Template.UseLocationParameter';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.UseLocationParameter' };
