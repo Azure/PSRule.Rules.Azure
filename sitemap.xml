@@ -391,6 +391,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppInsights.Name/</loc>
+         <lastmod>2021-06-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppInsights.Workspace/</loc>
+         <lastmod>2021-06-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.ARRAffinity/</loc>
          <lastmod>2021-06-23</lastmod>
          <changefreq>daily</changefreq>
