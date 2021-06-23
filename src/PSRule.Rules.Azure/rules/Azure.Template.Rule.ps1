@@ -40,7 +40,7 @@ Rule 'Azure.Template.UseParameters' -Type '.json' -If { (IsTemplateFile) } -Tag 
         return $Assert.Pass();
     }
     foreach ($parameter in $parameters) {
-        $Assert.Match($jsonContent, '.', "\`"\[.*parameters\(\s{0,}'$($parameter.name)'\s{0,}\).*\]\`"").
+        $Assert.Match($jsonContent, '.', "\`"\[[\s\S]*parameters\(\s{0,}'$($parameter.name.Replace('$', '\$'))'\s{0,}\)[\s\S]*\]\`"").
             Reason($LocalizedData.ParameterNotFound, $parameter.name);
     }
 }
@@ -70,7 +70,7 @@ Rule 'Azure.Template.UseVariables' -Type '.json' -If { (IsTemplateFile) } -Tag @
         return $Assert.Pass();
     }
     foreach ($variableName in $variableNames) {
-        $Assert.Match($jsonContent, '.', "\`"\[.*variables\(\s{0,}'$($variableName)'\s{0,}\).*\]\`"").
+        $Assert.Match($jsonContent, '.', "\`"\[[\s\S]*variables\(\s{0,}'$($variableName)'\s{0,}\)[\s\S]*\]\`"").
             Reason($LocalizedData.VariableNotFound, $variableName);
     }
 }

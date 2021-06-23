@@ -132,7 +132,9 @@
             "tags": "[variables('subscriptionDefautTags')[subscription().subscriptionId]]"
         },
         {
-            "condition": "[parameters('delegate')]",
+            "condition": "[
+                parameters('delegate')
+            ]",
             "comments": "VNET delegation for AKS cluster",
             "apiVersion": "2017-05-10",
             "type": "Microsoft.Resources/deployments",
