@@ -33,4 +33,6 @@ This rule does not check if Azure Cognitive Search service names are unique.
 
 ## LINKS
 
-- [REST API reference](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate)
+- [REST API reference](https://docs.microsoft.com/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update)
+- [Define your naming convention](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Recommended abbreviations for Azure resource types](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
