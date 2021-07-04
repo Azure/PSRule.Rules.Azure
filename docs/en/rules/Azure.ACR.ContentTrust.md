@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: Container Registry
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.ACR.ContentTrust.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.ContentTrust/
 ---
 
 # Use trusted container images

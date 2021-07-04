@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: Front Door
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.MinTLS.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.MinTLS/
 ---
 
 # Front Door minimum TLS
@@ -26,4 +26,4 @@ Consider configuring the minimum supported TLS version to be 1.2.
 
 ## LINKS
 
-- [What TLS versions are supported by Azure Front Door Service?](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-faq#what-tls-versions-are-supported-by-azure-front-door-service)
+- [What TLS versions are supported by Azure Front Door Service?](https://docs.microsoft.com/azure/frontdoor/front-door-faq#what-tls-versions-are-supported-by-azure-front-door-service)

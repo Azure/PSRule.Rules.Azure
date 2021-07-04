@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Identity and access management
 resource: Subscription
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.RBAC.CoAdministrator.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RBAC.CoAdministrator/
 ---
 
 # Use role-based access control
@@ -27,6 +27,6 @@ Limit delegation of Co-administrator roles only to subscription that contain res
 
 ## LINKS
 
-- [Azure classic subscription administrators](https://docs.microsoft.com/en-us/azure/role-based-access-control/classic-administrators)
-- [Classic subscription administrator roles, Azure RBAC roles, and Azure AD administrator roles](https://docs.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles)
-- [What is Azure AD Privileged Identity Management?](https://docs.microsoft.com/en-us/azure/active-directory/privileged-identity-management/pim-configure)
+- [Azure classic subscription administrators](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators)
+- [Classic subscription administrator roles, Azure RBAC roles, and Azure AD administrator roles](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+- [What is Azure AD Privileged Identity Management?](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)

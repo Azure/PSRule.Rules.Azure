@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Applications and services
 resource: Container Registry
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.ACR.ImageHealth.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.ImageHealth/
 ---
 
 # Remove vulnerable container images

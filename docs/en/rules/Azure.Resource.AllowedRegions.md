@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Security
 category: Design
 resource: All resources
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Resource.AllowedRegions.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Resource.AllowedRegions/
 ---
 
 # Use allowed regions

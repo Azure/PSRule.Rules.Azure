@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Cost Optimization
 category: Resource usage
 resource: Virtual Machine
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.DiskSizeAlignment.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.DiskSizeAlignment/
 ---
 
 # Allocate VM disks aligned to billing model

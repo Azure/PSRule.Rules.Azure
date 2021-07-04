@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Load balancing and failover
 resource: Traffic Manager
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.TrafficManager.Endpoints.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.TrafficManager.Endpoints/
 ---
 
 # Use at least two Traffic Manager endpoints
@@ -26,5 +26,5 @@ Also consider, using endpoints deployed across different regions to provide high
 
 ## LINKS
 
-- [What is Traffic Manager?](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-overview)
-- [How Traffic Manager Works](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-how-it-works)
+- [What is Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)
+- [How Traffic Manager Works](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-how-it-works)

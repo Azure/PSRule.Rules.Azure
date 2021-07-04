@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: Storage Account
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Storage.Name.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.Name/
 ---
 
 # Use valid storage account names

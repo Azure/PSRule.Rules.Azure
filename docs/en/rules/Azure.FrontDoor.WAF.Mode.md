@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Network security and containment
 resource: Front Door
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.WAF.Mode.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.WAF.Mode/
 ---
 
 # Use Front Door WAF policy in prevention mode
@@ -29,4 +29,6 @@ Consider setting Front Door WAF policy to use protection mode.
 
 ## LINKS
 
-- [Policy settings for Web Application Firewall on Azure Front Door](https://docs.microsoft.com/en-us/azure/web-application-firewall/afds/waf-front-door-policy-settings#waf-mode)
+- [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
+- [Securing PaaS deployments](https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
+- [Policy settings for Web Application Firewall on Azure Front Door](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-policy-settings#waf-mode)

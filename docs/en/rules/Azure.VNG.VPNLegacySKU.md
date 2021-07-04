@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Deployment
 resource: Virtual Network Gateway
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VNG.VPNLegacySKU.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNG.VPNLegacySKU/
 ---
 
 # Migrate from legacy VPN gateway SKUs
@@ -28,5 +28,5 @@ Consider redeploying VPN gateways using new SKUs to improve reliability and perf
 
 ## LINKS
 
-- [Change to the new gateway SKUs](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-skus-legacy#change)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.network/virtualnetworkgateways)
+- [Change to the new gateway SKUs](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#change)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways)

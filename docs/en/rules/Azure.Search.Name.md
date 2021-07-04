@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: Cognitive Search
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Search.Name.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.Name/
 ---
 
 # Use valid Cognitive Search service names

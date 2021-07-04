@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Identity and access management
 resource: Subscription
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.RBAC.PIM.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RBAC.PIM/
 ---
 
 # Use JiT role activation with PIM

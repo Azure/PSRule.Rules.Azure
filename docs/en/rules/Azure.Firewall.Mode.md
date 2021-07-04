@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Network security and containment
 resource: Firewall
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Firewall.Mode.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Firewall.Mode/
 ---
 
 # Configure deny on threat intel
@@ -25,4 +25,4 @@ Consider configuring Azure Firewall to alert and deny IP addresses and domains d
 
 ## LINKS
 
-- [Azure Firewall threat intelligence-based filtering](https://docs.microsoft.com/en-us/azure/firewall/threat-intel)
+- [Azure Firewall threat intelligence-based filtering](https://docs.microsoft.com/azure/firewall/threat-intel)

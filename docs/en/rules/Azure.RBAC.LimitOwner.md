@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Identity and access management
 resource: Subscription
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.RBAC.LimitOwner.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RBAC.LimitOwner/
 ms-content-id: 43075204-e28b-46a0-90a0-ea5c3b74e9ab
 ---
 

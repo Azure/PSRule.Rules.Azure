@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Availability
 resource: Virtual Machine
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.UseManagedDisks.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.UseManagedDisks/
 ---
 
 # Use Managed Disks
@@ -27,4 +27,4 @@ Consider using managed disks for virtual machine storage.
 
 ## LINKS
 
-- [Introduction to Azure managed disks](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview)
+- [Introduction to Azure managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)

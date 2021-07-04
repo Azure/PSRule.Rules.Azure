@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: Automation Service
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Automation.EncryptVariables.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Automation.EncryptVariables/
 ms-content-id: 3c74b891-bf52-44a8-8b71-f7219f83c2ce
 ---
 
@@ -30,4 +30,4 @@ Key Vault improves security by tightly controlling access to secrets and improvi
 
 ## LINKS
 
-- [Variable assets in Azure Automation](https://docs.microsoft.com/en-us/azure/automation/shared-resources/variables)
+- [Variable assets in Azure Automation](https://docs.microsoft.com/azure/automation/shared-resources/variables)

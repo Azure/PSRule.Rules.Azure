@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Network security and containment
 resource: Virtual Network
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VNET.UseNSGs.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.UseNSGs/
 ---
 
 # Use NSGs on subnets
@@ -24,5 +24,5 @@ For all other subnets, define and assign a NSG.
 
 ## LINKS
 
-- [Network Security Best Practices](https://docs.microsoft.com/en-us/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
-- [Azure Firewall FAQ](https://docs.microsoft.com/en-us/azure/firewall/firewall-faq#are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet)
+- [Network Security Best Practices](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
+- [Azure Firewall FAQ](https://docs.microsoft.com/azure/firewall/firewall-faq#are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet)

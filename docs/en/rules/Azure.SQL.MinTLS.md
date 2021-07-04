@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: SQL Database
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SQL.MinTLS.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.MinTLS/
 ---
 
 # Azure SQL DB server minimum TLS version
@@ -26,6 +26,7 @@ Consider configuring the minimum supported TLS version to be 1.2.
 
 ## LINKS
 
-- [Minimal TLS Version](https://docs.microsoft.com/en-gb/azure/azure-sql/database/connectivity-settings#minimal-tls-version)
-- [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/en-us/updates/azuretls12/)
-- [Azure template reference](https://docs.microsoft.com/en-gb/azure/templates/microsoft.sql/servers#ServerProperties)
+- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Minimal TLS Version](https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#minimal-tls-version)
+- [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.sql/servers#ServerProperties)

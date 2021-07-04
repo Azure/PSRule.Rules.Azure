@@ -4,7 +4,7 @@ pillar: Reliability
 category: Design
 resource: Azure Kubernetes Service
 preview: true
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.AutoUpgrade.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AutoUpgrade/
 ---
 
 # Set AKS auto-upgrade channel

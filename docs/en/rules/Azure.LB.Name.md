@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: Load Balancer
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.LB.Name.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.LB.Name/
 ---
 
 # Use valid Load Balancer names
@@ -34,4 +34,4 @@ This rule does not check if Load Balancer names are unique.
 
 ## LINKS
 
-- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules)
+- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)

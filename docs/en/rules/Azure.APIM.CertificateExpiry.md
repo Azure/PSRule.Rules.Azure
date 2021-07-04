@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Deployment
 resource: API Management
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.APIM.CertificateExpiry.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.CertificateExpiry/
 ---
 
 # API Management uses current certificates
@@ -34,5 +34,5 @@ To configure this rule:
 
 ## LINKS
 
-- [Configure a custom domain name](https://docs.microsoft.com/en-us/azure/api-management/configure-custom-domain#use-the-azure-portal-to-set-a-custom-domain-name)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.apimanagement/2019-12-01/service#hostnameconfiguration-object)
+- [Configure a custom domain name](https://docs.microsoft.com/azure/api-management/configure-custom-domain#use-the-azure-portal-to-set-a-custom-domain-name)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/2019-12-01/service#hostnameconfiguration-object)

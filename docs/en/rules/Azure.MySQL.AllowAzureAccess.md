@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Network security and containment
 resource: Azure Database for MySQL
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.MySQL.AllowAzureAccess.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.AllowAzureAccess/
 ms-content-id: 8a159312-1dcd-4c64-91a8-4dd17f97efdb
 ---
 
@@ -29,4 +29,4 @@ Determine if access from Azure services is required for the services connecting 
 
 ## LINKS
 
-- [Azure Database for MySQL server firewall rules](https://docs.microsoft.com/en-us/azure/mysql/concepts-firewall-rules#connecting-from-azure)
+- [Azure Database for MySQL server firewall rules](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules#connecting-from-azure)

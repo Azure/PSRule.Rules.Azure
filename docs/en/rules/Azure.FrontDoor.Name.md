@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: Front Door
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.Name.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.Name/
 ---
 
 # Use valid Front Door names

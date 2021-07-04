@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Network security and containment
 resource: Application Gateway
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.WAFRules.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.WAFRules/
 ---
 
 # Application Gateway rules are enabled
@@ -25,3 +25,10 @@ Consider enabling all OWASP rules within Application Gateway instances.
 
 Before disabling OWASP rules, ensure that the backend workload has alternative protections in-place.
 Alternatively consider updating application code to use safe web standards.
+
+## LINKS
+
+- [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
+- [Securing PaaS deployments](https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
+- [What is Azure Web Application Firewall on Azure Application Gateway?](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
+- [Web Application Firewall CRS rule groups and rules](https://docs.microsoft.com/azure/web-application-firewall/ag/application-gateway-crs-rulegroups-rules)

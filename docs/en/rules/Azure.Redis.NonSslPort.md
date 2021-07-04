@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: Azure Cache for Redis
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Redis.NonSslPort.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.NonSslPort/
 ms-content-id: cf433410-8a30-4b74-b046-0b8c7c708368
 ---
 
@@ -31,5 +31,6 @@ Unless explicitly required, consider disabling the non-SSL port.
 
 ## LINKS
 
-- [when should I enable the non-SSL port for connecting to Redis](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-faq#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
-- [How to configure Azure Cache for Redis](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-configure#access-ports)
+- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [when should I enable the non-SSL port for connecting to Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+- [How to configure Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-ports)

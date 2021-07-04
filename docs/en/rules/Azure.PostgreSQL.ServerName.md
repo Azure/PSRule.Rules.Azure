@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: Azure Database for PostgreSQL
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.PostgreSQL.ServerName.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.ServerName/
 ---
 
 # Use valid PostgreSQL DB server names

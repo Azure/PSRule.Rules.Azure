@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Network security and containment
 resource: SQL Database
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SQL.AllowAzureAccess.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.AllowAzureAccess/
 ms-content-id: 30a551f6-54e0-4e51-b068-f9695d891a89
 ---
 

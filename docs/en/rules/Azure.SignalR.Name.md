@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: SignalR Service
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SignalR.Name.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SignalR.Name/
 ---
 
 # Use valid SignalR service names
@@ -34,4 +34,4 @@ This rule does not check if SignalR service names are unique.
 
 ## LINKS
 
-- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules)
+- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)

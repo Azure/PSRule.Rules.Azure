@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Identity and access management
 resource: App Service
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppService.ManagedIdentity.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.ManagedIdentity/
 ---
 
 # App Service apps uses a managed identity

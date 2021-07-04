@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: Storage Account
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Storage.MinTLS.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.MinTLS/
 ---
 
 # Storage Account minimum TLS version
@@ -58,6 +58,7 @@ For example:
 
 ## LINKS
 
+- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Enforce a minimum required version of Transport Layer Security (TLS) for requests to a storage account](https://docs.microsoft.com/azure/storage/common/transport-layer-security-configure-minimum-version)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Use Azure Policy to enforce the minimum TLS version](https://docs.microsoft.com/azure/storage/common/transport-layer-security-configure-minimum-version#use-azure-policy-to-enforce-the-minimum-tls-version)

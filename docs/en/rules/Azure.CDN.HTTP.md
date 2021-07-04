@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: Content Delivery Network
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.CDN.HTTP.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CDN.HTTP/
 ---
 
 # Use HTTPS client connections
@@ -24,4 +24,4 @@ Consider disabling HTTP support on the CDN endpoint origin.
 
 ## LINKS
 
-- [Configure HTTPS on an Azure CDN custom domain](https://docs.microsoft.com/en-us/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)
+- [Configure HTTPS on an Azure CDN custom domain](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)

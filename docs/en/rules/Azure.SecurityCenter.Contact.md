@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Security operations
 resource: Security Center
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SecurityCenter.Contact.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SecurityCenter.Contact/
 ms-content-id: 18fcf75f-a5e6-4a34-baba-74bd49502cd7
 ---
 
@@ -23,4 +23,4 @@ Consider configuring Security Center email and phone contact details.
 
 ## LINK
 
-- [Provide security contact details in Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-provide-security-contact-details)
+- [Provide security contact details in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)

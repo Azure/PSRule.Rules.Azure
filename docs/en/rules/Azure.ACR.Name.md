@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: Container Registry
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.ACR.Name.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Name/
 ---
 
 # Use valid registry names

@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Release engineering
 resource: All resources
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Template.UseLocationParameter.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.UseLocationParameter/
 ---
 
 # Use a location parameter to specify resource location

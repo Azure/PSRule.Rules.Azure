@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: API Management
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.APIM.ProductDescriptors.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.ProductDescriptors/
 ---
 
 # Use product descriptors
@@ -24,5 +24,5 @@ Display name and description fields should be human readable and easy to underst
 
 ## LINKS
 
-- [Create and publish a product](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-add-products)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.apimanagement/service/products#ProductContractProperties)
+- [Create and publish a product](https://docs.microsoft.com/azure/api-management/api-management-howto-add-products)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/products#ProductContractProperties)

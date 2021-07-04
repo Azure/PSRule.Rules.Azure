@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Load balancing and failover
 resource: Application Gateway
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.MinInstance.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.MinInstance/
 ---
 
 # Use two or more Application Gateway instances
@@ -23,4 +23,4 @@ When auto-scaling is enabled with Application Gateway v2, configure the minimum 
 
 ## LINKS
 
-- [Azure Application Gateway SLA](https://azure.microsoft.com/en-au/support/legal/sla/application-gateway/)
+- [Azure Application Gateway SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/)

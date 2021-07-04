@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: App Configuration
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppConfig.Name.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.Name/
 ---
 
 # Use valid App Configuration store names

@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: Azure Database for PostgreSQL
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.PostgreSQL.UseSSL.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.UseSSL/
 ms-content-id: 80d34e65-8ab5-4cf3-a0dd-3b5e56e06f40
 ---
 
@@ -30,4 +30,5 @@ Also consider using Azure Policy to audit or enforce this configuration.
 
 ## LINKS
 
-- [Configure SSL connectivity in Azure Database for PostgreSQL](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security)
+- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Configure SSL connectivity in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)

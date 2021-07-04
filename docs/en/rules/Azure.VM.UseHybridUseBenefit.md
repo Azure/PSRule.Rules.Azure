@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Cost Optimization
 category: Pricing and billing model
 resource: Virtual Machine
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.UseHybridUseBenefit.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.UseHybridUseBenefit/
 ---
 
 # Use Hybrid Use Benefit
@@ -22,4 +22,4 @@ Consider using Hybrid Use Benefit for eligible workloads.
 
 ## LINKS
 
-- [Azure Hybrid Benefit FAQ](https://azure.microsoft.com/en-us/pricing/hybrid-benefit/faq/)
+- [Azure Hybrid Benefit FAQ](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)

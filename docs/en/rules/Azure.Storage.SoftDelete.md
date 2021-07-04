@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Data management
 resource: Storage Account
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Storage.SoftDelete.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.SoftDelete/
 ms-content-id: 9927b427-e694-4485-9abf-61545e63956e
 ---
 

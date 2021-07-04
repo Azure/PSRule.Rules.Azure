@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Identity and access management
 resource: Service Fabric
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.ServiceFabric.AAD.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceFabric.AAD/
 ---
 
 # Use AAD authentication with Service Fabric clusters

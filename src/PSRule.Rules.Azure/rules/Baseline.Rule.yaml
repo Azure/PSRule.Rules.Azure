@@ -91,6 +91,8 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.GA_2021_03
+  annotations:
+    obsolete: true
 spec:
   rule:
     tag:
@@ -100,3 +102,20 @@ spec:
       - '2020_09'
       - '2020_12'
       - '2021_03'
+
+---
+# Synopsis: Include rules released June 2021 or prior for Azure GA features.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.GA_2021_06
+spec:
+  rule:
+    tag:
+      release: GA
+      ruleSet:
+      - '2020_06'
+      - '2020_09'
+      - '2020_12'
+      - '2021_03'
+      - '2021_06'

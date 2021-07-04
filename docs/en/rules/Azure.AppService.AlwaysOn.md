@@ -3,7 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: Application design
 resource: App Service
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppService.AlwaysOn.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.AlwaysOn/
 ---
 
 # Use App Service Always On

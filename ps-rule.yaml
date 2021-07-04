@@ -1,4 +1,9 @@
-# PSRule options for QA
+#
+# PSRule configuration
+#
+
+# Please see the documentation for all configuration options:
+# https://microsoft.github.io/PSRule/
 
 input:
   pathIgnore:

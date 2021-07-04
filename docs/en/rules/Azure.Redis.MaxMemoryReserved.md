@@ -3,7 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: Capacity Planning
 resource: Azure Cache for Redis
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Redis.MaxMemoryReserved.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.MaxMemoryReserved/
 ---
 
 # Configure cache maxmemory-reserved setting
@@ -27,6 +27,6 @@ Consider configuring `maxmemory-reserved` to at least 10% of available cache mem
 
 ## LINKS
 
-- [Best practices for Azure Cache for Redis](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-best-practices)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.cache/redis#rediscreateproperties-object)
-- [Choosing the right resources](https://docs.microsoft.com/en-gb/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)
+- [Best practices for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-best-practices)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.cache/redis#rediscreateproperties-object)
+- [Choosing the right resources](https://docs.microsoft.com/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)
