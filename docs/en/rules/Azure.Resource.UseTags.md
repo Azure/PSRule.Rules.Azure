@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: All resources
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Resource.UseTags.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Resource.UseTags/
 ms-content-id: d8480c0d-e41c-441a-9b03-0dc9c340c149
 ---
 
@@ -43,5 +43,5 @@ Azure Policy includes the following built-in policies to enforce tagging:
 
 ## LINKS
 
-- [Tag support for Azure resources](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support)
-- [Recommended naming and tagging conventions](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#metadata-tags)
+- [Tag support for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support)
+- [Recommended naming and tagging conventions](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#metadata-tags)

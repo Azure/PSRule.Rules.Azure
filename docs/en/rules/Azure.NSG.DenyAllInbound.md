@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Configuration
 resource: Network Security Group
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.NSG.DenyAllInbound.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.DenyAllInbound/
 ---
 
 # Avoid denying all inbound traffic

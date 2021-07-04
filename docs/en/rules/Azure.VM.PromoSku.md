@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Cost Optimization
 category: Pricing and billing model
 resource: Virtual Machine
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.PromoSku.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.PromoSku/
 ---
 
 # Use current VM SKUs

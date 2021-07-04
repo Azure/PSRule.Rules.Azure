@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: Storage Account
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Storage.SecureTransfer.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.SecureTransfer/
 ms-content-id: 539cb7b9-5510-4aa3-b422-41a049a10a88
 ---
 
@@ -62,6 +62,7 @@ For example:
 
 ## LINKS
 
+- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Require secure transfer in Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)
 - [Sample policy for ensuring https traffic](https://docs.microsoft.com/azure/governance/policy/samples/ensure-https-stor-acct)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)

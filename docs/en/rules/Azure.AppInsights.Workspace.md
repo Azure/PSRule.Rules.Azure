@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Deployment
 resource: Application Insights
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/rules/en/Azure.AppInsights.Workspace.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppInsights.Workspace/
 ---
 
 # Use workspace-based App Insights resources

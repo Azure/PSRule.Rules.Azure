@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Optimize
 resource: Azure Kubernetes Service
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.AzurePolicyAddOn.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AzurePolicyAddOn/
 ---
 
 # Use Azure Policy Add-on with AKS clusters

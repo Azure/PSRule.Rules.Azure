@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Security operations
 resource: SQL Database
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SQL.ThreatDetection.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.ThreatDetection/
 ms-content-id: 720e560d-4ad3-41ca-93dd-69c5783b9dbe
 ---
 

@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Security operations
 resource: Security Center
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SecurityCenter.Provisioning.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SecurityCenter.Provisioning/
 ms-content-id: 966390bc-0358-43dd-8b5f-6b0ae2b16edd
 ---
 
@@ -26,4 +26,4 @@ Consider enabling auto-provisioning to improve Azure Security Center VM insights
 
 ## LINKS
 
-- [Data collection in Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-enable-data-collection)
+- [Data collection in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)

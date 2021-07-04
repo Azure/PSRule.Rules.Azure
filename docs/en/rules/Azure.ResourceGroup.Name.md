@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: Resource Group
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.ResourceGroup.Name.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ResourceGroup.Name/
 ---
 
 # Use valid resource group names
@@ -33,4 +33,4 @@ This rule does not check if Resource Group names are unique.
 
 ## LINKS
 
-- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules)
+- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)

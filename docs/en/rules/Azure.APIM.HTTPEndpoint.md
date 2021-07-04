@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: API Management
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.APIM.HTTPEndpoint.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.HTTPEndpoint/
 ---
 
 # Publish APIs through HTTPS connections
@@ -25,4 +25,4 @@ In the portal, this is done by configuring the HTTPS URL scheme.
 
 ## LINKS
 
-- [Import and publish a back-end API](https://docs.microsoft.com/en-us/azure/api-management/import-api-from-oas#-import-and-publish-a-back-end-api)
+- [Import and publish a back-end API](https://docs.microsoft.com/azure/api-management/import-api-from-oas#-import-and-publish-a-back-end-api)

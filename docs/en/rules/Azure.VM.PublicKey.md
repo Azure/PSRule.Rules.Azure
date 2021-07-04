@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Identity and access management
 resource: Virtual Machine
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.PublicKey.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.PublicKey/
 ---
 
 # Use public keys for Linux

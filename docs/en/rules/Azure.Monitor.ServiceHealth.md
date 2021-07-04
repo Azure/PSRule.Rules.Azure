@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Monitoring
 resource: Monitor
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Monitor.ServiceHealth.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Monitor.ServiceHealth/
 ---
 
 # Alert on service events
@@ -27,5 +27,5 @@ Consider configuring an alert to notify administrators when services you are usi
 
 ## LINKS
 
-- [Service Health overview](https://docs.microsoft.com/en-us/azure/service-health/service-health-overview)
-- [Create activity log alerts on service notifications](https://docs.microsoft.com/en-us/azure/service-health/alerts-activity-log-service-notifications)
+- [Service Health overview](https://docs.microsoft.com/azure/service-health/service-health-overview)
+- [Create activity log alerts on service notifications](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications)

@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: Key Vault
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.KeyVault.SecretName.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.SecretName/
 ---
 
 # Use valid Key Vault Secret names

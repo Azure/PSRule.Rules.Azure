@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Data management
 resource: Key Vault
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.KeyVault.SoftDelete.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.SoftDelete/
 ---
 
 # Use Key Vault Soft Delete

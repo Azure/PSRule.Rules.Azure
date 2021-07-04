@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Load balancing and failover
 resource: Front Door
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.Probe.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.Probe/
 ---
 
 # Use health probes for Front Door backends

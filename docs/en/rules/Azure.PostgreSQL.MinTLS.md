@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: Azure Database for PostgreSQL
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.PostgreSQL.MinTLS.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.MinTLS/
 ---
 
 # PostgreSQL DB server minimum TLS version
@@ -26,7 +26,8 @@ Consider configuring the minimum supported TLS version to be 1.2.
 
 ## LINKS
 
-- [TLS enforcement in Azure Database for PostgreSQL Single server](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security#tls-enforcement-in-azure-database-for-postgresql-single-server)
-- [Set TLS configurations for Azure Database for PostgreSQL - Single server](https://docs.microsoft.com/en-us/azure/postgresql/howto-tls-configurations#set-tls-configurations-for-azure-database-for-postgresql---single-server)
-- [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/en-us/updates/azuretls12/)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.dbforpostgresql/servers#ServerPropertiesForCreate)
+- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [TLS enforcement in Azure Database for PostgreSQL Single server](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security#tls-enforcement-in-azure-database-for-postgresql-single-server)
+- [Set TLS configurations for Azure Database for PostgreSQL - Single server](https://docs.microsoft.com/azure/postgresql/howto-tls-configurations#set-tls-configurations-for-azure-database-for-postgresql---single-server)
+- [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.dbforpostgresql/servers#ServerPropertiesForCreate)

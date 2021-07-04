@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Release engineering
 resource: All resources
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Template.LocationType.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.LocationType/
 ---
 
 # Use type string for location parameters

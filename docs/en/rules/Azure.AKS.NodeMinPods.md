@@ -3,7 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: Capacity planning
 resource: Azure Kubernetes Service
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.NodeMinPods.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.NodeMinPods/
 ---
 
 # Nodes use a minimum number of pods
@@ -36,4 +36,4 @@ To configure this rule:
 
 ## LINKS
 
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.containerservice/managedclusters/agentpools#ManagedClusterAgentPoolProfileProperties)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters/agentpools#ManagedClusterAgentPoolProfileProperties)

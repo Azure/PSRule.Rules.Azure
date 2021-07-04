@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Security operations
 resource: SQL Database
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SQL.Auditing.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.Auditing/
 ms-content-id: d6084913-9ff9-40b6-a65b-30fcd4d49251
 ---
 

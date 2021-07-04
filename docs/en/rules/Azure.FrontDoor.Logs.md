@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Security operations
 resource: Front Door
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.Logs.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.Logs/
 ---
 
 # Audit Front Door access
@@ -27,4 +27,4 @@ Consider configuring diagnostics setting to log network activity through Front D
 
 ## LINKS
 
-- [Monitoring metrics and logs in Azure Front Door Service](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-diagnostics#diagnostic-logging)
+- [Monitoring metrics and logs in Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-diagnostics#diagnostic-logging)

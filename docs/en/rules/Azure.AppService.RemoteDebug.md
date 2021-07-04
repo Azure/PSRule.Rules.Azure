@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Security configuration
 resource: App Service
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppService.RemoteDebug.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.RemoteDebug/
 ---
 
 # Disable App Service remote debugging

@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Deployment
 resource: Data Factory
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.DataFactory.Version.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.DataFactory.Version/
 ---
 
 # Use Data Factory v2

@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: Azure Database for MySQL
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.MySQL.ServerName.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.ServerName/
 ---
 
 # Use valid MySQL DB server names

@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Availability
 resource: Cognitive Search
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Search.IndexSLA.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.IndexSLA/
 ---
 
 # Search index update SLA minimum replicas

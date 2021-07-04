@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Network security and containment
 resource: Azure Database for PostgreSQL
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.PostgreSQL.AllowAzureAccess.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.AllowAzureAccess/
 ms-content-id: 07659a25-0a40-4979-99cd-cae83a5e3145
 ---
 
@@ -29,4 +29,4 @@ Determine if access from Azure services is required for the services connecting 
 
 ## LINKS
 
-- [Firewall rules in Azure Database for PostgreSQL](https://docs.microsoft.com/en-us/azure/postgresql/concepts-firewall-rules#connecting-from-azure)
+- [Firewall rules in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules#connecting-from-azure)

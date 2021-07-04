@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: API Management
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.APIM.APIDescriptors.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.APIDescriptors/
 ---
 
 # Use API descriptors
@@ -24,5 +24,5 @@ Display name and description fields should be human readable and easy to underst
 
 ## LINKS
 
-- [Import and publish your first API](https://docs.microsoft.com/en-us/azure/api-management/import-and-publish)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.apimanagement/service/apis#ApiCreateOrUpdateProperties)
+- [Import and publish your first API](https://docs.microsoft.com/azure/api-management/import-and-publish)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis#ApiCreateOrUpdateProperties)

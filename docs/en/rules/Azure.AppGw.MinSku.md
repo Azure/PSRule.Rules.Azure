@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Deployment
 resource: Application Gateway
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.MinSku.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.MinSku/
 ---
 
 # Use production Application Gateway SKU
@@ -26,4 +26,4 @@ Small instance sizes are intended for development and testing scenarios.
 
 ## LINKS
 
-- [Azure Application Gateway sizing](https://docs.microsoft.com/en-us/azure/application-gateway/overview#sizing)
+- [Azure Application Gateway sizing](https://docs.microsoft.com/azure/application-gateway/overview#sizing)

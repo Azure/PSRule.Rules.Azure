@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: SQL Database
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SQL.DBName.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.DBName/
 ---
 
 # Use valid SQL Database names

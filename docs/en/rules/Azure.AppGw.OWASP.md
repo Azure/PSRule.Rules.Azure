@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Network security and containment
 resource: Application Gateway
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.OWASP.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.OWASP/
 ---
 
 # Use OWASP 3.x rules

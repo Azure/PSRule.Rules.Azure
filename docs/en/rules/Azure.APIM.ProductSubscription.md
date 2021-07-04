@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Identity and access management
 resource: API Management
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.APIM.ProductSubscription.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.ProductSubscription/
 ---
 
 # Require a subscription for products
@@ -25,6 +25,6 @@ Consider configuring all API Management products to require a subscription.
 
 ## LINKS
 
-- [Subscriptions in Azure API Management](https://docs.microsoft.com/en-us/azure/api-management/api-management-subscriptions)
-- [Create and publish a product](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-add-products)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.apimanagement/2019-12-01/service/products)
+- [Subscriptions in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-subscriptions)
+- [Create and publish a product](https://docs.microsoft.com/azure/api-management/api-management-howto-add-products)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/2019-12-01/service/products)

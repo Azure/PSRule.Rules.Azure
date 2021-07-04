@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Network security and containment
 resource: Azure Kubernetes Service
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.NetworkPolicy.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.NetworkPolicy/
 ---
 
 # AKS clusters use Azure Network Policies

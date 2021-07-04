@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Configuration
 resource: Azure Kubernetes Service
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.ManagedIdentity.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.ManagedIdentity/
 ---
 
 # Use managed identities for AKS cluster authentication

@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: Content Delivery Network
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.CDN.MinTLS.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CDN.MinTLS/
 ---
 
 # Azure CDN endpoint minimum TLS version
@@ -28,5 +28,5 @@ Consider configuring a custom domain and setting the minimum supported TLS versi
 
 ## LINKS
 
-- [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/en-us/updates/azuretls12/)
-- [REST API Custom Domains - Enable Custom Https](https://docs.microsoft.com/en-us/rest/api/cdn/customdomains/enablecustomhttps#minimumtlsversion)
+- [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
+- [REST API Custom Domains - Enable Custom Https](https://docs.microsoft.com/rest/api/cdn/customdomains/enablecustomhttps#minimumtlsversion)

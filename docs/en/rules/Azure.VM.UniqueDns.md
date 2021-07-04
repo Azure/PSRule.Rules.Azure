@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Deployment
 resource: Virtual Machine
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.UniqueDns.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.UniqueDns/
 ---
 
 # NICs with custom DNS settings
@@ -25,4 +25,4 @@ Consider updating NIC DNS server settings to inherit from virtual network.
 
 ## LINKS
 
-- [Change DNS servers](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface#change-dns-servers).
+- [Change DNS servers](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers).

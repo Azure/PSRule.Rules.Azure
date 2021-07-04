@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Load balancing and failover
 resource: Front Door
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.ProbeMethod.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.ProbeMethod/
 ---
 
 # Use HEAD health probes for Front Door backends
@@ -39,7 +39,7 @@ Set-AzFrontDoor -Name '<front_door>' -ResourceGroupName '<resource_group>' -Heal
 
 ## LINKS
 
-- [Supported HTTP methods for health probes](https://docs.microsoft.com/en-gb/azure/frontdoor/front-door-health-probes#supported-http-methods-for-health-probes)
+- [Supported HTTP methods for health probes](https://docs.microsoft.com/azure/frontdoor/front-door-health-probes#supported-http-methods-for-health-probes)
 - [How Front Door determines backend health](https://docs.microsoft.com/azure/frontdoor/front-door-health-probes#how-front-door-determines-backend-health)
 - [Creating good health probes](https://docs.microsoft.com/azure/architecture/framework/resiliency/monitoring#creating-good-health-probes)
 - [Health Endpoint Monitoring pattern](https://docs.microsoft.com/azure/architecture/patterns/health-endpoint-monitoring)

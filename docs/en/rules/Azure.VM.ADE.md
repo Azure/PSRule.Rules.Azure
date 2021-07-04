@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: Virtual Machine
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.ADE.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.ADE/
 ---
 
 # Use Azure Disk Encryption
@@ -32,5 +32,5 @@ This rule will be skipped when validating Azure template files.
 
 ## LINKS
 
-- [Creating and configuring a key vault for Azure Disk Encryption](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disk-encryption-key-vault)
-- [Azure Disk Encryption scenarios on Windows VMs](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disk-encryption-windows)
+- [Creating and configuring a key vault for Azure Disk Encryption](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-key-vault)
+- [Azure Disk Encryption scenarios on Windows VMs](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-windows)

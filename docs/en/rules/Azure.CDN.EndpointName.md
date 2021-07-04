@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Tagging and resource naming
 resource: Content Delivery Network
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.CDN.EndpointName.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CDN.EndpointName/
 ---
 
 # Use valid CDN endpoint names
@@ -33,5 +33,5 @@ This rule does not check if CDN endpoint names are unique.
 
 ## LINKS
 
-- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcdn)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/profiles/endpoints)
+- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftcdn)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.cdn/profiles/endpoints)

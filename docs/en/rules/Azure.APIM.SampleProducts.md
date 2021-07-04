@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Configuration
 resource: API Management
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.APIM.SampleProducts.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.SampleProducts/
 ---
 
 # Remove default products
@@ -23,4 +23,4 @@ Consider removing starter and unlimited sample products from API Management.
 
 ## LINKS
 
-- [Create and publish a product](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-add-products)
+- [Create and publish a product](https://docs.microsoft.com/azure/api-management/api-management-howto-add-products)

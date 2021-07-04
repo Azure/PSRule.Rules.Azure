@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Deployment
 resource: Virtual Network Gateway
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VNG.ERLegacySKU.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNG.ERLegacySKU/
 ---
 
 # Migrate from legacy ER gateway SKUs
@@ -26,5 +26,5 @@ Consider redeploying ER gateways using new SKUs to improve reliability and perfo
 
 ## LINKS
 
-- [Estimated performances by gateway SKU](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-about-virtual-network-gateways#aggthroughput)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.network/virtualnetworkgateways)
+- [Estimated performances by gateway SKU](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways#aggthroughput)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways)

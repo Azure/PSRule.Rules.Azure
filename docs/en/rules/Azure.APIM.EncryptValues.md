@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: API Management
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.APIM.EncryptValues.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.EncryptValues/
 ---
 
 # Use encrypted named values
@@ -28,4 +28,4 @@ Key Vault improves security by tightly controlling access to secrets and improvi
 
 ## LINKS
 
-- [Manage secrets using properties](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-properties)
+- [Manage secrets using properties](https://docs.microsoft.com/azure/api-management/api-management-howto-properties)

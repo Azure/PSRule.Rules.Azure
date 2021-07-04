@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Deployment
 resource: Virtual Machine
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.NICAttached.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.NICAttached/
 ---
 
 # Attach NIC or clean up

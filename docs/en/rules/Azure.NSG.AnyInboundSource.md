@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Network security and containment
 resource: Network Security Group
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.NSG.AnyInboundSource.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.AnyInboundSource/
 ---
 
 # Avoid rules that allow any inbound source
@@ -31,7 +31,7 @@ Consider using services such as Application Gateway and DDoS Protection Standard
 
 ## LINKS
 
-- [Network Security Groups](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview)
-- [Logically segment subnets](https://docs.microsoft.com/en-us/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
-- [What is Azure Application Gateway?](https://docs.microsoft.com/en-us/azure/application-gateway/overview)
-- [Azure DDoS Protection Standard overview](https://docs.microsoft.com/en-us/azure/virtual-network/ddos-protection-overview)
+- [Network Security Groups](https://docs.microsoft.com/azure/virtual-network/security-overview)
+- [Logically segment subnets](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
+- [What is Azure Application Gateway?](https://docs.microsoft.com/azure/application-gateway/overview)
+- [Azure DDoS Protection Standard overview](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)

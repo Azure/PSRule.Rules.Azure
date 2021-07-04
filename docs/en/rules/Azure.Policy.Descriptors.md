@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable Infrastructure
 resource: Policy
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Policy.Descriptors.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Policy.Descriptors/
 ---
 
 # Use descriptive policies

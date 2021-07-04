@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: API Management
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.APIM.Protocols.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.Protocols/
 ---
 
 # Use secure protocols
@@ -23,4 +23,4 @@ Consider disabling SSL 3.0/ TLS 1.0/ TLS 1.1/ Triple DES protocols and ciphers.
 
 ## LINKS
 
-- [Manage protocols and ciphers in Azure API Management](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-manage-protocols-ciphers)
+- [Manage protocols and ciphers in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-manage-protocols-ciphers)

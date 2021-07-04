@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Identity and access management
 resource: Subscription
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.RBAC.UseRGDelegation.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RBAC.UseRGDelegation/
 ms-content-id: b31d32cc-1e9f-4ab8-93ab-1cd98354ad15
 ---
 

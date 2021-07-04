@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: Azure Cache for Redis
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Redis.MinTLS.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.MinTLS/
 ms-content-id: 31240bca-b04f-4267-9c31-cfca4e91cfbf
 ---
 
@@ -28,7 +28,8 @@ Support for TLS 1.0/ 1.1 version will be removed.
 
 ## LINKS
 
-- [Remove TLS 1.0 and 1.1 from use with Azure Cache for Redis](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-remove-tls-10-11)
-- [Configure Azure Cache for Redis settings](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-configure#access-ports)
-- [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/en-us/updates/azuretls12/)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.cache/redis#RedisCreateProperties)
+- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Remove TLS 1.0 and 1.1 from use with Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-remove-tls-10-11)
+- [Configure Azure Cache for Redis settings](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-ports)
+- [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.cache/redis#RedisCreateProperties)

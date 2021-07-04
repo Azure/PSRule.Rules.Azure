@@ -3,7 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: Capacity Planning
 resource: Azure Cache for Redis
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Redis.MinSKU.md
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.MinSKU/
 ---
 
 # Use at least Standard C1 cache instances
@@ -26,7 +26,7 @@ Consider using a minimum of a Standard C1 instance for production workloads.
 
 ## LINKS
 
-- [Best practices for Azure Cache for Redis](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-best-practices)
+- [Best practices for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-best-practices)
 - [Azure Cache for Redis pricing](https://azure.microsoft.com/pricing/details/cache/)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.cache/redis#sku-object)
-- [Choosing the right resources](https://docs.microsoft.com/en-gb/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.cache/redis#sku-object)
+- [Choosing the right resources](https://docs.microsoft.com/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)
