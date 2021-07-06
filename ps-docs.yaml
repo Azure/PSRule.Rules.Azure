@@ -1,3 +1,6 @@
+#
+# PSDocs configuration
+#
 
 output:
   culture: en-US
