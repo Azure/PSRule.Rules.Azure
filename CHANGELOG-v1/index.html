@@ -568,6 +568,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v150" class="md-nav__link">
+    v1.5.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v150-b2107002pre-release" class="md-nav__link">
     v1.5.0-B2107002 (pre-release)
   </a>
@@ -3704,6 +3711,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v150" class="md-nav__link">
+    v1.5.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v150-b2107002pre-release" class="md-nav__link">
     v1.5.0-B2107002 (pre-release)
   </a>
@@ -3979,6 +3993,45 @@
 See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to this issue.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<h2 id="v150">v1.5.0<a class="headerlink" href="#v150" title="Permanent link">#</a></h2>
+<p>What's changed since v1.4.1:</p>
+<ul>
+<li>New features:<ul>
+<li>Added <code>Azure.GA_2021_06</code> baseline. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/822">#822</a><ul>
+<li>Includes rules released before or during June 2021 for Azure GA features.</li>
+<li>Marked baseline <code>Azure.GA_2021_03</code> as obsolete.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>New rules:<ul>
+<li>Application Insights:<ul>
+<li>Check App Insights resources use workspace-based configuration. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/813">#813</a></li>
+<li>Check App Insights resources meet naming requirements. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/814">#814</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>General improvements:<ul>
+<li>Exclude not applicable rules for templates generated with Bicep and PSArm. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/815">#815</a></li>
+<li>Updated rule help to use docs pages for online version. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/824">#824</a></li>
+</ul>
+</li>
+<li>Engineering:<ul>
+<li>Bump PSDocs dependency to v1.4.0. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/823">#823</a></li>
+<li>Bump YamlDotNet dependency to v11.2.1. <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/821">#821</a></li>
+<li>Migrate project to Azure GitHub organization and updated links. <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/800">#800</a></li>
+</ul>
+</li>
+<li>Bug fixes:<ul>
+<li>Fixed detection of parameters and variables with line breaks. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/811">#811</a></li>
+</ul>
+</li>
+</ul>
+<p>What's changed since pre-release v1.5.0-B2107002:</p>
+<ul>
+<li>No additional changes.</li>
+</ul>
 <h2 id="v150-b2107002pre-release">v1.5.0-B2107002 (pre-release)<a class="headerlink" href="#v150-b2107002pre-release" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.5.0-B2106018:</p>
 <ul>
@@ -4701,7 +4754,7 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-07-04
+      Last update: 2021-07-06
     
   </small>
 </div>
