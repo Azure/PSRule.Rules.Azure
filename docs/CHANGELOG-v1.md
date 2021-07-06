@@ -7,6 +7,32 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.5.0
+
+What's changed since v1.4.1:
+
+- New features:
+  - Added `Azure.GA_2021_06` baseline. [#822](https://github.com/Azure/PSRule.Rules.Azure/issues/822)
+    - Includes rules released before or during June 2021 for Azure GA features.
+    - Marked baseline `Azure.GA_2021_03` as obsolete.
+- New rules:
+  - Application Insights:
+    - Check App Insights resources use workspace-based configuration. [#813](https://github.com/Azure/PSRule.Rules.Azure/issues/813)
+    - Check App Insights resources meet naming requirements. [#814](https://github.com/Azure/PSRule.Rules.Azure/issues/814)
+- General improvements:
+  - Exclude not applicable rules for templates generated with Bicep and PSArm. [#815](https://github.com/Azure/PSRule.Rules.Azure/issues/815)
+  - Updated rule help to use docs pages for online version. [#824](https://github.com/Azure/PSRule.Rules.Azure/issues/824)
+- Engineering:
+  - Bump PSDocs dependency to v1.4.0. [#823](https://github.com/Azure/PSRule.Rules.Azure/issues/823)
+  - Bump YamlDotNet dependency to v11.2.1. [#821](https://github.com/Azure/PSRule.Rules.Azure/pull/821)
+  - Migrate project to Azure GitHub organization and updated links. [#800](https://github.com/Azure/PSRule.Rules.Azure/pull/800)
+- Bug fixes:
+  - Fixed detection of parameters and variables with line breaks. [#811](https://github.com/Azure/PSRule.Rules.Azure/issues/811)
+
+What's changed since pre-release v1.5.0-B2107002:
+
+- No additional changes.
+
 ## v1.5.0-B2107002 (pre-release)
 
 What's changed since pre-release v1.5.0-B2106018:
