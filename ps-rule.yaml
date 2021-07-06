@@ -18,4 +18,6 @@ output:
   - en-US
 
 configuration:
-  RULE_HELP: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/rules/en/
+  # Authoring rules
+  RULE_AUTHORING_ONLINE_HELP: 'https://azure.github.io/PSRule.Rules.Azure/en/rules/'
+  RULE_AUTHORING_PREFIX: 'Azure'
