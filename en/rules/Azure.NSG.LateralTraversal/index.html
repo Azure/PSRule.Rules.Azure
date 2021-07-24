@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#limitlateraltraversal" class="md-skip">
+        <a href="#limitlateraltraversalwithinsubnets" class="md-skip">
           Skip to content
         </a>
       
@@ -1977,6 +1977,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3467,6 +3508,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3484,15 +3566,102 @@
                   </a>
                 
                 
-                <h1 id="limitlateraltraversal">Limit lateral traversal<a class="headerlink" href="#limitlateraltraversal" title="Permanent link">#</a></h1>
+                <h1 id="limitlateraltraversalwithinsubnets">Limit lateral traversal within subnets<a class="headerlink" href="#limitlateraltraversalwithinsubnets" title="Permanent link">#</a></h1>
 <p>Deny outbound management connections from non-management hosts.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>Network Security Groups (NSGs) allow virtual machines to be segmented from each other by enforcing access rules for all traffic in/ out of a virtual machine.</p>
-<p>This micro-segmentation approach provides a control to reduce lateral movement between hosts within Azure, a virtual network or an individual subnet.</p>
-<p>Typically, a subset of trusted hosts such as privileged access workstations, bastion hosts or jump boxes will be used for management.
+<p>Network Security Groups (NSGs) are basic stateful firewalls that provide network isolation and security.
+NSGs allow or deny traffic between virtual machines (VMs) and other supported services on a virtual network.
+i.e. Traffic between VMs on the same or different subnet can be restricted.
+NSGs do this by enforcing ordered access rules for all traffic in/ out services attached to a subnet.</p>
+<p>This micro-segmentation approach provides a control to reduce lateral movement between services.</p>
+<p>Typically, a subset of trusted hosts such as privileged access workstations (PAWs), bastion hosts,
+or jump boxes will be used for management.
 Management protocols originating from application workload hosts should be blocked.</p>
+<p>For example:</p>
+<ul>
+<li>An SQL Server should not be used as a management host to manage other SQL Servers, or File Servers.</li>
+<li>Configure dedicated management hosts to manage other hosts.</li>
+</ul>
+<p>This helps improve security in two ways:</p>
+<ol>
+<li>Reduces the attack surface that can be used in lateral traversal attacks.</li>
+<li>Limits the likelihood that privileged credentials will be exposed for outbound management.</li>
+</ol>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider configuring NSGs rules to block outbound management traffic from non-management hosts.</p>
+<p>Consider configuring NSGs rules to block common outbound management traffic from non-management hosts.</p>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
+<p>Specifically this rule checks if either 3389 (RDP) or 22 (SSH) has been blocked for outbound traffic.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To deploy NSGs that pass this rule:</p>
+<ul>
+<li>Add an outbound security rule that denies TCP port 3389 and/ or 22.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.Network/networkSecurityGroups&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;nsgName&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-04-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[resourceGroup().location]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;securityRules&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;deny-hop-outbound&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;sourcePortRange&quot;</span><span class="p">:</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;destinationPortRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&quot;3389&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;22&quot;</span>
+                    <span class="p">],</span>
+                    <span class="nt">&quot;access&quot;</span><span class="p">:</span> <span class="s2">&quot;Deny&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;priority&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+                    <span class="nt">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;Outbound&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;sourceAddressPrefix&quot;</span><span class="p">:</span> <span class="s2">&quot;VirtualNetwork&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;destinationAddressPrefix&quot;</span><span class="p">:</span> <span class="s2">&quot;*&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To deploy NSGs that pass this rule:</p>
+<ul>
+<li>Add an outbound security rule that denies TCP port 3389 and/ or 22.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource nsg &#39;Microsoft.Network/networkSecurityGroups@2021-02-01&#39; = {
+  name: &#39;nsg-001&#39;
+  properties: {
+    securityRules: [
+      {
+        name: &#39;deny-hop-outbound&#39;
+        properties: {
+          priority: 200
+          access: &#39;Deny&#39;
+          protocol: &#39;Tcp&#39;
+          direction: &#39;Outbound&#39;
+          sourceAddressPrefix: &#39;VirtualNetwork&#39;
+          destinationAddressPrefix: &#39;*&#39;
+          destinationPortRanges: [
+            &#39;3389&#39;
+            &#39;22&#39;
+          ]
+        }
+      }
+    ]
+  }
+}
+</code></pre></div>
+<h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-network-segmentation">Implement network segmentation patterns on Azure</a></li>
+<li><a href="https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets">Logically segment subnets</a></li>
+<li><a href="https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm#segmentation">Plan virtual networks</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/virtual-network/security-overview">Network security groups</a></li>
+</ul>
                 
                   
                     
@@ -3501,7 +3670,7 @@ Management protocols originating from application workload hosts should be block
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-07-23
+      Last update: 2021-07-25
     
   </small>
 </div>
