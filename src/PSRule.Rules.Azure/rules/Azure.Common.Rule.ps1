@@ -76,21 +76,6 @@ function global:HasPeerNetwork {
     }
 }
 
-# Get a sorted list of NSG rules
-function global:GetOrderedNSGRules {
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory = $True)]
-        [ValidateSet('Inbound', 'Outbound')]
-        [String]$Direction
-    )
-    process {
-        $TargetObject.properties.securityRules |
-            Where-Object { $_.properties.direction -eq $Direction } |
-            Sort-Object @{ Expression = { $_.Properties.priority }; Descending = $False }
-    }
-}
-
 function global:SupportsAcceleratedNetworking {
     [CmdletBinding()]
     param ()

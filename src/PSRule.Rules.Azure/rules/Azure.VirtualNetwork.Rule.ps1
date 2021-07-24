@@ -160,18 +160,15 @@ Rule 'Azure.NSG.DenyAllInbound' -Type 'Microsoft.Network/networkSecurityGroups' 
 
 # Synopsis: Lateral traversal from application servers should be blocked
 Rule 'Azure.NSG.LateralTraversal' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Reason $LocalizedData.LateralTraversalNotRestricted;
-    $outboundRules = @(GetOrderedNSGRules -Direction Outbound);
-    $rules = @($outboundRules | Where-Object {
-        $_.properties.access -eq 'Deny' -and
-        (
-            $_.properties.destinationPortRange -eq '3389' -or
-            $_.properties.destinationPortRange -eq '22' -or
-            $_.properties.destinationPortRanges -contains '3389' -or
-            $_.properties.destinationPortRanges -contains '22'
-        )
-    })
-    $Null -ne $rules -and $rules.Length -gt 0
+    $nsg = [PSRule.Rules.Azure.Runtime.Helper]::GetNetworkSecurityGroup(@(GetOrderedNSGRules -Direction Outbound));
+
+    $rdp = $nsg.Outbound('VirtualNetwork', 3389);
+    $ssh = $nsg.Outbound('VirtualNetwork', 22);
+
+    if (($rdp -eq 'Allow' -or $rdp -eq 'Default') -and ($ssh -eq 'Allow' -or $ssh -eq 'Default')) {
+        return $Assert.Fail($LocalizedData.LateralTraversalNotRestricted);
+    }
+    return $Assert.Pass();
 }
 
 # Synopsis: Network security groups should be associated to either a subnet or network interface
@@ -343,6 +340,22 @@ Rule 'Azure.VNG.ConnectionName' -Type 'Microsoft.Network/connections' -Tag @{ re
 #endregion Virtual Network Gateway
 
 #region Helper functions
+
+# Get a sorted list of NSG rules
+function global:GetOrderedNSGRules {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [ValidateSet('Inbound', 'Outbound')]
+        [String]$Direction
+    )
+    process {
+        $TargetObject.properties.securityRules |
+            Where-Object { $_.properties.direction -eq $Direction } |
+            Sort-Object @{ Expression = { $_.Properties.priority }; Descending = $False }
+    }
+}
 
 function global:IsVPNGateway {
     [CmdletBinding()]

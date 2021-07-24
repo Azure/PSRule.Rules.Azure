@@ -1201,6 +1201,81 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
     },
     {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-D",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-D",
+        "Location": "region",
+        "ResourceName": "nsg-D",
+        "Name": "nsg-D",
+        "Properties": {
+            "securityRules": [
+                {
+                    "name": "deny-all-vnet-outbound",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-D/securityRules/deny-all-vnet-outbound",
+                    "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+                    "properties": {
+                        "description": "Prevent outbound VNET traffic.",
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "sourceAddressPrefix": "VirtualNetwork",
+                        "destinationAddressPrefix": "VirtualNetwork",
+                        "access": "Deny",
+                        "priority": 200,
+                        "direction": "Outbound",
+                        "sourcePortRanges": [],
+                        "destinationPortRange": "*",
+                        "sourceAddressPrefixes": [],
+                        "destinationAddressPrefixes": []
+                    }
+                }
+            ],
+            "subnets": []
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/networkSecurityGroups",
+        "ResourceType": "Microsoft.Network/networkSecurityGroups",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-E",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-E",
+        "Location": "region",
+        "ResourceName": "nsg-E",
+        "Name": "nsg-E",
+        "Properties": {
+            "securityRules": [
+                {
+                    "name": "deny-mgmt-double-hop-outbound",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-E/securityRules/deny-mgmt-double-hop-outbound",
+                    "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+                    "properties": {
+                        "description": "Prevent outbound RDP and SSH.",
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "sourceAddressPrefix": "VirtualNetwork",
+                        "destinationAddressPrefix": "*",
+                        "access": "Deny",
+                        "priority": 200,
+                        "direction": "Outbound",
+                        "sourcePortRanges": [],
+                        "destinationPortRanges": [
+                            "3389",
+                            "22"
+                        ],
+                        "sourceAddressPrefixes": [],
+                        "destinationAddressPrefixes": []
+                    }
+                }
+            ],
+            "subnets": []
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/networkSecurityGroups",
+        "ResourceType": "Microsoft.Network/networkSecurityGroups",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/applicationGateways/appgw-A",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/applicationGateways/appgw-A",
         "Location": "region",

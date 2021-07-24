@@ -585,8 +585,8 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'nsg-A', 'nsg-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'nsg-A', 'nsg-C', 'nsg-D', 'nsg-E';
         }
 
         It 'Azure.NSG.DenyAllInbound' {
@@ -601,8 +601,8 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'nsg-A', 'nsg-B';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'nsg-A', 'nsg-B', 'nsg-D', 'nsg-E';
         }
 
         It 'Azure.NSG.LateralTraversal' {
@@ -612,13 +612,13 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'nsg-C';
+            $ruleResult.TargetName | Should -BeIn 'nsg-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'nsg-A', 'nsg-B';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'nsg-A', 'nsg-B', 'nsg-D', 'nsg-E';
         }
 
         It 'Azure.NSG.Associated' {
@@ -627,8 +627,8 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'nsg-B', 'nsg-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'nsg-B', 'nsg-C', 'nsg-D', 'nsg-E';
             $ruleResult.Reason | Should -BeLike 'The resource is not associated.';
 
             # Pass

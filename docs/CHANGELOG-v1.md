@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.5.0:
+
+- Bug fixes:
+  - Fixes rule does not detect more restrictive NSG rules. [#831](https://github.com/Azure/PSRule.Rules.Azure/issues/831)
+
 ## v1.5.0
 
 What's changed since v1.4.1:
