@@ -2,6 +2,8 @@
 // Licensed under the MIT License.
 
 using PSRule.Rules.Azure.Runtime;
+using System;
+using System.Management.Automation;
 using Xunit;
 
 namespace PSRule.Rules.Azure
@@ -32,6 +34,40 @@ namespace PSRule.Rules.Azure
             Assert.True(Helper.IsTemplateExpression("[ parameters( 'shares')[ copyIndex()].name]"));
             Assert.True(Helper.IsTemplateExpression("[concat('route-', parameters('subnets')[copyIndex('routeIndex')].name)]"));
             Assert.True(Helper.IsTemplateExpression("[concat(split(parameters('addressPrefix')[0], '/')[0], '/27')]"));
+        }
+
+        [Fact]
+        public void GetNetworkSecurityGroup()
+        {
+            var securityRules = new PSObject[]
+            {
+                NewSecurityRule(100, "Deny", "Outbound", destinationAddressPrefix: "VirtualNetwork", destinationPortRange: "3389"),
+                NewSecurityRule(101, "Deny", "Outbound", destinationAddressPrefix: "*", destinationPortRange: "22"),
+                NewSecurityRule(1000, "Allow", "Outbound", destinationAddressPrefix: "*", destinationPortRange: "*")
+            };
+
+            var eval = Helper.GetNetworkSecurityGroup(securityRules);
+            Assert.False(eval.Outbound("virtualNetwork", 3389) == Data.Network.Access.Allow);
+            Assert.False(eval.Outbound("virtualNetwork", 22) == Data.Network.Access.Allow);
+            Assert.True(eval.Outbound("virtualNetwork", 80) == Data.Network.Access.Allow);
+        }
+
+        private static PSObject NewSecurityRule(int priority, string access, string direction, string destinationAddressPrefix = null, string destinationPortRange = null)
+        {
+            var result = new PSObject();
+            var properties = new PSObject();
+            properties.Properties.Add(new PSNoteProperty("priority", priority));
+            properties.Properties.Add(new PSNoteProperty("access", access));
+            properties.Properties.Add(new PSNoteProperty("direction", direction));
+
+            if (destinationAddressPrefix != null)
+                properties.Properties.Add(new PSNoteProperty("destinationAddressPrefix", destinationAddressPrefix));
+
+            if (destinationPortRange != null)
+                properties.Properties.Add(new PSNoteProperty("destinationPortRange", destinationPortRange));
+
+            result.Properties.Add(new PSNoteProperty("properties", properties));
+            return result;
         }
     }
 }

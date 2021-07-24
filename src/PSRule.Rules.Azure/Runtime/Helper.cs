@@ -2,8 +2,10 @@
 // Licensed under the MIT License.
 
 using PSRule.Rules.Azure.Configuration;
+using PSRule.Rules.Azure.Data.Network;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
+using System;
 using System.Management.Automation;
 
 namespace PSRule.Rules.Azure.Runtime
@@ -39,11 +41,22 @@ namespace PSRule.Rules.Azure.Runtime
             return helper.ProcessTemplate(link.TemplateFile, link.ParameterFile, out _);
         }
 
+        public static INetworkSecurityGroupEvaluator GetNetworkSecurityGroup(PSObject[] securityRules)
+        {
+            var builder = new NetworkSecurityGroupEvaluator();
+            builder.With(securityRules);
+            return builder;
+        }
+
+        #region Helper methods
+
         private static PipelineContext GetContext()
         {
             var option = PSRuleOption.FromFileOrDefault(PSRuleOption.GetWorkingPath());
             var context = new PipelineContext(option, null);
             return context;
         }
+
+        #endregion Helper methods
     }
 }
