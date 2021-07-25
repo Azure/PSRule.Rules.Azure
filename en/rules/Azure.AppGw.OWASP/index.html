@@ -1293,6 +1293,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurecli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurepowershell" class="md-nav__link">
+    Configure with Azure PowerShell
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1320,6 +1368,18 @@
     <li class="md-nav__item">
       <a href="../Azure.AppGw.SSLPolicy/" class="md-nav__link">
         Azure.AppGw.SSLPolicy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Azure.AppGw.UseHTTPS/" class="md-nav__link">
+        Azure.AppGw.UseHTTPS
       </a>
     </li>
   
@@ -3467,6 +3527,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurecli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurepowershell" class="md-nav__link">
+    Configure with Azure PowerShell
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3490,7 +3598,74 @@
 <p>Application Gateways deployed with WAF features support configuration of OWASP rule sets for detection and/ or prevention of malicious attacks.</p>
 <p>Two rule set versions are available; OWASP 2.x and OWASP 3.x.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider configuring Application Gateway instances to use use newer OWASP 3.x rules instead of 2.x rule set versions.</p>
+<p>Consider configuring Application Gateways to use OWASP 3.x rules instead of 2.x rule set versions.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To deploy Application Gateways that pass this rule:</p>
+<ul>
+<li>Set the <code>properties.webApplicationFirewallConfiguration.ruleSetType</code> property to <code>OWASP</code>.</li>
+<li>Set the <code>properties.webApplicationFirewallConfiguration.ruleSetVersion</code> property to a minimum of <code>3.2</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.Network/applicationGateways&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-11-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;appGwName&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[resourceGroup().location]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;sku&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;WAF_v2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;tier&quot;</span><span class="p">:</span> <span class="s2">&quot;WAF_v2&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;webApplicationFirewallConfiguration&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;firewallMode&quot;</span><span class="p">:</span> <span class="s2">&quot;Prevention&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;ruleSetType&quot;</span><span class="p">:</span> <span class="s2">&quot;OWASP&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;ruleSetVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;3.2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;disabledRuleGroups&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="nt">&quot;requestBodyCheck&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;maxRequestBodySizeInKb&quot;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
+            <span class="nt">&quot;fileUploadLimitInMb&quot;</span><span class="p">:</span> <span class="mi">100</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To deploy Application Gateways that pass this rule:</p>
+<ul>
+<li>Set the <code>properties.webApplicationFirewallConfiguration.ruleSetType</code> property to <code>OWASP</code>.</li>
+<li>Set the <code>properties.webApplicationFirewallConfiguration.ruleSetVersion</code> property to a minimum of <code>3.2</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource appGw &#39;Microsoft.Network/applicationGateways@2021-02-01&#39; = {
+  name: &#39;appGw-001&#39;
+  properties: {
+    sku: {
+      name: &#39;WAF_v2&#39;
+      tier: &#39;WAF_v2&#39;
+    }
+    webApplicationFirewallConfiguration: {
+      enabled: true
+      firewallMode: &#39;Prevention&#39;
+      ruleSetType: &#39;OWASP&#39;
+      ruleSetVersion: &#39;3.2&#39;
+    }
+  }
+}
+</code></pre></div>
+<h3 id="configurewithazurecli">Configure with Azure CLI<a class="headerlink" href="#configurewithazurecli" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code>az network application-gateway waf-config <span class="nb">set</span> --enabled <span class="nb">true</span> --rule-set-type OWASP --rule-set-version <span class="s1">&#39;3.2&#39;</span> -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
+</code></pre></div>
+<h3 id="configurewithazurepowershell">Configure with Azure PowerShell<a class="headerlink" href="#configurewithazurepowershell" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nv">$AppGw</span> <span class="p">=</span> <span class="nb">Get-AzApplicationGateway</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;name&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
+<span class="nb">Set-AzApplicationGatewayWebApplicationFirewallConfiguration</span> <span class="n">-ApplicationGateway</span> <span class="nv">$AppGw</span> <span class="n">-Enabled</span> <span class="nv">$True</span> <span class="n">-FirewallMode</span> <span class="s1">&#39;Prevention&#39;</span> <span class="n">-RuleSetType</span> <span class="s1">&#39;OWASP&#39;</span> <span class="n">-RuleSetVersion</span> <span class="s1">&#39;3.2&#39;</span>
+</code></pre></div>
+<h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints">Best practices for endpoint security on Azure</a></li>
+<li><a href="https://owasp.org/www-project-modsecurity-core-rule-set/">OWASP ModSecurity Core Rule Set</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways">Azure template reference</a></li>
+</ul>
                 
                   
                     

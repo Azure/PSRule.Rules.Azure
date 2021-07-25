@@ -10,17 +10,17 @@
       
       
       
-        <meta name="author" content="Microsoft">
+        <meta name="author" content="BernieWhite">
       
       
-        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.SubnetName/">
+        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.UseHTTPS/">
       
       <link rel="icon" href="../../../assets/ms_icon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.0">
     
     
       
-        <title>Azure.VNET.SubnetName - PSRule for Azure</title>
+        <title>Azure.AppGw.UseHTTPS - PSRule for Azure</title>
       
     
     
@@ -66,9 +66,9 @@
 
   <!-- Open graph meta tags -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PSRule for Azure - Azure.VNET.SubnetName" />
+  <meta property="og:title" content="PSRule for Azure - Azure.AppGw.UseHTTPS" />
   <meta property="og:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
-  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.SubnetName/" />
+  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.UseHTTPS/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1280" />
@@ -78,7 +78,7 @@
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - Azure.VNET.SubnetName" />
+  <meta name="twitter:title" content="PSRule for Azure - Azure.AppGw.UseHTTPS" />
   <meta name="twitter:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#usevalidsubnetnames" class="md-skip">
+        <a href="#exposefrontendhttpendpointsoverhttps" class="md-skip">
           Skip to content
         </a>
       
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Azure.VNET.SubnetName
+              Azure.AppGw.UseHTTPS
             
           </span>
         </div>
@@ -1281,11 +1281,65 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Azure.AppGw.UseHTTPS/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Azure.AppGw.UseHTTPS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Azure.AppGw.UseHTTPS
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3177,72 +3231,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Azure.VNET.SubnetName
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Azure.VNET.SubnetName/" class="md-nav__link">
         Azure.VNET.SubnetName
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommendation" class="md-nav__link">
-    Recommendation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    Notes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    Links
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3494,13 +3487,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    Notes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#links" class="md-nav__link">
     Links
   </a>
@@ -3519,32 +3505,25 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VNET.SubnetName.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.UseHTTPS.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="usevalidsubnetnames">Use valid subnet names<a class="headerlink" href="#usevalidsubnetnames" title="Permanent link">#</a></h1>
-<p>Subnet names should meet naming requirements.</p>
+                <h1 id="exposefrontendhttpendpointsoverhttps">Expose frontend HTTP endpoints over HTTPS<a class="headerlink" href="#exposefrontendhttpendpointsoverhttps" title="Permanent link">#</a></h1>
+<p>Application Gateways should only expose frontend HTTP endpoints over HTTPS.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>When naming Azure resources, resource names must meet service requirements.
-The requirements for Route table names are:</p>
-<ul>
-<li>Between 1 and 80 characters long.</li>
-<li>Alphanumerics, underscores, periods, and hyphens.</li>
-<li>Start with alphanumeric.</li>
-<li>End alphanumeric or underscore.</li>
-<li>Subnet names must be unique within a virtual network.</li>
-</ul>
+<p>Application Gateways support HTTP and HTTPS endpoints for backend and frontend traffic.
+When using frontend HTTP (80) endpoints, traffic between client and Application Gateway is not encrypted.</p>
+<p>Unencrypted communication could allow disclosure of information to an un-trusted party.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider using names that meet subnet naming requirements.
-Additionally consider naming resources with a standard naming convention.</p>
-<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
-<p>This rule does not check if subnet names are unique.</p>
+<p>Consider configuring Application Gateways to only expose HTTPS endpoints.
+For client applications such as progressive web apps, consider redirecting HTTP traffic to HTTPS.</p>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure">Repeatable Infrastructure</a></li>
-<li><a href="https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules">Naming rules and restrictions for Azure resources</a></li>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit">Data encryption in Azure</a></li>
+<li><a href="https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal">Create an application gateway with HTTP to HTTPS redirection using the Azure portal</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways">Azure template reference</a></li>
 </ul>
                 
                   

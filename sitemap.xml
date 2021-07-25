@@ -381,6 +381,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.UseHTTPS/</loc>
+         <lastmod>2021-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.UseWAF/</loc>
          <lastmod>2021-07-25</lastmod>
          <changefreq>daily</changefreq>
