@@ -20,7 +20,7 @@
     
     
       
-        <title>By module - PSRule for Azure</title>
+        <title>By pillar - PSRule for Azure</title>
       
     
     
@@ -66,7 +66,7 @@
 
   <!-- Open graph meta tags -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PSRule for Azure - By module" />
+  <meta property="og:title" content="PSRule for Azure - By pillar" />
   <meta property="og:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
   <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/module/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
@@ -78,7 +78,7 @@
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - By module" />
+  <meta name="twitter:title" content="PSRule for Azure - By pillar" />
   <meta name="twitter:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rulesforarchitectureexcellence" class="md-skip">
+        <a href="#rulesbypillar" class="md-skip">
           Skip to content
         </a>
       
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              By module
+              By pillar
             
           </span>
         </div>
@@ -682,12 +682,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          By module
+          By pillar
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        By module
+        By pillar
       </a>
       
         
@@ -756,6 +756,13 @@
           <li class="md-nav__item">
   <a href="#monitoring" class="md-nav__link">
     Monitoring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principles" class="md-nav__link">
+    Principles
   </a>
   
 </li>
@@ -884,15 +891,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#design_1" class="md-nav__link">
-    Design
+  <a href="#dataprotection" class="md-nav__link">
+    Data protection
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#encryption" class="md-nav__link">
-    Encryption
+  <a href="#design_1" class="md-nav__link">
+    Design
   </a>
   
 </li>
@@ -3727,6 +3734,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#principles" class="md-nav__link">
+    Principles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#releaseengineering" class="md-nav__link">
     Release engineering
   </a>
@@ -3850,15 +3864,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#design_1" class="md-nav__link">
-    Design
+  <a href="#dataprotection" class="md-nav__link">
+    Data protection
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#encryption" class="md-nav__link">
-    Encryption
+  <a href="#design_1" class="md-nav__link">
+    Design
   </a>
   
 </li>
@@ -3920,7 +3934,7 @@
                   </a>
                 
                 
-                <h1 id="rulesforarchitectureexcellence">Rules for architecture excellence<a class="headerlink" href="#rulesforarchitectureexcellence" title="Permanent link">#</a></h1>
+                <h1 id="rulesbypillar">Rules by pillar<a class="headerlink" href="#rulesbypillar" title="Permanent link">#</a></h1>
 <p>PSRule for Azure includes the following rules across five pillars of the Microsoft Azure Well-Architected Framework.</p>
 <h2 id="costoptimization">Cost Optimization<a class="headerlink" href="#costoptimization" title="Permanent link">#</a></h2>
 <h3 id="pricingandbillingmodel">Pricing and billing model<a class="headerlink" href="#pricingandbillingmodel" title="Permanent link">#</a></h3>
@@ -4139,6 +4153,23 @@
 </tr>
 </tbody>
 </table>
+<h3 id="principles">Principles<a class="headerlink" href="#principles" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Synopsis</th>
+<th>Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Azure.NSG.Associated/">Azure.NSG.Associated</a></td>
+<td>Network Security Groups (NSGs) should be associated to a subnet or network interface.</td>
+<td>Awareness</td>
+</tr>
+</tbody>
+</table>
 <h3 id="releaseengineering">Release engineering<a class="headerlink" href="#releaseengineering" title="Permanent link">#</a></h3>
 <table>
 <thead>
@@ -4222,50 +4253,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Azure.Policy.AssignmentAssignedBy/">Azure.Policy.AssignmentAssignedBy</a></td>
-<td>Policy assignments should use assignedBy metadata.</td>
-<td>Awareness</td>
-</tr>
-<tr>
-<td><a href="../Azure.Policy.AssignmentDescriptors/">Azure.Policy.AssignmentDescriptors</a></td>
-<td>Policy assignments should use a display name and description.</td>
-<td>Awareness</td>
-</tr>
-<tr>
-<td><a href="../Azure.Policy.Descriptors/">Azure.Policy.Descriptors</a></td>
-<td>Policy and initiative definitions should use a display name, description, and category.</td>
-<td>Awareness</td>
-</tr>
-<tr>
-<td><a href="../Azure.Policy.ExemptionDescriptors/">Azure.Policy.ExemptionDescriptors</a></td>
-<td>Policy exemptions should use a display name and description.</td>
-<td>Awareness</td>
-</tr>
-<tr>
-<td><a href="../Azure.Policy.WaiverExpiry/">Azure.Policy.WaiverExpiry</a></td>
-<td>Configure policy waiver exemptions to expire.</td>
-<td>Awareness</td>
-</tr>
-</tbody>
-</table>
-<h3 id="taggingandresourcenaming">Tagging and resource naming<a class="headerlink" href="#taggingandresourcenaming" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Synopsis</th>
-<th>Severity</th>
-</tr>
-</thead>
-<tbody>
-<tr>
 <td><a href="../Azure.ACR.Name/">Azure.ACR.Name</a></td>
 <td>Container registry names should meet naming requirements.</td>
-<td>Awareness</td>
-</tr>
-<tr>
-<td><a href="../Azure.AKS.DNSPrefix/">Azure.AKS.DNSPrefix</a></td>
-<td>Azure Kubernetes Service (AKS) cluster DNS prefix should meet naming requirements.</td>
 <td>Awareness</td>
 </tr>
 <tr>
@@ -4274,18 +4263,8 @@
 <td>Awareness</td>
 </tr>
 <tr>
-<td><a href="../Azure.APIM.APIDescriptors/">Azure.APIM.APIDescriptors</a></td>
-<td>API Management APIs should have a display name and description.</td>
-<td>Awareness</td>
-</tr>
-<tr>
 <td><a href="../Azure.APIM.Name/">Azure.APIM.Name</a></td>
 <td>API Management service names should meet naming requirements.</td>
-<td>Awareness</td>
-</tr>
-<tr>
-<td><a href="../Azure.APIM.ProductDescriptors/">Azure.APIM.ProductDescriptors</a></td>
-<td>API Management products should have a display name and description.</td>
 <td>Awareness</td>
 </tr>
 <tr>
@@ -4344,23 +4323,38 @@
 <td>Awareness</td>
 </tr>
 <tr>
+<td><a href="../Azure.Policy.AssignmentAssignedBy/">Azure.Policy.AssignmentAssignedBy</a></td>
+<td>Policy assignments should use assignedBy metadata.</td>
+<td>Awareness</td>
+</tr>
+<tr>
+<td><a href="../Azure.Policy.AssignmentDescriptors/">Azure.Policy.AssignmentDescriptors</a></td>
+<td>Policy assignments should use a display name and description.</td>
+<td>Awareness</td>
+</tr>
+<tr>
+<td><a href="../Azure.Policy.Descriptors/">Azure.Policy.Descriptors</a></td>
+<td>Policy and initiative definitions should use a display name, description, and category.</td>
+<td>Awareness</td>
+</tr>
+<tr>
+<td><a href="../Azure.Policy.ExemptionDescriptors/">Azure.Policy.ExemptionDescriptors</a></td>
+<td>Policy exemptions should use a display name and description.</td>
+<td>Awareness</td>
+</tr>
+<tr>
+<td><a href="../Azure.Policy.WaiverExpiry/">Azure.Policy.WaiverExpiry</a></td>
+<td>Configure policy waiver exemptions to expire.</td>
+<td>Awareness</td>
+</tr>
+<tr>
 <td><a href="../Azure.PostgreSQL.ServerName/">Azure.PostgreSQL.ServerName</a></td>
 <td>Azure PostgreSQL DB server names should meet naming requirements.</td>
 <td>Awareness</td>
 </tr>
 <tr>
-<td><a href="../Azure.PublicIP.DNSLabel/">Azure.PublicIP.DNSLabel</a></td>
-<td>Public IP domain name labels should meet naming requirements.</td>
-<td>Awareness</td>
-</tr>
-<tr>
 <td><a href="../Azure.PublicIP.Name/">Azure.PublicIP.Name</a></td>
 <td>Public IP names should meet naming requirements.</td>
-<td>Awareness</td>
-</tr>
-<tr>
-<td><a href="../Azure.Resource.UseTags/">Azure.Resource.UseTags</a></td>
-<td>Azure resources should be tagged using a standard convention.</td>
 <td>Awareness</td>
 </tr>
 <tr>
@@ -4466,6 +4460,43 @@
 <tr>
 <td><a href="../Azure.VNG.Name/">Azure.VNG.Name</a></td>
 <td>Virtual Network Gateway (VNG) names should meet naming requirements.</td>
+<td>Awareness</td>
+</tr>
+</tbody>
+</table>
+<h3 id="taggingandresourcenaming">Tagging and resource naming<a class="headerlink" href="#taggingandresourcenaming" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Synopsis</th>
+<th>Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Azure.AKS.DNSPrefix/">Azure.AKS.DNSPrefix</a></td>
+<td>Azure Kubernetes Service (AKS) cluster DNS prefix should meet naming requirements.</td>
+<td>Awareness</td>
+</tr>
+<tr>
+<td><a href="../Azure.APIM.APIDescriptors/">Azure.APIM.APIDescriptors</a></td>
+<td>API Management APIs should have a display name and description.</td>
+<td>Awareness</td>
+</tr>
+<tr>
+<td><a href="../Azure.APIM.ProductDescriptors/">Azure.APIM.ProductDescriptors</a></td>
+<td>API Management products should have a display name and description.</td>
+<td>Awareness</td>
+</tr>
+<tr>
+<td><a href="../Azure.PublicIP.DNSLabel/">Azure.PublicIP.DNSLabel</a></td>
+<td>Public IP domain name labels should meet naming requirements.</td>
+<td>Awareness</td>
+</tr>
+<tr>
+<td><a href="../Azure.Resource.UseTags/">Azure.Resource.UseTags</a></td>
+<td>Azure resources should be tagged using a standard convention.</td>
 <td>Awareness</td>
 </tr>
 </tbody>
@@ -4781,29 +4812,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="design_1">Design<a class="headerlink" href="#design_1" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Synopsis</th>
-<th>Severity</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Azure.AKS.AuthorizedIPs/">Azure.AKS.AuthorizedIPs</a></td>
-<td>Restrict access to API server endpoints to authorized IP addresses.</td>
-<td>Important</td>
-</tr>
-<tr>
-<td><a href="../Azure.Resource.AllowedRegions/">Azure.Resource.AllowedRegions</a></td>
-<td>Resources should be deployed to allowed regions.</td>
-<td>Awareness</td>
-</tr>
-</tbody>
-</table>
-<h3 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permanent link">#</a></h3>
+<h3 id="dataprotection">Data protection<a class="headerlink" href="#dataprotection" title="Permanent link">#</a></h3>
 <table>
 <thead>
 <tr>
@@ -4932,6 +4941,28 @@
 <td><a href="../Azure.VM.ADE/">Azure.VM.ADE</a></td>
 <td>Use Azure Disk Encryption (ADE).</td>
 <td>Important</td>
+</tr>
+</tbody>
+</table>
+<h3 id="design_1">Design<a class="headerlink" href="#design_1" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Synopsis</th>
+<th>Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Azure.AKS.AuthorizedIPs/">Azure.AKS.AuthorizedIPs</a></td>
+<td>Restrict access to API server endpoints to authorized IP addresses.</td>
+<td>Important</td>
+</tr>
+<tr>
+<td><a href="../Azure.Resource.AllowedRegions/">Azure.Resource.AllowedRegions</a></td>
+<td>Resources should be deployed to allowed regions.</td>
+<td>Awareness</td>
 </tr>
 </tbody>
 </table>
@@ -5146,11 +5177,6 @@
 <td><a href="../Azure.NSG.AnyInboundSource/">Azure.NSG.AnyInboundSource</a></td>
 <td>Network security groups (NSGs) should avoid rules that allow any inbound source.</td>
 <td>Critical</td>
-</tr>
-<tr>
-<td><a href="../Azure.NSG.Associated/">Azure.NSG.Associated</a></td>
-<td>Network Security Groups (NSGs) should be associated.</td>
-<td>Awareness</td>
 </tr>
 <tr>
 <td><a href="../Azure.NSG.LateralTraversal/">Azure.NSG.LateralTraversal</a></td>

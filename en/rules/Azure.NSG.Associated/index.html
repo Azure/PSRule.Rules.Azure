@@ -673,7 +673,7 @@
   
     <li class="md-nav__item">
       <a href="../module/" class="md-nav__link">
-        By module
+        By pillar
       </a>
     </li>
   
@@ -1949,6 +1949,13 @@
         <li class="md-nav__item">
   <a href="#recommendation" class="md-nav__link">
     Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
   </a>
   
 </li>
@@ -3467,6 +3474,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3485,13 +3499,20 @@
                 
                 
                 <h1 id="associatensgsorcleanup">Associate NSGs or clean up<a class="headerlink" href="#associatensgsorcleanup" title="Permanent link">#</a></h1>
-<p>Network Security Groups (NSGs) should be associated.</p>
+<p>Network Security Groups (NSGs) should be associated to a subnet or network interface.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>NSGs basic stateful firewalls that are deployed as separate resources and can be associated to network interfaces or subnets.
+<p>NSGs basic stateful firewalls that are deployed as separate resources.
+Each NSG can be associated to one or more network interfaces or subnets.
 NSGs that are not associated with a network interface or subnet perform no purpose.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider cleaning up NSGs that are not required to reduce management complexity.
+<p>Consider cleaning up NSGs that are not required to reduce technical debt.
 Also consider using Resource Groups to help manage the lifecycle of related resources together.</p>
+<h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/devops/principles">Operational excellence principles</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/virtual-network/security-overview">Network security groups</a></li>
+</ul>
                 
                   
                     

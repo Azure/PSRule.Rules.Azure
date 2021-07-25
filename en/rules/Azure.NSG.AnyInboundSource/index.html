@@ -673,7 +673,7 @@
   
     <li class="md-nav__item">
       <a href="../module/" class="md-nav__link">
-        By module
+        By pillar
       </a>
     </li>
   
@@ -3507,16 +3507,22 @@ Custom security rules can be defined that <em>allow</em> or <em>deny</em> <em>in
 <p>When defining custom rules, avoid using rules that allow <strong>any</strong> inbound source.
 The intent of custom rules that allow any inbound source may not be clearly understood by support teams.
 Additionally, custom rules with any inbound source may expose services if a public IP address is attached.</p>
+<p>When inbound network traffic from the Internet is intended also consider the following:</p>
+<ul>
+<li>Use Application Gateway in-front of any web application workloads.</li>
+<li>Use DDoS Protection Standard to protect public IP addresses.</li>
+</ul>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
 <p>Consider updating inbound rules to use a specified source such as an IP range or service tag.
 If inbound access from Internet-based sources is intended, consider using the service tag <code>Internet</code>.</p>
-<p>Consider using services such as Application Gateway and DDoS Protection Standard when inbound Internet access is intended.</p>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints">Best practices for endpoint security on Azure</a></li>
 <li><a href="https://docs.microsoft.com/azure/virtual-network/security-overview">Network Security Groups</a></li>
 <li><a href="https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets">Logically segment subnets</a></li>
 <li><a href="https://docs.microsoft.com/azure/application-gateway/overview">What is Azure Application Gateway?</a></li>
 <li><a href="https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview">Azure DDoS Protection Standard overview</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules">Azure template reference</a></li>
 </ul>
                 
                   
