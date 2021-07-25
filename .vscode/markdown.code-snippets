@@ -81,5 +81,23 @@
             "${1:command} -Name '<name>' -ResourceGroupName '<resource_group>'",
             "```"
         ]
+    },
+    "rule-azure-example-bicep": {
+        "scope": "markdown",
+        "prefix": "rule-azure-example-bicep",
+        "description": "Example for Bicep",
+        "body": [
+            "### Configure with Bicep",
+            "",
+            "To deploy ${1:resource} that pass this rule:",
+            "",
+            "- ${2:steps}",
+            "",
+            "For example:",
+            "",
+            "```bicep",
+            "",
+            "```"
+        ]
     }
 }

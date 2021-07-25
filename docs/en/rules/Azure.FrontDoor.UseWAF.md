@@ -14,7 +14,7 @@ Enable Web Application Firewall (WAF) policies on each Front Door endpoint.
 
 ## DESCRIPTION
 
-Front Door endpoint can optionally be configured with a WAF policy.
+Front Door endpoints can optionally be configured with a WAF policy.
 When configured, every incoming request through Front Door is filtered by the WAF policy.
 
 ## RECOMMENDATION

@@ -26,3 +26,20 @@ resource nsg 'Microsoft.Network/networkSecurityGroups@2021-02-01' = {
     ]
   }
 }
+
+// An example App Gateway v2 with WAF enabled
+resource appGw 'Microsoft.Network/applicationGateways@2021-02-01' = {
+  name: 'appGw-001'
+  properties: {
+    sku: {
+      name: 'WAF_v2'
+      tier: 'WAF_v2'
+    }
+    webApplicationFirewallConfiguration: {
+      enabled: true
+      firewallMode: 'Prevention'
+      ruleSetType: 'OWASP'
+      ruleSetVersion: '3.0'
+    }
+  }
+}

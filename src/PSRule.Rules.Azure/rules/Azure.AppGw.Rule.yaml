@@ -1,0 +1,22 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Selectors for Application Gateways
+#
+
+---
+# Synopsis: Application Gateways with WAF enabled
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.IsAppGwWAF
+spec:
+  if:
+    allOf:
+    - field: Properties.sku.tier
+      in:
+      - 'WAF'
+      - 'WAF_v2'
+    - field: Properties.webApplicationFirewallConfiguration.enabled
+      equals: true

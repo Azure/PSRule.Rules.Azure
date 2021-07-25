@@ -194,62 +194,6 @@ Rule 'Azure.NSG.Name' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ re
 
 #endregion Network Security Group
 
-#region Application Gateway
-
-# Synopsis: Application Gateway should use a minimum of two instances
-Rule 'Azure.AppGw.MinInstance' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    AnyOf {
-        # Applies to v1 and v2 without autoscale
-        $Assert.GreaterOrEqual($TargetObject, 'Properties.sku.capacity', 2);
-
-        # Applies to v2 with autoscale
-        $Assert.GreaterOrEqual($TargetObject, 'Properties.autoscaleConfiguration.minCapacity', 2);
-    }
-}
-
-# Synopsis: Application Gateway should use a minimum of Medium
-Rule 'Azure.AppGw.MinSku' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Within 'Properties.sku.name' 'WAF_Medium', 'Standard_Medium', 'WAF_Large', 'Standard_Large', 'WAF_v2', 'Standard_v2'
-}
-
-# Synopsis: Internet accessible Application Gateways should use WAF
-Rule 'Azure.AppGw.UseWAF' -If { (IsAppGwPublic) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Within 'Properties.sku.tier' 'WAF', 'WAF_v2'
-}
-
-# Synopsis: Application Gateway should only accept a minimum of TLS 1.2
-Rule 'Azure.AppGw.SSLPolicy' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Exists 'Properties.sslPolicy'
-    AnyOf {
-        Within 'Properties.sslPolicy.policyName' 'AppGwSslPolicy20170401S'
-        Within 'Properties.sslPolicy.minProtocolVersion' 'TLSv1_2'
-    }
-}
-
-# Synopsis: Internet exposed Application Gateways should use prevention mode to protect backend resources
-Rule 'Azure.AppGw.Prevention' -If { (IsAppGwPublic) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.webApplicationFirewallConfiguration.firewallMode', 'Prevention');
-}
-
-# Synopsis: Application Gateway WAF must be enabled to protect backend resources
-Rule 'Azure.AppGw.WAFEnabled' -If { (IsAppGwPublic) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.webApplicationFirewallConfiguration.enabled', $True);
-}
-
-# Synopsis: Application Gateway WAF should use OWASP 3.0 rules
-Rule 'Azure.AppGw.OWASP' -If { (IsAppGwWAF) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.webApplicationFirewallConfiguration.ruleSetType', 'OWASP');
-    $Assert.Version($TargetObject, 'Properties.webApplicationFirewallConfiguration.ruleSetVersion', '^3.0');
-}
-
-# Synopsis: Application Gateway WAF should not disable rules
-Rule 'Azure.AppGw.WAFRules' -If { (IsAppGwWAF) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $disabledRules = @($TargetObject.Properties.webApplicationFirewallConfiguration.disabledRuleGroups)
-    $disabledRules.Count -eq 0
-}
-
-#endregion Application Gateway
-
 #region Load Balancer
 
 # Synopsis: Use specific network probe
