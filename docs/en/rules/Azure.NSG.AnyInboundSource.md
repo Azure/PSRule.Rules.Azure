@@ -22,16 +22,21 @@ When defining custom rules, avoid using rules that allow **any** inbound source.
 The intent of custom rules that allow any inbound source may not be clearly understood by support teams.
 Additionally, custom rules with any inbound source may expose services if a public IP address is attached.
 
+When inbound network traffic from the Internet is intended also consider the following:
+
+- Use Application Gateway in-front of any web application workloads.
+- Use DDoS Protection Standard to protect public IP addresses.
+
 ## RECOMMENDATION
 
 Consider updating inbound rules to use a specified source such as an IP range or service tag.
 If inbound access from Internet-based sources is intended, consider using the service tag `Internet`.
 
-Consider using services such as Application Gateway and DDoS Protection Standard when inbound Internet access is intended.
-
 ## LINKS
 
+- [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
 - [Network Security Groups](https://docs.microsoft.com/azure/virtual-network/security-overview)
 - [Logically segment subnets](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
 - [What is Azure Application Gateway?](https://docs.microsoft.com/azure/application-gateway/overview)
 - [Azure DDoS Protection Standard overview](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)

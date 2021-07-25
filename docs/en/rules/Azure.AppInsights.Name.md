@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Operational Excellence
-category: Tagging and resource naming
+category: Repeatable Infrastructure
 resource: Application Insights
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppInsights.Name/
 ---
@@ -33,5 +33,6 @@ This rule does not check if Application Insights resource names are unique.
 
 ## LINKS
 
+- [Repeatable Infrastructure](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Define your naming convention](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
 - [Recommended abbreviations for Azure resource types](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)

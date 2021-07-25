@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Operational Excellence
-category: Tagging and resource naming
+category: Repeatable Infrastructure
 resource: SQL Database
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.DBName/
 ---
@@ -39,4 +39,5 @@ This rule does not check if Azure SQL Database names are unique.
 
 ## LINKS
 
+- [Repeatable Infrastructure](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql)

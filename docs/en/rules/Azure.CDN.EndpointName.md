@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Operational Excellence
-category: Tagging and resource naming
+category: Repeatable Infrastructure
 resource: Content Delivery Network
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CDN.EndpointName/
 ---
@@ -33,5 +33,6 @@ This rule does not check if CDN endpoint names are unique.
 
 ## LINKS
 
+- [Repeatable Infrastructure](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftcdn)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.cdn/profiles/endpoints)
