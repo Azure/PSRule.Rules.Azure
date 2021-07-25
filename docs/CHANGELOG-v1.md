@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.5.1:
+
+- Engineering:
+  - Bump PSRule dependency to v1.5.0. [#832](https://github.com/Azure/PSRule.Rules.Azure/issues/832)
+
 ## v1.5.1
 
 What's changed since v1.5.0:
@@ -30,7 +35,7 @@ What's changed since v1.4.1:
   - Exclude not applicable rules for templates generated with Bicep and PSArm. [#815](https://github.com/Azure/PSRule.Rules.Azure/issues/815)
   - Updated rule help to use docs pages for online version. [#824](https://github.com/Azure/PSRule.Rules.Azure/issues/824)
 - Engineering:
-  - Bump PSDocs dependency to v1.4.0. [#823](https://github.com/Azure/PSRule.Rules.Azure/issues/823)
+  - Bump PSRule dependency to v1.4.0. [#823](https://github.com/Azure/PSRule.Rules.Azure/issues/823)
   - Bump YamlDotNet dependency to v11.2.1. [#821](https://github.com/Azure/PSRule.Rules.Azure/pull/821)
   - Migrate project to Azure GitHub organization and updated links. [#800](https://github.com/Azure/PSRule.Rules.Azure/pull/800)
 - Bug fixes:
@@ -51,7 +56,7 @@ What's changed since pre-release v1.5.0-B2106018:
 - General improvements:
   - Updated rule help to use docs pages for online version. [#824](https://github.com/Azure/PSRule.Rules.Azure/issues/824)
 - Engineering:
-  - Bump PSDocs dependency to v1.4.0. [#823](https://github.com/Azure/PSRule.Rules.Azure/issues/823)
+  - Bump PSRule dependency to v1.4.0. [#823](https://github.com/Azure/PSRule.Rules.Azure/issues/823)
   - Bump YamlDotNet dependency to v11.2.1. [#821](https://github.com/Azure/PSRule.Rules.Azure/pull/821)
 
 ## v1.5.0-B2106018 (pre-release)
