@@ -121,44 +121,6 @@ function global:SupportsAcceleratedNetworking {
     }
 }
 
-function global:IsAppGwPublic {
-    [CmdletBinding()]
-    [OutputType([System.Boolean])]
-    param ()
-    process {
-        if ($PSRule.TargetType -ne 'Microsoft.Network/applicationGateways') {
-            return $False;
-        }
-
-        $result = $False;
-        foreach ($ip in $TargetObject.Properties.frontendIPConfigurations) {
-            if (Exists 'properties.publicIPAddress.id' -InputObject $ip) {
-                $result = $True;
-            }
-        }
-        return $result;
-    }
-}
-
-# Determine if the resource is an Application Gateway with WAF enabled
-function global:IsAppGwWAF {
-    [CmdletBinding()]
-    [OutputType([System.Boolean])]
-    param ()
-    process {
-        if ($PSRule.TargetType -ne 'Microsoft.Network/applicationGateways') {
-            return $False;
-        }
-        if ($TargetObject.Properties.sku.tier -notIn ('WAF', 'WAF_v2')) {
-            return $False;
-        }
-        if ($TargetObject.Properties.webApplicationFirewallConfiguration.enabled -ne $True) {
-            return $False;
-        }
-        return $True;
-    }
-}
-
 function global:IsWindowsOS {
     [CmdletBinding()]
     [OutputType([System.Boolean])]

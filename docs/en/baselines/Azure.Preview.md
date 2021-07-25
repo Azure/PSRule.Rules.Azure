@@ -4,7 +4,7 @@ Includes Azure features in preview.
 
 ## Rules
 
-The following rules are included within `Azure.Preview`. This baseline includes a total of 211 rules.
+The following rules are included within `Azure.Preview`. This baseline includes a total of 212 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -55,7 +55,8 @@ Name | Synopsis | Severity
 [Azure.AppGw.OWASP](../rules/Azure.AppGw.OWASP.md) | Application Gateway Web Application Firewall (WAF) should use OWASP 3.x rules. | Important
 [Azure.AppGw.Prevention](../rules/Azure.AppGw.Prevention.md) | Internet exposed Application Gateways should use prevention mode to protect backend resources. | Critical
 [Azure.AppGw.SSLPolicy](../rules/Azure.AppGw.SSLPolicy.md) | Application Gateway should only accept a minimum of TLS 1.2. | Critical
-[Azure.AppGw.UseWAF](../rules/Azure.AppGw.UseWAF.md) | Internet accessible Application Gateways should use WAF. | Critical
+[Azure.AppGw.UseHTTPS](../rules/Azure.AppGw.UseHTTPS.md) | Application Gateways should only expose frontend HTTP endpoints over HTTPS. | Critical
+[Azure.AppGw.UseWAF](../rules/Azure.AppGw.UseWAF.md) | Internet accessible Application Gateways should use protect endpoints with WAF. | Critical
 [Azure.AppGw.WAFEnabled](../rules/Azure.AppGw.WAFEnabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | Critical
 [Azure.AppGw.WAFRules](../rules/Azure.AppGw.WAFRules.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | Important
 [Azure.AppInsights.Name](../rules/Azure.AppInsights.Name.md) | Azure Application Insights resources names should meet naming requirements. | Awareness

@@ -9,6 +9,9 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since v1.5.1:
 
+- New rules:
+  - Application Gateways:
+    - Check Application Gateways publish endpoints by HTTPS. [#841](https://github.com/Azure/PSRule.Rules.Azure/issues/841)
 - Engineering:
   - Bump PSRule dependency to v1.5.0. [#832](https://github.com/Azure/PSRule.Rules.Azure/issues/832)
 

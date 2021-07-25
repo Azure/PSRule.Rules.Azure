@@ -4,6 +4,8 @@ pillar: Security
 category: Network security and containment
 resource: Application Gateway
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.Prevention/
+author: BernieWhite
+ms-date: 2021/07/25
 ---
 
 # Use WAF prevention mode
@@ -14,16 +16,92 @@ Internet exposed Application Gateways should use prevention mode to protect back
 
 ## DESCRIPTION
 
-Application Gateways with Web Application Firewall (WAF) enabled support two modes of operation, detection and prevention.
+Application Gateways with Web Application Firewall (WAF) enabled support two modes of operation:
 
-- Detection - monitors and logs all threat alerts.
-In this mode, the web application firewall doesn't block incoming requests.
-- Protection - blocks intrusions and attacks that the rules detect.
+- **Detection** - Monitors and logs all threat alerts.
+  In this mode, the WAF doesn't block incoming requests that are potentially malicious.
+- **Protection** - Blocks potentially malicious attack patterns that the rules detect.
 
 ## RECOMMENDATION
 
 Consider switching Internet exposed Application Gateways to use prevention mode to protect backend resources.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy Application Gateways that pass this rule:
+
+- Set the `properties.webApplicationFirewallConfiguration.firewallMode` property to `Prevention`.
+
+For example:
+
+```json
+{
+    "type": "Microsoft.Network/applicationGateways",
+    "apiVersion": "2020-11-01",
+    "name": "[parameters('appGwName')]",
+    "location": "[resourceGroup().location]",
+    "properties": {
+        "sku": {
+            "name": "WAF_v2",
+            "tier": "WAF_v2"
+        },
+        "webApplicationFirewallConfiguration": {
+            "enabled": true,
+            "firewallMode": "Prevention",
+            "ruleSetType": "OWASP",
+            "ruleSetVersion": "3.2",
+            "disabledRuleGroups": [],
+            "requestBodyCheck": true,
+            "maxRequestBodySizeInKb": 128,
+            "fileUploadLimitInMb": 100
+        }
+    }
+}
+```
+
+### Configure with Bicep
+
+To deploy Application Gateways that pass this rule:
+
+- Set the `properties.webApplicationFirewallConfiguration.firewallMode` property to `Prevention`.
+
+For example:
+
+```bicep
+resource appGw 'Microsoft.Network/applicationGateways@2021-02-01' = {
+  name: 'appGw-001'
+  properties: {
+    sku: {
+      name: 'WAF_v2'
+      tier: 'WAF_v2'
+    }
+    webApplicationFirewallConfiguration: {
+      enabled: true
+      firewallMode: 'Prevention'
+      ruleSetType: 'OWASP'
+      ruleSetVersion: '3.2'
+    }
+  }
+}
+```
+
+### Configure with Azure CLI
+
+```bash
+az network application-gateway waf-config set --enabled true --firewall-mode Prevention -n '<name>' -g '<resource_group>'
+```
+
+### Configure with Azure PowerShell
+
+```powershell
+$AppGw = Get-AzApplicationGateway -Name '<name>' -ResourceGroupName '<resource_group>'
+Set-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGw -Enabled $True -FirewallMode 'Prevention'
+```
+
 ## LINKS
 
-- [Application Gateway WAF modes](https://docs.microsoft.com/azure/application-gateway/waf-overview#waf-modes)
+- [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
+- [Application Gateway WAF modes](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview#waf-modes)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)
