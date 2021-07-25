@@ -14,16 +14,20 @@ Avoid denying all inbound traffic.
 
 ## DESCRIPTION
 
-Network Security Groups can be configured to block all network traffic inbound to a virtual machine.
+Network Security Groups can be configured to block all inbound network traffic.
+Blocking all inbound traffic will fail load balancer health probes and other required traffic.
 
-Blocking all inbound traffic into a virtual machine will fail load balancer health probes and other required traffic.
-
-Inbound network traffic can be whitelisted by including allow rules above deny all inbound rule by specifying a lower priority number.
-Rules with a lower priority number will be process first.
+When using a custom deny all inbound rule, also add rules to allow permitted traffic.
+To permit network traffic, add a custom allow rule with a lower priority number then the deny all rule.
+Rules with a lower priority number will be processed first.
+100 is the lowest priority number.
 
 ## RECOMMENDATION
 
-Deny all inbound rules should not use priority 100.
-The lowest configurable priority is 100, meaning that whitelisted network traffic rules can not be placed before the deny all.
+Consider using a higher priority number for deny all rules to allow permitted traffic rules to be added.
 
-Consider whitelisting inbound network traffic as required.
+## LINKS
+
+- [Network security groups](https://docs.microsoft.com/azure/virtual-network/security-overview)
+- [Virtual network service tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)

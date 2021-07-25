@@ -62,7 +62,7 @@ nav:
     - Configuring rule defaults: setup/configuring-rules.md
     - Configuring expansion: setup/configuring-expansion.md
   - Reference:
-    - By module: en/rules/module.md
+    - By pillar: en/rules/module.md
     - By resource: en/rules/resource.md
 
 markdown_extensions:

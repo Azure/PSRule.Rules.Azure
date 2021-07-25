@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 
 Document 'module' {
-    Title 'Rules for architecture excellence'
+    Title 'Rules by pillar'
 
     Import-Module ./out/modules/PSRule.Rules.Azure
     $rules = Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -WarningAction SilentlyContinue |
@@ -34,28 +34,26 @@ Document 'module' {
 }
 
 Document 'resource' {
-    Title 'Rules by resource'
+    Title 'Rules by resource type'
 
     Import-Module ./out/modules/PSRule.Rules.Azure
     $rules = Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -WarningAction SilentlyContinue |
         Add-Member -MemberType ScriptProperty -Name Resource -Value { $this.Info.Annotations.resource } -PassThru |
         Sort-Object -Property Resource;
 
-    Section 'Rules' {
-        'The following rules are included within `PSRule.Rules.Azure`.'
+    'PSRule for Azure includes the following rules organized by resource type.'
 
-        $resources = $rules | Group-Object -Property Resource;
+    $resources = $rules | Group-Object -Property Resource;
 
-        foreach ($resource in $resources) {
-            Section "$($resource.Name)" {
-                $resource.Group |
-                    Sort-Object -Property RuleName |
-                    Table -Property @{ Name = 'Name'; Expression = {
-                        "[$($_.RuleName)]($($_.RuleName).md)"
-                    }}, Synopsis, @{ Name = 'Severity'; Expression = {
-                        $_.Info.Annotations.severity
-                    }}
-            }
+    foreach ($resource in $resources) {
+        Section "$($resource.Name)" {
+            $resource.Group |
+                Sort-Object -Property RuleName |
+                Table -Property @{ Name = 'Name'; Expression = {
+                    "[$($_.RuleName)]($($_.RuleName).md)"
+                }}, Synopsis, @{ Name = 'Severity'; Expression = {
+                    $_.Info.Annotations.severity
+                }}
         }
     }
 }

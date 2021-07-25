@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Encryption
+category: Data protection
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.HTTPEndpoint/
 ---
@@ -25,4 +25,5 @@ In the portal, this is done by configuring the HTTPS URL scheme.
 
 ## LINKS
 
+- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Import and publish a back-end API](https://docs.microsoft.com/azure/api-management/import-api-from-oas#-import-and-publish-a-back-end-api)

@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Encryption
+category: Data protection
 resource: Automation Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Automation.EncryptVariables/
 ms-content-id: 3c74b891-bf52-44a8-8b71-f7219f83c2ce
