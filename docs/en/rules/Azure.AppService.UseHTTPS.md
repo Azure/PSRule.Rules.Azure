@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Encryption
+category: Data protection
 resource: App Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.UseHTTPS/
 ms-content-id: b26053bc-db4a-487a-8fb1-11c438c8d493
@@ -27,4 +27,5 @@ Also consider using Azure Policy to audit or enforce this configuration.
 
 ## LINKS
 
+- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Enforce HTTPS](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings#enforce-https)

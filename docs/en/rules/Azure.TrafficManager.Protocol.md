@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Encryption
+category: Data protection
 resource: Traffic Manager
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.TrafficManager.Protocol/
 ---
@@ -32,4 +32,5 @@ HTTPS-based monitoring improves security and increases accuracy of health probes
 
 ## LINKS
 
+- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Traffic Manager endpoint monitoring](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)

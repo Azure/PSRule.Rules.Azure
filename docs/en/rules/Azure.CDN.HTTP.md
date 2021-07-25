@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Encryption
+category: Data protection
 resource: Content Delivery Network
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CDN.HTTP/
 ---
@@ -24,4 +24,5 @@ Consider disabling HTTP support on the CDN endpoint origin.
 
 ## LINKS
 
+- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Configure HTTPS on an Azure CDN custom domain](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)

@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Encryption
+category: Data protection
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.EncryptValues/
 ---

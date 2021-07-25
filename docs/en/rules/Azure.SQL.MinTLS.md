@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Encryption
+category: Data protection
 resource: SQL Database
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.MinTLS/
 ---

@@ -1,10 +1,8 @@
-# Rules by resource
+# Rules by resource type
 
-## Rules
+PSRule for Azure includes the following rules organized by resource type.
 
-The following rules are included within `PSRule.Rules.Azure`.
-
-### All resources
+## All resources
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -25,7 +23,7 @@ Name | Synopsis | Severity
 [Azure.Template.UseParameters](Azure.Template.UseParameters.md) | Each Azure Resource Manager (ARM) template parameter should be used or removed from template files. | Awareness
 [Azure.Template.UseVariables](Azure.Template.UseVariables.md) | Each Azure Resource Manager (ARM) template variable should be used or removed from template files. | Awareness
 
-### API Management
+## API Management
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -43,14 +41,14 @@ Name | Synopsis | Severity
 [Azure.APIM.Protocols](Azure.APIM.Protocols.md) | API Management should only accept a minimum of TLS 1.2. | Important
 [Azure.APIM.SampleProducts](Azure.APIM.SampleProducts.md) | Remove starter and unlimited sample products. | Awareness
 
-### App Configuration
+## App Configuration
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.AppConfig.Name](Azure.AppConfig.Name.md) | App Configuration store names should meet naming requirements. | Awareness
 [Azure.AppConfig.SKU](Azure.AppConfig.SKU.md) | App Configuration should use a minimum size of Standard. | Important
 
-### App Service
+## App Service
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -66,7 +64,7 @@ Name | Synopsis | Severity
 [Azure.AppService.RemoteDebug](Azure.AppService.RemoteDebug.md) | Disable remote debugging on App Service apps when not in use. | Important
 [Azure.AppService.UseHTTPS](Azure.AppService.UseHTTPS.md) | Azure App Service apps should only accept encrypted connections. | Important
 
-### Application Gateway
+## Application Gateway
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -79,21 +77,21 @@ Name | Synopsis | Severity
 [Azure.AppGw.WAFEnabled](Azure.AppGw.WAFEnabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | Critical
 [Azure.AppGw.WAFRules](Azure.AppGw.WAFRules.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | Important
 
-### Application Insights
+## Application Insights
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.AppInsights.Name](Azure.AppInsights.Name.md) | Azure Application Insights resources names should meet naming requirements. | Awareness
 [Azure.AppInsights.Workspace](Azure.AppInsights.Workspace.md) | Configure Application Insights resources to store data in workspaces. | Important
 
-### Automation Service
+## Automation Service
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.Automation.EncryptVariables](Azure.Automation.EncryptVariables.md) | Azure Automation variables should be encrypted. | Important
 [Azure.Automation.WebHookExpiry](Azure.Automation.WebHookExpiry.md) | Do not create webhooks with an expiry time greater than 1 year (default). | Awareness
 
-### Azure Cache for Redis
+## Azure Cache for Redis
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -102,7 +100,7 @@ Name | Synopsis | Severity
 [Azure.Redis.MinTLS](Azure.Redis.MinTLS.md) | Redis Cache should reject TLS versions older then 1.2. | Critical
 [Azure.Redis.NonSslPort](Azure.Redis.NonSslPort.md) | Azure Cache for Redis should only accept secure connections. | Critical
 
-### Azure Database for MySQL
+## Azure Database for MySQL
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -113,7 +111,7 @@ Name | Synopsis | Severity
 [Azure.MySQL.ServerName](Azure.MySQL.ServerName.md) | Azure MySQL DB server names should meet naming requirements. | Awareness
 [Azure.MySQL.UseSSL](Azure.MySQL.UseSSL.md) | Enforce encrypted MySQL connections. | Critical
 
-### Azure Database for PostgreSQL
+## Azure Database for PostgreSQL
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -124,7 +122,7 @@ Name | Synopsis | Severity
 [Azure.PostgreSQL.ServerName](Azure.PostgreSQL.ServerName.md) | Azure PostgreSQL DB server names should meet naming requirements. | Awareness
 [Azure.PostgreSQL.UseSSL](Azure.PostgreSQL.UseSSL.md) | Enforce encrypted PostgreSQL connections. | Critical
 
-### Azure Kubernetes Service
+## Azure Kubernetes Service
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -146,7 +144,7 @@ Name | Synopsis | Severity
 [Azure.AKS.UseRBAC](Azure.AKS.UseRBAC.md) | Deploy AKS cluster with role-based access control (RBAC) enabled. | Important
 [Azure.AKS.Version](Azure.AKS.Version.md) | AKS control plane and nodes pools should use a current stable release. | Important
 
-### Cognitive Search
+## Cognitive Search
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -156,7 +154,7 @@ Name | Synopsis | Severity
 [Azure.Search.QuerySLA](Azure.Search.QuerySLA.md) | Use a minimum of 2 replicas to receive an SLA for index queries. | Important
 [Azure.Search.SKU](Azure.Search.SKU.md) | Use the basic and standard tiers for entry level workloads. | Critical
 
-### Container Registry
+## Container Registry
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -171,7 +169,7 @@ Name | Synopsis | Severity
 [Azure.ACR.Retention](Azure.ACR.Retention.md) | Use a retention policy to cleanup untagged manifests. | Important
 [Azure.ACR.Usage](Azure.ACR.Usage.md) | Regularly remove deprecated and unneeded images to reduce storage usage. | Important
 
-### Content Delivery Network
+## Content Delivery Network
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -179,19 +177,19 @@ Name | Synopsis | Severity
 [Azure.CDN.HTTP](Azure.CDN.HTTP.md) | Enforce HTTPS for client connections. | Important
 [Azure.CDN.MinTLS](Azure.CDN.MinTLS.md) | Azure CDN endpoints should reject TLS versions older than 1.2. | Important
 
-### Data Factory
+## Data Factory
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.DataFactory.Version](Azure.DataFactory.Version.md) | Consider migrating to DataFactory v2. | Awareness
 
-### Firewall
+## Firewall
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.Firewall.Mode](Azure.Firewall.Mode.md) | Deny high confidence malicious IP addresses and domains. | Critical
 
-### Front Door
+## Front Door
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -207,7 +205,7 @@ Name | Synopsis | Severity
 [Azure.FrontDoor.WAF.Mode](Azure.FrontDoor.WAF.Mode.md) | Use protection mode in Front Door Web Application Firewall (WAF) policies to protect back end resources. | Critical
 [Azure.FrontDoor.WAF.Name](Azure.FrontDoor.WAF.Name.md) | Front Door WAF policy names should meet naming requirements. | Awareness
 
-### Key Vault
+## Key Vault
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -219,36 +217,36 @@ Name | Synopsis | Severity
 [Azure.KeyVault.SecretName](Azure.KeyVault.SecretName.md) | Key Vault Secret names should meet naming requirements. | Awareness
 [Azure.KeyVault.SoftDelete](Azure.KeyVault.SoftDelete.md) | Enable Soft Delete on Key Vaults to protect vaults and vault items from accidental deletion. | Important
 
-### Load Balancer
+## Load Balancer
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.LB.Name](Azure.LB.Name.md) | Load Balancer names should meet naming requirements. | Awareness
 [Azure.LB.Probe](Azure.LB.Probe.md) | Use a specific probe for web protocols. | Important
 
-### Logic App
+## Logic App
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.LogicApp.LimitHTTPTrigger](Azure.LogicApp.LimitHTTPTrigger.md) | Limit HTTP request trigger access to trusted IP addresses. | Critical
 
-### Monitor
+## Monitor
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.Monitor.ServiceHealth](Azure.Monitor.ServiceHealth.md) | Configure Service Health alerts to notify administrators. | Important
 
-### Network Security Group
+## Network Security Group
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.NSG.AnyInboundSource](Azure.NSG.AnyInboundSource.md) | Network security groups (NSGs) should avoid rules that allow any inbound source. | Critical
-[Azure.NSG.Associated](Azure.NSG.Associated.md) | Network Security Groups (NSGs) should be associated. | Awareness
+[Azure.NSG.Associated](Azure.NSG.Associated.md) | Network Security Groups (NSGs) should be associated to a subnet or network interface. | Awareness
 [Azure.NSG.DenyAllInbound](Azure.NSG.DenyAllInbound.md) | Avoid denying all inbound traffic. | Important
 [Azure.NSG.LateralTraversal](Azure.NSG.LateralTraversal.md) | Deny outbound management connections from non-management hosts. | Important
 [Azure.NSG.Name](Azure.NSG.Name.md) | Network Security Group (NSG) names should meet naming requirements. | Awareness
 
-### Policy
+## Policy
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -258,7 +256,7 @@ Name | Synopsis | Severity
 [Azure.Policy.ExemptionDescriptors](Azure.Policy.ExemptionDescriptors.md) | Policy exemptions should use a display name and description. | Awareness
 [Azure.Policy.WaiverExpiry](Azure.Policy.WaiverExpiry.md) | Configure policy waiver exemptions to expire. | Awareness
 
-### Public IP address
+## Public IP address
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -266,38 +264,38 @@ Name | Synopsis | Severity
 [Azure.PublicIP.IsAttached](Azure.PublicIP.IsAttached.md) | Public IP address should be attached or removed. | Important
 [Azure.PublicIP.Name](Azure.PublicIP.Name.md) | Public IP names should meet naming requirements. | Awareness
 
-### Resource Group
+## Resource Group
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ResourceGroup.Name](Azure.ResourceGroup.Name.md) | Resource Group names should meet naming requirements. | Awareness
 
-### Route table
+## Route table
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.Route.Name](Azure.Route.Name.md) | Route table names should meet naming requirements. | Awareness
 
-### Security Center
+## Security Center
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.SecurityCenter.Contact](Azure.SecurityCenter.Contact.md) | Security Center email and phone contact details should be set. | Important
 [Azure.SecurityCenter.Provisioning](Azure.SecurityCenter.Provisioning.md) | Enable auto-provisioning on to improve Azure Security Center insights. | Important
 
-### Service Fabric
+## Service Fabric
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ServiceFabric.AAD](Azure.ServiceFabric.AAD.md) | Use Azure Active Directory (AAD) client authentication for Service Fabric clusters. | Critical
 
-### SignalR Service
+## SignalR Service
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.SignalR.Name](Azure.SignalR.Name.md) | SignalR service instance names should meet naming requirements. | Awareness
 
-### SQL Database
+## SQL Database
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -313,13 +311,13 @@ Name | Synopsis | Severity
 [Azure.SQL.TDE](Azure.SQL.TDE.md) | Use Transparent Data Encryption (TDE) with Azure SQL Database. | Critical
 [Azure.SQL.ThreatDetection](Azure.SQL.ThreatDetection.md) | Enable Advanced Thread Protection for Azure SQL logical server. | Important
 
-### SQL Managed Instance
+## SQL Managed Instance
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.SQLMI.Name](Azure.SQLMI.Name.md) | SQL Managed Instance names should meet naming requirements. | Awareness
 
-### Storage Account
+## Storage Account
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -331,7 +329,7 @@ Name | Synopsis | Severity
 [Azure.Storage.SoftDelete](Azure.Storage.SoftDelete.md) | Enable blob soft delete on Storage Accounts. | Important
 [Azure.Storage.UseReplication](Azure.Storage.UseReplication.md) | Storage Accounts not using geo-replicated storage (GRS) may be at risk. | Important
 
-### Subscription
+## Subscription
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -342,14 +340,14 @@ Name | Synopsis | Severity
 [Azure.RBAC.UseGroups](Azure.RBAC.UseGroups.md) | Use groups for assigning permissions instead of individual user accounts. | Important
 [Azure.RBAC.UseRGDelegation](Azure.RBAC.UseRGDelegation.md) | Use RBAC assignments on resource groups instead of individual resources. | Important
 
-### Traffic Manager
+## Traffic Manager
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.TrafficManager.Endpoints](Azure.TrafficManager.Endpoints.md) | Traffic Manager should use at lest two enabled endpoints. | Important
 [Azure.TrafficManager.Protocol](Azure.TrafficManager.Protocol.md) | Monitor Traffic Manager web-based endpoints with HTTPS. | Important
 
-### Virtual Machine
+## Virtual Machine
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -377,14 +375,14 @@ Name | Synopsis | Severity
 [Azure.VM.UseHybridUseBenefit](Azure.VM.UseHybridUseBenefit.md) | Use Hybrid Use Benefit (HUB) for applicable virtual machine (VM) workloads. | Awareness
 [Azure.VM.UseManagedDisks](Azure.VM.UseManagedDisks.md) | Virtual machines (VMs) should use managed disks. | Important
 
-### Virtual Machine Scale Sets
+## Virtual Machine Scale Sets
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.VMSS.ComputerName](Azure.VMSS.ComputerName.md) | Virtual Machine Scale Set (VMSS) computer name should meet naming requirements. | Awareness
 [Azure.VMSS.Name](Azure.VMSS.Name.md) | Virtual Machine Scale Set (VMSS) names should meet naming requirements. | Awareness
 
-### Virtual Network
+## Virtual Network
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -395,7 +393,7 @@ Name | Synopsis | Severity
 [Azure.VNET.SubnetName](Azure.VNET.SubnetName.md) | Subnet names should meet naming requirements. | Awareness
 [Azure.VNET.UseNSGs](Azure.VNET.UseNSGs.md) | Subnets should have NSGs assigned. | Critical
 
-### Virtual Network Gateway
+## Virtual Network Gateway
 
 Name | Synopsis | Severity
 ---- | -------- | --------

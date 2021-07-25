@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Encryption
+category: Data protection
 resource: Azure Cache for Redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.NonSslPort/
 ms-content-id: cf433410-8a30-4b74-b046-0b8c7c708368

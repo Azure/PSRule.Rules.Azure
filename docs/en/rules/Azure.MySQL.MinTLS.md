@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Encryption
+category: Data protection
 resource: Azure Database for MySQL
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.MinTLS/
 ---
