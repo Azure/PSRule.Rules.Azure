@@ -30,3 +30,23 @@ Export-PSRuleConvention 'Azure.ExpandTemplate' -If { $Configuration.AZURE_PARAME
         Write-Error -Message "Failed to expand parameter file '$($TargetObject.FullName)'. $($_.Exception.Message)" -ErrorId 'Azure.ExpandTemplate.ConventionException';
     }
 }
+
+#region Bicep
+
+Export-PSRuleConvention 'Azure.ExpandBicep' -If { $Configuration.AZURE_BICEP_FILE_EXPANSION -eq $True -and $TargetObject.Extension -eq '.bicep' } -Begin {
+    Write-Verbose "[Azure.ExpandBicep] -- Expanding bicep source: $($TargetObject.FullName)";
+    try {
+        $data = [PSRule.Rules.Azure.Runtime.Helper]::GetBicepResources($TargetObject.FullName);
+        if ($Null -ne $data) {
+            $PSRule.Import($data);
+        }
+    }
+    catch [System.IO.FileNotFoundException] {
+        Write-Error -Exception $_.Exception;
+    }
+    catch {
+        Write-Error -Message "Failed to expand bicep source '$($TargetObject.FullName)'. $($_.Exception.Message)" -ErrorId 'Azure.ExpandBicep.ConventionException';
+    }
+}
+
+#endregion Bicep

@@ -1,3 +1,7 @@
+---
+author: BernieWhite
+---
+
 # Configuring options
 
 PSRule for Azure comes with many configuration options.

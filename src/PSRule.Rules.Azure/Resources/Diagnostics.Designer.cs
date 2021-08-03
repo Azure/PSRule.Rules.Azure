@@ -61,6 +61,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Running bicep from &apos;{0}&apos;..
+        /// </summary>
+        internal static string DebugRunningBicep {
+            get {
+                return ResourceManager.GetString("DebugRunningBicep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Searching for files in &apos;{0}&apos;..
         /// </summary>
         internal static string VerboseFindFiles {

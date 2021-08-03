@@ -7,6 +7,14 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.6.0-B2107028:
+
+- New features:
+  - **Experimental**: Added support for expansion from Bicep source files. [#848](https://github.com/Azure/PSRule.Rules.Azure/issues/848) [#670](https://github.com/Azure/PSRule.Rules.Azure/issues/670)
+    - Bicep support is currently experimental.
+    - To opt-in set the `AZURE_BICEP_FILE_EXPANSION` configuration to `true`.
+    - For more information see [Using Bicep](https://azure.github.io/PSRule.Rules.Azure/using-bicep/).
+
 ## v1.6.0-B2107028 (pre-release)
 
 What's changed since v1.5.1:

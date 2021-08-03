@@ -115,6 +115,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to expand resources because the source file &apos;{0}&apos; was not valid. {1}.
+        /// </summary>
+        internal static string BicepExpandInvalid {
+            get {
+                return ResourceManager.GetString("BicepExpandInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error occured evaluating expression &apos;{0}&apos; line {1}. {2}.
         /// </summary>
         internal static string ExpressionEvaluateError {

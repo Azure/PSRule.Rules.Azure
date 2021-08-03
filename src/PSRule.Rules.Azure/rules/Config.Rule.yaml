@@ -26,9 +26,11 @@ spec:
       resourceGroupName: [ 'ResourceGroupName' ]
   configuration:
     AZURE_PARAMETER_FILE_EXPANSION: false
+    AZURE_BICEP_FILE_EXPANSION: false
   convention:
     include:
     - 'Azure.ExpandTemplate'
+    - 'Azure.ExpandBicep'
   output:
     culture:
     - en

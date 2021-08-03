@@ -25,8 +25,9 @@ PSRule for Azure supports two methods for analyzing Azure resources:
   - Implement checks within Pull Requests (PRs).
   - Improve alignment of resources to WAF recommendations.
   - Identify issues that prevent successful resource deployments on Azure.
+  - Integrate continual improvement and standardization of Azure resource configurations.
   - Implement release gates between environments.
-- **In-flight** &mdash; After resource are deployed to an Azure subscription.
+- **In-flight** &mdash; After resources are deployed to an Azure subscription.
   Use _in-flight_ analysis to:
   - Implement release gates between environments for non-native tools such as Terraform.
   - Performing offline analysis in split-environments.

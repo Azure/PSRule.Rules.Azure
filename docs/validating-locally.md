@@ -8,13 +8,15 @@ While preparing infrastructure code artifacts, Azure resources can be validated 
 PSRule for Azure can be installed locally on MacOS, Linux, and Windows for local validation.
 
 !!! Tip
-    If you haven't already, follow the instructions on [installing locally][1] before continuing.
+    If you haven't already, follow the instructions on [Installing locally][1] before continuing.
+    If analyzing Azure resources from Bicep source files, complete [Setup Bicep][2].
 
   [1]: install-instructions.md#installinglocally
+  [2]: setup/setup-bicep.md
 
 ## With Visual Studio Code
 
-[:octicons-download-24: Extension][2]
+[:octicons-download-24: Extension][3]
 
 An extension for Visual Studio Code is available for an integrated experience using PSRule for Azure.
 The Visual Studio Code extension includes a built-in `PSRule: Run analysis` task.
@@ -69,5 +71,5 @@ To use PSRule for Azure with the built-in `PSRule: Run analysis` task, insert th
     }
     ```
 
-  [2]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode
-  [3]: https://code.visualstudio.com/docs/editor/tasks
+  [3]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode
+  [4]: https://code.visualstudio.com/docs/editor/tasks
