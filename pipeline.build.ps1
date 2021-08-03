@@ -427,6 +427,7 @@ task ExportProviders {
 
 task InstallBicep {
     $bicepCmd = Get-Command bicep -ErrorAction SilentlyContinue;
+    $bicepCmd
     if ($Null -eq $bicepCmd) {
         # Linux
         if ($IsLinux) {
@@ -436,7 +437,7 @@ task InstallBicep {
                 # Mark it as executable
                 chmod +x ./bicep.bin
                 # Add bicep to your PATH (requires admin)
-                sudo mv ./bicep.bin /usr/local/bin/bicep
+                mv ./bicep.bin /usr/local/bin/bicep
             }
         }
         elseif ($IsMacOS) {
