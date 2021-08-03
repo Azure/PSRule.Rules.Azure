@@ -115,6 +115,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bicep compilation of &apos;{0}&apos; failed with: {1}.
+        /// </summary>
+        internal static string BicepCompileError {
+            get {
+                return ResourceManager.GetString("BicepCompileError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to expand resources because the source file &apos;{0}&apos; was not valid. {1}.
         /// </summary>
         internal static string BicepExpandInvalid {

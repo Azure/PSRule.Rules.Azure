@@ -135,6 +135,9 @@
   <data name="ArgumentsOutOfRange" xml:space="preserve">
     <value>The number of arguments '{1}' is not within the allowed range for '{0}'.</value>
   </data>
+  <data name="BicepCompileError" xml:space="preserve">
+    <value>Bicep compilation of '{0}' failed with: {1}</value>
+  </data>
   <data name="BicepExpandInvalid" xml:space="preserve">
     <value>Unable to expand resources because the source file '{0}' was not valid. {1}</value>
   </data>

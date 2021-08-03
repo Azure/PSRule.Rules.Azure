@@ -84,7 +84,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 if (bicep.ExitCode != 0)
                 {
                     var error = bicep.StandardError.ReadToEnd();
-                    return null;
+                    throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepCompileError, path, error), null, path);
                 }
 
                 using (var reader = new JsonTextReader(bicep.StandardOutput))
@@ -109,6 +109,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 CreateNoWindow = true,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
+                UseShellExecute = false,
                 WorkingDirectory = PSRuleOption.GetWorkingPath(),
             };
             //Context.Writer.WriteDebug(Diagnostics.DebugRunningBicep, binaryPath);
