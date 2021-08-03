@@ -430,9 +430,9 @@ task InstallBicep {
     if ($Null -eq $bicepCmd) {
         # Linux
         if ($IsLinux) {
+             # Fetch the latest Bicep CLI binary
+            (New-Object Net.WebClient).DownloadFile('https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64', "$PWD/bicep.bin")
             exec {
-                # Fetch the latest Bicep CLI binary
-                curl -Lo bicep.bin https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
                 # Mark it as executable
                 chmod +x ./bicep.bin
                 # Add bicep to your PATH (requires admin)
@@ -440,9 +440,8 @@ task InstallBicep {
             }
         }
         elseif ($IsMacOS) {
+            (New-Object Net.WebClient).DownloadFile('https://github.com/Azure/bicep/releases/latest/download/bicep-osx-x64', "$PWD/bicep")
             exec {
-                # Fetch the latest Bicep CLI binary
-                curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-osx-x64
                 # Mark it as executable
                 chmod +x ./bicep
                 # Add Gatekeeper exception (requires admin)
