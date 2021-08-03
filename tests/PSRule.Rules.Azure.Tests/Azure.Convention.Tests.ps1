@@ -48,5 +48,29 @@ Describe 'Azure.ExpandTemplate' -Tag 'Convention' {
             $resource | Should -Not -BeNullOrEmpty;
             $resource.TargetName | Should -BeIn 'storage1'
         }
+
+        It 'Expands Bicep source files' {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            # Default
+            $sourceFile = Join-Path -Path $rootPath -ChildPath 'docs/examples.bicep';
+            $result = @(Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File);
+            $result | Should -BeNullOrEmpty;
+
+            # Expand source files
+            $option = @{
+                'Configuration.AZURE_BICEP_FILE_EXPANSION' = $True
+            }
+            $result = @(Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File -Option $option);
+            $result.Length | Should -BeGreaterThan 1;
+            $resource = $result | Where-Object { $_.TargetType -eq 'Microsoft.Network/networkSecurityGroups' };
+            $resource | Should -Not -BeNullOrEmpty;
+            $resource.TargetName | Should -BeIn 'nsg-001'
+        }
     }
 }

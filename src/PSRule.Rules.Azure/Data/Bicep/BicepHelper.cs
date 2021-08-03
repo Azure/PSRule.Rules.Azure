@@ -70,7 +70,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
             return results.ToArray();
         }
 
-        private static JObject ReadFile(string path)
+        private JObject ReadFile(string path)
         {
             var bicep = GetBicep(path);
             if (bicep == null)
@@ -111,7 +111,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 RedirectStandardError = true,
                 WorkingDirectory = PSRuleOption.GetWorkingPath(),
             };
-            Context.Writer.WriteDebug(Diagnostics.DebugRunningBicep, binaryPath);
+            //Context.Writer.WriteDebug(Diagnostics.DebugRunningBicep, binaryPath);
             var p = Process.Start(startInfo);
             return p;
         }
