@@ -60,7 +60,7 @@ namespace PSRule.Rules.Azure.Runtime
         private static PipelineContext GetContext(PSCmdlet commandRuntime = null)
         {
             var option = PSRuleOption.FromFileOrDefault(PSRuleOption.GetWorkingPath());
-            var context = new PipelineContext(option, commandRuntime != null ? new PSPipelineWriter(null, commandRuntime) : null);
+            var context = new PipelineContext(option, commandRuntime != null ? new PSPipelineWriter(option, commandRuntime) : null);
             return context;
         }
 

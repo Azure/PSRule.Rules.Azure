@@ -19,6 +19,9 @@ namespace PSRule.Rules.Azure.Data.Bicep
 {
     internal sealed class BicepHelper
     {
+        private static readonly char[] LINUX_PATH_ENV_SEPARATOR = new char[] { ':' };
+        private static readonly char[] WINDOWS_PATH_ENV_SEPARATOR = new char[] { ';' };
+
         private readonly PipelineContext Context;
         private readonly ResourceGroupOption _ResourceGroup;
         private readonly SubscriptionOption _Subscription;
@@ -112,7 +115,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 UseShellExecute = false,
                 WorkingDirectory = PSRuleOption.GetWorkingPath(),
             };
-            Context.Writer.WriteDebug(Diagnostics.DebugRunningBicep, binaryPath);
+            //Context.Writer.WriteDebug(Diagnostics.DebugRunningBicep, binaryPath);
             var p = Process.Start(startInfo);
             return p;
         }
@@ -122,8 +125,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
             if (TryBicepEnvVariable(out binaryPath))
                 return true;
 
-            var envPath = System.Environment.GetEnvironmentVariable("PATH");
-            var paths = envPath.Split(';');
+            var paths = GetPathEnv();
             var binName = GetBinaryName();
             for (var i = 0; paths != null && i < paths.Length; i++)
             {
@@ -133,6 +135,18 @@ namespace PSRule.Rules.Azure.Data.Bicep
             }
             binaryPath = null;
             return false;
+        }
+
+        private static string[] GetPathEnv()
+        {
+            var envPath = System.Environment.GetEnvironmentVariable("PATH");
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return envPath.Split(LINUX_PATH_ENV_SEPARATOR, StringSplitOptions.RemoveEmptyEntries);
+            }
+
+            return envPath.Split(WINDOWS_PATH_ENV_SEPARATOR, StringSplitOptions.RemoveEmptyEntries);
         }
 
         private static bool TryBicepEnvVariable(out string binaryPath)
