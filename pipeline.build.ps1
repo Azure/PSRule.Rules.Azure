@@ -426,8 +426,8 @@ task ExportProviders {
 }
 
 task InstallBicep {
-    $bicepVersion = bicep --version;
-    if ([String]::IsNullOrEmpty($bicepVersion)) {
+    $bicepCmd = Get-Command bicep -ErrorAction SilentlyContinue;
+    if ($Null -eq $bicepCmd) {
         # Linux
         if ($IsLinux) {
             exec {
