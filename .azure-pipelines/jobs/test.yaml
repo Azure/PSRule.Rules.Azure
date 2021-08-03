@@ -8,6 +8,7 @@ parameters:
   imageName: ''
   coverage: 'false'
   publishResults: 'true'
+  platform: 'linux'
 
 jobs:
 - job: ${{ parameters.name }}
@@ -19,6 +20,10 @@ jobs:
     PUBLISHRESULTS: ${{ parameters.publishResults }}
     skipComponentGovernanceDetection: true
   steps:
+
+  - template: ../steps/installBicep.yaml
+    parameters:
+      platform: ${{ parameters.platform }}
 
   # Install pipeline dependencies
   - powershell: ./.azure-pipelines/pipeline-deps.ps1
