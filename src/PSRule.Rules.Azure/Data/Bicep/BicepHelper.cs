@@ -143,11 +143,8 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
         private static string GetBinaryName()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 return "bicep";
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                return "bicep.bin";
 
             return "bicep.exe";
         }
