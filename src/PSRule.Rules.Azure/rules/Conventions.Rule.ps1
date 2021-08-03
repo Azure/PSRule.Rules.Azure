@@ -36,10 +36,13 @@ Export-PSRuleConvention 'Azure.ExpandTemplate' -If { $Configuration.AZURE_PARAME
 Export-PSRuleConvention 'Azure.ExpandBicep' -If { $Configuration.AZURE_BICEP_FILE_EXPANSION -eq $True -and $TargetObject.Extension -eq '.bicep' } -Begin {
     Write-Verbose "[Azure.ExpandBicep] -- Expanding bicep source: $($TargetObject.FullName)";
     try {
-        $data = [PSRule.Rules.Azure.Runtime.Helper]::GetBicepResources($TargetObject.FullName);
+        $data = [PSRule.Rules.Azure.Runtime.Helper]::GetBicepResources($TargetObject.FullName, $PSCmdlet);
         if ($Null -ne $data) {
             $PSRule.Import($data);
         }
+    }
+    catch [PSRule.Rules.Azure.Pipeline.BicepCompileException] {
+        Write-Error -Exception $_.Exception;
     }
     catch [System.IO.FileNotFoundException] {
         Write-Error -Exception $_.Exception;

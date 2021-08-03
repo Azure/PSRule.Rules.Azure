@@ -141,6 +141,9 @@
   <data name="BicepExpandInvalid" xml:space="preserve">
     <value>Unable to expand resources because the source file '{0}' was not valid. {1}</value>
   </data>
+  <data name="BicepNotFound" xml:space="preserve">
+    <value>Bicep CLI can not be found. Consider installing Bicep or setting the PSRULE_AZURE_BICEP_PATH environment variable to resolve this issue.</value>
+  </data>
   <data name="ExpressionEvaluateError" xml:space="preserve">
     <value>An error occured evaluating expression '{0}' line {1}. {2}</value>
   </data>

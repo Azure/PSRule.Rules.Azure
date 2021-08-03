@@ -6,6 +6,7 @@ using PSRule.Rules.Azure.Data.Bicep;
 using PSRule.Rules.Azure.Data.Network;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
+using PSRule.Rules.Azure.Pipeline.Output;
 using System.Management.Automation;
 
 namespace PSRule.Rules.Azure.Runtime
@@ -40,9 +41,9 @@ namespace PSRule.Rules.Azure.Runtime
             return helper.ProcessTemplate(link.TemplateFile, link.ParameterFile, out _);
         }
 
-        public static PSObject[] GetBicepResources(string bicepFile)
+        public static PSObject[] GetBicepResources(string bicepFile, PSCmdlet commandRuntime)
         {
-            var context = GetContext();
+            var context = GetContext(commandRuntime);
             var bicep = new BicepHelper(context, context.Option.Configuration.ResourceGroup, context.Option.Configuration.Subscription);
             return bicep.ProcessFile(bicepFile);
         }
@@ -56,10 +57,10 @@ namespace PSRule.Rules.Azure.Runtime
 
         #region Helper methods
 
-        private static PipelineContext GetContext()
+        private static PipelineContext GetContext(PSCmdlet commandRuntime = null)
         {
             var option = PSRuleOption.FromFileOrDefault(PSRuleOption.GetWorkingPath());
-            var context = new PipelineContext(option, null);
+            var context = new PipelineContext(option, commandRuntime != null ? new PSPipelineWriter(null, commandRuntime) : null);
             return context;
         }
 

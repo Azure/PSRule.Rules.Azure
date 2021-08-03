@@ -12,6 +12,12 @@ input:
   - '*.Designer.cs'
   - '*.resx'
   - '*.sln'
+  - '*.txt'
+  - '*.html'
+  - '*.ico'
+
+include:
+  path: []
 
 output:
   culture:

@@ -133,6 +133,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bicep CLI can not be found. Consider installing Bicep or setting the PSRULE_AZURE_BICEP_PATH environment variable to resolve this issue..
+        /// </summary>
+        internal static string BicepNotFound {
+            get {
+                return ResourceManager.GetString("BicepNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error occured evaluating expression &apos;{0}&apos; line {1}. {2}.
         /// </summary>
         internal static string ExpressionEvaluateError {

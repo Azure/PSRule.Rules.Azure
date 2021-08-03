@@ -74,7 +74,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
         {
             var bicep = GetBicep(path);
             if (bicep == null)
-                return null;
+                throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepNotFound), null, path);
 
             try
             {
@@ -112,7 +112,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 UseShellExecute = false,
                 WorkingDirectory = PSRuleOption.GetWorkingPath(),
             };
-            //Context.Writer.WriteDebug(Diagnostics.DebugRunningBicep, binaryPath);
+            Context.Writer.WriteDebug(Diagnostics.DebugRunningBicep, binaryPath);
             var p = Process.Start(startInfo);
             return p;
         }
