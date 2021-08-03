@@ -103,11 +103,11 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
         private Process GetBicep(string sourcePath)
         {
-            if (!TryBicepPath(out string binaryPath) || string.IsNullOrEmpty(binaryPath))
+            if (!TryBicepPath(out string binPath) || string.IsNullOrEmpty(binPath))
                 return null;
 
             var args = $"build --stdout --no-summary \"{sourcePath}\"";
-            var startInfo = new ProcessStartInfo(binaryPath, args)
+            var startInfo = new ProcessStartInfo(binPath, args)
             {
                 CreateNoWindow = true,
                 RedirectStandardOutput = true,
@@ -120,20 +120,24 @@ namespace PSRule.Rules.Azure.Data.Bicep
             return p;
         }
 
-        private static bool TryBicepPath(out string binaryPath)
+        private static bool TryBicepPath(out string binPath)
         {
-            if (TryBicepEnvVariable(out binaryPath))
+            if (TryBicepEnvVariable(out binPath))
                 return true;
 
+            return TryBinaryPath(GetBinaryName(), out binPath);
+        }
+
+        private static bool TryBinaryPath(string bin, out string binPath)
+        {
             var paths = GetPathEnv();
-            var binName = GetBinaryName();
             for (var i = 0; paths != null && i < paths.Length; i++)
             {
-                binaryPath = Path.Combine(paths[i], binName);
-                if (File.Exists(binaryPath))
+                binPath = Path.Combine(paths[i], bin);
+                if (File.Exists(binPath))
                     return true;
             }
-            binaryPath = null;
+            binPath = null;
             return false;
         }
 

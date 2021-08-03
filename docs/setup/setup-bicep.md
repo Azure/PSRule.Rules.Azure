@@ -12,6 +12,8 @@ The Bicep CLI is already installed on hosted runners and agents used by GitHub A
 
 ## Installing Bicep CLI
 
+PSRule for Azure requires a minimum of Bicep CLI version **0.4.412**.
+
 You may need to install or upgrade the Bicep CLI in the following scenarios:
 
 - Your Bicep source files require a newer version of the CLI then supported by hosted agents.
