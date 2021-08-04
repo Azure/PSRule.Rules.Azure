@@ -61,6 +61,9 @@ Describe 'Bicep' -Tag 'Bicep' {
             $result | Should -BeNullOrEmpty;
 
             try {
+                # Install CLI
+                az bicep install
+
                 # Expand source files
                 $option = @{
                     'Configuration.AZURE_BICEP_FILE_EXPANSION' = $True
