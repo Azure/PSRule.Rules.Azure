@@ -18,12 +18,28 @@ It is shipped as a PowerShell module which makes it easy to install and distribu
 
 Install and use PSRule for Azure with GitHub Actions by referencing the `Microsoft/ps-rule` action.
 
-```yaml
-- name: Analyze Azure template files
-  uses: Microsoft/ps-rule@main
-  with:
-    modules: 'PSRule.Rules.Azure'
-```
+=== "Stable"
+
+    Install the latest stable version of PSRule for Azure.
+
+    ```yaml
+    - name: Analyze Azure template files
+      uses: Microsoft/ps-rule@main
+      with:
+        modules: 'PSRule.Rules.Azure'
+    ```
+
+=== "Pre-release"
+
+    Install the latest stable or pre-release version of PSRule for Azure.
+
+    ```yaml
+    - name: Analyze Azure template files
+      uses: Microsoft/ps-rule@main
+      with:
+        modules: 'PSRule.Rules.Azure'
+        prerelease: true
+    ```
 
 This will automatically install compatible versions of all dependencies.
 
@@ -36,13 +52,35 @@ This will automatically install compatible versions of all dependencies.
 Install and use PSRule for Azure with Azure Pipeline by using extension tasks.
 Install the extension from the marketplace, then use the `ps-rule-assert` task in pipeline steps.
 
-```yaml
-- task: ps-rule-assert@0
-  displayName: Analyze Azure template files
-  inputs:
-    inputType: repository
-    modules: 'PSRule.Rules.Azure'
-```
+=== "Stable"
+
+    Install the latest stable version of PSRule for Azure.
+
+    ```yaml
+    - task: ps-rule-assert@0
+      displayName: Analyze Azure template files
+      inputs:
+        inputType: repository
+        modules: 'PSRule.Rules.Azure'
+    ```
+
+=== "Pre-release"
+
+    Install the latest stable or pre-release version of PSRule for Azure.
+
+    ```yaml
+    - task: ps-rule-install@0
+      displayName: Install PSRule for Azure (pre-release)
+      inputs:
+        module: PSRule.Rules.Azure
+        prerelease: true
+
+    - task: ps-rule-assert@0
+      displayName: Analyze Azure template files
+      inputs:
+        inputType: repository
+        modules: 'PSRule.Rules.Azure'
+    ```
 
 This will automatically install compatible versions of all dependencies.
 
