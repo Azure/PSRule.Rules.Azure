@@ -1,3 +1,7 @@
+---
+author: BernieWhite
+---
+
 # Configuring rule defaults
 
 PSRule for Azure include several rules that can be configured.

@@ -31,6 +31,12 @@ namespace PSRule.Rules.Azure.Pipeline.Output
         internal PSPipelineWriter(PSRuleOption option)
             : base(null, option) { }
 
+        internal PSPipelineWriter(PSRuleOption option, PSCmdlet commandRuntime)
+            : base(null, option)
+        {
+            UseCommandRuntime(commandRuntime);
+        }
+
         internal void UseCommandRuntime(PSCmdlet commandRuntime)
         {
             if (commandRuntime == null)

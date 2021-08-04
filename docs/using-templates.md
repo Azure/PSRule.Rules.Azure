@@ -2,13 +2,13 @@
 author: BernieWhite
 ---
 
-# Using metadata
+# Using templates
 
 PSRule for Azure detects Azure template and parameter files in your repository based on their schemas.
 This provides template and parameter file linting for structure and general usage.
 
 !!! Abstract
-    This topic covers how to use metadata to improve the success of Azure deployments.
+    This topic covers how to use Azure templates and metadata to improve the success of Azure deployments.
 
 ## Parameter file expansion
 
@@ -16,14 +16,15 @@ In additional to template and parameter file linting,
 PSRule for Azure can automatically resolve template and parameter file context at runtime.
 Resolved context provides some unique benefits such as:
 
-- **As deployed** &mdash; Analysis of Azure resources as if they are deployed.
+- **Improve success** &mdash; Templates are resolved before deployment.
+  - Detect issues with invalid resource names, missing parameters, and JSON structure.
+  - Increases success of deployments by finding errors earlier such as within a PR.
+- **As deployed** &mdash; Analysis of Azure resources against Azure WAF as if they are deployed.
   - Parameters, conditional resources, functions (built-in and user defined), variables,
     and copy loops are resolved.
   - Azure resource names are shown in passing and failing results.
     Resolving issues with resource configurations can be targeted by resource.
   - Resource file locations for template and parameter files are included in results.
-- **Unassigned parameters** &mdash; Detection of missing mandatory parameters.
-  - Increases success of deployments by finding these errors earlier such as within a PR.
 - **Suppression by resource name** &mdash; Azure resource names can be used to apply exceptions.
   - Suppression allows for individual resources to be excluded from rules by name.
 
@@ -34,6 +35,45 @@ PSRule for Azure uses links to achieve this.
     Azure parameter file expansion needs to be enabled.
     It is not enabled by default to preserve the default behavior prior to PSRule for Azure v1.4.0.
     [Creating your pipeline][1] covers how to enable this in a CI pipeline.
+
+### Feature support
+
+Expansion of Azure template parameter files works with Azure Resource Manager (ARM) features.
+By default this is an offline process, requiring no connectivity to Azure.
+Some functions that may be included in templates dynamically query Azure for current state.
+For these functions standard placeholder values are used by default.
+Functions that use placeholders include `reference`, `list*`.
+
+The `subscription()` function will return the following unless overridden:
+
+- subscriptionId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+- tenantId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+- displayName: 'PSRule Test Subscription'
+- state: 'NotDefined'
+
+The `resourceGroup()` function will return the following unless overridden:
+
+- name: 'ps-rule-test-rg'
+- location: 'eastus'
+- tags: { }
+- properties:
+  - provisioningState: 'Succeeded'
+
+To override, set the `AZURE_SUBSCRIPTION` and `AZURE_RESOURCE_GROUP` in configuration.
+
+Currently the following limitations apply:
+
+- Nested templates are expanded, external templates are not.
+  - Deployment resources that link to an external template are returned as a resource.
+- Sub-resources such as diagnostic logs or configurations are automatically nested.
+Automatic nesting a sub-resource requires:
+  - The parent resource is defined in the same template.
+  - The sub-resource depends on the parent resource.
+- The `pickZones` template function is not supported.
+- The `environment` template function always returns values for Azure public cloud.
+- References to Key Vault secrets are not expanded.
+  A placeholder value is used instead.
+- Multi-line strings are not supported.
 
 ## Template links
 
@@ -112,7 +152,9 @@ When linking using naming convention, the template and the parameter file must b
 !!! Example
     A parameter file named `azuredeploy.parameters.json` links to the template file named `azuredeploy.json`.
 
+  [1]: creating-your-pipeline.md#expandtemplateparameterfiles
+
+*[WAF]: Well-Architected Framework
+*[ARM]: Azure Resource Manager
 *[CI]: continuous integration
 *[PR]: Pull Request
-
-  [1]: creating-your-pipeline.md#expandtemplateparameterfiles

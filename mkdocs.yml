@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 site_name: PSRule for Azure
 site_url: https://azure.github.io/PSRule.Rules.Azure
 site_description: Ready to go validation and governance controls for Azure Infrastructure as Code (IaC).
@@ -9,12 +12,8 @@ edit_uri: blob/main/docs/
 repo_issue: https://github.com/Azure/PSRule.Rules.Azure/issues
 repo_discussion: https://github.com/Azure/PSRule.Rules.Azure/discussions
 
-# copyright: MIT License - Copyright &copy; Microsoft Corporation
 extra_css:
 - assets/stylesheets/extra.css
-
-# extra_templates:
-# - home.html
 
 theme:
   language: en
@@ -41,7 +40,8 @@ nav:
   - Getting started:
     - Overview: features.md
     - Installation: install-instructions.md
-    - Using metadata: using-metadata.md
+    - Using templates: using-templates.md
+    - Using Bicep source: using-bicep.md
     - Creating your pipeline: creating-your-pipeline.md
     - Validating locally: validating-locally.md
     - Customization:
@@ -61,6 +61,7 @@ nav:
     - Configuring options: setup/configuring-options.md
     - Configuring rule defaults: setup/configuring-rules.md
     - Configuring expansion: setup/configuring-expansion.md
+    - Setup Bicep: setup/setup-bicep.md
   - Reference:
     - By pillar: en/rules/module.md
     - By resource: en/rules/resource.md
@@ -95,6 +96,9 @@ plugins:
       on_nav: "docs.hooks:build_reference_nav"
 - search
 - git-revision-date
+- redirects:
+    redirect_maps:
+      'using-metadata.md': 'using-templates.md'
 
 extra:
   version:

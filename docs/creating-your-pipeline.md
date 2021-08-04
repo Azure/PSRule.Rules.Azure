@@ -55,6 +55,8 @@ Configuration options for PSRule for Azure are set within the `ps-rule.yaml` fil
 
 ### Expand template parameter files
 
+[:octicons-book-24: Docs][1]
+
 PSRule for Azure can automatically expand Azure template parameter files.
 When enabled, PSRule for Azure automatically resolves parameter and template file context at runtime.
 
@@ -66,6 +68,26 @@ configuration:
   # Enable automatic expansion of Azure parameter files
   AZURE_PARAMETER_FILE_EXPANSION: true
 ```
+
+  [1]: setup/configuring-expansion.md#parameterfileexpansion
+
+### Expand Bicep source files
+
+[:octicons-book-24: Docs][2]
+
+PSRule for Azure can automatically expand Bicep source files.
+When enabled, PSRule for Azure automatically expands and analyzes Azure resource from `.bicep` files.
+
+To enabled this feature, set the `Configuration.AZURE_BICEP_FILE_EXPANSION` to `true`.
+This option can be set within the `ps-rule.yaml` file.
+
+```yaml
+configuration:
+  # Enable automatic expansion of bicep source files
+  AZURE_BICEP_FILE_EXPANSION: true
+```
+
+  [2]: setup/configuring-expansion.md#bicepsourceexpansion
 
 ### Ignoring rules
 

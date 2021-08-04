@@ -141,18 +141,22 @@ stages:
       displayName: 'PowerShell coverage'
       coverage: 'true'
       publishResults: 'false'
+      platform: linux
+      bicepIntegration: 'true'
 
   - template: jobs/test.yaml
     parameters:
       name: macOS_10_15
       displayName: 'PowerShell 7.1 - macOS-10.15'
       imageName: 'macOS-10.15'
+      platform: macos
 
   - template: jobs/test.yaml
     parameters:
       name: windows
       displayName: 'PowerShell 5.1 - win2016'
       imageName: 'vs2017-win2016'
+      platform: windows
 
   - template: jobs/testContainer.yaml
     parameters:

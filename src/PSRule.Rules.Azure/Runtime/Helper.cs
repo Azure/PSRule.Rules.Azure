@@ -2,10 +2,11 @@
 // Licensed under the MIT License.
 
 using PSRule.Rules.Azure.Configuration;
+using PSRule.Rules.Azure.Data.Bicep;
 using PSRule.Rules.Azure.Data.Network;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
-using System;
+using PSRule.Rules.Azure.Pipeline.Output;
 using System.Management.Automation;
 
 namespace PSRule.Rules.Azure.Runtime
@@ -31,7 +32,6 @@ namespace PSRule.Rules.Azure.Runtime
         public static PSObject[] GetResources(string parameterFile)
         {
             var context = GetContext();
-
             var linkHelper = new TemplateLinkHelper(context, PSRuleOption.GetWorkingPath(), true);
             var link = linkHelper.ProcessParameterFile(parameterFile);
             if (link == null)
@@ -39,6 +39,13 @@ namespace PSRule.Rules.Azure.Runtime
 
             var helper = new TemplateHelper(context, "helper", context.Option.Configuration.ResourceGroup, context.Option.Configuration.Subscription);
             return helper.ProcessTemplate(link.TemplateFile, link.ParameterFile, out _);
+        }
+
+        public static PSObject[] GetBicepResources(string bicepFile, PSCmdlet commandRuntime)
+        {
+            var context = GetContext(commandRuntime);
+            var bicep = new BicepHelper(context, context.Option.Configuration.ResourceGroup, context.Option.Configuration.Subscription);
+            return bicep.ProcessFile(bicepFile);
         }
 
         public static INetworkSecurityGroupEvaluator GetNetworkSecurityGroup(PSObject[] securityRules)
@@ -50,10 +57,10 @@ namespace PSRule.Rules.Azure.Runtime
 
         #region Helper methods
 
-        private static PipelineContext GetContext()
+        private static PipelineContext GetContext(PSCmdlet commandRuntime = null)
         {
             var option = PSRuleOption.FromFileOrDefault(PSRuleOption.GetWorkingPath());
-            var context = new PipelineContext(option, null);
+            var context = new PipelineContext(option, commandRuntime != null ? new PSPipelineWriter(option, commandRuntime) : null);
             return context;
         }
 

@@ -139,16 +139,18 @@ This build script will compile the module and documentation then output the resu
 
 #### Development dependencies
 
-The following PowerShell modules will be automatically install if the required versions are not present:
+The following dependencies will be automatically installed if the required versions are not present:
 
-- PlatyPS
-- Pester
-- PSScriptAnalyzer
-- PowerShellGet
-- PackageManagement
-- InvokeBuild
+- PowerShell modules:
+  - PlatyPS
+  - Pester
+  - PSScriptAnalyzer
+  - PowerShellGet
+  - PackageManagement
+  - InvokeBuild
+- Bicep CLI
 
-These additional modules are only required for building PSRule for Azure.
+These dependencies are only required for building and running tests for PSRule for Azure.
 
 Additionally .NET Core SDK v3.1 is required.
 .NET Core will not be automatically downloaded and installed.

@@ -260,7 +260,7 @@ task CopyModule MinifyData, {
 # Synopsis: Build modules only
 task BuildModule BuildDotNet, CopyModule
 
-task TestModule ModuleDependencies, Pester, PSScriptAnalyzer, {
+task TestModule ModuleDependencies, Pester, PSScriptAnalyzer, BicepIntegrationTests, {
     # Run Pester tests
     $pesterParams = @{ Path = (Join-Path -Path $PWD -ChildPath tests/PSRule.Rules.Azure.Tests); OutputFile = 'reports/pester-unit.xml'; OutputFormat = 'NUnitXml'; PesterOption = @{ IncludeVSCodeMarker = $True }; PassThru = $True; };
 
@@ -304,6 +304,27 @@ task IntegrationTest ModuleDependencies, Pester, PSScriptAnalyzer, {
     }
     elseif ($results.FailedCount -gt 0) {
         throw "$($results.FailedCount) tests failed.";
+    }
+}
+
+task BicepIntegrationTests {
+    if ($Env:RUN_BICEP_INTEGRATION -eq 'true') {
+        # Run Pester tests
+        $pesterParams = @{ Path = (Join-Path -Path $PWD -ChildPath tests/Bicep); OutputFile = 'reports/bicep-integration.xml'; OutputFormat = 'NUnitXml'; PesterOption = @{ IncludeVSCodeMarker = $True }; PassThru = $True; };
+
+        if (!(Test-Path -Path reports)) {
+            $Null = New-Item -Path reports -ItemType Directory -Force;
+        }
+
+        $results = Invoke-Pester @pesterParams;
+
+        # Throw an error if pester tests failed
+        if ($Null -eq $results) {
+            throw 'Failed to get Pester test results.';
+        }
+        elseif ($results.FailedCount -gt 0) {
+            throw "$($results.FailedCount) tests failed.";
+        }
     }
 }
 

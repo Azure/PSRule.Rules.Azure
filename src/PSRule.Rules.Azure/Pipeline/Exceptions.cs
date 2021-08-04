@@ -117,8 +117,14 @@ namespace PSRule.Rules.Azure.Pipeline
         private TemplateReadException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
 
+        /// <summary>
+        /// The file path to an Azure Template.
+        /// </summary>
         public string TemplateFile { get; }
 
+        /// <summary>
+        /// The file path to an Azure Template parameter file.
+        /// </summary>
         public string ParameterFile { get; }
 
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
@@ -161,6 +167,46 @@ namespace PSRule.Rules.Azure.Pipeline
 
         private InvalidTemplateLinkException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
+
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null)
+                throw new ArgumentNullException(nameof(info));
+
+            base.GetObjectData(info, context);
+        }
+    }
+
+    /// <summary>
+    /// An exception related to compiling Bicep source files.
+    /// </summary>
+    [Serializable]
+    public sealed class BicepCompileException : PipelineException
+    {
+        public BicepCompileException()
+        {
+        }
+
+        public BicepCompileException(string message)
+            : base(message) { }
+
+        public BicepCompileException(string message, Exception innerException)
+            : base(message, innerException) { }
+
+        internal BicepCompileException(string message, Exception innerException, string sourceFile)
+            : base(message, innerException)
+        {
+            SourceFile = sourceFile;
+        }
+
+        private BicepCompileException(SerializationInfo info, StreamingContext context)
+            : base(info, context) { }
+
+        /// <summary>
+        /// The file path to an Azure Bicep source file.
+        /// </summary>
+        public string SourceFile { get; }
 
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)

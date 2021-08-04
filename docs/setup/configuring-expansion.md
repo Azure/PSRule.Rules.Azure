@@ -1,6 +1,10 @@
+---
+author: BernieWhite
+---
+
 # Configuring expansion
 
-PSRule for Azure can automatically resolve template and parameter file context at runtime.
+PSRule for Azure can automatically resolve Azure resource context at runtime from infrastructure code.
 This feature can be enabled by using the following configuration options.
 
 ## Configuration
@@ -41,6 +45,38 @@ Example:
 # YAML: Set the AZURE_PARAMETER_FILE_EXPANSION configuration option to enable expansion
 configuration:
   AZURE_PARAMETER_FILE_EXPANSION: true
+```
+
+### Bicep source expansion
+
+:octicons-milestone-24: v1.6.0 · :octicons-beaker-24: Experimental
+
+This configuration option determines if Azure Bicep source files will automatically be expanded.
+By default, Bicep files will not be automatically expanded.
+
+Bicep files are expanded when PSRule cmdlets with the `-Format File` parameter are used.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_BICEP_FILE_EXPANSION: bool
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_BICEP_FILE_EXPANSION configuration option
+configuration:
+  AZURE_BICEP_FILE_EXPANSION: false
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_BICEP_FILE_EXPANSION configuration option to enable expansion
+configuration:
+  AZURE_BICEP_FILE_EXPANSION: true
 ```
 
 ### Deployment resource group
@@ -129,4 +165,3 @@ Example:
   AZURE_SUBSCRIPTION:
     displayName: 'My test subscription'
 ```
-
