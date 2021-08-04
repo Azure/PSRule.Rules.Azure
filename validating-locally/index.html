@@ -375,8 +375,20 @@
   
   
     <li class="md-nav__item">
-      <a href="../using-metadata/" class="md-nav__link">
-        Using metadata
+      <a href="../using-templates/" class="md-nav__link">
+        Using templates
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-bicep/" class="md-nav__link">
+        Using Bicep source
       </a>
     </li>
   
@@ -454,14 +466,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
       
-      <label class="md-nav__link" for="__nav_2_6">
+      <label class="md-nav__link" for="__nav_2_7">
         Customization
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Customization" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_6">
+        <label class="md-nav__title" for="__nav_2_7">
           <span class="md-nav__icon md-icon"></span>
           Customization
         </label>
@@ -529,14 +541,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
       
-      <label class="md-nav__link" for="__nav_2_9">
+      <label class="md-nav__link" for="__nav_2_10">
         Releases
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Releases" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_9">
+        <label class="md-nav__title" for="__nav_2_10">
           <span class="md-nav__icon md-icon"></span>
           Releases
         </label>
@@ -550,14 +562,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_1" type="checkbox" id="__nav_2_9_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10_1" type="checkbox" id="__nav_2_10_1" >
       
-      <label class="md-nav__link" for="__nav_2_9_1">
+      <label class="md-nav__link" for="__nav_2_10_1">
         Change log
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Change log" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_9_1">
+        <label class="md-nav__title" for="__nav_2_10_1">
           <span class="md-nav__icon md-icon"></span>
           Change log
         </label>
@@ -672,6 +684,18 @@
     <li class="md-nav__item">
       <a href="../setup/configuring-expansion/" class="md-nav__link">
         Configuring expansion
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/setup-bicep/" class="md-nav__link">
+        Setup Bicep
       </a>
     </li>
   
@@ -3485,7 +3509,8 @@
 PSRule for Azure can be installed locally on MacOS, Linux, and Windows for local validation.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If you haven't already, follow the instructions on <a href="../install-instructions/#installinglocally">installing locally</a> before continuing.</p>
+<p>If you haven't already, follow the instructions on <a href="../install-instructions/#installinglocally">Installing locally</a> before continuing.
+If analyzing Azure resources from Bicep source files, complete <a href="../setup/setup-bicep/">Setup Bicep</a>.</p>
 </div>
 <h2 id="withvisualstudiocode">With Visual Studio Code<a class="headerlink" href="#withvisualstudiocode" title="Permanent link">#</a></h2>
 <p><a href="https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.97 11.03a.75.75 0 1 1 1.06-1.06L11 14.94V2.75a.75.75 0 0 1 1.5 0v12.19l4.97-4.97a.75.75 0 1 1 1.06 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0l-6.25-6.25zm-.22 9.47a.75.75 0 0 0 0 1.5h14.5a.75.75 0 0 0 0-1.5H4.75z"/></svg></span> Extension</a></p>
@@ -3495,7 +3520,7 @@ The Visual Studio Code extension includes a built-in <code>PSRule: Run analysis<
   <img src="https://raw.githubusercontent.com/microsoft/PSRule-vscode/main/docs/images/tasks-provider.png" alt="Built-in tasks shown in task list" />
 </p>
 
-<p>To learn about tasks in Visual Studio Code see <a href="https://code.visualstudio.com/docs/editor/tasks">Integrate with External Tools via Tasks</a>.</p>
+<p>To learn about tasks in Visual Studio Code see <a href="https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode">Integrate with External Tools via Tasks</a>.</p>
 <p>To use PSRule for Azure with the built-in <code>PSRule: Run analysis</code> task, insert the following into <code>.vscode/tasks.json</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;PSRule&quot;</span><span class="p">,</span>
@@ -3544,7 +3569,7 @@ The Visual Studio Code extension includes a built-in <code>PSRule: Run analysis<
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-03
+      Last update: 2021-08-04
     
   </small>
 </div>

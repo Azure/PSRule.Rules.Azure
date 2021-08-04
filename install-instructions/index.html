@@ -483,8 +483,20 @@
   
   
     <li class="md-nav__item">
-      <a href="../using-metadata/" class="md-nav__link">
-        Using metadata
+      <a href="../using-templates/" class="md-nav__link">
+        Using templates
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-bicep/" class="md-nav__link">
+        Using Bicep source
       </a>
     </li>
   
@@ -522,14 +534,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
       
-      <label class="md-nav__link" for="__nav_2_6">
+      <label class="md-nav__link" for="__nav_2_7">
         Customization
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Customization" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_6">
+        <label class="md-nav__title" for="__nav_2_7">
           <span class="md-nav__icon md-icon"></span>
           Customization
         </label>
@@ -597,14 +609,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
       
-      <label class="md-nav__link" for="__nav_2_9">
+      <label class="md-nav__link" for="__nav_2_10">
         Releases
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Releases" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_9">
+        <label class="md-nav__title" for="__nav_2_10">
           <span class="md-nav__icon md-icon"></span>
           Releases
         </label>
@@ -618,14 +630,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_1" type="checkbox" id="__nav_2_9_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10_1" type="checkbox" id="__nav_2_10_1" >
       
-      <label class="md-nav__link" for="__nav_2_9_1">
+      <label class="md-nav__link" for="__nav_2_10_1">
         Change log
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Change log" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_9_1">
+        <label class="md-nav__title" for="__nav_2_10_1">
           <span class="md-nav__icon md-icon"></span>
           Change log
         </label>
@@ -740,6 +752,18 @@
     <li class="md-nav__item">
       <a href="../setup/configuring-expansion/" class="md-nav__link">
         Configuring expansion
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/setup-bicep/" class="md-nav__link">
+        Setup Bicep
       </a>
     </li>
   
@@ -3706,8 +3730,9 @@ To build PSRule for Azure from source code:</p>
 </ol>
 <p>This build script will compile the module and documentation then output the result into <code>out/modules/PSRule.Rules.Azure</code>.</p>
 <h4 id="developmentdependencies">Development dependencies<a class="headerlink" href="#developmentdependencies" title="Permanent link">#</a></h4>
-<p>The following PowerShell modules will be automatically install if the required versions are not present:</p>
+<p>The following dependencies will be automatically installed if the required versions are not present:</p>
 <ul>
+<li>PowerShell modules:<ul>
 <li>PlatyPS</li>
 <li>Pester</li>
 <li>PSScriptAnalyzer</li>
@@ -3715,7 +3740,10 @@ To build PSRule for Azure from source code:</p>
 <li>PackageManagement</li>
 <li>InvokeBuild</li>
 </ul>
-<p>These additional modules are only required for building PSRule for Azure.</p>
+</li>
+<li>Bicep CLI</li>
+</ul>
+<p>These dependencies are only required for building and running tests for PSRule for Azure.</p>
 <p>Additionally .NET Core SDK v3.1 is required.
 .NET Core will not be automatically downloaded and installed.
 To download and install the latest SDK see <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1">Download .NET Core 3.1</a>.</p>
@@ -3749,7 +3777,7 @@ After downloading the modules, copy the module directories to devices with restr
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-03
+      Last update: 2021-08-04
     
   </small>
 </div>
@@ -3789,13 +3817,13 @@ After downloading the modules, copy the module directories to devices with restr
       
       
         
-        <a href="../using-metadata/" class="md-footer__link md-footer__link--next" aria-label="Next: Using metadata" rel="next">
+        <a href="../using-templates/" class="md-footer__link md-footer__link--next" aria-label="Next: Using templates" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Using metadata
+              Using templates
             </div>
           </div>
           <div class="md-footer__button md-icon">
