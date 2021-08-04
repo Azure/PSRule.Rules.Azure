@@ -3652,22 +3652,54 @@ Linux, and Windows worker nodes.</p>
 <h2 id="withgithubactions">With GitHub Actions<a class="headerlink" href="#withgithubactions" title="Permanent link">#</a></h2>
 <p><a href="https://github.com/marketplace/actions/psrule"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1 3a2 2 0 0 1 2-2h6.5a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2H7v4.063C7 16.355 7.644 17 8.438 17H12.5v-2.5a2 2 0 0 1 2-2H21a2 2 0 0 1 2 2V21a2 2 0 0 1-2 2h-6.5a2 2 0 0 1-2-2v-2.5H8.437A2.938 2.938 0 0 1 5.5 15.562V11.5H3a2 2 0 0 1-2-2V3zm2-.5a.5.5 0 0 0-.5.5v6.5a.5.5 0 0 0 .5.5h6.5a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H3zM14.5 14a.5.5 0 0 0-.5.5V21a.5.5 0 0 0 .5.5H21a.5.5 0 0 0 .5-.5v-6.5a.5.5 0 0 0-.5-.5h-6.5z"/></svg></span> GitHub Action</a></p>
 <p>Install and use PSRule for Azure with GitHub Actions by referencing the <code>Microsoft/ps-rule</code> action.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Stable</label><div class="tabbed-content">
+<p>Install the latest stable version of PSRule for Azure.</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Analyze Azure template files</span>
   <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Microsoft/ps-rule@main</span>
   <span class="nt">with</span><span class="p">:</span>
     <span class="nt">modules</span><span class="p">:</span> <span class="s">&#39;PSRule.Rules.Azure&#39;</span>
 </code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Pre-release</label><div class="tabbed-content">
+<p>Install the latest stable or pre-release version of PSRule for Azure.</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Analyze Azure template files</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Microsoft/ps-rule@main</span>
+  <span class="nt">with</span><span class="p">:</span>
+    <span class="nt">modules</span><span class="p">:</span> <span class="s">&#39;PSRule.Rules.Azure&#39;</span>
+    <span class="nt">prerelease</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+</div>
+</div>
 <p>This will automatically install compatible versions of all dependencies.</p>
 <h2 id="withazurepipelines">With Azure Pipelines<a class="headerlink" href="#withazurepipelines" title="Permanent link">#</a></h2>
 <p><a href="https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1 3a2 2 0 0 1 2-2h6.5a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2H7v4.063C7 16.355 7.644 17 8.438 17H12.5v-2.5a2 2 0 0 1 2-2H21a2 2 0 0 1 2 2V21a2 2 0 0 1-2 2h-6.5a2 2 0 0 1-2-2v-2.5H8.437A2.938 2.938 0 0 1 5.5 15.562V11.5H3a2 2 0 0 1-2-2V3zm2-.5a.5.5 0 0 0-.5.5v6.5a.5.5 0 0 0 .5.5h6.5a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H3zM14.5 14a.5.5 0 0 0-.5.5V21a.5.5 0 0 0 .5.5H21a.5.5 0 0 0 .5-.5v-6.5a.5.5 0 0 0-.5-.5h-6.5z"/></svg></span> Extension</a></p>
 <p>Install and use PSRule for Azure with Azure Pipeline by using extension tasks.
 Install the extension from the marketplace, then use the <code>ps-rule-assert</code> task in pipeline steps.</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Stable</label><div class="tabbed-content">
+<p>Install the latest stable version of PSRule for Azure.</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@0</span>
   <span class="nt">displayName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Analyze Azure template files</span>
   <span class="nt">inputs</span><span class="p">:</span>
     <span class="nt">inputType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">repository</span>
     <span class="nt">modules</span><span class="p">:</span> <span class="s">&#39;PSRule.Rules.Azure&#39;</span>
 </code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Pre-release</label><div class="tabbed-content">
+<p>Install the latest stable or pre-release version of PSRule for Azure.</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ps-rule-install@0</span>
+  <span class="nt">displayName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install PSRule for Azure (pre-release)</span>
+  <span class="nt">inputs</span><span class="p">:</span>
+    <span class="nt">module</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PSRule.Rules.Azure</span>
+    <span class="nt">prerelease</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@0</span>
+  <span class="nt">displayName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Analyze Azure template files</span>
+  <span class="nt">inputs</span><span class="p">:</span>
+    <span class="nt">inputType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">repository</span>
+    <span class="nt">modules</span><span class="p">:</span> <span class="s">&#39;PSRule.Rules.Azure&#39;</span>
+</code></pre></div>
+</div>
+</div>
 <p>This will automatically install compatible versions of all dependencies.</p>
 <h2 id="installinglocally">Installing locally<a class="headerlink" href="#installinglocally" title="Permanent link">#</a></h2>
 <p>PSRule for Azure can be installed locally from the PowerShell Gallery using PowerShell.
@@ -3691,7 +3723,7 @@ For a list of platforms that PowerShell 7.1 is supported on and install instruct
 <p><a href="https://www.powershellgallery.com/packages/PSRule.Rules.Azure"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.97 11.03a.75.75 0 1 1 1.06-1.06L11 14.94V2.75a.75.75 0 0 1 1.5 0v12.19l4.97-4.97a.75.75 0 1 1 1.06 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0l-6.25-6.25zm-.22 9.47a.75.75 0 0 0 0 1.5h14.5a.75.75 0 0 0 0-1.5H4.75z"/></svg></span> Module</a></p>
 <p>PSRule for Azure can be installed or updated from the PowerShell Gallery.
 Use the following command line examples from a PowerShell terminal to install or update PSRule for Azure.</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">For the current user</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">For the current user</label><div class="tabbed-content">
 <p>To install PSRule for Azure for the current user use:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="s1">&#39;PSRule.Rules.Azure&#39;</span> <span class="n">-Repository</span> <span class="n">PSGallery</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
 </code></pre></div>
@@ -3700,7 +3732,7 @@ Use the following command line examples from a PowerShell terminal to install or
 </code></pre></div>
 <p>This will automatically install compatible versions of all dependencies.</p>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">For all users</label><div class="tabbed-content">
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">For all users</label><div class="tabbed-content">
 <p>To install PSRule for Azure for all users (requires admin/ root permissions) use:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="s1">&#39;PSRule.Rules.Azure&#39;</span> <span class="n">-Repository</span> <span class="n">PSGallery</span> <span class="n">-Scope</span> <span class="n">AllUsers</span>
 </code></pre></div>
@@ -3753,14 +3785,14 @@ download the required PowerShell modules on an alternative device that has acces
 PowerShell provides the <code>Save-Module</code> cmdlet that can be run from a PowerShell terminal to do this.</p>
 <p>The following command lines can be used to download the required modules using a PowerShell terminal.
 After downloading the modules, copy the module directories to devices with restricted Internet access.</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Runtime modules</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Runtime modules</label><div class="tabbed-content">
 <p>To save PSRule for Azure for offline use:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">$modules</span> <span class="p">=</span> <span class="p">@(</span><span class="s1">&#39;PSRule&#39;</span><span class="p">,</span> <span class="s1">&#39;PSRule.Rules.Azure&#39;</span><span class="p">,</span> <span class="s1">&#39;Az.Accounts&#39;</span><span class="p">,</span> <span class="s1">&#39;Az.Resources&#39;</span><span class="p">)</span>
 <span class="nb">Save-Module</span> <span class="n">-Name</span> <span class="nv">$modules</span> <span class="n">-Path</span> <span class="s1">&#39;.\modules&#39;</span>
 </code></pre></div>
 <p>This will save PSRule for Azure and all dependencies into the <code>modules</code> sub-directory.</p>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Development modules</label><div class="tabbed-content">
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Development modules</label><div class="tabbed-content">
 <p>To save PSRule for Azure development module dependencies for offline use:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">$modules</span> <span class="p">=</span> <span class="p">@(</span><span class="s1">&#39;PSRule&#39;</span><span class="p">,</span> <span class="s1">&#39;Az.Accounts&#39;</span><span class="p">,</span> <span class="s1">&#39;Az.Resources&#39;</span><span class="p">,</span> <span class="s1">&#39;PlatyPS&#39;</span><span class="p">,</span> <span class="s1">&#39;Pester&#39;</span><span class="p">,</span>
   <span class="s1">&#39;PSScriptAnalyzer&#39;</span><span class="p">,</span> <span class="s1">&#39;PowerShellGet&#39;</span><span class="p">,</span> <span class="s1">&#39;PackageManagement&#39;</span><span class="p">,</span> <span class="s1">&#39;InvokeBuild&#39;</span><span class="p">)</span>
