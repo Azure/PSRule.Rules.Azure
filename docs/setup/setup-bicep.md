@@ -127,4 +127,4 @@ configuration:
   AZURE_BICEP_FILE_EXPANSION: true
 ```
 
-  [4]]: configuring-expansion.md#bicepsourceexpansion
+  [4]: configuring-expansion.md#bicepsourceexpansion
