@@ -9,6 +9,7 @@ steps:
 
 - ${{ if eq(parameters.platform, 'linux') }}:
   - script: |
+      apt-get install sudo
       # Fetch the latest Bicep CLI binary
       curl -Lo bicep.bin https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
       # Mark it as executable
