@@ -103,10 +103,11 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
         private Process GetBicep(string sourcePath)
         {
-            if (!TryBicepPath(out string binPath) || string.IsNullOrEmpty(binPath))
+            var useAzCLI = false;
+            if (!(TryBicepPath(out string binPath) || TryAzCLIPath(out binPath, out useAzCLI)) || string.IsNullOrEmpty(binPath))
                 return null;
 
-            var args = $"build --stdout --no-summary \"{sourcePath}\"";
+            var args = GetBicepBuildArgs(sourcePath, useAzCLI);
             var startInfo = new ProcessStartInfo(binPath, args)
             {
                 CreateNoWindow = true,
@@ -125,7 +126,17 @@ namespace PSRule.Rules.Azure.Data.Bicep
             if (TryBicepEnvVariable(out binPath))
                 return true;
 
-            return TryBinaryPath(GetBinaryName(), out binPath);
+            return TryBinaryPath(GetBicepBinaryName(), out binPath);
+        }
+
+        private static bool TryAzCLIPath(out string binPath, out bool useAzCLI)
+        {
+            useAzCLI = false;
+            binPath = null;
+            if (!UseAzCLI())
+                return false;
+
+            return TryBinaryPath(GetAzBinaryName(), out binPath);
         }
 
         private static bool TryBinaryPath(string bin, out string binPath)
@@ -144,11 +155,8 @@ namespace PSRule.Rules.Azure.Data.Bicep
         private static string[] GetPathEnv()
         {
             var envPath = System.Environment.GetEnvironmentVariable("PATH");
-
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
                 return envPath.Split(LINUX_PATH_ENV_SEPARATOR, StringSplitOptions.RemoveEmptyEntries);
-            }
 
             return envPath.Split(WINDOWS_PATH_ENV_SEPARATOR, StringSplitOptions.RemoveEmptyEntries);
         }
@@ -159,12 +167,37 @@ namespace PSRule.Rules.Azure.Data.Bicep
             return !string.IsNullOrEmpty(binaryPath);
         }
 
-        private static string GetBinaryName()
+        private static string GetBicepBinaryName()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 return "bicep";
 
             return "bicep.exe";
+        }
+
+        private static string GetAzBinaryName()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                return "az";
+
+            return "az.exe";
+        }
+
+        private static string GetBicepBuildArgs(string sourcePath, bool useAzCLI)
+        {
+            GetBicepBuildAdditionalArgs(out string args);
+            return string.Concat("build --stdout ", args, useAzCLI ? " -f" : string.Empty , " \"", sourcePath, "\"");
+
+        }
+
+        private static void GetBicepBuildAdditionalArgs(out string args)
+        {
+            args = System.Environment.GetEnvironmentVariable("PSRULE_AZURE_BICEP_ARGS") ?? string.Empty;
+        }
+
+        private static bool UseAzCLI()
+        {
+            return EnvironmentHelper.Default.TryBool("PSRULE_AZURE_BICEP_USEAZCLI", out bool value) ? value : false;
         }
     }
 }
