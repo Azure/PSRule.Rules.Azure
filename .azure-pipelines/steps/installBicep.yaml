@@ -31,7 +31,7 @@ steps:
     displayName: 'Install Bicep'
 
 - ${{ if eq(parameters.platform, 'windows') }}:
-  - script: |
+  - pwsh: |
       # Create the install folder
       $installPath = "$env:USERPROFILE\.bicep"
       $installDir = New-Item -ItemType Directory -Path $installPath -Force

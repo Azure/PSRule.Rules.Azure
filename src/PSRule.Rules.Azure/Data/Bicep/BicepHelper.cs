@@ -186,7 +186,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
         private static string GetBicepBuildArgs(string sourcePath, bool useAzCLI)
         {
             GetBicepBuildAdditionalArgs(out string args);
-            return string.Concat("build --stdout ", args, useAzCLI ? " -f" : string.Empty , " \"", sourcePath, "\"");
+            return string.Concat("build --stdout ", args, useAzCLI ? " --file" : string.Empty , " \"", sourcePath, "\"");
 
         }
 
@@ -197,7 +197,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
         private static bool UseAzCLI()
         {
-            return EnvironmentHelper.Default.TryBool("PSRULE_AZURE_BICEP_USEAZCLI", out bool value) ? value : false;
+            return EnvironmentHelper.Default.TryBool("PSRULE_AZURE_BICEP_USE_AZURE_CLI", out bool value) ? value : false;
         }
     }
 }

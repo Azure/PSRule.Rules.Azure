@@ -9,6 +9,7 @@ parameters:
   coverage: 'false'
   publishResults: 'true'
   platform: 'linux'
+  bicepIntegration: 'false'
 
 jobs:
 - job: ${{ parameters.name }}
@@ -21,9 +22,9 @@ jobs:
     skipComponentGovernanceDetection: true
   steps:
 
-  - template: ../steps/installBicep.yaml
-    parameters:
-      platform: ${{ parameters.platform }}
+  # - template: ../steps/installBicep.yaml
+  #   parameters:
+  #     platform: ${{ parameters.platform }}
 
   # Install pipeline dependencies
   - powershell: ./.azure-pipelines/pipeline-deps.ps1
@@ -40,6 +41,7 @@ jobs:
   - powershell: Invoke-Build TestModule -Configuration ${{ parameters.buildConfiguration }} -Build $(Build.BuildNumber)
     env:
       COVERAGE: ${{ parameters.coverage }}
+      RUN_BICEP_INTEGRATION: ${{ parameters.bicepIntegration }}
     displayName: 'Test module'
 
   # Pester test results

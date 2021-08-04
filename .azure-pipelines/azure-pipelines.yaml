@@ -142,6 +142,7 @@ stages:
       coverage: 'true'
       publishResults: 'false'
       platform: linux
+      bicepIntegration: 'true'
 
   - template: jobs/test.yaml
     parameters:
