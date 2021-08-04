@@ -12,7 +12,7 @@ The Bicep CLI is already installed on hosted runners and agents used by GitHub A
 
 ## Installing Bicep CLI
 
-PSRule for Azure requires a minimum of Bicep CLI version **0.4.412**.
+PSRule for Azure requires a minimum of Bicep CLI version **0.4.451**.
 
 You may need to install or upgrade the Bicep CLI in the following scenarios:
 
@@ -30,7 +30,7 @@ For installation instructions see [Setup your Bicep development environment][2].
 
 !!! Tip
     When installing Bicep using the Azure CLI, Bicep is not added to the `PATH` environment variable.
-    For PSRule for Azure to find the Bicep CLI binary set the `PSRULE_AZURE_BICEP_PATH` environment variable.
+    To use PSRule for Azure with the Azure CLI set the `PSRULE_AZURE_BICEP_USE_AZURE_CLI` to `true`.
     Setting this environment variable is explained in the next section.
 
 ## Setting environment variables
@@ -41,7 +41,7 @@ When using this option, add the sub-directory containing the Bicep binary to the
 
 Alternatively, the path can be overridden by setting the `PSRULE_AZURE_BICEP_PATH` environment variable.
 When setting `PSRULE_AZURE_BICEP_PATH` specify the full path to the Bicep binary including the file name.
-File names used for Bicep binaries include `bicep`, `bicep.bin`, and `bicep.exe`.
+File names used for Bicep binaries include `bicep`, or `bicep.exe`.
 
 For example:
 
@@ -68,9 +68,52 @@ variables:
   value: '/usr/local/bin/bicep'
 ```
 
+### Using Azure CLI
+
+By default, PSRule for Azure uses the Bicep CLI directly.
+An additional option is to use the Azure CLI to invoke the Bicep CLI.
+When using this option the required version of the CLI must be installed prior to using PSRule for Azure.
+This is explained in [Setup your Bicep development environment][3].
+
+To enable this option, set the `PSRULE_AZURE_BICEP_USE_AZURE_CLI` environment variable to `true`.
+
+For example:
+
+```bash
+# Bash: Setting environment variable
+export PSRULE_AZURE_BICEP_USE_AZURE_CLI=true
+```
+
+```powershell
+# PowerShell: Setting environment variable
+$Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI = 'true'
+```
+
+```yaml
+# GitHub Actions: Setting environment variable
+env:
+  PSRULE_AZURE_BICEP_USE_AZURE_CLI: true
+```
+
+```yaml
+# Azure Pipelines: Setting environment variable
+variables:
+- name: PSRULE_AZURE_BICEP_USE_AZURE_CLI
+  value: true
+```
+
+  [3]: https://github.com/Azure/bicep/blob/main/docs/installing.md#install-and-manage-via-azure-cli-easiest
+
+### Additional arguments
+
+For configuration, additional arguments can be passed to the Bicep CLI.
+This is intended to improve forward compatibility with Bicep CLI.
+
+To configure additional arguments, set the `PSRULE_AZURE_BICEP_ARGS` environment variable.
+
 ## Configuring expansion
 
-[:octicons-book-24: Docs][3] · :octicons-beaker-24: Experimental
+[:octicons-book-24: Docs][4] · :octicons-beaker-24: Experimental
 
 PSRule for Azure can automatically expand Bicep source files.
 When enabled, PSRule for Azure automatically expands and analyzes Azure resource from `.bicep` files.
@@ -84,4 +127,4 @@ configuration:
   AZURE_BICEP_FILE_EXPANSION: true
 ```
 
-  [3]: configuring-expansion.md#bicepsourceexpansion
+  [4]]: configuring-expansion.md#bicepsourceexpansion

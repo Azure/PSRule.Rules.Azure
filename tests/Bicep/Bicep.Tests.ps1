@@ -46,5 +46,35 @@ Describe 'Bicep' -Tag 'Bicep' {
             $resource | Should -Not -BeNullOrEmpty;
             $resource.TargetName | Should -BeIn 'nsg-001'
         }
+
+        It 'Expands Bicep source files with Azure CLI' {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            # Default
+            $sourceFile = Join-Path -Path $rootPath -ChildPath 'docs/examples.bicep';
+            $result = @(Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File);
+            $result | Should -BeNullOrEmpty;
+
+            try {
+                # Expand source files
+                $option = @{
+                    'Configuration.AZURE_BICEP_FILE_EXPANSION' = $True
+                }
+                $Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI = 'true';
+                $result = @(Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File -Option $option);
+                $result.Length | Should -BeGreaterThan 1;
+                $resource = $result | Where-Object { $_.TargetType -eq 'Microsoft.Network/networkSecurityGroups' };
+                $resource | Should -Not -BeNullOrEmpty;
+                $resource.TargetName | Should -BeIn 'nsg-001'
+            }
+            finally {
+                Remove-Item 'Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI' -Force;
+            }
+        }
     }
 }
