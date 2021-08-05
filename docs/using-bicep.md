@@ -30,15 +30,19 @@ In addition, currently the following limitation apply to using Bicep source file
 
 - The Bicep CLI must be installed.
 - PSRule for Azure will only expand Bicep source files without mandatory parameters.
+  To modules with mandatory parameters you can [exclude files by path spec][2].
+  Expand from a `main.bicep` that is intended to be deployed directly to Azure.
+- Location of issues in Bicep source files is not supported.
 
   [1]: using-templates.md#featuresupport
+  [2]: setup/configuring-expansion.md#excludingfiles
 
 ### Setup Bicep
 
 To expand Azure resources for analysis from Bicep source files the Bicep CLI is required.
-For details on how to configure Bicep for PSRule for Azure see [Setup Bicep][2].
+For details on how to configure Bicep for PSRule for Azure see [Setup Bicep][3].
 
-  [2]: setup/setup-bicep.md
+  [3]: setup/setup-bicep.md
 
 *[WAF]: Well-Architected Framework
 *[ARM]: Azure Resource Manager

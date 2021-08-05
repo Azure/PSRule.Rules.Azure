@@ -165,3 +165,35 @@ Example:
   AZURE_SUBSCRIPTION:
     displayName: 'My test subscription'
 ```
+
+## Excluding files
+
+Template or Bicep source files can be excluded from being processed by PSRule and expansion.
+To exclude a file, configure the `input.pathIgnore` option by providing a path spec to ignore.
+
+Syntax:
+
+```yaml
+input:
+  pathIgnore:
+  - string
+  - string
+```
+
+Default:
+
+```yaml
+# YAML: The default input.pathIgnore option
+input:
+  pathIgnore: []
+```
+
+Example:
+
+```yaml
+# YAML: Exclude a file from being processed by PSRule and expansion
+input:
+  pathIgnore:
+  - 'out/'
+  - 'modules/**/*.bicep'
+```
