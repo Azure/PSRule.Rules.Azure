@@ -715,6 +715,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#excludingfiles" class="md-nav__link">
+    Excluding files
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3555,6 +3562,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#excludingfiles" class="md-nav__link">
+    Excluding files
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3680,6 +3694,27 @@ Any properties that are not provided with use the defaults as specified below.</
   <span class="nt">AZURE_SUBSCRIPTION</span><span class="p">:</span>
     <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;My</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">subscription&#39;</span>
 </code></pre></div>
+<h2 id="excludingfiles">Excluding files<a class="headerlink" href="#excludingfiles" title="Permanent link">#</a></h2>
+<p>Template or Bicep source files can be excluded from being processed by PSRule and expansion.
+To exclude a file, configure the <code>input.pathIgnore</code> option by providing a path spec to ignore.</p>
+<p>Syntax:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">input</span><span class="p">:</span>
+  <span class="nt">pathIgnore</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+</code></pre></div>
+<p>Default:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default input.pathIgnore option</span>
+<span class="nt">input</span><span class="p">:</span>
+  <span class="nt">pathIgnore</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Exclude a file from being processed by PSRule and expansion</span>
+<span class="nt">input</span><span class="p">:</span>
+  <span class="nt">pathIgnore</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;out/&#39;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;modules/**/*.bicep&#39;</span>
+</code></pre></div>
                 
                   
                     
@@ -3688,7 +3723,7 @@ Any properties that are not provided with use the defaults as specified below.</
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-04
+      Last update: 2021-08-06
     
   </small>
 </div>
