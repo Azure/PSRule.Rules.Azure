@@ -8,30 +8,33 @@
 [CmdletBinding()]
 param ()
 
-# Setup error handling
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+BeforeAll {
+    # Setup error handling
+    $ErrorActionPreference = 'Stop';
+    Set-StrictMode -Version latest;
 
-if ($Env:SYSTEM_DEBUG -eq 'true') {
-    $VerbosePreference = 'Continue';
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
+        $VerbosePreference = 'Continue';
+    }
+
+    # Setup tests paths
+    $rootPath = $PWD;
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-# Setup tests paths
-$rootPath = $PWD;
-Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-$here = (Resolve-Path $PSScriptRoot).Path;
-
 Describe 'Azure.MySQL' -Tag 'MySql' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.MySQL.json';
-
     Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.MySQL.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.MySQL.UseSSL' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.UseSSL' };
@@ -117,47 +120,50 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
     }
 
     Context 'Resource name - Azure.MySQL.ServerName' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.DBforMySQL/servers'
+            }
         }
-        $validNames = @(
-            'sqlserver1'
-            'sqlserver-1'
-            '1sqlserver'
-        )
-        $invalidNames = @(
-            '-sqlserver1'
-            'sqlserver1-'
-            'sqlserver.1'
-            'sqlserver_1'
-            'SQLServer1'
-        )
-        $testObject = [PSCustomObject]@{
-            Name = ''
-            ResourceType = 'Microsoft.DBforMySQL/servers'
+
+        BeforeDiscovery {
+            $validNames = @(
+                'sqlserver1'
+                'sqlserver-1'
+                '1sqlserver'
+            )
+
+            $invalidNames = @(
+                '-sqlserver1'
+                'sqlserver1-'
+                'sqlserver.1'
+                'sqlserver_1'
+                'SQLServer1'
+            )
         }
 
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.MySQL.ServerName';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.MySQL.ServerName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.MySQL.ServerName';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.MySQL.ServerName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 }

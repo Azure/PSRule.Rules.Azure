@@ -10,31 +10,34 @@ param (
 
 )
 
-# Setup error handling
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+BeforeAll {
+    # Setup error handling
+    $ErrorActionPreference = 'Stop';
+    Set-StrictMode -Version latest;
 
-if ($Env:SYSTEM_DEBUG -eq 'true') {
-    $VerbosePreference = 'Continue';
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
+        $VerbosePreference = 'Continue';
+    }
+
+    # Setup tests paths
+    $rootPath = $PWD;
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-# Setup tests paths
-$rootPath = $PWD;
-Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-$here = (Resolve-Path $PSScriptRoot).Path;
-
 Describe 'Azure.ACR' -Tag 'ACR' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.ACR.json';
-
     Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
-            Outcome = 'All'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+                Outcome = 'All'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.ACR.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.ACR.AdminUser' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACR.AdminUser' };
@@ -188,48 +191,49 @@ Describe 'Azure.ACR' -Tag 'ACR' {
     }
 
     Context 'Resource name' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.ContainerRegistry/registries'
+            }
         }
-        $validNames = @(
-            'registry1'
-            'REGISTRY001'
-        )
-        $invalidNames = @(
-            '_registry1'
-            '-registry1'
-            'registry1_'
-            'registry1-'
-            'registry-1'
-            'acr1'
-            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-        )
-        $testObject = [PSCustomObject]@{
-            Name = ''
-            ResourceType = 'Microsoft.ContainerRegistry/registries'
+
+        BeforeDiscovery {
+            $validNames = @(
+                'registry1'
+                'REGISTRY001'
+            )
+            $invalidNames = @(
+                '_registry1'
+                '-registry1'
+                'registry1_'
+                'registry1-'
+                'registry-1'
+                'acr1'
+                'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            )
         }
 
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ACR.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ACR.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ACR.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ACR.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 }

@@ -8,30 +8,33 @@
 [CmdletBinding()]
 param ()
 
-# Setup error handling
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+BeforeAll {
+    # Setup error handling
+    $ErrorActionPreference = 'Stop';
+    Set-StrictMode -Version latest;
 
-if ($Env:SYSTEM_DEBUG -eq 'true') {
-    $VerbosePreference = 'Continue';
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
+        $VerbosePreference = 'Continue';
+    }
+
+    # Setup tests paths
+    $rootPath = $PWD;
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-# Setup tests paths
-$rootPath = $PWD;
-Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-$here = (Resolve-Path $PSScriptRoot).Path;
-
 Describe 'Azure.Search' -Tag 'Search' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.Search.json';
-
     Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Search.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.Search.SKU' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Search.SKU' };
@@ -103,56 +106,61 @@ Describe 'Azure.Search' -Tag 'Search' {
     }
 
     Context 'Resource name' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.Search/searchServices'
+            }    
         }
-        $validNames = @(
-            'service1'
-            'service-1'
-            'se'
-        )
-        $invalidNames = @(
-            'service.1'
-            'SERVICE-1'
-            '_service1'
-            '-service1'
-            'service--1'
-            's'
-        )
-        $testObject = [PSCustomObject]@{
-            Name = ''
-            ResourceType = 'Microsoft.Search/searchServices'
+
+        BeforeDiscovery {
+            $validNames = @(
+                'service1'
+                'service-1'
+                'se'
+            )
+
+            $invalidNames = @(
+                'service.1'
+                'SERVICE-1'
+                '_service1'
+                '-service1'
+                'service--1'
+                's'
+            )
         }
 
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Search.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Search.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Search.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Search.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 
     Context 'With Template' {
-        $templatePath = Join-Path -Path $here -ChildPath 'Resources.Search.Template.json';
-        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Search.json;
-        Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        BeforeAll {
+            $templatePath = Join-Path -Path $here -ChildPath 'Resources.Search.Template.json';
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Search.json;
+            Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
+            $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        }
 
         It 'Azure.Search.SKU' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Search.SKU' };

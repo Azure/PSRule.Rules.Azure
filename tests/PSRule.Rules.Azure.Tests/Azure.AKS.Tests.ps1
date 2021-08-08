@@ -10,30 +10,33 @@ param (
 
 )
 
-# Setup error handling
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+BeforeAll {
+    # Setup error handling
+    $ErrorActionPreference = 'Stop';
+    Set-StrictMode -Version latest;
 
-if ($Env:SYSTEM_DEBUG -eq 'true') {
-    $VerbosePreference = 'Continue';
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
+        $VerbosePreference = 'Continue';
+    }
+
+    # Setup tests paths
+    $rootPath = $PWD;
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-# Setup tests paths
-$rootPath = $PWD;
-Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-$here = (Resolve-Path $PSScriptRoot).Path;
-
 Describe 'Azure.AKS' -Tag AKS {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.AKS.json';
-
     Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AKS.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.AKS.MinNodeCount' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.MinNodeCount' };
@@ -277,115 +280,120 @@ Describe 'Azure.AKS' -Tag AKS {
     }
 
     Context 'Resource name' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.ContainerService/managedClusters'
+            }
         }
-        $validNames = @(
-            'cluster1'
-            'CLUSTER-1'
-            'cluster_1'
-            '1-cluster'
-        )
-        $invalidNames = @(
-            '_cluster1'
-            '-cluster1'
-            'cluster1_'
-            'cluster1-'
-            'cluster.1'
-            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-        )
-        $testObject = [PSCustomObject]@{
-            Name = ''
-            ResourceType = 'Microsoft.ContainerService/managedClusters'
+
+        BeforeDiscovery {
+            $validNames = @(
+                'cluster1'
+                'CLUSTER-1'
+                'cluster_1'
+                '1-cluster'
+            )
+            $invalidNames = @(
+                '_cluster1'
+                '-cluster1'
+                'cluster1_'
+                'cluster1-'
+                'cluster.1'
+                'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            )
         }
 
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AKS.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AKS.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AKS.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AKS.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 
     Context 'DNS prefix' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
-        }
-        $validNames = @(
-            'cluster1'
-            'CLUSTER-1'
-            '1-cluster'
-        )
-        $invalidNames = @(
-            '_cluster1'
-            '-cluster1'
-            'cluster1_'
-            'cluster1-'
-            'cluster_1'
-            'cluster.1'
-            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-        )
-        $testObject = [PSCustomObject]@{
-            Name = ''
-            Properties = [PSCustomObject]@{
-                DNSPrefix = ''
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
             }
-            ResourceType = 'Microsoft.ContainerService/managedClusters'
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                Properties = [PSCustomObject]@{
+                    DNSPrefix = ''
+                }
+                ResourceType = 'Microsoft.ContainerService/managedClusters'
+            }
+        }
+
+        BeforeDiscovery {
+            $validNames = @(
+                'cluster1'
+                'CLUSTER-1'
+                '1-cluster'
+            )
+            $invalidNames = @(
+                '_cluster1'
+                '-cluster1'
+                'cluster1_'
+                'cluster1-'
+                'cluster_1'
+                'cluster.1'
+                'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            )
         }
 
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Name = $name;
-                $testObject.Properties.DNSPrefix = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AKS.DNSPrefix';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $testObject.Properties.DNSPrefix = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AKS.DNSPrefix';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Name = $name;
-                $testObject.Properties.DNSPrefix = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AKS.DNSPrefix';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $testObject.Properties.DNSPrefix = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AKS.DNSPrefix';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 
     Context 'With Template' {
-        $templatePath = Join-Path -Path $here -ChildPath 'Resources.AKS.Template.json';
-        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.AKS.json;
-        Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $templatePath = Join-Path -Path $here -ChildPath 'Resources.AKS.Template.json';
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.AKS.json;
+            Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
 
         It 'Azure.AKS.Version' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.Version' };

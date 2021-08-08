@@ -8,30 +8,33 @@
 [CmdletBinding()]
 param ()
 
-# Setup error handling
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+BeforeAll {
+    # Setup error handling
+    $ErrorActionPreference = 'Stop';
+    Set-StrictMode -Version latest;
 
-if ($Env:SYSTEM_DEBUG -eq 'true') {
-    $VerbosePreference = 'Continue';
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
+        $VerbosePreference = 'Continue';
+    }
+
+    # Setup tests paths
+    $rootPath = $PWD;
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-# Setup tests paths
-$rootPath = $PWD;
-Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-$here = (Resolve-Path $PSScriptRoot).Path;
-
 Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.FrontDoor.json';
-
     Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.FrontDoor.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
 
         It 'Azure.FrontDoor.State' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.State' };
@@ -180,102 +183,110 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
     }
 
     Context 'Resource name - Azure.FrontDoor.Name' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.Network/frontDoors'
+            }
         }
-        $validNames = @(
-            'frontdoor1'
-            'FRONTDOOR-1'
-        )
-        $invalidNames = @(
-            '_frontdoor1'
-            '-frontdoor1'
-            'frontdoor.1'
-            'frontdoor1_'
-            'frontdoor1-'
-            'door'
-            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-        )
-        $testObject = [PSCustomObject]@{
-            Name = ''
-            ResourceType = 'Microsoft.Network/frontDoors'
+
+        BeforeDiscovery {
+            $validNames = @(
+                'frontdoor1'
+                'FRONTDOOR-1'
+            )
+            
+            $invalidNames = @(
+                '_frontdoor1'
+                '-frontdoor1'
+                'frontdoor.1'
+                'frontdoor1_'
+                'frontdoor1-'
+                'door'
+                'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            )
         }
 
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.FrontDoor.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.FrontDoor.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.FrontDoor.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.FrontDoor.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 
     Context 'Resource name - Azure.FrontDoor.WAF.Name' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies'
+            }
         }
-        $validNames = @(
-            'policy1'
-            'PolicyA'
-        )
-        $invalidNames = @(
-            '_policy-1'
-            '_policy1'
-            '-policy1'
-            'policy.1'
-            'policy1_'
-            'policy1-'
-            '1policy'
-        )
-        $testObject = [PSCustomObject]@{
-            Name = ''
-            ResourceType = 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies'
+
+        BeforeDiscovery {
+            $validNames = @(
+                'policy1'
+                'PolicyA'
+            )
+
+            $invalidNames = @(
+                '_policy-1'
+                '_policy1'
+                '-policy1'
+                'policy.1'
+                'policy1_'
+                'policy1-'
+                '1policy'
+            )
         }
 
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.FrontDoor.WAF.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.FrontDoor.WAF.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.FrontDoor.WAF.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.FrontDoor.WAF.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 
     Context 'With template' {
-        $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template3.json';
-        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.FrontDoor.json;
-        Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        BeforeAll {
+            $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template3.json';
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.FrontDoor.json;
+            Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
+            $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        }
 
         It 'Azure.FrontDoor.State' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.State' };

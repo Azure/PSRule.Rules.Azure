@@ -10,30 +10,33 @@ param (
 
 )
 
-# Setup error handling
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+BeforeAll {
+    # Setup error handling
+    $ErrorActionPreference = 'Stop';
+    Set-StrictMode -Version latest;
 
-if ($Env:SYSTEM_DEBUG -eq 'true') {
-    $VerbosePreference = 'Continue';
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
+        $VerbosePreference = 'Continue';
+    }
+
+    # Setup tests paths
+    $rootPath = $PWD;
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-# Setup tests paths
-$rootPath = $PWD;
-Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-$here = (Resolve-Path $PSScriptRoot).Path;
-
 Describe 'Azure.PublicIP' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.PublicIP.json';
-
     Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.PublicIP.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.PublicIP.IsAttached' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PublicIP.IsAttached' };
@@ -81,106 +84,114 @@ Describe 'Azure.PublicIP' {
     }
 
     Context 'Resource name -- Azure.PublicIP.Name' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.Network/publicIPAddresses'
+            }
         }
-        $validNames = @(
-            'pip-001'
-            'pip-001_'
-            'PIP.001'
-            'p'
-        )
-        $invalidNames = @(
-            '_pip-001'
-            '-pip-001'
-            'pip-001-'
-            'pip-001.'
-        )
-        $testObject = [PSCustomObject]@{
-            Name = ''
-            ResourceType = 'Microsoft.Network/publicIPAddresses'
+
+        BeforeDiscovery {
+            $validNames = @(
+                'pip-001'
+                'pip-001_'
+                'PIP.001'
+                'p'
+            )
+
+            $invalidNames = @(
+                '_pip-001'
+                '-pip-001'
+                'pip-001-'
+                'pip-001.'
+            )
         }
 
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 
     Context 'Resource name -- Azure.PublicIP.DNSLabel' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
-        }
-        $validNames = @(
-            'pip-001'
-            'pip'
-        )
-        $invalidNames = @(
-            'PIP-001'
-            '_pip-001'
-            '-pip-001'
-            'pip.001'
-            'pip-001-'
-            'pip-001.'
-            'pip-001_'
-            'p'
-        )
-        $testObject = [PSCustomObject]@{
-            ResourceType = 'Microsoft.Network/publicIPAddresses'
-            Properties = [PSCustomObject]@{
-                dnsSettings = [PSCustomObject]@{
-                    domainNameLabel = ''
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                ResourceType = 'Microsoft.Network/publicIPAddresses'
+                Properties = [PSCustomObject]@{
+                    dnsSettings = [PSCustomObject]@{
+                        domainNameLabel = ''
+                    }
                 }
             }
         }
 
+        BeforeDiscovery {
+            $validNames = @(
+                'pip-001'
+                'pip'
+            )
+
+            $invalidNames = @(
+                'PIP-001'
+                '_pip-001'
+                '-pip-001'
+                'pip.001'
+                'pip-001-'
+                'pip-001.'
+                'pip-001_'
+                'p'
+            )
+        }
+
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Properties.dnsSettings.domainNameLabel = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.DNSLabel';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Properties.dnsSettings.domainNameLabel = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.DNSLabel';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Properties.dnsSettings.domainNameLabel = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.DNSLabel';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Properties.dnsSettings.domainNameLabel = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.DNSLabel';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 
     Context 'With template' {
-        $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template3.json';
-        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.PublicIP.json;
-        Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        BeforeAll {
+            $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template3.json';
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.PublicIP.json;
+            Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
+            $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        }
 
         It 'Azure.PublicIP.IsAttached' {
             $filteredResult = $result | Where-Object {
