@@ -8,32 +8,35 @@
 [CmdletBinding()]
 param ()
 
-# Setup error handling
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+BeforeAll {
+    # Setup error handling
+    $ErrorActionPreference = 'Stop';
+    Set-StrictMode -Version latest;
 
-if ($Env:SYSTEM_DEBUG -eq 'true') {
-    $VerbosePreference = 'Continue';
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
+        $VerbosePreference = 'Continue';
+    }
+
+    # Setup tests paths
+    $rootPath = $PWD;
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-# Setup tests paths
-$rootPath = $PWD;
-Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-$here = (Resolve-Path $PSScriptRoot).Path;
-
 Describe 'Azure.Resource' -Tag 'Resource' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.Resource.json';
-
     Context 'Conditions' {
-        $option = New-PSRuleOption -BaselineConfiguration @{ 'Azure_AllowedRegions' = @('region-A') };
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            Option = $option
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $option = New-PSRuleOption -BaselineConfiguration @{ 'Azure_AllowedRegions' = @('region-A') };
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                Option = $option
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Resource.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
 
         It 'Azure.Resource.UseTags' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Resource.UseTags' };
@@ -81,19 +84,21 @@ Describe 'Azure.Resource' -Tag 'Resource' {
     }
 
     Context 'With Template' {
-        $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
-        $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
-        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Resource.json;
-        Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
-        $option = New-PSRuleOption -BaselineConfiguration @{ 'Azure_AllowedRegions' = @('region-A') };
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            Option = $option
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
+            $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Resource.json;
+            Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
+            $option = New-PSRuleOption -BaselineConfiguration @{ 'Azure_AllowedRegions' = @('region-A') };
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                Option = $option
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
 
         It 'Azure.Resource.UseTags' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Resource.UseTags' };
@@ -143,50 +148,53 @@ Describe 'Azure.Resource' -Tag 'Resource' {
 
 Describe 'Azure.ResourceGroup' -Tag 'ResourceGroup' {
     Context 'Resource name' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.Resources/resourceGroups'
+            }
         }
-        $validNames = @(
-            'rg'
-            'rg-'
-            'rg_'
-            'rg(1)'
-            'resourceGroup.1'
-            'NetworkWatcherRG'
-            'AzureBackupRG_eastus'
-            'DefaultResourceGroup-eus'
-            'cloud-shell-storage-eastus'
-            'MC_app-kubernetes-cluster-1'
-        )
-        $invalidNames = @(
-            'group.'
-        )
-        $testObject = [PSCustomObject]@{
-            Name = ''
-            ResourceType = 'Microsoft.Resources/resourceGroups'
+
+        BeforeDiscovery {
+            $validNames = @(
+                'rg'
+                'rg-'
+                'rg_'
+                'rg(1)'
+                'resourceGroup.1'
+                'NetworkWatcherRG'
+                'AzureBackupRG_eastus'
+                'DefaultResourceGroup-eus'
+                'cloud-shell-storage-eastus'
+                'MC_app-kubernetes-cluster-1'
+            )
+
+            $invalidNames = @(
+                'group.'
+            )
         }
 
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ResourceGroup.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ResourceGroup.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ResourceGroup.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ResourceGroup.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 }

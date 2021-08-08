@@ -8,104 +8,108 @@
 [CmdletBinding()]
 param ()
 
-# Setup error handling
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+BeforeAll {
+    # Setup error handling
+    $ErrorActionPreference = 'Stop';
+    Set-StrictMode -Version latest;
 
-if ($Env:SYSTEM_DEBUG -eq 'true') {
-    $VerbosePreference = 'Continue';
-}
-
-# Setup tests paths
-$rootPath = $PWD;
-Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-$outputPath = Join-Path -Path $rootPath -ChildPath out/tests/PSRule.Rules.Azure.Tests/Cmdlet;
-Remove-Item -Path $outputPath -Force -Recurse -Confirm:$False -ErrorAction Ignore;
-$Null = New-Item -Path $outputPath -ItemType Directory -Force;
-$here = (Resolve-Path $PSScriptRoot).Path;
-
-#region Mocks
-
-function MockContext {
-    process {
-        return @(
-            (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
-                [PSCustomObject]@{
-                    Subscription = [PSCustomObject]@{
-                        Id = '00000000-0000-0000-0000-000000000001'
-                        Name = 'Test subscription 1'
-                        State = 'Enabled'
-                    }
-                    Tenant = [PSCustomObject]@{
-                        Id = '00000000-0000-0000-0000-000000000001'
-                    }
-                }
-            )),
-            (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
-                [PSCustomObject]@{
-                    Subscription = [PSCustomObject]@{
-                        Id = '00000000-0000-0000-0000-000000000002'
-                        Name = 'Test subscription 2'
-                        State = 'Enabled'
-                    }
-                    Tenant = [PSCustomObject]@{
-                        Id = '00000000-0000-0000-0000-000000000002'
-                    }
-                }
-            ))
-            (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
-                [PSCustomObject]@{
-                    Subscription = [PSCustomObject]@{
-                        Id = '00000000-0000-0000-0000-000000000003'
-                        Name = 'Test subscription 3'
-                        State = 'Enabled'
-                    }
-                    Tenant = [PSCustomObject]@{
-                        Id = '00000000-0000-0000-0000-000000000002'
-                    }
-                }
-            ))
-        )
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
+        $VerbosePreference = 'Continue';
     }
-}
 
-function MockSingleSubscription {
-    process {
-        return @(
-            (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
-                [PSCustomObject]@{
-                    Subscription = [PSCustomObject]@{
-                        Id = '00000000-0000-0000-0000-000000000001'
-                        Name = 'Test subscription 1'
-                        State = 'Enabled'
+    # Setup tests paths
+    $rootPath = $PWD;
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $outputPath = Join-Path -Path $rootPath -ChildPath out/tests/PSRule.Rules.Azure.Tests/Cmdlet;
+    Remove-Item -Path $outputPath -Force -Recurse -Confirm:$False -ErrorAction Ignore;
+    $Null = New-Item -Path $outputPath -ItemType Directory -Force;
+    $here = (Resolve-Path $PSScriptRoot).Path;
+
+    #region Mocks
+
+    function MockContext {
+        process {
+            return @(
+                (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
+                    [PSCustomObject]@{
+                        Subscription = [PSCustomObject]@{
+                            Id = '00000000-0000-0000-0000-000000000001'
+                            Name = 'Test subscription 1'
+                            State = 'Enabled'
+                        }
+                        Tenant = [PSCustomObject]@{
+                            Id = '00000000-0000-0000-0000-000000000001'
+                        }
                     }
-                    Tenant = [PSCustomObject]@{
-                        Id = '00000000-0000-0000-0000-000000000001'
+                )),
+                (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
+                    [PSCustomObject]@{
+                        Subscription = [PSCustomObject]@{
+                            Id = '00000000-0000-0000-0000-000000000002'
+                            Name = 'Test subscription 2'
+                            State = 'Enabled'
+                        }
+                        Tenant = [PSCustomObject]@{
+                            Id = '00000000-0000-0000-0000-000000000002'
+                        }
                     }
-                }
-            ))
-        )
+                ))
+                (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
+                    [PSCustomObject]@{
+                        Subscription = [PSCustomObject]@{
+                            Id = '00000000-0000-0000-0000-000000000003'
+                            Name = 'Test subscription 3'
+                            State = 'Enabled'
+                        }
+                        Tenant = [PSCustomObject]@{
+                            Id = '00000000-0000-0000-0000-000000000002'
+                        }
+                    }
+                ))
+            )
+        }
     }
-}
+
+    function MockSingleSubscription {
+        process {
+            return @(
+                (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
+                    [PSCustomObject]@{
+                        Subscription = [PSCustomObject]@{
+                            Id = '00000000-0000-0000-0000-000000000001'
+                            Name = 'Test subscription 1'
+                            State = 'Enabled'
+                        }
+                        Tenant = [PSCustomObject]@{
+                            Id = '00000000-0000-0000-0000-000000000001'
+                        }
+                    }
+                ))
+            )
+        }
+    }
 
 #endregion Mocks
+}
 
 #region Export-AzRuleData
 
 Describe 'Export-AzRuleData' -Tag 'Cmdlet','Export-AzRuleData' {
     Context 'With defaults' {
-        Mock -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith ${function:MockContext};
-        Mock -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith {
-            return @(
-                [PSCustomObject]@{
-                    Name = 'Resource1'
-                    ResourceType = ''
-                }
-                [PSCustomObject]@{
-                    Name = 'Resource2'
-                    ResourceType = ''
-                }
-            )
+        BeforeAll {
+            Mock -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith ${function:MockContext};
+            Mock -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith {
+                return @(
+                    [PSCustomObject]@{
+                        Name = 'Resource1'
+                        ResourceType = ''
+                    }
+                    [PSCustomObject]@{
+                        Name = 'Resource2'
+                        ResourceType = ''
+                    }
+                )
+            }
         }
 
         It 'Exports resources' {
@@ -138,20 +142,22 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet','Export-AzRuleData' {
     }
 
     Context 'With filters' {
-        Mock -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -MockWith ${function:MockContext};
-        Mock -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -MockWith {
-            return @(
-                [PSCustomObject]@{
-                    Name = 'Resource1'
-                    ResourceGroupName = 'rg-test-1'
-                    ResourceType = ''
-                }
-                [PSCustomObject]@{
-                    Name = 'Resource2'
-                    ResourceGroupName = 'rg-test-2'
-                    ResourceType = ''
-                }
-            )
+        BeforeAll {
+            Mock -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -MockWith ${function:MockContext};
+            Mock -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -MockWith {
+                return @(
+                    [PSCustomObject]@{
+                        Name = 'Resource1'
+                        ResourceGroupName = 'rg-test-1'
+                        ResourceType = ''
+                    }
+                    [PSCustomObject]@{
+                        Name = 'Resource2'
+                        ResourceGroupName = 'rg-test-2'
+                        ResourceType = ''
+                    }
+                )
+            }
         }
 
         It '-Subscription with name filter' {
@@ -194,7 +200,9 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet','Export-AzRuleData' {
     }
 
     Context 'With data' {
-        Mock -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -MockWith ${function:MockSingleSubscription};
+        BeforeAll {
+            Mock -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -MockWith ${function:MockSingleSubscription};
+        }
 
         It 'Microsoft.Network/connections' {
             Mock -CommandName 'Get-AzResourceGroup' -ModuleName 'PSRule.Rules.Azure';
@@ -255,8 +263,10 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet','Export-AzRuleData' {
 #region Export-AzRuleTemplateData
 
 Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
-    $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
-    $parametersPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
+    BeforeAll {
+        $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
+        $parametersPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
+    }
 
     Context 'With defaults' {
         It 'Exports template' {
@@ -427,14 +437,16 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
 #region Get-AzRuleTemplateLink
 
 Describe 'Get-AzRuleTemplateLink' -Tag 'Cmdlet', 'Get-AzRuleTemplateLink' {
-    # Setup structure for scanning parameter files
-    $templateScanPath = Join-Path -Path $outputPath -ChildPath 'templates/';
-    $examplePath = Join-Path -Path $outputPath -ChildPath 'templates/example/';
-    $Null = New-Item -Path $examplePath -ItemType Directory -Force;
-    $Null = Copy-Item -Path (Join-Path -Path $here -ChildPath 'Resources.Parameters*.json') -Destination $templateScanPath -Force;
-    $Null = Copy-Item -Path (Join-Path -Path $here -ChildPath 'Resources.Template*.json') -Destination $templateScanPath -Force;
-    $Null = Copy-Item -Path (Join-Path -Path $here -ChildPath 'Resources.Parameters*.json') -Destination $examplePath -Force;
-    $Null = Copy-Item -Path (Join-Path -Path $here -ChildPath 'Resources.Template*.json') -Destination $examplePath -Force;
+    BeforeAll {
+        # Setup structure for scanning parameter files
+        $templateScanPath = Join-Path -Path $outputPath -ChildPath 'templates/';
+        $examplePath = Join-Path -Path $outputPath -ChildPath 'templates/example/';
+        $Null = New-Item -Path $examplePath -ItemType Directory -Force;
+        $Null = Copy-Item -Path (Join-Path -Path $here -ChildPath 'Resources.Parameters*.json') -Destination $templateScanPath -Force;
+        $Null = Copy-Item -Path (Join-Path -Path $here -ChildPath 'Resources.Template*.json') -Destination $templateScanPath -Force;
+        $Null = Copy-Item -Path (Join-Path -Path $here -ChildPath 'Resources.Parameters*.json') -Destination $examplePath -Force;
+        $Null = Copy-Item -Path (Join-Path -Path $here -ChildPath 'Resources.Template*.json') -Destination $examplePath -Force;
+    }
 
     Context 'With defaults' {
         It 'Exports template' {

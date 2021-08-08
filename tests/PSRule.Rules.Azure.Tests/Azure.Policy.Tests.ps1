@@ -8,30 +8,33 @@
 [CmdletBinding()]
 param ()
 
-# Setup error handling
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+BeforeAll {
+    # Setup error handling
+    $ErrorActionPreference = 'Stop';
+    Set-StrictMode -Version latest;
 
-if ($Env:SYSTEM_DEBUG -eq 'true') {
-    $VerbosePreference = 'Continue';
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
+        $VerbosePreference = 'Continue';
+    }
+
+    # Setup tests paths
+    $rootPath = $PWD;
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-# Setup tests paths
-$rootPath = $PWD;
-Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-$here = (Resolve-Path $PSScriptRoot).Path;
-
 Describe 'Azure.Policy' -Tag Policy {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.Policy.json';
-
     Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Policy.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.Policy.Descriptors' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Policy.Descriptors' };
@@ -115,11 +118,13 @@ Describe 'Azure.Policy' -Tag Policy {
     }
 
     Context 'With Template' {
-        $templatePath = Join-Path -Path $here -ChildPath 'Resources.Policy.Template.json';
-        $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Policy.Parameters.json';
-        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Policy.json;
-        Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
-        $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        BeforeAll {
+            $templatePath = Join-Path -Path $here -ChildPath 'Resources.Policy.Template.json';
+            $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Policy.Parameters.json';
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Policy.json;
+            Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
+            $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        }
 
         It 'Azure.Policy.Descriptors' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Policy.Descriptors' };
