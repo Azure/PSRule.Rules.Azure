@@ -2,7 +2,7 @@
 
 A suite of rules to validate Azure resources and infrastructure as code (IaC) using PSRule.
 
-![ci-badge]
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/Azure/PSRule.Rules.Azure)
 
 Features of PSRule for Azure include:
 
@@ -384,7 +384,6 @@ This project is [licensed under the MIT License](LICENSE).
 [issue]: https://github.com/Azure/PSRule.Rules.Azure/issues
 [discussion]: https://github.com/Azure/PSRule.Rules.Azure/discussions
 [install]: https://azure.github.io/PSRule.Rules.Azure/install-instructions/
-[ci-badge]: https://dev.azure.com/bewhite/PSRule.Rules.Azure/_apis/build/status/PSRule.Rules.Azure-CI?branchName=main
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
 [engine]: https://github.com/Microsoft/PSRule
 [PSRule.Rules.CAF]: https://github.com/microsoft/PSRule.Rules.CAF
