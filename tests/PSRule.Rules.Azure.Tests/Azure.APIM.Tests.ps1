@@ -8,30 +8,33 @@
 [CmdletBinding()]
 param ()
 
-# Setup error handling
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+BeforeAll {
+    # Setup error handling
+    $ErrorActionPreference = 'Stop';
+    Set-StrictMode -Version latest;
 
-if ($Env:SYSTEM_DEBUG -eq 'true') {
-    $VerbosePreference = 'Continue';
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
+        $VerbosePreference = 'Continue';
+    }
+
+    # Setup tests paths
+    $rootPath = $PWD;
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-# Setup tests paths
-$rootPath = $PWD;
-Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-$here = (Resolve-Path $PSScriptRoot).Path;
-
 Describe 'Azure.APIM' -Tag 'APIM' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.APIM.json';
-
     Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.APIM.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.APIM.Protocols' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.Protocols' };
@@ -245,47 +248,48 @@ Describe 'Azure.APIM' -Tag 'APIM' {
     }
 
     Context 'Resource name' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.ApiManagement/service'
+            }
         }
-        $validNames = @(
-            'apim-1'
-            'APIM001'
-            'a'
-        )
-        $invalidNames = @(
-            '_apim1'
-            '-apim1'
-            'apim1_'
-            'apim1-'
-            '1apim'
-        )
-        $testObject = [PSCustomObject]@{
-            Name = ''
-            ResourceType = 'Microsoft.ApiManagement/service'
+
+        BeforeDiscovery {
+            $validNames = @(
+                'apim-1'
+                'APIM001'
+                'a'
+            )
+            $invalidNames = @(
+                '_apim1'
+                '-apim1'
+                'apim1_'
+                'apim1-'
+                '1apim'
+            )
         }
 
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.APIM.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.APIM.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.APIM.Name';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.APIM.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 }

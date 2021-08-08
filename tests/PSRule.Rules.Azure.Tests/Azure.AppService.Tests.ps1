@@ -8,30 +8,33 @@
 [CmdletBinding()]
 param ()
 
-# Setup error handling
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+BeforeAll {
+    # Setup error handling
+    $ErrorActionPreference = 'Stop';
+    Set-StrictMode -Version latest;
 
-if ($Env:SYSTEM_DEBUG -eq 'true') {
-    $VerbosePreference = 'Continue';
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
+        $VerbosePreference = 'Continue';
+    }
+
+    # Setup tests paths
+    $rootPath = $PWD;
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-# Setup tests paths
-$rootPath = $PWD;
-Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-$here = (Resolve-Path $PSScriptRoot).Path;
-
 Describe 'Azure.AppService' -Tag 'AppService' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppService.json';
-
     Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppService.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath; 
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.AppService.PlanInstanceCount' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.PlanInstanceCount' };
@@ -211,15 +214,17 @@ Describe 'Azure.AppService' -Tag 'AppService' {
     }
 
     Context 'With Template' {
-        $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.AppService.json;
-        Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.AppService.Parameters.json' | Export-AzRuleTemplateData -OutputPath $outputFile;
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.AppService.json;
+            Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.AppService.Parameters.json' | Export-AzRuleTemplateData -OutputPath $outputFile;
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
 
         It 'Azure.AppService.MinTLS' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.MinTLS' };

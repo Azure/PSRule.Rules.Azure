@@ -8,30 +8,33 @@
 [CmdletBinding()]
 param ()
 
-# Setup error handling
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+BeforeAll {
+    # Setup error handling
+    $ErrorActionPreference = 'Stop';
+    Set-StrictMode -Version latest;
 
-if ($Env:SYSTEM_DEBUG -eq 'true') {
-    $VerbosePreference = 'Continue';
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
+        $VerbosePreference = 'Continue';
+    }
+
+    # Setup tests paths
+    $rootPath = $PWD;
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-# Setup tests paths
-$rootPath = $PWD;
-Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-$here = (Resolve-Path $PSScriptRoot).Path;
-
 Describe 'Azure.SQL' -Tag 'SQL' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.SQL.json';
-
     Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.SQL.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.SQL.FirewallRuleCount' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQL.FirewallRuleCount' };
@@ -171,140 +174,148 @@ Describe 'Azure.SQL' -Tag 'SQL' {
     }
 
     Context 'Resource name - Azure.SQL.ServerName' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.Sql/servers'
+            }    
         }
-        $validNames = @(
-            'sqlserver1'
-            'sqlserver-1'
-            '1sqlserver'
-        )
-        $invalidNames = @(
-            '-sqlserver1'
-            'sqlserver1-'
-            'sqlserver.1'
-            'sqlserver_1'
-            'SQLServer1'
-        )
-        $testObject = [PSCustomObject]@{
-            Name = ''
-            ResourceType = 'Microsoft.Sql/servers'
+
+        BeforeDiscovery {
+            $validNames = @(
+                'sqlserver1'
+                'sqlserver-1'
+                '1sqlserver'
+            )
+
+            $invalidNames = @(
+                '-sqlserver1'
+                'sqlserver1-'
+                'sqlserver.1'
+                'sqlserver_1'
+                'SQLServer1'
+            )
         }
 
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SQL.ServerName';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SQL.ServerName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SQL.ServerName';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SQL.ServerName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 
     Context 'Resource name - Azure.SQL.DBName' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.Sql/servers/databases'
+            }
         }
-        $validNames = @(
-            'DB1'
-            'DB-1'
-            '!data$base 1'
-            'database.1'
-            'database(1)'
-            'database@1'
-            'database~1'
-            'database`1'
-            'servername/db1'
-        )
-        $invalidNames = @(
-            'database1 '
-            'database1.'
-        )
-        $testObject = [PSCustomObject]@{
-            Name = ''
-            ResourceType = 'Microsoft.Sql/servers/databases'
+
+        BeforeDiscovery {
+            $validNames = @(
+                'DB1'
+                'DB-1'
+                '!data$base 1'
+                'database.1'
+                'database(1)'
+                'database@1'
+                'database~1'
+                'database`1'
+                'servername/db1'
+            )
+
+            $invalidNames = @(
+                'database1 '
+                'database1.'
+            )
         }
 
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SQL.DBName';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SQL.DBName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SQL.DBName';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SQL.DBName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 
     Context 'Resource name - Azure.SQL.FGName' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.Sql/servers/failoverGroups'
+            }
         }
-        $validNames = @(
-            'fgroup1'
-            'fgroup-1'
-            '1fgroup'
-        )
-        $invalidNames = @(
-            '-fgroup1'
-            'fgroup1-'
-            'fgroup.1'
-            'fgroup_1'
-            'FGroup1'
-        )
-        $testObject = [PSCustomObject]@{
-            Name = ''
-            ResourceType = 'Microsoft.Sql/servers/failoverGroups'
+
+        BeforeDiscovery {
+            $validNames = @(
+                'fgroup1'
+                'fgroup-1'
+                '1fgroup'
+            )
+            $invalidNames = @(
+                '-fgroup1'
+                'fgroup1-'
+                'fgroup.1'
+                'fgroup_1'
+                'FGroup1'
+            )
         }
 
         # Pass
-        foreach ($name in $validNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SQL.FGName';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Pass';
-            }
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SQL.FGName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
         }
 
         # Fail
-        foreach ($name in $invalidNames) {
-            It $name {
-                $testObject.Name = $name;
-                $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SQL.FGName';
-                $ruleResult | Should -Not -BeNullOrEmpty;
-                $ruleResult.Outcome | Should -Be 'Fail';
-            }
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SQL.FGName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
 }

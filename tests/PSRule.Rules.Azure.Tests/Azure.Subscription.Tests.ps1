@@ -8,30 +8,33 @@
 [CmdletBinding()]
 param ()
 
-# Setup error handling
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version latest;
+BeforeAll {
+    # Setup error handling
+    $ErrorActionPreference = 'Stop';
+    Set-StrictMode -Version latest;
 
-if ($Env:SYSTEM_DEBUG -eq 'true') {
-    $VerbosePreference = 'Continue';
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
+        $VerbosePreference = 'Continue';
+    }
+
+    # Setup tests paths
+    $rootPath = $PWD;
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $here = (Resolve-Path $PSScriptRoot).Path;
+    $dataPath = Join-Path -Path $here -ChildPath 'Resources.Subscription.json';
 }
 
-# Setup tests paths
-$rootPath = $PWD;
-Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-$here = (Resolve-Path $PSScriptRoot).Path;
-
 Describe 'Azure.RBAC' -Tag 'Subscription', 'RBAC' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.Subscription.json';
-
     Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.RBAC.UseGroups' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RBAC.UseGroups' };
@@ -132,16 +135,16 @@ Describe 'Azure.RBAC' -Tag 'Subscription', 'RBAC' {
 }
 
 Describe 'Azure.SecurityCenter' -Tag 'Subscription', 'SecurityCenter' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.Subscription.json';
-
     Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.SecurityCenter.Contact' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SecurityCenter.Contact' };
@@ -179,16 +182,16 @@ Describe 'Azure.SecurityCenter' -Tag 'Subscription', 'SecurityCenter' {
 
 
 Describe 'Azure.Monitor' -Tag 'Subscription', 'Monitor' {
-    $dataPath = Join-Path -Path $here -ChildPath 'Resources.Subscription.json';
-
     Context 'Conditions' {
-        $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
-        $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
 
         It 'Azure.Monitor.ServiceHealth' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Monitor.ServiceHealth' };
