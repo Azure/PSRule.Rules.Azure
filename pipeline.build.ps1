@@ -501,6 +501,7 @@ task TagBuild {
 
 # Synopsis: Remove temp files.
 task Clean {
+    dotnet clean;
     Remove-Item -Path out,reports -Recurse -Force -ErrorAction SilentlyContinue;
 }
 

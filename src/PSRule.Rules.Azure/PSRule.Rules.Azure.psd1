@@ -111,7 +111,7 @@ PrivateData = @{
         LicenseUri = 'https://github.com/Azure/PSRule.Rules.Azure/blob/main/LICENSE'
 
         # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/Azure/PSRule.Rules.Azure'
+        ProjectUri = 'https://aka.ms/ps-rule-azure'
 
         # A URL to an icon representing this module.
         # IconUri = ''
