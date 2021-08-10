@@ -124,6 +124,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bicep compilation hasn&apos;t completed within the timeout window. This can be caused by errors or warnings. Check the Bicep output by running bicep build and addressing any issues..
+        /// </summary>
+        internal static string BicepCompileTimeout {
+            get {
+                return ResourceManager.GetString("BicepCompileTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to expand resources because the source file &apos;{0}&apos; was not valid. {1}.
         /// </summary>
         internal static string BicepExpandInvalid {

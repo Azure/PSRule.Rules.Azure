@@ -33,6 +33,7 @@ In addition, currently the following limitation apply to using Bicep source file
   To modules with mandatory parameters you can [exclude files by path spec][2].
   Expand from a `main.bicep` that is intended to be deployed directly to Azure.
 - Location of issues in Bicep source files is not supported.
+- Expansion of Bicep source files times out after 3 seconds.
 
   [1]: using-templates.md#featuresupport
   [2]: setup/configuring-expansion.md#excludingfiles

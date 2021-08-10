@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.6.0-B2108023:
+
+- Bug fixes:
+  - Fixed Bicep expand hangs analysis. [#858](https://github.com/Azure/PSRule.Rules.Azure/issues/858)
+
 ## v1.6.0-B2108023 (pre-release)
 
 What's changed since pre-release v1.6.0-B2107028:
