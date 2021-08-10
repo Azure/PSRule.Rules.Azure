@@ -82,11 +82,15 @@ namespace PSRule.Rules.Azure.Data.Bicep
             try
             {
                 if (!bicep.HasExited)
-                    bicep.WaitForExit();
-
-                if (bicep.ExitCode != 0)
                 {
-                    var error = bicep.StandardError.ReadToEnd();
+                    var timeoutCount = 0;
+                    while (!bicep.WaitForExit(1000) && !bicep.HasExited && timeoutCount < 3)
+                        timeoutCount++;
+                }
+
+                if (!bicep.HasExited || bicep.ExitCode != 0)
+                {
+                    var error = bicep.HasExited ? bicep.StandardError.ReadToEnd() : PSRuleResources.BicepCompileTimeout;
                     throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepCompileError, path, error), null, path);
                 }
 
