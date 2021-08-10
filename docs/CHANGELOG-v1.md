@@ -7,6 +7,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.6.0-B2108038 (pre-release)
+
 What's changed since pre-release v1.6.0-B2108023:
 
 - Bug fixes:
