@@ -3570,8 +3570,9 @@ For details on how this works and limitations see <a href="../using-templates/#f
 <li>PSRule for Azure will only expand Bicep source files without mandatory parameters.
   To modules with mandatory parameters you can <a href="../setup/configuring-expansion/#excludingfiles">exclude files by path spec</a>.
   Expand from a <code>main.bicep</code> that is intended to be deployed directly to Azure.</li>
+<li>Location of issues in Bicep source files is not supported.</li>
 <li>
-<p>Location of issues in Bicep source files is not supported.</p>
+<p>Expansion of Bicep source files times out after 3 seconds.</p>
 </li>
 </ul>
 <h3 id="setupbicep">Setup Bicep<a class="headerlink" href="#setupbicep" title="Permanent link">#</a></h3>
@@ -3585,7 +3586,7 @@ For details on how to configure Bicep for PSRule for Azure see <a href="../setup
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-09
+      Last update: 2021-08-10
     
   </small>
 </div>
