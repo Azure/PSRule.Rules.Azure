@@ -25,7 +25,8 @@ What's changed since v1.5.1:
 
 What's changed since pre-release v1.6.0-B2108038:
 
-- No additional changes.
+- Bug fixes:
+  - Fixed Bicep expand creates deadlock and times out. [#863](https://github.com/Azure/PSRule.Rules.Azure/issues/863)
 
 ## v1.6.0-B2108038 (pre-release)
 

@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 
 namespace PSRule.Rules.Azure.Data.Bicep
@@ -25,6 +26,8 @@ namespace PSRule.Rules.Azure.Data.Bicep
         private readonly PipelineContext Context;
         private readonly ResourceGroupOption _ResourceGroup;
         private readonly SubscriptionOption _Subscription;
+        private StringBuilder _Output;
+        private StringBuilder _Error;
 
         public BicepHelper(PipelineContext context, ResourceGroupOption resourceGroup, SubscriptionOption subscription)
         {
@@ -81,6 +84,15 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
             try
             {
+                _Output = new StringBuilder();
+                _Error = new StringBuilder();
+
+                bicep.ErrorDataReceived += Bicep_ErrorDataReceived;
+                bicep.OutputDataReceived += Bicep_OutputDataReceived;
+
+                bicep.BeginErrorReadLine();
+                bicep.BeginOutputReadLine();
+
                 if (!bicep.HasExited)
                 {
                     var timeoutCount = 0;
@@ -90,19 +102,27 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
                 if (!bicep.HasExited || bicep.ExitCode != 0)
                 {
-                    var error = bicep.HasExited ? bicep.StandardError.ReadToEnd() : PSRuleResources.BicepCompileTimeout;
+                    var error = bicep.HasExited ? _Error.ToString() : PSRuleResources.BicepCompileTimeout;
                     throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepCompileError, path, error), null, path);
                 }
 
-                using (var reader = new JsonTextReader(bicep.StandardOutput))
-                {
+                using (var reader = new JsonTextReader(new StringReader(_Output.ToString())))
                     return JObject.Load(reader);
-                }
             }
             finally
             {
                 bicep.Dispose();
             }
+        }
+
+        private void Bicep_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            _Output.AppendLine(e.Data);
+        }
+
+        private void Bicep_ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            _Error.AppendLine(e.Data);
         }
 
         private Process GetBicep(string sourcePath)
@@ -117,6 +137,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 CreateNoWindow = true,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
+                //RedirectStandardInput = true,
                 UseShellExecute = false,
                 WorkingDirectory = PSRuleOption.GetWorkingPath(),
             };

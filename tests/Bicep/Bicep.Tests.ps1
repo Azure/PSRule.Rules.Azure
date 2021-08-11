@@ -81,5 +81,32 @@ Describe 'Bicep' -Tag 'Bicep' {
                 Remove-Item 'Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI' -Force;
             }
         }
+
+        It 'Bicep expand completes with errors' {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            # Default
+            $sourceFile = Join-Path -Path $here -ChildPath 'template.bicep';
+            try {
+                # Install CLI
+                az bicep install
+
+                # Expand source files
+                $option = @{
+                    'Configuration.AZURE_BICEP_FILE_EXPANSION' = $True
+                }
+                $Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI = 'true';
+                $sourceFile = Join-Path -Path $here -ChildPath 'template.bicep';
+                { $Null = Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File -Option $option; } | Should -Throw;
+            }
+            finally {
+                Remove-Item 'Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI' -Force;
+            }
+        }
     }
 }
