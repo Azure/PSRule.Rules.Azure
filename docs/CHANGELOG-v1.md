@@ -7,6 +7,26 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.6.0
+
+What's changed since v1.5.1:
+
+- New features:
+  - **Experimental**: Added support for expansion from Bicep source files. [#848](https://github.com/Azure/PSRule.Rules.Azure/issues/848) [#670](https://github.com/Azure/PSRule.Rules.Azure/issues/670) [#858](https://github.com/Azure/PSRule.Rules.Azure/issues/858)
+    - Bicep support is currently experimental.
+    - To opt-in set the `AZURE_BICEP_FILE_EXPANSION` configuration to `true`.
+    - For more information see [Using Bicep](https://azure.github.io/PSRule.Rules.Azure/using-bicep/).
+- New rules:
+  - Application Gateways:
+    - Check Application Gateways publish endpoints by HTTPS. [#841](https://github.com/Azure/PSRule.Rules.Azure/issues/841)
+- Engineering:
+  - Bump PSRule dependency to v1.5.0. [#832](https://github.com/Azure/PSRule.Rules.Azure/issues/832)
+  - Migration of Pester v4 tests to Pester v5. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#395](https://github.com/Azure/PSRule.Rules.Azure/issues/395)
+
+What's changed since pre-release v1.6.0-B2108038:
+
+- No additional changes.
+
 ## v1.6.0-B2108038 (pre-release)
 
 What's changed since pre-release v1.6.0-B2108023:
