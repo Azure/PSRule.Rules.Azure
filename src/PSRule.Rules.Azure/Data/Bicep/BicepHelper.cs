@@ -96,7 +96,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 if (!bicep.HasExited)
                 {
                     var timeoutCount = 0;
-                    while (!bicep.WaitForExit(1000) && !bicep.HasExited && timeoutCount < 3)
+                    while (!bicep.WaitForExit(1000) && !bicep.HasExited && timeoutCount < 5)
                         timeoutCount++;
                 }
 
