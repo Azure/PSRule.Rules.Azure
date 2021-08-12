@@ -7,17 +7,17 @@
 
 #region Virtual Network
 
-# Synopsis: Subnets should have NSGs assigned, except for the GatewaySubnet
+# Synopsis: Virtual network (VNET) subnets should have Network Security Groups (NSGs) assigned.
 Rule 'Azure.VNET.UseNSGs' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $subnet = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
         # Get subnets
-        $subnet = @($TargetObject.properties.subnets | Where-Object { $_.Name -notin 'GatewaySubnet', 'AzureFirewallSubnet' });
+        $subnet = @($TargetObject.properties.subnets | Where-Object { $_.Name -notin 'GatewaySubnet', 'AzureFirewallSubnet', 'AzureFirewallManagementSubnet' });
         if ($subnet.Length -eq 0) {
             return $Assert.Pass();
         }
     }
-    elseif ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks/subnets' -and $PSRule.TargetName -in 'GatewaySubnet', 'AzureFirewallSubnet') {
+    elseif ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks/subnets' -and $PSRule.TargetName -in 'GatewaySubnet', 'AzureFirewallSubnet', 'AzureFirewallManagementSubnet') {
         return $Assert.Pass();
     }
     foreach ($sn in $subnet) {
