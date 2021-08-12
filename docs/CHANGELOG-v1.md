@@ -11,6 +11,8 @@ What's changed since v1.6.0:
 
 - Updated rules:
   - Excluded `AzureFirewallManagementSubnet` from `Azure.VNET.UseNSGs`. [#869](https://github.com/Azure/PSRule.Rules.Azure/issues/869)
+- Engineering:
+  - Bump PSRule dependency to v1.6.0. [#871](https://github.com/Azure/PSRule.Rules.Azure/issues/871)
 
 ## v1.6.0
 
