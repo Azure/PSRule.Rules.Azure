@@ -138,6 +138,23 @@ Rule 'Azure.AKS.AzureRBAC' -Type 'Microsoft.ContainerService/managedClusters' -T
     $Assert.HasFieldValue($TargetObject, 'Properties.aadProfile.enableAzureRbac', $True);
 }
 
+# Synopsis: Use Autoscaling to ensure AKS cluster is running efficiently with the right number of nodes for the workloads present.
+Rule 'Azure.AKS.AutoScaling' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    $agentPools = @(GetAgentPoolProfiles);
+
+    if ($agentPools.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    foreach ($agentPool in $agentPools) {
+
+        # Autoscaling only available on virtual machine scale sets
+        if ($Assert.HasFieldValue($agentPool, 'type', 'VirtualMachineScaleSets')) {
+            $Assert.HasFieldValue($agentPool, 'enableAutoScaling', $True).Reason($LocalizedData.AKSAutoScaling, $agentPool.name);
+        }
+    }
+}
+
 #region Helper functions
 
 function global:GetAgentPoolProfiles {
