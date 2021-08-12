@@ -3262,6 +3262,47 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurecli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurepowershell" class="md-nav__link">
+    Configure with Azure PowerShell
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#links" class="md-nav__link">
     Links
   </a>
@@ -3511,6 +3552,47 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurecli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurepowershell" class="md-nav__link">
+    Configure with Azure PowerShell
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#links" class="md-nav__link">
     Links
   </a>
@@ -3535,17 +3617,125 @@
                 
                 
                 <h1 id="usensgsonsubnets">Use NSGs on subnets<a class="headerlink" href="#usensgsonsubnets" title="Permanent link">#</a></h1>
-<p>Subnets should have NSGs assigned.</p>
+<p>Virtual network (VNET) subnets should have Network Security Groups (NSGs) assigned.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>Virtual network subnets should have a network security group (NSG) assigned.
-NSGs are a basic stateful firewall that can be assigned to a virtual machine network interface or a subnets.</p>
+<p>Each VNET subnet should have a network security group (NSG) assigned.
+NSGs are basic stateful firewalls that provide network isolation and security within a VNET.
+A key benefit of NSGS is that they provide network segmentation between and within a subnet.</p>
+<p>NSGs can be assigned to a virtual machine network interface or a subnet.
+When assigning NSGs to a subnet, all network traffic within the subnet is subject to the NSG rules.</p>
+<p>There is a small subset of special purpose subnets that do not support NSGs.
+These subnets are:</p>
+<ul>
+<li><code>GatewaySubnet</code> - used for hybrid connectivity with VPN and ExpressRoute gateways.</li>
+<li><code>AzureFirewallSubnet</code> and <code>AzureFirewallManagementSubnet</code> - are for Azure Firewall.
+  Azure Firewall includes an intrinsic NSG that is not directly manageable or visible.</li>
+</ul>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>The GatewaySubnet and AzureFirewallSubnet are special named subnets which does not support NSGs.
-For all other subnets, define and assign a NSG.</p>
+<p>For virtual network subnets, ensure that a network security groups (NSGs) are assigned.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To deploy virtual networks subnets that pass this rule:</p>
+<ul>
+<li>Set the <code>properties.networkSecurityGroup.id</code> property for each supported subnet to a NSG resource id.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.Network/virtualNetworks&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;vnet-001&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;addressSpace&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;addressPrefixes&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;10.0.0.0/16&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;dhcpOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;dnsServers&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;10.0.1.4&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;10.0.1.5&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;subnets&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GatewaySubnet&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;addressPrefix&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.0.0/24&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;snet-001&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;addressPrefix&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.1.0/24&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;networkSecurityGroup&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[resourceId(&#39;Microsoft.Network/networkSecurityGroups&#39;, &#39;nsg-001&#39;)]&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;[resourceId(&#39;Microsoft.Network/networkSecurityGroups&#39;, &#39;nsg-001&#39;)]&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To deploy virtual network subnets that pass this rule:</p>
+<ul>
+<li>Set the <code>properties.networkSecurityGroup.id</code> property for each supported subnet to a NSG resource id.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource vnet &#39;Microsoft.Network/virtualNetworks@2021-02-01&#39; = {
+  name: &#39;vnet-001&#39;
+  location: location
+  properties: {
+    addressSpace: {
+      addressPrefixes: [
+        &#39;10.0.0.0/16&#39;
+      ]
+    }
+    dhcpOptions: {
+      dnsServers: [
+        &#39;10.0.1.4&#39;
+        &#39;10.0.1.5&#39;
+      ]
+    }
+    subnets: [
+      {
+        name: &#39;GatewaySubnet&#39;
+        properties: {
+          addressPrefix: &#39;10.0.0.0/24&#39;
+        }
+      }
+      {
+        name: &#39;snet-001&#39;
+        properties: {
+          addressPrefix: &#39;10.0.1.0/24&#39;
+          networkSecurityGroup: {
+            id: nsg.id
+          }
+        }
+      }
+    ]
+  }
+}
+</code></pre></div>
+<h3 id="configurewithazurecli">Configure with Azure CLI<a class="headerlink" href="#configurewithazurecli" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code>az network vnet subnet update -n <span class="s1">&#39;&lt;subnet&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> --vnet-name <span class="s1">&#39;&lt;vnet_name&gt;&#39;</span> --network-security-group <span class="err">&#39;</span>&lt;nsg_name&gt;<span class="sb">`</span>
+</code></pre></div>
+<h3 id="configurewithazurepowershell">Configure with Azure PowerShell<a class="headerlink" href="#configurewithazurepowershell" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nv">$vnet</span> <span class="p">=</span> <span class="nb">Get-AzVirtualNetwork</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;vnet_name&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
+<span class="nv">$nsg</span> <span class="p">=</span> <span class="nb">Get-AzNetworkSecurityGroup</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;nsg_name&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
+<span class="nb">Set-AzVirtualNetworkSubnetConfig</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;subnet&gt;&#39;</span> <span class="n">-VirtualNetwork</span> <span class="nv">$vnet</span> <span class="n">-AddressPrefix</span> <span class="s1">&#39;10.0.1.0/24&#39;</span> <span class="n">-NetworkSecurityGroup</span> <span class="nv">$nsg</span>
+</code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-network-segmentation">Implement network segmentation patterns on Azure</a></li>
 <li><a href="https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets">Network Security Best Practices</a></li>
 <li><a href="https://docs.microsoft.com/azure/firewall/firewall-faq#are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet">Azure Firewall FAQ</a></li>
+<li><a href="https://docs.microsoft.com/azure/firewall/forced-tunneling#forced-tunneling-configuration">Forced tunneling configuration</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks?tabs=json">Azure template reference</a></li>
 </ul>
                 
                   
@@ -3555,7 +3745,7 @@ For all other subnets, define and assign a NSG.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-12
+      Last update: 2021-08-13
     
   </small>
 </div>
