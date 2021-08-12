@@ -48,3 +48,39 @@ resource appGw 'Microsoft.Network/applicationGateways@2021-02-01' = {
     }
   }
 }
+
+// An example VNET with NSG configured
+resource vnet 'Microsoft.Network/virtualNetworks@2021-02-01' = {
+  name: 'vnet-001'
+  location: location
+  properties: {
+    addressSpace: {
+      addressPrefixes: [
+        '10.0.0.0/16'
+      ]
+    }
+    dhcpOptions: {
+      dnsServers: [
+        '10.0.1.4'
+        '10.0.1.5'
+      ]
+    }
+    subnets: [
+      {
+        name: 'GatewaySubnet'
+        properties: {
+          addressPrefix: '10.0.0.0/24'
+        }
+      }
+      {
+        name: 'snet-001'
+        properties: {
+          addressPrefix: '10.0.1.0/24'
+          networkSecurityGroup: {
+            id: nsg.id
+          }
+        }
+      }
+    ]
+  }
+}
