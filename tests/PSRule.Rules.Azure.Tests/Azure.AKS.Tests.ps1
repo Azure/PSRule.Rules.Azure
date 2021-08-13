@@ -230,6 +230,22 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.TargetName | Should -BeIn 'cluster-F';
         }
 
+        It 'Azure.AKS.AutoScaling' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.AutoScaling' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 4
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 2
+            $ruleResult.TargetName | Should -BeIn 'system', 'cluster-F'
+        }
+
         It 'Azure.AKS.AuthorizedIPs' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.AuthorizedIPs' };
 
@@ -531,6 +547,22 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'clusterB';
+        }
+
+        It 'Azure.AKS.AutoScaling' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.AutoScaling' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 2
+            $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterC/agentpool3'
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 2
+            $ruleResult.TargetName | Should -BeIn 'clusterB', 'clusterC/agentpool4'
         }
 
         It 'Azure.AKS.AuthorizedIPs' {

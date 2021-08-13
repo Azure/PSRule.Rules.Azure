@@ -19,7 +19,8 @@
                     "maxPods": 30,
                     "type": "AvailabilitySet",
                     "orchestratorVersion": "1.20.5",
-                    "osType": "Linux"
+                    "osType": "Linux",
+                    "enableAutoScaling": false
                 }
             ],
             "servicePrincipalProfile": {
@@ -82,7 +83,8 @@
                     "maxPods": 30,
                     "type": "AvailabilitySet",
                     "orchestratorVersion": "1.11.4",
-                    "osType": "Linux"
+                    "osType": "Linux",
+                    "enableAutoScaling": false
                 }
             ],
             "servicePrincipalProfile": {

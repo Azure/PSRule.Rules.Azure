@@ -105,7 +105,8 @@
                 "maxPods": 30,
                 "type": "AvailabilitySet",
                 "orchestratorVersion": "1.11.5",
-                "osType": "Linux"
+                "osType": "Linux",
+                "enableAutoScaling": false
             }
         },
         {
@@ -128,7 +129,8 @@
                         "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-01')]",
                         "maxPods": 50,
                         "type": "VirtualMachineScaleSets",
-                        "osType": "Linux"
+                        "osType": "Linux",
+                        "enableAutoScaling": true
                     }
                 ],
                 "servicePrincipalProfile": {
@@ -243,7 +245,8 @@
                 "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-04')]",
                 "maxPods": 50,
                 "type": "VirtualMachineScaleSets",
-                "osType": "Linux"
+                "osType": "Linux",
+                "enableAutoScaling": true
             }
         }
     ]
