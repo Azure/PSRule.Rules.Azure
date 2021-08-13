@@ -49,7 +49,8 @@
                         "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-01')]",
                         "maxPods": 50,
                         "type": "VirtualMachineScaleSets",
-                        "osType": "Linux"
+                        "osType": "Linux",
+                        "enableAutoScaling": false
                     }
                 ],
                 "servicePrincipalProfile": {
@@ -228,7 +229,8 @@
                 "maxPods": 50,
                 "type": "VirtualMachineScaleSets",
                 "orchestratorVersion": "1.20.5",
-                "osType": "Linux"
+                "osType": "Linux",
+                "enableAutoScaling": false
             }
         },
         {
