@@ -149,7 +149,7 @@ Rule 'Azure.AKS.AutoScaling' -Type 'Microsoft.ContainerService/managedClusters',
     foreach ($agentPool in $agentPools) {
 
         # Autoscaling only available on virtual machine scale sets
-        if ($Assert.HasFieldValue($agentPool, 'type', 'VirtualMachineScaleSets')) {
+        if ($Assert.HasFieldValue($agentPool, 'type', 'VirtualMachineScaleSets').Result) {
             $Assert.HasFieldValue($agentPool, 'enableAutoScaling', $True).Reason($LocalizedData.AKSAutoScaling, $agentPool.name);
         }
         else {
@@ -173,6 +173,7 @@ function global:GetAgentPoolProfiles {
                     type = $_.type
                     maxPods = $_.properties.maxPods
                     orchestratorVersion = $_.properties.orchestratorVersion
+                    enableAutoScaling = $_.properties.enableAutoScaling
                 }
             });
         }
