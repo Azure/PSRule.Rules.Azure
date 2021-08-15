@@ -170,7 +170,7 @@ function global:GetAgentPoolProfiles {
             @(GetSubResources -ResourceType 'Microsoft.ContainerService/managedClusters/agentPools' | ForEach-Object {
                 [PSCustomObject]@{
                     name = $_.name
-                    type = $_.type
+                    type = $_.properties.type
                     maxPods = $_.properties.maxPods
                     orchestratorVersion = $_.properties.orchestratorVersion
                     enableAutoScaling = $_.properties.enableAutoScaling
