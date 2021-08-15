@@ -282,10 +282,12 @@ Azure.Storage.SoftDelete            0     8     Fail
 
 ## Scenarios
 
-For walk through examples of `PSRule.Rules.Azure` module usage see:
+For walk through examples of PSRule for Azure module usage see:
 
 - [Validate Azure resources from templates with Azure Pipelines](docs/scenarios/azure-pipelines-ci/azure-pipelines-ci.md)
 - [Validate Azure resources from templates with continuous integration (CI)](docs/scenarios/azure-template-ci/azure-template-ci.md)
+- [Create a custom rule to enforce Resource Group tagging](https://azure.github.io/PSRule.Rules.Azure/customization/enforce-custom-tags/)
+- [Create a custom rule to enforce code ownership](https://azure.github.io/PSRule.Rules.Azure/customization/enforce-codeowners/)
 
 ## Rule reference
 

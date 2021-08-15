@@ -96,9 +96,32 @@ For installation options see [installation][7].
 Continue reading for FAQ relating to _PSRule for Azure_.
 For general FAQ see [PSRule - Frequently Asked Questions (FAQ)][ps-rule-faq], including:
 
-- [How is PSRule different to Pester?][compare-pester]
+- [How is PSRule different to Pester?][11]
 - [How do I configure PSRule?][ps-rule-configure]
 - [How do I ignore a rule?][ignore-rule]
+- [How do I layer on custom rules on top of an existing module?][add-custom-rule]
+
+### How do I create a custom rule to enforce resource group tagging?
+
+PSRule for Azure covers common use cases that align to the [Microsoft Azure Well-Architected Framework][AWAF].
+Use of resource and resource group tags is recommended in the WAF, however implementation may vary.
+You may want to use PSRule to enforce tagging or something similar early in a DevOps pipeline.
+
+We have a walk through scenario [Enforcing custom tags][9] to get you started.
+
+### How do I create a custom rule to enforce code ownership?
+
+GitHub, Azure DevOps, and other DevOps platforms may implement code ownership.
+This process involves assigning a team or an individual review and approval responsibility.
+In GitHub or Azure DevOps implementation, ownership is linked to the file path.
+
+When a repository contains resources that different teams would approve how do you:
+
+- Resources are created in a path that triggers the correct approval.
+
+We have a walk through scenario [Enforcing code ownership][10] to get you started.
+
+  [10]: customization/enforce-codeowners/index.md
 
 ### Do I need PowerShell experience to start using PSRule for Azure?
 
@@ -147,7 +170,9 @@ PSRule complements Azure Advisor, Security Center, and Azure Policy features by:
 You may already be using a unit test framework such as Pester to test infrastructure code.
 If you are, then you may have encountered the following challenges.
 
-For a general PSRule/ Pester comparison see [How is PSRule different to Pester?][compare-pester]
+For a general PSRule/ Pester comparison see [How is PSRule different to Pester?][11]
+
+  [11]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-is-psrule-different-to-pester
 
 #### Unit testing more than basic JSON structure
 
@@ -176,9 +201,9 @@ For detailed examples see:
 PSRule and PSRule for Azure currently do not collect any telemetry during installation or execution.
 
 PowerShell (used by PSRule for Azure) does collect basic telemetry by default.
-Collection of telemetry in PowerShell and how to opt-out is explained in [about_Telemetry][10].
+Collection of telemetry in PowerShell and how to opt-out is explained in [about_Telemetry][12].
 
-  [10]: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_telemetry
+  [12]: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_telemetry
 
 *[ARM]: Azure Resource Manager
 *[WAF]: Well-Architected Framework
@@ -186,7 +211,7 @@ Collection of telemetry in PowerShell and how to opt-out is explained in [about_
 *[CI]: Continuous Integration
 *[PRs]: Pull Requests
 
-[compare-pester]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-is-psrule-different-to-pester
 [ignore-rule]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-ignore-a-rule
 [ps-rule-configure]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-configure-psrule
 [ps-rule-faq]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#frequently-asked-questions-faq
+[add-custom-rule]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-layer-on-custom-rules-on-top-of-an-existing-module

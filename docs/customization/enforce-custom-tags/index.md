@@ -1,3 +1,7 @@
+---
+author: BernieWhite
+---
+
 # Enforcing custom tags
 
 With PSRule, you can layer on custom rules with to implement organization specific requirements.
@@ -162,7 +166,6 @@ If neither property exists, PSRule will use the object type.
 ## Testing locally
 
 To test the custom rule within Visual Studio Code, see [validating locally][3].
-
 Alternatively you can test the rule manually by running the following from a PowerShell terminal.
 
 ```powershell
