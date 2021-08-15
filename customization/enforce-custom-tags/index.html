@@ -10,7 +10,7 @@
       
       
       
-        <meta name="author" content="Microsoft">
+        <meta name="author" content="BernieWhite">
       
       
         <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/customization/enforce-custom-tags/">
@@ -536,6 +536,18 @@
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enforce-codeowners/" class="md-nav__link">
+        Enforcing code ownership
+      </a>
     </li>
   
 
@@ -3725,8 +3737,8 @@ alternative it will use <code>type</code>.
 If neither property exists, PSRule will use the object type.</li>
 </ul>
 <h2 id="testinglocally">Testing locally<a class="headerlink" href="#testinglocally" title="Permanent link">#</a></h2>
-<p>To test the custom rule within Visual Studio Code, see <a href="../../validating-locally/">validating locally</a>.</p>
-<p>Alternatively you can test the rule manually by running the following from a PowerShell terminal.</p>
+<p>To test the custom rule within Visual Studio Code, see <a href="../../validating-locally/">validating locally</a>.
+Alternatively you can test the rule manually by running the following from a PowerShell terminal.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">Assert-PSRule</span> <span class="n">-Path</span> <span class="s1">&#39;.ps-rule/&#39;</span> <span class="n">-Module</span> <span class="s1">&#39;PSRule.Rules.Azure&#39;</span> <span class="n">-InputPath</span> <span class="p">.</span> <span class="n">-Format</span> <span class="n">File</span>
 </code></pre></div>
 <h2 id="samplecode">Sample code<a class="headerlink" href="#samplecode" title="Permanent link">#</a></h2>
@@ -3783,13 +3795,13 @@ If neither property exists, PSRule will use the object type.</li>
       
       
         
-        <a href="../../troubleshooting/" class="md-footer__link md-footer__link--next" aria-label="Next: Troubleshooting" rel="next">
+        <a href="../enforce-codeowners/" class="md-footer__link md-footer__link--next" aria-label="Next: Enforcing code ownership" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Troubleshooting
+              Enforcing code ownership
             </div>
           </div>
           <div class="md-footer__button md-icon">

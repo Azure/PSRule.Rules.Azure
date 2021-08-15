@@ -413,6 +413,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#howdoicreateacustomruletoenforceresourcegrouptagging" class="md-nav__link">
+    How do I create a custom rule to enforce resource group tagging?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#howdoicreateacustomruletoenforcecodeownership" class="md-nav__link">
+    How do I create a custom rule to enforce code ownership?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#doineedpowershellexperiencetostartusingpsruleforazure" class="md-nav__link">
     Do I need PowerShell experience to start using PSRule for Azure?
   </a>
@@ -587,6 +601,18 @@
     <li class="md-nav__item">
       <a href="../customization/enforce-custom-tags/" class="md-nav__link">
         Enforcing custom tags
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customization/enforce-codeowners/" class="md-nav__link">
+        Enforcing code ownership
       </a>
     </li>
   
@@ -3611,6 +3637,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#howdoicreateacustomruletoenforceresourcegrouptagging" class="md-nav__link">
+    How do I create a custom rule to enforce resource group tagging?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#howdoicreateacustomruletoenforcecodeownership" class="md-nav__link">
+    How do I create a custom rule to enforce code ownership?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#doineedpowershellexperiencetostartusingpsruleforazure" class="md-nav__link">
     Do I need PowerShell experience to start using PSRule for Azure?
   </a>
@@ -3776,7 +3816,22 @@ For general FAQ see <a href="https://github.com/microsoft/PSRule/blob/main/docs/
 <li><a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-is-psrule-different-to-pester">How is PSRule different to Pester?</a></li>
 <li><a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-configure-psrule">How do I configure PSRule?</a></li>
 <li><a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-ignore-a-rule">How do I ignore a rule?</a></li>
+<li><a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-layer-on-custom-rules-on-top-of-an-existing-module">How do I layer on custom rules on top of an existing module?</a></li>
 </ul>
+<h3 id="howdoicreateacustomruletoenforceresourcegrouptagging">How do I create a custom rule to enforce resource group tagging?<a class="headerlink" href="#howdoicreateacustomruletoenforceresourcegrouptagging" title="Permanent link">#</a></h3>
+<p>PSRule for Azure covers common use cases that align to the <a href="https://docs.microsoft.com/azure/architecture/framework/">Microsoft Azure Well-Architected Framework</a>.
+Use of resource and resource group tags is recommended in the <abbr title="Well-Architected Framework">WAF</abbr>, however implementation may vary.
+You may want to use PSRule to enforce tagging or something similar early in a DevOps pipeline.</p>
+<p>We have a walk through scenario <a href="../customization/enforce-custom-tags/">Enforcing custom tags</a> to get you started.</p>
+<h3 id="howdoicreateacustomruletoenforcecodeownership">How do I create a custom rule to enforce code ownership?<a class="headerlink" href="#howdoicreateacustomruletoenforcecodeownership" title="Permanent link">#</a></h3>
+<p>GitHub, Azure DevOps, and other DevOps platforms may implement code ownership.
+This process involves assigning a team or an individual review and approval responsibility.
+In GitHub or Azure DevOps implementation, ownership is linked to the file path.</p>
+<p>When a repository contains resources that different teams would approve how do you:</p>
+<ul>
+<li>Resources are created in a path that triggers the correct approval.</li>
+</ul>
+<p>We have a walk through scenario <a href="../customization/enforce-codeowners/">Enforcing code ownership</a> to get you started.</p>
 <h3 id="doineedpowershellexperiencetostartusingpsruleforazure">Do I need PowerShell experience to start using PSRule for Azure?<a class="headerlink" href="#doineedpowershellexperiencetostartusingpsruleforazure" title="Permanent link">#</a></h3>
 <p>No. You can start using built-in rules and <abbr title="Continuous Integration">CI</abbr> with Azure Pipelines or GitHub Actions.
 If we didn't tell you, you might not even know that PowerShell runs under the covers.</p>
