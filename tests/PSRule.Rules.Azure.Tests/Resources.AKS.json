@@ -19,7 +19,8 @@
                     "maxPods": 30,
                     "type": "AvailabilitySet",
                     "orchestratorVersion": "1.20.5",
-                    "osType": "Linux"
+                    "osType": "Linux",
+                    "enableAutoScaling": false
                 }
             ],
             "servicePrincipalProfile": {
@@ -82,7 +83,8 @@
                     "maxPods": 30,
                     "type": "AvailabilitySet",
                     "orchestratorVersion": "1.11.4",
-                    "osType": "Linux"
+                    "osType": "Linux",
+                    "enableAutoScaling": false
                 }
             ],
             "servicePrincipalProfile": {
@@ -150,7 +152,8 @@
                     "type": "VirtualMachineScaleSets",
                     "provisioningState": "Succeeded",
                     "orchestratorVersion": "1.20.5",
-                    "osType": "Linux"
+                    "osType": "Linux",
+                    "enableAutoScaling": false
                 }
             ],
             "servicePrincipalProfile": {
@@ -235,7 +238,8 @@
                     "nodeLabels": {},
                     "mode": "System",
                     "osType": "Linux",
-                    "nodeImageVersion": "AKSUbuntu:1604:2020.05.13"
+                    "nodeImageVersion": "AKSUbuntu:1604:2020.05.13",
+                    "enableAutoScaling": false
                 }
             ],
             "windowsProfile": {
