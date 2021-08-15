@@ -13,7 +13,7 @@ What's changed since v1.6.0:
 
 - New rules:
   - Azure Kubernetes Service:
-    - Check clusters use auto-scale node pools. [#218](https://github.com/Azure/PSRule.Rules.Azure/issues/218)
+    - Check clusters use auto-scale node pools. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#218](https://github.com/Azure/PSRule.Rules.Azure/issues/218)
 - Updated rules:
   - Virtual Network:
     - Excluded `AzureFirewallManagementSubnet` from `Azure.VNET.UseNSGs`. [#869](https://github.com/Azure/PSRule.Rules.Azure/issues/869)
