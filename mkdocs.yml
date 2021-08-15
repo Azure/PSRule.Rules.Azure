@@ -47,6 +47,7 @@ nav:
     - Customization:
       - Storing custom rules: customization/index.md
       - Enforcing custom tags: customization/enforce-custom-tags/index.md
+      - Enforcing code ownership: customization/enforce-codeowners/index.md
     - Troubleshooting: troubleshooting.md
     # - Data privacy: data-privacy.md
     - License and contributing: license-contributing.md

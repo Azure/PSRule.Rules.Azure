@@ -1,3 +1,7 @@
+---
+author: BernieWhite
+---
+
 # Storing custom rules
 
 PSRule for Azure covers common use cases that align to the [Microsoft Azure Well-Architected Framework (WAF)][AWAF].
