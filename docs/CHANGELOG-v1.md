@@ -7,10 +7,16 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.7.0-B2108020 (pre-release)
+
 What's changed since v1.6.0:
 
+- New rules:
+  - Azure Kubernetes Service:
+    - Check clusters use auto-scale node pools. [#218](https://github.com/Azure/PSRule.Rules.Azure/issues/218)
 - Updated rules:
-  - Excluded `AzureFirewallManagementSubnet` from `Azure.VNET.UseNSGs`. [#869](https://github.com/Azure/PSRule.Rules.Azure/issues/869)
+  - Virtual Network:
+    - Excluded `AzureFirewallManagementSubnet` from `Azure.VNET.UseNSGs`. [#869](https://github.com/Azure/PSRule.Rules.Azure/issues/869)
 - Engineering:
   - Bump PSRule dependency to v1.6.0. [#871](https://github.com/Azure/PSRule.Rules.Azure/issues/871)
 
