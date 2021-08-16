@@ -49,25 +49,41 @@ Use a reaction in place of a "+1" comment:
 This project contains a wide range of documentation, stored in `docs/`.
 Some of the documentation that you might like to improve include:
 
-- Rule recommendations (`docs/rules/`).
-- Scenarios and examples (`docs/scenarios/`).
+- Rule recommendations (`docs/en/rules/`).
+- Scenarios and examples (`docs/customization` and `docs/scenarios/`).
 - PowerShell cmdlet and conceptual topics (`docs/commands/` and `docs/concepts/`).
 
 ### Rule recommendations
 
 Before improving rule recommendations familiarize yourself with writing [rule markdown documentation](https://microsoft.github.io/PSRule/scenarios/rule-docs/rule-docs.html#writing-markdown-documentation).
 
-Rule documentation requires the following annotations:
+Rule documentation requires the following annotations for use with PSRule for Azure:
 
-- `severity`
-- `pillar`
-- `category`
-- `online version`
+- `severity` - The rule's severity.
+- `pillar` - A Azure Well-Architected Framework pillar.
+  Either `Cost Optimization`, `Operational Excellence`, `Performance Efficiency`, `Reliability`, `Security`.
+- `category` - A category of Azure Well-Architected Framework pillar.
+- `online version` - The URL of the online version of the documentation.
+  This will start with `https://azure.github.io/PSRule.Rules.Azure/en/rules/`.
+  The URL will not exist for new rules until the Pull Request is merged.
+
+When authoring and improving rule documentation, please follow these guidelines:
+
+- Provide documentation links to the Azure service and Well-Architected Framework pillar.
+  Examples of good documentation links include:
+  - Best practices for the Azure service.
+  - Instructions on how to configure the Azure service.
+  - [Azure template reference](https://docs.microsoft.com/azure/templates/).
+- For links to _https://docs.microsoft.com/_ remove culture from path to make it more generic.
+  For example _https://docs.microsoft.com/azure/aks/concepts-scale_ instead of _https://docs.microsoft.com/en-us/azure/aks/concepts-scale_.
+- Add examples of a Azure resource that would pass the rule.
+  At a minimum where applicable provide an example of a Azure template resource.
+  Also consider including example Bicep code.
 
 ## Adding or improving rules
 
 - Rules are stored in `src/PSRule.Rules.Azure/rules/`.
-- Rules are organized into separate `.Rule.ps1` files based on service.
+- Rules are organized into separate `.Rule.ps1` or `.Rule.yaml` files based on service.
 - Rule documentation in English is stored in `docs/en/rules/`.
   - Additional cultures can be added in a subdirectory under `docs/`.
 - Use pre-conditions to limit the type of resource a rule applies to.
@@ -83,6 +99,7 @@ Each rule **must** meet the following requirements:
 - Have a `ruleSet` tag. e.g. `-Tag @{ release = 'GA'; ruleSet = '2020_09' }`
   - The rule set tag identifies the quarter that the rule was first released.
   - This is used to include rules in quarterly baselines.
+  - New rules are included in the next quarterly baseline. i.e. (YYYY_03, YYYY_06, YYYY_09, YYYY_12)
 - Include an inline `Synopsis: ` comment above each rule.
 
 For example:
