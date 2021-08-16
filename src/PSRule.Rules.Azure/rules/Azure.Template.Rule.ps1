@@ -225,6 +225,18 @@ Rule 'Azure.Template.ParameterFile' -Type '.json' -If { (IsParameterFile) } -Tag
     $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters';
 }
 
+# Synopsis: Configure a metadata link for each parameter file.
+Rule 'Azure.Template.MetadataLink' -Type '.json' -If { $Configuration.AZURE_PARAMETER_FILE_METADATA_LINK -eq $True -and (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09' } {
+    $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
+    $field = $Assert.HasFieldValue($jsonObject, 'metadata.template');
+    if (!$field.Result) {
+        return $field;
+    }
+    $path = [PSRule.Rules.Azure.Runtime.Helper]::GetMetadataLinkPath($TargetObject.FullName, $jsonObject.metadata.template)
+    $Assert.FilePath($path, '.');
+    $Assert.WithinPath($path, '.', @($PWD));
+}
+
 #endregion Parameters
 
 #region Helper functions

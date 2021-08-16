@@ -48,6 +48,11 @@ namespace PSRule.Rules.Azure.Runtime
             return bicep.ProcessFile(bicepFile);
         }
 
+        public static string GetMetadataLinkPath(string parameterFile, string templateFile)
+        {
+            return TemplateLinkHelper.GetMetadataLinkPath(parameterFile, templateFile);
+        }
+
         public static INetworkSecurityGroupEvaluator GetNetworkSecurityGroup(PSObject[] securityRules)
         {
             var builder = new NetworkSecurityGroupEvaluator();

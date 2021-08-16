@@ -36,6 +36,8 @@ PSRule for Azure uses links to achieve this.
     It is not enabled by default to preserve the default behavior prior to PSRule for Azure v1.4.0.
     [Creating your pipeline][1] covers how to enable this in a CI pipeline.
 
+  [1]: creating-your-pipeline.md#expandtemplateparameterfiles
+
 ### Feature support
 
 Expansion of Azure template parameter files works with Azure Resource Manager (ARM) features.
@@ -143,6 +145,14 @@ Additional benefits you get by using metadata links include:
 - You can discover all the deployments using a specific template by reading metadata.
   PSRule for Azure includes the `Get-AzRuleTemplateLink` cmdlet to list parameter file links.
 
+!!! Tip
+    By default, metadata links are not required.
+    By configuring the `AZURE_PARAMETER_FILE_METADATA_LINK` option to `true`, this can be enforced.
+    When configured, PSRule for Azure will fail parameter files that do not contain a metadata link.
+    For details on `AZURE_PARAMETER_FILE_METADATA_LINK` see [Configuring expansion][2].
+
+  [2]: setup/configuring-expansion.md#requiretemplatemetadatalink
+
 ### Naming convention
 
 When metadata links are not set, PSRule for Azure will use a naming convention to link to template files.
@@ -152,7 +162,6 @@ When linking using naming convention, the template and the parameter file must b
 !!! Example
     A parameter file named `azuredeploy.parameters.json` links to the template file named `azuredeploy.json`.
 
-  [1]: creating-your-pipeline.md#expandtemplateparameterfiles
 
 *[WAF]: Well-Architected Framework
 *[ARM]: Azure Resource Manager
