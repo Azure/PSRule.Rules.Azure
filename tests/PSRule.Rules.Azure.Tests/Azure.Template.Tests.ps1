@@ -403,5 +403,25 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeLike "*Resources.Parameters.json";
         }
+
+        It 'Azure.Template.MetadataLink' {
+            $dataPath = Join-Path -Path $here -ChildPath '*.Parameters.json';
+            $options = @{
+                'Configuration.AZURE_PARAMETER_FILE_METADATA_LINK' = $True
+            }
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $options -Format File -Name 'Azure.Template.MetadataLink';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.MetadataLink' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'tests/PSRule.Rules.Azure.Tests/Resources.ServiceFabric.Parameters.json';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 7;
+        }
     }
 }

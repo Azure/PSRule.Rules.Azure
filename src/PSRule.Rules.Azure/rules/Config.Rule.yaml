@@ -26,6 +26,7 @@ spec:
       resourceGroupName: [ 'ResourceGroupName' ]
   configuration:
     AZURE_PARAMETER_FILE_EXPANSION: false
+    AZURE_PARAMETER_FILE_METADATA_LINK: false
     AZURE_BICEP_FILE_EXPANSION: false
   convention:
     include:

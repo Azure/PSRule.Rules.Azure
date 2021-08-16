@@ -68,6 +68,14 @@ namespace PSRule.Rules.Azure.Data.Template
             return templateLink;
         }
 
+        internal static string GetMetadataLinkPath(string parameterFile, string templateFile)
+        {
+            templateFile = TrimSlash(templateFile);
+            var pathBase = IsRelative(templateFile) ? Path.GetDirectoryName(parameterFile) : PSRuleOption.GetWorkingPath();
+            templateFile = Path.GetFullPath(Path.Combine(pathBase, templateFile));
+            return templateFile;
+        }
+
         private static JObject ReadFile(string path)
         {
             if (string.IsNullOrEmpty(path) || !File.Exists(path))
@@ -132,9 +140,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return false;
             }
 
-            templateFile = TrimSlash(templateFile);
-            var pathBase = IsRelative(templateFile) ? Path.GetDirectoryName(parameterFile) : PSRuleOption.GetWorkingPath();
-            templateFile = Path.GetFullPath(Path.Combine(pathBase, templateFile));
+            templateFile = GetMetadataLinkPath(parameterFile, templateFile);
 
             // Template file must be within working path
             if (!templateFile.StartsWith(PSRuleOption.GetRootedBasePath(""), StringComparison.Ordinal))

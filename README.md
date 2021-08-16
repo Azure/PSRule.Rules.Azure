@@ -333,16 +333,18 @@ The following commands exist in the `PSRule.Rules.Azure` module:
 
 The following conceptual topics exist in the `PSRule.Rules.Azure` module:
 
-- [Azure metadata link](docs/concepts/about_PSRule_Azure_Metadata_Link.md)
-- [Configuration](docs/concepts/about_PSRule_Azure_Configuration.md)
-  - [Azure_AKSMinimumVersion](docs/concepts/about_PSRule_Azure_Configuration.md#azure_aksminimumversion)
-  - [Azure_AKSNodeMinimumMaxPods](docs/concepts/about_PSRule_Azure_Configuration.md#azure_aksnodeminimummaxpods)
-  - [Azure_AllowedRegions](docs/concepts/about_PSRule_Azure_Configuration.md#azure_allowedregions)
-  - [Azure_MinimumCertificateLifetime](docs/concepts/about_PSRule_Azure_Configuration.md#azure_minimumcertificatelifetime)
-  - [AZURE_PARAMETER_FILE_EXPANSION](docs/concepts/about_PSRule_Azure_Configuration.md#azure_parameter_file_expansion)
-  - [AZURE_POLICY_WAIVER_MAX_EXPIRY](docs/concepts/about_PSRule_Azure_Configuration.md#azure_policy_waiver_max_expiry)
-  - [AZURE_RESOURCE_GROUP](docs/concepts/about_PSRule_Azure_Configuration.md#azure_resource_group)
-  - [AZURE_SUBSCRIPTION](docs/concepts/about_PSRule_Azure_Configuration.md#azure_subscription)
+- [Using metadata](https://azure.github.io/PSRule.Rules.Azure/using-metadata/)
+- [Configuration](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-options/)
+  - [Azure_AKSMinimumVersion](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-rules/#aksminimumkubernetesversion)
+  - [Azure_AKSNodeMinimumMaxPods](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-rules/#aksminimummaxpods)
+  - [Azure_AllowedRegions](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-rules/#allowedresourceregions)
+  - [Azure_MinimumCertificateLifetime](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-rules/#minimumcertificatelifetime)
+  - [AZURE_BICEP_FILE_EXPANSION](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-expansion/#bicepsourceexpansion)
+  - [AZURE_PARAMETER_FILE_EXPANSION](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-expansion/#parameterfileexpansion)
+  - [AZURE_PARAMETER_FILE_METADATA_LINK](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-expansion/#requiretemplatemetadatalink)
+  - [AZURE_POLICY_WAIVER_MAX_EXPIRY](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-rules/#azurepolicymaximumwavier)
+  - [AZURE_RESOURCE_GROUP](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-expansion/#deploymentresourcegroup)
+  - [AZURE_SUBSCRIPTION](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-expansion/#deploymentsubscription)
 
 ## Related projects
 

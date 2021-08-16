@@ -10,6 +10,9 @@ See [troubleshooting guide] for a workaround to this issue.
 What's changed since pre-release v1.7.0-B2108020:
 
 - New rules:
+  - All resources:
+    - Check template parameter files use metadata links. [#846](https://github.com/Azure/PSRule.Rules.Azure/issues/846)
+      - Configure the `AZURE_PARAMETER_FILE_METADATA_LINK` option to enable this rule.
   - Storage Account:
     - Check Storage Accounts only accept explicitly allowed network traffic. [#884](https://github.com/Azure/PSRule.Rules.Azure/issues/884)
 

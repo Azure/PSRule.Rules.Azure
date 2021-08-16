@@ -79,6 +79,40 @@ configuration:
   AZURE_BICEP_FILE_EXPANSION: true
 ```
 
+### Require template metadata link
+
+:octicons-milestone-24: v1.7.0
+
+This configuration option determines if Azure template parameter files require a metadata link.
+When configured to `true`, the `Azure.Template.MetadataLink` rule is enabled.
+Any Azure template parameter files that do not include a metadata link will report a fail for this rule.
+
+The rule `Azure.Template.MetadataLink` is not enabled by default.
+Additionally, when enabled this rule can still be excluded or suppressed like all other rules.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_PARAMETER_FILE_METADATA_LINK: bool
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_PARAMETER_FILE_METADATA_LINK configuration option
+configuration:
+  AZURE_PARAMETER_FILE_METADATA_LINK: false
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_PARAMETER_FILE_METADATA_LINK configuration option to enable expansion
+configuration:
+  AZURE_PARAMETER_FILE_METADATA_LINK: true
+```
+
 ### Deployment resource group
 
 :octicons-milestone-24: v1.1.0
