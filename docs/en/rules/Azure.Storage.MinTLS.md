@@ -27,9 +27,9 @@ Also consider enforcing this setting using Azure Policy.
 
 ## EXAMPLES
 
-### Azure templates
+### Configure with Azure template
 
-To deploy storage accounts that pass this rule:
+To deploy Storage Accounts that pass this rule:
 
 - Set the `properties.minimumTlsVersion` property to `TLS1_2` or newer.
 
@@ -41,7 +41,7 @@ For example:
     "type": "Microsoft.Storage/storageAccounts",
     "apiVersion": "2019-06-01",
     "name": "st0000001",
-    "location": "eastus",
+    "location": "[parameters('location')]",
     "sku": {
         "name": "Standard_GRS",
         "tier": "Standard"
@@ -56,9 +56,38 @@ For example:
 }
 ```
 
+### Configure with Bicep
+
+To deploy Storage Accounts that pass this rule:
+
+- Set the `properties.minimumTlsVersion` property to `TLS1_2` or newer.
+
+For example:
+
+```bicep
+resource st0000001 'Microsoft.Storage/storageAccounts@2021-04-01' = {
+  name: 'st0000001'
+  location: location
+  sku: {
+    name: 'Standard_GRS'
+  }
+  kind: 'StorageV2'
+  properties: {
+    supportsHttpsTrafficOnly: true
+    accessTier: 'Hot'
+    allowBlobPublicAccess: false
+    minimumTlsVersion: 'TLS1_2'
+    networkAcls: {
+      defaultAction: 'Deny'
+    }
+  }
+}
+```
+
 ## LINKS
 
 - [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [TLS encryption in Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#tls-encryption-in-azure)
 - [Enforce a minimum required version of Transport Layer Security (TLS) for requests to a storage account](https://docs.microsoft.com/azure/storage/common/transport-layer-security-configure-minimum-version)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Use Azure Policy to enforce the minimum TLS version](https://docs.microsoft.com/azure/storage/common/transport-layer-security-configure-minimum-version#use-azure-policy-to-enforce-the-minimum-tls-version)

@@ -226,6 +226,12 @@ Name | Synopsis | Severity
 
 ## Security
 
+### Application endpoints
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.Storage.Firewall](Azure.Storage.Firewall.md) | Storage Accounts should only accept explicitly allowed traffic. | Important
+
 ### Applications and services
 
 Name | Synopsis | Severity

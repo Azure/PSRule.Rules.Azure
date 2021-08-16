@@ -84,3 +84,38 @@ resource vnet 'Microsoft.Network/virtualNetworks@2021-02-01' = {
     ]
   }
 }
+
+// An example storage account
+resource st0000001 'Microsoft.Storage/storageAccounts@2021-04-01' = {
+  name: 'st0000001'
+  location: location
+  sku: {
+    name: 'Standard_GRS'
+  }
+  kind: 'StorageV2'
+  properties: {
+    supportsHttpsTrafficOnly: true
+    accessTier: 'Hot'
+    allowBlobPublicAccess: false
+    minimumTlsVersion: 'TLS1_2'
+    networkAcls: {
+      defaultAction: 'Deny'
+    }
+  }
+}
+
+// An example configuration for blob storage account
+resource st0000001_blob 'Microsoft.Storage/storageAccounts/blobServices@2021-04-01' = {
+  name: 'default'
+  parent: st0000001
+  properties: {
+    deleteRetentionPolicy: {
+      enabled: true
+      days: 7
+    }
+    containerDeleteRetentionPolicy: {
+      enabled: true
+      days: 7
+    }
+  }
+}

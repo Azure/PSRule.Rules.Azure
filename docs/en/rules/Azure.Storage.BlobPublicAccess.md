@@ -29,9 +29,9 @@ Also consider enforcing this setting using Azure Policy.
 
 ## EXAMPLES
 
-### Azure templates
+### Configure with Azure template
 
-To deploy storage accounts that pass this rule:
+To deploy Storage Accounts that pass this rule:
 
 - Set the `properties.allowBlobPublicAccess` property to `false`.
 
@@ -43,7 +43,7 @@ For example:
     "type": "Microsoft.Storage/storageAccounts",
     "apiVersion": "2019-06-01",
     "name": "st0000001",
-    "location": "eastus",
+    "location": "[parameters('location')]",
     "sku": {
         "name": "Standard_GRS",
         "tier": "Standard"
@@ -58,9 +58,39 @@ For example:
 }
 ```
 
+### Configure with Bicep
+
+To deploy Storage Accounts that pass this rule:
+
+- Set the `properties.allowBlobPublicAccess` property to `false`.
+
+For example:
+
+```bicep
+resource st0000001 'Microsoft.Storage/storageAccounts@2021-04-01' = {
+  name: 'st0000001'
+  location: location
+  sku: {
+    name: 'Standard_GRS'
+  }
+  kind: 'StorageV2'
+  properties: {
+    supportsHttpsTrafficOnly: true
+    accessTier: 'Hot'
+    allowBlobPublicAccess: false
+    minimumTlsVersion: 'TLS1_2'
+    networkAcls: {
+      defaultAction: 'Deny'
+    }
+  }
+}
+```
+
 ## LINKS
 
+- [Use Azure AD for storage authentication](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices#use-azure-ad-for-storage-authentication)
 - [Allow or disallow public read access for a storage account](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-configure#allow-or-disallow-public-read-access-for-a-storage-account)
 - [Remediate anonymous public access](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent#remediate-anonymous-public-access)
 - [Use Azure Policy to enforce authorized access](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent#use-azure-policy-to-enforce-authorized-access)
+- [Authorize access to blobs using Azure Active Directory](https://docs.microsoft.com/azure/storage/blobs/authorize-access-azure-active-directory)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts#StorageAccountPropertiesCreateParameters)
