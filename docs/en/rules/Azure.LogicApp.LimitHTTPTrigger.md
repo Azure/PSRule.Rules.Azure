@@ -3,7 +3,7 @@ severity: Critical
 pillar: Security
 category: Network security and containment
 resource: Logic App
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.LogicApp.LimitTrigger/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.LogicApp.LimitHTTPTrigger/
 ---
 
 # Limit Logic App HTTP request triggers
