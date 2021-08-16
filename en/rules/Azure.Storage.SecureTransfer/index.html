@@ -2627,6 +2627,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../Azure.Storage.Firewall/" class="md-nav__link">
+        Azure.Storage.Firewall
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Azure.Storage.MinTLS/" class="md-nav__link">
         Azure.Storage.MinTLS
       </a>
@@ -2706,8 +2718,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#azuretemplates" class="md-nav__link">
-    Azure templates
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
   </a>
   
 </li>
@@ -3563,8 +3582,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#azuretemplates" class="md-nav__link">
-    Azure templates
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
   </a>
   
 </li>
@@ -3612,8 +3638,8 @@ attempts to connect to storage using HTTP or unencrypted SMB connections are rej
 Consider only accepting encrypted connections by setting the <em>Secure transfer required</em> option.
 Also consider using Azure Policy to audit or enforce this configuration.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
-<h3 id="azuretemplates">Azure templates<a class="headerlink" href="#azuretemplates" title="Permanent link">#</a></h3>
-<p>To deploy storage accounts that pass this rule:</p>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To deploy Storage Accounts that pass this rule:</p>
 <ul>
 <li>Set the <code>properties.supportsHttpsTrafficOnly</code> property to <code>true</code>.</li>
 </ul>
@@ -3623,7 +3649,7 @@ Also consider using Azure Policy to audit or enforce this configuration.</p>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.Storage/storageAccounts&quot;</span><span class="p">,</span>
     <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-06-01&quot;</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;st0000001&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;eastus&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
     <span class="nt">&quot;sku&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard_GRS&quot;</span><span class="p">,</span>
         <span class="nt">&quot;tier&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard&quot;</span>
@@ -3636,6 +3662,27 @@ Also consider using Azure Policy to audit or enforce this configuration.</p>
         <span class="nt">&quot;accessTier&quot;</span><span class="p">:</span> <span class="s2">&quot;Hot&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To deploy Storage Accounts that pass this rule:</p>
+<ul>
+<li>Set the <code>properties.supportsHttpsTrafficOnly</code> property to <code>true</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource st0000001 &#39;Microsoft.Storage/storageAccounts@2021-04-01&#39; = {
+  name: &#39;st0000001&#39;
+  location: location
+  sku: {
+    name: &#39;Standard_GRS&#39;
+  }
+  kind: &#39;StorageV2&#39;
+  properties: {
+    supportsHttpsTrafficOnly: true
+    accessTier: &#39;Hot&#39;
+    allowBlobPublicAccess: false
+    minimumTlsVersion: &#39;TLS1_2&#39;
+  }
+}
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>

@@ -936,6 +936,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.Firewall/</loc>
+         <lastmod>2021-08-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.MinTLS/</loc>
          <lastmod>2021-08-16</lastmod>
          <changefreq>daily</changefreq>

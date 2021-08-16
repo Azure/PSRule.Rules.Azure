@@ -2627,6 +2627,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../Azure.Storage.Firewall/" class="md-nav__link">
+        Azure.Storage.Firewall
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Azure.Storage.MinTLS/" class="md-nav__link">
         Azure.Storage.MinTLS
       </a>
@@ -2720,6 +2732,13 @@
           <li class="md-nav__item">
   <a href="#configurewithazuretemplate" class="md-nav__link">
     Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
   </a>
   
 </li>
@@ -3591,6 +3610,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#configurewithazurecli" class="md-nav__link">
     Configure with Azure CLI
   </a>
@@ -3652,16 +3678,22 @@ Also consider:</p>
 <li>Configuring resource locks to protect against deletion.</li>
 <li>Configuring blob container soft delete.</li>
 </ul>
+<p>Blobs can be configured to retain deleted blobs for a period of time between 1 and 365 days.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
 <p>Consider enabling soft delete on storage accounts to protect blobs from accidental deletion or modification.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
 <h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To deploy Storage Accounts that pass this rule:</p>
+<ul>
+<li>Set the <code>properties.deleteRetentionPolicy.enabled</code> property to <code>true</code> on the blob services sub-resource.</li>
+<li>Configure the <code>properties.deleteRetentionPolicy.days</code> property to the number of days to retain blobs.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;comments&quot;</span><span class="p">:</span> <span class="s2">&quot;Storage Account&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.Storage/storageAccounts&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-06-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-04-01&quot;</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;st0000001&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;eastus&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
     <span class="nt">&quot;sku&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard_GRS&quot;</span><span class="p">,</span>
         <span class="nt">&quot;tier&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard&quot;</span>
@@ -3701,6 +3733,28 @@ Also consider:</p>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To deploy Storage Accounts that pass this rule:</p>
+<ul>
+<li>Set the <code>properties.deleteRetentionPolicy.enabled</code> property to <code>true</code> on the blob services sub-resource.</li>
+<li>Configure the <code>properties.deleteRetentionPolicy.days</code> property to the number of days to retain blobs.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource st0000001_blob &#39;Microsoft.Storage/storageAccounts/blobServices@2021-04-01&#39; = {
+  name: &#39;default&#39;
+  parent: st0000001
+  properties: {
+    deleteRetentionPolicy: {
+      enabled: true
+      days: 7
+    }
+    containerDeleteRetentionPolicy: {
+      enabled: true
+      days: 7
+    }
+  }
+}
 </code></pre></div>
 <h3 id="configurewithazurecli">Configure with Azure CLI<a class="headerlink" href="#configurewithazurecli" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code>az storage account blob-service-properties update --enable-delete-retention <span class="nb">true</span> --delete-retention-days <span class="m">7</span> -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
