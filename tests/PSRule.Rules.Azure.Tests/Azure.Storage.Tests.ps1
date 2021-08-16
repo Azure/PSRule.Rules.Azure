@@ -157,6 +157,28 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E';
         }
+
+        It 'Azure.Storage.Firewall' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.Firewall' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-B', 'storage-C', 'storage-E';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-F';
+
+            # None, skip Azure Cloud Shell storage accounts
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-D';
+        }
     }
 
     Context 'Resource name' {
@@ -295,6 +317,20 @@ Describe 'Azure.Storage' -Tag Storage {
                 $_.name -eq 'storage1/default/arm'
             }).Length | Should -Be 1
             # $ruleResult.TargetName | Should -BeIn 'storage1', 'storage1/default/arm';
+        }
+
+        It 'Azure.Storage.Firewall' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.Firewall' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage1';
         }
     }
 }

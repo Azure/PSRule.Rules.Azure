@@ -31,9 +31,9 @@ Also consider using Azure Policy to audit or enforce this configuration.
 
 ## EXAMPLES
 
-### Azure templates
+### Configure with Azure template
 
-To deploy storage accounts that pass this rule:
+To deploy Storage Accounts that pass this rule:
 
 - Set the `properties.supportsHttpsTrafficOnly` property to `true`.
 
@@ -45,7 +45,7 @@ For example:
     "type": "Microsoft.Storage/storageAccounts",
     "apiVersion": "2019-06-01",
     "name": "st0000001",
-    "location": "eastus",
+    "location": "[parameters('location')]",
     "sku": {
         "name": "Standard_GRS",
         "tier": "Standard"
@@ -57,6 +57,31 @@ For example:
         "allowBlobPublicAccess": false,
         "accessTier": "Hot"
     }
+}
+```
+
+### Configure with Bicep
+
+To deploy Storage Accounts that pass this rule:
+
+- Set the `properties.supportsHttpsTrafficOnly` property to `true`.
+
+For example:
+
+```bicep
+resource st0000001 'Microsoft.Storage/storageAccounts@2021-04-01' = {
+  name: 'st0000001'
+  location: location
+  sku: {
+    name: 'Standard_GRS'
+  }
+  kind: 'StorageV2'
+  properties: {
+    supportsHttpsTrafficOnly: true
+    accessTier: 'Hot'
+    allowBlobPublicAccess: false
+    minimumTlsVersion: 'TLS1_2'
+  }
 }
 ```
 

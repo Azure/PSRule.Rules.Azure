@@ -7,6 +7,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.7.0-B2108020:
+
+- New rules:
+  - Storage Account:
+    - Check Storage Accounts only accept explicitly allowed network traffic. [#884](https://github.com/Azure/PSRule.Rules.Azure/issues/884)
+
 ## v1.7.0-B2108020 (pre-release)
 
 What's changed since v1.6.0:

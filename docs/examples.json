@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.4.613.9944",
-      "templateHash": "17396019564585598091"
+      "templateHash": "5834464979049244721"
     }
   },
   "parameters": {
@@ -99,6 +99,43 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-001')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-04-01",
+      "name": "st0000001",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_GRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "supportsHttpsTrafficOnly": true,
+        "accessTier": "Hot",
+        "allowBlobPublicAccess": false,
+        "minimumTlsVersion": "TLS1_2",
+        "networkAcls": {
+          "defaultAction": "Deny"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2021-04-01",
+      "name": "[format('{0}/{1}', 'st0000001', 'default')]",
+      "properties": {
+        "deleteRetentionPolicy": {
+          "enabled": true,
+          "days": 7
+        },
+        "containerDeleteRetentionPolicy": {
+          "enabled": true,
+          "days": 7
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', 'st0000001')]"
       ]
     }
   ]

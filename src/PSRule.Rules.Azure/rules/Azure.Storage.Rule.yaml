@@ -1,0 +1,20 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+---
+# Synopsis: Storage Accounts should only accept explicitly allowed traffic.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Storage.Firewall
+  tags:
+    release: GA
+    ruleSet: 2021_09
+spec:
+  type:
+  - Microsoft.Storage/storageAccounts
+  with:
+  - Azure.Usage.NotCloudShell
+  condition:
+    field: properties.networkAcls.defaultAction
+    equals: deny

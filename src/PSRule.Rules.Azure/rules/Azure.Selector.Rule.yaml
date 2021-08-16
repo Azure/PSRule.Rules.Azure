@@ -1,0 +1,28 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+---
+# Synopsis: Azure resources associated with Azure Cloud Shell.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Usage.CloudShell
+  annotations:
+    export: true
+spec:
+  if:
+    field: tags.ms-resource-usage
+    equals: azure-cloud-shell
+
+---
+# Synopsis: Azure resources not associated with Azure Cloud Shell.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Usage.NotCloudShell
+  annotations:
+    export: false
+spec:
+  if:
+    field: tags.ms-resource-usage
+    notEquals: azure-cloud-shell

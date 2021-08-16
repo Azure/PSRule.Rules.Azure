@@ -25,6 +25,8 @@ Also consider:
 - Configuring resource locks to protect against deletion.
 - Configuring blob container soft delete.
 
+Blobs can be configured to retain deleted blobs for a period of time between 1 and 365 days.
+
 ## RECOMMENDATION
 
 Consider enabling soft delete on storage accounts to protect blobs from accidental deletion or modification.
@@ -33,13 +35,18 @@ Consider enabling soft delete on storage accounts to protect blobs from accident
 
 ### Configure with Azure template
 
+To deploy Storage Accounts that pass this rule:
+
+- Set the `properties.deleteRetentionPolicy.enabled` property to `true` on the blob services sub-resource.
+- Configure the `properties.deleteRetentionPolicy.days` property to the number of days to retain blobs.
+
 ```json
 {
     "comments": "Storage Account",
     "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2019-06-01",
+    "apiVersion": "2021-04-01",
     "name": "st0000001",
-    "location": "eastus",
+    "location": "[parameters('location')]",
     "sku": {
         "name": "Standard_GRS",
         "tier": "Standard"
@@ -78,6 +85,32 @@ Consider enabling soft delete on storage accounts to protect blobs from accident
             }
         }
     ]
+}
+```
+
+### Configure with Bicep
+
+To deploy Storage Accounts that pass this rule:
+
+- Set the `properties.deleteRetentionPolicy.enabled` property to `true` on the blob services sub-resource.
+- Configure the `properties.deleteRetentionPolicy.days` property to the number of days to retain blobs.
+
+For example:
+
+```bicep
+resource st0000001_blob 'Microsoft.Storage/storageAccounts/blobServices@2021-04-01' = {
+  name: 'default'
+  parent: st0000001
+  properties: {
+    deleteRetentionPolicy: {
+      enabled: true
+      days: 7
+    }
+    containerDeleteRetentionPolicy: {
+      enabled: true
+      days: 7
+    }
+  }
 }
 ```
 
