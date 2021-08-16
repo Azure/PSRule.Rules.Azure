@@ -13,14 +13,14 @@
         <meta name="author" content="Microsoft">
       
       
-        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.ServerName/">
+        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.MetadataLink/">
       
       <link rel="icon" href="../../../assets/ms_icon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
-        <title>Azure.SQL.ServerName - PSRule for Azure</title>
+        <title>Azure.Template.MetadataLink - PSRule for Azure</title>
       
     
     
@@ -66,9 +66,9 @@
 
   <!-- Open graph meta tags -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PSRule for Azure - Azure.SQL.ServerName" />
+  <meta property="og:title" content="PSRule for Azure - Azure.Template.MetadataLink" />
   <meta property="og:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
-  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.ServerName/" />
+  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.MetadataLink/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1280" />
@@ -78,7 +78,7 @@
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - Azure.SQL.ServerName" />
+  <meta name="twitter:title" content="PSRule for Azure - Azure.Template.MetadataLink" />
   <meta name="twitter:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#usevalidsqllogicalservernames" class="md-skip">
+        <a href="#useparameterfilemetadatalink" class="md-skip">
           Skip to content
         </a>
       
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Azure.SQL.ServerName
+              Azure.Template.MetadataLink
             
           </span>
         </div>
@@ -2445,72 +2445,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Azure.SQL.ServerName
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Azure.SQL.ServerName/" class="md-nav__link">
         Azure.SQL.ServerName
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommendation" class="md-nav__link">
-    Recommendation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    Notes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    Links
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2806,11 +2745,92 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Azure.Template.MetadataLink/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Azure.Template.MetadataLink
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Azure.Template.MetadataLink
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configureparameterfile" class="md-nav__link">
+    Configure parameter file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3566,6 +3586,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configureparameterfile" class="md-nav__link">
+    Configure parameter file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#notes" class="md-nav__link">
     Notes
   </a>
@@ -3591,31 +3631,47 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.SQL.ServerName.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Template.MetadataLink.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="usevalidsqllogicalservernames">Use valid SQL logical server names<a class="headerlink" href="#usevalidsqllogicalservernames" title="Permanent link">#</a></h1>
-<p>Azure SQL logical server names should meet naming requirements.</p>
+                <h1 id="useparameterfilemetadatalink">Use parameter file metadata link<a class="headerlink" href="#useparameterfilemetadatalink" title="Permanent link">#</a></h1>
+<p>Configure a metadata link for each parameter file.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>When naming Azure resources, resource names must meet service requirements.
-The requirements for SQL logical server names are:</p>
-<ul>
-<li>Between 1 and 63 characters long.</li>
-<li>Lowercase letters, numbers, and hyphens.</li>
-<li>Can't start or end with a hyphen.</li>
-<li>SQL logical server names must be globally unique.</li>
-</ul>
+<p>A parameter file can include an additional metadata.
+This metadata provides additional context for use of the parameter file.</p>
+<p>PSRule for Azure uses the <code>metadata.template</code> property within parameter files to store a metadata link.
+A metadata link, is an explicit association between a parameter file it's intended template file.</p>
+<p>This rule is disabled by default but can be enabled by configuring <code>AZURE_PARAMETER_FILE_METADATA_LINK</code>.
+Enable this rule to ensure that each parameter file has a metadata link to a valid template file.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider using names that meet Azure SQL logical server naming requirements.
-Additionally consider naming resources with a standard naming convention.</p>
+<p>Consider setting metadata for each parameter file linking to the deployment template.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configureparameterfile">Configure parameter file<a class="headerlink" href="#configureparameterfile" title="Permanent link">#</a></h3>
+<p>To create parameter files that pass this rule:</p>
+<ul>
+<li>Set the <code>metadata.template</code> property to a valid template file path.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;templates/storage/v1/template.json&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;storageAccountName&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
-<p>This rule does not check if Azure SQL logical server names are unique.</p>
+<p>Enable this rule by setting the <code>AZURE_PARAMETER_FILE_METADATA_LINK</code> option to <code>true</code>.</p>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure">Repeatable Infrastructure</a></li>
-<li><a href="https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql">Naming rules and restrictions for Azure resources</a></li>
+<li><a href="https://azure.github.io/PSRule.Rules.Azure/using-templates/">Using templates</a></li>
 </ul>
                 
                   

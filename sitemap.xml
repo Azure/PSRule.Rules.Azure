@@ -986,6 +986,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.MetadataLink/</loc>
+         <lastmod>2021-08-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.ParameterDataTypes/</loc>
          <lastmod>2021-08-16</lastmod>
          <changefreq>daily</changefreq>

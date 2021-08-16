@@ -2825,6 +2825,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../en/rules/Azure.Template.MetadataLink/" class="md-nav__link">
+        Azure.Template.MetadataLink
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../en/rules/Azure.Template.ParameterDataTypes/" class="md-nav__link">
         Azure.Template.ParameterDataTypes
       </a>
@@ -3764,6 +3776,13 @@ To link a template within a parameter file, set the <code>metadata.template</cod
 <li>You can discover all the deployments using a specific template by reading metadata.
   PSRule for Azure includes the <code>Get-AzRuleTemplateLink</code> cmdlet to list parameter file links.</li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>By default, metadata links are not required.
+By configuring the <code>AZURE_PARAMETER_FILE_METADATA_LINK</code> option to <code>true</code>, this can be enforced.
+When configured, PSRule for Azure will fail parameter files that do not contain a metadata link.
+For details on <code>AZURE_PARAMETER_FILE_METADATA_LINK</code> see <a href="../setup/configuring-expansion/#requiretemplatemetadatalink">Configuring expansion</a>.</p>
+</div>
 <h3 id="namingconvention">Naming convention<a class="headerlink" href="#namingconvention" title="Permanent link">#</a></h3>
 <p>When metadata links are not set, PSRule for Azure will use a naming convention to link to template files.
 PSRule for Azure uses the parameter file prefix <code>&lt;templateName&gt;.parameters.json</code> to link to a template.

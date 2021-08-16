@@ -3090,6 +3090,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../en/rules/Azure.Template.MetadataLink/" class="md-nav__link">
+        Azure.Template.MetadataLink
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../en/rules/Azure.Template.ParameterDataTypes/" class="md-nav__link">
         Azure.Template.ParameterDataTypes
       </a>
@@ -4156,6 +4168,13 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <p>What's changed since pre-release v1.7.0-B2108020:</p>
 <ul>
 <li>New rules:<ul>
+<li>All resources:<ul>
+<li>Check template parameter files use metadata links. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/846">#846</a><ul>
+<li>Configure the <code>AZURE_PARAMETER_FILE_METADATA_LINK</code> option to enable this rule.</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Storage Account:<ul>
 <li>Check Storage Accounts only accept explicitly allowed network traffic. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/884">#884</a></li>
 </ul>
