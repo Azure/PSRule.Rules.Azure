@@ -33,6 +33,6 @@ Consider redeploying the AKS cluster with Network Policy enabled.
 
 ## LINKS
 
-- [Secure traffic between pods using network policies in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/use-network-policies)
-- [Best practices for network connectivity and security in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies)
+- [Secure traffic between pods using network policies in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/use-network-policies)
+- [Best practices for network connectivity and security in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies)
 - [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
