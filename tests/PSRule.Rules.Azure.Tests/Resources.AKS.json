@@ -61,7 +61,43 @@
         "Type": "Microsoft.ContainerService/managedClusters",
         "ResourceType": "Microsoft.ContainerService/managedClusters",
         "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "subnet-A",
+                "Name": "subnet-A",
+                "ExtensionResourceName": null,
+                "ParentResource": "virtualNetworks/vnet-A",
+                "Plan": null,
+                "Properties": {
+                    "provisioningState": "Succeeded",
+                    "addressPrefix": "10.0.0.0/20",
+                    "networkSecurityGroup": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
+                    },
+                    "routeTable": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
+                    },
+                    "ipConfigurations": [],
+                    "serviceEndpoints": [],
+                    "delegations": [],
+                    "privateEndpointNetworkPolicies": "Enabled",
+                    "privateLinkServiceNetworkPolicies": "Enabled"
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "Microsoft.Network/virtualNetworks/subnets",
+                "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "SubscriptionId": null
+            }
+        ]
     },
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-B",
@@ -124,7 +160,43 @@
         "Type": "Microsoft.ContainerService/managedClusters",
         "ResourceType": "Microsoft.ContainerService/managedClusters",
         "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "subnet-A",
+                "Name": "subnet-A",
+                "ExtensionResourceName": null,
+                "ParentResource": "virtualNetworks/vnet-A",
+                "Plan": null,
+                "Properties": {
+                    "provisioningState": "Succeeded",
+                    "addressPrefix": "10.0.0.0/24",
+                    "networkSecurityGroup": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
+                    },
+                    "routeTable": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
+                    },
+                    "ipConfigurations": [],
+                    "serviceEndpoints": [],
+                    "delegations": [],
+                    "privateEndpointNetworkPolicies": "Enabled",
+                    "privateLinkServiceNetworkPolicies": "Enabled"
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "Microsoft.Network/virtualNetworks/subnets",
+                "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "SubscriptionId": null
+            }
+        ]
     },
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-C",
@@ -200,7 +272,43 @@
         "Type": "Microsoft.ContainerService/managedClusters",
         "ResourceType": "Microsoft.ContainerService/managedClusters",
         "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "subnet-A",
+                "Name": "subnet-A",
+                "ExtensionResourceName": null,
+                "ParentResource": "virtualNetworks/vnet-A",
+                "Plan": null,
+                "Properties": {
+                    "provisioningState": "Succeeded",
+                    "addressPrefix": "10.0.0.0/23",
+                    "networkSecurityGroup": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
+                    },
+                    "routeTable": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
+                    },
+                    "ipConfigurations": [],
+                    "serviceEndpoints": [],
+                    "delegations": [],
+                    "privateEndpointNetworkPolicies": "Enabled",
+                    "privateLinkServiceNetworkPolicies": "Enabled"
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "Microsoft.Network/virtualNetworks/subnets",
+                "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "SubscriptionId": null
+            }
+        ]
     },
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-D",
@@ -347,7 +455,43 @@
             "Capacity": null
         },
         "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "subnet-A",
+                "Name": "subnet-A",
+                "ExtensionResourceName": null,
+                "ParentResource": "virtualNetworks/vnet-A",
+                "Plan": null,
+                "Properties": {
+                    "provisioningState": "Succeeded",
+                    "addressPrefix": "10.0.0.0/27",
+                    "networkSecurityGroup": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
+                    },
+                    "routeTable": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
+                    },
+                    "ipConfigurations": [],
+                    "serviceEndpoints": [],
+                    "delegations": [],
+                    "privateEndpointNetworkPolicies": "Enabled",
+                    "privateLinkServiceNetworkPolicies": "Enabled"
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "Microsoft.Network/virtualNetworks/subnets",
+                "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "SubscriptionId": null
+            }
+        ]
     },
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-E/agentPools/system",
@@ -385,7 +529,44 @@
         "Type": "Microsoft.ContainerService/managedClusters/agentPools",
         "ResourceType": "Microsoft.ContainerService/managedClusters/agentPools",
         "Sku": null,
-        "Tags": null
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "subnet-A",
+                "Name": "subnet-A",
+                "ExtensionResourceName": null,
+                "ParentResource": "virtualNetworks/vnet-A",
+                "Plan": null,
+                "Properties": {
+                    "provisioningState": "Succeeded",
+                    "addressPrefix": "10.0.0.0/25",
+                    "networkSecurityGroup": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
+                    },
+                    "routeTable": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
+                    },
+                    "ipConfigurations": [],
+                    "serviceEndpoints": [],
+                    "delegations": [],
+                    "privateEndpointNetworkPolicies": "Enabled",
+                    "privateLinkServiceNetworkPolicies": "Enabled"
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "Microsoft.Network/virtualNetworks/subnets",
+                "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "SubscriptionId": null
+            }
+        ]
     },
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.ContainerService/managedClusters/cluster-F",

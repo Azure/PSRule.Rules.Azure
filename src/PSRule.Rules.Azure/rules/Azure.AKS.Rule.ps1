@@ -162,6 +162,10 @@ Rule 'Azure.AKS.AutoScaling' -Type 'Microsoft.ContainerService/managedClusters',
 Rule 'Azure.AKS.AzureCNI' -Type 'Microsoft.ContainerService/managedClusters' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $clusterSubnets = @(GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets');
 
+    if ($clusterSubnets.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
     foreach ($subnet in $clusterSubnets) {
         $subnetAddressPrefixSize = [int]$subnet.Properties.addressPrefix.Split('/')[-1];
         $Assert.LessOrEqual($subnetAddressPrefixSize, '.', $Configuration.Azure_AKSCNIMinimumClusterSubnetSize).
