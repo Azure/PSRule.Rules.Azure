@@ -158,6 +158,17 @@ Rule 'Azure.AKS.AutoScaling' -Type 'Microsoft.ContainerService/managedClusters',
     }
 }
 
+# Synopsis: AKS clusters using Azure CNI should use large subnets to reduce IP exhaustion issues.
+Rule 'Azure.AKS.AzureCNI' -Type 'Microsoft.ContainerService/managedClusters' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    $clusterSubnets = @(GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets');
+
+    foreach ($subnet in $clusterSubnets) {
+        $subnetAddressPrefixSize = [int]$subnet.Properties.addressPrefix.Split('/')[-1];
+        $Assert.LessOrEqual($subnetAddressPrefixSize, '.', $Configuration.Azure_AKSCNIMinimumClusterSubnetSize).
+            Reason($LocalizedData.AKSAzureCNI, $subnet.Name, $Configuration.Azure_AKSCNIMinimumClusterSubnetSize);
+    }
+} -Configure @{ Azure_AKSCNIMinimumClusterSubnetSize = 23 }
+
 #region Helper functions
 
 function global:GetAgentPoolProfiles {
