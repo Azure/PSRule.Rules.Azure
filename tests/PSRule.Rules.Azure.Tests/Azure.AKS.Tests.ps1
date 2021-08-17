@@ -300,8 +300,8 @@ Describe 'Azure.AKS' -Tag AKS {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 2;
-            $ruleResult.TargetName | Should -BeIn 'cluster-B', 'cluster-D';
+            $ruleResult | Should -HaveCount 3;
+            $ruleResult.TargetName | Should -BeIn 'cluster-B', 'cluster-D', 'system';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
