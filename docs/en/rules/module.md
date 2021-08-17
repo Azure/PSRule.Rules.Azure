@@ -24,6 +24,12 @@ Name | Synopsis | Severity
 
 ## Operational Excellence
 
+### Capacity planning
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.AKS.AzureCNI](Azure.AKS.AzureCNI.md) | AKS clusters using Azure CNI should use large subnets to reduce IP exhaustion issues. | Important
+
 ### Configuration
 
 Name | Synopsis | Severity
