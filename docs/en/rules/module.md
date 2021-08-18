@@ -28,7 +28,7 @@ Name | Synopsis | Severity
 
 Name | Synopsis | Severity
 ---- | -------- | --------
-[Azure.AKS.AzureCNI](Azure.AKS.AzureCNI.md) | AKS clusters using Azure CNI should use large subnets to reduce IP exhaustion issues. | Important
+[Azure.AKS.CNISubnetSize](Azure.AKS.CNISubnetSize.md) | AKS clusters using Azure CNI should use large subnets to reduce IP exhaustion issues. | Important
 
 ### Configuration
 

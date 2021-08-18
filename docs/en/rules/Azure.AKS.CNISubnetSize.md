@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Capacity planning
 resource: Azure Kubernetes Service
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AzureCNI/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.CNISubnetSize/
 ---
 
 # AKS clusters using Azure CNI should use large subnets
