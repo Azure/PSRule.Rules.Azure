@@ -172,6 +172,12 @@ Name | Synopsis | Severity
 [Azure.VM.AcceleratedNetworking](Azure.VM.AcceleratedNetworking.md) | Use accelerated networking for supported operating systems and VM types. | Important
 [Azure.VM.DiskCaching](Azure.VM.DiskCaching.md) | Check disk caching is configured correctly for the workload. | Important
 
+### Scalabilty
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.AKS.CNISubnetSize](Azure.AKS.CNISubnetSize.md) | AKS clusters using Azure CNI should use large subnets to reduce IP exhaustion issues. | Important
+
 ## Reliability
 
 ### Availability
