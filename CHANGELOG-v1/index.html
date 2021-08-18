@@ -596,6 +596,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v170-b2108040pre-release" class="md-nav__link">
+    v1.7.0-B2108040 (pre-release)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v170-b2108020pre-release" class="md-nav__link">
     v1.7.0-B2108020 (pre-release)
   </a>
@@ -3853,6 +3860,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v170-b2108040pre-release" class="md-nav__link">
+    v1.7.0-B2108040 (pre-release)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v170-b2108020pre-release" class="md-nav__link">
     v1.7.0-B2108020 (pre-release)
   </a>
@@ -4177,12 +4191,21 @@
 See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to this issue.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<h2 id="v170-b2108040pre-release">v1.7.0-B2108040 (pre-release)<a class="headerlink" href="#v170-b2108040pre-release" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.7.0-B2108020:</p>
 <ul>
 <li>New rules:<ul>
 <li>All resources:<ul>
 <li>Check template parameter files use metadata links. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/846">#846</a><ul>
 <li>Configure the <code>AZURE_PARAMETER_FILE_METADATA_LINK</code> option to enable this rule.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Azure Kubernetes Service:<ul>
+<li>Check clusters using Azure CNI should use large subnets. Thanks <a href="https://github.com/ArmaanMcleod">@ArmaanMcleod</a>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/273">#273</a><ul>
+<li>By default, a minimum of a <code>/23</code> subnet is required.</li>
+<li>Configure <code>AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE</code> to change the default minimum subnet size.</li>
 </ul>
 </li>
 </ul>
