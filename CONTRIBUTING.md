@@ -53,6 +53,14 @@ Some of the documentation that you might like to improve include:
 - Scenarios and examples (`docs/customization` and `docs/scenarios/`).
 - PowerShell cmdlet and conceptual topics (`docs/commands/` and `docs/concepts/`).
 
+### Markdown formatting
+
+When writing documentation in Markdown, please follow these formatting guidelines:
+
+- Semantically break up long paragraphs into multiple lines, particularly if they contain multiple sentences.
+- Add a blank line between paragraphs.
+- Add a blank line before and after lists, code blocks, and section headers.
+
 ### Rule recommendations
 
 Before improving rule recommendations familiarize yourself with writing [rule markdown documentation](https://microsoft.github.io/PSRule/scenarios/rule-docs/rule-docs.html#writing-markdown-documentation).
@@ -116,6 +124,19 @@ Rule 'Azure.APIM.ManagedIdentity' -Type 'Microsoft.ApiManagement/service' -Tag @
 - To create new rules, snippets in the VS Code extension for PSRule can be used.
 - Use `-Type` over `-If` pre-conditions when possible.
 Both may be required in some cases.
+
+### Adding rule configuration options
+
+For some rules, adding configuration options to allow customization may be helpful.
+When adding configuration options, please follow these guidelines:
+
+- Name the configuration option using by:
+  - Prefixing the configuration option name with `AZURE_`.
+  - Separating words with `_` to make the configuration option name more readable.
+  - Capitalize the configuration option name. e.g. `AZURE_POLICY_WAIVER_MAX_EXPIRY`
+- Include relevant documentation for the configuration option in the rule's documentation.
+  See [Azure.Policy.WaiverExpiry](docs/en/rules/Azure.Policy.WaiverExpiry.md) for an example.
+- Include relevant examples of the configuration option in [Configuring rule defaults](docs/setup/configuring-rules.md).
 
 ## Contributing to code
 
