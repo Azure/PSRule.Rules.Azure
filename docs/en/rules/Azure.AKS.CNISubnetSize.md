@@ -22,7 +22,17 @@ Consider allocating a large subnet(/23 or bigger) to your AKS cluster.
 
 ## NOTES
 
-This rule applies when analyzing resources deployed to Azure.
+This rule applies when analyzing resources deployed to Azure using [Export in-flight resource data](https://github.com/Azure/PSRule.Rules.Azure#export-in-flight-resource-data).
+
+This rule fails when the CNI subnet size is smaller than /23.
+
+Configure `AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE` to set the minimum AKS CNI cluster subnet size.
+
+```yaml
+# YAML: The default AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option
+configuration:
+  AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: 23
+```
 
 ## LINKS
 
