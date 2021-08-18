@@ -293,6 +293,22 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'cluster-F';
         }
+
+        It 'Azure.AKS.CNISubnetSize' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.CNISubnetSize' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 3;
+            $ruleResult.TargetName | Should -BeIn 'cluster-B', 'cluster-D', 'system';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 3;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-C', 'cluster-F';
+        }
     }
 
     Context 'Resource name' {
