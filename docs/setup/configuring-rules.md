@@ -163,3 +163,30 @@ Example:
 configuration:
   AZURE_POLICY_WAIVER_MAX_EXPIRY: 90
 ```
+
+### Azure AKS CNI minumum cluster subnet size
+
+This configuration option determines the minimum subnet size for Azure AKS CNI.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: integer
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option
+configuration:
+  AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: 23
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option to 26
+configuration:
+  AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: 26
+```

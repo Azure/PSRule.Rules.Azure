@@ -168,10 +168,10 @@ Rule 'Azure.AKS.CNISubnetSize' -Type 'Microsoft.ContainerService/managedClusters
 
     foreach ($subnet in $clusterSubnets) {
         $subnetAddressPrefixSize = [int]$subnet.Properties.addressPrefix.Split('/')[-1];
-        $Assert.LessOrEqual($subnetAddressPrefixSize, '.', $Configuration.Azure_AKSCNIMinimumClusterSubnetSize).
-            Reason($LocalizedData.AKSAzureCNI, $subnet.Name, $Configuration.Azure_AKSCNIMinimumClusterSubnetSize);
+        $Assert.LessOrEqual($subnetAddressPrefixSize, '.', $Configuration.AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE).
+            Reason($LocalizedData.AKSAzureCNI, $subnet.Name, $Configuration.AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE);
     }
-} -Configure @{ Azure_AKSCNIMinimumClusterSubnetSize = 23 }
+} -Configure @{ AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE = 23 }
 
 #region Helper functions
 
