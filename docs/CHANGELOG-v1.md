@@ -7,12 +7,18 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.7.0-B2108040 (pre-release)
+
 What's changed since pre-release v1.7.0-B2108020:
 
 - New rules:
   - All resources:
     - Check template parameter files use metadata links. [#846](https://github.com/Azure/PSRule.Rules.Azure/issues/846)
       - Configure the `AZURE_PARAMETER_FILE_METADATA_LINK` option to enable this rule.
+  - Azure Kubernetes Service:
+    - Check clusters using Azure CNI should use large subnets. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#273](https://github.com/Azure/PSRule.Rules.Azure/issues/273)
+      - By default, a minimum of a `/23` subnet is required.
+      - Configure `AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE` to change the default minimum subnet size.
   - Storage Account:
     - Check Storage Accounts only accept explicitly allowed network traffic. [#884](https://github.com/Azure/PSRule.Rules.Azure/issues/884)
 
