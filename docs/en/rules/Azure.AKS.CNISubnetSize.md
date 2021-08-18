@@ -14,7 +14,10 @@ AKS clusters using Azure CNI should use large subnets to reduce IP exhaustion is
 
 ## DESCRIPTION
 
-In addition to kubenet, AKS clusters support Azure Container Networking Interface (CNI). This enables every pod to be accessed directly from the subnet via an IP address. Each node supports a maximum number of pods, which are reserved as IP addresses. This approach requires more capacity planning ahead of time, and can result to IP address exhaustion or the need to rebuild AKS clusters into a larget subnet as application workloads begin to grow.
+In addition to kubenet, AKS clusters support Azure Container Networking Interface (CNI).
+This enables every pod to be accessed directly from the subnet via an IP address.
+Each node supports a maximum number of pods, which are reserved as IP addresses.
+This approach requires more capacity planning ahead of time, and can result in IP address exhaustion or the need to rebuild AKS clusters into larger subnets as application workloads begin to grow.
 
 ## RECOMMENDATION
 
