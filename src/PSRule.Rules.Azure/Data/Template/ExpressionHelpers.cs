@@ -212,12 +212,12 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// Try to get DateTime from the existing type and allow conversion from string.
         /// </summary>
-        internal static bool TryConvertDateTime(object o, out DateTime value)
+        internal static bool TryConvertDateTime(object o, out DateTime value, DateTimeStyles style = DateTimeStyles.AdjustToUniversal)
         {
             if (TryDateTime(o, out value))
                 return true;
 
-            if (TryString(o, out string svalue) && DateTime.TryParse(svalue, AzureCulture, DateTimeStyles.None, out value))
+            if (TryString(o, out string svalue) && DateTime.TryParse(svalue, AzureCulture, style, out value))
                 return true;
 
             return false;

@@ -803,15 +803,18 @@ namespace PSRule.Rules.Azure
         public void DateTimeAdd()
         {
             var context = GetContext();
-            var utc = DateTime.Parse("2020-04-07 14:53:14Z", new CultureInfo("en-US"));
+            var utc = DateTime.Parse("2020-04-07 14:53:14Z", new CultureInfo("en-US"), DateTimeStyles.AdjustToUniversal);
+            Assert.Equal(DateTimeKind.Utc, utc.Kind);
 
-            var actual1 = DateTime.Parse(Functions.DateTimeAdd(context, new object[] { utc.ToString("u"), "P3Y" }) as string, new CultureInfo("en-US"));
-            var actual2 = DateTime.Parse(Functions.DateTimeAdd(context, new object[] { utc.ToString("u"), "-P9D" }) as string, new CultureInfo("en-US"));
-            var actual3 = DateTime.Parse(Functions.DateTimeAdd(context, new object[] { utc.ToString("u"), "PT1H" }) as string, new CultureInfo("en-US"));
+            var actual1 = DateTime.Parse(Functions.DateTimeAdd(context, new object[] { utc.ToString("u"), "P3Y" }) as string, new CultureInfo("en-US"), DateTimeStyles.AdjustToUniversal);
+            var actual2 = DateTime.Parse(Functions.DateTimeAdd(context, new object[] { utc.ToString("u"), "-P9D" }) as string, new CultureInfo("en-US"), DateTimeStyles.AdjustToUniversal);
+            var actual3 = DateTime.Parse(Functions.DateTimeAdd(context, new object[] { utc.ToString("u"), "PT1H" }) as string, new CultureInfo("en-US"), DateTimeStyles.AdjustToUniversal);
+            var actual4 = DateTime.Parse(Functions.DateTimeAdd(context, new object[] { utc.ToString("u"), "P3Y", "u" }) as string, new CultureInfo("en-US"), DateTimeStyles.AdjustToUniversal);
 
-            Assert.Equal(utc.AddYears(3), actual1.ToUniversalTime());
-            Assert.Equal(utc.AddDays(-9), actual2.ToUniversalTime());
-            Assert.Equal(utc.AddHours(1), actual3.ToUniversalTime());
+            Assert.Equal(utc.AddYears(3), actual1);
+            Assert.Equal(utc.AddDays(-9), actual2);
+            Assert.Equal(utc.AddHours(1), actual3);
+            Assert.Equal(utc.AddYears(3), actual4);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, new object[] { }));

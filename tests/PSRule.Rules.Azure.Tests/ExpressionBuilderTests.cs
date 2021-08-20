@@ -95,6 +95,24 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(actual);
         }
 
+        [Fact]
+        public void BuildExpressionWithDateTimeAdd()
+        {
+            // Ensure examples pass
+            var add3Years = "[dateTimeAdd(parameters('baseTime'), 'P3Y')]";
+            var subtract9Days = "[dateTimeAdd(parameters('baseTime'), '-P9D')]";
+            var add1Hour = "[dateTimeAdd(parameters('baseTime'), 'PT1H')]";
+            var context = GetContext();
+            context.Parameter("baseTime", "2020-04-07 14:53:14Z");
+            var actual1 = Build(context, add3Years);
+            var actual2 = Build(context, subtract9Days);
+            var actual3 = Build(context, add1Hour);
+
+            Assert.Equal("4/7/2023 2:53:14 PM", actual1);
+            Assert.Equal("3/29/2020 2:53:14 PM", actual2);
+            Assert.Equal("4/7/2020 3:53:14 PM", actual3);
+        }
+
         private static object Build(TemplateContext context, string expression)
         {
             var builder = new ExpressionBuilder();
