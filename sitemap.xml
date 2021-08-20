@@ -1021,6 +1021,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.ParameterValue/</loc>
+         <lastmod>2021-08-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.ResourceLocation/</loc>
          <lastmod>2021-08-20</lastmod>
          <changefreq>daily</changefreq>
@@ -1057,6 +1062,11 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.UseVariables/</loc>
+         <lastmod>2021-08-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.ValidSecretRef/</loc>
          <lastmod>2021-08-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
