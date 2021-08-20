@@ -173,6 +173,50 @@ Rule 'Azure.AKS.CNISubnetSize' -Type 'Microsoft.ContainerService/managedClusters
     }
 } -Configure @{ AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE = 23 }
 
+# Synopsis: AKS clusters deployed with virtual machine scale sets should use availability zones in supported regions for high availability.
+Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    $agentPools = @(GetAgentPoolProfiles);
+
+    if ($agentPools.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    $configurationZones = $Configuration.AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
+
+    $virtualMachineScaleSetProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Compute', 'virtualMachineScaleSets');
+
+    if ($configurationZones.Length -gt 0) {
+        $availabilityZones = @($configurationZones) + $virtualMachineScaleSetProvider.ZoneMappings;
+    }
+    else {
+        $availabilityZones = $virtualMachineScaleSetProvider.ZoneMappings;
+    }
+
+    $location = GetNormalLocation -Location $TargetObject.Location;
+
+    $locationAvailabilityZones = $availabilityZones 
+    | Where-Object { (GetNormalLocation -Location $_.Location) -eq $location } 
+    | Select-Object -ExpandProperty Zones -First 1;
+
+    if (!$locationAvailabilityZones) {
+        return $Assert.Pass();
+    }
+
+    $joinedZoneString = $locationAvailabilityZones -join ', ';
+
+    foreach ($agentPool in $agentPools) {
+
+        # Availability zones only available on virtual machine scale sets
+        if ($Assert.HasFieldValue($agentPool, 'type', 'VirtualMachineScaleSets').Result) {
+            $validZone = $Assert.HasField($agentPool, 'availabilityZones').Result -and -not $Assert.NullOrEmpty($agentPool, 'availabilityZones').Result;
+            $Assert.Create($validZone, ($LocalizedData.AKSAvailabilityZone -f $agentPool.name, $location, $joinedZoneString));
+        }
+        else {
+            $Assert.Pass();
+        }
+    }
+} -Configure @{ AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
+
 #region Helper functions
 
 function global:GetAgentPoolProfiles {
@@ -189,6 +233,7 @@ function global:GetAgentPoolProfiles {
                     maxPods = $_.properties.maxPods
                     orchestratorVersion = $_.properties.orchestratorVersion
                     enableAutoScaling = $_.properties.enableAutoScaling
+                    availabilityZones = $_.properties.availabilityZones
                 }
             });
         }
@@ -199,6 +244,7 @@ function global:GetAgentPoolProfiles {
                 maxPods = $TargetObject.properties.maxPods
                 orchestratorVersion = $TargetObject.properties.orchestratorVersion
                 enableAutoScaling = $TargetObject.properties.enableAutoScaling
+                availabilityZones = $TargetObject.properties.availabilityZones
             }
         }
     }
