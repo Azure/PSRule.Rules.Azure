@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Operational Excellence
-category: Repeatable Infrastructure
+category: Repeatable infrastructure
 resource: Policy
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Policy.AssignmentDescriptors/
 ---
@@ -53,4 +53,4 @@ For example:
 
 - [Azure Policy assignment structure](https://docs.microsoft.com/azure/governance/policy/concepts/assignment-structure)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.authorization/policyassignments)
-- [Repeatable Infrastructure](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
+- [Repeatable infrastructure](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
