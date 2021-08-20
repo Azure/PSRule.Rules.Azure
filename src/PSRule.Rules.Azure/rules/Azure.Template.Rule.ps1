@@ -14,6 +14,23 @@ Rule 'Azure.Template.TemplateFile' -Type '.json' -If { (IsTemplateFile) } -Tag @
     $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters', 'functions', 'variables', 'resources', 'outputs';
 }
 
+# Synopsis: Use a more recent version of the Azure template schema.
+Rule 'Azure.Template.TemplateSchema' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
+    $Assert.HasJsonSchema($jsonObject, @(
+        'https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json'
+        'https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json'
+        'https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json'
+        'https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json'
+    ), $True);
+}
+
+# Synopsis: Use a Azure template schema with the https scheme.
+Rule 'Azure.Template.TemplateScheme' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
+    $Assert.StartsWith($jsonObject, '$schema', 'https://');
+}
+
 # Synopsis: Use template parameter descriptions.
 Rule 'Azure.Template.ParameterMetadata' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $parameters = @(GetTemplateParameters);
@@ -223,6 +240,12 @@ Rule 'Azure.Template.ParameterFile' -Type '.json' -If { (IsParameterFile) } -Tag
     $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
     $Assert.HasFields($jsonObject, @('$schema', 'contentVersion', 'parameters'));
     $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters';
+}
+
+# Synopsis: Use a Azure template parameter schema with the https scheme.
+Rule 'Azure.Template.ParameterScheme' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
+    $Assert.StartsWith($jsonObject, '$schema', 'https://');
 }
 
 # Synopsis: Configure a metadata link for each parameter file.

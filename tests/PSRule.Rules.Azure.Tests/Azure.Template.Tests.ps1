@@ -53,6 +53,46 @@ Describe 'Azure.Template' -Tag 'Template' {
             ($ruleResult | Where-Object { $_.TargetName -like "*Resources.Template4.json" }).TargetName | Should -BeLike "*Resources.Template4.json";
         }
 
+        It 'Azure.Template.TemplateSchema' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Template*.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.TemplateSchema';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.TemplateSchema' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn 'Resources.Template.json', 'Resources.Template3.json';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn 'Resources.Template2.json', 'Resources.Template4.json';
+        }
+
+        It 'Azure.Template.TemplateScheme' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Template*.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.TemplateScheme';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.TemplateScheme' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn 'Resources.Template2.json';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn @(
+                'Resources.Template.json'
+                'Resources.Template3.json'
+                'Resources.Template4.json'
+            );
+        }
+
         It 'Azure.Template.ParameterMetadata' {
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Template*.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.ParameterMetadata';
@@ -390,6 +430,24 @@ Describe 'Azure.Template' -Tag 'Template' {
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Parameters*.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.ParameterFile';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.ParameterFile' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeLike "*Resources.Parameters2.json";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeLike "*Resources.Parameters.json";
+        }
+
+        It 'Azure.Template.ParameterScheme' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Parameters*.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.ParameterScheme';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.ParameterScheme' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

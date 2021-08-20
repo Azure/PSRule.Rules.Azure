@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Operational Excellence
-category: Deployment
+category: Repeatable infrastructure
 resource: All resources
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.TemplateFile/
 ---
@@ -25,6 +25,6 @@ Also consider using Visual Studio Code to assist with authoring these files.
 
 ## LINKS
 
+- [Automate deployments with ARM Templates](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure#automate-deployments-with-arm-templates)
 - [Template file structure](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-syntax)
 - [Define resources in Azure Resource Manager templates](https://docs.microsoft.com/azure/templates/)
-- [Release deployment](https://docs.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)

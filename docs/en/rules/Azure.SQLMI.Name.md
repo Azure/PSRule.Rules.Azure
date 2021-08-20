@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Operational Excellence
-category: Repeatable Infrastructure
+category: Repeatable infrastructure
 resource: SQL Managed Instance
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQLMI.Name/
 ---
@@ -33,5 +33,5 @@ This rule does not check if SQL Managed Instance names are unique.
 
 ## LINKS
 
-- [Repeatable Infrastructure](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
+- [Repeatable infrastructure](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql)

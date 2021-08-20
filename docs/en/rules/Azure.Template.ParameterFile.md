@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Operational Excellence
-category: Release engineering
+category: Repeatable infrastructure
 resource: All resources
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.ParameterFile/
 ---
@@ -25,6 +25,7 @@ Also consider using Visual Studio Code to assist with authoring these files.
 
 ## LINKS
 
+- [Automate deployments with ARM Templates](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure#automate-deployments-with-arm-templates)
+- [Test cases for parameter files](https://docs.microsoft.com/azure/azure-resource-manager/templates/parameter-file-test-cases)
 - [Create Resource Manager parameter file](https://docs.microsoft.com/azure/azure-resource-manager/templates/parameter-files)
 - [Parameters in Azure Resource Manager templates](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-parameters)
-- [Release deployment](https://docs.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)

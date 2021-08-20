@@ -36,7 +36,10 @@ Describe 'Azure.ExpandTemplate' -Tag 'Convention' {
             # Default
             $parameterFile = Join-Path -Path $here -ChildPath 'Resources.Storage.Parameters.json';
             $result = @(Invoke-PSRule @invokeParams -InputPath $parameterFile -Format File);
-            $result.Length | Should -Be 1;
+            $result.RuleName | Should -BeIn @(
+                'Azure.Template.ParameterFile'
+                'Azure.Template.ParameterScheme'
+            );
             $resource = $result | Where-Object { $_.TargetType -eq 'Microsoft.Storage/storageAccounts' };
             $resource | Should -BeNullOrEmpty;
 
