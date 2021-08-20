@@ -481,5 +481,55 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 7;
         }
+
+        It 'Azure.Template.ParameterValue' {
+            $dataPath = @(
+                Join-Path -Path $here -ChildPath 'Resources.Parameters.json'
+                Join-Path -Path $here -ChildPath 'Resources.VPN.Parameters2.json'
+                Join-Path -Path $here -ChildPath 'Resources.ParameterFile.Fail5.json'
+            )
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.ParameterValue';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.ParameterValue' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.ParameterFile.Fail5.json';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Parameters.json', 'Resources.VPN.Parameters2.json';
+        }
+
+        It 'Azure.Template.ValidSecretRef' {
+            $dataPath = @(
+                Join-Path -Path $here -ChildPath 'Resources.Parameters.json'
+                Join-Path -Path $here -ChildPath 'Resources.VPN.Parameters2.json'
+                Join-Path -Path $here -ChildPath 'Resources.VPN.Parameters3.json'
+            )
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.ValidSecretRef';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.ValidSecretRef' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.VPN.Parameters2.json';
+            $ruleResult[0].Reason[0] | Should -Be 'The field ''reference.keyVault.id'' does not exist.';
+            $ruleResult[0].Reason[1] | Should -Be 'The field value ''not_a_secret'' does not match the pattern ''^[A-Za-z0-9-]{1,127}$''.';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Resources.Parameters.json', 'Resources.VPN.Parameters3.json';
+        }
     }
 }
