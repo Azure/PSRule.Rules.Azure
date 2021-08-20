@@ -39,6 +39,8 @@ Describe 'Azure.ExpandTemplate' -Tag 'Convention' {
             $result.RuleName | Should -BeIn @(
                 'Azure.Template.ParameterFile'
                 'Azure.Template.ParameterScheme'
+                'Azure.Template.ParameterValue'
+                'Azure.Template.ValidSecretRef'
             );
             $resource = $result | Where-Object { $_.TargetType -eq 'Microsoft.Storage/storageAccounts' };
             $resource | Should -BeNullOrEmpty;

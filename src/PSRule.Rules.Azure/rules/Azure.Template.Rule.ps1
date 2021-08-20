@@ -260,6 +260,38 @@ Rule 'Azure.Template.MetadataLink' -Type '.json' -If { $Configuration.AZURE_PARA
     $Assert.WithinPath($path, '.', @($PWD));
 }
 
+# Synopsis: Specify a value for each parameter in template parameter files.
+Rule 'Azure.Template.ParameterValue' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
+    $parameters = @($jsonObject.parameters.PSObject.Properties | Where-Object {
+        $_.MemberType -eq 'NoteProperty'
+    });
+    if ($parameters.Length -eq 0) {
+        return $Assert.Pass();
+    }
+    foreach ($parameter in $parameters) {
+        AnyOf {
+            $Assert.HasFieldValue($parameter.Value, 'value');
+            $Assert.HasFieldValue($parameter.Value, 'reference');
+        }
+    }
+}
+
+# Synopsis: Use a valid secret reference within parameter files.
+Rule 'Azure.Template.ValidSecretRef' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
+    $parameters = @($jsonObject.parameters.PSObject.Properties | Where-Object {
+        $_.MemberType -eq 'NoteProperty' -and $Assert.HasField($_.Value, 'reference').Result
+    });
+    if ($parameters.Length -eq 0) {
+        return $Assert.Pass();
+    }
+    foreach ($parameter in $parameters) {
+        $Assert.Match($parameter.Value, 'reference.keyVault.id', '^\/subscriptions\/(.+?)\/resourceGroups\/(.+?)\/providers\/Microsoft\.KeyVault\/vaults\/[A-Za-z](-|[A-Za-z0-9])*[A-Za-z0-9]$');
+        $Assert.Match($parameter.Value, 'reference.secretName', '^[A-Za-z0-9-]{1,127}$');
+    }
+}
+
 #endregion Parameters
 
 #region Helper functions

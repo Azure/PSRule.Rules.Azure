@@ -1,0 +1,29 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "template": "./Resources.VPN.Template.json"
+    },
+    "parameters": {
+        "gatewayName": {
+            "value": "gateway-A"
+        },
+        "sku": {
+            "value": "VpnGw1"
+        },
+        "vpnGatewayGeneration": {
+            "value": "Generation1"
+        },
+        "subnetId": {
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/GatewaySubnet"
+        },
+        "sharedKey": {
+            "reference": {
+                "keyVault": {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/kv-001"
+                },
+                "secretName": "valid-secret"
+            }
+        }
+    }
+}
