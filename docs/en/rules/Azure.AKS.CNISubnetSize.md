@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Performance Efficiency
-category: Scalabilty
+category: Scalability
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.CNISubnetSize/
 ---

@@ -164,7 +164,7 @@ configuration:
   AZURE_POLICY_WAIVER_MAX_EXPIRY: 90
 ```
 
-### Azure AKS CNI minumum cluster subnet size
+### Azure AKS CNI minimum cluster subnet size
 
 This configuration option determines the minimum subnet size for Azure AKS CNI.
 
