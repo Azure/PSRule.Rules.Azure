@@ -270,9 +270,11 @@ Rule 'Azure.Template.ParameterValue' -Type '.json' -If { (IsParameterFile) } -Ta
         return $Assert.Pass();
     }
     foreach ($parameter in $parameters) {
-        AnyOf {
-            $Assert.HasFieldValue($parameter.Value, 'value');
-            $Assert.HasFieldValue($parameter.Value, 'reference');
+        if ($Assert.HasField($parameter.Value, 'value').Result -or $Assert.HasFieldValue($parameter.Value, 'reference').Result) {
+            $Assert.Pass();
+        }
+        else {
+            $Assert.Fail($LocalizedData.ParameterValueNotSet, $parameter.Name);
         }
     }
 }

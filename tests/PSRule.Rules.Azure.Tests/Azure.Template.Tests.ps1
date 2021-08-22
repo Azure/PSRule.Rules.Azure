@@ -497,6 +497,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 1;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.ParameterFile.Fail5.json';
+            $ruleResult[0].Reason | Should -Be 'The parameter ''vnetName'' must have a value or Key Vault reference set.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
