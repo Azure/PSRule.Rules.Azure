@@ -42,7 +42,7 @@ Export-PSRuleConvention 'Azure.ExpandBicep' -If { $Configuration.AZURE_BICEP_FIL
         }
     }
     catch [PSRule.Rules.Azure.Pipeline.BicepCompileException] {
-        Write-Error -Exception $_.Exception;
+        Write-Error -Exception $_.Exception -ErrorId 'Azure.ExpandBicep.BicepCompileException';
     }
     catch [System.IO.FileNotFoundException] {
         Write-Error -Exception $_.Exception;
