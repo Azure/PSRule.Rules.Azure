@@ -218,14 +218,14 @@ configuration:
   AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
   - location: 'Australia Southeast'
     zones:
-      - 1
-      - 2
-      - 3
+      - "1"
+      - "2"
+      - "3"
   - location: 'Norway East'
     zones:
-      - 1
-      - 2
-      - 3
+      - "1"
+      - "2"
+      - "3"
 ```
 
 The above example, both these forms of location are accepted:

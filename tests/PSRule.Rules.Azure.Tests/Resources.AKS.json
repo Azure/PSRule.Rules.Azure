@@ -2,7 +2,7 @@
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-A",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-A",
-        "Location": "region",
+        "Location": "Australia East",
         "ResourceName": "cluster-A",
         "Name": "cluster-A",
         "Properties": {
@@ -20,7 +20,8 @@
                     "type": "AvailabilitySet",
                     "orchestratorVersion": "1.20.5",
                     "osType": "Linux",
-                    "enableAutoScaling": false
+                    "enableAutoScaling": false,
+                    "availabilityZones": null
                 }
             ],
             "servicePrincipalProfile": {
@@ -67,7 +68,7 @@
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-B",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-B",
-        "Location": "region",
+        "Location": "auatraliaeast",
         "ResourceName": "cluster-B",
         "Name": "cluster-B",
         "Properties": {
@@ -168,7 +169,7 @@
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-C",
         "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": "australiaeast",
         "ManagedBy": null,
         "ResourceName": "cluster-C",
         "Name": "cluster-C",
@@ -285,7 +286,7 @@
             "UserAssignedIdentities": null
         },
         "Kind": null,
-        "Location": "region",
+        "Location": "australiaeast",
         "ManagedBy": null,
         "ResourceName": "cluster-D",
         "Name": "cluster-D",
@@ -312,7 +313,12 @@
                     "mode": "System",
                     "osType": "Linux",
                     "nodeImageVersion": "AKSUbuntu:1604:2020.05.13",
-                    "enableAutoScaling": false
+                    "enableAutoScaling": false,
+                    "availabilityZones": [
+                        "1",
+                        "2",
+                        "3"
+                    ]
                 }
             ],
             "windowsProfile": {
@@ -463,7 +469,7 @@
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-E/agentPools/system",
         "Identity": null,
         "Kind": null,
-        "Location": null,
+        "Location": "australiasoutheast",
         "ManagedBy": null,
         "ResourceName": "system",
         "Name": "system",
@@ -488,7 +494,8 @@
             "nodeLabels": {},
             "mode": "System",
             "osType": "Linux",
-            "nodeImageVersion": "AKSUbuntu-1804containerd-2021.01.28"
+            "nodeImageVersion": "AKSUbuntu-1804containerd-2021.01.28",
+            "availabilityZones": null
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.ContainerService/managedClusters/agentPools",
@@ -543,7 +550,7 @@
             "UserAssignedIdentities": null
         },
         "Kind": null,
-        "Location": "region",
+        "Location": "Australia Southeast",
         "ManagedBy": null,
         "ResourceName": "cluster-F",
         "Name": "cluster-F",
@@ -578,7 +585,8 @@
                     "nodeLabels": {},
                     "mode": "System",
                     "osType": "Linux",
-                    "nodeImageVersion": "AKSUbuntu-1804containerd-2021.04.27"
+                    "nodeImageVersion": "AKSUbuntu-1804containerd-2021.04.27",
+                    "availabilityZones": []
                 }
             ],
             "windowsProfile": {
@@ -772,5 +780,137 @@
                 "SubscriptionId": null
             }
         ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-G",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-G",
+        "Location": "Australia East",
+        "ResourceName": "cluster-G",
+        "Name": "cluster-G",
+        "Properties": {
+            "kubernetesVersion": "1.20.5",
+            "dnsPrefix": "cluster-G",
+            "fqdn": "cluster-G-00000000.nnn.region.azmk8s.io",
+            "agentPoolProfiles": [
+                {
+                    "name": "agentpool",
+                    "count": 3,
+                    "vmSize": "Standard_F2s_v2",
+                    "osDiskSizeGB": 30,
+                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                    "maxPods": 30,
+                    "type": "VirtualMachineScaleSets",
+                    "orchestratorVersion": "1.20.5",
+                    "osType": "Linux",
+                    "enableAutoScaling": false,
+                    "availabilityZones": null
+                }
+            ],
+            "servicePrincipalProfile": {
+                "clientId": "00000000-0000-0000-0000-000000000000"
+            },
+            "addonProfiles": {
+                "aciconnectorlinux": {
+                    "enabled": true,
+                    "config": {
+                        "subnetname": "subnet-A"
+                    }
+                },
+                "httpapplicationrouting": {
+                    "enabled": true,
+                    "config": {
+                        "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
+                    }
+                },
+                "omsagent": {
+                    "enabled": true,
+                    "config": {
+                        "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
+                    }
+                }
+            },
+            "nodeResourceGroup": "MC_test-rg_cluster-G_region",
+            "enableRBAC": true,
+            "networkProfile": {
+                "networkPlugin": "azure",
+                "loadBalancerSku": "Basic",
+                "serviceCidr": "10.4.1.0/24",
+                "dnsServiceIP": "10.4.1.10",
+                "dockerBridgeCidr": "172.17.0.1/16"
+            },
+            "maxAgentPools": 1
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerService/managedClusters",
+        "ResourceType": "Microsoft.ContainerService/managedClusters",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": []
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-H",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-H",
+        "Location": "australiaeast",
+        "ResourceName": "cluster-H",
+        "Name": "cluster-H",
+        "Properties": {
+            "kubernetesVersion": "1.20.5",
+            "dnsPrefix": "cluster-H",
+            "fqdn": "cluster-H-00000000.nnn.region.azmk8s.io",
+            "agentPoolProfiles": [
+                {
+                    "name": "agentpool",
+                    "count": 3,
+                    "vmSize": "Standard_F2s_v2",
+                    "osDiskSizeGB": 30,
+                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                    "maxPods": 30,
+                    "type": "VirtualMachineScaleSets",
+                    "orchestratorVersion": "1.20.5",
+                    "osType": "Linux",
+                    "enableAutoScaling": false,
+                    "availabilityZones": []
+                }
+            ],
+            "servicePrincipalProfile": {
+                "clientId": "00000000-0000-0000-0000-000000000000"
+            },
+            "addonProfiles": {
+                "aciconnectorlinux": {
+                    "enabled": true,
+                    "config": {
+                        "subnetname": "subnet-A"
+                    }
+                },
+                "httpapplicationrouting": {
+                    "enabled": true,
+                    "config": {
+                        "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
+                    }
+                },
+                "omsagent": {
+                    "enabled": true,
+                    "config": {
+                        "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
+                    }
+                }
+            },
+            "nodeResourceGroup": "MC_test-rg_cluster-H_region",
+            "enableRBAC": true,
+            "networkProfile": {
+                "networkPlugin": "azure",
+                "loadBalancerSku": "Basic",
+                "serviceCidr": "10.4.1.0/24",
+                "dnsServiceIP": "10.4.1.10",
+                "dockerBridgeCidr": "172.17.0.1/16"
+            },
+            "maxAgentPools": 1
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerService/managedClusters",
+        "ResourceType": "Microsoft.ContainerService/managedClusters",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": []
     }
 ]
