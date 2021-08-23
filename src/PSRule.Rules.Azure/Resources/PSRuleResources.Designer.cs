@@ -115,7 +115,7 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bicep compilation of &apos;{0}&apos; failed with: {1}.
+        ///   Looks up a localized string similar to Bicep ({0}) compilation of &apos;{1}&apos; failed with: {2}.
         /// </summary>
         internal static string BicepCompileError {
             get {

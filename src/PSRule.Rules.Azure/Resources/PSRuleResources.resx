@@ -136,7 +136,7 @@
     <value>The number of arguments '{1}' is not within the allowed range for '{0}'.</value>
   </data>
   <data name="BicepCompileError" xml:space="preserve">
-    <value>Bicep compilation of '{0}' failed with: {1}</value>
+    <value>Bicep ({0}) compilation of '{1}' failed with: {2}</value>
   </data>
   <data name="BicepCompileTimeout" xml:space="preserve">
     <value>Bicep compilation hasn't completed within the timeout window. This can be caused by errors or warnings. Check the Bicep output by running bicep build and addressing any issues.</value>

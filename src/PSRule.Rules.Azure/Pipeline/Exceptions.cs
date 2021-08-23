@@ -194,10 +194,11 @@ namespace PSRule.Rules.Azure.Pipeline
         public BicepCompileException(string message, Exception innerException)
             : base(message, innerException) { }
 
-        internal BicepCompileException(string message, Exception innerException, string sourceFile)
+        internal BicepCompileException(string message, Exception innerException, string sourceFile, string version)
             : base(message, innerException)
         {
             SourceFile = sourceFile;
+            Version = version;
         }
 
         private BicepCompileException(SerializationInfo info, StreamingContext context)
@@ -207,6 +208,11 @@ namespace PSRule.Rules.Azure.Pipeline
         /// The file path to an Azure Bicep source file.
         /// </summary>
         public string SourceFile { get; }
+
+        /// <summary>
+        /// The version of the Bicep binary.
+        /// </summary>
+        public string Version { get; }
 
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
