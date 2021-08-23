@@ -26,7 +26,7 @@ Consider using availability zones for AKS clusters deployed with virtual machine
 
 This rule applies when analyzing resources deployed to Azure using *pre-flight* and *in-flight* data.
 
-This rule fails when `"availabilityZones": null` is set in the template and there are supported availability zones for a given region.
+This rule fails when `"availabilityZones"` is `null`, `[]` or not set when the AKS cluster is deployed to a virtual machine scale set and there are supported availability zones for the given region.
 
 Configure `AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json) for namespace `Microsoft.Compute` and resource type `virtualMachineScaleSets`.
 
