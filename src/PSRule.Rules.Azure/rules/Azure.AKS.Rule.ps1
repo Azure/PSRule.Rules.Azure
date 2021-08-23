@@ -194,9 +194,7 @@ Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClust
 
     $location = GetNormalLocation -Location $TargetObject.Location;
 
-    $locationAvailabilityZones = $availabilityZones 
-    | Where-Object { (GetNormalLocation -Location $_.Location) -eq $location } 
-    | Select-Object -ExpandProperty Zones -First 1;
+    $locationAvailabilityZones = $availabilityZones | Where-Object { (GetNormalLocation -Location $_.Location) -eq $location } | Select-Object -ExpandProperty Zones -First 1;
 
     if (-not $locationAvailabilityZones) {
         return $Assert.Pass();
