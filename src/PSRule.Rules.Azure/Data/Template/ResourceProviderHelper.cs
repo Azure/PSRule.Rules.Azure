@@ -9,7 +9,8 @@ using System.Linq;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
-    internal sealed class ResourceProviderHelper {
+    internal sealed class ResourceProviderHelper
+    {
         private readonly string AssemblyPath = Path.GetDirectoryName(typeof(ResourceProviderHelper).Assembly.Location);
         private const string DATAFILE_PROVIDERS = "providers.json";
         private Dictionary<string, ResourceProvider> _Providers;

@@ -60,5 +60,8 @@
         "text",
         "yaml",
         "yml"
-    ]
+    ],
+    "[csharp]": { 
+        "editor.formatOnSave": true
+    }
 }
