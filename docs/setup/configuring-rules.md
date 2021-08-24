@@ -235,5 +235,6 @@ The above example, both these forms of location are accepted:
 
 The `Azure.AKS.AvailabilityZone` rule normalizes these location formats so either is accepted in the configuration.
 
-**Note:** The above locations in the example do **not** support availability zones currently. 
-They are just added as an example of some regions that could be added if they did support availability zones and the module didn't have them included in the providers list.
+!!! Note
+    The above locations in the example do **not** currently support availability zones.
+    If they do in the future, you can configure this option to add them prior to PSRule for Azure support.
