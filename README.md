@@ -61,8 +61,7 @@ For additional details see the [FAQ](https://azure.github.io/PSRule.Rules.Azure/
 The following example shows how to setup Github Actions to validate templates pre-flight.
 
 1. See [Creating a workflow file][create-workflow].
-2. Export rule data from templates using PowerShell.
-3. Reference `Microsoft/ps-rule` with `modules: 'PSRule.Rules.Azure'`.
+2. Reference `Microsoft/ps-rule` with `modules: 'PSRule.Rules.Azure'`.
 
 For example:
 
@@ -84,17 +83,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    # STEP 2: Export template data for analysis
-    - name: Export templates
-      run: Install-Module PSRule.Rules.Azure -Force; Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath 'out/templates/';
-      shell: pwsh
-
-    # STEP 3: Run analysis against exported data
+    # STEP 2: Run analysis against exported data
     - name: Analyze Azure template files
       uses: Microsoft/ps-rule@main
       with:
         modules: 'PSRule.Rules.Azure'  # Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.
-        inputPath: 'out/templates/'    # Read objects from JSON files in 'out/templates/'.
 ```
 
 ### Using with Azure Pipelines
@@ -105,10 +98,8 @@ The following example shows how to setup Azure Pipelines to validate templates p
 2. Create a new YAML pipeline with the _Starter pipeline_ template.
 3. Add the `Install PSRule module` task.
    - Set module to `PSRule.Rules.Azure`.
-4. Export rule data from templates using PowerShell.
-5. Add the `PSRule analysis` task.
-   - Set input type to `Input Path`.
-   - Set input files to the location rule data is exported to.
+4. Add the `PSRule analysis` task.
+   - Set input type to `repository`.
    - Set modules to `PSRule.Rules.Azure`.
 
 For example:
@@ -132,16 +123,11 @@ jobs:
     inputs:
       module: 'PSRule.Rules.Azure'   # Install PSRule.Rules.Azure from the PowerShell Gallery.
 
-  # STEP 4: Export template data for analysis
-  - powershell: Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath 'out/templates/';
-    displayName: 'Export template data'
-
-  # STEP 5: Run analysis against exported data
+  # STEP 4: Run analysis against exported data
   - task: ps-rule-assert@0
     displayName: Analyze Azure template files
     inputs:
-      inputType: inputPath
-      inputPath: 'out/templates/'     # Read objects from JSON files in 'out/templates/'.
+      inputType: repository
       modules: 'PSRule.Rules.Azure'   # Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.
 ```
 
@@ -150,8 +136,7 @@ jobs:
 The following example shows how to setup PSRule locally to validate templates pre-flight.
 
 1. Install the `PSRule.Rules.Azure` module and dependencies from the PowerShell Gallery.
-2. Export rule data from templates using PowerShell.
-3. Run analysis against exported data.
+2. Run analysis against repository files.
 
 For example:
 
@@ -159,11 +144,8 @@ For example:
 # STEP 1: Install PSRule.Rules.Azure from the PowerShell Gallery
 Install-Module -Name 'PSRule.Rules.Azure' -Scope CurrentUser;
 
-# STEP 2: Export template data for analysis
-Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath 'out/templates/';
-
-# STEP 3: Run analysis against exported data
-Assert-PSRule -Module 'PSRule.Rules.Azure' -InputPath 'out/templates/';
+# STEP 2: Run analysis against exported data
+Assert-PSRule -Module 'PSRule.Rules.Azure' -InputPath 'out/templates/' -Format File;
 ```
 
 ### Export in-flight resource data
