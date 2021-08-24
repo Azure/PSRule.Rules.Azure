@@ -174,7 +174,7 @@ Rule 'Azure.AKS.CNISubnetSize' -Type 'Microsoft.ContainerService/managedClusters
 } -Configure @{ AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE = 23 }
 
 # Synopsis: AKS clusters deployed with virtual machine scale sets should use availability zones in supported regions for high availability.
-Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $agentPools = @(GetAgentPoolProfiles);
 
     if ($agentPools.Length -eq 0 -or [string]::IsNullOrEmpty($TargetObject.Location)) {
@@ -206,8 +206,7 @@ Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClust
 
         # Availability zones only available on virtual machine scale sets
         if ($Assert.HasFieldValue($agentPool, 'type', 'VirtualMachineScaleSets').Result) {
-            $validZone = $Assert.HasField($agentPool, 'availabilityZones').Result -and -not $Assert.NullOrEmpty($agentPool, 'availabilityZones').Result;
-            $Assert.Create($validZone, ($LocalizedData.AKSAvailabilityZone -f $agentPool.name, $location, $joinedZoneString));
+            $Assert.HasFieldValue($agentPool, 'availabilityZones').Reason($LocalizedData.AKSAvailabilityZone, $agentPool.name, $location, $joinedZoneString);
         }
         else {
             $Assert.Pass();

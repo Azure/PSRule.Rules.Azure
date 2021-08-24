@@ -322,8 +322,8 @@ Describe 'Azure.AKS' -Tag AKS {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 5;
-            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'system', 'cluster-D', 'cluster-F';
+            $ruleResult | Should -HaveCount 4;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-D', 'cluster-F';
         }
     }
 
@@ -657,8 +657,8 @@ Describe 'Azure.AKS' -Tag AKS {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 3;
-            $ruleResult.TargetName | Should -BeIn 'clusterC/agentpool3', 'clusterC/agentpool4', 'clusterD';
+            $ruleResult | Should -HaveCount 1;
+            $ruleResult.TargetName | Should -BeIn 'clusterD';
         }
     }
 }
