@@ -18,6 +18,10 @@
             "defaultValue": "clusterD",
             "type": "string"
         },
+        "clusterName5": {
+            "defaultValue": "clusterE",
+            "type": "string"
+        },
         "clusterLocation": {
             "defaultValue": "[resourceGroup().location]",
             "type": "string"
@@ -54,7 +58,8 @@
                         "maxPods": 50,
                         "type": "VirtualMachineScaleSets",
                         "osType": "Linux",
-                        "enableAutoScaling": false
+                        "enableAutoScaling": false,
+                        "availabilityZones": null
                     }
                 ],
                 "servicePrincipalProfile": {
@@ -135,7 +140,8 @@
                         "maxPods": 50,
                         "type": "VirtualMachineScaleSets",
                         "osType": "Linux",
-                        "enableAutoScaling": true
+                        "enableAutoScaling": true,
+                        "availabilityZones": []
                     }
                 ],
                 "servicePrincipalProfile": {
@@ -276,7 +282,12 @@
                         "maxPods": 50,
                         "type": "VirtualMachineScaleSets",
                         "osType": "Linux",
-                        "enableAutoScaling": true
+                        "enableAutoScaling": true,
+                        "availabilityZones": [
+                            "1",
+                            "2",
+                            "3"
+                        ]
                     }
                 ],
                 "servicePrincipalProfile": {
@@ -374,7 +385,142 @@
                         "maxPods": 50,
                         "type": "VirtualMachineScaleSets",
                         "osType": "Linux",
-                        "enableAutoScaling": false
+                        "enableAutoScaling": false,
+                        "availabilityZones": [
+                            "1",
+                            "2",
+                            "3"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "type": "Microsoft.ContainerService/managedClusters",
+            "apiVersion": "2020-12-01",
+            "name": "[parameters('clusterName5')]",
+            "location": "[parameters('clusterLocation')]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "kubernetesVersion": "1.20.5",
+                "dnsPrefix": "[concat('dns-', parameters('clusterName5'))]",
+                "agentPoolProfiles": [
+                    {
+                        "name": "agentpool1",
+                        "count": 3,
+                        "vmSize": "Standard_B2ms",
+                        "osDiskSizeGB": 100,
+                        "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-01')]",
+                        "maxPods": 50,
+                        "type": "VirtualMachineScaleSets",
+                        "osType": "Linux",
+                        "enableAutoScaling": true,
+                        "availabilityZones": [
+                            "1",
+                            "2",
+                            "3"
+                        ]
+                    }
+                ],
+                "servicePrincipalProfile": {
+                    "clientId": "00000000-0000-0000-0000-000000000000"
+                },
+                "addonProfiles": {
+                    "aciConnectorLinux": {
+                        "enabled": true,
+                        "config": {
+                            "SubnetName": "subnet-aci"
+                        }
+                    },
+                    "azurePolicy": {
+                        "enabled": false
+                    },
+                    "httpApplicationRouting": {
+                        "enabled": true
+                    },
+                    "kubeDashboard": {
+                        "enabled": true
+                    },
+                    "omsagent": {
+                        "enabled": true,
+                        "config": {
+                            "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
+                        }
+                    },
+                    "azureKeyvaultSecretsProvider": {
+                        "enabled": true,
+                        "config": {
+                            "enableSecretRotation": "false"
+                        }
+                    },
+                    "openServiceMesh": {
+                        "enabled": true
+                    }
+                },
+                "aadProfile": {
+                    "managed": true,
+                    "enableAzureRBAC": true,
+                    "adminGroupObjectIDs": [],
+                    "tenantID": "[subscription().tenantId]"
+                },
+                "autoUpgradeProfile": {
+                    "upgradeChannel": "rapid"
+                },
+                "autoScalerProfile": {
+                    "balance-similar-node-groups": "false",
+                    "expander": "random",
+                    "max-empty-bulk-delete": "10",
+                    "max-graceful-termination-sec": "600",
+                    "max-total-unready-percentage": "45",
+                    "new-pod-scale-up-delay": "0s",
+                    "ok-total-unready-count": "3",
+                    "scale-down-delay-after-add": "10m",
+                    "scale-down-delay-after-delete": "10s",
+                    "scale-down-delay-after-failure": "3m",
+                    "scale-down-unneeded-time": "10m",
+                    "scale-down-unready-time": "20m",
+                    "scale-down-utilization-threshold": "0.5",
+                    "scan-interval": "10s",
+                    "skip-nodes-with-local-storage": "false",
+                    "skip-nodes-with-system-pods": "true"
+                },
+                "disableLocalAccounts": true,
+                "enableRBAC": true,
+                "enablePodSecurityPolicy": false,
+                "networkProfile": {
+                    "networkPlugin": "azure",
+                    "networkPolicy": "azure",
+                    "loadBalancerSku": "Standard",
+                    "serviceCidr": "192.168.0.0/16",
+                    "dnsServiceIP": "192.168.0.4",
+                    "dockerBridgeCidr": "172.17.0.1/16"
+                },
+                "apiServerAccessProfile": {
+                    "authorizedIpRanges": [
+                        "0.0.0.0/32"
+                    ]
+                }
+            },
+            "resources": [
+                {
+                    "type": "Microsoft.ContainerService/managedClusters/agentPools",
+                    "apiVersion": "2019-10-01",
+                    "name": "[concat(parameters('clusterName5'), '/agentpool2')]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName5'))]"
+                    ],
+                    "properties": {
+                        "count": 3,
+                        "vmSize": "Standard_B2ms",
+                        "osDiskSizeGB": 100,
+                        "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-04')]",
+                        "maxPods": 50,
+                        "type": "VirtualMachineScaleSets",
+                        "osType": "Linux",
+                        "enableAutoScaling": false,
+                        "availabilityZones": null
                     }
                 }
             ]

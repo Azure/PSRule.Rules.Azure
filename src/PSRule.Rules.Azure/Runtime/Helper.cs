@@ -60,6 +60,12 @@ namespace PSRule.Rules.Azure.Runtime
             return builder;
         }
 
+        public static ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
+        {
+            var resourceProviderHelper = new ResourceProviderHelper();
+            return resourceProviderHelper.GetResourceType(providerNamespace, resourceType);
+        }
+
         #region Helper methods
 
         private static PipelineContext GetContext(PSCmdlet commandRuntime = null)

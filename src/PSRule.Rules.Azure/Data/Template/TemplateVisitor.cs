@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Pipeline;
@@ -9,7 +8,6 @@ using PSRule.Rules.Azure.Resources;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Threading;
 
@@ -82,11 +80,8 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_MEMBERS = "members";
         private const string PROPERTY_OUTPUT = "output";
 
-        private readonly static string AssemblyPath = Path.GetDirectoryName(typeof(TemplateVisitor).Assembly.Location);
-
         internal sealed class TemplateContext : ITemplateContext
         {
-            private const string DATAFILE_PROVIDERS = "providers.json";
             private const string DATAFILE_ENVIRONMENTS = "environments.json";
             private const string CLOUD_PUBLIC = "AzureCloud";
 
@@ -99,7 +94,7 @@ namespace PSRule.Rules.Azure.Data.Template
             private readonly Dictionary<string, ResourceValue> _ResourceIds;
 
             private JObject _Parameters;
-            private Dictionary<string, ResourceProvider> _Providers;
+            private ResourceProviderHelper _ResourceProviderHelper;
             private Dictionary<string, CloudEnvironment> _Environments;
 
             internal TemplateContext()
@@ -114,6 +109,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 _Deployment = new Stack<JObject>();
                 _ExpressionFactory = new ExpressionFactory();
                 _ExpressionBuilder = new ExpressionBuilder(_ExpressionFactory);
+                _ResourceProviderHelper = new ResourceProviderHelper();
             }
 
             internal TemplateContext(PipelineContext context, SubscriptionOption subscription, ResourceGroupOption resourceGroup)
@@ -466,31 +462,14 @@ namespace PSRule.Rules.Azure.Data.Template
                 _ExpressionFactory.With(descriptor);
             }
 
-            private static Dictionary<string, ResourceProvider> ReadProviders()
+            private Dictionary<string, CloudEnvironment> ReadEnvironments()
             {
-                return ReadDataFile<ResourceProvider>(DATAFILE_PROVIDERS);
-            }
-
-            private static Dictionary<string, CloudEnvironment> ReadEnvironments()
-            {
-                return ReadDataFile<CloudEnvironment>(DATAFILE_ENVIRONMENTS);
+                return _ResourceProviderHelper.ReadDataFile<CloudEnvironment>(DATAFILE_ENVIRONMENTS);
             }
 
             public ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
             {
-                if (_Providers == null)
-                    _Providers = ReadProviders();
-
-                if (_Providers == null || _Providers.Count == 0 || !_Providers.TryGetValue(providerNamespace, out ResourceProvider provider))
-                    return Array.Empty<ResourceProviderType>();
-
-                if (resourceType == null)
-                    return provider.Types.Values.ToArray();
-
-                if (!provider.Types.ContainsKey(resourceType))
-                    return Array.Empty<ResourceProviderType>();
-
-                return new ResourceProviderType[] { provider.Types[resourceType] };
+                return _ResourceProviderHelper.GetResourceType(providerNamespace, resourceType);
             }
 
             public CloudEnvironment GetEnvironment()
@@ -499,19 +478,6 @@ namespace PSRule.Rules.Azure.Data.Template
                     _Environments = ReadEnvironments();
 
                 return _Environments[CLOUD_PUBLIC];
-            }
-
-            private static Dictionary<string, T> ReadDataFile<T>(string fileName)
-            {
-                var sourcePath = Path.Combine(AssemblyPath, fileName);
-                if (!File.Exists(sourcePath))
-                    return null;
-
-                var json = File.ReadAllText(sourcePath);
-                var settings = new JsonSerializerSettings();
-                settings.Converters.Add(new ResourceProviderConverter());
-                var result = JsonConvert.DeserializeObject<Dictionary<string, T>>(json, settings);
-                return result;
             }
 
             internal void SetSource(string templateFile, string parameterFile)
