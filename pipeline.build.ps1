@@ -196,11 +196,11 @@ task platyPS {
 
 # Synopsis: Install module dependencies
 task ModuleDependencies NuGet, PSRule, {
-    if ($Null -eq (Get-InstalledModule -Name Az.Accounts -MinimumVersion 1.5.2 -ErrorAction Ignore)) {
-        Install-Module -Name Az.Accounts -Scope CurrentUser -MinimumVersion 1.5.2 -Force;
+    if ($Null -eq (Get-InstalledModule -Name Az.Accounts -MinimumVersion 2.5.2 -ErrorAction Ignore)) {
+        Install-Module -Name Az.Accounts -Scope CurrentUser -MinimumVersion 2.5.2 -Force;
     }
-    if ($Null -eq (Get-InstalledModule -Name Az.Resources -MinimumVersion 1.4.0 -ErrorAction Ignore)) {
-        Install-Module -Name Az.Resources -Scope CurrentUser -MinimumVersion 1.4.0 -Force;
+    if ($Null -eq (Get-InstalledModule -Name Az.Resources -MinimumVersion 4.3.0 -ErrorAction Ignore)) {
+        Install-Module -Name Az.Resources -Scope CurrentUser -MinimumVersion 4.3.0 -Force;
     }
 }
 
@@ -461,23 +461,22 @@ task Benchmark {
 }
 
 task ExportProviders {
-    $providers = Get-AzResourceProvider -ListAvailable;
-    $index = @{}
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $providers = ((Invoke-AzRest -Method Get -Path "/subscriptions/$subscriptionId/providers?api-version=2021-04-01").Content | ConvertFrom-Json).value
+    $index = [ordered]@{}
     foreach ($provider in $providers) {
-        $namespace = $provider.ProviderNamespace;
-        $provider.PSObject.Properties.Remove('RegistrationState');
-        $provider.PSObject.Properties.Remove('ProviderNamespace');
-
-        $resourceTypes = @{};
-        $provider.ResourceTypes | ForEach-Object {
-            $info = @{
-                resourceType = $_.ResourceTypeName
-                apiVersions = $_.ApiVersions
-                locations = $_.Locations
+        $namespace = $provider.namespace;
+        $resourceTypes = [ordered]@{};
+        $provider.resourceTypes | Sort-Object -Property resourceType | ForEach-Object {
+            $info = [ordered]@{
+                resourceType = $_.resourceType
+                apiVersions = $_.apiVersions
+                locations = $_.locations
+                zoneMappings = $_.ZoneMappings
             }
             $resourceTypes.Add($info.resourceType, $info);
         };
-        $entry = @{
+        $entry = [ordered]@{
             types = $resourceTypes
         }
         $index.Add($namespace, $entry);
