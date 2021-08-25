@@ -13,14 +13,14 @@
         <meta name="author" content="Microsoft">
       
       
-        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.UseManagedDisks/">
+        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AvailabilityZone/">
       
       <link rel="icon" href="../../../assets/ms_icon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
-        <title>Azure.VM.UseManagedDisks - PSRule for Azure</title>
+        <title>Azure.AKS.AvailabilityZone - PSRule for Azure</title>
       
     
     
@@ -66,9 +66,9 @@
 
   <!-- Open graph meta tags -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PSRule for Azure - Azure.VM.UseManagedDisks" />
+  <meta property="og:title" content="PSRule for Azure - Azure.AKS.AvailabilityZone" />
   <meta property="og:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
-  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.UseManagedDisks/" />
+  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AvailabilityZone/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1280" />
@@ -78,7 +78,7 @@
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - Azure.VM.UseManagedDisks" />
+  <meta name="twitter:title" content="PSRule for Azure - Azure.AKS.AvailabilityZone" />
   <meta name="twitter:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#usemanageddisks" class="md-skip">
+        <a href="#aksclustersshoulduseavailabilityzonesinsupportedregions" class="md-skip">
           Skip to content
         </a>
       
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Azure.VM.UseManagedDisks
+              Azure.AKS.AvailabilityZone
             
           </span>
         </div>
@@ -909,11 +909,112 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Azure.AKS.AvailabilityZone/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Azure.AKS.AvailabilityZone
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Azure.AKS.AvailabilityZone
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurecli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure with Azure CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#createaksclusterinzone12and3" class="md-nav__link">
+    Create AKS Cluster in Zone 1, 2 and 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3249,65 +3350,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Azure.VM.UseManagedDisks
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Azure.VM.UseManagedDisks/" class="md-nav__link">
         Azure.VM.UseManagedDisks
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommendation" class="md-nav__link">
-    Recommendation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    Links
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3643,6 +3690,53 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurecli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure with Azure CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#createaksclusterinzone12and3" class="md-nav__link">
+    Create AKS Cluster in Zone 1, 2 and 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#links" class="md-nav__link">
     Links
   </a>
@@ -3661,24 +3755,131 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.UseManagedDisks.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.AvailabilityZone.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="usemanageddisks">Use Managed Disks<a class="headerlink" href="#usemanageddisks" title="Permanent link">#</a></h1>
-<p>Virtual machines (VMs) should use managed disks.</p>
+                <h1 id="aksclustersshoulduseavailabilityzonesinsupportedregions">AKS clusters should use Availability zones in supported regions<a class="headerlink" href="#aksclustersshoulduseavailabilityzonesinsupportedregions" title="Permanent link">#</a></h1>
+<p>AKS clusters deployed with virtual machine scale sets should use availability zones in supported regions for high availability.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>VMs can be configured with un-managed or managed disks.
-Un-managed disks, are <code>.vhd</code> files stored on a Storage Account that you manage as files.
-Managed disks allow you to managed the VM disk and the Storage Account is managed by Microsoft.</p>
-<p>Managed disks are the successor to un-managed disks and provide an number of additional features.
-Using managed disks reduces management of VM storage, improves durability and availability of VMs.</p>
+<p>AKS clusters using availability zones improve reliability and ensure availability during failure scenarios affecting a data center within a region.
+Nodes in one availability zone are physically separated from nodes defined in another availability zone.
+By spreading node pools across multiple zones, nodes in one node pool will continue running even if another zone has gone down.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider using managed disks for virtual machine storage.</p>
+<p>Consider using availability zones for AKS clusters deployed with virtual machine scale sets.</p>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
+<p>This rule applies when analyzing resources deployed to Azure using <em>pre-flight</em> and <em>in-flight</em> data.</p>
+<p>This rule fails when <code>"availabilityZones"</code> is <code>null</code>, <code>[]</code> or not set when the AKS cluster is deployed to a virtual machine scale set and there are supported availability zones for the given region.</p>
+<p>Configure <code>AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code> to set additional availability zones that need to be supported which are not in the existing <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json">providers</a> for namespace <code>Microsoft.Compute</code> and resource type <code>virtualMachineScaleSets</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+  <span class="nt">AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+</code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To set availability zones for an AKS cluster</p>
+<ul>
+<li>Set <code>properties.agentPoolProfiles[*].availabilityZones</code> to any or all of <code>["1", "2", "3"]</code>.</li>
+<li>Set <code>properties.agentPoolProfiles[*].type</code> to <code>VirtualMachineScaleSets</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;comments&quot;</span><span class="p">:</span> <span class="s2">&quot;Azure Kubernetes Cluster&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-12-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;[resourceId(&#39;Microsoft.ManagedIdentity/userAssignedIdentities&#39;, parameters(&#39;identityName&#39;))]&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.ContainerService/managedClusters&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;clusterName&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;UserAssigned&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;userAssignedIdentities&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;[resourceId(&#39;Microsoft.ManagedIdentity/userAssignedIdentities&#39;, parameters(&#39;identityName&#39;))]&quot;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;kubernetesVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;kubernetesVersion&#39;)]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;disableLocalAccounts&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;enableRBAC&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;dnsPrefix&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;dnsPrefix&#39;)]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;agentPoolProfiles&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;osDiskSizeGB&quot;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+                <span class="nt">&quot;count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                <span class="nt">&quot;minCount&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                <span class="nt">&quot;maxCount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="nt">&quot;enableAutoScaling&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;maxPods&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+                <span class="nt">&quot;vmSize&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard_D2s_v3&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;osType&quot;</span><span class="p">:</span> <span class="s2">&quot;Linux&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;VirtualMachineScaleSets&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;vnetSubnetID&quot;</span><span class="p">:</span> <span class="s2">&quot;[variables(&#39;clusterSubnetId&#39;)]&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;System&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;osDiskType&quot;</span><span class="p">:</span> <span class="s2">&quot;Ephemeral&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;scaleSetPriority&quot;</span><span class="p">:</span> <span class="s2">&quot;Regular&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;availabilityZones&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;3&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;aadProfile&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;managed&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;enableAzureRBAC&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;adminGroupObjectIDs&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;clusterAdmins&#39;)]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;tenantID&quot;</span><span class="p">:</span> <span class="s2">&quot;[subscription().tenantId]&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;networkProfile&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;networkPlugin&quot;</span><span class="p">:</span> <span class="s2">&quot;azure&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;networkPolicy&quot;</span><span class="p">:</span> <span class="s2">&quot;azure&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;loadBalancerSku&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;serviceCidr&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.0/16&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;dnsServiceIP&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.4&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;dockerBridgeCidr&quot;</span><span class="p">:</span> <span class="s2">&quot;172.17.0.1/16&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;autoUpgradeProfile&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;upgradeChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;stable&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;addonProfiles&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;azurepolicy&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;v2&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;omsagent&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;logAnalyticsWorkspaceResourceID&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;workspaceId&#39;)]&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;kubeDashboard&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithazurecli">Configure with Azure CLI<a class="headerlink" href="#configurewithazurecli" title="Permanent link">#</a></h3>
+<h4 id="createaksclusterinzone12and3">Create AKS Cluster in Zone 1, 2 and 3<a class="headerlink" href="#createaksclusterinzone12and3" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code>az aks create <span class="se">\</span>
+  --resource-group <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> <span class="se">\</span>
+  --name <span class="s1">&#39;&lt;cluster_name&gt;&#39;</span> <span class="se">\</span>
+  --generate-ssh-keys <span class="se">\</span>
+  --vm-set-type VirtualMachineScaleSets <span class="se">\</span>
+  --load-balancer-sku standard <span class="se">\</span>
+  --node-count <span class="s1">&#39;&lt;node_count&gt;&#39;</span> <span class="se">\</span>
+  --zones <span class="m">1</span> <span class="m">2</span> <span class="m">3</span>
+</code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview">Introduction to Azure managed disks</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters?tabs=json">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/aks/availability-zones">Create an Azure Kubernetes Service (AKS) cluster that uses availability zones</a></li>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services">Use zone-aware services</a></li>
 </ul>
                 
                   
