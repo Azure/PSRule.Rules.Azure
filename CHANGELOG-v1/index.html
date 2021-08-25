@@ -596,6 +596,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v170" class="md-nav__link">
+    v1.7.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v170-b2108059pre-release" class="md-nav__link">
     v1.7.0-B2108059 (pre-release)
   </a>
@@ -3934,6 +3941,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v170" class="md-nav__link">
+    v1.7.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v170-b2108059pre-release" class="md-nav__link">
     v1.7.0-B2108059 (pre-release)
   </a>
@@ -4279,6 +4293,62 @@
 See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to this issue.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<h2 id="v170">v1.7.0<a class="headerlink" href="#v170" title="Permanent link">#</a></h2>
+<p>What's changed since v1.6.0:</p>
+<ul>
+<li>New rules:<ul>
+<li>All resources:<ul>
+<li>Check template parameter files use metadata links. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/846">#846</a><ul>
+<li>Configure the <code>AZURE_PARAMETER_FILE_METADATA_LINK</code> option to enable this rule.</li>
+</ul>
+</li>
+<li>Check template files use a recent schema. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/845">#845</a></li>
+<li>Check template files use a https schema scheme. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/894">#894</a></li>
+<li>Check template parameter files use a https schema scheme. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/894">#894</a></li>
+<li>Check template parameters set a value. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/896">#896</a></li>
+<li>Check template parameters use a valid secret reference. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/897">#897</a></li>
+</ul>
+</li>
+<li>Azure Kubernetes Service:<ul>
+<li>Check clusters using Azure CNI should use large subnets. Thanks <a href="https://github.com/ArmaanMcleod">@ArmaanMcleod</a>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/273">#273</a></li>
+<li>Check clusters use auto-scale node pools. Thanks <a href="https://github.com/ArmaanMcleod">@ArmaanMcleod</a>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/218">#218</a><ul>
+<li>By default, a minimum of a <code>/23</code> subnet is required.</li>
+<li>Configure <code>AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE</code> to change the default minimum subnet size.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Storage Account:<ul>
+<li>Check Storage Accounts only accept explicitly allowed network traffic. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/884">#884</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Updated rules:<ul>
+<li>Virtual Network:<ul>
+<li>Excluded <code>AzureFirewallManagementSubnet</code> from <code>Azure.VNET.UseNSGs</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/869">#869</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>General improvements:<ul>
+<li>Added version information to bicep compilation exceptions. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/903">#903</a></li>
+</ul>
+</li>
+<li>Engineering:<ul>
+<li>Bump PSRule dependency to v1.6.0. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/871">#871</a></li>
+</ul>
+</li>
+<li>Bug fixes:<ul>
+<li>Fixed DateTimeAdd function and tests within timezones with DST. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/891">#891</a></li>
+<li>Fixed <code>Azure.Template.ParameterValue</code> failing on empty value. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/901">#901</a></li>
+</ul>
+</li>
+</ul>
+<p>What's changed since pre-release v1.7.0-B2108059:</p>
+<ul>
+<li>No additional changes.</li>
+</ul>
 <h2 id="v170-b2108059pre-release">v1.7.0-B2108059 (pre-release)<a class="headerlink" href="#v170-b2108059pre-release" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.7.0-B2108049:</p>
 <ul>
