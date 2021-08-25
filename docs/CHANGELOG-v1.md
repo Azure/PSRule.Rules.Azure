@@ -7,6 +7,41 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.7.0
+
+What's changed since v1.6.0:
+
+- New rules:
+  - All resources:
+    - Check template parameter files use metadata links. [#846](https://github.com/Azure/PSRule.Rules.Azure/issues/846)
+      - Configure the `AZURE_PARAMETER_FILE_METADATA_LINK` option to enable this rule.
+    - Check template files use a recent schema. [#845](https://github.com/Azure/PSRule.Rules.Azure/issues/845)
+    - Check template files use a https schema scheme. [#894](https://github.com/Azure/PSRule.Rules.Azure/issues/894)
+    - Check template parameter files use a https schema scheme. [#894](https://github.com/Azure/PSRule.Rules.Azure/issues/894)
+    - Check template parameters set a value. [#896](https://github.com/Azure/PSRule.Rules.Azure/issues/896)
+    - Check template parameters use a valid secret reference. [#897](https://github.com/Azure/PSRule.Rules.Azure/issues/897)
+  - Azure Kubernetes Service:
+    - Check clusters using Azure CNI should use large subnets. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#273](https://github.com/Azure/PSRule.Rules.Azure/issues/273)
+    - Check clusters use auto-scale node pools. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#218](https://github.com/Azure/PSRule.Rules.Azure/issues/218)
+      - By default, a minimum of a `/23` subnet is required.
+      - Configure `AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE` to change the default minimum subnet size.
+  - Storage Account:
+    - Check Storage Accounts only accept explicitly allowed network traffic. [#884](https://github.com/Azure/PSRule.Rules.Azure/issues/884)
+- Updated rules:
+  - Virtual Network:
+    - Excluded `AzureFirewallManagementSubnet` from `Azure.VNET.UseNSGs`. [#869](https://github.com/Azure/PSRule.Rules.Azure/issues/869)
+- General improvements:
+  - Added version information to bicep compilation exceptions. [#903](https://github.com/Azure/PSRule.Rules.Azure/issues/903)
+- Engineering:
+  - Bump PSRule dependency to v1.6.0. [#871](https://github.com/Azure/PSRule.Rules.Azure/issues/871)
+- Bug fixes:
+  - Fixed DateTimeAdd function and tests within timezones with DST. [#891](https://github.com/Azure/PSRule.Rules.Azure/issues/891)
+  - Fixed `Azure.Template.ParameterValue` failing on empty value. [#901](https://github.com/Azure/PSRule.Rules.Azure/issues/901)
+
+What's changed since pre-release v1.7.0-B2108059:
+
+- No additional changes.
+
 ## v1.7.0-B2108059 (pre-release)
 
 What's changed since pre-release v1.7.0-B2108049:
