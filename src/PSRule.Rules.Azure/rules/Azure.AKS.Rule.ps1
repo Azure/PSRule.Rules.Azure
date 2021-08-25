@@ -186,7 +186,10 @@ Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClust
     $virtualMachineScaleSetProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Compute', 'virtualMachineScaleSets');
 
     if ($configurationZones.Length -gt 0) {
-        $availabilityZones = @($configurationZones) + $virtualMachineScaleSetProvider.ZoneMappings;
+
+        # Merge configuration options and default zone mappings together
+        # We put configuration options at the beginning so they are processed first
+        $availabilityZones = @($configurationZones) + @($virtualMachineScaleSetProvider.ZoneMappings);
     }
     else {
         $availabilityZones = $virtualMachineScaleSetProvider.ZoneMappings;
@@ -206,7 +209,8 @@ Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClust
 
         # Availability zones only available on virtual machine scale sets
         if ($Assert.HasFieldValue($agentPool, 'type', 'VirtualMachineScaleSets').Result) {
-            $Assert.HasFieldValue($agentPool, 'availabilityZones').Reason($LocalizedData.AKSAvailabilityZone, $agentPool.name, $location, $joinedZoneString);
+            $Assert.HasFieldValue($agentPool, 'availabilityZones').
+                Reason($LocalizedData.AKSAvailabilityZone, $agentPool.name, $location, $joinedZoneString);
         }
         else {
             $Assert.Pass();
