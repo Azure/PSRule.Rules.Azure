@@ -135,4 +135,4 @@ az aks enable-addons \
 - [Monitor your Kubernetes cluster performance with Container insights](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-analyze)
 - [Container insights overview](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-overview)
 - [Enable monitoring of a new Azure Kubernetes Service (AKS) cluster](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-enable-new-cluster)
-- [Enable monitoring of Azure Kubernetes Service (AKS) cluster already deployed](https://docs.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-enable-existing-clusters)
+- [Enable monitoring of Azure Kubernetes Service (AKS) cluster already deployed](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-enable-existing-clusters)
