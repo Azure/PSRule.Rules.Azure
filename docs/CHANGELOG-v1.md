@@ -7,6 +7,17 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.8.0-B2108013 (pre-release)
+
+What's changed since v1.7.0:
+
+- New rules:
+  - Azure Kubernetes Service:
+    - Check clusters use availability zones when available. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#880](https://github.com/Azure/PSRule.Rules.Azure/issues/880)
+- Engineering:
+  - Bump PSRule dependency to v1.6.1. [#913](https://github.com/Azure/PSRule.Rules.Azure/issues/913)
+  - Automated update of availability zone information in providers.json. [#907](https://github.com/Azure/PSRule.Rules.Azure/issues/907)
+
 ## v1.7.0
 
 What's changed since v1.6.0:
