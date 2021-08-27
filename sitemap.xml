@@ -61,6 +61,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/working-with-baselines/</loc>
+         <lastmod>2021-08-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/benchmark/results-pre-1.2.0/</loc>
          <lastmod>2021-08-27</lastmod>
          <changefreq>daily</changefreq>
