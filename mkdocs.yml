@@ -44,6 +44,7 @@ nav:
     - Using Bicep source: using-bicep.md
     - Creating your pipeline: creating-your-pipeline.md
     - Validating locally: validating-locally.md
+    - Working with baselines: working-with-baselines.md
     - Customization:
       - Storing custom rules: customization/index.md
       - Enforcing custom tags: customization/enforce-custom-tags/index.md
