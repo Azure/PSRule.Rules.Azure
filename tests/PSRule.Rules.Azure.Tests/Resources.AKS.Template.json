@@ -309,12 +309,6 @@
                     "kubeDashboard": {
                         "enabled": true
                     },
-                    "omsagent": {
-                        "enabled": true,
-                        "config": {
-                            "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
-                        }
-                    },
                     "azureKeyvaultSecretsProvider": {
                         "enabled": true,
                         "config": {
@@ -444,7 +438,7 @@
                         "enabled": true
                     },
                     "omsagent": {
-                        "enabled": true,
+                        "enabled": false,
                         "config": {
                             "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
                         }

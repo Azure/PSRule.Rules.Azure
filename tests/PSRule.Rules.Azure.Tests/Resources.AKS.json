@@ -41,7 +41,7 @@
                     }
                 },
                 "omsagent": {
-                    "enabled": true,
+                    "enabled": false,
                     "config": {
                         "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
                     }
@@ -103,12 +103,6 @@
                     "enabled": true,
                     "config": {
                         "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
-                    }
-                },
-                "omsagent": {
-                    "enabled": true,
-                    "config": {
-                        "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
                     }
                 }
             },
