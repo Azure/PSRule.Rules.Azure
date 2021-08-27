@@ -519,3 +519,84 @@ Describe 'Get-AzRuleTemplateLink' -Tag 'Cmdlet', 'Get-AzRuleTemplateLink' {
 }
 
 #endregion Get-AzRuleTemplateLink
+
+#region PSRule.Rules.Azure.psm1 Private Functions
+
+InModuleScope -ModuleName 'PSRule.Rules.Azure' {
+    Describe 'VisitAKSCluster' {
+        BeforeAll {
+            $context = New-MockObject -Type Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext;
+
+            Mock -CommandName 'GetResourceById' -MockWith {
+                return @(
+                    [PSCustomObject]@{
+                        Name = 'Resource1'
+                        ResourceID = 'subnetId1'
+                    }
+                    [PSCustomObject]@{
+                        Name = 'Resource2'
+                        ResourceID = 'subnetId2'
+                    }
+                )
+            };
+        }
+
+        Context 'Network Plugin' {
+            It 'Given AzureCNI plugin it returns resource with VNET subnet IDs attached as sub resource' {
+                $resource = [PSCustomObject]@{
+                    Properties = [PSCustomObject]@{
+                        agentPoolProfiles = @(
+                            [PSCustomObject]@{
+                                name = 'agentpool1'
+                                vnetSubnetId = 'subnetId1'
+                            }
+                            [PSCustomObject]@{
+                                name = 'agentpool2'
+                                vnetSubnetId = 'subnetId2'
+                            }
+                        )
+                        networkProfile = [PSCustomObject]@{
+                            networkPlugin = 'azure'
+                        }
+                    }
+                };
+
+                $clusterResource = $resource | VisitAKSCluster -Context $context;
+                $clusterResource.resources | Should -Not -BeNullOrEmpty;
+
+                Assert-MockCalled -CommandName 'GetResourceById' -Times 2;
+
+                $clusterResource.resources[0].Name| Should -BeExactly 'Resource1';
+                $clusterResource.resources[0].ResourceID | Should -BeExactly 'subnetId1';
+
+                $clusterResource.resources[1].Name| Should -BeExactly 'Resource2';
+                $clusterResource.resources[1].ResourceID | Should -BeExactly 'subnetId2';
+            }
+
+            It 'Given kubelet plugin it returns resource with empty sub resource' {
+                $resource = [PSCustomObject]@{
+                    Properties = [PSCustomObject]@{
+                        agentPoolProfiles = @(
+                            [PSCustomObject]@{
+                                name = 'agentpool1'
+                            }
+                            [PSCustomObject]@{
+                                name = 'agentpool2'
+                            }
+                        )
+                        networkProfile = [PSCustomObject]@{
+                            networkPlugin = 'kubelet'
+                        }
+                    }
+                };
+
+                $clusterResource = $resource | VisitAKSCluster -Context $context;
+                $clusterResource.resources | Should -BeNullOrEmpty;
+
+                Assert-MockCalled -CommandName 'GetResourceById' -Times 0;
+            }
+        }
+    }
+}
+
+#endregion
