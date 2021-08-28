@@ -218,6 +218,11 @@ Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClust
     }
 } -Configure @{ AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
+# Synopsis: Enable Container insights to monitor AKS cluster workloads.
+Rule 'Azure.AKS.ContainerInsights' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    $Assert.HasFieldValue($TargetObject, 'Properties.addonProfiles.omsAgent.enabled', $True);
+}
+
 #region Helper functions
 
 function global:GetAgentPoolProfiles {
