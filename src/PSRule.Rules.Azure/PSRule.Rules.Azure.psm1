@@ -892,10 +892,16 @@ function VisitAKSCluster {
     )
     process {
         $resources = @();
-        $nodePools = @($Resource.Properties.agentPoolProfiles);
-        foreach ($nodePool in $nodePools) {
-            $vnetId = $nodePool.vnetSubnetID;
-            $resources += GetResourceById -ResourceId $vnetId -ApiVersion '2020-05-01' -Context $Context;
+
+        # Only add VNET resource if AKS cluster is using Azure CNI network plugin
+        # Supported network plugins: azure or kubenet
+        # https://docs.microsoft.com/en-us/azure/templates/microsoft.containerservice/managedclusters?tabs=json#containerservicenetworkprofile-object
+        if ($Resource.Properties.networkProfile.networkPlugin -eq 'azure') {
+            $nodePools = @($Resource.Properties.agentPoolProfiles);
+            foreach ($nodePool in $nodePools) {
+                $vnetId = $nodePool.vnetSubnetID;
+                $resources += GetResourceById -ResourceId $vnetId -ApiVersion '2020-05-01' -Context $Context;
+            }
         }
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
