@@ -7,6 +7,14 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.8.0-B2108013:
+
+- New rules:
+  - Azure Kubernetes Service:
+    - AKS Container insights rule. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#881](https://github.com/Azure/PSRule.Rules.Azure/issues/881)
+- Bug fixes:
+  - Fixed export of in-flight AKS related subnets for kubenet clusters. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#920](https://github.com/Azure/PSRule.Rules.Azure/issues/920)
+
 ## v1.8.0-B2108013 (pre-release)
 
 What's changed since v1.7.0:
