@@ -162,7 +162,6 @@ When linking using naming convention, the template and the parameter file must b
 !!! Example
     A parameter file named `azuredeploy.parameters.json` links to the template file named `azuredeploy.json`.
 
-
 *[WAF]: Well-Architected Framework
 *[ARM]: Azure Resource Manager
 *[CI]: continuous integration
