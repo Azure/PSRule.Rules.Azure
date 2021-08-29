@@ -903,6 +903,9 @@ function VisitAKSCluster {
                 $resources += GetResourceById -ResourceId $vnetId -ApiVersion '2020-05-01' -Context $Context;
             }
         }
+
+        $resources += Get-AzResource -Name $Resource.Name -ResourceType 'Microsoft.ContainerService/managedClusters/providers/microsoft.insights/diagnosticSettings' -ResourceGroupName $Resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-05-01-preview' -ExpandProperties;
+
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }
