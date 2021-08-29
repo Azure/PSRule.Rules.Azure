@@ -1311,6 +1311,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/setup/setup-azure-monitor-logs/</loc>
+         <lastmod>2021-08-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/setup/setup-bicep/</loc>
          <lastmod>2021-08-29</lastmod>
          <changefreq>daily</changefreq>
