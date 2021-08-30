@@ -58,7 +58,7 @@ For additional details see the [FAQ](https://azure.github.io/PSRule.Rules.Azure/
 
 ### Using with GitHub Actions
 
-The following example shows how to setup Github Actions to validate templates pre-flight.
+The following example shows how to setup GitHub Actions to validate templates pre-flight.
 
 1. See [Creating a workflow file][create-workflow].
 2. Reference `Microsoft/ps-rule` with `modules: 'PSRule.Rules.Azure'`.

@@ -8,14 +8,14 @@ With PSRule, you can layer on custom rules with to implement organization specif
 These custom rules work side-by-side with PSRule for Azure.
 
 Pull requests are a key concept within common Git workflows used with DevOps to enforce peer review.
-To support peer review across a team tools such as Github and Azure DevOps provide code ownership.
+To support peer review across a team tools such as GitHub and Azure DevOps provide code ownership.
 Code ownership, allows mix discipline teams to direct peer reviews based the path of a changed file.
 
 For sensitive changes such as firewall or policy exemptions, peer reviews may form a security control.
 In these cases, it may be important that specific paths are used for Infrastructure as Code artifacts.
 
 !!! Info
-    Code ownership is implemented through [CODEOWNERS][1] in Github and [required reviewers][2] in Azure Repos.
+    Code ownership is implemented through [CODEOWNERS][1] in GitHub and [required reviewers][2] in Azure Repos.
 
 !!! Abstract
     The following scenario shows how to create a custom rule to validate the path of artifacts.
