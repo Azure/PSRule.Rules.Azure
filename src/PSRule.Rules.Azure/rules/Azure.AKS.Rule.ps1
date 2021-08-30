@@ -223,7 +223,7 @@ Rule 'Azure.AKS.ContainerInsights' -Type 'Microsoft.ContainerService/managedClus
     $Assert.HasFieldValue($TargetObject, 'Properties.addonProfiles.omsAgent.enabled', $True);
 }
 
-# Synopsis: AKS clusters should collect security-based audit logs
+# Synopsis: AKS clusters should collect security-based audit logs to assess and monitor the compliance status of workloads.
 Rule 'Azure.AKS.AuditLogs' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $diagnosticLogs = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.ContainerService/managedClusters/providers/diagnosticSettings');
 
