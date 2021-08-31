@@ -319,6 +319,12 @@ Name | Synopsis | Severity
 [Azure.Storage.BlobPublicAccess](Azure.Storage.BlobPublicAccess.md) | Storage Accounts should only accept authorized requests. | Important
 [Azure.VM.PublicKey](Azure.VM.PublicKey.md) | Linux virtual machines should use public keys. | Important
 
+### Monitor
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.AKS.AuditLogs](Azure.AKS.AuditLogs.md) | AKS clusters should collect security-based audit logs to assess and monitor the compliance status of workloads. | Important
+
 ### Network security and containment
 
 Name | Synopsis | Severity
