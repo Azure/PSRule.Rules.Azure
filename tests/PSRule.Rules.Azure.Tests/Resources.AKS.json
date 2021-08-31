@@ -839,7 +839,115 @@
         "ResourceType": "Microsoft.ContainerService/managedClusters",
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": []
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "metrics",
+                "Name": "metrics",
+                "ExtensionResourceName": "metrics",
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "storageAccountId": null,
+                    "serviceBusRuleId": null,
+                    "workspaceId":  "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
+                    "eventHubAuthorizationRuleId": null,
+                    "eventHubName": null,
+                    "metrics": [
+                        {
+                            "category": "AllMetrics",
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "category": "kube-apiserver",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-audit",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-audit-admin",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-controller-manager",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-scheduler",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "cluster-autoscaler",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "guard",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logAnalyticsDestinationType": null
+                },
+                "ResourceGroupName": "k8s-aks-cluster-rg",
+                "Type": "microsoft.containerservice/managedclusters",
+                "ResourceType": "microsoft.containerservice/managedclusters",
+                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
     },
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-H",
@@ -905,7 +1013,115 @@
         "ResourceType": "Microsoft.ContainerService/managedClusters",
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": []
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "metrics",
+                "Name": "metrics",
+                "ExtensionResourceName": "metrics",
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "storageAccountId": null,
+                    "serviceBusRuleId": null,
+                    "workspaceId":  "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
+                    "eventHubAuthorizationRuleId": null,
+                    "eventHubName": null,
+                    "metrics": [
+                        {
+                            "category": "AllMetrics",
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "category": "kube-apiserver",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-audit",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-audit-admin",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-controller-manager",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-scheduler",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "cluster-autoscaler",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "guard",
+                            "categoryGroup": null,
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logAnalyticsDestinationType": null
+                },
+                "ResourceGroupName": "k8s-aks-cluster-rg",
+                "Type": "microsoft.containerservice/managedclusters",
+                "ResourceType": "microsoft.containerservice/managedclusters",
+                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
     },
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-I",
@@ -971,7 +1187,115 @@
         "ResourceType": "Microsoft.ContainerService/managedClusters",
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": []
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "metrics",
+                "Name": "metrics",
+                "ExtensionResourceName": "metrics",
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "storageAccountId": null,
+                    "serviceBusRuleId": null,
+                    "workspaceId":  "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
+                    "eventHubAuthorizationRuleId": null,
+                    "eventHubName": null,
+                    "metrics": [
+                        {
+                            "category": "AllMetrics",
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "category": "kube-apiserver",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-audit",
+                            "categoryGroup": null,
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-audit-admin",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-controller-manager",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-scheduler",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "cluster-autoscaler",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "guard",
+                            "categoryGroup": null,
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logAnalyticsDestinationType": null
+                },
+                "ResourceGroupName": "k8s-aks-cluster-rg",
+                "Type": "microsoft.containerservice/managedclusters",
+                "ResourceType": "microsoft.containerservice/managedclusters",
+                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
     },
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-J",
@@ -1037,6 +1361,114 @@
         "ResourceType": "Microsoft.ContainerService/managedClusters",
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": []
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+                "Identity": null,
+                "Kind": null,
+                "Location": null,
+                "ManagedBy": null,
+                "ResourceName": "metrics",
+                "Name": "metrics",
+                "ExtensionResourceName": "metrics",
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "storageAccountId": null,
+                    "serviceBusRuleId": null,
+                    "workspaceId":  "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
+                    "eventHubAuthorizationRuleId": null,
+                    "eventHubName": null,
+                    "metrics": [
+                        {
+                            "category": "AllMetrics",
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "category": "kube-apiserver",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-audit",
+                            "categoryGroup": null,
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-audit-admin",
+                            "categoryGroup": null,
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-controller-manager",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "kube-scheduler",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "cluster-autoscaler",
+                            "categoryGroup": null,
+                            "enabled": false,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        },
+                        {
+                            "category": "guard",
+                            "categoryGroup": null,
+                            "enabled": true,
+                            "retentionPolicy": {
+                                "enabled": false,
+                                "days": 0
+                            }
+                        }
+                    ],
+                    "logAnalyticsDestinationType": null
+                },
+                "ResourceGroupName": "k8s-aks-cluster-rg",
+                "Type": "microsoft.containerservice/managedclusters",
+                "ResourceType": "microsoft.containerservice/managedclusters",
+                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
     }
 ]
