@@ -531,28 +531,45 @@ InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 return @(
                     [PSCustomObject]@{
                         Name = 'Resource1'
-                        ResourceID = 'subnetId1'
+                        ResourceID = 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A'
                     }
                     [PSCustomObject]@{
                         Name = 'Resource2'
-                        ResourceID = 'subnetId2'
+                        ResourceID = 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-B'
                     }
                 )
             };
+
+            Mock -CommandName 'Get-AzResource' -MockWith {
+                return @(
+                    [PSCustomObject]@{
+                        Name = 'Resource3'
+                        ResourceType = 'microsoft.insights/diagnosticSettings'
+                        Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
+                        ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
+                        Properties = [PSCustomObject]@{
+                            metrics = @()
+                            logs = @()
+                        }
+                    }
+                )
+            }
         }
 
         Context 'Network Plugin' {
             It 'Given AzureCNI plugin it returns resource with VNET subnet IDs attached as sub resource' {
                 $resource = [PSCustomObject]@{
+                    Name = 'akscluster'
+                    ResourceGroupName = 'akscluster-rg'
                     Properties = [PSCustomObject]@{
                         agentPoolProfiles = @(
                             [PSCustomObject]@{
                                 name = 'agentpool1'
-                                vnetSubnetId = 'subnetId1'
+                                vnetSubnetId = 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A'
                             }
                             [PSCustomObject]@{
                                 name = 'agentpool2'
-                                vnetSubnetId = 'subnetId2'
+                                vnetSubnetId = 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-B'
                             }
                         )
                         networkProfile = [PSCustomObject]@{
@@ -565,16 +582,25 @@ InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 $clusterResource.resources | Should -Not -BeNullOrEmpty;
 
                 Assert-MockCalled -CommandName 'GetResourceById' -Times 2;
+                Assert-MockCalled -CommandName 'Get-AzResource' -Times 1;
 
-                $clusterResource.resources[0].Name| Should -BeExactly 'Resource1';
-                $clusterResource.resources[0].ResourceID | Should -BeExactly 'subnetId1';
+                $clusterResource.resources[0].Name | Should -BeExactly 'Resource1';
+                $clusterResource.resources[0].ResourceID | Should -BeExactly 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A';
 
-                $clusterResource.resources[1].Name| Should -BeExactly 'Resource2';
-                $clusterResource.resources[1].ResourceID | Should -BeExactly 'subnetId2';
+                $clusterResource.resources[1].Name | Should -BeExactly 'Resource2';
+                $clusterResource.resources[1].ResourceID | Should -BeExactly 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-B';
+
+                $clusterResource.resources[4].Name | Should -BeExactly 'Resource3';
+                $clusterResource.resources[4].ResourceType | Should -Be 'microsoft.insights/diagnosticSettings';
+                $clusterResource.resources[4].ResourceID | Should -Be '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
+                $clusterResource.resources[4].Properties.metrics | Should -BeNullOrEmpty;
+                $clusterResource.resources[4].Properties.logs | Should -BeNullOrEmpty;
             }
 
             It 'Given kubelet plugin it returns resource with empty sub resource' {
                 $resource = [PSCustomObject]@{
+                    Name = 'akscluster'
+                    ResourceGroupName = 'akscluster-rg'
                     Properties = [PSCustomObject]@{
                         agentPoolProfiles = @(
                             [PSCustomObject]@{
@@ -591,9 +617,15 @@ InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 };
 
                 $clusterResource = $resource | VisitAKSCluster -Context $context;
-                $clusterResource.resources | Should -BeNullOrEmpty;
 
                 Assert-MockCalled -CommandName 'GetResourceById' -Times 0;
+                Assert-MockCalled -CommandName 'Get-AzResource' -Times 1;
+
+                $clusterResource.resources[0].Name | Should -BeExactly 'Resource3';
+                $clusterResource.resources[0].ResourceType | Should -Be 'microsoft.insights/diagnosticSettings';
+                $clusterResource.resources[0].ResourceID | Should -Be '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
+                $clusterResource.resources[0].Properties.metrics | Should -BeNullOrEmpty;
+                $clusterResource.resources[0].Properties.logs | Should -BeNullOrEmpty;
             }
         }
     }

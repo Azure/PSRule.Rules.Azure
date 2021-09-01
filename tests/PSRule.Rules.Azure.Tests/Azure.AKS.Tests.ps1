@@ -341,6 +341,22 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 7;
             $ruleResult.TargetName | Should -BeIn 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J';
         }
+
+        It 'Azure.AKS.AuditLogs' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.AuditLogs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 7;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-I', 'cluster-J';
+        }
     }
 
     Context 'Resource name' {
@@ -691,6 +707,22 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult | Should -HaveCount 2;
             $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterB';
+        }
+
+        It 'Azure.AKS.AuditLogs' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.AuditLogs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 2;
+            $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterB';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 2;
+            $ruleResult.TargetName | Should -BeIn 'clusterD', 'clusterE';
         }
     }
 

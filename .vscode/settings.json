@@ -41,6 +41,8 @@
         "cmdlets",
         "endregion",
         "failover",
+        "kube",
+        "kubelet",
         "kubenet",
         "lifecycle",
         "nics",
