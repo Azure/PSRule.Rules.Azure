@@ -14,14 +14,19 @@ AKS clusters should collect security-based audit logs to assess and monitor the 
 
 ## DESCRIPTION
 
-To capture security-based audit logs from AKS clusters, the following diagnostic logs should be enabled:
+To capture security-based audit logs from AKS clusters, the following diagnostic log categories should be enabled:
 
-- Either `kube-audit` or `kube-audit-admin`, or both. The `kube-audit` category contains all audit log data for every audit event, including get, list, create, update, delete, patch, and post.The `kube-audit-admin` category is a subset of the `kube-audit` log category. `kube-audit-admin` reduces the number of logs significantly by excluding the get and list audit events from the log.
-- `guard`. Needs to be enabled if Active Directory is enabled.
+- `kube-audit` or `kube-audit-admin`, or both.
+  - `kube-audit` - Contains all audit log data for every audit event, including get, list, create, update, delete, patch, and post.
+  - `kube-audit-admin` - Is a subset of the `kube-audit` log category.
+    `kube-audit-admin` reduces the number of logs significantly by excluding the get and list audit events from the log.
+- `guard` - Contains logs for Azure Active Directory (AAD) authorization integration.
+   For managed Azure AD, this includes token in and user info out.
+   For Azure RBAC, this includes access reviews in and out.
 
 ## RECOMMENDATION
 
-Consider configuring diagnostic settings sto capture security-based audit logs from AKS clusters.
+Consider configuring diagnostic settings to capture security-based audit logs from AKS clusters.
 
 ## EXAMPLES
 
@@ -151,5 +156,6 @@ For example:
 ## LINKS
 
 - [Security audits](https://docs.microsoft.com/azure/architecture/framework/security/monitor-audit)
+- [Monitoring AKS data reference](https://docs.microsoft.com/azure/aks/monitor-aks-reference)
 - [Collect resource logs](https://docs.microsoft.com/azure/aks/monitor-aks#collect-resource-logs)
 - [Template reference](https://docs.microsoft.com/azure/templates/microsoft.insights/diagnosticsettings?tabs=json)
