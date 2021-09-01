@@ -544,17 +544,13 @@ InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 return @(
                     [PSCustomObject]@{
                         Name = 'Resource3'
-                        ResourceType = 'Microsoft.Network/connections'
-                        Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn003'
-                        ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn001'
-                        Properties = [PSCustomObject]@{ sharedKey = 'test123' }
-                    }
-                    [PSCustomObject]@{
-                        Name = 'Resource4'
-                        ResourceType = 'Microsoft.Network/connections'
-                        Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn004'
-                        ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn002'
-                        Properties = [PSCustomObject]@{ dummy = 'value' }
+                        ResourceType = 'microsoft.insights/diagnosticSettings'
+                        Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
+                        ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
+                        Properties = [PSCustomObject]@{
+                            metrics = @()
+                            logs = @()
+                        }
                     }
                 )
             }
@@ -595,10 +591,10 @@ InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 $clusterResource.resources[1].ResourceID | Should -BeExactly 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-B';
 
                 $clusterResource.resources[4].Name | Should -BeExactly 'Resource3';
-                $clusterResource.resources[4].ResourceID | Should -Be '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn001'
-
-                $clusterResource.resources[5].Name | Should -BeExactly 'Resource4';
-                $clusterResource.resources[5].ResourceID | Should -Be '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn002'
+                $clusterResource.resources[4].ResourceType | Should -Be 'microsoft.insights/diagnosticSettings';
+                $clusterResource.resources[4].ResourceID | Should -Be '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
+                $clusterResource.resources[4].Properties.metrics | Should -BeNullOrEmpty;
+                $clusterResource.resources[4].Properties.logs | Should -BeNullOrEmpty;
             }
 
             It 'Given kubelet plugin it returns resource with empty sub resource' {
@@ -626,10 +622,10 @@ InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 Assert-MockCalled -CommandName 'Get-AzResource' -Times 1;
 
                 $clusterResource.resources[0].Name | Should -BeExactly 'Resource3';
-                $clusterResource.resources[0].ResourceID | Should -Be '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn001'
-
-                $clusterResource.resources[1].Name | Should -BeExactly 'Resource4';
-                $clusterResource.resources[1].ResourceID | Should -Be '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn002'
+                $clusterResource.resources[0].ResourceType | Should -Be 'microsoft.insights/diagnosticSettings';
+                $clusterResource.resources[0].ResourceID | Should -Be '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
+                $clusterResource.resources[0].Properties.metrics | Should -BeNullOrEmpty;
+                $clusterResource.resources[0].Properties.logs | Should -BeNullOrEmpty;
             }
         }
     }
