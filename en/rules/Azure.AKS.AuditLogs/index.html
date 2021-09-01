@@ -13,14 +13,14 @@
         <meta name="author" content="Microsoft">
       
       
-        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.PromoSku/">
+        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AuditLogs/">
       
       <link rel="icon" href="../../../assets/ms_icon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
     
     
       
-        <title>Azure.VM.PromoSku - PSRule for Azure</title>
+        <title>Azure.AKS.AuditLogs - PSRule for Azure</title>
       
     
     
@@ -66,9 +66,9 @@
 
   <!-- Open graph meta tags -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PSRule for Azure - Azure.VM.PromoSku" />
+  <meta property="og:title" content="PSRule for Azure - Azure.AKS.AuditLogs" />
   <meta property="og:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
-  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.PromoSku/" />
+  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AuditLogs/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1280" />
@@ -78,7 +78,7 @@
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - Azure.VM.PromoSku" />
+  <meta name="twitter:title" content="PSRule for Azure - Azure.AKS.AuditLogs" />
   <meta name="twitter:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#usecurrentvmskus" class="md-skip">
+        <a href="#aksclustersshouldcollectsecurity-basedauditlogs" class="md-skip">
           Skip to content
         </a>
       
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Azure.VM.PromoSku
+              Azure.AKS.AuditLogs
             
           </span>
         </div>
@@ -897,11 +897,85 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Azure.AKS.AuditLogs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Azure.AKS.AuditLogs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Azure.AKS.AuditLogs
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3225,65 +3299,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Azure.VM.PromoSku
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Azure.VM.PromoSku/" class="md-nav__link">
         Azure.VM.PromoSku
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommendation" class="md-nav__link">
-    Recommendation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    Links
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3691,6 +3711,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#links" class="md-nav__link">
     Links
   </a>
@@ -3709,25 +3749,154 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.PromoSku.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.AuditLogs.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="usecurrentvmskus">Use current VM SKUs<a class="headerlink" href="#usecurrentvmskus" title="Permanent link">#</a></h1>
-<p>Virtual machines (VMs) should not use expired promotional SKU.</p>
+                <h1 id="aksclustersshouldcollectsecurity-basedauditlogs">AKS clusters should collect security-based audit logs<a class="headerlink" href="#aksclustersshouldcollectsecurity-basedauditlogs" title="Permanent link">#</a></h1>
+<p>AKS clusters should collect security-based audit logs to assess and monitor the compliance status of workloads.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>Some VM sizes may offer promotional rates that can be used by deploying VMs with a designated SKU.
-Promotional rates expire, and while this does not cause interruption to running VMs, the rate that VMs are billed at returns to the original price.</p>
-<p>Promo SKUs are not eligible for savings from reserved instances.
-Expired promo SKUs may confuse billing reconciliation when the promotional period expires.</p>
-<p>VMs should not use expired promo SKU.</p>
+<p>To capture security-based audit logs from AKS clusters, the following diagnostic log categories should be enabled:</p>
+<ul>
+<li><code>kube-audit</code> or <code>kube-audit-admin</code>, or both.<ul>
+<li><code>kube-audit</code> - Contains all audit log data for every audit event, including get, list, create, update, delete, patch, and post.</li>
+<li><code>kube-audit-admin</code> - Is a subset of the <code>kube-audit</code> log category.
+  <code>kube-audit-admin</code> reduces the number of logs significantly by excluding the get and list audit events from the log.</li>
+</ul>
+</li>
+<li><code>guard</code> - Contains logs for Azure Active Directory (AAD) authorization integration.
+   For managed Azure AD, this includes token in and user info out.
+   For Azure RBAC, this includes access reviews in and out.</li>
+</ul>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider moving from promotional SKUs to SKUs eligible for reserved instances for VMs with an extended life cycle.
-Consider moving from promotional SKUs to the regular SKU once the promotional period has expired.</p>
+<p>Consider configuring diagnostic settings to capture security-based audit logs from AKS clusters.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To deploy AKS clusters that pass this rule:</p>
+<ul>
+<li>Deploy a diagnostic settings sub-resource.</li>
+<li>Enable logging for the <code>kube-audit</code>/<code>kube-audit-admin</code> and <code>guard</code> categories.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;comments&quot;</span><span class="p">:</span> <span class="s2">&quot;Azure Kubernetes Cluster&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-12-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;[resourceId(&#39;Microsoft.ManagedIdentity/userAssignedIdentities&#39;, parameters(&#39;identityName&#39;))]&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.ContainerService/managedClusters&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;clusterName&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;UserAssigned&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;userAssignedIdentities&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;[resourceId(&#39;Microsoft.ManagedIdentity/userAssignedIdentities&#39;, parameters(&#39;identityName&#39;))]&quot;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;kubernetesVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;kubernetesVersion&#39;)]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;disableLocalAccounts&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;enableRBAC&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;dnsPrefix&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;dnsPrefix&#39;)]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;agentPoolProfiles&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;osDiskSizeGB&quot;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+                <span class="nt">&quot;count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                <span class="nt">&quot;minCount&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                <span class="nt">&quot;maxCount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="nt">&quot;enableAutoScaling&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;maxPods&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+                <span class="nt">&quot;vmSize&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard_D2s_v3&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;osType&quot;</span><span class="p">:</span> <span class="s2">&quot;Linux&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;VirtualMachineScaleSets&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;vnetSubnetID&quot;</span><span class="p">:</span> <span class="s2">&quot;[variables(&#39;clusterSubnetId&#39;)]&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;System&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;osDiskType&quot;</span><span class="p">:</span> <span class="s2">&quot;Ephemeral&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;scaleSetPriority&quot;</span><span class="p">:</span> <span class="s2">&quot;Regular&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;aadProfile&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;managed&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;enableAzureRBAC&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;adminGroupObjectIDs&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;clusterAdmins&#39;)]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;tenantID&quot;</span><span class="p">:</span> <span class="s2">&quot;[subscription().tenantId]&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;networkProfile&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;networkPlugin&quot;</span><span class="p">:</span> <span class="s2">&quot;azure&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;networkPolicy&quot;</span><span class="p">:</span> <span class="s2">&quot;azure&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;loadBalancerSku&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;serviceCidr&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.0/16&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;dnsServiceIP&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.4&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;dockerBridgeCidr&quot;</span><span class="p">:</span> <span class="s2">&quot;172.17.0.1/16&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;autoUpgradeProfile&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;upgradeChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;stable&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;addonProfiles&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;azurepolicy&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;v2&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;omsagent&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;logAnalyticsWorkspaceResourceID&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;workspaceId&#39;)]&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;kubeDashboard&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;resources&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-09-01&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.ContainerService/managedClusters/providers/diagnosticSettings&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;[concat(parameters(&#39;clusterName&#39;), &#39;/Microsoft.Insights/service&#39;)]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;workspaceId&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;workspaceId&#39;)]&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;logs&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;kube-audit&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                        <span class="nt">&quot;retentionPolicy&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&quot;days&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">false</span>
+                        <span class="p">}</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;kube-audit-admin&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                        <span class="nt">&quot;retentionPolicy&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&quot;days&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">false</span>
+                        <span class="p">}</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;guard&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                        <span class="nt">&quot;retentionPolicy&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&quot;days&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">false</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">],</span>
+                <span class="nt">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://azure.microsoft.com/pricing/details/virtual-machines/linux/">Virtual Machine pricing</a></li>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/security/monitor-audit">Security audits</a></li>
+<li><a href="https://docs.microsoft.com/azure/aks/monitor-aks-reference">Monitoring AKS data reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/aks/monitor-aks#collect-resource-logs">Collect resource logs</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.insights/diagnosticsettings?tabs=json">Template reference</a></li>
 </ul>
                 
                   
