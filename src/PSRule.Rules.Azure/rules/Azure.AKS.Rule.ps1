@@ -227,21 +227,21 @@ Rule 'Azure.AKS.ContainerInsights' -Type 'Microsoft.ContainerService/managedClus
 Rule 'Azure.AKS.AuditLogs' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $diagnosticLogs = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.ContainerService/managedClusters/providers/diagnosticSettings');
 
-    $null -ne $diagnosticLogs -and $diagnosticLogs.Length -gt 0;
+    $Assert.Greater($diagnosticLogs, '.', 0);
 
     foreach ($setting in $diagnosticLogs) {
-        $kubeAuditEnabledLog = $setting.Properties.logs | Where-Object {
+        $kubeAuditEnabledLog = @($setting.Properties.logs | Where-Object {
             $_.category -in 'kube-audit', 'kube-audit-admin' -and $_.enabled
-        };
+        });
 
-        $guardEnabledLog = $setting.Properties.logs | Where-Object {
+        $guardEnabledLog = @($setting.Properties.logs | Where-Object {
             $_.category -eq 'guard' -and $_.enabled
-        };
+        });
 
-        $auditLogsEnabled = ($null -ne $kubeAuditEnabledLog -and $kubeAuditEnabledLog.Length -gt 0) -and 
-                            ($null -ne $guardEnabledLog -and $guardEnabledLog.Length -gt 0);
+        $auditLogsEnabled = $Assert.Greater($kubeAuditEnabledLog, '.', 0).Result -and
+                            $Assert.Greater($guardEnabledLog, '.', 0).Result;
 
-        $Assert.Create($auditLogsEnabled, $LocalizedData.AKSAuditLogs -f $setting.name);
+        $Assert.Create($auditLogsEnabled, $LocalizedData.AKSAuditLogs, $setting.name);
     }
 }
 
