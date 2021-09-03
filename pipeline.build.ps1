@@ -153,10 +153,10 @@ task NuGet {
 
 # Synopsis: Install Pester module
 task Pester NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name Pester -RequiredVersion 5.2.2 -ErrorAction Ignore)) {
-        Install-Module -Name Pester -RequiredVersion 5.2.2 -Scope CurrentUser -Force -SkipPublisherCheck;
+    if ($Null -eq (Get-InstalledModule -Name Pester -RequiredVersion 5.3.0 -ErrorAction Ignore)) {
+        Install-Module -Name Pester -RequiredVersion 5.3.0 -Scope CurrentUser -Force -SkipPublisherCheck;
     }
-    Import-Module -Name Pester -RequiredVersion 5.2.2 -Verbose:$False;
+    Import-Module -Name Pester -RequiredVersion 5.3.0 -Verbose:$False;
 }
 
 # Synopsis: Install PSScriptAnalyzer module
