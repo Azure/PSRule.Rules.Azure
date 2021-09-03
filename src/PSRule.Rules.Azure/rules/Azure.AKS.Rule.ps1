@@ -247,9 +247,9 @@ Rule 'Azure.AKS.AuditLogs' -Type 'Microsoft.ContainerService/managedClusters' -T
 
 # Synopsis: AKS clusters should collect platform diagnostic logs to monitor the state of workloads.
 Rule 'Azure.AKS.PlatformLogs' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
-    $configurationLogCategories = $Configuration.GetStringValues('AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST');
+    $configurationLogCategoriesList = $Configuration.GetStringValues('AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST');
 
-    if ($configurationLogCategories.Length -eq 0) {
+    if ($configurationLogCategoriesList.Length -eq 0) {
         return $Assert.Pass();
     }
 
@@ -257,25 +257,59 @@ Rule 'Azure.AKS.PlatformLogs' -Type 'Microsoft.ContainerService/managedClusters'
 
     $Assert.Greater($diagnosticLogs, '.', 0);
 
+    $availableLogCategories = @{
+        Logs = @(
+            'cluster-autoscaler', 
+            'kube-apiserver', 
+            'kube-controller-manager', 
+            'kube-scheduler'
+        )
+        Metrics = @(
+            'AllMetrics'
+        )
+    }
+
+    $configurationLogCategories = @($configurationLogCategoriesList | Where-Object {
+        $_ -in $availableLogCategories.Logs
+    });
+
+    $configurationMetricCategories = @($configurationLogCategoriesList | Where-Object {
+        $_ -in $availableLogCategories.Metrics
+    });
+
+    $logCategoriesNeeded = [System.Math]::Min(
+        $configurationLogCategories.Length, 
+        $availableLogCategories.Logs.Length
+    );
+
+    $metricCategoriesNeeded = [System.Math]::Min(
+        $configurationMetricCategories.Length, 
+        $availableLogCategories.Metrics.Length
+    );
+
+    $logCategoriesJoinedString = $configurationLogCategoriesList -join ', ';
+
     foreach ($setting in $diagnosticLogs) {
         $platformLogs = @($setting.Properties.logs | Where-Object {
             $_.enabled -and
-            $_.category -in $configurationLogCategories
+            $_.category -in $configurationLogCategories -and
+            $_.category -in $availableLogCategories.Logs
         });
 
         $metricLogs = @($setting.Properties.metrics | Where-Object {
             $_.enabled -and 
-            $_.category -in $configurationLogCategories
+            $_.category -in $configurationMetricCategories -and
+            $_.category -in $availableLogCategories.Metrics
         });
 
-        $platformLogsEnabled = $Assert.HasFieldValue($platformLogs, '.', 4).Result -and
-                               $Assert.Greater($metricLogs, '.', 0).Result;
+        $platformLogsEnabled = ($null -ne $platformLogs -and $platformLogs.Length -eq $logCategoriesNeeded) -and 
+                               ($null -ne $metricLogs -and $metricLogs.Length -eq $metricCategoriesNeeded);
 
         $Assert.Create(
             $platformLogsEnabled, 
             $LocalizedData.AKSPlatformLogs, 
             $setting.name, 
-            ($configurationLogCategories -join ', ')
+            $logCategoriesJoinedString
         );
     }
 } -Configure @{ 
@@ -283,7 +317,7 @@ Rule 'Azure.AKS.PlatformLogs' -Type 'Microsoft.ContainerService/managedClusters'
         'cluster-autoscaler', 
         'kube-apiserver', 
         'kube-controller-manager', 
-        'kube-scheduler', 
+        'kube-scheduler',
         'AllMetrics'
     )
 }

@@ -247,7 +247,7 @@ Syntax:
 
 ```yaml
 configuration:
-  AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: array
+  AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: array
 ```
 
 Default:
