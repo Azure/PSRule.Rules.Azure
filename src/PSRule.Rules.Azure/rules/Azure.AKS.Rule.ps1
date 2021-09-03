@@ -245,6 +245,49 @@ Rule 'Azure.AKS.AuditLogs' -Type 'Microsoft.ContainerService/managedClusters' -T
     }
 }
 
+# Synopsis: AKS clusters should collect platform diagnostic logs to monitor the state of workloads.
+Rule 'Azure.AKS.PlatformLogs' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    $configurationLogCategories = $Configuration.GetStringValues('AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST');
+
+    if ($configurationLogCategories.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    $diagnosticLogs = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.ContainerService/managedClusters/providers/diagnosticSettings');
+
+    $Assert.Greater($diagnosticLogs, '.', 0);
+
+    foreach ($setting in $diagnosticLogs) {
+        $platformLogs = @($setting.Properties.logs | Where-Object {
+            $_.enabled -and
+            $_.category -in $configurationLogCategories
+        });
+
+        $metricLogs = @($setting.Properties.metrics | Where-Object {
+            $_.enabled -and 
+            $_.category -in $configurationLogCategories
+        });
+
+        $platformLogsEnabled = $Assert.HasFieldValue($platformLogs, '.', 4).Result -and
+                               $Assert.Greater($metricLogs, '.', 0).Result;
+
+        $Assert.Create(
+            $platformLogsEnabled, 
+            $LocalizedData.AKSPlatformLogs, 
+            $setting.name, 
+            ($configurationLogCategories -join ', ')
+        );
+    }
+} -Configure @{ 
+    AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST = @(
+        'cluster-autoscaler', 
+        'kube-apiserver', 
+        'kube-controller-manager', 
+        'kube-scheduler', 
+        'AllMetrics'
+    )
+}
+
 #region Helper functions
 
 function global:GetAgentPoolProfiles {

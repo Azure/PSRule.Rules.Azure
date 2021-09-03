@@ -37,6 +37,8 @@
         "VNET",
         "VNETs",
         "agentpool",
+        "apiserver",
+        "autoscaler",
         "cmdlet",
         "cmdlets",
         "endregion",

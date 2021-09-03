@@ -238,3 +238,30 @@ The `Azure.AKS.AvailabilityZone` rule normalizes these location formats so eithe
 !!! Note
     The above locations in the example do **not** currently support availability zones.
     If they do in the future, you can configure this option to add them prior to PSRule for Azure support.
+
+### Azure AKS enabled platform log categories list
+
+This configuration option sets selective platform diagnostic categories to report on being enabled.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: array
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option
+configuration:
+  AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: ['cluster-autoscaler', 'kube-apiserver', 'kube-controller-manager', 'kube-scheduler', 'AllMetrics']
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to cluster-autoscaler and AllMetrics categories only. 
+configuration:
+  AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: ['cluster-autoscaler', 'AllMetrics']
+```
