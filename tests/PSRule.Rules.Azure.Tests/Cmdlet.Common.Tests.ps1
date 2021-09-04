@@ -520,44 +520,42 @@ Describe 'Get-AzRuleTemplateLink' -Tag 'Cmdlet', 'Get-AzRuleTemplateLink' {
 
 #endregion Get-AzRuleTemplateLink
 
-#region PSRule.Rules.Azure.psm1 Private Functions
+#region PSRule.Rules.Azure.psm1 Functions
 
-InModuleScope -ModuleName 'PSRule.Rules.Azure' {
-    Describe 'VisitAKSCluster' {
-        BeforeAll {
-            $context = New-MockObject -Type Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext;
+Describe 'VisitAKSCluster' {
+    BeforeAll {
+        Mock -CommandName 'GetResourceById' -ModuleName 'PSRule.Rules.Azure' -MockWith {
+            return @(
+                [PSCustomObject]@{
+                    Name = 'Resource1'
+                    ResourceID = 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A'
+                }
+                [PSCustomObject]@{
+                    Name = 'Resource2'
+                    ResourceID = 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-B'
+                }
+            )
+        };
 
-            Mock -CommandName 'GetResourceById' -MockWith {
-                return @(
-                    [PSCustomObject]@{
-                        Name = 'Resource1'
-                        ResourceID = 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A'
+        Mock -CommandName 'Get-AzResource' -ModuleName 'PSRule.Rules.Azure' -MockWith {
+            return @(
+                [PSCustomObject]@{
+                    Name = 'Resource3'
+                    ResourceType = 'microsoft.insights/diagnosticSettings'
+                    Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
+                    ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
+                    Properties = [PSCustomObject]@{
+                        metrics = @()
+                        logs = @()
                     }
-                    [PSCustomObject]@{
-                        Name = 'Resource2'
-                        ResourceID = 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-B'
-                    }
-                )
-            };
-
-            Mock -CommandName 'Get-AzResource' -MockWith {
-                return @(
-                    [PSCustomObject]@{
-                        Name = 'Resource3'
-                        ResourceType = 'microsoft.insights/diagnosticSettings'
-                        Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
-                        ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
-                        Properties = [PSCustomObject]@{
-                            metrics = @()
-                            logs = @()
-                        }
-                    }
-                )
-            }
+                }
+            )
         }
+    }
 
-        Context 'Network Plugin' {
-            It 'Given AzureCNI plugin it returns resource with VNET subnet IDs attached as sub resource' {
+    Context 'Network Plugin' {
+        It 'Given AzureCNI plugin it returns resource with VNET subnet IDs attached as sub resource' {
+            InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 $resource = [PSCustomObject]@{
                     Name = 'akscluster'
                     ResourceGroupName = 'akscluster-rg'
@@ -578,7 +576,9 @@ InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                     }
                 };
 
+                $context = New-MockObject -Type Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext;
                 $clusterResource = $resource | VisitAKSCluster -Context $context;
+
                 $clusterResource.resources | Should -Not -BeNullOrEmpty;
 
                 Assert-MockCalled -CommandName 'GetResourceById' -Times 2;
@@ -596,8 +596,10 @@ InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 $clusterResource.resources[4].Properties.metrics | Should -BeNullOrEmpty;
                 $clusterResource.resources[4].Properties.logs | Should -BeNullOrEmpty;
             }
+        }
 
-            It 'Given kubelet plugin it returns resource with empty sub resource' {
+        It 'Given kubelet plugin it returns resource with empty sub resource' {
+            InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 $resource = [PSCustomObject]@{
                     Name = 'akscluster'
                     ResourceGroupName = 'akscluster-rg'
@@ -616,6 +618,7 @@ InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                     }
                 };
 
+                $context = New-MockObject -Type Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext;
                 $clusterResource = $resource | VisitAKSCluster -Context $context;
 
                 Assert-MockCalled -CommandName 'GetResourceById' -Times 0;
