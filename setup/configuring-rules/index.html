@@ -743,6 +743,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#azureaksenabledplatformlogcategorieslist" class="md-nav__link">
+    Azure AKS enabled platform log categories list
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1186,6 +1193,18 @@
     <li class="md-nav__item">
       <a href="../../en/rules/Azure.AKS.NodeMinPods/" class="md-nav__link">
         Azure.AKS.NodeMinPods
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../en/rules/Azure.AKS.PlatformLogs/" class="md-nav__link">
+        Azure.AKS.PlatformLogs
       </a>
     </li>
   
@@ -3772,6 +3791,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#azureaksenabledplatformlogcategorieslist" class="md-nav__link">
+    Azure AKS enabled platform log categories list
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3949,6 +3975,22 @@ Rules that check certificate lifetime fail when the days remaining before expiry
 <p>The above locations in the example do <strong>not</strong> currently support availability zones.
 If they do in the future, you can configure this option to add them prior to PSRule for Azure support.</p>
 </div>
+<h3 id="azureaksenabledplatformlogcategorieslist">Azure AKS enabled platform log categories list<a class="headerlink" href="#azureaksenabledplatformlogcategorieslist" title="Permanent link">#</a></h3>
+<p>This configuration option sets selective platform diagnostic categories to report on being enabled.</p>
+<p>Syntax:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
+  <span class="nt">AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+</code></pre></div>
+<p>Default:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+  <span class="nt">AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;cluster-autoscaler&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;kube-apiserver&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;kube-controller-manager&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;kube-scheduler&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to cluster-autoscaler and AllMetrics categories only. </span>
+<span class="nt">configuration</span><span class="p">:</span>
+  <span class="nt">AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;cluster-autoscaler&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
                 
                   
                     
@@ -3957,7 +3999,7 @@ If they do in the future, you can configure this option to add them prior to PSR
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-03
+      Last update: 2021-09-04
     
   </small>
 </div>
