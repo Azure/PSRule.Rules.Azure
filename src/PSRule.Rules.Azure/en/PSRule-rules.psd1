@@ -13,6 +13,7 @@
     AKSAzureCNI = "The subnet ({0}) should be using a minimum size of /{1}."
     AKSAvailabilityZone = "The agent pool ({0}) deployed to region ({1}) should use following availability zones [{2}]."
     AKSAuditLogs = "The diagnostic setting ({0}) logs should enable at least one of (kube-audit, kube-audit-admin) and guard."
+    AKSPlatformLogs = "The diagnostic setting ({0}) logs should enable ({1})."
     SubnetNSGNotConfigured = "The subnet ({0}) has no NSG associated."
     ServiceUrlNotHttps = "The service URL for '{0}' is not a HTTPS endpoint."
     BackendUrlNotHttps = "The backend URL for '{0}' is not a HTTPS endpoint."

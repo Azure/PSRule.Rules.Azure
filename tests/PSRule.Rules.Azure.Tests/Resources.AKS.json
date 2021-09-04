@@ -1046,7 +1046,7 @@
                         {
                             "category": "kube-apiserver",
                             "categoryGroup": null,
-                            "enabled": false,
+                            "enabled": true,
                             "retentionPolicy": {
                                 "enabled": false,
                                 "days": 0
@@ -1073,7 +1073,7 @@
                         {
                             "category": "kube-controller-manager",
                             "categoryGroup": null,
-                            "enabled": false,
+                            "enabled": true,
                             "retentionPolicy": {
                                 "enabled": false,
                                 "days": 0
@@ -1091,7 +1091,7 @@
                         {
                             "category": "cluster-autoscaler",
                             "categoryGroup": null,
-                            "enabled": false,
+                            "enabled": true,
                             "retentionPolicy": {
                                 "enabled": false,
                                 "days": 0
@@ -1209,7 +1209,7 @@
                     "metrics": [
                         {
                             "category": "AllMetrics",
-                            "enabled": true,
+                            "enabled": false,
                             "retentionPolicy": {
                                 "enabled": false,
                                 "days": 0
@@ -1220,7 +1220,7 @@
                         {
                             "category": "kube-apiserver",
                             "categoryGroup": null,
-                            "enabled": false,
+                            "enabled": true,
                             "retentionPolicy": {
                                 "enabled": false,
                                 "days": 0
@@ -1247,7 +1247,7 @@
                         {
                             "category": "kube-controller-manager",
                             "categoryGroup": null,
-                            "enabled": false,
+                            "enabled": true,
                             "retentionPolicy": {
                                 "enabled": false,
                                 "days": 0
@@ -1256,7 +1256,7 @@
                         {
                             "category": "kube-scheduler",
                             "categoryGroup": null,
-                            "enabled": false,
+                            "enabled": true,
                             "retentionPolicy": {
                                 "enabled": false,
                                 "days": 0
@@ -1265,7 +1265,7 @@
                         {
                             "category": "cluster-autoscaler",
                             "categoryGroup": null,
-                            "enabled": false,
+                            "enabled": true,
                             "retentionPolicy": {
                                 "enabled": false,
                                 "days": 0
@@ -1394,7 +1394,7 @@
                         {
                             "category": "kube-apiserver",
                             "categoryGroup": null,
-                            "enabled": false,
+                            "enabled": true,
                             "retentionPolicy": {
                                 "enabled": false,
                                 "days": 0
@@ -1421,7 +1421,7 @@
                         {
                             "category": "kube-controller-manager",
                             "categoryGroup": null,
-                            "enabled": false,
+                            "enabled": true,
                             "retentionPolicy": {
                                 "enabled": false,
                                 "days": 0
@@ -1430,7 +1430,7 @@
                         {
                             "category": "kube-scheduler",
                             "categoryGroup": null,
-                            "enabled": false,
+                            "enabled": true,
                             "retentionPolicy": {
                                 "enabled": false,
                                 "days": 0
@@ -1439,7 +1439,7 @@
                         {
                             "category": "cluster-autoscaler",
                             "categoryGroup": null,
-                            "enabled": false,
+                            "enabled": true,
                             "retentionPolicy": {
                                 "enabled": false,
                                 "days": 0

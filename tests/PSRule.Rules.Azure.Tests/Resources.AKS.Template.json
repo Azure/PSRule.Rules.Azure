@@ -335,7 +335,7 @@
                             },
                             {
                                 "category": "kube-controller-manager",
-                                "enabled": false,
+                                "enabled": true,
                                 "retentionPolicy": {
                                     "days": 0,
                                     "enabled": false
@@ -351,7 +351,7 @@
                             },
                             {
                                 "category": "cluster-autoscaler",
-                                "enabled": false,
+                                "enabled": true,
                                 "retentionPolicy": {
                                     "days": 0,
                                     "enabled": false
@@ -576,7 +576,7 @@
                             },
                             {
                                 "category": "kube-controller-manager",
-                                "enabled": false,
+                                "enabled": true,
                                 "retentionPolicy": {
                                     "days": 0,
                                     "enabled": false
@@ -584,7 +584,7 @@
                             },
                             {
                                 "category": "kube-scheduler",
-                                "enabled": false,
+                                "enabled": true,
                                 "retentionPolicy": {
                                     "days": 0,
                                     "enabled": false
@@ -592,7 +592,7 @@
                             },
                             {
                                 "category": "cluster-autoscaler",
-                                "enabled": false,
+                                "enabled": true,
                                 "retentionPolicy": {
                                     "days": 0,
                                     "enabled": false
@@ -610,7 +610,7 @@
                         "metrics": [
                             {
                                 "category": "AllMetrics",
-                                "enabled": true,
+                                "enabled": false,
                                 "retentionPolicy": {
                                     "days": 0,
                                     "enabled": false
@@ -782,7 +782,7 @@
                             },
                             {
                                 "category": "kube-controller-manager",
-                                "enabled": false,
+                                "enabled": true,
                                 "retentionPolicy": {
                                     "days": 0,
                                     "enabled": false
@@ -790,7 +790,7 @@
                             },
                             {
                                 "category": "kube-scheduler",
-                                "enabled": false,
+                                "enabled": true,
                                 "retentionPolicy": {
                                     "days": 0,
                                     "enabled": false
@@ -798,7 +798,7 @@
                             },
                             {
                                 "category": "cluster-autoscaler",
-                                "enabled": false,
+                                "enabled": true,
                                 "retentionPolicy": {
                                     "days": 0,
                                     "enabled": false
