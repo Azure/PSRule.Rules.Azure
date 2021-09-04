@@ -24,3 +24,4 @@ configuration:
       - "1"
       - "2"
       - "3"
+  AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: ['cluster-autoscaler', 'AllMetrics']

@@ -357,6 +357,22 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 2;
             $ruleResult.TargetName | Should -BeIn 'cluster-I', 'cluster-J';
         }
+
+        It 'Azure.AKS.PlatformLogs' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.PlatformLogs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 8;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 1;
+            $ruleResult.TargetName | Should -BeIn 'cluster-J';
+        }
     }
 
     Context 'Resource name' {
@@ -724,6 +740,22 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 2;
             $ruleResult.TargetName | Should -BeIn 'clusterD', 'clusterE';
         }
+
+        It 'Azure.AKS.PlatformLogs' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.PlatformLogs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 3;
+            $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterB', 'clusterD';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 1;
+            $ruleResult.TargetName | Should -BeIn 'clusterE';
+        }
     }
 
     Context 'With Configuration Option' {
@@ -782,6 +814,100 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult | Should -HaveCount 3;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-D';
+        }
+
+        It 'Azure.AKS.PlatformLogs - HashTable option - Excluding metrics category' {
+            $option = @{
+                'Configuration.AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST' = @(
+                    'cluster-autoscaler', 
+                    'kube-apiserver', 
+                    'kube-controller-manager', 
+                    'kube-scheduler'
+                )
+            }
+
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $option
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.PlatformLogs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 7;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-I', 'cluster-J';
+        }
+
+        It 'Azure.AKS.PlatformLogs - HashTable option - Excluding metrics category' {
+            $option = @{
+                'Configuration.AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST' = @(
+                    'cluster-autoscaler', 
+                    'kube-apiserver', 
+                    'kube-controller-manager',
+                    'AllMetrics'
+                )
+            }
+
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $option
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.PlatformLogs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 7;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-I';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-H', 'cluster-J';
+        }
+
+        It 'Azure.AKS.PlatformLogs - HashTable option - Excluding metrics and log category' {
+            $option = @{
+                'Configuration.AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST' = @(
+                    'cluster-autoscaler', 
+                    'kube-apiserver', 
+                    'kube-controller-manager'
+                )
+            }
+
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $option
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.PlatformLogs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 6;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 3;
+            $ruleResult.TargetName | Should -BeIn 'cluster-H', 'cluster-I', 'cluster-J';
+        }
+
+        It 'Azure.AKS.PlatformLogs - YAML file option - Excluding metrics and log categories' {
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $configPath
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.PlatformLogs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 7;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-I';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-H', 'cluster-J';
         }
     }
 }
