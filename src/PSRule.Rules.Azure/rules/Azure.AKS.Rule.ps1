@@ -302,8 +302,8 @@ Rule 'Azure.AKS.PlatformLogs' -Type 'Microsoft.ContainerService/managedClusters'
             $_.category -in $availableLogCategories.Metrics
         });
 
-        $platformLogsEnabled = ($null -ne $platformLogs -and $platformLogs.Length -eq $logCategoriesNeeded) -and 
-                               ($null -ne $metricLogs -and $metricLogs.Length -eq $metricCategoriesNeeded);
+        $platformLogsEnabled = $Assert.HasFieldValue($platformLogs, 'Length', $logCategoriesNeeded).Result -and 
+                               $Assert.HasFieldValue($metricLogs, 'Length', $metricCategoriesNeeded).Result
 
         $Assert.Create(
             $platformLogsEnabled, 
