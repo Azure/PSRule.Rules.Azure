@@ -4393,12 +4393,27 @@
 See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to this issue.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<p>What's changed since pre-release v1.8.0-B2108026:</p>
+<ul>
+<li>New rules:<ul>
+<li>Azure Kubernetes Service:<ul>
+<li>Check clusters have control plane audit logs enabled. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/882">#882</a></li>
+<li>Check clusters have control plane diagnostics enabled. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/922">#922</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Engineering:<ul>
+<li>Bump PSRule dependency to v1.7.0. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/938">#938</a></li>
+</ul>
+</li>
+</ul>
 <h2 id="v180-b2108026pre-release">v1.8.0-B2108026 (pre-release)<a class="headerlink" href="#v180-b2108026pre-release" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.8.0-B2108013:</p>
 <ul>
 <li>New rules:<ul>
 <li>Azure Kubernetes Service:<ul>
-<li>AKS Container insights rule. Thanks <a href="https://github.com/ArmaanMcleod">@ArmaanMcleod</a>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/881">#881</a></li>
+<li>Check clusters use Container Insights for monitoring workloads. Thanks <a href="https://github.com/ArmaanMcleod">@ArmaanMcleod</a>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/881">#881</a></li>
 </ul>
 </li>
 </ul>
@@ -5396,7 +5411,7 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-04
+      Last update: 2021-09-05
     
   </small>
 </div>
