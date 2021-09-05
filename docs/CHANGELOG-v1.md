@@ -7,12 +7,14 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.8.0-B2109020 (pre-release)
+
 What's changed since pre-release v1.8.0-B2108026:
 
 - New rules:
   - Azure Kubernetes Service:
-    - Check clusters have control plane audit logs enabled. [#882](https://github.com/Azure/PSRule.Rules.Azure/issues/882)
-    - Check clusters have control plane diagnostics enabled. [#922](https://github.com/Azure/PSRule.Rules.Azure/issues/922)
+    - Check clusters have control plane audit logs enabled. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#882](https://github.com/Azure/PSRule.Rules.Azure/issues/882)
+    - Check clusters have control plane diagnostics enabled. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#922](https://github.com/Azure/PSRule.Rules.Azure/issues/922)
 - Engineering:
   - Bump PSRule dependency to v1.7.0. [#938](https://github.com/Azure/PSRule.Rules.Azure/issues/938)
 
