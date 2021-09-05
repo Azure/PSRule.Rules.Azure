@@ -7,13 +7,22 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.8.0-B2108026:
+
+- New rules:
+  - Azure Kubernetes Service:
+    - Check clusters have control plane audit logs enabled. [#882](https://github.com/Azure/PSRule.Rules.Azure/issues/882)
+    - Check clusters have control plane diagnostics enabled. [#922](https://github.com/Azure/PSRule.Rules.Azure/issues/922)
+- Engineering:
+  - Bump PSRule dependency to v1.7.0. [#938](https://github.com/Azure/PSRule.Rules.Azure/issues/938)
+
 ## v1.8.0-B2108026 (pre-release)
 
 What's changed since pre-release v1.8.0-B2108013:
 
 - New rules:
   - Azure Kubernetes Service:
-    - AKS Container insights rule. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#881](https://github.com/Azure/PSRule.Rules.Azure/issues/881)
+    - Check clusters use Container Insights for monitoring workloads. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#881](https://github.com/Azure/PSRule.Rules.Azure/issues/881)
 - Bug fixes:
   - Fixed export of in-flight AKS related subnets for kubenet clusters. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#920](https://github.com/Azure/PSRule.Rules.Azure/issues/920)
 
