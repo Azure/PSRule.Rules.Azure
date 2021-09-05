@@ -19,13 +19,13 @@ Rule 'Rule.Help' -Type 'PSRule.Rules.Rule' {
 # Synopsis: Rules must flag if the Azure feature is GA or preview.
 Rule 'Rule.Release' -Type 'PSRule.Rules.Rule' {
     Recommend 'Add a release tag to the rule.'
-    $TargetObject.Tag.ToHashtable() | Within 'release' 'GA', 'preview' -CaseSensitive
+    $Assert.In($TargetObject, 'Tag.release', @('GA', 'preview'), $True)
 }
 
 # Synopsis: Rules must be added to a rule set.
 Rule 'Rule.RuleSet' -Type 'PSRule.Rules.Rule' {
     Recommend 'Add a ruleSet the to the rule.'
-    $TargetObject.Tag.ToHashtable() | Exists 'ruleSet'
+    $Assert.HasField($TargetObject, 'Tag.ruleSet', $True)
 }
 
 # Synopsis: Annotate rules with a valid Well-Architected Framework pillar.
