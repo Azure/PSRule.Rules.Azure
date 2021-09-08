@@ -2,7 +2,7 @@
 severity: Important
 pillar: Reliability
 category: Design
-resource: Azure Kubernetes Service
+resource: Application Gateway
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.AvailabilityZone/
 ---
 
