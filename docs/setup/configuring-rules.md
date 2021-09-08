@@ -265,3 +265,51 @@ Example:
 configuration:
   AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: ['cluster-autoscaler', 'AllMetrics']
 ```
+
+### Azure Application gateway additional region availability zone list
+
+This configuration option adds availability zones that are not included in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json) for namespace `Microsoft.Network` and resource type `applicationGateways`.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: array
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option
+configuration:
+  AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: []
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option to Australia Southeast and Norway East, with zones 1, 2, 3.
+configuration:
+  AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
+  - location: 'Australia Southeast'
+    zones:
+      - "1"
+      - "2"
+      - "3"
+  - location: 'Norway East'
+    zones:
+      - "1"
+      - "2"
+      - "3"
+```
+
+The above example, both these forms of location are accepted:
+
+* `Australia Southeast` or `australiasoutheast`
+* `Norway East` or `norwayeast`
+
+The `Azure.AppGw.AvailabilityZone` rule normalizes these location formats so either is accepted in the configuration.
+
+!!! Note
+    The above locations in the example do **not** currently support availability zones.
+    If they do in the future, you can configure this option to add them prior to PSRule for Azure support.
