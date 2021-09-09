@@ -47,4 +47,5 @@
     ExpressionInTemplate = "The expression '{0}' was found in the template."
     SubResourceNotFound = "A sub-resource of type '{0}' has not been specified."
     ParameterValueNotSet = "The parameter '{0}' must have a value or Key Vault reference set."
+    AppGWAvailabilityZone = "The application gateway ({0}) deployed to region ({1}) should use following availability zones [{2}]."
 }

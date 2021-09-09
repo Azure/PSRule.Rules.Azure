@@ -191,9 +191,17 @@ configuration:
   AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: 26
 ```
 
-### Azure AKS additional region availability zone list
+### Additional region availability zone list
 
-This configuration option adds availability zones that are not included in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json) for namespace `Microsoft.Compute` and resource type `virtualMachineScaleSets`.
+This configuration option adds availability zones that are not included in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json).
+
+The following providers are supported:
+- `Microsoft.Compute/virtualMachineScaleSets`
+- `Microsoft.Network/applicationGateways`
+
+The following rules and configuration options are supported:
+- `Azure.AKS.AvailabilityZone` - `AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
+- `Azure.AppGw.AvailabilityZone` - `AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
 
 Syntax:
 
@@ -233,11 +241,12 @@ The above example, both these forms of location are accepted:
 * `Australia Southeast` or `australiasoutheast`
 * `Norway East` or `norwayeast`
 
-The `Azure.AKS.AvailabilityZone` rule normalizes these location formats so either is accepted in the configuration.
+The rules normalize these location formats so either is accepted in the configuration.
 
 !!! Note
     The above locations in the example do **not** currently support availability zones.
     If they do in the future, you can configure this option to add them prior to PSRule for Azure support.
+    The above shows examples specific to `Azure.AKS.AvailabilityZone`, but behavior is consistent across all supported rules.
 
 ### Azure AKS enabled platform log categories list
 
