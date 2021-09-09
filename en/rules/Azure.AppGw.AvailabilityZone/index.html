@@ -13,14 +13,14 @@
         <meta name="author" content="Microsoft">
       
       
-        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Route.Name/">
+        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.AvailabilityZone/">
       
       <link rel="icon" href="../../../assets/ms_icon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
-        <title>Azure.Route.Name - PSRule for Azure</title>
+        <title>Azure.AppGw.AvailabilityZone - PSRule for Azure</title>
       
     
     
@@ -66,9 +66,9 @@
 
   <!-- Open graph meta tags -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PSRule for Azure - Azure.Route.Name" />
+  <meta property="og:title" content="PSRule for Azure - Azure.AppGw.AvailabilityZone" />
   <meta property="og:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
-  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Route.Name/" />
+  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.AvailabilityZone/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1280" />
@@ -78,7 +78,7 @@
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - Azure.Route.Name" />
+  <meta name="twitter:title" content="PSRule for Azure - Azure.AppGw.AvailabilityZone" />
   <meta name="twitter:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#usevalidroutetablenames" class="md-skip">
+        <a href="#applicationgatewaysshoulduseavailabilityzonesinsupportedregions" class="md-skip">
           Skip to content
         </a>
       
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Azure.Route.Name
+              Azure.AppGw.AvailabilityZone
             
           </span>
         </div>
@@ -1353,11 +1353,112 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Azure.AppGw.AvailabilityZone/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Azure.AppGw.AvailabilityZone
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Azure.AppGw.AvailabilityZone
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurecli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure with Azure CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#createwafv2applicationgatewayinzone12and3" class="md-nav__link">
+    Create WAFv2 Application Gateway in Zone 1, 2 and 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2433,72 +2534,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Azure.Route.Name
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Azure.Route.Name/" class="md-nav__link">
         Azure.Route.Name
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommendation" class="md-nav__link">
-    Recommendation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    Notes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    Links
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3729,6 +3769,46 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurecli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure with Azure CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#createwafv2applicationgatewayinzone12and3" class="md-nav__link">
+    Create WAFv2 Application Gateway in Zone 1, 2 and 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#links" class="md-nav__link">
     Links
   </a>
@@ -3747,32 +3827,168 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Route.Name.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.AvailabilityZone.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="usevalidroutetablenames">Use valid Route table names<a class="headerlink" href="#usevalidroutetablenames" title="Permanent link">#</a></h1>
-<p>Route table names should meet naming requirements.</p>
+                <h1 id="applicationgatewaysshoulduseavailabilityzonesinsupportedregions">Application gateways should use Availability zones in supported regions<a class="headerlink" href="#applicationgatewaysshoulduseavailabilityzonesinsupportedregions" title="Permanent link">#</a></h1>
+<p>Application gateways deployed with V2 SKU(Standard_v2, WAF_v2) should use availability zones in supported regions for high availability.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>When naming Azure resources, resource names must meet service requirements.
-The requirements for Route table names are:</p>
-<ul>
-<li>Between 1 and 80 characters long.</li>
-<li>Alphanumerics, underscores, periods, and hyphens.</li>
-<li>Start with alphanumeric.</li>
-<li>End alphanumeric or underscore.</li>
-<li>Route table names must be unique within a resource group.</li>
-</ul>
+<p>Application gateways using availability zones improve reliability and ensure availability during failure scenarios affecting a data center within a region. A zone redundant Application gateway or WAF deployment can spread across multiple availability zones, which ensures the application gateway will continue running even if another zone has gone down. Backend pools for applications can be similarly distributed across availability zones.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider using names that meet Route table naming requirements.
-Additionally consider naming resources with a standard naming convention.</p>
+<p>Consider using availability zones for Application gateways deployed with V2 SKU(Standard_v2, WAF_v2).</p>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
-<p>This rule does not check if Route table names are unique.</p>
+<p>This rule applies when analyzing resources deployed to Azure using <em>pre-flight</em> and <em>in-flight</em> data.</p>
+<p>This rule fails when <code>"zones"</code> is <code>null</code>, <code>[]</code> or not set when the Application gateway is deployed with V2 SKU(Standard_v2, WAF_v2) and there are supported availability zones for the given region.</p>
+<p>Configure <code>AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code> to set additional availability zones that need to be supported which are not in the existing <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json">providers</a> for namespace <code>Microsoft.Network</code> and resource type <code>applicationGateways</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+  <span class="nt">AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+</code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To set availability zones for an Application gateway</p>
+<ul>
+<li>Set <code>zones</code> to any or all of <code>["1", "2", "3"]</code>.</li>
+<li>Set <code>properties.sku.name</code> and <code>properties.sku.tier</code> to <code>Standard_v2</code> or <code>WAF_v2</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;applicationGatewayName&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.Network/applicationGateways&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-09-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;zones&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;3&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;[concat(&#39;Microsoft.Network/virtualNetworks/&#39;, parameters(&#39;virtualNetworkName&#39;))]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;[concat(&#39;Microsoft.Network/publicIPAddresses/&#39;, parameters(&#39;publicIpAddressName&#39;))]&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;sku&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;WAF_v2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;tier&quot;</span><span class="p">:</span> <span class="s2">&quot;WAF_v2&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;gatewayIPConfigurations&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;appGatewayIpConfig&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;subnet&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[variables(&#39;subnetRef&#39;)]&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;frontendIPConfigurations&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;appGwPublicFrontendIp&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;PublicIPAddress&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[variables(&#39;publicIPRef&#39;)]&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;frontendPorts&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;port_80&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">80</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;backendAddressPools&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bepool&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;backendAddresses&quot;</span><span class="p">:</span> <span class="p">[]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;backendHttpSettingsCollection&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;http_settings&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+                    <span class="nt">&quot;Protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;Http&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;cookieBasedAffinity&quot;</span><span class="p">:</span> <span class="s2">&quot;Disabled&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;requestTimeout&quot;</span><span class="p">:</span> <span class="mi">20</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;httpListeners&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;http-listener&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;frontendIPConfiguration&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/frontendIPConfigurations/appGwPublicFrontendIp&#39;)]&quot;</span>
+                    <span class="p">},</span>
+                    <span class="nt">&quot;frontendPort&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/frontendPorts/port_80&#39;)]&quot;</span>
+                    <span class="p">},</span>
+                    <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;Http&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;sslCertificate&quot;</span><span class="p">:</span> <span class="kc">null</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;requestRoutingRules&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;http-rule&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;RuleType&quot;</span><span class="p">:</span> <span class="s2">&quot;Basic&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;httpListener&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/httpListeners/http-listener&#39;)]&quot;</span>
+                    <span class="p">},</span>
+                    <span class="nt">&quot;priority&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="nt">&quot;backendAddressPool&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/backendAddressPools/bepool&#39;)]&quot;</span>
+                    <span class="p">},</span>
+                    <span class="nt">&quot;backendHttpSettings&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/backendHttpSettingsCollection/http_settings&#39;)]&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;enableHttp2&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;sslCertificates&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;probes&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;autoscaleConfiguration&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;minCapacity&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;capacity&#39;)]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;maxCapacity&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;autoScaleMaxCapacity&#39;)]&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;webApplicationFirewallConfiguration&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;firewallMode&quot;</span><span class="p">:</span> <span class="s2">&quot;Detection&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;ruleSetType&quot;</span><span class="p">:</span> <span class="s2">&quot;OWASP&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;ruleSetVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;3.0&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithazurecli">Configure with Azure CLI<a class="headerlink" href="#configurewithazurecli" title="Permanent link">#</a></h3>
+<h4 id="createwafv2applicationgatewayinzone12and3">Create WAFv2 Application Gateway in Zone 1, 2 and 3<a class="headerlink" href="#createwafv2applicationgatewayinzone12and3" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code>az network application-gateway create <span class="se">\</span>
+  --name <span class="s1">&#39;&lt;application_gateway_name&gt;&#39;</span> <span class="se">\</span>
+  --location <span class="s1">&#39;&lt;location&gt;&#39;</span> <span class="se">\</span>
+  --resource-group <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> <span class="se">\</span>
+  --capacity <span class="s1">&#39;&lt;capacity&gt;&#39;</span> <span class="se">\</span>
+  --sku WAF_v2 <span class="se">\</span>
+  --public-ip-address <span class="s1">&#39;&lt;public_ip_address&gt;&#39;</span> <span class="se">\</span>
+  --vnet-name <span class="s1">&#39;&lt;virtual_network_name&gt;&#39;</span> <span class="se">\</span>
+  --subnet <span class="s1">&#39;&lt;subnet_name&gt;&#39;</span> <span class="se">\</span>
+  --zones <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="se">\</span>
+  --servers <span class="s1">&#39;&lt;address_1&gt;&#39;</span> <span class="s1">&#39;&lt;address_2&gt;&#39;</span>
+</code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure">Repeatable infrastructure</a></li>
-<li><a href="https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules">Naming rules and restrictions for Azure resources</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways?tabs=json">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant">Autoscaling and Zone-redundant Application Gateway v2</a></li>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services">Use zone-aware services</a></li>
 </ul>
                 
                   
