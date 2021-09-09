@@ -87,7 +87,9 @@
                 "microsoftAccountOAuthScopes": null
             },
             "false": null
-        }
+        },
+        "planName2": "plan-b",
+        "planName3": "plan-c"
     },
     "resources": [
         {
@@ -218,6 +220,27 @@
             "properties": {
                 "ApplicationId": "[parameters('appName')]",
                 "Request_Source": "IbizaWebAppExtensionCreate"
+            }
+        },
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2021-01-15",
+            "name": "[variables('planName2')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "S1",
+                "tier": "Standard",
+                "capacity": 2
+            }
+        },
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2021-01-15",
+            "name": "[variables('planName3')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "EP1",
+                "tier": "ElasticPremium"
             }
         }
     ],

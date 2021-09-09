@@ -1481,5 +1481,117 @@
                 "SubscriptionId": null
             }
         ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/pe-001",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/pe-001",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "pe-001",
+        "Name": "pe-001",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "ipConfigurations": [
+                {
+                    "name": "redisCache-redisCache.privateEndpoint",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/pe-001/ipConfigurations/redisCache-redisCache.privateEndpoint",
+                    "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+                    "properties": {
+                        "privateIPAddress": "10.0.0.4",
+                        "privateIPAllocationMethod": "Dynamic",
+                        "subnet": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/sub-pe"
+                        },
+                        "primary": true,
+                        "privateIPAddressVersion": "IPv4",
+                        "privateLinkConnectionProperties": {
+                            "groupId": "redisCache",
+                            "requiredMemberName": "redisCache",
+                            "fqdns": [
+                                "redis-001.redis.cache.windows.net"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "dnsSettings": {
+                "dnsServers": [],
+                "appliedDnsServers": []
+            },
+            "macAddress": "",
+            "enableAcceleratedNetworking": false,
+            "vnetEncryptionSupported": false,
+            "enableIPForwarding": false,
+            "hostedWorkloads": [],
+            "tapConfigurations": [],
+            "privateEndpoint": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001"
+            },
+            "nicType": "Standard"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/networkInterfaces",
+        "ResourceType": "Microsoft.Network/networkInterfaces",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "pe-001",
+        "Name": "pe-001",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "privateLinkServiceConnections": [
+                {
+                    "name": "pec-001",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001/privateLinkServiceConnections/pec-001",
+                    "properties": {
+                        "privateLinkServiceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-001",
+                        "groupIds": [
+                            "redisCache"
+                        ],
+                        "privateLinkServiceConnectionState": {
+                            "status": "Approved",
+                            "description": "Auto-Approved",
+                            "actionsRequired": "None"
+                        }
+                    },
+                    "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
+                }
+            ],
+            "manualPrivateLinkServiceConnections": [],
+            "subnet": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/sub-pe"
+            },
+            "ipConfigurations": [],
+            "networkInterfaces": [
+                {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/pe-001"
+                }
+            ],
+            "customDnsConfigs": []
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/privateEndpoints",
+        "ResourceType": "Microsoft.Network/privateEndpoints",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null
     }
 ]

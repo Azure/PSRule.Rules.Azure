@@ -24,3 +24,4 @@ Consider updating the site to use a newer PHP runtime version.
 ## LINKS
 
 - [Set PHP Version](https://docs.microsoft.com/azure/app-service/configure-language-php?pivots=platform-linux#set-php-version)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)

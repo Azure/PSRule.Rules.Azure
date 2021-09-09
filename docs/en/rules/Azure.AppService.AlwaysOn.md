@@ -32,3 +32,4 @@ Consider enabling Always On for each App Services app.
 ## LINKS
 
 - [Configure an App Service app](https://docs.microsoft.com/azure/app-service/configure-common#configure-general-settings)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)

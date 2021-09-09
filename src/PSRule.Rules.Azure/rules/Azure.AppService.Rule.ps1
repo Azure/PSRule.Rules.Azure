@@ -5,14 +5,14 @@
 # Validation rules for Azure App Services
 #
 
-# Synopsis: Use an App Service Plan with at least two (2) instances
-Rule 'Azure.AppService.PlanInstanceCount' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+# Synopsis: App Service Plan should use a minimum number of instances for failover.
+Rule 'Azure.AppService.PlanInstanceCount' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) -and !(IsElasticPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.GreaterOrEqual($TargetObject, 'Sku.capacity', 2);
 }
 
-# Synopsis: Use at least a Standard App Service Plan
-Rule 'Azure.AppService.MinPlan' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.In($TargetObject, 'Sku.tier', @('PremiumV2', 'Premium', 'Standard'))
+# Synopsis: Use at least a Standard App Service Plan.
+Rule 'Azure.AppService.MinPlan' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) -and !(IsElasticPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+    $Assert.In($TargetObject, 'Sku.tier', @('PremiumV3', 'PremiumV2', 'Premium', 'Standard'))
 }
 
 # Synopsis: Disable client affinity for stateless services
@@ -125,6 +125,18 @@ function global:IsConsumptionPlan {
         return (
             $TargetObject.sku.Name -eq 'Y1' -or
             $TargetObject.sku.Tier -eq 'Dynamic'
+        );
+    }
+}
+
+function global:IsElasticPlan {
+    [CmdletBinding()]
+    param ()
+    process {
+        return (
+            $TargetObject.sku.Name -like 'EP*' -or
+            $TargetObject.sku.Tier -eq 'ElasticPremium' -or
+            $TargetObject.kind -eq 'elastic'
         );
     }
 }

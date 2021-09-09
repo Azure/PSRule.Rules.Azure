@@ -29,3 +29,4 @@ Consider using HTTP/2 for Azure Services apps to improve protocol efficiency.
 
 - [Configure an App Service app](https://docs.microsoft.com/azure/app-service/configure-common#configure-general-settings)
 - [Performance efficiency checklist](https://docs.microsoft.com/azure/architecture/framework/scalability/performance-efficiency)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)
