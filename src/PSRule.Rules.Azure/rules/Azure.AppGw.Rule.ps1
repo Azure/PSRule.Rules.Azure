@@ -86,22 +86,20 @@ Rule 'Azure.AppGw.AvailabilityZone' -Type 'Microsoft.Network/applicationGateways
 
         # Merge configuration options and default zone mappings together
         # We put configuration options at the beginning so they are processed first
-        $availabilityZones = @($configurationZones) + @($appGatewayProvider.ZoneMappings);
+        $availabilityZoneMappings = @($configurationZones) + @($appGatewayProvider.ZoneMappings);
     }
     else {
-        $availabilityZones = $appGatewayProvider.ZoneMappings;
+        $availabilityZoneMappings = $appGatewayProvider.ZoneMappings;
     }
 
-    $location = GetNormalLocation -Location $TargetObject.Location;
+    $availabilityZones = GetAvailabilityZone -AvailabilityZoneMapping $availabilityZoneMappings;
 
-    $locationAvailabilityZones = $availabilityZones | Where-Object { (GetNormalLocation -Location $_.Location) -eq $location } | Select-Object -ExpandProperty Zones -First 1;
-
-    if (-not $locationAvailabilityZones) {
+    if (-not $availabilityZones) {
         return $Assert.Pass();
     }
 
     $Assert.HasFieldValue($TargetObject, 'zones').
-        Reason($LocalizedData.AppGWAvailabilityZone, $TargetObject.name, $location, ($locationAvailabilityZones -join ', '));
+        Reason($LocalizedData.AppGWAvailabilityZone, $TargetObject.name, $location, ($availabilityZones -join ', '));
 
 } -Configure @{ AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 

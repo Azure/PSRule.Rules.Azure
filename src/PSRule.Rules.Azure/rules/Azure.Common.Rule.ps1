@@ -392,3 +392,17 @@ function global:GetNormalLocation {
         return $Location.Replace(' ', '').ToLower();
     }
 }
+
+function global:GetAvailabilityZone {
+    [CmdletBinding()]
+    [OutputType([String[]])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [PSObject[]]$AvailabilityZoneMapping
+    )
+    process {
+        $normalizedLocation = GetNormalLocation -Location $TargetObject.Location;
+        $availabilityZone = $AvailabilityZoneMapping | Where-Object { (GetNormalLocation -Location $_.Location) -eq $normalizedLocation } | Select-Object -ExpandProperty Zones -First 1;
+        return $availabilityZone;
+    }
+}

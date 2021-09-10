@@ -189,21 +189,19 @@ Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClust
 
         # Merge configuration options and default zone mappings together
         # We put configuration options at the beginning so they are processed first
-        $availabilityZones = @($configurationZones) + @($virtualMachineScaleSetProvider.ZoneMappings);
+        $availabilityZoneMappings = @($configurationZones) + @($virtualMachineScaleSetProvider.ZoneMappings);
     }
     else {
-        $availabilityZones = $virtualMachineScaleSetProvider.ZoneMappings;
+        $availabilityZoneMappings = $virtualMachineScaleSetProvider.ZoneMappings;
     }
 
-    $location = GetNormalLocation -Location $TargetObject.Location;
+    $availabilityZones = GetAvailabilityZone -AvailabilityZoneMapping $availabilityZoneMappings;
 
-    $locationAvailabilityZones = $availabilityZones | Where-Object { (GetNormalLocation -Location $_.Location) -eq $location } | Select-Object -ExpandProperty Zones -First 1;
-
-    if (-not $locationAvailabilityZones) {
+    if (-not $availabilityZones) {
         return $Assert.Pass();
     }
 
-    $joinedZoneString = $locationAvailabilityZones -join ', ';
+    $joinedZoneString = $availabilityZones -join ', ';
 
     foreach ($agentPool in $agentPools) {
 
