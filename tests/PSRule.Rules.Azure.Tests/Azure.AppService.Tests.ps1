@@ -226,6 +226,54 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
         }
 
+        It 'Azure.AppService.PlanInstanceCount' {
+            $filteredResult = $result | Where-Object {
+                $_.RuleName -eq 'Azure.AppService.PlanInstanceCount' -and
+                $_.TargetType -eq 'Microsoft.Web/serverfarms'
+            };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'plan-a';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'plan-b';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'plan-c';
+        }
+
+        It 'Azure.AppService.MinPlan' {
+            $filteredResult = $result | Where-Object {
+                $_.RuleName -eq 'Azure.AppService.MinPlan' -and
+                $_.TargetType -eq 'Microsoft.Web/serverfarms'
+            };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'plan-a';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'plan-b';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'plan-c';
+        }
+
         It 'Azure.AppService.MinTLS' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.MinTLS' };
 

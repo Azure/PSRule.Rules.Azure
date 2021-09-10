@@ -32,3 +32,4 @@ Also consider using Azure Policy to audit or enforce this configuration.
 - [Enforce TLS versions](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings#enforce-tls-versions)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Insecure protocols](https://docs.microsoft.com/Azure/app-service/overview-security#insecure-protocols-http-tls-10-ftp)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)

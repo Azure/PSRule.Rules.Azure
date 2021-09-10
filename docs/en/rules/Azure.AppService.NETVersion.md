@@ -24,3 +24,4 @@ Consider updating the site to use a newer .NET Framework version.
 ## LINKS
 
 - [Set .NET Framework runtime version](https://docs.microsoft.com/azure/app-service/configure-language-dotnet-framework#set-net-framework-runtime-version)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)

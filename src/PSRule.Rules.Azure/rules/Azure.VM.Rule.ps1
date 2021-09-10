@@ -219,9 +219,12 @@ Rule 'Azure.VM.ASName' -Type 'Microsoft.Compute/availabilitySets' -Tag @{ releas
 
 #region Network Interface
 
-# Synopsis: Network interfaces should be attached
+# Synopsis: Network interfaces (NICs) should be attached.
 Rule 'Azure.VM.NICAttached' -Type 'Microsoft.Network/networkInterfaces' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.virtualMachine.id');
+    $Assert.AnyOf(
+        $Assert.HasFieldValue($TargetObject, 'Properties.virtualMachine.id'),
+        $Assert.HasFieldValue($TargetObject, 'Properties.privateEndpoint.id')
+    )
 }
 
 # Synopsis: Network interfaces should inherit from virtual network

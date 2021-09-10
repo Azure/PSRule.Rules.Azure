@@ -7,6 +7,17 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.8.0-B2109020:
+
+- New rules:
+  - Application Gateways:
+    - Check App Gateways should use availability zones when available. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#928](https://github.com/Azure/PSRule.Rules.Azure/issues/928)
+- Bug fixes:
+  - Fixed plan instance count is not applicable to Elastic Premium plans. [#946](https://github.com/Azure/PSRule.Rules.Azure/issues/946)
+  - Fixed minimum App Service Plan fails Elastic Premium plans. [#945](https://github.com/Azure/PSRule.Rules.Azure/issues/945)
+  - Fixed App Service Plan should include PremiumV3 plan. [#944](https://github.com/Azure/PSRule.Rules.Azure/issues/944)
+  - Fixed Azure.VM.NICAttached with private endpoints. [#932](https://github.com/Azure/PSRule.Rules.Azure/issues/932)
+
 ## v1.8.0-B2109020 (pre-release)
 
 What's changed since pre-release v1.8.0-B2108026:
