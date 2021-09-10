@@ -192,8 +192,8 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-B', 'appgw-C', 'appgw-D', 'appgw-G';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'appgw-C', 'appgw-D', 'appgw-G';
         }
     }
 
@@ -235,8 +235,8 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 3;
-            $ruleResult.TargetName | Should -BeIn 'appgw-A', 'appgw-B', 'appgw-D';
+            $ruleResult | Should -HaveCount 1;
+            $ruleResult.TargetName | Should -BeIn 'appgw-D';
         }
 
         It 'Azure.AppGw.AvailabilityZone - YAML file option' {
@@ -252,8 +252,8 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 3;
-            $ruleResult.TargetName | Should -BeIn 'appgw-A', 'appgw-B', 'appgw-D';
+            $ruleResult | Should -HaveCount 1;
+            $ruleResult.TargetName | Should -BeIn 'appgw-D';
         }
     }
 }

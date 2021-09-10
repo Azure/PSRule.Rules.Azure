@@ -77,12 +77,8 @@ Rule 'Azure.AppGw.UseHTTPS' -Type 'Microsoft.Network/applicationGateways' -Tag @
 }
 
 # Synopsis: Application gateways deployed with V2 SKU(Standard_v2, WAF_v2) should use availability zones in supported regions for high availability.
-Rule 'Azure.AppGw.AvailabilityZone' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
-
-    # Availability zones only available in v2 tiers of Application Gateway
-    $isV2Sku = $Assert.In($TargetObject, 'Properties.sku.tier', @('Standard_v2', 'WAF_v2')).Result;
-
-    if (-not $isV2Sku -or [string]::IsNullOrEmpty($TargetObject.Location)) {
+Rule 'Azure.AppGw.AvailabilityZone' -Type 'Microsoft.Network/applicationGateways' -If { IsAppGwV2Sku } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    if ([string]::IsNullOrEmpty($TargetObject.Location)) {
         return $Assert.Pass();
     }
 
@@ -133,6 +129,15 @@ function global:IsAppGwPublic {
             }
         }
         return $result;
+    }
+}
+
+function global:IsAppGwV2Sku {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        return $Assert.In($TargetObject, 'Properties.sku.tier', @('Standard_v2', 'WAF_v2')).Result;
     }
 }
 
