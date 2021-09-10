@@ -714,29 +714,19 @@ Describe 'PrependConfigurationZoneWithProviderZone' {
             }
         )
 
-        $result = @(
-            [PSCustomObject]@{
-                Location = "Australia Southeast"
-                Zones = @("1", "2", "3")
-            }
-            [PSCustomObject]@{
-                Location = "Australia Central"
-                Zones = @("1", "2", "3")
-            }
-            [PSCustomObject]@{
-                Location = "South Africa North"
-                Zones = @()
-            }
-            [PSCustomObject]@{
-                Location = "Central US"
-                Zones = @("1", "2", "3")
-            }
-        );
-
         $merged = PrependConfigurationZoneWithProviderZone -ConfigurationZone $configurationZones -ProviderZone $providerZones;
-        $mergedJson = $merged | ConvertTo-Json -Compress;
-        $resultJson = $result | ConvertTo-Json -Compress;
-        $mergedJson | Should -BeExactly $resultJson;
+        
+        $merged[0].Location | Should -Be "Australia Southeast"
+        $merged[0].Zones | Should -Be @("1", "2", "3")
+
+        $merged[1].Location | Should -Be "Australia Central"
+        $merged[1].Zones | Should -Be @("1", "2", "3")
+
+        $merged[2].Location | Should -Be "South Africa North"
+        $merged[2].Zones | Should -Be @()
+
+        $merged[3].Location | Should -Be "Central US"
+        $merged[3].Zones | Should -Be @("1", "2", "3")
     }
 
     It 'Given empty configuration zones and provider zones only provider zones are returned' {
@@ -753,21 +743,13 @@ Describe 'PrependConfigurationZoneWithProviderZone' {
             }
         )
 
-        $result = @(
-            [PSCustomObject]@{
-                Location = "South Africa North"
-                Zones = @()
-            }
-            [PSCustomObject]@{
-                Location = "Central US"
-                Zones = @("1", "2", "3")
-            }
-        );
-
         $merged = PrependConfigurationZoneWithProviderZone -ConfigurationZone $configurationZones -ProviderZone $providerZones;
-        $mergedJson = $merged | ConvertTo-Json -Compress;
-        $resultJson = $result | ConvertTo-Json -Compress;
-        $mergedJson | Should -BeExactly $resultJson;
+        
+        $merged[0].Location | Should -Be "South Africa North"
+        $merged[0].Zones | Should -Be @()
+
+        $merged[1].Location | Should -Be "Central US"
+        $merged[1].Zones | Should -Be @("1", "2", "3")
     }
 }
 

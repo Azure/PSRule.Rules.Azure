@@ -243,12 +243,6 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult | Should -HaveCount 1;
             $ruleResult.TargetName | Should -BeIn 'appgw-D';
-
-            # None
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-B';
         }
 
         It 'Azure.AppGw.AvailabilityZone - YAML file option' {
@@ -266,12 +260,6 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult | Should -HaveCount 1;
             $ruleResult.TargetName | Should -BeIn 'appgw-D';
-
-            # None
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-B';
         }
     }
 }
