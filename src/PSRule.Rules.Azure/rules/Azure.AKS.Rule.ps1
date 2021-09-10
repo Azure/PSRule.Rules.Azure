@@ -177,33 +177,23 @@ Rule 'Azure.AKS.CNISubnetSize' -Type 'Microsoft.ContainerService/managedClusters
 Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $agentPools = @(GetAgentPoolProfiles);
 
-    if ($agentPools.Length -eq 0 -or [string]::IsNullOrEmpty($TargetObject.Location)) {
+    if ($agentPools.Length -eq 0) {
         return $Assert.Pass();
     }
-
-    $configurationZones = $Configuration.AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
 
     $virtualMachineScaleSetProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Compute', 'virtualMachineScaleSets');
 
-    if ($configurationZones.Length -gt 0) {
+    $configurationZoneMappings = $Configuration.AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
+    $providerZoneMappings = $virtualMachineScaleSetProvider.ZoneMappings;
+    $mergedAvailabilityZones = PrependConfigurationZoneWithProviderZone -ConfigurationZone $configurationZoneMappings -ProviderZone $providerZoneMappings;
 
-        # Merge configuration options and default zone mappings together
-        # We put configuration options at the beginning so they are processed first
-        $availabilityZones = @($configurationZones) + @($virtualMachineScaleSetProvider.ZoneMappings);
-    }
-    else {
-        $availabilityZones = $virtualMachineScaleSetProvider.ZoneMappings;
-    }
+    $availabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $mergedAvailabilityZones;
 
-    $location = GetNormalLocation -Location $TargetObject.Location;
-
-    $locationAvailabilityZones = $availabilityZones | Where-Object { (GetNormalLocation -Location $_.Location) -eq $location } | Select-Object -ExpandProperty Zones -First 1;
-
-    if (-not $locationAvailabilityZones) {
+    if (-not $availabilityZones) {
         return $Assert.Pass();
     }
 
-    $joinedZoneString = $locationAvailabilityZones -join ', ';
+    $joinedZoneString = $availabilityZones -join ', ';
 
     foreach ($agentPool in $agentPools) {
 

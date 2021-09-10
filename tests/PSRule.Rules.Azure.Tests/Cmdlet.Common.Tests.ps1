@@ -25,6 +25,9 @@ BeforeAll {
     $Null = New-Item -Path $outputPath -ItemType Directory -Force;
     $here = (Resolve-Path $PSScriptRoot).Path;
 
+    # Import Common rule functions
+    Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure/rules/Azure.Common.Rule.ps1) -Force;
+
     #region Mocks
 
     function MockContext {
@@ -631,6 +634,122 @@ Describe 'VisitAKSCluster' {
                 $clusterResource.resources[0].Properties.logs | Should -BeNullOrEmpty;
             }
         }
+    }
+}
+
+#endregion
+
+#region Azure.Common.Rule.ps1 Functions
+Describe 'GetAvailabilityZone' {
+    It "Given array of zones and '<location>' it returns '<expected>'" -TestCases @(
+        @{ 
+            Zones = @(
+                [PSCustomObject]@{
+                    Location = "South Africa North"
+                    Zones = @()
+                }
+                [PSCustomObject]@{
+                    Location = "Central US"
+                    Zones = @("1", "2", "3")
+                }
+            )
+            Location = "Central US"
+            Expected = @("1", "2", "3")
+        }
+        @{ 
+            Zones = @(
+                [PSCustomObject]@{
+                    Location = "South Africa North"
+                    Zones = @()
+                }
+                [PSCustomObject]@{
+                    Location = "Central US"
+                    Zones = @("1", "2", "3")
+                }
+            )
+            Location = "South Africa North"
+            Expected = @()
+        }
+        @{ 
+            Zones = @(
+                [PSCustomObject]@{
+                    Location = "South Africa North"
+                    Zones = @()
+                }
+                [PSCustomObject]@{
+                    Location = "Central US"
+                    Zones = @("1", "2", "3")
+                }
+            )
+            Location = "Australia East"
+            Expected = $null
+        }
+    ) {
+        param($Zones, $Location, $Expected)
+        GetAvailabilityZone -Location $Location -Zone $Zones | Should -Be $Expected;
+    }
+}
+
+Describe 'PrependConfigurationZoneWithProviderZone' {
+    It 'Given non-empty configuration zones and provider zones it prepends configuration zones in front of provider zones' {
+        $configurationZones = @(
+            [PSCustomObject]@{
+                Location = "Australia Southeast"
+                Zones = @("1", "2", "3")
+            }
+            [PSCustomObject]@{
+                Location = "Australia Central"
+                Zones = @("1", "2", "3")
+            }
+        );
+        
+        $providerZones = @(
+            [PSCustomObject]@{
+                Location = "South Africa North"
+                Zones = @()
+            }
+            [PSCustomObject]@{
+                Location = "Central US"
+                Zones = @("1", "2", "3")
+            }
+        )
+
+        $merged = PrependConfigurationZoneWithProviderZone -ConfigurationZone $configurationZones -ProviderZone $providerZones;
+        
+        $merged[0].Location | Should -Be "Australia Southeast"
+        $merged[0].Zones | Should -Be @("1", "2", "3")
+
+        $merged[1].Location | Should -Be "Australia Central"
+        $merged[1].Zones | Should -Be @("1", "2", "3")
+
+        $merged[2].Location | Should -Be "South Africa North"
+        $merged[2].Zones | Should -Be @()
+
+        $merged[3].Location | Should -Be "Central US"
+        $merged[3].Zones | Should -Be @("1", "2", "3")
+    }
+
+    It 'Given empty configuration zones and provider zones only provider zones are returned' {
+        $configurationZones = @();
+        
+        $providerZones = @(
+            [PSCustomObject]@{
+                Location = "South Africa North"
+                Zones = @()
+            }
+            [PSCustomObject]@{
+                Location = "Central US"
+                Zones = @("1", "2", "3")
+            }
+        )
+
+        $merged = PrependConfigurationZoneWithProviderZone -ConfigurationZone $configurationZones -ProviderZone $providerZones;
+        
+        $merged[0].Location | Should -Be "South Africa North"
+        $merged[0].Zones | Should -Be @()
+
+        $merged[1].Location | Should -Be "Central US"
+        $merged[1].Zones | Should -Be @("1", "2", "3")
     }
 }
 

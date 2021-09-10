@@ -385,9 +385,54 @@ function global:GetNormalLocation {
     [OutputType([String])]
     param (
         [Parameter(Mandatory = $True)]
+        [AllowEmptyString()]
         [String]$Location
     )
     process {
         return $Location.Replace(' ', '').ToLower();
+    }
+}
+
+function global:GetAvailabilityZone {
+    [CmdletBinding()]
+    [OutputType([String[]])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [AllowEmptyString()]
+        [string]$Location,
+
+        [Parameter(Mandatory = $True)]
+        [AllowEmptyCollection()]
+        [PSObject[]]$Zone
+    )
+    process {
+        $normalizedLocation = GetNormalLocation -Location $Location;
+        $availabilityZones = $Zone | Where-Object { (GetNormalLocation -Location $_.Location) -eq $normalizedLocation } | Select-Object -ExpandProperty Zones -First 1;
+        return $availabilityZones;
+    }
+}
+
+function global:PrependConfigurationZoneWithProviderZone {
+    [CmdletBinding()]
+    [OutputType([PSObject[]])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [AllowEmptyCollection()]
+        [PSObject[]]$ConfigurationZone,
+
+        [Parameter(Mandatory = $True)]
+        [AllowEmptyCollection()]
+        [PSObject[]]$ProviderZone
+    )
+
+    process {
+        if ($ConfigurationZone.Length -gt 0) {
+
+            # Prepend configuration options and provider mappings together
+            # We put configuration options at the beginning so they are processed first
+            return @($ConfigurationZone) + @($ProviderZone);
+        }
+        
+        return $ProviderZone;
     }
 }

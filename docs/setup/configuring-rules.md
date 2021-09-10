@@ -196,12 +196,14 @@ configuration:
 This configuration option adds availability zones that are not included in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json).
 
 The following providers are supported:
-- `Microsoft.Compute/virtualMachineScaleSets`
-- `Microsoft.Network/applicationGateways`
+
+* `Microsoft.Compute/virtualMachineScaleSets`
+* `Microsoft.Network/applicationGateways`
 
 The following rules and configuration options are supported:
-- `Azure.AKS.AvailabilityZone` - `AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
-- `Azure.AppGw.AvailabilityZone` - `AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
+
+* `Azure.AKS.AvailabilityZone` - `AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
+* `Azure.AppGw.AvailabilityZone` - `AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
 
 Syntax:
 
