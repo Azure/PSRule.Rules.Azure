@@ -398,34 +398,41 @@ function global:GetAvailabilityZone {
     [OutputType([String[]])]
     param (
         [Parameter(Mandatory = $True)]
-        [PSObject[]]$AvailabilityZoneMapping
+        [AllowEmptyString()]
+        [string]$Location,
+
+        [Parameter(Mandatory = $True)]
+        [AllowEmptyCollection()]
+        [PSObject[]]$Zone
     )
     process {
-        $normalizedLocation = GetNormalLocation -Location $TargetObject.Location;
-        $availabilityZone = $AvailabilityZoneMapping | Where-Object { (GetNormalLocation -Location $_.Location) -eq $normalizedLocation } | Select-Object -ExpandProperty Zones -First 1;
-        return $availabilityZone;
+        $normalizedLocation = GetNormalLocation -Location $Location;
+        $availabilityZones = $Zone | Where-Object { (GetNormalLocation -Location $_.Location) -eq $normalizedLocation } | Select-Object -ExpandProperty Zones -First 1;
+        return $availabilityZones;
     }
 }
 
-function global:PrependConfigurationZoneMappingWithProviderZoneMapping {
+function global:PrependConfigurationZoneWithProviderZone {
     [CmdletBinding()]
     [OutputType([PSObject[]])]
     param (
         [Parameter(Mandatory = $True)]
         [AllowEmptyCollection()]
-        [PSObject[]]$ConfigurationAvailabilityZoneMapping,
+        [PSObject[]]$ConfigurationZone,
 
         [Parameter(Mandatory = $True)]
         [AllowEmptyCollection()]
-        [PSObject[]]$ProviderAvailabilityZoneMapping
+        [PSObject[]]$ProviderZone
     )
 
-    if ($ConfigurationAvailabilityZoneMapping.Length -gt 0) {
+    process {
+        if ($ConfigurationZone.Length -gt 0) {
 
-        # Prepend configuration options and provider mappings together
-        # We put configuration options at the beginning so they are processed first
-        return @($ConfigurationAvailabilityZoneMapping) + @($ProviderAvailabilityZoneMapping);
+            # Prepend configuration options and provider mappings together
+            # We put configuration options at the beginning so they are processed first
+            return @($ConfigurationZone) + @($ProviderZone);
+        }
+        
+        return $ProviderZone;
     }
-    
-    return $ProviderAvailabilityZoneMapping;
 }

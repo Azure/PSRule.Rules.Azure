@@ -185,9 +185,9 @@ Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClust
 
     $configurationZoneMappings = $Configuration.AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
     $providerZoneMappings = $virtualMachineScaleSetProvider.ZoneMappings;
-    $availabilityZoneMappings = PrependConfigurationZoneMappingWithProviderZoneMapping -ConfigurationAvailabilityZoneMapping $configurationZoneMappings -ProviderAvailabilityZoneMapping $providerZoneMappings;
+    $mergedAvailabilityZones = PrependConfigurationZoneWithProviderZone -ConfigurationZone $configurationZoneMappings -ProviderZone $providerZoneMappings;
 
-    $availabilityZones = GetAvailabilityZone -AvailabilityZoneMapping $availabilityZoneMappings;
+    $availabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $mergedAvailabilityZones;
 
     if (-not $availabilityZones) {
         return $Assert.Pass();

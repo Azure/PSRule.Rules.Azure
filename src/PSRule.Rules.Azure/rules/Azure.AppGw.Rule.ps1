@@ -82,9 +82,9 @@ Rule 'Azure.AppGw.AvailabilityZone' -Type 'Microsoft.Network/applicationGateways
 
     $configurationZoneMappings = $Configuration.AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
     $providerZoneMappings = $appGatewayProvider.ZoneMappings;
-    $availabilityZoneMappings = PrependConfigurationZoneMappingWithProviderZoneMapping -ConfigurationAvailabilityZoneMapping $configurationZoneMappings -ProviderAvailabilityZoneMapping $providerZoneMappings;
+    $mergedAvailabilityZones = PrependConfigurationZoneWithProviderZone -ConfigurationZone $configurationZoneMappings -ProviderZone $providerZoneMappings;
 
-    $availabilityZones = GetAvailabilityZone -AvailabilityZoneMapping $availabilityZoneMappings;
+    $availabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $mergedAvailabilityZones;
 
     if (-not $availabilityZones) {
         return $Assert.Pass();
