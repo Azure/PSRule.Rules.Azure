@@ -3952,12 +3952,16 @@ Rules that check certificate lifetime fail when the days remaining before expiry
 </code></pre></div>
 <h3 id="additionalregionavailabilityzonelist">Additional region availability zone list<a class="headerlink" href="#additionalregionavailabilityzonelist" title="Permanent link">#</a></h3>
 <p>This configuration option adds availability zones that are not included in the existing <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json">providers</a>.</p>
-<p>The following providers are supported:
-- <code>Microsoft.Compute/virtualMachineScaleSets</code>
-- <code>Microsoft.Network/applicationGateways</code></p>
-<p>The following rules and configuration options are supported:
-- <code>Azure.AKS.AvailabilityZone</code> - <code>AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code>
-- <code>Azure.AppGw.AvailabilityZone</code> - <code>AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code></p>
+<p>The following providers are supported:</p>
+<ul>
+<li><code>Microsoft.Compute/virtualMachineScaleSets</code></li>
+<li><code>Microsoft.Network/applicationGateways</code></li>
+</ul>
+<p>The following rules and configuration options are supported:</p>
+<ul>
+<li><code>Azure.AKS.AvailabilityZone</code> - <code>AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code></li>
+<li><code>Azure.AppGw.AvailabilityZone</code> - <code>AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code></li>
+</ul>
 <p>Syntax:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
@@ -4018,7 +4022,7 @@ The above shows examples specific to <code>Azure.AKS.AvailabilityZone</code>, bu
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-10
+      Last update: 2021-09-11
     
   </small>
 </div>
