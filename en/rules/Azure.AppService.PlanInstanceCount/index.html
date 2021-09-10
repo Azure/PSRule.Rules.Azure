@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#azureappserviceplaninstancecount" class="md-skip">
+        <a href="#usetwoormoreappserviceplaninstances" class="md-skip">
           Skip to content
         </a>
       
@@ -1638,6 +1638,33 @@
   <a href="#recommendation" class="md-nav__link">
     Recommendation
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3715,6 +3742,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#links" class="md-nav__link">
     Links
   </a>
@@ -3738,15 +3792,56 @@
                   </a>
                 
                 
-                <h1 id="azureappserviceplaninstancecount">Azure.AppService.PlanInstanceCount<a class="headerlink" href="#azureappserviceplaninstancecount" title="Permanent link">#</a></h1>
-<p>Use an App Service Plan with at least two (2) instances.</p>
+                <h1 id="usetwoormoreappserviceplaninstances">Use two or more App Service Plan instances<a class="headerlink" href="#usetwoormoreappserviceplaninstances" title="Permanent link">#</a></h1>
+<p>App Service Plan should use a minimum number of instances for failover.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>Use an App Service Plan with at least two (2) instances.</p>
+<p>App Services Plans provides a configurable number of instances that will run apps.
+When a single instance is configured your app may be temporarily unavailable during unplanned interruptions.
+In most circumstances, Azure will self heal faulty app service instances automatically.
+However during this time there may interruptions to your workload.</p>
+<p>This rule does not apply to consumption or elastic App Services Plans.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Use an App Service Plan with at least two (2) instances.</p>
+<p>Consider using an App Service Plan with at least two (2) instances.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To deploy App Services Plans that pass this rule:</p>
+<ul>
+<li>Set <code>sku.capacity</code> to <code>2</code> or more.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.Web/serverfarms&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-01-15&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;planName&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;sku&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;S1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;tier&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;capacity&quot;</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To deploy App Services Plans that pass this rule:</p>
+<ul>
+<li>Set <code>sku.capacity</code> to <code>2</code> or more.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource appPlan &#39;Microsoft.Web/serverfarms@2021-01-15&#39; = {
+  name: planName
+  location: location
+  sku: {
+    name: &#39;S1&#39;
+    tier: &#39;Standard&#39;
+    capacity: 2
+  }
+}
+</code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://docs.microsoft.com/azure/architecture/framework/resiliency/design-resiliency">Resiliency and dependencies</a></li>
+<li><a href="https://docs.microsoft.com/azure/azure-monitor/autoscale/autoscale-get-started">Get started with Autoscale in Azure</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.web/serverfarms">Azure template reference</a></li>
 </ul>
                 
                   
@@ -3756,7 +3851,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-09
+      Last update: 2021-09-10
     
   </small>
 </div>

@@ -3249,6 +3249,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3707,6 +3714,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3727,11 +3741,21 @@
                 <h1 id="attachnicorcleanup">Attach NIC or clean up<a class="headerlink" href="#attachnicorcleanup" title="Permanent link">#</a></h1>
 <p>Network interfaces (NICs) should be attached.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>NICs are deployed as resources separate from virtual machines.
-NICs that are not attached to a virtual machine perform no purpose.</p>
+<p>Network interfaces (NICs) are used to attach services to a virtual network.
+Each NIC is deployed as a separate resource, however are intended to be used with a related service.
+A NIC that is not attached to a related service perform no purpose.</p>
+<p>Example of services that use NICs include:</p>
+<ul>
+<li>Virtual Machines</li>
+<li>Private Endpoints</li>
+</ul>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
 <p>Consider cleaning up NICs that are not required to reduce management complexity.
 Also consider using Resource Groups to help manage the lifecycle of related resources together.</p>
+<h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces">Azure template reference</a></li>
+</ul>
                 
                   
                     
@@ -3740,7 +3764,7 @@ Also consider using Resource Groups to help manage the lifecycle of related reso
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-09
+      Last update: 2021-09-10
     
   </small>
 </div>

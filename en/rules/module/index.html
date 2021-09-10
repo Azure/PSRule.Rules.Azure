@@ -931,6 +931,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#resiliencyanddependencies" class="md-nav__link">
+    Resiliency and dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resourcedeployment" class="md-nav__link">
     Resource deployment
   </a>
@@ -4105,6 +4112,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#resiliencyanddependencies" class="md-nav__link">
+    Resiliency and dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resourcedeployment" class="md-nav__link">
     Resource deployment
   </a>
@@ -4349,11 +4363,6 @@
 <tr>
 <td><a href="../Azure.AppInsights.Workspace/">Azure.AppInsights.Workspace</a></td>
 <td>Configure Application Insights resources to store data in workspaces.</td>
-<td>Important</td>
-</tr>
-<tr>
-<td><a href="../Azure.AppService.MinPlan/">Azure.AppService.MinPlan</a></td>
-<td>Use at least a Standard App Service Plan.</td>
 <td>Important</td>
 </tr>
 <tr>
@@ -4877,6 +4886,11 @@
 <td>Important</td>
 </tr>
 <tr>
+<td><a href="../Azure.AppService.MinPlan/">Azure.AppService.MinPlan</a></td>
+<td>Use at least a Standard App Service Plan.</td>
+<td>Important</td>
+</tr>
+<tr>
 <td><a href="../Azure.Redis.MaxMemoryReserved/">Azure.Redis.MaxMemoryReserved</a></td>
 <td>Configure maxmemory-reserved to reserve memory for non-cache operations.</td>
 <td>Important</td>
@@ -5080,11 +5094,6 @@
 <td>Important</td>
 </tr>
 <tr>
-<td><a href="../Azure.AppService.PlanInstanceCount/">Azure.AppService.PlanInstanceCount</a></td>
-<td>Use an App Service Plan with at least two (2) instances.</td>
-<td>Important</td>
-</tr>
-<tr>
 <td><a href="../Azure.FrontDoor.Probe/">Azure.FrontDoor.Probe</a></td>
 <td>Configure and enable health probes for each backend pool.</td>
 <td>Important</td>
@@ -5117,6 +5126,23 @@
 <tr>
 <td><a href="../Azure.VNG.VPNActiveActive/">Azure.VNG.VPNActiveActive</a></td>
 <td>Use VPN gateways configured to operate in an Active-Active configuration to reduce connectivity downtime.</td>
+<td>Important</td>
+</tr>
+</tbody>
+</table>
+<h3 id="resiliencyanddependencies">Resiliency and dependencies<a class="headerlink" href="#resiliencyanddependencies" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Synopsis</th>
+<th>Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Azure.AppService.PlanInstanceCount/">Azure.AppService.PlanInstanceCount</a></td>
+<td>App Service Plan should use a minimum number of instances for failover.</td>
 <td>Important</td>
 </tr>
 </tbody>
@@ -5697,7 +5723,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-09
+      Last update: 2021-09-10
     
   </small>
 </div>

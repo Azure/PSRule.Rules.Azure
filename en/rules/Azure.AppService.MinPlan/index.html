@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#azureappserviceminplan" class="md-skip">
+        <a href="#useappserviceproductionsku" class="md-skip">
           Skip to content
         </a>
       
@@ -1589,6 +1589,40 @@
         <li class="md-nav__item">
   <a href="#recommendation" class="md-nav__link">
     Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
   </a>
   
 </li>
@@ -3707,6 +3741,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3724,12 +3792,64 @@
                   </a>
                 
                 
-                <h1 id="azureappserviceminplan">Azure.AppService.MinPlan<a class="headerlink" href="#azureappserviceminplan" title="Permanent link">#</a></h1>
+                <h1 id="useappserviceproductionsku">Use App Service production SKU<a class="headerlink" href="#useappserviceproductionsku" title="Permanent link">#</a></h1>
 <p>Use at least a Standard App Service Plan.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>Use at least a Standard App Service Plan.</p>
+<p>Azure App Services provide a range of different plans that can be used to scale your application.
+Each plan provides different levels of performance and features.</p>
+<p>To get you started a number of entry level plans are available.
+The <code>Free</code>, <code>Shared</code>, and <code>Basic</code> plans can be used for limited testing and development.
+However these plans are not suitable for production use.
+Production workloads are best suited to standard and premium plans with <code>PremiumV3</code> the newest plan.</p>
+<p>This rule does not apply to consumption or elastic App Services Plans used for Azure Functions.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Use a Standard or high plans for production services.</p>
+<p>Consider using a standard or premium plan for hosting apps on Azure App Service.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To deploy App Services Plans that pass this rule:</p>
+<ul>
+<li>Set <code>sku.tier</code> to a plan equal to or greater than <code>Standard</code>.
+  For example: <code>PremiumV3</code>, <code>PremiumV2</code>, <code>Premium</code>, <code>Standard</code></li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.Web/serverfarms&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-01-15&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;planName&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;sku&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;S1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;tier&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;capacity&quot;</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To deploy App Services Plans that pass this rule:</p>
+<ul>
+<li>Set <code>sku.tier</code> to a plan equal to or greater than <code>Standard</code>.
+  For example: <code>PremiumV3</code>, <code>PremiumV2</code>, <code>Premium</code>, <code>Standard</code></li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource appPlan &#39;Microsoft.Web/serverfarms@2021-01-15&#39; = {
+  name: planName
+  location: location
+  sku: {
+    name: &#39;S1&#39;
+    tier: &#39;Standard&#39;
+    capacity: 2
+  }
+}
+</code></pre></div>
+<h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/scalability/design-capacity#choose-the-right-resources">Choose the right resources</a></li>
+<li><a href="https://docs.microsoft.com/azure/app-service/overview-hosting-plans">Azure App Service plan overview</a></li>
+<li><a href="https://docs.microsoft.com/azure/app-service/app-service-plan-manage">Manage an App Service plan in Azure</a></li>
+<li><a href="https://docs.microsoft.com/azure/app-service/app-service-configure-premium-tier">Configure PremiumV3 tier for Azure App Service</a></li>
+<li><a href="https://azure.microsoft.com/pricing/details/app-service/windows/">App Service pricing</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.web/serverfarms">Azure template reference</a></li>
+</ul>
                 
                   
                     
@@ -3738,7 +3858,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-09
+      Last update: 2021-09-10
     
   </small>
 </div>
