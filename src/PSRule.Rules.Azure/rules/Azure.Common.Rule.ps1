@@ -385,6 +385,7 @@ function global:GetNormalLocation {
     [OutputType([String])]
     param (
         [Parameter(Mandatory = $True)]
+        [AllowEmptyString()]
         [String]$Location
     )
     process {

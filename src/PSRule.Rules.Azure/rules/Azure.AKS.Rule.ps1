@@ -177,7 +177,7 @@ Rule 'Azure.AKS.CNISubnetSize' -Type 'Microsoft.ContainerService/managedClusters
 Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $agentPools = @(GetAgentPoolProfiles);
 
-    if ($agentPools.Length -eq 0 -or [string]::IsNullOrEmpty($TargetObject.Location)) {
+    if ($agentPools.Length -eq 0) {
         return $Assert.Pass();
     }
 
