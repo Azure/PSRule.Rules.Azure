@@ -229,7 +229,7 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
                 )
             }
 
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $option
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $option -Outcome All;
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppGw.AvailabilityZone' };
 
             # Fail
@@ -243,10 +243,16 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult | Should -HaveCount 1;
             $ruleResult.TargetName | Should -BeIn 'appgw-D';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-B';
         }
 
         It 'Azure.AppGw.AvailabilityZone - YAML file option' {
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $configPath
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $configPath -Outcome All;
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppGw.AvailabilityZone' };
 
             # Fail
@@ -260,6 +266,12 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult | Should -HaveCount 1;
             $ruleResult.TargetName | Should -BeIn 'appgw-D';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-B';
         }
     }
 }
