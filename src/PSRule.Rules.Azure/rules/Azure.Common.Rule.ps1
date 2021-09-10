@@ -406,3 +406,26 @@ function global:GetAvailabilityZone {
         return $availabilityZone;
     }
 }
+
+function global:PrependConfigurationZoneMappingWithProviderZoneMapping {
+    [CmdletBinding()]
+    [OutputType([PSObject[]])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [AllowEmptyCollection()]
+        [PSObject[]]$ConfigurationAvailabilityZoneMapping,
+
+        [Parameter(Mandatory = $True)]
+        [AllowEmptyCollection()]
+        [PSObject[]]$ProviderAvailabilityZoneMapping
+    )
+
+    if ($ConfigurationAvailabilityZoneMapping.Length -gt 0) {
+
+        # Prepend configuration options and provider mappings together
+        # We put configuration options at the beginning so they are processed first
+        return @($ConfigurationAvailabilityZoneMapping) + @($ProviderAvailabilityZoneMapping);
+    }
+    
+    return $ProviderAvailabilityZoneMapping;
+}

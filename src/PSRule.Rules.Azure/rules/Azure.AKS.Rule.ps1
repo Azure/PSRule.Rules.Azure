@@ -181,19 +181,11 @@ Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClust
         return $Assert.Pass();
     }
 
-    $configurationZones = $Configuration.AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
-
     $virtualMachineScaleSetProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Compute', 'virtualMachineScaleSets');
 
-    if ($configurationZones.Length -gt 0) {
-
-        # Merge configuration options and default zone mappings together
-        # We put configuration options at the beginning so they are processed first
-        $availabilityZoneMappings = @($configurationZones) + @($virtualMachineScaleSetProvider.ZoneMappings);
-    }
-    else {
-        $availabilityZoneMappings = $virtualMachineScaleSetProvider.ZoneMappings;
-    }
+    $configurationZoneMappings = $Configuration.AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
+    $providerZoneMappings = $virtualMachineScaleSetProvider.ZoneMappings;
+    $availabilityZoneMappings = PrependConfigurationZoneMappingWithProviderZoneMapping -ConfigurationAvailabilityZoneMapping $configurationZoneMappings -ProviderAvailabilityZoneMapping $providerZoneMappings;
 
     $availabilityZones = GetAvailabilityZone -AvailabilityZoneMapping $availabilityZoneMappings;
 

@@ -78,19 +78,11 @@ Rule 'Azure.AppGw.UseHTTPS' -Type 'Microsoft.Network/applicationGateways' -Tag @
 
 # Synopsis: Application gateways deployed with V2 SKU(Standard_v2, WAF_v2) should use availability zones in supported regions for high availability.
 Rule 'Azure.AppGw.AvailabilityZone' -Type 'Microsoft.Network/applicationGateways' -If { IsAppGwV2Sku } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
-    $configurationZones = $Configuration.AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
-
     $appGatewayProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Network', 'applicationGateways');
 
-    if ($configurationZones.Length -gt 0) {
-
-        # Merge configuration options and default zone mappings together
-        # We put configuration options at the beginning so they are processed first
-        $availabilityZoneMappings = @($configurationZones) + @($appGatewayProvider.ZoneMappings);
-    }
-    else {
-        $availabilityZoneMappings = $appGatewayProvider.ZoneMappings;
-    }
+    $configurationZoneMappings = $Configuration.AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
+    $providerZoneMappings = $appGatewayProvider.ZoneMappings;
+    $availabilityZoneMappings = PrependConfigurationZoneMappingWithProviderZoneMapping -ConfigurationAvailabilityZoneMapping $configurationZoneMappings -ProviderAvailabilityZoneMapping $providerZoneMappings;
 
     $availabilityZones = GetAvailabilityZone -AvailabilityZoneMapping $availabilityZoneMappings;
 
