@@ -407,9 +407,15 @@ task BuildRuleDocs Build, PSRule, PSDocs, {
 task BuildBaselineDocs Build, PSRule, PSDocs, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     $baselines = Get-PSRuleBaseline -Module PSRule.Rules.Azure -WarningAction SilentlyContinue;
-    $Null = $baselines | ForEach-Object {
-        $_ | Invoke-PSDocument -Name baseline -InstanceName $_.Name -OutputPath ./docs/en/baselines/ -Path ./BaselineToc.Doc.ps1;
-    }
+    $baselines | ForEach-Object {
+        $baselineDoc = [PSCustomObject]@{
+            Name = $_.Name
+            Metadata = $_.Metadata
+            Synopsis = $_.Synopsis
+            Rules = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline $_.Name -WarningAction SilentlyContinue)
+        }
+        $baselineDoc;
+    } | Invoke-PSDocument -Name baseline -OutputPath ./docs/en/baselines/ -Path ./BaselineToc.Doc.ps1 -Convention 'NameBaseline';
 }
 
 # Synopsis: Build help
