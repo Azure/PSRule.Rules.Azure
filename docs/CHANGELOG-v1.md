@@ -17,6 +17,8 @@ What's changed since pre-release v1.8.0-B2109020:
   - Fixed minimum App Service Plan fails Elastic Premium plans. [#945](https://github.com/Azure/PSRule.Rules.Azure/issues/945)
   - Fixed App Service Plan should include PremiumV3 plan. [#944](https://github.com/Azure/PSRule.Rules.Azure/issues/944)
   - Fixed Azure.VM.NICAttached with private endpoints. [#932](https://github.com/Azure/PSRule.Rules.Azure/issues/932)
+- Engineering:
+  - Bump PSRule dependency to v1.7.2. [#951](https://github.com/Azure/PSRule.Rules.Azure/issues/951)
 
 ## v1.8.0-B2109020 (pre-release)
 
