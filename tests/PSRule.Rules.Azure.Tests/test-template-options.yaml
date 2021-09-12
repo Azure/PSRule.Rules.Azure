@@ -1,0 +1,19 @@
+#
+# PSRule configuration for template unit tests
+#
+
+# Please see the documentation for all configuration options:
+# https://microsoft.github.io/PSRule/
+
+include:
+  module:
+  - 'PSRule.Rules.Azure'
+
+input:
+  format: File
+
+output:
+  outcome: All
+
+configuration:
+  AZURE_PARAMETER_FILE_EXPANSION: true

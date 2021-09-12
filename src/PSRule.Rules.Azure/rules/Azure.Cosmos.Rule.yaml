@@ -1,0 +1,22 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Cosmos DB
+#
+
+---
+# Synopsis: Use Azure AD identities for management place operations in Azure Cosmos DB.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Cosmos.DisableMetadataWrite
+  tags:
+    release: GA
+    ruleSet: 2021_09
+spec:
+  type:
+  - Microsoft.DocumentDb/databaseAccounts
+  condition:
+    field: 'Properties.disableKeyBasedMetadataWriteAccess'
+    equals: true

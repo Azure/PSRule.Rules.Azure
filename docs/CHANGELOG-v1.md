@@ -12,6 +12,9 @@ What's changed since pre-release v1.8.0-B2109020:
 - New rules:
   - Application Gateways:
     - Check App Gateways should use availability zones when available. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#928](https://github.com/Azure/PSRule.Rules.Azure/issues/928)
+  - Cosmos DB:
+    - Check DB account names meet naming requirements. [#954](https://github.com/Azure/PSRule.Rules.Azure/issues/954)
+    - Check DB accounts use Azure AD identities for resource management operations. [#953](https://github.com/Azure/PSRule.Rules.Azure/issues/953)
 - Bug fixes:
   - Fixed plan instance count is not applicable to Elastic Premium plans. [#946](https://github.com/Azure/PSRule.Rules.Azure/issues/946)
   - Fixed minimum App Service Plan fails Elastic Premium plans. [#945](https://github.com/Azure/PSRule.Rules.Azure/issues/945)
