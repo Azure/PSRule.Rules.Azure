@@ -1456,7 +1456,7 @@
         "Type": "Microsoft.Network/loadBalancers",
         "ResourceType": "Microsoft.Network/loadBalancers",
         "Sku": {
-            "Name": "Basic",
+            "Name": "Standard",
             "Tier": "Regional",
             "Size": null,
             "Family": null,
@@ -1496,7 +1496,10 @@
                             }
                         ],
                         "privateIPAddressVersion": "IPv4"
-                    }
+                    },
+                    "zones": [
+                        "3"
+                    ]
                 }
             ],
             "backendAddressPools": [
@@ -1627,7 +1630,7 @@
         "Type": "Microsoft.Network/loadBalancers",
         "ResourceType": "Microsoft.Network/loadBalancers",
         "Sku": {
-            "Name": "Basic",
+            "Name": "Standard",
             "Tier": "Regional",
             "Size": null,
             "Family": null,
@@ -1667,7 +1670,12 @@
                             }
                         ],
                         "privateIPAddressVersion": "IPv4"
-                    }
+                    },
+                    "zones": [
+                        "1",
+                        "2",
+                        "3"
+                    ]
                 }
             ],
             "backendAddressPools": [
@@ -1796,7 +1804,181 @@
         "Type": "Microsoft.Network/loadBalancers",
         "ResourceType": "Microsoft.Network/loadBalancers",
         "Sku": {
-            "Name": "Basic",
+            "Name": "Standard",
+            "Tier": "Regional",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": null
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C",
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "lb-C",
+        "Name": "lb-C",
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "resourceGuid": "00000000-0000-0000-0000-000000000000",
+            "frontendIPConfigurations": [
+                {
+                    "name": "frontend-A",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/frontendIPConfigurations/frontend-A",
+                    "type": "Microsoft.Network/loadBalancers/frontendIPConfigurations",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "privateIPAllocationMethod": "Dynamic",
+                        "publicIPAddress": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/lb-C-ip-A"
+                        },
+                        "loadBalancingRules": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/loadBalancingRules/rule-TCP-80"
+                            },
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/loadBalancingRules/rule-TCP-443"
+                            }
+                        ],
+                        "privateIPAddressVersion": "IPv4"
+                    },
+                    "zones": [
+                        "2",
+                        "3",
+                        "1"
+                    ]
+                }
+            ],
+            "backendAddressPools": [
+                {
+                    "name": "lb-B",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/backendAddressPools/lb-B",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "backendIPConfigurations": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/scaleset-A/virtualMachines/2/networkInterfaces/scaleset-A/ipConfigurations/ipconfig1"
+                            },
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/scaleset-A/virtualMachines/0/networkInterfaces/scaleset-A/ipConfigurations/ipconfig1"
+                            },
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/scaleset-A/virtualMachines/1/networkInterfaces/scaleset-A/ipConfigurations/ipconfig1"
+                            }
+                        ],
+                        "loadBalancingRules": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/loadBalancingRules/rule-TCP-80"
+                            },
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/loadBalancingRules/rule-TCP-443"
+                            }
+                        ]
+                    },
+                    "type": "Microsoft.Network/loadBalancers/backendAddressPools"
+                }
+            ],
+            "loadBalancingRules": [
+                {
+                    "name": "rule-TCP-80",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/loadBalancingRules/rule-TCP-80",
+                    "type": "Microsoft.Network/loadBalancers/loadBalancingRules",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "frontendIPConfiguration": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/frontendIPConfigurations/frontend-A"
+                        },
+                        "frontendPort": 80,
+                        "backendPort": 80,
+                        "enableFloatingIP": true,
+                        "idleTimeoutInMinutes": 4,
+                        "protocol": "Tcp",
+                        "enableDestinationServiceEndpoint": false,
+                        "enableTcpReset": false,
+                        "allowBackendPortConflict": false,
+                        "loadDistribution": "Default",
+                        "backendAddressPool": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/backendAddressPools/lb-B"
+                        },
+                        "probe": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/probes/probe-TCP-80"
+                        }
+                    }
+                },
+                {
+                    "name": "rule-TCP-443",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/loadBalancingRules/rule-TCP-443",
+                    "type": "Microsoft.Network/loadBalancers/loadBalancingRules",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "frontendIPConfiguration": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/frontendIPConfigurations/frontend-A"
+                        },
+                        "frontendPort": 443,
+                        "backendPort": 443,
+                        "enableFloatingIP": true,
+                        "idleTimeoutInMinutes": 4,
+                        "protocol": "Tcp",
+                        "enableDestinationServiceEndpoint": false,
+                        "enableTcpReset": false,
+                        "allowBackendPortConflict": false,
+                        "loadDistribution": "Default",
+                        "backendAddressPool": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/backendAddressPools/lb-B"
+                        },
+                        "probe": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/probes/probe-TCP-443"
+                        }
+                    }
+                }
+            ],
+            "probes": [
+                {
+                    "name": "probe-TCP-80",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/probes/probe-TCP-80",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "protocol": "Tcp",
+                        "port": 80,
+                        "intervalInSeconds": 5,
+                        "numberOfProbes": 2,
+                        "loadBalancingRules": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/loadBalancingRules/rule-TCP-80"
+                            }
+                        ]
+                    },
+                    "type": "Microsoft.Network/loadBalancers/probes"
+                },
+                {
+                    "name": "probe-TCP-443",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/probes/probe-TCP-443",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "protocol": "Tcp",
+                        "port": 443,
+                        "intervalInSeconds": 5,
+                        "numberOfProbes": 2,
+                        "loadBalancingRules": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C/loadBalancingRules/rule-TCP-443"
+                            }
+                        ]
+                    },
+                    "type": "Microsoft.Network/loadBalancers/probes"
+                }
+            ],
+            "inboundNatRules": [],
+            "inboundNatPools": []
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/loadBalancers",
+        "ResourceType": "Microsoft.Network/loadBalancers",
+        "Sku": {
+            "Name": "Standard",
             "Tier": "Regional",
             "Size": null,
             "Family": null,

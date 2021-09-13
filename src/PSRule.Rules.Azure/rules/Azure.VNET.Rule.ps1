@@ -227,6 +227,22 @@ Rule 'Azure.LB.Name' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = '
     Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
 }
 
+# Synopsis: Load balancers deployed with Standard SKU should be zone-redundant for high availability.
+Rule 'Azure.LB.AvailabilityZone' -Type 'Microsoft.Network/loadBalancers' -If { IsStandardLoadBalancer } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    foreach ($ipConfig in $TargetObject.Properties.frontendIPConfigurations) {
+        $zonesNotSet = $Assert.NullOrEmpty($ipConfig, 'zones').Result;
+
+        $zoneRedundant = -not ($ipConfig.zones -and (Compare-Object -ReferenceObject @('1','2','3') -DifferenceObject $ipConfig.zones));
+
+        $Assert.Create(
+            ($zonesNotSet -or $zoneRedundant), 
+            $LocalizedData.LBAvailabilityZone, 
+            $TargetObject.name, 
+            $ipConfig.name
+        );
+    }
+}
+
 #endregion Load Balancer
 
 #region Azure Firewall
@@ -316,6 +332,15 @@ function global:IsERGateway {
     param ()
     process {
         return $Assert.HasFieldValue($TargetObject, 'Properties.gatewayType', 'ExpressRoute').Result;
+    }
+}
+
+function global:IsStandardLoadBalancer {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        return $Assert.HasFieldValue($TargetObject, 'sku.name', 'Standard').Result;
     }
 }
 
