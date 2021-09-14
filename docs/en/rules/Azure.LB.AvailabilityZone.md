@@ -14,7 +14,10 @@ Load balancers deployed with Standard SKU should be zone-redundant for high avai
 
 ## DESCRIPTION
 
-Load balancers using availability zones improve reliability and ensure availability during failure scenarios affecting a data center within a region. A single zone redundant frontend IP address will survive zone failure. The frontend IP may be used to reach all (non-impacted) backend pool members no matter the zone. One or more availability zones can fail and the data path survives as long as one zone in the region remains healthy.
+Load balancers using availability zones improve reliability and ensure availability during failure scenarios affecting a data center within a region.
+A single zone redundant frontend IP address will survive zone failure.
+The frontend IP may be used to reach all (non-impacted) backend pool members no matter the zone.
+One or more availability zones can fail and the data path survives as long as one zone in the region remains healthy.
 
 ## RECOMMENDATION
 
@@ -30,7 +33,7 @@ This rule fails when `"zones"` is constrained to a single(zonal) zone, and passe
 
 ### Configure with Azure template
 
-to configure zones for a internal load balancer
+To configure zone-redundancy for a load balancer.
 
 - Set `sku.name` to `Standard`.
 - Set `properties.frontendIPConfigurations[*].zones` to `["1", "2", "3"]`.
@@ -74,6 +77,43 @@ For example:
         "name": "[parameters('sku')]",
         "tier": "[parameters('tier')]"
     }
+}
+```
+
+### Configure with Bicep
+
+To configure zone-redundancy for a load balancer.
+
+- Set `sku.name` to `Standard`.
+- Set `properties.frontendIPConfigurations[*].zones` to `['1', '2', '3']`.
+
+For example:
+
+```bicep
+resource lb_001 'Microsoft.Network/loadBalancers@2021-02-01' = {
+  name: lbName
+  location: location
+  sku: {
+    name: 'Standard'
+  }
+  properties: {
+    frontendIPConfigurations: [
+      {
+        name: 'frontendIPConfig'
+        properties: {
+          privateIPAllocationMethod: 'Dynamic'
+          subnet: {
+            id: vnet.properties.subnets[1].id
+          }
+        }
+        zones: [
+          '1'
+          '2'
+          '3'
+        ]
+      }
+    ]
+  }
 }
 ```
 
