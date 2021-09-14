@@ -91,7 +91,7 @@ Rule 'Azure.AppGw.AvailabilityZone' -Type 'Microsoft.Network/applicationGateways
     }
 
     $Assert.HasFieldValue($TargetObject, 'zones').
-        Reason($LocalizedData.AppGWAvailabilityZone, $TargetObject.name, $location, ($availabilityZones -join ', '));
+        Reason($LocalizedData.AppGWAvailabilityZone, $TargetObject.name, $TargetObject.Location, ($availabilityZones -join ', '));
 
 } -Configure @{ AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
