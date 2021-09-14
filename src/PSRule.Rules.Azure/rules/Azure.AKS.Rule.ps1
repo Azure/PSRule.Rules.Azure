@@ -200,7 +200,7 @@ Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClust
         # Availability zones only available on virtual machine scale sets
         if ($Assert.HasFieldValue($agentPool, 'type', 'VirtualMachineScaleSets').Result) {
             $Assert.HasFieldValue($agentPool, 'availabilityZones').
-                Reason($LocalizedData.AKSAvailabilityZone, $agentPool.name, $location, $joinedZoneString);
+                Reason($LocalizedData.AKSAvailabilityZone, $agentPool.name, $TargetObject.Location, $joinedZoneString);
         }
         else {
             $Assert.Pass();
