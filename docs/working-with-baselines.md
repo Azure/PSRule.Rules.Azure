@@ -33,9 +33,11 @@ Considerations for adopting a quarterly baseline include:
   To use rules for preview Azure features, you can use the `Azure.Preview` baseline.
   However, the `Azure.Preview` is not released quarterly it is updated as new rules are added.
   Alternatively, you can create a custom baseline.
-- Currently, quarterly baselines do not include custom/ standalone rules.
-  If you use a quarterly baseline, it is not possibly to run custom rules in the same run.
-  To workaround this, run PSRule analysis twice, once for rules within PSRule for Azure, the other for custom rules.
+
+!!! Important
+    When using a quarterly baseline, by default PSRule will ignore custom/ standalone rules.
+    To include custom rules, set the `Rule.IncludeLocal` option to `true`.
+    This is described further in [including custom rules](#including-custom-rules).
 
 ### Limitations
 
@@ -76,7 +78,7 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
       uses: Microsoft/ps-rule@main
       with:
         modules: 'PSRule.Rules.Azure'
-        baseline: 'Azure.GA_2021_06'
+        baseline: 'Azure.GA_2021_09'
     ```
 
 === "Azure Pipelines"
@@ -90,7 +92,7 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
       inputs:
         inputType: repository
         modules: 'PSRule.Rules.Azure'
-        baseline: 'Azure.GA_2021_06'
+        baseline: 'Azure.GA_2021_09'
     ```
 
   [1]: en/baselines/Azure.All.md
@@ -100,5 +102,21 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
 To create your own baselines see the PSRule help topic [about_PSRule_Baseline][2].
 
   [2]: https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Baseline.html
+
+## Including custom rules
+
+:octicons-milestone-24: v1.8.0
+
+The quarterly baselines shipped with PSRule for Azure target a subset of rules for GA Azure features.
+When you specify a baseline, custom rules you create and store in `.ps-rule/` will be ignored by default.
+
+To change this behavior, set the `Rule.IncludeLocal` option to `true`.
+This option can be set in `ps-rule.yaml`.
+
+```yaml
+# YAML: Enable custom rules that don't exist in the baseline
+rule:
+  includeLocal: true
+```
 
 *[GA]: generally available
