@@ -4037,6 +4037,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../en/baselines/Azure.GA_2021_09/" class="md-nav__link">
+        Azure.GA_2021_09
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../en/baselines/Azure.Preview/" class="md-nav__link">
         Azure.Preview
       </a>
@@ -4469,11 +4481,29 @@
 See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to this issue.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<p>What's changed since pre-release v1.8.0-B2109046:</p>
+<ul>
+<li>New features:<ul>
+<li>Added <code>Azure.GA_2021_09</code> baseline. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/961">#961</a><ul>
+<li>Includes rules released before or during September 2021 for Azure GA features.</li>
+<li>Marked baseline <code>Azure.GA_2021_06</code> as obsolete.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>New rules:<ul>
+<li>Load Balancer:<ul>
+<li>Check Load Balancers are configured with zone-redundancy. Thanks <a href="https://github.com/ArmaanMcleod">@ArmaanMcleod</a>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/927">#927</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="v180-b2109046pre-release">v1.8.0-B2109046 (pre-release)<a class="headerlink" href="#v180-b2109046pre-release" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.8.0-B2109020:</p>
 <ul>
 <li>New rules:<ul>
-<li>Application Gateways:<ul>
+<li>Application Gateway:<ul>
 <li>Check App Gateways should use availability zones when available. Thanks <a href="https://github.com/ArmaanMcleod">@ArmaanMcleod</a>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/928">#928</a></li>
 </ul>
 </li>
