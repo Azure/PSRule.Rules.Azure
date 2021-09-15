@@ -298,6 +298,7 @@ The following baselines are included within `PSRule.Rules.Azure`.
 - [Azure.GA_2020_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2020_12/) - Baseline for GA rules released December 2020 or prior.
 - [Azure.GA_2021_03](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_03/) - Baseline for GA rules released March 2021 or prior.
 - [Azure.GA_2021_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_06/) - Baseline for GA rules released June 2021 or prior.
+- [Azure.GA_2021_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_09/) - Baseline for GA rules released September 2021 or prior.
 
 ## Language reference
 
