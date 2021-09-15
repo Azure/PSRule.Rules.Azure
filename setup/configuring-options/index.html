@@ -3775,6 +3775,8 @@ Here are some examples:</p>
   <span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">rule</span><span class="p">:</span>
+  <span class="c1"># Enable custom rules that don&#39;t exist in the baseline</span>
+  <span class="nt">includeLocal</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
   <span class="nt">exclude</span><span class="p">:</span>
   <span class="c1"># Ignore the following rules for all resources</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Azure.VM.UseHybridUseBenefit</span>

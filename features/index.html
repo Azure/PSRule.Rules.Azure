@@ -3973,7 +3973,7 @@ PSRule for Azure includes a suite <a href="https://docs.microsoft.com/azure/arch
 <li>Reliability</li>
 <li>Security</li>
 </ul>
-<p>Rules automatically detect and analyzes Azure resources from <abbr title="Infrastructure as Code">IaC</abbr> artifacts,
+<p>Rules automatically detect and analyze Azure resources from <abbr title="Infrastructure as Code">IaC</abbr> artifacts,
 such as Azure Resource Manager (<abbr title="Azure Resource Manager">ARM</abbr>) templates.</p>
 <p>PSRule for Azure supports two methods for analyzing Azure resources:</p>
 <ul>
@@ -3997,8 +3997,10 @@ such as Azure Resource Manager (<abbr title="Azure Resource Manager">ARM</abbr>)
 </ul>
 <h2 id="readytogo">Ready to go<a class="headerlink" href="#readytogo" title="Permanent link">#</a></h2>
 <p>PSRule for Azure includes over 200 rules for validating resources against configuration recommendations.
-Each rule includes additional information to help remediate issues.</p>
-<p>Use the built-in rules to start enforcing release processes quickly.
+Each rule performs Azure Well-Architected Framework aligned tests against templates and Azure resources.
+In addition to basic unit tests, PSRule also include documentation to help remediate issues.
+Just like application code, PSRule for Azure allows you quickly to light up unit testing for Azure templates.</p>
+<p>Use the built-in rules to start enforcing testing quickly.
 Then layer on your own rules as your organization's requirements mature.
 Custom rules can be implemented quickly and work side-by-side with built-in rules.</p>
 <p>As new built-in rules are added and improved, download the latest version to start using them.</p>
@@ -4012,7 +4014,7 @@ Custom rules can be implemented quickly and work side-by-side with built-in rule
 <h2 id="devops">DevOps<a class="headerlink" href="#devops" title="Permanent link">#</a></h2>
 <p>Azure resources can be validated throughout their lifecycle to support a DevOps culture.
 From as early as authoring an <abbr title="Azure Resource Manager">ARM</abbr> template, resources can be validated offline before deployment.</p>
-<p>Pre-flight validation can be integrated into a continuous integration (<abbr title="Continuous Integration">CI</abbr>) pipeline to:</p>
+<p>Pre-flight validation can be integrated into a continuous integration (<abbr title="Continuous Integration">CI</abbr>) pipeline as unit tests to:</p>
 <ul>
 <li><strong>Shift-left</strong> &mdash; Identify configuration issues and provide fast feedback in <abbr title="Pull Requests">PRs</abbr>.</li>
 <li><strong>Quality gates</strong> &mdash; Implement quality gates between environments such as development, test, and production.</li>
