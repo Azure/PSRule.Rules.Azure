@@ -15,7 +15,7 @@ Leverage over 200 pre-built rules across five (5) WAF pillars:
 - Reliability
 - Security
 
-Rules automatically detect and analyzes Azure resources from IaC artifacts,
+Rules automatically detect and analyze Azure resources from IaC artifacts,
 such as Azure Resource Manager (ARM) templates.
 
 PSRule for Azure supports two methods for analyzing Azure resources:
@@ -38,9 +38,11 @@ PSRule for Azure supports two methods for analyzing Azure resources:
 ## Ready to go
 
 PSRule for Azure includes over 200 rules for validating resources against configuration recommendations.
-Each rule includes additional information to help remediate issues.
+Each rule performs Azure Well-Architected Framework aligned tests against templates and Azure resources.
+In addition to basic unit tests, PSRule also include documentation to help remediate issues.
+Just like application code, PSRule for Azure allows you quickly to light up unit testing for Azure templates.
 
-Use the built-in rules to start enforcing release processes quickly.
+Use the built-in rules to start enforcing testing quickly.
 Then layer on your own rules as your organization's requirements mature.
 Custom rules can be implemented quickly and work side-by-side with built-in rules.
 
@@ -58,7 +60,7 @@ As new built-in rules are added and improved, download the latest version to sta
 Azure resources can be validated throughout their lifecycle to support a DevOps culture.
 From as early as authoring an ARM template, resources can be validated offline before deployment.
 
-Pre-flight validation can be integrated into a continuous integration (CI) pipeline to:
+Pre-flight validation can be integrated into a continuous integration (CI) pipeline as unit tests to:
 
 - **Shift-left** &mdash; Identify configuration issues and provide fast feedback in PRs.
 - **Quality gates** &mdash; Implement quality gates between environments such as development, test, and production.
