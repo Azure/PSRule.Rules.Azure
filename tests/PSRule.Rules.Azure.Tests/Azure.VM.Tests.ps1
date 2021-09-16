@@ -45,6 +45,9 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'vm-B';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The VM disk 'vm-B_disk2_0000000000000000000000000000000' is unmanaged.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -215,7 +218,11 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'disk-B', 'disk-C';
-            $ruleResult.Reason | Should -BeLike 'The resource is not associated.';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The resource is not associated.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The resource is not associated.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

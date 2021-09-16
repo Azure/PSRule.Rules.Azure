@@ -103,6 +103,19 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -HaveCount 6
+            $ruleResult[0].Reason | Should -Be @(
+                "The parameter 'addressPrefix' does not have a description set.",
+                "The parameter 'subnets' does not have a description set.",
+                "The parameter 'aciSubnet' does not have a description set.",
+                "The parameter 'clusterSubnet' does not have a description set.",
+                "The parameter 'clusterObjectId' does not have a description set.",
+                "The parameter 'delegate' does not have a description set."
+            )
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The parameter 'diagnosticStorageAccountName' does not have a description set.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -159,8 +172,22 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeLike "*Resources.Empty.Template.json";
-            $ruleResult.Reason | Should -BeLike "The parameter '*' was not used within the template.";
-            $ruleResult.Reason.Length | Should -Be 11;
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -HaveCount 11;
+            $ruleResult[0].Reason | Should -Be @(
+                "The parameter 'customDomainName' was not used within the template.",
+                "The parameter 'backendAddress' was not used within the template.",
+                "The parameter 'diagnosticStorageAccountName' was not used within the template.",
+                "The parameter 'location' was not used within the template.",
+                "The parameter 'notStringParam' was not used within the template.",
+                "The parameter 'notBoolParam' was not used within the template.",
+                "The parameter 'intParam' was not used within the template.",
+                "The parameter 'arrayParam' was not used within the template.",
+                "The parameter 'arrayParamFn' was not used within the template.",
+                "The parameter 'notArrayParam' was not used within the template.",
+                "The parameter 'objectParam' was not used within the template."
+            )
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -211,8 +238,15 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 2;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.Empty.Template.json', 'Resources.Copy.Template.2.json';
-            $ruleResult[0].Reason | Should -BeLike "The variable '*' was not used within the template.";
-            $ruleResult[0].Reason.Length | Should -Be 2;
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -HaveCount 2;
+            $ruleResult[0].Reason | Should -Be @(
+                "The variable 'otherVariable' was not used within the template.",
+                "The variable 'otherVariable2' was not used within the template."
+            )
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The variable 'accounts' was not used within the template.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -236,6 +270,9 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 1;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.Empty.Template.json';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The default value for the parameter 'location' is 'eastus'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -336,6 +373,9 @@ Describe 'Azure.Template' -Tag 'Template' {
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.TTK.Template.1.json';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The expression 'resourceGroup().location' was found in the template.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -359,11 +399,15 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 2;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.TTK.Template.1.json', 'Resources.TTK.Template.2.json';
-            $ruleResult[0].Reason.Length | Should -Be 1;
-            $ruleResult[0].Reason[0] | Should -BeLike "The field 'type' is set to '*'.";
-            $ruleResult[1].Reason.Length | Should -Be 2;
-            $ruleResult[1].Reason[0] | Should -BeLike "The minValue for 'valueInt' is not int.";
-            $ruleResult[1].Reason[1] | Should -BeLike "The maxValue for 'valueInt' is not int.";
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -HaveCount 1;
+            $ruleResult[0].Reason[0] | Should -BeExactly "The field 'type' is set to 'array'.";
+            $ruleResult[1].Reason | Should -HaveCount 2;
+            $ruleResult[1].Reason | Should -Be @(
+                "The minValue for 'valueInt' is not int.",
+                "The maxValue for 'valueInt' is not int."
+            )
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -413,10 +457,14 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 1;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.Empty.Template.json';
-            $ruleResult[0].Reason.Length | Should -Be 3;
-            $ruleResult[0].Reason[0] | Should -BeLike "The defaultValue for 'notStringParam' is not string.";
-            $ruleResult[0].Reason[1] | Should -BeLike "The defaultValue for 'notBoolParam' is not bool.";
-            $ruleResult[0].Reason[2] | Should -BeLike "The defaultValue for 'notArrayParam' is not array.";
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -HaveCount 3;
+            $ruleResult[0].Reason | Should -Be @(
+                "The defaultValue for 'notStringParam' is not string.",
+                "The defaultValue for 'notBoolParam' is not bool.",
+                "The defaultValue for 'notArrayParam' is not array."
+            )
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -497,7 +545,9 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 1;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.ParameterFile.Fail5.json';
-            $ruleResult[0].Reason | Should -Be 'The parameter ''vnetName'' must have a value or Key Vault reference set.';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly 'The parameter ''vnetName'' must have a value or Key Vault reference set.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

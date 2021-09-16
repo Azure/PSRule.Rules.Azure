@@ -47,6 +47,11 @@ Describe 'Azure.TrafficManager' -Tag 'TrafficManager' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'profile-B', 'profile-C';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The number of enabled endpoints is 1.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The number of enabled endpoints is 1.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;

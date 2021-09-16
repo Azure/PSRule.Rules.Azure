@@ -109,6 +109,37 @@ Describe 'Azure.Resource' -Tag 'Resource' {
             $ruleResult.Length | Should -Be 5;
             $ruleResult.TargetName | Should -BeIn 'route-subnet1', 'route-subnet2', 'nsg-subnet1', 'nsg-subnet2', 'nsg-extra';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -HaveCount 2;
+            $ruleResult[0].Reason | Should -Be @(
+                'The resource is not tagged.', 
+                "The field 'tags' does not exist."
+            );
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -HaveCount 2;
+            $ruleResult[1].Reason | Should -Be @(
+                'The resource is not tagged.', 
+                "The field 'tags' does not exist."
+            );
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -HaveCount 2;
+            $ruleResult[2].Reason | Should -Be @(
+                'The resource is not tagged.', 
+                "The field 'tags' does not exist."
+            );
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -HaveCount 2;
+            $ruleResult[3].Reason | Should -Be @(
+                'The resource is not tagged.', 
+                "The field 'tags' does not exist."
+            );
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -HaveCount 2;
+            $ruleResult[4].Reason | Should -Be @(
+                'The resource is not tagged.', 
+                "The field 'tags' does not exist."
+            );
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;

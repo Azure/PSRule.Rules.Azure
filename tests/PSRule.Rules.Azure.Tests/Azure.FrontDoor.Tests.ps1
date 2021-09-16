@@ -77,6 +77,9 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'frontdoor-B';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -124,7 +127,9 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'frontdoor-B';
-            $ruleResult[0].Reason | Should -BeLike "The health probe '*' used the default path '/'.";
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The health probe 'frontdoor-B-backend-health' used the default path '/'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

@@ -77,6 +77,9 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'keyvault-B';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "One or more access policies grant all or purge permission.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -92,6 +95,11 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'keyvault-B', 'keyvault-C';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -Be @("Diagnostic settings are not configured.", "The field 'Properties.logs[0].enabled' is set to 'False'.");
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

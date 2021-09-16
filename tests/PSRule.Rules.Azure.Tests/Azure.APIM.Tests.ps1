@@ -78,6 +78,12 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C';
             $ruleResult[0].Reason | Should -BeLike "The API '*' does not have a description set.";
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The API 'api-B' does not have a description set.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The API 'api-B' does not have a description set.";
+
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -93,7 +99,13 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'apim-A';
-            $ruleResult[0].Reason | Should -BeLike "The * URL for '*' is not a HTTPS endpoint.";
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -HaveCount 2;
+            $ruleResult[0].Reason | Should -Be @(
+                "The backend URL for 'endpoint-B' is not a HTTPS endpoint.", 
+                "The service URL for 'api-B' is not a HTTPS endpoint."
+            );
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -111,6 +123,11 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-C';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The named value 'property-B' is not secret.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The named value 'property-B' is not secret.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -127,6 +144,11 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The product 'product-B' does not require a subscription to use.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The product 'product-B' does not require a subscription to use.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -142,6 +164,9 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'apim-A';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The product 'starter' does not require approval.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -191,7 +216,22 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-C';
-            $ruleResult[0].Reason | Should -BeLike "The product '*' does not have legal terms set.";
+            
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -HaveCount 4;
+            $ruleResult[0].Reason | Should -Be @(
+                "The product 'product-A' does not have legal terms set.", 
+                "The product 'product-B' does not have legal terms set.", 
+                "The product 'starter' does not have legal terms set.", 
+                "The product 'unlimited' does not have legal terms set."
+            );
+
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -HaveCount 2;
+            $ruleResult[1].Reason | Should -Be @(
+                "The product 'product-A' does not have legal terms set.",
+                "The product 'product-B' does not have legal terms set."
+            );
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -224,6 +264,9 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'apim-C';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The certificate for host name 'api.contoso.com' expires or expired on '2020/01/01'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
