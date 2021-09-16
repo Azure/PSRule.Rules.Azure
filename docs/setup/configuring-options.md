@@ -29,6 +29,8 @@ configuration:
   AZURE_PARAMETER_FILE_EXPANSION: true
 
 rule:
+  # Enable custom rules that don't exist in the baseline
+  includeLocal: true
   exclude:
   # Ignore the following rules for all resources
   - Azure.VM.UseHybridUseBenefit

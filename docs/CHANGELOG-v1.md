@@ -7,12 +7,24 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.8.0-B2109060 (pre-release)
+
+What's changed since pre-release v1.8.0-B2109046:
+
+- New features:
+  - Added `Azure.GA_2021_09` baseline. [#961](https://github.com/Azure/PSRule.Rules.Azure/issues/961)
+    - Includes rules released before or during September 2021 for Azure GA features.
+    - Marked baseline `Azure.GA_2021_06` as obsolete.
+- New rules:
+  - Load Balancer:
+    - Check Load Balancers are configured with zone-redundancy. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#927](https://github.com/Azure/PSRule.Rules.Azure/issues/927)
+
 ## v1.8.0-B2109046 (pre-release)
 
 What's changed since pre-release v1.8.0-B2109020:
 
 - New rules:
-  - Application Gateways:
+  - Application Gateway:
     - Check App Gateways should use availability zones when available. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#928](https://github.com/Azure/PSRule.Rules.Azure/issues/928)
   - Cosmos DB:
     - Check DB account names meet naming requirements. [#954](https://github.com/Azure/PSRule.Rules.Azure/issues/954)
