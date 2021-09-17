@@ -217,7 +217,7 @@ Rule 'Azure.AKS.ContainerInsights' -Type 'Microsoft.ContainerService/managedClus
 Rule 'Azure.AKS.AuditLogs' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $diagnosticLogs = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.ContainerService/managedClusters/providers/diagnosticSettings');
 
-    $Assert.Greater($diagnosticLogs, '.', 0);
+    $Assert.Greater($diagnosticLogs, '.', 0).Reason($LocalizedData.DiagnosticSettingsNotConfigured, $TargetObject.name);
 
     foreach ($setting in $diagnosticLogs) {
         $kubeAuditEnabledLog = @($setting.Properties.logs | Where-Object {
@@ -245,7 +245,7 @@ Rule 'Azure.AKS.PlatformLogs' -Type 'Microsoft.ContainerService/managedClusters'
 
     $diagnosticLogs = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.ContainerService/managedClusters/providers/diagnosticSettings');
 
-    $Assert.Greater($diagnosticLogs, '.', 0);
+    $Assert.Greater($diagnosticLogs, '.', 0).Reason($LocalizedData.DiagnosticSettingsNotConfigured, $TargetObject.name);
 
     $availableLogCategories = @{
         Logs = @(

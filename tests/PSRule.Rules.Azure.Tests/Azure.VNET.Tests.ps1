@@ -44,7 +44,28 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D';
-            $ruleResult.Reason | Should -BeLike 'The subnet (*) has no NSG associated.';
+            
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -HaveCount 3;
+            $ruleResult[0].Reason | Should -Be @(
+                "The subnet (subnet-B) has no NSG associated.", 
+                "The subnet (subnet-C) has no NSG associated.", 
+                "The subnet (subnet-D) has no NSG associated."
+            );
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -HaveCount 3;
+            $ruleResult[1].Reason | Should -Be @(
+                "The subnet (subnet-B) has no NSG associated.", 
+                "The subnet (subnet-C) has no NSG associated.", 
+                "The subnet (subnet-D) has no NSG associated."
+            );
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -HaveCount 3;
+            $ruleResult[2].Reason | Should -Be @(
+                "The subnet (subnet-B) has no NSG associated.", 
+                "The subnet (subnet-C) has no NSG associated.", 
+                "The subnet (subnet-D) has no NSG associated."
+            );
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -329,6 +350,13 @@ Describe 'Azure.LB' -Tag 'Network', 'LB' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -Be 'lb-B', 'lb-C', 'lb-D';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -Be @('The health probe (probe-TCP-80) is using TCP.', 'The health probe (probe-TCP-443) is using TCP.');
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -Be @('The health probe (probe-TCP-80) is using TCP.', 'The health probe (probe-TCP-443) is using TCP.');
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -Be @('The health probe (probe-TCP-80) is using TCP.', 'The health probe (probe-TCP-443) is using TCP.');
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -344,6 +372,9 @@ Describe 'Azure.LB' -Tag 'Network', 'LB' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'lb-A';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The load balancer (lb-A) frontend IP configuration (frontend-A) should be zone-redundant.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -496,6 +527,9 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'nsg-C';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The first inbound rule denies traffic from all sources.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -512,6 +546,9 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'nsg-C';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "A rule to limit lateral traversal was not found.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -527,7 +564,15 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'nsg-B', 'nsg-C', 'nsg-D', 'nsg-E';
-            $ruleResult.Reason | Should -BeLike 'The resource is not associated.';
+            
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The resource is not associated.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The resource is not associated.";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "The resource is not associated.";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "The resource is not associated.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

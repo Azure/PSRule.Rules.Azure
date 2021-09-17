@@ -144,6 +144,9 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'registry-A';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The results for a valid assessment was not found.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -159,6 +162,9 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'registry-B';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "An assessment is reporting one or more issues.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

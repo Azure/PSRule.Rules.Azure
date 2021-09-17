@@ -109,6 +109,11 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "Minimum TLS version is set to 1.1.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "Minimum TLS version is set to 1.1.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;

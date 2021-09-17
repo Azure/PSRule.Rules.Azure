@@ -63,6 +63,9 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'cluster-B';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The Kubernetes version is v1.13.8.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -78,6 +81,9 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'cluster-B';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The agent pool (agentpool) is running v1.11.4.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -126,6 +132,11 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The agent pool (agentpool) is not using scale sets.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The agent pool (agentpool) is not using scale sets.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -239,6 +250,19 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 6;
             $ruleResult.TargetName | Should -BeIn 'cluster-C', 'cluster-D', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The agent pool (agentpool) is not using autoscaling.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The agent pool (agentpool) is not using autoscaling.";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "The agent pool (agentpool) is not using autoscaling.";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "The agent pool (agentpool) is not using autoscaling.";
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "The agent pool (agentpool) is not using autoscaling.";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "The agent pool (agentpool) is not using autoscaling.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -303,6 +327,13 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 3;
             $ruleResult.TargetName | Should -BeIn 'cluster-B', 'cluster-D', 'system';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The subnet (subnet-A) should be using a minimum size of /23.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The subnet (subnet-A) should be using a minimum size of /23.";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "The subnet (subnet-A) should be using a minimum size of /23.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -318,6 +349,13 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult | Should -HaveCount 3;
             $ruleResult.TargetName | Should -BeIn 'cluster-C', 'cluster-G', 'cluster-H';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiaeast) should use following availability zones [3, 2, 1].";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (Australia East) should use following availability zones [3, 2, 1].";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiaeast) should use following availability zones [3, 2, 1].";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -351,6 +389,21 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 7;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "The diagnostic setting (metrics) logs should enable at least one of (kube-audit, kube-audit-admin) and guard.";
+            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[6].Reason | Should -BeExactly "The diagnostic setting (metrics) logs should enable at least one of (kube-audit, kube-audit-admin) and guard.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -367,6 +420,22 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 8;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "The diagnostic setting (metrics) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler, AllMetrics).";
+            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[6].Reason | Should -BeExactly "The diagnostic setting (metrics) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler, AllMetrics).";
+            $ruleResult[7].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[7].Reason | Should -BeExactly "The diagnostic setting (metrics) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler, AllMetrics).";
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -702,6 +771,13 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 3;
             $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterB', 'clusterE';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The agent pool (agentpool1) deployed to region (eastus) should use following availability zones [3, 2, 1].";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The agent pool (agentpool1) deployed to region (eastus) should use following availability zones [3, 2, 1].";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "The agent pool (clusterE/agentpool2) deployed to region (eastus) should use following availability zones [3, 2, 1].";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -734,6 +810,11 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 2;
             $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterB';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The diagnostic setting (clusterA/Microsoft.Insights/service) logs should enable at least one of (kube-audit, kube-audit-admin) and guard.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The diagnostic setting (clusterE/Microsoft.Insights/service) logs should enable at least one of (kube-audit, kube-audit-admin) and guard.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -749,6 +830,13 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult | Should -HaveCount 3;
             $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterB', 'clusterD';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The diagnostic setting (clusterA/Microsoft.Insights/service) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler, AllMetrics).";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The diagnostic setting (clusterE/Microsoft.Insights/service) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler, AllMetrics).";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "The diagnostic setting (clusterD/Microsoft.Insights/service) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler, AllMetrics).";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -792,6 +880,19 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 6;
             $ruleResult.TargetName | Should -BeIn 'cluster-C', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiaeast) should use following availability zones [3, 2, 1].";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The agent pool (system) deployed to region (Australia Southeast) should use following availability zones [1, 2, 3].";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (Australia East) should use following availability zones [3, 2, 1].";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiaeast) should use following availability zones [3, 2, 1].";
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiasoutheast) should use following availability zones [1, 2, 3].";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (norwayeast) should use following availability zones [1, 2, 3].";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -808,6 +909,19 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult | Should -HaveCount 6;
             $ruleResult.TargetName | Should -BeIn 'cluster-C', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiaeast) should use following availability zones [3, 2, 1].";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The agent pool (system) deployed to region (Australia Southeast) should use following availability zones [1, 2, 3].";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (Australia East) should use following availability zones [3, 2, 1].";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiaeast) should use following availability zones [3, 2, 1].";
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiasoutheast) should use following availability zones [1, 2, 3].";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (norwayeast) should use following availability zones [1, 2, 3].";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -835,6 +949,21 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 7;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "The diagnostic setting (metrics) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler).";
+            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[6].Reason | Should -BeExactly "The diagnostic setting (metrics) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler).";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -861,6 +990,21 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 7;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-I';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "The diagnostic setting (metrics) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, AllMetrics).";
+            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[6].Reason | Should -BeExactly "The diagnostic setting (metrics) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, AllMetrics).";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -886,6 +1030,19 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 6;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "The diagnostic setting (metrics) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager).";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -902,6 +1059,22 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult | Should -HaveCount 7;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-I';
+
+            
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "The diagnostic setting (metrics) logs should enable (cluster-autoscaler, AllMetrics).";
+            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[6].Reason | Should -BeExactly "The diagnostic setting (metrics) logs should enable (cluster-autoscaler, AllMetrics).";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

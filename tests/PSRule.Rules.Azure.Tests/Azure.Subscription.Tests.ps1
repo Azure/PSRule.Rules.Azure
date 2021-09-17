@@ -45,6 +45,11 @@ Describe 'Azure.RBAC' -Tag 'Subscription', 'RBAC' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'subscription-B', 'subscription-C';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The number of assignments is 6.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The number of assignments is 6.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -60,6 +65,9 @@ Describe 'Azure.RBAC' -Tag 'Subscription', 'RBAC' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'subscription-B';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The number of assignments is 6.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -77,6 +85,9 @@ Describe 'Azure.RBAC' -Tag 'Subscription', 'RBAC' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'subscription-C';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The number of assignments is 4.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -92,6 +103,9 @@ Describe 'Azure.RBAC' -Tag 'Subscription', 'RBAC' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'subscription-C';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The number of assignments is 1.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -109,6 +123,9 @@ Describe 'Azure.RBAC' -Tag 'Subscription', 'RBAC' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'test-rg-B';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The number of assignments is 1.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -124,6 +141,11 @@ Describe 'Azure.RBAC' -Tag 'Subscription', 'RBAC' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'subscription-B', 'subscription-C';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The subscription is not managed.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The subscription is not managed.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -154,6 +176,20 @@ Describe 'Azure.SecurityCenter' -Tag 'Subscription', 'SecurityCenter' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'subscription-B', 'subscription-A';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -HaveCount 2;
+            $ruleResult[0].Reason | Should -Be @(
+                "Security Center is not configured.", 
+                "The value of 'Properties.Phone' is null or empty."
+            );
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -HaveCount 3;
+            $ruleResult[1].Reason | Should -Be @(
+                "Security Center is not configured.", 
+                "The value of 'Properties.Email' is null or empty.", 
+                "The value of 'Properties.Phone' is null or empty."
+            );
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

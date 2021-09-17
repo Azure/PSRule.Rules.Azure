@@ -82,8 +82,11 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C';
-            $ruleResult[0].Reason[0] | Should -Be 'The field ''properties.deleteRetentionPolicy.enabled'' is set to ''False''.';
-            $ruleResult[1].Reason[0] | Should -Be 'A sub-resource of type ''Microsoft.Storage/storageAccounts/blobServices'' has not been specified.';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly 'The field ''properties.deleteRetentionPolicy.enabled'' is set to ''False''.';
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Storage/storageAccounts/blobServices'' has not been specified.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -129,6 +132,9 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'storage-B';
 
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The container 'container1' is configured with access type 'Blob'.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -150,6 +156,15 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-D', 'storage-F';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "Minimum TLS version is set to TLS1_0.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "Minimum TLS version is set to {0}.";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "Minimum TLS version is set to {0}.";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "Minimum TLS version is set to {0}.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
