@@ -243,6 +243,11 @@ Rule 'Azure.LB.AvailabilityZone' -Type 'Microsoft.Network/loadBalancers' -If { I
     }
 }
 
+# Synopsis: Load balancers should be deployed with Standard SKU for production workloads.
+Rule 'Azure.LB.StandardSKU' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    IsStandardLoadBalancer;
+}
+
 #endregion Load Balancer
 
 #region Azure Firewall
