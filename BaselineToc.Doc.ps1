@@ -15,7 +15,7 @@ Document 'baseline' {
     Title $baselineName;
 
     if ($obsolete) {
-        'Obsolete' | BlockQuote
+        '<!-- OBSOLETE -->'
     }
 
     $rules = $PSDocs.TargetObject.Rules | Sort-Object -Property RuleName;
