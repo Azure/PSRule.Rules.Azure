@@ -345,7 +345,7 @@ function global:IsStandardLoadBalancer {
     [OutputType([System.Boolean])]
     param ()
     process {
-        return $Assert.HasFieldValue($TargetObject, 'sku.name', 'Standard').Result;
+        return $Assert.HasFieldValue($TargetObject, 'sku.name', 'Standard');
     }
 }
 
