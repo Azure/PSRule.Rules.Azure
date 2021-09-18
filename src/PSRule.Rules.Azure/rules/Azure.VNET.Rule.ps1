@@ -243,6 +243,11 @@ Rule 'Azure.LB.AvailabilityZone' -Type 'Microsoft.Network/loadBalancers' -If { I
     }
 }
 
+# Synopsis: Load balancers should be deployed with Standard SKU for production workloads.
+Rule 'Azure.LB.StandardSKU' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    IsStandardLoadBalancer;
+}
+
 #endregion Load Balancer
 
 #region Azure Firewall
@@ -337,10 +342,10 @@ function global:IsERGateway {
 
 function global:IsStandardLoadBalancer {
     [CmdletBinding()]
-    [OutputType([System.Boolean])]
+    [OutputType([PSRule.Runtime.AssertResult])]
     param ()
     process {
-        return $Assert.HasFieldValue($TargetObject, 'sku.name', 'Standard').Result;
+        return $Assert.HasFieldValue($TargetObject, 'sku.name', 'Standard');
     }
 }
 

@@ -13,6 +13,9 @@ What's changed since pre-release v1.8.0-B2109060:
   - Increased test coverage of rule reasons. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#960](https://github.com/Azure/PSRule.Rules.Azure/issues/960)
 - Bug fixes:
   - Fixed Bicep CLI fails with unexpected end of content. [#889](https://github.com/Azure/PSRule.Rules.Azure/issues/889)
+- New rules:
+  - Load Balancer:
+    - Check Load balancers are using Standard SKU. [#957](https://github.com/Azure/PSRule.Rules.Azure/issues/957)
 
 ## v1.8.0-B2109060 (pre-release)
 
