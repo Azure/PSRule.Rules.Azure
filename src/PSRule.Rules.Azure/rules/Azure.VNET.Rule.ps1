@@ -228,7 +228,7 @@ Rule 'Azure.LB.Name' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = '
 }
 
 # Synopsis: Load balancers deployed with Standard SKU should be zone-redundant for high availability.
-Rule 'Azure.LB.AvailabilityZone' -Type 'Microsoft.Network/loadBalancers' -If { (IsStandardLoadBalancer).Result } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.LB.AvailabilityZone' -Type 'Microsoft.Network/loadBalancers' -If { IsStandardLoadBalancer } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     foreach ($ipConfig in $TargetObject.Properties.frontendIPConfigurations) {
         $zonesNotSet = $Assert.NullOrEmpty($ipConfig, 'zones').Result;
 
