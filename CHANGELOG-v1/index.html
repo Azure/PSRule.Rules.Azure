@@ -4511,19 +4511,21 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.8.0-B2109060:</p>
 <ul>
+<li>New rules:<ul>
+<li>Load Balancer:<ul>
+<li>Check Load balancers are using Standard SKU. Thanks <a href="https://github.com/ArmaanMcleod">@ArmaanMcleod</a>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/957">#957</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Engineering:<ul>
 <li>Increased test coverage of rule reasons. Thanks <a href="https://github.com/ArmaanMcleod">@ArmaanMcleod</a>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/960">#960</a></li>
 </ul>
 </li>
 <li>Bug fixes:<ul>
 <li>Fixed Bicep CLI fails with unexpected end of content. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/889">#889</a></li>
-</ul>
-</li>
-<li>New rules:<ul>
-<li>Load Balancer:<ul>
-<li>Check Load balancers are using Standard SKU. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/957">#957</a></li>
-</ul>
-</li>
+<li>Fixed incomplete reason message for <code>Azure.Storage.MinTLS</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/971">#971</a></li>
+<li>Fixed false positive of <code>Azure.Storage.UseReplication</code> with large file storage. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/965">#965</a></li>
 </ul>
 </li>
 </ul>

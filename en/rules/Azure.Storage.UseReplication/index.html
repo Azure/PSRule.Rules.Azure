@@ -2878,6 +2878,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#notes" class="md-nav__link">
     Notes
   </a>
@@ -3782,6 +3809,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#notes" class="md-nav__link">
     Notes
   </a>
@@ -3849,18 +3903,72 @@ Geo-zone-redundant storage is only available in supported regions.</p>
 </ul>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
 <p>Consider using GRS for storage accounts that contain data.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To deploy Storage Accounts that pass this rule:</p>
+<ul>
+<li>Set the <code>sku.name</code> property to a geo-replicated SKU.
+  Such as <code>Standard_GRS</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;comments&quot;</span><span class="p">:</span> <span class="s2">&quot;Storage Account&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.Storage/storageAccounts&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-06-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;st0000001&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;sku&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard_GRS&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;tier&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;StorageV2&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;supportsHttpsTrafficOnly&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;minimumTlsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;TLS1_2&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;allowBlobPublicAccess&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;accessTier&quot;</span><span class="p">:</span> <span class="s2">&quot;Hot&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To deploy Storage Accounts that pass this rule:</p>
+<ul>
+<li>Set the <code>sku.name</code> property to a geo-replicated SKU.
+  Such as <code>Standard_GRS</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource st0000001 &#39;Microsoft.Storage/storageAccounts@2021-04-01&#39; = {
+  name: &#39;st0000001&#39;
+  location: location
+  sku: {
+    name: &#39;Standard_GRS&#39;
+  }
+  kind: &#39;StorageV2&#39;
+  properties: {
+    supportsHttpsTrafficOnly: true
+    accessTier: &#39;Hot&#39;
+    allowBlobPublicAccess: false
+    minimumTlsVersion: &#39;TLS1_2&#39;
+    networkAcls: {
+      defaultAction: &#39;Deny&#39;
+    }
+  }
+}
+</code></pre></div>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
-<p>Storage Accounts with the following tags are automatically excluded from this rule:</p>
+<p>This rule is not applicable for premium storage accounts.
+Storage Accounts with the following tags are automatically excluded from this rule:</p>
 <ul>
 <li><code>ms-resource-usage = 'azure-cloud-shell'</code> - Storage Accounts used for Cloud Shell are not intended to store data.
-This tag is applied by Azure to Cloud Shell Storage Accounts by default.</li>
+  This tag is applied by Azure to Cloud Shell Storage Accounts by default.</li>
 <li><code>resource-usage = 'azure-functions'</code> - Storage Accounts used for Azure Functions.
-This tag can be optionally configured.</li>
+  This tag can be optionally configured.</li>
 <li><code>resource-usage = 'azure-monitor'</code> - Storage Accounts used by Azure Monitor are intended for diagnostic logs.
-This tag can be optionally configured.</li>
+  This tag can be optionally configured.</li>
 </ul>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/resiliency/design-requirements">Multiple and paired regions</a></li>
 <li><a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure Storage redundancy</a></li>
 <li><a href="https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts">Azure template reference</a></li>
 </ul>
