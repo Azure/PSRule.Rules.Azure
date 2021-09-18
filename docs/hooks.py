@@ -56,15 +56,17 @@ def replace_maml(markdown: str, page: mkdocs.structure.nav.Page, config: mkdocs.
     if page.meta.get("rule", "None") != "None":
         markdown = markdown.replace("<!-- TAGS -->", " · :octicons-file-code-24: " + page.meta['rule'] + "\r<!-- TAGS -->")
 
-    return markdown
+    return markdown.replace("<!-- TAGS -->", "")
 
 def add_tags(markdown: str) -> str:
     lines = markdown.splitlines()
     converted = []
+    foundHeader = True
     for l in lines:
         converted.append(l)
-        if l.startswith("# "):
+        if l.startswith("# ") and not foundHeader:
             converted.append("<!-- TAGS -->")
+            foundHeader = True
 
     return "\r".join(converted)
 
