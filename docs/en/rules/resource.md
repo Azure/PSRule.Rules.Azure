@@ -1,3 +1,7 @@
+---
+generated: true
+---
+
 # Rules by resource type
 
 PSRule for Azure includes the following rules organized by resource type.

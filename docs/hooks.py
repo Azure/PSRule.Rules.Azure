@@ -38,8 +38,10 @@ def replace_maml(markdown: str, page: mkdocs.structure.nav.Page, config: mkdocs.
         page.meta['template'] = 'reference.html'
         page.meta['generated'] = 'true'
 
-    if page.canonical_url.__contains__("/rules/") and page.meta.get("pillar", "None") != "None":
+    if page.canonical_url.__contains__("/rules/"):
         page.meta['template'] = 'reference.html'
+
+    if page.canonical_url.__contains__("/rules/") and page.meta.get("pillar", "None") != "None":
         page.meta['rule'] = page.canonical_url.split("/")[-2]
 
     if markdown.__contains__("<!-- OBSOLETE -->"):
@@ -61,7 +63,7 @@ def replace_maml(markdown: str, page: mkdocs.structure.nav.Page, config: mkdocs.
 def add_tags(markdown: str) -> str:
     lines = markdown.splitlines()
     converted = []
-    foundHeader = True
+    foundHeader = False
     for l in lines:
         converted.append(l)
         if l.startswith("# ") and not foundHeader:

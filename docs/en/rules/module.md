@@ -1,3 +1,7 @@
+---
+generated: true
+---
+
 # Rules by pillar
 
 PSRule for Azure includes the following rules across five pillars of the Microsoft Azure Well-Architected Framework.
