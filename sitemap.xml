@@ -671,6 +671,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.LB.StandardSKU/</loc>
+         <lastmod>2021-09-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.LogicApp.LimitHTTPTrigger/</loc>
          <lastmod>2021-09-18</lastmod>
          <changefreq>daily</changefreq>
