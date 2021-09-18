@@ -3881,6 +3881,8 @@
                 
                 
                 <h1 id="configuringruledefaults">Configuring rule defaults<a class="headerlink" href="#configuringruledefaults" title="Permanent link">#</a></h1>
+<!-- TAGS -->
+
 <p>PSRule for Azure include several rules that can be configured.
 Setting these values overrides the default configuration with organization specific values.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h2>
@@ -3898,12 +3900,14 @@ Rules that check the Kubernetes version fail when the version is older than the 
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AKSMinimumVersion configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.20.5</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AKSMinimumVersion configuration option to 1.19.7</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.19.7</span>
 </code></pre></div>
 <h3 id="aksminimummaxpods">AKS minimum max pods<a class="headerlink" href="#aksminimummaxpods" title="Permanent link">#</a></h3>
@@ -3920,12 +3924,14 @@ When an AKS cluster node pool is created, a <code>maxPods</code> option is used 
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AKSNodeMinimumMaxPods configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">50</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AKSNodeMinimumMaxPods configuration option to 30</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
 <h3 id="allowedresourceregions">Allowed resource regions<a class="headerlink" href="#allowedresourceregions" title="Permanent link">#</a></h3>
@@ -3939,12 +3945,14 @@ The rule <code>Azure.Resource.AllowedRegions</code> is skipped when no allowed l
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AllowedRegions configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">Azure_AllowedRegions</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AllowedRegions configuration option to Australia East, Australia South East</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">Azure_AllowedRegions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&#39;australiaeast&#39;</span>
   <span class="p p-Indicator">-</span> <span class="s">&#39;australiasoutheast&#39;</span>
@@ -3958,12 +3966,14 @@ Rules that check certificate lifetime fail when the days remaining before expiry
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_MinimumCertificateLifetime configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_MinimumCertificateLifetime configuration option to 90</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">90</span>
 </code></pre></div>
 <h3 id="azurepolicymaximumwavier">Azure Policy maximum wavier<a class="headerlink" href="#azurepolicymaximumwavier" title="Permanent link">#</a></h3>
@@ -3974,12 +3984,14 @@ Rules that check certificate lifetime fail when the days remaining before expiry
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">366</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option to 90</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">90</span>
 </code></pre></div>
 <h3 id="azureakscniminimumclustersubnetsize">Azure AKS CNI minimum cluster subnet size<a class="headerlink" href="#azureakscniminimumclustersubnetsize" title="Permanent link">#</a></h3>
@@ -3990,12 +4002,14 @@ Rules that check certificate lifetime fail when the days remaining before expiry
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">23</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option to 26</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">26</span>
 </code></pre></div>
 <h3 id="additionalregionavailabilityzonelist">Additional region availability zone list<a class="headerlink" href="#additionalregionavailabilityzonelist" title="Permanent link">#</a></h3>
@@ -4016,12 +4030,14 @@ Rules that check certificate lifetime fail when the days remaining before expiry
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option to Australia Southeast and Norway East, with zones 1, 2, 3.</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">location</span><span class="p">:</span> <span class="s">&#39;Australia</span><span class="nv"> </span><span class="s">Southeast&#39;</span>
     <span class="nt">zones</span><span class="p">:</span>
@@ -4054,12 +4070,14 @@ The above shows examples specific to <code>Azure.AKS.AvailabilityZone</code>, bu
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;cluster-autoscaler&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;kube-apiserver&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;kube-controller-manager&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;kube-scheduler&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to cluster-autoscaler and AllMetrics categories only. </span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;cluster-autoscaler&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span>
 </code></pre></div>
                 

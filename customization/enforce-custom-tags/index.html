@@ -3829,6 +3829,8 @@
                 
                 
                 <h1 id="enforcingcustomtags">Enforcing custom tags<a class="headerlink" href="#enforcingcustomtags" title="Permanent link">#</a></h1>
+<!-- TAGS -->
+
 <p>With PSRule, you can layer on custom rules with to implement organization specific requirements.
 These custom rules work side-by-side with PSRule for Azure.</p>
 <p>Use of resource and resource group tags is recommended in the WAF, however implementations may vary.
@@ -3842,6 +3844,7 @@ The scenario walks you through the process so that you can apply the same concep
 <p>Within the <code>.ps-rule</code> sub-directory create a new file called <code>Org.Azure.Rule.ps1</code>.
 Use the following snippet to populate the rule file:</p>
 <div class="highlight"><pre><span></span><code><span class="c"># Synopsis: Resource Groups must have all mandatory tags defined.</span>
+<span class="p">&lt;!--</span> <span class="n">TAGS</span> <span class="p">--&gt;</span>
 <span class="n">Rule</span> <span class="s1">&#39;Org.Azure.RG.Tags&#39;</span> <span class="n">-Type</span> <span class="s1">&#39;Microsoft.Resources/resourceGroups&#39;</span> <span class="p">{</span>
     <span class="nv">$hasTags</span> <span class="p">=</span> <span class="nv">$Assert</span><span class="p">.</span><span class="n">HasField</span><span class="p">(</span><span class="nv">$TargetObject</span><span class="p">,</span> <span class="s1">&#39;Tags&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(!</span><span class="nv">$hasTags</span><span class="p">.</span><span class="n">Result</span><span class="p">)</span> <span class="p">{</span>
@@ -3869,6 +3872,7 @@ Use the following snippet to populate the rule file:</p>
 <h2 id="addingmandatorytags">Adding mandatory tags<a class="headerlink" href="#addingmandatorytags" title="Permanent link">#</a></h2>
 <p>To require specific tags to be configured on Resource Groups append this code to the rule.</p>
 <div class="highlight"><pre><span></span><code><span class="c"># Require tags be case-sensitive</span>
+<span class="p">&lt;!--</span> <span class="n">TAGS</span> <span class="p">--&gt;</span>
 <span class="nv">$Assert</span><span class="p">.</span><span class="n">HasField</span><span class="p">(</span><span class="nv">$TargetObject</span><span class="p">.</span><span class="n">tags</span><span class="p">,</span> <span class="s1">&#39;costCentre&#39;</span><span class="p">,</span> <span class="cm">&lt;# case-sensitive #&gt;</span> <span class="nv">$True</span><span class="p">)</span>
 <span class="nv">$Assert</span><span class="p">.</span><span class="n">HasField</span><span class="p">(</span><span class="nv">$TargetObject</span><span class="p">.</span><span class="n">tags</span><span class="p">,</span> <span class="s1">&#39;env&#39;</span><span class="p">,</span> <span class="nv">$True</span><span class="p">)</span>
 </code></pre></div>
@@ -3902,6 +3906,7 @@ Use the following snippet to populate the rule file:</p>
 <span class="nv">$Assert</span><span class="p">.</span><span class="n">Match</span><span class="p">(</span><span class="nv">$TargetObject</span><span class="p">,</span> <span class="s1">&#39;tags.costCentre&#39;</span><span class="p">,</span> <span class="s1">&#39;^([A-Z][1-9][0-9]{4,9})$&#39;</span><span class="p">,</span> <span class="nv">$True</span><span class="p">)</span>
 
 <span class="c"># Require specific values for environment tag</span>
+<span class="p">&lt;!--</span> <span class="n">TAGS</span> <span class="p">--&gt;</span>
 <span class="nv">$Assert</span><span class="p">.</span><span class="k">In</span><span class="p">(</span><span class="nv">$TargetObject</span><span class="p">,</span> <span class="s1">&#39;tags.env&#39;</span><span class="p">,</span> <span class="p">@(</span>
     <span class="s1">&#39;dev&#39;</span><span class="p">,</span>
     <span class="s1">&#39;prod&#39;</span><span class="p">,</span>
@@ -3951,7 +3956,8 @@ Standalone rules will get their type binding configuration from <code>ps-rule.ya
 <li>Add the following configuration snippet.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># Configure binding options</span>
-<span class="nt">binding</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">binding</span><span class="p p-Indicator">:</span>
   <span class="nt">targetType</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&#39;resourceType&#39;</span>
   <span class="p p-Indicator">-</span> <span class="s">&#39;type&#39;</span>

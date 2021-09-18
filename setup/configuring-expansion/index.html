@@ -3853,6 +3853,8 @@
                 
                 
                 <h1 id="configuringexpansion">Configuring expansion<a class="headerlink" href="#configuringexpansion" title="Permanent link">#</a></h1>
+<!-- TAGS -->
+
 <p>PSRule for Azure can automatically resolve Azure resource context at runtime from infrastructure code.
 This feature can be enabled by using the following configuration options.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h2>
@@ -3872,12 +3874,14 @@ By default, parameter files will not be automatically expanded.</p>
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_PARAMETER_FILE_EXPANSION configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_PARAMETER_FILE_EXPANSION configuration option to enable expansion</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <h3 id="bicepsourceexpansion">Bicep source expansion<a class="headerlink" href="#bicepsourceexpansion" title="Permanent link">#</a></h3>
@@ -3891,12 +3895,14 @@ By default, Bicep files will not be automatically expanded.</p>
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_BICEP_FILE_EXPANSION configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_BICEP_FILE_EXPANSION configuration option to enable expansion</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <h3 id="requiretemplatemetadatalink">Require template metadata link<a class="headerlink" href="#requiretemplatemetadatalink" title="Permanent link">#</a></h3>
@@ -3912,12 +3918,14 @@ Additionally, when enabled this rule can still be excluded or suppressed like al
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_PARAMETER_FILE_METADATA_LINK configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_PARAMETER_FILE_METADATA_LINK</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_PARAMETER_FILE_METADATA_LINK configuration option to enable expansion</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_PARAMETER_FILE_METADATA_LINK</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <h3 id="deploymentresourcegroup">Deployment resource group<a class="headerlink" href="#deploymentresourcegroup" title="Permanent link">#</a></h3>
@@ -3938,7 +3946,8 @@ Any properties that are not provided with use the defaults as specified below.</
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_RESOURCE_GROUP configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_RESOURCE_GROUP</span><span class="p">:</span>
     <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;ps-rule-test-rg&#39;</span>
     <span class="nt">location</span><span class="p">:</span> <span class="s">&#39;eastus&#39;</span>
@@ -3948,7 +3957,8 @@ Any properties that are not provided with use the defaults as specified below.</
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Override the location of the resource group object.</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_RESOURCE_GROUP</span><span class="p">:</span>
     <span class="nt">location</span><span class="p">:</span> <span class="s">&#39;australiasoutheast&#39;</span>
 </code></pre></div>
@@ -3969,7 +3979,8 @@ Any properties that are not provided with use the defaults as specified below.</
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_SUBSCRIPTION configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
   <span class="nt">AZURE_SUBSCRIPTION</span><span class="p">:</span>
     <span class="nt">subscriptionId</span><span class="p">:</span> <span class="s">&#39;ffffffff-ffff-ffff-ffff-ffffffffffff&#39;</span>
     <span class="nt">tenantId</span><span class="p">:</span> <span class="s">&#39;ffffffff-ffff-ffff-ffff-ffffffffffff&#39;</span>
@@ -3978,7 +3989,8 @@ Any properties that are not provided with use the defaults as specified below.</
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Override the display name of the subscription object</span>
-  <span class="nt">AZURE_SUBSCRIPTION</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+  <span class="l l-Scalar l-Scalar-Plain">AZURE_SUBSCRIPTION</span><span class="p p-Indicator">:</span>
     <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;My</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">subscription&#39;</span>
 </code></pre></div>
 <h2 id="excludingfiles">Excluding files<a class="headerlink" href="#excludingfiles" title="Permanent link">#</a></h2>
@@ -3992,12 +4004,14 @@ To exclude a file, configure the <code>input.pathIgnore</code> option by providi
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default input.pathIgnore option</span>
-<span class="nt">input</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
   <span class="nt">pathIgnore</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Exclude a file from being processed by PSRule and expansion</span>
-<span class="nt">input</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
   <span class="nt">pathIgnore</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&#39;out/&#39;</span>
   <span class="p p-Indicator">-</span> <span class="s">&#39;modules/**/*.bicep&#39;</span>

@@ -3801,6 +3801,8 @@
                 
                 
                 <h1 id="enforcingcodeownership">Enforcing code ownership<a class="headerlink" href="#enforcingcodeownership" title="Permanent link">#</a></h1>
+<!-- TAGS -->
+
 <p>With PSRule, you can layer on custom rules with to implement organization specific requirements.
 These custom rules work side-by-side with PSRule for Azure.</p>
 <p>Pull requests are a key concept within common Git workflows used with DevOps to enforce peer review.
@@ -3821,6 +3823,7 @@ The scenario walks you through the process so that you can apply the same concep
 <p>Within the <code>.ps-rule</code> sub-directory create a new file called <code>Org.Azure.Rule.ps1</code>.
 Use the following snippet to populate the rule file:</p>
 <div class="highlight"><pre><span></span><code><span class="c"># Synopsis: Policy exemptions must be stored under designated paths for review.</span>
+<span class="p">&lt;!--</span> <span class="n">TAGS</span> <span class="p">--&gt;</span>
 <span class="n">Rule</span> <span class="s1">&#39;Org.Azure.Policy.Path&#39;</span> <span class="n">-Type</span> <span class="s1">&#39;Microsoft.Authorization/policyExemptions&#39;</span> <span class="p">{</span>
     <span class="nv">$Assert</span><span class="p">.</span><span class="n">WithinPath</span><span class="p">(</span><span class="nv">$PSRule</span><span class="p">.</span><span class="n">Source</span><span class="p">[</span><span class="s1">&#39;Parameter&#39;</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="p">@(</span>
         <span class="s1">&#39;deployments/policy/&#39;</span>
@@ -3852,7 +3855,8 @@ Standalone rules will get their type binding configuration from <code>ps-rule.ya
 <li>Add the following configuration snippet.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># Configure binding options</span>
-<span class="nt">binding</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">binding</span><span class="p p-Indicator">:</span>
   <span class="nt">targetType</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&#39;resourceType&#39;</span>
   <span class="p p-Indicator">-</span> <span class="s">&#39;type&#39;</span>
