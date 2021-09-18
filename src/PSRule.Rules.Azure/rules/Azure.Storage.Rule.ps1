@@ -5,7 +5,7 @@
 # Validation rules for Azure Storage Accounts
 #
 
-# Synopsis: Storage accounts not using GRS may be at risk
+# Synopsis: Storage Accounts not using geo-replicated storage (GRS) may be at risk.
 Rule 'Azure.Storage.UseReplication' -Type 'Microsoft.Storage/storageAccounts' -If { (ShouldStorageReplicate) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.In($TargetObject, 'sku.name', @(
         'Standard_GRS'
@@ -55,11 +55,9 @@ Rule 'Azure.Storage.BlobAccessType' -Type 'Microsoft.Storage/storageAccounts', '
     }
 }
 
-# Synopsis: Use at least TLS 1.2.
+# Synopsis: Storage Accounts should reject TLS versions older than 1.2.
 Rule 'Azure.Storage.MinTLS' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
-    $Assert.
-        HasFieldValue($TargetObject, 'Properties.minimumTlsVersion', 'TLS1_2').
-        Reason($LocalizedData.MinTLSVersion, $TargetObject.Properties.minimumTlsVersion);
+    $Assert.HasFieldValue($TargetObject, 'Properties.minimumTlsVersion', 'TLS1_2');
 }
 
 # Synopsis: Use Storage naming requirements
@@ -81,7 +79,11 @@ function global:ShouldStorageReplicate {
     [OutputType([System.Boolean])]
     param ()
     process {
-        return (IsStandardStorage) -and !(IsCloudShell) -and !(IsFunctionStorage) -and !(IsMonitorStorage);
+        return (IsStandardStorage) -and
+            !(IsCloudShell) -and
+            !(IsFunctionStorage) -and
+            !(IsMonitorStorage) -and
+            !(IsLargeFileSharesEnabled)
     }
 }
 
@@ -155,6 +157,18 @@ function global:IsHnsStorage {
             return $False;
         }
         return $Assert.HasFieldValue($TargetObject, 'Properties.isHnsEnabled', $True).Result;
+    }
+}
+
+function global:IsLargeFileSharesEnabled {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($PSRule.TargetType -ne 'Microsoft.Storage/storageAccounts') {
+            return $False;
+        }
+        return $Assert.HasFieldValue($TargetObject, 'Properties.largeFileSharesState', 'Enabled').Result;
     }
 }
 

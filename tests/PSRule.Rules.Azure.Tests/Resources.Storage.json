@@ -470,5 +470,117 @@
         "ChangedTime": null,
         "ETag": null,
         "resources": []
+    },
+    {
+        "sku": {
+            "name": "Standard_LRS",
+            "tier": "Standard"
+        },
+        "kind": "StorageV2",
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-002/providers/Microsoft.Storage/storageAccounts/storage-G",
+        "name": "storage-G",
+        "type": "Microsoft.Storage/storageAccounts",
+        "location": "region",
+        "properties": {
+            "defaultToOAuthAuthentication": false,
+            "keyCreationTime": {
+                "key1": "2021-09-16T06:51:27.5840355Z",
+                "key2": "2021-09-16T06:51:27.5840355Z"
+            },
+            "allowCrossTenantReplication": true,
+            "privateEndpointConnections": [],
+            "minimumTlsVersion": "TLS1_2",
+            "allowBlobPublicAccess": true,
+            "allowSharedKeyAccess": true,
+            "largeFileSharesState": "Enabled",
+            "networkAcls": {
+                "bypass": "AzureServices",
+                "virtualNetworkRules": [],
+                "ipRules": [],
+                "defaultAction": "Allow"
+            },
+            "supportsHttpsTrafficOnly": true,
+            "encryption": {
+                "services": {
+                    "file": {
+                        "keyType": "Account",
+                        "enabled": true,
+                        "lastEnabledTime": "2021-09-16T06:51:27.5997091Z"
+                    },
+                    "blob": {
+                        "keyType": "Account",
+                        "enabled": true,
+                        "lastEnabledTime": "2021-09-16T06:51:27.5997091Z"
+                    }
+                },
+                "keySource": "Microsoft.Storage"
+            },
+            "accessTier": "Hot",
+            "provisioningState": "Succeeded",
+            "creationTime": "2021-09-16T06:51:27.4590405Z",
+            "primaryEndpoints": {
+                "dfs": "https://storage-G.dfs.core.windows.net/",
+                "web": "https://storage-G.z13.web.core.windows.net/",
+                "blob": "https://storage-G.blob.core.windows.net/",
+                "queue": "https://storage-G.queue.core.windows.net/",
+                "table": "https://storage-G.table.core.windows.net/",
+                "file": "https://storage-G.file.core.windows.net/"
+            },
+            "primaryLocation": "region",
+            "statusOfPrimary": "available"
+        },
+        "resources": [
+            {
+                "type": "Microsoft.Storage/storageAccounts/blobServices",
+                "apiVersion": "2021-04-01",
+                "name": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-002/providers/Microsoft.Storage/storageAccounts/storage-G/blobServices/default",
+                "sku": {
+                    "name": "Standard_LRS",
+                    "tier": "Standard"
+                },
+                "properties": {
+                    "changeFeed": {
+                        "enabled": true
+                    },
+                    "restorePolicy": {
+                        "enabled": true,
+                        "days": 6
+                    },
+                    "containerDeleteRetentionPolicy": {
+                        "enabled": true,
+                        "days": 7
+                    },
+                    "cors": {
+                        "corsRules": []
+                    },
+                    "deleteRetentionPolicy": {
+                        "enabled": true,
+                        "days": 7
+                    },
+                    "isVersioningEnabled": true
+                }
+            },
+            {
+                "type": "Microsoft.Storage/storageAccounts/fileServices",
+                "apiVersion": "2021-04-01",
+                "name": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-002/providers/Microsoft.Storage/storageAccounts/storage-G/fileServices/default",
+                "sku": {
+                    "name": "Standard_LRS",
+                    "tier": "Standard"
+                },
+                "properties": {
+                    "protocolSettings": {
+                        "smb": {}
+                    },
+                    "cors": {
+                        "corsRules": []
+                    },
+                    "shareDeleteRetentionPolicy": {
+                        "enabled": true,
+                        "days": 7
+                    }
+                }
+            }
+        ]
     }
 ]
