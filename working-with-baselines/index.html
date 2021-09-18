@@ -3851,8 +3851,6 @@
                 
                 
                 <h1 id="workingwithbaselines">Working with baselines<a class="headerlink" href="#workingwithbaselines" title="Permanent link">#</a></h1>
-<!-- TAGS -->
-
 <p>A baseline is a standard PSRule artifact that combines rules and configuration.
 PSRule for Azure provides several baselines that can be referenced when running PSRule.</p>
 <div class="admonition abstract">
@@ -3949,8 +3947,7 @@ When you specify a baseline, custom rules you create and store in <code>.ps-rule
 <p>To change this behavior, set the <code>Rule.IncludeLocal</code> option to <code>true</code>.
 This option can be set in <code>ps-rule.yaml</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Enable custom rules that don&#39;t exist in the baseline</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">rule</span><span class="p p-Indicator">:</span>
+<span class="nt">rule</span><span class="p">:</span>
   <span class="nt">includeLocal</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
                 
@@ -3961,7 +3958,7 @@ This option can be set in <code>ps-rule.yaml</code>.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-18
+      Last update: 2021-09-19
     
   </small>
 </div>

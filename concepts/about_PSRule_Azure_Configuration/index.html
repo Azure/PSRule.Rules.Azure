@@ -3787,8 +3787,6 @@
                 
                 
                 <h1 id="configurationoptions">Configuration options<a class="headerlink" href="#configurationoptions" title="Permanent link">#</a></h1>
-<!-- TAGS -->
-
 <p>Describes PSRule configuration options specific to PSRule for Azure.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
 <p>PSRule exposes configuration options that can be used to customize execution of <code>PSRule.Rules.Azure</code>.
@@ -3818,14 +3816,12 @@ Rules that check the Kubernetes version fail when the version is older than the 
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AKSMinimumVersion configuration option</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.20.5</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AKSMinimumVersion configuration option to 1.19.7</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.19.7</span>
 </code></pre></div>
 <h3 id="azure_aksnodeminimummaxpods">Azure_AKSNodeMinimumMaxPods<a class="headerlink" href="#azure_aksnodeminimummaxpods" title="Permanent link">#</a></h3>
@@ -3837,14 +3833,12 @@ When an AKS cluster node pool is created, a <code>maxPods</code> option is used 
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AKSNodeMinimumMaxPods configuration option</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">50</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AKSNodeMinimumMaxPods configuration option to 30</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
 <h3 id="azure_allowedregions">Azure_AllowedRegions<a class="headerlink" href="#azure_allowedregions" title="Permanent link">#</a></h3>
@@ -3858,14 +3852,12 @@ The rule <code>Azure.Resource.AllowedRegions</code> is skipped when no allowed l
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AllowedRegions configuration option</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">Azure_AllowedRegions</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AllowedRegions configuration option to Australia East, Australia South East</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">Azure_AllowedRegions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&#39;australiaeast&#39;</span>
   <span class="p p-Indicator">-</span> <span class="s">&#39;australiasoutheast&#39;</span>
@@ -3879,14 +3871,12 @@ Rules that check certificate lifetime fail when the days remaining before expiry
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_MinimumCertificateLifetime configuration option</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_MinimumCertificateLifetime configuration option to 90</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">90</span>
 </code></pre></div>
 <h3 id="azure_parameter_file_expansion">AZURE_PARAMETER_FILE_EXPANSION<a class="headerlink" href="#azure_parameter_file_expansion" title="Permanent link">#</a></h3>
@@ -3899,14 +3889,12 @@ By default, parameter files will not be automatically expanded.</p>
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_PARAMETER_FILE_EXPANSION configuration option</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_PARAMETER_FILE_EXPANSION configuration option to enable expansion</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <h3 id="azure_policy_waiver_max_expiry">AZURE_POLICY_WAIVER_MAX_EXPIRY<a class="headerlink" href="#azure_policy_waiver_max_expiry" title="Permanent link">#</a></h3>
@@ -3917,14 +3905,12 @@ By default, parameter files will not be automatically expanded.</p>
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">366</span>
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option to 90</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">90</span>
 </code></pre></div>
 <h3 id="azure_resource_group">AZURE_RESOURCE_GROUP<a class="headerlink" href="#azure_resource_group" title="Permanent link">#</a></h3>
@@ -3944,8 +3930,7 @@ Any properties that are not provided with use the defaults as specified below.</
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_RESOURCE_GROUP configuration option</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">AZURE_RESOURCE_GROUP</span><span class="p">:</span>
     <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;ps-rule-test-rg&#39;</span>
     <span class="nt">location</span><span class="p">:</span> <span class="s">&#39;eastus&#39;</span>
@@ -3955,8 +3940,7 @@ Any properties that are not provided with use the defaults as specified below.</
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Override the location of the resource group object.</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">AZURE_RESOURCE_GROUP</span><span class="p">:</span>
     <span class="nt">location</span><span class="p">:</span> <span class="s">&#39;australiasoutheast&#39;</span>
 </code></pre></div>
@@ -3976,8 +3960,7 @@ Any properties that are not provided with use the defaults as specified below.</
 </code></pre></div>
 <p>Default:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_SUBSCRIPTION configuration option</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+<span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">AZURE_SUBSCRIPTION</span><span class="p">:</span>
     <span class="nt">subscriptionId</span><span class="p">:</span> <span class="s">&#39;ffffffff-ffff-ffff-ffff-ffffffffffff&#39;</span>
     <span class="nt">tenantId</span><span class="p">:</span> <span class="s">&#39;ffffffff-ffff-ffff-ffff-ffffffffffff&#39;</span>
@@ -3986,8 +3969,7 @@ Any properties that are not provided with use the defaults as specified below.</
 </code></pre></div>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: Override the display name of the subscription object</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-  <span class="l l-Scalar l-Scalar-Plain">AZURE_SUBSCRIPTION</span><span class="p p-Indicator">:</span>
+  <span class="nt">AZURE_SUBSCRIPTION</span><span class="p">:</span>
     <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;My</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">subscription&#39;</span>
 </code></pre></div>
                 
@@ -3998,7 +3980,7 @@ Any properties that are not provided with use the defaults as specified below.</
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-18
+      Last update: 2021-09-19
     
   </small>
 </div>

@@ -3800,8 +3800,6 @@
                 
                 
                 <h1 id="validateazureresourcesfromtemplateswithazurepipelines">Validate Azure resources from templates with Azure Pipelines<a class="headerlink" href="#validateazureresourcesfromtemplateswithazurepipelines" title="Permanent link">#</a></h1>
-<!-- TAGS -->
-
 <p>Azure Resource Manager (ARM) templates are a JSON-based file structure.
 ARM templates are typically not static, they include parameters, functions and conditions.
 Depending on the parameters provided to a template, resources may differ significantly.</p>
@@ -3875,9 +3873,8 @@ PSRule uses a number of configurable task steps to install modules, export data 
 <h3 id="installingazurerules">Installing Azure rules<a class="headerlink" href="#installingazurerules" title="Permanent link">#</a></h3>
 <p>To install the module containing Azure rules use the <code>ps-rule-install</code> YAML task.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery.</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">- task</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ps-rule-install@0</span>
-  <span class="l l-Scalar l-Scalar-Plain">inputs</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ps-rule-install@0</span>
+  <span class="nt">inputs</span><span class="p">:</span>
     <span class="nt">module</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PSRule.Rules.Azure</span>   <span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery.</span>
 </code></pre></div>
 <h3 id="exportingresourcedataforanalysis">Exporting resource data for analysis<a class="headerlink" href="#exportingresourcedataforanalysis" title="Permanent link">#</a></h3>
@@ -3890,30 +3887,26 @@ Files are found recursively from the current working path.</li>
 </ul>
 <p>To generate data for analysis use a PowerShell YAML task to export resource data from linked templates.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Export resource data from parameter files within the current working directory.</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">- powershell</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath out/templates/;</span>
-  <span class="l l-Scalar l-Scalar-Plain">displayName</span><span class="p p-Indicator">:</span> <span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span>
+<span class="p p-Indicator">-</span> <span class="nt">powershell</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath out/templates/;</span>
+  <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span>
 </code></pre></div>
 <p>If parameter files are located in a specific sub-directory the path can be updated as follows.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Export resource data from parameter files in the deployments/ sub-directory.</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">- powershell</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink ./deployments/ | Export-AzRuleTemplateData -OutputPath out/templates/;</span>
-  <span class="l l-Scalar l-Scalar-Plain">displayName</span><span class="p p-Indicator">:</span> <span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span>
+<span class="p p-Indicator">-</span> <span class="nt">powershell</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink ./deployments/ | Export-AzRuleTemplateData -OutputPath out/templates/;</span>
+  <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span>
 </code></pre></div>
 <p>If parameter files do not use the file extension <code>.parameters.json</code> input path can be set.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Export resource data from parameter files ending in *.json instead of default *.parameters.json.</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">- powershell</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink -InputPath *.json | Export-AzRuleTemplateData -OutputPath out/templates/;</span>
-  <span class="l l-Scalar l-Scalar-Plain">displayName</span><span class="p p-Indicator">:</span> <span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span>
+<span class="p p-Indicator">-</span> <span class="nt">powershell</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink -InputPath *.json | Export-AzRuleTemplateData -OutputPath out/templates/;</span>
+  <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span>
 </code></pre></div>
 <p>In both cases, resource data for analysis is exported to <code>out/templates/</code>.</p>
 <h3 id="validatingexportedresources">Validating exported resources<a class="headerlink" href="#validatingexportedresources" title="Permanent link">#</a></h3>
 <p>To validate exported resources use the <code>ps-rule-assert</code> YAML task.
 The following task uses previously exported resource data for analysis.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Run analysis from JSON files using the `PSRule.Rules.Azure` module and custom rules from `.ps-rule/`.</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">- task</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@0</span>
-  <span class="l l-Scalar l-Scalar-Plain">inputs</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@0</span>
+  <span class="nt">inputs</span><span class="p">:</span>
     <span class="nt">inputType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">inputPath</span>
     <span class="nt">inputPath</span><span class="p">:</span> <span class="s">&#39;out/templates/*.json&#39;</span>        <span class="c1"># Read exported resource data from &#39;out/templates/&#39;.</span>
     <span class="nt">modules</span><span class="p">:</span> <span class="s">&#39;PSRule.Rules.Azure&#39;</span>            <span class="c1"># Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.</span>
@@ -3935,9 +3928,8 @@ PSRule supports publishing validation results in the NUnit format.
 With Azure DevOps, an NUnit report can be published using <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-test-results">Publish Test Results task</a>.</p>
 <p>An example YAML snippet is included below:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Publish NUnit report as test results</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">- task</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">PublishTestResults@2</span>
-  <span class="l l-Scalar l-Scalar-Plain">displayName</span><span class="p p-Indicator">:</span> <span class="s">&#39;Publish</span><span class="nv"> </span><span class="s">PSRule</span><span class="nv"> </span><span class="s">results&#39;</span>
+<span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PublishTestResults@2</span>
+  <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;Publish</span><span class="nv"> </span><span class="s">PSRule</span><span class="nv"> </span><span class="s">results&#39;</span>
   <span class="nt">inputs</span><span class="p">:</span>
     <span class="nt">testRunTitle</span><span class="p">:</span> <span class="s">&#39;PSRule&#39;</span>                          <span class="c1"># The title to use for the test run.</span>
     <span class="nt">testRunner</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NUnit</span>                               <span class="c1"># Import report using the NUnit format.</span>
@@ -3949,10 +3941,9 @@ With Azure DevOps, an NUnit report can be published using <a href="https://docs.
 <h3 id="azuredevopspipeline">Azure DevOps Pipeline<a class="headerlink" href="#azuredevopspipeline" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">#</span>
 <span class="c1"># PSRule with Azure Pipelines</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">#</span>
+<span class="c1">#</span>
 
-<span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
+<span class="nt">trigger</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">main</span>
 
 <span class="nt">pool</span><span class="p">:</span>
@@ -3961,18 +3952,15 @@ With Azure DevOps, an NUnit report can be published using <a href="https://docs.
 <span class="nt">steps</span><span class="p">:</span>
 
 <span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
 <span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ps-rule-install@0</span>
   <span class="nt">inputs</span><span class="p">:</span>
     <span class="nt">module</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PSRule.Rules.Azure</span>   <span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery.</span>
 
 <span class="c1"># Export resource data from parameter files within the current working directory.</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
 <span class="p p-Indicator">-</span> <span class="nt">powershell</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath out/templates/;</span>
   <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span>
 
 <span class="c1"># Run analysis from JSON files using the `PSRule.Rules.Azure` module and custom rules from `.ps-rule/`.</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
 <span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@0</span>
   <span class="nt">inputs</span><span class="p">:</span>
     <span class="nt">inputType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">inputPath</span>
@@ -3985,7 +3973,6 @@ With Azure DevOps, an NUnit report can be published using <a href="https://docs.
     <span class="nt">outputPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">reports/ps-rule-resources.xml</span>
 
 <span class="c1"># Publish NUnit report as test results</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
 <span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PublishTestResults@2</span>
   <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;Publish</span><span class="nv"> </span><span class="s">PSRule</span><span class="nv"> </span><span class="s">results&#39;</span>
   <span class="nt">inputs</span><span class="p">:</span>
@@ -4009,7 +3996,7 @@ With Azure DevOps, an NUnit report can be published using <a href="https://docs.
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-18
+      Last update: 2021-09-19
     
   </small>
 </div>

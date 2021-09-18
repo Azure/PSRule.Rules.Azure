@@ -3837,8 +3837,6 @@
                 
                 
                 <h1 id="setupbicep">Setup Bicep<a class="headerlink" href="#setupbicep" title="Permanent link">#</a></h1>
-<!-- TAGS -->
-
 <p>To expand Azure resources for analysis from Bicep source files the Bicep CLI is required.
 The Bicep CLI is already installed on hosted runners and agents used by GitHub Action and Azure Pipelines.</p>
 <div class="admonition abstract">
@@ -3872,21 +3870,17 @@ When setting <code>PSRULE_AZURE_BICEP_PATH</code> specify the full path to the B
 File names used for Bicep binaries include <code>bicep</code>, or <code>bicep.exe</code>.</p>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bash: Setting environment variable</span>
-&lt;!-- TAGS --&gt;
 <span class="nb">export</span> <span class="nv">PSRULE_AZURE_BICEP_PATH</span><span class="o">=</span><span class="s1">&#39;/usr/local/bin/bicep&#39;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c"># PowerShell: Setting environment variable</span>
-<span class="p">&lt;!--</span> <span class="n">TAGS</span> <span class="p">--&gt;</span>
 <span class="nv">$Env:PSRULE_AZURE_BICEP_PATH</span> <span class="p">=</span> <span class="s1">&#39;/usr/local/bin/bicep&#39;</span><span class="p">;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># GitHub Actions: Setting environment variable</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">env</span><span class="p p-Indicator">:</span>
+<span class="nt">env</span><span class="p">:</span>
   <span class="nt">PSRULE_AZURE_BICEP_PATH</span><span class="p">:</span> <span class="s">&#39;/usr/local/bin/bicep&#39;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Azure Pipelines: Setting environment variable</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">variables</span><span class="p p-Indicator">:</span>
+<span class="nt">variables</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PSRULE_AZURE_BICEP_PATH</span>
   <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;/usr/local/bin/bicep&#39;</span>
 </code></pre></div>
@@ -3898,21 +3892,17 @@ This is explained in <a href="https://github.com/Azure/bicep/blob/main/docs/inst
 <p>To enable this option, set the <code>PSRULE_AZURE_BICEP_USE_AZURE_CLI</code> environment variable to <code>true</code>.</p>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bash: Setting environment variable</span>
-&lt;!-- TAGS --&gt;
 <span class="nb">export</span> <span class="nv">PSRULE_AZURE_BICEP_USE_AZURE_CLI</span><span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c"># PowerShell: Setting environment variable</span>
-<span class="p">&lt;!--</span> <span class="n">TAGS</span> <span class="p">--&gt;</span>
 <span class="nv">$Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI</span> <span class="p">=</span> <span class="s1">&#39;true&#39;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># GitHub Actions: Setting environment variable</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">env</span><span class="p p-Indicator">:</span>
+<span class="nt">env</span><span class="p">:</span>
   <span class="nt">PSRULE_AZURE_BICEP_USE_AZURE_CLI</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Azure Pipelines: Setting environment variable</span>
-<span class="l l-Scalar l-Scalar-Plain">&lt;!-- TAGS --&gt;</span>
-<span class="l l-Scalar l-Scalar-Plain">variables</span><span class="p p-Indicator">:</span>
+<span class="nt">variables</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PSRULE_AZURE_BICEP_USE_AZURE_CLI</span>
   <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
@@ -3938,7 +3928,7 @@ This option can be set within the <code>ps-rule.yaml</code> file.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-18
+      Last update: 2021-09-19
     
   </small>
 </div>
