@@ -1,6 +1,6 @@
 # Azure.GA_2021_06
 
-> Obsolete
+<!-- OBSOLETE -->
 
 Include rules released June 2021 or prior for Azure GA features.
 

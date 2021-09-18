@@ -32,7 +32,41 @@ def replace_maml(markdown: str, page: mkdocs.structure.nav.Page, config: mkdocs.
     markdown = markdown.replace("## LONG DESCRIPTION", "## Description")
     markdown = re.sub("(\#\#\s+(NOTE|KEYWORDS)\s+(.|\s{1,2}(?!\#))+)", "", markdown)
 
+    markdown = add_tags(markdown)
+
+    if page.canonical_url.__contains__("/baselines/"):
+        page.meta['template'] = 'reference.html'
+        page.meta['generated'] = 'true'
+
+    if page.canonical_url.__contains__("/rules/") and page.meta.get("pillar", "None") != "None":
+        page.meta['template'] = 'reference.html'
+        page.meta['rule'] = page.canonical_url.split("/")[-2]
+
+    if markdown.__contains__("<!-- OBSOLETE -->"):
+        page.meta['obsolete'] = 'true'
+
+    markdown = markdown.replace("<!-- OBSOLETE -->", ":octicons-alert-24: Obsolete")
+
+    if page.meta.get("pillar", "None") != "None":
+        markdown = markdown.replace("<!-- TAGS -->", "[:octicons-diamond-24: " + page.meta['pillar'] + "](module.md#" + page.meta['pillar'].lower().replace(" ", "") + ")\r<!-- TAGS -->")
+
+    if page.meta.get("resource", "None") != "None":
+        markdown = markdown.replace("<!-- TAGS -->", " · [:octicons-container-24: " + page.meta['resource'] + "](resource.md#" + page.meta['resource'].lower().replace(" ", "") + ")\r<!-- TAGS -->")
+
+    if page.meta.get("rule", "None") != "None":
+        markdown = markdown.replace("<!-- TAGS -->", " · :octicons-file-code-24: " + page.meta['rule'] + "\r<!-- TAGS -->")
+
     return markdown
+
+def add_tags(markdown: str) -> str:
+    lines = markdown.splitlines()
+    converted = []
+    for l in lines:
+        converted.append(l)
+        if l.startswith("# "):
+            converted.append("<!-- TAGS -->")
+
+    return "\r".join(converted)
 
 # Dynamically build reference nav
 def build_reference_nav(nav: mkdocs.structure.nav.Navigation, config: mkdocs.config.Config, files: mkdocs.structure.files.Files) -> mkdocs.structure.nav.Navigation:

@@ -7,6 +7,13 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.8.0-B2109060:
+
+- Engineering:
+  - Increased test coverage of rule reasons. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#960](https://github.com/Azure/PSRule.Rules.Azure/issues/960)
+- Bug fixes:
+  - Fixed Bicep CLI fails with unexpected end of content. [#889](https://github.com/Azure/PSRule.Rules.Azure/issues/889)
+
 ## v1.8.0-B2109060 (pre-release)
 
 What's changed since pre-release v1.8.0-B2109046:

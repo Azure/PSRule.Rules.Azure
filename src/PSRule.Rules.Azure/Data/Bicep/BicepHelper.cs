@@ -73,15 +73,15 @@ namespace PSRule.Rules.Azure.Data.Bicep
                     UseShellExecute = false,
                     WorkingDirectory = PSRuleOption.GetWorkingPath(),
                 };
-                var p = new BicepProcess(Process.Start(versionStartInfo));
+                var bicep = new BicepProcess(Process.Start(versionStartInfo));
                 try
                 {
-                    if (p.WaitForExit(out _))
-                        _Version = TrimVersion(p.GetOutput());
+                    if (bicep.WaitForExit(out _))
+                        _Version = TrimVersion(bicep.GetOutput());
                 }
                 finally
                 {
-                    p.Process.Dispose();
+                    bicep.Dispose();
                 }
             }
 
@@ -99,40 +99,52 @@ namespace PSRule.Rules.Azure.Data.Bicep
             }
         }
 
-        internal sealed class BicepProcess
+        internal sealed class BicepProcess : IDisposable
         {
-            private StringBuilder _Output;
-            private StringBuilder _Error;
+            private readonly Process _Process;
+            private readonly StringBuilder _Output;
+            private readonly StringBuilder _Error;
+            private readonly AutoResetEvent _ErrorWait;
+            private readonly AutoResetEvent _OutputWait;
+            private readonly int _Timeout;
+            private readonly int _Retry;
+
+            private bool _Disposed;
 
             public BicepProcess(Process process, string version = null)
             {
                 _Output = new StringBuilder();
                 _Error = new StringBuilder();
+                _Timeout = 1000;
+                _Retry = 5;
 
                 Version = version;
+                _Process = process;
+                _Process.ErrorDataReceived += Bicep_ErrorDataReceived;
+                _Process.OutputDataReceived += Bicep_OutputDataReceived;
 
-                Process = process;
-                Process.ErrorDataReceived += Bicep_ErrorDataReceived;
-                Process.OutputDataReceived += Bicep_OutputDataReceived;
+                _Process.BeginErrorReadLine();
+                _Process.BeginOutputReadLine();
 
-                Process.BeginErrorReadLine();
-                Process.BeginOutputReadLine();
+                _ErrorWait = new AutoResetEvent(false);
+                _OutputWait = new AutoResetEvent(false);
             }
-
-            public Process Process { get; }
 
             public string Version { get; }
 
+            public bool HasExited => _Process.HasExited;
+
             public bool WaitForExit(out int exitCode)
             {
-                if (!Process.HasExited)
+                if (!_Process.HasExited)
                 {
                     var timeoutCount = 0;
-                    while (!Process.WaitForExit(1000) && !Process.HasExited && timeoutCount < 5)
+                    while (!_Process.WaitForExit(_Timeout) && !_Process.HasExited && timeoutCount < _Retry)
                         timeoutCount++;
                 }
-                exitCode = Process.HasExited ? Process.ExitCode : -1;
-                return Process.HasExited;
+
+                exitCode = _Process.HasExited ? _Process.ExitCode : -1;
+                return _Process.HasExited && _ErrorWait.WaitOne(_Timeout) && _OutputWait.WaitOne();
             }
 
             public string GetOutput()
@@ -147,12 +159,49 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
             private void Bicep_OutputDataReceived(object sender, DataReceivedEventArgs e)
             {
-                _Output.AppendLine(e.Data);
+                if (e.Data == null)
+                {
+                    _OutputWait.Set();
+                }
+                else
+                {
+                    _Output.AppendLine(e.Data);
+                }
             }
 
             private void Bicep_ErrorDataReceived(object sender, DataReceivedEventArgs e)
             {
-                _Error.AppendLine(e.Data);
+                if (e.Data == null)
+                {
+                    _ErrorWait.Set();
+                }
+                else
+                {
+                    _Error.AppendLine(e.Data);
+                }
+            }
+
+            private void Dispose(bool disposing)
+            {
+                if (!_Disposed)
+                {
+                    if (disposing)
+                    {
+                        _ErrorWait.Dispose();
+                        _OutputWait.Dispose();
+                        _Process.Dispose();
+                    }
+                    _Error.Clear();
+                    _Output.Clear();
+                    _Disposed = true;
+                }
+            }
+
+            public void Dispose()
+            {
+                // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+                Dispose(disposing: true);
+                GC.SuppressFinalize(this);
             }
         }
 
@@ -206,7 +255,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
             {
                 if (!bicep.WaitForExit(out int exitCode) || exitCode != 0)
                 {
-                    var error = bicep.Process.HasExited ? bicep.GetError() : PSRuleResources.BicepCompileTimeout;
+                    var error = bicep.HasExited ? bicep.GetError() : PSRuleResources.BicepCompileTimeout;
                     throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepCompileError, bicep.Version, path, error), null, path, bicep.Version);
                 }
 
@@ -222,7 +271,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
             }
             finally
             {
-                bicep.Process.Dispose();
+                bicep.Dispose();
             }
         }
 
