@@ -388,6 +388,22 @@ Describe 'Azure.LB' -Tag 'Network', 'LB' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'lb-D';
         }
+
+        It 'Azure.LB.StandardSKU' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.LB.StandardSKU' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be "lb-D";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be "kubernetes", "lb-A", "lb-B", "lb-C";
+        }
     }
 
     Context 'Resource name' {

@@ -9,6 +9,9 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since pre-release v1.8.0-B2109060:
 
+- New rules:
+  - Load Balancer:
+    - Check Load balancers are using Standard SKU. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#957](https://github.com/Azure/PSRule.Rules.Azure/issues/957)
 - Engineering:
   - Increased test coverage of rule reasons. Thanks [@ArmaanMcleod](https://github.com/ArmaanMcleod). [#960](https://github.com/Azure/PSRule.Rules.Azure/issues/960)
 - Bug fixes:
