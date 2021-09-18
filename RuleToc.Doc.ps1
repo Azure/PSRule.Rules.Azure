@@ -4,6 +4,10 @@
 Document 'module' {
     Title 'Rules by pillar'
 
+    Metadata @{
+        generated = $True
+    }
+
     Import-Module ./out/modules/PSRule.Rules.Azure
     $rules = Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -WarningAction SilentlyContinue |
         Add-Member -MemberType ScriptProperty -Name Category -Value { $this.Info.Annotations.category } -PassThru |
@@ -35,6 +39,10 @@ Document 'module' {
 
 Document 'resource' {
     Title 'Rules by resource type'
+
+    Metadata @{
+        generated = $True
+    }
 
     Import-Module ./out/modules/PSRule.Rules.Azure
     $rules = Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -WarningAction SilentlyContinue |
