@@ -65,7 +65,7 @@ For example:
         "1"
     ],
     "properties": {
-        "ipAddress": "[parameters('publicIPAddresses_ip_address')]",,
+        "ipAddress": "[parameters('publicIPAddresses_ip_address')]",
         "publicIPAddressVersion": "IPv4",
         "publicIPAllocationMethod": "Static",
         "idleTimeoutInMinutes": 4,
