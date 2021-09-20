@@ -199,11 +199,13 @@ The following providers are supported:
 
 * `Microsoft.Compute/virtualMachineScaleSets`
 * `Microsoft.Network/applicationGateways`
+* `Microsoft.Network/publicIPAddresses`
 
 The following rules and configuration options are supported:
 
 * `Azure.AKS.AvailabilityZone` - `AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
 * `Azure.AppGw.AvailabilityZone` - `AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
+* `Azure.PublicIP.AvailabilityZone` - `AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
 
 Syntax:
 

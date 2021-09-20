@@ -36,3 +36,41 @@ Rule 'Azure.PublicIP.DNSLabel' -Type 'Microsoft.Network/publicIPAddresses' -If {
     # End with a letter or number.
     $Assert.Match($TargetObject, 'Properties.dnsSettings.domainNameLabel', '^[a-z][a-z0-9-]{1,61}[a-z0-9]$', $True);
 }
+
+# Synopsis: Public IP addresses deployed with Standard SKU should use availability zones in supported regions for high availability.
+Rule 'Azure.PublicIP.AvailabilityZone' -Type 'Microsoft.Network/publicIPAddresses' -If { IsStandardPublicIP } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    $publicIpAddressProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Network', 'publicIPAddresses');
+
+    $configurationZoneMappings = $Configuration.AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
+    $providerZoneMappings = $publicIpAddressProvider.ZoneMappings;
+    $mergedAvailabilityZones = PrependConfigurationZoneWithProviderZone -ConfigurationZone $configurationZoneMappings -ProviderZone $providerZoneMappings;
+
+    $availabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $mergedAvailabilityZones;
+
+    if (-not $availabilityZones) {
+        return $Assert.Pass();
+    }
+
+    $zonesNotSet = $Assert.NullOrEmpty($TargetObject, 'zones').Result;
+    $zoneRedundant = -not ($TargetObject.zones -and (Compare-Object -ReferenceObject $availabilityZones -DifferenceObject $TargetObject.zones));
+
+    $Assert.Create(
+        (-not $zonesNotSet -and $zoneRedundant), 
+        $LocalizedData.PublicIPAvailabilityZone, 
+        $TargetObject.name, 
+        $TargetObject.Location
+    );
+} -Configure @{ AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
+
+#region Helper functions
+
+function global:IsStandardPublicIP {
+    [CmdletBinding()]
+    [OutputType([PSRule.Runtime.AssertResult])]
+    param ()
+    process {
+        return $Assert.HasFieldValue($TargetObject, 'sku.name', 'Standard');
+    }
+}
+
+#endregion Helper functions
