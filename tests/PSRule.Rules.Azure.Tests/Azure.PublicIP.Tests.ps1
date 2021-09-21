@@ -110,6 +110,25 @@ Describe 'Azure.PublicIP' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'ip-A';
         }
+
+        It 'Azure.PublicIP.StandardSKU' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PublicIP.StandardSKU' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'ip-A';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The field 'sku.name' is set to 'Basic'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -Be 'ip-B', 'ip-C', 'ip-D', 'ip-E', 'ip-F', 'ip-G', 'ip-H', 'ip-I', 'ip-J', 'ip-K';
+        }
     }
 
     Context 'Resource name -- Azure.PublicIP.Name' {

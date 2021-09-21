@@ -62,6 +62,11 @@ Rule 'Azure.PublicIP.AvailabilityZone' -Type 'Microsoft.Network/publicIPAddresse
     );
 } -Configure @{ AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
+# Synopsis: Public IP addresses should be deployed with Standard SKU for production workloads.
+Rule 'Azure.PublicIP.StandardSKU' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+    IsStandardPublicIP;
+}
+
 #region Helper functions
 
 function global:IsStandardPublicIP {
