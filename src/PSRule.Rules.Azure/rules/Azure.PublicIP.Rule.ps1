@@ -38,7 +38,7 @@ Rule 'Azure.PublicIP.DNSLabel' -Type 'Microsoft.Network/publicIPAddresses' -If {
 }
 
 # Synopsis: Public IP addresses deployed with Standard SKU should use availability zones in supported regions for high availability.
-Rule 'Azure.PublicIP.AvailabilityZone' -Type 'Microsoft.Network/publicIPAddresses' -If { IsStandardPublicIP } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.PublicIP.AvailabilityZone' -Type 'Microsoft.Network/publicIPAddresses' -If { IsStandardPublicIP } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
     $publicIpAddressProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Network', 'publicIPAddresses');
 
     $configurationZoneMappings = $Configuration.AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
@@ -63,7 +63,7 @@ Rule 'Azure.PublicIP.AvailabilityZone' -Type 'Microsoft.Network/publicIPAddresse
 } -Configure @{ AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
 # Synopsis: Public IP addresses should be deployed with Standard SKU for production workloads.
-Rule 'Azure.PublicIP.StandardSKU' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.PublicIP.StandardSKU' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
     IsStandardPublicIP;
 }
 
