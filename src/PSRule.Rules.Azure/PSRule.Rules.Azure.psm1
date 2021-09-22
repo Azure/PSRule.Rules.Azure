@@ -616,6 +616,48 @@ function GetRestToken {
     }
 }
 
+function GetAccessToken {
+    [CmdletBinding()]
+    [OutputType([String])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+
+    process {
+        $azureRmInstanceProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile;
+        $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azureRmInstanceProfile);
+        $token = $profileClient.AcquireAccessToken($Context.DefaultContext.Subscription.TenantId);
+        return $token.AccessToken;
+    }
+}
+
+function GetRestResourceById {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [string]$ResourceId,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context,
+
+        [Parameter(Mandatory = $True)]
+        [string]$ApiVersion
+    )
+
+    process {
+        $resourceManagerUri = [String]::Concat('https://management.azure.com', $ResourceId, '?api-version=', $ApiVersion);
+        $authorizationHeader = @{
+            'Content-Type'  = 'application/json'
+            'Authorization' = 'Bearer ' + (GetAccessToken -Context $Context)
+        };
+        $resource = Invoke-RestMethod -Method Get -Headers $authorizationHeader -Uri $resourceManagerUri;
+
+        return $resource
+    }
+}
+
 function GetSubProvider {
     [CmdletBinding()]
     param (
@@ -921,9 +963,9 @@ function VisitPublicIP {
     )
     process {
         # Get-AzResource does not return zones, even with latest API version
-        # Had to fetch the zones using Get-AzPublicIpAddress and insert them into the resource
+        # Had to fetch the zones using REST API and insert them into the resource
         # Logged an issue with Az PowerShell: https://github.com/Azure/azure-powershell/issues/15905
-        $publicIpAddressZones = (Get-AzPublicIpAddress -Name $Resource.Name -ResourceGroupName $Resource.ResourceGroupName -DefaultProfile $Context).Zones;
+        $publicIpAddressZones = (GetRestResourceById -ResourceId $Resource.ResourceId -Context $Context -ApiVersion '2021-02-01').zones;
         $Resource | Add-Member -MemberType NoteProperty -Name zones -Value $publicIpAddressZones -PassThru;
     }
 }
