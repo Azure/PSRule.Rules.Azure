@@ -472,9 +472,8 @@ function global:IsGenerated {
             return $False;
         }
         try {
-            $jsonObject = $PSRule.GetContent($TargetObject)[0];
-            return $Assert.HasFieldValue($jsonObject, 'metadata._generator.name', 'bicep').Result -or
-                $Assert.HasFieldValue($jsonObject, 'metadata._generator.name', 'psarm').Result;
+            $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
+            return $Assert.In($jsonObject, 'metadata._generator.name', @('bicep', 'psarm', 'AzOps')).Result;
         }
         catch {
             return $False;
