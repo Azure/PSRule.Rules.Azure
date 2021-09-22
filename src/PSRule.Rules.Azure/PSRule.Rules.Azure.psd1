@@ -55,7 +55,6 @@ RequiredModules = @(
     @{ ModuleName = 'PSRule'; ModuleVersion = '0.0.1' }
     @{ ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.2' }
     @{ ModuleName = 'Az.Resources'; ModuleVersion = '1.4.0' }
-    @{ ModuleName = 'Az.Network'; ModuleVersion = '4.11.0' }
 )
 
 # Assemblies that must be loaded prior to importing this module
