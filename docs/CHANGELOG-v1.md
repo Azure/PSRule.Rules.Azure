@@ -13,6 +13,10 @@ What's changed since v1.8.0:
   - Public IP Address:
     - Check Public IP addresses are configured with zone-redundancy. [#958](https://github.com/Azure/PSRule.Rules.Azure/issues/958)
     - Check Public IP addresses are using Standard SKU. [#979](https://github.com/Azure/PSRule.Rules.Azure/issues/979)
+- General improvements:
+  - Improved processing of AzOps generated templates. [#799](https://github.com/Azure/PSRule.Rules.Azure/issues/799)
+    - `Azure.Template.DefineParameters` is ignored for AzOps generated templates.
+    - `Azure.Template.UseLocationParameter` is ignored for AzOps generated templates.
 
 ## v1.8.0
 
