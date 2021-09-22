@@ -910,6 +910,24 @@ function VisitAKSCluster {
     }
 }
 
+function VisitPublicIP {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        # Get-AzResource does not return zones, even with latest API version
+        # Had to fetch the zones using Get-AzPublicIpAddress and insert them into the resource
+        # Logged an issue with Az PowerShell: https://github.com/Azure/azure-powershell/issues/15905
+        $publicIpAddressZones = (Get-AzPublicIpAddress -Name $Resource.Name -ResourceGroupName $Resource.ResourceGroupName -DefaultProfile $Context).Zones;
+        $Resource | Add-Member -MemberType NoteProperty -Name zones -Value $publicIpAddressZones -PassThru;
+    }
+}
+
 function VisitStorageAccount {
     [CmdletBinding()]
     param (
@@ -1165,6 +1183,7 @@ function ExpandResource {
             'Microsoft.Network/connections' { VisitNetworkConnection @PSBoundParameters; }
             'Microsoft.Subscription' { VisitSubscription @PSBoundParameters; }
             'Microsoft.Resources/resourceGroups' { VisitResourceGroup @PSBoundParameters; }
+            'Microsoft.Network/publicIPAddresses' { VisitPublicIP @PSBoundParameters; }
             default { $Resource; }
         }
     }

@@ -202,6 +202,9 @@ task ModuleDependencies NuGet, PSRule, {
     if ($Null -eq (Get-InstalledModule -Name Az.Resources -MinimumVersion 4.3.0 -ErrorAction Ignore)) {
         Install-Module -Name Az.Resources -Scope CurrentUser -MinimumVersion 4.3.0 -Force;
     }
+    if ($Null -eq (Get-InstalledModule -Name Az.Network -MinimumVersion 4.11.0 -ErrorAction Ignore)) {
+        Install-Module -Name Az.Network -Scope CurrentUser -MinimumVersion 4.11.0 -Force;
+    }
 }
 
 task BuildDotNet {

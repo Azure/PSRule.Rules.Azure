@@ -7,6 +7,13 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.8.0:
+
+- New rules:
+  - Public IP Address:
+    - Check Public IP addresses are configured with zone-redundancy. [#958](https://github.com/Azure/PSRule.Rules.Azure/issues/958)
+    - Check Public IP addresses are using Standard SKU. [#979](https://github.com/Azure/PSRule.Rules.Azure/issues/979)
+
 ## v1.8.0
 
 What's changed since v1.7.0:

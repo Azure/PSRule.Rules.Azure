@@ -523,7 +523,7 @@ Describe 'Get-AzRuleTemplateLink' -Tag 'Cmdlet', 'Get-AzRuleTemplateLink' {
 
 #endregion Get-AzRuleTemplateLink
 
-#region PSRule.Rules.Azure.psm1 Functions
+#region PSRule.Rules.Azure.psm1 Private Functions
 
 Describe 'VisitAKSCluster' {
     BeforeAll {
@@ -632,6 +632,68 @@ Describe 'VisitAKSCluster' {
                 $clusterResource.resources[0].ResourceID | Should -Be '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
                 $clusterResource.resources[0].Properties.metrics | Should -BeNullOrEmpty;
                 $clusterResource.resources[0].Properties.logs | Should -BeNullOrEmpty;
+            }
+        }
+    }
+}
+
+Describe 'VisitPublicIP' {
+    Context "Availability Zones" {
+        It "Non-empty zones are added to Public IP resource" {
+            InModuleScope -ModuleName 'PSRule.Rules.Azure' {
+                $resource = [PSCustomObject]@{
+                    Name = 'Resource1'
+                    ResourceGroupName = 'lb-rg'
+                    ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                };
+
+                Mock -CommandName 'Get-AzPublicIpAddress' -MockWith {
+                    return [PSCustomObject]@{
+                        Name = 'Resource1'
+                        ResourceGroupName = 'lb-rg'
+                        ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                        Zones = @("1", "2", "3")
+                    }
+                };
+
+                $context = New-MockObject -Type Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext;
+                $publicIpResource = $resource | VisitPublicIP -Context $context;
+
+                Assert-MockCalled -CommandName 'Get-AzPublicIpAddress' -Times 1;
+
+                $publicIpResource[0].Name | Should -Be 'Resource1';
+                $publicIpResource[0].ResourceGroupName | Should -Be 'lb-rg';
+                $publicIpResource[0].ResourceID | Should -Be '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip';
+                $publicIpResource[0].zones | Should -Be @("1", "2", "3");
+            }
+        }
+
+        It 'Empty zones are set to null in Public IP resource' {
+            InModuleScope -ModuleName 'PSRule.Rules.Azure' {
+                $resource = [PSCustomObject]@{
+                    Name = 'Resource1'
+                    ResourceGroupName = 'lb-rg'
+                    ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                };
+
+                Mock -CommandName 'Get-AzPublicIpAddress' -MockWith {
+                    return [PSCustomObject]@{
+                        Name = 'Resource1'
+                        ResourceGroupName = 'lb-rg'
+                        ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                        Zones = @()
+                    }
+                };
+
+                $context = New-MockObject -Type Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext;
+                $publicIpResource = $resource | VisitPublicIP -Context $context;
+
+                Assert-MockCalled -CommandName 'Get-AzPublicIpAddress' -Times 1;
+
+                $publicIpResource[0].Name | Should -Be 'Resource1';
+                $publicIpResource[0].ResourceGroupName | Should -Be 'lb-rg';
+                $publicIpResource[0].ResourceID | Should -Be '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip';
+                $publicIpResource[0].zones | Should -BeNullOrEmpty;
             }
         }
     }
