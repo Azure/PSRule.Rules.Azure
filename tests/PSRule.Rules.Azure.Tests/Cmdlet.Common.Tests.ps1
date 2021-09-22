@@ -647,19 +647,21 @@ Describe 'VisitPublicIP' {
                     ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
                 };
 
-                Mock -CommandName 'Get-AzPublicIpAddress' -MockWith {
+                Mock -CommandName 'Invoke-AzRestMethod' -MockWith {
                     return [PSCustomObject]@{
-                        Name = 'Resource1'
-                        ResourceGroupName = 'lb-rg'
-                        ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
-                        Zones = @("1", "2", "3")
+                        Content = [PSCustomObject]@{
+                            Name = 'Resource1'
+                            ResourceGroupName = 'lb-rg'
+                            ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                            Zones = @("1", "2", "3")
+                        } | ConvertTo-Json
                     }
                 };
 
                 $context = New-MockObject -Type Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext;
                 $publicIpResource = $resource | VisitPublicIP -Context $context;
 
-                Assert-MockCalled -CommandName 'Get-AzPublicIpAddress' -Times 1;
+                Assert-MockCalled -CommandName 'Invoke-AzRestMethod' -Times 1;
 
                 $publicIpResource[0].Name | Should -Be 'Resource1';
                 $publicIpResource[0].ResourceGroupName | Should -Be 'lb-rg';
@@ -676,19 +678,21 @@ Describe 'VisitPublicIP' {
                     ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
                 };
 
-                Mock -CommandName 'Get-AzPublicIpAddress' -MockWith {
+                Mock -CommandName 'Invoke-AzRestMethod' -MockWith {
                     return [PSCustomObject]@{
-                        Name = 'Resource1'
-                        ResourceGroupName = 'lb-rg'
-                        ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
-                        Zones = @()
+                        Content = [PSCustomObject]@{
+                            Name = 'Resource1'
+                            ResourceGroupName = 'lb-rg'
+                            ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                            Zones = @()
+                        } | ConvertTo-Json
                     }
                 };
 
                 $context = New-MockObject -Type Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext;
                 $publicIpResource = $resource | VisitPublicIP -Context $context;
 
-                Assert-MockCalled -CommandName 'Get-AzPublicIpAddress' -Times 1;
+                Assert-MockCalled -CommandName 'Invoke-AzRestMethod' -Times 1;
 
                 $publicIpResource[0].Name | Should -Be 'Resource1';
                 $publicIpResource[0].ResourceGroupName | Should -Be 'lb-rg';

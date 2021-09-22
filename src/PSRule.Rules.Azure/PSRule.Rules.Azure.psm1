@@ -921,9 +921,9 @@ function VisitPublicIP {
     )
     process {
         # Get-AzResource does not return zones, even with latest API version
-        # Had to fetch the zones using Get-AzPublicIpAddress and insert them into the resource
+        # Had to fetch the zones using ARM REST API and insert them into the resource
         # Logged an issue with Az PowerShell: https://github.com/Azure/azure-powershell/issues/15905
-        $publicIpAddressZones = (Get-AzPublicIpAddress -Name $Resource.Name -ResourceGroupName $Resource.ResourceGroupName -DefaultProfile $Context).Zones;
+        $publicIpAddressZones = ((Invoke-AzRestMethod -Path "$($Resource.ResourceId)?api-version=2021-02-01" -Method GET).Content | ConvertFrom-Json).zones;
         $Resource | Add-Member -MemberType NoteProperty -Name zones -Value $publicIpAddressZones -PassThru;
     }
 }
