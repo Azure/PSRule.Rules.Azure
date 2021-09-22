@@ -4569,6 +4569,14 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 </li>
 </ul>
 </li>
+<li>General improvements:<ul>
+<li>Improved processing of AzOps generated templates. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/799">#799</a><ul>
+<li><code>Azure.Template.DefineParameters</code> is ignored for AzOps generated templates.</li>
+<li><code>Azure.Template.UseLocationParameter</code> is ignored for AzOps generated templates.</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h2 id="v180">v1.8.0<a class="headerlink" href="#v180" title="Permanent link">#</a></h2>
 <p>What's changed since v1.7.0:</p>
@@ -5713,7 +5721,7 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-22
+      Last update: 2021-09-23
     
   </small>
 </div>
