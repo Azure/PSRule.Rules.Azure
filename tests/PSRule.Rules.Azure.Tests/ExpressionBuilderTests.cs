@@ -68,6 +68,17 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
+        public void BuildExpression7()
+        {
+            var expression = "[toUpper(first(variables('environment')))]";
+            var context = GetContext();
+            context.Variable("environment", "Test");
+
+            var actual = Build(context, expression) as string;
+            Assert.Equal("T", actual);
+        }
+
+        [Fact]
         public void BuildExpressionWithNullProperty()
         {
             var context = GetContext();
