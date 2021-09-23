@@ -201,8 +201,10 @@ Describe 'Azure.Template' -Tag 'Template' {
                 (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.2.json')
                 (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.3.json')
                 (Join-Path -Path $here -ChildPath 'Template.Bicep.1.json')
+                (Join-Path -Path $here -ChildPath 'Template.PSArm.1.json')
+                (Join-Path -Path $here -ChildPath 'Template.AzOps.1.json')
             );
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.DefineParameters';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Format None -Name 'Azure.Template.DefineParameters';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.DefineParameters' };
 
             # Fail
@@ -218,6 +220,13 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 1;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.Empty.Template.json';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Template.Bicep.1.json', 'Template.PSArm.1.json', 'Template.AzOps.1.json';
         }
 
         It 'Azure.Template.UseVariables' {
@@ -362,6 +371,8 @@ Describe 'Azure.Template' -Tag 'Template' {
                 (Join-Path -Path $here -ChildPath 'Resources.TTK.Template.2.json')
                 (Join-Path -Path $here -ChildPath 'Resources.Template4.json')
                 (Join-Path -Path $here -ChildPath 'Template.Bicep.1.json')
+                (Join-Path -Path $here -ChildPath 'Template.PSArm.1.json')
+                (Join-Path -Path $here -ChildPath 'Template.AzOps.1.json')
             );
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Format None -Name 'Azure.Template.UseLocationParameter';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.UseLocationParameter' };
@@ -382,6 +393,13 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 3;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.Template4.json', 'Resources.Empty.Template.json', 'Resources.TTK.Template.2.json';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Template.Bicep.1.json', 'Template.PSArm.1.json', 'Template.AzOps.1.json';
         }
 
         It 'Azure.Template.ParameterMinMaxValue' {

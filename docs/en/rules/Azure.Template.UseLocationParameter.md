@@ -39,9 +39,73 @@ For resources that aren't available in all locations, use a separate parameter.
 Consider using `parameters('location)` instead of `resourceGroup().location`.
 Using a location parameter enabled users of the template to specify the location of deployed resources.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To author templates that pass this rule:
+
+- Define a parameter named `location`.
+- Set the location of any deployed resources to `[parameters('location')]`.
+
+For example:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "name": "Managed Identity",
+        "description": "Create or update a Managed Identity."
+    },
+    "parameters": {
+        "identityName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the Managed Identity."
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "The Azure region to deploy to.",
+                "example": "eastus"
+            }
+        },
+        "tags": {
+            "type": "object",
+            "metadata": {
+                "description": "Tags to apply to the resource.",
+                "example": {
+                    "service": "app1",
+                    "env": "prod"
+                }
+            }
+        }
+    },
+    "variables": {
+        "tenantId": "[subscription().tenantId]"
+    },
+    "resources": [
+        {
+            "comments": "Create or update a Managed Identity",
+            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "apiVersion": "2018-11-30",
+            "name": "[parameters('identityName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "tenantId": "[variables('tenantId')]"
+            },
+            "tags": "[parameters('tags')]"
+        }
+    ]
+}
+```
+
 ## NOTES
 
-This rule is not applicable and ignored for templates generated with Bicep and PSArm.
+This rule is not applicable and ignored for templates generated with Bicep, PSArm and AzOps.
 Generated templates from these tools may not require any parameters to be set.
 
 ## LINKS
