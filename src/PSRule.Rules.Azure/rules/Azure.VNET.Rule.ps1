@@ -302,6 +302,16 @@ Rule 'Azure.VNG.ConnectionName' -Type 'Microsoft.Network/connections' -Tag @{ re
     Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
 }
 
+# Synopsis: Use availability zone SKU for virtual network gateways deployed with VPN gateway type
+Rule 'Azure.VNG.VPNAvailabilityZoneSKU' -Type 'Microsoft.Network/virtualNetworkGateways' -If { IsVPNGateway } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+    Match 'Properties.sku.name' '^VpnGw[1-5]AZ$';
+}
+
+# Synopsis: Use availability zone SKU for virtual network gateways deployed with ExpressRoute gateway type
+Rule 'Azure.VNG.ERAvailabilityZoneSKU' -Type 'Microsoft.Network/virtualNetworkGateways' -If { IsERGateway } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+    Match 'Properties.sku.name' '^ErGw[1-3]AZ$';
+}
+
 #endregion Virtual Network Gateway
 
 #region Helper functions
