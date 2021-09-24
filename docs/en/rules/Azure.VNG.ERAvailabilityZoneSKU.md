@@ -38,7 +38,10 @@ ExpressRoute gateway availability zones are managed via Public IP addresses, and
 To configure an AZ SKU for an ExpressRoute gateway:
 
 - Set `properties.gatewayType` to `'ExpressRoute'`
-- Set `properties.sku.name` and `properties.sku.tier` to an AZ SKU which matches `'^ErGw[1-3]AZ$'`
+- Set `properties.sku.name` and `properties.sku.tier` to one of the following AZ SKUs:
+  - `'ErGw1AZ'`
+  - `'ErGw2AZ'`
+  - `'ErGw3AZ'`
 
 For example:
 
@@ -83,7 +86,10 @@ For example:
 To configure an AZ SKU for an ExpressRoute gateway:
 
 - Set `properties.gatewayType` to `'ExpressRoute'`
-- Set `properties.sku.name` and `properties.sku.tier` to an AZ SKU which matches `'^ErGw[1-3]AZ$'`
+- Set `properties.sku.name` and `properties.sku.tier` to one of the following AZ SKUs:
+  - `'ErGw1AZ'`
+  - `'ErGw2AZ'`
+  - `'ErGw3AZ'`
 
 For example:
 

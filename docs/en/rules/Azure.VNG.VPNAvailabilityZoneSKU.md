@@ -40,7 +40,12 @@ VPN gateway availability zones are managed via Public IP addresses, and are flag
 To configure an AZ SKU for a VPN gateway:
 
 - Set `properties.gatewayType` to `'Vpn'`
-- Set `properties.sku.name` and `properties.sku.tier` to an AZ SKU which matches `'^VpnGw[1-5]AZ$'`
+- Set `properties.sku.name` and `properties.sku.tier` to one of the following AZ SKUs:
+  - `'VpnGw1AZ'`
+  - `'VpnGw2AZ'`
+  - `'VpnGw3AZ'`
+  - `'VpnGw4AZ'`
+  - `'VpnGw5AZ'`
 
 For example:
 
@@ -85,7 +90,12 @@ For example:
 To configure an AZ SKU for a VPN gateway:
 
 - Set `properties.gatewayType` to `'Vpn'`
-- Set `properties.sku.name` and `properties.sku.tier` to an AZ SKU which matches `'^VpnGw[1-5]AZ$'`
+- Set `properties.sku.name` and `properties.sku.tier` to one of the following AZ SKUs:
+  - `'VpnGw1AZ'`
+  - `'VpnGw2AZ'`
+  - `'VpnGw3AZ'`
+  - `'VpnGw4AZ'`
+  - `'VpnGw5AZ'`
 
 For example:
 

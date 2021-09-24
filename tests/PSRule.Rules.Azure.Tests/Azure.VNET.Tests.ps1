@@ -822,9 +822,9 @@ Describe 'Azure.VNG' -Tag 'Network', 'VNG', 'VPN', 'ExpressRoute' {
             $ruleResult.TargetName | Should -BeIn 'gateway-A', 'gateway-B';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "None of the regex(s) matched: ^VpnGw[1-5]AZ$";
+            $ruleResult[0].Reason | Should -BeExactly 'The VPN gateway (gateway-A) should be using one of the following AZ SKUs (VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, VpnGw4AZ, VpnGw5AZ).';
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "None of the regex(s) matched: ^VpnGw[1-5]AZ$";
+            $ruleResult[1].Reason | Should -BeExactly 'The VPN gateway (gateway-B) should be using one of the following AZ SKUs (VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, VpnGw4AZ, VpnGw5AZ).';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -843,9 +843,9 @@ Describe 'Azure.VNG' -Tag 'Network', 'VNG', 'VPN', 'ExpressRoute' {
             $ruleResult.TargetName | Should -BeIn 'gateway-C', 'gateway-D';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "None of the regex(s) matched: ^ErGw[1-3]AZ$";
+            $ruleResult[0].Reason | Should -BeExactly 'The ExpressRoute gateway (gateway-C) should be using one of the following AZ SKUs (ErGw1AZ, ErGw2AZ, ErGw3AZ).';
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "None of the regex(s) matched: ^ErGw[1-3]AZ$";
+            $ruleResult[1].Reason | Should -BeExactly 'The ExpressRoute gateway (gateway-D) should be using one of the following AZ SKUs (ErGw1AZ, ErGw2AZ, ErGw3AZ).';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

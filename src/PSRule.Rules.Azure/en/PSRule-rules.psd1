@@ -50,4 +50,6 @@
     AppGWAvailabilityZone = "The application gateway ({0}) deployed to region ({1}) should use following availability zones [{2}]."
     LBAvailabilityZone = "The load balancer ({0}) frontend IP configuration ({1}) should be zone-redundant."
     PublicIPAvailabilityZone = "The public IP ({0}) deployed to region ({1}) should be zone-redundant."
+    VPNAvailabilityZoneSKU = "The VPN gateway ({0}) should be using one of the following AZ SKUs ({1})."
+    ERAvailabilityZoneSKU = "The ExpressRoute gateway ({0}) should be using one of the following AZ SKUs ({1})."
 }
