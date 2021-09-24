@@ -19,6 +19,8 @@ What's changed since v1.8.0:
   - Improved processing of AzOps generated templates. [#799](https://github.com/Azure/PSRule.Rules.Azure/issues/799)
     - `Azure.Template.DefineParameters` is ignored for AzOps generated templates.
     - `Azure.Template.UseLocationParameter` is ignored for AzOps generated templates.
+- Bug fixes:
+  - Fixed `ToUpper` fails to convert character. [#986](https://github.com/Azure/PSRule.Rules.Azure/issues/986)
 
 ## v1.8.0
 
