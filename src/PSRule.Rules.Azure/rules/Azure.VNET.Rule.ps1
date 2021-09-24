@@ -302,6 +302,20 @@ Rule 'Azure.VNG.ConnectionName' -Type 'Microsoft.Network/connections' -Tag @{ re
     Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
 }
 
+# Synopsis: Use availability zone SKU for virtual network gateways deployed with VPN gateway type
+Rule 'Azure.VNG.VPNAvailabilityZoneSKU' -Type 'Microsoft.Network/virtualNetworkGateways' -If { IsVPNGateway } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+    $vpnAvailabilityZoneSKUs = @('VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ', 'VpnGw4AZ', 'VpnGw5AZ');
+    $Assert.In($TargetObject, 'Properties.sku.name', $vpnAvailabilityZoneSKUs).
+        Reason($LocalizedData.VPNAvailabilityZoneSKU, $TargetObject.Name, ($vpnAvailabilityZoneSKUs -join ', '));
+}
+
+# Synopsis: Use availability zone SKU for virtual network gateways deployed with ExpressRoute gateway type
+Rule 'Azure.VNG.ERAvailabilityZoneSKU' -Type 'Microsoft.Network/virtualNetworkGateways' -If { IsERGateway } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+    $erAvailabilityZoneSKUs = @('ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ');
+    $Assert.In($TargetObject, 'Properties.sku.name', $erAvailabilityZoneSKUs).
+        Reason($LocalizedData.ERAvailabilityZoneSKU, $TargetObject.Name, ($erAvailabilityZoneSKUs -join ', '));
+}
+
 #endregion Virtual Network Gateway
 
 #region Helper functions
