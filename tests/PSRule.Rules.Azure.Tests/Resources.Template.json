@@ -6,8 +6,9 @@
         "description": "This template creates a hub virtual network."
     },
     "parameters": {
+        // Some additional comment here
         "vnetName": {
-            "type": "string",
+            "type": "string", // End of line comments
             "metadata": {
                 "description": "The name of the virtual network."
             }
