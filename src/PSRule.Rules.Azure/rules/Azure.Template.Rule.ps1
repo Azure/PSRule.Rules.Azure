@@ -9,7 +9,7 @@
 
 # Synopsis: Use ARM template file structure.
 Rule 'Azure.Template.TemplateFile' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
+    $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
     $Assert.HasFields($jsonObject, @('$schema', 'contentVersion', 'resources'));
     $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters', 'functions', 'variables', 'resources', 'outputs';
 }
@@ -137,7 +137,7 @@ Rule 'Azure.Template.ResourceLocation' -Type '.json' -If { (HasTemplateResources
 }
 
 # Synopsis: Template should reference a location parameter to specify resource location.
-Rule 'Azure.Template.UseLocationParameter' -Type '.json' -If { (IsTemplateFile) -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.Template.UseLocationParameter' -Type '.json' -If { (IsTemplateFile -Suffix '/deploymentTemplate.json') -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
     $jsonObject = $PSRule.GetContent($TargetObject)[0];
     if ($Assert.HasField($jsonObject, 'parameters.location').Result) {
         $jsonObject.parameters.PSObject.Properties.Remove('location')
@@ -237,7 +237,7 @@ Rule 'Azure.Template.ParameterDataTypes' -Type '.json' -If { (HasTemplateParamet
 
 # Synopsis: Use ARM parameter file structure.
 Rule 'Azure.Template.ParameterFile' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $jsonObject = ReadJsonFile -Path $TargetObject.FullName;
+    $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
     $Assert.HasFields($jsonObject, @('$schema', 'contentVersion', 'parameters'));
     $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters';
 }
@@ -368,20 +368,6 @@ function global:IsParameterFile {
         catch {
             return $False;
         }
-    }
-}
-
-# Read a file as JSON
-function global:ReadJsonFile {
-    [CmdletBinding()]
-    [OutputType([PSObject])]
-    param (
-        [Parameter(Mandatory = $False)]
-        [String]$Path = $TargetObject.FullName
-    )
-    process {
-        # return $PSRule.GetContent([System.IO.FileInfo]$Path);
-        return Get-Content -Path $Path -Raw -ErrorAction SilentlyContinue | ConvertFrom-Json -ErrorAction SilentlyContinue;
     }
 }
 
