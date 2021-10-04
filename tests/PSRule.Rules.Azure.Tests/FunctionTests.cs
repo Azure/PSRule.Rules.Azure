@@ -130,6 +130,7 @@ namespace PSRule.Rules.Azure
                 "arrayProp", Functions.CreateArray(context, new object[] { "a", "b", "c" }),
                 "objectProp", Functions.CreateObject(context, new object[] { "key1", "value1" }),
             }) as JObject;
+            var actual2 = Functions.CreateObject(context, new object[] { }) as JObject;
 
             Assert.Equal(1, actual1["intProp"]);
             Assert.Equal("abc", actual1["stringProp"]);
@@ -137,8 +138,8 @@ namespace PSRule.Rules.Azure
             Assert.Equal("b", actual1["arrayProp"][1]);
             Assert.Equal("value1", actual1["objectProp"]["key1"]);
 
-            Assert.Throws<ExpressionArgumentException>(() => Functions.CreateObject(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.CreateObject(context, new object[] { }));
+            Assert.NotNull(actual2);
+
             Assert.Throws<ExpressionArgumentException>(() => Functions.CreateObject(context, new object[] { "intProp", 1, "stringProp" }));
         }
 
