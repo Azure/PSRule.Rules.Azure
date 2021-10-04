@@ -253,7 +253,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object CreateObject(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
-            if (argCount < 2 || argCount % 2 != 0)
+            if (argCount % 2 != 0)
                 throw ArgumentsOutOfRange(nameof(CreateObject), args);
 
             var properties = new JProperty[argCount / 2];

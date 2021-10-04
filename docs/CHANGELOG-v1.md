@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+- Bug fixes:
+  - Fixed handling of comments with template and parameter file rules. [#996](https://github.com/Azure/PSRule.Rules.Azure/issues/996)
+  - Fixed `Azure.Template.UseLocationParameter` to only apply to templates deployed as RG scope [#995](https://github.com/Azure/PSRule.Rules.Azure/issues/995)
+  - Fixed expand template fails with `createObject` when no parameters are specified. [#1000](https://github.com/Azure/PSRule.Rules.Azure/issues/1000)
+
 ## v1.8.0
 
 What's changed since v1.7.0:
