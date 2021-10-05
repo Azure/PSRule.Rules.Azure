@@ -1,9 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using PSRule.Rules.Azure.Resources;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -24,7 +26,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private int _EscapeLength;
 
         // The maximum length of a template expression
-        private const int MaxLength = 24576;
+        private const int MaxLength = 100000;
 
         private const char Backslash = '\\';
         private const char Apostrophe = '\'';
@@ -46,7 +48,7 @@ namespace PSRule.Rules.Azure.Data.Template
             _EscapeLength = 0;
 
             if (_Length < 0 || _Length > MaxLength)
-                throw new ArgumentOutOfRangeException(nameof(expression));
+                throw new ArgumentOutOfRangeException(nameof(expression), string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateExpressionTooLong, expression));
 
             UpdateCurrent();
         }
