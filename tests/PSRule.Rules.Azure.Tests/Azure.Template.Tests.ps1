@@ -387,9 +387,9 @@ Describe 'Azure.Template' -Tag 'Template' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
+            $ruleResult.Length | Should -Be 2;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
-            $targetNames | Should -BeIn 'Resources.Policy.Template.json';
+            $targetNames | Should -BeIn 'Template.Bicep.1.json', 'Resources.Policy.Template.json';
         }
 
         It 'Azure.Template.ParameterMinMaxValue' {
