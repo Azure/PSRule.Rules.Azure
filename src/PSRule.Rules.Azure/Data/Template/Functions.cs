@@ -253,7 +253,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object CreateObject(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
-            if (argCount < 2 || argCount % 2 != 0)
+            if (argCount % 2 != 0)
                 throw ArgumentsOutOfRange(nameof(CreateObject), args);
 
             var properties = new JProperty[argCount / 2];
@@ -277,7 +277,7 @@ namespace PSRule.Rules.Azure.Data.Template
             else if (args[0] is JArray jArray)
                 return jArray[0];
             else if (ExpressionHelpers.TryString(args[0], out string svalue))
-                return svalue[0];
+                return new string(svalue[0], 1);
 
             return null;
         }
@@ -350,7 +350,7 @@ namespace PSRule.Rules.Azure.Data.Template
             else if (args[0] is JArray jArray)
                 return jArray[jArray.Count - 1];
             else if (ExpressionHelpers.TryString(args[0], out string svalue))
-                return svalue[svalue.Length - 1];
+                return new string(svalue[svalue.Length - 1], 1);
 
             return null;
         }
@@ -1425,6 +1425,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(ToLower), args);
 
+            if (args[0] is char c)
+                return new string(char.ToLower(c, Thread.CurrentThread.CurrentCulture), 1);
+
             if (!ExpressionHelpers.TryString(args[0], out string stringToChange))
                 throw new ArgumentException();
 
@@ -1435,6 +1438,9 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(ToUpper), args);
+
+            if (args[0] is char c)
+                return new string(char.ToUpper(c, Thread.CurrentThread.CurrentCulture), 1);
 
             if (!ExpressionHelpers.TryString(args[0], out string stringToChange))
                 throw new ArgumentException();

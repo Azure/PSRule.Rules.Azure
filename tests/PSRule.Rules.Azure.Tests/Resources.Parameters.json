@@ -17,8 +17,9 @@
         "subnets": {
             "value": [
                 {
+                    // Additional comments here in file
                     "name": "subnet1",
-                    "addressPrefix": "10.1.0.32/28",
+                    "addressPrefix": "10.1.0.32/28", // End of line comments
                     "securityRules": [
                         {
                             "name": "deny-rdp-inbound",

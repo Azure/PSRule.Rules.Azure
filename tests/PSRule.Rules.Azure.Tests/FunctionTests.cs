@@ -130,6 +130,7 @@ namespace PSRule.Rules.Azure
                 "arrayProp", Functions.CreateArray(context, new object[] { "a", "b", "c" }),
                 "objectProp", Functions.CreateObject(context, new object[] { "key1", "value1" }),
             }) as JObject;
+            var actual2 = Functions.CreateObject(context, new object[] { }) as JObject;
 
             Assert.Equal(1, actual1["intProp"]);
             Assert.Equal("abc", actual1["stringProp"]);
@@ -137,8 +138,8 @@ namespace PSRule.Rules.Azure
             Assert.Equal("b", actual1["arrayProp"][1]);
             Assert.Equal("value1", actual1["objectProp"]["key1"]);
 
-            Assert.Throws<ExpressionArgumentException>(() => Functions.CreateObject(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.CreateObject(context, new object[] { }));
+            Assert.NotNull(actual2);
+
             Assert.Throws<ExpressionArgumentException>(() => Functions.CreateObject(context, new object[] { "intProp", 1, "stringProp" }));
         }
 
@@ -174,8 +175,8 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // String
-            var actual1 = (char)Functions.First(context, new object[] { "one" });
-            Assert.Equal('o', actual1);
+            var actual1 = (string)Functions.First(context, new object[] { "one" });
+            Assert.Equal("o", actual1);
 
             // Array
             var actual2 = Functions.First(context, new object[] { new string[] { "one", "two", "three" } }) as string;
@@ -241,8 +242,8 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // String
-            var actual1 = (char)Functions.Last(context, new object[] { "one" });
-            Assert.Equal('e', actual1);
+            var actual1 = (string)Functions.Last(context, new object[] { "one" });
+            Assert.Equal("e", actual1);
 
             // Array
             var actual2 = Functions.Last(context, new object[] { new string[] { "one", "two", "three" } }) as string;
@@ -1372,10 +1373,17 @@ namespace PSRule.Rules.Azure
         {
             var context = GetContext();
 
+            // String
             var actual1 = Functions.ToLower(context, new object[] { "One Two Three" }) as string;
             var actual2 = Functions.ToLower(context, new object[] { "one two three" }) as string;
             Assert.Equal("one two three", actual1);
             Assert.Equal("one two three", actual2);
+
+            // Char
+            var actual3 = Functions.ToLower(context, new object[] { 'o' }) as string;
+            var actual4 = Functions.ToLower(context, new object[] { 'O' }) as string;
+            Assert.Equal("o", actual3);
+            Assert.Equal("o", actual4);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.ToLower(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.ToLower(context, new object[] { }));
@@ -1389,10 +1397,17 @@ namespace PSRule.Rules.Azure
         {
             var context = GetContext();
 
+            // String
             var actual1 = Functions.ToUpper(context, new object[] { "One Two Three" }) as string;
             var actual2 = Functions.ToUpper(context, new object[] { "ONE TWO THREE" }) as string;
             Assert.Equal("ONE TWO THREE", actual1);
             Assert.Equal("ONE TWO THREE", actual2);
+
+            // Char
+            var actual3 = Functions.ToUpper(context, new object[] { 'o' }) as string;
+            var actual4 = Functions.ToUpper(context, new object[] { 'O' }) as string;
+            Assert.Equal("O", actual3);
+            Assert.Equal("O", actual4);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.ToUpper(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.ToUpper(context, new object[] { }));
