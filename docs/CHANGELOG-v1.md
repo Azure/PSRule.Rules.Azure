@@ -7,13 +7,18 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.9.0-B2110014:
+
+- Bug fixes:
+  - Fixed `Azure.ACR.AdminUser` fails when `adminUserEnabled` not set. [#1014](https://github.com/Azure/PSRule.Rules.Azure/issues/1014)
+
 ## v1.9.0-B2110014 (pre-release)
 
 What's changed since pre-release v1.9.0-B2110009:
 
 - Bug fixes:
-  - Fixes expression out of range of valid values. [#1005](https://github.com/Azure/PSRule.Rules.Azure/issues/1005)
-  - Fixes template expand fails in nested reference expansion. [#1007](https://github.com/Azure/PSRule.Rules.Azure/issues/1007)
+  - Fixed expression out of range of valid values. [#1005](https://github.com/Azure/PSRule.Rules.Azure/issues/1005)
+  - Fixed template expand fails in nested reference expansion. [#1007](https://github.com/Azure/PSRule.Rules.Azure/issues/1007)
 
 ## v1.9.0-B2110009 (pre-release)
 
@@ -50,8 +55,8 @@ What's changed since v1.8.0:
   - Fixed `Azure.Template.UseLocationParameter` to only apply to templates deployed as RG scope [#995](https://github.com/Azure/PSRule.Rules.Azure/issues/995)
   - Fixed expand template fails with `createObject` when no parameters are specified. [#1000](https://github.com/Azure/PSRule.Rules.Azure/issues/1000)
   - Fixed `ToUpper` fails to convert character. [#986](https://github.com/Azure/PSRule.Rules.Azure/issues/986)
-  - Fixes expression out of range of valid values. [#1005](https://github.com/Azure/PSRule.Rules.Azure/issues/1005)
-  - Fixes template expand fails in nested reference expansion. [#1007](https://github.com/Azure/PSRule.Rules.Azure/issues/1007)
+  - Fixed expression out of range of valid values. [#1005](https://github.com/Azure/PSRule.Rules.Azure/issues/1005)
+  - Fixed template expand fails in nested reference expansion. [#1007](https://github.com/Azure/PSRule.Rules.Azure/issues/1007)
 
 ## v1.8.0
 

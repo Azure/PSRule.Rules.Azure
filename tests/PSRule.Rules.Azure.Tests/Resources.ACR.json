@@ -184,7 +184,6 @@
         "Name": "registry-C",
         "Properties": {
             "loginServer": "registry-C.azurecr.io",
-            "adminUserEnabled": false,
             "policies": {
                 "quarantinePolicy": {
                     "status": "enabled"
