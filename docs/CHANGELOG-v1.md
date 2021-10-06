@@ -7,6 +7,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.8.1
+
 What's changed since v1.8.0:
 
 - Bug fixes:
@@ -16,7 +18,6 @@ What's changed since v1.8.0:
   - Fixed `ToUpper` fails to convert character. [#986](https://github.com/Azure/PSRule.Rules.Azure/issues/986)
   - Fixes expression out of range of valid values. [#1005](https://github.com/Azure/PSRule.Rules.Azure/issues/1005)
   - Fixes template expand fails in nested reference expansion. [#1007](https://github.com/Azure/PSRule.Rules.Azure/issues/1007)
-
 
 ## v1.8.0
 
