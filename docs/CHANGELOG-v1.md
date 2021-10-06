@@ -7,6 +7,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.9.0-B2110009:
+
+- Bug fixes:
+  - Fixes expression out of range of valid values. [#1005](https://github.com/Azure/PSRule.Rules.Azure/issues/1005)
+  - Fixes template expand fails in nested reference expansion. [#1007](https://github.com/Azure/PSRule.Rules.Azure/issues/1007)
+
 ## v1.9.0-B2110009 (pre-release)
 
 What's changed since pre-release v1.9.0-B2109027:

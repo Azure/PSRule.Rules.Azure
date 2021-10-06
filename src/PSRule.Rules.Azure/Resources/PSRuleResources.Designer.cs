@@ -151,7 +151,7 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occured evaluating expression &apos;{0}&apos; line {1}. {2}.
+        ///   Looks up a localized string similar to An error occurred evaluating expression &apos;{0}&apos; line {1}. {2}.
         /// </summary>
         internal static string ExpressionEvaluateError {
             get {
@@ -300,6 +300,15 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string TemplateExpandInvalid {
             get {
                 return ResourceManager.GetString("TemplateExpandInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The template expression &apos;{0}&apos; exceeded the maximum length of 100K characters..
+        /// </summary>
+        internal static string TemplateExpressionTooLong {
+            get {
+                return ResourceManager.GetString("TemplateExpressionTooLong", resourceCulture);
             }
         }
         
