@@ -76,6 +76,7 @@ Automatic nesting a sub-resource requires:
 - References to Key Vault secrets are not expanded.
   A placeholder value is used instead.
 - Multi-line strings are not supported.
+- Template expressions up to a maximum of 100,000 characters are supported.
 
 ## Template links
 
