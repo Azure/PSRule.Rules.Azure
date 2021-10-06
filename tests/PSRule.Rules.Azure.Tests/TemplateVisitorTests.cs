@@ -182,6 +182,17 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Other", actual1["properties"]["value4"].Value<string>());
         }
 
+        [Fact]
+        public void NestedDeploymentWithMock()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.7.json"), null);
+            Assert.NotNull(resources);
+            Assert.Single(resources);
+
+            var actual1 = resources[0];
+            Assert.Equal("Microsoft.Authorization/roleAssignments", actual1["type"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
