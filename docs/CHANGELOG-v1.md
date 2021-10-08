@@ -9,6 +9,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since pre-release v1.9.0-B2110014:
 
+- Engineering:
+  - Bump PSRule dependency to v1.8.0. [#1018](https://github.com/Azure/PSRule.Rules.Azure/issues/1018)
 - Bug fixes:
   - Fixed `Azure.ACR.AdminUser` fails when `adminUserEnabled` not set. [#1014](https://github.com/Azure/PSRule.Rules.Azure/issues/1014)
 
