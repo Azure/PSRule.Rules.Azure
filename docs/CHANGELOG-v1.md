@@ -7,6 +7,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.9.0-B2110025:
+
+- New rules:
+  - User Assigned Managed Identity:
+    - Check identities meet naming requirements. [#1021](https://github.com/Azure/PSRule.Rules.Azure/issues/1021)
+
 ## v1.9.0-B2110025 (pre-release)
 
 What's changed since pre-release v1.9.0-B2110014:
