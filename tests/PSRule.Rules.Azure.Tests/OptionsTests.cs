@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using PSRule.Rules.Azure.Configuration;
 using System;
 using System.Collections;
 using System.IO;
+using PSRule.Rules.Azure.Configuration;
 using Xunit;
 
 namespace PSRule.Rules.Azure

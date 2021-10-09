@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using PSRule.Rules.Azure.Pipeline;
 using System;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
+using PSRule.Rules.Azure.Pipeline;
 
 namespace PSRule.Rules.Azure.Data.Template
 {

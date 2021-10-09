@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using PSRule.Rules.Azure.Configuration;
-using PSRule.Rules.Azure.Resources;
 using System.IO;
 using System.Text;
+using PSRule.Rules.Azure.Configuration;
+using PSRule.Rules.Azure.Resources;
 
 namespace PSRule.Rules.Azure.Pipeline.Output
 {
