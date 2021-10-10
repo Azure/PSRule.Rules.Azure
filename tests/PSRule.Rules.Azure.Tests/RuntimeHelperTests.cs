@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using PSRule.Rules.Azure.Runtime;
 using System;
 using System.Management.Automation;
+using PSRule.Rules.Azure.Runtime;
 using Xunit;
 
 namespace PSRule.Rules.Azure

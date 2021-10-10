@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using PSRule.Rules.Azure.Pipeline;
 using System;
 using System.IO;
 using System.Linq;
+using PSRule.Rules.Azure.Pipeline;
 using Xunit;
 
 namespace PSRule.Rules.Azure

@@ -1,9 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using PSRule.Rules.Azure.Resources;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +11,9 @@ using System.Text;
 using System.Threading;
 using System.Web;
 using System.Xml;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Resources;
 using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template

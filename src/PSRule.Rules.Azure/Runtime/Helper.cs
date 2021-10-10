@@ -1,13 +1,13 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.Management.Automation;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Bicep;
 using PSRule.Rules.Azure.Data.Network;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Pipeline.Output;
-using System.Management.Automation;
 
 namespace PSRule.Rules.Azure.Runtime
 {

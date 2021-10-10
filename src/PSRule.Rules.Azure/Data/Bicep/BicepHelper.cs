@@ -1,12 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using PSRule.Rules.Azure.Configuration;
-using PSRule.Rules.Azure.Data.Template;
-using PSRule.Rules.Azure.Pipeline;
-using PSRule.Rules.Azure.Resources;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,6 +9,12 @@ using System.Management.Automation;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Configuration;
+using PSRule.Rules.Azure.Data.Template;
+using PSRule.Rules.Azure.Pipeline;
+using PSRule.Rules.Azure.Resources;
 
 namespace PSRule.Rules.Azure.Data.Bicep
 {
@@ -359,7 +359,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
         private static string GetBicepBuildArgs(string sourcePath, bool useAzCLI)
         {
             GetBicepBuildAdditionalArgs(out string args);
-            return string.Concat("build --stdout ", args, useAzCLI ? " --file" : string.Empty , " \"", sourcePath, "\"");
+            return string.Concat("build --stdout ", args, useAzCLI ? " --file" : string.Empty, " \"", sourcePath, "\"");
         }
 
         private static string GetBicepVersionArgs(bool useAzCLI)

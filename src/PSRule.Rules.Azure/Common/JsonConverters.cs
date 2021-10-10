@@ -1,14 +1,14 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using Newtonsoft.Json;
-using PSRule.Rules.Azure.Data.Template;
-using PSRule.Rules.Azure.Pipeline;
-using PSRule.Rules.Azure.Resources;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
+using Newtonsoft.Json;
+using PSRule.Rules.Azure.Data.Template;
+using PSRule.Rules.Azure.Pipeline;
+using PSRule.Rules.Azure.Resources;
 
 namespace PSRule.Rules.Azure
 {

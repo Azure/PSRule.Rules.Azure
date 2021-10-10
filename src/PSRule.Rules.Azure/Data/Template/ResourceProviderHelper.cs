@@ -2,10 +2,10 @@
 // Licensed under the MIT License.
 
 using System;
-using System.IO;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace PSRule.Rules.Azure.Data.Template
 {

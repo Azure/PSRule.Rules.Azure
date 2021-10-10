@@ -1,13 +1,13 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using BenchmarkDotNet.Attributes;
-using PSRule.Rules.Azure.Configuration;
-using PSRule.Rules.Azure.Pipeline;
 using System;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
+using BenchmarkDotNet.Attributes;
+using PSRule.Rules.Azure.Configuration;
+using PSRule.Rules.Azure.Pipeline;
 
 namespace PSRule.Rules.Azure.Benchmark
 {
