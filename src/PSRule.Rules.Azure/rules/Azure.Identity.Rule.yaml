@@ -1,0 +1,27 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for User Assigned Managed Identity
+#
+
+---
+# Synopsis: User Assigned Managed Identity names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Identity.UserAssignedName
+  tags:
+    release: GA
+    ruleSet: 2021_12
+spec:
+  type:
+  - Microsoft.ManagedIdentity/userAssignedIdentities
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 3
+    - name: '.'
+      lessOrEquals: 128
+    - name: '.'
+      match: '^[a-zA-Z0-9][a-zA-Z0-9\-_]{2,127}$'
