@@ -377,6 +377,12 @@ Name | Synopsis | Severity
 [Azure.TrafficManager.Endpoints](Azure.TrafficManager.Endpoints.md) | Traffic Manager should use at lest two enabled endpoints. | Important
 [Azure.TrafficManager.Protocol](Azure.TrafficManager.Protocol.md) | Monitor Traffic Manager web-based endpoints with HTTPS. | Important
 
+## User Assigned Managed Identity
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.Identity.UserAssignedName](Azure.Identity.UserAssignedName.md) | Managed Identity names should meet naming requirements. | Awareness
+
 ## Virtual Machine
 
 Name | Synopsis | Severity
