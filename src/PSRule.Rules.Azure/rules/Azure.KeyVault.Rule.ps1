@@ -35,14 +35,12 @@ Rule 'Azure.KeyVault.AccessPolicy' -Type 'Microsoft.KeyVault/vaults', 'Microsoft
 
 # Synopsis: Use diagnostics to audit Key Vault access
 Rule 'Azure.KeyVault.Logs' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Reason $LocalizedData.DiagnosticSettingsNotConfigured;
-    $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.KeyVault/vaults/providers/diagnosticSettings' | Where-Object {
-        $_.Properties.logs[0].category -eq 'AuditEvent'
+    $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.KeyVault/vaults/providers/diagnosticSettings' | ForEach-Object {
+        $_.Properties.logs | Where-Object {
+            $_.category -eq 'AuditEvent' -and $_.enabled
+        }
     });
-    $Null -ne $diagnostics -and $diagnostics.Length -gt 0;
-    foreach ($setting in $diagnostics) {
-        $Assert.HasFieldValue($setting, 'Properties.logs[0].enabled', $True);
-    }
+    $Assert.Greater($diagnostics, '.', 0).Reason($LocalizedData.DiagnosticSettingsLoggingNotConfigured, 'AuditEvent');
 }
 
 # Synopsis: Key Vault names should meet naming requirements.

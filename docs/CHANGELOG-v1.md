@@ -12,6 +12,11 @@ What's changed since pre-release v1.9.0-B2110025:
 - New rules:
   - User Assigned Managed Identity:
     - Check identities meet naming requirements. [#1021](https://github.com/Azure/PSRule.Rules.Azure/issues/1021)
+- Bug fixes:
+  - Fixed `Azure.KeyVault.Logs` reports cannot index into a null array. [#1024](https://github.com/Azure/PSRule.Rules.Azure/issues/1024)
+  - Fixed template function empty returns object reference not set exception. [#1025](https://github.com/Azure/PSRule.Rules.Azure/issues/1025)
+  - Fixed delayed binding of `and` template function. [#1026](https://github.com/Azure/PSRule.Rules.Azure/issues/1026)
+  - Fixed template function array nests array with array parameters. [#1027](https://github.com/Azure/PSRule.Rules.Azure/issues/1027)
 
 ## v1.9.0-B2110025 (pre-release)
 
