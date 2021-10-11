@@ -62,7 +62,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("variables", Variables),
 
             // Logical
-            new FunctionDescriptor("and", And),
+            new FunctionDescriptor("and", And, delayBinding: true),
             new FunctionDescriptor("bool", Bool),
             new FunctionDescriptor("false", False),
             new FunctionDescriptor("if", If, delayBinding: true),
@@ -142,6 +142,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Array), args);
 
+            if (TryJArray(args[0], out JArray jArray))
+                return jArray;
+
             return new JArray(args[0]);
         }
 
@@ -208,13 +211,13 @@ namespace PSRule.Rules.Azure.Data.Template
 
             if (args[0] == null)
                 return true;
-            else if (args[0] is Array avalue)
-                return avalue.Length == 0;
-            else if (args[0] is JArray jArray)
+            else if (args[0] is Array aValue)
+                return aValue.Length == 0;
+            else if (TryJArray(args[0], out JArray jArray))
                 return jArray.Count == 0;
-            else if (args[0] is string svalue)
-                return string.IsNullOrEmpty(svalue);
-            else if (args[0] is JObject jObject)
+            else if (ExpressionHelpers.TryString(args[0], out string sValue))
+                return string.IsNullOrEmpty(sValue);
+            else if (TryJObject(args[0], out JObject jObject))
                 return !jObject.Properties().Any();
 
             return false;
@@ -1138,7 +1141,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
             for (var i = 0; i < args.Length; i++)
             {
-                if (!ExpressionHelpers.TryBool(args[i], out bool bvalue) || !bvalue)
+                var expression = GetExpression(context, args[i]);
+                if (!ExpressionHelpers.TryBool(expression, out bool bValue) || !bValue)
                     return false;
             }
             return true;

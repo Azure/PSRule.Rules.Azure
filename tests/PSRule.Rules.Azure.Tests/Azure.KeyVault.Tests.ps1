@@ -48,8 +48,8 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-C', 'keyvault-D', 'keyvault-E';
         }
 
         It 'Azure.KeyVault.PurgeProtect' {
@@ -64,8 +64,8 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'keyvault-A';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-D', 'keyvault-E';
         }
 
         It 'Azure.KeyVault.AccessPolicy' {
@@ -83,8 +83,8 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-C', 'keyvault-D', 'keyvault-E';
         }
 
         It 'Azure.KeyVault.Logs' {
@@ -93,13 +93,13 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'keyvault-B', 'keyvault-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-B', 'keyvault-C', 'keyvault-D', 'keyvault-E';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[0].Reason | Should -BeExactly "Diagnostic settings is not configured to log events for 'AuditEvent'.";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -Be @("Diagnostic settings are not configured.", "The field 'Properties.logs[0].enabled' is set to 'False'.");
+            $ruleResult[1].Reason | Should -BeExactly "Diagnostic settings is not configured to log events for 'AuditEvent'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

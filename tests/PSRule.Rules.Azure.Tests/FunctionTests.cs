@@ -35,9 +35,11 @@ namespace PSRule.Rules.Azure
             var actual1 = Functions.Array(context, new object[] { 1 }) as JArray;
             var actual2 = Functions.Array(context, new object[] { "efgh" }) as JArray;
             var actual3 = Functions.Array(context, new object[] { JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }") }) as JArray;
+            var actual4 = Functions.Array(context, new object[] { new JArray() }) as JArray;
             Assert.Equal(1, actual1[0]);
             Assert.Equal("efgh", actual2[0]);
             Assert.Equal("b", actual3[0]["a"]);
+            Assert.Empty(actual4);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Array(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Array(context, new object[] { }));
@@ -152,20 +154,26 @@ namespace PSRule.Rules.Azure
             // String
             var actual1 = (bool)Functions.Empty(context, new object[] { "" });
             var actual2 = (bool)Functions.Empty(context, new object[] { "notEmpty" });
+            var actual3 = (bool)Functions.Empty(context, new object[] { new JValue("") });
             Assert.True(actual1);
             Assert.False(actual2);
+            Assert.True(actual3);
 
             // Object
-            var actual3 = (bool)Functions.Empty(context, new object[] { JObject.Parse("{}") });
-            var actual4 = (bool)Functions.Empty(context, new object[] { JObject.Parse("{ \"name\": \"test\" }") });
-            Assert.True(actual3);
-            Assert.False(actual4);
+            var actual4 = (bool)Functions.Empty(context, new object[] { JObject.Parse("{}") });
+            var actual5 = (bool)Functions.Empty(context, new object[] { JObject.Parse("{ \"name\": \"test\" }") });
+            var actual6 = (bool)Functions.Empty(context, new object[] { JToken.Parse("{}") });
+            Assert.True(actual4);
+            Assert.False(actual5);
+            Assert.True(actual6);
 
             // Array
-            var actual5 = (bool)Functions.Empty(context, new object[] { new JArray() });
-            var actual6 = (bool)Functions.Empty(context, new object[] { new JArray(JObject.Parse("{}")) });
-            Assert.True(actual5);
-            Assert.False(actual6);
+            var actual7 = (bool)Functions.Empty(context, new object[] { new JArray() });
+            var actual8 = (bool)Functions.Empty(context, new object[] { new JArray(JObject.Parse("{}")) });
+            var actual9 = (bool)Functions.Empty(context, new object[] { JToken.Parse("[]") });
+            Assert.True(actual7);
+            Assert.False(actual8);
+            Assert.True(actual9);
         }
 
         [Fact]

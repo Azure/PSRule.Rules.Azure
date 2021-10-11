@@ -124,6 +124,18 @@ namespace PSRule.Rules.Azure
             Assert.Equal("4/7/2020 3:53:14 PM", actual3);
         }
 
+        [Fact]
+        public void AndDelayBinding()
+        {
+            var andLateBinding = "[and(not(empty(parameters('blobContainers'))),contains(parameters('blobContainers')[0],'enableWORM'),parameters('blobContainers')[0].enableWORM)]";
+            var context = GetContext();
+            context.Parameter("blobContainers", JToken.Parse("[{ }, { \"enableWORM\": true }]"));
+
+            var actual1 = Build(context, andLateBinding);
+
+            Assert.Equal(false, actual1);
+        }
+
         private static object Build(TemplateContext context, string expression)
         {
             var builder = new ExpressionBuilder();
