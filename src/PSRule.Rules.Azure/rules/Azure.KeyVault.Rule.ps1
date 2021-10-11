@@ -40,7 +40,7 @@ Rule 'Azure.KeyVault.Logs' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = '
             $_.category -eq 'AuditEvent' -and $_.enabled
         }
     });
-    $Assert.Greater($diagnostics, '.', 0).Reason($LocalizedData.DiagnosticSettingsNotLogging, 'AuditEvent');
+    $Assert.Greater($diagnostics, '.', 0).Reason($LocalizedData.DiagnosticSettingsLoggingNotConfigured, 'AuditEvent');
 }
 
 # Synopsis: Key Vault names should meet naming requirements.
