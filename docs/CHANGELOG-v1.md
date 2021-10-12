@@ -7,6 +7,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.9.0-B2110040:
+
+Bug fixes:
+Azure Container Registry
+Changed property that is read for Azure.ACR.MinSKU #1034
+
 ## v1.9.0-B2110040 (pre-release)
 
 What's changed since pre-release v1.9.0-B2110025:
