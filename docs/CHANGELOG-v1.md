@@ -11,7 +11,7 @@ What's changed since pre-release v1.9.0-B2110040:
 
 Bug fixes:
 Azure Container Registry
-Changed property that is read for Azure.ACR.MinSKU #1034
+Changed property that is read for Azure.ACR.MinSKU [#1034](https://github.com/Azure/PSRule.Rules.Azure/issues/1034)
 
 ## v1.9.0-B2110040 (pre-release)
 
