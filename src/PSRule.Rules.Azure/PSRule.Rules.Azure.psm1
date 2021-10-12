@@ -673,6 +673,10 @@ function VisitAPIManagement {
             $resources += Get-AzResource @apiParams;
         }
 
+        # Add zones in from REST API because they are not included from Get-AzResource
+        $apiManagementServicePrimaryZones = ((Invoke-AzRestMethod -Path "$($Resource.ResourceId)?api-version=2020-12-01" -Method GET).Content | ConvertFrom-Json).zones;
+        $Resource = $Resource | Add-Member -MemberType NoteProperty -Name zones -Value $apiManagementServicePrimaryZones -PassThru;
+
         $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/backends' -ApiVersion '2019-12-01';
         $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/products' -ApiVersion '2019-12-01';
         $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.ApiManagement/service/policies' -ApiVersion '2019-12-01';

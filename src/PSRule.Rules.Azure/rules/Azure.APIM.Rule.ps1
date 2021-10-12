@@ -217,3 +217,61 @@ Rule 'Azure.APIM.Name' -Type 'Microsoft.ApiManagement/service' -Tag @{ release =
     # End with letter or number
     $Assert.Match($PSRule, 'TargetName', '^[a-zA-Z]([A-Za-z0-9-]*[a-zA-Z0-9]){0,49}$');
 }
+
+# Synopsis: API management services deployed with Premium SKU should use availability zones in supported regions for high availability.
+Rule 'Azure.APIM.AvailabilityZone' -Type 'Microsoft.ApiManagement/service' -If { IsPremiumAPIM } -Tag @{ release = 'GA'; ruleSet = '2021_12' } {
+    $apiManagementServiceProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.ApiManagement', 'service');
+
+    $configurationZoneMappings = $Configuration.AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
+    $providerZoneMappings = $apiManagementServiceProvider.ZoneMappings;
+    $mergedAvailabilityZones = PrependConfigurationZoneWithProviderZone -ConfigurationZone $configurationZoneMappings -ProviderZone $providerZoneMappings;
+
+    $primaryLocationAvailabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $mergedAvailabilityZones;
+
+    # Validate primary location availability zones
+    if (-not $primaryLocationAvailabilityZones) {
+        $Assert.Pass();
+    }
+    else {
+        $Assert.HasFieldValue($TargetObject, 'zones').
+            Reason(
+                $LocalizedData.APIMAvailabilityZone, 
+                $TargetObject.name, 
+                $TargetObject.Location, 
+                ($primaryLocationAvailabilityZones -join ', ')
+            );
+    }
+
+    # Also validate any additional locations that are added to APIM
+    if (-not $Assert.NullOrEmpty($TargetObject, 'Properties.additionalLocations').Result) {
+        foreach ($additionalLocation in $TargetObject.Properties.additionalLocations) {
+            $additionalLocationAvailabilityZones = GetAvailabilityZone -Location $additionalLocation.Location -Zone $mergedAvailabilityZones;
+
+            if (-not $additionalLocationAvailabilityZones) {
+                $Assert.Pass();
+            }
+            else {
+                $Assert.HasFieldValue($additionalLocation, 'zones').
+                    Reason(
+                        $LocalizedData.APIMAvailabilityZone, 
+                        $TargetObject.name, 
+                        $additionalLocation.Location, 
+                        ($additionalLocationAvailabilityZones -join ', ')
+                    );
+            }
+        }
+    }
+} -Configure @{ AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
+
+#region Helper functions
+
+function global:IsPremiumAPIM {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        return $Assert.HasFieldValue($TargetObject, 'sku.name', 'Premium').Result;
+    }
+}
+
+#endregion Helper functions
