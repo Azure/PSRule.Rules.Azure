@@ -31,6 +31,7 @@
     APIMCertificateExpiry = "The certificate for host name '{0}' expires or expired on '{1}'."
     APIMDescriptors = "The {0} '{1}' does not have a {2} set."
     APIMSecretNamedValues = "The named value '{0}' is not secret."
+    APIMAvailabilityZone = "The API management service ({0}) deployed to region ({1}) should use a minimum of two availability zones from the following [{2}]."
     PublicAccessStorageContainer = "The container '{0}' is configured with access type '{1}'."
     RoleAssignmentCount = "The number of assignments is {0}."
     UnmanagedDisk = "The VM disk '{0}' is unmanaged."
