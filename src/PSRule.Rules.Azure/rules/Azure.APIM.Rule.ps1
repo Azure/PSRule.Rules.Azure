@@ -233,17 +233,21 @@ Rule 'Azure.APIM.AvailabilityZone' -Type 'Microsoft.ApiManagement/service' -If {
         $Assert.Pass();
     }
     else {
-        $Assert.HasFieldValue($TargetObject, 'zones').
-            Reason(
-                $LocalizedData.APIMAvailabilityZone, 
-                $TargetObject.name, 
-                $TargetObject.Location, 
-                ($primaryLocationAvailabilityZones -join ', ')
-            );
+        $hasValidUnits = $Assert.GreaterOrEqual($TargetObject, 'sku.capacity', $TargetObject.zones.Length).Result;
+        $hasValidZones = $Assert.GreaterOrEqual($TargetObject, 'zones', 2).Result;
+
+        $Assert.Create(
+            ($hasValidUnits -and $hasValidZones),
+            $LocalizedData.APIMAvailabilityZone, 
+            $TargetObject.name, 
+            $TargetObject.Location, 
+            ($primaryLocationAvailabilityZones -join ', ')
+        )
     }
 
     # Also validate any additional locations that are added to APIM
     if (-not $Assert.NullOrEmpty($TargetObject, 'Properties.additionalLocations').Result) {
+
         foreach ($additionalLocation in $TargetObject.Properties.additionalLocations) {
             $additionalLocationAvailabilityZones = GetAvailabilityZone -Location $additionalLocation.Location -Zone $mergedAvailabilityZones;
 
@@ -251,13 +255,16 @@ Rule 'Azure.APIM.AvailabilityZone' -Type 'Microsoft.ApiManagement/service' -If {
                 $Assert.Pass();
             }
             else {
-                $Assert.HasFieldValue($additionalLocation, 'zones').
-                    Reason(
-                        $LocalizedData.APIMAvailabilityZone, 
-                        $TargetObject.name, 
-                        $additionalLocation.Location, 
-                        ($additionalLocationAvailabilityZones -join ', ')
-                    );
+                $hasValidUnits = $Assert.GreaterOrEqual($additionalLocation, 'sku.capacity', $additionalLocation.zones.Length).Result;
+                $hasValidZones = $Assert.GreaterOrEqual($additionalLocation, 'zones', 2).Result;
+
+                $Assert.Create(
+                    ($hasValidUnits -and $hasValidZones),
+                    $LocalizedData.APIMAvailabilityZone, 
+                    $TargetObject.name, 
+                    $additionalLocation.Location, 
+                    ($additionalLocationAvailabilityZones -join ', ')
+                );
             }
         }
     }

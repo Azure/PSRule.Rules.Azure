@@ -2102,5 +2102,481 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "resources": [],
         "Zones": null
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-M",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-M",
+        "Identity": {
+            "PrincipalId": "00000000-0000-0000-0000-000000000000",
+            "TenantId": "00000000-0000-0000-0000-000000000000",
+            "Type": "UserAssigned",
+            "UserAssignedIdentities": null
+        },
+        "Kind": null,
+        "Location": "australiaeast",
+        "ManagedBy": null,
+        "ResourceName": "apim-M",
+        "Name": "apim-M",
+        "Plan": null,
+        "Properties": {
+            "publisherEmail": "email",
+            "publisherName": "n/a",
+            "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
+            "provisioningState": "Succeeded",
+            "targetProvisioningState": "",
+            "gatewayUrl": "https://apim-M.azure-api.net",
+            "gatewayRegionalUrl": "https://apim-M-australiaeast-01.regional.azure-api.net",
+            "portalUrl": "https://apim-M.portal.azure-api.net",
+            "developerPortalUrl": "https://apim-M.developer.azure-api.net",
+            "managementApiUrl": "https://apim-M.management.azure-api.net",
+            "scmUrl": "https://apim-M.scm.azure-api.net",
+            "hostnameConfigurations": [
+                {
+                    "type": "Proxy",
+                    "hostName": "apim-M.azure-api.net",
+                    "encodedCertificate": null,
+                    "keyVaultId": null,
+                    "certificatePassword": null,
+                    "negotiateClientCertificate": false,
+                    "certificate": null,
+                    "defaultSslBinding": false
+                },
+                {
+                    "type": "Proxy",
+                    "hostName": "api.contoso.com",
+                    "encodedCertificate": null,
+                    "keyVaultId": "https://vault-A.vault.azure.net/secrets/apicert",
+                    "certificatePassword": null,
+                    "negotiateClientCertificate": false,
+                    "certificate": {
+                        "expiry": "2020-01-01T12:00:00+00:00",
+                        "thumbprint": "0000000000000000000000000000000000000000",
+                        "subject": "CN=api.contoso.com, OU=A, O=O, L=L, S=S, C=C"
+                    },
+                    "defaultSslBinding": true
+                },
+                {
+                    "type": "Management",
+                    "hostName": "management.contoso.com",
+                    "encodedCertificate": null,
+                    "keyVaultId": "https://vault-A.vault.azure.net/secrets/managementcert",
+                    "certificatePassword": null,
+                    "negotiateClientCertificate": false,
+                    "certificate": {
+                        "expiry": "2099-01-01T12:00:00+00:00",
+                        "thumbprint": "0000000000000000000000000000000000000000",
+                        "subject": "CN=management.contoso.com, OU=A, O=O, L=L, S=S, C=C"
+                    },
+                    "defaultSslBinding": false
+                }
+            ],
+            "publicIPAddresses": [
+                "0.0.0.0"
+            ],
+            "privateIPAddresses": null,
+            "additionalLocations": [
+                {
+                    "location": "East US",
+                    "sku": {
+                      "name": "Premium",
+                      "capacity": 3
+                    },
+                    "zones": [
+                      "1",
+                      "2",
+                      "3"
+                    ],
+                    "publicIPAddresses": [
+                      "xx.xx.xx.xx"
+                    ],
+                    "privateIPAddresses": null,
+                    "virtualNetworkConfiguration": null,
+                    "gatewayRegionalUrl": "https://apim-F-eastus-01.regional.azure-api.ne",
+                    "disableGateway": false
+                }
+            ],
+            "virtualNetworkConfiguration": null,
+            "customProperties": {
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": "False"
+            },
+            "virtualNetworkType": "None",
+            "certificates": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ApiManagement/service",
+        "ResourceType": "Microsoft.ApiManagement/service",
+        "Sku": {
+            "Name": "Premium",
+            "Tier": null,
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": 3
+        },
+        "Tags": {},
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [],
+        "Zones": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-N",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-N",
+        "Identity": {
+            "PrincipalId": "00000000-0000-0000-0000-000000000000",
+            "TenantId": "00000000-0000-0000-0000-000000000000",
+            "Type": "UserAssigned",
+            "UserAssignedIdentities": null
+        },
+        "Kind": null,
+        "Location": "australiaeast",
+        "ManagedBy": null,
+        "ResourceName": "apim-N",
+        "Name": "apim-N",
+        "Plan": null,
+        "Properties": {
+            "publisherEmail": "email",
+            "publisherName": "n/a",
+            "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
+            "provisioningState": "Succeeded",
+            "targetProvisioningState": "",
+            "gatewayUrl": "https://apim-N.azure-api.net",
+            "gatewayRegionalUrl": "https://apim-N-australiaeast-01.regional.azure-api.net",
+            "portalUrl": "https://apim-N.portal.azure-api.net",
+            "developerPortalUrl": "https://apim-N.developer.azure-api.net",
+            "managementApiUrl": "https://apim-N.management.azure-api.net",
+            "scmUrl": "https://apim-N.scm.azure-api.net",
+            "hostnameConfigurations": [
+                {
+                    "type": "Proxy",
+                    "hostName": "apim-N.azure-api.net",
+                    "encodedCertificate": null,
+                    "keyVaultId": null,
+                    "certificatePassword": null,
+                    "negotiateClientCertificate": false,
+                    "certificate": null,
+                    "defaultSslBinding": false
+                },
+                {
+                    "type": "Proxy",
+                    "hostName": "api.contoso.com",
+                    "encodedCertificate": null,
+                    "keyVaultId": "https://vault-A.vault.azure.net/secrets/apicert",
+                    "certificatePassword": null,
+                    "negotiateClientCertificate": false,
+                    "certificate": {
+                        "expiry": "2020-01-01T12:00:00+00:00",
+                        "thumbprint": "0000000000000000000000000000000000000000",
+                        "subject": "CN=api.contoso.com, OU=A, O=O, L=L, S=S, C=C"
+                    },
+                    "defaultSslBinding": true
+                },
+                {
+                    "type": "Management",
+                    "hostName": "management.contoso.com",
+                    "encodedCertificate": null,
+                    "keyVaultId": "https://vault-A.vault.azure.net/secrets/managementcert",
+                    "certificatePassword": null,
+                    "negotiateClientCertificate": false,
+                    "certificate": {
+                        "expiry": "2099-01-01T12:00:00+00:00",
+                        "thumbprint": "0000000000000000000000000000000000000000",
+                        "subject": "CN=management.contoso.com, OU=A, O=O, L=L, S=S, C=C"
+                    },
+                    "defaultSslBinding": false
+                }
+            ],
+            "publicIPAddresses": [
+                "0.0.0.0"
+            ],
+            "privateIPAddresses": null,
+            "additionalLocations": [
+                {
+                    "location": "East US",
+                    "sku": {
+                      "name": "Premium",
+                      "capacity": 2
+                    },
+                    "zones": [
+                      "1",
+                      "2"
+                    ],
+                    "publicIPAddresses": [
+                      "xx.xx.xx.xx"
+                    ],
+                    "privateIPAddresses": null,
+                    "virtualNetworkConfiguration": null,
+                    "gatewayRegionalUrl": "https://apim-F-eastus-01.regional.azure-api.ne",
+                    "disableGateway": false
+                }
+            ],
+            "virtualNetworkConfiguration": null,
+            "customProperties": {
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": "False"
+            },
+            "virtualNetworkType": "None",
+            "certificates": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ApiManagement/service",
+        "ResourceType": "Microsoft.ApiManagement/service",
+        "Sku": {
+            "Name": "Premium",
+            "Tier": null,
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": 2
+        },
+        "Tags": {},
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [],
+        "Zones": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-O",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-O",
+        "Identity": {
+            "PrincipalId": "00000000-0000-0000-0000-000000000000",
+            "TenantId": "00000000-0000-0000-0000-000000000000",
+            "Type": "UserAssigned",
+            "UserAssignedIdentities": null
+        },
+        "Kind": null,
+        "Location": "australiaeast",
+        "ManagedBy": null,
+        "ResourceName": "apim-O",
+        "Name": "apim-O",
+        "Plan": null,
+        "Properties": {
+            "publisherEmail": "email",
+            "publisherName": "n/a",
+            "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
+            "provisioningState": "Succeeded",
+            "targetProvisioningState": "",
+            "gatewayUrl": "https://apim-O.azure-api.net",
+            "gatewayRegionalUrl": "https://apim-O-australiaeast-01.regional.azure-api.net",
+            "portalUrl": "https://apim-O.portal.azure-api.net",
+            "developerPortalUrl": "https://apim-O.developer.azure-api.net",
+            "managementApiUrl": "https://apim-O.management.azure-api.net",
+            "scmUrl": "https://apim-O.scm.azure-api.net",
+            "hostnameConfigurations": [
+                {
+                    "type": "Proxy",
+                    "hostName": "apim-O.azure-api.net",
+                    "encodedCertificate": null,
+                    "keyVaultId": null,
+                    "certificatePassword": null,
+                    "negotiateClientCertificate": false,
+                    "certificate": null,
+                    "defaultSslBinding": false
+                },
+                {
+                    "type": "Proxy",
+                    "hostName": "api.contoso.com",
+                    "encodedCertificate": null,
+                    "keyVaultId": "https://vault-A.vault.azure.net/secrets/apicert",
+                    "certificatePassword": null,
+                    "negotiateClientCertificate": false,
+                    "certificate": {
+                        "expiry": "2020-01-01T12:00:00+00:00",
+                        "thumbprint": "0000000000000000000000000000000000000000",
+                        "subject": "CN=api.contoso.com, OU=A, O=O, L=L, S=S, C=C"
+                    },
+                    "defaultSslBinding": true
+                },
+                {
+                    "type": "Management",
+                    "hostName": "management.contoso.com",
+                    "encodedCertificate": null,
+                    "keyVaultId": "https://vault-A.vault.azure.net/secrets/managementcert",
+                    "certificatePassword": null,
+                    "negotiateClientCertificate": false,
+                    "certificate": {
+                        "expiry": "2099-01-01T12:00:00+00:00",
+                        "thumbprint": "0000000000000000000000000000000000000000",
+                        "subject": "CN=management.contoso.com, OU=A, O=O, L=L, S=S, C=C"
+                    },
+                    "defaultSslBinding": false
+                }
+            ],
+            "publicIPAddresses": [
+                "0.0.0.0"
+            ],
+            "privateIPAddresses": null,
+            "additionalLocations": null,
+            "virtualNetworkConfiguration": null,
+            "customProperties": {
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": "False"
+            },
+            "virtualNetworkType": "None",
+            "certificates": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ApiManagement/service",
+        "ResourceType": "Microsoft.ApiManagement/service",
+        "Sku": {
+            "Name": "Premium",
+            "Tier": null,
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": 2
+        },
+        "Tags": {},
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [],
+        "Zones": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-P",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-P",
+        "Identity": {
+            "PrincipalId": "00000000-0000-0000-0000-000000000000",
+            "TenantId": "00000000-0000-0000-0000-000000000000",
+            "Type": "UserAssigned",
+            "UserAssignedIdentities": null
+        },
+        "Kind": null,
+        "Location": "australiaeast",
+        "ManagedBy": null,
+        "ResourceName": "apim-P",
+        "Name": "apim-P",
+        "Plan": null,
+        "Properties": {
+            "publisherEmail": "email",
+            "publisherName": "n/a",
+            "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
+            "provisioningState": "Succeeded",
+            "targetProvisioningState": "",
+            "gatewayUrl": "https://apim-P.azure-api.net",
+            "gatewayRegionalUrl": "https://apim-P-australiaeast-01.regional.azure-api.net",
+            "portalUrl": "https://apim-P.portal.azure-api.net",
+            "developerPortalUrl": "https://apim-P.developer.azure-api.net",
+            "managementApiUrl": "https://apim-P.management.azure-api.net",
+            "scmUrl": "https://apim-P.scm.azure-api.net",
+            "hostnameConfigurations": [
+                {
+                    "type": "Proxy",
+                    "hostName": "apim-P.azure-api.net",
+                    "encodedCertificate": null,
+                    "keyVaultId": null,
+                    "certificatePassword": null,
+                    "negotiateClientCertificate": false,
+                    "certificate": null,
+                    "defaultSslBinding": false
+                },
+                {
+                    "type": "Proxy",
+                    "hostName": "api.contoso.com",
+                    "encodedCertificate": null,
+                    "keyVaultId": "https://vault-A.vault.azure.net/secrets/apicert",
+                    "certificatePassword": null,
+                    "negotiateClientCertificate": false,
+                    "certificate": {
+                        "expiry": "2020-01-01T12:00:00+00:00",
+                        "thumbprint": "0000000000000000000000000000000000000000",
+                        "subject": "CN=api.contoso.com, OU=A, O=O, L=L, S=S, C=C"
+                    },
+                    "defaultSslBinding": true
+                },
+                {
+                    "type": "Management",
+                    "hostName": "management.contoso.com",
+                    "encodedCertificate": null,
+                    "keyVaultId": "https://vault-A.vault.azure.net/secrets/managementcert",
+                    "certificatePassword": null,
+                    "negotiateClientCertificate": false,
+                    "certificate": {
+                        "expiry": "2099-01-01T12:00:00+00:00",
+                        "thumbprint": "0000000000000000000000000000000000000000",
+                        "subject": "CN=management.contoso.com, OU=A, O=O, L=L, S=S, C=C"
+                    },
+                    "defaultSslBinding": false
+                }
+            ],
+            "publicIPAddresses": [
+                "0.0.0.0"
+            ],
+            "privateIPAddresses": null,
+            "additionalLocations": [
+                {
+                    "location": "East US",
+                    "sku": {
+                      "name": "Premium",
+                      "capacity": 1
+                    },
+                    "zones": null,
+                    "publicIPAddresses": [
+                      "xx.xx.xx.xx"
+                    ],
+                    "privateIPAddresses": null,
+                    "virtualNetworkConfiguration": null,
+                    "gatewayRegionalUrl": "https://apim-F-eastus-01.regional.azure-api.ne",
+                    "disableGateway": false
+                }
+            ],
+            "virtualNetworkConfiguration": null,
+            "customProperties": {
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "False",
+                "Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": "False"
+            },
+            "virtualNetworkType": "None",
+            "certificates": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ApiManagement/service",
+        "ResourceType": "Microsoft.ApiManagement/service",
+        "Sku": {
+            "Name": "Premium",
+            "Tier": null,
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": 2
+        },
+        "Tags": {},
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [],
+        "Zones": [
+            "1",
+            "2"
+        ]
     }
 ]

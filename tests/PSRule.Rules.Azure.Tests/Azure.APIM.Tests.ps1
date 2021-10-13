@@ -48,8 +48,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 11;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 15;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.HTTPEndpoint' {
@@ -64,8 +64,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 11;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 15;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.APIDescriptors' {
@@ -87,8 +87,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 10;
-            $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 14;
+            $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.HTTPBackend' {
@@ -110,8 +110,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 11;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 15;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.EncryptValues' {
@@ -131,8 +131,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 10;
-            $ruleResult.TargetName | Should -Be 'apim-B', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 14;
+            $ruleResult.TargetName | Should -Be 'apim-B', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.ProductSubscription' {
@@ -152,8 +152,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 10;
-            $ruleResult.TargetName | Should -Be 'apim-A', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 14;
+            $ruleResult.TargetName | Should -Be 'apim-A', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.ProductApproval' {
@@ -171,8 +171,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 11;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 15;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.SampleProducts' {
@@ -187,8 +187,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 11;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 15;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.ProductDescriptors' {
@@ -204,8 +204,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 11;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 15;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.ProductTerms' {
@@ -236,8 +236,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 10;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 14;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.ManagedIdentity' {
@@ -252,8 +252,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 11;
-            $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 15;
+            $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.CertificateExpiry' {
@@ -262,8 +262,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 10;
-            $ruleResult.TargetName | Should -Be 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 14;
+            $ruleResult.TargetName | Should -Be 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The certificate for host name 'api.contoso.com' expires or expired on '2020/01/01'.";
@@ -285,8 +285,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 12;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-A', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 16;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-A', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.AvailabilityZone' {
@@ -295,28 +295,37 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -BeIn 'apim-D', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 8;
+            $ruleResult.TargetName | Should -BeIn 'apim-D', 'apim-F', 'apim-G', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-P';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The API management service (apim-D) deployed to region (australiaeast) should use the following availability zones [3, 2, 1].";
+            $ruleResult[0].Reason | Should -BeExactly "The API management service (apim-D) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The API management service (apim-I) deployed to region (australiaeast) should use the following availability zones [3, 2, 1].";
-            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The API management service (apim-J) deployed to region (australiaeast) should use the following availability zones [3, 2, 1].";
-            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[3].Reason | Should -Be @(
-                "The API management service (apim-K) deployed to region (australiaeast) should use the following availability zones [3, 2, 1]."
-                "The API management service (apim-K) deployed to region (East US) should use the following availability zones [3, 2, 1]."
+            $ruleResult[1].Reason | Should -Be @(
+                "The API management service (apim-F) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1]."
+                "The API management service (apim-F) deployed to region (East US) should use a minimum of two availability zones from the following [3, 2, 1]."
             )
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "The API management service (apim-G) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "The API management service (apim-I) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
             $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "The API management service (apim-L) deployed to region (Australia East) should use the following availability zones [3, 2, 1].";
+            $ruleResult[4].Reason | Should -BeExactly "The API management service (apim-J) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -Be @(
+                "The API management service (apim-K) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1]."
+                "The API management service (apim-K) deployed to region (East US) should use a minimum of two availability zones from the following [3, 2, 1]."
+            )
+            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[6].Reason | Should -BeExactly "The API management service (apim-L) deployed to region (Australia East) should use a minimum of two availability zones from the following [3, 2, 1].";
+            $ruleResult[7].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[7].Reason | Should -BeExactly "The API management service (apim-P) deployed to region (East US) should use a minimum of two availability zones from the following [3, 2, 1].";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'apim-E', 'apim-F', 'apim-G', 'apim-H';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'apim-E', 'apim-H', 'apim-M', 'apim-N', 'apim-O';
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
@@ -372,7 +381,7 @@ Describe 'Azure.APIM' -Tag 'APIM' {
         }
     }
 
-    Context 'With Configuration Option' {
+    Context 'With Configuration Option' -Tag 'Configuration' {
         BeforeAll {
             $invokeParams = @{
                 Baseline = 'Azure.All'
@@ -403,37 +412,47 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 8;
-            $ruleResult.TargetName | Should -BeIn 'apim-D', 'apim-E', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -BeIn 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-P';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The API management service (apim-D) deployed to region (australiaeast) should use the following availability zones [3, 2, 1].";
+            $ruleResult[0].Reason | Should -BeExactly "The API management service (apim-D) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The API management service (apim-E) deployed to region (australiasoutheast) should use the following availability zones [1, 2, 3].";
+            $ruleResult[1].Reason | Should -BeExactly "The API management service (apim-E) deployed to region (australiasoutheast) should use a minimum of two availability zones from the following [1, 2, 3].";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The API management service (apim-G) deployed to region (Norway East) should use the following availability zones [1, 2, 3].";
-            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[3].Reason | Should -BeExactly "The API management service (apim-H) deployed to region (norwayeast) should use the following availability zones [1, 2, 3].";
-            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "The API management service (apim-I) deployed to region (australiaeast) should use the following availability zones [3, 2, 1].";
-            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[5].Reason | Should -BeExactly "The API management service (apim-J) deployed to region (australiaeast) should use the following availability zones [3, 2, 1].";
-            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[6].Reason | Should -Be @(
-                "The API management service (apim-K) deployed to region (australiaeast) should use the following availability zones [3, 2, 1]."
-                "The API management service (apim-K) deployed to region (East US) should use the following availability zones [3, 2, 1]."
+            $ruleResult[2].Reason | Should -Be @(
+                "The API management service (apim-F) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1]."
+                "The API management service (apim-F) deployed to region (East US) should use a minimum of two availability zones from the following [3, 2, 1]."
             )
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -Be @(
+                "The API management service (apim-G) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1]."
+                "The API management service (apim-G) deployed to region (Norway East) should use a minimum of two availability zones from the following [1, 2, 3]."
+            )
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "The API management service (apim-H) deployed to region (norwayeast) should use a minimum of two availability zones from the following [1, 2, 3].";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "The API management service (apim-I) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
+            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[6].Reason | Should -BeExactly "The API management service (apim-J) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
             $ruleResult[7].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[7].Reason | Should -Be @(
-                "The API management service (apim-L) deployed to region (australiasoutheast) should use the following availability zones [1, 2, 3]."
-                "The API management service (apim-L) deployed to region (Australia East) should use the following availability zones [3, 2, 1]."
+                "The API management service (apim-K) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1]."
+                "The API management service (apim-K) deployed to region (East US) should use a minimum of two availability zones from the following [3, 2, 1]."
             )
+            $ruleResult[8].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[8].Reason | Should -Be @(
+                "The API management service (apim-L) deployed to region (australiasoutheast) should use a minimum of two availability zones from the following [1, 2, 3]."
+                "The API management service (apim-L) deployed to region (Australia East) should use a minimum of two availability zones from the following [3, 2, 1]."
+            )
+            $ruleResult[9].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[9].Reason | Should -BeExactly "The API management service (apim-P) deployed to region (East US) should use a minimum of two availability zones from the following [3, 2, 1].";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'apim-F';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'apim-M', 'apim-N', 'apim-O';
             
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
@@ -449,37 +468,47 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 8;
-            $ruleResult.TargetName | Should -BeIn 'apim-D', 'apim-E', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L';
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -BeIn 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-P';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The API management service (apim-D) deployed to region (australiaeast) should use the following availability zones [3, 2, 1].";
+            $ruleResult[0].Reason | Should -BeExactly "The API management service (apim-D) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The API management service (apim-E) deployed to region (australiasoutheast) should use the following availability zones [1, 2, 3].";
+            $ruleResult[1].Reason | Should -BeExactly "The API management service (apim-E) deployed to region (australiasoutheast) should use a minimum of two availability zones from the following [1, 2, 3].";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The API management service (apim-G) deployed to region (Norway East) should use the following availability zones [1, 2, 3].";
-            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[3].Reason | Should -BeExactly "The API management service (apim-H) deployed to region (norwayeast) should use the following availability zones [1, 2, 3].";
-            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "The API management service (apim-I) deployed to region (australiaeast) should use the following availability zones [3, 2, 1].";
-            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[5].Reason | Should -BeExactly "The API management service (apim-J) deployed to region (australiaeast) should use the following availability zones [3, 2, 1].";
-            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[6].Reason | Should -Be @(
-                "The API management service (apim-K) deployed to region (australiaeast) should use the following availability zones [3, 2, 1]."
-                "The API management service (apim-K) deployed to region (East US) should use the following availability zones [3, 2, 1]."
+            $ruleResult[2].Reason | Should -Be @(
+                "The API management service (apim-F) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1]."
+                "The API management service (apim-F) deployed to region (East US) should use a minimum of two availability zones from the following [3, 2, 1]."
             )
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -Be @(
+                "The API management service (apim-G) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1]."
+                "The API management service (apim-G) deployed to region (Norway East) should use a minimum of two availability zones from the following [1, 2, 3]."
+            )
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "The API management service (apim-H) deployed to region (norwayeast) should use a minimum of two availability zones from the following [1, 2, 3].";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "The API management service (apim-I) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
+            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[6].Reason | Should -BeExactly "The API management service (apim-J) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
             $ruleResult[7].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[7].Reason | Should -Be @(
-                "The API management service (apim-L) deployed to region (australiasoutheast) should use the following availability zones [1, 2, 3]."
-                "The API management service (apim-L) deployed to region (Australia East) should use the following availability zones [3, 2, 1]."
+                "The API management service (apim-K) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1]."
+                "The API management service (apim-K) deployed to region (East US) should use a minimum of two availability zones from the following [3, 2, 1]."
             )
+            $ruleResult[8].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[8].Reason | Should -Be @(
+                "The API management service (apim-L) deployed to region (australiasoutheast) should use a minimum of two availability zones from the following [1, 2, 3]."
+                "The API management service (apim-L) deployed to region (Australia East) should use a minimum of two availability zones from the following [3, 2, 1]."
+            )
+            $ruleResult[9].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[9].Reason | Should -BeExactly "The API management service (apim-P) deployed to region (East US) should use a minimum of two availability zones from the following [3, 2, 1].";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'apim-F';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'apim-M', 'apim-N', 'apim-O';
             
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });

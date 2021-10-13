@@ -25,7 +25,7 @@ Consider using availability zones for API management services deployed with Prem
 
 This rule applies when analyzing resources deployed to Azure using *pre-flight* and *in-flight* data.
 
-This rule fails when `"zones"` is `null`, `[]` or not set when API management service is deployed with Premium SKU and there are supported availability zones for the given region.
+This rule fails when `"zones"` is `null`, `[]` or less than two zones when API management service is deployed with Premium SKU and there are supported availability zones for the given region.
 
 Configure `AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json) for namespace `Microsoft.ApiManagement` and resource type `services`.
 
@@ -41,8 +41,8 @@ configuration:
 
 To set availability zones for a API management service
 
-- Set `zones` to any or all of `["1", "2", "3"]`, depending on how many units are deployed via `sku.capacity`.
-- Set `properties.additionalLocations[*].zones` to any or all of `["1", "2", "3"]`, depending on how many units are deployed via `properties.additionalLocations[*].sku.capacity`. 
+- Set `zones` to a minimum of two zones from `["1", "2", "3"]`, ensuring the number of zones match `sku.capacity`.
+- Set `properties.additionalLocations[*].zones` to a minimum of two zones from `["1", "2", "3"]`, ensuring the number of zones match `properties.additionalLocations[*].sku.capacity`. 
 - Set `sku.name` and/or `properties.additionalLocations[*].sku.name` to `Premium`.
 
 For example:
@@ -55,10 +55,12 @@ For example:
     "location": "Australia East",
     "sku": {
         "name": "Premium",
-        "capacity": 1
+        "capacity": 3
     },
     "zones": [
-        "1"
+        "1",
+        "2",
+        "3"
     ],
     "properties": {
         "publisherEmail": "john.doe@contoso.com",
@@ -78,10 +80,12 @@ For example:
                 "location": "East US",
                 "sku": {
                     "name": "Premium",
-                    "capacity": 1
+                    "capacity": 3
                 },
                 "zones": [
-                    "1"
+                    "1",
+                    "2",
+                    "3"
                 ],
                 "disableGateway": false
             }
@@ -107,8 +111,8 @@ For example:
 
 To set availability zones for a API management service
 
-- Set `zones` to any or all of `["1", "2", "3"]`, depending on how many units are deployed via `sku.capacity`.
-- Set `properties.additionalLocations[*].zones` to any or all of `["1", "2", "3"]`, depending on how many units are deployed via `properties.additionalLocations[*].sku.capacity`. 
+- Set `zones` to a minimum of two zones from `["1", "2", "3"]`, ensuring the number of zones match `sku.capacity`.
+- Set `properties.additionalLocations[*].zones` to a minimum of two zones from `["1", "2", "3"]`, ensuring the number of zones match `properties.additionalLocations[*].sku.capacity`. 
 - Set `sku.name` and/or `properties.additionalLocations[*].sku.name` to `Premium`.
 
 For example:
@@ -119,10 +123,12 @@ resource service_api_mgmt_test2_name_resource 'Microsoft.ApiManagement/service@2
   location: 'Australia East'
   sku: {
     name: 'Premium'
-    capacity: 1
+    capacity: 3
   }
   zones: [
-    '1'
+    '1',
+    '2',
+    '3'
   ]
   properties: {
     publisherEmail: 'john.doe@contoso.com'
