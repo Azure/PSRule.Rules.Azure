@@ -7,13 +7,15 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.9.0-B2110059 (pre-release)
+
 What's changed since pre-release v1.9.0-B2110040:
 
 - New rules:
   - API Management Service:
     - Check API management services are using availability zones when available. [#1017](https://github.com/Azure/PSRule.Rules.Azure/issues/1017)
 - Bug fixes:
-  - Changed property that is read for Azure.ACR.MinSKU [#1034](https://github.com/Azure/PSRule.Rules.Azure/issues/1034)
+  - Fixed property used by `Azure.ACR.MinSKU` to work more reliably with templates. [#1034](https://github.com/Azure/PSRule.Rules.Azure/issues/1034)
   - Fixed could not determine JSON object type for MockMember using CreateObject. [#1035](https://github.com/Azure/PSRule.Rules.Azure/issues/1035)
 
 ## v1.9.0-B2110040 (pre-release)
