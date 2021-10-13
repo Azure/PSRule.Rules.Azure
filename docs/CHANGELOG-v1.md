@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.9.0-B2110040:
+
+- Bug fixes:
+  - Fixed could not determine JSON object type for MockMember using CreateObject. [#1035](https://github.com/Azure/PSRule.Rules.Azure/issues/1035)
+
 ## v1.9.0-B2110040 (pre-release)
 
 What's changed since pre-release v1.9.0-B2110025:
