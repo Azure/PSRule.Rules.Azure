@@ -336,6 +336,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.AvailabilityZone/</loc>
+         <lastmod>2021-10-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.CertificateExpiry/</loc>
          <lastmod>2021-10-13</lastmod>
          <changefreq>daily</changefreq>
