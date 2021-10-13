@@ -223,6 +223,23 @@ namespace PSRule.Rules.Azure.Data.Template
             return false;
         }
 
+        internal static JToken GetJToken(object value)
+        {
+            if (value is JToken jToken)
+                return jToken;
+
+            if (value is string sValue)
+                return new JValue(sValue);
+
+            if (value is Array aValue)
+                return new JArray(aValue);
+
+            if (value is MockMember mockMember)
+                return new JValue(mockMember.BuildString());
+
+            return new JValue(value);
+        }
+
         internal static byte[] GetUnique(object[] args)
         {
             // Not actual hash algorithm used in Azure

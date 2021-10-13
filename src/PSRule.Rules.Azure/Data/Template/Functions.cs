@@ -265,7 +265,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (!ExpressionHelpers.TryString(args[i * 2], out string name))
                     throw ArgumentInvalidString(nameof(CreateObject), $"key{i + 1}");
 
-                properties[i] = new JProperty(name, args[i * 2 + 1]);
+                properties[i] = new JProperty(name, ExpressionHelpers.GetJToken(args[i * 2 + 1]));
             }
             return new JObject(properties);
         }
