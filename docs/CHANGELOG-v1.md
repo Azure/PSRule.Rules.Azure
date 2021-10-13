@@ -10,8 +10,11 @@ See [troubleshooting guide] for a workaround to this issue.
 What's changed since pre-release v1.9.0-B2110040:
 
 - New rules:
-  - API Management Service
+  - API Management Service:
     - Check API management services are using availability zones when available. [#1017](https://github.com/Azure/PSRule.Rules.Azure/issues/1017)
+- Bug fixes:
+  - Azure Container Registry:
+    - Changed property that is read for Azure.ACR.MinSKU [#1034](https://github.com/Azure/PSRule.Rules.Azure/issues/1034)
 
 ## v1.9.0-B2110040 (pre-release)
 
