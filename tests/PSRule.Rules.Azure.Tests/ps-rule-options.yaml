@@ -14,46 +14,46 @@ configuration:
     properties:
       provisioningState: 'Succeeded'
   AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
-  - location: 'Australia Southeast'
+  - location: 'Antarctica North'
     zones:
       - "1"
       - "2"
       - "3"
-  - location: 'Norway East'
+  - location: 'Antarctica South'
     zones:
       - "1"
       - "2"
       - "3"
   AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: ['cluster-autoscaler', 'AllMetrics']
   AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
-  - location: 'Australia Southeast'
+  - location: 'Antarctica North'
     zones:
       - "1"
       - "2"
       - "3"
-  - location: 'Norway East'
+  - location: 'Antarctica South'
     zones:
       - "1"
       - "2"
       - "3"
   AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
-  - location: 'Australia Southeast'
+  - location: 'Antarctica North'
     zones:
       - "1"
       - "2"
       - "3"
-  - location: 'Norway East'
+  - location: 'Antarctica South'
     zones:
       - "1"
       - "2"
       - "3"
   AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
-  - location: 'Australia Southeast'
+  - location: 'Antarctica North'
     zones:
       - "1"
       - "2"
       - "3"
-  - location: 'Norway East'
+  - location: 'Antarctica South'
     zones:
       - "1"
       - "2"

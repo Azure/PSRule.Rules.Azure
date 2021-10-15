@@ -862,11 +862,11 @@ Describe 'Azure.AKS' -Tag AKS {
             $option = @{
                 'Configuration.AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST' = @(
                     [PSCustomObject]@{
-                        Location = 'Australia Southeast'
+                        Location = 'Antarctica North'
                         Zones = @("1", "2", "3")
                     }
                     [PSCustomObject]@{
-                        Location = 'Norway East'
+                        Location = 'Antarctica South'
                         Zones = @("1", "2", "3")
                     }
                 )
@@ -883,15 +883,15 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiaeast) should use following availability zones [3, 2, 1].";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The agent pool (system) deployed to region (Australia Southeast) should use following availability zones [1, 2, 3].";
+            $ruleResult[1].Reason | Should -BeExactly "The agent pool (system) deployed to region (Antarctica North) should use following availability zones [1, 2, 3].";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[2].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (Australia East) should use following availability zones [3, 2, 1].";
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[3].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiaeast) should use following availability zones [3, 2, 1].";
             $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiasoutheast) should use following availability zones [1, 2, 3].";
+            $ruleResult[4].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].";
             $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[5].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (norwayeast) should use following availability zones [1, 2, 3].";
+            $ruleResult[5].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (antarcticasouth) should use following availability zones [1, 2, 3].";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -913,15 +913,15 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiaeast) should use following availability zones [3, 2, 1].";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The agent pool (system) deployed to region (Australia Southeast) should use following availability zones [1, 2, 3].";
+            $ruleResult[1].Reason | Should -BeExactly "The agent pool (system) deployed to region (Antarctica North) should use following availability zones [1, 2, 3].";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[2].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (Australia East) should use following availability zones [3, 2, 1].";
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[3].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiaeast) should use following availability zones [3, 2, 1].";
             $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiasoutheast) should use following availability zones [1, 2, 3].";
+            $ruleResult[4].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].";
             $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[5].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (norwayeast) should use following availability zones [1, 2, 3].";
+            $ruleResult[5].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (antarcticasouth) should use following availability zones [1, 2, 3].";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

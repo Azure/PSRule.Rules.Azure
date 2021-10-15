@@ -321,11 +321,11 @@ Describe 'Azure.PublicIP' {
             $option = @{
                 'Configuration.AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST' = @(
                     [PSCustomObject]@{
-                        Location = 'Australia Southeast'
+                        Location = 'Antarctica North'
                         Zones = @("1", "2", "3")
                     }
                     [PSCustomObject]@{
-                        Location = 'Norway East'
+                        Location = 'Antarctica South'
                         Zones = @("1", "2", "3")
                     }
                 )
@@ -345,13 +345,13 @@ Describe 'Azure.PublicIP' {
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[1].Reason | Should -BeExactly "The public IP (ip-D) deployed to region (australiaeast) should be zone-redundant.";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The public IP (ip-F) deployed to region (australiasoutheast) should be zone-redundant.";
+            $ruleResult[2].Reason | Should -BeExactly "The public IP (ip-F) deployed to region (antarcticanorth) should be zone-redundant.";
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[3].Reason | Should -BeExactly "The public IP (ip-G) deployed to region (australiaeast) should be zone-redundant.";
             $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "The public IP (ip-H) deployed to region (Australia Southeast) should be zone-redundant.";
+            $ruleResult[4].Reason | Should -BeExactly "The public IP (ip-H) deployed to region (Antarctica North) should be zone-redundant.";
             $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[5].Reason | Should -BeExactly "The public IP (ip-J) deployed to region (Norway East) should be zone-redundant.";
+            $ruleResult[5].Reason | Should -BeExactly "The public IP (ip-J) deployed to region (Antarctica South) should be zone-redundant.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -381,13 +381,13 @@ Describe 'Azure.PublicIP' {
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[1].Reason | Should -BeExactly "The public IP (ip-D) deployed to region (australiaeast) should be zone-redundant.";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The public IP (ip-F) deployed to region (australiasoutheast) should be zone-redundant.";
+            $ruleResult[2].Reason | Should -BeExactly "The public IP (ip-F) deployed to region (antarcticanorth) should be zone-redundant.";
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[3].Reason | Should -BeExactly "The public IP (ip-G) deployed to region (australiaeast) should be zone-redundant.";
             $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "The public IP (ip-H) deployed to region (Australia Southeast) should be zone-redundant.";
+            $ruleResult[4].Reason | Should -BeExactly "The public IP (ip-H) deployed to region (Antarctica North) should be zone-redundant.";
             $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[5].Reason | Should -BeExactly "The public IP (ip-J) deployed to region (Norway East) should be zone-redundant.";
+            $ruleResult[5].Reason | Should -BeExactly "The public IP (ip-J) deployed to region (Antarctica South) should be zone-redundant.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

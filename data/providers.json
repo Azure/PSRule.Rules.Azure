@@ -40093,12 +40093,14 @@
           "Central India",
           "Japan West",
           "Korea South",
+          "North Central US",
           "Norway East",
           "UAE North",
           "UK West",
           "West Central US",
           "West US",
           "West US 2",
+          "West US 3",
           "Brazil South",
           "France Central",
           "South Africa North",
@@ -40117,12 +40119,20 @@
         ],
         "zoneMappings": [
           {
-            "location": "East US 2",
-            "zones": [
-              "3",
-              "2",
-              "1"
-            ]
+            "location": "Australia East",
+            "zones": []
+          },
+          {
+            "location": "Brazil South",
+            "zones": []
+          },
+          {
+            "location": "Canada Central",
+            "zones": []
+          },
+          {
+            "location": "Central India",
+            "zones": []
           },
           {
             "location": "Central US",
@@ -40133,7 +40143,19 @@
             ]
           },
           {
-            "location": "West Europe",
+            "location": "East Asia",
+            "zones": []
+          },
+          {
+            "location": "East US",
+            "zones": [
+              "3",
+              "2",
+              "1"
+            ]
+          },
+          {
+            "location": "East US 2",
             "zones": [
               "3",
               "2",
@@ -40149,39 +40171,7 @@
             ]
           },
           {
-            "location": "Southeast Asia",
-            "zones": [
-              "3",
-              "2",
-              "1"
-            ]
-          },
-          {
-            "location": "West US 2",
-            "zones": [
-              "3",
-              "2",
-              "1"
-            ]
-          },
-          {
-            "location": "North Europe",
-            "zones": [
-              "3",
-              "2",
-              "1"
-            ]
-          },
-          {
-            "location": "East US",
-            "zones": [
-              "3",
-              "2",
-              "1"
-            ]
-          },
-          {
-            "location": "UK South",
+            "location": "Germany West Central",
             "zones": [
               "3",
               "2",
@@ -40197,7 +40187,23 @@
             ]
           },
           {
-            "location": "Australia East",
+            "location": "Korea Central",
+            "zones": []
+          },
+          {
+            "location": "North Central US",
+            "zones": []
+          },
+          {
+            "location": "North Europe",
+            "zones": [
+              "3",
+              "2",
+              "1"
+            ]
+          },
+          {
+            "location": "Norway East",
             "zones": []
           },
           {
@@ -40213,11 +40219,7 @@
             ]
           },
           {
-            "location": "Canada Central",
-            "zones": []
-          },
-          {
-            "location": "Germany West Central",
+            "location": "Southeast Asia",
             "zones": [
               "3",
               "2",
@@ -40225,27 +40227,35 @@
             ]
           },
           {
-            "location": "Brazil South",
-            "zones": []
-          },
-          {
-            "location": "Central India",
-            "zones": []
-          },
-          {
-            "location": "Korea Central",
-            "zones": []
-          },
-          {
-            "location": "Norway East",
-            "zones": []
-          },
-          {
-            "location": "East Asia",
-            "zones": []
-          },
-          {
             "location": "Switzerland North",
+            "zones": []
+          },
+          {
+            "location": "UK South",
+            "zones": [
+              "3",
+              "2",
+              "1"
+            ]
+          },
+          {
+            "location": "West Europe",
+            "zones": [
+              "3",
+              "2",
+              "1"
+            ]
+          },
+          {
+            "location": "West US 2",
+            "zones": [
+              "3",
+              "2",
+              "1"
+            ]
+          },
+          {
+            "location": "West US 3",
             "zones": []
           }
         ]
@@ -40503,12 +40513,14 @@
           "Central India",
           "Japan West",
           "Korea South",
+          "North Central US",
           "Norway East",
           "UAE North",
           "UK West",
           "West Central US",
           "West US",
           "West US 2",
+          "West US 3",
           "Brazil South",
           "France Central",
           "South Africa North",
@@ -40549,6 +40561,7 @@
           "Japan West",
           "Korea Central",
           "Korea South",
+          "North Central US",
           "North Europe",
           "Norway East",
           "South Africa North",
@@ -40561,7 +40574,8 @@
           "West Central US",
           "West Europe",
           "West US",
-          "West US 2"
+          "West US 2",
+          "West US 3"
         ],
         "zoneMappings": null
       },
@@ -40581,12 +40595,14 @@
           "Central India",
           "Japan West",
           "Korea South",
+          "North Central US",
           "Norway East",
           "UAE North",
           "UK West",
           "West Central US",
           "West US",
           "West US 2",
+          "West US 3",
           "Brazil South",
           "France Central",
           "South Africa North",

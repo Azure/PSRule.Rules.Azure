@@ -397,11 +397,11 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $option = @{
                 'Configuration.AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST' = @(
                     [PSCustomObject]@{
-                        Location = 'Australia Southeast'
+                        Location = 'Antarctica North'
                         Zones = @("1", "2", "3")
                     }
                     [PSCustomObject]@{
-                        Location = 'Norway East'
+                        Location = 'Antarctica South'
                         Zones = @("1", "2", "3")
                     }
                 )
@@ -418,7 +418,7 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The API management service (apim-D) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The API management service (apim-E) deployed to region (australiasoutheast) should use a minimum of two availability zones from the following [1, 2, 3].";
+            $ruleResult[1].Reason | Should -BeExactly "The API management service (apim-E) deployed to region (antarcticanorth) should use a minimum of two availability zones from the following [1, 2, 3].";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[2].Reason | Should -Be @(
                 "The API management service (apim-F) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1]."
@@ -427,10 +427,10 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[3].Reason | Should -Be @(
                 "The API management service (apim-G) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1]."
-                "The API management service (apim-G) deployed to region (Norway East) should use a minimum of two availability zones from the following [1, 2, 3]."
+                "The API management service (apim-G) deployed to region (Antarctica South) should use a minimum of two availability zones from the following [1, 2, 3]."
             )
             $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "The API management service (apim-H) deployed to region (norwayeast) should use a minimum of two availability zones from the following [1, 2, 3].";
+            $ruleResult[4].Reason | Should -BeExactly "The API management service (apim-H) deployed to region (antarcticasouth) should use a minimum of two availability zones from the following [1, 2, 3].";
             $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[5].Reason | Should -BeExactly "The API management service (apim-I) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
             $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
@@ -442,7 +442,7 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             )
             $ruleResult[8].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[8].Reason | Should -Be @(
-                "The API management service (apim-L) deployed to region (australiasoutheast) should use a minimum of two availability zones from the following [1, 2, 3]."
+                "The API management service (apim-L) deployed to region (antarcticanorth) should use a minimum of two availability zones from the following [1, 2, 3]."
                 "The API management service (apim-L) deployed to region (Australia East) should use a minimum of two availability zones from the following [3, 2, 1]."
             )
             $ruleResult[9].Reason | Should -Not -BeNullOrEmpty;
@@ -474,7 +474,7 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The API management service (apim-D) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The API management service (apim-E) deployed to region (australiasoutheast) should use a minimum of two availability zones from the following [1, 2, 3].";
+            $ruleResult[1].Reason | Should -BeExactly "The API management service (apim-E) deployed to region (antarcticanorth) should use a minimum of two availability zones from the following [1, 2, 3].";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[2].Reason | Should -Be @(
                 "The API management service (apim-F) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1]."
@@ -483,10 +483,10 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[3].Reason | Should -Be @(
                 "The API management service (apim-G) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1]."
-                "The API management service (apim-G) deployed to region (Norway East) should use a minimum of two availability zones from the following [1, 2, 3]."
+                "The API management service (apim-G) deployed to region (Antarctica South) should use a minimum of two availability zones from the following [1, 2, 3]."
             )
             $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "The API management service (apim-H) deployed to region (norwayeast) should use a minimum of two availability zones from the following [1, 2, 3].";
+            $ruleResult[4].Reason | Should -BeExactly "The API management service (apim-H) deployed to region (antarcticasouth) should use a minimum of two availability zones from the following [1, 2, 3].";
             $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[5].Reason | Should -BeExactly "The API management service (apim-I) deployed to region (australiaeast) should use a minimum of two availability zones from the following [3, 2, 1].";
             $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
@@ -498,7 +498,7 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             )
             $ruleResult[8].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[8].Reason | Should -Be @(
-                "The API management service (apim-L) deployed to region (australiasoutheast) should use a minimum of two availability zones from the following [1, 2, 3]."
+                "The API management service (apim-L) deployed to region (antarcticanorth) should use a minimum of two availability zones from the following [1, 2, 3]."
                 "The API management service (apim-L) deployed to region (Australia East) should use a minimum of two availability zones from the following [3, 2, 1]."
             )
             $ruleResult[9].Reason | Should -Not -BeNullOrEmpty;
