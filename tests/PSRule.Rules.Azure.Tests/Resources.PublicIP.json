@@ -174,7 +174,7 @@
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-F",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-F",
-        "Location": "australiasoutheast",
+        "Location": "antarcticanorth",
         "ResourceName": "ip-F",
         "Name": "ip-F",
         "Properties": {
@@ -239,7 +239,7 @@
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-H",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-H",
-        "Location": "Australia Southeast",
+        "Location": "Antarctica North",
         "ResourceName": "ip-H",
         "Name": "ip-H",
         "Properties": {
@@ -274,7 +274,7 @@
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-I",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-I",
-        "Location": "australiasoutheast",
+        "Location": "antarcticanorth",
         "ResourceName": "ip-I",
         "Name": "ip-I",
         "Properties": {
@@ -311,7 +311,7 @@
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-J",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-J",
-        "Location": "Norway East",
+        "Location": "Antarctica South",
         "ResourceName": "ip-J",
         "Name": "ip-J",
         "Properties": {
@@ -346,7 +346,7 @@
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-K",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/ip-K",
-        "Location": "norwayeast",
+        "Location": "antarcticasouth",
         "ResourceName": "ip-K",
         "Name": "ip-K",
         "Properties": {

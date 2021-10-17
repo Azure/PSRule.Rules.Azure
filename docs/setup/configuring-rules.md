@@ -194,20 +194,21 @@ configuration:
 ### Additional region availability zone list
 
 This configuration option adds availability zones that are not included in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json).
+You can use this option to add availability zones that are not included in the default list.
 
 The following providers are supported:
 
-* `Microsoft.Compute/virtualMachineScaleSets`
-* `Microsoft.Network/applicationGateways`
-* `Microsoft.Network/publicIPAddresses`
-* `Microsoft.ApiManagement/service`
+- `Microsoft.Compute/virtualMachineScaleSets`
+- `Microsoft.Network/applicationGateways`
+- `Microsoft.Network/publicIPAddresses`
+- `Microsoft.ApiManagement/service`
 
 The following rules and configuration options are supported:
 
-* `Azure.AKS.AvailabilityZone` - `AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
-* `Azure.AppGw.AvailabilityZone` - `AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
-* `Azure.PublicIP.AvailabilityZone` - `AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
-* `Azure.APIM.AvailabilityZone` - `AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
+- `Azure.AKS.AvailabilityZone` - `AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
+- `Azure.AppGw.AvailabilityZone` - `AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
+- `Azure.PublicIP.AvailabilityZone` - `AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
+- `Azure.APIM.AvailabilityZone` - `AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
 
 Syntax:
 
@@ -227,15 +228,15 @@ configuration:
 Example:
 
 ```yaml
-# YAML: Set the AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option to Australia Southeast and Norway East, with zones 1, 2, 3.
+# YAML: Set the AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option to Antarctica North and Antarctica South, with zones 1, 2, 3.
 configuration:
   AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
-  - location: 'Australia Southeast'
+  - location: 'Antarctica North'
     zones:
       - "1"
       - "2"
       - "3"
-  - location: 'Norway East'
+  - location: 'Antarctica South'
     zones:
       - "1"
       - "2"
@@ -244,14 +245,15 @@ configuration:
 
 The above example, both these forms of location are accepted:
 
-* `Australia Southeast` or `australiasoutheast`
-* `Norway East` or `norwayeast`
+- `Antarctica North` or `antarcticanorth`
+- `Antarctica South` or `antarcticasouth`
 
 The rules normalize these location formats so either is accepted in the configuration.
 
 !!! Note
-    The above locations in the example do **not** currently support availability zones.
-    If they do in the future, you can configure this option to add them prior to PSRule for Azure support.
+    The above are examples for illustration purpose only.
+    At the time of writing, `Antarctica North` and `Antarctica South` are fictional locations.
+    If they do in the future exist, use this option add them prior to PSRule for Azure support.
     The above shows examples specific to `Azure.AKS.AvailabilityZone`, but behavior is consistent across all supported rules.
 
 ### Azure AKS enabled platform log categories list

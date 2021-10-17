@@ -317,7 +317,7 @@
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/applicationGateways/appgw-C",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/applicationGateways/appgw-C",
-        "Location": "australiasoutheast",
+        "Location": "antarcticanorth",
         "ManagedBy": null,
         "ResourceName": "appgw-C",
         "Name": "appgw-C",
@@ -1424,7 +1424,7 @@
         "name": "appgw-G",
         "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-G",
         "type": "Microsoft.Network/applicationGateways",
-        "location": "norwayeast",
+        "location": "antarcticasouth",
         "zones": null,
         "identity": {
             "type": "userAssigned"

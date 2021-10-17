@@ -408,7 +408,7 @@ function global:GetAvailabilityZone {
     process {
         $normalizedLocation = GetNormalLocation -Location $Location;
         $availabilityZones = $Zone | Where-Object { (GetNormalLocation -Location $_.Location) -eq $normalizedLocation } | Select-Object -ExpandProperty Zones -First 1;
-        return $availabilityZones;
+        return $availabilityZones | Sort-Object {[int]$_};
     }
 }
 

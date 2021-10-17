@@ -1227,7 +1227,7 @@
             "UserAssignedIdentities": null
         },
         "Kind": null,
-        "Location": "australiasoutheast",
+        "Location": "antarcticanorth",
         "ManagedBy": null,
         "ResourceName": "apim-E",
         "Name": "apim-E",
@@ -1239,7 +1239,7 @@
             "provisioningState": "Succeeded",
             "targetProvisioningState": "",
             "gatewayUrl": "https://apim-E.azure-api.net",
-            "gatewayRegionalUrl": "https://apim-E-australiasoutheast-01.regional.azure-api.net",
+            "gatewayRegionalUrl": "https://apim-E-antarcticanorth-01.regional.azure-api.net",
             "portalUrl": "https://apim-E.portal.azure-api.net",
             "developerPortalUrl": "https://apim-E.developer.azure-api.net",
             "managementApiUrl": "https://apim-E.management.azure-api.net",
@@ -1514,7 +1514,7 @@
             "privateIPAddresses": null,
             "additionalLocations": [
                 {
-                    "location": "Norway East",
+                    "location": "Antarctica South",
                     "sku": {
                       "name": "Premium",
                       "capacity": 1
@@ -1571,7 +1571,7 @@
             "UserAssignedIdentities": null
         },
         "Kind": null,
-        "Location": "norwayeast",
+        "Location": "antarcticasouth",
         "ManagedBy": null,
         "ResourceName": "apim-H",
         "Name": "apim-H",
@@ -1583,7 +1583,7 @@
             "provisioningState": "Succeeded",
             "targetProvisioningState": "",
             "gatewayUrl": "https://apim-H.azure-api.net",
-            "gatewayRegionalUrl": "https://apim-H-norwayeast-01.regional.azure-api.net",
+            "gatewayRegionalUrl": "https://apim-H-antarcticasouth-01.regional.azure-api.net",
             "portalUrl": "https://apim-H.portal.azure-api.net",
             "developerPortalUrl": "https://apim-H.developer.azure-api.net",
             "managementApiUrl": "https://apim-H.management.azure-api.net",
@@ -1995,7 +1995,7 @@
             "UserAssignedIdentities": null
         },
         "Kind": null,
-        "Location": "australiasoutheast",
+        "Location": "antarcticanorth",
         "ManagedBy": null,
         "ResourceName": "apim-L",
         "Name": "apim-L",
@@ -2007,7 +2007,7 @@
             "provisioningState": "Succeeded",
             "targetProvisioningState": "",
             "gatewayUrl": "https://apim-L.azure-api.net",
-            "gatewayRegionalUrl": "https://apim-L-australiasoutheast-01.regional.azure-api.net",
+            "gatewayRegionalUrl": "https://apim-L-antarcticanorth-01.regional.azure-api.net",
             "portalUrl": "https://apim-L.portal.azure-api.net",
             "developerPortalUrl": "https://apim-L.developer.azure-api.net",
             "managementApiUrl": "https://apim-L.management.azure-api.net",

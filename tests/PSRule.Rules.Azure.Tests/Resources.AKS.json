@@ -463,7 +463,7 @@
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-E/agentPools/system",
         "Identity": null,
         "Kind": null,
-        "Location": "australiasoutheast",
+        "Location": "antarcticanorth",
         "ManagedBy": null,
         "ResourceName": "system",
         "Name": "system",
@@ -544,7 +544,7 @@
             "UserAssignedIdentities": null
         },
         "Kind": null,
-        "Location": "Australia Southeast",
+        "Location": "Antarctica North",
         "ManagedBy": null,
         "ResourceName": "cluster-F",
         "Name": "cluster-F",
@@ -1126,7 +1126,7 @@
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-I",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-I",
-        "Location": "australiasoutheast",
+        "Location": "antarcticanorth",
         "ResourceName": "cluster-I",
         "Name": "cluster-I",
         "Properties": {
@@ -1300,7 +1300,7 @@
     {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-J",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-J",
-        "Location": "norwayeast",
+        "Location": "antarcticasouth",
         "ResourceName": "cluster-J",
         "Name": "cluster-J",
         "Properties": {
