@@ -1,0 +1,41 @@
+name: BumpProviders
+
+on:
+  schedule:
+    - cron:  '0 0 1 * *' # 00:00 on first day of each month
+  workflow_dispatch:
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.5
+
+      - name: Install Dependencies
+        uses: Amadevus/pwsh-script@v2.0.1
+        with:
+          script: |
+            Install-Module InvokeBuild -MinimumVersion 5.4.0 -Scope CurrentUser -Force
+
+      - name: Azure Login
+        uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          enable-AzPSSession: true
+
+      - name: Bump Providers
+        uses: Azure/powershell@v1
+        with:
+          inlineScript: |
+            Invoke-Build ExportProviders
+          azPSVersion: latest
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3.10.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Bump providers data
+          title: Bump providers data
+          body: 'Updates to providers.json'
+          delete-branch: true
