@@ -9,6 +9,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since pre-release v1.9.0-B2110059:
 
+- Engineering:
+  - Added automated PR workflow to bump `providers.json` monthly. [#1041](https://github.com/Azure/PSRule.Rules.Azure/issues/1041)
 - Bug fixes:
   - Fixed AKS Network Policy should accept calico. [#1046](https://github.com/Azure/PSRule.Rules.Azure/issues/1046)
 
