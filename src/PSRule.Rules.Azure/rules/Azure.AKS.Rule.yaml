@@ -1,0 +1,24 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure Kubernetes Service (AKS)
+#
+
+---
+# Synopsis: Deploy AKS clusters with Network Policies enabled.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.NetworkPolicy
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    field: Properties.networkProfile.networkPolicy
+    in:
+    - azure
+    - calico

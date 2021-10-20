@@ -45,11 +45,6 @@ Rule 'Azure.AKS.UseRBAC' -Type 'Microsoft.ContainerService/managedClusters' -Tag
     $Assert.HasFieldValue($TargetObject, 'Properties.enableRBAC', $True)
 }
 
-# Synopsis: AKS clusters should use network policies
-Rule 'Azure.AKS.NetworkPolicy' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.networkProfile.networkPolicy', 'azure')
-}
-
 # Synopsis: AKS node pools should use scale sets
 Rule 'Azure.AKS.PoolScaleSet' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $agentPools = @(GetAgentPoolProfiles);

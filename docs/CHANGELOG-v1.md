@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.9.0-B2110059:
+
+- Bug fixes:
+  - Fixed AKS Network Policy should accept calico. [#1046](https://github.com/Azure/PSRule.Rules.Azure/issues/1046)
+
 ## v1.9.0-B2110059 (pre-release)
 
 What's changed since pre-release v1.9.0-B2110040:

@@ -376,7 +376,7 @@
             "enablePodSecurityPolicy": true,
             "networkProfile": {
                 "networkPlugin": "azure",
-                "networkPolicy": "azure",
+                "networkPolicy": "calico",
                 "loadBalancerSku": "Standard",
                 "loadBalancerProfile": {
                     "managedOutboundIPs": {
