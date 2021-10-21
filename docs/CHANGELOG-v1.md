@@ -9,6 +9,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since pre-release v1.9.0-B2110059:
 
+- General improvements:
+  - Bicep is now installed when using PSRule GitHub Action. [#1050](https://github.com/Azure/PSRule.Rules.Azure/issues/1050)
 - Engineering:
   - Added automated PR workflow to bump `providers.json` monthly. [#1041](https://github.com/Azure/PSRule.Rules.Azure/issues/1041)
 - Bug fixes:
