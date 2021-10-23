@@ -31,6 +31,7 @@ spec:
   convention:
     include:
     - 'Azure.ExpandTemplate'
+    - 'Azure.BicepInstall'
     - 'Azure.ExpandBicep'
   output:
     culture:
