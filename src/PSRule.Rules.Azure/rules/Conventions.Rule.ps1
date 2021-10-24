@@ -33,6 +33,22 @@ Export-PSRuleConvention 'Azure.ExpandTemplate' -If { $Configuration.AZURE_PARAME
 
 #region Bicep
 
+$Global:InstalledBicep = $False;
+
+# Synopsis: Install Bicep for expansion of .bicep files within GitHub Actions.
+Export-PSRuleConvention 'Azure.BicepInstall' -If { !$InstalledBicep -and $Configuration.AZURE_BICEP_FILE_EXPANSION -eq $True -and $Env:GITHUB_ACTION -eq '__Microsoft_ps-rule' } -Begin {
+    # Install the latest Bicep CLI binary for alpine
+    Invoke-WebRequest -Uri 'https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64' -OutFile $Env:GITHUB_WORKSPACE/bicep.bin
+
+    # Set executable
+    chmod +x $Env:GITHUB_WORKSPACE/bicep.bin
+
+    # Copy to PATH environment
+    Move-Item $Env:GITHUB_WORKSPACE/bicep.bin /usr/local/bin/bicep
+
+    $Global:InstalledBicep = $True;
+}
+
 Export-PSRuleConvention 'Azure.ExpandBicep' -If { $Configuration.AZURE_BICEP_FILE_EXPANSION -eq $True -and $TargetObject.Extension -eq '.bicep' } -Begin {
     Write-Verbose "[Azure.ExpandBicep] -- Expanding bicep source: $($TargetObject.FullName)";
     try {
@@ -50,22 +66,6 @@ Export-PSRuleConvention 'Azure.ExpandBicep' -If { $Configuration.AZURE_BICEP_FIL
     catch {
         Write-Error -Message "Failed to expand bicep source '$($TargetObject.FullName)'. $($_.Exception.Message)" -ErrorId 'Azure.ExpandBicep.ConventionException';
     }
-}
-
-$Global:InstalledBicep = $False;
-
-# Synopsis: Install Bicep for expansion of .bicep files within GitHub Actions.
-Export-PSRuleConvention 'Azure.BicepInstall' -If { !$InstalledBicep -and $Configuration.AZURE_BICEP_FILE_EXPANSION -eq $True -and $Env:GITHUB_ACTION -eq '__Microsoft_ps-rule' } -Begin {
-    # Install the latest Bicep CLI binary for alpine
-    Invoke-WebRequest -Uri 'https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64' -OutFile $Env:GITHUB_WORKSPACE/bicep.bin
-
-    # Set executable
-    chmod +x $Env:GITHUB_WORKSPACE/bicep.bin
-
-    # Copy to PATH environment
-    Move-Item $Env:GITHUB_WORKSPACE/bicep.bin /usr/local/bin/bicep
-
-    $Global:InstalledBicep = $True;
 }
 
 #endregion Bicep
