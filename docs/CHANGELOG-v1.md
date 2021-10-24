@@ -7,6 +7,10 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.9.0-B2110087 (pre-release)
+
+What's changed since pre-release v1.9.0-B2110082:
+
 - Bug fixes:
   - Fixed Bicep convention ordering. [#1053](https://github.com/Azure/PSRule.Rules.Azure/issues/1053)
 
