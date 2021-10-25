@@ -681,6 +681,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v190" class="md-nav__link">
+    v1.9.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v190-b2110087pre-release" class="md-nav__link">
     v1.9.0-B2110087 (pre-release)
   </a>
@@ -5389,6 +5396,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v190" class="md-nav__link">
+    v1.9.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v190-b2110087pre-release" class="md-nav__link">
     v1.9.0-B2110087 (pre-release)
   </a>
@@ -5853,6 +5867,60 @@
 See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to this issue.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<h2 id="v190">v1.9.0<a class="headerlink" href="#v190" title="Permanent link">#</a></h2>
+<p>What's changed since v1.8.1:</p>
+<ul>
+<li>New rules:<ul>
+<li>API Management Service:<ul>
+<li>Check API management services are using availability zones when available. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1017">#1017</a></li>
+</ul>
+</li>
+<li>Public IP Address:<ul>
+<li>Check Public IP addresses are configured with zone-redundancy. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/958">#958</a></li>
+<li>Check Public IP addresses are using Standard SKU. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/979">#979</a></li>
+</ul>
+</li>
+<li>User Assigned Managed Identity:<ul>
+<li>Check identities meet naming requirements. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1021">#1021</a></li>
+</ul>
+</li>
+<li>Virtual Network Gateway:<ul>
+<li>Check VPN/ExpressRoute gateways are configured with availability zone SKU. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/926">#926</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>General improvements:<ul>
+<li>Improved processing of AzOps generated templates. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/799">#799</a><ul>
+<li><code>Azure.Template.DefineParameters</code> is ignored for AzOps generated templates.</li>
+<li><code>Azure.Template.UseLocationParameter</code> is ignored for AzOps generated templates.</li>
+</ul>
+</li>
+<li>Bicep is now installed when using PSRule GitHub Action. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1050">#1050</a></li>
+</ul>
+</li>
+<li>Engineering:<ul>
+<li>Bump PSRule dependency to v1.8.0. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1018">#1018</a></li>
+<li>Added automated PR workflow to bump <code>providers.json</code> monthly. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1041">#1041</a></li>
+</ul>
+</li>
+<li>Bug fixes:<ul>
+<li>Fixed AKS Network Policy should accept calico. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1046">#1046</a></li>
+<li>Fixed <code>Azure.ACR.AdminUser</code> fails when <code>adminUserEnabled</code> not set. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1014">#1014</a></li>
+<li>Fixed <code>Azure.KeyVault.Logs</code> reports cannot index into a null array. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1024">#1024</a></li>
+<li>Fixed template function empty returns object reference not set exception. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1025">#1025</a></li>
+<li>Fixed delayed binding of <code>and</code> template function. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1026">#1026</a></li>
+<li>Fixed template function array nests array with array parameters. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1027">#1027</a></li>
+<li>Fixed property used by <code>Azure.ACR.MinSKU</code> to work more reliably with templates. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1034">#1034</a></li>
+<li>Fixed could not determine JSON object type for MockMember using CreateObject. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1035">#1035</a></li>
+<li>Fixed Bicep convention ordering. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1053">#1053</a></li>
+</ul>
+</li>
+</ul>
+<p>What's changed since pre-release v1.9.0-B2110087:</p>
+<ul>
+<li>No additional changes.</li>
+</ul>
 <h2 id="v190-b2110087pre-release">v1.9.0-B2110087 (pre-release)<a class="headerlink" href="#v190-b2110087pre-release" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.9.0-B2110082:</p>
 <ul>
