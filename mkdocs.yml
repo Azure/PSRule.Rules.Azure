@@ -38,7 +38,10 @@ theme:
 nav:
   - Home: index.md
   - Getting started:
-    - Overview: features.md
+    - Overview:
+      - About: about.md
+      - Features: features.md
+      - FAQ: faq.md
     - Installation: install-instructions.md
     - Using templates: using-templates.md
     - Using Bicep source: using-bicep.md
