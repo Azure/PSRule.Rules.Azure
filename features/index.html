@@ -20,7 +20,7 @@
     
     
       
-        <title>Overview - PSRule for Azure</title>
+        <title>Features - PSRule for Azure</title>
       
     
     
@@ -66,7 +66,7 @@
 
   <!-- Open graph meta tags -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PSRule for Azure - Overview" />
+  <meta property="og:title" content="PSRule for Azure - Features" />
   <meta property="og:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
   <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/features/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
@@ -78,7 +78,7 @@
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - Overview" />
+  <meta name="twitter:title" content="PSRule for Azure - Features" />
   <meta name="twitter:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#whatispsruleforazure" class="md-skip">
+        <a href="#features" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Features
             
           </span>
         </div>
@@ -226,11 +226,18 @@
   
   
   
+    
+
+  
+  
+  
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../about/" class="md-tabs__link md-tabs__link--active">
         Getting started
       </a>
     </li>
+  
+
   
 
       
@@ -388,6 +395,56 @@
     
   
   
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Overview" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -397,12 +454,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Overview
+          Features
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Overview
+        Features
       </a>
       
         
@@ -420,6 +477,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#frameworkaligned" class="md-nav__link">
+    Framework aligned
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#readytogo" class="md-nav__link">
     Ready to go
   </a>
@@ -427,8 +491,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#devops" class="md-nav__link">
-    DevOps
+  <a href="#devopsintegrated" class="md-nav__link">
+    DevOps integrated
   </a>
   
 </li>
@@ -440,99 +504,31 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#frequentlyaskedquestionsfaq" class="md-nav__link">
-    Frequently Asked Questions (FAQ)
-  </a>
-  
-    <nav class="md-nav" aria-label="Frequently Asked Questions (FAQ)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#howdoicreateacustomruletoenforceresourcegrouptagging" class="md-nav__link">
-    How do I create a custom rule to enforce resource group tagging?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#howdoicreateacustomruletoenforcecodeownership" class="md-nav__link">
-    How do I create a custom rule to enforce code ownership?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#doineedpowershellexperiencetostartusingpsruleforazure" class="md-nav__link">
-    Do I need PowerShell experience to start using PSRule for Azure?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#whatpermissionsdoineedtoexportdata" class="md-nav__link">
-    What permissions do I need to export data?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#whatpermissionsdoineedtoanalyzeexporteddata" class="md-nav__link">
-    What permissions do I need to analyze exported data?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shouldicontinuetouseazureadvisorsecuritycenterorazurepolicy" class="md-nav__link">
-    Should I continue to use Azure Advisor, Security Center, or Azure Policy?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#traditionalunittestingvspsruleforazure" class="md-nav__link">
-    Traditional unit testing vs PSRule for Azure?
-  </a>
-  
-    <nav class="md-nav" aria-label="Traditional unit testing vs PSRule for Azure?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#unittestingmorethanbasicjsonstructure" class="md-nav__link">
-    Unit testing more than basic JSON structure
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#standardlibraryoftests" class="md-nav__link">
-    Standard library of tests
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collectionoftelemetry" class="md-nav__link">
-    Collection of telemetry
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -5040,6 +5036,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#frameworkaligned" class="md-nav__link">
+    Framework aligned
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#readytogo" class="md-nav__link">
     Ready to go
   </a>
@@ -5047,8 +5050,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#devops" class="md-nav__link">
-    DevOps
+  <a href="#devopsintegrated" class="md-nav__link">
+    DevOps integrated
   </a>
   
 </li>
@@ -5057,95 +5060,6 @@
   <a href="#cross-platform" class="md-nav__link">
     Cross-platform
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#frequentlyaskedquestionsfaq" class="md-nav__link">
-    Frequently Asked Questions (FAQ)
-  </a>
-  
-    <nav class="md-nav" aria-label="Frequently Asked Questions (FAQ)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#howdoicreateacustomruletoenforceresourcegrouptagging" class="md-nav__link">
-    How do I create a custom rule to enforce resource group tagging?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#howdoicreateacustomruletoenforcecodeownership" class="md-nav__link">
-    How do I create a custom rule to enforce code ownership?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#doineedpowershellexperiencetostartusingpsruleforazure" class="md-nav__link">
-    Do I need PowerShell experience to start using PSRule for Azure?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#whatpermissionsdoineedtoexportdata" class="md-nav__link">
-    What permissions do I need to export data?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#whatpermissionsdoineedtoanalyzeexporteddata" class="md-nav__link">
-    What permissions do I need to analyze exported data?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shouldicontinuetouseazureadvisorsecuritycenterorazurepolicy" class="md-nav__link">
-    Should I continue to use Azure Advisor, Security Center, or Azure Policy?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#traditionalunittestingvspsruleforazure" class="md-nav__link">
-    Traditional unit testing vs PSRule for Azure?
-  </a>
-  
-    <nav class="md-nav" aria-label="Traditional unit testing vs PSRule for Azure?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#unittestingmorethanbasicjsonstructure" class="md-nav__link">
-    Unit testing more than basic JSON structure
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#standardlibraryoftests" class="md-nav__link">
-    Standard library of tests
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collectionoftelemetry" class="md-nav__link">
-    Collection of telemetry
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -5166,10 +5080,11 @@
                   </a>
                 
                 
-                <h1 id="whatispsruleforazure">What is PSRule for Azure?<a class="headerlink" href="#whatispsruleforazure" title="Permanent link">#</a></h1>
-<p>PSRule for Azure is a module for <a href="https://microsoft.github.io/PSRule/">PSRule</a>, a flexible rules engine designed to validate Infrastructure as Code (<abbr title="Infrastructure as Code">IaC</abbr>).
-PSRule for Azure includes a suite <a href="https://docs.microsoft.com/azure/architecture/framework/">Azure Well-Architected Framework (<abbr title="Well-Architected Framework">WAF</abbr>)</a> aligned rules for validating Azure resources.</p>
-<p>Leverage over 200 pre-built rules across five (5) <abbr title="Well-Architected Framework">WAF</abbr> pillars:</p>
+                <h1 id="features">Features<a class="headerlink" href="#features" title="Permanent link">#</a></h1>
+<h2 id="frameworkaligned">Framework aligned<a class="headerlink" href="#frameworkaligned" title="Permanent link">#</a></h2>
+<p>PSRule for Azure is aligned to the <a href="https://docs.microsoft.com/azure/architecture/framework/">Azure Well-Architected Framework (<abbr title="Well-Architected Framework">WAF</abbr>)</a>.
+Tests called <em>rules</em> check the configuration of Azure resources against <abbr title="Well-Architected Framework">WAF</abbr> principles.
+Rules exist across five (5) <abbr title="Well-Architected Framework">WAF</abbr> pillars:</p>
 <ul>
 <li>Cost Optimization</li>
 <li>Operational Excellence</li>
@@ -5177,33 +5092,13 @@ PSRule for Azure includes a suite <a href="https://docs.microsoft.com/azure/arch
 <li>Reliability</li>
 <li>Security</li>
 </ul>
-<p>Rules automatically detect and analyze Azure resources from <abbr title="Infrastructure as Code">IaC</abbr> artifacts,
-such as Azure Resource Manager (<abbr title="Azure Resource Manager">ARM</abbr>) templates.</p>
-<p>PSRule for Azure supports two methods for analyzing Azure resources:</p>
-<ul>
-<li><strong>Pre-flight</strong> &mdash; Before resources are deployed from an <abbr title="Azure Resource Manager">ARM</abbr> template.
-  Use <em>pre-flight</em> analysis to:<ul>
-<li>Implement checks within Pull Requests (<abbr title="Pull Requests">PRs</abbr>).</li>
-<li>Improve alignment of resources to <abbr title="Well-Architected Framework">WAF</abbr> recommendations.</li>
-<li>Identify issues that prevent successful resource deployments on Azure.</li>
-<li>Integrate continual improvement and standardization of Azure resource configurations.</li>
-<li>Implement release gates between environments.</li>
-</ul>
-</li>
-<li>
-<p><strong>In-flight</strong> &mdash; After resources are deployed to an Azure subscription.
-  Use <em>in-flight</em> analysis to:</p>
-<ul>
-<li>Implement release gates between environments for non-native tools such as Terraform.</li>
-<li>Performing offline analysis in split-environments.</li>
-</ul>
-</li>
-</ul>
+<p>To help you align your Infrastructure as Code (<abbr title="Infrastructure as Code">IaC</abbr>) to <abbr title="Well-Architected Framework">WAF</abbr> principles, PSRule for Azure includes documentation.
+Included are examples, references to <abbr title="Well-Architected Framework">WAF</abbr> and product documentation.
+This allows you to explore and learn the context of each <abbr title="Well-Architected Framework">WAF</abbr> principle.</p>
 <h2 id="readytogo">Ready to go<a class="headerlink" href="#readytogo" title="Permanent link">#</a></h2>
-<p>PSRule for Azure includes over 200 rules for validating resources against configuration recommendations.
-Each rule performs Azure Well-Architected Framework aligned tests against templates and Azure resources.
-In addition to basic unit tests, PSRule also include documentation to help remediate issues.
-Just like application code, PSRule for Azure allows you quickly to light up unit testing for Azure templates.</p>
+<p>PSRule for Azure includes over 230 rules for validating resources against configuration recommendations.
+Rules automatically detect and analyze resources from Azure <abbr title="Infrastructure as Code">IaC</abbr> artifacts.
+This allows you to quickly light up unit testing of Azure resources from templates and Bicep deployments.</p>
 <p>Use the built-in rules to start enforcing testing quickly.
 Then layer on your own rules as your organization's requirements mature.
 Custom rules can be implemented quickly and work side-by-side with built-in rules.</p>
@@ -5215,7 +5110,7 @@ Custom rules can be implemented quickly and work side-by-side with built-in rule
 <li><a href="../customization/enforce-custom-tags/">Enforcing custom tags</a>.</li>
 </ul>
 </div>
-<h2 id="devops">DevOps<a class="headerlink" href="#devops" title="Permanent link">#</a></h2>
+<h2 id="devopsintegrated">DevOps integrated<a class="headerlink" href="#devopsintegrated" title="Permanent link">#</a></h2>
 <p>Azure resources can be validated throughout their lifecycle to support a DevOps culture.
 From as early as authoring an <abbr title="Azure Resource Manager">ARM</abbr> template, resources can be validated offline before deployment.</p>
 <p>Pre-flight validation can be integrated into a continuous integration (<abbr title="Continuous Integration">CI</abbr>) pipeline as unit tests to:</p>
@@ -5243,85 +5138,6 @@ PSRule has native extensions for:</p>
 </ul>
 <p>Additionally, PSRule for Azure can be installed locally or within Azure Cloud Shell.
 For installation options see <a href="../install-instructions/">installation</a>.</p>
-<h2 id="frequentlyaskedquestionsfaq">Frequently Asked Questions (FAQ)<a class="headerlink" href="#frequentlyaskedquestionsfaq" title="Permanent link">#</a></h2>
-<p>Continue reading for FAQ relating to <em>PSRule for Azure</em>.
-For general FAQ see <a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#frequently-asked-questions-faq">PSRule - Frequently Asked Questions (FAQ)</a>, including:</p>
-<ul>
-<li><a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-is-psrule-different-to-pester">How is PSRule different to Pester?</a></li>
-<li><a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-configure-psrule">How do I configure PSRule?</a></li>
-<li><a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-ignore-a-rule">How do I ignore a rule?</a></li>
-<li><a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-layer-on-custom-rules-on-top-of-an-existing-module">How do I layer on custom rules on top of an existing module?</a></li>
-</ul>
-<h3 id="howdoicreateacustomruletoenforceresourcegrouptagging">How do I create a custom rule to enforce resource group tagging?<a class="headerlink" href="#howdoicreateacustomruletoenforceresourcegrouptagging" title="Permanent link">#</a></h3>
-<p>PSRule for Azure covers common use cases that align to the <a href="https://docs.microsoft.com/azure/architecture/framework/">Microsoft Azure Well-Architected Framework</a>.
-Use of resource and resource group tags is recommended in the <abbr title="Well-Architected Framework">WAF</abbr>, however implementation may vary.
-You may want to use PSRule to enforce tagging or something similar early in a DevOps pipeline.</p>
-<p>We have a walk through scenario <a href="../customization/enforce-custom-tags/">Enforcing custom tags</a> to get you started.</p>
-<h3 id="howdoicreateacustomruletoenforcecodeownership">How do I create a custom rule to enforce code ownership?<a class="headerlink" href="#howdoicreateacustomruletoenforcecodeownership" title="Permanent link">#</a></h3>
-<p>GitHub, Azure DevOps, and other DevOps platforms may implement code ownership.
-This process involves assigning a team or an individual review and approval responsibility.
-In GitHub or Azure DevOps implementation, ownership is linked to the file path.</p>
-<p>When a repository contains resources that different teams would approve how do you:</p>
-<ul>
-<li>Resources are created in a path that triggers the correct approval.</li>
-</ul>
-<p>We have a walk through scenario <a href="../customization/enforce-codeowners/">Enforcing code ownership</a> to get you started.</p>
-<h3 id="doineedpowershellexperiencetostartusingpsruleforazure">Do I need PowerShell experience to start using PSRule for Azure?<a class="headerlink" href="#doineedpowershellexperiencetostartusingpsruleforazure" title="Permanent link">#</a></h3>
-<p>No. You can start using built-in rules and <abbr title="Continuous Integration">CI</abbr> with Azure Pipelines or GitHub Actions.
-If we didn't tell you, you might not even know that PowerShell runs under the covers.</p>
-<p>To perform local validation, some PowerShell setup is required but we step you through that.
-See <a href="../install-instructions/">installation</a> and <a href="../validating-locally/">validating locally</a> for details.</p>
-<p>To start writing your own custom rules, some PowerShell experience is required.
-We have a walk through scenario <a href="../customization/enforce-custom-tags/">Enforcing custom tags</a> to get you started.</p>
-<h3 id="whatpermissionsdoineedtoexportdata">What permissions do I need to export data?<a class="headerlink" href="#whatpermissionsdoineedtoexportdata" title="Permanent link">#</a></h3>
-<p>The default built-in <em>Reader</em> role to a subscription is required for:</p>
-<ul>
-<li>Exporting rule data with <code>Export-AzRuleData</code>.</li>
-<li>Exporting rule data from templates with <code>Export-AzRuleTemplateData</code> when online features are used.<ul>
-<li>Optionally <code>-ResourceGroupName</code> and <code>-Subscription</code> parameter can be used; these require access <em>Reader</em> access.</li>
-</ul>
-</li>
-</ul>
-<h3 id="whatpermissionsdoineedtoanalyzeexporteddata">What permissions do I need to analyze exported data?<a class="headerlink" href="#whatpermissionsdoineedtoanalyzeexporteddata" title="Permanent link">#</a></h3>
-<p>When exporting data for <em>in-flight</em> analysis,
-no access to Azure is required after data has been exported to JSON.</p>
-<h3 id="shouldicontinuetouseazureadvisorsecuritycenterorazurepolicy">Should I continue to use Azure Advisor, Security Center, or Azure Policy?<a class="headerlink" href="#shouldicontinuetouseazureadvisorsecuritycenterorazurepolicy" title="Permanent link">#</a></h3>
-<p>Absolutely.
-PSRule for Azure does not replace Azure Advisor, Security Center, or Azure Policy.</p>
-<p>PSRule complements Azure Advisor, Security Center, and Azure Policy features by:</p>
-<ul>
-<li>Recommending turning on and using features of Azure Advisor, Azure Security Center, or Azure Policy.</li>
-<li>Providing offline analysis in split environments where the analyst has no access to Azure subscriptions.
-  Rule data for analysis can be exported out to a JSON file.</li>
-<li>Providing the ability to analyze resources in Azure Resource Manager templates before deployment.
-  Additionally, analysis can be performed in a <abbr title="Continuous Integration">CI</abbr> process.</li>
-<li>Providing the ability to layer on organization specific rules, as required.</li>
-<li>Data collection requires limited permissions and requires no additional configuration.</li>
-</ul>
-<h3 id="traditionalunittestingvspsruleforazure">Traditional unit testing vs PSRule for Azure?<a class="headerlink" href="#traditionalunittestingvspsruleforazure" title="Permanent link">#</a></h3>
-<p>You may already be using a unit test framework such as Pester to test infrastructure code.
-If you are, then you may have encountered the following challenges.</p>
-<p>For a general PSRule/ Pester comparison see <a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-is-psrule-different-to-pester">How is PSRule different to Pester?</a></p>
-<h4 id="unittestingmorethanbasicjsonstructure">Unit testing more than basic JSON structure<a class="headerlink" href="#unittestingmorethanbasicjsonstructure" title="Permanent link">#</a></h4>
-<p>Unit tests are unable to effectively test resources contained within Azure templates.
-Templates should be reusable, but this creates problems for testing when functions, conditions and copy loops are used.
-Template parameters could completely change the type, number of, or configuration of resources.</p>
-<p>PSRule resolves templates to allow analysis of the resources that would be deployed based on provided parameters.</p>
-<h4 id="standardlibraryoftests">Standard library of tests<a class="headerlink" href="#standardlibraryoftests" title="Permanent link">#</a></h4>
-<p>When building unit tests for Azure resources, starting with an empty repository can be a daunting experience.
-While there are several open source repositories and samples around to get you started, you need to integrate these yourself.</p>
-<p><em>PSRule for Azure</em> is distributed as a PowerShell module using the PowerShell Gallery.
-Using a PowerShell module makes it easy to install and update.
-The built-in rules allow you starting testing resources quickly, with minimal integration.</p>
-<p>For detailed examples see:</p>
-<ul>
-<li><a href="../scenarios/azure-pipelines-ci/azure-pipelines-ci/">Validate Azure resources from templates with Azure Pipelines</a></li>
-<li><a href="../scenarios/azure-template-ci/azure-template-ci/">Validate Azure resources from templates with continuous integration (<abbr title="Continuous Integration">CI</abbr>)</a></li>
-</ul>
-<h3 id="collectionoftelemetry">Collection of telemetry<a class="headerlink" href="#collectionoftelemetry" title="Permanent link">#</a></h3>
-<p>PSRule and PSRule for Azure currently do not collect any telemetry during installation or execution.</p>
-<p>PowerShell (used by PSRule for Azure) does collect basic telemetry by default.
-Collection of telemetry in PowerShell and how to opt-out is explained in <a href="https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_telemetry">about_Telemetry</a>.</p>
                 
                   
                     
@@ -5330,7 +5146,7 @@ Collection of telemetry in PowerShell and how to opt-out is explained in <a href
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-10-25
+      Last update: 2021-10-26
     
   </small>
 </div>
@@ -5354,7 +5170,7 @@ Collection of telemetry in PowerShell and how to opt-out is explained in <a href
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+        <a href="../about/" class="md-footer__link md-footer__link--prev" aria-label="Previous: About" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -5363,20 +5179,20 @@ Collection of telemetry in PowerShell and how to opt-out is explained in <a href
               <span class="md-footer__direction">
                 Previous
               </span>
-              Home
+              About
             </div>
           </div>
         </a>
       
       
         
-        <a href="../install-instructions/" class="md-footer__link md-footer__link--next" aria-label="Next: Installation" rel="next">
+        <a href="../faq/" class="md-footer__link md-footer__link--next" aria-label="Next: FAQ" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Installation
+              FAQ
             </div>
           </div>
           <div class="md-footer__button md-icon">
