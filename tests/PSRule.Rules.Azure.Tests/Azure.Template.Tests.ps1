@@ -103,9 +103,10 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
 
-            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -HaveCount 6
-            $ruleResult[0].Reason | Should -Be @(
+            $ruleResult0 = $ruleResult | Where-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] -eq 'Resources.Template.json' };
+            $ruleResult0.Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult0.Reason | Should -HaveCount 6
+            $ruleResult0.Reason | Should -Be @(
                 "The parameter 'addressPrefix' does not have a description set.",
                 "The parameter 'subnets' does not have a description set.",
                 "The parameter 'aciSubnet' does not have a description set.",
@@ -113,8 +114,9 @@ Describe 'Azure.Template' -Tag 'Template' {
                 "The parameter 'clusterObjectId' does not have a description set.",
                 "The parameter 'delegate' does not have a description set."
             )
-            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The parameter 'diagnosticStorageAccountName' does not have a description set.";
+            $ruleResult1 = $ruleResult | Where-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] -eq 'Resources.Template2.json' };
+            $ruleResult1.Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult1.Reason | Should -BeExactly "The parameter 'diagnosticStorageAccountName' does not have a description set.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

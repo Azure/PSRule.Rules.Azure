@@ -468,7 +468,7 @@ task Benchmark {
 
 task ExportProviders {
     $subscriptionId = (Get-AzContext).Subscription.Id
-    $providers = ((Invoke-AzRest -Method Get -Path "/subscriptions/$subscriptionId/providers?api-version=2021-04-01").Content | ConvertFrom-Json).value
+    $providers = @(((Invoke-AzRest -Method Get -Path "/subscriptions/$subscriptionId/providers?api-version=2021-04-01").Content | ConvertFrom-Json).value | Sort-Object -Property namespace -CaseSensitive)
     $index = [ordered]@{}
     foreach ($provider in $providers) {
         $namespace = $provider.namespace;
@@ -478,7 +478,7 @@ task ExportProviders {
                 resourceType = $_.resourceType
                 apiVersions = $_.apiVersions
                 locations = $_.locations
-                zoneMappings = $_.ZoneMappings
+                zoneMappings = ($_.ZoneMappings | Sort-Object -Property location)
             }
             $resourceTypes.Add($info.resourceType, $info);
         };
