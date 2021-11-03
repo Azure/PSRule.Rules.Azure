@@ -19,9 +19,11 @@ namespace PSRule.Rules.Azure
 
             Assert.NotNull(actual1);
             Assert.Equal("PSRule Test Subscription", actual1.Configuration.Subscription.DisplayName);
+            Assert.Null(actual1.Configuration.ResourceGroup.Tags);
 
             Assert.NotNull(actual2);
             Assert.Equal("Unit Test Subscription", actual2.Configuration.Subscription.DisplayName);
+            Assert.Equal("prod", actual2.Configuration.ResourceGroup.Tags["env"]);
         }
 
         [Fact]

@@ -193,6 +193,19 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Microsoft.Authorization/roleAssignments", actual1["type"].Value<string>());
         }
 
+        [Fact]
+        public void DeploymentWithOptions()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.8.json"), null, PSRuleOption.FromFileOrDefault(GetSourcePath("ps-rule-options.yaml")));
+            Assert.NotNull(resources);
+            Assert.Single(resources);
+
+            var actual1 = resources[0];
+            Assert.Equal("Microsoft.Network/networkWatchers/flowLogs", actual1["type"].Value<string>());
+            Assert.Equal("prod", actual1["tags"]["Environment"].Value<string>());
+            Assert.Equal("PROD", actual1["tags"]["EnvUpper"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
@@ -204,6 +217,14 @@ namespace PSRule.Rules.Azure
         {
             var context = new PipelineContext(PSRuleOption.Default, null);
             var helper = new TemplateHelper(context, "deployment", PSRuleOption.Default.Configuration.ResourceGroup, PSRuleOption.Default.Configuration.Subscription);
+            helper.ProcessTemplate(templateFile, parametersFile, out TemplateContext templateContext);
+            return templateContext.GetResources().Select(i => i.Value).ToArray();
+        }
+
+        private static JObject[] ProcessTemplate(string templateFile, string parametersFile, PSRuleOption option)
+        {
+            var context = new PipelineContext(option, null);
+            var helper = new TemplateHelper(context, "deployment", option.Configuration.ResourceGroup, option.Configuration.Subscription);
             helper.ProcessTemplate(templateFile, parametersFile, out TemplateContext templateContext);
             return templateContext.GetResources().Select(i => i.Value).ToArray();
         }
