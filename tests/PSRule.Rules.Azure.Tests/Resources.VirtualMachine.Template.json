@@ -155,7 +155,8 @@
     },
     "variables": {
         "subnetRef": "[concat(parameters('vnetId'), '/subnets/', parameters('subnetName'))]",
-        "networkInterfaceName": "[concat(parameters('virtualMachineName'), '-nic1')]"
+        "networkInterfaceName": "[concat(parameters('virtualMachineName'), '-nic1')]",
+        "availabilitySetName": "[concat(parameters('virtualMachineName'), '-as1')]"
     },
     "resources": [
         {
@@ -196,6 +197,19 @@
             "tags": "[parameters('tags')]"
         },
         {
+            "type": "Microsoft.Compute/availabilitySets",
+            "apiVersion": "2021-03-01",
+            "name": "[variables('availabilitySetName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Aligned"
+            },
+            "properties": {
+                "PlatformUpdateDomainCount": 10,
+                "PlatformFaultDomainCount": 3
+            }
+        },
+        {
             "name": "[parameters('virtualMachineName')]",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2019-07-01",
@@ -205,6 +219,9 @@
                 "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]"
             ],
             "properties": {
+                "availabilitySet": {
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets',variables('availabilitySetName'))]"
+                },
                 "hardwareProfile": {
                     "vmSize": "[parameters('virtualMachineSize')]"
                 },
