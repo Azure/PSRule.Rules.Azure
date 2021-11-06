@@ -197,7 +197,7 @@ Rule 'Azure.VM.ASAlignment' -Type 'Microsoft.Compute/availabilitySets' -Tag @{ r
 }
 
 # Synopsis: Availability sets should be deployed with at least two members
-Rule 'Azure.VM.ASMinMembers' -Type 'Microsoft.Compute/availabilitySets' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VM.ASMinMembers' -Type 'Microsoft.Compute/availabilitySets' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.GreaterOrEqual($TargetObject, 'properties.virtualMachines', 2)
 }
 

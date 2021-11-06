@@ -901,13 +901,13 @@ Describe 'Azure.VM' -Tag 'VM' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vm-A';
+            $ruleResult | Should -BeNullOrEmpty;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -BeNullOrEmpty;
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vm-A';
         }
 
         It 'Azure.VM.PromoSku' {
@@ -1099,6 +1099,33 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'vm-A';
+        }
+
+        It 'Azure.VM.ASAlignment' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ASAlignment' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vm-A-as1';
+        }
+
+        It 'Azure.VM.ASMinMembers' {
+            $filteredResult = $result | Where-Object {
+                $_.RuleName -eq 'Azure.VM.ASMinMembers' -and
+                $_.TargetType -eq 'Microsoft.Compute/availabilitySets'
+            };
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vm-A-as1';
         }
 
         It 'Azure.VM.ADE' {
