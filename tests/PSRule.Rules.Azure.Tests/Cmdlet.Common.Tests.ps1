@@ -637,7 +637,7 @@ Describe 'VisitAKSCluster' {
     }
 }
 
-Describe 'VisitPublicIP' {
+Describe 'VisitPublicIP' -Tag 'Cmdlet','Export-AzRuleData','VisitPublicIP' {
     Context "Availability Zones" {
         It "Non-empty zones are added to Public IP resource" {
             InModuleScope -ModuleName 'PSRule.Rules.Azure' {
@@ -698,6 +698,35 @@ Describe 'VisitPublicIP' {
                 $publicIpResource[0].ResourceGroupName | Should -Be 'lb-rg';
                 $publicIpResource[0].ResourceID | Should -Be '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip';
                 $publicIpResource[0].zones | Should -BeNullOrEmpty;
+            }
+        }
+
+        It 'No zones are set on Public IP resource' {
+            InModuleScope -ModuleName 'PSRule.Rules.Azure' {
+                $resource = [PSCustomObject]@{
+                    Name = 'Resource1'
+                    ResourceGroupName = 'lb-rg'
+                    ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                };
+
+                Mock -CommandName 'Invoke-AzRestMethod' -MockWith {
+                    return [PSCustomObject]@{
+                        Content = [PSCustomObject]@{
+                            Name = 'Resource1'
+                            ResourceGroupName = 'lb-rg'
+                            ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                        } | ConvertTo-Json
+                    }
+                };
+
+                $context = New-MockObject -Type Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext;
+                $publicIpResource = $resource | VisitPublicIP -Context $context;
+
+                Assert-MockCalled -CommandName 'Invoke-AzRestMethod' -Times 1;
+
+                $publicIpResource[0].Name | Should -Be 'Resource1';
+                $publicIpResource[0].ResourceGroupName | Should -Be 'lb-rg';
+                $publicIpResource[0].ResourceID | Should -Be '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip';
             }
         }
     }
