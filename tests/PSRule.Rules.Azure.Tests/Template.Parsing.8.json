@@ -1,0 +1,77 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "The Azure region to deploy to."
+            }
+        },
+        "networkWatcherName": {
+            "type": "string",
+            "defaultValue": "[concat('NetworkWatcher_', parameters('location'))]",
+            "metadata": {
+                "description": "Name of the Network Watcher resource."
+            }
+        },
+        "flowLogName": {
+            "type": "string",
+            "defaultValue": "FlowLog1",
+            "metadata": {
+                "description": "The name of flow logs."
+            }
+        },
+        "nsgResourceId": {
+            "type": "string",
+            "defaultValue": "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-001')]",
+            "metadata": {
+                "description": "A resource ID to an existing Network Security Group to collect logs for."
+            }
+        },
+        "environment": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().tags['env']]",
+            "metadata": {
+                "description": "The environment."
+            }
+        },
+        "environmentUpper": {
+            "type": "string",
+            "defaultValue": "[toUpper(resourceGroup().tags.env)]",
+            "metadata": {
+                "description": "The environment."
+            }
+        }
+    },
+    "variables": {
+        "storageAccountResourceId": "[resourceId('Microsoft.Storage/storageAccounts', concat('flowlogs', uniquestring(resourceGroup().id)))]",
+        "resourceTags": {
+            "Environment": "[parameters('environment')]",
+            "EnvUpper": "[parameters('environmentUpper')]"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/networkWatchers/flowLogs",
+            "apiVersion": "2020-06-01",
+            "name": "[concat(parameters('networkWatcherName'), '/', parameters('flowLogName'))]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "targetResourceId": "[parameters('nsgResourceId')]",
+                "storageId": "[variables('storageAccountResourceId')]",
+                "enabled": true,
+                "retentionPolicy": {
+                    "days": "7",
+                    "enabled": true
+                },
+                "format": {
+                    "type": "JSON",
+                    "version": "2"
+                }
+            },
+            "tags": "[variables('resourceTags')]"
+        }
+    ]
+}

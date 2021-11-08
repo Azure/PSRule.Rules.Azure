@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
@@ -143,6 +144,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (source is MockNode mockNode && ExpressionHelpers.TryConvertString(indexResult, out string memberName))
                 return mockNode.GetMember(memberName);
 
+            if (ExpressionHelpers.TryString(indexResult, out propertyName) && TryPropertyOrField(source, propertyName, out object value))
+                return value;
+
             throw new InvalidOperationException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.IndexInvalid, indexResult));
         }
 
@@ -177,23 +181,40 @@ namespace PSRule.Rules.Azure.Data.Template
             if (result is MockNode mockNode)
                 return mockNode.GetMember(propertyName);
 
-            return PropertyOrField(result, propertyName);
+            if (TryPropertyOrField(result, propertyName, out object value))
+                return value;
+
+            throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
         }
 
-        private static object PropertyOrField(object obj, string propertyName)
+        private static bool TryPropertyOrField(object obj, string propertyName, out object value)
         {
-            // Try property
+            value = null;
             var resultType = obj.GetType();
+
+            // Try dictionary
+            if (obj is IDictionary dictionary && dictionary.Contains(propertyName))
+            {
+                value = dictionary[propertyName];
+                return true;
+            }
+
+            // Try property
             var property = resultType.GetProperty(propertyName, BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.GetProperty | BindingFlags.Public);
             if (property != null)
-                return property.GetValue(obj);
+            {
+                value = property.GetValue(obj);
+                return true;
+            }
 
             // Try field
             var field = resultType.GetField(propertyName, BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.GetField | BindingFlags.Public);
-            if (field == null)
-                throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
-
-            return field.GetValue(obj);
+            if (field != null)
+            {
+                value = field.GetValue(obj);
+                return true;
+            }
+            return false;
         }
     }
 
