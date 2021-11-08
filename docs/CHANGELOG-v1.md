@@ -7,11 +7,13 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.9.1
+
 What's changed since v1.9.0:
 
 - Bug fixes:
   - Fixed can not index into resource group tags. [#1066](https://github.com/Azure/PSRule.Rules.Azure/issues/1066)
-  - Fixed Azure.VM.ASMinMembers for template deployments. [#1064](https://github.com/Azure/PSRule.Rules.Azure/issues/1064)
+  - Fixed `Azure.VM.ASMinMembers` for template deployments. [#1064](https://github.com/Azure/PSRule.Rules.Azure/issues/1064)
   - Fixed zones property not found on public IP resource. [#1070](https://github.com/Azure/PSRule.Rules.Azure/issues/1070)
 
 ## v1.9.0
