@@ -44,6 +44,7 @@ namespace PSRule.Rules.Azure.Data.Template
         public string[] Locations { get; set; }
 
         public string[] ApiVersions { get; set; }
+
         public AvailabilityZoneMapping[] ZoneMappings { get; set; }
     }
 

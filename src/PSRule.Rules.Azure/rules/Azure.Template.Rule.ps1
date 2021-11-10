@@ -231,6 +231,11 @@ Rule 'Azure.Template.ParameterDataTypes' -Type '.json' -If { (HasTemplateParamet
     }
 }
 
+# Synopsis: Set the parameter value to a value that matches the specified strong type.
+Rule 'Azure.Template.ParameterStrongType' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+    $Assert.Create($PSRule.Issue.Get('PSRule.Rules.Azure.Template.ParameterStrongType'));
+}
+
 #endregion Template
 
 #region Parameters

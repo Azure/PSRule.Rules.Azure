@@ -282,16 +282,16 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
             $Null = Export-AzRuleTemplateData @exportParams;
             $result = Get-Content -Path $outputFile -Raw | ConvertFrom-Json;
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 9;
-            $result[0].name | Should -Be 'vnet-001';
-            $result[0].properties.addressSpace.addressPrefixes | Should -Be "10.1.0.0/24";
-            $result[0].properties.subnets.Length | Should -Be 3;
-            $result[0].properties.subnets[0].name | Should -Be 'GatewaySubnet';
-            $result[0].properties.subnets[0].properties.addressPrefix | Should -Be '10.1.0.0/27';
-            $result[0].properties.subnets[2].name | Should -Be 'subnet2';
-            $result[0].properties.subnets[2].properties.addressPrefix | Should -Be '10.1.0.64/28';
-            $result[0].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
-            $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/routeTables/route-subnet2$';
+            $result.Length | Should -Be 10;
+            $result[1].name | Should -Be 'vnet-001';
+            $result[1].properties.addressSpace.addressPrefixes | Should -Be "10.1.0.0/24";
+            $result[1].properties.subnets.Length | Should -Be 3;
+            $result[1].properties.subnets[0].name | Should -Be 'GatewaySubnet';
+            $result[1].properties.subnets[0].properties.addressPrefix | Should -Be '10.1.0.0/27';
+            $result[1].properties.subnets[2].name | Should -Be 'subnet2';
+            $result[1].properties.subnets[2].properties.addressPrefix | Should -Be '10.1.0.64/28';
+            $result[1].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
+            $result[1].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/routeTables/route-subnet2$';
         }
 
         It 'Returns file not found' {
@@ -321,15 +321,15 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
             }
             $result = @(Export-AzRuleTemplateData @exportParams -PassThru);
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 9;
-            $result[0].name | Should -Be 'vnet-001';
-            $result[0].properties.subnets.Length | Should -Be 3;
-            $result[0].properties.subnets[0].name | Should -Be 'GatewaySubnet';
-            $result[0].properties.subnets[0].properties.addressPrefix | Should -Be '10.1.0.0/27';
-            $result[0].properties.subnets[2].name | Should -Be 'subnet2';
-            $result[0].properties.subnets[2].properties.addressPrefix | Should -Be '10.1.0.64/28';
-            $result[0].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
-            $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/routeTables/route-subnet2$';
+            $result.Length | Should -Be 10;
+            $result[1].name | Should -Be 'vnet-001';
+            $result[1].properties.subnets.Length | Should -Be 3;
+            $result[1].properties.subnets[0].name | Should -Be 'GatewaySubnet';
+            $result[1].properties.subnets[0].properties.addressPrefix | Should -Be '10.1.0.0/27';
+            $result[1].properties.subnets[2].name | Should -Be 'subnet2';
+            $result[1].properties.subnets[2].properties.addressPrefix | Should -Be '10.1.0.64/28';
+            $result[1].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
+            $result[1].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/routeTables/route-subnet2$';
         }
     }
 
@@ -351,11 +351,11 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
             # With lookup
             $result = Export-AzRuleTemplateData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 9;
-            $result[0].properties.subnets.Length | Should -Be 3;
-            $result[0].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
-            $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/routeTables/route-subnet2$';
-            $result[0].tags.role | Should -Match 'Networking';
+            $result.Length | Should -Be 10;
+            $result[1].properties.subnets.Length | Should -Be 3;
+            $result[1].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
+            $result[1].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/[\w\{\}\-\.]{1,}/providers/Microsoft\.Network/routeTables/route-subnet2$';
+            $result[1].tags.role | Should -Match 'Networking';
         }
     }
 
@@ -371,8 +371,8 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
             }
             $result = Export-AzRuleTemplateData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 9;
-            $result[0].tags.role | Should -Be 'Custom';
+            $result.Length | Should -Be 10;
+            $result[1].tags.role | Should -Be 'Custom';
         }
     }
 
@@ -397,10 +397,10 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
             # With lookup
             $result = Export-AzRuleTemplateData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 9;
-            $result[0].properties.subnets.Length | Should -Be 3;
-            $result[0].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/test-rg/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
-            $result[0].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/test-rg/providers/Microsoft\.Network/routeTables/route-subnet2$';
+            $result.Length | Should -Be 10;
+            $result[1].properties.subnets.Length | Should -Be 3;
+            $result[1].properties.subnets[2].properties.networkSecurityGroup.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/test-rg/providers/Microsoft\.Network/networkSecurityGroups/nsg-subnet2$';
+            $result[1].properties.subnets[2].properties.routeTable.id | Should -Match '^/subscriptions/[\w\{\}\-\.]{1,}/resourceGroups/test-rg/providers/Microsoft\.Network/routeTables/route-subnet2$';
         }
     }
 
@@ -415,8 +415,8 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
             }
             $result = Export-AzRuleTemplateData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 9;
-            $result[0].location | Should -Be 'Custom';
+            $result.Length | Should -Be 10;
+            $result[1].location | Should -Be 'Custom';
         }
     }
 

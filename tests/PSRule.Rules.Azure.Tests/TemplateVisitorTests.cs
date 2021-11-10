@@ -20,9 +20,9 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Resources.Template.json"), GetSourcePath("Resources.Parameters.json"));
             Assert.NotNull(resources);
-            Assert.Equal(9, resources.Length);
+            Assert.Equal(10, resources.Length);
 
-            var actual1 = resources[0];
+            var actual1 = resources[1];
             Assert.Equal("vnet-001", actual1["name"].Value<string>());
             Assert.Equal("10.1.0.0/24", actual1["properties"]["addressSpace"]["addressPrefixes"][0].Value<string>());
             Assert.Equal(3, actual1["properties"]["subnets"].Value<JArray>().Count);
@@ -30,11 +30,11 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Networking", actual1["tags"]["role"].Value<string>());
             Assert.Equal("region-A", actual1["location"].Value<string>());
 
-            var actual2 = resources[1];
+            var actual2 = resources[2];
             Assert.Equal("vnet-001/subnet2", actual2["name"].Value<string>());
             Assert.Equal("vnetDelegation", actual2["properties"]["delegations"][0]["name"].Value<string>());
 
-            var actual3 = resources[2];
+            var actual3 = resources[3];
             Assert.Equal("vnet-001/subnet1/Microsoft.Authorization/924b5b06-fe70-9ab7-03f4-14671370765e", actual3["name"].Value<string>());
         }
 
@@ -43,8 +43,9 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Resources.FrontDoor.Template.json"), null);
             Assert.NotNull(resources);
-            Assert.Equal("my-frontdoor", resources[0]["properties"]["frontendEndpoints"][0]["name"].Value<string>());
-            Assert.Equal("my-frontdoor.azurefd.net", resources[0]["properties"]["frontendEndpoints"][0]["properties"]["hostName"].Value<string>());
+            Assert.Equal(3, resources.Length);
+            Assert.Equal("my-frontdoor", resources[1]["properties"]["frontendEndpoints"][0]["name"].Value<string>());
+            Assert.Equal("my-frontdoor.azurefd.net", resources[1]["properties"]["frontendEndpoints"][0]["properties"]["hostName"].Value<string>());
         }
 
         [Fact]
@@ -66,9 +67,9 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Template.Parsing.2.json"), null);
             Assert.NotNull(resources);
-            Assert.Single(resources);
+            Assert.Equal(2, resources.Length);
 
-            var actual1 = resources[0];
+            var actual1 = resources[1];
             Assert.Equal("defaultvalue", actual1["name"].Value<string>());
             Assert.Equal("eastus", actual1["location"].Value<string>());
             Assert.False(actual1["properties"]["enabledForDeployment"].Value<bool>());
@@ -85,9 +86,9 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Template.Parsing.4.json"), null);
             Assert.NotNull(resources);
-            Assert.Single(resources);
+            Assert.Equal(2, resources.Length);
 
-            var actual1 = resources[0];
+            var actual1 = resources[1];
             Assert.Equal("Hello world", actual1["properties"]["keyString"].Value<string>());
             Assert.Equal("world", actual1["properties"]["keyObject"]["message"].Value<string>());
             Assert.Equal("Hello world", actual1["properties"]["keyObject"]["value"].Value<string>());
@@ -98,9 +99,9 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Template.Parsing.3.json"), null);
             Assert.NotNull(resources);
-            Assert.Single(resources);
+            Assert.Equal(2, resources.Length);
 
-            var actual1 = resources[0];
+            var actual1 = resources[1];
             Assert.Equal("Microsoft.Network/networkWatchers/flowLogs", actual1["type"].Value<string>());
             Assert.Equal("NetworkWatcher_eastus/FlowLog1", actual1["name"].Value<string>());
             Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-001", actual1["properties"]["targetResourceId"].Value<string>());
@@ -113,12 +114,12 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Template.Parsing.5.json"), null);
             Assert.NotNull(resources);
-            Assert.Equal(4, resources.Length);
+            Assert.Equal(5, resources.Length);
 
-            Assert.Equal("myVnet/my-subnet", resources[0]["name"].Value<string>());
-            Assert.Equal("my-pip1", resources[1]["name"].Value<string>());
-            Assert.Equal("my-pip2", resources[2]["name"].Value<string>());
-            Assert.Equal("my-nic", resources[3]["name"].Value<string>());
+            Assert.Equal("myVnet/my-subnet", resources[1]["name"].Value<string>());
+            Assert.Equal("my-pip1", resources[2]["name"].Value<string>());
+            Assert.Equal("my-pip2", resources[3]["name"].Value<string>());
+            Assert.Equal("my-nic", resources[4]["name"].Value<string>());
         }
 
         [Fact]
@@ -126,9 +127,10 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Resources.KeyVault.Template.json"), null);
             Assert.NotNull(resources);
-            Assert.Single(resources);
+            Assert.Equal(2, resources.Length);
 
-            var subResources = resources[0]["resources"].Value<JArray>();
+            var actual1 = resources[1];
+            var subResources = actual1["resources"].Value<JArray>();
             Assert.Equal(2, subResources.Count);
             Assert.Equal("keyvault1/Microsoft.Insights/service", subResources[0]["name"].Value<string>());
             Assert.Equal("monitor", subResources[1]["name"].Value<string>());
@@ -162,9 +164,9 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Resources.Template.json"), GetSourcePath("Resources.Parameters.json"));
             Assert.NotNull(resources);
-            Assert.Equal(9, resources.Length);
+            Assert.Equal(10, resources.Length);
 
-            var actual1 = resources[0];
+            var actual1 = resources[1];
             Assert.EndsWith("Resources.Template.json", actual1["_PSRule"]["source"][0]["file"].Value<string>());
         }
 
@@ -173,9 +175,9 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Template.Parsing.6.json"), null);
             Assert.NotNull(resources);
-            Assert.Single(resources);
+            Assert.Equal(2, resources.Length);
 
-            var actual1 = resources[0];
+            var actual1 = resources[1];
             Assert.Equal("True", actual1["properties"]["value1"].Value<string>());
             Assert.Equal("true", actual1["properties"]["value2"].Value<string>());
             Assert.Equal("false", actual1["properties"]["value3"].Value<string>());
@@ -187,9 +189,9 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Template.Parsing.7.json"), null);
             Assert.NotNull(resources);
-            Assert.Single(resources);
+            Assert.Equal(2, resources.Length);
 
-            var actual1 = resources[0];
+            var actual1 = resources[1];
             Assert.Equal("Microsoft.Authorization/roleAssignments", actual1["type"].Value<string>());
         }
 
@@ -198,12 +200,44 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Template.Parsing.8.json"), null, PSRuleOption.FromFileOrDefault(GetSourcePath("ps-rule-options.yaml")));
             Assert.NotNull(resources);
-            Assert.Single(resources);
+            Assert.Equal(2, resources.Length);
 
-            var actual1 = resources[0];
+            var actual1 = resources[1];
             Assert.Equal("Microsoft.Network/networkWatchers/flowLogs", actual1["type"].Value<string>());
             Assert.Equal("prod", actual1["tags"]["Environment"].Value<string>());
             Assert.Equal("PROD", actual1["tags"]["EnvUpper"].Value<string>());
+        }
+
+        [Fact]
+        public void StrongTypeParameter()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.StrongType.1.json"), GetSourcePath("Template.StrongType.1.Parameters.json"));
+            Assert.NotNull(resources);
+            Assert.Equal(2, resources.Length);
+
+            var actual1 = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual1["type"].Value<string>());
+            Assert.Single(actual1["_PSRule"]["issue"].Value<JArray>());
+            Assert.Equal("PSRule.Rules.Azure.Template.ParameterStrongType", actual1["_PSRule"]["issue"][0]["type"].Value<string>());
+            Assert.Equal("location", actual1["_PSRule"]["issue"][0]["name"].Value<string>());
+
+            resources = ProcessTemplate(GetSourcePath("Template.StrongType.1.json"), GetSourcePath("Template.StrongType.2.Parameters.json"));
+            Assert.NotNull(resources);
+            Assert.Equal(2, resources.Length);
+
+            var actual2 = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual2["type"].Value<string>());
+            Assert.Single(actual2["_PSRule"]["issue"].Value<JArray>());
+            Assert.Equal("PSRule.Rules.Azure.Template.ParameterStrongType", actual2["_PSRule"]["issue"][0]["type"].Value<string>());
+            Assert.Equal("workspaceId", actual2["_PSRule"]["issue"][0]["name"].Value<string>());
+
+            resources = ProcessTemplate(GetSourcePath("Template.StrongType.1.json"), GetSourcePath("Template.StrongType.3.Parameters.json"));
+            Assert.NotNull(resources);
+            Assert.Equal(2, resources.Length);
+
+            var actual3 = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual3["type"].Value<string>());
+            Assert.False(actual3["_PSRule"].Value<JObject>().ContainsKey("issue"));
         }
 
         #region Helper methods

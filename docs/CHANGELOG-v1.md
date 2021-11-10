@@ -7,6 +7,14 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.9.1:
+
+- New features:
+  - Added support for parameter strong types. [#1083](https://github.com/Azure/PSRule.Rules.Azure/issues/1083)
+    - The value of string parameters can be tested aganist the expected type.
+    - When configuring a location strong type, the parameter value must be a valid Azure location.
+    - When configuring a resource type strong type, the parameter value must be a matching resource Id.
+
 ## v1.9.1
 
 What's changed since v1.9.0:

@@ -18,7 +18,8 @@
             "defaultValue": "[ resourceGroup( ).location ]",
             "metadata": {
                 "description": "Optional. The Azure region to deploy to.",
-                "example": "EastUS"
+                "example": "EastUS",
+                "strongType": "location"
             }
         },
         "vaultStorageType": {
@@ -117,7 +118,8 @@
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Required. The workspace to store recovery events."
+                "description": "Required. The workspace to store recovery events.",
+                "strongType": "Microsoft.OperationalInsights/workspaces"
             }
         },
         "tags": {
