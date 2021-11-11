@@ -16,7 +16,7 @@ namespace PSRule.Rules.Azure
         {
             var expression = "[parameters('vnetName')]";
             var context = GetContext();
-            context.Parameter("vnetName", "vnet1");
+            context.Parameter("vnetName", ParameterType.String, "vnet1");
 
             var actual = Build(context, expression);
 
@@ -29,7 +29,7 @@ namespace PSRule.Rules.Azure
             var expression = "[concat('route-', parameters('subnets')[copyIndex('routeIndex')].name)]";
             var context = GetContext();
             context.CopyIndex.Push(new TemplateContext.CopyIndexState() { Name = "routeIndex", Index = 0 });
-            context.Parameter("subnets", JArray.Parse("[ { \"name\": \"subnet1\", \"route\": [ \"routeA\", \"routeB\" ] } ]"));
+            context.Parameter("subnets", ParameterType.Array, JArray.Parse("[ { \"name\": \"subnet1\", \"route\": [ \"routeA\", \"routeB\" ] } ]"));
 
             var actual = Build(context, expression);
 
@@ -41,7 +41,7 @@ namespace PSRule.Rules.Azure
         {
             var expression = "[concat('route-', parameters('subnets')[0].route[1])]";
             var context = GetContext();
-            context.Parameter("subnets", JArray.Parse("[ { \"name\": \"subnet1\", \"route\": [ \"routeA\", \"routeB\" ] } ]"));
+            context.Parameter("subnets", ParameterType.Array, JArray.Parse("[ { \"name\": \"subnet1\", \"route\": [ \"routeA\", \"routeB\" ] } ]"));
 
             var actual = Build(context, expression);
 
@@ -100,8 +100,8 @@ namespace PSRule.Rules.Azure
             Assert.Equal(JTokenType.Date, expected["value"].Type);
             Assert.Equal(JTokenType.String, expected["duration"].Type);
 
-            context.Parameter("startDate", expected["value"]);
-            context.Parameter("duration", expected["duration"]);
+            context.Parameter("startDate", ParameterType.String, expected["value"]);
+            context.Parameter("duration", ParameterType.String, expected["duration"]);
             var actual = Build(context, expression);
             Assert.NotNull(actual);
         }
@@ -114,7 +114,7 @@ namespace PSRule.Rules.Azure
             var subtract9Days = "[dateTimeAdd(parameters('baseTime'), '-P9D')]";
             var add1Hour = "[dateTimeAdd(parameters('baseTime'), 'PT1H')]";
             var context = GetContext();
-            context.Parameter("baseTime", "2020-04-07 14:53:14Z");
+            context.Parameter("baseTime", ParameterType.String, "2020-04-07 14:53:14Z");
             var actual1 = Build(context, add3Years);
             var actual2 = Build(context, subtract9Days);
             var actual3 = Build(context, add1Hour);
@@ -129,7 +129,7 @@ namespace PSRule.Rules.Azure
         {
             var andLateBinding = "[and(not(empty(parameters('blobContainers'))),contains(parameters('blobContainers')[0],'enableWORM'),parameters('blobContainers')[0].enableWORM)]";
             var context = GetContext();
-            context.Parameter("blobContainers", JToken.Parse("[{ }, { \"enableWORM\": true }]"));
+            context.Parameter("blobContainers", ParameterType.Array, JToken.Parse("[{ }, { \"enableWORM\": true }]"));
 
             var actual1 = Build(context, andLateBinding);
 

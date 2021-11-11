@@ -495,6 +495,29 @@ Describe 'Azure.Template' -Tag 'Template' {
             $targetNames | Should -BeIn 'Resources.Template3.json', 'Resources.Template4.json';
         }
 
+        It 'Azure.Template.ParameterStrongType' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Template.StrongType.*.Parameters.json';
+            $options = @{
+                'Configuration.AZURE_PARAMETER_FILE_EXPANSION' = $True
+            }
+            $result = Invoke-PSRule @invokeParams -Option $options -InputPath $dataPath -Format File -Name 'Azure.Template.ParameterStrongType';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.ParameterStrongType' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Template.StrongType.1.Parameters.json', 'Template.StrongType.2.Parameters.json';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Template.StrongType.3.Parameters.json';
+        }
+
         It 'Azure.Template.ParameterFile' {
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Parameters*.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.ParameterFile';
@@ -548,7 +571,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 7;
+            $ruleResult.Length | Should -Be 10;
         }
 
         It 'Azure.Template.ParameterValue' {

@@ -163,6 +163,47 @@ When linking using naming convention, the template and the parameter file must b
 !!! Example
     A parameter file named `azuredeploy.parameters.json` links to the template file named `azuredeploy.json`.
 
+## Strong type
+
+String parameters are commonly used to pass values such as a resource Id or location.
+PSRule for Azure provides additional support to allow parameters to be strongly typed.
+When a parameter is strongly typed, the value is checked against the type during expansion.
+
+To configure a strong type for a parameter set the `strongType` metadata property within the template.
+The strong type will be set to the resource type that the parameter will accept, such as `Microsoft.OperationalInsights/workspaces`.
+
+=== "Azure template"
+
+    ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "workspaceId": {
+                "type": "string",
+                "metadata": {
+                    "description": "The resource identifer for a Log Analytics workspace.",
+                    "strongType": "Microsoft.OperationalInsights/workspaces"
+                }
+            }
+        }
+    }
+    ```
+
+=== "Azure Bicep"
+
+    ```bicep
+    @metadata({
+      description: 'The resource identifer for a Log Analytics workspace.'
+      strongType: 'Microsoft.OperationalInsights/workspaces'
+    })
+    param workspaceId string
+    ```
+
+Strong type also supports the following non-resource type values:
+
+- `location` - Specifies the parameter must contain any valid Azure location.
+
 *[WAF]: Well-Architected Framework
 *[ARM]: Azure Resource Manager
 *[CI]: continuous integration

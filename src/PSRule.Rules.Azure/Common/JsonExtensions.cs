@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System.Linq;
+using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -40,7 +41,7 @@ namespace PSRule.Rules.Azure
     internal static class JsonExtensions
     {
         private const string FIELD_DEPENDSON = "dependsOn";
-        private const string TARGETINFO_NAME = "_PSRule";
+        private const string TARGETINFO_KEY = "_PSRule";
         private const string TARGETINFO_SOURCE = "source";
         private const string TARGETINFO_FILE = "file";
         private const string TARGETINFO_LINE = "line";
@@ -48,6 +49,9 @@ namespace PSRule.Rules.Azure
         private const string TARGETINFO_TYPE = "type";
         private const string TARGETINFO_TYPE_TEMPLATE = "Template";
         private const string TARGETINFO_TYPE_PARAMETER = "Parameter";
+        private const string TARGETINFO_ISSUE = "issue";
+        private const string TARGETINFO_NAME = "name";
+        private const string TARGETINFO_MESSAGE = "message";
 
         internal static IJsonLineInfo TryLineInfo(this JToken token)
         {
@@ -87,6 +91,17 @@ namespace PSRule.Rules.Azure
                 token.AddAnnotation(annotation);
         }
 
+        internal static bool TryGetProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken
+        {
+            value = null;
+            if (o.TryGetValue(propertyName, System.StringComparison.OrdinalIgnoreCase, out JToken v))
+            {
+                value = (TValue)v;
+                return value != null;
+            }
+            return false;
+        }
+
         internal static void UseProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken, new()
         {
             if (!o.TryGetValue(propertyName, System.StringComparison.OrdinalIgnoreCase, out JToken v))
@@ -114,7 +129,7 @@ namespace PSRule.Rules.Azure
             var lineInfo = resource.TryLineInfo();
 
             // Populate target info
-            resource.UseProperty(TARGETINFO_NAME, out JObject targetInfo);
+            resource.UseProperty(TARGETINFO_KEY, out JObject targetInfo);
 
             var sources = new JArray();
 
@@ -148,6 +163,27 @@ namespace PSRule.Rules.Azure
                 sources.Add(source);
             }
             targetInfo.Add(TARGETINFO_SOURCE, sources);
+        }
+
+        internal static void SetValidationIssue(this JObject resource, string issueId, string name, string message, params object[] args)
+        {
+            // Populate target info
+            resource.UseProperty(TARGETINFO_KEY, out JObject targetInfo);
+
+            var issues = targetInfo.ContainsKey(TARGETINFO_ISSUE) ? targetInfo.Value<JArray>() : new JArray();
+
+            // Format message
+            message = args.Length > 0 ? string.Format(Thread.CurrentThread.CurrentCulture, message, args) : message;
+
+            // Build issue
+            var issue = new JObject
+            {
+                [TARGETINFO_TYPE] = issueId,
+                [TARGETINFO_NAME] = name,
+                [TARGETINFO_MESSAGE] = message,
+            };
+            issues.Add(issue);
+            targetInfo[TARGETINFO_ISSUE] = issues;
         }
     }
 }

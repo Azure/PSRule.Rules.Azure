@@ -67,6 +67,11 @@ This project uses GitHub Issues to track bugs and feature requests. See GitHub p
       <AutoGen>True</AutoGen>
       <DependentUpon>PSRuleResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\ReasonStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ReasonStrings.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -77,6 +82,10 @@ This project uses GitHub Issues to track bugs and feature requests. See GitHub p
     <EmbeddedResource Update="Resources\PSRuleResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>PSRuleResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ReasonStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReasonStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

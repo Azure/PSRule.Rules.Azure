@@ -617,7 +617,7 @@ namespace PSRule.Rules.Azure
         public void Deployment()
         {
             var context = GetContext();
-            context.EnterDeployment("unit-test", JObject.Parse("{ \"contentVersion\": \"1.0.0.0\" }"));
+            context.EnterDeployment("unit-test", JObject.Parse("{ \"contentVersion\": \"1.0.0.0\" }"), isNested: false);
 
             var actual1 = Functions.Deployment(context, null) as JObject;
             Assert.Equal("unit-test", actual1["name"]);
@@ -645,8 +645,8 @@ namespace PSRule.Rules.Azure
         public void Parameters()
         {
             var context = GetContext();
-            context.Parameter("vnetName", "vnet1");
-            context.Parameter("test", new TestLengthObject());
+            context.Parameter("vnetName", ParameterType.String, "vnet1");
+            context.Parameter("test", ParameterType.Object, new TestLengthObject());
 
             // Parameters string
             var actual1 = Functions.Parameters(context, new object[] { "vnetName" });
