@@ -1938,6 +1938,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4_3">
@@ -4562,6 +4564,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../en/rules/Azure.Template.ParameterStrongType/" class="md-nav__link">
+        Azure.Template.ParameterStrongType
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../en/rules/Azure.Template.ParameterValue/" class="md-nav__link">
         Azure.Template.ParameterValue
       </a>
@@ -5963,6 +5979,15 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
 <p>What's changed since v1.9.1:</p>
 <ul>
+<li>New features:<ul>
+<li>Added support for parameter strong types. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1083">#1083</a><ul>
+<li>The value of string parameters can be tested against the expected type.</li>
+<li>When configuring a location strong type, the parameter value must be a valid Azure location.</li>
+<li>When configuring a resource type strong type, the parameter value must be a matching resource Id.</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Engineering:<ul>
 <li>Bump PSRule dependency to v1.9.0. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1081">#1081</a></li>
 <li>Bump Microsoft.CodeAnalysis.NetAnalyzers to v6.0.0. <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/1080">#1080</a></li>
