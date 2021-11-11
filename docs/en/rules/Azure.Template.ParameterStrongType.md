@@ -22,7 +22,7 @@ Support is provided by PSRule for Azure for the following types:
   For example `Microsoft.OperationalInsights/workspaces`.
   If a resource type is specified the parameter value must be a resource id of that type.
 - Location - Specify `location` as the strong type.
-  If `location` is specifies, the parameter value must be a valid Azure location.
+  If `location` is specified, the parameter value must be a valid Azure location.
 
 ## RECOMMENDATION
 
