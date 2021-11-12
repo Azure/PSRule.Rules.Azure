@@ -2,8 +2,10 @@
 # Licensed under the MIT License.
 
 #
-# Validation rules for Azure Kubernetes Service (AKS)
+# Rules for Azure Kubernetes Service (AKS)
 #
+
+#region Rules
 
 ---
 # Synopsis: Deploy AKS clusters with Network Policies enabled.
@@ -22,3 +24,5 @@ spec:
     in:
     - azure
     - calico
+
+#endregion Rules

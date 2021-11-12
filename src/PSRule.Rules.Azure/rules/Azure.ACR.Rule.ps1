@@ -2,44 +2,12 @@
 # Licensed under the MIT License.
 
 #
-# Validation rules for Azure Container Registry
+# Rules for Azure Container Registry (ACR)
 #
 
 # Synopsis: Use RBAC for delegating access to ACR instead of the registry admin user
 Rule 'Azure.ACR.AdminUser' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.HasDefaultValue($TargetObject, 'Properties.adminUserEnabled', $False)
-}
-
-# Synopsis: ACR should use the Premium or Standard SKU for production deployments
-Rule 'Azure.ACR.MinSku' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.In($TargetObject, 'Sku.name', @('Premium', 'Standard'))
-}
-
-# Synopsis: Use ACR naming requirements
-Rule 'Azure.ACR.Name' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcontainerregistry
-
-    # Between 5 and 50 characters long
-    $Assert.GreaterOrEqual($TargetObject, 'Name', 5)
-    $Assert.LessOrEqual($TargetObject, 'Name', 50)
-
-    # Alphanumerics
-    $Assert.Match($TargetObject, 'Name', '^[a-zA-Z0-9]*$')
-}
-
-# Synopsis: Consider using quarantining new container images until verified.
-Rule 'Azure.ACR.Quarantine' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'preview'; ruleSet = '2020_12' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.policies.quarantinePolicy.status', 'enabled');
-}
-
-# Synopsis: Consider using content trust for container images.
-Rule 'Azure.ACR.ContentTrust' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.policies.trustPolicy.status', 'enabled');
-}
-
-# Synopsis: Consider enabling a retention policy to free up untagged manifests.
-Rule 'Azure.ACR.Retention' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'preview'; ruleSet = '2020_12' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.policies.retentionPolicy.status', 'enabled');
 }
 
 # Synopsis: Consider freeing up registry space.

@@ -1,12 +1,13 @@
 ---
+reviewed: 2021/11/13
 severity: Critical
 pillar: Security
-category: Applications and services
+category: Azure resources
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.ContainerScan/
 ---
 
-# Scan ACR container images
+# Scan Container Registry images
 
 ## SYNOPSIS
 
@@ -20,35 +21,71 @@ A potential risk with container-based workloads is un-patched security vulnerabi
 - Frameworks and runtime dependencies used by application code.
 
 It is important to adopt a strategy to actively scan images for security vulnerabilities.
-One option for scanning container images is to use Azure Defender for container registries.
-Azure Defender uses Qualys to scan images each time a container image is pushed to the registry.
+One option for scanning container images is to use Microsoft Defender for container registries.
+Microsoft Defender for container registries scans each container image pushed to the registry.
 
-Azure Defender scans container images on push, on import, and recently pulled images.
+Microsoft Defender for container registries scans images on push, import, and recently pulled images.
 Recently pulled images are scanned on a regular basis when they have been pulled within the last 30 days.
-When scanned, Azure Defender pulls and runs the container image in an isolated sandbox for scanning.
-Any detected vulnerabilities are reported to Security Center.
+When scanned, the container image is pulled and executed in an isolated sandbox for scanning.
+Any detected vulnerabilities are reported to Microsoft Defender for Cloud.
 
-Container image vulnerability scanning with Azure Defender:
+Container image vulnerability scanning with Microsoft Defender for container registries:
 
 - Is currently only available for Linux-hosted ACR registries.
-- The container registry must be accessible by Azure Defender.
+- The container registry must be accessible by Microsoft Defender for Container registries.
 Network access can not be restricted by firewall, Service Endpoints, or Private Endpoints.
 - Is supported in commercial clouds.
 Is not currently supported in sovereign or national clouds (e.g. US Gov, China Gov, etc.).
 
 ## RECOMMENDATION
 
-Consider using Azure Defender to scan for security vulnerabilities in container images.
+Consider using Microsoft Defender for Cloud to scan for security vulnerabilities in container images.
 
 ## EXAMPLES
 
-### Enable with Azure CLI
+### Configure with Azure template
+
+To enable container image scanning:
+
+- Set the `Standard` pricing tier for Microsoft Defender for container registries.
+
+For example:
+
+```json
+{
+    "type": "Microsoft.Security/pricings",
+    "apiVersion": "2018-06-01",
+    "name": "ContainerRegistry",
+    "properties": {
+        "pricingTier": "Standard"
+    }
+}
+```
+
+### Configure with Bicep
+
+To enable container image scanning:
+
+- Set the `Standard` pricing tier for Microsoft Defender for container registries.
+
+For example:
+
+```bicep
+resource defenderForContainerRegistry 'Microsoft.Security/pricings@2018-06-01' = {
+  name: 'ContainerRegistry'
+  properties: {
+    pricingTier: 'Standard'
+  }
+}
+```
+
+### Configure with Azure CLI
 
 ```bash
 az security pricing create -n 'ContainerRegistry' --tier 'standard'
 ```
 
-### Enable with Azure PowerShell
+### Configure with Azure PowerShell
 
 ```powershell
 Set-AzSecurityPricing -Name 'ContainerRegistry' -PricingTier 'Standard'
@@ -60,7 +97,7 @@ This rule applies when analyzing resources deployed to Azure.
 
 ## LINKS
 
-- [Introduction to Azure Defender for container registries](https://docs.microsoft.com/azure/security-center/defender-for-container-registries-introduction)
-- [Container security in Security Center](https://docs.microsoft.com/azure/security-center/container-security)
+- [Monitor Azure resources in Microsoft Defender for Cloud](https://docs.microsoft.com/azure/architecture/framework/security/monitor-resources#containers)
+- [Introduction to Microsoft Defender for container registries](https://docs.microsoft.com/azure/defender-for-cloud/defender-for-container-registries-introduction)
+- [Container security in Microsoft Defender for Cloud](https://docs.microsoft.com/azure/defender-for-cloud/container-security)
 - [Secure the images and run time](https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)
-- [Follow best practices for container security](https://docs.microsoft.com/azure/architecture/framework/security/applications-services#follow-best-practices-for-container-security)

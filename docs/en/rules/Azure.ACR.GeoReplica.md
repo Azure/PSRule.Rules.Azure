@@ -29,7 +29,7 @@ Consider using a geo-replicated container registry for multi-region deployments.
 
 ## NOTES
 
-This rule applies when analyzing resources deployed to Azure.
+This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 

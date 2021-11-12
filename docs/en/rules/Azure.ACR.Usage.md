@@ -27,7 +27,7 @@ Also consider upgrading to the Premium SKU for Basic or Standard registries to i
 
 ## NOTES
 
-This rule applies when analyzing resources deployed to Azure.
+This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 

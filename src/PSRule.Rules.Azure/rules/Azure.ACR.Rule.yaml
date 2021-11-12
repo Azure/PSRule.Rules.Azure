@@ -1,0 +1,95 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Azure Container Registry (ACR)
+#
+
+#region Rules
+
+---
+# Synopsis: ACR should use the Premium or Standard SKU for production deployments.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ACR.MinSku
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.ContainerRegistry/registries
+  condition:
+    field: Sku.name
+    in: [ 'Premium', 'Standard' ]
+
+---
+# Synopsis: Container registry names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ACR.Name
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.ContainerRegistry/registries
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 5
+    - name: '.'
+      lessOrEquals: 50
+    - name: '.'
+      match: '^[a-zA-Z0-9]*$'
+
+---
+# Synopsis: Enable container image quarantine, scan, and mark images as verified.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ACR.Quarantine
+  tags:
+    release: 'preview'
+    ruleSet: '2020_12'
+spec:
+  type:
+  - Microsoft.ContainerRegistry/registries
+  condition:
+    field: Properties.policies.quarantinePolicy.status
+    equals: enabled
+
+---
+# Synopsis: Use container images signed by a trusted image publisher.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ACR.ContentTrust
+  tags:
+    release: 'GA'
+    ruleSet: '2020_12'
+spec:
+  type:
+  - Microsoft.ContainerRegistry/registries
+  condition:
+    field: Properties.policies.trustPolicy.status
+    equals: enabled
+
+---
+# Synopsis: Use a retention policy to cleanup untagged manifests.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ACR.Retention
+  tags:
+    release: 'preview'
+    ruleSet: '2020_12'
+spec:
+  type:
+  - Microsoft.ContainerRegistry/registries
+  condition:
+    field: Properties.policies.retentionPolicy.status
+    equals: enabled
+
+#endregion Rules
