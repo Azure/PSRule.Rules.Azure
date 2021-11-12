@@ -4,7 +4,7 @@ author: BernieWhite
 
 # Storing custom rules
 
-PSRule for Azure covers common use cases that align to the [Microsoft Azure Well-Architected Framework (WAF)][AWAF].
+PSRule for Azure covers common use cases that align to the [Microsoft Azure Well-Architected Framework (WAF)][1].
 In addition to WAF alignment you may have a requirement to enforce organization specific rules.
 
 For example:
@@ -15,6 +15,8 @@ For example:
 PSRule allows custom rules to be layered on.
 These custom rules work side-by-side with PSRule for Azure.
 
+  [1]: https://docs.microsoft.com/en-gb/azure/architecture/framework/
+
 ## Using a standard file path
 
 Rules can be standalone or packaged within a module.
@@ -23,7 +25,7 @@ To reuse rules across multiple projects consider packaging these as a module.
 
 The instructions for packaging rules in a module can be found here:
 
-- [Packaging rules in a module](https://github.com/microsoft/PSRule/blob/main/docs/scenarios/rule-module/rule-module.md)
+- [Packaging rules in a module][2]
 
 To store standalone rules we recommend that you:
 
@@ -36,6 +38,8 @@ To store standalone rules we recommend that you:
 !!! note
     Build pipelines are often case-sensitive or run on Linux-based systems.
     Using the casing rule above reduces confusion latter when you configure continuous integration (CI).
+
+  [2]: https://github.com/microsoft/PSRule/blob/main/docs/scenarios/rule-module/rule-module.md
 
 ## Naming rules
 
@@ -56,5 +60,3 @@ When naming custom rules we recommend that you:
 - **Use dotted notation** &mdash; Use dots to separate rule name.
 - **Use a maximum length of 35 characters** &mdash; The default view of `Invoke-PSRule` truncates longer names.
   PSRule supports longer rule names however if `Invoke-PSRule` is called directly consider using `Format-List`.
-
-[AWAF]: https://docs.microsoft.com/en-gb/azure/architecture/framework/

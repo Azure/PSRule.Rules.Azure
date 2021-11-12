@@ -53,7 +53,7 @@ Some key points to call out with the rule snippet include:
 !!! Tip
     For recommendations on naming and storing rules see [storing custom rules][3].
 
-  [3]: ../index.md
+  [3]: ../storing-custom-rules/index.md
 
 ## Binding type
 

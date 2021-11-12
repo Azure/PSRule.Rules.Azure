@@ -105,6 +105,7 @@ plugins:
 - redirects:
     redirect_maps:
       'using-metadata.md': 'using-templates.md'
+      'customization/index.md': 'customization/storing-custom-rules/index.md'
 
 extra:
   version:
