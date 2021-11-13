@@ -1518,6 +1518,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#configurewithazurecli" class="md-nav__link">
     Configure with Azure CLI
   </a>
@@ -5098,6 +5112,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#configurewithazurecli" class="md-nav__link">
     Configure with Azure CLI
   </a>
@@ -5169,8 +5197,76 @@ The admin user account is not intended for use with production container registr
 <p>Instead use role-based access control (RBAC).
 RBAC can be used to delegate registry permissions to an Azure AD (AAD) identity.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider disabling the admin user account and only using AAD-based identities for registry operations.</p>
+<p>Consider disabling the admin user account and only use identity-based authentication for registry operations.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To deploy Container Registries that pass this rule:</p>
+<ul>
+<li>Set <code>properties.adminUserEnabled</code> to <code>false</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.ContainerRegistry/registries&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-06-01-preview&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;registryName&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;sku&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Premium&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;SystemAssigned&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;adminUserEnabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;policies&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;quarantinePolicy&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;enabled&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;trustPolicy&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;enabled&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Notary&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;retentionPolicy&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;enabled&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;days&quot;</span><span class="p">:</span> <span class="mi">30</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To deploy Container Registries that pass this rule:</p>
+<ul>
+<li>Set <code>properties.adminUserEnabled</code> to <code>false</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource acr &#39;Microsoft.ContainerRegistry/registries@2021-06-01-preview&#39; = {
+  name: registryName
+  location: location
+  sku: {
+    name: &#39;Premium&#39;
+  }
+  identity: {
+    type: &#39;SystemAssigned&#39;
+  }
+  properties: {
+    adminUserEnabled: false
+    policies: {
+      quarantinePolicy: {
+        status: &#39;enabled&#39;
+      }
+      trustPolicy: {
+        status: &#39;enabled&#39;
+        type: &#39;Notary&#39;
+      }
+      retentionPolicy: {
+        status: &#39;enabled&#39;
+        days: 30
+      }
+    }
+  }
+}
+</code></pre></div>
 <h3 id="configurewithazurecli">Configure with Azure CLI<a class="headerlink" href="#configurewithazurecli" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code>az acr update --admin-enabled <span class="nb">false</span> -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
 </code></pre></div>
@@ -5179,10 +5275,9 @@ RBAC can be used to delegate registry permissions to an Azure AD (AAD) identity.
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication">Use identity-based authentication</a></li>
 <li><a href="https://docs.microsoft.com/azure/container-registry/container-registry-authentication">Authenticate with a private Docker container registry</a></li>
-<li><a href="https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#authentication">Best practices for Azure Container Registry</a></li>
-<li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-identity#use-role-based-access-control-rbac">Use role-based access control (RBAC)</a></li>
-<li><a href="https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal">Azure Container Registry authentication with service principals</a></li>
+<li><a href="https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#authentication-and-authorization">Best practices for Azure Container Registry</a></li>
 <li><a href="https://docs.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity">Use an Azure managed identity to authenticate to an Azure container registry</a></li>
 <li><a href="https://docs.microsoft.com/azure/container-registry/container-registry-roles">Azure Container Registry roles and permissions</a></li>
 <li><a href="https://docs.microsoft.com/azure/role-based-access-control/overview">What is Azure role-based access control (Azure RBAC)?</a></li>

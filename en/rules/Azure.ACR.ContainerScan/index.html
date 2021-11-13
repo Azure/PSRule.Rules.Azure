@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#scanacrcontainerimages" class="md-skip">
+        <a href="#scancontainerregistryimages" class="md-skip">
           Skip to content
         </a>
       
@@ -1532,15 +1532,29 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#enablewithazurecli" class="md-nav__link">
-    Enable with Azure CLI
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#enablewithazurepowershell" class="md-nav__link">
-    Enable with Azure PowerShell
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurecli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurepowershell" class="md-nav__link">
+    Configure with Azure PowerShell
   </a>
   
 </li>
@@ -5105,15 +5119,29 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#enablewithazurecli" class="md-nav__link">
-    Enable with Azure CLI
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#enablewithazurepowershell" class="md-nav__link">
-    Enable with Azure PowerShell
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurecli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurepowershell" class="md-nav__link">
+    Configure with Azure PowerShell
   </a>
   
 </li>
@@ -5170,7 +5198,7 @@
 
 
 <!-- Markdown content -->
-<h1 id="scanacrcontainerimages">Scan ACR container images<a class="headerlink" href="#scanacrcontainerimages" title="Permanent link">#</a></h1>
+<h1 id="scancontainerregistryimages">Scan Container Registry images<a class="headerlink" href="#scancontainerregistryimages" title="Permanent link">#</a></h1>
 <p><a href="../module/#security"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0l-9.272-9.272zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0l-9.273 9.272z"/></svg></span> Security</a>
  · <a href="../resource/#containerregistry"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M13.152.682a2.25 2.25 0 0 1 2.269 0l.007.004 6.957 4.276a2.276 2.276 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003a2.276 2.276 0 0 1-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026a2.28 2.28 0 0 1 .82-.827h.002L13.152.681zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.776.776 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003zM18 9.709l-3.25 1.9v7.548L18 17.245V9.709zm1.5-.878v7.532l2.124-1.25a.777.777 0 0 0 .387-.671V7.363L19.5 8.831zm-9.09 5.316 2.84-1.66v7.552l-3.233 1.902v-7.612c.134-.047.265-.107.391-.18l.002-.002zm-1.893 7.754V14.33a2.277 2.277 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232z"/></svg></span> Container Registry</a>
  · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"/><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Azure.ACR.ContainerScan</p>
@@ -5182,37 +5210,65 @@
 <li>Frameworks and runtime dependencies used by application code.</li>
 </ul>
 <p>It is important to adopt a strategy to actively scan images for security vulnerabilities.
-One option for scanning container images is to use Azure Defender for container registries.
-Azure Defender uses Qualys to scan images each time a container image is pushed to the registry.</p>
-<p>Azure Defender scans container images on push, on import, and recently pulled images.
+One option for scanning container images is to use Microsoft Defender for container registries.
+Microsoft Defender for container registries scans each container image pushed to the registry.</p>
+<p>Microsoft Defender for container registries scans images on push, import, and recently pulled images.
 Recently pulled images are scanned on a regular basis when they have been pulled within the last 30 days.
-When scanned, Azure Defender pulls and runs the container image in an isolated sandbox for scanning.
-Any detected vulnerabilities are reported to Security Center.</p>
-<p>Container image vulnerability scanning with Azure Defender:</p>
+When scanned, the container image is pulled and executed in an isolated sandbox for scanning.
+Any detected vulnerabilities are reported to Microsoft Defender for Cloud.</p>
+<p>Container image vulnerability scanning with Microsoft Defender for container registries:</p>
 <ul>
 <li>Is currently only available for Linux-hosted ACR registries.</li>
-<li>The container registry must be accessible by Azure Defender.
+<li>The container registry must be accessible by Microsoft Defender for Container registries.
 Network access can not be restricted by firewall, Service Endpoints, or Private Endpoints.</li>
 <li>Is supported in commercial clouds.
 Is not currently supported in sovereign or national clouds (e.g. US Gov, China Gov, etc.).</li>
 </ul>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider using Azure Defender to scan for security vulnerabilities in container images.</p>
+<p>Consider using Microsoft Defender for Cloud to scan for security vulnerabilities in container images.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
-<h3 id="enablewithazurecli">Enable with Azure CLI<a class="headerlink" href="#enablewithazurecli" title="Permanent link">#</a></h3>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To enable container image scanning:</p>
+<ul>
+<li>Set the <code>Standard</code> pricing tier for Microsoft Defender for container registries.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.Security/pricings&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-06-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ContainerRegistry&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;pricingTier&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To enable container image scanning:</p>
+<ul>
+<li>Set the <code>Standard</code> pricing tier for Microsoft Defender for container registries.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource defenderForContainerRegistry &#39;Microsoft.Security/pricings@2018-06-01&#39; = {
+  name: &#39;ContainerRegistry&#39;
+  properties: {
+    pricingTier: &#39;Standard&#39;
+  }
+}
+</code></pre></div>
+<h3 id="configurewithazurecli">Configure with Azure CLI<a class="headerlink" href="#configurewithazurecli" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code>az security pricing create -n <span class="s1">&#39;ContainerRegistry&#39;</span> --tier <span class="s1">&#39;standard&#39;</span>
 </code></pre></div>
-<h3 id="enablewithazurepowershell">Enable with Azure PowerShell<a class="headerlink" href="#enablewithazurepowershell" title="Permanent link">#</a></h3>
+<h3 id="configurewithazurepowershell">Configure with Azure PowerShell<a class="headerlink" href="#configurewithazurepowershell" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nb">Set-AzSecurityPricing</span> <span class="n">-Name</span> <span class="s1">&#39;ContainerRegistry&#39;</span> <span class="n">-PricingTier</span> <span class="s1">&#39;Standard&#39;</span>
 </code></pre></div>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <p>This rule applies when analyzing resources deployed to Azure.</p>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/security-center/defender-for-container-registries-introduction">Introduction to Azure Defender for container registries</a></li>
-<li><a href="https://docs.microsoft.com/azure/security-center/container-security">Container security in Security Center</a></li>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/security/monitor-resources#containers">Monitor Azure resources in Microsoft Defender for Cloud</a></li>
+<li><a href="https://docs.microsoft.com/azure/defender-for-cloud/defender-for-container-registries-introduction">Introduction to Microsoft Defender for container registries</a></li>
+<li><a href="https://docs.microsoft.com/azure/defender-for-cloud/container-security">Container security in Microsoft Defender for Cloud</a></li>
 <li><a href="https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time">Secure the images and run time</a></li>
-<li><a href="https://docs.microsoft.com/azure/architecture/framework/security/applications-services#follow-best-practices-for-container-security">Follow best practices for container security</a></li>
 </ul>
 
 <!-- Last update of source file -->
