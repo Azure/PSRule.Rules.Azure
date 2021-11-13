@@ -9,6 +9,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since pre-release v1.10.0-B2111040:
 
+- New rules:
+  - Event Grid:
+    - Check topics and domains use managed identities. [#1091](https://github.com/Azure/PSRule.Rules.Azure/issues/1091)
+    - Check topics and domains use private endpoints. [#1092](https://github.com/Azure/PSRule.Rules.Azure/issues/1092)
+    - Check topics and domains use identity-based authentication. [#1093](https://github.com/Azure/PSRule.Rules.Azure/issues/1093)
 - General improvements:
   - Updated default baseline to use module configuration. [#1089](https://github.com/Azure/PSRule.Rules.Azure/issues/1089)
 

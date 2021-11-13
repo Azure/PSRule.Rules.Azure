@@ -1,0 +1,167 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "name": "Event Grid Topic",
+        "description": "Create or update an Event Grid Topic and subscriptions."
+    },
+    "parameters": {
+        "topicName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the Event Grid Topic.",
+                "example": "<topic_name>"
+            }
+        },
+        "sku": {
+            "defaultValue": "basic",
+            "type": "string",
+            "metadata": {
+                "description": "The SKU of the Event Grid Topic."
+            }
+        },
+        "location": {
+            "defaultValue": "[resourceGroup().location]",
+            "type": "string",
+            "metadata": {
+                "description": "The location where the Event Grid Topic and subscription resources will be deployed.",
+                "strongType": "location",
+                "ignore": true
+            }
+        },
+        "inputSchema": {
+            "type": "string",
+            "defaultValue": "CloudEventSchemaV1_0",
+            "allowedValues": [
+                "CloudEventSchemaV1_0",
+                "EventGridSchema",
+                "CustomInputSchema"
+            ],
+            "metadata": {
+                "description": "The input schema to use for the event payload."
+            }
+        },
+        "inputSchemaMapping": {
+            "type": "object",
+            "defaultValue": {},
+            "metadata": {
+                "description": "A mapping schema for the event payload when the CustomInputSchema input schema is used.",
+                "ignore": true
+            }
+        },
+        "subscriptions": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "Additional subscriptions to create or update for the topic.",
+                "example": [
+                    {
+                        "name": "<subscription_name>",
+                        "eventDeliverySchema": "CloudEventSchemaV1_0",
+                        "filter": {
+                            "subjectBeginsWith": "",
+                            "subjectEndsWith": "",
+                            "enableAdvancedFilteringOnArrays": true,
+                            "advancedFilters": []
+                        },
+                        "destination": {
+                            "properties": {
+                                "resourceId": "<resource_id>",
+                                "maxEventsPerBatch": 1,
+                                "preferredBatchSizeInKilobytes": 64
+                            },
+                            "endpointType": "AzureFunction"
+                        }
+                    }
+                ]
+            }
+        },
+        "publicNetworkAccess": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Determines if public network access is enabled."
+            }
+        },
+        "tags": {
+            "type": "object",
+            "metadata": {
+                "description": "Resource tags to apply to the Event Grid Topic.",
+                "example": {
+                    "service": "<service_name>",
+                    "env": "<environment>"
+                }
+            }
+        }
+    },
+    "variables": {
+        "mapping": {
+            "inputSchemaMappingType": "Json",
+            "properties": "[parameters('inputSchemaMapping')]"
+        }
+    },
+    "resources": [
+        {
+            "comments": "Create or update and Event Grid Topic.",
+            "type": "Microsoft.EventGrid/topics",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[parameters('topicName')]",
+            "location": "[parameters('location')]",
+            "tags": "[parameters('tags')]",
+            "sku": {
+                "name": "[parameters('sku')]"
+            },
+            "kind": "Azure",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "inputSchema": "[parameters('inputSchema')]",
+                "inputSchemaMapping": "[if(equals(parameters('inputSchema'), 'CustomEventSchema'), variables('mapping'), json('null'))]",
+                "publicNetworkAccess": "[if(parameters('publicNetworkAccess'), 'Enabled', 'Disabled')]",
+                "disableLocalAuth": true
+            }
+        },
+        {
+            "comments": "Create or update an Event Grid Topic subscription.",
+            "condition": "[not(empty(parameters('subscriptions')))]",
+            "name": "[if(empty(parameters('subscriptions')), 'empty', parameters('subscriptions')[copyIndex('subscriptionCopy')].name)]",
+            "type": "Microsoft.EventGrid/eventSubscriptions",
+            "scope": "[format('Microsoft.EventGrid/topics/{0}', parameters('topicName'))]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventGrid/topics', parameters('topicName'))]"
+            ],
+            "apiVersion": "2021-06-01-preview",
+            "copy": {
+                "name": "subscriptionCopy",
+                "count": "[length(parameters('subscriptions'))]",
+                "mode": "Parallel"
+            },
+            "properties": {
+                "destination": "[parameters('subscriptions')[copyIndex('subscriptionCopy')].destination]",
+                "filter": "[parameters('subscriptions')[copyIndex('subscriptionCopy')].filter]",
+                "labels": "[if(contains(parameters('subscriptions')[copyIndex('subscriptionCopy')], 'labels'), parameters('subscriptions')[copyIndex('subscriptionCopy')].labels, json('[]'))]",
+                "expirationTimeUtc": "[if(contains(parameters('subscriptions')[copyIndex('subscriptionCopy')], 'expirationTimeUtc'), parameters('subscriptions')[copyIndex('subscriptionCopy')].expirationTimeUtc, json('null'))]",
+                "eventDeliverySchema": "[parameters('subscriptions')[copyIndex('subscriptionCopy')].eventDeliverySchema]",
+                "retryPolicy": {
+                    "maxDeliveryAttempts": "[if(contains(parameters('subscriptions')[copyIndex('subscriptionCopy')], 'maxDeliveryAttempts'), parameters('subscriptions')[copyIndex('subscriptionCopy')].maxDeliveryAttempts, 10)]",
+                    "eventTimeToLiveInMinutes": "[if(contains(parameters('subscriptions')[copyIndex('subscriptionCopy')], 'eventTimeToLiveInMinutes'), parameters('subscriptions')[copyIndex('subscriptionCopy')].eventTimeToLiveInMinutes, 180)]"
+                },
+                "deadLetterDestination": "[if(contains(parameters('subscriptions')[copyIndex('subscriptionCopy')], 'deadLetterDestination'), parameters('subscriptions')[copyIndex('subscriptionCopy')].deadLetterDestination, json('null'))]"
+            }
+        }
+    ],
+    "outputs": {
+        "resourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.EventGrid/topics', parameters('topicName'))]",
+            "metadata": {
+                "description": "A unique resource identifier for the Event Grid topic."
+            }
+        },
+        "endpointUri": {
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.EventGrid/topics', parameters('topicName')), '2020-10-15-preview').endpoint]"
+        }
+    }
+}

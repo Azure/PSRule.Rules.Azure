@@ -1,0 +1,129 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Event Grid resources
+#
+
+#region Rules
+
+---
+# Synopsis: Use Private Endpoints to access Event Grid topics and domains.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.EventGrid.TopicPublicAccess
+  tags:
+    release: GA
+    ruleSet: 2021_12
+spec:
+  type:
+  - Microsoft.EventGrid/topics
+  - Microsoft.EventGrid/domains
+  with:
+  - Azure.EventGrid.TopicNotArc
+  - Azure.EventGrid.Domain
+  condition:
+    field: properties.publicNetworkAccess
+    equals: Disabled
+
+---
+# Synopsis: Use managed identities to deliver Event Grid Topic events.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.EventGrid.ManagedIdentity
+  tags:
+    release: GA
+    ruleSet: 2021_12
+spec:
+  type:
+  - Microsoft.EventGrid/topics
+  - Microsoft.EventGrid/domains
+  - Microsoft.EventGrid/systemTopics
+  with:
+  - Azure.EventGrid.RegionalSystemTopic
+  - Azure.EventGrid.Topic
+  - Azure.EventGrid.Domain
+  condition:
+    field: Identity.Type
+    in:
+    - 'SystemAssigned'
+    - 'UserAssigned'
+
+---
+# Synopsis: Authenticate publishing clients with Azure AD identities.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata: 
+  name: Azure.EventGrid.DisableLocalAuth
+  tags:
+    release: preview
+    ruleSet: 2021_12
+spec:
+  type:
+  - Microsoft.EventGrid/topics
+  - Microsoft.EventGrid/domains
+  condition:
+    field: properties.disableLocalAuth
+    equals: true
+
+#endregion Rules
+
+#
+# Selectors for Event Grid resources
+#
+
+#region Selectors
+
+---
+# Synopsis: Event Grid Topics that are not Azure Arc.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.EventGrid.TopicNotArc
+spec:
+  if:
+    allOf:
+    - field: kind
+      notEquals: AzureArc
+    - type: '.'
+      equals: Microsoft.EventGrid/topics
+
+---
+# Synopsis: Event Grid Topics.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.EventGrid.Topic
+spec:
+  if:
+    type: '.'
+    equals: Microsoft.EventGrid/topics
+
+---
+# Synopsis: Event Grid Domains.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.EventGrid.Domain
+spec:
+  if:
+    type: '.'
+    equals: Microsoft.EventGrid/domains
+
+---
+# Synopsis: Regional Event Grid System Topics.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.EventGrid.RegionalSystemTopic
+spec:
+  if:
+    allOf:
+    - type: '.'
+      equals: Microsoft.EventGrid/systemTopics
+    - field: location
+      notEquals: 'global'
+
+#endregion Selectors
