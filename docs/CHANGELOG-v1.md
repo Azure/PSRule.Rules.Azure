@@ -7,7 +7,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
-## v1.10.0-B2111040
+What's changed since pre-release v1.10.0-B2111040:
+
+- General improvements:
+  - Updated default baseline to use module configuration. [#1089](https://github.com/Azure/PSRule.Rules.Azure/issues/1089)
+
+## v1.10.0-B2111040 (pre-release)
 
 What's changed since v1.9.1:
 

@@ -119,9 +119,6 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = 'https://github.com/Azure/PSRule.Rules.Azure/blob/main/CHANGELOG.md'
     } # End of PSData hashtable
-    PSRule = @{
-        Baseline = 'Azure.Default'
-    }
 } # End of PrivateData hashtable
 
 # HelpInfo URI of this module

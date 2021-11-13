@@ -33,6 +33,8 @@ spec:
     - 'Azure.ExpandTemplate'
     - 'Azure.BicepInstall'
     - 'Azure.ExpandBicep'
+  rule:
+    baseline: Azure.Default
   output:
     culture:
     - en
