@@ -45,7 +45,7 @@ Some key points to call out with the rule snippet include:
 !!! Tip
     For recommendations on naming and storing rules see [storing custom rules][1].
 
-  [1]: ../index.md
+  [1]: ../storing-custom-rules/index.md
 
 ## Adding mandatory tags
 

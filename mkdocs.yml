@@ -49,7 +49,7 @@ nav:
     - Validating locally: validating-locally.md
     - Working with baselines: working-with-baselines.md
     - Customization:
-      - Storing custom rules: customization/index.md
+      - Storing custom rules: customization/storing-custom-rules/index.md
       - Enforcing custom tags: customization/enforce-custom-tags/index.md
       - Enforcing code ownership: customization/enforce-codeowners/index.md
     - Troubleshooting: troubleshooting.md
@@ -105,6 +105,7 @@ plugins:
 - redirects:
     redirect_maps:
       'using-metadata.md': 'using-templates.md'
+      'customization/index.md': 'customization/storing-custom-rules/index.md'
 
 extra:
   version:
