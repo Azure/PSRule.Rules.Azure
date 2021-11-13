@@ -21,6 +21,86 @@ Signed images provides additional assurance that they have been built on a trust
 
 Consider enabling content trust on registries, clients, and sign container images.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy Container Registries that pass this rule:
+
+- Set `properties.trustPolicy.status` to `enabled`.
+- Set `properties.trustPolicy.type` to `Notary`.
+
+For example:
+
+```json
+{
+    "type": "Microsoft.ContainerRegistry/registries",
+    "apiVersion": "2021-06-01-preview",
+    "name": "[parameters('registryName')]",
+    "location": "[parameters('location')]",
+    "sku": {
+        "name": "Premium"
+    },
+    "identity": {
+        "type": "SystemAssigned"
+    },
+    "properties": {
+        "adminUserEnabled": false,
+        "policies": {
+            "quarantinePolicy": {
+                "status": "enabled"
+            },
+            "trustPolicy": {
+                "status": "enabled",
+                "type": "Notary"
+            },
+            "retentionPolicy": {
+                "status": "enabled",
+                "days": 30
+            }
+        }
+    }
+}
+```
+
+### Configure with Bicep
+
+To deploy Container Registries that pass this rule:
+
+- Set `properties.trustPolicy.status` to `enabled`.
+- Set `properties.trustPolicy.type` to `Notary`.
+
+For example:
+
+```bicep
+resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
+  name: registryName
+  location: location
+  sku: {
+    name: 'Premium'
+  }
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    adminUserEnabled: false
+    policies: {
+      quarantinePolicy: {
+        status: 'enabled'
+      }
+      trustPolicy: {
+        status: 'enabled'
+        type: 'Notary'
+      }
+      retentionPolicy: {
+        status: 'enabled'
+        days: 30
+      }
+    }
+  }
+}
+```
+
 ## LINKS
 
 - [Content trust in Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-content-trust)
