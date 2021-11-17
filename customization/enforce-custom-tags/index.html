@@ -5149,7 +5149,9 @@ Use the following snippet to populate the rule file:</p>
 <li>A list of supported assertions can be found <a href="https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Assert.html">here</a>.</li>
 <li>Comments can be added just like normal PowerShell code.</li>
 </ul>
-<details class="example" open="open"><summary>Updated Rule</summary><p>The updated rule should look like:</p>
+<details class="example" open="open">
+<summary>Updated Rule</summary>
+<p>The updated rule should look like:</p>
 <div class="highlight"><pre><span></span><code><span class="c"># Synopsis: Resource Groups must have all mandatory tags defined.</span>
 <span class="n">Rule</span> <span class="s1">&#39;Org.Azure.RG.Tags&#39;</span> <span class="n">-Type</span> <span class="s1">&#39;Microsoft.Resources/resourceGroups&#39;</span> <span class="p">{</span>
     <span class="nv">$hasTags</span> <span class="p">=</span> <span class="nv">$Assert</span><span class="p">.</span><span class="n">HasField</span><span class="p">(</span><span class="nv">$TargetObject</span><span class="p">,</span> <span class="s1">&#39;Tags&#39;</span><span class="p">)</span>
@@ -5185,7 +5187,9 @@ Use the following snippet to populate the rule file:</p>
 <li>Assertions can automatically traverse fields be using the dotted syntax.
 i.e. <code>tags.costCentre</code>.</li>
 </ul>
-<details class="example" open="open"><summary>Completed rule</summary><p>The completed rule should look like:</p>
+<details class="example" open="open">
+<summary>Completed rule</summary>
+<p>The completed rule should look like:</p>
 <div class="highlight"><pre><span></span><code><span class="c"># Synopsis: Resource Groups must have all mandatory tags defined.</span>
 <span class="n">Rule</span> <span class="s1">&#39;Org.Azure.RG.Tags&#39;</span> <span class="n">-Type</span> <span class="s1">&#39;Microsoft.Resources/resourceGroups&#39;</span> <span class="p">{</span>
     <span class="nv">$hasTags</span> <span class="p">=</span> <span class="nv">$Assert</span><span class="p">.</span><span class="n">HasField</span><span class="p">(</span><span class="nv">$TargetObject</span><span class="p">,</span> <span class="s1">&#39;Tags&#39;</span><span class="p">)</span>
@@ -5254,7 +5258,7 @@ Alternatively you can test the rule manually by running the following from a Pow
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-11-17
+      Last update: 2021-11-18
     
   </small>
 </div>
