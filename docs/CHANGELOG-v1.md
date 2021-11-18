@@ -7,6 +7,13 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.10.0-B2111058:
+
+- Bug fixes:
+  - Fixed expansion of secret references. [#1098](https://github.com/Azure/PSRule.Rules.Azure/issues/1098)
+  - Fixed handling of tagging for deployments. [#1099](https://github.com/Azure/PSRule.Rules.Azure/issues/1099)
+  - Fixed strong type issue flagged with empty defaultValue string. [#1100](https://github.com/Azure/PSRule.Rules.Azure/issues/1100)
+
 ## v1.10.0-B2111058 (pre-release)
 
 What's changed since pre-release v1.10.0-B2111040:

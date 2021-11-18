@@ -23,6 +23,17 @@
                 "description": "A linked Log Analytics workspace to store data within.",
                 "strongType": "Microsoft.OperationalInsights/workspaces"
             }
+        },
+        "workspaceIdAlternate": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "A linked Log Analytics workspace to store data within.",
+                "strongType": "Microsoft.OperationalInsights/workspaces"
+            }
+        },
+        "adminPassword": {
+            "type": "securestring"
         }
     },
     "resources": [
@@ -36,7 +47,7 @@
                 "Application_Type": "web",
                 "Flow_Type": "Redfield",
                 "Request_Source": "IbizaAIExtension",
-                "WorkspaceResourceId": "[parameters('workspaceId')]",
+                "WorkspaceResourceId": "[if(empty(parameters('workspaceId')), parameters('workspaceIdAlternate'), parameters('workspaceId'))]",
                 "IngestionMode": "LogAnalytics",
                 "publicNetworkAccessForIngestion": "Enabled",
                 "publicNetworkAccessForQuery": "Enabled"

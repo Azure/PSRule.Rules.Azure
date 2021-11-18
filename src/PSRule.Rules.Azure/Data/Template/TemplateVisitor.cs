@@ -303,20 +303,20 @@ namespace PSRule.Rules.Azure.Data.Template
                 var valueType = parameter[PROPERTY_REFERENCE].Type;
                 if (valueType == JTokenType.String)
                 {
-                    //TODO: Parameters.Add(name, SecretPlaceholder(parameter[PROPERTY_REFERENCE].Value<string>()));
+                    AddParameterAssignment(name, SecretPlaceholder(parameter[PROPERTY_REFERENCE].Value<string>()));
                     return true;
                 }
                 else if (valueType == JTokenType.Object && parameter[PROPERTY_REFERENCE] is JObject refObj && refObj.ContainsKey(PROPERTY_SECRETNAME))
                 {
-                    //TODO: Parameters.Add(name, SecretPlaceholder(refObj[PROPERTY_SECRETNAME].Value<string>()));
+                    AddParameterAssignment(name, SecretPlaceholder(refObj[PROPERTY_SECRETNAME].Value<string>()));
                     return true;
                 }
                 return false;
             }
 
-            private static string SecretPlaceholder(string placeholder)
+            private static JToken SecretPlaceholder(string placeholder)
             {
-                return string.Concat("{{SecretReference:", placeholder, "}}");
+                return new JValue(string.Concat("{{SecretReference:", placeholder, "}}"));
             }
 
             [DebuggerDisplay("{Name}: {Index} of {Count}")]
@@ -812,7 +812,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
             var type = GetParameterType(parameter);
             var defaultValue = ExpandPropertyToken(context, parameter[PROPERTY_DEFAULTVALUE]);
-            context.CheckParameter(parameterName, parameter, type, defaultValue);
+            if (type == ParameterType.String && !string.IsNullOrEmpty(parameter[PROPERTY_DEFAULTVALUE].Value<string>()))
+                context.CheckParameter(parameterName, parameter, type, defaultValue);
+
             AddParameterFromType(context, parameterName, type, defaultValue);
             return true;
         }
