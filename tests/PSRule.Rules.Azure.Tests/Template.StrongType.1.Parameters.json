@@ -10,6 +10,17 @@
         },
         "location": {
             "value": "Antarctica North"
+        },
+        "workspaceIdAlternate": {
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace001"
+        },
+        "adminPassword": {
+            "reference": {
+                "keyVault": {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/kv-001"
+                },
+                "secretName": "valid-secret"
+            }
         }
     }
 }

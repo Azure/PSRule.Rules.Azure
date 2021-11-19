@@ -183,6 +183,7 @@ function global:SupportsTags {
     process {
         if (
             ($PSRule.TargetType -eq 'Microsoft.Subscription') -or
+            ($PSRule.TargetType -eq 'Microsoft.Resources/deployments') -or
             ($PSRule.TargetType -notLike 'Microsoft.*/*') -or
             ($PSRule.TargetType -like 'Microsoft.Addons/*') -or
             ($PSRule.TargetType -like 'Microsoft.Advisor/*') -or
@@ -213,7 +214,6 @@ function global:SupportsTags {
 
             # Some exception to resources (https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support#microsoftresources)
             ($PSRule.TargetType -like 'Microsoft.Resources/*' -and !(
-                $PSRule.TargetType -eq 'Microsoft.Resources/deployments' -or
                 $PSRule.TargetType -eq 'Microsoft.Resources/deploymentScripts' -or
                 $PSRule.TargetType -eq 'Microsoft.Resources/resourceGroups'
             )) -or
