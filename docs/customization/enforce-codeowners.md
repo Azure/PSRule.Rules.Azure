@@ -53,7 +53,7 @@ Some key points to call out with the rule snippet include:
 !!! Tip
     For recommendations on naming and storing rules see [storing custom rules][3].
 
-  [3]: ../storing-custom-rules/index.md
+  [3]: storing-custom-rules.md
 
 ## Binding type
 
@@ -90,7 +90,7 @@ Alternatively you can test the rule manually by running the following from a Pow
 Assert-PSRule -Path '.ps-rule/' -Module 'PSRule.Rules.Azure' -InputPath . -Format File
 ```
 
-  [4]: ../../validating-locally.md
+  [4]: ../validating-locally.md
 
 ## Sample code
 
