@@ -67,7 +67,7 @@ When a repository contains resources that different teams would approve how do y
 
 We have a walk through scenario [Enforcing code ownership][10] to get you started.
 
-  [10]: customization/enforce-codeowners/index.md
+  [10]: customization/enforce-codeowners.md
 
 ## Do I need PowerShell experience to start using PSRule for Azure?
 
@@ -82,7 +82,7 @@ We have a walk through scenario [Enforcing custom tags][9] to get you started.
 
   [7]: install-instructions.md
   [8]: validating-locally.md
-  [9]: customization/enforce-custom-tags/index.md
+  [9]: customization/enforce-custom-tags.md
 
 ## What permissions do I need to export data?
 
