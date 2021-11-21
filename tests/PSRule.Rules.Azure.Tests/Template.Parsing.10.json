@@ -1,0 +1,2530 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.4.63.48766",
+      "templateHash": "9952515136370629328"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    },
+    "resourceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Used to name all resources"
+      },
+      "maxLength": 20,
+      "minLength": 3
+    },
+    "custom_vnet": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Are you providing your own vNet CIDR blocks"
+      }
+    },
+    "byoAKSSubnetId": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Full resource id path of an existing subnet to use for AKS"
+      }
+    },
+    "byoAGWSubnetId": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Full resource id path of an existing subnet to use for Application Gateway"
+      }
+    },
+    "vnetAddressPrefix": {
+      "type": "string",
+      "defaultValue": "10.0.0.0/8"
+    },
+    "vnetAksSubnetAddressPrefix": {
+      "type": "string",
+      "defaultValue": "10.240.0.0/16"
+    },
+    "vnetFirewallSubnetAddressPrefix": {
+      "type": "string",
+      "defaultValue": "10.241.130.0/26"
+    },
+    "vnetAppGatewaySubnetAddressPrefix": {
+      "type": "string",
+      "defaultValue": "10.2.0.0/16"
+    },
+    "privateLinks": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "privateLinkSubnetAddressPrefix": {
+      "type": "string",
+      "defaultValue": "10.3.0.0/16"
+    },
+    "acrPrivatePool": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "acrAgentPoolSubnetAddressPrefix": {
+      "type": "string",
+      "defaultValue": "10.4.0.0/16"
+    },
+    "dnsZoneId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "azureKeyvaultSecretsProvider": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Installs the AKS KV CSI provider"
+      }
+    },
+    "createKV": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Creates a Key Vault"
+      }
+    },
+    "KeyVaultSoftDelete": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": {
+        "description": "If soft delete protection is enabled"
+      }
+    },
+    "KeyVaultPurgeProtection": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": {
+        "description": "If purge protection is enabled"
+      }
+    },
+    "kvIPWhitelist": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Add IP to firewall whitelist"
+      }
+    },
+    "kvOfficerRolePrincipalId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "registries_sku": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "acrPushRolePrincipalId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "azureFirewalls": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Create an Azure Firewall"
+      }
+    },
+    "certManagerFW": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "ingressApplicationGateway": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Create an Application Gateway"
+      }
+    },
+    "appGWcount": {
+      "type": "int",
+      "defaultValue": 2
+    },
+    "appGWmaxCount": {
+      "type": "int",
+      "defaultValue": 0
+    },
+    "privateIpApplicationGateway": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "A known private ip in the Application Gateway subnet range to be allocated for internal traffic"
+      }
+    },
+    "appgwKVIntegration": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "appGWsku": {
+      "type": "string",
+      "defaultValue": "WAF_v2",
+      "metadata": {
+        "description": "The SKU for AppGw"
+      },
+      "allowedValues": [
+        "Standard_v2",
+        "WAF_v2"
+      ]
+    },
+    "appGWenableFirewall": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": {
+        "description": "Enable the WAF Firewall, valid for WAF_v2 SKUs"
+      }
+    },
+    "appGwFirewallMode": {
+      "type": "string",
+      "defaultValue": "Prevention",
+      "allowedValues": [
+        "Prevention",
+        "Detection"
+      ]
+    },
+    "dnsPrefix": {
+      "type": "string",
+      "defaultValue": "[format('{0}-dns', parameters('resourceName'))]"
+    },
+    "kubernetesVersion": {
+      "type": "string",
+      "defaultValue": "1.20.9"
+    },
+    "enable_aad": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "aad_tenant_id": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "omsagent": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Create, and use a new Log Analytics workspace for AKS logs"
+      }
+    },
+    "enableAzureRBAC": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "upgradeChannel": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "osDiskType": {
+      "type": "string",
+      "defaultValue": "Ephemeral"
+    },
+    "agentVMSize": {
+      "type": "string",
+      "defaultValue": "Standard_DS3_v2"
+    },
+    "osDiskSizeGB": {
+      "type": "int",
+      "defaultValue": 0
+    },
+    "agentCount": {
+      "type": "int",
+      "defaultValue": 3
+    },
+    "agentCountMax": {
+      "type": "int",
+      "defaultValue": 0
+    },
+    "maxPods": {
+      "type": "int",
+      "defaultValue": 30
+    },
+    "networkPlugin": {
+      "type": "string",
+      "defaultValue": "azure"
+    },
+    "networkPolicy": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "azurepolicy": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "gitops": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "authorizedIPRanges": {
+      "type": "array",
+      "defaultValue": []
+    },
+    "enablePrivateCluster": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "availabilityZones": {
+      "type": "array",
+      "defaultValue": []
+    },
+    "AksPaidSkuForSLA": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "podCidr": {
+      "type": "string",
+      "defaultValue": "10.244.0.0/16"
+    },
+    "serviceCidr": {
+      "type": "string",
+      "defaultValue": "10.0.0.0/16"
+    },
+    "dnsServiceIP": {
+      "type": "string",
+      "defaultValue": "10.0.0.10"
+    },
+    "dockerBridgeCidr": {
+      "type": "string",
+      "defaultValue": "172.17.0.1/16"
+    },
+    "JustUseSystemPool": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "SystemPoolType": {
+      "type": "string",
+      "defaultValue": "Cost-Optimised",
+      "metadata": {
+        "description": "The System Pool Preset sizing"
+      },
+      "allowedValues": [
+        "Cost-Optimised",
+        "Standard"
+      ]
+    },
+    "adminprincipleid": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "AksDiagCategories": {
+      "type": "array",
+      "defaultValue": [
+        "cluster-autoscaler",
+        "kube-controller-manager",
+        "kube-audit-admin",
+        "guard"
+      ],
+      "metadata": {
+        "description": "Diagnostic categories to log"
+      }
+    },
+    "createAksMetricAlerts": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": {
+        "description": "Enable Metric Alerts"
+      }
+    },
+    "AksMetricAlertMetricFrequencyModel": {
+      "type": "string",
+      "defaultValue": "Long",
+      "metadata": {
+        "description": "Which Metric polling frequency model to use"
+      },
+      "allowedValues": [
+        "Short",
+        "Long"
+      ]
+    },
+    "retentionInDays": {
+      "type": "int",
+      "defaultValue": 30,
+      "metadata": {
+        "description": "The Log Analytics retention period"
+      }
+    }
+  },
+  "functions": [],
+  "variables": {
+    "aks_byo_identity": "[or(parameters('custom_vnet'), not(empty(parameters('byoAKSSubnetId'))))]",
+    "existingAksVnetRG": "[if(not(empty(parameters('byoAKSSubnetId'))), if(greater(length(split(parameters('byoAKSSubnetId'), '/')), 4), split(parameters('byoAKSSubnetId'), '/')[4], ''), '')]",
+    "existingAGWSubnetName": "[if(not(empty(parameters('byoAGWSubnetId'))), if(greater(length(split(parameters('byoAGWSubnetId'), '/')), 10), split(parameters('byoAGWSubnetId'), '/')[10], ''), '')]",
+    "existingAGWVnetName": "[if(not(empty(parameters('byoAGWSubnetId'))), if(greater(length(split(parameters('byoAGWSubnetId'), '/')), 9), split(parameters('byoAGWSubnetId'), '/')[8], ''), '')]",
+    "existingAGWVnetRG": "[if(not(empty(parameters('byoAGWSubnetId'))), if(greater(length(split(parameters('byoAGWSubnetId'), '/')), 9), split(parameters('byoAGWSubnetId'), '/')[4], ''), '')]",
+    "dnsZoneRg": "[if(not(empty(parameters('dnsZoneId'))), split(parameters('dnsZoneId'), '/')[4], '')]",
+    "dnsZoneName": "[if(not(empty(parameters('dnsZoneId'))), split(parameters('dnsZoneId'), '/')[8], '')]",
+    "isPrivate": "[if(not(empty(parameters('dnsZoneId'))), equals(split(parameters('dnsZoneId'), '/')[7], 'privateDnsZones'), false())]",
+    "akvName": "[format('kv-{0}', replace(parameters('resourceName'), '-', ''))]",
+    "keyVaultSecretsUserRole": "[resourceId('Microsoft.Authorization/roleDefinitions', '4633458b-17de-408a-b874-0445c86b69e6')]",
+    "keyVaultSecretsOfficerRole": "[resourceId('Microsoft.Authorization/roleDefinitions', 'b86a8fe4-44ce-4948-aee5-eccb2c155cd7')]",
+    "keyVaultCertsOfficerRole": "[resourceId('Microsoft.Authorization/roleDefinitions', 'a4417e6f-fecd-4de8-b567-7b0420556985')]",
+    "acrName": "[format('cr{0}{1}', replace(parameters('resourceName'), '-', ''), uniqueString(resourceGroup().id, parameters('resourceName')))]",
+    "AcrPullRole": "[resourceId('Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d')]",
+    "AcrPushRole": "[resourceId('Microsoft.Authorization/roleDefinitions', '8311e382-0749-4cb8-b61a-304f252e45ec')]",
+    "deployAppGw": "[and(parameters('ingressApplicationGateway'), or(parameters('custom_vnet'), not(empty(parameters('byoAGWSubnetId')))))]",
+    "appGWenableWafFirewall": "[if(equals(parameters('appGWsku'), 'Standard_v2'), false(), parameters('appGWenableFirewall'))]",
+    "appgwName": "[format('agw-{0}', parameters('resourceName'))]",
+    "appgwResourceId": "[if(variables('deployAppGw'), resourceId('Microsoft.Network/applicationGateways', format('{0}', variables('appgwName'))), '')]",
+    "frontendPublicIpConfig": {
+      "properties": {
+        "publicIPAddress": {
+          "id": "[format('{0}', resourceId('Microsoft.Network/publicIPAddresses', format('pip-agw-{0}', parameters('resourceName'))))]"
+        }
+      },
+      "name": "appGatewayFrontendIP"
+    },
+    "appGwFirewallConfigOwasp": {
+      "enabled": "[variables('appGWenableWafFirewall')]",
+      "firewallMode": "[parameters('appGwFirewallMode')]",
+      "ruleSetType": "OWASP",
+      "ruleSetVersion": "3.2",
+      "requestBodyCheck": true,
+      "maxRequestBodySizeInKb": 128
+    },
+    "appGWskuObj": "[union(createObject('name', parameters('appGWsku'), 'tier', parameters('appGWsku')), if(equals(parameters('appGWmaxCount'), 0), createObject('capacity', parameters('appGWcount')), createObject()))]",
+    "DEPLOY_APPGW_ADDON": "[and(parameters('ingressApplicationGateway'), empty(parameters('byoAGWSubnetId')))]",
+    "contributor": "[resourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+    "reader": "[resourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]",
+    "managedIdentityOperator": "[resourceId('Microsoft.Authorization/roleDefinitions', 'f1a07417-d97a-45cb-824c-7a7467783830')]",
+    "autoScale": "[greater(parameters('agentCountMax'), parameters('agentCount'))]",
+    "systemPoolPresets": {
+      "Cost-Optimised": {
+        "vmSize": "Standard_B4ms",
+        "count": 1,
+        "minCount": 1,
+        "maxCount": 3,
+        "enableAutoScaling": true
+      },
+      "Standard": {
+        "vmSize": "Standard_D4s_v3",
+        "count": 2,
+        "minCount": 2,
+        "maxCount": 3,
+        "enableAutoScaling": true
+      }
+    },
+    "akssku": "[if(parameters('AksPaidSkuForSLA'), 'Paid', 'Free')]",
+    "aks_addons": {},
+    "aks_identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+        "[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('id-aks-{0}', parameters('resourceName'))))]": {}
+      }
+    },
+    "policySetPodSecBaseline": "[resourceId('Microsoft.Authorization/policySetDefinitions', 'a8640138-9b0a-4a28-b8cb-1666c838647d')]",
+    "buildInAKSRBACClusterAdmin": "[resourceId('Microsoft.Authorization/roleDefinitions', 'b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b')]",
+    "AlertFrequencyLookup": {
+      "Short": {
+        "evalFrequency": "PT1M",
+        "windowSize": "PT5M"
+      },
+      "Long": {
+        "evalFrequency": "PT15M",
+        "windowSize": "PT1H"
+      }
+    },
+    "AlertFrequency": "[variables('AlertFrequencyLookup')[parameters('AksMetricAlertMetricFrequencyModel')]]",
+    "aks_law_name": "[format('log-{0}', parameters('resourceName'))]",
+    "createLaw": "[or(or(parameters('omsagent'), variables('deployAppGw')), parameters('azureFirewalls'))]",
+    "MonitoringMetricsPublisherRole": "[resourceId('Microsoft.Authorization/roleDefinitions', '3913510d-42f4-4e42-8a64-420c390055eb')]"
+  },
+  "resources": [
+    {
+      "condition": "[variables('aks_byo_identity')]",
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "apiVersion": "2018-11-30",
+      "name": "[format('id-aks-{0}', parameters('resourceName'))]",
+      "location": "[parameters('location')]"
+    },
+    {
+      "condition": "[parameters('createKV')]",
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[variables('akvName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "tenantId": "[subscription().tenantId]",
+        "sku": {
+          "family": "A",
+          "name": "standard"
+        },
+        "publicNetworkAccess": "[if(and(parameters('privateLinks'), empty(parameters('kvIPWhitelist'))), 'disabled', 'enabled')]",
+        "networkAcls": "[if(and(parameters('privateLinks'), not(empty(parameters('kvIPWhitelist')))), createObject('bypass', 'AzureServices', 'defaultAction', 'Deny', 'ipRules', if(empty(parameters('kvIPWhitelist')), createArray(), createArray(createObject('value', parameters('kvIPWhitelist')))), 'virtualNetworkRules', createArray()), createObject())]",
+        "enableRbacAuthorization": true,
+        "enabledForDeployment": false,
+        "enabledForDiskEncryption": false,
+        "enabledForTemplateDeployment": false,
+        "enableSoftDelete": "[parameters('KeyVaultSoftDelete')]",
+        "enablePurgeProtection": "[if(parameters('KeyVaultPurgeProtection'), true(), json('null'))]"
+      }
+    },
+    {
+      "condition": "[and(parameters('createKV'), parameters('appgwKVIntegration'))]",
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2021-04-01-preview",
+      "scope": "[format('Microsoft.KeyVault/vaults/{0}', variables('akvName'))]",
+      "name": "[format('{0}', guid(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName'))), 'AppGw', variables('keyVaultSecretsUserRole')))]",
+      "properties": {
+        "roleDefinitionId": "[variables('keyVaultSecretsUserRole')]",
+        "principalType": "ServicePrincipal",
+        "principalId": "[if(variables('deployAppGw'), reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('id-appgw-{0}', parameters('resourceName')))).principalId, '')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]",
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('id-appgw-{0}', parameters('resourceName')))]",
+        "[resourceId('Microsoft.KeyVault/vaults', variables('akvName'))]"
+      ]
+    },
+    {
+      "condition": "[and(parameters('createKV'), parameters('azureKeyvaultSecretsProvider'))]",
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2021-04-01-preview",
+      "scope": "[format('Microsoft.KeyVault/vaults/{0}', variables('akvName'))]",
+      "name": "[format('{0}', guid(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName'))), 'CSIDriver', variables('keyVaultSecretsUserRole')))]",
+      "properties": {
+        "roleDefinitionId": "[variables('keyVaultSecretsUserRole')]",
+        "principalType": "ServicePrincipal",
+        "principalId": "[reference(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))).addonProfiles.azureKeyvaultSecretsProvider.identity.objectId]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]",
+        "[resourceId('Microsoft.KeyVault/vaults', variables('akvName'))]"
+      ]
+    },
+    {
+      "condition": "[and(parameters('createKV'), not(empty(parameters('kvOfficerRolePrincipalId'))))]",
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2021-04-01-preview",
+      "scope": "[format('Microsoft.KeyVault/vaults/{0}', variables('akvName'))]",
+      "name": "[format('{0}', guid(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName'))), 'usersecret', variables('keyVaultSecretsOfficerRole')))]",
+      "properties": {
+        "roleDefinitionId": "[variables('keyVaultSecretsOfficerRole')]",
+        "principalType": "User",
+        "principalId": "[parameters('kvOfficerRolePrincipalId')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]",
+        "[resourceId('Microsoft.KeyVault/vaults', variables('akvName'))]"
+      ]
+    },
+    {
+      "condition": "[and(parameters('createKV'), not(empty(parameters('kvOfficerRolePrincipalId'))))]",
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2021-04-01-preview",
+      "scope": "[format('Microsoft.KeyVault/vaults/{0}', variables('akvName'))]",
+      "name": "[format('{0}', guid(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName'))), 'usercert', variables('keyVaultCertsOfficerRole')))]",
+      "properties": {
+        "roleDefinitionId": "[variables('keyVaultCertsOfficerRole')]",
+        "principalType": "User",
+        "principalId": "[parameters('kvOfficerRolePrincipalId')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]",
+        "[resourceId('Microsoft.KeyVault/vaults', variables('akvName'))]"
+      ]
+    },
+    {
+      "condition": "[and(variables('createLaw'), parameters('createKV'))]",
+      "type": "Microsoft.Insights/diagnosticSettings",
+      "apiVersion": "2021-05-01-preview",
+      "scope": "[format('Microsoft.KeyVault/vaults/{0}', variables('akvName'))]",
+      "name": "kvDiags",
+      "properties": {
+        "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name'))]",
+        "logs": [
+          {
+            "category": "AuditEvent",
+            "enabled": true
+          }
+        ],
+        "metrics": [
+          {
+            "category": "AllMetrics",
+            "enabled": true
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name'))]",
+        "[resourceId('Microsoft.KeyVault/vaults', variables('akvName'))]"
+      ]
+    },
+    {
+      "condition": "[not(empty(parameters('registries_sku')))]",
+      "type": "Microsoft.ContainerRegistry/registries",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[variables('acrName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('registries_sku')]"
+      },
+      "properties": {
+        "publicNetworkAccess": "[if(parameters('privateLinks'), 'Disabled', 'Enabled')]"
+      }
+    },
+    {
+      "condition": "[and(and(and(parameters('custom_vnet'), not(empty(parameters('registries_sku')))), parameters('privateLinks')), parameters('acrPrivatePool'))]",
+      "type": "Microsoft.ContainerRegistry/registries/agentPools",
+      "apiVersion": "2019-06-01-preview",
+      "name": "[format('{0}/{1}', variables('acrName'), 'private-pool')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "count": 1,
+        "os": "Linux",
+        "tier": "S1",
+        "virtualNetworkSubnetResourceId": "[if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.acrPoolSubnetId.value, '')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerRegistry/registries', variables('acrName'))]",
+        "[resourceId('Microsoft.Resources/deployments', 'network')]"
+      ]
+    },
+    {
+      "condition": "[not(empty(parameters('registries_sku')))]",
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2021-04-01-preview",
+      "scope": "[format('Microsoft.ContainerRegistry/registries/{0}', variables('acrName'))]",
+      "name": "[format('{0}', guid(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName'))), 'Acr', variables('AcrPullRole')))]",
+      "properties": {
+        "roleDefinitionId": "[variables('AcrPullRole')]",
+        "principalType": "ServicePrincipal",
+        "principalId": "[reference(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))).identityProfile.kubeletidentity.objectId]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerRegistry/registries', variables('acrName'))]",
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]"
+      ]
+    },
+    {
+      "condition": "[and(not(empty(parameters('registries_sku'))), not(empty(parameters('acrPushRolePrincipalId'))))]",
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2021-04-01-preview",
+      "scope": "[format('Microsoft.ContainerRegistry/registries/{0}', variables('acrName'))]",
+      "name": "[format('{0}', guid(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName'))), 'Acr', variables('AcrPushRole')))]",
+      "properties": {
+        "roleDefinitionId": "[variables('AcrPushRole')]",
+        "principalType": "User",
+        "principalId": "[parameters('acrPushRolePrincipalId')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerRegistry/registries', variables('acrName'))]",
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]"
+      ]
+    },
+    {
+      "condition": "[variables('deployAppGw')]",
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "apiVersion": "2018-11-30",
+      "name": "[format('id-appgw-{0}', parameters('resourceName'))]",
+      "location": "[parameters('location')]"
+    },
+    {
+      "condition": "[variables('deployAppGw')]",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2021-02-01",
+      "name": "[format('pip-agw-{0}', parameters('resourceName'))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard"
+      },
+      "zones": "[if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), createArray())]",
+      "properties": {
+        "publicIPAllocationMethod": "Static"
+      }
+    },
+    {
+      "condition": "[variables('deployAppGw')]",
+      "type": "Microsoft.Network/applicationGateways",
+      "apiVersion": "2021-02-01",
+      "name": "[variables('appgwName')]",
+      "location": "[parameters('location')]",
+      "zones": "[if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), createArray())]",
+      "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('id-appgw-{0}', parameters('resourceName'))))]": {}
+        }
+      },
+      "properties": "[union(createObject('sku', variables('appGWskuObj'), 'sslPolicy', createObject('policyType', 'Predefined', 'policyName', 'AppGwSslPolicy20170401S'), 'webApplicationFirewallConfiguration', if(variables('appGWenableWafFirewall'), variables('appGwFirewallConfigOwasp'), json('null')), 'gatewayIPConfigurations', createArray(createObject('name', 'besubnet', 'properties', createObject('subnet', createObject('id', if(parameters('ingressApplicationGateway'), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.appGwSubnetId.value, parameters('byoAGWSubnetId')), ''))))), 'frontendIPConfigurations', if(empty(parameters('privateIpApplicationGateway')), array(variables('frontendPublicIpConfig')), concat(array(variables('frontendPublicIpConfig')), array(createObject('properties', createObject('privateIPAllocationMethod', 'Static', 'privateIPAddress', parameters('privateIpApplicationGateway'), 'subnet', createObject('id', if(parameters('ingressApplicationGateway'), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.appGwSubnetId.value, parameters('byoAGWSubnetId')), ''))), 'name', 'appGatewayPrivateIP')))), 'frontendPorts', createArray(createObject('name', 'appGatewayFrontendPort', 'properties', createObject('port', 80))), 'backendAddressPools', createArray(createObject('name', 'defaultaddresspool')), 'backendHttpSettingsCollection', createArray(createObject('name', 'defaulthttpsetting', 'properties', createObject('port', 80, 'protocol', 'Http', 'cookieBasedAffinity', 'Disabled', 'requestTimeout', 30, 'pickHostNameFromBackendAddress', true()))), 'httpListeners', createArray(createObject('name', 'hlisten', 'properties', createObject('frontendIPConfiguration', createObject('id', if(empty(parameters('privateIpApplicationGateway')), format('{0}/frontendIPConfigurations/appGatewayFrontendIP', variables('appgwResourceId')), format('{0}/frontendIPConfigurations/appGatewayPrivateIP', variables('appgwResourceId')))), 'frontendPort', createObject('id', format('{0}/frontendPorts/appGatewayFrontendPort', variables('appgwResourceId'))), 'protocol', 'Http'))), 'requestRoutingRules', createArray(createObject('name', 'appGwRoutingRuleName', 'properties', createObject('ruleType', 'Basic', 'httpListener', createObject('id', format('{0}/httpListeners/hlisten', variables('appgwResourceId'))), 'backendAddressPool', createObject('id', format('{0}/backendAddressPools/defaultaddresspool', variables('appgwResourceId'))), 'backendHttpSettings', createObject('id', format('{0}/backendHttpSettingsCollection/defaulthttpsetting', variables('appgwResourceId'))))))), if(greater(parameters('appGWmaxCount'), 0), createObject('autoscaleConfiguration', createObject('minCapacity', parameters('appGWcount'), 'maxCapacity', parameters('appGWmaxCount'))), createObject()))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('id-appgw-{0}', parameters('resourceName')))]",
+        "[resourceId('Microsoft.Network/publicIPAddresses', format('pip-agw-{0}', parameters('resourceName')))]",
+        "[resourceId('Microsoft.Resources/deployments', 'network')]"
+      ]
+    },
+    {
+      "condition": "[and(variables('DEPLOY_APPGW_ADDON'), variables('deployAppGw'))]",
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2021-04-01-preview",
+      "scope": "[format('Microsoft.Network/applicationGateways/{0}', variables('appgwName'))]",
+      "name": "[format('{0}', guid(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName'))), 'Agic', variables('contributor')))]",
+      "properties": {
+        "roleDefinitionId": "[variables('contributor')]",
+        "principalType": "ServicePrincipal",
+        "principalId": "[reference(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))).addonProfiles.ingressApplicationGateway.identity.objectId]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]",
+        "[resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))]"
+      ]
+    },
+    {
+      "condition": "[and(variables('DEPLOY_APPGW_ADDON'), variables('deployAppGw'))]",
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2021-04-01-preview",
+      "name": "[format('{0}', guid(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName'))), 'Agic', variables('reader')))]",
+      "properties": {
+        "roleDefinitionId": "[variables('reader')]",
+        "principalType": "ServicePrincipal",
+        "principalId": "[reference(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))).addonProfiles.ingressApplicationGateway.identity.objectId]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]"
+      ]
+    },
+    {
+      "condition": "[and(variables('DEPLOY_APPGW_ADDON'), variables('deployAppGw'))]",
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2021-04-01-preview",
+      "scope": "[format('Microsoft.ManagedIdentity/userAssignedIdentities/{0}', format('id-appgw-{0}', parameters('resourceName')))]",
+      "name": "[format('{0}', guid(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName'))), 'Agic', variables('managedIdentityOperator')))]",
+      "properties": {
+        "roleDefinitionId": "[variables('managedIdentityOperator')]",
+        "principalType": "ServicePrincipal",
+        "principalId": "[reference(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))).addonProfiles.ingressApplicationGateway.identity.objectId]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]",
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('id-appgw-{0}', parameters('resourceName')))]"
+      ]
+    },
+    {
+      "condition": "[and(variables('createLaw'), variables('deployAppGw'))]",
+      "type": "Microsoft.Insights/diagnosticSettings",
+      "apiVersion": "2021-05-01-preview",
+      "scope": "[format('Microsoft.Network/applicationGateways/{0}', variables('appgwName'))]",
+      "name": "appgwDiag",
+      "properties": {
+        "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name'))]",
+        "logs": [
+          {
+            "category": "ApplicationGatewayAccessLog",
+            "enabled": true
+          },
+          {
+            "category": "ApplicationGatewayPerformanceLog",
+            "enabled": true
+          },
+          {
+            "category": "ApplicationGatewayFirewallLog",
+            "enabled": true
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name'))]",
+        "[resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.ContainerService/managedClusters",
+      "apiVersion": "2021-07-01",
+      "name": "[format('aks-{0}', parameters('resourceName'))]",
+      "location": "[parameters('location')]",
+      "properties": "[if(not(empty(if(parameters('azureKeyvaultSecretsProvider'), union(if(not(empty(parameters('azurepolicy'))), union(if(not(empty(parameters('gitops'))), union(if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons'))), createObject('gitops', createObject('enabled', true()))), if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')))), createObject('azurepolicy', createObject('config', createObject('version', 'v2'), 'enabled', true()))), if(not(empty(parameters('gitops'))), union(if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons'))), createObject('gitops', createObject('enabled', true()))), if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons'))))), createObject('azureKeyvaultSecretsProvider', createObject('config', createObject('enableSecretRotation', 'false'), 'enabled', true()))), if(not(empty(parameters('azurepolicy'))), union(if(not(empty(parameters('gitops'))), union(if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons'))), createObject('gitops', createObject('enabled', true()))), if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')))), createObject('azurepolicy', createObject('config', createObject('version', 'v2'), 'enabled', true()))), if(not(empty(parameters('gitops'))), union(if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons'))), createObject('gitops', createObject('enabled', true()))), if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')))))))), union(if(not(empty(parameters('upgradeChannel'))), union(createObject('kubernetesVersion', parameters('kubernetesVersion'), 'enableRBAC', true(), 'dnsPrefix', parameters('dnsPrefix'), 'aadProfile', if(parameters('enable_aad'), createObject('managed', true(), 'enableAzureRBAC', parameters('enableAzureRBAC'), 'tenantID', parameters('aad_tenant_id')), null()), 'apiServerAccessProfile', if(not(empty(parameters('authorizedIPRanges'))), createObject('authorizedIPRanges', parameters('authorizedIPRanges')), createObject('enablePrivateCluster', parameters('enablePrivateCluster'), 'privateDNSZone', if(parameters('enablePrivateCluster'), 'none', ''), 'enablePrivateClusterPublicFQDN', parameters('enablePrivateCluster'))), 'agentPoolProfiles', if(parameters('JustUseSystemPool'), array(union(createObject('name', 'npsystem', 'mode', 'System', 'osType', 'Linux', 'maxPods', 30, 'type', 'VirtualMachineScaleSets', 'availabilityZones', if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), null()), 'vnetSubnetID', if(not(empty(if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')))), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')), json('null')), 'upgradeSettings', createObject('maxSurge', '33%'), 'nodeTaints', createArray(if(parameters('JustUseSystemPool'), '', 'CriticalAddonsOnly=true:NoSchedule'))), variables('systemPoolPresets')[parameters('SystemPoolType')])), concat(array(union(createObject('name', 'npsystem', 'mode', 'System', 'osType', 'Linux', 'maxPods', 30, 'type', 'VirtualMachineScaleSets', 'availabilityZones', if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), null()), 'vnetSubnetID', if(not(empty(if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')))), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')), json('null')), 'upgradeSettings', createObject('maxSurge', '33%'), 'nodeTaints', createArray(if(parameters('JustUseSystemPool'), '', 'CriticalAddonsOnly=true:NoSchedule'))), variables('systemPoolPresets')[parameters('SystemPoolType')])), array(createObject('name', 'npuser01', 'mode', 'User', 'osDiskType', parameters('osDiskType'), 'osDiskSizeGB', parameters('osDiskSizeGB'), 'count', parameters('agentCount'), 'vmSize', parameters('agentVMSize'), 'osType', 'Linux', 'maxPods', parameters('maxPods'), 'type', 'VirtualMachineScaleSets', 'enableAutoScaling', variables('autoScale'), 'availabilityZones', if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), null()), 'vnetSubnetID', if(not(empty(if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')))), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')), json('null')), 'minCount', if(variables('autoScale'), parameters('agentCount'), json('null')), 'maxCount', if(variables('autoScale'), parameters('agentCountMax'), json('null')), 'upgradeSettings', createObject('maxSurge', '33%'))))), 'networkProfile', createObject('loadBalancerSku', 'standard', 'networkPlugin', parameters('networkPlugin'), 'networkPolicy', parameters('networkPolicy'), 'podCidr', parameters('podCidr'), 'serviceCidr', parameters('serviceCidr'), 'dnsServiceIP', parameters('dnsServiceIP'), 'dockerBridgeCidr', parameters('dockerBridgeCidr'))), createObject('autoUpgradeProfile', createObject('upgradeChannel', parameters('upgradeChannel')))), createObject('kubernetesVersion', parameters('kubernetesVersion'), 'enableRBAC', true(), 'dnsPrefix', parameters('dnsPrefix'), 'aadProfile', if(parameters('enable_aad'), createObject('managed', true(), 'enableAzureRBAC', parameters('enableAzureRBAC'), 'tenantID', parameters('aad_tenant_id')), null()), 'apiServerAccessProfile', if(not(empty(parameters('authorizedIPRanges'))), createObject('authorizedIPRanges', parameters('authorizedIPRanges')), createObject('enablePrivateCluster', parameters('enablePrivateCluster'), 'privateDNSZone', if(parameters('enablePrivateCluster'), 'none', ''), 'enablePrivateClusterPublicFQDN', parameters('enablePrivateCluster'))), 'agentPoolProfiles', if(parameters('JustUseSystemPool'), array(union(createObject('name', 'npsystem', 'mode', 'System', 'osType', 'Linux', 'maxPods', 30, 'type', 'VirtualMachineScaleSets', 'availabilityZones', if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), null()), 'vnetSubnetID', if(not(empty(if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')))), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')), json('null')), 'upgradeSettings', createObject('maxSurge', '33%'), 'nodeTaints', createArray(if(parameters('JustUseSystemPool'), '', 'CriticalAddonsOnly=true:NoSchedule'))), variables('systemPoolPresets')[parameters('SystemPoolType')])), concat(array(union(createObject('name', 'npsystem', 'mode', 'System', 'osType', 'Linux', 'maxPods', 30, 'type', 'VirtualMachineScaleSets', 'availabilityZones', if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), null()), 'vnetSubnetID', if(not(empty(if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')))), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')), json('null')), 'upgradeSettings', createObject('maxSurge', '33%'), 'nodeTaints', createArray(if(parameters('JustUseSystemPool'), '', 'CriticalAddonsOnly=true:NoSchedule'))), variables('systemPoolPresets')[parameters('SystemPoolType')])), array(createObject('name', 'npuser01', 'mode', 'User', 'osDiskType', parameters('osDiskType'), 'osDiskSizeGB', parameters('osDiskSizeGB'), 'count', parameters('agentCount'), 'vmSize', parameters('agentVMSize'), 'osType', 'Linux', 'maxPods', parameters('maxPods'), 'type', 'VirtualMachineScaleSets', 'enableAutoScaling', variables('autoScale'), 'availabilityZones', if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), null()), 'vnetSubnetID', if(not(empty(if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')))), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')), json('null')), 'minCount', if(variables('autoScale'), parameters('agentCount'), json('null')), 'maxCount', if(variables('autoScale'), parameters('agentCountMax'), json('null')), 'upgradeSettings', createObject('maxSurge', '33%'))))), 'networkProfile', createObject('loadBalancerSku', 'standard', 'networkPlugin', parameters('networkPlugin'), 'networkPolicy', parameters('networkPolicy'), 'podCidr', parameters('podCidr'), 'serviceCidr', parameters('serviceCidr'), 'dnsServiceIP', parameters('dnsServiceIP'), 'dockerBridgeCidr', parameters('dockerBridgeCidr')))), createObject('addonProfiles', if(parameters('azureKeyvaultSecretsProvider'), union(if(not(empty(parameters('azurepolicy'))), union(if(not(empty(parameters('gitops'))), union(if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons'))), createObject('gitops', createObject('enabled', true()))), if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')))), createObject('azurepolicy', createObject('config', createObject('version', 'v2'), 'enabled', true()))), if(not(empty(parameters('gitops'))), union(if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons'))), createObject('gitops', createObject('enabled', true()))), if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons'))))), createObject('azureKeyvaultSecretsProvider', createObject('config', createObject('enableSecretRotation', 'false'), 'enabled', true()))), if(not(empty(parameters('azurepolicy'))), union(if(not(empty(parameters('gitops'))), union(if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons'))), createObject('gitops', createObject('enabled', true()))), if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')))), createObject('azurepolicy', createObject('config', createObject('version', 'v2'), 'enabled', true()))), if(not(empty(parameters('gitops'))), union(if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons'))), createObject('gitops', createObject('enabled', true()))), if(and(variables('createLaw'), parameters('omsagent')), union(if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')), createObject('omsagent', createObject('enabled', true(), 'config', createObject('logAnalyticsWorkspaceResourceID', resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')))))), if(and(variables('DEPLOY_APPGW_ADDON'), parameters('ingressApplicationGateway')), union(variables('aks_addons'), if(variables('deployAppGw'), createObject('ingressApplicationGateway', createObject('config', createObject('applicationGatewayId', resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))), 'enabled', true())), createObject('ingressApplicationGateway', createObject('enabled', true(), 'config', createObject('applicationGatewayName', variables('appgwName'), 'subnetCIDR', if(not(empty(parameters('byoAGWSubnetId'))), reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, variables('existingAGWVnetRG')), 'Microsoft.Network/virtualNetworks/subnets', variables('existingAGWVnetName'), variables('existingAGWSubnetName')), '2020-11-01').addressPrefix, parameters('vnetAppGatewaySubnetAddressPrefix'))))))), variables('aks_addons')))))))), if(not(empty(parameters('upgradeChannel'))), union(createObject('kubernetesVersion', parameters('kubernetesVersion'), 'enableRBAC', true(), 'dnsPrefix', parameters('dnsPrefix'), 'aadProfile', if(parameters('enable_aad'), createObject('managed', true(), 'enableAzureRBAC', parameters('enableAzureRBAC'), 'tenantID', parameters('aad_tenant_id')), null()), 'apiServerAccessProfile', if(not(empty(parameters('authorizedIPRanges'))), createObject('authorizedIPRanges', parameters('authorizedIPRanges')), createObject('enablePrivateCluster', parameters('enablePrivateCluster'), 'privateDNSZone', if(parameters('enablePrivateCluster'), 'none', ''), 'enablePrivateClusterPublicFQDN', parameters('enablePrivateCluster'))), 'agentPoolProfiles', if(parameters('JustUseSystemPool'), array(union(createObject('name', 'npsystem', 'mode', 'System', 'osType', 'Linux', 'maxPods', 30, 'type', 'VirtualMachineScaleSets', 'availabilityZones', if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), null()), 'vnetSubnetID', if(not(empty(if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')))), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')), json('null')), 'upgradeSettings', createObject('maxSurge', '33%'), 'nodeTaints', createArray(if(parameters('JustUseSystemPool'), '', 'CriticalAddonsOnly=true:NoSchedule'))), variables('systemPoolPresets')[parameters('SystemPoolType')])), concat(array(union(createObject('name', 'npsystem', 'mode', 'System', 'osType', 'Linux', 'maxPods', 30, 'type', 'VirtualMachineScaleSets', 'availabilityZones', if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), null()), 'vnetSubnetID', if(not(empty(if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')))), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')), json('null')), 'upgradeSettings', createObject('maxSurge', '33%'), 'nodeTaints', createArray(if(parameters('JustUseSystemPool'), '', 'CriticalAddonsOnly=true:NoSchedule'))), variables('systemPoolPresets')[parameters('SystemPoolType')])), array(createObject('name', 'npuser01', 'mode', 'User', 'osDiskType', parameters('osDiskType'), 'osDiskSizeGB', parameters('osDiskSizeGB'), 'count', parameters('agentCount'), 'vmSize', parameters('agentVMSize'), 'osType', 'Linux', 'maxPods', parameters('maxPods'), 'type', 'VirtualMachineScaleSets', 'enableAutoScaling', variables('autoScale'), 'availabilityZones', if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), null()), 'vnetSubnetID', if(not(empty(if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')))), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')), json('null')), 'minCount', if(variables('autoScale'), parameters('agentCount'), json('null')), 'maxCount', if(variables('autoScale'), parameters('agentCountMax'), json('null')), 'upgradeSettings', createObject('maxSurge', '33%'))))), 'networkProfile', createObject('loadBalancerSku', 'standard', 'networkPlugin', parameters('networkPlugin'), 'networkPolicy', parameters('networkPolicy'), 'podCidr', parameters('podCidr'), 'serviceCidr', parameters('serviceCidr'), 'dnsServiceIP', parameters('dnsServiceIP'), 'dockerBridgeCidr', parameters('dockerBridgeCidr'))), createObject('autoUpgradeProfile', createObject('upgradeChannel', parameters('upgradeChannel')))), createObject('kubernetesVersion', parameters('kubernetesVersion'), 'enableRBAC', true(), 'dnsPrefix', parameters('dnsPrefix'), 'aadProfile', if(parameters('enable_aad'), createObject('managed', true(), 'enableAzureRBAC', parameters('enableAzureRBAC'), 'tenantID', parameters('aad_tenant_id')), null()), 'apiServerAccessProfile', if(not(empty(parameters('authorizedIPRanges'))), createObject('authorizedIPRanges', parameters('authorizedIPRanges')), createObject('enablePrivateCluster', parameters('enablePrivateCluster'), 'privateDNSZone', if(parameters('enablePrivateCluster'), 'none', ''), 'enablePrivateClusterPublicFQDN', parameters('enablePrivateCluster'))), 'agentPoolProfiles', if(parameters('JustUseSystemPool'), array(union(createObject('name', 'npsystem', 'mode', 'System', 'osType', 'Linux', 'maxPods', 30, 'type', 'VirtualMachineScaleSets', 'availabilityZones', if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), null()), 'vnetSubnetID', if(not(empty(if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')))), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')), json('null')), 'upgradeSettings', createObject('maxSurge', '33%'), 'nodeTaints', createArray(if(parameters('JustUseSystemPool'), '', 'CriticalAddonsOnly=true:NoSchedule'))), variables('systemPoolPresets')[parameters('SystemPoolType')])), concat(array(union(createObject('name', 'npsystem', 'mode', 'System', 'osType', 'Linux', 'maxPods', 30, 'type', 'VirtualMachineScaleSets', 'availabilityZones', if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), null()), 'vnetSubnetID', if(not(empty(if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')))), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')), json('null')), 'upgradeSettings', createObject('maxSurge', '33%'), 'nodeTaints', createArray(if(parameters('JustUseSystemPool'), '', 'CriticalAddonsOnly=true:NoSchedule'))), variables('systemPoolPresets')[parameters('SystemPoolType')])), array(createObject('name', 'npuser01', 'mode', 'User', 'osDiskType', parameters('osDiskType'), 'osDiskSizeGB', parameters('osDiskSizeGB'), 'count', parameters('agentCount'), 'vmSize', parameters('agentVMSize'), 'osType', 'Linux', 'maxPods', parameters('maxPods'), 'type', 'VirtualMachineScaleSets', 'enableAutoScaling', variables('autoScale'), 'availabilityZones', if(not(empty(parameters('availabilityZones'))), parameters('availabilityZones'), null()), 'vnetSubnetID', if(not(empty(if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')))), if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.aksSubnetId.value, parameters('byoAKSSubnetId')), json('null')), 'minCount', if(variables('autoScale'), parameters('agentCount'), json('null')), 'maxCount', if(variables('autoScale'), parameters('agentCountMax'), json('null')), 'upgradeSettings', createObject('maxSurge', '33%'))))), 'networkProfile', createObject('loadBalancerSku', 'standard', 'networkPlugin', parameters('networkPlugin'), 'networkPolicy', parameters('networkPolicy'), 'podCidr', parameters('podCidr'), 'serviceCidr', parameters('serviceCidr'), 'dnsServiceIP', parameters('dnsServiceIP'), 'dockerBridgeCidr', parameters('dockerBridgeCidr')))))]",
+      "identity": "[if(variables('aks_byo_identity'), variables('aks_identity'), createObject('type', 'SystemAssigned'))]",
+      "sku": {
+        "name": "Basic",
+        "tier": "[variables('akssku')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name'))]",
+        "[resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))]",
+        "[resourceId('Microsoft.Resources/deployments', 'network')]",
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('id-aks-{0}', parameters('resourceName')))]"
+      ]
+    },
+    {
+      "condition": "[not(empty(parameters('azurepolicy')))]",
+      "type": "Microsoft.Authorization/policyAssignments",
+      "apiVersion": "2020-09-01",
+      "name": "[format('{0}-baseline', parameters('resourceName'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "policyDefinitionId": "[variables('policySetPodSecBaseline')]",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('azurepolicy')]"
+          }
+        }
+      }
+    },
+    {
+      "condition": "[and(parameters('enableAzureRBAC'), not(empty(parameters('adminprincipleid'))))]",
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2021-04-01-preview",
+      "scope": "[format('Microsoft.ContainerService/managedClusters/{0}', format('aks-{0}', parameters('resourceName')))]",
+      "name": "[format('{0}', guid(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName'))), 'aksadmin', variables('buildInAKSRBACClusterAdmin')))]",
+      "properties": {
+        "roleDefinitionId": "[variables('buildInAKSRBACClusterAdmin')]",
+        "principalType": "User",
+        "principalId": "[parameters('adminprincipleid')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]"
+      ]
+    },
+    {
+      "condition": "[and(variables('createLaw'), parameters('omsagent'))]",
+      "type": "Microsoft.Insights/diagnosticSettings",
+      "apiVersion": "2021-05-01-preview",
+      "scope": "[format('Microsoft.ContainerService/managedClusters/{0}', format('aks-{0}', parameters('resourceName')))]",
+      "name": "aksDiags",
+      "properties": {
+        "copy": [
+          {
+            "name": "logs",
+            "count": "[length(parameters('AksDiagCategories'))]",
+            "input": {
+              "category": "[parameters('AksDiagCategories')[copyIndex('logs')]]",
+              "enabled": true
+            }
+          }
+        ],
+        "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]",
+        "[resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name'))]"
+      ]
+    },
+    {
+      "condition": "[variables('createLaw')]",
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2021-06-01",
+      "name": "[variables('aks_law_name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "retentionInDays": "[parameters('retentionInDays')]"
+      }
+    },
+    {
+      "condition": "[parameters('omsagent')]",
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2021-04-01-preview",
+      "scope": "[format('Microsoft.ContainerService/managedClusters/{0}', format('aks-{0}', parameters('resourceName')))]",
+      "name": "[format('{0}', guid(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName'))), 'omsagent', variables('MonitoringMetricsPublisherRole')))]",
+      "properties": {
+        "roleDefinitionId": "[variables('MonitoringMetricsPublisherRole')]",
+        "principalId": "[reference(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))).addonProfiles.omsagent.identity.objectId]",
+        "principalType": "ServicePrincipal"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]"
+      ]
+    },
+    {
+      "condition": "[not(empty(parameters('byoAKSSubnetId')))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "addAksNetContributor",
+      "resourceGroup": "[variables('existingAksVnetRG')]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "byoAKSSubnetId": {
+            "value": "[parameters('byoAKSSubnetId')]"
+          },
+          "user_identity_principalId": {
+            "value": "[if(variables('aks_byo_identity'), reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('id-aks-{0}', parameters('resourceName')))).principalId, '')]"
+          },
+          "user_identity_name": {
+            "value": "[format('id-aks-{0}', parameters('resourceName'))]"
+          },
+          "user_identity_rg": {
+            "value": "[resourceGroup().name]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.4.1008.15138",
+              "templateHash": "494498360298765839"
+            }
+          },
+          "parameters": {
+            "byoAKSSubnetId": {
+              "type": "string"
+            },
+            "user_identity_name": {
+              "type": "string"
+            },
+            "user_identity_rg": {
+              "type": "string"
+            },
+            "user_identity_principalId": {
+              "type": "string"
+            }
+          },
+          "functions": [],
+          "variables": {
+            "networkContributorRole": "[resourceId('Microsoft.Authorization/roleDefinitions', '4d97b98b-1d4f-4787-a291-c67834d212e7')]",
+            "existingAksSubnetName": "[if(not(empty(parameters('byoAKSSubnetId'))), split(parameters('byoAKSSubnetId'), '/')[10], '')]",
+            "existingAksVnetName": "[if(not(empty(parameters('byoAKSSubnetId'))), split(parameters('byoAKSSubnetId'), '/')[8], '')]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Authorization/roleAssignments",
+              "apiVersion": "2020-04-01-preview",
+              "scope": "[format('Microsoft.Network/virtualNetworks/{0}/subnets/{1}', variables('existingAksVnetName'), variables('existingAksSubnetName'))]",
+              "name": "[format('{0}', guid(parameters('user_identity_principalId'), variables('existingAksSubnetName')))]",
+              "properties": {
+                "roleDefinitionId": "[variables('networkContributorRole')]",
+                "principalId": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('user_identity_rg')), 'Microsoft.ManagedIdentity/userAssignedIdentities', parameters('user_identity_name')), '2018-11-30').principalId]",
+                "principalType": "ServicePrincipal"
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('id-aks-{0}', parameters('resourceName')))]"
+      ]
+    },
+    {
+      "condition": "[parameters('custom_vnet')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "network",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "resourceName": {
+            "value": "[parameters('resourceName')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "vnetAddressPrefix": {
+            "value": "[parameters('vnetAddressPrefix')]"
+          },
+          "aksPrincipleId": {
+            "value": "[if(variables('aks_byo_identity'), reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('id-aks-{0}', parameters('resourceName')))).principalId, '')]"
+          },
+          "vnetAksSubnetAddressPrefix": {
+            "value": "[parameters('vnetAksSubnetAddressPrefix')]"
+          },
+          "ingressApplicationGateway": {
+            "value": "[parameters('ingressApplicationGateway')]"
+          },
+          "vnetAppGatewaySubnetAddressPrefix": {
+            "value": "[parameters('vnetAppGatewaySubnetAddressPrefix')]"
+          },
+          "azureFirewalls": {
+            "value": "[parameters('azureFirewalls')]"
+          },
+          "vnetFirewallSubnetAddressPrefix": {
+            "value": "[parameters('vnetFirewallSubnetAddressPrefix')]"
+          },
+          "privateLinks": {
+            "value": "[parameters('privateLinks')]"
+          },
+          "privateLinkSubnetAddressPrefix": {
+            "value": "[parameters('privateLinkSubnetAddressPrefix')]"
+          },
+          "privateLinkAcrId": {
+            "value": "[if(and(parameters('privateLinks'), not(empty(parameters('registries_sku')))), resourceId('Microsoft.ContainerRegistry/registries', variables('acrName')), '')]"
+          },
+          "privateLinkAkvId": {
+            "value": "[if(and(parameters('privateLinks'), parameters('createKV')), resourceId('Microsoft.KeyVault/vaults', variables('akvName')), '')]"
+          },
+          "acrPrivatePool": {
+            "value": "[parameters('acrPrivatePool')]"
+          },
+          "acrAgentPoolSubnetAddressPrefix": {
+            "value": "[parameters('acrAgentPoolSubnetAddressPrefix')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.4.1008.15138",
+              "templateHash": "5010923935109066595"
+            }
+          },
+          "parameters": {
+            "resourceName": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            },
+            "vnetAddressPrefix": {
+              "type": "string"
+            },
+            "vnetFirewallSubnetAddressPrefix": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "ingressApplicationGateway": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "azureFirewalls": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "vnetAksSubnetAddressPrefix": {
+              "type": "string"
+            },
+            "vnetAppGatewaySubnetAddressPrefix": {
+              "type": "string"
+            },
+            "aksPrincipleId": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "privateLinks": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "privateLinkSubnetAddressPrefix": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "privateLinkAcrId": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "privateLinkAkvId": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "acrPrivatePool": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "acrAgentPoolSubnetAddressPrefix": {
+              "type": "string",
+              "defaultValue": ""
+            }
+          },
+          "functions": [],
+          "variables": {
+            "acrpool_subnet_name": "acrpool-sn",
+            "acrpool_subnet": {
+              "name": "[variables('acrpool_subnet_name')]",
+              "properties": {
+                "addressPrefix": "[parameters('acrAgentPoolSubnetAddressPrefix')]"
+              }
+            },
+            "private_link_subnet_name": "privatelinks-sn",
+            "private_link_subnet": {
+              "name": "[variables('private_link_subnet_name')]",
+              "properties": {
+                "addressPrefix": "[parameters('privateLinkSubnetAddressPrefix')]",
+                "privateEndpointNetworkPolicies": "Disabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+              }
+            },
+            "appgw_subnet_name": "appgw-sn",
+            "appgw_subnet": {
+              "name": "[variables('appgw_subnet_name')]",
+              "properties": {
+                "addressPrefix": "[parameters('vnetAppGatewaySubnetAddressPrefix')]"
+              }
+            },
+            "fw_subnet_name": "AzureFirewallSubnet",
+            "fw_subnet": {
+              "name": "[variables('fw_subnet_name')]",
+              "properties": {
+                "addressPrefix": "[parameters('vnetFirewallSubnetAddressPrefix')]"
+              }
+            },
+            "routeFwTableName": "[format('rt-afw-{0}', parameters('resourceName'))]",
+            "aks_subnet_name": "aks-sn",
+            "aks_subnet": {
+              "name": "[variables('aks_subnet_name')]",
+              "properties": "[union(createObject('addressPrefix', parameters('vnetAksSubnetAddressPrefix')), if(parameters('privateLinks'), createObject('privateEndpointNetworkPolicies', 'Disabled', 'privateLinkServiceNetworkPolicies', 'Enabled'), createObject()), if(parameters('azureFirewalls'), createObject('routeTable', createObject('id', resourceId('Microsoft.Network/routeTables', variables('routeFwTableName')))), createObject()))]"
+            },
+            "subnets_1": "[if(parameters('azureFirewalls'), concat(array(variables('aks_subnet')), array(variables('fw_subnet'))), array(variables('aks_subnet')))]",
+            "subnets_2": "[if(parameters('privateLinks'), concat(array(variables('subnets_1')), array(variables('private_link_subnet'))), array(variables('subnets_1')))]",
+            "subnets_3": "[if(parameters('acrPrivatePool'), concat(array(variables('subnets_2')), array(variables('acrpool_subnet'))), array(variables('subnets_2')))]",
+            "final_subnets": "[if(parameters('ingressApplicationGateway'), concat(array(variables('subnets_3')), array(variables('appgw_subnet'))), array(variables('subnets_3')))]",
+            "vnetName": "[format('vnet-{0}', parameters('resourceName'))]",
+            "networkContributorRole": "[resourceId('Microsoft.Authorization/roleDefinitions', '4d97b98b-1d4f-4787-a291-c67834d212e7')]",
+            "privateLinkAcrName": "[format('vnet-pl-acr-{0}', parameters('resourceName'))]",
+            "privateDnsAcrLinkName": "[format('vnet-dnscr-{0}', parameters('resourceName'))]",
+            "privateLinkAkvName": "[format('vnet-pl-akv-{0}', parameters('resourceName'))]",
+            "privateDnsAkvLinkName": "[format('vnet-dnscr-{0}', parameters('resourceName'))]"
+          },
+          "resources": [
+            {
+              "condition": "[parameters('azureFirewalls')]",
+              "type": "Microsoft.Network/routeTables",
+              "apiVersion": "2021-02-01",
+              "name": "[variables('routeFwTableName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "routes": [
+                  {
+                    "name": "AKSNodesEgress",
+                    "properties": {
+                      "addressPrefix": "0.0.0.0/1",
+                      "nextHopType": "VirtualAppliance",
+                      "nextHopIpAddress": "[if(parameters('azureFirewalls'), reference(resourceId('Microsoft.Resources/deployments', 'calcAzFwIp'), '2020-06-01').outputs.FirewallPrivateIp.value, null())]"
+                    }
+                  }
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Resources/deployments', 'calcAzFwIp')]"
+              ]
+            },
+            {
+              "type": "Microsoft.Network/virtualNetworks",
+              "apiVersion": "2021-02-01",
+              "name": "[variables('vnetName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "addressSpace": {
+                  "addressPrefixes": [
+                    "[parameters('vnetAddressPrefix')]"
+                  ]
+                },
+                "subnets": "[variables('final_subnets')]"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/routeTables', variables('routeFwTableName'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(parameters('aksPrincipleId')))]",
+              "type": "Microsoft.Network/virtualNetworks/subnets/providers/roleAssignments",
+              "apiVersion": "2020-04-01-preview",
+              "name": "[format('{0}/{1}/Microsoft.Authorization/{2}', variables('vnetName'), variables('aks_subnet_name'), guid(resourceGroup().id, variables('vnetName'), variables('aks_subnet_name')))]",
+              "properties": {
+                "roleDefinitionId": "[variables('networkContributorRole')]",
+                "principalId": "[parameters('aksPrincipleId')]",
+                "principalType": "ServicePrincipal"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(parameters('privateLinkAcrId')))]",
+              "type": "Microsoft.Network/privateEndpoints",
+              "apiVersion": "2021-03-01",
+              "name": "[variables('privateLinkAcrName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "privateLinkServiceConnections": [
+                  {
+                    "name": "Acr-Connection",
+                    "properties": {
+                      "privateLinkServiceId": "[parameters('privateLinkAcrId')]",
+                      "groupIds": [
+                        "registry"
+                      ]
+                    }
+                  }
+                ],
+                "subnet": {
+                  "id": "[format('{0}/subnets/{1}', resourceId('Microsoft.Network/virtualNetworks', variables('vnetName')), variables('private_link_subnet_name'))]"
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(parameters('privateLinkAcrId')))]",
+              "type": "Microsoft.Network/privateDnsZones",
+              "apiVersion": "2020-06-01",
+              "name": "privatelink.azurecr.io",
+              "location": "global"
+            },
+            {
+              "condition": "[not(empty(parameters('privateLinkAcrId')))]",
+              "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+              "apiVersion": "2020-06-01",
+              "name": "[format('{0}/{1}', 'privatelink.azurecr.io', variables('privateDnsAcrLinkName'))]",
+              "location": "global",
+              "properties": {
+                "registrationEnabled": false,
+                "virtualNetwork": {
+                  "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]"
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/privateDnsZones', 'privatelink.azurecr.io')]",
+                "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(parameters('privateLinkAcrId')))]",
+              "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups",
+              "apiVersion": "2021-03-01",
+              "name": "[format('{0}/{1}', variables('privateLinkAcrName'), 'default')]",
+              "properties": {
+                "privateDnsZoneConfigs": [
+                  {
+                    "name": "vnet-pl-acr",
+                    "properties": {
+                      "privateDnsZoneId": "[resourceId('Microsoft.Network/privateDnsZones', 'privatelink.azurecr.io')]"
+                    }
+                  }
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/privateDnsZones', 'privatelink.azurecr.io')]",
+                "[resourceId('Microsoft.Network/privateEndpoints', variables('privateLinkAcrName'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(parameters('privateLinkAkvId')))]",
+              "type": "Microsoft.Network/privateEndpoints",
+              "apiVersion": "2021-03-01",
+              "name": "[variables('privateLinkAkvName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "privateLinkServiceConnections": [
+                  {
+                    "name": "Akv-Connection",
+                    "properties": {
+                      "privateLinkServiceId": "[parameters('privateLinkAkvId')]",
+                      "groupIds": [
+                        "vault"
+                      ]
+                    }
+                  }
+                ],
+                "subnet": {
+                  "id": "[format('{0}/subnets/{1}', resourceId('Microsoft.Network/virtualNetworks', variables('vnetName')), variables('private_link_subnet_name'))]"
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(parameters('privateLinkAkvId')))]",
+              "type": "Microsoft.Network/privateDnsZones",
+              "apiVersion": "2020-06-01",
+              "name": "privatelink.vaultcore.azure.net",
+              "location": "global"
+            },
+            {
+              "condition": "[not(empty(parameters('privateLinkAkvId')))]",
+              "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+              "apiVersion": "2020-06-01",
+              "name": "[format('{0}/{1}', 'privatelink.vaultcore.azure.net', variables('privateDnsAkvLinkName'))]",
+              "location": "global",
+              "properties": {
+                "registrationEnabled": false,
+                "virtualNetwork": {
+                  "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]"
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/privateDnsZones', 'privatelink.vaultcore.azure.net')]",
+                "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]"
+              ]
+            },
+            {
+              "condition": "[not(empty(parameters('privateLinkAkvId')))]",
+              "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups",
+              "apiVersion": "2021-03-01",
+              "name": "[format('{0}/{1}', variables('privateLinkAkvName'), 'default')]",
+              "properties": {
+                "privateDnsZoneConfigs": [
+                  {
+                    "name": "vnet-pl-akv",
+                    "properties": {
+                      "privateDnsZoneId": "[resourceId('Microsoft.Network/privateDnsZones', 'privatelink.vaultcore.azure.net')]"
+                    }
+                  }
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/privateDnsZones', 'privatelink.vaultcore.azure.net')]",
+                "[resourceId('Microsoft.Network/privateEndpoints', variables('privateLinkAkvName'))]"
+              ]
+            },
+            {
+              "condition": "[parameters('azureFirewalls')]",
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-06-01",
+              "name": "calcAzFwIp",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "vnetFirewallSubnetAddressPrefix": {
+                    "value": "[parameters('vnetFirewallSubnetAddressPrefix')]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.4.1008.15138",
+                      "templateHash": "4954443169263978674"
+                    }
+                  },
+                  "parameters": {
+                    "vnetFirewallSubnetAddressPrefix": {
+                      "type": "string",
+                      "metadata": {
+                        "description": "A subnet address for the Azure Firewall"
+                      }
+                    }
+                  },
+                  "functions": [],
+                  "variables": {
+                    "subnetOctets": "[split(parameters('vnetFirewallSubnetAddressPrefix'), '.')]",
+                    "hostIdOctet": "4"
+                  },
+                  "resources": [],
+                  "outputs": {
+                    "FirewallPrivateIp": {
+                      "type": "string",
+                      "value": "[format('{0}.{1}.{2}.{3}', variables('subnetOctets')[0], variables('subnetOctets')[1], variables('subnetOctets')[2], variables('hostIdOctet'))]"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "outputs": {
+            "vnetId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]"
+            },
+            "aksSubnetId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'), variables('aks_subnet_name'))]"
+            },
+            "fwSubnetId": {
+              "type": "string",
+              "value": "[if(parameters('azureFirewalls'), format('{0}/subnets/{1}', resourceId('Microsoft.Network/virtualNetworks', variables('vnetName')), variables('fw_subnet_name')), '')]"
+            },
+            "acrPoolSubnetId": {
+              "type": "string",
+              "value": "[if(parameters('acrPrivatePool'), format('{0}/subnets/{1}', resourceId('Microsoft.Network/virtualNetworks', variables('vnetName')), variables('acrpool_subnet_name')), '')]"
+            },
+            "appGwSubnetId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'), variables('appgw_subnet_name'))]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerRegistry/registries', variables('acrName'))]",
+        "[resourceId('Microsoft.KeyVault/vaults', variables('akvName'))]",
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('id-aks-{0}', parameters('resourceName')))]"
+      ]
+    },
+    {
+      "condition": "[not(empty(parameters('dnsZoneId')))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "addDnsContributor",
+      "resourceGroup": "[variables('dnsZoneRg')]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "dnsZoneName": {
+            "value": "[variables('dnsZoneName')]"
+          },
+          "isPrivate": {
+            "value": "[variables('isPrivate')]"
+          },
+          "vnetId": {
+            "value": "[if(variables('isPrivate'), if(not(empty(parameters('byoAKSSubnetId'))), split(parameters('byoAKSSubnetId'), '/subnets')[0], if(parameters('custom_vnet'), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.vnetId.value, '')), '')]"
+          },
+          "principalId": {
+            "value": "[reference(resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))).identityProfile.kubeletidentity.objectId]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.4.1008.15138",
+              "templateHash": "15600891858598349615"
+            }
+          },
+          "parameters": {
+            "dnsZoneName": {
+              "type": "string"
+            },
+            "principalId": {
+              "type": "string"
+            },
+            "isPrivate": {
+              "type": "bool"
+            },
+            "vnetId": {
+              "type": "string",
+              "defaultValue": ""
+            }
+          },
+          "functions": [],
+          "variables": {
+            "DNSZoneContributor": "[resourceId('Microsoft.Authorization/roleDefinitions', 'befefa01-2a29-4197-83a8-272ff33ce314')]",
+            "PrivateDNSZoneContributor": "[resourceId('Microsoft.Authorization/roleDefinitions', 'b12aa53e-6015-4669-85d0-8515ebb3ae7f')]"
+          },
+          "resources": [
+            {
+              "condition": "[not(parameters('isPrivate'))]",
+              "type": "Microsoft.Authorization/roleAssignments",
+              "apiVersion": "2020-04-01-preview",
+              "scope": "[format('Microsoft.Network/dnsZones/{0}', parameters('dnsZoneName'))]",
+              "name": "[guid(parameters('principalId'), 'ZoneContributor', variables('DNSZoneContributor'))]",
+              "properties": {
+                "roleDefinitionId": "[variables('DNSZoneContributor')]",
+                "principalType": "ServicePrincipal",
+                "principalId": "[parameters('principalId')]"
+              }
+            },
+            {
+              "condition": "[parameters('isPrivate')]",
+              "type": "Microsoft.Authorization/roleAssignments",
+              "apiVersion": "2020-04-01-preview",
+              "scope": "[format('Microsoft.Network/privateDnsZones/{0}', parameters('dnsZoneName'))]",
+              "name": "[guid(parameters('principalId'), 'PrivateZoneContributor', variables('PrivateDNSZoneContributor'))]",
+              "properties": {
+                "roleDefinitionId": "[variables('PrivateDNSZoneContributor')]",
+                "principalType": "ServicePrincipal",
+                "principalId": "[parameters('principalId')]"
+              }
+            },
+            {
+              "condition": "[and(parameters('isPrivate'), not(empty(parameters('vnetId'))))]",
+              "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+              "apiVersion": "2020-06-01",
+              "name": "[format('{0}/{1}', parameters('dnsZoneName'), 'privatedns')]",
+              "tags": {},
+              "location": "global",
+              "properties": {
+                "virtualNetwork": {
+                  "id": "[parameters('vnetId')]"
+                },
+                "registrationEnabled": false
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]",
+        "[resourceId('Microsoft.Resources/deployments', 'network')]"
+      ]
+    },
+    {
+      "condition": "[and(parameters('azureFirewalls'), parameters('custom_vnet'))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "firewall",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "resourceName": {
+            "value": "[parameters('resourceName')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "workspaceDiagsId": {
+            "value": "[if(variables('createLaw'), resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name')), '')]"
+          },
+          "fwSubnetId": {
+            "value": "[if(and(parameters('azureFirewalls'), parameters('custom_vnet')), reference(resourceId('Microsoft.Resources/deployments', 'network'), '2020-06-01').outputs.fwSubnetId.value, '')]"
+          },
+          "vnetAksSubnetAddressPrefix": {
+            "value": "[parameters('vnetAksSubnetAddressPrefix')]"
+          },
+          "certManagerFW": {
+            "value": "[parameters('certManagerFW')]"
+          },
+          "appDnsZoneName": {
+            "value": "[variables('dnsZoneName')]"
+          },
+          "acrPrivatePool": {
+            "value": "[parameters('acrPrivatePool')]"
+          },
+          "acrAgentPoolSubnetAddressPrefix": {
+            "value": "[parameters('acrAgentPoolSubnetAddressPrefix')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.4.1008.15138",
+              "templateHash": "9476886646663582740"
+            }
+          },
+          "parameters": {
+            "resourceName": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            },
+            "workspaceDiagsId": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "fwSubnetId": {
+              "type": "string"
+            },
+            "vnetAksSubnetAddressPrefix": {
+              "type": "string"
+            },
+            "certManagerFW": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "acrPrivatePool": {
+              "type": "bool",
+              "defaultValue": false
+            },
+            "acrAgentPoolSubnetAddressPrefix": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "appDnsZoneName": {
+              "type": "string",
+              "defaultValue": "",
+              "metadata": {
+                "description": "Whitelist dnsZone name (required by cert-manager validation process)"
+              }
+            }
+          },
+          "functions": [],
+          "variables": {
+            "firewallPublicIpName": "[format('pip-afw-{0}', parameters('resourceName'))]",
+            "fw_name": "[format('afw-{0}', parameters('resourceName'))]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Network/publicIPAddresses",
+              "apiVersion": "2018-08-01",
+              "name": "[variables('firewallPublicIpName')]",
+              "location": "[parameters('location')]",
+              "sku": {
+                "name": "Standard"
+              },
+              "properties": {
+                "publicIPAllocationMethod": "Static",
+                "publicIPAddressVersion": "IPv4"
+              }
+            },
+            {
+              "condition": "[not(empty(parameters('workspaceDiagsId')))]",
+              "type": "Microsoft.Insights/diagnosticSettings",
+              "apiVersion": "2017-05-01-preview",
+              "scope": "[format('Microsoft.Network/azureFirewalls/{0}', variables('fw_name'))]",
+              "name": "fwDiags",
+              "properties": {
+                "workspaceId": "[parameters('workspaceDiagsId')]",
+                "logs": [
+                  {
+                    "category": "AzureFirewallApplicationRule",
+                    "enabled": true,
+                    "retentionPolicy": {
+                      "days": 10,
+                      "enabled": false
+                    }
+                  },
+                  {
+                    "category": "AzureFirewallNetworkRule",
+                    "enabled": true,
+                    "retentionPolicy": {
+                      "days": 10,
+                      "enabled": false
+                    }
+                  }
+                ],
+                "metrics": [
+                  {
+                    "category": "AllMetrics",
+                    "enabled": true,
+                    "retentionPolicy": {
+                      "enabled": false,
+                      "days": 0
+                    }
+                  }
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/azureFirewalls', variables('fw_name'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.Network/azureFirewalls",
+              "apiVersion": "2019-04-01",
+              "name": "[variables('fw_name')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "ipConfigurations": [
+                  {
+                    "name": "IpConf1",
+                    "properties": {
+                      "subnet": {
+                        "id": "[parameters('fwSubnetId')]"
+                      },
+                      "publicIPAddress": {
+                        "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('firewallPublicIpName'))]"
+                      }
+                    }
+                  }
+                ],
+                "threatIntelMode": "Alert",
+                "applicationRuleCollections": [
+                  {
+                    "name": "clusterRc1",
+                    "properties": {
+                      "priority": 101,
+                      "action": {
+                        "type": "Allow"
+                      },
+                      "rules": "[concat(createArray(createObject('name', 'aks', 'protocols', createArray(createObject('port', 443, 'protocolType', 'Https'), createObject('port', 80, 'protocolType', 'Http')), 'targetFqdns', createArray(), 'fqdnTags', createArray('AzureKubernetesService'), 'sourceAddresses', createArray(parameters('vnetAksSubnetAddressPrefix')))), if(parameters('certManagerFW'), createArray(createObject('name', 'cetman-quay', 'protocols', createArray(createObject('port', 443, 'protocolType', 'Https'), createObject('port', 80, 'protocolType', 'Http')), 'targetFqdns', createArray('quay.io', '*.quay.io'), 'sourceAddresses', createArray(parameters('vnetAksSubnetAddressPrefix'))), createObject('name', 'cetman-letsencrypt', 'protocols', createArray(createObject('port', 443, 'protocolType', 'Https'), createObject('port', 80, 'protocolType', 'Http')), 'targetFqdns', createArray('letsencrypt.org', '*.letsencrypt.org'), 'sourceAddresses', createArray(parameters('vnetAksSubnetAddressPrefix')))), createArray()), if(and(parameters('certManagerFW'), not(empty(parameters('appDnsZoneName')))), createArray(createObject('name', 'cetman-appDnsZoneName', 'protocols', createArray(createObject('port', 443, 'protocolType', 'Https'), createObject('port', 80, 'protocolType', 'Http')), 'targetFqdns', createArray(parameters('appDnsZoneName'), format('*.{0}', parameters('appDnsZoneName'))), 'sourceAddresses', createArray(parameters('vnetAksSubnetAddressPrefix')))), createArray()))]"
+                    }
+                  }
+                ],
+                "networkRuleCollections": [
+                  {
+                    "name": "netRc1",
+                    "properties": {
+                      "priority": 100,
+                      "action": {
+                        "type": "Allow"
+                      },
+                      "rules": "[concat(createArray(createObject('name', 'ControlPlaneTCP', 'protocols', createArray('TCP'), 'sourceAddresses', createArray(parameters('vnetAksSubnetAddressPrefix')), 'destinationAddresses', createArray(format('AzureCloud.{0}', parameters('location'))), 'destinationPorts', createArray('9000', '22')), createObject('name', 'ControlPlaneUDP', 'protocols', createArray('UDP'), 'sourceAddresses', createArray(parameters('vnetAksSubnetAddressPrefix')), 'destinationAddresses', createArray(format('AzureCloud.{0}', parameters('location'))), 'destinationPorts', createArray('1194')), createObject('name', 'AzureMonitorForContainers', 'protocols', createArray('TCP'), 'sourceAddresses', createArray(parameters('vnetAksSubnetAddressPrefix')), 'destinationAddresses', createArray('AzureMonitor'), 'destinationPorts', createArray('443'))), if(parameters('acrPrivatePool'), createArray(createObject('name', 'acr-agentpool', 'protocols', createArray('TCP'), 'sourceAddresses', createArray(parameters('acrAgentPoolSubnetAddressPrefix')), 'destinationAddresses', createArray('AzureKeyVault', 'Storage', 'EventHub', 'AzureActiveDirectory', 'AzureMonitor'), 'destinationPorts', createArray('443'))), createArray()))]"
+                    }
+                  }
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', variables('firewallPublicIpName'))]"
+              ]
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name'))]",
+        "[resourceId('Microsoft.Resources/deployments', 'network')]"
+      ]
+    },
+    {
+      "condition": "[variables('createLaw')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "aksmetricalerts",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "clusterName": {
+            "value": "[format('aks-{0}', parameters('resourceName'))]"
+          },
+          "logAnalyticsWorkspaceName": {
+            "value": "[variables('aks_law_name')]"
+          },
+          "metricAlertsEnabled": {
+            "value": "[parameters('createAksMetricAlerts')]"
+          },
+          "evalFrequency": {
+            "value": "[variables('AlertFrequency').evalFrequency]"
+          },
+          "windowSize": {
+            "value": "[variables('AlertFrequency').windowSize]"
+          },
+          "alertSeverity": {
+            "value": "Informational"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.4.1008.15138",
+              "templateHash": "2184454154164447255"
+            }
+          },
+          "parameters": {
+            "clusterName": {
+              "type": "string",
+              "metadata": {
+                "description": "The name of the AKS Cluster to configure the alerts on"
+              }
+            },
+            "logAnalyticsWorkspaceName": {
+              "type": "string",
+              "metadata": {
+                "description": "The name of the Log Analytics workspace to log metric data to"
+              }
+            },
+            "logAnalyticsWorkspaceLocation": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]",
+              "metadata": {
+                "description": "The location of the Log Analytics workspace"
+              }
+            },
+            "evalFrequency": {
+              "type": "string",
+              "defaultValue": "PT1M",
+              "allowedValues": [
+                "PT1M",
+                "PT15M"
+              ],
+              "metadata": {
+                "description": "Select the frequency on how often the alert rule should be run. Selecting frequency smaller than granularity of datapoints grouping will result in sliding window evaluation"
+              }
+            },
+            "metricAlertsEnabled": {
+              "type": "bool",
+              "defaultValue": true,
+              "metadata": {
+                "description": "Create the metric alerts as either enabled or disabled"
+              }
+            },
+            "windowSize": {
+              "type": "string",
+              "defaultValue": "PT5M",
+              "allowedValues": [
+                "PT5M",
+                "PT1H"
+              ],
+              "metadata": {
+                "description": "Defines the interval over which datapoints are grouped using the aggregation type function"
+              }
+            },
+            "alertSeverity": {
+              "type": "string",
+              "defaultValue": "Informational",
+              "allowedValues": [
+                "Critical",
+                "Error",
+                "Warning",
+                "Informational",
+                "Verbose"
+              ]
+            }
+          },
+          "functions": [],
+          "variables": {
+            "alertServerityLookup": {
+              "Critical": 0,
+              "Error": 1,
+              "Warning": 2,
+              "Informational": 3,
+              "Verbose": 4
+            },
+            "alertSeverityNumber": "[variables('alertServerityLookup')[parameters('alertSeverity')]]",
+            "AksResourceId": "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Node CPU utilization high for {0} CI-1', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "criteria": {
+                  "allOf": [
+                    {
+                      "criterionType": "StaticThresholdCriterion",
+                      "dimensions": [
+                        {
+                          "name": "host",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        }
+                      ],
+                      "metricName": "cpuUsagePercentage",
+                      "metricNamespace": "Insights.Container/nodes",
+                      "name": "Metric1",
+                      "operator": "GreaterThan",
+                      "threshold": 80,
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "description": "Node CPU utilization across the cluster.",
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "severity": "[variables('alertSeverityNumber')]",
+                "targetResourceType": "microsoft.containerservice/managedclusters",
+                "windowSize": "[parameters('windowSize')]"
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Node working set memory utilization high for {0} CI-2', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "criteria": {
+                  "allOf": [
+                    {
+                      "criterionType": "StaticThresholdCriterion",
+                      "dimensions": [
+                        {
+                          "name": "host",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        }
+                      ],
+                      "metricName": "memoryWorkingSetPercentage",
+                      "metricNamespace": "Insights.Container/nodes",
+                      "name": "Metric1",
+                      "operator": "GreaterThan",
+                      "threshold": 80,
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "description": "Node working set memory utilization across the cluster.",
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "severity": "[variables('alertSeverityNumber')]",
+                "targetResourceType": "microsoft.containerservice/managedclusters",
+                "windowSize": "[parameters('windowSize')]"
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Jobs completed more than 6 hours ago for {0} CI-11', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "criteria": {
+                  "allOf": [
+                    {
+                      "criterionType": "StaticThresholdCriterion",
+                      "dimensions": [
+                        {
+                          "name": "controllerName",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        },
+                        {
+                          "name": "kubernetes namespace",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        }
+                      ],
+                      "metricName": "completedJobsCount",
+                      "metricNamespace": "Insights.Container/pods",
+                      "name": "Metric1",
+                      "operator": "GreaterThan",
+                      "threshold": 0,
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "description": "This alert monitors completed jobs (more than 6 hours ago).",
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "severity": "[variables('alertSeverityNumber')]",
+                "targetResourceType": "microsoft.containerservice/managedclusters",
+                "windowSize": "[parameters('windowSize')]"
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Container CPU usage high for {0} CI-9', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "criteria": {
+                  "allOf": [
+                    {
+                      "criterionType": "StaticThresholdCriterion",
+                      "dimensions": [
+                        {
+                          "name": "controllerName",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        },
+                        {
+                          "name": "kubernetes namespace",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        }
+                      ],
+                      "metricName": "cpuExceededPercentage",
+                      "metricNamespace": "Insights.Container/containers",
+                      "name": "Metric1",
+                      "operator": "GreaterThan",
+                      "threshold": 90,
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "description": "This alert monitors container CPU utilization.",
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "severity": "[variables('alertSeverityNumber')]",
+                "targetResourceType": "microsoft.containerservice/managedclusters",
+                "windowSize": "[parameters('windowSize')]"
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Container working set memory usage high for {0} CI-10', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "criteria": {
+                  "allOf": [
+                    {
+                      "criterionType": "StaticThresholdCriterion",
+                      "dimensions": [
+                        {
+                          "name": "controllerName",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        },
+                        {
+                          "name": "kubernetes namespace",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        }
+                      ],
+                      "metricName": "memoryWorkingSetExceededPercentage",
+                      "metricNamespace": "Insights.Container/containers",
+                      "name": "Metric1",
+                      "operator": "GreaterThan",
+                      "threshold": 90,
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "description": "This alert monitors container working set memory utilization.",
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "severity": "[variables('alertSeverityNumber')]",
+                "targetResourceType": "microsoft.containerservice/managedclusters",
+                "windowSize": "[parameters('windowSize')]"
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Pods in failed state for {0} CI-4', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "criteria": {
+                  "allOf": [
+                    {
+                      "criterionType": "StaticThresholdCriterion",
+                      "dimensions": [
+                        {
+                          "name": "phase",
+                          "operator": "Include",
+                          "values": [
+                            "Failed"
+                          ]
+                        }
+                      ],
+                      "metricName": "podCount",
+                      "metricNamespace": "Insights.Container/pods",
+                      "name": "Metric1",
+                      "operator": "GreaterThan",
+                      "threshold": 0,
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "description": "Pod status monitoring.",
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "severity": "[variables('alertSeverityNumber')]",
+                "targetResourceType": "microsoft.containerservice/managedclusters",
+                "windowSize": "[parameters('windowSize')]"
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Disk usage high for {0} CI-5', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "criteria": {
+                  "allOf": [
+                    {
+                      "criterionType": "StaticThresholdCriterion",
+                      "dimensions": [
+                        {
+                          "name": "host",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        },
+                        {
+                          "name": "device",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        }
+                      ],
+                      "metricName": "DiskUsedPercentage",
+                      "metricNamespace": "Insights.Container/nodes",
+                      "name": "Metric1",
+                      "operator": "GreaterThan",
+                      "threshold": 80,
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "description": "This alert monitors disk usage for all nodes and storage devices.",
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "severity": "[variables('alertSeverityNumber')]",
+                "targetResourceType": "microsoft.containerservice/managedclusters",
+                "windowSize": "[parameters('windowSize')]"
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Nodes in not ready status for {0} CI-3', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "criteria": {
+                  "allOf": [
+                    {
+                      "criterionType": "StaticThresholdCriterion",
+                      "dimensions": [
+                        {
+                          "name": "status",
+                          "operator": "Include",
+                          "values": [
+                            "NotReady"
+                          ]
+                        }
+                      ],
+                      "metricName": "nodesCount",
+                      "metricNamespace": "Insights.Container/nodes",
+                      "name": "Metric1",
+                      "operator": "GreaterThan",
+                      "threshold": 0,
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "description": "Node status monitoring.",
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "severity": "[variables('alertSeverityNumber')]",
+                "targetResourceType": "microsoft.containerservice/managedclusters",
+                "windowSize": "[parameters('windowSize')]"
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Containers getting OOM killed for {0} CI-6', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "criteria": {
+                  "allOf": [
+                    {
+                      "criterionType": "StaticThresholdCriterion",
+                      "dimensions": [
+                        {
+                          "name": "kubernetes namespace",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        },
+                        {
+                          "name": "controllerName",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        }
+                      ],
+                      "metricName": "oomKilledContainerCount",
+                      "metricNamespace": "Insights.Container/pods",
+                      "name": "Metric1",
+                      "operator": "GreaterThan",
+                      "threshold": 0,
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "description": "This alert monitors number of containers killed due to out of memory (OOM) error.",
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "severity": "[variables('alertSeverityNumber')]",
+                "targetResourceType": "microsoft.containerservice/managedclusters",
+                "windowSize": "[parameters('windowSize')]"
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Persistent volume usage high for {0} CI-18', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "criteria": {
+                  "allOf": [
+                    {
+                      "criterionType": "StaticThresholdCriterion",
+                      "dimensions": [
+                        {
+                          "name": "podName",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        },
+                        {
+                          "name": "kubernetesNamespace",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        }
+                      ],
+                      "metricName": "pvUsageExceededPercentage",
+                      "metricNamespace": "Insights.Container/persistentvolumes",
+                      "name": "Metric1",
+                      "operator": "GreaterThan",
+                      "threshold": 80,
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "description": "This alert monitors persistent volume utilization.",
+                "enabled": false,
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "severity": "[variables('alertSeverityNumber')]",
+                "targetResourceType": "microsoft.containerservice/managedclusters",
+                "windowSize": "[parameters('windowSize')]"
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Pods not in ready state for {0} CI-8', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "criteria": {
+                  "allOf": [
+                    {
+                      "criterionType": "StaticThresholdCriterion",
+                      "dimensions": [
+                        {
+                          "name": "controllerName",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        },
+                        {
+                          "name": "kubernetes namespace",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        }
+                      ],
+                      "metricName": "PodReadyPercentage",
+                      "metricNamespace": "Insights.Container/pods",
+                      "name": "Metric1",
+                      "operator": "LessThan",
+                      "threshold": 80,
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "description": "This alert monitors for excessive pods not in the ready state.",
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "severity": "[variables('alertSeverityNumber')]",
+                "targetResourceType": "microsoft.containerservice/managedclusters",
+                "windowSize": "[parameters('windowSize')]"
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Restarting container count for {0} CI-7', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "criteria": {
+                  "allOf": [
+                    {
+                      "criterionType": "StaticThresholdCriterion",
+                      "dimensions": [
+                        {
+                          "name": "kubernetes namespace",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        },
+                        {
+                          "name": "controllerName",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        }
+                      ],
+                      "metricName": "restartingContainerCount",
+                      "metricNamespace": "Insights.Container/pods",
+                      "name": "Metric1",
+                      "operator": "GreaterThan",
+                      "threshold": 0,
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                },
+                "description": "This alert monitors number of containers restarting across the cluster.",
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "severity": "[variables('alertSeverityNumber')]",
+                "targetResourceType": "Microsoft.ContainerService/managedClusters",
+                "windowSize": "[parameters('windowSize')]"
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Container CPU usage violates the configured threshold for {0} CI-19', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "description": "This alert monitors container CPU usage. It uses the threshold defined in the config map.",
+                "severity": "[variables('alertSeverityNumber')]",
+                "enabled": true,
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                  "allOf": [
+                    {
+                      "threshold": 0,
+                      "name": "Metric1",
+                      "metricNamespace": "Insights.Container/containers",
+                      "metricName": "cpuThresholdViolated",
+                      "dimensions": [
+                        {
+                          "name": "controllerName",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        },
+                        {
+                          "name": "kubernetes namespace",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        }
+                      ],
+                      "operator": "GreaterThan",
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true,
+                      "criterionType": "StaticThresholdCriterion"
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                }
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('Container working set memory usage violates the configured threshold for {0} CI-20', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "description": "This alert monitors container working set memory usage. It uses the threshold defined in the config map.",
+                "severity": "[variables('alertSeverityNumber')]",
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                  "allOf": [
+                    {
+                      "threshold": 0,
+                      "name": "Metric1",
+                      "metricNamespace": "Insights.Container/containers",
+                      "metricName": "memoryWorkingSetThresholdViolated",
+                      "dimensions": [
+                        {
+                          "name": "controllerName",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        },
+                        {
+                          "name": "kubernetes namespace",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        }
+                      ],
+                      "operator": "GreaterThan",
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true,
+                      "criterionType": "StaticThresholdCriterion"
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                }
+              }
+            },
+            {
+              "type": "Microsoft.Insights/metricAlerts",
+              "apiVersion": "2018-03-01",
+              "name": "[format('PV usage violates the configured threshold for {0} CI-21', parameters('clusterName'))]",
+              "location": "global",
+              "properties": {
+                "description": "This alert monitors PV usage. It uses the threshold defined in the config map.",
+                "severity": "[variables('alertSeverityNumber')]",
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "scopes": [
+                  "[variables('AksResourceId')]"
+                ],
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                  "allOf": [
+                    {
+                      "threshold": 0,
+                      "name": "Metric1",
+                      "metricNamespace": "Insights.Container/persistentvolumes",
+                      "metricName": "pvUsageThresholdViolated",
+                      "dimensions": [
+                        {
+                          "name": "podName",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        },
+                        {
+                          "name": "kubernetesNamespace",
+                          "operator": "Include",
+                          "values": [
+                            "*"
+                          ]
+                        }
+                      ],
+                      "operator": "GreaterThan",
+                      "timeAggregation": "Average",
+                      "skipMetricValidation": true,
+                      "criterionType": "StaticThresholdCriterion"
+                    }
+                  ],
+                  "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                }
+              }
+            },
+            {
+              "type": "Microsoft.Insights/scheduledQueryRules",
+              "apiVersion": "2021-02-01-preview",
+              "name": "[format('Daily data cap breached for workspace {0} CIQ-1', parameters('logAnalyticsWorkspaceName'))]",
+              "location": "[parameters('logAnalyticsWorkspaceLocation')]",
+              "properties": {
+                "displayName": "[format('Daily data cap breached for workspace {0} CIQ-1', parameters('logAnalyticsWorkspaceName'))]",
+                "description": "This alert monitors daily data cap defined on a workspace and fires when the daily data cap is breached.",
+                "severity": 1,
+                "enabled": "[parameters('metricAlertsEnabled')]",
+                "evaluationFrequency": "[parameters('evalFrequency')]",
+                "scopes": [
+                  "[resourceId('microsoft.operationalinsights/workspaces', parameters('logAnalyticsWorkspaceName'))]"
+                ],
+                "windowSize": "[parameters('windowSize')]",
+                "autoMitigate": false,
+                "criteria": {
+                  "allOf": [
+                    {
+                      "query": "_LogOperation | where Operation == \"Data collection Status\" | where Detail contains \"OverQuota\"",
+                      "timeAggregation": "Count",
+                      "operator": "GreaterThan",
+                      "threshold": 0,
+                      "failingPeriods": {
+                        "numberOfEvaluationPeriods": 1,
+                        "minFailingPeriodsToAlert": 1
+                      }
+                    }
+                  ]
+                },
+                "muteActionsDuration": "P1D"
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerService/managedClusters', format('aks-{0}', parameters('resourceName')))]",
+        "[resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name'))]"
+      ]
+    }
+  ],
+  "outputs": {
+    "keyVaultName": {
+      "type": "string",
+      "value": "[if(parameters('createKV'), variables('akvName'), '')]"
+    },
+    "keyVaultId": {
+      "type": "string",
+      "value": "[if(parameters('createKV'), resourceId('Microsoft.KeyVault/vaults', variables('akvName')), '')]"
+    },
+    "containerRegistryName": {
+      "type": "string",
+      "value": "[if(not(empty(parameters('registries_sku'))), variables('acrName'), '')]"
+    },
+    "ApplicationGatewayName": {
+      "type": "string",
+      "value": "[if(variables('deployAppGw'), variables('appgwName'), '')]"
+    },
+    "aksClusterName": {
+      "type": "string",
+      "value": "[format('aks-{0}', parameters('resourceName'))]"
+    },
+    "LogAnalyticsName": {
+      "type": "string",
+      "value": "[if(variables('createLaw'), variables('aks_law_name'), '')]"
+    },
+    "LogAnalyticsGuid": {
+      "type": "string",
+      "value": "[if(variables('createLaw'), reference(resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name'))).customerId, '')]"
+    }
+  }
+}

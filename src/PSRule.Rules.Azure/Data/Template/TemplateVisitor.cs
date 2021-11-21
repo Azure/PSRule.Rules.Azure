@@ -83,11 +83,14 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_NAMESPACE = "namespace";
         private const string PROPERTY_MEMBERS = "members";
         private const string PROPERTY_OUTPUT = "output";
+        private const string PROPERTY_METADATA = "metadata";
+        private const string PROPERTY_GENERATOR = "_generator";
 
         internal sealed class TemplateContext : ITemplateContext
         {
             private const string DATAFILE_ENVIRONMENTS = "environments.json";
             private const string CLOUD_PUBLIC = "AzureCloud";
+            private const string ISSUE_PARAMETER_EXPRESSIONLENGTH = "PSRule.Rules.Azure.Template.ExpressionLength";
 
             internal readonly PipelineContext Pipeline;
 
@@ -101,6 +104,7 @@ namespace PSRule.Rules.Azure.Data.Template
             private readonly TemplateValidator _Validator;
 
             private JObject _CurrentDeployment;
+            private bool? _IsGenerated;
             private JObject _Parameters;
             private Dictionary<string, CloudEnvironment> _Environments;
 
@@ -119,6 +123,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 _ResourceProviderHelper = new ResourceProviderHelper();
                 _ParameterAssignments = new Dictionary<string, JToken>();
                 _Validator = new TemplateValidator();
+                _IsGenerated = null;
             }
 
             internal TemplateContext(PipelineContext context, SubscriptionOption subscription, ResourceGroupOption resourceGroup)
@@ -150,6 +155,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public ExpressionFnOuter BuildExpression(string s)
             {
+                if (s != null && s.Length > 24576 && !IsGenerated())
+                    AddValidationIssue(ISSUE_PARAMETER_EXPRESSIONLENGTH, s, ReasonStrings.ExpressionLength, s, 24576);
+
                 return _ExpressionBuilder.Build(s);
             }
 
@@ -402,6 +410,7 @@ namespace PSRule.Rules.Azure.Data.Template
             internal void EnterDeployment(string deploymentName, JObject template, bool isNested)
             {
                 var templateHash = template.GetHashCode().ToString(Thread.CurrentThread.CurrentCulture);
+                TryObjectProperty(template, PROPERTY_METADATA, out JObject metadata);
                 var templateLink = new JObject
                 {
                     { PROPERTY_ID, ResourceGroup.Id },
@@ -424,6 +433,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     { PROPERTY_PROPERTIES, properties },
                     { PROPERTY_LOCATION, ResourceGroup.Location },
                     { PROPERTY_TYPE, RESOURCETYPE_DEPLOYMENT },
+                    { PROPERTY_METADATA, metadata },
                 };
 
                 if (!isNested)
@@ -441,6 +451,17 @@ namespace PSRule.Rules.Azure.Data.Template
                 _Deployment.Pop();
                 if (_Deployment.Count > 0)
                     _CurrentDeployment = _Deployment.Peek();
+            }
+
+            private bool IsGenerated()
+            {
+                if (!_IsGenerated.HasValue)
+                {
+                    _IsGenerated = TryObjectProperty(_CurrentDeployment, PROPERTY_METADATA, out JObject metadata) &&
+                        TryObjectProperty(metadata, PROPERTY_GENERATOR, out JObject generator) &&
+                        TryStringProperty(generator, PROPERTY_NAME, out _);
+                }
+                return _IsGenerated.Value;
             }
 
             internal void Parameter(string name, ParameterType type, object value)

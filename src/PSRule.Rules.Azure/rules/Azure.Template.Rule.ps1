@@ -236,6 +236,11 @@ Rule 'Azure.Template.ParameterStrongType' -Type 'Microsoft.Resources/deployments
     $Assert.Create($PSRule.Issue.Get('PSRule.Rules.Azure.Template.ParameterStrongType'));
 }
 
+# Synopsis: Use template expressions should not exceed the maximum length.
+Rule 'Azure.Template.ExpressionLength' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+    $Assert.Create($PSRule.Issue.Get('PSRule.Rules.Azure.Template.ExpressionLength'));
+}
+
 #endregion Template
 
 #region Parameters
