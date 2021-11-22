@@ -533,9 +533,9 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            # $ruleResult.Length | Should -Be 1;
-            # $ruleResult[0].Reason.Length | Should -Be 1;
-            # $ruleResult[0].Reason | Should -BeLike 'The expression * is longer then the maximum length 24576.';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult[0].Reason.Length | Should -Be 1;
+            $ruleResult[0].Reason | Should -BeLike 'The expression * is longer then the maximum length 24576.';
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Template.Parsing.9.Parameters.json';
 
