@@ -61,6 +61,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The expression &apos;{0}&apos; is longer then the maximum length {1}..
+        /// </summary>
+        internal static string ExpressionLength {
+            get {
+                return ResourceManager.GetString("ExpressionLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The value &apos;{0}&apos; for parameter &apos;{1}&apos; was not a valid location..
         /// </summary>
         internal static string InvalidLocation {

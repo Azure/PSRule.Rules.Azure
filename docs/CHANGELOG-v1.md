@@ -9,6 +9,9 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since pre-release v1.10.0-B2111058:
 
+- New rules:
+  - All resources:
+    - Check template expressions do not exceed a maximum length. [#1006](https://github.com/Azure/PSRule.Rules.Azure/issues/1006)
 - Bug fixes:
   - Fixed expansion of secret references. [#1098](https://github.com/Azure/PSRule.Rules.Azure/issues/1098)
   - Fixed handling of tagging for deployments. [#1099](https://github.com/Azure/PSRule.Rules.Azure/issues/1099)

@@ -4,7 +4,8 @@
         "out/": true,
         ".vs/": true,
         "**/bin/": true,
-        "**/obj/": true
+        "**/obj/": true,
+        ".venv/": true
     },
     "search.exclude": {
         "out/": true

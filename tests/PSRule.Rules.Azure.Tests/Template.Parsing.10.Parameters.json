@@ -1,0 +1,12 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "template": "./Template.Parsing.10.json"
+    },
+    "parameters": {
+        "resourceName": {
+            "value": "some-resource-name"
+        }
+    }
+}

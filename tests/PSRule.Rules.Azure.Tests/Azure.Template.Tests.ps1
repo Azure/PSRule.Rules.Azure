@@ -518,6 +518,35 @@ Describe 'Azure.Template' -Tag 'Template' {
             $targetNames | Should -BeIn 'Template.StrongType.3.Parameters.json';
         }
 
+        It 'Azure.Template.ExpressionLength' {
+            $dataPath = @(
+                (Join-Path -Path $here -ChildPath 'Template.Parsing.2.Parameters.json')
+                (Join-Path -Path $here -ChildPath 'Template.Parsing.9.Parameters.json')
+                (Join-Path -Path $here -ChildPath 'Template.Parsing.10.Parameters.json')
+            );
+            $options = @{
+                'Configuration.AZURE_PARAMETER_FILE_EXPANSION' = $True
+            }
+            $result = Invoke-PSRule @invokeParams -Option $options -InputPath $dataPath -Format File -Name 'Azure.Template.ExpressionLength';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.ExpressionLength' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult[0].Reason.Length | Should -Be 1;
+            $ruleResult[0].Reason | Should -BeLike 'The expression * is longer then the maximum length 24576.';
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Template.Parsing.9.Parameters.json';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
+            $targetNames | Should -BeIn 'Template.Parsing.2.Parameters.json', 'Template.Parsing.10.Parameters.json';
+        }
+
         It 'Azure.Template.ParameterFile' {
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Parameters*.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.ParameterFile';
@@ -571,7 +600,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 11;
+            $ruleResult.Length | Should -Be 14;
         }
 
         It 'Azure.Template.ParameterValue' {
