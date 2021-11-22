@@ -7,6 +7,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.10.0-B2111072:
+
+- New rules:
+  - Automation Service:
+    - Automation accounts should use managed identities for authentication. [#1074](https://github.com/Azure/PSRule.Rules.Azure/issues/1074)
+
 ## v1.10.0-B2111072 (pre-release)
 
 What's changed since pre-release v1.10.0-B2111058:
