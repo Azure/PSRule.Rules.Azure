@@ -28,21 +28,27 @@ namespace PSRule.Rules.Azure
 
             builder.Add(GetSourcePath("*Parameters*.json"));
             var actual3 = builder.Build();
-            Assert.Equal(5, actual3.Length);
+            Assert.Equal(8, actual3.Length);
             Assert.NotNull(actual3.SingleOrDefault(f => f.FullName == GetSourcePath("Resources.Parameters.json")));
             Assert.NotNull(actual3.SingleOrDefault(f => f.FullName == GetSourcePath("Resources.Parameters2.json")));
             Assert.NotNull(actual3.SingleOrDefault(f => f.FullName == GetSourcePath("Template.StrongType.1.Parameters.json")));
             Assert.NotNull(actual3.SingleOrDefault(f => f.FullName == GetSourcePath("Template.StrongType.2.Parameters.json")));
             Assert.NotNull(actual3.SingleOrDefault(f => f.FullName == GetSourcePath("Template.StrongType.3.Parameters.json")));
+            Assert.NotNull(actual3.SingleOrDefault(f => f.FullName == GetSourcePath("Template.Parsing.2.Parameters.json")));
+            Assert.NotNull(actual3.SingleOrDefault(f => f.FullName == GetSourcePath("Template.Parsing.9.Parameters.json")));
+            Assert.NotNull(actual3.SingleOrDefault(f => f.FullName == GetSourcePath("Template.Parsing.10.Parameters.json")));
 
             builder.Add(GetSourcePath("*Parameters?.json"));
             var actual4 = builder.Build();
-            Assert.Equal(5, actual4.Length);
+            Assert.Equal(8, actual4.Length);
             Assert.NotNull(actual4.SingleOrDefault(f => f.FullName == GetSourcePath("Resources.Parameters.json")));
             Assert.NotNull(actual4.SingleOrDefault(f => f.FullName == GetSourcePath("Resources.Parameters2.json")));
             Assert.NotNull(actual4.SingleOrDefault(f => f.FullName == GetSourcePath("Template.StrongType.1.Parameters.json")));
             Assert.NotNull(actual4.SingleOrDefault(f => f.FullName == GetSourcePath("Template.StrongType.2.Parameters.json")));
             Assert.NotNull(actual4.SingleOrDefault(f => f.FullName == GetSourcePath("Template.StrongType.3.Parameters.json")));
+            Assert.NotNull(actual4.SingleOrDefault(f => f.FullName == GetSourcePath("Template.Parsing.2.Parameters.json")));
+            Assert.NotNull(actual4.SingleOrDefault(f => f.FullName == GetSourcePath("Template.Parsing.9.Parameters.json")));
+            Assert.NotNull(actual4.SingleOrDefault(f => f.FullName == GetSourcePath("Template.Parsing.10.Parameters.json")));
 
             // With file path
             builder = new PathBuilder(new NullLogger(), GetSourcePath("Resources.Parameters.json"), "*.json");

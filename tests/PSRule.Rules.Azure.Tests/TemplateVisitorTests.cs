@@ -240,6 +240,34 @@ namespace PSRule.Rules.Azure
             Assert.False(actual3["_PSRule"].Value<JObject>().ContainsKey("issue"));
         }
 
+        [Fact]
+        public void ExpressionLength()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.9.json"), GetSourcePath("Template.Parsing.9.Parameters.json"));
+            Assert.NotNull(resources);
+            Assert.Equal(2, resources.Length);
+
+            var actual1 = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual1["type"].Value<string>());
+            Assert.Equal("PSRule.Rules.Azure.Template.ExpressionLength", actual1["_PSRule"]["issue"][0]["type"].Value<string>());
+
+            resources = ProcessTemplate(GetSourcePath("Template.Parsing.2.json"), GetSourcePath("Template.Parsing.2.Parameters.json"));
+            Assert.NotNull(resources);
+            Assert.Equal(2, resources.Length);
+
+            var actual2 = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual2["type"].Value<string>());
+            Assert.False(actual2["_PSRule"].Value<JObject>().ContainsKey("issue"));
+
+            resources = ProcessTemplate(GetSourcePath("Template.Parsing.10.json"), GetSourcePath("Template.Parsing.10.Parameters.json"));
+            Assert.NotNull(resources);
+            Assert.Equal(2, resources.Length);
+
+            var actual3 = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual3["type"].Value<string>());
+            Assert.False(actual3["_PSRule"].Value<JObject>().ContainsKey("issue"));
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

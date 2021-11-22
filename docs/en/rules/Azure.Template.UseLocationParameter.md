@@ -105,7 +105,7 @@ For example:
 
 ## NOTES
 
-This rule is not applicable and ignored for templates generated with Bicep, PSArm and AzOps.
+This rule is not applicable and ignored for templates generated with Bicep, PSArm, and AzOps.
 Generated templates from these tools may not require any parameters to be set.
 
 ## LINKS
