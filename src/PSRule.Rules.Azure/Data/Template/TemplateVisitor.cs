@@ -91,6 +91,7 @@ namespace PSRule.Rules.Azure.Data.Template
             private const string DATAFILE_ENVIRONMENTS = "environments.json";
             private const string CLOUD_PUBLIC = "AzureCloud";
             private const string ISSUE_PARAMETER_EXPRESSIONLENGTH = "PSRule.Rules.Azure.Template.ExpressionLength";
+            private const int EXPRESSION_MAXLENGTH = 24576;
 
             internal readonly PipelineContext Pipeline;
 
@@ -155,8 +156,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public ExpressionFnOuter BuildExpression(string s)
             {
-                if (s != null && s.Length > 24576 && !IsGenerated())
-                    AddValidationIssue(ISSUE_PARAMETER_EXPRESSIONLENGTH, s, ReasonStrings.ExpressionLength, s, 24576);
+                if (s != null && s.Length > EXPRESSION_MAXLENGTH && !IsGenerated())
+                    AddValidationIssue(ISSUE_PARAMETER_EXPRESSIONLENGTH, s, ReasonStrings.ExpressionLength, s, EXPRESSION_MAXLENGTH);
 
                 return _ExpressionBuilder.Build(s);
             }

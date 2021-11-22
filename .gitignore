@@ -8,6 +8,7 @@ site/
 **/__pycache__/
 BenchmarkDotNet.Artifacts/
 results/
+.venv/
 *.zip
 *.diagsession
 *.log
