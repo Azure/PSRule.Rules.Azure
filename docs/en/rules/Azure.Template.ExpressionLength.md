@@ -11,11 +11,11 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Templa
 
 ## SYNOPSIS
 
-Use template expressions should not exceed the maximum length.
+Template expressions should not exceed the maximum length.
 
 ## DESCRIPTION
 
-Extemely long expressions may be difficult to read and debug.
+Extremely long expressions may be difficult to read and debug.
 Avoid using expressions that exceed 24,576 characters in length.
 
 ## RECOMMENDATION
