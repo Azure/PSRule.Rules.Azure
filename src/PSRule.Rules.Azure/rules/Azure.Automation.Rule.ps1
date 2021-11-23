@@ -27,8 +27,3 @@ Rule 'Azure.Automation.WebHookExpiry' -Type 'Microsoft.Automation/automationAcco
         $Assert.Less($days, '.', 365);
     }
 }
-
-# Synopsis: Ensure managed identity is used for authentication.
-Rule 'Azure.Automation.ManagedIdentity' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2021_12' } {
-    $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'));
-}
