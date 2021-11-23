@@ -14,7 +14,7 @@ Name | Synopsis | Severity
 [Azure.Resource.UseTags](Azure.Resource.UseTags.md) | Azure resources should be tagged using a standard convention. | Awareness
 [Azure.Template.DebugDeployment](Azure.Template.DebugDeployment.md) | Use default deployment detail level for nested deployments. | Awareness
 [Azure.Template.DefineParameters](Azure.Template.DefineParameters.md) | Each Azure Resource Manager (ARM) template file should contain a minimal number of parameters. | Awareness
-[Azure.Template.ExpressionLength](Azure.Template.ExpressionLength.md) | Use template expressions should not exceed the maximum length. | Awareness
+[Azure.Template.ExpressionLength](Azure.Template.ExpressionLength.md) | Template expressions should not exceed the maximum length. | Awareness
 [Azure.Template.LocationDefault](Azure.Template.LocationDefault.md) | Set the default value for the location parameter within an ARM template to resource group location. | Awareness
 [Azure.Template.LocationType](Azure.Template.LocationType.md) | Location parameters should use a string value. | Important
 [Azure.Template.MetadataLink](Azure.Template.MetadataLink.md) | Configure a metadata link for each parameter file. | Important
@@ -99,11 +99,12 @@ Name | Synopsis | Severity
 [Azure.AppInsights.Name](Azure.AppInsights.Name.md) | Azure Application Insights resources names should meet naming requirements. | Awareness
 [Azure.AppInsights.Workspace](Azure.AppInsights.Workspace.md) | Configure Application Insights resources to store data in workspaces. | Important
 
-## Automation Service
+## Automation Account
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.Automation.EncryptVariables](Azure.Automation.EncryptVariables.md) | Azure Automation variables should be encrypted. | Important
+[Azure.Automation.ManagedIdentity](Azure.Automation.ManagedIdentity.md) | Ensure managed identity is used for authentication. | Important
 [Azure.Automation.WebHookExpiry](Azure.Automation.WebHookExpiry.md) | Do not create webhooks with an expiry time greater than 1 year (default). | Awareness
 
 ## Azure Cache for Redis

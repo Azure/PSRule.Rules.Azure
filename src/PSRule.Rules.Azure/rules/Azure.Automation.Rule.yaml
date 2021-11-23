@@ -1,0 +1,24 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Automation Account
+#
+
+---
+# Synopsis: Ensure managed identity is used for authentication.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Automation.ManagedIdentity
+  tags:
+    release: GA
+    ruleSet: 2021_12
+spec:
+  type:
+  - Microsoft.Automation/automationAccounts
+  condition:
+    field: Identity.Type
+    in:
+    - 'SystemAssigned'
+    - 'UserAssigned'

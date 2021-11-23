@@ -44,8 +44,8 @@ Describe 'Azure.Automation' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'automation-a', 'automation-c';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'automation-a', 'automation-c', 'automation-d', 'automation-e';
         }
 
         It 'Azure.Automation.WebHookExpiry' {
@@ -60,8 +60,24 @@ Describe 'Azure.Automation' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'automation-a', 'automation-c', 'automation-d', 'automation-e';
+        }
+
+        It 'Azure.Automation.ManagedIdentity' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Automation.ManagedIdentity' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'automation-a', 'automation-b', 'automation-c';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'automation-a', 'automation-c';
+            $ruleResult.TargetName | Should -Be 'automation-d', 'automation-e';
         }
     }
 }
