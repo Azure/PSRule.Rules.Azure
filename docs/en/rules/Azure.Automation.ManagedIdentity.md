@@ -2,7 +2,7 @@
 severity: Important
 pillar: Security
 category: Identity and access management
-resource: Automation Service
+resource: Automation Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Automation.ManagedIdentity/
 ---
 
