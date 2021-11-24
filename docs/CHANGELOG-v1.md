@@ -7,6 +7,39 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.10.0
+
+What's changed since v1.9.1:
+
+- New features:
+  - Added support for parameter strong types. [#1083](https://github.com/Azure/PSRule.Rules.Azure/issues/1083)
+    - The value of string parameters can be tested against the expected type.
+    - When configuring a location strong type, the parameter value must be a valid Azure location.
+    - When configuring a resource type strong type, the parameter value must be a matching resource Id.
+- New rules:
+  - All resources:
+    - Check template expressions do not exceed a maximum length. [#1006](https://github.com/Azure/PSRule.Rules.Azure/issues/1006)
+  - Automation Service:
+    - Automation accounts should use managed identities for authentication. [#1074](https://github.com/Azure/PSRule.Rules.Azure/issues/1074)
+  - Event Grid:
+    - Check topics and domains use managed identities. [#1091](https://github.com/Azure/PSRule.Rules.Azure/issues/1091)
+    - Check topics and domains use private endpoints. [#1092](https://github.com/Azure/PSRule.Rules.Azure/issues/1092)
+    - Check topics and domains use identity-based authentication. [#1093](https://github.com/Azure/PSRule.Rules.Azure/issues/1093)
+- General improvements:
+  - Updated default baseline to use module configuration. [#1089](https://github.com/Azure/PSRule.Rules.Azure/issues/1089)
+- Engineering:
+  - Bump PSRule dependency to v1.9.0. [#1081](https://github.com/Azure/PSRule.Rules.Azure/issues/1081)
+  - Bump Microsoft.CodeAnalysis.NetAnalyzers to v6.0.0. [#1080](https://github.com/Azure/PSRule.Rules.Azure/pull/1080)
+  - Bump Microsoft.SourceLink.GitHub to 1.1.1. [#1085](https://github.com/Azure/PSRule.Rules.Azure/pull/1085)
+- Bug fixes:
+  - Fixed expansion of secret references. [#1098](https://github.com/Azure/PSRule.Rules.Azure/issues/1098)
+  - Fixed handling of tagging for deployments. [#1099](https://github.com/Azure/PSRule.Rules.Azure/issues/1099)
+  - Fixed strong type issue flagged with empty defaultValue string. [#1100](https://github.com/Azure/PSRule.Rules.Azure/issues/1100)
+
+What's changed since pre-release v1.10.0-B2111081:
+
+- No additional changes.
+
 ## v1.10.0-B2111081 (pre-release)
 
 What's changed since pre-release v1.10.0-B2111072:
