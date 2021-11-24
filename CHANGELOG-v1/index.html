@@ -780,6 +780,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1100" class="md-nav__link">
+    v1.10.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1100-b2111081pre-release" class="md-nav__link">
     v1.10.0-B2111081 (pre-release)
   </a>
@@ -5628,6 +5635,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1100" class="md-nav__link">
+    v1.10.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1100-b2111081pre-release" class="md-nav__link">
     v1.10.0-B2111081 (pre-release)
   </a>
@@ -6134,6 +6148,56 @@
 See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to this issue.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<h2 id="v1100">v1.10.0<a class="headerlink" href="#v1100" title="Permanent link">#</a></h2>
+<p>What's changed since v1.9.1:</p>
+<ul>
+<li>New features:<ul>
+<li>Added support for parameter strong types. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1083">#1083</a><ul>
+<li>The value of string parameters can be tested against the expected type.</li>
+<li>When configuring a location strong type, the parameter value must be a valid Azure location.</li>
+<li>When configuring a resource type strong type, the parameter value must be a matching resource Id.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>New rules:<ul>
+<li>All resources:<ul>
+<li>Check template expressions do not exceed a maximum length. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1006">#1006</a></li>
+</ul>
+</li>
+<li>Automation Service:<ul>
+<li>Automation accounts should use managed identities for authentication. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1074">#1074</a></li>
+</ul>
+</li>
+<li>Event Grid:<ul>
+<li>Check topics and domains use managed identities. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1091">#1091</a></li>
+<li>Check topics and domains use private endpoints. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1092">#1092</a></li>
+<li>Check topics and domains use identity-based authentication. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1093">#1093</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>General improvements:<ul>
+<li>Updated default baseline to use module configuration. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1089">#1089</a></li>
+</ul>
+</li>
+<li>Engineering:<ul>
+<li>Bump PSRule dependency to v1.9.0. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1081">#1081</a></li>
+<li>Bump Microsoft.CodeAnalysis.NetAnalyzers to v6.0.0. <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/1080">#1080</a></li>
+<li>Bump Microsoft.SourceLink.GitHub to 1.1.1. <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/1085">#1085</a></li>
+</ul>
+</li>
+<li>Bug fixes:<ul>
+<li>Fixed expansion of secret references. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1098">#1098</a></li>
+<li>Fixed handling of tagging for deployments. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1099">#1099</a></li>
+<li>Fixed strong type issue flagged with empty defaultValue string. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1100">#1100</a></li>
+</ul>
+</li>
+</ul>
+<p>What's changed since pre-release v1.10.0-B2111081:</p>
+<ul>
+<li>No additional changes.</li>
+</ul>
 <h2 id="v1100-b2111081pre-release">v1.10.0-B2111081 (pre-release)<a class="headerlink" href="#v1100-b2111081pre-release" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.10.0-B2111072:</p>
 <ul>
@@ -7535,7 +7599,7 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-11-23
+      Last update: 2021-11-24
     
   </small>
 </div>
