@@ -1,0 +1,19 @@
+{
+    "Azure rule with type": {
+        "prefix": "rule-azure-with-type",
+        "description": "Rule definition for Azure",
+        "body": [
+            "---",
+            "# Synopsis: ${2}",
+            "apiVersion: github.com/microsoft/PSRule/v1",
+            "kind: Rule",
+            "metadata:",
+            "  name: ${1}",
+            "spec:",
+            "  type:",
+            "  - ${3}",
+            "  condition:",
+            "    ${4}"
+        ]
+    }
+}
