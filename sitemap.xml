@@ -411,6 +411,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ASG.Name/</loc>
+         <lastmod>2021-11-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.Name/</loc>
          <lastmod>2021-11-27</lastmod>
          <changefreq>daily</changefreq>
@@ -597,6 +602,16 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Firewall.Mode/</loc>
+         <lastmod>2021-11-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Firewall.Name/</loc>
+         <lastmod>2021-11-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Firewall.PolicyName/</loc>
          <lastmod>2021-11-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -832,6 +847,11 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.UseSSL/</loc>
+         <lastmod>2021-11-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PrivateEndpoint.Name/</loc>
          <lastmod>2021-11-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1382,6 +1402,11 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNG.VPNLegacySKU/</loc>
+         <lastmod>2021-11-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.vWAN.Name/</loc>
          <lastmod>2021-11-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
