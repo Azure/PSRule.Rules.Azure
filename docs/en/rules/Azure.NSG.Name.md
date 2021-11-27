@@ -1,4 +1,5 @@
 ---
+reviewed: 2021/11/27
 severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
@@ -15,7 +16,7 @@ Network Security Group (NSG) names should meet naming requirements.
 ## DESCRIPTION
 
 When naming Azure resources, resource names must meet service requirements.
-The requirements for Network Security Group names are:
+The requirements for NSG names are:
 
 - Between 1 and 80 characters long.
 - Alphanumerics, underscores, periods, and hyphens.
@@ -30,10 +31,11 @@ Additionally consider naming resources with a standard naming convention.
 
 ## NOTES
 
-This rule does not check if Network Security Group names are unique.
+This rule does not check if NSG names are unique.
 
 ## LINKS
 
 - [Repeatable infrastructure](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)
+- [Recommended abbreviations for Azure resource types](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)

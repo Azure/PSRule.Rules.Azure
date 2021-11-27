@@ -1,0 +1,78 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Virtual Network Gateways
+#
+
+#region Rules
+
+---
+# Synopsis: Virtual Network Gateway (VNG) names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.VNG.Name
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Network/virtualNetworkGateways
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 1
+    - name: '.'
+      lessOrEquals: 80
+    - name: '.'
+      match: '^[a-z0-9]([a-z0-9_.-]{0,78}[a-z0-9_])?$'
+
+---
+# Synopsis: Virtual Network Gateway (VNG) connection names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.VNG.ConnectionName
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Network/connections
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 1
+    - name: '.'
+      lessOrEquals: 80
+    - name: '.'
+      match: '^[a-z0-9]([a-z0-9_.-]{0,78}[a-z0-9_])?$'
+
+#endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: VPN Virtual Network Gateways
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.VNG.VPNGateway
+spec:
+  if:
+    field: Properties.gatewayType
+    equals: Vpn
+
+---
+# Synopsis: ExpressRoute Virtual Network Gateways
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.VNG.ERGateway
+spec:
+  if:
+    field: Properties.gatewayType
+    equals: ExpressRoute
+
+#endregion Selectors

@@ -1,4 +1,5 @@
 ---
+reviewed: 2021/11/27
 severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
@@ -36,3 +37,5 @@ This rule does not check if connection names are unique.
 
 - [Repeatable infrastructure](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/connections)
+- [Recommended abbreviations for Azure resource types](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)

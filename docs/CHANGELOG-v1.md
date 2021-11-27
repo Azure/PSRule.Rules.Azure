@@ -7,6 +7,27 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+- New rules:
+  - Application Security Group:
+    - Check Application Security Groups meet naming requirements. [#1110](https://github.com/Azure/PSRule.Rules.Azure/issues/1110)
+  - Firewall:
+    - Check Firewalls meet naming requirements. [#1110](https://github.com/Azure/PSRule.Rules.Azure/issues/1110)
+    - Check Firewall policies meet naming requirements. [#1110](https://github.com/Azure/PSRule.Rules.Azure/issues/1110)
+  - Private Endpoint:
+    - Check Private Endpoints meet naming requirements. [#1110](https://github.com/Azure/PSRule.Rules.Azure/issues/1110)
+  - Virtual WAN:
+    - Check Virtual WANs meet naming requirements. [#1110](https://github.com/Azure/PSRule.Rules.Azure/issues/1110)
+- Engineering:
+  - Rule refactoring of rules from PowerShell to YAML. [#1109](https://github.com/Azure/PSRule.Rules.Azure/issues/1109)
+    - The following rules where refactored:
+      - `Azure.LB.Name`.
+      - `Azure.NSG.Name`.
+      - `Azure.Firewall.Mode`.
+      - `Azure.Route.Name`.
+      - `Azure.VNET.Name`.
+      - `Azure.VNG.Name`.
+      - `Azure.VNG.ConnectionName`.
+
 ## v1.10.0
 
 What's changed since v1.9.1:
