@@ -1,0 +1,68 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Firewalls
+#
+
+#region Rules
+
+---
+# Synopsis: Firewall names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Firewall.Name
+  tags:
+    release: 'GA'
+    ruleSet: '2021_12'
+spec:
+  type:
+  - Microsoft.Network/azureFirewalls
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 1
+    - name: '.'
+      lessOrEquals: 80
+    - name: '.'
+      match: '^[a-z0-9]([a-z0-9_.-]{0,78}[a-z0-9_])?$'
+
+---
+# Synopsis: Firewall policy names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Firewall.PolicyName
+  tags:
+    release: 'GA'
+    ruleSet: '2021_12'
+spec:
+  type:
+  - Microsoft.Network/firewallPolicies
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 1
+    - name: '.'
+      lessOrEquals: 80
+    - name: '.'
+      match: '^[a-z0-9]([a-z0-9_.-]{0,78}[a-z0-9_])?$'
+
+---
+# Synopsis: Deny high confidence malicious IP addresses and domains.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Firewall.Mode
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Network/azureFirewalls
+  condition:
+    field: Properties.threatIntelMode
+    equals: Deny
+
+#endregion Rules

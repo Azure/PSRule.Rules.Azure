@@ -1,0 +1,72 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Network Security Groups (NSGs)
+#
+
+#region Rules
+
+# Synopsis: Network security groups should avoid any inbound rules
+Rule 'Azure.NSG.AnyInboundSource' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+    $inboundRules = @(GetOrderedNSGRules -Direction Inbound);
+    $rules = $inboundRules | Where-Object {
+        $_.properties.access -eq 'Allow' -and
+        $_.properties.sourceAddressPrefix -eq '*'
+    }
+    $Null -eq $rules;
+}
+
+# Synopsis: Avoid blocking all inbound network traffic
+Rule 'Azure.NSG.DenyAllInbound' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+    Reason $LocalizedData.AllInboundRestricted;
+    $inboundRules = @(GetOrderedNSGRules -Direction Inbound);
+    $denyRules = @($inboundRules | Where-Object {
+        $_.properties.access -eq 'Deny' -and
+        $_.properties.sourceAddressPrefix -eq '*'
+    })
+    $Null -eq $denyRules -or $denyRules.Length -eq 0 -or $denyRules[0].name -ne $inboundRules[0].name
+}
+
+# Synopsis: Lateral traversal from application servers should be blocked
+Rule 'Azure.NSG.LateralTraversal' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+    $nsg = [PSRule.Rules.Azure.Runtime.Helper]::GetNetworkSecurityGroup(@(GetOrderedNSGRules -Direction Outbound));
+
+    $rdp = $nsg.Outbound('VirtualNetwork', 3389);
+    $ssh = $nsg.Outbound('VirtualNetwork', 22);
+
+    if (($rdp -eq 'Allow' -or $rdp -eq 'Default') -and ($ssh -eq 'Allow' -or $ssh -eq 'Default')) {
+        return $Assert.Fail($LocalizedData.LateralTraversalNotRestricted);
+    }
+    return $Assert.Pass();
+}
+
+# Synopsis: Network security groups should be associated to either a subnet or network interface
+Rule 'Azure.NSG.Associated' -Type 'Microsoft.Network/networkSecurityGroups' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+    # NSG should be associated to either a subnet or network interface
+    Reason $LocalizedData.ResourceNotAssociated
+    $Assert.HasFieldValue($TargetObject, 'Properties.subnets').Result -or
+        $Assert.HasFieldValue($TargetObject, 'Properties.networkInterfaces').Result
+}
+
+#endregion Rules
+
+#region Helper functions
+
+# Get a sorted list of NSG rules
+function global:GetOrderedNSGRules {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param (
+        [Parameter(Mandatory = $True)]
+        [ValidateSet('Inbound', 'Outbound')]
+        [String]$Direction
+    )
+    process {
+        $TargetObject.properties.securityRules |
+            Where-Object { $_.properties.direction -eq $Direction } |
+            Sort-Object @{ Expression = { $_.Properties.priority }; Descending = $False }
+    }
+}
+
+#endregion Helper functions

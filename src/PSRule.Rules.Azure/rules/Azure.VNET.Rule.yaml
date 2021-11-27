@@ -1,0 +1,31 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Virtual Networks (VNET)
+#
+
+#region Rules
+
+---
+# Synopsis: Virtual Network (VNET) names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.VNET.Name
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Network/virtualNetworks
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 2
+    - name: '.'
+      lessOrEquals: 64
+    - name: '.'
+      match: '^[a-z0-9][a-z0-9_.-]{0,62}[a-z0-9_]$'
+
+#endregion Rules

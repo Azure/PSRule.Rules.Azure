@@ -1,0 +1,31 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Application Security Groups (ASGs)
+#
+
+#region Rules
+
+---
+# Synopsis: Application Security Group (ASG) names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ASG.Name
+  tags:
+    release: 'GA'
+    ruleSet: '2021_12'
+spec:
+  type:
+  - Microsoft.Network/applicationSecurityGroups
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 1
+    - name: '.'
+      lessOrEquals: 80
+    - name: '.'
+      match: '^[a-z0-9]([a-z0-9_.-]{0,78}[a-z0-9_])?$'
+
+#endregion Rules

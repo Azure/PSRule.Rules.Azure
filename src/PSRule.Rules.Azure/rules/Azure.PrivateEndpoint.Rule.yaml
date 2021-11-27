@@ -1,0 +1,31 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Private Endpoints
+#
+
+#region Rules
+
+---
+# Synopsis: Private Endpoint names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.PrivateEndpoint.Name
+  tags:
+    release: 'GA'
+    ruleSet: '2021_12'
+spec:
+  type:
+  - Microsoft.Network/privateEndpoints
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 2
+    - name: '.'
+      lessOrEquals: 64
+    - name: '.'
+      match: '^[a-z0-9][a-z0-9_.-]{0,62}[a-z0-9_]$'
+
+#endregion Rules
