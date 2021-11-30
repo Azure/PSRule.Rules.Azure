@@ -7,6 +7,10 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.11.0-B2111014 (pre-release)
+
+What's changed since v1.10.0:
+
 - New rules:
   - Application Security Group:
     - Check Application Security Groups meet naming requirements. [#1110](https://github.com/Azure/PSRule.Rules.Azure/issues/1110)
@@ -20,13 +24,13 @@ See [troubleshooting guide] for a workaround to this issue.
 - Engineering:
   - Rule refactoring of rules from PowerShell to YAML. [#1109](https://github.com/Azure/PSRule.Rules.Azure/issues/1109)
     - The following rules where refactored:
-      - `Azure.LB.Name`.
-      - `Azure.NSG.Name`.
-      - `Azure.Firewall.Mode`.
-      - `Azure.Route.Name`.
-      - `Azure.VNET.Name`.
-      - `Azure.VNG.Name`.
-      - `Azure.VNG.ConnectionName`.
+      - `Azure.LB.Name`
+      - `Azure.NSG.Name`
+      - `Azure.Firewall.Mode`
+      - `Azure.Route.Name`
+      - `Azure.VNET.Name`
+      - `Azure.VNG.Name`
+      - `Azure.VNG.ConnectionName`
 
 ## v1.10.0
 
@@ -41,7 +45,7 @@ What's changed since v1.9.1:
   - All resources:
     - Check template expressions do not exceed a maximum length. [#1006](https://github.com/Azure/PSRule.Rules.Azure/issues/1006)
   - Automation Service:
-    - Automation accounts should use managed identities for authentication. [#1074](https://github.com/Azure/PSRule.Rules.Azure/issues/1074)
+    - Check automation accounts should use managed identities for authentication. [#1074](https://github.com/Azure/PSRule.Rules.Azure/issues/1074)
   - Event Grid:
     - Check topics and domains use managed identities. [#1091](https://github.com/Azure/PSRule.Rules.Azure/issues/1091)
     - Check topics and domains use private endpoints. [#1092](https://github.com/Azure/PSRule.Rules.Azure/issues/1092)
