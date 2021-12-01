@@ -475,7 +475,16 @@ task ExportProviders {
                 resourceType = $_.resourceType
                 apiVersions = $_.apiVersions
                 locations = $_.locations
-                zoneMappings = ($_.ZoneMappings | Sort-Object -Property location)
+                zoneMappings = ($_.ZoneMappings | Sort-Object -Property location | ForEach-Object {
+                    $zones = $_.zones
+                    if ($Null -ne $zones) {
+                        $zones = @($_.zones | Sort-Object)
+                    }
+                    [ordered]@{
+                        location = $_.location
+                        zones = $zones
+                    }
+                })
             }
             $resourceTypes.Add($info.resourceType, $info);
         };
