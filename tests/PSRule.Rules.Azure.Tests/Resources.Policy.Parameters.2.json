@@ -1,0 +1,41 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "template": "./Resources.Policy.Template.2.json"
+    },
+    "parameters": {
+        "exemptionNameSuffix": {
+            "value": "test"
+        },
+        "assignmentId": {
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/policy-001"
+        },
+        "resourceGroup": {
+            "value": "exception-001"
+        },
+        "exemptionCategory": {
+            "value": "Waiver"
+        },
+        "description": {
+            "value": "Some requirement for the exception."
+        },
+        "displayName": {
+            "value": "Test exception 001"
+        },
+        "requestedBy": {
+            "value": "test"
+        },
+        "approvedBy": {
+            "value": "test"
+        },
+        "expiresOnDate": {
+            "value": "2023-04-28T00:00:00+10:00"
+        },
+        "policyDefinitionReferenceIds": {
+            "value": [
+                "ref-001"
+            ]
+        }
+    }
+}
