@@ -119,11 +119,20 @@ Describe 'Azure.Policy' -Tag Policy {
 
     Context 'With Template' {
         BeforeAll {
-            $templatePath = Join-Path -Path $here -ChildPath 'Resources.Policy.Template.json';
-            $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Policy.Parameters.json';
-            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Policy.json;
-            Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
-            $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = @(
+                (Join-Path -Path $here -ChildPath 'Resources.Policy.Parameters.json')
+                (Join-Path -Path $here -ChildPath 'Resources.Policy.Parameters.2.json')
+            )
+            $options = @{
+                'Configuration.AZURE_PARAMETER_FILE_EXPANSION' = $True
+            }
+            $result = Invoke-PSRule @invokeParams -Option $options -InputPath $dataPath -Format File -Outcome All;
         }
 
         It 'Azure.Policy.Descriptors' {
@@ -154,6 +163,16 @@ Describe 'Azure.Policy' -Tag Policy {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'standards-assignment';
+        }
+
+        It 'Azure.Policy.WaiverExpiry' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Policy.WaiverExpiry' };
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'ffffffff-ffff-ffff-ffff-ffffffffffff-test';
         }
     }
 }
