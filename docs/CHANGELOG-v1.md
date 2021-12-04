@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.11.0-B2111014:
+
+- Bug fixes:
+  - Fixed `Azure.Policy.WaiverExpiry` date conversion. [#1118](https://github.com/Azure/PSRule.Rules.Azure/issues/1118)
+
 ## v1.11.0-B2111014 (pre-release)
 
 What's changed since v1.10.0:
@@ -31,6 +36,13 @@ What's changed since v1.10.0:
       - `Azure.VNET.Name`
       - `Azure.VNG.Name`
       - `Azure.VNG.ConnectionName`
+
+## v1.10.1
+
+What's changed since v1.10.0:
+
+- Bug fixes:
+  - Fixed `Azure.Policy.WaiverExpiry` date conversion. [#1118](https://github.com/Azure/PSRule.Rules.Azure/issues/1118)
 
 ## v1.10.0
 
