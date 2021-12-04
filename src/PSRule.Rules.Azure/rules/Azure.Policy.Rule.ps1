@@ -31,10 +31,5 @@ Rule 'Azure.Policy.ExemptionDescriptors' -Type 'Microsoft.Authorization/policyEx
 
 # Synopsis: Policy exceptions must be less then 2 years.
 Rule 'Azure.Policy.WaiverExpiry' -Type 'Microsoft.Authorization/policyExemptions' -With 'Azure.PolicyExemptionWaiver' -Tag @{ release = 'GA'; ruleSet = '2021_06' } {
-    $expiresOn = $Assert.HasFieldValue($TargetObject, 'properties.expiresOn');
-    $expiresOn;
-    if ($expiresOn.Result) {
-        $days = [int]($TargetObject.Properties.expiresOn - [DateTime]::Now).TotalDays;
-        $Assert.LessOrEqual($days, '.', $Configuration.AZURE_POLICY_WAIVER_MAX_EXPIRY);
-    }
+    $Assert.LessOrEqual($TargetObject, 'properties.expiresOn', $Configuration.AZURE_POLICY_WAIVER_MAX_EXPIRY);
 } -Configure @{ AZURE_POLICY_WAIVER_MAX_EXPIRY = 366 }

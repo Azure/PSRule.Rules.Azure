@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.10.0:
+
+- Bug fixes:
+  - Fixed `Azure.Policy.WaiverExpiry` date conversion. [#1118](https://github.com/Azure/PSRule.Rules.Azure/issues/1118)
+
 ## v1.10.0
 
 What's changed since v1.9.1:
