@@ -1,38 +1,35 @@
 ---
 reviewed: 2021/12/10
 severity: Important
-pillar: Operational Excellence
-category: Automation
+pillar: Security
+category: Key and secret management
 resource: Azure Kubernetes Service
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AutoUpgrade/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.SecretStoreRotation/
 ---
 
-# Set AKS auto-upgrade channel
+# AKS clusters refresh secrets from Key Vault
 
 ## SYNOPSIS
 
-Configure AKS to automatically upgrade to newer supported AKS versions as they are made available.
+Enable autorotation of Secrets Store CSI Driver secrets for AKS clusters.
 
 ## DESCRIPTION
 
-In additional to performing manual upgrades, AKS supports auto-upgrades.
-Auto-upgrades reduces manual intervention required to maintain an AKS cluster.
+AKS clusters may need to store and retrieve secrets, keys, and certificates.
+The Secrets Store CSI Driver provides cluster support to integrate with Key Vault.
+When enabled and configured secrets, keys, and certificates can be securely accessed from a pod.
 
-To configure auto-upgrades select a release channel instead of the default `none`.
-The following release channels are available:
+When secrets are updated in Key Vault, pods may need to be restarted to pick up the new secrets.
+Enabling autorotation with the Secrets Store CSI Driver, automatically refreshed pods with new secrets.
+It does this by periodically polling for updates to the secrets in Key Vault.
+The default interval is every 2 minutes.
 
-- `none` - Disables auto-upgrades.
-The default setting.
-- `patch` - Automatically upgrade to the latest supported patch version of the current minor version.
-- `stable` - Automatically upgrade to the latest supported patch release of the recommended minor version.
-This is N-1 of the current AKS non-preview minor version.
-- `rapid` - Automatically upgrade to the latest supported patch of the latest support minor version.
-- `node-image` - Automatically upgrade to the latest node image version.
-Normally upgraded weekly.
+The Secrets Store CSI Driver does not automatically change secrets in Key Vault.
+Updating the secrets in Key Vault must be done by an external process, such as an Azure Function.
 
 ## RECOMMENDATION
 
-Consider enabling auto-upgrades for AKS clusters by setting an auto-upgrade channel.
+Consider enabling autorotation of Secrets Store CSI Driver secrets for AKS clusters.
 
 ## EXAMPLES
 
@@ -40,7 +37,7 @@ Consider enabling auto-upgrades for AKS clusters by setting an auto-upgrade chan
 
 To deploy AKS clusters that pass this rule:
 
-- Set `properties.autoUpgradeProfile.upgradeChannel` to an upgrade channel such as `stable`.
+- Set `Properties.addonProfiles.azureKeyvaultSecretsProvider.config.enableSecretRotation` to `true`.
 
 For example:
 
@@ -114,9 +111,9 @@ For example:
 
 ### Configure with Bicep
 
-To deploy resource that pass this rule:
+To deploy AKS clusters that pass this rule:
 
-- steps
+- Set `Properties.addonProfiles.azureKeyvaultSecretsProvider.config.enableSecretRotation` to `true`.
 
 For example:
 
@@ -186,13 +183,14 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
 ### Configure with Azure CLI
 
 ```bash
-az aks update -n '<name>' -g '<resource_group>' --auto-upgrade-channel 'stable'
+az aks update --enable-secret-rotation -n '<name>' -g '<resource_group>'
 ```
 
 ## LINKS
 
-- [Automation overview](https://docs.microsoft.com/azure/architecture/framework/devops/automation-overview)
-- [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
-- [Support policies for Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/support-policies)
-- [Set auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel)
+- [Key and secret management considerations in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-keys#operational-considerations)
+- [Operational considerations](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-keys#operational-considerations)
+- [Use the Azure Key Vault Provider for Secrets Store CSI Driver in an AKS cluster](https://docs.microsoft.com/azure/aks/csi-secrets-store-driver)
+- [Automate the rotation of a secret for resources that use one set of authentication credentials](https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation)
+- [Automate the rotation of a secret for resources that have two sets of authentication credentials](https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation-dual)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile)

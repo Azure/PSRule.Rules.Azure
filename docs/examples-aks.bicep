@@ -67,12 +67,6 @@ param vnetId string
 @description('The name of the subnet do deploy cluster resources.')
 param systemPoolSubnet string
 
-@description('Determines if the Key Vault provider automatically rotates secrets.')
-param useSecretRotation bool = false
-
-@description('Determines if Open Service Mesh for Kubernetes is enabled.')
-param useOpenServiceMesh bool = false
-
 @description('The object Ids of groups that will be added with the cluster admin role.')
 param clusterAdmins array = []
 
@@ -90,15 +84,6 @@ param clusterAdmins array = []
   ]
 })
 param pools array = []
-
-@description('Determine if cluster upgrades are automatically applied.')
-@allowed([
-  'none'
-  'rapid'
-  'stable'
-  'patch'
-])
-param upgradeChannel string = 'none'
 
 @metadata({
   description: 'Tags to apply to the resource.'
@@ -192,7 +177,7 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
       dockerBridgeCidr: dockerBridgeCidr
     }
     autoUpgradeProfile: {
-      upgradeChannel: upgradeChannel
+      upgradeChannel: 'stable'
     }
     addonProfiles: {
       httpApplicationRouting: {
@@ -216,11 +201,8 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
       azureKeyvaultSecretsProvider: {
         enabled: true
         config: {
-          enableSecretRotation: string(useSecretRotation)
+          enableSecretRotation: 'true'
         }
-      }
-      openServiceMesh: {
-        enabled: useOpenServiceMesh
       }
     }
   }

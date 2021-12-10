@@ -18,6 +18,10 @@
     "[markdown]": {
         "editor.tabSize": 2
     },
+    "[arm-template]": {
+        "editor.tabSize": 4,
+        "editor.defaultFormatter": "msazurermtools.azurerm-vscode-tools"
+    },
     "files.associations": {
         "**/.azure-pipelines/*.yaml": "azure-pipelines",
         "**/.azure-pipelines/jobs/*.yaml": "azure-pipelines",

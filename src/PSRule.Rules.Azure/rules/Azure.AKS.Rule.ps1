@@ -112,12 +112,6 @@ Rule 'Azure.AKS.ManagedAAD' -Type 'Microsoft.ContainerService/managedClusters' -
     $Assert.HasFieldValue($TargetObject, 'Properties.aadProfile.managed', $True);
 }
 
-# Synopsis: Configure AKS to automatically upgrade to newer supported AKS versions as they are made available.
-Rule 'Azure.AKS.AutoUpgrade' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'preview'; ruleSet = '2021_06'; } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.autoUpgradeProfile.upgradeChannel');
-    $Assert.NotIn($TargetObject, 'Properties.autoUpgradeProfile.upgradeChannel', @('none'));
-}
-
 # Synopsis: Restrict access to API server endpoints to authorized IP addresses.
 Rule 'Azure.AKS.AuthorizedIPs' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_06'; } {
     $Assert.GreaterOrEqual($TargetObject, 'Properties.apiServerAccessProfile.authorizedIPRanges', 1);
