@@ -1,38 +1,35 @@
 ---
 reviewed: 2021/12/10
 severity: Important
-pillar: Operational Excellence
-category: Automation
+pillar: Security
+category: Application endpoints
 resource: Azure Kubernetes Service
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AutoUpgrade/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.HttpAppRouting/
 ---
 
-# Set AKS auto-upgrade channel
+# Disable HTTP application routing add-on
 
 ## SYNOPSIS
 
-Configure AKS to automatically upgrade to newer supported AKS versions as they are made available.
+Disable HTTP application routing add-on in AKS clusters.
 
 ## DESCRIPTION
 
-In additional to performing manual upgrades, AKS supports auto-upgrades.
-Auto-upgrades reduces manual intervention required to maintain an AKS cluster.
+The HTTP application routing add-on is designed to quickly expose HTTP endpoints to the public internet.
+This may be helpful in some limited scenarios, but should not be used in production.
 
-To configure auto-upgrades select a release channel instead of the default `none`.
-The following release channels are available:
+When exposing application endpoints consider using an ingress controller that supports:
 
-- `none` - Disables auto-upgrades.
-The default setting.
-- `patch` - Automatically upgrade to the latest supported patch version of the current minor version.
-- `stable` - Automatically upgrade to the latest supported patch release of the recommended minor version.
-This is N-1 of the current AKS non-preview minor version.
-- `rapid` - Automatically upgrade to the latest supported patch of the latest support minor version.
-- `node-image` - Automatically upgrade to the latest node image version.
-Normally upgraded weekly.
+- Security filtering behind web application firewall (WAF).
+- Encyption in transit over TLS.
+- Multiple replicas.
+
+Azure provides a production ready ingress controller _Application Gateway Ingress Controller_ (AGIC).
 
 ## RECOMMENDATION
 
-Consider enabling auto-upgrades for AKS clusters by setting an auto-upgrade channel.
+Consider disabling the HTTP application routing add-on in your AKS cluster.
+Also consider using Application Gateway Ingress Controller (AGIC) instead to protect application endpoints.
 
 ## EXAMPLES
 
@@ -40,7 +37,7 @@ Consider enabling auto-upgrades for AKS clusters by setting an auto-upgrade chan
 
 To deploy AKS clusters that pass this rule:
 
-- Set `properties.autoUpgradeProfile.upgradeChannel` to an upgrade channel such as `stable`.
+- Set `Properties.addonProfiles.httpApplicationRouting.enabled` to `false`.
 
 For example:
 
@@ -114,9 +111,9 @@ For example:
 
 ### Configure with Bicep
 
-To deploy resource that pass this rule:
+To deploy AKS clusters that pass this rule:
 
-- steps
+- Set `Properties.addonProfiles.httpApplicationRouting.enabled` to `false`.
 
 For example:
 
@@ -183,16 +180,9 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
 }
 ```
 
-### Configure with Azure CLI
-
-```bash
-az aks update -n '<name>' -g '<resource_group>' --auto-upgrade-channel 'stable'
-```
-
 ## LINKS
 
-- [Automation overview](https://docs.microsoft.com/azure/architecture/framework/devops/automation-overview)
-- [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
-- [Support policies for Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/support-policies)
-- [Set auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel)
+- [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
+- [HTTP application routing](https://docs.microsoft.com/azure/aks/http-application-routing)
+- [Enable Application Gateway Ingress Controller add-on for an existing AKS cluster](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-existing)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile)

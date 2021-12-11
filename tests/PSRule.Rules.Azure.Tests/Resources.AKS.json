@@ -98,12 +98,6 @@
                     "config": {
                         "subnetname": "subnet-A"
                     }
-                },
-                "httpapplicationrouting": {
-                    "enabled": true,
-                    "config": {
-                        "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
-                    }
                 }
             },
             "nodeResourceGroup": "MC_test-rg_cluster-B_region",
@@ -345,15 +339,7 @@
                     }
                 },
                 "httpApplicationRouting": {
-                    "enabled": true,
-                    "config": {
-                        "HTTPApplicationRoutingZoneName": "dca47a62fed041939528.region.aksapp.io"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/httpapplicationrouting-cluster-D",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
+                    "enabled": false
                 },
                 "kubeDashboard": {
                     "enabled": false,
@@ -1332,12 +1318,6 @@
                         "subnetname": "subnet-A"
                     }
                 },
-                "httpapplicationrouting": {
-                    "enabled": true,
-                    "config": {
-                        "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
-                    }
-                },
                 "omsagent": {
                     "enabled": true,
                     "config": {
@@ -1470,5 +1450,367 @@
                 "ETag": null
             }
         ]
+    },
+    {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-K",
+        "location": "eastus",
+        "name": "cluster-K",
+        "tags": null,
+        "type": "Microsoft.ContainerService/ManagedClusters",
+        "properties": {
+            "provisioningState": "Succeeded",
+            "powerState": {
+                "code": "Running"
+            },
+            "kubernetesVersion": "1.21.2",
+            "dnsPrefix": "cluster-K",
+            "fqdn": "cluster-K-00000000.hcp.eastus.azmk8s.io",
+            "azurePortalFQDN": "cluster-K-00000000.portal.hcp.eastus.azmk8s.io",
+            "agentPoolProfiles": [
+                {
+                    "name": "system",
+                    "count": 2,
+                    "vmSize": "Standard_D2s_v3",
+                    "osDiskSizeGB": 32,
+                    "osDiskType": "Ephemeral",
+                    "kubeletDiskType": "OS",
+                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                    "maxPods": 50,
+                    "type": "VirtualMachineScaleSets",
+                    "maxCount": 2,
+                    "minCount": 2,
+                    "enableAutoScaling": true,
+                    "provisioningState": "Succeeded",
+                    "powerState": {
+                        "code": "Running"
+                    },
+                    "orchestratorVersion": "1.21.2",
+                    "mode": "System",
+                    "osType": "Linux",
+                    "osSKU": "Ubuntu",
+                    "nodeImageVersion": "AKSUbuntu-1804gen2containerd-2021.07.17",
+                    "enableFIPS": false
+                }
+            ],
+            "windowsProfile": {
+                "adminUsername": "azureuser",
+                "enableCSIProxy": true
+            },
+            "servicePrincipalProfile": {
+                "clientId": "msi"
+            },
+            "addonProfiles": {
+                "aciConnectorLinux": {
+                    "enabled": true,
+                    "config": {
+                        "SubnetName": "subnet-B"
+                    },
+                    "identity": {
+                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aciconnectorlinux-cluster-K",
+                        "clientId": "00000000-0000-0000-0000-000000000000",
+                        "objectId": "00000000-0000-0000-0000-000000000000"
+                    }
+                },
+                "azureKeyvaultSecretsProvider": {
+                    "enabled": true,
+                    "config": {
+                        "enableSecretRotation": "False"
+                    },
+                    "identity": {
+                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurekeyvaultsecretsprovider-cluster-K",
+                        "clientId": "00000000-0000-0000-0000-000000000000",
+                        "objectId": "00000000-0000-0000-0000-000000000000"
+                    }
+                },
+                "azurepolicy": {
+                    "enabled": true,
+                    "config": null,
+                    "identity": {
+                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurepolicy-cluster-K",
+                        "clientId": "00000000-0000-0000-0000-000000000000",
+                        "objectId": "00000000-0000-0000-0000-000000000000"
+                    }
+                },
+                "kubeDashboard": {
+                    "enabled": false,
+                    "config": null
+                },
+                "omsagent": {
+                    "enabled": true,
+                    "config": {
+                        "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-eus"
+                    },
+                    "identity": {
+                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/omsagent-cluster-K",
+                        "clientId": "00000000-0000-0000-0000-000000000000",
+                        "objectId": "00000000-0000-0000-0000-000000000000"
+                    }
+                },
+                "openServiceMesh": {
+                    "enabled": true,
+                    "config": null,
+                    "identity": {
+                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/openservicemesh-cluster-K",
+                        "clientId": "00000000-0000-0000-0000-000000000000",
+                        "objectId": "00000000-0000-0000-0000-000000000000"
+                    }
+                }
+            },
+            "nodeResourceGroup": "test-rg",
+            "enableRBAC": true,
+            "enablePodSecurityPolicy": false,
+            "networkProfile": {
+                "networkPlugin": "azure",
+                "networkPolicy": "azure",
+                "loadBalancerSku": "Standard",
+                "loadBalancerProfile": {
+                    "managedOutboundIPs": {
+                        "count": 1
+                    },
+                    "effectiveOutboundIPs": [
+                        {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/publicIP-A"
+                        }
+                    ]
+                },
+                "serviceCidr": "192.168.0.0/16",
+                "dnsServiceIP": "192.168.0.4",
+                "dockerBridgeCidr": "172.17.0.1/16",
+                "outboundType": "loadBalancer"
+            },
+            "aadProfile": {
+                "managed": true,
+                "adminGroupObjectIDs": null,
+                "enableAzureRBAC": true,
+                "tenantID": "00000000-0000-0000-0000-000000000000"
+            },
+            "maxAgentPools": 100,
+            "identityProfile": {
+                "kubeletidentity": {
+                    "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cluster-K-agentpool",
+                    "clientId": "00000000-0000-0000-0000-000000000000",
+                    "objectId": "00000000-0000-0000-0000-000000000000"
+                }
+            },
+            "autoScalerProfile": {
+                "balance-similar-node-groups": "false",
+                "expander": "random",
+                "max-empty-bulk-delete": "10",
+                "max-graceful-termination-sec": "600",
+                "max-node-provision-time": "15m",
+                "max-total-unready-percentage": "45",
+                "new-pod-scale-up-delay": "0s",
+                "ok-total-unready-count": "3",
+                "scale-down-delay-after-add": "10m",
+                "scale-down-delay-after-delete": "10s",
+                "scale-down-delay-after-failure": "3m",
+                "scale-down-unneeded-time": "10m",
+                "scale-down-unready-time": "20m",
+                "scale-down-utilization-threshold": "0.5",
+                "scan-interval": "10s",
+                "skip-nodes-with-local-storage": "false",
+                "skip-nodes-with-system-pods": "true"
+            },
+            "autoUpgradeProfile": {
+                "upgradeChannel": "rapid"
+            }
+        },
+        "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-A": {
+                    "clientId": "00000000-0000-0000-0000-000000000000",
+                    "principalId": "00000000-0000-0000-0000-000000000000"
+                }
+            }
+        },
+        "sku": {
+            "name": "Basic",
+            "tier": "Free"
+        }
+    },
+    {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-L",
+        "location": "eastus",
+        "name": "cluster-L",
+        "tags": null,
+        "type": "Microsoft.ContainerService/ManagedClusters",
+        "properties": {
+            "provisioningState": "Succeeded",
+            "powerState": {
+                "code": "Running"
+            },
+            "kubernetesVersion": "1.21.2",
+            "dnsPrefix": "nnn-cluster-L",
+            "fqdn": "nnn-cluster-L-00000000.hcp.eastus.azmk8s.io",
+            "azurePortalFQDN": "nnn-cluster-L-00000000.portal.hcp.eastus.azmk8s.io",
+            "agentPoolProfiles": [
+                {
+                    "name": "system",
+                    "count": 2,
+                    "vmSize": "Standard_D2s_v3",
+                    "osDiskSizeGB": 32,
+                    "osDiskType": "Ephemeral",
+                    "kubeletDiskType": "OS",
+                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+                    "maxPods": 50,
+                    "type": "VirtualMachineScaleSets",
+                    "maxCount": 2,
+                    "minCount": 2,
+                    "enableAutoScaling": true,
+                    "provisioningState": "Succeeded",
+                    "powerState": {
+                        "code": "Running"
+                    },
+                    "orchestratorVersion": "1.21.2",
+                    "mode": "System",
+                    "osType": "Linux",
+                    "osSKU": "Ubuntu",
+                    "nodeImageVersion": "AKSUbuntu-1804gen2containerd-2021.07.17",
+                    "enableFIPS": false
+                }
+            ],
+            "windowsProfile": {
+                "adminUsername": "azureuser",
+                "enableCSIProxy": true
+            },
+            "servicePrincipalProfile": {
+                "clientId": "msi"
+            },
+            "addonProfiles": {
+                "aciConnectorLinux": {
+                    "enabled": true,
+                    "config": {
+                        "SubnetName": "subnet-B"
+                    },
+                    "identity": {
+                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aciconnectorlinux-cluster-L",
+                        "clientId": "00000000-0000-0000-0000-000000000000",
+                        "objectId": "00000000-0000-0000-0000-000000000000"
+                    }
+                },
+                "azureKeyvaultSecretsProvider": {
+                    "enabled": true,
+                    "config": {
+                        "enableSecretRotation": "true"
+                    },
+                    "identity": {
+                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurekeyvaultsecretsprovider-cluster-L",
+                        "clientId": "00000000-0000-0000-0000-000000000000",
+                        "objectId": "00000000-0000-0000-0000-000000000000"
+                    }
+                },
+                "azurepolicy": {
+                    "enabled": true,
+                    "config": null,
+                    "identity": {
+                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurepolicy-cluster-L",
+                        "clientId": "00000000-0000-0000-0000-000000000000",
+                        "objectId": "00000000-0000-0000-0000-000000000000"
+                    }
+                },
+                "httpApplicationRouting": {
+                    "enabled": false,
+                    "config": {
+                        "HTTPApplicationRoutingZoneName": "nnnn.eastus.aksapp.io"
+                    }
+                },
+                "kubeDashboard": {
+                    "enabled": false,
+                    "config": null
+                },
+                "omsagent": {
+                    "enabled": true,
+                    "config": {
+                        "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-eus"
+                    },
+                    "identity": {
+                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/omsagent-cluster-L",
+                        "clientId": "00000000-0000-0000-0000-000000000000",
+                        "objectId": "00000000-0000-0000-0000-000000000000"
+                    }
+                },
+                "openServiceMesh": {
+                    "enabled": true,
+                    "config": null,
+                    "identity": {
+                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/openservicemesh-cluster-L",
+                        "clientId": "00000000-0000-0000-0000-000000000000",
+                        "objectId": "00000000-0000-0000-0000-000000000000"
+                    }
+                }
+            },
+            "nodeResourceGroup": "test-rg",
+            "enableRBAC": true,
+            "enablePodSecurityPolicy": false,
+            "networkProfile": {
+                "networkPlugin": "azure",
+                "networkPolicy": "azure",
+                "loadBalancerSku": "Standard",
+                "loadBalancerProfile": {
+                    "managedOutboundIPs": {
+                        "count": 1
+                    },
+                    "effectiveOutboundIPs": [
+                        {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/publicIP-A"
+                        }
+                    ]
+                },
+                "serviceCidr": "192.168.0.0/16",
+                "dnsServiceIP": "192.168.0.4",
+                "dockerBridgeCidr": "172.17.0.1/16",
+                "outboundType": "loadBalancer"
+            },
+            "aadProfile": {
+                "managed": true,
+                "adminGroupObjectIDs": null,
+                "enableAzureRBAC": true,
+                "tenantID": "00000000-0000-0000-0000-000000000000"
+            },
+            "maxAgentPools": 100,
+            "identityProfile": {
+                "kubeletidentity": {
+                    "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cluster-L-agentpool",
+                    "clientId": "00000000-0000-0000-0000-000000000000",
+                    "objectId": "00000000-0000-0000-0000-000000000000"
+                }
+            },
+            "autoScalerProfile": {
+                "balance-similar-node-groups": "false",
+                "expander": "random",
+                "max-empty-bulk-delete": "10",
+                "max-graceful-termination-sec": "600",
+                "max-node-provision-time": "15m",
+                "max-total-unready-percentage": "45",
+                "new-pod-scale-up-delay": "0s",
+                "ok-total-unready-count": "3",
+                "scale-down-delay-after-add": "10m",
+                "scale-down-delay-after-delete": "10s",
+                "scale-down-delay-after-failure": "3m",
+                "scale-down-unneeded-time": "10m",
+                "scale-down-unready-time": "20m",
+                "scale-down-utilization-threshold": "0.5",
+                "scan-interval": "10s",
+                "skip-nodes-with-local-storage": "false",
+                "skip-nodes-with-system-pods": "true"
+            },
+            "autoUpgradeProfile": {
+                "upgradeChannel": "rapid"
+            }
+        },
+        "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-A": {
+                    "clientId": "00000000-0000-0000-0000-000000000000",
+                    "principalId": "00000000-0000-0000-0000-000000000000"
+                }
+            }
+        },
+        "sku": {
+            "name": "Basic",
+            "tier": "Free"
+        }
     }
 ]

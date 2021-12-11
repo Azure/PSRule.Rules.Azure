@@ -9,6 +9,14 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since pre-release v1.11.0-B2111014:
 
+- New rules:
+  - Azure Kubernetes Service:
+    - Check clusters have the HTTP application routing add-on disabled. [#1131](https://github.com/Azure/PSRule.Rules.Azure/issues/1131)
+    - Check clusters use the Secrets Store CSI Driver add-on. [#992](https://github.com/Azure/PSRule.Rules.Azure/issues/992)
+    - Check clusters autorotation with the Secrets Store CSI Driver add-on. [#993](https://github.com/Azure/PSRule.Rules.Azure/issues/993)
+- Update rules:
+  - Azure Kubernetes Service:
+    - Promoted `Azure.AKS.AutoUpgrade` to GA rule set. [#1130](https://github.com/Azure/PSRule.Rules.Azure/issues/1130)
 - Bug fixes:
   - Fixed `Azure.Policy.WaiverExpiry` date conversion. [#1118](https://github.com/Azure/PSRule.Rules.Azure/issues/1118)
 

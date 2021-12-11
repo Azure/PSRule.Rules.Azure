@@ -22,6 +22,10 @@
             "defaultValue": "clusterE",
             "type": "string"
         },
+        "clusterName6": {
+            "defaultValue": "clusterF",
+            "type": "string"
+        },
         "clusterLocation": {
             "defaultValue": "[resourceGroup().location]",
             "type": "string"
@@ -248,10 +252,7 @@
                         }
                     },
                     "azureKeyvaultSecretsProvider": {
-                        "enabled": true,
-                        "config": {
-                            "enableSecretRotation": "false"
-                        }
+                        "enabled": false
                     },
                     "openServiceMesh": {
                         "enabled": true
@@ -460,16 +461,13 @@
                         "enabled": false
                     },
                     "httpApplicationRouting": {
-                        "enabled": true
+                        "enabled": false
                     },
                     "kubeDashboard": {
                         "enabled": true
                     },
                     "azureKeyvaultSecretsProvider": {
-                        "enabled": true,
-                        "config": {
-                            "enableSecretRotation": "false"
-                        }
+                        "enabled": true
                     },
                     "openServiceMesh": {
                         "enabled": true
@@ -623,7 +621,7 @@
         },
         {
             "type": "Microsoft.ContainerService/managedClusters",
-            "apiVersion": "2020-12-01",
+            "apiVersion": "2021-07-01",
             "name": "[parameters('clusterName5')]",
             "location": "[parameters('clusterLocation')]",
             "identity": {
@@ -662,9 +660,6 @@
                     },
                     "azurePolicy": {
                         "enabled": false
-                    },
-                    "httpApplicationRouting": {
-                        "enabled": true
                     },
                     "kubeDashboard": {
                         "enabled": true
@@ -749,6 +744,193 @@
                         "availabilityZones": null
                     }
                 },
+                {
+                    "apiVersion": "2016-09-01",
+                    "type": "Microsoft.ContainerService/managedClusters/providers/diagnosticSettings",
+                    "name": "[concat(parameters('clusterName5'), '/Microsoft.Insights/service')]",
+                    "properties": {
+                        "workspaceId": "[parameters('workspaceId')]",
+                        "logs": [
+                            {
+                                "category": "kube-apiserver",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "days": 0,
+                                    "enabled": false
+                                }
+                            },
+                            {
+                                "category": "kube-audit",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "days": 0,
+                                    "enabled": false
+                                }
+                            },
+                            {
+                                "category": "kube-audit-admin",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "days": 0,
+                                    "enabled": false
+                                }
+                            },
+                            {
+                                "category": "kube-controller-manager",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "days": 0,
+                                    "enabled": false
+                                }
+                            },
+                            {
+                                "category": "kube-scheduler",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "days": 0,
+                                    "enabled": false
+                                }
+                            },
+                            {
+                                "category": "cluster-autoscaler",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "days": 0,
+                                    "enabled": false
+                                }
+                            },
+                            {
+                                "category": "guard",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "days": 0,
+                                    "enabled": false
+                                }
+                            }
+                        ],
+                        "metrics": [
+                            {
+                                "category": "AllMetrics",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "days": 0,
+                                    "enabled": false
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "type": "Microsoft.ContainerService/managedClusters",
+            "apiVersion": "2021-07-01",
+            "name": "[parameters('clusterName6')]",
+            "location": "[parameters('clusterLocation')]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "kubernetesVersion": "1.20.5",
+                "dnsPrefix": "[concat('dns-', parameters('clusterName6'))]",
+                "agentPoolProfiles": [
+                    {
+                        "name": "agentpool1",
+                        "count": 3,
+                        "vmSize": "Standard_B2ms",
+                        "osDiskSizeGB": 100,
+                        "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-01')]",
+                        "maxPods": 50,
+                        "type": "VirtualMachineScaleSets",
+                        "osType": "Linux",
+                        "enableAutoScaling": true,
+                        "availabilityZones": [
+                            "1",
+                            "2",
+                            "3"
+                        ]
+                    }
+                ],
+                "servicePrincipalProfile": {
+                    "clientId": "00000000-0000-0000-0000-000000000000"
+                },
+                "addonProfiles": {
+                    "aciConnectorLinux": {
+                        "enabled": true,
+                        "config": {
+                            "SubnetName": "subnet-aci"
+                        }
+                    },
+                    "azurePolicy": {
+                        "enabled": true,
+                        "config": {
+                            "version": "v2"
+                        }
+                    },
+                    "kubeDashboard": {
+                        "enabled": true
+                    },
+                    "omsagent": {
+                        "enabled": true,
+                        "config": {
+                            "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
+                        }
+                    },
+                    "azureKeyvaultSecretsProvider": {
+                        "enabled": true,
+                        "config": {
+                            "enableSecretRotation": "true"
+                        }
+                    },
+                    "openServiceMesh": {
+                        "enabled": true
+                    }
+                },
+                "aadProfile": {
+                    "managed": true,
+                    "enableAzureRBAC": true,
+                    "adminGroupObjectIDs": [],
+                    "tenantID": "[subscription().tenantId]"
+                },
+                "autoUpgradeProfile": {
+                    "upgradeChannel": "stable"
+                },
+                "autoScalerProfile": {
+                    "balance-similar-node-groups": "false",
+                    "expander": "random",
+                    "max-empty-bulk-delete": "10",
+                    "max-graceful-termination-sec": "600",
+                    "max-total-unready-percentage": "45",
+                    "new-pod-scale-up-delay": "0s",
+                    "ok-total-unready-count": "3",
+                    "scale-down-delay-after-add": "10m",
+                    "scale-down-delay-after-delete": "10s",
+                    "scale-down-delay-after-failure": "3m",
+                    "scale-down-unneeded-time": "10m",
+                    "scale-down-unready-time": "20m",
+                    "scale-down-utilization-threshold": "0.5",
+                    "scan-interval": "10s",
+                    "skip-nodes-with-local-storage": "false",
+                    "skip-nodes-with-system-pods": "true"
+                },
+                "disableLocalAccounts": true,
+                "enableRBAC": true,
+                "enablePodSecurityPolicy": false,
+                "networkProfile": {
+                    "networkPlugin": "azure",
+                    "networkPolicy": "azure",
+                    "loadBalancerSku": "Standard",
+                    "serviceCidr": "192.168.0.0/16",
+                    "dnsServiceIP": "192.168.0.4",
+                    "dockerBridgeCidr": "172.17.0.1/16"
+                },
+                "apiServerAccessProfile": {
+                    "authorizedIpRanges": [
+                        "0.0.0.0/32"
+                    ]
+                }
+            },
+            "resources": [
                 {
                     "apiVersion": "2016-09-01",
                     "type": "Microsoft.ContainerService/managedClusters/providers/diagnosticSettings",
