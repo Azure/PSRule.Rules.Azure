@@ -276,6 +276,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.HttpAppRouting/</loc>
+         <lastmod>2021-12-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.LocalAccounts/</loc>
          <lastmod>2021-12-11</lastmod>
          <changefreq>daily</changefreq>
@@ -322,6 +327,16 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.PoolVersion/</loc>
+         <lastmod>2021-12-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.SecretStore/</loc>
+         <lastmod>2021-12-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.SecretStoreRotation/</loc>
          <lastmod>2021-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>

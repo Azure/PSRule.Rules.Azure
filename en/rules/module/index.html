@@ -1020,6 +1020,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#automation" class="md-nav__link">
+    Automation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#configuration" class="md-nav__link">
     Configuration
   </a>
@@ -1227,6 +1234,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#keyandsecretmanagement" class="md-nav__link">
+    Key and secret management
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#monitor" class="md-nav__link">
     Monitor
   </a>
@@ -1309,6 +1323,12 @@
       
       
       
+        
+          
+        
+          
+        
+          
         
           
         
@@ -2104,6 +2124,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../Azure.AKS.HttpAppRouting/" class="md-nav__link">
+        Azure.AKS.HttpAppRouting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Azure.AKS.LocalAccounts/" class="md-nav__link">
         Azure.AKS.LocalAccounts
       </a>
@@ -2232,6 +2266,34 @@
     <li class="md-nav__item">
       <a href="../Azure.AKS.PoolVersion/" class="md-nav__link">
         Azure.AKS.PoolVersion
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Azure.AKS.SecretStore/" class="md-nav__link">
+        Azure.AKS.SecretStore
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Azure.AKS.SecretStoreRotation/" class="md-nav__link">
+        Azure.AKS.SecretStoreRotation
       </a>
     </li>
   
@@ -5530,6 +5592,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#automation" class="md-nav__link">
+    Automation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#configuration" class="md-nav__link">
     Configuration
   </a>
@@ -5737,6 +5806,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#keyandsecretmanagement" class="md-nav__link">
+    Key and secret management
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#monitor" class="md-nav__link">
     Monitor
   </a>
@@ -5874,6 +5950,23 @@
 </tbody>
 </table>
 <h2 id="operationalexcellence">Operational Excellence<a class="headerlink" href="#operationalexcellence" title="Permanent link">#</a></h2>
+<h3 id="automation">Automation<a class="headerlink" href="#automation" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Synopsis</th>
+<th>Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Azure.AKS.AutoUpgrade/">Azure.AKS.AutoUpgrade</a></td>
+<td>Configure AKS to automatically upgrade to newer supported AKS versions as they are made available.</td>
+<td>Important</td>
+</tr>
+</tbody>
+</table>
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h3>
 <table>
 <thead>
@@ -6668,11 +6761,6 @@
 <td>Important</td>
 </tr>
 <tr>
-<td><a href="../Azure.AKS.AutoUpgrade/">Azure.AKS.AutoUpgrade</a></td>
-<td>Configure AKS to automatically upgrade to newer supported AKS versions as they are made available.</td>
-<td>Important</td>
-</tr>
-<tr>
 <td><a href="../Azure.AKS.AvailabilityZone/">Azure.AKS.AvailabilityZone</a></td>
 <td>AKS clusters deployed with virtual machine scale sets should use availability zones in supported regions for high availability.</td>
 <td>Important</td>
@@ -6831,6 +6919,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../Azure.AKS.HttpAppRouting/">Azure.AKS.HttpAppRouting</a></td>
+<td>Disable HTTP application routing add-on in AKS clusters.</td>
+<td>Important</td>
+</tr>
 <tr>
 <td><a href="../Azure.Storage.Firewall/">Azure.Storage.Firewall</a></td>
 <td>Storage Accounts should only accept explicitly allowed traffic.</td>
@@ -7200,6 +7293,28 @@
 </tr>
 </tbody>
 </table>
+<h3 id="keyandsecretmanagement">Key and secret management<a class="headerlink" href="#keyandsecretmanagement" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Synopsis</th>
+<th>Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Azure.AKS.SecretStore/">Azure.AKS.SecretStore</a></td>
+<td>Deploy AKS clusters with Secrets Store CSI Driver and store Secrets in Key Vayult.</td>
+<td>Important</td>
+</tr>
+<tr>
+<td><a href="../Azure.AKS.SecretStoreRotation/">Azure.AKS.SecretStoreRotation</a></td>
+<td>Enable autorotation of Secrets Store CSI Driver secrets for AKS clusters.</td>
+<td>Important</td>
+</tr>
+</tbody>
+</table>
 <h3 id="monitor">Monitor<a class="headerlink" href="#monitor" title="Permanent link">#</a></h3>
 <table>
 <thead>
@@ -7441,7 +7556,7 @@
   <small>
     
       Last update:
-      2021-12-11
+      2021-12-12
     
   </small>
 </div>

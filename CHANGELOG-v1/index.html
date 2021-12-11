@@ -2030,6 +2030,12 @@
         
           
         
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4_3">
@@ -2330,6 +2336,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../en/rules/Azure.AKS.HttpAppRouting/" class="md-nav__link">
+        Azure.AKS.HttpAppRouting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../en/rules/Azure.AKS.LocalAccounts/" class="md-nav__link">
         Azure.AKS.LocalAccounts
       </a>
@@ -2458,6 +2478,34 @@
     <li class="md-nav__item">
       <a href="../en/rules/Azure.AKS.PoolVersion/" class="md-nav__link">
         Azure.AKS.PoolVersion
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/rules/Azure.AKS.SecretStore/" class="md-nav__link">
+        Azure.AKS.SecretStore
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/rules/Azure.AKS.SecretStoreRotation/" class="md-nav__link">
+        Azure.AKS.SecretStoreRotation
       </a>
     </li>
   
@@ -6257,6 +6305,22 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.11.0-B2111014:</p>
 <ul>
+<li>New rules:<ul>
+<li>Azure Kubernetes Service:<ul>
+<li>Check clusters have the HTTP application routing add-on disabled. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1131">#1131</a></li>
+<li>Check clusters use the Secrets Store CSI Driver add-on. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/992">#992</a></li>
+<li>Check clusters autorotation with the Secrets Store CSI Driver add-on. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/993">#993</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Update rules:<ul>
+<li>Azure Kubernetes Service:<ul>
+<li>Promoted <code>Azure.AKS.AutoUpgrade</code> to GA rule set. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1130">#1130</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Bug fixes:<ul>
 <li>Fixed <code>Azure.Policy.WaiverExpiry</code> date conversion. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1118">#1118</a></li>
 </ul>
@@ -7759,7 +7823,7 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
   <small>
     
       Last update:
-      2021-12-11
+      2021-12-12
     
   </small>
 </div>
