@@ -948,6 +948,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#azureautomationaccountenabledplatformlogcategorieslist" class="md-nav__link">
+    Azure Automation Account enabled platform log categories list
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1089,6 +1096,10 @@
       
       
       
+        
+          
+        
+          
         
           
         
@@ -2674,6 +2685,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../en/rules/Azure.Automation.AuditLogs/" class="md-nav__link">
+        Azure.Automation.AuditLogs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../en/rules/Azure.Automation.EncryptVariables/" class="md-nav__link">
         Azure.Automation.EncryptVariables
       </a>
@@ -2690,6 +2715,20 @@
     <li class="md-nav__item">
       <a href="../../en/rules/Azure.Automation.ManagedIdentity/" class="md-nav__link">
         Azure.Automation.ManagedIdentity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../en/rules/Azure.Automation.PlatformLogs/" class="md-nav__link">
+        Azure.Automation.PlatformLogs
       </a>
     </li>
   
@@ -5386,6 +5425,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#azureautomationaccountenabledplatformlogcategorieslist" class="md-nav__link">
+    Azure Automation Account enabled platform log categories list
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5596,13 +5642,29 @@ The above shows examples specific to <code>Azure.AKS.AvailabilityZone</code>, bu
 <span class="nt">configuration</span><span class="p">:</span>
   <span class="nt">AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;cluster-autoscaler&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span>
 </code></pre></div>
+<h3 id="azureautomationaccountenabledplatformlogcategorieslist">Azure Automation Account enabled platform log categories list<a class="headerlink" href="#azureautomationaccountenabledplatformlogcategorieslist" title="Permanent link">#</a></h3>
+<p>This configuration option sets selective platform diagnostic categories to report on being enabled.</p>
+<p>Syntax:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
+  <span class="nt">AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+</code></pre></div>
+<p>Default:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+  <span class="nt">AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;JobLogs&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;JobStreams&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;DscNodeStatus&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to JobLogs and AllMetrics categories only. </span>
+<span class="nt">configuration</span><span class="p">:</span>
+  <span class="nt">AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;JobLogs&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      2021-12-12
+      2021-12-13
     
   </small>
 </div>
