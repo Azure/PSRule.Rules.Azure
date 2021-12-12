@@ -38,11 +38,11 @@ Rule 'Azure.Automation.AuditLogs' -Type 'Microsoft.Automation/automationAccounts
     $joinedLogCategoryGroups = $logCategoryGroups -join ', ';
 
     foreach ($setting in $diagnosticLogs) {
-        $auditLogs = $setting.Properties.logs | Where-Object {
-            ($_.category -eq 'AuditEvent' -or ($_.categoryGroup -in $logCategoryGroups)) -and $_.enabled
-        }
+        $auditLogs = @($setting.Properties.logs | Where-Object {
+            ($_.category -eq 'AuditEvent' -or $_.categoryGroup -in $logCategoryGroups) -and $_.enabled
+        });
 
-        $Assert.Greater($auditLogs, '.', 0).Reason(
+        $Assert.Greater($auditLogs, 'Length', 0).Reason(
             $LocalizedData.AutomationAccountDiagnosticSetting, 
             $setting.name, 
             'AuditEvent', 
@@ -53,7 +53,7 @@ Rule 'Azure.Automation.AuditLogs' -Type 'Microsoft.Automation/automationAccounts
 
 # Synopsis: Ensure automation account platform diagnostic logs are enabled.
 Rule 'Azure.Automation.PlatformLogs' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
-    $configurationLogCategoriesList = $Configuration.GetStringValues('AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATAGORIES');
+    $configurationLogCategoriesList = $Configuration.GetStringValues('AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST');
 
     if ($configurationLogCategoriesList.Length -eq 0) {
         return $Assert.Pass();
@@ -112,7 +112,7 @@ Rule 'Azure.Automation.PlatformLogs' -Type 'Microsoft.Automation/automationAccou
         });
 
         $platformLogsEnabled = ($Assert.HasFieldValue($platformLogs, 'Length', $logCategoriesNeeded).Result -or 
-                                $Assert.Greater($allLogs, '.', 0).Result) -and 
+                                $Assert.Greater($allLogs, 'Length', 0).Result) -and 
                                $Assert.HasFieldValue($metricLogs, 'Length', $metricCategoriesNeeded).Result;
 
         $Assert.Create(
@@ -125,7 +125,7 @@ Rule 'Azure.Automation.PlatformLogs' -Type 'Microsoft.Automation/automationAccou
     }
 
 } -Configure @{
-    AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATAGORIES = @(
+    AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST = @(
         'JobLogs',
         'JobStreams',
         'DscNodeStatus',
