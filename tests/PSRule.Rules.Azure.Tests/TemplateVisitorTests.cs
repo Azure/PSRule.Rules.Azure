@@ -208,6 +208,12 @@ namespace PSRule.Rules.Azure
             Assert.Equal("PROD", actual1["tags"]["EnvUpper"].Value<string>());
             Assert.Equal("11111111-1111-1111-1111-111111111111", actual1["tags"]["TenantId"].Value<string>());
             Assert.Equal("Unit Test Tenant", actual1["tags"]["TenantDisplayName"].Value<string>());
+
+            var zones = actual1["tags"]["PickZones"].Values<string>().ToArray();
+            Assert.Equal(3, zones.Length);
+            Assert.Equal("1", zones[0]);
+            Assert.Equal("2", zones[1]);
+            Assert.Equal("3", zones[2]);
         }
 
         [Fact]

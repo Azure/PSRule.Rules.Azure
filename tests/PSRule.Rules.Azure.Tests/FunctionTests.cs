@@ -484,6 +484,27 @@ namespace PSRule.Rules.Azure
 
         [Fact]
         [Trait(TRAIT, TRAIT_RESOURCE)]
+        public void PickZones()
+        {
+            var context = GetContext();
+            var actual = Functions.PickZones(context, new object[] { "Microsoft.Compute", "virtualMachines", "westus2" }) as JArray;
+            Assert.Single(actual);
+            Assert.Equal("1", actual[0]);
+
+            actual = Functions.PickZones(context, new object[] { "Microsoft.Compute", "virtualMachines", "westus2", 2, 1 }) as JArray;
+            Assert.Equal(2, actual.Count);
+            Assert.Equal("2", actual[0]);
+            Assert.Equal("3", actual[1]);
+
+            actual = Functions.PickZones(context, new object[] { "Microsoft.Compute", "virtualMachines", "northcentralus" }) as JArray;
+            Assert.Empty(actual);
+
+            actual = Functions.PickZones(context, new object[] { "Microsoft.Cdn", "profiles", "westus2" }) as JArray;
+            Assert.Empty(actual);
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_RESOURCE)]
         public void Providers()
         {
             var context = GetContext();
@@ -491,12 +512,12 @@ namespace PSRule.Rules.Azure
             var actual1 = Functions.Providers(context, new object[] { "Microsoft.Web", "sites" }) as ResourceProviderType;
             Assert.NotNull(actual1);
             Assert.Equal("sites", actual1.ResourceType);
-            Assert.Equal("2020-06-01", actual1.ApiVersions[0]);
+            Assert.Equal("2021-03-01", actual1.ApiVersions[0]);
             Assert.Equal("South Central US", actual1.Locations[0]);
 
             var actual2 = Functions.Providers(context, new object[] { "Microsoft.Web" }) as ResourceProviderType[];
             Assert.NotNull(actual1);
-            Assert.Equal(51, actual2.Length);
+            Assert.Equal(64, actual2.Length);
 
             var actual3 = Functions.Providers(context, new object[] { "microsoft.web", "Sites" }) as ResourceProviderType;
             Assert.NotNull(actual3);

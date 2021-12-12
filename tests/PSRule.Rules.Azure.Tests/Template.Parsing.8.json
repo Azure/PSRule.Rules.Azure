@@ -51,7 +51,8 @@
             "Environment": "[parameters('environment')]",
             "EnvUpper": "[parameters('environmentUpper')]",
             "TenantId": "[tenant().tenantId]",
-            "TenantDisplayName": "[tenant().displayName]"
+            "TenantDisplayName": "[tenant().displayName]",
+            "PickZones": "[pickZones('Microsoft.Compute', 'virtualMachines', 'westus2', 3, 0)]"
         }
     },
     "resources": [
