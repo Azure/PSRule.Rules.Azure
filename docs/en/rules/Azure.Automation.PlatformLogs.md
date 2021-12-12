@@ -1,7 +1,7 @@
 ---
 severity: Important
-pillar: Security
-category: Monitor
+pillar: Operational Excellence
+category: Monitoring
 resource: Automation Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Automation.PlatformLogs/
 ---
