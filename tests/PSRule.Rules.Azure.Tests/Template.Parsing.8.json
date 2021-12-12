@@ -49,7 +49,9 @@
         "storageAccountResourceId": "[resourceId('Microsoft.Storage/storageAccounts', concat('flowlogs', uniquestring(resourceGroup().id)))]",
         "resourceTags": {
             "Environment": "[parameters('environment')]",
-            "EnvUpper": "[parameters('environmentUpper')]"
+            "EnvUpper": "[parameters('environmentUpper')]",
+            "TenantId": "[tenant().tenantId]",
+            "TenantDisplayName": "[tenant().displayName]"
         }
     },
     "resources": [

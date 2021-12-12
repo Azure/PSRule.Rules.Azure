@@ -17,6 +17,9 @@ What's changed since pre-release v1.11.0-B2111014:
 - Update rules:
   - Azure Kubernetes Service:
     - Promoted `Azure.AKS.AutoUpgrade` to GA rule set. [#1130](https://github.com/Azure/PSRule.Rules.Azure/issues/1130)
+- General improvements:
+  - Added support for template function `tenant()`. [#1124](https://github.com/Azure/PSRule.Rules.Azure/issues/1124)
+  - Added support for template function `managementGroup()`. [#1125](https://github.com/Azure/PSRule.Rules.Azure/issues/1125)
 - Bug fixes:
   - Fixed `Azure.Policy.WaiverExpiry` date conversion. [#1118](https://github.com/Azure/PSRule.Rules.Azure/issues/1118)
 

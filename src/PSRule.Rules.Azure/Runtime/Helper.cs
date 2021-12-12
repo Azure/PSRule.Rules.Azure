@@ -37,14 +37,19 @@ namespace PSRule.Rules.Azure.Runtime
             if (link == null)
                 return null;
 
-            var helper = new TemplateHelper(context, "helper", context.Option.Configuration.ResourceGroup, context.Option.Configuration.Subscription);
+            var helper = new TemplateHelper(
+                context,
+                "helper"
+            );
             return helper.ProcessTemplate(link.TemplateFile, link.ParameterFile, out _);
         }
 
         public static PSObject[] GetBicepResources(string bicepFile, PSCmdlet commandRuntime)
         {
             var context = GetContext(commandRuntime);
-            var bicep = new BicepHelper(context, context.Option.Configuration.ResourceGroup, context.Option.Configuration.Subscription);
+            var bicep = new BicepHelper(
+                context
+            );
             return bicep.ProcessFile(bicepFile);
         }
 

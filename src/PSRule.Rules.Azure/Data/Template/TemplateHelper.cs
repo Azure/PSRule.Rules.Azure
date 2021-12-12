@@ -18,15 +18,11 @@ namespace PSRule.Rules.Azure.Data.Template
     {
         private readonly PipelineContext Context;
         private readonly string _DeploymentName;
-        private readonly ResourceGroupOption _ResourceGroup;
-        private readonly SubscriptionOption _Subscription;
 
-        public TemplateHelper(PipelineContext context, string deploymentName, ResourceGroupOption resourceGroup, SubscriptionOption subscription)
+        public TemplateHelper(PipelineContext context, string deploymentName)
         {
             Context = context;
             _DeploymentName = deploymentName;
-            _ResourceGroup = resourceGroup;
-            _Subscription = subscription;
         }
 
         internal PSObject[] ProcessTemplate(string templateFile, string parameterFile, out TemplateVisitor.TemplateContext templateContext)
@@ -39,7 +35,7 @@ namespace PSRule.Rules.Azure.Data.Template
             var visitor = new RuleDataExportVisitor();
 
             // Load context
-            templateContext = new TemplateVisitor.TemplateContext(Context, _Subscription, _ResourceGroup);
+            templateContext = new TemplateVisitor.TemplateContext(Context);
             if (!string.IsNullOrEmpty(parameterFile))
             {
                 var rootedParameterFile = PSRuleOption.GetRootedPath(parameterFile);

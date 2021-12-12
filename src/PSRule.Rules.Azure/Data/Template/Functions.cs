@@ -92,11 +92,15 @@ namespace PSRule.Rules.Azure.Data.Template
             // pickZones
             new FunctionDescriptor("providers", Providers),
             new FunctionDescriptor("reference", Reference),
-            new FunctionDescriptor("resourceGroup", ResourceGroup),
             new FunctionDescriptor("resourceId", ResourceId),
-            new FunctionDescriptor("subscription", Subscription),
             new FunctionDescriptor("subscriptionResourceId", SubscriptionResourceId),
             new FunctionDescriptor("tenantResourceId", TenantResourceId),
+
+            // Scope
+            new FunctionDescriptor("resourceGroup", ResourceGroup),
+            new FunctionDescriptor("subscription", Subscription),
+            new FunctionDescriptor("tenant", Tenant),
+            new FunctionDescriptor("managementGroup", ManagementGroup),
 
             // String
             new FunctionDescriptor("base64", Base64),
@@ -731,17 +735,6 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         /// <summary>
-        /// resourceGroup()
-        /// </summary>
-        internal static object ResourceGroup(ITemplateContext context, object[] args)
-        {
-            if (CountArgs(args) > 0)
-                throw ArgumentsOutOfRange(nameof(ResourceGroup), args);
-
-            return context.ResourceGroup;
-        }
-
-        /// <summary>
         /// resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
         /// </summary>
         /// <returns>
@@ -790,17 +783,6 @@ namespace PSRule.Rules.Azure.Data.Template
                 }
             }
             return string.Concat("/subscriptions/", subscriptionId, "/resourceGroups/", resourceGroup, "/providers/", resourceType, "/", nameParts);
-        }
-
-        /// <summary>
-        /// subscription()
-        /// </summary>
-        internal static object Subscription(ITemplateContext context, object[] args)
-        {
-            if (CountArgs(args) > 0)
-                throw ArgumentsOutOfRange(nameof(Subscription), args);
-
-            return context.Subscription;
         }
 
         /// <summary>
@@ -891,6 +873,54 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         #endregion Resource
+
+        #region Scope
+
+        /// <summary>
+        /// resourceGroup()
+        /// </summary>
+        internal static object ResourceGroup(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw ArgumentsOutOfRange(nameof(ResourceGroup), args);
+
+            return context.ResourceGroup;
+        }
+
+        /// <summary>
+        /// subscription()
+        /// </summary>
+        internal static object Subscription(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw ArgumentsOutOfRange(nameof(Subscription), args);
+
+            return context.Subscription;
+        }
+
+        /// <summary>
+        /// tenant()
+        /// </summary>
+        internal static object Tenant(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw ArgumentsOutOfRange(nameof(Tenant), args);
+
+            return context.Tenant;
+        }
+
+        /// <summary>
+        /// managementGroup()
+        /// </summary>
+        internal static object ManagementGroup(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw ArgumentsOutOfRange(nameof(ManagementGroup), args);
+
+            return context.ManagementGroup;
+        }
+
+        #endregion Scope
 
         #region Numeric
 

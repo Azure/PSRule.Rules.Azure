@@ -29,6 +29,10 @@ namespace PSRule.Rules.Azure.Data.Template
 
         SubscriptionOption Subscription { get; }
 
+        TenantOption Tenant { get; }
+
+        ManagementGroupOption ManagementGroup { get; }
+
         ExpressionFnOuter BuildExpression(string s);
 
         CloudEnvironment GetEnvironment();
@@ -118,6 +122,8 @@ namespace PSRule.Rules.Azure.Data.Template
                 CopyIndex = new CopyIndexStore();
                 ResourceGroup = ResourceGroupOption.Default;
                 Subscription = SubscriptionOption.Default;
+                Tenant = TenantOption.Default;
+                ManagementGroup = ManagementGroupOption.Default;
                 _Deployment = new Stack<JObject>();
                 _ExpressionFactory = new ExpressionFactory();
                 _ExpressionBuilder = new ExpressionBuilder(_ExpressionFactory);
@@ -127,7 +133,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 _IsGenerated = null;
             }
 
-            internal TemplateContext(PipelineContext context, SubscriptionOption subscription, ResourceGroupOption resourceGroup)
+            internal TemplateContext(PipelineContext context, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup)
                 : this()
             {
                 Pipeline = context;
@@ -136,6 +142,29 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 if (resourceGroup != null)
                     ResourceGroup = resourceGroup;
+
+                if (tenant != null)
+                    Tenant = tenant;
+
+                if (managementGroup != null)
+                    ManagementGroup = managementGroup;
+            }
+
+            internal TemplateContext(PipelineContext context)
+                : this()
+            {
+                Pipeline = context;
+                if (context?.Option?.Configuration?.Subscription != null)
+                    Subscription = context?.Option?.Configuration?.Subscription;
+
+                if (context?.Option?.Configuration?.ResourceGroup != null)
+                    ResourceGroup = context?.Option?.Configuration?.ResourceGroup;
+
+                if (context?.Option?.Configuration?.Tenant != null)
+                    Tenant = context?.Option?.Configuration?.Tenant;
+
+                if (context?.Option?.Configuration?.ManagementGroup != null)
+                    ManagementGroup = context?.Option?.Configuration?.ManagementGroup;
             }
 
             private Dictionary<string, IParameterValue> Parameters { get; }
@@ -147,6 +176,10 @@ namespace PSRule.Rules.Azure.Data.Template
             public ResourceGroupOption ResourceGroup { get; internal set; }
 
             public SubscriptionOption Subscription { get; internal set; }
+
+            public TenantOption Tenant { get; internal set; }
+
+            public ManagementGroupOption ManagementGroup { get; internal set; }
 
             public JObject Deployment => _Deployment.Peek();
 
@@ -577,6 +610,10 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public SubscriptionOption Subscription => _Inner.Subscription;
 
+            public TenantOption Tenant => _Inner.Tenant;
+
+            public ManagementGroupOption ManagementGroup => _Inner.ManagementGroup;
+
             public ExpressionFnOuter BuildExpression(string s)
             {
                 return _Inner.BuildExpression(s);
@@ -973,6 +1010,8 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 var subscription = new SubscriptionOption(context.Subscription);
                 var resourceGroup = new ResourceGroupOption(context.ResourceGroup);
+                var tenant = new TenantOption(context.Tenant);
+                var managementGroup = new ManagementGroupOption(context.ManagementGroup);
                 if (TryStringProperty(resource, PROPERTY_SUBSCRIPTIONID, out string subscriptionId))
                     subscription.SubscriptionId = subscriptionId;
 
@@ -980,7 +1019,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     resourceGroup.Name = resourceGroupName;
 
                 resourceGroup.SubscriptionId = subscription.SubscriptionId;
-                deploymentContext = new TemplateContext(context.Pipeline, subscription, resourceGroup);
+                deploymentContext = new TemplateContext(context.Pipeline, subscription, resourceGroup, tenant, managementGroup);
                 if (TryObjectProperty(properties, PROPERTY_PARAMETERS, out JObject innerParameters))
                 {
                     foreach (var parameter in innerParameters.Properties())

@@ -1,13 +1,14 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using System.Collections;
 using System.ComponentModel;
 using YamlDotNet.Serialization;
 
 namespace PSRule.Rules.Azure.Configuration
 {
-    public sealed class ResourceGroupOption
+    public sealed class ResourceGroupOption : IEquatable<ResourceGroupOption>
     {
         private const string DEFAULT_SUBSCRIPTIONID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
         private const string DEFAULT_NAME = "ps-rule-test-rg";
@@ -92,6 +93,22 @@ namespace PSRule.Rules.Azure.Configuration
                 ManagedBy == other.ManagedBy &&
                 Tags == other.Tags &&
                 Properties == other.Properties;
+        }
+
+        public static bool operator ==(ResourceGroupOption o1, ResourceGroupOption o2)
+        {
+            return Equals(o1, o2);
+        }
+
+        public static bool operator !=(ResourceGroupOption o1, ResourceGroupOption o2)
+        {
+            return !Equals(o1, o2);
+        }
+
+        public static bool Equals(ResourceGroupOption o1, ResourceGroupOption o2)
+        {
+            return (object.Equals(null, o1) && object.Equals(null, o2)) ||
+                (!object.Equals(null, o1) && o1.Equals(o2));
         }
 
         public override int GetHashCode()

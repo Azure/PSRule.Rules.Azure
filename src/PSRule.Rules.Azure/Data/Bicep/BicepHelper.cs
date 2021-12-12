@@ -24,16 +24,12 @@ namespace PSRule.Rules.Azure.Data.Bicep
         private static readonly char[] WINDOWS_PATH_ENV_SEPARATOR = new char[] { ';' };
 
         private readonly PipelineContext Context;
-        private readonly ResourceGroupOption _ResourceGroup;
-        private readonly SubscriptionOption _Subscription;
 
         private static BicepInfo _Bicep;
 
-        public BicepHelper(PipelineContext context, ResourceGroupOption resourceGroup, SubscriptionOption subscription)
+        public BicepHelper(PipelineContext context)
         {
             Context = context;
-            _ResourceGroup = resourceGroup;
-            _Subscription = subscription;
         }
 
         internal sealed class BicepInfo
@@ -222,7 +218,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
             var visitor = new RuleDataExportVisitor();
 
             // Load context
-            var templateContext = new TemplateVisitor.TemplateContext(Context, _Subscription, _ResourceGroup);
+            var templateContext = new TemplateVisitor.TemplateContext(Context);
 
             // Process
             try
