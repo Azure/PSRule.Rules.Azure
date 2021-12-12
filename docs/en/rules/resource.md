@@ -109,8 +109,10 @@ Name | Synopsis | Severity
 
 Name | Synopsis | Severity
 ---- | -------- | --------
+[Azure.Automation.AuditLogs](Azure.Automation.AuditLogs.md) | Ensure automation account audit diagnostic logs are enabled. | Important
 [Azure.Automation.EncryptVariables](Azure.Automation.EncryptVariables.md) | Azure Automation variables should be encrypted. | Important
 [Azure.Automation.ManagedIdentity](Azure.Automation.ManagedIdentity.md) | Ensure managed identity is used for authentication. | Important
+[Azure.Automation.PlatformLogs](Azure.Automation.PlatformLogs.md) | Ensure automation account platform diagnostic logs are enabled. | Important
 [Azure.Automation.WebHookExpiry](Azure.Automation.WebHookExpiry.md) | Do not create webhooks with an expiry time greater than 1 year (default). | Awareness
 
 ## Azure Cache for Redis

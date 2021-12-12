@@ -282,3 +282,30 @@ Example:
 configuration:
   AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: ['cluster-autoscaler', 'AllMetrics']
 ```
+
+### Azure Automation Account enabled platform log categories list
+
+This configuration option sets selective platform diagnostic categories to report on being enabled.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: array
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option
+configuration:
+  AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: ['JobLogs', 'JobStreams', 'DscNodeStatus', 'AllMetrics']
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to JobLogs and AllMetrics categories only. 
+configuration:
+  AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: ['JobLogs', 'AllMetrics']
+```

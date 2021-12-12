@@ -14,6 +14,8 @@ What's changed since pre-release v1.11.0-B2111014:
     - Check clusters have the HTTP application routing add-on disabled. [#1131](https://github.com/Azure/PSRule.Rules.Azure/issues/1131)
     - Check clusters use the Secrets Store CSI Driver add-on. [#992](https://github.com/Azure/PSRule.Rules.Azure/issues/992)
     - Check clusters autorotation with the Secrets Store CSI Driver add-on. [#993](https://github.com/Azure/PSRule.Rules.Azure/issues/993)
+  - Automation Account:
+    - Automation accounts should enable diagnostic logs. [#1075](https://github.com/Azure/PSRule.Rules.Azure/issues/1075)
 - Update rules:
   - Azure Kubernetes Service:
     - Promoted `Azure.AKS.AutoUpgrade` to GA rule set. [#1130](https://github.com/Azure/PSRule.Rules.Azure/issues/1130)

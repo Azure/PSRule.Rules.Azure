@@ -66,3 +66,4 @@ configuration:
       - "1"
       - "2"
       - "3"
+  AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: ['JobLogs', 'AllMetrics']
