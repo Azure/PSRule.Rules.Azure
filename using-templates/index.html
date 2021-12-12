@@ -5454,24 +5454,29 @@ By default this is an offline process, requiring no connectivity to Azure.
 Some functions that may be included in templates dynamically query Azure for current state.
 For these functions standard placeholder values are used by default.
 Functions that use placeholders include <code>reference</code>, <code>list*</code>.</p>
-<p>The <code>subscription()</code> function will return the following unless overridden:</p>
-<ul>
-<li>subscriptionId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'</li>
-<li>tenantId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'</li>
-<li>displayName: 'PSRule Test Subscription'</li>
-<li>state: 'NotDefined'</li>
-</ul>
-<p>The <code>resourceGroup()</code> function will return the following unless overridden:</p>
-<ul>
-<li>name: 'ps-rule-test-rg'</li>
-<li>location: 'eastus'</li>
-<li>tags: { }</li>
-<li>properties:<ul>
-<li>provisioningState: 'Succeeded'</li>
-</ul>
-</li>
-</ul>
-<p>To override, set the <code>AZURE_SUBSCRIPTION</code> and <code>AZURE_RESOURCE_GROUP</code> in configuration.</p>
+<p>The <code>subscription()</code> function will return the following unless overridden with <code>AZURE_SUBSCRIPTION</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">subscriptionId</span><span class="p">:</span> <span class="s">&#39;ffffffff-ffff-ffff-ffff-ffffffffffff&#39;</span>
+<span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;PSRule</span><span class="nv"> </span><span class="s">Test</span><span class="nv"> </span><span class="s">Subscription&#39;</span>
+<span class="nt">state</span><span class="p">:</span> <span class="s">&#39;NotDefined&#39;</span>
+</code></pre></div>
+<p>The <code>resourceGroup()</code> function will return the following unless overridden with <code>AZURE_RESOURCE_GROUP</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="s">&#39;ps-rule-test-rg&#39;</span>
+<span class="nt">location</span><span class="p">:</span> <span class="s">&#39;eastus&#39;</span>
+<span class="nt">tags</span><span class="p">:</span> <span class="p p-Indicator">{</span> <span class="p p-Indicator">}</span>
+<span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">provisioningState</span><span class="p">:</span> <span class="s">&#39;Succeeded&#39;</span>
+</code></pre></div>
+<p>The <code>tenant()</code> function will return the following unless overridden with <code>AZURE_TENANT</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">countryCode</span><span class="p">:</span> <span class="s">&#39;US&#39;</span>
+<span class="nt">tenantId</span><span class="p">:</span> <span class="s">&#39;ffffffff-ffff-ffff-ffff-ffffffffffff&#39;</span>
+<span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;PSRule&#39;</span>
+</code></pre></div>
+<p>The <code>managementGroup()</code> function will return the following unless overridden with <code>AZURE_MANAGEMENT_GROUP</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="s">&#39;psrule-test&#39;</span>
+<span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">displyName</span><span class="p">:</span> <span class="s">&#39;PSRule</span><span class="nv"> </span><span class="s">Test</span><span class="nv"> </span><span class="s">Management</span><span class="nv"> </span><span class="s">Group&#39;</span>
+</code></pre></div>
+<p>To override, see <a href="../setup/configuring-expansion/">Configuring expansion</a>.</p>
 <p>Currently the following limitations apply:</p>
 <ul>
 <li>Nested templates are expanded, external templates are not.<ul>
@@ -5484,7 +5489,6 @@ Automatic nesting a sub-resource requires:<ul>
 <li>The sub-resource depends on the parent resource.</li>
 </ul>
 </li>
-<li>The <code>pickZones</code> template function is not supported.</li>
 <li>The <code>environment</code> template function always returns values for Azure public cloud.</li>
 <li>References to Key Vault secrets are not expanded.
   A placeholder value is used instead.</li>
