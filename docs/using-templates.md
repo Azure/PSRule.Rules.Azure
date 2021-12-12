@@ -46,22 +46,41 @@ Some functions that may be included in templates dynamically query Azure for cur
 For these functions standard placeholder values are used by default.
 Functions that use placeholders include `reference`, `list*`.
 
-The `subscription()` function will return the following unless overridden:
+The `subscription()` function will return the following unless overridden with `AZURE_SUBSCRIPTION`:
 
-- subscriptionId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
-- tenantId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
-- displayName: 'PSRule Test Subscription'
-- state: 'NotDefined'
+```yaml
+subscriptionId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+displayName: 'PSRule Test Subscription'
+state: 'NotDefined'
+```
 
-The `resourceGroup()` function will return the following unless overridden:
+The `resourceGroup()` function will return the following unless overridden with `AZURE_RESOURCE_GROUP`:
 
-- name: 'ps-rule-test-rg'
-- location: 'eastus'
-- tags: { }
-- properties:
-  - provisioningState: 'Succeeded'
+```yaml
+name: 'ps-rule-test-rg'
+location: 'eastus'
+tags: { }
+properties:
+  provisioningState: 'Succeeded'
+```
 
-To override, set the `AZURE_SUBSCRIPTION` and `AZURE_RESOURCE_GROUP` in configuration.
+The `tenant()` function will return the following unless overridden with `AZURE_TENANT`:
+
+```yaml
+countryCode: 'US'
+tenantId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+displayName: 'PSRule'
+```
+
+The `managementGroup()` function will return the following unless overridden with `AZURE_MANAGEMENT_GROUP`:
+
+```yaml
+name: 'psrule-test'
+properties:
+  displyName: 'PSRule Test Management Group'
+```
+
+To override, see [Configuring expansion](setup/configuring-expansion.md).
 
 Currently the following limitations apply:
 
@@ -71,7 +90,6 @@ Currently the following limitations apply:
 Automatic nesting a sub-resource requires:
   - The parent resource is defined in the same template.
   - The sub-resource depends on the parent resource.
-- The `pickZones` template function is not supported.
 - The `environment` template function always returns values for Azure public cloud.
 - References to Key Vault secrets are not expanded.
   A placeholder value is used instead.

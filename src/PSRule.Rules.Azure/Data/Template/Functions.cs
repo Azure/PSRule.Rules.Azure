@@ -89,14 +89,18 @@ namespace PSRule.Rules.Azure.Data.Template
             // Resource
             new FunctionDescriptor("extensionResourceId", ExtensionResourceId),
             new FunctionDescriptor("list", List), // Includes listAccountSas, listKeys, listSecrets, list*
-            // pickZones
+            new FunctionDescriptor("pickZones", PickZones),
             new FunctionDescriptor("providers", Providers),
             new FunctionDescriptor("reference", Reference),
-            new FunctionDescriptor("resourceGroup", ResourceGroup),
             new FunctionDescriptor("resourceId", ResourceId),
-            new FunctionDescriptor("subscription", Subscription),
             new FunctionDescriptor("subscriptionResourceId", SubscriptionResourceId),
             new FunctionDescriptor("tenantResourceId", TenantResourceId),
+
+            // Scope
+            new FunctionDescriptor("resourceGroup", ResourceGroup),
+            new FunctionDescriptor("subscription", Subscription),
+            new FunctionDescriptor("tenant", Tenant),
+            new FunctionDescriptor("managementGroup", ManagementGroup),
 
             // String
             new FunctionDescriptor("base64", Base64),
@@ -697,6 +701,50 @@ namespace PSRule.Rules.Azure.Data.Template
             return new MockList(resourceId);
         }
 
+        /// <summary>
+        /// pickZones(providerNamespace, resourceType, location, [numberOfZones], [offset])
+        /// </summary>
+        internal static object PickZones(ITemplateContext context, object[] args)
+        {
+            var argCount = CountArgs(args);
+            if (argCount < 3 || argCount > 5)
+                throw ArgumentsOutOfRange(nameof(PickZones), args);
+
+            if (!ExpressionHelpers.TryString(args[0], out string providerNamespace))
+                throw ArgumentInvalidString(nameof(PickZones), "providerNamespace");
+
+            if (!ExpressionHelpers.TryString(args[1], out string resourceType))
+                throw ArgumentInvalidString(nameof(PickZones), "resourceType");
+
+            if (!ExpressionHelpers.TryString(args[2], out string location))
+                throw ArgumentInvalidString(nameof(PickZones), "location");
+
+            var numberOfZones = 1;
+            if (argCount > 3 && !ExpressionHelpers.TryInt(args[3], out numberOfZones))
+                throw ArgumentInvalidInteger(nameof(PickZones), "numberOfZones");
+
+            var offset = 0;
+            if (argCount > 4 && !ExpressionHelpers.TryInt(args[4], out offset))
+                throw ArgumentInvalidInteger(nameof(PickZones), "offset");
+
+            var resourceTypes = context.GetResourceType(providerNamespace, resourceType);
+            if (resourceTypes == null || resourceTypes.Length == 0)
+                throw ArgumentInvalidResourceType(nameof(PickZones), providerNamespace, resourceType);
+
+            if (resourceTypes[0].ZoneMappings == null || resourceTypes[0].ZoneMappings.Length == 0)
+                return new JArray();
+
+            var mapping = resourceTypes[0].ZoneMappings.Where(z => LocationHelper.Equal(location, z.Location)).FirstOrDefault();
+            if (mapping.Zones.Length == 0)
+                return new JArray();
+
+            if (mapping.Zones.Length < numberOfZones + offset)
+                throw ArgumentsOutOfRange(nameof(PickZones), args);
+
+            var zones = mapping.Zones.Skip(offset).Take(numberOfZones).ToArray();
+            return new JArray(zones);
+        }
+
         internal static object Providers(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
@@ -728,17 +776,6 @@ namespace PSRule.Rules.Azure.Data.Template
 
             ExpressionHelpers.TryString(args[0], out string resourceType);
             return new MockResource(resourceType);
-        }
-
-        /// <summary>
-        /// resourceGroup()
-        /// </summary>
-        internal static object ResourceGroup(ITemplateContext context, object[] args)
-        {
-            if (CountArgs(args) > 0)
-                throw ArgumentsOutOfRange(nameof(ResourceGroup), args);
-
-            return context.ResourceGroup;
         }
 
         /// <summary>
@@ -790,17 +827,6 @@ namespace PSRule.Rules.Azure.Data.Template
                 }
             }
             return string.Concat("/subscriptions/", subscriptionId, "/resourceGroups/", resourceGroup, "/providers/", resourceType, "/", nameParts);
-        }
-
-        /// <summary>
-        /// subscription()
-        /// </summary>
-        internal static object Subscription(ITemplateContext context, object[] args)
-        {
-            if (CountArgs(args) > 0)
-                throw ArgumentsOutOfRange(nameof(Subscription), args);
-
-            return context.Subscription;
         }
 
         /// <summary>
@@ -891,6 +917,54 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         #endregion Resource
+
+        #region Scope
+
+        /// <summary>
+        /// resourceGroup()
+        /// </summary>
+        internal static object ResourceGroup(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw ArgumentsOutOfRange(nameof(ResourceGroup), args);
+
+            return context.ResourceGroup;
+        }
+
+        /// <summary>
+        /// subscription()
+        /// </summary>
+        internal static object Subscription(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw ArgumentsOutOfRange(nameof(Subscription), args);
+
+            return context.Subscription;
+        }
+
+        /// <summary>
+        /// tenant()
+        /// </summary>
+        internal static object Tenant(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw ArgumentsOutOfRange(nameof(Tenant), args);
+
+            return context.Tenant;
+        }
+
+        /// <summary>
+        /// managementGroup()
+        /// </summary>
+        internal static object ManagementGroup(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0)
+                throw ArgumentsOutOfRange(nameof(ManagementGroup), args);
+
+            return context.ManagementGroup;
+        }
+
+        #endregion Scope
 
         #region Numeric
 

@@ -1,13 +1,14 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using System.Collections;
 using System.ComponentModel;
 using YamlDotNet.Serialization;
 
 namespace PSRule.Rules.Azure.Configuration
 {
-    public sealed class SubscriptionOption
+    public sealed class SubscriptionOption : IEquatable<SubscriptionOption>
     {
         private const string DEFAULT_SUBSCRIPTIONID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
         private const string DEFAULT_TENANTID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
@@ -62,9 +63,25 @@ namespace PSRule.Rules.Azure.Configuration
         {
             return other != null &&
                 SubscriptionId == other.SubscriptionId &&
-                TenantId == other.TenantId &&
+               TenantId == other.TenantId &&
                 DisplayName == other.DisplayName &&
                 State == other.State;
+        }
+
+        public static bool operator ==(SubscriptionOption o1, SubscriptionOption o2)
+        {
+            return Equals(o1, o2);
+        }
+
+        public static bool operator !=(SubscriptionOption o1, SubscriptionOption o2)
+        {
+            return !Equals(o1, o2);
+        }
+
+        public static bool Equals(SubscriptionOption o1, SubscriptionOption o2)
+        {
+            return (object.Equals(null, o1) && object.Equals(null, o2)) ||
+                (!object.Equals(null, o1) && o1.Equals(o2));
         }
 
         public override int GetHashCode()

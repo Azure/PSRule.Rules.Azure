@@ -206,6 +206,14 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Microsoft.Network/networkWatchers/flowLogs", actual1["type"].Value<string>());
             Assert.Equal("prod", actual1["tags"]["Environment"].Value<string>());
             Assert.Equal("PROD", actual1["tags"]["EnvUpper"].Value<string>());
+            Assert.Equal("11111111-1111-1111-1111-111111111111", actual1["tags"]["TenantId"].Value<string>());
+            Assert.Equal("Unit Test Tenant", actual1["tags"]["TenantDisplayName"].Value<string>());
+
+            var zones = actual1["tags"]["PickZones"].Values<string>().ToArray();
+            Assert.Equal(3, zones.Length);
+            Assert.Equal("1", zones[0]);
+            Assert.Equal("2", zones[1]);
+            Assert.Equal("3", zones[2]);
         }
 
         [Fact]
@@ -278,7 +286,7 @@ namespace PSRule.Rules.Azure
         private static JObject[] ProcessTemplate(string templateFile, string parametersFile)
         {
             var context = new PipelineContext(PSRuleOption.Default, null);
-            var helper = new TemplateHelper(context, "deployment", PSRuleOption.Default.Configuration.ResourceGroup, PSRuleOption.Default.Configuration.Subscription);
+            var helper = new TemplateHelper(context, "deployment");
             helper.ProcessTemplate(templateFile, parametersFile, out TemplateContext templateContext);
             return templateContext.GetResources().Select(i => i.Value).ToArray();
         }
@@ -286,7 +294,7 @@ namespace PSRule.Rules.Azure
         private static JObject[] ProcessTemplate(string templateFile, string parametersFile, PSRuleOption option)
         {
             var context = new PipelineContext(option, null);
-            var helper = new TemplateHelper(context, "deployment", option.Configuration.ResourceGroup, option.Configuration.Subscription);
+            var helper = new TemplateHelper(context, "deployment");
             helper.ProcessTemplate(templateFile, parametersFile, out TemplateContext templateContext);
             return templateContext.GetResources().Select(i => i.Value).ToArray();
         }

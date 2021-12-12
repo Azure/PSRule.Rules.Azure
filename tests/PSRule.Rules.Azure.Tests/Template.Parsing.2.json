@@ -126,7 +126,7 @@
             },
             {
                 "objectId": "00000000-0000-0000-0000-000000000001",
-                "tenantId": "[subscription().tenantId]",
+                "tenantId": "[tenant().tenantId]",
                 "permissions": {
                     "secrets": [
                         "Get",

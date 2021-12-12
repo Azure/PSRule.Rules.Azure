@@ -94,7 +94,7 @@ namespace PSRule.Rules.Azure.Configuration
 
             // Return empty options if file does not exist
             var result = !File.Exists(filePath) ? new PSRuleOption() : FromYaml(path: filePath, yaml: File.ReadAllText(filePath));
-            return PSRuleOption.Combine(result, PSRuleOption.Default);
+            return Combine(result, Default);
         }
 
         private static PSRuleOption Combine(PSRuleOption o1, PSRuleOption o2)
@@ -113,6 +113,7 @@ namespace PSRule.Rules.Azure.Configuration
                 .IgnoreUnmatchedProperties()
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
                 .Build();
+
             var option = d.Deserialize<PSRuleOption>(yaml) ?? new PSRuleOption();
             option.SourcePath = path;
             return option;

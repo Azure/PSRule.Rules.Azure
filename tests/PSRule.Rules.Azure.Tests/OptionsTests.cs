@@ -14,16 +14,31 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void GetOptions()
         {
-            var actual1 = PSRuleOption.FromFileOrDefault(null);
-            var actual2 = PSRuleOption.FromFileOrDefault(GetSourcePath("ps-rule-options.yaml"));
+            var actual = PSRuleOption.FromFileOrDefault(null);
+            Assert.NotNull(actual);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Configuration.Subscription.SubscriptionId);
+            Assert.Equal("PSRule Test Subscription", actual.Configuration.Subscription.DisplayName);
+            Assert.Null(actual.Configuration.ResourceGroup.Tags);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Configuration.Tenant.TenantId);
+            Assert.Equal("PSRule", actual.Configuration.Tenant.DisplayName);
+            Assert.Equal("US", actual.Configuration.Tenant.CountryCode);
+            Assert.Equal("psrule-test", actual.Configuration.ManagementGroup.Name);
+            Assert.Equal("PSRule Test Management Group", actual.Configuration.ManagementGroup.Properties.DisplayName);
 
-            Assert.NotNull(actual1);
-            Assert.Equal("PSRule Test Subscription", actual1.Configuration.Subscription.DisplayName);
-            Assert.Null(actual1.Configuration.ResourceGroup.Tags);
+            actual = PSRuleOption.FromFileOrDefault("test-template-options.yaml");
+            Assert.NotNull(actual);
+            Assert.True(PSRuleOption.Default.Configuration.Equals(actual.Configuration));
 
-            Assert.NotNull(actual2);
-            Assert.Equal("Unit Test Subscription", actual2.Configuration.Subscription.DisplayName);
-            Assert.Equal("prod", actual2.Configuration.ResourceGroup.Tags["env"]);
+            actual = PSRuleOption.FromFileOrDefault(GetSourcePath("ps-rule-options.yaml"));
+            Assert.NotNull(actual);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Configuration.Subscription.SubscriptionId);
+            Assert.Equal("Unit Test Subscription", actual.Configuration.Subscription.DisplayName);
+            Assert.Equal("prod", actual.Configuration.ResourceGroup.Tags["env"]);
+            Assert.Equal("11111111-1111-1111-1111-111111111111", actual.Configuration.Tenant.TenantId);
+            Assert.Equal("Unit Test Tenant", actual.Configuration.Tenant.DisplayName);
+            Assert.Equal("AU", actual.Configuration.Tenant.CountryCode);
+            Assert.Equal("unit-test-mg", actual.Configuration.ManagementGroup.Name);
+            Assert.Equal("My test management group", actual.Configuration.ManagementGroup.Properties.DisplayName);
         }
 
         [Fact]

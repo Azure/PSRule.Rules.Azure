@@ -2,7 +2,9 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
@@ -23,6 +25,7 @@ namespace PSRule.Rules.Azure
         private const string TRAIT_NUMERIC = "Numeric";
         private const string TRAIT_STRING = "String";
         private const string TRAIT_RESOURCE = "Resource";
+        private const string TRAIT_SCOPE = "Scope";
 
         #region Array and object
 
@@ -481,6 +484,27 @@ namespace PSRule.Rules.Azure
 
         [Fact]
         [Trait(TRAIT, TRAIT_RESOURCE)]
+        public void PickZones()
+        {
+            var context = GetContext();
+            var actual = Functions.PickZones(context, new object[] { "Microsoft.Compute", "virtualMachines", "westus2" }) as JArray;
+            Assert.Single(actual);
+            Assert.Equal("1", actual[0]);
+
+            actual = Functions.PickZones(context, new object[] { "Microsoft.Compute", "virtualMachines", "westus2", 2, 1 }) as JArray;
+            Assert.Equal(2, actual.Count);
+            Assert.Equal("2", actual[0]);
+            Assert.Equal("3", actual[1]);
+
+            actual = Functions.PickZones(context, new object[] { "Microsoft.Compute", "virtualMachines", "northcentralus" }) as JArray;
+            Assert.Empty(actual);
+
+            actual = Functions.PickZones(context, new object[] { "Microsoft.Cdn", "profiles", "westus2" }) as JArray;
+            Assert.Empty(actual);
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_RESOURCE)]
         public void Providers()
         {
             var context = GetContext();
@@ -488,12 +512,12 @@ namespace PSRule.Rules.Azure
             var actual1 = Functions.Providers(context, new object[] { "Microsoft.Web", "sites" }) as ResourceProviderType;
             Assert.NotNull(actual1);
             Assert.Equal("sites", actual1.ResourceType);
-            Assert.Equal("2020-06-01", actual1.ApiVersions[0]);
+            Assert.Equal("2021-03-01", actual1.ApiVersions[0]);
             Assert.Equal("South Central US", actual1.Locations[0]);
 
             var actual2 = Functions.Providers(context, new object[] { "Microsoft.Web" }) as ResourceProviderType[];
             Assert.NotNull(actual1);
-            Assert.Equal(51, actual2.Length);
+            Assert.Equal(64, actual2.Length);
 
             var actual3 = Functions.Providers(context, new object[] { "microsoft.web", "Sites" }) as ResourceProviderType;
             Assert.NotNull(actual3);
@@ -521,16 +545,6 @@ namespace PSRule.Rules.Azure
 
         [Fact]
         [Trait(TRAIT, TRAIT_RESOURCE)]
-        public void ResourceGroup()
-        {
-            var context = GetContext();
-
-            var actual1 = Functions.ResourceGroup(context, null) as ResourceGroupOption;
-            Assert.Equal("ps-rule-test-rg", actual1.Name);
-        }
-
-        [Fact]
-        [Trait(TRAIT, TRAIT_RESOURCE)]
         public void ResourceId()
         {
             var context = GetContext();
@@ -552,19 +566,6 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ExpressionArgumentException>(() => Functions.ResourceId(context, new object[] { "Unit.Test/type" }));
             Assert.Throws<TemplateFunctionException>(() => Functions.ResourceId(context, new object[] { "Unit.Test/type", "a", "b" }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.ResourceId(context, new object[] { "Unit.Test/type", 1 }));
-        }
-
-        [Fact]
-        [Trait(TRAIT, TRAIT_RESOURCE)]
-        public void Subscription()
-        {
-            var context = GetContext();
-
-            var actual1 = Functions.Subscription(context, null) as SubscriptionOption;
-            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual1.SubscriptionId);
-            Assert.Equal("PSRule Test Subscription", actual1.DisplayName);
-            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual1.TenantId);
-            Assert.Equal("NotDefined", actual1.State);
         }
 
         [Fact]
@@ -609,6 +610,109 @@ namespace PSRule.Rules.Azure
         }
 
         #endregion Resource
+
+        #region Scope
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_SCOPE)]
+        public void ResourceGroup()
+        {
+            var context = GetContext();
+
+            var actual1 = Functions.ResourceGroup(context, null) as ResourceGroupOption;
+            Assert.Equal("ps-rule-test-rg", actual1.Name);
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_SCOPE)]
+        public void Subscription()
+        {
+            var context = GetContext();
+
+            var actual1 = Functions.Subscription(context, null) as SubscriptionOption;
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual1.SubscriptionId);
+            Assert.Equal("PSRule Test Subscription", actual1.DisplayName);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual1.TenantId);
+            Assert.Equal("NotDefined", actual1.State);
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_SCOPE)]
+        public void Tenant()
+        {
+            var context = GetContext();
+            var actual = Functions.Tenant(context, null) as TenantOption;
+            Assert.Equal("/tenants/ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Id);
+            Assert.Equal("PSRule", actual.DisplayName);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.TenantId);
+            Assert.Equal("US", actual.CountryCode);
+
+            context = GetContext(GetOption("test-template-options.yaml"));
+            actual = Functions.Tenant(context, null) as TenantOption;
+            Assert.Equal("/tenants/ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Id);
+            Assert.Equal("PSRule", actual.DisplayName);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.TenantId);
+            Assert.Equal("US", actual.CountryCode);
+
+            context = GetContext(GetOption("ps-rule-options.yaml"));
+            actual = Functions.Tenant(context, null) as TenantOption;
+            Assert.Equal("/tenants/11111111-1111-1111-1111-111111111111", actual.Id);
+            Assert.Equal("Unit Test Tenant", actual.DisplayName);
+            Assert.Equal("11111111-1111-1111-1111-111111111111", actual.TenantId);
+            Assert.Equal("AU", actual.CountryCode);
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_SCOPE)]
+        public void ManagementGroup()
+        {
+            var context = GetContext();
+            var actual = Functions.ManagementGroup(context, null) as ManagementGroupOption;
+            Assert.Equal("/providers/Microsoft.Management/managementGroups/psrule-test", actual.Id);
+            Assert.Equal("psrule-test", actual.Name);
+            Assert.Equal("/providers/Microsoft.Management/managementGroups", actual.Type);
+            Assert.NotNull(actual.Properties);
+            Assert.Equal("PSRule Test Management Group", actual.Properties.DisplayName);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Properties.TenantId);
+            Assert.Equal("Tenant Root Group", actual.Properties.Details.Parent.DisplayName);
+            Assert.Equal("/providers/Microsoft.Management/managementGroups/ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Properties.Details.Parent.Id);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Properties.Details.Parent.Name);
+            Assert.Equal("00000000-0000-0000-0000-000000000000", actual.Properties.Details.UpdatedBy);
+            Assert.Equal("2020-07-23T21:05:52.661306Z", actual.Properties.Details.UpdatedTime);
+            Assert.Equal("1", actual.Properties.Details.Version);
+
+            context = GetContext(GetOption("test-template-options.yaml"));
+            actual = Functions.ManagementGroup(context, null) as ManagementGroupOption;
+            Assert.Equal("/providers/Microsoft.Management/managementGroups/psrule-test", actual.Id);
+            Assert.Equal("psrule-test", actual.Name);
+            Assert.Equal("/providers/Microsoft.Management/managementGroups", actual.Type);
+            Assert.NotNull(actual.Properties);
+            Assert.Equal("PSRule Test Management Group", actual.Properties.DisplayName);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Properties.TenantId);
+            Assert.Equal("Tenant Root Group", actual.Properties.Details.Parent.DisplayName);
+            Assert.Equal("/providers/Microsoft.Management/managementGroups/ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Properties.Details.Parent.Id);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Properties.Details.Parent.Name);
+            Assert.Equal("00000000-0000-0000-0000-000000000000", actual.Properties.Details.UpdatedBy);
+            Assert.Equal("2020-07-23T21:05:52.661306Z", actual.Properties.Details.UpdatedTime);
+            Assert.Equal("1", actual.Properties.Details.Version);
+
+            context = GetContext(GetOption("ps-rule-options.yaml"));
+            actual = Functions.ManagementGroup(context, null) as ManagementGroupOption;
+            Assert.Equal("/providers/Microsoft.Management/managementGroups/unit-test-mg", actual.Id);
+            Assert.Equal("unit-test-mg", actual.Name);
+            Assert.Equal("/providers/Microsoft.Management/managementGroups", actual.Type);
+            Assert.NotNull(actual.Properties);
+            Assert.Equal("My test management group", actual.Properties.DisplayName);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Properties.TenantId);
+            Assert.Equal("Tenant Root Group", actual.Properties.Details.Parent.DisplayName);
+            Assert.Equal("/providers/Microsoft.Management/managementGroups/ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Properties.Details.Parent.Id);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Properties.Details.Parent.Name);
+            Assert.Equal("00000000-0000-0000-0000-000000000000", actual.Properties.Details.UpdatedBy);
+            Assert.Equal("2020-07-23T21:05:52.661306Z", actual.Properties.Details.UpdatedTime);
+            Assert.Equal("1", actual.Properties.Details.Version);
+        }
+
+        #endregion Scope
 
         #region Deployment
 
@@ -1513,10 +1617,36 @@ namespace PSRule.Rules.Azure
             var context = new TemplateContext
             {
                 ResourceGroup = ResourceGroupOption.Default,
-                Subscription = SubscriptionOption.Default
+                Subscription = SubscriptionOption.Default,
+                Tenant = TenantOption.Default,
+                ManagementGroup = ManagementGroupOption.Default,
             };
             context.Load(JObject.Parse("{ \"parameters\": { \"name\": { \"value\": \"abcdef\" } } }"));
             return context;
+        }
+
+        private static TemplateContext GetContext(PSRuleOption option)
+        {
+            var context = new TemplateContext
+            {
+                ResourceGroup = option.Configuration.ResourceGroup,
+                Subscription = option.Configuration.Subscription,
+                Tenant = option.Configuration.Tenant,
+                ManagementGroup = option.Configuration.ManagementGroup,
+            };
+            context.Load(JObject.Parse("{ \"parameters\": { \"name\": { \"value\": \"abcdef\" } } }"));
+            return context;
+        }
+
+        private static PSRuleOption GetOption(string fileName)
+        {
+            return PSRuleOption.FromFileOrDefault(GetSourcePath(fileName));
+        }
+
+        [DebuggerStepThrough]
+        private static string GetSourcePath(string fileName)
+        {
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
         }
     }
 

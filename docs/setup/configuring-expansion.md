@@ -175,7 +175,6 @@ Syntax:
 configuration:
   AZURE_SUBSCRIPTION:
     subscriptionId: string
-    tenantId: string
     displayName: string
     state: string
 ```
@@ -187,7 +186,6 @@ Default:
 configuration:
   AZURE_SUBSCRIPTION:
     subscriptionId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
-    tenantId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
     displayName: 'PSRule Test Subscription'
     state: 'NotDefined'
 ```
@@ -196,8 +194,88 @@ Example:
 
 ```yaml
 # YAML: Override the display name of the subscription object
+configuration:
   AZURE_SUBSCRIPTION:
     displayName: 'My test subscription'
+```
+
+### Deployment tenant
+
+:octicons-milestone-24: v1.11.0
+
+This configuration option sets the tenant object used by the `tenant()` function.
+Configure this option to change the tenant object when using exporting templates for analysis.
+Provided properties will override the default.
+Any properties that are not provided with use the defaults as specified below.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_TENANT:
+    countryCode: string
+    tenantId: string
+    displayName: string
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_TENANT configuration option
+configuration:
+  AZURE_TENANT:
+    countryCode: 'US'
+    tenantId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+    displayName: 'PSRule'
+```
+
+Example:
+
+```yaml
+# YAML: Override the display name of the tenant object
+configuration:
+  AZURE_TENANT:
+    displayName: 'Contoso'
+```
+
+### Deployment management group
+
+:octicons-milestone-24: v1.11.0
+
+This configuration option sets the management group object used by the `managementGroup()` function.
+Configure this option to change the management group object when using exporting templates for analysis.
+Provided properties will override the default.
+Any properties that are not provided with use the defaults as specified below.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_MANAGEMENT_GROUP:
+    name: string
+    properties:
+      displayName: string
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_MANAGEMENT_GROUP configuration option
+configuration:
+  AZURE_MANAGEMENT_GROUP:
+    name: 'psrule-test'
+    properties:
+      displyName: 'PSRule Test Management Group'
+```
+
+Example:
+
+```yaml
+# YAML: Override the display name of the management group object
+configuration:
+  AZURE_MANAGEMENT_GROUP:
+    properties:
+      displayName: 'My test management group'
 ```
 
 ## Excluding files

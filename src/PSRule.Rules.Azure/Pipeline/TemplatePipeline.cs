@@ -28,8 +28,6 @@ namespace PSRule.Rules.Azure.Pipeline
         private const string DEPLOYMENTNAME_PREFIX = "export-";
 
         private string _DeploymentName;
-        private ResourceGroupOption _ResourceGroup;
-        private SubscriptionOption _Subscription;
         private bool _PassThru;
 
         internal TemplatePipelineBuilder(PSRuleOption option)
@@ -52,7 +50,7 @@ namespace PSRule.Rules.Azure.Pipeline
             if (resourceGroup == null)
                 return;
 
-            _ResourceGroup = resourceGroup;
+            Option.Configuration.ResourceGroup = ResourceGroupOption.Combine(resourceGroup, Option.Configuration.ResourceGroup);
         }
 
         public void Subscription(SubscriptionOption subscription)
@@ -60,7 +58,7 @@ namespace PSRule.Rules.Azure.Pipeline
             if (subscription == null)
                 return;
 
-            _Subscription = subscription;
+            Option.Configuration.Subscription = SubscriptionOption.Combine(subscription, Option.Configuration.Subscription);
         }
 
         public void PassThru(bool passThru)
@@ -92,10 +90,7 @@ namespace PSRule.Rules.Azure.Pipeline
 
         public override IPipeline Build()
         {
-            _ResourceGroup = ResourceGroupOption.Combine(_ResourceGroup ?? Option.Configuration.ResourceGroup, ResourceGroupOption.Default);
-            _Subscription = SubscriptionOption.Combine(_Subscription ?? Option.Configuration.Subscription, SubscriptionOption.Default);
-            _ResourceGroup.SubscriptionId = _Subscription.SubscriptionId;
-            return new TemplatePipeline(PrepareContext(), _DeploymentName, _ResourceGroup, _Subscription);
+            return new TemplatePipeline(PrepareContext(), _DeploymentName);
         }
 
         /// <summary>
@@ -132,10 +127,10 @@ namespace PSRule.Rules.Azure.Pipeline
     {
         private readonly TemplateHelper _TemplateHelper;
 
-        internal TemplatePipeline(PipelineContext context, string deploymentName, ResourceGroupOption resourceGroup, SubscriptionOption subscription)
+        internal TemplatePipeline(PipelineContext context, string deploymentName)
             : base(context)
         {
-            _TemplateHelper = new TemplateHelper(context, deploymentName, resourceGroup, subscription);
+            _TemplateHelper = new TemplateHelper(context, deploymentName);
         }
 
         public override void Process(PSObject sourceObject)

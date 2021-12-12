@@ -13,6 +13,14 @@ configuration:
       env: 'prod'
     properties:
       provisioningState: 'Succeeded'
+  AZURE_TENANT:
+    tenantId: '11111111-1111-1111-1111-111111111111'
+    displayName: 'Unit Test Tenant'
+    countryCode: 'AU'
+  AZURE_MANAGEMENT_GROUP:
+    name: 'unit-test-mg'
+    properties:
+      displayName: 'My test management group'
   AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
   - location: 'Antarctica North'
     zones:
