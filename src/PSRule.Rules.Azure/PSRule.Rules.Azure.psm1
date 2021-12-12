@@ -816,6 +816,18 @@ function VisitAutomationAccount {
         $resources = @();
         $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Automation/AutomationAccounts/variables' -ApiVersion '2015-10-31';
         $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Automation/AutomationAccounts/webhooks' -ApiVersion '2015-10-31';
+
+        $diagnosticSettingsResourceParams = @{
+            Name = $Resource.Name
+            ResourceType = 'Microsoft.Automation/automationAccounts/providers/microsoft.insights/diagnosticSettings'
+            ResourceGroupName = $Resource.ResourceGroupName
+            DefaultProfile = $Context
+            ExpandProperties = $True
+            ApiVersion = '2021-05-01-preview'
+        }
+
+        $resources += Get-AzResource @diagnosticSettingsResourceParams
+
         $aa | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }

@@ -44,8 +44,8 @@ Describe 'Azure.Automation' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -Be 'automation-a', 'automation-c', 'automation-d', 'automation-e';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -Be 'automation-a', 'automation-c', 'automation-d', 'automation-e', 'automation-f';
         }
 
         It 'Azure.Automation.WebHookExpiry' {
@@ -60,8 +60,8 @@ Describe 'Azure.Automation' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -Be 'automation-a', 'automation-c', 'automation-d', 'automation-e';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -Be 'automation-a', 'automation-c', 'automation-d', 'automation-e', 'automation-f';
         }
 
         It 'Azure.Automation.ManagedIdentity' {
@@ -76,8 +76,32 @@ Describe 'Azure.Automation' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'automation-d', 'automation-e';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'automation-d', 'automation-e', 'automation-f';
+        }
+
+        It 'Azure.Automation.AuditLogs' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Automation.AuditLogs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+        }
+
+        It 'Azure.Automation.PlatformLogs' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Automation.PlatformLogs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
         }
     }
 }
