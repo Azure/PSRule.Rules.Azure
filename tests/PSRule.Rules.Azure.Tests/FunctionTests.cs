@@ -797,24 +797,28 @@ namespace PSRule.Rules.Azure
             Assert.True(actual3);
 
             // string
-            var actual4 = (bool)Functions.Equals(context, new object[] { "Test1", "Test2" });
-            var actual5 = (bool)Functions.Equals(context, new object[] { "Test2", "Test1" });
-            var actual6 = (bool)Functions.Equals(context, new object[] { "Test1", "Test1" });
-            Assert.False(actual4);
-            Assert.False(actual5);
-            Assert.True(actual6);
+            actual1 = (bool)Functions.Equals(context, new object[] { "Test1", "Test2" });
+            actual2 = (bool)Functions.Equals(context, new object[] { "Test2", "Test1" });
+            actual3 = (bool)Functions.Equals(context, new object[] { "Test1", "Test1" });
+            Assert.False(actual1);
+            Assert.False(actual2);
+            Assert.True(actual3);
 
             // array
-            var actual7 = (bool)Functions.Equals(context, new object[] { new string[] { "a", "a" }, new string[] { "b", "b" } });
-            var actual8 = (bool)Functions.Equals(context, new object[] { new string[] { "a", "b" }, new string[] { "a", "b" } });
-            Assert.False(actual7);
-            Assert.True(actual8);
+            actual1 = (bool)Functions.Equals(context, new object[] { new string[] { "a", "a" }, new string[] { "b", "b" } });
+            actual2 = (bool)Functions.Equals(context, new object[] { new string[] { "a", "b" }, new string[] { "a", "b" } });
+            actual3 = (bool)Functions.Equals(context, new object[] { new JArray(), JToken.Parse("[]") });
+            Assert.False(actual1);
+            Assert.True(actual2);
+            Assert.True(actual3);
 
             // object
-            var actual9 = (bool)Functions.Equals(context, new object[] { new TestLengthObject() { propC = "four", propD = null }, new TestLengthObject() { propD = null } });
-            var actual10 = (bool)Functions.Equals(context, new object[] { new TestLengthObject() { propD = null }, new TestLengthObject() { propD = null } });
-            Assert.False(actual9);
-            Assert.True(actual10);
+            actual1 = (bool)Functions.Equals(context, new object[] { new TestLengthObject() { propC = "four", propD = null }, new TestLengthObject() { propD = null } });
+            actual2 = (bool)Functions.Equals(context, new object[] { new TestLengthObject() { propD = null }, new TestLengthObject() { propD = null } });
+            actual3 = (bool)Functions.Equals(context, new object[] { new JObject(), JToken.Parse("{}") });
+            Assert.False(actual1);
+            Assert.True(actual2);
+            Assert.True(actual3);
         }
 
         [Fact]

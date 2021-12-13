@@ -1113,6 +1113,10 @@ namespace PSRule.Rules.Azure.Data.Template
             else if (ExpressionHelpers.TryLong(args[0], out long _) || ExpressionHelpers.TryLong(args[1], out long _))
                 return false;
 
+            // JTokens
+            if (args[0] is JToken t1 && args[1] is JToken t2)
+                return JTokenEquals(t1, t2);
+
             // Objects
             return ObjectEquals(args[0], args[1]);
         }
@@ -1643,6 +1647,11 @@ namespace PSRule.Rules.Azure.Data.Template
                     return false;
             }
             return true;
+        }
+
+        private static bool JTokenEquals(JToken t1, JToken t2)
+        {
+            return JToken.DeepEquals(t1, t2);
         }
 
         private static bool ObjectEquals(object o1, object o2)
