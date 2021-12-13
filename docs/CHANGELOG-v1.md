@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.10.1:
+
+- Bug fixes:
+  - Fixed template function `equals` parameter count mismatch. [#1137](https://github.com/Azure/PSRule.Rules.Azure/issues/1137)
+
 ## v1.10.1
 
 What's changed since v1.10.0:
