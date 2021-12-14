@@ -304,6 +304,19 @@ Rule 'Azure.Template.ValidSecretRef' -Type '.json' -If { (IsParameterFile) } -Ta
     }
 }
 
+# Synopsis: Use comments for each resource to communicate purpose.
+Rule 'Azure.Template.UseComments' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+    $resources = @(GetTemplateResources);
+
+    if ($resources.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    foreach ($resource in $resources) {
+        $Assert.HasField($resource, 'comments');
+    }
+}
+
 #endregion Parameters
 
 #region Helper functions

@@ -655,5 +655,39 @@ Describe 'Azure.Template' -Tag 'Template' {
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.Parameters.json', 'Resources.VPN.Parameters3.json';
         }
+
+        It 'Azure.Template.UseComments' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Template*.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.UseComments';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.UseComments' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeLike "*Resources.Template[2-4].json";
+
+            $ruleResult[0].Reason | Should -HaveCount 2;
+            $ruleResult[0].Reason[0] | Should -BeExactly "The field 'comments' does not exist.";
+            $ruleResult[0].Reason[1] | Should -BeExactly "The field 'comments' does not exist.";
+
+            $ruleResult[1].Reason | Should -HaveCount 4;
+            $ruleResult[1].Reason[0] | Should -BeExactly "The field 'comments' does not exist.";
+            $ruleResult[1].Reason[1] | Should -BeExactly "The field 'comments' does not exist.";
+            $ruleResult[1].Reason[2] | Should -BeExactly "The field 'comments' does not exist.";
+            $ruleResult[1].Reason[3] | Should -BeExactly "The field 'comments' does not exist.";
+
+            $ruleResult[2].Reason | Should -HaveCount 4;
+            $ruleResult[2].Reason[0] | Should -BeExactly "The field 'comments' does not exist.";
+            $ruleResult[2].Reason[1] | Should -BeExactly "The field 'comments' does not exist.";
+            $ruleResult[2].Reason[2] | Should -BeExactly "The field 'comments' does not exist.";
+            $ruleResult[2].Reason[3] | Should -BeExactly "The field 'comments' does not exist.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeLike "*Resources.Template.json";
+        }
     }
 }
