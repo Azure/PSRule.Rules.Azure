@@ -276,6 +276,18 @@ namespace PSRule.Rules.Azure
             Assert.False(actual3["_PSRule"].Value<JObject>().ContainsKey("issue"));
         }
 
+        [Fact]
+        public void EqualsEmptyObject()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.11.json"), null);
+            Assert.NotNull(resources);
+            Assert.Equal(2, resources.Length);
+
+            var actual1 = resources[1];
+            Assert.Equal("Namespace/resourceType", actual1["type"].Value<string>());
+            Assert.Equal(JTokenType.Null, actual1["properties"]["settings"].Type);
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
