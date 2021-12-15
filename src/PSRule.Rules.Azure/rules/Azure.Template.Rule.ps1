@@ -306,61 +306,29 @@ Rule 'Azure.Template.ValidSecretRef' -Type '.json' -If { (IsParameterFile) } -Ta
 
 # Synopsis: Use comments for each resource in ARM template to communicate purpose.
 Rule 'Azure.Template.UseComments' -Type '.json' -If { (IsTemplateFile) -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
-    $resources = @(GetTemplateResources);
+    $resources = @(GetTemplateResources | Where-Object { $Assert.NullOrEmpty($_, 'comments').Result });
 
-    if ($resources.Length -eq 0) {
-        return $Assert.Pass();
-    }
-
-    $numResourcesWithoutComments = GetNumberOfResourcesWithoutField -Resource $resources -Field 'comments';
-
-    $Assert.Create(
-        ($numResourcesWithoutComments -eq 0),
+    $Assert.Count($resources, '.', 0).Reason(
         $LocalizedData.TemplateResourceWithoutComment,
         $TargetObject.FullName,
-        $numResourcesWithoutComments
+        $resources.Length
     );
 }
 
 # Synopsis: Use descriptions for each resource in generated template(bicep, psarm, AzOps) to communicate purpose.
 Rule 'Azure.Template.UseDescriptions' -Type '.json' -If { (IsTemplateFile) -and (IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
-    $resources = @(GetTemplateResources);
+    $resources = @(GetTemplateResources | Where-Object { $Assert.NullOrEmpty($_, 'metadata.description').Result });
 
-    if ($resources.Length -eq 0) {
-        return $Assert.Pass();
-    }
-
-    $numResourcesWithoutDescriptions = GetNumberOfResourcesWithoutField -Resource $resources -Field 'metadata.description';
-
-    $Assert.Create(
-        ($numResourcesWithoutDescriptions -eq 0),
+    $Assert.Count($resources, '.', 0).Reason(
         $LocalizedData.TemplateResourceWithoutDescription,
         $TargetObject.FullName,
-        $numResourcesWithoutDescriptions
+        $resources.Length
     );
 }
 
 #endregion Parameters
 
 #region Helper functions
-
-# Gets number of resources without specified field
-function global:GetNumberOfResourcesWithoutField {
-    [CmdletBinding()]
-    [OutputType([int])]
-    param (
-        [Parameter(Mandatory = $True)]
-        [PSObject[]]$Resource,
-
-        [Parameter(Mandatory = $True)]
-        [String]$Field
-    )
-    process {
-        @($Resource | Where-Object {
-            -not ($Assert.HasField($_, $Field).Result) -or $Assert.NullOrEmpty($_, $Field).Result
-        }).Length;
-    }
-}
 
 # Determines if the object is a Azure Resource Manager template file
 function global:IsTemplateFile {
