@@ -1211,6 +1211,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.UseComments/</loc>
+         <lastmod>2021-12-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.UseDescriptions/</loc>
+         <lastmod>2021-12-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.UseLocationParameter/</loc>
          <lastmod>2021-12-15</lastmod>
          <changefreq>daily</changefreq>
