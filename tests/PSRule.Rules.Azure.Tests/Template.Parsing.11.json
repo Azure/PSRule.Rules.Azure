@@ -11,17 +11,81 @@
         }
     },
     "functions": [],
-    "variables": {},
+    "variables": {
+        "items": [
+            {
+                "name": "item1",
+                "priority": 1,
+                "rules": [
+                    {
+                        "name": "rule1"
+                    },
+                    {
+                        "name": "rule2"
+                    }
+                ]
+            }
+        ]
+    },
     "resources": [
         {
             "type": "Namespace/resourceType",
             "apiVersion": "2020-05-01",
-            "name": "resource",
+            "name": "resource-001",
             "location": "region",
             "properties": {
                 "settings": "[if(equals(parameters('value1'), createObject()), json('null'), parameters('value1'))]"
             }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "resource-deploy-001",
+            "resourceGroup": "[resourceGroup().name]",
+            "properties": {
+                "expressionEvaluationOptions": {
+                    "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                    "collection": {
+                        "copy": [
+                            {
+                                "name": "value",
+                                "count": "[length(variables('items'))]",
+                                "input": "[createObject('name', variables('items')[copyIndex('value')].name, 'priority',  variables('items')[copyIndex('value')].priority, 'rules',  variables('items')[copyIndex('value')].rules)]"
+                            }
+                        ]
+                    }
+                },
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "collection": {
+                            "type": "array",
+                            "defaultValue": []
+                        }
+                    },
+                    "resources": [
+                        {
+                            "copy": {
+                                "name": "ruleGroup",
+                                "count": "[length(parameters('collection'))]",
+                                "mode": "serial",
+                                "batchSize": 1
+                            },
+                            "type": "Namespace/resourceTypeN",
+                            "apiVersion": "2020-11-01",
+                            "name": "[parameters('collection')[copyIndex()].name]",
+                            "properties": {
+                                "priority": "[parameters('collection')[copyIndex()].priority]",
+                                "rules": "[parameters('collection')[copyIndex()].rules]"
+                            }
+                        }
+                    ]
+                }
+            }
         }
-    ],
-    "outputs": {}
+    ]
 }

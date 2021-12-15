@@ -1023,8 +1023,32 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (TryObjectProperty(properties, PROPERTY_PARAMETERS, out JObject innerParameters))
                 {
                     foreach (var parameter in innerParameters.Properties())
-                        parameter.Value[PROPERTY_VALUE] = ResolveVariable(context, parameter.Value[PROPERTY_VALUE]);
+                    {
+                        if (parameter.Value is JObject parameterInner)
+                        {
+                            if (parameterInner.TryGetProperty(PROPERTY_VALUE, out JToken parameterValue))
+                                parameterInner[PROPERTY_VALUE] = ResolveVariable(context, parameterValue);
 
+                            if (parameterInner.TryGetProperty(PROPERTY_COPY, out JArray _))
+                            {
+                                foreach (var copyIndex in GetVariableIterator(context, parameterInner))
+                                {
+                                    if (copyIndex.IsCopy())
+                                    {
+                                        context.CopyIndex.Push(copyIndex);
+                                        var jArray = new JArray();
+                                        while (copyIndex.Next())
+                                        {
+                                            var instance = copyIndex.CloneInput<JToken>();
+                                            jArray.Add(ResolveToken(context, instance));
+                                        }
+                                        parameterInner[copyIndex.Name] = ResolveVariable(context, jArray);
+                                        context.CopyIndex.Pop();
+                                    }
+                                }
+                            }
+                        }
+                    }
                     deploymentContext.Load(properties);
                 }
             }

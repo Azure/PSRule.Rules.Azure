@@ -281,11 +281,17 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Template.Parsing.11.json"), null);
             Assert.NotNull(resources);
-            Assert.Equal(2, resources.Length);
+            Assert.Equal(3, resources.Length);
 
-            var actual1 = resources[1];
-            Assert.Equal("Namespace/resourceType", actual1["type"].Value<string>());
-            Assert.Equal(JTokenType.Null, actual1["properties"]["settings"].Type);
+            var actual = resources[1];
+            Assert.Equal("Namespace/resourceType", actual["type"].Value<string>());
+            Assert.Equal(JTokenType.Null, actual["properties"]["settings"].Type);
+
+            actual = resources[2];
+            Assert.Equal("Namespace/resourceTypeN", actual["type"].Value<string>());
+            Assert.Equal("item1", actual["name"].Value<string>());
+            Assert.Equal(1, actual["properties"]["priority"].Value<int>());
+            Assert.Equal("rule1", actual["properties"]["rules"][0]["name"].Value<string>());
         }
 
         #region Helper methods
