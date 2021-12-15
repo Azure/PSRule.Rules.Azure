@@ -110,7 +110,8 @@ stages:
       displayName: 'Complete SonarCloud'
 
   - job: Secret_Scan
-    pool: 'windows-2019'
+    pool:
+      vmImage: 'windows-2019'
     displayName: Secret scan
     steps:
     - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
