@@ -17,7 +17,7 @@ spec:
       release: GA
 
 ---
-# Synopsis: Includes Azure features in preview.
+# Synopsis: Includes rules for Azure GA and preview features.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
@@ -128,6 +128,8 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.GA_2021_09
+  annotations:
+    obsolete: true
 spec:
   rule:
     tag:
@@ -139,3 +141,63 @@ spec:
       - '2021_03'
       - '2021_06'
       - '2021_09'
+
+---
+# Synopsis: Include rules released September 2021 or prior for Azure preview only features.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.Preview_2021_09
+  annotations:
+    obsolete: true
+spec:
+  rule:
+    tag:
+      release: preview
+      ruleSet:
+      - '2020_06'
+      - '2020_09'
+      - '2020_12'
+      - '2021_03'
+      - '2021_06'
+      - '2021_09'
+
+---
+# Synopsis: Include rules released Decmber 2021 or prior for Azure GA features.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.GA_2021_12
+spec:
+  rule:
+    tag:
+      release: GA
+      ruleSet:
+      - '2020_06'
+      - '2020_09'
+      - '2020_12'
+      - '2021_03'
+      - '2021_06'
+      - '2021_09'
+      - '2021_12'
+
+---
+# Synopsis: Include rules released December 2021 or prior for Azure preview only features.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.Preview_2021_12
+  annotations:
+    obsolete: true
+spec:
+  rule:
+    tag:
+      release: preview
+      ruleSet:
+      - '2020_06'
+      - '2020_09'
+      - '2020_12'
+      - '2021_03'
+      - '2021_06'
+      - '2021_09'
+      - '2021_12'

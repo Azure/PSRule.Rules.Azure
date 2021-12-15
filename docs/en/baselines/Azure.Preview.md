@@ -1,6 +1,6 @@
 # Azure.Preview
 
-Includes Azure features in preview.
+Includes rules for Azure GA and preview features.
 
 ## Rules
 

@@ -15,10 +15,10 @@ It is generally expected that files committed to an integration branch such as `
 PSRule for Azure addresses this through quarterly baselines that provide:
 
 - **Greater consistency** &mdash; Quarterly baselines provide a stable checkpoint of rules to use.
-  Each quarterly baseline includes rules for generally available (GA) Azure features to date.
+  Each quarterly baseline includes rules for generally available (GA) and preview Azure features to date.
   Rules released after the quarterly baseline are added to the next quarterly baseline.
   New quarterly baselines are released every three (3) months.
-  Baselines are named `Azure.GA_yyyy_mm` based on the release year/ month.
+  Baselines are named `Azure.GA_yyyy_mm` and `Azure.Preview_yyyy_mm` based on the release year/ month.
 - **Incremental adoption** &mdash; It may not be possibly to implement new rules immediately.
   Existing backlogs or timelines may make it impossible to add new requirements until a future sprint.
   In a future sprint, bump the quarterly baseline to the latest release to get the additional rules.
@@ -29,15 +29,17 @@ Considerations for adopting a quarterly baseline include:
   Obsolete baselines can still be used, however will generate a warning.
 - As Azure evolves there may be cases where a feature change means a rule is no longer required.
   In these cases, a rule may be removed from PSRule for Azure and any applicable baselines.
-- Quarterly baselines to not included Azure features that are released under a public or private preview.
-  To use rules for preview Azure features, you can use the `Azure.Preview` baseline.
-  However, the `Azure.Preview` is not released quarterly it is updated as new rules are added.
-  Alternatively, you can create a custom baseline.
+- Separate quarterly baselines for Azure GA and preview features are provided.
+  The baseline for GA features is named `Azure.GA_yyyy_mm` and preview features is named `Azure.Preview_yyyy_mm`.
 
 !!! Important
     When using a quarterly baseline, by default PSRule will ignore custom/ standalone rules.
     To include custom rules, set the `Rule.IncludeLocal` option to `true`.
     This is described further in [including custom rules](#including-custom-rules).
+
+!!! Note
+    The preview quarterly baselines includes Azure features relased under preview only.
+    This is different from the `Azure.Preview` baseline which contains GA and preview features.
 
 ### Limitations
 
