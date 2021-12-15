@@ -11,6 +11,8 @@ What's changed since pre-release v1.11.0-B2112024:
 
 - Bug fixes:
   - Fixed template function `equals` parameter count mismatch. [#1137](https://github.com/Azure/PSRule.Rules.Azure/issues/1137)
+- New rules:
+  - Check comments for each template resource. [#969](https://github.com/Azure/PSRule.Rules.Azure/issues/969)
 
 ## v1.11.0-B2112024 (pre-release)
 

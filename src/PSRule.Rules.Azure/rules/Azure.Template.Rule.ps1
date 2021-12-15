@@ -304,6 +304,28 @@ Rule 'Azure.Template.ValidSecretRef' -Type '.json' -If { (IsParameterFile) } -Ta
     }
 }
 
+# Synopsis: Use comments for each resource in ARM template to communicate purpose.
+Rule 'Azure.Template.UseComments' -Type '.json' -If { (IsTemplateFile) -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+    $resources = @(GetTemplateResources | Where-Object { $Assert.NullOrEmpty($_, 'comments').Result });
+
+    $Assert.Count($resources, '.', 0).Reason(
+        $LocalizedData.TemplateResourceWithoutComment,
+        $TargetObject.FullName,
+        $resources.Length
+    );
+}
+
+# Synopsis: Use descriptions for each resource in generated template(bicep, psarm, AzOps) to communicate purpose.
+Rule 'Azure.Template.UseDescriptions' -Type '.json' -If { (IsTemplateFile) -and (IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+    $resources = @(GetTemplateResources | Where-Object { $Assert.NullOrEmpty($_, 'metadata.description').Result });
+
+    $Assert.Count($resources, '.', 0).Reason(
+        $LocalizedData.TemplateResourceWithoutDescription,
+        $TargetObject.FullName,
+        $resources.Length
+    );
+}
+
 #endregion Parameters
 
 #region Helper functions

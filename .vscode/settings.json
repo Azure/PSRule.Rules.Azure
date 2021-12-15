@@ -57,6 +57,7 @@
         "kubenet",
         "lifecycle",
         "nics",
+        "psarm",
         "runbook",
         "stateful",
         "subnet",
