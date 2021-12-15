@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.10.2:
+
+- Bug fixes:
+  - Fixed copy loop on nested deployments parameters is not handled. [#1144](https://github.com/Azure/PSRule.Rules.Azure/issues/1144)
+
 ## v1.10.2
 
 What's changed since v1.10.1:
