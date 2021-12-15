@@ -665,7 +665,11 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeLike "*Resources.Template[2-4].json";
+            $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn @(
+                'Resources.Template2.json'
+                'Resources.Template3.json'
+                'Resources.Template4.json'
+            );
 
             $ruleResult[0].Reason.Length | Should -Be 2;
             $ruleResult[0].Reason[0] | Should -BeExactly "The field 'comments' does not exist.";
@@ -687,7 +691,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeLike "*Resources.Template.json";
+            $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -Be 'Resources.Template.json';
         }
     }
 }
