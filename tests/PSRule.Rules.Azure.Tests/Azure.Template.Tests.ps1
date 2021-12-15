@@ -48,7 +48,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
+            $ruleResult.Length | Should -Be 3;
             ($ruleResult | Where-Object { $_.TargetName -like "*Resources.Template.json" }).TargetName | Should -BeLike "*Resources.Template.json";
             ($ruleResult | Where-Object { $_.TargetName -like "*Resources.Template4.json" }).TargetName | Should -BeLike "*Resources.Template4.json";
         }
@@ -67,8 +67,8 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn 'Resources.Template2.json', 'Resources.Template4.json';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn 'Resources.Template2.json', 'Resources.Template4.json', 'Resources.Template.Bicep1.json';
         }
 
         It 'Azure.Template.TemplateScheme' {
@@ -85,8 +85,9 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
+            $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn @(
+                'Resources.Template.Bicep1.json',
                 'Resources.Template.json'
                 'Resources.Template3.json'
                 'Resources.Template4.json'
@@ -121,8 +122,12 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeLike "*Resources.Template[3-4].json";
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn @(
+                'Resources.Template.Bicep1.json'
+                'Resources.Template3.json'
+                'Resources.Template4.json'
+            );
 
             # With empty template
             $dataPath = @(
@@ -664,22 +669,26 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' } | Sort-Object -Property { $_.TargetName.Replace('\', '/').Split('/')[-1] });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
+            $ruleResult.Length | Should -Be 4;
             
             $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn @(
+                'Resources.Template.Bicep1.json'
                 'Resources.Template2.json'
                 'Resources.Template3.json'
                 'Resources.Template4.json'
             );
 
             $ruleResult[0].Reason.Length | Should -Be 1;
-            $ruleResult[0].Reason[0] | Should -BeExactly "The template ($($ruleResult[0].TargetObject.FullName)) has (2) resource/s without comments.";
+            $ruleResult[0].Reason[0] | Should -BeExactly "The template ($($ruleResult[0].TargetObject.FullName)) has (4) resource/s without comments.";
 
             $ruleResult[1].Reason.Length | Should -Be 1;
-            $ruleResult[1].Reason[0] | Should -BeExactly "The template ($($ruleResult[1].TargetObject.FullName)) has (4) resource/s without comments.";
+            $ruleResult[1].Reason[0] | Should -BeExactly "The template ($($ruleResult[1].TargetObject.FullName)) has (2) resource/s without comments.";
 
             $ruleResult[2].Reason.Length | Should -Be 1;
             $ruleResult[2].Reason[0] | Should -BeExactly "The template ($($ruleResult[2].TargetObject.FullName)) has (4) resource/s without comments.";
+
+            $ruleResult[3].Reason.Length | Should -Be 1;
+            $ruleResult[3].Reason[0] | Should -BeExactly "The template ($($ruleResult[3].TargetObject.FullName)) has (4) resource/s without comments.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

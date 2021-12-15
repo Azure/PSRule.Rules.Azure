@@ -312,8 +312,19 @@ Rule 'Azure.Template.UseComments' -Type '.json' -If { (IsTemplateFile) } -Tag @{
         return $Assert.Pass();
     }
 
+    # ARM template
+    if (-not(IsGenerated)) {
+        $commentField = 'comments';
+    }
+
+    # Generated template e.g. bicep
+    # Can check description in metadata
+    else {
+        $commentField = 'metadata.description';
+    }
+
     $numResourcesWithoutComments = @($resources | Where-Object {
-        -not ($Assert.HasField($_, 'comments').Result) -or $Assert.NullOrEmpty($_, 'comments').Result
+        -not ($Assert.HasField($_, $commentField).Result) -or $Assert.NullOrEmpty($_, $commentField).Result
     }).Length
 
     $Assert.Create(
