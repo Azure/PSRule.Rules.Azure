@@ -667,17 +667,17 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeLike "*Resources.Template[2-4].json";
 
-            $ruleResult[0].Reason | Should -HaveCount 2;
+            $ruleResult[0].Reason.Length | Should -Be 2;
             $ruleResult[0].Reason[0] | Should -BeExactly "The field 'comments' does not exist.";
             $ruleResult[0].Reason[1] | Should -BeExactly "The field 'comments' does not exist.";
 
-            $ruleResult[1].Reason | Should -HaveCount 4;
+            $ruleResult[1].Reason.Length | Should -Be 4;
             $ruleResult[1].Reason[0] | Should -BeExactly "The field 'comments' does not exist.";
             $ruleResult[1].Reason[1] | Should -BeExactly "The field 'comments' does not exist.";
             $ruleResult[1].Reason[2] | Should -BeExactly "The field 'comments' does not exist.";
             $ruleResult[1].Reason[3] | Should -BeExactly "The field 'comments' does not exist.";
 
-            $ruleResult[2].Reason | Should -HaveCount 4;
+            $ruleResult[2].Reason.Length | Should -Be 4;
             $ruleResult[2].Reason[0] | Should -BeExactly "The field 'comments' does not exist.";
             $ruleResult[2].Reason[1] | Should -BeExactly "The field 'comments' does not exist.";
             $ruleResult[2].Reason[2] | Should -BeExactly "The field 'comments' does not exist.";
