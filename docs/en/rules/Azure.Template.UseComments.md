@@ -6,11 +6,11 @@ resource: All resources
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Template.UseComments/
 ---
 
-# Use comments for each template resource
+# Use comments for each ARM template resource
 
 ## SYNOPSIS
 
-Use comments for each resource to communicate purpose.
+Use comments for each resource in ARM template to communicate purpose.
 
 ## DESCRIPTION
 
@@ -21,13 +21,15 @@ This helps other contributors understand the purpose of the resource.
 
 Specify comments for each resource in the template.
 
+## EXAMPLES
+
 ### Configure with Azure template
 
 To define Azure template files that pass this rule:
 
 - Specify `comments` for each resource in the template.
 
-For example
+For example:
 
 ```json
 "resources": [

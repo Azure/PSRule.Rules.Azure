@@ -662,39 +662,65 @@ Describe 'Azure.Template' -Tag 'Template' {
         }
 
         It 'Azure.Template.UseComments' {
-            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Template*.json';
+            $dataPath = @(
+                Join-Path -Path $here -ChildPath 'Resources.Template.json'
+                Join-Path -Path $here -ChildPath 'Resources.Template2.json'
+                Join-Path -Path $here -ChildPath 'Resources.Template3.json'
+                Join-Path -Path $here -ChildPath 'Resources.Template4.json'
+            );
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.UseComments';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.UseComments' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' } | Sort-Object -Property { $_.TargetName.Replace('\', '/').Split('/')[-1] });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
+            $ruleResult.Length | Should -Be 3;
             
             $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn @(
-                'Resources.Template.Bicep1.json'
                 'Resources.Template2.json'
                 'Resources.Template3.json'
                 'Resources.Template4.json'
             );
 
             $ruleResult[0].Reason.Length | Should -Be 1;
-            $ruleResult[0].Reason[0] | Should -BeExactly "The template ($($ruleResult[0].TargetObject.FullName)) has (4) resource/s without comments.";
+            $ruleResult[0].Reason[0] | Should -BeExactly "The template ($($ruleResult[0].TargetObject.FullName)) has (2) resource/s without comments.";
 
             $ruleResult[1].Reason.Length | Should -Be 1;
-            $ruleResult[1].Reason[0] | Should -BeExactly "The template ($($ruleResult[1].TargetObject.FullName)) has (2) resource/s without comments.";
+            $ruleResult[1].Reason[0] | Should -BeExactly "The template ($($ruleResult[1].TargetObject.FullName)) has (4) resource/s without comments.";
 
             $ruleResult[2].Reason.Length | Should -Be 1;
             $ruleResult[2].Reason[0] | Should -BeExactly "The template ($($ruleResult[2].TargetObject.FullName)) has (4) resource/s without comments.";
-
-            $ruleResult[3].Reason.Length | Should -Be 1;
-            $ruleResult[3].Reason[0] | Should -BeExactly "The template ($($ruleResult[3].TargetObject.FullName)) has (4) resource/s without comments.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -Be 'Resources.Template.json';
+        }
+
+        It 'Azure.Template.UseDescriptions' {
+            $dataPath = @(
+                Join-Path -Path $here -ChildPath 'Resources.Template.Bicep1.json'
+                Join-Path -Path $here -ChildPath 'Resources.Template.Bicep2.json'
+            );
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.UseDescriptions';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.UseDescriptions' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+
+            $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -Be 'Resources.Template.Bicep1.json';
+
+            $ruleResult[0].Reason.Length | Should -Be 1;
+            $ruleResult[0].Reason[0] | Should -BeExactly "The template ($($ruleResult[0].TargetObject.FullName)) has (4) resource/s without descriptions.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -Be 'Resources.Template.Bicep2.json';
         }
     }
 }
