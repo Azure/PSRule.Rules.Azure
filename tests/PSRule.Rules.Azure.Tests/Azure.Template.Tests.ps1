@@ -662,30 +662,24 @@ Describe 'Azure.Template' -Tag 'Template' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.UseComments' };
 
             # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' } | Sort-Object -Property { $_.TargetName.Replace('\', '/').Split('/')[-1] });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
+            
             $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn @(
                 'Resources.Template2.json'
                 'Resources.Template3.json'
                 'Resources.Template4.json'
             );
 
-            $ruleResult[0].Reason.Length | Should -Be 2;
-            $ruleResult[0].Reason[0] | Should -BeExactly "The field 'comments' does not exist.";
-            $ruleResult[0].Reason[1] | Should -BeExactly "The field 'comments' does not exist.";
+            $ruleResult[0].Reason.Length | Should -Be 1;
+            $ruleResult[0].Reason[0] | Should -BeExactly "The template ($($ruleResult[0].TargetObject.FullName)) has (2) resource/s without comments.";
 
-            $ruleResult[1].Reason.Length | Should -Be 4;
-            $ruleResult[1].Reason[0] | Should -BeExactly "The field 'comments' does not exist.";
-            $ruleResult[1].Reason[1] | Should -BeExactly "The field 'comments' does not exist.";
-            $ruleResult[1].Reason[2] | Should -BeExactly "The field 'comments' does not exist.";
-            $ruleResult[1].Reason[3] | Should -BeExactly "The field 'comments' does not exist.";
+            $ruleResult[1].Reason.Length | Should -Be 1;
+            $ruleResult[1].Reason[0] | Should -BeExactly "The template ($($ruleResult[1].TargetObject.FullName)) has (4) resource/s without comments.";
 
-            $ruleResult[2].Reason.Length | Should -Be 4;
-            $ruleResult[2].Reason[0] | Should -BeExactly "The field 'comments' does not exist.";
-            $ruleResult[2].Reason[1] | Should -BeExactly "The field 'comments' does not exist.";
-            $ruleResult[2].Reason[2] | Should -BeExactly "The field 'comments' does not exist.";
-            $ruleResult[2].Reason[3] | Should -BeExactly "The field 'comments' does not exist.";
+            $ruleResult[2].Reason.Length | Should -Be 1;
+            $ruleResult[2].Reason[0] | Should -BeExactly "The template ($($ruleResult[2].TargetObject.FullName)) has (4) resource/s without comments.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

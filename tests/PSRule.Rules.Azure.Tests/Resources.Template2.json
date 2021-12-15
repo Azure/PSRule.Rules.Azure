@@ -86,6 +86,7 @@
             },
             "resources": [
                 {
+                    "comments": "",
                     "type": "Microsoft.KeyVault/vaults/providers/diagnosticsettings",
                     "name": "[concat(parameters('vaultName'), '/Microsoft.Insights/service')]",
                     "apiVersion": "2016-09-01",

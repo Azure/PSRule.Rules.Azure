@@ -55,4 +55,5 @@
     VPNAvailabilityZoneSKU = "The VPN gateway ({0}) should be using one of the following AZ SKUs ({1})."
     ERAvailabilityZoneSKU = "The ExpressRoute gateway ({0}) should be using one of the following AZ SKUs ({1})."
     AutomationAccountDiagnosticSetting = "The diagnostic setting ({0}) should enable ({1}) or category group ({2})."
+    TemplateResourceWithoutComment = "The template ({0}) has ({1}) resource/s without comments."
 }

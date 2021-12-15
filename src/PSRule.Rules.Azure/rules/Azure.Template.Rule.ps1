@@ -312,9 +312,16 @@ Rule 'Azure.Template.UseComments' -Type '.json' -If { (IsTemplateFile) } -Tag @{
         return $Assert.Pass();
     }
 
-    foreach ($resource in $resources) {
-        $Assert.HasField($resource, 'comments');
-    }
+    $numResourcesWithoutComments = @($resources | Where-Object {
+        -not ($Assert.HasField($_, 'comments').Result) -or $Assert.NullOrEmpty($_, 'comments').Result
+    }).Length
+
+    $Assert.Create(
+        ($numResourcesWithoutComments -eq 0),
+        $LocalizedData.TemplateResourceWithoutComment,
+        $TargetObject.FullName,
+        $numResourcesWithoutComments
+    )
 }
 
 #endregion Parameters
