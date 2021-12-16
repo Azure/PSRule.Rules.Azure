@@ -6,7 +6,7 @@ A suite of rules to validate Azure resources and infrastructure as code (IaC) us
 
 Features of PSRule for Azure include:
 
-- [Ready to go](https://azure.github.io/PSRule.Rules.Azure/features/#readytogo) - Leverage over 230 pre-built rules to validate Azure resources.
+- [Ready to go](https://azure.github.io/PSRule.Rules.Azure/features/#readytogo) - Leverage over 250 pre-built rules to validate Azure resources.
 - [DevOps](https://azure.github.io/PSRule.Rules.Azure/features/#devops) - Validate resources and infrastructure code pre or post-deployment.
 - [Cross-platform](https://azure.github.io/PSRule.Rules.Azure/features/#cross-platform) - Run on MacOS, Linux, and Windows.
 
