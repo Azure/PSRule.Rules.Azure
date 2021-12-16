@@ -21,12 +21,15 @@ Here are some examples:
 
 ```yaml
 requires:
-  # Require a minimum of PSRule for Azure v1.4.1
-  PSRule.Rules.Azure: '>=1.4.1'
+  # Require a minimum of PSRule for Azure v1.10.2
+  PSRule.Rules.Azure: '>=1.10.2'
 
 configuration:
-  # Enable parameter file expansion
+  # Enable expansion of Azure Template files.
   AZURE_PARAMETER_FILE_EXPANSION: true
+
+  # Enable expansion of Azure Bicep files.
+  AZURE_BICEP_FILE_EXPANSION: true
 
 rule:
   # Enable custom rules that don't exist in the baseline
