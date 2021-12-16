@@ -371,10 +371,6 @@
         
           
         
-          
-        
-          
-        
       
       
         <label class="md-nav__link" for="__nav_2">
@@ -555,6 +551,56 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Testing infrastructure code
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing infrastructure code" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Testing infrastructure code
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../expanding-source-files/" class="md-nav__link">
+        Expanding source files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../using-templates/" class="md-nav__link">
         Using templates
@@ -573,6 +619,27 @@
       <a href="../using-bicep/" class="md-nav__link">
         Using Bicep source
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working-with-baselines/" class="md-nav__link">
+        Working with baselines
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -611,25 +678,11 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../working-with-baselines/" class="md-nav__link">
-        Working with baselines
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
       
       
       
@@ -642,13 +695,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_2_8">
+        <label class="md-nav__link" for="__nav_2_6">
           Customization
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Customization" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_8">
+        <label class="md-nav__title" for="__nav_2_6">
           <span class="md-nav__icon md-icon"></span>
           Customization
         </label>
@@ -740,7 +793,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" type="checkbox" id="__nav_2_11" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
       
       
       
@@ -749,13 +802,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_2_11">
+        <label class="md-nav__link" for="__nav_2_9">
           Releases
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Releases" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_11">
+        <label class="md-nav__title" for="__nav_2_9">
           <span class="md-nav__icon md-icon"></span>
           Releases
         </label>
@@ -770,7 +823,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11_1" type="checkbox" id="__nav_2_11_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_1" type="checkbox" id="__nav_2_9_1" >
       
       
       
@@ -781,13 +834,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_2_11_1">
+        <label class="md-nav__link" for="__nav_2_9_1">
           Change log
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Change log" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_11_1">
+        <label class="md-nav__title" for="__nav_2_9_1">
           <span class="md-nav__icon md-icon"></span>
           Change log
         </label>
@@ -5408,7 +5461,7 @@ Rules exist across five (5) <abbr title="Well-Architected Framework">WAF</abbr> 
 Included are examples, references to <abbr title="Well-Architected Framework">WAF</abbr> and product documentation.
 This allows you to explore and learn the context of each <abbr title="Well-Architected Framework">WAF</abbr> principle.</p>
 <h2 id="readytogo">Ready to go<a class="headerlink" href="#readytogo" title="Permanent link">#</a></h2>
-<p>PSRule for Azure includes over 230 rules for validating resources against configuration recommendations.
+<p>PSRule for Azure includes over 250 rules for validating resources against configuration recommendations.
 Rules automatically detect and analyze resources from Azure <abbr title="Infrastructure as Code">IaC</abbr> artifacts.
 This allows you to quickly light up unit testing of Azure resources from templates and Bicep deployments.</p>
 <p>Use the built-in rules to start enforcing testing quickly.
@@ -5419,7 +5472,7 @@ Custom rules can be implemented quickly and work side-by-side with built-in rule
 <p class="admonition-title">Tip</p>
 <p>For detailed information on building custom rules see:</p>
 <ul>
-<li><a href="customization/enforce-custom-tags/index.md">Enforcing custom tags</a>.</li>
+<li><a href="../customization/enforce-custom-tags/">Enforcing custom tags</a>.</li>
 </ul>
 </div>
 <h2 id="devopsintegrated">DevOps integrated<a class="headerlink" href="#devopsintegrated" title="Permanent link">#</a></h2>
@@ -5431,11 +5484,6 @@ From as early as authoring an <abbr title="Azure Resource Manager">ARM</abbr> te
 <li><strong>Quality gates</strong> &mdash; Implement quality gates between environments such as development, test, and production.</li>
 <li><strong>Monitor continuously</strong> &mdash; Perform ongoing checks for configuration optimization opportunities.</li>
 </ul>
-<!-- PSRule for Azure provides the following cmdlets that extract data for analysis:
-
-- [Export-AzRuleTemplateData](commands/Export-AzRuleTemplateData.md) - Used for pre-flight analysis of one or more ARM templates.
-- [Export-AzRuleData](commands/Export-AzRuleData.md) - Used for in-flight analysis of resources deployed to one or more Azure subscriptions. -->
-
 <h2 id="cross-platform">Cross-platform<a class="headerlink" href="#cross-platform" title="Permanent link">#</a></h2>
 <p>PSRule for Azure uses modern PowerShell libraries at its core,
 allowing it to go anywhere PowerShell can go.
@@ -5456,7 +5504,7 @@ For installation options see <a href="../install-instructions/">installation</a>
   <small>
     
       Last update:
-      2021-12-15
+      2021-12-16
     
   </small>
 </div>
