@@ -25,7 +25,7 @@ This allows you to explore and learn the context of each WAF principle.
 
 ## Ready to go
 
-PSRule for Azure includes over 230 rules for validating resources against configuration recommendations.
+PSRule for Azure includes over 250 rules for validating resources against configuration recommendations.
 Rules automatically detect and analyze resources from Azure IaC artifacts.
 This allows you to quickly light up unit testing of Azure resources from templates and Bicep deployments.
 
@@ -40,7 +40,7 @@ As new built-in rules are added and improved, download the latest version to sta
 
     - [Enforcing custom tags][3].
 
-  [3]: customization/enforce-custom-tags/index.md
+  [3]: customization/enforce-custom-tags.md
 
 ## DevOps integrated
 
@@ -52,11 +52,6 @@ Pre-flight validation can be integrated into a continuous integration (CI) pipel
 - **Shift-left** &mdash; Identify configuration issues and provide fast feedback in PRs.
 - **Quality gates** &mdash; Implement quality gates between environments such as development, test, and production.
 - **Monitor continuously** &mdash; Perform ongoing checks for configuration optimization opportunities.
-
-<!-- PSRule for Azure provides the following cmdlets that extract data for analysis:
-
-- [Export-AzRuleTemplateData](commands/Export-AzRuleTemplateData.md) - Used for pre-flight analysis of one or more ARM templates.
-- [Export-AzRuleData](commands/Export-AzRuleData.md) - Used for in-flight analysis of resources deployed to one or more Azure subscriptions. -->
 
 ## Cross-platform
 

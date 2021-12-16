@@ -77,7 +77,8 @@ If we didn't tell you, you might not even know that PowerShell runs under the co
 To perform local validation, some PowerShell setup is required but we step you through that.
 See [installation][7] and [validating locally][8] for details.
 
-To start writing your own custom rules, some PowerShell experience is required.
+To start writing your own custom rules you can use YAML, JSON, or PowerShell
+PowerShell experience is required for some scenarios.
 We have a walk through scenario [Enforcing custom tags][9] to get you started.
 
   [7]: install-instructions.md
