@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.10.3:
+
+- Bug fixes:
+  - Fixed outer copy loop of nested deployment. [#1154](https://github.com/Azure/PSRule.Rules.Azure/issues/1154)
+
 ## v1.10.3
 
 What's changed since v1.10.2:
