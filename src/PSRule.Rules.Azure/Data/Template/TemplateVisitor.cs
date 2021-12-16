@@ -418,6 +418,15 @@ namespace PSRule.Rules.Azure.Data.Template
                     _Index[state.Name] = state;
                 }
 
+                public void Remove(CopyIndexState state)
+                {
+                    if (_Current.Contains(state))
+                        return;
+
+                    if (_Index.ContainsValue(state))
+                        _Index.Remove(state.Name);
+                }
+
                 public void Push(CopyIndexState state)
                 {
                     _Current.Push(state);
@@ -1031,11 +1040,10 @@ namespace PSRule.Rules.Azure.Data.Template
 
                             if (parameterInner.TryGetProperty(PROPERTY_COPY, out JArray _))
                             {
-                                foreach (var copyIndex in GetVariableIterator(context, parameterInner))
+                                foreach (var copyIndex in GetVariableIterator(context, parameterInner, pushToStack: false))
                                 {
                                     if (copyIndex.IsCopy())
                                     {
-                                        context.CopyIndex.Push(copyIndex);
                                         var jArray = new JArray();
                                         while (copyIndex.Next())
                                         {
@@ -1043,7 +1051,6 @@ namespace PSRule.Rules.Azure.Data.Template
                                             jArray.Add(ResolveToken(context, instance));
                                         }
                                         parameterInner[copyIndex.Name] = ResolveVariable(context, jArray);
-                                        context.CopyIndex.Pop();
                                     }
                                 }
                             }
@@ -1295,7 +1302,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return new TemplateContext.CopyIndexState[] { new TemplateContext.CopyIndexState { Input = value } };
         }
 
-        private static TemplateContext.CopyIndexState[] GetVariableIterator(ITemplateContext context, JObject value)
+        private static TemplateContext.CopyIndexState[] GetVariableIterator(ITemplateContext context, JObject value, bool pushToStack = true)
         {
             if (value.ContainsKey(PROPERTY_COPY))
             {
@@ -1310,7 +1317,12 @@ namespace PSRule.Rules.Azure.Data.Template
                         Input = copyObject[PROPERTY_INPUT],
                         Count = ExpandPropertyInt(context, copyObject, PROPERTY_COUNT)
                     };
-                    context.CopyIndex.Push(state);
+
+                    if (pushToStack)
+                        context.CopyIndex.Push(state);
+                    else
+                        context.CopyIndex.Add(state);
+
                     value.Remove(PROPERTY_COPY);
                     result.Add(state);
                 }
