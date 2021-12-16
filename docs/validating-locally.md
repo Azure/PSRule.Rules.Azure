@@ -25,7 +25,7 @@ The Visual Studio Code extension includes a built-in `PSRule: Run analysis` task
   <img src="https://raw.githubusercontent.com/microsoft/PSRule-vscode/main/docs/images/tasks-provider.png" alt="Built-in tasks shown in task list" />
 </p>
 
-To learn about tasks in Visual Studio Code see [Integrate with External Tools via Tasks][3].
+To learn about tasks in Visual Studio Code see [Integrate with External Tools via Tasks][4].
 
 To use PSRule for Azure with the built-in `PSRule: Run analysis` task, insert the following into `.vscode/tasks.json`.
 
