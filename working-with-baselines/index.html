@@ -5241,6 +5241,12 @@
         
           
         
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4_4">
@@ -5373,8 +5379,50 @@
   
   
     <li class="md-nav__item">
+      <a href="../en/baselines/Azure.GA_2021_12/" class="md-nav__link">
+        Azure.GA_2021_12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../en/baselines/Azure.Preview/" class="md-nav__link">
         Azure.Preview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/baselines/Azure.Preview_2021_09/" class="md-nav__link">
+        Azure.Preview_2021_09
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/baselines/Azure.Preview_2021_12/" class="md-nav__link">
+        Azure.Preview_2021_12
       </a>
     </li>
   
@@ -5499,10 +5547,10 @@ It is generally expected that files committed to an integration branch such as <
 <p>PSRule for Azure addresses this through quarterly baselines that provide:</p>
 <ul>
 <li><strong>Greater consistency</strong> &mdash; Quarterly baselines provide a stable checkpoint of rules to use.
-  Each quarterly baseline includes rules for generally available (<abbr title="generally available">GA</abbr>) Azure features to date.
+  Each quarterly baseline includes rules for generally available (<abbr title="generally available">GA</abbr>) and preview Azure features to date.
   Rules released after the quarterly baseline are added to the next quarterly baseline.
   New quarterly baselines are released every three (3) months.
-  Baselines are named <code>Azure.GA_yyyy_mm</code> based on the release year/ month.</li>
+  Baselines are named <code>Azure.GA_yyyy_mm</code> and <code>Azure.Preview_yyyy_mm</code> based on the release year/ month.</li>
 <li><strong>Incremental adoption</strong> &mdash; It may not be possibly to implement new rules immediately.
   Existing backlogs or timelines may make it impossible to add new requirements until a future sprint.
   In a future sprint, bump the quarterly baseline to the latest release to get the additional rules.</li>
@@ -5513,16 +5561,19 @@ It is generally expected that files committed to an integration branch such as <
   Obsolete baselines can still be used, however will generate a warning.</li>
 <li>As Azure evolves there may be cases where a feature change means a rule is no longer required.
   In these cases, a rule may be removed from PSRule for Azure and any applicable baselines.</li>
-<li>Quarterly baselines to not included Azure features that are released under a public or private preview.
-  To use rules for preview Azure features, you can use the <code>Azure.Preview</code> baseline.
-  However, the <code>Azure.Preview</code> is not released quarterly it is updated as new rules are added.
-  Alternatively, you can create a custom baseline.</li>
+<li>Separate quarterly baselines for Azure <abbr title="generally available">GA</abbr> and preview features are provided.
+  The baseline for <abbr title="generally available">GA</abbr> features is named <code>Azure.GA_yyyy_mm</code> and preview features is named <code>Azure.Preview_yyyy_mm</code>.</li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>When using a quarterly baseline, by default PSRule will ignore custom/ standalone rules.
 To include custom rules, set the <code>Rule.IncludeLocal</code> option to <code>true</code>.
 This is described further in <a href="#including-custom-rules">including custom rules</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The preview quarterly baselines includes Azure features relased under preview only.
+This is different from the <code>Azure.Preview</code> baseline which contains <abbr title="generally available">GA</abbr> and preview features.</p>
 </div>
 <h3 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">#</a></h3>
 <p>Quarterly baselines don't address all cases where a previously passing pipeline may fail, specifically:</p>

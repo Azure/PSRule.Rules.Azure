@@ -5720,6 +5720,12 @@
         
           
         
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4_4">
@@ -5852,8 +5858,50 @@
   
   
     <li class="md-nav__item">
+      <a href="../en/baselines/Azure.GA_2021_12/" class="md-nav__link">
+        Azure.GA_2021_12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../en/baselines/Azure.Preview/" class="md-nav__link">
         Azure.Preview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/baselines/Azure.Preview_2021_09/" class="md-nav__link">
+        Azure.Preview_2021_09
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/baselines/Azure.Preview_2021_12/" class="md-nav__link">
+        Azure.Preview_2021_12
       </a>
     </li>
   
@@ -6450,12 +6498,28 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.11.0-B2112024:</p>
 <ul>
-<li>Bug fixes:<ul>
-<li>Fixed template function <code>equals</code> parameter count mismatch. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1137">#1137</a></li>
+<li>New features:<ul>
+<li>Added baselines containing only Azure preview features. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1129">#1129</a><ul>
+<li>Added baseline <code>Azure.Preview_2021_09</code>.</li>
+<li>Added baseline <code>Azure.Preview_2021_12</code>.</li>
+</ul>
+</li>
+<li>Added <code>Azure.GA_2021_12</code> baseline. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1146">#1146</a><ul>
+<li>Includes rules released before or during December 2021 for Azure GA features.</li>
+<li>Marked baseline <code>Azure.GA_2021_09</code> as obsolete.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>New rules:<ul>
+<li>All resources:<ul>
 <li>Check comments for each template resource. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/969">#969</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Bug fixes:<ul>
+<li>Fixed template function <code>equals</code> parameter count mismatch. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1137">#1137</a></li>
 </ul>
 </li>
 </ul>
