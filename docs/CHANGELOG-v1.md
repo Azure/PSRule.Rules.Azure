@@ -9,10 +9,18 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since pre-release v1.11.0-B2112024:
 
+- New features:
+  - Added baselines containing only Azure preview features. [#1129](https://github.com/Azure/PSRule.Rules.Azure/issues/1129)
+    - Added baseline `Azure.Preview_2021_09`.
+    - Added baseline `Azure.Preview_2021_12`.
+  - Added `Azure.GA_2021_12` baseline. [#1146](https://github.com/Azure/PSRule.Rules.Azure/issues/1146)
+    - Includes rules released before or during December 2021 for Azure GA features.
+    - Marked baseline `Azure.GA_2021_09` as obsolete.
+- New rules:
+  - All resources:
+    - Check comments for each template resource. [#969](https://github.com/Azure/PSRule.Rules.Azure/issues/969)
 - Bug fixes:
   - Fixed template function `equals` parameter count mismatch. [#1137](https://github.com/Azure/PSRule.Rules.Azure/issues/1137)
-- New rules:
-  - Check comments for each template resource. [#969](https://github.com/Azure/PSRule.Rules.Azure/issues/969)
 
 ## v1.11.0-B2112024 (pre-release)
 
