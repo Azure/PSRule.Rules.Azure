@@ -11,17 +11,107 @@
         }
     },
     "functions": [],
-    "variables": {},
+    "variables": {
+        "deploys": [
+            {
+                "name": "deploy1",
+                "items": [
+                    {
+                        "name": "item1",
+                        "priority": 1,
+                        "rules": [
+                            {
+                                "name": "rule1"
+                            },
+                            {
+                                "name": "rule2"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "deploy2",
+                "items": [
+                    {
+                        "name": "item2",
+                        "priority": 1,
+                        "rules": [
+                            {
+                                "name": "rule3"
+                            },
+                            {
+                                "name": "rule4"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
     "resources": [
         {
             "type": "Namespace/resourceType",
             "apiVersion": "2020-05-01",
-            "name": "resource",
+            "name": "resource-001",
             "location": "region",
             "properties": {
                 "settings": "[if(equals(parameters('value1'), createObject()), json('null'), parameters('value1'))]"
             }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "[variables('deploys')[copyIndex()].name]",
+            "resourceGroup": "[resourceGroup().name]",
+            "copy": {
+                "name": "deployLoop",
+                "count": "[length(variables('deploys'))]"
+            },
+            "properties": {
+                "expressionEvaluationOptions": {
+                    "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                    "collection": {
+                        "copy": [
+                            {
+                                "name": "value",
+                                "count": "[length(variables('deploys')[copyIndex()].items)]",
+                                "input": "[createObject('name',variables('deploys')[copyIndex()].items[copyIndex('value')].name, 'priority',  variables('deploys')[copyIndex()].items[copyIndex('value')].priority, 'rules',  variables('deploys')[copyIndex()].items[copyIndex('value')].rules)]"
+                            }
+                        ]
+                    }
+                },
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "collection": {
+                            "type": "array",
+                            "defaultValue": []
+                        }
+                    },
+                    "resources": [
+                        {
+                            "copy": {
+                                "name": "ruleGroup",
+                                "count": "[length(parameters('collection'))]",
+                                "mode": "serial",
+                                "batchSize": 1
+                            },
+                            "type": "Namespace/resourceTypeN",
+                            "apiVersion": "2020-11-01",
+                            "name": "[parameters('collection')[copyIndex()].name]",
+                            "properties": {
+                                "priority": "[parameters('collection')[copyIndex()].priority]",
+                                "rules": "[parameters('collection')[copyIndex()].rules]"
+                            }
+                        }
+                    ]
+                }
+            }
         }
-    ],
-    "outputs": {}
+    ]
 }

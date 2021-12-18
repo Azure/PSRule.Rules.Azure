@@ -21,6 +21,7 @@ What's changed since pre-release v1.11.0-B2112024:
     - Check comments for each template resource. [#969](https://github.com/Azure/PSRule.Rules.Azure/issues/969)
 - Bug fixes:
   - Fixed template function `equals` parameter count mismatch. [#1137](https://github.com/Azure/PSRule.Rules.Azure/issues/1137)
+  - Fixed copy loop on nested deployment parameters is not handled. [#1144](https://github.com/Azure/PSRule.Rules.Azure/issues/1144)
 
 ## v1.11.0-B2112024 (pre-release)
 
@@ -67,6 +68,20 @@ What's changed since v1.10.0:
       - `Azure.VNET.Name`
       - `Azure.VNG.Name`
       - `Azure.VNG.ConnectionName`
+
+## v1.10.4
+
+What's changed since v1.10.3:
+
+- Bug fixes:
+  - Fixed outer copy loop of nested deployment. [#1154](https://github.com/Azure/PSRule.Rules.Azure/issues/1154)
+
+## v1.10.3
+
+What's changed since v1.10.2:
+
+- Bug fixes:
+  - Fixed copy loop on nested deployment parameters is not handled. [#1144](https://github.com/Azure/PSRule.Rules.Azure/issues/1144)
 
 ## v1.10.2
 
