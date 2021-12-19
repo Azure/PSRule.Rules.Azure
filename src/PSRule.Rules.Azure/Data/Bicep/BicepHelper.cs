@@ -173,8 +173,21 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 }
                 else
                 {
-                    _Error.AppendLine(e.Data);
+                    var errors = GetErrorLine(e.Data);
+                    for (var i = 0; i < errors.Length; i++)
+                        _Error.AppendLine(errors[i]);
                 }
+            }
+
+            private static string[] GetErrorLine(string input)
+            {
+                var lines = input.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                var result = new List<string>();
+                for (var i = 0; i < lines.Length; i++)
+                    if (!lines[i].Contains(": Warning ") && !lines[i].Contains(": Info "))
+                        result.Add(lines[i]);
+
+                return result.ToArray();
             }
 
             private void Dispose(bool disposing)

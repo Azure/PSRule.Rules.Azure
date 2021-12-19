@@ -108,5 +108,44 @@ Describe 'Bicep' -Tag 'Bicep' {
                 Remove-Item 'Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI' -Force;
             }
         }
+
+        It 'Bicep error message filtered' {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            try {
+                # Install CLI
+                az bicep install
+
+                # Expand source files
+                $option = @{
+                    'Configuration.AZURE_BICEP_FILE_EXPANSION' = $True
+                }
+                $Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI = 'true';
+
+                # Process file with errors
+                $sourceFile = Join-Path -Path $here -ChildPath 'error.bicep';
+                $Null = Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File -Option $option -ErrorVariable errors -ErrorAction SilentlyContinue;
+                $bicepError = @($errors | Where-Object {
+                    $_.Exception -is [PSRule.Rules.Azure.Pipeline.BicepCompileException]
+                })
+                $bicepError.Exception.Message | Should -BeLike "*: Error BCP019:*";
+
+                # Process file without errors
+                $sourceFile = Join-Path -Path $here -ChildPath 'noterror.bicep';
+                $Null = Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File -Option $option -ErrorVariable errors -ErrorAction SilentlyContinue;
+                $bicepError = @($errors | Where-Object {
+                    $_.Exception -is [PSRule.Rules.Azure.Pipeline.BicepCompileException]
+                })
+                $bicepError.Length | Should -Be 0;
+            }
+            finally {
+                Remove-Item 'Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI' -Force;
+            }
+        }
     }
 }

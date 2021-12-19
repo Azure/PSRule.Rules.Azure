@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.11.0-B2112073:
+
+- Bug fixes:
+  - Fixed output of Bicep informational and warning messages in error stream. [#1157](https://github.com/Azure/PSRule.Rules.Azure/issues/1157)
+
 ## v1.11.0-B2112073 (pre-release)
 
 What's changed since pre-release v1.11.0-B2112024:
