@@ -1,0 +1,104 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Front Door
+#
+
+#region Rules
+
+---
+# Synopsis: Front Door instance should be enabled
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.FrontDoor.State
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Network/frontDoors
+  condition:
+    field: 'Properties.enabledState'
+    equals: 'Enabled'
+
+---
+# Synopsis: Use Front Door naming requirements
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.FrontDoor.Name
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Network/frontDoors
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 5
+    - name: '.'
+      lessOrEquals: 64
+    # Alphanumerics and hyphens
+    # Start and end with alphanumeric
+    - name: '.'
+      match: '^[A-Za-z](-|[A-Za-z0-9])*[A-Za-z0-9]$'
+
+---
+# Synopsis: Use Front Door WAF policy in prevention mode
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.FrontDoor.WAF.Mode
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
+  condition:
+    field: 'Properties.policySettings.mode'
+    equals: 'Prevention'
+
+---
+# Synopsis: Enable Front Door WAF policy
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.FrontDoor.WAF.Enabled
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
+  condition:
+    field: 'Properties.policySettings.enabledState'
+    equals: 'Enabled'
+
+---
+# Synopsis: Use Front Door WAF naming requirements
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.FrontDoor.WAF.Name
+  tags:
+    release: 'GA'
+    ruleSet: '2020_12'
+spec:
+  type:
+  - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 1
+    - name: '.'
+      lessOrEquals: 128
+    # Letters or numbers
+    # Start letter
+    - name: '.'
+      match: '^[A-Za-z][A-Za-z0-9]{0,127}$'
+
+#endregion Rules

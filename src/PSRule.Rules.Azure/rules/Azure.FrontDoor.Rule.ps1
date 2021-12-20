@@ -7,11 +7,6 @@
 
 #region Front Door
 
-# Synopsis: Front Door instance should be enabled
-Rule 'Azure.FrontDoor.State' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.enabledState', 'Enabled');
-}
-
 # Synopsis: Use a minimum of TLS 1.2
 Rule 'Azure.FrontDoor.MinTLS' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $endpoints = @($TargetObject);
@@ -79,40 +74,6 @@ Rule 'Azure.FrontDoor.UseWAF' -Type 'Microsoft.Network/frontDoors', 'Microsoft.N
     foreach ($endpoint in $endpoints) {
         $Assert.HasFieldValue($endpoint, 'properties.webApplicationFirewallPolicyLink.id');
     }
-}
-
-# Synopsis: Use Front Door naming requirements
-Rule 'Azure.FrontDoor.Name' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
-
-    # Between 5 and 64 characters long
-    $Assert.GreaterOrEqual($PSRule, 'TargetName', 5);
-    $Assert.LessOrEqual($PSRule, 'TargetName', 64);
-
-    # Alphanumerics and hyphens
-    # Start and end with alphanumeric
-    $Assert.Match($PSRule, 'TargetName', '^[A-Za-z](-|[A-Za-z0-9])*[A-Za-z0-9]$');
-}
-
-# Synopsis: Use Front Door WAF policy in prevention mode
-Rule 'Azure.FrontDoor.WAF.Mode' -Type 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.policySettings.mode', 'Prevention');
-}
-
-# Synopsis: Enable Front Door WAF policy
-Rule 'Azure.FrontDoor.WAF.Enabled' -Type 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.policySettings.enabledState', 'Enabled');
-}
-
-# Synopsis: Use Front Door WAF naming requirements
-Rule 'Azure.FrontDoor.WAF.Name' -Type 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
-    # Between 1 and 128 characters long
-    $Assert.GreaterOrEqual($PSRule, 'TargetName', 1);
-    $Assert.LessOrEqual($PSRule, 'TargetName', 128);
-
-    # Letters or numbers
-    # Start letter
-    $Assert.Match($PSRule, 'TargetName', '^[A-Za-z][A-Za-z0-9]{0,127}$');
 }
 
 #endregion Front Door

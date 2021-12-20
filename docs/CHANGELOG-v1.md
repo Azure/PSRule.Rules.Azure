@@ -7,6 +7,20 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+- Engineering:
+  - Rule refactoring of rules from PowerShell to YAML. [#1109](https://github.com/Azure/PSRule.Rules.Azure/issues/1109)
+    - The following rules where refactored:
+      - `Azure.AppConfig.SKU`
+      - `Azure.AppConfig.Name`
+      - `Azure.AppInsights.Workspace`
+      - `Azure.AppInsights.Name`
+      - `Azure.Cosmos.AccountName`
+      - `Azure.FrontDoor.State`
+      - `Azure.FrontDoor.Name`
+      - `Azure.FrontDoor.WAF.Mode`
+      - `Azure.FrontDoor.WAF.Enabled`
+      - `Azure.FrontDoor.WAF.Name`
+
 ## v1.11.0-B2112073 (pre-release)
 
 What's changed since pre-release v1.11.0-B2112024:

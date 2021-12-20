@@ -2,7 +2,7 @@
 reviewed: 2021/11/13
 severity: Important
 pillar: Reliability
-category: Design
+category: Requirements
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.MinSku/
 ms-content-id: a70d16d4-3717-4eef-b588-8a0204860d6e
@@ -119,3 +119,4 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
 - [Azure Container Registry SKUs](https://docs.microsoft.com/azure/container-registry/container-registry-skus)
 - [Geo-replication in Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)
 - [Best practices for Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
