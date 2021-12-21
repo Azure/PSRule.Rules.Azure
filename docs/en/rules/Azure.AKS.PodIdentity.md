@@ -1,7 +1,7 @@
 ---
 severity: Important
-pillar: Operational Excellence
-category: Configuration
+pillar: Security
+category: Authentication
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.PodIdentity/
 ---
@@ -22,6 +22,8 @@ Azure resources that rely on Azure AD as an identity provider.
 ## RECOMMENDATION
 
 Consider enabling AAD pod identities on AKS clusters.
+
+It is only recommended to use AAD pod identities with AKS clusters that use Azure CNI.
 
 ## EXAMPLES
 
@@ -53,6 +55,162 @@ Update an existing AKS cluster with AAD pod identity enabled:
 
 ```bash
 az aks update -g '<resource_group>' -n '<cluster_name>' --enable-pod-identity
+```
+
+### Configure with Azure template
+
+To deploy AKS clusters that pass this rule:
+
+- Set `Properties.networkProfile.networkPlugin` to `azure`.
+- Set `Properties.podIdentityProfile.enabled` to `true`.
+
+For example:
+
+```json
+{
+    "type": "Microsoft.ContainerService/managedClusters",
+    "apiVersion": "2021-07-01",
+    "name": "[parameters('clusterName')]",
+    "location": "[parameters('location')]",
+    "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+            "[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName')))]": {}
+        }
+    },
+    "properties": {
+        "kubernetesVersion": "[parameters('kubernetesVersion')]",
+        "enableRBAC": true,
+        "dnsPrefix": "[parameters('dnsPrefix')]",
+        "agentPoolProfiles": "[variables('allPools')]",
+        "aadProfile": {
+            "managed": true,
+            "enableAzureRBAC": true,
+            "adminGroupObjectIDs": "[parameters('clusterAdmins')]",
+            "tenantID": "[subscription().tenantId]"
+        },
+        "networkProfile": {
+            "networkPlugin": "azure",
+            "networkPolicy": "azure",
+            "loadBalancerSku": "standard",
+            "serviceCidr": "[variables('serviceCidr')]",
+            "dnsServiceIP": "[variables('dnsServiceIP')]",
+            "dockerBridgeCidr": "[variables('dockerBridgeCidr')]"
+        },
+        "autoUpgradeProfile": {
+            "upgradeChannel": "stable"
+        },
+        "addonProfiles": {
+            "httpApplicationRouting": {
+                "enabled": false
+            },
+            "azurepolicy": {
+                "enabled": true,
+                "config": {
+                    "version": "v2"
+                }
+            },
+            "omsagent": {
+                "enabled": true,
+                "config": {
+                    "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
+                }
+            },
+            "kubeDashboard": {
+                "enabled": false
+            },
+            "azureKeyvaultSecretsProvider": {
+                "enabled": true,
+                "config": {
+                    "enableSecretRotation": "true"
+                }
+            }
+        },
+        "podIdentityProfile": {
+            "enabled": true
+        }
+    },
+    "tags": "[parameters('tags')]",
+    "dependsOn": [
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
+    ]
+}
+```
+
+### Configure with Bicep
+
+To deploy AKS clusters that pass this rule:
+
+- Set `Properties.networkProfile.networkPlugin` to `azure`.
+- Set `Properties.podIdentityProfile.enabled` to `true`.
+
+For example:
+
+```bicep
+// Cluster
+resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
+  location: location
+  name: clusterName
+  identity: {
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${identity.id}': {}
+    }
+  }
+  properties: {
+    kubernetesVersion: kubernetesVersion
+    enableRBAC: true
+    dnsPrefix: dnsPrefix
+    agentPoolProfiles: allPools
+    aadProfile: {
+      managed: true
+      enableAzureRBAC: true
+      adminGroupObjectIDs: clusterAdmins
+      tenantID: subscription().tenantId
+    }
+    networkProfile: {
+      networkPlugin: 'azure'
+      networkPolicy: 'azure'
+      loadBalancerSku: 'standard'
+      serviceCidr: serviceCidr
+      dnsServiceIP: dnsServiceIP
+      dockerBridgeCidr: dockerBridgeCidr
+    }
+    autoUpgradeProfile: {
+      upgradeChannel: 'stable'
+    }
+    addonProfiles: {
+      httpApplicationRouting: {
+        enabled: false
+      }
+      azurepolicy: {
+        enabled: true
+        config: {
+          version: 'v2'
+        }
+      }
+      omsagent: {
+        enabled: true
+        config: {
+          logAnalyticsWorkspaceResourceID: workspaceId
+        }
+      }
+      kubeDashboard: {
+        enabled: false
+      }
+      azureKeyvaultSecretsProvider: {
+        enabled: true
+        config: {
+          enableSecretRotation: 'true'
+        }
+      }
+    }
+    podIdentityProfile: {
+      enabled: true
+    }
+  }
+  tags: tags
+}
 ```
 
 ## LINKS

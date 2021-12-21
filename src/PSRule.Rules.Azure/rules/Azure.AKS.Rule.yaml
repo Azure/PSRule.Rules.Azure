@@ -109,6 +109,8 @@ metadata:
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
+  with:
+    - Azure.AKS.AzureCNI
   condition:
     field: Properties.podIdentityProfile.enabled
     equals: true
@@ -130,5 +132,19 @@ spec:
       equals: 'Microsoft.ContainerService/managedClusters'
     - field: Properties.addonProfiles.azureKeyvaultSecretsProvider.enabled
       equals: true
+
+---
+# Synopsis: AKS clusters that use Azure CNI network plugin.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.AKS.AzureCNI
+spec:
+  if:
+    allOf:
+    - type: '.' 
+      equals: 'Microsoft.ContainerService/managedClusters' 
+    - field: 'Properties.networkProfile.networkPlugin'
+      equals: 'azure'
 
 #endregion Selectors
