@@ -205,6 +205,9 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
         }
       }
     }
+    podIdentityProfile: {
+      enabled: true
+    }
   }
   tags: tags
 }

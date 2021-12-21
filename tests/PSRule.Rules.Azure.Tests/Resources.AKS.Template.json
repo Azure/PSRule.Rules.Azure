@@ -913,6 +913,9 @@
                     "skip-nodes-with-local-storage": "false",
                     "skip-nodes-with-system-pods": "true"
                 },
+                "podIdentityProfile": {
+                    "enabled": true
+                },
                 "disableLocalAccounts": true,
                 "enableRBAC": true,
                 "enablePodSecurityPolicy": false,

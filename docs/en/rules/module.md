@@ -293,6 +293,12 @@ Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.ImageHealth](Azure.ACR.ImageHealth.md) | Remove container images with known vulnerabilities. | Critical
 
+### Authentication
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.AKS.PodIdentity](Azure.AKS.PodIdentity.md) | Configure AKS clusters to use AAD pod identities to access Azure resources securely. | Important
+
 ### Azure resources
 
 Name | Synopsis | Severity
