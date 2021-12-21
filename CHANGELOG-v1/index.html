@@ -6540,6 +6540,25 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.11.0-B2112073:</p>
 <ul>
+<li>Engineering:<ul>
+<li>Rule refactoring of rules from PowerShell to YAML. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1109">#1109</a><ul>
+<li>The following rules where refactored:<ul>
+<li><code>Azure.AppConfig.SKU</code></li>
+<li><code>Azure.AppConfig.Name</code></li>
+<li><code>Azure.AppInsights.Workspace</code></li>
+<li><code>Azure.AppInsights.Name</code></li>
+<li><code>Azure.Cosmos.AccountName</code></li>
+<li><code>Azure.FrontDoor.State</code></li>
+<li><code>Azure.FrontDoor.Name</code></li>
+<li><code>Azure.FrontDoor.WAF.Mode</code></li>
+<li><code>Azure.FrontDoor.WAF.Enabled</code></li>
+<li><code>Azure.FrontDoor.WAF.Name</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Bug fixes:<ul>
 <li>Fixed output of Bicep informational and warning messages in error stream. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1157">#1157</a></li>
 <li>Fixed obsolete flag for baseline <code>Azure.Preview_2021_12</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1166">#1166</a></li>

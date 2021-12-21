@@ -2528,6 +2528,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5490,6 +5497,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5556,7 +5570,7 @@ When configured as workspace-based, telemetry is sent from App Insights to a com
 </ul>
 <p>App Insights resources can be configured as workspace-based either during or after initial deployment.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider using workspace-based Application Insights resources.</p>
+<p>Consider using workspace-based Application Insights resources to collect telemetry in shared storage.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
 <h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
 <p>To deploy Application Insights resources that pass this rule:</p>
@@ -5565,23 +5579,40 @@ When configured as workspace-based, telemetry is sent from App Insights to a com
 </ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;microsoft.insights/components&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-02-02-preview&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;web&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Application_Type&quot;</span><span class="p">:</span> <span class="s2">&quot;web&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Flow_Type&quot;</span><span class="p">:</span> <span class="s2">&quot;Redfield&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Request_Source&quot;</span><span class="p">:</span> <span class="s2">&quot;IbizaAIExtension&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;WorkspaceResourceId&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;workspaceResourceId&#39;)]&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;publicNetworkAccessForIngestion&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;publicNetworkAccessForQuery&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span>
-    <span class="p">}</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;microsoft.insights/components&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-02-02&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;web&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;Application_Type&quot;</span><span class="p">:</span> <span class="s2">&quot;web&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Flow_Type&quot;</span><span class="p">:</span> <span class="s2">&quot;Redfield&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Request_Source&quot;</span><span class="p">:</span> <span class="s2">&quot;IbizaAIExtension&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;WorkspaceResourceId&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;workspaceId&#39;)]&quot;</span>
+  <span class="p">}</span>
 <span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To deploy Application Insights resources that pass this rule:</p>
+<ul>
+<li>Set the <code>properties.WorkspaceResourceId</code> property to a valid Log Analytics workspace.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource appInsights &#39;Microsoft.Insights/components@2020-02-02&#39; = {
+  name: name
+  location: location
+  kind: &#39;web&#39;
+  properties: {
+    Application_Type: &#39;web&#39;
+    Flow_Type: &#39;Redfield&#39;
+    Request_Source: &#39;IbizaAIExtension&#39;
+    WorkspaceResourceId: workspaceId
+  }
+}
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/devops/monitor-collection-data-storage">Collection and storage</a></li>
 <li><a href="https://docs.microsoft.com/azure/azure-monitor/app/convert-classic-resource">Migrate to workspace-based Application Insights resources</a></li>
 <li><a href="https://docs.microsoft.com/azure/templates/microsoft.insights/components#applicationinsightscomponentproperties-object">Azure resource template</a></li>
 </ul>
