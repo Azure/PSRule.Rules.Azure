@@ -187,8 +187,6 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.Preview_2021_12
-  annotations:
-    obsolete: true
 spec:
   rule:
     tag:
