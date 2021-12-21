@@ -1,0 +1,49 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for App Configuration
+#
+
+#region Rules
+
+---
+# Synopsis: App Configuration should use a minimum size of Standard.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppConfig.SKU
+  tags:
+    release: 'GA'
+    ruleSet: '2020_12'
+spec:
+  type:
+  - Microsoft.AppConfiguration/configurationStores
+  condition:
+    field: 'Sku.Name'
+    equals: 'standard'
+
+---
+# Synopsis: App Configuration store names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppConfig.Name
+  tags:
+    release: 'GA'
+    ruleSet: '2020_12'
+spec:
+  type:
+  - Microsoft.AppConfiguration/configurationStores
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 5
+    - name: '.'
+      lessOrEquals: 50
+    # Alphanumerics and hyphens
+    # Start and end with alphanumeric
+    - name: '.'
+      match: '^[A-Za-z0-9](-|[A-Za-z0-9]){3,48}[A-Za-z0-9]$'
+
+#endregion Rules

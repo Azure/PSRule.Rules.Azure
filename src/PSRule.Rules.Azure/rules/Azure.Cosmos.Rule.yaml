@@ -5,6 +5,8 @@
 # Validation rules for Cosmos DB
 #
 
+#region Rules
+
 ---
 # Synopsis: Use Azure AD identities for management place operations in Azure Cosmos DB.
 apiVersion: github.com/microsoft/PSRule/v1
@@ -12,11 +14,36 @@ kind: Rule
 metadata:
   name: Azure.Cosmos.DisableMetadataWrite
   tags:
-    release: GA
-    ruleSet: 2021_09
+    release: 'GA'
+    ruleSet: '2021_09'
 spec:
   type:
   - Microsoft.DocumentDb/databaseAccounts
   condition:
     field: 'Properties.disableKeyBasedMetadataWriteAccess'
     equals: true
+
+---
+# Synopsis: Cosmos DB account names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Cosmos.AccountName
+  tags:
+    release: 'GA'
+    ruleSet: '2021_09'
+spec:
+  type:
+  - Microsoft.DocumentDb/databaseAccounts
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 3
+    - name: '.'
+      lessOrEquals: 44
+    # Lowercase letters, numbers, and hyphens
+    # Start and end with lettings and numbers
+    - name: '.'
+      match: '^[a-z0-9](-|[a-z0-9]){1,41}[a-z0-9]$'
+
+#endregion Rules
