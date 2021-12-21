@@ -12,14 +12,14 @@
         <meta name="author" content="Microsoft">
       
       
-        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceFabric.AAD/">
+        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.PodIdentity/">
       
       <link rel="icon" href="../../../assets/ms_icon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
     
     
       
-        <title>Azure.ServiceFabric.AAD - PSRule for Azure</title>
+        <title>Azure.AKS.PodIdentity - PSRule for Azure</title>
       
     
     
@@ -64,9 +64,9 @@
 
   <!-- Open graph meta tags -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PSRule for Azure - Azure.ServiceFabric.AAD" />
+  <meta property="og:title" content="PSRule for Azure - Azure.AKS.PodIdentity" />
   <meta property="og:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
-  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceFabric.AAD/" />
+  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.PodIdentity/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1280" />
@@ -76,7 +76,7 @@
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - Azure.ServiceFabric.AAD" />
+  <meta name="twitter:title" content="PSRule for Azure - Azure.AKS.PodIdentity" />
   <meta name="twitter:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#useaadauthenticationwithservicefabricclusters" class="md-skip">
+        <a href="#usemanagedidentitiesforakspodauthentication" class="md-skip">
           Skip to content
         </a>
       
@@ -137,7 +137,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Azure.ServiceFabric.AAD
+              Azure.AKS.PodIdentity
             
           </span>
         </div>
@@ -1976,11 +1976,100 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Azure.AKS.PodIdentity/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Azure.AKS.PodIdentity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Azure.AKS.PodIdentity
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurecli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4090,73 +4179,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Azure.ServiceFabric.AAD
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Azure.ServiceFabric.AAD/" class="md-nav__link">
         Azure.ServiceFabric.AAD
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommendation" class="md-nav__link">
-    Recommendation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    Notes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    Links
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -5479,9 +5506,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    Notes
+  <a href="#examples" class="md-nav__link">
+    Examples
   </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazurecli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -5508,7 +5562,7 @@
 
   
     <a
-      href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.ServiceFabric.AAD.md"
+      href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.PodIdentity.md"
       title="Edit this page"
       class="md-content__button md-icon"
     >
@@ -5525,26 +5579,191 @@
 
 
 <!-- Markdown content -->
-<h1 id="useaadauthenticationwithservicefabricclusters">Use AAD authentication with Service Fabric clusters<a class="headerlink" href="#useaadauthenticationwithservicefabricclusters" title="Permanent link">#</a></h1>
+<h1 id="usemanagedidentitiesforakspodauthentication">Use managed identities for AKS pod authentication<a class="headerlink" href="#usemanagedidentitiesforakspodauthentication" title="Permanent link">#</a></h1>
 <p><a href="../module/#security"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0l-9.272-9.272zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0l-9.273 9.272z"/></svg></span> Security</a>
- · <a href="../resource/#servicefabric"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M13.152.682a2.25 2.25 0 0 1 2.269 0l.007.004 6.957 4.276a2.276 2.276 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003a2.276 2.276 0 0 1-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026a2.28 2.28 0 0 1 .82-.827h.002L13.152.681zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.776.776 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003zM18 9.709l-3.25 1.9v7.548L18 17.245V9.709zm1.5-.878v7.532l2.124-1.25a.777.777 0 0 0 .387-.671V7.363L19.5 8.831zm-9.09 5.316 2.84-1.66v7.552l-3.233 1.902v-7.612c.134-.047.265-.107.391-.18l.002-.002zm-1.893 7.754V14.33a2.277 2.277 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232z"/></svg></span> Service Fabric</a>
- · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"/><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Azure.ServiceFabric.AAD</p>
-<p>Use Azure Active Directory (AAD) client authentication for Service Fabric clusters.</p>
+ · <a href="../resource/#azurekubernetesservice"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M13.152.682a2.25 2.25 0 0 1 2.269 0l.007.004 6.957 4.276a2.276 2.276 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003a2.276 2.276 0 0 1-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026a2.28 2.28 0 0 1 .82-.827h.002L13.152.681zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.776.776 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003zM18 9.709l-3.25 1.9v7.548L18 17.245V9.709zm1.5-.878v7.532l2.124-1.25a.777.777 0 0 0 .387-.671V7.363L19.5 8.831zm-9.09 5.316 2.84-1.66v7.552l-3.233 1.902v-7.612c.134-.047.265-.107.391-.18l.002-.002zm-1.893 7.754V14.33a2.277 2.277 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232z"/></svg></span> Azure Kubernetes Service</a>
+ · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"/><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Azure.AKS.PodIdentity</p>
+<p>Configure AKS clusters to use AAD pod identities to access Azure resources securely.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>When deploying Service Fabric clusters on Azure, AAD can optionally be used to secure management endpoints.
-If configured, client authentication (client-to-node security) uses AAD.
-Additionally Azure Role-based Access Control (RBAC) can be used to delegate cluster access.</p>
-<p>For Service Fabric clusters running on Azure, AAD is recommended to secure access to management endpoints.</p>
+<p>AAD pod identities allows AKS clusters to assign a user identity to a pod in Kubernetes.</p>
+<p>Administrators create identities and bindings as Kubernetes primitives that allow pods to access
+Azure resources that rely on Azure AD as an identity provider.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider enabling Azure Active Directory (AAD) client authentication for Service Fabric clusters.</p>
-<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
-<p>For Linux clusters, AAD authentication must be configured at cluster creation time.
-Windows cluster can be updated to support AAD authentication after initial deployment.</p>
+<p>Consider enabling AAD pod identities on AKS clusters.</p>
+<p>It is only recommended to use AAD pod identities with AKS clusters that use Azure CNI.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configurewithazurecli">Configure with Azure CLI<a class="headerlink" href="#configurewithazurecli" title="Permanent link">#</a></h3>
+<p>Register <code>EnablePodIdentityPreview</code> feature:</p>
+<div class="highlight"><pre><span></span><code>az feature register --name EnablePodIdentityPreview --namespace Microsoft.ContainerService
+</code></pre></div>
+<p>Install the <code>aks-preview</code> Azure CLI:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install the aks-preview extension</span>
+az extension add --name aks-preview
+
+<span class="c1"># Update the extension to make sure you have the latest version installed</span>
+az extension update --name aks-preview
+</code></pre></div>
+<p>Create AKS cluster with AAD Pod identity enabled:</p>
+<div class="highlight"><pre><span></span><code>az aks create -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> -n <span class="s1">&#39;&lt;cluster_name&gt;&#39;</span> --enable-pod-identity --network-plugin azure
+</code></pre></div>
+<p>Update an existing AKS cluster with AAD pod identity enabled:</p>
+<div class="highlight"><pre><span></span><code>az aks update -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> -n <span class="s1">&#39;&lt;cluster_name&gt;&#39;</span> --enable-pod-identity
+</code></pre></div>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To deploy AKS clusters that pass this rule:</p>
+<ul>
+<li>Set <code>Properties.networkProfile.networkPlugin</code> to <code>azure</code>.</li>
+<li>Set <code>Properties.podIdentityProfile.enabled</code> to <code>true</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.ContainerService/managedClusters&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-07-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;clusterName&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;UserAssigned&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;userAssignedIdentities&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;[format(&#39;{0}&#39;, resourceId(&#39;Microsoft.ManagedIdentity/userAssignedIdentities&#39;, parameters(&#39;identityName&#39;)))]&quot;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;kubernetesVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;kubernetesVersion&#39;)]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;enableRBAC&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;dnsPrefix&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;dnsPrefix&#39;)]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;agentPoolProfiles&quot;</span><span class="p">:</span> <span class="s2">&quot;[variables(&#39;allPools&#39;)]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;aadProfile&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;managed&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;enableAzureRBAC&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;adminGroupObjectIDs&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;clusterAdmins&#39;)]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;tenantID&quot;</span><span class="p">:</span> <span class="s2">&quot;[subscription().tenantId]&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;networkProfile&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;networkPlugin&quot;</span><span class="p">:</span> <span class="s2">&quot;azure&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;networkPolicy&quot;</span><span class="p">:</span> <span class="s2">&quot;azure&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;loadBalancerSku&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;serviceCidr&quot;</span><span class="p">:</span> <span class="s2">&quot;[variables(&#39;serviceCidr&#39;)]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;dnsServiceIP&quot;</span><span class="p">:</span> <span class="s2">&quot;[variables(&#39;dnsServiceIP&#39;)]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;dockerBridgeCidr&quot;</span><span class="p">:</span> <span class="s2">&quot;[variables(&#39;dockerBridgeCidr&#39;)]&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;autoUpgradeProfile&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;upgradeChannel&quot;</span><span class="p">:</span> <span class="s2">&quot;stable&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;addonProfiles&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;httpApplicationRouting&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">false</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;azurepolicy&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;v2&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;omsagent&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;logAnalyticsWorkspaceResourceID&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;workspaceId&#39;)]&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;kubeDashboard&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">false</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;azureKeyvaultSecretsProvider&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;enableSecretRotation&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;podIdentityProfile&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;tags&#39;)]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;[resourceId(&#39;Microsoft.ManagedIdentity/userAssignedIdentities&#39;, parameters(&#39;identityName&#39;))]&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To deploy AKS clusters that pass this rule:</p>
+<ul>
+<li>Set <code>Properties.networkProfile.networkPlugin</code> to <code>azure</code>.</li>
+<li>Set <code>Properties.podIdentityProfile.enabled</code> to <code>true</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>// Cluster
+resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-07-01&#39; = {
+  location: location
+  name: clusterName
+  identity: {
+    type: &#39;UserAssigned&#39;
+    userAssignedIdentities: {
+      &#39;${identity.id}&#39;: {}
+    }
+  }
+  properties: {
+    kubernetesVersion: kubernetesVersion
+    enableRBAC: true
+    dnsPrefix: dnsPrefix
+    agentPoolProfiles: allPools
+    aadProfile: {
+      managed: true
+      enableAzureRBAC: true
+      adminGroupObjectIDs: clusterAdmins
+      tenantID: subscription().tenantId
+    }
+    networkProfile: {
+      networkPlugin: &#39;azure&#39;
+      networkPolicy: &#39;azure&#39;
+      loadBalancerSku: &#39;standard&#39;
+      serviceCidr: serviceCidr
+      dnsServiceIP: dnsServiceIP
+      dockerBridgeCidr: dockerBridgeCidr
+    }
+    autoUpgradeProfile: {
+      upgradeChannel: &#39;stable&#39;
+    }
+    addonProfiles: {
+      httpApplicationRouting: {
+        enabled: false
+      }
+      azurepolicy: {
+        enabled: true
+        config: {
+          version: &#39;v2&#39;
+        }
+      }
+      omsagent: {
+        enabled: true
+        config: {
+          logAnalyticsWorkspaceResourceID: workspaceId
+        }
+      }
+      kubeDashboard: {
+        enabled: false
+      }
+      azureKeyvaultSecretsProvider: {
+        enabled: true
+        config: {
+          enableSecretRotation: &#39;true&#39;
+        }
+      }
+    }
+    podIdentityProfile: {
+      enabled: true
+    }
+  }
+  tags: tags
+}
+</code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security#security-recommendations">Security recommendations</a></li>
-<li><a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-setup-aad">Set up Azure Active Directory for client authentication</a></li>
-<li><a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md">Configure Azure Active Directory Authentication for Existing Cluster</a></li>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication">Use identity-based authentication</a></li>
+<li><a href="https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity">Use Azure Active Directory pod-managed identities in Azure Kubernetes Service (Preview)</a></li>
+<li><a href="https://docs.microsoft.com/azure/aks/use-managed-identity">Use managed identities in Azure Kubernetes Service</a></li>
+<li><a href="https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview">What are managed identities for Azure resources?</a></li>
+<li><a href="https://github.com/Azure/aad-pod-identity">AAD Pod Identity</a></li>
 </ul>
 
 <!-- Last update of source file -->
