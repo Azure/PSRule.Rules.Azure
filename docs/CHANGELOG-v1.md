@@ -25,6 +25,9 @@ What's changed since pre-release v1.11.0-B2112073:
 - Bug fixes:
   - Fixed output of Bicep informational and warning messages in error stream. [#1157](https://github.com/Azure/PSRule.Rules.Azure/issues/1157)
   - Fixed obsolete flag for baseline `Azure.Preview_2021_12`. [#1166](https://github.com/Azure/PSRule.Rules.Azure/issues/1166)
+- New rules:
+  - Azure Kubernetes Service
+    - Use Azure AD Pod Managed Identities (preview). [#991](https://github.com/Azure/PSRule.Rules.Azure/issues/991)
 
 ## v1.11.0-B2112073 (pre-release)
 
