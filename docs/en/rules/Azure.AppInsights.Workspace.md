@@ -1,4 +1,5 @@
 ---
+reviewed: 2021/12/20
 severity: Important
 pillar: Operational Excellence
 category: Deployment
@@ -30,7 +31,7 @@ App Insights resources can be configured as workspace-based either during or aft
 
 ## RECOMMENDATION
 
-Consider using workspace-based Application Insights resources.
+Consider using workspace-based Application Insights resources to collect telemetry in shared storage.
 
 ## EXAMPLES
 
@@ -44,23 +45,44 @@ For example:
 
 ```json
 {
-    "type": "microsoft.insights/components",
-    "apiVersion": "2020-02-02-preview",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "kind": "web",
-    "properties": {
-        "Application_Type": "web",
-        "Flow_Type": "Redfield",
-        "Request_Source": "IbizaAIExtension",
-        "WorkspaceResourceId": "[parameters('workspaceResourceId')]",
-        "publicNetworkAccessForIngestion": "Enabled",
-        "publicNetworkAccessForQuery": "Enabled"
-    }
+  "type": "microsoft.insights/components",
+  "apiVersion": "2020-02-02",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "kind": "web",
+  "properties": {
+    "Application_Type": "web",
+    "Flow_Type": "Redfield",
+    "Request_Source": "IbizaAIExtension",
+    "WorkspaceResourceId": "[parameters('workspaceId')]"
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy Application Insights resources that pass this rule:
+
+- Set the `properties.WorkspaceResourceId` property to a valid Log Analytics workspace.
+
+For example:
+
+```bicep
+resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
+  name: name
+  location: location
+  kind: 'web'
+  properties: {
+    Application_Type: 'web'
+    Flow_Type: 'Redfield'
+    Request_Source: 'IbizaAIExtension'
+    WorkspaceResourceId: workspaceId
+  }
 }
 ```
 
 ## LINKS
 
+- [Collection and storage](https://docs.microsoft.com/azure/architecture/framework/devops/monitor-collection-data-storage)
 - [Migrate to workspace-based Application Insights resources](https://docs.microsoft.com/azure/azure-monitor/app/convert-classic-resource)
 - [Azure resource template](https://docs.microsoft.com/azure/templates/microsoft.insights/components#applicationinsightscomponentproperties-object)
