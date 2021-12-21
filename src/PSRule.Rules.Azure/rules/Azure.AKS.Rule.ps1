@@ -5,11 +5,6 @@
 # Validation rules for Azure Kubernetes Service (AKS)
 #
 
-# Synopsis: AKS clusters should have minimum number of nodes for failover and updates
-Rule 'Azure.AKS.MinNodeCount' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.GreaterOrEqual($TargetObject, 'Properties.agentPoolProfiles[0].count', 3);
-}
-
 # Synopsis: AKS clusters should meet the minimum version
 Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $minVersion = [Version]$Configuration.Azure_AKSMinimumVersion
@@ -90,41 +85,6 @@ Rule 'Azure.AKS.DNSPrefix' -Type 'Microsoft.ContainerService/managedClusters' -T
     # Alphanumerics and hyphens
     # Start and end with alphanumeric
     $Assert.Match($TargetObject, 'Properties.dnsPrefix', '^[A-Za-z0-9]((-|[A-Za-z0-9]){0,}[A-Za-z0-9]){0,}$');
-}
-
-# Synopsis: Configure AKS clusters to use managed identities for managing cluster infrastructure.
-Rule 'Azure.AKS.ManagedIdentity' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'));
-}
-
-# Synopsis: Use a Standard load-balancer with AKS clusters.
-Rule 'Azure.AKS.StandardLB' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.networkProfile.loadBalancerSku', 'standard');
-}
-
-# Synopsis: AKS clusters should use Azure Policy add-on.
-Rule 'Azure.AKS.AzurePolicyAddOn' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.addonProfiles.azurePolicy.enabled', $True);
-}
-
-# Synopsis: Use AKS-managed Azure AD to simplify authorization and improve security.
-Rule 'Azure.AKS.ManagedAAD' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_06'; } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.aadProfile.managed', $True);
-}
-
-# Synopsis: Restrict access to API server endpoints to authorized IP addresses.
-Rule 'Azure.AKS.AuthorizedIPs' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_06'; } {
-    $Assert.GreaterOrEqual($TargetObject, 'Properties.apiServerAccessProfile.authorizedIPRanges', 1);
-}
-
-# Synopsis: Enforce named user accounts with RBAC assigned permissions.
-Rule 'Azure.AKS.LocalAccounts' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'preview'; ruleSet = '2021_06'; } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.disableLocalAccounts', $True);
-}
-
-# Synopsis: Use Azure RBAC for Kubernetes Authorization with AKS clusters.
-Rule 'Azure.AKS.AzureRBAC' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_06'; } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.aadProfile.enableAzureRbac', $True);
 }
 
 # Synopsis: Use Autoscaling to ensure AKS cluster is running efficiently with the right number of nodes for the workloads present.

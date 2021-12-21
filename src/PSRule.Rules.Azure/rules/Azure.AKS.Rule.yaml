@@ -8,6 +8,56 @@
 #region Rules
 
 ---
+# Synopsis: AKS clusters should have minimum number of nodes for failover and updates
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.MinNodeCount
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    field: 'Properties.agentPoolProfiles[0].count'
+    greaterOrEquals: 3
+
+---
+# Synopsis: Configure AKS clusters to use managed identities for managing cluster infrastructure.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.ManagedIdentity
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    field: 'Identity.Type'
+    in:
+      - 'SystemAssigned'
+      - 'UserAssigned'
+
+---
+# Synopsis: Use a Standard load-balancer with AKS clusters.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.StandardLB
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    field: 'Properties.networkProfile.loadBalancerSku'
+    equals: 'standard'
+
+---
 # Synopsis: Deploy AKS clusters with Network Policies enabled.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
@@ -24,6 +74,86 @@ spec:
     in:
     - azure
     - calico
+
+---
+# Synopsis: AKS clusters should use Azure Policy add-on.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.AzurePolicyAddOn
+  tags:
+    release: 'GA'
+    ruleSet: '2020_12'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    field: 'Properties.addonProfiles.azurePolicy.enabled'
+    equals: true
+
+---
+# Synopsis: Use AKS-managed Azure AD to simplify authorization and improve security.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.ManagedAAD
+  tags:
+    release: 'GA'
+    ruleSet: '2021_06'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    field: 'Properties.aadProfile.managed'
+    equals: true
+
+---
+# Synopsis: Restrict access to API server endpoints to authorized IP addresses.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.AuthorizedIPs
+  tags:
+    release: 'GA'
+    ruleSet: '2021_06'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    field: 'Properties.apiServerAccessProfile.authorizedIPRanges'
+    greaterOrEquals: 1
+
+---
+# Synopsis: Enforce named user accounts with RBAC assigned permissions.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.LocalAccounts
+  tags:
+    release: 'preview'
+    ruleSet: '2021_06'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    field: 'Properties.disableLocalAccounts'
+    equals: true
+
+---
+# Synopsis: Use Azure RBAC for Kubernetes Authorization with AKS clusters.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.AzureRBAC
+  tags:
+    release: 'GA'
+    ruleSet: '2021_06'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    field: 'Properties.aadProfile.enableAzureRbac'
+    equals: true
 
 ---
 # Synopsis: Deploy AKS clusters with Secrets Store CSI Driver and store Secrets in Key Vayult.
