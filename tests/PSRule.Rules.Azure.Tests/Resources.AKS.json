@@ -1797,6 +1797,9 @@
             },
             "autoUpgradeProfile": {
                 "upgradeChannel": "rapid"
+            },
+            "podIdentityProfile": {
+                "enabled": true
             }
         },
         "identity": {

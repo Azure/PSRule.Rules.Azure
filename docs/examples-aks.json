@@ -255,6 +255,9 @@
                             "enableSecretRotation": "true"
                         }
                     }
+                },
+                "podIdentityProfile": {
+                    "enabled": true
                 }
             },
             "tags": "[parameters('tags')]",
