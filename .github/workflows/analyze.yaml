@@ -3,8 +3,8 @@
 #
 
 # NOTES:
-# This workload uses PSRule, CodeQL, and DevSkim.
-# You can read more about these tools and configuration options here:
+# This worflow uses PSRule, CodeQL, and DevSkim.
+# You can read more about these linting tools and configuration options here:
 #   PSRule - https://aka.ms/ps-rule and https://github.com/Microsoft/PSRule.Rules.MSFT.OSS
 #   CodeQL - https://codeql.github.com/docs/codeql-overview/about-codeql/
 #   DevSkim - https://github.com/microsoft/DevSkim-Action and https://github.com/Microsoft/DevSkim
