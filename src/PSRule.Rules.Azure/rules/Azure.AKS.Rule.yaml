@@ -97,6 +97,22 @@ spec:
     - field: Properties.autoUpgradeProfile.upgradeChannel
       notEquals: none
 
+---
+# Synopsis: Configure AKS clusters to use AAD pod identities to access Azure resources securely.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.PodIdentity
+  tags:
+    release: 'preview'
+    ruleSet: '2021_12'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    field: Properties.podIdentityProfile.enabled
+    equals: true
+
 #endregion Rules
 
 #region Selectors
