@@ -7,6 +7,9 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+- Bug fixes:
+  - Fixed obsolete flag for baseline `Azure.Preview_2021_12`. [#1166](https://github.com/Azure/PSRule.Rules.Azure/issues/1166)
+
 ## v1.11.0-B2112073 (pre-release)
 
 What's changed since pre-release v1.11.0-B2112024:
