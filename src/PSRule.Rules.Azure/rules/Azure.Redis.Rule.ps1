@@ -30,6 +30,62 @@ Rule 'Azure.Redis.MaxMemoryReserved' -Type 'Microsoft.Cache/Redis' -Tag @{ relea
     $Assert.GreaterOrEqual($TargetObject, 'Properties.redisConfiguration.maxmemory-reserved', $memSize * 0.1, $True);
 }
 
+# Synopsis: Premium and Enterprise Redis cache should be deployed with availability zones for high availability.
+Rule 'Azure.Redis.AvailabilityZone' -Type 'Microsoft.Cache/Redis' -If { (IsPremiumCache) -or (IsEnterpriseCache) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+    $redisCacheProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Cache', 'Redis');
+
+    $configurationZoneMappings = $Configuration.AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
+    $providerZoneMappings = $redisCacheProvider.ZoneMappings;
+    $mergedAvailabilityZones = PrependConfigurationZoneWithProviderZone -ConfigurationZone $configurationZoneMappings -ProviderZone $providerZoneMappings;
+
+    $locationAvailabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $mergedAvailabilityZones;
+
+    if (-not $locationAvailabilityZones) {
+        return $Assert.Pass();
+    }
+
+    $capacityUnitMapping = @{
+        'Premium' = @(1, 2, 3, 4, 5)
+        'Enterprise' = @(2, 4, 6, 8, 10)
+        'EnterpriseFlash' = @(3, 9)
+    }
+
+    $skuName = $TargetObject.Properties.sku.name;
+
+    # If Premium Cache
+    # Need to check zones are greater or equal to 2 and replicas are n(number of zones) - 1
+    if (IsPremiumCache) {
+        $Assert.AllOf(
+            $Assert.GreaterOrEqual($TargetObject, 'Properties.replicasPerMaster', $TargetObject.zones.Length - 1),
+            $Assert.GreaterOrEqual($TargetObject, 'zones', 2),
+            $Assert.In($TargetObject, 'Properties.sku.capacity', $capacityUnitMapping[$skuName])
+        ).Reason(
+            $LocalizedData.PremiumRedisCacheAvailabilityZone, 
+            $TargetObject.name, 
+            $TargetObject.location, 
+            ($locationAvailabilityZones -join ', ')
+        );
+    }
+
+    # Enterprise Cache
+    # Check if zone redundant(1, 2 and 3)
+    else {
+        $zoneRedundant = $TargetObject.zones -and (-not (Compare-Object -ReferenceObject @('1', '2', '3') -DifferenceObject $TargetObject.zones));
+
+        $skuPrefix = $skuName.Split('_')[0];
+
+        $hasValidCapacityUnits = $Assert.In($TargetObject, 'Properties.sku.capacity', $capacityUnitMapping[$skuPrefix]).Result;
+
+        $Assert.Create(
+            ($zoneRedundant -and $hasValidCapacityUnits),
+            $LocalizedData.EnterpriseRedisCacheAvailabilityZone,
+            $TargetObject.name,
+            $TargetObject.location
+        );
+    }
+
+} -Configure @{ AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
+
 #region Helper functions
 
 function global:GetCacheMemory {
@@ -54,6 +110,34 @@ function global:GetCacheMemory {
             "P4" { return 53GB; }
             "P5" { return 120GB; }
         }
+    }
+}
+
+function global:IsPremiumCache {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        return $Assert.AllOf(
+            $Assert.HasFieldValue($TargetObject, 'Properties.sku.name', 'Premium'),
+            $Assert.HasFieldValue($TargetObject, 'Properties.sku.family', 'P')
+        ).Result
+    }
+}
+
+function global:IsEnterpriseCache {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        return $Assert.In($TargetObject, 'Properties.sku.name', @(
+            'Enterprise_E10', 
+            'Enterprise_E20', 
+            'Enterprise_E50',
+            'Enterprise_E100',
+            'EnterpriseFlash_F300',
+            'EnterpriseFlash_F700',
+            'EnterpriseFlash_F1500')).Result;
     }
 }
 

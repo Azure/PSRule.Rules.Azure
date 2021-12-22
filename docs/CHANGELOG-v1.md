@@ -7,6 +7,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.11.0-B2112104:
+
+- New rules
+  - Azure Redis Cache
+    - Use availability zones for Azure Cache for Redis for regions that support it. [#1078](https://github.com/Azure/PSRule.Rules.Azure/issues/1078)
+
 ## v1.11.0-B2112104 (pre-release)
 
 What's changed since pre-release v1.11.0-B2112073:

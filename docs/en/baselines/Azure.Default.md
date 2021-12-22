@@ -4,7 +4,7 @@ Default baseline for Azure rules.
 
 ## Rules
 
-The following rules are included within `Azure.Default`. This baseline includes a total of 250 rules.
+The following rules are included within `Azure.Default`. This baseline includes a total of 251 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -156,6 +156,7 @@ Name | Synopsis | Severity
 [Azure.RBAC.PIM](../rules/Azure.RBAC.PIM.md) | Use just-in-time (JiT) activation of roles instead of persistent role assignment. | Important
 [Azure.RBAC.UseGroups](../rules/Azure.RBAC.UseGroups.md) | Use groups for assigning permissions instead of individual user accounts. | Important
 [Azure.RBAC.UseRGDelegation](../rules/Azure.RBAC.UseRGDelegation.md) | Use RBAC assignments on resource groups instead of individual resources. | Important
+[Azure.Redis.AvailabilityZone](../rules/Azure.Redis.AvailabilityZone.md) | Premium and Enterprise Redis cache should be deployed with availability zones for high availability. | Important
 [Azure.Redis.MaxMemoryReserved](../rules/Azure.Redis.MaxMemoryReserved.md) | Configure maxmemory-reserved to reserve memory for non-cache operations. | Important
 [Azure.Redis.MinSKU](../rules/Azure.Redis.MinSKU.md) | Use Azure Cache for Redis instances of at least Standard C1. | Important
 [Azure.Redis.MinTLS](../rules/Azure.Redis.MinTLS.md) | Redis Cache should reject TLS versions older then 1.2. | Critical

@@ -67,3 +67,14 @@ configuration:
       - "2"
       - "3"
   AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: ['JobLogs', 'AllMetrics']
+  AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
+  - location: 'Antarctica North'
+    zones:
+      - "1"
+      - "2"
+      - "3"
+  - location: 'Antarctica South'
+    zones:
+      - "1"
+      - "2"
+      - "3"
