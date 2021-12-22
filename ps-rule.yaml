@@ -24,7 +24,7 @@ input:
   - 'ps-project.yaml'
   - 'ps-rule.yaml'
   - 'mkdocs.yml'
-  - '.editorconfig'
+  - '**/.editorconfig'
   - '.markdownlint.json'
   - '.github/dependabot.yml'
 

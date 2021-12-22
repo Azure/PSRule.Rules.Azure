@@ -16,7 +16,7 @@ on:
   pull_request:
     branches: [ main, 'release/*' ]
   schedule:
-    - cron: '26 21 * * 0'
+  - cron: '26 21 * * 0' # At 09:26 PM, on Sunday each week
 
 jobs:
   oss:
