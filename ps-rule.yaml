@@ -8,6 +8,11 @@
 input:
   pathIgnore:
   - '.vscode/'
+  - 'data/'
+  - '.config/'
+  - '.github/workflows/'
+  - '.azure-pipelines/**/*.yaml'
+  - 'docs/examples*.json'
   - '*.md'
   - '*.Designer.cs'
   - '*.resx'
@@ -15,6 +20,13 @@ input:
   - '*.txt'
   - '*.html'
   - '*.ico'
+  - 'ps-docs.yaml'
+  - 'ps-project.yaml'
+  - 'ps-rule.yaml'
+  - 'mkdocs.yml'
+  - '**/.editorconfig'
+  - '.markdownlint.json'
+  - '.github/dependabot.yml'
 
 include:
   path: []
