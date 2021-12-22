@@ -7,11 +7,16 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.11.0-B2112104 (pre-release)
+
 What's changed since pre-release v1.11.0-B2112073:
 
+- New rules:
+  - Azure Kubernetes Service:
+    - Check clusters use Azure AD Pod Managed Identities (preview). [#991](https://github.com/Azure/PSRule.Rules.Azure/issues/991)
 - Engineering:
   - Rule refactoring of rules from PowerShell to YAML. [#1109](https://github.com/Azure/PSRule.Rules.Azure/issues/1109)
-    - The following rules where refactored:
+    - The following rules were refactored:
       - `Azure.AppConfig.SKU`
       - `Azure.AppConfig.Name`
       - `Azure.AppInsights.Workspace`
@@ -33,9 +38,6 @@ What's changed since pre-release v1.11.0-B2112073:
 - Bug fixes:
   - Fixed output of Bicep informational and warning messages in error stream. [#1157](https://github.com/Azure/PSRule.Rules.Azure/issues/1157)
   - Fixed obsolete flag for baseline `Azure.Preview_2021_12`. [#1166](https://github.com/Azure/PSRule.Rules.Azure/issues/1166)
-- New rules:
-  - Azure Kubernetes Service
-    - Use Azure AD Pod Managed Identities (preview). [#991](https://github.com/Azure/PSRule.Rules.Azure/issues/991)
 
 ## v1.11.0-B2112073 (pre-release)
 
@@ -92,7 +94,7 @@ What's changed since v1.10.0:
     - Check Virtual WANs meet naming requirements. [#1110](https://github.com/Azure/PSRule.Rules.Azure/issues/1110)
 - Engineering:
   - Rule refactoring of rules from PowerShell to YAML. [#1109](https://github.com/Azure/PSRule.Rules.Azure/issues/1109)
-    - The following rules where refactored:
+    - The following rules were refactored:
       - `Azure.LB.Name`
       - `Azure.NSG.Name`
       - `Azure.Firewall.Mode`
