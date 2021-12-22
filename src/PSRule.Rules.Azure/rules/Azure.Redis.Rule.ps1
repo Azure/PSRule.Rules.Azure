@@ -70,14 +70,12 @@ Rule 'Azure.Redis.AvailabilityZone' -Type 'Microsoft.Cache/Redis' -If { (IsPremi
     # Enterprise Cache
     # Check if zone redundant(1, 2 and 3)
     else {
-        $zoneRedundant = $TargetObject.zones -and (-not (Compare-Object -ReferenceObject @('1', '2', '3') -DifferenceObject $TargetObject.zones));
-
         $skuPrefix = $skuName.Split('_')[0];
 
-        $hasValidCapacityUnits = $Assert.In($TargetObject, 'Properties.sku.capacity', $capacityUnitMapping[$skuPrefix]).Result;
-
-        $Assert.Create(
-            ($zoneRedundant -and $hasValidCapacityUnits),
+        $Assert.AllOf(
+            $Assert.SetOf($TargetObject, 'zones', @('1', '2', '3')),
+            $Assert.In($TargetObject, 'Properties.sku.capacity', $capacityUnitMapping[$skuPrefix])
+        ).Reason(
             $LocalizedData.EnterpriseRedisCacheAvailabilityZone,
             $TargetObject.name,
             $TargetObject.location
