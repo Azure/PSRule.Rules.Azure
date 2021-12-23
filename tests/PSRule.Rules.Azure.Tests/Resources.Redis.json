@@ -367,30 +367,20 @@
     },
     {
         "Name": "redis-K",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-K",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Microsoft.Cache/redisEnterprise/redis-K",
         "ResourceName": "redis-K",
-        "ResourceType": "Microsoft.Cache/Redis",
+        "ResourceType": "Microsoft.Cache/redisEnterprise",
         "ResourceGroupName": "test-rg",
         "Location": "australiaeast",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "Tags": {},
         "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "Enterprise_E10",
-                "capacity": 2
-            },
             "minimumTlsVersion": "1.2",
-            "enableNonSslPort": false,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-K.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": []
+            "hostName": "redis-K.redis.cache.windows.net"
+        },
+        "sku": {
+            "name": "Enterprise_E10",
+            "capacity": 2
         },
         "zones": [
             "1",
@@ -400,117 +390,77 @@
     },
     {
         "Name": "redis-L",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-L",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-L",
         "ResourceName": "redis-L",
-        "ResourceType": "Microsoft.Cache/Redis",
+        "ResourceType": "Microsoft.Cache/redisEnterprise",
         "ResourceGroupName": "test-rg",
         "Location": "australiaeast",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "Tags": {},
         "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "Enterprise_E20",
-                "capacity": 4
-            },
             "minimumTlsVersion": "1.2",
-            "enableNonSslPort": false,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-L.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": []
+            "hostName": "redis-L.redis.cache.windows.net"
+        },
+        "sku": {
+            "name": "Enterprise_E20",
+            "capacity": 4
         },
         "zones": []
     },
     {
         "Name": "redis-M",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-M",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-M",
         "ResourceName": "redis-M",
-        "ResourceType": "Microsoft.Cache/Redis",
+        "ResourceType": "Microsoft.Cache/redisEnterprise",
         "ResourceGroupName": "test-rg",
         "Location": "Antarctica North",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "Tags": {},
         "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "Enterprise_E50",
-                "capacity": 6
-            },
             "minimumTlsVersion": "1.2",
-            "enableNonSslPort": false,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-M.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": []
+            "hostName": "redis-M.redis.cache.windows.net"
+        },
+        "sku": {
+            "name": "Enterprise_E50",
+            "capacity": 6
         },
         "zones": []
     },
     {
         "Name": "redis-N",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-N",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-N",
         "ResourceName": "redis-N",
-        "ResourceType": "Microsoft.Cache/Redis",
+        "ResourceType": "Microsoft.Cache/redisEnterprise",
         "ResourceGroupName": "test-rg",
         "Location": "antarcticasouth",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "Tags": {},
         "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "Enterprise_E100",
-                "capacity": 8
-            },
             "minimumTlsVersion": "1.2",
-            "enableNonSslPort": false,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-N.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": []
+            "hostName": "redis-N.redis.cache.windows.net"
+        },
+        "sku": {
+            "name": "Enterprise_E100",
+            "capacity": 8
         },
         "zones": []
     },
     {
         "Name": "redis-O",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-O",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-O",
         "ResourceName": "redis-O",
-        "ResourceType": "Microsoft.Cache/Redis",
+        "ResourceType": "Microsoft.Cache/redisEnterprise",
         "ResourceGroupName": "test-rg",
         "Location": "australiaeast",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "Tags": {},
         "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "EnterpriseFlash_F300",
-                "capacity": 3
-            },
             "minimumTlsVersion": "1.2",
-            "enableNonSslPort": false,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-O.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": []
+            "hostName": "redis-O.redis.cache.windows.net"
+        },
+        "sku": {
+            "name": "EnterpriseFlash_F300",
+            "capacity": 3
         },
         "zones": [
             "1",
@@ -520,30 +470,20 @@
     },
     {
         "Name": "redis-P",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-P",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-P",
         "ResourceName": "redis-P",
-        "ResourceType": "Microsoft.Cache/Redis",
+        "ResourceType": "Microsoft.Cache/redisEnterprise",
         "ResourceGroupName": "test-rg",
         "Location": "australiaeast",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "Tags": {},
         "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "EnterpriseFlash_F700",
-                "capacity": 9
-            },
             "minimumTlsVersion": "1.2",
-            "enableNonSslPort": false,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-P.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": []
+            "hostName": "redis-P.redis.cache.windows.net"
+        },
+        "sku": {
+            "name": "EnterpriseFlash_F700",
+            "capacity": 9
         },
         "zones": []
     }

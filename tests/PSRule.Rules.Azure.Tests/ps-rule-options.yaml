@@ -78,3 +78,14 @@ configuration:
       - "1"
       - "2"
       - "3"
+  AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
+  - location: 'Antarctica North'
+    zones:
+      - "1"
+      - "2"
+      - "3"
+  - location: 'Antarctica South'
+    zones:
+      - "1"
+      - "2"
+      - "3"

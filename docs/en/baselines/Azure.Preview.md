@@ -4,7 +4,7 @@ Includes rules for Azure GA and preview features.
 
 ## Rules
 
-The following rules are included within `Azure.Preview`. This baseline includes a total of 256 rules.
+The following rules are included within `Azure.Preview`. This baseline includes a total of 257 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -161,11 +161,12 @@ Name | Synopsis | Severity
 [Azure.RBAC.PIM](../rules/Azure.RBAC.PIM.md) | Use just-in-time (JiT) activation of roles instead of persistent role assignment. | Important
 [Azure.RBAC.UseGroups](../rules/Azure.RBAC.UseGroups.md) | Use groups for assigning permissions instead of individual user accounts. | Important
 [Azure.RBAC.UseRGDelegation](../rules/Azure.RBAC.UseRGDelegation.md) | Use RBAC assignments on resource groups instead of individual resources. | Important
-[Azure.Redis.AvailabilityZone](../rules/Azure.Redis.AvailabilityZone.md) | Premium and Enterprise Redis cache should be deployed with availability zones for high availability. | Important
+[Azure.Redis.AvailabilityZone](../rules/Azure.Redis.AvailabilityZone.md) | Premium Redis cache should be deployed with availability zones for high availability. | Important
 [Azure.Redis.MaxMemoryReserved](../rules/Azure.Redis.MaxMemoryReserved.md) | Configure maxmemory-reserved to reserve memory for non-cache operations. | Important
 [Azure.Redis.MinSKU](../rules/Azure.Redis.MinSKU.md) | Use Azure Cache for Redis instances of at least Standard C1. | Important
 [Azure.Redis.MinTLS](../rules/Azure.Redis.MinTLS.md) | Redis Cache should reject TLS versions older then 1.2. | Critical
 [Azure.Redis.NonSslPort](../rules/Azure.Redis.NonSslPort.md) | Azure Cache for Redis should only accept secure connections. | Critical
+[Azure.RedisEnterprise.AvailabilityZone](../rules/Azure.RedisEnterprise.AvailabilityZone.md) | Enterprise Redis cache should be zone-redundant for high availability. | Important
 [Azure.Resource.AllowedRegions](../rules/Azure.Resource.AllowedRegions.md) | Resources should be deployed to allowed regions. | Awareness
 [Azure.Resource.UseTags](../rules/Azure.Resource.UseTags.md) | Azure resources should be tagged using a standard convention. | Awareness
 [Azure.ResourceGroup.Name](../rules/Azure.ResourceGroup.Name.md) | Resource Group names should meet naming requirements. | Awareness
