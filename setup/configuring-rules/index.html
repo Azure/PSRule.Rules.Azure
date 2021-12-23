@@ -1660,6 +1660,10 @@
         
           
         
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4_3">
@@ -3822,6 +3826,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../en/rules/Azure.Redis.AvailabilityZone/" class="md-nav__link">
+        Azure.Redis.AvailabilityZone
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../en/rules/Azure.Redis.MaxMemoryReserved/" class="md-nav__link">
         Azure.Redis.MaxMemoryReserved
       </a>
@@ -3866,6 +3884,20 @@
     <li class="md-nav__item">
       <a href="../../en/rules/Azure.Redis.NonSslPort/" class="md-nav__link">
         Azure.Redis.NonSslPort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../en/rules/Azure.RedisEnterprise.Zones/" class="md-nav__link">
+        Azure.RedisEnterprise.Zones
       </a>
     </li>
   
@@ -5730,6 +5762,8 @@ You can use this option to add availability zones that are not included in the d
 <li><code>Microsoft.Network/applicationGateways</code></li>
 <li><code>Microsoft.Network/publicIPAddresses</code></li>
 <li><code>Microsoft.ApiManagement/service</code></li>
+<li><code>Microsoft.Cache/Redis</code></li>
+<li><code>Microsoft.Cache/redisEnterprise</code></li>
 </ul>
 <p>The following rules and configuration options are supported:</p>
 <ul>
@@ -5737,6 +5771,8 @@ You can use this option to add availability zones that are not included in the d
 <li><code>Azure.AppGw.AvailabilityZone</code> - <code>AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code></li>
 <li><code>Azure.PublicIP.AvailabilityZone</code> - <code>AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code></li>
 <li><code>Azure.APIM.AvailabilityZone</code> - <code>AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code></li>
+<li><code>Azure.Redis.AvailabilityZone</code> - <code>AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code></li>
+<li><code>Azure.RedisEnterprise.Zones</code> - <code>AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code></li>
 </ul>
 <p>Syntax:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
@@ -5813,7 +5849,7 @@ The above shows examples specific to <code>Azure.AKS.AvailabilityZone</code>, bu
   <small>
     
       Last update:
-      2021-12-22
+      2021-12-24
     
   </small>
 </div>
