@@ -949,6 +949,52 @@ function VisitPublicIP {
     }
 }
 
+function VisitRedisCache {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        # Get-AzResource does not return zones, even with latest API version
+        # Had to fetch the zones using ARM REST API and insert them into the resource
+        # Logged an issue with Az PowerShell: https://github.com/Azure/azure-powershell/issues/15905
+        $redisCacheZones = ((Invoke-AzRestMethod -Path "$($Resource.ResourceId)?api-version=2021-06-01" -Method GET).Content | ConvertFrom-Json).PSObject.Properties['zones'];
+        if ($Null -ne $redisCacheZones) {
+            $Resource | Add-Member -MemberType NoteProperty -Name zones -Value $redisCacheZones.value -PassThru;
+        }
+        else {
+            $Resource;
+        }
+    }
+}
+
+function VisitRedisEnterpriseCache {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        # Get-AzResource does not return zones, even with latest API version
+        # Had to fetch the zones using ARM REST API and insert them into the resource
+        # Logged an issue with Az PowerShell: https://github.com/Azure/azure-powershell/issues/15905
+        $redisEnterpriseCacheZones = ((Invoke-AzRestMethod -Path "$($Resource.ResourceId)?api-version=2021-08-01" -Method GET).Content | ConvertFrom-Json).PSObject.Properties['zones'];
+        if ($Null -ne $redisEnterpriseCacheZones) {
+            $Resource | Add-Member -MemberType NoteProperty -Name zones -Value $redisEnterpriseCacheZones.value -PassThru;
+        }
+        else {
+            $Resource;
+        }
+    }
+}
+
 function VisitStorageAccount {
     [CmdletBinding()]
     param (
@@ -1205,6 +1251,8 @@ function ExpandResource {
             'Microsoft.Subscription' { VisitSubscription @PSBoundParameters; }
             'Microsoft.Resources/resourceGroups' { VisitResourceGroup @PSBoundParameters; }
             'Microsoft.Network/publicIPAddresses' { VisitPublicIP @PSBoundParameters; }
+            'Microsoft.Cache/Redis' { VisitRedisCache @PSBoundParameters; }
+            'Microsoft.Cache/redisEnterprise' { VisitRedisEnterpriseCache @PSBoundParameters; }
             default { $Resource; }
         }
     }

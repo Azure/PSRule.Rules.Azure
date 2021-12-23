@@ -40,6 +40,8 @@
         "AUTOMATIONACCOUNT",
         "RBAC",
         "PUBLICIP",
+        "REDISENTERPRISECACHE",
+        "REDISCACHE",
         "SIEM",
         "SKUs",
         "TLDR",

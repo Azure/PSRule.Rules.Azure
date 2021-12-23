@@ -57,4 +57,6 @@
     AutomationAccountDiagnosticSetting = "The diagnostic setting ({0}) should enable ({1}) or category group ({2})."
     TemplateResourceWithoutComment = "The template ({0}) has ({1}) resource/s without comments."
     TemplateResourceWithoutDescription = "The template ({0}) has ({1}) resource/s without descriptions."
+    PremiumRedisCacheAvailabilityZone = "The premium redis cache ({0}) deployed to region ({1}) should use a minimum of two availability zones from the following [{2}]."
+    EnterpriseRedisCacheAvailabilityZone = "The enterprise redis cache ({0}) deployed to region ({1}) should be zone-redundant."
 }

@@ -202,6 +202,8 @@ The following providers are supported:
 - `Microsoft.Network/applicationGateways`
 - `Microsoft.Network/publicIPAddresses`
 - `Microsoft.ApiManagement/service`
+- `Microsoft.Cache/Redis`
+- `Microsoft.Cache/redisEnterprise`
 
 The following rules and configuration options are supported:
 
@@ -209,6 +211,8 @@ The following rules and configuration options are supported:
 - `Azure.AppGw.AvailabilityZone` - `AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
 - `Azure.PublicIP.AvailabilityZone` - `AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
 - `Azure.APIM.AvailabilityZone` - `AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
+- `Azure.Redis.AvailabilityZone` - `AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
+- `Azure.RedisEnterprise.Zones` - `AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST`
 
 Syntax:
 
