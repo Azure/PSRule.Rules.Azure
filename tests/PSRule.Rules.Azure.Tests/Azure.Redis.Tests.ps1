@@ -130,8 +130,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P';
         }
 
-        It 'Azure.RedisEnterprise.AvailabilityZone' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RedisEnterprise.AvailabilityZone' };
+        It 'Azure.RedisEnterprise.Zones' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RedisEnterprise.Zones' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -250,7 +250,7 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P';
         }
 
-        It 'Azure.RedisEnterprise.AvailabilityZone - HashTable option' {
+        It 'Azure.RedisEnterprise.Zones - HashTable option' {
             $option = @{
                 'Configuration.AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST' = @(
                     [PSCustomObject]@{
@@ -264,7 +264,7 @@ Describe 'Azure.Redis' -Tag 'Redis' {
                 )
             }
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $option -Outcome All;
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RedisEnterprise.AvailabilityZone' };
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RedisEnterprise.Zones' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -293,9 +293,9 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J';
         }
 
-        It 'Azure.RedisEnterprise.AvailabilityZone - YAML file option' {
+        It 'Azure.RedisEnterprise.Zones - YAML file option' {
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $configPath -Outcome All;
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RedisEnterprise.AvailabilityZone' };
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RedisEnterprise.Zones' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

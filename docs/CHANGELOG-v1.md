@@ -13,7 +13,7 @@ What's changed since pre-release v1.11.0-B2112104:
   - Azure Redis Cache
     - Use availability zones for Azure Cache for Redis for regions that support it. [#1078](https://github.com/Azure/PSRule.Rules.Azure/issues/1078)
       - `Azure.Redis.AvailabilityZone`
-      - `Azure.RedisEnterprise.AvailabilityZone`
+      - `Azure.RedisEnterprise.Zones`
 
 ## v1.11.0-B2112104 (pre-release)
 

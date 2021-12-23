@@ -59,7 +59,7 @@ Rule 'Azure.Redis.AvailabilityZone' -Type 'Microsoft.Cache/Redis' -If { IsPremiu
 } -Configure @{ AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
 # Synopsis: Enterprise Redis cache should be zone-redundant for high availability.
-Rule 'Azure.RedisEnterprise.AvailabilityZone' -Type 'Microsoft.Cache/redisEnterprise' -If { IsEnterpriseCache } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.RedisEnterprise.Zones' -Type 'Microsoft.Cache/redisEnterprise' -If { IsEnterpriseCache } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
     $redisEnterpriseCacheProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Cache', 'redisEnterprise');
 
     $configurationZoneMappings = $Configuration.AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;

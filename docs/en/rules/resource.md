@@ -131,7 +131,7 @@ Name | Synopsis | Severity
 
 Name | Synopsis | Severity
 ---- | -------- | --------
-[Azure.RedisEnterprise.AvailabilityZone](Azure.RedisEnterprise.AvailabilityZone.md) | Enterprise Redis cache should be zone-redundant for high availability. | Important
+[Azure.RedisEnterprise.Zones](Azure.RedisEnterprise.Zones.md) | Enterprise Redis cache should be zone-redundant for high availability. | Important
 
 ## Azure Database for MySQL
 

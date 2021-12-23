@@ -3,7 +3,7 @@ severity: Important
 pillar: Reliability
 category: Design
 resource: Azure Cache for Redis Enterprise
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RedisEnterprise.AvailabilityZone/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RedisEnterprise.Zones/
 ---
 
 # Enterprise Redis cache should use Availability zones in supported regions
