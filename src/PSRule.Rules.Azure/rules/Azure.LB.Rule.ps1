@@ -28,16 +28,14 @@ Rule 'Azure.LB.Probe' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 
 # Synopsis: Load balancers deployed with Standard SKU should be zone-redundant for high availability.
 Rule 'Azure.LB.AvailabilityZone' -Type 'Microsoft.Network/loadBalancers' -If { IsStandardLoadBalancer } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     foreach ($ipConfig in $TargetObject.Properties.frontendIPConfigurations) {
-        $zonesNotSet = $Assert.NullOrEmpty($ipConfig, 'zones').Result;
-
-        $zoneRedundant = -not ($ipConfig.zones -and (Compare-Object -ReferenceObject @('1','2','3') -DifferenceObject $ipConfig.zones));
-
-        $Assert.Create(
-            ($zonesNotSet -or $zoneRedundant),
+        $Assert.AnyOf(
+            $Assert.NullOrEmpty($ipConfig, 'zones'),
+            $Assert.SetOf($ipConfig, 'zones', @('1', '2', '3'))
+        ).Reason(
             $LocalizedData.LBAvailabilityZone,
             $TargetObject.name, 
             $ipConfig.name
-        );
+        )
     }
 }
 
