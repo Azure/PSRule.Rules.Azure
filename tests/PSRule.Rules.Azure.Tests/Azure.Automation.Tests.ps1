@@ -54,14 +54,14 @@ Describe 'Azure.Automation' -Tag Automation {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'automation-b';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'automation-a', 'automation-b';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -Be 'automation-a', 'automation-c', 'automation-d', 'automation-e', 'automation-f', 'automation-g';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -Be 'automation-c', 'automation-d', 'automation-e', 'automation-f', 'automation-g';
         }
 
         It 'Azure.Automation.ManagedIdentity' {
