@@ -51,15 +51,15 @@ Rule 'Azure.PublicIP.AvailabilityZone' -Type 'Microsoft.Network/publicIPAddresse
         return $Assert.Pass();
     }
 
-    $zonesNotSet = $Assert.NullOrEmpty($TargetObject, 'zones').Result;
-    $zoneRedundant = -not ($TargetObject.zones -and (Compare-Object -ReferenceObject $availabilityZones -DifferenceObject $TargetObject.zones));
-
-    $Assert.Create(
-        (-not $zonesNotSet -and $zoneRedundant), 
+    $Assert.AllOf(
+        $Assert.HasFieldValue($TargetObject, 'zones'),
+        $Assert.SetOf($TargetObject, 'zones', @('1', '2', '3'))
+    ).Reason(
         $LocalizedData.PublicIPAvailabilityZone, 
         $TargetObject.name, 
         $TargetObject.Location
-    );
+    )
+
 } -Configure @{ AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
 # Synopsis: Public IP addresses should be deployed with Standard SKU for production workloads.
