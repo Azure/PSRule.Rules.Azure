@@ -18,6 +18,7 @@ What's changed since v1.10.4:
   - Added `Azure.GA_2021_12` baseline. [#1146](https://github.com/Azure/PSRule.Rules.Azure/issues/1146)
     - Includes rules released before or during December 2021 for Azure GA features.
     - Marked baseline `Azure.GA_2021_09` as obsolete.
+  - Bicep support promoted from experimental to generally available (GA). [#1176](https://github.com/Azure/PSRule.Rules.Azure/issues/1176)
 - New rules:
   - All resources:
     - Check comments for each template resource. [#969](https://github.com/Azure/PSRule.Rules.Azure/issues/969)
