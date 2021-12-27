@@ -7,6 +7,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.11.0:
+
+- Big fixes:
+  - Ensure `Azure.AKS.CNISubnetSize` rule uses CNI selector. [#1178](https://github.com/Azure/PSRule.Rules.Azure/issues/1178)
+
 ## v1.11.0
 
 What's changed since v1.10.4:
