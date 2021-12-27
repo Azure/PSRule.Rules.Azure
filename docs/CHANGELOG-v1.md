@@ -82,7 +82,8 @@ What's changed since v1.10.4:
 
 What's changed since pre-release v1.11.0-B2112112:
 
-- No additional changes.
+- New features:
+  - Bicep support promoted from experimental to generally available (GA). [#1176](https://github.com/Azure/PSRule.Rules.Azure/issues/1176)
 
 ## v1.11.0-B2112112 (pre-release)
 
