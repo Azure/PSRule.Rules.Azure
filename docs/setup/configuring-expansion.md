@@ -49,7 +49,7 @@ configuration:
 
 ### Bicep source expansion
 
-:octicons-milestone-24: v1.6.0 · :octicons-beaker-24: Experimental
+:octicons-milestone-24: v1.11.0
 
 This configuration option determines if Azure Bicep source files will automatically be expanded.
 By default, Bicep files will not be automatically expanded.

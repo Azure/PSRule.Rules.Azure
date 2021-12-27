@@ -31,7 +31,7 @@ Steps to reproduce the issue:
 **Module in use and version:**
 
 - Module: PSRule.Rules.Azure
-- Version: **[e.g. 1.10.0]**
+- Version: **[e.g. 1.11.0]**
 
 Captured output from `$PSVersionTable`:
 
