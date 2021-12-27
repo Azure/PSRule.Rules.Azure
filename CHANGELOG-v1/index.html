@@ -833,6 +833,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1110" class="md-nav__link">
+    v1.11.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1110-b2112112pre-release" class="md-nav__link">
     v1.11.0-B2112112 (pre-release)
   </a>
@@ -6038,6 +6045,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1110" class="md-nav__link">
+    v1.11.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1110-b2112112pre-release" class="md-nav__link">
     v1.11.0-B2112112 (pre-release)
   </a>
@@ -6614,6 +6628,125 @@
 See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to this issue.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<h2 id="v1110">v1.11.0<a class="headerlink" href="#v1110" title="Permanent link">#</a></h2>
+<p>What's changed since v1.10.4:</p>
+<ul>
+<li>New features:<ul>
+<li>Added baselines containing only Azure preview features. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1129">#1129</a><ul>
+<li>Added baseline <code>Azure.Preview_2021_09</code>.</li>
+<li>Added baseline <code>Azure.Preview_2021_12</code>.</li>
+</ul>
+</li>
+<li>Added <code>Azure.GA_2021_12</code> baseline. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1146">#1146</a><ul>
+<li>Includes rules released before or during December 2021 for Azure GA features.</li>
+<li>Marked baseline <code>Azure.GA_2021_09</code> as obsolete.</li>
+</ul>
+</li>
+<li>Bicep support promoted from experimental to generally available (GA). <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1176">#1176</a></li>
+</ul>
+</li>
+<li>New rules:<ul>
+<li>All resources:<ul>
+<li>Check comments for each template resource. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/969">#969</a></li>
+</ul>
+</li>
+<li>Automation Account:<ul>
+<li>Automation accounts should enable diagnostic logs. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1075">#1075</a></li>
+</ul>
+</li>
+<li>Azure Kubernetes Service:<ul>
+<li>Check clusters have the HTTP application routing add-on disabled. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1131">#1131</a></li>
+<li>Check clusters use the Secrets Store CSI Driver add-on. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/992">#992</a></li>
+<li>Check clusters autorotation with the Secrets Store CSI Driver add-on. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/993">#993</a></li>
+<li>Check clusters use Azure AD Pod Managed Identities (preview). <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/991">#991</a></li>
+</ul>
+</li>
+<li>Azure Redis Cache:<ul>
+<li>Use availability zones for Azure Cache for Redis for regions that support it. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1078">#1078</a><ul>
+<li><code>Azure.Redis.AvailabilityZone</code></li>
+<li><code>Azure.RedisEnterprise.Zones</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Application Security Group:<ul>
+<li>Check Application Security Groups meet naming requirements. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1110">#1110</a></li>
+</ul>
+</li>
+<li>Firewall:<ul>
+<li>Check Firewalls meet naming requirements. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1110">#1110</a></li>
+<li>Check Firewall policies meet naming requirements. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1110">#1110</a></li>
+</ul>
+</li>
+<li>Private Endpoint:<ul>
+<li>Check Private Endpoints meet naming requirements. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1110">#1110</a></li>
+</ul>
+</li>
+<li>Virtual WAN:<ul>
+<li>Check Virtual WANs meet naming requirements. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1110">#1110</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Updated rules:<ul>
+<li>Azure Kubernetes Service:<ul>
+<li>Promoted <code>Azure.AKS.AutoUpgrade</code> to GA rule set. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1130">#1130</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>General improvements:<ul>
+<li>Added support for template function <code>tenant()</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1124">#1124</a></li>
+<li>Added support for template function <code>managementGroup()</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1125">#1125</a></li>
+<li>Added support for template function <code>pickZones()</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/518">#518</a></li>
+</ul>
+</li>
+<li>Engineering:<ul>
+<li>Rule refactoring of rules from PowerShell to YAML. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1109">#1109</a><ul>
+<li>The following rules were refactored:<ul>
+<li><code>Azure.LB.Name</code></li>
+<li><code>Azure.NSG.Name</code></li>
+<li><code>Azure.Firewall.Mode</code></li>
+<li><code>Azure.Route.Name</code></li>
+<li><code>Azure.VNET.Name</code></li>
+<li><code>Azure.VNG.Name</code></li>
+<li><code>Azure.VNG.ConnectionName</code></li>
+<li><code>Azure.AppConfig.SKU</code></li>
+<li><code>Azure.AppConfig.Name</code></li>
+<li><code>Azure.AppInsights.Workspace</code></li>
+<li><code>Azure.AppInsights.Name</code></li>
+<li><code>Azure.Cosmos.AccountName</code></li>
+<li><code>Azure.FrontDoor.State</code></li>
+<li><code>Azure.FrontDoor.Name</code></li>
+<li><code>Azure.FrontDoor.WAF.Mode</code></li>
+<li><code>Azure.FrontDoor.WAF.Enabled</code></li>
+<li><code>Azure.FrontDoor.WAF.Name</code></li>
+<li><code>Azure.AKS.MinNodeCount</code></li>
+<li><code>Azure.AKS.ManagedIdentity</code></li>
+<li><code>Azure.AKS.StandardLB</code></li>
+<li><code>Azure.AKS.AzurePolicyAddOn</code></li>
+<li><code>Azure.AKS.ManagedAAD</code></li>
+<li><code>Azure.AKS.AuthorizedIPs</code></li>
+<li><code>Azure.AKS.LocalAccounts</code></li>
+<li><code>Azure.AKS.AzureRBAC</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Bug fixes:<ul>
+<li>Fixed output of Bicep informational and warning messages in error stream. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1157">#1157</a></li>
+</ul>
+</li>
+</ul>
+<p>What's changed since pre-release v1.11.0-B2112112:</p>
+<ul>
+<li>New features:<ul>
+<li>Bicep support promoted from experimental to generally available (GA). <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1176">#1176</a></li>
+</ul>
+</li>
+</ul>
 <h2 id="v1110-b2112112pre-release">v1.11.0-B2112112 (pre-release)<a class="headerlink" href="#v1110-b2112112pre-release" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.11.0-B2112104:</p>
 <ul>
@@ -6698,6 +6831,7 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <li>Bug fixes:<ul>
 <li>Fixed template function <code>equals</code> parameter count mismatch. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1137">#1137</a></li>
 <li>Fixed copy loop on nested deployment parameters is not handled. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1144">#1144</a></li>
+<li>Fixed outer copy loop of nested deployment. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1154">#1154</a></li>
 </ul>
 </li>
 </ul>
@@ -6717,7 +6851,7 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 </li>
 </ul>
 </li>
-<li>Update rules:<ul>
+<li>Updated rules:<ul>
 <li>Azure Kubernetes Service:<ul>
 <li>Promoted <code>Azure.AKS.AutoUpgrade</code> to GA rule set. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1130">#1130</a></li>
 </ul>
@@ -8256,7 +8390,7 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
   <small>
     
       Last update:
-      2021-12-26
+      2021-12-27
     
   </small>
 </div>
