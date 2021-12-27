@@ -7,6 +7,82 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.11.0
+
+What's changed since v1.10.4:
+
+- New features:
+  - Added baselines containing only Azure preview features. [#1129](https://github.com/Azure/PSRule.Rules.Azure/issues/1129)
+    - Added baseline `Azure.Preview_2021_09`.
+    - Added baseline `Azure.Preview_2021_12`.
+  - Added `Azure.GA_2021_12` baseline. [#1146](https://github.com/Azure/PSRule.Rules.Azure/issues/1146)
+    - Includes rules released before or during December 2021 for Azure GA features.
+    - Marked baseline `Azure.GA_2021_09` as obsolete.
+- New rules:
+  - All resources:
+    - Check comments for each template resource. [#969](https://github.com/Azure/PSRule.Rules.Azure/issues/969)
+  - Automation Account:
+    - Automation accounts should enable diagnostic logs. [#1075](https://github.com/Azure/PSRule.Rules.Azure/issues/1075)
+  - Azure Kubernetes Service:
+    - Check clusters have the HTTP application routing add-on disabled. [#1131](https://github.com/Azure/PSRule.Rules.Azure/issues/1131)
+    - Check clusters use the Secrets Store CSI Driver add-on. [#992](https://github.com/Azure/PSRule.Rules.Azure/issues/992)
+    - Check clusters autorotation with the Secrets Store CSI Driver add-on. [#993](https://github.com/Azure/PSRule.Rules.Azure/issues/993)
+    - Check clusters use Azure AD Pod Managed Identities (preview). [#991](https://github.com/Azure/PSRule.Rules.Azure/issues/991)
+  - Azure Redis Cache:
+    - Use availability zones for Azure Cache for Redis for regions that support it. [#1078](https://github.com/Azure/PSRule.Rules.Azure/issues/1078)
+      - `Azure.Redis.AvailabilityZone`
+      - `Azure.RedisEnterprise.Zones`
+  - Application Security Group:
+    - Check Application Security Groups meet naming requirements. [#1110](https://github.com/Azure/PSRule.Rules.Azure/issues/1110)
+  - Firewall:
+    - Check Firewalls meet naming requirements. [#1110](https://github.com/Azure/PSRule.Rules.Azure/issues/1110)
+    - Check Firewall policies meet naming requirements. [#1110](https://github.com/Azure/PSRule.Rules.Azure/issues/1110)
+  - Private Endpoint:
+    - Check Private Endpoints meet naming requirements. [#1110](https://github.com/Azure/PSRule.Rules.Azure/issues/1110)
+  - Virtual WAN:
+    - Check Virtual WANs meet naming requirements. [#1110](https://github.com/Azure/PSRule.Rules.Azure/issues/1110)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Promoted `Azure.AKS.AutoUpgrade` to GA rule set. [#1130](https://github.com/Azure/PSRule.Rules.Azure/issues/1130)
+- General improvements:
+  - Added support for template function `tenant()`. [#1124](https://github.com/Azure/PSRule.Rules.Azure/issues/1124)
+  - Added support for template function `managementGroup()`. [#1125](https://github.com/Azure/PSRule.Rules.Azure/issues/1125)
+  - Added support for template function `pickZones()`. [#518](https://github.com/Azure/PSRule.Rules.Azure/issues/518)
+- Engineering:
+  - Rule refactoring of rules from PowerShell to YAML. [#1109](https://github.com/Azure/PSRule.Rules.Azure/issues/1109)
+    - The following rules were refactored:
+      - `Azure.LB.Name`
+      - `Azure.NSG.Name`
+      - `Azure.Firewall.Mode`
+      - `Azure.Route.Name`
+      - `Azure.VNET.Name`
+      - `Azure.VNG.Name`
+      - `Azure.VNG.ConnectionName`
+      - `Azure.AppConfig.SKU`
+      - `Azure.AppConfig.Name`
+      - `Azure.AppInsights.Workspace`
+      - `Azure.AppInsights.Name`
+      - `Azure.Cosmos.AccountName`
+      - `Azure.FrontDoor.State`
+      - `Azure.FrontDoor.Name`
+      - `Azure.FrontDoor.WAF.Mode`
+      - `Azure.FrontDoor.WAF.Enabled`
+      - `Azure.FrontDoor.WAF.Name`
+      - `Azure.AKS.MinNodeCount`
+      - `Azure.AKS.ManagedIdentity`
+      - `Azure.AKS.StandardLB`
+      - `Azure.AKS.AzurePolicyAddOn`
+      - `Azure.AKS.ManagedAAD`
+      - `Azure.AKS.AuthorizedIPs`
+      - `Azure.AKS.LocalAccounts`
+      - `Azure.AKS.AzureRBAC`
+- Bug fixes:
+  - Fixed output of Bicep informational and warning messages in error stream. [#1157](https://github.com/Azure/PSRule.Rules.Azure/issues/1157)
+
+What's changed since pre-release v1.11.0-B2112112:
+
+- No additional changes.
+
 ## v1.11.0-B2112112 (pre-release)
 
 What's changed since pre-release v1.11.0-B2112104:
@@ -66,6 +142,7 @@ What's changed since pre-release v1.11.0-B2112024:
 - Bug fixes:
   - Fixed template function `equals` parameter count mismatch. [#1137](https://github.com/Azure/PSRule.Rules.Azure/issues/1137)
   - Fixed copy loop on nested deployment parameters is not handled. [#1144](https://github.com/Azure/PSRule.Rules.Azure/issues/1144)
+  - Fixed outer copy loop of nested deployment. [#1154](https://github.com/Azure/PSRule.Rules.Azure/issues/1154)
 
 ## v1.11.0-B2112024 (pre-release)
 
@@ -78,7 +155,7 @@ What's changed since pre-release v1.11.0-B2111014:
     - Check clusters autorotation with the Secrets Store CSI Driver add-on. [#993](https://github.com/Azure/PSRule.Rules.Azure/issues/993)
   - Automation Account:
     - Automation accounts should enable diagnostic logs. [#1075](https://github.com/Azure/PSRule.Rules.Azure/issues/1075)
-- Update rules:
+- Updated rules:
   - Azure Kubernetes Service:
     - Promoted `Azure.AKS.AutoUpgrade` to GA rule set. [#1130](https://github.com/Azure/PSRule.Rules.Azure/issues/1130)
 - General improvements:
