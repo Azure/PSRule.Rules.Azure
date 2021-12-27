@@ -113,7 +113,7 @@ To configure additional arguments, set the `PSRULE_AZURE_BICEP_ARGS` environment
 
 ## Configuring expansion
 
-[:octicons-book-24: Docs][4] · :octicons-beaker-24: Experimental
+[:octicons-book-24: Docs][4]
 
 PSRule for Azure can automatically expand Bicep source files.
 When enabled, PSRule for Azure automatically expands and analyzes Azure resource from `.bicep` files.
