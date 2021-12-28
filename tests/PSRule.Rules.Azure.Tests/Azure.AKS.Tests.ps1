@@ -322,15 +322,13 @@ Describe 'Azure.AKS' -Tag AKS {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 3;
-            $ruleResult.TargetName | Should -BeIn 'cluster-B', 'cluster-D', 'system';
+            $ruleResult | Should -HaveCount 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-B', 'cluster-D';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The subnet (subnet-A) should be using a minimum size of /23.";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[1].Reason | Should -BeExactly "The subnet (subnet-A) should be using a minimum size of /23.";
-            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The subnet (subnet-A) should be using a minimum size of /23.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
