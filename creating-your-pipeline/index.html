@@ -5575,14 +5575,19 @@ By using validation within a continuous integration (CI) pipeline, any issues pr
 <p>Create a new GitHub Actions workflow by creating <code>.github/workflows/analyze-arm.yaml</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Analyze templates</span>
 <span class="nt">on</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pull_request</span>
+  <span class="nt">push</span><span class="p">:</span>
+    <span class="nt">branches</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">main</span>
+  <span class="nt">pull_request</span><span class="p">:</span>
+    <span class="nt">branches</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">main</span>
 <span class="nt">jobs</span><span class="p">:</span>
   <span class="nt">analyze_arm</span><span class="p">:</span>
     <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Analyze templates</span>
     <span class="nt">runs-on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
     <span class="nt">steps</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Checkout</span>
-      <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+      <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2.4.0</span>
 
     <span class="c1"># Analyze Azure resources using PSRule for Azure</span>
     <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Analyze Azure template files</span>
@@ -5612,7 +5617,7 @@ By using validation within a continuous integration (CI) pipeline, any issues pr
 <p><a href="../setup/configuring-expansion/#parameterfileexpansion"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M0 3.75A.75.75 0 0 1 .75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.496 4.496 0 0 1 15.75 3h7.5a.75.75 0 0 1 .75.75v15.063a.75.75 0 0 1-.755.75l-7.682-.052a3 3 0 0 0-2.142.878l-.89.891a.75.75 0 0 1-1.061 0l-.902-.901a3 3 0 0 0-2.121-.879H.75a.75.75 0 0 1-.75-.75v-15zm11.247 3.747a3 3 0 0 0-3-2.997H1.5V18h6.947a4.5 4.5 0 0 1 2.803.98l-.003-11.483zm1.503 11.485V7.5a3 3 0 0 1 3-3h6.75v13.558l-6.927-.047a4.5 4.5 0 0 0-2.823.971z"/></svg></span> Docs</a></p>
 <p>PSRule for Azure can automatically expand Azure template parameter files.
 When enabled, PSRule for Azure automatically resolves parameter and template file context at runtime.</p>
-<p>To enabled this feature, set the <code>Configuration.AZURE_PARAMETER_FILE_EXPANSION</code> to <code>true</code>.
+<p>To enabled this feature, set the <code>Configuration.AZURE_PARAMETER_FILE_EXPANSION</code> option to <code>true</code>.
 This option can be set within the <code>ps-rule.yaml</code> file.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
   <span class="c1"># Enable automatic expansion of Azure parameter files</span>
@@ -5622,7 +5627,7 @@ This option can be set within the <code>ps-rule.yaml</code> file.</p>
 <p><a href="../setup/configuring-expansion/#bicepsourceexpansion"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M0 3.75A.75.75 0 0 1 .75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.496 4.496 0 0 1 15.75 3h7.5a.75.75 0 0 1 .75.75v15.063a.75.75 0 0 1-.755.75l-7.682-.052a3 3 0 0 0-2.142.878l-.89.891a.75.75 0 0 1-1.061 0l-.902-.901a3 3 0 0 0-2.121-.879H.75a.75.75 0 0 1-.75-.75v-15zm11.247 3.747a3 3 0 0 0-3-2.997H1.5V18h6.947a4.5 4.5 0 0 1 2.803.98l-.003-11.483zm1.503 11.485V7.5a3 3 0 0 1 3-3h6.75v13.558l-6.927-.047a4.5 4.5 0 0 0-2.823.971z"/></svg></span> Docs</a></p>
 <p>PSRule for Azure can automatically expand Bicep source files.
 When enabled, PSRule for Azure automatically expands and analyzes Azure resource from <code>.bicep</code> files.</p>
-<p>To enabled this feature, set the <code>Configuration.AZURE_BICEP_FILE_EXPANSION</code> to <code>true</code>.
+<p>To enabled this feature, set the <code>Configuration.AZURE_BICEP_FILE_EXPANSION</code> option to <code>true</code>.
 This option can be set within the <code>ps-rule.yaml</code> file.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
   <span class="c1"># Enable automatic expansion of bicep source files</span>
@@ -5669,7 +5674,7 @@ The setup section explains in detail how to configure each option.</p>
   <small>
     
       Last update:
-      2021-12-28
+      2021-12-29
     
   </small>
 </div>
