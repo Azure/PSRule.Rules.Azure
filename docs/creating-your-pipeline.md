@@ -16,14 +16,19 @@ Within the root directory of your infrastructure as code repository:
     ```yaml
     name: Analyze templates
     on:
-    - pull_request
+      push:
+        branches:
+        - main
+      pull_request:
+        branches:
+        - main
     jobs:
       analyze_arm:
         name: Analyze templates
         runs-on: ubuntu-latest
         steps:
         - name: Checkout
-          uses: actions/checkout@v2
+          uses: actions/checkout@v2.4.0
 
         # Analyze Azure resources using PSRule for Azure
         - name: Analyze Azure template files
@@ -60,7 +65,7 @@ Configuration options for PSRule for Azure are set within the `ps-rule.yaml` fil
 PSRule for Azure can automatically expand Azure template parameter files.
 When enabled, PSRule for Azure automatically resolves parameter and template file context at runtime.
 
-To enabled this feature, set the `Configuration.AZURE_PARAMETER_FILE_EXPANSION` to `true`.
+To enabled this feature, set the `Configuration.AZURE_PARAMETER_FILE_EXPANSION` option to `true`.
 This option can be set within the `ps-rule.yaml` file.
 
 ```yaml
@@ -78,7 +83,7 @@ configuration:
 PSRule for Azure can automatically expand Bicep source files.
 When enabled, PSRule for Azure automatically expands and analyzes Azure resource from `.bicep` files.
 
-To enabled this feature, set the `Configuration.AZURE_BICEP_FILE_EXPANSION` to `true`.
+To enabled this feature, set the `Configuration.AZURE_BICEP_FILE_EXPANSION` option to `true`.
 This option can be set within the `ps-rule.yaml` file.
 
 ```yaml
