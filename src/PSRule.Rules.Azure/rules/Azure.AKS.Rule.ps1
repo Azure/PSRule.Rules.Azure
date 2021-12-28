@@ -108,17 +108,24 @@ Rule 'Azure.AKS.AutoScaling' -Type 'Microsoft.ContainerService/managedClusters',
 }
 
 # Synopsis: AKS clusters using Azure CNI should use large subnets to reduce IP exhaustion issues.
-Rule 'Azure.AKS.CNISubnetSize' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AKS.CNISubnetSize' -If { IsExport } -With 'Azure.AKS.AzureCNI' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $clusterSubnets = @(GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets');
 
     if ($clusterSubnets.Length -eq 0) {
         return $Assert.Pass();
     }
 
+    $configurationMinimumSubnetSize = $Configuration.AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE;
+
     foreach ($subnet in $clusterSubnets) {
         $subnetAddressPrefixSize = [int]$subnet.Properties.addressPrefix.Split('/')[-1];
-        $Assert.LessOrEqual($subnetAddressPrefixSize, '.', $Configuration.AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE).
-            Reason($LocalizedData.AKSAzureCNI, $subnet.Name, $Configuration.AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE);
+        
+        $Assert.LessOrEqual($subnetAddressPrefixSize, '.', $configurationMinimumSubnetSize).
+            Reason(
+                $LocalizedData.AKSAzureCNI, 
+                $subnet.Name, 
+                $configurationMinimumSubnetSize
+            );
     }
 } -Configure @{ AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE = 23 }
 
