@@ -1,3 +1,10 @@
+#
+# Build documentation site
+#
+
+# NOTES:
+# This workflow generates and published the documentation site https://azure.github.io/PSRule.Rules.Azure/.
+
 name: Build and deploy docs
 on:
   push:
@@ -7,7 +14,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
+
       - uses: actions/checkout@v2.4.0
 
       - name: Setup Python

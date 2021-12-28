@@ -22,6 +22,8 @@ jobs:
   oss:
     name: Analyze with PSRule
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
 
     - name: Checkout
