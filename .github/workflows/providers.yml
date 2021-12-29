@@ -1,3 +1,10 @@
+#
+# Update providers data
+#
+
+# NOTES:
+# Automatically updates provider data stored in data/ with the latest versions.
+
 name: BumpProviders
 
 on:
@@ -8,7 +15,11 @@ on:
 jobs:
   bump:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
+
       - name: Checkout
         uses: actions/checkout@v2.4.0
 

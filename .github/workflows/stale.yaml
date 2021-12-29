@@ -1,0 +1,39 @@
+#
+# Stale issues
+#
+
+# NOTES:
+# Repository stale issue management.
+# Issues with open ended labels are automatically closed if no activity occurs.
+# Issues are marked stale after 14 days, then closed after a further 7 days.
+
+name: 'Close stale issues'
+on:
+  schedule:
+  - cron: '30 1 * * *' # At 1:30 AM, daily
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+
+    - uses: actions/stale@v4
+      with:
+        stale-issue-message: >
+          This issue has been automatically marked as stale because it has not had
+          recent activity. It will be closed if no further activity occurs within 7 days.
+          Thank you for your contributions.
+
+        close-issue-message: 'This issue was closed because it has not had any recent activity.'
+
+        days-before-stale: 14
+        days-before-pr-stale: -1
+
+        days-before-close: 7
+        days-before-pr-close: -1
+
+        any-of-labels: 'question,duplicate,incomplete,waiting-feedback'
+        stale-issue-label: stale
