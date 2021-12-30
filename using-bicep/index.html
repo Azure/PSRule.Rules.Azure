@@ -5597,9 +5597,9 @@ To learn more about why this is important see <a href="../expanding-source-files
 </div>
 <h2 id="enablingexpansion">Enabling expansion<a class="headerlink" href="#enablingexpansion" title="Permanent link">#</a></h2>
 <p>To expand Bicep deployments configure <code>ps-rule.yaml</code> with the <code>AZURE_BICEP_FILE_EXPANSION</code> option.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Enable expansion for Bicep source files.</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Enable expansion for Bicep source files.</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </code></pre></div>
 <h3 id="setupbicep">Setup Bicep<a class="headerlink" href="#setupbicep" title="Permanent link">#</a></h3>
 <p>To expand Azure resources for analysis from Bicep source files the Bicep CLI is required.
@@ -5661,16 +5661,16 @@ Instead expand resources from deployments or tests.</p>
 <p>To do this configure <code>ps-rule.yaml</code> with the <code>input.pathIgnore</code> option.</p>
 <div class="admonition example">
 <p class="admonition-title">Example <code>ps-rule.yaml</code></p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
-  <span class="c1"># Enable expansion for Bicep source files.</span>
-  <span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Enable expansion for Bicep source files.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 
-<span class="nt">input</span><span class="p">:</span>
-  <span class="nt">pathIgnore</span><span class="p">:</span>
-  <span class="c1"># Exclude module files</span>
-  <span class="p p-Indicator">-</span> <span class="s">&#39;modules/**/*.bicep&#39;</span>
-  <span class="c1"># Include test files from modules</span>
-  <span class="p p-Indicator">-</span> <span class="s">&#39;!modules/**/*.tests.bicep&#39;</span>
+<span class="nt">input</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">pathIgnore</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Exclude module files</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;modules/**/*.bicep&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Include test files from modules</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;!modules/**/*.tests.bicep&#39;</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="admonition note">

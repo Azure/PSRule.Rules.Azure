@@ -5507,33 +5507,33 @@ If you don't already have a <code>ps-rule.yaml</code> file you can create one in
 <p>Configuration can be combined as indented keys.
 Use comments to add context.
 Here are some examples:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">requires</span><span class="p">:</span>
-  <span class="c1"># Require a minimum of PSRule for Azure v1.10.2</span>
-  <span class="nt">PSRule.Rules.Azure</span><span class="p">:</span> <span class="s">&#39;&gt;=1.10.2&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">requires</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Require a minimum of PSRule for Azure v1.10.2</span><span class="w"></span>
+<span class="w">  </span><span class="nt">PSRule.Rules.Azure</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=1.10.2&#39;</span><span class="w"></span>
 
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="c1"># Enable expansion of Azure Template files.</span>
-  <span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Enable expansion of Azure Template files.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 
-  <span class="c1"># Enable expansion of Azure Bicep files.</span>
-  <span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="c1"># Enable expansion of Azure Bicep files.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 
-<span class="nt">rule</span><span class="p">:</span>
-  <span class="c1"># Enable custom rules that don&#39;t exist in the baseline</span>
-  <span class="nt">includeLocal</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">exclude</span><span class="p">:</span>
-  <span class="c1"># Ignore the following rules for all resources</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Azure.VM.UseHybridUseBenefit</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Azure.VM.Standalone</span>
+<span class="nt">rule</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Enable custom rules that don&#39;t exist in the baseline</span><span class="w"></span>
+<span class="w">  </span><span class="nt">includeLocal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">exclude</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Ignore the following rules for all resources</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Azure.VM.UseHybridUseBenefit</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Azure.VM.Standalone</span><span class="w"></span>
 
-<span class="nt">suppression</span><span class="p">:</span>
-  <span class="nt">Azure.AKS.AuthorizedIPs</span><span class="p">:</span>
-  <span class="c1"># Exclude the following externally managed AKS clusters</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">aks-cluster-prod-eus-001</span>
-  <span class="nt">Azure.Storage.SoftDelete</span><span class="p">:</span>
-  <span class="c1"># Exclude the following non-production storage accounts</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">storagedeveus6jo36t</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">storagedeveus1df278</span>
+<span class="nt">suppression</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure.AKS.AuthorizedIPs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Exclude the following externally managed AKS clusters</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aks-cluster-prod-eus-001</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure.Storage.SoftDelete</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Exclude the following non-production storage accounts</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storagedeveus6jo36t</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storagedeveus1df278</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>

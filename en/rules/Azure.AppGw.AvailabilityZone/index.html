@@ -5650,9 +5650,9 @@
 <p>This rule applies when analyzing resources deployed to Azure using <em>pre-flight</em> and <em>in-flight</em> data.</p>
 <p>This rule fails when <code>"zones"</code> is <code>null</code>, <code>[]</code> or not set when the Application gateway is deployed with V2 SKU(Standard_v2, WAF_v2) and there are supported availability zones for the given region.</p>
 <p>Configure <code>AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code> to set additional availability zones that need to be supported which are not in the existing <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json">providers</a> for namespace <code>Microsoft.Network</code> and resource type <code>applicationGateways</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"></span>
 </code></pre></div>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
 <h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
@@ -5662,121 +5662,121 @@
 <li>Set <code>properties.sku.name</code> and <code>properties.sku.tier</code> to <code>Standard_v2</code> or <code>WAF_v2</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;applicationGatewayName&#39;)]&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft.Network/applicationGateways&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-09-01&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;zones&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;3&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;[concat(&#39;Microsoft.Network/virtualNetworks/&#39;, parameters(&#39;virtualNetworkName&#39;))]&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;[concat(&#39;Microsoft.Network/publicIPAddresses/&#39;, parameters(&#39;publicIpAddressName&#39;))]&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;sku&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;WAF_v2&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;tier&quot;</span><span class="p">:</span> <span class="s2">&quot;WAF_v2&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;gatewayIPConfigurations&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;appGatewayIpConfig&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;subnet&quot;</span><span class="p">:</span> <span class="p">{</span>
-                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[variables(&#39;subnetRef&#39;)]&quot;</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;frontendIPConfigurations&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;appGwPublicFrontendIp&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;PublicIPAddress&quot;</span><span class="p">:</span> <span class="p">{</span>
-                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[variables(&#39;publicIPRef&#39;)]&quot;</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;frontendPorts&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;port_80&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">80</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;backendAddressPools&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bepool&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;backendAddresses&quot;</span><span class="p">:</span> <span class="p">[]</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;backendHttpSettingsCollection&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;http_settings&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
-                    <span class="nt">&quot;Protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;Http&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;cookieBasedAffinity&quot;</span><span class="p">:</span> <span class="s2">&quot;Disabled&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;requestTimeout&quot;</span><span class="p">:</span> <span class="mi">20</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;httpListeners&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;http-listener&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;frontendIPConfiguration&quot;</span><span class="p">:</span> <span class="p">{</span>
-                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/frontendIPConfigurations/appGwPublicFrontendIp&#39;)]&quot;</span>
-                    <span class="p">},</span>
-                    <span class="nt">&quot;frontendPort&quot;</span><span class="p">:</span> <span class="p">{</span>
-                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/frontendPorts/port_80&#39;)]&quot;</span>
-                    <span class="p">},</span>
-                    <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;Http&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;sslCertificate&quot;</span><span class="p">:</span> <span class="kc">null</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;requestRoutingRules&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;http-rule&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;RuleType&quot;</span><span class="p">:</span> <span class="s2">&quot;Basic&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;httpListener&quot;</span><span class="p">:</span> <span class="p">{</span>
-                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/httpListeners/http-listener&#39;)]&quot;</span>
-                    <span class="p">},</span>
-                    <span class="nt">&quot;priority&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-                    <span class="nt">&quot;backendAddressPool&quot;</span><span class="p">:</span> <span class="p">{</span>
-                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/backendAddressPools/bepool&#39;)]&quot;</span>
-                    <span class="p">},</span>
-                    <span class="nt">&quot;backendHttpSettings&quot;</span><span class="p">:</span> <span class="p">{</span>
-                        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/backendHttpSettingsCollection/http_settings&#39;)]&quot;</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;enableHttp2&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;sslCertificates&quot;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="nt">&quot;probes&quot;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="nt">&quot;autoscaleConfiguration&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;minCapacity&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;capacity&#39;)]&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;maxCapacity&quot;</span><span class="p">:</span> <span class="s2">&quot;[parameters(&#39;autoScaleMaxCapacity&#39;)]&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;webApplicationFirewallConfiguration&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nt">&quot;firewallMode&quot;</span><span class="p">:</span> <span class="s2">&quot;Detection&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ruleSetType&quot;</span><span class="p">:</span> <span class="s2">&quot;OWASP&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ruleSetVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;3.0&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;applicationGatewayName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/applicationGateways&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-09-01&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;zones&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;3&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;[concat(&#39;Microsoft.Network/virtualNetworks/&#39;, parameters(&#39;virtualNetworkName&#39;))]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;[concat(&#39;Microsoft.Network/publicIPAddresses/&#39;, parameters(&#39;publicIpAddressName&#39;))]&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WAF_v2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WAF_v2&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;gatewayIPConfigurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;appGatewayIpConfig&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;subnet&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[variables(&#39;subnetRef&#39;)]&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;frontendIPConfigurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;appGwPublicFrontendIp&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;PublicIPAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[variables(&#39;publicIPRef&#39;)]&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;frontendPorts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;port_80&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;Port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;backendAddressPools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bepool&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;backendAddresses&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;backendHttpSettingsCollection&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http_settings&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;Port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;Protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Http&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;cookieBasedAffinity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Disabled&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;requestTimeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;httpListeners&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http-listener&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;frontendIPConfiguration&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/frontendIPConfigurations/appGwPublicFrontendIp&#39;)]&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;frontendPort&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/frontendPorts/port_80&#39;)]&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Http&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;sslCertificate&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;requestRoutingRules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http-rule&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;RuleType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Basic&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;httpListener&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/httpListeners/http-listener&#39;)]&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;backendAddressPool&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/backendAddressPools/bepool&#39;)]&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;backendHttpSettings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[concat(variables(&#39;applicationGatewayId&#39;), &#39;/backendHttpSettingsCollection/http_settings&#39;)]&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;enableHttp2&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;sslCertificates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;probes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;autoscaleConfiguration&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;minCapacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;capacity&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;maxCapacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;autoScaleMaxCapacity&#39;)]&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;webApplicationFirewallConfiguration&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;firewallMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Detection&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;ruleSetType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OWASP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;ruleSetVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h3 id="configurewithazurecli">Configure with Azure CLI<a class="headerlink" href="#configurewithazurecli" title="Permanent link">#</a></h3>
 <h4 id="createwafv2applicationgatewayinzone12and3">Create WAFv2 Application Gateway in Zone 1, 2 and 3<a class="headerlink" href="#createwafv2applicationgatewayinzone12and3" title="Permanent link">#</a></h4>

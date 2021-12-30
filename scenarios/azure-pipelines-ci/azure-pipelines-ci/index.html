@@ -5555,55 +5555,55 @@ Once installed, Azure Pipelines tasks are available to install PSRule modules an
 PSRule can automatically resolve ARM templates from parameter files by using a metadata link.</p>
 <p>To link a parameter file to an ARM template add the <code>metadata.template</code> property within a parameter file.</p>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;./azuredeploy.json&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;vnetName&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;vnet-001&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;addressPrefix&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;10.1.0.0/24&quot;</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;template&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./azuredeploy.json&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;vnetName&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vnet-001&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;addressPrefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;10.1.0.0/24&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>In the example parameter file <code>azuredeploy.parameters.json</code> is linked to the template <code>azuredeploy.json</code>.
 The prefix of <code>./</code> indicates that the template file is in a relative path to the parameter file.
 If <code>./</code> is not included, PSRule will look for the template relative to the working directory.</p>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;templates/vnet-hub/v1/template.json&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;vnetName&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;vnet-001&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;addressPrefix&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;10.1.0.0/24&quot;</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;template&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;templates/vnet-hub/v1/template.json&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;vnetName&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vnet-001&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;addressPrefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;10.1.0.0/24&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="creatingayamlpipeline">Creating a YAML pipeline<a class="headerlink" href="#creatingayamlpipeline" title="Permanent link">#</a></h2>
 <p>Azure Pipelines supports defining pipelines in YAML.
 PSRule uses a number of configurable task steps to install modules, export data and perform analysis.</p>
 <h3 id="installingazurerules">Installing Azure rules<a class="headerlink" href="#installingazurerules" title="Permanent link">#</a></h3>
 <p>To install the module containing Azure rules use the <code>ps-rule-install</code> YAML task.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery.</span>
-<span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ps-rule-install@0</span>
-  <span class="nt">inputs</span><span class="p">:</span>
-    <span class="nt">module</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PSRule.Rules.Azure</span>   <span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery.</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery.</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-install@0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">inputs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">module</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRule.Rules.Azure</span><span class="w">   </span><span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery.</span><span class="w"></span>
 </code></pre></div>
 <h3 id="exportingresourcedataforanalysis">Exporting resource data for analysis<a class="headerlink" href="#exportingresourcedataforanalysis" title="Permanent link">#</a></h3>
 <p>PSRule provides a pre-built cmdlets for finding template files within a path and exporting resource data.</p>
@@ -5614,35 +5614,35 @@ Files are found recursively from the current working path.</li>
 <li><code>Export-AzRuleTemplateData</code> exports resource data from template files.</li>
 </ul>
 <p>To generate data for analysis use a PowerShell YAML task to export resource data from linked templates.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Export resource data from parameter files within the current working directory.</span>
-<span class="p p-Indicator">-</span> <span class="nt">powershell</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath out/templates/;</span>
-  <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Export resource data from parameter files within the current working directory.</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">powershell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath out/templates/;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span><span class="w"></span>
 </code></pre></div>
 <p>If parameter files are located in a specific sub-directory the path can be updated as follows.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Export resource data from parameter files in the deployments/ sub-directory.</span>
-<span class="p p-Indicator">-</span> <span class="nt">powershell</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink ./deployments/ | Export-AzRuleTemplateData -OutputPath out/templates/;</span>
-  <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Export resource data from parameter files in the deployments/ sub-directory.</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">powershell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink ./deployments/ | Export-AzRuleTemplateData -OutputPath out/templates/;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span><span class="w"></span>
 </code></pre></div>
 <p>If parameter files do not use the file extension <code>.parameters.json</code> input path can be set.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Export resource data from parameter files ending in *.json instead of default *.parameters.json.</span>
-<span class="p p-Indicator">-</span> <span class="nt">powershell</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink -InputPath *.json | Export-AzRuleTemplateData -OutputPath out/templates/;</span>
-  <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Export resource data from parameter files ending in *.json instead of default *.parameters.json.</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">powershell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink -InputPath *.json | Export-AzRuleTemplateData -OutputPath out/templates/;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span><span class="w"></span>
 </code></pre></div>
 <p>In both cases, resource data for analysis is exported to <code>out/templates/</code>.</p>
 <h3 id="validatingexportedresources">Validating exported resources<a class="headerlink" href="#validatingexportedresources" title="Permanent link">#</a></h3>
 <p>To validate exported resources use the <code>ps-rule-assert</code> YAML task.
 The following task uses previously exported resource data for analysis.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Run analysis from JSON files using the `PSRule.Rules.Azure` module and custom rules from `.ps-rule/`.</span>
-<span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@0</span>
-  <span class="nt">inputs</span><span class="p">:</span>
-    <span class="nt">inputType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">inputPath</span>
-    <span class="nt">inputPath</span><span class="p">:</span> <span class="s">&#39;out/templates/*.json&#39;</span>        <span class="c1"># Read exported resource data from &#39;out/templates/&#39;.</span>
-    <span class="nt">modules</span><span class="p">:</span> <span class="s">&#39;PSRule.Rules.Azure&#39;</span>            <span class="c1"># Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.</span>
-    <span class="c1"># Optionally, also analyze objects using custom rules from &#39;.ps-rule/&#39;.</span>
-    <span class="nt">source</span><span class="p">:</span> <span class="s">&#39;.ps-rule/&#39;</span>
-    <span class="c1"># Optionally, save results to an NUnit report.</span>
-    <span class="nt">outputFormat</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NUnit3</span>
-    <span class="nt">outputPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">reports/ps-rule-resources.xml</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run analysis from JSON files using the `PSRule.Rules.Azure` module and custom rules from `.ps-rule/`.</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">inputs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">inputType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputPath</span><span class="w"></span>
+<span class="w">    </span><span class="nt">inputPath</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;out/templates/*.json&#39;</span><span class="w">        </span><span class="c1"># Read exported resource data from &#39;out/templates/&#39;.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">modules</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;PSRule.Rules.Azure&#39;</span><span class="w">            </span><span class="c1"># Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Optionally, also analyze objects using custom rules from &#39;.ps-rule/&#39;.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;.ps-rule/&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Optionally, save results to an NUnit report.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">outputFormat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NUnit3</span><span class="w"></span>
+<span class="w">    </span><span class="nt">outputPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reports/ps-rule-resources.xml</span><span class="w"></span>
 </code></pre></div>
 <p>In the example:</p>
 <ul>
@@ -5655,60 +5655,60 @@ The following task uses previously exported resource data for analysis.</p>
 PSRule supports publishing validation results in the NUnit format.
 With Azure DevOps, an NUnit report can be published using <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-test-results">Publish Test Results task</a>.</p>
 <p>An example YAML snippet is included below:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Publish NUnit report as test results</span>
-<span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PublishTestResults@2</span>
-  <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;Publish</span><span class="nv"> </span><span class="s">PSRule</span><span class="nv"> </span><span class="s">results&#39;</span>
-  <span class="nt">inputs</span><span class="p">:</span>
-    <span class="nt">testRunTitle</span><span class="p">:</span> <span class="s">&#39;PSRule&#39;</span>                          <span class="c1"># The title to use for the test run.</span>
-    <span class="nt">testRunner</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NUnit</span>                               <span class="c1"># Import report using the NUnit format.</span>
-    <span class="nt">testResultsFiles</span><span class="p">:</span> <span class="s">&#39;reports/ps-rule-results.xml&#39;</span> <span class="c1"># The previously saved NUnit report.</span>
-  <span class="nt">condition</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">succeededOrFailed()</span>                    <span class="c1"># Run this task if previous steps succeeded of failed.</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Publish NUnit report as test results</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PublishTestResults@2</span><span class="w"></span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Publish</span><span class="nv"> </span><span class="s">PSRule</span><span class="nv"> </span><span class="s">results&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">inputs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">testRunTitle</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;PSRule&#39;</span><span class="w">                          </span><span class="c1"># The title to use for the test run.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">testRunner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NUnit</span><span class="w">                               </span><span class="c1"># Import report using the NUnit format.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">testResultsFiles</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;reports/ps-rule-results.xml&#39;</span><span class="w"> </span><span class="c1"># The previously saved NUnit report.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">succeededOrFailed()</span><span class="w">                    </span><span class="c1"># Run this task if previous steps succeeded of failed.</span><span class="w"></span>
 </code></pre></div>
 <h2 id="completeexample">Complete example<a class="headerlink" href="#completeexample" title="Permanent link">#</a></h2>
 <p>Putting each of these steps together.</p>
 <h3 id="azuredevopspipeline">Azure DevOps Pipeline<a class="headerlink" href="#azuredevopspipeline" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">#</span>
-<span class="c1"># PSRule with Azure Pipelines</span>
-<span class="c1">#</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#</span><span class="w"></span>
+<span class="c1"># PSRule with Azure Pipelines</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
 
-<span class="nt">trigger</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="nt">trigger</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span><span class="w"></span>
 
-<span class="nt">pool</span><span class="p">:</span>
-  <span class="nt">vmImage</span><span class="p">:</span> <span class="s">&#39;ubuntu-latest&#39;</span>
+<span class="nt">pool</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ubuntu-latest&#39;</span><span class="w"></span>
 
-<span class="nt">steps</span><span class="p">:</span>
+<span class="nt">steps</span><span class="p">:</span><span class="w"></span>
 
-<span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery</span>
-<span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ps-rule-install@0</span>
-  <span class="nt">inputs</span><span class="p">:</span>
-    <span class="nt">module</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PSRule.Rules.Azure</span>   <span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery.</span>
+<span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-install@0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">inputs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">module</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRule.Rules.Azure</span><span class="w">   </span><span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery.</span><span class="w"></span>
 
-<span class="c1"># Export resource data from parameter files within the current working directory.</span>
-<span class="p p-Indicator">-</span> <span class="nt">powershell</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath out/templates/;</span>
-  <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span>
+<span class="c1"># Export resource data from parameter files within the current working directory.</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">powershell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get-AzRuleTemplateLink | Export-AzRuleTemplateData -OutputPath out/templates/;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span><span class="w"></span>
 
-<span class="c1"># Run analysis from JSON files using the `PSRule.Rules.Azure` module and custom rules from `.ps-rule/`.</span>
-<span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@0</span>
-  <span class="nt">inputs</span><span class="p">:</span>
-    <span class="nt">inputType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">inputPath</span>
-    <span class="nt">inputPath</span><span class="p">:</span> <span class="s">&#39;out/templates/*.json&#39;</span>        <span class="c1"># Read exported resource data from &#39;out/templates/&#39;.</span>
-    <span class="nt">modules</span><span class="p">:</span> <span class="s">&#39;PSRule.Rules.Azure&#39;</span>            <span class="c1"># Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.</span>
-    <span class="c1"># Optionally, also analyze objects using custom rules from &#39;.ps-rule/&#39;.</span>
-    <span class="nt">source</span><span class="p">:</span> <span class="s">&#39;.ps-rule/&#39;</span>
-    <span class="c1"># Optionally, save results to an NUnit report.</span>
-    <span class="nt">outputFormat</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NUnit3</span>
-    <span class="nt">outputPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">reports/ps-rule-resources.xml</span>
+<span class="c1"># Run analysis from JSON files using the `PSRule.Rules.Azure` module and custom rules from `.ps-rule/`.</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">inputs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">inputType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputPath</span><span class="w"></span>
+<span class="w">    </span><span class="nt">inputPath</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;out/templates/*.json&#39;</span><span class="w">        </span><span class="c1"># Read exported resource data from &#39;out/templates/&#39;.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">modules</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;PSRule.Rules.Azure&#39;</span><span class="w">            </span><span class="c1"># Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Optionally, also analyze objects using custom rules from &#39;.ps-rule/&#39;.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;.ps-rule/&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Optionally, save results to an NUnit report.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">outputFormat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NUnit3</span><span class="w"></span>
+<span class="w">    </span><span class="nt">outputPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reports/ps-rule-resources.xml</span><span class="w"></span>
 
-<span class="c1"># Publish NUnit report as test results</span>
-<span class="p p-Indicator">-</span> <span class="nt">task</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PublishTestResults@2</span>
-  <span class="nt">displayName</span><span class="p">:</span> <span class="s">&#39;Publish</span><span class="nv"> </span><span class="s">PSRule</span><span class="nv"> </span><span class="s">results&#39;</span>
-  <span class="nt">inputs</span><span class="p">:</span>
-    <span class="nt">testRunTitle</span><span class="p">:</span> <span class="s">&#39;PSRule&#39;</span>                          <span class="c1"># The title to use for the test run.</span>
-    <span class="nt">testRunner</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NUnit</span>                               <span class="c1"># Import report using the NUnit format.</span>
-    <span class="nt">testResultsFiles</span><span class="p">:</span> <span class="s">&#39;reports/ps-rule-*.xml&#39;</span>       <span class="c1"># Use previously saved NUnit reports.</span>
-    <span class="nt">mergeTestResults</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>                          <span class="c1"># Merge multiple reports.</span>
-  <span class="nt">condition</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">succeededOrFailed()</span>                    <span class="c1"># Run this task if previous steps succeeded of failed.</span>
+<span class="c1"># Publish NUnit report as test results</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PublishTestResults@2</span><span class="w"></span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Publish</span><span class="nv"> </span><span class="s">PSRule</span><span class="nv"> </span><span class="s">results&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">inputs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">testRunTitle</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;PSRule&#39;</span><span class="w">                          </span><span class="c1"># The title to use for the test run.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">testRunner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NUnit</span><span class="w">                               </span><span class="c1"># Import report using the NUnit format.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">testResultsFiles</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;reports/ps-rule-*.xml&#39;</span><span class="w">       </span><span class="c1"># Use previously saved NUnit reports.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mergeTestResults</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                          </span><span class="c1"># Merge multiple reports.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">succeededOrFailed()</span><span class="w">                    </span><span class="c1"># Run this task if previous steps succeeded of failed.</span><span class="w"></span>
 </code></pre></div>
 <h2 id="moreinformation">More information<a class="headerlink" href="#moreinformation" title="Permanent link">#</a></h2>
 <ul>

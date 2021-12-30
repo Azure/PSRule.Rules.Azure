@@ -5648,18 +5648,18 @@ To learn how to set configuration options see <a href="../configuring-options/">
 <p>This configuration option determines the minimum version of Kubernetes for AKS clusters and node pools.
 Rules that check the Kubernetes version fail when the version is older than the version specified.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span> <span class="c1"># A version string</span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"> </span><span class="c1"># A version string</span><span class="w"></span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AKSMinimumVersion configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.20.5</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AKSMinimumVersion configuration option</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.20.5</span><span class="w"></span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AKSMinimumVersion configuration option to 1.19.7</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.19.7</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AKSMinimumVersion configuration option to 1.19.7</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.19.7</span><span class="w"></span>
 </code></pre></div>
 <h3 id="aksminimummaxpods">AKS minimum max pods<a class="headerlink" href="#aksminimummaxpods" title="Permanent link">#</a></h3>
 <p>This configuration option determines the minimum allowed max pods setting per node pool.
@@ -5670,18 +5670,18 @@ When an AKS cluster node pool is created, a <code>maxPods</code> option is used 
 <li>Data movement/ processing: 20-30</li>
 </ul>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span><span class="w"></span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AKSNodeMinimumMaxPods configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">50</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AKSNodeMinimumMaxPods configuration option</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span><span class="w"></span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AKSNodeMinimumMaxPods configuration option to 30</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AKSNodeMinimumMaxPods configuration option to 30</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span><span class="w"></span>
 </code></pre></div>
 <h3 id="allowedresourceregions">Allowed resource regions<a class="headerlink" href="#allowedresourceregions" title="Permanent link">#</a></h3>
 <p>This configuration option specifies a list of allowed locations that resources can be deployed to.
@@ -5689,69 +5689,69 @@ Rules that check the location of Azure resources fail when a resource or resourc
 <p>By default, <code>Azure_AllowedRegions</code> is not configured.
 The rule <code>Azure.Resource.AllowedRegions</code> is skipped when no allowed locations are configured.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">Azure_AllowedRegions</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span> <span class="c1"># An array of regions</span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure_AllowedRegions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span><span class="w"> </span><span class="c1"># An array of regions</span><span class="w"></span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AllowedRegions configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">Azure_AllowedRegions</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AllowedRegions configuration option</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure_AllowedRegions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"></span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AllowedRegions configuration option to Australia East, Australia South East</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">Azure_AllowedRegions</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="s">&#39;australiaeast&#39;</span>
-  <span class="p p-Indicator">-</span> <span class="s">&#39;australiasoutheast&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AllowedRegions configuration option to Australia East, Australia South East</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure_AllowedRegions</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;australiaeast&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;australiasoutheast&#39;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="minimumcertificatelifetime">Minimum certificate lifetime<a class="headerlink" href="#minimumcertificatelifetime" title="Permanent link">#</a></h3>
 <p>This configuration option determines the minimum number of days allowed before certificate expiry.
 Rules that check certificate lifetime fail when the days remaining before expiry drop below this number.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span><span class="w"></span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_MinimumCertificateLifetime configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_MinimumCertificateLifetime configuration option</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span><span class="w"></span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_MinimumCertificateLifetime configuration option to 90</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">90</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_MinimumCertificateLifetime configuration option to 90</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span><span class="w"></span>
 </code></pre></div>
 <h3 id="azurepolicymaximumwavier">Azure Policy maximum wavier<a class="headerlink" href="#azurepolicymaximumwavier" title="Permanent link">#</a></h3>
 <p>This configuration option determines the maximum number of days in the future for a waiver policy exemption.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span><span class="w"></span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">366</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">366</span><span class="w"></span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option to 90</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">90</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option to 90</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span><span class="w"></span>
 </code></pre></div>
 <h3 id="azureakscniminimumclustersubnetsize">Azure AKS CNI minimum cluster subnet size<a class="headerlink" href="#azureakscniminimumclustersubnetsize" title="Permanent link">#</a></h3>
 <p>This configuration option determines the minimum subnet size for Azure AKS CNI.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span><span class="w"></span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">23</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23</span><span class="w"></span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option to 26</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">26</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option to 26</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26</span><span class="w"></span>
 </code></pre></div>
 <h3 id="additionalregionavailabilityzonelist">Additional region availability zone list<a class="headerlink" href="#additionalregionavailabilityzonelist" title="Permanent link">#</a></h3>
 <p>This configuration option adds availability zones that are not included in the existing <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json">providers</a>.
@@ -5775,28 +5775,28 @@ You can use this option to add availability zones that are not included in the d
 <li><code>Azure.RedisEnterprise.Zones</code> - <code>AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code></li>
 </ul>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span><span class="w"></span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"></span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option to Antarctica North and Antarctica South, with zones 1, 2, 3.</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">location</span><span class="p">:</span> <span class="s">&#39;Antarctica</span><span class="nv"> </span><span class="s">North&#39;</span>
-    <span class="nt">zones</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;1&quot;</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;2&quot;</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;3&quot;</span>
-  <span class="p p-Indicator">-</span> <span class="nt">location</span><span class="p">:</span> <span class="s">&#39;Antarctica</span><span class="nv"> </span><span class="s">South&#39;</span>
-    <span class="nt">zones</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;1&quot;</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;2&quot;</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;3&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option to Antarctica North and Antarctica South, with zones 1, 2, 3.</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Antarctica</span><span class="nv"> </span><span class="s">North&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">zones</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;2&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Antarctica</span><span class="nv"> </span><span class="s">South&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">zones</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;2&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3&quot;</span><span class="w"></span>
 </code></pre></div>
 <p>The above example, both these forms of location are accepted:</p>
 <ul>
@@ -5814,34 +5814,34 @@ The above shows examples specific to <code>Azure.AKS.AvailabilityZone</code>, bu
 <h3 id="azureaksenabledplatformlogcategorieslist">Azure AKS enabled platform log categories list<a class="headerlink" href="#azureaksenabledplatformlogcategorieslist" title="Permanent link">#</a></h3>
 <p>This configuration option sets selective platform diagnostic categories to report on being enabled.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span><span class="w"></span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;cluster-autoscaler&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;kube-apiserver&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;kube-controller-manager&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;kube-scheduler&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;cluster-autoscaler&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;kube-apiserver&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;kube-controller-manager&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;kube-scheduler&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to cluster-autoscaler and AllMetrics categories only. </span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;cluster-autoscaler&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to cluster-autoscaler and AllMetrics categories only. </span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;cluster-autoscaler&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
 </code></pre></div>
 <h3 id="azureautomationaccountenabledplatformlogcategorieslist">Azure Automation Account enabled platform log categories list<a class="headerlink" href="#azureautomationaccountenabledplatformlogcategorieslist" title="Permanent link">#</a></h3>
 <p>This configuration option sets selective platform diagnostic categories to report on being enabled.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span><span class="w"></span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option</span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;JobLogs&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;JobStreams&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;DscNodeStatus&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;JobLogs&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;JobStreams&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;DscNodeStatus&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to JobLogs and AllMetrics categories only. </span>
-<span class="nt">configuration</span><span class="p">:</span>
-  <span class="nt">AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;JobLogs&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to JobLogs and AllMetrics categories only. </span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;JobLogs&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;AllMetrics&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
 </code></pre></div>
 
   <hr>

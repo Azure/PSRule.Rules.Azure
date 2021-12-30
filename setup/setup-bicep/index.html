@@ -5604,14 +5604,14 @@ File names used for Bicep binaries include <code>bicep</code>, or <code>bicep.ex
 <div class="highlight"><pre><span></span><code><span class="c"># PowerShell: Setting environment variable</span>
 <span class="nv">$Env:PSRULE_AZURE_BICEP_PATH</span> <span class="p">=</span> <span class="s1">&#39;/usr/local/bin/bicep&#39;</span><span class="p">;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># GitHub Actions: Setting environment variable</span>
-<span class="nt">env</span><span class="p">:</span>
-  <span class="nt">PSRULE_AZURE_BICEP_PATH</span><span class="p">:</span> <span class="s">&#39;/usr/local/bin/bicep&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># GitHub Actions: Setting environment variable</span><span class="w"></span>
+<span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">PSRULE_AZURE_BICEP_PATH</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/usr/local/bin/bicep&#39;</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># Azure Pipelines: Setting environment variable</span>
-<span class="nt">variables</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PSRULE_AZURE_BICEP_PATH</span>
-  <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;/usr/local/bin/bicep&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Azure Pipelines: Setting environment variable</span><span class="w"></span>
+<span class="nt">variables</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRULE_AZURE_BICEP_PATH</span><span class="w"></span>
+<span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/usr/local/bin/bicep&#39;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="usingazurecli">Using Azure CLI<a class="headerlink" href="#usingazurecli" title="Permanent link">#</a></h3>
 <p>By default, PSRule for Azure uses the Bicep CLI directly.
@@ -5626,14 +5626,14 @@ This is explained in <a href="https://github.com/Azure/bicep/blob/main/docs/inst
 <div class="highlight"><pre><span></span><code><span class="c"># PowerShell: Setting environment variable</span>
 <span class="nv">$Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI</span> <span class="p">=</span> <span class="s1">&#39;true&#39;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># GitHub Actions: Setting environment variable</span>
-<span class="nt">env</span><span class="p">:</span>
-  <span class="nt">PSRULE_AZURE_BICEP_USE_AZURE_CLI</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># GitHub Actions: Setting environment variable</span><span class="w"></span>
+<span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">PSRULE_AZURE_BICEP_USE_AZURE_CLI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># Azure Pipelines: Setting environment variable</span>
-<span class="nt">variables</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PSRULE_AZURE_BICEP_USE_AZURE_CLI</span>
-  <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Azure Pipelines: Setting environment variable</span><span class="w"></span>
+<span class="nt">variables</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRULE_AZURE_BICEP_USE_AZURE_CLI</span><span class="w"></span>
+<span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </code></pre></div>
 <h3 id="additionalarguments">Additional arguments<a class="headerlink" href="#additionalarguments" title="Permanent link">#</a></h3>
 <p>For configuration, additional arguments can be passed to the Bicep CLI.
@@ -5645,9 +5645,9 @@ This is intended to improve forward compatibility with Bicep CLI.</p>
 When enabled, PSRule for Azure automatically expands and analyzes Azure resource from <code>.bicep</code> files.</p>
 <p>To enabled this feature, set the <code>Configuration.AZURE_BICEP_FILE_EXPANSION</code> to <code>true</code>.
 This option can be set within the <code>ps-rule.yaml</code> file.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
-  <span class="c1"># Enable automatic expansion of bicep source files</span>
-  <span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Enable automatic expansion of bicep source files</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </code></pre></div>
 
   <hr>
