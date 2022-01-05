@@ -32,7 +32,7 @@ Within the root directory of your infrastructure as code repository:
 
         # Analyze Azure resources using PSRule for Azure
         - name: Analyze Azure template files
-          uses: Microsoft/ps-rule@main
+          uses: Microsoft/ps-rule@v1.12.0
           with:
             modules: 'PSRule.Rules.Azure'
     ```
@@ -45,7 +45,7 @@ Within the root directory of your infrastructure as code repository:
     steps:
 
     # Analyze Azure resources using PSRule for Azure
-    - task: ps-rule-assert@0
+    - task: ps-rule-assert@1
       displayName: Analyze Azure template files
       inputs:
         inputType: repository
