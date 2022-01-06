@@ -24,7 +24,7 @@ Install and use PSRule for Azure with GitHub Actions by referencing the `Microso
 
     ```yaml
     - name: Analyze Azure template files
-      uses: Microsoft/ps-rule@main
+      uses: Microsoft/ps-rule@v1.12.0
       with:
         modules: 'PSRule.Rules.Azure'
     ```
@@ -35,7 +35,7 @@ Install and use PSRule for Azure with GitHub Actions by referencing the `Microso
 
     ```yaml
     - name: Analyze Azure template files
-      uses: Microsoft/ps-rule@main
+      uses: Microsoft/ps-rule@v1.12.0
       with:
         modules: 'PSRule.Rules.Azure'
         prerelease: true
@@ -57,7 +57,7 @@ Install the extension from the marketplace, then use the `ps-rule-assert` task i
     Install the latest stable version of PSRule for Azure.
 
     ```yaml
-    - task: ps-rule-assert@0
+    - task: ps-rule-assert@1
       displayName: Analyze Azure template files
       inputs:
         inputType: repository
@@ -69,13 +69,13 @@ Install the extension from the marketplace, then use the `ps-rule-assert` task i
     Install the latest stable or pre-release version of PSRule for Azure.
 
     ```yaml
-    - task: ps-rule-install@0
+    - task: ps-rule-install@1
       displayName: Install PSRule for Azure (pre-release)
       inputs:
         module: PSRule.Rules.Azure
         prerelease: true
 
-    - task: ps-rule-assert@0
+    - task: ps-rule-assert@1
       displayName: Analyze Azure template files
       inputs:
         inputType: repository
