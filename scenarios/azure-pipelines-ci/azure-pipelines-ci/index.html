@@ -5601,7 +5601,7 @@ PSRule uses a number of configurable task steps to install modules, export data 
 <h3 id="installingazurerules">Installing Azure rules<a class="headerlink" href="#installingazurerules" title="Permanent link">#</a></h3>
 <p>To install the module containing Azure rules use the <code>ps-rule-install</code> YAML task.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery.</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-install@0</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-install@1</span><span class="w"></span>
 <span class="w">  </span><span class="nt">inputs</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">module</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRule.Rules.Azure</span><span class="w">   </span><span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery.</span><span class="w"></span>
 </code></pre></div>
@@ -5633,7 +5633,7 @@ Files are found recursively from the current working path.</li>
 <p>To validate exported resources use the <code>ps-rule-assert</code> YAML task.
 The following task uses previously exported resource data for analysis.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Run analysis from JSON files using the `PSRule.Rules.Azure` module and custom rules from `.ps-rule/`.</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@0</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@1</span><span class="w"></span>
 <span class="w">  </span><span class="nt">inputs</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">inputType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputPath</span><span class="w"></span>
 <span class="w">    </span><span class="nt">inputPath</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;out/templates/*.json&#39;</span><span class="w">        </span><span class="c1"># Read exported resource data from &#39;out/templates/&#39;.</span><span class="w"></span>
@@ -5680,7 +5680,7 @@ With Azure DevOps, an NUnit report can be published using <a href="https://docs.
 <span class="nt">steps</span><span class="p">:</span><span class="w"></span>
 
 <span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-install@0</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-install@1</span><span class="w"></span>
 <span class="w">  </span><span class="nt">inputs</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">module</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRule.Rules.Azure</span><span class="w">   </span><span class="c1"># Install PSRule.Rules.Azure from the PowerShell Gallery.</span><span class="w"></span>
 
@@ -5689,7 +5689,7 @@ With Azure DevOps, an NUnit report can be published using <a href="https://docs.
 <span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Export</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">data&#39;</span><span class="w"></span>
 
 <span class="c1"># Run analysis from JSON files using the `PSRule.Rules.Azure` module and custom rules from `.ps-rule/`.</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@0</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@1</span><span class="w"></span>
 <span class="w">  </span><span class="nt">inputs</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">inputType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputPath</span><span class="w"></span>
 <span class="w">    </span><span class="nt">inputPath</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;out/templates/*.json&#39;</span><span class="w">        </span><span class="c1"># Read exported resource data from &#39;out/templates/&#39;.</span><span class="w"></span>
@@ -5722,7 +5722,7 @@ With Azure DevOps, an NUnit report can be published using <a href="https://docs.
   <small>
     
       Last update:
-      2022-01-04
+      2022-01-07
     
   </small>
 </div>
