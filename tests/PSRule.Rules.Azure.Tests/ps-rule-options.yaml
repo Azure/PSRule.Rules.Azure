@@ -21,6 +21,7 @@ configuration:
     name: 'unit-test-mg'
     properties:
       displayName: 'My test management group'
+  AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.22.4'
   AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
   - location: 'Antarctica North'
     zones:

@@ -24,23 +24,23 @@ Syntax:
 
 ```yaml
 configuration:
-  Azure_AKSMinimumVersion: string # A version string
+  AZURE_AKS_CLUSTER_MINIMUM_VERSION: string # A version string
 ```
 
 Default:
 
 ```yaml
-# YAML: The default Azure_AKSMinimumVersion configuration option
+# YAML: The default AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option
 configuration:
-  Azure_AKSMinimumVersion: 1.20.5
+  AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.21.7
 ```
 
 Example:
 
 ```yaml
-# YAML: Set the Azure_AKSMinimumVersion configuration option to 1.19.7
+# YAML: Set the AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option to 1.22.4
 configuration:
-  Azure_AKSMinimumVersion: 1.19.7
+  AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.22.4
 ```
 
 ### AKS minimum max pods

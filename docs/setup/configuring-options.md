@@ -31,6 +31,9 @@ configuration:
   # Enable expansion of Azure Bicep files.
   AZURE_BICEP_FILE_EXPANSION: true
 
+  # Configure the minimum AKS cluster version.
+  AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.22.4
+
 rule:
   # Enable custom rules that don't exist in the baseline
   includeLocal: true
