@@ -17,6 +17,8 @@ Setting these values overrides the default configuration with organization speci
 
 ### AKS minimum Kubernetes version
 
+:octicons-milestone-24: v1.12.0
+
 This configuration option determines the minimum version of Kubernetes for AKS clusters and node pools.
 Rules that check the Kubernetes version fail when the version is older than the version specified.
 

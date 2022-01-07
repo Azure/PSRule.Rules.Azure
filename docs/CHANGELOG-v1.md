@@ -2,7 +2,7 @@
 
 See [upgrade notes][1] for helpful information when upgrading from previous versions.
 
-  [1]: https://azure.github.io/PSRule.Rules.Azure/upgrade-notes/
+  [1]: upgrade-notes.md
 
 **Important notes**:
 
@@ -19,7 +19,7 @@ What's changed since v1.11.1:
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use latest stable version `1.21.7`. [#1188](https://github.com/Azure/PSRule.Rules.Azure/issues/1188)
-      - Pinned latest GA baseline `Azure.GA_2021_12` to previous set version `1.20.5`.
+      - Pinned latest GA baseline `Azure.GA_2021_12` to previous version `1.20.5`.
       - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
 - General improvements:
   - **Important change:** Replaced `Azure_AKSMinimumVersion` option with `AZURE_AKS_CLUSTER_MINIMUM_VERSION`. [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)

@@ -17,7 +17,7 @@ Until v2, the old option names are still work and will take precedence if new an
 
 New name                                  | Old name                             | Available from
 --------                                  | --------                             | --------------
-`AZURE_AKS_CLUSTER_MINIMUM_VERSION`       | `Azure_AKSMinimumVersion`            | v1.12.0 - see [upgrade notes][1] for details.
+`AZURE_AKS_CLUSTER_MINIMUM_VERSION`       | `Azure_AKSMinimumVersion`            | :octicons-milestone-24: v1.12.0
 `AZURE_AKS_POOL_MINIMUM_MAXPODS`          | `Azure_AKSNodeMinimumMaxPods`        | _TBA - not available_
 `AZURE_RESOURCE_ALLOWED_LOCATIONS`        | `Azure_AllowedRegions`               | _TBA - not available_
 `AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME` | `Azure_MinimumCertificateLifetime`   | _TBA - not available_
@@ -25,10 +25,12 @@ New name                                  | Old name                            
 !!! Note
     Configuration options marked _TBA_ are not available yet.
     Please use the old names until they are available.
-    Check the change log and the release notes for more information on a future release.
+    Check the [change log][1] and the [upgrade notes][2] for more information on a future release.
 
 !!! Important
     New option names will work from the release specified by _Available from_.
     Configuring these options prior to that release will have no affect.
+    For details on configuring these options see [upgrade notes][2] for details.
 
-  [1]: upgrade-notes.md#realigned-configuration-option-names
+  [1]: CHANGELOG-v1.md
+  [2]: upgrade-notes.md#realigned-configuration-option-names

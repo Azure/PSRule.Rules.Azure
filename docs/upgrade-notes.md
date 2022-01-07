@@ -23,9 +23,9 @@ The old option names may be set in:
 
 To locate any configurations, search for the old option names within your Infrasturcture as Code repo.
 
-New name                                  | Old name
---------                                  | ---------
-`AZURE_AKS_CLUSTER_MINIMUM_VERSION`       | `Azure_AKSMinimumVersion`
+New name                                  | Old name                             | Available from
+--------                                  | --------                             | --------------
+`AZURE_AKS_CLUSTER_MINIMUM_VERSION`       | `Azure_AKSMinimumVersion`            | :octicons-milestone-24: v1.12.0
 
 To update your configuration, use the new name instead.
 
