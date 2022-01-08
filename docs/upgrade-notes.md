@@ -9,11 +9,11 @@ It's not yet available, but you can take these steps to proactively prepare for 
 
 ### Realigned configuration option names
 
-Several configuration options will be renamed in upcomming releases of PSRule for Azure.
+Several configuration options will be renamed in upcoming releases of PSRule for Azure.
 This is part of a ongoing effort to align the naming of configuration options across PSRule for Azure.
 For information on other options that will be renamed see [deprecations][1].
 
-You **only** need to take action if you have explictly set old configuration option names.
+You **only** need to take action if you have explicitly set old configuration option names.
 
 The old option names may be set in:
 
@@ -21,7 +21,7 @@ The old option names may be set in:
 - A custom baseline.
 - An environment variable.
 
-To locate any configurations, search for the old option names within your Infrasturcture as Code repo.
+To locate any configurations, search for the old option names within your Infrastructure as Code repo.
 
 New name                                  | Old name                             | Available from
 --------                                  | --------                             | --------------

@@ -23,7 +23,7 @@ What's changed since v1.11.1:
       - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
 - General improvements:
   - **Important change:** Replaced `Azure_AKSMinimumVersion` option with `AZURE_AKS_CLUSTER_MINIMUM_VERSION`. [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)
-    - For compatiblity, if `Azure_AKSMinimumVersion` is set it will be used instead of `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
+    - For compatibility, if `Azure_AKSMinimumVersion` is set it will be used instead of `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
     - If only `AZURE_AKS_CLUSTER_MINIMUM_VERSION` is set, this value will be used.
     - The default will be used neither options are configured.
     - If `Azure_AKSMinimumVersion` is set a warning will be generated until the configuration is removed.

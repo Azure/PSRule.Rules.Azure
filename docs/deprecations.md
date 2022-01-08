@@ -8,7 +8,7 @@ author: BernieWhite
 
 ### Realigned configuration option names
 
-The following configuration options will be renamed in upcomming releases of PSRule for Azure.
+The following configuration options will be renamed in upcoming releases of PSRule for Azure.
 This is part of a ongoing effort to align the naming of configuration options across PSRule for Azure.
 
 We plan to have all the old option names renamed and they will not longer work from v2.
