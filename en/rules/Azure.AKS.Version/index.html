@@ -734,6 +734,10 @@
         
           
         
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2_9">
@@ -810,6 +814,34 @@
           
         </ul>
       </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../upgrade-notes/" class="md-nav__link">
+        Upgrade notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deprecations/" class="md-nav__link">
+        Deprecations
+      </a>
     </li>
   
 
@@ -2134,6 +2166,20 @@
   
     <nav class="md-nav" aria-label="Examples">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#configurewithazurecli" class="md-nav__link">
@@ -5546,6 +5592,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#configurewithazurecli" class="md-nav__link">
     Configure with Azure CLI
   </a>
@@ -5619,20 +5679,165 @@
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
 <p>The AKS support policy for Kubernetes is include N-2 stable minor releases.
 Additionally two patch releases for each minor version are supported.</p>
-<p>A list of available Kubernetes versions can be found using the <code>az aks get-versions -o table --location &lt;location&gt;</code> CLI command.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
 <p>Consider upgrading AKS control plane and nodes pools to the latest stable version of Kubernetes.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To deploy AKS clusters that pass this rule:</p>
+<ul>
+<li>Set <code>Properties.kubernetesVersion</code> to a newer stable version.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ContainerService/managedClusters&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-01&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;clusterName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UserAssigned&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;userAssignedIdentities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;[format(&#39;{0}&#39;, resourceId(&#39;Microsoft.ManagedIdentity/userAssignedIdentities&#39;, parameters(&#39;identityName&#39;)))]&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;kubernetesVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.21.7&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;enableRBAC&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;dnsPrefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;dnsPrefix&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;agentPoolProfiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[variables(&#39;allPools&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;aadProfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;managed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;enableAzureRBAC&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;adminGroupObjectIDs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;clusterAdmins&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;tenantID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[subscription().tenantId]&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;networkProfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;networkPlugin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;azure&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;networkPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;azure&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;loadBalancerSku&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;standard&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;serviceCidr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[variables(&#39;serviceCidr&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;dnsServiceIP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[variables(&#39;dnsServiceIP&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;dockerBridgeCidr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[variables(&#39;dockerBridgeCidr&#39;)]&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;autoUpgradeProfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;upgradeChannel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stable&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;addonProfiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;httpApplicationRouting&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;azurepolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v2&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;omsagent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;logAnalyticsWorkspaceResourceID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;workspaceId&#39;)]&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;kubeDashboard&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;azureKeyvaultSecretsProvider&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;enableSecretRotation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;podIdentityProfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;tags&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;[resourceId(&#39;Microsoft.ManagedIdentity/userAssignedIdentities&#39;, parameters(&#39;identityName&#39;))]&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To deploy AKS clusters that pass this rule:</p>
+<ul>
+<li>Set <code>Properties.kubernetesVersion</code> to a newer stable version.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-10-01&#39; = {
+  location: location
+  name: clusterName
+  identity: {
+    type: &#39;UserAssigned&#39;
+    userAssignedIdentities: {
+      &#39;${identity.id}&#39;: {}
+    }
+  }
+  properties: {
+    kubernetesVersion: &#39;1.21.7&#39;
+    enableRBAC: true
+    dnsPrefix: dnsPrefix
+    agentPoolProfiles: allPools
+    aadProfile: {
+      managed: true
+      enableAzureRBAC: true
+      adminGroupObjectIDs: clusterAdmins
+      tenantID: subscription().tenantId
+    }
+    networkProfile: {
+      networkPlugin: &#39;azure&#39;
+      networkPolicy: &#39;azure&#39;
+      loadBalancerSku: &#39;standard&#39;
+      serviceCidr: serviceCidr
+      dnsServiceIP: dnsServiceIP
+      dockerBridgeCidr: dockerBridgeCidr
+    }
+    autoUpgradeProfile: {
+      upgradeChannel: &#39;stable&#39;
+    }
+    addonProfiles: {
+      httpApplicationRouting: {
+        enabled: false
+      }
+      azurepolicy: {
+        enabled: true
+        config: {
+          version: &#39;v2&#39;
+        }
+      }
+      omsagent: {
+        enabled: true
+        config: {
+          logAnalyticsWorkspaceResourceID: workspaceId
+        }
+      }
+      kubeDashboard: {
+        enabled: false
+      }
+      azureKeyvaultSecretsProvider: {
+        enabled: true
+        config: {
+          enableSecretRotation: &#39;true&#39;
+        }
+      }
+    }
+    podIdentityProfile: {
+      enabled: true
+    }
+  }
+  tags: tags
+}
+</code></pre></div>
 <h3 id="configurewithazurecli">Configure with Azure CLI<a class="headerlink" href="#configurewithazurecli" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>az aks upgrade -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> --kubernetes-version <span class="s1">&#39;&lt;version&gt;&#39;</span>
+<div class="highlight"><pre><span></span><code>az aks upgrade -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> --kubernetes-version <span class="s1">&#39;1.21.7&#39;</span>
 </code></pre></div>
 <h3 id="configurewithazurepowershell">Configure with Azure PowerShell<a class="headerlink" href="#configurewithazurepowershell" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nb">Set-AzAksCluster</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;name&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> <span class="n">-KubernetesVersion</span> <span class="s1">&#39;&lt;version&gt;&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">Set-AzAksCluster</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;name&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> <span class="n">-KubernetesVersion</span> <span class="s1">&#39;1.21.7&#39;</span>
 </code></pre></div>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
-<p>To configure this rule:</p>
+<p>A list of available Kubernetes versions can be found using the <code>az aks get-versions -o table --location &lt;location&gt;</code> CLI command.
+To configure this rule:</p>
 <ul>
-<li>Override the <code>Azure_AKSMinimumVersion</code> configuration value with the minimum Kubernetes version.</li>
+<li>Override the <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code> configuration value with the minimum Kubernetes version.</li>
 </ul>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>

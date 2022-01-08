@@ -738,6 +738,10 @@
         
           
         
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2_9">
@@ -1424,6 +1428,34 @@
           
         </ul>
       </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../upgrade-notes/" class="md-nav__link">
+        Upgrade notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deprecations/" class="md-nav__link">
+        Deprecations
+      </a>
     </li>
   
 
@@ -6636,12 +6668,42 @@
 
 
 <h1 id="changelog">Change log<a class="headerlink" href="#changelog" title="Permanent link">#</a></h1>
+<p>See <a href="../upgrade-notes/">upgrade notes</a> for helpful information when upgrading from previous versions.</p>
 <p><strong>Important notes</strong>:</p>
 <ul>
 <li>Issue #741: <code>Could not load file or assembly YamlDotNet</code>.
 See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to this issue.</li>
+<li>The configuration option <code>Azure_AKSMinimumVersion</code> is replaced with <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code>.
+  If you have this option configured, please update it to <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code>.
+  Support for <code>Azure_AKSMinimumVersion</code> will be removed in v2.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<p>What's changed since v1.11.1:</p>
+<ul>
+<li>Updated rules:<ul>
+<li>Azure Kubernetes Service:<ul>
+<li>Updated <code>Azure.AKS.Version</code> to use latest stable version <code>1.21.7</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1188">#1188</a><ul>
+<li>Pinned latest GA baseline <code>Azure.GA_2021_12</code> to previous version <code>1.20.5</code>.</li>
+<li>Use <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code> to configure the minimum version of the cluster.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>General improvements:<ul>
+<li><strong>Important change:</strong> Replaced <code>Azure_AKSMinimumVersion</code> option with <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/941">#941</a><ul>
+<li>For compatibility, if <code>Azure_AKSMinimumVersion</code> is set it will be used instead of <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code>.</li>
+<li>If only <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code> is set, this value will be used.</li>
+<li>The default will be used neither options are configured.</li>
+<li>If <code>Azure_AKSMinimumVersion</code> is set a warning will be generated until the configuration is removed.</li>
+<li>Support for <code>Azure_AKSMinimumVersion</code> is deprecated and will be removed in v2.</li>
+<li>See <a href="../upgrade-notes/">upgrade notes</a> for details.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="v1111">v1.11.1<a class="headerlink" href="#v1111" title="Permanent link">#</a></h2>
 <p>What's changed since v1.11.0:</p>
 <ul>
