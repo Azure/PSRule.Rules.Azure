@@ -62,7 +62,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.TargetName | Should -BeIn 'cluster-B';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The Kubernetes version is v1.13.8.";
+            $ruleResult[0].Reason | Should -BeExactly "The version '1.13.8' does not match the constraint '>=1.21.7'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -980,6 +980,112 @@ Describe 'Azure.AKS' -Tag AKS {
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.AKS.json';
             $configPath = Join-Path -Path $here -ChildPath 'ps-rule-options.yaml';
+            $configPath2 = Join-Path -Path $here -ChildPath 'ps-rule-options2.yaml';
+        }
+
+        It 'Azure.AKS.Version - HashTable option' {
+            # With AZURE_AKS_CLUSTER_MINIMUM_VERSION
+            $option = @{
+                'Configuration.AZURE_AKS_CLUSTER_MINIMUM_VERSION' = '1.22.4'
+            }
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $option
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.Version' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 11;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
+            $ruleResult.Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult.Reason | Should -BeLike "The version '*' does not match the constraint '>=1.22.4'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 1;
+            $ruleResult.TargetName | Should -BeIn 'cluster-L';
+
+            # With Azure_AKSMinimumVersion
+            $option = @{
+                'Configuration.AZURE_AKS_CLUSTER_MINIMUM_VERSION' = '1.0.0'
+                'Configuration.Azure_AKSMinimumVersion' = '1.22.4'
+            }
+            $invokeOldParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'SilentlyContinue'
+                ErrorAction = 'Stop'
+            }
+            $result = Invoke-PSRule @invokeOldParams -InputPath $dataPath -Option $option -WarningVariable outWarn;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.Version' };
+            $warnings = @($outWarn | Where-Object {
+                $_ -like '*Azure_AKSMinimumVersion*'
+            })
+            $warnings | Should -HaveCount 1;
+            $warnings | Should -BeExactly "The configuration option 'Azure_AKSMinimumVersion' has been replaced with 'AZURE_AKS_CLUSTER_MINIMUM_VERSION'. The option 'Azure_AKSMinimumVersion' is deprecated and will no longer work in the next major version. Please update your configuration to the new name. See https://aka.ms/ps-rule-azure/upgrade.";
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 11;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
+            $ruleResult.Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult.Reason | Should -BeLike "The version '*' does not match the constraint '>=1.22.4'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 1;
+            $ruleResult.TargetName | Should -BeIn 'cluster-L';
+        }
+
+        It 'Azure.AKS.Version - YAML file option' {
+            # With AZURE_AKS_CLUSTER_MINIMUM_VERSION
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $configPath
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.Version' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 11;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
+            $ruleResult.Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult.Reason | Should -BeLike "The version '*' does not match the constraint '>=1.22.4'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 1;
+            $ruleResult.TargetName | Should -BeIn 'cluster-L';
+
+            # With Azure_AKSMinimumVersion
+            $invokeOldParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'SilentlyContinue'
+                ErrorAction = 'Stop'
+            }
+            $result = Invoke-PSRule @invokeOldParams -InputPath $dataPath -Option $configPath2 -WarningVariable outWarn;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.Version' };
+            $warnings = @($outWarn | Where-Object {
+                $_ -like '*Azure_AKSMinimumVersion*'
+            })
+            $warnings | Should -HaveCount 1;
+            $warnings | Should -BeExactly "The configuration option 'Azure_AKSMinimumVersion' has been replaced with 'AZURE_AKS_CLUSTER_MINIMUM_VERSION'. The option 'Azure_AKSMinimumVersion' is deprecated and will no longer work in the next major version. Please update your configuration to the new name. See https://aka.ms/ps-rule-azure/upgrade.";
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 11;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
+            $ruleResult.Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult.Reason | Should -BeLike "The version '*' does not match the constraint '>=1.22.4'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult | Should -HaveCount 1;
+            $ruleResult.TargetName | Should -BeIn 'cluster-L';
         }
 
         It 'Azure.AKS.AvailabilityZone - HashTable option' {

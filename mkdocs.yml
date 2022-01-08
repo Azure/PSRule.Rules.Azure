@@ -61,8 +61,8 @@ nav:
       - Change log:
         - v1: 'CHANGELOG-v1.md'
         - v0: 'CHANGELOG-v0.md'
-      # - Upgrade guide: upgrading.md
-      # - Deprecations: deprecations.md
+      - Upgrade notes: upgrade-notes.md
+      - Deprecations: deprecations.md
     - Support: support.md
   - Setup:
     - Configuring options: setup/configuring-options.md
