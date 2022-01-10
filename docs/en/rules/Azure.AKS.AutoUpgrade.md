@@ -114,9 +114,9 @@ For example:
 
 ### Configure with Bicep
 
-To deploy resource that pass this rule:
+To deploy AKS clusters that pass this rule:
 
-- steps
+- Set `properties.autoUpgradeProfile.upgradeChannel` to an upgrade channel such as `stable`.
 
 For example:
 
