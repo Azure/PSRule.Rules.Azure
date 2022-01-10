@@ -33,18 +33,14 @@ For example:
 
 ```json
 {
-    "comments": "Azure Kubernetes Cluster",
-    "apiVersion": "2020-12-01",
-    "dependsOn": [
-        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
-    ],
     "type": "Microsoft.ContainerService/managedClusters",
-    "location": "[parameters('location')]",
+    "apiVersion": "2021-10-01",
     "name": "[parameters('clusterName')]",
+    "location": "[parameters('location')]",
     "identity": {
         "type": "UserAssigned",
         "userAssignedIdentities": {
-            "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]": {}
+            "[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName')))]": {}
         }
     },
     "properties": {
@@ -52,24 +48,7 @@ For example:
         "disableLocalAccounts": true,
         "enableRBAC": true,
         "dnsPrefix": "[parameters('dnsPrefix')]",
-        "agentPoolProfiles": [
-            {
-                "name": "system",
-                "osDiskSizeGB": 32,
-                "count": 3,
-                "minCount": 3,
-                "maxCount": 10,
-                "enableAutoScaling": true,
-                "maxPods": 50,
-                "vmSize": "Standard_D2s_v3",
-                "osType": "Linux",
-                "type": "VirtualMachineScaleSets",
-                "vnetSubnetID": "[variables('clusterSubnetId')]",
-                "mode": "System",
-                "osDiskType": "Ephemeral",
-                "scaleSetPriority": "Regular"
-            }
-        ],
+        "agentPoolProfiles": "[variables('allPools')]",
         "aadProfile": {
             "managed": true,
             "enableAzureRBAC": true,
@@ -79,15 +58,18 @@ For example:
         "networkProfile": {
             "networkPlugin": "azure",
             "networkPolicy": "azure",
-            "loadBalancerSku": "Standard",
-            "serviceCidr": "192.168.0.0/16",
-            "dnsServiceIP": "192.168.0.4",
-            "dockerBridgeCidr": "172.17.0.1/16"
+            "loadBalancerSku": "standard",
+            "serviceCidr": "[variables('serviceCidr')]",
+            "dnsServiceIP": "[variables('dnsServiceIP')]",
+            "dockerBridgeCidr": "[variables('dockerBridgeCidr')]"
         },
         "autoUpgradeProfile": {
             "upgradeChannel": "stable"
         },
         "addonProfiles": {
+            "httpApplicationRouting": {
+                "enabled": false
+            },
             "azurepolicy": {
                 "enabled": true,
                 "config": {
@@ -102,9 +84,97 @@ For example:
             },
             "kubeDashboard": {
                 "enabled": false
+            },
+            "azureKeyvaultSecretsProvider": {
+                "enabled": true,
+                "config": {
+                    "enableSecretRotation": "true"
+                }
             }
+        },
+        "podIdentityProfile": {
+            "enabled": true
         }
+    },
+    "tags": "[parameters('tags')]",
+    "dependsOn": [
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
+    ]
+}
+```
+
+### Configure with Bicep
+
+To deploy AKS clusters that pass this rule:
+
+- Set `properties.aadProfile.managed` to `true`.
+
+For example:
+
+```bicep
+resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
+  location: location
+  name: clusterName
+  identity: {
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${identity.id}': {}
     }
+  }
+  properties: {
+    kubernetesVersion: kubernetesVersion
+    disableLocalAccounts: true
+    enableRBAC: true
+    dnsPrefix: dnsPrefix
+    agentPoolProfiles: allPools
+    aadProfile: {
+      managed: true
+      enableAzureRBAC: true
+      adminGroupObjectIDs: clusterAdmins
+      tenantID: subscription().tenantId
+    }
+    networkProfile: {
+      networkPlugin: 'azure'
+      networkPolicy: 'azure'
+      loadBalancerSku: 'standard'
+      serviceCidr: serviceCidr
+      dnsServiceIP: dnsServiceIP
+      dockerBridgeCidr: dockerBridgeCidr
+    }
+    autoUpgradeProfile: {
+      upgradeChannel: 'stable'
+    }
+    addonProfiles: {
+      httpApplicationRouting: {
+        enabled: false
+      }
+      azurepolicy: {
+        enabled: true
+        config: {
+          version: 'v2'
+        }
+      }
+      omsagent: {
+        enabled: true
+        config: {
+          logAnalyticsWorkspaceResourceID: workspaceId
+        }
+      }
+      kubeDashboard: {
+        enabled: false
+      }
+      azureKeyvaultSecretsProvider: {
+        enabled: true
+        config: {
+          enableSecretRotation: 'true'
+        }
+      }
+    }
+    podIdentityProfile: {
+      enabled: true
+    }
+  }
+  tags: tags
 }
 ```
 

@@ -40,7 +40,7 @@ configuration:
 
 ### Configure with Azure template
 
-To set availability zones for an AKS cluster
+To set availability zones for an AKS cluster:
 
 - Set `properties.agentPoolProfiles[*].availabilityZones` to any or all of `["1", "2", "3"]`.
 - Set `properties.agentPoolProfiles[*].type` to `VirtualMachineScaleSets`.

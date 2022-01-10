@@ -25,8 +25,71 @@ HTTP/2 offers a number of improvements over HTTP/1.1, including:
 
 Consider using HTTP/2 for Azure Services apps to improve protocol efficiency.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy App Services that pass this rule:
+
+- Set `properties.siteConfig.http20Enabled` to `true`.
+
+For example:
+
+```json
+{
+    "type": "Microsoft.Web/sites",
+    "apiVersion": "2021-02-01",
+    "name": "[parameters('name')]",
+    "location": "[parameters('location')]",
+    "kind": "web",
+    "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]",
+        "httpsOnly": true,
+        "siteConfig": {
+            "alwaysOn": true,
+            "minTlsVersion": "1.2",
+            "ftpsState": "FtpsOnly",
+            "remoteDebuggingEnabled": false,
+            "http20Enabled": true
+        }
+    },
+    "tags": "[parameters('tags')]",
+    "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]"
+    ]
+}
+```
+
+### Configure with Bicep
+
+To deploy App Services that pass this rule:
+
+- Set `properties.siteConfig.http20Enabled` to `true`.
+
+For example:
+
+```bicep
+resource webApp 'Microsoft.Web/sites@2021-02-01' = {
+  name: name
+  location: location
+  kind: 'web'
+  properties: {
+    serverFarmId: appPlan.id
+    httpsOnly: true
+    siteConfig: {
+      alwaysOn: true
+      minTlsVersion: '1.2'
+      ftpsState: 'FtpsOnly'
+      remoteDebuggingEnabled: false
+      http20Enabled: true
+    }
+  }
+  tags: tags
+}
+```
+
 ## LINKS
 
-- [Configure an App Service app](https://docs.microsoft.com/azure/app-service/configure-common#configure-general-settings)
 - [Performance efficiency checklist](https://docs.microsoft.com/azure/architecture/framework/scalability/performance-efficiency)
+- [Configure an App Service app](https://docs.microsoft.com/azure/app-service/configure-common#configure-general-settings)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)

@@ -28,3 +28,4 @@ Consider upgrading node pools to match AKS control plan version.
 
 - [Upgrade a cluster control plane with multiple node pools](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-cluster-control-plane-with-multiple-node-pools)
 - [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

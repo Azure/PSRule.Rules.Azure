@@ -159,6 +159,7 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
   }
   properties: {
     kubernetesVersion: kubernetesVersion
+    disableLocalAccounts: true
     enableRBAC: true
     dnsPrefix: dnsPrefix
     agentPoolProfiles: allPools

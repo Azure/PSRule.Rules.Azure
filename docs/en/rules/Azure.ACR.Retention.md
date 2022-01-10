@@ -112,3 +112,4 @@ Retention policies for Azure Container Registry is currently in preview.
 - [Scalable storage](https://docs.microsoft.com/azure/container-registry/container-registry-storage#scalable-storage)
 - [Set a retention policy for untagged manifests](https://docs.microsoft.com/azure/container-registry/container-registry-retention-policy)
 - [Lock a container image in an Azure container registry](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
