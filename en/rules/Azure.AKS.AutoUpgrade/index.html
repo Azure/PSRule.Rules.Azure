@@ -5739,9 +5739,9 @@ Normally upgraded weekly.</li>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
-<p>To deploy resource that pass this rule:</p>
+<p>To deploy AKS clusters that pass this rule:</p>
 <ul>
-<li>steps</li>
+<li>Set <code>properties.autoUpgradeProfile.upgradeChannel</code> to an upgrade channel such as <code>stable</code>.</li>
 </ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code>resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-07-01&#39; = {
@@ -5825,7 +5825,7 @@ Normally upgraded weekly.</li>
   <small>
     
       Last update:
-      2022-01-08
+      2022-01-11
     
   </small>
 </div>
