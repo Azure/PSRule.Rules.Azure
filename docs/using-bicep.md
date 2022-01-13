@@ -117,7 +117,7 @@ To do this configure `ps-rule.yaml` with the `input.pathIgnore` option.
     ```
 
 !!! Note
-    In this examplem, Bicep files such as `deploy.bicep` in other directories will be expanded.
+    In this example, Bicep files such as `deploy.bicep` in other directories will be expanded.
 
 *[WAF]: Well-Architected Framework
 *[ARM]: Azure Resource Manager
