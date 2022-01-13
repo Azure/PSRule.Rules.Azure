@@ -1,3 +1,7 @@
+---
+author: BernieWhite
+---
+
 # License and contributing
 
 PSRule for Azure is licensed with an [:octicons-law-24: MIT License][1], which means it's free to use and modify.
@@ -13,4 +17,8 @@ Here is how you can get started:
 - :octicons-book-16: Improve documentation.
 - :octicons-git-pull-request-16: Contribute code.
 
+Please read our [contributing guidelines][2] and [code of conduct][3] to learn how to contribute.
+
   [1]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/LICENSE
+  [2]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/CONTRIBUTING.md
+  [3]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/CODE_OF_CONDUCT.md

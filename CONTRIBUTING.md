@@ -10,22 +10,12 @@ The goal of this document is to provide a high-level overview of how you can get
 - [Adding or improving rules](#adding-or-improving-rules)
 - Fix bugs or add features
 
-## Contributor License Agreement (CLA)
+## Asking Questions
 
-This project welcomes contributions and suggestions. Most contributions require you to
-agree to a Contributor License Agreement (CLA) declaring that you have the right to,
-and actually do, grant us the rights to use your contribution. For details, visit
-https://cla.microsoft.com.
+Have a question? Rather than opening an issue, please ask a question in [discussions][1].
+Your well-worded question will serve as a resource to others searching for help.
 
-When you submit a pull request, a CLA-bot will automatically determine whether you need
-to provide a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the
-instructions provided by the bot. You will only need to do this once across all repositories using our CLA.
-
-## Code of Conduct
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
-or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+[1]: https://github.com/Azure/PSRule.Rules.Azure/discussions
 
 ## Reporting issues
 
@@ -34,15 +24,25 @@ Have a feature request?
 We want to hear about it!
 Here's how you can make reporting your issue as effective as possible.
 
+### Identify Where to Report
+
+The PSRule project is distributed across multiple repositories.
+Try to file the issue against the correct repository.
+Check the list of [related projects][2] if you aren't sure which repository is correct.
+
+  [2]: https://azure.github.io/PSRule.Rules.Azure/related-projects/
+
 ### Look for an existing issue
 
 Before you create a new issue, please do a search in [open issues][issues] to see if the issue or feature request has already been filed.
 
-If you find your issue already exists,
-make relevant comments and add your [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments).
+If you find your issue already exists, make relevant comments and add your [reaction][3].
 Use a reaction in place of a "+1" comment:
 
 * 👍 - upvote
+* 👎 - downvote
+
+  [3]: https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments
 
 ## Improving documentation
 
@@ -50,7 +50,7 @@ This project contains a wide range of documentation, stored in `docs/`.
 Some of the documentation that you might like to improve include:
 
 - Rule recommendations (`docs/en/rules/`).
-- Scenarios and examples (`docs/customization` and `docs/scenarios/`).
+- Scenarios and examples (`docs/customization/` and `docs/scenarios/`).
 - PowerShell cmdlet and conceptual topics (`docs/commands/` and `docs/concepts/`).
 
 ### Markdown formatting
@@ -63,8 +63,7 @@ When writing documentation in Markdown, please follow these formatting guideline
 
 ### Rule recommendations
 
-Before improving rule recommendations familiarize yourself with writing [rule markdown documentation](https://microsoft.github.io/PSRule/scenarios/rule-docs/rule-docs.html#writing-markdown-documentation).
-
+Before improving rule recommendations familiarize yourself with writing [rule markdown documentation][4].
 Rule documentation requires the following annotations for use with PSRule for Azure:
 
 - `severity` - The rule's severity.
@@ -87,6 +86,8 @@ When authoring and improving rule documentation, please follow these guidelines:
 - Add examples of a Azure resource that would pass the rule.
   At a minimum where applicable provide an example of a Azure template resource.
   Also consider including example Bicep code.
+
+  [4]: https://microsoft.github.io/PSRule/latest/authoring/writing-rule-help/#writing-markdown-documentation
 
 ## Adding or improving rules
 
@@ -117,6 +118,26 @@ For example:
 Rule 'Azure.APIM.ManagedIdentity' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'))
 }
+```
+
+```yaml
+---
+# Synopsis: Consider configuring a managed identity for each API Management instance.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.APIM.ManagedIdentity
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.ApiManagement/service
+  condition:
+    field: 'Identity.Type'
+    in:
+    - 'SystemAssigned'
+    - 'UserAssigned'
 ```
 
 **Tips for authoring rules:**
@@ -191,6 +212,23 @@ The CI pipeline will build then test your changes across MacOS, Linux and Window
 
 Before opening a pull request try building your changes locally.
 To do this See [building from source][build] for instructions.
+
+### Contributor License Agreement (CLA)
+
+This project welcomes contributions and suggestions. Most contributions require you to
+agree to a Contributor License Agreement (CLA) declaring that you have the right to,
+and actually do, grant us the rights to use your contribution. For details, visit
+https://cla.microsoft.com.
+
+When you submit a pull request, a CLA-bot will automatically determine whether you need
+to provide a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the
+instructions provided by the bot. You will only need to do this once across all repositories using our CLA.
+
+## Code of Conduct
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
+or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Thank You!
 
