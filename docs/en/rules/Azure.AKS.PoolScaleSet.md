@@ -30,3 +30,4 @@ Consider redeploying the AKS cluster with VM Scale Sets instead of Availability 
 
 - [Create and manage multiple node pools for a cluster in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/use-multiple-node-pools)
 - [Cluster autoscaler](https://docs.microsoft.com/azure/aks/concepts-scale#cluster-autoscaler)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

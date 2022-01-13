@@ -2,11 +2,11 @@
     "recommendations": [
         "ms-azure-devops.azure-pipelines",
         "github.vscode-pull-request-github",
-        "ms-vscode.powershell",
         "davidanson.vscode-markdownlint",
-        "redhat.vscode-yaml",
         "bewhite.psrule-vscode-preview",
         "streetsidesoftware.code-spell-checker",
-        "ms-azuretools.vscode-bicep"
+        "ms-azuretools.vscode-bicep",
+        "msazurermtools.azurerm-vscode-tools",
+        "ms-dotnettools.csharp"
     ]
 }

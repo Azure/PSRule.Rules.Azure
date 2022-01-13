@@ -12,11 +12,6 @@ To enable this feature, you need to:
   - Define a deployment.
   - Configure path exclusions.
 
-!!! Experimental
-    Support for Bicep source files is currently an experimental feature.
-    It is not recommended for production use.
-    Please give us [feedback] on this feature and report any [issues] you encounter.
-
 !!! Abstract
     This topic covers how you can validate Azure resources within `.bicep` files.
     To learn more about why this is important see [Expanding source files](expanding-source-files.md).
@@ -122,7 +117,7 @@ To do this configure `ps-rule.yaml` with the `input.pathIgnore` option.
     ```
 
 !!! Note
-    In this examplem, Bicep files such as `deploy.bicep` in other directories will be expanded.
+    In this example, Bicep files such as `deploy.bicep` in other directories will be expanded.
 
 *[WAF]: Well-Architected Framework
 *[ARM]: Azure Resource Manager

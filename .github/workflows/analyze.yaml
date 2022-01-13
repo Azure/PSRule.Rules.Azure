@@ -22,13 +22,15 @@ jobs:
   oss:
     name: Analyze with PSRule
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
 
     - name: Checkout
       uses: actions/checkout@v2.4.0
 
     - name: Run PSRule analysis
-      uses: Microsoft/ps-rule@main
+      uses: Microsoft/ps-rule@v1.12.0
       with:
         modules: PSRule.Rules.MSFT.OSS
         prerelease: true

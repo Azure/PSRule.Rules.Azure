@@ -4,15 +4,27 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.4.613.9944",
-      "templateHash": "1932883006592877589"
+      "version": "0.4.1124.51302",
+      "templateHash": "7774778042978433870"
     }
   },
   "parameters": {
+    "name": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Web App."
+      }
+    },
     "planName": {
       "type": "string",
       "metadata": {
         "description": "The name of the App Services Plan."
+      }
+    },
+    "tags": {
+      "type": "object",
+      "metadata": {
+        "description": "Tags to apply to the resource."
       }
     },
     "location": {
@@ -23,7 +35,6 @@
       }
     }
   },
-  "functions": [],
   "resources": [
     {
       "type": "Microsoft.Web/serverfarms",
@@ -35,6 +46,28 @@
         "tier": "Standard",
         "capacity": 2
       }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2021-02-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "kind": "web",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]",
+        "httpsOnly": true,
+        "siteConfig": {
+          "alwaysOn": true,
+          "minTlsVersion": "1.2",
+          "ftpsState": "FtpsOnly",
+          "remoteDebuggingEnabled": false,
+          "http20Enabled": true
+        }
+      },
+      "tags": "[parameters('tags')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]"
+      ]
     }
   ]
 }

@@ -73,7 +73,12 @@ For example:
 #
 name: Analyze templates
 on:
-- pull_request
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
 jobs:
   analyze_arm:
     name: Analyze templates
@@ -81,11 +86,11 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.4.0
 
     # STEP 2: Run analysis against exported data
     - name: Analyze Azure template files
-      uses: Microsoft/ps-rule@main
+      uses: Microsoft/ps-rule@v1.12.0
       with:
         modules: 'PSRule.Rules.Azure'  # Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.
 ```
@@ -114,17 +119,17 @@ jobs:
 - job: 'analyze_arm'
   displayName: 'Analyze templates'
   pool:
-    vmImage: 'ubuntu-18.04'
+    vmImage: 'ubuntu-20.04'
   steps:
 
   # STEP 3: Install PSRule.Rules.Azure from the PowerShell Gallery
-  - task: ps-rule-install@0
+  - task: ps-rule-install@1
     displayName: Install PSRule.Rules.Azure
     inputs:
       module: 'PSRule.Rules.Azure'   # Install PSRule.Rules.Azure from the PowerShell Gallery.
 
   # STEP 4: Run analysis against exported data
-  - task: ps-rule-assert@0
+  - task: ps-rule-assert@1
     displayName: Analyze Azure template files
     inputs:
       inputType: repository
@@ -291,7 +296,6 @@ To view a list of rules by Azure resources see:
 The following baselines are included within `PSRule.Rules.Azure`.
 
 - [Azure.Default](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Default/) - Default baseline for Azure rules.
-- [Azure.Preview](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview/) - Includes Azure features in preview.
 - [Azure.All](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.All/) - Includes all Azure rules.
 - [Azure.GA_2020_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2020_06/) - Baseline for GA rules released June 2020 or prior.
 - [Azure.GA_2020_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2020_09/) - Baseline for GA rules released September 2020 or prior.
@@ -299,6 +303,10 @@ The following baselines are included within `PSRule.Rules.Azure`.
 - [Azure.GA_2021_03](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_03/) - Baseline for GA rules released March 2021 or prior.
 - [Azure.GA_2021_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_06/) - Baseline for GA rules released June 2021 or prior.
 - [Azure.GA_2021_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_09/) - Baseline for GA rules released September 2021 or prior.
+- [Azure.GA_2021_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_12/) - Baseline for GA rules released December 2021 or prior.
+- [Azure.Preview](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview/) - Includes rules for Azure GA and preview features.
+- [Azure.Preview_2021_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2021_09/) - Baseline for rules released September 2021 or prior for Azure preview only features.
+- [Azure.Preview_2021_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2021_12/) - Baseline for rules released December 2021 or prior for Azure preview only features.
 
 ## Language reference
 
@@ -306,28 +314,30 @@ PSRule for Azure extends PowerShell with the following cmdlets.
 
 ### Commands
 
-The following commands exist in the `PSRule.Rules.Azure` module:
+PSRule for Azure included the following cmdlets:
 
 - [Export-AzRuleData](docs/commands/Export-AzRuleData.md) - Export resource configuration data from Azure subscriptions.
 - [Export-AzRuleTemplateData](docs/commands/Export-AzRuleTemplateData.md) - Export resource configuration data from Azure templates.
 - [Get-AzRuleTemplateLink](docs/commands/Get-AzRuleTemplateLink.md) - Get a metadata link to a Azure template file.
 
-### Concepts
+## Concepts
 
-The following conceptual topics exist in the `PSRule.Rules.Azure` module:
+To find out more, look at these conceptial topics:
 
-- [Using metadata](https://azure.github.io/PSRule.Rules.Azure/using-metadata/)
-- [Configuration](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-options/)
-  - [Azure_AKSMinimumVersion](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-rules/#aksminimumkubernetesversion)
-  - [Azure_AKSNodeMinimumMaxPods](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-rules/#aksminimummaxpods)
-  - [Azure_AllowedRegions](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-rules/#allowedresourceregions)
-  - [Azure_MinimumCertificateLifetime](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-rules/#minimumcertificatelifetime)
-  - [AZURE_BICEP_FILE_EXPANSION](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-expansion/#bicepsourceexpansion)
-  - [AZURE_PARAMETER_FILE_EXPANSION](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-expansion/#parameterfileexpansion)
-  - [AZURE_PARAMETER_FILE_METADATA_LINK](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-expansion/#requiretemplatemetadatalink)
-  - [AZURE_POLICY_WAIVER_MAX_EXPIRY](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-rules/#azurepolicymaximumwavier)
-  - [AZURE_RESOURCE_GROUP](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-expansion/#deploymentresourcegroup)
-  - [AZURE_SUBSCRIPTION](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-expansion/#deploymentsubscription)
+- Getting started:
+  - [Creating your pipeline](https://azure.github.io/PSRule.Rules.Azure/creating-your-pipeline/)
+  - [Validating locally](https://azure.github.io/PSRule.Rules.Azure/validating-locally/)
+- Testing infrastructure as code:
+  - [Expanding source files](https://azure.github.io/PSRule.Rules.Azure/expanding-source-files/)
+  - [Using templates](https://azure.github.io/PSRule.Rules.Azure/using-templates/)
+  - [Using Bicep source](https://azure.github.io/PSRule.Rules.Azure/using-bicep/)
+  - [Working with baselines](https://azure.github.io/PSRule.Rules.Azure/working-with-baselines/)
+- Setup:
+  - [Configuring options](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-options/)
+  - [Configuring rule defaults](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-rules/)
+  - [Configuring expansion](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-expansion/)
+  - [Setup Bicep](https://azure.github.io/PSRule.Rules.Azure/setup/setup-bicep/)
+  - [Setup Azure Monitor logs](https://azure.github.io/PSRule.Rules.Azure/setup/setup-azure-monitor-logs/)
 
 ## Related projects
 

@@ -5,6 +5,14 @@
 # Conventions definitions
 #
 
+# Synopsis: Flags warnings for deprecated options.
+Export-PSRuleConvention 'Azure.DeprecatedOptions' -Initialize {
+    $aksMinimumVersion = $Configuration.GetValueOrDefault('Azure_AKSMinimumVersion', $Null);
+    if ($Null -ne $aksMinimumVersion) {
+        Write-Warning -Message $LocalizedData.AKSMinimumVersionReplace;
+    }
+}
+
 # Synopsis: Expand Azure resources from parameter files.
 Export-PSRuleConvention 'Azure.ExpandTemplate' -If { $Configuration.AZURE_PARAMETER_FILE_EXPANSION -eq $True -and $TargetObject.Extension -eq '.json' -and $Assert.HasJsonSchema($PSRule.GetContentFirstOrDefault($TargetObject), @(
     "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json`#"

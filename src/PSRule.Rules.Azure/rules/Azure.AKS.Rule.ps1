@@ -5,22 +5,19 @@
 # Validation rules for Azure Kubernetes Service (AKS)
 #
 
-# Synopsis: AKS clusters should meet the minimum version
+# Synopsis: AKS control plane and nodes pools should use a current stable release.
 Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $minVersion = [Version]$Configuration.Azure_AKSMinimumVersion
+    $minVersion = $Configuration.GetValueOrDefault('Azure_AKSMinimumVersion', $Configuration.AZURE_AKS_CLUSTER_MINIMUM_VERSION);
     if ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters') {
-        $Assert.Create(
-            (([Version]$TargetObject.Properties.kubernetesVersion) -ge $minVersion),
-            $LocalizedData.AKSVersion,
-            $TargetObject.Properties.kubernetesVersion
-        );
+        $Assert.Version($TargetObject, 'Properties.kubernetesVersion', ">=$minVersion");
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters/agentPools') {
-        $Assert.NullOrEmpty($TargetObject, 'Properties.orchestratorVersion').Result -or
-            (([Version]$TargetObject.Properties.orchestratorVersion) -ge $minVersion)
-        Reason ($LocalizedData.AKSVersion -f $TargetObject.Properties.orchestratorVersion);
+        $Assert.AnyOf(@(
+            $Assert.NullOrEmpty($TargetObject, 'Properties.orchestratorVersion')
+            $Assert.Version($TargetObject, 'Properties.orchestratorVersion', ">=$minVersion")
+        ));
     }
-} -Configure @{ Azure_AKSMinimumVersion = '1.20.5' }
+}
 
 # Synopsis: AKS agent pools should run the same Kubernetes version as the cluster
 Rule 'Azure.AKS.PoolVersion' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
@@ -108,17 +105,24 @@ Rule 'Azure.AKS.AutoScaling' -Type 'Microsoft.ContainerService/managedClusters',
 }
 
 # Synopsis: AKS clusters using Azure CNI should use large subnets to reduce IP exhaustion issues.
-Rule 'Azure.AKS.CNISubnetSize' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AKS.CNISubnetSize' -If { IsExport } -With 'Azure.AKS.AzureCNI' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $clusterSubnets = @(GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets');
 
     if ($clusterSubnets.Length -eq 0) {
         return $Assert.Pass();
     }
 
+    $configurationMinimumSubnetSize = $Configuration.AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE;
+
     foreach ($subnet in $clusterSubnets) {
         $subnetAddressPrefixSize = [int]$subnet.Properties.addressPrefix.Split('/')[-1];
-        $Assert.LessOrEqual($subnetAddressPrefixSize, '.', $Configuration.AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE).
-            Reason($LocalizedData.AKSAzureCNI, $subnet.Name, $Configuration.AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE);
+        
+        $Assert.LessOrEqual($subnetAddressPrefixSize, '.', $configurationMinimumSubnetSize).
+            Reason(
+                $LocalizedData.AKSAzureCNI, 
+                $subnet.Name, 
+                $configurationMinimumSubnetSize
+            );
     }
 } -Configure @{ AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE = 23 }
 

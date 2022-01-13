@@ -106,3 +106,4 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
 - [Content trust in Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-content-trust)
 - [Follow best practices for container security](https://docs.microsoft.com/azure/architecture/framework/security/applications-services#follow-best-practices-for-container-security)
 - [Content trust in Docker](https://docs.docker.com/engine/security/trust/content_trust/)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)

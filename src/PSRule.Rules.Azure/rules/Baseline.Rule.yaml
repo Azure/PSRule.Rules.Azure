@@ -163,12 +163,15 @@ spec:
       - '2021_09'
 
 ---
-# Synopsis: Include rules released Decmber 2021 or prior for Azure GA features.
+# Synopsis: Include rules released December 2021 or prior for Azure GA features.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.GA_2021_12
 spec:
+  configuration:
+    # Configure minimum AKS cluster version
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.20.5'
   rule:
     tag:
       release: GA
