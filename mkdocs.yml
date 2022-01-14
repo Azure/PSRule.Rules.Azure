@@ -57,6 +57,7 @@ nav:
     - Troubleshooting: troubleshooting.md
     # - Data privacy: data-privacy.md
     - License and contributing: license-contributing.md
+    - Related projects: related-projects.md
     - Releases:
       - Change log:
         - v1: 'CHANGELOG-v1.md'
