@@ -37,7 +37,8 @@ jobs:
 
       - name: Check dependencies
         run: |
-          ./scripts/dependencies.ps1
+          Import-Module ./scripts/dependencies.psm1;
+          Update-Dependencies -Path ./modules.json;
         shell: pwsh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

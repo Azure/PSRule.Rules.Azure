@@ -422,23 +422,8 @@ task Benchmark {
 }
 
 task Dependencies NuGet, {
-    $dependencies = Get-Content -Path $PWD/modules.json -Raw | ConvertFrom-Json;
-
-    foreach ($module in $dependencies.dependencies.PSObject.Properties.GetEnumerator()) {
-        Write-Host -Object "[Dependencies] -- Installing $($module.Name) v$($module.Value.version)";
-        $installParams = @{ MinimumVersion = $module.Value.version };
-        if ($Null -eq (Get-InstalledModule -Name $module.Name @installParams -ErrorAction Ignore)) {
-            Install-Module -Name $module.Name @installParams -Force -Repository PSGallery;
-        }
-    }
-
-    foreach ($module in $dependencies.devDependencies.PSObject.Properties.GetEnumerator()) {
-        Write-Host -Object "[DevDependencies] -- Installing $($module.Name) v$($module.Value.version)";
-        $installParams = @{ MinimumVersion = $module.Value.version };
-        if ($Null -eq (Get-InstalledModule -Name $module.Name @installParams -ErrorAction Ignore)) {
-            Install-Module -Name $module.Name @installParams -Force -Repository PSGallery;
-        }
-    }
+    Import-Module $PWD/scripts/dependencies.psm1;
+    Install-Dependencies -Path $PWD/modules.json;
 }
 
 task ExportProviders {
