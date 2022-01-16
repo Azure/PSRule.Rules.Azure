@@ -116,10 +116,11 @@ task VersionModule ModuleDependencies, {
         }
     }
 
+    $dependencies = Get-Content -Path $PWD/modules.json -Raw | ConvertFrom-Json;
     $manifest = Test-ModuleManifest -Path $manifestPath;
     $requiredModules = $manifest.RequiredModules | ForEach-Object -Process {
         if ($_.Name -eq 'PSRule' -and $Configuration -eq 'Release') {
-            @{ ModuleName = 'PSRule'; ModuleVersion = '1.9.0' }
+            @{ ModuleName = 'PSRule'; ModuleVersion = $dependencies.dependencies.PSRule.version }
         }
         else {
             @{ ModuleName = $_.Name; ModuleVersion = $_.Version }
@@ -148,51 +149,8 @@ task NuGet {
     }
 }
 
-# Synopsis: Install Pester module
-task Pester NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name Pester -RequiredVersion 5.3.0 -ErrorAction Ignore)) {
-        Install-Module -Name Pester -RequiredVersion 5.3.0 -Scope CurrentUser -Force -SkipPublisherCheck;
-    }
-    Import-Module -Name Pester -RequiredVersion 5.3.0 -Verbose:$False;
-}
-
-# Synopsis: Install PSScriptAnalyzer module
-task PSScriptAnalyzer NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSScriptAnalyzer -MinimumVersion 1.18.3 -ErrorAction Ignore)) {
-        Install-Module -Name PSScriptAnalyzer -MinimumVersion 1.18.3 -Scope CurrentUser -Force;
-    }
-    Import-Module -Name PSScriptAnalyzer -Verbose:$False;
-}
-
-# Synopsis: Install PSRule
-task PSRule NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 1.9.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 1.9.0 -Scope CurrentUser -Force;
-    }
-    if ($Null -eq (Get-InstalledModule -Name PSRule.Rules.MSFT.OSS -MinimumVersion 0.1.0 -AllowPrerelease -ErrorAction Ignore)) {
-        Install-Module -Name PSRule.Rules.MSFT.OSS -Repository PSGallery -MinimumVersion 0.1.0 -AllowPrerelease -Scope CurrentUser -Force;
-    }
-    Import-Module -Name PSRule -Verbose:$False;
-    Import-Module -Name PSRule.Rules.MSFT.OSS -Verbose:$False;
-}
-
-# Synopsis: Install PSDocs
-task PSDocs NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSDocs -MinimumVersion 0.9.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSDocs -Repository PSGallery -MinimumVersion 0.9.0 -Scope CurrentUser -Force;
-    }
-    Import-Module -Name PSDocs -Verbose:$False;
-}
-
-# Synopsis: Install PlatyPS module
-task platyPS {
-    if ($Null -eq (Get-InstalledModule -Name PlatyPS -MinimumVersion 0.14.0 -ErrorAction Ignore)) {
-        Install-Module -Name PlatyPS -Scope CurrentUser -MinimumVersion 0.14.0 -Force;
-    }
-}
-
 # Synopsis: Install module dependencies
-task ModuleDependencies NuGet, PSRule, {
+task ModuleDependencies Dependencies, {
     if ($Null -eq (Get-InstalledModule -Name Az.Accounts -MinimumVersion 2.5.2 -ErrorAction Ignore)) {
         Install-Module -Name Az.Accounts -Scope CurrentUser -MinimumVersion 2.5.2 -Force;
     }
@@ -257,7 +215,7 @@ task CopyModule MinifyData, {
 # Synopsis: Build modules only
 task BuildModule BuildDotNet, CopyModule
 
-task TestModule ModuleDependencies, Pester, PSScriptAnalyzer, BicepIntegrationTests, {
+task TestModule ModuleDependencies, BicepIntegrationTests, {
     # Run Pester tests
     $pesterOptions = @{
         Run = @{
@@ -370,7 +328,7 @@ task BicepIntegrationTests {
 }
 
 # Synopsis: Run validation
-task Rules PSRule, {
+task Rules Dependencies, {
     $assertParams = @{
         Path = './.ps-rule/'
         Style = $AssertStyle
@@ -416,7 +374,7 @@ task BuildBaselineDocs Build, PSRule, PSDocs, {
 }
 
 # Synopsis: Build help
-task BuildHelp BuildModule, PlatyPS, {
+task BuildHelp BuildModule, Dependencies, {
     if (!(Test-Path out/modules/PSRule.Rules.Azure/en/)) {
         $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en/ -ItemType Directory -Force;
     }
@@ -460,6 +418,26 @@ task ScaffoldHelp Build, BuildRuleDocs, {
 task Benchmark {
     if ($Benchmark -or $BuildTask -eq 'Benchmark') {
         dotnet run -p src/PSRule.Rules.Azure.Benchmark -f netcoreapp3.1 -c Release -- benchmark --output $PWD;
+    }
+}
+
+task Dependencies NuGet, {
+    $dependencies = Get-Content -Path $PWD/modules.json -Raw | ConvertFrom-Json;
+
+    foreach ($module in $dependencies.dependencies.PSObject.Properties.GetEnumerator()) {
+        Write-Host -Object "[Dependencies] -- Installing $($module.Name) v$($module.Value.version)";
+        $installParams = @{ MinimumVersion = $module.Value.version };
+        if ($Null -eq (Get-InstalledModule -Name $module.Name @installParams -ErrorAction Ignore)) {
+            Install-Module -Name $module.Name @installParams -Force -Repository PSGallery;
+        }
+    }
+
+    foreach ($module in $dependencies.devDependencies.PSObject.Properties.GetEnumerator()) {
+        Write-Host -Object "[DevDependencies] -- Installing $($module.Name) v$($module.Value.version)";
+        $installParams = @{ MinimumVersion = $module.Value.version };
+        if ($Null -eq (Get-InstalledModule -Name $module.Name @installParams -ErrorAction Ignore)) {
+            Install-Module -Name $module.Name @installParams -Force -Repository PSGallery;
+        }
     }
 }
 
