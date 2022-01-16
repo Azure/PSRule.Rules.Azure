@@ -10,12 +10,13 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.C
 
 ## SYNOPSIS
 
-API Management should not accept weak or deprecated ciphers.  
+API Management should not accept weak or deprecated ciphers.
 
 ## DESCRIPTION
 
-API Management provides support for weak or deprecated ciphers.  
-These older versions are provided for compatibility but are not consider secure.  
+API Management provides support for weak or deprecated ciphers.
+These older versions are provided for compatibility but are not consider secure.
+These Ciphers are enabled by default and need to be set to False.
 
 ## RECOMMENDATION
 
