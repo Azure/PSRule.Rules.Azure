@@ -29,8 +29,8 @@ function Update-Dependencies {
             git add modules.json
             git commit -m "Update $path"
             git push origin 
-            git push --set-upstream origin $Env.WORKING_BRANCH
-            gh pr create --base 'main' --head $Env.WORKING_BRANCH --title "Bump PowerShell dependencies" --body "" --label dependencies
+            git push --set-upstream origin $Env:WORKING_BRANCH
+            gh pr create --base 'main' --head $Env:WORKING_BRANCH --title "Bump PowerShell dependencies" --body "" --label dependencies
         }
     }
 }
