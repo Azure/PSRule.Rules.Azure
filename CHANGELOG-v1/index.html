@@ -2214,6 +2214,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4_3">
@@ -2782,6 +2784,20 @@
     <li class="md-nav__item">
       <a href="../en/rules/Azure.APIM.CertificateExpiry/" class="md-nav__link">
         Azure.APIM.CertificateExpiry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/rules/Azure.APIM.Ciphers/" class="md-nav__link">
+        Azure.APIM.Ciphers
       </a>
     </li>
   
@@ -6701,6 +6717,16 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <li>Updated <code>Azure.AKS.Version</code> to use latest stable version <code>1.21.7</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1188">#1188</a><ul>
 <li>Pinned latest GA baseline <code>Azure.GA_2021_12</code> to previous version <code>1.20.5</code>.</li>
 <li>Use <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code> to configure the minimum version of the cluster.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Azure API Management:<ul>
+<li>Disable use of insecure ciphers.
+<a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1128">#1128</a></li>
+<li>Refactored the cipher and protocol rule into individual rules.<ul>
+<li><code>Azure.APIM.Protocols</code></li>
+<li><code>Azure.APIM.Ciphers</code></li>
 </ul>
 </li>
 </ul>
