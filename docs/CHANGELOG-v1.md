@@ -13,7 +13,8 @@ See [troubleshooting guide] for a workaround to this issue.
   Support for `Azure_AKSMinimumVersion` will be removed in v2.
 
 ## Unreleased
-  
+
+## v1.12.0-B2201054 (pre-release)
 
 What's changed since v1.11.1:
 
@@ -23,7 +24,7 @@ What's changed since v1.11.1:
       - Pinned latest GA baseline `Azure.GA_2021_12` to previous version `1.20.5`.
       - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
   - Azure API Management:
-    - Disable use of insecure ciphers.
+    - Check service disabled insecure ciphers.
     [#1128](https://github.com/Azure/PSRule.Rules.Azure/issues/1128)
     - Refactored the cipher and protocol rule into individual rules.
       - `Azure.APIM.Protocols`
@@ -121,7 +122,6 @@ What's changed since pre-release v1.11.0-B2112112:
 
 - New features:
   - Bicep support promoted from experimental to generally available (GA). [#1176](https://github.com/Azure/PSRule.Rules.Azure/issues/1176)
-
 
 ## v1.11.0-B2112112 (pre-release)
 
