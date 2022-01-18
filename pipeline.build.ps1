@@ -261,7 +261,7 @@ task TestModule ModuleDependencies, BicepIntegrationTests, {
     }
 }
 
-task IntegrationTest ModuleDependencies, Pester, PSScriptAnalyzer, {
+task IntegrationTest ModuleDependencies, {
     # Run Pester tests
     $pesterOptions = @{
         Run = @{
@@ -344,7 +344,7 @@ task Rules Dependencies, {
 }
 
 # Synopsis: Run script analyzer
-task Analyze Build, PSScriptAnalyzer, {
+task Analyze Build, Dependencies, {
     Invoke-ScriptAnalyzer -Path out/modules/PSRule.Rules.Azure;
 }
 
@@ -352,14 +352,14 @@ task Analyze Build, PSScriptAnalyzer, {
 task BuildDocs BuildRuleDocs, BuildBaselineDocs
 
 # Synopsis: Build table of content for rules
-task BuildRuleDocs Build, PSRule, PSDocs, {
+task BuildRuleDocs Build, Dependencies, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name module -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
     $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
 }
 
 # Synopsis: Build table of content for baselines
-task BuildBaselineDocs Build, PSRule, PSDocs, {
+task BuildBaselineDocs Build, Dependencies, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     $baselines = Get-PSRuleBaseline -Module PSRule.Rules.Azure -WarningAction SilentlyContinue;
     $baselines | ForEach-Object {
