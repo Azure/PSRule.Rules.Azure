@@ -18,6 +18,7 @@ jobs:
   dependencies:
     name: Bump dependencies
     runs-on: ubuntu-latest
+    if: github.repository == 'Azure/PSRule.Rules.Azure'
     permissions:
       contents: write
       pull-requests: write
