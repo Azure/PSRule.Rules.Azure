@@ -24,8 +24,8 @@ function Update-Dependencies {
         }
         $modules | ConvertTo-Json -Depth 10 | Set-Content -Path $Path;
 
-        $updates = @(git status --porcelain)
-        if ($Null -ne $Env.WORKING_BRANCH -and $Null -ne $updates -and $updates.Length -gt 0) {
+        $updates = @(git status --porcelain);
+        if ($Null -ne $Env:WORKING_BRANCH -and $Null -ne $updates -and $updates.Length -gt 0) {
             git add modules.json
             git commit -m "Update $path"
             git push origin $Env.WORKING_BRANCH

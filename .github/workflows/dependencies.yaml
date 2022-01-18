@@ -42,4 +42,3 @@ jobs:
         shell: pwsh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WORKING_BRANCH: ${{ env.WORKING_BRANCH }}
