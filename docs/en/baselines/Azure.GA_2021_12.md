@@ -1,6 +1,6 @@
 # Azure.GA_2021_12
 
-Include rules released Decmber 2021 or prior for Azure GA features.
+Include rules released December 2021 or prior for Azure GA features.
 
 ## Rules
 
