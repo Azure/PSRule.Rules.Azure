@@ -1,0 +1,226 @@
+[
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kusto/Clusters/cluster-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kusto/Clusters/cluster-A",
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "cluster-A",
+        "Name": "cluster-A",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "state": "Running",
+            "stateReason": null,
+            "uri": "https://cluster-A.region.kusto.windows.net",
+            "dataIngestionUri": "https://ingest-cluster-A.region.kusto.windows.net",
+            "trustedExternalTenants": [
+                {
+                    "value": "*"
+                }
+            ],
+            "virtualNetworkConfiguration": null,
+            "optimizedAutoscale": null,
+            "enableDiskEncryption": false,
+            "enableStreamingIngest": true,
+            "keyVaultProperties": null,
+            "languageExtensions": {
+                "value": []
+            },
+            "enablePurge": null,
+            "enableDoubleEncryption": false,
+            "engineType": "V3",
+            "acceptedAudiences": [],
+            "restrictOutboundNetworkAccess": "Disabled",
+            "allowedFqdnList": [],
+            "publicNetworkAccess": "Enabled",
+            "allowedIpRangeList": [],
+            "enableAutoStop": false,
+            "provisioningState": "Succeeded"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Kusto/Clusters",
+        "ResourceType": "Microsoft.Kusto/Clusters",
+        "ExtensionResourceType": null,
+        "Sku": {
+            "name": "Dev(No SLA)_Standard_D11_v2",
+            "tier": "Basic",
+            "capacity": 1
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kusto/Clusters/cluster-A/Databases/db-A",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kusto/Clusters/cluster-A/Databases/db-A",
+                "Identity": null,
+                "Kind": "ReadWrite",
+                "Location": "region",
+                "ManagedBy": null,
+                "ResourceName": "cluster-A/db-A",
+                "Name": "cluster-A/db-A",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "softDeletePeriod": "P365D",
+                    "hotCachePeriod": "P90D",
+                    "statistics": {
+                        "size": 5000.0
+                    },
+                    "isFollowed": false,
+                    "provisioningState": "Succeeded"
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Kusto/Clusters/Databases",
+                "ResourceType": "Microsoft.Kusto/Clusters/Databases",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kusto/Clusters/cluster-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kusto/Clusters/cluster-B",
+        "Identity": {
+            "PrincipalId": "00000000-0000-0000-0000-000000000000",
+            "TenantId": "00000000-0000-0000-0000-000000000000",
+            "Type": "SystemAssigned",
+            "UserAssignedIdentities": null
+        },
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "cluster-B",
+        "Name": "cluster-B",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Kusto/Clusters",
+        "ResourceType": "Microsoft.Kusto/Clusters",
+        "ExtensionResourceType": null,
+        "Sku": {
+            "Name": "Standard_D11_v2",
+            "Tier": "Standard",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": 2
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kusto/Clusters/cluster-B/Databases/db-A",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kusto/Clusters/cluster-B/Databases/db-A",
+                "Identity": null,
+                "Kind": "ReadWrite",
+                "Location": "region",
+                "ManagedBy": null,
+                "ResourceName": "cluster-B/db-A",
+                "Name": "cluster-B/db-A",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "softDeletePeriod": "P365D",
+                    "hotCachePeriod": "P90D",
+                    "statistics": {
+                        "size": 5000.0
+                    },
+                    "isFollowed": false,
+                    "provisioningState": "Succeeded"
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Kusto/Clusters/Databases",
+                "ResourceType": "Microsoft.Kusto/Clusters/Databases",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kusto/Clusters/cluster-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kusto/Clusters/cluster-C",
+        "Identity": {
+            "PrincipalId": "00000000-0000-0000-0000-000000000000",
+            "TenantId": "00000000-0000-0000-0000-000000000000",
+            "Type": "SystemAssigned",
+            "UserAssignedIdentities": null
+        },
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "cluster-C",
+        "Name": "cluster-C",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "state": "Running",
+            "stateReason": null,
+            "uri": "https://cluster-C.region.kusto.windows.net",
+            "dataIngestionUri": "https://ingest-cluster-C.region.kusto.windows.net",
+            "trustedExternalTenants": [
+                {
+                    "value": "*"
+                }
+            ],
+            "virtualNetworkConfiguration": null,
+            "optimizedAutoscale": null,
+            "enableDiskEncryption": true,
+            "enableStreamingIngest": true,
+            "keyVaultProperties": null,
+            "languageExtensions": {
+                "value": []
+            },
+            "enablePurge": null,
+            "enableDoubleEncryption": false,
+            "engineType": "V3",
+            "acceptedAudiences": [],
+            "restrictOutboundNetworkAccess": "Disabled",
+            "allowedFqdnList": [],
+            "publicNetworkAccess": "Enabled",
+            "allowedIpRangeList": [],
+            "enableAutoStop": false,
+            "provisioningState": "Succeeded"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Kusto/Clusters",
+        "ResourceType": "Microsoft.Kusto/Clusters",
+        "ExtensionResourceType": null,
+        "Sku": {
+            "Name": "Standard_D11_v2",
+            "Tier": "Standard",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": 2
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "resources": []
+    }
+]

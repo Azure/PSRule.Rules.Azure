@@ -14,6 +14,14 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.12.0-B2201054:
+
+- New rules:
+  - Data Explorer:
+    - Check clusters use Managed Identities. [#1207](https://github.com/Azure/PSRule.Rules.Azure/issues/1207)
+    - Check clusters use a SKU with a SLA. [#1208](https://github.com/Azure/PSRule.Rules.Azure/issues/1208)
+    - Check clusters use disk encryption. [#1209](https://github.com/Azure/PSRule.Rules.Azure/issues/1209)
+
 ## v1.12.0-B2201054 (pre-release)
 
 What's changed since v1.11.1:

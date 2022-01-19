@@ -29,6 +29,77 @@ Azure automatically generates tokens and performs rotation.
 Consider configuring a managed identity for each App Service app.
 Also consider using managed identities to authenticate to related Azure services.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy App Services that pass this rule:
+
+- Set the `identity.type` to `SystemAssigned` or `UserAssigned`.
+- If `identity.type` is `UserAssigned`, reference the identity with `identity.userAssignedIdentities`.
+
+For example:
+
+```json
+{
+    "type": "Microsoft.Web/sites",
+    "apiVersion": "2021-02-01",
+    "name": "[parameters('name')]",
+    "location": "[parameters('location')]",
+    "identity": {
+        "type": "SystemAssigned"
+    },
+    "kind": "web",
+    "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]",
+        "httpsOnly": true,
+        "siteConfig": {
+            "alwaysOn": true,
+            "minTlsVersion": "1.2",
+            "ftpsState": "FtpsOnly",
+            "remoteDebuggingEnabled": false,
+            "http20Enabled": true
+        }
+    },
+    "tags": "[parameters('tags')]",
+    "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]"
+    ]
+}
+```
+
+### Configure with Bicep
+
+To deploy App Services that pass this rule:
+
+- Set the `identity.type` to `SystemAssigned` or `UserAssigned`.
+- If `identity.type` is `UserAssigned`, reference the identity with `identity.userAssignedIdentities`.
+
+For example:
+
+```bicep
+resource webApp 'Microsoft.Web/sites@2021-02-01' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  kind: 'web'
+  properties: {
+    serverFarmId: plan.id
+    httpsOnly: true
+    siteConfig: {
+      alwaysOn: true
+      minTlsVersion: '1.2'
+      ftpsState: 'FtpsOnly'
+      remoteDebuggingEnabled: false
+      http20Enabled: true
+    }
+  }
+  tags: tags
+}
+```
+
 ## LINKS
 
 - [Use identity-based authentication](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)

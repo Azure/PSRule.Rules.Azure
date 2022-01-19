@@ -1207,6 +1207,48 @@ function VisitResourceGroup {
     }
 }
 
+function VisitDataExplorerCluster {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        $resources = @();
+        $getParams = @{
+            ResourceGroupName = $Resource.ResourceGroupName
+            DefaultProfile = $Context
+            ErrorAction = 'SilentlyContinue'
+        }
+        $resources += Get-AzResource @getParams -Name $Resource.Name -ResourceType 'Microsoft.Kusto/clusters/databases' -ApiVersion '2021-08-27' -ExpandProperties;
+        $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
+
+function VisitEventHubNamespaces {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        $resources = @();
+        $getParams = @{
+            ResourceGroupName = $Resource.ResourceGroupName
+            DefaultProfile = $Context
+            ErrorAction = 'SilentlyContinue'
+        }
+        $resources += Get-AzResource @getParams -Name $Resource.Name -ResourceType 'Microsoft.EventHub/namespaces/eventhubs' -ApiVersion '2021-11-01' -ExpandProperties;
+        $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
+
 # Add additional information to resources with child resources
 function ExpandResource {
     [CmdletBinding()]
@@ -1225,7 +1267,7 @@ function ExpandResource {
         else {
             $resourceId = $Resource.ResourceId;
         }
-        Write-Verbose -Message "[Export] -- Expanding: $($Resource.Id)";
+        Write-Verbose -Message "[Export] -- Expanding: $($resourceId)";
         switch ($Resource.ResourceType) {
             'Microsoft.ApiManagement/service' { VisitAPIManagement @PSBoundParameters; }
             'Microsoft.Automation/automationAccounts' { VisitAutomationAccount @PSBoundParameters; }
@@ -1253,6 +1295,8 @@ function ExpandResource {
             'Microsoft.Network/publicIPAddresses' { VisitPublicIP @PSBoundParameters; }
             'Microsoft.Cache/Redis' { VisitRedisCache @PSBoundParameters; }
             'Microsoft.Cache/redisEnterprise' { VisitRedisEnterpriseCache @PSBoundParameters; }
+            'Microsoft.Kusto/Clusters' { VisitDataExplorerCluster @PSBoundParameters; }
+            'Microsoft.EventHub/namespaces' { VisitEventHubNamespaces @PSBoundParameters; }
             default { $Resource; }
         }
     }
