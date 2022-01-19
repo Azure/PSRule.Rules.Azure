@@ -26,11 +26,18 @@ function Update-Dependencies {
 
         $updates = @(git status --porcelain);
         if ($Null -ne $Env:WORKING_BRANCH -and $Null -ne $updates -and $updates.Length -gt 0) {
-            git add modules.json
-            git commit -m "Update $path"
-            git push origin 
-            git push --set-upstream origin $Env:WORKING_BRANCH
-            gh pr create --base 'main' --head $Env:WORKING_BRANCH --title "Bump PowerShell dependencies" --body "" --label dependencies
+            git add modules.json;
+            git commit -m "Update $path";
+            git push --force -u origin $Env:WORKING_BRANCH;
+
+            $existingBranch = @(gh pr list --head $Env:WORKING_BRANCH --state open --json number | ConvertFrom-Json);
+            if ($Null -eq $existingBranch -or $existingBranch.Length -eq 0) {
+                gh pr create -B 'main' -H $Env:WORKING_BRANCH -l 'dependencies' -t 'Bump PowerShell dependencies' -F 'out/updates.txt';
+            }
+            else {
+                $pr = $existingBranch[0].number
+                gh pr edit $pr -F 'out/updates.txt';
+            }
         }
     }
 }
@@ -62,13 +69,20 @@ function CheckVersion {
         [String]$Repository,
 
         [Parameter(Mandatory = $False)]
-        [Switch]$Dev
+        [Switch]$Dev,
+
+        [Parameter(Mandatory = $False)]
+        [String]$OutputPath = 'out/'
     )
     begin {
         $group = 'Dependencies';
         if ($Dev) {
             $group = 'DevDependencies';
         }
+        if (!(Test-Path -Path $OutputPath)) {
+            $Null = New-Item -Path $OutputPath -ItemType Directory -Force;
+        }
+        $changeNotes = Join-Path -Path $OutputPath -ChildPath 'updates.txt';
     }
     process {
         $dependencies = [Ordered]@{ };
@@ -86,6 +100,7 @@ function CheckVersion {
                 if (([Version]$found.Version) -gt ([Version]$module.Value.version)) {
                     Write-Host -Object "[$group] -- Newer version found $($found.Version)";
                     $dependencies[$module.Name].version = $found.Version;
+                    $Null = Add-Content -Path $changeNotes -Value "Bump $($module.Name) to $($found.Version).";
                 }
                 else {
                     Write-Host -Object "[$group] -- Already up to date.";
