@@ -1,0 +1,41 @@
+[
+    {
+        "type": "Microsoft.RecoveryServices/vaults/backupconfig",
+        "apiVersion": "2021-10-01",
+        "name": "vaultconfig-a",
+        "location": "australiaeast",
+        "tags": {},
+        "properties": {
+          "enhancedSecurityState": "Enabled",
+          "isSoftDeleteFeatureStateEditable": false,
+          "softDeleteFeatureState": "Enabled",
+          "storageType": "GeoRedundant"
+        }
+    },
+    {
+        "type": "Microsoft.RecoveryServices/vaults/backupconfig",
+        "apiVersion": "2021-10-01",
+        "name": "vaultconfig-b",
+        "location": "australiaeast",
+        "tags": {},
+        "properties": {
+          "enhancedSecurityState": "Enabled",
+          "isSoftDeleteFeatureStateEditable": false,
+          "softDeleteFeatureState": "Enabled",
+          "storageType": "LocallyRedundant"
+        }
+    },
+    {
+      "type": "Microsoft.RecoveryServices/vaults/backupconfig",
+      "apiVersion": "2021-10-01",
+      "name": "vaultconfig-c",
+      "location": "australiaeast",
+      "tags": {},
+      "properties": {
+        "enhancedSecurityState": "Enabled",
+        "isSoftDeleteFeatureStateEditable": false,
+        "softDeleteFeatureState": "Enabled",
+        "storageType": "GeoRedundant"
+      }
+  }
+]
