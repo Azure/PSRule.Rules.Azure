@@ -15,12 +15,12 @@ Use disk encryption for Azure Data Explorer (ADX) clusters.
 
 ## DESCRIPTION
 
-Azure storage is encypted at rest, however computing resources can additional use disk encyption.
-Disk encyption provides additional security for data at rest.
+Azure storage is encrypted at rest, however computing resources can additionally use disk encryption.
+Disk encryption provides additional security for data at rest.
 
 ## RECOMMENDATION
 
-Consider enabling disk encyption on Azure Data Explorer clusters.
+Consider enabling disk encryption on Azure Data Explorer clusters.
 
 ## EXAMPLES
 
