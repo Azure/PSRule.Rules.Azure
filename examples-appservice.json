@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.4.1124.51302",
-      "templateHash": "7774778042978433870"
+      "templateHash": "9227294816184340824"
     }
   },
   "parameters": {
@@ -52,6 +52,9 @@
       "apiVersion": "2021-02-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
       "kind": "web",
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]",
