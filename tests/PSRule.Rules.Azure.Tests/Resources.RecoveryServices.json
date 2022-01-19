@@ -34,8 +34,7 @@
       "properties": {
         "enhancedSecurityState": "Enabled",
         "isSoftDeleteFeatureStateEditable": false,
-        "softDeleteFeatureState": "Enabled",
-        "storageType": "GeoRedundant"
+        "softDeleteFeatureState": "Enabled"
       }
   }
 ]
