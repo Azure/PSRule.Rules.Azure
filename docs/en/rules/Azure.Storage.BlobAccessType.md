@@ -11,7 +11,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storag
 
 ## SYNOPSIS
 
-Storage Accounts use containers configured with an access type other than Private.
+Use containers configured with a private access type that requires authorization.
 
 ## DESCRIPTION
 
