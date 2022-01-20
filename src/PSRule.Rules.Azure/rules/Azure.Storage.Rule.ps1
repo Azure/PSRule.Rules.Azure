@@ -49,8 +49,7 @@ Rule 'Azure.Storage.BlobAccessType' -Type 'Microsoft.Storage/storageAccounts', '
         return $Assert.Pass();
     }
     foreach ($container in $containers) {
-        $Assert.
-            HasFieldValue($container, 'Properties.publicAccess', 'None').
+        $Assert.HasDefaultValue($container, 'Properties.publicAccess', 'None').
             Reason($LocalizedData.PublicAccessStorageContainer, $container.name, $container.Properties.publicAccess);
     }
 }
