@@ -4320,8 +4320,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#azuretemplates" class="md-nav__link">
-    Azure templates
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
   </a>
   
 </li>
@@ -5644,8 +5651,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#azuretemplates" class="md-nav__link">
-    Azure templates
+  <a href="#configurewithazuretemplate" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurewithbicep" class="md-nav__link">
+    Configure with Bicep
   </a>
   
 </li>
@@ -5699,43 +5713,57 @@
 <p><a href="../module/#security"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0l-9.272-9.272zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0l-9.273 9.272z"/></svg></span> Security</a>
  · <a href="../resource/#storageaccount"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M13.152.682a2.25 2.25 0 0 1 2.269 0l.007.004 6.957 4.276a2.276 2.276 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003a2.276 2.276 0 0 1-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026a2.28 2.28 0 0 1 .82-.827h.002L13.152.681zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.776.776 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003zM18 9.709l-3.25 1.9v7.548L18 17.245V9.709zm1.5-.878v7.532l2.124-1.25a.777.777 0 0 0 .387-.671V7.363L19.5 8.831zm-9.09 5.316 2.84-1.66v7.552l-3.233 1.902v-7.612c.134-.047.265-.107.391-.18l.002-.002zm-1.893 7.754V14.33a2.277 2.277 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232z"/></svg></span> Storage Account</a>
  · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"/><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Azure.Storage.BlobAccessType</p>
-<p>Storage Accounts use containers configured with an access type other than Private.</p>
+<p>Use containers configured with a private access type that requires authorization.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
 <p>Azure Storage Account blob containers use the Private access type by default.
-Additional access types Blob and Container provide anonymous access to blobs without authorized.
-Blob and Container access types are not intended for access to customer data.</p>
+Additional access types Blob and Container provide anonymous access to blobs without authorization.
+Blob and Container access types are not intended for access to customer data.
+When authorization is required, clients must use cryptographic keys or identity-based tokens to authenticate.</p>
 <p>Blob and Container access types are designed for public access scenarios.
 For example, storage of web assets like .css and .js files used in public websites.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
 <p>To provide secure access to data always use the Private access type (default).
-Use Shared Access Signatures (SAS) to provide secure access to individual blobs or containers as required.</p>
-<p>Consider using SAS tokens stored securely in a key vault, rotated and only accessed by approved applications.</p>
+Also consider, disabling public access for the storage account.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
-<h3 id="azuretemplates">Azure templates<a class="headerlink" href="#azuretemplates" title="Permanent link">#</a></h3>
-<p>To deploy storage accounts blob containers that pass this rule:</p>
+<h3 id="configurewithazuretemplate">Configure with Azure template<a class="headerlink" href="#configurewithazuretemplate" title="Permanent link">#</a></h3>
+<p>To deploy Storage Account blob containers that pass this rule:</p>
 <ul>
 <li>Set the <code>properties.publicAccess</code> property to <code>None</code>.</li>
 </ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;comments&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create a blob container&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Storage/storageAccounts/blobServices/containers&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-06-01&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[concat(parameters(&#39;storageAccountName&#39;), &#39;/default/&#39;, parameters(&#39;containerName&#39;)))]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;[resourceId(&#39;Microsoft.Storage/storageAccounts/blobServices&#39;, parameters(&#39;storageAccountName&#39;), &#39;default&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;[resourceId(&#39;Microsoft.Storage/storageAccounts&#39;, parameters(&#39;storageAccountName&#39;))]&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[format(&#39;{0}/{1}/{2}&#39;, parameters(&#39;name&#39;), &#39;default&#39;, variables(&#39;containerName&#39;))]&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;publicAccess&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;[resourceId(&#39;Microsoft.Storage/storageAccounts/blobServices&#39;, parameters(&#39;name&#39;), &#39;default&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;[resourceId(&#39;Microsoft.Storage/storageAccounts&#39;, parameters(&#39;name&#39;))]&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="configurewithbicep">Configure with Bicep<a class="headerlink" href="#configurewithbicep" title="Permanent link">#</a></h3>
+<p>To deploy Storage Account blob containers that pass this rule:</p>
+<ul>
+<li>Set the <code>properties.publicAccess</code> property to <code>None</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource container &#39;Microsoft.Storage/storageAccounts/blobServices/containers@2021-06-01&#39; = {
+  parent: blobService
+  name: containerName
+  properties: {
+    publicAccess: &#39;None&#39;
+  }
+}
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-configure">Manage anonymous read access to containers and blobs</a></li>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication">Authentication with Azure AD</a></li>
+<li><a href="https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-configure#about-anonymous-public-read-access">About anonymous public read access</a></li>
+<li><a href="https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent#use-azure-policy-to-enforce-authorized-access">Use Azure Policy to enforce authorized access</a></li>
 <li><a href="https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works">How a shared access signature works</a></li>
-<li><a href="https://docs.microsoft.com/azure/key-vault/secrets/overview-storage-keys">Key Vault Storage Account keys</a></li>
 <li><a href="https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts">Azure template reference</a></li>
 </ul>
 
@@ -5747,7 +5775,7 @@ Use Shared Access Signatures (SAS) to provide secure access to individual blobs 
   <small>
     
       Last update:
-      2022-01-19
+      2022-01-21
     
   </small>
 </div>
