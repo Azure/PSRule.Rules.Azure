@@ -39,7 +39,7 @@ Rule 'Azure.Storage.BlobPublicAccess' -Type 'Microsoft.Storage/storageAccounts' 
     $Assert.HasFieldValue($TargetObject, 'Properties.allowBlobPublicAccess', $False);
 }
 
-# Synopsis: Avoid using Blob or Container access type
+# Synopsis: Use containers configured with a private access type that requires authorization.
 Rule 'Azure.Storage.BlobAccessType' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices/containers' -If { !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $containers = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
@@ -49,8 +49,7 @@ Rule 'Azure.Storage.BlobAccessType' -Type 'Microsoft.Storage/storageAccounts', '
         return $Assert.Pass();
     }
     foreach ($container in $containers) {
-        $Assert.
-            HasFieldValue($container, 'Properties.publicAccess', 'None').
+        $Assert.HasDefaultValue($container, 'Properties.publicAccess', 'None').
             Reason($LocalizedData.PublicAccessStorageContainer, $container.name, $container.Properties.publicAccess);
     }
 }
