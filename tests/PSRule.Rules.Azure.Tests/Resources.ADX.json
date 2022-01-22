@@ -106,6 +106,7 @@
         "ParentResource": null,
         "Plan": null,
         "Properties": {
+            "state": "Stopped"
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Kusto/Clusters",

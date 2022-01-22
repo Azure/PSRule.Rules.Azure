@@ -1249,6 +1249,28 @@ function VisitEventHubNamespaces {
     }
 }
 
+function VisitServiceBusNamespaces {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        $resources = @();
+        $getParams = @{
+            ResourceGroupName = $Resource.ResourceGroupName
+            DefaultProfile = $Context
+            ErrorAction = 'SilentlyContinue'
+        }
+        $resources += Get-AzResource @getParams -Name $Resource.Name -ResourceType 'Microsoft.ServiceBus/namespaces/queues' -ApiVersion '2021-06-01-preview' -ExpandProperties;
+        $resources += Get-AzResource @getParams -Name $Resource.Name -ResourceType 'Microsoft.ServiceBus/namespaces/topics' -ApiVersion '2021-06-01-preview' -ExpandProperties;
+        $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+    }
+}
+
 # Add additional information to resources with child resources
 function ExpandResource {
     [CmdletBinding()]
@@ -1297,6 +1319,7 @@ function ExpandResource {
             'Microsoft.Cache/redisEnterprise' { VisitRedisEnterpriseCache @PSBoundParameters; }
             'Microsoft.Kusto/Clusters' { VisitDataExplorerCluster @PSBoundParameters; }
             'Microsoft.EventHub/namespaces' { VisitEventHubNamespaces @PSBoundParameters; }
+            'Microsoft.ServiceBus/namespaces' { VisitServiceBusNamespaces @PSBoundParameters; }
             default { $Resource; }
         }
     }

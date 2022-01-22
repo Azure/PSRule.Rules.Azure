@@ -1,0 +1,26 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Event Hub
+#
+
+#region Rules
+
+---
+# Synopsis: Authenticate Event Hub publishers and consumers with Azure AD identities.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.EventHub.DisableLocalAuth
+  tags:
+    release: GA
+    ruleSet: 2022_03
+spec:
+  type:
+  - Microsoft.EventHub/namespaces
+  condition:
+    field: 'properties.disableLocalAuth'
+    equals: true
+
+#endregion Rules
