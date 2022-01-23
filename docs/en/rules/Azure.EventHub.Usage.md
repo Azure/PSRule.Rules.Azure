@@ -16,7 +16,7 @@ Regularly remove unused resources to reduce costs.
 ## DESCRIPTION
 
 Billing starts for an Event Hub namespace after it is provisioned.
-To recieve events in a Event Hub namespace, you must first create an Event Hub.
+To receive events in a Event Hub namespace, you must first create an Event Hub.
 Namespaces without any Event Hubs are considered unused.
 
 ## RECOMMENDATION

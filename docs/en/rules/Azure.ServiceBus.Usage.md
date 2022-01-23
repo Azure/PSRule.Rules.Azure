@@ -16,7 +16,7 @@ Regularly remove unused resources to reduce costs.
 ## DESCRIPTION
 
 Billing starts for a Standard or Premium Service Bus namespace after it is provisioned.
-To to recieve messages you must first create at least one queue or topic.
+To to receive messages you must first create at least one queue or topic.
 Namespaces without any queues or topics are considered unused.
 
 ## RECOMMENDATION
