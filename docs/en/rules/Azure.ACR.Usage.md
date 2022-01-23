@@ -1,7 +1,8 @@
 ---
+reviewed: 2022/01/22
 severity: Important
 pillar: Cost Optimization
-category: Resource usage
+category: Reports
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Usage/
 ---
@@ -31,6 +32,7 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 
+- [Generate cost reports](https://docs.microsoft.com/azure/architecture/framework/cost/monitor-reports)
 - [Azure Container Registry service tiers](https://docs.microsoft.com/azure/container-registry/container-registry-skus)
 - [Scalable storage](https://docs.microsoft.com/azure/container-registry/container-registry-storage#scalable-storage)
 - [Manage registry size](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#manage-registry-size)

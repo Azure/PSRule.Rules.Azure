@@ -58,3 +58,21 @@ spec:
     notEquals: Basic
 
 #endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: ADX clusters that are in the running state.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.ADX.IsClusterRunning
+spec:
+  if:
+    allOf:
+    - type: '.'
+      equals: Microsoft.Kusto/clusters
+    - field: properties.state
+      equals: Running
+
+#endregion Selectors

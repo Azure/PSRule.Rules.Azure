@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.EventHub/namespaces",
+      "apiVersion": "2021-11-01",
+      "name": "hubns-001",
+      "location": "eastus",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {
+        "disableLocalAuth": true,
+        "isAutoInflateEnabled": true,
+        "maximumThroughputUnits": 10,
+        "zoneRedundant": true
+      }
+    }
+  ]
+}
