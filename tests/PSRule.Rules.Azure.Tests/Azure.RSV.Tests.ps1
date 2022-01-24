@@ -50,8 +50,8 @@ Describe 'Azure.RSV' -Tag 'RSV' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'vaultconfig-b', 'vaultconfig-c';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vaultconfig-b', 'vaultconfig-c', 'vaultconfig-d';
         }
     }
 }

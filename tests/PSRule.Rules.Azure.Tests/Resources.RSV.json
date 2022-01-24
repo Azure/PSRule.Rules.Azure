@@ -36,5 +36,18 @@
       "isSoftDeleteFeatureStateEditable": false,
       "softDeleteFeatureState": "Enabled"
     }
-  }
+  },
+  {
+    "type": "Microsoft.RecoveryServices/vaults/backupconfig",
+    "apiVersion": "2021-10-01",
+    "name": "vaultconfig-d",
+    "location": "australiaeast",
+    "tags": {},
+    "properties": {
+      "enhancedSecurityState": "Enabled",
+      "isSoftDeleteFeatureStateEditable": false,
+      "softDeleteFeatureState": "Enabled",
+      "storageType": "ReadAccessGeoZoneRedundant"
+    }
+},
 ]
