@@ -16,7 +16,7 @@ param tags object
 param location string = resourceGroup().location
 
 // An example App Services Plan
-resource appPlan 'Microsoft.Web/serverfarms@2021-01-15' = {
+resource plan 'Microsoft.Web/serverfarms@2021-01-15' = {
   name: planName
   location: location
   sku: {
@@ -30,9 +30,12 @@ resource appPlan 'Microsoft.Web/serverfarms@2021-01-15' = {
 resource webApp 'Microsoft.Web/sites@2021-02-01' = {
   name: name
   location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
   kind: 'web'
   properties: {
-    serverFarmId: appPlan.id
+    serverFarmId: plan.id
     httpsOnly: true
     siteConfig: {
       alwaysOn: true

@@ -1,6 +1,12 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
+#
+# Validation rules for Storage Accounts
+#
+
+#region Rules
+
 ---
 # Synopsis: Storage Accounts should only accept explicitly allowed traffic.
 apiVersion: github.com/microsoft/PSRule/v1
@@ -18,3 +24,5 @@ spec:
   condition:
     field: properties.networkAcls.defaultAction
     equals: deny
+
+#endregion Region

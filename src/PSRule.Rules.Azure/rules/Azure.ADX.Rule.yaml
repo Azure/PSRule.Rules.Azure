@@ -1,0 +1,78 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure Data Explorer
+#
+
+#region Rules
+
+---
+# Synopsis: Configure Data Explorer clusters to use managed identities to access Azure resources securely.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ADX.ManagedIdentity
+  tags:
+    release: GA
+    ruleSet: 2022_03
+spec:
+  type:
+  - Microsoft.Kusto/clusters
+  condition:
+    field: Identity.Type
+    in:
+    - 'SystemAssigned'
+    - 'UserAssigned'
+
+---
+# Synopsis: Use disk encryption for Azure Data Explorer (ADX) clusters.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ADX.DiskEncryption
+  tags:
+    release: GA
+    ruleSet: 2022_03
+spec:
+  type:
+  - Microsoft.Kusto/clusters
+  condition:
+    field: Properties.enableDiskEncryption
+    equals: true
+
+---
+# Synopsis: Use SKUs that include a SLA when configuring Azure Data Explorer (ADX) clusters.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ADX.SLA
+  tags:
+    release: GA
+    ruleSet: 2022_03
+spec:
+  type:
+  - Microsoft.Kusto/clusters
+  condition:
+    field: sku.tier
+    notEquals: Basic
+
+#endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: ADX clusters that are in the running state.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.ADX.IsClusterRunning
+spec:
+  if:
+    allOf:
+    - type: '.'
+      equals: Microsoft.Kusto/clusters
+    - field: properties.state
+      equals: Running
+
+#endregion Selectors

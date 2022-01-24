@@ -2,7 +2,7 @@
 reviewed: 2021/11/13
 severity: Important
 pillar: Security
-category: Identity and access management
+category: Authentication
 resource: Event Grid
 preview: true
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.EventGrid.DisableLocalAuth/
@@ -86,4 +86,4 @@ This Azure feature is currently in preview.
 - [Use identity-based authentication](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
 - [Authentication and authorization with Azure Active Directory](https://docs.microsoft.com/azure/event-grid/authenticate-with-active-directory)
 - [Disable key and shared access signature authentication](https://docs.microsoft.com/azure/event-grid/authenticate-with-active-directory#disable-key-and-shared-access-signature-authentication)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics?tabs=json)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics)

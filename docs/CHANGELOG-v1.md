@@ -14,6 +14,30 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.12.0-B2201067:
+
+- New rules:
+  - Data Explorer:
+    - Check clusters are in use with databases. [#1215](https://github.com/Azure/PSRule.Rules.Azure/issues/1215)
+  - Event Hub:
+    - Check namespaces are in use with event hubs. [#1216](https://github.com/Azure/PSRule.Rules.Azure/issues/1216)
+    - Check namespaces only accept identity-based authentication. [#1217](https://github.com/Azure/PSRule.Rules.Azure/issues/1217)
+  - Service Bus:
+    - Check namespaces are in use with queues and topics. [#1218](https://github.com/Azure/PSRule.Rules.Azure/issues/1218)
+    - Check namespaces only accept identity-based authentication. [#1219](https://github.com/Azure/PSRule.Rules.Azure/issues/1219)
+
+## v1.12.0-B2201067 (pre-release)
+
+What's changed since pre-release v1.12.0-B2201054:
+
+- New rules:
+  - Data Explorer:
+    - Check clusters use Managed Identities. [#1207](https://github.com/Azure/PSRule.Rules.Azure/issues/1207)
+    - Check clusters use a SKU with a SLA. [#1208](https://github.com/Azure/PSRule.Rules.Azure/issues/1208)
+    - Check clusters use disk encryption. [#1209](https://github.com/Azure/PSRule.Rules.Azure/issues/1209)
+- Bug fixes:
+  - Fixed false positive of blob container with access unspecified. [#1212](https://github.com/Azure/PSRule.Rules.Azure/issues/1212)
+
 ## v1.12.0-B2201054 (pre-release)
 
 What's changed since v1.11.1:
