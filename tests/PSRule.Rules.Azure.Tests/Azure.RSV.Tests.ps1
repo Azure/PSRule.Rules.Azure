@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 
 #
-# Unit tests for Azure Redis Cache rules
+# Unit tests for Azure Recovery Services Vault (RSV) rules
 #
 
 [CmdletBinding()]
@@ -25,7 +25,7 @@ BeforeAll {
     $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-Describe 'Azure.RecoveryServices' -Tag 'RecoveryServices' {
+Describe 'Azure.RSV' -Tag 'RSV' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
@@ -34,24 +34,24 @@ Describe 'Azure.RecoveryServices' -Tag 'RecoveryServices' {
                 WarningAction = 'Ignore'
                 ErrorAction = 'Stop'
             }
-            $dataPath = Join-Path -Path $here -ChildPath 'Resources.RecoveryServices.json';
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.RSV.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
         }
 
-        It 'Azure.RecoveryServices.StorageType' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RecoveryServices.StorageType' };
+        It 'Azure.RSV.StorageType' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RSV.StorageType' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vaultconfig-b';
+            $ruleResult.TargetName | Should -Be 'vaultconfig-a';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vaultconfig-a';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vaultconfig-b', 'vaultconfig-c';
         }
     }
 }

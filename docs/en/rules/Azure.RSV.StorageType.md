@@ -2,15 +2,15 @@
 severity: Important
 pillar: Reliability
 category: Design
-resource: Azure Recovery Services Vault
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RecoveryServices.StorageType/
+resource: Azure Recovery Services Vault (RSV)
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RSV.StorageType/
 ---
 
 # Use geo-replicated storage
 
 ## SYNOPSIS
 
-Recovery Services Vaults not using geo-replicated storage (GRS) may be at risk.
+Recovery Services Vaults (RSV) not using geo-replicated storage (GRS) may be at risk.
 
 ## DESCRIPTION
 
