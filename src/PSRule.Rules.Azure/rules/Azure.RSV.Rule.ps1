@@ -16,17 +16,13 @@ Rule 'Azure.RSV.StorageType' -Type 'Microsoft.RecoveryServices/vaults', 'Microso
         return $Assert.Pass();
     }
 
-    if($backupConfig.Properties.storageType){
-        write-host $backupConfig.name
-        write-host "backupConfig.Properties.storageType Value:"
-        write-host $backupConfig.Properties.storageType
-        write-host "TargetObject.Properties.storageType Value:"
-        write-host $TargetObject.Properties.storageType
-        $Assert.In($backupConfig, 'Properties.storageType', @(
-            'ReadAccessGeoZoneRedundant',
-            'GeoRedundant'
-        ));
-    } else {
-        return $Assert.Pass();
+    foreach ($config in $backupConfig) {
+        $Assert.AnyOf(
+            $Assert.NotHasField($config, 'Properties.storageType'),
+            $Assert.In($config, 'Properties.storageType', @(
+                'ReadAccessGeoZoneRedundant',
+                'GeoRedundant'
+            ))
+        )
     }
 }

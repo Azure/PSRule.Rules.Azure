@@ -44,8 +44,6 @@ Describe 'Azure.RSV' -Tag 'RSV' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            write-host "Failed Rules Results - Target Name"
-            write-host $ruleResult.TargetName
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'vaultconfig-a', 'vault-f';
 
