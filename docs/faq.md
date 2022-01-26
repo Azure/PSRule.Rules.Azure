@@ -29,6 +29,27 @@ Continue reading [working with baselines][2] for a detailed breakdown.
 
   [2]: working-with-baselines.md
 
+## Is Terraform supported?
+
+Currently PSRule for Azure supports testing Azure resources from Infrastructure as Code (IaC) with:
+
+- Azure Resource Manager (ARM) templates.
+- Azure Bicep deployments.
+
+Checking Terraform from HashiCorp Configuration Language (HCL) is not supported at this time.
+If this feature is important to you, please upvote 👍 the [issue][3] on GitHub.
+
+What is supported?
+After resources are deployed to Azure, PSRule for Azure can be used to check the Azure resources **in-flight**.
+
+This methods works for Azure resources regardless of how they are deployed.
+Use this method for analyzing resources deployed via the Azure Portal, Terraform, Pulumi, or other tools.
+
+For instructions on how to do this see [Exporting rule data][4].
+
+  [3]: https://github.com/Azure/PSRule.Rules.Azure/issues/1193
+  [4]: export-rule-data.md
+
 ## What methods are supported for checking resources?
 
 PSRule for Azure supports two methods for analyzing Azure resources:
@@ -40,10 +61,14 @@ PSRule for Azure supports two methods for analyzing Azure resources:
   - Identify issues that prevent successful resource deployments on Azure.
   - Integrate continual improvement and standardization of Azure resource configurations.
   - Implement release gates between environments.
+  - For more information see [Creating your pipeline][5].
 - **In-flight** &mdash; After resources are deployed to an Azure subscription.
   Use _in-flight_ analysis to:
   - Implement release gates between environments for non-native tools such as Terraform.
   - Performing offline analysis in split-environments.
+  - For more information see [Exporting rule data][4].
+
+  [5]: creating-your-pipeline.md
 
 ## How do I create a custom rule to enforce resource group tagging?
 
@@ -120,7 +145,7 @@ If you are, then you may have encountered the following challenges.
 
 For a general PSRule/ Pester comparison see [How is PSRule different to Pester?][11]
 
-  [11]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-is-psrule-different-to-pester
+  [11]: https://microsoft.github.io/PSRule/v2/faq/#how-is-psrule-different-to-pester
 
 ### Unit testing more than basic JSON structure
 
@@ -159,7 +184,7 @@ Collection of telemetry in PowerShell and how to opt-out is explained in [about_
 *[CI]: Continuous Integration
 *[PRs]: Pull Requests
 
-[ignore-rule]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-ignore-a-rule
-[ps-rule-configure]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-configure-psrule
-[ps-rule-faq]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#frequently-asked-questions-faq
-[add-custom-rule]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-layer-on-custom-rules-on-top-of-an-existing-module
+[ignore-rule]: https://microsoft.github.io/PSRule/v2/faq/#how-do-i-ignore-a-rule
+[ps-rule-configure]: https://microsoft.github.io/PSRule/v2/faq/#how-do-i-configure-psrule
+[ps-rule-faq]: https://microsoft.github.io/PSRule/v2/faq/
+[add-custom-rule]: https://microsoft.github.io/PSRule/v2/faq/#how-do-i-layer-on-custom-rules-on-top-of-an-existing-module

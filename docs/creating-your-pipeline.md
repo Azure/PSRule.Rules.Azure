@@ -133,8 +133,8 @@ suppression:
     Meaningful comments help during peer review within a Pull Request (PR).
     Also consider including a date if the exclusions or suppressions are temporary.
 
-  [3]: https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#ruleexclude
-  [4]: https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#suppression
+  [3]: https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#ruleexclude
+  [4]: https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#suppression
 
 ### Advanced configuration
 

@@ -8,7 +8,7 @@ PSRule for Azure comes with many configuration options.
 Additionally, the PSRule engine includes several options that apply to all rules.
 You can visit the [about_PSRule_Options][1] topic to read about general PSRule options.
 
-  [1]: https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html
+  [1]: https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/
 
 ## Setting options
 
