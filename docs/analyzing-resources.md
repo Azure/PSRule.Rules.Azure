@@ -4,7 +4,7 @@ author: BernieWhite
 
 # Analyzing resources
 
-The current state of Azure resources can be tested with PSRule for Azure, refered to as _in-flight_ analysis.
+The current state of Azure resources can be tested with PSRule for Azure, referred to as _in-flight_ analysis.
 This is a two step process that works in high security environments with separation of roles.
 
 !!! Abstract
