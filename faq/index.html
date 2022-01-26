@@ -505,6 +505,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#isterraformsupported" class="md-nav__link">
+    Is Terraform supported?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#whatmethodsaresupportedforcheckingresources" class="md-nav__link">
     What methods are supported for checking resources?
   </a>
@@ -639,6 +646,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2_3">
@@ -701,6 +710,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../creating-your-pipeline/" class="md-nav__link">
+        Creating your pipeline
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../working-with-baselines/" class="md-nav__link">
         Working with baselines
       </a>
@@ -721,10 +744,63 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Testing deployed resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing deployed resources" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Testing deployed resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../creating-your-pipeline/" class="md-nav__link">
-        Creating your pipeline
+      <a href="../export-rule-data/" class="md-nav__link">
+        Exporting rule data
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analyzing-resources/" class="md-nav__link">
+        Analyzing resources
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -5772,6 +5848,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#isterraformsupported" class="md-nav__link">
+    Is Terraform supported?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#whatmethodsaresupportedforcheckingresources" class="md-nav__link">
     What methods are supported for checking resources?
   </a>
@@ -5873,12 +5956,12 @@
 
 <h1 id="frequentlyaskedquestionsfaq">Frequently Asked Questions (FAQ)<a class="headerlink" href="#frequentlyaskedquestionsfaq" title="Permanent link">#</a></h1>
 <p>Continue reading for FAQ relating to <em>PSRule for Azure</em>.
-For general FAQ see <a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#frequently-asked-questions-faq">PSRule - Frequently Asked Questions (FAQ)</a>, including:</p>
+For general FAQ see <a href="https://microsoft.github.io/PSRule/v2/faq/">PSRule - Frequently Asked Questions (FAQ)</a>, including:</p>
 <ul>
-<li><a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-is-psrule-different-to-pester">How is PSRule different to Pester?</a></li>
-<li><a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-configure-psrule">How do I configure PSRule?</a></li>
-<li><a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-ignore-a-rule">How do I ignore a rule?</a></li>
-<li><a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-layer-on-custom-rules-on-top-of-an-existing-module">How do I layer on custom rules on top of an existing module?</a></li>
+<li><a href="https://microsoft.github.io/PSRule/v2/faq/#how-is-psrule-different-to-pester">How is PSRule different to Pester?</a></li>
+<li><a href="https://microsoft.github.io/PSRule/v2/faq/#how-do-i-configure-psrule">How do I configure PSRule?</a></li>
+<li><a href="https://microsoft.github.io/PSRule/v2/faq/#how-do-i-ignore-a-rule">How do I ignore a rule?</a></li>
+<li><a href="https://microsoft.github.io/PSRule/v2/faq/#how-do-i-layer-on-custom-rules-on-top-of-an-existing-module">How do I layer on custom rules on top of an existing module?</a></li>
 </ul>
 <h2 id="whatisarule">What is a rule?<a class="headerlink" href="#whatisarule" title="Permanent link">#</a></h2>
 <p>A rule is a named set of checks and documentation.
@@ -5888,6 +5971,19 @@ You can find the documentation for each rule under <a href="../en/rules/module/"
 PSRule for Azure provides several baselines that can be referenced when running PSRule.
 Quarterly baselines provide a stable checkpoint of rules when you need to stagger adoption of new rules.</p>
 <p>Continue reading <a href="../working-with-baselines/">working with baselines</a> for a detailed breakdown.</p>
+<h2 id="isterraformsupported">Is Terraform supported?<a class="headerlink" href="#isterraformsupported" title="Permanent link">#</a></h2>
+<p>Currently PSRule for Azure supports testing Azure resources from Infrastructure as Code (<abbr title="Infrastructure as Code">IaC</abbr>) with:</p>
+<ul>
+<li>Azure Resource Manager (<abbr title="Azure Resource Manager">ARM</abbr>) templates.</li>
+<li>Azure Bicep deployments.</li>
+</ul>
+<p>Checking Terraform from HashiCorp Configuration Language (HCL) is not supported at this time.
+If this feature is important to you, please upvote 👍 the <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1193">issue</a> on GitHub.</p>
+<p>What is supported?
+After resources are deployed to Azure, PSRule for Azure can be used to check the Azure resources <strong>in-flight</strong>.</p>
+<p>This methods works for Azure resources regardless of how they are deployed.
+Use this method for analyzing resources deployed via the Azure Portal, Terraform, Pulumi, or other tools.</p>
+<p>For instructions on how to do this see <a href="../export-rule-data/">Exporting rule data</a>.</p>
 <h2 id="whatmethodsaresupportedforcheckingresources">What methods are supported for checking resources?<a class="headerlink" href="#whatmethodsaresupportedforcheckingresources" title="Permanent link">#</a></h2>
 <p>PSRule for Azure supports two methods for analyzing Azure resources:</p>
 <ul>
@@ -5898,12 +5994,16 @@ Quarterly baselines provide a stable checkpoint of rules when you need to stagge
 <li>Identify issues that prevent successful resource deployments on Azure.</li>
 <li>Integrate continual improvement and standardization of Azure resource configurations.</li>
 <li>Implement release gates between environments.</li>
+<li>For more information see <a href="../creating-your-pipeline/">Creating your pipeline</a>.</li>
 </ul>
 </li>
-<li><strong>In-flight</strong> &mdash; After resources are deployed to an Azure subscription.
-  Use <em>in-flight</em> analysis to:<ul>
+<li>
+<p><strong>In-flight</strong> &mdash; After resources are deployed to an Azure subscription.
+  Use <em>in-flight</em> analysis to:</p>
+<ul>
 <li>Implement release gates between environments for non-native tools such as Terraform.</li>
 <li>Performing offline analysis in split-environments.</li>
+<li>For more information see <a href="../export-rule-data/">Exporting rule data</a>.</li>
 </ul>
 </li>
 </ul>
@@ -5957,7 +6057,7 @@ PSRule for Azure does not replace Azure Advisor, Security Center, or Azure Polic
 <h2 id="traditionalunittestingvspsruleforazure">Traditional unit testing vs PSRule for Azure?<a class="headerlink" href="#traditionalunittestingvspsruleforazure" title="Permanent link">#</a></h2>
 <p>You may already be using a unit test framework such as Pester to test infrastructure code.
 If you are, then you may have encountered the following challenges.</p>
-<p>For a general PSRule/ Pester comparison see <a href="https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-is-psrule-different-to-pester">How is PSRule different to Pester?</a></p>
+<p>For a general PSRule/ Pester comparison see <a href="https://microsoft.github.io/PSRule/v2/faq/#how-is-psrule-different-to-pester">How is PSRule different to Pester?</a></p>
 <h3 id="unittestingmorethanbasicjsonstructure">Unit testing more than basic JSON structure<a class="headerlink" href="#unittestingmorethanbasicjsonstructure" title="Permanent link">#</a></h3>
 <p>Unit tests are unable to effectively test resources contained within Azure templates.
 Templates should be reusable, but this creates problems for testing when functions, conditions and copy loops are used.
