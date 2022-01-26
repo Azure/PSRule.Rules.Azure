@@ -54,7 +54,7 @@ PSRule for Azure provides two methods for analyzing Azure resources:
 - _In-flight_ - After resources are deployed to an Azure subscription.
 
 For specific use cases see [scenarios](#scenarios).
-For additional details see the [FAQ](https://azure.github.io/PSRule.Rules.Azure/features/#frequentlyaskedquestionsfaq).
+For additional details see the [FAQ](https://azure.github.io/PSRule.Rules.Azure/faq/).
 
 ### Using with GitHub Actions
 
