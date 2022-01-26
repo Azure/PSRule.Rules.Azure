@@ -1,29 +1,29 @@
 [
-    {
-        "type": "Microsoft.RecoveryServices/vaults/backupconfig",
-        "apiVersion": "2021-10-01",
-        "name": "vaultconfig-a",
-        "location": "australiaeast",
-        "tags": {},
-        "properties": {
-          "enhancedSecurityState": "Enabled",
-          "isSoftDeleteFeatureStateEditable": false,
-          "softDeleteFeatureState": "Enabled",
-          "storageType": "LocallyRedundant"
-        }
-    },
-    {
-      "type": "Microsoft.RecoveryServices/vaults/backupconfig",
-      "apiVersion": "2021-10-01",
-      "name": "vaultconfig-b",
-      "location": "australiaeast",
-      "tags": {},
-      "properties": {
-        "enhancedSecurityState": "Enabled",
-        "isSoftDeleteFeatureStateEditable": false,
-        "softDeleteFeatureState": "Enabled",
-        "storageType": "GeoRedundant"
-      }
+  {
+    "type": "Microsoft.RecoveryServices/vaults/backupconfig",
+    "apiVersion": "2021-10-01",
+    "name": "vaultconfig-a",
+    "location": "australiaeast",
+    "tags": {},
+    "properties": {
+      "enhancedSecurityState": "Enabled",
+      "isSoftDeleteFeatureStateEditable": false,
+      "softDeleteFeatureState": "Enabled",
+      "storageType": "LocallyRedundant"
+    }
+  },
+  {
+    "type": "Microsoft.RecoveryServices/vaults/backupconfig",
+    "apiVersion": "2021-10-01",
+    "name": "vaultconfig-b",
+    "location": "australiaeast",
+    "tags": {},
+    "properties": {
+      "enhancedSecurityState": "Enabled",
+      "isSoftDeleteFeatureStateEditable": false,
+      "softDeleteFeatureState": "Enabled",
+      "storageType": "GeoRedundant"
+    }
   },
   {
     "type": "Microsoft.RecoveryServices/vaults/backupconfig",
@@ -49,5 +49,49 @@
       "softDeleteFeatureState": "Enabled",
       "storageType": "ReadAccessGeoZoneRedundant"
     }
-},
+  },
+  {
+    "type": "Microsoft.RecoveryServices/vaults",
+    "apiVersion": "2021-08-01",
+    "name": "vault-e",
+    "location": "australiaeast",
+    "sku": {
+      "name": "RS0",
+      "tier": "Standard"
+    },
+    "properties": {}
+  },
+  {
+    "location": "australiaeast",
+    "name": "vault-f",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/vaultconfig-f",
+    "type": "Microsoft.RecoveryServices/vaults",
+    "sku": {
+      "name": "RS0",
+      "tier": "Standard"
+    },
+    "resources": [
+      {
+        "Type": "Microsoft.RecoveryServices/vaults/backupconfig",
+        "ResourceType": "Microsoft.RecoveryServices/vaults/backupconfig",
+        "Name": "vaultconfig-f", 
+        "ResourceName": "vaultconfig-f",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/backupconfig/vaultconfig-f",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/backupconfig/vaultconfig-f",
+        "Location": null,
+        "Tags": null,
+        "Properties": {
+          "enhancedSecurityState": "Enabled",
+          "isSoftDeleteFeatureStateEditable": false,
+          "softDeleteFeatureState": "Enabled",
+          "storageType": "LocallyRedundant"
+        },
+        "ResourceGroupName": "test-rg",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
 ]

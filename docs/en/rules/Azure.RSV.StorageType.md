@@ -41,15 +41,15 @@ For example:
 
 ```json
 {
-        "type": "Microsoft.RecoveryServices/vaults/backupconfig",
-        "apiVersion": "2021-10-01",
-        "name": "vaultconfig-a",
-        "location": "australiaeast",
-        "tags": {},
-        "properties": {
-          "storageType": "GeoRedundant"
-        }
-    }
+  "type": "Microsoft.RecoveryServices/vaults/backupconfig",
+  "apiVersion": "2021-10-01",
+  "name": "vaultconfig-a",
+  "location": "australiaeast",
+  "tags": {},
+  "properties": {
+    "storageType": "GeoRedundant"
+  }
+}
 ```
 
 ### Configure with Bicep
@@ -75,4 +75,5 @@ resource testRecoveryServices 'Microsoft.RecoveryServices/vaults/backupconfig@20
 
 - [Recovery Services Vault - Overview](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview#storage-settings-in-the-recovery-services-vault)
 - [Recovery Services Vault - Storage Settings](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)
-- [Azure Template reference](https://docs.microsoft.com/azure/templates/microsoft.recoveryservices/vaults/backupconfig?tabs=bicep)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.recoveryservices/vaults/backupconfig?tabs=bicep)
+- [Well Architected Framework - Reliability](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)

@@ -44,14 +44,16 @@ Describe 'Azure.RSV' -Tag 'RSV' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vaultconfig-a';
+            write-host "Failed Rules Results - Target Name"
+            write-host $ruleResult.TargetName
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vaultconfig-a', 'vault-f';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'vaultconfig-b', 'vaultconfig-c', 'vaultconfig-d';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'vaultconfig-b', 'vaultconfig-c', 'vaultconfig-d', 'vault-e';
         }
     }
 }
