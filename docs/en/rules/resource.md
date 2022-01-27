@@ -188,6 +188,12 @@ Name | Synopsis | Severity
 [Azure.AKS.UseRBAC](Azure.AKS.UseRBAC.md) | Deploy AKS cluster with role-based access control (RBAC) enabled. | Important
 [Azure.AKS.Version](Azure.AKS.Version.md) | AKS control plane and nodes pools should use a current stable release. | Important
 
+## Azure Recovery Services Vault (RSV)
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.RSV.StorageType](Azure.RSV.StorageType.md) | Recovery Services Vaults (RSV) not using geo-replicated storage (GRS) may be at risk. | Important
+
 ## Cognitive Search
 
 Name | Synopsis | Severity
