@@ -53,6 +53,9 @@ What's changed since v1.11.1:
     - Refactored the cipher and protocol rule into individual rules.
       - `Azure.APIM.Protocols`
       - `Azure.APIM.Ciphers`
+  - Azure Recovery Services Vault:
+    - Adding a rule `Azure.RSV.StorageType` to verify that Recovery Service Vaults 
+      use geo-redundant storage.
 - General improvements:
   - **Important change:** Replaced `Azure_AKSMinimumVersion` option with `AZURE_AKS_CLUSTER_MINIMUM_VERSION`. [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)
     - For compatibility, if `Azure_AKSMinimumVersion` is set it will be used instead of `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
