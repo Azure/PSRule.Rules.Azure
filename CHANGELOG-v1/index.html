@@ -922,6 +922,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1120" class="md-nav__link">
+    v1.12.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1120-b2201086pre-release" class="md-nav__link">
     v1.12.0-B2201086 (pre-release)
   </a>
@@ -6350,6 +6357,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1120" class="md-nav__link">
+    v1.12.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1120-b2201086pre-release" class="md-nav__link">
     v1.12.0-B2201086 (pre-release)
   </a>
@@ -6965,6 +6979,75 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
   Support for <code>Azure_AKSMinimumVersion</code> will be removed in v2.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<h2 id="v1120">v1.12.0<a class="headerlink" href="#v1120" title="Permanent link">#</a></h2>
+<p>What's changed since v1.11.1:</p>
+<ul>
+<li>New rules:<ul>
+<li>Data Explorer:<ul>
+<li>Check clusters use Managed Identities. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1207">#1207</a></li>
+<li>Check clusters use a SKU with a SLA. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1208">#1208</a></li>
+<li>Check clusters use disk encryption. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1209">#1209</a></li>
+<li>Check clusters are in use with databases. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1215">#1215</a></li>
+</ul>
+</li>
+<li>Event Hub:<ul>
+<li>Check namespaces are in use with event hubs. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1216">#1216</a></li>
+<li>Check namespaces only accept identity-based authentication. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1217">#1217</a></li>
+</ul>
+</li>
+<li>Azure Recovery Services Vault:<ul>
+<li>Check vaults use geo-redundant storage. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/5">#5</a></li>
+</ul>
+</li>
+<li>Service Bus:<ul>
+<li>Check namespaces are in use with queues and topics. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1218">#1218</a></li>
+<li>Check namespaces only accept identity-based authentication. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1219">#1219</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Updated rules:<ul>
+<li>Azure Kubernetes Service:<ul>
+<li>Updated <code>Azure.AKS.Version</code> to use latest stable version <code>1.21.7</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1188">#1188</a><ul>
+<li>Pinned latest GA baseline <code>Azure.GA_2021_12</code> to previous version <code>1.20.5</code>.</li>
+<li>Use <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code> to configure the minimum version of the cluster.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Azure API Management:<ul>
+<li>Check service disabled insecure ciphers.
+<a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1128">#1128</a></li>
+<li>Refactored the cipher and protocol rule into individual rules.<ul>
+<li><code>Azure.APIM.Protocols</code></li>
+<li><code>Azure.APIM.Ciphers</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>General improvements:<ul>
+<li><strong>Important change:</strong> Replaced <code>Azure_AKSMinimumVersion</code> option with <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/941">#941</a><ul>
+<li>For compatibility, if <code>Azure_AKSMinimumVersion</code> is set it will be used instead of <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code>.</li>
+<li>If only <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code> is set, this value will be used.</li>
+<li>The default will be used neither options are configured.</li>
+<li>If <code>Azure_AKSMinimumVersion</code> is set a warning will be generated until the configuration is removed.</li>
+<li>Support for <code>Azure_AKSMinimumVersion</code> is deprecated and will be removed in v2.</li>
+<li>See <a href="../upgrade-notes/">upgrade notes</a> for details.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Bug fixes:<ul>
+<li>Fixed false positive of blob container with access unspecified. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1212">#1212</a></li>
+</ul>
+</li>
+</ul>
+<p>What's changed since pre-release v1.12.0-B2201086:</p>
+<ul>
+<li>No additional changes.</li>
+</ul>
 <h2 id="v1120-b2201086pre-release">v1.12.0-B2201086 (pre-release)<a class="headerlink" href="#v1120-b2201086pre-release" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.12.0-B2201067:</p>
 <ul>
@@ -8814,7 +8897,7 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
   <small>
     
       Last update:
-      2022-01-28
+      2022-01-29
     
   </small>
 </div>
