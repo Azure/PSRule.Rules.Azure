@@ -533,6 +533,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#doyouhavesamplecode" class="md-nav__link">
+    Do you have sample code?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#doineedpowershellexperiencetostartusingpsruleforazure" class="md-nav__link">
     Do I need PowerShell experience to start using PSRule for Azure?
   </a>
@@ -540,15 +547,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatpermissionsdoineedtoexportdata" class="md-nav__link">
-    What permissions do I need to export data?
+  <a href="#whatpermissionsdoineedtoexportruledata" class="md-nav__link">
+    What permissions do I need to export rule data?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatpermissionsdoineedtoanalyzeexporteddata" class="md-nav__link">
-    What permissions do I need to analyze exported data?
+  <a href="#whatpermissionsdoineedtoanalyzeexportedruledata" class="md-nav__link">
+    What permissions do I need to analyze exported rule data?
   </a>
   
 </li>
@@ -5892,6 +5899,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#doyouhavesamplecode" class="md-nav__link">
+    Do you have sample code?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#doineedpowershellexperiencetostartusingpsruleforazure" class="md-nav__link">
     Do I need PowerShell experience to start using PSRule for Azure?
   </a>
@@ -5899,15 +5913,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatpermissionsdoineedtoexportdata" class="md-nav__link">
-    What permissions do I need to export data?
+  <a href="#whatpermissionsdoineedtoexportruledata" class="md-nav__link">
+    What permissions do I need to export rule data?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatpermissionsdoineedtoanalyzeexporteddata" class="md-nav__link">
-    What permissions do I need to analyze exported data?
+  <a href="#whatpermissionsdoineedtoanalyzeexportedruledata" class="md-nav__link">
+    What permissions do I need to analyze exported rule data?
   </a>
   
 </li>
@@ -6034,19 +6048,24 @@ This process involves assigning a team or an individual review and approval resp
 In GitHub or Azure DevOps implementation, ownership is linked to the file path.</p>
 <p>When a repository contains resources that different teams would approve how do you:</p>
 <ul>
-<li>Resources are created in a path that triggers the correct approval.</li>
+<li>Ensure resources are created in a path that triggers the correct approval?</li>
 </ul>
 <p>We have a walk through scenario <a href="../customization/enforce-codeowners/">Enforcing code ownership</a> to get you started.</p>
+<h2 id="doyouhavesamplecode">Do you have sample code?<a class="headerlink" href="#doyouhavesamplecode" title="Permanent link">#</a></h2>
+<p>In addition to the walk through scenarios, we have a quick start template <a href="https://github.com/Azure/PSRule.Rules.Azure-quickstart">here</a>.
+The repository contains sample <abbr title="Azure Resource Manager">ARM</abbr> templates, Bicep, and pipeline code to get you started.</p>
+<p>In GitHub you can simply use the repository as a template for your own project.</p>
 <h2 id="doineedpowershellexperiencetostartusingpsruleforazure">Do I need PowerShell experience to start using PSRule for Azure?<a class="headerlink" href="#doineedpowershellexperiencetostartusingpsruleforazure" title="Permanent link">#</a></h2>
 <p>No. You can start using built-in rules and <abbr title="Continuous Integration">CI</abbr> with Azure Pipelines or GitHub Actions.
 If we didn't tell you, you might not even know that PowerShell runs under the covers.</p>
 <p>To perform local validation, some PowerShell setup is required but we step you through that.
 See <a href="../install-instructions/">installation</a> and <a href="../validating-locally/">validating locally</a> for details.</p>
-<p>To start writing your own custom rules you can use YAML, JSON, or PowerShell
+<p>To start writing your own custom rules you can use YAML, JSON, or PowerShell.
 PowerShell experience is required for some scenarios.
 We have a walk through scenario <a href="../customization/enforce-custom-tags/">Enforcing custom tags</a> to get you started.</p>
-<h2 id="whatpermissionsdoineedtoexportdata">What permissions do I need to export data?<a class="headerlink" href="#whatpermissionsdoineedtoexportdata" title="Permanent link">#</a></h2>
-<p>The default built-in <em>Reader</em> role to a subscription is required for:</p>
+<h2 id="whatpermissionsdoineedtoexportruledata">What permissions do I need to export rule data?<a class="headerlink" href="#whatpermissionsdoineedtoexportruledata" title="Permanent link">#</a></h2>
+<p>When exporting data for <em>in-flight</em> analysis,
+the default built-in <em>Reader</em> role to a subscription is required for:</p>
 <ul>
 <li>Exporting rule data with <code>Export-AzRuleData</code>.</li>
 <li>Exporting rule data from templates with <code>Export-AzRuleTemplateData</code> when online features are used.<ul>
@@ -6054,7 +6073,7 @@ We have a walk through scenario <a href="../customization/enforce-custom-tags/">
 </ul>
 </li>
 </ul>
-<h2 id="whatpermissionsdoineedtoanalyzeexporteddata">What permissions do I need to analyze exported data?<a class="headerlink" href="#whatpermissionsdoineedtoanalyzeexporteddata" title="Permanent link">#</a></h2>
+<h2 id="whatpermissionsdoineedtoanalyzeexportedruledata">What permissions do I need to analyze exported rule data?<a class="headerlink" href="#whatpermissionsdoineedtoanalyzeexportedruledata" title="Permanent link">#</a></h2>
 <p>When exporting data for <em>in-flight</em> analysis,
 no access to Azure is required after data has been exported to JSON.</p>
 <h2 id="shouldicontinuetouseazureadvisorsecuritycenterorazurepolicy">Should I continue to use Azure Advisor, Security Center, or Azure Policy?<a class="headerlink" href="#shouldicontinuetouseazureadvisorsecuritycenterorazurepolicy" title="Permanent link">#</a></h2>
@@ -6100,7 +6119,7 @@ Collection of telemetry in PowerShell and how to opt-out is explained in <a href
   <small>
     
       Last update:
-      2022-02-01
+      2022-02-03
     
   </small>
 </div>
