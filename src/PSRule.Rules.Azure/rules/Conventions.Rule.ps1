@@ -41,10 +41,14 @@ Export-PSRuleConvention 'Azure.ExpandTemplate' -If { $Configuration.AZURE_PARAME
 
 #region Bicep
 
-$Global:InstalledBicep = $False;
-
 # Synopsis: Install Bicep for expansion of .bicep files within GitHub Actions.
-Export-PSRuleConvention 'Azure.BicepInstall' -If { !$InstalledBicep -and $Configuration.AZURE_BICEP_FILE_EXPANSION -eq $True -and $Env:GITHUB_ACTION -eq '__Microsoft_ps-rule' } -Begin {
+Export-PSRuleConvention 'Azure.BicepInstall' -If { $Configuration.AZURE_BICEP_FILE_EXPANSION -eq $True -and $Env:GITHUB_ACTION -eq '__Microsoft_ps-rule' } -Initialize {
+
+    # Skip if already installed
+    if (Test-Path -Path '/usr/local/bin/bicep') {
+        return
+    }
+
     # Install the latest Bicep CLI binary for alpine
     Invoke-WebRequest -Uri 'https://github.com/Azure/bicep/releases/latest/download/bicep-linux-musl-x64' -OutFile $Env:GITHUB_WORKSPACE/bicep.bin
 
@@ -53,8 +57,6 @@ Export-PSRuleConvention 'Azure.BicepInstall' -If { !$InstalledBicep -and $Config
 
     # Copy to PATH environment
     Move-Item $Env:GITHUB_WORKSPACE/bicep.bin /usr/local/bin/bicep
-
-    $Global:InstalledBicep = $True;
 }
 
 Export-PSRuleConvention 'Azure.ExpandBicep' -If { $Configuration.AZURE_BICEP_FILE_EXPANSION -eq $True -and $TargetObject.Extension -eq '.bicep' } -Begin {
