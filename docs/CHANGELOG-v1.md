@@ -14,6 +14,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.12.0:
+
+- Bug fixes:
+  - Fixed Bicep already exists with PSRule v2. [#1232](https://github.com/Azure/PSRule.Rules.Azure/issues/1232)
+
 ## v1.12.0
 
 What's changed since v1.11.1:
