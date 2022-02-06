@@ -71,6 +71,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_LOCATION = "location";
         private const string PROPERTY_COPY = "copy";
         private const string PROPERTY_NAME = "name";
+        private const string PROPERTY_RESOURCENAME = "ResourceName";
         private const string PROPERTY_COUNT = "count";
         private const string PROPERTY_INPUT = "input";
         private const string PROPERTY_MODE = "mode";
@@ -472,6 +473,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 var deployment = new JObject
                 {
+                    { PROPERTY_RESOURCENAME, ParameterFile ?? TemplateFile },
                     { PROPERTY_NAME, deploymentName },
                     { PROPERTY_PROPERTIES, properties },
                     { PROPERTY_LOCATION, ResourceGroup.Location },
@@ -479,12 +481,8 @@ namespace PSRule.Rules.Azure.Data.Template
                     { PROPERTY_METADATA, metadata },
                 };
 
-                if (!isNested)
-                {
-                    deployment.Add("resourceName", ParameterFile ?? TemplateFile);
-                    deployment.SetTargetInfo(TemplateFile, ParameterFile);
-                    AddResource(new ResourceValue(string.Concat(RESOURCETYPE_DEPLOYMENT, "/", deploymentName), deployment));
-                }
+                deployment.SetTargetInfo(TemplateFile, ParameterFile);
+                AddResource(new ResourceValue(string.Concat(RESOURCETYPE_DEPLOYMENT, "/", deploymentName), deployment));
                 _CurrentDeployment = deployment;
                 _Deployment.Push(deployment);
             }
@@ -1012,54 +1010,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!TryObjectProperty(resource, PROPERTY_PROPERTIES, out JObject properties))
                 return false;
 
-            var deploymentContext = context;
-            if (TryObjectProperty(properties, PROPERTY_EXPRESSIONEVALUATIONOPTIONS, out JObject options) &&
-                TryStringProperty(options, PROPERTY_SCOPE, out string scope) &&
-                StringComparer.OrdinalIgnoreCase.Equals(DEPLOYMENTSCOPE_INNER, scope))
-            {
-                var subscription = new SubscriptionOption(context.Subscription);
-                var resourceGroup = new ResourceGroupOption(context.ResourceGroup);
-                var tenant = new TenantOption(context.Tenant);
-                var managementGroup = new ManagementGroupOption(context.ManagementGroup);
-                if (TryStringProperty(resource, PROPERTY_SUBSCRIPTIONID, out string subscriptionId))
-                    subscription.SubscriptionId = subscriptionId;
-
-                if (TryStringProperty(resource, PROPERTY_RESOURCEGROUP, out string resourceGroupName))
-                    resourceGroup.Name = resourceGroupName;
-
-                resourceGroup.SubscriptionId = subscription.SubscriptionId;
-                deploymentContext = new TemplateContext(context.Pipeline, subscription, resourceGroup, tenant, managementGroup);
-                if (TryObjectProperty(properties, PROPERTY_PARAMETERS, out JObject innerParameters))
-                {
-                    foreach (var parameter in innerParameters.Properties())
-                    {
-                        if (parameter.Value is JObject parameterInner)
-                        {
-                            if (parameterInner.TryGetProperty(PROPERTY_VALUE, out JToken parameterValue))
-                                parameterInner[PROPERTY_VALUE] = ResolveVariable(context, parameterValue);
-
-                            if (parameterInner.TryGetProperty(PROPERTY_COPY, out JArray _))
-                            {
-                                foreach (var copyIndex in GetVariableIterator(context, parameterInner, pushToStack: false))
-                                {
-                                    if (copyIndex.IsCopy())
-                                    {
-                                        var jArray = new JArray();
-                                        while (copyIndex.Next())
-                                        {
-                                            var instance = copyIndex.CloneInput<JToken>();
-                                            jArray.Add(ResolveToken(context, instance));
-                                        }
-                                        parameterInner[copyIndex.Name] = ResolveVariable(context, jArray);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    deploymentContext.Load(properties);
-                }
-            }
-
+            var deploymentContext = GetDeploymentContext(context, resource, properties);
             if (!TryObjectProperty(properties, PROPERTY_TEMPLATE, out JObject template))
                 return false;
 
@@ -1068,6 +1019,60 @@ namespace PSRule.Rules.Azure.Data.Template
                 context.AddResource(deploymentContext.GetResources());
 
             return true;
+        }
+
+        private static TemplateContext GetDeploymentContext(TemplateContext context, JObject resource, JObject properties)
+        {
+            if (!TryObjectProperty(properties, PROPERTY_EXPRESSIONEVALUATIONOPTIONS, out JObject options) ||
+                !TryStringProperty(options, PROPERTY_SCOPE, out string scope) ||
+                !StringComparer.OrdinalIgnoreCase.Equals(DEPLOYMENTSCOPE_INNER, scope))
+                return context;
+
+            // Handle inner scope
+            var subscription = new SubscriptionOption(context.Subscription);
+            var resourceGroup = new ResourceGroupOption(context.ResourceGroup);
+            var tenant = new TenantOption(context.Tenant);
+            var managementGroup = new ManagementGroupOption(context.ManagementGroup);
+            if (TryStringProperty(resource, PROPERTY_SUBSCRIPTIONID, out string subscriptionId))
+                subscription.SubscriptionId = subscriptionId;
+
+            if (TryStringProperty(resource, PROPERTY_RESOURCEGROUP, out string resourceGroupName))
+                resourceGroup.Name = resourceGroupName;
+
+            resourceGroup.SubscriptionId = subscription.SubscriptionId;
+            var deploymentContext = new TemplateContext(context.Pipeline, subscription, resourceGroup, tenant, managementGroup);
+            if (TryObjectProperty(properties, PROPERTY_PARAMETERS, out JObject innerParameters))
+            {
+                foreach (var parameter in innerParameters.Properties())
+                {
+                    if (parameter.Value is JObject parameterInner)
+                    {
+                        if (parameterInner.TryGetProperty(PROPERTY_VALUE, out JToken parameterValue))
+                            parameterInner[PROPERTY_VALUE] = ResolveVariable(context, parameterValue);
+
+                        if (parameterInner.TryGetProperty(PROPERTY_COPY, out JArray _))
+                        {
+                            foreach (var copyIndex in GetVariableIterator(context, parameterInner, pushToStack: false))
+                            {
+                                if (copyIndex.IsCopy())
+                                {
+                                    var jArray = new JArray();
+                                    while (copyIndex.Next())
+                                    {
+                                        var instance = copyIndex.CloneInput<JToken>();
+                                        jArray.Add(ResolveToken(context, instance));
+                                    }
+                                    parameterInner[copyIndex.Name] = ResolveVariable(context, jArray);
+                                }
+                            }
+                        }
+                    }
+                }
+                deploymentContext.Load(properties);
+            }
+
+            deploymentContext.SetSource(context.TemplateFile, context.ParameterFile);
+            return deploymentContext;
         }
 
         #endregion Resources
