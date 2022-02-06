@@ -77,7 +77,7 @@
       {
         "Type": "Microsoft.RecoveryServices/vaults/backupconfig",
         "ResourceType": "Microsoft.RecoveryServices/vaults/backupconfig",
-        "Name": "vaultconfig-f", 
+        "Name": "vaultconfig-f",
         "ResourceName": "vaultconfig-f",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/backupconfig/vaultconfig-f",
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/backupconfig/vaultconfig-f",
@@ -91,7 +91,92 @@
         },
         "ResourceGroupName": "test-rg",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "Type": "Microsoft.RecoveryServices/vaults/replicationAlertSettings",
+        "ResourceType": "Microsoft.RecoveryServices/vaults/replicationAlertSettings",
+        "Name": "replication-alert-f",
+        "ResourceName": "replication-alert-f",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/replicationAlertSettings/replication-alert-f",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/replicationAlertSettings/replication-alert-f",
+        "Location": null,
+        "Tags": null,
+        "Properties": {
+          "sendToOwners": "DoNotSend",
+          "customEmailAddresses": []
+        },
+        "ResourceGroupName": "test-rg",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
+  },
+  {
+    "location": "australiaeast",
+    "name": "vault-g",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/vaultconfig-g",
+    "type": "Microsoft.RecoveryServices/vaults",
+    "sku": {
+      "name": "RS0",
+      "tier": "Standard"
+    },
+    "resources": [
+      {
+        "Type": "Microsoft.RecoveryServices/vaults/replicationAlertSettings",
+        "ResourceType": "Microsoft.RecoveryServices/vaults/replicationAlertSettings",
+        "Name": "replication-alert-g",
+        "ResourceName": "replication-alert-g",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/replicationAlertSettings/replication-alert-g",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/replicationAlertSettings/replication-alert-g",
+        "Location": null,
+        "Tags": null,
+        "Properties": {
+          "sendToOwners": "Send",
+          "customEmailAddresses": []
+        },
+        "ResourceGroupName": "test-rg",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "type": "Microsoft.RecoveryServices/vaults/replicationAlertSettings",
+    "apiVersion": "2021-08-01",
+    "name": "replication-alert-a",
+    "dependsOn": [
+      "[resourceId('Microsoft.RecoveryServices/vaults', parameters('vaults_newvaultdemo_name'))]"
+    ],
+    "properties": {
+      "sendToOwners": "DoNotSend",
+      "customEmailAddresses": []
+    }
+  },
+  {
+    "type": "Microsoft.RecoveryServices/vaults/replicationAlertSettings",
+    "apiVersion": "2021-08-01",
+    "name": "replication-alert-b",
+    "dependsOn": [
+      "[resourceId('Microsoft.RecoveryServices/vaults', parameters('vaults_newvaultdemo_name'))]"
+    ],
+    "properties": {
+      "sendToOwners": "Send",
+      "customEmailAddresses": []
+    }
+  },
+  {
+    "type": "Microsoft.RecoveryServices/vaults/replicationAlertSettings",
+    "apiVersion": "2021-08-01",
+    "name": "replication-alert-c",
+    "dependsOn": [
+      "[resourceId('Microsoft.RecoveryServices/vaults', parameters('vaults_newvaultdemo_name'))]"
+    ],
+    "properties": {
+      "sendToOwners": "DoNotSend",
+      "customEmailAddresses": [
+        "example@email.com"
+      ]
+    }
   }
 ]

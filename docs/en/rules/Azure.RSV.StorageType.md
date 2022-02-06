@@ -54,7 +54,7 @@ For example:
 
 ### Configure with Bicep
 The default storage type used by Recovery Services vaults is Geo-redundant. However if you're 
-defining the backup config in an ARM template:
+defining the backup config via Bicep:
 
 - Set `properties.storageType` to either `GeoRedundant` or `ReadAccessGeoZoneRedundant`.
 
