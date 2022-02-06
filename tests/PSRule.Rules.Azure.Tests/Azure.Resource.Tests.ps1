@@ -149,7 +149,7 @@ Describe 'Azure.Resource' -Tag 'Resource' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
+            $ruleResult.Length | Should -Be 5;
             $ruleResult.TargetType | Should -BeIn 'Microsoft.Network/virtualNetworks/subnets/providers/roleAssignments', 'Microsoft.Network/virtualNetworks/subnets', 'Microsoft.Resources/deployments';
         }
 
@@ -171,7 +171,7 @@ Describe 'Azure.Resource' -Tag 'Resource' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
+            $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetType | Should -BeIn 'Microsoft.Network/virtualNetworks/subnets/providers/roleAssignments', 'Microsoft.Resources/deployments';
         }
     }
