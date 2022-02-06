@@ -14,6 +14,66 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.12.2
+
+What's changed since v1.12.1:
+
+- Bug fixes:
+  - Fixed detect strong type requirements for nested deployments. [#1235](https://github.com/Azure/PSRule.Rules.Azure/issues/1235)
+
+## v1.12.1
+
+What's changed since v1.12.0:
+
+- Bug fixes:
+  - Fixed Bicep already exists with PSRule v2. [#1232](https://github.com/Azure/PSRule.Rules.Azure/issues/1232)
+
+## v1.12.0
+
+What's changed since v1.11.1:
+
+- New rules:
+  - Data Explorer:
+    - Check clusters use Managed Identities. [#1207](https://github.com/Azure/PSRule.Rules.Azure/issues/1207)
+    - Check clusters use a SKU with a SLA. [#1208](https://github.com/Azure/PSRule.Rules.Azure/issues/1208)
+    - Check clusters use disk encryption. [#1209](https://github.com/Azure/PSRule.Rules.Azure/issues/1209)
+    - Check clusters are in use with databases. [#1215](https://github.com/Azure/PSRule.Rules.Azure/issues/1215)
+  - Event Hub:
+    - Check namespaces are in use with event hubs. [#1216](https://github.com/Azure/PSRule.Rules.Azure/issues/1216)
+    - Check namespaces only accept identity-based authentication. [#1217](https://github.com/Azure/PSRule.Rules.Azure/issues/1217)
+  - Azure Recovery Services Vault:
+    - Check vaults use geo-redundant storage. [#5](https://github.com/Azure/PSRule.Rules.Azure/issues/5)
+  - Service Bus:
+    - Check namespaces are in use with queues and topics. [#1218](https://github.com/Azure/PSRule.Rules.Azure/issues/1218)
+    - Check namespaces only accept identity-based authentication. [#1219](https://github.com/Azure/PSRule.Rules.Azure/issues/1219)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.21.7`. [#1188](https://github.com/Azure/PSRule.Rules.Azure/issues/1188)
+      - Pinned latest GA baseline `Azure.GA_2021_12` to previous version `1.20.5`.
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+  - Azure API Management:
+    - Check service disabled insecure ciphers.
+    [#1128](https://github.com/Azure/PSRule.Rules.Azure/issues/1128)
+    - Refactored the cipher and protocol rule into individual rules.
+      - `Azure.APIM.Protocols`
+      - `Azure.APIM.Ciphers`
+- General improvements:
+  - **Important change:** Replaced `Azure_AKSMinimumVersion` option with `AZURE_AKS_CLUSTER_MINIMUM_VERSION`. [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)
+    - For compatibility, if `Azure_AKSMinimumVersion` is set it will be used instead of `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
+    - If only `AZURE_AKS_CLUSTER_MINIMUM_VERSION` is set, this value will be used.
+    - The default will be used neither options are configured.
+    - If `Azure_AKSMinimumVersion` is set a warning will be generated until the configuration is removed.
+    - Support for `Azure_AKSMinimumVersion` is deprecated and will be removed in v2.
+    - See [upgrade notes][1] for details.
+- Bug fixes:
+  - Fixed false positive of blob container with access unspecified. [#1212](https://github.com/Azure/PSRule.Rules.Azure/issues/1212)
+
+What's changed since pre-release v1.12.0-B2201086:
+
+- No additional changes.
+
+## v1.12.0-B2201086 (pre-release)
+
 What's changed since pre-release v1.12.0-B2201067:
 
 - New rules:
@@ -22,6 +82,8 @@ What's changed since pre-release v1.12.0-B2201067:
   - Event Hub:
     - Check namespaces are in use with event hubs. [#1216](https://github.com/Azure/PSRule.Rules.Azure/issues/1216)
     - Check namespaces only accept identity-based authentication. [#1217](https://github.com/Azure/PSRule.Rules.Azure/issues/1217)
+  - Azure Recovery Services Vault:
+    - Check vaults use geo-redundant storage. [#5](https://github.com/Azure/PSRule.Rules.Azure/issues/5)
   - Service Bus:
     - Check namespaces are in use with queues and topics. [#1218](https://github.com/Azure/PSRule.Rules.Azure/issues/1218)
     - Check namespaces only accept identity-based authentication. [#1219](https://github.com/Azure/PSRule.Rules.Azure/issues/1219)
@@ -56,9 +118,6 @@ What's changed since v1.11.1:
     - Refactored the cipher and protocol rule into individual rules.
       - `Azure.APIM.Protocols`
       - `Azure.APIM.Ciphers`
-  - Azure Recovery Services Vault:
-    - Adding a rule `Azure.RSV.StorageType` to verify that Recovery Service Vaults 
-      use geo-redundant storage.
 - General improvements:
   - **Important change:** Replaced `Azure_AKSMinimumVersion` option with `AZURE_AKS_CLUSTER_MINIMUM_VERSION`. [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)
     - For compatibility, if `Azure_AKSMinimumVersion` is set it will be used instead of `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.

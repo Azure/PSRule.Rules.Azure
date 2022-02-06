@@ -88,11 +88,20 @@ In GitHub or Azure DevOps implementation, ownership is linked to the file path.
 
 When a repository contains resources that different teams would approve how do you:
 
-- Resources are created in a path that triggers the correct approval.
+- Ensure resources are created in a path that triggers the correct approval?
 
 We have a walk through scenario [Enforcing code ownership][10] to get you started.
 
   [10]: customization/enforce-codeowners.md
+
+## Do you have sample code?
+
+In addition to the walk through scenarios, we have a quick start template [here][6].
+The repository contains sample ARM templates, Bicep, and pipeline code to get you started.
+
+In GitHub you can simply use the repository as a template for your own project.
+
+  [6]: https://github.com/Azure/PSRule.Rules.Azure-quickstart
 
 ## Do I need PowerShell experience to start using PSRule for Azure?
 
@@ -102,7 +111,7 @@ If we didn't tell you, you might not even know that PowerShell runs under the co
 To perform local validation, some PowerShell setup is required but we step you through that.
 See [installation][7] and [validating locally][8] for details.
 
-To start writing your own custom rules you can use YAML, JSON, or PowerShell
+To start writing your own custom rules you can use YAML, JSON, or PowerShell.
 PowerShell experience is required for some scenarios.
 We have a walk through scenario [Enforcing custom tags][9] to get you started.
 
@@ -110,15 +119,16 @@ We have a walk through scenario [Enforcing custom tags][9] to get you started.
   [8]: validating-locally.md
   [9]: customization/enforce-custom-tags.md
 
-## What permissions do I need to export data?
+## What permissions do I need to export rule data?
 
-The default built-in _Reader_ role to a subscription is required for:
+When exporting data for _in-flight_ analysis,
+the default built-in _Reader_ role to a subscription is required for:
 
 - Exporting rule data with `Export-AzRuleData`.
 - Exporting rule data from templates with `Export-AzRuleTemplateData` when online features are used.
   - Optionally `-ResourceGroupName` and `-Subscription` parameter can be used; these require access _Reader_ access.
 
-## What permissions do I need to analyze exported data?
+## What permissions do I need to analyze exported rule data?
 
 When exporting data for _in-flight_ analysis,
 no access to Azure is required after data has been exported to JSON.
