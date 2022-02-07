@@ -50,8 +50,24 @@ Describe 'Azure.RSV' -Tag 'RSV' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'vaultconfig-b', 'vaultconfig-c', 'vaultconfig-d', 'vault-e';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'vaultconfig-b', 'vaultconfig-c', 'vaultconfig-d', 'vault-e', 'vault-g';
+        }
+
+        It 'Azure.RSV.ReplicationAlert' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RSV.ReplicationAlert' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });           
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'replication-alert-a', 'vault-f', 'vault-e';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'replication-alert-b', 'vault-g', 'replication-alert-c';
         }
     }
 }

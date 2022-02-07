@@ -26,3 +26,19 @@ Rule 'Azure.RSV.StorageType' -Type 'Microsoft.RecoveryServices/vaults', 'Microso
         )
     }
 }
+
+# Synopsis: Recovery Services Vault (RSV) without a replication alert may be at risk.
+Rule 'Azure.RSV.ReplicationAlert' -Type 'Microsoft.RecoveryServices/vaults', 'Microsoft.RecoveryServices/vaults/replicationAlertSettings' -Tag @{ release = 'GA'; ruleSet = '2022_03' } {
+    $replicationAlert = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.RecoveryServices/vaults') {
+        $replicationAlert = @(GetSubResources -ResourceType 'Microsoft.RecoveryServices/vaults/replicationAlertSettings');
+    }
+
+    foreach ($alert in $replicationAlert) {
+        $Assert.AnyOf(
+            $Assert.HasFieldValue($alert, 'Properties.sendToOwners', 'Send'),
+            $Assert.HasFieldValue($alert, 'Properties.customEmailAddresses')
+        )
+    }
+}
+
