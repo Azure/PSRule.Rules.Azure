@@ -20,6 +20,9 @@ What's changed since v1.12.1:
 
 - Bug fixes:
   - Fixed detect strong type requirements for nested deployments. [#1235](https://github.com/Azure/PSRule.Rules.Azure/issues/1235)
+- Azure Recovery Services Vault:
+  - Adding a rule `Azure.RSV.ReplicationAlert` to verify that Recovery Service Vaults
+    have replication alerts configured. [#7](https://github.com/Azure/PSRule.Rules.Azure/issues/7)
 
 ## v1.12.1
 
@@ -97,9 +100,6 @@ What's changed since pre-release v1.12.0-B2201054:
     - Check clusters use Managed Identities. [#1207](https://github.com/Azure/PSRule.Rules.Azure/issues/1207)
     - Check clusters use a SKU with a SLA. [#1208](https://github.com/Azure/PSRule.Rules.Azure/issues/1208)
     - Check clusters use disk encryption. [#1209](https://github.com/Azure/PSRule.Rules.Azure/issues/1209)
-  - Azure Recovery Services Vault:
-    - Adding a rule `Azure.RSV.ReplicationAlert` to verify that Recovery Service Vaults
-      have replication alerts configured.
 - Bug fixes:
   - Fixed false positive of blob container with access unspecified. [#1212](https://github.com/Azure/PSRule.Rules.Azure/issues/1212)
 
