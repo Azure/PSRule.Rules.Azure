@@ -14,15 +14,18 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.12.2:
+
+- New rules:
+  - Azure Recovery Services Vault:
+    - Check vaults have replication alerts configured. [#7](https://github.com/Azure/PSRule.Rules.Azure/issues/7)
+
 ## v1.12.2
 
 What's changed since v1.12.1:
 
 - Bug fixes:
   - Fixed detect strong type requirements for nested deployments. [#1235](https://github.com/Azure/PSRule.Rules.Azure/issues/1235)
-- Azure Recovery Services Vault:
-  - Adding a rule `Azure.RSV.ReplicationAlert` to verify that Recovery Service Vaults
-    have replication alerts configured. [#7](https://github.com/Azure/PSRule.Rules.Azure/issues/7)
 
 ## v1.12.1
 
