@@ -34,6 +34,7 @@ theme:
   - navigation.sections:
       level: 1
   - navigation.tabs
+  - content.code.annotate
 
 nav:
   - Home: index.md
@@ -87,7 +88,9 @@ markdown_extensions:
   - meta
   - md_in_html
   - pymdownx.snippets
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      auto_title: false
+      anchor_linenums: false
   - pymdownx.superfences
   - pymdownx.pathconverter
   - pymdownx.tabbed:
