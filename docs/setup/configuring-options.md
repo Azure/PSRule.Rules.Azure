@@ -19,11 +19,11 @@ To set options, create a new file named `ps-rule.yaml` in the root directory of 
 For configuring in-flight analysis, create a `ps-rule.yaml` in your current working directory.
 
 !!! Tip
-    This file should be commited to your repository so it is available when your pipeline runs.
+    This file should be committed to your repository so it is available when your pipeline runs.
 
 !!! Note
     Use all lowercase characters `ps-rule.yaml` to name the file.
-    On case-senstive file systems, a file with uppercase characters may not be found.
+    On case-sensitive file systems, a file with uppercase characters may not be found.
 
 Configuration can be combined as indented keys.
 Use comments to add context.
