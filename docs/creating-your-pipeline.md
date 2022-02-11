@@ -57,6 +57,10 @@ This will automatically install compatible versions of all dependencies.
 ## Configuration
 
 Configuration options for PSRule for Azure are set within the `ps-rule.yaml` file.
+To set options, create a new file named `ps-rule.yaml` in the root directory of your repository.
+
+!!! Tip
+    This file should be committed to your repository so it is available when your pipeline runs.
 
 ### Expand template parameter files
 
