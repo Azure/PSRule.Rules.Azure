@@ -146,10 +146,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Array), args);
 
-            if (TryJArray(args[0], out JArray jArray))
-                return jArray;
-
-            return new JArray(args[0]);
+            return TryJArray(args[0], out var jArray) ? jArray : new JArray(args[0]);
         }
 
         internal static object Coalesce(ITemplateContext context, object[] args)
@@ -171,7 +168,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Concat), args);
 
             // String
-            if (ExpressionHelpers.TryConvertStringArray(args, out string[] s))
+            if (ExpressionHelpers.TryConvertStringArray(args, out var s))
             {
                 return string.Concat(s);
             }
@@ -217,11 +214,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 return true;
             else if (args[0] is Array aValue)
                 return aValue.Length == 0;
-            else if (TryJArray(args[0], out JArray jArray))
+            else if (TryJArray(args[0], out var jArray))
                 return jArray.Count == 0;
-            else if (ExpressionHelpers.TryString(args[0], out string sValue))
+            else if (ExpressionHelpers.TryString(args[0], out var sValue))
                 return string.IsNullOrEmpty(sValue);
-            else if (TryJObject(args[0], out JObject jObject))
+            else if (TryJObject(args[0], out var jObject))
                 return !jObject.Properties().Any();
 
             return false;
@@ -266,7 +263,7 @@ namespace PSRule.Rules.Azure.Data.Template
             var properties = new JProperty[argCount / 2];
             for (var i = 0; i < argCount / 2; i++)
             {
-                if (!ExpressionHelpers.TryString(args[i * 2], out string name))
+                if (!ExpressionHelpers.TryString(args[i * 2], out var name))
                     throw ArgumentInvalidString(nameof(CreateObject), $"key{i + 1}");
 
                 properties[i] = new JProperty(name, ExpressionHelpers.GetJToken(args[i * 2 + 1]));
@@ -283,7 +280,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return avalue.GetValue(0);
             else if (args[0] is JArray jArray)
                 return jArray[0];
-            else if (ExpressionHelpers.TryString(args[0], out string svalue))
+            else if (ExpressionHelpers.TryString(args[0], out var svalue))
                 return new string(svalue[0], 1);
 
             return null;
@@ -300,7 +297,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 IEnumerable<JToken> intersection = jArray;
                 for (var i = 1; i < args.Length; i++)
                 {
-                    if (!TryJArray(args[i], out JArray value))
+                    if (!TryJArray(args[i], out var value))
                         throw new ArgumentException();
 
                     intersection = intersection.Intersect(value);
@@ -314,7 +311,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 var intersection = jObject.DeepClone() as JObject;
                 for (var i = 1; i < args.Length; i++)
                 {
-                    if (!TryJObject(args[i], out JObject value))
+                    if (!TryJObject(args[i], out var value))
                         throw new ArgumentException();
 
                     foreach (var prop in intersection.Properties().ToArray())
@@ -330,7 +327,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static object Json(ITemplateContext context, object[] args)
         {
-            if (args == null || args.Length != 1 || !ExpressionHelpers.TryString(args[0], out string json))
+            if (args == null || args.Length != 1 || !ExpressionHelpers.TryString(args[0], out var json))
                 throw new ArgumentOutOfRangeException();
 
             return JsonConvert.DeserializeObject(json);
@@ -341,10 +338,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static object Null(ITemplateContext context, object[] args)
         {
-            if (CountArgs(args) > 0)
-                throw ArgumentsOutOfRange(nameof(Null), args);
-
-            return null;
+            return CountArgs(args) > 0 ? throw ArgumentsOutOfRange(nameof(Null), args) : (object)null;
         }
 
         internal static object Last(ITemplateContext context, object[] args)
@@ -356,7 +350,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return avalue.GetValue(avalue.Length - 1);
             else if (args[0] is JArray jArray)
                 return jArray[jArray.Count - 1];
-            else if (ExpressionHelpers.TryString(args[0], out string svalue))
+            else if (ExpressionHelpers.TryString(args[0], out var svalue))
                 return new string(svalue[svalue.Length - 1], 1);
 
             return null;
@@ -367,7 +361,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Length), args);
 
-            if (ExpressionHelpers.TryString(args[0], out string s))
+            if (ExpressionHelpers.TryString(args[0], out var s))
                 return (long)s.Length;
             else if (args[0] is Array a)
                 return (long)a.Length;
@@ -385,12 +379,12 @@ namespace PSRule.Rules.Azure.Data.Template
             long? result = null;
             for (var i = 0; i < args.Length; i++)
             {
-                if (ExpressionHelpers.TryLong(args[i], out long value))
+                if (ExpressionHelpers.TryLong(args[i], out var value))
                 {
                     result = !result.HasValue || value < result ? value : result;
                 }
                 // Enumerate array arg
-                else if (TryJArray(args[i], out JArray array))
+                else if (TryJArray(args[i], out var array))
                 {
                     for (var j = 0; j < array.Count; j++)
                     {
@@ -416,12 +410,12 @@ namespace PSRule.Rules.Azure.Data.Template
             long? result = null;
             for (var i = 0; i < args.Length; i++)
             {
-                if (ExpressionHelpers.TryLong(args[i], out long value))
+                if (ExpressionHelpers.TryLong(args[i], out var value))
                 {
                     result = !result.HasValue || value > result ? value : result;
                 }
                 // Enumerate array arg
-                else if (TryJArray(args[i], out JArray array))
+                else if (TryJArray(args[i], out var array))
                 {
                     for (var j = 0; j < array.Count; j++)
                     {
@@ -444,10 +438,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Range), args);
 
-            if (!ExpressionHelpers.TryLong(args[0], out long startIndex))
+            if (!ExpressionHelpers.TryLong(args[0], out var startIndex))
                 throw ArgumentInvalidInteger(nameof(Range), nameof(startIndex));
 
-            if (!ExpressionHelpers.TryLong(args[1], out long count))
+            if (!ExpressionHelpers.TryLong(args[1], out var count))
                 throw ArgumentInvalidInteger(nameof(Range), nameof(count));
 
             var result = new long[count];
@@ -462,18 +456,15 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Skip), args);
 
-            if (!ExpressionHelpers.TryInt(args[1], out int numberToSkip))
+            if (!ExpressionHelpers.TryInt(args[1], out var numberToSkip))
                 throw ArgumentInvalidInteger(nameof(Skip), nameof(numberToSkip));
 
-            int skip = numberToSkip <= 0 ? 0 : numberToSkip;
-            if (ExpressionHelpers.TryString(args[0], out string soriginalValue))
+            var skip = numberToSkip <= 0 ? 0 : numberToSkip;
+            if (ExpressionHelpers.TryString(args[0], out var soriginalValue))
             {
-                if (skip >= soriginalValue.Length)
-                    return string.Empty;
-
-                return soriginalValue.Substring(skip);
+                return skip >= soriginalValue.Length ? string.Empty : soriginalValue.Substring(skip);
             }
-            else if (TryJArray(args[0], out JArray aoriginalvalue))
+            else if (TryJArray(args[0], out var aoriginalvalue))
             {
                 if (skip >= aoriginalvalue.Count)
                     return new JArray();
@@ -492,11 +483,11 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Take), args);
 
-            if (!ExpressionHelpers.TryInt(args[1], out int numberToTake))
+            if (!ExpressionHelpers.TryInt(args[1], out var numberToTake))
                 throw new ArgumentException();
 
-            int take = numberToTake <= 0 ? 0 : numberToTake;
-            if (ExpressionHelpers.TryString(args[0], out string soriginalValue))
+            var take = numberToTake <= 0 ? 0 : numberToTake;
+            if (ExpressionHelpers.TryString(args[0], out var soriginalValue))
             {
                 if (take <= 0)
                     return string.Empty;
@@ -504,7 +495,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 take = take > soriginalValue.Length ? soriginalValue.Length : take;
                 return soriginalValue.Substring(0, take);
             }
-            else if (TryJArray(args[0], out JArray aoriginalvalue))
+            else if (TryJArray(args[0], out var aoriginalvalue))
             {
                 if (take <= 0)
                     return new JArray();
@@ -527,13 +518,13 @@ namespace PSRule.Rules.Azure.Data.Template
             // Array
             if (args[0] is Array)
             {
-                Array[] arrays = new Array[args.Length];
+                var arrays = new Array[args.Length];
                 args.CopyTo(arrays, 0);
                 return Union(arrays);
             }
             else if (args[0] is JArray)
             {
-                JArray[] arrays = new JArray[args.Length];
+                var arrays = new JArray[args.Length];
                 for (var i = 0; i < arrays.Length; i++)
                 {
                     arrays[i] = args[i] as JArray;
@@ -623,10 +614,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Parameters), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string parameterName))
+            if (!ExpressionHelpers.TryString(args[0], out var parameterName))
                 throw ArgumentFormatInvalid(nameof(Parameters));
 
-            if (!context.TryParameter(parameterName, out object result))
+            if (!context.TryParameter(parameterName, out var result))
                 throw new KeyNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ParameterNotFound, parameterName));
 
             return result;
@@ -640,10 +631,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Variables), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string variableName))
+            if (!ExpressionHelpers.TryString(args[0], out var variableName))
                 throw ArgumentFormatInvalid(nameof(Variables));
 
-            if (!context.TryVariable(variableName, out object result))
+            if (!context.TryVariable(variableName, out var result))
                 throw new KeyNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.VariableNotFound, variableName));
 
             return result;
@@ -667,7 +658,7 @@ namespace PSRule.Rules.Azure.Data.Template
             var segments = new string[args.Length];
             for (var i = 0; i < segments.Length; i++)
             {
-                if (!ExpressionHelpers.TryString(args[i], out string value))
+                if (!ExpressionHelpers.TryString(args[i], out var value))
                     throw ArgumentFormatInvalid(nameof(ExtensionResourceId));
 
                 segments[i] = value;
@@ -697,7 +688,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (argCount < 2 || argCount > 3)
                 throw ArgumentsOutOfRange(nameof(List), args);
 
-            ExpressionHelpers.TryString(args[0], out string resourceId);
+            ExpressionHelpers.TryString(args[0], out var resourceId);
             return new MockList(resourceId);
         }
 
@@ -710,13 +701,13 @@ namespace PSRule.Rules.Azure.Data.Template
             if (argCount < 3 || argCount > 5)
                 throw ArgumentsOutOfRange(nameof(PickZones), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string providerNamespace))
+            if (!ExpressionHelpers.TryString(args[0], out var providerNamespace))
                 throw ArgumentInvalidString(nameof(PickZones), "providerNamespace");
 
-            if (!ExpressionHelpers.TryString(args[1], out string resourceType))
+            if (!ExpressionHelpers.TryString(args[1], out var resourceType))
                 throw ArgumentInvalidString(nameof(PickZones), "resourceType");
 
-            if (!ExpressionHelpers.TryString(args[2], out string location))
+            if (!ExpressionHelpers.TryString(args[2], out var location))
                 throw ArgumentInvalidString(nameof(PickZones), "location");
 
             var numberOfZones = 1;
@@ -751,7 +742,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (argCount < 1 || argCount > 2)
                 throw ArgumentsOutOfRange(nameof(Providers), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string providerNamespace))
+            if (!ExpressionHelpers.TryString(args[0], out var providerNamespace))
                 throw ArgumentFormatInvalid(nameof(Providers));
 
             string resourceType = null;
@@ -774,7 +765,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (argCount < 1 || argCount > 3)
                 throw ArgumentsOutOfRange(nameof(Reference), args);
 
-            ExpressionHelpers.TryString(args[0], out string resourceType);
+            ExpressionHelpers.TryString(args[0], out var resourceType);
             return new MockResource(resourceType);
         }
 
@@ -792,14 +783,14 @@ namespace PSRule.Rules.Azure.Data.Template
             var segments = new string[args.Length];
             for (var i = 0; i < segments.Length; i++)
             {
-                if (!ExpressionHelpers.TryString(args[i], out string value))
+                if (!ExpressionHelpers.TryString(args[i], out var value))
                     throw ArgumentFormatInvalid(nameof(ResourceId));
 
                 segments[i] = value;
             }
 
-            string subscriptionId = context.Subscription.SubscriptionId;
-            string resourceGroup = context.ResourceGroup.Name;
+            var subscriptionId = context.Subscription.SubscriptionId;
+            var resourceGroup = context.ResourceGroup.Name;
             string resourceType = null;
             string nameParts = null;
 
@@ -821,7 +812,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     if ((segments.Length - 1 - i) != nameDepth)
                         throw new TemplateFunctionException(nameof(ResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
 
-                    string[] name = new string[nameDepth];
+                    var name = new string[nameDepth];
                     System.Array.Copy(segments, i + 1, name, 0, nameDepth);
                     nameParts = string.Join("/", name);
                 }
@@ -843,13 +834,13 @@ namespace PSRule.Rules.Azure.Data.Template
             var segments = new string[args.Length];
             for (var i = 0; i < segments.Length; i++)
             {
-                if (!ExpressionHelpers.TryString(args[i], out string value))
+                if (!ExpressionHelpers.TryString(args[i], out var value))
                     throw ArgumentFormatInvalid(nameof(SubscriptionResourceId));
 
                 segments[i] = value;
             }
 
-            string subscriptionId = context.Subscription.SubscriptionId;
+            var subscriptionId = context.Subscription.SubscriptionId;
             string resourceType = null;
             string nameParts = null;
 
@@ -867,7 +858,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     if ((segments.Length - 1 - i) != nameDepth)
                         throw new TemplateFunctionException(nameof(SubscriptionResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
 
-                    string[] name = new string[nameDepth];
+                    var name = new string[nameDepth];
                     System.Array.Copy(segments, i + 1, name, 0, nameDepth);
                     nameParts = string.Join("/", name);
                 }
@@ -889,7 +880,7 @@ namespace PSRule.Rules.Azure.Data.Template
             var segments = new string[args.Length];
             for (var i = 0; i < segments.Length; i++)
             {
-                if (!ExpressionHelpers.TryString(args[i], out string value))
+                if (!ExpressionHelpers.TryString(args[i], out var value))
                     throw ArgumentFormatInvalid(nameof(TenantResourceId));
 
                 segments[i] = value;
@@ -908,7 +899,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     if ((segments.Length - 1 - i) != nameDepth)
                         throw new TemplateFunctionException(nameof(TenantResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
 
-                    string[] name = new string[nameDepth];
+                    var name = new string[nameDepth];
                     System.Array.Copy(segments, i + 1, name, 0, nameDepth);
                     nameParts = string.Join("/", name);
                 }
@@ -973,10 +964,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Add), args);
 
-            if (!ExpressionHelpers.TryConvertLong(args[0], out long operand1))
+            if (!ExpressionHelpers.TryConvertLong(args[0], out var operand1))
                 throw ArgumentInvalidInteger(nameof(Add), "operand1");
 
-            if (!ExpressionHelpers.TryConvertLong(args[1], out long operand2))
+            if (!ExpressionHelpers.TryConvertLong(args[1], out var operand2))
                 throw ArgumentInvalidInteger(nameof(Add), "operand2");
 
             return operand1 + operand2;
@@ -984,12 +975,12 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static object CopyIndex(ITemplateContext context, object[] args)
         {
-            string loopName = CountArgs(args) >= 1 && ExpressionHelpers.TryString(args[0], out string svalue) ? svalue : null;
-            int offset = CountArgs(args) == 1 && ExpressionHelpers.TryConvertInt(args[0], out int ivalue) ? ivalue : 0;
-            if (CountArgs(args) == 2 && offset == 0 && ExpressionHelpers.TryConvertInt(args[1], out int ivalue2))
+            var loopName = CountArgs(args) >= 1 && ExpressionHelpers.TryString(args[0], out var svalue) ? svalue : null;
+            var offset = CountArgs(args) == 1 && ExpressionHelpers.TryConvertInt(args[0], out var ivalue) ? ivalue : 0;
+            if (CountArgs(args) == 2 && offset == 0 && ExpressionHelpers.TryConvertInt(args[1], out var ivalue2))
                 offset = ivalue2;
 
-            if (!context.CopyIndex.TryGetValue(loopName, out TemplateContext.CopyIndexState value))
+            if (!context.CopyIndex.TryGetValue(loopName, out var value))
                 throw new ArgumentException();
 
             return offset + value.Index;
@@ -1000,10 +991,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Div), args);
 
-            if (!ExpressionHelpers.TryConvertLong(args[0], out long operand1))
+            if (!ExpressionHelpers.TryConvertLong(args[0], out var operand1))
                 throw ArgumentInvalidInteger(nameof(Div), "operand1");
 
-            if (!ExpressionHelpers.TryConvertLong(args[1], out long operand2))
+            if (!ExpressionHelpers.TryConvertLong(args[1], out var operand2))
                 throw ArgumentInvalidInteger(nameof(Div), "operand2");
 
             if (operand2 == 0)
@@ -1017,9 +1008,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Float), args);
 
-            if (ExpressionHelpers.TryConvertLong(args[0], out long ivalue))
+            if (ExpressionHelpers.TryConvertLong(args[0], out var ivalue))
                 return (float)ivalue;
-            else if (ExpressionHelpers.TryString(args[0], out string svalue))
+            else if (ExpressionHelpers.TryString(args[0], out var svalue))
                 return float.Parse(svalue, new CultureInfo("en-us"));
 
             throw ArgumentInvalidInteger(nameof(Float), "valueToConvert");
@@ -1030,7 +1021,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Int), args);
 
-            if (ExpressionHelpers.TryConvertLong(args[0], out long value))
+            if (ExpressionHelpers.TryConvertLong(args[0], out var value))
                 return value;
 
             throw ArgumentInvalidInteger(nameof(Int), "valueToConvert");
@@ -1041,10 +1032,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Mod), args);
 
-            if (!ExpressionHelpers.TryConvertLong(args[0], out long operand1))
+            if (!ExpressionHelpers.TryConvertLong(args[0], out var operand1))
                 throw ArgumentInvalidInteger(nameof(Mod), "operand1");
 
-            if (!ExpressionHelpers.TryConvertLong(args[1], out long operand2))
+            if (!ExpressionHelpers.TryConvertLong(args[1], out var operand2))
                 throw ArgumentInvalidInteger(nameof(Mod), "operand2");
 
             if (operand2 == 0)
@@ -1058,10 +1049,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Mul), args);
 
-            if (!ExpressionHelpers.TryConvertLong(args[0], out long operand1))
+            if (!ExpressionHelpers.TryConvertLong(args[0], out var operand1))
                 throw ArgumentInvalidInteger(nameof(Mul), "operand1");
 
-            if (!ExpressionHelpers.TryConvertLong(args[1], out long operand2))
+            if (!ExpressionHelpers.TryConvertLong(args[1], out var operand2))
                 throw ArgumentInvalidInteger(nameof(Mul), "operand2");
 
             return operand1 * operand2;
@@ -1072,10 +1063,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Sub), args);
 
-            if (!ExpressionHelpers.TryConvertLong(args[0], out long operand1))
+            if (!ExpressionHelpers.TryConvertLong(args[0], out var operand1))
                 throw ArgumentInvalidInteger(nameof(Sub), "operand1");
 
-            if (!ExpressionHelpers.TryConvertLong(args[1], out long operand2))
+            if (!ExpressionHelpers.TryConvertLong(args[1], out var operand2))
                 throw ArgumentInvalidInteger(nameof(Sub), "operand2");
 
             return operand1 - operand2;
@@ -1104,13 +1095,13 @@ namespace PSRule.Rules.Azure.Data.Template
                 return false;
 
             // String and int
-            if (ExpressionHelpers.TryString(args[0], out string s1) && ExpressionHelpers.TryString(args[1], out string s2))
+            if (ExpressionHelpers.TryString(args[0], out var s1) && ExpressionHelpers.TryString(args[1], out var s2))
                 return s1 == s2;
             else if (ExpressionHelpers.TryString(args[0], out _) || ExpressionHelpers.TryString(args[1], out _))
                 return false;
-            else if (ExpressionHelpers.TryLong(args[0], out long i1) && ExpressionHelpers.TryLong(args[1], out long i2))
+            else if (ExpressionHelpers.TryLong(args[0], out var i1) && ExpressionHelpers.TryLong(args[1], out var i2))
                 return i1 == i2;
-            else if (ExpressionHelpers.TryLong(args[0], out long _) || ExpressionHelpers.TryLong(args[1], out long _))
+            else if (ExpressionHelpers.TryLong(args[0], out var _) || ExpressionHelpers.TryLong(args[1], out var _))
                 return false;
 
             // JTokens
@@ -1177,10 +1168,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (argCount < 2 || argCount > 3)
                 throw ArgumentsOutOfRange(nameof(DateTimeAdd), args);
 
-            if (!ExpressionHelpers.TryConvertDateTime(args[0], out DateTime startTime))
+            if (!ExpressionHelpers.TryConvertDateTime(args[0], out var startTime))
                 throw ArgumentInvalidString(nameof(DateTimeAdd), "base");
 
-            if (!ExpressionHelpers.TryString(args[1], out string duration))
+            if (!ExpressionHelpers.TryString(args[1], out var duration))
                 throw ArgumentInvalidString(nameof(DateTimeAdd), nameof(duration));
 
             string format = null;
@@ -1220,7 +1211,7 @@ namespace PSRule.Rules.Azure.Data.Template
             for (var i = 0; i < args.Length; i++)
             {
                 var expression = GetExpression(context, args[i]);
-                if (!ExpressionHelpers.TryBool(expression, out bool bValue) || !bValue)
+                if (!ExpressionHelpers.TryBool(expression, out var bValue) || !bValue)
                     return false;
             }
             return true;
@@ -1234,7 +1225,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args == null || args.Length != 1)
                 throw ArgumentsOutOfRange(nameof(Bool), args);
 
-            if (ExpressionHelpers.TryConvertBool(args[0], out bool value))
+            if (ExpressionHelpers.TryConvertBool(args[0], out var value))
                 return value;
 
             throw ArgumentFormatInvalid(nameof(Bool));
@@ -1260,7 +1251,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(If), args);
 
             var expression = GetExpression(context, args[0]);
-            if (ExpressionHelpers.TryBool(expression, out bool condition))
+            if (ExpressionHelpers.TryBool(expression, out var condition))
                 return condition ? GetExpression(context, args[1]) : GetExpression(context, args[2]);
 
             throw ArgumentFormatInvalid(nameof(If));
@@ -1274,7 +1265,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args == null || args.Length != 1)
                 throw ArgumentsOutOfRange(nameof(Not), args);
 
-            if (!ExpressionHelpers.TryBool(args[0], out bool value))
+            if (!ExpressionHelpers.TryBool(args[0], out var value))
                 throw ArgumentInvalidBoolean(nameof(Not), "arg1");
 
             return !value;
@@ -1290,7 +1281,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             for (var i = 0; i < args.Length; i++)
             {
-                if (ExpressionHelpers.TryBool(args[i], out bool value) && value)
+                if (ExpressionHelpers.TryBool(args[i], out var value) && value)
                     return true;
             }
             return false;
@@ -1316,7 +1307,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Base64), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string inputString))
+            if (!ExpressionHelpers.TryString(args[0], out var inputString))
                 throw ArgumentInvalidString(nameof(Base64), nameof(inputString));
 
             return Convert.ToBase64String(Encoding.UTF8.GetBytes(inputString));
@@ -1327,7 +1318,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Base64ToJson), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string base64Value))
+            if (!ExpressionHelpers.TryString(args[0], out var base64Value))
                 throw ArgumentInvalidString(nameof(Base64ToJson), nameof(base64Value));
 
             return JObject.Parse(Encoding.UTF8.GetString(Convert.FromBase64String(base64Value)));
@@ -1338,7 +1329,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Base64ToString), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string base64Value))
+            if (!ExpressionHelpers.TryString(args[0], out var base64Value))
                 throw ArgumentInvalidString(nameof(Base64ToString), nameof(base64Value));
 
             return Encoding.UTF8.GetString(Convert.FromBase64String(base64Value));
@@ -1349,7 +1340,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(DataUri), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string value))
+            if (!ExpressionHelpers.TryString(args[0], out var value))
                 throw new ArgumentException();
 
             return string.Concat("data:text/plain;charset=utf8;base64,", Convert.ToBase64String(Encoding.UTF8.GetBytes(value)));
@@ -1360,7 +1351,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(DataUriToString), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string value))
+            if (!ExpressionHelpers.TryString(args[0], out var value))
                 throw new ArgumentException();
 
             var scheme = value.Substring(0, 5);
@@ -1382,7 +1373,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static object EndsWith(ITemplateContext context, object[] args)
         {
-            if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out string s1) || !ExpressionHelpers.TryString(args[1], out string s2))
+            if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out var s1) || !ExpressionHelpers.TryString(args[1], out var s2))
                 throw new ArgumentOutOfRangeException();
 
             return s1.EndsWith(s2, StringComparison.OrdinalIgnoreCase);
@@ -1393,7 +1384,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) < 2)
                 throw ArgumentsOutOfRange(nameof(Format), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string formatString))
+            if (!ExpressionHelpers.TryString(args[0], out var formatString))
                 throw new ArgumentException();
 
             var remaining = new object[args.Length - 1];
@@ -1417,10 +1408,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(IndexOf), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string stringToSearch))
+            if (!ExpressionHelpers.TryString(args[0], out var stringToSearch))
                 throw new ArgumentException();
 
-            if (!ExpressionHelpers.TryString(args[1], out string stringToFind))
+            if (!ExpressionHelpers.TryString(args[1], out var stringToFind))
                 throw new ArgumentException();
 
             return (long)stringToSearch.IndexOf(stringToFind, StringComparison.OrdinalIgnoreCase);
@@ -1431,10 +1422,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(LastIndexOf), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string stringToSearch))
+            if (!ExpressionHelpers.TryString(args[0], out var stringToSearch))
                 throw new ArgumentException();
 
-            if (!ExpressionHelpers.TryString(args[1], out string stringToFind))
+            if (!ExpressionHelpers.TryString(args[1], out var stringToFind))
                 throw new ArgumentException();
 
             return (long)stringToSearch.LastIndexOf(stringToFind, StringComparison.OrdinalIgnoreCase);
@@ -1454,17 +1445,17 @@ namespace PSRule.Rules.Azure.Data.Template
             if (argCount < 2 || argCount > 3)
                 throw ArgumentsOutOfRange(nameof(PadLeft), args);
 
-            string paddingCharacter = " ";
+            var paddingCharacter = " ";
 
-            if (!ExpressionHelpers.TryInt(args[1], out int totalLength))
+            if (!ExpressionHelpers.TryInt(args[1], out var totalLength))
                 throw ArgumentInvalidInteger(nameof(PadLeft), "totalLength");
 
             if (argCount == 3 && (!ExpressionHelpers.TryString(args[2], out paddingCharacter) || paddingCharacter.Length > 1))
                 throw new ArgumentException();
 
-            if (ExpressionHelpers.TryString(args[0], out string svalue))
+            if (ExpressionHelpers.TryString(args[0], out var svalue))
                 return svalue.PadLeft(totalLength, paddingCharacter[0]);
-            else if (ExpressionHelpers.TryInt(args[1], out int ivalue))
+            else if (ExpressionHelpers.TryInt(args[1], out var ivalue))
                 return ivalue.ToString(new CultureInfo("en-us")).PadLeft(totalLength, paddingCharacter[0]);
 
             throw new ArgumentException();
@@ -1472,7 +1463,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static object StartsWith(ITemplateContext context, object[] args)
         {
-            if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out string s1) || !ExpressionHelpers.TryString(args[1], out string s2))
+            if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out var s1) || !ExpressionHelpers.TryString(args[1], out var s2))
                 throw new ArgumentOutOfRangeException();
 
             return s1.StartsWith(s2, StringComparison.OrdinalIgnoreCase);
@@ -1483,7 +1474,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args == null || args.Length != 1)
                 throw ArgumentsOutOfRange(nameof(String), args);
 
-            if (ExpressionHelpers.TryBoolString(args[0], out string value))
+            if (ExpressionHelpers.TryBoolString(args[0], out var value))
                 return value;
 
             return JsonConvert.SerializeObject(args[0]);
@@ -1491,12 +1482,12 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static object Substring(ITemplateContext context, object[] args)
         {
-            if (args == null || args.Length < 1 || args.Length > 3 || !ExpressionHelpers.TryString(args[0], out string value))
+            if (args == null || args.Length < 1 || args.Length > 3 || !ExpressionHelpers.TryString(args[0], out var value))
                 throw ArgumentsOutOfRange(nameof(Substring), args);
 
-            if (args.Length == 2 && ExpressionHelpers.TryInt(args[1], out int startIndex))
+            if (args.Length == 2 && ExpressionHelpers.TryInt(args[1], out var startIndex))
                 return value.Substring(startIndex);
-            else if (args.Length == 3 && ExpressionHelpers.TryInt(args[1], out int startIndex2) && ExpressionHelpers.TryInt(args[2], out int length))
+            else if (args.Length == 3 && ExpressionHelpers.TryInt(args[1], out var startIndex2) && ExpressionHelpers.TryInt(args[2], out var length))
                 return value.Substring(startIndex2, length);
 
             throw ArgumentFormatInvalid(nameof(Substring));
@@ -1510,7 +1501,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args[0] is char c)
                 return new string(char.ToLower(c, Thread.CurrentThread.CurrentCulture), 1);
 
-            if (!ExpressionHelpers.TryString(args[0], out string stringToChange))
+            if (!ExpressionHelpers.TryString(args[0], out var stringToChange))
                 throw new ArgumentException();
 
             return stringToChange.ToLower(AzureCulture);
@@ -1524,7 +1515,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args[0] is char c)
                 return new string(char.ToUpper(c, Thread.CurrentThread.CurrentCulture), 1);
 
-            if (!ExpressionHelpers.TryString(args[0], out string stringToChange))
+            if (!ExpressionHelpers.TryString(args[0], out var stringToChange))
                 throw new ArgumentException();
 
             return stringToChange.ToUpper(AzureCulture);
@@ -1535,7 +1526,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Trim), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string stringToTrim))
+            if (!ExpressionHelpers.TryString(args[0], out var stringToTrim))
                 throw new ArgumentException();
 
             return stringToTrim.Trim();
@@ -1554,10 +1545,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(Uri), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string baseUri))
+            if (!ExpressionHelpers.TryString(args[0], out var baseUri))
                 throw ArgumentInvalidString(nameof(Uri), "baseUri");
 
-            if (!ExpressionHelpers.TryString(args[1], out string relativeUri))
+            if (!ExpressionHelpers.TryString(args[1], out var relativeUri))
                 throw ArgumentInvalidString(nameof(Uri), "relativeUri");
 
             var result = new Uri(new Uri(baseUri), relativeUri);
@@ -1569,7 +1560,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(UriComponent), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string stringToEncode))
+            if (!ExpressionHelpers.TryString(args[0], out var stringToEncode))
                 throw ArgumentInvalidString(nameof(UriComponent), "stringToEncode");
 
             return HttpUtility.UrlEncode(stringToEncode);
@@ -1580,7 +1571,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(UriComponentToString), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string uriEncodedString))
+            if (!ExpressionHelpers.TryString(args[0], out var uriEncodedString))
                 throw ArgumentInvalidString(nameof(UriComponentToString), "uriEncodedString");
 
             return HttpUtility.UrlDecode(uriEncodedString);
@@ -1591,7 +1582,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 3)
                 throw ArgumentsOutOfRange(nameof(Replace), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out string originalString) || !ExpressionHelpers.TryString(args[1], out string oldString) || !ExpressionHelpers.TryString(args[2], out string newString))
+            if (!ExpressionHelpers.TryString(args[0], out var originalString) || !ExpressionHelpers.TryString(args[1], out var oldString) || !ExpressionHelpers.TryString(args[2], out var newString))
                 throw new ArgumentException();
 
             return originalString.Replace(oldString, newString);
@@ -1599,11 +1590,11 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static object Split(ITemplateContext context, object[] args)
         {
-            if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out string value))
+            if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out var value))
                 throw new ArgumentOutOfRangeException();
 
             string[] delimiter = null;
-            if (ExpressionHelpers.TryString(args[1], out string single))
+            if (ExpressionHelpers.TryString(args[1], out var single))
             {
                 delimiter = new string[] { single };
             }
@@ -1612,7 +1603,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 delimiter = new string[delimiters.Length];
                 delimiters.CopyTo(delimiter, 0);
             }
-            else if (TryJArray(args[1], out JArray jArray))
+            else if (TryJArray(args[1], out var jArray))
             {
                 delimiter = jArray.Values<string>().ToArray();
             }
@@ -1628,9 +1619,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static int Compare(object left, object right)
         {
-            if (ExpressionHelpers.TryLong(left, out long longLeft) && ExpressionHelpers.TryLong(right, out long longRight))
+            if (ExpressionHelpers.TryLong(left, out var longLeft) && ExpressionHelpers.TryLong(right, out var longRight))
                 return Comparer<long>.Default.Compare(longLeft, longRight);
-            else if (ExpressionHelpers.TryString(left, out string stringLeft) && ExpressionHelpers.TryString(right, out string stringRight))
+            else if (ExpressionHelpers.TryString(left, out var stringLeft) && ExpressionHelpers.TryString(right, out var stringRight))
                 return StringComparer.Ordinal.Compare(stringLeft, stringRight);
 
             return Comparer.Default.Compare(left, right);

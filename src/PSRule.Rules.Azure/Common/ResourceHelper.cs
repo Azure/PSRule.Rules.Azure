@@ -30,10 +30,10 @@ namespace PSRule.Rules.Azure
             var i = 1;
             if (!(ConsumeSubscriptionIdPart(idParts, ref i) &&
                 ConsumeResourceGroupPart(idParts, ref i) &&
-                ConsumeProvidersPart(idParts, ref i, out string provider, out string type)))
+                ConsumeProvidersPart(idParts, ref i, out var provider, out var type)))
                 return Array.Empty<string>();
 
-            ConsumeSubResourceType(idParts, ref i, out string[] subTypes);
+            ConsumeSubResourceType(idParts, ref i, out var subTypes);
             if (subTypes == null || subTypes.Length == 0)
                 return new string[] { provider, type };
 

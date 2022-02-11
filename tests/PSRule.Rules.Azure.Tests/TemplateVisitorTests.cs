@@ -157,7 +157,7 @@ namespace PSRule.Rules.Azure
             const string expected2 = "Microsoft.KeyVault/vaults/keyvault1";
 
             var actual = JObject.Parse("{ \"type\": \"Microsoft.ServiceBus/namespaces/topics\", \"name\": \"besubns/demo1\" }");
-            TemplateContext.TryParentResourceId(actual, out string[] resourceId);
+            TemplateContext.TryParentResourceId(actual, out var resourceId);
             Assert.Equal(expected1, resourceId[0]);
 
             actual = JObject.Parse("{ \"type\": \"Microsoft.KeyVault/vaults\", \"name\": \"keyvault1\" }");
@@ -376,7 +376,7 @@ namespace PSRule.Rules.Azure
         {
             var context = new PipelineContext(PSRuleOption.Default, null);
             var helper = new TemplateHelper(context, "deployment");
-            helper.ProcessTemplate(templateFile, parametersFile, out TemplateContext templateContext);
+            helper.ProcessTemplate(templateFile, parametersFile, out var templateContext);
             return templateContext.GetResources().Select(i => i.Value).ToArray();
         }
 
@@ -384,7 +384,7 @@ namespace PSRule.Rules.Azure
         {
             var context = new PipelineContext(option, null);
             var helper = new TemplateHelper(context, "deployment");
-            helper.ProcessTemplate(templateFile, parametersFile, out TemplateContext templateContext);
+            helper.ProcessTemplate(templateFile, parametersFile, out var templateContext);
             return templateContext.GetResources().Select(i => i.Value).ToArray();
         }
 

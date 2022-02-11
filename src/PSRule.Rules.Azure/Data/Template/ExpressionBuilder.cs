@@ -38,7 +38,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private ExpressionFnOuter Lexer(TokenStream stream)
         {
-            if (stream.TryTokenType(ExpressionTokenType.Element, out ExpressionToken token))
+            if (stream.TryTokenType(ExpressionTokenType.Element, out var token))
                 return Element(stream, token);
 
             if (stream.TryTokenType(ExpressionTokenType.String, out token))
@@ -57,7 +57,7 @@ namespace PSRule.Rules.Azure.Data.Template
             // function
             if (stream.Skip(ExpressionTokenType.GroupStart))
             {
-                if (!_Functions.TryDescriptor(element.Content, out IFunctionDescriptor descriptor))
+                if (!_Functions.TryDescriptor(element.Content, out var descriptor))
                     throw new NotImplementedException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.FunctionNotFound, element.Content));
 
                 var fnParams = new List<ExpressionFnOuter>();
@@ -68,13 +68,13 @@ namespace PSRule.Rules.Azure.Data.Template
                 var aParams = fnParams.ToArray();
                 result = (context) => descriptor.Invoke(context, aParams);
 
-                while (stream.TryTokenType(ExpressionTokenType.IndexStart, out ExpressionToken token) || stream.TryTokenType(ExpressionTokenType.Property, out token))
+                while (stream.TryTokenType(ExpressionTokenType.IndexStart, out var token) || stream.TryTokenType(ExpressionTokenType.Property, out token))
                 {
                     if (token.Type == ExpressionTokenType.IndexStart)
                     {
                         // Invert: index(fn1(p1, p2), 0)
                         var inner = Inner(stream);
-                        ExpressionFnOuter outer = AddIndex(result, inner);
+                        var outer = AddIndex(result, inner);
                         result = outer;
 
                         stream.Skip(ExpressionTokenType.IndexEnd);
@@ -82,7 +82,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     else if (token.Type == ExpressionTokenType.Property)
                     {
                         // Invert: property(fn1(p1, p2), "name")
-                        ExpressionFnOuter outer = AddProperty(result, token.Content);
+                        var outer = AddProperty(result, token.Content);
                         result = outer;
                     }
                 }
@@ -98,7 +98,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private ExpressionFnOuter Inner(TokenStream stream)
         {
             ExpressionFnOuter result = null;
-            if (stream.TryTokenType(ExpressionTokenType.String, out ExpressionToken token))
+            if (stream.TryTokenType(ExpressionTokenType.String, out var token))
                 return String(token);
 
             if (stream.TryTokenType(ExpressionTokenType.Numeric, out token))
@@ -130,21 +130,21 @@ namespace PSRule.Rules.Azure.Data.Template
             var source = inner(context);
             var indexResult = index(context);
 
-            if (source is JArray jArray && ExpressionHelpers.TryConvertInt(indexResult, out int arrayIndex))
+            if (source is JArray jArray && ExpressionHelpers.TryConvertInt(indexResult, out var arrayIndex))
                 return jArray[arrayIndex];
 
-            if (source is JObject jObject && ExpressionHelpers.TryString(indexResult, out string propertyName))
+            if (source is JObject jObject && ExpressionHelpers.TryString(indexResult, out var propertyName))
             {
-                if (!jObject.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out JToken property))
+                if (!jObject.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var property))
                     throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
 
                 return property;
             }
 
-            if (source is MockNode mockNode && ExpressionHelpers.TryConvertString(indexResult, out string memberName))
+            if (source is MockNode mockNode && ExpressionHelpers.TryConvertString(indexResult, out var memberName))
                 return mockNode.GetMember(memberName);
 
-            if (ExpressionHelpers.TryString(indexResult, out propertyName) && TryPropertyOrField(source, propertyName, out object value))
+            if (ExpressionHelpers.TryString(indexResult, out propertyName) && TryPropertyOrField(source, propertyName, out var value))
                 return value;
 
             throw new InvalidOperationException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.IndexInvalid, indexResult));
@@ -163,7 +163,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             if (result is JObject jObject)
             {
-                if (!jObject.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out JToken property))
+                if (!jObject.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var property))
                     throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
 
                 return property;
@@ -181,7 +181,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (result is MockNode mockNode)
                 return mockNode.GetMember(propertyName);
 
-            if (TryPropertyOrField(result, propertyName, out object value))
+            if (TryPropertyOrField(result, propertyName, out var value))
                 return value;
 
             throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));

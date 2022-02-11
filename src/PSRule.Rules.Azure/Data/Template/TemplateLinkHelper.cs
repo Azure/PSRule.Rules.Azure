@@ -44,7 +44,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return null;
 
             // Check if metadata property exists
-            if (!((TryMetadata(parameterObject, rootedParameterFile, out JObject metadata, out string templateFile)) || TryTemplateByName(parameterFile, out templateFile)))
+            if (!(TryMetadata(parameterObject, rootedParameterFile, out var metadata, out var templateFile) || TryTemplateByName(parameterFile, out templateFile)))
             {
                 if (metadata == null && !_SkipUnlinked)
                     throw new InvalidTemplateLinkException(string.Format(CultureInfo.CurrentCulture, PSRuleResources.MetadataNotFound, parameterFile));
@@ -58,10 +58,10 @@ namespace PSRule.Rules.Azure.Data.Template
             var templateLink = new TemplateLink(templateFile, rootedParameterFile);
 
             // Populate remaining properties
-            if (TryStringProperty(metadata, PROPERTYNAME_NAME, out string name))
+            if (TryStringProperty(metadata, PROPERTYNAME_NAME, out var name))
                 templateLink.Name = name;
 
-            if (TryStringProperty(metadata, PROPERTYNAME_DESCRIPTION, out string description))
+            if (TryStringProperty(metadata, PROPERTYNAME_DESCRIPTION, out var description))
                 templateLink.Description = description;
 
             AddMetadata(templateLink, metadata);
@@ -101,10 +101,9 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         private static bool IsParameterFile(JObject value)
         {
-            if (!value.TryGetValue(PROPERTYNAME_SCHEMA, out JToken token) || !Uri.TryCreate(token.Value<string>(), UriKind.Absolute, out Uri schemaUri))
-                return false;
-
-            return StringComparer.OrdinalIgnoreCase.Equals(schemaUri.Host, "schema.management.azure.com") &&
+            return value.TryGetValue(PROPERTYNAME_SCHEMA, out var token) &&
+                Uri.TryCreate(token.Value<string>(), UriKind.Absolute, out var schemaUri) &&
+                StringComparer.OrdinalIgnoreCase.Equals(schemaUri.Host, "schema.management.azure.com") &&
                 schemaUri.PathAndQuery.StartsWith("/schemas/", StringComparison.OrdinalIgnoreCase) &&
                 IsDeploymentParameterFile(schemaUri);
         }
@@ -121,7 +120,7 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             metadata = null;
             templateFile = null;
-            if (parameterObject.TryGetValue(PROPERTYNAME_METADATA, out JToken metadataToken) && metadataToken is JObject property)
+            if (parameterObject.TryGetValue(PROPERTYNAME_METADATA, out var metadataToken) && metadataToken is JObject property)
             {
                 metadata = property;
                 return TryTemplateFile(metadata, parameterFile, out templateFile);
@@ -176,7 +175,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private static bool TryStringProperty(JObject o, string propertyName, out string value)
         {
             value = null;
-            return o != null && o.TryGetValue(propertyName, out JToken token) && TryString(token, out value);
+            return o != null && o.TryGetValue(propertyName, out var token) && TryString(token, out value);
         }
 
         private static bool TryString(JToken token, out string value)

@@ -43,7 +43,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (TryString(o, out value))
                 return true;
 
-            if (TryLong(o, out long ivalue))
+            if (TryLong(o, out var ivalue))
             {
                 value = ivalue.ToString(Thread.CurrentThread.CurrentCulture);
                 return true;
@@ -54,7 +54,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static bool TryConvertStringArray(object[] o, out string[] value)
         {
             value = Array.Empty<string>();
-            if (o == null || o.Length == 0 || !TryConvertString(o[0], out string s))
+            if (o == null || o.Length == 0 || !TryConvertString(o[0], out var s))
                 return false;
 
             value = new string[o.Length];
@@ -99,7 +99,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (TryLong(o, out value))
                 return true;
 
-            if (TryString(o, out string svalue) && long.TryParse(svalue, out value))
+            if (TryString(o, out var svalue) && long.TryParse(svalue, out value))
                 return true;
 
             value = default(long);
@@ -138,13 +138,13 @@ namespace PSRule.Rules.Azure.Data.Template
             if (TryInt(o, out value))
                 return true;
 
-            if (TryLong(o, out long lvalue))
+            if (TryLong(o, out var lvalue))
             {
                 value = (int)lvalue;
                 return true;
             }
 
-            if (TryString(o, out string svalue) && int.TryParse(svalue, out value))
+            if (TryString(o, out var svalue) && int.TryParse(svalue, out value))
                 return true;
 
             value = default(int);
@@ -178,16 +178,13 @@ namespace PSRule.Rules.Azure.Data.Template
             if (TryBool(o, out value))
                 return true;
 
-            if (TryLong(o, out long ivalue))
+            if (TryLong(o, out var ivalue))
             {
                 value = ivalue > 0;
                 return true;
             }
 
-            if (TryString(o, out string svalue) && bool.TryParse(svalue, out value))
-                return true;
-
-            return false;
+            return TryString(o, out var svalue) && bool.TryParse(svalue, out value);
         }
 
         /// <summary>
@@ -217,7 +214,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (TryDateTime(o, out value))
                 return true;
 
-            if (TryString(o, out string svalue) && DateTime.TryParse(svalue, AzureCulture, style, out value))
+            if (TryString(o, out var svalue) && DateTime.TryParse(svalue, AzureCulture, style, out value))
                 return true;
 
             return false;
@@ -245,12 +242,12 @@ namespace PSRule.Rules.Azure.Data.Template
             // Not actual hash algorithm used in Azure
             using (var algorithm = SHA256.Create())
             {
-                byte[] url_uid = new Guid("6ba7b811-9dad-11d1-80b4-00c04fd430c8").ToByteArray();
+                var url_uid = new Guid("6ba7b811-9dad-11d1-80b4-00c04fd430c8").ToByteArray();
                 algorithm.TransformBlock(url_uid, 0, url_uid.Length, null, 0);
 
                 for (var i = 0; i < args.Length; i++)
                 {
-                    if (TryString(args[i], out string svalue))
+                    if (TryString(args[i], out var svalue))
                     {
                         var bvalue = Encoding.UTF8.GetBytes(svalue);
                         if (i == args.Length - 1)
@@ -272,7 +269,7 @@ namespace PSRule.Rules.Azure.Data.Template
             var hash = GetUnique(args);
             var builder = new StringBuilder();
             var culture = new CultureInfo("en-us");
-            for (int i = 0; i < hash.Length && i < 7; i++)
+            for (var i = 0; i < hash.Length && i < 7; i++)
             {
                 builder.Append(hash[i].ToString("x2", culture));
             }

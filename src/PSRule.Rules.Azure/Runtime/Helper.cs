@@ -18,10 +18,7 @@ namespace PSRule.Rules.Azure.Runtime
     {
         public static string CompressExpression(string expression)
         {
-            if (!IsTemplateExpression(expression))
-                return expression;
-
-            return ExpressionParser.Parse(expression).AsString();
+            return !IsTemplateExpression(expression) ? expression : ExpressionParser.Parse(expression).AsString();
         }
 
         public static bool IsTemplateExpression(string expression)

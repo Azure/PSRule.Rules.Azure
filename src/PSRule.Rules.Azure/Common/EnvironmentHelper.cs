@@ -12,7 +12,7 @@ namespace PSRule.Rules.Azure
         internal bool TryBool(string key, out bool value)
         {
             value = default;
-            return TryVariable(key, out string variable) && TryParseBool(variable, out value);
+            return TryVariable(key, out var variable) && TryParseBool(variable, out value);
         }
 
         private bool TryVariable(string key, out string variable)
@@ -26,7 +26,7 @@ namespace PSRule.Rules.Azure
             if (bool.TryParse(variable, out value))
                 return true;
 
-            if (int.TryParse(variable, out int ivalue))
+            if (int.TryParse(variable, out var ivalue))
             {
                 value = ivalue > 0;
                 return true;

@@ -50,7 +50,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static bool TryProperty(ExpressionStream stream, TokenStream output)
         {
-            if (!stream.CaptureProperty(out string propertyName))
+            if (!stream.CaptureProperty(out var propertyName))
                 return false;
 
             output.Property(propertyName);
@@ -69,7 +69,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static bool TryString(ExpressionStream stream, TokenStream output)
         {
-            if (!stream.CaptureString(out string literal))
+            if (!stream.CaptureString(out var literal))
                 return false;
 
             output.String(literal);
@@ -79,11 +79,11 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static bool TryElement(ExpressionStream stream, TokenStream output)
         {
-            if (!stream.TryElement(out string element))
+            if (!stream.TryElement(out var element))
                 return false;
 
             stream.Separator();
-            if (int.TryParse(element, out int numeric))
+            if (int.TryParse(element, out var numeric))
                 output.Numeric(numeric);
             else
             {

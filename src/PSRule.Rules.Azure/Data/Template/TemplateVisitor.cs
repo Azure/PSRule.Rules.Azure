@@ -201,7 +201,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (resource == null)
                     return;
 
-                GetResourceNameType(resource, out string[] nameParts, out string[] typeParts);
+                GetResourceNameType(resource, out var nameParts, out var typeParts);
                 var resourceId = GetResourceId(nameParts, typeParts);
                 AddResource(new ResourceValue(resourceId, resource));
             }
@@ -252,7 +252,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     return;
 
                 _Parameters = parameters[PROPERTY_PARAMETERS] as JObject;
-                foreach (JProperty property in _Parameters.Properties())
+                foreach (var property in _Parameters.Properties())
                 {
                     if (!(property.Value is JObject parameter && AssignParameterValue(property.Name, parameter)))
                         throw new TemplateParameterException(parameterName: property.Name, message: string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateParameterInvalid, property.Name));
@@ -270,7 +270,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 name[0] = typeParts[typeIndex++];
                 name[1] = typeParts[typeIndex++];
                 name[2] = nameParts[nameIndex++];
-                for (var i = 3; i < 2 * depth + 1; i = i + 2)
+                for (var i = 3; i < 2 * depth + 1; i += 2)
                 {
                     name[i] = typeParts[typeIndex++];
                     name[i + 1] = nameParts[nameIndex++];
@@ -283,7 +283,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (GetResourceScope(resource, out resourceId))
                     return true;
 
-                if (!GetResourceNameType(resource, out string[] nameParts, out string[] typeParts))
+                if (!GetResourceNameType(resource, out var nameParts, out var typeParts))
                     return false;
 
                 resourceId = new string[nameParts.Length - 1];
@@ -454,7 +454,7 @@ namespace PSRule.Rules.Azure.Data.Template
             internal void EnterDeployment(string deploymentName, JObject template, bool isNested)
             {
                 var templateHash = template.GetHashCode().ToString(Thread.CurrentThread.CurrentCulture);
-                TryObjectProperty(template, PROPERTY_METADATA, out JObject metadata);
+                TryObjectProperty(template, PROPERTY_METADATA, out var metadata);
                 var templateLink = new JObject
                 {
                     { PROPERTY_ID, ResourceGroup.Id },
@@ -498,8 +498,8 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 if (!_IsGenerated.HasValue)
                 {
-                    _IsGenerated = TryObjectProperty(_CurrentDeployment, PROPERTY_METADATA, out JObject metadata) &&
-                        TryObjectProperty(metadata, PROPERTY_GENERATOR, out JObject generator) &&
+                    _IsGenerated = TryObjectProperty(_CurrentDeployment, PROPERTY_METADATA, out var metadata) &&
+                        TryObjectProperty(metadata, PROPERTY_GENERATOR, out var generator) &&
                         TryStringProperty(generator, PROPERTY_NAME, out _);
                 }
                 return _IsGenerated.Value;
@@ -518,7 +518,7 @@ namespace PSRule.Rules.Azure.Data.Template
             public bool TryParameter(string parameterName, out object value)
             {
                 value = null;
-                if (!Parameters.TryGetValue(parameterName, out IParameterValue pv))
+                if (!Parameters.TryGetValue(parameterName, out var pv))
                     return false;
 
                 value = pv.GetValue(this);
@@ -794,25 +794,25 @@ namespace PSRule.Rules.Azure.Data.Template
                 context.EnterDeployment(deploymentName, template, isNested);
 
                 // Process template sections
-                if (TryStringProperty(template, PROPERTY_SCHEMA, out string schema))
+                if (TryStringProperty(template, PROPERTY_SCHEMA, out var schema))
                     Schema(context, schema);
 
-                if (TryStringProperty(template, PROPERTY_CONTENTVERSION, out string contentVersion))
+                if (TryStringProperty(template, PROPERTY_CONTENTVERSION, out var contentVersion))
                     ContentVersion(context, contentVersion);
 
-                if (TryObjectProperty(template, PROPERTY_PARAMETERS, out JObject parameters))
+                if (TryObjectProperty(template, PROPERTY_PARAMETERS, out var parameters))
                     Parameters(context, parameters);
 
-                if (TryArrayProperty(template, PROPERTY_FUNCTIONS, out JArray functions))
+                if (TryArrayProperty(template, PROPERTY_FUNCTIONS, out var functions))
                     Functions(context, functions);
 
-                if (TryObjectProperty(template, PROPERTY_VARIABLES, out JObject variables))
+                if (TryObjectProperty(template, PROPERTY_VARIABLES, out var variables))
                     Variables(context, variables);
 
-                if (TryArrayProperty(template, PROPERTY_RESOURCES, out JArray resources))
+                if (TryArrayProperty(template, PROPERTY_RESOURCES, out var resources))
                     Resources(context, resources.Values<JObject>().ToArray());
 
-                if (TryObjectProperty(template, PROPERTY_OUTPUTS, out JObject outputs))
+                if (TryObjectProperty(template, PROPERTY_OUTPUTS, out var outputs))
                     Outputs(context, outputs);
             }
             finally
@@ -859,7 +859,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static bool TryParameterAssignment(TemplateContext context, string parameterName, JObject parameter)
         {
-            if (!context.TryParameterAssignment(parameterName, out JToken value))
+            if (!context.TryParameterAssignment(parameterName, out var value))
                 return false;
 
             var type = GetParameterType(parameter);
@@ -922,8 +922,8 @@ namespace PSRule.Rules.Azure.Data.Template
         private void FunctionNamespace(TemplateContext context, JObject functionNamespace)
         {
             if (functionNamespace == null ||
-                !TryStringProperty(functionNamespace, PROPERTY_NAMESPACE, out string ns) ||
-                !TryObjectProperty(functionNamespace, PROPERTY_MEMBERS, out JObject members))
+                !TryStringProperty(functionNamespace, PROPERTY_NAMESPACE, out var ns) ||
+                !TryObjectProperty(functionNamespace, PROPERTY_MEMBERS, out var members))
                 return;
 
             foreach (var property in members.Properties())
@@ -932,10 +932,10 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected virtual void Function(TemplateContext context, string ns, string name, JObject function)
         {
-            if (!TryObjectProperty(function, PROPERTY_OUTPUT, out JObject output))
+            if (!TryObjectProperty(function, PROPERTY_OUTPUT, out var output))
                 return;
 
-            TryArrayProperty(function, PROPERTY_PARAMETERS, out JArray parameters);
+            TryArrayProperty(function, PROPERTY_PARAMETERS, out var parameters);
             //var outputFn = context.Expression.Build(outputValue);
             ExpressionFn fn = (ctx, args) =>
             {
@@ -1007,11 +1007,11 @@ namespace PSRule.Rules.Azure.Data.Template
             if (string.IsNullOrEmpty(deploymentName))
                 return false;
 
-            if (!TryObjectProperty(resource, PROPERTY_PROPERTIES, out JObject properties))
+            if (!TryObjectProperty(resource, PROPERTY_PROPERTIES, out var properties))
                 return false;
 
             var deploymentContext = GetDeploymentContext(context, resource, properties);
-            if (!TryObjectProperty(properties, PROPERTY_TEMPLATE, out JObject template))
+            if (!TryObjectProperty(properties, PROPERTY_TEMPLATE, out var template))
                 return false;
 
             Template(deploymentContext, deploymentName, template, isNested: true);
@@ -1023,8 +1023,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static TemplateContext GetDeploymentContext(TemplateContext context, JObject resource, JObject properties)
         {
-            if (!TryObjectProperty(properties, PROPERTY_EXPRESSIONEVALUATIONOPTIONS, out JObject options) ||
-                !TryStringProperty(options, PROPERTY_SCOPE, out string scope) ||
+            if (!TryObjectProperty(properties, PROPERTY_EXPRESSIONEVALUATIONOPTIONS, out var options) ||
+                !TryStringProperty(options, PROPERTY_SCOPE, out var scope) ||
                 !StringComparer.OrdinalIgnoreCase.Equals(DEPLOYMENTSCOPE_INNER, scope))
                 return context;
 
@@ -1033,15 +1033,15 @@ namespace PSRule.Rules.Azure.Data.Template
             var resourceGroup = new ResourceGroupOption(context.ResourceGroup);
             var tenant = new TenantOption(context.Tenant);
             var managementGroup = new ManagementGroupOption(context.ManagementGroup);
-            if (TryStringProperty(resource, PROPERTY_SUBSCRIPTIONID, out string subscriptionId))
+            if (TryStringProperty(resource, PROPERTY_SUBSCRIPTIONID, out var subscriptionId))
                 subscription.SubscriptionId = subscriptionId;
 
-            if (TryStringProperty(resource, PROPERTY_RESOURCEGROUP, out string resourceGroupName))
+            if (TryStringProperty(resource, PROPERTY_RESOURCEGROUP, out var resourceGroupName))
                 resourceGroup.Name = resourceGroupName;
 
             resourceGroup.SubscriptionId = subscription.SubscriptionId;
             var deploymentContext = new TemplateContext(context.Pipeline, subscription, resourceGroup, tenant, managementGroup);
-            if (TryObjectProperty(properties, PROPERTY_PARAMETERS, out JObject innerParameters))
+            if (TryObjectProperty(properties, PROPERTY_PARAMETERS, out var innerParameters))
             {
                 foreach (var parameter in innerParameters.Properties())
                 {
@@ -1454,7 +1454,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private static bool TryArrayProperty(JObject obj, string propertyName, out JArray propertyValue)
         {
             propertyValue = null;
-            if (!obj.TryGetValue(propertyName, out JToken value) || value.Type != JTokenType.Array)
+            if (!obj.TryGetValue(propertyName, out var value) || value.Type != JTokenType.Array)
                 return false;
 
             propertyValue = value.Value<JArray>();
@@ -1464,7 +1464,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private static bool TryObjectProperty(JObject obj, string propertyName, out JObject propertyValue)
         {
             propertyValue = null;
-            if (!obj.TryGetValue(propertyName, out JToken value) || value.Type != JTokenType.Object)
+            if (!obj.TryGetValue(propertyName, out var value) || value.Type != JTokenType.Object)
                 return false;
 
             propertyValue = value as JObject;
@@ -1474,7 +1474,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private static bool TryStringProperty(JObject obj, string propertyName, out string propertyValue)
         {
             propertyValue = null;
-            if (!obj.TryGetValue(propertyName, out JToken value) || value.Type != JTokenType.String)
+            if (!obj.TryGetValue(propertyName, out var value) || value.Type != JTokenType.String)
                 return false;
 
             propertyValue = value.Value<string>();
@@ -1530,14 +1530,14 @@ namespace PSRule.Rules.Azure.Data.Template
             var resources = context.GetResources();
             for (var i = 0; i < resources.Length; i++)
             {
-                if (resources[i].Value.TryGetDependencies(out string[] dependencies))
+                if (resources[i].Value.TryGetDependencies(out var dependencies))
                 {
                     resources[i].Value.Remove(FIELD_DEPENDSON);
-                    if (TemplateContext.TryParentResourceId(resources[i].Value, out string[] parentResourceId))
+                    if (TemplateContext.TryParentResourceId(resources[i].Value, out var parentResourceId))
                     {
                         for (var j = 0; j < parentResourceId.Length; j++)
                         {
-                            if (context.TryGetResource(parentResourceId[j], out ResourceValue resource))
+                            if (context.TryGetResource(parentResourceId[j], out var resource))
                             {
                                 resource.Value.UseProperty(FIELD_RESOURCES, out JArray innerResources);
                                 innerResources.Add(resources[i].Value);
