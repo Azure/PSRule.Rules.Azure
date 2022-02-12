@@ -17,7 +17,7 @@ function global:LogicAppWithHttpTrigger {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($PSRule.TargetType -ne 'Microsoft.Logic/workflows') {
+        if ($PSRule.TargetType -ne 'Microsoft.Logic/workflows' -or $Assert.NotHasField($TargetObject, 'Properties.definition.triggers').Result) {
             return $False;
         }
         $triggers = @($TargetObject.Properties.definition.triggers.PSObject.Properties.GetEnumerator() | ForEach-Object {

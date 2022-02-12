@@ -6,9 +6,7 @@
 #
 
 [CmdletBinding()]
-param (
-
-)
+param ()
 
 BeforeAll {
     # Setup error handling
@@ -56,8 +54,8 @@ Describe 'Azure.LogicApp' -Tag 'LogicApp' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'workflow-E';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'workflow-E', 'workflow-F', 'workflow-G';
         }
     }
 }
