@@ -13,7 +13,7 @@ namespace PSRule.Rules.Azure.Data.Template
     {
         private readonly string AssemblyPath = Path.GetDirectoryName(typeof(ResourceProviderHelper).Assembly.Location);
         private const string DATAFILE_PROVIDERS = "providers.json";
-        private Dictionary<string, ResourceProvider> _Providers;
+        private readonly Dictionary<string, ResourceProvider> _Providers;
 
         public ResourceProviderHelper()
         {
@@ -40,16 +40,15 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
         {
-            if (_Providers == null || _Providers.Count == 0 || !_Providers.TryGetValue(providerNamespace, out ResourceProvider provider))
+            if (_Providers == null || _Providers.Count == 0 || !_Providers.TryGetValue(providerNamespace, out var provider))
                 return Array.Empty<ResourceProviderType>();
 
             if (resourceType == null)
                 return provider.Types.Values.ToArray();
 
-            if (!provider.Types.ContainsKey(resourceType))
-                return Array.Empty<ResourceProviderType>();
-
-            return new ResourceProviderType[] { provider.Types[resourceType] };
+            return !provider.Types.ContainsKey(resourceType)
+                ? Array.Empty<ResourceProviderType>()
+                : (new ResourceProviderType[] { provider.Types[resourceType] });
         }
     }
 }

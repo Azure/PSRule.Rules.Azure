@@ -70,7 +70,7 @@ namespace PSRule.Rules.Azure.Pipeline
             if (TryAddFile(path))
                 return;
 
-            var pathLiteral = GetSearchParameters(path, out string searchPattern, out SearchOption searchOption);
+            var pathLiteral = GetSearchParameters(path, out var searchPattern, out var searchOption);
             if (TryAddFile(pathLiteral))
                 return;
 
@@ -109,7 +109,7 @@ namespace PSRule.Rules.Azure.Pipeline
         private string GetSearchParameters(string path, out string searchPattern, out SearchOption searchOption)
         {
             searchOption = SearchOption.AllDirectories;
-            var pathLiteral = SplitSearchPath(TrimPath(path, out bool relativeAnchor), out searchPattern);
+            var pathLiteral = SplitSearchPath(TrimPath(path, out var relativeAnchor), out searchPattern);
             if (string.IsNullOrEmpty(searchPattern))
                 searchPattern = _DefaultSearchPattern;
 

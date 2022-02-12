@@ -54,7 +54,7 @@ namespace PSRule.Rules.Azure.Configuration
         {
             unchecked // Overflow is fine
             {
-                int hash = 17;
+                var hash = 17;
                 hash = hash * 23 + (Subscription != null ? Subscription.GetHashCode() : 0);
                 hash = hash * 23 + (ResourceGroup != null ? ResourceGroup.GetHashCode() : 0);
                 hash = hash * 23 + (Tenant != null ? Tenant.GetHashCode() : 0);

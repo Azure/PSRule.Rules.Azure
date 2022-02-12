@@ -59,10 +59,7 @@ namespace PSRule.Rules.Azure
                 return null;
 
             var annotation = token.Annotation<TemplateTokenAnnotation>();
-            if (annotation != null)
-                return annotation;
-
-            return token;
+            return annotation ?? (IJsonLineInfo)token;
         }
 
         internal static JToken CloneTemplateJToken(this JToken token)
@@ -94,7 +91,7 @@ namespace PSRule.Rules.Azure
         internal static bool TryGetProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken
         {
             value = null;
-            if (o.TryGetValue(propertyName, System.StringComparison.OrdinalIgnoreCase, out JToken v))
+            if (o.TryGetValue(propertyName, System.StringComparison.OrdinalIgnoreCase, out var v))
             {
                 value = (TValue)v;
                 return value != null;
@@ -104,7 +101,7 @@ namespace PSRule.Rules.Azure
 
         internal static void UseProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken, new()
         {
-            if (!o.TryGetValue(propertyName, System.StringComparison.OrdinalIgnoreCase, out JToken v))
+            if (!o.TryGetValue(propertyName, System.StringComparison.OrdinalIgnoreCase, out var v))
             {
                 value = new TValue();
                 o.Add(propertyName, value);

@@ -18,7 +18,7 @@ namespace PSRule.Rules.Azure
         public static bool TryPopValue<T>(this IDictionary<string, object> dictionary, string key, out T value)
         {
             value = default;
-            if (dictionary.TryGetValue(key, out object v) && dictionary.Remove(key) && v is T result)
+            if (dictionary.TryGetValue(key, out var v) && dictionary.Remove(key) && v is T result)
             {
                 value = result;
                 return true;
@@ -30,13 +30,13 @@ namespace PSRule.Rules.Azure
         public static bool TryPopBool(this IDictionary<string, object> dictionary, string key, out bool value)
         {
             value = default;
-            return dictionary.TryGetValue(key, out object v) && dictionary.Remove(key) && bool.TryParse(v.ToString(), out value);
+            return dictionary.TryGetValue(key, out var v) && dictionary.Remove(key) && bool.TryParse(v.ToString(), out value);
         }
 
         public static bool TryGetBool(this IDictionary<string, object> dictionary, string key, out bool? value)
         {
             value = null;
-            if (!dictionary.TryGetValue(key, out object o))
+            if (!dictionary.TryGetValue(key, out var o))
                 return false;
 
             if (o is bool bvalue || (o is string svalue && bool.TryParse(svalue, out bvalue)))

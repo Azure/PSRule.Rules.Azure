@@ -30,7 +30,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private void ParameterStrongType(ITemplateContext context, string parameterName, JObject parameter, JToken value)
         {
-            if (!TryStrongType(parameter, out string strongType))
+            if (!TryStrongType(parameter, out var strongType))
                 return;
 
             if (StringComparer.OrdinalIgnoreCase.Equals(STRONGTYPE_LOCATION, strongType))
@@ -53,7 +53,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private void IsValidLocation(ITemplateContext context, string parameterName, JToken value)
         {
-            if (!ExpressionHelpers.TryString(value, out string location))
+            if (!ExpressionHelpers.TryString(value, out var location))
             {
                 context.AddValidationIssue(ISSUE_PARAMETER_STRONGTYPE, parameterName, ReasonStrings.NotString, value.ToString(), parameterName);
                 return;
@@ -82,7 +82,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static void IsResourceType(ITemplateContext context, string parameterName, string resourceType, JToken value)
         {
-            if (!ExpressionHelpers.TryString(value, out string resourceId))
+            if (!ExpressionHelpers.TryString(value, out var resourceId))
             {
                 context.AddValidationIssue(ISSUE_PARAMETER_STRONGTYPE, parameterName, ReasonStrings.NotString, value.ToString(), parameterName);
                 return;

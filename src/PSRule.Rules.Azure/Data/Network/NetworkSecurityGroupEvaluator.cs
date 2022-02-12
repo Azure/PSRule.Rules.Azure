@@ -73,18 +73,12 @@ namespace PSRule.Rules.Azure.Data.Network
 
             internal bool TryDestinationPrefix(string prefix)
             {
-                if (DestinationAddressPrefixes == null)
-                    return true;
-
-                return DestinationAddressPrefixes.Contains(prefix);
+                return DestinationAddressPrefixes == null || DestinationAddressPrefixes.Contains(prefix);
             }
 
             internal bool TryDestinationPort(int port)
             {
-                if (DestinationPortRanges == null)
-                    return true;
-
-                return DestinationPortRanges.Contains(port.ToString());
+                return DestinationPortRanges == null || DestinationPortRanges.Contains(port.ToString());
             }
         }
 
@@ -133,10 +127,7 @@ namespace PSRule.Rules.Azure.Data.Network
             if (o.TryProperty(propertyName, out string[] value) && value.Length > 0)
                 return value;
 
-            if (o.TryProperty(propertyName, out string s) && s != "*")
-                return new string[] { s };
-
-            return null;
+            return o.TryProperty(propertyName, out string s) && s != "*" ? (new string[] { s }) : null;
         }
     }
 }

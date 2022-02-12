@@ -69,18 +69,16 @@ namespace PSRule.Rules.Azure.Pipeline
         protected override PipelineWriter GetOutput()
         {
             // Redirect to file instead
-            if (!string.IsNullOrEmpty(Option.Output.Path))
-            {
-                return new FileOutputWriter(
+            return !string.IsNullOrEmpty(Option.Output.Path)
+                ? new FileOutputWriter(
                     inner: base.GetOutput(),
                     option: Option,
                     encoding: GetEncoding(Option.Output.Encoding),
                     path: Option.Output.Path,
                     defaultFile: string.Concat(OUTPUTFILE_PREFIX, _DeploymentName, OUTPUTFILE_EXTENSION),
                     shouldProcess: CmdletContext.ShouldProcess
-                );
-            }
-            return base.GetOutput();
+                )
+                : base.GetOutput();
         }
 
         protected override PipelineWriter PrepareWriter()

@@ -88,10 +88,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
                 s = s.Trim(' ', '\r', '\n');
                 var versionParts = s.Split(' ');
-                if (versionParts.Length < 3)
-                    return string.Empty;
-
-                return versionParts[versionParts.Length - 2];
+                return versionParts.Length < 3 ? string.Empty : versionParts[versionParts.Length - 2];
             }
         }
 
@@ -220,10 +217,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateFileNotFound, sourcePath), sourcePath);
 
             var json = ReadFile(sourcePath);
-            if (json == null)
-                return Array.Empty<PSObject>();
-
-            return ProcessJson(json, sourcePath);
+            return json == null ? Array.Empty<PSObject>() : ProcessJson(json, sourcePath);
         }
 
         internal PSObject[] ProcessJson(JObject templateObject, string sourcePath)
@@ -262,7 +256,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
             try
             {
-                if (!bicep.WaitForExit(out int exitCode) || exitCode != 0)
+                if (!bicep.WaitForExit(out var exitCode) || exitCode != 0)
                 {
                     var error = bicep.HasExited ? bicep.GetError() : PSRuleResources.BicepCompileTimeout;
                     throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepCompileError, bicep.Version, path, error), null, path, bicep.Version);
@@ -295,7 +289,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
         private static BicepInfo GetBicepInfo()
         {
             var useAzCLI = false;
-            if (!(TryBicepPath(out string binPath) || TryAzCLIPath(out binPath, out useAzCLI)) || string.IsNullOrEmpty(binPath))
+            if (!(TryBicepPath(out var binPath) || TryAzCLIPath(out binPath, out useAzCLI)) || string.IsNullOrEmpty(binPath))
                 return null;
 
             var info = new BicepInfo(binPath, useAzCLI);
@@ -305,20 +299,14 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
         private static bool TryBicepPath(out string binPath)
         {
-            if (TryBicepEnvVariable(out binPath))
-                return true;
-
-            return TryBinaryPath(GetBicepBinaryName(), out binPath);
+            return TryBicepEnvVariable(out binPath) || TryBinaryPath(GetBicepBinaryName(), out binPath);
         }
 
         private static bool TryAzCLIPath(out string binPath, out bool useAzCLI)
         {
             useAzCLI = false;
             binPath = null;
-            if (!UseAzCLI())
-                return false;
-
-            return TryBinaryPath(GetAzBinaryName(), out binPath);
+            return UseAzCLI() && TryBinaryPath(GetAzBinaryName(), out binPath);
         }
 
         private static bool TryBinaryPath(string bin, out string binPath)
@@ -336,38 +324,31 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
         private static string[] GetPathEnv()
         {
-            var envPath = System.Environment.GetEnvironmentVariable("PATH");
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                return envPath.Split(LINUX_PATH_ENV_SEPARATOR, StringSplitOptions.RemoveEmptyEntries);
-
-            return envPath.Split(WINDOWS_PATH_ENV_SEPARATOR, StringSplitOptions.RemoveEmptyEntries);
+            var envPath = Environment.GetEnvironmentVariable("PATH");
+            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux)
+                ? envPath.Split(LINUX_PATH_ENV_SEPARATOR, StringSplitOptions.RemoveEmptyEntries)
+                : envPath.Split(WINDOWS_PATH_ENV_SEPARATOR, StringSplitOptions.RemoveEmptyEntries);
         }
 
         private static bool TryBicepEnvVariable(out string binaryPath)
         {
-            binaryPath = System.Environment.GetEnvironmentVariable("PSRULE_AZURE_BICEP_PATH");
+            binaryPath = Environment.GetEnvironmentVariable("PSRULE_AZURE_BICEP_PATH");
             return !string.IsNullOrEmpty(binaryPath);
         }
 
         private static string GetBicepBinaryName()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                return "bicep";
-
-            return "bicep.exe";
+            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "bicep" : "bicep.exe";
         }
 
         private static string GetAzBinaryName()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                return "az";
-
-            return "az.exe";
+            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "az" : "az.exe";
         }
 
         private static string GetBicepBuildArgs(string sourcePath, bool useAzCLI)
         {
-            GetBicepBuildAdditionalArgs(out string args);
+            GetBicepBuildAdditionalArgs(out var args);
             return string.Concat("build --stdout ", args, useAzCLI ? " --file" : string.Empty, " \"", sourcePath, "\"");
         }
 
@@ -383,7 +364,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
         private static bool UseAzCLI()
         {
-            return EnvironmentHelper.Default.TryBool("PSRULE_AZURE_BICEP_USE_AZURE_CLI", out bool value) ? value : false;
+            return EnvironmentHelper.Default.TryBool("PSRULE_AZURE_BICEP_USE_AZURE_CLI", out var value) && value;
         }
     }
 }

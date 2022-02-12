@@ -65,13 +65,11 @@ namespace PSRule.Rules.Azure.Pipeline.Output
         private static bool GetPreferenceVariable(EngineIntrinsics executionContext, string variableName)
         {
             var preference = GetPreferenceVariable(executionContext.SessionState, variableName);
-            if (preference == ActionPreference.Ignore)
-                return false;
-
-            return !(preference == ActionPreference.SilentlyContinue && (
-                variableName == VerbosePreference ||
-                variableName == DebugPreference)
-            );
+            return preference != ActionPreference.Ignore &&
+                !(preference == ActionPreference.SilentlyContinue && (
+                    variableName == VerbosePreference ||
+                    variableName == DebugPreference)
+                );
         }
 
         #region Internal logging methods
