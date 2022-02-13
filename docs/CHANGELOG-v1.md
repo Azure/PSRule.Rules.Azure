@@ -19,6 +19,8 @@ What's changed since v1.12.2:
 - New rules:
   - Recovery Services Vault:
     - Check vaults have replication alerts configured. [#7](https://github.com/Azure/PSRule.Rules.Azure/issues/7)
+- Bug fixes:
+  - Fixed error with empty logic app trigger. [#1249](https://github.com/Azure/PSRule.Rules.Azure/issues/1249)
 
 ## v1.12.2
 
