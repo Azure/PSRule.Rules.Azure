@@ -122,7 +122,7 @@ Rule 'Azure.KeyVault.AutoRotationPolicy' -Type 'Microsoft.KeyVault/vaults', 'Mic
         $rotationPolicy = $key.Properties.rotationPolicy;
         $autoRotateActions = @($rotationPolicy.lifetimeActions | Where-Object { $_.action.type -eq 'rotate' });
 
-        $Assert.Greater($autoRotateActions, 'Length', 0).Reason(
+        $Assert.Greater($autoRotateActions, '.', 0).Reason(
             $LocalizedData.KeyVaultAutoRotationPolicy,
             $key.Name
         );
