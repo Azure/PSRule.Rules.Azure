@@ -278,6 +278,42 @@ configuration:
       displayName: 'My test management group'
 ```
 
+### Required parameter defaults
+
+:octicons-milestone-24: v1.13.0
+
+This configuration option allows a fallback value to be configured for required parameters.
+When a parameter value is not provided and a default is not set, the fallback value will be used.
+
+Configure this option when you are providing a set of common parameters dynamically during a pipeline.
+In this scenario, it may not make sense to add the parameters to a parameter file or Bicep deployment.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_PARAMETER_DEFAULTS:
+    <parameter>: <value>
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_PARAMETER_DEFAULTS configuration option
+configuration:
+  AZURE_PARAMETER_DEFAULTS: { }
+```
+
+Example:
+
+```yaml
+# YAML: Set fallback values for adminPassword and workspaceId parameters.
+configuration:
+  AZURE_PARAMETER_DEFAULTS:
+    adminPassword: $CREDENTIAL_PLACEHOLDER$
+    workspaceId: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}
+```
+
 ## Excluding files
 
 Template or Bicep source files can be excluded from being processed by PSRule and expansion.

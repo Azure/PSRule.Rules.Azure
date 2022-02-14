@@ -365,6 +365,16 @@ namespace PSRule.Rules.Azure
             Assert.Equal("rule4", actual["properties"]["rules"][1]["name"].Value<string>());
         }
 
+        [Fact]
+        public void WithParameterDefaults()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.10.json"), null, PSRuleOption.FromFileOrDefault(GetSourcePath("ps-rule-options.yaml")));
+            Assert.NotNull(resources);
+            Assert.Equal(2, resources.Length);
+
+            Assert.Equal("aks-resource123", resources[1]["name"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

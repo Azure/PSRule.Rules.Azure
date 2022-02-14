@@ -33,15 +33,43 @@ namespace PSRule.Rules.Azure
             return dictionary.TryGetValue(key, out var v) && dictionary.Remove(key) && bool.TryParse(v.ToString(), out value);
         }
 
+        public static bool TryGetString(this IDictionary<string, object> dictionary, string key, out string value)
+        {
+            value = null;
+            if (!dictionary.TryGetValue(key, out var o))
+                return false;
+
+            if (o is string result)
+            {
+                value = result;
+                return true;
+            }
+            return false;
+        }
+
         public static bool TryGetBool(this IDictionary<string, object> dictionary, string key, out bool? value)
         {
             value = null;
             if (!dictionary.TryGetValue(key, out var o))
                 return false;
 
-            if (o is bool bvalue || (o is string svalue && bool.TryParse(svalue, out bvalue)))
+            if (o is bool result || (o is string svalue && bool.TryParse(svalue, out result)))
             {
-                value = bvalue;
+                value = result;
+                return true;
+            }
+            return false;
+        }
+
+        public static bool TryGetLong(this IDictionary<string, object> dictionary, string key, out long? value)
+        {
+            value = null;
+            if (!dictionary.TryGetValue(key, out var o))
+                return false;
+
+            if (o is long result || (o is string svalue && long.TryParse(svalue, out result)))
+            {
+                value = result;
                 return true;
             }
             return false;
@@ -50,6 +78,9 @@ namespace PSRule.Rules.Azure
         [DebuggerStepThrough]
         public static void AddUnique(this IDictionary<string, object> dictionary, IEnumerable<KeyValuePair<string, object>> values)
         {
+            if (values == null)
+                return;
+
             foreach (var kv in values)
                 if (!dictionary.ContainsKey(kv.Key))
                     dictionary.Add(kv.Key, kv.Value);

@@ -174,20 +174,22 @@ namespace PSRule.Rules.Azure.Configuration
 
         public static SubscriptionReference FromHashtable(Hashtable hashtable)
         {
-            var index = PSRuleOption.BuildIndex(hashtable);
             var option = new SubscriptionReference();
-            if (index.TryPopValue("SubscriptionId", out string svalue))
-                option.SubscriptionId = svalue;
+            if (hashtable != null)
+            {
+                var index = PSRuleOption.BuildIndex(hashtable);
+                if (index.TryPopValue("SubscriptionId", out string svalue))
+                    option.SubscriptionId = svalue;
 
-            if (index.TryPopValue("TenantId", out svalue))
-                option.TenantId = svalue;
+                if (index.TryPopValue("TenantId", out svalue))
+                    option.TenantId = svalue;
 
-            if (index.TryPopValue("DisplayName", out svalue))
-                option.DisplayName = svalue;
+                if (index.TryPopValue("DisplayName", out svalue))
+                    option.DisplayName = svalue;
 
-            if (index.TryPopValue("State", out svalue))
-                option.State = svalue;
-
+                if (index.TryPopValue("State", out svalue))
+                    option.State = svalue;
+            }
             return option;
         }
 

@@ -16,6 +16,9 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since v1.12.2:
 
+- New features:
+  - Added support for setting defaults for required parameters. [#1065](https://github.com/Azure/PSRule.Rules.Azure/issues/1065)
+    - When specified, the value will be used when a parameter value is not provided.
 - New rules:
   - Recovery Services Vault:
     - Check vaults have replication alerts configured. [#7](https://github.com/Azure/PSRule.Rules.Azure/issues/7)

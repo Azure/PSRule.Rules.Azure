@@ -230,23 +230,26 @@ namespace PSRule.Rules.Azure.Configuration
 
         public static ResourceGroupReference FromHashtable(Hashtable hashtable)
         {
-            var index = PSRuleOption.BuildIndex(hashtable);
             var option = new ResourceGroupReference();
-            if (index.TryPopValue("Name", out string svalue))
-                option.Name = svalue;
+            if (hashtable != null)
+            {
+                var index = PSRuleOption.BuildIndex(hashtable);
 
-            if (index.TryPopValue("Location", out svalue))
-                option.Location = svalue;
+                if (index.TryPopValue("Name", out string svalue))
+                    option.Name = svalue;
 
-            if (index.TryPopValue("ManagedBy", out svalue))
-                option.ManagedBy = svalue;
+                if (index.TryPopValue("Location", out svalue))
+                    option.Location = svalue;
 
-            if (index.TryPopValue("ProvisioningState", out svalue))
-                option.ProvisioningState = svalue;
+                if (index.TryPopValue("ManagedBy", out svalue))
+                    option.ManagedBy = svalue;
 
-            if (index.TryPopValue("Tags", out Hashtable tags))
-                option.Tags = tags;
+                if (index.TryPopValue("ProvisioningState", out svalue))
+                    option.ProvisioningState = svalue;
 
+                if (index.TryPopValue("Tags", out Hashtable tags))
+                    option.Tags = tags;
+            }
             return option;
         }
 
