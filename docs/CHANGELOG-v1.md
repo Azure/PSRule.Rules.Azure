@@ -19,6 +19,8 @@ What's changed since v1.12.2:
 - New rules:
   - Recovery Services Vault:
     - Check vaults have replication alerts configured. [#7](https://github.com/Azure/PSRule.Rules.Azure/issues/7)
+  - Key Vault:
+    - Configure key auto-rotation in Azure Key Vault (preview). [#1159](https://github.com/Azure/PSRule.Rules.Azure/issues/1159)
 - Bug fixes:
   - Fixed error with empty logic app trigger. [#1249](https://github.com/Azure/PSRule.Rules.Azure/issues/1249)
 

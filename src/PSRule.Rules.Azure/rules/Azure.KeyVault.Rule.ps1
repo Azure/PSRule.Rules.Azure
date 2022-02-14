@@ -105,3 +105,26 @@ Rule 'Azure.KeyVault.KeyName' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyV
         $Assert.Match($name, '.', '^[A-Za-z0-9-]{1,127}$');
     }
 }
+
+# Synopsis: Key Vault keys should have auto-rotation enabled.
+Rule 'Azure.KeyVault.AutoRotationPolicy' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/keys' -Tag @{ release = 'preview'; ruleSet = '2022_03'; } {
+    $keys = @($TargetObject);
+
+    if ($PSRule.TargetType -eq 'Microsoft.KeyVault/vaults') {
+        $keys = @(GetSubResources -ResourceType 'Microsoft.KeyVault/vaults/keys');
+    }
+
+    if ($keys.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    foreach ($key in $keys) {
+        $rotationPolicy = $key.Properties.rotationPolicy;
+        $autoRotateActions = @($rotationPolicy.lifetimeActions | Where-Object { $_.action.type -eq 'rotate' });
+
+        $Assert.Greater($autoRotateActions, '.', 0).Reason(
+            $LocalizedData.KeyVaultAutoRotationPolicy,
+            $key.Name
+        );
+    }
+}

@@ -359,5 +359,273 @@
                 "SubscriptionId": "00000000-0000-0000-0000-000000000000"
             }
         ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-F",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-F",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "keyvault-F",
+        "Name": "keyvault-F",
+        "Properties": {
+            "sku": {
+                "family": "A",
+                "name": "Premium"
+            },
+            "tenantId": "00000000-0000-0000-0000-000000000000",
+            "accessPolicies": [],
+            "enabledForDeployment": true,
+            "enabledForDiskEncryption": true,
+            "enabledForTemplateDeployment": true,
+            "enableSoftDelete": true,
+            "enablePurgeProtection": true,
+            "vaultUri": "https://keyvault-F.vault.azure.net/",
+            "provisioningState": "Succeeded"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.KeyVault/vaults",
+        "ResourceType": "Microsoft.KeyVault/vaults",
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-F/keys/key1",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-F/keys/key1",
+                "Identity": null,
+                "Kind": null,
+                "Location": "australiaeast",
+                "ManagedBy": null,
+                "ResourceName": "key1",
+                "Name": "key1",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "attributes": {
+                        "enabled": true,
+                        "created": 1644675924,
+                        "updated": 1644675924,
+                        "recoveryLevel": "Recoverable+Purgeable"
+                    },
+                    "rotationPolicy": {
+                        "lifetimeActions": [
+                            {
+                                "trigger": {
+                                    "timeAfterCreate": "P18D"
+                                },
+                                "action": {
+                                    "type": "Rotate"
+                                }
+                            },
+                            {
+                                "trigger": {
+                                    "timeBeforeExpiry": "P30D"
+                                },
+                                "action": {
+                                    "type": "Notify"
+                                }
+                            }
+                        ],
+                        "attributes": {
+                            "created": 1644675957,
+                            "updated": 1644675957
+                        }
+                    },
+                    "kty": "RSA",
+                    "keyOps": [
+                        "sign",
+                        "verify",
+                        "wrapKey",
+                        "unwrapKey",
+                        "encrypt",
+                        "decrypt"
+                    ],
+                    "keySize": 2048,
+                    "keyUri": "https://keyvault-F.vault.azure.net/keys/key1",
+                    "keyUriWithVersion": "https://keyvault-F.vault.azure.net/keys/key1/00000000000000000000000000000000"
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "Microsoft.KeyVault/vaults/keys",
+                "ResourceType": "Microsoft.KeyVault/vaults/keys",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": {},
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "keyvault-G",
+        "Name": "keyvault-G",
+        "Properties": {
+            "sku": {
+                "family": "A",
+                "name": "Premium"
+            },
+            "tenantId": "00000000-0000-0000-0000-000000000000",
+            "accessPolicies": [],
+            "enabledForDeployment": true,
+            "enabledForDiskEncryption": true,
+            "enabledForTemplateDeployment": true,
+            "enableSoftDelete": true,
+            "enablePurgeProtection": true,
+            "vaultUri": "https://keyvault-G.vault.azure.net/",
+            "provisioningState": "Succeeded"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.KeyVault/vaults",
+        "ResourceType": "Microsoft.KeyVault/vaults",
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G/keys/key1",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G/keys/key1",
+                "Identity": null,
+                "Kind": null,
+                "Location": "australiaeast",
+                "ManagedBy": null,
+                "ResourceName": "key1",
+                "Name": "key1",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "attributes": {
+                        "enabled": true,
+                        "created": 1644675924,
+                        "updated": 1644675924,
+                        "recoveryLevel": "Recoverable+Purgeable"
+                    },
+                    "rotationPolicy": {
+                        "lifetimeActions": [
+                            {
+                                "trigger": {
+                                    "timeBeforeExpiry": "P30D"
+                                },
+                                "action": {
+                                    "type": "Notify"
+                                }
+                            }
+                        ],
+                        "attributes": {
+                            "created": 1644675957,
+                            "updated": 1644675957
+                        }
+                    },
+                    "kty": "RSA",
+                    "keyOps": [
+                        "sign",
+                        "verify",
+                        "wrapKey",
+                        "unwrapKey",
+                        "encrypt",
+                        "decrypt"
+                    ],
+                    "keySize": 2048,
+                    "keyUri": "https://keyvault-G.vault.azure.net/keys/key1",
+                    "keyUriWithVersion": "https://keyvault-G.vault.azure.net/keys/key1/00000000000000000000000000000000"
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "Microsoft.KeyVault/vaults/keys",
+                "ResourceType": "Microsoft.KeyVault/vaults/keys",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": {},
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-H",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-H",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "keyvault-H",
+        "Name": "keyvault-H",
+        "Properties": {
+            "sku": {
+                "family": "A",
+                "name": "Premium"
+            },
+            "tenantId": "00000000-0000-0000-0000-000000000000",
+            "accessPolicies": [],
+            "enabledForDeployment": true,
+            "enabledForDiskEncryption": true,
+            "enabledForTemplateDeployment": true,
+            "enableSoftDelete": true,
+            "enablePurgeProtection": true,
+            "vaultUri": "https://keyvault-H.vault.azure.net/",
+            "provisioningState": "Succeeded"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.KeyVault/vaults",
+        "ResourceType": "Microsoft.KeyVault/vaults",
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G/keys/key1",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G/keys/key1",
+                "Identity": null,
+                "Kind": null,
+                "Location": "australiaeast",
+                "ManagedBy": null,
+                "ResourceName": "key1",
+                "Name": "key1",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "attributes": {
+                        "enabled": true,
+                        "created": 1644675924,
+                        "updated": 1644675924,
+                        "recoveryLevel": "Recoverable+Purgeable"
+                    },
+                    "kty": "RSA",
+                    "keyOps": [
+                        "sign",
+                        "verify",
+                        "wrapKey",
+                        "unwrapKey",
+                        "encrypt",
+                        "decrypt"
+                    ],
+                    "keySize": 2048,
+                    "keyUri": "https://keyvault-H.vault.azure.net/keys/key1",
+                    "keyUriWithVersion": "https://keyvault-H.vault.azure.net/keys/key1/00000000000000000000000000000000"
+                },
+                "ResourceGroupName": "rg-test",
+                "Type": "Microsoft.KeyVault/vaults/keys",
+                "ResourceType": "Microsoft.KeyVault/vaults/keys",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": {},
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
     }
 ]

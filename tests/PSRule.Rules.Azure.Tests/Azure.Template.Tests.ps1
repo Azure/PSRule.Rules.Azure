@@ -685,7 +685,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             );
 
             $ruleResult[0].Reason.Length | Should -Be 1;
-            $ruleResult[0].Reason[0] | Should -BeExactly "The template ($($ruleResult[0].TargetObject.FullName)) has (2) resource/s without comments.";
+            $ruleResult[0].Reason[0] | Should -BeExactly "The template ($($ruleResult[0].TargetObject.FullName)) has (5) resource/s without comments.";
 
             $ruleResult[1].Reason.Length | Should -Be 1;
             $ruleResult[1].Reason[0] | Should -BeExactly "The template ($($ruleResult[1].TargetObject.FullName)) has (4) resource/s without comments.";

@@ -1105,6 +1105,9 @@ function VisitKeyVault {
     process {
         $resources = @();
         $resources += Get-AzResource -Name $resource.Name -ResourceType 'Microsoft.KeyVault/vaults/providers/microsoft.insights/diagnosticSettings' -ResourceGroupName $resource.ResourceGroupName -DefaultProfile $Context -ApiVersion '2017-05-01-preview' -ExpandProperties;
+
+        $resources += GetResourceById -ResourceId "$($Resource.Id)/keys" -Context $Context -ApiVersion '2021-11-01-preview';
+
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
     }
 }

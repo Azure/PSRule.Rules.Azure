@@ -48,8 +48,8 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-C', 'keyvault-D', 'keyvault-E';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-C', 'keyvault-D', 'keyvault-E', 'keyvault-F', 'keyvault-G', 'keyvault-H';
         }
 
         It 'Azure.KeyVault.PurgeProtect' {
@@ -64,8 +64,8 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-D', 'keyvault-E';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-D', 'keyvault-E', 'keyvault-F', 'keyvault-G', 'keyvault-H';
         }
 
         It 'Azure.KeyVault.AccessPolicy' {
@@ -83,8 +83,8 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-C', 'keyvault-D', 'keyvault-E';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-C', 'keyvault-D', 'keyvault-E', 'keyvault-F', 'keyvault-G', 'keyvault-H';
         }
 
         It 'Azure.KeyVault.Logs' {
@@ -93,8 +93,8 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'keyvault-B', 'keyvault-C', 'keyvault-D', 'keyvault-E';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-B', 'keyvault-C', 'keyvault-D', 'keyvault-E', 'keyvault-F', 'keyvault-G', 'keyvault-H';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "Diagnostic settings is not configured to log events for 'AuditEvent'.";
@@ -106,6 +106,25 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'keyvault-A';
+        }
+
+        It 'Azure.KeyVault.AutoRotationPolicy' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.KeyVault.AutoRotationPolicy' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-G', 'keyvault-H';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The key (key1) should enable a auto-rotation policy.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-B', 'keyvault-C', 'keyvault-D', 'keyvault-E', 'keyvault-F';
         }
     }
 
@@ -291,6 +310,35 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'keyvault-001';
+        }
+
+        It 'Azure.KeyVault.AutoRotationPolicy' {
+            $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Baseline 'Azure.Preview' -Outcome All -WarningAction Ignore -ErrorAction Stop;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.KeyVault.AutoRotationPolicy' };
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-001';
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-001/key2','keyvault-001/key3';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The key (keyvault-001/key2) should enable a auto-rotation policy.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The key (keyvault-001/key3) should enable a auto-rotation policy.";
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult[0].TargetName | Should -BeLike '*Resources.Parameters2.json';
+            $ruleResult[1].TargetName | Should -BeExactly 'kvstoragediag01';
         }
     }
 }
