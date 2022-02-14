@@ -1,0 +1,44 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Container Apps
+#
+
+#region Rules
+
+---
+# Synopsis: Ensure insecure inbound traffic is not permitted to the container app.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ContainerApp.Insecure
+  tags:
+    release: 'preview'
+    ruleSet: '2022_03'
+spec:
+  with:
+  - Azure.ContainerApp.WithIngress
+  condition:
+    field: 'properties.configuration.ingress.allowInsecure'
+    hasDefault: false
+
+#endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: Get container apps with an ingress configuration.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.ContainerApp.WithIngress
+spec:
+  if:
+    allOf:
+    - type: '.'
+      equals: Microsoft.Web/containerApps
+    - field: 'properties.configuration.ingress'
+      exists: true
+
+#endregion Selectors
