@@ -75,7 +75,39 @@ Describe 'Bicep' -Tag 'Bicep' {
                 $result.Length | Should -BeGreaterThan 1;
                 $resource = $result | Where-Object { $_.TargetType -eq 'Microsoft.Network/networkSecurityGroups' };
                 $resource | Should -Not -BeNullOrEmpty;
-                $resource.TargetName | Should -BeIn 'nsg-001'
+                $resource.TargetName | Should -BeIn 'nsg-001';
+            }
+            finally {
+                Remove-Item 'Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI' -Force;
+            }
+        }
+
+        It 'Expands Bicep with parameters file' {
+            $invokeParams = @{
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+                Name = 'Azure.Storage.Name'
+            }
+
+            # Default
+            $sourceFile = Join-Path -Path $here -ChildPath 'template.parameters.json';
+
+            try {
+                # Install CLI
+                az bicep install
+
+                # Expand source files
+                $option = @{
+                    'Configuration.AZURE_PARAMETER_FILE_EXPANSION' = $True
+                }
+                $Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI = 'true';
+                $result = @(Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File -Option $option);
+                $result.Length | Should -Be 1;
+                $resource = $result | Where-Object { $_.TargetType -eq 'Microsoft.Storage/storageAccounts' };
+                $resource | Should -Not -BeNullOrEmpty;
+                $resource.TargetName | Should -Be 'bicepstorage001';
+                $resource.TargetObject.tags.env | Should -Be 'test';
             }
             finally {
                 Remove-Item 'Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI' -Force;

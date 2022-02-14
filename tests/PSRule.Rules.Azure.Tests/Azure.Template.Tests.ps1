@@ -607,7 +607,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 14;
+            $ruleResult.Length | Should -Be 15;
         }
 
         It 'Azure.Template.ParameterValue' {

@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -211,31 +211,47 @@ namespace PSRule.Rules.Azure.Data.Bicep
             }
         }
 
-        internal PSObject[] ProcessFile(string sourcePath)
+        internal PSObject[] ProcessFile(string templateFile, string parameterFile)
         {
-            if (!File.Exists(sourcePath))
-                throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateFileNotFound, sourcePath), sourcePath);
+            if (!File.Exists(templateFile))
+                throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateFileNotFound, templateFile), templateFile);
 
-            var json = ReadFile(sourcePath);
-            return json == null ? Array.Empty<PSObject>() : ProcessJson(json, sourcePath);
+            var json = ReadBicepFile(templateFile);
+            return json == null ? Array.Empty<PSObject>() : ProcessJson(json, templateFile, parameterFile);
         }
 
-        internal PSObject[] ProcessJson(JObject templateObject, string sourcePath)
+        internal PSObject[] ProcessJson(JObject templateObject, string templateFile, string parameterFile)
         {
             var visitor = new RuleDataExportVisitor();
 
             // Load context
             var templateContext = new TemplateVisitor.TemplateContext(Context);
+            if (!string.IsNullOrEmpty(parameterFile))
+            {
+                var rootedParameterFile = PSRuleOption.GetRootedPath(parameterFile);
+                if (!File.Exists(rootedParameterFile))
+                    throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ParameterFileNotFound, rootedParameterFile), rootedParameterFile);
+
+                try
+                {
+                    var parametersObject = ReadJsonFile(rootedParameterFile);
+                    templateContext.Load(parametersObject);
+                }
+                catch (Exception inner)
+                {
+                    throw new TemplateReadException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateExpandInvalid, templateFile, parameterFile, inner.Message), inner, templateFile, parameterFile);
+                }
+            }
 
             // Process
             try
             {
-                templateContext.SetSource(sourcePath, null);
+                templateContext.SetSource(templateFile, parameterFile);
                 visitor.Visit(templateContext, "helper", templateObject);
             }
             catch (Exception inner)
             {
-                throw new TemplateReadException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepExpandInvalid, sourcePath, inner.Message), inner, sourcePath, null);
+                throw new TemplateReadException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepExpandInvalid, templateFile, inner.Message), inner, templateFile, null);
             }
 
             // Return results
@@ -248,7 +264,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
             return results.ToArray();
         }
 
-        private static JObject ReadFile(string path)
+        private static JObject ReadBicepFile(string path)
         {
             var bicep = GetBicep(path);
             if (bicep == null)
@@ -275,6 +291,17 @@ namespace PSRule.Rules.Azure.Data.Bicep
             finally
             {
                 bicep.Dispose();
+            }
+        }
+
+        private static JObject ReadJsonFile(string path)
+        {
+            using (var stream = new StreamReader(path))
+            {
+                using (var reader = new JsonTextReader(stream))
+                {
+                    return JObject.Load(reader);
+                }
             }
         }
 
