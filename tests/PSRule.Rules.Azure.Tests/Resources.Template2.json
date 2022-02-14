@@ -189,6 +189,24 @@
                     ]
                 }
             }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/keys",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('vaultName'), '/', 'key3')]",
+            "tags": {},
+            "properties": {
+                "keyOps": [
+                    "sign",
+                    "verify",
+                    "wrapKey",
+                    "unwrapKey",
+                    "encrypt",
+                    "decrypt"
+                ],
+                "keySize": 2048,
+                "kty": "RSA"
+            }
         }
     ],
     "other": {}
