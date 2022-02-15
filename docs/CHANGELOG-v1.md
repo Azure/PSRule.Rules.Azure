@@ -19,10 +19,12 @@ What's changed since v1.12.2:
 - New features:
   - Added support expanding Bicep from parameter files. [#1160](https://github.com/Azure/PSRule.Rules.Azure/issues/1160)
 - New rules:
+  - Container App:
+    - Check insecure ingress is not enabled (preview). [#1252](https://github.com/Azure/PSRule.Rules.Azure/issues/1252)
+  - Key Vault:
+    - Check key auto-rotation is enabled (preview). [#1159](https://github.com/Azure/PSRule.Rules.Azure/issues/1159)
   - Recovery Services Vault:
     - Check vaults have replication alerts configured. [#7](https://github.com/Azure/PSRule.Rules.Azure/issues/7)
-  - Key Vault:
-    - Configure key auto-rotation in Azure Key Vault (preview). [#1159](https://github.com/Azure/PSRule.Rules.Azure/issues/1159)
 - Bug fixes:
   - Fixed error with empty logic app trigger. [#1249](https://github.com/Azure/PSRule.Rules.Azure/issues/1249)
 
