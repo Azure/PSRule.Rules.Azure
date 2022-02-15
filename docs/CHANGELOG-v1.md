@@ -16,6 +16,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since v1.12.2:
 
+- New features:
+  - Added support expanding Bicep from parameter files. [#1160](https://github.com/Azure/PSRule.Rules.Azure/issues/1160)
 - New rules:
   - Recovery Services Vault:
     - Check vaults have replication alerts configured. [#7](https://github.com/Azure/PSRule.Rules.Azure/issues/7)

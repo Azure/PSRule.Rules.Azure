@@ -37,7 +37,7 @@ PSRule for Azure automatically detects parameter files and uses the following lo
 
 ### By metadata
 
-A parameter file can be linked to an associated template by setting metadata.
+A parameter file can be linked to an associated template or Bicep module by setting metadata.
 To link a template within a parameter file, set the `metadata.template` property to the path of the template.
 
 PSRule for Azure supports either:
@@ -97,6 +97,10 @@ Additional benefits you get by using metadata links include:
     By configuring the `AZURE_PARAMETER_FILE_METADATA_LINK` option to `true`, this can be enforced.
     When configured, PSRule for Azure will fail parameter files that do not contain a metadata link.
     For details on `AZURE_PARAMETER_FILE_METADATA_LINK` see [Configuring expansion][2].
+
+!!! Note
+    Bicep modules can also be expanded from parameter files.
+    Instead of specifing a template path, you can specify the path to a Bicep file.
 
   [2]: setup/configuring-expansion.md#requiretemplatemetadatalink
 

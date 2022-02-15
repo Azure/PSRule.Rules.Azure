@@ -21,6 +21,7 @@ This feature can be enabled by using the following configuration options.
 
 This configuration option determines if Azure template parameter files will automatically be expanded.
 By default, parameter files will not be automatically expanded.
+When enabled, PSRule will discover and expand JSON parameter files for Azure templates or Bicep modules.
 
 Parameter files are expanded when PSRule cmdlets with the `-Format File` parameter are used.
 
