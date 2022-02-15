@@ -14,7 +14,6 @@ using System.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Resources;
-using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
