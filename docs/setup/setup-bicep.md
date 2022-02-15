@@ -127,4 +127,11 @@ configuration:
   AZURE_BICEP_FILE_EXPANSION: true
 ```
 
+!!! Tip
+    If you deploy Bicep code using JSON parameter files this option does not need to be set.
+    Set `Configuration.AZURE_PARAMETER_FILE_EXPANSION` to `true` instead.
+    See [Using parameter files][5] and [By metadata][6] for more information.
+
   [4]: configuring-expansion.md#bicepsourceexpansion
+  [5]: ../using-bicep.md#usingparameterfiles
+  [6]: ../using-templates.md#bymetadata

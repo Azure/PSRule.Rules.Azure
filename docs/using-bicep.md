@@ -9,7 +9,7 @@ To enable this feature, you need to:
 
 - Enable expansion.
 - For modules (if used):
-  - Define a deployment.
+  - Define a deployment or parameters file.
   - Configure path exclusions.
 
 !!! Abstract
@@ -25,6 +25,10 @@ To expand Bicep deployments configure `ps-rule.yaml` with the `AZURE_BICEP_FILE_
 configuration:
   AZURE_BICEP_FILE_EXPANSION: true
 ```
+
+!!! Note
+    If you are using JSON parameter files exclusively, you do not need to set this option.
+    Instead continue reading [Using parameter files](#usingparameterfiles).
 
 ### Setup Bicep
 
@@ -118,6 +122,59 @@ To do this configure `ps-rule.yaml` with the `input.pathIgnore` option.
 
 !!! Note
     In this example, Bicep files such as `deploy.bicep` in other directories will be expanded.
+
+### Using parameter files
+
+When using Bicep, you don't need to use parameter files.
+You can call `.bicep` files directly from other `.bicep` files with modules by using the `module` keyword.
+Alternatively, you can choose to expand and test a Bicep module from JSON parameter files [by metadata][3].
+
+When using parameter files exclusively,
+the `AZURE_BICEP_FILE_EXPANSION` configuration option does not need to be set.
+Instead set the `AZURE_PARAMETER_FILE_EXPANSION` configuration option to `true`.
+This option will discover Bicep files from parameter metadata.
+
+!!! Example "Example `ps-rule.yaml`"
+
+    ```yaml
+    configuration:
+      # Enable expansion for Bicep module from parameter files.
+      AZURE_PARAMETER_FILE_EXPANSION: true
+
+      # Enable expanding for Bicep module tests.
+      AZURE_BICEP_FILE_EXPANSION: true
+
+    input:
+      pathIgnore:
+      # Exclude module files
+      - 'modules/**/*.bicep'
+      # Include test files from modules
+      - '!modules/**/*.tests.bicep'
+    ```
+
+!!! Example "Example `template.parameters.json`"
+
+    ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+        "contentVersion": "1.0.0.0",
+        "metadata": {
+            "template": "./template.bicep"
+        },
+        "parameters": {
+            "storageAccountName": {
+                "value": "bicepstorage001"
+            },
+            "tags": {
+                "value": {
+                    "env": "test"
+                }
+            }
+        }
+    }
+    ```
+
+  [3]: using-templates.md#bymetadata
 
 *[WAF]: Well-Architected Framework
 *[ARM]: Azure Resource Manager

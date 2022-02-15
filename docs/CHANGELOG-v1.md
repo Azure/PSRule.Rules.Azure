@@ -16,6 +16,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since v1.12.2:
 
+- New features:
+  - Added support expanding Bicep from parameter files. [#1160](https://github.com/Azure/PSRule.Rules.Azure/issues/1160)
 - New rules:
   - Container App:
     - Check insecure ingress is not enabled (preview). [#1252](https://github.com/Azure/PSRule.Rules.Azure/issues/1252)
