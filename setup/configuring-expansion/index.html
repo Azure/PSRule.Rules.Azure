@@ -5942,7 +5942,8 @@ To learn how to set configuration options see <a href="../configuring-options/">
 <h3 id="parameterfileexpansion">Parameter file expansion<a class="headerlink" href="#parameterfileexpansion" title="Permanent link">#</a></h3>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M11.75 1a.75.75 0 0 1 .75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 0 1 0 2.65l-3.187 2.75a1.75 1.75 0 0 1-1.143.425H12.5v9.25a.75.75 0 0 1-1.5 0V13H3.75A1.75 1.75 0 0 1 2 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 0 1 .75-.75zm0 4.5h7.282a.25.25 0 0 1 .163.06l3.188 2.75a.25.25 0 0 1 0 .38l-3.188 2.75a.25.25 0 0 1-.163.06H3.75a.25.25 0 0 1-.25-.25v-5.5a.25.25 0 0 1 .25-.25h8z"/></svg></span> v1.4.1</p>
 <p>This configuration option determines if Azure template parameter files will automatically be expanded.
-By default, parameter files will not be automatically expanded.</p>
+By default, parameter files will not be automatically expanded.
+When enabled, PSRule will discover and expand JSON parameter files for Azure templates or Bicep modules.</p>
 <p>Parameter files are expanded when PSRule cmdlets with the <code>-Format File</code> parameter are used.</p>
 <p>Syntax:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
@@ -6140,7 +6141,7 @@ To exclude a file, configure the <code>input.pathIgnore</code> option by providi
   <small>
     
       Last update:
-      2021-12-27
+      2022-02-15
     
   </small>
 </div>

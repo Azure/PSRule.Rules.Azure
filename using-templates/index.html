@@ -5892,7 +5892,7 @@ To learn more about why this is important see <a href="../expanding-source-files
 For details on both options continue reading.</p>
 </div>
 <h3 id="bymetadata">By metadata<a class="headerlink" href="#bymetadata" title="Permanent link">#</a></h3>
-<p>A parameter file can be linked to an associated template by setting metadata.
+<p>A parameter file can be linked to an associated template or Bicep module by setting metadata.
 To link a template within a parameter file, set the <code>metadata.template</code> property to the path of the template.</p>
 <p>PSRule for Azure supports either:</p>
 <ul>
@@ -5954,6 +5954,11 @@ By configuring the <code>AZURE_PARAMETER_FILE_METADATA_LINK</code> option to <co
 When configured, PSRule for Azure will fail parameter files that do not contain a metadata link.
 For details on <code>AZURE_PARAMETER_FILE_METADATA_LINK</code> see <a href="../setup/configuring-expansion/#requiretemplatemetadatalink">Configuring expansion</a>.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Bicep modules can also be expanded from parameter files.
+Instead of specifing a template path, you can specify the path to a Bicep file.</p>
+</div>
 <h3 id="bynamingconvention">By naming convention<a class="headerlink" href="#bynamingconvention" title="Permanent link">#</a></h3>
 <p>When metadata links are not set, PSRule for Azure will use a naming convention to link to template files.
 PSRule for Azure uses the parameter file prefix <code>&lt;templateName&gt;.parameters.json</code> to link to a template.
@@ -5968,7 +5973,7 @@ When linking using naming convention, the template and the parameter file must b
   <small>
     
       Last update:
-      2021-12-16
+      2022-02-15
     
   </small>
 </div>

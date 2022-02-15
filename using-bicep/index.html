@@ -633,6 +633,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#usingparameterfiles" class="md-nav__link">
+    Using parameter files
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5866,6 +5873,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#usingparameterfiles" class="md-nav__link">
+    Using parameter files
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5894,7 +5908,7 @@ To enable this feature, you need to:</p>
 <ul>
 <li>Enable expansion.</li>
 <li>For modules (if used):<ul>
-<li>Define a deployment.</li>
+<li>Define a deployment or parameters file.</li>
 <li>Configure path exclusions.</li>
 </ul>
 </li>
@@ -5910,6 +5924,11 @@ To learn more about why this is important see <a href="../expanding-source-files
 <span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using JSON parameter files exclusively, you do not need to set this option.
+Instead continue reading <a href="#usingparameterfiles">Using parameter files</a>.</p>
+</div>
 <h3 id="setupbicep">Setup Bicep<a class="headerlink" href="#setupbicep" title="Permanent link">#</a></h3>
 <p>To expand Azure resources for analysis from Bicep source files the Bicep CLI is required.
 The Bicep CLI is already installed on hosted runners and agents used by GitHub Actions and Azure Pipelines.
@@ -5986,13 +6005,59 @@ Instead expand resources from deployments or tests.</p>
 <p class="admonition-title">Note</p>
 <p>In this example, Bicep files such as <code>deploy.bicep</code> in other directories will be expanded.</p>
 </div>
+<h3 id="usingparameterfiles">Using parameter files<a class="headerlink" href="#usingparameterfiles" title="Permanent link">#</a></h3>
+<p>When using Bicep, you don't need to use parameter files.
+You can call <code>.bicep</code> files directly from other <code>.bicep</code> files with modules by using the <code>module</code> keyword.
+Alternatively, you can choose to expand and test a Bicep module from JSON parameter files <a href="../using-templates/#bymetadata">by metadata</a>.</p>
+<p>When using parameter files exclusively,
+the <code>AZURE_BICEP_FILE_EXPANSION</code> configuration option does not need to be set.
+Instead set the <code>AZURE_PARAMETER_FILE_EXPANSION</code> configuration option to <code>true</code>.
+This option will discover Bicep files from parameter metadata.</p>
+<div class="admonition example">
+<p class="admonition-title">Example <code>ps-rule.yaml</code></p>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Enable expansion for Bicep module from parameter files.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1"># Enable expanding for Bicep module tests.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+
+<span class="nt">input</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">pathIgnore</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Exclude module files</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;modules/**/*.bicep&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Include test files from modules</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;!modules/**/*.tests.bicep&#39;</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example <code>template.parameters.json</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;template&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./template.bicep&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;storageAccountName&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bicepstorage001&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      2022-01-13
+      2022-02-15
     
   </small>
 </div>

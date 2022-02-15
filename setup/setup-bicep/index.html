@@ -5958,13 +5958,19 @@ This option can be set within the <code>ps-rule.yaml</code> file.</p>
 <span class="w">  </span><span class="c1"># Enable automatic expansion of bicep source files</span><span class="w"></span>
 <span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you deploy Bicep code using JSON parameter files this option does not need to be set.
+Set <code>Configuration.AZURE_PARAMETER_FILE_EXPANSION</code> to <code>true</code> instead.
+See <a href="../../using-bicep/#usingparameterfiles">Using parameter files</a> and <a href="../../using-templates/#bymetadata">By metadata</a> for more information.</p>
+</div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      2022-02-08
+      2022-02-15
     
   </small>
 </div>
