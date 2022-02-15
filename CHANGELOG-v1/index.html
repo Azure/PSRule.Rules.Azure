@@ -2349,6 +2349,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4_3">
@@ -3617,6 +3619,20 @@
     <li class="md-nav__item">
       <a href="../en/rules/Azure.CDN.MinTLS/" class="md-nav__link">
         Azure.CDN.MinTLS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/rules/Azure.ContainerApp.Insecure/" class="md-nav__link">
+        Azure.ContainerApp.Insecure
       </a>
     </li>
   
@@ -7046,12 +7062,16 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 </ul>
 </li>
 <li>New rules:<ul>
-<li>Recovery Services Vault:<ul>
-<li>Check vaults have replication alerts configured. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/7">#7</a></li>
+<li>Container App:<ul>
+<li>Check insecure ingress is not enabled (preview). <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1252">#1252</a></li>
 </ul>
 </li>
 <li>Key Vault:<ul>
-<li>Configure key auto-rotation in Azure Key Vault (preview). <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1159">#1159</a></li>
+<li>Check key auto-rotation is enabled (preview). <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1159">#1159</a></li>
+</ul>
+</li>
+<li>Recovery Services Vault:<ul>
+<li>Check vaults have replication alerts configured. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/7">#7</a></li>
 </ul>
 </li>
 </ul>
