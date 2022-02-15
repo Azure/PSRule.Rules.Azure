@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -134,7 +134,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 _IsGenerated = null;
             }
 
-            internal TemplateContext(PipelineContext context, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup)
+            internal TemplateContext(PipelineContext context, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup, ParameterDefaultsOption parameterDefaults)
                 : this()
             {
                 Pipeline = context;
@@ -149,6 +149,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 if (managementGroup != null)
                     ManagementGroup = managementGroup;
+
+                if (parameterDefaults != null)
+                    ParameterDefaults = parameterDefaults;
             }
 
             internal TemplateContext(PipelineContext context)
@@ -166,6 +169,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 if (context?.Option?.Configuration?.ManagementGroup != null)
                     ManagementGroup = context?.Option?.Configuration?.ManagementGroup;
+
+                if (context?.Option?.Configuration?.ParameterDefaults != null)
+                    ParameterDefaults = context?.Option?.Configuration?.ParameterDefaults;
             }
 
             private Dictionary<string, IParameterValue> Parameters { get; }
@@ -181,6 +187,8 @@ namespace PSRule.Rules.Azure.Data.Template
             public TenantOption Tenant { get; internal set; }
 
             public ManagementGroupOption ManagementGroup { get; internal set; }
+
+            public ParameterDefaultsOption ParameterDefaults { get; private set; }
 
             public JObject Deployment => _Deployment.Peek();
 
@@ -303,10 +311,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 var type = resource[PROPERTY_TYPE].Value<string>();
                 typeParts = type.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-                if (typeParts == null || typeParts.Length != nameParts.Length + 1)
-                    return false;
-
-                return true;
+                return typeParts != null && typeParts.Length == nameParts.Length + 1;
             }
 
             private static bool GetResourceScope(JObject resource, out string[] resourceId)
@@ -394,10 +399,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 internal T CloneInput<T>() where T : JToken
                 {
-                    if (Input == null)
-                        return null;
-
-                    return (T)Input.CloneTemplateJToken();
+                    return Input == null ? null : (T)Input.CloneTemplateJToken();
                 }
             }
 
@@ -528,6 +530,31 @@ namespace PSRule.Rules.Azure.Data.Template
             internal bool TryParameterAssignment(string parameterName, out JToken value)
             {
                 return _ParameterAssignments.TryGetValue(parameterName, out value);
+            }
+
+            internal bool TryParameterDefault(string parameterName, ParameterType type, out JToken value)
+            {
+                value = default;
+                switch (type)
+                {
+                    case ParameterType.String:
+                    case ParameterType.SecureString:
+                        return ParameterDefaults.TryGetString(parameterName, out value);
+
+                    case ParameterType.Bool:
+                        return ParameterDefaults.TryGetBool(parameterName, out value);
+
+                    case ParameterType.Int:
+                        return ParameterDefaults.TryGetLong(parameterName, out value);
+
+                    case ParameterType.Array:
+                        return ParameterDefaults.TryGetString(parameterName, out value);
+
+                    case ParameterType.Object:
+                    case ParameterType.SecureObject:
+                    default:
+                        return false;
+                }
             }
 
             internal bool TryParameter(string parameterName)
@@ -854,7 +881,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static bool TryParameter(TemplateContext context, string parameterName, JObject parameter)
         {
-            return parameter == null || TryParameterAssignment(context, parameterName, parameter) || TryParameterDefault(context, parameterName, parameter);
+            return parameter == null || TryParameterAssignment(context, parameterName, parameter) || TryParameterDefaultValue(context, parameterName, parameter) || TryParameterDefault(context, parameterName, parameter);
         }
 
         private static bool TryParameterAssignment(TemplateContext context, string parameterName, JObject parameter)
@@ -871,7 +898,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// Try to fill parameter from default value.
         /// </summary>
-        private static bool TryParameterDefault(TemplateContext context, string parameterName, JObject parameter)
+        private static bool TryParameterDefaultValue(TemplateContext context, string parameterName, JObject parameter)
         {
             if (!parameter.ContainsKey(PROPERTY_DEFAULTVALUE))
                 return false;
@@ -882,6 +909,17 @@ namespace PSRule.Rules.Azure.Data.Template
                 context.CheckParameter(parameterName, parameter, type, defaultValue);
 
             AddParameterFromType(context, parameterName, type, defaultValue);
+            return true;
+        }
+
+        private static bool TryParameterDefault(TemplateContext context, string parameterName, JObject parameter)
+        {
+            var type = GetParameterType(parameter);
+            if (!context.TryParameterDefault(parameterName, type, out var value))
+                return false;
+
+            context.CheckParameter(parameterName, parameter, type, value);
+            AddParameterFromType(context, parameterName, type, value);
             return true;
         }
 
@@ -1033,6 +1071,7 @@ namespace PSRule.Rules.Azure.Data.Template
             var resourceGroup = new ResourceGroupOption(context.ResourceGroup);
             var tenant = new TenantOption(context.Tenant);
             var managementGroup = new ManagementGroupOption(context.ManagementGroup);
+            var parameterDefaults = new ParameterDefaultsOption(context.ParameterDefaults);
             if (TryStringProperty(resource, PROPERTY_SUBSCRIPTIONID, out var subscriptionId))
                 subscription.SubscriptionId = subscriptionId;
 
@@ -1040,7 +1079,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 resourceGroup.Name = resourceGroupName;
 
             resourceGroup.SubscriptionId = subscription.SubscriptionId;
-            var deploymentContext = new TemplateContext(context.Pipeline, subscription, resourceGroup, tenant, managementGroup);
+            var deploymentContext = new TemplateContext(context.Pipeline, subscription, resourceGroup, tenant, managementGroup, parameterDefaults);
             if (TryObjectProperty(properties, PROPERTY_PARAMETERS, out var innerParameters))
             {
                 foreach (var parameter in innerParameters.Properties())

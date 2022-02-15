@@ -1,6 +1,8 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
+using System.IO;
 using System.Management.Automation;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Bicep;
@@ -34,20 +36,14 @@ namespace PSRule.Rules.Azure.Runtime
             if (link == null)
                 return null;
 
-            var helper = new TemplateHelper(
-                context,
-                "helper"
-            );
-            return helper.ProcessTemplate(link.TemplateFile, link.ParameterFile, out _);
+            return IsBicep(link.TemplateFile) ?
+                GetBicepResources(link.TemplateFile, link.ParameterFile, null) :
+                GetTemplateResources(link.TemplateFile, link.ParameterFile, context);
         }
 
         public static PSObject[] GetBicepResources(string bicepFile, PSCmdlet commandRuntime)
         {
-            var context = GetContext(commandRuntime);
-            var bicep = new BicepHelper(
-                context
-            );
-            return bicep.ProcessFile(bicepFile);
+            return GetBicepResources(bicepFile, null, commandRuntime);
         }
 
         public static string GetMetadataLinkPath(string parameterFile, string templateFile)
@@ -69,6 +65,29 @@ namespace PSRule.Rules.Azure.Runtime
         }
 
         #region Helper methods
+
+        private static PSObject[] GetTemplateResources(string templateFile, string parameterFile, PipelineContext context)
+        {
+            var helper = new TemplateHelper(
+                context,
+                "helper"
+            );
+            return helper.ProcessTemplate(templateFile, parameterFile, out _);
+        }
+
+        private static bool IsBicep(string path)
+        {
+            return Path.GetExtension(path) == ".bicep";
+        }
+
+        private static PSObject[] GetBicepResources(string templateFile, string parameterFile, PSCmdlet commandRuntime)
+        {
+            var context = GetContext(commandRuntime);
+            var bicep = new BicepHelper(
+                context
+            );
+            return bicep.ProcessFile(templateFile, parameterFile);
+        }
 
         private static PipelineContext GetContext(PSCmdlet commandRuntime = null)
         {

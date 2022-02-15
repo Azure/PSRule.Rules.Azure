@@ -205,6 +205,12 @@ Name | Synopsis | Severity
 [Azure.Search.QuerySLA](Azure.Search.QuerySLA.md) | Use a minimum of 2 replicas to receive an SLA for index queries. | Important
 [Azure.Search.SKU](Azure.Search.SKU.md) | Use the basic and standard tiers for entry level workloads. | Critical
 
+## Container App
+
+Name | Synopsis | Severity
+---- | -------- | --------
+[Azure.ContainerApp.Insecure](Azure.ContainerApp.Insecure.md) | Ensure insecure inbound traffic is not permitted to the container app. | Important
+
 ## Container Registry
 
 Name | Synopsis | Severity
