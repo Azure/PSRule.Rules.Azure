@@ -17,7 +17,8 @@ See [troubleshooting guide] for a workaround to this issue.
 What's changed since pre-release v1.13.0-B2202063:
 
 - New rules:
-  - Limit public access for Azure Cache for Redis instances. [#935](https://github.com/Azure/PSRule.Rules.Azure/issues/935)
+  - Azure Cache for Redis:
+    - Limit public access for Azure Cache for Redis instances. [#935](https://github.com/Azure/PSRule.Rules.Azure/issues/935)
 
 ## v1.13.0-B2202063 (pre-release)
 
