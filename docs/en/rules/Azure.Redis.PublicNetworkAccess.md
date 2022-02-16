@@ -17,6 +17,9 @@ Redis cache should disable public network access.
 Public access to redis instances can be disabled. This ensures secure and private connectivity to redis
 instances using private endpoints instead.
 
+Private endpoint is a network interface that connects you privately and securely to Azure Cache for
+Redis powered by Azure Private Link.
+
 ## RECOMMENDATION
 
 Redis cache should disable public network access when public connectivity is not required.
