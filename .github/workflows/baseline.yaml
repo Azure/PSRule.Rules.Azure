@@ -1,11 +1,11 @@
 #
-# Build Rule Docs
+# Build Baseline Docs
 #
 
 # NOTES:
-# Automatically build rule docs for pull requests
+# Automatically build baseline docs for pull requests
 
-name: Build Rule Docs
+name: Build Baseline Docs
 
 on:
   pull_request:

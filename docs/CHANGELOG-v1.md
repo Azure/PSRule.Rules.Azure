@@ -15,7 +15,7 @@ See [troubleshooting guide] for a workaround to this issue.
 ## Unreleased
 
 - Engineering:
-  - Added workflow to automatically build rule docs for PRs. [#1242](https://github.com/Azure/PSRule.Rules.Azure/issues/1242)
+  - Added workflow to automatically build baseline docs for PRs. [#1242](https://github.com/Azure/PSRule.Rules.Azure/issues/1242)
 
 ## v1.13.0-B2202063 (pre-release)
 
