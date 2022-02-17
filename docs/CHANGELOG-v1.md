@@ -17,9 +17,7 @@ See [troubleshooting guide] for a workaround to this issue.
 What's changed since pre-release v1.13.0-B2202063:
 
 - Engineering:
-  - Added workflow to automatically build baseline docs for PRs. [#1242](https://github.com/Azure/PSRule.Rules.Azure/issues/1242)
-- Bug fixes:
-  - Fixed empty value with strong type. [#1258](https://github.com/Azure/PSRule.Rules.Azure/issues/1258)
+  - Automatically build baseline docs. [#1242](https://github.com/Azure/PSRule.Rules.Azure/issues/1242)
 - New rules:
   - Azure Cache for Redis:
     - Limit public access for Azure Cache for Redis instances. [#935](https://github.com/Azure/PSRule.Rules.Azure/issues/935)

@@ -41,6 +41,12 @@ jobs:
           python3 -m pip install wheel
           python3 -m pip install -r requirements-docs.txt
 
+      - name: Build docs
+        run: |
+          Install-Module InvokeBuild -MinimumVersion 5.4.0 -Scope CurrentUser -Force
+          Invoke-Build BuildDocs
+        shell: pwsh
+
       - name: Build site
         run: mkdocs build
 
