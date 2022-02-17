@@ -18,6 +18,9 @@ What's changed since pre-release v1.13.0-B2202063:
 
 - Bug fixes:
   - Fixed empty value with strong type. [#1258](https://github.com/Azure/PSRule.Rules.Azure/issues/1258)
+- New rules:
+  - Azure Cache for Redis:
+    - Limit public access for Azure Cache for Redis instances. [#935](https://github.com/Azure/PSRule.Rules.Azure/issues/935)
 
 ## v1.13.0-B2202063 (pre-release)
 

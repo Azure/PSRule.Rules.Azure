@@ -25,7 +25,8 @@
             "hostName": "redis-A.redis.cache.windows.net",
             "port": 6379,
             "sslPort": 6380,
-            "linkedServers": []
+            "linkedServers": [],
+            "publicNetworkAccess": "Disabled"
         }
     },
     {
@@ -53,7 +54,8 @@
             "hostName": "redis-B.redis.cache.windows.net",
             "port": 6379,
             "sslPort": 6380,
-            "linkedServers": []
+            "linkedServers": [],
+            "publicNetworkAccess": "Enabled"
         }
     },
     {
