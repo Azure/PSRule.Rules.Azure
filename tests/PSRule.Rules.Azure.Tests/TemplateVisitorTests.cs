@@ -285,7 +285,7 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Template.Bicep.2.json"), null);
             Assert.NotNull(resources);
-            Assert.Equal(5, resources.Length);
+            Assert.Equal(7, resources.Length);
 
             var actual = resources[1];
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
@@ -298,6 +298,10 @@ namespace PSRule.Rules.Azure
             Assert.Single(actual["_PSRule"]["issue"].Value<JArray>());
             Assert.Equal("PSRule.Rules.Azure.Template.ParameterStrongType", actual["_PSRule"]["issue"][0]["type"].Value<string>());
             Assert.Equal("workspaceId", actual["_PSRule"]["issue"][0]["name"].Value<string>());
+
+            actual = resources[5];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.False(actual["_PSRule"].Value<JObject>().ContainsKey("issue"));
         }
 
         [Fact]

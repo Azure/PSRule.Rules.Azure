@@ -8,6 +8,12 @@
       "templateHash": "10982094731567627873"
     }
   },
+  "parameters": {
+    "workspaceId": {
+      "type": "string",
+      "defaultValue": ""
+    }
+  },
   "functions": [],
   "resources": [
     {
@@ -266,6 +272,209 @@
             "workspaceId": {
               "type": "string",
               "defaultValue": "",
+              "metadata": {
+                "strongType": "Microsoft.OperationalInsights/workspaces",
+                "example": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.OperationalInsights/workspaces/<workspace_name>",
+                "description": "The workspace to store audit logs."
+              }
+            },
+            "tags": {
+              "type": "object",
+              "metadata": {
+                "example": {
+                  "service": "<service_name>",
+                  "env": "prod"
+                },
+                "description": "Tags to apply to the resource."
+              }
+            }
+          },
+          "functions": [],
+          "resources": [
+            {
+              "type": "Microsoft.KeyVault/vaults",
+              "apiVersion": "2019-09-01",
+              "name": "[parameters('vaultName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "enabledForDeployment": "[parameters('useDeployment')]",
+                "enabledForTemplateDeployment": "[parameters('useTemplate')]",
+                "enabledForDiskEncryption": "[parameters('useDiskEncryption')]",
+                "accessPolicies": "[parameters('accessPolicies')]",
+                "tenantId": "[subscription().tenantId]",
+                "sku": {
+                  "name": "standard",
+                  "family": "A"
+                },
+                "networkAcls": "[parameters('networkAcls')]",
+                "enableSoftDelete": "[parameters('useSoftDelete')]",
+                "enablePurgeProtection": "[parameters('usePurgeProtection')]",
+                "softDeleteRetentionInDays": "[parameters('softDeleteDays')]",
+                "enableRbacAuthorization": "[parameters('useRBAC')]"
+              },
+              "tags": "[parameters('tags')]"
+            },
+            {
+              "condition": "[not(empty(parameters('workspaceId')))]",
+              "type": "Microsoft.KeyVault/vaults/providers/diagnosticSettings",
+              "apiVersion": "2016-09-01",
+              "name": "[format('{0}/Microsoft.Insights/service', parameters('vaultName'))]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "workspaceId": "[parameters('workspaceId')]",
+                "logs": [
+                  {
+                    "category": "AuditEvent",
+                    "enabled": true
+                  }
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+              ]
+            }
+          ],
+          "outputs": {
+            "resourceId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "keyvault-deployment",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "tags": {
+            "value": {
+              "env": "demo"
+            }
+          },
+          "vaultName": {
+            "value": "kv-bicep-app-003"
+          },
+          "workspaceId": {
+              "value": "[parameters('workspaceId')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.4.1008.15138",
+              "templateHash": "17880196107388379896"
+            }
+          },
+          "parameters": {
+            "vaultName": {
+              "type": "string",
+              "metadata": {
+                "description": "The name of the Key Vault."
+              }
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]",
+              "metadata": {
+                "strongType": "location",
+                "description": "The Azure region to deploy to."
+              }
+            },
+            "accessPolicies": {
+              "type": "array",
+              "defaultValue": [],
+              "metadata": {
+                "example": [
+                  {
+                    "objectId": "<object_id>",
+                    "tenantId": "<tenant_id>",
+                    "permissions": {
+                      "secrets": [
+                        "Get",
+                        "List",
+                        "Set"
+                      ]
+                    }
+                  }
+                ],
+                "description": "The access policies defined for this vault."
+              }
+            },
+            "useDeployment": {
+              "type": "bool",
+              "defaultValue": true,
+              "metadata": {
+                "description": "Determines if Azure can deploy certificates from this Key Vault."
+              }
+            },
+            "useTemplate": {
+              "type": "bool",
+              "defaultValue": true,
+              "metadata": {
+                "description": "Determines if templates can reference secrets from this Key Vault."
+              }
+            },
+            "useDiskEncryption": {
+              "type": "bool",
+              "defaultValue": true,
+              "metadata": {
+                "description": "Determines if this Key Vault can be used for Azure Disk Encryption."
+              }
+            },
+            "useSoftDelete": {
+              "type": "bool",
+              "defaultValue": true,
+              "metadata": {
+                "description": "Determine if soft delete is enabled on this Key Vault."
+              }
+            },
+            "usePurgeProtection": {
+              "type": "bool",
+              "defaultValue": true,
+              "metadata": {
+                "description": "Determine if purge protection is enabled on this Key Vault."
+              }
+            },
+            "softDeleteDays": {
+              "type": "int",
+              "defaultValue": 90,
+              "maxValue": 90,
+              "minValue": 7,
+              "metadata": {
+                "description": "The number of days to retain soft deleted vaults and vault objects."
+              }
+            },
+            "useRBAC": {
+              "type": "bool",
+              "defaultValue": false,
+              "metadata": {
+                "description": "Determines if access to the objects granted using RBAC. When true, access policies are ignored."
+              }
+            },
+            "networkAcls": {
+              "type": "object",
+              "defaultValue": {
+                "defaultAction": "Allow",
+                "bypass": "AzureServices",
+                "ipRules": [],
+                "virtualNetworkRules": []
+              },
+              "metadata": {
+                "description": "The network firewall defined for this vault."
+              }
+            },
+            "workspaceId": {
+              "type": "string",
               "metadata": {
                 "strongType": "Microsoft.OperationalInsights/workspaces",
                 "example": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.OperationalInsights/workspaces/<workspace_name>",
