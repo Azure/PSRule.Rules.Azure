@@ -39,16 +39,11 @@ jobs:
           Invoke-Build BuildDocs
         shell: pwsh
 
-      - name: Commit Docs
+      - name: Push Docs
         run: |
           $updates = @(git status --porcelain)
           if ($null -ne $updates -and $updates.Length -gt 0) {
             git commit -m "Update rule docs" -a
+            git push
           }
         shell: pwsh
-
-      - name: Push Docs
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.head_ref }}
