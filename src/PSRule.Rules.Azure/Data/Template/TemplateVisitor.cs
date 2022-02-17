@@ -617,7 +617,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
             internal void CheckParameter(string parameterName, JObject parameter, ParameterType type, JToken value)
             {
-                _Validator.ValidateParameter(this, parameterName, parameter, value);
+                if (type == ParameterType.String && !string.IsNullOrEmpty(value.Value<string>()))
+                    _Validator.ValidateParameter(this, parameterName, parameter, value);
             }
         }
 
@@ -905,9 +906,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             var type = GetParameterType(parameter);
             var defaultValue = ExpandPropertyToken(context, parameter[PROPERTY_DEFAULTVALUE]);
-            if (type == ParameterType.String && !string.IsNullOrEmpty(parameter[PROPERTY_DEFAULTVALUE].Value<string>()))
-                context.CheckParameter(parameterName, parameter, type, defaultValue);
-
+            context.CheckParameter(parameterName, parameter, type, defaultValue);
             AddParameterFromType(context, parameterName, type, defaultValue);
             return true;
         }
