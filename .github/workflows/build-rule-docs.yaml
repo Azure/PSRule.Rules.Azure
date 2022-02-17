@@ -1,0 +1,54 @@
+#
+# Build Rule Docs
+#
+
+# NOTES:
+# Automatically build rule docs for pull requests
+
+name: Build Rule Docs
+
+on:
+  pull_request:
+    branches: [ main, 'release/*' ]
+    types: [ opened, reopened, synchronize ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Configuration
+        run: |
+          git config user.name github-actions
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Build Docs
+        run: |
+          git checkout ${{ github.head_ref }}
+          Install-Module InvokeBuild -MinimumVersion 5.4.0 -Scope CurrentUser -Force
+          Invoke-Build BuildDocs
+        shell: pwsh
+
+      - name: Commit Docs
+        run: |
+          $updates = @(git status --porcelain)
+          if ($null -ne $updates -and $updates.Length -gt 0) {
+            git commit -m "Update rule docs" -a
+          }
+        shell: pwsh
+
+      - name: Push Docs
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
