@@ -60,6 +60,7 @@
         "lifecycle",
         "nics",
         "psarm",
+        "pwsh",
         "runbook",
         "stateful",
         "subnet",

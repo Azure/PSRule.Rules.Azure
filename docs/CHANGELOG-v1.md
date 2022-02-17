@@ -16,6 +16,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since pre-release v1.13.0-B2202063:
 
+- Engineering:
+  - Automatically build baseline docs. [#1242](https://github.com/Azure/PSRule.Rules.Azure/issues/1242)
 - Bug fixes:
   - Fixed empty value with strong type. [#1258](https://github.com/Azure/PSRule.Rules.Azure/issues/1258)
 - New rules:
