@@ -14,6 +14,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.13.0-B2202063:
+
 - Engineering:
   - Added workflow to automatically build baseline docs for PRs. [#1242](https://github.com/Azure/PSRule.Rules.Azure/issues/1242)
 - New rules:
