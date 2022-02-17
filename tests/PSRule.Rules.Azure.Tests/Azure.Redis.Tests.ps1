@@ -156,6 +156,47 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult.Length | Should -Be 10;
             $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J';
         }
+
+        It 'Azure.Redis.PublicNetworkAccess' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Redis.PublicNetworkAccess' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "Field properties.publicNetworkAccess: Is set to 'Enabled'.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[6].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[7].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[7].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[8].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[8].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'redis-A';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P';
+        }
     }
 
     Context 'With Configuration Option' -Tag 'Configuration' {
