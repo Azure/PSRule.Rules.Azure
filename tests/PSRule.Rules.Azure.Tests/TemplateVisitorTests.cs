@@ -379,6 +379,13 @@ namespace PSRule.Rules.Azure
             Assert.Equal("aks-resource123", resources[1]["name"].Value<string>());
         }
 
+        [Fact]
+        public void WithDependantParameters()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.12.json"), null);
+            Assert.NotNull(resources);
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

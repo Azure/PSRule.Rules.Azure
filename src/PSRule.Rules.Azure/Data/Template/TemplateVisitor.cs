@@ -615,10 +615,13 @@ namespace PSRule.Rules.Azure.Data.Template
                 _CurrentDeployment.SetValidationIssue(issueId, name, message, args);
             }
 
-            internal void CheckParameter(string parameterName, JObject parameter, ParameterType type, JToken value)
+            internal void CheckParameter(string parameterName, JObject parameter)
             {
-                if (type == ParameterType.String && !string.IsNullOrEmpty(value.Value<string>()))
-                    _Validator.ValidateParameter(this, parameterName, parameter, value);
+                if (!Parameters.TryGetValue(parameterName, out var value))
+                    return;
+
+                if (value.Type == ParameterType.String && !string.IsNullOrEmpty(value.GetValue(this) as string))
+                    _Validator.ValidateParameter(this, parameterName, parameter, value.GetValue(this) as string);
             }
         }
 
@@ -873,6 +876,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
             foreach (var parameter in parameters)
                 Parameter(context, parameter.Key, parameter.Value as JObject);
+
+            foreach (var parameter in parameters)
+                context.CheckParameter(parameter.Key, parameter.Value as JObject);
         }
 
         protected virtual void Parameter(TemplateContext context, string parameterName, JObject parameter)
@@ -891,7 +897,6 @@ namespace PSRule.Rules.Azure.Data.Template
                 return false;
 
             var type = GetParameterType(parameter);
-            context.CheckParameter(parameterName, parameter, type, value);
             AddParameterFromType(context, parameterName, type, value);
             return true;
         }
@@ -905,8 +910,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return false;
 
             var type = GetParameterType(parameter);
-            var defaultValue = ExpandPropertyToken(context, parameter[PROPERTY_DEFAULTVALUE]);
-            context.CheckParameter(parameterName, parameter, type, defaultValue);
+            var defaultValue = parameter[PROPERTY_DEFAULTVALUE];
             AddParameterFromType(context, parameterName, type, defaultValue);
             return true;
         }
@@ -917,7 +921,6 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!context.TryParameterDefault(parameterName, type, out var value))
                 return false;
 
-            context.CheckParameter(parameterName, parameter, type, value);
             AddParameterFromType(context, parameterName, type, value);
             return true;
         }
