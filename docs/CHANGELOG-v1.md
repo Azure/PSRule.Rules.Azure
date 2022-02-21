@@ -12,17 +12,24 @@ See [troubleshooting guide] for a workaround to this issue.
   If you have this option configured, please update it to `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
   Support for `Azure_AKSMinimumVersion` will be removed in v2.
 
+## Unreleased
+
+What's changed since pre-release v1.13.0-B2202090:
+
+- Engineering:
+  - Bump PSRule dependency to v1.11.1. [#1269](https://github.com/Azure/PSRule.Rules.Azure/pull/1269)
+
 ## v1.13.0-B2202090 (pre-release)
 
 What's changed since pre-release v1.13.0-B2202063:
 
+- New rules:
+  - Azure Cache for Redis:
+    - Limit public access for Azure Cache for Redis instances. [#935](https://github.com/Azure/PSRule.Rules.Azure/issues/935)
 - Engineering:
   - Automatically build baseline docs. [#1242](https://github.com/Azure/PSRule.Rules.Azure/issues/1242)
 - Bug fixes:
   - Fixed empty value with strong type. [#1258](https://github.com/Azure/PSRule.Rules.Azure/issues/1258)
-- New rules:
-  - Azure Cache for Redis:
-    - Limit public access for Azure Cache for Redis instances. [#935](https://github.com/Azure/PSRule.Rules.Azure/issues/935)
 
 ## v1.13.0-B2202063 (pre-release)
 
