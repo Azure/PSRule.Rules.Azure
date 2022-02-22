@@ -18,6 +18,8 @@ What's changed since pre-release v1.13.0-B2202090:
 
 - Engineering:
   - Bump PSRule dependency to v1.11.1. [#1269](https://github.com/Azure/PSRule.Rules.Azure/pull/1269)
+- Bug fixes:
+  - Fixed out of order parameters. [#1257](https://github.com/Azure/PSRule.Rules.Azure/issues/1257)
 
 ## v1.13.0-B2202090 (pre-release)
 

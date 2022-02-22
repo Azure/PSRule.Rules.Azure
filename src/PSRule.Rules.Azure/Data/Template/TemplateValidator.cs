@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -23,12 +23,12 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private ISet<string> _Locations;
 
-        internal void ValidateParameter(ITemplateContext context, string parameterName, JObject parameter, JToken value)
+        internal void ValidateParameter(ITemplateContext context, string parameterName, JObject parameter, object value)
         {
             ParameterStrongType(context, parameterName, parameter, value);
         }
 
-        private void ParameterStrongType(ITemplateContext context, string parameterName, JObject parameter, JToken value)
+        private void ParameterStrongType(ITemplateContext context, string parameterName, JObject parameter, object value)
         {
             if (!TryStrongType(parameter, out var strongType))
                 return;
@@ -51,7 +51,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return strongType != null;
         }
 
-        private void IsValidLocation(ITemplateContext context, string parameterName, JToken value)
+        private void IsValidLocation(ITemplateContext context, string parameterName, object value)
         {
             if (!ExpressionHelpers.TryString(value, out var location))
             {
@@ -80,7 +80,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return _Locations;
         }
 
-        private static void IsResourceType(ITemplateContext context, string parameterName, string resourceType, JToken value)
+        private static void IsResourceType(ITemplateContext context, string parameterName, string resourceType, object value)
         {
             if (!ExpressionHelpers.TryString(value, out var resourceId))
             {

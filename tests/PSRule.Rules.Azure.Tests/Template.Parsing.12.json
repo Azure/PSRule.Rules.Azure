@@ -1,0 +1,15 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "value2": {
+            "type": "string",
+            "defaultValue": "[parameters('value1')]"
+        },
+        "value1": {
+            "type": "string",
+            "defaultValue": "value1"
+        }
+    },
+    "resources": []
+}
