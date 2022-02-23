@@ -353,11 +353,6 @@
         },
         "mode": "Incremental",
         "parameters": {
-          "tags": {
-            "value": {
-              "env": "demo"
-            }
-          },
           "vaultName": {
             "value": "kv-bicep-app-003"
           },
@@ -483,6 +478,7 @@
             },
             "tags": {
               "type": "object",
+              "defaultValue": "[resourceGroup().tags]",
               "metadata": {
                 "example": {
                   "service": "<service_name>",

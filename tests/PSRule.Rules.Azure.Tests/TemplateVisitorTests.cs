@@ -283,7 +283,7 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void StrongTypeNestedParameter()
         {
-            var resources = ProcessTemplate(GetSourcePath("Template.Bicep.2.json"), null);
+            var resources = ProcessTemplate(GetSourcePath("Template.Bicep.2.json"), null, PSRuleOption.FromFileOrDefault(GetSourcePath("ps-rule-options.yaml")));
             Assert.NotNull(resources);
             Assert.Equal(7, resources.Length);
 
