@@ -1,7 +1,8 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
+using System.Collections;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
@@ -230,6 +231,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
             if (value is Array aValue)
                 return new JArray(aValue);
+
+            if (value is Hashtable hashtable)
+                return JObject.FromObject(hashtable);
 
             if (value is MockMember mockMember)
                 return new JValue(mockMember.BuildString());

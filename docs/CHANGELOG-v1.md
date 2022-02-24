@@ -14,6 +14,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.13.0-B2202103:
+
+- Bug fixes:
+  - Fixed mapping default configuration causes cast exception. [#1274](https://github.com/Azure/PSRule.Rules.Azure/issues/1274)
+
 ## v1.13.0-B2202103 (pre-release)
 
 What's changed since pre-release v1.13.0-B2202090:

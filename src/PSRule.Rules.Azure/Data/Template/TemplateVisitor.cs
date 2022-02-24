@@ -1202,7 +1202,15 @@ namespace PSRule.Rules.Azure.Data.Template
         private static T EvaluateExpression<T>(ITemplateContext context, ExpressionFnOuter fn)
         {
             var result = fn(context);
-            return result is JToken token && !typeof(JToken).IsAssignableFrom(typeof(T)) ? token.Value<T>() : (T)result;
+            return result is JToken token && !typeof(JToken).IsAssignableFrom(typeof(T)) ? token.Value<T>() : Convert<T>(result);
+        }
+
+        private static T Convert<T>(object o)
+        {
+            if (o is T value)
+                return value;
+
+            return typeof(JToken).IsAssignableFrom(typeof(T)) && ExpressionHelpers.GetJToken(o) is T token ? token : (T)o;
         }
 
         private static T ExpandProperty<T>(ITemplateContext context, JToken value)
