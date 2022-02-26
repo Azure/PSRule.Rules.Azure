@@ -14,6 +14,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.13.0-B2202108:
+
+- Bug fixes:
+  - Fixed resource id is incorrectly built for sub resource types. [#1279](https://github.com/Azure/PSRule.Rules.Azure/issues/1279)
+
 ## v1.13.0-B2202108 (pre-release)
 
 What's changed since pre-release v1.13.0-B2202103:

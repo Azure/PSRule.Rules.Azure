@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -665,17 +665,13 @@ namespace PSRule.Rules.Azure.Data.Template
 
             var resourceId = segments[0];
             if (!segments[1].Contains('/'))
-                throw new ArgumentException();
+                throw ArgumentFormatInvalid(nameof(ExtensionResourceId));
 
-            var resourceType = TrimResourceType(segments[1]);
-            var nameDepth = resourceType.Split('/').Length - 1;
-            if ((segments.Length - 2) != nameDepth)
-                throw new TemplateFunctionException(nameof(ExtensionResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
+            GetResourceIdParts(segments, 1, out var resourceType, out var name);
+            if (resourceType.Length != name.Length)
+                throw MismatchingResourceSegments(nameof(ExtensionResourceId));
 
-            var name = new string[nameDepth];
-            System.Array.Copy(segments, 2, name, 0, nameDepth);
-            var nameParts = string.Join("/", name);
-            return string.Concat(resourceId, "/providers/", resourceType, "/", nameParts);
+            return string.Concat(resourceId, ResourceHelper.CombineResourceId(null, null, resourceType, name));
         }
 
         /// <summary>
@@ -788,35 +784,15 @@ namespace PSRule.Rules.Azure.Data.Template
                 segments[i] = value;
             }
 
-            var subscriptionId = context.Subscription.SubscriptionId;
-            var resourceGroup = context.ResourceGroup.Name;
-            string resourceType = null;
-            string nameParts = null;
+            // Copy segements
+            var start = FindResourceTypePart(segments);
+            var subscriptionId = start == 2 ? segments[0] : context.Subscription.SubscriptionId;
+            var resourceGroup = start >= 1 ? segments[start - 1] : context.ResourceGroup.Name;
+            GetResourceIdParts(segments, start, out var resourceType, out var name);
+            if (resourceType.Length != name.Length)
+                throw MismatchingResourceSegments(nameof(ResourceId));
 
-            for (var i = 0; resourceType == null && i < segments.Length; i++)
-            {
-                if (segments[i].Contains('/'))
-                {
-                    // Copy earlier segments
-                    if (i == 1)
-                        resourceGroup = segments[0];
-                    else if (i == 2)
-                    {
-                        resourceGroup = segments[1];
-                        subscriptionId = segments[0];
-                    }
-                    resourceType = TrimResourceType(segments[i]);
-                    var nameDepth = resourceType.Split('/').Length - 1;
-
-                    if ((segments.Length - 1 - i) != nameDepth)
-                        throw new TemplateFunctionException(nameof(ResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
-
-                    var name = new string[nameDepth];
-                    System.Array.Copy(segments, i + 1, name, 0, nameDepth);
-                    nameParts = string.Join("/", name);
-                }
-            }
-            return string.Concat("/subscriptions/", subscriptionId, "/resourceGroups/", resourceGroup, "/providers/", resourceType, "/", nameParts);
+            return ResourceHelper.CombineResourceId(subscriptionId, resourceGroup, resourceType, name);
         }
 
         /// <summary>
@@ -839,30 +815,14 @@ namespace PSRule.Rules.Azure.Data.Template
                 segments[i] = value;
             }
 
-            var subscriptionId = context.Subscription.SubscriptionId;
-            string resourceType = null;
-            string nameParts = null;
+            // Copy segements
+            var start = FindResourceTypePart(segments);
+            var subscriptionId = start == 1 ? segments[0] : context.Subscription.SubscriptionId;
+            GetResourceIdParts(segments, start, out var resourceType, out var name);
+            if (resourceType.Length != name.Length)
+                throw MismatchingResourceSegments(nameof(SubscriptionResourceId));
 
-            for (var i = 0; resourceType == null && i < segments.Length; i++)
-            {
-                if (segments[i].Contains('/'))
-                {
-                    // Copy earlier segments
-                    if (i == 1)
-                        subscriptionId = segments[0];
-
-                    resourceType = TrimResourceType(segments[i]);
-                    var nameDepth = resourceType.Split('/').Length - 1;
-
-                    if ((segments.Length - 1 - i) != nameDepth)
-                        throw new TemplateFunctionException(nameof(SubscriptionResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
-
-                    var name = new string[nameDepth];
-                    System.Array.Copy(segments, i + 1, name, 0, nameDepth);
-                    nameParts = string.Join("/", name);
-                }
-            }
-            return string.Concat("/subscriptions/", subscriptionId, "/providers/", resourceType, "/", nameParts);
+            return ResourceHelper.CombineResourceId(subscriptionId, null, resourceType, name);
         }
 
         /// <summary>
@@ -885,25 +845,13 @@ namespace PSRule.Rules.Azure.Data.Template
                 segments[i] = value;
             }
 
-            string resourceType = null;
-            string nameParts = null;
+            // Copy segements
+            var start = FindResourceTypePart(segments);
+            GetResourceIdParts(segments, start, out var resourceType, out var name);
+            if (resourceType.Length != name.Length)
+                throw MismatchingResourceSegments(nameof(TenantResourceId));
 
-            for (var i = 0; resourceType == null && i < segments.Length; i++)
-            {
-                if (segments[i].Contains('/'))
-                {
-                    resourceType = TrimResourceType(segments[i]);
-                    var nameDepth = resourceType.Split('/').Length - 1;
-
-                    if ((segments.Length - 1 - i) != nameDepth)
-                        throw new TemplateFunctionException(nameof(TenantResourceId), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
-
-                    var name = new string[nameDepth];
-                    System.Array.Copy(segments, i + 1, name, 0, nameDepth);
-                    nameParts = string.Join("/", name);
-                }
-            }
-            return string.Concat("/providers/", resourceType, "/", nameParts);
+            return ResourceHelper.CombineResourceId(null, null, resourceType, name);
         }
 
         #endregion Resource
@@ -1710,9 +1658,27 @@ namespace PSRule.Rules.Azure.Data.Template
             return args == null ? 0 : args.Length;
         }
 
-        private static string TrimResourceType(string resourceType)
+        private static int FindResourceTypePart(string[] segments)
         {
-            return resourceType[resourceType.Length - 1] == '/' ? resourceType = resourceType.Substring(0, resourceType.Length - 1) : resourceType;
+            for (var i = 0; i < segments.Length; i++)
+                if (segments[i].Contains('/'))
+                    return i;
+
+            return 0;
+        }
+
+        private static void GetResourceIdParts(string[] segments, int start, out string[] resourceType, out string[] name)
+        {
+            var typeParts = segments[start].Split('/');
+            var depth = string.IsNullOrEmpty(typeParts[typeParts.Length - 1]) ? typeParts.Length - 2 : typeParts.Length - 1;
+            resourceType = new string[depth];
+            resourceType[0] = string.Concat(typeParts[0], '/', typeParts[1]);
+            for (var i = 1; i < depth; i++)
+                resourceType[i] = typeParts[i + 1];
+
+            name = new string[segments.Length - (start + 1)];
+            if (name.Length == resourceType.Length)
+                System.Array.Copy(segments, start + 1, name, 0, depth);
         }
 
         private static object GetExpression(ITemplateContext context, object o)
@@ -1770,6 +1736,15 @@ namespace PSRule.Rules.Azure.Data.Template
             return new ExpressionArgumentException(
                 expression,
                 string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentInvalidResourceType, expression, providerNamespace, resourceType)
+            );
+        }
+
+        private static TemplateFunctionException MismatchingResourceSegments(string expression)
+        {
+            return new TemplateFunctionException(
+                expression,
+                FunctionErrorType.MismatchingResourceSegments,
+                PSRuleResources.MismatchingResourceSegments
             );
         }
 

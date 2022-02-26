@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -461,7 +461,7 @@ namespace PSRule.Rules.Azure
             var actual1 = Functions.ExtensionResourceId(context, new object[] { parentId, "Extension.Test/type", "a" }) as string;
             var actual2 = Functions.ExtensionResourceId(context, new object[] { parentId, "Extension.Test/type/subtype", "a", "b" }) as string;
             Assert.Equal(parentId + "/providers/Extension.Test/type/a", actual1);
-            Assert.Equal(parentId + "/providers/Extension.Test/type/subtype/a/b", actual2);
+            Assert.Equal(parentId + "/providers/Extension.Test/type/a/subtype/b", actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.ExtensionResourceId(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.ExtensionResourceId(context, new object[] { "Extension.Test/type", "a" }));
@@ -549,18 +549,18 @@ namespace PSRule.Rules.Azure
         {
             var context = GetContext();
 
-            var actual1 = Functions.ResourceId(context, new object[] { "Unit.Test/type", "a" }) as string;
-            var actual2 = Functions.ResourceId(context, new object[] { "rg-test", "Unit.Test/type", "a" }) as string;
-            var actual3 = Functions.ResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "rg-test", "Unit.Test/type", "a" }) as string;
-            var actual4 = Functions.ResourceId(context, new object[] { "Unit.Test/type/subtype", "a", "b" }) as string;
-            var actual5 = Functions.ResourceId(context, new object[] { "rg-test", "Unit.Test/type/subtype", "a", "b" }) as string;
-            var actual6 = Functions.ResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "rg-test", "Unit.Test/type/subtype", "a", "b" }) as string;
-            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Unit.Test/type/a", actual1);
-            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-test/providers/Unit.Test/type/a", actual2);
-            Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Unit.Test/type/a", actual3);
-            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Unit.Test/type/subtype/a/b", actual4);
-            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-test/providers/Unit.Test/type/subtype/a/b", actual5);
-            Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Unit.Test/type/subtype/a/b", actual6);
+            var actual1 = Functions.ResourceId(context, new object[] { "Microsoft.Network/virtualNetworks", "vnet-001" }) as string;
+            var actual2 = Functions.ResourceId(context, new object[] { "rg-test", "Microsoft.Network/virtualNetworks", "vnet-001" }) as string;
+            var actual3 = Functions.ResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "rg-test", "Microsoft.Network/virtualNetworks", "vnet-001" }) as string;
+            var actual4 = Functions.ResourceId(context, new object[] { "Microsoft.Network/virtualNetworks/subnets", "vnet-001", "subnet-001" }) as string;
+            var actual5 = Functions.ResourceId(context, new object[] { "rg-test", "Microsoft.Network/virtualNetworks/subnets", "vnet-001", "subnet-001" }) as string;
+            var actual6 = Functions.ResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "rg-test", "Microsoft.Network/virtualNetworks/subnets", "vnet-001", "subnet-001" }) as string;
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001", actual1);
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001", actual2);
+            Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001", actual3);
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001", actual4);
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001", actual5);
+            Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001", actual6);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.ResourceId(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.ResourceId(context, new object[] { "Unit.Test/type" }));
@@ -580,8 +580,8 @@ namespace PSRule.Rules.Azure
             var actual4 = Functions.SubscriptionResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "Unit.Test/type/subtype", "a", "b" }) as string;
             Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Unit.Test/type/a", actual1);
             Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Unit.Test/type/a", actual2);
-            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Unit.Test/type/subtype/a/b", actual3);
-            Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Unit.Test/type/subtype/a/b", actual4);
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Unit.Test/type/a/subtype/b", actual3);
+            Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Unit.Test/type/a/subtype/b", actual4);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.SubscriptionResourceId(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.SubscriptionResourceId(context, new object[] { "Unit.Test/type" }));
@@ -599,8 +599,8 @@ namespace PSRule.Rules.Azure
             var actual2 = Functions.TenantResourceId(context, new object[] { "Unit.Test/type/subtype", "a", "b" }) as string;
             var actual3 = Functions.TenantResourceId(context, new object[] { "Unit.Test/type/subtype/subsubtype", "a", "b", "c" }) as string;
             Assert.Equal("/providers/Unit.Test/type/a", actual1);
-            Assert.Equal("/providers/Unit.Test/type/subtype/a/b", actual2);
-            Assert.Equal("/providers/Unit.Test/type/subtype/subsubtype/a/b/c", actual3);
+            Assert.Equal("/providers/Unit.Test/type/a/subtype/b", actual2);
+            Assert.Equal("/providers/Unit.Test/type/a/subtype/b/subsubtype/c", actual3);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.TenantResourceId(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.TenantResourceId(context, new object[] { "Unit.Test/type" }));
