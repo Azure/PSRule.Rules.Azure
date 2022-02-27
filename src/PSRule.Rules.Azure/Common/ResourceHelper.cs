@@ -1,12 +1,19 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
+using PSRule.Rules.Azure.Data.Template;
+using PSRule.Rules.Azure.Resources;
 
 namespace PSRule.Rules.Azure
 {
     internal static class ResourceHelper
     {
+        private const string SLASH = "/";
+        private const string SUBSCRIPTIONS = "subscriptions";
+        private const string RESOURCEGROUPS = "resourceGroups";
+        private const string PROVIDERS = "providers";
+
         internal static bool IsResourceType(string resourceId, string resourceType)
         {
             if (string.IsNullOrEmpty(resourceId) || string.IsNullOrEmpty(resourceType))
@@ -22,6 +29,53 @@ namespace PSRule.Rules.Azure
                 i++;
 
             return i == idParts.Length;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/{resourceType}/{name}
+        /// /subscriptions/{subscriptionId}/providers/{resourceType}/{name}
+        /// /providers/{resourceType}/{name}
+        /// </remarks>
+        internal static string CombineResourceId(string subscriptionId, string resourceGroup, string[] resourceType, string[] name)
+        {
+            if (resourceType.Length != name.Length)
+                throw new TemplateFunctionException(nameof(resourceType), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
+
+            var parts = 1 + resourceType.Length + name.Length;
+            parts += subscriptionId != null ? 2 : 0;
+            parts += resourceGroup != null ? 2 : 0;
+
+            var result = new string[parts * 2];
+            var i = 0;
+            var j = 0;
+
+            if (subscriptionId != null)
+            {
+                result[i++] = SLASH;
+                result[i++] = SUBSCRIPTIONS;
+                result[i++] = SLASH;
+                result[i++] = subscriptionId;
+            }
+            if (resourceGroup != null)
+            {
+                result[i++] = SLASH;
+                result[i++] = RESOURCEGROUPS;
+                result[i++] = SLASH;
+                result[i++] = resourceGroup;
+            }
+            result[i++] = SLASH;
+            result[i++] = PROVIDERS;
+            while (i < result.Length)
+            {
+                result[i++] = SLASH;
+                result[i++] = resourceType[j];
+                result[i++] = SLASH;
+                result[i++] = name[j++];
+            }
+            return string.Concat(result);
         }
 
         private static string[] GetResourceIdTypeParts(string resourceId)
@@ -46,7 +100,7 @@ namespace PSRule.Rules.Azure
 
         private static bool ConsumeSubscriptionIdPart(string[] parts, ref int start)
         {
-            if (!(start + 1 < parts.Length && StringComparer.OrdinalIgnoreCase.Equals(parts[start], "subscriptions")))
+            if (!(start + 1 < parts.Length && StringComparer.OrdinalIgnoreCase.Equals(parts[start], SUBSCRIPTIONS)))
                 return false;
 
             start += 2;
@@ -55,7 +109,7 @@ namespace PSRule.Rules.Azure
 
         private static bool ConsumeResourceGroupPart(string[] parts, ref int start)
         {
-            if (!(start + 1 < parts.Length && StringComparer.OrdinalIgnoreCase.Equals(parts[start], "resourceGroups")))
+            if (!(start + 1 < parts.Length && StringComparer.OrdinalIgnoreCase.Equals(parts[start], RESOURCEGROUPS)))
                 return false;
 
             start += 2;
@@ -66,7 +120,7 @@ namespace PSRule.Rules.Azure
         {
             provider = null;
             type = null;
-            if (!(start + 3 < parts.Length && StringComparer.OrdinalIgnoreCase.Equals(parts[start], "providers")))
+            if (!(start + 3 < parts.Length && StringComparer.OrdinalIgnoreCase.Equals(parts[start], PROVIDERS)))
                 return false;
 
             provider = parts[start + 1];
