@@ -14,6 +14,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.13.0-B2202113 (pre-release)
+
 What's changed since pre-release v1.13.0-B2202108:
 
 - Bug fixes:
