@@ -14,6 +14,37 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.13.0
+
+What's changed since v1.12.2:
+
+- New features:
+  - Added support for setting defaults for required parameters. [#1065](https://github.com/Azure/PSRule.Rules.Azure/issues/1065)
+    - When specified, the value will be used when a parameter value is not provided.
+  - Added support expanding Bicep from parameter files. [#1160](https://github.com/Azure/PSRule.Rules.Azure/issues/1160)
+- New rules:
+  - Azure Cache for Redis:
+    - Limit public access for Azure Cache for Redis instances. [#935](https://github.com/Azure/PSRule.Rules.Azure/issues/935)
+  - Container App:
+    - Check insecure ingress is not enabled (preview). [#1252](https://github.com/Azure/PSRule.Rules.Azure/issues/1252)
+  - Key Vault:
+    - Check key auto-rotation is enabled (preview). [#1159](https://github.com/Azure/PSRule.Rules.Azure/issues/1159)
+  - Recovery Services Vault:
+    - Check vaults have replication alerts configured. [#7](https://github.com/Azure/PSRule.Rules.Azure/issues/7)
+- Engineering:
+  - Automatically build baseline docs. [#1242](https://github.com/Azure/PSRule.Rules.Azure/issues/1242)
+  - Bump PSRule dependency to v1.11.1. [#1269](https://github.com/Azure/PSRule.Rules.Azure/pull/1269)
+- Bug fixes:
+  - Fixed empty value with strong type. [#1258](https://github.com/Azure/PSRule.Rules.Azure/issues/1258)
+  - Fixed error with empty logic app trigger. [#1249](https://github.com/Azure/PSRule.Rules.Azure/issues/1249)
+  - Fixed out of order parameters. [#1257](https://github.com/Azure/PSRule.Rules.Azure/issues/1257)
+  - Fixed mapping default configuration causes cast exception. [#1274](https://github.com/Azure/PSRule.Rules.Azure/issues/1274)
+  - Fixed resource id is incorrectly built for sub resource types. [#1279](https://github.com/Azure/PSRule.Rules.Azure/issues/1279)
+
+What's changed since pre-release v1.13.0-B2202113:
+
+- No additional changes.
+
 ## v1.13.0-B2202113 (pre-release)
 
 What's changed since pre-release v1.13.0-B2202108:
