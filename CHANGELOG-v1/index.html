@@ -922,6 +922,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1130" class="md-nav__link">
+    v1.13.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1130-b2202113pre-release" class="md-nav__link">
     v1.13.0-B2202113 (pre-release)
   </a>
@@ -6470,6 +6477,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1130" class="md-nav__link">
+    v1.13.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1130-b2202113pre-release" class="md-nav__link">
     v1.13.0-B2202113 (pre-release)
   </a>
@@ -7142,6 +7156,54 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
   Support for <code>Azure_AKSMinimumVersion</code> will be removed in v2.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<h2 id="v1130">v1.13.0<a class="headerlink" href="#v1130" title="Permanent link">#</a></h2>
+<p>What's changed since v1.12.2:</p>
+<ul>
+<li>New features:<ul>
+<li>Added support for setting defaults for required parameters. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1065">#1065</a><ul>
+<li>When specified, the value will be used when a parameter value is not provided.</li>
+</ul>
+</li>
+<li>Added support expanding Bicep from parameter files. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1160">#1160</a></li>
+</ul>
+</li>
+<li>New rules:<ul>
+<li>Azure Cache for Redis:<ul>
+<li>Limit public access for Azure Cache for Redis instances. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/935">#935</a></li>
+</ul>
+</li>
+<li>Container App:<ul>
+<li>Check insecure ingress is not enabled (preview). <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1252">#1252</a></li>
+</ul>
+</li>
+<li>Key Vault:<ul>
+<li>Check key auto-rotation is enabled (preview). <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1159">#1159</a></li>
+</ul>
+</li>
+<li>Recovery Services Vault:<ul>
+<li>Check vaults have replication alerts configured. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/7">#7</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Engineering:<ul>
+<li>Automatically build baseline docs. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1242">#1242</a></li>
+<li>Bump PSRule dependency to v1.11.1. <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/1269">#1269</a></li>
+</ul>
+</li>
+<li>Bug fixes:<ul>
+<li>Fixed empty value with strong type. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1258">#1258</a></li>
+<li>Fixed error with empty logic app trigger. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1249">#1249</a></li>
+<li>Fixed out of order parameters. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1257">#1257</a></li>
+<li>Fixed mapping default configuration causes cast exception. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1274">#1274</a></li>
+<li>Fixed resource id is incorrectly built for sub resource types. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1279">#1279</a></li>
+</ul>
+</li>
+</ul>
+<p>What's changed since pre-release v1.13.0-B2202113:</p>
+<ul>
+<li>No additional changes.</li>
+</ul>
 <h2 id="v1130-b2202113pre-release">v1.13.0-B2202113 (pre-release)<a class="headerlink" href="#v1130-b2202113pre-release" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.13.0-B2202108:</p>
 <ul>
@@ -9154,7 +9216,7 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
   <small>
     
       Last update:
-      2022-02-27
+      2022-02-28
     
   </small>
 </div>
