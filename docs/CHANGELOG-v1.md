@@ -14,6 +14,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.13.0:
+
+- Bug fixes:
+  - Fixed parsing of nested quote pairs within JSON function. [#1288](https://github.com/Azure/PSRule.Rules.Azure/issues/1288)
+
 ## v1.13.0
 
 What's changed since v1.12.2:
