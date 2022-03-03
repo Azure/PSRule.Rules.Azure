@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -37,7 +37,6 @@ namespace PSRule.Rules.Azure.Data.Template
         private const char BracketOpen = '[';
         private const char BracketClose = ']';
         private readonly static char[] FunctionNameStopCharacter = new char[] { '(', ']', '[', ')', '\'', ' ', ',' };
-        private readonly static char[] StringStopCharacters = new char[] { '\'' };
         private readonly static char[] PropertyStopCharacters = new char[] { '(', ']', '[', ',', ')', ' ', '\'', '.', '\r', '\n' };
 
         internal ExpressionStream(string expression)
@@ -130,7 +129,18 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!IsString())
                 return false;
 
-            s = CaptureUntil(StringStopCharacters);
+            var start = Position;
+            var length = 0;
+            while (!EOF)
+            {
+                if (!IsEscaped && Apostrophe == Current)
+                    break;
+
+                length++;
+                Next();
+                SkipQuotePairs(ref length);
+            }
+            s = Substring(start, length);
             IsString();
             return true;
         }
@@ -198,6 +208,28 @@ namespace PSRule.Rules.Azure.Data.Template
                 return false;
             }
             UpdateCurrent(ignoreEscaping);
+            return true;
+        }
+
+        private void SkipQuotePairs(ref int length)
+        {
+            while (!IsEscaped && Apostrophe == Current && Offset(1, out var offset) && offset == Apostrophe)
+            {
+                length += 2;
+                Next();
+                Next();
+            }
+        }
+
+        private bool Offset(int offset, out char c)
+        {
+            c = char.MinValue;
+            var pos = _Position + offset;
+            pos += GetEscapeCount(pos);
+            if (pos >= _Length)
+                return false;
+
+            c = _Source[pos];
             return true;
         }
 
