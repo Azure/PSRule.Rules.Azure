@@ -143,11 +143,25 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(resources);
             Assert.Equal(2, resources.Length);
 
-            var actual1 = resources[1];
-            var subResources = actual1["resources"].Value<JArray>();
+            var actual = resources[1];
+            var subResources = actual["resources"].Value<JArray>();
             Assert.Equal(2, subResources.Count);
             Assert.Equal("keyvault1/Microsoft.Insights/service", subResources[0]["name"].Value<string>());
             Assert.Equal("monitor", subResources[1]["name"].Value<string>());
+        }
+
+        [Fact]
+        public void NestedCopyLoops()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.13.json"), null);
+            Assert.NotNull(resources);
+            Assert.Equal(3, resources.Length);
+
+            Assert.Equal("Microsoft.Resources/deployments", resources[0]["type"].Value<string>());
+            Assert.Equal("Microsoft.Authorization/policySetDefinitions", resources[1]["type"].Value<string>());
+            Assert.Equal(4, resources[1]["properties"]["policyDefinitions"].Value<JArray>().Count);
+            Assert.Equal("Microsoft.Authorization/policySetDefinitions", resources[2]["type"].Value<string>());
+            Assert.Single(resources[2]["properties"]["policyDefinitions"].Value<JArray>());
         }
 
         [Fact]

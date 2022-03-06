@@ -407,11 +407,13 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 private readonly Dictionary<string, CopyIndexState> _Index;
                 private readonly Stack<CopyIndexState> _Current;
+                private readonly Stack<CopyIndexState> _CurrentResourceType;
 
-                public CopyIndexStore()
+                internal CopyIndexStore()
                 {
                     _Index = new Dictionary<string, CopyIndexState>();
                     _Current = new Stack<CopyIndexState>();
+                    _CurrentResourceType = new Stack<CopyIndexState>();
                 }
 
                 public CopyIndexState Current => _Current.Count > 0 ? _Current.Peek() : null;
@@ -436,9 +438,18 @@ namespace PSRule.Rules.Azure.Data.Template
                     _Index[state.Name] = state;
                 }
 
+                internal void PushResourceType(CopyIndexState state)
+                {
+                    Push(state);
+                    _CurrentResourceType.Push(state);
+                }
+
                 public void Pop()
                 {
                     var state = _Current.Pop();
+                    if (_CurrentResourceType.Count > 0 && _CurrentResourceType.Peek() == state)
+                        _CurrentResourceType.Pop();
+
                     _Index.Remove(state.Name);
                 }
 
@@ -446,7 +457,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 {
                     if (name == null)
                     {
-                        state = Current;
+                        state = _CurrentResourceType.Count > 0 ? _CurrentResourceType.Peek() : Current;
                         return state != null;
                     }
                     return _Index.TryGetValue(name, out state);
@@ -1400,7 +1411,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 var copyObject = value[PROPERTY_COPY].Value<JObject>();
                 result.Name = ExpandProperty<string>(context, copyObject, PROPERTY_NAME);
                 result.Count = ExpandPropertyInt(context, copyObject, PROPERTY_COUNT);
-                context.CopyIndex.Push(result);
+                context.CopyIndex.PushResourceType(result);
                 value.Remove(PROPERTY_COPY);
             }
             return result;
