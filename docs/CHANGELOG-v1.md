@@ -14,6 +14,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.13.2:
+
+- Bug fixes:
+  - Fixed bicep build timeout for complex deployments. [#1299](https://github.com/Azure/PSRule.Rules.Azure/issues/1299)
+
 ## v1.13.2
 
 What's changed since v1.13.1:

@@ -27,7 +27,7 @@ namespace PSRule.Rules.Azure.Runtime
             return ExpressionParser.IsExpression(expression);
         }
 
-        public static PSObject[] GetResources(string parameterFile)
+        public static PSObject[] GetResources(string parameterFile, int timeout)
         {
             var context = GetContext();
             var linkHelper = new TemplateLinkHelper(context, PSRuleOption.GetWorkingPath(), true);
@@ -36,13 +36,13 @@ namespace PSRule.Rules.Azure.Runtime
                 return null;
 
             return IsBicep(link.TemplateFile) ?
-                GetBicepResources(link.TemplateFile, link.ParameterFile, null) :
+                GetBicepResources(link.TemplateFile, link.ParameterFile, null, timeout) :
                 GetTemplateResources(link.TemplateFile, link.ParameterFile, context);
         }
 
-        public static PSObject[] GetBicepResources(string bicepFile, PSCmdlet commandRuntime)
+        public static PSObject[] GetBicepResources(string bicepFile, PSCmdlet commandRuntime, int timeout)
         {
-            return GetBicepResources(bicepFile, null, commandRuntime);
+            return GetBicepResources(bicepFile, null, commandRuntime, timeout);
         }
 
         public static string GetMetadataLinkPath(string parameterFile, string templateFile)
@@ -79,11 +79,12 @@ namespace PSRule.Rules.Azure.Runtime
             return Path.GetExtension(path) == ".bicep";
         }
 
-        private static PSObject[] GetBicepResources(string templateFile, string parameterFile, PSCmdlet commandRuntime)
+        private static PSObject[] GetBicepResources(string templateFile, string parameterFile, PSCmdlet commandRuntime, int timeout)
         {
             var context = GetContext(commandRuntime);
             var bicep = new BicepHelper(
-                context
+                context,
+                timeout
             );
             return bicep.ProcessFile(templateFile, parameterFile);
         }

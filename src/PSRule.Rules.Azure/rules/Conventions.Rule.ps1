@@ -19,8 +19,9 @@ Export-PSRuleConvention 'Azure.ExpandTemplate' -If { $Configuration.AZURE_PARAME
     "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json`#"
 ), $True) } -Begin {
     Write-Verbose "[Azure.ExpandTemplate] -- Expanding parameter file: $($TargetObject.FullName)";
+    $timeout = $Configuration.GetIntegerOrDefault('AZURE_BICEP_FILE_EXPANSION_TIMEOUT', 5);
     try {
-        $data = [PSRule.Rules.Azure.Runtime.Helper]::GetResources($TargetObject.FullName);
+        $data = [PSRule.Rules.Azure.Runtime.Helper]::GetResources($TargetObject.FullName, $timeout);
         if ($Null -ne $data) {
             $PSRule.Import($data);
         }
@@ -61,8 +62,9 @@ Export-PSRuleConvention 'Azure.BicepInstall' -If { $Configuration.AZURE_BICEP_FI
 
 Export-PSRuleConvention 'Azure.ExpandBicep' -If { $Configuration.AZURE_BICEP_FILE_EXPANSION -eq $True -and $TargetObject.Extension -eq '.bicep' } -Begin {
     Write-Verbose "[Azure.ExpandBicep] -- Expanding bicep source: $($TargetObject.FullName)";
+    $timeout = $Configuration.GetIntegerOrDefault('AZURE_BICEP_FILE_EXPANSION_TIMEOUT', 5);
     try {
-        $data = [PSRule.Rules.Azure.Runtime.Helper]::GetBicepResources($TargetObject.FullName, $PSCmdlet);
+        $data = [PSRule.Rules.Azure.Runtime.Helper]::GetBicepResources($TargetObject.FullName, $PSCmdlet, $timeout);
         if ($Null -ne $data) {
             $PSRule.Import($data);
         }
