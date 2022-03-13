@@ -5,10 +5,10 @@ author: BernieWhite
 # Setup Bicep
 
 To expand Azure resources for analysis from Bicep source files the Bicep CLI is required.
-The Bicep CLI is already installed on hosted runners and agents used by GitHub Action and Azure Pipelines.
+The Bicep CLI is already installed on hosted runners and agents used by GitHub Actions and Azure Pipelines.
 
 !!! Abstract
-    This topic covers setting up support for analyzing Azure resources within Bicep source file.
+    This topic covers setting up support for analyzing Azure resources within Bicep source files.
 
 ## Installing Bicep CLI
 
@@ -35,7 +35,7 @@ For installation instructions see [Setup your Bicep development environment][2].
 
 ## Setting environment variables
 
-When expanding Bicep files, the path to the Bicep binary is required.
+When expanding Bicep files, the path to the Bicep CLI binary is required.
 By default, the `PATH` environment variable will be used to discover the binary path.
 When using this option, add the sub-directory containing the Bicep binary to the environment variable.
 
@@ -43,30 +43,26 @@ Alternatively, the path can be overridden by setting the `PSRULE_AZURE_BICEP_PAT
 When setting `PSRULE_AZURE_BICEP_PATH` specify the full path to the Bicep binary including the file name.
 File names used for Bicep binaries include `bicep`, or `bicep.exe`.
 
-For example:
+!!! Example
 
-```bash
-# Bash: Setting environment variable
-export PSRULE_AZURE_BICEP_PATH='/usr/local/bin/bicep'
-```
+    ```bash title="Bash"
+    export PSRULE_AZURE_BICEP_PATH='/usr/local/bin/bicep'
+    ```
 
-```powershell
-# PowerShell: Setting environment variable
-$Env:PSRULE_AZURE_BICEP_PATH = '/usr/local/bin/bicep';
-```
+    ```powershell title="PowerShell"
+    $Env:PSRULE_AZURE_BICEP_PATH = '/usr/local/bin/bicep';
+    ```
 
-```yaml
-# GitHub Actions: Setting environment variable
-env:
-  PSRULE_AZURE_BICEP_PATH: '/usr/local/bin/bicep'
-```
+    ```yaml title="GitHub Actions"
+    env:
+      PSRULE_AZURE_BICEP_PATH: '/usr/local/bin/bicep'
+    ```
 
-```yaml
-# Azure Pipelines: Setting environment variable
-variables:
-- name: PSRULE_AZURE_BICEP_PATH
-  value: '/usr/local/bin/bicep'
-```
+    ```yaml title="Azure Pipelines"
+    variables:
+    - name: PSRULE_AZURE_BICEP_PATH
+      value: '/usr/local/bin/bicep'
+    ```
 
 ### Using Azure CLI
 
@@ -77,30 +73,26 @@ This is explained in [Setup your Bicep development environment][3].
 
 To enable this option, set the `PSRULE_AZURE_BICEP_USE_AZURE_CLI` environment variable to `true`.
 
-For example:
+!!! Example
 
-```bash
-# Bash: Setting environment variable
-export PSRULE_AZURE_BICEP_USE_AZURE_CLI=true
-```
+    ```bash title="Bash"
+    export PSRULE_AZURE_BICEP_USE_AZURE_CLI=true
+    ```
 
-```powershell
-# PowerShell: Setting environment variable
-$Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI = 'true'
-```
+    ```powershell title="PowerShell"
+    $Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI = 'true'
+    ```
 
-```yaml
-# GitHub Actions: Setting environment variable
-env:
-  PSRULE_AZURE_BICEP_USE_AZURE_CLI: true
-```
+    ```yaml title="GitHub Actions"
+    env:
+      PSRULE_AZURE_BICEP_USE_AZURE_CLI: true
+    ```
 
-```yaml
-# Azure Pipelines: Setting environment variable
-variables:
-- name: PSRULE_AZURE_BICEP_USE_AZURE_CLI
-  value: true
-```
+    ```yaml title="Azure Pipelines"
+    variables:
+    - name: PSRULE_AZURE_BICEP_USE_AZURE_CLI
+      value: true
+    ```
 
   [3]: https://docs.microsoft.com/azure/azure-resource-manager/bicep/install#azure-cli
 
@@ -123,7 +115,7 @@ This option can be set within the `ps-rule.yaml` file.
 
 ```yaml
 configuration:
-  # Enable automatic expansion of bicep source files
+  # Enable automatic expansion of bicep source files.
   AZURE_BICEP_FILE_EXPANSION: true
 ```
 
@@ -135,3 +127,28 @@ configuration:
   [4]: configuring-expansion.md#bicepsourceexpansion
   [5]: ../using-bicep.md#usingparameterfiles
   [6]: ../using-templates.md#bymetadata
+
+### Configuring timeout
+
+[:octicons-book-24: Docs][7]
+
+In certain environments it may be necessary to increase the default timeout for building Bicep files.
+This can occur if your Bicep deployments are:
+
+- Large and complex.
+- Use nested modules.
+- Use modules restored from a registry.
+
+If you are experincing timeout errors you can increase the default timeout of 5 seconds.
+To configure the timeout, set `Configuration.AZURE_BICEP_FILE_EXPANSION_TIMEOUT` to the timeout in seconds.
+
+```yaml
+configuration:
+  # Enable automatic expansion of bicep source files.
+  AZURE_BICEP_FILE_EXPANSION: true
+
+  # Configure the timeout for bicep build to 15 seconds.
+  AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 15
+```
+
+  [7]: configuring-expansion.md#bicepcompilationtimeout

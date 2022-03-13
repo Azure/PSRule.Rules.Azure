@@ -80,6 +80,41 @@ configuration:
   AZURE_BICEP_FILE_EXPANSION: true
 ```
 
+### Bicep compilation timeout
+
+:octicons-milestone-24: v1.13.3
+
+This configuration option determines the maximum time to spend building a single Bicep source file.
+The timeout is configured in seconds.
+
+When a timeout occurs, PSRule for Azure stops the build and returns an error.
+Any resources contained within Bicep source files that exceeded the timeout are not analyzed.
+
+The default timeout is 5 seconds, however the timeout can be set to an integer between `1` and `120`.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_BICEP_FILE_EXPANSION_TIMEOUT: int
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_BICEP_FILE_EXPANSION_TIMEOUT configuration option
+configuration:
+  AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 5
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_BICEP_FILE_EXPANSION_TIMEOUT configuration option to enable expansion
+configuration:
+  AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 15
+```
+
 ### Require template metadata link
 
 :octicons-milestone-24: v1.7.0
