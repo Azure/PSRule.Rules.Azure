@@ -804,6 +804,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#bicepcompilationtimeout" class="md-nav__link">
+    Bicep compilation timeout
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#couldnotloadfileorassemblyyamldotnet" class="md-nav__link">
     Could not load file or assembly YamlDotNet
   </a>
@@ -5816,6 +5823,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#bicepcompilationtimeout" class="md-nav__link">
+    Bicep compilation timeout
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#couldnotloadfileorassemblyyamldotnet" class="md-nav__link">
     Could not load file or assembly YamlDotNet
   </a>
@@ -5842,6 +5856,21 @@
 
 <h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h1>
 <p>This article provides troubleshooting instructions for common errors.</p>
+<h2 id="bicepcompilationtimeout">Bicep compilation timeout<a class="headerlink" href="#bicepcompilationtimeout" title="Permanent link">#</a></h2>
+<p>When expanding Bicep source files you may get an error similar to the following:</p>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>Bicep (0.4.1124) compilation of 'C:\temp\deploy.bicep' failed with: Bicep compilation hasn't completed within the timeout window. This can be caused by errors or warnings. Check the Bicep output by running bicep build and addressing any issues.</p>
+</div>
+<p>This error is raised when Bicep takes longer then the timeout to build a source file.
+The default timeout is 5 seconds.</p>
+<p>You can take steps to reduce your code complexity and reduce the time a build takes by:</p>
+<ul>
+<li>Removing unnecessary nested <code>module</code> calls.</li>
+<li>Cache bicep modules restored from a registry in continious integration (CI) pipelines.</li>
+</ul>
+<p>To increase the timeout value, set the <code>AZURE_BICEP_FILE_EXPANSION_TIMEOUT</code> configuration option.
+See <a href="../setup/configuring-expansion/#bicepcompilationtimeout">Bicep compilation timeout</a> for details on how to configure this option.</p>
 <h2 id="couldnotloadfileorassemblyyamldotnet">Could not load file or assembly YamlDotNet<a class="headerlink" href="#couldnotloadfileorassemblyyamldotnet" title="Permanent link">#</a></h2>
 <p>PSRule <strong>&gt;=1.3.0</strong> uses an updated version of the YamlDotNet library.
 The PSRule for Azure <strong>&lt;1.3.1</strong> uses an older version of this library which may conflict.</p>
@@ -5863,7 +5892,7 @@ The PSRule for Azure <strong>&lt;1.3.1</strong> uses an older version of this li
   <small>
     
       Last update:
-      2021-06-17
+      2022-03-13
     
   </small>
 </div>

@@ -1122,6 +1122,19 @@
     Configuring expansion
   </a>
   
+    <nav class="md-nav" aria-label="Configuring expansion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuringtimeout" class="md-nav__link">
+    Configuring timeout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -5888,6 +5901,19 @@
     Configuring expansion
   </a>
   
+    <nav class="md-nav" aria-label="Configuring expansion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuringtimeout" class="md-nav__link">
+    Configuring timeout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -5910,10 +5936,10 @@
 
 <h1 id="setupbicep">Setup Bicep<a class="headerlink" href="#setupbicep" title="Permanent link">#</a></h1>
 <p>To expand Azure resources for analysis from Bicep source files the Bicep CLI is required.
-The Bicep CLI is already installed on hosted runners and agents used by GitHub Action and Azure Pipelines.</p>
+The Bicep CLI is already installed on hosted runners and agents used by GitHub Actions and Azure Pipelines.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
-<p>This topic covers setting up support for analyzing Azure resources within Bicep source file.</p>
+<p>This topic covers setting up support for analyzing Azure resources within Bicep source files.</p>
 </div>
 <h2 id="installingbicepcli">Installing Bicep CLI<a class="headerlink" href="#installingbicepcli" title="Permanent link">#</a></h2>
 <p>PSRule for Azure requires a minimum of Bicep CLI version <strong>0.4.451</strong>.</p>
@@ -5934,50 +5960,46 @@ To use PSRule for Azure with the Azure CLI set the <code>PSRULE_AZURE_BICEP_USE_
 Setting this environment variable is explained in the next section.</p>
 </div>
 <h2 id="settingenvironmentvariables">Setting environment variables<a class="headerlink" href="#settingenvironmentvariables" title="Permanent link">#</a></h2>
-<p>When expanding Bicep files, the path to the Bicep binary is required.
+<p>When expanding Bicep files, the path to the Bicep CLI binary is required.
 By default, the <code>PATH</code> environment variable will be used to discover the binary path.
 When using this option, add the sub-directory containing the Bicep binary to the environment variable.</p>
 <p>Alternatively, the path can be overridden by setting the <code>PSRULE_AZURE_BICEP_PATH</code> environment variable.
 When setting <code>PSRULE_AZURE_BICEP_PATH</code> specify the full path to the Bicep binary including the file name.
 File names used for Bicep binaries include <code>bicep</code>, or <code>bicep.exe</code>.</p>
-<p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Bash: Setting environment variable</span>
-<span class="nb">export</span> <span class="nv">PSRULE_AZURE_BICEP_PATH</span><span class="o">=</span><span class="s1">&#39;/usr/local/bin/bicep&#39;</span>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><span class="nb">export</span> <span class="nv">PSRULE_AZURE_BICEP_PATH</span><span class="o">=</span><span class="s1">&#39;/usr/local/bin/bicep&#39;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c"># PowerShell: Setting environment variable</span>
-<span class="nv">$Env:PSRULE_AZURE_BICEP_PATH</span> <span class="p">=</span> <span class="s1">&#39;/usr/local/bin/bicep&#39;</span><span class="p">;</span>
+<div class="highlight"><span class="filename">PowerShell</span><pre><span></span><code><span class="nv">$Env:PSRULE_AZURE_BICEP_PATH</span> <span class="p">=</span> <span class="s1">&#39;/usr/local/bin/bicep&#39;</span><span class="p">;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># GitHub Actions: Setting environment variable</span><span class="w"></span>
-<span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<div class="highlight"><span class="filename">GitHub Actions</span><pre><span></span><code><span class="nt">env</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">PSRULE_AZURE_BICEP_PATH</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/usr/local/bin/bicep&#39;</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># Azure Pipelines: Setting environment variable</span><span class="w"></span>
-<span class="nt">variables</span><span class="p">:</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Pipelines</span><pre><span></span><code><span class="nt">variables</span><span class="p">:</span><span class="w"></span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRULE_AZURE_BICEP_PATH</span><span class="w"></span>
 <span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/usr/local/bin/bicep&#39;</span><span class="w"></span>
 </code></pre></div>
+</div>
 <h3 id="usingazurecli">Using Azure CLI<a class="headerlink" href="#usingazurecli" title="Permanent link">#</a></h3>
 <p>By default, PSRule for Azure uses the Bicep CLI directly.
 An additional option is to use the Azure CLI to invoke the Bicep CLI.
 When using this option the required version of the CLI must be installed prior to using PSRule for Azure.
 This is explained in <a href="https://docs.microsoft.com/azure/azure-resource-manager/bicep/install#azure-cli">Setup your Bicep development environment</a>.</p>
 <p>To enable this option, set the <code>PSRULE_AZURE_BICEP_USE_AZURE_CLI</code> environment variable to <code>true</code>.</p>
-<p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Bash: Setting environment variable</span>
-<span class="nb">export</span> <span class="nv">PSRULE_AZURE_BICEP_USE_AZURE_CLI</span><span class="o">=</span><span class="nb">true</span>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><span class="nb">export</span> <span class="nv">PSRULE_AZURE_BICEP_USE_AZURE_CLI</span><span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c"># PowerShell: Setting environment variable</span>
-<span class="nv">$Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI</span> <span class="p">=</span> <span class="s1">&#39;true&#39;</span>
+<div class="highlight"><span class="filename">PowerShell</span><pre><span></span><code><span class="nv">$Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI</span> <span class="p">=</span> <span class="s1">&#39;true&#39;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># GitHub Actions: Setting environment variable</span><span class="w"></span>
-<span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<div class="highlight"><span class="filename">GitHub Actions</span><pre><span></span><code><span class="nt">env</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">PSRULE_AZURE_BICEP_USE_AZURE_CLI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># Azure Pipelines: Setting environment variable</span><span class="w"></span>
-<span class="nt">variables</span><span class="p">:</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Pipelines</span><pre><span></span><code><span class="nt">variables</span><span class="p">:</span><span class="w"></span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRULE_AZURE_BICEP_USE_AZURE_CLI</span><span class="w"></span>
 <span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </code></pre></div>
+</div>
 <h3 id="additionalarguments">Additional arguments<a class="headerlink" href="#additionalarguments" title="Permanent link">#</a></h3>
 <p>For configuration, additional arguments can be passed to the Bicep CLI.
 This is intended to improve forward compatibility with Bicep CLI.</p>
@@ -5989,7 +6011,7 @@ When enabled, PSRule for Azure automatically expands and analyzes Azure resource
 <p>To enabled this feature, set the <code>Configuration.AZURE_BICEP_FILE_EXPANSION</code> to <code>true</code>.
 This option can be set within the <code>ps-rule.yaml</code> file.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># Enable automatic expansion of bicep source files</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Enable automatic expansion of bicep source files.</span><span class="w"></span>
 <span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition tip">
@@ -5998,13 +6020,31 @@ This option can be set within the <code>ps-rule.yaml</code> file.</p>
 Set <code>Configuration.AZURE_PARAMETER_FILE_EXPANSION</code> to <code>true</code> instead.
 See <a href="../../using-bicep/#usingparameterfiles">Using parameter files</a> and <a href="../../using-templates/#bymetadata">By metadata</a> for more information.</p>
 </div>
+<h3 id="configuringtimeout">Configuring timeout<a class="headerlink" href="#configuringtimeout" title="Permanent link">#</a></h3>
+<p><a href="../configuring-expansion/#bicepcompilationtimeout"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M0 3.75A.75.75 0 0 1 .75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.496 4.496 0 0 1 15.75 3h7.5a.75.75 0 0 1 .75.75v15.063a.75.75 0 0 1-.755.75l-7.682-.052a3 3 0 0 0-2.142.878l-.89.891a.75.75 0 0 1-1.061 0l-.902-.901a3 3 0 0 0-2.121-.879H.75a.75.75 0 0 1-.75-.75v-15zm11.247 3.747a3 3 0 0 0-3-2.997H1.5V18h6.947a4.5 4.5 0 0 1 2.803.98l-.003-11.483zm1.503 11.485V7.5a3 3 0 0 1 3-3h6.75v13.558l-6.927-.047a4.5 4.5 0 0 0-2.823.971z"/></svg></span> Docs</a></p>
+<p>In certain environments it may be necessary to increase the default timeout for building Bicep files.
+This can occur if your Bicep deployments are:</p>
+<ul>
+<li>Large and complex.</li>
+<li>Use nested modules.</li>
+<li>Use modules restored from a registry.</li>
+</ul>
+<p>If you are experincing timeout errors you can increase the default timeout of 5 seconds.
+To configure the timeout, set <code>Configuration.AZURE_BICEP_FILE_EXPANSION_TIMEOUT</code> to the timeout in seconds.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Enable automatic expansion of bicep source files.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1"># Configure the timeout for bicep build to 15 seconds.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION_TIMEOUT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span><span class="w"></span>
+</code></pre></div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      2022-02-15
+      2022-03-13
     
   </small>
 </div>
