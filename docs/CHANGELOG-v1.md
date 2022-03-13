@@ -14,6 +14,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.13.3
+
 What's changed since v1.13.2:
 
 - Bug fixes:
@@ -23,6 +25,8 @@ What's changed since v1.13.2:
 
 What's changed since v1.13.1:
 
+- Engnineering:
+  - Bump PowerShellStandard.Library to 5.1.1. [#1295](https://github.com/Azure/PSRule.Rules.Azure/pull/1295)
 - Bug fixes:
   - Fixed nested resource loops. [#1293](https://github.com/Azure/PSRule.Rules.Azure/issues/1293)
 
