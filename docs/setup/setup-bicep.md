@@ -136,6 +136,7 @@ In certain environments it may be necessary to increase the default timeout for 
 This can occur if your Bicep deployments are:
 
 - Large and complex.
+- Use nested modules.
 - Use modules restored from a registry.
 
 If you are experincing timeout errors you can increase the default timeout of 5 seconds.
