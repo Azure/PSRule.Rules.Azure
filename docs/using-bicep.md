@@ -141,15 +141,10 @@ This option will discover Bicep files from parameter metadata.
       # Enable expansion for Bicep module from parameter files.
       AZURE_PARAMETER_FILE_EXPANSION: true
 
-      # Enable expanding for Bicep module tests.
-      AZURE_BICEP_FILE_EXPANSION: true
-
     input:
       pathIgnore:
       # Exclude module files
       - 'modules/**/*.bicep'
-      # Include test files from modules
-      - '!modules/**/*.tests.bicep'
     ```
 
 !!! Example "Example `template.parameters.json`"
