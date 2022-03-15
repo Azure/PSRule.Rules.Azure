@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 
 #
-# Unit tests for Azure SignalR Service rules
+# Unit tests for Azure Web PubSub Service rules
 #
 
 [CmdletBinding()]
@@ -23,7 +23,7 @@ BeforeAll {
     $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-Describe 'Azure.SignalR' -Tag 'SignalR' {
+Describe 'Azure.WebPubSub' -Tag 'WebPubSub' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
@@ -32,94 +32,47 @@ Describe 'Azure.SignalR' -Tag 'SignalR' {
                 WarningAction = 'Ignore'
                 ErrorAction = 'Stop'
             }
-            $dataPath = Join-Path -Path $here -ChildPath 'Resources.SignalR.json';
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.WebPubSub.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
 
-        It 'Azure.SignalR.ManagedIdentity' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SignalR.ManagedIdentity' };
+        It 'Azure.WebPubSub.ManagedIdentity' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.WebPubSub.ManagedIdentity' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'signalr-A';
+            $ruleResult.TargetName | Should -BeIn 'webpubsub-A';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'signalr-B';
+            $ruleResult.TargetName | Should -BeIn 'webpubsub-B';
         }
 
-        It 'Azure.SignalR.SLA' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SignalR.SLA' };
+        It 'Azure.WebPubSub.SLA' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.WebPubSub.SLA' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'signalr-A';
+            $ruleResult.TargetName | Should -BeIn 'webpubsub-A';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'signalr-B';
-        }
-    }
-
-    Context 'Resource name' {
-        BeforeAll {
-            $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
-                WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
-            }
-
-            $testObject = [PSCustomObject]@{
-                Name = ''
-                ResourceType = 'Microsoft.SignalRService/signalR'
-            }
-        }
-
-        BeforeDiscovery {
-            $validNames = @(
-                'service1'
-                'SERVICE-1'
-            )
-
-            $invalidNames = @(
-                '_service1'
-                '-service1'
-                '1service'
-                'se'
-                's'
-            )
-        }
-
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SignalR.Name';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
-
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SignalR.Name';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.TargetName | Should -BeIn 'webpubsub-B';
         }
     }
 
     Context 'With Template' {
         BeforeAll {
-            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.SignalR.json;
-            Export-AzRuleTemplateData -TemplateFile (Join-Path -Path $here -ChildPath 'Resources.SignalR.Template.json') -OutputPath $outputFile;
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.WebPubSub.json;
+            Export-AzRuleTemplateData -TemplateFile (Join-Path -Path $here -ChildPath 'Resources.WebPubSub.Template.json') -OutputPath $outputFile;
             $invokeParams = @{
                 Baseline = 'Azure.All'
                 Module = 'PSRule.Rules.Azure'
@@ -129,8 +82,8 @@ Describe 'Azure.SignalR' -Tag 'SignalR' {
             $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
         }
 
-        It 'Azure.SignalR.ManagedIdentity' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SignalR.ManagedIdentity' };
+        It 'Azure.WebPubSub.ManagedIdentity' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.WebPubSub.ManagedIdentity' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -140,11 +93,11 @@ Describe 'Azure.SignalR' -Tag 'SignalR' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'signalr-001';
+            $ruleResult.TargetName | Should -BeIn 'webpubsub-001';
         }
 
-        It 'Azure.SignalR.SLA' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SignalR.SLA' };
+        It 'Azure.WebPubSub.SLA' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.WebPubSub.SLA' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -154,7 +107,7 @@ Describe 'Azure.SignalR' -Tag 'SignalR' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'signalr-001';
+            $ruleResult.TargetName | Should -BeIn 'webpubsub-001';
         }
     }
 }

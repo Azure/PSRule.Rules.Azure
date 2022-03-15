@@ -1,0 +1,44 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for SignalR Service
+#
+
+#region Rules
+
+---
+# Synopsis: Configure SignalR Services to use managed identities to access Azure resources securely.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.SignalR.ManagedIdentity
+  tags:
+    release: GA
+    ruleSet: 2022_03
+spec:
+  type:
+  - Microsoft.SignalRService/signalR
+  condition:
+    field: Identity.Type
+    in:
+    - 'SystemAssigned'
+    - 'UserAssigned'
+
+---
+# Synopsis: Use SKUs that includes a SLA when configuring a SignalR Service.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.SignalR.SLA
+  tags:
+    release: GA
+    ruleSet: 2022_03
+spec:
+  type:
+  - Microsoft.SignalRService/signalR
+  condition:
+    field: sku.name
+    notEquals: Free_F1
+
+#endregion Rules
