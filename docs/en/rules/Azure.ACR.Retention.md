@@ -21,6 +21,8 @@ A manifest is untagged when a more recent image is pushed using the same tag. i.
 The retention policy (in days) can be set to 0-365.
 The default is 7 days.
 
+To configure a retention policy, the container registry must be using a Premium SKU.
+
 ## RECOMMENDATION
 
 Consider enabling a retention policy for untagged manifests.
