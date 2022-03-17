@@ -14,6 +14,13 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.13.3:
+
+- Bug fixes:
+  - Fixed virtual network without any subnets is invalid. [#1303](https://github.com/Azure/PSRule.Rules.Azure/issues/1303)
+  - Fixed container registry rules that require a premium tier. [#1304](https://github.com/Azure/PSRule.Rules.Azure/issues/1304)
+    - Rules `Azure.ACR.Retention` and `Azure.ACR.ContentTrust` are now only run against premium instances.
+
 ## v1.13.3
 
 What's changed since v1.13.2:
