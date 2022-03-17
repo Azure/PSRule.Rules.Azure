@@ -14,6 +14,16 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.13.3:
+
+- New rules:
+  - SignalR Service:
+    - Check services use Managed Identities. [#1306](https://github.com/Azure/PSRule.Rules.Azure/issues/1306)
+    - Check services use a SKU with an SLA. [#1307](https://github.com/Azure/PSRule.Rules.Azure/issues/1307)
+  - Web PubSub Service:
+    - Check services use Managed Identities. [#1308](https://github.com/Azure/PSRule.Rules.Azure/issues/1308)
+    - Check services use a SKU with an SLA. [#1309](https://github.com/Azure/PSRule.Rules.Azure/issues/1309)
+
 ## v1.13.3
 
 What's changed since v1.13.2:
@@ -25,7 +35,7 @@ What's changed since v1.13.2:
 
 What's changed since v1.13.1:
 
-- Engnineering:
+- Engineering:
   - Bump PowerShellStandard.Library to 5.1.1. [#1295](https://github.com/Azure/PSRule.Rules.Azure/pull/1295)
 - Bug fixes:
   - Fixed nested resource loops. [#1293](https://github.com/Azure/PSRule.Rules.Azure/issues/1293)

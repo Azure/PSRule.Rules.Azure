@@ -7,15 +7,15 @@ resource: Data Explorer
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ADX.SLA/
 ---
 
-# Use a SLA for Azure Data Explorer clusters
+# Use an SLA for Azure Data Explorer clusters
 
 ## SYNOPSIS
 
-Use SKUs that include a SLA when configuring Azure Data Explorer (ADX) clusters.
+Use SKUs that include an SLA when configuring Azure Data Explorer (ADX) clusters.
 
 ## DESCRIPTION
 
-When choosing a SKU for ADX cluster you should consider the SLA that is included in the SKU.
+When choosing a SKU for an ADX cluster you should consider the SLA that is included in the SKU.
 ADX clusters offer a range of offerings.
 Development SKUs are designed for early non-production use and do not include any SLA.
 

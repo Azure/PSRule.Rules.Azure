@@ -1,0 +1,164 @@
+[
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.SignalRService/SignalR/signalr-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.SignalRService/SignalR/signalr-A",
+        "Identity": null,
+        "Kind": "SignalR",
+        "Location": "eastus",
+        "ResourceName": "signalr-A",
+        "Name": "signalr-A",
+        "Plan": null,
+        "Properties": {
+            "provisioningState": "Succeeded",
+            "externalIP": "0.0.0.0",
+            "hostName": "signalr-A.service.signalr.net",
+            "publicPort": 443,
+            "serverPort": 443,
+            "version": "1.0",
+            "privateEndpointConnections": [],
+            "sharedPrivateLinkResources": [],
+            "tls": {
+                "clientCertEnabled": false
+            },
+            "hostNamePrefix": "signalr-A",
+            "features": [
+                {
+                    "flag": "ServiceMode",
+                    "value": "Serverless",
+                    "properties": {}
+                },
+                {
+                    "flag": "EnableConnectivityLogs",
+                    "value": "True",
+                    "properties": {}
+                },
+                {
+                    "flag": "EnableMessagingLogs",
+                    "value": "False",
+                    "properties": {}
+                }
+            ],
+            "liveTraceConfiguration": null,
+            "resourceLogConfiguration": null,
+            "cors": {
+                "allowedOrigins": [
+                    "*"
+                ]
+            },
+            "upstream": {
+                "templates": null
+            },
+            "networkACLs": {
+                "defaultAction": "Deny",
+                "publicNetwork": {
+                    "allow": [
+                        "ServerConnection",
+                        "ClientConnection",
+                        "RESTAPI",
+                        "Trace"
+                    ],
+                    "deny": null
+                },
+                "privateEndpoints": []
+            },
+            "publicNetworkAccess": "Enabled",
+            "disableLocalAuth": false,
+            "disableAadAuth": false
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.SignalRService/SignalR",
+        "ResourceType": "Microsoft.SignalRService/SignalR",
+        "Sku": {
+            "Name": "Free_F1",
+            "Tier": "Free",
+            "Size": "F1",
+            "Family": null,
+            "Model": null,
+            "Capacity": 1
+        },
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.SignalRService/SignalR/signalr-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.SignalRService/SignalR/signalr-B",
+        "identity": {
+            "type": "SystemAssigned",
+            "principalId": "00000000-0000-0000-0000-000000000000",
+            "tenantId": "00000000-0000-0000-0000-000000000000"
+        },
+        "Kind": "SignalR",
+        "Location": "eastus",
+        "ResourceName": "signalr-B",
+        "Name": "signalr-B",
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "externalIP": "0.0.0.0",
+          "hostName": "signalr-B.service.signalr.net",
+          "publicPort": 443,
+          "serverPort": 443,
+          "version": "1.0",
+          "privateEndpointConnections": [],
+          "sharedPrivateLinkResources": [],
+          "tls": {
+            "clientCertEnabled": false
+          },
+          "hostNamePrefix": "signalr-B",
+          "features": [
+            {
+              "flag": "ServiceMode",
+              "value": "Serverless",
+              "properties": {}
+            },
+            {
+              "flag": "EnableConnectivityLogs",
+              "value": "True",
+              "properties": {}
+            },
+            {
+              "flag": "EnableMessagingLogs",
+              "value": "False",
+              "properties": {}
+            }
+          ],
+          "liveTraceConfiguration": null,
+          "resourceLogConfiguration": null,
+          "cors": {
+            "allowedOrigins": [
+              "*"
+            ]
+          },
+          "upstream": {
+            "templates": null
+          },
+          "networkACLs": {
+            "defaultAction": "Deny",
+            "publicNetwork": {
+              "allow": [
+                "ServerConnection",
+                "ClientConnection",
+                "RESTAPI",
+                "Trace"
+              ],
+              "deny": null
+            },
+            "privateEndpoints": []
+          },
+          "publicNetworkAccess": "Enabled",
+          "disableLocalAuth": true,
+          "disableAadAuth": false
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.SignalRService/SignalR",
+        "ResourceType": "Microsoft.SignalRService/SignalR",
+        "Sku": {
+          "Name": "Standard_S1",
+          "Tier": "Standard",
+          "Size": "S1",
+          "Family": null,
+          "Model": null,
+          "Capacity": 1
+        },
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+]
