@@ -70,6 +70,8 @@ metadata:
     release: 'GA'
     ruleSet: '2020_12'
 spec:
+  with:
+  - Azure.ACR.IsPremiumSKU
   type:
   - Microsoft.ContainerRegistry/registries
   condition:
@@ -86,6 +88,8 @@ metadata:
     release: 'preview'
     ruleSet: '2020_12'
 spec:
+  with:
+  - Azure.ACR.IsPremiumSKU
   type:
   - Microsoft.ContainerRegistry/registries
   condition:
@@ -93,3 +97,24 @@ spec:
     equals: enabled
 
 #endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: Azure Container Registries using a Premium SKU.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.ACR.IsPremiumSKU
+spec:
+  if:
+    allOf:
+    - type: '.'
+      equals: 'Microsoft.ContainerRegistry/registries'
+    - anyOf:
+      - field: Sku.name
+        equals: 'Premium'
+      - field: Sku.tier
+        equals: 'Premium'
+
+#endregion Selectors

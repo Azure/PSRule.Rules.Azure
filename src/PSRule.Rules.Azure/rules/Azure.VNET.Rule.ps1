@@ -13,7 +13,7 @@ Rule 'Azure.VNET.UseNSGs' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
         # Get subnets
         $subnet = @($TargetObject.properties.subnets | Where-Object { $_.Name -notin 'GatewaySubnet', 'AzureFirewallSubnet', 'AzureFirewallManagementSubnet' });
-        if ($subnet.Length -eq 0) {
+        if ($subnet.Length -eq 0 -or !$Assert.HasFieldValue($TargetObject, 'properties.subnets').Result) {
             return $Assert.Pass();
         }
     }
@@ -74,7 +74,7 @@ Rule 'Azure.VNET.SubnetName' -Type 'Microsoft.Network/virtualNetworks', 'Microso
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
         $subnets = @($TargetObject.Properties.subnets)
-        if ($subnets.Length -eq 0) {
+        if ($subnets.Length -eq 0 -or !$Assert.HasFieldValue($TargetObject, 'properties.subnets').Result) {
             $Assert.Pass();
         }
         else {

@@ -23,6 +23,10 @@ What's changed since v1.13.3:
   - Web PubSub Service:
     - Check services use Managed Identities. [#1308](https://github.com/Azure/PSRule.Rules.Azure/issues/1308)
     - Check services use a SKU with an SLA. [#1309](https://github.com/Azure/PSRule.Rules.Azure/issues/1309)
+- Bug fixes:
+  - Fixed virtual network without any subnets is invalid. [#1303](https://github.com/Azure/PSRule.Rules.Azure/issues/1303)
+  - Fixed container registry rules that require a premium tier. [#1304](https://github.com/Azure/PSRule.Rules.Azure/issues/1304)
+    - Rules `Azure.ACR.Retention` and `Azure.ACR.ContentTrust` are now only run against premium instances.
 
 ## v1.13.3
 
