@@ -14,6 +14,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.13.4
+
 What's changed since v1.13.3:
 
 - Bug fixes:
