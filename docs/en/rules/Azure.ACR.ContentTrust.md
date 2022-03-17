@@ -17,6 +17,8 @@ Use container images signed by a trusted image publisher.
 Azure Container Registry (ACR) content trust enables pushing and pulling of signed images.
 Signed images provides additional assurance that they have been built on a trusted source.
 
+To enable content trust, the container registry must be using a Premium SKU.
+
 ## RECOMMENDATION
 
 Consider enabling content trust on registries, clients, and sign container images.
