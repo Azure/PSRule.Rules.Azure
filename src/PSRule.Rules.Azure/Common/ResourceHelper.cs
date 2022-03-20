@@ -39,7 +39,7 @@ namespace PSRule.Rules.Azure
         /// /subscriptions/{subscriptionId}/providers/{resourceType}/{name}
         /// /providers/{resourceType}/{name}
         /// </remarks>
-        internal static string CombineResourceId(string subscriptionId, string resourceGroup, string[] resourceType, string[] name)
+        internal static string CombineResourceId(string subscriptionId, string resourceGroup, string[] resourceType, string[] name, int depth = int.MaxValue)
         {
             if (resourceType.Length != name.Length)
                 throw new TemplateFunctionException(nameof(resourceType), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
@@ -68,7 +68,7 @@ namespace PSRule.Rules.Azure
             }
             result[i++] = SLASH;
             result[i++] = PROVIDERS;
-            while (i < result.Length)
+            while (i < result.Length && j <= depth)
             {
                 result[i++] = SLASH;
                 result[i++] = resourceType[j];
@@ -76,6 +76,25 @@ namespace PSRule.Rules.Azure
                 result[i++] = name[j++];
             }
             return string.Concat(result);
+        }
+
+        internal static string CombineResourceId(string subscriptionId, string resourceGroup, string resourceType, string name)
+        {
+            TryResourceIdComponents(resourceType, name, out var typeComponents, out var nameComponents);
+            return CombineResourceId(subscriptionId, resourceGroup, typeComponents, nameComponents);
+        }
+
+        internal static bool TryResourceIdComponents(string resourceType, string name, out string[] resourceTypeComponents, out string[] nameComponents)
+        {
+            var typeParts = resourceType.Split('/');
+            var depth = string.IsNullOrEmpty(typeParts[typeParts.Length - 1]) ? typeParts.Length - 2 : typeParts.Length - 1;
+            resourceTypeComponents = new string[depth];
+            resourceTypeComponents[0] = string.Concat(typeParts[0], '/', typeParts[1]);
+            for (var i = 1; i < depth; i++)
+                resourceTypeComponents[i] = typeParts[i + 1];
+
+            nameComponents = name.Split('/');
+            return resourceTypeComponents.Length > 0 && nameComponents.Length > 0;
         }
 
         private static string[] GetResourceIdTypeParts(string resourceId)

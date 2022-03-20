@@ -40,11 +40,11 @@ Source expansion is supported with:
 
 - **Azure template and parameter files** &mdash; Azure templates are expanded from parameter files.
   Link parameter files to templates by metadata or naming convention.
-  See [Using templates](using-templates.md) for a detailed explaination of how to do this.
+  See [Using templates](using-templates.md) for a detailed explanation of how to do this.
 - **Azure Bicep deployments** &mdash; Files with the `.bicep` extension are detected and expanded.
-  See [Using Bicep source](using-bicep.md) for a detailed explaination of how to do this.
+  See [Using Bicep source](using-bicep.md) for a detailed explanation of how to do this.
 - **Azure Bicep modules with tests** &mdash; Reusable Bicep modules can be expanded with tests.
-  See [Using Bicep source](using-bicep.md) for a detailed explaination of how to do this.
+  See [Using Bicep source](using-bicep.md) for a detailed explanation of how to do this.
 
 ### Limitations
 
@@ -60,6 +60,8 @@ Automatic nesting a sub-resource requires:
 - The `environment()` template function always returns values for Azure public cloud.
 - References to Key Vault secrets are not expanded.
   A placeholder value is used instead.
+- The `reference()` function will return objects for resources within the same template.
+  For resources that are not in the same template, a placeholder value is used instead.
 - Multi-line strings are not supported.
 - Template expressions up to a maximum of 100,000 characters are supported.
 
@@ -68,10 +70,12 @@ In addition, currently the following limitation apply to using Bicep source file
 - The Bicep CLI must be installed.
   When using GitHub Actions or Azure Pipelines the Bicep CLI is pre-installed.
 - Location of issues in Bicep source files is not supported.
-- Expansion of Bicep source files times out after 5 seconds.
+- Expansion of Bicep source files times out after 5 seconds by default.
+  The timeout can be overridden by setting the [AZURE_BICEP_FILE_EXPANSION_TIMEOUT][3] option.
 
   [1]: using-templates.md#featuresupport
   [2]: setup/configuring-expansion.md#excludingfiles
+  [3]: setup/setup-bicep.md#configuringtimeout
 
 ## Strong type
 
@@ -92,7 +96,7 @@ The strong type will be set to the resource type that the parameter will accept,
             "workspaceId": {
                 "type": "string",
                 "metadata": {
-                    "description": "The resource identifer for a Log Analytics workspace.",
+                    "description": "The resource identifier for a Log Analytics workspace.",
                     "strongType": "Microsoft.OperationalInsights/workspaces"
                 }
             }
@@ -106,7 +110,7 @@ The strong type will be set to the resource type that the parameter will accept,
     @metadata({
       strongType: 'Microsoft.OperationalInsights/workspaces'
     })
-    @description('The resource identifer for a Log Analytics workspace.')
+    @description('The resource identifier for a Log Analytics workspace.')
     param workspaceId string
     ```
 
@@ -116,13 +120,13 @@ Strong type also supports the following non-resource type values:
 
 ## Scope functions
 
-Azure deployments support a number of [scope functions][3] can be used within Infrastructure as Code.
+Azure deployments support a number of [scope functions][4] can be used within Infrastructure as Code.
 When using PSRule for Azure, these functions have a default meaning that can be configured.
 
 When configuring scope functions, only the properties you want to override has to be specified.
 Unspecified properties will inherit from the defaults.
 
-  [3]: https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-scope
+  [4]: https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-scope
 
 ### Subscription
 

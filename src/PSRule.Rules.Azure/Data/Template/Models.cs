@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -135,7 +135,7 @@ namespace PSRule.Rules.Azure.Data.Template
         public string storage { get; set; }
     }
 
-    public abstract class MockNode
+    public abstract class MockNode : ILazyObject
     {
         protected MockNode(MockNode parent)
         {
@@ -166,6 +166,12 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         protected abstract string GetString();
+
+        bool ILazyObject.TryProperty(string propertyName, out object value)
+        {
+            value = GetMember(propertyName);
+            return true;
+        }
     }
 
     public sealed class MockResource : MockNode

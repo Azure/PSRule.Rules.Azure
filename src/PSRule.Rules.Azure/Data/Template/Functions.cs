@@ -760,8 +760,25 @@ namespace PSRule.Rules.Azure.Data.Template
             if (argCount < 1 || argCount > 3)
                 throw ArgumentsOutOfRange(nameof(Reference), args);
 
-            ExpressionHelpers.TryString(args[0], out var resourceType);
-            return new MockResource(resourceType);
+            if (!ExpressionHelpers.TryString(args[0], out var resourceId))
+                throw ArgumentFormatInvalid(nameof(Reference));
+
+            var full = argCount == 3 && ExpressionHelpers.TryString(args[2], out var fullValue) && string.Equals(fullValue, "Full", StringComparison.OrdinalIgnoreCase);
+            if (argCount == 3 && !full)
+                throw ArgumentFormatInvalid(nameof(Reference));
+
+            // If the resource is part of the deployment try to get the object
+            return context.TryGetResource(resourceId, out var resourceValue)
+                ? GetReferenceResult(resourceValue, full)
+                : new MockResource(resourceId);
+        }
+
+        private static object GetReferenceResult(IResourceValue resource, bool full)
+        {
+            if (resource is DeploymentValue deployment)
+                return full ? deployment : deployment.Properties;
+
+            return full ? resource.Value : resource.Value["properties"].Value<JObject>();
         }
 
         /// <summary>

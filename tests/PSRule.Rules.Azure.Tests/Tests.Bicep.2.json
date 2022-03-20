@@ -1,0 +1,333 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.4.1318.3566",
+      "templateHash": "6224506516782372373"
+    }
+  },
+  "parameters": {
+    "storageName1": {
+      "type": "string",
+      "defaultValue": "sabicep001",
+      "metadata": {
+        "description": "The name of the first Storage Account."
+      }
+    },
+    "storageName2": {
+      "type": "string",
+      "defaultValue": "sabicep002",
+      "metadata": {
+        "description": "The name of the second Storage Account."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "storage3",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "name": {
+            "value": "[format('{0}a', split(reference(resourceId('Microsoft.Resources/deployments', 'storage1')).outputs.id.value, '/')[8])]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "tags": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1')).outputs.tags.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.4.1318.3566",
+              "templateHash": "15881295888691004764"
+            }
+          },
+          "parameters": {
+            "name": {
+              "type": "string",
+              "metadata": {
+                "description": "The name of the Storage Account."
+              }
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]",
+              "metadata": {
+                "description": "The Azure location to deploy resources."
+              }
+            },
+            "tags": {
+              "type": "object",
+              "defaultValue": {
+                "env": "test"
+              },
+              "metadata": {
+                "description": "One or more tags to use."
+              }
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2021-06-01",
+              "name": "[parameters('name')]",
+              "location": "[parameters('location')]",
+              "sku": {
+                "name": "Standard_GRS"
+              },
+              "kind": "StorageV2",
+              "properties": {
+                "allowBlobPublicAccess": false,
+                "supportsHttpsTrafficOnly": true,
+                "minimumTlsVersion": "TLS1_2",
+                "accessTier": "Hot",
+                "allowSharedKeyAccess": false,
+                "networkAcls": {
+                  "defaultAction": "Deny"
+                }
+              },
+              "tags": "[parameters('tags')]",
+              "metadata": {
+                "description": "An example Storage Account."
+              }
+            }
+          ],
+          "outputs": {
+            "id": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]",
+              "metadata": {
+                "description": "A unique resource Id for the storage account."
+              }
+            },
+            "tags": {
+              "type": "object",
+              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]",
+              "metadata": {
+                "description": "Any tags set on the storage account."
+              }
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'storage1')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "storage1",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "name": {
+            "value": "[parameters('storageName1')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.4.1318.3566",
+              "templateHash": "15881295888691004764"
+            }
+          },
+          "parameters": {
+            "name": {
+              "type": "string",
+              "metadata": {
+                "description": "The name of the Storage Account."
+              }
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]",
+              "metadata": {
+                "description": "The Azure location to deploy resources."
+              }
+            },
+            "tags": {
+              "type": "object",
+              "defaultValue": {
+                "env": "test"
+              },
+              "metadata": {
+                "description": "One or more tags to use."
+              }
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2021-06-01",
+              "name": "[parameters('name')]",
+              "location": "[parameters('location')]",
+              "sku": {
+                "name": "Standard_GRS"
+              },
+              "kind": "StorageV2",
+              "properties": {
+                "allowBlobPublicAccess": false,
+                "supportsHttpsTrafficOnly": true,
+                "minimumTlsVersion": "TLS1_2",
+                "accessTier": "Hot",
+                "allowSharedKeyAccess": false,
+                "networkAcls": {
+                  "defaultAction": "Deny"
+                }
+              },
+              "tags": "[parameters('tags')]",
+              "metadata": {
+                "description": "An example Storage Account."
+              }
+            }
+          ],
+          "outputs": {
+            "id": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]",
+              "metadata": {
+                "description": "A unique resource Id for the storage account."
+              }
+            },
+            "tags": {
+              "type": "object",
+              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]",
+              "metadata": {
+                "description": "Any tags set on the storage account."
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "storage2",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "name": {
+            "value": "[parameters('storageName2')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "tags": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1')).outputs.tags.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.4.1318.3566",
+              "templateHash": "15881295888691004764"
+            }
+          },
+          "parameters": {
+            "name": {
+              "type": "string",
+              "metadata": {
+                "description": "The name of the Storage Account."
+              }
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]",
+              "metadata": {
+                "description": "The Azure location to deploy resources."
+              }
+            },
+            "tags": {
+              "type": "object",
+              "defaultValue": {
+                "env": "test"
+              },
+              "metadata": {
+                "description": "One or more tags to use."
+              }
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2021-06-01",
+              "name": "[parameters('name')]",
+              "location": "[parameters('location')]",
+              "sku": {
+                "name": "Standard_GRS"
+              },
+              "kind": "StorageV2",
+              "properties": {
+                "allowBlobPublicAccess": false,
+                "supportsHttpsTrafficOnly": true,
+                "minimumTlsVersion": "TLS1_2",
+                "accessTier": "Hot",
+                "allowSharedKeyAccess": false,
+                "networkAcls": {
+                  "defaultAction": "Deny"
+                }
+              },
+              "tags": "[parameters('tags')]",
+              "metadata": {
+                "description": "An example Storage Account."
+              }
+            }
+          ],
+          "outputs": {
+            "id": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]",
+              "metadata": {
+                "description": "A unique resource Id for the storage account."
+              }
+            },
+            "tags": {
+              "type": "object",
+              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]",
+              "metadata": {
+                "description": "Any tags set on the storage account."
+              }
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'storage1')]"
+      ]
+    }
+  ]
+}

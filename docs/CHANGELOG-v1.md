@@ -16,6 +16,10 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since v1.13.3:
 
+- New features:
+  - Added support for referencing resources in template. [#1315](https://github.com/Azure/PSRule.Rules.Azure/issues/1315)
+    - The `reference()` function can be used to reference resources in template.
+    - A placeholder value is still used for resources outside of the template.
 - New rules:
   - SignalR Service:
     - Check services use Managed Identities. [#1306](https://github.com/Azure/PSRule.Rules.Azure/issues/1306)
@@ -23,6 +27,8 @@ What's changed since v1.13.3:
   - Web PubSub Service:
     - Check services use Managed Identities. [#1308](https://github.com/Azure/PSRule.Rules.Azure/issues/1308)
     - Check services use a SKU with an SLA. [#1309](https://github.com/Azure/PSRule.Rules.Azure/issues/1309)
+- Bug fixes:
+  - Fixed processing of deployment outputs. [#1316](https://github.com/Azure/PSRule.Rules.Azure/issues/1316)
 
 ## v1.13.4
 

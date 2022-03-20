@@ -723,10 +723,10 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
             context.EnterDeployment("unit-test", JObject.Parse("{ \"contentVersion\": \"1.0.0.0\" }"), isNested: false);
 
-            var actual1 = Functions.Deployment(context, null) as JObject;
-            Assert.Equal("unit-test", actual1["name"]);
-            Assert.Equal("1.0.0.0", actual1["properties"]["template"]["contentVersion"]);
-            Assert.Equal("abcdef", actual1["properties"]["parameters"]["name"]["value"]);
+            var actual1 = Functions.Deployment(context, null) as DeploymentValue;
+            Assert.Equal("unit-test", actual1.Value["name"]);
+            Assert.Equal("1.0.0.0", actual1.Value["properties"]["template"]["contentVersion"]);
+            Assert.Equal("abcdef", actual1.Value["properties"]["parameters"]["name"]["value"]);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Deployment(context, new object[] { 123 }));
         }

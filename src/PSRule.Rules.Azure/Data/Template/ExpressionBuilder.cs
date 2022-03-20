@@ -178,10 +178,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 return property.Value<object>();
             }
 
-            if (result is MockNode mockNode)
-                return mockNode.GetMember(propertyName);
+            if (result is ILazyObject lazy && lazy.TryProperty(propertyName, out var value))
+                return value;
 
-            if (TryPropertyOrField(result, propertyName, out var value))
+            if (TryPropertyOrField(result, propertyName, out value))
                 return value;
 
             throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));

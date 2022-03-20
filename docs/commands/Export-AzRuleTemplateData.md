@@ -56,11 +56,13 @@ Currently the following limitations apply:
 Automatic nesting a sub-resource requires:
   - The parent resource is defined in the same template.
   - The sub-resource depends on the parent resource.
-- The `pickZones` template function is not supported.
 - The `environment` template function always returns values for Azure public cloud.
 - References to Key Vault secrets are not expanded.
 A placeholder value is used instead.
+- The `reference()` function will return objects for resources within the same template.
+  For resources that are not in the same template, a placeholder value is used instead.
 - Multi-line strings are not supported.
+- Template expressions up to a maximum of 100,000 characters are supported.
 
 ## EXAMPLES
 
