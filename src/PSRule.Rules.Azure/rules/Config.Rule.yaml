@@ -30,7 +30,7 @@ spec:
     AZURE_BICEP_FILE_EXPANSION: false
 
     # Configure minimum AKS cluster version
-    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.21.7'
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.21.9'
   convention:
     include:
     - 'Azure.DeprecatedOptions'
