@@ -62,7 +62,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.TargetName | Should -BeIn 'cluster-B';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The version '1.13.8' does not match the constraint '>=1.21.7'.";
+            $ruleResult[0].Reason | Should -BeExactly "The version '1.13.8' does not match the constraint '>=1.21.9'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
