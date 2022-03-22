@@ -63,6 +63,9 @@ namespace PSRule.Rules.Azure.Data.Template
     {
         private const string RESOURCETYPE_DEPLOYMENT = "Microsoft.Resources/deployments";
 
+        private const string PROPERTY_PROPERTIES = "properties";
+        private const string PROPERTY_OUTPUTS = "outputs";
+
         private readonly HashSet<string> _Dependencies;
         private readonly Lazy<JObject> _Value;
         private readonly Dictionary<string, ILazyValue> _Outputs;
@@ -89,14 +92,14 @@ namespace PSRule.Rules.Azure.Data.Template
             public DeploymentProperties(DeploymentValue deployment)
             {
                 _Deployment = deployment;
-                _Deployment.Value.TryGetProperty("properties", out _Properties);
+                _Deployment.Value.TryGetProperty(PROPERTY_PROPERTIES, out _Properties);
                 _Outputs = new DeploymentOutputs(deployment);
             }
 
             public bool TryProperty(string propertyName, out object value)
             {
                 value = null;
-                if (StringComparer.OrdinalIgnoreCase.Equals(propertyName, "outputs"))
+                if (StringComparer.OrdinalIgnoreCase.Equals(propertyName, PROPERTY_OUTPUTS))
                     value = _Outputs;
                 else if (_Properties.TryGetProperty<JToken>(propertyName, out var token))
                     value = token;
@@ -148,7 +151,7 @@ namespace PSRule.Rules.Azure.Data.Template
         public bool TryProperty(string propertyName, out object value)
         {
             value = null;
-            if (StringComparer.OrdinalIgnoreCase.Equals(propertyName, "properties"))
+            if (StringComparer.OrdinalIgnoreCase.Equals(propertyName, PROPERTY_PROPERTIES))
                 value = Properties;
             else if (Value.TryGetProperty<JToken>(propertyName, out var token))
                 value = token;
