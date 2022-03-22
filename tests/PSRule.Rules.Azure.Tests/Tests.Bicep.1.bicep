@@ -7,7 +7,12 @@ param name string
 @description('The Azure location to deploy resources.')
 param location string = resourceGroup().location
 
-// An example Storage Account
+@description('One or more tags to use.')
+param tags object = {
+  env: 'test'
+}
+
+@description('An example Storage Account.')
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-06-01' = {
   name: name
   location: location
@@ -25,4 +30,11 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-06-01' = {
       defaultAction: 'Deny'
     }
   }
+  tags: tags
 }
+
+@description('A unique resource Id for the storage account.')
+output id string = storageAccount.id
+
+@description('Any tags set on the storage account.')
+output tags object = storageAccount.tags

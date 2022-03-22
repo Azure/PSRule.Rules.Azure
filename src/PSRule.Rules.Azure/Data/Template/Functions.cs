@@ -22,6 +22,17 @@ namespace PSRule.Rules.Azure.Data.Template
     /// </summary>
     internal static class Functions
     {
+        private const string PROPERTY_FULL = "Full";
+        private const string PROPERTY_PROPERTIES = "properties";
+        private const string PROPERTY_RESOURCETYPE = "resourceType";
+        private const string PROPERTY_PROVIDERNAMESPACE = "providerNamespace";
+        private const string PROPERTY_LOCATION = "location";
+        private const string PROPERTY_NUMBEROFZONES = "numberOfZones";
+        private const string PROPERTY_OFFSET = "offset";
+        private const string PROPERTY_OPERAND1 = "operand1";
+        private const string PROPERTY_OPERAND2 = "operand2";
+        private const string PROPERTY_VALUETOCONVERT = "valueToConvert";
+
         internal readonly static IFunctionDescriptor[] Builtin = new IFunctionDescriptor[]
         {
             // Array and object
@@ -697,21 +708,21 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(PickZones), args);
 
             if (!ExpressionHelpers.TryString(args[0], out var providerNamespace))
-                throw ArgumentInvalidString(nameof(PickZones), "providerNamespace");
+                throw ArgumentInvalidString(nameof(PickZones), PROPERTY_PROVIDERNAMESPACE);
 
             if (!ExpressionHelpers.TryString(args[1], out var resourceType))
-                throw ArgumentInvalidString(nameof(PickZones), "resourceType");
+                throw ArgumentInvalidString(nameof(PickZones), PROPERTY_RESOURCETYPE);
 
             if (!ExpressionHelpers.TryString(args[2], out var location))
-                throw ArgumentInvalidString(nameof(PickZones), "location");
+                throw ArgumentInvalidString(nameof(PickZones), PROPERTY_LOCATION);
 
             var numberOfZones = 1;
             if (argCount > 3 && !ExpressionHelpers.TryInt(args[3], out numberOfZones))
-                throw ArgumentInvalidInteger(nameof(PickZones), "numberOfZones");
+                throw ArgumentInvalidInteger(nameof(PickZones), PROPERTY_NUMBEROFZONES);
 
             var offset = 0;
             if (argCount > 4 && !ExpressionHelpers.TryInt(args[4], out offset))
-                throw ArgumentInvalidInteger(nameof(PickZones), "offset");
+                throw ArgumentInvalidInteger(nameof(PickZones), PROPERTY_OFFSET);
 
             var resourceTypes = context.GetResourceType(providerNamespace, resourceType);
             if (resourceTypes == null || resourceTypes.Length == 0)
@@ -760,8 +771,25 @@ namespace PSRule.Rules.Azure.Data.Template
             if (argCount < 1 || argCount > 3)
                 throw ArgumentsOutOfRange(nameof(Reference), args);
 
-            ExpressionHelpers.TryString(args[0], out var resourceType);
-            return new MockResource(resourceType);
+            if (!ExpressionHelpers.TryString(args[0], out var resourceId))
+                throw ArgumentFormatInvalid(nameof(Reference));
+
+            var full = argCount == 3 && ExpressionHelpers.TryString(args[2], out var fullValue) && string.Equals(fullValue, PROPERTY_FULL, StringComparison.OrdinalIgnoreCase);
+            if (argCount == 3 && !full)
+                throw ArgumentFormatInvalid(nameof(Reference));
+
+            // If the resource is part of the deployment try to get the object
+            return context.TryGetResource(resourceId, out var resourceValue)
+                ? GetReferenceResult(resourceValue, full)
+                : new MockResource(resourceId);
+        }
+
+        private static object GetReferenceResult(IResourceValue resource, bool full)
+        {
+            if (resource is DeploymentValue deployment)
+                return full ? deployment : deployment.Properties;
+
+            return full ? resource.Value : resource.Value[PROPERTY_PROPERTIES].Value<JObject>();
         }
 
         /// <summary>
@@ -912,10 +940,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Add), args);
 
             if (!ExpressionHelpers.TryConvertLong(args[0], out var operand1))
-                throw ArgumentInvalidInteger(nameof(Add), "operand1");
+                throw ArgumentInvalidInteger(nameof(Add), PROPERTY_OPERAND1);
 
             if (!ExpressionHelpers.TryConvertLong(args[1], out var operand2))
-                throw ArgumentInvalidInteger(nameof(Add), "operand2");
+                throw ArgumentInvalidInteger(nameof(Add), PROPERTY_OPERAND2);
 
             return operand1 + operand2;
         }
@@ -939,10 +967,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Div), args);
 
             if (!ExpressionHelpers.TryConvertLong(args[0], out var operand1))
-                throw ArgumentInvalidInteger(nameof(Div), "operand1");
+                throw ArgumentInvalidInteger(nameof(Div), PROPERTY_OPERAND1);
 
             if (!ExpressionHelpers.TryConvertLong(args[1], out var operand2))
-                throw ArgumentInvalidInteger(nameof(Div), "operand2");
+                throw ArgumentInvalidInteger(nameof(Div), PROPERTY_OPERAND2);
 
             if (operand2 == 0)
                 throw new DivideByZeroException();
@@ -958,9 +986,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (ExpressionHelpers.TryConvertLong(args[0], out var ivalue))
                 return (float)ivalue;
             else if (ExpressionHelpers.TryString(args[0], out var svalue))
-                return float.Parse(svalue, new CultureInfo("en-us"));
+                return float.Parse(svalue, AzureCulture);
 
-            throw ArgumentInvalidInteger(nameof(Float), "valueToConvert");
+            throw ArgumentInvalidInteger(nameof(Float), PROPERTY_VALUETOCONVERT);
         }
 
         internal static object Int(ITemplateContext context, object[] args)
@@ -971,7 +999,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (ExpressionHelpers.TryConvertLong(args[0], out var value))
                 return value;
 
-            throw ArgumentInvalidInteger(nameof(Int), "valueToConvert");
+            throw ArgumentInvalidInteger(nameof(Int), PROPERTY_VALUETOCONVERT);
         }
 
         internal static object Mod(ITemplateContext context, object[] args)
@@ -980,10 +1008,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Mod), args);
 
             if (!ExpressionHelpers.TryConvertLong(args[0], out var operand1))
-                throw ArgumentInvalidInteger(nameof(Mod), "operand1");
+                throw ArgumentInvalidInteger(nameof(Mod), PROPERTY_OPERAND1);
 
             if (!ExpressionHelpers.TryConvertLong(args[1], out var operand2))
-                throw ArgumentInvalidInteger(nameof(Mod), "operand2");
+                throw ArgumentInvalidInteger(nameof(Mod), PROPERTY_OPERAND2);
 
             if (operand2 == 0)
                 throw new DivideByZeroException();
@@ -997,10 +1025,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Mul), args);
 
             if (!ExpressionHelpers.TryConvertLong(args[0], out var operand1))
-                throw ArgumentInvalidInteger(nameof(Mul), "operand1");
+                throw ArgumentInvalidInteger(nameof(Mul), PROPERTY_OPERAND1);
 
             if (!ExpressionHelpers.TryConvertLong(args[1], out var operand2))
-                throw ArgumentInvalidInteger(nameof(Mul), "operand2");
+                throw ArgumentInvalidInteger(nameof(Mul), PROPERTY_OPERAND2);
 
             return operand1 * operand2;
         }
@@ -1011,10 +1039,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Sub), args);
 
             if (!ExpressionHelpers.TryConvertLong(args[0], out var operand1))
-                throw ArgumentInvalidInteger(nameof(Sub), "operand1");
+                throw ArgumentInvalidInteger(nameof(Sub), PROPERTY_OPERAND1);
 
             if (!ExpressionHelpers.TryConvertLong(args[1], out var operand2))
-                throw ArgumentInvalidInteger(nameof(Sub), "operand2");
+                throw ArgumentInvalidInteger(nameof(Sub), PROPERTY_OPERAND2);
 
             return operand1 - operand2;
         }
@@ -1403,7 +1431,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (ExpressionHelpers.TryString(args[0], out var svalue))
                 return svalue.PadLeft(totalLength, paddingCharacter[0]);
             else if (ExpressionHelpers.TryInt(args[1], out var ivalue))
-                return ivalue.ToString(new CultureInfo("en-us")).PadLeft(totalLength, paddingCharacter[0]);
+                return ivalue.ToString(AzureCulture).PadLeft(totalLength, paddingCharacter[0]);
 
             throw new ArgumentException();
         }

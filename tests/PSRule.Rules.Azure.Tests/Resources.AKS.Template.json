@@ -306,7 +306,7 @@
                 {
                     "apiVersion": "2016-09-01",
                     "type": "Microsoft.ContainerService/managedClusters/providers/diagnosticSettings",
-                    "name": "[concat(parameters('clusterName5'), '/Microsoft.Insights/service')]",
+                    "name": "[concat(parameters('clusterName2'), '/Microsoft.Insights/service')]",
                     "properties": {
                         "workspaceId": "[parameters('workspaceId')]",
                         "logs": [
@@ -937,7 +937,7 @@
                 {
                     "apiVersion": "2016-09-01",
                     "type": "Microsoft.ContainerService/managedClusters/providers/diagnosticSettings",
-                    "name": "[concat(parameters('clusterName5'), '/Microsoft.Insights/service')]",
+                    "name": "[concat(parameters('clusterName6'), '/Microsoft.Insights/service')]",
                     "properties": {
                         "workspaceId": "[parameters('workspaceId')]",
                         "logs": [

@@ -195,7 +195,10 @@
                         }
                     ]
                 }
-            }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('VNETName'))]"
+            ]
         },
         {
             "condition": "[empty(null())]",

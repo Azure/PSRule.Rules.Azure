@@ -14,8 +14,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
-What's changed since v1.13.3:
+What's changed since v1.13.4:
 
+- New features:
+  - Added support for referencing resources in template. [#1315](https://github.com/Azure/PSRule.Rules.Azure/issues/1315)
+    - The `reference()` function can be used to reference resources in template.
+    - A placeholder value is still used for resources outside of the template.
 - New rules:
   - SignalR Service:
     - Check services use Managed Identities. [#1306](https://github.com/Azure/PSRule.Rules.Azure/issues/1306)
@@ -27,6 +31,8 @@ What's changed since v1.13.3:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use latest stable version `1.21.9`. [#1318](https://github.com/Azure/PSRule.Rules.Azure/issues/1318)
       - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+- Bug fixes:
+  - Fixed processing of deployment outputs. [#1316](https://github.com/Azure/PSRule.Rules.Azure/issues/1316)
 
 ## v1.13.4
 

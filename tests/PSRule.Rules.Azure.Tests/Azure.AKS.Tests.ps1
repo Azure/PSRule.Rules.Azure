@@ -831,12 +831,12 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 3;
             $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterB', 'clusterE';
 
-            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The agent pool (agentpool1) deployed to region (eastus) should use following availability zones [1, 2, 3].";
-            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The agent pool (agentpool1) deployed to region (eastus) should use following availability zones [1, 2, 3].";
-            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The agent pool (clusterE/agentpool2) deployed to region (eastus) should use following availability zones [1, 2, 3].";
+            ($ruleResult | Where-Object { $_.TargetName -eq 'clusterA' }).Reason | Should -Not -BeNullOrEmpty;
+            ($ruleResult | Where-Object { $_.TargetName -eq 'clusterA' }).Reason | Should -BeExactly "The agent pool (agentpool1) deployed to region (eastus) should use following availability zones [1, 2, 3].";
+            ($ruleResult | Where-Object { $_.TargetName -eq 'clusterB' }).Reason | Should -Not -BeNullOrEmpty;
+            ($ruleResult | Where-Object { $_.TargetName -eq 'clusterB' }).Reason | Should -BeExactly "The agent pool (agentpool1) deployed to region (eastus) should use following availability zones [1, 2, 3].";
+            ($ruleResult | Where-Object { $_.TargetName -eq 'clusterE' }).Reason | Should -Not -BeNullOrEmpty;
+            ($ruleResult | Where-Object { $_.TargetName -eq 'clusterE' }).Reason | Should -BeExactly "The agent pool (clusterE/agentpool2) deployed to region (eastus) should use following availability zones [1, 2, 3].";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -873,7 +873,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The diagnostic setting (clusterA/Microsoft.Insights/service) logs should enable at least one of (kube-audit, kube-audit-admin) and guard.";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The diagnostic setting (clusterE/Microsoft.Insights/service) logs should enable at least one of (kube-audit, kube-audit-admin) and guard.";
+            $ruleResult[1].Reason | Should -BeExactly "The diagnostic setting (clusterB/Microsoft.Insights/service) logs should enable at least one of (kube-audit, kube-audit-admin) and guard.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -891,12 +891,12 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 3;
             $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterB', 'clusterD';
 
-            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The diagnostic setting (clusterA/Microsoft.Insights/service) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler, AllMetrics).";
-            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The diagnostic setting (clusterE/Microsoft.Insights/service) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler, AllMetrics).";
-            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The diagnostic setting (clusterD/Microsoft.Insights/service) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler, AllMetrics).";
+            ($ruleResult | Where-Object { $_.TargetName -eq 'clusterA' }).Reason | Should -Not -BeNullOrEmpty;
+            ($ruleResult | Where-Object { $_.TargetName -eq 'clusterA' }).Reason | Should -BeExactly "The diagnostic setting (clusterA/Microsoft.Insights/service) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler, AllMetrics).";
+            ($ruleResult | Where-Object { $_.TargetName -eq 'clusterB' }).Reason | Should -Not -BeNullOrEmpty;
+            ($ruleResult | Where-Object { $_.TargetName -eq 'clusterB' }).Reason | Should -BeExactly "The diagnostic setting (clusterB/Microsoft.Insights/service) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler, AllMetrics).";
+            ($ruleResult | Where-Object { $_.TargetName -eq 'clusterD' }).Reason | Should -Not -BeNullOrEmpty;
+            ($ruleResult | Where-Object { $_.TargetName -eq 'clusterD' }).Reason | Should -BeExactly "The diagnostic setting (clusterD/Microsoft.Insights/service) logs should enable (cluster-autoscaler, kube-apiserver, kube-controller-manager, kube-scheduler, AllMetrics).";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
