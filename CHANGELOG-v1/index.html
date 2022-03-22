@@ -7277,8 +7277,16 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
   Support for <code>Azure_AKSMinimumVersion</code> will be removed in v2.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
-<p>What's changed since v1.13.3:</p>
+<p>What's changed since v1.13.4:</p>
 <ul>
+<li>New features:<ul>
+<li>Added support for referencing resources in template. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1315">#1315</a><ul>
+<li>The <code>reference()</code> function can be used to reference resources in template.</li>
+<li>A placeholder value is still used for resources outside of the template.</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>New rules:<ul>
 <li>SignalR Service:<ul>
 <li>Check services use Managed Identities. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1306">#1306</a></li>
@@ -7300,6 +7308,10 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 </li>
 </ul>
 </li>
+</ul>
+</li>
+<li>Bug fixes:<ul>
+<li>Fixed processing of deployment outputs. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1316">#1316</a></li>
 </ul>
 </li>
 </ul>

@@ -6084,11 +6084,11 @@ Azure resources are analyzed before deployment as if they are deployed.</p>
 <ul>
 <li><strong>Azure template and parameter files</strong> &mdash; Azure templates are expanded from parameter files.
   Link parameter files to templates by metadata or naming convention.
-  See <a href="../using-templates/">Using templates</a> for a detailed explaination of how to do this.</li>
+  See <a href="../using-templates/">Using templates</a> for a detailed explanation of how to do this.</li>
 <li><strong>Azure Bicep deployments</strong> &mdash; Files with the <code>.bicep</code> extension are detected and expanded.
-  See <a href="../using-bicep/">Using Bicep source</a> for a detailed explaination of how to do this.</li>
+  See <a href="../using-bicep/">Using Bicep source</a> for a detailed explanation of how to do this.</li>
 <li><strong>Azure Bicep modules with tests</strong> &mdash; Reusable Bicep modules can be expanded with tests.
-  See <a href="../using-bicep/">Using Bicep source</a> for a detailed explaination of how to do this.</li>
+  See <a href="../using-bicep/">Using Bicep source</a> for a detailed explanation of how to do this.</li>
 </ul>
 <h3 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">#</a></h3>
 <p>Currently the following limitations apply:</p>
@@ -6107,6 +6107,8 @@ Automatic nesting a sub-resource requires:<ul>
 <li>The <code>environment()</code> template function always returns values for Azure public cloud.</li>
 <li>References to Key Vault secrets are not expanded.
   A placeholder value is used instead.</li>
+<li>The <code>reference()</code> function will return objects for resources within the same template.
+  For resources that are not in the same template, a placeholder value is used instead.</li>
 <li>Multi-line strings are not supported.</li>
 <li>Template expressions up to a maximum of 100,000 characters are supported.</li>
 </ul>
@@ -6116,7 +6118,8 @@ Automatic nesting a sub-resource requires:<ul>
   When using GitHub Actions or Azure Pipelines the Bicep CLI is pre-installed.</li>
 <li>Location of issues in Bicep source files is not supported.</li>
 <li>
-<p>Expansion of Bicep source files times out after 5 seconds.</p>
+<p>Expansion of Bicep source files times out after 5 seconds by default.
+  The timeout can be overridden by setting the <a href="../setup/setup-bicep/#configuringtimeout">AZURE_BICEP_FILE_EXPANSION_TIMEOUT</a> option.</p>
 </li>
 </ul>
 <h2 id="strongtype">Strong type<a class="headerlink" href="#strongtype" title="Permanent link">#</a></h2>
@@ -6135,7 +6138,7 @@ The strong type will be set to the resource type that the parameter will accept,
 <span class="w">        </span><span class="nt">&quot;workspaceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The resource identifer for a Log Analytics workspace.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The resource identifier for a Log Analytics workspace.&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">                </span><span class="nt">&quot;strongType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.OperationalInsights/workspaces&quot;</span><span class="w"></span>
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
@@ -6147,7 +6150,7 @@ The strong type will be set to the resource type that the parameter will accept,
 <div class="highlight"><pre><span></span><code>@metadata({
   strongType: &#39;Microsoft.OperationalInsights/workspaces&#39;
 })
-@description(&#39;The resource identifer for a Log Analytics workspace.&#39;)
+@description(&#39;The resource identifier for a Log Analytics workspace.&#39;)
 param workspaceId string
 </code></pre></div>
 </div>
@@ -6198,7 +6201,7 @@ Unspecified properties will inherit from the defaults.</p>
   <small>
     
       Last update:
-      2021-12-16
+      2022-03-22
     
   </small>
 </div>

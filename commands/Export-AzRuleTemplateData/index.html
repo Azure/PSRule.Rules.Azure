@@ -6089,11 +6089,13 @@ Automatic nesting a sub-resource requires:<ul>
 <li>The sub-resource depends on the parent resource.</li>
 </ul>
 </li>
-<li>The <code>pickZones</code> template function is not supported.</li>
 <li>The <code>environment</code> template function always returns values for Azure public cloud.</li>
 <li>References to Key Vault secrets are not expanded.
 A placeholder value is used instead.</li>
+<li>The <code>reference()</code> function will return objects for resources within the same template.
+  For resources that are not in the same template, a placeholder value is used instead.</li>
 <li>Multi-line strings are not supported.</li>
+<li>Template expressions up to a maximum of 100,000 characters are supported.</li>
 </ul>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
 <h3 id="example1">Example 1<a class="headerlink" href="#example1" title="Permanent link">#</a></h3>
@@ -6246,7 +6248,7 @@ The hashtable will override the defaults for any specified properties.</p>
   <small>
     
       Last update:
-      2021-06-18
+      2022-03-22
     
   </small>
 </div>
