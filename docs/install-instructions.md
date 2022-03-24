@@ -128,7 +128,7 @@ Use the following command line examples from a PowerShell terminal to install or
     To update PSRule for Azure for the current user use:
 
     ```powershell
-    Update-Module -Name 'PSRule.Rules.Azure' -Repository PSGallery -Scope CurrentUser
+    Update-Module -Name 'PSRule.Rules.Azure' -Scope CurrentUser
     ```
 
     This will automatically install compatible versions of all dependencies.
@@ -143,7 +143,7 @@ Use the following command line examples from a PowerShell terminal to install or
     To update PSRule for Azure for all users (requires admin/ root permissions) use:
 
     ```powershell
-    Update-Module -Name 'PSRule.Rules.Azure' -Repository PSGallery -Scope AllUsers
+    Update-Module -Name 'PSRule.Rules.Azure' -Scope AllUsers
     ```
 
     This will automatically install compatible versions of all dependencies.
