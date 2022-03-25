@@ -86,11 +86,11 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v2.4.0
+      uses: actions/checkout@v3
 
     # STEP 2: Run analysis against exported data
     - name: Analyze Azure template files
-      uses: Microsoft/ps-rule@v1.12.0
+      uses: microsoft/ps-rule@v1.12.0
       with:
         modules: 'PSRule.Rules.Azure'  # Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.
 ```
@@ -322,7 +322,7 @@ PSRule for Azure included the following cmdlets:
 
 ## Concepts
 
-To find out more, look at these conceptial topics:
+To find out more, look at these conceptual topics:
 
 - Getting started:
   - [Creating your pipeline](https://azure.github.io/PSRule.Rules.Azure/creating-your-pipeline/)
