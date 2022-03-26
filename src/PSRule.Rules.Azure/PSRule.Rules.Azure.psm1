@@ -264,6 +264,11 @@ function Export-AzPolicyAssignmentData {
         [Parameter(ParameterSetName = 'IncludeDescendent', Mandatory = $False)]
         [String]$Scope,
 
+        # Specifies the policy definition ID of the policy assignment
+        [Parameter(ParameterSetName = 'Name', Mandatory = $False)]
+        [Parameter(ParameterSetName = 'Id', Mandatory = $False)]
+        [String]$PolicyDefinitionId,
+
         # Include all assignments related to given scope
         [Parameter(ParameterSetName = 'IncludeDescendent', Mandatory = $True)]
         [Switch]$IncludeDescendent = $False,
@@ -299,6 +304,10 @@ function Export-AzPolicyAssignmentData {
             if ($PSBoundParameters.ContainsKey('Name')) {
                 $getParams['Name'] = $Name;
             }
+
+            if ($PSBoundParameters.ContainsKey('PolicyDefinitionId')) {
+                $getParams['PolicyDefinitionId'] = $PolicyDefinitionId;
+            }
     
             if ($PSBoundParameters.ContainsKey('Scope')) {
                 $getParams['Scope'] = $Scope;
@@ -311,6 +320,10 @@ function Export-AzPolicyAssignmentData {
         }
         elseif ($PSCmdlet.ParameterSetName -eq 'Id') {
             $getParams['Id'] = $Id;
+
+            if ($PSBoundParameters.ContainsKey('PolicyDefinitionId')) {
+                $getParams['PolicyDefinitionId'] = $PolicyDefinitionId;
+            }
         }
         elseif ($PSCmdlet.ParameterSetName -eq 'IncludeDescendent') {
             $getParams['IncludeDescendent'] = $IncludeDescendent;
