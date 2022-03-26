@@ -135,6 +135,13 @@
   <data name="ArgumentsOutOfRange" xml:space="preserve">
     <value>The number of arguments '{1}' is not within the allowed range for '{0}'.</value>
   </data>
+  <data name="AssignmentFileExpandFailed" xml:space="preserve">
+    <value>Unable to expand the specified assignment file '{0}'.</value>
+  </data>
+  <data name="AssignmentFileNotFound" xml:space="preserve">
+    <value>Unable to find the specified assignment file '{0}'.</value>
+    <comment>Occurs when a assignment file is specified that doesn't exist.</comment>
+  </data>
   <data name="BicepCompileError" xml:space="preserve">
     <value>Bicep ({0}) compilation of '{1}' failed with: {2}</value>
   </data>

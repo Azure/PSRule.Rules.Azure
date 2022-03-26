@@ -1202,12 +1202,12 @@ namespace PSRule.Rules.Azure.Data.Template
             return result is JToken token && !typeof(JToken).IsAssignableFrom(typeof(T)) ? token.Value<T>() : (T)result;
         }
 
-        private static T ExpandProperty<T>(ITemplateContext context, JToken value)
+        internal static T ExpandProperty<T>(ITemplateContext context, JToken value)
         {
             return IsExpressionString(value) ? EvaluteExpression<T>(context, value) : value.Value<T>();
         }
 
-        private static JToken ExpandPropertyToken(ITemplateContext context, JToken value)
+        internal static JToken ExpandPropertyToken(ITemplateContext context, JToken value)
         {
             if (!IsExpressionString(value))
                 return value;

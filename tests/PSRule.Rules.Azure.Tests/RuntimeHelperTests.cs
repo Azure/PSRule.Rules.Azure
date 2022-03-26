@@ -51,6 +51,17 @@ namespace PSRule.Rules.Azure
             Assert.True(eval.Outbound("virtualNetwork", 80) == Data.Network.Access.Allow);
         }
 
+        [Fact]
+        public void ResolvePolicyAliasPath()
+        {
+            var test1 = Helper.ResolvePolicyAliasPath("Microsoft.Storage/storageAccounts/minimumTlsVersion");
+            Assert.Equal("properties.minimumTlsVersion", test1);
+            var test2 = Helper.ResolvePolicyAliasPath("Microsoft.AAD/domainServices/deploymentId");
+            Assert.Equal("properties.deploymentId", test2);
+            var test3 = Helper.ResolvePolicyAliasPath("InvalidAliasPath");
+            Assert.Null(test3);
+        }
+
         private static PSObject NewSecurityRule(int priority, string access, string direction, string destinationAddressPrefix = null, string destinationPortRange = null)
         {
             var result = new PSObject();

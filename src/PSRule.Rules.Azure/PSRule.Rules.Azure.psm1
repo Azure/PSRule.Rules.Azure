@@ -245,11 +245,196 @@ function Get-AzRuleTemplateLink {
     }
 }
 
+function Export-AzPolicyAssignmentData {
+    [CmdletBinding(SupportsShouldProcess = $True, DefaultParameterSetName = 'Default')]
+    [OutputType([System.IO.FileInfo])]
+    [OutputType([PSObject])]
+    param (
+        # Name of policy assignment
+        [Parameter(ParameterSetName = 'Name', Mandatory = $False)]
+        [String]$Name,
+
+        # Fully qualified resource ID of policy assignment
+        [Parameter(ParameterSetName = 'Id', Mandatory = $True)]
+        [Alias('AssignmentId')]
+        [String]$Id,
+
+        # Specifies assignment policy scope
+        [Parameter(ParameterSetName = 'Name', Mandatory = $False)]
+        [Parameter(ParameterSetName = 'IncludeDescendent', Mandatory = $False)]
+        [String]$Scope,
+
+        # Include all assignments related to given scope
+        [Parameter(ParameterSetName = 'IncludeDescendent', Mandatory = $True)]
+        [Switch]$IncludeDescendent = $False,
+
+        [Parameter(Mandatory = $False)]
+        [String]$OutputPath = $PWD,
+
+        [Parameter(Mandatory = $False)]
+        [Switch]$PassThru = $False
+    )
+    begin {
+        Write-Verbose -Message '[Export-AzPolicyAssignmentData] BEGIN::';
+    }
+    process {
+        $context = Get-AzContext -ErrorAction SilentlyContinue
+
+        if ($Null -eq $context) {
+            Write-Error -Message 'Could not find an existing context. Use Connect-AzAccount to establish a PowerShell context with Azure.';
+            return;
+        }
+
+        if (!(Test-Path -Path $OutputPath)) {
+            if ($PSCmdlet.ShouldProcess('Create output directory', $OutputPath)) {
+                $Null = New-Item -Path $OutputPath -ItemType Directory -Force;
+            }
+        }
+
+        $getParams = @{ };
+
+        Write-Verbose -Message "Parameter Set: $($PSCmdlet.ParameterSetName)";
+
+        if ($PSCmdlet.ParameterSetName -eq 'Name') {
+            if ($PSBoundParameters.ContainsKey('Name')) {
+                $getParams['Name'] = $Name;
+            }
+    
+            if ($PSBoundParameters.ContainsKey('Scope')) {
+                $getParams['Scope'] = $Scope;
+            }
+            else {
+                $getParams['Scope'] = GetDefaultSubscriptionScope -Context $context
+            }
+
+            Write-Verbose -Message "Scope: $($getParams['Scope'])";
+        }
+        elseif ($PSCmdlet.ParameterSetName -eq 'Id') {
+            $getParams['Id'] = $Id;
+        }
+        elseif ($PSCmdlet.ParameterSetName -eq 'IncludeDescendent') {
+            $getParams['IncludeDescendent'] = $IncludeDescendent;
+
+            if ($PSBoundParameters.ContainsKey('Scope')) {
+                $getParams['Scope'] = $Scope;
+            }
+            else {
+                $getParams['Scope'] = GetDefaultSubscriptionScope -Context $context
+            }
+        }
+
+        Write-Verbose -Message "[Export] -- Using subscription: $($context.Subscription.Name)";
+        $filePath = Join-Path -Path $OutputPath -ChildPath "$($context.Subscription.Id).assignment.json";
+        Get-AzPolicyAssignment @getParams -Verbose:$VerbosePreference `
+        | ExpandPolicyAssignment -Context $context -Verbose:$VerbosePreference `
+        | ExportAzureResource -Path $filePath -PassThru $PassThru -Verbose:$VerbosePreference;
+    }
+    end {
+        Write-Verbose -Message "[Export-AzPolicyAssignmentData] END::";
+    }
+}
+
+function Export-AzPolicyAssignmentRuleData {
+    [CmdletBinding()]
+    param (
+        # Name of Policy assignment
+        [Parameter(Mandatory = $False)]
+        [String]$Name,
+
+        # Assignment file path
+        [Parameter(Mandatory = $True)]
+        [string]$AssignmentFile,
+
+        [Parameter(Mandatory = $False)]
+        [Alias('ResourceGroupName')]
+        [PSRule.Rules.Azure.Configuration.ResourceGroupReference]$ResourceGroup,
+
+        [Parameter(Mandatory = $False)]
+        [PSRule.Rules.Azure.Configuration.SubscriptionReference]$Subscription,
+
+        [Parameter(Mandatory = $False)]
+        [String]$OutputPath = $PWD,
+
+        [Parameter(Mandatory = $False)]
+        [Switch]$PassThru = $False
+    )
+    begin {
+        Write-Verbose -Message '[Export-AzPolicyAssignmentRuleData] BEGIN::';
+
+        $option = [PSRule.Rules.Azure.Configuration.PSRuleOption]::FromFileOrDefault($PWD);
+        $option.Output.Path = $OutputPath;
+
+        # Build the pipeline
+        $builder = [PSRule.Rules.Azure.Pipeline.PipelineBuilder]::Assignment($option);
+        $builder.Assignment($Name);
+        $builder.PassThru($PassThru);
+
+         # Bind to subscription context
+         if ($PSBoundParameters.ContainsKey('Subscription')) {
+            $subscriptionOption = GetSubscription -InputObject $Subscription -ErrorAction SilentlyContinue;
+            if ($Null -ne $subscriptionOption) {
+                $builder.Subscription($subscriptionOption);
+            }
+        }
+        # Bind to resource group
+        if ($PSBoundParameters.ContainsKey('ResourceGroup')) {
+            $resourceGroupOption = GetResourceGroup -InputObject $ResourceGroup -ErrorAction SilentlyContinue;
+            if ($Null -ne $resourceGroupOption) {
+                $builder.ResourceGroup($resourceGroupOption);
+            }
+        }
+
+        $builder.UseCommandRuntime($PSCmdlet);
+        $builder.UseExecutionContext($ExecutionContext);
+        try {
+            $pipeline = $builder.Build();
+            $pipeline.Begin();
+        }
+        catch {
+            $pipeline.Dispose();
+        }
+    }
+    process {
+        if ($Null -ne (Get-Variable -Name pipeline -ErrorAction SilentlyContinue)) {
+            try {
+                $source = [PSRule.Rules.Azure.Pipeline.PolicyAssignmentSource]::new($AssignmentFile);
+                $pipeline.Process($source);
+            }
+            catch {
+                $pipeline.Dispose();
+                throw;
+            }
+        }
+    }
+    end {
+        if ($Null -ne (Get-Variable -Name pipeline -ErrorAction SilentlyContinue)) {
+            try {
+                $pipeline.End();
+            }
+            finally {
+                $pipeline.Dispose();
+            }
+        }
+        Write-Verbose -Message '[Export-AzPolicyAssignmentRuleData] END::';
+    }
+}
+
 #endregion Public functions
 
 #
 # Helper functions
 #
+
+function GetDefaultSubscriptionScope {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        return [string]::Concat('/subscriptions/', $context.Subscription.Id);
+    }
+}
 
 function GetResourceGroup {
     [CmdletBinding()]
@@ -471,7 +656,7 @@ function ExportAzureResource {
 
         if (!$PassThru) {
             # Save to JSON
-            $resources | ConvertTo-Json -Depth 100 | Set-Content -Path $Path;
+            ConvertTo-Json -InputObject $resources -Depth 100 | Set-Content -Path $Path;
             Get-Item -Path $Path;
         }
         $watch.Stop();
@@ -1274,6 +1459,41 @@ function VisitServiceBusNamespaces {
     }
 }
 
+function ExpandPolicyAssignment {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
+        [PSObject]$Assignment,
+
+        [Parameter(Mandatory = $True)]
+        [Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer]$Context
+    )
+    process {
+        $policyDefinitionId = $Assignment.Properties.PolicyDefinitionId;
+
+        Write-Verbose -Message "[Export] -- Expanding: $policyDefinitionId";
+
+        $policyDefinitions = [System.Collections.Generic.List[PSObject]]@();
+
+        if ($policyDefinitionId -like '*/providers/Microsoft.Authorization/policyDefinitions/*') {
+            $definition = Get-AzPolicyDefinition -Id $policyDefinitionId -DefaultProfile $Context;
+            $policyDefinitions.Add($definition);
+        }
+        elseif ($policyDefinitionId -like '/providers/Microsoft.Authorization/policySetDefinitions/*') {
+            $policySetDefinition = Get-AzPolicySetDefinition -Id $policyDefinitionId -DefaultProfile $Context;
+
+            foreach ($definition in $policySetDefinition.Properties.PolicyDefinitions) {
+                $definitionId = $definition.policyDefinitionId;
+                Write-Verbose -Message "[Export] -- Expanding: $definitionId";
+                $definition = Get-AzPolicyDefinition -Id $definitionId -DefaultProfile $Context;
+                $policyDefinitions.Add($definition);
+            }
+        }
+
+        $Assignment | Add-Member -MemberType NoteProperty -Name PolicyDefinitions -Value $policyDefinitions -PassThru;
+    }
+}
+
 # Add additional information to resources with child resources
 function ExpandResource {
     [CmdletBinding()]
@@ -1355,6 +1575,8 @@ Export-ModuleMember -Function @(
     'Export-AzRuleData'
     'Export-AzRuleTemplateData'
     'Get-AzRuleTemplateLink'
+    'Export-AzPolicyAssignmentData'
+    'Export-AzPolicyAssignmentRuleData'
 );
 
 Export-ModuleMember -Alias @(

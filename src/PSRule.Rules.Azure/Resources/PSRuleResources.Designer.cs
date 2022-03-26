@@ -136,6 +136,28 @@ namespace PSRule.Rules.Azure.Resources
         }
 
         /// <summary>
+        /// Looks up localized string similar to Unable to expand the specified assignment file &apos;{0}&apos;..
+        /// </summary>
+        internal static string AssignmentFileExpandFailed
+        {
+            get
+            {
+                return ResourceManager.GetString("AssignmentFileExpandFailed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up localized string similar to Unable to find the specified assignment file &apos;{0}&apos;..
+        /// </summary>
+        internal static string AssignmentFileNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("AssignmentFileNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
         /// ///   Looks up a localized string similar to Bicep ({0}) compilation of &apos;{1}&apos; failed with: {2}.
         /// </summary>
         internal static string BicepCompileError

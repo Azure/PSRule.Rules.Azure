@@ -24,6 +24,11 @@ namespace PSRule.Rules.Azure.Pipeline
         {
             return new TemplateLinkPipelineBuilder(path);
         }
+
+        public static IPolicyAssignmentPipelineBuilder Assignment(PSRuleOption option)
+        {
+            return new PolicyAssignmentPipelineBuilder(option);
+        }
     }
 
     public interface IPipelineBuilder

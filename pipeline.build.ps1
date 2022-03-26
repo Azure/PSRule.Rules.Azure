@@ -188,15 +188,11 @@ task MinifyData {
         $Null = New-Item -Path $dataOutPath -ItemType Directory -Force;
     }
 
-    # Providers
-    $filePath = Join-Path -Path $dataPath -ChildPath 'providers.json';
-    $fileOutPath = Join-Path -Path $dataOutPath -ChildPath 'providers.json';
-    Get-Content -Path $filePath -Raw | ConvertFrom-Json | ConvertTo-Json -Depth 100 -Compress | Set-Content -Path $fileOutPath;
-
-    # Environments
-    $filePath = Join-Path -Path $dataPath -ChildPath 'environments.json';
-    $fileOutPath = Join-Path -Path $dataOutPath -ChildPath 'environments.json';
-    Get-Content -Path $filePath -Raw | ConvertFrom-Json | ConvertTo-Json -Depth 100 -Compress | Set-Content -Path $fileOutPath;
+    foreach ($dataFile in 'providers.json', 'environments.json', 'aliases.json') {
+        $filePath = Join-Path -Path $dataPath -ChildPath $dataFile;
+        $fileOutPath = Join-Path -Path $dataOutPath -ChildPath $dataFile;
+        Get-Content -Path $filePath -Raw | ConvertFrom-Json | ConvertTo-Json -Depth 100 -Compress | Set-Content -Path $fileOutPath;
+    }
 }
 
 task CopyModule MinifyData, {
@@ -424,6 +420,36 @@ task Benchmark {
 task Dependencies NuGet, {
     Import-Module $PWD/scripts/dependencies.psm1;
     Install-Dependencies -Path $PWD/modules.json;
+}
+
+task ExportAliases {
+    $index = [ordered]@{};
+
+    (Get-AzPolicyAlias).Aliases | Sort-Object -Property Name | ForEach-Object {
+        $namespace = $_.Namespace;
+        if (!($index.Contains($namespace))) {
+            $index.Add($namespace, [ordered]@{});
+        }
+
+        $aliasMappings = [ordered]@{};
+        $_.Aliases | Sort-Object -Property Name | ForEach-Object {
+            $aliasMappings.Add($_.Name, $_.DefaultPath);
+        }
+
+        $info = [ordered]@{
+            locations = $_.Locations | Sort-Object
+            aliasMappings = $aliasMappings
+            apiVersions = $_.ApiVersions | Sort-Object
+        }
+
+        $index[$namespace].Add($_.ResourceType, $info);
+    }
+
+    $dataPath = Join-Path -Path $PWD -ChildPath 'data';
+    if (!(Test-Path -Path $dataPath)) {
+        $Null = New-Item -Path $dataPath -ItemType Directory -Force;
+    }
+    $index | ConvertTo-Json -Depth 20 | Set-Content ./data/aliases.json;
 }
 
 task ExportProviders {
