@@ -14,6 +14,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.14.0-B2203066:
+
+- Bug fixes:
+  - Fixed expand of runtime properties on reference objects. [#1324](https://github.com/Azure/PSRule.Rules.Azure/issues/1324)
+
 ## v1.14.0-B2203066 (pre-release)
 
 What's changed since v1.13.4:

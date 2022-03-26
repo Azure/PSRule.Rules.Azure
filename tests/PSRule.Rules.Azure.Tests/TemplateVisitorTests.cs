@@ -406,7 +406,7 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.2.json"), null);
             Assert.NotNull(resources);
-            Assert.Equal(7, resources.Length);
+            Assert.Equal(10, resources.Length);
 
             var actual = resources[0];
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
@@ -421,22 +421,34 @@ namespace PSRule.Rules.Azure
             Assert.Equal("test", actual["tags"]["env"].Value<string>());
 
             actual = resources[3];
+            Assert.Equal("Microsoft.Network/privateEndpoints", actual["type"].Value<string>());
+            Assert.Equal("pe-sabicep001", actual["name"].Value<string>());
+
+            actual = resources[4];
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
             Assert.Equal("storage3", actual["name"].Value<string>());
 
-            actual = resources[4];
+            actual = resources[5];
             Assert.Equal("Microsoft.Storage/storageAccounts", actual["type"].Value<string>());
-            Assert.Equal("sabicep001a", actual["name"].Value<string>());
+            Assert.Equal("sabicep001f8cbd7940fe93", actual["name"].Value<string>());
             Assert.Equal("test", actual["tags"]["env"].Value<string>());
 
-            actual = resources[5];
+            actual = resources[6];
+            Assert.Equal("Microsoft.Network/privateEndpoints", actual["type"].Value<string>());
+            Assert.Equal("pe-sabicep001f8cbd7940fe93", actual["name"].Value<string>());
+
+            actual = resources[7];
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
             Assert.Equal("storage2", actual["name"].Value<string>());
 
-            actual = resources[6];
+            actual = resources[8];
             Assert.Equal("Microsoft.Storage/storageAccounts", actual["type"].Value<string>());
             Assert.Equal("sabicep002", actual["name"].Value<string>());
             Assert.Equal("test", actual["tags"]["env"].Value<string>());
+
+            actual = resources[9];
+            Assert.Equal("Microsoft.Network/privateEndpoints", actual["type"].Value<string>());
+            Assert.Equal("pe-sabicep002", actual["name"].Value<string>());
         }
 
         #region Helper methods

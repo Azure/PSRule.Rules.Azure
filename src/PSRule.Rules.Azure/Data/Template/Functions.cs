@@ -765,12 +765,16 @@ namespace PSRule.Rules.Azure.Data.Template
             return resourceTypes[0];
         }
 
+        /// <summary>
+        /// reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
+        /// </summary>
         internal static object Reference(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
             if (argCount < 1 || argCount > 3)
                 throw ArgumentsOutOfRange(nameof(Reference), args);
 
+            // Resource type
             if (!ExpressionHelpers.TryString(args[0], out var resourceId))
                 throw ArgumentFormatInvalid(nameof(Reference));
 
@@ -789,7 +793,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (resource is DeploymentValue deployment)
                 return full ? deployment : deployment.Properties;
 
-            return full ? resource.Value : resource.Value[PROPERTY_PROPERTIES].Value<JObject>();
+            return new MockObject(full ? resource.Value : resource.Value[PROPERTY_PROPERTIES].Value<JObject>());
         }
 
         /// <summary>
