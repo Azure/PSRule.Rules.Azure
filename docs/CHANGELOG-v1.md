@@ -14,6 +14,13 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.14.0-B2203066:
+
+- New features:
+  - Added March 2022 baselines `Azure.GA_2022_03` and `Azure.Preview_2022_03`. [#1334](https://github.com/Azure/PSRule.Rules.Azure/issues/1334)
+    - Includes rules released before or during March 2022.
+    - Marked `Azure.GA_2021_12` and `Azure.Preview_2021_12` baselines as obsolete.
+
 ## v1.14.0-B2203066 (pre-release)
 
 What's changed since v1.13.4:
