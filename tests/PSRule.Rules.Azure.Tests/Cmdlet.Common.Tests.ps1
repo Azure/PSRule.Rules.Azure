@@ -664,7 +664,7 @@ Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssi
         $assignmentFile1 = Join-Path -Path $here -ChildPath 'test.assignment.json';
         $assignmentFile2 = Join-Path -Path $here -ChildPath 'test2.assignment.json';
         $emittedJsonRulesDataFile = Join-Path -Path $here -ChildPath 'emittedJsonRulesData.jsonc';
-        $jsonRulesData = Get-Content -Path $emittedJsonRulesDataFile -Raw | ConvertFrom-Json;
+        $jsonRulesData = ((Get-Content -Path $emittedJsonRulesDataFile) -replace '^\s*//.*') | ConvertFrom-Json;
     }
 
     It 'Emit JSON rules' {
@@ -674,8 +674,9 @@ Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssi
         $result | Should -BeOfType System.IO.FileInfo;
         $filename = Split-Path -Path $result.FullName -Leaf;
         $filename | Should -BeExactly "definitions-test.Rule.jsonc";
-        $compressedResult = Get-Content -Path $result.FullName -Raw | ConvertFrom-Json | ConvertTo-Json -Depth 99 -Compress;
-        $compressedExpected = $jsonRulesData[0] | ConvertTo-Json -Depth 99 -Compress;
+        $resultJson = ((Get-Content -Path $result.FullName) -replace '^\s*//.*') | ConvertFrom-Json;
+        $compressedResult = $resultJson | ConvertTo-Json -Depth 100 -Compress;
+        $compressedExpected = $jsonRulesData[0] | ConvertTo-Json -Depth 100 -Compress;
         $compressedResult | Should -BeExactly $compressedExpected;
 
         # Second JSON Rule
@@ -684,8 +685,9 @@ Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssi
         $result | Should -BeOfType System.IO.FileInfo;
         $filename = Split-Path -Path $result.FullName -Leaf;
         $filename | Should -BeExactly "definitions-test2.Rule.jsonc";
-        $compressedResult = Get-Content -Path $result.FullName -Raw | ConvertFrom-Json | ConvertTo-Json -Depth 99 -Compress;
-        $compressedExpected = $jsonRulesData[1] | ConvertTo-Json -Depth 99 -Compress;
+        $resultJson = ((Get-Content -Path $result.FullName) -replace '^\s*//.*') | ConvertFrom-Json;
+        $compressedResult = $resultJson | ConvertTo-Json -Depth 100 -Compress;
+        $compressedExpected = $jsonRulesData[1] | ConvertTo-Json -Depth 100 -Compress;
         $compressedResult | Should -BeExactly $compressedExpected;
     }
 }
@@ -697,7 +699,7 @@ Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssi
 Describe 'Get-AzPolicyAssignmentSource' -Tag 'Cmdlet', 'Get-AzPolicyAssignmentSource' {
     BeforeAll {
         $emittedJsonRulesDataFile = Join-Path -Path $here -ChildPath 'emittedJsonRulesData.jsonc';
-        $jsonRulesData = Get-Content -Path $emittedJsonRulesDataFile -Raw | ConvertFrom-Json;
+        $jsonRulesData = ((Get-Content -Path $emittedJsonRulesDataFile) -replace '^\s*//.*') | ConvertFrom-Json;
     }
 
     It 'Get assignment sources from current working directory' {
@@ -720,8 +722,9 @@ Describe 'Get-AzPolicyAssignmentSource' -Tag 'Cmdlet', 'Get-AzPolicyAssignmentSo
         $result | Should -BeOfType System.IO.FileInfo;
         $filename = Split-Path -Path $result.FullName -Leaf;
         $filename | Should -BeExactly "definitions-tests.Rule.jsonc";
-        $compressedResult = Get-Content -Path $result.FullName -Raw | ConvertFrom-Json | ConvertTo-Json -Depth 99 -Compress;
-        $compressedExpected = $jsonRulesData | ConvertTo-Json -Depth 99 -Compress;
+        $resultJson = ((Get-Content -Path $result.FullName) -replace '^\s*//.*') | ConvertFrom-Json;
+        $compressedResult = $resultJson | ConvertTo-Json -Depth 100 -Compress;
+        $compressedExpected = $jsonRulesData | ConvertTo-Json -Depth 100 -Compress;
         $compressedResult | Should -BeExactly $compressedExpected;
     }
 }
