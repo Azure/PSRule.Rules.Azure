@@ -134,7 +134,7 @@ namespace PSRule.Rules.Azure
                 "boolProp", true,
                 "arrayProp", Functions.CreateArray(context, new object[] { "a", "b", "c" }),
                 "objectProp", Functions.CreateObject(context, new object[] { "key1", "value1" }),
-                "mockProp", new MockResource("Microsoft.Resources/deployments").GetMember("outputs").GetMember("aksSubnetId").GetMember("value"),
+                "mockProp", new MockResource("Microsoft.Resources/deployments").MockMember("outputs").MockMember("aksSubnetId").MockMember("value"),
             }) as JObject;
             var actual2 = Functions.CreateObject(context, new object[] { }) as JObject;
 
@@ -537,10 +537,11 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
             var parentId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Unit.Test/type/a";
 
-            var actual1 = Functions.Reference(context, new object[] { parentId }) as MockResource;
-            Assert.NotNull(actual1);
-
-            // TODO: Improve test cases
+            var actual = Functions.Reference(context, new object[] { parentId }) as MockResource;
+            Assert.NotNull(actual);
+            Assert.Equal("{{Resource}}", actual.ToString());
+            Assert.Equal("{{Resource.value}}", actual.MockMember("value").ToString());
+            Assert.Equal("{{Resource.extra.value}}", actual.MockMember("extra").MockMember("value").ToString());
         }
 
         [Fact]

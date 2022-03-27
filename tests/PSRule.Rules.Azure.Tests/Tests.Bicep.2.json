@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.4.1318.3566",
-      "templateHash": "6224506516782372373"
+      "templateHash": "13856958272754005555"
     }
   },
   "parameters": {
@@ -40,7 +40,7 @@
         "mode": "Incremental",
         "parameters": {
           "name": {
-            "value": "[format('{0}a', split(reference(resourceId('Microsoft.Resources/deployments', 'storage1')).outputs.id.value, '/')[8])]"
+            "value": "[format('{0}{1}', split(reference(resourceId('Microsoft.Resources/deployments', 'storage1')).outputs.id.value, '/')[8], reference(resourceId('Microsoft.Resources/deployments', 'storage1')).outputs.unique.value)]"
           },
           "location": {
             "value": "[parameters('location')]"
@@ -56,7 +56,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.4.1318.3566",
-              "templateHash": "15881295888691004764"
+              "templateHash": "4093724470647525487"
             }
           },
           "parameters": {
@@ -107,6 +107,31 @@
               "metadata": {
                 "description": "An example Storage Account."
               }
+            },
+            {
+              "type": "Microsoft.Network/privateEndpoints",
+              "apiVersion": "2020-03-01",
+              "name": "[format('pe-{0}', parameters('name'))]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "subnet": {
+                  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'vnet-001', 'subnet-001')]"
+                },
+                "privateLinkServiceConnections": [
+                  {
+                    "name": "default",
+                    "properties": {
+                      "privateLinkServiceId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]",
+                      "groupIds": [
+                        "blob"
+                      ]
+                    }
+                  }
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
+              ]
             }
           ],
           "outputs": {
@@ -122,6 +147,20 @@
               "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]",
               "metadata": {
                 "description": "Any tags set on the storage account."
+              }
+            },
+            "unique": {
+              "type": "string",
+              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name'))).primaryEndpoints.blob)]",
+              "metadata": {
+                "description": "A unique string that is generated from the blob endpoint."
+              }
+            },
+            "endpointNIC": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name')))).networkInterfaces[0].id]",
+              "metadata": {
+                "description": "The ID of the endpoint NIC."
               }
             }
           }
@@ -155,7 +194,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.4.1318.3566",
-              "templateHash": "15881295888691004764"
+              "templateHash": "4093724470647525487"
             }
           },
           "parameters": {
@@ -206,6 +245,31 @@
               "metadata": {
                 "description": "An example Storage Account."
               }
+            },
+            {
+              "type": "Microsoft.Network/privateEndpoints",
+              "apiVersion": "2020-03-01",
+              "name": "[format('pe-{0}', parameters('name'))]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "subnet": {
+                  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'vnet-001', 'subnet-001')]"
+                },
+                "privateLinkServiceConnections": [
+                  {
+                    "name": "default",
+                    "properties": {
+                      "privateLinkServiceId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]",
+                      "groupIds": [
+                        "blob"
+                      ]
+                    }
+                  }
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
+              ]
             }
           ],
           "outputs": {
@@ -221,6 +285,20 @@
               "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]",
               "metadata": {
                 "description": "Any tags set on the storage account."
+              }
+            },
+            "unique": {
+              "type": "string",
+              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name'))).primaryEndpoints.blob)]",
+              "metadata": {
+                "description": "A unique string that is generated from the blob endpoint."
+              }
+            },
+            "endpointNIC": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name')))).networkInterfaces[0].id]",
+              "metadata": {
+                "description": "The ID of the endpoint NIC."
               }
             }
           }
@@ -254,7 +332,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.4.1318.3566",
-              "templateHash": "15881295888691004764"
+              "templateHash": "4093724470647525487"
             }
           },
           "parameters": {
@@ -305,6 +383,31 @@
               "metadata": {
                 "description": "An example Storage Account."
               }
+            },
+            {
+              "type": "Microsoft.Network/privateEndpoints",
+              "apiVersion": "2020-03-01",
+              "name": "[format('pe-{0}', parameters('name'))]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "subnet": {
+                  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'vnet-001', 'subnet-001')]"
+                },
+                "privateLinkServiceConnections": [
+                  {
+                    "name": "default",
+                    "properties": {
+                      "privateLinkServiceId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]",
+                      "groupIds": [
+                        "blob"
+                      ]
+                    }
+                  }
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
+              ]
             }
           ],
           "outputs": {
@@ -320,6 +423,20 @@
               "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]",
               "metadata": {
                 "description": "Any tags set on the storage account."
+              }
+            },
+            "unique": {
+              "type": "string",
+              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name'))).primaryEndpoints.blob)]",
+              "metadata": {
+                "description": "A unique string that is generated from the blob endpoint."
+              }
+            },
+            "endpointNIC": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name')))).networkInterfaces[0].id]",
+              "metadata": {
+                "description": "The ID of the endpoint NIC."
               }
             }
           }

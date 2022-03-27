@@ -1265,8 +1265,8 @@ namespace PSRule.Rules.Azure.Data.Template
                 return value;
 
             var result = EvaluteExpression<object>(context, value);
-            if (result is MockMember mock)
-                result = mock.BuildString();
+            if (result is IMock mock && !mock.TryGetValue(out result))
+                result = mock.ToString();
 
             return result == null ? null : JToken.FromObject(result);
         }
