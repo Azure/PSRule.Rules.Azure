@@ -12,7 +12,7 @@ param location string = resourceGroup().location
 module storage3 './Tests.Bicep.1.bicep' = {
   name: 'storage3'
   params: {
-    name: '${split(storage1.outputs.id, '/')[8]}a'
+    name: '${split(storage1.outputs.id, '/')[8]}${storage1.outputs.unique}'
     location: location
     tags: storage1.outputs.tags
   }
