@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using System;
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 
@@ -12,11 +12,21 @@ namespace PSRule.Rules.Azure.Data.Policy
         private readonly string AssemblyPath = Path.GetDirectoryName(typeof(PolicyAliasProviderHelper).Assembly.Location);
         private const string DATAFILE_ALIASES = "aliases.json";
         private readonly PolicyAliasProvider _AliasProviders;
-        private const string SLASH = "/";
+        private const char SLASH = '/';
+        private const string PROVIDER_NAMESPACE = "providerNamespace";
+        private const string RESOURCE_TYPE = "resourceType";
+        private readonly IDictionary<string, string> _PolicyRuleType;
 
         public PolicyAliasProviderHelper()
         {
             _AliasProviders = ReadPolicyAliasProviders(DATAFILE_ALIASES);
+            _PolicyRuleType = new Dictionary<string, string>();
+        }
+
+        internal void SetPolicyRuleType(string providerNamespace, string resourceType)
+        {
+            _PolicyRuleType[PROVIDER_NAMESPACE] = providerNamespace;
+            _PolicyRuleType[RESOURCE_TYPE] = resourceType;
         }
 
         private PolicyAliasProvider ReadPolicyAliasProviders(string fileName)
@@ -64,16 +74,34 @@ namespace PSRule.Rules.Azure.Data.Policy
 
         internal bool ResolvePolicyAliasPath(string aliasName, out string aliasPath)
         {
-            if (!aliasName.Contains(SLASH))
+            aliasPath = null;
+
+            var slashOccurrences = aliasName.CountCharacterOccurrences(SLASH);
+
+            // Aliases must have a slash
+            if (slashOccurrences == 0)
+                return false;
+
+            string providerNamespace;
+            string resourceType;
+
+            // Handle aliases like Microsoft.Compute/imageId with only one slash
+            if (slashOccurrences == 1)
             {
-                aliasPath = string.Empty;
+                if (_PolicyRuleType.TryGetValue(PROVIDER_NAMESPACE, out providerNamespace)
+                    && _PolicyRuleType.TryGetValue(RESOURCE_TYPE, out resourceType))
+                {
+                    aliasPath = GetPolicyAliasPath(providerNamespace, resourceType, aliasName);
+                    return true;
+                }
                 return false;
             }
 
-            var firstSlashIndex = aliasName.IndexOf(SLASH, StringComparison.OrdinalIgnoreCase);
-            var lastSlashIndex = aliasName.LastIndexOf(SLASH, StringComparison.OrdinalIgnoreCase);
-            var providerNamespace = aliasName.Substring(0, firstSlashIndex);
-            var resourceType = aliasName.Substring(firstSlashIndex + 1, lastSlashIndex - providerNamespace.Length - 1);
+            // Any aliases with two slashes or more will be resolved here
+            var firstSlashIndex = aliasName.IndexOf(SLASH);
+            var lastSlashIndex = aliasName.LastIndexOf(SLASH);
+            providerNamespace = aliasName.Substring(0, firstSlashIndex);
+            resourceType = aliasName.Substring(firstSlashIndex + 1, lastSlashIndex - providerNamespace.Length - 1);
             aliasPath = GetPolicyAliasPath(providerNamespace, resourceType, aliasName);
             return true;
         }

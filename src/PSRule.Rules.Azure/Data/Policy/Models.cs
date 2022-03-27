@@ -104,12 +104,11 @@ namespace PSRule.Rules.Azure.Data.Policy
         public JObject Condition { get; set; }
         private readonly IDictionary<string, IParameterValue> _Parameters;
 
-        public PolicyDefinition(string id, string name, string description, string effect, JObject value)
+        public PolicyDefinition(string id, string name, string description, JObject value)
         {
             Id = id;
             Name = name;
             Description = description;
-            Effect = effect;
             Value = value;
             _Parameters = new Dictionary<string, IParameterValue>();
         }

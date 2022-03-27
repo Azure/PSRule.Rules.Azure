@@ -6,7 +6,6 @@ using System.Management.Automation;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Bicep;
 using PSRule.Rules.Azure.Data.Network;
-using PSRule.Rules.Azure.Data.Policy;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Pipeline.Output;
@@ -62,15 +61,6 @@ namespace PSRule.Rules.Azure.Runtime
         {
             var resourceProviderHelper = new ResourceProviderHelper();
             return resourceProviderHelper.GetResourceType(providerNamespace, resourceType);
-        }
-
-        public static string ResolvePolicyAliasPath(string aliasName)
-        {
-            var policyAliasProviderHelper = new PolicyAliasProviderHelper();
-            return !string.IsNullOrEmpty(aliasName)
-                && policyAliasProviderHelper.ResolvePolicyAliasPath(aliasName, out var aliasPath)
-                ? aliasPath
-                : null;
         }
 
         #region Helper methods
