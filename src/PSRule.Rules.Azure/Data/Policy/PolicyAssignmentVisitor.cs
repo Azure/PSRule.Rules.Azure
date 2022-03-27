@@ -46,7 +46,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             private readonly IDictionary<string, PolicyDefinition> _DefinitionIds;
             internal readonly PipelineContext Pipeline;
             public TemplateVisitor.TemplateContext.CopyIndexStore CopyIndex { get; }
-            public JObject Deployment { get; }
+            public DeploymentValue Deployment { get; }
             public string TemplateFile { get; }
             public string ParameterFile { get; }
             public ResourceGroupOption ResourceGroup { get; }
@@ -88,6 +88,12 @@ namespace PSRule.Rules.Azure.Data.Policy
             public ExpressionFnOuter BuildExpression(string expression)
             {
                 return _ExpressionBuilder.Build(expression);
+            }
+
+            public bool TryGetResource(string resourceId, out IResourceValue resource)
+            {
+                resource = null;
+                return false;
             }
 
             internal bool TryParameterAssignment(string parameterName, out JToken value)
