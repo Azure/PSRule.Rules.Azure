@@ -81,7 +81,7 @@ function CopyModuleFiles {
     process {
         $sourcePath = Resolve-Path -Path $Path;
 
-        Get-ChildItem -Path $sourcePath -Recurse -File -Include *.ps1,*.psm1,*.psd1,*.ps1xml,*.yaml | Where-Object -FilterScript {
+        Get-ChildItem -Path $sourcePath -Recurse -File -Include *.ps1, *.psm1, *.psd1, *.ps1xml, *.yaml | Where-Object -FilterScript {
             ($_.FullName -notmatch '(\.(cs|csproj)|(\\|\/)(obj|bin))')
         } | ForEach-Object -Process {
             $filePath = $_.FullName.Replace($sourcePath, $destinationPath);
@@ -214,22 +214,22 @@ task BuildModule BuildDotNet, CopyModule
 task TestModule ModuleDependencies, BicepIntegrationTests, {
     # Run Pester tests
     $pesterOptions = @{
-        Run = @{
-            Path = (Join-Path -Path $PWD -ChildPath tests/PSRule.Rules.Azure.Tests);
+        Run        = @{
+            Path     = (Join-Path -Path $PWD -ChildPath tests/PSRule.Rules.Azure.Tests);
             PassThru = $True;
         };
         TestResult = @{
-            Enabled = $True;
+            Enabled      = $True;
             OutputFormat = 'NUnitXml';
-            OutputPath = 'reports/pester-unit.xml';
+            OutputPath   = 'reports/pester-unit.xml';
         };
     };
 
     if ($CodeCoverage) {
         $codeCoverageOptions = @{
-            Enabled = $True;
+            Enabled    = $True;
             OutputPath = (Join-Path -Path $PWD -ChildPath 'reports/pester-coverage.xml');
-            Path = (Join-Path -Path $PWD -ChildPath 'out/modules/**/*.psm1');
+            Path       = (Join-Path -Path $PWD -ChildPath 'out/modules/**/*.psm1');
         };
 
         $pesterOptions.Add('CodeCoverage', $codeCoverageOptions);
@@ -260,14 +260,14 @@ task TestModule ModuleDependencies, BicepIntegrationTests, {
 task IntegrationTest ModuleDependencies, {
     # Run Pester tests
     $pesterOptions = @{
-        Run = @{
-            Path = (Join-Path -Path $PWD -ChildPath tests/Integration);
+        Run        = @{
+            Path     = (Join-Path -Path $PWD -ChildPath tests/Integration);
             PassThru = $True;
         };
         TestResult = @{
-            Enabled = $True;
+            Enabled      = $True;
             OutputFormat = 'NUnitXml';
-            OutputPath = 'reports/pester-unit.xml';
+            OutputPath   = 'reports/pester-unit.xml';
         };
     };
 
@@ -293,14 +293,14 @@ task BicepIntegrationTests {
     if ($Env:RUN_BICEP_INTEGRATION -eq 'true') {
         # Run Pester tests
         $pesterOptions = @{
-            Run = @{
-                Path = (Join-Path -Path $PWD -ChildPath tests/Bicep);
+            Run        = @{
+                Path     = (Join-Path -Path $PWD -ChildPath tests/Bicep);
                 PassThru = $True;
             };
             TestResult = @{
-                Enabled = $True;
+                Enabled      = $True;
                 OutputFormat = 'NUnitXml';
-                OutputPath = 'reports/bicep-integration.xml';
+                OutputPath   = 'reports/bicep-integration.xml';
             };
         };
 
@@ -326,11 +326,11 @@ task BicepIntegrationTests {
 # Synopsis: Run validation
 task Rules Dependencies, {
     $assertParams = @{
-        Path = './.ps-rule/'
-        Style = $AssertStyle
+        Path         = './.ps-rule/'
+        Style        = $AssertStyle
         OutputFormat = 'NUnit3'
-        ErrorAction = 'Stop'
-        As = 'Summary'
+        ErrorAction  = 'Stop'
+        As           = 'Summary'
     }
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     Assert-PSRule @assertParams -InputPath $PWD -Module PSRule.Rules.MSFT.OSS -Format File -OutputPath reports/ps-rule-file.xml;
@@ -360,10 +360,10 @@ task BuildBaselineDocs Build, Dependencies, {
     $baselines = Get-PSRuleBaseline -Module PSRule.Rules.Azure -WarningAction SilentlyContinue;
     $baselines | ForEach-Object {
         $baselineDoc = [PSCustomObject]@{
-            Name = $_.Name
+            Name     = $_.Name
             Metadata = $_.Metadata
             Synopsis = $_.Synopsis
-            Rules = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline $_.Name -WarningAction SilentlyContinue)
+            Rules    = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline $_.Name -WarningAction SilentlyContinue)
         }
         $baselineDoc;
     } | Invoke-PSDocument -Name baseline -OutputPath ./docs/en/baselines/ -Path ./BaselineToc.Doc.ps1 -Convention 'NameBaseline';
@@ -394,7 +394,7 @@ task BuildHelp BuildModule, Dependencies, {
             Import-Module -Name PlatyPS -Verbose:$False;
             $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path './docs/commands', './docs/concepts' -Force;
 
-             # Copy generated help into module out path
+            # Copy generated help into module out path
             $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-US/ -Recurse;
             $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-AU/ -Recurse;
             $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-GB/ -Recurse;
@@ -425,8 +425,9 @@ task Dependencies NuGet, {
 task ExportAliases {
     $index = [ordered]@{};
 
-    (Get-AzPolicyAlias).Aliases | Sort-Object -Property Name | ForEach-Object {
+    Get-AzPolicyAlias | Sort-Object -Property Namespace | ForEach-Object {
         $namespace = $_.Namespace;
+
         if (!($index.Contains($namespace))) {
             $index.Add($namespace, [ordered]@{});
         }
@@ -437,9 +438,9 @@ task ExportAliases {
         }
 
         $info = [ordered]@{
-            locations = $_.Locations | Sort-Object
+            locations     = $_.Locations | Sort-Object
             aliasMappings = $aliasMappings
-            apiVersions = $_.ApiVersions | Sort-Object
+            apiVersions   = $_.ApiVersions | Sort-Object
         }
 
         $index[$namespace].Add($_.ResourceType, $info);
@@ -462,18 +463,18 @@ task ExportProviders {
         $provider.resourceTypes | Sort-Object -Property resourceType | ForEach-Object {
             $info = [ordered]@{
                 resourceType = $_.resourceType
-                apiVersions = $_.apiVersions
-                locations = $_.locations
+                apiVersions  = $_.apiVersions
+                locations    = $_.locations
                 zoneMappings = ($_.ZoneMappings | Sort-Object -Property location | ForEach-Object {
-                    $zones = $_.zones
-                    if ($Null -ne $zones) {
-                        $zones = @($_.zones | Sort-Object)
-                    }
-                    [ordered]@{
-                        location = $_.location
-                        zones = $zones
-                    }
-                })
+                        $zones = $_.zones
+                        if ($Null -ne $zones) {
+                            $zones = @($_.zones | Sort-Object)
+                        }
+                        [ordered]@{
+                            location = $_.location
+                            zones    = $zones
+                        }
+                    })
             }
             $resourceTypes.Add($info.resourceType, $info);
         };
@@ -502,7 +503,7 @@ task TagBuild {
 # Synopsis: Remove temp files.
 task Clean {
     dotnet clean;
-    Remove-Item -Path out,reports -Recurse -Force -ErrorAction SilentlyContinue;
+    Remove-Item -Path out, reports -Recurse -Force -ErrorAction SilentlyContinue;
 }
 
 task Build Clean, BuildModule, VersionModule, BuildHelp
