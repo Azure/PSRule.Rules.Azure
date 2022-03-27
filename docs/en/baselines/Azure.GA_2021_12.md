@@ -1,5 +1,7 @@
 # Azure.GA_2021_12
 
+<!-- OBSOLETE -->
+
 Include rules released December 2021 or prior for Azure GA features.
 
 ## Rules

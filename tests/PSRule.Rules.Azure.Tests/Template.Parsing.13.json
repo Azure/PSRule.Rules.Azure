@@ -1,0 +1,75 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {
+        "varCustomPolicySetDefinitionsArray": [
+            {
+                "def": {
+                    "name": "set-001"
+                },
+                "child": [
+                    {
+                        "definitionReferenceID": "ref-001",
+                        "definitionID": "def-001",
+                        "definitionParameters": {}
+                    },
+                    {
+                        "definitionReferenceID": "ref-002",
+                        "definitionID": "def-001",
+                        "definitionParameters": {}
+                    },
+                    {
+                        "definitionReferenceID": "ref-003",
+                        "definitionID": "def-001",
+                        "definitionParameters": {}
+                    },
+                    {
+                        "definitionReferenceID": "ref-004",
+                        "definitionID": "def-001",
+                        "definitionParameters": {}
+                    }
+                ]
+            },
+            {
+                "def": {
+                    "name": "set-002"
+                },
+                "child": [
+                    {
+                        "definitionReferenceID": "ref-001",
+                        "definitionID": "def-001",
+                        "definitionParameters": {}
+                    }
+                ]
+            }
+        ]
+    },
+    "resources": [
+        {
+            "copy": {
+                "name": "resPolicySetDefinitions",
+                "count": "[length(variables('varCustomPolicySetDefinitionsArray'))]"
+            },
+            "type": "Microsoft.Authorization/policySetDefinitions",
+            "apiVersion": "2020-09-01",
+            "name": "[variables('varCustomPolicySetDefinitionsArray')[copyIndex()].def.name]",
+            "properties": {
+                "copy": [
+                    {
+                        "name": "policyDefinitions",
+                        "count": "[length(variables('varCustomPolicySetDefinitionsArray')[copyIndex()].child)]",
+                        "input": {
+                            "policyDefinitionReferenceId": "[variables('varCustomPolicySetDefinitionsArray')[copyIndex()].child[copyIndex('policyDefinitions')].definitionReferenceID]"
+                        }
+                    }
+                ]
+            },
+            "dependsOn": [
+                "resPolicyDefinitions"
+            ]
+        }
+    ],
+    "outputs": {}
+}

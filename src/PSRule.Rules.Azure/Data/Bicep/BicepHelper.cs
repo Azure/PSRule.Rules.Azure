@@ -20,22 +20,30 @@ namespace PSRule.Rules.Azure.Data.Bicep
 {
     internal sealed class BicepHelper
     {
+        private const int BICEP_TIMEOUT_MIN = 1;
+        private const int BICEP_TIMEOUT_MAX = 120;
+
         private static readonly char[] LINUX_PATH_ENV_SEPARATOR = new char[] { ':' };
         private static readonly char[] WINDOWS_PATH_ENV_SEPARATOR = new char[] { ';' };
 
         private readonly PipelineContext Context;
+        private readonly int _Timeout;
 
         private static BicepInfo _Bicep;
 
-        public BicepHelper(PipelineContext context)
+        public BicepHelper(PipelineContext context, int timeout)
         {
             Context = context;
+            _Timeout = timeout < BICEP_TIMEOUT_MIN ? BICEP_TIMEOUT_MIN : timeout;
+            if (_Timeout > BICEP_TIMEOUT_MAX)
+                _Timeout = BICEP_TIMEOUT_MAX;
         }
 
         internal sealed class BicepInfo
         {
             private readonly string _BinPath;
             private readonly bool _UseAzCLI;
+
             private string _Version;
 
             public BicepInfo(string binPath, bool useAzCLI)
@@ -44,7 +52,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 _UseAzCLI = useAzCLI;
             }
 
-            internal BicepProcess Create(string sourcePath)
+            internal BicepProcess Create(string sourcePath, int timeout)
             {
                 var args = GetBicepBuildArgs(sourcePath, _UseAzCLI);
                 var startInfo = new ProcessStartInfo(_BinPath, args)
@@ -55,7 +63,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
                     UseShellExecute = false,
                     WorkingDirectory = PSRuleOption.GetWorkingPath(),
                 };
-                return new BicepProcess(Process.Start(startInfo), _Version);
+                return new BicepProcess(Process.Start(startInfo), timeout, _Version);
             }
 
             internal void GetVersionInfo()
@@ -69,7 +77,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
                     UseShellExecute = false,
                     WorkingDirectory = PSRuleOption.GetWorkingPath(),
                 };
-                var bicep = new BicepProcess(Process.Start(versionStartInfo));
+                var bicep = new BicepProcess(Process.Start(versionStartInfo), 5);
                 try
                 {
                     if (bicep.WaitForExit(out _))
@@ -99,17 +107,17 @@ namespace PSRule.Rules.Azure.Data.Bicep
             private readonly StringBuilder _Error;
             private readonly AutoResetEvent _ErrorWait;
             private readonly AutoResetEvent _OutputWait;
+            private readonly int _Interval;
             private readonly int _Timeout;
-            private readonly int _Retry;
 
             private bool _Disposed;
 
-            public BicepProcess(Process process, string version = null)
+            public BicepProcess(Process process, int timeout, string version = null)
             {
                 _Output = new StringBuilder();
                 _Error = new StringBuilder();
-                _Timeout = 1000;
-                _Retry = 5;
+                _Interval = 1000;
+                _Timeout = timeout;
 
                 Version = version;
                 _Process = process;
@@ -132,12 +140,12 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 if (!_Process.HasExited)
                 {
                     var timeoutCount = 0;
-                    while (!_Process.WaitForExit(_Timeout) && !_Process.HasExited && timeoutCount < _Retry)
+                    while (!_Process.WaitForExit(_Interval) && !_Process.HasExited && timeoutCount < _Timeout)
                         timeoutCount++;
                 }
 
                 exitCode = _Process.HasExited ? _Process.ExitCode : -1;
-                return _Process.HasExited && _ErrorWait.WaitOne(_Timeout) && _OutputWait.WaitOne();
+                return _Process.HasExited && _ErrorWait.WaitOne(_Interval) && _OutputWait.WaitOne();
             }
 
             public string GetOutput()
@@ -264,9 +272,9 @@ namespace PSRule.Rules.Azure.Data.Bicep
             return results.ToArray();
         }
 
-        private static JObject ReadBicepFile(string path)
+        private JObject ReadBicepFile(string path)
         {
-            var bicep = GetBicep(path);
+            var bicep = GetBicep(path, _Timeout);
             if (bicep == null)
                 throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepNotFound), null, path, null);
 
@@ -305,12 +313,12 @@ namespace PSRule.Rules.Azure.Data.Bicep
             }
         }
 
-        private static BicepProcess GetBicep(string sourcePath)
+        private static BicepProcess GetBicep(string sourcePath, int timeout)
         {
             if (_Bicep == null)
                 _Bicep = GetBicepInfo();
 
-            return _Bicep?.Create(sourcePath);
+            return _Bicep?.Create(sourcePath, timeout);
         }
 
         private static BicepInfo GetBicepInfo()

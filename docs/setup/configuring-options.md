@@ -42,6 +42,9 @@ Use comments to add context.
       # Enable expansion of Azure Bicep files.
       AZURE_BICEP_FILE_EXPANSION: true
 
+      # Configure the timeout for bicep build to 15 seconds.
+      AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 15
+
       # Configure the minimum AKS cluster version.
       AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.22.4
 

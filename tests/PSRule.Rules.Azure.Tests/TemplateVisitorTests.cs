@@ -143,33 +143,48 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(resources);
             Assert.Equal(2, resources.Length);
 
-            var actual1 = resources[1];
-            var subResources = actual1["resources"].Value<JArray>();
+            var actual = resources[1];
+            var subResources = actual["resources"].Value<JArray>();
             Assert.Equal(2, subResources.Count);
             Assert.Equal("keyvault1/Microsoft.Insights/service", subResources[0]["name"].Value<string>());
             Assert.Equal("monitor", subResources[1]["name"].Value<string>());
         }
 
         [Fact]
+        public void NestedCopyLoops()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.13.json"), null);
+            Assert.NotNull(resources);
+            Assert.Equal(3, resources.Length);
+
+            Assert.Equal("Microsoft.Resources/deployments", resources[0]["type"].Value<string>());
+            Assert.Equal("Microsoft.Authorization/policySetDefinitions", resources[1]["type"].Value<string>());
+            Assert.Equal(4, resources[1]["properties"]["policyDefinitions"].Value<JArray>().Count);
+            Assert.Equal("Microsoft.Authorization/policySetDefinitions", resources[2]["type"].Value<string>());
+            Assert.Single(resources[2]["properties"]["policyDefinitions"].Value<JArray>());
+        }
+
+        [Fact]
         public void TryParentResourceId()
         {
-            const string expected1 = "Microsoft.ServiceBus/namespaces/besubns";
-            const string expected2 = "Microsoft.KeyVault/vaults/keyvault1";
+            const string expected1 = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.ServiceBus/namespaces/besubns";
+            const string expected2 = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.KeyVault/vaults/keyvault1";
+            var context = new TemplateContext();
 
             var actual = JObject.Parse("{ \"type\": \"Microsoft.ServiceBus/namespaces/topics\", \"name\": \"besubns/demo1\" }");
-            TemplateContext.TryParentResourceId(actual, out var resourceId);
+            context.TryParentResourceId(actual, out var resourceId);
             Assert.Equal(expected1, resourceId[0]);
 
             actual = JObject.Parse("{ \"type\": \"Microsoft.KeyVault/vaults\", \"name\": \"keyvault1\" }");
-            TemplateContext.TryParentResourceId(actual, out resourceId);
+            context.TryParentResourceId(actual, out resourceId);
             Assert.Empty(resourceId);
 
             actual = JObject.Parse("{ \"type\": \"Microsoft.KeyVault/vaults/providers/diagnosticsettings\", \"name\": \"keyvault1/Microsoft.Insights/service\" }");
-            TemplateContext.TryParentResourceId(actual, out resourceId);
+            context.TryParentResourceId(actual, out resourceId);
             Assert.Equal(expected2, resourceId[0]);
 
             actual = JObject.Parse("{ \"type\": \"Microsoft.Insights/diagnosticsettings\", \"name\": \"auditing-storage\", \"scope\": \"Microsoft.KeyVault/vaults/keyvault1\" }");
-            TemplateContext.TryParentResourceId(actual, out resourceId);
+            context.TryParentResourceId(actual, out resourceId);
             Assert.Equal(expected2, resourceId[0]);
         }
 
@@ -283,7 +298,7 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void StrongTypeNestedParameter()
         {
-            var resources = ProcessTemplate(GetSourcePath("Template.Bicep.2.json"), null);
+            var resources = ProcessTemplate(GetSourcePath("Template.Bicep.2.json"), null, PSRuleOption.FromFileOrDefault(GetSourcePath("ps-rule-options.yaml")));
             Assert.NotNull(resources);
             Assert.Equal(7, resources.Length);
 
@@ -377,6 +392,63 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, resources.Length);
 
             Assert.Equal("aks-resource123", resources[1]["name"].Value<string>());
+        }
+
+        [Fact]
+        public void WithDependantParameters()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Parsing.12.json"), null);
+            Assert.NotNull(resources);
+        }
+
+        [Fact]
+        public void WithOutputs()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.2.json"), null);
+            Assert.NotNull(resources);
+            Assert.Equal(10, resources.Length);
+
+            var actual = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+
+            actual = resources[1];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.Equal("storage1", actual["name"].Value<string>());
+
+            actual = resources[2];
+            Assert.Equal("Microsoft.Storage/storageAccounts", actual["type"].Value<string>());
+            Assert.Equal("sabicep001", actual["name"].Value<string>());
+            Assert.Equal("test", actual["tags"]["env"].Value<string>());
+
+            actual = resources[3];
+            Assert.Equal("Microsoft.Network/privateEndpoints", actual["type"].Value<string>());
+            Assert.Equal("pe-sabicep001", actual["name"].Value<string>());
+
+            actual = resources[4];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.Equal("storage3", actual["name"].Value<string>());
+
+            actual = resources[5];
+            Assert.Equal("Microsoft.Storage/storageAccounts", actual["type"].Value<string>());
+            Assert.Equal("sabicep001f8cbd7940fe93", actual["name"].Value<string>());
+            Assert.Equal("test", actual["tags"]["env"].Value<string>());
+
+            actual = resources[6];
+            Assert.Equal("Microsoft.Network/privateEndpoints", actual["type"].Value<string>());
+            Assert.Equal("pe-sabicep001f8cbd7940fe93", actual["name"].Value<string>());
+
+            actual = resources[7];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.Equal("storage2", actual["name"].Value<string>());
+
+            actual = resources[8];
+            Assert.Equal("Microsoft.Storage/storageAccounts", actual["type"].Value<string>());
+            Assert.Equal("sabicep002", actual["name"].Value<string>());
+            Assert.Equal("test", actual["tags"]["env"].Value<string>());
+
+            actual = resources[9];
+            Assert.Equal("Microsoft.Network/privateEndpoints", actual["type"].Value<string>());
+            Assert.Equal("pe-sabicep002", actual["name"].Value<string>());
         }
 
         #region Helper methods

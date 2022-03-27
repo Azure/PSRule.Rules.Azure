@@ -1,9 +1,8 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -133,86 +132,5 @@ namespace PSRule.Rules.Azure.Data.Template
 
         [JsonProperty(PropertyName = "storage")]
         public string storage { get; set; }
-    }
-
-    public abstract class MockNode
-    {
-        protected MockNode(MockNode parent)
-        {
-            Parent = parent;
-        }
-
-        public MockNode Parent { get; }
-
-        internal MockMember GetMember(string name)
-        {
-            return new MockMember(this, name);
-        }
-
-        internal string BuildString()
-        {
-            var builder = new StringBuilder();
-            builder.Insert(0, GetString());
-            var parent = Parent;
-            while (parent != null)
-            {
-                builder.Insert(0, ".");
-                builder.Insert(0, parent.GetString());
-                parent = parent.Parent;
-            }
-            builder.Insert(0, "{{");
-            builder.Append("}}");
-            return builder.ToString();
-        }
-
-        protected abstract string GetString();
-    }
-
-    public sealed class MockResource : MockNode
-    {
-        internal MockResource(string resourceType)
-            : base(null)
-        {
-            ResourceType = resourceType;
-        }
-
-        public string ResourceType { get; }
-
-        protected override string GetString()
-        {
-            return "Resource";
-        }
-    }
-
-    public sealed class MockList : MockNode
-    {
-        internal MockList(string resourceId)
-            : base(null)
-        {
-            ResourceId = resourceId;
-        }
-
-        public string ResourceId { get; }
-
-        protected override string GetString()
-        {
-            return "List";
-        }
-    }
-
-    public sealed class MockMember : MockNode
-    {
-        internal MockMember(MockNode parent, string name)
-            : base(parent)
-        {
-            Name = name;
-        }
-
-        public string Name { get; }
-
-        protected override string GetString()
-        {
-            return Name;
-        }
     }
 }

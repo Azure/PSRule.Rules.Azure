@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -41,7 +41,7 @@ namespace PSRule.Rules.Azure
 
     internal static class JsonExtensions
     {
-        private const string FIELD_DEPENDSON = "dependsOn";
+        private const string PROPERTY_DEPENDSON = "dependsOn";
         private const string TARGETINFO_KEY = "_PSRule";
         private const string TARGETINFO_SOURCE = "source";
         private const string TARGETINFO_FILE = "file";
@@ -100,6 +100,16 @@ namespace PSRule.Rules.Azure
             return false;
         }
 
+        internal static bool TryGetProperty(this JObject o, string propertyName, out string value)
+        {
+            value = null;
+            if (!TryGetProperty<JValue>(o, propertyName, out var v))
+                return false;
+
+            value = v.Value<string>();
+            return true;
+        }
+
         internal static void UseProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken, new()
         {
             if (!o.TryGetValue(propertyName, System.StringComparison.OrdinalIgnoreCase, out var v))
@@ -114,7 +124,7 @@ namespace PSRule.Rules.Azure
         internal static bool TryGetDependencies(this JObject resource, out string[] dependencies)
         {
             dependencies = null;
-            if (!(resource.ContainsKey(FIELD_DEPENDSON) && resource[FIELD_DEPENDSON] is JArray d && d.Count > 0))
+            if (!(resource.ContainsKey(PROPERTY_DEPENDSON) && resource[PROPERTY_DEPENDSON] is JArray d && d.Count > 0))
                 return false;
 
             dependencies = d.Values<string>().ToArray();

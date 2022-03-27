@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -141,10 +141,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 return property;
             }
 
-            if (source is MockNode mockNode && ExpressionHelpers.TryConvertString(indexResult, out var memberName))
-                return mockNode.GetMember(memberName);
+            if (source is ILazyObject lazy && ExpressionHelpers.TryConvertString(indexResult, out var memberName) && lazy.TryProperty(memberName, out var value))
+                return value;
 
-            if (ExpressionHelpers.TryString(indexResult, out propertyName) && TryPropertyOrField(source, propertyName, out var value))
+            if (ExpressionHelpers.TryString(indexResult, out propertyName) && TryPropertyOrField(source, propertyName, out value))
                 return value;
 
             throw new InvalidOperationException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.IndexInvalid, indexResult));
@@ -178,10 +178,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 return property.Value<object>();
             }
 
-            if (result is MockNode mockNode)
-                return mockNode.GetMember(propertyName);
+            if (result is ILazyObject lazy && lazy.TryProperty(propertyName, out var value))
+                return value;
 
-            if (TryPropertyOrField(result, propertyName, out var value))
+            if (TryPropertyOrField(result, propertyName, out value))
                 return value;
 
             throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));

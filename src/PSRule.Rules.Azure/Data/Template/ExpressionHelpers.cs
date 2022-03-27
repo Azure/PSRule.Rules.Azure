@@ -1,7 +1,8 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
+using System.Collections;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
@@ -29,9 +30,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = token.Value<string>();
                 return true;
             }
-            else if (o is MockNode mockNode)
+            else if (o is IMock mock)
             {
-                value = mockNode.BuildString();
+                value = mock.ToString();
                 return true;
             }
             value = null;
@@ -43,9 +44,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (TryString(o, out value))
                 return true;
 
-            if (TryLong(o, out var ivalue))
+            if (TryLong(o, out var i))
             {
-                value = ivalue.ToString(Thread.CurrentThread.CurrentCulture);
+                value = i.ToString(Thread.CurrentThread.CurrentCulture);
                 return true;
             }
             return false;
@@ -87,6 +88,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = token.Value<long>();
                 return true;
             }
+            else if (o is MockInteger mock)
+            {
+                value = mock.Value;
+                return true;
+            }
             value = default(long);
             return false;
         }
@@ -126,6 +132,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = token.Value<int>();
                 return true;
             }
+            else if (o is MockInteger mock)
+            {
+                value = (int)mock.Value;
+                return true;
+            }
             value = default(int);
             return false;
         }
@@ -138,13 +149,13 @@ namespace PSRule.Rules.Azure.Data.Template
             if (TryInt(o, out value))
                 return true;
 
-            if (TryLong(o, out var lvalue))
+            if (TryLong(o, out var l))
             {
-                value = (int)lvalue;
+                value = (int)l;
                 return true;
             }
 
-            if (TryString(o, out var svalue) && int.TryParse(svalue, out value))
+            if (TryString(o, out var s) && int.TryParse(s, out value))
                 return true;
 
             value = default(int);
@@ -156,14 +167,19 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static bool TryBool(object o, out bool value)
         {
-            if (o is bool bvalue)
+            if (o is bool b)
             {
-                value = bvalue;
+                value = b;
                 return true;
             }
             else if (o is JToken token && token.Type == JTokenType.Boolean)
             {
                 value = token.Value<bool>();
+                return true;
+            }
+            else if (o is MockBool mock)
+            {
+                value = mock.Value;
                 return true;
             }
             value = default(bool);
@@ -231,8 +247,11 @@ namespace PSRule.Rules.Azure.Data.Template
             if (value is Array aValue)
                 return new JArray(aValue);
 
+            if (value is Hashtable hashtable)
+                return JObject.FromObject(hashtable);
+
             if (value is MockMember mockMember)
-                return new JValue(mockMember.BuildString());
+                return new JValue(mockMember.ToString());
 
             return new JValue(value);
         }
@@ -268,11 +287,9 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             var hash = GetUnique(args);
             var builder = new StringBuilder();
-            var culture = new CultureInfo("en-us");
             for (var i = 0; i < hash.Length && i < 7; i++)
-            {
-                builder.Append(hash[i].ToString("x2", culture));
-            }
+                builder.Append(hash[i].ToString("x2", AzureCulture));
+
             return builder.ToString();
         }
 

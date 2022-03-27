@@ -12,17 +12,138 @@ See [troubleshooting guide] for a workaround to this issue.
   If you have this option configured, please update it to `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
   Support for `Azure_AKSMinimumVersion` will be removed in v2.
 
+## Unreleased
+
+## v1.14.0-B2203088 (pre-release)
+
+What's changed since pre-release v1.14.0-B2203066:
+
+- New features:
+  - Added March 2022 baselines `Azure.GA_2022_03` and `Azure.Preview_2022_03`. [#1334](https://github.com/Azure/PSRule.Rules.Azure/issues/1334)
+    - Includes rules released before or during March 2022.
+    - Marked `Azure.GA_2021_12` and `Azure.Preview_2021_12` baselines as obsolete.
+- Bug fixes:
+  - Fixed expand of runtime properties on reference objects. [#1324](https://github.com/Azure/PSRule.Rules.Azure/issues/1324)
+
+## v1.14.0-B2203066 (pre-release)
+
+What's changed since v1.13.4:
+
+- New features:
+  - Added support for referencing resources in template. [#1315](https://github.com/Azure/PSRule.Rules.Azure/issues/1315)
+    - The `reference()` function can be used to reference resources in template.
+    - A placeholder value is still used for resources outside of the template.
+- New rules:
+  - SignalR Service:
+    - Check services use Managed Identities. [#1306](https://github.com/Azure/PSRule.Rules.Azure/issues/1306)
+    - Check services use a SKU with an SLA. [#1307](https://github.com/Azure/PSRule.Rules.Azure/issues/1307)
+  - Web PubSub Service:
+    - Check services use Managed Identities. [#1308](https://github.com/Azure/PSRule.Rules.Azure/issues/1308)
+    - Check services use a SKU with an SLA. [#1309](https://github.com/Azure/PSRule.Rules.Azure/issues/1309)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.21.9`. [#1318](https://github.com/Azure/PSRule.Rules.Azure/issues/1318)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+- Bug fixes:
+  - Fixed processing of deployment outputs. [#1316](https://github.com/Azure/PSRule.Rules.Azure/issues/1316)
+
+## v1.13.4
+
+What's changed since v1.13.3:
+
+- Bug fixes:
+  - Fixed virtual network without any subnets is invalid. [#1303](https://github.com/Azure/PSRule.Rules.Azure/issues/1303)
+  - Fixed container registry rules that require a premium tier. [#1304](https://github.com/Azure/PSRule.Rules.Azure/issues/1304)
+    - Rules `Azure.ACR.Retention` and `Azure.ACR.ContentTrust` are now only run against premium instances.
+
+## v1.13.3
+
+What's changed since v1.13.2:
+
+- Bug fixes:
+  - Fixed bicep build timeout for complex deployments. [#1299](https://github.com/Azure/PSRule.Rules.Azure/issues/1299)
+
+## v1.13.2
+
+What's changed since v1.13.1:
+
+- Engineering:
+  - Bump PowerShellStandard.Library to 5.1.1. [#1295](https://github.com/Azure/PSRule.Rules.Azure/pull/1295)
+- Bug fixes:
+  - Fixed nested resource loops. [#1293](https://github.com/Azure/PSRule.Rules.Azure/issues/1293)
+
+## v1.13.1
+
+What's changed since v1.13.0:
+
+- Bug fixes:
+  - Fixed parsing of nested quote pairs within JSON function. [#1288](https://github.com/Azure/PSRule.Rules.Azure/issues/1288)
+
+## v1.13.0
+
+What's changed since v1.12.2:
+
+- New features:
+  - Added support for setting defaults for required parameters. [#1065](https://github.com/Azure/PSRule.Rules.Azure/issues/1065)
+    - When specified, the value will be used when a parameter value is not provided.
+  - Added support expanding Bicep from parameter files. [#1160](https://github.com/Azure/PSRule.Rules.Azure/issues/1160)
+- New rules:
+  - Azure Cache for Redis:
+    - Limit public access for Azure Cache for Redis instances. [#935](https://github.com/Azure/PSRule.Rules.Azure/issues/935)
+  - Container App:
+    - Check insecure ingress is not enabled (preview). [#1252](https://github.com/Azure/PSRule.Rules.Azure/issues/1252)
+  - Key Vault:
+    - Check key auto-rotation is enabled (preview). [#1159](https://github.com/Azure/PSRule.Rules.Azure/issues/1159)
+  - Recovery Services Vault:
+    - Check vaults have replication alerts configured. [#7](https://github.com/Azure/PSRule.Rules.Azure/issues/7)
+- Engineering:
+  - Automatically build baseline docs. [#1242](https://github.com/Azure/PSRule.Rules.Azure/issues/1242)
+  - Bump PSRule dependency to v1.11.1. [#1269](https://github.com/Azure/PSRule.Rules.Azure/pull/1269)
+- Bug fixes:
+  - Fixed empty value with strong type. [#1258](https://github.com/Azure/PSRule.Rules.Azure/issues/1258)
+  - Fixed error with empty logic app trigger. [#1249](https://github.com/Azure/PSRule.Rules.Azure/issues/1249)
+  - Fixed out of order parameters. [#1257](https://github.com/Azure/PSRule.Rules.Azure/issues/1257)
+  - Fixed mapping default configuration causes cast exception. [#1274](https://github.com/Azure/PSRule.Rules.Azure/issues/1274)
+  - Fixed resource id is incorrectly built for sub resource types. [#1279](https://github.com/Azure/PSRule.Rules.Azure/issues/1279)
+
+What's changed since pre-release v1.13.0-B2202113:
+
+- No additional changes.
+
+## v1.13.0-B2202113 (pre-release)
+
+What's changed since pre-release v1.13.0-B2202108:
+
+- Bug fixes:
+  - Fixed resource id is incorrectly built for sub resource types. [#1279](https://github.com/Azure/PSRule.Rules.Azure/issues/1279)
+
+## v1.13.0-B2202108 (pre-release)
+
+What's changed since pre-release v1.13.0-B2202103:
+
+- Bug fixes:
+  - Fixed mapping default configuration causes cast exception. [#1274](https://github.com/Azure/PSRule.Rules.Azure/issues/1274)
+
+## v1.13.0-B2202103 (pre-release)
+
+What's changed since pre-release v1.13.0-B2202090:
+
+- Engineering:
+  - Bump PSRule dependency to v1.11.1. [#1269](https://github.com/Azure/PSRule.Rules.Azure/pull/1269)
+- Bug fixes:
+  - Fixed out of order parameters. [#1257](https://github.com/Azure/PSRule.Rules.Azure/issues/1257)
+
 ## v1.13.0-B2202090 (pre-release)
 
 What's changed since pre-release v1.13.0-B2202063:
 
+- New rules:
+  - Azure Cache for Redis:
+    - Limit public access for Azure Cache for Redis instances. [#935](https://github.com/Azure/PSRule.Rules.Azure/issues/935)
 - Engineering:
   - Automatically build baseline docs. [#1242](https://github.com/Azure/PSRule.Rules.Azure/issues/1242)
 - Bug fixes:
   - Fixed empty value with strong type. [#1258](https://github.com/Azure/PSRule.Rules.Azure/issues/1258)
-- New rules:
-  - Azure Cache for Redis:
-    - Limit public access for Azure Cache for Redis instances. [#935](https://github.com/Azure/PSRule.Rules.Azure/issues/935)
 
 ## v1.13.0-B2202063 (pre-release)
 

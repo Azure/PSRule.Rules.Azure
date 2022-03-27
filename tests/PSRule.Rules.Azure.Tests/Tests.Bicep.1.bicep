@@ -7,7 +7,23 @@ param name string
 @description('The Azure location to deploy resources.')
 param location string = resourceGroup().location
 
-// An example Storage Account
+@description('One or more tags to use.')
+param tags object = {
+  env: 'test'
+}
+
+@description('A reference to an example VNET.')
+resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' existing = {
+  name: 'vnet-001'
+}
+
+@description('A reference to an exampe subnet.')
+resource subnet 'Microsoft.Network/virtualNetworks/subnets@2021-05-01' existing = {
+  parent: vnet
+  name: 'subnet-001'
+}
+
+@description('An example Storage Account.')
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-06-01' = {
   name: name
   location: location
@@ -25,4 +41,38 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-06-01' = {
       defaultAction: 'Deny'
     }
   }
+  tags: tags
 }
+
+resource endpoint 'Microsoft.Network/privateEndpoints@2020-03-01' = {
+  location: location
+  name: 'pe-${name}'
+  properties: {
+    subnet: {
+      id: subnet.id
+    }
+    privateLinkServiceConnections: [
+      {
+        name: 'default'
+        properties: {
+          privateLinkServiceId: storageAccount.id
+          groupIds: [
+            'blob'
+          ]
+        }
+      }
+    ]
+  }
+}
+
+@description('A unique resource Id for the storage account.')
+output id string = storageAccount.id
+
+@description('Any tags set on the storage account.')
+output tags object = storageAccount.tags
+
+@description('A unique string that is generated from the blob endpoint.')
+output unique string = uniqueString(storageAccount.properties.primaryEndpoints.blob)
+
+@description('The ID of the endpoint NIC.')
+output endpointNIC string = endpoint.properties.networkInterfaces[0].id

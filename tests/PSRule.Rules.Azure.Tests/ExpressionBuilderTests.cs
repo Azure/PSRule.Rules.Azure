@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -134,6 +134,20 @@ namespace PSRule.Rules.Azure
             var actual1 = Build(context, andLateBinding);
 
             Assert.Equal(false, actual1);
+        }
+
+        [Fact]
+        public void JsonQuoteNesting()
+        {
+            var expression = "[json('{ \"effect\": \"[parameters(''effect'')]\" }')]";
+            var context = GetContext();
+            var actual = Build(context, expression) as JObject;
+            Assert.NotNull(actual);
+            Assert.Equal("[parameters(''effect'')]", actual["effect"].Value<string>());
+
+            expression = "[json('{ \"value\": \"[int(last(split(replace(field(''test''), ''t'', ''''), ''/'')))]\" }')]";
+            actual = Build(context, expression) as JObject;
+            Assert.NotNull(actual);
         }
 
         private static object Build(TemplateContext context, string expression)
