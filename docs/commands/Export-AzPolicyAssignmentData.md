@@ -62,7 +62,7 @@ Directory: C:\
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
--a---        26/03/2022   7:01 PM         740098   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.assignment.json
+-a---        26/03/2022   7:01 PM         740098   00000000-0000-0000-0000-000000000000.assignment.json
 ```
 
 Export policy assignment data from current subscription context.
@@ -70,7 +70,7 @@ Export policy assignment data from current subscription context.
 ### Example 2
 
 ```powershell
-Export-AzPolicyAssignmentData -Name 'xxxxxxxxxxxxxxxxxxxxxxxx' -Scope '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PolicyRG'
+Export-AzPolicyAssignmentData -Name '000000000000000000000000' -Scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG'
 ```
 
 ```text
@@ -79,7 +79,7 @@ Directory: C:\
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
--a---        26/03/2022   7:15 PM           4185   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.assignment.json
+-a---        26/03/2022   7:15 PM           4185   00000000-0000-0000-0000-000000000000.assignment.json
 ```
 
 Export policy assignment with specific name and scope.
@@ -87,7 +87,7 @@ Export policy assignment with specific name and scope.
 ### Example 3
 
 ```powershell
-Export-AzPolicyAssignmentData -Id '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/xxxxxxxxxxxxxxxxxxxxxxxx'
+Export-AzPolicyAssignmentData -Id '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000'
 ```
 
 ```text
@@ -96,7 +96,7 @@ Directory: C:\
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
--a---        26/03/2022   7:42 PM           4185   dfcc38c8-f33c-410a-a15c-db1641e6a17a.assignment.json
+-a---        26/03/2022   7:42 PM           4185   00000000-0000-0000-0000-00000000000.assignment.json
 ```
 
 Export policy assignment with specific resource ID.

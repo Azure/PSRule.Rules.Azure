@@ -42,7 +42,7 @@
                                     {
                                         "field": "properties.storageProfile.imageReference.id",
                                         "in": [
-                                            "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PolicyRG/providers/Microsoft.Compute/galleries/gallery_image/images/image_name/versions/0.0.1"
+                                            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Compute/galleries/gallery_image/images/image_name/versions/0.0.1"
                                         ]
                                     },
                                     {

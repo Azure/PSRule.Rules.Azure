@@ -33,8 +33,8 @@ Get-AzPolicyAssignmentSource
 ```text
 AssignmentFile
 --------------
-C:\xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.assignment.json
-C:\Users\user\xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.assignment.json
+C:\00000000-0000-0000-0000-000000000001.assignment.json
+C:\Users\user\00000000-0000-0000-0000-000000000002.assignment.json
 ```
 
 Gets policy assignment sources from any `*.assignment.json` sources within any folder in the current
