@@ -231,6 +231,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2022_03/</loc>
+         <lastmod>2022-03-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview/</loc>
          <lastmod>2022-03-27</lastmod>
          <changefreq>daily</changefreq>
@@ -242,6 +247,11 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2021_12/</loc>
+         <lastmod>2022-03-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2022_03/</loc>
          <lastmod>2022-03-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
