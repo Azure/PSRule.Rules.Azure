@@ -88,6 +88,21 @@ Mode                LastWriteTime         Length Name
 
 Export JSON rules to file in current working directory using a specific subscription.
 
+### Example 3
+
+```powershell
+Get-AzPolicyAssignmentSource | Export-AzPolicyAssignmentRuleData
+```
+
+```text
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a---        27/03/2022  11:26 AM            721   definitions-export-1b474938.Rule.jsonc
+```
+
+Export JSON rules from the current working directory using discovered assignment sources in the
+current working directory.
+
 ## PARAMETERS
 
 ### -Name
@@ -128,7 +143,7 @@ Accept wildcard characters: False
 The path to store generated JSON files containing resources.
 
 If this parameter is not specified, output will be written to the current working path.
-The file name `definitions-<name>.json` will be used when this parameter is not set or a directory
+The file name `definitions-<name>.Rule.jsonc` will be used when this parameter is not set or a directory
 is specified.
 Where `<name>` is the name of the assignment specified by `-Name`.
 

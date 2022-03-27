@@ -46,7 +46,7 @@ By default the current subscription context will be exported. i.e `Get-AzContext
 Policy assignment data will be exported to the current working directory by default as JSON files,
 one per subscription.
 
-All output files include a `.assignment.json` extension.
+All output files include a `.assignment.json` extension by default.
 
 ## EXAMPLES
 

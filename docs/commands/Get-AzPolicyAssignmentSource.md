@@ -1,0 +1,98 @@
+---
+external help file: PSRule.Rules.Azure-help.xml
+Module Name: PSRule.Rules.Azure
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/commands/Get-AzPolicyAssignmentSource.md
+schema: 2.0.0
+---
+
+# Get-AzPolicyAssignmentSource
+
+## SYNOPSIS
+
+Get policy assignment sources.
+
+## SYNTAX
+
+```text
+Get-AzPolicyAssignmentSource [[-InputPath] <string[]>] [[-Path] <string>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+
+Get policy assignment sources. By default `*.assignment.json` sources are discovered from the current
+working directory.
+
+## EXAMPLES
+
+### Example 1
+
+```powershell
+Get-AzPolicyAssignmentSource
+```
+
+```text
+AssignmentFile
+--------------
+C:\xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.assignment.json
+C:\Users\user\xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.assignment.json
+```
+
+Gets policy assignment sources from any `*.assignment.json` sources within any folder in the current
+working directory path.
+
+## PARAMETERS
+
+### -InputPath
+
+A path or filter to search for assignment files within the path specified by `-Path`.
+By default, files with `*.assignment.json` suffix will be used.
+
+When searching for assignment files all sub-directories will be scanned.
+To perform a shallow search, prefix input paths with `./`.
+
+```yaml
+Type: String[]
+Parameter Sets: Default
+Aliases: f, AssignmentFile, FullName
+
+Required: False
+Position: Named
+Default value: '*.assignment.json'
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
+### -Path
+
+Sets the path to search for assignment files in.
+By default, this is the current working path.
+
+```yaml
+Type: String
+Parameter Sets: Default
+Aliases: p
+
+Required: False
+Position: 0
+Default value: $PWD
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction,
+-InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see [about_CommonParameters](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_commonparameters).
+
+## INPUTS
+
+### System.String[]
+
+## OUTPUTS
+
+### PSRule.Rules.Azure.Pipeline.PolicyAssignmentSource
+
+## NOTES
+
+## RELATED LINKS

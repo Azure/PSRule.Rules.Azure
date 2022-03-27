@@ -5,7 +5,7 @@ namespace PSRule.Rules.Azure.Pipeline
 {
     public sealed class PolicyAssignmentSource
     {
-        internal readonly string AssignmentFile;
+        public string AssignmentFile { get; }
 
         public PolicyAssignmentSource(string assignmentFile)
         {

@@ -348,15 +348,17 @@ function Export-AzPolicyAssignmentData {
 }
 
 function Export-AzPolicyAssignmentRuleData {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'Default')]
+    [OutputType([System.IO.FileInfo])]
+    [OutputType([PSObject])]
     param (
         # Name of Policy assignment
         [Parameter(Mandatory = $False)]
         [String]$Name,
 
         # Assignment file path
-        [Parameter(Mandatory = $True)]
-        [string]$AssignmentFile,
+        [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
+        [String]$AssignmentFile,
 
         [Parameter(Mandatory = $False)]
         [Alias('ResourceGroupName')]
@@ -429,6 +431,63 @@ function Export-AzPolicyAssignmentRuleData {
             }
         }
         Write-Verbose -Message '[Export-AzPolicyAssignmentRuleData] END::';
+    }
+}
+
+function Get-AzPolicyAssignmentSource {
+    [CmdletBinding(DefaultParameterSetName = 'Default')]
+    [OutputType([PSRule.Rules.Azure.Pipeline.PolicyAssignmentSource])]
+    param (
+        [Parameter(Mandatory = $False, ValueFromPipelineByPropertyName = $True)]
+        [Alias('f', 'AssignmentFile', 'FullName')]
+        [SupportsWildcards()]
+        [String[]]$InputPath = '*.assignment.json',
+
+        [Parameter(Mandatory = $False)]
+        [Alias('p')]
+        [String]$Path = $PWD
+    )
+    begin {
+        Write-Verbose -Message '[Get-AzPolicyAssignmentSource] BEGIN::';
+
+        # Build the pipeline
+        $builder = [PSRule.Rules.Azure.Pipeline.PipelineBuilder]::AssignmentSearch($Path);
+        $builder.UseCommandRuntime($PSCmdlet);
+        $builder.UseExecutionContext($ExecutionContext);
+        $pipeline = $builder.Build();
+        if ($Null -ne (Get-Variable -Name pipeline -ErrorAction SilentlyContinue)) {
+            try {
+                $pipeline.Begin();
+            }
+            catch {
+                $pipeline.Dispose();
+                throw;
+            }
+        }
+    }
+    process {
+        if ($Null -ne (Get-Variable -Name pipeline -ErrorAction SilentlyContinue)) {
+            try {
+                foreach ($p in $InputPath) {
+                    $pipeline.Process($p);
+                }
+            }
+            catch {
+                $pipeline.Dispose();
+                throw;
+            }
+        }
+    }
+    end {
+        if ($Null -ne (Get-Variable -Name pipeline -ErrorAction SilentlyContinue)) {
+            try {
+                $pipeline.End();
+            }
+            finally {
+                $pipeline.Dispose();
+            }
+        }
+        Write-Verbose -Message '[Get-AzPolicyAssignmentSource] END::';
     }
 }
 
@@ -1590,6 +1649,7 @@ Export-ModuleMember -Function @(
     'Get-AzRuleTemplateLink'
     'Export-AzPolicyAssignmentData'
     'Export-AzPolicyAssignmentRuleData'
+    'Get-AzPolicyAssignmentSource'
 );
 
 Export-ModuleMember -Alias @(
