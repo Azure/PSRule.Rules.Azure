@@ -85,6 +85,9 @@
     "[csharp]": { 
         "editor.formatOnSave": true
     },
+    "[powershell]": {
+        "editor.formatOnSave": true
+    },
     "omnisharp.enableImportCompletion": true,
     "omnisharp.organizeImportsOnFormat": true,
     "omnisharp.enableEditorConfigSupport": true,

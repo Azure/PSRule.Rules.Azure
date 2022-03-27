@@ -283,7 +283,7 @@ function Export-AzPolicyAssignmentData {
         Write-Verbose -Message '[Export-AzPolicyAssignmentData] BEGIN::';
     }
     process {
-        $context = Get-AzContext -ErrorAction SilentlyContinue
+        $context = GetAzureContext -ErrorAction SilentlyContinue
 
         if ($Null -eq $context) {
             Write-Error -Message 'Could not find an existing context. Use Connect-AzAccount to establish a PowerShell context with Azure.';
@@ -384,8 +384,8 @@ function Export-AzPolicyAssignmentRuleData {
         $builder.Assignment($Name);
         $builder.PassThru($PassThru);
 
-         # Bind to subscription context
-         if ($PSBoundParameters.ContainsKey('Subscription')) {
+        # Bind to subscription context
+        if ($PSBoundParameters.ContainsKey('Subscription')) {
             $subscriptionOption = GetSubscription -InputObject $Subscription -ErrorAction SilentlyContinue;
             if ($Null -ne $subscriptionOption) {
                 $builder.Subscription($subscriptionOption);
@@ -581,14 +581,14 @@ function FindAzureContext {
 
         Write-Verbose "[Context] -- Found ($($context.Length)) subscription contexts";
         $filteredContext = @($context | ForEach-Object -Process {
-            if (
+                if (
                 ($Null -eq $Tenant -or $Tenant.Length -eq 0 -or ($_.Tenant.Id -in $Tenant)) -and
                 ($Null -eq $Subscription -or $Subscription.Length -eq 0 -or ($_.Subscription.Id -in $Subscription) -or ($_.Subscription.Name -in $Subscription))
-            ) {
-                $_;
-                Write-Verbose "[Context] -- Using subscription: $($_.Subscription.Name)";
-            }
-        })
+                ) {
+                    $_;
+                    Write-Verbose "[Context] -- Using subscription: $($_.Subscription.Name)";
+                }
+            })
         Write-Verbose "[Context] -- Using [$($filteredContext.Length)/$($context.Length)] subscription contexts";
         return $filteredContext;
     }
@@ -645,18 +645,18 @@ function GetAzureResource {
                 foreach ($rg in $ResourceGroupName) {
                     Write-Verbose -Message "[Export] -- Getting Azure resources for Resource Group: $rg";
                     Get-AzResource @resourceParams -ResourceGroupName $rg -ExpandProperties -ODataQuery "SubscriptionId EQ '$($Context.DefaultContext.Subscription.Id)'" -DefaultProfile $Context `
-                        | ExpandResource -Context $Context -Verbose:$VerbosePreference;
+                    | ExpandResource -Context $Context -Verbose:$VerbosePreference;
                     Get-AzResourceGroup @rgParams -Name $rg -DefaultProfile $Context |
-                        SetResourceType 'Microsoft.Resources/resourceGroups' |
-                        ExpandResource -Context $Context -Verbose:$VerbosePreference;
+                    SetResourceType 'Microsoft.Resources/resourceGroups' |
+                    ExpandResource -Context $Context -Verbose:$VerbosePreference;
                 }
             }
             else {
                 Get-AzResource @resourceParams -ExpandProperties -DefaultProfile $Context |
-                    ExpandResource -Context $Context -Verbose:$VerbosePreference;
+                ExpandResource -Context $Context -Verbose:$VerbosePreference;
                 Get-AzResourceGroup @rgParams -DefaultProfile $Context |
-                    SetResourceType 'Microsoft.Resources/resourceGroups' |
-                    ExpandResource -Context $Context -Verbose:$VerbosePreference;
+                SetResourceType 'Microsoft.Resources/resourceGroups' |
+                ExpandResource -Context $Context -Verbose:$VerbosePreference;
             }
 
             Write-Verbose -Message "[Export] -- Azure resources exported in [$($watch.ElapsedMilliseconds) ms]";
@@ -664,8 +664,8 @@ function GetAzureResource {
 
             Write-Verbose -Message "[Export] -- Getting Azure subscription: $($Context.DefaultContext.Subscription.Id)";
             Get-AzSubscription -SubscriptionId $Context.DefaultContext.Subscription.Id |
-                SetResourceType 'Microsoft.Subscription' |
-                ExpandResource -Context $Context -Verbose:$VerbosePreference;
+            SetResourceType 'Microsoft.Subscription' |
+            ExpandResource -Context $Context -Verbose:$VerbosePreference;
 
             Write-Verbose -Message "[Export] -- Azure subscription exported in [$($watch.ElapsedMilliseconds) ms]";
         }
@@ -753,11 +753,11 @@ function GetSubResource {
     )
     process {
         $getParams = @{
-            Name = $Resource.Name
-            ResourceType = $ResourceType
+            Name              = $Resource.Name
+            ResourceType      = $ResourceType
             ResourceGroupName = $Resource.ResourceGroupName
-            DefaultProfile = $Context
-            ApiVersion = $ApiVersion
+            DefaultProfile    = $Context
+            ApiVersion        = $ApiVersion
         }
         try {
             Get-AzResource @getParams -ExpandProperties;
@@ -782,9 +782,9 @@ function GetResourceById {
     )
     process {
         $getParams = @{
-            ResourceId = $ResourceId
+            ResourceId     = $ResourceId
             DefaultProfile = $Context
-            ApiVersion = $ApiVersion
+            ApiVersion     = $ApiVersion
         }
         try {
             Get-AzResource @getParams -ExpandProperties;
@@ -812,9 +812,9 @@ function GetSubResourceId {
     )
     process {
         $getParams = @{
-            ResourceId = [String]::Concat($Resource.Id, '/', $Property)
+            ResourceId     = [String]::Concat($Resource.Id, '/', $Property)
             DefaultProfile = $Context
-            ApiVersion = $ApiVersion
+            ApiVersion     = $ApiVersion
         }
         try {
             Get-AzResource @getParams -ExpandProperties;
@@ -844,7 +844,7 @@ function GetRestProperty {
         try {
             $token = GetRestToken -Context $Context;
             $getParams = @{
-                Uri = [String]::Concat('https://management.azure.com', $Resource.Id, '/', $Property, '?api-version=', $ApiVersion)
+                Uri     = [String]::Concat('https://management.azure.com', $Resource.Id, '/', $Property, '?api-version=', $ApiVersion)
                 Headers = @{
                     Authorization = "Bearer $($token)"
                 }
@@ -866,10 +866,10 @@ function GetRestToken {
     )
     process {
         return ($Context.DefaultContext.TokenCache.ReadItems() | Where-Object {
-            $_.TenantId -eq $Context.DefaultContext.Tenant.Id -and
-            $_.Resource -eq 'https://management.core.windows.net/' -and
-            $_.Authority -eq "https://login.windows.net/$($Context.DefaultContext.Tenant.Id)/"
-        }).AccessToken;
+                $_.TenantId -eq $Context.DefaultContext.Tenant.Id -and
+                $_.Resource -eq 'https://management.core.windows.net/' -and
+                $_.Authority -eq "https://login.windows.net/$($Context.DefaultContext.Tenant.Id)/"
+            }).AccessToken;
     }
 }
 
@@ -893,9 +893,9 @@ function GetSubProvider {
     )
     process {
         $getParams = @{
-            ResourceId = [String]::Concat($Resource.Id, '/providers/', $ResourceType)
+            ResourceId     = [String]::Concat($Resource.Id, '/providers/', $ResourceType)
             DefaultProfile = $Context
-            ApiVersion = $ApiVersion
+            ApiVersion     = $ApiVersion
         }
         try {
             Get-AzResource @getParams -ExpandProperties:$ExpandProperties;
@@ -921,11 +921,11 @@ function VisitAPIManagement {
         foreach ($api in $apis) {
             $resources += $api;
             $apiParams = @{
-                Name = "$($Resource.Name)/$($api.Name)"
-                ResourceType = 'Microsoft.ApiManagement/service/apis/policies'
+                Name              = "$($Resource.Name)/$($api.Name)"
+                ResourceType      = 'Microsoft.ApiManagement/service/apis/policies'
                 ResourceGroupName = $Resource.ResourceGroupName
-                DefaultProfile = $Context
-                ApiVersion = '2019-12-01'
+                DefaultProfile    = $Context
+                ApiVersion        = '2019-12-01'
             };
             $resources += Get-AzResource @apiParams;
         }
@@ -983,8 +983,8 @@ function VisitSqlDatabase {
         $resources = @();
         $getParams = @{
             ResourceGroupName = $Resource.ResourceGroupName
-            DefaultProfile = $Context
-            ErrorAction = 'SilentlyContinue'
+            DefaultProfile    = $Context
+            ErrorAction       = 'SilentlyContinue'
         }
         $idParts = $Resource.ResourceId.Split('/');
         $serverName = $idParts[-3];
@@ -1075,12 +1075,12 @@ function VisitAutomationAccount {
         $resources += GetSubResource @PSBoundParameters -ResourceType 'Microsoft.Automation/AutomationAccounts/webhooks' -ApiVersion '2015-10-31';
 
         $diagnosticSettingsResourceParams = @{
-            Name = $Resource.Name
-            ResourceType = 'Microsoft.Automation/automationAccounts/providers/microsoft.insights/diagnosticSettings'
+            Name              = $Resource.Name
+            ResourceType      = 'Microsoft.Automation/automationAccounts/providers/microsoft.insights/diagnosticSettings'
             ResourceGroupName = $Resource.ResourceGroupName
-            DefaultProfile = $Context
-            ExpandProperties = $True
-            ApiVersion = '2021-05-01-preview'
+            DefaultProfile    = $Context
+            ExpandProperties  = $True
+            ApiVersion        = '2021-05-01-preview'
         }
 
         $resources += Get-AzResource @diagnosticSettingsResourceParams
@@ -1480,8 +1480,8 @@ function VisitDataExplorerCluster {
         $resources = @();
         $getParams = @{
             ResourceGroupName = $Resource.ResourceGroupName
-            DefaultProfile = $Context
-            ErrorAction = 'SilentlyContinue'
+            DefaultProfile    = $Context
+            ErrorAction       = 'SilentlyContinue'
         }
         $resources += Get-AzResource @getParams -Name $Resource.Name -ResourceType 'Microsoft.Kusto/clusters/databases' -ApiVersion '2021-08-27' -ExpandProperties;
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
@@ -1501,8 +1501,8 @@ function VisitEventHubNamespaces {
         $resources = @();
         $getParams = @{
             ResourceGroupName = $Resource.ResourceGroupName
-            DefaultProfile = $Context
-            ErrorAction = 'SilentlyContinue'
+            DefaultProfile    = $Context
+            ErrorAction       = 'SilentlyContinue'
         }
         $resources += Get-AzResource @getParams -Name $Resource.Name -ResourceType 'Microsoft.EventHub/namespaces/eventhubs' -ApiVersion '2021-11-01' -ExpandProperties;
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
@@ -1522,8 +1522,8 @@ function VisitServiceBusNamespaces {
         $resources = @();
         $getParams = @{
             ResourceGroupName = $Resource.ResourceGroupName
-            DefaultProfile = $Context
-            ErrorAction = 'SilentlyContinue'
+            DefaultProfile    = $Context
+            ErrorAction       = 'SilentlyContinue'
         }
         $resources += Get-AzResource @getParams -Name $Resource.Name -ResourceType 'Microsoft.ServiceBus/namespaces/queues' -ApiVersion '2021-06-01-preview' -ExpandProperties;
         $resources += Get-AzResource @getParams -Name $Resource.Name -ResourceType 'Microsoft.ServiceBus/namespaces/topics' -ApiVersion '2021-06-01-preview' -ExpandProperties;
@@ -1551,7 +1551,7 @@ function ExpandPolicyAssignment {
             $definition = Get-AzPolicyDefinition -Id $policyDefinitionId -DefaultProfile $Context;
             $policyDefinitions.Add($definition);
         }
-        elseif ($policyDefinitionId -like '/providers/Microsoft.Authorization/policySetDefinitions/*') {
+        elseif ($policyDefinitionId -like '*/providers/Microsoft.Authorization/policySetDefinitions/*') {
             $policySetDefinition = Get-AzPolicySetDefinition -Id $policyDefinitionId -DefaultProfile $Context;
 
             foreach ($definition in $policySetDefinition.Properties.PolicyDefinitions) {

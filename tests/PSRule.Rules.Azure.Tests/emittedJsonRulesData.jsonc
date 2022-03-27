@@ -1,0 +1,319 @@
+[
+    {
+        // Synopsis: Minmum TLS version must be used on Storage accounts
+        "apiVersion": "github.com/microsoft/PSRule/v1",
+        "kind": "Rule",
+        "metadata": {
+            "name": "Deny Storage Account Not Using Minumum TLS version"
+        },
+        "spec": {
+            "condition": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Storage/storageAccounts"
+                    },
+                    {
+                        "field": "properties.minimumTlsVersion",
+                        "notEquals": "TLS1_2"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        // Synopsis: Deploy Log Analytics extension for Linux VMs if the VM Image (OS) is in the list defined and the extension is not installed.
+        "apiVersion": "github.com/microsoft/PSRule/v1",
+        "kind": "Rule",
+        "metadata": {
+            "name": "Deploy Log Analytics extension for Linux VMs"
+        },
+        "spec": {
+            "condition": {
+                "allOf": [
+                    {
+                        "allOf": [
+                            {
+                                "field": "type",
+                                "equals": "Microsoft.Compute/virtualMachines"
+                            },
+                            {
+                                "anyOf": [
+                                    {
+                                        "field": "properties.storageProfile.imageReference.id",
+                                        "in": [
+                                            "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PolicyRG/providers/Microsoft.Compute/galleries/gallery_image/images/image_name/versions/0.0.1"
+                                        ]
+                                    },
+                                    {
+                                        "allOf": [
+                                            {
+                                                "field": "properties.storageProfile.imageReference.publisher",
+                                                "equals": "RedHat"
+                                            },
+                                            {
+                                                "field": "properties.storageProfile.imageReference.offer",
+                                                "in": [
+                                                    "RHEL",
+                                                    "RHEL-SAP-HANA"
+                                                ]
+                                            },
+                                            {
+                                                "anyOf": [
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "6.*"
+                                                    },
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "7*"
+                                                    },
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "8*"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "allOf": [
+                                            {
+                                                "field": "properties.storageProfile.imageReference.publisher",
+                                                "equals": "SUSE"
+                                            },
+                                            {
+                                                "anyOf": [
+                                                    {
+                                                        "allOf": [
+                                                            {
+                                                                "field": "properties.storageProfile.imageReference.offer",
+                                                                "in": [
+                                                                    "SLES",
+                                                                    "SLES-HPC",
+                                                                    "SLES-HPC-Priority",
+                                                                    "SLES-SAP",
+                                                                    "SLES-SAP-BYOS",
+                                                                    "SLES-Priority",
+                                                                    "SLES-BYOS",
+                                                                    "SLES-SAPCAL",
+                                                                    "SLES-Standard"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                                        "like": "12*"
+                                                                    },
+                                                                    {
+                                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                                        "like": "15*"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "allOf": [
+                                                            {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "field": "properties.storageProfile.imageReference.offer",
+                                                                        "like": "sles-12-sp*"
+                                                                    },
+                                                                    {
+                                                                        "field": "properties.storageProfile.imageReference.offer",
+                                                                        "like": "sles-15-sp*"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "field": "properties.storageProfile.imageReference.sku",
+                                                                "in": [
+                                                                    "gen1",
+                                                                    "gen2"
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "allOf": [
+                                            {
+                                                "field": "properties.storageProfile.imageReference.publisher",
+                                                "equals": "Canonical"
+                                            },
+                                            {
+                                                "field": "properties.storageProfile.imageReference.offer",
+                                                "in": [
+                                                    "UbuntuServer",
+                                                    "0001-com-ubuntu-server-focal"
+                                                ]
+                                            },
+                                            {
+                                                "anyOf": [
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "14.04*LTS"
+                                                    },
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "16.04*LTS"
+                                                    },
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "16_04*lts-gen2"
+                                                    },
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "18.04*LTS"
+                                                    },
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "18_04*lts-gen2"
+                                                    },
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "20_04*lts"
+                                                    },
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "20_04*lts-gen2"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "allOf": [
+                                            {
+                                                "field": "properties.storageProfile.imageReference.publisher",
+                                                "equals": "credativ"
+                                            },
+                                            {
+                                                "field": "properties.storageProfile.imageReference.offer",
+                                                "equals": "Debian"
+                                            },
+                                            {
+                                                "anyOf": [
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "8*"
+                                                    },
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "9*"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "allOf": [
+                                            {
+                                                "field": "properties.storageProfile.imageReference.publisher",
+                                                "equals": "Oracle"
+                                            },
+                                            {
+                                                "field": "properties.storageProfile.imageReference.offer",
+                                                "equals": "Oracle-Linux"
+                                            },
+                                            {
+                                                "anyOf": [
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "6.*"
+                                                    },
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "7.*"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "allOf": [
+                                            {
+                                                "field": "properties.storageProfile.imageReference.publisher",
+                                                "equals": "OpenLogic"
+                                            },
+                                            {
+                                                "field": "properties.storageProfile.imageReference.offer",
+                                                "in": [
+                                                    "CentOS",
+                                                    "Centos-LVM",
+                                                    "CentOS-SRIOV"
+                                                ]
+                                            },
+                                            {
+                                                "anyOf": [
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "6.*"
+                                                    },
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "7*"
+                                                    },
+                                                    {
+                                                        "field": "properties.storageProfile.imageReference.sku",
+                                                        "like": "8*"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "allOf": [
+                                            {
+                                                "field": "properties.storageProfile.imageReference.publisher",
+                                                "equals": "cloudera"
+                                            },
+                                            {
+                                                "field": "properties.storageProfile.imageReference.offer",
+                                                "equals": "cloudera-centos-os"
+                                            },
+                                            {
+                                                "field": "properties.storageProfile.imageReference.sku",
+                                                "like": "7*"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "allOf": [
+                            {
+                                "field": "type",
+                                "equals": "Microsoft.Compute/virtualMachines/extensions"
+                            },
+                            {
+                                "allOf": [
+                                    {
+                                        "field": "properties.type",
+                                        "equals": "OmsAgentForLinux"
+                                    },
+                                    {
+                                        "field": "properties.publisher",
+                                        "equals": "Microsoft.EnterpriseCloud.Monitoring"
+                                    },
+                                    {
+                                        "field": "properties.provisioningState",
+                                        "equals": "Succeeded"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+]
