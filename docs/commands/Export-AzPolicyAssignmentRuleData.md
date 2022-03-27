@@ -57,7 +57,7 @@ Currently the following limitations apply:
 ### Example 1
 
 ```powershell
-Export-AzPolicyAssignmentRuleData -Name "policy" -AssignmentFile .\xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.assignment.json
+Export-AzPolicyAssignmentRuleData -Name "policy" -AssignmentFile .\00000000-0000-0000-0000-000000000000.assignment.json
 ```
 
 ```text
@@ -77,7 +77,7 @@ $subscription = @{
   tenantId = 'nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn'
 }
 
-Export-AzPolicyAssignmentRuleData -Name "policy" -AssignmentFile .\xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.assignment.json -Subscription $subscription
+Export-AzPolicyAssignmentRuleData -Name "policy" -AssignmentFile .\00000000-0000-0000-0000-000000000000.assignment.json -Subscription $subscription
 ```
 
 ```text

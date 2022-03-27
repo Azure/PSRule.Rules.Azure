@@ -701,21 +701,21 @@ Describe 'Get-AzPolicyAssignmentSource' -Tag 'Cmdlet', 'Get-AzPolicyAssignmentSo
     }
 
     It 'Get assignment sources from current working directory' {
-        $sources = Get-AzPolicyAssignmentSource;
+        $sources = Get-AzPolicyAssignmentSource | Sort-Object -Property AssignmentFile
         $sources.Length | Should -Be 2;
         $sources[0].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test.assignment.json')
         $sources[1].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test2.assignment.json')
     }
 
     It 'Get assignment sources from tests folder' {
-        $sources = Get-AzPolicyAssignmentSource -Path $here;
+        $sources = Get-AzPolicyAssignmentSource -Path $here | Sort-Object -Property AssignmentFile;
         $sources.Length | Should -Be 2;
         $sources[0].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test.assignment.json');
         $sources[1].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test2.assignment.json');
     }
 
     It 'Pipe to Export-AzPolicyAssignmentRuleData and generate JSON rules' {
-        $result = @(Get-AzPolicyAssignmentSource | Export-AzPolicyAssignmentRuleData -Name 'tests' -OutputPath $outputPath);
+        $result = @(Get-AzPolicyAssignmentSource | Sort-Object -Property AssignmentFile | Export-AzPolicyAssignmentRuleData -Name 'tests' -OutputPath $outputPath);
         $result.Length | Should -Be 1;
         $result | Should -BeOfType System.IO.FileInfo;
         $filename = Split-Path -Path $result.FullName -Leaf;
