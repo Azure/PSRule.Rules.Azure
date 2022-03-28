@@ -110,7 +110,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             Name = name;
             Description = description;
             Value = value;
-            _Parameters = new Dictionary<string, IParameterValue>();
+            _Parameters = new Dictionary<string, IParameterValue>(StringComparer.OrdinalIgnoreCase);
         }
 
         internal void AddParameter(string name, ParameterType type, object value)

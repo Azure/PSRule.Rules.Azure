@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
@@ -20,7 +21,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         public PolicyAliasProviderHelper()
         {
             _AliasProviders = ReadPolicyAliasProviders(DATAFILE_ALIASES);
-            _PolicyRuleType = new Dictionary<string, string>();
+            _PolicyRuleType = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         }
 
         internal void SetPolicyRuleType(string providerNamespace, string resourceType)
