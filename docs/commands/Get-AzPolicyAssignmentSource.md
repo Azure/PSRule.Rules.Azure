@@ -19,6 +19,8 @@ Get-AzPolicyAssignmentSource [[-InputPath] <string[]>] [[-Path] <string>] [<Comm
 
 ## DESCRIPTION
 
+This is an **experimental** cmdlet.
+
 Get policy assignment sources. By default `*.assignment.json` sources are discovered from the current
 working directory.
 

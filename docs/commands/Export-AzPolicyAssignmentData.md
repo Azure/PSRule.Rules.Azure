@@ -39,6 +39,8 @@ Export-AzPolicyAssignmentData -IncludeDescendent [-Scope <string>] [-OutputPath 
 
 ## DESCRIPTION
 
+This is an **experimental** cmdlet.
+
 Export policy assignment data.
 
 By default the current subscription context will be exported. i.e `Get-AzContext`

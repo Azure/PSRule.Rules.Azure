@@ -21,6 +21,8 @@ Export-AzPolicyAssignmentRuleData [[-Name] <string>] [-AssignmentFile] <string> 
 
 ## DESCRIPTION
 
+This is an **experimental** cmdlet.
+
 Export JSON based rules from policy assignment data.
 
 Policy assignment data generated from `Export-AzPolicyAssignmentData` is used to generate JSON rules.
