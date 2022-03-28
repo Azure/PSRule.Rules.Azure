@@ -451,6 +451,37 @@ namespace PSRule.Rules.Azure
             Assert.Equal("pe-sabicep002", actual["name"].Value<string>());
         }
 
+        [Fact]
+        public void WithOutputsWithSplit()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.3.json"), null);
+            Assert.NotNull(resources);
+            Assert.Equal(6, resources.Length);
+
+            var actual = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+
+            actual = resources[1];
+            Assert.Equal("Microsoft.Storage/storageAccounts", actual["type"].Value<string>());
+            Assert.Equal("storage1", actual["name"].Value<string>());
+
+            actual = resources[2];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.Equal("pe_deploy", actual["name"].Value<string>());
+
+            actual = resources[3];
+            Assert.Equal("Microsoft.Network/privateEndpoints", actual["type"].Value<string>());
+            Assert.Equal("pe-storage1", actual["name"].Value<string>());
+
+            actual = resources[4];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.Equal("pe_dns_deploy", actual["name"].Value<string>());
+
+            actual = resources[5];
+            Assert.Equal("Microsoft.Network/privateDnsZones/A", actual["type"].Value<string>());
+            Assert.Equal("privatelink.blob.core.windows.net/storage1", actual["name"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
