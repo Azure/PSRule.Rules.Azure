@@ -1,0 +1,181 @@
+[
+  {
+    "Identity": {
+      "PrincipalId": "00000000-0000-0000-0000-000000000000",
+      "TenantId": "00000000-0000-0000-0000-000000000000",
+      "IdentityType": "SystemAssigned",
+      "UserAssignedIdentities": null
+    },
+    "Location": "eastus",
+    "Name": "000000000000000000000000",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "ResourceName": "000000000000000000000000",
+    "ResourceGroupName": null,
+    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Sku": null,
+    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "Properties": {
+      "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+      "NotScopes": [],
+      "DisplayName": "FunctionAppPullFromSpecifiedRegistry",
+      "Description": null,
+      "Metadata": {
+        "assignedBy": "Armaan Dhaliwal-McLeod",
+        "parameterScopes": {},
+        "createdBy": "00000000-0000-0000-0000-000000000000",
+        "createdOn": "2022-03-28T12:46:12.9565807Z",
+        "updatedBy": null,
+        "updatedOn": null
+      },
+      "EnforcementMode": 0,
+      "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000000",
+      "Parameters": {
+        "registryName": {
+          "value": "acrtest"
+        }
+      },
+      "NonComplianceMessages": []
+    },
+    "PolicyDefinitions": [
+      {
+        "Name": "00000000-0000-0000-0000-000000000000",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000000",
+        "ResourceName": "0000000000-0000-0000-0000-000000000000",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+          "Description": "Function app must pull from specified registry",
+          "DisplayName": "FunctionAppPullFromSpecifiedRegistry",
+          "Metadata": {
+            "version": "1.0.0",
+            "category": "App Service",
+            "createdBy": "0000000000-0000-0000-0000-000000000000",
+            "createdOn": "2022-03-28T12:44:20.6424105Z",
+            "updatedBy": null,
+            "updatedOn": null
+          },
+          "Mode": "Indexed",
+          "Parameters": {
+            "effect": {
+              "type": "String",
+              "metadata": {
+                "displayName": "Effect",
+                "description": "Enable or disable the execution of the policy"
+              },
+              "allowedValues": [
+                "AuditIfNotExists",
+                "DeployIfNotExists",
+                "Disabled"
+              ],
+              "defaultValue": "AuditIfNotExists"
+            },
+            "registryName": {
+              "type": "String",
+              "metadata": {
+                "displayName": "Registry name",
+                "description": "The name of the Azure Container Registry instance from which the function app is allowed to pull images."
+              }
+            },
+            "defaultRepositoryAndTag": {
+              "type": "String",
+              "metadata": {
+                "displayName": "DefaultRepositoryAndTag",
+                "description": "A default image name for the application to use against the registry if this policy will deploy a remediation. A tag may optionally be specified by appending a ':' character and the tag name."
+              },
+              "defaultValue": "defaultSetByAzurePolicy"
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.Web/sites"
+                },
+                {
+                  "field": "kind",
+                  "contains": "functionapp"
+                }
+              ]
+            },
+            "then": {
+              "effect": "[parameters('effect')]",
+              "details": {
+                "type": "Microsoft.Web/sites/config",
+                "name": "web",
+                "existenceCondition": {
+                  "anyOf": [
+                    {
+                      "field": "Microsoft.Web/sites/config/linuxFxVersion",
+                      "like": "[concat('DOCKER|',parameters('registryName'), '.azurecr.io/*')]"
+                    },
+                    {
+                      "field": "Microsoft.Web/sites/config/linuxFxVersion",
+                      "notLike": "DOCKER|*"
+                    }
+                  ]
+                },
+                "roleDefinitionIds": [
+                  "/providers/Microsoft.Authorization/roleDefinitions/de139f84-1756-47ae-9be6-808fbbe84772"
+                ],
+                "deployment": {
+                  "properties": {
+                    "mode": "incremental",
+                    "parameters": {
+                      "siteName": {
+                        "value": "[field('name')]"
+                      },
+                      "location": {
+                        "value": "[field('location')]"
+                      },
+                      "defaultRepositoryAndTag": {
+                        "value": "[parameters('defaultRepositoryAndTag')]"
+                      },
+                      "registryName": {
+                        "value": "[parameters('registryName')]"
+                      }
+                    },
+                    "template": {
+                      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                      "contentVersion": "1.0.0.0",
+                      "parameters": {
+                        "siteName": {
+                          "type": "string"
+                        },
+                        "location": {
+                          "type": "string"
+                        },
+                        "registryName": {
+                          "type": "string"
+                        },
+                        "defaultRepositoryAndTag": {
+                          "type": "string"
+                        }
+                      },
+                      "variables": {},
+                      "resources": [
+                        {
+                          "type": "Microsoft.Web/sites/config",
+                          "name": "[concat(parameters('siteName'), '/web')]",
+                          "apiVersion": "2021-02-01",
+                          "location": "[parameters('location')]",
+                          "tags": {},
+                          "properties": {
+                            "linuxFxVersion": "[concat('DOCKER|',parameters('registryName'), '.azurecr.io/', parameters('defaultRepositoryAndTag'))]"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "PolicyType": 1
+        },
+        "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
+]

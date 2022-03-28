@@ -661,33 +661,40 @@ Describe 'Export-AzPolicyAssignmentData' -Tag 'Cmdlet', 'Export-AzPolicyAssignme
 
 Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssignmentRuleData' {
     BeforeAll {
-        $assignmentFile1 = Join-Path -Path $here -ChildPath 'test.assignment.json';
-        $assignmentFile2 = Join-Path -Path $here -ChildPath 'test2.assignment.json';
         $emittedJsonRulesDataFile = Join-Path -Path $here -ChildPath 'emittedJsonRulesData.jsonc';
         $jsonRulesData = ((Get-Content -Path $emittedJsonRulesDataFile) -replace '^\s*//.*') | ConvertFrom-Json;
     }
 
-    It 'Emit JSON rules' {
-        # First JSON Rule
-        $result = @(Export-AzPolicyAssignmentRuleData -Name 'test' -AssignmentFile $assignmentFile1 -OutputPath $outputPath);
-        $result.Length | Should -Be 1;
-        $result | Should -BeOfType System.IO.FileInfo;
-        $filename = Split-Path -Path $result.FullName -Leaf;
-        $filename | Should -BeExactly "definitions-test.Rule.jsonc";
-        $resultJson = ((Get-Content -Path $result.FullName) -replace '^\s*//.*') | ConvertFrom-Json;
-        $compressedResult = $resultJson | ConvertTo-Json -Depth 100 -Compress;
-        $compressedExpected = $jsonRulesData[0] | ConvertTo-Json -Depth 100 -Compress;
-        $compressedResult | Should -BeExactly $compressedExpected;
+    BeforeDiscovery {
+        $here = (Resolve-Path $PSScriptRoot).Path;
+    }
 
-        # Second JSON Rule
-        $result = @(Export-AzPolicyAssignmentRuleData -Name 'test2' -AssignmentFile $assignmentFile2 -OutputPath $outputPath);
+    It "Emit JSON rules from '<AssignmentFile>'" -TestCases @(
+        @{
+            Name           = 'test'
+            Index          = 0
+            AssignmentFile = (Join-Path -Path $here -ChildPath 'test.assignment.json')
+        }
+        @{
+            Name           = 'test2'
+            Index          = 1
+            AssignmentFile = (Join-Path -Path $here -ChildPath 'test2.assignment.json')
+        }
+        @{
+            Name           = 'test3'
+            Index          = 2
+            AssignmentFile = (Join-Path -Path $here -ChildPath 'test3.assignment.json')
+        }
+    ) {
+        param($Name, $Index, $AssignmentFile)
+        $result = @(Export-AzPolicyAssignmentRuleData -Name $Name -AssignmentFile $AssignmentFile -OutputPath $outputPath);
         $result.Length | Should -Be 1;
         $result | Should -BeOfType System.IO.FileInfo;
         $filename = Split-Path -Path $result.FullName -Leaf;
-        $filename | Should -BeExactly "definitions-test2.Rule.jsonc";
+        $filename | Should -BeExactly "definitions-$Name.Rule.jsonc";
         $resultJson = ((Get-Content -Path $result.FullName) -replace '^\s*//.*') | ConvertFrom-Json;
         $compressedResult = $resultJson | ConvertTo-Json -Depth 100 -Compress;
-        $compressedExpected = $jsonRulesData[1] | ConvertTo-Json -Depth 100 -Compress;
+        $compressedExpected = $jsonRulesData[$Index] | ConvertTo-Json -Depth 100 -Compress;
         $compressedResult | Should -BeExactly $compressedExpected;
     }
 }
@@ -704,16 +711,18 @@ Describe 'Get-AzPolicyAssignmentDataSource' -Tag 'Cmdlet', 'Get-AzPolicyAssignme
 
     It 'Get assignment sources from current working directory' {
         $sources = Get-AzPolicyAssignmentDataSource | Sort-Object -Property AssignmentFile
-        $sources.Length | Should -Be 2;
-        $sources[0].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test.assignment.json')
-        $sources[1].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test2.assignment.json')
+        $sources.Length | Should -Be 3;
+        $sources[0].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test.assignment.json');
+        $sources[1].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test2.assignment.json');
+        $sources[2].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test3.assignment.json');
     }
 
     It 'Get assignment sources from tests folder' {
         $sources = Get-AzPolicyAssignmentDataSource -Path $here | Sort-Object -Property AssignmentFile;
-        $sources.Length | Should -Be 2;
+        $sources.Length | Should -Be 3;
         $sources[0].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test.assignment.json');
         $sources[1].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test2.assignment.json');
+        $sources[2].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test3.assignment.json');
     }
 
     It 'Pipe to Export-AzPolicyAssignmentRuleData and generate JSON rules' {
