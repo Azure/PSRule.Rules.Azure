@@ -434,7 +434,7 @@ function Export-AzPolicyAssignmentRuleData {
     }
 }
 
-function Get-AzPolicyAssignmentSource {
+function Get-AzPolicyAssignmentDataSource {
     [CmdletBinding(DefaultParameterSetName = 'Default')]
     [OutputType([PSRule.Rules.Azure.Pipeline.PolicyAssignmentSource])]
     param (
@@ -448,7 +448,7 @@ function Get-AzPolicyAssignmentSource {
         [String]$Path = $PWD
     )
     begin {
-        Write-Verbose -Message '[Get-AzPolicyAssignmentSource] BEGIN::';
+        Write-Verbose -Message '[Get-AzPolicyAssignmentDataSource] BEGIN::';
 
         # Build the pipeline
         $builder = [PSRule.Rules.Azure.Pipeline.PipelineBuilder]::AssignmentSearch($Path);
@@ -487,7 +487,7 @@ function Get-AzPolicyAssignmentSource {
                 $pipeline.Dispose();
             }
         }
-        Write-Verbose -Message '[Get-AzPolicyAssignmentSource] END::';
+        Write-Verbose -Message '[Get-AzPolicyAssignmentDataSource] END::';
     }
 }
 
@@ -1649,7 +1649,7 @@ Export-ModuleMember -Function @(
     'Get-AzRuleTemplateLink'
     'Export-AzPolicyAssignmentData'
     'Export-AzPolicyAssignmentRuleData'
-    'Get-AzPolicyAssignmentSource'
+    'Get-AzPolicyAssignmentDataSource'
 );
 
 Export-ModuleMember -Alias @(

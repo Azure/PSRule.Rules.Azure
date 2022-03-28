@@ -93,7 +93,7 @@ Export JSON rules to file in current working directory using a specific subscrip
 ### Example 3
 
 ```powershell
-Get-AzPolicyAssignmentSource | Export-AzPolicyAssignmentRuleData
+Get-AzPolicyAssignmentDataSource | Export-AzPolicyAssignmentRuleData
 ```
 
 ```text

@@ -19,7 +19,7 @@ What's changed since pre-release v1.14.0-B2203088:
 - **Experimental**: Cmdlets to validate objects with Azure policy conditions:
   - `Export-AzPolicyAssignmentData` - Exports policy assignment data. [#1266](https://github.com/Azure/PSRule.Rules.Azure/issues/1266)
   - `Export-AzPolicyAssignmentRuleData` - Exports JSON rules from policy assignment data. [#1278](https://github.com/Azure/PSRule.Rules.Azure/issues/1278)
-  - `Get-AzPolicyAssignmentSource` - Discovers policy assignment data. [#1340](https://github.com/Azure/PSRule.Rules.Azure/issues/1340)
+  - `Get-AzPolicyAssignmentDataSource` - Discovers policy assignment data. [#1340](https://github.com/Azure/PSRule.Rules.Azure/issues/1340)
   - See cmdlet help for limitations and usage.
 - Engineering:
   - Cache Azure Policy Aliases. [#1277](https://github.com/Azure/PSRule.Rules.Azure/issues/1277)

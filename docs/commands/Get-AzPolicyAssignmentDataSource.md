@@ -1,11 +1,11 @@
 ---
 external help file: PSRule.Rules.Azure-help.xml
 Module Name: PSRule.Rules.Azure
-online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/commands/Get-AzPolicyAssignmentSource.md
+online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/commands/Get-AzPolicyAssignmentDataSource.md
 schema: 2.0.0
 ---
 
-# Get-AzPolicyAssignmentSource
+# Get-AzPolicyAssignmentDataSource
 
 ## SYNOPSIS
 
@@ -14,7 +14,7 @@ Get policy assignment sources.
 ## SYNTAX
 
 ```text
-Get-AzPolicyAssignmentSource [[-InputPath] <string[]>] [[-Path] <string>] [<CommonParameters>]
+Get-AzPolicyAssignmentDataSource [[-InputPath] <string[]>] [[-Path] <string>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,7 @@ working directory.
 ### Example 1
 
 ```powershell
-Get-AzPolicyAssignmentSource
+Get-AzPolicyAssignmentDataSource
 ```
 
 ```text
