@@ -5,7 +5,7 @@ using System;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace PSRule
+namespace PSRule.Rules.Azure
 {
     internal sealed class JsonCommentWriter : JsonTextWriter
     {
