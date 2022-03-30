@@ -1,0 +1,140 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.4.1318.3566",
+      "templateHash": "5906385005268650784"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-02-01",
+      "name": "storage1",
+      "location": "eastus",
+      "kind": "StorageV2",
+      "sku": {
+        "name": "Premium_LRS"
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "pe_deploy",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "storageAccountName": {
+            "value": "storage1"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.4.1318.3566",
+              "templateHash": "11099921060564112756"
+            }
+          },
+          "parameters": {
+            "storageAccountName": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Network/privateEndpoints",
+              "apiVersion": "2021-05-01",
+              "name": "[format('pe-{0}', parameters('storageAccountName'))]",
+              "properties": {
+                "privateLinkServiceConnections": [
+                  {
+                    "name": "blobpe",
+                    "properties": {
+                      "groupIds": [
+                        "blob"
+                      ],
+                      "privateLinkServiceId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "outputs": {
+            "nicId": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('storageAccountName')))).networkInterfaces[0].id]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', 'storage1')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "pe_dns_deploy",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "storageAccountName": {
+            "value": "storage1"
+          },
+          "nicId": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'pe_deploy')).outputs.nicId.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.4.1318.3566",
+              "templateHash": "4917512018750506523"
+            }
+          },
+          "parameters": {
+            "nicId": {
+              "type": "string"
+            },
+            "storageAccountName": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Network/privateDnsZones/A",
+              "apiVersion": "2020-06-01",
+              "name": "[format('privatelink.blob.core.windows.net/{0}', parameters('storageAccountName'))]",
+              "properties": {
+                "aRecords": [
+                  {
+                    "ipv4Address": "[reference(resourceId('Microsoft.Network/networkInterfaces', split(parameters('nicId'), '/')[8]), '2021-05-01').ipConfigurations[0].properties.privateIPAddress]"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'pe_deploy')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', 'storage1')]"
+      ]
+    }
+  ]
+}

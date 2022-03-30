@@ -1561,16 +1561,28 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 3)
                 throw ArgumentsOutOfRange(nameof(Replace), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out var originalString) || !ExpressionHelpers.TryString(args[1], out var oldString) || !ExpressionHelpers.TryString(args[2], out var newString))
-                throw new ArgumentException();
+            if (!ExpressionHelpers.TryString(args[0], out var originalString) ||
+                !ExpressionHelpers.TryString(args[1], out var oldString) ||
+                !ExpressionHelpers.TryString(args[2], out var newString))
+                throw ArgumentFormatInvalid(nameof(Replace));
 
             return originalString.Replace(oldString, newString);
         }
 
+        /// <summary>
+        /// split(inputString, delimiter)
+        /// </summary>
         internal static object Split(ITemplateContext context, object[] args)
         {
-            if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out var value))
-                throw new ArgumentOutOfRangeException();
+            if (args == null || args.Length != 2)
+                throw ArgumentsOutOfRange(nameof(Split), args);
+
+            if (!ExpressionHelpers.TryString(args[0], out var inputString))
+                throw ArgumentInvalidString(nameof(Split), "inputString");
+
+            // Handle mocks to prevent exception
+            if (inputString.StartsWith("{{", StringComparison.OrdinalIgnoreCase) && inputString.EndsWith("}}", StringComparison.OrdinalIgnoreCase))
+                return new MockArray(null, null);
 
             string[] delimiter = null;
             if (ExpressionHelpers.TryString(args[1], out var single))
@@ -1587,9 +1599,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 delimiter = jArray.Values<string>().ToArray();
             }
             else
-                throw new ArgumentException();
+                throw ArgumentFormatInvalid(nameof(Split));
 
-            return new JArray(value.Split(delimiter, StringSplitOptions.None));
+            return new JArray(inputString.Split(delimiter, StringSplitOptions.None));
         }
 
         #endregion String
@@ -1722,6 +1734,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region Exceptions
 
+        /// <summary>
+        /// The number of arguments '{1}' is not within the allowed range for '{0}'.
+        /// </summary>
         private static ExpressionArgumentException ArgumentsOutOfRange(string expression, object[] args)
         {
             var length = args == null ? 0 : args.Length;
@@ -1731,6 +1746,9 @@ namespace PSRule.Rules.Azure.Data.Template
             );
         }
 
+        /// <summary>
+        /// The arguments for '{0}' are not in the expected format or type.
+        /// </summary>
         private static ExpressionArgumentException ArgumentFormatInvalid(string expression)
         {
             return new ExpressionArgumentException(
@@ -1739,6 +1757,9 @@ namespace PSRule.Rules.Azure.Data.Template
             );
         }
 
+        /// <summary>
+        /// The argument '{0}' for '{1}' is not a valid integer.
+        /// </summary>
         private static ExpressionArgumentException ArgumentInvalidInteger(string expression, string operand)
         {
             return new ExpressionArgumentException(
@@ -1747,6 +1768,9 @@ namespace PSRule.Rules.Azure.Data.Template
             );
         }
 
+        /// <summary>
+        /// The argument '{0}' for '{1}' is not a valid boolean.
+        /// </summary>
         private static ExpressionArgumentException ArgumentInvalidBoolean(string expression, string operand)
         {
             return new ExpressionArgumentException(
@@ -1755,6 +1779,9 @@ namespace PSRule.Rules.Azure.Data.Template
             );
         }
 
+        /// <summary>
+        /// The argument '{0}' for '{1}' is not a valid string.
+        /// </summary>
         private static ExpressionArgumentException ArgumentInvalidString(string expression, string operand)
         {
             return new ExpressionArgumentException(
