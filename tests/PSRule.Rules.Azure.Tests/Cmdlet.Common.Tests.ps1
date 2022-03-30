@@ -543,13 +543,11 @@ Describe 'Export-AzPolicyAssignmentData' -Tag 'Cmdlet', 'Export-AzPolicyAssignme
                     [PSCustomObject]@{
                         Location           = 'eastus'
                         Name               = '000000000000000000000000'
-                        ResourceId         = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssign 
-                    ments/000000000000000000000000'
+                        ResourceId         = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000'
                         ResourceName       = '000000000000000000000000'
                         ResourceType       = 'Microsoft.Authorization/policyAssignments'
                         SubscriptionId     = '00000000-0000-0000-0000-000000000000'
-                        PolicyAssignmentId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssign 
-                    ments/000000000000000000000000'
+                        PolicyAssignmentId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000'
                         Properties         = [PSCustomObject]@{
                             Scope                 = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG'
                             NotScopes             = [PSCustomObject]@{}
@@ -564,21 +562,18 @@ Describe 'Export-AzPolicyAssignmentData' -Tag 'Cmdlet', 'Export-AzPolicyAssignme
                     [PSCustomObject]@{
                         Location           = 'eastus'
                         Name               = '000000000000000000000001'
-                        ResourceId         = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssign 
-                    ments/000000000000000000000001'
+                        ResourceId         = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/000000000000000000000001'
                         ResourceName       = '000000000000000000000001'
                         ResourceType       = 'Microsoft.Authorization/policyAssignments'
                         SubscriptionId     = '00000000-0000-0000-0000-000000000000'
-                        PolicyAssignmentId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssign 
-                    ments/000000000000000000000000'
+                        PolicyAssignmentId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000'
                         Properties         = [PSCustomObject]@{
                             Scope                 = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG'
                             NotScopes             = [PSCustomObject]@{}
                             DisplayName           = 'Upgrade to the latest TLS version for PaaS services'
                             Description           = 'Upgrade to the latest TLS version for PaaS services'
                             EnforcementMode       = 'Default'
-                            PolicyDefinitionId    = '/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/000000000000 
-                            4eada7d6fb41'
+                            PolicyDefinitionId    = '/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/000000000000'
                             Parameters            = [PSCustomObject]@{}
                             NonComplianceMessages = [PSCustomObject]@{}
                         }
