@@ -9,33 +9,6 @@ using PSRule.Rules.Azure.Data.Template;
 
 namespace PSRule.Rules.Azure.Pipeline
 {
-    public interface ITemplateLinkPipelineBuilder : IPipelineBuilder
-    {
-        void SkipUnlinked(bool skipUnlinked);
-    }
-
-    internal sealed class TemplateLinkPipelineBuilder : PipelineBuilderBase, ITemplateLinkPipelineBuilder
-    {
-        private readonly string _BasePath;
-
-        private bool _SkipUnlinked;
-
-        internal TemplateLinkPipelineBuilder(string basePath)
-        {
-            _BasePath = basePath;
-        }
-
-        public void SkipUnlinked(bool skipUnlinked)
-        {
-            _SkipUnlinked = skipUnlinked;
-        }
-
-        public override IPipeline Build()
-        {
-            return new TemplateLinkPipeline(PrepareContext(), _BasePath, _SkipUnlinked);
-        }
-    }
-
     internal sealed class TemplateLinkPipeline : PipelineBase
     {
         private const string DEFAULT_TEMPLATESEARCH_PATTERN = "*.parameters.json";
@@ -54,7 +27,7 @@ namespace PSRule.Rules.Azure.Pipeline
 
         public override void Process(PSObject sourceObject)
         {
-            if (sourceObject == null || !GetPath(sourceObject, out var path))
+            if (sourceObject == null || !sourceObject.GetPath(out var path))
                 return;
 
             _PathBuilder.Add(path);
@@ -82,22 +55,6 @@ namespace PSRule.Rules.Azure.Pipeline
             {
                 Context.Writer.WriteError(ex, nameof(PipelineException), ErrorCategory.WriteError, parameterFile);
             }
-        }
-
-        private static bool GetPath(PSObject sourceObject, out string path)
-        {
-            path = null;
-            if (sourceObject.BaseObject is string s)
-            {
-                path = s;
-                return true;
-            }
-            if (sourceObject.BaseObject is FileInfo info && info.Extension == ".json")
-            {
-                path = info.FullName;
-                return true;
-            }
-            return false;
         }
     }
 }

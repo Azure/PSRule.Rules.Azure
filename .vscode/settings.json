@@ -30,6 +30,7 @@
     },
     "cSpell.words": [
         "Architected",
+        "Concat",
         "Hashtable",
         "Kubernetes",
         "NSGs",
@@ -39,6 +40,7 @@
         "APPGW",
         "AUTOMATIONACCOUNT",
         "RBAC",
+        "POLICYDEFINITIONID",
         "PUBLICIP",
         "REDISENTERPRISECACHE",
         "REDISCACHE",
@@ -81,6 +83,9 @@
         "yml"
     ],
     "[csharp]": { 
+        "editor.formatOnSave": true
+    },
+    "[powershell]": {
         "editor.formatOnSave": true
     },
     "omnisharp.enableImportCompletion": true,

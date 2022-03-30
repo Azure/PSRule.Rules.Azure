@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.IO;
 using System.Management.Automation;
 
 namespace PSRule.Rules.Azure
@@ -18,6 +19,22 @@ namespace PSRule.Rules.Azure
             if (o.Properties[name]?.Value is T tValue)
             {
                 value = tValue;
+                return true;
+            }
+            return false;
+        }
+
+        internal static bool GetPath(this PSObject sourceObject, out string path)
+        {
+            path = null;
+            if (sourceObject.BaseObject is string s)
+            {
+                path = s;
+                return true;
+            }
+            if (sourceObject.BaseObject is FileInfo info && info.Extension == ".json")
+            {
+                path = info.FullName;
                 return true;
             }
             return false;

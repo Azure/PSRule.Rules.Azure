@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using Newtonsoft.Json;
+using PSRule.Rules.Azure.Data.Policy;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
@@ -220,6 +221,190 @@ namespace PSRule.Rules.Azure
                 reader.Read();
             }
             return result.ToArray();
+        }
+    }
+
+    internal sealed class PolicyAliasProviderConverter : JsonConverter
+    {
+        public override bool CanRead => true;
+
+        public override bool CanWrite => false;
+
+        private const string PROPERTY_APIVERSIONS = "apiVersions";
+        private const string PROPERTY_LOCATIONS = "locations";
+        private const string PROPERTY_ALIASMAPPINGS = "aliasMappings";
+
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(PolicyAliasProvider);
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            var aliasProvider = existingValue as PolicyAliasProvider ?? new PolicyAliasProvider();
+            ReadAliasProvider(aliasProvider, reader);
+            return aliasProvider;
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ReadAliasProvider(PolicyAliasProvider aliasProvider, JsonReader reader)
+        {
+            if (reader.TokenType != JsonToken.StartObject)
+                throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
+
+            string propertyName = null;
+
+            reader.Read();
+            while (reader.TokenType != JsonToken.EndObject)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.PropertyName:
+                        propertyName = reader.Value.ToString();
+                        break;
+
+                    case JsonToken.StartObject:
+                        var resourceType = ReadAliasResourceType(reader);
+                        aliasProvider.Providers.Add(propertyName, resourceType);
+                        break;
+                }
+                reader.Read();
+            }
+        }
+
+        private static PolicyAliasResourceType ReadAliasResourceType(JsonReader reader)
+        {
+            if (reader.TokenType != JsonToken.StartObject)
+                throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
+
+            var aliasResourceType = new PolicyAliasResourceType();
+
+            string propertyName = null;
+
+            reader.Read();
+            while (reader.TokenType != JsonToken.EndObject)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.PropertyName:
+                        propertyName = reader.Value.ToString();
+                        break;
+
+                    case JsonToken.StartObject:
+                        var aliasMapping = ReadAliasMapping(reader);
+                        aliasResourceType.ResourceTypes.Add(propertyName, aliasMapping);
+                        break;
+                }
+                reader.Read();
+            }
+
+            return aliasResourceType;
+        }
+
+        private static PolicyAliasMapping ReadAliasMapping(JsonReader reader)
+        {
+            if (reader.TokenType != JsonToken.StartObject)
+                throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
+
+            string propertyName = null;
+
+            var aliasMapping = new PolicyAliasMapping();
+
+            reader.Read();
+
+            while (reader.TokenType != JsonToken.EndObject)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.PropertyName:
+                        propertyName = reader.Value.ToString();
+                        break;
+
+                    case JsonToken.StartArray:
+                        if (propertyName.Equals(PROPERTY_LOCATIONS, StringComparison.OrdinalIgnoreCase))
+                            ReadStringArray(aliasMapping.Locations, reader);
+
+                        else if (propertyName.Equals(PROPERTY_APIVERSIONS, StringComparison.OrdinalIgnoreCase))
+                            ReadStringArray(aliasMapping.ApiVersions, reader);
+
+                        break;
+
+                    // Handle cases where locations or apiVersion are not in an array
+                    case JsonToken.String:
+                        var stringValue = reader.Value.ToString();
+
+                        if (propertyName.Equals(PROPERTY_LOCATIONS, StringComparison.OrdinalIgnoreCase))
+                            aliasMapping.Locations.Add(stringValue);
+
+                        else if (propertyName.Equals(PROPERTY_APIVERSIONS, StringComparison.OrdinalIgnoreCase))
+                            aliasMapping.ApiVersions.Add(stringValue);
+
+                        break;
+
+                    case JsonToken.StartObject:
+                        if (propertyName.Equals(PROPERTY_ALIASMAPPINGS, StringComparison.OrdinalIgnoreCase))
+                        {
+                            reader.Read();
+
+                            string keyName = null;
+                            while (reader.TokenType != JsonToken.EndObject)
+                            {
+                                switch (reader.TokenType)
+                                {
+                                    case JsonToken.PropertyName:
+                                        keyName = reader.Value.ToString();
+                                        break;
+
+                                    case JsonToken.String:
+                                        aliasMapping.AliasMappings.Add(keyName, reader.Value.ToString());
+                                        break;
+                                }
+                                reader.Read();
+                            }
+                        }
+                        break;
+                }
+                reader.Read();
+            }
+
+            return aliasMapping;
+        }
+
+        private static void ReadStringArray(IList<string> collection, JsonReader reader)
+        {
+            reader.Read();
+            while (reader.TokenType != JsonToken.EndArray)
+            {
+                var item = reader.Value.ToString();
+                collection.Add(item);
+                reader.Read();
+            }
+        }
+    }
+
+    internal sealed class PolicyDefinitionConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(PolicyDefinition);
+        }
+
+        public override bool CanWrite => true;
+
+        public override bool CanRead => false;
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            PolicyJsonRuleMapper.MapRule(writer, serializer, value as PolicyDefinition);
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
         }
     }
 

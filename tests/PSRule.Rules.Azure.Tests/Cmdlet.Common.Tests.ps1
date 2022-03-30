@@ -36,11 +36,11 @@ BeforeAll {
                 (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
                     [PSCustomObject]@{
                         Subscription = [PSCustomObject]@{
-                            Id = '00000000-0000-0000-0000-000000000001'
-                            Name = 'Test subscription 1'
+                            Id    = '00000000-0000-0000-0000-000000000001'
+                            Name  = 'Test subscription 1'
                             State = 'Enabled'
                         }
-                        Tenant = [PSCustomObject]@{
+                        Tenant       = [PSCustomObject]@{
                             Id = '00000000-0000-0000-0000-000000000001'
                         }
                     }
@@ -48,11 +48,11 @@ BeforeAll {
                 (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
                     [PSCustomObject]@{
                         Subscription = [PSCustomObject]@{
-                            Id = '00000000-0000-0000-0000-000000000002'
-                            Name = 'Test subscription 2'
+                            Id    = '00000000-0000-0000-0000-000000000002'
+                            Name  = 'Test subscription 2'
                             State = 'Enabled'
                         }
-                        Tenant = [PSCustomObject]@{
+                        Tenant       = [PSCustomObject]@{
                             Id = '00000000-0000-0000-0000-000000000002'
                         }
                     }
@@ -60,11 +60,11 @@ BeforeAll {
                 (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
                     [PSCustomObject]@{
                         Subscription = [PSCustomObject]@{
-                            Id = '00000000-0000-0000-0000-000000000003'
-                            Name = 'Test subscription 3'
+                            Id    = '00000000-0000-0000-0000-000000000003'
+                            Name  = 'Test subscription 3'
                             State = 'Enabled'
                         }
-                        Tenant = [PSCustomObject]@{
+                        Tenant       = [PSCustomObject]@{
                             Id = '00000000-0000-0000-0000-000000000002'
                         }
                     }
@@ -79,11 +79,11 @@ BeforeAll {
                 (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
                     [PSCustomObject]@{
                         Subscription = [PSCustomObject]@{
-                            Id = '00000000-0000-0000-0000-000000000001'
-                            Name = 'Test subscription 1'
+                            Id    = '00000000-0000-0000-0000-000000000001'
+                            Name  = 'Test subscription 1'
                             State = 'Enabled'
                         }
-                        Tenant = [PSCustomObject]@{
+                        Tenant       = [PSCustomObject]@{
                             Id = '00000000-0000-0000-0000-000000000001'
                         }
                     }
@@ -92,23 +92,23 @@ BeforeAll {
         }
     }
 
-#endregion Mocks
+    #endregion Mocks
 }
 
 #region Export-AzRuleData
 
-Describe 'Export-AzRuleData' -Tag 'Cmdlet','Export-AzRuleData' {
+Describe 'Export-AzRuleData' -Tag 'Cmdlet', 'Export-AzRuleData' {
     Context 'With defaults' {
         BeforeAll {
             Mock -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith ${function:MockContext};
             Mock -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith {
                 return @(
                     [PSCustomObject]@{
-                        Name = 'Resource1'
+                        Name         = 'Resource1'
                         ResourceType = ''
                     }
                     [PSCustomObject]@{
-                        Name = 'Resource2'
+                        Name         = 'Resource2'
                         ResourceType = ''
                     }
                 )
@@ -150,14 +150,14 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet','Export-AzRuleData' {
             Mock -CommandName 'GetAzureResource' -ModuleName 'PSRule.Rules.Azure' -MockWith {
                 return @(
                     [PSCustomObject]@{
-                        Name = 'Resource1'
+                        Name              = 'Resource1'
                         ResourceGroupName = 'rg-test-1'
-                        ResourceType = ''
+                        ResourceType      = ''
                     }
                     [PSCustomObject]@{
-                        Name = 'Resource2'
+                        Name              = 'Resource2'
                         ResourceGroupName = 'rg-test-2'
-                        ResourceType = ''
+                        ResourceType      = ''
                     }
                 )
             }
@@ -213,18 +213,18 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet','Export-AzRuleData' {
             Mock -CommandName 'Get-AzResource' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith {
                 return @(
                     [PSCustomObject]@{
-                        Name = 'Resource1'
+                        Name         = 'Resource1'
                         ResourceType = 'Microsoft.Network/connections'
-                        Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn001'
-                        ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn001'
-                        Properties = [PSCustomObject]@{ sharedKey = 'test123' }
+                        Id           = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn001'
+                        ResourceId   = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn001'
+                        Properties   = [PSCustomObject]@{ sharedKey = 'test123' }
                     }
                     [PSCustomObject]@{
-                        Name = 'Resource2'
+                        Name         = 'Resource2'
                         ResourceType = 'Microsoft.Network/connections'
-                        Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn002'
-                        ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn002'
-                        Properties = [PSCustomObject]@{ dummy = 'value' }
+                        Id           = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn002'
+                        ResourceId   = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/connections/cn002'
+                        Properties   = [PSCustomObject]@{ dummy = 'value' }
                     }
                 )
             }
@@ -240,18 +240,18 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet','Export-AzRuleData' {
             Mock -CommandName 'Get-AzResource' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith {
                 return @(
                     [PSCustomObject]@{
-                        Name = 'Resource1'
+                        Name         = 'Resource1'
                         ResourceType = 'Microsoft.Storage/storageAccounts'
-                        Kind = 'StorageV2'
-                        Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/sa001'
-                        ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/sa001'
+                        Kind         = 'StorageV2'
+                        Id           = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/sa001'
+                        ResourceId   = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/sa001'
                     }
                     [PSCustomObject]@{
-                        Name = 'Resource2'
+                        Name         = 'Resource2'
                         ResourceType = 'Microsoft.Storage/storageAccounts'
-                        Kind = 'FileServices'
-                        Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/sa002'
-                        ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/sa002'
+                        Kind         = 'FileServices'
+                        Id           = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/sa002'
+                        ResourceId   = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/sa002'
                     }
                 )
             }
@@ -265,7 +265,7 @@ Describe 'Export-AzRuleData' -Tag 'Cmdlet','Export-AzRuleData' {
 
 #region Export-AzRuleTemplateData
 
-Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
+Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet', 'Export-AzRuleTemplateData' {
     BeforeAll {
         $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
         $parametersPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
@@ -275,9 +275,9 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
         It 'Exports template' {
             $outputFile = Join-Path -Path $outputPath -ChildPath 'template-with-defaults.json'
             $exportParams = @{
-                TemplateFile = $templatePath
+                TemplateFile  = $templatePath
                 ParameterFile = $parametersPath
-                OutputPath = $outputFile
+                OutputPath    = $outputFile
             }
             $Null = Export-AzRuleTemplateData @exportParams;
             $result = Get-Content -Path $outputFile -Raw | ConvertFrom-Json;
@@ -317,7 +317,7 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
     Context 'With -PassThru' {
         It 'Exports template' {
             $exportParams = @{
-                TemplateFile = $templatePath
+                TemplateFile  = $templatePath
                 ParameterFile = $parametersPath
             }
             $result = @(Export-AzRuleTemplateData @exportParams -PassThru);
@@ -345,9 +345,9 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
                 return $result;
             }
             $exportParams = @{
-                TemplateFile = $templatePath
+                TemplateFile  = $templatePath
                 ParameterFile = $parametersPath
-                Subscription = 'test-sub'
+                Subscription  = 'test-sub'
             }
 
             # With lookup
@@ -366,11 +366,11 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
     Context 'With -Subscription object' {
         It 'From hashtable' {
             $exportParams = @{
-                TemplateFile = $templatePath
+                TemplateFile  = $templatePath
                 ParameterFile = $parametersPath
-                Subscription = @{
+                Subscription  = @{
                     SubscriptionId = 'nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn';
-                    TenantId = 'nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn';
+                    TenantId       = 'nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn';
                 }
             }
             $result = Export-AzRuleTemplateData @exportParams -PassThru;
@@ -395,7 +395,7 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
                 return $result;
             }
             $exportParams = @{
-                TemplateFile = $templatePath
+                TemplateFile  = $templatePath
                 ParameterFile = $parametersPath
                 ResourceGroup = 'test-rg'
             }
@@ -415,7 +415,7 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
     Context 'With -ResourceGroup object' {
         It 'From hashtable' {
             $exportParams = @{
-                TemplateFile = $templatePath
+                TemplateFile  = $templatePath
                 ParameterFile = $parametersPath
                 ResourceGroup = @{
                     Location = 'custom';
@@ -432,9 +432,9 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet','Export-AzRuleTemplateData' {
         It 'Returns warning' {
             $outputFile = Join-Path -Path $outputPath -ChildPath 'template-with-defaults.json'
             $exportParams = @{
-                TemplateFile = $templatePath
+                TemplateFile  = $templatePath
                 ParameterFile = $parametersPath
-                OutputPath = $outputFile
+                OutputPath    = $outputFile
             }
             $Null = Export-AzTemplateRuleData @exportParams -WarningAction SilentlyContinue -WarningVariable warnings;
             $warningMessages = @($warnings);
@@ -462,7 +462,7 @@ Describe 'Get-AzRuleTemplateLink' -Tag 'Cmdlet', 'Get-AzRuleTemplateLink' {
     Context 'With defaults' {
         It 'Exports template' {
             $getParams = @{
-                Path = $templateScanPath
+                Path      = $templateScanPath
                 InputPath = Join-Path -Path $templateScanPath -ChildPath 'Resources.Parameters*.json'
             }
 
@@ -531,6 +531,210 @@ Describe 'Get-AzRuleTemplateLink' -Tag 'Cmdlet', 'Get-AzRuleTemplateLink' {
 
 #endregion Get-AzRuleTemplateLink
 
+#region Export-AzPolicyAssignmentData
+
+Describe 'Export-AzPolicyAssignmentData' -Tag 'Cmdlet', 'Export-AzPolicyAssignmentData' {
+    Context 'With Defaults' {
+        BeforeAll {
+            Mock -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith ${function:MockSingleSubscription};
+
+            Mock -CommandName 'Get-AzPolicyAssignment' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith {
+                return @(
+                    [PSCustomObject]@{
+                        Location           = 'eastus'
+                        Name               = '000000000000000000000000'
+                        ResourceId         = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000'
+                        ResourceName       = '000000000000000000000000'
+                        ResourceType       = 'Microsoft.Authorization/policyAssignments'
+                        SubscriptionId     = '00000000-0000-0000-0000-000000000000'
+                        PolicyAssignmentId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000'
+                        Properties         = [PSCustomObject]@{
+                            Scope                 = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG'
+                            NotScopes             = [PSCustomObject]@{}
+                            DisplayName           = 'Latest TLS version should be used in your Function App'
+                            Description           = 'Upgrade to the latest TLS version'
+                            EnforcementMode       = 'Default'
+                            PolicyDefinitionId    = '/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000'
+                            Parameters            = [PSCustomObject]@{}
+                            NonComplianceMessages = [PSCustomObject]@{}
+                        }
+                    }
+                    [PSCustomObject]@{
+                        Location           = 'eastus'
+                        Name               = '000000000000000000000001'
+                        ResourceId         = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/000000000000000000000001'
+                        ResourceName       = '000000000000000000000001'
+                        ResourceType       = 'Microsoft.Authorization/policyAssignments'
+                        SubscriptionId     = '00000000-0000-0000-0000-000000000000'
+                        PolicyAssignmentId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000'
+                        Properties         = [PSCustomObject]@{
+                            Scope                 = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG'
+                            NotScopes             = [PSCustomObject]@{}
+                            DisplayName           = 'Upgrade to the latest TLS version for PaaS services'
+                            Description           = 'Upgrade to the latest TLS version for PaaS services'
+                            EnforcementMode       = 'Default'
+                            PolicyDefinitionId    = '/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/000000000000'
+                            Parameters            = [PSCustomObject]@{}
+                            NonComplianceMessages = [PSCustomObject]@{}
+                        }
+                    }
+                )
+            }
+
+            Mock -CommandName 'Get-AzPolicyDefinition' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith {
+                return [PSCustomObject]@{
+                    Name               = '00000000-0000-0000-0000-000000000000'
+                    ResourceId         = '/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000'
+                    ResourceName       = '00000000-0000-0000-0000-000000000000'
+                    ResourceType       = 'Microsoft.Authorization/policyDefinitions'
+                    PolicyDefinitionId = '/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000'
+                    Properties         = [PSCustomObject]@{
+                        Description = 'Upgrade to the latest TLS version'
+                        DisplayName = 'Latest TLS version should be used in your Function App'
+                        Metadata    = [PSCustomObject]@{}
+                        Mode        = 'Indexed'
+                        Parameters  = [PSCustomObject]@{}
+                        PolicyRule  = [PSCustomObject]@{}
+                        PolicyType  = 'BuiltIn'
+                    }
+                }
+            }
+
+            Mock -CommandName 'Get-AzPolicySetDefinition' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith {
+                return [PSCustomObject]@{
+                    Name               = '00000000-0000-0000-0000-000000000000'
+                    ResourceId         = '/providers/Microsoft.Authorization/policySetDefinitions/00000000-0000-0000-0000-000000000000'
+                    ResourceName       = '00000000-0000-0000-0000-000000000000'
+                    ResourceType       = 'Microsoft.Authorization/policySetDefinitions'
+                    PolicyDefinitionId = '/providers/Microsoft.Authorization/policySetDefinitions/00000000-0000-0000-0000-000000000000'
+                    Properties         = [PSCustomObject]@{
+                        Description       = 'Upgrade to the latest TLS version for PaaS services'
+                        DisplayName       = 'Upgrade to the latest TLS version for PaaS services'
+                        Metadata          = [PSCustomObject]@{}
+                        Mode              = 'Indexed'
+                        Parameters        = [PSCustomObject]@{}
+                        PolicyDefinitions = @(
+                            [PSCustomObject]@{
+                                policyDefinitionReferenceId = 'FunctionAppTLS'
+                                policyDefinitionId          = '/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000'
+                            }
+                        )
+                        PolicyType        = 'Custom'
+                    }
+                }
+            }
+        }
+
+        It 'Exports assignments' {
+            $result = @(Export-AzPolicyAssignmentData -OutputPath $outputPath);
+
+            Assert-VerifiableMock;
+
+            Assert-MockCalled -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -Times 1;
+            Assert-MockCalled -CommandName 'Get-AzPolicyAssignment' -ModuleName 'PSRule.Rules.Azure' -Times 1;
+            Assert-MockCalled -CommandName 'Get-AzPolicyDefinition' -ModuleName 'PSRule.Rules.Azure' -Times 1;
+            Assert-MockCalled -CommandName 'Get-AzPolicySetDefinition' -ModuleName 'PSRule.Rules.Azure' -Times 1;
+
+            $result.Length | Should -Be 1;
+            $result | Should -BeOfType System.IO.FileInfo;
+
+            $data = Get-Content -Path $result.FullName | ConvertFrom-Json;
+            $data -is [System.Array] | Should -Be $True;
+            $data.Length | Should -Be 2;
+            $data.Name | Should -BeIn '000000000000000000000000', '000000000000000000000001';
+        }
+
+        AfterAll {
+            Remove-Item -Path (Join-Path -Path $outputPath -ChildPath '00000000-0000-0000-0000-000000000001.assignment.json') -Force;
+        }
+    }
+}
+
+#endregion Export-AzPolicyAssignmentData
+
+#region Export-AzPolicyAssignmentRuleData
+
+Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssignmentRuleData' {
+    BeforeAll {
+        $emittedJsonRulesDataFile = Join-Path -Path $here -ChildPath 'emittedJsonRulesData.jsonc';
+        $jsonRulesData = ((Get-Content -Path $emittedJsonRulesDataFile) -replace '^\s*//.*') | ConvertFrom-Json;
+    }
+
+    BeforeDiscovery {
+        $here = (Resolve-Path $PSScriptRoot).Path;
+    }
+
+    It "Emit JSON rules from '<AssignmentFile>'" -TestCases @(
+        @{
+            Name           = 'test'
+            Index          = 0
+            AssignmentFile = (Join-Path -Path $here -ChildPath 'test.assignment.json')
+        }
+        @{
+            Name           = 'test2'
+            Index          = 1
+            AssignmentFile = (Join-Path -Path $here -ChildPath 'test2.assignment.json')
+        }
+        @{
+            Name           = 'test3'
+            Index          = 2
+            AssignmentFile = (Join-Path -Path $here -ChildPath 'test3.assignment.json')
+        }
+    ) {
+        param($Name, $Index, $AssignmentFile)
+        $result = @(Export-AzPolicyAssignmentRuleData -Name $Name -AssignmentFile $AssignmentFile -OutputPath $outputPath);
+        $result.Length | Should -Be 1;
+        $result | Should -BeOfType System.IO.FileInfo;
+        $filename = Split-Path -Path $result.FullName -Leaf;
+        $filename | Should -BeExactly "definitions-$Name.Rule.jsonc";
+        $resultJson = ((Get-Content -Path $result.FullName) -replace '^\s*//.*') | ConvertFrom-Json;
+        $compressedResult = $resultJson | ConvertTo-Json -Depth 100 -Compress;
+        $compressedExpected = $jsonRulesData[$Index] | ConvertTo-Json -Depth 100 -Compress;
+        $compressedResult | Should -BeExactly $compressedExpected;
+    }
+}
+
+#endregion Export-AzPolicyAssignmentRuleData
+
+#region Get-AzPolicyAssignmentDataSource
+
+Describe 'Get-AzPolicyAssignmentDataSource' -Tag 'Cmdlet', 'Get-AzPolicyAssignmentDataSource' {
+    BeforeAll {
+        $emittedJsonRulesDataFile = Join-Path -Path $here -ChildPath 'emittedJsonRulesData.jsonc';
+        $jsonRulesData = ((Get-Content -Path $emittedJsonRulesDataFile) -replace '^\s*//.*') | ConvertFrom-Json;
+    }
+
+    It 'Get assignment sources from current working directory' {
+        $sources = Get-AzPolicyAssignmentDataSource | Sort-Object -Property AssignmentFile
+        $sources.Length | Should -Be 3;
+        $sources[0].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test.assignment.json');
+        $sources[1].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test2.assignment.json');
+        $sources[2].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test3.assignment.json');
+    }
+
+    It 'Get assignment sources from tests folder' {
+        $sources = Get-AzPolicyAssignmentDataSource -Path $here | Sort-Object -Property AssignmentFile;
+        $sources.Length | Should -Be 3;
+        $sources[0].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test.assignment.json');
+        $sources[1].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test2.assignment.json');
+        $sources[2].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test3.assignment.json');
+    }
+
+    It 'Pipe to Export-AzPolicyAssignmentRuleData and generate JSON rules' {
+        $result = @(Get-AzPolicyAssignmentDataSource | Sort-Object -Property AssignmentFile | Export-AzPolicyAssignmentRuleData -Name 'tests' -OutputPath $outputPath);
+        $result.Length | Should -Be 1;
+        $result | Should -BeOfType System.IO.FileInfo;
+        $filename = Split-Path -Path $result.FullName -Leaf;
+        $filename | Should -BeExactly "definitions-tests.Rule.jsonc";
+        $resultJson = ((Get-Content -Path $result.FullName) -replace '^\s*//.*') | ConvertFrom-Json;
+        $compressedResult = $resultJson | ConvertTo-Json -Depth 100 -Compress;
+        $compressedExpected = $jsonRulesData | ConvertTo-Json -Depth 100 -Compress;
+        $compressedResult | Should -BeExactly $compressedExpected;
+    }
+}
+
+#endregion Get-AzPolicyAssignmentDataSource
+
 #region PSRule.Rules.Azure.psm1 Private Functions
 
 Describe 'VisitAKSCluster' {
@@ -538,11 +742,11 @@ Describe 'VisitAKSCluster' {
         Mock -CommandName 'GetResourceById' -ModuleName 'PSRule.Rules.Azure' -MockWith {
             return @(
                 [PSCustomObject]@{
-                    Name = 'Resource1'
+                    Name       = 'Resource1'
                     ResourceID = 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A'
                 }
                 [PSCustomObject]@{
-                    Name = 'Resource2'
+                    Name       = 'Resource2'
                     ResourceID = 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-B'
                 }
             )
@@ -551,13 +755,13 @@ Describe 'VisitAKSCluster' {
         Mock -CommandName 'Get-AzResource' -ModuleName 'PSRule.Rules.Azure' -MockWith {
             return @(
                 [PSCustomObject]@{
-                    Name = 'Resource3'
+                    Name         = 'Resource3'
                     ResourceType = 'microsoft.insights/diagnosticSettings'
-                    Id = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
-                    ResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
-                    Properties = [PSCustomObject]@{
+                    Id           = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
+                    ResourceId   = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics'
+                    Properties   = [PSCustomObject]@{
                         metrics = @()
-                        logs = @()
+                        logs    = @()
                     }
                 }
             )
@@ -568,20 +772,20 @@ Describe 'VisitAKSCluster' {
         It 'Given AzureCNI plugin it returns resource with VNET subnet IDs attached as sub resource' {
             InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 $resource = [PSCustomObject]@{
-                    Name = 'akscluster'
+                    Name              = 'akscluster'
                     ResourceGroupName = 'akscluster-rg'
-                    Properties = [PSCustomObject]@{
+                    Properties        = [PSCustomObject]@{
                         agentPoolProfiles = @(
                             [PSCustomObject]@{
-                                name = 'agentpool1'
+                                name         = 'agentpool1'
                                 vnetSubnetId = 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A'
                             }
                             [PSCustomObject]@{
-                                name = 'agentpool2'
+                                name         = 'agentpool2'
                                 vnetSubnetId = 'subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-B'
                             }
                         )
-                        networkProfile = [PSCustomObject]@{
+                        networkProfile    = [PSCustomObject]@{
                             networkPlugin = 'azure'
                         }
                     }
@@ -612,9 +816,9 @@ Describe 'VisitAKSCluster' {
         It 'Given kubelet plugin it returns resource with empty sub resource' {
             InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 $resource = [PSCustomObject]@{
-                    Name = 'akscluster'
+                    Name              = 'akscluster'
                     ResourceGroupName = 'akscluster-rg'
-                    Properties = [PSCustomObject]@{
+                    Properties        = [PSCustomObject]@{
                         agentPoolProfiles = @(
                             [PSCustomObject]@{
                                 name = 'agentpool1'
@@ -623,7 +827,7 @@ Describe 'VisitAKSCluster' {
                                 name = 'agentpool2'
                             }
                         )
-                        networkProfile = [PSCustomObject]@{
+                        networkProfile    = [PSCustomObject]@{
                             networkPlugin = 'kubelet'
                         }
                     }
@@ -645,23 +849,23 @@ Describe 'VisitAKSCluster' {
     }
 }
 
-Describe 'VisitPublicIP' -Tag 'Cmdlet','Export-AzRuleData','VisitPublicIP' {
+Describe 'VisitPublicIP' -Tag 'Cmdlet', 'Export-AzRuleData', 'VisitPublicIP' {
     Context "Availability Zones" {
         It "Non-empty zones are added to Public IP resource" {
             InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 $resource = [PSCustomObject]@{
-                    Name = 'Resource1'
+                    Name              = 'Resource1'
                     ResourceGroupName = 'lb-rg'
-                    ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                    ResourceID        = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
                 };
 
                 Mock -CommandName 'Invoke-AzRestMethod' -MockWith {
                     return [PSCustomObject]@{
                         Content = [PSCustomObject]@{
-                            Name = 'Resource1'
+                            Name              = 'Resource1'
                             ResourceGroupName = 'lb-rg'
-                            ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
-                            Zones = @("1", "2", "3")
+                            ResourceID        = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                            Zones             = @("1", "2", "3")
                         } | ConvertTo-Json
                     }
                 };
@@ -681,18 +885,18 @@ Describe 'VisitPublicIP' -Tag 'Cmdlet','Export-AzRuleData','VisitPublicIP' {
         It 'Empty zones are set to null in Public IP resource' {
             InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 $resource = [PSCustomObject]@{
-                    Name = 'Resource1'
+                    Name              = 'Resource1'
                     ResourceGroupName = 'lb-rg'
-                    ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                    ResourceID        = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
                 };
 
                 Mock -CommandName 'Invoke-AzRestMethod' -MockWith {
                     return [PSCustomObject]@{
                         Content = [PSCustomObject]@{
-                            Name = 'Resource1'
+                            Name              = 'Resource1'
                             ResourceGroupName = 'lb-rg'
-                            ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
-                            Zones = @()
+                            ResourceID        = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                            Zones             = @()
                         } | ConvertTo-Json
                     }
                 };
@@ -712,17 +916,17 @@ Describe 'VisitPublicIP' -Tag 'Cmdlet','Export-AzRuleData','VisitPublicIP' {
         It 'No zones are set on Public IP resource' {
             InModuleScope -ModuleName 'PSRule.Rules.Azure' {
                 $resource = [PSCustomObject]@{
-                    Name = 'Resource1'
+                    Name              = 'Resource1'
                     ResourceGroupName = 'lb-rg'
-                    ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                    ResourceID        = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
                 };
 
                 Mock -CommandName 'Invoke-AzRestMethod' -MockWith {
                     return [PSCustomObject]@{
                         Content = [PSCustomObject]@{
-                            Name = 'Resource1'
+                            Name              = 'Resource1'
                             ResourceGroupName = 'lb-rg'
-                            ResourceID = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
+                            ResourceID        = '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/publicIPAddresses/test-ip'
                         } | ConvertTo-Json
                     }
                 };
@@ -746,42 +950,42 @@ Describe 'VisitPublicIP' -Tag 'Cmdlet','Export-AzRuleData','VisitPublicIP' {
 Describe 'GetAvailabilityZone' {
     It "Given array of zones and '<location>' it returns '<expected>'" -TestCases @(
         @{ 
-            Zones = @(
+            Zones    = @(
                 [PSCustomObject]@{
                     Location = "South Africa North"
-                    Zones = @()
+                    Zones    = @()
                 }
                 [PSCustomObject]@{
                     Location = "Central US"
-                    Zones = @("1", "2", "3")
+                    Zones    = @("1", "2", "3")
                 }
             )
             Location = "Central US"
             Expected = @("1", "2", "3")
         }
         @{ 
-            Zones = @(
+            Zones    = @(
                 [PSCustomObject]@{
                     Location = "South Africa North"
-                    Zones = @()
+                    Zones    = @()
                 }
                 [PSCustomObject]@{
                     Location = "Central US"
-                    Zones = @("1", "2", "3")
+                    Zones    = @("1", "2", "3")
                 }
             )
             Location = "South Africa North"
             Expected = @()
         }
         @{ 
-            Zones = @(
+            Zones    = @(
                 [PSCustomObject]@{
                     Location = "South Africa North"
-                    Zones = @()
+                    Zones    = @()
                 }
                 [PSCustomObject]@{
                     Location = "Central US"
-                    Zones = @("1", "2", "3")
+                    Zones    = @("1", "2", "3")
                 }
             )
             Location = "Australia East"
@@ -798,22 +1002,22 @@ Describe 'PrependConfigurationZoneWithProviderZone' {
         $configurationZones = @(
             [PSCustomObject]@{
                 Location = "Australia Southeast"
-                Zones = @("1", "2", "3")
+                Zones    = @("1", "2", "3")
             }
             [PSCustomObject]@{
                 Location = "Australia Central"
-                Zones = @("1", "2", "3")
+                Zones    = @("1", "2", "3")
             }
         );
         
         $providerZones = @(
             [PSCustomObject]@{
                 Location = "South Africa North"
-                Zones = @()
+                Zones    = @()
             }
             [PSCustomObject]@{
                 Location = "Central US"
-                Zones = @("1", "2", "3")
+                Zones    = @("1", "2", "3")
             }
         )
 
@@ -838,11 +1042,11 @@ Describe 'PrependConfigurationZoneWithProviderZone' {
         $providerZones = @(
             [PSCustomObject]@{
                 Location = "South Africa North"
-                Zones = @()
+                Zones    = @()
             }
             [PSCustomObject]@{
                 Location = "Central US"
-                Zones = @("1", "2", "3")
+                Zones    = @("1", "2", "3")
             }
         )
 

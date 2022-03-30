@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using System.Linq;
 using System.Threading;
 using Newtonsoft.Json;
@@ -191,6 +192,52 @@ namespace PSRule.Rules.Azure
             };
             issues.Add(issue);
             targetInfo[TARGETINFO_ISSUE] = issues;
+        }
+
+        internal static bool TryArrayProperty(this JObject obj, string propertyName, out JArray propertyValue)
+        {
+            propertyValue = null;
+            if (!obj.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var value) || value.Type != JTokenType.Array)
+                return false;
+
+            propertyValue = value.Value<JArray>();
+            return true;
+        }
+
+        internal static bool TryObjectProperty(this JObject obj, string propertyName, out JObject propertyValue)
+        {
+            propertyValue = null;
+            if (!obj.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var value) || value.Type != JTokenType.Object)
+                return false;
+
+            propertyValue = value as JObject;
+            return true;
+        }
+
+        internal static bool TryStringProperty(this JObject obj, string propertyName, out string propertyValue)
+        {
+            propertyValue = null;
+            if (!obj.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var value) || value.Type != JTokenType.String)
+                return false;
+
+            propertyValue = value.Value<string>();
+            return true;
+        }
+
+        /// <summary>
+        /// Check if the script uses an expression.
+        /// </summary>
+        internal static bool IsExpressionString(this JToken token)
+        {
+            if (token == null || token.Type != JTokenType.String)
+                return false;
+
+            var value = token.Value<string>();
+            return value != null &&
+                value.Length >= 5 && // [f()]
+                value[0] == '[' &&
+                value[1] != '[' &&
+                value[value.Length - 1] == ']';
         }
     }
 }

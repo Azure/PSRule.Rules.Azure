@@ -1254,12 +1254,12 @@ namespace PSRule.Rules.Azure.Data.Template
             return typeof(JToken).IsAssignableFrom(typeof(T)) && ExpressionHelpers.GetJToken(o) is T token ? token : (T)o;
         }
 
-        private static T ExpandProperty<T>(ITemplateContext context, JToken value)
+        internal static T ExpandProperty<T>(ITemplateContext context, JToken value)
         {
             return IsExpressionString(value) ? EvaluteExpression<T>(context, value) : value.Value<T>();
         }
 
-        private static JToken ExpandPropertyToken(ITemplateContext context, JToken value)
+        internal static JToken ExpandPropertyToken(ITemplateContext context, JToken value)
         {
             if (!IsExpressionString(value))
                 return value;

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.IO;
 using Newtonsoft.Json;
 using PSRule.Rules.Azure.Configuration;
 
@@ -13,12 +14,23 @@ namespace PSRule.Rules.Azure.Pipeline.Output
 
         protected override string Serialize(object[] o)
         {
-            var settings = new JsonSerializerSettings
+            using (var stringWriter = new StringWriter())
             {
-                NullValueHandling = NullValueHandling.Ignore
-            };
-            settings.Converters.Add(new PSObjectJsonConverter());
-            return JsonConvert.SerializeObject(o, settings: settings);
+                using (var jsonTextWriter = new JsonCommentWriter(stringWriter))
+                {
+                    var jsonSerializer = new JsonSerializer
+                    {
+                        NullValueHandling = NullValueHandling.Ignore
+                    };
+
+                    jsonSerializer.Converters.Add(new PSObjectJsonConverter());
+                    jsonSerializer.Converters.Add(new PolicyDefinitionConverter());
+
+                    jsonSerializer.Serialize(jsonTextWriter, o);
+
+                    return stringWriter.ToString();
+                }
+            }
         }
     }
 }
