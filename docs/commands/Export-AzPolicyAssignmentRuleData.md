@@ -52,24 +52,7 @@ Currently the following limitations apply:
 
 - `field()` expressions are not expanded.
 - Field/Value count expressions are not supported.
-- Template functions with `value` cannot be expanded.
-
-  For example:
-
-  ```json
-  {
-    "policyRule": {
-        "if": {
-            "value": "[substring(field('name'), 0, 3)]",
-            "equals": "abc"
-        },
-        "then": {
-            "effect": "audit"
-        }
-    }
-  }
-  ```
-  
+- Template functions with `value` cannot be expanded e.g. `"value": "[substring(field('name'), 0, 3)]"`.
 - Any of the above will lead to errors when emitting JSON rules.
 
 ## EXAMPLES
