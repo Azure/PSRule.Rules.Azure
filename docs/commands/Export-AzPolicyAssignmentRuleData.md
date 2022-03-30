@@ -51,8 +51,26 @@ To override, set the `AZURE_SUBSCRIPTION` and `AZURE_RESOURCE_GROUP` in configur
 Currently the following limitations apply:
 
 - `field()` expressions are not expanded.
-  - Any policy definitions containing this expression will error out.
 - Field/Value count expressions are not supported.
+- Template functions with `value` cannot be expanded.
+
+  For example:
+
+  ```json
+  {
+    "policyRule": {
+        "if": {
+            "value": "[substring(field('name'), 0, 3)]",
+            "equals": "abc"
+        },
+        "then": {
+            "effect": "audit"
+        }
+    }
+  }
+  ```
+  
+- Any of the above will lead to errors when emitting JSON rules.
 
 ## EXAMPLES
 
