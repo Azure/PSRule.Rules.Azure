@@ -1432,7 +1432,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("This is a unit", actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Replace(context, new object[] { "This is a test" }));
-            Assert.Throws<ArgumentException>(() => Functions.Replace(context, new object[] { "This is a test", 0, 0 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Replace(context, new object[] { "This is a test", 0, 0 }));
         }
 
         [Fact]
