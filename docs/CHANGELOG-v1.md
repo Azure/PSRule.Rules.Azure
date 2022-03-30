@@ -14,6 +14,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.14.0-B2203117 (pre-release)
+
 What's changed since pre-release v1.14.0-B2203088:
 
 - New features:
@@ -22,6 +24,7 @@ What's changed since pre-release v1.14.0-B2203088:
     - `Export-AzPolicyAssignmentRuleData` - Exports JSON rules from policy assignment data. [#1278](https://github.com/Azure/PSRule.Rules.Azure/issues/1278)
     - `Get-AzPolicyAssignmentDataSource` - Discovers policy assignment data. [#1340](https://github.com/Azure/PSRule.Rules.Azure/issues/1340)
     - See cmdlet help for limitations and usage.
+    - Additional information will be posted as this feature evolves [here](https://github.com/Azure/PSRule.Rules.Azure/discussions/1345).
 - Engineering:
   - Cache Azure Policy Aliases. [#1277](https://github.com/Azure/PSRule.Rules.Azure/issues/1277)
 - Bug fixes:
