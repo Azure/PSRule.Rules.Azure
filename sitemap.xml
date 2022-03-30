@@ -141,12 +141,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/commands/Export-AzPolicyAssignmentData/</loc>
+         <lastmod>2022-03-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/commands/Export-AzPolicyAssignmentRuleData/</loc>
+         <lastmod>2022-03-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/commands/Export-AzRuleData/</loc>
          <lastmod>2022-03-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/commands/Export-AzRuleTemplateData/</loc>
+         <lastmod>2022-03-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/commands/Get-AzPolicyAssignmentDataSource/</loc>
          <lastmod>2022-03-30</lastmod>
          <changefreq>daily</changefreq>
     </url>

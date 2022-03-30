@@ -7339,6 +7339,20 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.14.0-B2203088:</p>
 <ul>
+<li>New features:<ul>
+<li><strong>Experimental</strong>: Cmdlets to validate objects with Azure policy conditions:<ul>
+<li><code>Export-AzPolicyAssignmentData</code> - Exports policy assignment data. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1266">#1266</a></li>
+<li><code>Export-AzPolicyAssignmentRuleData</code> - Exports JSON rules from policy assignment data. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1278">#1278</a></li>
+<li><code>Get-AzPolicyAssignmentDataSource</code> - Discovers policy assignment data. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1340">#1340</a></li>
+<li>See cmdlet help for limitations and usage.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Engineering:<ul>
+<li>Cache Azure Policy Aliases. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1277">#1277</a></li>
+</ul>
+</li>
 <li>Bug fixes:<ul>
 <li>Fixed index was out of range with split on mock properties. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1327">#1327</a></li>
 </ul>
