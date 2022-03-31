@@ -184,6 +184,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal(expected2, resourceId[0]);
 
             actual = JObject.Parse("{ \"type\": \"Microsoft.Insights/diagnosticsettings\", \"name\": \"auditing-storage\", \"scope\": \"Microsoft.KeyVault/vaults/keyvault1\" }");
+            context.UpdateResourceScope(actual);
             context.TryParentResourceId(actual, out resourceId);
             Assert.Equal(expected2, resourceId[0]);
         }
@@ -480,6 +481,40 @@ namespace PSRule.Rules.Azure
             actual = resources[5];
             Assert.Equal("Microsoft.Network/privateDnsZones/A", actual["type"].Value<string>());
             Assert.Equal("privatelink.blob.core.windows.net/storage1", actual["name"].Value<string>());
+        }
+
+        [Fact]
+        public void WithOutputsWithoutProperties()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.4.json"), null);
+            Assert.NotNull(resources);
+            Assert.Equal(6, resources.Length);
+
+            var actual = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+
+            actual = resources[1];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.Equal("mi", actual["name"].Value<string>());
+
+            actual = resources[2];
+            Assert.Equal("Microsoft.ManagedIdentity/userAssignedIdentities", actual["type"].Value<string>());
+            Assert.Equal("mi", actual["name"].Value<string>());
+
+            actual = resources[3];
+            Assert.Equal("Microsoft.Authorization/roleAssignments", actual["type"].Value<string>());
+            Assert.Equal("af653e5f-3bb6-d1bd-fa61-e314ddbfb39c", actual["name"].Value<string>());
+
+            actual = resources[4];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.Equal("kv", actual["name"].Value<string>());
+
+            actual = resources[5];
+            var subResources = actual["resources"].Value<JArray>();
+            Assert.Equal("Microsoft.KeyVault/vaults", actual["type"].Value<string>());
+            Assert.Equal("keyvault001", actual["name"].Value<string>());
+            Assert.Single(subResources);
+            Assert.Equal("service", subResources[0]["name"].Value<string>());
         }
 
         #region Helper methods

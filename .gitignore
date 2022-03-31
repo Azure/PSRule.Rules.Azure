@@ -3,6 +3,7 @@
 reports/
 out/
 site/
+dist/
 **/bin/
 **/obj/
 **/__pycache__/
