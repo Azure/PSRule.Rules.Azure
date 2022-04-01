@@ -139,6 +139,7 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void NestedResources()
         {
+            // Key Vault
             var resources = ProcessTemplate(GetSourcePath("Resources.KeyVault.Template.json"), null);
             Assert.NotNull(resources);
             Assert.Equal(2, resources.Length);
@@ -148,6 +149,18 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, subResources.Count);
             Assert.Equal("keyvault1/Microsoft.Insights/service", subResources[0]["name"].Value<string>());
             Assert.Equal("monitor", subResources[1]["name"].Value<string>());
+
+            // Storage
+            resources = ProcessTemplate(GetSourcePath("Resources.Storage.Template.json"), GetSourcePath("Resources.Storage.Parameters.json"));
+            Assert.NotNull(resources);
+            Assert.Equal(2, resources.Length);
+
+            actual = resources[1];
+            subResources = actual["resources"].Value<JArray>();
+            Assert.Equal(3, subResources.Count);
+            Assert.Equal("storage1/default", subResources[0]["name"].Value<string>());
+            Assert.Equal("storage1/default/arm", subResources[1]["name"].Value<string>());
+            Assert.Equal("storage1/default", subResources[2]["name"].Value<string>());
         }
 
         [Fact]
@@ -172,14 +185,17 @@ namespace PSRule.Rules.Azure
             var context = new TemplateContext();
 
             var actual = JObject.Parse("{ \"type\": \"Microsoft.ServiceBus/namespaces/topics\", \"name\": \"besubns/demo1\" }");
+            context.UpdateResourceScope(actual);
             context.TryParentResourceId(actual, out var resourceId);
             Assert.Equal(expected1, resourceId[0]);
 
             actual = JObject.Parse("{ \"type\": \"Microsoft.KeyVault/vaults\", \"name\": \"keyvault1\" }");
+            context.UpdateResourceScope(actual);
             context.TryParentResourceId(actual, out resourceId);
-            Assert.Empty(resourceId);
+            Assert.Null(resourceId);
 
             actual = JObject.Parse("{ \"type\": \"Microsoft.KeyVault/vaults/providers/diagnosticsettings\", \"name\": \"keyvault1/Microsoft.Insights/service\" }");
+            context.UpdateResourceScope(actual);
             context.TryParentResourceId(actual, out resourceId);
             Assert.Equal(expected2, resourceId[0]);
 

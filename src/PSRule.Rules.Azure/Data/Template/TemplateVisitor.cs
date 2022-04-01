@@ -276,18 +276,16 @@ namespace PSRule.Rules.Azure.Data.Template
 
             internal bool TryParentResourceId(JObject resource, out string[] resourceId)
             {
-                if (TryResourceScope(resource, out resourceId))
-                    return true;
-
-                if (!GetResourceNameType(resource, out var name, out var type) ||
-                    !ResourceHelper.TryResourceIdComponents(type, name, out var resourceTypeComponents, out var nameComponents))
+                resourceId = null;
+                if (!TryResourceScope(resource, out var id) ||
+                    !ResourceHelper.TryResourceIdComponents(id, out var subscriptionId, out var resourceGroupName, out var resourceTypeComponents, out var nameComponents))
                     return false;
 
-                resourceId = new string[nameComponents.Length - 1];
-                for (var i = 0; i < nameComponents.Length - 1; i++)
-                    resourceId[i] = ResourceHelper.CombineResourceId(Subscription.SubscriptionId, ResourceGroup.Name, resourceTypeComponents, nameComponents, depth: i);
+                resourceId = new string[nameComponents.Length];
+                for (var i = 0; i < nameComponents.Length; i++)
+                    resourceId[i] = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, resourceTypeComponents, nameComponents, depth: i);
 
-                return true;
+                return resourceId.Length > 0;
             }
 
             private static bool GetResourceNameType(JObject resource, out string name, out string type)
@@ -297,24 +295,49 @@ namespace PSRule.Rules.Azure.Data.Template
                 return resource != null && resource.TryGetProperty(PROPERTY_NAME, out name) && resource.TryGetProperty(PROPERTY_TYPE, out type);
             }
 
-            private static bool TryResourceScope(JObject resource, out string[] resourceId)
+            private bool TryResourceScope(JObject resource, out string scopeId)
             {
-                resourceId = null;
+                scopeId = null;
                 if (!resource.ContainsKey(PROPERTY_SCOPE))
                     return false;
 
-                resourceId = new string[] { resource[PROPERTY_SCOPE].Value<string>() };
+                var scope = ExpandProperty<string>(this, resource, PROPERTY_SCOPE);
+                ResourceHelper.TryResourceIdComponents(scope, out var subscriptionId, out var resourceGroupName, out var resourceTypeComponents, out var nameComponents);
+                subscriptionId ??= Subscription.SubscriptionId;
+                resourceGroupName ??= ResourceGroup.Name;
+                scopeId = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, resourceTypeComponents, nameComponents);
+                return true;
+            }
+
+            //private bool TryResourceScope(JObject resource, out string[] scopeId)
+            //{
+            //    scopeId = null;
+            //    if (!TryResourceScope(resource, out string value))
+            //        return false;
+
+            //    scopeId = new string[] { value };
+            //    return true;
+            //}
+
+            private bool TryParentScope(JObject resource, out string scopeId)
+            {
+                scopeId = null;
+                if (!GetResourceNameType(resource, out var name, out var type) ||
+                    !ResourceHelper.TryResourceIdComponents(type, name, out var resourceTypeComponents, out var nameComponents) ||
+                    resourceTypeComponents.Length == 1)
+                    return false;
+
+                scopeId = ResourceHelper.GetParentResourceId(Subscription.SubscriptionId, ResourceGroup.Name, resourceTypeComponents, nameComponents);
                 return true;
             }
 
             public void UpdateResourceScope(JObject resource)
             {
-                if (!resource.ContainsKey(PROPERTY_SCOPE))
+                if (!TryResourceScope(resource, out string scopeId) &&
+                    !TryParentScope(resource, out scopeId))
                     return;
 
-                var scope = ExpandProperty<JValue>(this, resource, PROPERTY_SCOPE);
-                var parentId = ResourceGroup?.Id ?? Subscription.Id;
-                resource[PROPERTY_SCOPE] = string.Concat(parentId, "/providers/", scope);
+                resource[PROPERTY_SCOPE] = scopeId;
             }
 
             private bool AssignParameterValue(string name, JObject parameter)

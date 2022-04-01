@@ -819,7 +819,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 segments[i] = value;
             }
 
-            // Copy segements
+            // Copy segments
             var start = FindResourceTypePart(segments);
             var subscriptionId = start == 2 ? segments[0] : context.Subscription.SubscriptionId;
             var resourceGroup = start >= 1 ? segments[start - 1] : context.ResourceGroup.Name;
