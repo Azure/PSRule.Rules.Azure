@@ -425,7 +425,7 @@ task Dependencies NuGet, {
 task ExportAliases {
     $index = [ordered]@{};
 
-    Get-AzPolicyAlias | Sort-Object -Property Namespace | ForEach-Object {
+    Get-AzPolicyAlias | Sort-Object -Property Namespace, ResourceType | ForEach-Object {
         $namespace = $_.Namespace;
 
         if (!($index.Contains($namespace))) {
