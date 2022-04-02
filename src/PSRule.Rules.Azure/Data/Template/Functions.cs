@@ -793,7 +793,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (resource is DeploymentValue deployment)
                 return full ? deployment : deployment.Properties;
 
-            return new MockObject(full ? resource.Value : resource.Value[PROPERTY_PROPERTIES].Value<JObject>());
+            if (!full && resource.Value.TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var properties))
+                return new MockObject(properties);
+
+            return new MockObject(full ? resource.Value : new JObject());
         }
 
         /// <summary>
@@ -816,7 +819,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 segments[i] = value;
             }
 
-            // Copy segements
+            // Copy segments
             var start = FindResourceTypePart(segments);
             var subscriptionId = start == 2 ? segments[0] : context.Subscription.SubscriptionId;
             var resourceGroup = start >= 1 ? segments[start - 1] : context.ResourceGroup.Name;

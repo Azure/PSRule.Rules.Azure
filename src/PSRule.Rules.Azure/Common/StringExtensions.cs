@@ -18,5 +18,14 @@ namespace PSRule.Rules.Azure
         {
             return str.Count(c => c == chr);
         }
+
+        internal static bool IsExpressionString(this string str)
+        {
+            return str != null &&
+                str.Length >= 5 && // [f()]
+                str[0] == '[' &&
+                str[1] != '[' &&
+                str[str.Length - 1] == ']';
+        }
     }
 }

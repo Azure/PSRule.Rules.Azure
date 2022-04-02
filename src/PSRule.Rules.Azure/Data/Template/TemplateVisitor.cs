@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Pipeline;
@@ -275,18 +276,16 @@ namespace PSRule.Rules.Azure.Data.Template
 
             internal bool TryParentResourceId(JObject resource, out string[] resourceId)
             {
-                if (GetResourceScope(resource, out resourceId))
-                    return true;
-
-                if (!GetResourceNameType(resource, out var name, out var type) ||
-                    !ResourceHelper.TryResourceIdComponents(type, name, out var resourceTypeComponents, out var nameComponents))
+                resourceId = null;
+                if (!TryResourceScope(resource, out var id) ||
+                    !ResourceHelper.TryResourceIdComponents(id, out var subscriptionId, out var resourceGroupName, out var resourceTypeComponents, out var nameComponents))
                     return false;
 
-                resourceId = new string[nameComponents.Length - 1];
-                for (var i = 0; i < nameComponents.Length - 1; i++)
-                    resourceId[i] = ResourceHelper.CombineResourceId(Subscription.SubscriptionId, ResourceGroup.Name, resourceTypeComponents, nameComponents, depth: i);
+                resourceId = new string[nameComponents.Length];
+                for (var i = 0; i < nameComponents.Length; i++)
+                    resourceId[i] = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, resourceTypeComponents, nameComponents, depth: i);
 
-                return true;
+                return resourceId.Length > 0;
             }
 
             private static bool GetResourceNameType(JObject resource, out string name, out string type)
@@ -296,15 +295,49 @@ namespace PSRule.Rules.Azure.Data.Template
                 return resource != null && resource.TryGetProperty(PROPERTY_NAME, out name) && resource.TryGetProperty(PROPERTY_TYPE, out type);
             }
 
-            private bool GetResourceScope(JObject resource, out string[] resourceId)
+            private bool TryResourceScope(JObject resource, out string scopeId)
             {
-                resourceId = null;
+                scopeId = null;
                 if (!resource.ContainsKey(PROPERTY_SCOPE))
                     return false;
 
-                var parentId = ResourceGroup?.Id ?? Subscription.Id;
-                resourceId = new string[] { string.Concat(parentId, "/providers/", resource[PROPERTY_SCOPE].Value<string>()) };
+                var scope = ExpandProperty<string>(this, resource, PROPERTY_SCOPE);
+                ResourceHelper.TryResourceIdComponents(scope, out var subscriptionId, out var resourceGroupName, out var resourceTypeComponents, out var nameComponents);
+                subscriptionId ??= Subscription.SubscriptionId;
+                resourceGroupName ??= ResourceGroup.Name;
+                scopeId = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, resourceTypeComponents, nameComponents);
                 return true;
+            }
+
+            //private bool TryResourceScope(JObject resource, out string[] scopeId)
+            //{
+            //    scopeId = null;
+            //    if (!TryResourceScope(resource, out string value))
+            //        return false;
+
+            //    scopeId = new string[] { value };
+            //    return true;
+            //}
+
+            private bool TryParentScope(JObject resource, out string scopeId)
+            {
+                scopeId = null;
+                if (!GetResourceNameType(resource, out var name, out var type) ||
+                    !ResourceHelper.TryResourceIdComponents(type, name, out var resourceTypeComponents, out var nameComponents) ||
+                    resourceTypeComponents.Length == 1)
+                    return false;
+
+                scopeId = ResourceHelper.GetParentResourceId(Subscription.SubscriptionId, ResourceGroup.Name, resourceTypeComponents, nameComponents);
+                return true;
+            }
+
+            public void UpdateResourceScope(JObject resource)
+            {
+                if (!TryResourceScope(resource, out string scopeId) &&
+                    !TryParentScope(resource, out scopeId))
+                    return;
+
+                resource[PROPERTY_SCOPE] = scopeId;
             }
 
             private bool AssignParameterValue(string name, JObject parameter)
@@ -764,7 +797,7 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 if (!_Resolved)
                 {
-                    _Value = ExpandProperty<T>(_Context, _LazyValue);
+                    _Value = ExpandToken<T>(_Context, _LazyValue);
                     _Resolved = true;
                 }
                 return _Value;
@@ -1043,6 +1076,7 @@ namespace PSRule.Rules.Azure.Data.Template
             resource.TryGetProperty(PROPERTY_TYPE, out var type);
             resource.TryGetDependencies(out var dependencies);
             var resourceId = ResourceHelper.CombineResourceId(context.Subscription.SubscriptionId, context.ResourceGroup.Name, type, name);
+            context.UpdateResourceScope(resource);
             return new ResourceValue(resourceId, type, resource, dependencies, copyIndex.Clone());
         }
 
@@ -1108,10 +1142,10 @@ namespace PSRule.Rules.Azure.Data.Template
             var managementGroup = new ManagementGroupOption(context.ManagementGroup);
             var parameterDefaults = new ParameterDefaultsOption(context.ParameterDefaults);
             if (TryStringProperty(resource, PROPERTY_SUBSCRIPTIONID, out var subscriptionId))
-                subscription.SubscriptionId = subscriptionId;
+                subscription.SubscriptionId = ExpandString(context, subscriptionId);
 
             if (TryStringProperty(resource, PROPERTY_RESOURCEGROUP, out var resourceGroupName))
-                resourceGroup.Name = resourceGroupName;
+                resourceGroup.Name = ExpandString(context, resourceGroupName);
 
             resourceGroup.SubscriptionId = subscription.SubscriptionId;
             var deploymentContext = new TemplateContext(context.Pipeline, subscription, resourceGroup, tenant, managementGroup, parameterDefaults);
@@ -1210,7 +1244,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected virtual JToken VariableSimple(TemplateContext context, JValue value)
         {
-            var result = ExpandProperty<object>(context, value.Value<string>());
+            var result = ExpandToken<object>(context, value.Value<string>());
             return result == null ? JValue.CreateNull() : JToken.FromObject(result);
         }
 
@@ -1254,17 +1288,22 @@ namespace PSRule.Rules.Azure.Data.Template
             return typeof(JToken).IsAssignableFrom(typeof(T)) && ExpressionHelpers.GetJToken(o) is T token ? token : (T)o;
         }
 
-        internal static T ExpandProperty<T>(ITemplateContext context, JToken value)
+        internal static T ExpandToken<T>(ITemplateContext context, JToken value)
         {
-            return IsExpressionString(value) ? EvaluteExpression<T>(context, value) : value.Value<T>();
+            return value.IsExpressionString() ? EvaluateExpression<T>(context, value) : value.Value<T>();
+        }
+
+        internal static string ExpandString(ITemplateContext context, string value)
+        {
+            return value != null && value.IsExpressionString() ? EvaluateExpression<string>(context, value, null) : value;
         }
 
         internal static JToken ExpandPropertyToken(ITemplateContext context, JToken value)
         {
-            if (!IsExpressionString(value))
+            if (value == null || !value.IsExpressionString())
                 return value;
 
-            var result = EvaluteExpression<object>(context, value);
+            var result = EvaluateExpression<object>(context, value);
             if (result is IMock mock && !mock.TryGetValue(out result))
                 result = mock.ToString();
 
@@ -1277,7 +1316,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return default(T);
 
             var propertyValue = value[propertyName].Value<JValue>();
-            return (propertyValue.Type == JTokenType.String) ? ExpandProperty<T>(context, propertyValue) : (T)propertyValue.Value<T>();
+            return (propertyValue.Type == JTokenType.String) ? ExpandToken<T>(context, propertyValue) : (T)propertyValue.Value<T>();
         }
 
         private static int ExpandPropertyInt(ITemplateContext context, JObject value, string propertyName)
@@ -1516,38 +1555,30 @@ namespace PSRule.Rules.Azure.Data.Template
             return result;
         }
 
-        protected static T EvaluteExpression<T>(ITemplateContext context, JToken value)
+        protected static T EvaluateExpression<T>(ITemplateContext context, JToken value)
         {
             if (value.Type != JTokenType.String)
                 return default(T);
 
             var svalue = value.Value<string>();
             var lineInfo = value.TryLineInfo();
-            var exp = Expression<T>(context, svalue);
+            return EvaluateExpression<T>(context, svalue, lineInfo);
+        }
+
+        protected static T EvaluateExpression<T>(ITemplateContext context, string value, IJsonLineInfo lineInfo)
+        {
+            if (string.IsNullOrEmpty(value))
+                return default(T);
+
+            var exp = Expression<T>(context, value);
             try
             {
                 return exp();
             }
             catch (Exception inner)
             {
-                throw new ExpressionEvaluationException(svalue, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ExpressionEvaluateError, value, lineInfo?.LineNumber, inner.Message), inner);
+                throw new ExpressionEvaluationException(value, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ExpressionEvaluateError, value, lineInfo?.LineNumber, inner.Message), inner);
             }
-        }
-
-        /// <summary>
-        /// Check if the script uses an expression.
-        /// </summary>
-        protected static bool IsExpressionString(JToken token)
-        {
-            if (token == null || token.Type != JTokenType.String)
-                return false;
-
-            var value = token.Value<string>();
-            return value != null &&
-                value.Length >= 5 && // [f()]
-                value[0] == '[' &&
-                value[1] != '[' &&
-                value[value.Length - 1] == ']';
         }
 
         private static bool TryArrayProperty(JObject obj, string propertyName, out JArray propertyValue)

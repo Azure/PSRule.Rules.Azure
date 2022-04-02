@@ -233,11 +233,7 @@ namespace PSRule.Rules.Azure
                 return false;
 
             var value = token.Value<string>();
-            return value != null &&
-                value.Length >= 5 && // [f()]
-                value[0] == '[' &&
-                value[1] != '[' &&
-                value[value.Length - 1] == ']';
+            return value != null && value.IsExpressionString();
         }
     }
 }
