@@ -437,13 +437,7 @@ task ExportAliases {
             $aliasMappings.Add($_.Name, $_.DefaultPath);
         }
 
-        $info = [ordered]@{
-            locations     = $_.Locations | Sort-Object
-            aliasMappings = $aliasMappings
-            apiVersions   = $_.ApiVersions | Sort-Object
-        }
-
-        $index[$namespace].Add($_.ResourceType, $info);
+        $index[$namespace].Add($_.ResourceType, $aliasMappings);
     }
 
     $dataPath = Join-Path -Path $PWD -ChildPath 'data';
