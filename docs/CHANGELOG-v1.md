@@ -14,6 +14,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.14.0-B2203117:
+
+- Bug fixes:
+  - Fixed mock objects with no properties. [#1347](https://github.com/Azure/PSRule.Rules.Azure/issues/1347)
+  - Fixed sub-resources nesting by scope regression. [#1348](https://github.com/Azure/PSRule.Rules.Azure/issues/1348)
+
 ## v1.14.0-B2203117 (pre-release)
 
 What's changed since pre-release v1.14.0-B2203088:

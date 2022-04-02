@@ -155,7 +155,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         {
             if (!_Resolved)
             {
-                _Value = TemplateVisitor.ExpandProperty<T>(context, _LazyValue);
+                _Value = TemplateVisitor.ExpandToken<T>(context, _LazyValue);
                 _Resolved = true;
             }
             return _Value;
