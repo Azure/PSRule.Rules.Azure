@@ -32,17 +32,11 @@ namespace PSRule.Rules.Azure.Data.Policy
 
     public sealed class PolicyAliasMapping
     {
-        public IList<string> Locations { get; }
-
         public IDictionary<string, string> AliasMappings { get; }
-
-        public IList<string> ApiVersions { get; }
 
         internal PolicyAliasMapping()
         {
-            Locations = new List<string>();
             AliasMappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            ApiVersions = new List<string>();
         }
     }
 

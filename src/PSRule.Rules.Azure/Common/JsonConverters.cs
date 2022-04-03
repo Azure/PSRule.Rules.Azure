@@ -230,10 +230,6 @@ namespace PSRule.Rules.Azure
 
         public override bool CanWrite => false;
 
-        private const string PROPERTY_APIVERSIONS = "apiVersions";
-        private const string PROPERTY_LOCATIONS = "locations";
-        private const string PROPERTY_ALIASMAPPINGS = "aliasMappings";
-
         public override bool CanConvert(Type objectType)
         {
             return objectType == typeof(PolicyAliasProvider);
@@ -256,7 +252,7 @@ namespace PSRule.Rules.Azure
             if (reader.TokenType != JsonToken.StartObject)
                 throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
 
-            string propertyName = null;
+            string providerName = null;
 
             reader.Read();
             while (reader.TokenType != JsonToken.EndObject)
@@ -264,12 +260,12 @@ namespace PSRule.Rules.Azure
                 switch (reader.TokenType)
                 {
                     case JsonToken.PropertyName:
-                        propertyName = reader.Value.ToString();
+                        providerName = reader.Value.ToString();
                         break;
 
                     case JsonToken.StartObject:
                         var resourceType = ReadAliasResourceType(reader);
-                        aliasProvider.Providers.Add(propertyName, resourceType);
+                        aliasProvider.Providers.Add(providerName, resourceType);
                         break;
                 }
                 reader.Read();
@@ -283,7 +279,7 @@ namespace PSRule.Rules.Azure
 
             var aliasResourceType = new PolicyAliasResourceType();
 
-            string propertyName = null;
+            string resourceType = null;
 
             reader.Read();
             while (reader.TokenType != JsonToken.EndObject)
@@ -291,12 +287,12 @@ namespace PSRule.Rules.Azure
                 switch (reader.TokenType)
                 {
                     case JsonToken.PropertyName:
-                        propertyName = reader.Value.ToString();
+                        resourceType = reader.Value.ToString();
                         break;
 
                     case JsonToken.StartObject:
                         var aliasMapping = ReadAliasMapping(reader);
-                        aliasResourceType.ResourceTypes.Add(propertyName, aliasMapping);
+                        aliasResourceType.ResourceTypes.Add(resourceType, aliasMapping);
                         break;
                 }
                 reader.Read();
@@ -310,79 +306,28 @@ namespace PSRule.Rules.Azure
             if (reader.TokenType != JsonToken.StartObject)
                 throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
 
-            string propertyName = null;
-
             var aliasMapping = new PolicyAliasMapping();
 
-            reader.Read();
+            string aliasName = null;
 
+            reader.Read();
             while (reader.TokenType != JsonToken.EndObject)
             {
                 switch (reader.TokenType)
                 {
                     case JsonToken.PropertyName:
-                        propertyName = reader.Value.ToString();
+                        aliasName = reader.Value.ToString();
                         break;
 
-                    case JsonToken.StartArray:
-                        if (propertyName.Equals(PROPERTY_LOCATIONS, StringComparison.OrdinalIgnoreCase))
-                            ReadStringArray(aliasMapping.Locations, reader);
-
-                        else if (propertyName.Equals(PROPERTY_APIVERSIONS, StringComparison.OrdinalIgnoreCase))
-                            ReadStringArray(aliasMapping.ApiVersions, reader);
-
-                        break;
-
-                    // Handle cases where locations or apiVersion are not in an array
                     case JsonToken.String:
-                        var stringValue = reader.Value.ToString();
-
-                        if (propertyName.Equals(PROPERTY_LOCATIONS, StringComparison.OrdinalIgnoreCase))
-                            aliasMapping.Locations.Add(stringValue);
-
-                        else if (propertyName.Equals(PROPERTY_APIVERSIONS, StringComparison.OrdinalIgnoreCase))
-                            aliasMapping.ApiVersions.Add(stringValue);
-
-                        break;
-
-                    case JsonToken.StartObject:
-                        if (propertyName.Equals(PROPERTY_ALIASMAPPINGS, StringComparison.OrdinalIgnoreCase))
-                        {
-                            reader.Read();
-
-                            string keyName = null;
-                            while (reader.TokenType != JsonToken.EndObject)
-                            {
-                                switch (reader.TokenType)
-                                {
-                                    case JsonToken.PropertyName:
-                                        keyName = reader.Value.ToString();
-                                        break;
-
-                                    case JsonToken.String:
-                                        aliasMapping.AliasMappings.Add(keyName, reader.Value.ToString());
-                                        break;
-                                }
-                                reader.Read();
-                            }
-                        }
+                        var aliasPath = reader.Value.ToString();
+                        aliasMapping.AliasMappings.Add(aliasName, aliasPath);
                         break;
                 }
                 reader.Read();
             }
 
             return aliasMapping;
-        }
-
-        private static void ReadStringArray(IList<string> collection, JsonReader reader)
-        {
-            reader.Read();
-            while (reader.TokenType != JsonToken.EndArray)
-            {
-                var item = reader.Value.ToString();
-                collection.Add(item);
-                reader.Read();
-            }
         }
     }
 

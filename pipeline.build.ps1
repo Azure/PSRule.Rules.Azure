@@ -425,7 +425,7 @@ task Dependencies NuGet, {
 task ExportAliases {
     $index = [ordered]@{};
 
-    Get-AzPolicyAlias | Sort-Object -Property Namespace | ForEach-Object {
+    Get-AzPolicyAlias | Sort-Object -Property Namespace, ResourceType | ForEach-Object {
         $namespace = $_.Namespace;
 
         if (!($index.Contains($namespace))) {
@@ -437,13 +437,7 @@ task ExportAliases {
             $aliasMappings.Add($_.Name, $_.DefaultPath);
         }
 
-        $info = [ordered]@{
-            locations     = $_.Locations | Sort-Object
-            aliasMappings = $aliasMappings
-            apiVersions   = $_.ApiVersions | Sort-Object
-        }
-
-        $index[$namespace].Add($_.ResourceType, $info);
+        $index[$namespace].Add($_.ResourceType, $aliasMappings);
     }
 
     $dataPath = Join-Path -Path $PWD -ChildPath 'data';
