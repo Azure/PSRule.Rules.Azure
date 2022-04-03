@@ -14,6 +14,13 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.14.0-B2204013 (pre-release)
+
+What's changed since pre-release v1.14.0-B2204007:
+
+- Engineering:
+  - Cleanup of additional alias metadata. [#1351](https://github.com/Azure/PSRule.Rules.Azure/pull/1351)
+
 ## v1.14.0-B2204007 (pre-release)
 
 What's changed since pre-release v1.14.0-B2203117:
