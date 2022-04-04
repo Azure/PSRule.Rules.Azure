@@ -14,6 +14,48 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.14.0
+
+What's changed since v1.13.4:
+
+- New features:
+  - Added support for referencing resources in template. [#1315](https://github.com/Azure/PSRule.Rules.Azure/issues/1315)
+    - The `reference()` function can be used to reference resources in template.
+    - A placeholder value is still used for resources outside of the template.
+  - Added March 2022 baselines `Azure.GA_2022_03` and `Azure.Preview_2022_03`. [#1334](https://github.com/Azure/PSRule.Rules.Azure/issues/1334)
+    - Includes rules released before or during March 2022.
+    - Marked `Azure.GA_2021_12` and `Azure.Preview_2021_12` baselines as obsolete.
+  - **Experimental**: Cmdlets to validate objects with Azure policy conditions:
+    - `Export-AzPolicyAssignmentData` - Exports policy assignment data. [#1266](https://github.com/Azure/PSRule.Rules.Azure/issues/1266)
+    - `Export-AzPolicyAssignmentRuleData` - Exports JSON rules from policy assignment data. [#1278](https://github.com/Azure/PSRule.Rules.Azure/issues/1278)
+    - `Get-AzPolicyAssignmentDataSource` - Discovers policy assignment data. [#1340](https://github.com/Azure/PSRule.Rules.Azure/issues/1340)
+    - See cmdlet help for limitations and usage.
+    - Additional information will be posted as this feature evolves [here](https://github.com/Azure/PSRule.Rules.Azure/discussions/1345).
+- New rules:
+  - SignalR Service:
+    - Check services use Managed Identities. [#1306](https://github.com/Azure/PSRule.Rules.Azure/issues/1306)
+    - Check services use a SKU with an SLA. [#1307](https://github.com/Azure/PSRule.Rules.Azure/issues/1307)
+  - Web PubSub Service:
+    - Check services use Managed Identities. [#1308](https://github.com/Azure/PSRule.Rules.Azure/issues/1308)
+    - Check services use a SKU with an SLA. [#1309](https://github.com/Azure/PSRule.Rules.Azure/issues/1309)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.21.9`. [#1318](https://github.com/Azure/PSRule.Rules.Azure/issues/1318)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+- Engineering:
+  - Cache Azure Policy Aliases. [#1277](https://github.com/Azure/PSRule.Rules.Azure/issues/1277)
+  - Cleanup of additional alias metadata. [#1351](https://github.com/Azure/PSRule.Rules.Azure/pull/1351)
+- Bug fixes:
+  - Fixed index was out of range with split on mock properties. [#1327](https://github.com/Azure/PSRule.Rules.Azure/issues/1327)
+  - Fixed mock objects with no properties. [#1347](https://github.com/Azure/PSRule.Rules.Azure/issues/1347)
+  - Fixed sub-resources nesting by scope regression. [#1348](https://github.com/Azure/PSRule.Rules.Azure/issues/1348)
+  - Fixed expand of runtime properties on reference objects. [#1324](https://github.com/Azure/PSRule.Rules.Azure/issues/1324)
+  - Fixed processing of deployment outputs. [#1316](https://github.com/Azure/PSRule.Rules.Azure/issues/1316)
+
+What's changed since pre-release v1.14.0-B2204013:
+
+- No additional changes.
+
 ## v1.14.0-B2204013 (pre-release)
 
 What's changed since pre-release v1.14.0-B2204007:
