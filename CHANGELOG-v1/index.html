@@ -923,6 +923,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1140" class="md-nav__link">
+    v1.14.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1140-b2204013pre-release" class="md-nav__link">
     v1.14.0-B2204013 (pre-release)
   </a>
@@ -6637,6 +6644,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1140" class="md-nav__link">
+    v1.14.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1140-b2204013pre-release" class="md-nav__link">
     v1.14.0-B2204013 (pre-release)
   </a>
@@ -7379,6 +7393,71 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
   Support for <code>Azure_AKSMinimumVersion</code> will be removed in v2.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<h2 id="v1140">v1.14.0<a class="headerlink" href="#v1140" title="Permanent link">#</a></h2>
+<p>What's changed since v1.13.4:</p>
+<ul>
+<li>New features:<ul>
+<li>Added support for referencing resources in template. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1315">#1315</a><ul>
+<li>The <code>reference()</code> function can be used to reference resources in template.</li>
+<li>A placeholder value is still used for resources outside of the template.</li>
+</ul>
+</li>
+<li>Added March 2022 baselines <code>Azure.GA_2022_03</code> and <code>Azure.Preview_2022_03</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1334">#1334</a><ul>
+<li>Includes rules released before or during March 2022.</li>
+<li>Marked <code>Azure.GA_2021_12</code> and <code>Azure.Preview_2021_12</code> baselines as obsolete.</li>
+</ul>
+</li>
+<li><strong>Experimental</strong>: Cmdlets to validate objects with Azure policy conditions:<ul>
+<li><code>Export-AzPolicyAssignmentData</code> - Exports policy assignment data. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1266">#1266</a></li>
+<li><code>Export-AzPolicyAssignmentRuleData</code> - Exports JSON rules from policy assignment data. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1278">#1278</a></li>
+<li><code>Get-AzPolicyAssignmentDataSource</code> - Discovers policy assignment data. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1340">#1340</a></li>
+<li>See cmdlet help for limitations and usage.</li>
+<li>Additional information will be posted as this feature evolves <a href="https://github.com/Azure/PSRule.Rules.Azure/discussions/1345">here</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>New rules:<ul>
+<li>SignalR Service:<ul>
+<li>Check services use Managed Identities. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1306">#1306</a></li>
+<li>Check services use a SKU with an SLA. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1307">#1307</a></li>
+</ul>
+</li>
+<li>Web PubSub Service:<ul>
+<li>Check services use Managed Identities. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1308">#1308</a></li>
+<li>Check services use a SKU with an SLA. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1309">#1309</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Updated rules:<ul>
+<li>Azure Kubernetes Service:<ul>
+<li>Updated <code>Azure.AKS.Version</code> to use latest stable version <code>1.21.9</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1318">#1318</a><ul>
+<li>Use <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code> to configure the minimum version of the cluster.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Engineering:<ul>
+<li>Cache Azure Policy Aliases. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1277">#1277</a></li>
+<li>Cleanup of additional alias metadata. <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/1351">#1351</a></li>
+</ul>
+</li>
+<li>Bug fixes:<ul>
+<li>Fixed index was out of range with split on mock properties. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1327">#1327</a></li>
+<li>Fixed mock objects with no properties. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1347">#1347</a></li>
+<li>Fixed sub-resources nesting by scope regression. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1348">#1348</a></li>
+<li>Fixed expand of runtime properties on reference objects. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1324">#1324</a></li>
+<li>Fixed processing of deployment outputs. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1316">#1316</a></li>
+</ul>
+</li>
+</ul>
+<p>What's changed since pre-release v1.14.0-B2204013:</p>
+<ul>
+<li>No additional changes.</li>
+</ul>
 <h2 id="v1140-b2204013pre-release">v1.14.0-B2204013 (pre-release)<a class="headerlink" href="#v1140-b2204013pre-release" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.14.0-B2204007:</p>
 <ul>
@@ -9574,7 +9653,7 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
   <small>
     
       Last update:
-      2022-04-03
+      2022-04-04
     
   </small>
 </div>
