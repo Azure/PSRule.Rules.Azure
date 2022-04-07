@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace PSRule.Rules.Azure.Configuration
@@ -112,6 +113,26 @@ namespace PSRule.Rules.Azure.Configuration
                 return false;
 
             value = new JValue(result.Value);
+            return true;
+        }
+
+        internal bool TryGetObject(string parameterName, out JToken value)
+        {
+            value = default;
+            if (!_Defaults.TryGetValue<Dictionary<object, object>>(parameterName, out var result))
+                return false;
+
+            value = JObject.FromObject(result);
+            return true;
+        }
+
+        internal bool TryGetArray(string parameterName, out JToken value)
+        {
+            value = default;
+            if (!_Defaults.TryGetValue<List<object>>(parameterName, out var result))
+                return false;
+
+            value = JArray.FromObject(result);
             return true;
         }
 

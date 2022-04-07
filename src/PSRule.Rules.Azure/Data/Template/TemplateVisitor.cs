@@ -587,10 +587,12 @@ namespace PSRule.Rules.Azure.Data.Template
                         return ParameterDefaults.TryGetLong(parameterName, out value);
 
                     case ParameterType.Array:
-                        return ParameterDefaults.TryGetString(parameterName, out value);
+                        return ParameterDefaults.TryGetArray(parameterName, out value);
 
                     case ParameterType.Object:
                     case ParameterType.SecureObject:
+                        return ParameterDefaults.TryGetObject(parameterName, out value);
+
                     default:
                         return false;
                 }
