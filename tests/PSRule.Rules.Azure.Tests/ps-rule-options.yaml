@@ -24,6 +24,10 @@ configuration:
   AZURE_PARAMETER_DEFAULTS:
     adminPassword: $CREDENTIAL_PLACEHOLDER$
     resourceName: resource123
+    tags:
+      env: dev
+      service: test
+    arrayOptions: [ 'test', 'value' ]
   AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.22.4'
   AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
   - location: 'Antarctica North'

@@ -7,6 +7,18 @@
     "parameters": {
         "resourceName": {
             "value": "some-resource-name"
+        },
+        "tags": {
+            "value": {
+                "env": "test",
+                "service": "test"
+            }
+        },
+        "arrayOptions": {
+            "value": [
+                "test",
+                "value"
+            ]
         }
     }
 }

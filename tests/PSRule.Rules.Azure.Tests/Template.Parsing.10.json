@@ -346,6 +346,12 @@
       "metadata": {
         "description": "The Log Analytics retention period"
       }
+    },
+    "tags": {
+      "type": "object"
+    },
+    "arrayOptions": {
+      "type": "array"
     }
   },
   "functions": [],
@@ -741,6 +747,7 @@
         "name": "Basic",
         "tier": "[variables('akssku')]"
       },
+      "tags": "[union(parameters('tags'), createObject(parameters('arrayOptions')[0], parameters('arrayOptions')[1]))]",
       "dependsOn": [
         "[resourceId('Microsoft.OperationalInsights/workspaces', variables('aks_law_name'))]",
         "[resourceId('Microsoft.Network/applicationGateways', variables('appgwName'))]",

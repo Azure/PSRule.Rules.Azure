@@ -14,6 +14,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.14.0:
+
+- Bug fixes:
+  - Fixed unable to set parameter defaults option with type object. [#1355](https://github.com/Azure/PSRule.Rules.Azure/issues/1355)
+
 ## v1.14.0
 
 What's changed since v1.13.4:
