@@ -309,16 +309,6 @@ namespace PSRule.Rules.Azure.Data.Template
                 return true;
             }
 
-            //private bool TryResourceScope(JObject resource, out string[] scopeId)
-            //{
-            //    scopeId = null;
-            //    if (!TryResourceScope(resource, out string value))
-            //        return false;
-
-            //    scopeId = new string[] { value };
-            //    return true;
-            //}
-
             private bool TryParentScope(JObject resource, out string scopeId)
             {
                 scopeId = null;
@@ -1664,26 +1654,35 @@ namespace PSRule.Rules.Azure.Data.Template
         protected override void EndTemplate(TemplateContext context, string deploymentName, JObject template)
         {
             var resources = context.GetResources();
+
+            // Move sub-resources based on parent resource relationship
             for (var i = 0; i < resources.Length; i++)
+                MoveResource(context, resources[i]);
+
+            base.EndTemplate(context, deploymentName, template);
+        }
+
+        /// <summary>
+        /// Move sub-resources based on parent resource relationship. This process nests sub-resources so that relationship can be analyzed.
+        /// </summary>
+        private static void MoveResource(TemplateContext context, IResourceValue resource)
+        {
+            if (resource.Value.TryGetDependencies(out _) || resource.Type.Split('/').Length > 2)
             {
-                if (resources[i].Value.TryGetDependencies(out var dependencies))
+                resource.Value.Remove(PROPERTY_DEPENDSON);
+                if (context.TryParentResourceId(resource.Value, out var parentResourceId))
                 {
-                    resources[i].Value.Remove(PROPERTY_DEPENDSON);
-                    if (context.TryParentResourceId(resources[i].Value, out var parentResourceId))
+                    for (var j = 0; j < parentResourceId.Length; j++)
                     {
-                        for (var j = 0; j < parentResourceId.Length; j++)
+                        if (context.TryGetResource(parentResourceId[j], out var parent))
                         {
-                            if (context.TryGetResource(parentResourceId[j], out var resource))
-                            {
-                                resource.Value.UseProperty(PROPERTY_RESOURCES, out JArray innerResources);
-                                innerResources.Add(resources[i].Value);
-                                context.RemoveResource(resources[i]);
-                            }
+                            parent.Value.UseProperty(PROPERTY_RESOURCES, out JArray innerResources);
+                            innerResources.Add(resource.Value);
+                            context.RemoveResource(resource);
                         }
                     }
                 }
             }
-            base.EndTemplate(context, deploymentName, template);
         }
     }
 }

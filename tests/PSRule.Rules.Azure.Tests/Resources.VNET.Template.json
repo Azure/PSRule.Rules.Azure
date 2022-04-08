@@ -1,0 +1,167 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "name": "vnet-hub",
+        "description": "This template creates a hub virtual network."
+    },
+    "parameters": {
+        "vnetName": {
+            "type": "string",
+            "defaultValue": "vnet-001",
+            "metadata": {
+                "description": "The name of the virtual network."
+            }
+        },
+        "addressPrefix": {
+            "type": "array",
+            "defaultValue": [
+                "10.0.0.0/8"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        "subnets": {
+            "type": "array",
+            "defaultValue": [
+                {
+                    // Additional comments here in file
+                    "name": "subnet1",
+                    "addressPrefix": "10.1.0.32/28", // End of line comments
+                    "securityRules": [
+                        {
+                            "name": "deny-rdp-inbound",
+                            "properties": {
+                                "protocol": "Tcp",
+                                "sourcePortRange": "*",
+                                "destinationPortRanges": [
+                                    "3389"
+                                ],
+                                "access": "Deny",
+                                "priority": 200,
+                                "direction": "Inbound",
+                                "sourceAddressPrefix": "*",
+                                "destinationAddressPrefix": "VirtualNetwork"
+                            }
+                        },
+                        {
+                            "name": "deny-hop-outbound",
+                            "properties": {
+                                "protocol": "*",
+                                "sourcePortRange": "*",
+                                "destinationPortRanges": [
+                                    "3389",
+                                    "22"
+                                ],
+                                "access": "Deny",
+                                "priority": 200,
+                                "direction": "Outbound",
+                                "sourceAddressPrefix": "VirtualNetwork",
+                                "destinationAddressPrefix": "*"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "subnet2",
+                    "addressPrefix": "10.1.0.64/28",
+                    "securityRules": []
+                }
+            ],
+            "metadata": {
+                "description": ""
+            }
+        }
+    },
+    "variables": {
+        "subscriptionDefautTags": {
+            "ffffffff-ffff-ffff-ffff-ffffffffffff": {
+                "role": "Networking"
+            },
+            "nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn": {
+                "role": "Custom"
+            },
+            "00000000-0000-0000-0000-000000000000": {
+                "role": "Networking"
+            }
+        },
+        "rgLocation": {
+            "eastus": "region-A",
+            "region": "region-A",
+            "custom": "Custom"
+        },
+        "gatewaySubnet": [
+            {
+                "name": "GatewaySubnet",
+                "properties": {
+                    "addressPrefix": "[concat(split(parameters('addressPrefix')[0], '/')[0], '/27')]"
+                }
+            }
+        ],
+        "definedSubnets": {
+            "copy": [
+                {
+                    "name": "subnets",
+                    "count": "[length(parameters('subnets'))]",
+                    "input": {
+                        "name": "[parameters('subnets')[copyIndex('subnets')].name]",
+                        "properties": {
+                            "addressPrefix": "[parameters('subnets')[copyIndex('subnets')].addressPrefix]",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', concat('nsg-', parameters('subnets')[copyIndex('subnets')].name))]"
+                            },
+                            "routeTable": {
+                                "id": "[resourceId('Microsoft.Network/routeTables/', concat('route-', parameters('subnets')[copyIndex('subnets')].name))]"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "allSubnets": "[union(variables('gatewaySubnet'), variables('definedSubnets').subnets)]",
+        "vnetAddressSpace": "[createObject('addressPrefixes', Parameters('addressPrefix'))]"
+    },
+    "resources": [
+        {
+            "comments": "Hub virtual network",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('VNETName')]",
+            "apiVersion": "2020-06-01",
+            "location": "[variables('rgLocation')[resourceGroup().location]]",
+            "dependsOn": [
+                "routeIndex",
+                "nsgIndex"
+            ],
+            "properties": {
+                "addressSpace": "[variables('vnetAddressSpace')]",
+                "subnets": "[variabLes('AllSubnets')]"
+            },
+            "tags": "[variables('subscriptionDefautTags')[subscription().subscriptionId]]"
+        },
+        {
+            "condition": "[true()]",
+            "comments": "A subnet Network Security Group",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[concat('nsg-', parameters('subnets')[copyIndex()].name)]",
+            "apiVersion": "2019-04-01",
+            "location": "[resourceGroup().location]",
+            "copy": {
+                "name": "nsgIndex",
+                "count": "[length(parameters('subnets'))]"
+            },
+            "properties": {
+                "securityRules": "[parameters('subnets')[copyIndex()].securityRules]"
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-05-01",
+            "name": "vnet-002/subnet-extra",
+            "properties": {
+                "addressPrefix": "10.100.0.0/24"
+            }
+        }
+    ]
+}

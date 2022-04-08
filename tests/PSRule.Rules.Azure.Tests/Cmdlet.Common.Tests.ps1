@@ -282,7 +282,7 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet', 'Export-AzRuleTemplateData' 
             $Null = Export-AzRuleTemplateData @exportParams;
             $result = Get-Content -Path $outputFile -Raw | ConvertFrom-Json;
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 11;
+            $result.Length | Should -Be 8;
             $filteredResult = $result | Where-Object { $_.name -eq 'vnet-001' };
             $filteredResult | Should -Not -BeNullOrEmpty;
             $filteredResult.properties.addressSpace.addressPrefixes | Should -Be "10.1.0.0/24";
@@ -322,7 +322,7 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet', 'Export-AzRuleTemplateData' 
             }
             $result = @(Export-AzRuleTemplateData @exportParams -PassThru);
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 11;
+            $result.Length | Should -Be 8;
             $filteredResult = $result | Where-Object { $_.name -eq 'vnet-001' };
             $filteredResult | Should -Not -BeNullOrEmpty;
             $filteredResult.properties.subnets.Length | Should -Be 3;
@@ -353,7 +353,7 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet', 'Export-AzRuleTemplateData' 
             # With lookup
             $result = Export-AzRuleTemplateData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 11;
+            $result.Length | Should -Be 8;
             $filteredResult = $result | Where-Object { $_.name -eq 'vnet-001' };
             $filteredResult | Should -Not -BeNullOrEmpty;
             $filteredResult.properties.subnets.Length | Should -Be 3;
@@ -375,7 +375,7 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet', 'Export-AzRuleTemplateData' 
             }
             $result = Export-AzRuleTemplateData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 11;
+            $result.Length | Should -Be 8;
             $filteredResult = $result | Where-Object { $_.name -eq 'vnet-001' };
             $filteredResult | Should -Not -BeNullOrEmpty;
             $filteredResult.tags.role | Should -Be 'Custom';
@@ -403,7 +403,7 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet', 'Export-AzRuleTemplateData' 
             # With lookup
             $result = Export-AzRuleTemplateData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 11;
+            $result.Length | Should -Be 8;
             $filteredResult = $result | Where-Object { $_.name -eq 'vnet-001' };
             $filteredResult | Should -Not -BeNullOrEmpty;
             $filteredResult.properties.subnets.Length | Should -Be 3;
@@ -423,7 +423,7 @@ Describe 'Export-AzRuleTemplateData' -Tag 'Cmdlet', 'Export-AzRuleTemplateData' 
             }
             $result = Export-AzRuleTemplateData @exportParams -PassThru;
             $result | Should -Not -BeNullOrEmpty;
-            $result.Length | Should -Be 11;
+            $result.Length | Should -Be 8;
             $result[1].location | Should -Be 'Custom';
         }
     }

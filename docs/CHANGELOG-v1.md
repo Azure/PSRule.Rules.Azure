@@ -14,6 +14,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.14.1:
+
+- Bug fixes:
+  - Fixed handling of parent resources when sub resource is in a separate deployment. [#1360](https://github.com/Azure/PSRule.Rules.Azure/issues/1360)
+
 ## v1.14.1
 
 What's changed since v1.14.0:

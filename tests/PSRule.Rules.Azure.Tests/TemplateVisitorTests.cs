@@ -20,7 +20,7 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Resources.Template.json"), GetSourcePath("Resources.Parameters.json"));
             Assert.NotNull(resources);
-            Assert.Equal(11, resources.Length);
+            Assert.Equal(8, resources.Length);
 
             var actual = resources[1];
             Assert.Equal("vnet-001", actual["name"].Value<string>());
@@ -29,17 +29,33 @@ namespace PSRule.Rules.Azure
             Assert.Equal("10.1.0.32/28", actual["properties"]["subnets"][1]["properties"]["addressPrefix"].Value<string>());
             Assert.Equal("Networking", actual["tags"]["role"].Value<string>());
             Assert.Equal("region-A", actual["location"].Value<string>());
+            var subResources = actual["resources"].Value<JArray>();
+            actual = subResources[0] as JObject;
+            Assert.Equal("vnet-001/subnet2", actual["name"].Value<string>());
+            Assert.Equal("vnetDelegation", actual["properties"]["delegations"][0]["name"].Value<string>());
+            actual = subResources[1] as JObject;
+            Assert.Equal("vnet-001/subnet1/Microsoft.Authorization/924b5b06-fe70-9ab7-03f4-14671370765e", actual["name"].Value<string>());
+            actual = subResources[2] as JObject;
+            Assert.Equal("vnet-001/subnet2/Microsoft.Authorization/c7db2a25-b75f-d22b-f692-bbb38c83d9d0", actual["name"].Value<string>());
 
             actual = resources[2];
             Assert.Equal("vnetDelegation", actual["name"].Value<string>());
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
 
             actual = resources[3];
-            Assert.Equal("vnet-001/subnet2", actual["name"].Value<string>());
-            Assert.Equal("vnetDelegation", actual["properties"]["delegations"][0]["name"].Value<string>());
+            Assert.Equal("route-subnet1", actual["name"].Value<string>());
 
             actual = resources[4];
-            Assert.Equal("vnet-001/subnet1/Microsoft.Authorization/924b5b06-fe70-9ab7-03f4-14671370765e", actual["name"].Value<string>());
+            Assert.Equal("route-subnet2", actual["name"].Value<string>());
+
+            actual = resources[5];
+            Assert.Equal("nsg-subnet1", actual["name"].Value<string>());
+
+            actual = resources[6];
+            Assert.Equal("nsg-subnet2", actual["name"].Value<string>());
+
+            actual = resources[7];
+            Assert.Equal("nsg-extra", actual["name"].Value<string>());
         }
 
         [Fact]
@@ -210,7 +226,7 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Resources.Template.json"), GetSourcePath("Resources.Parameters.json"));
             Assert.NotNull(resources);
-            Assert.Equal(11, resources.Length);
+            Assert.Equal(8, resources.Length);
 
             var actual = resources[0];
             Assert.EndsWith("Resources.Template.json", actual["_PSRule"]["source"][0]["file"].Value<string>());
@@ -475,7 +491,7 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.3.json"), null);
             Assert.NotNull(resources);
-            Assert.Equal(6, resources.Length);
+            Assert.Equal(7, resources.Length);
 
             var actual = resources[0];
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
@@ -486,17 +502,21 @@ namespace PSRule.Rules.Azure
 
             actual = resources[2];
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
-            Assert.Equal("pe_deploy", actual["name"].Value<string>());
+            Assert.Equal("blob_deploy", actual["name"].Value<string>());
 
             actual = resources[3];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.Equal("pe_deploy", actual["name"].Value<string>());
+
+            actual = resources[4];
             Assert.Equal("Microsoft.Network/privateEndpoints", actual["type"].Value<string>());
             Assert.Equal("pe-storage1", actual["name"].Value<string>());
 
-            actual = resources[4];
+            actual = resources[5];
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
             Assert.Equal("pe_dns_deploy", actual["name"].Value<string>());
 
-            actual = resources[5];
+            actual = resources[6];
             Assert.Equal("Microsoft.Network/privateDnsZones/A", actual["type"].Value<string>());
             Assert.Equal("privatelink.blob.core.windows.net/storage1", actual["name"].Value<string>());
         }

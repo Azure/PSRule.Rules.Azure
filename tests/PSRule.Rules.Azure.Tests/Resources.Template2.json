@@ -60,6 +60,9 @@
             "defaultValue": "kvstoragediag01"
         }
     },
+    "variables": {
+        "vault2": "vault-002"
+    },
     "resources": [
         {
             "comments": "Application Key Vault",
@@ -163,7 +166,7 @@
         {
             "type": "Microsoft.KeyVault/vaults/keys",
             "apiVersion": "2021-06-01-preview",
-            "name": "[concat(parameters('vaultName'), '/', 'key2')]",
+            "name": "[concat(variables('vault2'), '/', 'key2')]",
             "tags": {},
             "properties": {
                 "keyOps": [
@@ -193,7 +196,7 @@
         {
             "type": "Microsoft.KeyVault/vaults/keys",
             "apiVersion": "2021-06-01-preview",
-            "name": "[concat(parameters('vaultName'), '/', 'key3')]",
+            "name": "[concat(variables('vault2'), '/', 'key3')]",
             "tags": {},
             "properties": {
                 "keyOps": [
