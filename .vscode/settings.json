@@ -91,5 +91,9 @@
     "omnisharp.enableImportCompletion": true,
     "omnisharp.organizeImportsOnFormat": true,
     "omnisharp.enableEditorConfigSupport": true,
-    "omnisharp.enableRoslynAnalyzers": true
+    "omnisharp.enableRoslynAnalyzers": true,
+    "PSRule.documentation.path": "docs",
+    "PSRule.documentation.localePath": "en/rules/",
+    "PSRule.documentation.customSnippetPath": ".vscode/markdown.code-snippets",
+    "PSRule.documentation.snippet": "Azure rule documentation"
 }
