@@ -409,6 +409,8 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, resources.Length);
 
             Assert.Equal("aks-resource123", resources[1]["name"].Value<string>());
+            Assert.Equal("dev", resources[1]["tags"]["env"].Value<string>());
+            Assert.Equal("value", resources[1]["tags"]["test"].Value<string>());
         }
 
         [Fact]

@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System.Collections.Generic;
@@ -19,6 +19,18 @@ namespace PSRule.Rules.Azure
         {
             value = default;
             if (dictionary.TryGetValue(key, out var v) && dictionary.Remove(key) && v is T result)
+            {
+                value = result;
+                return true;
+            }
+            return false;
+        }
+
+        [DebuggerStepThrough]
+        public static bool TryGetValue<T>(this IDictionary<string, object> dictionary, string key, out T value)
+        {
+            value = default;
+            if (dictionary.TryGetValue(key, out var v) && v is T result)
             {
                 value = result;
                 return true;
