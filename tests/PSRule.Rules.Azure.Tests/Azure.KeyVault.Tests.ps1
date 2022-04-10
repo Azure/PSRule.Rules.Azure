@@ -27,10 +27,10 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.KeyVault.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
@@ -131,14 +131,14 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
     Context 'Resource name - Azure.KeyVault.Name' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.KeyVault/vaults'
             }
         }
@@ -178,14 +178,14 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
     Context 'Resource name - Azure.KeyVault.SecretName' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.KeyVault/vaults/secrets'
             }
         }
@@ -222,14 +222,14 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
     Context 'Resource name - Azure.KeyVault.KeyName' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.KeyVault/vaults/keys'
             }
         }
@@ -326,12 +326,12 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'keyvault-001/key2','keyvault-001/key3';
+            $ruleResult.TargetName | Should -BeIn 'vault-002/key2', 'vault-002/key3';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The key (keyvault-001/key2) should enable a auto-rotation policy.";
+            $ruleResult[0].Reason | Should -BeExactly "The key (vault-002/key2) should enable a auto-rotation policy.";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The key (keyvault-001/key3) should enable a auto-rotation policy.";
+            $ruleResult[1].Reason | Should -BeExactly "The key (vault-002/key3) should enable a auto-rotation policy.";
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });

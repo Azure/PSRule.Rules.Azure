@@ -10,13 +10,10 @@ resource storageaccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   }
 }
 
-resource blobServices 'Microsoft.Storage/storageAccounts/blobServices@2021-08-01' = {
-  name: '${storageaccount.name}/default'
-  properties: {
-    deleteRetentionPolicy: {
-      enabled: true
-      days: 7
-    }
+module blobService 'Tests.Bicep.3.blob.bicep' = {
+  name: 'blob_deploy'
+  params: {
+    storageAccountName: storageaccount.name
   }
 }
 

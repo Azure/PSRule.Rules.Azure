@@ -28,11 +28,11 @@ Describe 'Azure.Resource' -Tag 'Resource' {
         BeforeAll {
             $option = New-PSRuleOption -BaselineConfiguration @{ 'Azure_AllowedRegions' = @('region-A') };
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
-                Option = $option
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                Option        = $option
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Resource.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
@@ -91,11 +91,11 @@ Describe 'Azure.Resource' -Tag 'Resource' {
             Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
             $option = New-PSRuleOption -BaselineConfiguration @{ 'Azure_AllowedRegions' = @('region-A') };
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
-                Option = $option
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                Option        = $option
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
         }
@@ -149,8 +149,8 @@ Describe 'Azure.Resource' -Tag 'Resource' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetType | Should -BeIn 'Microsoft.Network/virtualNetworks/subnets/providers/roleAssignments', 'Microsoft.Network/virtualNetworks/subnets', 'Microsoft.Resources/deployments';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetType | Should -BeIn 'Microsoft.Resources/deployments';
         }
 
         It 'Azure.Resource.AllowedRegions' {
@@ -159,8 +159,8 @@ Describe 'Azure.Resource' -Tag 'Resource' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -BeIn 'vnet-001/subnet2', 'route-subnet1', 'route-subnet2', 'nsg-subnet1', 'nsg-subnet2', 'nsg-extra';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'route-subnet1', 'route-subnet2', 'nsg-subnet1', 'nsg-subnet2', 'nsg-extra';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -171,8 +171,8 @@ Describe 'Azure.Resource' -Tag 'Resource' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetType | Should -BeIn 'Microsoft.Network/virtualNetworks/subnets/providers/roleAssignments', 'Microsoft.Resources/deployments';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetType | Should -BeIn 'Microsoft.Resources/deployments';
         }
     }
 }
@@ -181,14 +181,14 @@ Describe 'Azure.ResourceGroup' -Tag 'ResourceGroup' {
     Context 'Resource name' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.Resources/resourceGroups'
             }
         }

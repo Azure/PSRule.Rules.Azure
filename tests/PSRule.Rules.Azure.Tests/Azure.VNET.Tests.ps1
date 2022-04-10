@@ -27,10 +27,10 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
@@ -160,14 +160,14 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
     Context 'Resource name - Azure.VNET.Name' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.Network/virtualNetworks'
             }
         }
@@ -208,14 +208,14 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
     Context 'Resource name - Azure.VNET.SubnetName' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.Network/virtualNetworks/subnets'
             }
         }
@@ -256,10 +256,9 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
 
     Context 'With Template' {
         BeforeAll {
-            $templatePath = Join-Path -Path $here -ChildPath 'Resources.Template.json';
-            $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
+            $templatePath = Join-Path -Path $here -ChildPath 'Resources.VNET.Template.json';
             $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualNetwork.json;
-            Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
+            Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
             $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop -Culture 'en-US';
         }
 
@@ -270,7 +269,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'vnet-001/subnet2';
+            $ruleResult.TargetName | Should -BeIn 'vnet-002/subnet-extra';
             $ruleResult.Reason | Should -BeLike 'The subnet (*) has no NSG associated.';
 
             # Pass
