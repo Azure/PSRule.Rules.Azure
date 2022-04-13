@@ -27,10 +27,10 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Firewall.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
@@ -56,14 +56,14 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
     Context 'Resource name - Azure.Firewall.Name' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.Network/azureFirewalls'
             }
         }
@@ -103,14 +103,14 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
     Context 'Resource name - Azure.Firewall.PolicyName' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.Network/firewallPolicies'
             }
         }
@@ -144,6 +144,31 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
             $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Firewall.PolicyName';
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Outcome | Should -Be 'Fail';
+        }
+    }
+
+    Context 'With template' {
+        BeforeAll {
+            $templatePath = Join-Path -Path $here -ChildPath 'Resources.Firewall.Template.json';
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Firewall.json;
+            Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
+            $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        }
+
+        It 'Azure.Firewall.Mode' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Firewall.Mode' };
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'firewall_classic';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'firewall_with_policy', 'firewall_with_hub';
         }
     }
 }

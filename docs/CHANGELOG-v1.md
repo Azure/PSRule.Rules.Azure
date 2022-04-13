@@ -14,6 +14,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.14.2:
+
+- Bug fixes:
+  - Fixed Azure Firewall threat intel mode reported for Secure VNET hubs. [#1365](https://github.com/Azure/PSRule.Rules.Azure/issues/1365)
+
 ## v1.14.2
 
 What's changed since v1.14.1:
