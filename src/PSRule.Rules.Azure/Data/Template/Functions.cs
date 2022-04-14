@@ -151,12 +151,24 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region Array and object
 
+        /// <summary>
+        /// array(convertToArray)
+        /// </summary>
+        /// <remarks>
+        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#array
+        /// </remarks>
         internal static object Array(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Array), args);
 
-            return TryJArray(args[0], out var jArray) ? jArray : new JArray(args[0]);
+            if (ExpressionHelpers.TryArray(args[0], out object o))
+                return o;
+
+            if (ExpressionHelpers.TryJToken(args[0], out var token))
+                return new JArray(token);
+
+            return new object[] { args[0] };
         }
 
         internal static object Coalesce(ITemplateContext context, object[] args)

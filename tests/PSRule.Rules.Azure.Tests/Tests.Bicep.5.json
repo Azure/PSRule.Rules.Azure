@@ -1,0 +1,106 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.5.6.12127",
+      "templateHash": "4021517426993809985"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "fw_deploy",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.5.6.12127",
+              "templateHash": "11750648189902323583"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Network/azureFirewalls",
+              "apiVersion": "2021-05-01",
+              "name": "firewall-001"
+            }
+          ],
+          "outputs": {
+            "azureFirewallPrivateIPAddress": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.Network/azureFirewalls', 'firewall-001')).ipConfigurations[0].properties.privateIPAddress]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "vnet_deploy",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "addressPrefixes": {
+            "value": [
+              "10.0.0.0/8"
+            ]
+          },
+          "firewallDeployment": {
+            "value": "fw_deploy"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.5.6.12127",
+              "templateHash": "9706252972703319046"
+            }
+          },
+          "parameters": {
+            "addressPrefixes": {
+              "type": "array"
+            },
+            "firewallDeployment": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Network/virtualNetworks",
+              "apiVersion": "2021-05-01",
+              "name": "vnet-001",
+              "properties": {
+                "addressSpace": {
+                  "addressPrefixes": "[parameters('addressPrefixes')]"
+                },
+                "dhcpOptions": {
+                  "dnsServers": "[array(reference(resourceId('Microsoft.Resources/deployments', parameters('firewallDeployment')), '2021-04-01').outputs.azureFirewallPrivateIPAddress)]"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'fw_deploy')]"
+      ]
+    }
+  ]
+}

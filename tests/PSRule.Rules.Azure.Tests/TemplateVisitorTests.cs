@@ -555,6 +555,14 @@ namespace PSRule.Rules.Azure
             Assert.Equal("service", subResources[0]["name"].Value<string>());
         }
 
+        [Fact]
+        public void WithArrayFromRuntimeProperty()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.5.json"), null);
+            Assert.NotNull(resources);
+            Assert.Equal(5, resources.Length);
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
