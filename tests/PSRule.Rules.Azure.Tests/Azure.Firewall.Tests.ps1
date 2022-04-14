@@ -165,7 +165,7 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
             $ruleResult.TargetName | Should -BeIn 'firewall_classic';
 
             # None
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetType -eq 'Microsoft.Network/azureFirewalls' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'firewall_with_policy', 'firewall_with_hub';
