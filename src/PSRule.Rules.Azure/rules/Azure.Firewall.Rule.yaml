@@ -61,8 +61,32 @@ metadata:
 spec:
   type:
   - Microsoft.Network/azureFirewalls
+  with:
+  - Azure.Firewall.IsClassicManaged
   condition:
     field: Properties.threatIntelMode
     equals: Deny
 
+    # Ignore if there is a firewall policy attached (properties.firewallPolicy.id not empty) or if properties.sku.name = AZFW_Hub
+
 #endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: Azure Firewall is using classic management mode.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Firewall.IsClassicManaged
+spec:
+  if:
+    allOf:
+    - type: '.'
+      equals: Microsoft.Network/azureFirewalls
+    - field: properties.firewallPolicy.id
+      exists: false
+    - field: properties.sku.name
+      notEquals: AZFW_Hub
+
+#endregion Selectors
