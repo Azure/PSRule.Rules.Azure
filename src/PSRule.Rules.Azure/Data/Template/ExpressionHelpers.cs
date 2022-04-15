@@ -203,6 +203,27 @@ namespace PSRule.Rules.Azure.Data.Template
             return TryString(o, out var svalue) && bool.TryParse(svalue, out value);
         }
 
+        internal static bool TryArray<T>(object o, out T value) where T : class
+        {
+            value = default(T);
+            if (o is JArray jArray)
+            {
+                value = jArray as T;
+                return true;
+            }
+            else if (o is Array array)
+            {
+                value = array as T;
+                return true;
+            }
+            else if (o is MockArray mock)
+            {
+                value = mock as T;
+                return true;
+            }
+            return false;
+        }
+
         /// <summary>
         /// Try to get DateTime from the existing object.
         /// </summary>
@@ -236,24 +257,55 @@ namespace PSRule.Rules.Azure.Data.Template
             return false;
         }
 
-        internal static JToken GetJToken(object value)
+        internal static bool TryJToken(object o, out JToken value)
         {
-            if (value is JToken jToken)
+            value = default;
+            if (o is JToken token)
+            {
+                value = token;
+                return true;
+            }
+            else if (o is string s)
+            {
+                value = new JValue(s);
+                return true;
+            }
+            else if (TryLong(o, out var l))
+            {
+                value = new JValue(l);
+                return true;
+            }
+            else if (o is Array a)
+            {
+                value = new JArray(a);
+                return true;
+            }
+            else if (o is Hashtable hashtable)
+            {
+                value = JObject.FromObject(hashtable);
+                return true;
+            }
+            return false;
+        }
+
+        internal static JToken GetJToken(object o)
+        {
+            if (o is JToken jToken)
                 return jToken;
 
-            if (value is string sValue)
+            if (o is string sValue)
                 return new JValue(sValue);
 
-            if (value is Array aValue)
+            if (o is Array aValue)
                 return new JArray(aValue);
 
-            if (value is Hashtable hashtable)
+            if (o is Hashtable hashtable)
                 return JObject.FromObject(hashtable);
 
-            if (value is MockMember mockMember)
+            if (o is MockMember mockMember)
                 return new JValue(mockMember.ToString());
 
-            return new JValue(value);
+            return new JValue(o);
         }
 
         internal static byte[] GetUnique(object[] args)

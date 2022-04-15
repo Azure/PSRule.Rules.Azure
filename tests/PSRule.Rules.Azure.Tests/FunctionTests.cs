@@ -5,6 +5,7 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Management;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
@@ -1616,6 +1617,20 @@ namespace PSRule.Rules.Azure
         }
 
         #endregion String
+
+        #region Complex scenarios
+
+        [Fact]
+        public void ComplexArrayReference()
+        {
+            var context = GetContext();
+            var actual = Functions.Array(context, new object[] { Functions.Reference(context, new object[] { Functions.ExtensionResourceId(context, new object[] { "/subscriptions/000/resourceGroups/rg-001", "Microsoft.Resources/deployments", "deploy-001" }) }) });
+
+            Assert.IsType<object[]>(actual);
+            Assert.Single(actual as Array);
+        }
+
+        #endregion Complex scenarios
 
         private static TemplateContext GetContext()
         {

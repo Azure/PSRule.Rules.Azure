@@ -18,6 +18,7 @@ What's changed since v1.14.2:
 
 - Bug fixes:
   - Fixed Azure Firewall threat intel mode reported for Secure VNET hubs. [#1365](https://github.com/Azure/PSRule.Rules.Azure/issues/1365)
+  - Fixed array function handling with mock objects. [#1367](https://github.com/Azure/PSRule.Rules.Azure/issues/1367)
 
 ## v1.14.2
 
