@@ -9,11 +9,14 @@
             "kind: Rule",
             "metadata:",
             "  name: ${1}",
+            "  tags:",
+            "    release: 'GA'",
+            "    ruleSet: '${3}'",
             "spec:",
             "  type:",
-            "  - ${3}",
+            "  - ${4}",
             "  condition:",
-            "    ${4}"
+            "    ${5}"
         ]
     }
 }
