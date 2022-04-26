@@ -122,6 +122,12 @@ task VersionModule ModuleDependencies, {
         if ($_.Name -eq 'PSRule' -and $Configuration -eq 'Release') {
             @{ ModuleName = 'PSRule'; ModuleVersion = $dependencies.dependencies.PSRule.version }
         }
+        if ($_.Name -eq 'Az.Accounts' -and $Configuration -eq 'Release') {
+            @{ ModuleName = 'Az.Accounts'; ModuleVersion = $dependencies.dependencies.'Az.Accounts'.version }
+        }
+        if ($_.Name -eq 'Az.Resources' -and $Configuration -eq 'Release') {
+            @{ ModuleName = 'Az.Resources'; ModuleVersion = $dependencies.dependencies.'Az.Resources'.version }
+        }
         else {
             @{ ModuleName = $_.Name; ModuleVersion = $_.Version }
         }
@@ -151,12 +157,6 @@ task NuGet {
 
 # Synopsis: Install module dependencies
 task ModuleDependencies Dependencies, {
-    if ($Null -eq (Get-InstalledModule -Name Az.Accounts -MinimumVersion 2.5.2 -ErrorAction Ignore)) {
-        Install-Module -Name Az.Accounts -Scope CurrentUser -MinimumVersion 2.5.2 -Force;
-    }
-    if ($Null -eq (Get-InstalledModule -Name Az.Resources -MinimumVersion 4.3.0 -ErrorAction Ignore)) {
-        Install-Module -Name Az.Resources -Scope CurrentUser -MinimumVersion 4.3.0 -Force;
-    }
 }
 
 task BuildDotNet {
@@ -487,13 +487,6 @@ task ExportProviders {
 
 task ExportData ExportProviders
 
-# Synopsis: Add shipit build tag
-task TagBuild {
-    if ($Null -ne $Env:BUILD_DEFINITIONNAME) {
-        Write-Host "`#`#vso[build.addbuildtag]shipit";
-    }
-}
-
 # Synopsis: Remove temp files.
 task Clean {
     dotnet clean;
@@ -504,7 +497,7 @@ task Build Clean, BuildModule, VersionModule, BuildHelp
 
 task Test Build, Rules, TestDotNet, TestModule
 
-task Release ReleaseModule, TagBuild
+task Release ReleaseModule
 
 # Synopsis: Build and test. Entry point for CI Build stage
 task . Build, Rules, TestDotNet
