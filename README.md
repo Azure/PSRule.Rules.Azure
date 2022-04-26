@@ -2,18 +2,23 @@
 
 A suite of rules to validate Azure resources and infrastructure as code (IaC) using PSRule.
 
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/Azure/PSRule.Rules.Azure)
+[![Open in vscode.dev](https://img.shields.io/badge/Open%20in-vscode.dev-blue)][1]
 
 Features of PSRule for Azure include:
 
-- [Ready to go](https://azure.github.io/PSRule.Rules.Azure/features/#readytogo) - Leverage over 260 pre-built rules to validate Azure resources.
-- [DevOps](https://azure.github.io/PSRule.Rules.Azure/features/#devops) - Validate resources and infrastructure code pre or post-deployment.
-- [Cross-platform](https://azure.github.io/PSRule.Rules.Azure/features/#cross-platform) - Run on MacOS, Linux, and Windows.
+- [Ready to go][2] - Leverage over 260 pre-built rules to validate Azure resources.
+- [DevOps][3] - Validate resources and infrastructure code pre or post-deployment.
+- [Cross-platform][4] - Run on MacOS, Linux, and Windows.
+
+  [1]: https://vscode.dev/github/Azure/PSRule.Rules.Azure
+  [2]: https://azure.github.io/PSRule.Rules.Azure/features/#readytogo
+  [3]: https://azure.github.io/PSRule.Rules.Azure/features/#devops
+  [4]: https://azure.github.io/PSRule.Rules.Azure/features/#cross-platform
 
 ## Project objectives
 
 1. **Ready to go**:
-   - Provide a [Azure Well-Architected Framework][AWAF] aligned suite of rules for validating Azure resources.
+   - Provide a [Azure Well-Architected Framework][5] aligned suite of rules for validating Azure resources.
    - Provide meaningful information to allow remediation.
 2. **DevOps**:
    - Resources and templates can be validated before deployment within DevOps workflows.
@@ -21,6 +26,8 @@ Features of PSRule for Azure include:
 3. **Enterprise ready**:
    - Rules can be directly adopted and additional enterprise specific rules can be layed on.
    - Provide regular baselines to allow progressive adoption.
+
+  [5]: https://docs.microsoft.com/en-gb/azure/architecture/framework/
 
 ## Support
 
@@ -278,7 +285,7 @@ For walk through examples of PSRule for Azure module usage see:
 
 ## Rule reference
 
-PSRule for Azure includes rules across five pillars of the [Microsoft Azure Well-Architected Framework][AWAF].
+PSRule for Azure includes rules across five pillars of the [Microsoft Azure Well-Architected Framework][5].
 
 - [Rules for architecture excellence](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/)
   - [Cost Optimization](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#costoptimization)
@@ -304,9 +311,11 @@ The following baselines are included within `PSRule.Rules.Azure`.
 - [Azure.GA_2021_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_06/) - Baseline for GA rules released June 2021 or prior.
 - [Azure.GA_2021_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_09/) - Baseline for GA rules released September 2021 or prior.
 - [Azure.GA_2021_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_12/) - Baseline for GA rules released December 2021 or prior.
+- [Azure.GA_2022_03](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2022_03/) - Baseline for GA rules released March 2022 or prior.
 - [Azure.Preview](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview/) - Includes rules for Azure GA and preview features.
 - [Azure.Preview_2021_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2021_09/) - Baseline for rules released September 2021 or prior for Azure preview only features.
 - [Azure.Preview_2021_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2021_12/) - Baseline for rules released December 2021 or prior for Azure preview only features.
+- [Azure.Preview_2022_03](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2022_03/) - Baseline for rules released March 2022 or prior for Azure preview only features.
 
 ## Language reference
 
@@ -318,7 +327,10 @@ PSRule for Azure included the following cmdlets:
 
 - [Export-AzRuleData](docs/commands/Export-AzRuleData.md) - Export resource configuration data from Azure subscriptions.
 - [Export-AzRuleTemplateData](docs/commands/Export-AzRuleTemplateData.md) - Export resource configuration data from Azure templates.
+- [Export-AzPolicyAssignmentData](docs/commands/Export-AzPolicyAssignmentData.md) - Export policy assignment data.
+- [Export-AzPolicyAssignmentRuleData](docs/commands/Export-AzPolicyAssignmentRuleData.md) - Export JSON based rules from policy assignment data.
 - [Get-AzRuleTemplateLink](docs/commands/Get-AzRuleTemplateLink.md) - Get a metadata link to a Azure template file.
+- [Get-AzPolicyAssignmentDataSource](docs/commands/Get-AzPolicyAssignmentDataSource.md) - Get policy assignment sources.
 
 ## Concepts
 
@@ -388,7 +400,6 @@ This project is [licensed under the MIT License](LICENSE).
 [PSRule.Monitor]: https://github.com/microsoft/PSRule.Monitor
 [PSRule-pipelines]: https://github.com/microsoft/PSRule-pipelines
 [ps-rule]: https://github.com/microsoft/ps-rule
-[AWAF]: https://docs.microsoft.com/en-gb/azure/architecture/framework/
 [create-workflow]: https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file
 [extension]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
 [troubleshooting guide]: https://azure.github.io/PSRule.Rules.Azure/troubleshooting/

@@ -15,7 +15,7 @@ The goal of this document is to provide a high-level overview of how you can get
 Have a question? Rather than opening an issue, please ask a question in [discussions][1].
 Your well-worded question will serve as a resource to others searching for help.
 
-[1]: https://github.com/Azure/PSRule.Rules.Azure/discussions
+  [1]: https://github.com/Azure/PSRule.Rules.Azure/discussions
 
 ## Reporting issues
 
