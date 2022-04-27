@@ -419,7 +419,7 @@ task Benchmark {
 
 task Dependencies NuGet, {
     Import-Module $PWD/scripts/dependencies.psm1;
-    Install-Dependencies -Path $PWD/modules.json;
+    Install-Dependencies -Path $PWD/modules.json -Dev;
 }
 
 task ExportAliases {
