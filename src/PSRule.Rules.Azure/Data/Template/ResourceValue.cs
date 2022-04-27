@@ -15,70 +15,87 @@ namespace PSRule.Rules.Azure.Data.Template
 
         string Id { get; }
 
+        string Name { get; }
+
         string Type { get; }
 
         TemplateContext.CopyIndexState Copy { get; }
 
-        bool DependsOn(string id);
+        bool DependsOn(IResourceValue other);
     }
 
     internal static class ResourceValueExtensions
     {
         public static bool DependsOn(this IResourceValue resource, IResourceValue other)
         {
-            return resource.DependsOn(other.Id);
+            return resource.DependsOn(other);
+        }
+    }
+
+    internal abstract class BaseResourceValue
+    {
+        private readonly HashSet<string> _Dependencies;
+
+        protected BaseResourceValue(string id, string name, string[] dependencies)
+        {
+            Id = id;
+            Name = name;
+            _Dependencies = dependencies == null || dependencies.Length == 0 ? null : new HashSet<string>(dependencies, StringComparer.OrdinalIgnoreCase);
+        }
+
+        public string Id { get; }
+
+        public string Name { get; }
+
+        public bool DependsOn(IResourceValue other)
+        {
+            if (_Dependencies == null)
+                return false;
+
+            return _Dependencies.Contains(other.Id) ||
+                other.Copy != null && !string.IsNullOrEmpty(other.Copy.Name) && _Dependencies.Contains(other.Copy.Name) ||
+                !string.IsNullOrEmpty(other.Name) && _Dependencies.Contains(other.Name);
         }
     }
 
     [DebuggerDisplay("{Id}")]
-    internal sealed class ResourceValue : IResourceValue
+    internal sealed class ResourceValue : BaseResourceValue, IResourceValue
     {
-        private readonly HashSet<string> _Dependencies;
-
-        internal ResourceValue(string id, string type, JObject value, string[] dependencies, TemplateContext.CopyIndexState copy)
+        internal ResourceValue(string id, string name, string type, JObject value, string[] dependencies, TemplateContext.CopyIndexState copy)
+            : base(id, name, dependencies)
         {
-            Id = id;
             Type = type;
             Value = value;
             Copy = copy;
-            _Dependencies = dependencies == null || dependencies.Length == 0 ? null : new HashSet<string>(dependencies, StringComparer.OrdinalIgnoreCase);
         }
 
         public JObject Value { get; }
 
-        public string Id { get; }
-
         public string Type { get; }
 
         public TemplateContext.CopyIndexState Copy { get; }
-
-        public bool DependsOn(string id)
-        {
-            return _Dependencies != null && _Dependencies.Contains(id);
-        }
     }
 
     [DebuggerDisplay("{Id}")]
-    internal sealed class DeploymentValue : IResourceValue, ILazyObject
+    internal sealed class DeploymentValue : BaseResourceValue, IResourceValue, ILazyObject
     {
         private const string RESOURCETYPE_DEPLOYMENT = "Microsoft.Resources/deployments";
 
         private const string PROPERTY_PROPERTIES = "properties";
         private const string PROPERTY_OUTPUTS = "outputs";
 
-        private readonly HashSet<string> _Dependencies;
         private readonly Lazy<JObject> _Value;
         private readonly Dictionary<string, ILazyValue> _Outputs;
 
-        internal DeploymentValue(string id, JObject value, string[] dependencies, TemplateContext.CopyIndexState copy)
-            : this(id, () => value, dependencies, copy) { }
+        internal DeploymentValue(string id, string name, JObject value, string[] dependencies, TemplateContext.CopyIndexState copy)
+            : this(id, name, () => value, dependencies, copy) { }
 
-        internal DeploymentValue(string id, Func<JObject> value, string[] dependencies, TemplateContext.CopyIndexState copy)
+        internal DeploymentValue(string id, string name, Func<JObject> value, string[] dependencies, TemplateContext.CopyIndexState copy)
+            : base(id, name, dependencies)
         {
-            Id = id;
+
             _Value = new Lazy<JObject>(value);
             Copy = copy;
-            _Dependencies = dependencies == null || dependencies.Length == 0 ? null : new HashSet<string>(dependencies, StringComparer.OrdinalIgnoreCase);
             Properties = new DeploymentProperties(this);
             _Outputs = new Dictionary<string, ILazyValue>(StringComparer.OrdinalIgnoreCase);
         }
@@ -130,18 +147,11 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public JObject Value => _Value.Value;
 
-        public string Id { get; }
-
         public string Type => RESOURCETYPE_DEPLOYMENT;
 
         public TemplateContext.CopyIndexState Copy { get; }
 
         public ILazyObject Properties { get; }
-
-        public bool DependsOn(string id)
-        {
-            return _Dependencies != null && _Dependencies.Contains(id);
-        }
 
         public void AddOutput(string name, ILazyValue output)
         {

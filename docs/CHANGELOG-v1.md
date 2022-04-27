@@ -14,6 +14,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.14.3:
+
+- Bug fixes:
+  - Fixed dependency chain order when dependsOn copy. [#1381](https://github.com/Azure/PSRule.Rules.Azure/issues/1381)
+
 ## v1.14.3
 
 What's changed since v1.14.2:

@@ -268,14 +268,27 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// createArray (arg1, arg2, arg3, ...)
         /// </summary>
+        /// <remarks>
+        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#createarray
+        /// </remarks>
         internal static object CreateArray(ITemplateContext context, object[] args)
         {
-            return (args == null || args.Length == 0) ? new JArray() : new JArray(args);
+            if (args == null || args.Length == 0)
+                return new JArray();
+
+            var array = new JArray();
+            for (var i = 0; i < args.Length; i++)
+                array.Add(ExpressionHelpers.GetJToken(args[i]));
+
+            return array;
         }
 
         /// <summary>
         /// createObject(key1, value1, key2, value2, ...)
         /// </summary>
+        /// <remarks>
+        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-object#createobject
+        /// </remarks>
         internal static object CreateObject(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);

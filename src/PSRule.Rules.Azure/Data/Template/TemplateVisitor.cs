@@ -512,7 +512,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     { PROPERTY_METADATA, metadata }
                 };
                 deployment.SetTargetInfo(TemplateFile, ParameterFile);
-                var deploymentValue = new DeploymentValue(string.Concat(ResourceGroup.Id, "/providers/", RESOURCETYPE_DEPLOYMENT, "/", deploymentName), deployment, null, null);
+                var deploymentValue = new DeploymentValue(string.Concat(ResourceGroup.Id, "/providers/", RESOURCETYPE_DEPLOYMENT, "/", deploymentName), deploymentName, deployment, null, null);
                 AddResource(deploymentValue);
                 _CurrentDeployment = deploymentValue;
                 _Deployment.Push(deploymentValue);
@@ -817,11 +817,13 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             private readonly TemplateContext _Context;
             private readonly JObject _Value;
+            private readonly ParameterType _Type;
 
             public LazyOutput(TemplateContext context, JObject value)
             {
                 _Context = context;
                 _Value = value;
+                _Type = GetParameterType(value);
             }
 
             public object GetValue()
@@ -1069,7 +1071,7 @@ namespace PSRule.Rules.Azure.Data.Template
             resource.TryGetDependencies(out var dependencies);
             var resourceId = ResourceHelper.CombineResourceId(context.Subscription.SubscriptionId, context.ResourceGroup.Name, type, name);
             context.UpdateResourceScope(resource);
-            return new ResourceValue(resourceId, type, resource, dependencies, copyIndex.Clone());
+            return new ResourceValue(resourceId, name, type, resource, dependencies, copyIndex.Clone());
         }
 
         private void ResourceOuter(TemplateContext context, IResourceValue resource)

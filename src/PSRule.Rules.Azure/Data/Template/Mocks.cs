@@ -15,6 +15,8 @@ namespace PSRule.Rules.Azure.Data.Template
         bool TryGetIndex(int index, out IMock value);
 
         bool TryGetValue(out object value);
+
+        bool TryGetToken(out JToken value);
     }
 
     internal abstract class MockLiteral<T> : IMock
@@ -44,6 +46,12 @@ namespace PSRule.Rules.Azure.Data.Template
         public bool TryGetValue(out object value)
         {
             value = Value;
+            return true;
+        }
+
+        public virtual bool TryGetToken(out JToken value)
+        {
+            value = new JValue(Value);
             return true;
         }
 
@@ -109,6 +117,12 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         public virtual bool TryGetValue(out object value)
+        {
+            value = null;
+            return false;
+        }
+
+        public virtual bool TryGetToken(out JToken value)
         {
             value = null;
             return false;
@@ -228,6 +242,12 @@ namespace PSRule.Rules.Azure.Data.Template
             return value != null;
         }
 
+        public override bool TryGetToken(out JToken value)
+        {
+            value = Value;
+            return Value != null;
+        }
+
         private bool TryGetPropertyFromValue(string propertyName, out IMock value)
         {
             value = null;
@@ -301,13 +321,22 @@ namespace PSRule.Rules.Azure.Data.Template
             : base(parent)
         {
             Name = name;
+            Value = token;
         }
 
         public string Name { get; }
 
+        public JToken Value { get; }
+
         protected override string GetString()
         {
             return Name;
+        }
+
+        public override bool TryGetToken(out JToken value)
+        {
+            value = Value;
+            return Value != null || base.TryGetToken(out value);
         }
     }
 

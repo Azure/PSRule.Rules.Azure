@@ -5,8 +5,16 @@
     "_generator": {
       "name": "bicep",
       "version": "0.5.6.12127",
-      "templateHash": "4021517426993809985"
+      "templateHash": "10373010089480782173"
     }
+  },
+  "variables": {
+    "subnets": [
+      {
+        "subnetName": "subnet-001",
+        "addressPrefix": "10.0.1.0/24"
+      }
+    ]
   },
   "resources": [
     {
@@ -61,6 +69,15 @@
           },
           "firewallDeployment": {
             "value": "fw_deploy"
+          },
+          "subnets": {
+            "copy": [
+              {
+                "name": "value",
+                "count": "[length(variables('subnets'))]",
+                "input": "[createObject('name', variables('subnets')[copyIndex('value')].subnetName, 'addressPrefix', variables('subnets')[copyIndex('value')].addressPrefix, 'networkSecurityGroupId', reference(resourceId('Microsoft.Resources/deployments', format('nsg_deploy_{0}', variables('subnets')[copyIndex('value')].subnetName))).outputs.networkSecurityGroupResourceId.value)]"
+              }
+            ]
           }
         },
         "template": {
@@ -70,7 +87,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.5.6.12127",
-              "templateHash": "9706252972703319046"
+              "templateHash": "13943786703363137056"
             }
           },
           "parameters": {
@@ -79,6 +96,9 @@
             },
             "firewallDeployment": {
               "type": "string"
+            },
+            "subnets": {
+              "type": "array"
             }
           },
           "resources": [
@@ -87,6 +107,21 @@
               "apiVersion": "2021-05-01",
               "name": "vnet-001",
               "properties": {
+                "copy": [
+                  {
+                    "name": "subnets",
+                    "count": "[length(parameters('subnets'))]",
+                    "input": {
+                      "name": "[parameters('subnets')[copyIndex('subnets')].name]",
+                      "properties": {
+                        "addressPrefix": "[parameters('subnets')[copyIndex('subnets')].addressPrefix]",
+                        "networkSecurityGroup": {
+                          "id": "[parameters('subnets')[copyIndex('subnets')].networkSecurityGroupId]"
+                        }
+                      }
+                    }
+                  }
+                ],
                 "addressSpace": {
                   "addressPrefixes": "[parameters('addressPrefixes')]"
                 },
@@ -99,8 +134,58 @@
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', 'fw_deploy')]"
+        "[resourceId('Microsoft.Resources/deployments', 'fw_deploy')]",
+        "nsg"
       ]
+    },
+    {
+      "copy": {
+        "name": "nsg",
+        "count": "[length(variables('subnets'))]"
+      },
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "[format('nsg_deploy_{0}', variables('subnets')[copyIndex()].subnetName)]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "name": {
+            "value": "[format('nsg-{0}', variables('subnets')[copyIndex()].subnetName)]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.5.6.12127",
+              "templateHash": "6487533441289057864"
+            }
+          },
+          "parameters": {
+            "name": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Network/networkSecurityGroups",
+              "apiVersion": "2021-05-01",
+              "name": "[parameters('name')]"
+            }
+          ],
+          "outputs": {
+            "networkSecurityGroupResourceId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('name'))]"
+            }
+          }
+        }
+      }
     }
   ]
 }
