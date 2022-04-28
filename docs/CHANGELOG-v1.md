@@ -14,6 +14,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.14.3:
+
+- Engineering:
+  - Added code signing of module. [#1379](https://github.com/Azure/PSRule.Rules.Azure/issues/1379)
+  - Added SBOM manifests to module. [#1380](https://github.com/Azure/PSRule.Rules.Azure/issues/1380)
+
 ## v1.14.3
 
 What's changed since v1.14.2:
