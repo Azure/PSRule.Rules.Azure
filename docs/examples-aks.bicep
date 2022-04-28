@@ -46,7 +46,7 @@ param systemPoolMin int
 param systemPoolMax int = 3
 
 @description('The version of Kubernetes.')
-param kubernetesVersion string = '1.21.9'
+param kubernetesVersion string = '1.22.6'
 
 @description('Maximum number of pods that can run on nodes in the system pool.')
 @minValue(30)
@@ -148,7 +148,7 @@ resource identity 'Microsoft.ManagedIdentity/userAssignedIdentities@2018-11-30' 
 }
 
 // Cluster
-resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
+resource cluster 'Microsoft.ContainerService/managedClusters@2022-01-01' = {
   location: location
   name: clusterName
   identity: {
