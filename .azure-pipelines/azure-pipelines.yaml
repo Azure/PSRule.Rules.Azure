@@ -15,9 +15,6 @@ trigger:
     include:
     - 'main'
     - 'release/*'
-  tags:
-    include:
-    - 'v1.*'
 
 pr:
   branches:
@@ -173,47 +170,4 @@ stages:
       name: ps_7_2_ubuntu_20_04
       displayName: 'PowerShell 7.2 - ubuntu-20.04'
       imageName: mcr.microsoft.com/powershell
-      imageTag: 7.2.1-ubuntu-20.04
-
-# Release pipeline
-- stage: Release
-  displayName: Release
-  dependsOn: [ 'Test', 'Analysis' ]
-  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v1.'))
-  jobs:
-  - job:
-    displayName: Live
-    pool:
-      vmImage: $(imageName)
-    variables:
-      isPreRelease: $[contains(variables['Build.SourceBranchName'], '-B')]
-    steps:
-
-    # Download module from build
-    - task: DownloadPipelineArtifact@2
-      displayName: 'Download module'
-      inputs:
-        artifact: PSRule.Rules.Azure
-        path: $(Build.SourcesDirectory)/out/modules/PSRule.Rules.Azure
-
-    # Install pipeline dependencies
-    - powershell: ./.azure-pipelines/pipeline-deps.ps1
-      displayName: 'Install dependencies'
-
-    # Install pipeline dependencies and build module
-    - powershell: Invoke-Build Release -ApiKey $(apiKey) -Configuration $(buildConfiguration)
-      displayName: 'Publish module'
-
-    # Update GitHub release
-    - task: GitHubRelease@1
-      displayName: 'GitHub release'
-      inputs:
-        gitHubConnection: 'AzureDevOps-PSRule.Rules.Azure'
-        repositoryName: '$(Build.Repository.Name)'
-        action: edit
-        tag: '$(Build.SourceBranchName)'
-        releaseNotesSource: inline
-        releaseNotesInline: 'See [change log](https://github.com/Azure/PSRule.Rules.Azure/blob/main/CHANGELOG.md)'
-        assetUploadMode: replace
-        addChangeLog: false
-        isPreRelease: $(isPreRelease)
+      imageTag: 7.2.2-ubuntu-20.04
