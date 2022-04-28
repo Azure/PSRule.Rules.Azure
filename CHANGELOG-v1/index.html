@@ -7437,6 +7437,16 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
 <p>What's changed since v1.14.3:</p>
 <ul>
+<li>Updated rules:<ul>
+<li>Azure Kubernetes Service:<ul>
+<li>Updated <code>Azure.AKS.Version</code> to use latest stable version <code>1.22.6</code>. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1386">#1386</a><ul>
+<li>Use <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code> to configure the minimum version of the cluster.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Engineering:<ul>
 <li>Added code signing of module. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1379">#1379</a></li>
 <li>Added SBOM manifests to module. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1380">#1380</a></li>
