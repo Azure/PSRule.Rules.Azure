@@ -64,8 +64,8 @@ namespace PSRule.Rules.Azure
             var resources = ProcessTemplate(GetSourcePath("Resources.FrontDoor.Template.json"), null);
             Assert.NotNull(resources);
             Assert.Equal(3, resources.Length);
-            Assert.Equal("my-frontdoor", resources[1]["properties"]["frontendEndpoints"][0]["name"].Value<string>());
-            Assert.Equal("my-frontdoor.azurefd.net", resources[1]["properties"]["frontendEndpoints"][0]["properties"]["hostName"].Value<string>());
+            Assert.Equal("my-frontdoor", resources[2]["properties"]["frontendEndpoints"][0]["name"].Value<string>());
+            Assert.Equal("my-frontdoor.azurefd.net", resources[2]["properties"]["frontendEndpoints"][0]["properties"]["hostName"].Value<string>());
         }
 
         [Fact]
@@ -560,7 +560,7 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.5.json"), null);
             Assert.NotNull(resources);
-            Assert.Equal(5, resources.Length);
+            Assert.Equal(7, resources.Length);
         }
 
         #region Helper methods

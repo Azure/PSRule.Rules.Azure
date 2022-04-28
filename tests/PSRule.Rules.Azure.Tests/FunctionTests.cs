@@ -5,7 +5,6 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Management;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
@@ -114,6 +113,10 @@ namespace PSRule.Rules.Azure
             var actual3 = Functions.CreateArray(context, new object[] { JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }"), JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }") }) as JArray;
             var actual4 = Functions.CreateArray(context, null) as JArray;
             var actual5 = Functions.CreateArray(context, new object[] { }) as JArray;
+            var actual6 = Functions.CreateArray(context, new object[] {
+                "value1",
+                new MockResource("Microsoft.Resources/deployments").MockMember("outputs").MockMember("aksSubnetId").MockMember("value"),
+            }) as JArray;
             Assert.Equal(3, actual1.Count);
             Assert.Equal(1, actual1[0]);
             Assert.Equal("efgh", actual2[0]);
@@ -121,6 +124,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("h", actual3[1]["g"]);
             Assert.Empty(actual4);
             Assert.Empty(actual5);
+            Assert.NotEmpty(actual6);
         }
 
         [Fact]

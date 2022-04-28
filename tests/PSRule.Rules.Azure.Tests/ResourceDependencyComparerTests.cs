@@ -46,7 +46,7 @@ namespace PSRule.Rules.Azure
             resource.TryGetProperty("type", out var type);
             resource.TryGetDependencies(out var dependencies);
             var resourceId = ResourceHelper.CombineResourceId(context.Subscription.SubscriptionId, context.ResourceGroup.Name, type, name);
-            return new ResourceValue(resourceId, type, resource, dependencies, null);
+            return new ResourceValue(resourceId, name, type, resource, dependencies, null);
         }
 
         #endregion Helper methods

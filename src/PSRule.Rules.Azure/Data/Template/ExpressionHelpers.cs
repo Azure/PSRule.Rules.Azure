@@ -290,17 +290,29 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static JToken GetJToken(object o)
         {
-            if (o is JToken jToken)
-                return jToken;
+            if (o is JToken token)
+                return token;
 
-            if (o is string sValue)
-                return new JValue(sValue);
+            if (o is bool b)
+                return new JValue(b);
 
-            if (o is Array aValue)
-                return new JArray(aValue);
+            if (o is long l)
+                return new JValue(l);
+
+            if (o is int i)
+                return new JValue(i);
+
+            if (o is string s)
+                return new JValue(s);
+
+            if (o is Array array)
+                return new JArray(array);
 
             if (o is Hashtable hashtable)
                 return JObject.FromObject(hashtable);
+
+            if (o is IMock mock && mock.TryGetToken(out token))
+                return token;
 
             if (o is MockMember mockMember)
                 return new JValue(mockMember.ToString());
