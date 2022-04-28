@@ -16,6 +16,10 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since v1.14.3:
 
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.22.6`. [#1386](https://github.com/Azure/PSRule.Rules.Azure/issues/1386)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
 - Engineering:
   - Added code signing of module. [#1379](https://github.com/Azure/PSRule.Rules.Azure/issues/1379)
   - Added SBOM manifests to module. [#1380](https://github.com/Azure/PSRule.Rules.Azure/issues/1380)
