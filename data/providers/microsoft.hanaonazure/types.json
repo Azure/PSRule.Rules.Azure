@@ -1,0 +1,129 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "hanaInstances",
+    "apiVersions": [
+      "2017-11-03-preview"
+    ],
+    "locations": [
+      "Germany West Central",
+      "West US",
+      "West US 2",
+      "East US",
+      "East US 2",
+      "West Europe",
+      "North Europe",
+      "Japan East",
+      "Australia East",
+      "Australia Southeast",
+      "South Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2017-11-03-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operations",
+    "apiVersions": [
+      "2017-11-03-preview"
+    ],
+    "locations": [
+      "Germany West Central",
+      "West US",
+      "West US 2",
+      "East US",
+      "East US 2",
+      "West Europe",
+      "North Europe",
+      "Japan East",
+      "Japan West",
+      "Australia East",
+      "Australia Southeast",
+      "Southeast Asia",
+      "South Central US",
+      "UK South"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationsStatus",
+    "apiVersions": [
+      "2017-11-03-preview"
+    ],
+    "locations": [
+      "Germany West Central",
+      "West US",
+      "West US 2",
+      "East US",
+      "East US 2",
+      "West Europe",
+      "North Europe",
+      "Japan East",
+      "Japan West",
+      "Australia East",
+      "Australia Southeast",
+      "Southeast Asia",
+      "South Central US",
+      "UK South"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2017-11-03-preview"
+    ],
+    "locations": [
+      "Germany West Central",
+      "West US",
+      "West US 2",
+      "East US",
+      "East US 2",
+      "West Europe",
+      "North Europe",
+      "Japan East",
+      "Japan West",
+      "Australia East",
+      "Australia Southeast",
+      "Southeast Asia",
+      "South Central US",
+      "UK South"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "sapMonitors",
+    "apiVersions": [
+      "2020-02-07-preview",
+      "2017-11-03-preview"
+    ],
+    "locations": [
+      "Germany West Central",
+      "West US",
+      "West US 2",
+      "East US",
+      "East US 2",
+      "West Europe",
+      "North Europe",
+      "Japan East",
+      "Japan West",
+      "Australia East",
+      "Australia Southeast",
+      "Southeast Asia",
+      "South Central US",
+      "UK South"
+    ],
+    "zoneMappings": null
+  }
+]

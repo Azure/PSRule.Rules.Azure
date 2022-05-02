@@ -1,0 +1,35 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2021-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2021-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US 2",
+      "North Europe",
+      "Australia East"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2021-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

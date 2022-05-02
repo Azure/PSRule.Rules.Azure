@@ -1,0 +1,375 @@
+[
+  {
+    "aliases": {
+      "Microsoft.BotService/botServices/allSettings": "properties.allSettings",
+      "Microsoft.BotService/botServices/appPasswordHint": "properties.appPasswordHint",
+      "Microsoft.BotService/botServices/cmekEncryptionStatus": "properties.cmekEncryptionStatus",
+      "Microsoft.BotService/botServices/cmekKeyVaultUrl": "properties.cmekKeyVaultUrl",
+      "Microsoft.BotService/botServices/configuredChannels": "properties.configuredChannels",
+      "Microsoft.BotService/botServices/configuredChannels[*]": "properties.configuredChannels[*]",
+      "Microsoft.BotService/botServices/description": "properties.description",
+      "Microsoft.BotService/botServices/developerAppInsightKey": "properties.developerAppInsightKey",
+      "Microsoft.BotService/botServices/developerAppInsightsApiKey": "properties.developerAppInsightsApiKey",
+      "Microsoft.BotService/botServices/developerAppInsightsApplicationId": "properties.developerAppInsightsApplicationId",
+      "Microsoft.BotService/botServices/disableLocalAuth": "properties.disableLocalAuth",
+      "Microsoft.BotService/botServices/displayName": "properties.displayName",
+      "Microsoft.BotService/botServices/enabledChannels": "properties.enabledChannels",
+      "Microsoft.BotService/botServices/enabledChannels[*]": "properties.enabledChannels[*]",
+      "Microsoft.BotService/botServices/endpoint": "properties.endpoint",
+      "Microsoft.BotService/botServices/endpointVersion": "properties.endpointVersion",
+      "Microsoft.BotService/botServices/iconUrl": "properties.iconUrl",
+      "Microsoft.BotService/botServices/isCmekEnabled": "properties.isCmekEnabled",
+      "Microsoft.BotService/botServices/isDeveloperAppInsightsApiKeySet": "properties.isDeveloperAppInsightsApiKeySet",
+      "Microsoft.BotService/botServices/isIsolated": "properties.isIsolated",
+      "Microsoft.BotService/botServices/isStreamingSupported": "properties.isStreamingSupported",
+      "Microsoft.BotService/botServices/luisAppIds": "properties.luisAppIds",
+      "Microsoft.BotService/botServices/luisAppIds[*]": "properties.luisAppIds[*]",
+      "Microsoft.BotService/botServices/luisKey": "properties.luisKey",
+      "Microsoft.BotService/botServices/manifestUrl": "properties.manifestUrl",
+      "Microsoft.BotService/botServices/migrationToken": "properties.migrationToken",
+      "Microsoft.BotService/botServices/msaAppId": "properties.msaAppId",
+      "Microsoft.BotService/botServices/msaAppMSIResourceId": "properties.msaAppMSIResourceId",
+      "Microsoft.BotService/botServices/msaAppTenantId": "properties.msaAppTenantId",
+      "Microsoft.BotService/botServices/msaAppType": "properties.msaAppType",
+      "Microsoft.BotService/botServices/openWithHint": "properties.openWithHint",
+      "Microsoft.BotService/botServices/parameters": "properties.parameters",
+      "Microsoft.BotService/botServices/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.BotService/botServices/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.BotService/botServices/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.BotService/botServices/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
+      "Microsoft.BotService/botServices/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.BotService/botServices/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.BotService/botServices/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.BotService/botServices/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.BotService/botServices/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.BotService/botServices/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.BotService/botServices/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.BotService/botServices/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
+      "Microsoft.BotService/botServices/provisioningState": "properties.provisioningState",
+      "Microsoft.BotService/botServices/publicNetworkAccess": "properties.publicNetworkAccess",
+      "Microsoft.BotService/botServices/publishingCredentials": "properties.publishingCredentials",
+      "Microsoft.BotService/botServices/schemaTransformationVersion": "properties.schemaTransformationVersion",
+      "Microsoft.BotService/botServices/sku": "sku",
+      "Microsoft.BotService/botServices/sku.name": "sku.name",
+      "Microsoft.BotService/botServices/sku.tier": "sku.tier",
+      "Microsoft.BotService/botServices/zones": "zones",
+      "Microsoft.BotService/botServices/zones[*]": "zones[*]"
+    },
+    "resourceType": "botServices",
+    "apiVersions": [
+      "2021-05-01-preview",
+      "2021-03-01",
+      "2020-06-02",
+      "2018-07-12",
+      "2017-12-01"
+    ],
+    "locations": [
+      "Global",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.BotService/botServices/channels/AlexaChannel.alexaSkillId": "properties.properties.alexaSkillId",
+      "Microsoft.BotService/botServices/channels/AlexaChannel.etag": "properties.etag",
+      "Microsoft.BotService/botServices/channels/AlexaChannel.isEnabled": "properties.properties.isEnabled",
+      "Microsoft.BotService/botServices/channels/AlexaChannel.provisioningState": "properties.provisioningState",
+      "Microsoft.BotService/botServices/channels/AlexaChannel.serviceEndpointUri": "properties.properties.serviceEndpointUri",
+      "Microsoft.BotService/botServices/channels/AlexaChannel.urlFragment": "properties.properties.urlFragment",
+      "Microsoft.BotService/botServices/channels/channelName": "properties.channelName",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.DirectLineEmbedCode": "properties.properties.DirectLineEmbedCode",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.etag": "properties.etag",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.location": "properties.location",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.provisioningState": "properties.provisioningState",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites": "properties.properties.sites",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*]": "properties.properties.sites[*]",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isBlockUserUploadEnabled": "properties.properties.sites[*].isBlockUserUploadEnabled",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isEnabled": "properties.properties.sites[*].isEnabled",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isSecureSiteEnabled": "properties.properties.sites[*].isSecureSiteEnabled",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isV1Enabled": "properties.properties.sites[*].isV1Enabled",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isV3Enabled": "properties.properties.sites[*].isV3Enabled",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].key": "properties.properties.sites[*].key",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].key2": "properties.properties.sites[*].key2",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].siteId": "properties.properties.sites[*].siteId",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].siteName": "properties.properties.sites[*].siteName",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].trustedOrigins": "properties.properties.sites[*].trustedOrigins",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].trustedOrigins[*]": "properties.properties.sites[*].trustedOrigins[*]",
+      "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.cognitiveServiceRegion": "properties.properties.cognitiveServiceRegion",
+      "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.cognitiveServicesSubscriptionId": "properties.properties.cognitiveServicesSubscriptionId",
+      "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.cognitiveServiceSubscriptionKey": "properties.properties.cognitiveServiceSubscriptionKey",
+      "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.customSpeechModelId": "properties.properties.customSpeechModelId",
+      "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.customVoiceDeploymentId": "properties.properties.customVoiceDeploymentId",
+      "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.etag": "properties.etag",
+      "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.isDefaultBotForCogSvcAccount": "properties.properties.isDefaultBotForCogSvcAccount",
+      "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.isEnabled": "properties.properties.isEnabled",
+      "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.provisioningState": "properties.provisioningState",
+      "Microsoft.BotService/botServices/channels/EmailChannel.emailAddress": "properties.properties.emailAddress",
+      "Microsoft.BotService/botServices/channels/EmailChannel.etag": "properties.etag",
+      "Microsoft.BotService/botServices/channels/EmailChannel.isEnabled": "properties.properties.isEnabled",
+      "Microsoft.BotService/botServices/channels/EmailChannel.password": "properties.properties.password",
+      "Microsoft.BotService/botServices/channels/EmailChannel.provisioningState": "properties.provisioningState",
+      "Microsoft.BotService/botServices/channels/etag": "properties.etag",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.appId": "properties.properties.appId",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.appSecret": "properties.properties.appSecret",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.callbackUrl": "properties.properties.callbackUrl",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.channelName": "properties.channelName",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.isEnabled": "properties.properties.isEnabled",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.location": "properties.location",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.pages": "properties.properties.pages",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.pages[*]": "properties.properties.pages[*]",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.pages[*].accessToken": "properties.properties.pages[*].accessToken",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.pages[*].id": "properties.properties.pages[*].id",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.provisioningState": "properties.provisioningState",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.sku": "sku",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.sku.name": "sku.name",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.sku.tier": "sku.tier",
+      "Microsoft.BotService/botServices/channels/FacebookChannel.verifyToken": "properties.properties.verifyToken",
+      "Microsoft.BotService/botServices/channels/KikChannel.apiKey": "properties.properties.apiKey",
+      "Microsoft.BotService/botServices/channels/KikChannel.isEnabled": "properties.properties.isEnabled",
+      "Microsoft.BotService/botServices/channels/KikChannel.isValidated": "properties.properties.isValidated",
+      "Microsoft.BotService/botServices/channels/KikChannel.userName": "properties.properties.userName",
+      "Microsoft.BotService/botServices/channels/LineChannel.callbackUrl": "properties.properties.callbackUrl",
+      "Microsoft.BotService/botServices/channels/LineChannel.isValidated": "properties.properties.isValidated",
+      "Microsoft.BotService/botServices/channels/LineChannel.lineRegistrations": "properties.properties.lineRegistrations",
+      "Microsoft.BotService/botServices/channels/LineChannel.lineRegistrations[*]": "properties.properties.lineRegistrations[*]",
+      "Microsoft.BotService/botServices/channels/LineChannel.lineRegistrations[*].channelAccessToken": "properties.properties.lineRegistrations[*].channelAccessToken",
+      "Microsoft.BotService/botServices/channels/LineChannel.lineRegistrations[*].channelSecret": "properties.properties.lineRegistrations[*].channelSecret",
+      "Microsoft.BotService/botServices/channels/LineChannel.lineRegistrations[*].generatedId": "properties.properties.lineRegistrations[*].generatedId",
+      "Microsoft.BotService/botServices/channels/MsTeamsChannel.acceptedTerms": "properties.properties.acceptedTerms",
+      "Microsoft.BotService/botServices/channels/MsTeamsChannel.callingWebHook": "properties.properties.callingWebHook",
+      "Microsoft.BotService/botServices/channels/MsTeamsChannel.callMode": "properties.properties.callMode",
+      "Microsoft.BotService/botServices/channels/MsTeamsChannel.deploymentEnvironment": "properties.properties.deploymentEnvironment",
+      "Microsoft.BotService/botServices/channels/MsTeamsChannel.enableCalling": "properties.properties.enableCalling",
+      "Microsoft.BotService/botServices/channels/MsTeamsChannel.enableMediaCards": "properties.properties.enableMediaCards",
+      "Microsoft.BotService/botServices/channels/MsTeamsChannel.enableMessaging": "properties.properties.enableMessaging",
+      "Microsoft.BotService/botServices/channels/MsTeamsChannel.enableVideo": "properties.properties.enableVideo",
+      "Microsoft.BotService/botServices/channels/MsTeamsChannel.etag": "properties.etag",
+      "Microsoft.BotService/botServices/channels/MsTeamsChannel.incomingCallRoute": "properties.properties.incomingCallRoute",
+      "Microsoft.BotService/botServices/channels/MsTeamsChannel.isEnabled": "properties.properties.isEnabled",
+      "Microsoft.BotService/botServices/channels/MsTeamsChannel.location": "properties.location",
+      "Microsoft.BotService/botServices/channels/MsTeamsChannel.provisioningState": "properties.provisioningState",
+      "Microsoft.BotService/botServices/channels/sku": "sku",
+      "Microsoft.BotService/botServices/channels/sku.name": "sku.name",
+      "Microsoft.BotService/botServices/channels/sku.tier": "sku.tier",
+      "Microsoft.BotService/botServices/channels/SkypeChannel.callingWebHook": "properties.properties.callingWebHook",
+      "Microsoft.BotService/botServices/channels/SkypeChannel.enableCalling": "properties.properties.enableCalling",
+      "Microsoft.BotService/botServices/channels/SkypeChannel.enableGroups": "properties.properties.enableGroups",
+      "Microsoft.BotService/botServices/channels/SkypeChannel.enableMediaCards": "properties.properties.enableMediaCards",
+      "Microsoft.BotService/botServices/channels/SkypeChannel.enableMessaging": "properties.properties.enableMessaging",
+      "Microsoft.BotService/botServices/channels/SkypeChannel.enableScreenSharing": "properties.properties.enableScreenSharing",
+      "Microsoft.BotService/botServices/channels/SkypeChannel.enableVideo": "properties.properties.enableVideo",
+      "Microsoft.BotService/botServices/channels/SkypeChannel.etag": "properties.etag",
+      "Microsoft.BotService/botServices/channels/SkypeChannel.groupsMode": "properties.properties.groupsMode",
+      "Microsoft.BotService/botServices/channels/SkypeChannel.incomingCallRoute": "properties.properties.incomingCallRoute",
+      "Microsoft.BotService/botServices/channels/SkypeChannel.isEnabled": "properties.properties.isEnabled",
+      "Microsoft.BotService/botServices/channels/SlackChannel.clientId": "properties.properties.clientId",
+      "Microsoft.BotService/botServices/channels/SlackChannel.clientSecret": "properties.properties.clientSecret",
+      "Microsoft.BotService/botServices/channels/SlackChannel.etag": "properties.etag",
+      "Microsoft.BotService/botServices/channels/SlackChannel.isEnabled": "properties.properties.isEnabled",
+      "Microsoft.BotService/botServices/channels/SlackChannel.isValidated": "properties.properties.isValidated",
+      "Microsoft.BotService/botServices/channels/SlackChannel.landingPageUrl": "properties.properties.landingPageUrl",
+      "Microsoft.BotService/botServices/channels/SlackChannel.lastSubmissionId": "properties.properties.lastSubmissionId",
+      "Microsoft.BotService/botServices/channels/SlackChannel.location": "properties.location",
+      "Microsoft.BotService/botServices/channels/SlackChannel.redirectAction": "properties.properties.redirectAction",
+      "Microsoft.BotService/botServices/channels/SlackChannel.registerBeforeOAuthFlow": "properties.properties.registerBeforeOAuthFlow",
+      "Microsoft.BotService/botServices/channels/SlackChannel.scopes": "properties.properties.scopes",
+      "Microsoft.BotService/botServices/channels/SlackChannel.signingSecret": "properties.properties.signingSecret",
+      "Microsoft.BotService/botServices/channels/SlackChannel.verificationToken": "properties.properties.verificationToken",
+      "Microsoft.BotService/botServices/channels/SmsChannel.accountSID": "properties.properties.accountSID",
+      "Microsoft.BotService/botServices/channels/SmsChannel.authToken": "properties.properties.authToken",
+      "Microsoft.BotService/botServices/channels/SmsChannel.etag": "properties.etag",
+      "Microsoft.BotService/botServices/channels/SmsChannel.isEnabled": "properties.properties.isEnabled",
+      "Microsoft.BotService/botServices/channels/SmsChannel.isValidated": "properties.properties.isValidated",
+      "Microsoft.BotService/botServices/channels/SmsChannel.phone": "properties.properties.phone",
+      "Microsoft.BotService/botServices/channels/TelegramChannel.accessToken": "properties.properties.accessToken",
+      "Microsoft.BotService/botServices/channels/TelegramChannel.etag": "properties.etag",
+      "Microsoft.BotService/botServices/channels/TelegramChannel.isEnabled": "properties.properties.isEnabled",
+      "Microsoft.BotService/botServices/channels/TelegramChannel.isValidated": "properties.properties.isValidated",
+      "Microsoft.BotService/botServices/channels/TelegramChannel.provisioningState": "properties.provisioningState",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.etag": "properties.etag",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.location": "properties.location",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.provisioningState": "properties.provisioningState",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites": "properties.properties.sites",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*]": "properties.properties.sites[*]",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].enablePreview": "properties.properties.sites[*].enablePreview",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].isEnabled": "properties.properties.sites[*].isEnabled",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].isWebchatPreviewEnabled": "properties.properties.sites[*].isWebchatPreviewEnabled",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].key": "properties.properties.sites[*].key",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].key2": "properties.properties.sites[*].key2",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].siteId": "properties.properties.sites[*].siteId",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].siteName": "properties.properties.sites[*].siteName",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.webChatEmbedCode": "properties.properties.webChatEmbedCode",
+      "Microsoft.BotService/botServices/channels/zones": "zones",
+      "Microsoft.BotService/botServices/channels/zones[*]": "zones[*]"
+    },
+    "resourceType": "botServices/channels",
+    "apiVersions": [
+      "2021-05-01-preview",
+      "2021-03-01",
+      "2020-06-02",
+      "2018-07-12",
+      "2017-12-01"
+    ],
+    "locations": [
+      "Global",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.BotService/botServices/connections/clientId": "properties.clientId",
+      "Microsoft.BotService/botServices/connections/clientSecret": "properties.clientSecret",
+      "Microsoft.BotService/botServices/connections/parameters": "properties.parameters",
+      "Microsoft.BotService/botServices/connections/parameters[*]": "properties.parameters[*]",
+      "Microsoft.BotService/botServices/connections/parameters[*].key": "properties.parameters[*].key",
+      "Microsoft.BotService/botServices/connections/parameters[*].value": "properties.parameters[*].value",
+      "Microsoft.BotService/botServices/Connections/provisioningState": "properties.provisioningState",
+      "Microsoft.BotService/botServices/connections/scopes": "properties.scopes",
+      "Microsoft.BotService/botServices/connections/serviceProviderDisplayName": "properties.serviceProviderDisplayName",
+      "Microsoft.BotService/botServices/connections/serviceProviderId": "properties.serviceProviderId",
+      "Microsoft.BotService/botServices/connections/settingId": "properties.settingId",
+      "Microsoft.BotService/botServices/connections/sku": "sku",
+      "Microsoft.BotService/botServices/connections/sku.name": "sku.name",
+      "Microsoft.BotService/botServices/connections/sku.tier": "sku.tier",
+      "Microsoft.BotService/botServices/Connections/zones": "zones",
+      "Microsoft.BotService/botServices/Connections/zones[*]": "zones[*]"
+    },
+    "resourceType": "botServices/connections",
+    "apiVersions": [
+      "2021-05-01-preview",
+      "2021-03-01",
+      "2020-06-02",
+      "2018-07-12",
+      "2017-12-01"
+    ],
+    "locations": [
+      "Global",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "botServices/privateEndpointConnectionProxies",
+    "apiVersions": [
+      "2021-05-01-preview",
+      "2021-03-01"
+    ],
+    "locations": [
+      "Global",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.BotService/botServices/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.BotService/botServices/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.BotService/botServices/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.BotService/botServices/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.BotService/botServices/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.BotService/botServices/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.BotService/botServices/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "botServices/privateEndpointConnections",
+    "apiVersions": [
+      "2021-05-01-preview",
+      "2021-03-01"
+    ],
+    "locations": [
+      "Global",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "botServices/privateLinkResources",
+    "apiVersions": [
+      "2021-05-01-preview",
+      "2021-03-01"
+    ],
+    "locations": [
+      "Global",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2021-05-01-preview",
+      "2021-03-01",
+      "2020-06-02",
+      "2018-07-12",
+      "2017-12-01"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "hostSettings",
+    "apiVersions": [
+      "2021-05-01-preview",
+      "2021-03-01"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "listAuthServiceProviders",
+    "apiVersions": [
+      "2021-05-01-preview",
+      "2021-03-01",
+      "2020-06-02",
+      "2018-07-12",
+      "2017-12-01"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationResults",
+    "apiVersions": [
+      "2021-05-01-preview",
+      "2021-03-01"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-05-01-preview",
+      "2021-03-01",
+      "2020-06-02",
+      "2018-07-12",
+      "2017-12-01"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": null
+  }
+]

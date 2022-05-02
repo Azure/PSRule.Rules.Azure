@@ -30,7 +30,7 @@ This rule fails when `"zones"` is `null`, `[]` or less than two zones are used w
 
 This rule fails when cache is not zone redundant(1, 2 and 3) when there are availability zones for the given region.
 
-Configure `AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json) for namespace `Microsoft.Cache` and resource type `Redis`.
+Configure `AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/) for namespace `Microsoft.Cache` and resource type `Redis`.
 
 ```yaml
 # YAML: The default AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option

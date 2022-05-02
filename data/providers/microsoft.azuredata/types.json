@@ -1,0 +1,104 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2019-05-10-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Canada Central",
+      "France Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "South India",
+      "South Africa North",
+      "UK South",
+      "UK West",
+      "West US",
+      "East US",
+      "Central US",
+      "East Asia",
+      "West Europe",
+      "West Central US",
+      "West US 2",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "sqlServerRegistrations",
+    "apiVersions": [
+      "2019-05-10-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Canada Central",
+      "France Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "South India",
+      "UK South",
+      "UK West",
+      "West US",
+      "East US",
+      "Central US",
+      "East Asia",
+      "West Europe",
+      "West Central US",
+      "West US 2",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "sqlServerRegistrations/sqlServers",
+    "apiVersions": [
+      "2019-05-10-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Canada Central",
+      "France Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "South India",
+      "South Africa North",
+      "UK South",
+      "UK West",
+      "West US",
+      "East US",
+      "Central US",
+      "East Asia",
+      "West Europe",
+      "West Central US",
+      "West US 2",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  }
+]

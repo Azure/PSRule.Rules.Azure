@@ -1,0 +1,95 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-06-01-preview",
+      "2021-03-01",
+      "2020-04-01-preview",
+      "2019-04-01",
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "queries",
+    "apiVersions": [
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "resourceChangeDetails",
+    "apiVersions": [
+      "2020-09-01-preview",
+      "2020-04-01-preview",
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "resourceChanges",
+    "apiVersions": [
+      "2020-09-01-preview",
+      "2020-04-01-preview",
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "resources",
+    "apiVersions": [
+      "2021-06-01-preview",
+      "2021-03-01",
+      "2020-04-01-preview",
+      "2019-04-01",
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "resourcesHistory",
+    "apiVersions": [
+      "2021-06-01-preview",
+      "2020-09-01-preview",
+      "2020-04-01-preview",
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "subscriptionsStatus",
+    "apiVersions": [
+      "2019-04-01",
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  }
+]

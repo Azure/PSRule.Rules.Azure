@@ -1,0 +1,39 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-02-16-preview"
+    ],
+    "locations": [
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "replicationFabrics",
+    "apiVersions": [
+      "2021-02-16-preview"
+    ],
+    "locations": [
+      "West Europe",
+      "East US",
+      "Canada Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "replicationVaults",
+    "apiVersions": [
+      "2021-02-16-preview"
+    ],
+    "locations": [
+      "West Europe",
+      "East US",
+      "Canada Central"
+    ],
+    "zoneMappings": null
+  }
+]

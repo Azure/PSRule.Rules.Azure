@@ -1,0 +1,47 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "DisableLockbox",
+    "apiVersions": [
+      "2018-02-28-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "EnableLockbox",
+    "apiVersions": [
+      "2018-02-28-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2018-02-28-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "requests",
+    "apiVersions": [
+      "2018-02-28-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "TenantOptedIn",
+    "apiVersions": [
+      "2018-02-28-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

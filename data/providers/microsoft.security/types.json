@@ -1,0 +1,1787 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "adaptiveNetworkHardenings",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "West Europe",
+      "North Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South",
+      "Switzerland North",
+      "Germany West Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/advancedThreatProtectionSettings/current.isEnabled": "properties.isEnabled",
+      "Microsoft.Security/advancedThreatProtectionSettings/isEnabled": "properties.isEnabled"
+    },
+    "resourceType": "advancedThreatProtectionSettings",
+    "apiVersions": [
+      "2019-01-01",
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US 2",
+      "East US",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3",
+      "France Central",
+      "UAE North",
+      "Germany West Central",
+      "Switzerland North"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/alerts/state": "properties.state"
+    },
+    "resourceType": "alerts",
+    "apiVersions": [
+      "2021-11-01",
+      "2021-01-01",
+      "2020-01-01",
+      "2019-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/alertsSuppressionRules/alertType": "properties.alertType",
+      "Microsoft.Security/alertsSuppressionRules/comment": "properties.comment",
+      "Microsoft.Security/alertsSuppressionRules/expirationDateUtc": "properties.expirationDateUtc",
+      "Microsoft.Security/alertsSuppressionRules/lastModifiedUtc": "properties.lastModifiedUtc",
+      "Microsoft.Security/alertsSuppressionRules/reason": "properties.reason",
+      "Microsoft.Security/alertsSuppressionRules/state": "properties.state",
+      "Microsoft.Security/alertsSuppressionRules/suppressionAlertsScope": "properties.suppressionAlertsScope",
+      "Microsoft.Security/alertsSuppressionRules/suppressionAlertsScope.allOf": "properties.suppressionAlertsScope.allOf",
+      "Microsoft.Security/alertsSuppressionRules/suppressionAlertsScope.allOf[*]": "properties.suppressionAlertsScope.allOf[*]",
+      "Microsoft.Security/alertsSuppressionRules/suppressionAlertsScope.allOf[*].field": "properties.suppressionAlertsScope.allOf[*].field"
+    },
+    "resourceType": "alertsSuppressionRules",
+    "apiVersions": [
+      "2019-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "allowedConnections",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "applicationWhitelistings",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/assessmentMetadata/assessmentType": "properties.assessmentType",
+      "Microsoft.Security/assessmentMetadata/category": "properties.category",
+      "Microsoft.Security/assessmentMetadata/category[*]": "properties.category[*]",
+      "Microsoft.Security/assessmentMetadata/description": "properties.description",
+      "Microsoft.Security/assessmentMetadata/displayName": "properties.displayName",
+      "Microsoft.Security/assessmentMetadata/implementationEffort": "properties.implementationEffort",
+      "Microsoft.Security/assessmentMetadata/partnerData": "properties.partnerData",
+      "Microsoft.Security/assessmentMetadata/partnerData.partnerName": "properties.partnerData.partnerName",
+      "Microsoft.Security/assessmentMetadata/partnerData.productName": "properties.partnerData.productName",
+      "Microsoft.Security/assessmentMetadata/partnerData.secret": "properties.partnerData.secret",
+      "Microsoft.Security/assessmentMetadata/policyDefinitionId": "properties.policyDefinitionId",
+      "Microsoft.Security/assessmentMetadata/preview": "properties.preview",
+      "Microsoft.Security/assessmentMetadata/remediationDescription": "properties.remediationDescription",
+      "Microsoft.Security/assessmentMetadata/severity": "properties.severity",
+      "Microsoft.Security/assessmentMetadata/threats": "properties.threats",
+      "Microsoft.Security/assessmentMetadata/threats[*]": "properties.threats[*]",
+      "Microsoft.Security/assessmentMetadata/userImpact": "properties.userImpact"
+    },
+    "resourceType": "assessmentMetadata",
+    "apiVersions": [
+      "2021-06-01",
+      "2020-01-01",
+      "2019-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/assessments/additionalData": "properties.additionalData",
+      "Microsoft.Security/assessments/displayName": "properties.displayName",
+      "Microsoft.Security/assessments/links": "properties.links",
+      "Microsoft.Security/assessments/links.azurePortalUri": "properties.links.azurePortalUri",
+      "Microsoft.Security/assessments/metadata": "properties.metadata",
+      "Microsoft.Security/assessments/metadata.assessmentType": "properties.metadata.assessmentType",
+      "Microsoft.Security/assessments/metadata.category": "properties.metadata.category",
+      "Microsoft.Security/assessments/metadata.category[*]": "properties.metadata.category[*]",
+      "Microsoft.Security/assessments/metadata.description": "properties.metadata.description",
+      "Microsoft.Security/assessments/metadata.displayName": "properties.metadata.displayName",
+      "Microsoft.Security/assessments/metadata.implementationEffort": "properties.metadata.implementationEffort",
+      "Microsoft.Security/assessments/metadata.partnerData": "properties.metadata.partnerData",
+      "Microsoft.Security/assessments/metadata.partnerData.partnerName": "properties.metadata.partnerData.partnerName",
+      "Microsoft.Security/assessments/metadata.partnerData.productName": "properties.metadata.partnerData.productName",
+      "Microsoft.Security/assessments/metadata.partnerData.secret": "properties.metadata.partnerData.secret",
+      "Microsoft.Security/assessments/metadata.policyDefinitionId": "properties.metadata.policyDefinitionId",
+      "Microsoft.Security/assessments/metadata.preview": "properties.metadata.preview",
+      "Microsoft.Security/assessments/metadata.remediationDescription": "properties.metadata.remediationDescription",
+      "Microsoft.Security/assessments/metadata.severity": "properties.metadata.severity",
+      "Microsoft.Security/assessments/metadata.threats": "properties.metadata.threats",
+      "Microsoft.Security/assessments/metadata.threats[*]": "properties.metadata.threats[*]",
+      "Microsoft.Security/assessments/metadata.userImpact": "properties.metadata.userImpact",
+      "Microsoft.Security/assessments/partnersData": "properties.partnersData",
+      "Microsoft.Security/assessments/partnersData.partnerName": "properties.partnersData.partnerName",
+      "Microsoft.Security/assessments/partnersData.secret": "properties.partnersData.secret",
+      "Microsoft.Security/assessments/resourceDetails": "properties.resourceDetails",
+      "Microsoft.Security/assessments/resourceDetails.source": "properties.resourceDetails.source",
+      "Microsoft.Security/assessments/status": "properties.status",
+      "Microsoft.Security/assessments/status.cause": "properties.status.cause",
+      "Microsoft.Security/assessments/status.code": "properties.status.code",
+      "Microsoft.Security/assessments/status.description": "properties.status.description"
+    },
+    "resourceType": "assessments",
+    "apiVersions": [
+      "2021-06-01",
+      "2020-01-01",
+      "2019-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "assignments",
+    "apiVersions": [
+      "2021-08-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West Central US",
+      "Canada Central",
+      "Canada East",
+      "Brazil South",
+      "East Asia",
+      "Southeast Asia",
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "South India",
+      "West India",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "South Africa North",
+      "South Africa West",
+      "UAE Central",
+      "UAE North",
+      "North Europe",
+      "West Europe",
+      "France Central",
+      "France South",
+      "UK South",
+      "UK West",
+      "Norway East",
+      "Norway West",
+      "Germany West Central",
+      "Germany North",
+      "Switzerland North",
+      "Switzerland West"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "autoDismissAlertsRules",
+    "apiVersions": [
+      "2019-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/automations/actions": "properties.actions",
+      "Microsoft.Security/automations/actions[*]": "properties.actions[*]",
+      "Microsoft.Security/automations/actions[*].actionType": "properties.actions[*].actionType",
+      "Microsoft.Security/automations/actions[*].EventHub.connectionString": "properties.actions[*].connectionString",
+      "Microsoft.Security/automations/actions[*].EventHub.eventHubResourceId": "properties.actions[*].eventHubResourceId",
+      "Microsoft.Security/automations/actions[*].EventHub.sasPolicyName": "properties.actions[*].sasPolicyName",
+      "Microsoft.Security/automations/actions[*].LogicApp.logicAppResourceId": "properties.actions[*].logicAppResourceId",
+      "Microsoft.Security/automations/actions[*].LogicApp.uri": "properties.actions[*].uri",
+      "Microsoft.Security/automations/actions[*].Workspace.workspaceResourceId": "properties.actions[*].workspaceResourceId",
+      "Microsoft.Security/automations/description": "properties.description",
+      "Microsoft.Security/automations/isEnabled": "properties.isEnabled",
+      "Microsoft.Security/automations/scopes": "properties.scopes",
+      "Microsoft.Security/automations/scopes[*]": "properties.scopes[*]",
+      "Microsoft.Security/automations/scopes[*].description": "properties.scopes[*].description",
+      "Microsoft.Security/automations/scopes[*].scopePath": "properties.scopes[*].scopePath",
+      "Microsoft.Security/automations/sources": "properties.sources",
+      "Microsoft.Security/automations/sources[*]": "properties.sources[*]",
+      "Microsoft.Security/automations/sources[*].eventSource": "properties.sources[*].eventSource",
+      "Microsoft.Security/automations/sources[*].ruleSets": "properties.sources[*].ruleSets",
+      "Microsoft.Security/automations/sources[*].ruleSets[*]": "properties.sources[*].ruleSets[*]",
+      "Microsoft.Security/automations/sources[*].ruleSets[*].rules": "properties.sources[*].ruleSets[*].rules",
+      "Microsoft.Security/automations/sources[*].ruleSets[*].rules[*]": "properties.sources[*].ruleSets[*].rules[*]",
+      "Microsoft.Security/automations/sources[*].ruleSets[*].rules[*].expectedValue": "properties.sources[*].ruleSets[*].rules[*].expectedValue",
+      "Microsoft.Security/automations/sources[*].ruleSets[*].rules[*].operator": "properties.sources[*].ruleSets[*].rules[*].operator",
+      "Microsoft.Security/automations/sources[*].ruleSets[*].rules[*].propertyJPath": "properties.sources[*].ruleSets[*].rules[*].propertyJPath",
+      "Microsoft.Security/automations/sources[*].ruleSets[*].rules[*].propertyType": "properties.sources[*].ruleSets[*].rules[*].propertyType"
+    },
+    "resourceType": "automations",
+    "apiVersions": [
+      "2019-01-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West Central US",
+      "Canada Central",
+      "Canada East",
+      "Brazil South",
+      "East Asia",
+      "Southeast Asia",
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "South India",
+      "West India",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "South Africa North",
+      "South Africa West",
+      "UAE Central",
+      "UAE North",
+      "North Europe",
+      "West Europe",
+      "France Central",
+      "France South",
+      "UK South",
+      "UK West",
+      "Norway East",
+      "Norway West",
+      "Germany West Central",
+      "Germany North",
+      "Switzerland North",
+      "Switzerland West"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/AutoProvisioningSettings/autoProvision": "properties.autoProvision"
+    },
+    "resourceType": "AutoProvisioningSettings",
+    "apiVersions": [
+      "2019-01-01",
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/complianceResults/resourceStatus": "properties.resourceStatus"
+    },
+    "resourceType": "complianceResults",
+    "apiVersions": [
+      "2017-08-01"
+    ],
+    "locations": [
+      "Central US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Compliances",
+    "apiVersions": [
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "connectors",
+    "apiVersions": [
+      "2020-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "customAssessmentAutomations",
+    "apiVersions": [
+      "2021-07-01-preview",
+      "2021-07-01-beta",
+      "2021-07-01-alpha"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West Central US",
+      "Canada Central",
+      "Canada East",
+      "Brazil South",
+      "East Asia",
+      "Southeast Asia",
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "South India",
+      "West India",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "South Africa North",
+      "South Africa West",
+      "UAE Central",
+      "UAE North",
+      "North Europe",
+      "West Europe",
+      "France Central",
+      "France South",
+      "UK South",
+      "UK West",
+      "Norway East",
+      "Norway West",
+      "Germany West Central",
+      "Germany North",
+      "Switzerland North",
+      "Switzerland West"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "customEntityStoreAssignments",
+    "apiVersions": [
+      "2021-07-01-preview",
+      "2021-07-01-beta",
+      "2021-07-01-alpha"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West Central US",
+      "Canada Central",
+      "Canada East",
+      "Brazil South",
+      "East Asia",
+      "Southeast Asia",
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "South India",
+      "West India",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "South Africa North",
+      "South Africa West",
+      "UAE Central",
+      "UAE North",
+      "North Europe",
+      "West Europe",
+      "France Central",
+      "France South",
+      "UK South",
+      "UK West",
+      "Norway East",
+      "Norway West",
+      "Germany West Central",
+      "Germany North",
+      "Switzerland North",
+      "Switzerland West"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "dataCollectionAgents",
+    "apiVersions": [
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "North Europe",
+      "West Europe",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules": "properties.allowlistRules",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*]": "properties.allowlistRules[*]",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].AllowlistCustomAlertRule.allowlistValues": "properties.allowlistRules[*].allowlistValues",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].AllowlistCustomAlertRule.allowlistValues[*]": "properties.allowlistRules[*].allowlistValues[*]",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].allowlistValues": "properties.allowlistRules[*].allowlistValues",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].allowlistValues[*]": "properties.allowlistRules[*].allowlistValues[*]",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].DenylistCustomAlertRule.denylistValues": "properties.allowlistRules[*].denylistValues",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].DenylistCustomAlertRule.denylistValues[*]": "properties.allowlistRules[*].denylistValues[*]",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].description": "properties.allowlistRules[*].description",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].displayName": "properties.allowlistRules[*].displayName",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].isEnabled": "properties.allowlistRules[*].isEnabled",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].ruleType": "properties.allowlistRules[*].ruleType",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].ThresholdCustomAlertRule.maxThreshold": "properties.allowlistRules[*].maxThreshold",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].ThresholdCustomAlertRule.minThreshold": "properties.allowlistRules[*].minThreshold",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].TimeWindowCustomAlertRule.timeWindowSize": "properties.allowlistRules[*].timeWindowSize",
+      "Microsoft.Security/deviceSecurityGroups/allowlistRules[*].valueType": "properties.allowlistRules[*].valueType",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules": "properties.denylistRules",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*]": "properties.denylistRules[*]",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].AllowlistCustomAlertRule.allowlistValues": "properties.denylistRules[*].allowlistValues",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].AllowlistCustomAlertRule.allowlistValues[*]": "properties.denylistRules[*].allowlistValues[*]",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].DenylistCustomAlertRule.denylistValues": "properties.denylistRules[*].denylistValues",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].DenylistCustomAlertRule.denylistValues[*]": "properties.denylistRules[*].denylistValues[*]",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].denylistValues": "properties.denylistRules[*].denylistValues",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].denylistValues[*]": "properties.denylistRules[*].denylistValues[*]",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].description": "properties.denylistRules[*].description",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].displayName": "properties.denylistRules[*].displayName",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].isEnabled": "properties.denylistRules[*].isEnabled",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].ruleType": "properties.denylistRules[*].ruleType",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].ThresholdCustomAlertRule.maxThreshold": "properties.denylistRules[*].maxThreshold",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].ThresholdCustomAlertRule.minThreshold": "properties.denylistRules[*].minThreshold",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].TimeWindowCustomAlertRule.timeWindowSize": "properties.denylistRules[*].timeWindowSize",
+      "Microsoft.Security/deviceSecurityGroups/denylistRules[*].valueType": "properties.denylistRules[*].valueType",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules": "properties.thresholdRules",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*]": "properties.thresholdRules[*]",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].AllowlistCustomAlertRule.allowlistValues": "properties.thresholdRules[*].allowlistValues",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].AllowlistCustomAlertRule.allowlistValues[*]": "properties.thresholdRules[*].allowlistValues[*]",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].DenylistCustomAlertRule.denylistValues": "properties.thresholdRules[*].denylistValues",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].DenylistCustomAlertRule.denylistValues[*]": "properties.thresholdRules[*].denylistValues[*]",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].description": "properties.thresholdRules[*].description",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].displayName": "properties.thresholdRules[*].displayName",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].isEnabled": "properties.thresholdRules[*].isEnabled",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].maxThreshold": "properties.thresholdRules[*].maxThreshold",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].minThreshold": "properties.thresholdRules[*].minThreshold",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].ruleType": "properties.thresholdRules[*].ruleType",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].ThresholdCustomAlertRule.maxThreshold": "properties.thresholdRules[*].maxThreshold",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].ThresholdCustomAlertRule.minThreshold": "properties.thresholdRules[*].minThreshold",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].TimeWindowCustomAlertRule.timeWindowSize": "properties.thresholdRules[*].timeWindowSize",
+      "Microsoft.Security/deviceSecurityGroups/thresholdRules[*].valueType": "properties.thresholdRules[*].valueType",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules": "properties.timeWindowRules",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*]": "properties.timeWindowRules[*]",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].AllowlistCustomAlertRule.allowlistValues": "properties.timeWindowRules[*].allowlistValues",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].AllowlistCustomAlertRule.allowlistValues[*]": "properties.timeWindowRules[*].allowlistValues[*]",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].DenylistCustomAlertRule.denylistValues": "properties.timeWindowRules[*].denylistValues",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].DenylistCustomAlertRule.denylistValues[*]": "properties.timeWindowRules[*].denylistValues[*]",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].description": "properties.timeWindowRules[*].description",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].displayName": "properties.timeWindowRules[*].displayName",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].isEnabled": "properties.timeWindowRules[*].isEnabled",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].maxThreshold": "properties.timeWindowRules[*].maxThreshold",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].minThreshold": "properties.timeWindowRules[*].minThreshold",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].ruleType": "properties.timeWindowRules[*].ruleType",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].ThresholdCustomAlertRule.maxThreshold": "properties.timeWindowRules[*].maxThreshold",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].ThresholdCustomAlertRule.minThreshold": "properties.timeWindowRules[*].minThreshold",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].TimeWindowCustomAlertRule.timeWindowSize": "properties.timeWindowRules[*].timeWindowSize",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].timeWindowSize": "properties.timeWindowRules[*].timeWindowSize",
+      "Microsoft.Security/deviceSecurityGroups/timeWindowRules[*].valueType": "properties.timeWindowRules[*].valueType"
+    },
+    "resourceType": "deviceSecurityGroups",
+    "apiVersions": [
+      "2019-08-01",
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Japan West",
+      "Japan East",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "West Central US",
+      "West US 2",
+      "Korea Central",
+      "Australia Central",
+      "Australia Central 2",
+      "UAE Central",
+      "UAE North",
+      "South Africa North",
+      "South Africa West",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Germany North"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "discoveredSecuritySolutions",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "externalSecuritySolutions",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/InformationProtectionPolicies/effective.informationTypes": "properties.informationTypes",
+      "Microsoft.Security/InformationProtectionPolicies/effective.labels": "properties.labels",
+      "Microsoft.Security/InformationProtectionPolicies/effective.lastModifiedUtc": "properties.lastModifiedUtc",
+      "Microsoft.Security/InformationProtectionPolicies/effective.version": "properties.version",
+      "Microsoft.Security/InformationProtectionPolicies/informationTypes": "properties.informationTypes",
+      "Microsoft.Security/InformationProtectionPolicies/labels": "properties.labels",
+      "Microsoft.Security/InformationProtectionPolicies/lastModifiedUtc": "properties.lastModifiedUtc",
+      "Microsoft.Security/informationProtectionPolicies/version": "properties.version"
+    },
+    "resourceType": "InformationProtectionPolicies",
+    "apiVersions": [
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ingestionSettings",
+    "apiVersions": [
+      "2021-01-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "insights",
+    "apiVersions": [
+      "2020-08-06-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/iotSecuritySolutions/additionalWorkspaces": "properties.additionalWorkspaces",
+      "Microsoft.Security/iotSecuritySolutions/additionalWorkspaces[*]": "properties.additionalWorkspaces[*]",
+      "Microsoft.Security/iotSecuritySolutions/additionalWorkspaces[*].dataTypes": "properties.additionalWorkspaces[*].dataTypes",
+      "Microsoft.Security/iotSecuritySolutions/additionalWorkspaces[*].dataTypes[*]": "properties.additionalWorkspaces[*].dataTypes[*]",
+      "Microsoft.Security/iotSecuritySolutions/additionalWorkspaces[*].type": "properties.additionalWorkspaces[*].type",
+      "Microsoft.Security/iotSecuritySolutions/additionalWorkspaces[*].workspace": "properties.additionalWorkspaces[*].workspace",
+      "Microsoft.Security/iotSecuritySolutions/autoDiscoveredResources": "properties.autoDiscoveredResources",
+      "Microsoft.Security/iotSecuritySolutions/autoDiscoveredResources[*]": "properties.autoDiscoveredResources[*]",
+      "Microsoft.Security/iotSecuritySolutions/disabledDataSources": "properties.disabledDataSources",
+      "Microsoft.Security/iotSecuritySolutions/disabledDataSources[*]": "properties.disabledDataSources[*]",
+      "Microsoft.Security/iotSecuritySolutions/displayName": "properties.displayName",
+      "Microsoft.Security/iotSecuritySolutions/export": "properties.export",
+      "Microsoft.Security/iotSecuritySolutions/export[*]": "properties.export[*]",
+      "Microsoft.Security/iotSecuritySolutions/iotHubs": "properties.iotHubs",
+      "Microsoft.Security/iotSecuritySolutions/iotHubs[*]": "properties.iotHubs[*]",
+      "Microsoft.Security/iotSecuritySolutions/recommendationsConfiguration": "properties.recommendationsConfiguration",
+      "Microsoft.Security/iotSecuritySolutions/recommendationsConfiguration[*]": "properties.recommendationsConfiguration[*]",
+      "Microsoft.Security/iotSecuritySolutions/recommendationsConfiguration[*].name": "properties.recommendationsConfiguration[*].name",
+      "Microsoft.Security/iotSecuritySolutions/recommendationsConfiguration[*].recommendationType": "properties.recommendationsConfiguration[*].recommendationType",
+      "Microsoft.Security/iotSecuritySolutions/recommendationsConfiguration[*].status": "properties.recommendationsConfiguration[*].status",
+      "Microsoft.Security/iotSecuritySolutions/status": "properties.status",
+      "Microsoft.Security/iotSecuritySolutions/unmaskedIpLoggingStatus": "properties.unmaskedIpLoggingStatus",
+      "Microsoft.Security/iotSecuritySolutions/userDefinedResources": "properties.userDefinedResources",
+      "Microsoft.Security/iotSecuritySolutions/userDefinedResources.query": "properties.userDefinedResources.query",
+      "Microsoft.Security/iotSecuritySolutions/userDefinedResources.querySubscriptions": "properties.userDefinedResources.querySubscriptions",
+      "Microsoft.Security/iotSecuritySolutions/userDefinedResources.querySubscriptions[*]": "properties.userDefinedResources.querySubscriptions[*]",
+      "Microsoft.Security/iotSecuritySolutions/workspace": "properties.workspace"
+    },
+    "resourceType": "iotSecuritySolutions",
+    "apiVersions": [
+      "2019-08-01",
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Japan West",
+      "Japan East",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "West Central US",
+      "West US 2",
+      "Korea Central",
+      "Australia Central",
+      "Australia Central 2",
+      "UAE Central",
+      "UAE North",
+      "South Africa North",
+      "South Africa West",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Germany North"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "iotSecuritySolutions/analyticsModels",
+    "apiVersions": [
+      "2019-08-01",
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Japan West",
+      "Japan East",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "West Central US",
+      "West US 2",
+      "Korea Central",
+      "Australia Central",
+      "Australia Central 2",
+      "UAE Central",
+      "UAE North",
+      "South Africa North",
+      "South Africa West",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Germany North"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "iotSecuritySolutions/analyticsModels/aggregatedAlerts",
+    "apiVersions": [
+      "2019-08-01",
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Japan West",
+      "Japan East",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "West Central US",
+      "West US 2",
+      "Korea Central",
+      "Australia Central",
+      "Australia Central 2",
+      "UAE Central",
+      "UAE North",
+      "South Africa North",
+      "South Africa West",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Germany North"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "iotSecuritySolutions/analyticsModels/aggregatedRecommendations",
+    "apiVersions": [
+      "2019-08-01",
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Japan West",
+      "Japan East",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "West Central US",
+      "West US 2",
+      "Korea Central",
+      "Australia Central",
+      "Australia Central 2",
+      "UAE Central",
+      "UAE North",
+      "South Africa North",
+      "South Africa West",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Germany North"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "iotSecuritySolutions/iotAlerts",
+    "apiVersions": [
+      "2019-08-01"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Japan West",
+      "Japan East",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "West Central US",
+      "West US 2",
+      "Korea Central",
+      "Australia Central",
+      "Australia Central 2",
+      "UAE Central",
+      "UAE North",
+      "South Africa North",
+      "South Africa West",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Germany North"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "iotSecuritySolutions/iotAlertTypes",
+    "apiVersions": [
+      "2019-08-01"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Japan West",
+      "Japan East",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "West Central US",
+      "West US 2",
+      "Korea Central",
+      "Australia Central",
+      "Australia Central 2",
+      "UAE Central",
+      "UAE North",
+      "South Africa North",
+      "South Africa West",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Germany North"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "iotSecuritySolutions/iotRecommendations",
+    "apiVersions": [
+      "2019-08-01"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Japan West",
+      "Japan East",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "West Central US",
+      "West US 2",
+      "Korea Central",
+      "Australia Central",
+      "Australia Central 2",
+      "UAE Central",
+      "UAE North",
+      "South Africa North",
+      "South Africa West",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Germany North"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "iotSecuritySolutions/iotRecommendationTypes",
+    "apiVersions": [
+      "2019-08-01"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Japan West",
+      "Japan East",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "West Central US",
+      "West US 2",
+      "Korea Central",
+      "Australia Central",
+      "Australia Central 2",
+      "UAE Central",
+      "UAE North",
+      "South Africa North",
+      "South Africa West",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Germany North"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "jitNetworkAccessPolicies",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "Switzerland North",
+      "Germany West Central",
+      "West Central US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "jitPolicies",
+    "apiVersions": [
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South",
+      "Switzerland North",
+      "Germany West Central",
+      "West Central US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/locations/alerts/state": "properties.state"
+    },
+    "resourceType": "locations/alerts",
+    "apiVersions": [
+      "2021-11-01",
+      "2021-01-01",
+      "2020-01-01",
+      "2019-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/allowedConnections",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/applicationWhitelistings",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/discoveredSecuritySolutions",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/externalSecuritySolutions",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/provisioningState": "properties.provisioningState",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests": "properties.requests",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*]": "properties.requests[*]",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].justification": "properties.requests[*].justification",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].requestor": "properties.requests[*].requestor",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].startTimeUtc": "properties.requests[*].startTimeUtc",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].virtualMachines": "properties.requests[*].virtualMachines",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].virtualMachines[*]": "properties.requests[*].virtualMachines[*]",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].virtualMachines[*].id": "properties.requests[*].virtualMachines[*].id",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].virtualMachines[*].ports": "properties.requests[*].virtualMachines[*].ports",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].virtualMachines[*].ports[*]": "properties.requests[*].virtualMachines[*].ports[*]",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].virtualMachines[*].ports[*].allowedSourceAddressPrefix": "properties.requests[*].virtualMachines[*].ports[*].allowedSourceAddressPrefix",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].virtualMachines[*].ports[*].allowedSourceAddressPrefixes": "properties.requests[*].virtualMachines[*].ports[*].allowedSourceAddressPrefixes",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].virtualMachines[*].ports[*].allowedSourceAddressPrefixes[*]": "properties.requests[*].virtualMachines[*].ports[*].allowedSourceAddressPrefixes[*]",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].virtualMachines[*].ports[*].endTimeUtc": "properties.requests[*].virtualMachines[*].ports[*].endTimeUtc",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].virtualMachines[*].ports[*].mappedPort": "properties.requests[*].virtualMachines[*].ports[*].mappedPort",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].virtualMachines[*].ports[*].number": "properties.requests[*].virtualMachines[*].ports[*].number",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].virtualMachines[*].ports[*].status": "properties.requests[*].virtualMachines[*].ports[*].status",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/requests[*].virtualMachines[*].ports[*].statusReason": "properties.requests[*].virtualMachines[*].ports[*].statusReason",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/virtualMachines": "properties.virtualMachines",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/virtualMachines[*]": "properties.virtualMachines[*]",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/virtualMachines[*].id": "properties.virtualMachines[*].id",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/virtualMachines[*].ports": "properties.virtualMachines[*].ports",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/virtualMachines[*].ports[*]": "properties.virtualMachines[*].ports[*]",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/virtualMachines[*].ports[*].allowedSourceAddressPrefix": "properties.virtualMachines[*].ports[*].allowedSourceAddressPrefix",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/virtualMachines[*].ports[*].allowedSourceAddressPrefixes": "properties.virtualMachines[*].ports[*].allowedSourceAddressPrefixes",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/virtualMachines[*].ports[*].allowedSourceAddressPrefixes[*]": "properties.virtualMachines[*].ports[*].allowedSourceAddressPrefixes[*]",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/virtualMachines[*].ports[*].maxRequestAccessDuration": "properties.virtualMachines[*].ports[*].maxRequestAccessDuration",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/virtualMachines[*].ports[*].number": "properties.virtualMachines[*].ports[*].number",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/virtualMachines[*].ports[*].protocol": "properties.virtualMachines[*].ports[*].protocol",
+      "Microsoft.Security/locations/jitNetworkAccessPolicies/virtualMachines[*].publicIpAddress": "properties.virtualMachines[*].publicIpAddress"
+    },
+    "resourceType": "locations/jitNetworkAccessPolicies",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South",
+      "Switzerland North",
+      "Germany West Central",
+      "West Central US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/securitySolutions",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/securitySolutionsReferenceData",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/tasks",
+    "apiVersions": [
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/topologies",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "MdeOnboardings",
+    "apiVersions": [
+      "2021-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/policies/logCollection": "properties.logCollection",
+      "Microsoft.Security/policies/logsConfiguration": "properties.logsConfiguration",
+      "Microsoft.Security/policies/logsConfiguration.storages": "properties.logsConfiguration.storages",
+      "Microsoft.Security/policies/name": "properties.name",
+      "Microsoft.Security/policies/omsWorkspaceConfiguration": "properties.omsWorkspaceConfiguration",
+      "Microsoft.Security/policies/omsWorkspaceConfiguration.workspaces": "properties.omsWorkspaceConfiguration.workspaces",
+      "Microsoft.Security/policies/policyLevel": "properties.policyLevel",
+      "Microsoft.Security/policies/pricingConfiguration": "properties.pricingConfiguration",
+      "Microsoft.Security/policies/pricingConfiguration.active": "properties.pricingConfiguration.active",
+      "Microsoft.Security/policies/pricingConfiguration.level": "properties.pricingConfiguration.level",
+      "Microsoft.Security/policies/pricingConfiguration.resourceGroup": "properties.pricingConfiguration.resourceGroup",
+      "Microsoft.Security/policies/pricingConfiguration.selectedPricingTier": "properties.pricingConfiguration.selectedPricingTier",
+      "Microsoft.Security/policies/pricingConfiguration.standardBundles": "properties.pricingConfiguration.standardBundles",
+      "Microsoft.Security/policies/pricingConfiguration.standardBundles[*]": "properties.pricingConfiguration.standardBundles[*]",
+      "Microsoft.Security/policies/recommendations": "properties.recommendations",
+      "Microsoft.Security/policies/recommendations.acls": "properties.recommendations.acls",
+      "Microsoft.Security/policies/recommendations.antimalware": "properties.recommendations.antimalware",
+      "Microsoft.Security/policies/recommendations.appWhitelisting": "properties.recommendations.appWhitelisting",
+      "Microsoft.Security/policies/recommendations.baseline": "properties.recommendations.baseline",
+      "Microsoft.Security/policies/recommendations.diskEncryption": "properties.recommendations.diskEncryption",
+      "Microsoft.Security/policies/recommendations.jitNetworkAccess": "properties.recommendations.jitNetworkAccess",
+      "Microsoft.Security/policies/recommendations.ngfw": "properties.recommendations.ngfw",
+      "Microsoft.Security/policies/recommendations.nsgs": "properties.recommendations.nsgs",
+      "Microsoft.Security/policies/recommendations.patch": "properties.recommendations.patch",
+      "Microsoft.Security/policies/recommendations.sqlAuditing": "properties.recommendations.sqlAuditing",
+      "Microsoft.Security/policies/recommendations.sqlTde": "properties.recommendations.sqlTde",
+      "Microsoft.Security/policies/recommendations.storageEncryption": "properties.recommendations.storageEncryption",
+      "Microsoft.Security/policies/recommendations.vulnerabilityAssessment": "properties.recommendations.vulnerabilityAssessment",
+      "Microsoft.Security/policies/recommendations.waf": "properties.recommendations.waf",
+      "Microsoft.Security/policies/securityContactConfiguration": "properties.securityContactConfiguration",
+      "Microsoft.Security/policies/securityContactConfiguration.areNotificationsOn": "properties.securityContactConfiguration.areNotificationsOn",
+      "Microsoft.Security/policies/securityContactConfiguration.securityContactEmails": "properties.securityContactConfiguration.securityContactEmails",
+      "Microsoft.Security/policies/securityContactConfiguration.securityContactEmails[*]": "properties.securityContactConfiguration.securityContactEmails[*]",
+      "Microsoft.Security/policies/securityContactConfiguration.securityContactPhone": "properties.securityContactConfiguration.securityContactPhone",
+      "Microsoft.Security/policies/securityContactConfiguration.sendToAdminOn": "properties.securityContactConfiguration.sendToAdminOn",
+      "Microsoft.Security/policies/unique": "properties.unique"
+    },
+    "resourceType": "policies",
+    "apiVersions": [
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/pricings/freeTrialRemainingTime": "properties.freeTrialRemainingTime",
+      "Microsoft.Security/pricings/pricingTier": "properties.pricingTier"
+    },
+    "resourceType": "pricings",
+    "apiVersions": [
+      "2022-03-01",
+      "2018-06-01",
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "regulatoryComplianceStandards",
+    "apiVersions": [
+      "2019-01-01-preview",
+      "2019-01-01"
+    ],
+    "locations": [
+      "Central US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "regulatoryComplianceStandards/regulatoryComplianceControls",
+    "apiVersions": [
+      "2019-01-01-preview",
+      "2019-01-01"
+    ],
+    "locations": [
+      "Central US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "regulatoryComplianceStandards/regulatoryComplianceControls/regulatoryComplianceAssessments",
+    "apiVersions": [
+      "2019-01-01-preview",
+      "2019-01-01"
+    ],
+    "locations": [
+      "Central US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "secureScoreControlDefinitions",
+    "apiVersions": [
+      "2020-01-01-preview",
+      "2020-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "secureScoreControls",
+    "apiVersions": [
+      "2020-01-01-preview",
+      "2020-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "secureScores",
+    "apiVersions": [
+      "2020-01-01-preview",
+      "2020-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "secureScores/secureScoreControls",
+    "apiVersions": [
+      "2020-01-01-preview",
+      "2020-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "securityConnectors",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West Central US",
+      "Canada Central",
+      "Canada East",
+      "Brazil South",
+      "East Asia",
+      "Southeast Asia",
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "South India",
+      "West India",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "South Africa North",
+      "South Africa West",
+      "UAE Central",
+      "UAE North",
+      "North Europe",
+      "West Europe",
+      "France Central",
+      "France South",
+      "UK South",
+      "UK West",
+      "Norway East",
+      "Norway West",
+      "Switzerland North",
+      "Switzerland West",
+      "Germany West Central",
+      "Germany North"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/securityContacts/alertNotifications": "properties.alertNotifications.state",
+      "Microsoft.Security/securityContacts/alertNotifications.minimalSeverity": "properties.alertNotifications.minimalSeverity",
+      "Microsoft.Security/securityContacts/alertNotifications.state": "properties.alertNotifications.state",
+      "Microsoft.Security/securityContacts/alertsToAdmins": "properties.notificationsByRole.state",
+      "Microsoft.Security/securityContacts/email": "properties.emails",
+      "Microsoft.Security/securityContacts/emails": "properties.emails",
+      "Microsoft.Security/securityContacts/notificationsByRole": "properties.notificationsByRole",
+      "Microsoft.Security/securityContacts/notificationsByRole.roles": "properties.notificationsByRole.roles",
+      "Microsoft.Security/securityContacts/notificationsByRole.roles[*]": "properties.notificationsByRole.roles[*]",
+      "Microsoft.Security/securityContacts/notificationsByRole.state": "properties.notificationsByRole.state",
+      "Microsoft.Security/securityContacts/phone": "properties.phone"
+    },
+    "resourceType": "securityContacts",
+    "apiVersions": [
+      "2020-01-01-preview",
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "securitySolutions",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "securitySolutionsReferenceData",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "securityStatuses",
+    "apiVersions": [
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "securityStatusesSummaries",
+    "apiVersions": [
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "serverVulnerabilityAssessments",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "West Europe",
+      "North Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South",
+      "Switzerland North",
+      "Germany West Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/settings/DataExportSetting.enabled": "properties.enabled",
+      "Microsoft.Security/settings/DataExportSettings.enabled": "properties.enabled"
+    },
+    "resourceType": "settings",
+    "apiVersions": [
+      "2021-07-01",
+      "2021-06-01",
+      "2019-01-01",
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "sqlVulnerabilityAssessments",
+    "apiVersions": [
+      "2020-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "standards",
+    "apiVersions": [
+      "2021-08-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West Central US",
+      "Canada Central",
+      "Canada East",
+      "Brazil South",
+      "East Asia",
+      "Southeast Asia",
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "South India",
+      "West India",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "South Africa North",
+      "South Africa West",
+      "UAE Central",
+      "UAE North",
+      "North Europe",
+      "West Europe",
+      "France Central",
+      "France South",
+      "UK South",
+      "UK West",
+      "Norway East",
+      "Norway West",
+      "Germany West Central",
+      "Germany North",
+      "Switzerland North",
+      "Switzerland West"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "subAssessments",
+    "apiVersions": [
+      "2020-01-01",
+      "2019-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "tasks",
+    "apiVersions": [
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "topologies",
+    "apiVersions": [
+      "2020-01-01",
+      "2015-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "West Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/workspaceSettings/scope": "properties.scope",
+      "Microsoft.Security/workspaceSettings/workspaceId": "properties.workspaceId"
+    },
+    "resourceType": "workspaceSettings",
+    "apiVersions": [
+      "2019-01-01",
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US"
+    ],
+    "zoneMappings": null
+  }
+]

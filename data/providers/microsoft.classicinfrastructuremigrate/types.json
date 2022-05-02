@@ -1,0 +1,52 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "classicInfrastructureResources",
+    "apiVersions": [
+      "2015-06-15"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "North Europe",
+      "West Europe",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "West India",
+      "South India",
+      "Canada Central",
+      "Canada East",
+      "West US 2",
+      "West Central US",
+      "UK South",
+      "UK West",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "France South",
+      "Australia Central",
+      "Australia Central 2",
+      "Germany North",
+      "Germany West Central",
+      "Norway East",
+      "Norway West",
+      "South Africa North",
+      "South Africa West",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
+      "UAE North"
+    ],
+    "zoneMappings": null
+  }
+]

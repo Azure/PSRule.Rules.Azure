@@ -1,0 +1,63 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "appliances",
+    "apiVersions": [
+      "2021-10-31-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-04-15-preview",
+      "2021-10-31-preview",
+      "2020-09-15-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationresults",
+    "apiVersions": [
+      "2021-10-31-preview",
+      "2020-07-15-privatepreview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationsstatus",
+    "apiVersions": [
+      "2021-10-31-preview",
+      "2020-07-15-privatepreview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-04-15-preview",
+      "2021-10-31-preview",
+      "2021-02-01",
+      "2020-07-15-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

@@ -26,7 +26,7 @@ Consider using availability zones for Enterprise Redis Cache deployed in support
 
 This rule fails when cache is not zone redundant(1, 2 and 3) when there are availability zones for the given region.
 
-Configure `AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json) for namespace `Microsoft.Cache` and resource type `redisEnterprise`.
+Configure `AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/) for namespace `Microsoft.Cache` and resource type `redisEnterprise`.
 
 ```yaml
 # YAML: The default AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option

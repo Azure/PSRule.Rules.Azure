@@ -10,36 +10,6 @@ using PSRule.Rules.Azure.Data.Template;
 
 namespace PSRule.Rules.Azure.Data.Policy
 {
-    public sealed class PolicyAliasProvider
-    {
-        public IDictionary<string, PolicyAliasResourceType> Providers { get; }
-
-        internal PolicyAliasProvider()
-        {
-            Providers = new Dictionary<string, PolicyAliasResourceType>(StringComparer.OrdinalIgnoreCase);
-        }
-    }
-
-    public sealed class PolicyAliasResourceType
-    {
-        public IDictionary<string, PolicyAliasMapping> ResourceTypes { get; }
-
-        internal PolicyAliasResourceType()
-        {
-            ResourceTypes = new Dictionary<string, PolicyAliasMapping>(StringComparer.OrdinalIgnoreCase);
-        }
-    }
-
-    public sealed class PolicyAliasMapping
-    {
-        public IDictionary<string, string> AliasMappings { get; }
-
-        internal PolicyAliasMapping()
-        {
-            AliasMappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-        }
-    }
-
     [JsonConverter(typeof(StringEnumConverter))]
     internal enum ParameterType
     {

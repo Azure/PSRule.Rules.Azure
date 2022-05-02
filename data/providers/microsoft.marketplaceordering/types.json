@@ -1,0 +1,38 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "agreements",
+    "apiVersions": [
+      "2021-01-01",
+      "2015-06-01"
+    ],
+    "locations": [
+      "South Central US",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "offertypes",
+    "apiVersions": [
+      "2021-01-01",
+      "2015-06-01"
+    ],
+    "locations": [
+      "South Central US",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-01-01",
+      "2015-06-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

@@ -4,6 +4,7 @@
 using System.IO;
 using System.Management.Automation;
 using PSRule.Rules.Azure.Configuration;
+using PSRule.Rules.Azure.Data;
 using PSRule.Rules.Azure.Data.Bicep;
 using PSRule.Rules.Azure.Data.Network;
 using PSRule.Rules.Azure.Data.Template;

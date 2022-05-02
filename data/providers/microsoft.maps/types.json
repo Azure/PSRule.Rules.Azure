@@ -1,0 +1,90 @@
+[
+  {
+    "aliases": {
+      "Microsoft.Maps/accounts/disableLocalAuth": "properties.disableLocalAuth",
+      "Microsoft.Maps/accounts/linkedResources": "properties.linkedResources",
+      "Microsoft.Maps/accounts/linkedResources[*]": "properties.linkedResources[*]",
+      "Microsoft.Maps/accounts/linkedResources[*].id": "properties.linkedResources[*].id",
+      "Microsoft.Maps/accounts/linkedResources[*].uniqueName": "properties.linkedResources[*].uniqueName",
+      "Microsoft.Maps/accounts/provisioningState": "properties.provisioningState",
+      "Microsoft.Maps/accounts/sku": "sku",
+      "Microsoft.Maps/accounts/sku.name": "sku.name",
+      "Microsoft.Maps/accounts/sku.tier": "sku.tier",
+      "Microsoft.Maps/accounts/uniqueId": "properties.uniqueId"
+    },
+    "resourceType": "accounts",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-07-01-preview",
+      "2021-02-01",
+      "2020-02-01-preview",
+      "2018-05-01",
+      "2017-01-01-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "Global",
+      "West US 2",
+      "East US",
+      "West Europe",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Maps/accounts/creators/provisioningState": "properties.provisioningState",
+      "Microsoft.Maps/accounts/creators/storageUnits": "properties.storageUnits"
+    },
+    "resourceType": "accounts/creators",
+    "apiVersions": [
+      "2021-02-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [
+      "North Europe",
+      "West Europe",
+      "East US 2",
+      "West US 2",
+      "Europe",
+      "United States"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/eventGridFilters",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-07-01-preview",
+      "2021-02-01",
+      "2020-02-01-preview",
+      "2018-05-01"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "East US",
+      "West Europe",
+      "North Europe",
+      "Global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-07-01-preview",
+      "2021-02-01",
+      "2020-02-01-preview",
+      "2018-05-01",
+      "2017-01-01-preview"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": null
+  }
+]

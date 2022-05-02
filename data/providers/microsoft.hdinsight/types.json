@@ -1,0 +1,1143 @@
+[
+  {
+    "aliases": {
+      "Microsoft.HDInsight/clusters/clusterDefinition": "properties.clusterDefinition",
+      "Microsoft.HDInsight/clusters/clusterDefinition.blueprint": "properties.clusterDefinition.blueprint",
+      "Microsoft.HDInsight/clusters/clusterDefinition.componentVersion": "properties.clusterDefinition.componentVersion",
+      "Microsoft.HDInsight/clusters/clusterDefinition.configurations": "properties.clusterDefinition.configurations",
+      "Microsoft.HDInsight/clusters/clusterDefinition.kind": "properties.clusterDefinition.kind",
+      "Microsoft.HDInsight/clusters/clusterVersion": "properties.clusterVersion",
+      "Microsoft.HDInsight/clusters/computeIsolationProperties": "properties.computeIsolationProperties",
+      "Microsoft.HDInsight/clusters/computeIsolationProperties.enableComputeIsolation": "properties.computeIsolationProperties.enableComputeIsolation",
+      "Microsoft.HDInsight/clusters/computeIsolationProperties.hostSku": "properties.computeIsolationProperties.hostSku",
+      "Microsoft.HDInsight/clusters/computeProfile": "properties.computeProfile",
+      "Microsoft.HDInsight/clusters/computeProfile.roles": "properties.computeProfile.roles",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*]": "properties.computeProfile.roles[*]",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale": "properties.computeProfile.roles[*].autoscale",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale.capacity": "properties.computeProfile.roles[*].autoscale.capacity",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale.capacity.maxInstanceCount": "properties.computeProfile.roles[*].autoscale.capacity.maxInstanceCount",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale.capacity.minInstanceCount": "properties.computeProfile.roles[*].autoscale.capacity.minInstanceCount",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale.recurrence": "properties.computeProfile.roles[*].autoscale.recurrence",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale.recurrence.schedule": "properties.computeProfile.roles[*].autoscale.recurrence.schedule",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale.recurrence.schedule[*]": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*]",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale.recurrence.schedule[*].days": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*].days",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale.recurrence.schedule[*].days[*]": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*].days[*]",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity.maxInstanceCount": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity.maxInstanceCount",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity.minInstanceCount": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity.minInstanceCount",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity.time": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity.time",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].autoscale.recurrence.timeZone": "properties.computeProfile.roles[*].autoscale.recurrence.timeZone",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].dataDisksGroups": "properties.computeProfile.roles[*].dataDisksGroups",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].dataDisksGroups[*]": "properties.computeProfile.roles[*].dataDisksGroups[*]",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].dataDisksGroups[*].diskSizeGB": "properties.computeProfile.roles[*].dataDisksGroups[*].diskSizeGB",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].dataDisksGroups[*].disksPerNode": "properties.computeProfile.roles[*].dataDisksGroups[*].disksPerNode",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].dataDisksGroups[*].storageAccountType": "properties.computeProfile.roles[*].dataDisksGroups[*].storageAccountType",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].encryptDataDisks": "properties.computeProfile.roles[*].encryptDataDisks",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].hardwareProfile": "properties.computeProfile.roles[*].hardwareProfile",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].hardwareProfile.vmSize": "properties.computeProfile.roles[*].hardwareProfile.vmSize",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].minInstanceCount": "properties.computeProfile.roles[*].minInstanceCount",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].name": "properties.computeProfile.roles[*].name",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].osProfile": "properties.computeProfile.roles[*].osProfile",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.password": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.password",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys[*]": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys[*]",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys[*].certificateData": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys[*].certificateData",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.username": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.username",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].scriptActions": "properties.computeProfile.roles[*].scriptActions",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].scriptActions[*]": "properties.computeProfile.roles[*].scriptActions[*]",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].scriptActions[*].name": "properties.computeProfile.roles[*].scriptActions[*].name",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].scriptActions[*].parameters": "properties.computeProfile.roles[*].scriptActions[*].parameters",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].scriptActions[*].uri": "properties.computeProfile.roles[*].scriptActions[*].uri",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].targetInstanceCount": "properties.computeProfile.roles[*].targetInstanceCount",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].virtualNetworkProfile": "properties.computeProfile.roles[*].virtualNetworkProfile",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].virtualNetworkProfile.id": "properties.computeProfile.roles[*].virtualNetworkProfile.id",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].virtualNetworkProfile.subnet": "properties.computeProfile.roles[*].virtualNetworkProfile.subnet",
+      "Microsoft.HDInsight/clusters/computeProfile.roles[*].VMGroupName": "properties.computeProfile.roles[*].VMGroupName",
+      "Microsoft.HDInsight/clusters/diskEncryptionProperties": "properties.diskEncryptionProperties",
+      "Microsoft.HDInsight/clusters/diskEncryptionProperties.encryptionAlgorithm": "properties.diskEncryptionProperties.encryptionAlgorithm",
+      "Microsoft.HDInsight/clusters/diskEncryptionProperties.encryptionAtHost": "properties.diskEncryptionProperties.encryptionAtHost",
+      "Microsoft.HDInsight/clusters/diskEncryptionProperties.keyName": "properties.diskEncryptionProperties.keyName",
+      "Microsoft.HDInsight/clusters/diskEncryptionProperties.keyVersion": "properties.diskEncryptionProperties.keyVersion",
+      "Microsoft.HDInsight/clusters/diskEncryptionProperties.msiResourceId": "properties.diskEncryptionProperties.msiResourceId",
+      "Microsoft.HDInsight/clusters/diskEncryptionProperties.vaultUri": "properties.diskEncryptionProperties.vaultUri",
+      "Microsoft.HDInsight/clusters/encryptionInTransitProperties": "properties.encryptionInTransitProperties",
+      "Microsoft.HDInsight/clusters/encryptionInTransitProperties.isEncryptionInTransitEnabled": "properties.encryptionInTransitProperties.isEncryptionInTransitEnabled",
+      "Microsoft.HDInsight/clusters/kafkaRestProperties": "properties.kafkaRestProperties",
+      "Microsoft.HDInsight/clusters/kafkaRestProperties.clientGroupInfo": "properties.kafkaRestProperties.clientGroupInfo",
+      "Microsoft.HDInsight/clusters/kafkaRestProperties.clientGroupInfo.groupId": "properties.kafkaRestProperties.clientGroupInfo.groupId",
+      "Microsoft.HDInsight/clusters/kafkaRestProperties.clientGroupInfo.groupName": "properties.kafkaRestProperties.clientGroupInfo.groupName",
+      "Microsoft.HDInsight/clusters/kafkaRestProperties.configurationOverride": "properties.kafkaRestProperties.configurationOverride",
+      "Microsoft.HDInsight/clusters/minSupportedTlsVersion": "properties.minSupportedTlsVersion",
+      "Microsoft.HDInsight/clusters/networkProperties": "properties.networkProperties",
+      "Microsoft.HDInsight/clusters/networkProperties.privateLink": "properties.networkProperties.privateLink",
+      "Microsoft.HDInsight/clusters/networkProperties.resourceProviderConnection": "properties.networkProperties.resourceProviderConnection",
+      "Microsoft.HDInsight/clusters/osType": "properties.osType",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations": "properties.privateLinkConfigurations",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*]": "properties.privateLinkConfigurations[*]",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].groupId": "properties.privateLinkConfigurations[*].properties.groupId",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].id": "properties.privateLinkConfigurations[*].id",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].ipConfigurations": "properties.privateLinkConfigurations[*].properties.ipConfigurations",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].ipConfigurations[*]": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*]",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].ipConfigurations[*].id": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].id",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].ipConfigurations[*].name": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].name",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].ipConfigurations[*].primary": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].properties.primary",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].ipConfigurations[*].privateIPAddress": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].properties.privateIPAddress",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].ipConfigurations[*].privateIPAllocationMethod": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].properties.privateIPAllocationMethod",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].ipConfigurations[*].provisioningState": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].properties.provisioningState",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].ipConfigurations[*].subnet": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].properties.subnet",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].ipConfigurations[*].subnet.id": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].properties.subnet.id",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].ipConfigurations[*].type": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].type",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].name": "properties.privateLinkConfigurations[*].name",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].provisioningState": "properties.privateLinkConfigurations[*].properties.provisioningState",
+      "Microsoft.HDInsight/clusters/privateLinkConfigurations[*].type": "properties.privateLinkConfigurations[*].type",
+      "Microsoft.HDInsight/clusters/securityProfile": "properties.securityProfile",
+      "Microsoft.HDInsight/clusters/securityProfile.aaddsResourceId": "properties.securityProfile.aaddsResourceId",
+      "Microsoft.HDInsight/clusters/securityProfile.clusterUsersGroupDNs": "properties.securityProfile.clusterUsersGroupDNs",
+      "Microsoft.HDInsight/clusters/securityProfile.clusterUsersGroupDNs[*]": "properties.securityProfile.clusterUsersGroupDNs[*]",
+      "Microsoft.HDInsight/clusters/securityProfile.directoryType": "properties.securityProfile.directoryType",
+      "Microsoft.HDInsight/clusters/securityProfile.domain": "properties.securityProfile.domain",
+      "Microsoft.HDInsight/clusters/securityProfile.domainUsername": "properties.securityProfile.domainUsername",
+      "Microsoft.HDInsight/clusters/securityProfile.domainUserPassword": "properties.securityProfile.domainUserPassword",
+      "Microsoft.HDInsight/clusters/securityProfile.ldapsUrls": "properties.securityProfile.ldapsUrls",
+      "Microsoft.HDInsight/clusters/securityProfile.ldapsUrls[*]": "properties.securityProfile.ldapsUrls[*]",
+      "Microsoft.HDInsight/clusters/securityProfile.msiResourceId": "properties.securityProfile.msiResourceId",
+      "Microsoft.HDInsight/clusters/securityProfile.organizationalUnitDN": "properties.securityProfile.organizationalUnitDN",
+      "Microsoft.HDInsight/clusters/storageProfile": "properties.storageProfile",
+      "Microsoft.HDInsight/clusters/storageProfile.storageaccounts": "properties.storageProfile.storageaccounts",
+      "Microsoft.HDInsight/clusters/storageProfile.storageaccounts[*]": "properties.storageProfile.storageaccounts[*]",
+      "Microsoft.HDInsight/clusters/storageProfile.storageaccounts[*].container": "properties.storageProfile.storageaccounts[*].container",
+      "Microsoft.HDInsight/clusters/storageProfile.storageaccounts[*].fileshare": "properties.storageProfile.storageaccounts[*].fileshare",
+      "Microsoft.HDInsight/clusters/storageProfile.storageaccounts[*].fileSystem": "properties.storageProfile.storageaccounts[*].fileSystem",
+      "Microsoft.HDInsight/clusters/storageProfile.storageaccounts[*].isDefault": "properties.storageProfile.storageaccounts[*].isDefault",
+      "Microsoft.HDInsight/clusters/storageProfile.storageaccounts[*].key": "properties.storageProfile.storageaccounts[*].key",
+      "Microsoft.HDInsight/clusters/storageProfile.storageaccounts[*].msiResourceId": "properties.storageProfile.storageaccounts[*].msiResourceId",
+      "Microsoft.HDInsight/clusters/storageProfile.storageaccounts[*].name": "properties.storageProfile.storageaccounts[*].name",
+      "Microsoft.HDInsight/clusters/storageProfile.storageaccounts[*].resourceId": "properties.storageProfile.storageaccounts[*].resourceId",
+      "Microsoft.HDInsight/clusters/storageProfile.storageaccounts[*].saskey": "properties.storageProfile.storageaccounts[*].saskey",
+      "Microsoft.HDInsight/clusters/tier": "properties.tier",
+      "Microsoft.HDInsight/clusters/zones": "zones",
+      "Microsoft.HDInsight/clusters/zones[*]": "zones[*]"
+    },
+    "resourceType": "clusters",
+    "apiVersions": [
+      "2021-06-01",
+      "2018-06-01-preview",
+      "2015-03-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "South Central US",
+      "Australia Southeast",
+      "Central India",
+      "West Central US",
+      "West US 2",
+      "Canada East",
+      "Canada Central",
+      "Brazil South",
+      "UK South",
+      "UK West",
+      "East Asia",
+      "Australia East",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "North Central US",
+      "Central US",
+      "Southeast Asia",
+      "East US",
+      "Korea South",
+      "Korea Central",
+      "West US",
+      "South India",
+      "France Central",
+      "Australia Central",
+      "UAE North",
+      "UAE Central",
+      "Switzerland North",
+      "Switzerland West",
+      "South Africa North",
+      "Germany West Central",
+      "Brazil Southeast",
+      "Norway East",
+      "West US 3",
+      "JIO India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Brazil South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central India",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "North Central US",
+        "zones": []
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Norway East",
+        "zones": []
+      },
+      {
+        "location": "South Africa North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Sweden Central",
+        "zones": []
+      },
+      {
+        "location": "Switzerland North",
+        "zones": []
+      },
+      {
+        "location": "UAE North",
+        "zones": []
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 3",
+        "zones": []
+      }
+    ]
+  },
+  {
+    "aliases": {
+      "Microsoft.HDInsight/clusters/applications/applicationState": "properties.applicationState",
+      "Microsoft.HDInsight/clusters/applications/applicationType": "properties.applicationType",
+      "Microsoft.HDInsight/clusters/applications/computeProfile": "properties.computeProfile",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles": "properties.computeProfile.roles",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*]": "properties.computeProfile.roles[*]",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale": "properties.computeProfile.roles[*].autoscale",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale.capacity": "properties.computeProfile.roles[*].autoscale.capacity",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale.capacity.maxInstanceCount": "properties.computeProfile.roles[*].autoscale.capacity.maxInstanceCount",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale.capacity.minInstanceCount": "properties.computeProfile.roles[*].autoscale.capacity.minInstanceCount",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale.recurrence": "properties.computeProfile.roles[*].autoscale.recurrence",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale.recurrence.schedule": "properties.computeProfile.roles[*].autoscale.recurrence.schedule",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale.recurrence.schedule[*]": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*]",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale.recurrence.schedule[*].days": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*].days",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale.recurrence.schedule[*].days[*]": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*].days[*]",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity.maxInstanceCount": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity.maxInstanceCount",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity.minInstanceCount": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity.minInstanceCount",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity.time": "properties.computeProfile.roles[*].autoscale.recurrence.schedule[*].timeAndCapacity.time",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].autoscale.recurrence.timeZone": "properties.computeProfile.roles[*].autoscale.recurrence.timeZone",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].dataDisksGroups": "properties.computeProfile.roles[*].dataDisksGroups",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].dataDisksGroups[*]": "properties.computeProfile.roles[*].dataDisksGroups[*]",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].dataDisksGroups[*].diskSizeGB": "properties.computeProfile.roles[*].dataDisksGroups[*].diskSizeGB",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].dataDisksGroups[*].disksPerNode": "properties.computeProfile.roles[*].dataDisksGroups[*].disksPerNode",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].dataDisksGroups[*].storageAccountType": "properties.computeProfile.roles[*].dataDisksGroups[*].storageAccountType",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].encryptDataDisks": "properties.computeProfile.roles[*].encryptDataDisks",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].hardwareProfile": "properties.computeProfile.roles[*].hardwareProfile",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].hardwareProfile.vmSize": "properties.computeProfile.roles[*].hardwareProfile.vmSize",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].minInstanceCount": "properties.computeProfile.roles[*].minInstanceCount",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].name": "properties.computeProfile.roles[*].name",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].osProfile": "properties.computeProfile.roles[*].osProfile",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.password": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.password",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys[*]": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys[*]",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys[*].certificateData": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys[*].certificateData",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.username": "properties.computeProfile.roles[*].osProfile.linuxOperatingSystemProfile.username",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].scriptActions": "properties.computeProfile.roles[*].scriptActions",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].scriptActions[*]": "properties.computeProfile.roles[*].scriptActions[*]",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].scriptActions[*].name": "properties.computeProfile.roles[*].scriptActions[*].name",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].scriptActions[*].parameters": "properties.computeProfile.roles[*].scriptActions[*].parameters",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].scriptActions[*].uri": "properties.computeProfile.roles[*].scriptActions[*].uri",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].targetInstanceCount": "properties.computeProfile.roles[*].targetInstanceCount",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].virtualNetworkProfile": "properties.computeProfile.roles[*].virtualNetworkProfile",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].virtualNetworkProfile.id": "properties.computeProfile.roles[*].virtualNetworkProfile.id",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].virtualNetworkProfile.subnet": "properties.computeProfile.roles[*].virtualNetworkProfile.subnet",
+      "Microsoft.HDInsight/clusters/applications/computeProfile.roles[*].VMGroupName": "properties.computeProfile.roles[*].VMGroupName",
+      "Microsoft.HDInsight/clusters/applications/createdDate": "properties.createdDate",
+      "Microsoft.HDInsight/clusters/applications/errors": "properties.errors",
+      "Microsoft.HDInsight/clusters/applications/errors[*]": "properties.errors[*]",
+      "Microsoft.HDInsight/clusters/applications/errors[*].code": "properties.errors[*].code",
+      "Microsoft.HDInsight/clusters/applications/errors[*].message": "properties.errors[*].message",
+      "Microsoft.HDInsight/clusters/applications/httpsEndpoints": "properties.httpsEndpoints",
+      "Microsoft.HDInsight/clusters/applications/httpsEndpoints[*]": "properties.httpsEndpoints[*]",
+      "Microsoft.HDInsight/clusters/applications/httpsEndpoints[*].accessModes": "properties.httpsEndpoints[*].accessModes",
+      "Microsoft.HDInsight/clusters/applications/httpsEndpoints[*].accessModes[*]": "properties.httpsEndpoints[*].accessModes[*]",
+      "Microsoft.HDInsight/clusters/applications/httpsEndpoints[*].destinationPort": "properties.httpsEndpoints[*].destinationPort",
+      "Microsoft.HDInsight/clusters/applications/httpsEndpoints[*].disableGatewayAuth": "properties.httpsEndpoints[*].disableGatewayAuth",
+      "Microsoft.HDInsight/clusters/applications/httpsEndpoints[*].location": "properties.httpsEndpoints[*].location",
+      "Microsoft.HDInsight/clusters/applications/httpsEndpoints[*].privateIPAddress": "properties.httpsEndpoints[*].privateIPAddress",
+      "Microsoft.HDInsight/clusters/applications/httpsEndpoints[*].publicPort": "properties.httpsEndpoints[*].publicPort",
+      "Microsoft.HDInsight/clusters/applications/httpsEndpoints[*].subDomainSuffix": "properties.httpsEndpoints[*].subDomainSuffix",
+      "Microsoft.HDInsight/clusters/applications/installScriptActions": "properties.installScriptActions",
+      "Microsoft.HDInsight/clusters/applications/installScriptActions[*]": "properties.installScriptActions[*]",
+      "Microsoft.HDInsight/clusters/applications/installScriptActions[*].applicationName": "properties.installScriptActions[*].applicationName",
+      "Microsoft.HDInsight/clusters/applications/installScriptActions[*].name": "properties.installScriptActions[*].name",
+      "Microsoft.HDInsight/clusters/applications/installScriptActions[*].parameters": "properties.installScriptActions[*].parameters",
+      "Microsoft.HDInsight/clusters/applications/installScriptActions[*].roles": "properties.installScriptActions[*].roles",
+      "Microsoft.HDInsight/clusters/applications/installScriptActions[*].roles[*]": "properties.installScriptActions[*].roles[*]",
+      "Microsoft.HDInsight/clusters/applications/installScriptActions[*].uri": "properties.installScriptActions[*].uri",
+      "Microsoft.HDInsight/clusters/applications/marketplaceIdentifier": "properties.marketplaceIdentifier",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations": "properties.privateLinkConfigurations",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*]": "properties.privateLinkConfigurations[*]",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].groupId": "properties.privateLinkConfigurations[*].properties.groupId",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].id": "properties.privateLinkConfigurations[*].id",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].ipConfigurations": "properties.privateLinkConfigurations[*].properties.ipConfigurations",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].ipConfigurations[*]": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*]",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].ipConfigurations[*].id": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].id",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].ipConfigurations[*].name": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].name",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].ipConfigurations[*].primary": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].properties.primary",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].ipConfigurations[*].privateIPAddress": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].properties.privateIPAddress",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].ipConfigurations[*].privateIPAllocationMethod": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].properties.privateIPAllocationMethod",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].ipConfigurations[*].provisioningState": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].properties.provisioningState",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].ipConfigurations[*].subnet": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].properties.subnet",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].ipConfigurations[*].subnet.id": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].properties.subnet.id",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].ipConfigurations[*].type": "properties.privateLinkConfigurations[*].properties.ipConfigurations[*].type",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].name": "properties.privateLinkConfigurations[*].name",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].provisioningState": "properties.privateLinkConfigurations[*].properties.provisioningState",
+      "Microsoft.HDInsight/clusters/applications/privateLinkConfigurations[*].type": "properties.privateLinkConfigurations[*].type",
+      "Microsoft.HDInsight/clusters/applications/provisioningState": "properties.provisioningState",
+      "Microsoft.HDInsight/clusters/applications/sshEndpoints": "properties.sshEndpoints",
+      "Microsoft.HDInsight/clusters/applications/sshEndpoints[*]": "properties.sshEndpoints[*]",
+      "Microsoft.HDInsight/clusters/applications/sshEndpoints[*].destinationPort": "properties.sshEndpoints[*].destinationPort",
+      "Microsoft.HDInsight/clusters/applications/sshEndpoints[*].location": "properties.sshEndpoints[*].location",
+      "Microsoft.HDInsight/clusters/applications/sshEndpoints[*].privateIPAddress": "properties.sshEndpoints[*].privateIPAddress",
+      "Microsoft.HDInsight/clusters/applications/sshEndpoints[*].publicPort": "properties.sshEndpoints[*].publicPort",
+      "Microsoft.HDInsight/clusters/applications/uninstallScriptActions": "properties.uninstallScriptActions",
+      "Microsoft.HDInsight/clusters/applications/uninstallScriptActions[*]": "properties.uninstallScriptActions[*]",
+      "Microsoft.HDInsight/clusters/applications/uninstallScriptActions[*].applicationName": "properties.uninstallScriptActions[*].applicationName",
+      "Microsoft.HDInsight/clusters/applications/uninstallScriptActions[*].name": "properties.uninstallScriptActions[*].name",
+      "Microsoft.HDInsight/clusters/applications/uninstallScriptActions[*].parameters": "properties.uninstallScriptActions[*].parameters",
+      "Microsoft.HDInsight/clusters/applications/uninstallScriptActions[*].roles": "properties.uninstallScriptActions[*].roles",
+      "Microsoft.HDInsight/clusters/applications/uninstallScriptActions[*].roles[*]": "properties.uninstallScriptActions[*].roles[*]",
+      "Microsoft.HDInsight/clusters/applications/uninstallScriptActions[*].uri": "properties.uninstallScriptActions[*].uri"
+    },
+    "resourceType": "clusters/applications",
+    "apiVersions": [
+      "2021-06-01",
+      "2018-06-01-preview",
+      "2015-03-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "South Central US",
+      "Australia Southeast",
+      "Central India",
+      "West Central US",
+      "West US 2",
+      "Canada East",
+      "Canada Central",
+      "Brazil South",
+      "UK South",
+      "UK West",
+      "East Asia",
+      "Australia East",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "North Central US",
+      "Central US",
+      "Southeast Asia",
+      "East US",
+      "Korea South",
+      "Korea Central",
+      "West US",
+      "South India",
+      "France Central",
+      "Australia Central",
+      "UAE North",
+      "UAE Central",
+      "Switzerland North",
+      "Switzerland West",
+      "South Africa North",
+      "Germany West Central",
+      "Brazil Southeast",
+      "Norway East",
+      "West US 3",
+      "JIO India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Brazil South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central India",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "North Central US",
+        "zones": []
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Norway East",
+        "zones": []
+      },
+      {
+        "location": "South Africa North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Sweden Central",
+        "zones": []
+      },
+      {
+        "location": "Switzerland North",
+        "zones": []
+      },
+      {
+        "location": "UAE North",
+        "zones": []
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 3",
+        "zones": []
+      }
+    ]
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusters/operationresults",
+    "apiVersions": [
+      "2021-06-01",
+      "2018-06-01-preview",
+      "2015-03-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "South Central US",
+      "Australia Southeast",
+      "Central India",
+      "West Central US",
+      "West US 2",
+      "Canada East",
+      "Canada Central",
+      "Brazil South",
+      "UK South",
+      "UK West",
+      "East Asia",
+      "Australia East",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "North Central US",
+      "Central US",
+      "Southeast Asia",
+      "East US",
+      "Korea South",
+      "Korea Central",
+      "West US",
+      "South India",
+      "France Central",
+      "Australia Central",
+      "UAE North",
+      "UAE Central",
+      "Switzerland North",
+      "Switzerland West",
+      "South Africa North",
+      "Germany West Central",
+      "Brazil Southeast",
+      "Norway East",
+      "West US 3",
+      "JIO India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-06-01",
+      "2018-06-01-preview",
+      "2015-03-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "North Europe",
+      "West Europe",
+      "Japan East",
+      "Japan West",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Central India"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/azureasyncoperations",
+    "apiVersions": [
+      "2021-06-01",
+      "2018-06-01-preview",
+      "2015-03-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "South Central US",
+      "Australia Southeast",
+      "Central India",
+      "West Central US",
+      "West US 2",
+      "Canada East",
+      "Canada Central",
+      "Brazil South",
+      "UK South",
+      "UK West",
+      "East Asia",
+      "Australia East",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "North Central US",
+      "Central US",
+      "Southeast Asia",
+      "East US",
+      "Korea South",
+      "Korea Central",
+      "West US",
+      "South India",
+      "France Central",
+      "Australia Central",
+      "UAE North",
+      "UAE Central",
+      "Switzerland North",
+      "Switzerland West",
+      "South Africa North",
+      "Germany West Central",
+      "Brazil Southeast",
+      "Norway East",
+      "West US 3",
+      "JIO India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/billingSpecs",
+    "apiVersions": [
+      "2021-06-01",
+      "2018-06-01-preview",
+      "2015-03-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "South Central US",
+      "Australia Southeast",
+      "Central India",
+      "West Central US",
+      "West US 2",
+      "Canada East",
+      "Canada Central",
+      "Brazil South",
+      "UK South",
+      "UK West",
+      "East Asia",
+      "Australia East",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "North Central US",
+      "Central US",
+      "Southeast Asia",
+      "East US",
+      "Korea South",
+      "Korea Central",
+      "West US",
+      "South India",
+      "France Central",
+      "Australia Central",
+      "UAE North",
+      "UAE Central",
+      "Switzerland North",
+      "Switzerland West",
+      "South Africa North",
+      "Germany West Central",
+      "Brazil Southeast",
+      "Norway East",
+      "West US 3",
+      "JIO India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/capabilities",
+    "apiVersions": [
+      "2021-06-01",
+      "2018-06-01-preview",
+      "2015-03-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "South Central US",
+      "Australia Southeast",
+      "Central India",
+      "West Central US",
+      "West US 2",
+      "Canada East",
+      "Canada Central",
+      "Brazil South",
+      "UK South",
+      "UK West",
+      "East Asia",
+      "Australia East",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "North Central US",
+      "Central US",
+      "Southeast Asia",
+      "East US",
+      "Korea South",
+      "Korea Central",
+      "West US",
+      "South India",
+      "France Central",
+      "Australia Central",
+      "UAE North",
+      "UAE Central",
+      "Switzerland North",
+      "Switzerland West",
+      "South Africa North",
+      "Germany West Central",
+      "Brazil Southeast",
+      "Norway East",
+      "West US 3",
+      "JIO India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/checkNameAvailability",
+    "apiVersions": [
+      "2021-06-01",
+      "2018-06-01-preview",
+      "2015-03-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "East US",
+      "East US 2",
+      "West US",
+      "West US 2",
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "North Europe",
+      "West Europe",
+      "Japan East",
+      "Japan West",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Central India"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationresults",
+    "apiVersions": [
+      "2021-06-01",
+      "2018-06-01-preview",
+      "2015-03-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "South Central US",
+      "Australia Southeast",
+      "Central India",
+      "West Central US",
+      "West US 2",
+      "Canada East",
+      "Canada Central",
+      "Brazil South",
+      "UK South",
+      "UK West",
+      "East Asia",
+      "Australia East",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "North Central US",
+      "Central US",
+      "Southeast Asia",
+      "East US",
+      "Korea South",
+      "Korea Central",
+      "West US",
+      "South India",
+      "France Central",
+      "Australia Central",
+      "UAE North",
+      "UAE Central",
+      "Switzerland North",
+      "Switzerland West",
+      "South Africa North",
+      "Germany West Central",
+      "Brazil Southeast",
+      "Norway East",
+      "West US 3",
+      "JIO India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2021-09-15-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "East US",
+      "West US 2",
+      "West Europe",
+      "Central India"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/usages",
+    "apiVersions": [
+      "2021-06-01",
+      "2018-06-01-preview",
+      "2015-03-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "South Central US",
+      "Australia Southeast",
+      "Central India",
+      "West Central US",
+      "West US 2",
+      "Canada East",
+      "Canada Central",
+      "Brazil South",
+      "UK South",
+      "UK West",
+      "East Asia",
+      "Australia East",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "North Central US",
+      "Central US",
+      "Southeast Asia",
+      "East US",
+      "Korea South",
+      "Korea Central",
+      "West US",
+      "South India",
+      "France Central",
+      "Australia Central",
+      "UAE North",
+      "UAE Central",
+      "Switzerland North",
+      "Switzerland West",
+      "South Africa North",
+      "Germany West Central",
+      "Brazil Southeast",
+      "Norway East",
+      "West US 3",
+      "JIO India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/validateCreateRequest",
+    "apiVersions": [
+      "2021-06-01",
+      "2018-06-01-preview",
+      "2015-03-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "South Central US",
+      "Australia Southeast",
+      "Central India",
+      "West Central US",
+      "West US 2",
+      "Canada East",
+      "Canada Central",
+      "Brazil South",
+      "UK South",
+      "UK West",
+      "East Asia",
+      "Australia East",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "North Central US",
+      "Central US",
+      "Southeast Asia",
+      "East US",
+      "Korea South",
+      "Korea Central",
+      "West US",
+      "South India",
+      "France Central",
+      "Australia Central",
+      "UAE North",
+      "UAE Central",
+      "Switzerland North",
+      "Switzerland West",
+      "South Africa North",
+      "Germany West Central",
+      "Brazil Southeast",
+      "Norway East",
+      "West US 3",
+      "JIO India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-06-01",
+      "2018-06-01-preview",
+      "2015-03-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "North Europe",
+      "West Europe",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "Central India"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.HDInsight/clusters/privateEndpointConnections/linkIdentifier": "properties.linkIdentifier",
+      "Microsoft.HDInsight/clusters/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.HDInsight/clusters/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.HDInsight/clusters/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.HDInsight/clusters/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.HDInsight/clusters/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.HDInsight/clusters/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.HDInsight/clusters/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "clusters/privateendpointconnections"
+  }
+]

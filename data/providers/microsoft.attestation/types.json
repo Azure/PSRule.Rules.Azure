@@ -1,0 +1,124 @@
+[
+  {
+    "aliases": {
+      "Microsoft.Attestation/attestationProviders/publicNetworkAccess": "properties.publicNetworkAccess"
+    },
+    "resourceType": "attestationProviders",
+    "apiVersions": [
+      "2021-06-01-preview",
+      "2020-10-01",
+      "2018-09-01-preview",
+      "2018-09-01"
+    ],
+    "locations": [
+      "East US 2",
+      "Central US",
+      "UK South",
+      "East US",
+      "Canada Central",
+      "Canada East",
+      "UK West",
+      "West US",
+      "North Europe",
+      "West Europe",
+      "Southeast Asia",
+      "South Central US",
+      "North Central US",
+      "Australia East",
+      "Australia Southeast"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "defaultProviders",
+    "apiVersions": [
+      "2021-06-01-preview",
+      "2020-10-01",
+      "2018-09-01-preview",
+      "2018-09-01"
+    ],
+    "locations": [
+      "East US 2",
+      "Central US",
+      "UK South",
+      "East US",
+      "Canada Central",
+      "Canada East",
+      "UK West",
+      "West US",
+      "North Europe",
+      "West Europe",
+      "Southeast Asia",
+      "South Central US",
+      "North Central US",
+      "Australia East",
+      "Australia Southeast"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-06-01-preview",
+      "2020-10-01",
+      "2018-09-01-preview",
+      "2018-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/defaultProvider",
+    "apiVersions": [
+      "2021-06-01-preview",
+      "2020-10-01",
+      "2018-09-01-preview",
+      "2018-09-01"
+    ],
+    "locations": [
+      "East US 2",
+      "Central US",
+      "UK South",
+      "East US",
+      "Canada Central",
+      "Canada East",
+      "UK West",
+      "West US",
+      "North Europe",
+      "West Europe",
+      "Southeast Asia",
+      "South Central US",
+      "North Central US",
+      "Australia East",
+      "Australia Southeast"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-06-01-preview",
+      "2020-10-01",
+      "2018-09-01-preview",
+      "2018-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Attestation/attestationProviders/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.Attestation/attestationProviders/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.Attestation/attestationProviders/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.Attestation/attestationProviders/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.Attestation/attestationProviders/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.Attestation/attestationProviders/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Attestation/attestationProviders/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "attestationproviders/privateendpointconnections"
+  }
+]

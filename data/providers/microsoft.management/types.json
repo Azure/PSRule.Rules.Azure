@@ -1,0 +1,130 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2021-04-01",
+      "2020-10-01",
+      "2020-05-01",
+      "2020-02-01",
+      "2019-11-01",
+      "2018-03-01-preview",
+      "2018-03-01-beta",
+      "2018-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "getEntities",
+    "apiVersions": [
+      "2021-04-01",
+      "2020-10-01",
+      "2020-05-01",
+      "2020-02-01",
+      "2019-11-01",
+      "2018-03-01-preview",
+      "2018-03-01-beta",
+      "2018-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Management/managementGroups/children": "properties.children",
+      "Microsoft.Management/managementGroups/children[*]": "properties.children[*]",
+      "Microsoft.Management/managementGroups/children[*].childId": "properties.children[*].childId",
+      "Microsoft.Management/managementGroups/children[*].childType": "properties.children[*].childType",
+      "Microsoft.Management/managementGroups/children[*].displayName": "properties.children[*].displayName",
+      "Microsoft.Management/managementGroups/children[*].id": "properties.children[*].id",
+      "Microsoft.Management/managementGroups/children[*].name": "properties.children[*].name",
+      "Microsoft.Management/managementGroups/children[*].roles": "properties.children[*].roles",
+      "Microsoft.Management/managementGroups/children[*].roles[*]": "properties.children[*].roles[*]",
+      "Microsoft.Management/managementGroups/children[*].type": "properties.children[*].type",
+      "Microsoft.Management/managementGroups/details": "properties.details",
+      "Microsoft.Management/managementGroups/details.parent": "properties.details.parent",
+      "Microsoft.Management/managementGroups/details.parent.displayName": "properties.details.parent.displayName",
+      "Microsoft.Management/managementGroups/details.parent.id": "properties.details.parent.id",
+      "Microsoft.Management/managementGroups/details.parent.name": "properties.details.parent.name",
+      "Microsoft.Management/managementGroups/details.parent.parentId": "properties.details.parent.parentId",
+      "Microsoft.Management/managementGroups/details.updatedBy": "properties.details.updatedBy",
+      "Microsoft.Management/managementGroups/details.updatedTime": "properties.details.updatedTime",
+      "Microsoft.Management/managementGroups/details.version": "properties.details.version",
+      "Microsoft.Management/managementGroups/displayName": "properties.displayName",
+      "Microsoft.Management/managementGroups/path": "properties.path",
+      "Microsoft.Management/managementGroups/path[*]": "properties.path[*]",
+      "Microsoft.Management/managementGroups/path[*].displayName": "properties.path[*].displayName",
+      "Microsoft.Management/managementGroups/path[*].name": "properties.path[*].name",
+      "Microsoft.Management/managementGroups/roles": "properties.roles",
+      "Microsoft.Management/managementGroups/roles[*]": "properties.roles[*]",
+      "Microsoft.Management/managementGroups/tenantId": "properties.tenantId"
+    },
+    "resourceType": "managementGroups",
+    "apiVersions": [
+      "2021-04-01",
+      "2020-10-01",
+      "2020-05-01",
+      "2020-02-01",
+      "2019-11-01",
+      "2018-03-01-preview",
+      "2018-03-01-beta",
+      "2018-01-01-preview",
+      "2017-11-01-preview",
+      "2017-08-31-preview",
+      "2017-06-30-preview",
+      "2017-05-31-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationResults",
+    "apiVersions": [
+      "2021-04-01",
+      "2020-10-01",
+      "2020-05-01",
+      "2020-02-01",
+      "2019-11-01",
+      "2018-03-01-preview",
+      "2018-03-01-beta",
+      "2018-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-04-01",
+      "2020-10-01",
+      "2020-05-01",
+      "2020-02-01",
+      "2019-11-01",
+      "2018-03-01-preview",
+      "2018-03-01-beta",
+      "2018-01-01-preview",
+      "2017-11-01-preview",
+      "2017-08-31-preview",
+      "2017-06-30-preview",
+      "2017-05-31-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "resources",
+    "apiVersions": [
+      "2017-11-01-preview",
+      "2017-08-31-preview",
+      "2017-06-30-preview",
+      "2017-05-31-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

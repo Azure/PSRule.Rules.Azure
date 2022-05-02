@@ -1,0 +1,103 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "appTemplates",
+    "apiVersions": [
+      "2021-11-01-preview",
+      "2021-06-01",
+      "2018-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2021-11-01-preview",
+      "2021-06-01",
+      "2018-09-01",
+      "2017-07-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkSubdomainAvailability",
+    "apiVersions": [
+      "2021-11-01-preview",
+      "2021-06-01",
+      "2018-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.IoTCentral/IoTApps/applicationId": "properties.applicationId",
+      "Microsoft.IoTCentral/IoTApps/displayName": "properties.displayName",
+      "Microsoft.IoTCentral/IoTApps/sku": "sku",
+      "Microsoft.IoTCentral/IoTApps/sku.name": "sku.name",
+      "Microsoft.IoTCentral/IoTApps/subdomain": "properties.subdomain",
+      "Microsoft.IoTCentral/IoTApps/template": "properties.template"
+    },
+    "resourceType": "IoTApps",
+    "apiVersions": [
+      "2018-09-01",
+      "2017-07-01-privatepreview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "North Europe",
+      "Southeast Asia",
+      "South Central US",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "Asia Pacific",
+      "Australia",
+      "Europe",
+      "Japan",
+      "UK",
+      "United States"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-11-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationResults",
+    "apiVersions": [
+      "2021-11-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-11-01-preview",
+      "2021-06-01",
+      "2018-09-01",
+      "2017-07-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

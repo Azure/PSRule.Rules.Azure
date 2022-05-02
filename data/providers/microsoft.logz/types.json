@@ -1,0 +1,121 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-10-01-preview",
+      "2020-10-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-10-01-preview",
+      "2020-10-01"
+    ],
+    "locations": [
+      "Central US EUAP",
+      "East US 2 EUAP",
+      "West US 2",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-10-01-preview",
+      "2020-10-01"
+    ],
+    "locations": [
+      "West US 2",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors/accounts",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-10-01-preview",
+      "2020-10-01"
+    ],
+    "locations": [
+      "West US 2",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors/accounts/tagRules",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-10-01-preview",
+      "2020-10-01"
+    ],
+    "locations": [
+      "West US 2",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors/singleSignOnConfigurations",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-10-01-preview",
+      "2020-10-01"
+    ],
+    "locations": [
+      "West US 2",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors/tagRules",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-10-01-preview",
+      "2020-10-01"
+    ],
+    "locations": [
+      "West US 2",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-10-01-preview",
+      "2020-10-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registeredSubscriptions",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-10-01-preview",
+      "2020-10-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

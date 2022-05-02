@@ -1,0 +1,52 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "changes",
+    "apiVersions": [
+      "2021-04-01-preview",
+      "2021-04-01",
+      "2020-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "changeSnapshots",
+    "apiVersions": [
+      "2021-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "computeChanges",
+    "apiVersions": [
+      "2021-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2020-04-01-preview",
+      "2019-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "resourceChanges",
+    "apiVersions": [
+      "2021-04-01-preview",
+      "2021-04-01",
+      "2020-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

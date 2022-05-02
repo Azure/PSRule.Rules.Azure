@@ -1,0 +1,29 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "CacheNodes",
+    "apiVersions": [
+      "2021-09-15-preview",
+      "2019-12-04-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "enterpriseCustomers",
+    "apiVersions": [
+      "2021-09-15-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  }
+]

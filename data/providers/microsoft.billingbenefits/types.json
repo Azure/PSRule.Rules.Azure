@@ -1,0 +1,62 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-07-01-privatepreview",
+      "2021-07-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "savingsPlanOrderAliases",
+    "apiVersions": [
+      "2021-07-01-privatepreview",
+      "2021-07-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "savingsPlanOrders",
+    "apiVersions": [
+      "2021-07-01-privatepreview",
+      "2021-07-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "savingsPlanOrders/savingsPlans",
+    "apiVersions": [
+      "2021-07-01-privatepreview",
+      "2021-07-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "savingsPlans",
+    "apiVersions": [
+      "2021-07-01-privatepreview",
+      "2021-07-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "validate",
+    "apiVersions": [
+      "2021-07-01-privatepreview",
+      "2021-07-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

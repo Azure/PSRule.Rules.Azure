@@ -1,0 +1,20 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "monitors",
+    "apiVersions": [
+      "2020-01-13-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2020-01-13-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

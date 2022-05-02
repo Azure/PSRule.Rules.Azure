@@ -1,0 +1,202 @@
+[
+  {
+    "aliases": {
+      "Microsoft.DigitalTwins/digitalTwinsInstances/createdTime": "properties.createdTime",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/hostName": "properties.hostName",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/lastUpdatedTime": "properties.lastUpdatedTime",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections[*].groupIds": "properties.privateEndpointConnections[*].properties.groupIds",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections[*].groupIds[*]": "properties.privateEndpointConnections[*].properties.groupIds[*]",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/provisioningState": "properties.provisioningState",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/publicNetworkAccess": "properties.publicNetworkAccess",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/sku": "sku",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/sku.name": "sku.name"
+    },
+    "resourceType": "digitalTwinsInstances",
+    "apiVersions": [
+      "2021-06-30-preview",
+      "2020-12-01",
+      "2020-10-31",
+      "2020-03-01-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "North Europe",
+      "Australia East",
+      "West Europe",
+      "East US",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/accessKey1": "properties.accessKey1",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/accessKey2": "properties.accessKey2",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/authenticationType": "properties.authenticationType",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/connectionStringPrimaryKey": "properties.connectionStringPrimaryKey",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/connectionStringSecondaryKey": "properties.connectionStringSecondaryKey",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/createdTime": "properties.createdTime",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/deadLetterSecret": "properties.deadLetterSecret",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/deadLetterUri": "properties.deadLetterUri",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/endpointType": "properties.endpointType",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/endpointUri": "properties.endpointUri",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/entityPath": "properties.entityPath",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/primaryConnectionString": "properties.primaryConnectionString",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/provisioningState": "properties.provisioningState",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/secondaryConnectionString": "properties.secondaryConnectionString",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/tags": "properties.tags",
+      "Microsoft.DigitalTwins/digitalTwinsInstances/endpoints/TopicEndpoint": "properties.TopicEndpoint"
+    },
+    "resourceType": "digitalTwinsInstances/endpoints",
+    "apiVersions": [
+      "2021-06-30-preview",
+      "2020-12-01",
+      "2020-10-31",
+      "2020-03-01-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "North Europe",
+      "Australia East",
+      "West Europe",
+      "East US",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "digitalTwinsInstances/operationResults",
+    "apiVersions": [
+      "2021-06-30-preview",
+      "2020-12-01",
+      "2020-10-31",
+      "2020-03-01-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "North Europe",
+      "Australia East",
+      "West Europe",
+      "East US",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "digitalTwinsInstances/timeSeriesDatabaseConnections",
+    "apiVersions": [
+      "2021-06-30-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "North Europe",
+      "Australia East",
+      "West Europe",
+      "East US",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-06-30-preview",
+      "2020-12-01",
+      "2020-10-31",
+      "2020-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/checkNameAvailability",
+    "apiVersions": [
+      "2021-06-30-preview",
+      "2020-12-01",
+      "2020-10-31",
+      "2020-03-01-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "North Europe",
+      "Australia East",
+      "West Europe",
+      "East US",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationResults",
+    "apiVersions": [
+      "2021-06-30-preview",
+      "2020-12-01",
+      "2020-10-31",
+      "2020-03-01-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "North Europe",
+      "Australia East",
+      "West Europe",
+      "East US",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-06-30-preview",
+      "2020-12-01",
+      "2020-10-31",
+      "2020-03-01-preview"
+    ],
+    "locations": [
+      "West Central US"
+    ],
+    "zoneMappings": null
+  }
+]

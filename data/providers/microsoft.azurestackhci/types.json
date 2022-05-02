@@ -1,0 +1,167 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "clusters",
+    "apiVersions": [
+      "2022-03-01",
+      "2022-01-01",
+      "2021-09-01",
+      "2021-01-01-preview",
+      "2020-10-01"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "West Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusters/arcSettings",
+    "apiVersions": [
+      "2022-03-01",
+      "2022-01-01",
+      "2021-09-01",
+      "2021-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "West Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusters/arcSettings/extensions",
+    "apiVersions": [
+      "2022-03-01",
+      "2022-01-01",
+      "2021-09-01",
+      "2021-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "West Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "galleryimages",
+    "apiVersions": [
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-03-01",
+      "2022-01-01",
+      "2021-09-01-preview",
+      "2021-09-01",
+      "2021-07-01-preview",
+      "2021-01-01-preview",
+      "2020-11-01-preview",
+      "2020-10-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationstatuses",
+    "apiVersions": [
+      "2022-03-01",
+      "2022-01-01",
+      "2021-09-01-preview",
+      "2021-09-01",
+      "2021-07-01-preview",
+      "2021-01-01-preview",
+      "2020-10-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2 EUAP",
+      "West Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "networkinterfaces",
+    "apiVersions": [
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-03-01",
+      "2022-01-01",
+      "2021-09-01-preview",
+      "2021-09-01",
+      "2021-07-01-preview",
+      "2021-01-01-preview",
+      "2020-11-01-preview",
+      "2020-10-01",
+      "2020-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "virtualharddisks",
+    "apiVersions": [
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "virtualmachines",
+    "apiVersions": [
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "virtualnetworks",
+    "apiVersions": [
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  }
+]

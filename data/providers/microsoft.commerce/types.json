@@ -1,0 +1,33 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2015-06-01-preview",
+      "2015-03-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "RateCard",
+    "apiVersions": [
+      "2016-08-31-preview",
+      "2015-06-01-preview",
+      "2015-05-15"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "UsageAggregates",
+    "apiVersions": [
+      "2015-06-01-preview",
+      "2015-03-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2020-06-05-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationstatuses",
+    "apiVersions": [
+      "2020-06-05-preview"
+    ],
+    "locations": [
+      "East US",
+      "West US 2",
+      "East US 2 EUAP",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2020-06-05-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

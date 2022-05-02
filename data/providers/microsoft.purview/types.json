@@ -1,0 +1,210 @@
+[
+  {
+    "aliases": {
+      "Microsoft.Purview/accounts/cloudConnectors": "properties.cloudConnectors",
+      "Microsoft.Purview/accounts/cloudConnectors.awsExternalId": "properties.cloudConnectors.awsExternalId",
+      "Microsoft.Purview/accounts/createdAt": "properties.createdAt",
+      "Microsoft.Purview/accounts/createdBy": "properties.createdBy",
+      "Microsoft.Purview/accounts/createdByObjectId": "properties.createdByObjectId",
+      "Microsoft.Purview/accounts/endpoints": "properties.endpoints",
+      "Microsoft.Purview/accounts/endpoints.catalog": "properties.endpoints.catalog",
+      "Microsoft.Purview/accounts/endpoints.guardian": "properties.endpoints.guardian",
+      "Microsoft.Purview/accounts/endpoints.scan": "properties.endpoints.scan",
+      "Microsoft.Purview/accounts/friendlyName": "properties.friendlyName",
+      "Microsoft.Purview/accounts/managedResources": "properties.managedResources",
+      "Microsoft.Purview/accounts/managedResources.eventHubNamespace": "properties.managedResources.eventHubNamespace",
+      "Microsoft.Purview/accounts/managedResources.resourceGroup": "properties.managedResources.resourceGroup",
+      "Microsoft.Purview/accounts/managedResources.storageAccount": "properties.managedResources.storageAccount",
+      "Microsoft.Purview/accounts/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.Purview/accounts/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.Purview/accounts/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.Purview/accounts/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
+      "Microsoft.Purview/accounts/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.Purview/accounts/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.Purview/accounts/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.Purview/accounts/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.Purview/accounts/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.Purview/accounts/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Purview/accounts/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.Purview/accounts/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
+      "Microsoft.Purview/accounts/provisioningState": "properties.provisioningState",
+      "Microsoft.Purview/accounts/publicNetworkAccess": "properties.publicNetworkAccess",
+      "Microsoft.Purview/accounts/sku": "sku",
+      "Microsoft.Purview/accounts/sku.capacity": "sku.capacity",
+      "Microsoft.Purview/accounts/sku.name": "sku.name"
+    },
+    "resourceType": "accounts",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-07-01",
+      "2020-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "Southeast Asia",
+      "Canada Central",
+      "South Central US",
+      "Brazil South",
+      "Central India",
+      "UK South",
+      "France Central",
+      "Korea Central",
+      "UAE North",
+      "Japan East",
+      "Australia East",
+      "North Europe",
+      "West Central US",
+      "West US 2",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/kafkaConfigurations",
+    "apiVersions": [
+      "2021-12-01"
+    ],
+    "locations": [
+      "Korea Central",
+      "UAE North",
+      "Japan East"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-07-01",
+      "2020-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "getDefaultAccount",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-07-01",
+      "2020-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-07-01",
+      "2020-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationResults",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-07-01",
+      "2020-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "Southeast Asia",
+      "Brazil South",
+      "Canada Central",
+      "South Central US",
+      "Central India",
+      "UK South",
+      "France Central",
+      "Korea Central",
+      "UAE North",
+      "Japan East",
+      "Australia East",
+      "North Europe",
+      "West Central US",
+      "West US 2",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/usages",
+    "apiVersions": [
+      "2021-12-01"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "Southeast Asia",
+      "Canada Central",
+      "South Central US",
+      "Brazil South",
+      "Central India",
+      "UK South",
+      "France Central",
+      "Korea Central",
+      "UAE North",
+      "Japan East",
+      "Australia East",
+      "North Europe",
+      "West Central US",
+      "West US 2",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-07-01",
+      "2020-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "removeDefaultAccount",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-07-01",
+      "2020-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "setDefaultAccount",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-07-01",
+      "2020-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Purview/accounts/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.Purview/accounts/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.Purview/accounts/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.Purview/accounts/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.Purview/accounts/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.Purview/accounts/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Purview/accounts/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "accounts/privateendpointconnections"
+  }
+]

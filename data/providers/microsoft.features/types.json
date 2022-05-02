@@ -1,0 +1,77 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "featureConfigurations",
+    "apiVersions": [
+      "2021-07-01",
+      "2020-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "featureProviderNamespaces",
+    "apiVersions": [
+      "2021-07-01",
+      "2020-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "featureProviders",
+    "apiVersions": [
+      "2021-07-01",
+      "2020-09-01",
+      "2020-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "features",
+    "apiVersions": [
+      "2021-07-01",
+      "2015-12-01",
+      "2014-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-07-01",
+      "2015-12-01",
+      "2014-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "providers",
+    "apiVersions": [
+      "2021-07-01",
+      "2015-12-01",
+      "2014-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "subscriptionFeatureRegistrations",
+    "apiVersions": [
+      "2021-07-01",
+      "2020-09-01",
+      "2020-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

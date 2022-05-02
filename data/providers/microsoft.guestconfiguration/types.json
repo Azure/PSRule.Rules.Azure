@@ -1,0 +1,59 @@
+[
+  {
+    "aliases": {
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/assignmentHash": "properties.assignmentHash",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceReason": "properties.complianceReason",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus": "properties.complianceStatus",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/contentHash": "properties.guestConfiguration.contentHash",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/context": "properties.context",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration": "properties.guestConfiguration",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationParameter": "properties.guestConfiguration.configurationParameter",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationParameter.value": "properties.guestConfiguration.configurationParameter.value",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationParameter.value[*]": "properties.guestConfiguration.configurationParameter.value[*]",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationParameter.value[*].name": "properties.guestConfiguration.configurationParameter.value[*].name",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationParameter.value[*].value": "properties.guestConfiguration.configurationParameter.value[*].value",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationParameter[*]": "properties.guestConfiguration.configurationParameter[*]",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationParameter[*].name": "properties.guestConfiguration.configurationParameter[*].name",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationParameter[*].value": "properties.guestConfiguration.configurationParameter[*].value",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationSetting": "properties.guestConfiguration.configurationSetting",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationSetting.actionAfterReboot": "properties.guestConfiguration.configurationSetting.actionAfterReboot",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationSetting.allowModuleOverwrite": "properties.guestConfiguration.configurationSetting.allowModuleOverwrite",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationSetting.configurationMode": "properties.guestConfiguration.configurationSetting.configurationMode",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationSetting.configurationModeFrequencyMins": "properties.guestConfiguration.configurationSetting.configurationModeFrequencyMins",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationSetting.rebootIfNeeded": "properties.guestConfiguration.configurationSetting.rebootIfNeeded",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.configurationSetting.refreshFrequencyMins": "properties.guestConfiguration.configurationSetting.refreshFrequencyMins",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.contentHash": "properties.guestConfiguration.contentHash",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.contentUri": "properties.guestConfiguration.contentUri",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.kind": "properties.guestConfiguration.kind",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.name": "properties.guestConfiguration.name",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.type": "properties.guestConfiguration.type",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/guestConfiguration.version": "properties.guestConfiguration.version",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/lastComplianceStatusChecked": "properties.lastComplianceStatusChecked",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/latestReportId": "properties.latestReportId",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/location": "properties.location",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/parameterHash": "properties.parameterHash",
+      "Microsoft.GuestConfiguration/guestConfigurationAssignments/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "guestConfigurationAssignments",
+    "apiVersions": [
+      "2020-06-25",
+      "2018-11-20",
+      "2018-06-30-preview",
+      "2018-01-20-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2020-06-25",
+      "2018-11-20",
+      "2018-06-30-preview",
+      "2018-01-20-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

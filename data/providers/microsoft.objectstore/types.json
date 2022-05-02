@@ -1,0 +1,14 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "osNamespaces",
+    "apiVersions": [
+      "2021-09-01-preview",
+      "2019-06-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  }
+]

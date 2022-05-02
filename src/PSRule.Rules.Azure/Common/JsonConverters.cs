@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -7,7 +7,6 @@ using System.IO;
 using System.Management.Automation;
 using Newtonsoft.Json;
 using PSRule.Rules.Azure.Data.Policy;
-using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
 
@@ -224,113 +223,6 @@ namespace PSRule.Rules.Azure
         }
     }
 
-    internal sealed class PolicyAliasProviderConverter : JsonConverter
-    {
-        public override bool CanRead => true;
-
-        public override bool CanWrite => false;
-
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(PolicyAliasProvider);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            var aliasProvider = existingValue as PolicyAliasProvider ?? new PolicyAliasProvider();
-            ReadAliasProvider(aliasProvider, reader);
-            return aliasProvider;
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void ReadAliasProvider(PolicyAliasProvider aliasProvider, JsonReader reader)
-        {
-            if (reader.TokenType != JsonToken.StartObject)
-                throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
-
-            string providerName = null;
-
-            reader.Read();
-            while (reader.TokenType != JsonToken.EndObject)
-            {
-                switch (reader.TokenType)
-                {
-                    case JsonToken.PropertyName:
-                        providerName = reader.Value.ToString();
-                        break;
-
-                    case JsonToken.StartObject:
-                        var resourceType = ReadAliasResourceType(reader);
-                        aliasProvider.Providers.Add(providerName, resourceType);
-                        break;
-                }
-                reader.Read();
-            }
-        }
-
-        private static PolicyAliasResourceType ReadAliasResourceType(JsonReader reader)
-        {
-            if (reader.TokenType != JsonToken.StartObject)
-                throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
-
-            var aliasResourceType = new PolicyAliasResourceType();
-
-            string resourceType = null;
-
-            reader.Read();
-            while (reader.TokenType != JsonToken.EndObject)
-            {
-                switch (reader.TokenType)
-                {
-                    case JsonToken.PropertyName:
-                        resourceType = reader.Value.ToString();
-                        break;
-
-                    case JsonToken.StartObject:
-                        var aliasMapping = ReadAliasMapping(reader);
-                        aliasResourceType.ResourceTypes.Add(resourceType, aliasMapping);
-                        break;
-                }
-                reader.Read();
-            }
-
-            return aliasResourceType;
-        }
-
-        private static PolicyAliasMapping ReadAliasMapping(JsonReader reader)
-        {
-            if (reader.TokenType != JsonToken.StartObject)
-                throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
-
-            var aliasMapping = new PolicyAliasMapping();
-
-            string aliasName = null;
-
-            reader.Read();
-            while (reader.TokenType != JsonToken.EndObject)
-            {
-                switch (reader.TokenType)
-                {
-                    case JsonToken.PropertyName:
-                        aliasName = reader.Value.ToString();
-                        break;
-
-                    case JsonToken.String:
-                        var aliasPath = reader.Value.ToString();
-                        aliasMapping.AliasMappings.Add(aliasName, aliasPath);
-                        break;
-                }
-                reader.Read();
-            }
-
-            return aliasMapping;
-        }
-    }
-
     internal sealed class PolicyDefinitionConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
@@ -350,118 +242,6 @@ namespace PSRule.Rules.Azure
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             throw new NotImplementedException();
-        }
-    }
-
-    internal sealed class ResourceProviderConverter : JsonConverter
-    {
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(ResourceProvider) || objectType == typeof(Dictionary<string, ResourceProvider>);
-        }
-
-        public override bool CanRead => true;
-
-        public override bool CanWrite => false;
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            if (objectType == typeof(ResourceProvider))
-            {
-                var resultObject = existingValue as ResourceProvider ?? new ResourceProvider();
-                ReadObject(resultObject, reader, serializer);
-                return resultObject;
-            }
-
-            var resultDictionary = existingValue as Dictionary<string, ResourceProvider> ?? new Dictionary<string, ResourceProvider>(StringComparer.OrdinalIgnoreCase);
-            ReadDictionary(resultDictionary, reader, serializer);
-            return resultDictionary;
-        }
-
-        private static void ReadObject(ResourceProvider value, JsonReader reader, JsonSerializer serializer)
-        {
-            if (reader.TokenType != JsonToken.StartObject)
-                throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
-
-            reader.Read();
-            string name = null;
-
-            // Read each token
-            while (reader.TokenType != JsonToken.EndObject)
-            {
-                switch (reader.TokenType)
-                {
-                    case JsonToken.PropertyName:
-                        name = reader.Value.ToString();
-                        break;
-
-                    case JsonToken.StartObject:
-                        if (name == "types")
-                        {
-                            ReadType(value, reader, serializer);
-                        }
-                        break;
-                }
-                reader.Read();
-            }
-        }
-
-        private static void ReadType(ResourceProvider value, JsonReader reader, JsonSerializer serializer)
-        {
-            if (reader.TokenType != JsonToken.StartObject)
-                throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
-
-            reader.Read();
-            string name = null;
-
-            // Read each token
-            while (reader.TokenType != JsonToken.EndObject)
-            {
-                switch (reader.TokenType)
-                {
-                    case JsonToken.PropertyName:
-                        name = reader.Value.ToString();
-                        break;
-
-                    case JsonToken.StartObject:
-                        var resourceType = serializer.Deserialize<ResourceProviderType>(reader);
-                        value.Types.Add(name, resourceType);
-                        break;
-                }
-                reader.Read();
-            }
-        }
-
-        private static void ReadDictionary(Dictionary<string, ResourceProvider> value, JsonReader reader, JsonSerializer serializer)
-        {
-            if (reader.TokenType != JsonToken.StartObject)
-                throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
-
-            reader.Read();
-            string name = null;
-
-            // Read each token
-            while (reader.TokenType != JsonToken.EndObject)
-            {
-                switch (reader.TokenType)
-                {
-                    case JsonToken.PropertyName:
-                        name = reader.Value.ToString();
-                        break;
-
-                    case JsonToken.StartObject:
-                        var provider = new ResourceProvider();
-                        ReadObject(provider, reader, serializer);
-                        value.Add(name, provider);
-                        break;
-                }
-                reader.Read();
-            }
         }
     }
 }

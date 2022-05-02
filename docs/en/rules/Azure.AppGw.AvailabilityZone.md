@@ -26,7 +26,7 @@ This rule applies when analyzing resources deployed to Azure using *pre-flight* 
 
 This rule fails when `"zones"` is `null`, `[]` or not set when the Application gateway is deployed with V2 SKU(Standard_v2, WAF_v2) and there are supported availability zones for the given region.
 
-Configure `AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json) for namespace `Microsoft.Network` and resource type `applicationGateways`.
+Configure `AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/) for namespace `Microsoft.Network` and resource type `applicationGateways`.
 
 ```yaml
 # YAML: The default AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option

@@ -10,6 +10,8 @@ dist/
 BenchmarkDotNet.Artifacts/
 results/
 .venv/
+data/types_index.json
 *.zip
 *.diagsession
 *.log
+*.min.json

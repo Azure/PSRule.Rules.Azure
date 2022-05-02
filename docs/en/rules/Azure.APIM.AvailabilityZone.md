@@ -27,7 +27,7 @@ This rule applies when analyzing resources deployed to Azure using *pre-flight* 
 
 This rule fails when `"zones"` is `null`, `[]` or less than two zones when API management service is deployed with Premium SKU and there are supported availability zones for the given region.
 
-Configure `AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json) for namespace `Microsoft.ApiManagement` and resource type `services`.
+Configure `AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/) for namespace `Microsoft.ApiManagement` and resource type `services`.
 
 ```yaml
 # YAML: The default AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option

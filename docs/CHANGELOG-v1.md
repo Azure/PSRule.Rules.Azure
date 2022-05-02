@@ -14,6 +14,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.15.0-B0022:
+
+- Engineering:
+  - Embedded provider and alias information as manifest resources. [#1383](https://github.com/Azure/PSRule.Rules.Azure/issues/1383)
+    - Resources are minified and compressed to improve size and speed.
+
 ## v1.15.0-B0022 (pre-release)
 
 What's changed since v1.14.3:

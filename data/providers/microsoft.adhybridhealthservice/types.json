@@ -1,0 +1,112 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "aadsupportcases",
+    "apiVersions": [
+      "2014-01-01"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "addsservices",
+    "apiVersions": [
+      "2014-01-01"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "agents",
+    "apiVersions": [
+      "2014-01-01"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "anonymousapiusers",
+    "apiVersions": [
+      "2014-01-01"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "configuration",
+    "apiVersions": [
+      "2014-01-01"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "logs",
+    "apiVersions": [
+      "2014-01-01"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2014-01-01"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "reports",
+    "apiVersions": [
+      "2014-01-01"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "servicehealthmetrics",
+    "apiVersions": [
+      "2014-01-01"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "services",
+    "apiVersions": [
+      "2014-01-01"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  }
+]

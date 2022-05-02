@@ -1,0 +1,82 @@
+[
+  {
+    "aliases": {
+      "Microsoft.CustomProviders/associations/provisioningState": "properties.provisioningState",
+      "Microsoft.CustomProviders/associations/targetResourceId": "properties.targetResourceId"
+    },
+    "resourceType": "associations",
+    "apiVersions": [
+      "2018-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2018-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "East US",
+      "West US 2",
+      "West Europe",
+      "North Europe",
+      "Canada Central",
+      "Canada East"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2018-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.CustomProviders/resourceProviders/actions": "properties.actions",
+      "Microsoft.CustomProviders/resourceProviders/actions[*]": "properties.actions[*]",
+      "Microsoft.CustomProviders/resourceProviders/actions[*].endpoint": "properties.actions[*].endpoint",
+      "Microsoft.CustomProviders/resourceProviders/actions[*].name": "properties.actions[*].name",
+      "Microsoft.CustomProviders/resourceProviders/actions[*].routingType": "properties.actions[*].routingType",
+      "Microsoft.CustomProviders/resourceProviders/provisioningState": "properties.provisioningState",
+      "Microsoft.CustomProviders/resourceProviders/resourceTypes": "properties.resourceTypes",
+      "Microsoft.CustomProviders/resourceProviders/resourceTypes[*]": "properties.resourceTypes[*]",
+      "Microsoft.CustomProviders/resourceProviders/resourceTypes[*].routingType": "properties.resourceTypes[*].routingType",
+      "Microsoft.CustomProviders/resourceProviders/validations": "properties.validations",
+      "Microsoft.CustomProviders/resourceProviders/validations[*]": "properties.validations[*]",
+      "Microsoft.CustomProviders/resourceProviders/validations[*].specification": "properties.validations[*].specification",
+      "Microsoft.CustomProviders/resourceProviders/validations[*].validationType": "properties.validations[*].validationType"
+    },
+    "resourceType": "resourceProviders",
+    "apiVersions": [
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "East US",
+      "West US 2",
+      "West Europe",
+      "North Europe",
+      "Canada Central",
+      "Canada East"
+    ],
+    "zoneMappings": null
+  }
+]

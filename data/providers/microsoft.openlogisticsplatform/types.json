@@ -1,0 +1,87 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "applicationRegistrationInvites",
+    "apiVersions": [
+      "2021-06-24-preview",
+      "2020-06-23-preview"
+    ],
+    "locations": [
+      "East US 2 EUAP",
+      "Central US EUAP",
+      "West Central US",
+      "East US 2",
+      "North Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-06-24-preview",
+      "2020-06-23-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-06-24-preview",
+      "2020-06-23-preview"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/OperationStatuses",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-06-24-preview",
+      "2020-06-23-preview"
+    ],
+    "locations": [
+      "Central US EUAP",
+      "East US 2 EUAP",
+      "West Central US",
+      "East US 2",
+      "North Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-06-24-preview",
+      "2020-06-23-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "shareInvites",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-06-24-preview",
+      "2020-06-23-preview"
+    ],
+    "locations": [
+      "East US 2 EUAP",
+      "Central US EUAP",
+      "West Central US",
+      "East US 2",
+      "North Central US"
+    ],
+    "zoneMappings": null
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2021-03-01-privatepreview",
+      "2020-07-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2021-03-01-privatepreview",
+      "2020-07-01-privatepreview"
+    ],
+    "locations": [
+      "West Central US",
+      "East US 2 EUAP"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2021-03-01-privatepreview",
+      "2020-07-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

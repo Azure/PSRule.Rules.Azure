@@ -1,0 +1,73 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "cloudManifestFiles",
+    "apiVersions": [
+      "2017-06-01"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "linkedSubscriptions",
+    "apiVersions": [
+      "2020-06-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2017-06-01"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registrations",
+    "apiVersions": [
+      "2021-05-01-preview",
+      "2020-06-01-preview",
+      "2017-06-01"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registrations/customerSubscriptions",
+    "apiVersions": [
+      "2017-06-01"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registrations/products",
+    "apiVersions": [
+      "2017-06-01",
+      "2016-01-01"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": null
+  }
+]

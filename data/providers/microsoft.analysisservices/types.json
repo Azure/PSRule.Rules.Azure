@@ -1,0 +1,180 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2017-08-01-beta",
+      "2017-08-01",
+      "2017-07-14",
+      "2016-05-16"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/checkNameAvailability",
+    "apiVersions": [
+      "2017-08-01-beta",
+      "2017-08-01",
+      "2017-07-14",
+      "2016-05-16"
+    ],
+    "locations": [
+      "West US",
+      "North Europe",
+      "South Central US",
+      "West Europe",
+      "West Central US",
+      "Southeast Asia",
+      "East US 2",
+      "North Central US",
+      "Brazil South",
+      "Canada Central",
+      "Australia Southeast",
+      "Japan East",
+      "UK South",
+      "West India",
+      "West US 2",
+      "Central US",
+      "East US",
+      "Australia East"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationresults",
+    "apiVersions": [
+      "2017-08-01-beta",
+      "2017-08-01",
+      "2017-07-14",
+      "2016-05-16"
+    ],
+    "locations": [
+      "West US",
+      "North Europe",
+      "South Central US",
+      "West Europe",
+      "West Central US",
+      "Southeast Asia",
+      "East US 2",
+      "North Central US",
+      "Brazil South",
+      "Canada Central",
+      "Australia Southeast",
+      "Japan East",
+      "UK South",
+      "West India",
+      "West US 2",
+      "Central US",
+      "East US",
+      "Australia East"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationstatuses",
+    "apiVersions": [
+      "2017-08-01-beta",
+      "2017-08-01",
+      "2017-07-14",
+      "2016-05-16"
+    ],
+    "locations": [
+      "West US",
+      "North Europe",
+      "South Central US",
+      "West Europe",
+      "West Central US",
+      "Southeast Asia",
+      "East US 2",
+      "North Central US",
+      "Brazil South",
+      "Canada Central",
+      "Australia Southeast",
+      "Japan East",
+      "UK South",
+      "West India",
+      "West US 2",
+      "Central US",
+      "East US",
+      "Australia East"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2017-08-01-beta",
+      "2017-08-01",
+      "2017-07-14",
+      "2016-05-16"
+    ],
+    "locations": [
+      "East US 2",
+      "West Central US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.AnalysisServices/servers/asAdministrators": "properties.asAdministrators",
+      "Microsoft.AnalysisServices/servers/asAdministrators.members": "properties.asAdministrators.members",
+      "Microsoft.AnalysisServices/servers/asAdministrators.members[*]": "properties.asAdministrators.members[*]",
+      "Microsoft.AnalysisServices/servers/backupBlobContainerUri": "properties.backupBlobContainerUri",
+      "Microsoft.AnalysisServices/servers/gatewayDetails": "properties.gatewayDetails",
+      "Microsoft.AnalysisServices/servers/gatewayDetails.dmtsClusterUri": "properties.gatewayDetails.dmtsClusterUri",
+      "Microsoft.AnalysisServices/servers/gatewayDetails.gatewayObjectId": "properties.gatewayDetails.gatewayObjectId",
+      "Microsoft.AnalysisServices/servers/gatewayDetails.gatewayResourceId": "properties.gatewayDetails.gatewayResourceId",
+      "Microsoft.AnalysisServices/servers/ipV4FirewallSettings": "properties.ipV4FirewallSettings",
+      "Microsoft.AnalysisServices/servers/ipV4FirewallSettings.enablePowerBIService": "properties.ipV4FirewallSettings.enablePowerBIService",
+      "Microsoft.AnalysisServices/servers/ipV4FirewallSettings.firewallRules": "properties.ipV4FirewallSettings.firewallRules",
+      "Microsoft.AnalysisServices/servers/ipV4FirewallSettings.firewallRules[*]": "properties.ipV4FirewallSettings.firewallRules[*]",
+      "Microsoft.AnalysisServices/servers/ipV4FirewallSettings.firewallRules[*].firewallRuleName": "properties.ipV4FirewallSettings.firewallRules[*].firewallRuleName",
+      "Microsoft.AnalysisServices/servers/ipV4FirewallSettings.firewallRules[*].rangeEnd": "properties.ipV4FirewallSettings.firewallRules[*].rangeEnd",
+      "Microsoft.AnalysisServices/servers/ipV4FirewallSettings.firewallRules[*].rangeStart": "properties.ipV4FirewallSettings.firewallRules[*].rangeStart",
+      "Microsoft.AnalysisServices/servers/managedMode": "properties.managedMode",
+      "Microsoft.AnalysisServices/servers/provisioningState": "properties.provisioningState",
+      "Microsoft.AnalysisServices/servers/querypoolConnectionMode": "properties.querypoolConnectionMode",
+      "Microsoft.AnalysisServices/servers/serverFullName": "properties.serverFullName",
+      "Microsoft.AnalysisServices/servers/serverMonitorMode": "properties.serverMonitorMode",
+      "Microsoft.AnalysisServices/servers/sku": "sku",
+      "Microsoft.AnalysisServices/servers/sku.capacity": "sku.capacity",
+      "Microsoft.AnalysisServices/servers/sku.name": "sku.name",
+      "Microsoft.AnalysisServices/servers/sku.tier": "sku.tier",
+      "Microsoft.AnalysisServices/servers/state": "properties.state"
+    },
+    "resourceType": "servers",
+    "apiVersions": [
+      "2017-08-01-beta",
+      "2017-08-01",
+      "2017-07-14",
+      "2016-05-16"
+    ],
+    "locations": [
+      "West US",
+      "North Europe",
+      "South Central US",
+      "West Europe",
+      "West Central US",
+      "Southeast Asia",
+      "East US 2",
+      "North Central US",
+      "Brazil South",
+      "Canada Central",
+      "Australia Southeast",
+      "Japan East",
+      "UK South",
+      "West India",
+      "West US 2",
+      "Central US",
+      "East US",
+      "Australia East"
+    ],
+    "zoneMappings": null
+  }
+]

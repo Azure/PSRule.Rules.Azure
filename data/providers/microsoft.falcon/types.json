@@ -1,0 +1,13 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "namespaces",
+    "apiVersions": [
+      "2020-01-20-preview"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  }
+]

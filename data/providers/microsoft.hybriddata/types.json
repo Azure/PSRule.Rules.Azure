@@ -1,0 +1,32 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "dataManagers",
+    "apiVersions": [
+      "2021-05-01",
+      "2019-06-01",
+      "2016-06-01"
+    ],
+    "locations": [
+      "West US",
+      "North Europe",
+      "West Europe",
+      "East US",
+      "West US 2",
+      "West Central US",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-05-01",
+      "2019-06-01",
+      "2016-06-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

@@ -1,0 +1,179 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "diskPools",
+    "apiVersions": [
+      "2021-08-01",
+      "2021-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Canada Central",
+      "West Europe",
+      "West US 2",
+      "Australia East",
+      "Central US",
+      "Japan East",
+      "North Europe",
+      "UK South",
+      "Southeast Asia",
+      "South Central US",
+      "Central India",
+      "East US 2",
+      "Korea Central",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "diskPools/iscsiTargets",
+    "apiVersions": [
+      "2021-08-01",
+      "2021-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Canada Central",
+      "West Europe",
+      "West US 2",
+      "Australia East",
+      "Central US",
+      "Japan East",
+      "North Europe",
+      "UK South",
+      "Southeast Asia",
+      "South Central US",
+      "Central India",
+      "East US 2",
+      "Korea Central",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-08-01",
+      "2021-04-01-preview",
+      "2020-03-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/diskPoolZones",
+    "apiVersions": [
+      "2021-08-01",
+      "2021-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Canada Central",
+      "West Europe",
+      "West US 2",
+      "Australia East",
+      "Central US",
+      "Japan East",
+      "North Europe",
+      "UK South",
+      "Southeast Asia",
+      "South Central US",
+      "Central India",
+      "East US 2",
+      "Korea Central",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationResults",
+    "apiVersions": [
+      "2021-08-01",
+      "2021-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Canada Central",
+      "West Europe",
+      "West US 2",
+      "Australia East",
+      "Central US",
+      "Japan East",
+      "North Europe",
+      "UK South",
+      "Southeast Asia",
+      "South Central US",
+      "Central India",
+      "East US 2",
+      "Korea Central",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationsStatus",
+    "apiVersions": [
+      "2021-08-01",
+      "2021-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Canada Central",
+      "West Europe",
+      "West US 2",
+      "Australia East",
+      "Central US",
+      "Japan East",
+      "North Europe",
+      "UK South",
+      "Southeast Asia",
+      "South Central US",
+      "Central India",
+      "East US 2",
+      "Korea Central",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/skus",
+    "apiVersions": [
+      "2021-08-01"
+    ],
+    "locations": [
+      "East US",
+      "Canada Central",
+      "West Europe",
+      "West US 2",
+      "Australia East",
+      "Central US",
+      "Japan East",
+      "North Europe",
+      "UK South",
+      "Southeast Asia",
+      "South Central US",
+      "Central India",
+      "East US 2",
+      "Korea Central",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-08-01",
+      "2021-04-01-preview",
+      "2020-03-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

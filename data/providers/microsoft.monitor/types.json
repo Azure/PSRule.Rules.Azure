@@ -1,0 +1,23 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-06-01-preview"
+    ],
+    "locations": [
+      "North Central US",
+      "East US",
+      "Australia Central",
+      "Brazil South",
+      "Central US",
+      "East US 2",
+      "South Central US",
+      "Southeast Asia",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  }
+]

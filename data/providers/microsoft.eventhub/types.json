@@ -1,0 +1,505 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "availableClusterRegions",
+    "apiVersions": [
+      "2018-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNamespaceAvailability",
+    "apiVersions": [
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.EventHub/clusters/created": "properties.created",
+      "Microsoft.EventHub/clusters/createdAt": "properties.createdAt",
+      "Microsoft.EventHub/clusters/metricId": "properties.metricId",
+      "Microsoft.EventHub/clusters/sku": "sku",
+      "Microsoft.EventHub/clusters/sku.capacity": "sku.capacity",
+      "Microsoft.EventHub/clusters/sku.name": "sku.name",
+      "Microsoft.EventHub/clusters/status": "properties.status",
+      "Microsoft.EventHub/clusters/updated": "properties.updated",
+      "Microsoft.EventHub/clusters/updatedAt": "properties.updatedAt"
+    },
+    "resourceType": "clusters",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2018-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "West US 2",
+      "North Central US",
+      "South Central US",
+      "West Central US",
+      "East Asia",
+      "Southeast Asia",
+      "Brazil South",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "Central India",
+      "South India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "UK West",
+      "UK South",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "South Africa North",
+      "Australia Central",
+      "UAE North",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2018-01-01-preview",
+      "2017-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/deleteVirtualNetworkOrSubnets",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.EventHub/namespaces/alternateName": "properties.alternateName",
+      "Microsoft.EventHub/namespaces/archiveDescription": "properties.archiveDescription",
+      "Microsoft.EventHub/namespaces/archiveDescription.destination": "properties.archiveDescription.destination",
+      "Microsoft.EventHub/namespaces/archiveDescription.destination.archiveNameFormat": "properties.archiveDescription.destination.properties.archiveNameFormat",
+      "Microsoft.EventHub/namespaces/archiveDescription.destination.blobContainer": "properties.archiveDescription.destination.properties.blobContainer",
+      "Microsoft.EventHub/namespaces/archiveDescription.destination.name": "properties.archiveDescription.destination.name",
+      "Microsoft.EventHub/namespaces/archiveDescription.destination.storageAccountResourceId": "properties.archiveDescription.destination.properties.storageAccountResourceId",
+      "Microsoft.EventHub/namespaces/archiveDescription.enabled": "properties.archiveDescription.enabled",
+      "Microsoft.EventHub/namespaces/archiveDescription.encoding": "properties.archiveDescription.encoding",
+      "Microsoft.EventHub/namespaces/archiveDescription.intervalInSeconds": "properties.archiveDescription.intervalInSeconds",
+      "Microsoft.EventHub/namespaces/archiveDescription.sizeLimitInBytes": "properties.archiveDescription.sizeLimitInBytes",
+      "Microsoft.EventHub/namespaces/captureDescription": "properties.captureDescription",
+      "Microsoft.EventHub/namespaces/captureDescription.destination": "properties.captureDescription.destination",
+      "Microsoft.EventHub/namespaces/captureDescription.destination.archiveNameFormat": "properties.captureDescription.destination.properties.archiveNameFormat",
+      "Microsoft.EventHub/namespaces/captureDescription.destination.blobContainer": "properties.captureDescription.destination.properties.blobContainer",
+      "Microsoft.EventHub/namespaces/captureDescription.destination.name": "properties.captureDescription.destination.name",
+      "Microsoft.EventHub/namespaces/captureDescription.destination.storageAccountResourceId": "properties.captureDescription.destination.properties.storageAccountResourceId",
+      "Microsoft.EventHub/namespaces/captureDescription.enabled": "properties.captureDescription.enabled",
+      "Microsoft.EventHub/namespaces/captureDescription.encoding": "properties.captureDescription.encoding",
+      "Microsoft.EventHub/namespaces/captureDescription.intervalInSeconds": "properties.captureDescription.intervalInSeconds",
+      "Microsoft.EventHub/namespaces/captureDescription.sizeLimitInBytes": "properties.captureDescription.sizeLimitInBytes",
+      "Microsoft.EventHub/namespaces/clusterArmId": "properties.clusterArmId",
+      "Microsoft.EventHub/namespaces/createdAt": "properties.createdAt",
+      "Microsoft.EventHub/namespaces/critical": "properties.critical",
+      "Microsoft.EventHub/namespaces/disableLocalAuth": "properties.disableLocalAuth",
+      "Microsoft.EventHub/namespaces/enabled": "properties.enabled",
+      "Microsoft.EventHub/namespaces/encryption": "properties.encryption",
+      "Microsoft.EventHub/namespaces/encryption.keySource": "properties.encryption.keySource",
+      "Microsoft.EventHub/namespaces/encryption.keyVaultProperties": "properties.encryption.keyVaultProperties",
+      "Microsoft.EventHub/namespaces/encryption.keyVaultProperties.keyName": "properties.encryption.keyVaultProperties.keyName",
+      "Microsoft.EventHub/namespaces/encryption.keyVaultProperties.keyVaultUri": "properties.encryption.keyVaultProperties.keyVaultUri",
+      "Microsoft.EventHub/namespaces/encryption.keyVaultProperties[*]": "properties.encryption.keyVaultProperties[*]",
+      "Microsoft.EventHub/namespaces/encryption.keyVaultProperties[*].identity": "properties.encryption.keyVaultProperties[*].identity",
+      "Microsoft.EventHub/namespaces/encryption.keyVaultProperties[*].identity.userAssignedIdentity": "properties.encryption.keyVaultProperties[*].identity.userAssignedIdentity",
+      "Microsoft.EventHub/namespaces/encryption.keyVaultProperties[*].keyName": "properties.encryption.keyVaultProperties[*].keyName",
+      "Microsoft.EventHub/namespaces/encryption.keyVaultProperties[*].keyVaultUri": "properties.encryption.keyVaultProperties[*].keyVaultUri",
+      "Microsoft.EventHub/namespaces/encryption.keyVaultProperties[*].keyVersion": "properties.encryption.keyVaultProperties[*].keyVersion",
+      "Microsoft.EventHub/namespaces/encryption.requireInfrastructureEncryption": "properties.encryption.requireInfrastructureEncryption",
+      "Microsoft.EventHub/namespaces/eventHubEnabled": "properties.eventHubEnabled",
+      "Microsoft.EventHub/namespaces/identity": "properties.identity",
+      "Microsoft.EventHub/namespaces/identity.principalId": "properties.identity.principalId",
+      "Microsoft.EventHub/namespaces/identity.tenantId": "properties.identity.tenantId",
+      "Microsoft.EventHub/namespaces/identity.type": "properties.identity.type",
+      "Microsoft.EventHub/namespaces/isAutoInflateEnabled": "properties.isAutoInflateEnabled",
+      "Microsoft.EventHub/namespaces/kafkaEnabled": "properties.kafkaEnabled",
+      "Microsoft.EventHub/namespaces/maximumThroughputUnits": "properties.maximumThroughputUnits",
+      "Microsoft.EventHub/namespaces/messageRetentionInDays": "properties.messageRetentionInDays",
+      "Microsoft.EventHub/namespaces/messagingSku": "properties.messagingSku",
+      "Microsoft.EventHub/namespaces/messagingSkuPlan": "properties.messagingSkuPlan",
+      "Microsoft.EventHub/namespaces/messagingSkuPlan.isAutoInflateEnabled": "properties.messagingSkuPlan.isAutoInflateEnabled",
+      "Microsoft.EventHub/namespaces/messagingSkuPlan.maximumThroughputUnits": "properties.messagingSkuPlan.maximumThroughputUnits",
+      "Microsoft.EventHub/namespaces/messagingSkuPlan.selectedEventHubUnit": "properties.messagingSkuPlan.selectedEventHubUnit",
+      "Microsoft.EventHub/namespaces/messagingSkuPlan.sku": "properties.messagingSkuPlan.sku",
+      "Microsoft.EventHub/namespaces/metricId": "properties.metricId",
+      "Microsoft.EventHub/namespaces/namespaceType": "properties.namespaceType",
+      "Microsoft.EventHub/namespaces/partitionCount": "properties.partitionCount",
+      "Microsoft.EventHub/namespaces/partitionIds": "properties.partitionIds",
+      "Microsoft.EventHub/namespaces/partitionIds[*]": "properties.partitionIds[*]",
+      "Microsoft.EventHub/namespaces/path": "properties.path",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].location": "properties.privateEndpointConnections[*].location",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].systemData": "properties.privateEndpointConnections[*].systemData",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].systemData.createdAt": "properties.privateEndpointConnections[*].systemData.createdAt",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].systemData.createdBy": "properties.privateEndpointConnections[*].systemData.createdBy",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].systemData.createdByType": "properties.privateEndpointConnections[*].systemData.createdByType",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].systemData.lastModifiedAt": "properties.privateEndpointConnections[*].systemData.lastModifiedAt",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].systemData.lastModifiedBy": "properties.privateEndpointConnections[*].systemData.lastModifiedBy",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].systemData.lastModifiedByType": "properties.privateEndpointConnections[*].systemData.lastModifiedByType",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
+      "Microsoft.EventHub/namespaces/provisioningState": "properties.provisioningState",
+      "Microsoft.EventHub/namespaces/serviceBusEndpoint": "properties.serviceBusEndpoint",
+      "Microsoft.EventHub/namespaces/serviceBusEndpoint.externalDocs": "properties.serviceBusEndpoint.externalDocs",
+      "Microsoft.EventHub/namespaces/sku": "sku",
+      "Microsoft.EventHub/namespaces/sku.capacity": "sku.capacity",
+      "Microsoft.EventHub/namespaces/sku.name": "sku.name",
+      "Microsoft.EventHub/namespaces/sku.tier": "sku.tier",
+      "Microsoft.EventHub/namespaces/status": "properties.status",
+      "Microsoft.EventHub/namespaces/updatedAt": "properties.updatedAt",
+      "Microsoft.EventHub/namespaces/zoneRedundant": "properties.zoneRedundant"
+    },
+    "resourceType": "namespaces",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "West US 2",
+      "North Central US",
+      "South Central US",
+      "West Central US",
+      "East Asia",
+      "Southeast Asia",
+      "Brazil South",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "Central India",
+      "South India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "UK West",
+      "UK South",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "South Africa North",
+      "UAE North",
+      "Australia Central",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.EventHub/namespaces/authorizationrules/rights": "properties.rights",
+      "Microsoft.EventHub/namespaces/authorizationrules/rights[*]": "properties.rights[*]"
+    },
+    "resourceType": "namespaces/authorizationrules",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.EventHub/namespaces/disasterrecoveryconfigs/alternateName": "properties.alternateName",
+      "Microsoft.EventHub/namespaces/disasterrecoveryconfigs/partnerNamespace": "properties.partnerNamespace",
+      "Microsoft.EventHub/namespaces/disasterrecoveryconfigs/pendingReplicationOperationsCount": "properties.pendingReplicationOperationsCount",
+      "Microsoft.EventHub/namespaces/disasterrecoveryconfigs/provisioningState": "properties.provisioningState",
+      "Microsoft.EventHub/namespaces/disasterrecoveryconfigs/role": "properties.role"
+    },
+    "resourceType": "namespaces/disasterrecoveryconfigs",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "namespaces/disasterrecoveryconfigs/checkNameAvailability",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription": "properties.captureDescription",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination": "properties.captureDescription.destination",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.archiveNameFormat": "properties.captureDescription.destination.properties.archiveNameFormat",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.blobContainer": "properties.captureDescription.destination.properties.blobContainer",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.dataLakeAccountName": "properties.captureDescription.destination.properties.dataLakeAccountName",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.dataLakeFolderPath": "properties.captureDescription.destination.properties.dataLakeFolderPath",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.dataLakeSubscriptionId": "properties.captureDescription.destination.properties.dataLakeSubscriptionId",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.name": "properties.captureDescription.destination.name",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.storageAccountResourceId": "properties.captureDescription.destination.properties.storageAccountResourceId",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.enabled": "properties.captureDescription.enabled",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.encoding": "properties.captureDescription.encoding",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.intervalInSeconds": "properties.captureDescription.intervalInSeconds",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.sizeLimitInBytes": "properties.captureDescription.sizeLimitInBytes",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.skipEmptyArchives": "properties.captureDescription.skipEmptyArchives",
+      "Microsoft.EventHub/namespaces/eventhubs/createdAt": "properties.createdAt",
+      "Microsoft.EventHub/namespaces/eventhubs/messageRetentionInDays": "properties.messageRetentionInDays",
+      "Microsoft.EventHub/namespaces/eventhubs/partitionCount": "properties.partitionCount",
+      "Microsoft.EventHub/namespaces/eventhubs/partitionIds": "properties.partitionIds",
+      "Microsoft.EventHub/namespaces/eventhubs/partitionIds[*]": "properties.partitionIds[*]",
+      "Microsoft.EventHub/namespaces/eventhubs/status": "properties.status",
+      "Microsoft.EventHub/namespaces/eventhubs/updatedAt": "properties.updatedAt"
+    },
+    "resourceType": "namespaces/eventhubs",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.EventHub/namespaces/eventhubs/authorizationrules/rights": "properties.rights",
+      "Microsoft.EventHub/namespaces/eventhubs/authorizationrules/rights[*]": "properties.rights[*]"
+    },
+    "resourceType": "namespaces/eventhubs/authorizationrules",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.EventHub/namespaces/eventhubs/consumergroups/createdAt": "properties.createdAt",
+      "Microsoft.EventHub/namespaces/eventhubs/consumergroups/eventHubPath": "properties.eventHubPath",
+      "Microsoft.EventHub/namespaces/eventhubs/consumergroups/updatedAt": "properties.updatedAt",
+      "Microsoft.EventHub/namespaces/eventhubs/consumergroups/userMetadata": "properties.userMetadata"
+    },
+    "resourceType": "namespaces/eventhubs/consumergroups",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.EventHub/namespaces/networkRuleSets/default.defaultAction": "properties.defaultAction",
+      "Microsoft.EventHub/namespaces/networkRuleSets/default.ipRules": "properties.ipRules",
+      "Microsoft.EventHub/namespaces/networkRuleSets/default.ipRules[*]": "properties.ipRules[*]",
+      "Microsoft.EventHub/namespaces/networkRuleSets/default.ipRules[*].action": "properties.ipRules[*].action",
+      "Microsoft.EventHub/namespaces/networkRuleSets/default.ipRules[*].ipMask": "properties.ipRules[*].ipMask",
+      "Microsoft.EventHub/namespaces/networkrulesets/default.trustedServiceAccessEnabled": "properties.trustedServiceAccessEnabled",
+      "Microsoft.EventHub/namespaces/networkRuleSets/default.virtualNetworkRules": "properties.virtualNetworkRules",
+      "Microsoft.EventHub/namespaces/networkRuleSets/default.virtualNetworkRules[*]": "properties.virtualNetworkRules[*]",
+      "Microsoft.EventHub/namespaces/networkRuleSets/default.virtualNetworkRules[*].ignoreMissingVnetServiceEndpoint": "properties.virtualNetworkRules[*].ignoreMissingVnetServiceEndpoint",
+      "Microsoft.EventHub/namespaces/networkRuleSets/default.virtualNetworkRules[*].subnet": "properties.virtualNetworkRules[*].subnet",
+      "Microsoft.EventHub/namespaces/networkRuleSets/default.virtualNetworkRules[*].subnet.id": "properties.virtualNetworkRules[*].subnet.id",
+      "Microsoft.EventHub/namespaces/networkRuleSets/defaultAction": "properties.defaultAction",
+      "Microsoft.EventHub/namespaces/networkRuleSets/ipRules": "properties.ipRules",
+      "Microsoft.EventHub/namespaces/networkRuleSets/ipRules[*]": "properties.ipRules[*]",
+      "Microsoft.EventHub/namespaces/networkRuleSets/ipRules[*].action": "properties.ipRules[*].action",
+      "Microsoft.EventHub/namespaces/networkRuleSets/ipRules[*].ipMask": "properties.ipRules[*].ipMask",
+      "Microsoft.EventHub/namespaces/networkRuleSets/publicNetworkAccess": "properties.publicNetworkAccess",
+      "Microsoft.EventHub/namespaces/networkRuleSets/trustedServiceAccessEnabled": "properties.trustedServiceAccessEnabled",
+      "Microsoft.EventHub/namespaces/networkRuleSets/virtualNetworkRules": "properties.virtualNetworkRules",
+      "Microsoft.EventHub/namespaces/networkRuleSets/virtualNetworkRules[*]": "properties.virtualNetworkRules[*]",
+      "Microsoft.EventHub/namespaces/networkRuleSets/virtualNetworkRules[*].ignoreMissingVnetServiceEndpoint": "properties.virtualNetworkRules[*].ignoreMissingVnetServiceEndpoint",
+      "Microsoft.EventHub/namespaces/networkRuleSets/virtualNetworkRules[*].subnet": "properties.virtualNetworkRules[*].subnet",
+      "Microsoft.EventHub/namespaces/networkRuleSets/virtualNetworkRules[*].subnet.id": "properties.virtualNetworkRules[*].subnet.id"
+    },
+    "resourceType": "namespaces/networkrulesets",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.EventHub/namespaces/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.EventHub/namespaces/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "namespaces/privateEndpointConnections",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "sku",
+    "apiVersions": [
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.EventHub/namespaces/ipFilterRules/action": "properties.action",
+      "Microsoft.EventHub/namespaces/ipFilterRules/filterName": "properties.filterName",
+      "Microsoft.EventHub/namespaces/ipFilterRules/ipMask": "properties.ipMask"
+    },
+    "resourceType": "namespaces/ipfilterrules"
+  },
+  {
+    "aliases": {
+      "Microsoft.EventHub/namespaces/schemagroups/createdAtUtc": "properties.createdAtUtc",
+      "Microsoft.EventHub/namespaces/schemagroups/eTag": "properties.eTag",
+      "Microsoft.EventHub/namespaces/schemagroups/groupProperties": "properties.groupProperties",
+      "Microsoft.EventHub/namespaces/schemagroups/schemaCompatibility": "properties.schemaCompatibility",
+      "Microsoft.EventHub/namespaces/schemagroups/schemaType": "properties.schemaType",
+      "Microsoft.EventHub/namespaces/schemagroups/updatedAtUtc": "properties.updatedAtUtc"
+    },
+    "resourceType": "namespaces/schemagroups"
+  },
+  {
+    "aliases": {
+      "Microsoft.EventHub/namespaces/virtualNetworkRules/virtualNetworkSubnetId": "properties.virtualNetworkSubnetId"
+    },
+    "resourceType": "namespaces/virtualnetworkrules"
+  }
+]

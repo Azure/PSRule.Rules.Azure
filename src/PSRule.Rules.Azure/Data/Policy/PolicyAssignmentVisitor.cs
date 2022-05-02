@@ -13,7 +13,6 @@ namespace PSRule.Rules.Azure.Data.Policy
 {
     internal abstract class PolicyAssignmentVisitor
     {
-
         private const string PROPERTY_PARAMETERS = "parameters";
         private const string PROPERTY_DEFINTIONS = "policyDefinitions";
         private const string PROPERTY_PROPERTIES = "properties";
