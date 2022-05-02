@@ -162,6 +162,7 @@ task ModuleDependencies Dependencies, {
 task BuildDotNet {
     exec {
         # Build library
+        dotnet build
         dotnet publish src/PSRule.Rules.Azure -c $Configuration -f netstandard2.0 -o $(Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -p:version=$Build
     }
 }
