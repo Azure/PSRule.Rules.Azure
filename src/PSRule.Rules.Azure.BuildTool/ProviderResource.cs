@@ -38,22 +38,29 @@ namespace PSRule.Rules.Azure.BuildTool
 
         private static void MinifyEnvironments(ProviderResourceOption options)
         {
+            Console.WriteLine("BuildTool -- Minify environments");
             var environments = ReadFile<JObject>(GetSourcePath("./data/environments.json"));
             WriteFile(GetSourcePath("./data/environments.min.json"), environments);
         }
 
         private static void MinifyTypes(ProviderResourceOption options)
         {
+            Console.WriteLine("BuildTool -- Minify types");
+            var count = 0;
             foreach (var provider in GetProviders(GetSourcePath("./data/providers")))
             {
                 var entries = ReadFile<ResourceTypeEntry[]>(provider);
                 WriteMinified(provider, entries.Select(e => e.Min));
+                count++;
             }
+            Console.WriteLine($"BuildTool -- {count} providers processed");
         }
 
         private static void BuildIndex(ProviderResourceOption options)
         {
+            Console.WriteLine("BuildTool -- Building type index");
             var index = new Dictionary<string, IndexEntry>();
+            var count = 0;
             foreach (var provider in GetProviders(GetSourcePath("./data/providers")))
             {
                 var source = ReadFile<JArray>(provider);
@@ -66,9 +73,11 @@ namespace PSRule.Rules.Azure.BuildTool
                         Index = Array.IndexOf(set, type)
                     };
                 }
+                count++;
             }
             var json = JsonConvert.SerializeObject(index);
             File.WriteAllText(GetSourcePath(options.OutputPath ?? "./data/types_index.min.json"), json);
+            Console.WriteLine($"BuildTool -- {count} providers processed");
         }
 
         private static void WriteMinified(string provider, IEnumerable<ResourceTypeMin> entries)
