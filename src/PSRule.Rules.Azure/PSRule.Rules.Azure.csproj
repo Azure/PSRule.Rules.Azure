@@ -126,7 +126,7 @@ This project uses GitHub Issues to track bugs and feature requests. See GitHub p
   </UsingTask>
 
   <Target Name="BuildTool">
-    <Exec Command="dotnet run --project .\src\PSRule.Rules.Azure.BuildTool -- provider" WorkingDirectory="..\.." ConsoleToMSBuild="true" >
+    <Exec Command="dotnet run --project ./src/PSRule.Rules.Azure.BuildTool -- provider" WorkingDirectory="..\.." ConsoleToMSBuild="true" >
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
   </Target>
