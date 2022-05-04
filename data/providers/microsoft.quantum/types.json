@@ -1,0 +1,97 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2022-01-10-preview",
+      "2019-11-04-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/CheckNameAvailability",
+    "apiVersions": [
+      "2022-01-10-preview",
+      "2019-11-04-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/offerings",
+    "apiVersions": [
+      "2022-01-10-preview",
+      "2019-11-04-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 2",
+      "West Central US",
+      "Japan East",
+      "Japan West",
+      "UK West",
+      "UK South"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2022-01-10-preview",
+      "2019-11-04-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "East US 2 EUAP",
+      "Central US EUAP",
+      "West US 2",
+      "West Central US",
+      "Japan East",
+      "Japan West",
+      "UK West",
+      "UK South"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2022-01-10-preview",
+      "2019-11-04-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Workspaces",
+    "apiVersions": [
+      "2022-01-10-preview",
+      "2019-11-04-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 2",
+      "West Central US",
+      "Japan East",
+      "Japan West",
+      "UK West",
+      "UK South"
+    ],
+    "zoneMappings": null
+  }
+]

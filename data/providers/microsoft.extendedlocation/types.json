@@ -1,0 +1,138 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "customLocations",
+    "apiVersions": [
+      "2021-08-15",
+      "2021-03-15-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "North Europe",
+      "France Central",
+      "Southeast Asia",
+      "Australia East",
+      "East US 2",
+      "West US 2",
+      "UK South",
+      "Central US",
+      "West Central US",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Korea Central",
+      "Japan East",
+      "East Asia",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "customLocations/enabledResourceTypes",
+    "apiVersions": [
+      "2021-08-15",
+      "2021-03-15-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "North Europe",
+      "France Central",
+      "Southeast Asia",
+      "Australia East",
+      "East US 2",
+      "West US 2",
+      "UK South",
+      "Central US",
+      "West Central US",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Korea Central",
+      "Japan East",
+      "East Asia",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-03-15-preview",
+      "2020-07-15-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationresults",
+    "apiVersions": [
+      "2021-03-15-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "North Europe",
+      "France Central",
+      "Southeast Asia",
+      "Australia East",
+      "East US 2",
+      "West US 2",
+      "UK South",
+      "Central US",
+      "West Central US",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Korea Central",
+      "Japan East",
+      "East Asia",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationsstatus",
+    "apiVersions": [
+      "2021-03-15-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "North Europe",
+      "France Central",
+      "Southeast Asia",
+      "Australia East",
+      "East US 2",
+      "West US 2",
+      "UK South",
+      "Central US",
+      "West Central US",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Korea Central",
+      "Japan East",
+      "East Asia",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-08-31-preview",
+      "2021-08-15",
+      "2021-03-15-preview",
+      "2020-07-15-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

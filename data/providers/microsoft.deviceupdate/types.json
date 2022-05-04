@@ -1,0 +1,164 @@
+[
+  {
+    "aliases": {
+      "Microsoft.DeviceUpdate/accounts/hostName": "properties.hostName",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].groupIds": "properties.privateEndpointConnections[*].properties.groupIds",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].groupIds[*]": "properties.privateEndpointConnections[*].properties.groupIds[*]",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
+      "Microsoft.DeviceUpdate/accounts/provisioningState": "properties.provisioningState",
+      "Microsoft.DeviceUpdate/accounts/publicNetworkAccess": "properties.publicNetworkAccess"
+    },
+    "resourceType": "accounts",
+    "apiVersions": [
+      "2020-03-01-preview"
+    ],
+    "locations": [
+      "West US 2",
+      "North Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.DeviceUpdate/accounts/instances/accountName": "properties.accountName",
+      "Microsoft.DeviceUpdate/accounts/instances/diagnosticStorageProperties": "properties.diagnosticStorageProperties",
+      "Microsoft.DeviceUpdate/accounts/instances/diagnosticStorageProperties.authenticationType": "properties.diagnosticStorageProperties.authenticationType",
+      "Microsoft.DeviceUpdate/accounts/instances/diagnosticStorageProperties.connectionString": "properties.diagnosticStorageProperties.connectionString",
+      "Microsoft.DeviceUpdate/accounts/instances/diagnosticStorageProperties.resourceId": "properties.diagnosticStorageProperties.resourceId",
+      "Microsoft.DeviceUpdate/accounts/instances/enableDiagnostics": "properties.enableDiagnostics",
+      "Microsoft.DeviceUpdate/accounts/instances/iotHubs": "properties.iotHubs",
+      "Microsoft.DeviceUpdate/accounts/instances/iotHubs[*]": "properties.iotHubs[*]",
+      "Microsoft.DeviceUpdate/accounts/instances/iotHubs[*].eventHubConnectionString": "properties.iotHubs[*].eventHubConnectionString",
+      "Microsoft.DeviceUpdate/accounts/instances/iotHubs[*].ioTHubConnectionString": "properties.iotHubs[*].ioTHubConnectionString",
+      "Microsoft.DeviceUpdate/accounts/instances/iotHubs[*].resourceId": "properties.iotHubs[*].resourceId",
+      "Microsoft.DeviceUpdate/accounts/instances/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "accounts/instances",
+    "apiVersions": [
+      "2020-03-01-preview"
+    ],
+    "locations": [
+      "West US 2",
+      "North Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnectionProxies/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "accounts/privateEndpointConnectionProxies",
+    "apiVersions": [
+      "2020-03-01-preview"
+    ],
+    "locations": [
+      "West US 2",
+      "North Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections/groupIds": "properties.groupIds",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.DeviceUpdate/accounts/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "accounts/privateEndpointConnections",
+    "apiVersions": [
+      "2020-03-01-preview"
+    ],
+    "locations": [
+      "West US 2",
+      "North Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/privateLinkResources",
+    "apiVersions": [
+      "2020-03-01-preview"
+    ],
+    "locations": [
+      "West US 2",
+      "North Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2020-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-04-01-preview",
+      "2020-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2022-04-01-preview",
+      "2020-03-01-preview"
+    ],
+    "locations": [
+      "East US 2 EUAP",
+      "West US 2",
+      "North Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-04-01-preview",
+      "2020-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registeredSubscriptions",
+    "apiVersions": [
+      "2022-04-01-preview",
+      "2020-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

@@ -1,0 +1,215 @@
+[
+  {
+    "aliases": {
+      "Microsoft.DataLakeAnalytics/accounts/accountId": "properties.accountId",
+      "Microsoft.DataLakeAnalytics/accounts/computePolicies": "properties.computePolicies",
+      "Microsoft.DataLakeAnalytics/accounts/computePolicies[*]": "properties.computePolicies[*]",
+      "Microsoft.DataLakeAnalytics/accounts/computePolicies[*].maxDegreeOfParallelismPerJob": "properties.computePolicies[*].properties.maxDegreeOfParallelismPerJob",
+      "Microsoft.DataLakeAnalytics/accounts/computePolicies[*].minPriorityPerJob": "properties.computePolicies[*].properties.minPriorityPerJob",
+      "Microsoft.DataLakeAnalytics/accounts/computePolicies[*].name": "properties.computePolicies[*].name",
+      "Microsoft.DataLakeAnalytics/accounts/computePolicies[*].objectId": "properties.computePolicies[*].properties.objectId",
+      "Microsoft.DataLakeAnalytics/accounts/computePolicies[*].objectType": "properties.computePolicies[*].properties.objectType",
+      "Microsoft.DataLakeAnalytics/accounts/creationTime": "properties.creationTime",
+      "Microsoft.DataLakeAnalytics/accounts/currentTier": "properties.currentTier",
+      "Microsoft.DataLakeAnalytics/accounts/dataLakeStoreAccounts": "properties.dataLakeStoreAccounts",
+      "Microsoft.DataLakeAnalytics/accounts/dataLakeStoreAccounts[*]": "properties.dataLakeStoreAccounts[*]",
+      "Microsoft.DataLakeAnalytics/accounts/dataLakeStoreAccounts[*].id": "properties.dataLakeStoreAccounts[*].id",
+      "Microsoft.DataLakeAnalytics/accounts/dataLakeStoreAccounts[*].name": "properties.dataLakeStoreAccounts[*].name",
+      "Microsoft.DataLakeAnalytics/accounts/dataLakeStoreAccounts[*].suffix": "properties.dataLakeStoreAccounts[*].properties.suffix",
+      "Microsoft.DataLakeAnalytics/accounts/defaultDataLakeStoreAccount": "properties.defaultDataLakeStoreAccount",
+      "Microsoft.DataLakeAnalytics/accounts/endIpAddress": "properties.endIpAddress",
+      "Microsoft.DataLakeAnalytics/accounts/endpoint": "properties.endpoint",
+      "Microsoft.DataLakeAnalytics/accounts/firewallAllowAzureIps": "properties.firewallAllowAzureIps",
+      "Microsoft.DataLakeAnalytics/accounts/firewallRules": "properties.firewallRules",
+      "Microsoft.DataLakeAnalytics/accounts/firewallRules[*]": "properties.firewallRules[*]",
+      "Microsoft.DataLakeAnalytics/accounts/firewallRules[*].endIpAddress": "properties.firewallRules[*].properties.endIpAddress",
+      "Microsoft.DataLakeAnalytics/accounts/firewallRules[*].name": "properties.firewallRules[*].name",
+      "Microsoft.DataLakeAnalytics/accounts/firewallRules[*].startIpAddress": "properties.firewallRules[*].properties.startIpAddress",
+      "Microsoft.DataLakeAnalytics/accounts/firewallState": "properties.firewallState",
+      "Microsoft.DataLakeAnalytics/accounts/lastModifiedTime": "properties.lastModifiedTime",
+      "Microsoft.DataLakeAnalytics/accounts/maxDegreeOfParallelism": "properties.maxDegreeOfParallelism",
+      "Microsoft.DataLakeAnalytics/accounts/maxDegreeOfParallelismPerJob": "properties.maxDegreeOfParallelismPerJob",
+      "Microsoft.DataLakeAnalytics/accounts/maxJobCount": "properties.maxJobCount",
+      "Microsoft.DataLakeAnalytics/accounts/minPriorityPerJob": "properties.minPriorityPerJob",
+      "Microsoft.DataLakeAnalytics/accounts/newTier": "properties.newTier",
+      "Microsoft.DataLakeAnalytics/accounts/objectId": "properties.objectId",
+      "Microsoft.DataLakeAnalytics/accounts/objectType": "properties.objectType",
+      "Microsoft.DataLakeAnalytics/accounts/provisioningState": "properties.provisioningState",
+      "Microsoft.DataLakeAnalytics/accounts/queryStoreRetention": "properties.queryStoreRetention",
+      "Microsoft.DataLakeAnalytics/accounts/startIpAddress": "properties.startIpAddress",
+      "Microsoft.DataLakeAnalytics/accounts/state": "properties.state",
+      "Microsoft.DataLakeAnalytics/accounts/storageAccounts": "properties.storageAccounts",
+      "Microsoft.DataLakeAnalytics/accounts/storageAccounts[*]": "properties.storageAccounts[*]",
+      "Microsoft.DataLakeAnalytics/accounts/storageAccounts[*].accessKey": "properties.storageAccounts[*].properties.accessKey",
+      "Microsoft.DataLakeAnalytics/accounts/storageAccounts[*].id": "properties.storageAccounts[*].id",
+      "Microsoft.DataLakeAnalytics/accounts/storageAccounts[*].name": "properties.storageAccounts[*].name",
+      "Microsoft.DataLakeAnalytics/accounts/storageAccounts[*].suffix": "properties.storageAccounts[*].properties.suffix",
+      "Microsoft.DataLakeAnalytics/accounts/systemMaxDegreeOfParallelism": "properties.systemMaxDegreeOfParallelism",
+      "Microsoft.DataLakeAnalytics/accounts/systemMaxJobCount": "properties.systemMaxJobCount"
+    },
+    "resourceType": "accounts",
+    "apiVersions": [
+      "2019-11-01-preview",
+      "2016-11-01",
+      "2015-10-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe",
+      "Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.DataLakeAnalytics/accounts/dataLakeStoreAccounts/suffix": "properties.suffix"
+    },
+    "resourceType": "accounts/dataLakeStoreAccounts",
+    "apiVersions": [
+      "2019-11-01-preview",
+      "2016-11-01",
+      "2015-10-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe",
+      "Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.DataLakeAnalytics/accounts/storageAccounts/accessKey": "properties.accessKey",
+      "Microsoft.DataLakeAnalytics/accounts/storageAccounts/suffix": "properties.suffix"
+    },
+    "resourceType": "accounts/storageAccounts",
+    "apiVersions": [
+      "2019-11-01-preview",
+      "2016-11-01",
+      "2015-10-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe",
+      "Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/storageAccounts/containers",
+    "apiVersions": [
+      "2019-11-01-preview",
+      "2016-11-01",
+      "2015-10-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe",
+      "Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/storageAccounts/containers/listSasTokens",
+    "apiVersions": [
+      "2019-11-01-preview",
+      "2016-11-01",
+      "2015-10-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe",
+      "Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2019-11-01-preview",
+      "2016-11-01",
+      "2015-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/capability",
+    "apiVersions": [
+      "2019-11-01-preview",
+      "2016-11-01",
+      "2015-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/checkNameAvailability",
+    "apiVersions": [
+      "2019-11-01-preview",
+      "2016-11-01",
+      "2015-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationresults",
+    "apiVersions": [
+      "2019-11-01-preview",
+      "2016-11-01",
+      "2015-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/usages",
+    "apiVersions": [
+      "2019-11-01-preview",
+      "2016-11-01",
+      "2015-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2019-11-01-preview",
+      "2016-11-01",
+      "2015-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.DataLakeAnalytics/accounts/computePolicies/maxDegreeOfParallelismPerJob": "properties.maxDegreeOfParallelismPerJob",
+      "Microsoft.DataLakeAnalytics/accounts/computePolicies/minPriorityPerJob": "properties.minPriorityPerJob",
+      "Microsoft.DataLakeAnalytics/accounts/computePolicies/objectId": "properties.objectId",
+      "Microsoft.DataLakeAnalytics/accounts/computePolicies/objectType": "properties.objectType"
+    },
+    "resourceType": "accounts/computepolicies"
+  },
+  {
+    "aliases": {
+      "Microsoft.DataLakeAnalytics/accounts/firewallRules/endIpAddress": "properties.endIpAddress",
+      "Microsoft.DataLakeAnalytics/accounts/firewallRules/startIpAddress": "properties.startIpAddress"
+    },
+    "resourceType": "accounts/firewallrules"
+  }
+]

@@ -1,0 +1,227 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "agreements",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [
+      "West US 2",
+      "UK South",
+      "Central US EUAP",
+      "East US 2 EUAP"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Datadog/monitors/datadogOrganizationProperties": "properties.datadogOrganizationProperties",
+      "Microsoft.Datadog/monitors/datadogOrganizationProperties.apiKey": "properties.datadogOrganizationProperties.apiKey",
+      "Microsoft.Datadog/monitors/datadogOrganizationProperties.applicationKey": "properties.datadogOrganizationProperties.applicationKey",
+      "Microsoft.Datadog/monitors/datadogOrganizationProperties.enterpriseAppId": "properties.datadogOrganizationProperties.enterpriseAppId",
+      "Microsoft.Datadog/monitors/datadogOrganizationProperties.id": "properties.datadogOrganizationProperties.id",
+      "Microsoft.Datadog/monitors/datadogOrganizationProperties.linkingAuthCode": "properties.datadogOrganizationProperties.linkingAuthCode",
+      "Microsoft.Datadog/monitors/datadogOrganizationProperties.linkingClientId": "properties.datadogOrganizationProperties.linkingClientId",
+      "Microsoft.Datadog/monitors/datadogOrganizationProperties.name": "properties.datadogOrganizationProperties.name",
+      "Microsoft.Datadog/monitors/datadogOrganizationProperties.redirectUri": "properties.datadogOrganizationProperties.redirectUri",
+      "Microsoft.Datadog/monitors/liftrResourceCategory": "properties.liftrResourceCategory",
+      "Microsoft.Datadog/monitors/liftrResourcePreference": "properties.liftrResourcePreference",
+      "Microsoft.Datadog/monitors/marketplaceSubscriptionStatus": "properties.marketplaceSubscriptionStatus",
+      "Microsoft.Datadog/monitors/monitoringStatus": "properties.monitoringStatus",
+      "Microsoft.Datadog/monitors/provisioningState": "properties.provisioningState",
+      "Microsoft.Datadog/monitors/sku": "sku",
+      "Microsoft.Datadog/monitors/sku.name": "sku.name",
+      "Microsoft.Datadog/monitors/userInfo": "properties.userInfo",
+      "Microsoft.Datadog/monitors/userInfo.emailAddress": "properties.userInfo.emailAddress",
+      "Microsoft.Datadog/monitors/userInfo.name": "properties.userInfo.name",
+      "Microsoft.Datadog/monitors/userInfo.phoneNumber": "properties.userInfo.phoneNumber"
+    },
+    "resourceType": "monitors",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors/getDefaultKey",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [
+      "UK South",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors/listApiKeys",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [
+      "UK South",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors/listHosts",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [
+      "UK South",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors/listLinkedResources",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [
+      "UK South",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors/listMonitoredResources",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [
+      "UK South",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors/refreshSetPasswordLink",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [
+      "UK South",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors/setDefaultKey",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [
+      "UK South",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Datadog/monitors/singleSignOnConfigurations/enterpriseAppId": "properties.enterpriseAppId",
+      "Microsoft.Datadog/monitors/singleSignOnConfigurations/provisioningState": "properties.provisioningState",
+      "Microsoft.Datadog/monitors/singleSignOnConfigurations/singleSignOnState": "properties.singleSignOnState",
+      "Microsoft.Datadog/monitors/singleSignOnConfigurations/singleSignOnUrl": "properties.singleSignOnUrl"
+    },
+    "resourceType": "monitors/singleSignOnConfigurations",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Datadog/monitors/tagRules/logRules": "properties.logRules",
+      "Microsoft.Datadog/monitors/tagRules/logRules.filteringTags": "properties.logRules.filteringTags",
+      "Microsoft.Datadog/monitors/tagRules/logRules.filteringTags[*]": "properties.logRules.filteringTags[*]",
+      "Microsoft.Datadog/monitors/tagRules/logRules.filteringTags[*].action": "properties.logRules.filteringTags[*].action",
+      "Microsoft.Datadog/monitors/tagRules/logRules.filteringTags[*].name": "properties.logRules.filteringTags[*].name",
+      "Microsoft.Datadog/monitors/tagRules/logRules.filteringTags[*].value": "properties.logRules.filteringTags[*].value",
+      "Microsoft.Datadog/monitors/tagRules/logRules.sendAadLogs": "properties.logRules.sendAadLogs",
+      "Microsoft.Datadog/monitors/tagRules/logRules.sendResourceLogs": "properties.logRules.sendResourceLogs",
+      "Microsoft.Datadog/monitors/tagRules/logRules.sendSubscriptionLogs": "properties.logRules.sendSubscriptionLogs",
+      "Microsoft.Datadog/monitors/tagRules/metricRules": "properties.metricRules",
+      "Microsoft.Datadog/monitors/tagRules/metricRules.filteringTags": "properties.metricRules.filteringTags",
+      "Microsoft.Datadog/monitors/tagRules/metricRules.filteringTags[*]": "properties.metricRules.filteringTags[*]",
+      "Microsoft.Datadog/monitors/tagRules/metricRules.filteringTags[*].action": "properties.metricRules.filteringTags[*].action",
+      "Microsoft.Datadog/monitors/tagRules/metricRules.filteringTags[*].name": "properties.metricRules.filteringTags[*].name",
+      "Microsoft.Datadog/monitors/tagRules/metricRules.filteringTags[*].value": "properties.metricRules.filteringTags[*].value",
+      "Microsoft.Datadog/monitors/tagRules/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "monitors/tagRules",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registeredSubscriptions",
+    "apiVersions": [
+      "2021-03-01",
+      "2020-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

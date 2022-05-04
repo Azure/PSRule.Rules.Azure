@@ -1,0 +1,20 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2021-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "getDefaultAccount",
+    "apiVersions": [
+      "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "removeDefaultAccount",
+    "apiVersions": [
+      "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "setDefaultAccount",
+    "apiVersions": [
+      "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

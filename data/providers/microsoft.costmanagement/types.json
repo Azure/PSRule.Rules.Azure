@@ -1,0 +1,526 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Alerts",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2018-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "BenefitRecommendations",
+    "apiVersions": [
+      "2021-11-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "BenefitUtilizationSummaries",
+    "apiVersions": [
+      "2021-11-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "BillingAccounts",
+    "apiVersions": [
+      "2018-03-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Budgets",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "calculatePrice",
+    "apiVersions": [
+      "2022-03-01",
+      "2021-11-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "CheckConnectorEligibility",
+    "apiVersions": [
+      "2019-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "CheckNameAvailability",
+    "apiVersions": [
+      "2022-04-01-preview",
+      "2020-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "CloudConnectors",
+    "apiVersions": [
+      "2019-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Connectors",
+    "apiVersions": [
+      "2018-08-01-preview"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "costAllocationRules",
+    "apiVersions": [
+      "2020-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Departments",
+    "apiVersions": [
+      "2018-03-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Dimensions",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01-preview",
+      "2019-04-01-preview",
+      "2019-03-01-preview",
+      "2019-01-01",
+      "2018-12-01-preview",
+      "2018-10-01-preview",
+      "2018-08-31",
+      "2018-08-01-preview",
+      "2018-05-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "EnrollmentAccounts",
+    "apiVersions": [
+      "2018-03-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Exports",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-01-01",
+      "2020-12-01-preview",
+      "2020-06-01",
+      "2020-05-01-preview",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-09-01",
+      "2019-01-01-preview",
+      "2019-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ExternalBillingAccounts",
+    "apiVersions": [
+      "2019-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ExternalBillingAccounts/Alerts",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2018-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ExternalBillingAccounts/Dimensions",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01-preview",
+      "2019-04-01-preview",
+      "2019-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ExternalBillingAccounts/Forecast",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01-preview",
+      "2019-04-01-preview",
+      "2019-03-01-preview",
+      "2018-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ExternalBillingAccounts/Query",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01-preview",
+      "2019-04-01-preview",
+      "2019-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ExternalSubscriptions",
+    "apiVersions": [
+      "2019-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ExternalSubscriptions/Alerts",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2018-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ExternalSubscriptions/Dimensions",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01-preview",
+      "2019-04-01-preview",
+      "2019-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ExternalSubscriptions/Forecast",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01-preview",
+      "2019-04-01-preview",
+      "2019-03-01-preview",
+      "2018-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ExternalSubscriptions/Query",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01-preview",
+      "2019-04-01-preview",
+      "2019-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "fetchMarketplacePrices",
+    "apiVersions": [
+      "2022-03-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "fetchMicrosoftPrices",
+    "apiVersions": [
+      "2022-03-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "fetchPrices",
+    "apiVersions": [
+      "2021-11-15-preview",
+      "2020-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Forecast",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01-preview",
+      "2019-04-01-preview",
+      "2019-03-01-preview",
+      "2018-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "GenerateDetailedCostReport",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-01-01",
+      "2020-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "GenerateReservationDetailsReport",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Insights",
+    "apiVersions": [
+      "2020-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "OperationResults",
+    "apiVersions": [
+      "2022-04-01-preview",
+      "2022-02-01-preview",
+      "2021-10-01",
+      "2021-01-01",
+      "2020-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-01-01",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "OperationStatus",
+    "apiVersions": [
+      "2022-04-01-preview",
+      "2022-02-01-preview",
+      "2021-10-01",
+      "2021-01-01",
+      "2020-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Pricesheets",
+    "apiVersions": [
+      "2022-04-01-preview",
+      "2022-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Publish",
+    "apiVersions": [
+      "2021-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Query",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01-preview",
+      "2019-04-01-preview",
+      "2019-03-01-preview",
+      "2019-01-01",
+      "2018-12-01-preview",
+      "2018-10-01-preview",
+      "2018-08-31",
+      "2018-08-01-preview",
+      "2018-05-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "register",
+    "apiVersions": [
+      "2019-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Reportconfigs",
+    "apiVersions": [
+      "2018-05-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Reports",
+    "apiVersions": [
+      "2018-12-01-preview",
+      "2018-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ReservationDetailsOperationResults",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ScheduledActions",
+    "apiVersions": [
+      "2022-04-01-preview",
+      "2020-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Settings",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01",
+      "2019-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "showbackRules",
+    "apiVersions": [
+      "2019-03-01-preview",
+      "2019-02-03-alpha",
+      "2019-02-02-alpha",
+      "2019-02-01-alpha"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Views",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

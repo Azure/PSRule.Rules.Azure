@@ -1,0 +1,103 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "asyncOperationResults",
+    "apiVersions": [
+      "2019-10-01",
+      "2018-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkPolicyRestrictions",
+    "apiVersions": [
+      "2022-03-01",
+      "2020-07-01-preview",
+      "2020-07-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "eventGridFilters",
+    "apiVersions": [
+      "2020-10-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2019-10-01",
+      "2018-07-01-preview",
+      "2018-04-04",
+      "2017-12-12-preview",
+      "2017-10-17-preview",
+      "2017-08-09-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "policyEvents",
+    "apiVersions": [
+      "2019-10-01",
+      "2018-07-01-preview",
+      "2018-04-04",
+      "2017-12-12-preview",
+      "2017-10-17-preview",
+      "2017-08-09-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "policyMetadata",
+    "apiVersions": [
+      "2019-10-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "policyStates",
+    "apiVersions": [
+      "2019-10-01",
+      "2018-07-01-preview",
+      "2018-04-04",
+      "2017-12-12-preview",
+      "2017-10-17-preview",
+      "2017-08-09-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "policyTrackedResources",
+    "apiVersions": [
+      "2018-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "remediations",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-07-01",
+      "2018-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

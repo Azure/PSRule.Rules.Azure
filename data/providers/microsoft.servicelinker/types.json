@@ -1,0 +1,115 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "dryruns",
+    "apiVersions": [
+      "2021-12-01-privatepreview"
+    ],
+    "locations": [
+      "East US",
+      "West Central US",
+      "West US 2",
+      "West Europe",
+      "East US 2",
+      "West US 3",
+      "North Europe",
+      "South Central US",
+      "Central US",
+      "Australia East",
+      "Australia Central",
+      "Australia Southeast",
+      "UK South",
+      "UK West",
+      "Japan East",
+      "Japan West",
+      "West US",
+      "North Central US",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "linkers",
+    "apiVersions": [
+      "2022-05-01",
+      "2022-01-01-preview",
+      "2021-11-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Central US",
+      "West US 2",
+      "West Europe",
+      "East US 2",
+      "West US 3",
+      "North Europe",
+      "South Central US",
+      "Central US",
+      "Australia East",
+      "Australia Central",
+      "Australia Southeast",
+      "UK South",
+      "UK West",
+      "Japan East",
+      "Japan West",
+      "West US",
+      "North Central US",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-05-01",
+      "2021-11-01-preview",
+      "2021-01-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2022-05-01",
+      "2021-11-01-preview",
+      "2021-01-01-privatepreview"
+    ],
+    "locations": [
+      "East US",
+      "West Central US",
+      "West US 2",
+      "West Europe",
+      "East US 2",
+      "West US 3",
+      "North Europe",
+      "South Central US",
+      "Central US",
+      "Australia East",
+      "Australia Central",
+      "Australia Southeast",
+      "UK South",
+      "UK West",
+      "Japan East",
+      "Japan West",
+      "West US",
+      "North Central US",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-05-01",
+      "2021-11-01-preview",
+      "2021-01-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

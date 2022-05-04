@@ -1,0 +1,110 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "instances",
+    "apiVersions": [
+      "2022-02-17-preview",
+      "2021-02-04-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "East US",
+      "West US",
+      "South Central US",
+      "West Europe",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "instances/experiments",
+    "apiVersions": [
+      "2022-02-17-preview",
+      "2021-02-04-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "East US",
+      "West US",
+      "South Central US",
+      "West Europe",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "instances/sandboxes",
+    "apiVersions": [
+      "2022-02-17-preview",
+      "2021-02-04-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "East US",
+      "West US",
+      "South Central US",
+      "West Europe",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "instances/sandboxes/experiments",
+    "apiVersions": [
+      "2022-02-17-preview",
+      "2021-02-04-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "East US",
+      "West US",
+      "South Central US",
+      "West Europe",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2019-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/operationstatuses",
+    "apiVersions": [
+      "2019-10-01"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "East US",
+      "West US",
+      "South Central US",
+      "West Europe",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2022-02-17-preview",
+      "2021-02-04-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

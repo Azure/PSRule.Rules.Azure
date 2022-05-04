@@ -1,0 +1,104 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "marketplaceRegistrationDefinitions",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-02-01-preview",
+      "2019-09-01",
+      "2019-06-01",
+      "2019-04-01-preview",
+      "2018-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-02-01-preview",
+      "2019-09-01",
+      "2019-06-01",
+      "2019-04-01-preview",
+      "2018-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationStatuses",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-02-01-preview",
+      "2019-09-01",
+      "2019-06-01",
+      "2019-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ManagedServices/registrationAssignments/provisioningState": "properties.provisioningState",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition": "properties.registrationDefinition",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.authorizations": "properties.registrationDefinition.properties.authorizations",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.authorizations[*]": "properties.registrationDefinition.properties.authorizations[*]",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.authorizations[*].principalId": "properties.registrationDefinition.properties.authorizations[*].principalId",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.authorizations[*].roleDefinitionId": "properties.registrationDefinition.properties.authorizations[*].roleDefinitionId",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.description": "properties.registrationDefinition.properties.description",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.id": "properties.registrationDefinition.id",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.managedByTenantId": "properties.registrationDefinition.properties.managedByTenantId",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.managedByTenantName": "properties.registrationDefinition.properties.managedByTenantName",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.manageeTenantId": "properties.registrationDefinition.properties.manageeTenantId",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.manageeTenantName": "properties.registrationDefinition.properties.manageeTenantName",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.name": "properties.registrationDefinition.name",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.plan": "properties.registrationDefinition.plan",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.plan.name": "properties.registrationDefinition.plan.name",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.plan.product": "properties.registrationDefinition.plan.product",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.plan.publisher": "properties.registrationDefinition.plan.publisher",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.plan.version": "properties.registrationDefinition.plan.version",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.provisioningState": "properties.registrationDefinition.properties.provisioningState",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.registrationDefinitionName": "properties.registrationDefinition.properties.registrationDefinitionName",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinition.type": "properties.registrationDefinition.type",
+      "Microsoft.ManagedServices/registrationAssignments/registrationDefinitionId": "properties.registrationDefinitionId"
+    },
+    "resourceType": "registrationAssignments",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-02-01-preview",
+      "2019-09-01",
+      "2019-06-01",
+      "2019-04-01-preview",
+      "2018-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ManagedServices/registrationDefinitions/authorizations": "properties.authorizations",
+      "Microsoft.ManagedServices/registrationDefinitions/authorizations[*]": "properties.authorizations[*]",
+      "Microsoft.ManagedServices/registrationDefinitions/authorizations[*].principalId": "properties.authorizations[*].principalId",
+      "Microsoft.ManagedServices/registrationDefinitions/authorizations[*].roleDefinitionId": "properties.authorizations[*].roleDefinitionId",
+      "Microsoft.ManagedServices/registrationDefinitions/description": "properties.description",
+      "Microsoft.ManagedServices/registrationDefinitions/managedByTenantId": "properties.managedByTenantId",
+      "Microsoft.ManagedServices/registrationDefinitions/managedByTenantName": "properties.managedByTenantName",
+      "Microsoft.ManagedServices/registrationDefinitions/provisioningState": "properties.provisioningState",
+      "Microsoft.ManagedServices/registrationDefinitions/registrationDefinitionName": "properties.registrationDefinitionName"
+    },
+    "resourceType": "registrationDefinitions",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2020-02-01-preview",
+      "2019-09-01",
+      "2019-06-01",
+      "2019-04-01-preview",
+      "2018-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

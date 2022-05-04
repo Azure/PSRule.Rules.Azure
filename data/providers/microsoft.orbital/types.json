@@ -1,0 +1,40 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-03-01"
+    ],
+    "locations": [
+      "West US 2",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationResults",
+    "apiVersions": [
+      "2022-03-01"
+    ],
+    "locations": [
+      "West US 2",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-03-01",
+      "2021-04-04-preview",
+      "2020-09-01-preview"
+    ],
+    "locations": [
+      "West US 2",
+      "West US"
+    ],
+    "zoneMappings": null
+  }
+]

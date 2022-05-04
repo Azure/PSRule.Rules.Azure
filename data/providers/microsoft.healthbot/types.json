@@ -1,0 +1,67 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "healthBots",
+    "apiVersions": [
+      "2021-08-24",
+      "2020-12-08"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "East US 2",
+      "West US 2",
+      "South Central US",
+      "UK South",
+      "North Europe",
+      "Southeast Asia",
+      "Australia East",
+      "Central India",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2021-08-24",
+      "2020-12-08"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2021-08-24",
+      "2020-12-08"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "East US 2",
+      "West US 2",
+      "South Central US",
+      "UK South",
+      "North Europe",
+      "Southeast Asia",
+      "Australia East",
+      "East US 2 EUAP",
+      "Central India",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2021-08-24",
+      "2020-12-08"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

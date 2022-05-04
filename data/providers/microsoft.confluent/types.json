@@ -1,0 +1,139 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "agreements",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-09-01-preview",
+      "2021-03-01-preview",
+      "2020-03-01-preview",
+      "2020-03-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-09-01-preview",
+      "2021-03-01-preview",
+      "2020-03-01-preview",
+      "2020-03-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-09-01-preview",
+      "2021-03-01-preview",
+      "2020-03-01-preview",
+      "2020-03-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/OperationStatuses",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-09-01-preview",
+      "2021-03-01-preview",
+      "2020-03-01-preview",
+      "2020-03-01"
+    ],
+    "locations": [
+      "West US 2",
+      "East US 2 EUAP",
+      "West Central US",
+      "Australia East",
+      "Japan East",
+      "South Africa North",
+      "Brazil South",
+      "Germany West Central",
+      "South Central US",
+      "France Central",
+      "Canada Central",
+      "East US",
+      "UK South",
+      "West Europe",
+      "Central US",
+      "East US 2",
+      "North Europe",
+      "Southeast Asia",
+      "Central India",
+      "East Asia",
+      "Korea Central",
+      "Norway East",
+      "Sweden Central",
+      "Central US EUAP"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-09-01-preview",
+      "2021-03-01-preview",
+      "2020-03-01-preview",
+      "2020-03-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "organizations",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-09-01-preview",
+      "2021-03-01-preview",
+      "2020-03-01-preview",
+      "2020-03-01"
+    ],
+    "locations": [
+      "West US 2",
+      "South Central US",
+      "Brazil South",
+      "West Central US",
+      "Australia East",
+      "Japan East",
+      "France Central",
+      "Canada Central",
+      "East US",
+      "UK South",
+      "West Europe",
+      "South Africa North",
+      "Germany West Central",
+      "Central US",
+      "East US 2",
+      "North Europe",
+      "Southeast Asia",
+      "Central India",
+      "East Asia",
+      "Korea Central",
+      "Norway East",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "validations",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-09-01-preview",
+      "2021-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

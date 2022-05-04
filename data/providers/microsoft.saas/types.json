@@ -1,0 +1,94 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "applications",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checknameavailability",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationResults",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.SaaS/resources/autoRenew": "properties.autoRenew",
+      "Microsoft.SaaS/resources/offerId": "properties.offerId",
+      "Microsoft.SaaS/resources/paymentChannelMetadata": "properties.paymentChannelMetadata",
+      "Microsoft.SaaS/resources/paymentChannelType": "properties.paymentChannelType",
+      "Microsoft.SaaS/resources/publisherId": "properties.publisherId",
+      "Microsoft.SaaS/resources/publisherTestEnvironment": "properties.publisherTestEnvironment",
+      "Microsoft.SaaS/resources/quantity": "properties.quantity",
+      "Microsoft.SaaS/resources/saasResourceName": "properties.saasResourceName",
+      "Microsoft.SaaS/resources/saasSessionId": "properties.saasSessionId",
+      "Microsoft.SaaS/resources/saasSubscriptionId": "properties.saasSubscriptionId",
+      "Microsoft.SaaS/resources/skuId": "properties.skuId",
+      "Microsoft.SaaS/resources/termId": "properties.termId"
+    },
+    "resourceType": "resources",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.SaaS/saasresources/autoRenew": "properties.autoRenew",
+      "Microsoft.SaaS/saasresources/offerId": "properties.offerId",
+      "Microsoft.SaaS/saasresources/paymentChannelMetadata": "properties.paymentChannelMetadata",
+      "Microsoft.SaaS/saasresources/paymentChannelType": "properties.paymentChannelType",
+      "Microsoft.SaaS/saasresources/publisherId": "properties.publisherId",
+      "Microsoft.SaaS/saasresources/publisherTestEnvironment": "properties.publisherTestEnvironment",
+      "Microsoft.SaaS/saasresources/quantity": "properties.quantity",
+      "Microsoft.SaaS/saasresources/saasResourceName": "properties.saasResourceName",
+      "Microsoft.SaaS/saasresources/saasSessionId": "properties.saasSessionId",
+      "Microsoft.SaaS/saasresources/saasSubscriptionId": "properties.saasSubscriptionId",
+      "Microsoft.SaaS/saasresources/skuId": "properties.skuId",
+      "Microsoft.SaaS/saasresources/termId": "properties.termId"
+    },
+    "resourceType": "saasresources",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  }
+]

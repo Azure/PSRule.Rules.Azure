@@ -1,0 +1,35 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-10-21-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2021-10-21-preview"
+    ],
+    "locations": [
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-10-21-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  }
+]

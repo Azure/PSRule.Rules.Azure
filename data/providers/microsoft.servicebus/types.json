@@ -1,0 +1,533 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNamespaceAvailability",
+    "apiVersions": [
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/deleteVirtualNetworkOrSubnets",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ServiceBus/namespaces/createACSNamespace": "properties.createACSNamespace",
+      "Microsoft.ServiceBus/namespaces/createdAt": "properties.createdAt",
+      "Microsoft.ServiceBus/namespaces/disableLocalAuth": "properties.disableLocalAuth",
+      "Microsoft.ServiceBus/namespaces/enabled": "properties.enabled",
+      "Microsoft.ServiceBus/namespaces/encryption": "properties.encryption",
+      "Microsoft.ServiceBus/namespaces/encryption.keySource": "properties.encryption.keySource",
+      "Microsoft.ServiceBus/namespaces/encryption.keyVaultProperties": "properties.encryption.keyVaultProperties",
+      "Microsoft.ServiceBus/namespaces/encryption.keyVaultProperties.keyName": "properties.encryption.keyVaultProperties.keyName",
+      "Microsoft.ServiceBus/namespaces/encryption.keyVaultProperties.keyVaultUri": "properties.encryption.keyVaultProperties.keyVaultUri",
+      "Microsoft.ServiceBus/namespaces/encryption.keyVaultProperties[*]": "properties.encryption.keyVaultProperties[*]",
+      "Microsoft.ServiceBus/namespaces/encryption.keyVaultProperties[*].identity": "properties.encryption.keyVaultProperties[*].identity",
+      "Microsoft.ServiceBus/namespaces/encryption.keyVaultProperties[*].identity.userAssignedIdentity": "properties.encryption.keyVaultProperties[*].identity.userAssignedIdentity",
+      "Microsoft.ServiceBus/namespaces/encryption.keyVaultProperties[*].keyName": "properties.encryption.keyVaultProperties[*].keyName",
+      "Microsoft.ServiceBus/namespaces/encryption.keyVaultProperties[*].keyVaultUri": "properties.encryption.keyVaultProperties[*].keyVaultUri",
+      "Microsoft.ServiceBus/namespaces/encryption.keyVaultProperties[*].keyVersion": "properties.encryption.keyVaultProperties[*].keyVersion",
+      "Microsoft.ServiceBus/namespaces/encryption.requireInfrastructureEncryption": "properties.encryption.requireInfrastructureEncryption",
+      "Microsoft.ServiceBus/namespaces/identity": "properties.identity",
+      "Microsoft.ServiceBus/namespaces/identity.principalId": "properties.identity.principalId",
+      "Microsoft.ServiceBus/namespaces/identity.tenantId": "properties.identity.tenantId",
+      "Microsoft.ServiceBus/namespaces/identity.type": "properties.identity.type",
+      "Microsoft.ServiceBus/namespaces/metricId": "properties.metricId",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].systemData": "properties.privateEndpointConnections[*].systemData",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].systemData.createdAt": "properties.privateEndpointConnections[*].systemData.createdAt",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].systemData.createdBy": "properties.privateEndpointConnections[*].systemData.createdBy",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].systemData.createdByType": "properties.privateEndpointConnections[*].systemData.createdByType",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].systemData.lastModifiedAt": "properties.privateEndpointConnections[*].systemData.lastModifiedAt",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].systemData.lastModifiedBy": "properties.privateEndpointConnections[*].systemData.lastModifiedBy",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].systemData.lastModifiedByType": "properties.privateEndpointConnections[*].systemData.lastModifiedByType",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
+      "Microsoft.ServiceBus/namespaces/provisioningState": "properties.provisioningState",
+      "Microsoft.ServiceBus/namespaces/serviceBusEndpoint": "properties.serviceBusEndpoint",
+      "Microsoft.ServiceBus/namespaces/sku": "sku",
+      "Microsoft.ServiceBus/namespaces/sku.capacity": "sku.capacity",
+      "Microsoft.ServiceBus/namespaces/sku.name": "sku.name",
+      "Microsoft.ServiceBus/namespaces/sku.tier": "sku.tier",
+      "Microsoft.ServiceBus/namespaces/status": "properties.status",
+      "Microsoft.ServiceBus/namespaces/updatedAt": "properties.updatedAt",
+      "Microsoft.ServiceBus/namespaces/zoneRedundant": "properties.zoneRedundant"
+    },
+    "resourceType": "namespaces",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "West Central US",
+      "East Asia",
+      "Southeast Asia",
+      "Brazil South",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "Central India",
+      "South India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "UK West",
+      "UK South",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "South Africa North",
+      "UAE North",
+      "Australia Central",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ServiceBus/namespaces/authorizationrules/rights": "properties.rights",
+      "Microsoft.ServiceBus/namespaces/authorizationrules/rights[*]": "properties.rights[*]"
+    },
+    "resourceType": "namespaces/authorizationrules",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ServiceBus/namespaces/disasterrecoveryconfigs/alternateName": "properties.alternateName",
+      "Microsoft.ServiceBus/namespaces/disasterrecoveryconfigs/partnerNamespace": "properties.partnerNamespace",
+      "Microsoft.ServiceBus/namespaces/disasterrecoveryconfigs/pendingReplicationOperationsCount": "properties.pendingReplicationOperationsCount",
+      "Microsoft.ServiceBus/namespaces/disasterrecoveryconfigs/provisioningState": "properties.provisioningState",
+      "Microsoft.ServiceBus/namespaces/disasterrecoveryconfigs/role": "properties.role"
+    },
+    "resourceType": "namespaces/disasterrecoveryconfigs",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "namespaces/disasterrecoveryconfigs/checkNameAvailability",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "namespaces/eventgridfilters",
+    "apiVersions": [
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "West Central US",
+      "East Asia",
+      "Southeast Asia",
+      "Brazil South",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "Central India",
+      "South India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "UK West",
+      "UK South",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "South Africa North",
+      "UAE North",
+      "Australia Central",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ServiceBus/namespaces/networkrulesets/default.defaultAction": "properties.defaultAction",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/default.ipRules": "properties.ipRules",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/default.ipRules[*]": "properties.ipRules[*]",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/default.ipRules[*].action": "properties.ipRules[*].action",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/default.ipRules[*].ipMask": "properties.ipRules[*].ipMask",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/default.virtualNetworkRules": "properties.virtualNetworkRules",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/default.virtualNetworkRules[*]": "properties.virtualNetworkRules[*]",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/default.virtualNetworkRules[*].ignoreMissingVnetServiceEndpoint": "properties.virtualNetworkRules[*].ignoreMissingVnetServiceEndpoint",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/default.virtualNetworkRules[*].subnet": "properties.virtualNetworkRules[*].subnet",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/default.virtualNetworkRules[*].subnet.id": "properties.virtualNetworkRules[*].subnet.id",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/defaultAction": "properties.defaultAction",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/ipRules": "properties.ipRules",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/ipRules[*]": "properties.ipRules[*]",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/ipRules[*].action": "properties.ipRules[*].action",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/ipRules[*].ipMask": "properties.ipRules[*].ipMask",
+      "Microsoft.ServiceBus/namespaces/networkRuleSets/publicNetworkAccess": "properties.publicNetworkAccess",
+      "Microsoft.ServiceBus/namespaces/networkRuleSets/trustedServiceAccessEnabled": "properties.trustedServiceAccessEnabled",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/virtualNetworkRules": "properties.virtualNetworkRules",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/virtualNetworkRules[*]": "properties.virtualNetworkRules[*]",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/virtualNetworkRules[*].ignoreMissingVnetServiceEndpoint": "properties.virtualNetworkRules[*].ignoreMissingVnetServiceEndpoint",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/virtualNetworkRules[*].subnet": "properties.virtualNetworkRules[*].subnet",
+      "Microsoft.ServiceBus/namespaces/networkrulesets/virtualNetworkRules[*].subnet.id": "properties.virtualNetworkRules[*].subnet.id"
+    },
+    "resourceType": "namespaces/networkrulesets",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "namespaces/privateEndpointConnections",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ServiceBus/namespaces/queues/accessedAt": "properties.accessedAt",
+      "Microsoft.ServiceBus/namespaces/queues/autoDeleteOnIdle": "properties.autoDeleteOnIdle",
+      "Microsoft.ServiceBus/namespaces/queues/countDetails": "properties.countDetails",
+      "Microsoft.ServiceBus/namespaces/queues/countDetails.activeMessageCount": "properties.countDetails.activeMessageCount",
+      "Microsoft.ServiceBus/namespaces/queues/countDetails.deadLetterMessageCount": "properties.countDetails.deadLetterMessageCount",
+      "Microsoft.ServiceBus/namespaces/queues/countDetails.scheduledMessageCount": "properties.countDetails.scheduledMessageCount",
+      "Microsoft.ServiceBus/namespaces/queues/countDetails.transferDeadLetterMessageCount": "properties.countDetails.transferDeadLetterMessageCount",
+      "Microsoft.ServiceBus/namespaces/queues/countDetails.transferMessageCount": "properties.countDetails.transferMessageCount",
+      "Microsoft.ServiceBus/namespaces/queues/createdAt": "properties.createdAt",
+      "Microsoft.ServiceBus/namespaces/queues/deadLetteringOnMessageExpiration": "properties.deadLetteringOnMessageExpiration",
+      "Microsoft.ServiceBus/namespaces/queues/defaultMessageTimeToLive": "properties.defaultMessageTimeToLive",
+      "Microsoft.ServiceBus/namespaces/queues/duplicateDetectionHistoryTimeWindow": "properties.duplicateDetectionHistoryTimeWindow",
+      "Microsoft.ServiceBus/namespaces/queues/enableBatchedOperations": "properties.enableBatchedOperations",
+      "Microsoft.ServiceBus/namespaces/queues/enableExpress": "properties.enableExpress",
+      "Microsoft.ServiceBus/namespaces/queues/enablePartitioning": "properties.enablePartitioning",
+      "Microsoft.ServiceBus/namespaces/queues/entityAvailabilityStatus": "properties.entityAvailabilityStatus",
+      "Microsoft.ServiceBus/namespaces/queues/forwardDeadLetteredMessagesTo": "properties.forwardDeadLetteredMessagesTo",
+      "Microsoft.ServiceBus/namespaces/queues/forwardTo": "properties.forwardTo",
+      "Microsoft.ServiceBus/namespaces/queues/isAnonymousAccessible": "properties.isAnonymousAccessible",
+      "Microsoft.ServiceBus/namespaces/queues/lockDuration": "properties.lockDuration",
+      "Microsoft.ServiceBus/namespaces/queues/maxDeliveryCount": "properties.maxDeliveryCount",
+      "Microsoft.ServiceBus/namespaces/queues/maxMessageSizeInKilobytes": "properties.maxMessageSizeInKilobytes",
+      "Microsoft.ServiceBus/namespaces/queues/maxSizeInMegabytes": "properties.maxSizeInMegabytes",
+      "Microsoft.ServiceBus/namespaces/queues/messageCount": "properties.messageCount",
+      "Microsoft.ServiceBus/namespaces/queues/requiresDuplicateDetection": "properties.requiresDuplicateDetection",
+      "Microsoft.ServiceBus/namespaces/queues/requiresSession": "properties.requiresSession",
+      "Microsoft.ServiceBus/namespaces/queues/sizeInBytes": "properties.sizeInBytes",
+      "Microsoft.ServiceBus/namespaces/queues/status": "properties.status",
+      "Microsoft.ServiceBus/namespaces/queues/supportOrdering": "properties.supportOrdering",
+      "Microsoft.ServiceBus/namespaces/queues/updatedAt": "properties.updatedAt"
+    },
+    "resourceType": "namespaces/queues",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ServiceBus/namespaces/queues/authorizationrules/rights": "properties.rights",
+      "Microsoft.ServiceBus/namespaces/queues/authorizationrules/rights[*]": "properties.rights[*]"
+    },
+    "resourceType": "namespaces/queues/authorizationrules",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "namespaces/topics",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "namespaces/topics/authorizationrules",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "namespaces/topics/subscriptions",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "namespaces/topics/subscriptions/rules",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "premiumMessagingRegions",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "sku",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ServiceBus/namespaces/ipFilterRules/action": "properties.action",
+      "Microsoft.ServiceBus/namespaces/ipFilterRules/filterName": "properties.filterName",
+      "Microsoft.ServiceBus/namespaces/ipFilterRules/ipMask": "properties.ipMask"
+    },
+    "resourceType": "namespaces/ipfilterrules"
+  },
+  {
+    "aliases": {
+      "Microsoft.ServiceBus/namespaces/messagingPlan/revision": "properties.revision",
+      "Microsoft.ServiceBus/namespaces/messagingPlan/selectedEventHubUnit": "properties.selectedEventHubUnit",
+      "Microsoft.ServiceBus/namespaces/messagingPlan/sku": "properties.sku",
+      "Microsoft.ServiceBus/namespaces/messagingPlan/updatedAt": "properties.updatedAt"
+    },
+    "resourceType": "namespaces/messagingplan"
+  },
+  {
+    "aliases": {
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.migrationState": "properties.migrationState",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.pendingReplicationOperationsCount": "properties.pendingReplicationOperationsCount",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.postMigrationName": "properties.postMigrationName",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.provisioningState": "properties.provisioningState",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.targetNamespace": "properties.targetNamespace",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/migrationState": "properties.migrationState",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/pendingReplicationOperationsCount": "properties.pendingReplicationOperationsCount",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/postMigrationName": "properties.postMigrationName",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/provisioningState": "properties.provisioningState",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/targetNamespace": "properties.targetNamespace"
+    },
+    "resourceType": "namespaces/migrationconfigurations"
+  },
+  {
+    "aliases": {
+      "Microsoft.ServiceBus/namespaces/virtualNetworkRules/virtualNetworkSubnetId": "properties.virtualNetworkSubnetId"
+    },
+    "resourceType": "namespaces/virtualnetworkrules"
+  }
+]

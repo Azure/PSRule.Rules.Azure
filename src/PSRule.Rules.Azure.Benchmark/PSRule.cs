@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -7,6 +7,8 @@ using System.Management.Automation;
 using System.Reflection;
 using BenchmarkDotNet.Attributes;
 using PSRule.Rules.Azure.Configuration;
+using PSRule.Rules.Azure.Data.Policy;
+using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
 
 namespace PSRule.Rules.Azure.Benchmark
@@ -18,12 +20,20 @@ namespace PSRule.Rules.Azure.Benchmark
     [MarkdownExporterAttribute.GitHub]
     public class PSRule
     {
+        private static readonly string[] POLICY_ALIAS = new string[] {
+            "Microsoft.Storage/storageAccounts/minimumTlsVersion",
+            "Microsoft.Web/sites/slots/config/appSettings",
+            "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks"
+        };
+
         private IPipeline _TemplatePipeline;
         private PSObject _TemplateTemplate;
         private IPipeline _PropertyCopyLoopPipeline;
         private PSObject _PropertyCopyLoopTemplate;
         private IPipeline _UserDefinedFunctionsPipeline;
         private PSObject _UserDefinedFunctionsTemplate;
+        private PolicyAliasProviderHelper _PolicyAliasProviderHelper;
+        private ResourceProviderHelper _ResourceProviderHelper;
 
         [GlobalSetup]
         public void Prepare()
@@ -31,6 +41,8 @@ namespace PSRule.Rules.Azure.Benchmark
             PrepareTemplatePipeline();
             PreparePropertyCopyLoopPipeline();
             PrepareUserDefinedFunctionsPipeline();
+            PrepareResolvePolicyAliasPath();
+            PrepareGetResourceType();
         }
 
         private void PrepareTemplatePipeline()
@@ -63,6 +75,16 @@ namespace PSRule.Rules.Azure.Benchmark
             ));
         }
 
+        private void PrepareResolvePolicyAliasPath()
+        {
+            _PolicyAliasProviderHelper = new PolicyAliasProviderHelper();
+        }
+
+        private void PrepareGetResourceType()
+        {
+            _ResourceProviderHelper = new ResourceProviderHelper();
+        }
+
         [Benchmark]
         public void Template()
         {
@@ -79,6 +101,21 @@ namespace PSRule.Rules.Azure.Benchmark
         public void UserDefinedFunctions()
         {
             RunPipelineTargets(_UserDefinedFunctionsPipeline, _UserDefinedFunctionsTemplate);
+        }
+
+        [Benchmark]
+        public void ResolvePolicyAliasPath()
+        {
+            _PolicyAliasProviderHelper.ResolvePolicyAliasPath(POLICY_ALIAS[0], out _);
+            _PolicyAliasProviderHelper.ResolvePolicyAliasPath(POLICY_ALIAS[1], out _);
+            _PolicyAliasProviderHelper.ResolvePolicyAliasPath(POLICY_ALIAS[2], out _);
+        }
+
+        [Benchmark]
+        public void GetResourceType()
+        {
+            _ResourceProviderHelper.GetResourceType("Microsoft.Compute", "virtualMachines");
+            _ResourceProviderHelper.GetResourceType("Microsoft.ContainerService", "managedClusters");
         }
 
         private void RunPipelineTargets(IPipeline pipeline, PSObject templateSource)

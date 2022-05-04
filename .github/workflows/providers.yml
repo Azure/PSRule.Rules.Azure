@@ -12,9 +12,14 @@ on:
     - cron:  '0 0 1 * *' # 00:00 on first day of each month
   workflow_dispatch:
 
+env:
+  WORKING_BRANCH: dependencies/providers-bump
+
 jobs:
   bump:
+    name: Bump providers
     runs-on: ubuntu-latest
+    if: github.repository == 'Azure/PSRule.Rules.Azure'
     permissions:
       contents: write
       pull-requests: write
@@ -22,11 +27,17 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Configure
         run: |
           git config user.name github-actions
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Get working branch
+        run: |
+          git checkout -B ${{ env.WORKING_BRANCH }} --force
 
       - name: Azure Login
         uses: Azure/login@v1
@@ -38,15 +49,8 @@ jobs:
         uses: Azure/powershell@v1
         with:
           inlineScript: |
-            Install-Module InvokeBuild -MinimumVersion 5.4.0 -Scope CurrentUser -Force
-            Invoke-Build ExportProviders
+            Import-Module ./scripts/providers.psm1;
+            Update-Providers -Path ./data;
           azPSVersion: latest
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Bump providers data
-          title: Bump providers data
-          body: 'Updates to providers.json'
-          delete-branch: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,51 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "clusters",
+    "apiVersions": [
+      "2021-11-01",
+      "2020-08-26"
+    ],
+    "locations": [
+      "West US 2",
+      "East US",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2021-11-01",
+      "2020-08-26"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2021-11-01",
+      "2020-08-26"
+    ],
+    "locations": [
+      "West US 2",
+      "West US 3",
+      "East US",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2021-11-01",
+      "2020-08-26"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

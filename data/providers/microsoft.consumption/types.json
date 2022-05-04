@@ -1,0 +1,478 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "AggregatedCost",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-05-01",
+      "2019-01-01",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Balances",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-05-01",
+      "2019-01-01",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30",
+      "2018-05-31",
+      "2018-03-31",
+      "2018-01-31",
+      "2017-11-30",
+      "2017-06-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Consumption/budgets/amount": "properties.amount",
+      "Microsoft.Consumption/budgets/category": "properties.category",
+      "Microsoft.Consumption/budgets/currentSpend": "properties.currentSpend",
+      "Microsoft.Consumption/budgets/currentSpend.amount": "properties.currentSpend.amount",
+      "Microsoft.Consumption/budgets/currentSpend.unit": "properties.currentSpend.unit",
+      "Microsoft.Consumption/budgets/filter": "properties.filter",
+      "Microsoft.Consumption/budgets/filter.and": "properties.filter.and",
+      "Microsoft.Consumption/budgets/filter.and[*]": "properties.filter.and[*]",
+      "Microsoft.Consumption/budgets/filter.and[*].dimensions": "properties.filter.and[*].dimensions",
+      "Microsoft.Consumption/budgets/filter.and[*].dimensions.name": "properties.filter.and[*].dimensions.name",
+      "Microsoft.Consumption/budgets/filter.and[*].dimensions.operator": "properties.filter.and[*].dimensions.operator",
+      "Microsoft.Consumption/budgets/filter.and[*].dimensions.values": "properties.filter.and[*].dimensions.values",
+      "Microsoft.Consumption/budgets/filter.and[*].dimensions.values[*]": "properties.filter.and[*].dimensions.values[*]",
+      "Microsoft.Consumption/budgets/filter.and[*].tags": "properties.filter.and[*].tags",
+      "Microsoft.Consumption/budgets/filter.and[*].tags.name": "properties.filter.and[*].tags.name",
+      "Microsoft.Consumption/budgets/filter.and[*].tags.operator": "properties.filter.and[*].tags.operator",
+      "Microsoft.Consumption/budgets/filter.and[*].tags.values": "properties.filter.and[*].tags.values",
+      "Microsoft.Consumption/budgets/filter.and[*].tags.values[*]": "properties.filter.and[*].tags.values[*]",
+      "Microsoft.Consumption/budgets/filter.dimensions": "properties.filter.dimensions",
+      "Microsoft.Consumption/budgets/filter.dimensions.name": "properties.filter.dimensions.name",
+      "Microsoft.Consumption/budgets/filter.dimensions.operator": "properties.filter.dimensions.operator",
+      "Microsoft.Consumption/budgets/filter.dimensions.values": "properties.filter.dimensions.values",
+      "Microsoft.Consumption/budgets/filter.dimensions.values[*]": "properties.filter.dimensions.values[*]",
+      "Microsoft.Consumption/budgets/filter.not": "properties.filter.not",
+      "Microsoft.Consumption/budgets/filter.not.dimensions": "properties.filter.not.dimensions",
+      "Microsoft.Consumption/budgets/filter.not.dimensions.name": "properties.filter.not.dimensions.name",
+      "Microsoft.Consumption/budgets/filter.not.dimensions.operator": "properties.filter.not.dimensions.operator",
+      "Microsoft.Consumption/budgets/filter.not.dimensions.values": "properties.filter.not.dimensions.values",
+      "Microsoft.Consumption/budgets/filter.not.dimensions.values[*]": "properties.filter.not.dimensions.values[*]",
+      "Microsoft.Consumption/budgets/filter.not.tags": "properties.filter.not.tags",
+      "Microsoft.Consumption/budgets/filter.not.tags.name": "properties.filter.not.tags.name",
+      "Microsoft.Consumption/budgets/filter.not.tags.operator": "properties.filter.not.tags.operator",
+      "Microsoft.Consumption/budgets/filter.not.tags.values": "properties.filter.not.tags.values",
+      "Microsoft.Consumption/budgets/filter.not.tags.values[*]": "properties.filter.not.tags.values[*]",
+      "Microsoft.Consumption/budgets/filter.tags": "properties.filter.tags",
+      "Microsoft.Consumption/budgets/filter.tags.name": "properties.filter.tags.name",
+      "Microsoft.Consumption/budgets/filter.tags.operator": "properties.filter.tags.operator",
+      "Microsoft.Consumption/budgets/filter.tags.values": "properties.filter.tags.values",
+      "Microsoft.Consumption/budgets/filter.tags.values[*]": "properties.filter.tags.values[*]",
+      "Microsoft.Consumption/budgets/filters": "properties.filters",
+      "Microsoft.Consumption/budgets/filters.meters": "properties.filters.meters",
+      "Microsoft.Consumption/budgets/filters.meters[*]": "properties.filters.meters[*]",
+      "Microsoft.Consumption/budgets/filters.resourceGroups": "properties.filters.resourceGroups",
+      "Microsoft.Consumption/budgets/filters.resourceGroups[*]": "properties.filters.resourceGroups[*]",
+      "Microsoft.Consumption/budgets/filters.resources": "properties.filters.resources",
+      "Microsoft.Consumption/budgets/filters.resources[*]": "properties.filters.resources[*]",
+      "Microsoft.Consumption/budgets/filters.tags": "properties.filters.tags",
+      "Microsoft.Consumption/budgets/notifications": "properties.notifications",
+      "Microsoft.Consumption/budgets/timeGrain": "properties.timeGrain",
+      "Microsoft.Consumption/budgets/timePeriod": "properties.timePeriod",
+      "Microsoft.Consumption/budgets/timePeriod.endDate": "properties.timePeriod.endDate",
+      "Microsoft.Consumption/budgets/timePeriod.startDate": "properties.timePeriod.startDate"
+    },
+    "resourceType": "Budgets",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-05-01",
+      "2019-04-01-preview",
+      "2019-03-01-preview",
+      "2019-01-01-preview",
+      "2019-01-01",
+      "2018-12-01-preview",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30",
+      "2018-03-31",
+      "2018-01-31",
+      "2017-12-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Charges",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-05-01-preview",
+      "2019-05-01",
+      "2019-01-01",
+      "2018-11-01-preview",
+      "2018-10-01",
+      "2018-08-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "CostTags",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30",
+      "2018-05-31",
+      "2018-03-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "credits",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-05-01",
+      "2019-10-01",
+      "2018-11-01-preview",
+      "2018-10-01",
+      "2018-08-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "events",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-05-01",
+      "2019-10-01",
+      "2018-11-01-preview",
+      "2018-10-01",
+      "2018-08-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Forecasts",
+    "apiVersions": [
+      "2019-10-01",
+      "2019-05-01",
+      "2019-01-01",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30",
+      "2018-05-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "lots",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-05-01",
+      "2019-10-01",
+      "2018-11-01-preview",
+      "2018-10-01",
+      "2018-08-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Marketplaces",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-05-01",
+      "2019-01-01",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30",
+      "2018-05-31",
+      "2018-03-31",
+      "2018-01-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "OperationResults",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-01-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01-preview",
+      "2019-05-01",
+      "2019-04-01-preview",
+      "2019-01-01",
+      "2018-11-01-preview",
+      "2018-10-01",
+      "2018-08-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-05-01",
+      "2019-01-01",
+      "2018-11-01-preview",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30",
+      "2018-05-31",
+      "2018-03-31",
+      "2018-01-31",
+      "2017-11-30",
+      "2017-06-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "OperationStatus",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-01-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01-preview",
+      "2019-05-01",
+      "2019-04-01-preview",
+      "2019-01-01",
+      "2018-11-01-preview",
+      "2018-10-01",
+      "2018-08-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Pricesheets",
+    "apiVersions": [
+      "2021-10-01",
+      "2020-01-01-preview",
+      "2019-10-01",
+      "2019-05-01",
+      "2019-01-01",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30",
+      "2018-05-31",
+      "2018-03-31",
+      "2018-01-31",
+      "2017-11-30",
+      "2017-06-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "products",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2018-10-01",
+      "2018-08-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ReservationDetails",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-05-01",
+      "2019-01-01-preview",
+      "2019-01-01",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30",
+      "2018-03-31",
+      "2018-01-31",
+      "2017-11-30",
+      "2017-06-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ReservationRecommendationDetails",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ReservationRecommendations",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-05-01",
+      "2019-01-01-preview",
+      "2019-01-01",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30",
+      "2018-03-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ReservationSummaries",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-05-01",
+      "2019-01-01-preview",
+      "2019-01-01",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30",
+      "2018-03-31",
+      "2018-01-31",
+      "2017-11-30",
+      "2017-06-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ReservationTransactions",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-05-01",
+      "2019-01-01",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30",
+      "2018-05-31",
+      "2018-03-31",
+      "2018-01-31",
+      "2017-11-30",
+      "2017-06-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Tags",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01",
+      "2019-04-01-preview",
+      "2019-03-01-preview",
+      "2019-01-01",
+      "2018-12-01-preview",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-08-01-preview",
+      "2018-06-30",
+      "2018-05-31",
+      "2018-03-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "tenants",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-05-01",
+      "2019-01-01",
+      "2018-10-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Terms",
+    "apiVersions": [
+      "2021-10-01",
+      "2019-10-01",
+      "2019-05-01",
+      "2019-01-01",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30",
+      "2018-03-31",
+      "2018-01-31",
+      "2017-12-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "UsageDetails",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-01-01",
+      "2019-11-01",
+      "2019-10-01",
+      "2019-05-01-preview",
+      "2019-05-01",
+      "2019-04-01-preview",
+      "2019-01-01",
+      "2018-12-01-preview",
+      "2018-11-01-preview",
+      "2018-10-01",
+      "2018-08-31",
+      "2018-06-30",
+      "2018-05-31",
+      "2018-03-31",
+      "2018-01-31",
+      "2017-11-30",
+      "2017-06-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

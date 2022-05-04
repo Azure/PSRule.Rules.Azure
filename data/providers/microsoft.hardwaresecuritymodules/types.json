@@ -1,0 +1,46 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-11-30",
+      "2018-10-31-preview",
+      "2018-10-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-11-30",
+      "2018-10-31-preview",
+      "2018-10-31"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "South Central US",
+      "Central US",
+      "West US",
+      "East Asia",
+      "Southeast Asia",
+      "North Europe",
+      "West Europe",
+      "Canada Central",
+      "UK South",
+      "UK West",
+      "Australia East",
+      "Australia Southeast",
+      "West US 2",
+      "South India",
+      "Central India",
+      "Japan East",
+      "Japan West",
+      "Switzerland North",
+      "Switzerland West"
+    ],
+    "zoneMappings": null
+  }
+]

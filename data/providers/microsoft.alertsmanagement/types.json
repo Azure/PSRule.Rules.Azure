@@ -1,0 +1,200 @@
+[
+  {
+    "aliases": {
+      "Microsoft.AlertsManagement/actionRules/conditions": "properties.conditions",
+      "Microsoft.AlertsManagement/actionRules/conditions.alertContext": "properties.conditions.alertContext",
+      "Microsoft.AlertsManagement/actionRules/conditions.alertContext.operator": "properties.conditions.alertContext.operator",
+      "Microsoft.AlertsManagement/actionRules/conditions.alertContext.values": "properties.conditions.alertContext.values",
+      "Microsoft.AlertsManagement/actionRules/conditions.alertContext.values[*]": "properties.conditions.alertContext.values[*]",
+      "Microsoft.AlertsManagement/actionRules/conditions.alertRuleId": "properties.conditions.alertRuleId",
+      "Microsoft.AlertsManagement/actionRules/conditions.alertRuleId.operator": "properties.conditions.alertRuleId.operator",
+      "Microsoft.AlertsManagement/actionRules/conditions.alertRuleId.values": "properties.conditions.alertRuleId.values",
+      "Microsoft.AlertsManagement/actionRules/conditions.alertRuleId.values[*]": "properties.conditions.alertRuleId.values[*]",
+      "Microsoft.AlertsManagement/actionRules/conditions.applicationInsightsSearchResults": "properties.conditions.applicationInsightsSearchResults",
+      "Microsoft.AlertsManagement/actionRules/conditions.applicationInsightsSearchResults.operator": "properties.conditions.applicationInsightsSearchResults.operator",
+      "Microsoft.AlertsManagement/actionRules/conditions.applicationInsightsSearchResults.values": "properties.conditions.applicationInsightsSearchResults.values",
+      "Microsoft.AlertsManagement/actionRules/conditions.applicationInsightsSearchResults.values[*]": "properties.conditions.applicationInsightsSearchResults.values[*]",
+      "Microsoft.AlertsManagement/actionRules/conditions.description": "properties.conditions.description",
+      "Microsoft.AlertsManagement/actionRules/conditions.description.operator": "properties.conditions.description.operator",
+      "Microsoft.AlertsManagement/actionRules/conditions.description.values": "properties.conditions.description.values",
+      "Microsoft.AlertsManagement/actionRules/conditions.description.values[*]": "properties.conditions.description.values[*]",
+      "Microsoft.AlertsManagement/actionRules/conditions.logAnalyticsSearchResults": "properties.conditions.logAnalyticsSearchResults",
+      "Microsoft.AlertsManagement/actionRules/conditions.logAnalyticsSearchResults.operator": "properties.conditions.logAnalyticsSearchResults.operator",
+      "Microsoft.AlertsManagement/actionRules/conditions.logAnalyticsSearchResults.values": "properties.conditions.logAnalyticsSearchResults.values",
+      "Microsoft.AlertsManagement/actionRules/conditions.logAnalyticsSearchResults.values[*]": "properties.conditions.logAnalyticsSearchResults.values[*]",
+      "Microsoft.AlertsManagement/actionRules/conditions.monitorCondition": "properties.conditions.monitorCondition",
+      "Microsoft.AlertsManagement/actionRules/conditions.monitorCondition.operator": "properties.conditions.monitorCondition.operator",
+      "Microsoft.AlertsManagement/actionRules/conditions.monitorCondition.values": "properties.conditions.monitorCondition.values",
+      "Microsoft.AlertsManagement/actionRules/conditions.monitorCondition.values[*]": "properties.conditions.monitorCondition.values[*]",
+      "Microsoft.AlertsManagement/actionRules/conditions.monitorService": "properties.conditions.monitorService",
+      "Microsoft.AlertsManagement/actionRules/conditions.monitorService.operator": "properties.conditions.monitorService.operator",
+      "Microsoft.AlertsManagement/actionRules/conditions.monitorService.values": "properties.conditions.monitorService.values",
+      "Microsoft.AlertsManagement/actionRules/conditions.monitorService.values[*]": "properties.conditions.monitorService.values[*]",
+      "Microsoft.AlertsManagement/actionRules/conditions.severity": "properties.conditions.severity",
+      "Microsoft.AlertsManagement/actionRules/conditions.severity.operator": "properties.conditions.severity.operator",
+      "Microsoft.AlertsManagement/actionRules/conditions.severity.values": "properties.conditions.severity.values",
+      "Microsoft.AlertsManagement/actionRules/conditions.severity.values[*]": "properties.conditions.severity.values[*]",
+      "Microsoft.AlertsManagement/actionRules/conditions.signalType": "properties.conditions.signalType",
+      "Microsoft.AlertsManagement/actionRules/conditions.signalType.operator": "properties.conditions.signalType.operator",
+      "Microsoft.AlertsManagement/actionRules/conditions.signalType.values": "properties.conditions.signalType.values",
+      "Microsoft.AlertsManagement/actionRules/conditions.signalType.values[*]": "properties.conditions.signalType.values[*]",
+      "Microsoft.AlertsManagement/actionRules/conditions.targetResource": "properties.conditions.targetResource",
+      "Microsoft.AlertsManagement/actionRules/conditions.targetResource.operator": "properties.conditions.targetResource.operator",
+      "Microsoft.AlertsManagement/actionRules/conditions.targetResource.values": "properties.conditions.targetResource.values",
+      "Microsoft.AlertsManagement/actionRules/conditions.targetResource.values[*]": "properties.conditions.targetResource.values[*]",
+      "Microsoft.AlertsManagement/actionRules/conditions.targetResourceGroup": "properties.conditions.targetResourceGroup",
+      "Microsoft.AlertsManagement/actionRules/conditions.targetResourceGroup.operator": "properties.conditions.targetResourceGroup.operator",
+      "Microsoft.AlertsManagement/actionRules/conditions.targetResourceGroup.values": "properties.conditions.targetResourceGroup.values",
+      "Microsoft.AlertsManagement/actionRules/conditions.targetResourceGroup.values[*]": "properties.conditions.targetResourceGroup.values[*]",
+      "Microsoft.AlertsManagement/actionRules/conditions.targetResourceType": "properties.conditions.targetResourceType",
+      "Microsoft.AlertsManagement/actionRules/conditions.targetResourceType.operator": "properties.conditions.targetResourceType.operator",
+      "Microsoft.AlertsManagement/actionRules/conditions.targetResourceType.values": "properties.conditions.targetResourceType.values",
+      "Microsoft.AlertsManagement/actionRules/conditions.targetResourceType.values[*]": "properties.conditions.targetResourceType.values[*]",
+      "Microsoft.AlertsManagement/actionRules/createdAt": "properties.createdAt",
+      "Microsoft.AlertsManagement/actionRules/createdBy": "properties.createdBy",
+      "Microsoft.AlertsManagement/actionRules/description": "properties.description",
+      "Microsoft.AlertsManagement/actionRules/lastModifiedAt": "properties.lastModifiedAt",
+      "Microsoft.AlertsManagement/actionRules/lastModifiedBy": "properties.lastModifiedBy",
+      "Microsoft.AlertsManagement/actionRules/resourceGroup": "properties.resourceGroup",
+      "Microsoft.AlertsManagement/actionRules/scope": "properties.scope",
+      "Microsoft.AlertsManagement/actionRules/scope.scopeType": "properties.scope.scopeType",
+      "Microsoft.AlertsManagement/actionRules/scope.type": "properties.scope.type",
+      "Microsoft.AlertsManagement/actionRules/scope.values": "properties.scope.values",
+      "Microsoft.AlertsManagement/actionRules/scope.values[*]": "properties.scope.values[*]",
+      "Microsoft.AlertsManagement/actionRules/status": "properties.status",
+      "Microsoft.AlertsManagement/actionRules/suppressionConfig": "properties.suppressionConfig",
+      "Microsoft.AlertsManagement/actionRules/suppressionConfig.recurrenceType": "properties.suppressionConfig.recurrenceType",
+      "Microsoft.AlertsManagement/actionRules/suppressionConfig.schedule": "properties.suppressionConfig.schedule",
+      "Microsoft.AlertsManagement/actionRules/suppressionConfig.schedule.endDate": "properties.suppressionConfig.schedule.endDate",
+      "Microsoft.AlertsManagement/actionRules/suppressionConfig.schedule.endTime": "properties.suppressionConfig.schedule.endTime",
+      "Microsoft.AlertsManagement/actionRules/suppressionConfig.schedule.recurrenceValues": "properties.suppressionConfig.schedule.recurrenceValues",
+      "Microsoft.AlertsManagement/actionRules/suppressionConfig.schedule.recurrenceValues[*]": "properties.suppressionConfig.schedule.recurrenceValues[*]",
+      "Microsoft.AlertsManagement/actionRules/suppressionConfig.schedule.startDate": "properties.suppressionConfig.schedule.startDate",
+      "Microsoft.AlertsManagement/actionRules/suppressionConfig.schedule.startTime": "properties.suppressionConfig.schedule.startTime",
+      "Microsoft.AlertsManagement/actionRules/type": "properties.type"
+    },
+    "resourceType": "actionRules",
+    "apiVersions": [
+      "2021-08-08-preview",
+      "2021-08-08",
+      "2019-05-05-preview",
+      "2018-11-02-privatepreview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "alerts",
+    "apiVersions": [
+      "2019-05-05-preview",
+      "2019-03-01-preview",
+      "2019-03-01",
+      "2018-11-02-privatepreview",
+      "2018-05-05-preview",
+      "2018-05-05",
+      "2017-11-15-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "alertsMetaData",
+    "apiVersions": [
+      "2019-05-05-preview",
+      "2019-03-01-preview",
+      "2019-03-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "alertsSummary",
+    "apiVersions": [
+      "2019-05-05-preview",
+      "2019-03-01-preview",
+      "2019-03-01",
+      "2018-05-05-preview",
+      "2018-05-05",
+      "2017-11-15-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "migrateFromSmartDetection",
+    "apiVersions": [
+      "2021-01-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2019-05-05-preview",
+      "2018-05-05-preview",
+      "2018-05-05",
+      "2017-11-15-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/actionGroups": "properties.actionGroups",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/actionGroups.customEmailSubject": "properties.actionGroups.customEmailSubject",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/actionGroups.customWebhookPayload": "properties.actionGroups.customWebhookPayload",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/actionGroups.groupIds": "properties.actionGroups.groupIds",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/actionGroups.groupIds[*]": "properties.actionGroups.groupIds[*]",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/description": "properties.description",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/detector": "properties.detector",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/detector.description": "properties.detector.description",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/detector.id": "properties.detector.id",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/detector.imagePaths": "properties.detector.imagePaths",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/detector.imagePaths[*]": "properties.detector.imagePaths[*]",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/detector.name": "properties.detector.name",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/detector.parameters": "properties.detector.parameters",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/detector.supportedResourceTypes": "properties.detector.supportedResourceTypes",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/detector.supportedResourceTypes[*]": "properties.detector.supportedResourceTypes[*]",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/frequency": "properties.frequency",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/scope": "properties.scope",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/scope[*]": "properties.scope[*]",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/severity": "properties.severity",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/state": "properties.state",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/throttling": "properties.throttling",
+      "Microsoft.AlertsManagement/smartDetectorAlertRules/throttling.duration": "properties.throttling.duration"
+    },
+    "resourceType": "smartDetectorAlertRules",
+    "apiVersions": [
+      "2021-04-01",
+      "2019-06-01",
+      "2019-03-01",
+      "2018-02-01-privatepreview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "smartGroups",
+    "apiVersions": [
+      "2019-05-05-preview",
+      "2018-05-05-preview",
+      "2018-05-05",
+      "2017-11-15-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

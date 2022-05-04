@@ -1,0 +1,395 @@
+[
+  {
+    "aliases": {
+      "Microsoft.StorageCache/caches/cacheSizeGB": "properties.cacheSizeGB",
+      "Microsoft.StorageCache/caches/encryptionSettings": "properties.encryptionSettings",
+      "Microsoft.StorageCache/caches/encryptionSettings.keyEncryptionKey": "properties.encryptionSettings.keyEncryptionKey",
+      "Microsoft.StorageCache/caches/encryptionSettings.keyEncryptionKey.keyUrl": "properties.encryptionSettings.keyEncryptionKey.keyUrl",
+      "Microsoft.StorageCache/caches/encryptionSettings.keyEncryptionKey.sourceVault": "properties.encryptionSettings.keyEncryptionKey.sourceVault",
+      "Microsoft.StorageCache/caches/encryptionSettings.keyEncryptionKey.sourceVault.id": "properties.encryptionSettings.keyEncryptionKey.sourceVault.id",
+      "Microsoft.StorageCache/caches/health": "properties.health",
+      "Microsoft.StorageCache/caches/health.state": "properties.health.state",
+      "Microsoft.StorageCache/caches/health.statusDescription": "properties.health.statusDescription",
+      "Microsoft.StorageCache/caches/mountAddresses": "properties.mountAddresses",
+      "Microsoft.StorageCache/caches/mountAddresses[*]": "properties.mountAddresses[*]",
+      "Microsoft.StorageCache/caches/networkSettings": "properties.networkSettings",
+      "Microsoft.StorageCache/caches/networkSettings.mtu": "properties.networkSettings.mtu",
+      "Microsoft.StorageCache/caches/networkSettings.utilityAddresses": "properties.networkSettings.utilityAddresses",
+      "Microsoft.StorageCache/caches/networkSettings.utilityAddresses[*]": "properties.networkSettings.utilityAddresses[*]",
+      "Microsoft.StorageCache/caches/provisioningState": "properties.provisioningState",
+      "Microsoft.StorageCache/caches/securitySettings": "properties.securitySettings",
+      "Microsoft.StorageCache/caches/securitySettings.rootSquash": "properties.securitySettings.rootSquash",
+      "Microsoft.StorageCache/caches/sku": "sku",
+      "Microsoft.StorageCache/caches/sku.name": "sku.name",
+      "Microsoft.StorageCache/caches/subnet": "properties.subnet",
+      "Microsoft.StorageCache/caches/upgradeStatus": "properties.upgradeStatus",
+      "Microsoft.StorageCache/caches/upgradeStatus.currentFirmwareVersion": "properties.upgradeStatus.currentFirmwareVersion",
+      "Microsoft.StorageCache/caches/upgradeStatus.firmwareUpdateDeadline": "properties.upgradeStatus.firmwareUpdateDeadline",
+      "Microsoft.StorageCache/caches/upgradeStatus.firmwareUpdateStatus": "properties.upgradeStatus.firmwareUpdateStatus",
+      "Microsoft.StorageCache/caches/upgradeStatus.lastFirmwareUpdate": "properties.upgradeStatus.lastFirmwareUpdate",
+      "Microsoft.StorageCache/caches/upgradeStatus.pendingFirmwareVersion": "properties.upgradeStatus.pendingFirmwareVersion"
+    },
+    "resourceType": "caches",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-10-01-preview",
+      "2021-09-01",
+      "2021-05-01",
+      "2021-03-01",
+      "2020-10-01",
+      "2020-03-01",
+      "2019-11-01",
+      "2019-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central India",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "North Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Sweden Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 3",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
+  },
+  {
+    "aliases": {
+      "Microsoft.StorageCache/caches/storageTargets/clfs": "properties.clfs",
+      "Microsoft.StorageCache/caches/storageTargets/clfs.target": "properties.clfs.target",
+      "Microsoft.StorageCache/caches/storageTargets/junctions": "properties.junctions",
+      "Microsoft.StorageCache/caches/storageTargets/junctions[*]": "properties.junctions[*]",
+      "Microsoft.StorageCache/caches/storageTargets/junctions[*].namespacePath": "properties.junctions[*].namespacePath",
+      "Microsoft.StorageCache/caches/storageTargets/junctions[*].nfsExport": "properties.junctions[*].nfsExport",
+      "Microsoft.StorageCache/caches/storageTargets/junctions[*].targetPath": "properties.junctions[*].targetPath",
+      "Microsoft.StorageCache/caches/storageTargets/nfs3": "properties.nfs3",
+      "Microsoft.StorageCache/caches/storageTargets/nfs3.target": "properties.nfs3.target",
+      "Microsoft.StorageCache/caches/storageTargets/nfs3.usageModel": "properties.nfs3.usageModel",
+      "Microsoft.StorageCache/caches/storageTargets/provisioningState": "properties.provisioningState",
+      "Microsoft.StorageCache/caches/storageTargets/targetType": "properties.targetType",
+      "Microsoft.StorageCache/caches/storageTargets/unknown": "properties.unknown",
+      "Microsoft.StorageCache/caches/storageTargets/unknown.unknownMap": "properties.unknown.unknownMap"
+    },
+    "resourceType": "caches/storageTargets",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-10-01-preview",
+      "2021-09-01",
+      "2021-05-01",
+      "2021-03-01",
+      "2020-10-01",
+      "2020-03-01",
+      "2019-11-01",
+      "2019-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-11-01-preview",
+      "2021-10-01-preview",
+      "2021-09-01",
+      "2021-05-01",
+      "2021-03-01",
+      "2020-10-01",
+      "2020-03-01",
+      "2019-11-01",
+      "2019-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/ascoperations",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-11-01-preview",
+      "2021-10-01-preview",
+      "2021-09-01",
+      "2021-05-01",
+      "2021-03-01",
+      "2020-10-01",
+      "2020-03-01",
+      "2019-11-01",
+      "2019-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-11-01-preview",
+      "2021-10-01-preview",
+      "2021-09-01",
+      "2021-05-01",
+      "2021-03-01",
+      "2020-10-01",
+      "2020-03-01",
+      "2019-11-01",
+      "2019-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "usageModels",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-10-01-preview",
+      "2021-09-01",
+      "2021-05-01",
+      "2021-03-01",
+      "2020-10-01",
+      "2020-03-01",
+      "2019-11-01",
+      "2019-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  }
+]

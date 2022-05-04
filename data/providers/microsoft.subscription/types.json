@@ -1,0 +1,166 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "acceptChangeTenant",
+    "apiVersions": [
+      "2021-01-01-privatepreview",
+      "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Subscription/aliases/subscriptionId": "properties.subscriptionId"
+    },
+    "resourceType": "aliases",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-01-01-privatepreview",
+      "2020-09-01",
+      "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "cancel",
+    "apiVersions": [
+      "2021-10-01",
+      "2020-09-01",
+      "2019-10-01-preview",
+      "2019-03-01-preview"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "changeTenantRequest",
+    "apiVersions": [
+      "2021-01-01-privatepreview",
+      "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "changeTenantStatus",
+    "apiVersions": [
+      "2021-01-01-privatepreview",
+      "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "CreateSubscription",
+    "apiVersions": [
+      "2019-10-01-preview",
+      "2018-11-01-preview",
+      "2018-03-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "enable",
+    "apiVersions": [
+      "2021-10-01",
+      "2020-09-01",
+      "2019-10-01-preview",
+      "2019-03-01-preview"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationResults",
+    "apiVersions": [
+      "2019-10-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-10-01",
+      "2017-11-01-preview"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "rename",
+    "apiVersions": [
+      "2021-10-01",
+      "2020-09-01",
+      "2019-10-01-preview",
+      "2019-03-01-preview"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Subscription/SubscriptionDefinitions/etag": "properties.etag",
+      "Microsoft.Subscription/SubscriptionDefinitions/offerType": "properties.offerType",
+      "Microsoft.Subscription/SubscriptionDefinitions/subscriptionDisplayName": "properties.subscriptionDisplayName",
+      "Microsoft.Subscription/SubscriptionDefinitions/subscriptionId": "properties.subscriptionId"
+    },
+    "resourceType": "SubscriptionDefinitions",
+    "apiVersions": [
+      "2017-11-01-preview"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "SubscriptionOperations",
+    "apiVersions": [
+      "2021-01-01-privatepreview",
+      "2019-10-01-preview",
+      "2018-11-01-preview",
+      "2018-03-01-preview",
+      "2017-11-01-preview"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "subscriptions",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-01-01-privatepreview",
+      "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

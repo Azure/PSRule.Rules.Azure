@@ -1,0 +1,91 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "advisorScore",
+    "apiVersions": [
+      "2020-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurations",
+    "apiVersions": [
+      "2020-01-01",
+      "2017-04-19",
+      "2017-03-31"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "generateRecommendations",
+    "apiVersions": [
+      "2020-01-01",
+      "2017-04-19",
+      "2017-03-31",
+      "2016-07-12-preview",
+      "2016-05-09-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "metadata",
+    "apiVersions": [
+      "2020-01-01-alpha",
+      "2020-01-01",
+      "2017-04-19-rc",
+      "2017-04-19-alpha",
+      "2017-04-19",
+      "2017-03-31-alpha",
+      "2017-03-31",
+      "2016-07-12-rc"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2020-07-01-preview",
+      "2020-01-01",
+      "2017-04-19",
+      "2017-03-31",
+      "2016-07-12-preview",
+      "2016-05-09-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "recommendations",
+    "apiVersions": [
+      "2020-01-01",
+      "2017-04-19",
+      "2017-03-31",
+      "2016-07-12-preview",
+      "2016-05-09-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "suppressions",
+    "apiVersions": [
+      "2020-01-01",
+      "2017-04-19",
+      "2017-03-31",
+      "2016-07-12-preview",
+      "2016-05-09-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

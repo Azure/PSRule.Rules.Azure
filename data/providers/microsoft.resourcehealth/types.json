@@ -1,0 +1,106 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "availabilityStatuses",
+    "apiVersions": [
+      "2020-05-01-preview",
+      "2020-05-01",
+      "2018-08-01-rc",
+      "2018-08-01-preview",
+      "2018-07-01-rc",
+      "2018-07-01-preview",
+      "2018-07-01",
+      "2017-07-01",
+      "2015-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "childAvailabilityStatuses",
+    "apiVersions": [
+      "2018-11-06-beta",
+      "2018-08-01-rc",
+      "2018-08-01-preview",
+      "2018-07-01-rc",
+      "2018-07-01-preview",
+      "2018-07-01-beta",
+      "2017-07-01-rc",
+      "2017-07-01-preview",
+      "2017-07-01-beta",
+      "2015-01-01-rc",
+      "2015-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "childResources",
+    "apiVersions": [
+      "2018-11-06-beta",
+      "2018-08-01-rc",
+      "2018-08-01-preview",
+      "2018-07-01-rc",
+      "2018-07-01-preview",
+      "2018-07-01-beta",
+      "2017-07-01-rc",
+      "2017-07-01-preview",
+      "2017-07-01-beta",
+      "2015-01-01-rc",
+      "2015-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "emergingissues",
+    "apiVersions": [
+      "2018-11-06-beta",
+      "2018-07-01-rc",
+      "2018-07-01-preview",
+      "2018-07-01-beta",
+      "2018-07-01-alpha",
+      "2018-07-01",
+      "2017-07-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "events",
+    "apiVersions": [
+      "2020-09-01-rc",
+      "2018-07-01-rc",
+      "2018-07-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "metadata",
+    "apiVersions": [
+      "2018-07-01-rc",
+      "2018-07-01-preview",
+      "2018-07-01-beta",
+      "2018-07-01-alpha",
+      "2018-07-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2018-07-01",
+      "2015-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

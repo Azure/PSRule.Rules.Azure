@@ -1,0 +1,182 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2020-04-01",
+      "2019-05-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "lookUpResourceId",
+    "apiVersions": [
+      "2021-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationresults",
+    "apiVersions": [
+      "2020-04-01",
+      "2019-05-01-preview"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-06-01-preview",
+      "2020-04-01",
+      "2019-05-01-preview",
+      "2015-07-01-Preview",
+      "2015-03-01"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationsstatus",
+    "apiVersions": [
+      "2020-04-01",
+      "2019-05-01-preview"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "services",
+    "apiVersions": [
+      "2020-04-01",
+      "2019-05-01-preview"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "services/problemclassifications",
+    "apiVersions": [
+      "2020-04-01",
+      "2019-05-01-preview"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "supporttickets",
+    "apiVersions": [
+      "2020-04-01",
+      "2019-05-01-preview",
+      "2015-07-01-Preview",
+      "2015-03-01"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast"
+    ],
+    "zoneMappings": null
+  }
+]

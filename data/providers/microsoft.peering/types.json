@@ -1,0 +1,240 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "cdnPeeringPrefixes",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-06-01",
+      "2021-01-01",
+      "2020-10-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkServiceProviderAvailability",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-06-01",
+      "2021-01-01",
+      "2020-10-01",
+      "2020-04-01",
+      "2020-01-01-preview",
+      "2019-09-01-preview",
+      "2019-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "legacyPeerings",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-06-01",
+      "2021-01-01",
+      "2020-10-01",
+      "2020-04-01",
+      "2020-01-01-preview",
+      "2019-09-01-preview",
+      "2019-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "lookingGlass",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-06-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-06-01",
+      "2021-01-01",
+      "2020-10-01",
+      "2020-04-01",
+      "2020-01-01-preview",
+      "2019-09-01-preview",
+      "2019-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "peerAsns",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-06-01",
+      "2021-01-01",
+      "2020-10-01",
+      "2020-04-01",
+      "2020-01-01-preview",
+      "2019-09-01-preview",
+      "2019-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "peeringLocations",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-06-01",
+      "2021-01-01",
+      "2020-10-01",
+      "2020-04-01",
+      "2020-01-01-preview",
+      "2019-09-01-preview",
+      "2019-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "peerings",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-06-01",
+      "2021-01-01",
+      "2020-10-01",
+      "2020-04-01",
+      "2020-01-01-preview",
+      "2019-09-01-preview",
+      "2019-08-01-preview"
+    ],
+    "locations": [
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "East Asia",
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Southeast Asia",
+      "West India",
+      "South India",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "Canada Central",
+      "West US",
+      "West US 2",
+      "West Central US",
+      "Canada East",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "North Europe",
+      "France Central",
+      "France South",
+      "South Africa North",
+      "South Africa West"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "peeringServiceCountries",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-06-01",
+      "2021-01-01",
+      "2020-10-01",
+      "2020-04-01",
+      "2020-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "peeringServiceLocations",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-06-01",
+      "2021-01-01",
+      "2020-10-01",
+      "2020-04-01",
+      "2020-01-01-preview",
+      "2019-09-01-preview",
+      "2019-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "peeringServiceProviders",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-06-01",
+      "2021-01-01",
+      "2020-10-01",
+      "2020-04-01",
+      "2020-01-01-preview",
+      "2019-09-01-preview",
+      "2019-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "peeringServices",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-06-01",
+      "2021-01-01",
+      "2020-10-01",
+      "2020-04-01",
+      "2020-01-01-preview",
+      "2019-09-01-preview",
+      "2019-08-01-preview"
+    ],
+    "locations": [
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "East Asia",
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Southeast Asia",
+      "West India",
+      "South India",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "Canada Central",
+      "West US",
+      "West US 2",
+      "West Central US",
+      "Canada East",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "North Europe",
+      "France Central",
+      "France South",
+      "South Africa North",
+      "South Africa West"
+    ],
+    "zoneMappings": null
+  }
+]

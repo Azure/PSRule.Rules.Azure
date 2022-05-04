@@ -1,0 +1,104 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "azureTrafficCollectors",
+    "apiVersions": [
+      "2021-09-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-09-01-preview",
+      "2021-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/nfvOperationResults",
+    "apiVersions": [
+      "2021-09-01-preview",
+      "2021-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/nfvOperations",
+    "apiVersions": [
+      "2021-09-01-preview",
+      "2021-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "meshVpns",
+    "apiVersions": [
+      "2021-08-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "meshVpns/connectionPolicies",
+    "apiVersions": [
+      "2021-08-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "meshVpns/privateEndpointConnectionProxies",
+    "apiVersions": [
+      "2021-08-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "meshVpns/privateEndpointConnections",
+    "apiVersions": [
+      "2021-08-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-08-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US"
+    ],
+    "zoneMappings": null
+  }
+]

@@ -1,0 +1,373 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "listAvailableOffers",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "macc",
+    "apiVersions": [
+      "2018-08-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "offers",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-06-01",
+      "2018-08-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "offerTypes",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "offerTypes/publishers",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "offerTypes/publishers/offers",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "offerTypes/publishers/offers/plans",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "offerTypes/publishers/offers/plans/agreements",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "offerTypes/publishers/offers/plans/configs",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "offerTypes/publishers/offers/plans/configs/importImage",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-12-01",
+      "2018-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privategalleryitems",
+    "apiVersions": [
+      "2018-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStoreClient",
+    "apiVersions": [
+      "2018-08-01-beta",
+      "2018-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01",
+      "2020-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/AdminRequestApprovals",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01",
+      "2020-12-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/billingAccounts",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/bulkCollectionsAction",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/collections",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/collections/offers",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/collections/transferOffers",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/collectionsToSubscriptionsMapping",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/fetchAllSubscriptionsInTenant",
+    "apiVersions": [
+      "2021-12-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/listNewPlansNotifications",
+    "apiVersions": [
+      "2021-12-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/listStopSellOffersPlansNotifications",
+    "apiVersions": [
+      "2021-12-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/listSubscriptionsContext",
+    "apiVersions": [
+      "2021-12-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/offers",
+    "apiVersions": [
+      "2021-06-01-beta",
+      "2020-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/offers/acknowledgeNotification",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01",
+      "2020-12-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/queryApprovedPlans",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/queryNotificationsState",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01",
+      "2020-12-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/queryOffers",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/RequestApprovals",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01",
+      "2020-12-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/requestApprovals/query",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01",
+      "2020-12-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/requestApprovals/withdrawPlan",
+    "apiVersions": [
+      "2021-12-01",
+      "2021-06-01",
+      "2020-12-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "products",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-06-01",
+      "2018-08-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "publishers",
+    "apiVersions": [
+      "2019-06-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "publishers/offers",
+    "apiVersions": [
+      "2019-06-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "publishers/offers/amendments",
+    "apiVersions": [
+      "2019-06-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "register",
+    "apiVersions": [
+      "2020-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

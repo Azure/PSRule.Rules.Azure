@@ -1,0 +1,61 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "accounts",
+    "apiVersions": [
+      "2020-10-30-preview"
+    ],
+    "locations": [
+      "United States",
+      "South Africa",
+      "UK",
+      "Japan",
+      "India",
+      "France",
+      "Europe",
+      "Germany",
+      "Switzerland",
+      "Canada",
+      "Brazil",
+      "Australia",
+      "Asia",
+      "UAE",
+      "Korea",
+      "Norway"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2020-10-30-preview",
+      "2020-10-30",
+      "2020-04-01"
+    ],
+    "locations": [
+      "Central US EUAP",
+      "East US 2 EUAP",
+      "United States",
+      "East US",
+      "West US",
+      "Central US",
+      "South Africa",
+      "UK",
+      "Japan",
+      "India",
+      "France",
+      "Europe",
+      "Germany",
+      "Switzerland",
+      "Canada",
+      "Brazil",
+      "Australia",
+      "Asia",
+      "UAE",
+      "Korea",
+      "Norway"
+    ],
+    "zoneMappings": null
+  }
+]

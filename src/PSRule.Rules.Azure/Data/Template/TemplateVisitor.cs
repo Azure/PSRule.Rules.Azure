@@ -118,7 +118,7 @@ namespace PSRule.Rules.Azure.Data.Template
             private DeploymentValue _CurrentDeployment;
             private bool? _IsGenerated;
             private JObject _Parameters;
-            private Dictionary<string, CloudEnvironment> _Environments;
+            private EnvironmentData _Environments;
 
             internal TemplateContext()
             {
@@ -617,11 +617,6 @@ namespace PSRule.Rules.Azure.Data.Template
                 _ExpressionFactory.With(descriptor);
             }
 
-            private Dictionary<string, CloudEnvironment> ReadEnvironments()
-            {
-                return _ResourceProviderHelper.ReadDataFile<CloudEnvironment>(DATAFILE_ENVIRONMENTS);
-            }
-
             public ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
             {
                 return _ResourceProviderHelper.GetResourceType(providerNamespace, resourceType);
@@ -629,10 +624,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public CloudEnvironment GetEnvironment()
             {
-                if (_Environments == null)
-                    _Environments = ReadEnvironments();
-
-                return _Environments[CLOUD_PUBLIC];
+                _Environments ??= new EnvironmentData();
+                return _Environments.Get(CLOUD_PUBLIC);
             }
 
             internal void SetSource(string templateFile, string parameterFile)

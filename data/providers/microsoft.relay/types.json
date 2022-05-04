@@ -1,0 +1,190 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2017-04-01",
+      "2016-07-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Relay/namespaces/createdAt": "properties.createdAt",
+      "Microsoft.Relay/namespaces/metricId": "properties.metricId",
+      "Microsoft.Relay/namespaces/provisioningState": "properties.provisioningState",
+      "Microsoft.Relay/namespaces/serviceBusEndpoint": "properties.serviceBusEndpoint",
+      "Microsoft.Relay/namespaces/sku": "sku",
+      "Microsoft.Relay/namespaces/sku.name": "sku.name",
+      "Microsoft.Relay/namespaces/sku.tier": "sku.tier",
+      "Microsoft.Relay/namespaces/updatedAt": "properties.updatedAt"
+    },
+    "resourceType": "namespaces",
+    "apiVersions": [
+      "2018-01-01-preview",
+      "2017-04-01",
+      "2016-07-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "West Central US",
+      "East Asia",
+      "Southeast Asia",
+      "Brazil South",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West Europe",
+      "Central India",
+      "South India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "UK West",
+      "UK South",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "South Africa North",
+      "UAE North",
+      "Australia Central",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Relay/namespaces/AuthorizationRules/rights": "properties.rights",
+      "Microsoft.Relay/namespaces/AuthorizationRules/rights[*]": "properties.rights[*]"
+    },
+    "resourceType": "namespaces/authorizationrules",
+    "apiVersions": [
+      "2017-04-01",
+      "2016-07-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Relay/namespaces/HybridConnections/createdAt": "properties.createdAt",
+      "Microsoft.Relay/namespaces/HybridConnections/listenerCount": "properties.listenerCount",
+      "Microsoft.Relay/namespaces/HybridConnections/requiresClientAuthorization": "properties.requiresClientAuthorization",
+      "Microsoft.Relay/namespaces/HybridConnections/updatedAt": "properties.updatedAt",
+      "Microsoft.Relay/namespaces/HybridConnections/userMetadata": "properties.userMetadata"
+    },
+    "resourceType": "namespaces/hybridconnections",
+    "apiVersions": [
+      "2017-04-01",
+      "2016-07-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Relay/namespaces/HybridConnections/authorizationRules/rights": "properties.rights",
+      "Microsoft.Relay/namespaces/HybridConnections/authorizationRules/rights[*]": "properties.rights[*]"
+    },
+    "resourceType": "namespaces/hybridconnections/authorizationrules",
+    "apiVersions": [
+      "2017-04-01",
+      "2016-07-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Relay/namespaces/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.Relay/namespaces/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.Relay/namespaces/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.Relay/namespaces/privateEndpointConnections/privateLinkServiceConnectionState.actionRequired": "properties.privateLinkServiceConnectionState.actionRequired",
+      "Microsoft.Relay/namespaces/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.Relay/namespaces/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Relay/namespaces/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "namespaces/privateEndpointConnections",
+    "apiVersions": [
+      "2018-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Relay/namespaces/WcfRelays/createdAt": "properties.createdAt",
+      "Microsoft.Relay/namespaces/WcfRelays/isDynamic": "properties.isDynamic",
+      "Microsoft.Relay/namespaces/WcfRelays/listenerCount": "properties.listenerCount",
+      "Microsoft.Relay/namespaces/WcfRelays/relayType": "properties.relayType",
+      "Microsoft.Relay/namespaces/WcfRelays/requiresClientAuthorization": "properties.requiresClientAuthorization",
+      "Microsoft.Relay/namespaces/WcfRelays/requiresTransportSecurity": "properties.requiresTransportSecurity",
+      "Microsoft.Relay/namespaces/WcfRelays/updatedAt": "properties.updatedAt",
+      "Microsoft.Relay/namespaces/WcfRelays/userMetadata": "properties.userMetadata"
+    },
+    "resourceType": "namespaces/wcfrelays",
+    "apiVersions": [
+      "2017-04-01",
+      "2016-07-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Relay/namespaces/WcfRelays/authorizationRules/rights": "properties.rights",
+      "Microsoft.Relay/namespaces/WcfRelays/authorizationRules/rights[*]": "properties.rights[*]"
+    },
+    "resourceType": "namespaces/wcfrelays/authorizationrules",
+    "apiVersions": [
+      "2017-04-01",
+      "2016-07-01",
+      "2015-08-01",
+      "2014-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2017-04-01",
+      "2016-07-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Relay/namespaces/networkRuleSets/defaultAction": "properties.defaultAction",
+      "Microsoft.Relay/namespaces/networkRuleSets/ipRules": "properties.ipRules",
+      "Microsoft.Relay/namespaces/networkRuleSets/ipRules[*]": "properties.ipRules[*]",
+      "Microsoft.Relay/namespaces/networkRuleSets/ipRules[*].action": "properties.ipRules[*].action",
+      "Microsoft.Relay/namespaces/networkRuleSets/ipRules[*].ipMask": "properties.ipRules[*].ipMask"
+    },
+    "resourceType": "namespaces/networkrulesets"
+  }
+]

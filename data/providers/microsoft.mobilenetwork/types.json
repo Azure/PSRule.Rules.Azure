@@ -1,0 +1,39 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2022-03-01-preview",
+      "2021-04-01-preview",
+      "2020-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2022-03-01-preview",
+      "2021-04-01-preview"
+    ],
+    "locations": [
+      "East US 2 EUAP",
+      "West Central US",
+      "West Europe",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2022-03-01-preview",
+      "2021-04-01-preview",
+      "2020-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

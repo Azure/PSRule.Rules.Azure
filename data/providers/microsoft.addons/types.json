@@ -1,0 +1,47 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "operationResults",
+    "apiVersions": [
+      "2018-03-01",
+      "2017-05-15"
+    ],
+    "locations": [
+      "West Central US",
+      "South Central US",
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2018-03-01",
+      "2017-05-15"
+    ],
+    "locations": [
+      "West Central US",
+      "South Central US",
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "supportProviders",
+    "apiVersions": [
+      "2018-03-01",
+      "2017-05-15"
+    ],
+    "locations": [
+      "West Central US",
+      "South Central US",
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  }
+]

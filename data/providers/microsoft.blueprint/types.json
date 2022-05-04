@@ -1,0 +1,179 @@
+[
+  {
+    "aliases": {
+      "Microsoft.Blueprint/blueprintAssignments/blueprintId": "properties.blueprintId",
+      "Microsoft.Blueprint/blueprintAssignments/description": "properties.description",
+      "Microsoft.Blueprint/blueprintAssignments/displayName": "properties.displayName",
+      "Microsoft.Blueprint/blueprintAssignments/locks": "properties.locks",
+      "Microsoft.Blueprint/blueprintAssignments/locks.excludedActions": "properties.locks.excludedActions",
+      "Microsoft.Blueprint/blueprintAssignments/locks.excludedActions[*]": "properties.locks.excludedActions[*]",
+      "Microsoft.Blueprint/blueprintAssignments/locks.excludedPrincipals": "properties.locks.excludedPrincipals",
+      "Microsoft.Blueprint/blueprintAssignments/locks.excludedPrincipals[*]": "properties.locks.excludedPrincipals[*]",
+      "Microsoft.Blueprint/blueprintAssignments/locks.mode": "properties.locks.mode",
+      "Microsoft.Blueprint/blueprintAssignments/parameters": "properties.parameters",
+      "Microsoft.Blueprint/blueprintAssignments/parameters.additionalProperties": "properties.parameters.additionalProperties",
+      "Microsoft.Blueprint/blueprintAssignments/parameters.additionalProperties.description": "properties.parameters.additionalProperties.description",
+      "Microsoft.Blueprint/blueprintAssignments/provisioningState": "properties.provisioningState",
+      "Microsoft.Blueprint/blueprintAssignments/resourceGroups": "properties.resourceGroups",
+      "Microsoft.Blueprint/blueprintAssignments/resourceGroups.additionalProperties": "properties.resourceGroups.additionalProperties",
+      "Microsoft.Blueprint/blueprintAssignments/resourceGroups.additionalProperties.location": "properties.resourceGroups.additionalProperties.location",
+      "Microsoft.Blueprint/blueprintAssignments/resourceGroups.additionalProperties.name": "properties.resourceGroups.additionalProperties.name",
+      "Microsoft.Blueprint/blueprintAssignments/status": "properties.status",
+      "Microsoft.Blueprint/blueprintAssignments/status.lastModified": "properties.status.lastModified",
+      "Microsoft.Blueprint/blueprintAssignments/status.managedResources": "properties.status.managedResources",
+      "Microsoft.Blueprint/blueprintAssignments/status.managedResources[*]": "properties.status.managedResources[*]",
+      "Microsoft.Blueprint/blueprintAssignments/status.timeCreated": "properties.status.timeCreated"
+    },
+    "resourceType": "blueprintAssignments",
+    "apiVersions": [
+      "2018-11-01-preview",
+      "2018-11-01-alpha",
+      "2017-11-11-preview",
+      "2017-11-11-alpha"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "blueprintAssignments/assignmentOperations",
+    "apiVersions": [
+      "2018-11-01-preview",
+      "2018-11-01-alpha"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "blueprintAssignments/operations",
+    "apiVersions": [
+      "2017-11-11-preview",
+      "2017-11-11-alpha"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Blueprint/blueprints/description": "properties.description",
+      "Microsoft.Blueprint/blueprints/displayName": "properties.displayName",
+      "Microsoft.Blueprint/blueprints/layout": "properties.layout",
+      "Microsoft.Blueprint/blueprints/parameters": "properties.parameters",
+      "Microsoft.Blueprint/blueprints/parameters.additionalProperties": "properties.parameters.additionalProperties",
+      "Microsoft.Blueprint/blueprints/parameters.additionalProperties.allowedValues": "properties.parameters.additionalProperties.allowedValues",
+      "Microsoft.Blueprint/blueprints/parameters.additionalProperties.allowedValues[*]": "properties.parameters.additionalProperties.allowedValues[*]",
+      "Microsoft.Blueprint/blueprints/parameters.additionalProperties.defaultValue": "properties.parameters.additionalProperties.defaultValue",
+      "Microsoft.Blueprint/blueprints/parameters.additionalProperties.metadata": "properties.parameters.additionalProperties.metadata",
+      "Microsoft.Blueprint/blueprints/parameters.additionalProperties.metadata.description": "properties.parameters.additionalProperties.metadata.description",
+      "Microsoft.Blueprint/blueprints/parameters.additionalProperties.metadata.displayName": "properties.parameters.additionalProperties.metadata.displayName",
+      "Microsoft.Blueprint/blueprints/parameters.additionalProperties.metadata.strongType": "properties.parameters.additionalProperties.metadata.strongType",
+      "Microsoft.Blueprint/blueprints/parameters.additionalProperties.type": "properties.parameters.additionalProperties.type",
+      "Microsoft.Blueprint/blueprints/resourceGroups": "properties.resourceGroups",
+      "Microsoft.Blueprint/blueprints/resourceGroups.additionalProperties": "properties.resourceGroups.additionalProperties",
+      "Microsoft.Blueprint/blueprints/resourceGroups.additionalProperties.dependsOn": "properties.resourceGroups.additionalProperties.dependsOn",
+      "Microsoft.Blueprint/blueprints/resourceGroups.additionalProperties.dependsOn[*]": "properties.resourceGroups.additionalProperties.dependsOn[*]",
+      "Microsoft.Blueprint/blueprints/resourceGroups.additionalProperties.location": "properties.resourceGroups.additionalProperties.location",
+      "Microsoft.Blueprint/blueprints/resourceGroups.additionalProperties.metadata": "properties.resourceGroups.additionalProperties.metadata",
+      "Microsoft.Blueprint/blueprints/resourceGroups.additionalProperties.metadata.description": "properties.resourceGroups.additionalProperties.metadata.description",
+      "Microsoft.Blueprint/blueprints/resourceGroups.additionalProperties.metadata.displayName": "properties.resourceGroups.additionalProperties.metadata.displayName",
+      "Microsoft.Blueprint/blueprints/resourceGroups.additionalProperties.metadata.strongType": "properties.resourceGroups.additionalProperties.metadata.strongType",
+      "Microsoft.Blueprint/blueprints/resourceGroups.additionalProperties.name": "properties.resourceGroups.additionalProperties.name",
+      "Microsoft.Blueprint/blueprints/resourceGroups.additionalProperties.tags": "properties.resourceGroups.additionalProperties.tags",
+      "Microsoft.Blueprint/blueprints/resourceGroups.additionalProperties.tags.additionalProperties": "properties.resourceGroups.additionalProperties.tags.additionalProperties",
+      "Microsoft.Blueprint/blueprints/status": "properties.status",
+      "Microsoft.Blueprint/blueprints/status.lastModified": "properties.status.lastModified",
+      "Microsoft.Blueprint/blueprints/status.timeCreated": "properties.status.timeCreated",
+      "Microsoft.Blueprint/blueprints/targetScope": "properties.targetScope",
+      "Microsoft.Blueprint/blueprints/versions": "properties.versions"
+    },
+    "resourceType": "blueprints",
+    "apiVersions": [
+      "2018-11-01-preview",
+      "2018-11-01-alpha",
+      "2017-11-11-preview",
+      "2017-11-11-alpha"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "blueprints/artifacts",
+    "apiVersions": [
+      "2018-11-01-preview",
+      "2018-11-01-alpha",
+      "2017-11-11-preview",
+      "2017-11-11-alpha"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Blueprint/blueprints/versions/blueprintName": "properties.blueprintName",
+      "Microsoft.Blueprint/blueprints/versions/changeNotes": "properties.changeNotes",
+      "Microsoft.Blueprint/blueprints/versions/description": "properties.description",
+      "Microsoft.Blueprint/blueprints/versions/displayName": "properties.displayName",
+      "Microsoft.Blueprint/blueprints/versions/parameters": "properties.parameters",
+      "Microsoft.Blueprint/blueprints/versions/parameters.additionalProperties": "properties.parameters.additionalProperties",
+      "Microsoft.Blueprint/blueprints/versions/parameters.additionalProperties.allowedValues": "properties.parameters.additionalProperties.allowedValues",
+      "Microsoft.Blueprint/blueprints/versions/parameters.additionalProperties.allowedValues[*]": "properties.parameters.additionalProperties.allowedValues[*]",
+      "Microsoft.Blueprint/blueprints/versions/parameters.additionalProperties.defaultValue": "properties.parameters.additionalProperties.defaultValue",
+      "Microsoft.Blueprint/blueprints/versions/parameters.additionalProperties.metadata": "properties.parameters.additionalProperties.metadata",
+      "Microsoft.Blueprint/blueprints/versions/parameters.additionalProperties.metadata.description": "properties.parameters.additionalProperties.metadata.description",
+      "Microsoft.Blueprint/blueprints/versions/parameters.additionalProperties.metadata.displayName": "properties.parameters.additionalProperties.metadata.displayName",
+      "Microsoft.Blueprint/blueprints/versions/parameters.additionalProperties.metadata.strongType": "properties.parameters.additionalProperties.metadata.strongType",
+      "Microsoft.Blueprint/blueprints/versions/parameters.additionalProperties.type": "properties.parameters.additionalProperties.type",
+      "Microsoft.Blueprint/blueprints/versions/resourceGroups": "properties.resourceGroups",
+      "Microsoft.Blueprint/blueprints/versions/resourceGroups.additionalProperties": "properties.resourceGroups.additionalProperties",
+      "Microsoft.Blueprint/blueprints/versions/resourceGroups.additionalProperties.dependsOn": "properties.resourceGroups.additionalProperties.dependsOn",
+      "Microsoft.Blueprint/blueprints/versions/resourceGroups.additionalProperties.dependsOn[*]": "properties.resourceGroups.additionalProperties.dependsOn[*]",
+      "Microsoft.Blueprint/blueprints/versions/resourceGroups.additionalProperties.location": "properties.resourceGroups.additionalProperties.location",
+      "Microsoft.Blueprint/blueprints/versions/resourceGroups.additionalProperties.metadata": "properties.resourceGroups.additionalProperties.metadata",
+      "Microsoft.Blueprint/blueprints/versions/resourceGroups.additionalProperties.metadata.description": "properties.resourceGroups.additionalProperties.metadata.description",
+      "Microsoft.Blueprint/blueprints/versions/resourceGroups.additionalProperties.metadata.displayName": "properties.resourceGroups.additionalProperties.metadata.displayName",
+      "Microsoft.Blueprint/blueprints/versions/resourceGroups.additionalProperties.metadata.strongType": "properties.resourceGroups.additionalProperties.metadata.strongType",
+      "Microsoft.Blueprint/blueprints/versions/resourceGroups.additionalProperties.name": "properties.resourceGroups.additionalProperties.name",
+      "Microsoft.Blueprint/blueprints/versions/resourceGroups.additionalProperties.tags": "properties.resourceGroups.additionalProperties.tags",
+      "Microsoft.Blueprint/blueprints/versions/resourceGroups.additionalProperties.tags.additionalProperties": "properties.resourceGroups.additionalProperties.tags.additionalProperties",
+      "Microsoft.Blueprint/blueprints/versions/status": "properties.status",
+      "Microsoft.Blueprint/blueprints/versions/status.lastModified": "properties.status.lastModified",
+      "Microsoft.Blueprint/blueprints/versions/status.timeCreated": "properties.status.timeCreated",
+      "Microsoft.Blueprint/blueprints/versions/targetScope": "properties.targetScope"
+    },
+    "resourceType": "blueprints/versions",
+    "apiVersions": [
+      "2018-11-01-preview",
+      "2018-11-01-alpha",
+      "2017-11-11-preview",
+      "2017-11-11-alpha"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "blueprints/versions/artifacts",
+    "apiVersions": [
+      "2018-11-01-preview",
+      "2018-11-01-alpha",
+      "2017-11-11-preview",
+      "2017-11-11-alpha"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2018-11-01-preview",
+      "2018-11-01-alpha",
+      "2017-11-11-preview",
+      "2017-11-11-alpha"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

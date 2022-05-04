@@ -1,0 +1,60 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2021-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "grafana",
+    "apiVersions": [
+      "2021-09-01-preview"
+    ],
+    "locations": [
+      "South Central US",
+      "West Central US",
+      "West Europe",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2021-09-01-preview"
+    ],
+    "locations": [
+      "East US 2 EUAP",
+      "Central US EUAP",
+      "South Central US",
+      "West Europe",
+      "East US",
+      "West Central US",
+      "Australia East"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

@@ -1,0 +1,105 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "b2cDirectories",
+    "apiVersions": [
+      "2021-04-01-preview",
+      "2021-04-01",
+      "2020-05-01-preview",
+      "2019-01-01-privatepreview",
+      "2019-01-01-preview",
+      "2017-01-30",
+      "2016-12-13-preview",
+      "2016-02-10-privatepreview"
+    ],
+    "locations": [
+      "Global",
+      "United States",
+      "Europe",
+      "Asia Pacific",
+      "Australia",
+      "Japan"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "b2ctenants",
+    "apiVersions": [
+      "2021-04-01-preview",
+      "2021-04-01",
+      "2020-05-01-preview",
+      "2016-02-10-privatepreview"
+    ],
+    "locations": [
+      "Global",
+      "United States",
+      "Europe",
+      "Asia Pacific",
+      "Australia",
+      "Japan"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2021-04-01-preview",
+      "2021-04-01",
+      "2020-05-01-preview",
+      "2019-01-01-privatepreview",
+      "2019-01-01-preview"
+    ],
+    "locations": [
+      "Global",
+      "United States",
+      "Europe",
+      "Asia Pacific",
+      "Australia",
+      "Japan"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "guestUsages",
+    "apiVersions": [
+      "2021-04-01-preview",
+      "2021-04-01",
+      "2020-05-01-preview"
+    ],
+    "locations": [
+      "Global",
+      "United States",
+      "Europe",
+      "Asia Pacific",
+      "Australia",
+      "Japan"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-04-01-preview",
+      "2021-04-01",
+      "2020-05-01-preview",
+      "2019-01-01-privatepreview",
+      "2019-01-01-preview",
+      "2017-01-30",
+      "2016-12-13-preview",
+      "2016-02-10-privatepreview"
+    ],
+    "locations": [
+      "Global",
+      "United States",
+      "Europe",
+      "Asia Pacific",
+      "Australia",
+      "Japan"
+    ],
+    "zoneMappings": null
+  }
+]

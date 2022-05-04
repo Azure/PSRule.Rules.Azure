@@ -1,0 +1,49 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checknameavailability",
+    "apiVersions": [
+      "2021-11-01-preview",
+      "2021-02-01-preview",
+      "2020-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-11-01-preview",
+      "2021-02-01-preview",
+      "2020-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationstatuses",
+    "apiVersions": [
+      "2021-11-01-preview",
+      "2021-02-01-preview",
+      "2020-07-01-preview"
+    ],
+    "locations": [
+      "East US 2 EUAP",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-11-01-preview",
+      "2021-02-01-preview",
+      "2020-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

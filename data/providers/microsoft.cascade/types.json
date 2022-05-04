@@ -1,0 +1,50 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2020-11-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/operationStatuses",
+    "apiVersions": [
+      "2020-11-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "Japan East",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2020-11-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "Japan East",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "sites",
+    "apiVersions": [
+      "2020-11-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "West US 2",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  }
+]

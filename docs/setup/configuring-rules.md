@@ -195,7 +195,7 @@ configuration:
 
 ### Additional region availability zone list
 
-This configuration option adds availability zones that are not included in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json).
+This configuration option adds availability zones that are not included in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/).
 You can use this option to add availability zones that are not included in the default list.
 
 The following providers are supported:

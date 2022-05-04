@@ -1,0 +1,153 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-09-01-preview",
+      "2020-04-30",
+      "2019-12-31-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationresults",
+    "apiVersions": [
+      "2021-09-01-preview",
+      "2020-04-30"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Europe",
+      "West US 3",
+      "West US 2",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationsstatus",
+    "apiVersions": [
+      "2021-09-01-preview",
+      "2020-04-30"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Europe",
+      "West US 3",
+      "West US 2",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "OpenShiftClusters",
+    "apiVersions": [
+      "2021-09-01-preview",
+      "2020-04-30"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Europe",
+      "West US 3",
+      "West US 2",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-09-01-preview",
+      "2020-04-30",
+      "2019-12-31-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

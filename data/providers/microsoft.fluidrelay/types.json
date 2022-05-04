@@ -1,0 +1,80 @@
+[
+  {
+    "aliases": {
+      "Microsoft.FluidRelay/fluidRelayServers/fluidRelayEndpoints": "properties.fluidRelayEndpoints",
+      "Microsoft.FluidRelay/fluidRelayServers/fluidRelayEndpoints.ordererEndpoints": "properties.fluidRelayEndpoints.ordererEndpoints",
+      "Microsoft.FluidRelay/fluidRelayServers/fluidRelayEndpoints.ordererEndpoints[*]": "properties.fluidRelayEndpoints.ordererEndpoints[*]",
+      "Microsoft.FluidRelay/fluidRelayServers/fluidRelayEndpoints.storageEndpoints": "properties.fluidRelayEndpoints.storageEndpoints",
+      "Microsoft.FluidRelay/fluidRelayServers/fluidRelayEndpoints.storageEndpoints[*]": "properties.fluidRelayEndpoints.storageEndpoints[*]",
+      "Microsoft.FluidRelay/fluidRelayServers/frsTenantId": "properties.frsTenantId",
+      "Microsoft.FluidRelay/fluidRelayServers/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "fluidRelayServers",
+    "apiVersions": [
+      "2022-04-03",
+      "2022-02-23-preview",
+      "2022-02-16-preview",
+      "2022-02-15",
+      "2021-09-10-preview",
+      "2021-08-30-preview",
+      "2021-06-15-preview",
+      "2021-03-12-preview"
+    ],
+    "locations": [
+      "West US 2",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "fluidRelayServers/fluidRelayContainers",
+    "apiVersions": [
+      "2022-02-15",
+      "2021-09-10-preview",
+      "2021-08-30-preview"
+    ],
+    "locations": [
+      "West US 2",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2021-08-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2021-08-30-preview"
+    ],
+    "locations": [
+      "West US 2",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2022-02-15",
+      "2021-03-12-preview",
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  }
+]

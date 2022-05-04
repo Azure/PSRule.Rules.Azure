@@ -162,6 +162,7 @@ task ModuleDependencies Dependencies, {
 task BuildDotNet {
     exec {
         # Build library
+        dotnet build
         dotnet publish src/PSRule.Rules.Azure -c $Configuration -f netstandard2.0 -o $(Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -p:version=$Build
     }
 }
@@ -181,21 +182,11 @@ task TestDotNet {
     }
 }
 
-task MinifyData {
-    $dataPath = Join-Path -Path $PWD -ChildPath 'data';
-    $dataOutPath = Join-Path -Path $PWD -ChildPath 'out/data';
-    if (!(Test-Path -Path $dataOutPath)) {
-        $Null = New-Item -Path $dataOutPath -ItemType Directory -Force;
-    }
-
-    foreach ($dataFile in 'providers.json', 'environments.json', 'aliases.json') {
-        $filePath = Join-Path -Path $dataPath -ChildPath $dataFile;
-        $fileOutPath = Join-Path -Path $dataOutPath -ChildPath $dataFile;
-        Get-Content -Path $filePath -Raw | ConvertFrom-Json | ConvertTo-Json -Depth 100 -Compress | Set-Content -Path $fileOutPath;
-    }
+task BuildDataIndex {
+    dotnet run --project .\src\PSRule.Rules.Azure.BuildTool -- provider
 }
 
-task CopyModule MinifyData, {
+task CopyModule {
     CopyModuleFiles -Path src/PSRule.Rules.Azure -DestinationPath out/modules/PSRule.Rules.Azure;
 
     # Copy LICENSE
@@ -203,9 +194,6 @@ task CopyModule MinifyData, {
 
     # Copy third party notices
     Copy-Item -Path ThirdPartyNotices.txt -Destination out/modules/PSRule.Rules.Azure;
-
-    # Copy data
-    Copy-Item -Path 'out/data/*.json' -Destination out/modules/PSRule.Rules.Azure -Recurse;
 }
 
 # Synopsis: Build modules only
@@ -413,7 +401,7 @@ task ScaffoldHelp Build, BuildRuleDocs, {
 
 task Benchmark {
     if ($Benchmark -or $BuildTask -eq 'Benchmark') {
-        dotnet run -p src/PSRule.Rules.Azure.Benchmark -f netcoreapp3.1 -c Release -- benchmark --output $PWD;
+        dotnet run --project src/PSRule.Rules.Azure.Benchmark -f netcoreapp3.1 -c Release -- benchmark --output $PWD;
     }
 }
 
@@ -422,70 +410,10 @@ task Dependencies NuGet, {
     Install-Dependencies -Path $PWD/modules.json -Dev;
 }
 
-task ExportAliases {
-    $index = [ordered]@{};
-
-    Get-AzPolicyAlias | Sort-Object -Property Namespace, ResourceType | ForEach-Object {
-        $namespace = $_.Namespace;
-
-        if (!($index.Contains($namespace))) {
-            $index.Add($namespace, [ordered]@{});
-        }
-
-        $aliasMappings = [ordered]@{};
-        $_.Aliases | Sort-Object -Property Name | ForEach-Object {
-            $aliasMappings.Add($_.Name, $_.DefaultPath);
-        }
-
-        $index[$namespace].Add($_.ResourceType, $aliasMappings);
-    }
-
-    $dataPath = Join-Path -Path $PWD -ChildPath 'data';
-    if (!(Test-Path -Path $dataPath)) {
-        $Null = New-Item -Path $dataPath -ItemType Directory -Force;
-    }
-    $index | ConvertTo-Json -Depth 20 | Set-Content ./data/aliases.json;
+task ExportData {
+    Import-Module $PWD/scripts/providers.psm1;
+    Update-Providers;
 }
-
-task ExportProviders {
-    $subscriptionId = (Get-AzContext).Subscription.Id
-    $providers = @(((Invoke-AzRest -Method Get -Path "/subscriptions/$subscriptionId/providers?api-version=2021-04-01").Content | ConvertFrom-Json).value | Sort-Object -Property namespace -CaseSensitive)
-    $index = [ordered]@{}
-    foreach ($provider in $providers) {
-        $namespace = $provider.namespace;
-        $resourceTypes = [ordered]@{};
-        $provider.resourceTypes | Sort-Object -Property resourceType | ForEach-Object {
-            $info = [ordered]@{
-                resourceType = $_.resourceType
-                apiVersions  = $_.apiVersions
-                locations    = $_.locations
-                zoneMappings = ($_.ZoneMappings | Sort-Object -Property location | ForEach-Object {
-                        $zones = $_.zones
-                        if ($Null -ne $zones) {
-                            $zones = @($_.zones | Sort-Object)
-                        }
-                        [ordered]@{
-                            location = $_.location
-                            zones    = $zones
-                        }
-                    })
-            }
-            $resourceTypes.Add($info.resourceType, $info);
-        };
-        $entry = [ordered]@{
-            types = $resourceTypes
-        }
-        $index.Add($namespace, $entry);
-    }
-
-    $dataPath = Join-Path -Path $PWD -ChildPath 'data';
-    if (!(Test-Path -Path $dataPath)) {
-        $Null = New-Item -Path $dataPath -ItemType Directory -Force;
-    }
-    $index | ConvertTo-Json -Depth 20 | Set-Content ./data/providers.json;
-}
-
-task ExportData ExportProviders
 
 # Synopsis: Remove temp files.
 task Clean {

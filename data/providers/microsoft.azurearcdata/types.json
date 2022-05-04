@@ -1,0 +1,197 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "DataControllers",
+    "apiVersions": [
+      "2022-03-01-preview",
+      "2021-11-01",
+      "2021-08-01",
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "Japan East",
+      "Australia East",
+      "Korea Central",
+      "UK South",
+      "France Central",
+      "East US 2",
+      "East US",
+      "Central US",
+      "West US 2",
+      "North Europe",
+      "West US 3",
+      "South Central US",
+      "North Central US",
+      "West US",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "DataControllers/ActiveDirectoryConnectors",
+    "apiVersions": [
+      "2022-03-01-preview"
+    ],
+    "locations": [
+      "Japan East",
+      "Australia East",
+      "Korea Central",
+      "UK South",
+      "France Central",
+      "East US 2",
+      "East US",
+      "Central US",
+      "West US 2",
+      "North Europe",
+      "West US 3",
+      "South Central US",
+      "North Central US",
+      "West US",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2022-03-01-preview",
+      "2021-11-01",
+      "2021-08-01",
+      "2021-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2022-03-01-preview",
+      "2021-11-01",
+      "2021-08-01",
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "Japan East",
+      "Australia East",
+      "Korea Central",
+      "UK South",
+      "France Central",
+      "East US 2",
+      "Central US",
+      "Central US EUAP",
+      "West US 2",
+      "East Asia",
+      "East US",
+      "East US 2 EUAP",
+      "North Europe",
+      "Southeast Asia",
+      "West Europe",
+      "West US",
+      "West US 3",
+      "South Central US",
+      "North Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2022-03-01-preview",
+      "2021-11-01",
+      "2021-08-01",
+      "2021-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "PostgresInstances",
+    "apiVersions": [
+      "2022-03-01-preview",
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "UK South",
+      "France Central",
+      "East US 2",
+      "West US 2",
+      "East US",
+      "Southeast Asia",
+      "West Europe",
+      "North Europe",
+      "West US 3",
+      "South Central US",
+      "North Central US",
+      "West US",
+      "Japan East",
+      "Korea Central",
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "SqlManagedInstances",
+    "apiVersions": [
+      "2022-03-01-preview",
+      "2021-11-01",
+      "2021-08-01",
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "UK South",
+      "France Central",
+      "East US 2",
+      "West US 2",
+      "East US",
+      "Southeast Asia",
+      "West Europe",
+      "North Europe",
+      "West US 3",
+      "South Central US",
+      "North Central US",
+      "West US",
+      "Japan East",
+      "Korea Central",
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "SqlServerInstances",
+    "apiVersions": [
+      "2022-03-01-preview",
+      "2021-11-01",
+      "2021-08-01"
+    ],
+    "locations": [
+      "Australia East",
+      "UK South",
+      "East US 2",
+      "Central US",
+      "West US 2",
+      "East US",
+      "North Europe",
+      "West US 3",
+      "South Central US",
+      "North Central US",
+      "West US",
+      "Southeast Asia",
+      "West Europe",
+      "Japan East",
+      "Korea Central",
+      "France Central"
+    ],
+    "zoneMappings": null
+  }
+]

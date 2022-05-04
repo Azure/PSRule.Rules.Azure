@@ -1,0 +1,23 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2021-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2021-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central US"
+    ],
+    "zoneMappings": null
+  }
+]

@@ -1,0 +1,233 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "alertTypes",
+    "apiVersions": [
+      "2021-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "defenderSettings",
+    "apiVersions": [
+      "2021-11-01-preview",
+      "2021-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-09-01-preview",
+      "2021-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/deviceGroups",
+    "apiVersions": [
+      "2021-02-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/deviceGroups/alerts",
+    "apiVersions": [
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/deviceGroups/devices",
+    "apiVersions": [
+      "2021-11-01-preview",
+      "2021-02-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/deviceGroups/recommendations",
+    "apiVersions": [
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/deviceGroups/vulnerabilities",
+    "apiVersions": [
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/sites",
+    "apiVersions": [
+      "2021-09-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/sites/sensors",
+    "apiVersions": [
+      "2021-09-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "onPremiseSensors",
+    "apiVersions": [
+      "2021-11-01-preview",
+      "2021-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2021-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "recommendationTypes",
+    "apiVersions": [
+      "2021-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "sensors",
+    "apiVersions": [
+      "2021-09-01-preview",
+      "2021-02-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Japan West",
+      "Japan East",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "West US 2",
+      "Korea Central",
+      "Korea South",
+      "Australia Central",
+      "Australia Central 2",
+      "UAE Central",
+      "UAE North",
+      "South Africa North",
+      "South Africa West",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "sites",
+    "apiVersions": [
+      "2021-09-01-preview",
+      "2021-02-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "Southeast Asia",
+      "Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "South Central US",
+      "Japan West",
+      "Japan East",
+      "Brazil South",
+      "Australia East",
+      "Australia Southeast",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "West Central US",
+      "West US 2",
+      "Korea Central",
+      "Korea South",
+      "Australia Central",
+      "Australia Central 2",
+      "UAE Central",
+      "UAE North",
+      "South Africa North",
+      "South Africa West",
+      "North Europe",
+      "West Europe",
+      "UK South",
+      "UK West",
+      "France Central",
+      "France South"
+    ],
+    "zoneMappings": null
+  }
+]

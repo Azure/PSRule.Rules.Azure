@@ -1,0 +1,29 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "DeviceServices",
+    "apiVersions": [
+      "2019-06-01",
+      "2018-02-16-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2019-06-01",
+      "2018-02-16-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  }
+]

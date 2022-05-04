@@ -1,0 +1,1457 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkFeedbackRequired",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-08-01",
+      "2021-04-01-preview",
+      "2021-01-01-preview",
+      "2020-12-01",
+      "2020-06-01-preview",
+      "2019-12-01-preview",
+      "2019-12-01",
+      "2019-01-01",
+      "2018-06-01-preview",
+      "2018-01-01",
+      "2017-03-01",
+      "2016-10-10",
+      "2016-07-07",
+      "2015-09-15",
+      "2014-02-14"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-08-01",
+      "2021-04-01-preview",
+      "2021-01-01-preview",
+      "2020-12-01",
+      "2020-06-01-preview",
+      "2019-12-01-preview",
+      "2019-12-01",
+      "2019-01-01",
+      "2018-06-01-preview",
+      "2018-01-01",
+      "2017-03-01",
+      "2016-10-10",
+      "2016-07-07",
+      "2015-09-15",
+      "2014-02-14"
+    ],
+    "locations": [
+      "Central India",
+      "UAE North",
+      "Australia Central",
+      "Germany West Central",
+      "West Central US",
+      "Norway East",
+      "Switzerland North",
+      "Korea South",
+      "West India",
+      "Korea Central",
+      "South Africa North",
+      "UK West",
+      "Brazil South",
+      "East Asia",
+      "South India",
+      "Canada Central",
+      "Canada East",
+      "Australia Southeast",
+      "Japan East",
+      "North Central US",
+      "Southeast Asia",
+      "West US 2",
+      "Central US",
+      "UK South",
+      "Australia East",
+      "Japan West",
+      "West US",
+      "France Central",
+      "South Central US",
+      "East US 2",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 3",
+      "Jio India Central",
+      "Jio India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkServiceNameAvailability",
+    "apiVersions": [
+      "2015-09-15",
+      "2014-02-14"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "deletedServices",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-08-01",
+      "2021-04-01-preview",
+      "2021-01-01-preview",
+      "2020-12-01",
+      "2020-06-01-preview"
+    ],
+    "locations": [
+      "Central India",
+      "UAE North",
+      "Australia Central",
+      "Germany West Central",
+      "West Central US",
+      "Norway East",
+      "Switzerland North",
+      "Korea South",
+      "West India",
+      "Korea Central",
+      "South Africa North",
+      "UK West",
+      "Brazil South",
+      "East Asia",
+      "South India",
+      "Canada Central",
+      "Canada East",
+      "Australia Southeast",
+      "Japan East",
+      "North Central US",
+      "Southeast Asia",
+      "West US 2",
+      "Central US",
+      "UK South",
+      "Australia East",
+      "Japan West",
+      "West US",
+      "France Central",
+      "South Central US",
+      "East US 2",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 3",
+      "Jio India Central",
+      "Jio India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "getDomainOwnershipIdentifier",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-08-01",
+      "2021-04-01-preview",
+      "2021-01-01-preview",
+      "2020-12-01"
+    ],
+    "locations": [
+      "Central India",
+      "UAE North",
+      "Australia Central",
+      "Germany West Central",
+      "West Central US",
+      "Norway East",
+      "Switzerland North",
+      "Korea South",
+      "West India",
+      "Korea Central",
+      "South Africa North",
+      "UK West",
+      "Brazil South",
+      "East Asia",
+      "South India",
+      "Canada Central",
+      "Canada East",
+      "Australia Southeast",
+      "Japan East",
+      "North Central US",
+      "Southeast Asia",
+      "West US 2",
+      "Central US",
+      "UK South",
+      "Australia East",
+      "Japan West",
+      "West US",
+      "France Central",
+      "South Central US",
+      "East US 2",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 3",
+      "Jio India Central",
+      "Jio India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-08-01",
+      "2021-04-01-preview",
+      "2021-01-01-preview",
+      "2020-12-01",
+      "2020-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/deletedServices",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-08-01",
+      "2021-04-01-preview",
+      "2021-01-01-preview",
+      "2020-12-01",
+      "2020-06-01-preview"
+    ],
+    "locations": [
+      "Central India",
+      "UAE North",
+      "Australia Central",
+      "Germany West Central",
+      "West Central US",
+      "Norway East",
+      "Switzerland North",
+      "Korea South",
+      "West India",
+      "Korea Central",
+      "South Africa North",
+      "UK West",
+      "Brazil South",
+      "East Asia",
+      "South India",
+      "Canada Central",
+      "Canada East",
+      "Australia Southeast",
+      "Japan East",
+      "North Central US",
+      "Southeast Asia",
+      "West US 2",
+      "Central US",
+      "UK South",
+      "Australia East",
+      "Japan West",
+      "West US",
+      "France Central",
+      "South Central US",
+      "East US 2",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 3",
+      "Jio India Central",
+      "Jio India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-08-01",
+      "2021-04-01-preview",
+      "2021-01-01-preview",
+      "2020-12-01",
+      "2020-06-01-preview",
+      "2019-12-01-preview",
+      "2019-12-01",
+      "2019-01-01",
+      "2018-06-01-preview",
+      "2018-01-01",
+      "2017-03-01",
+      "2016-10-10",
+      "2016-07-07",
+      "2015-09-15",
+      "2014-02-14"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "reportFeedback",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-08-01",
+      "2021-04-01-preview",
+      "2021-01-01-preview",
+      "2020-12-01",
+      "2020-06-01-preview",
+      "2019-12-01-preview",
+      "2019-12-01",
+      "2019-01-01",
+      "2018-06-01-preview",
+      "2018-01-01",
+      "2017-03-01",
+      "2016-10-10",
+      "2016-07-07",
+      "2015-09-15",
+      "2014-02-14"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/additionalLocations": "properties.additionalLocations",
+      "Microsoft.ApiManagement/service/additionalLocations[*]": "properties.additionalLocations[*]",
+      "Microsoft.ApiManagement/service/additionalLocations[*].disableGateway": "properties.additionalLocations[*].disableGateway",
+      "Microsoft.ApiManagement/service/additionalLocations[*].gatewayRegionalUrl": "properties.additionalLocations[*].gatewayRegionalUrl",
+      "Microsoft.ApiManagement/service/additionalLocations[*].location": "properties.additionalLocations[*].location",
+      "Microsoft.ApiManagement/service/additionalLocations[*].privateIPAddresses": "properties.additionalLocations[*].privateIPAddresses",
+      "Microsoft.ApiManagement/service/additionalLocations[*].privateIPAddresses[*]": "properties.additionalLocations[*].privateIPAddresses[*]",
+      "Microsoft.ApiManagement/service/additionalLocations[*].publicIPAddresses": "properties.additionalLocations[*].publicIPAddresses",
+      "Microsoft.ApiManagement/service/additionalLocations[*].publicIPAddresses[*]": "properties.additionalLocations[*].publicIPAddresses[*]",
+      "Microsoft.ApiManagement/service/additionalLocations[*].sku": "properties.additionalLocations[*].sku",
+      "Microsoft.ApiManagement/service/additionalLocations[*].sku.capacity": "properties.additionalLocations[*].sku.capacity",
+      "Microsoft.ApiManagement/service/additionalLocations[*].sku.name": "properties.additionalLocations[*].sku.name",
+      "Microsoft.ApiManagement/service/additionalLocations[*].sku.name.externalDocs": "properties.additionalLocations[*].sku.name.externalDocs",
+      "Microsoft.ApiManagement/service/additionalLocations[*].skuType": "properties.additionalLocations[*].skuType",
+      "Microsoft.ApiManagement/service/additionalLocations[*].skuUnitCount": "properties.additionalLocations[*].skuUnitCount",
+      "Microsoft.ApiManagement/service/additionalLocations[*].staticIPs": "properties.additionalLocations[*].staticIPs",
+      "Microsoft.ApiManagement/service/additionalLocations[*].staticIPs[*]": "properties.additionalLocations[*].staticIPs[*]",
+      "Microsoft.ApiManagement/service/additionalLocations[*].virtualNetworkConfiguration": "properties.additionalLocations[*].virtualNetworkConfiguration",
+      "Microsoft.ApiManagement/service/additionalLocations[*].virtualNetworkConfiguration.subnetname": "properties.additionalLocations[*].virtualNetworkConfiguration.subnetname",
+      "Microsoft.ApiManagement/service/additionalLocations[*].virtualNetworkConfiguration.subnetResourceId": "properties.additionalLocations[*].virtualNetworkConfiguration.subnetResourceId",
+      "Microsoft.ApiManagement/service/additionalLocations[*].virtualNetworkConfiguration.vnetid": "properties.additionalLocations[*].virtualNetworkConfiguration.vnetid",
+      "Microsoft.ApiManagement/service/additionalLocations[*].vpnconfiguration": "properties.additionalLocations[*].vpnconfiguration",
+      "Microsoft.ApiManagement/service/additionalLocations[*].vpnconfiguration.location": "properties.additionalLocations[*].vpnconfiguration.location",
+      "Microsoft.ApiManagement/service/additionalLocations[*].vpnconfiguration.subnetname": "properties.additionalLocations[*].vpnconfiguration.subnetname",
+      "Microsoft.ApiManagement/service/additionalLocations[*].vpnconfiguration.subnetResourceId": "properties.additionalLocations[*].vpnconfiguration.subnetResourceId",
+      "Microsoft.ApiManagement/service/additionalLocations[*].vpnconfiguration.vnetid": "properties.additionalLocations[*].vpnconfiguration.vnetid",
+      "Microsoft.ApiManagement/service/additionalLocations[*].zones": "properties.additionalLocations[*].zones",
+      "Microsoft.ApiManagement/service/additionalLocations[*].zones[*]": "properties.additionalLocations[*].zones[*]",
+      "Microsoft.ApiManagement/service/addresserEmail": "properties.addresserEmail",
+      "Microsoft.ApiManagement/service/api-version-sets.description": "properties.description",
+      "Microsoft.ApiManagement/service/api-version-sets.displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/api-version-sets.versionHeaderName": "properties.versionHeaderName",
+      "Microsoft.ApiManagement/service/api-version-sets.versioningScheme": "properties.versioningScheme",
+      "Microsoft.ApiManagement/service/api-version-sets.versionQueryName": "properties.versionQueryName",
+      "Microsoft.ApiManagement/service/apiVersionConstraint": "properties.apiVersionConstraint",
+      "Microsoft.ApiManagement/service/apiVersionConstraint.minApiVersion": "properties.apiVersionConstraint.minApiVersion",
+      "Microsoft.ApiManagement/service/caches.connectionString": "properties.connectionString",
+      "Microsoft.ApiManagement/service/caches.description": "properties.description",
+      "Microsoft.ApiManagement/service/caches.resourceId": "properties.resourceId",
+      "Microsoft.ApiManagement/service/certificates": "properties.certificates",
+      "Microsoft.ApiManagement/service/certificates[*]": "properties.certificates[*]",
+      "Microsoft.ApiManagement/service/certificates[*].certificate": "properties.certificates[*].certificate",
+      "Microsoft.ApiManagement/service/certificates[*].certificate.expiry": "properties.certificates[*].certificate.expiry",
+      "Microsoft.ApiManagement/service/certificates[*].certificate.subject": "properties.certificates[*].certificate.subject",
+      "Microsoft.ApiManagement/service/certificates[*].certificate.thumbprint": "properties.certificates[*].certificate.thumbprint",
+      "Microsoft.ApiManagement/service/certificates[*].certificatePassword": "properties.certificates[*].certificatePassword",
+      "Microsoft.ApiManagement/service/certificates[*].encodedCertificate": "properties.certificates[*].encodedCertificate",
+      "Microsoft.ApiManagement/service/certificates[*].storeName": "properties.certificates[*].storeName",
+      "Microsoft.ApiManagement/service/createdAtUtc": "properties.createdAtUtc",
+      "Microsoft.ApiManagement/service/customProperties": "properties.customProperties",
+      "Microsoft.ApiManagement/service/developerPortalUrl": "properties.developerPortalUrl",
+      "Microsoft.ApiManagement/service/disableGateway": "properties.disableGateway",
+      "Microsoft.ApiManagement/service/enableClientCertificate": "properties.enableClientCertificate",
+      "Microsoft.ApiManagement/service/gatewayRegionalUrl": "properties.gatewayRegionalUrl",
+      "Microsoft.ApiManagement/service/gatewayUrl": "properties.gatewayUrl",
+      "Microsoft.ApiManagement/service/hostnameConfigurations": "properties.hostnameConfigurations",
+      "Microsoft.ApiManagement/service/hostnameConfigurations[*]": "properties.hostnameConfigurations[*]",
+      "Microsoft.ApiManagement/service/hostnameConfigurations[*].certificate": "properties.hostnameConfigurations[*].certificate",
+      "Microsoft.ApiManagement/service/hostnameConfigurations[*].certificate.expiry": "properties.hostnameConfigurations[*].certificate.expiry",
+      "Microsoft.ApiManagement/service/hostnameConfigurations[*].certificate.subject": "properties.hostnameConfigurations[*].certificate.subject",
+      "Microsoft.ApiManagement/service/hostnameConfigurations[*].certificate.thumbprint": "properties.hostnameConfigurations[*].certificate.thumbprint",
+      "Microsoft.ApiManagement/service/hostnameConfigurations[*].certificatePassword": "properties.hostnameConfigurations[*].certificatePassword",
+      "Microsoft.ApiManagement/service/hostnameConfigurations[*].defaultSslBinding": "properties.hostnameConfigurations[*].defaultSslBinding",
+      "Microsoft.ApiManagement/service/hostnameConfigurations[*].encodedCertificate": "properties.hostnameConfigurations[*].encodedCertificate",
+      "Microsoft.ApiManagement/service/hostnameConfigurations[*].hostname": "properties.hostnameConfigurations[*].hostname",
+      "Microsoft.ApiManagement/service/hostnameConfigurations[*].identityClientId": "properties.hostnameConfigurations[*].identityClientId",
+      "Microsoft.ApiManagement/service/hostnameConfigurations[*].keyVaultId": "properties.hostnameConfigurations[*].keyVaultId",
+      "Microsoft.ApiManagement/service/hostnameConfigurations[*].negotiateClientCertificate": "properties.hostnameConfigurations[*].negotiateClientCertificate",
+      "Microsoft.ApiManagement/service/hostnameConfigurations[*].type": "properties.hostnameConfigurations[*].type",
+      "Microsoft.ApiManagement/service/managementApiUrl": "properties.managementApiUrl",
+      "Microsoft.ApiManagement/service/notificationSenderEmail": "properties.notificationSenderEmail",
+      "Microsoft.ApiManagement/service/portalUrl": "properties.portalUrl",
+      "Microsoft.ApiManagement/service/privateIPAddresses": "properties.privateIPAddresses",
+      "Microsoft.ApiManagement/service/privateIPAddresses[*]": "properties.privateIPAddresses[*]",
+      "Microsoft.ApiManagement/service/provisioningState": "properties.provisioningState",
+      "Microsoft.ApiManagement/service/publicIPAddresses": "properties.publicIPAddresses",
+      "Microsoft.ApiManagement/service/publicIPAddresses[*]": "properties.publicIPAddresses[*]",
+      "Microsoft.ApiManagement/service/publisherEmail": "properties.publisherEmail",
+      "Microsoft.ApiManagement/service/publisherName": "properties.publisherName",
+      "Microsoft.ApiManagement/service/restore": "properties.restore",
+      "Microsoft.ApiManagement/service/runtimeUrl": "properties.runtimeUrl",
+      "Microsoft.ApiManagement/service/scmUrl": "properties.scmUrl",
+      "Microsoft.ApiManagement/service/sku": "sku",
+      "Microsoft.ApiManagement/service/sku.capacity": "sku.capacity",
+      "Microsoft.ApiManagement/service/sku.name": "sku.name",
+      "Microsoft.ApiManagement/service/sku.name.externalDocs": "sku.name.externalDocs",
+      "Microsoft.ApiManagement/service/staticIPs": "properties.staticIPs",
+      "Microsoft.ApiManagement/service/staticIPs[*]": "properties.staticIPs[*]",
+      "Microsoft.ApiManagement/service/targetProvisioningState": "properties.targetProvisioningState",
+      "Microsoft.ApiManagement/service/virtualNetworkConfiguration": "properties.virtualNetworkConfiguration",
+      "Microsoft.ApiManagement/service/virtualNetworkConfiguration.subnetname": "properties.virtualNetworkConfiguration.subnetname",
+      "Microsoft.ApiManagement/service/virtualNetworkConfiguration.subnetResourceId": "properties.virtualNetworkConfiguration.subnetResourceId",
+      "Microsoft.ApiManagement/service/virtualNetworkConfiguration.vnetid": "properties.virtualNetworkConfiguration.vnetid",
+      "Microsoft.ApiManagement/service/virtualNetworkType": "properties.virtualNetworkType",
+      "Microsoft.ApiManagement/service/vpnconfiguration": "properties.vpnconfiguration",
+      "Microsoft.ApiManagement/service/vpnconfiguration.location": "properties.vpnconfiguration.location",
+      "Microsoft.ApiManagement/service/vpnconfiguration.subnetname": "properties.vpnconfiguration.subnetname",
+      "Microsoft.ApiManagement/service/vpnconfiguration.subnetResourceId": "properties.vpnconfiguration.subnetResourceId",
+      "Microsoft.ApiManagement/service/vpnconfiguration.vnetid": "properties.vpnconfiguration.vnetid",
+      "Microsoft.ApiManagement/service/vpnType": "properties.vpnType",
+      "Microsoft.ApiManagement/service/zones": "zones",
+      "Microsoft.ApiManagement/service/zones[*]": "zones[*]"
+    },
+    "resourceType": "service",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-08-01",
+      "2021-04-01-preview",
+      "2021-01-01-preview",
+      "2020-12-01",
+      "2020-06-01-preview",
+      "2019-12-01-preview",
+      "2019-12-01",
+      "2019-01-01",
+      "2018-06-01-preview",
+      "2018-01-01",
+      "2017-03-01",
+      "2016-10-10",
+      "2016-07-07",
+      "2015-09-15",
+      "2014-02-14"
+    ],
+    "locations": [
+      "Central India",
+      "UAE North",
+      "Australia Central",
+      "Germany West Central",
+      "West Central US",
+      "Norway East",
+      "Switzerland North",
+      "Korea South",
+      "West India",
+      "Korea Central",
+      "South Africa North",
+      "UK West",
+      "Brazil South",
+      "East Asia",
+      "South India",
+      "Canada Central",
+      "Canada East",
+      "Australia Southeast",
+      "Japan East",
+      "North Central US",
+      "Southeast Asia",
+      "West US 2",
+      "Central US",
+      "UK South",
+      "Australia East",
+      "Japan West",
+      "West US",
+      "France Central",
+      "South Central US",
+      "East US 2",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 3",
+      "Jio India Central",
+      "Jio India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Brazil South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central India",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "North Central US",
+        "zones": []
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Africa North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Sweden Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Switzerland North",
+        "zones": []
+      },
+      {
+        "location": "UAE North",
+        "zones": []
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 3",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
+  },
+  {
+    "aliases": null,
+    "resourceType": "service/eventGridFilters",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-08-01",
+      "2021-04-01-preview",
+      "2021-01-01-preview"
+    ],
+    "locations": [
+      "Central India",
+      "UAE North",
+      "Australia Central",
+      "Germany West Central",
+      "West Central US",
+      "Norway East",
+      "Switzerland North",
+      "Korea South",
+      "West India",
+      "Korea Central",
+      "South Africa North",
+      "UK West",
+      "Brazil South",
+      "East Asia",
+      "South India",
+      "Canada Central",
+      "Canada East",
+      "Australia Southeast",
+      "Japan East",
+      "North Central US",
+      "Southeast Asia",
+      "West US 2",
+      "Central US",
+      "UK South",
+      "Australia East",
+      "Japan West",
+      "West US",
+      "France Central",
+      "South Central US",
+      "East US 2",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 3",
+      "Jio India Central",
+      "Jio India West",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "validateServiceName",
+    "apiVersions": [
+      "2015-09-15",
+      "2014-02-14"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/apiRevision": "properties.apiRevision",
+      "Microsoft.ApiManagement/service/apis/apiRevisionDescription": "properties.apiRevisionDescription",
+      "Microsoft.ApiManagement/service/apis/apiVersion": "properties.apiVersion",
+      "Microsoft.ApiManagement/service/apis/apiVersionDescription": "properties.apiVersionDescription",
+      "Microsoft.ApiManagement/service/apis/apiVersionSet": "properties.apiVersionSet",
+      "Microsoft.ApiManagement/service/apis/apiVersionSet.description": "properties.apiVersionSet.description",
+      "Microsoft.ApiManagement/service/apis/apiVersionSet.displayName": "properties.apiVersionSet.properties.displayName",
+      "Microsoft.ApiManagement/service/apis/apiVersionSet.id": "properties.apiVersionSet.id",
+      "Microsoft.ApiManagement/service/apis/apiVersionSet.name": "properties.apiVersionSet.name",
+      "Microsoft.ApiManagement/service/apis/apiVersionSet.type": "properties.apiVersionSet.type",
+      "Microsoft.ApiManagement/service/apis/apiVersionSet.versionHeaderName": "properties.apiVersionSet.versionHeaderName",
+      "Microsoft.ApiManagement/service/apis/apiVersionSet.versioningScheme": "properties.apiVersionSet.versioningScheme",
+      "Microsoft.ApiManagement/service/apis/apiVersionSet.versionQueryName": "properties.apiVersionSet.versionQueryName",
+      "Microsoft.ApiManagement/service/apis/apiVersionSetId": "properties.apiVersionSetId",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings": "properties.authenticationSettings",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.oAuth2": "properties.authenticationSettings.oAuth2",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.oAuth2.authorizationServerId": "properties.authenticationSettings.oAuth2.authorizationServerId",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.oAuth2.scope": "properties.authenticationSettings.oAuth2.scope",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.openid": "properties.authenticationSettings.openid",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.openid.bearerTokenSendingMethods": "properties.authenticationSettings.openid.bearerTokenSendingMethods",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.openid.bearerTokenSendingMethods[*]": "properties.authenticationSettings.openid.bearerTokenSendingMethods[*]",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.openid.openidProviderId": "properties.authenticationSettings.openid.openidProviderId",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.subscriptionKeyRequired": "properties.authenticationSettings.subscriptionKeyRequired",
+      "Microsoft.ApiManagement/service/apis/description": "properties.description",
+      "Microsoft.ApiManagement/service/apis/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/apis/isCurrent": "properties.isCurrent",
+      "Microsoft.ApiManagement/service/apis/isOnline": "properties.isOnline",
+      "Microsoft.ApiManagement/service/apis/path": "properties.path",
+      "Microsoft.ApiManagement/service/apis/protocols": "properties.protocols",
+      "Microsoft.ApiManagement/service/apis/protocols[*]": "properties.protocols[*]",
+      "Microsoft.ApiManagement/service/apis/serviceUrl": "properties.serviceUrl",
+      "Microsoft.ApiManagement/service/apis/sourceApiId": "properties.sourceApiId",
+      "Microsoft.ApiManagement/service/apis/subscriptionKeyParameterNames": "properties.subscriptionKeyParameterNames",
+      "Microsoft.ApiManagement/service/apis/subscriptionKeyParameterNames.example": "properties.subscriptionKeyParameterNames.example",
+      "Microsoft.ApiManagement/service/apis/subscriptionKeyParameterNames.header": "properties.subscriptionKeyParameterNames.header",
+      "Microsoft.ApiManagement/service/apis/subscriptionKeyParameterNames.query": "properties.subscriptionKeyParameterNames.query",
+      "Microsoft.ApiManagement/service/apis/subscriptionRequired": "properties.subscriptionRequired",
+      "Microsoft.ApiManagement/service/apis/type": "properties.type"
+    },
+    "resourceType": "service/apis"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/diagnostics/alwaysLog": "properties.alwaysLog",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend": "properties.backend",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request": "properties.backend.request",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request.body": "properties.backend.request.body",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request.body.bytes": "properties.backend.request.body.bytes",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request.dataMasking": "properties.backend.request.dataMasking",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request.dataMasking.headers": "properties.backend.request.dataMasking.headers",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request.dataMasking.headers[*]": "properties.backend.request.dataMasking.headers[*]",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request.dataMasking.headers[*].mode": "properties.backend.request.dataMasking.headers[*].mode",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request.dataMasking.headers[*].value": "properties.backend.request.dataMasking.headers[*].value",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request.dataMasking.queryParams": "properties.backend.request.dataMasking.queryParams",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request.dataMasking.queryParams[*]": "properties.backend.request.dataMasking.queryParams[*]",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request.dataMasking.queryParams[*].mode": "properties.backend.request.dataMasking.queryParams[*].mode",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request.dataMasking.queryParams[*].value": "properties.backend.request.dataMasking.queryParams[*].value",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request.headers": "properties.backend.request.headers",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.request.headers[*]": "properties.backend.request.headers[*]",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response": "properties.backend.response",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response.body": "properties.backend.response.body",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response.body.bytes": "properties.backend.response.body.bytes",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response.dataMasking": "properties.backend.response.dataMasking",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response.dataMasking.headers": "properties.backend.response.dataMasking.headers",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response.dataMasking.headers[*]": "properties.backend.response.dataMasking.headers[*]",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response.dataMasking.headers[*].mode": "properties.backend.response.dataMasking.headers[*].mode",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response.dataMasking.headers[*].value": "properties.backend.response.dataMasking.headers[*].value",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response.dataMasking.queryParams": "properties.backend.response.dataMasking.queryParams",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response.dataMasking.queryParams[*]": "properties.backend.response.dataMasking.queryParams[*]",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response.dataMasking.queryParams[*].mode": "properties.backend.response.dataMasking.queryParams[*].mode",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response.dataMasking.queryParams[*].value": "properties.backend.response.dataMasking.queryParams[*].value",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response.headers": "properties.backend.response.headers",
+      "Microsoft.ApiManagement/service/apis/diagnostics/backend.response.headers[*]": "properties.backend.response.headers[*]",
+      "Microsoft.ApiManagement/service/apis/diagnostics/enabled": "properties.enabled",
+      "Microsoft.ApiManagement/service/apis/diagnostics/enableHttpCorrelationHeaders": "properties.enableHttpCorrelationHeaders",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend": "properties.frontend",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request": "properties.frontend.request",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request.body": "properties.frontend.request.body",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request.body.bytes": "properties.frontend.request.body.bytes",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request.dataMasking": "properties.frontend.request.dataMasking",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request.dataMasking.headers": "properties.frontend.request.dataMasking.headers",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request.dataMasking.headers[*]": "properties.frontend.request.dataMasking.headers[*]",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request.dataMasking.headers[*].mode": "properties.frontend.request.dataMasking.headers[*].mode",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request.dataMasking.headers[*].value": "properties.frontend.request.dataMasking.headers[*].value",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request.dataMasking.queryParams": "properties.frontend.request.dataMasking.queryParams",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request.dataMasking.queryParams[*]": "properties.frontend.request.dataMasking.queryParams[*]",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request.dataMasking.queryParams[*].mode": "properties.frontend.request.dataMasking.queryParams[*].mode",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request.dataMasking.queryParams[*].value": "properties.frontend.request.dataMasking.queryParams[*].value",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request.headers": "properties.frontend.request.headers",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.request.headers[*]": "properties.frontend.request.headers[*]",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response": "properties.frontend.response",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response.body": "properties.frontend.response.body",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response.body.bytes": "properties.frontend.response.body.bytes",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response.dataMasking": "properties.frontend.response.dataMasking",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response.dataMasking.headers": "properties.frontend.response.dataMasking.headers",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response.dataMasking.headers[*]": "properties.frontend.response.dataMasking.headers[*]",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response.dataMasking.headers[*].mode": "properties.frontend.response.dataMasking.headers[*].mode",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response.dataMasking.headers[*].value": "properties.frontend.response.dataMasking.headers[*].value",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response.dataMasking.queryParams": "properties.frontend.response.dataMasking.queryParams",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response.dataMasking.queryParams[*]": "properties.frontend.response.dataMasking.queryParams[*]",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response.dataMasking.queryParams[*].mode": "properties.frontend.response.dataMasking.queryParams[*].mode",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response.dataMasking.queryParams[*].value": "properties.frontend.response.dataMasking.queryParams[*].value",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response.headers": "properties.frontend.response.headers",
+      "Microsoft.ApiManagement/service/apis/diagnostics/frontend.response.headers[*]": "properties.frontend.response.headers[*]",
+      "Microsoft.ApiManagement/service/apis/diagnostics/httpCorrelationProtocol": "properties.httpCorrelationProtocol",
+      "Microsoft.ApiManagement/service/apis/diagnostics/logClientIp": "properties.logClientIp",
+      "Microsoft.ApiManagement/service/apis/diagnostics/loggerId": "properties.loggerId",
+      "Microsoft.ApiManagement/service/apis/diagnostics/operationNameFormat": "properties.operationNameFormat",
+      "Microsoft.ApiManagement/service/apis/diagnostics/sampling": "properties.sampling",
+      "Microsoft.ApiManagement/service/apis/diagnostics/sampling.percentage": "properties.sampling.percentage",
+      "Microsoft.ApiManagement/service/apis/diagnostics/sampling.samplingType": "properties.sampling.samplingType",
+      "Microsoft.ApiManagement/service/apis/diagnostics/verbosity": "properties.verbosity"
+    },
+    "resourceType": "service/apis/diagnostics"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/issues/apiId": "properties.apiId",
+      "Microsoft.ApiManagement/service/apis/issues/createdDate": "properties.createdDate",
+      "Microsoft.ApiManagement/service/apis/issues/description": "properties.description",
+      "Microsoft.ApiManagement/service/apis/issues/state": "properties.state",
+      "Microsoft.ApiManagement/service/apis/issues/title": "properties.title",
+      "Microsoft.ApiManagement/service/apis/issues/userId": "properties.userId"
+    },
+    "resourceType": "service/apis/issues"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/issues/attachments/content": "properties.content",
+      "Microsoft.ApiManagement/service/apis/issues/attachments/contentFormat": "properties.contentFormat",
+      "Microsoft.ApiManagement/service/apis/issues/attachments/title": "properties.title"
+    },
+    "resourceType": "service/apis/issues/attachments"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/issues/comments/createdDate": "properties.createdDate",
+      "Microsoft.ApiManagement/service/apis/issues/comments/text": "properties.text",
+      "Microsoft.ApiManagement/service/apis/issues/comments/userId": "properties.userId"
+    },
+    "resourceType": "service/apis/issues/comments"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/operations/description": "properties.description",
+      "Microsoft.ApiManagement/service/apis/operations/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/apis/operations/method": "properties.method",
+      "Microsoft.ApiManagement/service/apis/operations/method.externalDocs": "properties.method.externalDocs",
+      "Microsoft.ApiManagement/service/apis/operations/policies": "properties.policies",
+      "Microsoft.ApiManagement/service/apis/operations/request": "properties.request",
+      "Microsoft.ApiManagement/service/apis/operations/request.description": "properties.request.description",
+      "Microsoft.ApiManagement/service/apis/operations/request.headers": "properties.request.headers",
+      "Microsoft.ApiManagement/service/apis/operations/request.headers[*]": "properties.request.headers[*]",
+      "Microsoft.ApiManagement/service/apis/operations/request.headers[*].defaultValue": "properties.request.headers[*].defaultValue",
+      "Microsoft.ApiManagement/service/apis/operations/request.headers[*].description": "properties.request.headers[*].description",
+      "Microsoft.ApiManagement/service/apis/operations/request.headers[*].name": "properties.request.headers[*].name",
+      "Microsoft.ApiManagement/service/apis/operations/request.headers[*].required": "properties.request.headers[*].required",
+      "Microsoft.ApiManagement/service/apis/operations/request.headers[*].type": "properties.request.headers[*].type",
+      "Microsoft.ApiManagement/service/apis/operations/request.headers[*].values": "properties.request.headers[*].values",
+      "Microsoft.ApiManagement/service/apis/operations/request.headers[*].values[*]": "properties.request.headers[*].values[*]",
+      "Microsoft.ApiManagement/service/apis/operations/request.queryParameters": "properties.request.queryParameters",
+      "Microsoft.ApiManagement/service/apis/operations/request.queryParameters[*]": "properties.request.queryParameters[*]",
+      "Microsoft.ApiManagement/service/apis/operations/request.queryParameters[*].defaultValue": "properties.request.queryParameters[*].defaultValue",
+      "Microsoft.ApiManagement/service/apis/operations/request.queryParameters[*].description": "properties.request.queryParameters[*].description",
+      "Microsoft.ApiManagement/service/apis/operations/request.queryParameters[*].name": "properties.request.queryParameters[*].name",
+      "Microsoft.ApiManagement/service/apis/operations/request.queryParameters[*].required": "properties.request.queryParameters[*].required",
+      "Microsoft.ApiManagement/service/apis/operations/request.queryParameters[*].type": "properties.request.queryParameters[*].type",
+      "Microsoft.ApiManagement/service/apis/operations/request.queryParameters[*].values": "properties.request.queryParameters[*].values",
+      "Microsoft.ApiManagement/service/apis/operations/request.queryParameters[*].values[*]": "properties.request.queryParameters[*].values[*]",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations": "properties.request.representations",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*]": "properties.request.representations[*]",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*].contentType": "properties.request.representations[*].contentType",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*].formParameters": "properties.request.representations[*].formParameters",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*].formParameters[*]": "properties.request.representations[*].formParameters[*]",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*].formParameters[*].defaultValue": "properties.request.representations[*].formParameters[*].defaultValue",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*].formParameters[*].description": "properties.request.representations[*].formParameters[*].description",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*].formParameters[*].name": "properties.request.representations[*].formParameters[*].name",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*].formParameters[*].required": "properties.request.representations[*].formParameters[*].required",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*].formParameters[*].type": "properties.request.representations[*].formParameters[*].type",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*].formParameters[*].values": "properties.request.representations[*].formParameters[*].values",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*].formParameters[*].values[*]": "properties.request.representations[*].formParameters[*].values[*]",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*].sample": "properties.request.representations[*].sample",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*].schemaId": "properties.request.representations[*].schemaId",
+      "Microsoft.ApiManagement/service/apis/operations/request.representations[*].typeName": "properties.request.representations[*].typeName",
+      "Microsoft.ApiManagement/service/apis/operations/responses": "properties.responses",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*]": "properties.responses[*]",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].description": "properties.responses[*].description",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].headers": "properties.responses[*].headers",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].headers[*]": "properties.responses[*].headers[*]",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].headers[*].defaultValue": "properties.responses[*].headers[*].defaultValue",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].headers[*].description": "properties.responses[*].headers[*].description",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].headers[*].name": "properties.responses[*].headers[*].name",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].headers[*].required": "properties.responses[*].headers[*].required",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].headers[*].type": "properties.responses[*].headers[*].type",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].headers[*].values": "properties.responses[*].headers[*].values",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].headers[*].values[*]": "properties.responses[*].headers[*].values[*]",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations": "properties.responses[*].representations",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*]": "properties.responses[*].representations[*]",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*].contentType": "properties.responses[*].representations[*].contentType",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*].formParameters": "properties.responses[*].representations[*].formParameters",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*].formParameters[*]": "properties.responses[*].representations[*].formParameters[*]",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*].formParameters[*].defaultValue": "properties.responses[*].representations[*].formParameters[*].defaultValue",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*].formParameters[*].description": "properties.responses[*].representations[*].formParameters[*].description",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*].formParameters[*].name": "properties.responses[*].representations[*].formParameters[*].name",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*].formParameters[*].required": "properties.responses[*].representations[*].formParameters[*].required",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*].formParameters[*].type": "properties.responses[*].representations[*].formParameters[*].type",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*].formParameters[*].values": "properties.responses[*].representations[*].formParameters[*].values",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*].formParameters[*].values[*]": "properties.responses[*].representations[*].formParameters[*].values[*]",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*].sample": "properties.responses[*].representations[*].sample",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*].schemaId": "properties.responses[*].representations[*].schemaId",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].representations[*].typeName": "properties.responses[*].representations[*].typeName",
+      "Microsoft.ApiManagement/service/apis/operations/responses[*].statusCode": "properties.responses[*].statusCode",
+      "Microsoft.ApiManagement/service/apis/operations/templateParameters": "properties.templateParameters",
+      "Microsoft.ApiManagement/service/apis/operations/templateParameters[*]": "properties.templateParameters[*]",
+      "Microsoft.ApiManagement/service/apis/operations/templateParameters[*].defaultValue": "properties.templateParameters[*].defaultValue",
+      "Microsoft.ApiManagement/service/apis/operations/templateParameters[*].description": "properties.templateParameters[*].description",
+      "Microsoft.ApiManagement/service/apis/operations/templateParameters[*].name": "properties.templateParameters[*].name",
+      "Microsoft.ApiManagement/service/apis/operations/templateParameters[*].required": "properties.templateParameters[*].required",
+      "Microsoft.ApiManagement/service/apis/operations/templateParameters[*].type": "properties.templateParameters[*].type",
+      "Microsoft.ApiManagement/service/apis/operations/templateParameters[*].values": "properties.templateParameters[*].values",
+      "Microsoft.ApiManagement/service/apis/operations/templateParameters[*].values[*]": "properties.templateParameters[*].values[*]",
+      "Microsoft.ApiManagement/service/apis/operations/urlTemplate": "properties.urlTemplate"
+    },
+    "resourceType": "service/apis/operations"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/operations/policies/contentFormat": "properties.contentFormat",
+      "Microsoft.ApiManagement/service/apis/operations/policies/format": "properties.format",
+      "Microsoft.ApiManagement/service/apis/operations/policies/policy.contentFormat": "properties.contentFormat",
+      "Microsoft.ApiManagement/service/apis/operations/policies/policy.format": "properties.format",
+      "Microsoft.ApiManagement/service/apis/operations/policies/policy.policyContent": "properties.policyContent",
+      "Microsoft.ApiManagement/service/apis/operations/policies/policy.value": "properties.value",
+      "Microsoft.ApiManagement/service/apis/operations/policies/policyContent": "properties.policyContent",
+      "Microsoft.ApiManagement/service/apis/operations/policies/value": "properties.value"
+    },
+    "resourceType": "service/apis/operations/policies"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/operations/tags/displayName": "properties.displayName"
+    },
+    "resourceType": "service/apis/operations/tags"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/policies/contentFormat": "properties.contentFormat",
+      "Microsoft.ApiManagement/service/apis/policies/format": "properties.format",
+      "Microsoft.ApiManagement/service/apis/policies/policy.contentFormat": "properties.contentFormat",
+      "Microsoft.ApiManagement/service/apis/policies/policy.format": "properties.format",
+      "Microsoft.ApiManagement/service/apis/policies/policy.policyContent": "properties.policyContent",
+      "Microsoft.ApiManagement/service/apis/policies/policy.value": "properties.value",
+      "Microsoft.ApiManagement/service/apis/policies/policyContent": "properties.policyContent",
+      "Microsoft.ApiManagement/service/apis/policies/value": "properties.value"
+    },
+    "resourceType": "service/apis/policies"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/releases/apiId": "properties.apiId",
+      "Microsoft.ApiManagement/service/apis/releases/createdDateTime": "properties.createdDateTime",
+      "Microsoft.ApiManagement/service/apis/releases/notes": "properties.notes",
+      "Microsoft.ApiManagement/service/apis/releases/updatedDateTime": "properties.updatedDateTime"
+    },
+    "resourceType": "service/apis/releases"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/schemas/contentType": "properties.contentType",
+      "Microsoft.ApiManagement/service/apis/schemas/document": "properties.document",
+      "Microsoft.ApiManagement/service/apis/schemas/document.definitions": "properties.document.definitions",
+      "Microsoft.ApiManagement/service/apis/schemas/document.value": "properties.document.value"
+    },
+    "resourceType": "service/apis/schemas"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/tagDescriptions/description": "properties.description",
+      "Microsoft.ApiManagement/service/apis/tagDescriptions/externalDocsDescription": "properties.externalDocsDescription",
+      "Microsoft.ApiManagement/service/apis/tagDescriptions/externalDocsUrl": "properties.externalDocsUrl"
+    },
+    "resourceType": "service/apis/tagdescriptions"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/tags/displayName": "properties.displayName"
+    },
+    "resourceType": "service/apis/tags"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apiVersionSets/description": "properties.description",
+      "Microsoft.ApiManagement/service/apiVersionSets/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/apiVersionSets/versionHeaderName": "properties.versionHeaderName",
+      "Microsoft.ApiManagement/service/apiVersionSets/versioningScheme": "properties.versioningScheme",
+      "Microsoft.ApiManagement/service/apiVersionSets/versionQueryName": "properties.versionQueryName"
+    },
+    "resourceType": "service/apiversionsets"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/authorizationServers/authorizationEndpoint": "properties.authorizationEndpoint",
+      "Microsoft.ApiManagement/service/authorizationServers/authorizationMethods": "properties.authorizationMethods",
+      "Microsoft.ApiManagement/service/authorizationServers/authorizationMethods[*]": "properties.authorizationMethods[*]",
+      "Microsoft.ApiManagement/service/authorizationServers/bearerTokenSendingMethods": "properties.bearerTokenSendingMethods",
+      "Microsoft.ApiManagement/service/authorizationServers/bearerTokenSendingMethods[*]": "properties.bearerTokenSendingMethods[*]",
+      "Microsoft.ApiManagement/service/authorizationServers/bearerTokenSendingMethods[*].externalDocs": "properties.bearerTokenSendingMethods[*].externalDocs",
+      "Microsoft.ApiManagement/service/authorizationServers/clientAuthenticationMethod": "properties.clientAuthenticationMethod",
+      "Microsoft.ApiManagement/service/authorizationServers/clientAuthenticationMethod[*]": "properties.clientAuthenticationMethod[*]",
+      "Microsoft.ApiManagement/service/authorizationServers/clientId": "properties.clientId",
+      "Microsoft.ApiManagement/service/authorizationServers/clientRegistrationEndpoint": "properties.clientRegistrationEndpoint",
+      "Microsoft.ApiManagement/service/authorizationServers/clientSecret": "properties.clientSecret",
+      "Microsoft.ApiManagement/service/authorizationServers/defaultScope": "properties.defaultScope",
+      "Microsoft.ApiManagement/service/authorizationServers/defaultScope.externalDocs": "properties.defaultScope.externalDocs",
+      "Microsoft.ApiManagement/service/authorizationServers/description": "properties.description",
+      "Microsoft.ApiManagement/service/authorizationServers/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/authorizationServers/grantTypes": "properties.grantTypes",
+      "Microsoft.ApiManagement/service/authorizationServers/grantTypes[*]": "properties.grantTypes[*]",
+      "Microsoft.ApiManagement/service/authorizationServers/grantTypes[*].externalDocs": "properties.grantTypes[*].externalDocs",
+      "Microsoft.ApiManagement/service/authorizationServers/resourceOwnerPassword": "properties.resourceOwnerPassword",
+      "Microsoft.ApiManagement/service/authorizationServers/resourceOwnerUsername": "properties.resourceOwnerUsername",
+      "Microsoft.ApiManagement/service/authorizationServers/supportState": "properties.supportState",
+      "Microsoft.ApiManagement/service/authorizationServers/supportState.externalDocs": "properties.supportState.externalDocs",
+      "Microsoft.ApiManagement/service/authorizationServers/tokenBodyParameters": "properties.tokenBodyParameters",
+      "Microsoft.ApiManagement/service/authorizationServers/tokenBodyParameters[*]": "properties.tokenBodyParameters[*]",
+      "Microsoft.ApiManagement/service/authorizationServers/tokenBodyParameters[*].name": "properties.tokenBodyParameters[*].name",
+      "Microsoft.ApiManagement/service/authorizationServers/tokenBodyParameters[*].value": "properties.tokenBodyParameters[*].value",
+      "Microsoft.ApiManagement/service/authorizationServers/tokenEndpoint": "properties.tokenEndpoint",
+      "Microsoft.ApiManagement/service/authorizationServers/tokenEndpoint.externalDocs": "properties.tokenEndpoint.externalDocs"
+    },
+    "resourceType": "service/authorizationservers"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/backends/credentials": "properties.credentials",
+      "Microsoft.ApiManagement/service/backends/credentials.authorization": "properties.credentials.authorization",
+      "Microsoft.ApiManagement/service/backends/credentials.authorization.parameter": "properties.credentials.authorization.parameter",
+      "Microsoft.ApiManagement/service/backends/credentials.authorization.scheme": "properties.credentials.authorization.scheme",
+      "Microsoft.ApiManagement/service/backends/credentials.certificate": "properties.credentials.certificate",
+      "Microsoft.ApiManagement/service/backends/credentials.certificate[*]": "properties.credentials.certificate[*]",
+      "Microsoft.ApiManagement/service/backends/credentials.certificateIds": "properties.credentials.certificateIds",
+      "Microsoft.ApiManagement/service/backends/credentials.certificateIds[*]": "properties.credentials.certificateIds[*]",
+      "Microsoft.ApiManagement/service/backends/credentials.header": "properties.credentials.header",
+      "Microsoft.ApiManagement/service/backends/credentials.query": "properties.credentials.query",
+      "Microsoft.ApiManagement/service/backends/description": "properties.description",
+      "Microsoft.ApiManagement/service/backends/protocol": "properties.protocol",
+      "Microsoft.ApiManagement/service/backends/proxy": "properties.proxy",
+      "Microsoft.ApiManagement/service/backends/proxy.externalDocs": "properties.proxy.externalDocs",
+      "Microsoft.ApiManagement/service/backends/proxy.password": "properties.proxy.password",
+      "Microsoft.ApiManagement/service/backends/proxy.url": "properties.proxy.url",
+      "Microsoft.ApiManagement/service/backends/proxy.username": "properties.proxy.username",
+      "Microsoft.ApiManagement/service/backends/resourceId": "properties.resourceId",
+      "Microsoft.ApiManagement/service/backends/serviceFabricCluster": "properties.properties.serviceFabricCluster",
+      "Microsoft.ApiManagement/service/backends/serviceFabricCluster.clientCertificateId": "properties.properties.serviceFabricCluster.clientCertificateId",
+      "Microsoft.ApiManagement/service/backends/serviceFabricCluster.clientCertificatethumbprint": "properties.properties.serviceFabricCluster.clientCertificatethumbprint",
+      "Microsoft.ApiManagement/service/backends/serviceFabricCluster.managementEndpoints": "properties.properties.serviceFabricCluster.managementEndpoints",
+      "Microsoft.ApiManagement/service/backends/serviceFabricCluster.managementEndpoints[*]": "properties.properties.serviceFabricCluster.managementEndpoints[*]",
+      "Microsoft.ApiManagement/service/backends/serviceFabricCluster.maxPartitionResolutionRetries": "properties.properties.serviceFabricCluster.maxPartitionResolutionRetries",
+      "Microsoft.ApiManagement/service/backends/serviceFabricCluster.serverCertificateThumbprints": "properties.properties.serviceFabricCluster.serverCertificateThumbprints",
+      "Microsoft.ApiManagement/service/backends/serviceFabricCluster.serverCertificateThumbprints[*]": "properties.properties.serviceFabricCluster.serverCertificateThumbprints[*]",
+      "Microsoft.ApiManagement/service/backends/serviceFabricCluster.serverX509Names": "properties.properties.serviceFabricCluster.serverX509Names",
+      "Microsoft.ApiManagement/service/backends/serviceFabricCluster.serverX509Names[*]": "properties.properties.serviceFabricCluster.serverX509Names[*]",
+      "Microsoft.ApiManagement/service/backends/serviceFabricCluster.serverX509Names[*].externalDocs": "properties.properties.serviceFabricCluster.serverX509Names[*].externalDocs",
+      "Microsoft.ApiManagement/service/backends/serviceFabricCluster.serverX509Names[*].issuerCertificateThumbprint": "properties.properties.serviceFabricCluster.serverX509Names[*].issuerCertificateThumbprint",
+      "Microsoft.ApiManagement/service/backends/serviceFabricCluster.serverX509Names[*].name": "properties.properties.serviceFabricCluster.serverX509Names[*].name",
+      "Microsoft.ApiManagement/service/backends/skipCertificateChainValidation": "properties.skipCertificateChainValidation",
+      "Microsoft.ApiManagement/service/backends/skipCertificateNameValidation": "properties.skipCertificateNameValidation",
+      "Microsoft.ApiManagement/service/backends/title": "properties.title",
+      "Microsoft.ApiManagement/service/backends/tls": "properties.tls",
+      "Microsoft.ApiManagement/service/backends/tls.validateCertificateChain": "properties.tls.validateCertificateChain",
+      "Microsoft.ApiManagement/service/backends/tls.validateCertificateName": "properties.tls.validateCertificateName",
+      "Microsoft.ApiManagement/service/backends/url": "properties.url"
+    },
+    "resourceType": "service/backends"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/caches/connectionString": "properties.connectionString",
+      "Microsoft.ApiManagement/service/caches/description": "properties.description",
+      "Microsoft.ApiManagement/service/caches/resourceId": "properties.resourceId",
+      "Microsoft.ApiManagement/service/caches/useFromLocation": "properties.useFromLocation"
+    },
+    "resourceType": "service/caches"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/certificates/keyVault": "properties.keyVault",
+      "Microsoft.ApiManagement/service/certificates/keyVault.identityClientId": "properties.keyVault.identityClientId",
+      "Microsoft.ApiManagement/service/certificates/keyVault.secretIdentifier": "properties.keyVault.secretIdentifier"
+    },
+    "resourceType": "service/certificates"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/diagnostics/alwaysLog": "properties.alwaysLog",
+      "Microsoft.ApiManagement/service/diagnostics/backend": "properties.backend",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request": "properties.backend.request",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request.body": "properties.backend.request.body",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request.body.bytes": "properties.backend.request.body.bytes",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request.dataMasking": "properties.backend.request.dataMasking",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request.dataMasking.headers": "properties.backend.request.dataMasking.headers",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request.dataMasking.headers[*]": "properties.backend.request.dataMasking.headers[*]",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request.dataMasking.headers[*].mode": "properties.backend.request.dataMasking.headers[*].mode",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request.dataMasking.headers[*].value": "properties.backend.request.dataMasking.headers[*].value",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request.dataMasking.queryParams": "properties.backend.request.dataMasking.queryParams",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request.dataMasking.queryParams[*]": "properties.backend.request.dataMasking.queryParams[*]",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request.dataMasking.queryParams[*].mode": "properties.backend.request.dataMasking.queryParams[*].mode",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request.dataMasking.queryParams[*].value": "properties.backend.request.dataMasking.queryParams[*].value",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request.headers": "properties.backend.request.headers",
+      "Microsoft.ApiManagement/service/diagnostics/backend.request.headers[*]": "properties.backend.request.headers[*]",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response": "properties.backend.response",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response.body": "properties.backend.response.body",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response.body.bytes": "properties.backend.response.body.bytes",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response.dataMasking": "properties.backend.response.dataMasking",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response.dataMasking.headers": "properties.backend.response.dataMasking.headers",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response.dataMasking.headers[*]": "properties.backend.response.dataMasking.headers[*]",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response.dataMasking.headers[*].mode": "properties.backend.response.dataMasking.headers[*].mode",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response.dataMasking.headers[*].value": "properties.backend.response.dataMasking.headers[*].value",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response.dataMasking.queryParams": "properties.backend.response.dataMasking.queryParams",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response.dataMasking.queryParams[*]": "properties.backend.response.dataMasking.queryParams[*]",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response.dataMasking.queryParams[*].mode": "properties.backend.response.dataMasking.queryParams[*].mode",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response.dataMasking.queryParams[*].value": "properties.backend.response.dataMasking.queryParams[*].value",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response.headers": "properties.backend.response.headers",
+      "Microsoft.ApiManagement/service/diagnostics/backend.response.headers[*]": "properties.backend.response.headers[*]",
+      "Microsoft.ApiManagement/service/diagnostics/enabled": "properties.enabled",
+      "Microsoft.ApiManagement/service/diagnostics/enableHttpCorrelationHeaders": "properties.enableHttpCorrelationHeaders",
+      "Microsoft.ApiManagement/service/diagnostics/frontend": "properties.frontend",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request": "properties.frontend.request",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request.body": "properties.frontend.request.body",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request.body.bytes": "properties.frontend.request.body.bytes",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request.dataMasking": "properties.frontend.request.dataMasking",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request.dataMasking.headers": "properties.frontend.request.dataMasking.headers",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request.dataMasking.headers[*]": "properties.frontend.request.dataMasking.headers[*]",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request.dataMasking.headers[*].mode": "properties.frontend.request.dataMasking.headers[*].mode",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request.dataMasking.headers[*].value": "properties.frontend.request.dataMasking.headers[*].value",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request.dataMasking.queryParams": "properties.frontend.request.dataMasking.queryParams",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request.dataMasking.queryParams[*]": "properties.frontend.request.dataMasking.queryParams[*]",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request.dataMasking.queryParams[*].mode": "properties.frontend.request.dataMasking.queryParams[*].mode",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request.dataMasking.queryParams[*].value": "properties.frontend.request.dataMasking.queryParams[*].value",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request.headers": "properties.frontend.request.headers",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.request.headers[*]": "properties.frontend.request.headers[*]",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response": "properties.frontend.response",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response.body": "properties.frontend.response.body",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response.body.bytes": "properties.frontend.response.body.bytes",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response.dataMasking": "properties.frontend.response.dataMasking",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response.dataMasking.headers": "properties.frontend.response.dataMasking.headers",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response.dataMasking.headers[*]": "properties.frontend.response.dataMasking.headers[*]",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response.dataMasking.headers[*].mode": "properties.frontend.response.dataMasking.headers[*].mode",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response.dataMasking.headers[*].value": "properties.frontend.response.dataMasking.headers[*].value",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response.dataMasking.queryParams": "properties.frontend.response.dataMasking.queryParams",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response.dataMasking.queryParams[*]": "properties.frontend.response.dataMasking.queryParams[*]",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response.dataMasking.queryParams[*].mode": "properties.frontend.response.dataMasking.queryParams[*].mode",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response.dataMasking.queryParams[*].value": "properties.frontend.response.dataMasking.queryParams[*].value",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response.headers": "properties.frontend.response.headers",
+      "Microsoft.ApiManagement/service/diagnostics/frontend.response.headers[*]": "properties.frontend.response.headers[*]",
+      "Microsoft.ApiManagement/service/diagnostics/httpCorrelationProtocol": "properties.httpCorrelationProtocol",
+      "Microsoft.ApiManagement/service/diagnostics/logClientIp": "properties.logClientIp",
+      "Microsoft.ApiManagement/service/diagnostics/loggerId": "properties.loggerId",
+      "Microsoft.ApiManagement/service/diagnostics/operationNameFormat": "properties.operationNameFormat",
+      "Microsoft.ApiManagement/service/diagnostics/sampling": "properties.sampling",
+      "Microsoft.ApiManagement/service/diagnostics/sampling.percentage": "properties.sampling.percentage",
+      "Microsoft.ApiManagement/service/diagnostics/sampling.samplingType": "properties.sampling.samplingType",
+      "Microsoft.ApiManagement/service/diagnostics/verbosity": "properties.verbosity"
+    },
+    "resourceType": "service/diagnostics"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/gateways/description": "properties.description",
+      "Microsoft.ApiManagement/service/gateways/hostnameConfigurations.certificateId": "properties.certificateId",
+      "Microsoft.ApiManagement/service/gateways/hostnameConfigurations.hostname": "properties.hostname",
+      "Microsoft.ApiManagement/service/gateways/hostnameConfigurations.negotiateClientCertificate": "properties.negotiateClientCertificate",
+      "Microsoft.ApiManagement/service/gateways/locationData": "properties.locationData",
+      "Microsoft.ApiManagement/service/gateways/locationData.city": "properties.locationData.city",
+      "Microsoft.ApiManagement/service/gateways/locationData.countryOrRegion": "properties.locationData.countryOrRegion",
+      "Microsoft.ApiManagement/service/gateways/locationData.district": "properties.locationData.district",
+      "Microsoft.ApiManagement/service/gateways/locationData.name": "properties.locationData.name"
+    },
+    "resourceType": "service/gateways"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/groups/description": "properties.description",
+      "Microsoft.ApiManagement/service/groups/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/groups/externalId": "properties.externalId",
+      "Microsoft.ApiManagement/service/groups/type": "properties.type"
+    },
+    "resourceType": "service/groups"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/identityProviders/allowedTenants": "properties.allowedTenants",
+      "Microsoft.ApiManagement/service/identityProviders/allowedTenants[*]": "properties.allowedTenants[*]",
+      "Microsoft.ApiManagement/service/identityProviders/authority": "properties.authority",
+      "Microsoft.ApiManagement/service/identityProviders/clientId": "properties.clientId",
+      "Microsoft.ApiManagement/service/identityProviders/clientSecret": "properties.clientSecret",
+      "Microsoft.ApiManagement/service/identityProviders/facebook.allowedTenants": "properties.allowedTenants",
+      "Microsoft.ApiManagement/service/identityProviders/facebook.allowedTenants[*]": "properties.allowedTenants[*]",
+      "Microsoft.ApiManagement/service/identityProviders/facebook.authority": "properties.authority",
+      "Microsoft.ApiManagement/service/identityProviders/facebook.clientId": "properties.clientId",
+      "Microsoft.ApiManagement/service/identityProviders/facebook.clientSecret": "properties.clientSecret",
+      "Microsoft.ApiManagement/service/identityProviders/facebook.passwordResetPolicyName": "properties.passwordResetPolicyName",
+      "Microsoft.ApiManagement/service/identityProviders/facebook.profileEditingPolicyName": "properties.profileEditingPolicyName",
+      "Microsoft.ApiManagement/service/identityProviders/facebook.signinPolicyName": "properties.signinPolicyName",
+      "Microsoft.ApiManagement/service/identityProviders/facebook.signinTenant": "properties.signinTenant",
+      "Microsoft.ApiManagement/service/identityProviders/facebook.signupPolicyName": "properties.signupPolicyName",
+      "Microsoft.ApiManagement/service/identityProviders/facebook.type": "properties.type",
+      "Microsoft.ApiManagement/service/identityProviders/passwordResetPolicyName": "properties.passwordResetPolicyName",
+      "Microsoft.ApiManagement/service/identityProviders/profileEditingPolicyName": "properties.profileEditingPolicyName",
+      "Microsoft.ApiManagement/service/identityProviders/signinPolicyName": "properties.signinPolicyName",
+      "Microsoft.ApiManagement/service/identityProviders/signinTenant": "properties.signinTenant",
+      "Microsoft.ApiManagement/service/identityProviders/signupPolicyName": "properties.signupPolicyName",
+      "Microsoft.ApiManagement/service/identityProviders/type": "properties.type"
+    },
+    "resourceType": "service/identityproviders"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/loggers/credentials": "properties.credentials",
+      "Microsoft.ApiManagement/service/loggers/credentials.example": "properties.credentials.example",
+      "Microsoft.ApiManagement/service/loggers/description": "properties.description",
+      "Microsoft.ApiManagement/service/loggers/isBuffered": "properties.isBuffered",
+      "Microsoft.ApiManagement/service/loggers/loggerType": "properties.loggerType",
+      "Microsoft.ApiManagement/service/loggers/resourceId": "properties.resourceId",
+      "Microsoft.ApiManagement/service/loggers/sampling": "properties.sampling",
+      "Microsoft.ApiManagement/service/loggers/sampling.evaluationInterval": "properties.sampling.properties.evaluationInterval",
+      "Microsoft.ApiManagement/service/loggers/sampling.example": "properties.sampling.example",
+      "Microsoft.ApiManagement/service/loggers/sampling.initialPercentage": "properties.sampling.properties.initialPercentage",
+      "Microsoft.ApiManagement/service/loggers/sampling.maxPercentage": "properties.sampling.properties.maxPercentage",
+      "Microsoft.ApiManagement/service/loggers/sampling.maxTelemetryItemsPerSecond": "properties.sampling.properties.maxTelemetryItemsPerSecond",
+      "Microsoft.ApiManagement/service/loggers/sampling.minPercentage": "properties.sampling.properties.minPercentage",
+      "Microsoft.ApiManagement/service/loggers/sampling.movingAverageRatio": "properties.sampling.properties.movingAverageRatio",
+      "Microsoft.ApiManagement/service/loggers/sampling.percentage": "properties.sampling.properties.percentage",
+      "Microsoft.ApiManagement/service/loggers/sampling.percentageDecreaseTimeout": "properties.sampling.properties.percentageDecreaseTimeout",
+      "Microsoft.ApiManagement/service/loggers/sampling.percentageIncreaseTimeout": "properties.sampling.properties.percentageIncreaseTimeout",
+      "Microsoft.ApiManagement/service/loggers/sampling.samplingType": "properties.sampling.properties.samplingType"
+    },
+    "resourceType": "service/loggers"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/namedValues/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/namedValues/keyVault": "properties.keyVault",
+      "Microsoft.ApiManagement/service/namedValues/keyVault.identityClientId": "properties.keyVault.identityClientId",
+      "Microsoft.ApiManagement/service/namedValues/keyVault.secretIdentifier": "properties.keyVault.secretIdentifier",
+      "Microsoft.ApiManagement/service/namedValues/secret": "properties.secret",
+      "Microsoft.ApiManagement/service/namedValues/tags": "properties.tags",
+      "Microsoft.ApiManagement/service/namedValues/tags[*]": "properties.tags[*]",
+      "Microsoft.ApiManagement/service/namedValues/value": "properties.value"
+    },
+    "resourceType": "service/namedvalues"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/notifications/description": "properties.description",
+      "Microsoft.ApiManagement/service/notifications/recipients": "properties.recipients",
+      "Microsoft.ApiManagement/service/notifications/recipients.emails": "properties.recipients.emails",
+      "Microsoft.ApiManagement/service/notifications/recipients.emails[*]": "properties.recipients.emails[*]",
+      "Microsoft.ApiManagement/service/notifications/recipients.users": "properties.recipients.users",
+      "Microsoft.ApiManagement/service/notifications/recipients.users[*]": "properties.recipients.users[*]",
+      "Microsoft.ApiManagement/service/notifications/RequestPublisherNotificationMessage.description": "properties.description",
+      "Microsoft.ApiManagement/service/notifications/RequestPublisherNotificationMessage.recipients": "properties.recipients",
+      "Microsoft.ApiManagement/service/notifications/RequestPublisherNotificationMessage.recipients.emails": "properties.recipients.emails",
+      "Microsoft.ApiManagement/service/notifications/RequestPublisherNotificationMessage.recipients.emails[*]": "properties.recipients.emails[*]",
+      "Microsoft.ApiManagement/service/notifications/RequestPublisherNotificationMessage.recipients.users": "properties.recipients.users",
+      "Microsoft.ApiManagement/service/notifications/RequestPublisherNotificationMessage.recipients.users[*]": "properties.recipients.users[*]",
+      "Microsoft.ApiManagement/service/notifications/RequestPublisherNotificationMessage.title": "properties.title",
+      "Microsoft.ApiManagement/service/notifications/title": "properties.title"
+    },
+    "resourceType": "service/notifications"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/openidConnectProviders/clientId": "properties.clientId",
+      "Microsoft.ApiManagement/service/openidConnectProviders/clientSecret": "properties.clientSecret",
+      "Microsoft.ApiManagement/service/openidConnectProviders/description": "properties.description",
+      "Microsoft.ApiManagement/service/openidConnectProviders/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/openidConnectProviders/metadataEndpoint": "properties.metadataEndpoint"
+    },
+    "resourceType": "service/openidconnectproviders"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/policies/contentFormat": "properties.contentFormat",
+      "Microsoft.ApiManagement/service/policies/format": "properties.format",
+      "Microsoft.ApiManagement/service/policies/policy.contentFormat": "properties.contentFormat",
+      "Microsoft.ApiManagement/service/policies/policy.format": "properties.format",
+      "Microsoft.ApiManagement/service/policies/policy.policyContent": "properties.policyContent",
+      "Microsoft.ApiManagement/service/policies/policy.value": "properties.value",
+      "Microsoft.ApiManagement/service/policies/policyContent": "properties.policyContent",
+      "Microsoft.ApiManagement/service/policies/value": "properties.value"
+    },
+    "resourceType": "service/policies"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/portalsettings/delegation.subscriptions": "properties.subscriptions",
+      "Microsoft.ApiManagement/service/portalsettings/delegation.subscriptions.enabled": "properties.subscriptions.enabled",
+      "Microsoft.ApiManagement/service/portalsettings/delegation.url": "properties.url",
+      "Microsoft.ApiManagement/service/portalsettings/delegation.userRegistration": "properties.userRegistration",
+      "Microsoft.ApiManagement/service/portalsettings/delegation.userRegistration.enabled": "properties.userRegistration.enabled",
+      "Microsoft.ApiManagement/service/portalsettings/delegation.validationKey": "properties.validationKey",
+      "Microsoft.ApiManagement/service/portalsettings/enabled": "properties.enabled",
+      "Microsoft.ApiManagement/service/portalsettings/signin.enabled": "properties.enabled",
+      "Microsoft.ApiManagement/service/portalsettings/signup.termsOfService": "properties.termsOfService",
+      "Microsoft.ApiManagement/service/portalsettings/signup.termsOfService.consentRequired": "properties.termsOfService.consentRequired",
+      "Microsoft.ApiManagement/service/portalsettings/signup.termsOfService.enabled": "properties.termsOfService.enabled",
+      "Microsoft.ApiManagement/service/portalsettings/signup.termsOfService.text": "properties.termsOfService.text",
+      "Microsoft.ApiManagement/service/portalsettings/subscriptions": "properties.subscriptions",
+      "Microsoft.ApiManagement/service/portalsettings/subscriptions.enabled": "properties.subscriptions.enabled",
+      "Microsoft.ApiManagement/service/portalsettings/termsOfService": "properties.termsOfService",
+      "Microsoft.ApiManagement/service/portalsettings/termsOfService.consentRequired": "properties.termsOfService.consentRequired",
+      "Microsoft.ApiManagement/service/portalsettings/termsOfService.enabled": "properties.termsOfService.enabled",
+      "Microsoft.ApiManagement/service/portalsettings/termsOfService.text": "properties.termsOfService.text",
+      "Microsoft.ApiManagement/service/portalsettings/url": "properties.url",
+      "Microsoft.ApiManagement/service/portalsettings/userRegistration": "properties.userRegistration",
+      "Microsoft.ApiManagement/service/portalsettings/userRegistration.enabled": "properties.userRegistration.enabled",
+      "Microsoft.ApiManagement/service/portalsettings/validationKey": "properties.validationKey"
+    },
+    "resourceType": "service/portalsettings"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/products/approvalRequired": "properties.approvalRequired",
+      "Microsoft.ApiManagement/service/products/description": "properties.description",
+      "Microsoft.ApiManagement/service/products/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/products/state": "properties.state",
+      "Microsoft.ApiManagement/service/products/subscriptionRequired": "properties.subscriptionRequired",
+      "Microsoft.ApiManagement/service/products/subscriptionsLimit": "properties.subscriptionsLimit",
+      "Microsoft.ApiManagement/service/products/terms": "properties.terms"
+    },
+    "resourceType": "service/products"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/products/policies/contentFormat": "properties.contentFormat",
+      "Microsoft.ApiManagement/service/products/policies/format": "properties.format",
+      "Microsoft.ApiManagement/service/products/policies/policy.contentFormat": "properties.contentFormat",
+      "Microsoft.ApiManagement/service/products/policies/policy.format": "properties.format",
+      "Microsoft.ApiManagement/service/products/policies/policy.policyContent": "properties.policyContent",
+      "Microsoft.ApiManagement/service/products/policies/policy.value": "properties.value",
+      "Microsoft.ApiManagement/service/products/policies/policyContent": "properties.policyContent",
+      "Microsoft.ApiManagement/service/products/policies/value": "properties.value"
+    },
+    "resourceType": "service/products/policies"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/products/tags/displayName": "properties.displayName"
+    },
+    "resourceType": "service/products/tags"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/properties/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/properties/secret": "properties.secret",
+      "Microsoft.ApiManagement/service/properties/tags": "properties.tags",
+      "Microsoft.ApiManagement/service/properties/tags[*]": "properties.tags[*]",
+      "Microsoft.ApiManagement/service/properties/value": "properties.value"
+    },
+    "resourceType": "service/properties"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/subscriptions/allowTracing": "properties.allowTracing",
+      "Microsoft.ApiManagement/service/subscriptions/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/subscriptions/ownerId": "properties.ownerId",
+      "Microsoft.ApiManagement/service/subscriptions/primaryKey": "properties.primaryKey",
+      "Microsoft.ApiManagement/service/subscriptions/productId": "properties.productId",
+      "Microsoft.ApiManagement/service/subscriptions/scope": "properties.scope",
+      "Microsoft.ApiManagement/service/subscriptions/secondaryKey": "properties.secondaryKey",
+      "Microsoft.ApiManagement/service/subscriptions/state": "properties.state",
+      "Microsoft.ApiManagement/service/subscriptions/userId": "properties.userId"
+    },
+    "resourceType": "service/subscriptions"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/tags/displayName": "properties.displayName"
+    },
+    "resourceType": "service/tags"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/templates/applicationApprovedNotificationMessage.body": "properties.body",
+      "Microsoft.ApiManagement/service/templates/applicationApprovedNotificationMessage.description": "properties.description",
+      "Microsoft.ApiManagement/service/templates/applicationApprovedNotificationMessage.parameters": "properties.parameters",
+      "Microsoft.ApiManagement/service/templates/applicationApprovedNotificationMessage.parameters[*]": "properties.parameters[*]",
+      "Microsoft.ApiManagement/service/templates/applicationApprovedNotificationMessage.parameters[*].description": "properties.parameters[*].description",
+      "Microsoft.ApiManagement/service/templates/applicationApprovedNotificationMessage.parameters[*].name": "properties.parameters[*].name",
+      "Microsoft.ApiManagement/service/templates/applicationApprovedNotificationMessage.parameters[*].title": "properties.parameters[*].title",
+      "Microsoft.ApiManagement/service/templates/applicationApprovedNotificationMessage.subject": "properties.subject",
+      "Microsoft.ApiManagement/service/templates/applicationApprovedNotificationMessage.title": "properties.title",
+      "Microsoft.ApiManagement/service/templates/body": "properties.body",
+      "Microsoft.ApiManagement/service/templates/description": "properties.description",
+      "Microsoft.ApiManagement/service/templates/parameters": "properties.parameters",
+      "Microsoft.ApiManagement/service/templates/parameters[*]": "properties.parameters[*]",
+      "Microsoft.ApiManagement/service/templates/parameters[*].description": "properties.parameters[*].description",
+      "Microsoft.ApiManagement/service/templates/parameters[*].name": "properties.parameters[*].name",
+      "Microsoft.ApiManagement/service/templates/parameters[*].title": "properties.parameters[*].title",
+      "Microsoft.ApiManagement/service/templates/subject": "properties.subject",
+      "Microsoft.ApiManagement/service/templates/title": "properties.title"
+    },
+    "resourceType": "service/templates"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/tenant/enabled": "properties.enabled",
+      "Microsoft.ApiManagement/service/tenant/principalId": "properties.principalId"
+    },
+    "resourceType": "service/tenant"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/users/email": "properties.email",
+      "Microsoft.ApiManagement/service/users/firstName": "properties.firstName",
+      "Microsoft.ApiManagement/service/users/identities": "properties.identities",
+      "Microsoft.ApiManagement/service/users/identities[*]": "properties.identities[*]",
+      "Microsoft.ApiManagement/service/users/identities[*].id": "properties.identities[*].id",
+      "Microsoft.ApiManagement/service/users/identities[*].provider": "properties.identities[*].provider",
+      "Microsoft.ApiManagement/service/users/lastName": "properties.lastName",
+      "Microsoft.ApiManagement/service/users/note": "properties.note",
+      "Microsoft.ApiManagement/service/users/state": "properties.state"
+    },
+    "resourceType": "service/users"
+  }
+]

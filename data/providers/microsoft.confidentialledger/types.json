@@ -1,0 +1,52 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2021-05-13-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Ledgers",
+    "apiVersions": [
+      "2021-05-13-preview",
+      "2020-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2021-05-13-preview",
+      "2020-12-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/operationstatuses",
+    "apiVersions": [
+      "2021-05-13-preview",
+      "2020-12-01-preview"
+    ],
+    "locations": [
+      "East US 2 EUAP",
+      "East US",
+      "South Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  }
+]

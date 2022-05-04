@@ -1,0 +1,512 @@
+[
+  {
+    "aliases": {
+      "Microsoft.DataShare/accounts/createdAt": "properties.createdAt",
+      "Microsoft.DataShare/accounts/createdBy": "properties.createdBy",
+      "Microsoft.DataShare/accounts/provisioningState": "properties.provisioningState",
+      "Microsoft.DataShare/accounts/userEmail": "properties.userEmail",
+      "Microsoft.DataShare/accounts/userName": "properties.userName"
+    },
+    "resourceType": "accounts",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-09-01",
+      "2019-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.DataShare/accounts/shares/createdAt": "properties.createdAt",
+      "Microsoft.DataShare/accounts/shares/createdBy": "properties.createdBy",
+      "Microsoft.DataShare/accounts/shares/description": "properties.description",
+      "Microsoft.DataShare/accounts/shares/provisioningState": "properties.provisioningState",
+      "Microsoft.DataShare/accounts/shares/shareKind": "properties.shareKind",
+      "Microsoft.DataShare/accounts/shares/terms": "properties.terms",
+      "Microsoft.DataShare/accounts/shares/userEmail": "properties.userEmail",
+      "Microsoft.DataShare/accounts/shares/userName": "properties.userName"
+    },
+    "resourceType": "accounts/shares",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-09-01",
+      "2019-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/shares/datasets",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-09-01",
+      "2019-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.DataShare/accounts/shares/invitations/invitationId": "properties.invitationId",
+      "Microsoft.DataShare/accounts/shares/invitations/invitationStatus": "properties.invitationStatus",
+      "Microsoft.DataShare/accounts/shares/invitations/respondedAt": "properties.respondedAt",
+      "Microsoft.DataShare/accounts/shares/invitations/sender": "properties.sender",
+      "Microsoft.DataShare/accounts/shares/invitations/sentAt": "properties.sentAt",
+      "Microsoft.DataShare/accounts/shares/invitations/targetActiveDirectoryId": "properties.targetActiveDirectoryId",
+      "Microsoft.DataShare/accounts/shares/invitations/targetEmail": "properties.targetEmail",
+      "Microsoft.DataShare/accounts/shares/invitations/targetObjectId": "properties.targetObjectId",
+      "Microsoft.DataShare/accounts/shares/invitations/userEmail": "properties.userEmail",
+      "Microsoft.DataShare/accounts/shares/invitations/userName": "properties.userName"
+    },
+    "resourceType": "accounts/shares/invitations",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-09-01",
+      "2019-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/shares/providersharesubscriptions",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-09-01",
+      "2019-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/shares/synchronizationSettings",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-09-01",
+      "2019-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.DataShare/accounts/sharesubscriptions/createdAt": "properties.createdAt",
+      "Microsoft.DataShare/accounts/sharesubscriptions/createdBy": "properties.createdBy",
+      "Microsoft.DataShare/accounts/sharesubscriptions/invitationId": "properties.invitationId",
+      "Microsoft.DataShare/accounts/sharesubscriptions/providerEmail": "properties.providerEmail",
+      "Microsoft.DataShare/accounts/sharesubscriptions/providerName": "properties.providerName",
+      "Microsoft.DataShare/accounts/sharesubscriptions/providerTenantName": "properties.providerTenantName",
+      "Microsoft.DataShare/accounts/sharesubscriptions/provisioningState": "properties.provisioningState",
+      "Microsoft.DataShare/accounts/sharesubscriptions/shareDescription": "properties.shareDescription",
+      "Microsoft.DataShare/accounts/sharesubscriptions/shareKind": "properties.shareKind",
+      "Microsoft.DataShare/accounts/sharesubscriptions/shareName": "properties.shareName",
+      "Microsoft.DataShare/accounts/sharesubscriptions/shareSender": "properties.shareSender",
+      "Microsoft.DataShare/accounts/sharesubscriptions/shareSenderCompanyName": "properties.shareSenderCompanyName",
+      "Microsoft.DataShare/accounts/sharesubscriptions/shareSubscriptionStatus": "properties.shareSubscriptionStatus",
+      "Microsoft.DataShare/accounts/sharesubscriptions/shareTerms": "properties.shareTerms",
+      "Microsoft.DataShare/accounts/sharesubscriptions/sourceShareLocation": "properties.sourceShareLocation",
+      "Microsoft.DataShare/accounts/sharesubscriptions/userEmail": "properties.userEmail",
+      "Microsoft.DataShare/accounts/sharesubscriptions/userName": "properties.userName"
+    },
+    "resourceType": "accounts/sharesubscriptions",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-09-01",
+      "2019-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/sharesubscriptions/consumerSourceDataSets",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-09-01",
+      "2019-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/sharesubscriptions/datasetmappings",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-09-01",
+      "2019-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/sharesubscriptions/triggers",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-09-01",
+      "2019-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "listinvitations",
+    "apiVersions": [
+      "2018-11-01-alpha"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-10-01-preview",
+      "2020-09-01",
+      "2019-11-01"
+    ],
+    "locations": [
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/activateEmail",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-10-01-preview",
+      "2020-09-01",
+      "2019-11-01",
+      "2018-11-01-alpha"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/consumerInvitations",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-10-01-preview",
+      "2020-09-01",
+      "2019-11-01",
+      "2018-11-01-alpha"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationResults",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-09-01",
+      "2019-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/registerEmail",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-10-01-preview",
+      "2020-09-01",
+      "2019-11-01",
+      "2018-11-01-alpha"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/rejectInvitation",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-10-01-preview",
+      "2020-09-01",
+      "2019-11-01",
+      "2018-11-01-alpha"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-08-01",
+      "2020-10-01-preview",
+      "2020-09-01",
+      "2019-11-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

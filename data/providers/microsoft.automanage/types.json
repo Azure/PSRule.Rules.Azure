@@ -1,0 +1,204 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "accounts",
+    "apiVersions": [
+      "2020-06-30-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US 2",
+      "East US",
+      "North Central US",
+      "South Central US",
+      "West US 2",
+      "West Central US",
+      "West US",
+      "West Europe",
+      "North Europe",
+      "Canada Central",
+      "Japan East",
+      "UK South",
+      "Australia Southeast",
+      "Australia East",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "bestPractices",
+    "apiVersions": [
+      "2021-04-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "bestPractices/versions",
+    "apiVersions": [
+      "2021-04-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurationProfileAssignmentIntents",
+    "apiVersions": [
+      "2021-03-30-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "East US 2",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West Central US",
+      "North Europe",
+      "West Europe",
+      "Canada Central",
+      "Japan East",
+      "UK South",
+      "Australia Southeast",
+      "Australia East",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Automanage/configurationProfileAssignments/accountId": "properties.accountId",
+      "Microsoft.Automanage/configurationProfileAssignments/compliance": "properties.compliance",
+      "Microsoft.Automanage/configurationProfileAssignments/compliance.updateStatus": "properties.compliance.updateStatus",
+      "Microsoft.Automanage/configurationProfileAssignments/configurationProfile": "properties.configurationProfile",
+      "Microsoft.Automanage/configurationProfileAssignments/configurationProfilePreferenceId": "properties.configurationProfilePreferenceId",
+      "Microsoft.Automanage/configurationProfileAssignments/provisioningStatus": "properties.provisioningStatus",
+      "Microsoft.Automanage/configurationProfileAssignments/targetId": "properties.targetId"
+    },
+    "resourceType": "configurationProfileAssignments",
+    "apiVersions": [
+      "2021-04-30-preview",
+      "2020-06-30-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "East US 2",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West Central US",
+      "North Europe",
+      "West Europe",
+      "Canada Central",
+      "Japan East",
+      "UK South",
+      "Australia Southeast",
+      "Australia East",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurationProfilePreferences",
+    "apiVersions": [
+      "2020-06-30-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US 2",
+      "East US",
+      "North Central US",
+      "South Central US",
+      "West US 2",
+      "West Central US",
+      "West US",
+      "West Europe",
+      "North Europe",
+      "Canada Central",
+      "Japan East",
+      "UK South",
+      "Australia Southeast",
+      "Australia East",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurationProfiles",
+    "apiVersions": [
+      "2021-04-30-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US 2",
+      "East US",
+      "North Central US",
+      "South Central US",
+      "West US 2",
+      "West Central US",
+      "West US",
+      "West Europe",
+      "North Europe",
+      "Canada Central",
+      "Japan East",
+      "UK South",
+      "Australia Southeast",
+      "Australia East",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurationProfiles/versions",
+    "apiVersions": [
+      "2021-04-30-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US 2",
+      "East US",
+      "North Central US",
+      "South Central US",
+      "West US 2",
+      "West Central US",
+      "West US",
+      "West Europe",
+      "North Europe",
+      "Canada Central",
+      "Japan East",
+      "UK South",
+      "Australia Southeast",
+      "Australia East",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-03-30-preview",
+      "2021-08-01-preview",
+      "2021-04-30-preview",
+      "2020-06-30-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US 2",
+      "East US",
+      "North Central US",
+      "South Central US",
+      "West US 2",
+      "West Central US",
+      "West US"
+    ],
+    "zoneMappings": null
+  }
+]

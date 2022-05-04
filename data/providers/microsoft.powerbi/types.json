@@ -1,0 +1,95 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2016-01-29"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/checkNameAvailability",
+    "apiVersions": [
+      "2016-01-29"
+    ],
+    "locations": [
+      "South Central US",
+      "North Central US",
+      "East US 2",
+      "West US",
+      "West Europe",
+      "North Europe",
+      "Brazil South",
+      "Southeast Asia",
+      "Australia Southeast",
+      "Canada Central",
+      "Japan East",
+      "UK South",
+      "West India"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2020-06-01",
+      "2016-01-29"
+    ],
+    "locations": [
+      "East US 2 EUAP"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateLinkServicesForPowerBI",
+    "apiVersions": [
+      "2020-06-01"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateLinkServicesForPowerBI/operationResults",
+    "apiVersions": [
+      "2020-06-01"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.PowerBI/workspaceCollections/sku": "sku",
+      "Microsoft.PowerBI/workspaceCollections/sku.name": "sku.name",
+      "Microsoft.PowerBI/workspaceCollections/sku.tier": "sku.tier"
+    },
+    "resourceType": "workspaceCollections",
+    "apiVersions": [
+      "2016-01-29"
+    ],
+    "locations": [
+      "South Central US",
+      "North Central US",
+      "East US 2",
+      "West US",
+      "West Europe",
+      "North Europe",
+      "Brazil South",
+      "Southeast Asia",
+      "Australia Southeast",
+      "Canada Central",
+      "Japan East",
+      "UK South",
+      "West India"
+    ],
+    "zoneMappings": null
+  }
+]

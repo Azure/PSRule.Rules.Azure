@@ -30,7 +30,7 @@ This rule fails when `"zones"` is constrained to a single(zonal) zone, or set to
 
 This rule passes if no zones exist for a given region or `"zones"` is set to `["1", "2", "3"]`.
 
-Configure `AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json) for namespace `Microsoft.Network` and resource type `publicIpAddresses`.
+Configure `AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/) for namespace `Microsoft.Network` and resource type `publicIpAddresses`.
 
 ```yaml
 # YAML: The default AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option

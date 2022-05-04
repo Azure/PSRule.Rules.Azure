@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "PSRule.Rules.Azure.BuildTool": {
+      "commandName": "Project",
+      "commandLineArgs": "provider",
+      "workingDirectory": "..\\..\\"
+    }
+  }
+}

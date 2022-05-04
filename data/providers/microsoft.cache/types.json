@@ -1,0 +1,1206 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2021-06-01",
+      "2020-12-01",
+      "2020-06-01",
+      "2019-07-01",
+      "2018-03-01",
+      "2017-10-01",
+      "2017-02-01",
+      "2016-04-01",
+      "2015-08-01",
+      "2015-03-01",
+      "2014-04-01-preview",
+      "2014-04-01-alpha",
+      "2014-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-08-01",
+      "2021-06-01",
+      "2021-03-01",
+      "2021-02-01-preview",
+      "2020-12-01",
+      "2020-06-01",
+      "2020-04-01-preview",
+      "2019-07-01",
+      "2018-03-01",
+      "2017-10-01",
+      "2017-02-01",
+      "2016-04-01",
+      "2015-08-01",
+      "2015-03-01",
+      "2014-04-01-preview",
+      "2014-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/asyncOperations",
+    "apiVersions": [
+      "2021-06-01",
+      "2020-12-01",
+      "2020-06-01",
+      "2019-07-01"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "UK South",
+      "UK West",
+      "West US 2",
+      "West Central US",
+      "South India",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "Australia Central",
+      "South Africa North",
+      "UAE North",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/checkNameAvailability",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-08-01",
+      "2021-03-01",
+      "2021-02-01-preview",
+      "2020-10-01-preview",
+      "2020-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "West US",
+      "East US 2",
+      "West US 2",
+      "South Central US",
+      "UK South",
+      "Southeast Asia",
+      "Australia East",
+      "North Europe",
+      "Central US",
+      "Central India",
+      "West Central US",
+      "Canada Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationResults",
+    "apiVersions": [
+      "2021-06-01",
+      "2020-12-01",
+      "2020-06-01",
+      "2019-07-01",
+      "2018-03-01",
+      "2017-10-01",
+      "2017-02-01",
+      "2016-04-01",
+      "2015-08-01",
+      "2015-03-01",
+      "2014-04-01-preview",
+      "2014-04-01"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "West India",
+      "South India",
+      "Canada Central",
+      "Canada East",
+      "UK South",
+      "UK West",
+      "West US 2",
+      "West Central US",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "Australia Central",
+      "South Africa North",
+      "UAE North",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationsStatus",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-08-01",
+      "2021-03-01",
+      "2021-02-01-preview",
+      "2020-10-01-preview",
+      "2020-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "West US",
+      "East US 2",
+      "West US 2",
+      "South Central US",
+      "UK South",
+      "Southeast Asia",
+      "Australia East",
+      "North Europe",
+      "Central US",
+      "Central India",
+      "West Central US",
+      "Canada Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-06-01",
+      "2021-03-01",
+      "2021-02-01-preview",
+      "2020-12-01",
+      "2020-10-01-preview",
+      "2020-06-01",
+      "2019-07-01",
+      "2018-03-01",
+      "2017-10-01",
+      "2017-02-01",
+      "2016-04-01",
+      "2015-08-01",
+      "2015-03-01",
+      "2014-04-01-preview",
+      "2014-04-01-alpha",
+      "2014-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Cache/Redis/accessKeys": "properties.accessKeys",
+      "Microsoft.Cache/Redis/accessKeys.primaryKey": "properties.accessKeys.primaryKey",
+      "Microsoft.Cache/Redis/accessKeys.secondaryKey": "properties.accessKeys.secondaryKey",
+      "Microsoft.Cache/Redis/enableNonSslPort": "properties.enableNonSslPort",
+      "Microsoft.Cache/Redis/endIP": "properties.endIP",
+      "Microsoft.Cache/Redis/hostName": "properties.hostName",
+      "Microsoft.Cache/Redis/linkedRedisCacheId": "properties.linkedRedisCacheId",
+      "Microsoft.Cache/Redis/linkedRedisCacheLocation": "properties.linkedRedisCacheLocation",
+      "Microsoft.Cache/Redis/linkedServers": "properties.linkedServers",
+      "Microsoft.Cache/Redis/linkedServers.properties[*].id": "properties.linkedServers.properties[*].id",
+      "Microsoft.Cache/Redis/linkedServers[*]": "properties.linkedServers[*]",
+      "Microsoft.Cache/Redis/linkedServers[*].id": "properties.linkedServers[*].id",
+      "Microsoft.Cache/Redis/minimumTlsVersion": "properties.minimumTlsVersion",
+      "Microsoft.Cache/Redis/port": "properties.port",
+      "Microsoft.Cache/Redis/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.Cache/Redis/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Cache/Redis/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.Cache/Redis/provisioningState": "properties.provisioningState",
+      "Microsoft.Cache/Redis/publicNetworkAccess": "properties.publicNetworkAccess",
+      "Microsoft.Cache/Redis/redisConfiguration": "properties.redisConfiguration",
+      "Microsoft.Cache/Redis/redisConfiguration.maxclients": "properties.redisConfiguration.maxclients",
+      "Microsoft.Cache/Redis/redisVersion": "properties.redisVersion",
+      "Microsoft.Cache/Redis/replicasPerMaster": "properties.replicasPerMaster",
+      "Microsoft.Cache/Redis/replicasPerPrimary": "properties.replicasPerPrimary",
+      "Microsoft.Cache/Redis/scheduleEntries[*]": "properties.scheduleEntries[*]",
+      "Microsoft.Cache/Redis/scheduleEntries[*].dayOfWeek": "properties.scheduleEntries[*].dayOfWeek",
+      "Microsoft.Cache/Redis/scheduleEntries[*].maintenanceWindow": "properties.scheduleEntries[*].maintenanceWindow",
+      "Microsoft.Cache/Redis/scheduleEntries[*].startHourUtc": "properties.scheduleEntries[*].startHourUtc",
+      "Microsoft.Cache/Redis/serverRole": "properties.serverRole",
+      "Microsoft.Cache/Redis/shardCount": "properties.shardCount",
+      "Microsoft.Cache/Redis/sku": "properties.sku",
+      "Microsoft.Cache/Redis/sku.capacity": "properties.sku.capacity",
+      "Microsoft.Cache/Redis/sku.family": "properties.sku.family",
+      "Microsoft.Cache/Redis/sku.name": "properties.sku.name",
+      "Microsoft.Cache/Redis/sslPort": "properties.sslPort",
+      "Microsoft.Cache/Redis/startIP": "properties.startIP",
+      "Microsoft.Cache/Redis/staticIP": "properties.staticIP",
+      "Microsoft.Cache/Redis/subnet": "properties.subnet",
+      "Microsoft.Cache/Redis/subnetId": "properties.subnetId",
+      "Microsoft.Cache/Redis/tenantSettings": "properties.tenantSettings",
+      "Microsoft.Cache/Redis/virtualNetwork": "properties.virtualNetwork",
+      "Microsoft.Cache/Redis/zones": "zones",
+      "Microsoft.Cache/Redis/zones[*]": "zones[*]"
+    },
+    "resourceType": "Redis",
+    "apiVersions": [
+      "2021-06-01",
+      "2020-12-01",
+      "2020-06-01",
+      "2019-07-01",
+      "2018-03-01",
+      "2017-10-01",
+      "2017-02-01",
+      "2016-04-01",
+      "2015-08-01",
+      "2015-03-01",
+      "2014-04-01-preview",
+      "2014-04-01"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "UK South",
+      "UK West",
+      "West US 2",
+      "West Central US",
+      "South India",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "Australia Central",
+      "South Africa North",
+      "UAE North",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Brazil South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central India",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "North Central US",
+        "zones": []
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Africa North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Sweden Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Switzerland North",
+        "zones": []
+      },
+      {
+        "location": "UAE North",
+        "zones": []
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 3",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
+  },
+  {
+    "aliases": null,
+    "resourceType": "Redis/EventGridFilters",
+    "apiVersions": [
+      "2020-12-01",
+      "2020-06-01",
+      "2019-07-01",
+      "2018-03-01",
+      "2017-10-01",
+      "2017-02-01",
+      "2016-04-01",
+      "2015-08-01",
+      "2015-03-01",
+      "2014-04-01-preview",
+      "2014-04-01"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "West India",
+      "South India",
+      "Canada Central",
+      "Canada East",
+      "UK South",
+      "UK West",
+      "West US 2",
+      "West Central US",
+      "Korea Central",
+      "Korea South",
+      "France South",
+      "France Central",
+      "Australia Central",
+      "Australia Central 2",
+      "South Africa North",
+      "South Africa West",
+      "UAE Central",
+      "UAE North",
+      "Switzerland North",
+      "Switzerland West",
+      "Germany North",
+      "Germany West Central",
+      "Norway East",
+      "Norway West",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Redis/privateEndpointConnectionProxies",
+    "apiVersions": [
+      "2021-06-01",
+      "2020-12-01",
+      "2020-06-01",
+      "2019-07-01"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "UK South",
+      "UK West",
+      "West US 2",
+      "West Central US",
+      "South India",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "Australia Central",
+      "South Africa North",
+      "UAE North",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Redis/privateEndpointConnectionProxies/validate",
+    "apiVersions": [
+      "2021-06-01",
+      "2020-12-01",
+      "2020-06-01",
+      "2019-07-01"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "UK South",
+      "UK West",
+      "West US 2",
+      "West Central US",
+      "South India",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "Australia Central",
+      "South Africa North",
+      "UAE North",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Cache/redis/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.Cache/redis/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.Cache/redis/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.Cache/redis/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.Cache/redis/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.Cache/redis/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Cache/redis/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "Redis/privateEndpointConnections",
+    "apiVersions": [
+      "2021-06-01",
+      "2020-12-01",
+      "2020-06-01",
+      "2019-07-01"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "UK South",
+      "UK West",
+      "West US 2",
+      "West Central US",
+      "South India",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "Australia Central",
+      "South Africa North",
+      "UAE North",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Redis/privateLinkResources",
+    "apiVersions": [
+      "2021-06-01",
+      "2020-12-01",
+      "2020-06-01",
+      "2019-07-01"
+    ],
+    "locations": [
+      "North Central US",
+      "South Central US",
+      "Central US",
+      "West Europe",
+      "North Europe",
+      "West US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "Brazil South",
+      "Southeast Asia",
+      "East Asia",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "UK South",
+      "UK West",
+      "West US 2",
+      "West Central US",
+      "South India",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "Australia Central",
+      "South Africa North",
+      "UAE North",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Cache/redisEnterprise/hostName": "properties.hostName",
+      "Microsoft.Cache/redisEnterprise/minimumTlsVersion": "properties.minimumTlsVersion",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
+      "Microsoft.Cache/redisEnterprise/provisioningState": "properties.provisioningState",
+      "Microsoft.Cache/redisEnterprise/redisVersion": "properties.redisVersion",
+      "Microsoft.Cache/redisEnterprise/resourceState": "properties.resourceState",
+      "Microsoft.Cache/redisEnterprise/sku": "sku",
+      "Microsoft.Cache/redisEnterprise/sku.capacity": "sku.capacity",
+      "Microsoft.Cache/redisEnterprise/sku.name": "sku.name",
+      "Microsoft.Cache/redisEnterprise/zones": "zones",
+      "Microsoft.Cache/redisEnterprise/zones[*]": "zones[*]"
+    },
+    "resourceType": "redisEnterprise",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-08-01",
+      "2021-03-01",
+      "2021-02-01-preview",
+      "2020-10-01-preview",
+      "2020-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "West US",
+      "East US 2",
+      "West US 2",
+      "South Central US",
+      "UK South",
+      "Southeast Asia",
+      "Australia East",
+      "North Europe",
+      "Central US",
+      "Central India",
+      "West Central US",
+      "Canada Central"
+    ],
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central India",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
+  },
+  {
+    "aliases": {
+      "Microsoft.Cache/redisEnterprise/databases/clientProtocol": "properties.clientProtocol",
+      "Microsoft.Cache/redisEnterprise/databases/clusteringPolicy": "properties.clusteringPolicy",
+      "Microsoft.Cache/redisEnterprise/databases/evictionPolicy": "properties.evictionPolicy",
+      "Microsoft.Cache/redisEnterprise/databases/geoReplication": "properties.geoReplication",
+      "Microsoft.Cache/redisEnterprise/databases/geoReplication.groupNickname": "properties.geoReplication.groupNickname",
+      "Microsoft.Cache/redisEnterprise/databases/geoReplication.linkedDatabases": "properties.geoReplication.linkedDatabases",
+      "Microsoft.Cache/redisEnterprise/databases/geoReplication.linkedDatabases[*]": "properties.geoReplication.linkedDatabases[*]",
+      "Microsoft.Cache/redisEnterprise/databases/geoReplication.linkedDatabases[*].id": "properties.geoReplication.linkedDatabases[*].id",
+      "Microsoft.Cache/redisEnterprise/databases/geoReplication.linkedDatabases[*].state": "properties.geoReplication.linkedDatabases[*].state",
+      "Microsoft.Cache/redisEnterprise/databases/modules": "properties.modules",
+      "Microsoft.Cache/redisEnterprise/databases/modules[*]": "properties.modules[*]",
+      "Microsoft.Cache/redisEnterprise/databases/modules[*].args": "properties.modules[*].args",
+      "Microsoft.Cache/redisEnterprise/databases/modules[*].name": "properties.modules[*].name",
+      "Microsoft.Cache/redisEnterprise/databases/modules[*].version": "properties.modules[*].version",
+      "Microsoft.Cache/redisEnterprise/databases/persistence": "properties.persistence",
+      "Microsoft.Cache/redisEnterprise/databases/persistence.aofEnabled": "properties.persistence.aofEnabled",
+      "Microsoft.Cache/redisEnterprise/databases/persistence.aofFrequency": "properties.persistence.aofFrequency",
+      "Microsoft.Cache/redisEnterprise/databases/persistence.rdbEnabled": "properties.persistence.rdbEnabled",
+      "Microsoft.Cache/redisEnterprise/databases/persistence.rdbFrequency": "properties.persistence.rdbFrequency",
+      "Microsoft.Cache/redisEnterprise/databases/port": "properties.port",
+      "Microsoft.Cache/redisEnterprise/databases/provisioningState": "properties.provisioningState",
+      "Microsoft.Cache/redisEnterprise/databases/resourceState": "properties.resourceState"
+    },
+    "resourceType": "redisEnterprise/databases",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-08-01",
+      "2021-03-01",
+      "2021-02-01-preview",
+      "2020-10-01-preview",
+      "2020-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "West US",
+      "East US 2",
+      "West US 2",
+      "South Central US",
+      "UK South",
+      "Southeast Asia",
+      "Australia East",
+      "North Europe",
+      "Central US",
+      "Central India",
+      "West Central US",
+      "Canada Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "RedisEnterprise/privateEndpointConnectionProxies",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-08-01",
+      "2021-03-01",
+      "2021-02-01-preview",
+      "2020-10-01-preview",
+      "2020-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "West US",
+      "East US 2",
+      "West US 2",
+      "South Central US",
+      "UK South",
+      "Southeast Asia",
+      "Australia East",
+      "North Europe",
+      "Central US",
+      "Central India",
+      "West Central US",
+      "Canada Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/operationresults",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-08-01",
+      "2021-03-01",
+      "2021-02-01-preview",
+      "2020-10-01-preview",
+      "2020-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "West US",
+      "East US 2",
+      "West US 2",
+      "South Central US",
+      "UK South",
+      "Southeast Asia",
+      "Australia East",
+      "North Europe",
+      "Central US",
+      "Central India",
+      "West Central US",
+      "Canada Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/validate",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-08-01",
+      "2021-03-01",
+      "2021-02-01-preview",
+      "2020-10-01-preview",
+      "2020-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "West US",
+      "East US 2",
+      "West US 2",
+      "South Central US",
+      "UK South",
+      "Southeast Asia",
+      "Australia East",
+      "North Europe",
+      "Central US",
+      "Central India",
+      "West Central US",
+      "Canada Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Cache/redisEnterprise/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "RedisEnterprise/privateEndpointConnections",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-08-01",
+      "2021-03-01",
+      "2021-02-01-preview",
+      "2020-10-01-preview",
+      "2020-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "West US",
+      "East US 2",
+      "West US 2",
+      "South Central US",
+      "UK South",
+      "Southeast Asia",
+      "Australia East",
+      "North Europe",
+      "Central US",
+      "Central India",
+      "West Central US",
+      "Canada Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "RedisEnterprise/privateEndpointConnections/operationresults",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-08-01",
+      "2021-03-01",
+      "2021-02-01-preview",
+      "2020-10-01-preview",
+      "2020-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "West US",
+      "East US 2",
+      "West US 2",
+      "South Central US",
+      "UK South",
+      "Southeast Asia",
+      "Australia East",
+      "North Europe",
+      "Central US",
+      "Central India",
+      "West Central US",
+      "Canada Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "RedisEnterprise/privateLinkResources",
+    "apiVersions": [
+      "2022-01-01",
+      "2021-08-01",
+      "2021-03-01",
+      "2021-02-01-preview",
+      "2020-10-01-preview",
+      "2020-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "West US",
+      "East US 2",
+      "West US 2",
+      "South Central US",
+      "UK South",
+      "Southeast Asia",
+      "Australia East",
+      "North Europe",
+      "Central US",
+      "Central India",
+      "West Central US",
+      "Canada Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Cache/Redis/firewallrules/endIP": "properties.endIP",
+      "Microsoft.Cache/Redis/firewallrules/startIP": "properties.startIP"
+    },
+    "resourceType": "redis/firewallrules"
+  },
+  {
+    "aliases": {
+      "Microsoft.Cache/redis/linkedservers/linkedRedisCacheId": "properties.linkedRedisCacheId",
+      "Microsoft.Cache/redis/linkedservers/linkedRedisCacheLocation": "properties.linkedRedisCacheLocation",
+      "Microsoft.Cache/redis/linkedservers/serverRole": "properties.serverRole"
+    },
+    "resourceType": "redis/linkedservers"
+  },
+  {
+    "aliases": {
+      "Microsoft.Cache/redis/patchSchedules/default.scheduleEntries": "properties.scheduleEntries",
+      "Microsoft.Cache/redis/patchSchedules/default.scheduleEntries[*]": "properties.scheduleEntries[*]",
+      "Microsoft.Cache/redis/patchSchedules/default.scheduleEntries[*].dayOfWeek": "properties.scheduleEntries[*].dayOfWeek",
+      "Microsoft.Cache/redis/patchSchedules/default.scheduleEntries[*].maintenanceWindow": "properties.scheduleEntries[*].maintenanceWindow",
+      "Microsoft.Cache/redis/patchSchedules/default.scheduleEntries[*].startHourUtc": "properties.scheduleEntries[*].startHourUtc",
+      "Microsoft.Cache/redis/patchSchedules/scheduleEntries": "properties.scheduleEntries",
+      "Microsoft.Cache/redis/patchSchedules/scheduleEntries[*]": "properties.scheduleEntries[*]",
+      "Microsoft.Cache/redis/patchSchedules/scheduleEntries[*].dayOfWeek": "properties.scheduleEntries[*].dayOfWeek",
+      "Microsoft.Cache/redis/patchSchedules/scheduleEntries[*].maintenanceWindow": "properties.scheduleEntries[*].maintenanceWindow",
+      "Microsoft.Cache/redis/patchSchedules/scheduleEntries[*].startHourUtc": "properties.scheduleEntries[*].startHourUtc"
+    },
+    "resourceType": "redis/patchschedules"
+  }
+]

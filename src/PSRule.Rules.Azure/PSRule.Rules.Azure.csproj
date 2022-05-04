@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>9.0</LangVersion>
     <OutputType>Library</OutputType>
     <ProjectGuid>{bce66f73-3809-4740-b3c3-f52958e7ab51}</ProjectGuid>
     <NeutralLanguage>en-US</NeutralLanguage>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
     <Authors>Bernie White</Authors>
-    <AssemblyTitle>PSRule</AssemblyTitle>
+    <AssemblyTitle>PSRule for Azure</AssemblyTitle>
     <RepositoryUrl>https://github.com/Azure/PSRule.Rules.Azure</RepositoryUrl>
     <PackageProjectUrl>https://aka.ms/ps-rule-azure</PackageProjectUrl>
     <PackageLicenseExpression>https://github.com/Azure/PSRule.Rules.Azure/blob/main/LICENSE</PackageLicenseExpression>
@@ -60,6 +60,13 @@ This project uses GitHub Issues to track bugs and feature requests. See GitHub p
   </ItemGroup>
 
   <ItemGroup>
+    <TypeFiles Include="../../data/**/*.min.json">
+      <CompressedFile>$(IntermediateOutputPath)/generated/%(RecursiveDir)%(Filename)%(Extension).deflated</CompressedFile>
+      <LogicalName>$([System.String]::new('%(RecursiveDir)%(Filename)%(Extension).deflated').Replace('\', '/').ToLowerInvariant())</LogicalName>
+    </TypeFiles>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Resources\Diagnostics.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -81,15 +88,57 @@ This project uses GitHub Issues to track bugs and feature requests. See GitHub p
     <EmbeddedResource Update="Resources\Diagnostics.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Diagnostics.Designer.cs</LastGenOutput>
+      <LogicalName>PSRule.Rules.Azure.Resources.Diagnostics.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\PSRuleResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>PSRuleResources.Designer.cs</LastGenOutput>
+      <LogicalName>PSRule.Rules.Azure.Resources.PSRuleResources.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\ReasonStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ReasonStrings.Designer.cs</LastGenOutput>
+      <LogicalName>PSRule.Rules.Azure.Resources.ReasonStrings.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
+
+  <UsingTask TaskName="CompressType" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <SourceFile ParameterType="System.String" Required="true" />
+      <TargetFile ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System.IO" />
+      <Using Namespace="System.IO.Compression" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+          Directory.CreateDirectory(Path.GetDirectoryName(TargetFile));
+
+          using (var inputStream = File.OpenRead(SourceFile))
+          using (var outputStream = File.Create(TargetFile))
+          using (var compressionStream = new DeflateStream(outputStream, CompressionLevel.Optimal))
+          {
+              inputStream.CopyTo(compressionStream);
+          }
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+
+  <Target Name="BuildTool">
+    <Exec Command="dotnet run --project ./src/PSRule.Rules.Azure.BuildTool -- provider" WorkingDirectory="..\.." ConsoleToMSBuild="true" >
+      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
+    </Exec>
+  </Target>
+
+  <Target Name="CompressTypes" Inputs="@(TypeFiles)" Outputs="%(TypeFiles.CompressedFile)" DependsOnTargets="BuildTool">
+    <CompressType SourceFile="%(TypeFiles.FullPath)" TargetFile="%(TypeFiles.CompressedFile)" />
+  </Target>
+
+  <Target Name="EmbedTypes" BeforeTargets="BeforeBuild" DependsOnTargets="CompressTypes">
+    <ItemGroup>
+      <EmbeddedResource Include="%(TypeFiles.CompressedFile)" LogicalName="%(LogicalName)" />
+    </ItemGroup>
+  </Target>
 
 </Project>
