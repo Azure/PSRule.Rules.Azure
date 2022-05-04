@@ -6062,7 +6062,7 @@ By spreading node pools across multiple zones, nodes in one node pool will conti
 <p>Consider using availability zones for Enterprise Redis Cache deployed in supported regions.</p>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <p>This rule fails when cache is not zone redundant(1, 2 and 3) when there are availability zones for the given region.</p>
-<p>Configure <code>AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code> to set additional availability zones that need to be supported which are not in the existing <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json">providers</a> for namespace <code>Microsoft.Cache</code> and resource type <code>redisEnterprise</code>.</p>
+<p>Configure <code>AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code> to set additional availability zones that need to be supported which are not in the existing <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/">providers</a> for namespace <code>Microsoft.Cache</code> and resource type <code>redisEnterprise</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option</span><span class="w"></span>
 <span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"></span>
@@ -6197,7 +6197,7 @@ resource testrediscache_default &#39;Microsoft.Cache/redisEnterprise/databases@2
   <small>
     
       Last update:
-      2021-12-24
+      2022-05-05
     
   </small>
 </div>

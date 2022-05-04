@@ -6087,7 +6087,7 @@
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <p>This rule applies when analyzing resources deployed to Azure using <em>pre-flight</em> and <em>in-flight</em> data.</p>
 <p>This rule fails when <code>"zones"</code> is <code>null</code>, <code>[]</code> or not set when the Application gateway is deployed with V2 SKU(Standard_v2, WAF_v2) and there are supported availability zones for the given region.</p>
-<p>Configure <code>AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code> to set additional availability zones that need to be supported which are not in the existing <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json">providers</a> for namespace <code>Microsoft.Network</code> and resource type <code>applicationGateways</code>.</p>
+<p>Configure <code>AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code> to set additional availability zones that need to be supported which are not in the existing <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/">providers</a> for namespace <code>Microsoft.Network</code> and resource type <code>applicationGateways</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option</span><span class="w"></span>
 <span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"></span>
@@ -6245,7 +6245,7 @@
   <small>
     
       Last update:
-      2021-09-09
+      2022-05-05
     
   </small>
 </div>

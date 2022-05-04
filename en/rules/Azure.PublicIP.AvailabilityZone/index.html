@@ -6064,7 +6064,7 @@ Furthermore, this ensures Public Standard Load balancer frontend IPs using a zon
 <p>This rule applies when analyzing resources deployed to Azure using <em>pre-flight</em> and <em>in-flight</em> data.</p>
 <p>This rule fails when <code>"zones"</code> is constrained to a single(zonal) zone, or set to <code>null</code>, <code>[]</code> when there are supported availability zones for the given region.</p>
 <p>This rule passes if no zones exist for a given region or <code>"zones"</code> is set to <code>["1", "2", "3"]</code>.</p>
-<p>Configure <code>AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code> to set additional availability zones that need to be supported which are not in the existing <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers.json">providers</a> for namespace <code>Microsoft.Network</code> and resource type <code>publicIpAddresses</code>.</p>
+<p>Configure <code>AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code> to set additional availability zones that need to be supported which are not in the existing <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/">providers</a> for namespace <code>Microsoft.Network</code> and resource type <code>publicIpAddresses</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option</span><span class="w"></span>
 <span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"></span>
@@ -6143,7 +6143,7 @@ Furthermore, this ensures Public Standard Load balancer frontend IPs using a zon
   <small>
     
       Last update:
-      2021-09-22
+      2022-05-05
     
   </small>
 </div>
