@@ -1896,6 +1896,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4">
@@ -6632,6 +6634,57 @@
 
             
           
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Selectors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Selectors" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Selectors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/selectors/Azure.Resource.SupportsTags/" class="md-nav__link">
+        Azure.Resource.SupportsTags
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -7446,11 +7499,27 @@
 See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to this issue.</li>
 <li>The configuration option <code>Azure_AKSMinimumVersion</code> is replaced with <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code>.
   If you have this option configured, please update it to <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code>.
-  Support for <code>Azure_AKSMinimumVersion</code> will be removed in v2.</li>
+  Support for <code>Azure_AKSMinimumVersion</code> will be removed in v2.
+  See <a href="../upgrade-notes/">upgrade notes</a> for more information.</li>
+<li>The <code>SupportsTag</code> PowerShell function has been replaced with the <code>Azure.Resource.SupportsTags</code> selector.
+  Update PowerShell rules to use the <code>Azure.Resource.SupportsTags</code> selector instead.
+  Support for the <code>SupportsTag</code> function will be removed in v2.
+  See <a href="../upgrade-notes/">upgrade notes</a> for more information.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.15.0-B0022:</p>
 <ul>
+<li>New features:<ul>
+<li><strong>Important change</strong>: Added <code>Azure.Resource.SupportsTags</code> selector. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1339">#1339</a><ul>
+<li>Use this selector in custom rules to filter rules to only run against resources that support tags.</li>
+<li>This selector replaces the <code>SupportsTags</code> PowerShell function.</li>
+<li>Using the <code>SupportsTag</code> function will now result in a warning.</li>
+<li>The <code>SupportsTags</code> function will be removed in v2.</li>
+<li>See <a href="../upgrade-notes/">upgrade notes</a> for more information.</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Engineering:<ul>
 <li>Embedded provider and alias information as manifest resources. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1383">#1383</a><ul>
 <li>Resources are minified and compressed to improve size and speed.</li>

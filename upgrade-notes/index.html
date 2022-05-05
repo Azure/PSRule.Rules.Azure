@@ -963,6 +963,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#removalofsupportstagsfunction" class="md-nav__link">
+    Removal of SupportsTags function
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1149,6 +1156,8 @@
       
       
       
+        
+          
         
           
         
@@ -5894,6 +5903,57 @@
 
             
           
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Selectors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Selectors" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Selectors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/selectors/Azure.Resource.SupportsTags/" class="md-nav__link">
+        Azure.Resource.SupportsTags
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -5937,6 +5997,13 @@
           <li class="md-nav__item">
   <a href="#realignedconfigurationoptionnames" class="md-nav__link">
     Realigned configuration option names
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removalofsupportstagsfunction" class="md-nav__link">
+    Removal of SupportsTags function
   </a>
   
 </li>
@@ -6034,13 +6101,34 @@ For information on other options that will be renamed see <a href="../deprecatio
 </div>
 </div>
 </div>
+<h3 id="removalofsupportstagsfunction">Removal of SupportsTags function<a class="headerlink" href="#removalofsupportstagsfunction" title="Permanent link">#</a></h3>
+<p>The <code>SupportsTags</code> function is a PowerShell function used for filtering rules.
+Previously you could use this function to only run a rule against resources that support tags.
+As of <em>v1.15.0</em> this function has been deprecated for removal in the next major release <em>v2.0.0</em>.</p>
+<p>From <em>v2.0.0</em> the <code>SupportsTags</code> function will not longer work.</p>
+<p>The <code>SupportsTags</code> function was previously only available for PowerShell rules and not well documented.
+Instead you can use the <code>Azure.Resource.SupportsTags</code> selector introduced in <em>v1.15.0</em>.
+This selector supports the the same features but also supports YAML and JSON rules in addition to PowerShell.</p>
+<p>To upgrade your PowerShell rules use the <code>-With</code> parameter to set <code>Azure.Resource.SupportsTags</code>.
+For example:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Synopsis: Old rule using the SupportsTags function</span>
+<span class="n">Rule</span> <span class="s1">&#39;Local.MyRule&#39;</span> <span class="n">-If</span> <span class="p">{</span> <span class="p">(</span><span class="n">SupportsTags</span><span class="p">)</span> <span class="p">}</span> <span class="p">{</span>
+  <span class="c"># Rule logic goes here</span>
+<span class="p">}</span>
+
+<span class="c"># Synopsis: Rule updated using the Azure.Resource.SupportsTags selector</span>
+<span class="n">Rule</span> <span class="s1">&#39;Local.MyRule&#39;</span> <span class="n">-With</span> <span class="s1">&#39;Azure.Resource.SupportsTags&#39;</span> <span class="p">{</span>
+  <span class="c"># Rule logic goes here</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>To read more about the selector, see <a href="../en/selectors/Azure.Resource.SupportsTags/">the documentation</a>.</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      2022-01-08
+      2022-05-05
     
   </small>
 </div>
