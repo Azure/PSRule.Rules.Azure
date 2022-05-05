@@ -19,6 +19,7 @@ What's changed since pre-release v1.15.0-B0022:
 - Engineering:
   - Embedded provider and alias information as manifest resources. [#1383](https://github.com/Azure/PSRule.Rules.Azure/issues/1383)
     - Resources are minified and compressed to improve size and speed.
+  - Added additional `nodeps` manifest that does not include dependencies for Az modules. [#1392](https://github.com/Azure/PSRule.Rules.Azure/issues/1392)
   - Bump Az.Accounts to 2.7.6. [#1338](https://github.com/Azure/PSRule.Rules.Azure/pull/1338)
   - Bump Az.Resources to 5.6.0. [#1338](https://github.com/Azure/PSRule.Rules.Azure/pull/1338)
   - Bump PSRule to 2.1.0. [#1338](https://github.com/Azure/PSRule.Rules.Azure/pull/1338)
