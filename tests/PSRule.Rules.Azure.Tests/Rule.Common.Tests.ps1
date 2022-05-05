@@ -26,10 +26,10 @@ BeforeAll {
 Describe 'SupportsTags' -Tag 'Common', 'Filters', 'SupportsTags' {
     BeforeAll {
         $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
+            Baseline      = 'Azure.All'
+            Module        = 'PSRule.Rules.Azure'
             WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+            ErrorAction   = 'Stop'
         }
         $tempResource = [PSCustomObject]@{
             Type = 'None'
@@ -45,6 +45,10 @@ Describe 'SupportsTags' -Tag 'Common', 'Filters', 'SupportsTags' {
                 'Microsoft.Network/routeTables'
                 'Microsoft.Resources/resourceGroups'
                 'Microsoft.CostManagement/Connectors'
+                'Microsoft.Automation/automationAccounts'
+                'Microsoft.Automation/automationAccounts/runbooks'
+                'Microsoft.Resources/templateSpecs'
+                'Microsoft.Resources/templateSpecs/versions'
             )
         }
 
@@ -64,6 +68,7 @@ Describe 'SupportsTags' -Tag 'Common', 'Filters', 'SupportsTags' {
                 'microsoft.insights/diagnosticSettings'
                 'Microsoft.KeyVault/vaults/providers/diagnosticSettings'
                 'Microsoft.CostManagement/budgets'
+                'Microsoft.Resources/links'
             )
         }
 

@@ -272,7 +272,7 @@ metadata:
 spec:
   if:
     allOf:
-    - type: '.' 
+    - type: '.'
       equals: 'Microsoft.ContainerService/managedClusters' 
     - field: 'Properties.networkProfile.networkPlugin'
       equals: 'azure'
