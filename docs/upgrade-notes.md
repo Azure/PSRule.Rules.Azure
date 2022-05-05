@@ -73,3 +73,34 @@ To update your configuration, use the new name instead.
     - name: PSRULE_CONFIGURATION_AZURE_AKS_CLUSTER_MINIMUM_VERSION
       value: '1.22.4'
     ```
+
+### Removal of SupportsTags function
+
+The `SupportsTags` function is a PowerShell function used for filtering rules.
+Previously you could use this function to only run a rule against resources that support tags.
+As of _v1.15.0_ this function has been deprecated for removal in the next major release _v2.0.0_.
+
+From _v2.0.0_ the `SupportsTags` function will not longer work.
+
+The `SupportsTags` function was previously only available for PowerShell rules and not well documented.
+Instead you can use the `Azure.Resource.SupportsTags` selector introduced in _v1.15.0_.
+This selector supports the the same features but also supports YAML and JSON rules in addition to PowerShell.
+
+To upgrade your PowerShell rules use the `-With` parameter to set `Azure.Resource.SupportsTags`.
+For example:
+
+```powershell
+# Synopsis: Old rule using the SupportsTags function
+Rule 'Local.MyRule' -If { (SupportsTags) } {
+  # Rule logic goes here
+}
+
+# Synopsis: Rule updated using the Azure.Resource.SupportsTags selector
+Rule 'Local.MyRule' -With 'Azure.Resource.SupportsTags' {
+  # Rule logic goes here
+}
+```
+
+To read more about the selector, see [the documentation][2].
+
+  [2]: en/selectors/Azure.Resource.SupportsTags.md

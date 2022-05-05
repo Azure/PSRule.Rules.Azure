@@ -45,7 +45,7 @@ function global:GetSubResources {
         return @($TargetObject.resources | Where-Object -FilterScript {
             ($_.ResourceType -in $ResourceType -or $_.Type -in $ResourceType -or $_.ExtensionResourceType -in $ResourceType) -and
             ($Null -eq $Name -or $Name.Length -eq 0 -or $_.Name -in $Name -or $_.ResourceName -in $Name)
-        })
+            })
     }
 }
 
@@ -83,7 +83,7 @@ function global:SupportsAcceleratedNetworking {
         if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachines' -or !(IsExport)) {
             return $False;
         }
-        if ($Null -eq ($TargetObject.Resources | Where-Object { $_.ResourceType -eq 'Microsoft.Network/networkInterfaces'})) {
+        if ($Null -eq ($TargetObject.Resources | Where-Object { $_.ResourceType -eq 'Microsoft.Network/networkInterfaces' })) {
             return $False;
         }
 
@@ -175,11 +175,19 @@ function global:IsLinuxOS {
     }
 }
 
+$Global:FlagSupportsTagWarning = $True;
+
 # Determines if the object supports tags
 function global:SupportsTags {
     [CmdletBinding()]
     [OutputType([System.Boolean])]
     param ()
+    begin {
+        if ($Global:FlagSupportsTagWarning) {
+            Write-Warning -Message $LocalizedData.DeprecatedSupportsTags;
+            $Global:FlagSupportsTagWarning = $False;
+        }
+    }
     process {
         if (
             ($PSRule.TargetType -eq 'Microsoft.Subscription') -or
@@ -301,12 +309,12 @@ function global:GetIPAddressSummary {
     param ()
     process {
         $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
-            $_.Type -like "*/firewallRules"
-        } | ForEach-Object -Process {
-            if (!($_.ResourceName -eq 'AllowAllWindowsAzureIps' -or ($_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0'))) {
-                $_;
-            }
-        })
+                $_.Type -like "*/firewallRules"
+            } | ForEach-Object -Process {
+                if (!($_.ResourceName -eq 'AllowAllWindowsAzureIps' -or ($_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0'))) {
+                    $_;
+                }
+            })
 
         $private = 0;
         $public = 0;
@@ -321,7 +329,7 @@ function global:GetIPAddressSummary {
         }
         return [PSCustomObject]@{
             Private = $private
-            Public = $public
+            Public  = $public
         }
     }
 }
@@ -338,11 +346,11 @@ function global:GetCIDRMask {
         $ip = ConvertToUInt64 -IP ([System.Net.IPAddress]::Parse($cidrParts[0]));
         [System.UInt64]$mask = 4294967295;
         if ($cidrParts.Length -eq 2) {
-            $mask = [System.UInt64](4294967295 -shl (32-([System.Byte]::Parse($cidrParts[1])))) -band 4294967295;
+            $mask = [System.UInt64](4294967295 -shl (32 - ([System.Byte]::Parse($cidrParts[1])))) -band 4294967295;
         }
         return [PSCustomObject]@{
             Mask = $mask
-            IP = $ip;
+            IP   = $ip;
         }
     }
 }
@@ -408,7 +416,7 @@ function global:GetAvailabilityZone {
     process {
         $normalizedLocation = GetNormalLocation -Location $Location;
         $availabilityZones = $Zone | Where-Object { (GetNormalLocation -Location $_.Location) -eq $normalizedLocation } | Select-Object -ExpandProperty Zones -First 1;
-        return $availabilityZones | Sort-Object {[int]$_};
+        return $availabilityZones | Sort-Object { [int]$_ };
     }
 }
 

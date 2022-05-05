@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Resources should be tagged
-Rule 'Azure.Resource.UseTags' -If { (SupportsTags) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Resource.UseTags' -With 'Azure.Resource.SupportsTags' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     Reason $LocalizedData.ResourceNotTagged
     # List of resource that support tags can be found here: https://docs.microsoft.com/en-us/azure/azure-resource-manager/tag-support
     $Assert.HasField($TargetObject, 'tags')
