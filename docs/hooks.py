@@ -76,6 +76,7 @@ def add_tags(markdown: str) -> str:
 def build_reference_nav(nav: mkdocs.structure.nav.Navigation, config: mkdocs.config.Config, files: mkdocs.structure.files.Files) -> mkdocs.structure.nav.Navigation:
     build_rule_nav(nav, config, files)
     build_baseline_nav(nav, config, files)
+    build_selector_nav(nav, config, files)
     return nav
 
 # Build Rules list
@@ -107,6 +108,22 @@ def build_baseline_nav(nav: mkdocs.structure.nav.Navigation, config: mkdocs.conf
             continue
 
         if f._get_dest_path(False).__contains__("/baselines/"):
+            children.append(mkdocs.structure.pages.Page(f._get_stem(), f, config))
+
+    referenceItem: mkdocs.structure.nav.Section = next(x for x in nav if x.title == "Reference")
+    referenceItem.children.append(item)
+    mkdocs.structure.nav._add_parent_links(nav)
+
+# Build Selectors list
+def build_selector_nav(nav: mkdocs.structure.nav.Navigation, config: mkdocs.config.Config, files: mkdocs.structure.files.Files):
+    children = []
+    item: mkdocs.structure.nav.Section = mkdocs.structure.nav.Section("Selectors", children)
+
+    for f in files:
+        if not f.is_documentation_page():
+            continue
+
+        if f._get_dest_path(False).__contains__("/selectors/"):
             children.append(mkdocs.structure.pages.Page(f._get_stem(), f, config))
 
     referenceItem: mkdocs.structure.nav.Section = next(x for x in nav if x.title == "Reference")

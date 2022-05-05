@@ -11,11 +11,23 @@ See [troubleshooting guide] for a workaround to this issue.
 - The configuration option `Azure_AKSMinimumVersion` is replaced with `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
   If you have this option configured, please update it to `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
   Support for `Azure_AKSMinimumVersion` will be removed in v2.
+  See [upgrade notes][1] for more information.
+- The `SupportsTag` PowerShell function has been replaced with the `Azure.Resource.SupportsTags` selector.
+  Update PowerShell rules to use the `Azure.Resource.SupportsTags` selector instead.
+  Support for the `SupportsTag` function will be removed in v2.
+  See [upgrade notes][1] for more information.
 
 ## Unreleased
 
 What's changed since pre-release v1.15.0-B0022:
 
+- New features:
+  - **Important change**: Added `Azure.Resource.SupportsTags` selector. [#1339](https://github.com/Azure/PSRule.Rules.Azure/issues/1339)
+    - Use this selector in custom rules to filter rules to only run against resources that support tags.
+    - This selector replaces the `SupportsTags` PowerShell function.
+    - Using the `SupportsTag` function will now result in a warning.
+    - The `SupportsTags` function will be removed in v2.
+    - See [upgrade notes][1] for more information.
 - Engineering:
   - Embedded provider and alias information as manifest resources. [#1383](https://github.com/Azure/PSRule.Rules.Azure/issues/1383)
     - Resources are minified and compressed to improve size and speed.
