@@ -133,6 +133,31 @@ task VersionModule ModuleDependencies, {
         }
     };
     Update-ModuleManifest -Path $manifestPath -RequiredModules $requiredModules;
+
+    # Update -nodeps manifest
+    $manifestPath = Join-Path -Path $modulePath -ChildPath PSRule.Rules.Azure-nodeps.psd1;
+    if (![String]::IsNullOrEmpty($Build)) {
+        # Update module version
+        if (![String]::IsNullOrEmpty($version)) {
+            Write-Verbose -Message "[VersionModule] -- Updating module manifest ModuleVersion";
+            Update-ModuleManifest -Path $manifestPath -ModuleVersion $version;
+        }
+
+        # Update pre-release version
+        if (![String]::IsNullOrEmpty($versionSuffix)) {
+            Write-Verbose -Message "[VersionModule] -- Updating module manifest Prerelease";
+            Update-ModuleManifest -Path $manifestPath -Prerelease $versionSuffix;
+        }
+    }
+
+    $dependencies = Get-Content -Path $PWD/modules.json -Raw | ConvertFrom-Json;
+    $manifest = Test-ModuleManifest -Path $manifestPath;
+    $requiredModules = $manifest.RequiredModules | ForEach-Object -Process {
+        if ($_.Name -eq 'PSRule' -and $Configuration -eq 'Release') {
+            @{ ModuleName = 'PSRule'; ModuleVersion = $dependencies.dependencies.PSRule.version }
+        }
+    };
+    Update-ModuleManifest -Path $manifestPath -RequiredModules $requiredModules;
 }
 
 # Synopsis: Publish to PowerShell Gallery
