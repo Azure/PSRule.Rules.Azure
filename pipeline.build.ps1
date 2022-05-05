@@ -156,6 +156,9 @@ task VersionModule ModuleDependencies, {
         if ($_.Name -eq 'PSRule' -and $Configuration -eq 'Release') {
             @{ ModuleName = 'PSRule'; ModuleVersion = $dependencies.dependencies.PSRule.version }
         }
+        else {
+            @{ ModuleName = $_.Name; ModuleVersion = $_.Version }
+        }
     };
     Update-ModuleManifest -Path $manifestPath -RequiredModules $requiredModules;
 }
