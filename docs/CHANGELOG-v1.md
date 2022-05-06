@@ -19,6 +19,11 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since pre-release v1.15.0-B0053:
+
+- Bug fixes:
+  - Fixed error calling SupportsTags function. [#1401](https://github.com/Azure/PSRule.Rules.Azure/issues/1401)
+
 ## v1.15.0-B0053 (pre-release)
 
 What's changed since pre-release v1.15.0-B0022:

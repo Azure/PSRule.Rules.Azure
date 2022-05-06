@@ -184,7 +184,7 @@ function global:SupportsTags {
     param ()
     begin {
         if ($Global:FlagSupportsTagWarning) {
-            Write-Warning -Message $LocalizedData.DeprecatedSupportsTags;
+            Write-Warning -Message "The 'SupportsTags' PowerShell function has been replaced with the selector 'Azure.Resource.SupportsTags'. The 'SupportsTags' function is deprecated and will no longer work in the next major version. Please update your PowerShell rules to the selector instead. See https://aka.ms/ps-rule-azure/upgrade.";
             $Global:FlagSupportsTagWarning = $False;
         }
     }
