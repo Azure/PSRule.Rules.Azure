@@ -19,10 +19,48 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.15.0
+
+What's changed since v1.14.3:
+
+- New features:
+  - **Important change**: Added `Azure.Resource.SupportsTags` selector by @BernieWhite.
+    [#1339](https://github.com/Azure/PSRule.Rules.Azure/issues/1339)
+    - Use this selector in custom rules to filter rules to only run against resources that support tags.
+    - This selector replaces the `SupportsTags` PowerShell function.
+    - Using the `SupportsTag` function will now result in a warning.
+    - The `SupportsTags` function will be removed in v2.
+    - See [upgrade notes][1] for more information.
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.22.6` by @BernieWhite.
+      [#1386](https://github.com/Azure/PSRule.Rules.Azure/issues/1386)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+- Engineering:
+  - Added code signing of module by @BernieWhite.
+    [#1379](https://github.com/Azure/PSRule.Rules.Azure/issues/1379)
+  - Added SBOM manifests to module by @BernieWhite.
+    [#1380](https://github.com/Azure/PSRule.Rules.Azure/issues/1380)
+  - Embedded provider and alias information as manifest resources by @BernieWhite.
+    [#1383](https://github.com/Azure/PSRule.Rules.Azure/issues/1383)
+    - Resources are minified and compressed to improve size and speed.
+  - Added additional `nodeps` manifest that does not include dependencies for Az modules by @BernieWhite.
+    [#1392](https://github.com/Azure/PSRule.Rules.Azure/issues/1392)
+  - Bump Az.Accounts to 2.7.6. [#1338](https://github.com/Azure/PSRule.Rules.Azure/pull/1338)
+  - Bump Az.Resources to 5.6.0. [#1338](https://github.com/Azure/PSRule.Rules.Azure/pull/1338)
+  - Bump PSRule to 2.1.0. [#1338](https://github.com/Azure/PSRule.Rules.Azure/pull/1338)
+  - Bump Pester to 5.3.3. [#1338](https://github.com/Azure/PSRule.Rules.Azure/pull/1338)
+- Bug fixes:
+  - Fixed dependency chain order when dependsOn copy by @BernieWhite.
+    [#1381](https://github.com/Azure/PSRule.Rules.Azure/issues/1381)
+  - Fixed error calling SupportsTags function by @BernieWhite.
+    [#1401](https://github.com/Azure/PSRule.Rules.Azure/issues/1401)
+
 What's changed since pre-release v1.15.0-B0053:
 
 - Bug fixes:
-  - Fixed error calling SupportsTags function. [#1401](https://github.com/Azure/PSRule.Rules.Azure/issues/1401)
+  - Fixed error calling SupportsTags function by @BernieWhite.
+    [#1401](https://github.com/Azure/PSRule.Rules.Azure/issues/1401)
 
 ## v1.15.0-B0053 (pre-release)
 
