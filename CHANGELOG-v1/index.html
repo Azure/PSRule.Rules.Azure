@@ -923,6 +923,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1150" class="md-nav__link">
+    v1.15.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1150-b0053pre-release" class="md-nav__link">
     v1.15.0-B0053 (pre-release)
   </a>
@@ -6732,6 +6739,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v1150" class="md-nav__link">
+    v1.15.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v1150-b0053pre-release" class="md-nav__link">
     v1.15.0-B0053 (pre-release)
   </a>
@@ -7521,10 +7535,63 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
   See <a href="../upgrade-notes/">upgrade notes</a> for more information.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<h2 id="v1150">v1.15.0<a class="headerlink" href="#v1150" title="Permanent link">#</a></h2>
+<p>What's changed since v1.14.3:</p>
+<ul>
+<li>New features:<ul>
+<li><strong>Important change</strong>: Added <code>Azure.Resource.SupportsTags</code> selector by @BernieWhite.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1339">#1339</a><ul>
+<li>Use this selector in custom rules to filter rules to only run against resources that support tags.</li>
+<li>This selector replaces the <code>SupportsTags</code> PowerShell function.</li>
+<li>Using the <code>SupportsTag</code> function will now result in a warning.</li>
+<li>The <code>SupportsTags</code> function will be removed in v2.</li>
+<li>See <a href="../upgrade-notes/">upgrade notes</a> for more information.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Updated rules:<ul>
+<li>Azure Kubernetes Service:<ul>
+<li>Updated <code>Azure.AKS.Version</code> to use latest stable version <code>1.22.6</code> by @BernieWhite.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1386">#1386</a><ul>
+<li>Use <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code> to configure the minimum version of the cluster.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Engineering:<ul>
+<li>Added code signing of module by @BernieWhite.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1379">#1379</a></li>
+<li>Added SBOM manifests to module by @BernieWhite.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1380">#1380</a></li>
+<li>Embedded provider and alias information as manifest resources by @BernieWhite.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1383">#1383</a><ul>
+<li>Resources are minified and compressed to improve size and speed.</li>
+</ul>
+</li>
+<li>Added additional <code>nodeps</code> manifest that does not include dependencies for Az modules by @BernieWhite.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1392">#1392</a></li>
+<li>Bump Az.Accounts to 2.7.6. <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/1338">#1338</a></li>
+<li>Bump Az.Resources to 5.6.0. <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/1338">#1338</a></li>
+<li>Bump PSRule to 2.1.0. <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/1338">#1338</a></li>
+<li>Bump Pester to 5.3.3. <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/1338">#1338</a></li>
+</ul>
+</li>
+<li>Bug fixes:<ul>
+<li>Fixed dependency chain order when dependsOn copy by @BernieWhite.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1381">#1381</a></li>
+<li>Fixed error calling SupportsTags function by @BernieWhite.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1401">#1401</a></li>
+</ul>
+</li>
+</ul>
 <p>What's changed since pre-release v1.15.0-B0053:</p>
 <ul>
 <li>Bug fixes:<ul>
-<li>Fixed error calling SupportsTags function. <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1401">#1401</a></li>
+<li>Fixed error calling SupportsTags function by @BernieWhite.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1401">#1401</a></li>
 </ul>
 </li>
 </ul>
@@ -9863,7 +9930,7 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
   <small>
     
       Last update:
-      2022-05-06
+      2022-05-07
     
   </small>
 </div>
