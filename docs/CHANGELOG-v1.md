@@ -19,6 +19,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.15.0:
+
+- Bug fixes:
+  - Fixed exclusion of `dataCollectionRuleAssociations` from `Azure.Resource.UseTags` by @BernieWhite.
+    [#1400](https://github.com/Azure/PSRule.Rules.Azure/issues/1400)
+
 ## v1.15.0
 
 What's changed since v1.14.3:

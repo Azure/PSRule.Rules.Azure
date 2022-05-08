@@ -63,7 +63,7 @@ spec:
     - type: '.'
       notIn:
       - Microsoft.Subscription
-      - microsoft.insights/diagnosticSettings
+      - Microsoft.AzureActiveDirectory/b2ctenants
     - type: '.'
       notEndsWith:
       - /providers/roleAssignments
@@ -89,12 +89,33 @@ spec:
 
     - anyOf:
       - type: '.'
+        notStartsWith: Microsoft.Insights/
+      - type: '.'
+        in:
+        - Microsoft.Insights/actionGroups
+        - Microsoft.Insights/activityLogAlerts
+        - Microsoft.Insights/alertRules
+        - Microsoft.Insights/autoscaleSettings
+        - Microsoft.Insights/components
+        - Microsoft.Insights/dataCollectionEndpoints
+        - Microsoft.Insights/dataCollectionRules
+        - Microsoft.Insights/guestDiagnosticSettings
+        - Microsoft.Insights/metricAlerts
+        - Microsoft.Insights/notificationGroups
+        - Microsoft.Insights/privateLinkScopes
+        - Microsoft.Insights/scheduledQueryRules
+        - Microsoft.Insights/webTests
+        - Microsoft.Insights/workbooks
+        - Microsoft.Insights/workbookTemplates
+
+    - anyOf:
+      - type: '.'
         notLike: 'Microsoft.*/*/*'
       - type: '.'
         in:
         - Microsoft.Automation/automationAccounts/runbooks
         - Microsoft.Automation/automationAccounts/configurations
-        - Microsoft.Automation/automationAccounts/compilationjobs
+        - Microsoft.Automation/automationAccounts/compilationJobs
         - Microsoft.Automation/automationAccounts/modules
         - Microsoft.Automation/automationAccounts/nodeConfigurations
         - Microsoft.Automation/automationAccounts/python2Packages
