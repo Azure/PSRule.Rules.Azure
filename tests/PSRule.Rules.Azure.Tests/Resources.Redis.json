@@ -488,5 +488,87 @@
             "capacity": 9
         },
         "zones": []
+    },
+    {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-004/providers/Microsoft.Cache/Redis/redis-Q",
+        "location": "australiaeast",
+        "name": "redis-Q",
+        "type": "Microsoft.Cache/Redis",
+        "properties": {
+            "provisioningState": "Succeeded",
+            "redisVersion": "6.0.14",
+            "sku": {
+                "name": "Standard",
+                "family": "C",
+                "capacity": 0
+            },
+            "enableNonSslPort": false,
+            "instances": [
+                {
+                    "sslPort": 15000,
+                    "isMaster": true,
+                    "isPrimary": true
+                },
+                {
+                    "sslPort": 15001,
+                    "isMaster": false,
+                    "isPrimary": false
+                }
+            ],
+            "minimumTlsVersion": "1.2",
+            "publicNetworkAccess": "Enabled",
+            "redisConfiguration": {
+                "maxclients": "256",
+                "maxmemory-reserved": "30",
+                "maxfragmentationmemory-reserved": "30",
+                "maxmemory-delta": "30"
+            },
+            "accessKeys": null,
+            "hostName": "redis-Q.redis.cache.windows.net",
+            "port": 6379,
+            "sslPort": 6380,
+            "linkedServers": []
+        },
+        "identity": {
+            "type": "SystemAssigned",
+            "principalId": "00000000-0000-0000-0000-000000000000",
+            "tenantId": "00000000-0000-0000-0000-000000000000"
+        }
+    },
+    {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-004/providers/Microsoft.Cache/Redis/redis-R",
+        "location": "australiaeast",
+        "name": "redis-R",
+        "type": "Microsoft.Cache/Redis",
+        "properties": {
+            "provisioningState": "Succeeded",
+            "redisVersion": "6.0.14",
+            "enableNonSslPort": false,
+            "instances": [
+                {
+                    "sslPort": 15000,
+                    "isMaster": true,
+                    "isPrimary": true
+                },
+                {
+                    "sslPort": 15001,
+                    "isMaster": false,
+                    "isPrimary": false
+                }
+            ],
+            "minimumTlsVersion": "1.2",
+            "publicNetworkAccess": "Enabled",
+            "redisConfiguration": {
+                "maxclients": "256",
+                "maxmemory-reserved": "30",
+                "maxfragmentationmemory-reserved": "30",
+                "maxmemory-delta": "30"
+            },
+            "accessKeys": null,
+            "hostName": "redis-R.redis.cache.windows.net",
+            "port": 6379,
+            "sslPort": 6380,
+            "linkedServers": []
+        }
     }
 ]
