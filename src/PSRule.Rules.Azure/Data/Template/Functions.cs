@@ -551,21 +551,8 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Union), args);
 
             // Array
-            if (args[0] is Array)
-            {
-                var arrays = new Array[args.Length];
-                args.CopyTo(arrays, 0);
-                return Union(arrays);
-            }
-            else if (args[0] is JArray)
-            {
-                var arrays = new JArray[args.Length];
-                for (var i = 0; i < arrays.Length; i++)
-                {
-                    arrays[i] = args[i] as JArray;
-                }
-                return Union(arrays);
-            }
+            if (ExpressionHelpers.IsArray(args[0]))
+                return ExpressionHelpers.UnionArray(args);
 
             // Object
             if (args[0] is JObject jObject1)
@@ -582,37 +569,6 @@ namespace PSRule.Rules.Azure.Data.Template
                 return result;
             }
             return null;
-        }
-
-        private static Array Union(Array[] arrays)
-        {
-            var result = new List<object>();
-            for (var i = 0; i < arrays.Length; i++)
-            {
-                for (var j = 0; arrays[i] != null && j < arrays[i].Length; j++)
-                {
-                    var value = arrays[i].GetValue(j);
-                    if (!result.Contains(value))
-                        result.Add(value);
-                }
-            }
-            return result.ToArray();
-        }
-
-        private static JArray Union(JArray[] arrays)
-        {
-            var result = new JArray();
-            for (var i = 0; i < arrays.Length; i++)
-            {
-                for (var j = 0; j < arrays[i].Count; j++)
-                {
-                    var element = arrays[i][j];
-                    if (!result.Contains(element))
-                        result.Add(element);
-                }
-
-            }
-            return result;
         }
 
         #endregion Array and object

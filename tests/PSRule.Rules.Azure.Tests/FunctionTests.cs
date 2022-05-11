@@ -143,6 +143,14 @@ namespace PSRule.Rules.Azure
                 "mockProp", new MockResource("Microsoft.Resources/deployments").MockMember("outputs").MockMember("aksSubnetId").MockMember("value"),
             }) as JObject;
             var actual2 = Functions.CreateObject(context, new object[] { }) as JObject;
+            var actual3 = Functions.CreateObject(context, new object[] {
+                "intProp", new MockInteger(1),
+                "stringProp", new MockString("mock"),
+                "boolProp", new MockBool(true),
+                "arrayProp", Functions.CreateArray(context, new object[] { "a", "b", "c" }),
+                "objectProp", Functions.CreateObject(context, new object[] { "key1", "value1" }),
+                "mockProp", new MockObject(null),
+            }) as JObject;
 
             Assert.Equal(1, actual1["intProp"]);
             Assert.Equal("abc", actual1["stringProp"]);
@@ -152,6 +160,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("{{Resource.outputs.aksSubnetId.value}}", actual1["mockProp"].Value<string>());
 
             Assert.NotNull(actual2);
+            Assert.NotNull(actual3);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.CreateObject(context, new object[] { "intProp", 1, "stringProp" }));
         }
@@ -451,6 +460,12 @@ namespace PSRule.Rules.Azure
             // Union arrays
             var actual2 = Functions.Union(context, new string[][] { new string[] { "one", "two", "three" }, new string[] { "three", "four" } }) as object[];
             Assert.Equal(4, actual2.Length);
+            actual2 = Functions.Union(context, new object[][] { new string[] { "one", "two" }, null, null }) as object[];
+            Assert.Equal(2, actual2.Length);
+            actual2 = Functions.Union(context, new object[] { new string[] { "one", "two" }, null, new string[] { "one", "three" } }) as object[];
+            Assert.Equal(3, actual2.Length);
+            actual2 = Functions.Union(context, new object[] { new string[] { "one", "two" }, new MockArray(null) }) as object[];
+            Assert.Equal(2, actual2.Length);
         }
 
         #endregion Array and object

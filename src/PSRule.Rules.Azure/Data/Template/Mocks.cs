@@ -16,48 +16,87 @@ namespace PSRule.Rules.Azure.Data.Template
 
         bool TryGetValue(out object value);
 
+        bool TryGetValue<TValue>(out TValue value);
+
         bool TryGetToken(out JToken value);
     }
 
-    internal abstract class MockLiteral<T> : IMock
+    internal abstract class Mock : IMock
     {
-        protected MockLiteral(T value, IMock parent)
+        protected Mock(IMock parent)
         {
-            Value = value;
             Parent = parent;
         }
 
         public IMock Parent { get; }
 
-        public T Value { get; }
-
-        public bool TryProperty(string propertyName, out IMock value)
+        public virtual bool TryProperty(string propertyName, out IMock value)
         {
             value = null;
             return false;
         }
 
-        public bool TryGetIndex(int index, out IMock value)
+        public virtual bool TryGetIndex(int index, out IMock value)
         {
             value = null;
             return false;
         }
 
-        public bool TryGetValue(out object value)
+        public virtual bool TryGetValue(out object value)
         {
-            value = Value;
-            return true;
+            value = null;
+            return false;
+        }
+
+        public virtual bool TryGetValue<TValue>(out TValue value)
+        {
+            value = default;
+            if (TryGetValue(out var v) && v != null && typeof(TValue).IsAssignableFrom(v.GetType()))
+                value = (TValue)v;
+
+            return value != null;
         }
 
         public virtual bool TryGetToken(out JToken value)
         {
-            value = new JValue(Value);
-            return true;
+            value = null;
+            return false;
         }
 
         public override string ToString()
         {
             return TryGetValue(out var value) ? value.ToString() : string.Empty;
+        }
+
+        public static explicit operator int(Mock mock) => mock != null && mock.TryGetValue<int>(out var value) ? value : default;
+
+        public static explicit operator long(Mock mock) => mock != null && mock.TryGetValue<long>(out var value) ? value : default;
+
+        public static explicit operator bool(Mock mock) => mock != null && mock.TryGetValue<bool>(out var value) ? value : default;
+
+        public static explicit operator string(Mock mock) => mock != null && mock.TryGetValue<string>(out var value) ? value : default;
+    }
+
+    internal abstract class MockLiteral<T> : Mock, IMock
+    {
+        protected MockLiteral(T value, IMock parent)
+            : base(parent)
+        {
+            Value = value;
+        }
+
+        public T Value { get; }
+
+        public override bool TryGetValue(out object value)
+        {
+            value = Value;
+            return true;
+        }
+
+        public override bool TryGetToken(out JToken value)
+        {
+            value = new JValue(Value);
+            return true;
         }
     }
 
@@ -79,14 +118,10 @@ namespace PSRule.Rules.Azure.Data.Template
             : base(value, parent) { }
     }
 
-    internal abstract class MockNode : ILazyObject, IMock
+    internal abstract class MockNode : Mock, ILazyObject, IMock
     {
         protected MockNode(IMock parent)
-        {
-            Parent = parent;
-        }
-
-        public IMock Parent { get; }
+            : base(parent) { }
 
         public override string ToString()
         {
@@ -104,29 +139,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return builder.ToString();
         }
 
-        public virtual bool TryProperty(string propertyName, out IMock value)
-        {
-            value = null;
-            return false;
-        }
-
-        public virtual bool TryGetIndex(int index, out IMock value)
-        {
-            value = null;
-            return false;
-        }
-
-        public virtual bool TryGetValue(out object value)
-        {
-            value = null;
-            return false;
-        }
-
-        public virtual bool TryGetToken(out JToken value)
-        {
-            value = null;
-            return false;
-        }
+        public static explicit operator string(MockNode mock) => mock != null ? mock.ToString() : default;
 
         protected abstract string GetString();
 
@@ -179,10 +192,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public override bool TryGetIndex(int index, out IMock value)
         {
-            if (TryGetIndexFromValue(index, out value))
-                return true;
-
-            return false;
+            return TryGetIndexFromValue(index, out value);
         }
 
         protected override string GetString()
@@ -230,10 +240,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public override bool TryProperty(string propertyName, out IMock value)
         {
-            if (TryGetPropertyFromValue(propertyName, out value))
-                return true;
-
-            return false;
+            return TryGetPropertyFromValue(propertyName, out value);
         }
 
         public override bool TryGetValue(out object value)
@@ -296,6 +303,14 @@ namespace PSRule.Rules.Azure.Data.Template
         protected override string GetString()
         {
             return "Object";
+        }
+
+        public override bool TryGetToken(out JToken value)
+        {
+            if (!base.TryGetToken(out value))
+                value = new JObject();
+
+            return true;
         }
     }
 

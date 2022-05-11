@@ -24,6 +24,8 @@ What's changed since v1.15.0:
 - Bug fixes:
   - Fixed exclusion of `dataCollectionRuleAssociations` from `Azure.Resource.UseTags` by @BernieWhite.
     [#1400](https://github.com/Azure/PSRule.Rules.Azure/issues/1400)
+  - Fixed could not determine JSON object type for MockObject using CreateObject by @BernieWhite.
+    [#1411](https://github.com/Azure/PSRule.Rules.Azure/issues/1411)
 
 ## v1.15.0
 

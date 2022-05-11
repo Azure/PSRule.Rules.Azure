@@ -606,7 +606,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (value is ILazyValue weakValue)
                 {
                     value = weakValue.GetValue();
-                    Variables[variableName] = value;
+                    Variables[variableName] = ConvertType(value);
                 }
                 return true;
             }
@@ -646,6 +646,28 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 if (value.Type == ParameterType.String && !string.IsNullOrEmpty(value.GetValue() as string))
                     _Validator.ValidateParameter(this, parameterName, parameter, value.GetValue() as string);
+            }
+
+            private static object ConvertType(object value)
+            {
+                return value is JToken token ? ConvertJToken(token) : value;
+            }
+
+            private static object ConvertJToken(JToken token)
+            {
+                if (token == null || token.Type == JTokenType.Null)
+                    return null;
+
+                if (token.Type == JTokenType.String)
+                    return token.Value<string>();
+
+                if (token.Type == JTokenType.Integer)
+                    return token.Value<long>();
+
+                if (token.Type == JTokenType.Boolean)
+                    return token.Value<bool>();
+
+                return token;
             }
         }
 
