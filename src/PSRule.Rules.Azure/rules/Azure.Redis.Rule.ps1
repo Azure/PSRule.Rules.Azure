@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Use Azure Cache for Redis instances of at least Standard C1.
-Rule 'Azure.Redis.MinSKU' -Type 'Microsoft.Cache/Redis' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
+Rule 'Azure.Redis.MinSKU' -Type 'Microsoft.Cache/Redis' -With 'Azure.Redis.HasSku' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
     $Assert.In($TargetObject, 'Properties.sku.name', @('Standard', 'Premium'));
     if ($TargetObject.Properties.sku.name -eq 'Standard') {
         $Assert.GreaterOrEqual($TargetObject, 'Properties.sku.capacity', 1);
@@ -14,10 +14,12 @@ Rule 'Azure.Redis.MinSKU' -Type 'Microsoft.Cache/Redis' -Tag @{ release = 'GA'; 
 }
 
 # Synopsis: Configure `maxmemory-reserved` to reserve memory for non-cache operations.
-Rule 'Azure.Redis.MaxMemoryReserved' -Type 'Microsoft.Cache/Redis' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+Rule 'Azure.Redis.MaxMemoryReserved' -Type 'Microsoft.Cache/Redis' -With 'Azure.Redis.HasSku' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
     $sku = "$($TargetObject.Properties.sku.family)$($TargetObject.Properties.sku.capacity)";
-    $memSize = (GetCacheMemory -Sku $sku) / 1MB;
-    $Assert.GreaterOrEqual($TargetObject, 'Properties.redisConfiguration.maxmemory-reserved', $memSize * 0.1, $True);
+    if (![String]::IsNullOrEmpty($sku)) {
+        $memSize = (GetCacheMemory -Sku $sku) / 1MB;
+        $Assert.GreaterOrEqual($TargetObject, 'Properties.redisConfiguration.maxmemory-reserved', $memSize * 0.1, $True);
+    }
 }
 
 # Synopsis: Premium Redis cache should be deployed with availability zones for high availability.

@@ -26,6 +26,8 @@ What's changed since v1.15.0:
     [#1400](https://github.com/Azure/PSRule.Rules.Azure/issues/1400)
   - Fixed could not determine JSON object type for MockObject using CreateObject by @BernieWhite.
     [#1411](https://github.com/Azure/PSRule.Rules.Azure/issues/1411)
+  - Fixed cannot bind argument to parameter 'Sku' because it is an empty string by @BernieWhite.
+    [#1407](https://github.com/Azure/PSRule.Rules.Azure/issues/1407)
 
 ## v1.15.0
 
