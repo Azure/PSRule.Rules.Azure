@@ -6104,6 +6104,7 @@ You can have at most two user-assigned identities assigned to a topic or domain.
 <p>To deploy Event Grid Topics that pass this rule:</p>
 <ul>
 <li>Set the <code>identity.type</code> to <code>SystemAssigned</code> or <code>UserAssigned</code>.</li>
+<li>If <code>identity.type</code> is <code>UserAssigned</code>, reference the identity with <code>identity.userAssignedIdentities</code>.</li>
 </ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
@@ -6125,6 +6126,7 @@ You can have at most two user-assigned identities assigned to a topic or domain.
 <p>To deploy Event Grid Topics that pass this rule:</p>
 <ul>
 <li>Set the <code>identity.type</code> to <code>SystemAssigned</code> or <code>UserAssigned</code>.</li>
+<li>If <code>identity.type</code> is <code>UserAssigned</code>, reference the identity with <code>identity.userAssignedIdentities</code>.</li>
 </ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code>resource eventGrid &#39;Microsoft.EventGrid/topics@2021-06-01-preview&#39; = {
@@ -6145,7 +6147,7 @@ You can have at most two user-assigned identities assigned to a topic or domain.
 <li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication">Use identity-based authentication</a></li>
 <li><a href="https://docs.microsoft.com/azure/event-grid/enable-identity-custom-topics-domains">Assign a managed identity to an Event Grid custom topic or domain</a></li>
 <li><a href="https://docs.microsoft.com/azure/event-grid/security-authentication">Authenticate event delivery to event handlers</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics?tabs=json">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics">Azure template reference</a></li>
 </ul>
 
 <!-- Last update of source file -->
@@ -6156,7 +6158,7 @@ You can have at most two user-assigned identities assigned to a topic or domain.
   <small>
     
       Last update:
-      2021-11-15
+      2022-05-15
     
   </small>
 </div>
