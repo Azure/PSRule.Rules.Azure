@@ -1,5 +1,5 @@
 ---
-reviewed: 2021/11/13
+reviewed: 2022-05-14
 severity: Important
 pillar: Security
 category: Identity and access management
@@ -30,6 +30,7 @@ Consider configuring a managed identity for each Event Grid Topic.
 To deploy Event Grid Topics that pass this rule:
 
 - Set the `identity.type` to `SystemAssigned` or `UserAssigned`.
+- If `identity.type` is `UserAssigned`, reference the identity with `identity.userAssignedIdentities`.
 
 For example:
 
@@ -55,6 +56,7 @@ For example:
 To deploy Event Grid Topics that pass this rule:
 
 - Set the `identity.type` to `SystemAssigned` or `UserAssigned`.
+- If `identity.type` is `UserAssigned`, reference the identity with `identity.userAssignedIdentities`.
 
 For example:
 
@@ -78,4 +80,4 @@ resource eventGrid 'Microsoft.EventGrid/topics@2021-06-01-preview' = {
 - [Use identity-based authentication](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
 - [Assign a managed identity to an Event Grid custom topic or domain](https://docs.microsoft.com/azure/event-grid/enable-identity-custom-topics-domains)
 - [Authenticate event delivery to event handlers](https://docs.microsoft.com/azure/event-grid/security-authentication)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics?tabs=json)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics)
