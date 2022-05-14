@@ -22,8 +22,9 @@ spec:
   condition:
     field: Identity.Type
     in:
-    - 'SystemAssigned'
-    - 'UserAssigned'
+    - SystemAssigned
+    - UserAssigned
+    - SystemAssigned, UserAssigned
 
 ---
 # Synopsis: Use disk encryption for Azure Data Explorer (ADX) clusters.

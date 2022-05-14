@@ -111,8 +111,8 @@ Describe 'Azure.EventGrid' -Tag 'EventGrid' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'topic-001';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'topic-001', 'topic-002';
         }
 
         It 'Azure.EventGrid.ManagedIdentity' {
@@ -128,8 +128,8 @@ Describe 'Azure.EventGrid' -Tag 'EventGrid' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'topic-001';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'topic-001', 'topic-002';
         }
 
         It 'Azure.EventGrid.DisableLocalAuth' {
@@ -137,13 +137,14 @@ Describe 'Azure.EventGrid' -Tag 'EventGrid' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'topic-001';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'topic-001';
+            $ruleResult.TargetName | Should -BeIn 'topic-002';
         }
     }
 }

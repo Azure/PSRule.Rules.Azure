@@ -2,24 +2,28 @@
 # Licensed under the MIT License.
 
 #
-# Validation rules for Automation Account
+# Validation rules for API Management
 #
 
+#region Rules
+
 ---
-# Synopsis: Ensure managed identity is used for authentication.
+# Synopsis: Consider configuring a managed identity for each API Management instance.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
-  name: Azure.Automation.ManagedIdentity
+  name: Azure.APIM.ManagedIdentity
   tags:
     release: GA
-    ruleSet: 2021_12
+    ruleSet: 2020_06
 spec:
   type:
-  - Microsoft.Automation/automationAccounts
+  - Microsoft.ApiManagement/service
   condition:
     field: Identity.Type
     in:
     - SystemAssigned
     - UserAssigned
     - SystemAssigned, UserAssigned
+
+#endregion Rules
