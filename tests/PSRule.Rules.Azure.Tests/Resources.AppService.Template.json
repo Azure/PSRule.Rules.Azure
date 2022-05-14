@@ -89,7 +89,9 @@
             "false": null
         },
         "planName2": "plan-b",
-        "planName3": "plan-c"
+        "planName3": "plan-c",
+        "appName2": "app-b",
+        "appName3": "app-c"
     },
     "resources": [
         {
@@ -242,6 +244,67 @@
                 "name": "EP1",
                 "tier": "ElasticPremium"
             }
+        },
+        {
+            "apiVersion": "2018-11-01",
+            "name": "[variables('appName2')]",
+            "type": "Microsoft.Web/sites",
+            "location": "[parameters('location')]",
+            "tags": "[parameters('tags')]",
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', variables('planName2'))]"
+            ],
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "siteConfig": {
+                    "appSettings": [],
+                    "phpVersion": "OFF",
+                    "netFrameworkVersion": "OFF",
+                    "alwaysOn": "[parameters('alwaysOn')]",
+                    "minTlsVersion": "1.2",
+                    "http20Enabled": true
+                },
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', variables('planName2'))]",
+                "clientAffinityEnabled": false,
+                "httpsOnly": true
+            }
+        },
+        {
+            "apiVersion": "2018-11-01",
+            "name": "[variables('appName3')]",
+            "type": "Microsoft.Web/sites",
+            "location": "[parameters('location')]",
+            "tags": "[parameters('tags')]",
+            "identity": {
+                "type": "SystemAssigned, UserAssigned",
+                "userAssignedIdentities": {
+                    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('appName3'))]": {}
+                }
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', variables('planName2'))]"
+            ],
+            "properties": {
+                "siteConfig": {
+                    "appSettings": [],
+                    "phpVersion": "OFF",
+                    "netFrameworkVersion": "v6.0",
+                    "alwaysOn": "[parameters('alwaysOn')]",
+                    "minTlsVersion": "1.2",
+                    "http20Enabled": true
+                },
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', variables('planName2'))]",
+                "clientAffinityEnabled": false,
+                "httpsOnly": true
+            }
+        },
+        {
+            "name": "[variables('appName3')]",
+            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "apiVersion": "2018-11-30",
+            "location": "[parameters('location')]"
         }
     ],
     "outputs": {

@@ -19,6 +19,20 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.15.1:
+
+- Bug fixes:
+  - Fixed `Azure.AppService.ManagedIdentity` does not accept both system and user assigned by @BernieWhite.
+    [#1415](https://github.com/Azure/PSRule.Rules.Azure/issues/1415)
+    - This also applies to:
+      - `Azure.ADX.ManagedIdentity`
+      - `Azure.APIM.ManagedIdentity`
+      - `Azure.EventGrid.ManagedIdentity`
+      - `Azure.Automation.ManagedIdentity`
+  - Fixed Web apps with .NET 6 do not meet version constraint of `Azure.AppService.NETVersion` by @BernieWhite.
+    [#1414](https://github.com/Azure/PSRule.Rules.Azure/issues/1414)
+    - This also applies to `Azure.AppService.PHPVersion`.
+
 ## v1.15.1
 
 What's changed since v1.15.0:

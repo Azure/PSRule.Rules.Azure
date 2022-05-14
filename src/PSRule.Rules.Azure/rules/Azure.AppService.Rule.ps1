@@ -59,13 +59,13 @@ Rule 'Azure.AppService.NETVersion' -Type 'Microsoft.Web/sites', 'Microsoft.Web/s
     if ($siteConfigs.Length -eq 0) {
         return AnyOf {
             $Assert.HasDefaultValue($TargetObject, 'Properties.siteConfig.netFrameworkVersion', 'OFF')
-            $Assert.Version($TargetObject, 'Properties.siteConfig.netFrameworkVersion', '^4.0')
+            $Assert.Version($TargetObject, 'Properties.siteConfig.netFrameworkVersion', '>=4.0')
         }
     }
     foreach ($siteConfig in $siteConfigs) {
         AnyOf {
             $Assert.HasFieldValue($siteConfig, 'Properties.netFrameworkVersion', 'OFF')
-            $Assert.Version($siteConfig, 'Properties.netFrameworkVersion', '^4.0')
+            $Assert.Version($siteConfig, 'Properties.netFrameworkVersion', '>=4.0')
         }
     }
 }
@@ -78,13 +78,13 @@ Rule 'Azure.AppService.PHPVersion' -Type 'Microsoft.Web/sites', 'Microsoft.Web/s
     if ($siteConfigs.Length -eq 0) {
         return AnyOf {
             $Assert.HasDefaultValue($TargetObject, 'Properties.siteConfig.phpVersion', 'OFF')
-            $Assert.Version($TargetObject, 'Properties.siteConfig.phpVersion', '^7.0')
+            $Assert.Version($TargetObject, 'Properties.siteConfig.phpVersion', '>=7.0')
         }
     }
     foreach ($siteConfig in $siteConfigs) {
         AnyOf {
             $Assert.HasFieldValue($siteConfig, 'Properties.phpVersion', 'OFF')
-            $Assert.Version($siteConfig, 'Properties.phpVersion', '^7.0')
+            $Assert.Version($siteConfig, 'Properties.phpVersion', '>=7.0')
         }
     }
 }
@@ -109,11 +109,6 @@ Rule 'Azure.AppService.HTTP2' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/
     foreach ($siteConfig in $siteConfigs) {
         $Assert.HasFieldValue($siteConfig, 'Properties.http20Enabled', $True);
     }
-}
-
-# Synopsis: Use a Managed Identities with Azure Service apps.
-Rule 'Azure.AppService.ManagedIdentity' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
-    $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'));
 }
 
 #region Helper functions

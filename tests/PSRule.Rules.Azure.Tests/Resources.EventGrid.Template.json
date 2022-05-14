@@ -98,7 +98,8 @@
         "mapping": {
             "inputSchemaMappingType": "Json",
             "properties": "[parameters('inputSchemaMapping')]"
-        }
+        },
+        "topic2": "topic-002"
     },
     "resources": [
         {
@@ -118,8 +119,7 @@
             "properties": {
                 "inputSchema": "[parameters('inputSchema')]",
                 "inputSchemaMapping": "[if(equals(parameters('inputSchema'), 'CustomEventSchema'), variables('mapping'), json('null'))]",
-                "publicNetworkAccess": "[if(parameters('publicNetworkAccess'), 'Enabled', 'Disabled')]",
-                "disableLocalAuth": true
+                "publicNetworkAccess": "[if(parameters('publicNetworkAccess'), 'Enabled', 'Disabled')]"
             }
         },
         {
@@ -148,6 +148,36 @@
                     "eventTimeToLiveInMinutes": "[if(contains(parameters('subscriptions')[copyIndex('subscriptionCopy')], 'eventTimeToLiveInMinutes'), parameters('subscriptions')[copyIndex('subscriptionCopy')].eventTimeToLiveInMinutes, 180)]"
                 },
                 "deadLetterDestination": "[if(contains(parameters('subscriptions')[copyIndex('subscriptionCopy')], 'deadLetterDestination'), parameters('subscriptions')[copyIndex('subscriptionCopy')].deadLetterDestination, json('null'))]"
+            }
+        },
+        {
+            "name": "[variables('topic2')]",
+            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "apiVersion": "2018-11-30",
+            "location": "[parameters('location')]"
+        },
+        {
+            "comments": "Create or update and Event Grid Topic.",
+            "type": "Microsoft.EventGrid/topics",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[variables('topic2')]",
+            "location": "[parameters('location')]",
+            "tags": "[parameters('tags')]",
+            "sku": {
+                "name": "[parameters('sku')]"
+            },
+            "kind": "Azure",
+            "identity": {
+                "type": "SystemAssigned, UserAssigned",
+                "userAssignedIdentities": {
+                    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('topic2'))]": {}
+                }
+            },
+            "properties": {
+                "inputSchema": "[parameters('inputSchema')]",
+                "inputSchemaMapping": "[if(equals(parameters('inputSchema'), 'CustomEventSchema'), variables('mapping'), json('null'))]",
+                "publicNetworkAccess": "[if(parameters('publicNetworkAccess'), 'Enabled', 'Disabled')]",
+                "disableLocalAuth": true
             }
         }
     ],
