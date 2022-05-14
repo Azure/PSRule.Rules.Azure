@@ -20,7 +20,7 @@ Cognitive Search can use managed identities to authenticate to Azure resource wi
 Using Azure managed identities have the following benefits:
 
 - You don't need to store or manage credentials.
-Azure automatically generates tokens and performs rotation.
+  Azure automatically generates tokens and performs rotation.
 - You can use managed identities to authenticate to any Azure service that supports Azure AD authentication.
 - Managed identities can be used without any additional cost.
 
