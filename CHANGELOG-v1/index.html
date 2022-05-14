@@ -7549,6 +7549,28 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
   See <a href="../upgrade-notes/">upgrade notes</a> for more information.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<p>What's changed since v1.15.1:</p>
+<ul>
+<li>Bug fixes:<ul>
+<li>Fixed <code>Azure.AppService.ManagedIdentity</code> does not accept both system and user assigned by @BernieWhite.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1415">#1415</a><ul>
+<li>This also applies to:<ul>
+<li><code>Azure.ADX.ManagedIdentity</code></li>
+<li><code>Azure.APIM.ManagedIdentity</code></li>
+<li><code>Azure.EventGrid.ManagedIdentity</code></li>
+<li><code>Azure.Automation.ManagedIdentity</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Fixed Web apps with .NET 6 do not meet version constraint of <code>Azure.AppService.NETVersion</code> by @BernieWhite.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1414">#1414</a><ul>
+<li>This also applies to <code>Azure.AppService.PHPVersion</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="v1151">v1.15.1<a class="headerlink" href="#v1151" title="Permanent link">#</a></h2>
 <p>What's changed since v1.15.0:</p>
 <ul>
@@ -9957,7 +9979,7 @@ See <a href="../troubleshooting/">troubleshooting guide</a> for a workaround to 
   <small>
     
       Last update:
-      2022-05-12
+      2022-05-14
     
   </small>
 </div>
