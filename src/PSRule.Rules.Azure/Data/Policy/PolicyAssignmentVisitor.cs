@@ -349,6 +349,14 @@ namespace PSRule.Rules.Azure.Data.Policy
                     value);
             }
 
+            private static int OrderPropertySelector(JProperty property)
+            {
+                return property.Name.Equals(PROPERTY_FIELD, StringComparison.OrdinalIgnoreCase)
+                    || property.Name.Equals(PROPERTY_COUNT, StringComparison.OrdinalIgnoreCase)
+                    ? 0
+                    : 1;
+            }
+
             private void ExpandPolicyRule(JToken policyRule)
             {
                 if (policyRule.Type == JTokenType.Object)
@@ -356,7 +364,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                     var hasFieldType = false;
                     var hasFieldCount = false;
 
-                    foreach (var child in policyRule.Children<JProperty>().ToList())
+                    foreach (var child in policyRule.Children<JProperty>().OrderBy(OrderPropertySelector))
                     {
                         // Expand field aliases
                         if (child.Name.Equals(PROPERTY_FIELD, StringComparison.OrdinalIgnoreCase))
