@@ -16,7 +16,9 @@ namespace PSRule.Rules.Azure
 
         internal static int CountCharacterOccurrences(this string str, char chr)
         {
-            return str.Count(c => c == chr);
+            return !string.IsNullOrEmpty(str)
+                ? str.Count(c => c == chr)
+                : 0;
         }
 
         internal static bool IsExpressionString(this string str)

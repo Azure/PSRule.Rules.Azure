@@ -680,6 +680,31 @@ Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssi
             Index          = 2
             AssignmentFile = (Join-Path -Path $here -ChildPath 'test3.assignment.json')
         }
+        @{
+            Name           = 'test4'
+            Index          = 3
+            AssignmentFile = (Join-Path -Path $here -ChildPath 'test4.assignment.json')
+        },
+        @{
+            Name           = 'test5'
+            Index          = 4
+            AssignmentFile = (Join-Path -Path $here -ChildPath 'test5.assignment.json')
+        },
+        @{
+            Name           = 'test6'
+            Index          = 5
+            AssignmentFile = (Join-Path -Path $here -ChildPath 'test6.assignment.json')
+        },
+        @{
+            Name           = 'test7'
+            Index          = 6
+            AssignmentFile = (Join-Path -Path $here -ChildPath 'test7.assignment.json')
+        },
+        @{
+            Name           = 'test8'
+            Index          = 7
+            AssignmentFile = (Join-Path -Path $here -ChildPath 'test8.assignment.json')
+        }
     ) {
         param($Name, $Index, $AssignmentFile)
         $result = @(Export-AzPolicyAssignmentRuleData -Name $Name -AssignmentFile $AssignmentFile -OutputPath $outputPath);

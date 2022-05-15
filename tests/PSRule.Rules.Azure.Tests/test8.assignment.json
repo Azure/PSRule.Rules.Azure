@@ -13,7 +13,7 @@
     "Properties": {
       "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
       "NotScopes": [],
-      "DisplayName": "DisableLBRuleSNAT",
+      "DisplayName": "DenyPortsNSG",
       "Description": null,
       "Metadata": {
         "assignedBy": "Armaan Dhaliwal-McLeod",
@@ -36,8 +36,8 @@
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "Properties": {
-          "Description": "Enforce disabling of SNAT on load balancing rules",
-          "DisplayName": "DisableLBRuleSNAT",
+          "Description": "Deny common ports on NSG rules",
+          "DisplayName": "DenyPortsNSG",
           "Metadata": {
             "createdBy": "15bd0bad-d884-4479-9860-a3afffae4132",
             "createdOn": "2022-05-09T11:35:25.9960771Z",
@@ -48,20 +48,66 @@
           "Parameters": {},
           "PolicyRule": {
             "if": {
-              "allOf": [
+              "anyOf": [
                 {
-                  "equals": "Microsoft.Network/loadBalancers",
-                  "field": "type"
+                  "allOf": [
+                    {
+                      "field": "type",
+                      "equals": "Microsoft.Network/networkSecurityGroups/securityRules"
+                    },
+                    {
+                      "not": {
+                        "field": "Microsoft.Network/networkSecurityGroups/securityRules/sourceAddressPrefix",
+                        "notEquals": "*"
+                      }
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "field": "Microsoft.Network/networkSecurityGroups/securityRules/destinationPortRange",
+                          "equals": "22"
+                        },
+                        {
+                          "field": "Microsoft.Network/networkSecurityGroups/securityRules/destinationPortRange",
+                          "equals": "3389"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
-                  "count": {
-                    "field": "Microsoft.Network/loadBalancers/loadBalancingRules[*]",
-                    "where": {
-                      "field": "Microsoft.Network/loadBalancers/loadBalancingRules[*].disableOutboundSnat",
-                      "equals": false
+                  "allOf": [
+                    {
+                      "field": "type",
+                      "equals": "Microsoft.Network/networkSecurityGroups"
+                    },
+                    {
+                      "count": {
+                        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+                        "where": {
+                          "allOf": [
+                            {
+                              "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].sourceAddressPrefix",
+                              "equals": "*"
+                            },
+                            {
+                              "anyOf": [
+                                {
+                                  "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                                  "equals": "22"
+                                },
+                                {
+                                  "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                                  "equals": "3389"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "greater": 0
                     }
-                  },
-                  "greaterOrEquals": 1
+                  ]
                 }
               ]
             },

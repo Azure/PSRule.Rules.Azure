@@ -15,6 +15,9 @@
     "[yaml]": {
         "editor.tabSize": 2
     },
+    "[json]": {
+        "editor.formatOnSave": true
+    },
     "[markdown]": {
         "editor.tabSize": 2
     },
