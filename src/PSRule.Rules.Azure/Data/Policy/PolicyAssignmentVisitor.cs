@@ -278,16 +278,20 @@ namespace PSRule.Rules.Azure.Data.Policy
                         .Children<JProperty>()
                         .FirstOrDefault(prop => !prop.Name.Equals(PROPERTY_FIELD, StringComparison.OrdinalIgnoreCase));
 
-                    if (comparisonExpression != null)
+                    if (comparisonExpression != null && !string.IsNullOrEmpty(subProperty))
                     {
                         var objectPathComparisonOperator = ExpressionToObjectPathComparisonOperator(comparisonExpression.Name);
+
+                        var comparisonValue = comparisonExpression.Value;
+                        if (comparisonValue.Type == JTokenType.String)
+                            comparisonValue = TemplateVisitor.ExpandPropertyToken(this, comparisonValue);
 
                         if (objectPathComparisonOperator != null)
                         {
                             return FormatObjectPathArrayFilter(
                                 subProperty,
                                 objectPathComparisonOperator,
-                                comparisonExpression.Value);
+                                comparisonValue);
                         }
                     }
                 }
