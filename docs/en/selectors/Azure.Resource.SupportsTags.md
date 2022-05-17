@@ -12,7 +12,7 @@ Use this selector to filter rules to only run against resources that support tag
 
 ### Configure with YAML-based rules
 
-- Use the `with` property to set `Azure.Resource.SupportsTags`.
+- Use the `with` property to set `PSRule.Rules.Azure\Azure.Resource.SupportsTags`.
 
 ```yaml
 ---
@@ -23,14 +23,14 @@ metadata:
   name: Local.MyRule
 spec:
   with:
-  - Azure.Resource.SupportsTags
+  - PSRule.Rules.Azure\Azure.Resource.SupportsTags
   condition:
     # Rule logic goes here
 ```
 
 ### Configure with JSON-based rules
 
-- Use the `with` property to set `Azure.Resource.SupportsTags`.
+- Use the `with` property to set `PSRule.Rules.Azure\Azure.Resource.SupportsTags`.
 
 ```json
 {
@@ -42,7 +42,7 @@ spec:
     },
     "spec": {
         "with": [
-            "Azure.Resource.SupportsTags"
+            "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
         ],
         "condition": {
             // Rule logic goes here
@@ -53,11 +53,11 @@ spec:
 
 ### Configure with PowerShell-based rules
 
-- Use the `-With` parameter to set `Azure.Resource.SupportsTags`.
+- Use the `-With` parameter to set `PSRule.Rules.Azure\Azure.Resource.SupportsTags`.
 
 ```powershell
 # Synopsis: An example rule.
-Rule 'Local.MyRule' -With 'Azure.Resource.SupportsTags' {
+Rule 'Local.MyRule' -With 'PSRule.Rules.Azure\Azure.Resource.SupportsTags' {
   # Rule logic goes here
 }
 ```
