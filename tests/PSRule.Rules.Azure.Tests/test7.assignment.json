@@ -45,7 +45,16 @@
             "updatedOn": null
           },
           "Mode": "All",
-          "Parameters": {},
+          "Parameters": {
+            "portNumber": {
+              "type": "String",
+              "metadata": {
+                "displayName": "Port Number",
+                "description": "The port number which to block inbound access"
+              },
+              "defaultValue": "3389"
+            }
+          },
           "PolicyRule": {
             "if": {
               "allOf": [
@@ -68,7 +77,7 @@
                         },
                         {
                           "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
-                          "equals": "3389"
+                          "equals": "[parameters('portNumber')]"
                         }
                       ]
                     }
