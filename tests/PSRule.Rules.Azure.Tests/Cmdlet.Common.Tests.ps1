@@ -13,7 +13,8 @@ BeforeAll {
     $ErrorActionPreference = 'Stop';
     Set-StrictMode -Version latest;
 
-    if ($Env:SYSTEM_DEBUG -eq 'true') {
+    if ($Env:SYSTEM_DEBUG -eq 'true')
+    {
         $VerbosePreference = 'Continue';
     }
 
@@ -30,8 +31,10 @@ BeforeAll {
 
     #region Mocks
 
-    function MockContext {
-        process {
+    function MockContext
+    {
+        process
+        {
             return @(
                 (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
                     [PSCustomObject]@{
@@ -73,8 +76,10 @@ BeforeAll {
         }
     }
 
-    function MockSingleSubscription {
-        process {
+    function MockSingleSubscription
+    {
+        process
+        {
             return @(
                 (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
                     [PSCustomObject]@{
@@ -704,6 +709,11 @@ Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssi
             Name           = 'test8'
             Index          = 7
             AssignmentFile = (Join-Path -Path $here -ChildPath 'test8.assignment.json')
+        },
+        @{
+            Name           = 'test9'
+            Index          = 8
+            AssignmentFile = (Join-Path -Path $here -ChildPath 'test9.assignment.json')
         }
     ) {
         param($Name, $Index, $AssignmentFile)

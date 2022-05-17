@@ -497,5 +497,50 @@
                 ]
             }
         }
+    },
+    {
+        // Synopsis: Prevent subnets without NSG
+        "apiVersion": "github.com/microsoft/PSRule/v1",
+        "kind": "Rule",
+        "metadata": {
+            "name": "PreventSubnetsWithoutNSG"
+        },
+        "spec": {
+            "condition": {
+                "anyOf": [
+                    {
+                        "allOf": [
+                            {
+                                "equals": "Microsoft.Network/virtualNetworks/subnets",
+                                "field": "type"
+                            },
+                            {
+                                "exists": false,
+                                "field": "properties.routeTable.id"
+                            },
+                            {
+                                "field": "name",
+                                "notIn": [
+                                    "AzureFirewallSubnet",
+                                    "AzureFirewallManagementSubnet"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "allOf": [
+                            {
+                                "equals": "Microsoft.Network/virtualNetworks",
+                                "field": "type"
+                            },
+                            {
+                                "notEquals": 0,
+                                "field": "properties.subnets[?@.properties.routeTable.id == null && (@.name != 'AzureFirewallManagementSubnet' && @.name != 'AzureFirewallSubnet')]"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
     }
 ]

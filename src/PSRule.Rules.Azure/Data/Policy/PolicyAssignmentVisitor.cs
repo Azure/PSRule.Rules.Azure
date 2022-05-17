@@ -37,6 +37,9 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string FIELD_GREATEROREQUALS = "greaterOrEquals";
         private const string FIELD_LESS = "less";
         private const string FIELD_LESSOREQUALS = "lessOrEquals";
+        private const string FIELD_IN = "in";
+        private const string FIELD_NOTIN = "notIn";
+        private const string FIELD_EXISTS = "exists";
         private const string PROPERTY_DISPLAYNAME = "displayName";
         private const string PROPERTY_DESCRIPTION = "description";
         private const string PROPERTY_DEPLOYMENT = "deployment";
@@ -46,6 +49,12 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string COLLECTION_ALIAS = "[*]";
         private const string AND_CLAUSE = "&&";
         private const string OR_CLAUSE = "||";
+        private const string EQUALITY_OPERATOR = "==";
+        private const string INEQUALITY_OPERATOR = "!=";
+        private const string LESS_OPERATOR = "<";
+        private const string LESSOREQUAL_OPERATOR = "<=";
+        private const string GREATER_OPERATOR = ">";
+        private const string GREATEROREQUAL_OPERATOR = ">=";
         private const char SLASH = '/';
         private const char GROUP_OPEN = '(';
         private const char GROUP_CLOSE = ')';
@@ -234,12 +243,12 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             private static string ExpressionToObjectPathComparisonOperator(string expression) => expression switch
             {
-                FIELD_EQUALS => "==",
-                FIELD_NOTEQUALS => "!=",
-                FIELD_GREATER => ">",
-                FIELD_GREATEROREQUALS => ">=",
-                FIELD_LESS => "<",
-                FIELD_LESSOREQUALS => "<=",
+                FIELD_EQUALS => EQUALITY_OPERATOR,
+                FIELD_NOTEQUALS => INEQUALITY_OPERATOR,
+                FIELD_GREATER => GREATER_OPERATOR,
+                FIELD_GREATEROREQUALS => GREATEROREQUAL_OPERATOR,
+                FIELD_LESS => LESS_OPERATOR,
+                FIELD_LESSOREQUALS => LESSOREQUAL_OPERATOR,
                 _ => null
             };
 
@@ -266,12 +275,14 @@ namespace PSRule.Rules.Azure.Data.Policy
                         subProperty = $".{PROPERTY_TYPE}";
                         SetPolicyRuleType(fieldType);
                     }
-
-                    var fieldAliasPath = ResolvePolicyAliasPath(fieldProperty);
-                    if (fieldAliasPath != null)
+                    else
                     {
-                        var splitAliasPath = fieldAliasPath.Split(new string[] { COLLECTION_ALIAS }, StringSplitOptions.None);
-                        subProperty = splitAliasPath[1];
+                        var fieldAliasPath = ResolvePolicyAliasPath(fieldProperty);
+                        if (fieldAliasPath != null)
+                        {
+                            var splitAliasPath = fieldAliasPath.Split(new string[] { COLLECTION_ALIAS }, StringSplitOptions.None);
+                            subProperty = splitAliasPath[1];
+                        }
                     }
 
                     var comparisonExpression = obj
@@ -292,6 +303,41 @@ namespace PSRule.Rules.Azure.Data.Policy
                                 subProperty,
                                 objectPathComparisonOperator,
                                 comparisonValue);
+                        }
+                        else
+                        {
+                            // Convert in expression
+                            if (comparisonExpression.Name.Equals(FIELD_IN, StringComparison.OrdinalIgnoreCase)
+                                && comparisonValue.Type == JTokenType.Array)
+                            {
+                                var filters = comparisonValue
+                                    .ToObject<JArray>()
+                                    .Select(val => FormatObjectPathArrayFilter(subProperty, "==", val));
+
+                                return string.Concat(GROUP_OPEN, string.Join($" {OR_CLAUSE} ", filters), GROUP_CLOSE);
+                            }
+
+                            // Convert notIn expression
+                            else if (comparisonExpression.Name.Equals(FIELD_NOTIN, StringComparison.OrdinalIgnoreCase)
+                                && comparisonValue.Type == JTokenType.Array)
+                            {
+                                var filters = comparisonValue
+                                    .ToObject<JArray>()
+                                    .Select(val => FormatObjectPathArrayFilter(subProperty, "!=", val));
+
+                                return string.Concat(GROUP_OPEN, string.Join($" {AND_CLAUSE} ", filters), GROUP_CLOSE);
+                            }
+
+                            // Convert exists expression
+                            else if (comparisonExpression.Name.Equals(FIELD_EXISTS, StringComparison.OrdinalIgnoreCase))
+                            {
+                                var existsValue = comparisonValue.Value<bool>();
+
+                                return FormatObjectPathArrayFilter(
+                                    subProperty,
+                                    existsValue ? INEQUALITY_OPERATOR : EQUALITY_OPERATOR,
+                                    null);
+                            }
                         }
                     }
                 }
@@ -340,14 +386,15 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             private static string FormatObjectPathArrayFilter(string subProperty, string comparisonOperator, JToken value)
             {
-                // Surround right hand side with quotes if string
-                var normalizedFormattedExpression = value.Type == JTokenType.String
-                    ? "@{0} {1} '{2}'"
-                    : "@{0} {1} {2}";
-
-                return string.Format(
+                return value == null
+                    ? string.Format(
+                        Thread.CurrentThread.CurrentCulture,
+                        "@{0} {1} null",
+                        subProperty,
+                        comparisonOperator)
+                    : string.Format(
                     Thread.CurrentThread.CurrentCulture,
-                    normalizedFormattedExpression,
+                    value.Type == JTokenType.String ? "@{0} {1} '{2}'" : "@{0} {1} {2}",
                     subProperty,
                     comparisonOperator,
                     value);
@@ -458,6 +505,13 @@ namespace PSRule.Rules.Azure.Data.Policy
                                     }
                                 }
                             }
+                        }
+
+                        // Convert string booleans for exists expression
+                        else if (child.Name.Equals(FIELD_EXISTS, StringComparison.OrdinalIgnoreCase)
+                            && child.Value.Type == JTokenType.String)
+                        {
+                            policyRule[child.Name] = child.Value.Value<bool>();
                         }
 
                         // Expand string expressions
