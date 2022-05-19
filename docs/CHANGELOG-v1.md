@@ -19,6 +19,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.15.2:
+
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk to v17.2.0.
+    [#1410](https://github.com/Azure/PSRule.Rules.Azure/pull/1410)
+
 ## v1.15.2
 
 What's changed since v1.15.1:
