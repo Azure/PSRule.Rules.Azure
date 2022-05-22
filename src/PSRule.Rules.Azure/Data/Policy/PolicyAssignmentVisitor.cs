@@ -312,7 +312,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                             {
                                 var filters = comparisonValue
                                     .ToObject<JArray>()
-                                    .Select(val => FormatObjectPathArrayFilter(subProperty, "==", val));
+                                    .Select(val => FormatObjectPathArrayFilter(subProperty, EQUALITY_OPERATOR, val));
 
                                 return string.Concat(GROUP_OPEN, string.Join($" {OR_CLAUSE} ", filters), GROUP_CLOSE);
                             }
@@ -323,7 +323,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                             {
                                 var filters = comparisonValue
                                     .ToObject<JArray>()
-                                    .Select(val => FormatObjectPathArrayFilter(subProperty, "!=", val));
+                                    .Select(val => FormatObjectPathArrayFilter(subProperty, INEQUALITY_OPERATOR, val));
 
                                 return string.Concat(GROUP_OPEN, string.Join($" {AND_CLAUSE} ", filters), GROUP_CLOSE);
                             }

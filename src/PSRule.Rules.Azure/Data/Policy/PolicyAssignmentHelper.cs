@@ -60,13 +60,9 @@ namespace PSRule.Rules.Azure.Data.Policy
 
         private static JArray ReadFileArray(string path)
         {
-            using (var stream = new StreamReader(path))
-            {
-                using (var reader = new CamelCasePropertyNameJsonTextReader(stream))
-                {
-                    return JArray.Load(reader);
-                }
-            }
+            using var stream = new StreamReader(path);
+            using var reader = new CamelCasePropertyNameJsonTextReader(stream);
+            return JArray.Load(reader);
         }
 
         private sealed class CamelCasePropertyNameJsonTextReader : JsonTextReader
