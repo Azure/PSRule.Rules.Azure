@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using System.Linq;
 
 namespace PSRule.Rules.Azure
@@ -19,6 +20,14 @@ namespace PSRule.Rules.Azure
             return !string.IsNullOrEmpty(str)
                 ? str.Count(c => c == chr)
                 : 0;
+        }
+
+        internal static string[] SplitByLastSubstring(this string str, string substring)
+        {
+            var lastSubstringIndex = str.LastIndexOf(substring, StringComparison.OrdinalIgnoreCase);
+            var firstPart = str.Substring(0, lastSubstringIndex);
+            var secondPart = str.Substring(lastSubstringIndex + substring.Length);
+            return new string[] { firstPart, secondPart };
         }
 
         internal static bool IsExpressionString(this string str)

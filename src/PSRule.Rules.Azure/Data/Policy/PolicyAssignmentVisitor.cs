@@ -280,7 +280,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                         var fieldAliasPath = ResolvePolicyAliasPath(fieldProperty);
                         if (fieldAliasPath != null)
                         {
-                            var splitAliasPath = fieldAliasPath.Split(new string[] { COLLECTION_ALIAS }, StringSplitOptions.None);
+                            var splitAliasPath = fieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
                             subProperty = splitAliasPath[1];
                         }
                     }
@@ -289,7 +289,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                         .Children<JProperty>()
                         .FirstOrDefault(prop => !prop.Name.Equals(PROPERTY_FIELD, StringComparison.OrdinalIgnoreCase));
 
-                    if (comparisonExpression != null && !string.IsNullOrEmpty(subProperty))
+                    if (comparisonExpression != null)
                     {
                         var objectPathComparisonOperator = ExpressionToObjectPathComparisonOperator(comparisonExpression.Name);
 
@@ -470,7 +470,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                                             var fieldFilter = GetFieldObjectPathArrayFilter(whereExpression);
                                             if (fieldFilter != null)
                                             {
-                                                var splitAliasPath = outerFieldAliasPath.Split(new string[] { COLLECTION_ALIAS }, StringSplitOptions.None);
+                                                var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
                                                 policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], fieldFilter);
                                                 policyRule[PROPERTY_COUNT].Parent.Remove();
                                             }
@@ -478,7 +478,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                                             // nested allOf in where expression
                                             else if (whereExpression.TryArrayProperty(PROPERTY_ALL_OF, out var allofExpression))
                                             {
-                                                var splitAliasPath = outerFieldAliasPath.Split(new string[] { COLLECTION_ALIAS }, StringSplitOptions.None);
+                                                var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
                                                 var filter = new StringBuilder();
                                                 ExpressionToObjectPathArrayFilter(allofExpression, AND_CLAUSE, filter);
                                                 policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], filter.ToString());
@@ -488,7 +488,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                                             // nested anyOf in where expression
                                             else if (whereExpression.TryArrayProperty(PROPERTY_ANY_OF, out var anyOfExpression))
                                             {
-                                                var splitAliasPath = outerFieldAliasPath.Split(new string[] { COLLECTION_ALIAS }, StringSplitOptions.None);
+                                                var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
                                                 var filter = new StringBuilder();
                                                 ExpressionToObjectPathArrayFilter(anyOfExpression, OR_CLAUSE, filter);
                                                 policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], filter.ToString());

@@ -16,7 +16,8 @@
         "editor.tabSize": 2
     },
     "[json]": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2
     },
     "[markdown]": {
         "editor.tabSize": 2

@@ -542,5 +542,31 @@
                 ]
             }
         }
+    },
+    {
+        // Synopsis: Prevent private endpoint being created in specific subnet
+        "apiVersion": "github.com/microsoft/PSRule/v1",
+        "kind": "Rule",
+        "metadata": {
+            "name": "DenyPrivateEndpointSpecificSubnet"
+        },
+        "spec": {
+            "condition": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Network/privateEndpoints"
+                    },
+                    {
+                        "field": "properties.subnet.id",
+                        "notContains": "pls"
+                    },
+                    {
+                        "greaterOrEquals": 1,
+                        "field": "properties.privateLinkServiceConnections[*].properties.groupIds[?(@ != 'blob' && @ != 'sqlServer')]"
+                    }
+                ]
+            }
+        }
     }
 ]
