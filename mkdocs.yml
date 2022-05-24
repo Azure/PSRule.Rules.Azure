@@ -75,6 +75,7 @@ nav:
     - Configuring expansion: setup/configuring-expansion.md
     - Setup Bicep: setup/setup-bicep.md
     - Setup Azure Monitor logs: setup/setup-azure-monitor-logs.md
+    - Integrations: integrations.md
   - Reference:
     - By pillar: en/rules/module.md
     - By resource: en/rules/resource.md
