@@ -87,7 +87,7 @@ Rule 'Azure.Template.UseVariables' -Type '.json' -If { (IsTemplateFile) } -Tag @
         return $Assert.Pass();
     }
     foreach ($variableName in $variableNames) {
-        $Assert.Match($jsonContent, '.', "\`"\[[\s\S]*variables\(\s{0,}'$($variableName)'\s{0,}\)[\s\S]*\]\`"").
+        $Assert.Match($jsonContent, '.', "\`"\[[\s\S]*variables\(\s{0,}'$([System.Text.RegularExpressions.Regex]::Escape($variableName))'\s{0,}\)[\s\S]*\]\`"").
             Reason($LocalizedData.VariableNotFound, $variableName);
     }
 }
