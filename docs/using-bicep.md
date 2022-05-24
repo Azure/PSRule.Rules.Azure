@@ -114,6 +114,8 @@ To do this configure `ps-rule.yaml` with the `input.pathIgnore` option.
 
     input:
       pathIgnore:
+      # Exclude bicepconfig.json
+      - 'bicepconfig.json'
       # Exclude module files
       - 'modules/**/*.bicep'
       # Include test files from modules
@@ -123,11 +125,70 @@ To do this configure `ps-rule.yaml` with the `input.pathIgnore` option.
 !!! Note
     In this example, Bicep files such as `deploy.bicep` in other directories will be expanded.
 
+### Restoring modules from a private registry
+
+Bicep modules can be stored in a private registry.
+Storing modules in a private registry gives you a central location to reference modules across your organization.
+
+To test Bicep deployments which uses modules stored in a private registry, these modules must be restored.
+The restore process automatically occurs when PSRule is run, however must be authenticated.
+
+To authenticate to a private registry configure `bicepconfig.json` by setting [credentialPrecedence][3].
+This setting determines the order to find a credential to use when authenticating to the registry.
+
+You may need to [configure credentials][4] to access the private registry from a CI pipeline.
+
+=== "GitHub Actions"
+
+    Configure the `microsoft/ps-rule` action with Azure environment variables.
+
+    ```yaml
+    - name: Analyze Azure template files
+      uses: microsoft/ps-rule@v2.1.0
+      with:
+        modules: PSRule.Rules.Azure,PSRule.Monitor
+        conventions: Monitor.LogAnalytics.Import
+      env:
+        # Define environment variables using GitHub encrypted secrets
+        AZURE_CLIENT_ID: ${{ secrets.BICEP_REGISTRY_CLIENTID }}
+        AZURE_CLIENT_SECRET: ${{ secrets.BICEP_REGISTRY_CLIENTSECRET }}
+        AZURE_TENANT_ID: ${{ secrets.BICEP_REGISTRY_TENANTID }}
+    ```
+
+    !!! Important
+        Environment variables can be configured in the workflow or from a secret.
+        To keep `BICEP_REGISTRY_CLIENTSECRET` secure, use an [encrypted secret][5].
+
+=== "Azure Pipelines"
+
+    Configure the `ps-rule-assert` task with Azure environment variables.
+
+    ```yaml
+    - task: ps-rule-assert@2
+      displayName: Analyze Azure template files
+      inputs:
+        modules: 'PSRule.Rules.Azure'
+      env:
+        # Define environment variables within Azure Pipelines
+        AZURE_CLIENT_ID: $(BICEPREGISTRYCLIENTID)
+        AZURE_CLIENT_SECRET: $(BICEPREGISTRYCLIENTSECRET)
+        AZURE_TENANT_ID: $(BICEPREGISTRYTENANTID)
+    ```
+
+  !!! Important
+      Variables can be configured in YAML, on the pipeline, or referenced from a defined variable group.
+      To keep `BICEPREGISTRYCLIENTSECRET` secure, use a [variable group][6] linked to an Azure Key Vault.
+
+  [3]: https://docs.microsoft.com/azure/azure-resource-manager/bicep/bicep-config#credential-precedence
+  [4]: https://docs.microsoft.com/dotnet/api/azure.identity.environmentcredential
+  [5]: https://docs.github.com/actions/reference/encrypted-secrets
+  [6]: https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups
+
 ### Using parameter files
 
 When using Bicep, you don't need to use parameter files.
 You can call `.bicep` files directly from other `.bicep` files with modules by using the `module` keyword.
-Alternatively, you can choose to expand and test a Bicep module from JSON parameter files [by metadata][3].
+Alternatively, you can choose to expand and test a Bicep module from JSON parameter files [by metadata][7].
 
 When using parameter files exclusively,
 the `AZURE_BICEP_FILE_EXPANSION` configuration option does not need to be set.
@@ -143,6 +204,8 @@ This option will discover Bicep files from parameter metadata.
 
     input:
       pathIgnore:
+      # Exclude bicepconfig.json
+      - 'bicepconfig.json'
       # Exclude module files
       - 'modules/**/*.bicep'
     ```
@@ -169,10 +232,7 @@ This option will discover Bicep files from parameter metadata.
     }
     ```
 
-  [3]: using-templates.md#bymetadata
+  [7]: using-templates.md#bymetadata
 
 *[WAF]: Well-Architected Framework
 *[ARM]: Azure Resource Manager
-
-[feedback]: https://github.com/Azure/PSRule.Rules.Azure/discussions
-[issues]: https://github.com/Azure/PSRule.Rules.Azure/issues

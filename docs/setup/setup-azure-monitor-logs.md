@@ -68,7 +68,7 @@ Import analysis results into Azure Monitor with GitHub Actions by:
 
     ```yaml
     - name: Analyze Azure template files
-      uses: Microsoft/ps-rule@v1.12.0
+      uses: microsoft/ps-rule@v2.1.0
       with:
         modules: PSRule.Rules.Azure,PSRule.Monitor
         conventions: Monitor.LogAnalytics.Import
@@ -84,7 +84,7 @@ Import analysis results into Azure Monitor with GitHub Actions by:
 
     ```yaml
     - name: Analyze Azure template files
-      uses: Microsoft/ps-rule@v1.12.0
+      uses: microsoft/ps-rule@v2.1.0
       with:
         modules: PSRule.Rules.Azure,PSRule.Monitor
         conventions: Monitor.LogAnalytics.Import
@@ -118,10 +118,9 @@ Import analysis results into Azure Monitor with Azure Pipelines by:
     Install the latest stable module versions.
 
     ```yaml
-    - task: ps-rule-assert@1
+    - task: ps-rule-assert@2
       displayName: Analyze Azure template files
       inputs:
-        inputType: repository
         modules: PSRule.Rules.Azure,PSRule.Monitor
         conventions: Monitor.LogAnalytics.Import
       env:
@@ -135,22 +134,21 @@ Import analysis results into Azure Monitor with Azure Pipelines by:
     Install the latest stable or pre-release module versions.
 
     ```yaml
-    - task: ps-rule-install@1
+    - task: ps-rule-install@2
       displayName: Install PSRule for Azure (pre-release)
       inputs:
         module: PSRule.Rules.Azure
         prerelease: true
 
-    - task: ps-rule-install@1
+    - task: ps-rule-install@2
       displayName: Install PSRule for Azure Monitor (pre-release)
       inputs:
         module: PSRule.Monitor
         prerelease: true
 
-    - task: ps-rule-assert@1
+    - task: ps-rule-assert@2
       displayName: Analyze Azure template files
       inputs:
-        inputType: repository
         modules: PSRule.Rules.Azure,PSRule.Monitor
         conventions: Monitor.LogAnalytics.Import
       env:
