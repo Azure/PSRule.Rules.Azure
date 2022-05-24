@@ -28,11 +28,11 @@ Within the root directory of your infrastructure as code repository:
         runs-on: ubuntu-latest
         steps:
         - name: Checkout
-          uses: actions/checkout@v2.4.0
+          uses: actions/checkout@v3
 
         # Analyze Azure resources using PSRule for Azure
         - name: Analyze Azure template files
-          uses: Microsoft/ps-rule@v1.12.0
+          uses: microsoft/ps-rule@v2.1.0
           with:
             modules: 'PSRule.Rules.Azure'
     ```
@@ -45,10 +45,9 @@ Within the root directory of your infrastructure as code repository:
     steps:
 
     # Analyze Azure resources using PSRule for Azure
-    - task: ps-rule-assert@1
+    - task: ps-rule-assert@2
       displayName: Analyze Azure template files
       inputs:
-        inputType: repository
         modules: 'PSRule.Rules.Azure'
     ```
 
