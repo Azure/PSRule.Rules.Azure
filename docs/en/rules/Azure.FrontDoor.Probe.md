@@ -44,8 +44,8 @@ Set-AzFrontDoor -Name '<front_door>' -ResourceGroupName '<resource_group>' -Heal
 
 ## LINKS
 
+- [Creating good health probes](https://docs.microsoft.com/azure/architecture/framework/resiliency/monitor-model#create-good-health-probes)
 - [Health probes](https://docs.microsoft.com/azure/frontdoor/front-door-health-probes)
 - [How Front Door determines backend health](https://docs.microsoft.com/azure/frontdoor/front-door-health-probes#how-front-door-determines-backend-health)
-- [Creating good health probes](https://docs.microsoft.com/azure/architecture/framework/resiliency/monitoring#creating-good-health-probes)
 - [Health Endpoint Monitoring pattern](https://docs.microsoft.com/azure/architecture/patterns/health-endpoint-monitoring)
 - [Azure resource template](https://docs.microsoft.com/azure/templates/microsoft.network/frontdoors#HealthProbeSettingsProperties)

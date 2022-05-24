@@ -111,6 +111,55 @@ Rule 'Azure.AppService.HTTP2' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/
     }
 }
 
+#region Web Apps
+
+# Synopsis: Configure and enable instance health probes.
+Rule 'Azure.AppService.WebProbe' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; } {
+    $siteConfigs = @(GetWebSiteConfig | Where-Object {
+        $Assert.HasField($_, 'Properties.healthCheckPath').Result
+    });
+    if ($siteConfigs.Length -eq 0) {
+        return $Assert.HasFieldValue($TargetObject, 'Properties.siteConfig.healthCheckPath', $True);
+    }
+    foreach ($siteConfig in $siteConfigs) {
+        $Assert.HasFieldValue($siteConfig, 'Properties.healthCheckPath');
+    }
+}
+
+# Synopsis: Web apps should use a dedicated health check path.
+Rule 'Azure.AppService.WebProbePath' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; } {
+    $siteConfigs = @(GetWebSiteConfig | Where-Object {
+        $Assert.HasField($_, 'Properties.healthCheckPath').Result
+    });
+    if ($siteConfigs.Length -eq 0) {
+        return $Assert.Greater($TargetObject, 'Properties.siteConfig.healthCheckPath', 1);
+    }
+    foreach ($siteConfig in $siteConfigs) {
+        $Assert.Greater($siteConfig, 'Properties.healthCheckPath', 1);
+    }
+}
+
+# Synopsis: Web apps should disable insecure FTP and configure SFTP when required.
+Rule 'Azure.AppService.WebSecureFtp' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; } {
+    $siteConfigs = @(GetWebSiteConfig | Where-Object {
+        $Assert.HasField($_, 'Properties.ftpsState').Result
+    });
+    if ($siteConfigs.Length -eq 0) {
+        return $Assert.In($TargetObject, 'Properties.siteConfig.ftpsState', @(
+            'FtpsOnly'
+            'Disabled'
+        ));
+    }
+    foreach ($siteConfig in $siteConfigs) {
+        $Assert.In($siteConfig, 'Properties.ftpsState', @(
+            'FtpsOnly'
+            'Disabled'
+        ));
+    }
+}
+
+#endregion Web Apps
+
 #region Helper functions
 
 function global:IsConsumptionPlan {
@@ -141,7 +190,7 @@ function global:GetWebSiteConfig {
     param ()
     process {
         $siteConfigs = @(GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config' | Where-Object {
-            $_.Name -notlike "*/*" -or $_.Name -like "*/web"
+            $_.Name -notlike "*/*" -or $_.Name -like "*/web" -or $_.Id -like "*/web"
         })
         $siteConfigs;
     }
