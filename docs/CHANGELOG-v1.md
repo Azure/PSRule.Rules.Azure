@@ -21,6 +21,12 @@ See [troubleshooting guide] for a workaround to this issue.
 
 What's changed since v1.15.2:
 
+- New rules:
+  - App Service:
+    - Check web apps have insecure FTP disabled by @BernieWhite.
+      [#1436](https://github.com/Azure/PSRule.Rules.Azure/issues/1436)
+    - Check web apps use a dedicated health probe by @BernieWhite.
+      [#1437](https://github.com/Azure/PSRule.Rules.Azure/issues/1437)
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.2.0.
     [#1410](https://github.com/Azure/PSRule.Rules.Azure/pull/1410)

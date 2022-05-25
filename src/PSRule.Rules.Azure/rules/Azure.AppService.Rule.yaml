@@ -28,3 +28,86 @@ spec:
     - SystemAssigned, UserAssigned
 
 #endregion Rules
+
+#
+# Selectors for App Service
+#
+
+#region Selectors
+
+---
+# Synopsis: App Service sites that are Web apps.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.AppService.IsWebApp
+  annotations:
+    export: true
+spec:
+  if:
+    allOf:
+    - type: '.'
+      in:
+      - 'Microsoft.Web/sites'
+      - 'Microsoft.Web/sites/slots'
+    - anyOf:
+      - field: kind
+        exists: false
+      - field: kind
+        equals: 'app'
+
+---
+# Synopsis: App Service sites that are API apps.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.AppService.IsAPIApp
+  annotations:
+    export: true
+spec:
+  if:
+    allOf:
+    - type: '.'
+      in:
+      - 'Microsoft.Web/sites'
+      - 'Microsoft.Web/sites/slots'
+    - field: kind
+      equals: 'api'
+
+---
+# Synopsis: App Service sites that are Function apps.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.AppService.IsFunctionApp
+  annotations:
+    export: true
+spec:
+  if:
+    allOf:
+    - type: '.'
+      in:
+      - 'Microsoft.Web/sites'
+      - 'Microsoft.Web/sites/slots'
+    - field: kind
+      equals: 'functionapp'
+
+---
+# Synopsis: App Service sites that are Logic App Standard apps.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.AppService.IsLogicApp
+  annotations:
+    export: true
+spec:
+  if:
+    allOf:
+    - type: '.'
+      in:
+      - 'Microsoft.Web/sites'
+      - 'Microsoft.Web/sites/slots'
+    - field: kind
+      endsWith: 'workflowapp'
+
+#endregion Selectors
