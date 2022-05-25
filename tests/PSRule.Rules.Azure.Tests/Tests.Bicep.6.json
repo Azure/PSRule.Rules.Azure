@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.6.18.56646",
+      "templateHash": "16649642425569426111"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {
+    "$fxv#0": "{\r\n    \"name\": \"value\"\r\n}"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deploymentScripts",
+      "apiVersion": "2020-10-01",
+      "name": "script-001",
+      "location": "[parameters('location')]",
+      "kind": "AzurePowerShell",
+      "properties": {
+        "azPowerShellVersion": "7.1",
+        "retentionInterval": "P1D",
+        "scriptContent": "Write-Host",
+        "arguments": "[format('({0} | ConvertTo-Json)', variables('$fxv#0'))]"
+      }
+    }
+  ]
+}
