@@ -277,7 +277,7 @@
                     "ftpsState": "Disabled",
                     "reservedInstanceCount": 0,
                     "preWarmedInstanceCount": null,
-                    "healthCheckPath": null
+                    "healthCheckPath": "/healthz"
                 },
                 "ResourceGroupName": "test-rg",
                 "Type": "Microsoft.Web/sites/config",
@@ -537,10 +537,10 @@
                     "scmIpSecurityRestrictionsUseMain": false,
                     "http20Enabled": true,
                     "minTlsVersion": "1.2",
-                    "ftpsState": "Disabled",
+                    "ftpsState": "FtpsOnly",
                     "reservedInstanceCount": 0,
                     "preWarmedInstanceCount": null,
-                    "healthCheckPath": null
+                    "healthCheckPath": "/"
                 },
                 "ResourceGroupName": "test-rg",
                 "Type": "Microsoft.Web/sites/slots/config",
@@ -825,7 +825,7 @@
                     "scmIpSecurityRestrictionsUseMain": null,
                     "http20Enabled": false,
                     "minTlsVersion": "1.1",
-                    "ftpsState": "Disabled",
+                    "ftpsState": "AllAllowed",
                     "reservedInstanceCount": 0,
                     "preWarmedInstanceCount": null,
                     "healthCheckPath": null
