@@ -19,6 +19,8 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.16.0-B0017 (pre-release)
+
 What's changed since v1.15.2:
 
 - New rules:
