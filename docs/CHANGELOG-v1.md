@@ -7,7 +7,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 **Important notes**:
 
 - Issue #741: `Could not load file or assembly YamlDotNet`.
-See [troubleshooting guide] for a workaround to this issue.
+  See [troubleshooting guide] for a workaround to this issue.
 - The configuration option `Azure_AKSMinimumVersion` is replaced with `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
   If you have this option configured, please update it to `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
   Support for `Azure_AKSMinimumVersion` will be removed in v2.
@@ -18,6 +18,14 @@ See [troubleshooting guide] for a workaround to this issue.
   See [upgrade notes][1] for more information.
 
 ## Unreleased
+
+What's changed since pre-release v1.16.0-B0017:
+
+- Updated rules:
+  - Public IP:
+    - Updated `Azure.PublicIP.AvailabilityZone` to exclude IP addresses for Azure Bastion by @BernieWhite.
+      [#1442](https://github.com/Azure/PSRule.Rules.Azure/issues/1442)
+      - Public IP addresses with the `resource-usage` tag set to `azure-bastion` are excluded.
 
 ## v1.16.0-B0017 (pre-release)
 
