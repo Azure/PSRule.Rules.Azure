@@ -19,6 +19,14 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+What's changed since v1.15.2:
+
+- Bug fixes:
+  - Fixed dependency issue within Azure Pipelines `AzurePowerShell` task by @BernieWhite.
+    [#1447](https://github.com/Azure/PSRule.Rules.Azure/issues/1447)
+    - Removed dependency on `Az.Accounts` and `Az.Resources` from manifest.
+      Pre-install these modules to use export cmdlets.
+
 ## v1.15.2
 
 What's changed since v1.15.1:
