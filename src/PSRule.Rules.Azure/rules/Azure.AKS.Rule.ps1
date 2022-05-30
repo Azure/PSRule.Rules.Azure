@@ -6,7 +6,7 @@
 #
 
 # Synopsis: AKS control plane and nodes pools should use a current stable release.
-Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.AKS.Version' -Ref 'AZR-000015' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $minVersion = $Configuration.GetValueOrDefault('Azure_AKSMinimumVersion', $Configuration.AZURE_AKS_CLUSTER_MINIMUM_VERSION);
     if ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters') {
         $Assert.Version($TargetObject, 'Properties.kubernetesVersion', ">=$minVersion");
@@ -20,7 +20,7 @@ Rule 'Azure.AKS.Version' -Type 'Microsoft.ContainerService/managedClusters', 'Mi
 }
 
 # Synopsis: AKS agent pools should run the same Kubernetes version as the cluster
-Rule 'Azure.AKS.PoolVersion' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.AKS.PoolVersion' -Ref 'AZR-000016' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $clusterVersion = $TargetObject.Properties.kubernetesVersion;
     $agentPools = @(GetAgentPoolProfiles);
     if ($agentPools.Length -eq 0) {
@@ -32,13 +32,8 @@ Rule 'Azure.AKS.PoolVersion' -Type 'Microsoft.ContainerService/managedClusters' 
     }
 }
 
-# Synopsis: AKS cluster should use role-based access control
-Rule 'Azure.AKS.UseRBAC' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.enableRBAC', $True)
-}
-
 # Synopsis: AKS node pools should use scale sets
-Rule 'Azure.AKS.PoolScaleSet' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.AKS.PoolScaleSet' -Ref 'AZR-000017' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $agentPools = @(GetAgentPoolProfiles);
     if ($agentPools.Length -eq 0) {
         return $Assert.Pass();
@@ -50,7 +45,7 @@ Rule 'Azure.AKS.PoolScaleSet' -Type 'Microsoft.ContainerService/managedClusters'
 }
 
 # Synopsis: AKS nodes should use a minimum number of pods
-Rule 'Azure.AKS.NodeMinPods' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.AKS.NodeMinPods' -Ref 'AZR-000018' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $agentPools = @(GetAgentPoolProfiles);
     if ($agentPools.Length -eq 0) {
         return $Assert.Pass();
@@ -60,32 +55,8 @@ Rule 'Azure.AKS.NodeMinPods' -Type 'Microsoft.ContainerService/managedClusters',
     }
 } -Configure @{ Azure_AKSNodeMinimumMaxPods = 50 }
 
-# Synopsis: Use AKS naming requirements
-Rule 'Azure.AKS.Name' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcontainerservice
-
-    # Between 1 and 63 characters long
-    $Assert.GreaterOrEqual($PSRule, 'TargetName', 1);
-    $Assert.LessOrEqual($PSRule, 'TargetName', 63);
-
-    # Alphanumerics, underscores, and hyphens
-    # Start and end with alphanumeric
-    $Assert.Match($PSRule, 'TargetName', '^[A-Za-z0-9](-|\w)*[A-Za-z0-9]$');
-}
-
-# Synopsis: Use AKS naming requirements for DNS prefix
-Rule 'Azure.AKS.DNSPrefix' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    # Between 1 and 54 characters long
-    $Assert.GreaterOrEqual($TargetObject, 'Properties.dnsPrefix', 1);
-    $Assert.LessOrEqual($TargetObject, 'Properties.dnsPrefix', 54);
-
-    # Alphanumerics and hyphens
-    # Start and end with alphanumeric
-    $Assert.Match($TargetObject, 'Properties.dnsPrefix', '^[A-Za-z0-9]((-|[A-Za-z0-9]){0,}[A-Za-z0-9]){0,}$');
-}
-
 # Synopsis: Use Autoscaling to ensure AKS cluster is running efficiently with the right number of nodes for the workloads present.
-Rule 'Azure.AKS.AutoScaling' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AKS.AutoScaling' -Ref 'AZR-000019' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $agentPools = @(GetAgentPoolProfiles);
 
     if ($agentPools.Length -eq 0) {
@@ -105,7 +76,7 @@ Rule 'Azure.AKS.AutoScaling' -Type 'Microsoft.ContainerService/managedClusters',
 }
 
 # Synopsis: AKS clusters using Azure CNI should use large subnets to reduce IP exhaustion issues.
-Rule 'Azure.AKS.CNISubnetSize' -If { IsExport } -With 'Azure.AKS.AzureCNI' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AKS.CNISubnetSize' -Ref 'AZR-000020' -If { IsExport } -With 'Azure.AKS.AzureCNI' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $clusterSubnets = @(GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets');
 
     if ($clusterSubnets.Length -eq 0) {
@@ -127,7 +98,7 @@ Rule 'Azure.AKS.CNISubnetSize' -If { IsExport } -With 'Azure.AKS.AzureCNI' -Tag 
 } -Configure @{ AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE = 23 }
 
 # Synopsis: AKS clusters deployed with virtual machine scale sets should use availability zones in supported regions for high availability.
-Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AKS.AvailabilityZone' -Ref 'AZR-000021' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $agentPools = @(GetAgentPoolProfiles);
 
     if ($agentPools.Length -eq 0) {
@@ -161,13 +132,8 @@ Rule 'Azure.AKS.AvailabilityZone' -Type 'Microsoft.ContainerService/managedClust
     }
 } -Configure @{ AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
-# Synopsis: Enable Container insights to monitor AKS cluster workloads.
-Rule 'Azure.AKS.ContainerInsights' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.addonProfiles.omsAgent.enabled', $True);
-}
-
 # Synopsis: AKS clusters should collect security-based audit logs to assess and monitor the compliance status of workloads.
-Rule 'Azure.AKS.AuditLogs' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AKS.AuditLogs' -Ref 'AZR-000022' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $diagnosticLogs = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.ContainerService/managedClusters/providers/diagnosticSettings');
 
     $Assert.Greater($diagnosticLogs, '.', 0).Reason($LocalizedData.DiagnosticSettingsNotConfigured, $TargetObject.name);
@@ -189,7 +155,7 @@ Rule 'Azure.AKS.AuditLogs' -Type 'Microsoft.ContainerService/managedClusters' -T
 }
 
 # Synopsis: AKS clusters should collect platform diagnostic logs to monitor the state of workloads.
-Rule 'Azure.AKS.PlatformLogs' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AKS.PlatformLogs' -Ref 'AZR-000023' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $configurationLogCategoriesList = $Configuration.GetStringValues('AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST');
 
     if ($configurationLogCategoriesList.Length -eq 0) {

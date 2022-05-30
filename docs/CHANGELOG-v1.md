@@ -26,6 +26,11 @@ What's changed since pre-release v1.16.0-B0017:
     - Updated `Azure.PublicIP.AvailabilityZone` to exclude IP addresses for Azure Bastion by @BernieWhite.
       [#1442](https://github.com/Azure/PSRule.Rules.Azure/issues/1442)
       - Public IP addresses with the `resource-usage` tag set to `azure-bastion` are excluded.
+- Engineering:
+  - Updated built documentation to include rule ref and metadata by @BernieWhite.
+    [#1432](https://github.com/Azure/PSRule.Rules.Azure/issues/1432)
+  - Added ref properties for several rules by @BernieWhite.
+    [#1430](https://github.com/Azure/PSRule.Rules.Azure/issues/1430)
 
 ## v1.16.0-B0017 (pre-release)
 
