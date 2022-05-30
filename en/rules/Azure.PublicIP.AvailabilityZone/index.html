@@ -6242,7 +6242,12 @@ Furthermore, this ensures Public Standard Load balancer frontend IPs using a zon
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
 <p>Consider using zone-redundant Public IP addresses deployed with Standard SKU.</p>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
-<p>This rule applies when analyzing resources deployed to Azure using <em>pre-flight</em> and <em>in-flight</em> data.</p>
+<p>This rule is not applicable for public IP addresses used for Azure Bastion.
+Azure Bastion does not currently support Availability Zones.
+Public IP addresses with the following tags are automatically excluded from this rule:</p>
+<ul>
+<li><code>resource-usage</code> tag set to <code>azure-bastion</code>.</li>
+</ul>
 <p>This rule fails when <code>"zones"</code> is constrained to a single(zonal) zone, or set to <code>null</code>, <code>[]</code> when there are supported availability zones for the given region.</p>
 <p>This rule passes if no zones exist for a given region or <code>"zones"</code> is set to <code>["1", "2", "3"]</code>.</p>
 <p>Configure <code>AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST</code> to set additional availability zones that need to be supported which are not in the existing <a href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/">providers</a> for namespace <code>Microsoft.Network</code> and resource type <code>publicIpAddresses</code>.</p>
@@ -6285,7 +6290,7 @@ Furthermore, this ensures Public Standard Load balancer frontend IPs using a zon
 <p>To configure zone-redundancy for a Public IP address.</p>
 <ul>
 <li>Set <code>sku.name</code> to <code>Standard</code>.</li>
-<li>Set <code>zones</code> to <code>["1", "2", "3"]</code>.</li>
+<li>Set <code>zones</code> to <code>['1', '2', '3']</code>.</li>
 </ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code>resource publicIPAddresses_resource &#39;Microsoft.Network/publicIPAddresses@2020-11-01&#39; = {
@@ -6324,7 +6329,7 @@ Furthermore, this ensures Public Standard Load balancer frontend IPs using a zon
   <small>
     
       Last update:
-      2022-05-05
+      2022-05-30
     
   </small>
 </div>
