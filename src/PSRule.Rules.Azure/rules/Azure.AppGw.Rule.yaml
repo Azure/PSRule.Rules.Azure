@@ -5,6 +5,34 @@
 # Selectors for Application Gateways
 #
 
+#region Rules
+
+---
+# Synopsis: Application Gateways should use a minimum of two instances.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGw.MinInstance
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Network/applicationGateways
+  condition:
+    anyOf:
+    # Applies to v1 and v2 without autoscale
+    - field: Properties.sku.capacity
+      greaterOrEquals: 2
+
+    # Applies to v2 with autoscale
+    - field: Properties.autoscaleConfiguration.minCapacity
+      greaterOrEquals: 2
+
+#endregion Rules
+
+#region Selectors
+
 ---
 # Synopsis: Application Gateways with WAF enabled
 apiVersion: github.com/microsoft/PSRule/v1
@@ -20,3 +48,5 @@ spec:
       - 'WAF_v2'
     - field: Properties.webApplicationFirewallConfiguration.enabled
       equals: true
+
+#endregion Selectors
