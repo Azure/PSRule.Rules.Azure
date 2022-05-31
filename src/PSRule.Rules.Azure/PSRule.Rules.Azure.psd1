@@ -53,8 +53,6 @@ This project uses GitHub Issues to track bugs and feature requests. See GitHub p
     # Modules that must be imported into the global environment prior to importing this module
     RequiredModules        = @(
         @{ ModuleName = 'PSRule'; ModuleVersion = '0.0.1' }
-        @{ ModuleName = 'Az.Accounts'; ModuleVersion = '0.0.1' }
-        @{ ModuleName = 'Az.Resources'; ModuleVersion = '0.0.1' }
     )
 
     # Assemblies that must be loaded prior to importing this module
