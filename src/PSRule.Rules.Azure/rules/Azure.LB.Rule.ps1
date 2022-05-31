@@ -8,7 +8,7 @@
 #region Rules
 
 # Synopsis: Use specific network probe
-Rule 'Azure.LB.Probe' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.LB.Probe' -Ref 'AZR-000126' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $probes = $TargetObject.Properties.probes;
     foreach ($probe in $probes) {
         if ($probe.properties.port -in 80, 443, 8080) {
@@ -26,7 +26,7 @@ Rule 'Azure.LB.Probe' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 
 }
 
 # Synopsis: Load balancers deployed with Standard SKU should be zone-redundant for high availability.
-Rule 'Azure.LB.AvailabilityZone' -Type 'Microsoft.Network/loadBalancers' -If { IsStandardLoadBalancer } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.LB.AvailabilityZone' -Ref 'AZR-000127' -Type 'Microsoft.Network/loadBalancers' -If { IsStandardLoadBalancer } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     foreach ($ipConfig in $TargetObject.Properties.frontendIPConfigurations) {
         $Assert.AnyOf(
             $Assert.NullOrEmpty($ipConfig, 'zones'),
@@ -40,7 +40,7 @@ Rule 'Azure.LB.AvailabilityZone' -Type 'Microsoft.Network/loadBalancers' -If { I
 }
 
 # Synopsis: Load balancers should be deployed with Standard SKU for production workloads.
-Rule 'Azure.LB.StandardSKU' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.LB.StandardSKU' -Ref 'AZR-000128' -Type 'Microsoft.Network/loadBalancers' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     IsStandardLoadBalancer;
 }
 

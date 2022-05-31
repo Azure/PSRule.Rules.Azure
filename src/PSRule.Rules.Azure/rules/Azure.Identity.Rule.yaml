@@ -5,12 +5,15 @@
 # Validation rules for User Assigned Managed Identity
 #
 
+#region Rules
+
 ---
 # Synopsis: User Assigned Managed Identity names should meet naming requirements.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Identity.UserAssignedName
+  ref: AZR-000117
   tags:
     release: GA
     ruleSet: 2021_12
@@ -25,3 +28,5 @@ spec:
       lessOrEquals: 128
     - name: '.'
       match: '^[a-zA-Z0-9][a-zA-Z0-9\-_]{2,127}$'
+
+#endregion Rules

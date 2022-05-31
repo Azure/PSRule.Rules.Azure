@@ -5,12 +5,15 @@
 # Validation rules for Automation Account
 #
 
+#region Rules
+
 ---
 # Synopsis: Ensure managed identity is used for authentication.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Automation.ManagedIdentity
+  ref: AZR-000090
   tags:
     release: GA
     ruleSet: 2021_12
@@ -23,3 +26,5 @@ spec:
     - SystemAssigned
     - UserAssigned
     - SystemAssigned, UserAssigned
+
+#endregion Rules

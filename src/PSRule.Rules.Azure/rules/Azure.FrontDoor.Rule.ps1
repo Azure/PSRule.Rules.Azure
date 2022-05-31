@@ -8,7 +8,7 @@
 #region Front Door
 
 # Synopsis: Use a minimum of TLS 1.2
-Rule 'Azure.FrontDoor.MinTLS' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.FrontDoor.MinTLS' -Ref 'AZR-000106' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $endpoints = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $endpoints = @($TargetObject.Properties.frontendEndpoints);
@@ -19,7 +19,7 @@ Rule 'Azure.FrontDoor.MinTLS' -Type 'Microsoft.Network/frontDoors', 'Microsoft.N
 }
 
 # Synopsis: Use diagnostics to audit Front Door access
-Rule 'Azure.FrontDoor.Logs' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.FrontDoor.Logs' -Ref 'AZR-000107' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     Reason $LocalizedData.DiagnosticSettingsNotConfigured;
     $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.Network/frontDoors/providers/diagnosticSettings');
     $logCategories = @($diagnostics | ForEach-Object {
@@ -33,7 +33,7 @@ Rule 'Azure.FrontDoor.Logs' -Type 'Microsoft.Network/frontDoors' -Tag @{ release
 }
 
 # Synopsis: Configure and enable health probes for each backend pool.
-Rule 'Azure.FrontDoor.Probe' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.FrontDoor.Probe' -Ref 'AZR-000108' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
     $probes = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $probes = @($TargetObject.Properties.healthProbeSettings);
@@ -44,7 +44,7 @@ Rule 'Azure.FrontDoor.Probe' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Ne
 }
 
 # Synopsis: Configure health probes to use HEAD instead of GET requests.
-Rule 'Azure.FrontDoor.ProbeMethod' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.FrontDoor.ProbeMethod' -Ref 'AZR-000109' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
     $probes = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $probes = @($TargetObject.Properties.healthProbeSettings);
@@ -55,7 +55,7 @@ Rule 'Azure.FrontDoor.ProbeMethod' -Type 'Microsoft.Network/frontdoors', 'Micros
 }
 
 # Synopsis: Configure a dedicated path for health probe requests.
-Rule 'Azure.FrontDoor.ProbePath' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.FrontDoor.ProbePath' -Ref 'AZR-000110' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
     $probes = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $probes = @($TargetObject.Properties.healthProbeSettings);
@@ -66,7 +66,7 @@ Rule 'Azure.FrontDoor.ProbePath' -Type 'Microsoft.Network/frontdoors', 'Microsof
 }
 
 # Synopsis: Enable WAF policy of each endpoint
-Rule 'Azure.FrontDoor.UseWAF' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.FrontDoor.UseWAF' -Ref 'AZR-000111' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $endpoints = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $endpoints = @($TargetObject.Properties.frontendEndpoints);

@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AppInsights.Workspace
+  ref: AZR-000069
   tags:
     release: 'GA'
     ruleSet: '2021_06'
@@ -29,6 +30,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AppInsights.Name
+  ref: AZR-000070
   tags:
     release: 'GA'
     ruleSet: '2021_06'
