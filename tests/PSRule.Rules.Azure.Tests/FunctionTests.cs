@@ -965,6 +965,44 @@ namespace PSRule.Rules.Azure
 
         [Fact]
         [Trait(TRAIT, TRAIT_DATE)]
+        public void DateTimeFromEpoch()
+        {
+            var context = GetContext();
+            var utc = DateTime.Parse("2020-04-07 14:53:14Z", new CultureInfo("en-US"), DateTimeStyles.AdjustToUniversal);
+            Assert.Equal(DateTimeKind.Utc, utc.Kind);
+
+            var actual1 = Functions.DateTimeFromEpoch(context, new object[] { new DateTimeOffset(utc).ToUnixTimeSeconds() }) as string;
+            var actual2 = Functions.DateTimeFromEpoch(context, new object[] { 1683040573 }) as string;
+            
+            Assert.Equal("2020-04-07T14:53:14Z", actual1);
+            Assert.Equal("2023-05-02T15:16:13Z", actual2);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeFromEpoch(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeFromEpoch(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeFromEpoch(context, new object[] { 1, 2 }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_DATE)]
+        public void DateTimeToEpoch()
+        {
+            var context = GetContext();
+            var utc = DateTime.Parse("2020-04-07 14:53:14Z", new CultureInfo("en-US"), DateTimeStyles.AdjustToUniversal);
+            Assert.Equal(DateTimeKind.Utc, utc.Kind);
+
+            var actual1 = (long)Functions.DateTimeToEpoch(context, new object[] { "2020-04-07T14:53:14Z" });
+            var actual2 = (long)Functions.DateTimeToEpoch(context, new object[] { "2023-05-02T15:16:13Z" });
+
+            Assert.Equal(1586271194, actual1);
+            Assert.Equal(1683040573, actual2);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeToEpoch(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeToEpoch(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeToEpoch(context, new object[] { 1, 2 }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_DATE)]
         public void UtcNow()
         {
             var context = GetContext();

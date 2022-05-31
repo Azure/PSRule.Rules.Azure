@@ -32,6 +32,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_OPERAND1 = "operand1";
         private const string PROPERTY_OPERAND2 = "operand2";
         private const string PROPERTY_VALUETOCONVERT = "valueToConvert";
+        private const string FORMAT_ISO8601 = "yyyy-MM-ddTHH:mm:ssZ";
 
         internal readonly static IFunctionDescriptor[] Builtin = new IFunctionDescriptor[]
         {
@@ -63,6 +64,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
             // Date
             new FunctionDescriptor("dateTimeAdd", DateTimeAdd),
+            new FunctionDescriptor("dateTimeFromEpoch", DateTimeFromEpoch),
+            new FunctionDescriptor("dateTimeToEpoch", DateTimeToEpoch),
             new FunctionDescriptor("utcNow", UtcNow),
 
             // Deployment
@@ -1125,6 +1128,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region Date
 
+        /// <summary>
+        /// dateTimeAdd(base, duration, [format])
+        /// </summary>
         internal static object DateTimeAdd(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
@@ -1146,6 +1152,39 @@ namespace PSRule.Rules.Azure.Data.Template
             return format == null ? result.ToString(AzureCulture) : result.ToString(format, AzureCulture);
         }
 
+        /// <summary>
+        /// dateTimeFromEpoch(epochTime)
+        /// </summary>
+        internal static object DateTimeFromEpoch(ITemplateContext context, object[] args)
+        {
+            var argCount = CountArgs(args);
+            if (argCount != 1)
+                throw ArgumentsOutOfRange(nameof(DateTimeFromEpoch), args);
+
+            if (!ExpressionHelpers.TryLong(args[0], out var epochTime))
+                throw ArgumentInvalidInteger(nameof(DateTimeFromEpoch), nameof(epochTime));
+
+            return DateTimeOffset.FromUnixTimeSeconds(epochTime).DateTime.ToString(FORMAT_ISO8601, AzureCulture);
+        }
+
+        /// <summary>
+        /// dateTimeToEpoch(dateTime)
+        /// </summary>
+        internal static object DateTimeToEpoch(ITemplateContext context, object[] args)
+        {
+            var argCount = CountArgs(args);
+            if (argCount != 1)
+                throw ArgumentsOutOfRange(nameof(DateTimeToEpoch), args);
+
+            if (!ExpressionHelpers.TryConvertDateTime(args[0], out var dateTime))
+                throw ArgumentInvalidDateTime(nameof(DateTimeToEpoch), nameof(dateTime));
+
+            return new DateTimeOffset(dateTime).ToUnixTimeSeconds();
+        }
+
+        /// <summary>
+        /// utcNow(format)
+        /// </summary>
         internal static object UtcNow(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
@@ -1749,6 +1788,17 @@ namespace PSRule.Rules.Azure.Data.Template
             return new ExpressionArgumentException(
                 expression,
                 string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentInvalidInteger, operand, expression)
+            );
+        }
+
+        /// <summary>
+        /// The argument '{0}' for '{1}' is not a valid time.
+        /// </summary>
+        private static ExpressionArgumentException ArgumentInvalidDateTime(string expression, string operand)
+        {
+            return new ExpressionArgumentException(
+                expression,
+                string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentInvalidDateTime, operand, expression)
             );
         }
 
