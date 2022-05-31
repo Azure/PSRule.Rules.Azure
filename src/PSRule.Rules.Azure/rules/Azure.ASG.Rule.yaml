@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.ASG.Name
+  ref: AZR-000085
   tags:
     release: 'GA'
     ruleSet: '2021_12'

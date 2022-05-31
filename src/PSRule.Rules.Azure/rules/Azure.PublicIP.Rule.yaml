@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.PublicIP.StandardSKU
+  ref: AZR-000158
   tags:
     release: 'GA'
     ruleSet: '2021_12'

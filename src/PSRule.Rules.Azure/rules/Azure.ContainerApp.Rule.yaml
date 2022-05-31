@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.ContainerApp.Insecure
+  ref: AZR-000094
   tags:
     release: 'preview'
     ruleSet: '2022_03'

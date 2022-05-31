@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AppService.ManagedIdentity
+  ref: AZR-000082
   tags:
     release: 'GA'
     ruleSet: 2020_12
@@ -26,6 +27,42 @@ spec:
     - SystemAssigned
     - UserAssigned
     - SystemAssigned, UserAssigned
+
+---
+# Synopsis: Disable client affinity for stateless services.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppService.ARRAffinity
+  ref: AZR-000083
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Web/sites
+  - Microsoft.Web/sites/slots
+  condition:
+    field: Properties.clientAffinityEnabled
+    equals: false
+
+---
+# Synopsis: Azure App Service apps should only accept encrypted connections.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppService.UseHTTPS
+  ref: AZR-000084
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Web/sites
+  - Microsoft.Web/sites/slots
+  condition:
+    field: Properties.httpsOnly
+    equals: true
 
 #endregion Rules
 

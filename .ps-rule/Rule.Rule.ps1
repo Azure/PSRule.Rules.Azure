@@ -10,7 +10,7 @@ Rule 'Rule.Name' -Type 'PSRule.Rules.Rule' {
 }
 
 # # Synopsis: Rules must use a valid opaque identifier.
-# Rule 'Rule.Ref' -Type 'PSRule.Rules.Rule' {
+# Rule 'Rule.Ref' -Type 'PSRule.Rules.Rule' -Level Warning {
 #     $Assert.Match($TargetObject, 'Ref', '^AZR-[0-9]{6,6}$')
 # }
 

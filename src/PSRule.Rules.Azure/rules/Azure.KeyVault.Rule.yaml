@@ -1,0 +1,44 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Key Vault
+#
+
+#region Rules
+
+---
+# Synopsis: Enable Soft Delete on Key Vaults to protect vaults and vault items from accidental deletion.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.KeyVault.SoftDelete
+  ref: AZR-000124
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.KeyVault/vaults
+  condition:
+    field: Properties.enableSoftDelete
+    equals: true
+
+---
+# Synopsis: Enable Purge Protection on Key Vaults to prevent early purge of vaults and vault items.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.KeyVault.PurgeProtect
+  ref: AZR-000125
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.KeyVault/vaults
+  condition:
+    field: Properties.enablePurgeProtection
+    equals: true
+
+#endregion Rules

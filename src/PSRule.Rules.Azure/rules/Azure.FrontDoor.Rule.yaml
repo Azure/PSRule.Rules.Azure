@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.FrontDoor.State
+  ref: AZR-000112
   tags:
     release: 'GA'
     ruleSet: '2020_06'
@@ -29,6 +30,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.FrontDoor.Name
+  ref: AZR-000113
   tags:
     release: 'GA'
     ruleSet: '2020_06'
@@ -52,6 +54,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.FrontDoor.WAF.Mode
+  ref: AZR-000114
   tags:
     release: 'GA'
     ruleSet: '2020_06'
@@ -68,6 +71,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.FrontDoor.WAF.Enabled
+  ref: AZR-000115
   tags:
     release: 'GA'
     ruleSet: '2020_06'
@@ -84,6 +88,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.FrontDoor.WAF.Name
+  ref: AZR-000116
   tags:
     release: 'GA'
     ruleSet: '2020_12'

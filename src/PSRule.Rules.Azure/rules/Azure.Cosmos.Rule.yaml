@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Cosmos.DisableMetadataWrite
+  ref: AZR-000095
   tags:
     release: 'GA'
     ruleSet: '2021_09'
@@ -29,6 +30,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Cosmos.AccountName
+  ref: AZR-000096
   tags:
     release: 'GA'
     ruleSet: '2021_09'

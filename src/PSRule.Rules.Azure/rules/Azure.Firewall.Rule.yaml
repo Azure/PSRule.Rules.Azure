@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Firewall.Name
+  ref: AZR-000103
   tags:
     release: 'GA'
     ruleSet: '2021_12'
@@ -34,6 +35,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Firewall.PolicyName
+  ref: AZR-000104
   tags:
     release: 'GA'
     ruleSet: '2021_12'
@@ -55,6 +57,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Firewall.Mode
+  ref: AZR-000105
   tags:
     release: 'GA'
     ruleSet: '2020_06'
