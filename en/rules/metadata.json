@@ -1,44 +1,24 @@
 {
-  "Azure.SecurityCenter.Contact": {
-    "Name": "Azure.SecurityCenter.Contact",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.TrafficManager.Protocol": {
-    "Name": "Azure.TrafficManager.Protocol",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AppService.WebProbe": {
-    "Name": "Azure.AppService.WebProbe",
+  "Azure.AppInsights.Workspace": {
+    "Name": "Azure.AppInsights.Workspace",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000079",
+      "Value": "PSRule.Rules.Azure\\AZR-000069",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000079"
+      "Name": "AZR-000069"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2022_06"
+    "RuleSet": "2021_06"
   },
-  "Azure.FrontDoor.WAF.Mode": {
-    "Name": "Azure.FrontDoor.WAF.Mode",
+  "Azure.NSG.Associated": {
+    "Name": "Azure.NSG.Associated",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000114",
+      "Value": "PSRule.Rules.Azure\\AZR-000140",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000114"
+      "Name": "AZR-000140"
     },
     "Alias": [
       null
@@ -47,8 +27,22 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.Template.TemplateFile": {
-    "Name": "Azure.Template.TemplateFile",
+  "Azure.AppService.AlwaysOn": {
+    "Name": "Azure.AppService.AlwaysOn",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000077",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000077"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.RBAC.UseGroups": {
+    "Name": "Azure.RBAC.UseGroups",
     "Ref": null,
     "Alias": [
       null
@@ -57,13 +51,9 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.Redis.AvailabilityZone": {
-    "Name": "Azure.Redis.AvailabilityZone",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000161",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000161"
-    },
+  "Azure.VNG.ERAvailabilityZoneSKU": {
+    "Name": "Azure.VNG.ERAvailabilityZoneSKU",
+    "Ref": null,
     "Alias": [
       null
     ],
@@ -71,12 +61,12 @@
     "Release": "GA",
     "RuleSet": "2021_12"
   },
-  "Azure.Cosmos.AccountName": {
-    "Name": "Azure.Cosmos.AccountName",
+  "Azure.AKS.AuditLogs": {
+    "Name": "Azure.AKS.AuditLogs",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000096",
+      "Value": "PSRule.Rules.Azure\\AZR-000022",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000096"
+      "Name": "AZR-000022"
     },
     "Alias": [
       null
@@ -84,6 +74,16 @@
     "Flags": 0,
     "Release": "GA",
     "RuleSet": "2021_09"
+  },
+  "Azure.Storage.SoftDelete": {
+    "Name": "Azure.Storage.SoftDelete",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
   },
   "Azure.VM.NICName": {
     "Name": "Azure.VM.NICName",
@@ -95,66 +95,18 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.Policy.AssignmentDescriptors": {
-    "Name": "Azure.Policy.AssignmentDescriptors",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000143",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000143"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_06"
-  },
-  "Azure.Automation.PlatformLogs": {
-    "Name": "Azure.Automation.PlatformLogs",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000089",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000089"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.VM.Updates": {
-    "Name": "Azure.VM.Updates",
+  "Azure.SQL.ServerName": {
+    "Name": "Azure.SQL.ServerName",
     "Ref": null,
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2020_06"
+    "RuleSet": "2020_12"
   },
-  "Azure.SQL.TDE": {
-    "Name": "Azure.SQL.TDE",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.VM.BasicSku": {
-    "Name": "Azure.VM.BasicSku",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.SignalR.ManagedIdentity": {
-    "Name": "Azure.SignalR.ManagedIdentity",
+  "Azure.ServiceBus.Usage": {
+    "Name": "Azure.ServiceBus.Usage",
     "Ref": null,
     "Alias": [
       null
@@ -163,99 +115,19 @@
     "Release": "GA",
     "RuleSet": "2022_03"
   },
-  "Azure.ResourceGroup.Name": {
-    "Name": "Azure.ResourceGroup.Name",
+  "Azure.CDN.EndpointName": {
+    "Name": "Azure.CDN.EndpointName",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000168",
+      "Value": "PSRule.Rules.Azure\\AZR-000091",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000168"
+      "Name": "AZR-000091"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.RSV.ReplicationAlert": {
-    "Name": "Azure.RSV.ReplicationAlert",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000171",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000171"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2022_03"
-  },
-  "Azure.AKS.UseRBAC": {
-    "Name": "Azure.AKS.UseRBAC",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000038",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000038"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AKS.StandardLB": {
-    "Name": "Azure.AKS.StandardLB",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000026",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000026"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AppService.WebSecureFtp": {
-    "Name": "Azure.AppService.WebSecureFtp",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000081",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000081"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2022_06"
-  },
-  "Azure.NSG.LateralTraversal": {
-    "Name": "Azure.NSG.LateralTraversal",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000139",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000139"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.VM.NICAttached": {
-    "Name": "Azure.VM.NICAttached",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
+    "RuleSet": "2020_09"
   },
   "Azure.AppService.NETVersion": {
     "Name": "Azure.AppService.NETVersion",
@@ -271,13 +143,291 @@
     "Release": "GA",
     "RuleSet": "2020_12"
   },
-  "Azure.AKS.Version": {
-    "Name": "Azure.AKS.Version",
+  "Azure.KeyVault.SoftDelete": {
+    "Name": "Azure.KeyVault.SoftDelete",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000015",
+      "Value": "PSRule.Rules.Azure\\AZR-000124",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000015"
+      "Name": "AZR-000124"
     },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.PostgreSQL.MinTLS": {
+    "Name": "Azure.PostgreSQL.MinTLS",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000148",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000148"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_09"
+  },
+  "Azure.CDN.MinTLS": {
+    "Name": "Azure.CDN.MinTLS",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000092",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000092"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_09"
+  },
+  "Azure.ADX.Usage": {
+    "Name": "Azure.ADX.Usage",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000011",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000011"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_03"
+  },
+  "Azure.KeyVault.SecretName": {
+    "Name": "Azure.KeyVault.SecretName",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000121",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000121"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_03"
+  },
+  "Azure.LB.AvailabilityZone": {
+    "Name": "Azure.LB.AvailabilityZone",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000127",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000127"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
+  "Azure.VM.Updates": {
+    "Name": "Azure.VM.Updates",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AppService.PlanInstanceCount": {
+    "Name": "Azure.AppService.PlanInstanceCount",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000071",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000071"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Template.DebugDeployment": {
+    "Name": "Azure.Template.DebugDeployment",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_03"
+  },
+  "Azure.EventHub.DisableLocalAuth": {
+    "Name": "Azure.EventHub.DisableLocalAuth",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000102",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000102"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_03"
+  },
+  "Azure.EventGrid.TopicPublicAccess": {
+    "Name": "Azure.EventGrid.TopicPublicAccess",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000098",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000098"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.VNET.SingleDNS": {
+    "Name": "Azure.VNET.SingleDNS",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Template.ParameterStrongType": {
+    "Name": "Azure.Template.ParameterStrongType",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.PublicIP.StandardSKU": {
+    "Name": "Azure.PublicIP.StandardSKU",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000158",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000158"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.Template.UseVariables": {
+    "Name": "Azure.Template.UseVariables",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_09"
+  },
+  "Azure.Template.MetadataLink": {
+    "Name": "Azure.Template.MetadataLink",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
+  "Azure.FrontDoor.UseWAF": {
+    "Name": "Azure.FrontDoor.UseWAF",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000111",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000111"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VM.UseManagedDisks": {
+    "Name": "Azure.VM.UseManagedDisks",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VM.PublicKey": {
+    "Name": "Azure.VM.PublicKey",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.TrafficManager.Endpoints": {
+    "Name": "Azure.TrafficManager.Endpoints",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Automation.WebHookExpiry": {
+    "Name": "Azure.Automation.WebHookExpiry",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000087",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000087"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Identity.UserAssignedName": {
+    "Name": "Azure.Identity.UserAssignedName",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000117",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000117"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.SQL.FirewallIPRange": {
+    "Name": "Azure.SQL.FirewallIPRange",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VM.DiskSizeAlignment": {
+    "Name": "Azure.VM.DiskSizeAlignment",
+    "Ref": null,
     "Alias": [
       null
     ],
@@ -295,46 +445,8 @@
     "Release": "GA",
     "RuleSet": "2021_03"
   },
-  "Azure.APIM.APIDescriptors": {
-    "Name": "Azure.APIM.APIDescriptors",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000043",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000043"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.Template.TemplateScheme": {
-    "Name": "Azure.Template.TemplateScheme",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.ACR.Retention": {
-    "Name": "Azure.ACR.Retention",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000010",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000010"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "preview",
-    "RuleSet": "2020_12"
-  },
-  "Azure.VMSS.ComputerName": {
-    "Name": "Azure.VMSS.ComputerName",
+  "Azure.Storage.UseReplication": {
+    "Name": "Azure.Storage.UseReplication",
     "Ref": null,
     "Alias": [
       null
@@ -343,107 +455,9 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.KeyVault.Logs": {
-    "Name": "Azure.KeyVault.Logs",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000119",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000119"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.LB.Name": {
-    "Name": "Azure.LB.Name",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000129",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000129"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AKS.AuthorizedIPs": {
-    "Name": "Azure.AKS.AuthorizedIPs",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000030",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000030"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_06"
-  },
-  "Azure.Template.UseVariables": {
-    "Name": "Azure.Template.UseVariables",
+  "Azure.SignalR.SLA": {
+    "Name": "Azure.SignalR.SLA",
     "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.FrontDoor.UseWAF": {
-    "Name": "Azure.FrontDoor.UseWAF",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000111",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000111"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.ContainerApp.Insecure": {
-    "Name": "Azure.ContainerApp.Insecure",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000094",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000094"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "preview",
-    "RuleSet": "2022_03"
-  },
-  "Azure.AKS.ContainerInsights": {
-    "Name": "Azure.AKS.ContainerInsights",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000041",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000041"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.EventHub.Usage": {
-    "Name": "Azure.EventHub.Usage",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000101",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000101"
-    },
     "Alias": [
       null
     ],
@@ -451,50 +465,12 @@
     "Release": "GA",
     "RuleSet": "2022_03"
   },
-  "Azure.Policy.WaiverExpiry": {
-    "Name": "Azure.Policy.WaiverExpiry",
+  "Azure.KeyVault.AccessPolicy": {
+    "Name": "Azure.KeyVault.AccessPolicy",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000146",
+      "Value": "PSRule.Rules.Azure\\AZR-000118",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000146"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_06"
-  },
-  "Azure.AKS.ManagedAAD": {
-    "Name": "Azure.AKS.ManagedAAD",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000029",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000029"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_06"
-  },
-  "Azure.VNG.ERLegacySKU": {
-    "Name": "Azure.VNG.ERLegacySKU",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.NSG.AnyInboundSource": {
-    "Name": "Azure.NSG.AnyInboundSource",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000137",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000137"
+      "Name": "AZR-000118"
     },
     "Alias": [
       null
@@ -503,32 +479,8 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.AKS.AutoScaling": {
-    "Name": "Azure.AKS.AutoScaling",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000019",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000019"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.SQL.MinTLS": {
-    "Name": "Azure.SQL.MinTLS",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.TrafficManager.Endpoints": {
-    "Name": "Azure.TrafficManager.Endpoints",
+  "Azure.SQL.FirewallRuleCount": {
+    "Name": "Azure.SQL.FirewallRuleCount",
     "Ref": null,
     "Alias": [
       null
@@ -547,92 +499,8 @@
     "Release": "GA",
     "RuleSet": "2021_09"
   },
-  "Azure.AKS.ManagedIdentity": {
-    "Name": "Azure.AKS.ManagedIdentity",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000025",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000025"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.APIM.ProductSubscription": {
-    "Name": "Azure.APIM.ProductSubscription",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000046",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000046"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.Automation.ManagedIdentity": {
-    "Name": "Azure.Automation.ManagedIdentity",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000090",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000090"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.Resource.UseTags": {
-    "Name": "Azure.Resource.UseTags",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000166",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000166"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.PostgreSQL.UseSSL": {
-    "Name": "Azure.PostgreSQL.UseSSL",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000147",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000147"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.FrontDoor.Logs": {
-    "Name": "Azure.FrontDoor.Logs",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000107",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000107"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.RBAC.UseRGDelegation": {
-    "Name": "Azure.RBAC.UseRGDelegation",
+  "Azure.SQL.Auditing": {
+    "Name": "Azure.SQL.Auditing",
     "Ref": null,
     "Alias": [
       null
@@ -641,13 +509,33 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.EventGrid.TopicPublicAccess": {
-    "Name": "Azure.EventGrid.TopicPublicAccess",
+  "Azure.Search.SKU": {
+    "Name": "Azure.Search.SKU",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000098",
+      "Value": "PSRule.Rules.Azure\\AZR-000172",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000098"
+      "Name": "AZR-000172"
     },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_06"
+  },
+  "Azure.Storage.Firewall": {
+    "Name": "Azure.Storage.Firewall",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
+  "Azure.Template.ExpressionLength": {
+    "Name": "Azure.Template.ExpressionLength",
+    "Ref": null,
     "Alias": [
       null
     ],
@@ -655,40 +543,26 @@
     "Release": "GA",
     "RuleSet": "2021_12"
   },
-  "Azure.AppService.AlwaysOn": {
-    "Name": "Azure.AppService.AlwaysOn",
+  "Azure.ACR.Quarantine": {
+    "Name": "Azure.ACR.Quarantine",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000077",
+      "Value": "PSRule.Rules.Azure\\AZR-000008",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000077"
+      "Name": "AZR-000008"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
-    "Release": "GA",
+    "Release": "preview",
     "RuleSet": "2020_12"
   },
-  "Azure.Firewall.Name": {
-    "Name": "Azure.Firewall.Name",
+  "Azure.AKS.Version": {
+    "Name": "Azure.AKS.Version",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000103",
+      "Value": "PSRule.Rules.Azure\\AZR-000015",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000103"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.FrontDoor.WAF.Enabled": {
-    "Name": "Azure.FrontDoor.WAF.Enabled",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000115",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000115"
+      "Name": "AZR-000015"
     },
     "Alias": [
       null
@@ -697,70 +571,26 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.VNG.VPNActiveActive": {
-    "Name": "Azure.VNG.VPNActiveActive",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.ServiceBus.Usage": {
-    "Name": "Azure.ServiceBus.Usage",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2022_03"
-  },
-  "Azure.VM.Agent": {
-    "Name": "Azure.VM.Agent",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AKS.AutoUpgrade": {
-    "Name": "Azure.AKS.AutoUpgrade",
+  "Azure.FrontDoor.ProbeMethod": {
+    "Name": "Azure.FrontDoor.ProbeMethod",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000036",
+      "Value": "PSRule.Rules.Azure\\AZR-000109",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000036"
+      "Name": "AZR-000109"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2021_12"
+    "RuleSet": "2021_03"
   },
-  "Azure.AppGw.SSLPolicy": {
-    "Name": "Azure.AppGw.SSLPolicy",
+  "Azure.AKS.Name": {
+    "Name": "Azure.AKS.Name",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000064",
+      "Value": "PSRule.Rules.Azure\\AZR-000039",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000064"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.Resource.AllowedRegions": {
-    "Name": "Azure.Resource.AllowedRegions",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000167",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000167"
+      "Name": "AZR-000039"
     },
     "Alias": [
       null
@@ -783,108 +613,8 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.Storage.MinTLS": {
-    "Name": "Azure.Storage.MinTLS",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.Template.TemplateSchema": {
-    "Name": "Azure.Template.TemplateSchema",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.MySQL.MinTLS": {
-    "Name": "Azure.MySQL.MinTLS",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000132",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000132"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.Automation.AuditLogs": {
-    "Name": "Azure.Automation.AuditLogs",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000088",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000088"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.FrontDoor.Name": {
-    "Name": "Azure.FrontDoor.Name",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000113",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000113"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AppGw.UseWAF": {
-    "Name": "Azure.AppGw.UseWAF",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000063",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000063"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.Template.ParameterScheme": {
-    "Name": "Azure.Template.ParameterScheme",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.LB.StandardSKU": {
-    "Name": "Azure.LB.StandardSKU",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000128",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000128"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.SQL.Auditing": {
-    "Name": "Azure.SQL.Auditing",
+  "Azure.VMSS.ComputerName": {
+    "Name": "Azure.VMSS.ComputerName",
     "Ref": null,
     "Alias": [
       null
@@ -893,12 +623,132 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.AKS.DNSPrefix": {
-    "Name": "Azure.AKS.DNSPrefix",
+  "Azure.AppService.ARRAffinity": {
+    "Name": "Azure.AppService.ARRAffinity",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000040",
+      "Value": "PSRule.Rules.Azure\\AZR-000083",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000040"
+      "Name": "AZR-000083"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.LB.Probe": {
+    "Name": "Azure.LB.Probe",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000126",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000126"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.ACR.AdminUser": {
+    "Name": "Azure.ACR.AdminUser",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000005",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000005"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Template.TemplateScheme": {
+    "Name": "Azure.Template.TemplateScheme",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
+  "Azure.Template.ParameterFile": {
+    "Name": "Azure.Template.ParameterFile",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.SignalR.ManagedIdentity": {
+    "Name": "Azure.SignalR.ManagedIdentity",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_03"
+  },
+  "Azure.ACR.MinSku": {
+    "Name": "Azure.ACR.MinSku",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000006",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000006"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Storage.BlobAccessType": {
+    "Name": "Azure.Storage.BlobAccessType",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Template.ParameterValue": {
+    "Name": "Azure.Template.ParameterValue",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
+  "Azure.NSG.AnyInboundSource": {
+    "Name": "Azure.NSG.AnyInboundSource",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000137",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000137"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AKS.PoolVersion": {
+    "Name": "Azure.AKS.PoolVersion",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000016",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000016"
     },
     "Alias": [
       null
@@ -921,26 +771,12 @@
     "Release": "GA",
     "RuleSet": "2021_06"
   },
-  "Azure.PublicIP.AvailabilityZone": {
-    "Name": "Azure.PublicIP.AvailabilityZone",
+  "Azure.Policy.ExemptionDescriptors": {
+    "Name": "Azure.Policy.ExemptionDescriptors",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000157",
+      "Value": "PSRule.Rules.Azure\\AZR-000145",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000157"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.Policy.AssignmentAssignedBy": {
-    "Name": "Azure.Policy.AssignmentAssignedBy",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000144",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000144"
+      "Name": "AZR-000145"
     },
     "Alias": [
       null
@@ -949,12 +785,26 @@
     "Release": "GA",
     "RuleSet": "2021_06"
   },
-  "Azure.AppGw.OWASP": {
-    "Name": "Azure.AppGw.OWASP",
+  "Azure.AppService.WebProbe": {
+    "Name": "Azure.AppService.WebProbe",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000067",
+      "Value": "PSRule.Rules.Azure\\AZR-000079",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000067"
+      "Name": "AZR-000079"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_06"
+  },
+  "Azure.PostgreSQL.UseSSL": {
+    "Name": "Azure.PostgreSQL.UseSSL",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000147",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000147"
     },
     "Alias": [
       null
@@ -963,108 +813,36 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.Template.DebugDeployment": {
-    "Name": "Azure.Template.DebugDeployment",
+  "Azure.PublicIP.DNSLabel": {
+    "Name": "Azure.PublicIP.DNSLabel",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000156",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000156"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VNG.ERLegacySKU": {
+    "Name": "Azure.VNG.ERLegacySKU",
     "Ref": null,
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2021_03"
-  },
-  "Azure.KeyVault.KeyName": {
-    "Name": "Azure.KeyVault.KeyName",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000122",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000122"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_03"
-  },
-  "Azure.VNET.Name": {
-    "Name": "Azure.VNET.Name",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.VM.AcceleratedNetworking": {
-    "Name": "Azure.VM.AcceleratedNetworking",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.Template.ParameterMetadata": {
-    "Name": "Azure.Template.ParameterMetadata",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.KeyVault.SoftDelete": {
-    "Name": "Azure.KeyVault.SoftDelete",
+  "Azure.Policy.WaiverExpiry": {
+    "Name": "Azure.Policy.WaiverExpiry",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000124",
+      "Value": "PSRule.Rules.Azure\\AZR-000146",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000124"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.PostgreSQL.AllowAzureAccess": {
-    "Name": "Azure.PostgreSQL.AllowAzureAccess",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000150",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000150"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AppGw.AvailabilityZone": {
-    "Name": "Azure.AppGw.AvailabilityZone",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000060",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000060"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.AppInsights.Workspace": {
-    "Name": "Azure.AppInsights.Workspace",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000069",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000069"
+      "Name": "AZR-000146"
     },
     "Alias": [
       null
@@ -1073,542 +851,12 @@
     "Release": "GA",
     "RuleSet": "2021_06"
   },
-  "Azure.ACR.ContentTrust": {
-    "Name": "Azure.ACR.ContentTrust",
+  "Azure.AppGw.MinInstance": {
+    "Name": "Azure.AppGw.MinInstance",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000009",
+      "Value": "PSRule.Rules.Azure\\AZR-000061",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000009"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.Template.ParameterDataTypes": {
-    "Name": "Azure.Template.ParameterDataTypes",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_03"
-  },
-  "Azure.VNG.ERAvailabilityZoneSKU": {
-    "Name": "Azure.VNG.ERAvailabilityZoneSKU",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.APIM.HTTPEndpoint": {
-    "Name": "Azure.APIM.HTTPEndpoint",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000042",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000042"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.VNET.LocalDNS": {
-    "Name": "Azure.VNET.LocalDNS",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.APIM.HTTPBackend": {
-    "Name": "Azure.APIM.HTTPBackend",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000044",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000044"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AppConfig.SKU": {
-    "Name": "Azure.AppConfig.SKU",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000057",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000057"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.VM.ASName": {
-    "Name": "Azure.VM.ASName",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.PublicIP.Name": {
-    "Name": "Azure.PublicIP.Name",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000155",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000155"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AppGw.UseHTTPS": {
-    "Name": "Azure.AppGw.UseHTTPS",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000059",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000059"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.Template.ParameterMinMaxValue": {
-    "Name": "Azure.Template.ParameterMinMaxValue",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_03"
-  },
-  "Azure.PostgreSQL.MinTLS": {
-    "Name": "Azure.PostgreSQL.MinTLS",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000148",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000148"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.RBAC.PIM": {
-    "Name": "Azure.RBAC.PIM",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.VM.ADE": {
-    "Name": "Azure.VM.ADE",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.Storage.Firewall": {
-    "Name": "Azure.Storage.Firewall",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.ADX.Usage": {
-    "Name": "Azure.ADX.Usage",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000011",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000011"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2022_03"
-  },
-  "Azure.Template.ResourceLocation": {
-    "Name": "Azure.Template.ResourceLocation",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_03"
-  },
-  "Azure.AKS.SecretStore": {
-    "Name": "Azure.AKS.SecretStore",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000033",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000033"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.ACR.Usage": {
-    "Name": "Azure.ACR.Usage",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000001",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000001"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.Redis.NonSslPort": {
-    "Name": "Azure.Redis.NonSslPort",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000163",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000163"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.PrivateEndpoint.Name": {
-    "Name": "Azure.PrivateEndpoint.Name",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000153",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000153"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.CDN.EndpointName": {
-    "Name": "Azure.CDN.EndpointName",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000091",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000091"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.Template.Resources": {
-    "Name": "Azure.Template.Resources",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.NSG.Name": {
-    "Name": "Azure.NSG.Name",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000141",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000141"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.RBAC.UseGroups": {
-    "Name": "Azure.RBAC.UseGroups",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.VNG.Name": {
-    "Name": "Azure.VNG.Name",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.CDN.MinTLS": {
-    "Name": "Azure.CDN.MinTLS",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000092",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000092"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.APIM.EncryptValues": {
-    "Name": "Azure.APIM.EncryptValues",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000045",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000045"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AppService.RemoteDebug": {
-    "Name": "Azure.AppService.RemoteDebug",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000074",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000074"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.MySQL.FirewallRuleCount": {
-    "Name": "Azure.MySQL.FirewallRuleCount",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000133",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000133"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AppService.PlanInstanceCount": {
-    "Name": "Azure.AppService.PlanInstanceCount",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000071",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000071"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.KeyVault.AutoRotationPolicy": {
-    "Name": "Azure.KeyVault.AutoRotationPolicy",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000123",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000123"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "preview",
-    "RuleSet": "2022_03"
-  },
-  "Azure.ACR.MinSku": {
-    "Name": "Azure.ACR.MinSku",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000006",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000006"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AKS.LocalAccounts": {
-    "Name": "Azure.AKS.LocalAccounts",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000031",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000031"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "preview",
-    "RuleSet": "2021_06"
-  },
-  "Azure.Template.UseComments": {
-    "Name": "Azure.Template.UseComments",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.VM.Name": {
-    "Name": "Azure.VM.Name",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.ServiceBus.DisableLocalAuth": {
-    "Name": "Azure.ServiceBus.DisableLocalAuth",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2022_03"
-  },
-  "Azure.APIM.ManagedIdentity": {
-    "Name": "Azure.APIM.ManagedIdentity",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000053",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000053"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.Template.LocationType": {
-    "Name": "Azure.Template.LocationType",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_03"
-  },
-  "Azure.Template.ParameterFile": {
-    "Name": "Azure.Template.ParameterFile",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.APIM.ProductTerms": {
-    "Name": "Azure.APIM.ProductTerms",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000050",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000050"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.FrontDoor.Probe": {
-    "Name": "Azure.FrontDoor.Probe",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000108",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000108"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_03"
-  },
-  "Azure.VM.ASMinMembers": {
-    "Name": "Azure.VM.ASMinMembers",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AKS.PoolVersion": {
-    "Name": "Azure.AKS.PoolVersion",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000016",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000016"
+      "Name": "AZR-000061"
     },
     "Alias": [
       null
@@ -1631,42 +879,12 @@
     "Release": "GA",
     "RuleSet": "2020_12"
   },
-  "Azure.Template.UseDescriptions": {
-    "Name": "Azure.Template.UseDescriptions",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.SQL.DBName": {
-    "Name": "Azure.SQL.DBName",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.Template.ParameterValue": {
-    "Name": "Azure.Template.ParameterValue",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.AppGw.WAFRules": {
-    "Name": "Azure.AppGw.WAFRules",
+  "Azure.Firewall.Mode": {
+    "Name": "Azure.Firewall.Mode",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000068",
+      "Value": "PSRule.Rules.Azure\\AZR-000105",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000068"
+      "Name": "AZR-000105"
     },
     "Alias": [
       null
@@ -1675,180 +893,12 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.VNET.PeerState": {
-    "Name": "Azure.VNET.PeerState",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.VM.PPGName": {
-    "Name": "Azure.VM.PPGName",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.VM.PromoSku": {
-    "Name": "Azure.VM.PromoSku",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AppGw.Prevention": {
-    "Name": "Azure.AppGw.Prevention",
+  "Azure.EventGrid.ManagedIdentity": {
+    "Name": "Azure.EventGrid.ManagedIdentity",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000065",
+      "Value": "PSRule.Rules.Azure\\AZR-000099",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000065"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.CDN.HTTP": {
-    "Name": "Azure.CDN.HTTP",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000093",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000093"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.Storage.SoftDelete": {
-    "Name": "Azure.Storage.SoftDelete",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.VM.DiskName": {
-    "Name": "Azure.VM.DiskName",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.FrontDoor.State": {
-    "Name": "Azure.FrontDoor.State",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000112",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000112"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.VM.ASAlignment": {
-    "Name": "Azure.VM.ASAlignment",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.FrontDoor.ProbeMethod": {
-    "Name": "Azure.FrontDoor.ProbeMethod",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000109",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000109"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_03"
-  },
-  "Azure.PostgreSQL.FirewallRuleCount": {
-    "Name": "Azure.PostgreSQL.FirewallRuleCount",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000149",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000149"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.APIM.ProductDescriptors": {
-    "Name": "Azure.APIM.ProductDescriptors",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000049",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000049"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.APIM.SampleProducts": {
-    "Name": "Azure.APIM.SampleProducts",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000048",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000048"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.SQL.FGName": {
-    "Name": "Azure.SQL.FGName",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.RedisEnterprise.Zones": {
-    "Name": "Azure.RedisEnterprise.Zones",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000162",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000162"
+      "Name": "AZR-000099"
     },
     "Alias": [
       null
@@ -1857,263 +907,29 @@
     "Release": "GA",
     "RuleSet": "2021_12"
   },
-  "Azure.AppService.UseHTTPS": {
-    "Name": "Azure.AppService.UseHTTPS",
+  "Azure.KeyVault.AutoRotationPolicy": {
+    "Name": "Azure.KeyVault.AutoRotationPolicy",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000084",
+      "Value": "PSRule.Rules.Azure\\AZR-000123",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000084"
+      "Name": "AZR-000123"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AppService.ARRAffinity": {
-    "Name": "Azure.AppService.ARRAffinity",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000083",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000083"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.APIM.CertificateExpiry": {
-    "Name": "Azure.APIM.CertificateExpiry",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000051",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000051"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.Template.LocationDefault": {
-    "Name": "Azure.Template.LocationDefault",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_03"
-  },
-  "Azure.AppService.PHPVersion": {
-    "Name": "Azure.AppService.PHPVersion",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000076",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000076"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.KeyVault.PurgeProtect": {
-    "Name": "Azure.KeyVault.PurgeProtect",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000125",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000125"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AKS.AvailabilityZone": {
-    "Name": "Azure.AKS.AvailabilityZone",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000021",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000021"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.EventHub.DisableLocalAuth": {
-    "Name": "Azure.EventHub.DisableLocalAuth",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000102",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000102"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
+    "Release": "preview",
     "RuleSet": "2022_03"
   },
-  "Azure.AKS.SecretStoreRotation": {
-    "Name": "Azure.AKS.SecretStoreRotation",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000034",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000034"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.Automation.WebHookExpiry": {
-    "Name": "Azure.Automation.WebHookExpiry",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000087",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000087"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.KeyVault.AccessPolicy": {
-    "Name": "Azure.KeyVault.AccessPolicy",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000118",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000118"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AppService.HTTP2": {
-    "Name": "Azure.AppService.HTTP2",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000078",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000078"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.LogicApp.LimitHTTPTrigger": {
-    "Name": "Azure.LogicApp.LimitHTTPTrigger",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000130",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000130"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.APIM.Protocols": {
-    "Name": "Azure.APIM.Protocols",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000054",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000054"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.SQL.AAD": {
-    "Name": "Azure.SQL.AAD",
+  "Azure.Template.ResourceLocation": {
+    "Name": "Azure.Template.ResourceLocation",
     "Ref": null,
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.LB.AvailabilityZone": {
-    "Name": "Azure.LB.AvailabilityZone",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000127",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000127"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.AKS.CNISubnetSize": {
-    "Name": "Azure.AKS.CNISubnetSize",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000020",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000020"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.PostgreSQL.FirewallIPRange": {
-    "Name": "Azure.PostgreSQL.FirewallIPRange",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000151",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000151"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.APIM.Name": {
-    "Name": "Azure.APIM.Name",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000056",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000056"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
+    "RuleSet": "2021_03"
   },
   "Azure.PublicIP.IsAttached": {
     "Name": "Azure.PublicIP.IsAttached",
@@ -2129,8 +945,8 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.Storage.UseReplication": {
-    "Name": "Azure.Storage.UseReplication",
+  "Azure.RBAC.LimitMGDelegation": {
+    "Name": "Azure.RBAC.LimitMGDelegation",
     "Ref": null,
     "Alias": [
       null
@@ -2139,36 +955,12 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.Monitor.ServiceHealth": {
-    "Name": "Azure.Monitor.ServiceHealth",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AKS.PodIdentity": {
-    "Name": "Azure.AKS.PodIdentity",
+  "Azure.AKS.StandardLB": {
+    "Name": "Azure.AKS.StandardLB",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000037",
+      "Value": "PSRule.Rules.Azure\\AZR-000026",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000037"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "preview",
-    "RuleSet": "2021_12"
-  },
-  "Azure.AKS.MinNodeCount": {
-    "Name": "Azure.AKS.MinNodeCount",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000024",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000024"
+      "Name": "AZR-000026"
     },
     "Alias": [
       null
@@ -2177,153 +969,19 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.Storage.SecureTransfer": {
-    "Name": "Azure.Storage.SecureTransfer",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.VM.Standalone": {
-    "Name": "Azure.VM.Standalone",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.ACR.ContainerScan": {
-    "Name": "Azure.ACR.ContainerScan",
+  "Azure.FrontDoor.Probe": {
+    "Name": "Azure.FrontDoor.Probe",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000002",
+      "Value": "PSRule.Rules.Azure\\AZR-000108",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000002"
+      "Name": "AZR-000108"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.PublicIP.DNSLabel": {
-    "Name": "Azure.PublicIP.DNSLabel",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000156",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000156"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.APIM.Ciphers": {
-    "Name": "Azure.APIM.Ciphers",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000055",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000055"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2022_03"
-  },
-  "Azure.AppConfig.Name": {
-    "Name": "Azure.AppConfig.Name",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000058",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000058"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.VNG.VPNAvailabilityZoneSKU": {
-    "Name": "Azure.VNG.VPNAvailabilityZoneSKU",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.VNG.VPNLegacySKU": {
-    "Name": "Azure.VNG.VPNLegacySKU",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.VM.PublicKey": {
-    "Name": "Azure.VM.PublicKey",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.LB.Probe": {
-    "Name": "Azure.LB.Probe",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000126",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000126"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.Redis.MaxMemoryReserved": {
-    "Name": "Azure.Redis.MaxMemoryReserved",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000160",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000160"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.AppService.MinTLS": {
-    "Name": "Azure.AppService.MinTLS",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000073",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000073"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
+    "RuleSet": "2021_03"
   },
   "Azure.FrontDoor.ProbePath": {
     "Name": "Azure.FrontDoor.ProbePath",
@@ -2353,12 +1011,46 @@
     "Release": "GA",
     "RuleSet": "2020_12"
   },
-  "Azure.PublicIP.StandardSKU": {
-    "Name": "Azure.PublicIP.StandardSKU",
+  "Azure.VNG.ConnectionName": {
+    "Name": "Azure.VNG.ConnectionName",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.EventHub.Usage": {
+    "Name": "Azure.EventHub.Usage",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000158",
+      "Value": "PSRule.Rules.Azure\\AZR-000101",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000158"
+      "Name": "AZR-000101"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_03"
+  },
+  "Azure.SQL.AAD": {
+    "Name": "Azure.SQL.AAD",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Redis.AvailabilityZone": {
+    "Name": "Azure.Redis.AvailabilityZone",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000161",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000161"
     },
     "Alias": [
       null
@@ -2366,6 +1058,178 @@
     "Flags": 0,
     "Release": "GA",
     "RuleSet": "2021_12"
+  },
+  "Azure.Template.UseParameters": {
+    "Name": "Azure.Template.UseParameters",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_09"
+  },
+  "Azure.ResourceGroup.Name": {
+    "Name": "Azure.ResourceGroup.Name",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000168",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000168"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.MySQL.ServerName": {
+    "Name": "Azure.MySQL.ServerName",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000136",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000136"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.APIM.SampleProducts": {
+    "Name": "Azure.APIM.SampleProducts",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000048",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000048"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.TrafficManager.Protocol": {
+    "Name": "Azure.TrafficManager.Protocol",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VM.ComputerName": {
+    "Name": "Azure.VM.ComputerName",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.FrontDoor.State": {
+    "Name": "Azure.FrontDoor.State",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000112",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000112"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.APIM.ProductSubscription": {
+    "Name": "Azure.APIM.ProductSubscription",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000046",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000046"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Storage.SecureTransfer": {
+    "Name": "Azure.Storage.SecureTransfer",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.SignalR.Name": {
+    "Name": "Azure.SignalR.Name",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Firewall.PolicyName": {
+    "Name": "Azure.Firewall.PolicyName",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000104",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000104"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.Policy.AssignmentAssignedBy": {
+    "Name": "Azure.Policy.AssignmentAssignedBy",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000144",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000144"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_06"
+  },
+  "Azure.AppGw.UseWAF": {
+    "Name": "Azure.AppGw.UseWAF",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000063",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000063"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VM.DiskCaching": {
+    "Name": "Azure.VM.DiskCaching",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
   },
   "Azure.RSV.StorageType": {
     "Name": "Azure.RSV.StorageType",
@@ -2381,71 +1245,85 @@
     "Release": "GA",
     "RuleSet": "2022_03"
   },
-  "Azure.RBAC.CoAdministrator": {
-    "Name": "Azure.RBAC.CoAdministrator",
+  "Azure.DataFactory.Version": {
+    "Name": "Azure.DataFactory.Version",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000097",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000097"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.ACR.ContentTrust": {
+    "Name": "Azure.ACR.ContentTrust",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000009",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000009"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.Template.ParameterMetadata": {
+    "Name": "Azure.Template.ParameterMetadata",
     "Ref": null,
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2020_06"
+    "RuleSet": "2020_09"
   },
-  "Azure.PostgreSQL.ServerName": {
-    "Name": "Azure.PostgreSQL.ServerName",
+  "Azure.AKS.AuthorizedIPs": {
+    "Name": "Azure.AKS.AuthorizedIPs",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000152",
+      "Value": "PSRule.Rules.Azure\\AZR-000030",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000152"
+      "Name": "AZR-000030"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2020_12"
+    "RuleSet": "2021_06"
   },
-  "Azure.AppGw.MinSku": {
-    "Name": "Azure.AppGw.MinSku",
+  "Azure.Automation.PlatformLogs": {
+    "Name": "Azure.Automation.PlatformLogs",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000062",
+      "Value": "PSRule.Rules.Azure\\AZR-000089",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000062"
+      "Name": "AZR-000089"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2020_06"
+    "RuleSet": "2021_12"
   },
-  "Azure.ACR.Quarantine": {
-    "Name": "Azure.ACR.Quarantine",
+  "Azure.AppService.WebProbePath": {
+    "Name": "Azure.AppService.WebProbePath",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000008",
+      "Value": "PSRule.Rules.Azure\\AZR-000080",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000008"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "preview",
-    "RuleSet": "2020_12"
-  },
-  "Azure.Firewall.Mode": {
-    "Name": "Azure.Firewall.Mode",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000105",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000105"
+      "Name": "AZR-000080"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2020_06"
+    "RuleSet": "2022_06"
   },
   "Azure.Automation.EncryptVariables": {
     "Name": "Azure.Automation.EncryptVariables",
@@ -2461,8 +1339,306 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.SignalR.Name": {
-    "Name": "Azure.SignalR.Name",
+  "Azure.ACR.Usage": {
+    "Name": "Azure.ACR.Usage",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000001",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000001"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.ADX.SLA": {
+    "Name": "Azure.ADX.SLA",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000014",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000014"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_03"
+  },
+  "Azure.VM.UseHybridUseBenefit": {
+    "Name": "Azure.VM.UseHybridUseBenefit",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AppInsights.Name": {
+    "Name": "Azure.AppInsights.Name",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000070",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000070"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_06"
+  },
+  "Azure.AppService.UseHTTPS": {
+    "Name": "Azure.AppService.UseHTTPS",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000084",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000084"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VM.DiskName": {
+    "Name": "Azure.VM.DiskName",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.ACR.Retention": {
+    "Name": "Azure.ACR.Retention",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000010",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000010"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "preview",
+    "RuleSet": "2020_12"
+  },
+  "Azure.AKS.CNISubnetSize": {
+    "Name": "Azure.AKS.CNISubnetSize",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000020",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000020"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
+  "Azure.AKS.ManagedIdentity": {
+    "Name": "Azure.AKS.ManagedIdentity",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000025",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000025"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.CDN.HTTP": {
+    "Name": "Azure.CDN.HTTP",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000093",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000093"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.WebPubSub.SLA": {
+    "Name": "Azure.WebPubSub.SLA",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_03"
+  },
+  "Azure.PublicIP.Name": {
+    "Name": "Azure.PublicIP.Name",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000155",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000155"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AppService.MinTLS": {
+    "Name": "Azure.AppService.MinTLS",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000073",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000073"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.SQL.TDE": {
+    "Name": "Azure.SQL.TDE",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.RedisEnterprise.Zones": {
+    "Name": "Azure.RedisEnterprise.Zones",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000162",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000162"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.AppGw.Prevention": {
+    "Name": "Azure.AppGw.Prevention",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000065",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000065"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AppService.WebSecureFtp": {
+    "Name": "Azure.AppService.WebSecureFtp",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000081",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000081"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_06"
+  },
+  "Azure.APIM.Name": {
+    "Name": "Azure.APIM.Name",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000056",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000056"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_09"
+  },
+  "Azure.SQL.MinTLS": {
+    "Name": "Azure.SQL.MinTLS",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_09"
+  },
+  "Azure.APIM.ProductTerms": {
+    "Name": "Azure.APIM.ProductTerms",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000050",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000050"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_09"
+  },
+  "Azure.Search.Name": {
+    "Name": "Azure.Search.Name",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000176",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000176"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_06"
+  },
+  "Azure.VM.ASMinMembers": {
+    "Name": "Azure.VM.ASMinMembers",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AKS.AvailabilityZone": {
+    "Name": "Azure.AKS.AvailabilityZone",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000021",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000021"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
+  "Azure.VM.PPGName": {
+    "Name": "Azure.VM.PPGName",
     "Ref": null,
     "Alias": [
       null
@@ -2485,63 +1661,13 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.VM.DiskSizeAlignment": {
-    "Name": "Azure.VM.DiskSizeAlignment",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.VMSS.Name": {
-    "Name": "Azure.VMSS.Name",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.SQL.ThreatDetection": {
-    "Name": "Azure.SQL.ThreatDetection",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.EventGrid.ManagedIdentity": {
-    "Name": "Azure.EventGrid.ManagedIdentity",
+  "Azure.NSG.Name": {
+    "Name": "Azure.NSG.Name",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000099",
+      "Value": "PSRule.Rules.Azure\\AZR-000141",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000099"
+      "Name": "AZR-000141"
     },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.SignalR.SLA": {
-    "Name": "Azure.SignalR.SLA",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2022_03"
-  },
-  "Azure.SQL.FirewallRuleCount": {
-    "Name": "Azure.SQL.FirewallRuleCount",
-    "Ref": null,
     "Alias": [
       null
     ],
@@ -2563,22 +1689,8 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.ACR.AdminUser": {
-    "Name": "Azure.ACR.AdminUser",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000005",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000005"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.RBAC.LimitMGDelegation": {
-    "Name": "Azure.RBAC.LimitMGDelegation",
+  "Azure.SecurityCenter.Contact": {
+    "Name": "Azure.SecurityCenter.Contact",
     "Ref": null,
     "Alias": [
       null
@@ -2587,8 +1699,36 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.SQL.FirewallIPRange": {
-    "Name": "Azure.SQL.FirewallIPRange",
+  "Azure.APIM.Protocols": {
+    "Name": "Azure.APIM.Protocols",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000054",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000054"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AKS.ContainerInsights": {
+    "Name": "Azure.AKS.ContainerInsights",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000041",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000041"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
+  "Azure.VNG.VPNLegacySKU": {
+    "Name": "Azure.VNG.VPNLegacySKU",
     "Ref": null,
     "Alias": [
       null
@@ -2597,26 +1737,12 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.KeyVault.Name": {
-    "Name": "Azure.KeyVault.Name",
+  "Azure.AKS.AutoUpgrade": {
+    "Name": "Azure.AKS.AutoUpgrade",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000120",
+      "Value": "PSRule.Rules.Azure\\AZR-000036",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000120"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_03"
-  },
-  "Azure.Identity.UserAssignedName": {
-    "Name": "Azure.Identity.UserAssignedName",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000117",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000117"
+      "Name": "AZR-000036"
     },
     "Alias": [
       null
@@ -2625,12 +1751,36 @@
     "Release": "GA",
     "RuleSet": "2021_12"
   },
-  "Azure.NSG.Associated": {
-    "Name": "Azure.NSG.Associated",
+  "Azure.MySQL.MinTLS": {
+    "Name": "Azure.MySQL.MinTLS",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000140",
+      "Value": "PSRule.Rules.Azure\\AZR-000132",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000140"
+      "Name": "AZR-000132"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_09"
+  },
+  "Azure.Template.TemplateSchema": {
+    "Name": "Azure.Template.TemplateSchema",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
+  "Azure.AppService.MinPlan": {
+    "Name": "Azure.AppService.MinPlan",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000072",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000072"
     },
     "Alias": [
       null
@@ -2639,22 +1789,8 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.AKS.AuditLogs": {
-    "Name": "Azure.AKS.AuditLogs",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000022",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000022"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.SQLMI.Name": {
-    "Name": "Azure.SQLMI.Name",
+  "Azure.SQL.FGName": {
+    "Name": "Azure.SQL.FGName",
     "Ref": null,
     "Alias": [
       null
@@ -2662,72 +1798,6 @@
     "Flags": 0,
     "Release": "GA",
     "RuleSet": "2020_12"
-  },
-  "Azure.Template.MetadataLink": {
-    "Name": "Azure.Template.MetadataLink",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_09"
-  },
-  "Azure.AppService.ManagedIdentity": {
-    "Name": "Azure.AppService.ManagedIdentity",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000082",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000082"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.Search.ManagedIdentity": {
-    "Name": "Azure.Search.ManagedIdentity",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000175",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000175"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_06"
-  },
-  "Azure.Search.SKU": {
-    "Name": "Azure.Search.SKU",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000172",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000172"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_06"
-  },
-  "Azure.Policy.ExemptionDescriptors": {
-    "Name": "Azure.Policy.ExemptionDescriptors",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000145",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000145"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_06"
   },
   "Azure.MySQL.AllowAzureAccess": {
     "Name": "Azure.MySQL.AllowAzureAccess",
@@ -2743,26 +1813,12 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.KeyVault.SecretName": {
-    "Name": "Azure.KeyVault.SecretName",
+  "Azure.AKS.UseRBAC": {
+    "Name": "Azure.AKS.UseRBAC",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000121",
+      "Value": "PSRule.Rules.Azure\\AZR-000038",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000121"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_03"
-  },
-  "Azure.FrontDoor.MinTLS": {
-    "Name": "Azure.FrontDoor.MinTLS",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000106",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000106"
+      "Name": "AZR-000038"
     },
     "Alias": [
       null
@@ -2770,6 +1826,34 @@
     "Flags": 0,
     "Release": "GA",
     "RuleSet": "2020_06"
+  },
+  "Azure.ACR.ImageHealth": {
+    "Name": "Azure.ACR.ImageHealth",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000003",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000003"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.LogicApp.LimitHTTPTrigger": {
+    "Name": "Azure.LogicApp.LimitHTTPTrigger",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000130",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000130"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
   },
   "Azure.ServiceFabric.AAD": {
     "Name": "Azure.ServiceFabric.AAD",
@@ -2780,20 +1864,6 @@
     "Flags": 0,
     "Release": "GA",
     "RuleSet": "2021_03"
-  },
-  "Azure.Search.IndexSLA": {
-    "Name": "Azure.Search.IndexSLA",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000174",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000174"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_06"
   },
   "Azure.ASG.Name": {
     "Name": "Azure.ASG.Name",
@@ -2809,6 +1879,72 @@
     "Release": "GA",
     "RuleSet": "2021_12"
   },
+  "Azure.PostgreSQL.FirewallIPRange": {
+    "Name": "Azure.PostgreSQL.FirewallIPRange",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000151",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000151"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.vWAN.Name": {
+    "Name": "Azure.vWAN.Name",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.AKS.SecretStore": {
+    "Name": "Azure.AKS.SecretStore",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000033",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000033"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.Firewall.Name": {
+    "Name": "Azure.Firewall.Name",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000103",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000103"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.Redis.MinSKU": {
+    "Name": "Azure.Redis.MinSKU",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000159",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000159"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
   "Azure.AKS.AzurePolicyAddOn": {
     "Name": "Azure.AKS.AzurePolicyAddOn",
     "Ref": {
@@ -2823,26 +1959,12 @@
     "Release": "GA",
     "RuleSet": "2020_12"
   },
-  "Azure.AppGw.MinInstance": {
-    "Name": "Azure.AppGw.MinInstance",
+  "Azure.AKS.SecretStoreRotation": {
+    "Name": "Azure.AKS.SecretStoreRotation",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000061",
+      "Value": "PSRule.Rules.Azure\\AZR-000034",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000061"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.Firewall.PolicyName": {
-    "Name": "Azure.Firewall.PolicyName",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000104",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000104"
+      "Name": "AZR-000034"
     },
     "Alias": [
       null
@@ -2851,12 +1973,12 @@
     "Release": "GA",
     "RuleSet": "2021_12"
   },
-  "Azure.MySQL.FirewallIPRange": {
-    "Name": "Azure.MySQL.FirewallIPRange",
+  "Azure.FrontDoor.WAF.Mode": {
+    "Name": "Azure.FrontDoor.WAF.Mode",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000135",
+      "Value": "PSRule.Rules.Azure\\AZR-000114",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000135"
+      "Name": "AZR-000114"
     },
     "Alias": [
       null
@@ -2865,22 +1987,8 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.ADX.ManagedIdentity": {
-    "Name": "Azure.ADX.ManagedIdentity",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000012",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000012"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2022_03"
-  },
-  "Azure.VNET.SingleDNS": {
-    "Name": "Azure.VNET.SingleDNS",
+  "Azure.VNG.Name": {
+    "Name": "Azure.VNG.Name",
     "Ref": null,
     "Alias": [
       null
@@ -2889,8 +1997,8 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.VNET.SubnetName": {
-    "Name": "Azure.VNET.SubnetName",
+  "Azure.VM.ADE": {
+    "Name": "Azure.VM.ADE",
     "Ref": null,
     "Alias": [
       null
@@ -2899,12 +2007,22 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.AKS.HttpAppRouting": {
-    "Name": "Azure.AKS.HttpAppRouting",
+  "Azure.SQL.DBName": {
+    "Name": "Azure.SQL.DBName",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.Automation.AuditLogs": {
+    "Name": "Azure.Automation.AuditLogs",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000035",
+      "Value": "PSRule.Rules.Azure\\AZR-000088",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000035"
+      "Name": "AZR-000088"
     },
     "Alias": [
       null
@@ -2912,6 +2030,44 @@
     "Flags": 0,
     "Release": "GA",
     "RuleSet": "2021_12"
+  },
+  "Azure.VMSS.Name": {
+    "Name": "Azure.VMSS.Name",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Search.IndexSLA": {
+    "Name": "Azure.Search.IndexSLA",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000174",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000174"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_06"
+  },
+  "Azure.AppGw.AvailabilityZone": {
+    "Name": "Azure.AppGw.AvailabilityZone",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000060",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000060"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
   },
   "Azure.VM.UniqueDns": {
     "Name": "Azure.VM.UniqueDns",
@@ -2922,44 +2078,6 @@
     "Flags": 0,
     "Release": "GA",
     "RuleSet": "2020_06"
-  },
-  "Azure.AKS.NodeMinPods": {
-    "Name": "Azure.AKS.NodeMinPods",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000018",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000018"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.EventGrid.DisableLocalAuth": {
-    "Name": "Azure.EventGrid.DisableLocalAuth",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000100",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000100"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "preview",
-    "RuleSet": "2021_12"
-  },
-  "Azure.SQL.ServerName": {
-    "Name": "Azure.SQL.ServerName",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
   },
   "Azure.APIM.ProductApproval": {
     "Name": "Azure.APIM.ProductApproval",
@@ -2985,76 +2103,22 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.ADX.DiskEncryption": {
-    "Name": "Azure.ADX.DiskEncryption",
+  "Azure.PublicIP.AvailabilityZone": {
+    "Name": "Azure.PublicIP.AvailabilityZone",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000013",
+      "Value": "PSRule.Rules.Azure\\AZR-000157",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000013"
+      "Name": "AZR-000157"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2022_03"
-  },
-  "Azure.Template.ExpressionLength": {
-    "Name": "Azure.Template.ExpressionLength",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
     "RuleSet": "2021_12"
   },
-  "Azure.Template.ParameterStrongType": {
-    "Name": "Azure.Template.ParameterStrongType",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.Storage.BlobPublicAccess": {
-    "Name": "Azure.Storage.BlobPublicAccess",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.vWAN.Name": {
-    "Name": "Azure.vWAN.Name",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_12"
-  },
-  "Azure.ACR.Name": {
-    "Name": "Azure.ACR.Name",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000007",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000007"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.Template.UseLocationParameter": {
-    "Name": "Azure.Template.UseLocationParameter",
+  "Azure.Template.ParameterDataTypes": {
+    "Name": "Azure.Template.ParameterDataTypes",
     "Ref": null,
     "Alias": [
       null
@@ -3063,37 +2127,41 @@
     "Release": "GA",
     "RuleSet": "2021_03"
   },
-  "Azure.AppService.WebProbePath": {
-    "Name": "Azure.AppService.WebProbePath",
+  "Azure.AKS.HttpAppRouting": {
+    "Name": "Azure.AKS.HttpAppRouting",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000080",
+      "Value": "PSRule.Rules.Azure\\AZR-000035",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000080"
+      "Name": "AZR-000035"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2022_06"
+    "RuleSet": "2021_12"
   },
-  "Azure.AKS.AzureRBAC": {
-    "Name": "Azure.AKS.AzureRBAC",
+  "Azure.EventGrid.DisableLocalAuth": {
+    "Name": "Azure.EventGrid.DisableLocalAuth",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000032",
+      "Value": "PSRule.Rules.Azure\\AZR-000100",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000032"
+      "Name": "AZR-000100"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_06"
+    "Release": "preview",
+    "RuleSet": "2021_12"
   },
-  "Azure.Storage.Name": {
-    "Name": "Azure.Storage.Name",
-    "Ref": null,
+  "Azure.AppGw.WAFEnabled": {
+    "Name": "Azure.AppGw.WAFEnabled",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000066",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000066"
+    },
     "Alias": [
       null
     ],
@@ -3111,6 +2179,980 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
+  "Azure.SQL.ThreatDetection": {
+    "Name": "Azure.SQL.ThreatDetection",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VNET.LocalDNS": {
+    "Name": "Azure.VNET.LocalDNS",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.SecurityCenter.Provisioning": {
+    "Name": "Azure.SecurityCenter.Provisioning",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Template.ParameterScheme": {
+    "Name": "Azure.Template.ParameterScheme",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
+  "Azure.VNET.UseNSGs": {
+    "Name": "Azure.VNET.UseNSGs",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AppService.RemoteDebug": {
+    "Name": "Azure.AppService.RemoteDebug",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000074",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000074"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.Template.UseComments": {
+    "Name": "Azure.Template.UseComments",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.LB.StandardSKU": {
+    "Name": "Azure.LB.StandardSKU",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000128",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000128"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
+  "Azure.PrivateEndpoint.Name": {
+    "Name": "Azure.PrivateEndpoint.Name",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000153",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000153"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.WebPubSub.ManagedIdentity": {
+    "Name": "Azure.WebPubSub.ManagedIdentity",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_03"
+  },
+  "Azure.SQL.AllowAzureAccess": {
+    "Name": "Azure.SQL.AllowAzureAccess",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AppConfig.Name": {
+    "Name": "Azure.AppConfig.Name",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000058",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000058"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.AKS.PlatformLogs": {
+    "Name": "Azure.AKS.PlatformLogs",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000023",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000023"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
+  "Azure.Search.ManagedIdentity": {
+    "Name": "Azure.Search.ManagedIdentity",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000175",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000175"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_06"
+  },
+  "Azure.Automation.ManagedIdentity": {
+    "Name": "Azure.Automation.ManagedIdentity",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000090",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000090"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.FrontDoor.Name": {
+    "Name": "Azure.FrontDoor.Name",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000113",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000113"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Redis.MaxMemoryReserved": {
+    "Name": "Azure.Redis.MaxMemoryReserved",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000160",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000160"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.KeyVault.KeyName": {
+    "Name": "Azure.KeyVault.KeyName",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000122",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000122"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_03"
+  },
+  "Azure.AKS.AutoScaling": {
+    "Name": "Azure.AKS.AutoScaling",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000019",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000019"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
+  "Azure.APIM.ManagedIdentity": {
+    "Name": "Azure.APIM.ManagedIdentity",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000053",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000053"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.LB.Name": {
+    "Name": "Azure.LB.Name",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000129",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000129"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Storage.MinTLS": {
+    "Name": "Azure.Storage.MinTLS",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_09"
+  },
+  "Azure.KeyVault.Name": {
+    "Name": "Azure.KeyVault.Name",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000120",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000120"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_03"
+  },
+  "Azure.VM.BasicSku": {
+    "Name": "Azure.VM.BasicSku",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.SQLMI.Name": {
+    "Name": "Azure.SQLMI.Name",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.ContainerApp.Insecure": {
+    "Name": "Azure.ContainerApp.Insecure",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000094",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000094"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "preview",
+    "RuleSet": "2022_03"
+  },
+  "Azure.Template.ParameterMinMaxValue": {
+    "Name": "Azure.Template.ParameterMinMaxValue",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_03"
+  },
+  "Azure.ACR.ContainerScan": {
+    "Name": "Azure.ACR.ContainerScan",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000002",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000002"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.AKS.NetworkPolicy": {
+    "Name": "Azure.AKS.NetworkPolicy",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000027",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000027"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.PostgreSQL.FirewallRuleCount": {
+    "Name": "Azure.PostgreSQL.FirewallRuleCount",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000149",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000149"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.NSG.LateralTraversal": {
+    "Name": "Azure.NSG.LateralTraversal",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000139",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000139"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VM.PromoSku": {
+    "Name": "Azure.VM.PromoSku",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Storage.BlobPublicAccess": {
+    "Name": "Azure.Storage.BlobPublicAccess",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_09"
+  },
+  "Azure.APIM.HTTPEndpoint": {
+    "Name": "Azure.APIM.HTTPEndpoint",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000042",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000042"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Policy.AssignmentDescriptors": {
+    "Name": "Azure.Policy.AssignmentDescriptors",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000143",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000143"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_06"
+  },
+  "Azure.Template.UseDescriptions": {
+    "Name": "Azure.Template.UseDescriptions",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.AKS.DNSPrefix": {
+    "Name": "Azure.AKS.DNSPrefix",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000040",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000040"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.FrontDoor.WAF.Enabled": {
+    "Name": "Azure.FrontDoor.WAF.Enabled",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000115",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000115"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.ADX.ManagedIdentity": {
+    "Name": "Azure.ADX.ManagedIdentity",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000012",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000012"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_03"
+  },
+  "Azure.AppGw.MinSku": {
+    "Name": "Azure.AppGw.MinSku",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000062",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000062"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AppGw.WAFRules": {
+    "Name": "Azure.AppGw.WAFRules",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000068",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000068"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.RBAC.PIM": {
+    "Name": "Azure.RBAC.PIM",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_09"
+  },
+  "Azure.MySQL.FirewallRuleCount": {
+    "Name": "Azure.MySQL.FirewallRuleCount",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000133",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000133"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.PostgreSQL.AllowAzureAccess": {
+    "Name": "Azure.PostgreSQL.AllowAzureAccess",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000150",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000150"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AppGw.SSLPolicy": {
+    "Name": "Azure.AppGw.SSLPolicy",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000064",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000064"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.APIM.EncryptValues": {
+    "Name": "Azure.APIM.EncryptValues",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000045",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000045"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.KeyVault.PurgeProtect": {
+    "Name": "Azure.KeyVault.PurgeProtect",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000125",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000125"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VNG.VPNActiveActive": {
+    "Name": "Azure.VNG.VPNActiveActive",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AKS.NodeMinPods": {
+    "Name": "Azure.AKS.NodeMinPods",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000018",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000018"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AppService.ManagedIdentity": {
+    "Name": "Azure.AppService.ManagedIdentity",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000082",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000082"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.VM.NICAttached": {
+    "Name": "Azure.VM.NICAttached",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.APIM.HTTPBackend": {
+    "Name": "Azure.APIM.HTTPBackend",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000044",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000044"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.ADX.DiskEncryption": {
+    "Name": "Azure.ADX.DiskEncryption",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000013",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000013"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_03"
+  },
+  "Azure.FrontDoor.Logs": {
+    "Name": "Azure.FrontDoor.Logs",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000107",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000107"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VM.Standalone": {
+    "Name": "Azure.VM.Standalone",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AppService.PHPVersion": {
+    "Name": "Azure.AppService.PHPVersion",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000076",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000076"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.APIM.AvailabilityZone": {
+    "Name": "Azure.APIM.AvailabilityZone",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000052",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000052"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_12"
+  },
+  "Azure.Template.LocationDefault": {
+    "Name": "Azure.Template.LocationDefault",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_03"
+  },
+  "Azure.AKS.LocalAccounts": {
+    "Name": "Azure.AKS.LocalAccounts",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000031",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000031"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "preview",
+    "RuleSet": "2021_06"
+  },
+  "Azure.APIM.Ciphers": {
+    "Name": "Azure.APIM.Ciphers",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000055",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000055"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_03"
+  },
+  "Azure.AKS.AzureRBAC": {
+    "Name": "Azure.AKS.AzureRBAC",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000032",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000032"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_06"
+  },
+  "Azure.Template.Resources": {
+    "Name": "Azure.Template.Resources",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_09"
+  },
+  "Azure.VM.ASName": {
+    "Name": "Azure.VM.ASName",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VM.Agent": {
+    "Name": "Azure.VM.Agent",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AppGw.OWASP": {
+    "Name": "Azure.AppGw.OWASP",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000067",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000067"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.RSV.ReplicationAlert": {
+    "Name": "Azure.RSV.ReplicationAlert",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000171",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000171"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_03"
+  },
+  "Azure.VNET.Name": {
+    "Name": "Azure.VNET.Name",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AppConfig.SKU": {
+    "Name": "Azure.AppConfig.SKU",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000057",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000057"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.ServiceBus.DisableLocalAuth": {
+    "Name": "Azure.ServiceBus.DisableLocalAuth",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_03"
+  },
+  "Azure.Resource.UseTags": {
+    "Name": "Azure.Resource.UseTags",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000166",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000166"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.PostgreSQL.ServerName": {
+    "Name": "Azure.PostgreSQL.ServerName",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000152",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000152"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.FrontDoor.MinTLS": {
+    "Name": "Azure.FrontDoor.MinTLS",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000106",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000106"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Redis.PublicNetworkAccess": {
+    "Name": "Azure.Redis.PublicNetworkAccess",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000165",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000165"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2022_03"
+  },
+  "Azure.VNET.SubnetName": {
+    "Name": "Azure.VNET.SubnetName",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.MySQL.UseSSL": {
+    "Name": "Azure.MySQL.UseSSL",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000131",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000131"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.MySQL.FirewallIPRange": {
+    "Name": "Azure.MySQL.FirewallIPRange",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000135",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000135"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AppGw.UseHTTPS": {
+    "Name": "Azure.AppGw.UseHTTPS",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000059",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000059"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_09"
+  },
   "Azure.NSG.DenyAllInbound": {
     "Name": "Azure.NSG.DenyAllInbound",
     "Ref": {
@@ -3125,12 +3167,26 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.DataFactory.Version": {
-    "Name": "Azure.DataFactory.Version",
+  "Azure.AppService.HTTP2": {
+    "Name": "Azure.AppService.HTTP2",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000097",
+      "Value": "PSRule.Rules.Azure\\AZR-000078",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000097"
+      "Name": "AZR-000078"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_12"
+  },
+  "Azure.KeyVault.Logs": {
+    "Name": "Azure.KeyVault.Logs",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000119",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000119"
     },
     "Alias": [
       null
@@ -3139,8 +3195,8 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.SecurityCenter.Provisioning": {
-    "Name": "Azure.SecurityCenter.Provisioning",
+  "Azure.VM.Name": {
+    "Name": "Azure.VM.Name",
     "Ref": null,
     "Alias": [
       null
@@ -3163,13 +3219,9 @@
     "Release": "GA",
     "RuleSet": "2021_09"
   },
-  "Azure.AppService.MinPlan": {
-    "Name": "Azure.AppService.MinPlan",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000072",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000072"
-    },
+  "Azure.RBAC.UseRGDelegation": {
+    "Name": "Azure.RBAC.UseRGDelegation",
+    "Ref": null,
     "Alias": [
       null
     ],
@@ -3177,115 +3229,39 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.AKS.NetworkPolicy": {
-    "Name": "Azure.AKS.NetworkPolicy",
+  "Azure.Template.LocationType": {
+    "Name": "Azure.Template.LocationType",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_03"
+  },
+  "Azure.APIM.APIDescriptors": {
+    "Name": "Azure.APIM.APIDescriptors",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000027",
+      "Value": "PSRule.Rules.Azure\\AZR-000043",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000027"
+      "Name": "AZR-000043"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2020_06"
+    "RuleSet": "2020_09"
   },
-  "Azure.APIM.AvailabilityZone": {
-    "Name": "Azure.APIM.AvailabilityZone",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000052",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000052"
-    },
+  "Azure.VNG.VPNAvailabilityZoneSKU": {
+    "Name": "Azure.VNG.VPNAvailabilityZoneSKU",
+    "Ref": null,
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
     "RuleSet": "2021_12"
-  },
-  "Azure.VM.DiskCaching": {
-    "Name": "Azure.VM.DiskCaching",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AKS.Name": {
-    "Name": "Azure.AKS.Name",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000039",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000039"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AppGw.WAFEnabled": {
-    "Name": "Azure.AppGw.WAFEnabled",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000066",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000066"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.VNG.ConnectionName": {
-    "Name": "Azure.VNG.ConnectionName",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.SQL.AllowAzureAccess": {
-    "Name": "Azure.SQL.AllowAzureAccess",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.Storage.BlobAccessType": {
-    "Name": "Azure.Storage.BlobAccessType",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.Search.Name": {
-    "Name": "Azure.Search.Name",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000176",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000176"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2021_06"
   },
   "Azure.AKS.PoolScaleSet": {
     "Name": "Azure.AKS.PoolScaleSet",
@@ -3301,64 +3277,8 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.ADX.SLA": {
-    "Name": "Azure.ADX.SLA",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000014",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000014"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2022_03"
-  },
-  "Azure.MySQL.ServerName": {
-    "Name": "Azure.MySQL.ServerName",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000136",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000136"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.Redis.MinSKU": {
-    "Name": "Azure.Redis.MinSKU",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000159",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000159"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_12"
-  },
-  "Azure.MySQL.UseSSL": {
-    "Name": "Azure.MySQL.UseSSL",
-    "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000131",
-      "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000131"
-    },
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.VNET.UseNSGs": {
-    "Name": "Azure.VNET.UseNSGs",
+  "Azure.Storage.Name": {
+    "Name": "Azure.Storage.Name",
     "Ref": null,
     "Alias": [
       null
@@ -3367,12 +3287,80 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.AppInsights.Name": {
-    "Name": "Azure.AppInsights.Name",
+  "Azure.AKS.MinNodeCount": {
+    "Name": "Azure.AKS.MinNodeCount",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000070",
+      "Value": "PSRule.Rules.Azure\\AZR-000024",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000070"
+      "Name": "AZR-000024"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Template.TemplateFile": {
+    "Name": "Azure.Template.TemplateFile",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AKS.PodIdentity": {
+    "Name": "Azure.AKS.PodIdentity",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000037",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000037"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "preview",
+    "RuleSet": "2021_12"
+  },
+  "Azure.Monitor.ServiceHealth": {
+    "Name": "Azure.Monitor.ServiceHealth",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VM.AcceleratedNetworking": {
+    "Name": "Azure.VM.AcceleratedNetworking",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.VM.ASAlignment": {
+    "Name": "Azure.VM.ASAlignment",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.AKS.ManagedAAD": {
+    "Name": "Azure.AKS.ManagedAAD",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000029",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000029"
     },
     "Alias": [
       null
@@ -3381,22 +3369,22 @@
     "Release": "GA",
     "RuleSet": "2021_06"
   },
-  "Azure.ACR.ImageHealth": {
-    "Name": "Azure.ACR.ImageHealth",
+  "Azure.APIM.CertificateExpiry": {
+    "Name": "Azure.APIM.CertificateExpiry",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000003",
+      "Value": "PSRule.Rules.Azure\\AZR-000051",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000003"
+      "Name": "AZR-000051"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2020_12"
+    "RuleSet": "2020_06"
   },
-  "Azure.VM.UseManagedDisks": {
-    "Name": "Azure.VM.UseManagedDisks",
+  "Azure.VNET.PeerState": {
+    "Name": "Azure.VNET.PeerState",
     "Ref": null,
     "Alias": [
       null
@@ -3405,76 +3393,26 @@
     "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.Template.UseParameters": {
-    "Name": "Azure.Template.UseParameters",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_09"
-  },
-  "Azure.WebPubSub.SLA": {
-    "Name": "Azure.WebPubSub.SLA",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2022_03"
-  },
-  "Azure.WebPubSub.ManagedIdentity": {
-    "Name": "Azure.WebPubSub.ManagedIdentity",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2022_03"
-  },
-  "Azure.Redis.PublicNetworkAccess": {
-    "Name": "Azure.Redis.PublicNetworkAccess",
+  "Azure.Redis.NonSslPort": {
+    "Name": "Azure.Redis.NonSslPort",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000165",
+      "Value": "PSRule.Rules.Azure\\AZR-000163",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000165"
+      "Name": "AZR-000163"
     },
     "Alias": [
       null
     ],
     "Flags": 0,
     "Release": "GA",
-    "RuleSet": "2022_03"
-  },
-  "Azure.VM.UseHybridUseBenefit": {
-    "Name": "Azure.VM.UseHybridUseBenefit",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
     "RuleSet": "2020_06"
   },
-  "Azure.VM.ComputerName": {
-    "Name": "Azure.VM.ComputerName",
-    "Ref": null,
-    "Alias": [
-      null
-    ],
-    "Flags": 0,
-    "Release": "GA",
-    "RuleSet": "2020_06"
-  },
-  "Azure.AKS.PlatformLogs": {
-    "Name": "Azure.AKS.PlatformLogs",
+  "Azure.Cosmos.AccountName": {
+    "Name": "Azure.Cosmos.AccountName",
     "Ref": {
-      "Value": "PSRule.Rules.Azure\\AZR-000023",
+      "Value": "PSRule.Rules.Azure\\AZR-000096",
       "Scope": "PSRule.Rules.Azure",
-      "Name": "AZR-000023"
+      "Name": "AZR-000096"
     },
     "Alias": [
       null
@@ -3482,5 +3420,67 @@
     "Flags": 0,
     "Release": "GA",
     "RuleSet": "2021_09"
+  },
+  "Azure.Resource.AllowedRegions": {
+    "Name": "Azure.Resource.AllowedRegions",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000167",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000167"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.Template.UseLocationParameter": {
+    "Name": "Azure.Template.UseLocationParameter",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2021_03"
+  },
+  "Azure.ACR.Name": {
+    "Name": "Azure.ACR.Name",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000007",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000007"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.RBAC.CoAdministrator": {
+    "Name": "Azure.RBAC.CoAdministrator",
+    "Ref": null,
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_06"
+  },
+  "Azure.APIM.ProductDescriptors": {
+    "Name": "Azure.APIM.ProductDescriptors",
+    "Ref": {
+      "Value": "PSRule.Rules.Azure\\AZR-000049",
+      "Scope": "PSRule.Rules.Azure",
+      "Name": "AZR-000049"
+    },
+    "Alias": [
+      null
+    ],
+    "Flags": 0,
+    "Release": "GA",
+    "RuleSet": "2020_09"
   }
 }
