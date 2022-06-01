@@ -34,6 +34,8 @@ What's changed since pre-release v1.16.0-B0017:
     [#1432](https://github.com/Azure/PSRule.Rules.Azure/issues/1432)
   - Added ref properties for several rules by @BernieWhite.
     [#1430](https://github.com/Azure/PSRule.Rules.Azure/issues/1430)
+  - Updated provider data for analysis.
+    [#1453](https://github.com/Azure/PSRule.Rules.Azure/pull/1453)
 
 ## v1.16.0-B0017 (pre-release)
 

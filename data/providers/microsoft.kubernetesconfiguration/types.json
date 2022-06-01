@@ -81,7 +81,13 @@
       "East Asia",
       "Japan East",
       "Canada East",
-      "Canada Central"
+      "Canada Central",
+      "Norway East",
+      "Germany West Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Australia Southeast",
+      "Central India"
     ],
     "zoneMappings": null
   },
@@ -178,7 +184,13 @@
       "East Asia",
       "Japan East",
       "Canada East",
-      "Canada Central"
+      "Canada Central",
+      "Norway East",
+      "Germany West Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Australia Southeast",
+      "Central India"
     ],
     "zoneMappings": null
   },
@@ -253,7 +265,13 @@
       "East Asia",
       "Japan East",
       "Canada East",
-      "Canada Central"
+      "Canada Central",
+      "Norway East",
+      "Germany West Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Australia Southeast",
+      "Central India"
     ],
     "zoneMappings": null
   }

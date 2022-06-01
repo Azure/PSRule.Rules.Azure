@@ -538,7 +538,7 @@ namespace PSRule.Rules.Azure
 
             var actual2 = Functions.Providers(context, new object[] { "Microsoft.Web" }) as ResourceProviderType[];
             Assert.NotNull(actual1);
-            Assert.Equal(92, actual2.Length);
+            Assert.Equal(94, actual2.Length);
 
             var actual3 = Functions.Providers(context, new object[] { "microsoft.web", "Sites" }) as ResourceProviderType;
             Assert.NotNull(actual3);

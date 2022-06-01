@@ -1,5 +1,52 @@
 [
   {
+    "aliases": null,
+    "resourceType": "backupInstances",
+    "apiVersions": [
+      "2022-03-31-preview"
+    ],
+    "locations": [
+      "South Central US",
+      "East US",
+      "East US 2",
+      "West US",
+      "UK South",
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central US",
+      "East Asia",
+      "France Central",
+      "Germany West Central",
+      "Central India",
+      "South India",
+      "West India",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "Southeast Asia",
+      "Switzerland North",
+      "UAE North",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US 2",
+      "Jio India West",
+      "Jio India Central",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.DataProtection/backupVaults/provisioningState": "properties.provisioningState",
       "Microsoft.DataProtection/backupVaults/storageSettings": "properties.storageSettings",

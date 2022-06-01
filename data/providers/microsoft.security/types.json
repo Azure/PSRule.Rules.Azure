@@ -1505,6 +1505,7 @@
     "aliases": null,
     "resourceType": "securityConnectors",
     "apiVersions": [
+      "2022-05-01-preview",
       "2021-12-01-preview",
       "2021-07-01-preview"
     ],

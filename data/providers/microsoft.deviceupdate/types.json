@@ -21,6 +21,7 @@
     },
     "resourceType": "accounts",
     "apiVersions": [
+      "2022-04-01-preview",
       "2020-03-01-preview"
     ],
     "locations": [
@@ -47,6 +48,7 @@
     },
     "resourceType": "accounts/instances",
     "apiVersions": [
+      "2022-04-01-preview",
       "2020-03-01-preview"
     ],
     "locations": [
@@ -62,6 +64,7 @@
     },
     "resourceType": "accounts/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2022-04-01-preview",
       "2020-03-01-preview"
     ],
     "locations": [
@@ -85,6 +88,7 @@
     },
     "resourceType": "accounts/privateEndpointConnections",
     "apiVersions": [
+      "2022-04-01-preview",
       "2020-03-01-preview"
     ],
     "locations": [
@@ -98,6 +102,7 @@
     "aliases": null,
     "resourceType": "accounts/privateLinkResources",
     "apiVersions": [
+      "2022-04-01-preview",
       "2020-03-01-preview"
     ],
     "locations": [
@@ -111,6 +116,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-04-01-preview",
       "2020-03-01-preview"
     ],
     "locations": [],
@@ -137,7 +143,14 @@
       "East US 2 EUAP",
       "West US 2",
       "North Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "Australia East",
+      "East US",
+      "East US 2",
+      "South Central US",
+      "Sweden Central",
+      "West Europe",
+      "West US 3"
     ],
     "zoneMappings": null
   },

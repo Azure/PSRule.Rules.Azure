@@ -234,6 +234,9 @@
     "aliases": null,
     "resourceType": "locations/orchestrators",
     "apiVersions": [
+      "2022-05-02-preview",
+      "2022-04-02-preview",
+      "2022-04-01",
       "2022-03-02-preview",
       "2022-03-01",
       "2022-02-02-preview",
@@ -315,6 +318,9 @@
     "aliases": null,
     "resourceType": "locations/osOptions",
     "apiVersions": [
+      "2022-05-02-preview",
+      "2022-04-02-preview",
+      "2022-04-01",
       "2022-03-02-preview",
       "2022-03-01",
       "2022-02-02-preview",
@@ -658,6 +664,9 @@
     },
     "resourceType": "managedClusters",
     "apiVersions": [
+      "2022-05-02-preview",
+      "2022-04-02-preview",
+      "2022-04-01",
       "2022-03-02-preview",
       "2022-03-01",
       "2022-02-02-preview",
@@ -742,6 +751,8 @@
     "aliases": null,
     "resourceType": "managedclustersnapshots",
     "apiVersions": [
+      "2022-05-02-preview",
+      "2022-04-02-preview",
       "2022-03-02-preview",
       "2022-02-02-preview"
     ],
@@ -887,6 +898,9 @@
     },
     "resourceType": "snapshots",
     "apiVersions": [
+      "2022-05-02-preview",
+      "2022-04-02-preview",
+      "2022-04-01",
       "2022-03-02-preview",
       "2022-03-01",
       "2022-02-02-preview",

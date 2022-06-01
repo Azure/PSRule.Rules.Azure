@@ -1,0 +1,57 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "elasticSans",
+    "apiVersions": [
+      "2021-11-20-preview"
+    ],
+    "locations": [
+      "East US 2 (Stage)"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-11-20-preview"
+    ],
+    "locations": [
+      "East US 2 (Stage)"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/asyncoperations",
+    "apiVersions": [
+      "2021-11-20-preview"
+    ],
+    "locations": [
+      "East US 2 (Stage)"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-11-20-preview"
+    ],
+    "locations": [
+      "East US 2 (Stage)"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "skus",
+    "apiVersions": [
+      "2021-11-20-preview"
+    ],
+    "locations": [
+      "East US 2 (Stage)"
+    ],
+    "zoneMappings": null
+  }
+]

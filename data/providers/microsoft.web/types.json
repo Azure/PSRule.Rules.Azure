@@ -5127,6 +5127,31 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "staticSites/builds/linkedBackends",
+    "apiVersions": [
+      "2022-03-01",
+      "2021-03-01",
+      "2021-02-01",
+      "2021-01-15",
+      "2021-01-01",
+      "2020-12-01",
+      "2020-10-01",
+      "2020-09-01",
+      "2020-06-01",
+      "2019-12-01-preview",
+      "2019-08-01"
+    ],
+    "locations": [
+      "West US 2",
+      "Central US",
+      "East US 2",
+      "West Europe",
+      "East Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.Web/staticSites/builds/userProvidedFunctionApps/createdOn": "properties.createdOn",
       "Microsoft.Web/staticSites/builds/userProvidedFunctionApps/functionAppRegion": "properties.functionAppRegion",
@@ -5134,7 +5159,37 @@
     },
     "resourceType": "staticSites/builds/userProvidedFunctionApps",
     "apiVersions": [
+      "2022-03-01",
+      "2021-03-01",
+      "2021-02-01",
+      "2021-01-15",
+      "2021-01-01",
       "2020-12-01"
+    ],
+    "locations": [
+      "West US 2",
+      "Central US",
+      "East US 2",
+      "West Europe",
+      "East Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "staticSites/linkedBackends",
+    "apiVersions": [
+      "2022-03-01",
+      "2021-03-01",
+      "2021-02-01",
+      "2021-01-15",
+      "2021-01-01",
+      "2020-12-01",
+      "2020-10-01",
+      "2020-09-01",
+      "2020-06-01",
+      "2019-12-01-preview",
+      "2019-08-01"
     ],
     "locations": [
       "West US 2",
@@ -5153,6 +5208,11 @@
     },
     "resourceType": "staticSites/userProvidedFunctionApps",
     "apiVersions": [
+      "2022-03-01",
+      "2021-03-01",
+      "2021-02-01",
+      "2021-01-15",
+      "2021-01-01",
       "2020-12-01"
     ],
     "locations": [
