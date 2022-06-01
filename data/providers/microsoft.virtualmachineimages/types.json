@@ -31,6 +31,7 @@
     },
     "resourceType": "imageTemplates",
     "apiVersions": [
+      "2022-02-14",
       "2021-10-01",
       "2020-02-14",
       "2019-05-01-preview"
@@ -72,6 +73,7 @@
     "aliases": null,
     "resourceType": "imageTemplates/runOutputs",
     "apiVersions": [
+      "2022-02-14",
       "2021-10-01",
       "2020-02-14",
       "2019-05-01-preview"
@@ -113,6 +115,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-02-14",
       "2021-10-01",
       "2020-02-14",
       "2019-05-01-preview"
@@ -154,6 +157,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2022-02-14",
       "2021-10-01",
       "2020-02-14",
       "2019-05-01-preview"
@@ -195,6 +199,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-02-14",
       "2021-10-01",
       "2020-02-14",
       "2019-05-01-preview"

@@ -52,6 +52,7 @@
       "Korea Central",
       "UAE North",
       "Japan East",
+      "Switzerland North",
       "Australia East",
       "North Europe",
       "West Central US",
@@ -69,7 +70,8 @@
     "locations": [
       "Korea Central",
       "UAE North",
-      "Japan East"
+      "Japan East",
+      "Switzerland North"
     ],
     "zoneMappings": null
   },
@@ -108,6 +110,33 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/listFeatures",
+    "apiVersions": [
+      "2021-12-01"
+    ],
+    "locations": [
+      "East US",
+      "West Europe",
+      "Southeast Asia",
+      "Canada Central",
+      "South Central US",
+      "Brazil South",
+      "Central India",
+      "UK South",
+      "France Central",
+      "Korea Central",
+      "UAE North",
+      "Japan East",
+      "Australia East",
+      "North Europe",
+      "West Central US",
+      "West US 2",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
       "2021-12-01",
@@ -127,6 +156,7 @@
       "Korea Central",
       "UAE North",
       "Japan East",
+      "Switzerland North",
       "Australia East",
       "North Europe",
       "West Central US",
@@ -154,6 +184,7 @@
       "Korea Central",
       "UAE North",
       "Japan East",
+      "Switzerland North",
       "Australia East",
       "North Europe",
       "West Central US",

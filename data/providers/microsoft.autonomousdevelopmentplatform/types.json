@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checknameavailability",
     "apiVersions": [
+      "2022-03-01-preview",
       "2021-11-01-preview",
       "2021-02-01-preview",
       "2020-07-01-preview"
@@ -14,6 +15,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-03-01-preview",
       "2021-11-01-preview",
       "2021-02-01-preview",
       "2020-07-01-preview"
@@ -25,13 +27,16 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2022-03-01-preview",
       "2021-11-01-preview",
       "2021-02-01-preview",
       "2020-07-01-preview"
     ],
     "locations": [
-      "East US 2 EUAP",
-      "West Europe"
+      "South Central US",
+      "West Central US",
+      "West Europe",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -39,6 +44,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-03-01-preview",
       "2021-11-01-preview",
       "2021-02-01-preview",
       "2020-07-01-preview"

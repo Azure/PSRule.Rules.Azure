@@ -3,7 +3,9 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
-      "2021-05-13-preview"
+      "2022-05-13",
+      "2021-05-13-preview",
+      "2020-12-01-preview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -12,6 +14,7 @@
     "aliases": null,
     "resourceType": "Ledgers",
     "apiVersions": [
+      "2022-05-13",
       "2021-05-13-preview",
       "2020-12-01-preview"
     ],
@@ -26,6 +29,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2022-05-13",
       "2021-05-13-preview",
       "2020-12-01-preview"
     ],
@@ -36,8 +40,20 @@
   },
   {
     "aliases": null,
+    "resourceType": "Locations/operations",
+    "apiVersions": [
+      "2022-05-13",
+      "2021-05-13-preview",
+      "2020-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "Locations/operationstatuses",
     "apiVersions": [
+      "2022-05-13",
       "2021-05-13-preview",
       "2020-12-01-preview"
     ],

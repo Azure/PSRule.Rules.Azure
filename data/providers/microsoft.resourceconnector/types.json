@@ -7,7 +7,10 @@
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "UK South",
+      "Australia East",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -31,7 +34,10 @@
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "UK South",
+      "Australia East",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -44,7 +50,10 @@
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "UK South",
+      "Australia East",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },

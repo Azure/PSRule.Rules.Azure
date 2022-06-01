@@ -483,7 +483,11 @@
       },
       {
         "location": "Switzerland North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UAE North",

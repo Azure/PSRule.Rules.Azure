@@ -19,7 +19,10 @@
       "East US 2",
       "West US 2",
       "North Europe",
-      "Australia East"
+      "Australia East",
+      "East Asia",
+      "Japan East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },

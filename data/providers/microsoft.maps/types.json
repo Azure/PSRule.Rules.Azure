@@ -1,6 +1,11 @@
 [
   {
     "aliases": {
+      "Microsoft.Maps/accounts/cors": "properties.cors",
+      "Microsoft.Maps/accounts/cors.corsRules": "properties.cors.corsRules",
+      "Microsoft.Maps/accounts/cors.corsRules[*]": "properties.cors.corsRules[*]",
+      "Microsoft.Maps/accounts/cors.corsRules[*].allowedOrigins": "properties.cors.corsRules[*].allowedOrigins",
+      "Microsoft.Maps/accounts/cors.corsRules[*].allowedOrigins[*]": "properties.cors.corsRules[*].allowedOrigins[*]",
       "Microsoft.Maps/accounts/disableLocalAuth": "properties.disableLocalAuth",
       "Microsoft.Maps/accounts/linkedResources": "properties.linkedResources",
       "Microsoft.Maps/accounts/linkedResources[*]": "properties.linkedResources[*]",

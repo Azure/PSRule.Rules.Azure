@@ -78,6 +78,7 @@
     },
     "resourceType": "actiongroups",
     "apiVersions": [
+      "2022-04-01",
       "2021-09-01",
       "2019-06-01",
       "2019-03-01",
@@ -1963,6 +1964,7 @@
     "aliases": null,
     "resourceType": "createnotifications",
     "apiVersions": [
+      "2022-04-01",
       "2021-09-01"
     ],
     "locations": [],
@@ -2027,7 +2029,8 @@
       "Germany North",
       "South India",
       "UAE Central",
-      "West US 3"
+      "West US 3",
+      "West India"
     ],
     "zoneMappings": null
   },
@@ -2079,6 +2082,7 @@
       "Sweden Central",
       "Germany North",
       "South India",
+      "West India",
       "UAE Central",
       "West US 3"
     ],
@@ -2139,7 +2143,8 @@
       "Germany North",
       "South India",
       "UAE Central",
-      "West US 3"
+      "West US 3",
+      "West India"
     ],
     "zoneMappings": null
   },
@@ -2246,7 +2251,8 @@
       "Sweden Central",
       "South India",
       "UAE Central",
-      "West US 3"
+      "West US 3",
+      "West India"
     ],
     "zoneMappings": null
   },
@@ -3011,6 +3017,7 @@
     "aliases": null,
     "resourceType": "notificationstatus",
     "apiVersions": [
+      "2022-04-01",
       "2021-09-01"
     ],
     "locations": [],
