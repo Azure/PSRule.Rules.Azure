@@ -79,6 +79,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The argument &apos;{0}&apos; for &apos;{1}&apos; is not a valid time..
+        /// </summary>
+        internal static string ArgumentInvalidDateTime {
+            get {
+                return ResourceManager.GetString("ArgumentInvalidDateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The argument &apos;{0}&apos; for &apos;{1}&apos; is not a valid integer..
         /// </summary>
         internal static string ArgumentInvalidInteger {
