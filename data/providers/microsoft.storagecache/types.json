@@ -31,6 +31,7 @@
     },
     "resourceType": "caches",
     "apiVersions": [
+      "2022-05-01",
       "2022-01-01",
       "2021-10-01-preview",
       "2021-09-01",
@@ -228,6 +229,7 @@
     },
     "resourceType": "caches/storageTargets",
     "apiVersions": [
+      "2022-05-01",
       "2022-01-01",
       "2021-10-01-preview",
       "2021-09-01",
@@ -265,6 +267,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-05-01",
       "2022-01-01",
       "2021-11-01-preview",
       "2021-10-01-preview",
@@ -283,6 +286,7 @@
     "aliases": null,
     "resourceType": "locations/ascoperations",
     "apiVersions": [
+      "2022-05-01",
       "2022-01-01",
       "2021-11-01-preview",
       "2021-10-01-preview",
@@ -321,6 +325,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-01",
       "2022-01-01",
       "2021-11-01-preview",
       "2021-10-01-preview",
@@ -359,6 +364,7 @@
     "aliases": null,
     "resourceType": "usageModels",
     "apiVersions": [
+      "2022-05-01",
       "2022-01-01",
       "2021-10-01-preview",
       "2021-09-01",

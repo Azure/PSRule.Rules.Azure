@@ -109,6 +109,7 @@
     },
     "resourceType": "flexibleServers",
     "apiVersions": [
+      "2021-12-01-preview",
       "2021-05-01-preview",
       "2021-05-01",
       "2020-07-01-privatepreview",
@@ -267,7 +268,11 @@
       },
       {
         "location": "Switzerland North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UAE North",
@@ -311,6 +316,7 @@
     "aliases": null,
     "resourceType": "getPrivateDnsZoneSuffix",
     "apiVersions": [
+      "2021-12-01-preview",
       "2021-05-01-preview",
       "2021-05-01",
       "2020-07-01-privatepreview",
@@ -561,6 +567,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2021-12-01-preview",
       "2021-05-01-preview",
       "2021-05-01",
       "2020-07-01-privatepreview",
@@ -606,6 +613,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2021-12-01-preview",
       "2021-05-01-preview",
       "2021-05-01"
     ],
@@ -649,6 +657,7 @@
     "aliases": null,
     "resourceType": "locations/checkVirtualNetworkSubnetUsage",
     "apiVersions": [
+      "2021-12-01-preview",
       "2021-05-01-preview",
       "2021-05-01",
       "2020-07-01-privatepreview",
@@ -1298,6 +1307,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2021-12-01-preview",
       "2021-05-01-preview",
       "2021-05-01",
       "2017-12-01-preview",

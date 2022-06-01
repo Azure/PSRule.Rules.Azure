@@ -4,6 +4,7 @@
     "resourceType": "locations",
     "apiVersions": [
       "2022-05-01-preview",
+      "2022-04-01",
       "2022-03-01-preview",
       "2022-01-01-preview",
       "2021-09-01-preview",
@@ -18,6 +19,8 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-05-01-preview",
+      "2022-04-01",
       "2022-03-01-preview",
       "2022-01-01-preview",
       "2021-09-01-preview",
@@ -55,6 +58,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-05-01-preview",
+      "2022-04-01",
       "2022-03-01-preview",
       "2022-01-01-preview",
       "2021-09-01-preview",
@@ -92,6 +97,8 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2022-05-01-preview",
+      "2022-04-01",
       "2022-03-01-preview",
       "2022-01-01-preview",
       "2021-09-01-preview",
@@ -129,6 +136,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-01-preview",
+      "2022-04-01",
       "2022-03-01-preview",
       "2022-01-01-preview",
       "2021-09-01-preview",
@@ -229,6 +238,8 @@
     },
     "resourceType": "Spring",
     "apiVersions": [
+      "2022-05-01-preview",
+      "2022-04-01",
       "2022-03-01-preview",
       "2022-01-01-preview",
       "2021-09-01-preview",
@@ -266,6 +277,8 @@
     "aliases": null,
     "resourceType": "Spring/apps",
     "apiVersions": [
+      "2022-05-01-preview",
+      "2022-04-01",
       "2022-03-01-preview",
       "2022-01-01-preview",
       "2021-09-01-preview",
@@ -303,6 +316,8 @@
     "aliases": null,
     "resourceType": "Spring/apps/deployments",
     "apiVersions": [
+      "2022-05-01-preview",
+      "2022-04-01",
       "2022-03-01-preview",
       "2022-01-01-preview",
       "2021-09-01-preview",

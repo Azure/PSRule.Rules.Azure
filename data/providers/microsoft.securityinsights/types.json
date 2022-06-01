@@ -170,6 +170,7 @@
       "2022-04-01-preview",
       "2022-01-01-preview",
       "2021-10-01-preview",
+      "2021-10-01",
       "2021-09-01-preview",
       "2019-01-01-preview"
     ],
@@ -277,6 +278,27 @@
     "resourceType": "cases",
     "apiVersions": [
       "2019-01-01-preview"
+    ],
+    "locations": [
+      "West Europe",
+      "North Europe",
+      "France Central",
+      "UK South",
+      "UK West",
+      "France South",
+      "Switzerland North",
+      "Switzerland West",
+      "Norway East",
+      "Norway West",
+      "Germany West Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "confidentialWatchlists",
+    "apiVersions": [
+      "2022-06-01-preview"
     ],
     "locations": [
       "West Europe",
@@ -870,6 +892,7 @@
     },
     "resourceType": "watchlists",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-05-01-preview",
       "2022-04-01-preview",
       "2022-01-01-preview",

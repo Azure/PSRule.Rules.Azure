@@ -97,10 +97,31 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
       "2018-01-01-preview",
       "2017-04-01"
     ],
     "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/clusterOperationResults",
+    "apiVersions": [
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview"
+    ],
+    "locations": [
+      "South Central US",
+      "East Asia",
+      "West US"
+    ],
     "zoneMappings": null
   },
   {
@@ -260,6 +281,15 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "namespaces/applicationGroups",
+    "apiVersions": [
+      "2022-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.EventHub/namespaces/authorizationrules/rights": "properties.rights",
       "Microsoft.EventHub/namespaces/authorizationrules/rights[*]": "properties.rights[*]"
@@ -349,7 +379,24 @@
       "2015-08-01",
       "2014-09-01"
     ],
-    "locations": [],
+    "locations": [
+      "Australia Southeast",
+      "Canada Central",
+      "East Asia",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Korea South",
+      "North Central US",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West US 2"
+    ],
     "zoneMappings": null
   },
   {
@@ -368,7 +415,24 @@
       "2015-08-01",
       "2014-09-01"
     ],
-    "locations": [],
+    "locations": [
+      "Australia Southeast",
+      "Canada Central",
+      "East Asia",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Korea South",
+      "North Central US",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West US 2"
+    ],
     "zoneMappings": null
   },
   {
@@ -389,7 +453,24 @@
       "2015-08-01",
       "2014-09-01"
     ],
-    "locations": [],
+    "locations": [
+      "Australia Southeast",
+      "Canada Central",
+      "East Asia",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Korea South",
+      "North Central US",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West US 2"
+    ],
     "zoneMappings": null
   },
   {

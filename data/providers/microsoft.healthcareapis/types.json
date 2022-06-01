@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
       "2021-06-01-preview",
@@ -20,6 +21,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
       "2021-06-01-preview",
@@ -46,7 +48,9 @@
       "Germany West Central",
       "Canada Central",
       "South Africa North",
-      "Switzerland North"
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -54,6 +58,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
       "2021-06-01-preview",
@@ -81,7 +86,9 @@
       "Germany West Central",
       "Canada Central",
       "South Africa North",
-      "Switzerland North"
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -89,6 +96,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
       "2021-06-01-preview",
@@ -115,7 +123,9 @@
       "Germany West Central",
       "Canada Central",
       "South Africa North",
-      "Switzerland North"
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -162,6 +172,7 @@
     },
     "resourceType": "services",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
       "2021-06-01-preview",
@@ -188,7 +199,9 @@
       "Germany West Central",
       "Canada Central",
       "South Africa North",
-      "Switzerland North"
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -277,6 +290,7 @@
     "aliases": null,
     "resourceType": "services/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
       "2021-06-01-preview",
@@ -299,7 +313,9 @@
       "Germany West Central",
       "Canada Central",
       "South Africa North",
-      "Switzerland North"
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -315,6 +331,7 @@
     },
     "resourceType": "services/privateEndpointConnections",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
       "2021-06-01-preview",
@@ -337,7 +354,9 @@
       "Germany West Central",
       "Canada Central",
       "South Africa North",
-      "Switzerland North"
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -345,6 +364,7 @@
     "aliases": null,
     "resourceType": "services/privateLinkResources",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
       "2021-06-01-preview",
@@ -367,7 +387,9 @@
       "Germany West Central",
       "Canada Central",
       "South Africa North",
-      "Switzerland North"
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -377,6 +399,7 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
       "2021-06-01-preview"
@@ -390,7 +413,10 @@
       "Australia East",
       "UK South",
       "West US 2",
-      "Canada Central"
+      "Canada Central",
+      "Switzerland North",
+      "West US 3",
+      "Central India"
     ],
     "zoneMappings": null
   },
@@ -405,6 +431,7 @@
     },
     "resourceType": "workspaces/dicomservices",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
       "2021-06-01-preview"
@@ -418,7 +445,10 @@
       "Australia East",
       "UK South",
       "West US 2",
-      "Canada Central"
+      "Canada Central",
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -426,6 +456,7 @@
     "aliases": null,
     "resourceType": "workspaces/eventGridFilters",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01"
     ],
@@ -438,7 +469,10 @@
       "Australia East",
       "UK South",
       "West US 2",
-      "Canada Central"
+      "Canada Central",
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -469,6 +503,7 @@
     },
     "resourceType": "workspaces/fhirservices",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
       "2021-06-01-preview"
@@ -482,7 +517,10 @@
       "Australia East",
       "UK South",
       "West US 2",
-      "Canada Central"
+      "Canada Central",
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -497,6 +535,7 @@
     },
     "resourceType": "workspaces/iotconnectors",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
       "2021-06-01-preview"
@@ -510,7 +549,10 @@
       "Australia East",
       "UK South",
       "West US 2",
-      "Canada Central"
+      "Canada Central",
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -523,6 +565,7 @@
     },
     "resourceType": "workspaces/iotconnectors/fhirdestinations",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
       "2021-06-01-preview"
@@ -536,7 +579,10 @@
       "Australia East",
       "UK South",
       "West US 2",
-      "Canada Central"
+      "Canada Central",
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -544,6 +590,7 @@
     "aliases": null,
     "resourceType": "workspaces/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01"
     ],
@@ -556,7 +603,10 @@
       "Australia East",
       "UK South",
       "West US 2",
-      "Canada Central"
+      "Canada Central",
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -564,6 +614,7 @@
     "aliases": null,
     "resourceType": "workspaces/privateEndpointConnections",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01"
     ],
@@ -576,7 +627,10 @@
       "Australia East",
       "UK South",
       "West US 2",
-      "Canada Central"
+      "Canada Central",
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -584,6 +638,7 @@
     "aliases": null,
     "resourceType": "workspaces/privateLinkResources",
     "apiVersions": [
+      "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01"
     ],
@@ -596,7 +651,10 @@
       "Australia East",
       "UK South",
       "West US 2",
-      "Canada Central"
+      "Canada Central",
+      "Switzerland North",
+      "Central India",
+      "West US 3"
     ],
     "zoneMappings": null
   }

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "endpoints",
     "apiVersions": [
+      "2022-05-01-preview",
       "2021-10-06-preview"
     ],
     "locations": [
@@ -47,6 +48,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2022-05-01-preview",
       "2021-10-06-preview"
     ],
     "locations": [
@@ -69,8 +71,8 @@
       "East Asia",
       "Korea Central",
       "West US 3",
-      "Canada East",
       "Canada Central",
+      "Canada East",
       "UK West"
     ],
     "zoneMappings": null

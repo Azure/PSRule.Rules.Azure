@@ -204,6 +204,7 @@
     },
     "resourceType": "containerGroups",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
       "2021-07-01",
@@ -263,6 +264,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
       "2021-07-01",
@@ -286,6 +288,7 @@
     "aliases": null,
     "resourceType": "locations/cachedImages",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
       "2021-07-01",
@@ -345,6 +348,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
       "2021-07-01",
@@ -404,6 +408,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
       "2021-07-01",
@@ -464,6 +469,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
       "2021-07-01",
@@ -523,6 +529,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
       "2021-07-01",
@@ -582,6 +589,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
       "2021-07-01",
@@ -641,6 +649,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
       "2021-07-01",
@@ -664,6 +673,7 @@
     "aliases": null,
     "resourceType": "serviceAssociationLinks",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
       "2021-07-01",

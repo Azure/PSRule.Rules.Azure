@@ -43,8 +43,8 @@
       "North Central US",
       "Korea Central",
       "Japan East",
-      "West US 3",
-      "East Asia"
+      "East Asia",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -88,7 +88,9 @@
       "Korea Central",
       "Japan East",
       "East Asia",
-      "West US 3"
+      "West US 3",
+      "Canada East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
