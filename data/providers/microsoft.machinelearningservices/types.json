@@ -1328,7 +1328,6 @@
     "aliases": null,
     "resourceType": "workspaces/datasets",
     "apiVersions": [
-      "2021-10-01",
       "2020-05-01-preview"
     ],
     "locations": [
@@ -1972,11 +1971,6 @@
     },
     "resourceType": "workspaces/datastores",
     "apiVersions": [
-      "2022-05-01",
-      "2022-02-01-preview",
-      "2021-10-01",
-      "2021-03-01-preview",
-      "2020-09-01-preview",
       "2020-05-01-preview"
     ],
     "locations": [

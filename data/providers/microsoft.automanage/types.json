@@ -200,14 +200,5 @@
       "West US"
     ],
     "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "servicePrincipals",
-    "apiVersions": [
-      "2021-04-30-preview"
-    ],
-    "locations": [],
-    "zoneMappings": null
   }
 ]

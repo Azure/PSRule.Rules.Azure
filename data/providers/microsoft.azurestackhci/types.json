@@ -112,7 +112,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "galleryImages",
+    "resourceType": "galleryimages",
     "apiVersions": [
       "2021-07-01-preview"
     ],
@@ -141,7 +141,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/operationstatuses",
+    "resourceType": "locations/operationStatuses",
     "apiVersions": [
       "2022-05-01",
       "2022-03-01",
@@ -157,11 +157,11 @@
       "East US 2 EUAP",
       "West Europe",
       "Southeast Asia",
+      "Australia East",
       "Central US EUAP",
       "Central US",
       "Japan East",
       "North Europe",
-      "Australia East",
       "East US 2",
       "South Central US"
     ],

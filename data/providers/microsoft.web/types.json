@@ -221,7 +221,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -249,7 +248,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -755,7 +755,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -783,7 +782,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -830,7 +830,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -858,7 +857,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -1233,7 +1233,6 @@
       "West US",
       "Australia East",
       "Brazil South",
-      "Central US",
       "Japan West",
       "Central India",
       "Canada East",
@@ -1255,9 +1254,171 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
-    "zoneMappings": null
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Brazil South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central India",
+        "zones": []
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East Asia",
+        "zones": []
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Korea Central",
+        "zones": []
+      },
+      {
+        "location": "North Central US",
+        "zones": []
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Norway East",
+        "zones": []
+      },
+      {
+        "location": "South Africa North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Switzerland North",
+        "zones": []
+      },
+      {
+        "location": "UAE North",
+        "zones": []
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 3",
+        "zones": []
+      }
+    ]
   },
   {
     "aliases": null,
@@ -1316,7 +1477,6 @@
       "West Europe",
       "East Asia",
       "Australia East",
-      "Central US",
       "Japan West",
       "Central India",
       "Korea Central",
@@ -1335,7 +1495,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -1435,7 +1596,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -1463,7 +1623,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -1539,7 +1700,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -1567,7 +1727,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -2024,7 +2185,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -2052,7 +2212,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -2100,7 +2261,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -2130,7 +2290,8 @@
       "West US 3",
       "East Asia",
       "Japan East",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -2214,7 +2375,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -2242,7 +2402,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -2649,7 +2810,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -2677,7 +2837,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -3031,7 +3192,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -3061,7 +3221,8 @@
       "West US 3",
       "East Asia",
       "Japan East",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -3108,7 +3269,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -3140,7 +3300,8 @@
       "East Asia",
       "Japan East",
       "South Africa West",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -3663,7 +3824,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -3693,7 +3853,8 @@
       "West US 3",
       "East Asia",
       "Japan East",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -3744,7 +3905,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -3776,7 +3936,8 @@
       "East Asia",
       "Japan East",
       "South Africa West",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -3831,7 +3992,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -3859,7 +4019,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -3908,7 +4069,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -3936,7 +4096,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -3988,7 +4149,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -4016,7 +4176,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -4397,7 +4558,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -4427,7 +4587,8 @@
       "West US 3",
       "East Asia",
       "Japan East",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -4477,7 +4638,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -4509,7 +4669,8 @@
       "East Asia",
       "Japan East",
       "South Africa West",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -4564,7 +4725,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -4592,7 +4752,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -4641,7 +4802,6 @@
       "Australia East",
       "Brazil South",
       "Southeast Asia",
-      "Central US",
       "Japan West",
       "Central India",
       "UK South",
@@ -4669,7 +4829,8 @@
       "East Asia (Stage)",
       "North Central US (Stage)",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Central US"
     ],
     "zoneMappings": null
   },
@@ -4966,6 +5127,31 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "staticSites/builds/linkedBackends",
+    "apiVersions": [
+      "2022-03-01",
+      "2021-03-01",
+      "2021-02-01",
+      "2021-01-15",
+      "2021-01-01",
+      "2020-12-01",
+      "2020-10-01",
+      "2020-09-01",
+      "2020-06-01",
+      "2019-12-01-preview",
+      "2019-08-01"
+    ],
+    "locations": [
+      "West US 2",
+      "Central US",
+      "East US 2",
+      "West Europe",
+      "East Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.Web/staticSites/builds/userProvidedFunctionApps/createdOn": "properties.createdOn",
       "Microsoft.Web/staticSites/builds/userProvidedFunctionApps/functionAppRegion": "properties.functionAppRegion",
@@ -4979,6 +5165,31 @@
       "2021-01-15",
       "2021-01-01",
       "2020-12-01"
+    ],
+    "locations": [
+      "West US 2",
+      "Central US",
+      "East US 2",
+      "West Europe",
+      "East Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "staticSites/linkedBackends",
+    "apiVersions": [
+      "2022-03-01",
+      "2021-03-01",
+      "2021-02-01",
+      "2021-01-15",
+      "2021-01-01",
+      "2020-12-01",
+      "2020-10-01",
+      "2020-09-01",
+      "2020-06-01",
+      "2019-12-01-preview",
+      "2019-08-01"
     ],
     "locations": [
       "West US 2",
