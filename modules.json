@@ -16,6 +16,9 @@
     },
     "PSScriptAnalyzer": {
       "version": "1.20.0"
+    },
+    "Az.Resources": {
+      "version": "5.6.0"
     }
   }
 }
