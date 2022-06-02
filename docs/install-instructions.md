@@ -16,7 +16,7 @@ It is shipped as a PowerShell module which makes it easy to install and distribu
 
 [:octicons-workflow-24: GitHub Action][1]
 
-Install and use PSRule for Azure with GitHub Actions by referencing the `Microsoft/ps-rule` action.
+Install and use PSRule for Azure with GitHub Actions by referencing the `microsoft/ps-rule` action.
 
 === "Stable"
 
@@ -24,7 +24,7 @@ Install and use PSRule for Azure with GitHub Actions by referencing the `Microso
 
     ```yaml
     - name: Analyze Azure template files
-      uses: Microsoft/ps-rule@v1.12.0
+      uses: microsoft/ps-rule@v2.1.0
       with:
         modules: 'PSRule.Rules.Azure'
     ```
@@ -35,7 +35,7 @@ Install and use PSRule for Azure with GitHub Actions by referencing the `Microso
 
     ```yaml
     - name: Analyze Azure template files
-      uses: Microsoft/ps-rule@v1.12.0
+      uses: microsoft/ps-rule@v2.1.0
       with:
         modules: 'PSRule.Rules.Azure'
         prerelease: true
@@ -57,10 +57,9 @@ Install the extension from the marketplace, then use the `ps-rule-assert` task i
     Install the latest stable version of PSRule for Azure.
 
     ```yaml
-    - task: ps-rule-assert@1
+    - task: ps-rule-assert@2
       displayName: Analyze Azure template files
       inputs:
-        inputType: repository
         modules: 'PSRule.Rules.Azure'
     ```
 
@@ -69,16 +68,15 @@ Install the extension from the marketplace, then use the `ps-rule-assert` task i
     Install the latest stable or pre-release version of PSRule for Azure.
 
     ```yaml
-    - task: ps-rule-install@1
+    - task: ps-rule-install@2
       displayName: Install PSRule for Azure (pre-release)
       inputs:
         module: PSRule.Rules.Azure
         prerelease: true
 
-    - task: ps-rule-assert@1
+    - task: ps-rule-assert@2
       displayName: Analyze Azure template files
       inputs:
-        inputType: repository
         modules: 'PSRule.Rules.Azure'
     ```
 
@@ -94,22 +92,30 @@ You can also use this option to install on CI workers that are not natively supp
 The following platforms are supported:
 
 - Windows PowerShell 5.1 with .NET Framework 4.7.2 or greater.
-- PowerShell 7.1 or greater on MacOS, Linux, and Windows.
+- PowerShell 7.2 or greater on MacOS, Linux, and Windows.
 
-The following modules are required for PSRule for Azure:
+To use PSRule for Azure, PSRule a separate PowerShell module must be installed.
+The required version will automatically be installed along-side PSRule for Azure.
 
-- PSRule
+Additionally, exporting data from an subscription requires:
+
 - Az.Accounts
 - Az.Resources
 
-The required version of each module will automatically be installed along-side PSRule for Azure.
+!!! Note
+    Azure PowerShell modules are not installed automatically when installing PSRule for Azure.
+    This has been changed from v1.16.0 due with [module dependency chains in Azure DevOps][3].
+    In most cases these modules will be pre-installed on the CI worker.
+    For private CI workers, consider pre-installing these module is a previous step.
+
+  [3]: troubleshooting.md#an-earlier-version-of-azaccounts-is-imported
 
 ### Installing PowerShell
 
 PowerShell 7.x can be installed on MacOS, Linux, and Windows but is not installed by default.
-For a list of platforms that PowerShell 7.1 is supported on and install instructions see [Get PowerShell][3].
+For a list of platforms that PowerShell 7.1 is supported on and install instructions see [Get PowerShell][4].
 
-  [3]: https://github.com/PowerShell/PowerShell#get-powershell
+  [4]: https://github.com/PowerShell/PowerShell#get-powershell
 
 ### Getting the modules
 
@@ -163,17 +169,17 @@ To use a pre-release version of PSRule for Azure add the `-AllowPrerelease` swit
 
 ### Building from source
 
-[:octicons-file-code-24: Source][5]
+[:octicons-file-code-24: Source][6]
 
 PSRule for Azure is provided as open source on GitHub.
 To build PSRule for Azure from source code:
 
-1. Clone the GitHub [repository][5].
+1. Clone the GitHub [repository][6].
 2. Run `./build.ps1` from a PowerShell terminal in the cloned path.
 
 This build script will compile the module and documentation then output the result into `out/modules/PSRule.Rules.Azure`.
 
-  [5]: https://github.com/Azure/PSRule.Rules.Azure.git
+  [6]: https://github.com/Azure/PSRule.Rules.Azure.git
 
 #### Development dependencies
 

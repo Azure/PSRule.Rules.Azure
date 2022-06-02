@@ -130,16 +130,15 @@ jobs:
   steps:
 
   # STEP 3: Install PSRule.Rules.Azure from the PowerShell Gallery
-  - task: ps-rule-install@1
+  - task: ps-rule-install@2
     displayName: Install PSRule.Rules.Azure
     inputs:
       module: 'PSRule.Rules.Azure'   # Install PSRule.Rules.Azure from the PowerShell Gallery.
 
   # STEP 4: Run analysis against exported data
-  - task: ps-rule-assert@1
+  - task: ps-rule-assert@2
     displayName: Analyze Azure template files
     inputs:
-      inputType: repository
       modules: 'PSRule.Rules.Azure'   # Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.
 ```
 

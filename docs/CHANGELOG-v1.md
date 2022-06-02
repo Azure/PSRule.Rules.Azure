@@ -19,6 +19,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.16.0-B0041:
+
+- Bug fixes:
+  - Fixed dependency issue within Azure Pipelines `AzurePowerShell` task by @BernieWhite.
+    [#1447](https://github.com/Azure/PSRule.Rules.Azure/issues/1447)
+    - Removed dependency on `Az.Accounts` and `Az.Resources` from manifest.
+      Pre-install these modules to use export cmdlets.
+
 ## v1.16.0-B0041 (pre-release)
 
 What's changed since pre-release v1.16.0-B0017:

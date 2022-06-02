@@ -138,7 +138,7 @@ The following task uses previously exported resource data for analysis.
 
 ```yaml
 # Run analysis from JSON files using the `PSRule.Rules.Azure` module and custom rules from `.ps-rule/`.
-- task: ps-rule-assert@1
+- task: ps-rule-assert@2
   inputs:
     inputType: inputPath
     inputPath: 'out/templates/*.json'        # Read exported resource data from 'out/templates/'.
@@ -195,7 +195,7 @@ pool:
 steps:
 
 # Install PSRule.Rules.Azure from the PowerShell Gallery
-- task: ps-rule-install@1
+- task: ps-rule-install@2
   inputs:
     module: PSRule.Rules.Azure   # Install PSRule.Rules.Azure from the PowerShell Gallery.
 
@@ -204,7 +204,7 @@ steps:
   displayName: 'Export template data'
 
 # Run analysis from JSON files using the `PSRule.Rules.Azure` module and custom rules from `.ps-rule/`.
-- task: ps-rule-assert@1
+- task: ps-rule-assert@2
   inputs:
     inputType: inputPath
     inputPath: 'out/templates/*.json'        # Read exported resource data from 'out/templates/'.

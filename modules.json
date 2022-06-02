@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "Az.Accounts": {
-      "version": "2.7.6"
-    },
-    "Az.Resources": {
-      "version": "5.6.0"
-    },
     "PSRule": {
       "version": "2.1.0"
     }
