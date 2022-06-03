@@ -7722,6 +7722,18 @@
   See <a href="../upgrade-notes/">upgrade notes</a> for more information.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<p>What's changed since pre-release v1.16.0-B0041:</p>
+<ul>
+<li>Bug fixes:<ul>
+<li>Fixed dependency issue within Azure Pipelines <code>AzurePowerShell</code> task by @BernieWhite.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1447">#1447</a><ul>
+<li>Removed dependency on <code>Az.Accounts</code> and <code>Az.Resources</code> from manifest.
+  Pre-install these modules to use export cmdlets.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="v1160-b0041pre-release">v1.16.0-B0041 (pre-release)<a class="headerlink" href="#v1160-b0041pre-release" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.16.0-B0017:</p>
 <ul>
@@ -10206,7 +10218,7 @@
   <small>
     
       Last update:
-      2022-06-02
+      2022-06-03
     
   </small>
 </div>
