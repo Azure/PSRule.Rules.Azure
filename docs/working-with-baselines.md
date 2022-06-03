@@ -77,7 +77,7 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
     ```yaml
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: Microsoft/ps-rule@v1.12.0
+      uses: microsoft/ps-rule@v2.1.0
       with:
         modules: 'PSRule.Rules.Azure'
         baseline: 'Azure.GA_2021_09'
@@ -89,10 +89,9 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
 
     ```yaml
     # Analyze Azure resources using PSRule for Azure
-    - task: ps-rule-assert@1
+    - task: ps-rule-assert@2
       displayName: Analyze Azure template files
       inputs:
-        inputType: repository
         modules: 'PSRule.Rules.Azure'
         baseline: 'Azure.GA_2021_09'
     ```

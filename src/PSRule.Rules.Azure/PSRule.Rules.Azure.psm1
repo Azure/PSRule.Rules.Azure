@@ -5,6 +5,11 @@
 # PSRule.Rules.Azure module
 #
 
+$m = Import-Module 'Az.Resources' -MinimumVersion 5.6.0 -Global -ErrorAction SilentlyContinue -PassThru;
+if ($Null -eq $m) {
+    Write-Warning -Message "To use PSRule for Azure export cmdlets please install Az.Resources.";
+}
+
 Set-StrictMode -Version latest;
 
 [PSRule.Rules.Azure.Configuration.PSRuleOption]::UseExecutionContext($ExecutionContext);

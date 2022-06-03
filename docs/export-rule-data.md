@@ -13,6 +13,7 @@ This is a two step process that works in high security environments with separat
 
 !!! Important
     Before continuing, complete the steps from [Installing locally][1].
+    To export data from a subscription, Azure PowerShell modules must be installed.
     Exporting rule data can also be automated and scheduled with Azure Automation Service.
     However, for this scenario we will focus how to run this process interactively.
 

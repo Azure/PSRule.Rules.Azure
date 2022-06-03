@@ -122,12 +122,6 @@ task VersionModule ModuleDependencies, {
         if ($_.Name -eq 'PSRule' -and $Configuration -eq 'Release') {
             @{ ModuleName = 'PSRule'; ModuleVersion = $dependencies.dependencies.PSRule.version }
         }
-        elseif ($_.Name -eq 'Az.Accounts' -and $Configuration -eq 'Release') {
-            @{ ModuleName = 'Az.Accounts'; ModuleVersion = $dependencies.dependencies.'Az.Accounts'.version }
-        }
-        elseif ($_.Name -eq 'Az.Resources' -and $Configuration -eq 'Release') {
-            @{ ModuleName = 'Az.Resources'; ModuleVersion = $dependencies.dependencies.'Az.Resources'.version }
-        }
         else {
             @{ ModuleName = $_.Name; ModuleVersion = $_.Version }
         }

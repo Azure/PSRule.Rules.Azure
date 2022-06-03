@@ -6,6 +6,37 @@ author: BernieWhite
 
 This article provides troubleshooting instructions for common errors.
 
+## An earlier version of Az.Accounts is imported
+
+When running PSRule for Azure in Azure DevOps within the `AzurePowerShell@5` task,
+you may see the following error.
+
+!!! Error
+
+    This module requires Az.Accounts version 2.8.0. An earlier version of
+    Az.Accounts is imported in the current PowerShell session. Please open a new
+    session before importing this module. This error could indicate that multiple
+    incompatible versions of the Azure PowerShell cmdlets are installed on your
+    system. Please see https://aka.ms/azps-version-error for troubleshooting
+    information.
+
+This error is raised by a chained dependency failure importing a newer version of `Az.Accounts`.
+To avoid this issue attempt to install the exact versions of `Az.Resources`.
+In the `AzurePowerShell@5` task before installing PSRule.
+
+```powershell
+Install-Module Az.Resources -RequiredVersion '5.6.0' -Force -Scope CurrentUser
+```
+
+From PSRule for Azure v1.16.0, `Az.Accounts` and `Az.Resources` are no longer installed as dependencies.
+When using export commands from PSRule, you may need to install these modules.
+
+To install these modules, use the following PowerShell command:
+
+```powershell
+Install-Module Az.Resources -Force -Scope CurrentUser
+```
+
 ## Bicep compilation timeout
 
 When expanding Bicep source files you may get an error similar to the following:
@@ -20,7 +51,7 @@ The default timeout is 5 seconds.
 You can take steps to reduce your code complexity and reduce the time a build takes by:
 
 - Removing unnecessary nested `module` calls.
-- Cache bicep modules restored from a registry in continious integration (CI) pipelines.
+- Cache bicep modules restored from a registry in continuous integration (CI) pipelines.
 
 To increase the timeout value, set the `AZURE_BICEP_FILE_EXPANSION_TIMEOUT` configuration option.
 See [Bicep compilation timeout][1] for details on how to configure this option.
