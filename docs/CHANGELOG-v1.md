@@ -21,6 +21,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.16.0-B0041:
 
+- Engineering:
+  - Update CI checks to include required ref property by @BernieWhite.
+    [#1431](https://github.com/Azure/PSRule.Rules.Azure/issues/1431)
+  - Added ref properties for rules by @BernieWhite.
+    [#1430](https://github.com/Azure/PSRule.Rules.Azure/issues/1430)
 - Bug fixes:
   - Fixed dependency issue within Azure Pipelines `AzurePowerShell` task by @BernieWhite.
     [#1447](https://github.com/Azure/PSRule.Rules.Azure/issues/1447)
