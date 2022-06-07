@@ -101,6 +101,8 @@ Each rule **must** meet the following requirements:
 
 - Named with the `Azure.` prefix.
 - The rule name must not be longer than 35 characters.
+- Use a unique `Ref` following the format `AZR-nnnnnnn`.
+  Where `nnnnnn` is a sequential number from `000001`.
 - Have documentation and unit tests.
 - Have a `release` tag either `GA` or `preview`. e.g. `-Tag @{ release = 'GA' }`
   - Rules are marked as `GA` if they relate to generally available Azure features.

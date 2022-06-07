@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.VNG.Name
+  ref: AZR-000274
   tags:
     release: 'GA'
     ruleSet: '2020_06'
@@ -34,6 +35,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.VNG.ConnectionName
+  ref: AZR-000275
   tags:
     release: 'GA'
     ruleSet: '2020_06'

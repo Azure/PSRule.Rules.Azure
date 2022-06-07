@@ -8,7 +8,7 @@
 #region SQL Logical Server
 
 # Synopsis: Determine if there is an excessive number of firewall rules
-Rule 'Azure.SQL.FirewallRuleCount' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.FirewallRuleCount' -Ref 'AZR-000183' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/firewallRules');
     $Assert.
         LessOrEqual($firewallRules, '.', 10).
@@ -16,7 +16,7 @@ Rule 'Azure.SQL.FirewallRuleCount' -Type 'Microsoft.Sql/servers' -Tag @{ release
 }
 
 # Synopsis: Determine if access from Azure services is required
-Rule 'Azure.SQL.AllowAzureAccess' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.AllowAzureAccess' -Ref 'AZR-000184' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/firewallRules' | Where-Object {
         $_.ResourceName -eq 'AllowAllWindowsAzureIps' -or
         ($_.properties.StartIpAddress -eq '0.0.0.0' -and $_.properties.EndIpAddress -eq '0.0.0.0')
@@ -25,7 +25,7 @@ Rule 'Azure.SQL.AllowAzureAccess' -Type 'Microsoft.Sql/servers' -Tag @{ release 
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses
-Rule 'Azure.SQL.FirewallIPRange' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.FirewallIPRange' -Ref 'AZR-000185' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $summary = GetIPAddressSummary
     $Assert.
         LessOrEqual($summary, 'Public', 10).
@@ -33,7 +33,7 @@ Rule 'Azure.SQL.FirewallIPRange' -Type 'Microsoft.Sql/servers' -Tag @{ release =
 }
 
 # Synopsis: Enable Advanced Thread Protection for Azure SQL logical server
-Rule 'Azure.SQL.ThreatDetection' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.ThreatDetection' -Ref 'AZR-000186' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/securityAlertPolicies');
     if ($configs.Length -eq 0) {
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/securityAlertPolicies');
@@ -44,7 +44,7 @@ Rule 'Azure.SQL.ThreatDetection' -Type 'Microsoft.Sql/servers' -Tag @{ release =
 }
 
 # Synopsis: Enable auditing for Azure SQL logical server
-Rule 'Azure.SQL.Auditing' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.Auditing' -Ref 'AZR-000187' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/auditingSettings');
     if ($configs.Length -eq 0) {
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/auditingSettings');
@@ -55,7 +55,7 @@ Rule 'Azure.SQL.Auditing' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; 
 }
 
 # Synopsis: Use Azure AD administrators
-Rule 'Azure.SQL.AAD' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.AAD' -Ref 'AZR-000188' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/administrators');
     if ($configs.Length -eq 0) {
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/administrators');
@@ -66,12 +66,12 @@ Rule 'Azure.SQL.AAD' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleS
 }
 
 # Synopsis: Consider configuring the minimum supported TLS version to be 1.2.
-Rule 'Azure.SQL.MinTLS' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.SQL.MinTLS' -Ref 'AZR-000189' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $Assert.Version($TargetObject, 'Properties.minimalTlsVersion', '>=1.2');
 }
 
 # Synopsis: Azure SQL logical server names should meet naming requirements.
-Rule 'Azure.SQL.ServerName' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+Rule 'Azure.SQL.ServerName' -Ref 'AZR-000190' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
     # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql
 
     # Between 1 and 63 characters long
@@ -88,7 +88,7 @@ Rule 'Azure.SQL.ServerName' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'
 #region SQL Database
 
 # Synopsis: Enable transparent data encryption
-Rule 'Azure.SQL.TDE' -Type 'Microsoft.Sql/servers/databases' -If { !(IsMasterDatabase) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.TDE' -Ref 'AZR-000191' -Type 'Microsoft.Sql/servers/databases' -If { !(IsMasterDatabase) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/databases/transparentDataEncryption');
     if ($configs.Length -eq 0) {
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/databases/transparentDataEncryption');
@@ -99,7 +99,7 @@ Rule 'Azure.SQL.TDE' -Type 'Microsoft.Sql/servers/databases' -If { !(IsMasterDat
 }
 
 # Synopsis: Azure SQL Database names should meet naming requirements.
-Rule 'Azure.SQL.DBName' -Type 'Microsoft.Sql/servers/databases' -If { !(IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+Rule 'Azure.SQL.DBName' -Ref 'AZR-000192' -Type 'Microsoft.Sql/servers/databases' -If { !(IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
     # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql
 
     $name = $PSRule.TargetName.Split('/', 2, [System.StringSplitOptions]::RemoveEmptyEntries)[-1];
@@ -121,7 +121,7 @@ Rule 'Azure.SQL.DBName' -Type 'Microsoft.Sql/servers/databases' -If { !(IsExport
 #region Failover group
 
 # Synopsis: Azure SQL failover group names should meet naming requirements.
-Rule 'Azure.SQL.FGName' -Type 'Microsoft.Sql/servers/failoverGroups' -If { !(IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+Rule 'Azure.SQL.FGName' -Ref 'AZR-000193' -Type 'Microsoft.Sql/servers/failoverGroups' -If { !(IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
     # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql
 
     $name = $PSRule.TargetName.Split('/')[-1];
