@@ -19,6 +19,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.16.0-B0072 (pre-release)
+
 What's changed since pre-release v1.16.0-B0041:
 
 - Engineering:
