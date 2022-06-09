@@ -19,6 +19,49 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.16.0
+
+What's changed since v1.15.2:
+
+- New rules:
+  - App Service:
+    - Check web apps have insecure FTP disabled by @BernieWhite.
+      [#1436](https://github.com/Azure/PSRule.Rules.Azure/issues/1436)
+    - Check web apps use a dedicated health probe by @BernieWhite.
+      [#1437](https://github.com/Azure/PSRule.Rules.Azure/issues/1437)
+- Updated rules:
+  - Public IP:
+    - Updated `Azure.PublicIP.AvailabilityZone` to exclude IP addresses for Azure Bastion by @BernieWhite.
+      [#1442](https://github.com/Azure/PSRule.Rules.Azure/issues/1442)
+      - Public IP addresses with the `resource-usage` tag set to `azure-bastion` are excluded.
+- General improvements:
+  - Added support for `dateTimeFromEpoch` and `dateTimeToEpoch` ARM functions by @BernieWhite.
+    [#1451](https://github.com/Azure/PSRule.Rules.Azure/issues/1451)
+- Engineering:
+  - Updated built documentation to include rule ref and metadata by @BernieWhite.
+    [#1432](https://github.com/Azure/PSRule.Rules.Azure/issues/1432)
+  - Added ref properties for several rules by @BernieWhite.
+    [#1430](https://github.com/Azure/PSRule.Rules.Azure/issues/1430)
+  - Updated provider data for analysis.
+    [#1453](https://github.com/Azure/PSRule.Rules.Azure/pull/1453)
+  - Bump Microsoft.NET.Test.Sdk to v17.2.0.
+    [#1410](https://github.com/Azure/PSRule.Rules.Azure/pull/1410)
+  - Update CI checks to include required ref property by @BernieWhite.
+    [#1431](https://github.com/Azure/PSRule.Rules.Azure/issues/1431)
+  - Added ref properties for rules by @BernieWhite.
+    [#1430](https://github.com/Azure/PSRule.Rules.Azure/issues/1430)
+- Bug fixes:
+  - Fixed `Azure.Template.UseVariables` does not accept function variables names by @BernieWhite.
+    [#1427](https://github.com/Azure/PSRule.Rules.Azure/issues/1427)
+  - Fixed dependency issue within Azure Pipelines `AzurePowerShell` task by @BernieWhite.
+    [#1447](https://github.com/Azure/PSRule.Rules.Azure/issues/1447)
+    - Removed dependency on `Az.Accounts` and `Az.Resources` from manifest.
+      Pre-install these modules to use export cmdlets.
+
+What's changed since pre-release v1.16.0-B0072:
+
+- No additional changes.
+
 ## v1.16.0-B0072 (pre-release)
 
 What's changed since pre-release v1.16.0-B0041:
