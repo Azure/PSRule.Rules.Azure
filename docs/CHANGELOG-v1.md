@@ -19,6 +19,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.16.0:
+
+- Bug fixes:
+  - Fixed TLS 1.3 support in `Azure.AppGw.SSLPolicy` by @BernieWhite.
+    [#1469](https://github.com/Azure/PSRule.Rules.Azure/issues/1469)
+  - Fixed Application Gateway referencing a WAF policy by @BernieWhite.
+    [#1466](https://github.com/Azure/PSRule.Rules.Azure/issues/1466)
+
 ## v1.16.0
 
 What's changed since v1.15.2:

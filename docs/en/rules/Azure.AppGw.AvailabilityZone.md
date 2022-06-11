@@ -10,11 +10,13 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.
 
 ## SYNOPSIS
 
-Application gateways deployed with V2 SKU(Standard_v2, WAF_v2) should use availability zones in supported regions for high availability.
+Application gateways deployed with should use availability zones in supported regions for high availability.
 
 ## DESCRIPTION
 
-Application gateways using availability zones improve reliability and ensure availability during failure scenarios affecting a data center within a region. A zone redundant Application gateway or WAF deployment can spread across multiple availability zones, which ensures the application gateway will continue running even if another zone has gone down. Backend pools for applications can be similarly distributed across availability zones.
+Application gateways using availability zones improve reliability and ensure availability during failure scenarios affecting a data center within a region.
+A zone redundant Application gateway or WAF deployment can spread across multiple availability zones, which ensures the application gateway will continue running even if another zone has gone down.
+Backend pools for applications can be similarly distributed across availability zones.
 
 ## RECOMMENDATION
 

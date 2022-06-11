@@ -42,8 +42,8 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -BeIn 'appgw-B', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'appgw-B', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G', 'appgw-H';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -64,8 +64,8 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G', 'appgw-H';
         }
 
         It 'Azure.AppGw.UseWAF' {
@@ -74,14 +74,14 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'appgw-B', 'appgw-F', 'appgw-G';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'appgw-F', 'appgw-G';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C', 'appgw-D', 'appgw-E';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'appgw-A', 'appgw-B', 'appgw-C', 'appgw-D', 'appgw-E', 'appgw-H';
         }
 
         It 'Azure.AppGw.SSLPolicy' {
@@ -96,8 +96,8 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G', 'appgw-H';
         }
 
         It 'Azure.AppGw.Prevention' {
@@ -107,13 +107,19 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'appgw-B';
+            $ruleResult.TargetName | Should -BeIn 'appgw-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G';
+            # $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'appgw-A', 'appgw-D', 'appgw-E';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            # $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'appgw-B', 'appgw-H', 'appgw-F', 'appgw-G';
         }
 
         It 'Azure.AppGw.WAFEnabled' {
@@ -128,8 +134,8 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G',  'appgw-H';
         }
 
         It 'Azure.AppGw.OWASP' {
@@ -176,8 +182,8 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -Be 'appgw-C', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -Be 'appgw-C', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G', 'appgw-H';
         }
 
         It 'Azure.AppGw.AvailabilityZone' {
@@ -197,8 +203,8 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'appgw-C', 'appgw-D', 'appgw-G';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'appgw-C', 'appgw-D', 'appgw-G', 'appgw-H';
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
@@ -240,8 +246,8 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 4;
-            $ruleResult.TargetName | Should -BeIn 'appgw-C', 'appgw-E', 'appgw-F', 'appgw-G';
+            $ruleResult | Should -HaveCount 5;
+            $ruleResult.TargetName | Should -BeIn 'appgw-C', 'appgw-E', 'appgw-F', 'appgw-G', 'appgw-H';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The application gateway (appgw-C) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].";
@@ -272,8 +278,8 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 4;
-            $ruleResult.TargetName | Should -BeIn 'appgw-C', 'appgw-E', 'appgw-F', 'appgw-G';
+            $ruleResult | Should -HaveCount 5;
+            $ruleResult.TargetName | Should -BeIn 'appgw-C', 'appgw-E', 'appgw-F', 'appgw-G', 'appgw-H';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The application gateway (appgw-C) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].";
