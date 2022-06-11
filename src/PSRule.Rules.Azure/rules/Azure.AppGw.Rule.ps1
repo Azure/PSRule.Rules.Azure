@@ -25,7 +25,7 @@ Rule 'Azure.AppGw.UseHTTPS' -Ref 'AZR-000059' -Type 'Microsoft.Network/applicati
     }
 }
 
-# Synopsis: Application gateways deployed with V2 SKU(Standard_v2, WAF_v2) should use availability zones in supported regions for high availability.
+# Synopsis: Application gateways deployed with should use availability zones in supported regions for high availability.
 Rule 'Azure.AppGw.AvailabilityZone' -Ref 'AZR-000060' -With 'Azure.IsAppGwV2Sku' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
     $appGatewayProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Network', 'applicationGateways');
 

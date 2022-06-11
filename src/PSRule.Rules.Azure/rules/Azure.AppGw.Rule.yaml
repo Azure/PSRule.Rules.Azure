@@ -88,9 +88,14 @@ spec:
   condition:
     anyOf:
     - field: Properties.sslPolicy.policyName
-      equals: AppGwSslPolicy20170401S
+      in:
+      - AppGwSslPolicy20170401S
+      - AppGwSslPolicy20220101
+      - AppGwSslPolicy20220101S
     - field: Properties.sslPolicy.minProtocolVersion
-      equals: TLSv1_2
+      in:
+      - TLSv1_2
+      - TLSv1_3
 
 ---
 # Synopsis: Internet exposed Application Gateways should use prevention mode to protect backend resources.
@@ -104,9 +109,9 @@ metadata:
     ruleSet: '2020_06'
 spec:
   with:
-  - Azure.IsAppGwPublic
+  - Azure.AppGw.WithClassicWAF
   condition:
-    field: Properties.webApplicationFirewallConfiguration.firewallMode
+    field: properties.webApplicationFirewallConfiguration.firewallMode
     equals: Prevention
 
 ---
@@ -123,8 +128,11 @@ spec:
   with:
   - Azure.IsAppGwPublic
   condition:
-    field: Properties.webApplicationFirewallConfiguration.enabled
-    equals: true
+    anyOf:
+    - field: properties.webApplicationFirewallConfiguration.enabled
+      equals: true
+    - field: properties.firewallPolicy.id
+      hasValue: true
 
 ---
 # Synopsis: Application Gateway Web Application Firewall (WAF) should use OWASP 3.x rules.
@@ -138,12 +146,12 @@ metadata:
     ruleSet: '2020_06'
 spec:
   with:
-  - Azure.IsAppGwWAF
+  - Azure.AppGw.WithClassicWAF
   condition:
     allOf:
-    - field: Properties.webApplicationFirewallConfiguration.ruleSetType
+    - field: properties.webApplicationFirewallConfiguration.ruleSetType
       equals: OWASP
-    - field: Properties.webApplicationFirewallConfiguration.ruleSetVersion
+    - field: properties.webApplicationFirewallConfiguration.ruleSetVersion
       version: '^3.0'
 
 ---
@@ -158,9 +166,9 @@ metadata:
     ruleSet: '2020_06'
 spec:
   with:
-  - Azure.IsAppGwWAF
+  - Azure.AppGw.WithClassicWAF
   condition:
-    field: Properties.webApplicationFirewallConfiguration.disabledRuleGroups
+    field: properties.webApplicationFirewallConfiguration.disabledRuleGroups
     lessOrEquals: 0
 
 #endregion Rules
@@ -172,7 +180,9 @@ spec:
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Selector
 metadata:
-  name: Azure.IsAppGwWAF
+  name: Azure.AppGw.WithClassicWAF
+  annotations:
+    export: false
 spec:
   if:
     allOf:
@@ -182,7 +192,7 @@ spec:
       in:
       - 'WAF'
       - 'WAF_v2'
-    - field: Properties.webApplicationFirewallConfiguration.enabled
+    - field: properties.webApplicationFirewallConfiguration.enabled
       equals: true
 
 ---
@@ -191,12 +201,14 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Selector
 metadata:
   name: Azure.IsAppGwPublic
+  annotations:
+    export: false
 spec:
   if:
     allOf:
     - type: '.'
       equals: Microsoft.Network/applicationGateways
-    - field: Properties.frontendIPConfigurations[?@.properties.publicIPAddress.id]
+    - field: properties.frontendIPConfigurations[?@.properties.publicIPAddress.id]
       greaterOrEquals: 1
 
 ---
@@ -205,12 +217,14 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Selector
 metadata:
   name: Azure.IsAppGwV2Sku
+  annotations:
+    export: false
 spec:
   if:
     allOf:
     - type: '.'
       equals: Microsoft.Network/applicationGateways
-    - field: Properties.sku.tier
+    - field: properties.sku.tier
       in:
       - Standard_v2
       - WAF_v2
