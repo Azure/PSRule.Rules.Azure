@@ -94,5 +94,8 @@
     "PSRule.documentation.path": "docs",
     "PSRule.documentation.localePath": "en/rules/",
     "PSRule.documentation.customSnippetPath": ".vscode/markdown.code-snippets",
-    "PSRule.documentation.snippet": "Azure rule documentation"
+    "PSRule.documentation.snippet": "Azure rule documentation",
+    "git.branchProtection": [
+        "main"
+    ]
 }
