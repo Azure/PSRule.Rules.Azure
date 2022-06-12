@@ -13,8 +13,7 @@ BeforeAll {
     $ErrorActionPreference = 'Stop';
     Set-StrictMode -Version latest;
 
-    if ($Env:SYSTEM_DEBUG -eq 'true')
-    {
+    if ($Env:SYSTEM_DEBUG -eq 'true') {
         $VerbosePreference = 'Continue';
     }
 
@@ -31,10 +30,8 @@ BeforeAll {
 
     #region Mocks
 
-    function MockContext
-    {
-        process
-        {
+    function MockContext {
+        process {
             return @(
                 (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
                     [PSCustomObject]@{
@@ -76,10 +73,8 @@ BeforeAll {
         }
     }
 
-    function MockSingleSubscription
-    {
-        process
-        {
+    function MockSingleSubscription {
+        process {
             return @(
                 (New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext -ArgumentList @(
                     [PSCustomObject]@{
