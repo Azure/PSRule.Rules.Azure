@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2021-11-01",
+      "2018-01-01-preview",
       "2017-04-01",
       "2016-07-01"
     ],
@@ -22,6 +24,7 @@
     },
     "resourceType": "namespaces",
     "apiVersions": [
+      "2021-11-01",
       "2018-01-01-preview",
       "2017-04-01",
       "2016-07-01"
@@ -73,6 +76,8 @@
     },
     "resourceType": "namespaces/authorizationrules",
     "apiVersions": [
+      "2021-11-01",
+      "2018-01-01-preview",
       "2017-04-01",
       "2016-07-01",
       "2015-08-01",
@@ -91,6 +96,8 @@
     },
     "resourceType": "namespaces/hybridconnections",
     "apiVersions": [
+      "2021-11-01",
+      "2018-01-01-preview",
       "2017-04-01",
       "2016-07-01",
       "2015-08-01",
@@ -106,6 +113,8 @@
     },
     "resourceType": "namespaces/hybridconnections/authorizationrules",
     "apiVersions": [
+      "2021-11-01",
+      "2018-01-01-preview",
       "2017-04-01",
       "2016-07-01",
       "2015-08-01",
@@ -126,6 +135,7 @@
     },
     "resourceType": "namespaces/privateEndpointConnections",
     "apiVersions": [
+      "2021-11-01",
       "2018-01-01-preview"
     ],
     "locations": [],
@@ -144,6 +154,8 @@
     },
     "resourceType": "namespaces/wcfrelays",
     "apiVersions": [
+      "2021-11-01",
+      "2018-01-01-preview",
       "2017-04-01",
       "2016-07-01",
       "2015-08-01",
@@ -159,6 +171,8 @@
     },
     "resourceType": "namespaces/wcfrelays/authorizationrules",
     "apiVersions": [
+      "2021-11-01",
+      "2018-01-01-preview",
       "2017-04-01",
       "2016-07-01",
       "2015-08-01",
@@ -171,6 +185,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2021-11-01",
+      "2018-01-01-preview",
       "2017-04-01",
       "2016-07-01"
     ],

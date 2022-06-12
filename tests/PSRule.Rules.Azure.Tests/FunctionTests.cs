@@ -143,6 +143,14 @@ namespace PSRule.Rules.Azure
                 "mockProp", new MockResource("Microsoft.Resources/deployments").MockMember("outputs").MockMember("aksSubnetId").MockMember("value"),
             }) as JObject;
             var actual2 = Functions.CreateObject(context, new object[] { }) as JObject;
+            var actual3 = Functions.CreateObject(context, new object[] {
+                "intProp", new MockInteger(1),
+                "stringProp", new MockString("mock"),
+                "boolProp", new MockBool(true),
+                "arrayProp", Functions.CreateArray(context, new object[] { "a", "b", "c" }),
+                "objectProp", Functions.CreateObject(context, new object[] { "key1", "value1" }),
+                "mockProp", new MockObject(null),
+            }) as JObject;
 
             Assert.Equal(1, actual1["intProp"]);
             Assert.Equal("abc", actual1["stringProp"]);
@@ -152,6 +160,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("{{Resource.outputs.aksSubnetId.value}}", actual1["mockProp"].Value<string>());
 
             Assert.NotNull(actual2);
+            Assert.NotNull(actual3);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.CreateObject(context, new object[] { "intProp", 1, "stringProp" }));
         }
@@ -451,6 +460,12 @@ namespace PSRule.Rules.Azure
             // Union arrays
             var actual2 = Functions.Union(context, new string[][] { new string[] { "one", "two", "three" }, new string[] { "three", "four" } }) as object[];
             Assert.Equal(4, actual2.Length);
+            actual2 = Functions.Union(context, new object[][] { new string[] { "one", "two" }, null, null }) as object[];
+            Assert.Equal(2, actual2.Length);
+            actual2 = Functions.Union(context, new object[] { new string[] { "one", "two" }, null, new string[] { "one", "three" } }) as object[];
+            Assert.Equal(3, actual2.Length);
+            actual2 = Functions.Union(context, new object[] { new string[] { "one", "two" }, new MockArray(null) }) as object[];
+            Assert.Equal(2, actual2.Length);
         }
 
         #endregion Array and object
@@ -523,7 +538,7 @@ namespace PSRule.Rules.Azure
 
             var actual2 = Functions.Providers(context, new object[] { "Microsoft.Web" }) as ResourceProviderType[];
             Assert.NotNull(actual1);
-            Assert.Equal(92, actual2.Length);
+            Assert.Equal(94, actual2.Length);
 
             var actual3 = Functions.Providers(context, new object[] { "microsoft.web", "Sites" }) as ResourceProviderType;
             Assert.NotNull(actual3);
@@ -946,6 +961,44 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, new object[] { }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, new object[] { 1, 2 }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, new object[] { utc.ToString("u"), 2 }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_DATE)]
+        public void DateTimeFromEpoch()
+        {
+            var context = GetContext();
+            var utc = DateTime.Parse("2020-04-07 14:53:14Z", new CultureInfo("en-US"), DateTimeStyles.AdjustToUniversal);
+            Assert.Equal(DateTimeKind.Utc, utc.Kind);
+
+            var actual1 = Functions.DateTimeFromEpoch(context, new object[] { new DateTimeOffset(utc).ToUnixTimeSeconds() }) as string;
+            var actual2 = Functions.DateTimeFromEpoch(context, new object[] { 1683040573 }) as string;
+            
+            Assert.Equal("2020-04-07T14:53:14Z", actual1);
+            Assert.Equal("2023-05-02T15:16:13Z", actual2);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeFromEpoch(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeFromEpoch(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeFromEpoch(context, new object[] { 1, 2 }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_DATE)]
+        public void DateTimeToEpoch()
+        {
+            var context = GetContext();
+            var utc = DateTime.Parse("2020-04-07 14:53:14Z", new CultureInfo("en-US"), DateTimeStyles.AdjustToUniversal);
+            Assert.Equal(DateTimeKind.Utc, utc.Kind);
+
+            var actual1 = (long)Functions.DateTimeToEpoch(context, new object[] { "2020-04-07T14:53:14Z" });
+            var actual2 = (long)Functions.DateTimeToEpoch(context, new object[] { "2023-05-02T15:16:13Z" });
+
+            Assert.Equal(1586271194, actual1);
+            Assert.Equal(1683040573, actual2);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeToEpoch(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeToEpoch(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeToEpoch(context, new object[] { 1, 2 }));
         }
 
         [Fact]

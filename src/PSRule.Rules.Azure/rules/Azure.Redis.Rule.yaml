@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Redis.NonSslPort
+  ref: AZR-000163
   tags:
     release: GA
     ruleSet: 2020_06
@@ -29,6 +30,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Redis.MinTLS
+  ref: AZR-000164
   tags:
     release: GA
     ruleSet: 2020_06
@@ -45,6 +47,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Redis.PublicNetworkAccess
+  ref: AZR-000165
   tags:
     release: GA
     ruleSet: 2022_03
@@ -56,3 +59,27 @@ spec:
     equals: Disabled
 
 #endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: Azure Cache for Redis with a SKU set.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Redis.HasSku
+  annotations:
+    export: false
+spec:
+  if:
+    allOf:
+    - type: '.'
+      equals: Microsoft.Cache/Redis
+    - field: properties.sku.capacity
+      exists: true
+    - field: properties.sku.family
+      exists: true
+    - field: properties.sku.name
+      exists: true
+
+#endregion Selectors

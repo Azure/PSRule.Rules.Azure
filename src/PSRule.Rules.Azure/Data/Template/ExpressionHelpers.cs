@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
@@ -222,6 +223,54 @@ namespace PSRule.Rules.Azure.Data.Template
                 return true;
             }
             return false;
+        }
+
+        internal static bool IsArray(object o)
+        {
+            return o is JArray || o is Array || o is MockArray;
+        }
+
+        internal static object UnionArray(object[] o)
+        {
+            if (o == null || o.Length == 0)
+                return Array.Empty<object>();
+
+            var result = new List<object>();
+            for (var i = 0; i < o.Length; i++)
+            {
+                if (!IsArray(o[i]))
+                    continue;
+
+                if (o[i] is JArray jArray && jArray.Count > 0)
+                {
+                    for (var j = 0; j < jArray.Count; j++)
+                    {
+                        var element = jArray[j];
+                        if (!result.Contains(element))
+                            result.Add(element);
+                    }
+                }
+                else if (o[i] is MockArray mock && mock.Value != null && mock.Value.Count > 0)
+                {
+                    for (var j = 0; j < mock.Value.Count; j++)
+                    {
+                        var element = mock.Value[j];
+                        if (!result.Contains(element))
+                            result.Add(element);
+                    }
+                }
+                else if (o[i] is Array array && array.Length > 0)
+                {
+                    for (var j = 0; j < array.Length; j++)
+                    {
+                        var element = array.GetValue(j);
+                        if (!result.Contains(element))
+                            result.Add(element);
+                    }
+                }
+            }
+            return result.ToArray();
+
         }
 
         /// <summary>

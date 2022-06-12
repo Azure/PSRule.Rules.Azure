@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.EventHub.DisableLocalAuth
+  ref: AZR-000102
   tags:
     release: GA
     ruleSet: 2022_03

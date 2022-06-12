@@ -8,11 +8,29 @@
 #region Rules
 
 ---
+# Synopsis: Use Azure AD identities instead of using the registry admin user.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ACR.AdminUser
+  ref: AZR-000005
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.ContainerRegistry/registries
+  condition:
+    field: Properties.adminUserEnabled
+    hasDefault: false
+
+---
 # Synopsis: ACR should use the Premium or Standard SKU for production deployments.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.ACR.MinSku
+  ref: AZR-000006
   tags:
     release: 'GA'
     ruleSet: '2020_06'
@@ -29,6 +47,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.ACR.Name
+  ref: AZR-000007
   tags:
     release: 'GA'
     ruleSet: '2020_06'
@@ -50,6 +69,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.ACR.Quarantine
+  ref: AZR-000008
   tags:
     release: 'preview'
     ruleSet: '2020_12'
@@ -66,6 +86,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.ACR.ContentTrust
+  ref: AZR-000009
   tags:
     release: 'GA'
     ruleSet: '2020_12'
@@ -84,6 +105,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.ACR.Retention
+  ref: AZR-000010
   tags:
     release: 'preview'
     ruleSet: '2020_12'

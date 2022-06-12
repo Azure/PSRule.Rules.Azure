@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Ensure variables are encrypted
-Rule 'Azure.Automation.EncryptVariables' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Automation.EncryptVariables' -Ref 'AZR-000086' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $variables = GetSubResources -ResourceType 'Microsoft.Automation/automationAccounts/variables';
     if ($variables.Length -eq 0) {
         return $Assert.Pass();
@@ -17,7 +17,7 @@ Rule 'Azure.Automation.EncryptVariables' -Type 'Microsoft.Automation/automationA
 }
 
 # Synopsis: Ensure webhook expiry is not longer than one year
-Rule 'Azure.Automation.WebHookExpiry' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Automation.WebHookExpiry' -Ref 'AZR-000087' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $webhooks = GetSubResources -ResourceType 'Microsoft.Automation/automationAccounts/webhooks';
     if ($webhooks.Length -eq 0) {
         return $Assert.Pass();
@@ -29,7 +29,7 @@ Rule 'Azure.Automation.WebHookExpiry' -Type 'Microsoft.Automation/automationAcco
 }
 
 # Synopsis: Ensure automation account audit diagnostic logs are enabled.
-Rule 'Azure.Automation.AuditLogs' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.Automation.AuditLogs' -Ref 'AZR-000088' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
     $diagnosticLogs = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.Automation/automationAccounts/providers/diagnosticSettings');
 
     $Assert.Greater($diagnosticLogs, '.', 0).Reason($LocalizedData.DiagnosticSettingsNotConfigured);
@@ -52,7 +52,7 @@ Rule 'Azure.Automation.AuditLogs' -Type 'Microsoft.Automation/automationAccounts
 }
 
 # Synopsis: Ensure automation account platform diagnostic logs are enabled.
-Rule 'Azure.Automation.PlatformLogs' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.Automation.PlatformLogs' -Ref 'AZR-000089' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
     $configurationLogCategoriesList = $Configuration.GetStringValues('AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST');
 
     if ($configurationLogCategoriesList.Length -eq 0) {

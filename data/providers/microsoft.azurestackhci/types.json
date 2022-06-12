@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "clusters",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-09-01",
@@ -21,6 +22,7 @@
     "aliases": null,
     "resourceType": "clusters/arcSettings",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-09-01",
@@ -38,10 +40,67 @@
     "aliases": null,
     "resourceType": "clusters/arcSettings/extensions",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-09-01",
       "2021-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "West Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusters/offers",
+    "apiVersions": [
+      "2022-04-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "West Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusters/publishers",
+    "apiVersions": [
+      "2022-04-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "West Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusters/publishers/offers",
+    "apiVersions": [
+      "2022-04-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "West Europe",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusters/publishers/offers/skus",
+    "apiVersions": [
+      "2022-04-01-preview"
     ],
     "locations": [
       "Australia East",
@@ -67,6 +126,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-09-01-preview",
@@ -81,8 +141,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/operationstatuses",
+    "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-09-01-preview",
@@ -95,7 +156,14 @@
       "East US",
       "East US 2 EUAP",
       "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "Australia East",
+      "Central US EUAP",
+      "Central US",
+      "Japan East",
+      "North Europe",
+      "East US 2",
+      "South Central US"
     ],
     "zoneMappings": null
   },
@@ -115,6 +183,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-09-01-preview",

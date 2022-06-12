@@ -5,18 +5,8 @@
 # Validation rules for Key Vault
 #
 
-# Synopsis: Enable Key Vault Soft Delete
-Rule 'Azure.KeyVault.SoftDelete' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.enableSoftDelete', $True)
-}
-
-# Synopsis: Enable Key Vault Purge Protection
-Rule 'Azure.KeyVault.PurgeProtect' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.enablePurgeProtection', $True)
-}
-
 # Synopsis: Limit access to Key Vault data
-Rule 'Azure.KeyVault.AccessPolicy' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/accessPolicies' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.KeyVault.AccessPolicy' -Ref 'AZR-000118' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/accessPolicies' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     Reason $LocalizedData.AccessPolicyLeastPrivilege;
     $accessPolicies = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.KeyVault/vaults') {
@@ -34,7 +24,7 @@ Rule 'Azure.KeyVault.AccessPolicy' -Type 'Microsoft.KeyVault/vaults', 'Microsoft
 }
 
 # Synopsis: Use diagnostics to audit Key Vault access
-Rule 'Azure.KeyVault.Logs' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.KeyVault.Logs' -Ref 'AZR-000119' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.KeyVault/vaults/providers/diagnosticSettings' | ForEach-Object {
         $_.Properties.logs | Where-Object {
             $_.category -eq 'AuditEvent' -and $_.enabled
@@ -44,7 +34,7 @@ Rule 'Azure.KeyVault.Logs' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = '
 }
 
 # Synopsis: Key Vault names should meet naming requirements.
-Rule 'Azure.KeyVault.Name' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2021_03' } {
+Rule 'Azure.KeyVault.Name' -Ref 'AZR-000120' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2021_03' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault
 
     # Between 3 and 24 characters long
@@ -59,7 +49,7 @@ Rule 'Azure.KeyVault.Name' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = '
 }
 
 # Synopsis: Key Vault Secret names should meet naming requirements.
-Rule 'Azure.KeyVault.SecretName' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/secrets' -Tag @{ release = 'GA'; ruleSet = '2021_03' } {
+Rule 'Azure.KeyVault.SecretName' -Ref 'AZR-000121' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/secrets' -Tag @{ release = 'GA'; ruleSet = '2021_03' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault
 
     $secrets = @($TargetObject);
@@ -83,7 +73,7 @@ Rule 'Azure.KeyVault.SecretName' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.K
 }
 
 # Synopsis: Key Vault Key names should meet naming requirements.
-Rule 'Azure.KeyVault.KeyName' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/keys' -Tag @{ release = 'GA'; ruleSet = '2021_03' } {
+Rule 'Azure.KeyVault.KeyName' -Ref 'AZR-000122' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/keys' -Tag @{ release = 'GA'; ruleSet = '2021_03' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault
 
     $keys = @($TargetObject);
@@ -107,7 +97,7 @@ Rule 'Azure.KeyVault.KeyName' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyV
 }
 
 # Synopsis: Key Vault keys should have auto-rotation enabled.
-Rule 'Azure.KeyVault.AutoRotationPolicy' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/keys' -Tag @{ release = 'preview'; ruleSet = '2022_03'; } {
+Rule 'Azure.KeyVault.AutoRotationPolicy' -Ref 'AZR-000123' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/keys' -Tag @{ release = 'preview'; ruleSet = '2022_03'; } {
     $keys = @($TargetObject);
 
     if ($PSRule.TargetType -eq 'Microsoft.KeyVault/vaults') {

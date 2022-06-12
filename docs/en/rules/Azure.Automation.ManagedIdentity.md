@@ -1,4 +1,5 @@
 ---
+reviewed: 2022-05-14
 severity: Important
 pillar: Security
 category: Identity and access management
@@ -10,19 +11,19 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Automa
 
 ## SYNOPSIS
 
-Ensure managed identity is used for authentication.
+Ensure Managed Identity is used for authentication.
 
 ## DESCRIPTION
 
-Azure automation can use managed identities to authenticate to Azure resources without storing credentials.
+Azure automation can use Managed Identities to authenticate to Azure resources without storing credentials.
 
 Using managed identities have the following benefits:
 
 - Using a managed identity instead of the Automation Run As account simplifies management.
-You don't have to renew the certificate used by a Run As account.
-- Managed identities can be used without any additional cost.
-- You don't have to specify the Run As connection object in your runbook code. 
-You can access resources using your Automation account's managed identity from a runbook without creating certificates, connections, Run As accounts, etc.
+  You don't have to renew the certificate used by a Run As account.
+- Managed Identities can be used without any additional cost.
+- You don't have to specify the Run As connection object in your runbook code.
+  You can access resources using your Automation Account's Managed Identity from a runbook.
 
 ## RECOMMENDATION
 
@@ -32,9 +33,10 @@ Consider configure a managed identity for each Automation Account.
 
 ### Configure with Azure template
 
-To set managed identity for an automation account
+To deploy Automation Accounts that pass this rule:
 
 - Set `identity.type` to `SystemAssigned` or `UserAssigned`.
+- If `identity.type` is `UserAssigned`, reference the identity with `identity.userAssignedIdentities`.
 
 For example:
 
@@ -62,9 +64,10 @@ For example:
 
 ### Configure with Bicep
 
-To set managed identity for an automation account
+To deploy Automation Accounts that pass this rule:
 
 - Set `identity.type` to `SystemAssigned` or `UserAssigned`.
+- If `identity.type` is `UserAssigned`, reference the identity with `identity.userAssignedIdentities`.
 
 For example:
 
@@ -94,4 +97,4 @@ resource automation_account_name_resource 'Microsoft.Automation/automationAccoun
 - [Managed identities](https://docs.microsoft.com/azure/automation/automation-security-overview#managed-identities)
 - [Using a system-assigned managed identity for an Azure Automation account](https://docs.microsoft.com/azure/automation/enable-managed-identity-for-automation)
 - [Using a user-assigned managed identity for an Azure Automation account](https://docs.microsoft.com/azure/automation/add-user-assigned-identity)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.automation/automationaccounts?tabs=json#identity)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.automation/automationaccounts#identity)

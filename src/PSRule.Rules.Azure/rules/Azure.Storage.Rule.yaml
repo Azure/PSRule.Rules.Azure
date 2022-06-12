@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Storage.Firewall
+  ref: AZR-000202
   tags:
     release: GA
     ruleSet: 2021_09

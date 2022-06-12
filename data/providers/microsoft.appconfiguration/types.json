@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-05-01",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview",
@@ -75,6 +76,7 @@
     },
     "resourceType": "configurationStores",
     "apiVersions": [
+      "2022-05-01",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview",
@@ -123,6 +125,7 @@
     "aliases": null,
     "resourceType": "configurationStores/eventGridFilters",
     "apiVersions": [
+      "2022-05-01",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview",
@@ -180,6 +183,7 @@
     },
     "resourceType": "configurationStores/keyValues",
     "apiVersions": [
+      "2022-05-01",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview"
@@ -224,6 +228,7 @@
     "aliases": null,
     "resourceType": "deletedConfigurationStores",
     "apiVersions": [
+      "2022-05-01",
       "2021-10-01-preview"
     ],
     "locations": [
@@ -266,6 +271,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-05-01",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview",
@@ -314,6 +320,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-05-01",
       "2021-10-01-preview"
     ],
     "locations": [
@@ -356,6 +363,7 @@
     "aliases": null,
     "resourceType": "locations/deletedConfigurationStores",
     "apiVersions": [
+      "2022-05-01",
       "2021-10-01-preview"
     ],
     "locations": [
@@ -398,6 +406,7 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2022-05-01",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview",
@@ -446,6 +455,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-01",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview",

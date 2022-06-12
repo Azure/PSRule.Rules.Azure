@@ -15,3 +15,4 @@ data/types_index.json
 *.diagsession
 *.log
 *.min.json
+docs/en/rules/metadata.json

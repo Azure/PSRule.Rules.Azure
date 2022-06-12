@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.MinNodeCount
+  ref: AZR-000024
   tags:
     release: 'GA'
     ruleSet: '2020_06'
@@ -29,6 +30,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.ManagedIdentity
+  ref: AZR-000025
   tags:
     release: 'GA'
     ruleSet: '2020_06'
@@ -47,6 +49,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.StandardLB
+  ref: AZR-000026
   tags:
     release: 'GA'
     ruleSet: '2020_06'
@@ -63,6 +66,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.NetworkPolicy
+  ref: AZR-000027
   tags:
     release: 'GA'
     ruleSet: '2020_06'
@@ -81,6 +85,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.AzurePolicyAddOn
+  ref: AZR-000028
   tags:
     release: 'GA'
     ruleSet: '2020_12'
@@ -97,6 +102,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.ManagedAAD
+  ref: AZR-000029
   tags:
     release: 'GA'
     ruleSet: '2021_06'
@@ -113,6 +119,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.AuthorizedIPs
+  ref: AZR-000030
   tags:
     release: 'GA'
     ruleSet: '2021_06'
@@ -129,6 +136,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.LocalAccounts
+  ref: AZR-000031
   tags:
     release: 'preview'
     ruleSet: '2021_06'
@@ -145,6 +153,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.AzureRBAC
+  ref: AZR-000032
   tags:
     release: 'GA'
     ruleSet: '2021_06'
@@ -161,6 +170,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.SecretStore
+  ref: AZR-000033
   tags:
     release: 'GA'
     ruleSet: '2021_12'
@@ -177,6 +187,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.SecretStoreRotation
+  ref: AZR-000034
   tags:
     release: 'GA'
     ruleSet: '2021_12'
@@ -195,6 +206,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.HttpAppRouting
+  ref: AZR-000035
   tags:
     release: 'GA'
     ruleSet: '2021_12'
@@ -214,6 +226,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.AutoUpgrade
+  ref: AZR-000036
   tags:
     release: 'GA'
     ruleSet: '2021_12'
@@ -233,6 +246,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AKS.PodIdentity
+  ref: AZR-000037
   tags:
     release: 'preview'
     ruleSet: '2021_12'
@@ -243,6 +257,88 @@ spec:
     - Azure.AKS.AzureCNI
   condition:
     field: Properties.podIdentityProfile.enabled
+    equals: true
+
+---
+# Synopsis: Deploy AKS cluster with role-based access control (RBAC) enabled.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.UseRBAC
+  ref: AZR-000038
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    field: Properties.enableRBAC
+    equals: true
+
+---
+# Synopsis: Azure Kubernetes Service (AKS) cluster names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.Name
+  ref: AZR-000039
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 1
+    - name: '.'
+      lessOrEquals: 63
+    # The name must contain between 1 to 63 characters inclusive.
+    # The name only allows alphanumerics, underscores, and hyphens and must start and end with alphanumeric.
+    - name: '.'
+      match: '^[A-Za-z0-9](-|\w)*[A-Za-z0-9]$'
+
+---
+# Synopsis: Azure Kubernetes Service (AKS) cluster DNS prefix should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.DNSPrefix
+  ref: AZR-000040
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    allOf:
+    - field: Properties.dnsPrefix
+      greaterOrEquals: 1
+    - field: Properties.dnsPrefix
+      lessOrEquals: 54
+    # The dnsPrefix must contain between 1 to 54 characters inclusive.
+    # The dnsPrefix only allows alphanumerics, and hyphens and must start and end with alphanumeric.
+    - field: Properties.dnsPrefix
+      match: '^[A-Za-z0-9]((-|[A-Za-z0-9]){0,}[A-Za-z0-9]){0,}$'
+
+---
+# Synopsis: Enable Container insights to monitor AKS cluster workloads.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.ContainerInsights
+  ref: AZR-000041
+  tags:
+    release: 'GA'
+    ruleSet: '2021_09'
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    field: Properties.addonProfiles.omsAgent.enabled
     equals: true
 
 #endregion Rules

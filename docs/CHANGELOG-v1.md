@@ -7,7 +7,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 **Important notes**:
 
 - Issue #741: `Could not load file or assembly YamlDotNet`.
-See [troubleshooting guide] for a workaround to this issue.
+  See [troubleshooting guide] for a workaround to this issue.
 - The configuration option `Azure_AKSMinimumVersion` is replaced with `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
   If you have this option configured, please update it to `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
   Support for `Azure_AKSMinimumVersion` will be removed in v2.
@@ -19,10 +19,181 @@ See [troubleshooting guide] for a workaround to this issue.
 
 ## Unreleased
 
+## v1.16.1
+
+What's changed since v1.16.0:
+
+- Bug fixes:
+  - Fixed TLS 1.3 support in `Azure.AppGw.SSLPolicy` by @BernieWhite.
+    [#1469](https://github.com/Azure/PSRule.Rules.Azure/issues/1469)
+  - Fixed Application Gateway referencing a WAF policy by @BernieWhite.
+    [#1466](https://github.com/Azure/PSRule.Rules.Azure/issues/1466)
+
+## v1.16.0
+
+What's changed since v1.15.2:
+
+- New rules:
+  - App Service:
+    - Check web apps have insecure FTP disabled by @BernieWhite.
+      [#1436](https://github.com/Azure/PSRule.Rules.Azure/issues/1436)
+    - Check web apps use a dedicated health probe by @BernieWhite.
+      [#1437](https://github.com/Azure/PSRule.Rules.Azure/issues/1437)
+- Updated rules:
+  - Public IP:
+    - Updated `Azure.PublicIP.AvailabilityZone` to exclude IP addresses for Azure Bastion by @BernieWhite.
+      [#1442](https://github.com/Azure/PSRule.Rules.Azure/issues/1442)
+      - Public IP addresses with the `resource-usage` tag set to `azure-bastion` are excluded.
+- General improvements:
+  - Added support for `dateTimeFromEpoch` and `dateTimeToEpoch` ARM functions by @BernieWhite.
+    [#1451](https://github.com/Azure/PSRule.Rules.Azure/issues/1451)
+- Engineering:
+  - Updated built documentation to include rule ref and metadata by @BernieWhite.
+    [#1432](https://github.com/Azure/PSRule.Rules.Azure/issues/1432)
+  - Added ref properties for several rules by @BernieWhite.
+    [#1430](https://github.com/Azure/PSRule.Rules.Azure/issues/1430)
+  - Updated provider data for analysis.
+    [#1453](https://github.com/Azure/PSRule.Rules.Azure/pull/1453)
+  - Bump Microsoft.NET.Test.Sdk to v17.2.0.
+    [#1410](https://github.com/Azure/PSRule.Rules.Azure/pull/1410)
+  - Update CI checks to include required ref property by @BernieWhite.
+    [#1431](https://github.com/Azure/PSRule.Rules.Azure/issues/1431)
+  - Added ref properties for rules by @BernieWhite.
+    [#1430](https://github.com/Azure/PSRule.Rules.Azure/issues/1430)
+- Bug fixes:
+  - Fixed `Azure.Template.UseVariables` does not accept function variables names by @BernieWhite.
+    [#1427](https://github.com/Azure/PSRule.Rules.Azure/issues/1427)
+  - Fixed dependency issue within Azure Pipelines `AzurePowerShell` task by @BernieWhite.
+    [#1447](https://github.com/Azure/PSRule.Rules.Azure/issues/1447)
+    - Removed dependency on `Az.Accounts` and `Az.Resources` from manifest.
+      Pre-install these modules to use export cmdlets.
+
+What's changed since pre-release v1.16.0-B0072:
+
+- No additional changes.
+
+## v1.16.0-B0072 (pre-release)
+
+What's changed since pre-release v1.16.0-B0041:
+
+- Engineering:
+  - Update CI checks to include required ref property by @BernieWhite.
+    [#1431](https://github.com/Azure/PSRule.Rules.Azure/issues/1431)
+  - Added ref properties for rules by @BernieWhite.
+    [#1430](https://github.com/Azure/PSRule.Rules.Azure/issues/1430)
+- Bug fixes:
+  - Fixed dependency issue within Azure Pipelines `AzurePowerShell` task by @BernieWhite.
+    [#1447](https://github.com/Azure/PSRule.Rules.Azure/issues/1447)
+    - Removed dependency on `Az.Accounts` and `Az.Resources` from manifest.
+      Pre-install these modules to use export cmdlets.
+
+## v1.16.0-B0041 (pre-release)
+
+What's changed since pre-release v1.16.0-B0017:
+
+- Updated rules:
+  - Public IP:
+    - Updated `Azure.PublicIP.AvailabilityZone` to exclude IP addresses for Azure Bastion by @BernieWhite.
+      [#1442](https://github.com/Azure/PSRule.Rules.Azure/issues/1442)
+      - Public IP addresses with the `resource-usage` tag set to `azure-bastion` are excluded.
+- General improvements:
+  - Added support for `dateTimeFromEpoch` and `dateTimeToEpoch` ARM functions by @BernieWhite.
+    [#1451](https://github.com/Azure/PSRule.Rules.Azure/issues/1451)
+- Engineering:
+  - Updated built documentation to include rule ref and metadata by @BernieWhite.
+    [#1432](https://github.com/Azure/PSRule.Rules.Azure/issues/1432)
+  - Added ref properties for several rules by @BernieWhite.
+    [#1430](https://github.com/Azure/PSRule.Rules.Azure/issues/1430)
+  - Updated provider data for analysis.
+    [#1453](https://github.com/Azure/PSRule.Rules.Azure/pull/1453)
+
+## v1.16.0-B0017 (pre-release)
+
+What's changed since v1.15.2:
+
+- New rules:
+  - App Service:
+    - Check web apps have insecure FTP disabled by @BernieWhite.
+      [#1436](https://github.com/Azure/PSRule.Rules.Azure/issues/1436)
+    - Check web apps use a dedicated health probe by @BernieWhite.
+      [#1437](https://github.com/Azure/PSRule.Rules.Azure/issues/1437)
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk to v17.2.0.
+    [#1410](https://github.com/Azure/PSRule.Rules.Azure/pull/1410)
+- Bug fixes:
+  - Fixed `Azure.Template.UseVariables` does not accept function variables names by @BernieWhite.
+    [#1427](https://github.com/Azure/PSRule.Rules.Azure/issues/1427)
+
+## v1.15.2
+
+What's changed since v1.15.1:
+
+- Bug fixes:
+  - Fixed `Azure.AppService.ManagedIdentity` does not accept both system and user assigned by @BernieWhite.
+    [#1415](https://github.com/Azure/PSRule.Rules.Azure/issues/1415)
+    - This also applies to:
+      - `Azure.ADX.ManagedIdentity`
+      - `Azure.APIM.ManagedIdentity`
+      - `Azure.EventGrid.ManagedIdentity`
+      - `Azure.Automation.ManagedIdentity`
+  - Fixed Web apps with .NET 6 do not meet version constraint of `Azure.AppService.NETVersion` by @BernieWhite.
+    [#1414](https://github.com/Azure/PSRule.Rules.Azure/issues/1414)
+    - This also applies to `Azure.AppService.PHPVersion`.
+
+## v1.15.1
+
+What's changed since v1.15.0:
+
+- Bug fixes:
+  - Fixed exclusion of `dataCollectionRuleAssociations` from `Azure.Resource.UseTags` by @BernieWhite.
+    [#1400](https://github.com/Azure/PSRule.Rules.Azure/issues/1400)
+  - Fixed could not determine JSON object type for MockObject using CreateObject by @BernieWhite.
+    [#1411](https://github.com/Azure/PSRule.Rules.Azure/issues/1411)
+  - Fixed cannot bind argument to parameter 'Sku' because it is an empty string by @BernieWhite.
+    [#1407](https://github.com/Azure/PSRule.Rules.Azure/issues/1407)
+
+## v1.15.0
+
+What's changed since v1.14.3:
+
+- New features:
+  - **Important change**: Added `Azure.Resource.SupportsTags` selector by @BernieWhite.
+    [#1339](https://github.com/Azure/PSRule.Rules.Azure/issues/1339)
+    - Use this selector in custom rules to filter rules to only run against resources that support tags.
+    - This selector replaces the `SupportsTags` PowerShell function.
+    - Using the `SupportsTag` function will now result in a warning.
+    - The `SupportsTags` function will be removed in v2.
+    - See [upgrade notes][1] for more information.
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.22.6` by @BernieWhite.
+      [#1386](https://github.com/Azure/PSRule.Rules.Azure/issues/1386)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+- Engineering:
+  - Added code signing of module by @BernieWhite.
+    [#1379](https://github.com/Azure/PSRule.Rules.Azure/issues/1379)
+  - Added SBOM manifests to module by @BernieWhite.
+    [#1380](https://github.com/Azure/PSRule.Rules.Azure/issues/1380)
+  - Embedded provider and alias information as manifest resources by @BernieWhite.
+    [#1383](https://github.com/Azure/PSRule.Rules.Azure/issues/1383)
+    - Resources are minified and compressed to improve size and speed.
+  - Added additional `nodeps` manifest that does not include dependencies for Az modules by @BernieWhite.
+    [#1392](https://github.com/Azure/PSRule.Rules.Azure/issues/1392)
+  - Bump Az.Accounts to 2.7.6. [#1338](https://github.com/Azure/PSRule.Rules.Azure/pull/1338)
+  - Bump Az.Resources to 5.6.0. [#1338](https://github.com/Azure/PSRule.Rules.Azure/pull/1338)
+  - Bump PSRule to 2.1.0. [#1338](https://github.com/Azure/PSRule.Rules.Azure/pull/1338)
+  - Bump Pester to 5.3.3. [#1338](https://github.com/Azure/PSRule.Rules.Azure/pull/1338)
+- Bug fixes:
+  - Fixed dependency chain order when dependsOn copy by @BernieWhite.
+    [#1381](https://github.com/Azure/PSRule.Rules.Azure/issues/1381)
+  - Fixed error calling SupportsTags function by @BernieWhite.
+    [#1401](https://github.com/Azure/PSRule.Rules.Azure/issues/1401)
+
 What's changed since pre-release v1.15.0-B0053:
 
 - Bug fixes:
-  - Fixed error calling SupportsTags function. [#1401](https://github.com/Azure/PSRule.Rules.Azure/issues/1401)
+  - Fixed error calling SupportsTags function by @BernieWhite.
+    [#1401](https://github.com/Azure/PSRule.Rules.Azure/issues/1401)
 
 ## v1.15.0-B0053 (pre-release)
 

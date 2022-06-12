@@ -6,27 +6,17 @@
 #
 
 # Synopsis: App Service Plan should use a minimum number of instances for failover.
-Rule 'Azure.AppService.PlanInstanceCount' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) -and !(IsElasticPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.AppService.PlanInstanceCount' -Ref 'AZR-000071' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) -and !(IsElasticPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.GreaterOrEqual($TargetObject, 'Sku.capacity', 2);
 }
 
 # Synopsis: Use at least a Standard App Service Plan.
-Rule 'Azure.AppService.MinPlan' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) -and !(IsElasticPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.AppService.MinPlan' -Ref 'AZR-000072' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) -and !(IsElasticPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.In($TargetObject, 'Sku.tier', @('PremiumV3', 'PremiumV2', 'Premium', 'Standard'))
 }
 
-# Synopsis: Disable client affinity for stateless services
-Rule 'Azure.AppService.ARRAffinity' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.clientAffinityEnabled', $False)
-}
-
-# Synopsis: Use HTTPS only
-Rule 'Azure.AppService.UseHTTPS' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.httpsOnly', $True)
-}
-
 # Synopsis: Use at least TLS 1.2
-Rule 'Azure.AppService.MinTLS' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
         return $Assert.
@@ -41,7 +31,7 @@ Rule 'Azure.AppService.MinTLS' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites
 }
 
 # Synopsis: Disable remote debugging
-Rule 'Azure.AppService.RemoteDebug' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
+Rule 'Azure.AppService.RemoteDebug' -Ref 'AZR-000074' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
         return $Assert.HasDefaultValue($TargetObject, 'Properties.siteConfig.remoteDebuggingEnabled', $False);
@@ -52,45 +42,45 @@ Rule 'Azure.AppService.RemoteDebug' -Type 'Microsoft.Web/sites', 'Microsoft.Web/
 }
 
 # Synopsis: Configure applications to use newer .NET Framework versions.
-Rule 'Azure.AppService.NETVersion' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
+Rule 'Azure.AppService.NETVersion' -Ref 'AZR-000075' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
     $siteConfigs = @(GetWebSiteConfig | Where-Object {
         ![String]::IsNullOrEmpty($_.Properties.netFrameworkVersion)
     })
     if ($siteConfigs.Length -eq 0) {
         return AnyOf {
             $Assert.HasDefaultValue($TargetObject, 'Properties.siteConfig.netFrameworkVersion', 'OFF')
-            $Assert.Version($TargetObject, 'Properties.siteConfig.netFrameworkVersion', '^4.0')
+            $Assert.Version($TargetObject, 'Properties.siteConfig.netFrameworkVersion', '>=4.0')
         }
     }
     foreach ($siteConfig in $siteConfigs) {
         AnyOf {
             $Assert.HasFieldValue($siteConfig, 'Properties.netFrameworkVersion', 'OFF')
-            $Assert.Version($siteConfig, 'Properties.netFrameworkVersion', '^4.0')
+            $Assert.Version($siteConfig, 'Properties.netFrameworkVersion', '>=4.0')
         }
     }
 }
 
 # Synopsis: Configure applications to use newer PHP runtime versions.
-Rule 'Azure.AppService.PHPVersion' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
+Rule 'Azure.AppService.PHPVersion' -Ref 'AZR-000076' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
     $siteConfigs = @(GetWebSiteConfig | Where-Object {
         ![String]::IsNullOrEmpty($_.Properties.phpVersion)
     })
     if ($siteConfigs.Length -eq 0) {
         return AnyOf {
             $Assert.HasDefaultValue($TargetObject, 'Properties.siteConfig.phpVersion', 'OFF')
-            $Assert.Version($TargetObject, 'Properties.siteConfig.phpVersion', '^7.0')
+            $Assert.Version($TargetObject, 'Properties.siteConfig.phpVersion', '>=7.0')
         }
     }
     foreach ($siteConfig in $siteConfigs) {
         AnyOf {
             $Assert.HasFieldValue($siteConfig, 'Properties.phpVersion', 'OFF')
-            $Assert.Version($siteConfig, 'Properties.phpVersion', '^7.0')
+            $Assert.Version($siteConfig, 'Properties.phpVersion', '>=7.0')
         }
     }
 }
 
 # Synopsis: Configure Always On for App Service apps.
-Rule 'Azure.AppService.AlwaysOn' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
+Rule 'Azure.AppService.AlwaysOn' -Ref 'AZR-000077' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
         return $Assert.HasFieldValue($TargetObject, 'Properties.siteConfig.alwaysOn', $True);
@@ -101,7 +91,7 @@ Rule 'Azure.AppService.AlwaysOn' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sit
 }
 
 # Synopsis: Use HTTP/2 for App Service apps.
-Rule 'Azure.AppService.HTTP2' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+Rule 'Azure.AppService.HTTP2' -Ref 'AZR-000078' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
         return $Assert.HasFieldValue($TargetObject, 'Properties.siteConfig.http20Enabled', $True);
@@ -111,10 +101,54 @@ Rule 'Azure.AppService.HTTP2' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/
     }
 }
 
-# Synopsis: Use a Managed Identities with Azure Service apps.
-Rule 'Azure.AppService.ManagedIdentity' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
-    $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'));
+#region Web Apps
+
+# Synopsis: Configure and enable instance health probes.
+Rule 'Azure.AppService.WebProbe' -Ref 'AZR-000079' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; } {
+    $siteConfigs = @(GetWebSiteConfig | Where-Object {
+        $Assert.HasField($_, 'Properties.healthCheckPath').Result
+    });
+    if ($siteConfigs.Length -eq 0) {
+        return $Assert.HasFieldValue($TargetObject, 'Properties.siteConfig.healthCheckPath', $True);
+    }
+    foreach ($siteConfig in $siteConfigs) {
+        $Assert.HasFieldValue($siteConfig, 'Properties.healthCheckPath');
+    }
 }
+
+# Synopsis: Web apps should use a dedicated health check path.
+Rule 'Azure.AppService.WebProbePath' -Ref 'AZR-000080' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; } {
+    $siteConfigs = @(GetWebSiteConfig | Where-Object {
+        $Assert.HasField($_, 'Properties.healthCheckPath').Result
+    });
+    if ($siteConfigs.Length -eq 0) {
+        return $Assert.Greater($TargetObject, 'Properties.siteConfig.healthCheckPath', 1);
+    }
+    foreach ($siteConfig in $siteConfigs) {
+        $Assert.Greater($siteConfig, 'Properties.healthCheckPath', 1);
+    }
+}
+
+# Synopsis: Web apps should disable insecure FTP and configure SFTP when required.
+Rule 'Azure.AppService.WebSecureFtp' -Ref 'AZR-000081' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; } {
+    $siteConfigs = @(GetWebSiteConfig | Where-Object {
+        $Assert.HasField($_, 'Properties.ftpsState').Result
+    });
+    if ($siteConfigs.Length -eq 0) {
+        return $Assert.In($TargetObject, 'Properties.siteConfig.ftpsState', @(
+            'FtpsOnly'
+            'Disabled'
+        ));
+    }
+    foreach ($siteConfig in $siteConfigs) {
+        $Assert.In($siteConfig, 'Properties.ftpsState', @(
+            'FtpsOnly'
+            'Disabled'
+        ));
+    }
+}
+
+#endregion Web Apps
 
 #region Helper functions
 
@@ -146,7 +180,7 @@ function global:GetWebSiteConfig {
     param ()
     process {
         $siteConfigs = @(GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config' | Where-Object {
-            $_.Name -notlike "*/*" -or $_.Name -like "*/web"
+            $_.Name -notlike "*/*" -or $_.Name -like "*/web" -or $_.Id -like "*/web"
         })
         $siteConfigs;
     }

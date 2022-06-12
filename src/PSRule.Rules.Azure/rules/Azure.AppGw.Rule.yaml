@@ -5,18 +5,228 @@
 # Selectors for Application Gateways
 #
 
+#region Rules
+
 ---
-# Synopsis: Application Gateways with WAF enabled
+# Synopsis: Application Gateways should use a minimum of two instances.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGw.MinInstance
+  ref: AZR-000061
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Network/applicationGateways
+  condition:
+    anyOf:
+    # Applies to v1 and v2 without autoscale
+    - field: Properties.sku.capacity
+      greaterOrEquals: 2
+
+    # Applies to v2 with autoscale
+    - field: Properties.autoscaleConfiguration.minCapacity
+      greaterOrEquals: 2
+
+---
+# Synopsis: Application Gateway should use a minimum instance size of Medium.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGw.MinSku
+  ref: AZR-000062
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Network/applicationGateways
+  condition:
+    field: Properties.sku.name
+    in:
+    - WAF_Medium
+    - Standard_Medium
+    - WAF_Large
+    - Standard_Large
+    - WAF_v2
+    - Standard_v2
+
+---
+# Synopsis: Internet accessible Application Gateways should use protect endpoints with WAF.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGw.UseWAF
+  ref: AZR-000063
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  with:
+  - Azure.IsAppGwPublic
+  condition:
+    field: Properties.sku.tier
+    in:
+    - WAF
+    - WAF_v2
+
+---
+# Synopsis: Application Gateway should only accept a minimum of TLS 1.2.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGw.SSLPolicy
+  ref: AZR-000064
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Network/applicationGateways
+  condition:
+    anyOf:
+    - field: Properties.sslPolicy.policyName
+      in:
+      - AppGwSslPolicy20170401S
+      - AppGwSslPolicy20220101
+      - AppGwSslPolicy20220101S
+    - field: Properties.sslPolicy.minProtocolVersion
+      in:
+      - TLSv1_2
+      - TLSv1_3
+
+---
+# Synopsis: Internet exposed Application Gateways should use prevention mode to protect backend resources.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGw.Prevention
+  ref: AZR-000065
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  with:
+  - Azure.AppGw.WithClassicWAF
+  condition:
+    field: properties.webApplicationFirewallConfiguration.firewallMode
+    equals: Prevention
+
+---
+# Synopsis: Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGw.WAFEnabled
+  ref: AZR-000066
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  with:
+  - Azure.IsAppGwPublic
+  condition:
+    anyOf:
+    - field: properties.webApplicationFirewallConfiguration.enabled
+      equals: true
+    - field: properties.firewallPolicy.id
+      hasValue: true
+
+---
+# Synopsis: Application Gateway Web Application Firewall (WAF) should use OWASP 3.x rules.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGw.OWASP
+  ref: AZR-000067
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  with:
+  - Azure.AppGw.WithClassicWAF
+  condition:
+    allOf:
+    - field: properties.webApplicationFirewallConfiguration.ruleSetType
+      equals: OWASP
+    - field: properties.webApplicationFirewallConfiguration.ruleSetVersion
+      version: '^3.0'
+
+---
+# Synopsis: Application Gateway Web Application Firewall (WAF) should have all rules enabled.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGw.WAFRules
+  ref: AZR-000068
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  with:
+  - Azure.AppGw.WithClassicWAF
+  condition:
+    field: properties.webApplicationFirewallConfiguration.disabledRuleGroups
+    lessOrEquals: 0
+
+#endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: Application Gateways with WAF enabled.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Selector
 metadata:
-  name: Azure.IsAppGwWAF
+  name: Azure.AppGw.WithClassicWAF
+  annotations:
+    export: false
 spec:
   if:
     allOf:
+    - type: '.'
+      equals: Microsoft.Network/applicationGateways
     - field: Properties.sku.tier
       in:
       - 'WAF'
       - 'WAF_v2'
-    - field: Properties.webApplicationFirewallConfiguration.enabled
+    - field: properties.webApplicationFirewallConfiguration.enabled
       equals: true
+
+---
+# Synopsis: Application Gateways that has a public IP.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.IsAppGwPublic
+  annotations:
+    export: false
+spec:
+  if:
+    allOf:
+    - type: '.'
+      equals: Microsoft.Network/applicationGateways
+    - field: properties.frontendIPConfigurations[?@.properties.publicIPAddress.id]
+      greaterOrEquals: 1
+
+---
+# Synopsis: Application Gateways with the v2 SKU.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.IsAppGwV2Sku
+  annotations:
+    export: false
+spec:
+  if:
+    allOf:
+    - type: '.'
+      equals: Microsoft.Network/applicationGateways
+    - field: properties.sku.tier
+      in:
+      - Standard_v2
+      - WAF_v2
+
+#endregion Selectors

@@ -25,7 +25,7 @@ BeforeAll {
     $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-Describe 'Azure.PublicIP' {
+Describe 'Azure.PublicIP' -Tag 'publicip' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
@@ -44,8 +44,8 @@ Describe 'Azure.PublicIP' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 10;
-            $ruleResult.TargetName | Should -Be 'ip-B', 'Ip-C', 'ip-D', 'ip-E', 'ip-F', 'ip-G', 'ip-H', 'ip-I', 'ip-J', 'ip-K';
+            $ruleResult.Length | Should -Be 11;
+            $ruleResult.TargetName | Should -Be 'ip-B', 'Ip-C', 'ip-D', 'ip-E', 'ip-F', 'ip-G', 'ip-H', 'ip-I', 'ip-J', 'ip-K', 'ip-L';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -64,8 +64,8 @@ Describe 'Azure.PublicIP' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 11;
-            $ruleResult.TargetName | Should -Be 'ip-A', 'ip-B', 'Ip-C', 'ip-D', 'ip-E', 'ip-F', 'ip-G', 'ip-H', 'ip-I', 'ip-J', 'ip-K';
+            $ruleResult.Length | Should -Be 12;
+            $ruleResult.TargetName | Should -Be 'ip-A', 'ip-B', 'Ip-C', 'ip-D', 'ip-E', 'ip-F', 'ip-G', 'ip-H', 'ip-I', 'ip-J', 'ip-K', 'ip-L';
         }
 
         It 'Azure.PublicIP.DNSLabel' {
@@ -78,8 +78,8 @@ Describe 'Azure.PublicIP' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 10;
-            $ruleResult.TargetName | Should -Be 'ip-B', 'Ip-C', 'ip-D', 'ip-E', 'ip-F', 'ip-G', 'ip-H', 'ip-I', 'ip-J', 'ip-K';
+            $ruleResult.Length | Should -Be 11;
+            $ruleResult.TargetName | Should -Be 'ip-B', 'Ip-C', 'ip-D', 'ip-E', 'ip-F', 'ip-G', 'ip-H', 'ip-I', 'ip-J', 'ip-K', 'ip-L';
         }
 
         It 'Azure.PublicIP.AvailabilityZone' {
@@ -107,8 +107,8 @@ Describe 'Azure.PublicIP' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'ip-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'ip-A', 'ip-L';
         }
 
         It 'Azure.PublicIP.StandardSKU' {
@@ -121,13 +121,13 @@ Describe 'Azure.PublicIP' {
             $ruleResult.TargetName | Should -Be 'ip-A';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The field 'sku.name' is set to 'Basic'.";
+            $ruleResult[0].Reason | Should -BeExactly "Field sku.name: Is set to 'Basic'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 10;
-            $ruleResult.TargetName | Should -Be 'ip-B', 'ip-C', 'ip-D', 'ip-E', 'ip-F', 'ip-G', 'ip-H', 'ip-I', 'ip-J', 'ip-K';
+            $ruleResult.Length | Should -Be 11;
+            $ruleResult.TargetName | Should -BeIn 'ip-B', 'ip-C', 'ip-D', 'ip-E', 'ip-F', 'ip-G', 'ip-H', 'ip-I', 'ip-J', 'ip-K', 'ip-L';
         }
     }
 
@@ -357,13 +357,13 @@ Describe 'Azure.PublicIP' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -Be 'ip-C', 'ip-E', 'ip-I', 'ip-K';
+            $ruleResult.TargetName | Should -BeIn 'ip-C', 'ip-E', 'ip-I', 'ip-K';
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'ip-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'ip-A', 'ip-L';
         }
 
         It 'Azure.PublicIP.AvailabilityZone - YAML file option' {
@@ -393,13 +393,13 @@ Describe 'Azure.PublicIP' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -Be 'ip-C', 'ip-E', 'ip-I', 'ip-K';
+            $ruleResult.TargetName | Should -BeIn 'ip-C', 'ip-E', 'ip-I', 'ip-K';
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'ip-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'ip-A', 'ip-L';
         }
     }
 }

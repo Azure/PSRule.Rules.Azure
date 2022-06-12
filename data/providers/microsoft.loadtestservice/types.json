@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-04-15-preview",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-11-01-preview",
@@ -16,6 +17,7 @@
     "aliases": null,
     "resourceType": "loadtests",
     "apiVersions": [
+      "2022-04-15-preview",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-09-01-preview",
@@ -36,6 +38,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2022-04-15-preview",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-11-01-preview",
@@ -49,6 +52,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2022-04-15-preview",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-11-01-preview",
@@ -71,6 +75,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-04-15-preview",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-11-01-preview",

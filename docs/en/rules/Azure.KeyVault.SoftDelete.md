@@ -38,21 +38,45 @@ For example:
 
 ```json
 {
-    "comments": "Create or update a Key Vault.",
     "type": "Microsoft.KeyVault/vaults",
-    "name": "vault-001",
-    "apiVersion": "2019-09-01",
-    "location": "eastus",
+    "apiVersion": "2021-10-01",
+    "name": "[parameters('name')]",
+    "location": "[parameters('location')]",
     "properties": {
-        "accessPolicies": [],
-        "tenantId": "[subscription().tenantId]",
         "sku": {
-            "name": "Standard",
-            "family": "A"
+            "family": "A",
+            "name": "premium"
         },
+        "tenantId": "[subscription().tenantId]",
         "enableSoftDelete": true,
+        "softDeleteRetentionInDays": 90,
         "enablePurgeProtection": true
     }
+}
+```
+
+### Configure with Bicep
+
+To deploy Key Vaults that pass this rule:
+
+- Set the `properties.enableSoftDelete` property to `true`.
+
+For example:
+
+```bicep
+resource vault 'Microsoft.KeyVault/vaults@2021-10-01' = {
+  name: name
+  location: location
+  properties: {
+    sku: {
+      family: 'A'
+      name: 'premium'
+    }
+    tenantId: subscription().tenantId
+    enableSoftDelete: true
+    softDeleteRetentionInDays: 90
+    enablePurgeProtection: true
+  }
 }
 ```
 

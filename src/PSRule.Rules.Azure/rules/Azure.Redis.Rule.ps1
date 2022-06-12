@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Use Azure Cache for Redis instances of at least Standard C1.
-Rule 'Azure.Redis.MinSKU' -Type 'Microsoft.Cache/Redis' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
+Rule 'Azure.Redis.MinSKU' -Ref 'AZR-000159' -Type 'Microsoft.Cache/Redis' -With 'Azure.Redis.HasSku' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
     $Assert.In($TargetObject, 'Properties.sku.name', @('Standard', 'Premium'));
     if ($TargetObject.Properties.sku.name -eq 'Standard') {
         $Assert.GreaterOrEqual($TargetObject, 'Properties.sku.capacity', 1);
@@ -14,14 +14,16 @@ Rule 'Azure.Redis.MinSKU' -Type 'Microsoft.Cache/Redis' -Tag @{ release = 'GA'; 
 }
 
 # Synopsis: Configure `maxmemory-reserved` to reserve memory for non-cache operations.
-Rule 'Azure.Redis.MaxMemoryReserved' -Type 'Microsoft.Cache/Redis' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+Rule 'Azure.Redis.MaxMemoryReserved' -Ref 'AZR-000160' -Type 'Microsoft.Cache/Redis' -With 'Azure.Redis.HasSku' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
     $sku = "$($TargetObject.Properties.sku.family)$($TargetObject.Properties.sku.capacity)";
-    $memSize = (GetCacheMemory -Sku $sku) / 1MB;
-    $Assert.GreaterOrEqual($TargetObject, 'Properties.redisConfiguration.maxmemory-reserved', $memSize * 0.1, $True);
+    if (![String]::IsNullOrEmpty($sku)) {
+        $memSize = (GetCacheMemory -Sku $sku) / 1MB;
+        $Assert.GreaterOrEqual($TargetObject, 'Properties.redisConfiguration.maxmemory-reserved', $memSize * 0.1, $True);
+    }
 }
 
 # Synopsis: Premium Redis cache should be deployed with availability zones for high availability.
-Rule 'Azure.Redis.AvailabilityZone' -Type 'Microsoft.Cache/Redis' -If { IsPremiumCache } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.Redis.AvailabilityZone' -Ref 'AZR-000161' -Type 'Microsoft.Cache/Redis' -If { IsPremiumCache } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
     $redisCacheProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Cache', 'Redis');
 
     $configurationZoneMappings = $Configuration.AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
@@ -49,7 +51,7 @@ Rule 'Azure.Redis.AvailabilityZone' -Type 'Microsoft.Cache/Redis' -If { IsPremiu
 } -Configure @{ AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
 # Synopsis: Enterprise Redis cache should be zone-redundant for high availability.
-Rule 'Azure.RedisEnterprise.Zones' -Type 'Microsoft.Cache/redisEnterprise' -If { IsEnterpriseCache } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.RedisEnterprise.Zones' -Ref 'AZR-000162' -Type 'Microsoft.Cache/redisEnterprise' -If { IsEnterpriseCache } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
     $redisEnterpriseCacheProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Cache', 'redisEnterprise');
 
     $configurationZoneMappings = $Configuration.AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;

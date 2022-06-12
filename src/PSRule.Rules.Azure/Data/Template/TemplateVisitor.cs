@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -606,7 +607,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (value is ILazyValue weakValue)
                 {
                     value = weakValue.GetValue();
-                    Variables[variableName] = value;
+                    Variables[variableName] = ConvertType(value);
                 }
                 return true;
             }
@@ -646,6 +647,28 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 if (value.Type == ParameterType.String && !string.IsNullOrEmpty(value.GetValue() as string))
                     _Validator.ValidateParameter(this, parameterName, parameter, value.GetValue() as string);
+            }
+
+            private static object ConvertType(object value)
+            {
+                return value is JToken token ? ConvertJToken(token) : value;
+            }
+
+            private static object ConvertJToken(JToken token)
+            {
+                if (token == null || token.Type == JTokenType.Null)
+                    return null;
+
+                if (token.Type == JTokenType.String)
+                    return token.Value<string>();
+
+                if (token.Type == JTokenType.Integer)
+                    return token.Value<long>();
+
+                if (token.Type == JTokenType.Boolean)
+                    return token.Value<bool>();
+
+                return token;
             }
         }
 
@@ -835,7 +858,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected virtual void BeginTemplate(TemplateContext context, string deploymentName, JObject template)
         {
-
+            // Do nothing
         }
 
         protected virtual void Template(TemplateContext context, string deploymentName, JObject template, bool isNested)
@@ -1094,7 +1117,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private bool TryDeploymentResource(TemplateContext context, JObject resource)
         {
             var resourceType = ExpandProperty<string>(context, resource, PROPERTY_TYPE);
-            if (!string.Equals(resourceType, RESOURCETYPE_DEPLOYMENT, StringComparison.OrdinalIgnoreCase))
+            if (IsDeploymentResource(resourceType))
                 return false;
 
             var deploymentName = ExpandProperty<string>(context, resource, PROPERTY_NAME);
@@ -1113,6 +1136,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 context.AddResource(deploymentContext.GetResources());
 
             return true;
+        }
+
+        protected static bool IsDeploymentResource(string resourceType)
+        {
+            return !string.Equals(resourceType, RESOURCETYPE_DEPLOYMENT, StringComparison.OrdinalIgnoreCase);
         }
 
         private static TemplateContext GetDeploymentContext(TemplateContext context, JObject resource, JObject properties)
@@ -1568,7 +1596,7 @@ namespace PSRule.Rules.Azure.Data.Template
             }
         }
 
-        private static bool TryArrayProperty(JObject obj, string propertyName, out JArray propertyValue)
+        protected static bool TryArrayProperty(JObject obj, string propertyName, out JArray propertyValue)
         {
             propertyValue = null;
             if (!obj.TryGetValue(propertyName, out var value) || value.Type != JTokenType.Array)
@@ -1578,7 +1606,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return true;
         }
 
-        private static bool TryObjectProperty(JObject obj, string propertyName, out JObject propertyValue)
+        protected static bool TryObjectProperty(JObject obj, string propertyName, out JObject propertyValue)
         {
             propertyValue = null;
             if (!obj.TryGetValue(propertyName, out var value) || value.Type != JTokenType.Object)
@@ -1588,7 +1616,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return true;
         }
 
-        private static bool TryStringProperty(JObject obj, string propertyName, out string propertyValue)
+        protected static bool TryStringProperty(JObject obj, string propertyName, out string propertyValue)
         {
             propertyValue = null;
             if (!obj.TryGetValue(propertyName, out var value) || value.Type != JTokenType.String)
@@ -1614,70 +1642,6 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             Array.Sort(resources, new ResourceDependencyComparer());
             return resources;
-        }
-    }
-
-    /// <summary>
-    /// A template visitor for generating rule data.
-    /// </summary>
-    internal sealed class RuleDataExportVisitor : TemplateVisitor
-    {
-        private const string PROPERTY_DEPENDSON = "dependsOn";
-        private const string PROPERTY_COMMENTS = "comments";
-        private const string PROPERTY_APIVERSION = "apiVersion";
-        private const string PROPERTY_CONDITION = "condition";
-        private const string PROPERTY_RESOURCES = "resources";
-
-        protected override void Resource(TemplateContext context, IResourceValue resource)
-        {
-            // Remove resource properties that not required in rule data
-            if (resource.Value.ContainsKey(PROPERTY_APIVERSION))
-                resource.Value.Remove(PROPERTY_APIVERSION);
-
-            if (resource.Value.ContainsKey(PROPERTY_CONDITION))
-                resource.Value.Remove(PROPERTY_CONDITION);
-
-            if (resource.Value.ContainsKey(PROPERTY_COMMENTS))
-                resource.Value.Remove(PROPERTY_COMMENTS);
-
-            if (!resource.Value.TryGetDependencies(out _))
-                resource.Value.Remove(PROPERTY_DEPENDSON);
-
-            base.Resource(context, resource);
-        }
-
-        protected override void EndTemplate(TemplateContext context, string deploymentName, JObject template)
-        {
-            var resources = context.GetResources();
-
-            // Move sub-resources based on parent resource relationship
-            for (var i = 0; i < resources.Length; i++)
-                MoveResource(context, resources[i]);
-
-            base.EndTemplate(context, deploymentName, template);
-        }
-
-        /// <summary>
-        /// Move sub-resources based on parent resource relationship. This process nests sub-resources so that relationship can be analyzed.
-        /// </summary>
-        private static void MoveResource(TemplateContext context, IResourceValue resource)
-        {
-            if (resource.Value.TryGetDependencies(out _) || resource.Type.Split('/').Length > 2)
-            {
-                resource.Value.Remove(PROPERTY_DEPENDSON);
-                if (context.TryParentResourceId(resource.Value, out var parentResourceId))
-                {
-                    for (var j = 0; j < parentResourceId.Length; j++)
-                    {
-                        if (context.TryGetResource(parentResourceId[j], out var parent))
-                        {
-                            parent.Value.UseProperty(PROPERTY_RESOURCES, out JArray innerResources);
-                            innerResources.Add(resource.Value);
-                            context.RemoveResource(resource);
-                        }
-                    }
-                }
-            }
         }
     }
 }

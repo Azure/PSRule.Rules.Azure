@@ -5,13 +5,10 @@
 # Validation rules for Azure CDN
 #
 
-# Synopsis: Only use secure transport
-Rule 'Azure.CDN.HTTP' -Type 'Microsoft.Cdn/profiles/endpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'properties.isHttpAllowed', $False)
-}
+#region Rules
 
 # Synopsis: Use CDN endpoint naming requirements
-Rule 'Azure.CDN.EndpointName' -Type 'Microsoft.Cdn/profiles/endpoints' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.CDN.EndpointName' -Ref 'AZR-000091' -Type 'Microsoft.Cdn/profiles/endpoints' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcdn
 
     $nameParts = $PSRule.TargetName.Split('/');
@@ -27,7 +24,7 @@ Rule 'Azure.CDN.EndpointName' -Type 'Microsoft.Cdn/profiles/endpoints' -Tag @{ r
 }
 
 # Synopsis: Consider configuring the minimum supported TLS version to be 1.2.
-Rule 'Azure.CDN.MinTLS' -Type 'Microsoft.Cdn/profiles/endpoints', 'Microsoft.Cdn/profiles/endpoints/customdomains' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.CDN.MinTLS' -Ref 'AZR-000092' -Type 'Microsoft.Cdn/profiles/endpoints', 'Microsoft.Cdn/profiles/endpoints/customdomains' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $customDomains = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Cdn/profiles/endpoints') {
         $customDomains = @(GetSubResources -ResourceType 'Microsoft.Cdn/profiles/endpoints/customdomains');
@@ -39,3 +36,5 @@ Rule 'Azure.CDN.MinTLS' -Type 'Microsoft.Cdn/profiles/endpoints', 'Microsoft.Cdn
         $Assert.HasFieldValue($customDomain, 'properties.customHttpsParameters.minimumTlsVersion', 'TLS12')
     }
 }
+
+#endregion Rules

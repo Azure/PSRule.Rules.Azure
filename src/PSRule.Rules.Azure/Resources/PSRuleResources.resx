@@ -123,6 +123,9 @@
   <data name="ArgumentInvalidBoolean" xml:space="preserve">
     <value>The argument '{0}' for '{1}' is not a valid boolean.</value>
   </data>
+  <data name="ArgumentInvalidDateTime" xml:space="preserve">
+    <value>The argument '{0}' for '{1}' is not a valid time.</value>
+  </data>
   <data name="ArgumentInvalidInteger" xml:space="preserve">
     <value>The argument '{0}' for '{1}' is not a valid integer.</value>
   </data>

@@ -27,10 +27,10 @@ Describe 'Azure.AppService' -Tag 'AppService' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppService.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath; 
@@ -223,10 +223,10 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.AppService.json;
             Get-AzRuleTemplateLink -Path $here -InputPath 'Resources.AppService.Parameters.json' | Export-AzRuleTemplateData -OutputPath $outputFile;
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
         }
@@ -289,8 +289,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'app-a';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'app-a', 'app-b', 'app-c';
         }
 
         It 'Azure.AppService.RemoteDebug' {
@@ -303,8 +303,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'app-a';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'app-a', 'app-b', 'app-c';
         }
 
         It 'Azure.AppService.NETVersion' {
@@ -317,8 +317,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'app-a';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'app-a', 'app-b', 'app-c';
         }
 
         It 'Azure.AppService.PHPVersion' {
@@ -331,8 +331,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'app-a';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'app-a', 'app-b', 'app-c';
         }
 
         It 'Azure.AppService.AlwaysOn' {
@@ -345,8 +345,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'app-a';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'app-a', 'app-b', 'app-c';
         }
 
         It 'Azure.AppService.HTTP2' {
@@ -359,8 +359,84 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'app-a', 'app-b', 'app-c';
+        }
+
+        It 'Azure.AppService.ManagedIdentity' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.ManagedIdentity' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'app-a';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'app-b', 'app-c';
+        }
+    }
+
+    Context 'Web App' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppService.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath; 
+        }
+
+        It 'Azure.AppService.WebProbe' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.WebProbe' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'site-B', 'site-B/staging';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'site-A', 'site-A/staging';
+        }
+
+        It 'Azure.AppService.WebProbePath' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.WebProbePath' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'site-B', 'site-B/staging', 'site-A/staging';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'site-A';
+        }
+
+        It 'Azure.AppService.WebSecureFtp' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.WebSecureFtp' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'site-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'site-A', 'site-A/staging', 'site-B/staging';
         }
     }
 }

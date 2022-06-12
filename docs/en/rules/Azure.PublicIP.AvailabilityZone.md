@@ -24,7 +24,11 @@ Consider using zone-redundant Public IP addresses deployed with Standard SKU.
 
 ## NOTES
 
-This rule applies when analyzing resources deployed to Azure using *pre-flight* and *in-flight* data.
+This rule is not applicable for public IP addresses used for Azure Bastion.
+Azure Bastion does not currently support Availability Zones.
+Public IP addresses with the following tags are automatically excluded from this rule:
+
+- `resource-usage` tag set to `azure-bastion`.
 
 This rule fails when `"zones"` is constrained to a single(zonal) zone, or set to `null`, `[]` when there are supported availability zones for the given region.
 
@@ -79,7 +83,7 @@ For example:
 To configure zone-redundancy for a Public IP address.
 
 - Set `sku.name` to `Standard`.
-- Set `zones` to `["1", "2", "3"]`.
+- Set `zones` to `['1', '2', '3']`.
 
 For example:
 

@@ -5,31 +5,8 @@
 # Validation rules for API Management
 #
 
-# Synopsis: Disable insecure protocols
-Rule 'Azure.APIM.Protocols' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasDefaultValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10''', 'False')
-    $Assert.HasDefaultValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11''', 'False')
-    $Assert.HasDefaultValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30''', 'False')
-    $Assert.HasDefaultValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10''', 'False')
-    $Assert.HasDefaultValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11''', 'False')
-    $Assert.HasDefaultValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30''', 'False')
-}
-
-# Synopsis: Disable insecure ciphers
-Rule 'Azure.APIM.Ciphers' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2022_03' } {
-    $Assert.HasDefaultValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168''', 'False')
-    $Assert.HasFieldValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA''', 'False')
-    $Assert.HasFieldValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA''', 'False')
-    $Assert.HasFieldValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256''', 'False')
-    $Assert.HasFieldValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA''', 'False')
-    $Assert.HasFieldValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256''', 'False')
-    $Assert.HasFieldValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA''', 'False')
-    $Assert.HasFieldValue($TargetObject, 'properties.customProperties.''Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256''', 'False')
-
-}
-
 # Synopsis: Use HTTPS APIs
-Rule 'Azure.APIM.HTTPEndpoint' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.APIM.HTTPEndpoint' -Ref 'AZR-000042' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     Reason 'http is in use'
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis')
@@ -46,7 +23,7 @@ Rule 'Azure.APIM.HTTPEndpoint' -Type 'Microsoft.ApiManagement/service', 'Microso
 }
 
 # Synopsis: APIs should have descriptors set
-Rule 'Azure.APIM.APIDescriptors' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.APIM.APIDescriptors' -Ref 'AZR-000043' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $apis = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis');
@@ -65,7 +42,7 @@ Rule 'Azure.APIM.APIDescriptors' -Type 'Microsoft.ApiManagement/service', 'Micro
 }
 
 # Synopsis: Use HTTPS backends
-Rule 'Azure.APIM.HTTPBackend' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/backends', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.APIM.HTTPBackend' -Ref 'AZR-000044' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/backends', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $backends = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/backends')
         if ($backends.Length -eq 0) {
@@ -99,7 +76,7 @@ Rule 'Azure.APIM.HTTPBackend' -Type 'Microsoft.ApiManagement/service', 'Microsof
 }
 
 # Synopsis: Encrypt all named values
-Rule 'Azure.APIM.EncryptValues' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.APIM.EncryptValues' -Ref 'AZR-000045' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $properties = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $properties = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues');
@@ -115,7 +92,7 @@ Rule 'Azure.APIM.EncryptValues' -Type 'Microsoft.ApiManagement/service', 'Micros
 }
 
 # Synopsis: Require subscription for products
-Rule 'Azure.APIM.ProductSubscription' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.APIM.ProductSubscription' -Ref 'AZR-000046' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
@@ -131,7 +108,7 @@ Rule 'Azure.APIM.ProductSubscription' -Type 'Microsoft.ApiManagement/service', '
 }
 
 # Synopsis: Require approval for products
-Rule 'Azure.APIM.ProductApproval' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.APIM.ProductApproval' -Ref 'AZR-000047' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
@@ -147,7 +124,7 @@ Rule 'Azure.APIM.ProductApproval' -Type 'Microsoft.ApiManagement/service', 'Micr
 }
 
 # Synopsis: Remove sample products
-Rule 'Azure.APIM.SampleProducts' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.APIM.SampleProducts' -Ref 'AZR-000048' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
@@ -161,7 +138,7 @@ Rule 'Azure.APIM.SampleProducts' -Type 'Microsoft.ApiManagement/service', 'Micro
 }
 
 # Synopsis: Products should have descriptors set
-Rule 'Azure.APIM.ProductDescriptors' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.APIM.ProductDescriptors' -Ref 'AZR-000049' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
@@ -180,7 +157,7 @@ Rule 'Azure.APIM.ProductDescriptors' -Type 'Microsoft.ApiManagement/service', 'M
 }
 
 # Synopsis: Use product terms
-Rule 'Azure.APIM.ProductTerms' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.APIM.ProductTerms' -Ref 'AZR-000050' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
@@ -195,13 +172,8 @@ Rule 'Azure.APIM.ProductTerms' -Type 'Microsoft.ApiManagement/service', 'Microso
     }
 }
 
-# Synopsis: Consider configuring a managed identity for each API Management instance.
-Rule 'Azure.APIM.ManagedIdentity' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'));
-}
-
 # Synopsis: Renew expired certificates
-Rule 'Azure.APIM.CertificateExpiry' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.APIM.CertificateExpiry' -Ref 'AZR-000051' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $configurations = @($TargetObject.Properties.hostnameConfigurations | Where-Object {
         $Null -ne $_.certificate
     })
@@ -216,22 +188,8 @@ Rule 'Azure.APIM.CertificateExpiry' -Type 'Microsoft.ApiManagement/service' -Tag
     }
 } -Configure @{ Azure_MinimumCertificateLifetime = 30 }
 
-# Synopsis: Use API Management service naming requirements
-Rule 'Azure.APIM.Name' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
-    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftapimanagement
-
-    # Between 1 and 50 characters long
-    $Assert.GreaterOrEqual($PSRule, 'TargetName', 1);
-    $Assert.LessOrEqual($PSRule, 'TargetName', 50);
-
-    # Alphanumerics and hyphens
-    # Start with a letter
-    # End with letter or number
-    $Assert.Match($PSRule, 'TargetName', '^[a-zA-Z]([A-Za-z0-9-]*[a-zA-Z0-9]){0,49}$');
-}
-
 # Synopsis: API management services deployed with Premium SKU should use availability zones in supported regions for high availability.
-Rule 'Azure.APIM.AvailabilityZone' -Type 'Microsoft.ApiManagement/service' -If { IsPremiumAPIM } -Tag @{ release = 'GA'; ruleSet = '2021_12' } {
+Rule 'Azure.APIM.AvailabilityZone' -Ref 'AZR-000052' -Type 'Microsoft.ApiManagement/service' -If { IsPremiumAPIM } -Tag @{ release = 'GA'; ruleSet = '2021_12' } {
     $apiManagementServiceProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.ApiManagement', 'service');
 
     $configurationZoneMappings = $Configuration.AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;

@@ -23,8 +23,8 @@
     },
     "resourceType": "addresses",
     "apiVersions": [
-      "2021-12-01",
-      "2020-12-01-preview"
+      "2022-05-01-preview",
+      "2021-12-01"
     ],
     "locations": [
       "West Europe",
@@ -37,8 +37,8 @@
     "aliases": null,
     "resourceType": "listConfigurations",
     "apiVersions": [
-      "2021-12-01",
-      "2020-12-01-preview"
+      "2022-05-01-preview",
+      "2021-12-01"
     ],
     "locations": [
       "West Europe",
@@ -51,8 +51,8 @@
     "aliases": null,
     "resourceType": "listProductFamilies",
     "apiVersions": [
-      "2021-12-01",
-      "2020-12-01-preview"
+      "2022-05-01-preview",
+      "2021-12-01"
     ],
     "locations": [
       "West Europe",
@@ -65,8 +65,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
-      "2021-12-01",
-      "2020-12-01-preview"
+      "2022-05-01-preview",
+      "2021-12-01"
     ],
     "locations": [
       "West Europe"
@@ -77,8 +77,8 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
-      "2021-12-01",
-      "2020-12-01-preview"
+      "2022-05-01-preview",
+      "2021-12-01"
     ],
     "locations": [
       "West Europe",
@@ -91,8 +91,8 @@
     "aliases": null,
     "resourceType": "locations/orders",
     "apiVersions": [
-      "2021-12-01",
-      "2020-12-01-preview"
+      "2022-05-01-preview",
+      "2021-12-01"
     ],
     "locations": [
       "West Europe",
@@ -105,8 +105,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2021-12-01",
-      "2020-12-01-preview"
+      "2022-05-01-preview",
+      "2021-12-01"
     ],
     "locations": [
       "West Europe",
@@ -247,8 +247,8 @@
     },
     "resourceType": "orderItems",
     "apiVersions": [
-      "2021-12-01",
-      "2020-12-01-preview"
+      "2022-05-01-preview",
+      "2021-12-01"
     ],
     "locations": [
       "West Europe",
@@ -261,8 +261,8 @@
     "aliases": null,
     "resourceType": "orders",
     "apiVersions": [
-      "2021-12-01",
-      "2020-12-01-preview"
+      "2022-05-01-preview",
+      "2021-12-01"
     ],
     "locations": [
       "West Europe",
@@ -275,8 +275,8 @@
     "aliases": null,
     "resourceType": "productFamiliesMetadata",
     "apiVersions": [
-      "2021-12-01",
-      "2020-12-01-preview"
+      "2022-05-01-preview",
+      "2021-12-01"
     ],
     "locations": [
       "West Europe",

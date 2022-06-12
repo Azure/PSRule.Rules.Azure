@@ -1,0 +1,115 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for API Management
+#
+
+#region Rules
+
+---
+# Synopsis: Consider configuring a managed identity for each API Management instance.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.APIM.ManagedIdentity
+  ref: AZR-000053
+  tags:
+    release: GA
+    ruleSet: 2020_06
+spec:
+  type:
+  - Microsoft.ApiManagement/service
+  condition:
+    field: Identity.Type
+    in:
+    - SystemAssigned
+    - UserAssigned
+    - SystemAssigned, UserAssigned
+
+---
+# Synopsis: API Management should only accept a minimum of TLS 1.2.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.APIM.Protocols
+  ref: AZR-000054
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.ApiManagement/service
+  condition:
+    allOf:
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10'
+      hasDefault: 'False'
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11'
+      hasDefault: 'False'
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30'
+      hasDefault: 'False'
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10'
+      hasDefault: 'False'
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11'
+      hasDefault: 'False'
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30'
+      hasDefault: 'False'
+
+---
+# Synopsis: API Management should not accept weak or deprecated ciphers.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.APIM.Ciphers
+  ref: AZR-000055
+  tags:
+    release: 'GA'
+    ruleSet: '2022_03'
+spec:
+  type:
+  - Microsoft.ApiManagement/service
+  condition:
+    allOf:
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168'
+      hasDefault: 'False'
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA'
+      equals: 'False'
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA'
+      equals: 'False'
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256'
+      equals: 'False'
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA'
+      equals: 'False'
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256'
+      equals: 'False'
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA'
+      equals: 'False'
+    - field: properties.customProperties.'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256'
+      equals: 'False'
+
+---
+# Synopsis: API Management service names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.APIM.Name
+  ref: AZR-000056
+  tags:
+    release: 'GA'
+    ruleSet: '2020_09'
+spec:
+  type:
+  - Microsoft.ApiManagement/service
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 1
+    - name: '.'
+      lessOrEquals: 50
+    # The name must contain between 1 to 63 characters inclusive.
+    # The name only allows alphanumerics, and hyphens.
+    # Must start with a letter and end with alphanumeric.
+    - name: '.'
+      match: '^[a-zA-Z]([A-Za-z0-9-]*[a-zA-Z0-9]){0,49}$'
+
+#endregion Rules

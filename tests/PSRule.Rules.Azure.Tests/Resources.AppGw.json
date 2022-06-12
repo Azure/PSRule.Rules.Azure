@@ -167,7 +167,7 @@
         "Properties": {
             "sku": {
                 "name": "Standard_Small",
-                "tier": "Standard",
+                "tier": "WAF",
                 "capacity": 1
             },
             "gatewayIPConfigurations": [
@@ -521,7 +521,7 @@
             "redirectConfigurations": [],
             "webApplicationFirewallConfiguration": {
                 "enabled": true,
-                "firewallMode": "Prevention",
+                "firewallMode": "Detection",
                 "ruleSetType": "OWASP",
                 "ruleSetVersion": "3.0",
                 "disabledRuleGroups": [
@@ -1708,6 +1708,292 @@
                 "disabledRuleGroups": []
             },
             "enableHttp2": false
+        }
+    },
+    {
+        "name": "appgw-H",
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H",
+        "type": "Microsoft.Network/applicationGateways",
+        "location": "antarcticasouth",
+        "zones": null,
+        "identity": {
+            "type": "userAssigned"
+        },
+        "properties": {
+            "provisioningState": "Succeeded",
+            "sku": {
+                "name": "WAF_v2",
+                "tier": "WAF_v2"
+            },
+            "operationalState": "Running",
+            "gatewayIPConfigurations": [
+                {
+                    "name": "apw-ip-configuration",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/gatewayIPConfigurations/apw-ip-configuration",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "subnet": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-spoke-BU0001A0008-00/subnets/snet-applicationgateway"
+                        }
+                    },
+                    "type": "Microsoft.Network/applicationGateways/gatewayIPConfigurations"
+                }
+            ],
+            "sslCertificates": [
+                {
+                    "name": "appgw-F-ssl-certificate",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/sslCertificates/appgw-H-ssl-certificate",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "httpListeners": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/httpListeners/listener-https"
+                            }
+                        ]
+                    },
+                    "type": "Microsoft.Network/applicationGateways/sslCertificates"
+                }
+            ],
+            "frontendIPConfigurations": [
+                {
+                    "name": "apw-frontend-ip-configuration",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/frontendIPConfigurations/apw-frontend-ip-configuration",
+                    "type": "Microsoft.Network/applicationGateways/frontendIPConfigurations",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "privateIPAllocationMethod": "Dynamic",
+                        "publicIPAddress": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/pip-BU0001A0008-00"
+                        },
+                        "httpListeners": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/httpListeners/listener-https"
+                            },
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/httpListeners/http"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "frontendPorts": [
+                {
+                    "name": "apw-frontend-ports",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/frontendPorts/apw-frontend-ports",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "port": 443,
+                        "httpListeners": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/httpListeners/listener-https"
+                            }
+                        ]
+                    },
+                    "type": "Microsoft.Network/applicationGateways/frontendPorts"
+                },
+                {
+                    "name": "port_80",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/frontendPorts/port_80",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "port": 80,
+                        "httpListeners": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/httpListeners/http"
+                            }
+                        ]
+                    },
+                    "type": "Microsoft.Network/applicationGateways/frontendPorts"
+                }
+            ],
+            "backendAddressPools": [
+                {
+                    "name": "d56ef422.aks-sb.com",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/backendAddressPools/d56ef422.aks-sb.com",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "backendAddresses": [
+                            {
+                                "fqdn": "d56ef422.aks-sb.com"
+                            }
+                        ],
+                        "requestRoutingRules": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/requestRoutingRules/apw-routing-rules"
+                            }
+                        ]
+                    },
+                    "type": "Microsoft.Network/applicationGateways/backendAddressPools"
+                }
+            ],
+            "backendHttpSettingsCollection": [
+                {
+                    "name": "aks-ingress-backendpool-httpsettings",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/backendHttpSettingsCollection/aks-ingress-backendpool-httpsettings",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "port": 443,
+                        "protocol": "Https",
+                        "cookieBasedAffinity": "Disabled",
+                        "pickHostNameFromBackendAddress": true,
+                        "requestTimeout": 20,
+                        "probe": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/probes/probe-d56ef422.aks-sb.com"
+                        },
+                        "requestRoutingRules": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/requestRoutingRules/apw-routing-rules"
+                            }
+                        ]
+                    },
+                    "type": "Microsoft.Network/applicationGateways/backendHttpSettingsCollection"
+                }
+            ],
+            "httpListeners": [
+                {
+                    "name": "listener-https",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/httpListeners/listener-https",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "frontendIPConfiguration": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/frontendIPConfigurations/apw-frontend-ip-configuration"
+                        },
+                        "frontendPort": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/frontendPorts/apw-frontend-ports"
+                        },
+                        "protocol": "Https",
+                        "sslCertificate": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/sslCertificates/appgw-D-ssl-certificate"
+                        },
+                        "hostName": "d56ef422.aks-sb.com",
+                        "requireServerNameIndication": true,
+                        "requestRoutingRules": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/requestRoutingRules/apw-routing-rules"
+                            }
+                        ],
+                        "redirectConfiguration": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/redirectConfigurations/redirect-http"
+                            }
+                        ]
+                    },
+                    "type": "Microsoft.Network/applicationGateways/httpListeners"
+                },
+                {
+                    "name": "http",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/httpListeners/http",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "frontendIPConfiguration": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/frontendIPConfigurations/apw-frontend-ip-configuration"
+                        },
+                        "frontendPort": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/frontendPorts/port_80"
+                        },
+                        "protocol": "Http",
+                        "requireServerNameIndication": false,
+                        "requestRoutingRules": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/requestRoutingRules/redirect-http"
+                            }
+                        ]
+                    },
+                    "type": "Microsoft.Network/applicationGateways/httpListeners"
+                }
+            ],
+            "urlPathMaps": [],
+            "requestRoutingRules": [
+                {
+                    "name": "apw-routing-rules",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/requestRoutingRules/apw-routing-rules",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "ruleType": "Basic",
+                        "httpListener": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/httpListeners/listener-https"
+                        },
+                        "backendAddressPool": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/backendAddressPools/d56ef422.aks-sb.com"
+                        },
+                        "backendHttpSettings": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/backendHttpSettingsCollection/aks-ingress-backendpool-httpsettings"
+                        }
+                    },
+                    "type": "Microsoft.Network/applicationGateways/requestRoutingRules"
+                },
+                {
+                    "name": "redirect-http",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/requestRoutingRules/redirect-http",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "ruleType": "Basic",
+                        "httpListener": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/httpListeners/http"
+                        },
+                        "redirectConfiguration": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/redirectConfigurations/redirect-http"
+                        }
+                    },
+                    "type": "Microsoft.Network/applicationGateways/requestRoutingRules"
+                }
+            ],
+            "probes": [
+                {
+                    "name": "probe-d56ef422.aks-sb.com",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/probes/probe-d56ef422.aks-sb.com",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "protocol": "Https",
+                        "path": "/memory/healthz",
+                        "interval": 30,
+                        "timeout": 30,
+                        "unhealthyThreshold": 3,
+                        "pickHostNameFromBackendHttpSettings": true,
+                        "minServers": 0,
+                        "match": {},
+                        "backendHttpSettings": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/backendHttpSettingsCollection/aks-ingress-backendpool-httpsettings"
+                            }
+                        ]
+                    },
+                    "type": "Microsoft.Network/applicationGateways/probes"
+                }
+            ],
+            "redirectConfigurations": [
+                {
+                    "name": "redirect-http",
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/redirectConfigurations/redirect-http",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "redirectType": "Permanent",
+                        "targetListener": {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/httpListeners/listener-https"
+                        },
+                        "includePath": true,
+                        "includeQueryString": true,
+                        "requestRoutingRules": [
+                            {
+                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/applicationGateways/appgw-H/requestRoutingRules/redirect-http"
+                            }
+                        ]
+                    },
+                    "type": "Microsoft.Network/applicationGateways/redirectConfigurations"
+                }
+            ],
+            "sslPolicy": {
+                "policyType": "Custom",
+                "minProtocolVersion": "TLSv1_3",
+                "cipherSuites": [
+                    "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+                    "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+                ]
+            },
+            "enableHttp2": false,
+            "firewallPolicy": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/waf001"
+            }
         }
     }
 ]

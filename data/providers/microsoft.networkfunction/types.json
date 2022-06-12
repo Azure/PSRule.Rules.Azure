@@ -3,11 +3,19 @@
     "aliases": null,
     "resourceType": "azureTrafficCollectors",
     "apiVersions": [
+      "2022-05-01",
       "2021-09-01-preview"
     ],
     "locations": [
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West Central US",
       "West US",
-      "East US"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -15,6 +23,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-05-01",
       "2021-09-01-preview",
       "2021-08-01-preview"
     ],
@@ -25,6 +34,7 @@
     "aliases": null,
     "resourceType": "locations/nfvOperationResults",
     "apiVersions": [
+      "2022-05-01",
       "2021-09-01-preview",
       "2021-08-01-preview"
     ],
@@ -35,6 +45,7 @@
     "aliases": null,
     "resourceType": "locations/nfvOperations",
     "apiVersions": [
+      "2022-05-01",
       "2021-09-01-preview",
       "2021-08-01-preview"
     ],

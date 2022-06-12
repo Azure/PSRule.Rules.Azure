@@ -1,0 +1,150 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for App Service
+#
+
+#region Rules
+
+---
+# Synopsis: Use a Managed Identities with Azure Service apps.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppService.ManagedIdentity
+  ref: AZR-000082
+  tags:
+    release: 'GA'
+    ruleSet: 2020_12
+spec:
+  type:
+  - Microsoft.Web/sites
+  - Microsoft.Web/sites/slots
+  condition:
+    field: identity.type
+    in:
+    - SystemAssigned
+    - UserAssigned
+    - SystemAssigned, UserAssigned
+
+---
+# Synopsis: Disable client affinity for stateless services.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppService.ARRAffinity
+  ref: AZR-000083
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Web/sites
+  - Microsoft.Web/sites/slots
+  condition:
+    field: Properties.clientAffinityEnabled
+    equals: false
+
+---
+# Synopsis: Azure App Service apps should only accept encrypted connections.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppService.UseHTTPS
+  ref: AZR-000084
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Web/sites
+  - Microsoft.Web/sites/slots
+  condition:
+    field: Properties.httpsOnly
+    equals: true
+
+#endregion Rules
+
+#
+# Selectors for App Service
+#
+
+#region Selectors
+
+---
+# Synopsis: App Service sites that are Web apps.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.AppService.IsWebApp
+  annotations:
+    export: true
+spec:
+  if:
+    allOf:
+    - type: '.'
+      in:
+      - 'Microsoft.Web/sites'
+      - 'Microsoft.Web/sites/slots'
+    - anyOf:
+      - field: kind
+        exists: false
+      - field: kind
+        equals: 'app'
+
+---
+# Synopsis: App Service sites that are API apps.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.AppService.IsAPIApp
+  annotations:
+    export: true
+spec:
+  if:
+    allOf:
+    - type: '.'
+      in:
+      - 'Microsoft.Web/sites'
+      - 'Microsoft.Web/sites/slots'
+    - field: kind
+      equals: 'api'
+
+---
+# Synopsis: App Service sites that are Function apps.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.AppService.IsFunctionApp
+  annotations:
+    export: true
+spec:
+  if:
+    allOf:
+    - type: '.'
+      in:
+      - 'Microsoft.Web/sites'
+      - 'Microsoft.Web/sites/slots'
+    - field: kind
+      equals: 'functionapp'
+
+---
+# Synopsis: App Service sites that are Logic App Standard apps.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.AppService.IsLogicApp
+  annotations:
+    export: true
+spec:
+  if:
+    allOf:
+    - type: '.'
+      in:
+      - 'Microsoft.Web/sites'
+      - 'Microsoft.Web/sites/slots'
+    - field: kind
+      endsWith: 'workflowapp'
+
+#endregion Selectors

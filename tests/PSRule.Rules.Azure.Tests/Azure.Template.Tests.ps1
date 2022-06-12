@@ -246,6 +246,7 @@ Describe 'Azure.Template' -Tag 'Template' {
                 (Join-Path -Path $here -ChildPath 'Resources.Empty.Template.3.json')
                 (Join-Path -Path $here -ChildPath 'Resources.Copy.Template.1.json')
                 (Join-Path -Path $here -ChildPath 'Resources.Copy.Template.2.json')
+                (Join-Path -Path $here -ChildPath 'Tests.Bicep.6.json')
             );
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Format None -Name 'Azure.Template.UseVariables';
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Template.UseVariables' };
@@ -269,7 +270,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
+            $ruleResult.Length | Should -Be 5;
         }
 
         It 'Azure.Template.LocationDefault' {

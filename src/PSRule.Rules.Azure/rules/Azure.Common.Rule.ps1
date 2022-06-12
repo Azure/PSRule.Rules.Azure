@@ -181,7 +181,9 @@ $Global:FlagSupportsTagWarning = $True;
 function global:SupportsTags {
     [CmdletBinding()]
     [OutputType([System.Boolean])]
-    param ()
+    param (
+        [String]$TargetType = $PSRule.TargetType
+    )
     begin {
         if ($Global:FlagSupportsTagWarning) {
             Write-Warning -Message "The 'SupportsTags' PowerShell function has been replaced with the selector 'Azure.Resource.SupportsTags'. The 'SupportsTags' function is deprecated and will no longer work in the next major version. Please update your PowerShell rules to the selector instead. See https://aka.ms/ps-rule-azure/upgrade.";
@@ -190,45 +192,67 @@ function global:SupportsTags {
     }
     process {
         if (
-            ($PSRule.TargetType -eq 'Microsoft.Subscription') -or
-            ($PSRule.TargetType -eq 'Microsoft.Resources/deployments') -or
-            ($PSRule.TargetType -notLike 'Microsoft.*/*') -or
-            ($PSRule.TargetType -like 'Microsoft.Addons/*') -or
-            ($PSRule.TargetType -like 'Microsoft.Advisor/*') -or
-            ($PSRule.TargetType -like 'Microsoft.Authorization/*') -or
-            ($PSRule.TargetType -like 'Microsoft.Billing/*') -or
-            ($PSRule.TargetType -like 'Microsoft.Blueprint/*') -or
-            ($PSRule.TargetType -like 'Microsoft.Capacity/*') -or
-            ($PSRule.TargetType -like 'Microsoft.Classic*') -or
-            ($PSRule.TargetType -like 'Microsoft.Consumption/*') -or
-            ($PSRule.TargetType -like 'Microsoft.Gallery/*') -or
-            ($PSRule.TargetType -like 'Microsoft.Security/*') -or
-            ($PSRule.TargetType -like 'microsoft.support/*') -or
-            ($PSRule.TargetType -like 'microsoft.insights/diagnosticSettings') -or
-            ($PSRule.TargetType -like 'Microsoft.WorkloadMonitor/*') -or
-            ($PSRule.TargetType -like '*/providers/roleAssignments') -or
-            ($PSRule.TargetType -like '*/providers/diagnosticSettings') -or
+            ($TargetType -eq 'Microsoft.Subscription') -or
+            ($TargetType -eq 'Microsoft.Resources/deployments') -or
+            ($TargetType -eq 'Microsoft.AzureActiveDirectory/b2ctenants') -or
+            ($TargetType -notLike 'Microsoft.*/*') -or
+            ($TargetType -like 'Microsoft.Addons/*') -or
+            ($TargetType -like 'Microsoft.Advisor/*') -or
+            ($TargetType -like 'Microsoft.Authorization/*') -or
+            ($TargetType -like 'Microsoft.Billing/*') -or
+            ($TargetType -like 'Microsoft.Blueprint/*') -or
+            ($TargetType -like 'Microsoft.Capacity/*') -or
+            ($TargetType -like 'Microsoft.Classic*') -or
+            ($TargetType -like 'Microsoft.Consumption/*') -or
+            ($TargetType -like 'Microsoft.Gallery/*') -or
+            ($TargetType -like 'Microsoft.Security/*') -or
+            ($TargetType -like 'microsoft.support/*') -or
+            ($TargetType -like 'Microsoft.WorkloadMonitor/*') -or
+            ($TargetType -like '*/providers/roleAssignments') -or
+            ($TargetType -like '*/providers/diagnosticSettings') -or
 
             # Exclude sub-resources by default
-            ($PSRule.TargetType -like 'Microsoft.*/*/*' -and !(
-                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/runbooks' -or
-                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/configurations' -or
-                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/compilationjobs' -or
-                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/modules' -or
-                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/nodeConfigurations' -or
-                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/python2Packages' -or
-                $PSRule.TargetType -eq 'Microsoft.Automation/automationAccounts/watchers'
+            ($TargetType -like 'Microsoft.*/*/*' -and !(
+                $TargetType -eq 'Microsoft.Automation/automationAccounts/runbooks' -or
+                $TargetType -eq 'Microsoft.Automation/automationAccounts/configurations' -or
+                $TargetType -eq 'Microsoft.Automation/automationAccounts/compilationjobs' -or
+                $TargetType -eq 'Microsoft.Automation/automationAccounts/modules' -or
+                $TargetType -eq 'Microsoft.Automation/automationAccounts/nodeConfigurations' -or
+                $TargetType -eq 'Microsoft.Automation/automationAccounts/python2Packages' -or
+                $TargetType -eq 'Microsoft.Automation/automationAccounts/watchers' -or
+                $TargetType -eq 'Microsoft.Resources/templateSpecs/versions'
             )) -or
 
-            # Some exception to resources (https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support#microsoftresources)
-            ($PSRule.TargetType -like 'Microsoft.Resources/*' -and !(
-                $PSRule.TargetType -eq 'Microsoft.Resources/deploymentScripts' -or
-                $PSRule.TargetType -eq 'Microsoft.Resources/resourceGroups'
+            # Some exception to resources (https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftresources)
+            ($TargetType -like 'Microsoft.Resources/*' -and !(
+                $TargetType -eq 'Microsoft.Resources/deploymentScripts' -or
+                $TargetType -eq 'Microsoft.Resources/resourceGroups' -or
+                $TargetType -eq 'Microsoft.Resources/templateSpecs' -or
+                $TargetType -eq 'Microsoft.Resources/templateSpecs/versions'
             )) -or
 
-            # Some exceptions to resources (https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support#microsoftcostmanagement)
-            ($PSRule.TargetType -like 'Microsoft.CostManagement/*' -and !(
-                $PSRule.TargetType -eq 'Microsoft.CostManagement/Connectors'
+            # Some exception to resources (https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftinsights)
+            ($TargetType -like 'Microsoft.Insights/*' -and !(
+                $TargetType -eq 'Microsoft.Insights/actionGroups' -or
+                $TargetType -eq 'Microsoft.Insights/activityLogAlerts' -or
+                $TargetType -eq 'Microsoft.Insights/alertRules' -or
+                $TargetType -eq 'Microsoft.Insights/autoscaleSettings' -or
+                $TargetType -eq 'Microsoft.Insights/components' -or
+                $TargetType -eq 'Microsoft.Insights/dataCollectionEndpoints' -or
+                $TargetType -eq 'Microsoft.Insights/dataCollectionRules' -or
+                $TargetType -eq 'Microsoft.Insights/guestDiagnosticSettings' -or
+                $TargetType -eq 'Microsoft.Insights/metricAlerts' -or
+                $TargetType -eq 'Microsoft.Insights/notificationGroups' -or
+                $TargetType -eq 'Microsoft.Insights/privateLinkScopes' -or
+                $TargetType -eq 'Microsoft.Insights/scheduledQueryRules' -or
+                $TargetType -eq 'Microsoft.Insights/webTests' -or
+                $TargetType -eq 'Microsoft.Insights/workbooks' -or
+                $TargetType -eq 'Microsoft.Insights/workbookTemplates'
+            )) -or
+
+            # Some exceptions to resources (https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftcostmanagement)
+            ($TargetType -like 'Microsoft.CostManagement/*' -and !(
+                $TargetType -eq 'Microsoft.CostManagement/Connectors'
             ))
         ) {
             return $False;

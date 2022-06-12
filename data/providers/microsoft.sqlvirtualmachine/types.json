@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2022-02-01-preview",
+      "2022-02-01",
       "2021-11-01-preview",
       "2017-03-01-preview"
     ],
@@ -52,6 +54,8 @@
     "aliases": null,
     "resourceType": "Locations/availabilityGroupListenerOperationResults",
     "apiVersions": [
+      "2022-02-01-preview",
+      "2022-02-01",
       "2021-11-01-preview",
       "2017-03-01-preview"
     ],
@@ -101,6 +105,8 @@
     "aliases": null,
     "resourceType": "Locations/OperationTypes",
     "apiVersions": [
+      "2022-02-01-preview",
+      "2022-02-01",
       "2021-11-01-preview",
       "2017-03-01-preview"
     ],
@@ -150,6 +156,8 @@
     "aliases": null,
     "resourceType": "Locations/registerSqlVmCandidate",
     "apiVersions": [
+      "2022-02-01-preview",
+      "2022-02-01",
       "2021-11-01-preview",
       "2017-03-01-preview"
     ],
@@ -199,6 +207,8 @@
     "aliases": null,
     "resourceType": "Locations/sqlVirtualMachineGroupOperationResults",
     "apiVersions": [
+      "2022-02-01-preview",
+      "2022-02-01",
       "2021-11-01-preview",
       "2017-03-01-preview"
     ],
@@ -248,6 +258,8 @@
     "aliases": null,
     "resourceType": "Locations/sqlVirtualMachineOperationResults",
     "apiVersions": [
+      "2022-02-01-preview",
+      "2022-02-01",
       "2021-11-01-preview",
       "2017-03-01-preview"
     ],
@@ -297,6 +309,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-02-01-preview",
+      "2022-02-01",
       "2021-11-01-preview",
       "2017-03-01-preview"
     ],
@@ -362,6 +376,8 @@
     },
     "resourceType": "SqlVirtualMachineGroups",
     "apiVersions": [
+      "2022-02-01-preview",
+      "2022-02-01",
       "2021-11-01-preview",
       "2017-03-01-preview"
     ],
@@ -409,6 +425,14 @@
   },
   {
     "aliases": {
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/availabilityGroupListeners/availabilityGroupConfiguration": "properties.availabilityGroupConfiguration",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/availabilityGroupListeners/availabilityGroupConfiguration.replicas": "properties.availabilityGroupConfiguration.replicas",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/availabilityGroupListeners/availabilityGroupConfiguration.replicas[*]": "properties.availabilityGroupConfiguration.replicas[*]",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/availabilityGroupListeners/availabilityGroupConfiguration.replicas[*].commit": "properties.availabilityGroupConfiguration.replicas[*].commit",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/availabilityGroupListeners/availabilityGroupConfiguration.replicas[*].failover": "properties.availabilityGroupConfiguration.replicas[*].failover",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/availabilityGroupListeners/availabilityGroupConfiguration.replicas[*].readableSecondary": "properties.availabilityGroupConfiguration.replicas[*].readableSecondary",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/availabilityGroupListeners/availabilityGroupConfiguration.replicas[*].role": "properties.availabilityGroupConfiguration.replicas[*].role",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/availabilityGroupListeners/availabilityGroupConfiguration.replicas[*].sqlVirtualMachineInstanceId": "properties.availabilityGroupConfiguration.replicas[*].sqlVirtualMachineInstanceId",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListeners/availabilityGroupName": "properties.availabilityGroupName",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListeners/createDefaultAvailabilityGroupIfNotExist": "properties.createDefaultAvailabilityGroupIfNotExist",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListeners/loadBalancerConfigurations": "properties.loadBalancerConfigurations",
@@ -426,6 +450,8 @@
     },
     "resourceType": "SqlVirtualMachineGroups/AvailabilityGroupListeners",
     "apiVersions": [
+      "2022-02-01-preview",
+      "2022-02-01",
       "2021-11-01-preview",
       "2017-03-01-preview"
     ],
@@ -473,9 +499,20 @@
   },
   {
     "aliases": {
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/assessmentSettings": "properties.assessmentSettings",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/assessmentSettings.enable": "properties.assessmentSettings.enable",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/assessmentSettings.runImmediately": "properties.assessmentSettings.runImmediately",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/assessmentSettings.schedule": "properties.assessmentSettings.schedule",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/assessmentSettings.schedule.dayOfWeek": "properties.assessmentSettings.schedule.dayOfWeek",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/assessmentSettings.schedule.enable": "properties.assessmentSettings.schedule.enable",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/assessmentSettings.schedule.monthlyOccurrence": "properties.assessmentSettings.schedule.monthlyOccurrence",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/assessmentSettings.schedule.startTime": "properties.assessmentSettings.schedule.startTime",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/assessmentSettings.schedule.weeklyInterval": "properties.assessmentSettings.schedule.weeklyInterval",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/autoBackupSettings": "properties.autoBackupSettings",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/autoBackupSettings.backupScheduleType": "properties.autoBackupSettings.backupScheduleType",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/autoBackupSettings.backupSystemDbs": "properties.autoBackupSettings.backupSystemDbs",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/autoBackupSettings.daysOfWeek": "properties.autoBackupSettings.daysOfWeek",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/autoBackupSettings.daysOfWeek[*]": "properties.autoBackupSettings.daysOfWeek[*]",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/autoBackupSettings.enable": "properties.autoBackupSettings.enable",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/autoBackupSettings.enableEncryption": "properties.autoBackupSettings.enableEncryption",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/autoBackupSettings.fullBackupFrequency": "properties.autoBackupSettings.fullBackupFrequency",
@@ -486,6 +523,7 @@
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/autoBackupSettings.retentionPeriod": "properties.autoBackupSettings.retentionPeriod",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/autoBackupSettings.storageAccessKey": "properties.autoBackupSettings.storageAccessKey",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/autoBackupSettings.storageAccountUrl": "properties.autoBackupSettings.storageAccountUrl",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/autoBackupSettings.storageContainerName": "properties.autoBackupSettings.storageContainerName",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/autoPatchingSettings": "properties.autoPatchingSettings",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/autoPatchingSettings.dayOfWeek": "properties.autoPatchingSettings.dayOfWeek",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/autoPatchingSettings.enable": "properties.autoPatchingSettings.enable",
@@ -506,6 +544,12 @@
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/serverConfigurationsManagementSettings.sqlConnectivityUpdateSettings.port": "properties.serverConfigurationsManagementSettings.sqlConnectivityUpdateSettings.port",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/serverConfigurationsManagementSettings.sqlConnectivityUpdateSettings.sqlAuthUpdatePassword": "properties.serverConfigurationsManagementSettings.sqlConnectivityUpdateSettings.sqlAuthUpdatePassword",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/serverConfigurationsManagementSettings.sqlConnectivityUpdateSettings.sqlAuthUpdateUserName": "properties.serverConfigurationsManagementSettings.sqlConnectivityUpdateSettings.sqlAuthUpdateUserName",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/serverConfigurationsManagementSettings.sqlInstanceSettings": "properties.serverConfigurationsManagementSettings.sqlInstanceSettings",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/serverConfigurationsManagementSettings.sqlInstanceSettings.collation": "properties.serverConfigurationsManagementSettings.sqlInstanceSettings.collation",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/serverConfigurationsManagementSettings.sqlInstanceSettings.isOptimizeForAdHocWorkloadsEnabled": "properties.serverConfigurationsManagementSettings.sqlInstanceSettings.isOptimizeForAdHocWorkloadsEnabled",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/serverConfigurationsManagementSettings.sqlInstanceSettings.maxDop": "properties.serverConfigurationsManagementSettings.sqlInstanceSettings.maxDop",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/serverConfigurationsManagementSettings.sqlInstanceSettings.maxServerMemoryMB": "properties.serverConfigurationsManagementSettings.sqlInstanceSettings.maxServerMemoryMB",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/serverConfigurationsManagementSettings.sqlInstanceSettings.minServerMemoryMB": "properties.serverConfigurationsManagementSettings.sqlInstanceSettings.minServerMemoryMB",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/serverConfigurationsManagementSettings.sqlStorageUpdateSettings": "properties.serverConfigurationsManagementSettings.sqlStorageUpdateSettings",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/serverConfigurationsManagementSettings.sqlStorageUpdateSettings.diskConfigurationType": "properties.serverConfigurationsManagementSettings.sqlStorageUpdateSettings.diskConfigurationType",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/serverConfigurationsManagementSettings.sqlStorageUpdateSettings.diskCount": "properties.serverConfigurationsManagementSettings.sqlStorageUpdateSettings.diskCount",
@@ -527,8 +571,14 @@
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/storageConfigurationSettings.sqlLogSettings.defaultFilePath": "properties.storageConfigurationSettings.sqlLogSettings.defaultFilePath",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/storageConfigurationSettings.sqlLogSettings.luns": "properties.storageConfigurationSettings.sqlLogSettings.luns",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/storageConfigurationSettings.sqlLogSettings.luns[*]": "properties.storageConfigurationSettings.sqlLogSettings.luns[*]",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/storageConfigurationSettings.sqlSystemDbOnDataDisk": "properties.storageConfigurationSettings.sqlSystemDbOnDataDisk",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/storageConfigurationSettings.sqlTempDbSettings": "properties.storageConfigurationSettings.sqlTempDbSettings",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/storageConfigurationSettings.sqlTempDbSettings.dataFileCount": "properties.storageConfigurationSettings.sqlTempDbSettings.dataFileCount",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/storageConfigurationSettings.sqlTempDbSettings.dataFileSize": "properties.storageConfigurationSettings.sqlTempDbSettings.dataFileSize",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/storageConfigurationSettings.sqlTempDbSettings.dataGrowth": "properties.storageConfigurationSettings.sqlTempDbSettings.dataGrowth",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/storageConfigurationSettings.sqlTempDbSettings.defaultFilePath": "properties.storageConfigurationSettings.sqlTempDbSettings.defaultFilePath",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/storageConfigurationSettings.sqlTempDbSettings.logFileSize": "properties.storageConfigurationSettings.sqlTempDbSettings.logFileSize",
+      "Microsoft.SqlVirtualMachine/sqlVirtualMachines/storageConfigurationSettings.sqlTempDbSettings.logGrowth": "properties.storageConfigurationSettings.sqlTempDbSettings.logGrowth",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/storageConfigurationSettings.sqlTempDbSettings.luns": "properties.storageConfigurationSettings.sqlTempDbSettings.luns",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/storageConfigurationSettings.sqlTempDbSettings.luns[*]": "properties.storageConfigurationSettings.sqlTempDbSettings.luns[*]",
       "Microsoft.SqlVirtualMachine/SqlVirtualMachines/storageConfigurationSettings.storageWorkloadType": "properties.storageConfigurationSettings.storageWorkloadType",
@@ -540,6 +590,8 @@
     },
     "resourceType": "SqlVirtualMachines",
     "apiVersions": [
+      "2022-02-01-preview",
+      "2022-02-01",
       "2021-11-01-preview",
       "2017-03-01-preview"
     ],

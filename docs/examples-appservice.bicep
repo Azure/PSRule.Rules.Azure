@@ -16,7 +16,7 @@ param tags object
 param location string = resourceGroup().location
 
 // An example App Services Plan
-resource plan 'Microsoft.Web/serverfarms@2021-01-15' = {
+resource plan 'Microsoft.Web/serverfarms@2021-03-01' = {
   name: planName
   location: location
   sku: {
@@ -26,8 +26,8 @@ resource plan 'Microsoft.Web/serverfarms@2021-01-15' = {
   }
 }
 
-// An example Web App
-resource webApp 'Microsoft.Web/sites@2021-02-01' = {
+// An example .NET Framework Web App
+resource webApp 'Microsoft.Web/sites@2021-03-01' = {
   name: name
   location: location
   identity: {
@@ -43,6 +43,33 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
       ftpsState: 'FtpsOnly'
       remoteDebuggingEnabled: false
       http20Enabled: true
+      netFrameworkVersion: 'v6.0'
+      healthCheckPath: '/healthz'
+    }
+  }
+  tags: tags
+}
+
+// An example PHP Web App
+resource webAppPHP 'Microsoft.Web/sites@2021-03-01' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  kind: 'web'
+  properties: {
+    serverFarmId: plan.id
+    httpsOnly: true
+    siteConfig: {
+      alwaysOn: true
+      minTlsVersion: '1.2'
+      ftpsState: 'FtpsOnly'
+      remoteDebuggingEnabled: false
+      http20Enabled: true
+      netFrameworkVersion: 'OFF'
+      phpVersion: '7.4'
+      healthCheckPath: '/healthz'
     }
   }
   tags: tags

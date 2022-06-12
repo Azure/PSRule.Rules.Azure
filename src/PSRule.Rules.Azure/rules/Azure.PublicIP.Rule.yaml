@@ -1,0 +1,49 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for public IP addresses
+#
+
+#region Rules
+
+---
+# Synopsis: Public IP addresses should be deployed with Standard SKU for production workloads.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.PublicIP.StandardSKU
+  ref: AZR-000158
+  tags:
+    release: 'GA'
+    ruleSet: '2021_12'
+spec:
+  type:
+  - Microsoft.Network/publicIPAddresses
+  condition:
+    field: sku.name
+    equals: Standard
+
+#endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: Public IP addresses using the standard SKU that are not excluded.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.PublicIP.ShouldBeAvailable
+  metadata:
+    export: false
+spec:
+  if:
+    allOf:
+    - type: '.'
+      equals: Microsoft.Network/publicIPAddresses
+    - field: sku.name
+      equals: Standard
+    - field: tags.'resource-usage'
+      notEquals: azure-bastion
+
+#endregion Selectors

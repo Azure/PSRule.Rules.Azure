@@ -6,17 +6,17 @@
 #
 
 # Synopsis: Use encrypted MySQL connections
-Rule 'Azure.MySQL.UseSSL' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.MySQL.UseSSL' -Ref 'AZR-000131' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.sslEnforcement', 'Enabled');
 }
 
 # Synopsis: Consider configuring the minimum supported TLS version to be 1.2.
-Rule 'Azure.MySQL.MinTLS' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.MySQL.MinTLS' -Ref 'AZR-000132' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.minimalTlsVersion', 'TLS1_2');
 }
 
 # Synopsis: Determine if there is an excessive number of firewall rules
-Rule 'Azure.MySQL.FirewallRuleCount' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.MySQL.FirewallRuleCount' -Ref 'AZR-000133' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/servers/firewallRules');
     $Assert.
         LessOrEqual($firewallRules, '.', 10).
@@ -24,7 +24,7 @@ Rule 'Azure.MySQL.FirewallRuleCount' -Type 'Microsoft.DBforMySQL/servers' -Tag @
 }
 
 # Synopsis: Determine if access from Azure services is required
-Rule 'Azure.MySQL.AllowAzureAccess' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.MySQL.AllowAzureAccess' -Ref 'AZR-000134' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/servers/firewallRules' | Where-Object {
         $_.ResourceName -eq 'AllowAllWindowsAzureIps' -or
         ($_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0')
@@ -33,7 +33,7 @@ Rule 'Azure.MySQL.AllowAzureAccess' -Type 'Microsoft.DBforMySQL/servers' -Tag @{
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses
-Rule 'Azure.MySQL.FirewallIPRange' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.MySQL.FirewallIPRange' -Ref 'AZR-000135' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $summary = GetIPAddressSummary
     $Assert.
         LessOrEqual($summary, 'Public', 10).
@@ -41,7 +41,7 @@ Rule 'Azure.MySQL.FirewallIPRange' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ 
 }
 
 # Synopsis: Azure SQL logical server names should meet naming requirements.
-Rule 'Azure.MySQL.ServerName' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+Rule 'Azure.MySQL.ServerName' -Ref 'AZR-000136' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
     # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformysql
 
     # Between 3 and 63 characters long

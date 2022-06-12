@@ -13,6 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.EventGrid.TopicPublicAccess
+  ref: AZR-000098
   tags:
     release: GA
     ruleSet: 2021_12
@@ -33,6 +34,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.EventGrid.ManagedIdentity
+  ref: AZR-000099
   tags:
     release: GA
     ruleSet: 2021_12
@@ -48,8 +50,9 @@ spec:
   condition:
     field: Identity.Type
     in:
-    - 'SystemAssigned'
-    - 'UserAssigned'
+    - SystemAssigned
+    - UserAssigned
+    - SystemAssigned, UserAssigned
 
 ---
 # Synopsis: Authenticate publishing clients with Azure AD identities.
@@ -57,6 +60,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata: 
   name: Azure.EventGrid.DisableLocalAuth
+  ref: AZR-000100
   tags:
     release: preview
     ruleSet: 2021_12

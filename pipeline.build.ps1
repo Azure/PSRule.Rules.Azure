@@ -122,12 +122,6 @@ task VersionModule ModuleDependencies, {
         if ($_.Name -eq 'PSRule' -and $Configuration -eq 'Release') {
             @{ ModuleName = 'PSRule'; ModuleVersion = $dependencies.dependencies.PSRule.version }
         }
-        elseif ($_.Name -eq 'Az.Accounts' -and $Configuration -eq 'Release') {
-            @{ ModuleName = 'Az.Accounts'; ModuleVersion = $dependencies.dependencies.'Az.Accounts'.version }
-        }
-        elseif ($_.Name -eq 'Az.Resources' -and $Configuration -eq 'Release') {
-            @{ ModuleName = 'Az.Resources'; ModuleVersion = $dependencies.dependencies.'Az.Resources'.version }
-        }
         else {
             @{ ModuleName = $_.Name; ModuleVersion = $_.Version }
         }
@@ -368,6 +362,19 @@ task BuildRuleDocs Build, Dependencies, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name module -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
     $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
+
+    $metadata = @{}
+    Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All | ForEach-Object {
+        $metadata[$_.Name] = [PSCustomObject]@{
+            Name = $_.Name
+            Ref = $_.Ref
+            Alias = @($_.Alias)
+            Flags = $_.Flags
+            Release = $_.Tag.release
+            RuleSet = $_.Tag.ruleSet
+        }
+    }
+    $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/en/rules/metadata.json -Force;
 }
 
 # Synopsis: Build table of content for baselines

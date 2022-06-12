@@ -6,12 +6,12 @@
 #
 
 # Synopsis: Public IP addresses should be attached or cleaned up if not in use
-Rule 'Azure.PublicIP.IsAttached' -Type 'Microsoft.Network/publicIPAddresses' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.PublicIP.IsAttached' -Ref 'AZR-000154' -Type 'Microsoft.Network/publicIPAddresses' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.ipConfiguration.id');
 }
 
 # Synopsis: Use public IP address naming requirements
-Rule 'Azure.PublicIP.Name' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.PublicIP.Name' -Ref 'AZR-000155' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
 
     # Between 1 and 80 characters long
@@ -24,7 +24,7 @@ Rule 'Azure.PublicIP.Name' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ r
 }
 
 # Synopsis: Use public IP DNS label naming requirements
-Rule 'Azure.PublicIP.DNSLabel' -Type 'Microsoft.Network/publicIPAddresses' -If { $Assert.HasFieldValue($TargetObject, 'Properties.dnsSettings.domainNameLabel') } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.PublicIP.DNSLabel' -Ref 'AZR-000156' -Type 'Microsoft.Network/publicIPAddresses' -If { $Assert.HasFieldValue($TargetObject, 'Properties.dnsSettings.domainNameLabel') } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
 
     # Between 3 and 63 characters long
@@ -38,7 +38,7 @@ Rule 'Azure.PublicIP.DNSLabel' -Type 'Microsoft.Network/publicIPAddresses' -If {
 }
 
 # Synopsis: Public IP addresses deployed with Standard SKU should use availability zones in supported regions for high availability.
-Rule 'Azure.PublicIP.AvailabilityZone' -Type 'Microsoft.Network/publicIPAddresses' -If { IsStandardPublicIP } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.PublicIP.AvailabilityZone' -Ref 'AZR-000157' -With 'Azure.PublicIP.ShouldBeAvailable' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
     $publicIpAddressProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Network', 'publicIPAddresses');
 
     $configurationZoneMappings = $Configuration.AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
@@ -61,11 +61,6 @@ Rule 'Azure.PublicIP.AvailabilityZone' -Type 'Microsoft.Network/publicIPAddresse
     )
 
 } -Configure @{ AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
-
-# Synopsis: Public IP addresses should be deployed with Standard SKU for production workloads.
-Rule 'Azure.PublicIP.StandardSKU' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
-    IsStandardPublicIP;
-}
 
 #region Helper functions
 

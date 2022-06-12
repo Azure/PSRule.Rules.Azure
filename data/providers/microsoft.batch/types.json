@@ -20,6 +20,7 @@
     },
     "resourceType": "batchAccounts",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -87,6 +88,7 @@
     },
     "resourceType": "batchAccounts/certificates",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -98,6 +100,54 @@
       "2019-04-01",
       "2018-12-01",
       "2017-09-01"
+    ],
+    "locations": [
+      "West Europe",
+      "East US",
+      "East US 2",
+      "West US",
+      "North Central US",
+      "Brazil South",
+      "North Europe",
+      "Central US",
+      "East Asia",
+      "Japan East",
+      "Australia Southeast",
+      "Japan West",
+      "Korea South",
+      "Korea Central",
+      "Southeast Asia",
+      "South Central US",
+      "Australia East",
+      "Jio India West",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West US 2",
+      "France Central",
+      "South Africa North",
+      "UAE North",
+      "Australia Central",
+      "Germany West Central",
+      "Switzerland North",
+      "Norway East",
+      "Brazil Southeast",
+      "West US 3",
+      "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "batchAccounts/detectors",
+    "apiVersions": [
+      "2022-06-01",
+      "2022-01-01"
     ],
     "locations": [
       "West Europe",
@@ -363,6 +413,7 @@
     },
     "resourceType": "batchAccounts/pools",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -420,6 +471,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -443,6 +495,7 @@
     "aliases": null,
     "resourceType": "locations/accountOperationResults",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -506,6 +559,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -564,6 +618,7 @@
     "aliases": null,
     "resourceType": "locations/cloudServiceSkus",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01"
     ],
@@ -612,6 +667,7 @@
     "aliases": null,
     "resourceType": "locations/quotas",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -673,6 +729,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachineSkus",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01"
     ],
@@ -721,6 +778,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
