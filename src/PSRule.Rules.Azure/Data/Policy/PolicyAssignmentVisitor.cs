@@ -16,7 +16,7 @@ namespace PSRule.Rules.Azure.Data.Policy
     internal abstract class PolicyAssignmentVisitor
     {
         private const string PROPERTY_PARAMETERS = "parameters";
-        private const string PROPERTY_DEFINTIONS = "policyDefinitions";
+        private const string PROPERTY_DEFINITIONS = "policyDefinitions";
         private const string PROPERTY_PROPERTIES = "properties";
         private const string PROPERTY_POLICYRULE = "policyRule";
         private const string PROPERTY_CONDITION = "if";
@@ -484,7 +484,6 @@ namespace PSRule.Rules.Azure.Data.Policy
                                             {
                                                 var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
                                                 policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], fieldFilter);
-                                                policyRule[PROPERTY_COUNT].Parent.Remove();
                                             }
 
                                             // nested allOf in where expression
@@ -494,7 +493,6 @@ namespace PSRule.Rules.Azure.Data.Policy
                                                 var filter = new StringBuilder();
                                                 ExpressionToObjectPathArrayFilter(allofExpression, AND_CLAUSE, filter);
                                                 policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], filter.ToString());
-                                                policyRule[PROPERTY_COUNT].Parent.Remove();
                                             }
 
                                             // nested anyOf in where expression
@@ -504,27 +502,23 @@ namespace PSRule.Rules.Azure.Data.Policy
                                                 var filter = new StringBuilder();
                                                 ExpressionToObjectPathArrayFilter(anyOfExpression, OR_CLAUSE, filter);
                                                 policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], filter.ToString());
-                                                policyRule[PROPERTY_COUNT].Parent.Remove();
                                             }
                                         }
 
                                         // Single field in count expression
                                         else
-                                        {
                                             policyRule[PROPERTY_FIELD] = outerFieldAliasPath;
-                                            policyRule[PROPERTY_COUNT].Parent.Remove();
-                                        }
+
+                                        // Remove the count property when we're done
+                                        policyRule[PROPERTY_COUNT].Parent.Remove();
                                     }
                                 }
                             }
                         }
 
                         // Convert string booleans for exists expression
-                        else if (child.Name.Equals(FIELD_EXISTS, StringComparison.OrdinalIgnoreCase)
-                            && child.Value.Type == JTokenType.String)
-                        {
+                        else if (child.Name.Equals(FIELD_EXISTS, StringComparison.OrdinalIgnoreCase) && child.Value.Type == JTokenType.String)
                             policyRule[child.Name] = child.Value.Value<bool>();
-                        }
 
                         // Expand string expressions
                         else if (child.Value.Type == JTokenType.String)
@@ -692,8 +686,8 @@ namespace PSRule.Rules.Azure.Data.Policy
                     VisitAssignmentParameters(context, parameters);
             }
 
-            // Assignment Defintions
-            if (assignment.TryArrayProperty(PROPERTY_DEFINTIONS, out var definitions))
+            // Assignment Definitions
+            if (assignment.TryArrayProperty(PROPERTY_DEFINITIONS, out var definitions))
                 VisitDefinitions(context, definitions.Values<JObject>());
         }
     }
