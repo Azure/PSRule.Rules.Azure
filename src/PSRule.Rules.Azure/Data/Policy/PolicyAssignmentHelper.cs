@@ -40,8 +40,8 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 var assignmentArray = ReadFileArray(rootedAssignmentFile);
 
-                foreach (JObject assignment in assignmentArray)
-                    visitor.Visit(assignmentContext, assignment);
+                foreach (var assignment in assignmentArray)
+                    visitor.Visit(assignmentContext, assignment.ToObject<JObject>());
             }
             catch (Exception inner)
             {
