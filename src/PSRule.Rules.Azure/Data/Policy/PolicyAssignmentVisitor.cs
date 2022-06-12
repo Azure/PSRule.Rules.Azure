@@ -45,6 +45,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_DEPLOYMENT = "deployment";
         private const string PROPERTY_VALUE = "value";
         private const string PROPERTY_COUNT = "count";
+        private const string PROPERTY_NOTCOUNT = "notCount";
         private const string PROPERTY_WHERE = "where";
         private const string COLLECTION_ALIAS = "[*]";
         private const string AND_CLAUSE = "&&";
@@ -269,6 +270,8 @@ namespace PSRule.Rules.Azure.Data.Policy
                 {
                     var subProperty = string.Empty;
 
+                    // If we come across a type, set the .type sub property in the object path
+                    // Also set the current type for any further alias expansion
                     if (fieldProperty.Equals(PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase)
                         && obj.TryStringProperty(FIELD_EQUALS, out var fieldType))
                     {
@@ -293,6 +296,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                     {
                         var objectPathComparisonOperator = ExpressionToObjectPathComparisonOperator(comparisonExpression.Name);
 
+                        // Expand string values if we come across any
                         var comparisonValue = comparisonExpression.Value;
                         if (comparisonValue.Type == JTokenType.String)
                             comparisonValue = TemplateVisitor.ExpandPropertyToken(this, comparisonValue);
@@ -415,6 +419,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                     var hasFieldType = false;
                     var hasFieldCount = false;
 
+                    // Go through each property and make sure fields and counts are sorted first
                     foreach (var child in policyRule.Children<JProperty>().OrderBy(OrderPropertySelector))
                     {
                         // Expand field aliases
@@ -447,6 +452,13 @@ namespace PSRule.Rules.Azure.Data.Policy
                         {
                             policyRule[FIELD_EQUALS].Parent.Remove();
                             policyRule[PROPERTY_COUNT] = child.Value;
+                        }
+
+                        // Replace notEquals with notCount if field count expression is currently being visited
+                        else if (hasFieldCount && child.Name.Equals(FIELD_NOTEQUALS, StringComparison.OrdinalIgnoreCase))
+                        {
+                            policyRule[FIELD_NOTEQUALS].Parent.Remove();
+                            policyRule[PROPERTY_NOTCOUNT] = child.Value;
                         }
 
                         // Expand field count expressions

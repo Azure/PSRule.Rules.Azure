@@ -534,8 +534,8 @@
                                 "field": "type"
                             },
                             {
-                                "notEquals": 0,
-                                "field": "properties.subnets[?@.properties.routeTable.id == null && (@.name != 'AzureFirewallManagementSubnet' && @.name != 'AzureFirewallSubnet')]"
+                                "field": "properties.subnets[?@.properties.routeTable.id == null && (@.name != 'AzureFirewallManagementSubnet' && @.name != 'AzureFirewallSubnet')]",
+                                "notCount": 0
                             }
                         ]
                     }
