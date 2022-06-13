@@ -315,7 +315,6 @@ namespace PSRule.Rules.Azure.Data.Policy
                                 && comparisonValue.Type == JTokenType.Array)
                             {
                                 var filters = comparisonValue
-                                    .ToObject<JArray>()
                                     .Select(val => FormatObjectPathArrayFilter(subProperty, EQUALITY_OPERATOR, val));
 
                                 return string.Concat(GROUP_OPEN, string.Join($" {OR_CLAUSE} ", filters), GROUP_CLOSE);
@@ -326,7 +325,6 @@ namespace PSRule.Rules.Azure.Data.Policy
                                 && comparisonValue.Type == JTokenType.Array)
                             {
                                 var filters = comparisonValue
-                                    .ToObject<JArray>()
                                     .Select(val => FormatObjectPathArrayFilter(subProperty, INEQUALITY_OPERATOR, val));
 
                                 return string.Concat(GROUP_OPEN, string.Join($" {AND_CLAUSE} ", filters), GROUP_CLOSE);
@@ -404,12 +402,25 @@ namespace PSRule.Rules.Azure.Data.Policy
                     value);
             }
 
-            private static int OrderPropertySelector(JProperty property)
+            /// <summary>
+            /// Comparer class which orders certain properties before others
+            /// </summary>
+            private sealed class PropertyNameComparer : IComparer<JProperty>
             {
-                return property.Name.Equals(PROPERTY_FIELD, StringComparison.OrdinalIgnoreCase)
-                    || property.Name.Equals(PROPERTY_COUNT, StringComparison.OrdinalIgnoreCase)
-                    ? 0
-                    : 1;
+                public int Compare(JProperty x, JProperty y)
+                {
+                    return OrderFirst(y)
+                        ? 1
+                        : OrderFirst(x)
+                        ? -1
+                        : string.Compare(x.Name, y.Name, StringComparison.OrdinalIgnoreCase);
+                }
+
+                private static bool OrderFirst(JProperty prop)
+                {
+                    return prop.Name.Equals(PROPERTY_FIELD, StringComparison.OrdinalIgnoreCase)
+                        || prop.Name.Equals(PROPERTY_COUNT, StringComparison.OrdinalIgnoreCase);
+                }
             }
 
             private void ExpandPolicyRule(JToken policyRule)
@@ -420,7 +431,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                     var hasFieldCount = false;
 
                     // Go through each property and make sure fields and counts are sorted first
-                    foreach (var child in policyRule.Children<JProperty>().OrderBy(OrderPropertySelector))
+                    foreach (var child in policyRule.Children<JProperty>().OrderBy(prop => prop, new PropertyNameComparer()))
                     {
                         // Expand field aliases
                         if (child.Name.Equals(PROPERTY_FIELD, StringComparison.OrdinalIgnoreCase))
@@ -438,13 +449,12 @@ namespace PSRule.Rules.Azure.Data.Policy
                         }
 
                         // Set policy rule type
-                        else if (hasFieldType && child.Name.Equals(FIELD_EQUALS, StringComparison.OrdinalIgnoreCase))
+                        else if (hasFieldType
+                            && child.Name.Equals(FIELD_EQUALS, StringComparison.OrdinalIgnoreCase)
+                            && child.Value.Type == JTokenType.String)
                         {
-                            if (child.Value.Type == JTokenType.String)
-                            {
-                                var field = child.Value.Value<string>();
-                                SetPolicyRuleType(field);
-                            }
+                            var field = child.Value.Value<string>();
+                            SetPolicyRuleType(field);
                         }
 
                         // Replace equals with count if field count expression is currently being visited
