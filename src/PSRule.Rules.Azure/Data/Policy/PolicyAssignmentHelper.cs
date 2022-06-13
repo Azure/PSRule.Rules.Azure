@@ -40,8 +40,8 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 var assignmentArray = ReadFileArray(rootedAssignmentFile);
 
-                foreach (JObject assignment in assignmentArray)
-                    visitor.Visit(assignmentContext, assignment);
+                foreach (var assignment in assignmentArray)
+                    visitor.Visit(assignmentContext, assignment.ToObject<JObject>());
             }
             catch (Exception inner)
             {
@@ -60,13 +60,9 @@ namespace PSRule.Rules.Azure.Data.Policy
 
         private static JArray ReadFileArray(string path)
         {
-            using (var stream = new StreamReader(path))
-            {
-                using (var reader = new CamelCasePropertyNameJsonTextReader(stream))
-                {
-                    return JArray.Load(reader);
-                }
-            }
+            using var stream = new StreamReader(path);
+            using var reader = new CamelCasePropertyNameJsonTextReader(stream);
+            return JArray.Load(reader);
         }
 
         private sealed class CamelCasePropertyNameJsonTextReader : JsonTextReader

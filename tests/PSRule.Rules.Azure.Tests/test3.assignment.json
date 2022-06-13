@@ -90,8 +90,8 @@
             "if": {
               "allOf": [
                 {
-                  "field": "type",
-                  "equals": "Microsoft.Web/sites"
+                  "equals": "Microsoft.Web/sites",
+                  "field": "type"
                 },
                 {
                   "field": "kind",

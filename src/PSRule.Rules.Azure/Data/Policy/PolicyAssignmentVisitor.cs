@@ -4,6 +4,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
@@ -14,7 +16,7 @@ namespace PSRule.Rules.Azure.Data.Policy
     internal abstract class PolicyAssignmentVisitor
     {
         private const string PROPERTY_PARAMETERS = "parameters";
-        private const string PROPERTY_DEFINTIONS = "policyDefinitions";
+        private const string PROPERTY_DEFINITIONS = "policyDefinitions";
         private const string PROPERTY_PROPERTIES = "properties";
         private const string PROPERTY_POLICYRULE = "policyRule";
         private const string PROPERTY_CONDITION = "if";
@@ -28,12 +30,35 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_TYPE = "type";
         private const string PROPERTY_DEFAULTVALUE = "defaultValue";
         private const string PROPERTY_ALL_OF = "allOf";
+        private const string PROPERTY_ANY_OF = "anyOf";
         private const string FIELD_EQUALS = "equals";
+        private const string FIELD_NOTEQUALS = "notEquals";
+        private const string FIELD_GREATER = "greater";
+        private const string FIELD_GREATEROREQUALS = "greaterOrEquals";
+        private const string FIELD_LESS = "less";
+        private const string FIELD_LESSOREQUALS = "lessOrEquals";
+        private const string FIELD_IN = "in";
+        private const string FIELD_NOTIN = "notIn";
+        private const string FIELD_EXISTS = "exists";
         private const string PROPERTY_DISPLAYNAME = "displayName";
         private const string PROPERTY_DESCRIPTION = "description";
         private const string PROPERTY_DEPLOYMENT = "deployment";
         private const string PROPERTY_VALUE = "value";
+        private const string PROPERTY_COUNT = "count";
+        private const string PROPERTY_NOTCOUNT = "notCount";
+        private const string PROPERTY_WHERE = "where";
+        private const string COLLECTION_ALIAS = "[*]";
+        private const string AND_CLAUSE = "&&";
+        private const string OR_CLAUSE = "||";
+        private const string EQUALITY_OPERATOR = "==";
+        private const string INEQUALITY_OPERATOR = "!=";
+        private const string LESS_OPERATOR = "<";
+        private const string LESSOREQUAL_OPERATOR = "<=";
+        private const string GREATER_OPERATOR = ">";
+        private const string GREATEROREQUAL_OPERATOR = ">=";
         private const char SLASH = '/';
+        private const char GROUP_OPEN = '(';
+        private const char GROUP_CLOSE = ')';
 
         public sealed class PolicyAssignmentContext : ITemplateContext
         {
@@ -217,36 +242,293 @@ namespace PSRule.Rules.Azure.Data.Policy
                 }
             }
 
+            private static string ExpressionToObjectPathComparisonOperator(string expression) => expression switch
+            {
+                FIELD_EQUALS => EQUALITY_OPERATOR,
+                FIELD_NOTEQUALS => INEQUALITY_OPERATOR,
+                FIELD_GREATER => GREATER_OPERATOR,
+                FIELD_GREATEROREQUALS => GREATEROREQUAL_OPERATOR,
+                FIELD_LESS => LESS_OPERATOR,
+                FIELD_LESSOREQUALS => LESSOREQUAL_OPERATOR,
+                _ => null
+            };
+
+            private void SetPolicyRuleType(string type)
+            {
+                if (type.CountCharacterOccurrences(SLASH) > 0)
+                {
+                    var contents = type.Split(new char[] { SLASH }, count: 2);
+                    var providerNamespace = contents[0];
+                    var resourceType = contents[1];
+                    _PolicyAliasProviderHelper.SetPolicyRuleType(providerNamespace, resourceType);
+                }
+            }
+
+            private string GetFieldObjectPathArrayFilter(JObject obj)
+            {
+                if (obj.TryStringProperty(PROPERTY_FIELD, out var fieldProperty))
+                {
+                    var subProperty = string.Empty;
+
+                    // If we come across a type, set the .type sub property in the object path
+                    // Also set the current type for any further alias expansion
+                    if (fieldProperty.Equals(PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase)
+                        && obj.TryStringProperty(FIELD_EQUALS, out var fieldType))
+                    {
+                        subProperty = $".{PROPERTY_TYPE}";
+                        SetPolicyRuleType(fieldType);
+                    }
+                    else
+                    {
+                        var fieldAliasPath = ResolvePolicyAliasPath(fieldProperty);
+                        if (fieldAliasPath != null)
+                        {
+                            var splitAliasPath = fieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
+                            subProperty = splitAliasPath[1];
+                        }
+                    }
+
+                    var comparisonExpression = obj
+                        .Children<JProperty>()
+                        .FirstOrDefault(prop => !prop.Name.Equals(PROPERTY_FIELD, StringComparison.OrdinalIgnoreCase));
+
+                    if (comparisonExpression != null)
+                    {
+                        var objectPathComparisonOperator = ExpressionToObjectPathComparisonOperator(comparisonExpression.Name);
+
+                        // Expand string values if we come across any
+                        var comparisonValue = comparisonExpression.Value;
+                        if (comparisonValue.Type == JTokenType.String)
+                            comparisonValue = TemplateVisitor.ExpandPropertyToken(this, comparisonValue);
+
+                        if (objectPathComparisonOperator != null)
+                        {
+                            return FormatObjectPathArrayFilter(
+                                subProperty,
+                                objectPathComparisonOperator,
+                                comparisonValue);
+                        }
+                        else
+                        {
+                            // Convert in expression
+                            if (comparisonExpression.Name.Equals(FIELD_IN, StringComparison.OrdinalIgnoreCase)
+                                && comparisonValue.Type == JTokenType.Array)
+                            {
+                                var filters = comparisonValue
+                                    .Select(val => FormatObjectPathArrayFilter(subProperty, EQUALITY_OPERATOR, val));
+
+                                return string.Concat(GROUP_OPEN, string.Join($" {OR_CLAUSE} ", filters), GROUP_CLOSE);
+                            }
+
+                            // Convert notIn expression
+                            else if (comparisonExpression.Name.Equals(FIELD_NOTIN, StringComparison.OrdinalIgnoreCase)
+                                && comparisonValue.Type == JTokenType.Array)
+                            {
+                                var filters = comparisonValue
+                                    .Select(val => FormatObjectPathArrayFilter(subProperty, INEQUALITY_OPERATOR, val));
+
+                                return string.Concat(GROUP_OPEN, string.Join($" {AND_CLAUSE} ", filters), GROUP_CLOSE);
+                            }
+
+                            // Convert exists expression
+                            else if (comparisonExpression.Name.Equals(FIELD_EXISTS, StringComparison.OrdinalIgnoreCase))
+                            {
+                                var existsValue = comparisonValue.Value<bool>();
+
+                                return FormatObjectPathArrayFilter(
+                                    subProperty,
+                                    existsValue ? INEQUALITY_OPERATOR : EQUALITY_OPERATOR,
+                                    null);
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+
+            private void ExpressionToObjectPathArrayFilter(JArray expression, string clause, StringBuilder objectPath)
+            {
+                var clauseSeparator = string.Empty;
+                foreach (var obj in expression.Children<JObject>())
+                {
+                    var filter = GetFieldObjectPathArrayFilter(obj);
+                    if (filter != null)
+                    {
+                        objectPath.Append(clauseSeparator);
+                        objectPath.Append(filter);
+                        clauseSeparator = $" {clause} ";
+                    }
+
+                    else if (obj.TryArrayProperty(PROPERTY_ALL_OF, out var allOfExpression))
+                    {
+                        objectPath.Append($" {clause} ");
+                        objectPath.Append(GROUP_OPEN);
+                        ExpressionToObjectPathArrayFilter(allOfExpression, AND_CLAUSE, objectPath);
+                        objectPath.Append(GROUP_CLOSE);
+                    }
+
+                    else if (obj.TryArrayProperty(PROPERTY_ANY_OF, out var anyOfExpression))
+                    {
+                        objectPath.Append($" {clause} ");
+                        objectPath.Append(GROUP_OPEN);
+                        ExpressionToObjectPathArrayFilter(anyOfExpression, OR_CLAUSE, objectPath);
+                        objectPath.Append(GROUP_CLOSE);
+                    }
+                }
+            }
+
+            private static string FormatObjectPathArrayExpression(string array, string filter)
+            {
+                return string.Format(
+                    Thread.CurrentThread.CurrentCulture,
+                    "{0}[?{1}]",
+                    array,
+                    filter);
+            }
+
+            private static string FormatObjectPathArrayFilter(string subProperty, string comparisonOperator, JToken value)
+            {
+                return value == null
+                    ? string.Format(
+                        Thread.CurrentThread.CurrentCulture,
+                        "@{0} {1} null",
+                        subProperty,
+                        comparisonOperator)
+                    : string.Format(
+                    Thread.CurrentThread.CurrentCulture,
+                    value.Type == JTokenType.String ? "@{0} {1} '{2}'" : "@{0} {1} {2}",
+                    subProperty,
+                    comparisonOperator,
+                    value);
+            }
+
+            /// <summary>
+            /// Comparer class which orders certain properties before others
+            /// </summary>
+            private sealed class PropertyNameComparer : IComparer<JProperty>
+            {
+                public int Compare(JProperty x, JProperty y)
+                {
+                    return OrderFirst(y)
+                        ? 1
+                        : OrderFirst(x)
+                        ? -1
+                        : string.Compare(x.Name, y.Name, StringComparison.OrdinalIgnoreCase);
+                }
+
+                private static bool OrderFirst(JProperty prop)
+                {
+                    return prop.Name.Equals(PROPERTY_FIELD, StringComparison.OrdinalIgnoreCase)
+                        || prop.Name.Equals(PROPERTY_COUNT, StringComparison.OrdinalIgnoreCase);
+                }
+            }
+
             private void ExpandPolicyRule(JToken policyRule)
             {
                 if (policyRule.Type == JTokenType.Object)
                 {
                     var hasFieldType = false;
-                    foreach (var child in policyRule.Children<JProperty>())
+                    var hasFieldCount = false;
+
+                    // Go through each property and make sure fields and counts are sorted first
+                    foreach (var child in policyRule.Children<JProperty>().OrderBy(prop => prop, new PropertyNameComparer()))
                     {
                         // Expand field aliases
                         if (child.Name.Equals(PROPERTY_FIELD, StringComparison.OrdinalIgnoreCase))
                         {
-                            var field = child.Value.Value<string>();
-                            if (field.Equals(PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase))
-                                hasFieldType = true;
-
-                            var aliasPath = ResolvePolicyAliasPath(field);
-                            if (aliasPath != null)
-                                policyRule[child.Name] = aliasPath;
-                        }
-
-                        else if (hasFieldType && child.Name.Equals(FIELD_EQUALS, StringComparison.OrdinalIgnoreCase))
-                        {
-                            var field = child.Value.Value<string>();
-                            if (field.CountCharacterOccurrences(SLASH) == 1)
+                            if (child.Value.Type == JTokenType.String)
                             {
-                                var contents = field.Split(SLASH);
-                                var providerNamespace = contents[0];
-                                var resourceType = contents[1];
-                                _PolicyAliasProviderHelper.SetPolicyRuleType(providerNamespace, resourceType);
+                                var field = child.Value.Value<string>();
+                                if (field.Equals(PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase))
+                                    hasFieldType = true;
+
+                                var aliasPath = ResolvePolicyAliasPath(field);
+                                if (aliasPath != null)
+                                    policyRule[child.Name] = aliasPath;
                             }
                         }
+
+                        // Set policy rule type
+                        else if (hasFieldType
+                            && child.Name.Equals(FIELD_EQUALS, StringComparison.OrdinalIgnoreCase)
+                            && child.Value.Type == JTokenType.String)
+                        {
+                            var field = child.Value.Value<string>();
+                            SetPolicyRuleType(field);
+                        }
+
+                        // Replace equals with count if field count expression is currently being visited
+                        else if (hasFieldCount && child.Name.Equals(FIELD_EQUALS, StringComparison.OrdinalIgnoreCase))
+                        {
+                            policyRule[FIELD_EQUALS].Parent.Remove();
+                            policyRule[PROPERTY_COUNT] = child.Value;
+                        }
+
+                        // Replace notEquals with notCount if field count expression is currently being visited
+                        else if (hasFieldCount && child.Name.Equals(FIELD_NOTEQUALS, StringComparison.OrdinalIgnoreCase))
+                        {
+                            policyRule[FIELD_NOTEQUALS].Parent.Remove();
+                            policyRule[PROPERTY_NOTCOUNT] = child.Value;
+                        }
+
+                        // Expand field count expressions
+                        else if (child.Name.Equals(PROPERTY_COUNT, StringComparison.OrdinalIgnoreCase))
+                        {
+                            hasFieldCount = true;
+
+                            if (child.Value.Type == JTokenType.Object)
+                            {
+                                var countObject = child.Value.ToObject<JObject>();
+
+                                if (countObject.TryStringProperty(PROPERTY_FIELD, out var outerFieldAlias))
+                                {
+                                    var outerFieldAliasPath = ResolvePolicyAliasPath(outerFieldAlias);
+
+                                    if (outerFieldAliasPath != null)
+                                    {
+                                        if (countObject.TryObjectProperty(PROPERTY_WHERE, out var whereExpression))
+                                        {
+                                            // field in where expression
+                                            var fieldFilter = GetFieldObjectPathArrayFilter(whereExpression);
+                                            if (fieldFilter != null)
+                                            {
+                                                var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
+                                                policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], fieldFilter);
+                                            }
+
+                                            // nested allOf in where expression
+                                            else if (whereExpression.TryArrayProperty(PROPERTY_ALL_OF, out var allofExpression))
+                                            {
+                                                var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
+                                                var filter = new StringBuilder();
+                                                ExpressionToObjectPathArrayFilter(allofExpression, AND_CLAUSE, filter);
+                                                policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], filter.ToString());
+                                            }
+
+                                            // nested anyOf in where expression
+                                            else if (whereExpression.TryArrayProperty(PROPERTY_ANY_OF, out var anyOfExpression))
+                                            {
+                                                var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
+                                                var filter = new StringBuilder();
+                                                ExpressionToObjectPathArrayFilter(anyOfExpression, OR_CLAUSE, filter);
+                                                policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], filter.ToString());
+                                            }
+                                        }
+
+                                        // Single field in count expression
+                                        else
+                                            policyRule[PROPERTY_FIELD] = outerFieldAliasPath;
+
+                                        // Remove the count property when we're done
+                                        policyRule[PROPERTY_COUNT].Parent.Remove();
+                                    }
+                                }
+                            }
+                        }
+
+                        // Convert string booleans for exists expression
+                        else if (child.Name.Equals(FIELD_EXISTS, StringComparison.OrdinalIgnoreCase) && child.Value.Type == JTokenType.String)
+                            policyRule[child.Name] = child.Value.Value<bool>();
 
                         // Expand string expressions
                         else if (child.Value.Type == JTokenType.String)
@@ -419,8 +701,8 @@ namespace PSRule.Rules.Azure.Data.Policy
                     VisitAssignmentParameters(context, parameters);
             }
 
-            // Assignment Defintions
-            if (assignment.TryArrayProperty(PROPERTY_DEFINTIONS, out var definitions))
+            // Assignment Definitions
+            if (assignment.TryArrayProperty(PROPERTY_DEFINITIONS, out var definitions))
                 VisitDefinitions(context, definitions.Values<JObject>());
         }
     }

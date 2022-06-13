@@ -329,8 +329,8 @@
                     {
                         "allOf": [
                             {
-                                "field": "type",
-                                "equals": "Microsoft.Web/sites"
+                                "equals": "Microsoft.Web/sites",
+                                "field": "type"
                             },
                             {
                                 "field": "kind",
@@ -357,6 +357,213 @@
                                 ]
                             }
                         ]
+                    }
+                ]
+            }
+        }
+    },
+    {
+        // Synopsis: Enforce disabling of SNAT on load balancing rules
+        "apiVersion": "github.com/microsoft/PSRule/v1",
+        "kind": "Rule",
+        "metadata": {
+            "name": "DisableLBRuleSNAT"
+        },
+        "spec": {
+            "condition": {
+                "allOf": [
+                    {
+                        "equals": "Microsoft.Network/loadBalancers",
+                        "field": "type"
+                    },
+                    {
+                        "greaterOrEquals": 1,
+                        "field": "properties.loadBalancingRules[?@.properties.disableOutboundSnat == False]"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        // Synopsis: Enforce atleast more than one LB rule
+        "apiVersion": "github.com/microsoft/PSRule/v1",
+        "kind": "Rule",
+        "metadata": {
+            "name": "EnsureAtleastOneLBRule"
+        },
+        "spec": {
+            "condition": {
+                "allOf": [
+                    {
+                        "equals": "Microsoft.Network/loadBalancers",
+                        "field": "type"
+                    },
+                    {
+                        "greaterOrEquals": 1,
+                        "field": "properties.loadBalancingRules[*]"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        // Synopsis: Enforce unique description on one NSG rule
+        "apiVersion": "github.com/microsoft/PSRule/v1",
+        "kind": "Rule",
+        "metadata": {
+            "name": "UniqueDescriptionNSG"
+        },
+        "spec": {
+            "condition": {
+                "allOf": [
+                    {
+                        "equals": "Microsoft.Network/networkSecurityGroups",
+                        "field": "type"
+                    },
+                    {
+                        "field": "properties.securityRules[?@.properties.description == 'My unique description']",
+                        "count": 1
+                    }
+                ]
+            }
+        }
+    },
+    {
+        // Synopsis: Denies RDP port on inbound NSG rules
+        "apiVersion": "github.com/microsoft/PSRule/v1",
+        "kind": "Rule",
+        "metadata": {
+            "name": "DenyNSGRDPInboundPort"
+        },
+        "spec": {
+            "condition": {
+                "allOf": [
+                    {
+                        "greater": 0,
+                        "field": "properties.securityRules[?@.type == 'Microsoft.Network/networkSecurityGroups/securityRules' && @.properties.direction == 'Inbound' && @.properties.access == 'Allow' && @.properties.destinationPortRange == '3389']"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        // Synopsis: Deny common ports on NSG rules
+        "apiVersion": "github.com/microsoft/PSRule/v1",
+        "kind": "Rule",
+        "metadata": {
+            "name": "DenyPortsNSG"
+        },
+        "spec": {
+            "condition": {
+                "anyOf": [
+                    {
+                        "allOf": [
+                            {
+                                "field": "type",
+                                "equals": "Microsoft.Network/networkSecurityGroups/securityRules"
+                            },
+                            {
+                                "not": {
+                                    "field": "properties.sourceAddressPrefix",
+                                    "notEquals": "*"
+                                }
+                            },
+                            {
+                                "anyOf": [
+                                    {
+                                        "field": "properties.destinationPortRange",
+                                        "equals": "22"
+                                    },
+                                    {
+                                        "field": "properties.destinationPortRange",
+                                        "equals": "3389"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "allOf": [
+                            {
+                                "field": "type",
+                                "equals": "Microsoft.Network/networkSecurityGroups"
+                            },
+                            {
+                                "greater": 0,
+                                "field": "properties.securityRules[?@.properties.sourceAddressPrefix == '*' && (@.properties.destinationPortRange == '22' || @.properties.destinationPortRange == '3389')]"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
+        // Synopsis: Prevent subnets without NSG
+        "apiVersion": "github.com/microsoft/PSRule/v1",
+        "kind": "Rule",
+        "metadata": {
+            "name": "PreventSubnetsWithoutNSG"
+        },
+        "spec": {
+            "condition": {
+                "anyOf": [
+                    {
+                        "allOf": [
+                            {
+                                "equals": "Microsoft.Network/virtualNetworks/subnets",
+                                "field": "type"
+                            },
+                            {
+                                "exists": false,
+                                "field": "properties.routeTable.id"
+                            },
+                            {
+                                "field": "name",
+                                "notIn": [
+                                    "AzureFirewallSubnet",
+                                    "AzureFirewallManagementSubnet"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "allOf": [
+                            {
+                                "equals": "Microsoft.Network/virtualNetworks",
+                                "field": "type"
+                            },
+                            {
+                                "field": "properties.subnets[?@.properties.routeTable.id == null && (@.name != 'AzureFirewallManagementSubnet' && @.name != 'AzureFirewallSubnet')]",
+                                "notCount": 0
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
+        // Synopsis: Prevent private endpoint being created in specific subnet
+        "apiVersion": "github.com/microsoft/PSRule/v1",
+        "kind": "Rule",
+        "metadata": {
+            "name": "DenyPrivateEndpointSpecificSubnet"
+        },
+        "spec": {
+            "condition": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Network/privateEndpoints"
+                    },
+                    {
+                        "field": "properties.subnet.id",
+                        "notContains": "pls"
+                    },
+                    {
+                        "greaterOrEquals": 1,
+                        "field": "properties.privateLinkServiceConnections[*].properties.groupIds[?(@ != 'blob' && @ != 'sqlServer')]"
                     }
                 ]
             }

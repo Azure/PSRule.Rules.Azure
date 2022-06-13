@@ -1,0 +1,112 @@
+[
+  {
+    "Identity": null,
+    "Location": null,
+    "Name": "000000000000000000000000",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "ResourceName": "000000000000000000000000",
+    "ResourceGroupName": null,
+    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Sku": null,
+    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "Properties": {
+      "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+      "NotScopes": [],
+      "DisplayName": "PreventSubnetsWithoutNSG",
+      "Description": null,
+      "Metadata": {
+        "assignedBy": "Armaan Dhaliwal-McLeod",
+        "parameterScopes": {},
+        "createdBy": "15bd0bad-d884-4479-9860-a3afffae4132",
+        "createdOn": "2022-05-09T11:46:07.0986544Z",
+        "updatedBy": null,
+        "updatedOn": null
+      },
+      "EnforcementMode": 0,
+      "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+      "Parameters": {},
+      "NonComplianceMessages": []
+    },
+    "PolicyDefinitions": [
+      {
+        "Name": "00000000-0000-0000-0000-000000000000",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+        "ResourceName": "00000000-0000-0000-0000-000000000000",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+          "Description": "Prevent subnets without NSG",
+          "DisplayName": "PreventSubnetsWithoutNSG",
+          "Metadata": {
+            "createdBy": "15bd0bad-d884-4479-9860-a3afffae4132",
+            "createdOn": "2022-05-09T11:35:25.9960771Z",
+            "updatedBy": null,
+            "updatedOn": null
+          },
+          "Mode": "All",
+          "Parameters": {},
+          "PolicyRule": {
+            "if": {
+              "anyOf": [
+                {
+                  "allOf": [
+                    {
+                      "equals": "Microsoft.Network/virtualNetworks/subnets",
+                      "field": "type"
+                    },
+                    {
+                      "exists": "false",
+                      "field": "Microsoft.Network/virtualNetworks/subnets/routeTable.id"
+                    },
+                    {
+                      "field": "name",
+                      "notIn": [
+                        "AzureFirewallSubnet",
+                        "AzureFirewallManagementSubnet"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "allOf": [
+                    {
+                      "equals": "Microsoft.Network/virtualNetworks",
+                      "field": "type"
+                    },
+                    {
+                      "count": {
+                        "field": "Microsoft.Network/virtualNetworks/subnets[*]",
+                        "where": {
+                          "allOf": [
+                            {
+                              "exists": "false",
+                              "field": "Microsoft.Network/virtualNetworks/subnets[*].routeTable.id"
+                            },
+                            {
+                              "field": "Microsoft.Network/virtualNetworks/subnets[*].name",
+                              "notIn": [
+                                "AzureFirewallManagementSubnet",
+                                "AzureFirewallSubnet"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "notEquals": 0
+                    }
+                  ]
+                }
+              ]
+            },
+            "then": {
+              "effect": "deny"
+            }
+          },
+          "PolicyType": 1
+        },
+        "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
+]

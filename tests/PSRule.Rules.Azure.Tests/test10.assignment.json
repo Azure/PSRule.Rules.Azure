@@ -1,0 +1,107 @@
+[
+  {
+    "Identity": null,
+    "Location": null,
+    "Name": "000000000000000000000000",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "ResourceName": "000000000000000000000000",
+    "ResourceGroupName": null,
+    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Sku": null,
+    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "Properties": {
+      "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+      "NotScopes": [],
+      "DisplayName": "DenyPrivateEndpointSpecificSubnet",
+      "Description": null,
+      "Metadata": {
+        "assignedBy": "Armaan Dhaliwal-McLeod",
+        "parameterScopes": {},
+        "createdBy": "15bd0bad-d884-4479-9860-a3afffae4132",
+        "createdOn": "2022-05-09T11:46:07.0986544Z",
+        "updatedBy": null,
+        "updatedOn": null
+      },
+      "EnforcementMode": 0,
+      "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+      "Parameters": {
+        "subnetName": {
+          "value": "pls"
+        },
+        "exemptedGroupIds": {
+          "value": [
+            "blob",
+            "sqlServer"
+          ]
+        }
+      },
+      "NonComplianceMessages": []
+    },
+    "PolicyDefinitions": [
+      {
+        "Name": "00000000-0000-0000-0000-000000000000",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+        "ResourceName": "00000000-0000-0000-0000-000000000000",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+          "Description": "Prevent private endpoint being created in specific subnet",
+          "DisplayName": "DenyPrivateEndpointSpecificSubnet",
+          "Metadata": {
+            "createdBy": "15bd0bad-d884-4479-9860-a3afffae4132",
+            "createdOn": "2022-05-09T11:35:25.9960771Z",
+            "updatedBy": null,
+            "updatedOn": null
+          },
+          "Mode": "All",
+          "Parameters": {
+            "subnetName": {
+              "type": "string",
+              "metadata": {
+                "displayName": "Allowed Subnet prefix name (i.e. pls)",
+                "description": "Name of subnet where Private Endpoints are allowed to be deployed into."
+              }
+            },
+            "exemptedGroupIds": {
+              "type": "array",
+              "metadata": {
+                "displayName": "Exempted Private Endpoint Group IDs",
+                "description": "The Group IDs that are exempted from this Policy (i.e. blob)"
+              }
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.Network/privateEndpoints"
+                },
+                {
+                  "field": "Microsoft.Network/privateEndpoints/subnet.id",
+                  "notContains": "[parameters('subnetName')]"
+                },
+                {
+                  "count": {
+                    "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*].groupIds[*]",
+                    "where": {
+                      "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*].groupIds[*]",
+                      "notIn": "[parameters('exemptedGroupIds')]"
+                    }
+                  },
+                  "greaterOrEquals": 1
+                }
+              ]
+            },
+            "then": {
+              "effect": "deny"
+            }
+          },
+          "PolicyType": 1
+        },
+        "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
+]

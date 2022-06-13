@@ -34,11 +34,10 @@ namespace PSRule.Rules.Azure.Data.Policy
             // Handle aliases like Microsoft.Compute/imageId with only one slash
             if (slashOccurrences == 1)
             {
-                if (_DefaultRuleType != null && _Providers.TryResourceType(_DefaultRuleType, out var type2))
-                    return type2.Aliases != null &&
-                        type2.Aliases.TryGetValue(aliasName, out aliasPath);
-
-                return false;
+                return _DefaultRuleType != null
+                    && _Providers.TryResourceType(_DefaultRuleType, out var type2)
+                    && type2.Aliases != null
+                    && type2.Aliases.TryGetValue(aliasName, out aliasPath);
             }
 
             // Any aliases with two slashes or more will be resolved here
