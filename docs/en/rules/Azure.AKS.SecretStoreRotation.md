@@ -1,5 +1,5 @@
 ---
-reviewed: 2021/12/10
+reviewed: 2021-12-10
 severity: Important
 pillar: Security
 category: Key and secret management

@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System.Management.Automation;
@@ -10,10 +10,10 @@ namespace PSRule.Rules.Azure.Pipeline
     {
         private readonly TemplateHelper _TemplateHelper;
 
-        internal TemplatePipeline(PipelineContext context, string deploymentName)
+        internal TemplatePipeline(PipelineContext context)
             : base(context)
         {
-            _TemplateHelper = new TemplateHelper(context, deploymentName);
+            _TemplateHelper = new TemplateHelper(context);
         }
 
         public override void Process(PSObject sourceObject)

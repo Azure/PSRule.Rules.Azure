@@ -326,7 +326,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected override string GetString()
         {
-            return "List";
+            return "SecretList";
         }
     }
 
