@@ -26,7 +26,8 @@ What's changed since v1.16.1:
     - Check for secure values in outputs by @BernieWhite.
       [#297](https://github.com/Azure/PSRule.Rules.Azure/issues/297)
 - New features:
-  - Added more field count expression support for Azure Policy JSON rules by @ArmaanMcleod. [microsoft/PSRule#1024](https://github.com/microsoft/PSRule/issues/1024)
+  - Added more field count expression support for Azure Policy JSON rules by @ArmaanMcleod.
+    [#181](https://github.com/Azure/PSRule.Rules.Azure/issues/181)
 
 ## v1.16.1
 
