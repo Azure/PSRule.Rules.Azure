@@ -69,8 +69,7 @@ namespace PSRule.Rules.Azure.Runtime
         private static PSObject[] GetTemplateResources(string templateFile, string parameterFile, PipelineContext context)
         {
             var helper = new TemplateHelper(
-                context,
-                "helper"
+                context
             );
             return helper.ProcessTemplate(templateFile, parameterFile, out _);
         }

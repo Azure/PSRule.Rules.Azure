@@ -39,6 +39,7 @@ namespace PSRule.Rules.Azure.Pipeline
             if (string.IsNullOrEmpty(deploymentName))
                 return;
 
+            Option.Configuration.Deployment = new DeploymentOption(deploymentName);
             _DeploymentName = deploymentName;
         }
 
@@ -85,7 +86,7 @@ namespace PSRule.Rules.Azure.Pipeline
 
         public override IPipeline Build()
         {
-            return new TemplatePipeline(PrepareContext(), _DeploymentName);
+            return new TemplatePipeline(PrepareContext());
         }
     }
 }

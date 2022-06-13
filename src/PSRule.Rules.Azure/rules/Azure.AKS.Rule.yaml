@@ -165,7 +165,7 @@ spec:
     equals: true
 
 ---
-# Synopsis: Deploy AKS clusters with Secrets Store CSI Driver and store Secrets in Key Vayult.
+# Synopsis: Deploy AKS clusters with Secrets Store CSI Driver and store Secrets in Key Vault.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:

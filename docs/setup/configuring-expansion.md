@@ -149,6 +149,45 @@ configuration:
   AZURE_PARAMETER_FILE_METADATA_LINK: true
 ```
 
+### Deployment properties
+
+:octicons-milestone-24: v1.17.0
+
+This configuration option sets the deployment object use by the `deployment()` function.
+Configure this option to change the details of the deployment when exporting templates for analysis.
+Provided properties will override the default.
+Any properties that are not provided with use the defaults as specified below.
+
+This configuration option applies to the parent deployment.
+Nested deployments will use any properties configured within code.
+Additionally, this configuration option will be ignore when `-Name` is used with `Export-AzRuleTemplateData`.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_DEPLOYMENT:
+    name: string
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_DEPLOYMENT configuration option
+configuration:
+  AZURE_DEPLOYMENT:
+    name: 'ps-rule-test-deployment'
+```
+
+Example:
+
+```yaml
+# YAML: Override the name of the deployment object.
+configuration:
+  AZURE_DEPLOYMENT:
+    name: 'deploy-web-application'
+```
+
 ### Deployment resource group
 
 :octicons-milestone-24: v1.1.0

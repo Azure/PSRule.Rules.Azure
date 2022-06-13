@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -39,6 +39,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("AU", actual.Configuration.Tenant.CountryCode);
             Assert.Equal("unit-test-mg", actual.Configuration.ManagementGroup.Name);
             Assert.Equal("My test management group", actual.Configuration.ManagementGroup.Properties.DisplayName);
+            Assert.Equal("deployment-from-yaml", actual.Configuration.Deployment.Name);
         }
 
         [Fact]
@@ -85,9 +86,26 @@ namespace PSRule.Rules.Azure
             Assert.Equal(hashtable["ProvisioningState"], option.Properties.ProvisioningState);
         }
 
+        [Fact]
+        public void DeploymentOption()
+        {
+            var hashtable = new Hashtable
+            {
+                ["Name"] = "option-test-deployment",
+            };
+
+            var option = DeploymentReference.FromHashtable(hashtable).ToDeploymentOption();
+            Assert.NotNull(option);
+            Assert.Equal(hashtable["Name"], option.Name);
+        }
+
+        #region Helper methods
+
         private static string GetSourcePath(string fileName)
         {
             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
         }
+
+        #endregion Helper methods
     }
 }

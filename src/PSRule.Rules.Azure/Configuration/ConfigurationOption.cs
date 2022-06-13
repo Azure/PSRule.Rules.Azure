@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -19,6 +19,7 @@ namespace PSRule.Rules.Azure.Configuration
             Tenant = TenantOption.Default,
             ManagementGroup = ManagementGroupOption.Default,
             ParameterDefaults = ParameterDefaultsOption.Default,
+            Deployment = DeploymentOption.Default,
         };
 
         public ConfigurationOption()
@@ -28,6 +29,7 @@ namespace PSRule.Rules.Azure.Configuration
             Tenant = null;
             ManagementGroup = null;
             ParameterDefaults = null;
+            Deployment = null;
         }
 
         internal ConfigurationOption(ConfigurationOption option)
@@ -40,6 +42,7 @@ namespace PSRule.Rules.Azure.Configuration
             Tenant = option.Tenant;
             ManagementGroup = option.ManagementGroup;
             ParameterDefaults = option.ParameterDefaults;
+            Deployment = option.Deployment;
         }
 
         public override bool Equals(object obj)
@@ -54,7 +57,8 @@ namespace PSRule.Rules.Azure.Configuration
                 ResourceGroup == other.ResourceGroup &&
                 Tenant == other.Tenant &&
                 ManagementGroup == other.ManagementGroup &&
-                ParameterDefaults == other.ParameterDefaults;
+                ParameterDefaults == other.ParameterDefaults &&
+                Deployment == other.Deployment;
         }
 
         public override int GetHashCode()
@@ -67,6 +71,7 @@ namespace PSRule.Rules.Azure.Configuration
                 hash = hash * 23 + (Tenant != null ? Tenant.GetHashCode() : 0);
                 hash = hash * 23 + (ManagementGroup != null ? ManagementGroup.GetHashCode() : 0);
                 hash = hash * 23 + (ParameterDefaults != null ? ParameterDefaults.GetHashCode() : 0);
+                hash = hash * 23 + (Deployment != null ? Deployment.GetHashCode() : 0);
                 return hash;
             }
         }
@@ -80,6 +85,7 @@ namespace PSRule.Rules.Azure.Configuration
                 Tenant = TenantOption.Combine(o1?.Tenant, o2?.Tenant),
                 ManagementGroup = ManagementGroupOption.Combine(o1?.ManagementGroup, o2?.ManagementGroup),
                 ParameterDefaults = ParameterDefaultsOption.Combine(o1?.ParameterDefaults, o2?.ParameterDefaults),
+                Deployment = DeploymentOption.Combine(o1?.Deployment, o2?.Deployment),
             };
             return result;
         }
@@ -98,10 +104,16 @@ namespace PSRule.Rules.Azure.Configuration
         [YamlMember(Alias = "AZURE_RESOURCE_GROUP", ApplyNamingConventions = false)]
         public ResourceGroupOption ResourceGroup { get; set; }
 
+        /// <summary>
+        /// Configures the properties of the tenant object.
+        /// </summary>
         [DefaultValue(null)]
         [YamlMember(Alias = "AZURE_TENANT", ApplyNamingConventions = false)]
         public TenantOption Tenant { get; set; }
 
+        /// <summary>
+        /// Configures the properties of the managementGroup object.
+        /// </summary>
         [DefaultValue(null)]
         [YamlMember(Alias = "AZURE_MANAGEMENT_GROUP", ApplyNamingConventions = false)]
         public ManagementGroupOption ManagementGroup { get; set; }
@@ -109,7 +121,15 @@ namespace PSRule.Rules.Azure.Configuration
         /// <summary>
         /// Configures defaults for required parameters that are not specified.
         /// </summary>
+        [DefaultValue(null)]
         [YamlMember(Alias = "AZURE_PARAMETER_DEFAULTS", ApplyNamingConventions = false)]
         public ParameterDefaultsOption ParameterDefaults { get; set; }
+
+        /// <summary>
+        /// Configures the properties of the deployment object.
+        /// </summary>
+        [DefaultValue(null)]
+        [YamlMember(Alias = "AZURE_DEPLOYMENT", ApplyNamingConventions = false)]
+        public DeploymentOption Deployment { get; set; }
     }
 }

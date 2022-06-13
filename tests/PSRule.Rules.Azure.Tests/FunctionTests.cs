@@ -973,7 +973,7 @@ namespace PSRule.Rules.Azure
 
             var actual1 = Functions.DateTimeFromEpoch(context, new object[] { new DateTimeOffset(utc).ToUnixTimeSeconds() }) as string;
             var actual2 = Functions.DateTimeFromEpoch(context, new object[] { 1683040573 }) as string;
-            
+
             Assert.Equal("2020-04-07T14:53:14Z", actual1);
             Assert.Equal("2023-05-02T15:16:13Z", actual2);
 

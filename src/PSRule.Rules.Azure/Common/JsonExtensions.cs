@@ -52,6 +52,7 @@ namespace PSRule.Rules.Azure
         private const string TARGETINFO_TYPE_PARAMETER = "Parameter";
         private const string TARGETINFO_ISSUE = "issue";
         private const string TARGETINFO_NAME = "name";
+        private const string TARGETINFO_PATH = "path";
         private const string TARGETINFO_MESSAGE = "message";
 
         internal static IJsonLineInfo TryLineInfo(this JToken token)
@@ -173,12 +174,12 @@ namespace PSRule.Rules.Azure
             targetInfo.Add(TARGETINFO_SOURCE, sources);
         }
 
-        internal static void SetValidationIssue(this JObject resource, string issueId, string name, string message, params object[] args)
+        internal static void SetValidationIssue(this JObject resource, string issueId, string name, string path, string message, params object[] args)
         {
             // Populate target info
             resource.UseProperty(TARGETINFO_KEY, out JObject targetInfo);
 
-            var issues = targetInfo.ContainsKey(TARGETINFO_ISSUE) ? targetInfo.Value<JArray>() : new JArray();
+            var issues = targetInfo.ContainsKey(TARGETINFO_ISSUE) ? targetInfo.Value<JArray>(TARGETINFO_ISSUE) : new JArray();
 
             // Format message
             message = args.Length > 0 ? string.Format(Thread.CurrentThread.CurrentCulture, message, args) : message;
@@ -188,6 +189,7 @@ namespace PSRule.Rules.Azure
             {
                 [TARGETINFO_TYPE] = issueId,
                 [TARGETINFO_NAME] = name,
+                [TARGETINFO_PATH] = path,
                 [TARGETINFO_MESSAGE] = message,
             };
             issues.Add(issue);
