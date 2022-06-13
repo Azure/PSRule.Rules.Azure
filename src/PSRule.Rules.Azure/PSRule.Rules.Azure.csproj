@@ -23,8 +23,8 @@
     <Description>Validate Azure resources and infrastructure as code using PSRule.
 
 This project uses GitHub Issues to track bugs and feature requests. See GitHub project for more information.</Description>
-    <PackageReleaseNotes>For a list of changes see https://aka.ms/ps-rule/changelog.</PackageReleaseNotes>
-    <!-- <PackageIcon>package_icon.png</PackageIcon> -->
+    <PackageReleaseNotes>For a list of changes see https://aka.ms/ps-rule-azure/changelog.</PackageReleaseNotes>
+    <PackageIcon>package_icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
@@ -53,10 +53,10 @@ This project uses GitHub Issues to track bugs and feature requests. See GitHub p
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- <None Include="..\..\docs\assets\package_icon.png">
+    <None Include="..\..\docs\assets\package_icon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
-    </None> -->
+    </None>
     <None Include="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
