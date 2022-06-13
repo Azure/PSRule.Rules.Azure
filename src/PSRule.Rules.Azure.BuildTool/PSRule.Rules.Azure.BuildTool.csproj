@@ -8,8 +8,10 @@
     <Authors>Bernie White</Authors>
     <AssemblyTitle>PSRule for Azure Build Tool</AssemblyTitle>
     <RepositoryUrl>https://github.com/Azure/PSRule.Rules.Azure</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://aka.ms/ps-rule-azure</PackageProjectUrl>
-    <PackageLicenseExpression>https://github.com/Azure/PSRule.Rules.Azure/blob/main/LICENSE</PackageLicenseExpression>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <IsPackable>false</IsPackable>
     <Version>0.0.1</Version>
     <Company>Microsoft Corporation</Company>
     <Copyright>Copyright (c) Microsoft Corporation. Licensed under the MIT License.</Copyright>
