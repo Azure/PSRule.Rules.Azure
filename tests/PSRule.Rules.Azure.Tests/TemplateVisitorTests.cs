@@ -563,6 +563,32 @@ namespace PSRule.Rules.Azure
             Assert.Equal(7, resources.Length);
         }
 
+        [Fact]
+        public void SecretOutputs()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.7.json"), null);
+            Assert.NotNull(resources);
+            Assert.Equal(6, resources.Length);
+
+            var actual = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            var issues = actual["_PSRule"]["issue"].Value<JArray>();
+            Assert.Equal(3, issues.Count);
+            Assert.Equal("PSRule.Rules.Azure.Template.OutputSecretValue", issues[0]["type"].Value<string>());
+            Assert.Equal("secret", issues[0]["name"].Value<string>());
+            Assert.Equal("PSRule.Rules.Azure.Template.OutputSecretValue", issues[1]["type"].Value<string>());
+            Assert.Equal("secretFromListKeys", issues[1]["name"].Value<string>());
+            Assert.Equal("PSRule.Rules.Azure.Template.OutputSecretValue", issues[2]["type"].Value<string>());
+            Assert.Equal("secretFromChild", issues[2]["name"].Value<string>());
+
+            actual = resources[3];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            issues = actual["_PSRule"]["issue"].Value<JArray>();
+            Assert.Single(issues);
+            Assert.Equal("PSRule.Rules.Azure.Template.OutputSecretValue", issues[0]["type"].Value<string>());
+            Assert.Equal("secretFromParameter", issues[0]["name"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
@@ -573,7 +599,7 @@ namespace PSRule.Rules.Azure
         private static JObject[] ProcessTemplate(string templateFile, string parametersFile)
         {
             var context = new PipelineContext(PSRuleOption.Default, null);
-            var helper = new TemplateHelper(context, "deployment");
+            var helper = new TemplateHelper(context);
             helper.ProcessTemplate(templateFile, parametersFile, out var templateContext);
             return templateContext.GetResources().Select(i => i.Value).ToArray();
         }
@@ -581,7 +607,7 @@ namespace PSRule.Rules.Azure
         private static JObject[] ProcessTemplate(string templateFile, string parametersFile, PSRuleOption option)
         {
             var context = new PipelineContext(option, null);
-            var helper = new TemplateHelper(context, "deployment");
+            var helper = new TemplateHelper(context);
             helper.ProcessTemplate(templateFile, parametersFile, out var templateContext);
             return templateContext.GetResources().Select(i => i.Value).ToArray();
         }

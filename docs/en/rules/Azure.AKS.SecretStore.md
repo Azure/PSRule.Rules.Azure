@@ -1,5 +1,5 @@
 ---
-reviewed: 2021/12/10
+reviewed: 2021-12-10
 severity: Important
 pillar: Security
 category: Key and secret management
@@ -11,7 +11,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.Se
 
 ## SYNOPSIS
 
-Deploy AKS clusters with Secrets Store CSI Driver and store Secrets in Key Vayult.
+Deploy AKS clusters with Secrets Store CSI Driver and store Secrets in Key Vault.
 
 ## DESCRIPTION
 

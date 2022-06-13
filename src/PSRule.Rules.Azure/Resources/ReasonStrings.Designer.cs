@@ -19,7 +19,7 @@ namespace PSRule.Rules.Azure.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class ReasonStrings {
@@ -93,6 +93,33 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string NotString {
             get {
                 return ResourceManager.GetString("NotString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The output &apos;{0}&apos; exposes a secure value..
+        /// </summary>
+        internal static string OutputSecureAssignment {
+            get {
+                return ResourceManager.GetString("OutputSecureAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter &apos;{0}&apos; exposes a secure value..
+        /// </summary>
+        internal static string ParameterSecureAssignment {
+            get {
+                return ResourceManager.GetString("ParameterSecureAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter &apos;{0}&apos; uses a value from an unsecured source..
+        /// </summary>
+        internal static string UnsecureValue {
+            get {
+                return ResourceManager.GetString("UnsecureValue", resourceCulture);
             }
         }
     }

@@ -557,7 +557,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             private void CheckParameter(string parameterName, JObject parameter, ParameterType type, JToken value)
             {
                 if (type == ParameterType.String && !string.IsNullOrEmpty(value.Value<string>()))
-                    _Validator.ValidateParameter(this, parameterName, parameter, value);
+                    _Validator.ValidateParameter(this, type, parameterName, parameter, value);
             }
 
             private static void AddParameterFromType(PolicyDefinition definition, string parameterName, ParameterType type, JToken value)
@@ -630,9 +630,14 @@ namespace PSRule.Rules.Azure.Data.Policy
                 Pipeline.Writer.WriteDebug(message, args);
             }
 
-            public void AddValidationIssue(string issueId, string name, string message, params object[] args)
+            public void AddValidationIssue(string issueId, string name, string path, string message, params object[] args)
             {
                 return;
+            }
+
+            public bool IsSecureValue(object value)
+            {
+                return false;
             }
 
             public bool TryParameter(string parameterName, out object value)

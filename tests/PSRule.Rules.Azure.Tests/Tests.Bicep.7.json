@@ -1,0 +1,145 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.6.18.56646",
+      "templateHash": "3587417424638621658"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    },
+    "secret": {
+      "type": "secureString",
+      "defaultValue": "[newGuid()]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2021-10-01",
+      "name": "[format('{0}/{1}', 'vault1', 'secret1')]",
+      "properties": {
+        "value": "[parameters('secret')]"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-09-01",
+      "name": "storage1",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "StorageV2"
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "child",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "secret": {
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId('Microsoft.KeyVault/vaults', 'vault1')]"
+              },
+              "secretName": "secret1"
+            }
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.6.18.56646",
+              "templateHash": "16765444302131705333"
+            }
+          },
+          "parameters": {
+            "secret": {
+              "type": "secureString"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.KeyVault/vaults/secrets",
+              "apiVersion": "2021-10-01",
+              "name": "[format('{0}/{1}', 'vault1', 'secret1')]",
+              "properties": {
+                "value": "[parameters('secret')]"
+              }
+            }
+          ],
+          "outputs": {
+            "secretFromParameter": {
+              "type": "string",
+              "value": "[parameters('secret')]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "good",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.6.18.56646",
+              "templateHash": "15751681190452431153"
+            }
+          },
+          "resources": [],
+          "outputs": {
+            "value": {
+              "type": "string",
+              "value": "testing123"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "id": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.KeyVault/vaults/secrets', 'vault1', 'secret1')]"
+    },
+    "contentType": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.KeyVault/vaults/secrets', 'vault1', 'secret1')).contentType]"
+    },
+    "secret": {
+      "type": "string",
+      "value": "[parameters('secret')]"
+    },
+    "secretFromListKeys": {
+      "type": "string",
+      "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-09-01').keys[0].value]"
+    },
+    "secretFromChild": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Resources/deployments', 'child')).outputs.secretFromParameter.value]"
+    }
+  }
+}

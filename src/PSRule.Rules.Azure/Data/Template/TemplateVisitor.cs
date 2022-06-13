@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -18,7 +17,16 @@ namespace PSRule.Rules.Azure.Data.Template
 {
     public delegate T StringExpression<T>();
 
-    internal interface ITemplateContext
+    internal interface IValidationContext
+    {
+        void AddValidationIssue(string issueId, string name, string path, string message, params object[] args);
+
+        ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType);
+
+        bool IsSecureValue(object value);
+    }
+
+    internal interface ITemplateContext : IValidationContext
     {
         TemplateContext.CopyIndexStore CopyIndex { get; }
 
@@ -42,15 +50,11 @@ namespace PSRule.Rules.Azure.Data.Template
 
         bool TryParameter(string parameterName, out object value);
 
-        ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType);
-
         bool TryVariable(string variableName, out object value);
 
         bool TryGetResource(string resourceId, out IResourceValue resource);
 
         void WriteDebug(string message, params object[] args);
-
-        void AddValidationIssue(string issueId, string name, string message, params object[] args);
     }
 
     /// <summary>
@@ -100,7 +104,6 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal sealed class TemplateContext : ITemplateContext
         {
-            private const string DATAFILE_ENVIRONMENTS = "environments.json";
             private const string CLOUD_PUBLIC = "AzureCloud";
             private const string ISSUE_PARAMETER_EXPRESSIONLENGTH = "PSRule.Rules.Azure.Template.ExpressionLength";
             private const int EXPRESSION_MAXLENGTH = 24576;
@@ -115,6 +118,7 @@ namespace PSRule.Rules.Azure.Data.Template
             private readonly ResourceProviderHelper _ResourceProviderHelper;
             private readonly Dictionary<string, JToken> _ParameterAssignments;
             private readonly TemplateValidator _Validator;
+            private readonly HashSet<object> _SecureValues;
 
             private DeploymentValue _CurrentDeployment;
             private bool? _IsGenerated;
@@ -139,6 +143,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 _ParameterAssignments = new Dictionary<string, JToken>();
                 _Validator = new TemplateValidator();
                 _IsGenerated = null;
+                _SecureValues = new HashSet<object>();
             }
 
             internal TemplateContext(PipelineContext context, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup, ParameterDefaultsOption parameterDefaults)
@@ -206,7 +211,7 @@ namespace PSRule.Rules.Azure.Data.Template
             public ExpressionFnOuter BuildExpression(string s)
             {
                 if (s != null && s.Length > EXPRESSION_MAXLENGTH && !IsGenerated())
-                    AddValidationIssue(ISSUE_PARAMETER_EXPRESSIONLENGTH, s, ReasonStrings.ExpressionLength, s, EXPRESSION_MAXLENGTH);
+                    AddValidationIssue(ISSUE_PARAMETER_EXPRESSIONLENGTH, s, null, ReasonStrings.ExpressionLength, s, EXPRESSION_MAXLENGTH);
 
                 return _ExpressionBuilder.Build(s);
             }
@@ -539,12 +544,29 @@ namespace PSRule.Rules.Azure.Data.Template
 
             internal void Parameter(string name, ParameterType type, object value)
             {
+                TrackSecureValue(name, type, value);
                 Parameters.Add(name, new SimpleParameterValue(name, type, value));
             }
 
             internal void Parameter(IParameterValue value)
             {
                 Parameters.Add(value.Name, value);
+            }
+
+            /// <summary>
+            /// Keeps track of secure values.
+            /// </summary>
+            internal void TrackSecureValue(string name, ParameterType type, object value)
+            {
+                if (type != ParameterType.SecureString && type != ParameterType.SecureObject)
+                    return;
+
+                _SecureValues.Add(value);
+            }
+
+            public bool IsSecureValue(object value)
+            {
+                return _SecureValues.Contains(value);
             }
 
             public bool TryParameter(string parameterName, out object value)
@@ -635,9 +657,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 ParameterFile = parameterFile;
             }
 
-            public void AddValidationIssue(string issueId, string name, string message, params object[] args)
+            public void AddValidationIssue(string issueId, string name, string path, string message, params object[] args)
             {
-                _CurrentDeployment.Value.SetValidationIssue(issueId, name, message, args);
+                _CurrentDeployment.Value.SetValidationIssue(issueId, name, path, message, args);
             }
 
             internal void CheckParameter(string parameterName, JObject parameter)
@@ -646,7 +668,14 @@ namespace PSRule.Rules.Azure.Data.Template
                     return;
 
                 if (value.Type == ParameterType.String && !string.IsNullOrEmpty(value.GetValue() as string))
-                    _Validator.ValidateParameter(this, parameterName, parameter, value.GetValue() as string);
+                    _Validator.ValidateParameter(this, value.Type, parameterName, parameter, value.GetValue() as string);
+            }
+
+            internal void CheckOutput(string outputName, JObject output)
+            {
+                var type = GetParameterType(output);
+                output.TryGetProperty<JToken>(PROPERTY_VALUE, out var value);
+                _Validator.ValidateOutput(this, type, outputName, output, value);
             }
 
             private static object ConvertType(object value)
@@ -735,9 +764,14 @@ namespace PSRule.Rules.Azure.Data.Template
                 _Inner.WriteDebug(message, args);
             }
 
-            public void AddValidationIssue(string issueId, string name, string message, params object[] args)
+            public void AddValidationIssue(string issueId, string name, string path, string message, params object[] args)
             {
-                _Inner.AddValidationIssue(issueId, name, message, args);
+                _Inner.AddValidationIssue(issueId, name, path, message, args);
+            }
+
+            public bool IsSecureValue(object value)
+            {
+                return _Inner.IsSecureValue(value);
             }
 
             internal void SetParameters(JArray parameters, object[] args)
@@ -806,6 +840,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (!_Resolved)
                 {
                     _Value = ExpandToken<T>(_Context, _LazyValue);
+                    _Context.TrackSecureValue(Name, Type, _Value);
                     _Resolved = true;
                 }
                 return _Value;
@@ -1278,6 +1313,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected virtual void Output(TemplateContext context, string name, JObject output)
         {
+            ResolveProperty(context, output, PROPERTY_VALUE);
+            context.CheckOutput(name, output);
             context.AddOutput(name, output);
         }
 

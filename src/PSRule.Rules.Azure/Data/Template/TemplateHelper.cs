@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -19,10 +19,10 @@ namespace PSRule.Rules.Azure.Data.Template
         private readonly PipelineContext Context;
         private readonly string _DeploymentName;
 
-        public TemplateHelper(PipelineContext context, string deploymentName)
+        public TemplateHelper(PipelineContext context)
         {
             Context = context;
-            _DeploymentName = deploymentName;
+            _DeploymentName = context.Option.Configuration.Deployment.Name;
         }
 
         internal PSObject[] ProcessTemplate(string templateFile, string parameterFile, out TemplateVisitor.TemplateContext templateContext)

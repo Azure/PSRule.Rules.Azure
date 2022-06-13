@@ -3,7 +3,6 @@
 
 param location string = resourceGroup().location
 
-
 resource script 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   name: 'script-001'
   location: location

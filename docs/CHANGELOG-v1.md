@@ -19,6 +19,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.16.1:
+
+- New rules:
+  - Deployment:
+    - Check for secure values in outputs by @BernieWhite.
+      [#297](https://github.com/Azure/PSRule.Rules.Azure/issues/297)
+
 ## v1.16.1
 
 What's changed since v1.16.0:

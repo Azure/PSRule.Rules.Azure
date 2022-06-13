@@ -129,4 +129,13 @@
   <data name="NotString" xml:space="preserve">
     <value>The value '{0}' for parameter '{1}' is not a string.</value>
   </data>
+  <data name="OutputSecureAssignment" xml:space="preserve">
+    <value>The output '{0}' exposes a secure value.</value>
+  </data>
+  <data name="ParameterSecureAssignment" xml:space="preserve">
+    <value>The parameter '{0}' exposes a secure value.</value>
+  </data>
+  <data name="UnsecureValue" xml:space="preserve">
+    <value>The parameter '{0}' uses a value from an unsecured source.</value>
+  </data>
 </root>
