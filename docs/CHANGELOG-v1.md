@@ -28,6 +28,9 @@ What's changed since v1.16.1:
 - New features:
   - Added more field count expression support for Azure Policy JSON rules by @ArmaanMcleod.
     [#181](https://github.com/Azure/PSRule.Rules.Azure/issues/181)
+- Engineering:
+  - Updated NuGet packaging metadata by @BernieWhite.
+    [#1428](https://github.com/Azure/PSRule.Rules.Azure/issues/1428)
 
 ## v1.16.1
 
