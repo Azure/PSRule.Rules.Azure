@@ -560,7 +560,7 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.5.json"), null);
             Assert.NotNull(resources);
-            Assert.Equal(7, resources.Length);
+            Assert.Equal(8, resources.Length);
         }
 
         [Fact]
@@ -587,6 +587,17 @@ namespace PSRule.Rules.Azure
             Assert.Single(issues);
             Assert.Equal("PSRule.Rules.Azure.Template.OutputSecretValue", issues[0]["type"].Value<string>());
             Assert.Equal("secretFromParameter", issues[0]["name"].Value<string>());
+        }
+
+        [Fact]
+        public void OutputCopy()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.5.json"), null);
+            Assert.NotNull(resources);
+            Assert.Equal(8, resources.Length);
+
+            var actual = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
         }
 
         #region Helper methods

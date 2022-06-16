@@ -29,3 +29,8 @@ resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
     }]
   }
 }
+
+output snet array =  [for i in range(0, length(subnets)): {
+  name: subnets[i].name
+  addressPrefix: subnets[i].addressPrefix
+}]

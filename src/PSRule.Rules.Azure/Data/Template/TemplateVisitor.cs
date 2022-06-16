@@ -1308,7 +1308,24 @@ namespace PSRule.Rules.Azure.Data.Template
                 return;
 
             foreach (var output in outputs)
+            {
+                foreach (var copyIndex in GetOutputIterator(context, output.Value as JObject))
+                {
+                    if (copyIndex.IsCopy())
+                    {
+                        context.CopyIndex.Push(copyIndex);
+                        var jArray = new JArray();
+                        while (copyIndex.Next())
+                        {
+                            var instance = copyIndex.CloneInput<JToken>();
+                            jArray.Add(ResolveToken(context, instance));
+                        }
+                        context.CopyIndex.Pop();
+                        output.Value[PROPERTY_VALUE] = jArray;
+                    }
+                }
                 Output(context, output.Key, output.Value as JObject);
+            }
         }
 
         protected virtual void Output(TemplateContext context, string name, JObject output)
@@ -1482,6 +1499,30 @@ namespace PSRule.Rules.Azure.Data.Template
                     value.Remove(PROPERTY_COPY);
                     result.Add(state);
                 }
+                return result.ToArray();
+            }
+            else
+                return new TemplateContext.CopyIndexState[] { new TemplateContext.CopyIndexState { Input = value } };
+        }
+
+        /// <summary>
+        /// Get an iterator for outputs.
+        /// </summary>
+        private static TemplateContext.CopyIndexState[] GetOutputIterator(ITemplateContext context, JObject value)
+        {
+            if (value.ContainsKey(PROPERTY_COPY))
+            {
+                var result = new List<TemplateContext.CopyIndexState>();
+                var copyObject = value[PROPERTY_COPY].Value<JObject>();
+                var state = new TemplateContext.CopyIndexState
+                {
+                    Name = "",
+                    Input = copyObject[PROPERTY_INPUT],
+                    Count = ExpandPropertyInt(context, copyObject, PROPERTY_COUNT)
+                };
+                context.CopyIndex.Add(state);
+                value.Remove(PROPERTY_COPY);
+                result.Add(state);
                 return result.ToArray();
             }
             else
