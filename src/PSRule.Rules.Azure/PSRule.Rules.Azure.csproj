@@ -1,6 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <AssemblyName>Azure.PSRule</AssemblyName>
+    <RootNamespace>PSRule.Rules.Azure</RootNamespace>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>9.0</LangVersion>
     <OutputType>Library</OutputType>
