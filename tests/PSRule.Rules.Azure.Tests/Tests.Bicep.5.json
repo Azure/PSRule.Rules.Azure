@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.5.6.12127",
-      "templateHash": "10373010089480782173"
+      "version": "0.7.4.23292",
+      "templateHash": "3750075182322944077"
     }
   },
   "variables": {
@@ -17,6 +17,31 @@
     ]
   },
   "resources": [
+    {
+      "copy": {
+        "name": "route",
+        "count": "[length(variables('subnets'))]"
+      },
+      "type": "Microsoft.Network/routeTables",
+      "apiVersion": "2021-08-01",
+      "name": "[format('route-{0}', variables('subnets')[copyIndex()].subnetName)]",
+      "properties": {
+        "routes": [
+          {
+            "name": "[format('route-{0}', reference(resourceId('Microsoft.Resources/deployments', 'vnet_deploy')).outputs.snet.value[copyIndex()].name)]",
+            "properties": {
+              "nextHopType": "VirtualNetworkGateway",
+              "addressPrefix": "[reference(resourceId('Microsoft.Resources/deployments', 'vnet_deploy')).outputs.snet.value[copyIndex()].addressPrefix]",
+              "nextHopIpAddress": "[reference(resourceId('Microsoft.Resources/deployments', 'fw_deploy')).outputs.azureFirewallPrivateIPAddress.value]"
+            }
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'fw_deploy')]",
+        "[resourceId('Microsoft.Resources/deployments', 'vnet_deploy')]"
+      ]
+    },
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2020-10-01",
@@ -32,8 +57,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.5.6.12127",
-              "templateHash": "11750648189902323583"
+              "version": "0.7.4.23292",
+              "templateHash": "2505355825156073653"
             }
           },
           "resources": [
@@ -86,8 +111,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.5.6.12127",
-              "templateHash": "13943786703363137056"
+              "version": "0.7.4.23292",
+              "templateHash": "14769735689857484688"
             }
           },
           "parameters": {
@@ -130,7 +155,19 @@
                 }
               }
             }
-          ]
+          ],
+          "outputs": {
+            "snet": {
+              "type": "array",
+              "copy": {
+                "count": "[length(range(0, length(parameters('subnets'))))]",
+                "input": {
+                  "name": "[parameters('subnets')[range(0, length(parameters('subnets')))[copyIndex()]].name]",
+                  "addressPrefix": "[parameters('subnets')[range(0, length(parameters('subnets')))[copyIndex()]].addressPrefix]"
+                }
+              }
+            }
+          }
         }
       },
       "dependsOn": [
@@ -162,8 +199,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.5.6.12127",
-              "templateHash": "6487533441289057864"
+              "version": "0.7.4.23292",
+              "templateHash": "9763875382852696246"
             }
           },
           "parameters": {

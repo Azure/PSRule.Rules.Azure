@@ -31,6 +31,9 @@ What's changed since v1.16.1:
 - Engineering:
   - Updated NuGet packaging metadata by @BernieWhite.
     [#1428](https://github.com/Azure/PSRule.Rules.Azure/issues/1428)
+- Bug fixes:
+  - Fixed the language expression value fails in outputs by @BernieWhite.
+    [#1485](https://github.com/Azure/PSRule.Rules.Azure/issues/1485)
 
 ## v1.16.1
 

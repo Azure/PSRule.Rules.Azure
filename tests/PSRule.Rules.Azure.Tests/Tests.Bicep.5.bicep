@@ -33,3 +33,19 @@ module nsg 'Tests.Bicep.5.nsg.bicep' = [for subnet in subnets: {
     name: 'nsg-${subnet.subnetName}'
   }
 }]
+
+resource route 'Microsoft.Network/routeTables@2021-08-01' = [for (item, index) in subnets: {
+  name: 'route-${item.subnetName}'
+  properties: {
+    routes: [
+      {
+        name: 'route-${vnet.outputs.snet[index].name}'
+        properties: {
+          nextHopType: 'VirtualNetworkGateway'
+          addressPrefix: vnet.outputs.snet[index].addressPrefix
+          nextHopIpAddress: firewall.outputs.azureFirewallPrivateIPAddress
+        }
+      }
+    ]
+  }
+}]
