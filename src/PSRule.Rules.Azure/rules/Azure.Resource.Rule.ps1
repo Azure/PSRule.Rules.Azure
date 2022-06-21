@@ -34,3 +34,18 @@ Rule 'Azure.ResourceGroup.Name' -Ref 'AZR-000168' -Type 'Microsoft.Resources/res
     # Can't end with period.
     $Assert.Match($PSRule, 'TargetName', '^[-\w\._\(\)]*[-\w_\(\)]$');
 }
+
+
+# Synopsis: Ensure all properties named `adminUsername` within a deployment are expressions (not literal strings)
+Rule 'Azure.Resource.Deployments.adminUsername' -Ref 'unsure' -Type -ne 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_06' } {  
+    $deployment = @($TargetObject);
+    $adminUsername = $Assert.HasFieldValue($deployment, 'properties.adminUsername')
+
+    ## If the property `adminUsername` isn't in the template - Pass
+    if( !($adminUsername) ) {
+        return $Assert.Pass();
+    }
+
+    ## Check if the value for the property `properties.adminUsername` is of type string literal
+    $Assert.HasFieldValue($deployment, 'Properties.adminUsername')
+}
