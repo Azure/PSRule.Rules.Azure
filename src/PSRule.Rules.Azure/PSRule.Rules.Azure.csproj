@@ -1,32 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="..\PSRule.Common.props" />
   <PropertyGroup>
-    <AssemblyName>Azure.PSRule</AssemblyName>
+    <AssemblyName>Microsoft.PSRule.Rules.Azure.Core</AssemblyName>
     <RootNamespace>PSRule.Rules.Azure</RootNamespace>
-    <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>9.0</LangVersion>
     <OutputType>Library</OutputType>
     <ProjectGuid>{bce66f73-3809-4740-b3c3-f52958e7ab51}</ProjectGuid>
-    <NeutralLanguage>en-US</NeutralLanguage>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
-    <Authors>Bernie White</Authors>
-    <AssemblyTitle>PSRule for Azure</AssemblyTitle>
-    <RepositoryUrl>https://github.com/Azure/PSRule.Rules.Azure</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://aka.ms/ps-rule-azure</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageId>Azure.PSRule</PackageId>
-    <PackageTags>PSRule;</PackageTags>
-    <EnableNuget>true</EnableNuget>
-    <Version>0.0.1</Version>
-    <Company>Microsoft Corporation</Company>
-    <Copyright>Copyright (c) Microsoft Corporation. Licensed under the MIT License.</Copyright>
-    <Description>Validate Azure resources and infrastructure as code using PSRule.
 
-This project uses GitHub Issues to track bugs and feature requests. See GitHub project for more information.</Description>
-    <PackageReleaseNotes>For a list of changes see https://aka.ms/ps-rule-azure/changelog.</PackageReleaseNotes>
-    <PackageIcon>package_icon.png</PackageIcon>
+    <PackageId>Microsoft.PSRule.Rules.Azure.Core</PackageId>
+    <EnableNuget>true</EnableNuget>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
@@ -42,28 +26,35 @@ This project uses GitHub Issues to track bugs and feature requests. See GitHub p
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
-    <DefineConstants>Windows</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="..\..\docs\assets\package_icon.png">
+  <!-- <ItemGroup>
+    <None Include="..\..\docs\en\rules\*.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest">
       <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
+      <PackagePath>en\</PackagePath>
+      <LinkBase>en\</LinkBase>
     </None>
-    <None Include="README.md">
+    <None Include="rules\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest">
       <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
+      <PackagePath>\rules\</PackagePath>
+      <LinkBase>docs\</LinkBase>
     </None>
-  </ItemGroup>
+  </ItemGroup> -->
+  <!-- <ItemGroup>
+    <Content Include="*.psd1;">
+      <Link>Modulues\PSRule.Rules.Azure\%(RecursiveDir)\%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="rules\*">
+      <Link>rules\%(RecursiveDir)\%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="..\..\docs\en\rules\*.md">
+      <Link>en\%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup> -->
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
@@ -146,7 +137,7 @@ This project uses GitHub Issues to track bugs and feature requests. See GitHub p
   </UsingTask>
 
   <Target Name="BuildTool">
-    <Exec Command="dotnet run --project ./src/PSRule.Rules.Azure.BuildTool -- provider" WorkingDirectory="..\.." ConsoleToMSBuild="true" >
+    <Exec Command="dotnet run --project ./src/PSRule.Rules.Azure.BuildTool -- provider" WorkingDirectory="..\.." ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
   </Target>
