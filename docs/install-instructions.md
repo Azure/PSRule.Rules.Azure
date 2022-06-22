@@ -106,7 +106,7 @@ Additionally, exporting data from an subscription requires:
     Azure PowerShell modules are not installed automatically when installing PSRule for Azure.
     This has been changed from v1.16.0 due with [module dependency chains in Azure DevOps][3].
     In most cases these modules will be pre-installed on the CI worker.
-    For private CI workers, consider pre-installing these module is a previous step.
+    For private CI workers, consider pre-installing these module in a previous step.
 
   [3]: troubleshooting.md#an-earlier-version-of-azaccounts-is-imported
 
@@ -159,12 +159,35 @@ Use the following command line examples from a PowerShell terminal to install or
 To use a pre-release version of PSRule for Azure add the `-AllowPrerelease` switch when calling `Install-Module`,
 `Update-Module`, or `Save-Module` cmdlets.
 
-!!! tip
+!!! Tip
     To install pre-release module versions, the latest version of _PowerShellGet_ may be required.
 
     ```powershell
     # Install the latest PowerShellGet version
     Install-Module -Name PowerShellGet -Repository PSGallery -Scope CurrentUser -Force
+    ```
+
+!!! Tip
+    To install a pre-release version of _PSRule_ and _PSRule for Azure_, install each in separate steps.
+
+=== "For the current user"
+    To install PSRule for Azure for the current user use:
+
+    ```powershell
+    Install-Module -Name PowerShellGet -Repository PSGallery -Scope CurrentUser -Force
+    Install-Module -Name PSRule -Repository PSGallery -Scope CurrentUser -AllowPrerelease
+    Install-Module -Name PSRule.Rules.Azure -Repository PSGallery -Scope CurrentUser -AllowPrerelease
+    ```
+
+=== "For all users"
+    Open PowerShell with _Run as administrator_ on Windows or `sudo pwsh` on Linux.
+
+    To install PSRule for Azure for all users (requires admin/ root permissions) use:
+
+    ```powershell
+    Install-Module -Name PowerShellGet -Repository PSGallery -Scope CurrentUser -Force
+    Install-Module -Name PSRule -Repository PSGallery -Scope AllUsers -AllowPrerelease
+    Install-Module -Name PSRule.Rules.Azure -Repository PSGallery -Scope AllUsers -AllowPrerelease
     ```
 
 ### Building from source
