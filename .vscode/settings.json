@@ -12,6 +12,10 @@
     },
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
+    "[xml]": {
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true
+    },
     "[yaml]": {
         "editor.tabSize": 2
     },
