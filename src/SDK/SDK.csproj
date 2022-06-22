@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\PSRule.Common.props" />
+  <PropertyGroup>
+    <PackageId>Microsoft.PSRule.Rules.Azure</PackageId>
+    <EnableNuget>true</EnableNuget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PSRule.Rules.Azure\PSRule.Rules.Azure.csproj" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\PSRule.Rules.Azure\*.psd1;">
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>contentFiles\any\any\Modules\PSRule.Rules.Azure\;content\Modules\PSRule.Rules.Azure\</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="..\PSRule.Rules.Azure\rules\*">
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>contentFiles\any\any\Modules\PSRule.Rules.Azure\rules\;content\Modules\PSRule.Rules.Azure\rules\</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="..\..\docs\en\rules\*.md">
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackagePath>contentFiles\any\any\Modules\PSRule.Rules.Azure\en\;content\Modules\PSRule.Rules.Azure\en\</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+
+    <Content Include="$(OutputPath)\Microsoft.PSRule.Rules.Azure.Core.dll">
+      <Pack>true</Pack>
+      <PackagePath>contentFiles\any\any\Modules\PSRule.Rules.Azure\;content\Modules\PSRule.Rules.Azure\</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <!-- <ItemGroup>
+    <PackageReference Include="Microsoft.PSRule.SDK" Version="0.0.1" />
+  </ItemGroup> -->
+</Project>

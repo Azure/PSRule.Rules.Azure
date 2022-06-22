@@ -1,35 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="..\PSRule.Common.props" />
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ProjectGuid>{218b2d45-a2bd-4966-9b9f-4064cd68ba8a}</ProjectGuid>
-    <NeutralLanguage>en-US</NeutralLanguage>
-    <Authors>Bernie White</Authors>
-    <AssemblyTitle>PSRule for Azure Build Tool</AssemblyTitle>
-    <RepositoryUrl>https://github.com/Azure/PSRule.Rules.Azure</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://aka.ms/ps-rule-azure</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <EnableNuget>false</EnableNuget>
     <IsPackable>false</IsPackable>
-    <Version>0.0.1</Version>
-    <Company>Microsoft Corporation</Company>
-    <Copyright>Copyright (c) Microsoft Corporation. Licensed under the MIT License.</Copyright>
-    <Description>Tools for building PSRule for Azure.
-
-This project uses GitHub Issues to track bugs and feature requests. See GitHub project for more information.</Description>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
-    <DefineConstants>Windows</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
   <ItemGroup>
