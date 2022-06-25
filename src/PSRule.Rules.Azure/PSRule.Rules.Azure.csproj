@@ -8,9 +8,9 @@
     <ProjectGuid>{bce66f73-3809-4740-b3c3-f52958e7ab51}</ProjectGuid>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
-
     <PackageId>Microsoft.PSRule.Rules.Azure.Core</PackageId>
-    <EnableNuget>true</EnableNuget>
+    <EnableNuget>false</EnableNuget>
+    <IsPackable>false</IsPackable>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
@@ -25,36 +25,6 @@
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-
-  <!-- <ItemGroup>
-    <None Include="..\..\docs\en\rules\*.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest">
-      <Pack>True</Pack>
-      <PackagePath>en\</PackagePath>
-      <LinkBase>en\</LinkBase>
-    </None>
-    <None Include="rules\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest">
-      <Pack>True</Pack>
-      <PackagePath>\rules\</PackagePath>
-      <LinkBase>docs\</LinkBase>
-    </None>
-  </ItemGroup> -->
-  <!-- <ItemGroup>
-    <Content Include="*.psd1;">
-      <Link>Modulues\PSRule.Rules.Azure\%(RecursiveDir)\%(FileName)%(Extension)</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="rules\*">
-      <Link>rules\%(RecursiveDir)\%(FileName)%(Extension)</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="..\..\docs\en\rules\*.md">
-      <Link>en\%(FileName)%(Extension)</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup> -->
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
