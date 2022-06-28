@@ -24,6 +24,8 @@ What's changed since pre-release v1.17.0-B0014:
 - Engineering:
   - Bump Newtonsoft.Json to v13.0.1.
     [#1494](https://github.com/Azure/PSRule.Rules.Azure/pull/1494)
+  - Updated NuGet packaging metadata by @BernieWhite.
+    [#1428](https://github.com/Azure/PSRule.Rules.Azure/pull/1428)
 
 ## v1.17.0-B0014 (pre-release)
 
