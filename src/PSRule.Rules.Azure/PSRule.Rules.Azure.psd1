@@ -115,7 +115,7 @@ This project uses GitHub Issues to track bugs and feature requests. See GitHub p
             ProjectUri   = 'https://aka.ms/ps-rule-azure'
 
             # A URL to an icon representing this module.
-            # IconUri = ''
+            IconUri = 'https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/main/docs/assets/package_icon.png'
 
             # ReleaseNotes of this module
             ReleaseNotes = 'https://github.com/Azure/PSRule.Rules.Azure/blob/main/CHANGELOG.md'

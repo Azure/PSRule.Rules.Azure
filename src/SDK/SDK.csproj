@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\PSRule.Rules.Azure\*.psd1;">
+    <Content Include="..\PSRule.Rules.Azure\*.psd1;..\PSRule.Rules.Azure\*.psm1;">
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>contentFiles\any\any\Modules\PSRule.Rules.Azure\;content\Modules\PSRule.Rules.Azure\</PackagePath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -31,7 +31,10 @@
 
     <Content Include="$(OutputPath)\Microsoft.PSRule.Rules.Azure.Core.dll">
       <Pack>true</Pack>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackagePath>contentFiles\any\any\Modules\PSRule.Rules.Azure\;content\Modules\PSRule.Rules.Azure\</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
 
