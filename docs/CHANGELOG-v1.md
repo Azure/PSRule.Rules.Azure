@@ -21,6 +21,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.17.0-B0014:
 
+- New features:
+  - Added June 2022 baselines `Azure.GA_2022_06` and `Azure.Preview_2022_06` by @BernieWhite.
+    [#1499](https://github.com/Azure/PSRule.Rules.Azure/issues/1499)
+    - Includes rules released before or during June 2022.
+    - Marked `Azure.GA_2022_03` and `Azure.Preview_2022_03` baselines as obsolete.
 - Engineering:
   - Bump Newtonsoft.Json to v13.0.1.
     [#1494](https://github.com/Azure/PSRule.Rules.Azure/pull/1494)

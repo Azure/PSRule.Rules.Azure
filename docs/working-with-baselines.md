@@ -80,7 +80,7 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
       uses: microsoft/ps-rule@v2.1.0
       with:
         modules: 'PSRule.Rules.Azure'
-        baseline: 'Azure.GA_2021_09'
+        baseline: 'Azure.GA_2022_06'
     ```
 
 === "Azure Pipelines"
@@ -93,7 +93,7 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
       displayName: Analyze Azure template files
       inputs:
         modules: 'PSRule.Rules.Azure'
-        baseline: 'Azure.GA_2021_09'
+        baseline: 'Azure.GA_2022_06'
     ```
 
   [1]: en/baselines/Azure.All.md

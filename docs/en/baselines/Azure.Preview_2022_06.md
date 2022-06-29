@@ -1,12 +1,10 @@
-# Azure.Preview_2022_03
+# Azure.Preview_2022_06
 
-<!-- OBSOLETE -->
-
-Include rules released March 2022 or prior for Azure preview only features.
+Include rules released June 2022 or prior for Azure preview only features.
 
 ## Rules
 
-The following rules are included within `Azure.Preview_2022_03`. This baseline includes a total of 7 rules.
+The following rules are included within `Azure.Preview_2022_06`. This baseline includes a total of 7 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
