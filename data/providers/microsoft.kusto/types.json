@@ -1,7 +1,15 @@
 [
   {
     "aliases": {
+      "Microsoft.Kusto/clusters/acceptedAudiences": "properties.acceptedAudiences",
+      "Microsoft.Kusto/clusters/acceptedAudiences[*]": "properties.acceptedAudiences[*]",
+      "Microsoft.Kusto/clusters/acceptedAudiences[*].value": "properties.acceptedAudiences[*].value",
+      "Microsoft.Kusto/clusters/allowedFqdnList": "properties.allowedFqdnList",
+      "Microsoft.Kusto/clusters/allowedFqdnList[*]": "properties.allowedFqdnList[*]",
+      "Microsoft.Kusto/clusters/allowedIpRangeList": "properties.allowedIpRangeList",
+      "Microsoft.Kusto/clusters/allowedIpRangeList[*]": "properties.allowedIpRangeList[*]",
       "Microsoft.Kusto/clusters/dataIngestionUri": "properties.dataIngestionUri",
+      "Microsoft.Kusto/clusters/enableAutoStop": "properties.enableAutoStop",
       "Microsoft.Kusto/clusters/enableDiskEncryption": "properties.enableDiskEncryption",
       "Microsoft.Kusto/clusters/enableDoubleEncryption": "properties.enableDoubleEncryption",
       "Microsoft.Kusto/clusters/enablePurge": "properties.enablePurge",
@@ -21,7 +29,27 @@
       "Microsoft.Kusto/clusters/optimizedAutoscale.maximum": "properties.optimizedAutoscale.maximum",
       "Microsoft.Kusto/clusters/optimizedAutoscale.minimum": "properties.optimizedAutoscale.minimum",
       "Microsoft.Kusto/clusters/optimizedAutoscale.version": "properties.optimizedAutoscale.version",
+      "Microsoft.Kusto/clusters/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].groupId": "properties.privateEndpointConnections[*].properties.groupId",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].systemData": "properties.privateEndpointConnections[*].systemData",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].systemData.createdAt": "properties.privateEndpointConnections[*].systemData.createdAt",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].systemData.createdBy": "properties.privateEndpointConnections[*].systemData.createdBy",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].systemData.createdByType": "properties.privateEndpointConnections[*].systemData.createdByType",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].systemData.lastModifiedAt": "properties.privateEndpointConnections[*].systemData.lastModifiedAt",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].systemData.lastModifiedBy": "properties.privateEndpointConnections[*].systemData.lastModifiedBy",
+      "Microsoft.Kusto/clusters/privateEndpointConnections[*].systemData.lastModifiedByType": "properties.privateEndpointConnections[*].systemData.lastModifiedByType",
       "Microsoft.Kusto/clusters/provisioningState": "properties.provisioningState",
+      "Microsoft.Kusto/clusters/publicIPType": "properties.publicIPType",
+      "Microsoft.Kusto/clusters/publicNetworkAccess": "properties.publicNetworkAccess",
+      "Microsoft.Kusto/clusters/restrictOutboundNetworkAccess": "properties.restrictOutboundNetworkAccess",
       "Microsoft.Kusto/clusters/sku": "sku",
       "Microsoft.Kusto/clusters/sku.capacity": "sku.capacity",
       "Microsoft.Kusto/clusters/sku.name": "sku.name",
@@ -32,6 +60,7 @@
       "Microsoft.Kusto/clusters/trustedExternalTenants[*]": "properties.trustedExternalTenants[*]",
       "Microsoft.Kusto/clusters/trustedExternalTenants[*].value": "properties.trustedExternalTenants[*].value",
       "Microsoft.Kusto/clusters/uri": "properties.uri",
+      "Microsoft.Kusto/clusters/virtualClusterGraduationProperties": "properties.virtualClusterGraduationProperties",
       "Microsoft.Kusto/clusters/virtualNetworkConfiguration": "properties.virtualNetworkConfiguration",
       "Microsoft.Kusto/clusters/virtualNetworkConfiguration.dataManagementPublicIpId": "properties.virtualNetworkConfiguration.dataManagementPublicIpId",
       "Microsoft.Kusto/clusters/virtualNetworkConfiguration.enginePublicIpId": "properties.virtualNetworkConfiguration.enginePublicIpId",
@@ -97,196 +126,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": [
-      {
-        "location": "Australia East",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Brazil South",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Canada Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Central India",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Central US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "East Asia",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "East US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "East US 2",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "France Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Germany West Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Japan East",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Korea Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "North Central US",
-        "zones": []
-      },
-      {
-        "location": "North Europe",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Norway East",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "South Africa North",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "South Central US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Southeast Asia",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Sweden Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Switzerland North",
-        "zones": []
-      },
-      {
-        "location": "UAE North",
-        "zones": []
-      },
-      {
-        "location": "UK South",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "West Europe",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "West US 2",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "West US 3",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      }
-    ]
+    "zoneMappings": null
   },
   {
     "aliases": {
@@ -454,27 +294,39 @@
     "aliases": {
       "Microsoft.Kusto/clusters/databases/dataConnections/EventGrid.blobStorageEventType": "properties.blobStorageEventType",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventGrid.consumerGroup": "properties.consumerGroup",
+      "Microsoft.Kusto/clusters/databases/dataConnections/EventGrid.databaseRouting": "properties.databaseRouting",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventGrid.dataFormat": "properties.dataFormat",
+      "Microsoft.Kusto/clusters/databases/dataConnections/EventGrid.eventGridResourceId": "properties.eventGridResourceId",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventGrid.eventHubResourceId": "properties.eventHubResourceId",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventGrid.ignoreFirstRecord": "properties.ignoreFirstRecord",
+      "Microsoft.Kusto/clusters/databases/dataConnections/EventGrid.managedIdentityObjectId": "properties.managedIdentityObjectId",
+      "Microsoft.Kusto/clusters/databases/dataConnections/EventGrid.managedIdentityResourceId": "properties.managedIdentityResourceId",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventGrid.mappingRuleName": "properties.mappingRuleName",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventGrid.provisioningState": "properties.provisioningState",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventGrid.storageAccountResourceId": "properties.storageAccountResourceId",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventGrid.tableName": "properties.tableName",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventHub.compression": "properties.compression",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventHub.consumerGroup": "properties.consumerGroup",
+      "Microsoft.Kusto/clusters/databases/dataConnections/EventHub.databaseRouting": "properties.databaseRouting",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventHub.dataFormat": "properties.dataFormat",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventHub.eventHubResourceId": "properties.eventHubResourceId",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventHub.eventSystemProperties": "properties.eventSystemProperties",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventHub.eventSystemProperties[*]": "properties.eventSystemProperties[*]",
+      "Microsoft.Kusto/clusters/databases/dataConnections/EventHub.managedIdentityObjectId": "properties.managedIdentityObjectId",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventHub.managedIdentityResourceId": "properties.managedIdentityResourceId",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventHub.mappingRuleName": "properties.mappingRuleName",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventHub.provisioningState": "properties.provisioningState",
       "Microsoft.Kusto/clusters/databases/dataConnections/EventHub.tableName": "properties.tableName",
+      "Microsoft.Kusto/clusters/databases/dataConnections/IotHub.consumerGroup": "properties.consumerGroup",
+      "Microsoft.Kusto/clusters/databases/dataConnections/IotHub.databaseRouting": "properties.databaseRouting",
+      "Microsoft.Kusto/clusters/databases/dataConnections/IotHub.dataFormat": "properties.dataFormat",
       "Microsoft.Kusto/clusters/databases/dataConnections/IotHub.eventSystemProperties": "properties.eventSystemProperties",
       "Microsoft.Kusto/clusters/databases/dataConnections/IotHub.eventSystemProperties[*]": "properties.eventSystemProperties[*]",
       "Microsoft.Kusto/clusters/databases/dataConnections/IotHub.iotHubResourceId": "properties.iotHubResourceId",
-      "Microsoft.Kusto/clusters/databases/dataConnections/IotHub.sharedAccessPolicyName": "properties.sharedAccessPolicyName"
+      "Microsoft.Kusto/clusters/databases/dataConnections/IotHub.mappingRuleName": "properties.mappingRuleName",
+      "Microsoft.Kusto/clusters/databases/dataConnections/IotHub.provisioningState": "properties.provisioningState",
+      "Microsoft.Kusto/clusters/databases/dataConnections/IotHub.sharedAccessPolicyName": "properties.sharedAccessPolicyName",
+      "Microsoft.Kusto/clusters/databases/dataConnections/IotHub.tableName": "properties.tableName"
     },
     "resourceType": "clusters/databases/dataconnections",
     "apiVersions": [
@@ -604,6 +456,7 @@
   },
   {
     "aliases": {
+      "Microsoft.Kusto/clusters/databases/principalAssignments/aadObjectId": "properties.aadObjectId",
       "Microsoft.Kusto/clusters/databases/principalAssignments/principalId": "properties.principalId",
       "Microsoft.Kusto/clusters/databases/principalAssignments/principalName": "properties.principalName",
       "Microsoft.Kusto/clusters/databases/principalAssignments/principalType": "properties.principalType",
@@ -722,6 +575,7 @@
   },
   {
     "aliases": {
+      "Microsoft.Kusto/clusters/principalAssignments/aadObjectId": "properties.aadObjectId",
       "Microsoft.Kusto/clusters/principalAssignments/principalId": "properties.principalId",
       "Microsoft.Kusto/clusters/principalAssignments/principalName": "properties.principalName",
       "Microsoft.Kusto/clusters/principalAssignments/principalType": "properties.principalType",
@@ -948,5 +802,28 @@
     ],
     "locations": [],
     "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Kusto/clusters/managedPrivateEndpoints/groupId": "properties.groupId",
+      "Microsoft.Kusto/clusters/managedPrivateEndpoints/privateLinkResourceId": "properties.privateLinkResourceId",
+      "Microsoft.Kusto/clusters/managedPrivateEndpoints/privateLinkResourceRegion": "properties.privateLinkResourceRegion",
+      "Microsoft.Kusto/clusters/managedPrivateEndpoints/provisioningState": "properties.provisioningState",
+      "Microsoft.Kusto/clusters/managedPrivateEndpoints/requestMessage": "properties.requestMessage"
+    },
+    "resourceType": "clusters/managedprivateendpoints"
+  },
+  {
+    "aliases": {
+      "Microsoft.Kusto/clusters/privateEndpointConnections/groupId": "properties.groupId",
+      "Microsoft.Kusto/clusters/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.Kusto/clusters/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.Kusto/clusters/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.Kusto/clusters/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.Kusto/clusters/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.Kusto/clusters/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Kusto/clusters/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "clusters/privateendpointconnections"
   }
 ]

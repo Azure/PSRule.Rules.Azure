@@ -50,6 +50,7 @@
     },
     "resourceType": "domains",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -108,6 +109,7 @@
     },
     "resourceType": "domains/topics",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -409,6 +411,7 @@
     },
     "resourceType": "eventSubscriptions",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -470,6 +473,7 @@
     "aliases": null,
     "resourceType": "extensionTopics",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -531,6 +535,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -554,6 +559,7 @@
     "aliases": null,
     "resourceType": "locations/eventSubscriptions",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -615,6 +621,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -676,6 +683,7 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -737,6 +745,7 @@
     "aliases": null,
     "resourceType": "locations/topicTypes",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -797,6 +806,7 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -820,6 +830,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -882,6 +893,7 @@
     "aliases": null,
     "resourceType": "operationsStatus",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -905,6 +917,7 @@
     "aliases": null,
     "resourceType": "partnerConfigurations",
     "apiVersions": [
+      "2022-06-15",
       "2021-10-15-preview"
     ],
     "locations": [
@@ -987,6 +1000,7 @@
     },
     "resourceType": "partnerNamespaces",
     "apiVersions": [
+      "2022-06-15",
       "2021-10-15-preview",
       "2021-06-01-preview",
       "2020-04-01-preview"
@@ -1036,6 +1050,7 @@
     "aliases": null,
     "resourceType": "partnerNamespaces/channels",
     "apiVersions": [
+      "2022-06-15",
       "2021-10-15-preview"
     ],
     "locations": [
@@ -1211,6 +1226,7 @@
     },
     "resourceType": "partnerRegistrations",
     "apiVersions": [
+      "2022-06-15",
       "2021-10-15-preview",
       "2021-06-01-preview",
       "2020-10-15-preview",
@@ -1266,6 +1282,7 @@
     },
     "resourceType": "partnerTopics",
     "apiVersions": [
+      "2022-06-15",
       "2021-10-15-preview",
       "2021-06-01-preview",
       "2020-10-15-preview",
@@ -1559,6 +1576,7 @@
     },
     "resourceType": "partnerTopics/eventSubscriptions",
     "apiVersions": [
+      "2022-06-15",
       "2021-10-15-preview",
       "2021-06-01-preview",
       "2020-10-15-preview",
@@ -1649,6 +1667,7 @@
     },
     "resourceType": "systemTopics",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -1944,6 +1963,7 @@
     },
     "resourceType": "systemTopics/eventSubscriptions",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -2041,6 +2061,7 @@
     },
     "resourceType": "topics",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -2102,6 +2123,7 @@
     "aliases": null,
     "resourceType": "topicTypes",
     "apiVersions": [
+      "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
       "2021-06-01-preview",
@@ -2164,6 +2186,7 @@
     "aliases": null,
     "resourceType": "verifiedpartners",
     "apiVersions": [
+      "2022-06-15",
       "2021-10-15-preview"
     ],
     "locations": [

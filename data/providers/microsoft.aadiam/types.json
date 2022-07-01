@@ -1,6 +1,8 @@
 [
   {
-    "aliases": null,
+    "aliases": {
+      "microsoft.aadiam/azureADMetrics/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "azureADMetrics",
     "apiVersions": [
       "2020-07-01-preview",
@@ -44,7 +46,20 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "microsoft.aadiam/diagnosticSettings/eventHubAuthorizationRuleId": "properties.eventHubAuthorizationRuleId",
+      "microsoft.aadiam/diagnosticSettings/eventHubName": "properties.eventHubName",
+      "microsoft.aadiam/diagnosticSettings/logs": "properties.logs",
+      "microsoft.aadiam/diagnosticSettings/logs[*]": "properties.logs[*]",
+      "microsoft.aadiam/diagnosticSettings/logs[*].category": "properties.logs[*].category",
+      "microsoft.aadiam/diagnosticSettings/logs[*].enabled": "properties.logs[*].enabled",
+      "microsoft.aadiam/diagnosticSettings/logs[*].retentionPolicy": "properties.logs[*].retentionPolicy",
+      "microsoft.aadiam/diagnosticSettings/logs[*].retentionPolicy.days": "properties.logs[*].retentionPolicy.days",
+      "microsoft.aadiam/diagnosticSettings/logs[*].retentionPolicy.enabled": "properties.logs[*].retentionPolicy.enabled",
+      "microsoft.aadiam/diagnosticSettings/serviceBusRuleId": "properties.serviceBusRuleId",
+      "microsoft.aadiam/diagnosticSettings/storageAccountId": "properties.storageAccountId",
+      "microsoft.aadiam/diagnosticSettings/workspaceId": "properties.workspaceId"
+    },
     "resourceType": "diagnosticSettings",
     "apiVersions": [
       "2017-05-01-preview",
@@ -148,5 +163,19 @@
       "West US"
     ],
     "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateLinkConnectionTags": "properties.privateLinkConnectionTags",
+      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateLinkConnectionTags.tags": "properties.privateLinkConnectionTags.tags",
+      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "privatelinkforazuread/privateendpointconnections"
   }
 ]

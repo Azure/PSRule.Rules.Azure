@@ -323,6 +323,19 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
+    "apiVersions": [
+      "2022-02-01-preview"
+    ],
+    "locations": [
+      "North Central US",
+      "Central US EUAP",
+      "East US 2 EUAP"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
       "2022-02-01-preview",

@@ -323,6 +323,36 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/usages",
+    "apiVersions": [
+      "2022-05-01",
+      "2022-01-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2022-05-01",

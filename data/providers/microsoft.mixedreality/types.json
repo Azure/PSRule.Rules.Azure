@@ -42,7 +42,17 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.MixedReality/objectAnchorsAccounts/accountDomain": "properties.accountDomain",
+      "Microsoft.MixedReality/objectAnchorsAccounts/accountId": "properties.accountId",
+      "Microsoft.MixedReality/objectAnchorsAccounts/sku": "sku",
+      "Microsoft.MixedReality/objectAnchorsAccounts/sku.capacity": "sku.capacity",
+      "Microsoft.MixedReality/objectAnchorsAccounts/sku.family": "sku.family",
+      "Microsoft.MixedReality/objectAnchorsAccounts/sku.name": "sku.name",
+      "Microsoft.MixedReality/objectAnchorsAccounts/sku.size": "sku.size",
+      "Microsoft.MixedReality/objectAnchorsAccounts/sku.tier": "sku.tier",
+      "Microsoft.MixedReality/objectAnchorsAccounts/storageAccountName": "properties.storageAccountName"
+    },
     "resourceType": "objectAnchorsAccounts",
     "apiVersions": [
       "2021-03-01-preview"
@@ -68,7 +78,17 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.MixedReality/remoteRenderingAccounts/accountDomain": "properties.accountDomain",
+      "Microsoft.MixedReality/remoteRenderingAccounts/accountId": "properties.accountId",
+      "Microsoft.MixedReality/remoteRenderingAccounts/sku": "sku",
+      "Microsoft.MixedReality/remoteRenderingAccounts/sku.capacity": "sku.capacity",
+      "Microsoft.MixedReality/remoteRenderingAccounts/sku.family": "sku.family",
+      "Microsoft.MixedReality/remoteRenderingAccounts/sku.name": "sku.name",
+      "Microsoft.MixedReality/remoteRenderingAccounts/sku.size": "sku.size",
+      "Microsoft.MixedReality/remoteRenderingAccounts/sku.tier": "sku.tier",
+      "Microsoft.MixedReality/remoteRenderingAccounts/storageAccountName": "properties.storageAccountName"
+    },
     "resourceType": "remoteRenderingAccounts",
     "apiVersions": [
       "2021-03-01-preview",
@@ -91,7 +111,17 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.MixedReality/spatialAnchorsAccounts/accountDomain": "properties.accountDomain",
+      "Microsoft.MixedReality/spatialAnchorsAccounts/accountId": "properties.accountId",
+      "Microsoft.MixedReality/spatialAnchorsAccounts/sku": "sku",
+      "Microsoft.MixedReality/spatialAnchorsAccounts/sku.capacity": "sku.capacity",
+      "Microsoft.MixedReality/spatialAnchorsAccounts/sku.family": "sku.family",
+      "Microsoft.MixedReality/spatialAnchorsAccounts/sku.name": "sku.name",
+      "Microsoft.MixedReality/spatialAnchorsAccounts/sku.size": "sku.size",
+      "Microsoft.MixedReality/spatialAnchorsAccounts/sku.tier": "sku.tier",
+      "Microsoft.MixedReality/spatialAnchorsAccounts/storageAccountName": "properties.storageAccountName"
+    },
     "resourceType": "spatialAnchorsAccounts",
     "apiVersions": [
       "2021-03-01-preview",

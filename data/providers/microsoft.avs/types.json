@@ -776,7 +776,8 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks/publicIPs",
     "apiVersions": [
-      "2021-12-01"
+      "2021-12-01",
+      "2021-06-01"
     ],
     "locations": [
       "Australia East",

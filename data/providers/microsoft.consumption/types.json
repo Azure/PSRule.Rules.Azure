@@ -280,6 +280,7 @@
     "aliases": null,
     "resourceType": "Pricesheets",
     "apiVersions": [
+      "2022-06-01",
       "2021-10-01",
       "2020-01-01-preview",
       "2019-10-01",

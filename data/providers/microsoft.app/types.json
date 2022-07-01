@@ -325,6 +325,7 @@
     "locations": [
       "North Central US (Stage)",
       "Central US EUAP",
+      "East US 2 EUAP",
       "Canada Central",
       "West Europe",
       "North Europe",
@@ -335,7 +336,11 @@
       "Germany West Central",
       "Japan East",
       "UK South",
-      "West US"
+      "West US",
+      "Central US",
+      "North Central US",
+      "South Central US",
+      "Korea Central"
     ],
     "zoneMappings": null
   },

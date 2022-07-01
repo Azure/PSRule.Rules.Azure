@@ -17,7 +17,8 @@
       "2022-03-02-preview"
     ],
     "locations": [
-      "West US"
+      "West US",
+      "East US 2"
     ],
     "zoneMappings": null
   },

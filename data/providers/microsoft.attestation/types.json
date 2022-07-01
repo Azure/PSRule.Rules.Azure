@@ -25,7 +25,8 @@
       "South Central US",
       "North Central US",
       "Australia East",
-      "Australia Southeast"
+      "Australia Southeast",
+      "Japan East"
     ],
     "zoneMappings": null
   },
@@ -53,7 +54,8 @@
       "South Central US",
       "North Central US",
       "Australia East",
-      "Australia Southeast"
+      "Australia Southeast",
+      "Japan East"
     ],
     "zoneMappings": null
   },
@@ -93,7 +95,8 @@
       "South Central US",
       "North Central US",
       "Australia East",
-      "Australia Southeast"
+      "Australia Southeast",
+      "Japan East"
     ],
     "zoneMappings": null
   },

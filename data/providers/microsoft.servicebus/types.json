@@ -55,6 +55,7 @@
   },
   {
     "aliases": {
+      "Microsoft.ServiceBus/namespaces/alternateName": "properties.alternateName",
       "Microsoft.ServiceBus/namespaces/createACSNamespace": "properties.createACSNamespace",
       "Microsoft.ServiceBus/namespaces/createdAt": "properties.createdAt",
       "Microsoft.ServiceBus/namespaces/disableLocalAuth": "properties.disableLocalAuth",
@@ -76,9 +77,11 @@
       "Microsoft.ServiceBus/namespaces/identity.tenantId": "properties.identity.tenantId",
       "Microsoft.ServiceBus/namespaces/identity.type": "properties.identity.type",
       "Microsoft.ServiceBus/namespaces/metricId": "properties.metricId",
+      "Microsoft.ServiceBus/namespaces/minimumTlsVersion": "properties.minimumTlsVersion",
       "Microsoft.ServiceBus/namespaces/privateEndpointConnections": "properties.privateEndpointConnections",
       "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
       "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].location": "properties.privateEndpointConnections[*].location",
       "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
       "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
       "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
@@ -95,6 +98,7 @@
       "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].systemData.lastModifiedByType": "properties.privateEndpointConnections[*].systemData.lastModifiedByType",
       "Microsoft.ServiceBus/namespaces/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
       "Microsoft.ServiceBus/namespaces/provisioningState": "properties.provisioningState",
+      "Microsoft.ServiceBus/namespaces/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.ServiceBus/namespaces/serviceBusEndpoint": "properties.serviceBusEndpoint",
       "Microsoft.ServiceBus/namespaces/sku": "sku",
       "Microsoft.ServiceBus/namespaces/sku.capacity": "sku.capacity",
@@ -355,9 +359,7 @@
       "2021-06-01-preview",
       "2021-01-01-preview",
       "2018-01-01-preview",
-      "2017-04-01",
-      "2015-08-01",
-      "2014-09-01"
+      "2017-04-01"
     ],
     "locations": [
       "Australia Southeast",
@@ -391,9 +393,7 @@
       "2021-06-01-preview",
       "2021-01-01-preview",
       "2018-01-01-preview",
-      "2017-04-01",
-      "2015-08-01",
-      "2014-09-01"
+      "2017-04-01"
     ],
     "locations": [
       "Australia Southeast",
@@ -424,9 +424,7 @@
       "2021-06-01-preview",
       "2021-01-01-preview",
       "2018-01-01-preview",
-      "2017-04-01",
-      "2015-08-01",
-      "2014-09-01"
+      "2017-04-01"
     ],
     "locations": [
       "Australia Southeast",
@@ -457,9 +455,7 @@
       "2021-06-01-preview",
       "2021-01-01-preview",
       "2018-01-01-preview",
-      "2017-04-01",
-      "2015-08-01",
-      "2014-09-01"
+      "2017-04-01"
     ],
     "locations": [
       "Australia Southeast",
@@ -490,9 +486,7 @@
       "2021-06-01-preview",
       "2021-01-01-preview",
       "2018-01-01-preview",
-      "2017-04-01",
-      "2015-08-01",
-      "2014-09-01"
+      "2017-04-01"
     ],
     "locations": [
       "Australia Southeast",
@@ -523,9 +517,7 @@
       "2021-06-01-preview",
       "2021-01-01-preview",
       "2018-01-01-preview",
-      "2017-04-01",
-      "2015-08-01",
-      "2014-09-01"
+      "2017-04-01"
     ],
     "locations": [
       "Australia Southeast",
