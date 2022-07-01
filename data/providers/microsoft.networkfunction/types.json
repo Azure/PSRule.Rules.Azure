@@ -21,6 +21,26 @@
   },
   {
     "aliases": null,
+    "resourceType": "azureTrafficCollectors/collectorPolicies",
+    "apiVersions": [
+      "2022-05-01",
+      "2021-09-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West Central US",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
       "2022-05-01",
@@ -60,7 +80,11 @@
     ],
     "locations": [
       "West US",
-      "East US"
+      "East US",
+      "West Central US",
+      "North Central US",
+      "North Europe",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -72,7 +96,11 @@
     ],
     "locations": [
       "West US",
-      "East US"
+      "East US",
+      "West Central US",
+      "North Central US",
+      "North Europe",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -84,7 +112,11 @@
     ],
     "locations": [
       "West US",
-      "East US"
+      "East US",
+      "West Central US",
+      "North Central US",
+      "North Europe",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -96,7 +128,11 @@
     ],
     "locations": [
       "West US",
-      "East US"
+      "East US",
+      "West Central US",
+      "North Central US",
+      "North Europe",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },

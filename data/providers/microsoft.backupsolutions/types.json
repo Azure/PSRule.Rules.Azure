@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-07-01",
       "2020-08-21-preview",
       "2019-07-01",
@@ -14,9 +15,7 @@
       "2017-09-01",
       "2016-09-01-preview"
     ],
-    "locations": [
-      "West Central US"
-    ],
+    "locations": [],
     "zoneMappings": null
   },
   {

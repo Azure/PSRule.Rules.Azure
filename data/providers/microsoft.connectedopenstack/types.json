@@ -15,7 +15,9 @@
       "2021-05-31-privatepreview"
     ],
     "locations": [
-      "East US 2 EUAP"
+      "East US 2 EUAP",
+      "East US",
+      "West Europe"
     ],
     "zoneMappings": null
   },

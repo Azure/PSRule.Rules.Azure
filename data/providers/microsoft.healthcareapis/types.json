@@ -301,7 +301,6 @@
       "North Central US",
       "West US 2",
       "Australia East",
-      "Southeast Asia",
       "UK South",
       "East US",
       "West Europe",
@@ -315,7 +314,8 @@
       "South Africa North",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -416,7 +416,8 @@
       "Canada Central",
       "Switzerland North",
       "West US 3",
-      "Central India"
+      "Central India",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -448,7 +449,8 @@
       "Canada Central",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -472,7 +474,8 @@
       "Canada Central",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -520,7 +523,8 @@
       "Canada Central",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -552,7 +556,8 @@
       "Canada Central",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -582,7 +587,8 @@
       "Canada Central",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -606,7 +612,8 @@
       "Canada Central",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -630,7 +637,8 @@
       "Canada Central",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -654,7 +662,8 @@
       "Canada Central",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   }

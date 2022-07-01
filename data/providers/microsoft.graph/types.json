@@ -1,0 +1,22 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2022-04-18-preview",
+      "2021-07-19-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registeredSubscriptions",
+    "apiVersions": [
+      "2022-04-18-preview",
+      "2021-07-19-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

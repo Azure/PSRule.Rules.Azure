@@ -29,6 +29,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -82,6 +84,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -124,6 +128,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -163,6 +169,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -227,6 +235,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -266,6 +276,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -308,6 +320,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -347,6 +361,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -386,6 +402,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -405,6 +423,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
       "2021-09-17-privatepreview",
@@ -449,8 +468,6 @@
       "2019-01-23-preview"
     ],
     "locations": [
-      "UK South",
-      "UK West",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -495,6 +512,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",

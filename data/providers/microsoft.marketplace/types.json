@@ -434,5 +434,14 @@
     ],
     "locations": [],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "search",
+    "apiVersions": [
+      "2022-02-02"
+    ],
+    "locations": [],
+    "zoneMappings": null
   }
 ]

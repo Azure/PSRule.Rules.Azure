@@ -19,6 +19,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.17.0-B0035:
+
+- Engineering:
+  - Updated provider data for analysis.
+    [#1502](https://github.com/Azure/PSRule.Rules.Azure/pull/1502)
+
 ## v1.17.0-B0035 (pre-release)
 
 What's changed since pre-release v1.17.0-B0014:

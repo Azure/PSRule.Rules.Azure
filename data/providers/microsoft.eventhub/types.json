@@ -43,6 +43,7 @@
       "Microsoft.EventHub/clusters/sku.capacity": "sku.capacity",
       "Microsoft.EventHub/clusters/sku.name": "sku.name",
       "Microsoft.EventHub/clusters/status": "properties.status",
+      "Microsoft.EventHub/clusters/supportsScaling": "properties.supportsScaling",
       "Microsoft.EventHub/clusters/updated": "properties.updated",
       "Microsoft.EventHub/clusters/updatedAt": "properties.updatedAt"
     },
@@ -194,6 +195,7 @@
       "Microsoft.EventHub/namespaces/messagingSkuPlan.selectedEventHubUnit": "properties.messagingSkuPlan.selectedEventHubUnit",
       "Microsoft.EventHub/namespaces/messagingSkuPlan.sku": "properties.messagingSkuPlan.sku",
       "Microsoft.EventHub/namespaces/metricId": "properties.metricId",
+      "Microsoft.EventHub/namespaces/minimumTlsVersion": "properties.minimumTlsVersion",
       "Microsoft.EventHub/namespaces/namespaceType": "properties.namespaceType",
       "Microsoft.EventHub/namespaces/partitionCount": "properties.partitionCount",
       "Microsoft.EventHub/namespaces/partitionIds": "properties.partitionIds",
@@ -219,6 +221,7 @@
       "Microsoft.EventHub/namespaces/privateEndpointConnections[*].systemData.lastModifiedByType": "properties.privateEndpointConnections[*].systemData.lastModifiedByType",
       "Microsoft.EventHub/namespaces/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
       "Microsoft.EventHub/namespaces/provisioningState": "properties.provisioningState",
+      "Microsoft.EventHub/namespaces/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.EventHub/namespaces/serviceBusEndpoint": "properties.serviceBusEndpoint",
       "Microsoft.EventHub/namespaces/serviceBusEndpoint.externalDocs": "properties.serviceBusEndpoint.externalDocs",
       "Microsoft.EventHub/namespaces/sku": "sku",
@@ -375,9 +378,7 @@
       "2021-06-01-preview",
       "2021-01-01-preview",
       "2018-01-01-preview",
-      "2017-04-01",
-      "2015-08-01",
-      "2014-09-01"
+      "2017-04-01"
     ],
     "locations": [
       "Australia Southeast",
@@ -411,9 +412,7 @@
       "2021-06-01-preview",
       "2021-01-01-preview",
       "2018-01-01-preview",
-      "2017-04-01",
-      "2015-08-01",
-      "2014-09-01"
+      "2017-04-01"
     ],
     "locations": [
       "Australia Southeast",
@@ -449,9 +448,7 @@
       "2021-06-01-preview",
       "2021-01-01-preview",
       "2018-01-01-preview",
-      "2017-04-01",
-      "2015-08-01",
-      "2014-09-01"
+      "2017-04-01"
     ],
     "locations": [
       "Australia Southeast",

@@ -214,6 +214,7 @@
     "aliases": null,
     "resourceType": "automationAccounts/hybridRunbookWorkerGroups",
     "apiVersions": [
+      "2022-02-22",
       "2021-06-22",
       "2021-04-01",
       "2019-06-01",

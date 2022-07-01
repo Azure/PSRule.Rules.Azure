@@ -170,6 +170,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2021-12-01-preview",
       "2020-10-01",
       "2020-08-01",
       "2020-03-01-preview",

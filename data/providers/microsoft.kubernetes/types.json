@@ -15,12 +15,14 @@
       "Microsoft.Kubernetes/connectedClusters/managedIdentityCertificateExpirationTime": "properties.managedIdentityCertificateExpirationTime",
       "Microsoft.Kubernetes/connectedClusters/offering": "properties.offering",
       "Microsoft.Kubernetes/connectedClusters/privateLinkScopeResourceId": "properties.privateLinkScopeResourceId",
+      "Microsoft.Kubernetes/connectedClusters/privateLinkState": "properties.privateLinkState",
       "Microsoft.Kubernetes/connectedClusters/provisioningState": "properties.provisioningState",
       "Microsoft.Kubernetes/connectedClusters/totalCoreCount": "properties.totalCoreCount",
       "Microsoft.Kubernetes/connectedClusters/totalNodeCount": "properties.totalNodeCount"
     },
     "resourceType": "connectedClusters",
     "apiVersions": [
+      "2022-05-01-preview",
       "2021-10-01",
       "2021-04-01-preview",
       "2021-03-01",
@@ -43,8 +45,9 @@
       "North Central US",
       "Korea Central",
       "Japan East",
+      "West US 3",
       "East Asia",
-      "West US 3"
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -52,6 +55,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-05-01-preview",
       "2021-10-01",
       "2021-04-01-preview",
       "2021-03-01",
@@ -64,6 +68,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2022-05-01-preview",
       "2021-10-01",
       "2021-04-01-preview",
       "2021-03-01",
@@ -98,6 +103,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2022-05-01-preview",
       "2021-10-01",
       "2021-04-01-preview",
       "2021-03-01",
@@ -112,6 +118,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2022-05-01-preview",
       "2021-10-01",
       "2021-04-01-preview",
       "2021-03-01",

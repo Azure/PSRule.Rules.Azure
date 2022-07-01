@@ -1,6 +1,20 @@
 [
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.HealthBot/healthBots/botManagementPortalLink": "properties.botManagementPortalLink",
+      "Microsoft.HealthBot/healthBots/keyVaultProperties": "properties.keyVaultProperties",
+      "Microsoft.HealthBot/healthBots/keyVaultProperties.keyName": "properties.keyVaultProperties.keyName",
+      "Microsoft.HealthBot/healthBots/keyVaultProperties.keyVaultUri": "properties.keyVaultProperties.keyVaultUri",
+      "Microsoft.HealthBot/healthBots/keyVaultProperties.keyVersion": "properties.keyVaultProperties.keyVersion",
+      "Microsoft.HealthBot/healthBots/keyVaultProperties.userIdentity": "properties.keyVaultProperties.userIdentity",
+      "Microsoft.HealthBot/healthBots/provisioningState": "properties.provisioningState",
+      "Microsoft.HealthBot/healthBots/sku": "sku",
+      "Microsoft.HealthBot/healthBots/sku.capacity": "sku.capacity",
+      "Microsoft.HealthBot/healthBots/sku.family": "sku.family",
+      "Microsoft.HealthBot/healthBots/sku.name": "sku.name",
+      "Microsoft.HealthBot/healthBots/sku.size": "sku.size",
+      "Microsoft.HealthBot/healthBots/sku.tier": "sku.tier"
+    },
     "resourceType": "healthBots",
     "apiVersions": [
       "2021-08-24",

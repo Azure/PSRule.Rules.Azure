@@ -1,0 +1,44 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/githuboauth",
+    "apiVersions": [
+      "2022-04-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-04-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "workflows",
+    "apiVersions": [
+      "2022-04-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  }
+]
