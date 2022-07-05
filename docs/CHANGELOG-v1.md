@@ -26,6 +26,9 @@ What's changed since pre-release v1.17.0-B0035:
     [#1502](https://github.com/Azure/PSRule.Rules.Azure/pull/1502)
   - Bump PSRule to v2.2.0.
     [#1444](https://github.com/Azure/PSRule.Rules.Azure/pull/1444)
+- Bug fixes:
+  - Fixed TDE property status to state by @Dylan-Prins.
+    [#1505](https://github.com/Azure/PSRule.Rules.Azure/pull/1505)
 
 ## v1.17.0-B0035 (pre-release)
 
