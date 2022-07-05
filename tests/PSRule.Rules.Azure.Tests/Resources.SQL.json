@@ -488,5 +488,61 @@
                 "ETag": null
             }
         ]
+    },
+    {
+        "Name": "database-C",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/database-C",
+        "ResourceName": "server-A/database-C",
+        "ResourceType": "Microsoft.Sql/servers/databases",
+        "Kind": "v12.0,user",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Properties": {
+            "edition": "Standard",
+            "status": "Online",
+            "serviceLevelObjective": "S2",
+            "collation": "SQL_Latin1_General_CP1_CI_AS",
+            "maxSizeBytes": "268435456000",
+            "requestedServiceObjectiveName": "S2",
+            "sampleName": null,
+            "defaultSecondaryLocation": "region-B",
+            "earliestRestoreDate": "2019-01-01T00:00:00Z",
+            "elasticPoolName": null,
+            "containmentState": 2,
+            "readScale": "Disabled",
+            "failoverGroupId": null,
+            "zoneRedundant": false,
+            "isUpgradeRequested": false
+        },
+        "resources": [
+            {
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/database-B/transparentDataEncryption/current",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/database-B/transparentDataEncryption/current",
+                "Identity": null,
+                "Kind": null,
+                "Location": "region",
+                "ManagedBy": null,
+                "ResourceName": "current",
+                "Name": "current",
+                "ExtensionResourceName": null,
+                "ParentResource": null,
+                "Plan": null,
+                "Properties": {
+                    "state": "Enabled"
+                },
+                "ResourceGroupName": "test-rg",
+                "Type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+                "ResourceType": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+                "ExtensionResourceType": null,
+                "Sku": null,
+                "Tags": null,
+                "TagsTable": null,
+                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+                "CreatedTime": null,
+                "ChangedTime": null,
+                "ETag": null
+            }
+        ]
     }
 ]
