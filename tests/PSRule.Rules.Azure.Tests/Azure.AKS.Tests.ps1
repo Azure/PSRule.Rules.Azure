@@ -62,7 +62,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.TargetName | Should -BeIn 'cluster-B';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The version '1.13.8' does not match the constraint '>=1.22.6'.";
+            $ruleResult[0].Reason | Should -BeExactly "Path Properties.kubernetesVersion: The version '1.13.8' does not match the constraint '>=1.22.6'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -997,7 +997,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 11;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
             $ruleResult.Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult.Reason | Should -BeLike "The version '*' does not match the constraint '>=1.23.5'.";
+            $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.23.5'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -1030,7 +1030,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 11;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
             $ruleResult.Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult.Reason | Should -BeLike "The version '*' does not match the constraint '>=1.23.5'.";
+            $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.23.5'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -1050,7 +1050,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 11;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
             $ruleResult.Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult.Reason | Should -BeLike "The version '*' does not match the constraint '>=1.23.5'.";
+            $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.23.5'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -1079,7 +1079,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 11;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
             $ruleResult.Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult.Reason | Should -BeLike "The version '*' does not match the constraint '>=1.23.5'.";
+            $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.23.5'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

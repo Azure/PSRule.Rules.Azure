@@ -179,16 +179,16 @@ Describe 'Azure.SecurityCenter' -Tag 'Subscription', 'SecurityCenter' {
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -HaveCount 2;
-            $ruleResult[0].Reason | Should -Be @(
+            $ruleResult[0].Reason | Should -BeIn @(
                 "Security Center is not configured.", 
-                "The value of 'Properties.Phone' is null or empty."
+                "Path Properties.Phone: Is null or empty."
             );
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[1].Reason | Should -HaveCount 3;
-            $ruleResult[1].Reason | Should -Be @(
+            $ruleResult[1].Reason | Should -BeIn @(
                 "Security Center is not configured.", 
-                "The value of 'Properties.Email' is null or empty.", 
-                "The value of 'Properties.Phone' is null or empty."
+                "Path Properties.Email: Is null or empty.", 
+                "Path Properties.Phone: Is null or empty."
             );
 
             # Pass

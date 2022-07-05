@@ -44,7 +44,7 @@ Describe 'Azure.Search' -Tag 'Search' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'search-D';
-            $ruleResult.Reason | Should -BeLike "The field value '*' was in the set.";
+            $ruleResult.Reason | Should -BeLike "Path Sku.Name: The field value '*' was in the set.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -61,7 +61,7 @@ Describe 'Azure.Search' -Tag 'Search' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'search-B', 'search-D';
-            $ruleResult.Reason | Should -BeLike "The value '*' was not >= '2'.";
+            $ruleResult.Reason | Should -BeLike "Path Properties.replicaCount: The value '*' was not >= '2'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -78,7 +78,7 @@ Describe 'Azure.Search' -Tag 'Search' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'search-A', 'search-B', 'search-D';
-            $ruleResult.Reason | Should -BeLike "The value '*' was not >= '3'.";
+            $ruleResult.Reason | Should -BeLike "Path Properties.replicaCount: The value '*' was not >= '3'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -95,7 +95,7 @@ Describe 'Azure.Search' -Tag 'Search' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'search-A', 'search-B', 'search-D';
-            $ruleResult.Reason | Should -BeIn "The field 'Identity.Type' does not exist.";
+            $ruleResult.Reason | Should -BeIn "Path Identity.Type: Does not exist.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

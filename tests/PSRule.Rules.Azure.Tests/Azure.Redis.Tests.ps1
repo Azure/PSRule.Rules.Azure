@@ -173,23 +173,23 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult.TargetName | Should -BeIn 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "Field properties.publicNetworkAccess: Is set to 'Enabled'.";
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.publicNetworkAccess: Is set to 'Enabled'.";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.publicNetworkAccess: The field 'properties.publicNetworkAccess' does not exist.";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[2].Reason | Should -BeExactly "Path properties.publicNetworkAccess: The field 'properties.publicNetworkAccess' does not exist.";
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[3].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[3].Reason | Should -BeExactly "Path properties.publicNetworkAccess: The field 'properties.publicNetworkAccess' does not exist.";
             $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[4].Reason | Should -BeExactly "Path properties.publicNetworkAccess: The field 'properties.publicNetworkAccess' does not exist.";
             $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[5].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[5].Reason | Should -BeExactly "Path properties.publicNetworkAccess: The field 'properties.publicNetworkAccess' does not exist.";
             $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[6].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[6].Reason | Should -BeExactly "Path properties.publicNetworkAccess: The field 'properties.publicNetworkAccess' does not exist.";
             $ruleResult[7].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[7].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[7].Reason | Should -BeExactly "Path properties.publicNetworkAccess: The field 'properties.publicNetworkAccess' does not exist.";
             $ruleResult[8].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[8].Reason | Should -BeExactly "The field 'properties.publicNetworkAccess' does not exist.";
+            $ruleResult[8].Reason | Should -BeExactly "Path properties.publicNetworkAccess: The field 'properties.publicNetworkAccess' does not exist.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

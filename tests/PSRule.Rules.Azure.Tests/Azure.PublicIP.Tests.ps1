@@ -121,7 +121,7 @@ Describe 'Azure.PublicIP' -Tag 'publicip' {
             $ruleResult.TargetName | Should -Be 'ip-A';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "Field sku.name: Is set to 'Basic'.";
+            $ruleResult[0].Reason | Should -BeExactly "Path sku.name: Is set to 'Basic'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

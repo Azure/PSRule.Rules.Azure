@@ -431,7 +431,7 @@ Describe 'Azure.Template' -Tag 'Template' {
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -HaveCount 1;
-            $ruleResult[0].Reason[0] | Should -BeExactly "The field 'type' is set to 'array'.";
+            $ruleResult[0].Reason[0] | Should -BeExactly "Path type: Is set to 'array'.";
             $ruleResult[1].Reason | Should -HaveCount 2;
             $ruleResult[1].Reason | Should -Be @(
                 "The minValue for 'valueInt' is not int.",
@@ -653,8 +653,8 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult.Length | Should -Be 1;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetName.Split([char[]]@('\', '/'))[-1] };
             $targetNames | Should -BeIn 'Resources.VPN.Parameters2.json';
-            $ruleResult[0].Reason[0] | Should -Be 'The field ''reference.keyVault.id'' does not exist.';
-            $ruleResult[0].Reason[1] | Should -Be 'The field value ''not_a_secret'' does not match the pattern ''^[A-Za-z0-9-]{1,127}$''.';
+            $ruleResult[0].Reason[0] | Should -Be 'Path reference.keyVault.id: Does not exist.';
+            $ruleResult[0].Reason[1] | Should -Be 'Path reference.secretName: The field value ''not_a_secret'' does not match the pattern ''^[A-Za-z0-9-]{1,127}$''.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

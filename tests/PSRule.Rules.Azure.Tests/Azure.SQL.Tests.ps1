@@ -102,7 +102,7 @@ Describe 'Azure.SQL' -Tag 'SQL' {
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Sql/servers/securityAlertPolicies'' has not been specified.';
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The field 'Properties.state' is set to 'Disabled'.";
+            $ruleResult[1].Reason | Should -BeExactly "Path Properties.state: Is set to 'Disabled'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -123,7 +123,7 @@ Describe 'Azure.SQL' -Tag 'SQL' {
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Sql/servers/auditingSettings'' has not been specified.';
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly 'The field ''Properties.state'' is set to ''Disabled''.';
+            $ruleResult[1].Reason | Should -BeExactly 'Path Properties.state: Is set to ''Disabled''.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
