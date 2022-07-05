@@ -473,7 +473,7 @@
                 "ParentResource": null,
                 "Plan": null,
                 "Properties": {
-                    "status": "Enabled"
+                    "state": "Enabled"
                 },
                 "ResourceGroupName": "test-rg",
                 "Type": "Microsoft.Sql/servers/databases/transparentDataEncryption",

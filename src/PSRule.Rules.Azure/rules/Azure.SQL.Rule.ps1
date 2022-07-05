@@ -94,7 +94,12 @@ Rule 'Azure.SQL.TDE' -Ref 'AZR-000191' -Type 'Microsoft.Sql/servers/databases' -
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/databases/transparentDataEncryption');
     }
     foreach ($config in $configs) {
-        $Assert.HasFieldValue($config, 'Properties.status', 'Enabled');
+        if ($Assert.HasFieldValue($config, 'apiVersion', '2014-04-01').Result) {
+            $Assert.HasFieldValue($config, 'Properties.status', 'Enabled');
+        }
+        else {
+            $Assert.HasFieldValue($config, 'Properties.state', 'Enabled');
+        }
     }
 }
 
