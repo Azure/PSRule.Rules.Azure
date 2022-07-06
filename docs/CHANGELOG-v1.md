@@ -19,6 +19,42 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.17.0
+
+What's changed since v1.16.1:
+
+- New features:
+  - Added more field count expression support for Azure Policy JSON rules by @ArmaanMcleod.
+    [#181](https://github.com/Azure/PSRule.Rules.Azure/issues/181)
+  - Added June 2022 baselines `Azure.GA_2022_06` and `Azure.Preview_2022_06` by @BernieWhite.
+    [#1499](https://github.com/Azure/PSRule.Rules.Azure/issues/1499)
+    - Includes rules released before or during June 2022.
+    - Marked `Azure.GA_2022_03` and `Azure.Preview_2022_03` baselines as obsolete.
+- New rules:
+  - Deployment:
+    - Check for secure values in outputs by @BernieWhite.
+      [#297](https://github.com/Azure/PSRule.Rules.Azure/issues/297)
+- Engineering:
+  - Bump Newtonsoft.Json to v13.0.1.
+    [#1494](https://github.com/Azure/PSRule.Rules.Azure/pull/1494)
+  - Updated NuGet packaging metadata by @BernieWhite.
+    [#1428](https://github.com/Azure/PSRule.Rules.Azure/pull/1428)
+  - Updated provider data for analysis.
+    [#1502](https://github.com/Azure/PSRule.Rules.Azure/pull/1502)
+  - Bump PSRule to v2.2.0.
+    [#1444](https://github.com/Azure/PSRule.Rules.Azure/pull/1444)
+  - Updated NuGet packaging metadata by @BernieWhite.
+    [#1428](https://github.com/Azure/PSRule.Rules.Azure/issues/1428)
+- Bug fixes:
+  - Fixed TDE property status to state by @Dylan-Prins.
+    [#1505](https://github.com/Azure/PSRule.Rules.Azure/pull/1505)
+  - Fixed the language expression value fails in outputs by @BernieWhite.
+    [#1485](https://github.com/Azure/PSRule.Rules.Azure/issues/1485)
+
+What's changed since pre-release v1.17.0-B0064:
+
+- No additional changes.
+
 ## v1.17.0-B0064 (pre-release)
 
 What's changed since pre-release v1.17.0-B0035:
@@ -51,13 +87,13 @@ What's changed since pre-release v1.17.0-B0014:
 
 What's changed since v1.16.1:
 
+- New features:
+  - Added more field count expression support for Azure Policy JSON rules by @ArmaanMcleod.
+    [#181](https://github.com/Azure/PSRule.Rules.Azure/issues/181)
 - New rules:
   - Deployment:
     - Check for secure values in outputs by @BernieWhite.
       [#297](https://github.com/Azure/PSRule.Rules.Azure/issues/297)
-- New features:
-  - Added more field count expression support for Azure Policy JSON rules by @ArmaanMcleod.
-    [#181](https://github.com/Azure/PSRule.Rules.Azure/issues/181)
 - Engineering:
   - Updated NuGet packaging metadata by @BernieWhite.
     [#1428](https://github.com/Azure/PSRule.Rules.Azure/issues/1428)
