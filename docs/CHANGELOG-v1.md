@@ -19,6 +19,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.17.0:
+
+- Engineering:
+  - Added readme and tags to NuGet by @BernieWhite.
+    [#1513](https://github.com/Azure/PSRule.Rules.Azure/issues/1513)
+
 ## v1.17.0
 
 What's changed since v1.16.1:

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <PackageId>Microsoft.PSRule.Rules.Azure</PackageId>
     <EnableNuget>true</EnableNuget>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
