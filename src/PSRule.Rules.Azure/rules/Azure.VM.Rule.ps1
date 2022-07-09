@@ -22,23 +22,6 @@ Rule 'Azure.VM.UseManagedDisks' -Ref 'AZR-000238' -Type 'Microsoft.Compute/virtu
     }
 }
 
-# Synopsis: VMs must use premium disks or use availability sets/ zones to meet SLA requirements
-Rule 'Azure.VM.Standalone' -Ref 'AZR-000239' -Type 'Microsoft.Compute/virtualMachines' -If { !(IsWindowsClientOS) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $types = @(
-        $TargetObject.properties.storageProfile.osDisk.managedDisk.storageAccountType
-        $TargetObject.properties.storageProfile.dataDisks.managedDisk.storageAccountType
-    )
-
-    $premiumCount = $types | Where-Object { $_ -eq 'Premium_LRS' };
-
-    AnyOf {
-        # A member of an availability set
-        $Null -ne $TargetObject.properties.availabilitySet.id
-
-        $premiumCount -eq (($TargetObject.properties.storageProfile.dataDisks | Measure-Object).Count + 1)
-    }
-}
-
 # Synopsis: VMs should not use expired promo SKU
 Rule 'Azure.VM.PromoSku' -Ref 'AZR-000240' -If { IsVMPromoSku } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     Match 'Properties.hardwareProfile.vmSize' -Not -Expression 'Standard_DS{0,1}1{0,1}[1-9]{1}_v2_Promo'
