@@ -270,7 +270,56 @@ namespace PSRule.Rules.Azure.Data.Template
                 }
             }
             return result.ToArray();
+        }
 
+        internal static bool IsObject(object o)
+        {
+            return o is JObject || o is IDictionary || o is IDictionary<string, string> || o is Dictionary<string, object>;
+        }
+
+        internal static object UnionObject(object[] o)
+        {
+            var result = new JObject();
+            if (o == null || o.Length == 0)
+                return result;
+
+            for (var i = 0; i < o.Length; i++)
+            {
+                if (o[i] is JObject jObject)
+                {
+                    foreach (var property in jObject.Properties())
+                    {
+                        if (!result.ContainsKey(property.Name))
+                            result.Add(property.Name, property.Value);
+                    }
+                }
+                else if (o[i] is IDictionary<string, string> dss)
+                {
+                    foreach (var kv in dss)
+                    {
+                        if (!result.ContainsKey(kv.Key))
+                            result.Add(kv.Key, JValue.FromObject(kv.Value));
+                    }
+                }
+                else if (o[i] is IDictionary<string, string> dso)
+                {
+                    foreach (var kv in dso)
+                    {
+                        if (!result.ContainsKey(kv.Key))
+                            result.Add(kv.Key, JToken.FromObject(kv.Value));
+                    }
+                }
+                else if (o[i] is IDictionary d)
+                {
+                    foreach (DictionaryEntry kv in d)
+                    {
+                        var key = kv.Key.ToString();
+                        if (!result.ContainsKey(key))
+                            result.Add(key, JToken.FromObject(kv.Value));
+                    }
+                }
+            }
+            return result;
         }
 
         /// <summary>
