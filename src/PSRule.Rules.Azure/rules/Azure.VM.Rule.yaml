@@ -1,0 +1,60 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure Virtual Machines
+#
+
+#region Rules
+
+---
+# Synopsis: Use VM features to increase reliability and improve covered SLA for VM configurations.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.VM.Standalone
+  ref: AZR-000239
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.Compute/virtualMachines
+  with:
+  - Azure.VM.IsServerOS
+  condition:
+    anyOf:
+    - field: properties.availabilitySet.id
+      hasValue: true
+    - field: zones
+      hasValue: true
+    - allOf:
+      - field: properties.storageProfile.osDisk.managedDisk.storageAccountType
+        equals: Premium_LRS
+      - field: properties.storageProfile.dataDisks[?@.managedDisk.storageAccountType != 'Premium_LRS' && @.managedDisk.storageAccountType != 'Premium_ZRS' && @.managedDisk.storageAccountType != 'UltraSSD_LRS']
+        count: 0
+
+#endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: Virtual Machines with a Server OS.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.VM.IsServerOS
+  annotations:
+    export: false
+spec:
+  if:
+    allOf:
+    - type: '.'
+      in:
+      - Microsoft.Compute/virtualMachines
+      - Microsoft.Compute/virtualMachineScaleSets
+    - field: Properties.storageProfile.imageReference.publisher
+      notIn:
+      - MicrosoftWindowsDesktop
+
+#endregion Selectors

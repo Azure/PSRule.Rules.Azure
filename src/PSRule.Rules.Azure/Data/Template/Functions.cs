@@ -558,19 +558,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 return ExpressionHelpers.UnionArray(args);
 
             // Object
-            if (args[0] is JObject jObject1)
-            {
-                var result = new JObject(jObject1);
-                for (var i = 1; i < args.Length && args[i] is JObject jObject2; i++)
-                {
-                    foreach (var property in jObject2.Properties())
-                    {
-                        if (!result.ContainsKey(property.Name))
-                            result.Add(property.Name, property.Value);
-                    }
-                }
-                return result;
-            }
+            if (ExpressionHelpers.IsObject(args[0]))
+                return ExpressionHelpers.UnionObject(args);
+
             return null;
         }
 

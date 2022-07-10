@@ -25,6 +25,16 @@ What's changed since v1.17.0:
   - Added readme and tags to NuGet by @BernieWhite.
     [#1513](https://github.com/Azure/PSRule.Rules.Azure/issues/1513)
 
+## v1.17.1
+
+What's changed since v1.17.0:
+
+- Bug fixes:
+  - Fixed union returns null when merged with built-in expansion objects by @BernieWhite.
+    [#1515](https://github.com/Azure/PSRule.Rules.Azure/issues/1515)
+  - Fixed missing zones in test for standalone VM by @BernieWhite.
+    [#1506](https://github.com/Azure/PSRule.Rules.Azure/issues/1506)
+
 ## v1.17.0
 
 What's changed since v1.16.1:
