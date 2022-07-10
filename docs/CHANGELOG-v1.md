@@ -19,7 +19,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.17.0:
+## v1.18.0-B0002 (pre-release)
+
+What's changed since v1.17.1:
 
 - Engineering:
   - Added readme and tags to NuGet by @BernieWhite.
