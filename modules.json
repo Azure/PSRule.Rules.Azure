@@ -6,7 +6,7 @@
   },
   "devDependencies": {
     "Az.Resources": {
-      "version": "6.0.0"
+      "version": "6.0.1"
     },
     "Pester": {
       "version": "5.3.3"
