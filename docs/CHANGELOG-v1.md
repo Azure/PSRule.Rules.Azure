@@ -19,6 +19,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.18.0-B0002:
+
+- Engineering:
+  - Bump Az.Resources to v6.0.1.
+    [#1521](https://github.com/Azure/PSRule.Rules.Azure/pull/1521)
+
 ## v1.18.0-B0002 (pre-release)
 
 What's changed since v1.17.1:
