@@ -499,7 +499,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 var properties = new JObject
                 {
-                    { PROPERTY_TEMPLATE, template },
+                    { PROPERTY_TEMPLATE, template.CloneTemplateJToken() },
                     { PROPERTY_TEMPLATELINK, templateLink },
                     { PROPERTY_PARAMETERS, _Parameters },
                     { PROPERTY_MODE, "Incremental" },
@@ -517,7 +517,8 @@ namespace PSRule.Rules.Azure.Data.Template
                     { PROPERTY_TYPE, RESOURCETYPE_DEPLOYMENT },
                     { PROPERTY_METADATA, metadata }
                 };
-                deployment.SetTargetInfo(TemplateFile, ParameterFile);
+                var path = template.GetResourcePath(parentLevel: 2);
+                deployment.SetTargetInfo(TemplateFile, ParameterFile, path);
                 var deploymentValue = new DeploymentValue(string.Concat(ResourceGroup.Id, "/providers/", RESOURCETYPE_DEPLOYMENT, "/", deploymentName), deploymentName, deployment, null, null);
                 AddResource(deploymentValue);
                 _CurrentDeployment = deploymentValue;
@@ -774,12 +775,12 @@ namespace PSRule.Rules.Azure.Data.Template
                 return _Inner.IsSecureValue(value);
             }
 
-            internal void SetParameters(JArray parameters, object[] args)
+            internal void SetParameters(JObject[] parameters, object[] args)
             {
-                if (parameters == null || parameters.Count == 0 || args == null || args.Length == 0)
+                if (parameters == null || parameters.Length == 0 || args == null || args.Length == 0)
                     return;
 
-                for (var i = 0; i < parameters.Count; i++)
+                for (var i = 0; i < parameters.Length; i++)
                 {
                     _Parameters.Add(parameters[i]["name"].Value<string>(), args[i]);
                 }
@@ -919,7 +920,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     Variables(context, variables);
 
                 if (TryArrayProperty(template, PROPERTY_RESOURCES, out var resources))
-                    Resources(context, resources.Values<JObject>().ToArray());
+                    Resources(context, resources);
 
                 if (TryObjectProperty(template, PROPERTY_OUTPUTS, out var outputs))
                     Outputs(context, outputs);
@@ -1031,13 +1032,13 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region Functions
 
-        protected virtual void Functions(TemplateContext context, JArray functions)
+        protected virtual void Functions(TemplateContext context, JObject[] functions)
         {
-            if (functions == null || functions.Count == 0)
+            if (functions == null || functions.Length == 0)
                 return;
 
-            for (var i = 0; i < functions.Count; i++)
-                FunctionNamespace(context, functions[i].Value<JObject>());
+            for (var i = 0; i < functions.Length; i++)
+                FunctionNamespace(context, functions[i]);
         }
 
         private void FunctionNamespace(TemplateContext context, JObject functionNamespace)
@@ -1674,13 +1675,17 @@ namespace PSRule.Rules.Azure.Data.Template
             }
         }
 
-        protected static bool TryArrayProperty(JObject obj, string propertyName, out JArray propertyValue)
+        protected static bool TryArrayProperty(JObject obj, string propertyName, out JObject[] propertyValue)
         {
             propertyValue = null;
             if (!obj.TryGetValue(propertyName, out var value) || value.Type != JTokenType.Array)
                 return false;
 
-            propertyValue = value.Value<JArray>();
+            propertyValue = value.Values<JObject>().ToArray();
+            var annotation = obj.UseTokenAnnotation();
+            if (annotation != null && propertyValue != null)
+                propertyValue.UseTokenAnnotation(annotation.Path, propertyName);
+
             return true;
         }
 
@@ -1691,6 +1696,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 return false;
 
             propertyValue = value as JObject;
+            var annotation = obj.UseTokenAnnotation();
+            if (annotation != null && propertyValue != null)
+                propertyValue.UseTokenAnnotation(annotation.Path, propertyName);
+
             return true;
         }
 

@@ -21,6 +21,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.18.0-B0002:
 
+- General improvements:
+  - Improved output of full path to emitted resources by @BernieWhite.
+    [#1523](https://github.com/Azure/PSRule.Rules.Azure/issues/1523)
 - Engineering:
   - Bump Az.Resources to v6.0.1.
     [#1521](https://github.com/Azure/PSRule.Rules.Azure/pull/1521)
