@@ -19,6 +19,19 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.18.0-B0010:
+
+- New rules:
+  - Cognitive Services:
+    - Check accounts use network access restrictions by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+    - Check accounts use managed identities to access Azure resources by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+    - Check accounts only accept requests using Azure AD identities by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+    - Check accounts disable access using public endpoints by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+
 ## v1.18.0-B0010 (pre-release)
 
 What's changed since pre-release v1.18.0-B0002:
