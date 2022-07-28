@@ -5,6 +5,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
@@ -67,6 +69,213 @@ namespace PSRule.Rules.Azure.Data.Template
                     value[i] = s;
             }
             return true;
+        }
+
+        internal static bool TryFindStringIndex(object o, string stringToFind, out long index, bool caseSensitive, bool first)
+        {
+            index = -1;
+            var comparer = caseSensitive ? StringComparer.Ordinal : StringComparer.OrdinalIgnoreCase;
+            var array = GetStringArray(o);
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (comparer.Equals(array[i], stringToFind))
+                {
+                    index = i;
+                    if (first)
+                        break;
+                }
+            }
+            return index >= 0;
+        }
+
+        internal static bool TryFindLongIndex(object o, long longToFind, out long index, bool first)
+        {
+            index = -1;
+            var array = GetLongArray(o);
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (array[i] == longToFind)
+                {
+                    index = i;
+                    if (first)
+                        break;
+                }
+            }
+            return index >= 0;
+        }
+
+        internal static bool TryFindArrayIndex(object o, Array arrayToFind, out long index, bool first)
+        {
+            index = -1;
+            if (!TryArray(o, out var array))
+                return false;
+
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (TryArray(array.GetValue(i), out var arrayToSearch) &&
+                    SequenceEqual(arrayToSearch, arrayToFind))
+                {
+                    index = i;
+                    if (first)
+                        break;
+                }
+            }
+            return index >= 0;
+        }
+
+        internal static bool TryFindObjectIndex(object o, object objectToFind, out long index, bool first)
+        {
+            index = -1;
+            if (!TryArray(o, out var array))
+                return false;
+
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (Equal(array.GetValue(i), objectToFind))
+                {
+                    index = i;
+                    if (first)
+                        break;
+                }
+            }
+            return index >= 0;
+        }
+
+        internal static bool SequenceEqual(Array array1, Array array2)
+        {
+            if (array1.Length != array2.Length)
+                return false;
+
+            for (var i = 0; i < array1.Length; i++)
+            {
+                if (!Equal(array1.GetValue(i), array2.GetValue(i)))
+                    return false;
+            }
+            return true;
+        }
+
+        internal static bool Equal(object o1, object o2)
+        {
+            // One null
+            if (o1 == null || o2 == null)
+                return o1 == o2;
+
+            // Arrays
+            if (o1 is Array array1 && o2 is Array array2)
+                return SequenceEqual(array1, array2);
+            else if (o1 is Array || o2 is Array)
+                return false;
+
+            // String and int
+            if (TryString(o1, out var s1) && TryString(o2, out var s2))
+                return s1 == s2;
+            else if (TryString(o1, out _) || TryString(o2, out _))
+                return false;
+            else if (TryLong(o1, out var i1) && TryLong(o2, out var i2))
+                return i1 == i2;
+            else if (TryLong(o1, out var _) || TryLong(o2, out var _))
+                return false;
+
+            // JTokens
+            if (o1 is JToken t1 && o2 is JToken t2)
+                return JTokenEquals(t1, t2);
+
+            // Objects
+            return ObjectEquals(o1, o2);
+        }
+
+        private static bool JTokenEquals(JToken t1, JToken t2)
+        {
+            return JToken.DeepEquals(t1, t2);
+        }
+
+        internal static bool ObjectEquals(object o1, object o2)
+        {
+            var objectType = o1.GetType();
+            if (objectType != o2.GetType())
+                return false;
+
+            var props = objectType.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.GetProperty);
+            for (var i = 0; i < props.Length; i++)
+            {
+                if (!object.Equals(props[i].GetValue(o1), props[i].GetValue(o2)))
+                    return false;
+            }
+            return true;
+        }
+
+        private static long[] GetLongArray(object o)
+        {
+            if (o is Array array)
+            {
+                var result = new long[array.Length];
+                for (var i = 0; i < array.Length; i++)
+                {
+                    if (TryLong(array.GetValue(i), out var l))
+                        result[i] = l;
+                }
+                return result;
+            }
+            else if (o is JArray jArray)
+            {
+                var result = new long[jArray.Count];
+                for (var i = 0; i < jArray.Count; i++)
+                {
+                    if (TryLong(jArray[i], out var l))
+                        result[i] = l;
+                }
+                return result;
+            }
+            else if (o is IEnumerable<long> elong)
+            {
+                return elong.ToArray();
+            }
+            else if (o is IEnumerable<int> eint)
+            {
+                return eint.Select(i => (long)i).ToArray();
+            }
+            else if (o is IEnumerable e)
+            {
+                var result = e.OfType<long>().ToArray();
+                if (result.Length == 0)
+                    result = e.OfType<int>().Select(i => (long)i).ToArray();
+
+                return result;
+            }
+            return Array.Empty<long>();
+        }
+
+        private static string[] GetStringArray(object o)
+        {
+            if (o is Array array)
+            {
+                var result = new string[array.Length];
+                for (var i = 0; i < array.Length; i++)
+                {
+                    if (TryString(array.GetValue(i), out var s))
+                        result[i] = s;
+                }
+                return result;
+            }
+            else if (o is JArray jArray)
+            {
+                var result = new string[jArray.Count];
+                for (var i = 0; i < jArray.Count; i++)
+                {
+                    if (TryString(jArray[i], out var s))
+                        result[i] = s;
+                }
+                return result;
+            }
+            else if (o is IEnumerable<string> enumerable)
+            {
+                return enumerable.ToArray();
+            }
+            else if (o is IEnumerable e)
+            {
+                return e.OfType<string>().ToArray();
+            }
+            return Array.Empty<string>();
         }
 
         /// <summary>
@@ -225,6 +434,34 @@ namespace PSRule.Rules.Azure.Data.Template
             return false;
         }
 
+        internal static bool TryArray(object o, out Array value)
+        {
+            value = null;
+            if (o is Array array)
+            {
+                value = array;
+                return true;
+            }
+            else if (o is JArray jArray)
+            {
+                var jr = new JToken[jArray.Count];
+                jArray.CopyTo(jr, 0);
+                value = jr;
+                return true;
+            }
+            else if (o is IEnumerable<string>)
+            {
+                value = GetStringArray(o);
+                return true;
+            }
+            else if (o is IEnumerable<long> || o is IEnumerable<int>)
+            {
+                value = GetLongArray(o);
+                return true;
+            }
+            return false;
+        }
+
         internal static bool IsArray(object o)
         {
             return o is JArray || o is Array || o is MockArray;
@@ -277,6 +514,48 @@ namespace PSRule.Rules.Azure.Data.Template
             return o is JObject || o is IDictionary || o is IDictionary<string, string> || o is Dictionary<string, object>;
         }
 
+        internal static bool TryJObject(object o, out JObject value)
+        {
+            value = null;
+            if (o is JObject jObject)
+            {
+                value = jObject;
+                return true;
+            }
+            else if (o is IDictionary<string, string> dss)
+            {
+                value = new JObject();
+                foreach (var kv in dss)
+                {
+                    if (!value.ContainsKey(kv.Key))
+                        value.Add(kv.Key, JToken.FromObject(kv.Value));
+                }
+                return true;
+            }
+            else if (o is IDictionary<string, object> dso)
+            {
+                value = new JObject();
+                foreach (var kv in dso)
+                {
+                    if (!value.ContainsKey(kv.Key))
+                        value.Add(kv.Key, JToken.FromObject(kv.Value));
+                }
+                return true;
+            }
+            else if (o is IDictionary d)
+            {
+                value = new JObject();
+                foreach (DictionaryEntry kv in d)
+                {
+                    var key = kv.Key.ToString();
+                    if (!value.ContainsKey(key))
+                        value.Add(key, JToken.FromObject(kv.Value));
+                }
+                return true;
+            }
+            return false;
+        }
+
         internal static object UnionObject(object[] o)
         {
             var result = new JObject();
@@ -298,10 +577,10 @@ namespace PSRule.Rules.Azure.Data.Template
                     foreach (var kv in dss)
                     {
                         if (!result.ContainsKey(kv.Key))
-                            result.Add(kv.Key, JValue.FromObject(kv.Value));
+                            result.Add(kv.Key, JToken.FromObject(kv.Value));
                     }
                 }
-                else if (o[i] is IDictionary<string, string> dso)
+                else if (o[i] is IDictionary<string, object> dso)
                 {
                     foreach (var kv in dso)
                     {

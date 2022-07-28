@@ -31,6 +31,9 @@ What's changed since pre-release v1.18.0-B0010:
       [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
     - Check accounts disable access using public endpoints by @BernieWhite.
       [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+- General improvements:
+  - Added support for array `indexOf`, `lastIndexOf`, and `items` ARM functions by @BernieWhite.
+    [#1440](https://github.com/Azure/PSRule.Rules.Azure/issues/1440)
 
 ## v1.18.0-B0010 (pre-release)
 
