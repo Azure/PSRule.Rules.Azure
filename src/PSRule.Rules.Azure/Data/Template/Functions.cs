@@ -6,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Web;
@@ -45,6 +44,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("empty", Empty),
             new FunctionDescriptor("first", First),
             new FunctionDescriptor("intersection", Intersection),
+            new FunctionDescriptor("items", Items),
             new FunctionDescriptor("last", Last),
             new FunctionDescriptor("length", Length),
             new FunctionDescriptor("min", Min),
@@ -363,10 +363,36 @@ namespace PSRule.Rules.Azure.Data.Template
             throw new ArgumentException();
         }
 
+        /// <summary>
+        /// items(object)
+        /// </summary>
+        /// <remarks>
+        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-object#items
+        /// </remarks>
+        internal static object Items(ITemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 1)
+                throw ArgumentsOutOfRange(nameof(Items), args);
+
+            if (ExpressionHelpers.TryJObject(args[0], out var jObject))
+            {
+                var result = new JArray();
+                foreach (var item in jObject.Properties().OrderBy(p => p.Name))
+                {
+                    var i = new JObject();
+                    i.Add("key", item.Name);
+                    i.Add("value", item.Value);
+                    result.Add(i);
+                }
+                return result;
+            }
+            return new JArray();
+        }
+
         internal static object Json(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1 || !ExpressionHelpers.TryString(args[0], out var json))
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(Json), args);
 
             return JsonConvert.DeserializeObject(json);
         }
@@ -1040,32 +1066,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args == null || args.Length != 2)
                 throw ArgumentsOutOfRange(nameof(Equals), args);
 
-            // One null
-            if (args[0] == null || args[1] == null)
-                return args[0] == args[1];
-
-            // Arrays
-            if (args[0] is Array array1 && args[1] is Array array2)
-                return SequenceEqual(array1, array2);
-            else if (args[0] is Array || args[1] is Array)
-                return false;
-
-            // String and int
-            if (ExpressionHelpers.TryString(args[0], out var s1) && ExpressionHelpers.TryString(args[1], out var s2))
-                return s1 == s2;
-            else if (ExpressionHelpers.TryString(args[0], out _) || ExpressionHelpers.TryString(args[1], out _))
-                return false;
-            else if (ExpressionHelpers.TryLong(args[0], out var i1) && ExpressionHelpers.TryLong(args[1], out var i2))
-                return i1 == i2;
-            else if (ExpressionHelpers.TryLong(args[0], out var _) || ExpressionHelpers.TryLong(args[1], out var _))
-                return false;
-
-            // JTokens
-            if (args[0] is JToken t1 && args[1] is JToken t2)
-                return JTokenEquals(t1, t2);
-
-            // Objects
-            return ObjectEquals(args[0], args[1]);
+            return ExpressionHelpers.Equal(args[0], args[1]);
         }
 
         /// <summary>
@@ -1366,7 +1367,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object EndsWith(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out var s1) || !ExpressionHelpers.TryString(args[1], out var s2))
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(EndsWith), args);
 
             return s1.EndsWith(s2, StringComparison.OrdinalIgnoreCase);
         }
@@ -1395,18 +1396,67 @@ namespace PSRule.Rules.Azure.Data.Template
             return new Guid(guidBytes).ToString();
         }
 
+        /// <summary>
+        /// indexOf(stringToSearch, stringToFind)
+        /// indexOf(arrayToSearch, itemToFind)
+        /// </summary>
         internal static object IndexOf(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(IndexOf), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out var stringToSearch))
-                throw new ArgumentException();
+            if (ExpressionHelpers.TryString(args[0], out var stringToSearch) &&
+                ExpressionHelpers.TryString(args[1], out var stringToFind))
+                return IndexOfString(stringToSearch, stringToFind);
 
-            if (!ExpressionHelpers.TryString(args[1], out var stringToFind))
-                throw new ArgumentException();
+            return IndexOfArray(args[0], args[1], first: true);
+        }
 
+        /// <summary>
+        /// indexOf(stringToSearch, stringToFind)
+        /// </summary>
+        /// <remarks>
+        /// <seealso href="https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#indexof"/>
+        /// </remarks>
+        private static object IndexOfString(string stringToSearch, string stringToFind)
+        {
             return (long)stringToSearch.IndexOf(stringToFind, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static object LastIndexOfString(string stringToSearch, string stringToFind)
+        {
+            return (long)stringToSearch.LastIndexOf(stringToFind, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        /// indexOf(arrayToSearch, itemToFind)
+        /// </summary>
+        /// <remarks>
+        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#indexof
+        /// </remarks>
+        private static object IndexOfArray(object o1, object o2, bool first)
+        {
+            // Find int in array
+            if (ExpressionHelpers.TryLong(o2, out var longToFind) &&
+                ExpressionHelpers.TryFindLongIndex(o1, longToFind, out var index, first))
+                return index;
+
+            // Find string in array
+            if (ExpressionHelpers.TryString(o2, out var stringToFind) &&
+                ExpressionHelpers.TryFindStringIndex(o1, stringToFind, out index, caseSensitive: true, first))
+                return index;
+
+            // Find array in array
+            if (ExpressionHelpers.TryArray(o2, out var arrayToFind) &&
+                ExpressionHelpers.TryFindArrayIndex(o1, arrayToFind, out index, first))
+                return index;
+
+            // Find object in array
+            if (ExpressionHelpers.TryJObject(o2, out var objectToFind) &&
+                ExpressionHelpers.TryFindObjectIndex(o1, objectToFind, out index, first))
+                return index;
+
+            return (long)-1;
         }
 
         internal static object LastIndexOf(ITemplateContext context, object[] args)
@@ -1414,13 +1464,11 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 2)
                 throw ArgumentsOutOfRange(nameof(LastIndexOf), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out var stringToSearch))
-                throw new ArgumentException();
+            if (ExpressionHelpers.TryString(args[0], out var stringToSearch) &&
+                ExpressionHelpers.TryString(args[1], out var stringToFind))
+                return LastIndexOfString(stringToSearch, stringToFind);
 
-            if (!ExpressionHelpers.TryString(args[1], out var stringToFind))
-                throw new ArgumentException();
-
-            return (long)stringToSearch.LastIndexOf(stringToFind, StringComparison.OrdinalIgnoreCase);
+            return IndexOfArray(args[0], args[1], first: false);
         }
 
         internal static object NewGuid(ITemplateContext context, object[] args)
@@ -1456,7 +1504,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object StartsWith(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out var s1) || !ExpressionHelpers.TryString(args[1], out var s2))
-                throw new ArgumentOutOfRangeException();
+                throw ArgumentsOutOfRange(nameof(StartsWith), args);
 
             return s1.StartsWith(s2, StringComparison.OrdinalIgnoreCase);
         }
@@ -1631,39 +1679,6 @@ namespace PSRule.Rules.Azure.Data.Template
             return Comparer.Default.Compare(left, right);
         }
 
-        private static bool SequenceEqual(Array array1, Array array2)
-        {
-            if (array1.Length != array2.Length)
-                return false;
-
-            for (var i = 0; i < array1.Length; i++)
-            {
-                if (array1.GetValue(i) != array2.GetValue(i))
-                    return false;
-            }
-            return true;
-        }
-
-        private static bool JTokenEquals(JToken t1, JToken t2)
-        {
-            return JToken.DeepEquals(t1, t2);
-        }
-
-        private static bool ObjectEquals(object o1, object o2)
-        {
-            var objectType = o1.GetType();
-            if (objectType != o2.GetType())
-                return false;
-
-            var props = objectType.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.GetProperty);
-            for (var i = 0; i < props.Length; i++)
-            {
-                if (!object.Equals(props[i].GetValue(o1), props[i].GetValue(o2)))
-                    return false;
-            }
-            return true;
-        }
-
         private static bool IsNull(object o)
         {
             return o == null || (o is JToken token && token.Type == JTokenType.Null);
@@ -1704,7 +1719,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             for (var i = 0; i < array.Length; i++)
             {
-                if (ObjectEquals(array.GetValue(i), objectToFind))
+                if (ExpressionHelpers.ObjectEquals(array.GetValue(i), objectToFind))
                     return true;
             }
             return false;
