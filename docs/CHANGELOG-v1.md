@@ -34,6 +34,8 @@ What's changed since pre-release v1.18.0-B0010:
 - General improvements:
   - Added support for array `indexOf`, `lastIndexOf`, and `items` ARM functions by @BernieWhite.
     [#1440](https://github.com/Azure/PSRule.Rules.Azure/issues/1440)
+  - Added support for `join` ARM function by @BernieWhite.
+    [#1535](https://github.com/Azure/PSRule.Rules.Azure/issues/1535)
 
 ## v1.18.0-B0010 (pre-release)
 

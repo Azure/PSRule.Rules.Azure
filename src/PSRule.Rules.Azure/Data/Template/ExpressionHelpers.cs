@@ -245,37 +245,41 @@ namespace PSRule.Rules.Azure.Data.Template
             return Array.Empty<long>();
         }
 
-        private static string[] GetStringArray(object o)
+        internal static bool TryStringArray(object o, out string[] value)
         {
+            value = null;
             if (o is Array array)
             {
-                var result = new string[array.Length];
+                value = new string[array.Length];
                 for (var i = 0; i < array.Length; i++)
                 {
                     if (TryString(array.GetValue(i), out var s))
-                        result[i] = s;
+                        value[i] = s;
                 }
-                return result;
             }
             else if (o is JArray jArray)
             {
-                var result = new string[jArray.Count];
+                value = new string[jArray.Count];
                 for (var i = 0; i < jArray.Count; i++)
                 {
                     if (TryString(jArray[i], out var s))
-                        result[i] = s;
+                        value[i] = s;
                 }
-                return result;
             }
             else if (o is IEnumerable<string> enumerable)
             {
-                return enumerable.ToArray();
+                value = enumerable.ToArray();
             }
             else if (o is IEnumerable e)
             {
-                return e.OfType<string>().ToArray();
+                value = e.OfType<string>().ToArray();
             }
-            return Array.Empty<string>();
+            return value != null;
+        }
+
+        private static string[] GetStringArray(object o)
+        {
+            return TryStringArray(o, out var value) ? value : Array.Empty<string>();
         }
 
         /// <summary>
