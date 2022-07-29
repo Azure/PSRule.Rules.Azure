@@ -129,6 +129,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("format", Format),
             new FunctionDescriptor("guid", Guid),
             new FunctionDescriptor("indexOf", IndexOf),
+            new FunctionDescriptor("join", Join),
             // last - also in array and object
             new FunctionDescriptor("lastIndexOf", LastIndexOf),
             // length - also in array and object
@@ -1459,6 +1460,10 @@ namespace PSRule.Rules.Azure.Data.Template
             return (long)-1;
         }
 
+        /// <summary>
+        /// lastIndexOf(stringToSearch, stringToFind)
+        /// lastIndexOf(arrayToSearch, itemToFind)
+        /// </summary>
         internal static object LastIndexOf(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 2)
@@ -1469,6 +1474,26 @@ namespace PSRule.Rules.Azure.Data.Template
                 return LastIndexOfString(stringToSearch, stringToFind);
 
             return IndexOfArray(args[0], args[1], first: false);
+        }
+
+        /// <summary>
+        /// join(inputArray, delimiter)
+        /// </summary>
+        /// <remarks>
+        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#join
+        /// </remarks>
+        internal static object Join(ITemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 2)
+                throw ArgumentsOutOfRange(nameof(Join), args);
+
+            if (!ExpressionHelpers.TryString(args[1], out var delimiter))
+                throw ArgumentInvalidString(nameof(Join), "delimiter");
+
+            if (!ExpressionHelpers.TryStringArray(args[0], out var inputArray))
+                throw ArgumentInvalidStringArray(nameof(Join), "inputArray");
+
+            return string.Join(delimiter, inputArray);
         }
 
         internal static object NewGuid(ITemplateContext context, object[] args)
@@ -1633,6 +1658,9 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// split(inputString, delimiter)
         /// </summary>
+        /// <remarks>
+        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#split
+        /// </remarks>
         internal static object Split(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
@@ -1650,14 +1678,9 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 delimiter = new string[] { single };
             }
-            else if (args[1] is Array delimiters)
+            else if (ExpressionHelpers.TryStringArray(args[1], out var delimiterArray))
             {
-                delimiter = new string[delimiters.Length];
-                delimiters.CopyTo(delimiter, 0);
-            }
-            else if (TryJArray(args[1], out var jArray))
-            {
-                delimiter = jArray.Values<string>().ToArray();
+                delimiter = delimiterArray;
             }
             else
                 throw ArgumentFormatInvalid(nameof(Split));
@@ -1829,6 +1852,20 @@ namespace PSRule.Rules.Azure.Data.Template
             );
         }
 
+        /// <summary>
+        /// The argument '{0}' for '{1}' is not a valid string array.
+        /// </summary>
+        private static ExpressionArgumentException ArgumentInvalidStringArray(string expression, string operand)
+        {
+            return new ExpressionArgumentException(
+                expression,
+                string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentInvalidStringArray, operand, expression)
+            );
+        }
+
+        /// <summary>
+        /// The resource type '{1}/{2}' for '{0}' is not known.
+        /// </summary>
         private static ExpressionArgumentException ArgumentInvalidResourceType(string expression, string providerNamespace, string resourceType)
         {
             return new ExpressionArgumentException(
@@ -1837,6 +1874,9 @@ namespace PSRule.Rules.Azure.Data.Template
             );
         }
 
+        /// <summary>
+        /// The number of resource segments needs to match the provided resource type.
+        /// </summary>
         private static TemplateFunctionException MismatchingResourceSegments(string expression)
         {
             return new TemplateFunctionException(

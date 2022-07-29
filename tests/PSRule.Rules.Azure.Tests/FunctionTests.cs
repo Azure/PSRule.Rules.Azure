@@ -1523,6 +1523,24 @@ namespace PSRule.Rules.Azure
 
         [Fact]
         [Trait(TRAIT, TRAIT_STRING)]
+        public void Join()
+        {
+            var context = GetContext();
+
+            var actual = Functions.Join(context, new object[] { new object[] { "one", JToken.Parse("\"two\""), "three" }, "," }) as string;
+            Assert.Equal("one,two,three", actual);
+
+            actual = Functions.Join(context, new object[] { new JArray("one", JToken.Parse("\"two\""), "three"), new JValue(",") }) as string;
+            Assert.Equal("one,two,three", actual);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, new object[] { "test" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, new object[] { 1, 1 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, new object[] { new int[] { 1, 2 }, 1 }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_STRING)]
         public void NewGuid()
         {
             var context = GetContext();
@@ -1572,9 +1590,26 @@ namespace PSRule.Rules.Azure
         {
             var context = GetContext();
 
-            var actual1 = Functions.Split(context, new object[] { "This is a test", new string[] { " " } }) as JArray;
-            Assert.Equal("This", actual1[0]);
-            Assert.Equal("test", actual1[3]);
+            var actual = Functions.Split(context, new object[] { "This is a test", new string[] { " " } }) as JArray;
+            Assert.Equal("This", actual[0]);
+            Assert.Equal("test", actual[3]);
+
+            actual = Functions.Split(context, new object[] { "This is a test", new object[] { new JValue(" ") } }) as JArray;
+            Assert.Equal("This", actual[0]);
+            Assert.Equal("test", actual[3]);
+
+            actual = Functions.Split(context, new object[] { new JValue("This is a test"), new JArray(new object[] { " " }) }) as JArray;
+            Assert.Equal("This", actual[0]);
+            Assert.Equal("test", actual[3]);
+
+            actual = Functions.Split(context, new object[] { new JValue("one;two,three"), new JArray(new object[] { ";", "," }) }) as JArray;
+            Assert.Equal("one", actual[0]);
+            Assert.Equal("two", actual[1]);
+            Assert.Equal("three", actual[2]);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Split(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Split(context, new object[] { "test" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Split(context, new object[] { 1, 1 }));
         }
 
         [Fact]
