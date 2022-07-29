@@ -1,0 +1,100 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.8.9.13224",
+      "templateHash": "4205854155642746064"
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "defaultValue": "sql",
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+      "apiVersion": "2021-11-01-preview",
+      "name": "[format('{0}/{1}/{2}', format('sql-{0}-01', parameters('name')), format('sqldb-{0}-02', parameters('name')), 'current')]",
+      "properties": {
+        "state": "Disabled"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', format('sql-{0}-01', parameters('name')), format('sqldb-{0}-02', parameters('name')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2021-11-01-preview",
+      "name": "[format('sql-{0}-01', parameters('name'))]",
+      "location": "[parameters('location')]"
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2021-11-01-preview",
+      "name": "[format('{0}/{1}', format('sql-{0}-01', parameters('name')), format('sqldb-{0}-01', parameters('name')))]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', format('sql-{0}-01', parameters('name')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2021-11-01-preview",
+      "name": "[format('{0}/{1}', format('sql-{0}-01', parameters('name')), format('sqldb-{0}-02', parameters('name')))]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', format('sql-{0}-01', parameters('name')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2021-11-01-preview",
+      "name": "[format('{0}/{1}', format('sql-{0}-01', parameters('name')), format('sqldb-{0}-03', parameters('name')))]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', format('sql-{0}-01', parameters('name')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+      "apiVersion": "2021-11-01-preview",
+      "name": "[format('{0}/{1}/{2}', format('sql-{0}-01', parameters('name')), format('sqldb-{0}-03', parameters('name')), 'current')]",
+      "properties": {
+        "state": "Disabled"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', format('sql-{0}-01', parameters('name')), format('sqldb-{0}-03', parameters('name')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+      "apiVersion": "2021-11-01-preview",
+      "name": "server01/db01/current",
+      "properties": {
+        "state": "Disabled"
+      }
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+      "apiVersion": "2014-04-01",
+      "name": "server01/db02/current",
+      "properties": {
+        "status": "Disabled"
+      }
+    }
+  ]
+}
