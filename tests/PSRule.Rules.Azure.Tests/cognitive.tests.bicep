@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-@description('The name of the cognitive services account.')
+@description('The name of the resource.')
 param name string = 'cognitive'
 
 @description('The location resources will be deployed.')

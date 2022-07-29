@@ -36,6 +36,9 @@ What's changed since pre-release v1.18.0-B0010:
     [#1440](https://github.com/Azure/PSRule.Rules.Azure/issues/1440)
   - Added support for `join` ARM function by @BernieWhite.
     [#1535](https://github.com/Azure/PSRule.Rules.Azure/issues/1535)
+- Bug fixes:
+  - Fixed `Azure.SQL.TDE` is not required to enable Transparent Data Encryption for IaC by @BernieWhite.
+    [#1530](https://github.com/Azure/PSRule.Rules.Azure/issues/1530)
 
 ## v1.18.0-B0010 (pre-release)
 
