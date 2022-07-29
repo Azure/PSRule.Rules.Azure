@@ -6,7 +6,7 @@ A suite of rules to validate Azure resources and infrastructure as code (IaC) us
 
 Features of PSRule for Azure include:
 
-- [Ready to go][2] - Leverage over 260 pre-built rules to validate Azure resources.
+- [Ready to go][2] - Leverage over 280 pre-built rules to validate Azure resources.
 - [DevOps][3] - Validate resources and infrastructure code pre or post-deployment.
 - [Cross-platform][4] - Run on MacOS, Linux, and Windows.
 
@@ -343,14 +343,14 @@ To find out more, look at these conceptual topics:
 - Testing infrastructure as code:
   - [Expanding source files](https://azure.github.io/PSRule.Rules.Azure/expanding-source-files/)
   - [Using templates](https://azure.github.io/PSRule.Rules.Azure/using-templates/)
-  - [Using Bicep source](https://azure.github.io/PSRule.Rules.Azure/using-bicep/)
+  - [Using Bicep source](https://aka.ms/ps-rule-azure/bicep)
   - [Working with baselines](https://azure.github.io/PSRule.Rules.Azure/working-with-baselines/)
 - Setup:
-  - [Configuring options](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-options/)
+  - [Configuring options](https://aka.ms/ps-rule-azure/options)
   - [Configuring rule defaults](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-rules/)
   - [Configuring expansion](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-expansion/)
   - [Setup Bicep](https://azure.github.io/PSRule.Rules.Azure/setup/setup-bicep/)
-  - [Setup Azure Monitor logs](https://azure.github.io/PSRule.Rules.Azure/setup/setup-azure-monitor-logs/)
+  - [Setup Azure Monitor logs](https://aka.ms/ps-rule-azure/monitor)
 
 ## Related projects
 

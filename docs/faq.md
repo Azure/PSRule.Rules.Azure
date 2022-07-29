@@ -12,6 +12,11 @@ For general FAQ see [PSRule - Frequently Asked Questions (FAQ)][ps-rule-faq], in
 - [How do I ignore a rule?][ignore-rule]
 - [How do I layer on custom rules on top of an existing module?][add-custom-rule]
 
+!!! Note
+    If you have a question that is not answered here, please [join or start a discussion][discussion].
+
+  [discussion]: https://github.com/Azure/PSRule.Rules.Azure/discussions
+
 ## What is a rule?
 
 A rule is a named set of checks and documentation.

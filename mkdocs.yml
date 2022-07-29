@@ -59,7 +59,7 @@ nav:
       - Enforcing custom tags: customization/enforce-custom-tags.md
       - Enforcing code ownership: customization/enforce-codeowners.md
     - Troubleshooting: troubleshooting.md
-    # - Data privacy: data-privacy.md
+    - Samples: samples.md
     - License and contributing: license-contributing.md
     - Related projects: related-projects.md
     - Releases:
