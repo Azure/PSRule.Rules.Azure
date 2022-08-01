@@ -3,7 +3,19 @@
     "aliases": null,
     "resourceType": "cloudManifestFiles",
     "apiVersions": [
+      "2022-06-01",
       "2017-06-01"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "generateDeploymentLicense",
+    "apiVersions": [
+      "2022-06-01"
     ],
     "locations": [
       "Global"
@@ -27,6 +39,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-06-01",
       "2017-06-01"
     ],
     "locations": [
@@ -38,6 +51,7 @@
     "aliases": null,
     "resourceType": "registrations",
     "apiVersions": [
+      "2022-06-01",
       "2021-05-01-preview",
       "2020-06-01-preview",
       "2017-06-01"
@@ -51,6 +65,7 @@
     "aliases": null,
     "resourceType": "registrations/customerSubscriptions",
     "apiVersions": [
+      "2022-06-01",
       "2017-06-01"
     ],
     "locations": [
@@ -62,6 +77,7 @@
     "aliases": null,
     "resourceType": "registrations/products",
     "apiVersions": [
+      "2022-06-01",
       "2017-06-01",
       "2016-01-01"
     ],

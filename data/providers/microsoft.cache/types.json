@@ -90,7 +90,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -176,7 +177,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -330,7 +332,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -443,6 +446,14 @@
       },
       {
         "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Qatar Central",
         "zones": [
           "1",
           "2",
@@ -586,7 +597,8 @@
       "Norway West",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -635,7 +647,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -684,7 +697,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -741,7 +755,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -790,7 +805,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },

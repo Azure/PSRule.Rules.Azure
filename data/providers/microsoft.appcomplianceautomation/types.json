@@ -14,7 +14,9 @@
     "apiVersions": [
       "2022-05-10-privatepreview"
     ],
-    "locations": [],
+    "locations": [
+      "West US 3"
+    ],
     "zoneMappings": null
   },
   {

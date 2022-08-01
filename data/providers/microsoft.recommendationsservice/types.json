@@ -23,7 +23,9 @@
     ],
     "locations": [
       "West US",
-      "West Europe"
+      "West Europe",
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -76,6 +78,8 @@
       "West US",
       "North Europe",
       "West Europe",
+      "Australia East",
+      "Canada Central",
       "Central US EUAP",
       "East US 2 EUAP"
     ],

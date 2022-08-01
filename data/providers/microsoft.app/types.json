@@ -134,7 +134,12 @@
       "Germany West Central",
       "Japan East",
       "UK South",
-      "West US"
+      "West US",
+      "Central US",
+      "North Central US",
+      "South Central US",
+      "Korea Central",
+      "Brazil South"
     ],
     "zoneMappings": null
   },
@@ -167,7 +172,12 @@
       "Germany West Central",
       "Japan East",
       "UK South",
-      "West US"
+      "West US",
+      "Central US",
+      "North Central US",
+      "South Central US",
+      "Korea Central",
+      "Brazil South"
     ],
     "zoneMappings": null
   },
@@ -190,7 +200,12 @@
       "Germany West Central",
       "Japan East",
       "UK South",
-      "West US"
+      "West US",
+      "Central US",
+      "North Central US",
+      "South Central US",
+      "Korea Central",
+      "Brazil South"
     ],
     "zoneMappings": null
   },
@@ -213,7 +228,12 @@
       "Germany West Central",
       "Japan East",
       "UK South",
-      "West US"
+      "West US",
+      "Central US",
+      "North Central US",
+      "South Central US",
+      "Korea Central",
+      "Brazil South"
     ],
     "zoneMappings": null
   },
@@ -236,7 +256,12 @@
       "Germany West Central",
       "Japan East",
       "UK South",
-      "West US"
+      "West US",
+      "Central US",
+      "North Central US",
+      "South Central US",
+      "Korea Central",
+      "Brazil South"
     ],
     "zoneMappings": null
   },
@@ -277,7 +302,12 @@
       "Germany West Central",
       "Japan East",
       "UK South",
-      "West US"
+      "West US",
+      "Central US",
+      "North Central US",
+      "South Central US",
+      "Korea Central",
+      "Brazil South"
     ],
     "zoneMappings": null
   },
@@ -311,7 +341,12 @@
       "Germany West Central",
       "Japan East",
       "UK South",
-      "West US"
+      "West US",
+      "Central US",
+      "North Central US",
+      "South Central US",
+      "Korea Central",
+      "Brazil South"
     ],
     "zoneMappings": null
   },
@@ -340,7 +375,8 @@
       "Central US",
       "North Central US",
       "South Central US",
-      "Korea Central"
+      "Korea Central",
+      "Brazil South"
     ],
     "zoneMappings": null
   },

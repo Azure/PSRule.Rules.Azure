@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
@@ -21,6 +22,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
@@ -50,7 +52,8 @@
       "South Africa North",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Korea Central"
     ],
     "zoneMappings": null
   },
@@ -58,6 +61,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
@@ -88,7 +92,8 @@
       "South Africa North",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Korea Central"
     ],
     "zoneMappings": null
   },
@@ -96,6 +101,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
@@ -125,7 +131,8 @@
       "South Africa North",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Korea Central"
     ],
     "zoneMappings": null
   },
@@ -172,6 +179,7 @@
     },
     "resourceType": "services",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
@@ -290,6 +298,7 @@
     "aliases": null,
     "resourceType": "services/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
@@ -331,6 +340,7 @@
     },
     "resourceType": "services/privateEndpointConnections",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
@@ -364,6 +374,7 @@
     "aliases": null,
     "resourceType": "services/privateLinkResources",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
@@ -399,6 +410,7 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
@@ -417,7 +429,8 @@
       "Switzerland North",
       "West US 3",
       "Central India",
-      "Southeast Asia"
+      "Southeast Asia",
+      "Korea Central"
     ],
     "zoneMappings": null
   },
@@ -432,6 +445,7 @@
     },
     "resourceType": "workspaces/dicomservices",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
@@ -450,7 +464,8 @@
       "Switzerland North",
       "Central India",
       "West US 3",
-      "Southeast Asia"
+      "Southeast Asia",
+      "Korea Central"
     ],
     "zoneMappings": null
   },
@@ -458,6 +473,7 @@
     "aliases": null,
     "resourceType": "workspaces/eventGridFilters",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01"
@@ -475,7 +491,8 @@
       "Switzerland North",
       "Central India",
       "West US 3",
-      "Southeast Asia"
+      "Southeast Asia",
+      "Korea Central"
     ],
     "zoneMappings": null
   },
@@ -506,6 +523,7 @@
     },
     "resourceType": "workspaces/fhirservices",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
@@ -524,7 +542,8 @@
       "Switzerland North",
       "Central India",
       "West US 3",
-      "Southeast Asia"
+      "Southeast Asia",
+      "Korea Central"
     ],
     "zoneMappings": null
   },
@@ -539,6 +558,7 @@
     },
     "resourceType": "workspaces/iotconnectors",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
@@ -557,7 +577,8 @@
       "Switzerland North",
       "Central India",
       "West US 3",
-      "Southeast Asia"
+      "Southeast Asia",
+      "Korea Central"
     ],
     "zoneMappings": null
   },
@@ -570,6 +591,7 @@
     },
     "resourceType": "workspaces/iotconnectors/fhirdestinations",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01",
@@ -588,7 +610,8 @@
       "Switzerland North",
       "Central India",
       "West US 3",
-      "Southeast Asia"
+      "Southeast Asia",
+      "Korea Central"
     ],
     "zoneMappings": null
   },
@@ -596,6 +619,7 @@
     "aliases": null,
     "resourceType": "workspaces/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01"
@@ -613,7 +637,8 @@
       "Switzerland North",
       "Central India",
       "West US 3",
-      "Southeast Asia"
+      "Southeast Asia",
+      "Korea Central"
     ],
     "zoneMappings": null
   },
@@ -621,6 +646,7 @@
     "aliases": null,
     "resourceType": "workspaces/privateEndpointConnections",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01"
@@ -638,7 +664,8 @@
       "Switzerland North",
       "Central India",
       "West US 3",
-      "Southeast Asia"
+      "Southeast Asia",
+      "Korea Central"
     ],
     "zoneMappings": null
   },
@@ -646,6 +673,7 @@
     "aliases": null,
     "resourceType": "workspaces/privateLinkResources",
     "apiVersions": [
+      "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
       "2021-11-01"
@@ -663,7 +691,8 @@
       "Switzerland North",
       "Central India",
       "West US 3",
-      "Southeast Asia"
+      "Southeast Asia",
+      "Korea Central"
     ],
     "zoneMappings": null
   }

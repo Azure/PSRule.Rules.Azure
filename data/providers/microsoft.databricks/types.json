@@ -1,8 +1,55 @@
 [
   {
     "aliases": null,
+    "resourceType": "accessConnectors",
+    "apiVersions": [
+      "2022-04-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "East US 2",
+      "West Europe",
+      "East US",
+      "North Europe",
+      "Southeast Asia",
+      "East Asia",
+      "South Central US",
+      "North Central US",
+      "West US 2",
+      "Central US",
+      "UK West",
+      "UK South",
+      "Australia East",
+      "Australia Southeast",
+      "Australia Central",
+      "Australia Central 2",
+      "Japan East",
+      "Japan West",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "South India",
+      "West India",
+      "Korea Central",
+      "South Africa North",
+      "Brazil South",
+      "Switzerland North",
+      "France Central",
+      "UAE North",
+      "Norway East",
+      "Germany West Central",
+      "Switzerland West",
+      "Sweden Central",
+      "West Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-04-01-preview",
       "2018-04-01",
       "2018-03-15",
@@ -52,6 +99,7 @@
     "aliases": null,
     "resourceType": "locations/getNetworkPolicies",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-04-01-preview",
       "2018-04-01"
     ],
@@ -99,6 +147,7 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-04-01-preview",
       "2018-04-01"
     ],
@@ -146,6 +195,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-04-01-preview",
       "2018-04-01"
     ],
@@ -297,6 +347,7 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-04-01-preview",
       "2018-04-01"
     ],
@@ -407,6 +458,7 @@
     },
     "resourceType": "workspaces/virtualNetworkPeerings",
     "apiVersions": [
+      "2022-04-01-preview",
       "2021-04-01-preview",
       "2018-04-01"
     ],

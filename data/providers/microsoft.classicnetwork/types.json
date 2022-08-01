@@ -98,6 +98,7 @@
       "UAE North",
       "Switzerland North",
       "Jio India West",
+      "Qatar Central",
       "Australia Central",
       "Germany West Central",
       "West US 3",
@@ -181,6 +182,7 @@
       "UAE North",
       "Switzerland North",
       "Jio India West",
+      "Qatar Central",
       "Australia Central",
       "Germany West Central",
       "Norway East",
@@ -235,6 +237,7 @@
       "UAE North",
       "Switzerland North",
       "Jio India West",
+      "Qatar Central",
       "Australia Central",
       "Germany West Central",
       "Norway East",
@@ -279,7 +282,8 @@
       "France Central",
       "Australia Central",
       "East US 2 (Stage)",
-      "North Central US (Stage)"
+      "North Central US (Stage)",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -319,7 +323,8 @@
       "France Central",
       "Australia Central",
       "East US 2 (Stage)",
-      "North Central US (Stage)"
+      "North Central US (Stage)",
+      "Qatar Central"
     ],
     "zoneMappings": null
   }

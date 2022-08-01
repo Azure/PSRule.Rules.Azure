@@ -16,9 +16,7 @@
     "apiVersions": [
       "2021-11-20-preview"
     ],
-    "locations": [
-      "East US 2 (Stage)"
-    ],
+    "locations": [],
     "zoneMappings": null
   },
   {

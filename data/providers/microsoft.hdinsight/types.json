@@ -317,7 +317,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -653,7 +657,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -939,7 +947,9 @@
       "Australia East",
       "Australia Southeast",
       "Brazil South",
-      "Central India"
+      "Central India",
+      "Korea Central",
+      "UK South"
     ],
     "zoneMappings": null
   },
@@ -1005,7 +1015,9 @@
       "West US 2",
       "West US 3",
       "West Europe",
-      "Central India"
+      "Central India",
+      "Korea Central",
+      "UK South"
     ],
     "zoneMappings": null
   },

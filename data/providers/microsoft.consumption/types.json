@@ -240,6 +240,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2022-06-01",
       "2021-10-01",
       "2019-10-01",
       "2019-05-01",
@@ -261,6 +262,7 @@
     "aliases": null,
     "resourceType": "OperationStatus",
     "apiVersions": [
+      "2022-06-01",
       "2021-10-01",
       "2021-01-01",
       "2019-11-01",

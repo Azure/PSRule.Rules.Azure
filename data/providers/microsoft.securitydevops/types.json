@@ -1,8 +1,75 @@
 [
   {
     "aliases": null,
+    "resourceType": "azureDevOpsConnectors/orgs",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "azureDevOpsConnectors/orgs/projects",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "azureDevOpsConnectors/orgs/projects/repos",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "gitHubConnectors/gitHubRepos",
+    "apiVersions": [
+      "2021-10-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "gitHubConnectors/owners",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "gitHubConnectors/owners/repos",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2022-09-01-preview",
       "2021-10-01-preview"
     ],
     "locations": [],
@@ -12,12 +79,23 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2022-09-01-preview",
       "2021-10-01-preview"
     ],
     "locations": [
       "Australia East",
       "Central US"
     ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2022-09-01-preview",
+      "2021-10-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": null
   }
 ]

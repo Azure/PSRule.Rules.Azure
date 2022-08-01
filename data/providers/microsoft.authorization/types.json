@@ -1,6 +1,30 @@
 [
   {
     "aliases": null,
+    "resourceType": "accessReviewScheduleDefinitions",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-07-01-preview",
+      "2021-03-01-preview",
+      "2018-05-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "accessReviewScheduleSettings",
+    "apiVersions": [
+      "2021-12-01-preview",
+      "2021-07-01-preview",
+      "2021-03-01-preview",
+      "2018-05-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "checkAccess",
     "apiVersions": [
       "2018-09-01-preview"
@@ -35,8 +59,18 @@
   },
   {
     "aliases": null,
+    "resourceType": "dataPolicyManifests",
+    "apiVersions": [
+      "2020-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "denyAssignments",
     "apiVersions": [
+      "2022-04-01",
       "2019-03-01-preview",
       "2018-07-01-preview",
       "2018-07-01"
@@ -150,6 +184,7 @@
     },
     "resourceType": "policyAssignments",
     "apiVersions": [
+      "2022-06-01",
       "2021-06-01",
       "2020-09-01",
       "2020-08-01",
@@ -207,6 +242,7 @@
     },
     "resourceType": "policyExemptions",
     "apiVersions": [
+      "2022-07-01-preview",
       "2020-07-01-preview"
     ],
     "locations": [],
@@ -263,6 +299,7 @@
     "aliases": null,
     "resourceType": "providerOperations",
     "apiVersions": [
+      "2022-04-01",
       "2018-07-01",
       "2018-01-01-preview",
       "2017-05-01",
@@ -302,6 +339,7 @@
     },
     "resourceType": "roleAssignments",
     "apiVersions": [
+      "2022-04-01",
       "2022-01-01-preview",
       "2021-04-01-preview",
       "2020-10-01-preview",
@@ -358,6 +396,8 @@
     },
     "resourceType": "roleDefinitions",
     "apiVersions": [
+      "2022-05-01-preview",
+      "2022-04-01",
       "2018-07-01",
       "2018-01-01-preview",
       "2017-09-01",

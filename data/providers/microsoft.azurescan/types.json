@@ -3,45 +3,47 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
-      "2019-10-01-preview"
+      "2022-05-17-preview"
     ],
     "locations": [],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "getDefaultAccount",
+    "resourceType": "locations",
     "apiVersions": [
-      "2019-10-01-preview"
+      "2022-05-17-preview"
     ],
     "locations": [],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "operations",
+    "resourceType": "locations/OperationStatuses",
     "apiVersions": [
-      "2019-10-01-preview"
+      "2022-05-17-preview"
     ],
     "locations": [],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "removeDefaultAccount",
+    "resourceType": "Operations",
     "apiVersions": [
-      "2019-10-01-preview"
+      "2022-05-17-preview"
     ],
     "locations": [],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "setDefaultAccount",
+    "resourceType": "scanningAccounts",
     "apiVersions": [
-      "2019-10-01-preview"
+      "2022-05-17-preview"
     ],
-    "locations": [],
+    "locations": [
+      "global"
+    ],
     "zoneMappings": null
   }
 ]

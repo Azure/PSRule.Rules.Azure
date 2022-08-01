@@ -23,6 +23,7 @@
     },
     "resourceType": "availabilitySets",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -97,6 +98,7 @@
     },
     "resourceType": "capacityReservationGroups",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -302,7 +304,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -356,6 +362,7 @@
     },
     "resourceType": "capacityReservationGroups/capacityReservations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -561,7 +568,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -860,7 +871,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -1152,6 +1167,7 @@
     },
     "resourceType": "diskAccesses",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -1231,6 +1247,7 @@
     },
     "resourceType": "diskEncryptionSets",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -1378,6 +1395,7 @@
     },
     "resourceType": "disks",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -1592,7 +1610,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -2134,6 +2156,7 @@
     },
     "resourceType": "hostGroups",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -2343,7 +2366,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -2398,6 +2425,7 @@
     },
     "resourceType": "hostGroups/hosts",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -2607,7 +2635,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -2680,6 +2712,7 @@
     },
     "resourceType": "images",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -2742,6 +2775,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -2958,6 +2992,7 @@
     "aliases": null,
     "resourceType": "locations/communityGalleries",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-03",
       "2022-03-01",
       "2022-01-03",
@@ -3166,6 +3201,7 @@
     "aliases": null,
     "resourceType": "locations/diskoperations",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -3227,6 +3263,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3241,6 +3278,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/publishers",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3347,6 +3385,7 @@
     "aliases": null,
     "resourceType": "locations/logAnalytics",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3406,6 +3445,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3472,6 +3512,7 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-03",
       "2022-03-01",
       "2022-01-03",
@@ -3540,6 +3581,7 @@
     "aliases": null,
     "resourceType": "locations/recommendations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01"
@@ -3588,6 +3630,7 @@
     "aliases": null,
     "resourceType": "locations/runCommands",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3648,6 +3691,7 @@
     "aliases": null,
     "resourceType": "locations/sharedGalleries",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-03",
       "2022-03-01",
       "2022-01-03",
@@ -3716,6 +3760,7 @@
     "aliases": null,
     "resourceType": "locations/spotEvictionRates",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3768,6 +3813,7 @@
     "aliases": null,
     "resourceType": "locations/spotPriceHistory",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3820,6 +3866,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3885,6 +3932,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachines",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3946,6 +3994,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachineScaleSets",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4007,6 +4056,7 @@
     "aliases": null,
     "resourceType": "locations/vmSizes",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4072,6 +4122,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4171,6 +4222,7 @@
     },
     "resourceType": "proximityPlacementGroups",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4382,7 +4434,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -4538,6 +4594,7 @@
     },
     "resourceType": "restorePointCollections",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4712,6 +4769,7 @@
     },
     "resourceType": "restorePointCollections/restorePoints",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4772,6 +4830,7 @@
     "aliases": null,
     "resourceType": "restorePointCollections/restorePoints/diskRestorePoints",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -4973,6 +5032,7 @@
     },
     "resourceType": "snapshots",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -5036,6 +5096,7 @@
     },
     "resourceType": "sshPublicKeys",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -5331,6 +5392,7 @@
     },
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -5549,7 +5611,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -5615,6 +5681,7 @@
     },
     "resourceType": "virtualMachines/extensions",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -5746,6 +5813,7 @@
     },
     "resourceType": "virtualMachines/runCommands",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6082,6 +6150,7 @@
     },
     "resourceType": "virtualMachineScaleSets",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6301,7 +6370,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -6355,6 +6428,7 @@
     },
     "resourceType": "virtualMachineScaleSets/extensions",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6421,6 +6495,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/networkInterfaces",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6489,6 +6564,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/publicIPAddresses",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6806,6 +6882,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6883,6 +6960,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines/extensions",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6949,6 +7027,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/virtualMachines/networkInterfaces",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",

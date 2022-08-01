@@ -53,6 +53,7 @@
       "UAE North",
       "Japan East",
       "Switzerland North",
+      "South Africa North",
       "Australia East",
       "North Europe",
       "West Central US",
@@ -71,7 +72,8 @@
       "Korea Central",
       "UAE North",
       "Japan East",
-      "Switzerland North"
+      "Switzerland North",
+      "South Africa North"
     ],
     "zoneMappings": null
   },
@@ -127,6 +129,7 @@
       "Korea Central",
       "UAE North",
       "Japan East",
+      "South Africa North",
       "Australia East",
       "North Europe",
       "West Central US",
@@ -157,6 +160,7 @@
       "UAE North",
       "Japan East",
       "Switzerland North",
+      "South Africa North",
       "Australia East",
       "North Europe",
       "West Central US",
@@ -185,6 +189,7 @@
       "UAE North",
       "Japan East",
       "Switzerland North",
+      "South Africa North",
       "Australia East",
       "North Europe",
       "West Central US",

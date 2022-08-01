@@ -23,11 +23,13 @@
     },
     "resourceType": "Clusters",
     "apiVersions": [
+      "2022-01-10-preview",
       "2020-10-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "Australia East"
     ],
     "zoneMappings": null
   },
@@ -51,11 +53,13 @@
     },
     "resourceType": "Datastores",
     "apiVersions": [
+      "2022-01-10-preview",
       "2020-10-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "Australia East"
     ],
     "zoneMappings": null
   },
@@ -79,11 +83,13 @@
     },
     "resourceType": "Hosts",
     "apiVersions": [
+      "2022-01-10-preview",
       "2020-10-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "Australia East"
     ],
     "zoneMappings": null
   },
@@ -108,7 +114,8 @@
       "East US",
       "East US 2 EUAP",
       "West Europe",
-      "Australia East"
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -148,11 +155,13 @@
     },
     "resourceType": "ResourcePools",
     "apiVersions": [
+      "2022-01-10-preview",
       "2020-10-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "Australia East"
     ],
     "zoneMappings": null
   },
@@ -180,11 +189,13 @@
     },
     "resourceType": "VCenters",
     "apiVersions": [
+      "2022-01-10-preview",
       "2020-10-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "Australia East"
     ],
     "zoneMappings": null
   },
@@ -229,11 +240,13 @@
     },
     "resourceType": "VCenters/InventoryItems",
     "apiVersions": [
+      "2022-01-10-preview",
       "2020-10-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "Australia East"
     ],
     "zoneMappings": null
   },
@@ -352,11 +365,13 @@
     },
     "resourceType": "VirtualMachines",
     "apiVersions": [
+      "2022-01-10-preview",
       "2020-10-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "Australia East"
     ],
     "zoneMappings": null
   },
@@ -381,11 +396,13 @@
     },
     "resourceType": "VirtualMachines/Extensions",
     "apiVersions": [
+      "2022-01-10-preview",
       "2020-10-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "Australia East"
     ],
     "zoneMappings": null
   },
@@ -412,11 +429,13 @@
     },
     "resourceType": "VirtualMachines/GuestAgents",
     "apiVersions": [
+      "2022-01-10-preview",
       "2020-10-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "Australia East"
     ],
     "zoneMappings": null
   },
@@ -432,11 +451,13 @@
     },
     "resourceType": "VirtualMachines/HybridIdentityMetadata",
     "apiVersions": [
+      "2022-01-10-preview",
       "2020-10-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "Australia East"
     ],
     "zoneMappings": null
   },
@@ -509,11 +530,13 @@
     },
     "resourceType": "VirtualMachineTemplates",
     "apiVersions": [
+      "2022-01-10-preview",
       "2020-10-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "Australia East"
     ],
     "zoneMappings": null
   },
@@ -537,11 +560,13 @@
     },
     "resourceType": "VirtualNetworks",
     "apiVersions": [
+      "2022-01-10-preview",
       "2020-10-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "West Europe",
+      "Australia East"
     ],
     "zoneMappings": null
   }
