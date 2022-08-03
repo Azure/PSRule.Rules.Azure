@@ -1,5 +1,27 @@
 [
   {
+    "aliases": null,
+    "resourceType": "connectedEnvironments",
+    "apiVersions": [
+      "2022-06-01-preview"
+    ],
+    "locations": [
+      "North Central US (Stage)"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "connectedEnvironments/certificates",
+    "apiVersions": [
+      "2022-06-01-preview"
+    ],
+    "locations": [
+      "North Central US (Stage)"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.App/containerApps/configuration": "properties.configuration",
       "Microsoft.App/containerApps/configuration.activeRevisionsMode": "properties.configuration.activeRevisionsMode",
@@ -119,6 +141,7 @@
     },
     "resourceType": "containerApps",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-03-01",
       "2022-01-01-preview"
     ],
@@ -147,6 +170,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-03-01",
       "2022-01-01-preview"
     ],
@@ -155,8 +179,31 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/connectedEnvironmentOperationResults",
+    "apiVersions": [
+      "2022-06-01-preview"
+    ],
+    "locations": [
+      "North Central US (Stage)"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/connectedEnvironmentOperationStatuses",
+    "apiVersions": [
+      "2022-06-01-preview"
+    ],
+    "locations": [
+      "North Central US (Stage)"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/containerappOperationResults",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-03-01",
       "2022-01-01-preview"
     ],
@@ -185,6 +232,7 @@
     "aliases": null,
     "resourceType": "locations/containerappOperationStatuses",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-03-01",
       "2022-01-01-preview"
     ],
@@ -213,6 +261,7 @@
     "aliases": null,
     "resourceType": "locations/managedEnvironmentOperationResults",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-03-01",
       "2022-01-01-preview"
     ],
@@ -241,6 +290,7 @@
     "aliases": null,
     "resourceType": "locations/managedEnvironmentOperationStatuses",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-03-01",
       "2022-01-01-preview"
     ],
@@ -287,6 +337,7 @@
     },
     "resourceType": "managedEnvironments",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-03-01",
       "2022-01-01-preview"
     ],
@@ -326,6 +377,7 @@
     },
     "resourceType": "managedEnvironments/certificates",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-03-01",
       "2022-01-01-preview"
     ],
@@ -354,6 +406,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-03-01",
       "2022-01-01-preview"
     ],

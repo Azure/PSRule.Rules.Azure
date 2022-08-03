@@ -31,8 +31,15 @@
       "2021-03-12-preview"
     ],
     "locations": [
+      "East US",
+      "East US 2",
+      "South Central US",
       "West US 2",
+      "West US 3",
+      "Australia East",
       "Southeast Asia",
+      "North Europe",
+      "Sweden Central",
       "West Europe"
     ],
     "zoneMappings": null
@@ -50,8 +57,15 @@
       "2021-08-30-preview"
     ],
     "locations": [
+      "East US",
+      "East US 2",
+      "South Central US",
       "West US 2",
+      "West US 3",
+      "Australia East",
       "Southeast Asia",
+      "North Europe",
+      "Sweden Central",
       "West Europe"
     ],
     "zoneMappings": null

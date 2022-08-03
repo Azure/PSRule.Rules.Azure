@@ -229,6 +229,19 @@
   },
   {
     "aliases": null,
+    "resourceType": "configurationStores/replicas",
+    "apiVersions": [
+      "2022-03-01-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "deletedConfigurationStores",
     "apiVersions": [
       "2022-05-01",

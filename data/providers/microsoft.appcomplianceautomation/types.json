@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-11-16-preview",
       "2022-05-10-privatepreview"
     ],
     "locations": [],
@@ -12,6 +13,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2022-11-16-preview",
       "2022-05-10-privatepreview"
     ],
     "locations": [
@@ -23,6 +25,7 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2022-11-16-preview",
       "2022-05-10-privatepreview",
       "2022-05-10-beta"
     ],
@@ -33,6 +36,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-11-16-preview",
       "2022-05-10-privatepreview",
       "2022-05-10-beta"
     ],
@@ -43,6 +47,7 @@
     "aliases": null,
     "resourceType": "reports",
     "apiVersions": [
+      "2022-11-16-preview",
       "2022-05-10-privatepreview",
       "2022-05-10-beta"
     ],
@@ -53,6 +58,7 @@
     "aliases": null,
     "resourceType": "reports/snapshots",
     "apiVersions": [
+      "2022-11-16-preview",
       "2022-05-10-privatepreview",
       "2022-05-10-beta"
     ],

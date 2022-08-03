@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-05-01",
       "2021-06-01",
       "2020-12-01",
       "2020-06-01",
@@ -24,6 +25,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-05-01",
       "2022-01-01",
       "2021-08-01",
       "2021-06-01",
@@ -49,6 +51,7 @@
     "aliases": null,
     "resourceType": "locations/asyncOperations",
     "apiVersions": [
+      "2022-05-01",
       "2021-06-01",
       "2020-12-01",
       "2020-06-01",
@@ -128,6 +131,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-05-01",
       "2021-06-01",
       "2020-12-01",
       "2020-06-01",
@@ -215,6 +219,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-01",
       "2021-06-01",
       "2021-03-01",
       "2021-02-01-preview",
@@ -283,6 +288,7 @@
     },
     "resourceType": "Redis",
     "apiVersions": [
+      "2022-05-01",
       "2021-06-01",
       "2020-12-01",
       "2020-06-01",
@@ -542,6 +548,8 @@
     "aliases": null,
     "resourceType": "Redis/EventGridFilters",
     "apiVersions": [
+      "2022-05-01",
+      "2021-06-01",
       "2020-12-01",
       "2020-06-01",
       "2019-07-01",
@@ -606,6 +614,7 @@
     "aliases": null,
     "resourceType": "Redis/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2022-05-01",
       "2021-06-01",
       "2020-12-01",
       "2020-06-01",
@@ -656,6 +665,7 @@
     "aliases": null,
     "resourceType": "Redis/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2022-05-01",
       "2021-06-01",
       "2020-12-01",
       "2020-06-01",
@@ -714,6 +724,7 @@
     },
     "resourceType": "Redis/privateEndpointConnections",
     "apiVersions": [
+      "2022-05-01",
       "2021-06-01",
       "2020-12-01",
       "2020-06-01",
@@ -764,6 +775,7 @@
     "aliases": null,
     "resourceType": "Redis/privateLinkResources",
     "apiVersions": [
+      "2022-05-01",
       "2021-06-01",
       "2020-12-01",
       "2020-06-01",

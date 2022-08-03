@@ -909,6 +909,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/notificationContacts",
+    "apiVersions": [
+      "2020-12-15-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/operationResults",
     "apiVersions": [
       "2021-10-01",
