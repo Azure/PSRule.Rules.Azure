@@ -42,7 +42,12 @@
       "2022-05-17-preview"
     ],
     "locations": [
-      "global"
+      "West Central US",
+      "West US 2",
+      "North Europe",
+      "West Europe",
+      "East US",
+      "West US"
     ],
     "zoneMappings": null
   }
