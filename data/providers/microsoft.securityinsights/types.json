@@ -58,6 +58,7 @@
     },
     "resourceType": "alertRules",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -89,6 +90,7 @@
     "aliases": null,
     "resourceType": "alertRuleTemplates",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -815,6 +817,27 @@
     "resourceType": "overview",
     "apiVersions": [
       "2022-09-01-preview"
+    ],
+    "locations": [
+      "West Europe",
+      "North Europe",
+      "France Central",
+      "UK South",
+      "UK West",
+      "France South",
+      "Switzerland North",
+      "Switzerland West",
+      "Norway East",
+      "Norway West",
+      "Germany West Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "recommendations",
+    "apiVersions": [
+      "2022-11-01-preview"
     ],
     "locations": [
       "West Europe",

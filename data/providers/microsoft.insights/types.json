@@ -391,7 +391,8 @@
       "Norway West",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2039,6 +2040,7 @@
     },
     "resourceType": "dataCollectionEndpoints",
     "apiVersions": [
+      "2021-09-01-preview",
       "2021-04-01"
     ],
     "locations": [
@@ -2093,6 +2095,7 @@
     "aliases": null,
     "resourceType": "dataCollectionEndpoints/scopedPrivateLinkProxies",
     "apiVersions": [
+      "2021-09-01-preview",
       "2021-04-01"
     ],
     "locations": [
@@ -2152,6 +2155,7 @@
     },
     "resourceType": "dataCollectionRuleAssociations",
     "apiVersions": [
+      "2021-09-01-preview",
       "2021-04-01",
       "2019-11-01-preview"
     ],
@@ -2261,6 +2265,7 @@
     },
     "resourceType": "dataCollectionRules",
     "apiVersions": [
+      "2021-09-01-preview",
       "2021-04-01",
       "2019-11-01-preview"
     ],
@@ -2388,7 +2393,8 @@
       "Norway West",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2441,7 +2447,8 @@
       "Norway West",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2515,7 +2522,8 @@
       "Norway West",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2786,7 +2794,9 @@
     "locations": [
       "Global",
       "West Europe",
-      "North Europe"
+      "North Europe",
+      "Sweden Central",
+      "Germany West Central"
     ],
     "zoneMappings": null
   },
@@ -3384,7 +3394,8 @@
       "Korea South",
       "Jio India West",
       "Canada East",
-      "Jio India Central"
+      "Jio India Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },

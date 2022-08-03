@@ -1,0 +1,54 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2022-05-17-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-05-17-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/OperationStatuses",
+    "apiVersions": [
+      "2022-05-17-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2022-05-17-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "scanningAccounts",
+    "apiVersions": [
+      "2022-05-17-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "North Europe",
+      "West Europe",
+      "East US",
+      "West US"
+    ],
+    "zoneMappings": null
+  }
+]

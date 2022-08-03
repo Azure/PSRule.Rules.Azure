@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "experiments",
     "apiVersions": [
+      "2022-07-01-preview",
       "2021-09-15-preview"
     ],
     "locations": [
@@ -22,6 +23,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-07-01-preview",
       "2021-09-15-preview"
     ],
     "locations": [],
@@ -31,6 +33,7 @@
     "aliases": null,
     "resourceType": "locations/targetTypes",
     "apiVersions": [
+      "2022-07-01-preview",
       "2021-09-15-preview"
     ],
     "locations": [
@@ -52,6 +55,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-07-01-preview",
       "2021-09-15-preview",
       "2021-08-11-preview",
       "2021-07-05-preview",
@@ -64,6 +68,7 @@
     "aliases": null,
     "resourceType": "targets",
     "apiVersions": [
+      "2022-07-01-preview",
       "2021-09-15-preview"
     ],
     "locations": [

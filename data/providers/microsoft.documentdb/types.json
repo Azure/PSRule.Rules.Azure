@@ -79,7 +79,8 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -180,6 +181,15 @@
       "Microsoft.DocumentDB/databaseAccounts/ipRules[*]": "properties.ipRules[*]",
       "Microsoft.DocumentDB/databaseAccounts/ipRules[*].ipAddressOrRange": "properties.ipRules[*].ipAddressOrRange",
       "Microsoft.DocumentDB/databaseAccounts/isVirtualNetworkFilterEnabled": "properties.isVirtualNetworkFilterEnabled",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata": "properties.keysMetadata",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.primaryMasterKey": "properties.keysMetadata.primaryMasterKey",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.primaryMasterKey.generationTime": "properties.keysMetadata.primaryMasterKey.generationTime",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.primaryReadonlyMasterKey": "properties.keysMetadata.primaryReadonlyMasterKey",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.primaryReadonlyMasterKey.generationTime": "properties.keysMetadata.primaryReadonlyMasterKey.generationTime",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.secondaryMasterKey": "properties.keysMetadata.secondaryMasterKey",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.secondaryMasterKey.generationTime": "properties.keysMetadata.secondaryMasterKey.generationTime",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.secondaryReadonlyMasterKey": "properties.keysMetadata.secondaryReadonlyMasterKey",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.secondaryReadonlyMasterKey.generationTime": "properties.keysMetadata.secondaryReadonlyMasterKey.generationTime",
       "Microsoft.DocumentDB/databaseAccounts/keyVaultKeyUri": "properties.keyVaultKeyUri",
       "Microsoft.DocumentDB/databaseAccounts/Locations": "properties.locations",
       "Microsoft.DocumentDB/databaseAccounts/Locations[*]": "properties.locations[*]",
@@ -308,7 +318,8 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -415,7 +426,8 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -487,7 +499,8 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -559,7 +572,8 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -616,7 +630,8 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -778,7 +793,8 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1162,6 +1178,7 @@
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/options.autoscaleSettings.maxThroughput": "properties.options.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/options.throughput": "properties.options.throughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource": "properties.resource",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.analyticalStorageTtl": "properties.resource.analyticalStorageTtl",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.conflictResolutionPolicy": "properties.resource.conflictResolutionPolicy",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.conflictResolutionPolicy.conflictResolutionPath": "properties.resource.conflictResolutionPolicy.conflictResolutionPath",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.conflictResolutionPolicy.conflictResolutionProcedure": "properties.resource.conflictResolutionPolicy.conflictResolutionProcedure",

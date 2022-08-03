@@ -39,5 +39,14 @@
     ],
     "locations": [],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "packetCoreControlPlaneVersions",
+    "apiVersions": [
+      "2022-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
   }
 ]

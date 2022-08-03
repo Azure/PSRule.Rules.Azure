@@ -99,7 +99,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -158,7 +159,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -465,7 +467,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -527,7 +530,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -613,7 +617,8 @@
       "West US 3",
       "Jio India West",
       "Jio India Central",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -675,7 +680,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -737,7 +743,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -798,7 +805,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -885,7 +893,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -968,7 +977,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1042,7 +1052,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1090,7 +1101,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1203,7 +1215,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1325,7 +1338,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1619,7 +1633,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1712,7 +1727,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2008,7 +2024,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2115,7 +2132,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2178,13 +2196,14 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "verifiedpartners",
+    "resourceType": "verifiedPartners",
     "apiVersions": [
       "2022-06-15",
       "2021-10-15-preview"
@@ -2227,7 +2246,8 @@
       "Jio India West",
       "Jio India Central",
       "Sweden Central",
-      "Norway East"
+      "Norway East",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },

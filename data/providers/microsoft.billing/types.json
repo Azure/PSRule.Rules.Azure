@@ -38,6 +38,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/associatedTenants",
+    "apiVersions": [
+      "2020-11-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/availableBalance",
     "apiVersions": [
       "2020-11-01-privatepreview"
@@ -894,6 +903,15 @@
       "2020-05-01",
       "2019-10-01-preview",
       "2018-11-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/notificationContacts",
+    "apiVersions": [
+      "2020-12-15-privatepreview"
     ],
     "locations": [],
     "zoneMappings": null

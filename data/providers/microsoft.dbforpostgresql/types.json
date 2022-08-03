@@ -2,10 +2,7 @@
   {
     "aliases": null,
     "resourceType": "checkNameAvailability",
-    "apiVersions": [
-      "2017-12-01-preview",
-      "2017-12-01"
-    ],
+    "apiVersions": [],
     "locations": [
       "Australia Central",
       "Australia Central 2",
@@ -46,7 +43,8 @@
       "West India",
       "West US",
       "West US 2",
-      "West US 3"
+      "West US 3",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -314,7 +312,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -353,11 +355,7 @@
   {
     "aliases": null,
     "resourceType": "getPrivateDnsZoneSuffix",
-    "apiVersions": [
-      "2021-03-31-privatepreview",
-      "2020-10-05-privatepreview",
-      "2018-03-29-privatepreview"
-    ],
+    "apiVersions": [],
     "locations": [
       "Australia East",
       "Australia Southeast",
@@ -390,7 +388,8 @@
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3"
+      "West US 3",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -588,6 +587,7 @@
       "West US",
       "West US 2",
       "West US 3",
+      "Qatar Central",
       "Switzerland West"
     ],
     "zoneMappings": null
@@ -625,6 +625,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -675,6 +676,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -719,6 +721,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -781,6 +784,7 @@
       "West US",
       "West US 2",
       "West US 3",
+      "Qatar Central",
       "Switzerland West"
     ],
     "zoneMappings": null
@@ -1347,9 +1351,7 @@
     "apiVersions": [
       "2022-01-20-preview",
       "2021-06-01-preview",
-      "2021-06-01",
-      "2017-12-01-preview",
-      "2017-12-01"
+      "2021-06-01"
     ],
     "locations": [
       "Australia Central",
@@ -1381,6 +1383,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Africa West",
       "South Central US",

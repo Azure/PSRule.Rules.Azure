@@ -14,6 +14,7 @@
     "resourceType": "locations",
     "apiVersions": [
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-06-01",
       "2021-05-01-privatepreview",
       "2021-05-01-preview",
@@ -21,7 +22,8 @@
       "2020-05-01",
       "2018-07-01",
       "2018-06-01-preview",
-      "2018-03-30-preview"
+      "2018-03-30-preview",
+      "2016-05-01-preview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -31,6 +33,7 @@
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-06-01",
       "2021-05-01-privatepreview",
       "2021-05-01-preview",
@@ -38,7 +41,8 @@
       "2020-05-01",
       "2018-07-01",
       "2018-06-01-preview",
-      "2018-03-30-preview"
+      "2018-03-30-preview",
+      "2016-05-01-preview"
     ],
     "locations": [
       "Japan West",
@@ -410,6 +414,7 @@
     },
     "resourceType": "mediaservices/assets",
     "apiVersions": [
+      "2022-08-01",
       "2021-11-01",
       "2021-06-01",
       "2020-05-01",
@@ -614,6 +619,7 @@
     },
     "resourceType": "mediaservices/contentKeyPolicies",
     "apiVersions": [
+      "2022-08-01",
       "2021-11-01",
       "2021-06-01",
       "2020-05-01",
@@ -1351,6 +1357,7 @@
     },
     "resourceType": "mediaservices/streamingLocators",
     "apiVersions": [
+      "2022-08-01",
       "2021-11-01",
       "2021-06-01",
       "2020-05-01",
@@ -1516,6 +1523,7 @@
     },
     "resourceType": "mediaservices/streamingPolicies",
     "apiVersions": [
+      "2022-08-01",
       "2021-11-01",
       "2021-06-01",
       "2020-05-01",

@@ -24,7 +24,13 @@
       "Japan West",
       "West US",
       "North Central US",
-      "Southeast Asia"
+      "East Asia",
+      "Canada Central",
+      "Germany West Central",
+      "Korea Central",
+      "Central India",
+      "Brazil South",
+      "France Central"
     ],
     "zoneMappings": null
   },
@@ -55,7 +61,13 @@
       "Japan West",
       "West US",
       "North Central US",
-      "Southeast Asia"
+      "East Asia",
+      "Canada Central",
+      "Germany West Central",
+      "Korea Central",
+      "Central India",
+      "Brazil South",
+      "France Central"
     ],
     "zoneMappings": null
   },
@@ -97,7 +109,13 @@
       "Japan West",
       "West US",
       "North Central US",
-      "Southeast Asia"
+      "East Asia",
+      "Canada Central",
+      "Germany West Central",
+      "Korea Central",
+      "Central India",
+      "Brazil South",
+      "France Central"
     ],
     "zoneMappings": null
   },

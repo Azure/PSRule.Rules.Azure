@@ -70,7 +70,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -146,7 +147,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -236,6 +238,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -325,7 +328,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -391,7 +395,8 @@
       "Norway East",
       "Norway West",
       "Germany North",
-      "Germany West Central"
+      "Germany West Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -603,7 +608,8 @@
       "Norway East",
       "Norway West",
       "Germany North",
-      "Germany West Central"
+      "Germany West Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -796,7 +802,8 @@
       "Norway East",
       "Norway West",
       "Germany North",
-      "Germany West Central"
+      "Germany West Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -855,6 +862,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -930,6 +938,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -1017,7 +1026,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -1076,7 +1086,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -1122,6 +1133,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -1180,6 +1192,16 @@
       "Microsoft.Web/hostingEnvironments/clusterSettings[*]": "properties.clusterSettings[*]",
       "Microsoft.Web/hostingEnvironments/clusterSettings[*].name": "properties.clusterSettings[*].name",
       "Microsoft.Web/hostingEnvironments/clusterSettings[*].value": "properties.clusterSettings[*].value",
+      "Microsoft.Web/hostingEnvironments/customDnsSuffixConfiguration": "properties.customDnsSuffixConfiguration",
+      "Microsoft.Web/hostingEnvironments/customDnsSuffixConfiguration.certificateUrl": "properties.customDnsSuffixConfiguration.properties.certificateUrl",
+      "Microsoft.Web/hostingEnvironments/customDnsSuffixConfiguration.dnsSuffix": "properties.customDnsSuffixConfiguration.properties.dnsSuffix",
+      "Microsoft.Web/hostingEnvironments/customDnsSuffixConfiguration.id": "properties.customDnsSuffixConfiguration.id",
+      "Microsoft.Web/hostingEnvironments/customDnsSuffixConfiguration.keyVaultReferenceIdentity": "properties.customDnsSuffixConfiguration.properties.keyVaultReferenceIdentity",
+      "Microsoft.Web/hostingEnvironments/customDnsSuffixConfiguration.kind": "properties.customDnsSuffixConfiguration.kind",
+      "Microsoft.Web/hostingEnvironments/customDnsSuffixConfiguration.name": "properties.customDnsSuffixConfiguration.name",
+      "Microsoft.Web/hostingEnvironments/customDnsSuffixConfiguration.provisioningDetails": "properties.customDnsSuffixConfiguration.properties.provisioningDetails",
+      "Microsoft.Web/hostingEnvironments/customDnsSuffixConfiguration.provisioningState": "properties.customDnsSuffixConfiguration.properties.provisioningState",
+      "Microsoft.Web/hostingEnvironments/customDnsSuffixConfiguration.type": "properties.customDnsSuffixConfiguration.type",
       "Microsoft.Web/hostingEnvironments/databaseEdition": "properties.databaseEdition",
       "Microsoft.Web/hostingEnvironments/databaseServiceObjective": "properties.databaseServiceObjective",
       "Microsoft.Web/hostingEnvironments/dedicatedHostCount": "properties.dedicatedHostCount",
@@ -1218,6 +1240,23 @@
       "Microsoft.Web/hostingEnvironments/networkAccessControlList[*].description": "properties.networkAccessControlList[*].description",
       "Microsoft.Web/hostingEnvironments/networkAccessControlList[*].order": "properties.networkAccessControlList[*].order",
       "Microsoft.Web/hostingEnvironments/networkAccessControlList[*].remoteSubnet": "properties.networkAccessControlList[*].remoteSubnet",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration": "properties.networkingConfiguration",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.allowNewPrivateEndpointConnections": "properties.networkingConfiguration.properties.allowNewPrivateEndpointConnections",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.externalInboundIpAddresses": "properties.networkingConfiguration.properties.externalInboundIpAddresses",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.externalInboundIpAddresses[*]": "properties.networkingConfiguration.properties.externalInboundIpAddresses[*]",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.ftpEnabled": "properties.networkingConfiguration.properties.ftpEnabled",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.id": "properties.networkingConfiguration.id",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.inboundIpAddressOverride": "properties.networkingConfiguration.properties.inboundIpAddressOverride",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.internalInboundIpAddresses": "properties.networkingConfiguration.properties.internalInboundIpAddresses",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.internalInboundIpAddresses[*]": "properties.networkingConfiguration.properties.internalInboundIpAddresses[*]",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.kind": "properties.networkingConfiguration.kind",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.linuxOutboundIpAddresses": "properties.networkingConfiguration.properties.linuxOutboundIpAddresses",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.linuxOutboundIpAddresses[*]": "properties.networkingConfiguration.properties.linuxOutboundIpAddresses[*]",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.name": "properties.networkingConfiguration.name",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.remoteDebugEnabled": "properties.networkingConfiguration.properties.remoteDebugEnabled",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.type": "properties.networkingConfiguration.type",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.windowsOutboundIpAddresses": "properties.networkingConfiguration.properties.windowsOutboundIpAddresses",
+      "Microsoft.Web/hostingEnvironments/networkingConfiguration.windowsOutboundIpAddresses[*]": "properties.networkingConfiguration.properties.windowsOutboundIpAddresses[*]",
       "Microsoft.Web/hostingEnvironments/provisioningState": "properties.provisioningState",
       "Microsoft.Web/hostingEnvironments/resourceGroup": "properties.resourceGroup",
       "Microsoft.Web/hostingEnvironments/sslCertKeyVaultId": "properties.sslCertKeyVaultId",
@@ -1225,7 +1264,9 @@
       "Microsoft.Web/hostingEnvironments/status": "properties.status",
       "Microsoft.Web/hostingEnvironments/subscriptionId": "properties.subscriptionId",
       "Microsoft.Web/hostingEnvironments/suspended": "properties.suspended",
+      "Microsoft.Web/hostingEnvironments/upgradeAvailability": "properties.upgradeAvailability",
       "Microsoft.Web/hostingEnvironments/upgradeDomains": "properties.upgradeDomains",
+      "Microsoft.Web/hostingEnvironments/upgradePreference": "properties.upgradePreference",
       "Microsoft.Web/hostingEnvironments/userWhitelistedIpRanges": "properties.userWhitelistedIpRanges",
       "Microsoft.Web/hostingEnvironments/userWhitelistedIpRanges[*]": "properties.userWhitelistedIpRanges[*]",
       "Microsoft.Web/hostingEnvironments/vipMappings": "properties.vipMappings",
@@ -1328,6 +1369,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -1468,6 +1510,10 @@
         ]
       },
       {
+        "location": "Sweden Central",
+        "zones": []
+      },
+      {
         "location": "Switzerland North",
         "zones": []
       },
@@ -1572,6 +1618,7 @@
       "Norway East",
       "Switzerland North",
       "UAE North",
+      "Sweden Central",
       "Australia Southeast",
       "Korea South",
       "Canada Central",
@@ -1696,6 +1743,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -1800,6 +1848,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -1919,7 +1968,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -1994,7 +2044,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -2112,7 +2163,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -2178,7 +2230,8 @@
       "Norway East",
       "Norway West",
       "Germany North",
-      "Germany West Central"
+      "Germany West Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -2231,7 +2284,8 @@
       "Norway East",
       "Norway West",
       "Germany North",
-      "Germany West Central"
+      "Germany West Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -2293,6 +2347,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -2369,6 +2424,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -2437,7 +2493,8 @@
       "Norway East",
       "Norway West",
       "Germany North",
-      "Germany West Central"
+      "Germany West Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -2483,6 +2540,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -2606,7 +2664,8 @@
       "Norway East",
       "Norway West",
       "Germany North",
-      "Germany West Central"
+      "Germany West Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -2660,7 +2719,8 @@
       "Norway East",
       "Norway West",
       "Germany North",
-      "Germany West Central"
+      "Germany West Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -2716,6 +2776,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -2783,6 +2844,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -2819,7 +2881,8 @@
       "Central US",
       "East US 2",
       "West Europe",
-      "East Asia"
+      "East Asia",
+      "East Asia (Stage)"
     ],
     "zoneMappings": null
   },
@@ -2872,7 +2935,8 @@
       "Norway East",
       "Norway West",
       "Germany North",
-      "Germany West Central"
+      "Germany West Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -2935,6 +2999,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -2996,6 +3061,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -3084,7 +3150,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -3172,7 +3239,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -3289,6 +3357,7 @@
       "Microsoft.Web/serverFarms/maximumNumberOfWorkers": "properties.maximumNumberOfWorkers",
       "Microsoft.Web/serverFarms/name": "properties.name",
       "Microsoft.Web/serverFarms/numberOfSites": "properties.numberOfSites",
+      "Microsoft.Web/serverfarms/numberOfWorkers": "properties.numberOfWorkers",
       "Microsoft.Web/serverFarms/perSiteScaling": "properties.perSiteScaling",
       "Microsoft.Web/serverFarms/provisioningState": "properties.provisioningState",
       "Microsoft.Web/serverFarms/reserved": "properties.reserved",
@@ -3378,6 +3447,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -3456,6 +3526,7 @@
       "Norway West",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -3536,6 +3607,7 @@
       "Norway West",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -3615,6 +3687,7 @@
       "Norway West",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -3714,6 +3787,7 @@
       "Microsoft.Web/sites/privateAccess.virtualNetworks.virtualNetworks[*].subnets[*]": "properties.virtualNetworks[*].subnets[*]",
       "Microsoft.Web/sites/privateAccess.virtualNetworks.virtualNetworks[*].subnets[*].key": "properties.virtualNetworks[*].subnets[*].key",
       "Microsoft.Web/sites/privateAccess.virtualNetworks.virtualNetworks[*].subnets[*].name": "properties.virtualNetworks[*].subnets[*].name",
+      "Microsoft.Web/sites/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.Web/sites/redundancyMode": "properties.redundancyMode",
       "Microsoft.Web/sites/repositorySiteName": "properties.repositorySiteName",
       "Microsoft.Web/sites/reserved": "properties.reserved",
@@ -3948,7 +4022,10 @@
       "Microsoft.Web/sites/trafficManagerHostNames": "properties.trafficManagerHostNames",
       "Microsoft.Web/sites/trafficManagerHostNames[*]": "properties.trafficManagerHostNames[*]",
       "Microsoft.Web/sites/usageState": "properties.usageState",
-      "Microsoft.Web/sites/virtualNetworkSubnetId": "properties.virtualNetworkSubnetId"
+      "Microsoft.Web/sites/virtualNetworkSubnetId": "properties.virtualNetworkSubnetId",
+      "Microsoft.Web/sites/vnetContentShareEnabled": "properties.vnetContentShareEnabled",
+      "Microsoft.Web/sites/vnetImagePullEnabled": "properties.vnetImagePullEnabled",
+      "Microsoft.Web/sites/vnetRouteAllEnabled": "properties.vnetRouteAllEnabled"
     },
     "resourceType": "sites",
     "apiVersions": [
@@ -4010,6 +4087,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -4092,6 +4170,7 @@
       "Norway West",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -4178,6 +4257,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -4255,6 +4335,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -4335,6 +4416,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -4449,6 +4531,7 @@
       "Microsoft.Web/sites/slots/privateAccess.virtualNetworks.virtualNetworks[*].subnets[*]": "properties.virtualNetworks[*].subnets[*]",
       "Microsoft.Web/sites/slots/privateAccess.virtualNetworks.virtualNetworks[*].subnets[*].key": "properties.virtualNetworks[*].subnets[*].key",
       "Microsoft.Web/sites/slots/privateAccess.virtualNetworks.virtualNetworks[*].subnets[*].name": "properties.virtualNetworks[*].subnets[*].name",
+      "Microsoft.Web/sites/slots/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.Web/sites/slots/redundancyMode": "properties.redundancyMode",
       "Microsoft.Web/sites/slots/repositorySiteName": "properties.repositorySiteName",
       "Microsoft.Web/sites/slots/reserved": "properties.reserved",
@@ -4683,7 +4766,10 @@
       "Microsoft.Web/sites/slots/trafficManagerHostNames": "properties.trafficManagerHostNames",
       "Microsoft.Web/sites/slots/trafficManagerHostNames[*]": "properties.trafficManagerHostNames[*]",
       "Microsoft.Web/sites/slots/usageState": "properties.usageState",
-      "Microsoft.Web/sites/slots/virtualNetworkSubnetId": "properties.virtualNetworkSubnetId"
+      "Microsoft.Web/sites/slots/virtualNetworkSubnetId": "properties.virtualNetworkSubnetId",
+      "Microsoft.Web/sites/slots/vnetContentShareEnabled": "properties.vnetContentShareEnabled",
+      "Microsoft.Web/sites/slots/vnetImagePullEnabled": "properties.vnetImagePullEnabled",
+      "Microsoft.Web/sites/slots/vnetRouteAllEnabled": "properties.vnetRouteAllEnabled"
     },
     "resourceType": "sites/slots",
     "apiVersions": [
@@ -4744,6 +4830,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -4826,6 +4913,7 @@
       "Norway East",
       "Switzerland North",
       "UAE North",
+      "Sweden Central",
       "North Central US",
       "UK West",
       "Australia Southeast",
@@ -4911,6 +4999,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -4988,6 +5077,7 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
+      "Sweden Central",
       "Switzerland North",
       "North Central US",
       "UK West",
@@ -5082,7 +5172,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -5105,6 +5196,12 @@
       "Microsoft.Web/staticSites/defaultHostname": "properties.defaultHostname",
       "Microsoft.Web/staticSites/enterpriseGradeCdnStatus": "properties.enterpriseGradeCdnStatus",
       "Microsoft.Web/staticSites/keyVaultReferenceIdentity": "properties.keyVaultReferenceIdentity",
+      "Microsoft.Web/staticSites/linkedBackends": "properties.linkedBackends",
+      "Microsoft.Web/staticSites/linkedBackends[*]": "properties.linkedBackends[*]",
+      "Microsoft.Web/staticSites/linkedBackends[*].backendResourceId": "properties.linkedBackends[*].backendResourceId",
+      "Microsoft.Web/staticSites/linkedBackends[*].createdOn": "properties.linkedBackends[*].createdOn",
+      "Microsoft.Web/staticSites/linkedBackends[*].provisioningState": "properties.linkedBackends[*].provisioningState",
+      "Microsoft.Web/staticSites/linkedBackends[*].region": "properties.linkedBackends[*].region",
       "Microsoft.Web/staticSites/privateEndpointConnections": "properties.privateEndpointConnections",
       "Microsoft.Web/staticSites/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
       "Microsoft.Web/staticSites/privateEndpointConnections[*].error": "properties.privateEndpointConnections[*].error",
@@ -5212,6 +5309,7 @@
       "Microsoft.Web/staticSites/privateEndpointConnections[*].zones": "properties.privateEndpointConnections[*].zones",
       "Microsoft.Web/staticSites/privateEndpointConnections[*].zones[*]": "properties.privateEndpointConnections[*].zones[*]",
       "Microsoft.Web/staticSites/provider": "properties.provider",
+      "Microsoft.Web/staticSites/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.Web/staticSites/repositoryToken": "properties.repositoryToken",
       "Microsoft.Web/staticSites/repositoryUrl": "properties.repositoryUrl",
       "Microsoft.Web/staticSites/sku": "sku",
@@ -5269,7 +5367,8 @@
       "Central US",
       "East US 2",
       "West Europe",
-      "East Asia"
+      "East Asia",
+      "East Asia (Stage)"
     ],
     "zoneMappings": null
   },
@@ -5294,12 +5393,18 @@
       "Central US",
       "East US 2",
       "West Europe",
-      "East Asia"
+      "East Asia",
+      "East Asia (Stage)"
     ],
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Web/staticSites/builds/linkedBackends/backendResourceId": "properties.backendResourceId",
+      "Microsoft.Web/staticSites/builds/linkedBackends/createdOn": "properties.createdOn",
+      "Microsoft.Web/staticSites/builds/linkedBackends/provisioningState": "properties.provisioningState",
+      "Microsoft.Web/staticSites/builds/linkedBackends/region": "properties.region"
+    },
     "resourceType": "staticSites/builds/linkedBackends",
     "apiVersions": [
       "2022-03-01",
@@ -5319,7 +5424,8 @@
       "Central US",
       "East US 2",
       "West Europe",
-      "East Asia"
+      "East Asia",
+      "East Asia (Stage)"
     ],
     "zoneMappings": null
   },
@@ -5343,12 +5449,18 @@
       "Central US",
       "East US 2",
       "West Europe",
-      "East Asia"
+      "East Asia",
+      "East Asia (Stage)"
     ],
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Web/staticSites/linkedBackends/backendResourceId": "properties.backendResourceId",
+      "Microsoft.Web/staticSites/linkedBackends/createdOn": "properties.createdOn",
+      "Microsoft.Web/staticSites/linkedBackends/provisioningState": "properties.provisioningState",
+      "Microsoft.Web/staticSites/linkedBackends/region": "properties.region"
+    },
     "resourceType": "staticSites/linkedBackends",
     "apiVersions": [
       "2022-03-01",
@@ -5368,7 +5480,8 @@
       "Central US",
       "East US 2",
       "West Europe",
-      "East Asia"
+      "East Asia",
+      "East Asia (Stage)"
     ],
     "zoneMappings": null
   },
@@ -5392,7 +5505,8 @@
       "Central US",
       "East US 2",
       "West Europe",
-      "East Asia"
+      "East Asia",
+      "East Asia (Stage)"
     ],
     "zoneMappings": null
   },
@@ -5465,7 +5579,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -5540,7 +5655,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -5599,7 +5715,8 @@
       "Germany West Central",
       "Norway East",
       "UAE North",
-      "Jio India West"
+      "Jio India West",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -5620,12 +5737,20 @@
   {
     "aliases": {
       "Microsoft.Web/hostingEnvironments/configurations/allowNewPrivateEndpointConnections": "properties.allowNewPrivateEndpointConnections",
+      "Microsoft.Web/hostingEnvironments/configurations/certificateUrl": "properties.certificateUrl",
+      "Microsoft.Web/hostingEnvironments/configurations/dnsSuffix": "properties.dnsSuffix",
       "Microsoft.Web/hostingEnvironments/configurations/externalInboundIpAddresses": "properties.externalInboundIpAddresses",
       "Microsoft.Web/hostingEnvironments/configurations/externalInboundIpAddresses[*]": "properties.externalInboundIpAddresses[*]",
+      "Microsoft.Web/hostingEnvironments/configurations/ftpEnabled": "properties.ftpEnabled",
+      "Microsoft.Web/hostingEnvironments/configurations/inboundIpAddressOverride": "properties.inboundIpAddressOverride",
       "Microsoft.Web/hostingEnvironments/configurations/internalInboundIpAddresses": "properties.internalInboundIpAddresses",
       "Microsoft.Web/hostingEnvironments/configurations/internalInboundIpAddresses[*]": "properties.internalInboundIpAddresses[*]",
+      "Microsoft.Web/hostingEnvironments/configurations/keyVaultReferenceIdentity": "properties.keyVaultReferenceIdentity",
       "Microsoft.Web/hostingEnvironments/configurations/linuxOutboundIpAddresses": "properties.linuxOutboundIpAddresses",
       "Microsoft.Web/hostingEnvironments/configurations/linuxOutboundIpAddresses[*]": "properties.linuxOutboundIpAddresses[*]",
+      "Microsoft.Web/hostingEnvironments/configurations/provisioningDetails": "properties.provisioningDetails",
+      "Microsoft.Web/hostingEnvironments/configurations/provisioningState": "properties.provisioningState",
+      "Microsoft.Web/hostingEnvironments/configurations/remoteDebugEnabled": "properties.remoteDebugEnabled",
       "Microsoft.Web/hostingEnvironments/configurations/windowsOutboundIpAddresses": "properties.windowsOutboundIpAddresses",
       "Microsoft.Web/hostingEnvironments/configurations/windowsOutboundIpAddresses[*]": "properties.windowsOutboundIpAddresses[*]"
     },

@@ -1,0 +1,50 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Pki",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Pkis",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Pkis/certificateAuthorities",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Pkis/enrollmentPolicies",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "West US",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  }
+]

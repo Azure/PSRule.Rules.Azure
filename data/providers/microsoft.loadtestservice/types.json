@@ -14,7 +14,16 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.LoadTestService/loadTests/dataPlaneURI": "properties.dataPlaneURI",
+      "Microsoft.LoadTestService/loadTests/description": "properties.description",
+      "Microsoft.LoadTestService/loadTests/encryption": "properties.encryption",
+      "Microsoft.LoadTestService/loadTests/encryption.identity": "properties.encryption.identity",
+      "Microsoft.LoadTestService/loadTests/encryption.identity.resourceId": "properties.encryption.identity.resourceId",
+      "Microsoft.LoadTestService/loadTests/encryption.identity.type": "properties.encryption.identity.type",
+      "Microsoft.LoadTestService/loadTests/encryption.keyUrl": "properties.encryption.keyUrl",
+      "Microsoft.LoadTestService/loadTests/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "loadtests",
     "apiVersions": [
       "2022-04-15-preview",

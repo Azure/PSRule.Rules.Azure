@@ -23,6 +23,7 @@
     },
     "resourceType": "availabilitySets",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -80,7 +81,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -97,6 +99,7 @@
     },
     "resourceType": "capacityReservationGroups",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -141,7 +144,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -261,6 +265,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -302,7 +314,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -356,6 +372,7 @@
     },
     "resourceType": "capacityReservationGroups/capacityReservations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -400,7 +417,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -520,6 +538,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -561,7 +587,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -699,7 +729,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -819,6 +850,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -860,7 +899,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -939,7 +982,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -986,7 +1030,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1034,7 +1079,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1081,7 +1127,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1129,7 +1176,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1152,6 +1200,7 @@
     },
     "resourceType": "diskAccesses",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -1197,7 +1246,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1231,6 +1281,7 @@
     },
     "resourceType": "diskEncryptionSets",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -1278,7 +1329,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1378,6 +1430,7 @@
     },
     "resourceType": "disks",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -1431,7 +1484,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -1551,6 +1605,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -1592,7 +1654,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -1729,7 +1795,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1790,7 +1857,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1904,7 +1972,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1992,7 +2061,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2118,7 +2188,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2134,6 +2205,7 @@
     },
     "resourceType": "hostGroups",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -2182,7 +2254,8 @@
       "Australia East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -2302,6 +2375,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -2343,7 +2424,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -2398,6 +2483,7 @@
     },
     "resourceType": "hostGroups/hosts",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -2446,7 +2532,8 @@
       "Australia East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -2566,6 +2653,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -2607,7 +2702,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -2680,6 +2779,7 @@
     },
     "resourceType": "images",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -2734,7 +2834,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2742,6 +2843,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -2856,7 +2958,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2903,7 +3006,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2950,7 +3054,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2958,6 +3063,7 @@
     "aliases": null,
     "resourceType": "locations/communityGalleries",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-03",
       "2022-03-01",
       "2022-01-03",
@@ -3018,7 +3124,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3066,7 +3173,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3166,6 +3274,7 @@
     "aliases": null,
     "resourceType": "locations/diskoperations",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -3219,7 +3328,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3227,6 +3337,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3241,6 +3352,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/publishers",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3284,7 +3396,61 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/edgeZones/vmimages",
+    "apiVersions": [
+      "2022-08-01",
+      "2022-03-01",
+      "2021-11-01",
+      "2021-07-01",
+      "2021-04-01",
+      "2021-03-01",
+      "2020-12-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US",
+      "Central US",
+      "North Central US",
+      "South Central US",
+      "North Europe",
+      "West Europe",
+      "East Asia",
+      "Southeast Asia",
+      "Japan East",
+      "Japan West",
+      "Australia East",
+      "Australia Southeast",
+      "Australia Central",
+      "Brazil South",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "West US 2",
+      "West Central US",
+      "UK South",
+      "UK West",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "South Africa North",
+      "UAE North",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3339,7 +3505,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3347,6 +3514,7 @@
     "aliases": null,
     "resourceType": "locations/logAnalytics",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3398,7 +3566,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3406,6 +3575,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3464,7 +3634,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3472,6 +3643,7 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-03",
       "2022-03-01",
       "2022-01-03",
@@ -3532,7 +3704,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3540,6 +3713,7 @@
     "aliases": null,
     "resourceType": "locations/recommendations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01"
@@ -3580,7 +3754,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3588,6 +3763,7 @@
     "aliases": null,
     "resourceType": "locations/runCommands",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3640,7 +3816,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3648,6 +3825,7 @@
     "aliases": null,
     "resourceType": "locations/sharedGalleries",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-03",
       "2022-03-01",
       "2022-01-03",
@@ -3708,7 +3886,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3716,6 +3895,7 @@
     "aliases": null,
     "resourceType": "locations/spotEvictionRates",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3760,7 +3940,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3768,6 +3949,7 @@
     "aliases": null,
     "resourceType": "locations/spotPriceHistory",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3812,7 +3994,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3820,6 +4003,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3877,7 +4061,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3885,6 +4070,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachines",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3938,7 +4124,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3946,6 +4133,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachineScaleSets",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3999,7 +4187,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -4007,6 +4196,7 @@
     "aliases": null,
     "resourceType": "locations/vmSizes",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4064,7 +4254,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -4072,6 +4263,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4128,7 +4320,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -4171,6 +4364,7 @@
     },
     "resourceType": "proximityPlacementGroups",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4221,7 +4415,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -4341,6 +4536,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -4382,7 +4585,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -4538,6 +4745,7 @@
     },
     "resourceType": "restorePointCollections",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4590,7 +4798,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -4712,6 +4921,7 @@
     },
     "resourceType": "restorePointCollections/restorePoints",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4764,7 +4974,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -4772,6 +4983,7 @@
     "aliases": null,
     "resourceType": "restorePointCollections/restorePoints/diskRestorePoints",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -4815,7 +5027,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -4973,6 +5186,7 @@
     },
     "resourceType": "snapshots",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -5026,7 +5240,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -5036,6 +5251,7 @@
     },
     "resourceType": "sshPublicKeys",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -5081,7 +5297,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -5331,6 +5548,7 @@
     },
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -5388,7 +5606,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -5508,6 +5727,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -5549,7 +5776,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -5615,6 +5846,7 @@
     },
     "resourceType": "virtualMachines/extensions",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -5672,7 +5904,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -5718,7 +5951,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -5746,6 +5980,7 @@
     },
     "resourceType": "virtualMachines/runCommands",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -5791,7 +6026,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -6082,6 +6318,7 @@
     },
     "resourceType": "virtualMachineScaleSets",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6140,7 +6377,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -6260,6 +6498,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -6301,7 +6547,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -6355,6 +6605,7 @@
     },
     "resourceType": "virtualMachineScaleSets/extensions",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6413,7 +6664,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -6421,6 +6673,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/networkInterfaces",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6481,7 +6734,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -6489,6 +6743,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/publicIPAddresses",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6541,7 +6796,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -6806,6 +7062,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6864,7 +7121,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -6883,6 +7141,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines/extensions",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6941,7 +7200,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -6949,6 +7209,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/virtualMachines/networkInterfaces",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -7009,7 +7270,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },

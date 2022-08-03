@@ -158,12 +158,14 @@
       "Southeast Asia",
       "East Asia",
       "South Africa North",
+      "South Africa West",
       "Brazil South",
       "Brazil Southeast",
       "Australia Central 2",
       "Jio India Central",
       "Jio India West",
       "Sweden Central",
+      "Qatar Central",
       "West US 3",
       "Germany North",
       "Germany West Central",
@@ -212,6 +214,7 @@
       "Southeast Asia",
       "East Asia",
       "South Africa North",
+      "South Africa West",
       "Brazil South",
       "Brazil Southeast",
       "Australia Central 2",
@@ -223,6 +226,7 @@
       "Germany West Central",
       "Switzerland North",
       "Switzerland West",
+      "Qatar Central",
       "UAE North",
       "UAE Central",
       "Norway East",
@@ -234,6 +238,8 @@
     "aliases": null,
     "resourceType": "locations/orchestrators",
     "apiVersions": [
+      "2022-06-02-preview",
+      "2022-06-01",
       "2022-05-02-preview",
       "2022-04-02-preview",
       "2022-04-01",
@@ -296,6 +302,7 @@
       "Central India",
       "East Asia",
       "South Africa North",
+      "South Africa West",
       "Brazil South",
       "Brazil Southeast",
       "Australia Central 2",
@@ -310,7 +317,8 @@
       "UAE North",
       "UAE Central",
       "Norway East",
-      "Norway West"
+      "Norway West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -318,6 +326,8 @@
     "aliases": null,
     "resourceType": "locations/osOptions",
     "apiVersions": [
+      "2022-06-02-preview",
+      "2022-06-01",
       "2022-05-02-preview",
       "2022-04-02-preview",
       "2022-04-01",
@@ -364,6 +374,7 @@
       "Central India",
       "East Asia",
       "South Africa North",
+      "South Africa West",
       "Brazil South",
       "Brazil Southeast",
       "Australia Central 2",
@@ -378,7 +389,8 @@
       "UAE North",
       "UAE Central",
       "Norway East",
-      "Norway West"
+      "Norway West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -701,6 +713,8 @@
     },
     "resourceType": "managedClusters",
     "apiVersions": [
+      "2022-06-02-preview",
+      "2022-06-01",
       "2022-05-02-preview",
       "2022-04-02-preview",
       "2022-04-01",
@@ -766,6 +780,7 @@
       "Korea South",
       "Korea Central",
       "South Africa North",
+      "Qatar Central",
       "Brazil South",
       "Brazil Southeast",
       "Germany North",
@@ -804,6 +819,7 @@
     },
     "resourceType": "managedclustersnapshots",
     "apiVersions": [
+      "2022-06-02-preview",
       "2022-05-02-preview",
       "2022-04-02-preview",
       "2022-03-02-preview",
@@ -951,6 +967,8 @@
     },
     "resourceType": "snapshots",
     "apiVersions": [
+      "2022-06-02-preview",
+      "2022-06-01",
       "2022-05-02-preview",
       "2022-04-02-preview",
       "2022-04-01",
@@ -994,6 +1012,7 @@
       "Korea South",
       "Korea Central",
       "South Africa North",
+      "South Africa West",
       "Brazil South",
       "Brazil Southeast",
       "Germany North",

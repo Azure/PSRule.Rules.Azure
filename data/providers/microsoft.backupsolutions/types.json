@@ -64,7 +64,8 @@
       "South Africa North",
       "Switzerland North",
       "Germany West Central",
-      "West US 3"
+      "West US 3",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -89,7 +90,6 @@
     "resourceType": "VMwareApplications",
     "apiVersions": [
       "2021-07-01",
-      "2021-02-01-preview",
       "2019-07-01",
       "2018-09-01-preview",
       "2018-06-01",
@@ -129,7 +129,8 @@
       "West Europe",
       "West India",
       "West US 3",
-      "West US"
+      "West US",
+      "Qatar Central"
     ],
     "zoneMappings": null
   }

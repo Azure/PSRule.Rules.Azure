@@ -45,6 +45,7 @@
       "Japan West",
       "Jio India West",
       "Korea Central",
+      "Korea South",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -73,6 +74,7 @@
     },
     "resourceType": "alerts",
     "apiVersions": [
+      "2022-01-01",
       "2021-11-01",
       "2021-01-01",
       "2020-01-01",
@@ -119,6 +121,15 @@
       "West Europe",
       "West Central US"
     ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "applications",
+    "apiVersions": [
+      "2022-07-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": null
   },
   {
@@ -236,6 +247,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "assessments/governanceAssignments",
+    "apiVersions": [
+      "2022-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "assignments",
     "apiVersions": [
       "2021-08-01-preview"
@@ -264,6 +284,7 @@
       "Japan East",
       "Japan West",
       "Korea Central",
+      "Korea South",
       "South Africa North",
       "South Africa West",
       "UAE Central",
@@ -352,6 +373,7 @@
       "Japan East",
       "Japan West",
       "Korea Central",
+      "Korea South",
       "South Africa North",
       "South Africa West",
       "UAE Central",
@@ -367,7 +389,9 @@
       "Germany West Central",
       "Germany North",
       "Switzerland North",
-      "Switzerland West"
+      "Switzerland West",
+      "Sweden Central",
+      "Jio India West"
     ],
     "zoneMappings": null
   },
@@ -453,6 +477,7 @@
       "Japan East",
       "Japan West",
       "Korea Central",
+      "Korea South",
       "South Africa North",
       "South Africa West",
       "UAE Central",
@@ -504,6 +529,7 @@
       "Japan East",
       "Japan West",
       "Korea Central",
+      "Korea South",
       "South Africa North",
       "South Africa West",
       "UAE Central",
@@ -685,12 +711,14 @@
       "West Central US",
       "West US 2",
       "Korea Central",
+      "Korea South",
       "Australia Central",
       "Australia Central 2",
       "UAE Central",
       "UAE North",
       "South Africa North",
       "South Africa West",
+      "Jio India West",
       "North Europe",
       "West Europe",
       "UK South",
@@ -698,7 +726,8 @@
       "France Central",
       "France South",
       "Germany West Central",
-      "Germany North"
+      "Germany North",
+      "Norway East"
     ],
     "zoneMappings": null
   },
@@ -730,6 +759,15 @@
       "West Europe",
       "West Central US"
     ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "governanceRules",
+    "apiVersions": [
+      "2022-01-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": null
   },
   {
@@ -828,12 +866,14 @@
       "West Central US",
       "West US 2",
       "Korea Central",
+      "Korea South",
       "Australia Central",
       "Australia Central 2",
       "UAE Central",
       "UAE North",
       "South Africa North",
       "South Africa West",
+      "Jio India West",
       "North Europe",
       "West Europe",
       "UK South",
@@ -841,7 +881,8 @@
       "France Central",
       "France South",
       "Germany West Central",
-      "Germany North"
+      "Germany North",
+      "Norway East"
     ],
     "zoneMappings": null
   },
@@ -874,12 +915,14 @@
       "West Central US",
       "West US 2",
       "Korea Central",
+      "Korea South",
       "Australia Central",
       "Australia Central 2",
       "UAE Central",
       "UAE North",
       "South Africa North",
       "South Africa West",
+      "Jio India West",
       "North Europe",
       "West Europe",
       "UK South",
@@ -887,7 +930,8 @@
       "France Central",
       "France South",
       "Germany West Central",
-      "Germany North"
+      "Germany North",
+      "Norway East"
     ],
     "zoneMappings": null
   },
@@ -920,12 +964,14 @@
       "West Central US",
       "West US 2",
       "Korea Central",
+      "Korea South",
       "Australia Central",
       "Australia Central 2",
       "UAE Central",
       "UAE North",
       "South Africa North",
       "South Africa West",
+      "Jio India West",
       "North Europe",
       "West Europe",
       "UK South",
@@ -933,7 +979,8 @@
       "France Central",
       "France South",
       "Germany West Central",
-      "Germany North"
+      "Germany North",
+      "Norway East"
     ],
     "zoneMappings": null
   },
@@ -966,12 +1013,14 @@
       "West Central US",
       "West US 2",
       "Korea Central",
+      "Korea South",
       "Australia Central",
       "Australia Central 2",
       "UAE Central",
       "UAE North",
       "South Africa North",
       "South Africa West",
+      "Jio India West",
       "North Europe",
       "West Europe",
       "UK South",
@@ -979,7 +1028,8 @@
       "France Central",
       "France South",
       "Germany West Central",
-      "Germany North"
+      "Germany North",
+      "Norway East"
     ],
     "zoneMappings": null
   },
@@ -1011,12 +1061,14 @@
       "West Central US",
       "West US 2",
       "Korea Central",
+      "Korea South",
       "Australia Central",
       "Australia Central 2",
       "UAE Central",
       "UAE North",
       "South Africa North",
       "South Africa West",
+      "Jio India West",
       "North Europe",
       "West Europe",
       "UK South",
@@ -1024,7 +1076,8 @@
       "France Central",
       "France South",
       "Germany West Central",
-      "Germany North"
+      "Germany North",
+      "Norway East"
     ],
     "zoneMappings": null
   },
@@ -1056,12 +1109,14 @@
       "West Central US",
       "West US 2",
       "Korea Central",
+      "Korea South",
       "Australia Central",
       "Australia Central 2",
       "UAE Central",
       "UAE North",
       "South Africa North",
       "South Africa West",
+      "Jio India West",
       "North Europe",
       "West Europe",
       "UK South",
@@ -1069,7 +1124,8 @@
       "France Central",
       "France South",
       "Germany West Central",
-      "Germany North"
+      "Germany North",
+      "Norway East"
     ],
     "zoneMappings": null
   },
@@ -1101,12 +1157,14 @@
       "West Central US",
       "West US 2",
       "Korea Central",
+      "Korea South",
       "Australia Central",
       "Australia Central 2",
       "UAE Central",
       "UAE North",
       "South Africa North",
       "South Africa West",
+      "Jio India West",
       "North Europe",
       "West Europe",
       "UK South",
@@ -1114,7 +1172,8 @@
       "France Central",
       "France South",
       "Germany West Central",
-      "Germany North"
+      "Germany North",
+      "Norway East"
     ],
     "zoneMappings": null
   },
@@ -1146,12 +1205,14 @@
       "West Central US",
       "West US 2",
       "Korea Central",
+      "Korea South",
       "Australia Central",
       "Australia Central 2",
       "UAE Central",
       "UAE North",
       "South Africa North",
       "South Africa West",
+      "Jio India West",
       "North Europe",
       "West Europe",
       "UK South",
@@ -1159,7 +1220,8 @@
       "France Central",
       "France South",
       "Germany West Central",
-      "Germany North"
+      "Germany North",
+      "Norway East"
     ],
     "zoneMappings": null
   },
@@ -1225,6 +1287,7 @@
     },
     "resourceType": "locations/alerts",
     "apiVersions": [
+      "2022-01-01",
       "2021-11-01",
       "2021-01-01",
       "2020-01-01",
@@ -1491,6 +1554,58 @@
   },
   {
     "aliases": null,
+    "resourceType": "query",
+    "apiVersions": [
+      "2022-04-01-preview",
+      "2022-04-01-beta",
+      "2022-04-01-alpha"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West Central US",
+      "Canada Central",
+      "Canada East",
+      "Brazil South",
+      "East Asia",
+      "Southeast Asia",
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Central India",
+      "South India",
+      "West India",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "South Africa North",
+      "South Africa West",
+      "UAE Central",
+      "UAE North",
+      "North Europe",
+      "West Europe",
+      "France Central",
+      "France South",
+      "UK South",
+      "UK West",
+      "Norway East",
+      "Norway West",
+      "Switzerland North",
+      "Switzerland West",
+      "Germany West Central",
+      "Germany North"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "regulatoryComplianceStandards",
     "apiVersions": [
       "2019-01-01-preview",
@@ -1600,6 +1715,7 @@
       "Japan East",
       "Japan West",
       "Korea Central",
+      "Korea South",
       "South Africa North",
       "South Africa West",
       "UAE Central",
@@ -1615,7 +1731,8 @@
       "Switzerland North",
       "Switzerland West",
       "Germany West Central",
-      "Germany North"
+      "Germany North",
+      "Jio India West"
     ],
     "zoneMappings": null
   },
@@ -1717,8 +1834,18 @@
       "France Central",
       "France South",
       "Switzerland North",
-      "Germany West Central"
+      "Germany West Central",
+      "Sweden Central"
     ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "serverVulnerabilityAssessmentsSettings",
+    "apiVersions": [
+      "2022-01-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": null
   },
   {
@@ -1747,7 +1874,40 @@
     "apiVersions": [
       "2020-07-01-preview"
     ],
-    "locations": [],
+    "locations": [
+      "West Central US",
+      "Brazil South",
+      "Australia Central",
+      "Australia East",
+      "Canada Central",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Central India",
+      "West India",
+      "South India",
+      "Japan East",
+      "Japan West",
+      "North Central US",
+      "South Africa North",
+      "Switzerland North",
+      "UK South",
+      "West US 2",
+      "Australia Southeast",
+      "Central US",
+      "France Central",
+      "Korea Central",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UK West",
+      "West US",
+      "West Europe",
+      "UAE North",
+      "West US 3",
+      "Germany West Central",
+      "Norway East"
+    ],
     "zoneMappings": null
   },
   {
@@ -1780,6 +1940,7 @@
       "Japan East",
       "Japan West",
       "Korea Central",
+      "Korea South",
       "South Africa North",
       "South Africa West",
       "UAE Central",
