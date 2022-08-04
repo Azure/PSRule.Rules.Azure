@@ -19,6 +19,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.18.0:
+
+- Engineering:
+  - Added publishing of symbols for NuGet packages by @BernieWhite.
+    [#1549](https://github.com/Azure/PSRule.Rules.Azure/issues/1549)
+
 ## v1.18.0-B0027 (pre-release)
 
 What's changed since pre-release v1.18.0-B0010:
