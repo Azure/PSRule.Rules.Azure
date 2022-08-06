@@ -18,7 +18,7 @@ To enable this feature, you need to:
 
 To expand parameter files configure `ps-rule.yaml` with the `AZURE_PARAMETER_FILE_EXPANSION` option.
 
-```yaml
+```yaml title="ps-rule.yaml"
 # YAML: Enable expansion for template expansion.
 configuration:
   AZURE_PARAMETER_FILE_EXPANSION: true

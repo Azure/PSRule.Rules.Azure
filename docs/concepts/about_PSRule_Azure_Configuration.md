@@ -26,7 +26,7 @@ The following configurations options are available for use:
 - [AZURE_RESOURCE_GROUP](#azure_resource_group)
 - [AZURE_SUBSCRIPTION](#azure_subscription)
 
-  [1]: https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html
+  [1]: https://aka.ms/ps-rule/options
 
 ### Azure_AKSMinimumVersion
 

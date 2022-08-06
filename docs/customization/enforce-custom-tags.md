@@ -181,5 +181,5 @@ Grab the full sample code for each of these files from:
 - [Org.Azure.Rule.ps1](https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/customization/enforce-custom-tags/.ps-rule/Org.Azure.Rule.ps1)
 - [ps-rule.yaml](https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/customization/enforce-custom-tags/ps-rule.yaml)
 
-[AWAF]: https://docs.microsoft.com/en-gb/azure/architecture/framework/
-[assertions]: https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Assert.html
+[AWAF]: https://docs.microsoft.com/azure/architecture/framework/
+[assertions]: https://microsoft.github.io/PSRule/v2/commands/PSRule/en-US/Assert-PSRule/

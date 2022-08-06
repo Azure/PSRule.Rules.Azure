@@ -6,6 +6,7 @@ Document 'index' {
 
     Metadata @{
         generated = $True
+        title = 'Reference'
     }
 
     Import-Module ./out/modules/PSRule.Rules.Azure

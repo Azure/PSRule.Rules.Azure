@@ -39,8 +39,10 @@ As new built-in rules are added and improved, download the latest version to sta
     For detailed information on building custom rules see:
 
     - [Enforcing custom tags][3].
+    - [Enforcing code ownership][3].
 
   [3]: customization/enforce-custom-tags.md
+  [4]: customization/enforce-codeowners.md
 
 ## DevOps integrated
 
@@ -50,7 +52,7 @@ From as early as authoring an ARM template, resources can be validated offline b
 Pre-flight validation can be integrated into a continuous integration (CI) pipeline as unit tests to:
 
 - **Shift-left** &mdash; Identify configuration issues and provide fast feedback in PRs.
-- **Quality gates** &mdash; Implement quality gates between environments such as development, test, and production.
+- **Quality gates** &mdash; Implement quality gates between environments such as dev, test, and production.
 - **Monitor continuously** &mdash; Perform ongoing checks for configuration optimization opportunities.
 
 ## Cross-platform
@@ -63,25 +65,20 @@ PowerShell makes it easy to integrate PSRule into popular CI systems.
 Run natively or in a container depending on your platform.
 PSRule has native extensions for:
 
-- [Azure Pipelines (Azure DevOps)][4]
-- [GitHub Actions][5]
-- [Visual Studio Code][6]
+- [Azure Pipelines (Azure DevOps)][5]
+- [GitHub Actions][6]
+- [Visual Studio Code][7]
 
 Additionally, PSRule for Azure can be installed locally or within Azure Cloud Shell.
-For installation options see [installation][7].
+For installation options see [installation][8].
 
-  [4]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
-  [5]: https://github.com/marketplace/actions/psrule
-  [6]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode
-  [7]: install-instructions.md
+  [5]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
+  [6]: https://github.com/marketplace/actions/psrule
+  [7]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode
+  [8]: install-instructions.md
 
 *[ARM]: Azure Resource Manager
 *[WAF]: Well-Architected Framework
 *[IaC]: Infrastructure as Code
 *[CI]: Continuous Integration
 *[PRs]: Pull Requests
-
-[ignore-rule]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-ignore-a-rule
-[ps-rule-configure]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-configure-psrule
-[ps-rule-faq]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#frequently-asked-questions-faq
-[add-custom-rule]: https://github.com/microsoft/PSRule/blob/main/docs/features.md#how-do-i-layer-on-custom-rules-on-top-of-an-existing-module
