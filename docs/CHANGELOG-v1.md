@@ -19,6 +19,45 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.18.0
+
+What's changed since v1.17.1:
+
+- New rules:
+  - Cognitive Services:
+    - Check accounts use network access restrictions by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+    - Check accounts use managed identities to access Azure resources by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+    - Check accounts only accept requests using Azure AD identities by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+    - Check accounts disable access using public endpoints by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+- General improvements:
+  - Added support for array `indexOf`, `lastIndexOf`, and `items` ARM functions by @BernieWhite.
+    [#1440](https://github.com/Azure/PSRule.Rules.Azure/issues/1440)
+  - Added support for `join` ARM function by @BernieWhite.
+    [#1535](https://github.com/Azure/PSRule.Rules.Azure/issues/1535)
+- General improvements:
+  - Improved output of full path to emitted resources by @BernieWhite.
+    [#1523](https://github.com/Azure/PSRule.Rules.Azure/issues/1523)
+- Engineering:
+  - Bump Az.Resources to v6.0.1.
+    [#1521](https://github.com/Azure/PSRule.Rules.Azure/pull/1521)
+  - Updated provider data for analysis.
+    [#1540](https://github.com/Azure/PSRule.Rules.Azure/pull/1540)
+  - Bump xunit to v2.4.2.
+    [#1542](https://github.com/Azure/PSRule.Rules.Azure/pull/1542)
+  - Added readme and tags to NuGet by @BernieWhite.
+    [#1513](https://github.com/Azure/PSRule.Rules.Azure/issues/1513)
+- Bug fixes:
+  - Fixed `Azure.SQL.TDE` is not required to enable Transparent Data Encryption for IaC by @BernieWhite.
+    [#1530](https://github.com/Azure/PSRule.Rules.Azure/issues/1530)
+
+What's changed since pre-release v1.18.0-B0027:
+
+- No additional changes.
+
 ## v1.18.0-B0027 (pre-release)
 
 What's changed since pre-release v1.18.0-B0010:
