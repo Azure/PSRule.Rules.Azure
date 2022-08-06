@@ -24,7 +24,7 @@ Install and use PSRule for Azure with GitHub Actions by referencing the `microso
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.1.0
+      uses: microsoft/ps-rule@v2.2.0
       with:
         modules: 'PSRule.Rules.Azure'
     ```
@@ -35,7 +35,7 @@ Install and use PSRule for Azure with GitHub Actions by referencing the `microso
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.1.0
+      uses: microsoft/ps-rule@v2.2.0
       with:
         modules: 'PSRule.Rules.Azure'
         prerelease: true
@@ -113,7 +113,7 @@ Additionally, exporting data from an subscription requires:
 ### Installing PowerShell
 
 PowerShell 7.x can be installed on MacOS, Linux, and Windows but is not installed by default.
-For a list of platforms that PowerShell 7.1 is supported on and install instructions see [Get PowerShell][4].
+For a list of platforms that PowerShell 7.2 is supported on and install instructions see [Get PowerShell][4].
 
   [4]: https://github.com/PowerShell/PowerShell#get-powershell
 

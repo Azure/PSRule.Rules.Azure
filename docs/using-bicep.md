@@ -20,7 +20,7 @@ To enable this feature, you need to:
 
 To expand Bicep deployments configure `ps-rule.yaml` with the `AZURE_BICEP_FILE_EXPANSION` option.
 
-```yaml
+```yaml title="ps-rule.yaml"
 # YAML: Enable expansion for Bicep source files.
 configuration:
   AZURE_BICEP_FILE_EXPANSION: true
@@ -144,7 +144,7 @@ You may need to [configure credentials][4] to access the private registry from a
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.1.0
+      uses: microsoft/ps-rule@v2.2.0
       with:
         modules: PSRule.Rules.Azure,PSRule.Monitor
         conventions: Monitor.LogAnalytics.Import
