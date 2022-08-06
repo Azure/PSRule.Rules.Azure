@@ -137,7 +137,7 @@ Rule 'Azure.Template.ResourceLocation' -Ref 'AZR-000222' -Type '.json' -If { (Ha
 }
 
 # Synopsis: Template should reference a location parameter to specify resource location.
-Rule 'Azure.Template.UseLocationParameter' -Ref 'AZR-000223' -Type '.json' -If { (IsTemplateFile -Suffix '/deploymentTemplate.json') -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.Template.UseLocationParameter' -Ref 'AZR-000223' -Level Warning -Type '.json' -If { (IsTemplateFile -Suffix '/deploymentTemplate.json') -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
     $jsonObject = $PSRule.GetContent($TargetObject)[0];
     if ($Assert.HasField($jsonObject, 'parameters.location').Result) {
         $jsonObject.parameters.PSObject.Properties.Remove('location')
@@ -305,7 +305,7 @@ Rule 'Azure.Template.ValidSecretRef' -Ref 'AZR-000233' -Type '.json' -If { (IsPa
 }
 
 # Synopsis: Use comments for each resource in ARM template to communicate purpose.
-Rule 'Azure.Template.UseComments' -Ref 'AZR-000234' -Type '.json' -If { (IsTemplateFile) -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.Template.UseComments' -Ref 'AZR-000234' -Level Information -Type '.json' -If { (IsTemplateFile) -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
     $resources = @(GetTemplateResources | Where-Object { $Assert.NullOrEmpty($_, 'comments').Result });
 
     $Assert.Count($resources, '.', 0).Reason(
@@ -316,7 +316,7 @@ Rule 'Azure.Template.UseComments' -Ref 'AZR-000234' -Type '.json' -If { (IsTempl
 }
 
 # Synopsis: Use descriptions for each resource in generated template(bicep, psarm, AzOps) to communicate purpose.
-Rule 'Azure.Template.UseDescriptions' -Ref 'AZR-000235' -Type '.json' -If { (IsTemplateFile) -and (IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.Template.UseDescriptions' -Ref 'AZR-000235' -Level Information -Type '.json' -If { (IsTemplateFile) -and (IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
     $resources = @(GetTemplateResources | Where-Object { $Assert.NullOrEmpty($_, 'metadata.description').Result });
 
     $Assert.Count($resources, '.', 0).Reason(

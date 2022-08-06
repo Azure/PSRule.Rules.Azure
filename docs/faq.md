@@ -153,6 +153,32 @@ PSRule complements Azure Advisor, Security Center, and Azure Policy features by:
 - Providing the ability to layer on organization specific rules, as required.
 - Data collection requires limited permissions and requires no additional configuration.
 
+## What do the different severity and levels for rules means?
+
+PSRule for Azure annotates rules with three (3) severities which indicate how you should prioritize remediation.
+The following severities are defined:
+
+- `Critical` &mdash; Consider addressing these first, ideally within the next thirty (30) days.
+  Rules identified as _critical_ often have high impact and are highly likely to affect your services.
+- `Important` &mdash; Consider addressing these next, ideally within the next sixty (60) days.
+  Rules identified as _important_ often have a significant impact and are likely to affect your services.
+- `Awareness` &mdash; Consider addressing these last, ideally within the next ninty (90) days.
+  Rules identified as _awareness_ often have a moderate or low impact to the operation of your services.
+
+!!! Tip
+    Severities and suggested time frames are an indicator only.
+    They may affect your environment, compliance, or security differently based on your specific requirements.
+    If you feel the severity for a rule is broadly incorrect then please let as know.
+    You can do this by [joining or starting a discussion][discussion].
+
+Additionally, PSRule for Azure uses three (3) rule levels.
+These levels determine how PSRule provides feedback about failing cases.
+The following levels are defined:
+
+- `Error` &mdash; Rules defined as _error_ will stop CI pipelines that are configured to break on error.
+- `Warning` &mdash; Rules defined as _warning_ will not stop CI pipelines and will produce a warning.
+- `Information` &mdash; Rules defined as _information_ will not stop CI pipelines.
+
 ## Traditional unit testing vs PSRule for Azure?
 
 You may already be using a unit test framework such as Pester to test infrastructure code.

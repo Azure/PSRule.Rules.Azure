@@ -360,6 +360,7 @@ task BuildDocs BuildRuleDocs, BuildBaselineDocs
 # Synopsis: Build table of content for rules
 task BuildRuleDocs Build, Dependencies, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name index -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
     $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name module -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
     $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
 
@@ -372,6 +373,8 @@ task BuildRuleDocs Build, Dependencies, {
             Flags = $_.Flags
             Release = $_.Tag.release
             RuleSet = $_.Tag.ruleSet
+            Level = $_.Level.ToString()
+            Method = $_.Tag.method
         }
     }
     $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/en/rules/metadata.json -Force;

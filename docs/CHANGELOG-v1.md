@@ -21,6 +21,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.18.0:
 
+- General improvements:
+  - Updated rule level for the following rules by @BernieWhite:
+    [#1551](https://github.com/Azure/PSRule.Rules.Azure/issues/1551)
+    - Set `Azure.APIM.APIDescriptors` to warning from error.
+    - Set `Azure.APIM.ProductDescriptors` to warning from error.
+    - Set `Azure.Template.UseLocationParameter` to warning from error.
+    - Set `Azure.Template.UseComments` to information from error.
+    - Set `Azure.Template.UseDescriptions` to information from error.
 - Engineering:
   - Added publishing of symbols for NuGet packages by @BernieWhite.
     [#1549](https://github.com/Azure/PSRule.Rules.Azure/issues/1549)
