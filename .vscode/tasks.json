@@ -203,6 +203,17 @@
                 "clear": true,
                 "panel": "dedicated"
             }
+        },
+        {
+            "label": "Install Python dependencies",
+            "detail": "Install or upgrade dependencies to build and debug mkdocs documentation locally.",
+            "type": "shell",
+            "command": "python3 -m pip install -r requirements-docs.txt",
+            "problemMatcher": [],
+            "presentation": {
+                "clear": true,
+                "panel": "dedicated"
+            }
         }
     ],
     "inputs": [
