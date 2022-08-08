@@ -32,6 +32,10 @@ What's changed since v1.18.0:
 - Engineering:
   - Added publishing of symbols for NuGet packages by @BernieWhite.
     [#1549](https://github.com/Azure/PSRule.Rules.Azure/issues/1549)
+  - Bump PSRule to v2.3.0.
+    [#1557](https://github.com/Azure/PSRule.Rules.Azure/pull/1557)
+  - Bump Az.Resources to v6.1.0.
+    [#1557](https://github.com/Azure/PSRule.Rules.Azure/pull/1557)
 
 ## v1.18.0
 
