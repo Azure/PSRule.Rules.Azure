@@ -32,6 +32,8 @@ What's changed since v1.18.0:
 - Engineering:
   - Added publishing of symbols for NuGet packages by @BernieWhite.
     [#1549](https://github.com/Azure/PSRule.Rules.Azure/issues/1549)
+  - Bump PowerShell dependencies.
+    [#1557](https://github.com/Azure/PSRule.Rules.Azure/pull/1557)
 
 ## v1.18.0
 
