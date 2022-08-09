@@ -19,6 +19,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.18.0:
+
+- Bug fixes:
+  - Fixed `Azure.APIM.HTTPBackend` reports failure when service URL is not defined by @BernieWhite.
+    [#1555](https://github.com/Azure/PSRule.Rules.Azure/issues/1555)
+
 ## v1.18.0
 
 What's changed since v1.17.1:

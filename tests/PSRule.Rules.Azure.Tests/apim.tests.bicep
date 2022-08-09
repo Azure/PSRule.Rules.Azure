@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-// Bicep documentation examples
+// Bicep test cases
 
 @description('The name of the API Management service.')
-param name string = 'apim-contoso-test-eus-001'
+param name string = 'apim'
 
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
@@ -16,8 +16,8 @@ param publisherEmail string = 'noreply@contoso.com'
 param publisherName string = 'Contoso'
 
 // An example API Management service
-resource service 'Microsoft.ApiManagement/service@2021-08-01' = {
-  name: name
+resource service_01 'Microsoft.ApiManagement/service@2021-08-01' = {
+  name: '${name}-01'
   location: location
   sku: {
     name: 'Premium'
@@ -50,9 +50,9 @@ resource service 'Microsoft.ApiManagement/service@2021-08-01' = {
 }
 
 // An example product
-resource product 'Microsoft.ApiManagement/service/products@2021-08-01' = {
-  parent: service
-  name: 'echo'
+resource product_01 'Microsoft.ApiManagement/service/products@2021-08-01' = {
+  parent: service_01
+  name: 'product-01'
   properties: {
     displayName: 'Echo'
     description: 'Echo API services for Contoso.'
@@ -63,8 +63,8 @@ resource product 'Microsoft.ApiManagement/service/products@2021-08-01' = {
 
 // An example API Version
 resource version 'Microsoft.ApiManagement/service/apiVersionSets@2021-08-01' = {
-  parent: service
-  name: 'echo'
+  parent: service_01
+  name: 'version-01'
   properties: {
     displayName: 'Echo API'
     description: 'An echo API service.'
@@ -73,9 +73,9 @@ resource version 'Microsoft.ApiManagement/service/apiVersionSets@2021-08-01' = {
 }
 
 // An example API
-resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
-  parent: service
-  name: 'echo-v1'
+resource api_01 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
+  parent: service_01
+  name: 'api-01'
   properties: {
     displayName: 'Echo API'
     description: 'An echo API service.'
@@ -90,10 +90,39 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
   }
 }
 
+// An example API
+resource api_02 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
+  name: 'apim-02/api-02'
+  properties: {
+    displayName: 'Echo API'
+    description: 'An echo API service.'
+    path: 'echo'
+    serviceUrl: 'http://echo.contoso.com'
+    protocols: [
+      'https'
+    ]
+    subscriptionRequired: true
+  }
+}
+
+// An example API
+resource api_03 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
+  name: 'apim-03/api-03'
+  properties: {
+    displayName: 'Echo API'
+    description: 'An echo API service.'
+    path: 'echo'
+    protocols: [
+      'https'
+    ]
+    subscriptionRequired: true
+  }
+}
+
 // An example API backend
-resource backend 'Microsoft.ApiManagement/service/backends@2021-08-01' = {
-  parent: service
-  name: 'echo'
+resource backend_01 'Microsoft.ApiManagement/service/backends@2021-08-01' = {
+  parent: service_01
+  name: 'backend-01'
   properties: {
     title: 'echo'
     description: 'A backend service for the Each API.'
