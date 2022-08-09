@@ -5,9 +5,8 @@
 # Validation rules for API Management
 #
 
-# Synopsis: Use HTTPS APIs
+# Synopsis: Enforce HTTPS for communication to API clients.
 Rule 'Azure.APIM.HTTPEndpoint' -Ref 'AZR-000042' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Reason 'http is in use'
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis')
         if ($apis.Length -eq 0) {
@@ -41,37 +40,42 @@ Rule 'Azure.APIM.APIDescriptors' -Ref 'AZR-000043' -Type 'Microsoft.ApiManagemen
     }
 }
 
-# Synopsis: Use HTTPS backends
+# Synopsis: Use HTTPS for communication to backend services.
 Rule 'Azure.APIM.HTTPBackend' -Ref 'AZR-000044' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/backends', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+    $apis = @();
+    $backends = @();
+
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
-        $backends = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/backends')
-        if ($backends.Length -eq 0) {
-            $Assert.Pass();
-        }
-        foreach ($backend in $backends) {
-            $Assert.
-                StartsWith($backend, 'properties.url', 'https://').
-                Reason($LocalizedData.BackendUrlNotHttps, $backend.name);
-        }
-        $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis')
-        if ($apis.Length -eq 0) {
-            $Assert.Pass();
-        }
-        foreach ($api in $apis) {
-            $Assert.
-                StartsWith($api, 'properties.serviceUrl', 'https://').
-                Reason($LocalizedData.ServiceUrlNotHttps, $api.name);
-        }
+        $backends = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/backends' | Where-Object {
+            $Assert.HasField($_, 'properties.url').Result
+        });
+        $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis' | Where-Object {
+            $Assert.HasField($_, 'properties.serviceUrl').Result
+        });
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/apis') {
-        $Assert.
-            StartsWith($TargetObject, 'properties.serviceUrl', 'https://').
-            Reason($LocalizedData.ServiceUrlNotHttps, $PSRule.TargetName);
+        if ($Assert.HasField($TargetObject, 'properties.serviceUrl').Result) {
+            $apis = @($TargetObject)
+        }
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/backends') {
+        if ($Assert.HasField($TargetObject, 'properties.url').Result) {
+            $backends = @($TargetObject)
+        }
+    }
+
+    if ($backends.Length -eq 0 -and $apis.Length -eq 0) {
+        return $Assert.Pass();
+    }
+    foreach ($backend in $backends) {
         $Assert.
-            StartsWith($TargetObject, 'properties.url', 'https://').
-            Reason($LocalizedData.BackendUrlNotHttps, $PSRule.TargetName);
+            NotStartsWith($backend, 'properties.url', 'http://').
+            Reason($LocalizedData.BackendUrlNotHttps, $backend.name);
+    }
+    foreach ($api in $apis) {
+        $Assert.
+            NotStartsWith($api, 'properties.serviceUrl', 'http://').
+            Reason($LocalizedData.ServiceUrlNotHttps, $api.name);
     }
 }
 
