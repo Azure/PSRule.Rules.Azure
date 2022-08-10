@@ -1,0 +1,18 @@
+[
+    {
+        "Name": "nestedDeployment-A",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.deployments/nestedDeployment-A",
+        "ResourceName": "nestedDeployment-A",
+        "ResourceType": "Microsoft.DataFactory/deployments",
+        "ResourceGroupName": "test-rg",
+        "Location": "region",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Tags": null,
+        "Properties": {
+            // add a nested deployment object example with an admin username
+            "dataFactoryId": "00000000-0000-0000-0000-000000000000",
+            "error": null,
+            "errorMessage": null
+        }
+    }
+]
