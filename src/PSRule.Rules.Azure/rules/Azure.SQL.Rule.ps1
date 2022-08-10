@@ -54,14 +54,27 @@ Rule 'Azure.SQL.Auditing' -Ref 'AZR-000187' -Type 'Microsoft.Sql/servers' -Tag @
     }
 }
 
-# Synopsis: Use Azure AD administrators
-Rule 'Azure.SQL.AAD' -Ref 'AZR-000188' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/administrators');
-    if ($configs.Length -eq 0) {
-        return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/administrators');
+# Synopsis: Use Azure Active Directory (AAD) authentication with Azure SQL databases.
+Rule 'Azure.SQL.AAD' -Ref 'AZR-000188' -Type 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/administrators' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+    # NB: Microsoft.Sql/servers/administrators overrides properties.administrators property.
+
+    $configs = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.Sql/servers') {
+        $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/administrators' -Name 'ActiveDirectory');
+        Write-Verbose -Message "Using type 'Microsoft.Sql/servers' with $($configs.Length).";
     }
-    foreach ($config in $configs) {
-        $Assert.HasFieldValue($config, 'Properties.administratorType', 'ActiveDirectory');
+
+    if ($configs.Length -eq 0 -and $PSRule.TargetType -eq 'Microsoft.Sql/servers') {
+        $Assert.HasFieldValue($TargetObject, 'properties.administrators.administratorType', 'ActiveDirectory');
+        $Assert.HasFieldValue($TargetObject, 'properties.administrators.login');
+        $Assert.HasFieldValue($TargetObject, 'properties.administrators.sid');
+    }
+    else {
+        foreach ($config in $configs) {
+            $Assert.HasFieldValue($config, 'properties.administratorType', 'ActiveDirectory');
+            $Assert.HasFieldValue($config, 'properties.login');
+            $Assert.HasFieldValue($config, 'properties.sid');
+        }
     }
 }
 
