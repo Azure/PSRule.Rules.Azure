@@ -24,6 +24,8 @@ What's changed since v1.18.0:
 - Bug fixes:
   - Fixed `Azure.APIM.HTTPBackend` reports failure when service URL is not defined by @BernieWhite.
     [#1555](https://github.com/Azure/PSRule.Rules.Azure/issues/1555)
+  - Fixed `Azure.SQL.AAD` failure with newer API by @BernieWhite.
+    [#1302](https://github.com/Azure/PSRule.Rules.Azure/issues/1302)
 
 ## v1.18.0
 

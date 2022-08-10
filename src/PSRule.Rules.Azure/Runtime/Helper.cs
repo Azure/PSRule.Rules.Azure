@@ -64,6 +64,20 @@ namespace PSRule.Rules.Azure.Runtime
             return resourceProviderHelper.GetResourceType(providerNamespace, resourceType);
         }
 
+        /// <summary>
+        /// Get the last element in the sub-resource name by splitting the name by '/' separator.
+        /// </summary>
+        /// <param name="resourceName">The sub-resource name to split.</param>
+        /// <returns>The name of the sub-resource.</returns>
+        public static string GetSubResourceName(string resourceName)
+        {
+            if (string.IsNullOrEmpty(resourceName))
+                return resourceName;
+
+            var parts = resourceName.Split('/');
+            return parts[parts.Length - 1];
+        }
+
         #region Helper methods
 
         private static PSObject[] GetTemplateResources(string templateFile, string parameterFile, PipelineContext context)
