@@ -19,6 +19,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.18.1
+
 What's changed since v1.18.0:
 
 - Bug fixes:
