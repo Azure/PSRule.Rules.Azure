@@ -1,0 +1,50 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "catalogs/certificates",
+    "apiVersions": [
+      "2022-09-01-privatepreview"
+    ],
+    "locations": [
+      "West US 3",
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-09-01-privatepreview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2022-09-01-privatepreview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-09-01-privatepreview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  }
+]

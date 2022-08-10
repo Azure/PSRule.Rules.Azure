@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "agreements",
     "apiVersions": [
+      "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
       "2021-03-01-preview",
@@ -16,6 +17,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
       "2021-03-01-preview",
@@ -29,6 +31,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
       "2021-03-01-preview",
@@ -42,6 +45,7 @@
     "aliases": null,
     "resourceType": "locations/OperationStatuses",
     "apiVersions": [
+      "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
       "2021-03-01-preview",
@@ -67,11 +71,6 @@
       "East US 2",
       "North Europe",
       "Southeast Asia",
-      "Central India",
-      "East Asia",
-      "Korea Central",
-      "Norway East",
-      "Sweden Central",
       "Central US EUAP"
     ],
     "zoneMappings": null
@@ -80,6 +79,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
       "2021-03-01-preview",
@@ -93,6 +93,7 @@
     "aliases": null,
     "resourceType": "organizations",
     "apiVersions": [
+      "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
       "2021-03-01-preview",
@@ -116,12 +117,7 @@
       "Central US",
       "East US 2",
       "North Europe",
-      "Southeast Asia",
-      "Central India",
-      "East Asia",
-      "Korea Central",
-      "Norway East",
-      "Sweden Central"
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -129,6 +125,7 @@
     "aliases": null,
     "resourceType": "validations",
     "apiVersions": [
+      "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
       "2021-03-01-preview"

@@ -78,5 +78,5 @@ For the PSRule GitHub Action, use **>=1.4.0**.
 
 ```yaml
 - name: Run PSRule analysis
-  uses: Microsoft/ps-rule@v1.4.0
+  uses: Microsoft/ps-rule@v2.2.0
 ```

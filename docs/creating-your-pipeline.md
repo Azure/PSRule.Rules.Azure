@@ -32,7 +32,7 @@ Within the root directory of your infrastructure as code repository:
 
         # Analyze Azure resources using PSRule for Azure
         - name: Analyze Azure template files
-          uses: microsoft/ps-rule@v2.1.0
+          uses: microsoft/ps-rule@v2.2.0
           with:
             modules: 'PSRule.Rules.Azure'
     ```
@@ -71,7 +71,7 @@ When enabled, PSRule for Azure automatically resolves parameter and template fil
 To enabled this feature, set the `Configuration.AZURE_PARAMETER_FILE_EXPANSION` option to `true`.
 This option can be set within the `ps-rule.yaml` file.
 
-```yaml
+```yaml title="ps-rule.yaml"
 configuration:
   # Enable automatic expansion of Azure parameter files
   AZURE_PARAMETER_FILE_EXPANSION: true
@@ -89,7 +89,7 @@ When enabled, PSRule for Azure automatically expands and analyzes Azure resource
 To enabled this feature, set the `Configuration.AZURE_BICEP_FILE_EXPANSION` option to `true`.
 This option can be set within the `ps-rule.yaml` file.
 
-```yaml
+```yaml title="ps-rule.yaml"
 configuration:
   # Enable automatic expansion of bicep source files
   AZURE_BICEP_FILE_EXPANSION: true
@@ -108,7 +108,7 @@ To exclude a rule, set `Rule.Exclude` option within the `ps-rule.yaml` file.
 
 [:octicons-book-24: Docs][3]
 
-```yaml
+```yaml title="ps-rule.yaml"
 rule:
   exclude:
   # Ignore the following rules for all resources
@@ -120,7 +120,7 @@ To suppress a rule, set `Suppression` option within the `ps-rule.yaml` file.
 
 [:octicons-book-24: Docs][4]
 
-```yaml
+```yaml title="ps-rule.yaml"
 suppression:
   Azure.AKS.AuthorizedIPs:
   # Exclude the following externally managed AKS clusters

@@ -23,7 +23,7 @@ BeforeAll {
     $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-Describe 'Azure.SQL' -Tag 'SQL' {
+Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
@@ -102,7 +102,7 @@ Describe 'Azure.SQL' -Tag 'SQL' {
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Sql/servers/securityAlertPolicies'' has not been specified.';
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The field 'Properties.state' is set to 'Disabled'.";
+            $ruleResult[1].Reason | Should -BeExactly "Path Properties.state: Is set to 'Disabled'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -123,7 +123,7 @@ Describe 'Azure.SQL' -Tag 'SQL' {
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Sql/servers/auditingSettings'' has not been specified.';
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly 'The field ''Properties.state'' is set to ''Disabled''.';
+            $ruleResult[1].Reason | Should -BeExactly 'Path Properties.state: Is set to ''Disabled''.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -332,6 +332,39 @@ Describe 'Azure.SQL' -Tag 'SQL' {
             $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.SQL.FGName';
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Outcome | Should -Be 'Fail';
+        }
+    }
+
+    Context 'With Template' {
+        BeforeAll {
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.SQL.json;
+            Export-AzRuleTemplateData -TemplateFile (Join-Path -Path $here -ChildPath 'sql.tests.json') -OutputPath $outputFile;
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
+        }
+
+        It 'Azure.SQL.TDE' {
+            $filteredResult = $result | Where-Object {
+                $_.RuleName -eq 'Azure.SQL.TDE' -and
+                ($_.TargetType -eq 'Microsoft.Sql/servers/databases' -or $_.TargetType -eq 'Microsoft.Sql/servers/databases/transparentDataEncryption')
+            };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'sql-sql-01/sqldb-sql-02', 'sql-sql-01/sqldb-sql-03', 'server01/db01/current', 'server01/db02/current';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'sql-sql-01/sqldb-sql-01';
         }
     }
 }

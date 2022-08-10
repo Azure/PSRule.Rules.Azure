@@ -29,6 +29,7 @@
     "aliases": null,
     "resourceType": "bestPractices",
     "apiVersions": [
+      "2022-05-04",
       "2021-04-30-preview"
     ],
     "locations": [],
@@ -38,6 +39,7 @@
     "aliases": null,
     "resourceType": "bestPractices/versions",
     "apiVersions": [
+      "2022-05-04",
       "2021-04-30-preview"
     ],
     "locations": [],
@@ -80,6 +82,7 @@
     },
     "resourceType": "configurationProfileAssignments",
     "apiVersions": [
+      "2022-05-04",
       "2021-04-30-preview",
       "2020-06-30-preview"
     ],
@@ -132,6 +135,7 @@
     "aliases": null,
     "resourceType": "configurationProfiles",
     "apiVersions": [
+      "2022-05-04",
       "2021-04-30-preview"
     ],
     "locations": [
@@ -158,6 +162,7 @@
     "aliases": null,
     "resourceType": "configurationProfiles/versions",
     "apiVersions": [
+      "2022-05-04",
       "2021-04-30-preview"
     ],
     "locations": [
@@ -184,6 +189,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-04",
       "2022-03-30-preview",
       "2021-08-01-preview",
       "2021-04-30-preview",

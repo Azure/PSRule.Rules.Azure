@@ -88,13 +88,24 @@ Rule 'Azure.SQL.ServerName' -Ref 'AZR-000190' -Type 'Microsoft.Sql/servers' -Tag
 #region SQL Database
 
 # Synopsis: Enable transparent data encryption
-Rule 'Azure.SQL.TDE' -Ref 'AZR-000191' -Type 'Microsoft.Sql/servers/databases' -If { !(IsMasterDatabase) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/databases/transparentDataEncryption');
+Rule 'Azure.SQL.TDE' -Ref 'AZR-000191' -Type 'Microsoft.Sql/servers/databases', 'Microsoft.Sql/servers/databases/transparentDataEncryption' -If { !(IsMasterDatabase) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+    $configs = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.Sql/servers/databases') {
+        $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/databases/transparentDataEncryption');
+    }
     if ($configs.Length -eq 0) {
+        if (!(IsExport)) {
+            return $Assert.Pass();
+        }
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/databases/transparentDataEncryption');
     }
     foreach ($config in $configs) {
-        $Assert.HasFieldValue($config, 'Properties.status', 'Enabled');
+        if ($Assert.HasFieldValue($config, 'apiVersion', '2014-04-01').Result) {
+            $Assert.HasFieldValue($config, 'Properties.status', 'Enabled');
+        }
+        else {
+            $Assert.HasFieldValue($config, 'Properties.state', 'Enabled');
+        }
     }
 }
 

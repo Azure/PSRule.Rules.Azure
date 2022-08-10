@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2022-05-01-preview",
       "2022-01-01-preview",
       "2021-09-01-preview",
       "2021-08-01-preview"
@@ -14,6 +15,7 @@
     "aliases": null,
     "resourceType": "Locations/operationStatuses",
     "apiVersions": [
+      "2022-05-01-preview",
       "2022-01-01-preview",
       "2021-09-01-preview",
       "2021-08-01-preview"
@@ -23,6 +25,18 @@
       "East US",
       "West Europe"
     ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2022-05-01-preview",
+      "2022-01-01-preview",
+      "2021-09-01-preview",
+      "2021-08-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": null
   }
 ]

@@ -37,6 +37,7 @@
     "aliases": null,
     "resourceType": "checkProvisioningServiceNameAvailability",
     "apiVersions": [
+      "2022-02-05",
       "2021-10-15",
       "2020-03-01",
       "2020-01-01",
@@ -267,7 +268,8 @@
       "West US 2",
       "West Central US",
       "North Central US",
-      "East US 2"
+      "East US 2",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -315,7 +317,8 @@
       "West US 2",
       "West Central US",
       "North Central US",
-      "East US 2"
+      "East US 2",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -387,7 +390,8 @@
       "West US 2",
       "West Central US",
       "North Central US",
-      "East US 2"
+      "East US 2",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -433,7 +437,8 @@
       "West US 2",
       "West Central US",
       "North Central US",
-      "East US 2"
+      "East US 2",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -545,7 +550,8 @@
       "West US 2",
       "West Central US",
       "North Central US",
-      "East US 2"
+      "East US 2",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -623,6 +629,22 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "provisioningServiceOperationResults",
+    "apiVersions": [
+      "2022-02-05",
+      "2021-10-15",
+      "2020-09-01-preview",
+      "2020-03-01",
+      "2020-01-01",
+      "2018-01-22",
+      "2017-11-15",
+      "2017-08-21-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.Devices/ProvisioningServices/allocationPolicy": "properties.allocationPolicy",
       "Microsoft.Devices/ProvisioningServices/authorizationPolicies": "properties.authorizationPolicies",
@@ -683,6 +705,7 @@
     },
     "resourceType": "ProvisioningServices",
     "apiVersions": [
+      "2022-02-05",
       "2021-10-15",
       "2020-03-01",
       "2020-01-01",
@@ -719,7 +742,9 @@
       "West US 2",
       "West Central US",
       "North Central US",
-      "East US 2"
+      "East US 2",
+      "Germany West Central",
+      "UAE North"
     ],
     "zoneMappings": null
   },

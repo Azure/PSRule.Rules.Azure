@@ -1,0 +1,45 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces",
+    "apiVersions": [
+      "2022-04-01-preview"
+    ],
+    "locations": [
+      "South Central US",
+      "West US 3",
+      "East US",
+      "East Asia",
+      "Sweden Central",
+      "Australia East",
+      "Japan East"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/labels",
+    "apiVersions": [
+      "2022-04-01-preview"
+    ],
+    "locations": [
+      "South Central US",
+      "West US 3",
+      "East US",
+      "East Asia",
+      "Sweden Central",
+      "Australia East",
+      "Japan East"
+    ],
+    "zoneMappings": null
+  }
+]

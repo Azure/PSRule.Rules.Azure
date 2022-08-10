@@ -59,6 +59,12 @@
       "Microsoft.DBForMySql/flexibleServers/backup.geoRedundantBackup": "properties.backup.geoRedundantBackup",
       "Microsoft.DBForMySql/flexibleServers/byokEnforcement": "properties.byokEnforcement",
       "Microsoft.DBForMySql/flexibleServers/createMode": "properties.createMode",
+      "Microsoft.DBForMySql/flexibleServers/dataEncryption": "properties.dataEncryption",
+      "Microsoft.DBForMySql/flexibleServers/dataEncryption.geoBackupKeyUri": "properties.dataEncryption.geoBackupKeyUri",
+      "Microsoft.DBForMySql/flexibleServers/dataEncryption.geoBackupUserAssignedIdentityId": "properties.dataEncryption.geoBackupUserAssignedIdentityId",
+      "Microsoft.DBForMySql/flexibleServers/dataEncryption.primaryKeyUri": "properties.dataEncryption.primaryKeyUri",
+      "Microsoft.DBForMySql/flexibleServers/dataEncryption.primaryUserAssignedIdentityId": "properties.dataEncryption.primaryUserAssignedIdentityId",
+      "Microsoft.DBForMySql/flexibleServers/dataEncryption.type": "properties.dataEncryption.type",
       "Microsoft.DBForMySql/flexibleServers/delegatedSubnetArguments": "properties.delegatedSubnetArguments",
       "Microsoft.DBForMySql/flexibleServers/delegatedSubnetArguments.subnetArmResourceId": "properties.delegatedSubnetArguments.subnetArmResourceId",
       "Microsoft.DBForMySql/flexibleServers/earliestRestoreDate": "properties.earliestRestoreDate",
@@ -122,6 +128,7 @@
       "East US 2",
       "Germany West Central",
       "Central India",
+      "South India",
       "Japan West",
       "Korea South",
       "North Central US",
@@ -135,6 +142,7 @@
       "West US 3",
       "Brazil South",
       "France Central",
+      "France South",
       "South Africa North",
       "Southeast Asia",
       "North Europe",
@@ -147,6 +155,7 @@
       "Central US",
       "East US",
       "Switzerland North",
+      "Switzerland West",
       "South Central US"
     ],
     "zoneMappings": [
@@ -559,7 +568,8 @@
       "West US",
       "West US 2",
       "West US 3",
-      "Switzerland West"
+      "Switzerland West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -580,6 +590,7 @@
       "East US 2",
       "Germany West Central",
       "Central India",
+      "South India",
       "Japan West",
       "Korea South",
       "North Central US",
@@ -593,6 +604,7 @@
       "West US 3",
       "Brazil South",
       "France Central",
+      "France South",
       "South Africa North",
       "Southeast Asia",
       "North Europe",
@@ -605,6 +617,7 @@
       "Central US",
       "East US",
       "Switzerland North",
+      "Switzerland West",
       "South Central US"
     ],
     "zoneMappings": null
@@ -628,8 +641,10 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany West Central",
       "Central India",
+      "South India",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -642,6 +657,7 @@
       "South Central US",
       "Southeast Asia",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK West",
       "UK South",
@@ -670,6 +686,7 @@
       "East US 2",
       "Germany West Central",
       "Central India",
+      "South India",
       "Japan West",
       "Korea South",
       "North Central US",
@@ -683,6 +700,7 @@
       "West US 3",
       "Brazil South",
       "France Central",
+      "France South",
       "South Africa North",
       "Southeast Asia",
       "North Europe",
@@ -695,6 +713,7 @@
       "Central US",
       "East US",
       "Switzerland North",
+      "Switzerland West",
       "South Central US"
     ],
     "zoneMappings": null
@@ -743,7 +762,8 @@
       "West US",
       "West US 2",
       "West US 3",
-      "Switzerland West"
+      "Switzerland West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },

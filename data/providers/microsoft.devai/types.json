@@ -3,8 +3,7 @@
     "aliases": null,
     "resourceType": "instances",
     "apiVersions": [
-      "2022-02-17-preview",
-      "2021-02-04-preview"
+      "2022-02-17-preview"
     ],
     "locations": [
       "Canada Central",
@@ -15,7 +14,8 @@
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3"
+      "West US 3",
+      "Brazil South"
     ],
     "zoneMappings": null
   },
@@ -23,8 +23,7 @@
     "aliases": null,
     "resourceType": "instances/experiments",
     "apiVersions": [
-      "2022-02-17-preview",
-      "2021-02-04-preview"
+      "2022-02-17-preview"
     ],
     "locations": [
       "Canada Central",
@@ -35,7 +34,8 @@
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3"
+      "West US 3",
+      "Brazil South"
     ],
     "zoneMappings": null
   },
@@ -43,8 +43,7 @@
     "aliases": null,
     "resourceType": "instances/sandboxes",
     "apiVersions": [
-      "2022-02-17-preview",
-      "2021-02-04-preview"
+      "2022-02-17-preview"
     ],
     "locations": [
       "Canada Central",
@@ -55,7 +54,8 @@
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3"
+      "West US 3",
+      "Brazil South"
     ],
     "zoneMappings": null
   },
@@ -63,8 +63,7 @@
     "aliases": null,
     "resourceType": "instances/sandboxes/experiments",
     "apiVersions": [
-      "2022-02-17-preview",
-      "2021-02-04-preview"
+      "2022-02-17-preview"
     ],
     "locations": [
       "Canada Central",
@@ -75,7 +74,8 @@
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3"
+      "West US 3",
+      "Brazil South"
     ],
     "zoneMappings": null
   },
@@ -95,6 +95,7 @@
       "2019-10-01"
     ],
     "locations": [
+      "Brazil South",
       "Canada Central",
       "East US",
       "North Europe",

@@ -1,6 +1,12 @@
 [
   {
     "aliases": {
+      "Microsoft.FluidRelay/fluidRelayServers/encryption": "properties.encryption",
+      "Microsoft.FluidRelay/fluidRelayServers/encryption.customerManagedKeyEncryption": "properties.encryption.customerManagedKeyEncryption",
+      "Microsoft.FluidRelay/fluidRelayServers/encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity",
+      "Microsoft.FluidRelay/fluidRelayServers/encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.identityType": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.identityType",
+      "Microsoft.FluidRelay/fluidRelayServers/encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.userAssignedIdentityResourceId": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.userAssignedIdentityResourceId",
+      "Microsoft.FluidRelay/fluidRelayServers/encryption.customerManagedKeyEncryption.keyEncryptionKeyUrl": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyUrl",
       "Microsoft.FluidRelay/fluidRelayServers/fluidRelayEndpoints": "properties.fluidRelayEndpoints",
       "Microsoft.FluidRelay/fluidRelayServers/fluidRelayEndpoints.ordererEndpoints": "properties.fluidRelayEndpoints.ordererEndpoints",
       "Microsoft.FluidRelay/fluidRelayServers/fluidRelayEndpoints.ordererEndpoints[*]": "properties.fluidRelayEndpoints.ordererEndpoints[*]",
@@ -11,6 +17,8 @@
     },
     "resourceType": "fluidRelayServers",
     "apiVersions": [
+      "2022-06-01",
+      "2022-05-26",
       "2022-05-11",
       "2022-04-21",
       "2022-04-03",
@@ -23,8 +31,15 @@
       "2021-03-12-preview"
     ],
     "locations": [
+      "East US",
+      "East US 2",
+      "South Central US",
       "West US 2",
+      "West US 3",
+      "Australia East",
       "Southeast Asia",
+      "North Europe",
+      "Sweden Central",
       "West Europe"
     ],
     "zoneMappings": null
@@ -33,14 +48,24 @@
     "aliases": null,
     "resourceType": "fluidRelayServers/fluidRelayContainers",
     "apiVersions": [
+      "2022-06-01",
+      "2022-05-26",
       "2022-05-11",
+      "2022-04-21",
       "2022-02-15",
       "2021-09-10-preview",
       "2021-08-30-preview"
     ],
     "locations": [
+      "East US",
+      "East US 2",
+      "South Central US",
       "West US 2",
+      "West US 3",
+      "Australia East",
       "Southeast Asia",
+      "North Europe",
+      "Sweden Central",
       "West Europe"
     ],
     "zoneMappings": null
@@ -71,6 +96,8 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2022-06-01",
+      "2022-05-26",
       "2022-05-11",
       "2022-04-21",
       "2022-02-15",

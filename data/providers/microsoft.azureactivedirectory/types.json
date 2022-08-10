@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "b2cDirectories",
     "apiVersions": [
+      "2022-03-01-preview",
       "2021-04-01-preview",
       "2021-04-01",
       "2020-05-01-preview",
@@ -26,6 +27,7 @@
     "aliases": null,
     "resourceType": "b2ctenants",
     "apiVersions": [
+      "2022-03-01-preview",
       "2021-04-01-preview",
       "2021-04-01",
       "2020-05-01-preview",
@@ -45,6 +47,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-03-01-preview",
       "2021-04-01-preview",
       "2021-04-01",
       "2020-05-01-preview",
@@ -65,6 +68,7 @@
     "aliases": null,
     "resourceType": "guestUsages",
     "apiVersions": [
+      "2022-03-01-preview",
       "2021-04-01-preview",
       "2021-04-01",
       "2020-05-01-preview"
@@ -83,6 +87,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-03-01-preview",
       "2021-04-01-preview",
       "2021-04-01",
       "2020-05-01-preview",

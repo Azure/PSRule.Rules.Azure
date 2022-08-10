@@ -35,6 +35,7 @@ theme:
       level: 1
   - navigation.tabs
   - content.code.annotate
+  - content.tabs.link
 
 nav:
   - Home: index.md
@@ -59,7 +60,7 @@ nav:
       - Enforcing custom tags: customization/enforce-custom-tags.md
       - Enforcing code ownership: customization/enforce-codeowners.md
     - Troubleshooting: troubleshooting.md
-    # - Data privacy: data-privacy.md
+    - Samples: samples.md
     - License and contributing: license-contributing.md
     - Related projects: related-projects.md
     - Releases:
@@ -77,6 +78,7 @@ nav:
     - Setup Azure Monitor logs: setup/setup-azure-monitor-logs.md
     - Integrations: integrations.md
   - Reference:
+    - Index: en/rules/index.md
     - By pillar: en/rules/module.md
     - By resource: en/rules/resource.md
 
@@ -129,10 +131,3 @@ extra:
 
   local:
     social_preview: https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654
-
-  # alternate:
-
-  #   # Switch to English
-  #   - name: English
-  #     link: /en/
-  #     lang: en

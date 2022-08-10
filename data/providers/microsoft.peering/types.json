@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "cdnPeeringPrefixes",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -15,6 +16,7 @@
     "aliases": null,
     "resourceType": "checkServiceProviderAvailability",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -31,6 +33,7 @@
     "aliases": null,
     "resourceType": "legacyPeerings",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -47,6 +50,7 @@
     "aliases": null,
     "resourceType": "lookingGlass",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01"
     ],
@@ -57,6 +61,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -73,6 +78,7 @@
     "aliases": null,
     "resourceType": "peerAsns",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -89,6 +95,7 @@
     "aliases": null,
     "resourceType": "peeringLocations",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -105,6 +112,7 @@
     "aliases": null,
     "resourceType": "peerings",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -150,6 +158,7 @@
     "aliases": null,
     "resourceType": "peeringServiceCountries",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -164,6 +173,7 @@
     "aliases": null,
     "resourceType": "peeringServiceLocations",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -180,6 +190,7 @@
     "aliases": null,
     "resourceType": "peeringServiceProviders",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",
@@ -196,6 +207,7 @@
     "aliases": null,
     "resourceType": "peeringServices",
     "apiVersions": [
+      "2022-06-01",
       "2022-01-01",
       "2021-06-01",
       "2021-01-01",

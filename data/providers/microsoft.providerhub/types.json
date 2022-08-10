@@ -19,6 +19,7 @@
     "aliases": null,
     "resourceType": "operationStatuses",
     "apiVersions": [
+      "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",
       "2021-05-01-preview",
@@ -36,6 +37,7 @@
     "aliases": null,
     "resourceType": "providerRegistrations",
     "apiVersions": [
+      "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",
       "2021-05-01-preview",
@@ -52,6 +54,7 @@
     "aliases": null,
     "resourceType": "providerRegistrations/checkinmanifest",
     "apiVersions": [
+      "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",
       "2021-05-01-preview",
@@ -68,6 +71,7 @@
     "aliases": null,
     "resourceType": "providerRegistrations/customRollouts",
     "apiVersions": [
+      "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",
       "2021-05-01-preview",
@@ -84,6 +88,7 @@
     "aliases": null,
     "resourceType": "providerRegistrations/defaultRollouts",
     "apiVersions": [
+      "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",
       "2021-05-01-preview",
@@ -117,6 +122,7 @@
     "aliases": null,
     "resourceType": "providerRegistrations/resourceTypeRegistrations",
     "apiVersions": [
+      "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",
       "2021-05-01-preview",

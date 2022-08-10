@@ -2,10 +2,7 @@
   {
     "aliases": null,
     "resourceType": "checkNameAvailability",
-    "apiVersions": [
-      "2017-12-01-preview",
-      "2017-12-01"
-    ],
+    "apiVersions": [],
     "locations": [
       "Australia Central",
       "Australia Central 2",
@@ -46,7 +43,8 @@
       "West India",
       "West US",
       "West US 2",
-      "West US 3"
+      "West US 3",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -64,6 +62,7 @@
       "Microsoft.DBForPostgreSql/flexibleServers/delegatedSubnetArguments": "properties.delegatedSubnetArguments",
       "Microsoft.DBForPostgreSql/flexibleServers/delegatedSubnetArguments.subnetArmResourceId": "properties.delegatedSubnetArguments.subnetArmResourceId",
       "Microsoft.DBForPostgreSql/flexibleServers/displayName": "properties.displayName",
+      "Microsoft.DBForPostgreSql/flexibleServers/earliestRestoreDate": "properties.earliestRestoreDate",
       "Microsoft.DBForPostgreSql/flexibleServers/fullyQualifiedDomainName": "properties.fullyQualifiedDomainName",
       "Microsoft.DBForPostgreSql/flexibleServers/haEnabled": "properties.haEnabled",
       "Microsoft.DBForPostgreSql/flexibleServers/haState": "properties.haState",
@@ -313,7 +312,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -352,11 +355,7 @@
   {
     "aliases": null,
     "resourceType": "getPrivateDnsZoneSuffix",
-    "apiVersions": [
-      "2021-03-31-privatepreview",
-      "2020-10-05-privatepreview",
-      "2018-03-29-privatepreview"
-    ],
+    "apiVersions": [],
     "locations": [
       "Australia East",
       "Australia Southeast",
@@ -389,7 +388,8 @@
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3"
+      "West US 3",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -587,6 +587,7 @@
       "West US",
       "West US 2",
       "West US 3",
+      "Qatar Central",
       "Switzerland West"
     ],
     "zoneMappings": null
@@ -624,6 +625,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -674,6 +676,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -718,6 +721,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -780,6 +784,7 @@
       "West US",
       "West US 2",
       "West US 3",
+      "Qatar Central",
       "Switzerland West"
     ],
     "zoneMappings": null
@@ -1346,9 +1351,7 @@
     "apiVersions": [
       "2022-01-20-preview",
       "2021-06-01-preview",
-      "2021-06-01",
-      "2017-12-01-preview",
-      "2017-12-01"
+      "2021-06-01"
     ],
     "locations": [
       "Australia Central",
@@ -1380,6 +1383,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Africa West",
       "South Central US",
@@ -2130,7 +2134,12 @@
       "Microsoft.DBForPostgreSql/flexibleServers/configurations/dataType": "properties.dataType",
       "Microsoft.DBForPostgreSql/flexibleServers/configurations/defaultValue": "properties.defaultValue",
       "Microsoft.DBForPostgreSql/flexibleServers/configurations/description": "properties.description",
+      "Microsoft.DBForPostgreSql/flexibleServers/configurations/documentationLink": "properties.documentationLink",
+      "Microsoft.DBForPostgreSql/flexibleServers/configurations/isConfigPendingRestart": "properties.isConfigPendingRestart",
+      "Microsoft.DBForPostgreSql/flexibleServers/configurations/isDynamicConfig": "properties.isDynamicConfig",
+      "Microsoft.DBForPostgreSql/flexibleServers/configurations/isReadOnly": "properties.isReadOnly",
       "Microsoft.DBForPostgreSql/flexibleServers/configurations/source": "properties.source",
+      "Microsoft.DBForPostgreSql/flexibleServers/configurations/unit": "properties.unit",
       "Microsoft.DBForPostgreSql/flexibleServers/configurations/value": "properties.value"
     },
     "resourceType": "flexibleservers/configurations"
@@ -2148,6 +2157,54 @@
       "Microsoft.DBForPostgreSql/flexibleServers/firewallRules/startIpAddress": "properties.startIpAddress"
     },
     "resourceType": "flexibleservers/firewallrules"
+  },
+  {
+    "aliases": {
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus": "properties.currentStatus",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails": "properties.currentStatus.currentSubStateDetails",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.currentSubState": "properties.currentStatus.currentSubStateDetails.currentSubState",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.error": "properties.currentStatus.error",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.state": "properties.currentStatus.state",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToMigrate": "properties.dBsToMigrate",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToMigrate[*]": "properties.dBsToMigrate[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationDetailsLevel": "properties.migrationDetailsLevel",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationId": "properties.migrationId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationName": "properties.migrationName",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup": "properties.migrationResourceGroup",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup.resourceId": "properties.migrationResourceGroup.resourceId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup.subnetResourceId": "properties.migrationResourceGroup.subnetResourceId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationWindowStartTimeInUtc": "properties.migrationWindowStartTimeInUtc",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/overwriteDBsInTarget": "properties.overwriteDBsInTarget",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters": "properties.secretParameters",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.aadApp": "properties.secretParameters.aadApp",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.aadApp.aadSecret": "properties.secretParameters.aadApp.aadSecret",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.aadApp.clientId": "properties.secretParameters.aadApp.clientId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.aadApp.tenantId": "properties.secretParameters.aadApp.tenantId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials": "properties.secretParameters.adminCredentials",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials.sourceServerPassword": "properties.secretParameters.adminCredentials.sourceServerPassword",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials.targetServerPassword": "properties.secretParameters.adminCredentials.targetServerPassword",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/setupLogicalReplicationOnSourceDBIfNeeded": "properties.setupLogicalReplicationOnSourceDBIfNeeded",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata": "properties.sourceDBServerMetadata",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.location": "properties.sourceDBServerMetadata.location",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.sku": "properties.sourceDBServerMetadata.sku",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.sku.name": "properties.sourceDBServerMetadata.sku.name",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.sku.tier": "properties.sourceDBServerMetadata.sku.tier",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.storageMB": "properties.sourceDBServerMetadata.storageMB",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.version": "properties.sourceDBServerMetadata.version",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerResourceId": "properties.sourceDBServerResourceId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/startDataMigration": "properties.startDataMigration",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata": "properties.targetDBServerMetadata",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.location": "properties.targetDBServerMetadata.location",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.sku": "properties.targetDBServerMetadata.sku",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.sku.name": "properties.targetDBServerMetadata.sku.name",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.sku.tier": "properties.targetDBServerMetadata.sku.tier",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.storageMB": "properties.targetDBServerMetadata.storageMB",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.version": "properties.targetDBServerMetadata.version",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerResourceId": "properties.targetDBServerResourceId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/triggerCutover": "properties.triggerCutover",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/userAssignedIdentityResourceId": "properties.userAssignedIdentityResourceId"
+    },
+    "resourceType": "flexibleservers/migrations"
   },
   {
     "aliases": {

@@ -42,13 +42,24 @@
       "Jio India West",
       "Jio India Central",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
   {
     "aliases": {
+      "Microsoft.DataProtection/backupVaults/monitoringSettings": "properties.monitoringSettings",
+      "Microsoft.DataProtection/backupVaults/monitoringSettings.azureMonitorAlertSettings": "properties.monitoringSettings.azureMonitorAlertSettings",
+      "Microsoft.DataProtection/backupVaults/monitoringSettings.azureMonitorAlertSettings.alertsForAllJobFailures": "properties.monitoringSettings.azureMonitorAlertSettings.alertsForAllJobFailures",
       "Microsoft.DataProtection/backupVaults/provisioningState": "properties.provisioningState",
+      "Microsoft.DataProtection/backupVaults/resourceMoveDetails": "properties.resourceMoveDetails",
+      "Microsoft.DataProtection/backupVaults/resourceMoveDetails.completionTimeUtc": "properties.resourceMoveDetails.completionTimeUtc",
+      "Microsoft.DataProtection/backupVaults/resourceMoveDetails.operationId": "properties.resourceMoveDetails.operationId",
+      "Microsoft.DataProtection/backupVaults/resourceMoveDetails.sourceResourcePath": "properties.resourceMoveDetails.sourceResourcePath",
+      "Microsoft.DataProtection/backupVaults/resourceMoveDetails.startTimeUtc": "properties.resourceMoveDetails.startTimeUtc",
+      "Microsoft.DataProtection/backupVaults/resourceMoveDetails.targetResourcePath": "properties.resourceMoveDetails.targetResourcePath",
+      "Microsoft.DataProtection/backupVaults/resourceMoveState": "properties.resourceMoveState",
       "Microsoft.DataProtection/backupVaults/storageSettings": "properties.storageSettings",
       "Microsoft.DataProtection/backupVaults/storageSettings[*]": "properties.storageSettings[*]",
       "Microsoft.DataProtection/backupVaults/storageSettings[*].datastoreType": "properties.storageSettings[*].datastoreType",
@@ -56,6 +67,7 @@
     },
     "resourceType": "BackupVaults",
     "apiVersions": [
+      "2022-05-01",
       "2022-04-01",
       "2022-03-01",
       "2022-02-01-preview",
@@ -105,7 +117,8 @@
       "Jio India West",
       "Jio India Central",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -113,6 +126,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-05-01",
       "2022-04-01",
       "2022-03-01",
       "2022-02-01-preview",
@@ -132,6 +146,7 @@
     "aliases": null,
     "resourceType": "locations/checkFeatureSupport",
     "apiVersions": [
+      "2022-05-01",
       "2022-04-01",
       "2022-03-01",
       "2022-02-01-preview",
@@ -181,7 +196,8 @@
       "Jio India West",
       "Jio India Central",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -189,6 +205,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-05-01",
       "2022-04-01",
       "2022-03-01",
       "2022-02-01-preview",
@@ -238,7 +255,8 @@
       "Jio India West",
       "Jio India Central",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -246,6 +264,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-05-01",
       "2022-04-01",
       "2022-03-01",
       "2022-02-01-preview",
@@ -295,7 +314,8 @@
       "Jio India West",
       "Jio India Central",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -303,6 +323,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2022-05-01",
       "2022-04-01",
       "2022-03-01",
       "2022-02-01-preview",
@@ -352,7 +373,8 @@
       "Jio India West",
       "Jio India Central",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -360,6 +382,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-01",
       "2022-04-01",
       "2022-03-01",
       "2022-02-01-preview",
@@ -379,6 +402,7 @@
     "aliases": null,
     "resourceType": "ResourceGuards",
     "apiVersions": [
+      "2022-05-01",
       "2022-04-01",
       "2022-03-01",
       "2022-02-01-preview",
@@ -425,24 +449,31 @@
       "Jio India West",
       "Jio India Central",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
   {
     "aliases": {
       "Microsoft.DataProtection/backupVaults/backupInstances/currentProtectionState": "properties.currentProtectionState",
+      "Microsoft.DataProtection/backupVaults/backupInstances/datasourceAuthCredentials": "properties.datasourceAuthCredentials",
       "Microsoft.DataProtection/backupVaults/backupInstances/datasourceAuthCredentials.objectType": "properties.datasourceAuthCredentials.objectType",
       "Microsoft.DataProtection/backupVaults/backupInstances/datasourceAuthCredentials.SecretStoreBasedAuthCredentials": "properties.datasourceAuthCredentials",
       "Microsoft.DataProtection/backupVaults/backupInstances/datasourceAuthCredentials.SecretStoreBasedAuthCredentials.secretStoreResource": "properties.datasourceAuthCredentials.secretStoreResource",
       "Microsoft.DataProtection/backupVaults/backupInstances/datasourceAuthCredentials.SecretStoreBasedAuthCredentials.secretStoreResource.secretStoreType": "properties.datasourceAuthCredentials.secretStoreResource.secretStoreType",
       "Microsoft.DataProtection/backupVaults/backupInstances/datasourceAuthCredentials.SecretStoreBasedAuthCredentials.secretStoreResource.uri": "properties.datasourceAuthCredentials.secretStoreResource.uri",
+      "Microsoft.DataProtection/backupVaults/backupInstances/datasourceAuthCredentials.SecretStoreBasedAuthCredentials.secretStoreResource.value": "properties.datasourceAuthCredentials.secretStoreResource.value",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceInfo": "properties.dataSourceInfo",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceInfo.datasourceType": "properties.dataSourceInfo.datasourceType",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceInfo.objectType": "properties.dataSourceInfo.objectType",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceInfo.resourceID": "properties.dataSourceInfo.resourceID",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceInfo.resourceLocation": "properties.dataSourceInfo.resourceLocation",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceInfo.resourceName": "properties.dataSourceInfo.resourceName",
+      "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceInfo.resourceProperties": "properties.dataSourceInfo.resourceProperties",
+      "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceInfo.resourceProperties.objectType": "properties.dataSourceInfo.resourceProperties.objectType",
+      "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceInfo.resourceProperties.VmwareVMProperties": "properties.dataSourceInfo.resourceProperties",
+      "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceInfo.resourceProperties.VmwareVMProperties.instanceUuid": "properties.dataSourceInfo.resourceProperties.instanceUuid",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceInfo.resourceType": "properties.dataSourceInfo.resourceType",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceInfo.resourceUri": "properties.dataSourceInfo.resourceUri",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceSetInfo": "properties.dataSourceSetInfo",
@@ -451,6 +482,10 @@
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceSetInfo.resourceID": "properties.dataSourceSetInfo.resourceID",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceSetInfo.resourceLocation": "properties.dataSourceSetInfo.resourceLocation",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceSetInfo.resourceName": "properties.dataSourceSetInfo.resourceName",
+      "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceSetInfo.resourceProperties": "properties.dataSourceSetInfo.resourceProperties",
+      "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceSetInfo.resourceProperties.objectType": "properties.dataSourceSetInfo.resourceProperties.objectType",
+      "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceSetInfo.resourceProperties.VmwareVMProperties": "properties.dataSourceSetInfo.resourceProperties",
+      "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceSetInfo.resourceProperties.VmwareVMProperties.instanceUuid": "properties.dataSourceSetInfo.resourceProperties.instanceUuid",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceSetInfo.resourceType": "properties.dataSourceSetInfo.resourceType",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceSetInfo.resourceUri": "properties.dataSourceSetInfo.resourceUri",
       "Microsoft.DataProtection/backupVaults/backupInstances/friendlyName": "properties.friendlyName",
@@ -460,6 +495,7 @@
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters": "properties.policyInfo.policyParameters",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.dataStoreParametersList": "properties.policyInfo.policyParameters.dataStoreParametersList",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.dataStoreParametersList[*]": "properties.policyInfo.policyParameters.dataStoreParametersList[*]",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.dataStoreParametersList[*].AzureOperationalStoreParameters": "properties.policyInfo.policyParameters.dataStoreParametersList[*]",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.dataStoreParametersList[*].AzureOperationalStoreParameters.resourceGroupId": "properties.policyInfo.policyParameters.dataStoreParametersList[*].resourceGroupId",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.dataStoreParametersList[*].dataStoreType": "properties.policyInfo.policyParameters.dataStoreParametersList[*].dataStoreType",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.dataStoreParametersList[*].objectType": "properties.policyInfo.policyParameters.dataStoreParametersList[*].objectType",
@@ -528,7 +564,8 @@
       "Microsoft.DataProtection/backupVaults/backupInstances/protectionStatus.errorDetails.recommendedAction[*]": "properties.protectionStatus.errorDetails.recommendedAction[*]",
       "Microsoft.DataProtection/backupVaults/backupInstances/protectionStatus.errorDetails.target": "properties.protectionStatus.errorDetails.target",
       "Microsoft.DataProtection/backupVaults/backupInstances/protectionStatus.status": "properties.protectionStatus.status",
-      "Microsoft.DataProtection/backupVaults/backupInstances/provisioningState": "properties.provisioningState"
+      "Microsoft.DataProtection/backupVaults/backupInstances/provisioningState": "properties.provisioningState",
+      "Microsoft.DataProtection/backupVaults/backupInstances/validationType": "properties.validationType"
     },
     "resourceType": "backupvaults/backupinstances"
   },
@@ -536,12 +573,17 @@
     "aliases": {
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules": "properties.policyRules",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*]": "properties.policyRules[*]",
+      "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule": "properties.policyRules[*]",
+      "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.backupParameters": "properties.policyRules[*].backupParameters",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.backupParameters.AzureBackupParams": "properties.policyRules[*].backupParameters",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.backupParameters.AzureBackupParams.backupType": "properties.policyRules[*].backupParameters.backupType",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.backupParameters.objectType": "properties.policyRules[*].backupParameters.objectType",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.dataStore": "properties.policyRules[*].dataStore",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.dataStore.dataStoreType": "properties.policyRules[*].dataStore.dataStoreType",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.dataStore.objectType": "properties.policyRules[*].dataStore.objectType",
+      "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger": "properties.policyRules[*].trigger",
+      "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.AdhocBasedTriggerContext": "properties.policyRules[*].trigger",
+      "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.AdhocBasedTriggerContext.taggingCriteria": "properties.policyRules[*].trigger.taggingCriteria",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.AdhocBasedTriggerContext.taggingCriteria.tagInfo": "properties.policyRules[*].trigger.taggingCriteria.tagInfo",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.AdhocBasedTriggerContext.taggingCriteria.tagInfo.eTag": "properties.policyRules[*].trigger.taggingCriteria.tagInfo.eTag",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.AdhocBasedTriggerContext.taggingCriteria.tagInfo.id": "properties.policyRules[*].trigger.taggingCriteria.tagInfo.id",
@@ -551,11 +593,13 @@
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.schedule": "properties.policyRules[*].trigger.schedule",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.schedule.repeatingTimeIntervals": "properties.policyRules[*].trigger.schedule.repeatingTimeIntervals",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.schedule.repeatingTimeIntervals[*]": "properties.policyRules[*].trigger.schedule.repeatingTimeIntervals[*]",
+      "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.schedule.timeZone": "properties.policyRules[*].trigger.schedule.timeZone",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.taggingCriteria": "properties.policyRules[*].trigger.taggingCriteria",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.taggingCriteria[*]": "properties.policyRules[*].trigger.taggingCriteria[*]",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.taggingCriteria[*].criteria": "properties.policyRules[*].trigger.taggingCriteria[*].criteria",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.taggingCriteria[*].criteria[*]": "properties.policyRules[*].trigger.taggingCriteria[*].criteria[*]",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.taggingCriteria[*].criteria[*].objectType": "properties.policyRules[*].trigger.taggingCriteria[*].criteria[*].objectType",
+      "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.taggingCriteria[*].criteria[*].ScheduleBasedBackupCriteria": "properties.policyRules[*].trigger.taggingCriteria[*].criteria[*]",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.taggingCriteria[*].criteria[*].ScheduleBasedBackupCriteria.absoluteCriteria": "properties.policyRules[*].trigger.taggingCriteria[*].criteria[*].absoluteCriteria",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.taggingCriteria[*].criteria[*].ScheduleBasedBackupCriteria.absoluteCriteria[*]": "properties.policyRules[*].trigger.taggingCriteria[*].criteria[*].absoluteCriteria[*]",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.taggingCriteria[*].criteria[*].ScheduleBasedBackupCriteria.daysOfMonth": "properties.policyRules[*].trigger.taggingCriteria[*].criteria[*].daysOfMonth",
@@ -576,6 +620,7 @@
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.taggingCriteria[*].tagInfo.eTag": "properties.policyRules[*].trigger.taggingCriteria[*].tagInfo.eTag",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.taggingCriteria[*].tagInfo.id": "properties.policyRules[*].trigger.taggingCriteria[*].tagInfo.id",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureBackupRule.trigger.ScheduleBasedTriggerContext.taggingCriteria[*].tagInfo.tagName": "properties.policyRules[*].trigger.taggingCriteria[*].tagInfo.tagName",
+      "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureRetentionRule": "properties.policyRules[*]",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureRetentionRule.isDefault": "properties.policyRules[*].isDefault",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureRetentionRule.lifecycles": "properties.policyRules[*].lifecycles",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureRetentionRule.lifecycles[*]": "properties.policyRules[*].lifecycles[*]",
@@ -587,6 +632,7 @@
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureRetentionRule.lifecycles[*].sourceDataStore.objectType": "properties.policyRules[*].lifecycles[*].sourceDataStore.objectType",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureRetentionRule.lifecycles[*].targetDataStoreCopySettings": "properties.policyRules[*].lifecycles[*].targetDataStoreCopySettings",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureRetentionRule.lifecycles[*].targetDataStoreCopySettings[*]": "properties.policyRules[*].lifecycles[*].targetDataStoreCopySettings[*]",
+      "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureRetentionRule.lifecycles[*].targetDataStoreCopySettings[*].copyAfter": "properties.policyRules[*].lifecycles[*].targetDataStoreCopySettings[*].copyAfter",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureRetentionRule.lifecycles[*].targetDataStoreCopySettings[*].copyAfter.CustomCopyOption": "properties.policyRules[*].lifecycles[*].targetDataStoreCopySettings[*].copyAfter",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureRetentionRule.lifecycles[*].targetDataStoreCopySettings[*].copyAfter.CustomCopyOption.duration": "properties.policyRules[*].lifecycles[*].targetDataStoreCopySettings[*].copyAfter.duration",
       "Microsoft.DataProtection/backupVaults/backupPolicies/BackupPolicy.policyRules[*].AzureRetentionRule.lifecycles[*].targetDataStoreCopySettings[*].copyAfter.objectType": "properties.policyRules[*].lifecycles[*].targetDataStoreCopySettings[*].copyAfter.objectType",

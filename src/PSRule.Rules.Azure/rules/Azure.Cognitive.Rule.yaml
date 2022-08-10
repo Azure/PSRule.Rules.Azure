@@ -1,0 +1,85 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Cognitive Services
+#
+
+#region Rules
+
+---
+# Synopsis: Restrict access to Cognitive Services accounts to authorized virtual networks.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Cognitive.PublicAccess
+  ref: AZR-000280
+  tags:
+    release: GA
+    ruleSet: 2022_09
+spec:
+  type:
+  - Microsoft.CognitiveServices/accounts
+  condition:
+    anyOf:
+    - field: properties.publicNetworkAccess
+      equals: Disabled
+    - field: properties.networkAcls.defaultAction
+      equals: Deny
+
+---
+# Synopsis: Configure managed identities to access Azure resources.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Cognitive.ManagedIdentity
+  ref: AZR-000281
+  tags:
+    release: GA
+    ruleSet: 2022_09
+spec:
+  type:
+  - Microsoft.CognitiveServices/accounts
+  condition:
+    field: Identity.Type
+    in:
+    - SystemAssigned
+    - UserAssigned
+    - SystemAssigned, UserAssigned
+
+---
+# Synopsis: Authenticate requests to Cognitive Services with Azure AD identities.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Cognitive.DisableLocalAuth
+  ref: AZR-000282
+  tags:
+    release: GA
+    ruleSet: 2022_09
+spec:
+  type:
+  - Microsoft.CognitiveServices/accounts
+  condition:
+    field: properties.disableLocalAuth
+    equals: true
+
+---
+# Synopsis: Use Private Endpoints to access Cognitive Services accounts.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Cognitive.PrivateEndpoints
+  ref: AZR-000283
+  tags:
+    release: GA
+    ruleSet: 2022_09
+spec:
+  type:
+  - Microsoft.CognitiveServices/accounts
+  condition:
+    anyOf:
+    - field: properties.publicNetworkAccess
+      equals: Disabled
+
+#endregion Rules

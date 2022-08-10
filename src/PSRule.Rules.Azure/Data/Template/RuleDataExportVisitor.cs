@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using Newtonsoft.Json.Linq;
 
 namespace PSRule.Rules.Azure.Data.Template
@@ -46,10 +47,14 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         /// <summary>
-        /// Move sub-resources based on parent resource relationship. This process nests sub-resources so that relationship can be analyzed.
+        /// Move sub-resources based on parent resource relationship.
+        /// This process nests sub-resources so that relationship can be analyzed.
         /// </summary>
         private static void MoveResource(TemplateContext context, IResourceValue resource)
         {
+            if (!ShouldMove(resource.Type))
+                return;
+
             if (resource.Value.TryGetDependencies(out _) || resource.Type.Split('/').Length > 2)
             {
                 resource.Value.Remove(PROPERTY_DEPENDSON);
@@ -66,6 +71,14 @@ namespace PSRule.Rules.Azure.Data.Template
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Determines if the specific sub-resource type should be nested.
+        /// </summary>
+        private static bool ShouldMove(string resourceType)
+        {
+            return !string.Equals(resourceType, "Microsoft.Sql/servers/databases", StringComparison.OrdinalIgnoreCase);
         }
     }
 }

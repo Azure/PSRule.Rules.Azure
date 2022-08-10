@@ -46,9 +46,9 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-E';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly 'The field value ''Standard_LRS'' was not included in the set.';
+            $ruleResult[0].Reason | Should -BeExactly 'Path sku.name: The field value ''Standard_LRS'' was not included in the set.';
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly 'The field value ''Standard_LRS'' was not included in the set.';
+            $ruleResult[1].Reason | Should -BeExactly 'Path sku.name: The field value ''Standard_LRS'' was not included in the set.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -89,7 +89,7 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly 'The field ''properties.deleteRetentionPolicy.enabled'' is set to ''False''.';
+            $ruleResult[0].Reason | Should -BeExactly 'Path properties.deleteRetentionPolicy.enabled: Is set to ''False''.';
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[1].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Storage/storageAccounts/blobServices'' has not been specified.';
 
@@ -163,13 +163,13 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-D', 'storage-F';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The field 'Properties.minimumTlsVersion' is set to 'TLS1_0'.";
+            $ruleResult[0].Reason | Should -BeExactly "Path Properties.minimumTlsVersion: Is set to 'TLS1_0'.";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The field 'Properties.minimumTlsVersion' does not exist.";
+            $ruleResult[1].Reason | Should -BeExactly "Path Properties.minimumTlsVersion: Does not exist.";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The field 'Properties.minimumTlsVersion' does not exist.";
+            $ruleResult[2].Reason | Should -BeExactly "Path Properties.minimumTlsVersion: Does not exist.";
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[3].Reason | Should -BeExactly "The field 'Properties.minimumTlsVersion' does not exist.";
+            $ruleResult[3].Reason | Should -BeExactly "Path Properties.minimumTlsVersion: Does not exist.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

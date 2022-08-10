@@ -19,15 +19,191 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.18.0:
+
+- General improvements:
+  - Updated rule level for the following rules by @BernieWhite:
+    [#1551](https://github.com/Azure/PSRule.Rules.Azure/issues/1551)
+    - Set `Azure.APIM.APIDescriptors` to warning from error.
+    - Set `Azure.APIM.ProductDescriptors` to warning from error.
+    - Set `Azure.Template.UseLocationParameter` to warning from error.
+    - Set `Azure.Template.UseComments` to information from error.
+    - Set `Azure.Template.UseDescriptions` to information from error.
+- Engineering:
+  - Added publishing of symbols for NuGet packages by @BernieWhite.
+    [#1549](https://github.com/Azure/PSRule.Rules.Azure/issues/1549)
+
+## v1.18.0
+
+What's changed since v1.17.1:
+
+- New rules:
+  - Cognitive Services:
+    - Check accounts use network access restrictions by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+    - Check accounts use managed identities to access Azure resources by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+    - Check accounts only accept requests using Azure AD identities by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+    - Check accounts disable access using public endpoints by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+- General improvements:
+  - Added support for array `indexOf`, `lastIndexOf`, and `items` ARM functions by @BernieWhite.
+    [#1440](https://github.com/Azure/PSRule.Rules.Azure/issues/1440)
+  - Added support for `join` ARM function by @BernieWhite.
+    [#1535](https://github.com/Azure/PSRule.Rules.Azure/issues/1535)
+- General improvements:
+  - Improved output of full path to emitted resources by @BernieWhite.
+    [#1523](https://github.com/Azure/PSRule.Rules.Azure/issues/1523)
+- Engineering:
+  - Bump Az.Resources to v6.0.1.
+    [#1521](https://github.com/Azure/PSRule.Rules.Azure/pull/1521)
+  - Updated provider data for analysis.
+    [#1540](https://github.com/Azure/PSRule.Rules.Azure/pull/1540)
+  - Bump xunit to v2.4.2.
+    [#1542](https://github.com/Azure/PSRule.Rules.Azure/pull/1542)
+  - Added readme and tags to NuGet by @BernieWhite.
+    [#1513](https://github.com/Azure/PSRule.Rules.Azure/issues/1513)
+- Bug fixes:
+  - Fixed `Azure.SQL.TDE` is not required to enable Transparent Data Encryption for IaC by @BernieWhite.
+    [#1530](https://github.com/Azure/PSRule.Rules.Azure/issues/1530)
+
+What's changed since pre-release v1.18.0-B0027:
+
+- No additional changes.
+
+## v1.18.0-B0027 (pre-release)
+
+What's changed since pre-release v1.18.0-B0010:
+
+- New rules:
+  - Cognitive Services:
+    - Check accounts use network access restrictions by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+    - Check accounts use managed identities to access Azure resources by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+    - Check accounts only accept requests using Azure AD identities by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+    - Check accounts disable access using public endpoints by @BernieWhite.
+      [#1532](https://github.com/Azure/PSRule.Rules.Azure/issues/1532)
+- General improvements:
+  - Added support for array `indexOf`, `lastIndexOf`, and `items` ARM functions by @BernieWhite.
+    [#1440](https://github.com/Azure/PSRule.Rules.Azure/issues/1440)
+  - Added support for `join` ARM function by @BernieWhite.
+    [#1535](https://github.com/Azure/PSRule.Rules.Azure/issues/1535)
+- Engineering:
+  - Updated provider data for analysis.
+    [#1540](https://github.com/Azure/PSRule.Rules.Azure/pull/1540)
+  - Bump xunit to v2.4.2.
+    [#1542](https://github.com/Azure/PSRule.Rules.Azure/pull/1542)
+- Bug fixes:
+  - Fixed `Azure.SQL.TDE` is not required to enable Transparent Data Encryption for IaC by @BernieWhite.
+    [#1530](https://github.com/Azure/PSRule.Rules.Azure/issues/1530)
+
+## v1.18.0-B0010 (pre-release)
+
+What's changed since pre-release v1.18.0-B0002:
+
+- General improvements:
+  - Improved output of full path to emitted resources by @BernieWhite.
+    [#1523](https://github.com/Azure/PSRule.Rules.Azure/issues/1523)
+- Engineering:
+  - Bump Az.Resources to v6.0.1.
+    [#1521](https://github.com/Azure/PSRule.Rules.Azure/pull/1521)
+
+## v1.18.0-B0002 (pre-release)
+
+What's changed since v1.17.1:
+
+- Engineering:
+  - Added readme and tags to NuGet by @BernieWhite.
+    [#1513](https://github.com/Azure/PSRule.Rules.Azure/issues/1513)
+
+## v1.17.1
+
+What's changed since v1.17.0:
+
+- Bug fixes:
+  - Fixed union returns null when merged with built-in expansion objects by @BernieWhite.
+    [#1515](https://github.com/Azure/PSRule.Rules.Azure/issues/1515)
+  - Fixed missing zones in test for standalone VM by @BernieWhite.
+    [#1506](https://github.com/Azure/PSRule.Rules.Azure/issues/1506)
+
+## v1.17.0
+
 What's changed since v1.16.1:
 
+- New features:
+  - Added more field count expression support for Azure Policy JSON rules by @ArmaanMcleod.
+    [#181](https://github.com/Azure/PSRule.Rules.Azure/issues/181)
+  - Added June 2022 baselines `Azure.GA_2022_06` and `Azure.Preview_2022_06` by @BernieWhite.
+    [#1499](https://github.com/Azure/PSRule.Rules.Azure/issues/1499)
+    - Includes rules released before or during June 2022.
+    - Marked `Azure.GA_2022_03` and `Azure.Preview_2022_03` baselines as obsolete.
 - New rules:
   - Deployment:
     - Check for secure values in outputs by @BernieWhite.
       [#297](https://github.com/Azure/PSRule.Rules.Azure/issues/297)
+- Engineering:
+  - Bump Newtonsoft.Json to v13.0.1.
+    [#1494](https://github.com/Azure/PSRule.Rules.Azure/pull/1494)
+  - Updated NuGet packaging metadata by @BernieWhite.
+    [#1428](https://github.com/Azure/PSRule.Rules.Azure/pull/1428)
+  - Updated provider data for analysis.
+    [#1502](https://github.com/Azure/PSRule.Rules.Azure/pull/1502)
+  - Bump PSRule to v2.2.0.
+    [#1444](https://github.com/Azure/PSRule.Rules.Azure/pull/1444)
+  - Updated NuGet packaging metadata by @BernieWhite.
+    [#1428](https://github.com/Azure/PSRule.Rules.Azure/issues/1428)
+- Bug fixes:
+  - Fixed TDE property status to state by @Dylan-Prins.
+    [#1505](https://github.com/Azure/PSRule.Rules.Azure/pull/1505)
+  - Fixed the language expression value fails in outputs by @BernieWhite.
+    [#1485](https://github.com/Azure/PSRule.Rules.Azure/issues/1485)
+
+What's changed since pre-release v1.17.0-B0064:
+
+- No additional changes.
+
+## v1.17.0-B0064 (pre-release)
+
+What's changed since pre-release v1.17.0-B0035:
+
+- Engineering:
+  - Updated provider data for analysis.
+    [#1502](https://github.com/Azure/PSRule.Rules.Azure/pull/1502)
+  - Bump PSRule to v2.2.0.
+    [#1444](https://github.com/Azure/PSRule.Rules.Azure/pull/1444)
+- Bug fixes:
+  - Fixed TDE property status to state by @Dylan-Prins.
+    [#1505](https://github.com/Azure/PSRule.Rules.Azure/pull/1505)
+
+## v1.17.0-B0035 (pre-release)
+
+What's changed since pre-release v1.17.0-B0014:
+
+- New features:
+  - Added June 2022 baselines `Azure.GA_2022_06` and `Azure.Preview_2022_06` by @BernieWhite.
+    [#1499](https://github.com/Azure/PSRule.Rules.Azure/issues/1499)
+    - Includes rules released before or during June 2022.
+    - Marked `Azure.GA_2022_03` and `Azure.Preview_2022_03` baselines as obsolete.
+- Engineering:
+  - Bump Newtonsoft.Json to v13.0.1.
+    [#1494](https://github.com/Azure/PSRule.Rules.Azure/pull/1494)
+  - Updated NuGet packaging metadata by @BernieWhite.
+    [#1428](https://github.com/Azure/PSRule.Rules.Azure/pull/1428)
+
+## v1.17.0-B0014 (pre-release)
+
+What's changed since v1.16.1:
+
 - New features:
   - Added more field count expression support for Azure Policy JSON rules by @ArmaanMcleod.
     [#181](https://github.com/Azure/PSRule.Rules.Azure/issues/181)
+- New rules:
+  - Deployment:
+    - Check for secure values in outputs by @BernieWhite.
+      [#297](https://github.com/Azure/PSRule.Rules.Azure/issues/297)
 - Engineering:
   - Updated NuGet packaging metadata by @BernieWhite.
     [#1428](https://github.com/Azure/PSRule.Rules.Azure/issues/1428)

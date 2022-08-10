@@ -161,10 +161,13 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, resources.Length);
 
             var actual = resources[1];
+            Assert.Equal("resources[0]", actual["_PSRule"]["path"]);
             var subResources = actual["resources"].Value<JArray>();
             Assert.Equal(2, subResources.Count);
             Assert.Equal("keyvault1/Microsoft.Insights/service", subResources[0]["name"].Value<string>());
+            Assert.Equal("resources[1]", subResources[0]["_PSRule"]["path"]);
             Assert.Equal("monitor", subResources[1]["name"].Value<string>());
+            Assert.Equal("resources[2]", subResources[1]["_PSRule"]["path"]);
 
             // Storage
             resources = ProcessTemplate(GetSourcePath("Resources.Storage.Template.json"), GetSourcePath("Resources.Storage.Parameters.json"));
@@ -172,11 +175,15 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, resources.Length);
 
             actual = resources[1];
+            Assert.Equal("resources[0]", actual["_PSRule"]["path"]);
             subResources = actual["resources"].Value<JArray>();
             Assert.Equal(3, subResources.Count);
             Assert.Equal("storage1/default", subResources[0]["name"].Value<string>());
+            //Assert.Equal("resources[0].resources[0]", subResources[0]["_PSRule"]["path"]);
             Assert.Equal("storage1/default/arm", subResources[1]["name"].Value<string>());
+            Assert.Equal("resources[1]", subResources[1]["_PSRule"]["path"]);
             Assert.Equal("storage1/default", subResources[2]["name"].Value<string>());
+            Assert.Equal("resources[2]", subResources[2]["_PSRule"]["path"]);
         }
 
         [Fact]
@@ -266,13 +273,16 @@ namespace PSRule.Rules.Azure
 
             var actual = resources[0];
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.Equal("", actual["_PSRule"]["path"]);
 
             actual = resources[1];
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
             Assert.Equal("addRoleAssignment", actual["name"].Value<string>());
+            Assert.Equal("resources[0]", actual["_PSRule"]["path"].ToString());
 
             actual = resources[2];
             Assert.Equal("Microsoft.Authorization/roleAssignments", actual["type"].Value<string>());
+            Assert.Equal("resources[0].properties.template.resources[0]", actual["_PSRule"]["path"].ToString());
         }
 
         [Fact]

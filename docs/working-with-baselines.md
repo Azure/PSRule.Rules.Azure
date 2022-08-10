@@ -77,10 +77,10 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
     ```yaml
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.1.0
+      uses: microsoft/ps-rule@v2.2.0
       with:
         modules: 'PSRule.Rules.Azure'
-        baseline: 'Azure.GA_2021_09'
+        baseline: 'Azure.GA_2022_06'
     ```
 
 === "Azure Pipelines"
@@ -93,7 +93,19 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
       displayName: Analyze Azure template files
       inputs:
         modules: 'PSRule.Rules.Azure'
-        baseline: 'Azure.GA_2021_09'
+        baseline: 'Azure.GA_2022_06'
+    ```
+
+=== "PowerShell"
+
+    Update your PowerShell command-line with `-Baseline <name_of_baseline>`.
+
+    ```powershell title="With Assert-PSRule"
+    Assert-PSRule -Format File -InputPath '.' -Module 'PSRule.Rules.Azure' -Baseline 'Azure.GA_2022_06'
+    ```
+
+    ```powershell title="With Invoke-PSRule"
+    Invoke-PSRule -Format File -InputPath '.' -Module 'PSRule.Rules.Azure' -Baseline 'Azure.GA_2022_06'
     ```
 
   [1]: en/baselines/Azure.All.md
@@ -102,7 +114,7 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
 
 To create your own baselines see the PSRule help topic [about_PSRule_Baseline][2].
 
-  [2]: https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Baseline.html
+  [2]: https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Baseline/
 
 ## Including custom rules
 
@@ -114,7 +126,7 @@ When you specify a baseline, custom rules you create and store in `.ps-rule/` wi
 To change this behavior, set the `Rule.IncludeLocal` option to `true`.
 This option can be set in `ps-rule.yaml`.
 
-```yaml
+```yaml title="ps-rule.yaml"
 # YAML: Enable custom rules that don't exist in the baseline
 rule:
   includeLocal: true

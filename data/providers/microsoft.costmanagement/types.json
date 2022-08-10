@@ -71,6 +71,7 @@
     "aliases": null,
     "resourceType": "CheckNameAvailability",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-04-01-preview",
       "2020-03-01-preview"
     ],
@@ -102,6 +103,15 @@
     "resourceType": "costAllocationRules",
     "apiVersions": [
       "2020-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "CostDetailsOperationResults",
+    "apiVersions": [
+      "2022-05-01"
     ],
     "locations": [],
     "zoneMappings": null
@@ -333,6 +343,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "GenerateCostDetailsReport",
+    "apiVersions": [
+      "2022-05-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "GenerateDetailedCostReport",
     "apiVersions": [
       "2021-10-01",
@@ -365,6 +384,7 @@
     "aliases": null,
     "resourceType": "OperationResults",
     "apiVersions": [
+      "2022-06-01",
       "2022-04-01-preview",
       "2022-02-01-preview",
       "2021-10-01",
@@ -392,6 +412,7 @@
     "aliases": null,
     "resourceType": "OperationStatus",
     "apiVersions": [
+      "2022-06-01",
       "2022-04-01-preview",
       "2022-02-01-preview",
       "2021-10-01",
@@ -405,6 +426,7 @@
     "aliases": null,
     "resourceType": "Pricesheets",
     "apiVersions": [
+      "2022-06-01",
       "2022-04-01-preview",
       "2022-02-01-preview"
     ],
@@ -482,6 +504,7 @@
     "aliases": null,
     "resourceType": "ScheduledActions",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-04-01-preview",
       "2020-03-01-preview"
     ],

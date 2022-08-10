@@ -113,31 +113,31 @@ Describe 'Azure.Resource' -Tag 'Resource' {
             $ruleResult[0].Reason | Should -HaveCount 2;
             $ruleResult[0].Reason | Should -Be @(
                 'The resource is not tagged.', 
-                "The field 'tags' does not exist."
+                "Path tags: Does not exist."
             );
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[1].Reason | Should -HaveCount 2;
             $ruleResult[1].Reason | Should -Be @(
                 'The resource is not tagged.', 
-                "The field 'tags' does not exist."
+                "Path tags: Does not exist."
             );
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[2].Reason | Should -HaveCount 2;
             $ruleResult[2].Reason | Should -Be @(
                 'The resource is not tagged.', 
-                "The field 'tags' does not exist."
+                "Path tags: Does not exist."
             );
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[3].Reason | Should -HaveCount 2;
             $ruleResult[3].Reason | Should -Be @(
                 'The resource is not tagged.', 
-                "The field 'tags' does not exist."
+                "Path tags: Does not exist."
             );
             $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[4].Reason | Should -HaveCount 2;
             $ruleResult[4].Reason | Should -Be @(
                 'The resource is not tagged.', 
-                "The field 'tags' does not exist."
+                "Path tags: Does not exist."
             );
 
             # Pass

@@ -115,6 +115,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The argument &apos;{0}&apos; for &apos;{1}&apos; is not a valid string array..
+        /// </summary>
+        internal static string ArgumentInvalidStringArray {
+            get {
+                return ResourceManager.GetString("ArgumentInvalidStringArray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The number of arguments &apos;{1}&apos; is not within the allowed range for &apos;{0}&apos;..
         /// </summary>
         internal static string ArgumentsOutOfRange {

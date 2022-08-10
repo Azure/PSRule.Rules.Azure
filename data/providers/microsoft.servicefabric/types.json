@@ -156,7 +156,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -259,7 +260,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -352,7 +354,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -417,7 +420,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -425,6 +429,7 @@
     "aliases": null,
     "resourceType": "locations/environments/managedClusterVersions",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
       "2021-11-01-preview",
@@ -469,7 +474,8 @@
       "Germany West Central",
       "Norway East",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -477,6 +483,7 @@
     "aliases": null,
     "resourceType": "locations/managedClusterOperationResults",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
       "2021-11-01-preview",
@@ -521,7 +528,8 @@
       "Germany West Central",
       "Norway East",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -529,6 +537,7 @@
     "aliases": null,
     "resourceType": "locations/managedClusterOperations",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
       "2021-11-01-preview",
@@ -573,7 +582,8 @@
       "Germany West Central",
       "Norway East",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -581,6 +591,7 @@
     "aliases": null,
     "resourceType": "locations/managedClusterVersions",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
       "2021-11-01-preview",
@@ -625,7 +636,8 @@
       "Germany West Central",
       "Norway East",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -633,6 +645,7 @@
     "aliases": null,
     "resourceType": "locations/managedUnsupportedVMSizes",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
       "2021-11-01-preview",
@@ -677,7 +690,8 @@
       "Germany West Central",
       "Norway East",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -742,7 +756,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -807,7 +822,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -872,7 +888,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -880,6 +897,7 @@
     "aliases": null,
     "resourceType": "managedclusters",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
       "2021-11-01-preview",
@@ -924,7 +942,8 @@
       "Germany West Central",
       "Norway East",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -932,6 +951,7 @@
     "aliases": null,
     "resourceType": "managedclusters/applications",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
       "2021-11-01-preview",
@@ -975,7 +995,8 @@
       "Germany West Central",
       "Norway East",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -983,6 +1004,7 @@
     "aliases": null,
     "resourceType": "managedclusters/applications/services",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
       "2021-11-01-preview",
@@ -1026,7 +1048,8 @@
       "Germany West Central",
       "Norway East",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1034,6 +1057,7 @@
     "aliases": null,
     "resourceType": "managedclusters/applicationTypes",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
       "2021-11-01-preview",
@@ -1077,7 +1101,8 @@
       "Germany West Central",
       "Norway East",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1085,6 +1110,7 @@
     "aliases": null,
     "resourceType": "managedclusters/applicationTypes/versions",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
       "2021-11-01-preview",
@@ -1128,7 +1154,8 @@
       "Germany West Central",
       "Norway East",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1136,6 +1163,7 @@
     "aliases": null,
     "resourceType": "managedclusters/nodetypes",
     "apiVersions": [
+      "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
       "2021-11-01-preview",
@@ -1180,7 +1208,8 @@
       "Germany West Central",
       "Norway East",
       "West US 3",
-      "Jio India West"
+      "Jio India West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1188,7 +1217,14 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-06-01-preview",
+      "2022-02-01-preview",
+      "2022-01-01",
+      "2021-11-01-preview",
+      "2021-07-01-preview",
       "2021-06-01",
+      "2021-05-01",
+      "2021-01-01-preview",
       "2020-12-15-privatepreview",
       "2020-12-15-preview",
       "2020-12-01-privatepreview",
@@ -1196,6 +1232,7 @@
       "2020-03-01",
       "2020-02-01-privatepreview",
       "2020-02-01-preview",
+      "2020-01-01-preview",
       "2019-11-01-privatepreview",
       "2019-11-01-preview",
       "2019-06-01-preview",

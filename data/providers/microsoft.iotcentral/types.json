@@ -43,6 +43,7 @@
       "Microsoft.IoTCentral/iotApps/networkRuleSets.defaultAction": "properties.networkRuleSets.defaultAction",
       "Microsoft.IoTCentral/iotApps/networkRuleSets.ipRules": "properties.networkRuleSets.ipRules",
       "Microsoft.IoTCentral/iotApps/networkRuleSets.ipRules[*]": "properties.networkRuleSets.ipRules[*]",
+      "Microsoft.IoTCentral/iotApps/networkRuleSets.ipRules[*].action": "properties.networkRuleSets.ipRules[*].action",
       "Microsoft.IoTCentral/iotApps/networkRuleSets.ipRules[*].filterName": "properties.networkRuleSets.ipRules[*].filterName",
       "Microsoft.IoTCentral/iotApps/networkRuleSets.ipRules[*].ipMask": "properties.networkRuleSets.ipRules[*].ipMask",
       "Microsoft.IoTCentral/iotApps/privateEndpointConnections": "properties.privateEndpointConnections",
@@ -69,6 +70,8 @@
     },
     "resourceType": "IoTApps",
     "apiVersions": [
+      "2021-11-01-preview",
+      "2021-06-01",
       "2018-09-01",
       "2017-07-01-privatepreview"
     ],
@@ -85,13 +88,7 @@
       "UK South",
       "West Central US",
       "West Europe",
-      "West US",
-      "Asia Pacific",
-      "Australia",
-      "Europe",
-      "Japan",
-      "UK",
-      "United States"
+      "West US"
     ],
     "zoneMappings": null
   },

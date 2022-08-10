@@ -77,6 +77,7 @@
       "France Central",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -137,6 +138,7 @@
       "France Central",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -206,6 +208,7 @@
       "France Central",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -214,6 +217,7 @@
     "aliases": null,
     "resourceType": "automationAccounts/hybridRunbookWorkerGroups",
     "apiVersions": [
+      "2022-02-22",
       "2021-06-22",
       "2021-04-01",
       "2019-06-01",
@@ -265,6 +269,7 @@
       "Korea South",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -317,6 +322,7 @@
       "Korea South",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -380,6 +386,7 @@
       "France Central",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -433,6 +440,7 @@
       "France Central",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -493,6 +501,7 @@
       "France Central",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -546,6 +555,7 @@
       "France Central",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -629,6 +639,7 @@
       "France Central",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -685,6 +696,7 @@
       "France Central",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -741,6 +753,7 @@
       "France Central",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -871,6 +884,7 @@
       "France Central",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -936,6 +950,7 @@
       "France Central",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null
@@ -988,6 +1003,7 @@
       "France Central",
       "Jio India West",
       "Jio India Central",
+      "Qatar Central",
       "Canada East"
     ],
     "zoneMappings": null

@@ -1,6 +1,37 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
+Document 'index' {
+    Title 'Reference'
+
+    Metadata @{
+        generated = $True
+        title = 'Reference'
+    }
+
+    Import-Module ./out/modules/PSRule.Rules.Azure
+    $rules = Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -WarningAction SilentlyContinue;
+
+    'The following rules and features are included in PSRule for Azure.'
+
+    Section 'Rules' {
+        'The following rules are included in PSRule for Azure.'
+
+        $rules | Sort-Object -Property Ref | Table -Property @{ Name = 'Reference'; Expression = {
+            $_.Ref.Name
+        }}, @{ Name = 'Name'; Expression = {
+            "[$($_.RuleName)]($($_.RuleName).md)"
+        }}, Synopsis, @{ Name = 'Release'; Expression = {
+            if ($_.Tag.release -eq 'GA') {
+                'GA'
+            }
+            else {
+                'Preview'
+            }
+        }}
+    }
+}
+
 Document 'module' {
     Title 'Rules by pillar'
 
@@ -30,6 +61,8 @@ Document 'module' {
                             "[$($_.RuleName)]($($_.RuleName).md)"
                         }}, Synopsis, @{ Name = 'Severity'; Expression = {
                             $_.Info.Annotations.severity
+                        }}, @{ Name = 'Level'; Expression = {
+                            $_.Level.ToString()
                         }}
                 }
             }
@@ -61,6 +94,8 @@ Document 'resource' {
                     "[$($_.RuleName)]($($_.RuleName).md)"
                 }}, Synopsis, @{ Name = 'Severity'; Expression = {
                     $_.Info.Annotations.severity
+                }}, @{ Name = 'Level'; Expression = {
+                    $_.Level.ToString()
                 }}
         }
     }

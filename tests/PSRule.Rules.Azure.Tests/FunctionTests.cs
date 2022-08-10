@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Collections;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -239,15 +240,27 @@ namespace PSRule.Rules.Azure
 
         [Fact]
         [Trait(TRAIT, TRAIT_ARRAY)]
+        public void Items()
+        {
+            var context = GetContext();
+
+            // Object
+            var actual = Functions.Items(context, new object[] { JObject.Parse("{ \"item002\": { \"enabled\": false, \"displayName\": \"Example item 2\", \"number\": 200 }, \"item001\": { \"enabled\": true, \"displayName\": \"Example item 1\", \"number\": 300 } }") }) as JArray;
+            Assert.Equal(2, actual.Count);
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_ARRAY)]
         public void Json()
         {
             var context = GetContext();
 
+            // Object
             var actual1 = Functions.Json(context, new object[] { "{ \"a\": \"b\" }" }) as JObject;
             Assert.Equal("b", actual1["a"]);
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Json(context, null));
-            Assert.Throws<ArgumentOutOfRangeException>(() => Functions.Json(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Json(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Json(context, new object[] { }));
         }
 
         [Fact]
@@ -447,15 +460,27 @@ namespace PSRule.Rules.Azure
         public void Union()
         {
             var context = GetContext();
+            var hashtable = new Hashtable();
+            hashtable["a"] = 200;
 
             // Union objects
-            var actual1 = Functions.Union(context, new object[] { JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }"), JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }"), JObject.Parse("{ \"i\": \"j\" }") }) as JObject;
+            var actual1 = Functions.Union(context, new object[] { JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }"), JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }"), JObject.Parse("{ \"i\": \"j\" }"), JObject.Parse("{ \"a\": \"100\" }") }) as JObject;
             Assert.True(actual1.ContainsKey("a"));
             Assert.Equal("b", actual1["a"]);
             Assert.True(actual1.ContainsKey("e"));
             Assert.Equal("f", actual1["e"]);
             Assert.True(actual1.ContainsKey("i"));
             Assert.Equal("j", actual1["i"]);
+            actual1 = Functions.Union(context, new object[] { new Hashtable(), JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }"), JObject.Parse("{ \"i\": \"j\" }"), JObject.Parse("{ \"i\": \"j\" }"), JObject.Parse("{ \"a\": \"100\" }") }) as JObject;
+            Assert.True(actual1.ContainsKey("a"));
+            Assert.Equal("100", actual1["a"]);
+            Assert.True(actual1.ContainsKey("e"));
+            Assert.Equal("f", actual1["e"]);
+            actual1 = Functions.Union(context, new object[] { hashtable, JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }") }) as JObject;
+            Assert.True(actual1.ContainsKey("a"));
+            Assert.Equal(200, actual1["a"]);
+            Assert.True(actual1.ContainsKey("e"));
+            Assert.Equal("f", actual1["e"]);
 
             // Union arrays
             var actual2 = Functions.Union(context, new string[][] { new string[] { "one", "two", "three" }, new string[] { "three", "four" } }) as object[];
@@ -538,7 +563,7 @@ namespace PSRule.Rules.Azure
 
             var actual2 = Functions.Providers(context, new object[] { "Microsoft.Web" }) as ResourceProviderType[];
             Assert.NotNull(actual1);
-            Assert.Equal(94, actual2.Length);
+            Assert.Equal(96, actual2.Length);
 
             var actual3 = Functions.Providers(context, new object[] { "microsoft.web", "Sites" }) as ResourceProviderType;
             Assert.NotNull(actual3);
@@ -1419,6 +1444,7 @@ namespace PSRule.Rules.Azure
         {
             var context = GetContext();
 
+            // String
             var actual1 = (long)Functions.IndexOf(context, new object[] { "test", "t" });
             var actual2 = (long)Functions.IndexOf(context, new object[] { "abcdef", "CD" });
             var actual3 = (long)Functions.IndexOf(context, new object[] { "abcdef", "z" });
@@ -1426,9 +1452,32 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, actual2);
             Assert.Equal(-1, actual3);
 
+            // Array
+            var actual4 = (long)Functions.IndexOf(context, new object[] { new object[] { "one", "two", JToken.Parse("\"three\""), JToken.Parse("\"two\"") }, "two" });
+            var actual5 = (long)Functions.IndexOf(context, new object[] { new JArray(new object[] { "one", "two", "three", "two" }), JToken.Parse("\"two\"") });
+            var actual6 = (long)Functions.IndexOf(context, new object[] { new object[] { 1, 2, JToken.Parse("3"), JToken.Parse("2") }, 2 });
+            var actual7 = (long)Functions.IndexOf(context, new object[] { new JArray(new object[] { 1, 2, 3, 2 }), JToken.Parse("2") });
+            var actual8 = (long)Functions.IndexOf(context, new object[] { new object[] { new object[] { 1, 2, 3 }, new object[] { 2, 3, 4 }, JToken.Parse("[ 3, 4, 5 ]"), JToken.Parse("[ 2, 3, 4 ]") }, JToken.Parse("[ 2, 3, 4 ]") });
+            var actual9 = (long)Functions.IndexOf(context, new object[] { new object[] { new object[] { 1, 2, 3 }, new object[] { 2, 3, 4 }, JToken.Parse("[ 3, 4, 5 ]"), JToken.Parse("[ 2, 3, 4 ]") }, new int[] { 2, 3, 4 } });
+            var actual10 = (long)Functions.IndexOf(context, new object[] { new object[] { JToken.Parse("{ \"items\": [ 1, 2, 3 ] }"), JToken.Parse("{ \"items\": [ 2, 3, 4] }"), JToken.Parse("{ \"items\": [ 2, 3, 4] }") }, JToken.Parse("{ \"items\": [ 2, 3, 4] }") });
+
+            Assert.Equal(1, actual4);
+            Assert.Equal(1, actual5);
+            Assert.Equal(1, actual6);
+            Assert.Equal(1, actual7);
+            Assert.Equal(1, actual8);
+            Assert.Equal(1, actual9);
+            Assert.Equal(1, actual10);
+
+            // Array case-sensitive
+            var actual12 = (long)Functions.IndexOf(context, new object[] { new object[] { "one", "Two", JToken.Parse("\"three\""), JToken.Parse("\"two\"") }, "two" });
+            var actual13 = (long)Functions.IndexOf(context, new object[] { new object[] { "one", "two", JToken.Parse("\"three\""), JToken.Parse("\"two\"") }, "Two" });
+
+            Assert.Equal(3, actual12);
+            Assert.Equal(-1, actual13);
+
             Assert.Throws<ExpressionArgumentException>(() => Functions.IndexOf(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.IndexOf(context, new object[] { "test" }));
-            Assert.Throws<ArgumentException>(() => Functions.IndexOf(context, new object[] { 0, 0 }));
         }
 
         [Fact]
@@ -1437,6 +1486,7 @@ namespace PSRule.Rules.Azure
         {
             var context = GetContext();
 
+            // String
             var actual1 = (long)Functions.LastIndexOf(context, new object[] { "test", "t" });
             var actual2 = (long)Functions.LastIndexOf(context, new object[] { "abcdef", "AB" });
             var actual3 = (long)Functions.LastIndexOf(context, new object[] { "abcdef", "z" });
@@ -1444,9 +1494,49 @@ namespace PSRule.Rules.Azure
             Assert.Equal(0, actual2);
             Assert.Equal(-1, actual3);
 
+            // Array
+            var actual4 = (long)Functions.LastIndexOf(context, new object[] { new object[] { "one", "two", JToken.Parse("\"three\""), JToken.Parse("\"two\"") }, "two" });
+            var actual5 = (long)Functions.LastIndexOf(context, new object[] { new JArray(new object[] { "one", "two", "three", "two" }), JToken.Parse("\"two\"") });
+            var actual6 = (long)Functions.LastIndexOf(context, new object[] { new object[] { 1, 2, JToken.Parse("3"), JToken.Parse("2") }, 2 });
+            var actual7 = (long)Functions.LastIndexOf(context, new object[] { new JArray(new object[] { 1, 2, 3, 2 }), JToken.Parse("2") });
+            var actual8 = (long)Functions.LastIndexOf(context, new object[] { new JArray(new object[] { 1, 2, 3 }, new object[] { 2, 3, 4 }, JToken.Parse("[ 3, 4, 5 ]"), JToken.Parse("[ 2, 3, 4 ]")), JToken.Parse("[ 2, 3, 4 ]") });
+            var actual9 = (long)Functions.LastIndexOf(context, new object[] { new JArray(new object[] { 1, 2, 3 }, new object[] { 2, 3, 4 }, JToken.Parse("[ 3, 4, 5 ]"), JToken.Parse("[ 2, 3, 4 ]")), new int[] { 2, 3, 4 } });
+            var actual10 = (long)Functions.LastIndexOf(context, new object[] { new object[] { JToken.Parse("{ \"items\": [ 1, 2, 3 ] }"), JToken.Parse("{ \"items\": [ 2, 3, 4] }"), JToken.Parse("{ \"items\": [ 2, 3, 4] }") }, JToken.Parse("{ \"items\": [ 2, 3, 4] }") });
+
+            Assert.Equal(3, actual4);
+            Assert.Equal(3, actual5);
+            Assert.Equal(3, actual6);
+            Assert.Equal(3, actual7);
+            Assert.Equal(3, actual8);
+            Assert.Equal(3, actual9);
+            Assert.Equal(2, actual10);
+
+            // Array case-sensitive
+            var actual12 = (long)Functions.LastIndexOf(context, new object[] { new object[] { "one", "two", JToken.Parse("\"three\""), JToken.Parse("\"Two\"") }, "two" });
+            var actual13 = (long)Functions.LastIndexOf(context, new object[] { new object[] { "one", "two", JToken.Parse("\"three\""), JToken.Parse("\"two\"") }, "Two" });
+            Assert.Equal(1, actual12);
+            Assert.Equal(-1, actual13);
+
             Assert.Throws<ExpressionArgumentException>(() => Functions.LastIndexOf(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.LastIndexOf(context, new object[] { "test" }));
-            Assert.Throws<ArgumentException>(() => Functions.LastIndexOf(context, new object[] { 0, 0 }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_STRING)]
+        public void Join()
+        {
+            var context = GetContext();
+
+            var actual = Functions.Join(context, new object[] { new object[] { "one", JToken.Parse("\"two\""), "three" }, "," }) as string;
+            Assert.Equal("one,two,three", actual);
+
+            actual = Functions.Join(context, new object[] { new JArray("one", JToken.Parse("\"two\""), "three"), new JValue(",") }) as string;
+            Assert.Equal("one,two,three", actual);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, new object[] { "test" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, new object[] { 1, 1 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, new object[] { new int[] { 1, 2 }, 1 }));
         }
 
         [Fact]
@@ -1500,9 +1590,26 @@ namespace PSRule.Rules.Azure
         {
             var context = GetContext();
 
-            var actual1 = Functions.Split(context, new object[] { "This is a test", new string[] { " " } }) as JArray;
-            Assert.Equal("This", actual1[0]);
-            Assert.Equal("test", actual1[3]);
+            var actual = Functions.Split(context, new object[] { "This is a test", new string[] { " " } }) as JArray;
+            Assert.Equal("This", actual[0]);
+            Assert.Equal("test", actual[3]);
+
+            actual = Functions.Split(context, new object[] { "This is a test", new object[] { new JValue(" ") } }) as JArray;
+            Assert.Equal("This", actual[0]);
+            Assert.Equal("test", actual[3]);
+
+            actual = Functions.Split(context, new object[] { new JValue("This is a test"), new JArray(new object[] { " " }) }) as JArray;
+            Assert.Equal("This", actual[0]);
+            Assert.Equal("test", actual[3]);
+
+            actual = Functions.Split(context, new object[] { new JValue("one;two,three"), new JArray(new object[] { ";", "," }) }) as JArray;
+            Assert.Equal("one", actual[0]);
+            Assert.Equal("two", actual[1]);
+            Assert.Equal("three", actual[2]);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Split(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Split(context, new object[] { "test" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Split(context, new object[] { 1, 1 }));
         }
 
         [Fact]

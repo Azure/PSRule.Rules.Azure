@@ -23,7 +23,7 @@ Rule 'Azure.APIM.HTTPEndpoint' -Ref 'AZR-000042' -Type 'Microsoft.ApiManagement/
 }
 
 # Synopsis: APIs should have descriptors set
-Rule 'Azure.APIM.APIDescriptors' -Ref 'AZR-000043' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.APIM.APIDescriptors' -Ref 'AZR-000043' -Level Warning -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $apis = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis');
@@ -138,7 +138,7 @@ Rule 'Azure.APIM.SampleProducts' -Ref 'AZR-000048' -Type 'Microsoft.ApiManagemen
 }
 
 # Synopsis: Products should have descriptors set
-Rule 'Azure.APIM.ProductDescriptors' -Ref 'AZR-000049' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.APIM.ProductDescriptors' -Ref 'AZR-000049' -Level Warning -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');

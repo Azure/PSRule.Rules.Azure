@@ -1,5 +1,7 @@
 # Azure.Preview_2022_03
 
+<!-- OBSOLETE -->
+
 Include rules released March 2022 or prior for Azure preview only features.
 
 ## Rules

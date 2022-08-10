@@ -194,6 +194,30 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/operationsStatuses",
+    "apiVersions": [
+      "2022-05-31",
+      "2021-06-30-preview",
+      "2020-12-01",
+      "2020-10-31",
+      "2020-03-01-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US 2",
+      "North Europe",
+      "Australia East",
+      "West Europe",
+      "East US",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "East US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2022-05-31",

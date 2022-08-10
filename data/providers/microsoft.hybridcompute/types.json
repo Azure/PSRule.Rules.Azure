@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -27,6 +28,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -66,7 +68,8 @@
       "Germany West Central",
       "Brazil South",
       "Switzerland North",
-      "UAE North"
+      "UAE North",
+      "South Africa North"
     ],
     "zoneMappings": null
   },
@@ -74,6 +77,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -113,7 +117,8 @@
       "Germany West Central",
       "Brazil South",
       "Switzerland North",
-      "UAE North"
+      "UAE North",
+      "South Africa North"
     ],
     "zoneMappings": null
   },
@@ -121,6 +126,7 @@
     "aliases": null,
     "resourceType": "locations/privateLinkScopes",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -154,7 +160,8 @@
       "Brazil South",
       "Switzerland North",
       "UAE North",
-      "UK West"
+      "UK West",
+      "South Africa North"
     ],
     "zoneMappings": null
   },
@@ -162,6 +169,7 @@
     "aliases": null,
     "resourceType": "locations/updateCenterOperationResults",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -284,6 +292,7 @@
     },
     "resourceType": "machines",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -324,7 +333,8 @@
       "Germany West Central",
       "Brazil South",
       "Switzerland North",
-      "UAE North"
+      "UAE North",
+      "South Africa North"
     ],
     "zoneMappings": null
   },
@@ -332,6 +342,7 @@
     "aliases": null,
     "resourceType": "machines/assessPatches",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -379,6 +390,7 @@
     },
     "resourceType": "machines/extensions",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -418,7 +430,8 @@
       "Germany West Central",
       "Brazil South",
       "Switzerland North",
-      "UAE North"
+      "UAE North",
+      "South Africa North"
     ],
     "zoneMappings": null
   },
@@ -426,6 +439,7 @@
     "aliases": null,
     "resourceType": "machines/installPatches",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -453,6 +467,7 @@
     "aliases": null,
     "resourceType": "machines/privateLinkScopes",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -486,7 +501,8 @@
       "Germany West Central",
       "Brazil South",
       "Switzerland North",
-      "UAE North"
+      "UAE North",
+      "South Africa North"
     ],
     "zoneMappings": null
   },
@@ -494,6 +510,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -535,6 +552,7 @@
     },
     "resourceType": "privateLinkScopes",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -569,7 +587,8 @@
       "Brazil South",
       "UAE North",
       "Switzerland North",
-      "UK West"
+      "UK West",
+      "South Africa North"
     ],
     "zoneMappings": null
   },
@@ -577,6 +596,7 @@
     "aliases": null,
     "resourceType": "privateLinkScopes/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -611,7 +631,8 @@
       "Brazil South",
       "Switzerland North",
       "UAE North",
-      "UK West"
+      "UK West",
+      "South Africa North"
     ],
     "zoneMappings": null
   },
@@ -629,6 +650,7 @@
     },
     "resourceType": "privateLinkScopes/privateEndpointConnections",
     "apiVersions": [
+      "2022-05-10-preview",
       "2022-03-10",
       "2021-12-10-preview",
       "2021-06-10-preview",
@@ -662,7 +684,8 @@
       "Brazil South",
       "Switzerland North",
       "UAE North",
-      "UK West"
+      "UK West",
+      "South Africa North"
     ],
     "zoneMappings": null
   }

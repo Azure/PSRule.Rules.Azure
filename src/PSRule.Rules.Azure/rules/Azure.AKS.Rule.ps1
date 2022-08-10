@@ -12,10 +12,12 @@ Rule 'Azure.AKS.Version' -Ref 'AZR-000015' -Type 'Microsoft.ContainerService/man
         $Assert.Version($TargetObject, 'Properties.kubernetesVersion', ">=$minVersion");
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters/agentPools') {
-        $Assert.AnyOf(@(
-            $Assert.NullOrEmpty($TargetObject, 'Properties.orchestratorVersion')
-            $Assert.Version($TargetObject, 'Properties.orchestratorVersion', ">=$minVersion")
-        ));
+        if (!$Assert.HasField($TargetObject, 'Properties.orchestratorVersion').Result) {
+            $Assert.Pass();
+        }
+        else {
+            $Assert.Version($TargetObject, 'Properties.orchestratorVersion', ">=$minVersion");
+        }
     }
 }
 

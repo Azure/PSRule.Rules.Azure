@@ -2,11 +2,13 @@
   {
     "aliases": {
       "Microsoft.DocumentDB/cassandraClusters/authenticationMethod": "properties.authenticationMethod",
+      "Microsoft.DocumentDB/cassandraClusters/cassandraAuditLoggingEnabled": "properties.cassandraAuditLoggingEnabled",
       "Microsoft.DocumentDB/cassandraClusters/cassandraVersion": "properties.cassandraVersion",
       "Microsoft.DocumentDB/cassandraClusters/clientCertificates": "properties.clientCertificates",
       "Microsoft.DocumentDB/cassandraClusters/clientCertificates[*]": "properties.clientCertificates[*]",
       "Microsoft.DocumentDB/cassandraClusters/clientCertificates[*].pem": "properties.clientCertificates[*].pem",
       "Microsoft.DocumentDB/cassandraClusters/clusterNameOverride": "properties.clusterNameOverride",
+      "Microsoft.DocumentDB/cassandraClusters/deallocated": "properties.deallocated",
       "Microsoft.DocumentDB/cassandraClusters/delegatedManagementSubnetId": "properties.delegatedManagementSubnetId",
       "Microsoft.DocumentDB/cassandraClusters/externalGossipCertificates": "properties.externalGossipCertificates",
       "Microsoft.DocumentDB/cassandraClusters/externalGossipCertificates[*]": "properties.externalGossipCertificates[*]",
@@ -30,6 +32,8 @@
     },
     "resourceType": "cassandraClusters",
     "apiVersions": [
+      "2022-05-15-preview",
+      "2022-05-15",
       "2022-02-15-preview",
       "2021-11-15-preview",
       "2021-10-15-preview",
@@ -75,7 +79,8 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -83,6 +88,8 @@
     "aliases": null,
     "resourceType": "databaseAccountNames",
     "apiVersions": [
+      "2022-05-15-preview",
+      "2022-05-15",
       "2022-02-15-preview",
       "2021-11-15-preview",
       "2021-10-15-preview",
@@ -119,6 +126,9 @@
       "Microsoft.DocumentDB/databaseAccounts/apiProperties": "properties.apiProperties",
       "Microsoft.DocumentDB/databaseAccounts/apiProperties.serverVersion": "properties.apiProperties.serverVersion",
       "Microsoft.DocumentDB/databaseAccounts/backupPolicy": "properties.backupPolicy",
+      "Microsoft.DocumentDB/databaseAccounts/backupPolicy.Continuous": "properties.backupPolicy",
+      "Microsoft.DocumentDB/databaseAccounts/backupPolicy.Continuous.continuousModeProperties": "properties.backupPolicy.continuousModeProperties",
+      "Microsoft.DocumentDB/databaseAccounts/backupPolicy.Continuous.continuousModeProperties.tier": "properties.backupPolicy.continuousModeProperties.tier",
       "Microsoft.DocumentDB/databaseAccounts/backupPolicy.migrationState": "properties.backupPolicy.migrationState",
       "Microsoft.DocumentDB/databaseAccounts/backupPolicy.migrationState.startTime": "properties.backupPolicy.migrationState.startTime",
       "Microsoft.DocumentDB/databaseAccounts/backupPolicy.migrationState.status": "properties.backupPolicy.migrationState.status",
@@ -132,6 +142,8 @@
       "Microsoft.DocumentDB/databaseAccounts/capabilities": "properties.capabilities",
       "Microsoft.DocumentDB/databaseAccounts/capabilities[*]": "properties.capabilities[*]",
       "Microsoft.DocumentDB/databaseAccounts/capabilities[*].name": "properties.capabilities[*].name",
+      "Microsoft.DocumentDB/databaseAccounts/capacity": "properties.capacity",
+      "Microsoft.DocumentDB/databaseAccounts/capacity.totalThroughputLimit": "properties.capacity.totalThroughputLimit",
       "Microsoft.DocumentDB/databaseAccounts/connectorOffer": "properties.connectorOffer",
       "Microsoft.DocumentDB/databaseAccounts/consistencyPolicy": "properties.consistencyPolicy",
       "Microsoft.DocumentDB/databaseAccounts/consistencyPolicy.defaultConsistencyLevel": "properties.consistencyPolicy.defaultConsistencyLevel",
@@ -156,6 +168,7 @@
       "Microsoft.DocumentDB/databaseAccounts/enableAutomaticFailover": "properties.enableAutomaticFailover",
       "Microsoft.DocumentDB/databaseAccounts/enableCassandraConnector": "properties.enableCassandraConnector",
       "Microsoft.DocumentDB/databaseAccounts/enableFreeTier": "properties.enableFreeTier",
+      "Microsoft.DocumentDB/databaseAccounts/enableMaterializedViews": "properties.enableMaterializedViews",
       "Microsoft.DocumentDB/databaseAccounts/enableMultipleWriteLocations": "properties.enableMultipleWriteLocations",
       "Microsoft.DocumentDB/databaseAccounts/failoverPolicies": "properties.failoverPolicies",
       "Microsoft.DocumentDB/databaseAccounts/failoverPolicies[*]": "properties.failoverPolicies[*]",
@@ -168,6 +181,15 @@
       "Microsoft.DocumentDB/databaseAccounts/ipRules[*]": "properties.ipRules[*]",
       "Microsoft.DocumentDB/databaseAccounts/ipRules[*].ipAddressOrRange": "properties.ipRules[*].ipAddressOrRange",
       "Microsoft.DocumentDB/databaseAccounts/isVirtualNetworkFilterEnabled": "properties.isVirtualNetworkFilterEnabled",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata": "properties.keysMetadata",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.primaryMasterKey": "properties.keysMetadata.primaryMasterKey",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.primaryMasterKey.generationTime": "properties.keysMetadata.primaryMasterKey.generationTime",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.primaryReadonlyMasterKey": "properties.keysMetadata.primaryReadonlyMasterKey",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.primaryReadonlyMasterKey.generationTime": "properties.keysMetadata.primaryReadonlyMasterKey.generationTime",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.secondaryMasterKey": "properties.keysMetadata.secondaryMasterKey",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.secondaryMasterKey.generationTime": "properties.keysMetadata.secondaryMasterKey.generationTime",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.secondaryReadonlyMasterKey": "properties.keysMetadata.secondaryReadonlyMasterKey",
+      "Microsoft.DocumentDB/databaseAccounts/keysMetadata.secondaryReadonlyMasterKey.generationTime": "properties.keysMetadata.secondaryReadonlyMasterKey.generationTime",
       "Microsoft.DocumentDB/databaseAccounts/keyVaultKeyUri": "properties.keyVaultKeyUri",
       "Microsoft.DocumentDB/databaseAccounts/Locations": "properties.locations",
       "Microsoft.DocumentDB/databaseAccounts/Locations[*]": "properties.locations[*]",
@@ -206,9 +228,16 @@
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.databasesToRestore[*].collectionNames": "properties.restoreParameters.databasesToRestore[*].collectionNames",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.databasesToRestore[*].collectionNames[*]": "properties.restoreParameters.databasesToRestore[*].collectionNames[*]",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.databasesToRestore[*].databaseName": "properties.restoreParameters.databasesToRestore[*].databaseName",
+      "Microsoft.DocumentDB/databaseAccounts/restoreParameters.gremlinDatabasesToRestore": "properties.restoreParameters.gremlinDatabasesToRestore",
+      "Microsoft.DocumentDB/databaseAccounts/restoreParameters.gremlinDatabasesToRestore[*]": "properties.restoreParameters.gremlinDatabasesToRestore[*]",
+      "Microsoft.DocumentDB/databaseAccounts/restoreParameters.gremlinDatabasesToRestore[*].databaseName": "properties.restoreParameters.gremlinDatabasesToRestore[*].databaseName",
+      "Microsoft.DocumentDB/databaseAccounts/restoreParameters.gremlinDatabasesToRestore[*].graphNames": "properties.restoreParameters.gremlinDatabasesToRestore[*].graphNames",
+      "Microsoft.DocumentDB/databaseAccounts/restoreParameters.gremlinDatabasesToRestore[*].graphNames[*]": "properties.restoreParameters.gremlinDatabasesToRestore[*].graphNames[*]",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.restoreMode": "properties.restoreParameters.restoreMode",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.restoreSource": "properties.restoreParameters.restoreSource",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.restoreTimestampInUtc": "properties.restoreParameters.restoreTimestampInUtc",
+      "Microsoft.DocumentDB/databaseAccounts/restoreParameters.tablesToRestore": "properties.restoreParameters.tablesToRestore",
+      "Microsoft.DocumentDB/databaseAccounts/restoreParameters.tablesToRestore[*]": "properties.restoreParameters.tablesToRestore[*]",
       "Microsoft.DocumentDB/databaseAccounts/sku.name": "properties.databaseAccountOfferType",
       "Microsoft.DocumentDB/databaseAccounts/virtualNetworkRules": "properties.virtualNetworkRules",
       "Microsoft.DocumentDB/databaseAccounts/virtualNetworkRules[*]": "properties.virtualNetworkRules[*]",
@@ -225,6 +254,8 @@
     },
     "resourceType": "databaseAccounts",
     "apiVersions": [
+      "2022-05-15-preview",
+      "2022-05-15",
       "2022-02-15-preview",
       "2021-11-15-preview",
       "2021-10-15-preview",
@@ -287,7 +318,8 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -295,6 +327,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-05-15-preview",
+      "2022-05-15",
       "2022-02-15-preview",
       "2021-11-15-preview",
       "2021-10-15-preview",
@@ -328,6 +362,8 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2022-05-15-preview",
+      "2022-05-15",
       "2022-02-15-preview",
       "2021-11-15-preview",
       "2021-10-15-preview",
@@ -390,7 +426,8 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -398,6 +435,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-05-15-preview",
+      "2022-05-15",
       "2022-02-15-preview",
       "2021-11-15-preview",
       "2021-10-15-preview",
@@ -460,7 +499,8 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -468,6 +508,8 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2022-05-15-preview",
+      "2022-05-15",
       "2022-02-15-preview",
       "2021-11-15-preview",
       "2021-10-15-preview",
@@ -530,7 +572,8 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -538,6 +581,8 @@
     "aliases": null,
     "resourceType": "locations/restorableDatabaseAccounts",
     "apiVersions": [
+      "2022-05-15-preview",
+      "2022-05-15",
       "2022-02-15-preview",
       "2021-11-15-preview",
       "2021-10-15-preview",
@@ -585,7 +630,8 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -593,6 +639,8 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2022-05-15-preview",
+      "2022-05-15",
       "2022-02-15-preview",
       "2021-11-15-preview",
       "2021-10-15-preview",
@@ -626,6 +674,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-15-preview",
+      "2022-05-15",
       "2022-02-15-preview",
       "2021-11-15-preview",
       "2021-10-15-preview",
@@ -659,6 +709,8 @@
     "aliases": null,
     "resourceType": "operationsStatus",
     "apiVersions": [
+      "2022-05-15-preview",
+      "2022-05-15",
       "2022-02-15-preview",
       "2021-11-15-preview",
       "2021-10-15-preview",
@@ -692,6 +744,8 @@
     "aliases": null,
     "resourceType": "restorableDatabaseAccounts",
     "apiVersions": [
+      "2022-05-15-preview",
+      "2022-05-15",
       "2022-02-15-preview",
       "2021-11-15-preview",
       "2021-10-15-preview",
@@ -739,20 +793,37 @@
       "East US",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
   {
     "aliases": {
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties": "properties.authenticationMethodLdapProperties",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties.searchBaseDistinguishedName": "properties.authenticationMethodLdapProperties.searchBaseDistinguishedName",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties.searchFilterTemplate": "properties.authenticationMethodLdapProperties.searchFilterTemplate",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties.serverCertificates": "properties.authenticationMethodLdapProperties.serverCertificates",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties.serverCertificates[*]": "properties.authenticationMethodLdapProperties.serverCertificates[*]",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties.serverCertificates[*].pem": "properties.authenticationMethodLdapProperties.serverCertificates[*].pem",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties.serverHostname": "properties.authenticationMethodLdapProperties.serverHostname",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties.serverPort": "properties.authenticationMethodLdapProperties.serverPort",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties.serviceUserDistinguishedName": "properties.authenticationMethodLdapProperties.serviceUserDistinguishedName",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties.serviceUserPassword": "properties.authenticationMethodLdapProperties.serviceUserPassword",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/availabilityZone": "properties.availabilityZone",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/backupStorageCustomerKeyUri": "properties.backupStorageCustomerKeyUri",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/base64EncodedCassandraYamlFragment": "properties.base64EncodedCassandraYamlFragment",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/dataCenterLocation": "properties.dataCenterLocation",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/delegatedSubnetId": "properties.delegatedSubnetId",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/diskCapacity": "properties.diskCapacity",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/diskSku": "properties.diskSku",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/managedDiskCustomerKeyUri": "properties.managedDiskCustomerKeyUri",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/nodeCount": "properties.nodeCount",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/provisioningState": "properties.provisioningState",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/seedNodes": "properties.seedNodes",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/seedNodes[*]": "properties.seedNodes[*]",
-      "Microsoft.DocumentDB/cassandraClusters/dataCenters/seedNodes[*].ipAddress": "properties.seedNodes[*].ipAddress"
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/seedNodes[*].ipAddress": "properties.seedNodes[*].ipAddress",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/sku": "properties.sku"
     },
     "resourceType": "cassandraclusters/datacenters"
   },
@@ -1064,6 +1135,33 @@
   },
   {
     "aliases": {
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/views/throughputSettings/resource": "properties.resource",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/views/throughputSettings/resource.autoscaleSettings": "properties.resource.autoscaleSettings",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/views/throughputSettings/resource.autoscaleSettings.autoUpgradePolicy": "properties.resource.autoscaleSettings.autoUpgradePolicy",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/views/throughputSettings/resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy": "properties.resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/views/throughputSettings/resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.incrementPercent": "properties.resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.incrementPercent",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/views/throughputSettings/resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/views/throughputSettings/resource.autoscaleSettings.maxThroughput": "properties.resource.autoscaleSettings.maxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/views/throughputSettings/resource.autoscaleSettings.targetMaxThroughput": "properties.resource.autoscaleSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/views/throughputSettings/resource.minimumThroughput": "properties.resource.minimumThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/views/throughputSettings/resource.offerReplacePending": "properties.resource.offerReplacePending",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/views/throughputSettings/resource.throughput": "properties.resource.throughput"
+    },
+    "resourceType": "databaseaccounts/cassandrakeyspaces/views/throughputsettings"
+  },
+  {
+    "aliases": {
+      "Microsoft.DocumentDB/databaseAccounts/graphs/options": "properties.options",
+      "Microsoft.DocumentDB/databaseAccounts/graphs/options.autoscaleSettings": "properties.options.autoscaleSettings",
+      "Microsoft.DocumentDB/databaseAccounts/graphs/options.autoscaleSettings.maxThroughput": "properties.options.autoscaleSettings.maxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/graphs/options.throughput": "properties.options.throughput",
+      "Microsoft.DocumentDB/databaseAccounts/graphs/resource": "properties.resource",
+      "Microsoft.DocumentDB/databaseAccounts/graphs/resource.id": "properties.resource.id"
+    },
+    "resourceType": "databaseaccounts/graphs"
+  },
+  {
+    "aliases": {
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/options": "properties.options",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/options.autoscaleSettings": "properties.options.autoscaleSettings",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/options.autoscaleSettings.maxThroughput": "properties.options.autoscaleSettings.maxThroughput",
@@ -1080,6 +1178,7 @@
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/options.autoscaleSettings.maxThroughput": "properties.options.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/options.throughput": "properties.options.throughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource": "properties.resource",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.analyticalStorageTtl": "properties.resource.analyticalStorageTtl",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.conflictResolutionPolicy": "properties.resource.conflictResolutionPolicy",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.conflictResolutionPolicy.conflictResolutionPath": "properties.resource.conflictResolutionPolicy.conflictResolutionPath",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.conflictResolutionPolicy.conflictResolutionProcedure": "properties.resource.conflictResolutionPolicy.conflictResolutionProcedure",
@@ -1397,12 +1496,34 @@
   },
   {
     "aliases": {
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/clientEncryptionKeys/resource": "properties.resource",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/clientEncryptionKeys/resource.encryptionAlgorithm": "properties.resource.encryptionAlgorithm",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/clientEncryptionKeys/resource.id": "properties.resource.id",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/clientEncryptionKeys/resource.keyWrapMetadata": "properties.resource.keyWrapMetadata",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/clientEncryptionKeys/resource.keyWrapMetadata.algorithm": "properties.resource.keyWrapMetadata.algorithm",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/clientEncryptionKeys/resource.keyWrapMetadata.name": "properties.resource.keyWrapMetadata.name",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/clientEncryptionKeys/resource.keyWrapMetadata.type": "properties.resource.keyWrapMetadata.type",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/clientEncryptionKeys/resource.keyWrapMetadata.value": "properties.resource.keyWrapMetadata.value",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/clientEncryptionKeys/resource.wrappedDataEncryptionKey": "properties.resource.wrappedDataEncryptionKey"
+    },
+    "resourceType": "databaseaccounts/sqldatabases/clientencryptionkeys"
+  },
+  {
+    "aliases": {
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/options": "properties.options",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/options.autoscaleSettings": "properties.options.autoscaleSettings",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/options.autoscaleSettings.maxThroughput": "properties.options.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/options.throughput": "properties.options.throughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource": "properties.resource",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.analyticalStorageTtl": "properties.resource.analyticalStorageTtl",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.clientEncryptionPolicy": "properties.resource.clientEncryptionPolicy",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.clientEncryptionPolicy.includedPaths": "properties.resource.clientEncryptionPolicy.includedPaths",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.clientEncryptionPolicy.includedPaths[*]": "properties.resource.clientEncryptionPolicy.includedPaths[*]",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.clientEncryptionPolicy.includedPaths[*].clientEncryptionKeyId": "properties.resource.clientEncryptionPolicy.includedPaths[*].clientEncryptionKeyId",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.clientEncryptionPolicy.includedPaths[*].encryptionAlgorithm": "properties.resource.clientEncryptionPolicy.includedPaths[*].encryptionAlgorithm",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.clientEncryptionPolicy.includedPaths[*].encryptionType": "properties.resource.clientEncryptionPolicy.includedPaths[*].encryptionType",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.clientEncryptionPolicy.includedPaths[*].path": "properties.resource.clientEncryptionPolicy.includedPaths[*].path",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.clientEncryptionPolicy.policyFormatVersion": "properties.resource.clientEncryptionPolicy.policyFormatVersion",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.conflictResolutionPolicy": "properties.resource.conflictResolutionPolicy",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.conflictResolutionPolicy.conflictResolutionPath": "properties.resource.conflictResolutionPolicy.conflictResolutionPath",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.conflictResolutionPolicy.conflictResolutionProcedure": "properties.resource.conflictResolutionPolicy.conflictResolutionProcedure",

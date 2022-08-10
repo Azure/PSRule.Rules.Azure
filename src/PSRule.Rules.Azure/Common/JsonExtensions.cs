@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using Newtonsoft.Json;
@@ -9,6 +10,7 @@ using Newtonsoft.Json.Linq;
 
 namespace PSRule.Rules.Azure
 {
+    [DebuggerDisplay("Path: {Path}, Line:{LineNumber}, Position:{LinePosition}")]
     internal sealed class TemplateTokenAnnotation : IJsonLineInfo
     {
         private bool _HasLineInfo;
@@ -18,20 +20,24 @@ namespace PSRule.Rules.Azure
 
         }
 
-        public TemplateTokenAnnotation(int lineNumber, int linePosition)
+        public TemplateTokenAnnotation(int lineNumber, int linePosition, string path)
         {
             SetLineInfo(lineNumber, linePosition);
+            Path = path;
         }
 
         public int LineNumber { get; private set; }
 
         public int LinePosition { get; private set; }
 
+        public string Path { get; private set; }
+
         public bool HasLineInfo()
         {
             return _HasLineInfo;
         }
-        internal void SetLineInfo(int lineNumber, int linePosition)
+
+        private void SetLineInfo(int lineNumber, int linePosition)
         {
             LineNumber = lineNumber;
             LinePosition = linePosition;
@@ -55,6 +61,8 @@ namespace PSRule.Rules.Azure
         private const string TARGETINFO_PATH = "path";
         private const string TARGETINFO_MESSAGE = "message";
 
+        private static readonly string[] JSON_PATH_SEPARATOR = new string[] { "." };
+
         internal static IJsonLineInfo TryLineInfo(this JToken token)
         {
             if (token == null)
@@ -69,10 +77,7 @@ namespace PSRule.Rules.Azure
             if (token == null)
                 return null;
 
-            var annotation = token.Annotation<TemplateTokenAnnotation>();
-            if (annotation == null && token is IJsonLineInfo lineInfo && lineInfo.HasLineInfo())
-                annotation = new TemplateTokenAnnotation(lineInfo.LineNumber, lineInfo.LinePosition);
-
+            var annotation = token.UseTokenAnnotation();
             var clone = token.DeepClone();
             if (annotation != null)
                 clone.AddAnnotation(annotation);
@@ -113,13 +118,42 @@ namespace PSRule.Rules.Azure
 
         internal static void UseProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken, new()
         {
-            if (!o.TryGetValue(propertyName, System.StringComparison.OrdinalIgnoreCase, out var v))
+            if (!o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var v))
             {
                 value = new TValue();
                 o.Add(propertyName, value);
                 return;
             }
             value = (TValue)v;
+        }
+
+        internal static void UseTokenAnnotation(this JToken[] token, string parentPath = null, string propertyPath = null)
+        {
+            for (var i = 0; token != null && i < token.Length; i++)
+                token[i].UseTokenAnnotation(parentPath, string.Concat(propertyPath, '[', i, ']'));
+        }
+
+        internal static TemplateTokenAnnotation UseTokenAnnotation(this JToken token, string parentPath = null, string propertyPath = null)
+        {
+            var annotation = token.Annotation<TemplateTokenAnnotation>();
+            if (annotation != null)
+                return annotation;
+
+            if (token is IJsonLineInfo lineInfo && lineInfo.HasLineInfo())
+                annotation = new TemplateTokenAnnotation(lineInfo.LineNumber, lineInfo.LinePosition, JsonPathJoin(parentPath, propertyPath ?? token.Path));
+            else
+                annotation = new TemplateTokenAnnotation(0, 0, JsonPathJoin(parentPath, propertyPath ?? token.Path));
+
+            token.AddAnnotation(annotation);
+            return annotation;
+        }
+
+        private static string JsonPathJoin(string parent, string child)
+        {
+            if (string.IsNullOrEmpty(parent))
+                return child;
+
+            return string.IsNullOrEmpty(child) ? parent : string.Concat(parent, ".", child);
         }
 
         internal static bool TryGetDependencies(this JObject resource, out string[] dependencies)
@@ -132,13 +166,28 @@ namespace PSRule.Rules.Azure
             return true;
         }
 
-        internal static void SetTargetInfo(this JObject resource, string templateFile, string parameterFile)
+        internal static string GetResourcePath(this JObject resource, int parentLevel = 0)
+        {
+            var annotation = resource.Annotation<TemplateTokenAnnotation>();
+            var path = annotation?.Path ?? resource.Path;
+            if (parentLevel == 0 || string.IsNullOrEmpty(path))
+                return path;
+
+            var parts = path.Split(JSON_PATH_SEPARATOR, StringSplitOptions.None);
+            return parts.Length > parentLevel ? string.Join(JSON_PATH_SEPARATOR[0], parts, 0, parts.Length - parentLevel) : string.Empty;
+        }
+
+        internal static void SetTargetInfo(this JObject resource, string templateFile, string parameterFile, string path = null)
         {
             // Get line infomation
             var lineInfo = resource.TryLineInfo();
 
             // Populate target info
             resource.UseProperty(TARGETINFO_KEY, out JObject targetInfo);
+
+            // Path
+            path ??= resource.GetResourcePath();
+            targetInfo.Add(TARGETINFO_PATH, path);
 
             var sources = new JArray();
 

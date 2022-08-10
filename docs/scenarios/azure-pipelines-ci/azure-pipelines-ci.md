@@ -91,7 +91,7 @@ To install the module containing Azure rules use the `ps-rule-install` YAML task
 
 ```yaml
 # Install PSRule.Rules.Azure from the PowerShell Gallery.
-- task: ps-rule-install@1
+- task: ps-rule-install@2
   inputs:
     module: PSRule.Rules.Azure   # Install PSRule.Rules.Azure from the PowerShell Gallery.
 ```

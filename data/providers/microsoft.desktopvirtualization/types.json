@@ -9,6 +9,7 @@
     },
     "resourceType": "applicationgroups",
     "apiVersions": [
+      "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
       "2021-09-03-preview",
@@ -29,6 +30,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -62,6 +65,7 @@
     },
     "resourceType": "applicationgroups/applications",
     "apiVersions": [
+      "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
       "2021-09-03-preview",
@@ -82,6 +86,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -104,6 +110,7 @@
     },
     "resourceType": "applicationgroups/desktops",
     "apiVersions": [
+      "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
       "2021-09-03-preview",
@@ -124,6 +131,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -143,6 +152,7 @@
     "aliases": null,
     "resourceType": "applicationgroups/startmenuitems",
     "apiVersions": [
+      "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
       "2021-09-03-preview",
@@ -163,6 +173,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -207,6 +219,7 @@
     },
     "resourceType": "hostpools",
     "apiVersions": [
+      "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
       "2021-09-03-preview",
@@ -227,6 +240,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -246,6 +261,7 @@
     "aliases": null,
     "resourceType": "hostpools/msixpackages",
     "apiVersions": [
+      "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
       "2021-09-03-preview",
@@ -266,6 +282,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -288,6 +306,7 @@
     },
     "resourceType": "hostpools/sessionhosts",
     "apiVersions": [
+      "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
       "2021-09-03-preview",
@@ -308,6 +327,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -327,6 +348,7 @@
     "aliases": null,
     "resourceType": "hostpools/sessionhosts/usersessions",
     "apiVersions": [
+      "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
       "2021-09-03-preview",
@@ -347,6 +369,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -366,6 +390,7 @@
     "aliases": null,
     "resourceType": "hostpools/usersessions",
     "apiVersions": [
+      "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
       "2021-09-03-preview",
@@ -386,6 +411,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -405,6 +432,9 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-07-05-preview",
+      "2022-06-03-privatepreview",
+      "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
       "2021-09-17-privatepreview",
@@ -431,6 +461,7 @@
     "aliases": null,
     "resourceType": "scalingplans",
     "apiVersions": [
+      "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
       "2021-09-03-preview",
@@ -449,8 +480,7 @@
       "2019-01-23-preview"
     ],
     "locations": [
-      "UK South",
-      "UK West",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",
@@ -475,6 +505,7 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
       "2021-09-03-preview",
@@ -495,6 +526,8 @@
     "locations": [
       "UK South",
       "UK West",
+      "Japan East",
+      "Australia East",
       "Canada East",
       "Canada Central",
       "North Europe",

@@ -23,6 +23,7 @@
     },
     "resourceType": "availabilitySets",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -80,7 +81,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -97,6 +99,7 @@
     },
     "resourceType": "capacityReservationGroups",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -141,7 +144,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -261,6 +265,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -302,7 +314,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -347,6 +363,7 @@
       "Microsoft.Compute/capacityReservationGroups/capacityReservations/sku.capacity": "sku.capacity",
       "Microsoft.Compute/capacityReservationGroups/capacityReservations/sku.name": "sku.name",
       "Microsoft.Compute/capacityReservationGroups/capacityReservations/sku.tier": "sku.tier",
+      "Microsoft.Compute/capacityReservationGroups/capacityReservations/timeCreated": "properties.timeCreated",
       "Microsoft.Compute/capacityReservationGroups/capacityReservations/virtualMachinesAssociated": "properties.virtualMachinesAssociated",
       "Microsoft.Compute/capacityReservationGroups/capacityReservations/virtualMachinesAssociated[*]": "properties.virtualMachinesAssociated[*]",
       "Microsoft.Compute/capacityReservationGroups/capacityReservations/virtualMachinesAssociated[*].id": "properties.virtualMachinesAssociated[*].id",
@@ -355,6 +372,7 @@
     },
     "resourceType": "capacityReservationGroups/capacityReservations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -399,7 +417,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -519,6 +538,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -560,7 +587,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -658,6 +689,7 @@
     },
     "resourceType": "cloudServices",
     "apiVersions": [
+      "2022-04-04",
       "2021-03-01",
       "2020-10-01-preview"
     ],
@@ -697,7 +729,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -817,6 +850,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -858,7 +899,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -937,7 +982,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -984,7 +1030,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -992,6 +1039,7 @@
     "aliases": null,
     "resourceType": "cloudServices/roleInstances",
     "apiVersions": [
+      "2022-04-04",
       "2021-03-01",
       "2020-10-01-preview"
     ],
@@ -1031,7 +1079,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1078,7 +1127,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1086,6 +1136,7 @@
     "aliases": null,
     "resourceType": "cloudServices/roles",
     "apiVersions": [
+      "2022-04-04",
       "2021-03-01",
       "2020-10-01-preview"
     ],
@@ -1125,7 +1176,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1148,6 +1200,7 @@
     },
     "resourceType": "diskAccesses",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -1193,7 +1246,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1227,6 +1281,7 @@
     },
     "resourceType": "diskEncryptionSets",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -1274,7 +1329,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1298,6 +1354,7 @@
       "Microsoft.Compute/disks/creationData.sourceUri": "properties.creationData.sourceUri",
       "Microsoft.Compute/disks/creationData.storageAccountId": "properties.creationData.storageAccountId",
       "Microsoft.Compute/disks/creationData.uploadSizeBytes": "properties.creationData.uploadSizeBytes",
+      "Microsoft.Compute/disks/dataAccessAuthMode": "properties.dataAccessAuthMode",
       "Microsoft.Compute/disks/diskAccessId": "properties.diskAccessId",
       "Microsoft.Compute/disks/diskIOPSReadOnly": "properties.diskIOPSReadOnly",
       "Microsoft.Compute/disks/diskIOPSReadWrite": "properties.diskIOPSReadWrite",
@@ -1358,6 +1415,7 @@
       "Microsoft.Compute/disks/sku.tier": "sku.tier",
       "Microsoft.Compute/disks/supportedCapabilities": "properties.supportedCapabilities",
       "Microsoft.Compute/disks/supportedCapabilities.acceleratedNetwork": "properties.supportedCapabilities.acceleratedNetwork",
+      "Microsoft.Compute/disks/supportedCapabilities.architecture": "properties.supportedCapabilities.architecture",
       "Microsoft.Compute/disks/supportsHibernation": "properties.supportsHibernation",
       "Microsoft.Compute/disks/tier": "properties.tier",
       "Microsoft.Compute/disks/timeCreated": "properties.timeCreated",
@@ -1372,6 +1430,7 @@
     },
     "resourceType": "disks",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -1425,7 +1484,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -1545,6 +1605,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -1586,7 +1654,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -1664,11 +1736,19 @@
       "Microsoft.Compute/galleries/sharingProfile.groups[*].ids[*]": "properties.sharingProfile.groups[*].ids[*]",
       "Microsoft.Compute/galleries/sharingProfile.groups[*].type": "properties.sharingProfile.groups[*].type",
       "Microsoft.Compute/galleries/sharingProfile.permissions": "properties.sharingProfile.permissions",
+      "Microsoft.Compute/galleries/sharingStatus": "properties.sharingStatus",
+      "Microsoft.Compute/galleries/sharingStatus.aggregatedState": "properties.sharingStatus.aggregatedState",
+      "Microsoft.Compute/galleries/sharingStatus.summary": "properties.sharingStatus.summary",
+      "Microsoft.Compute/galleries/sharingStatus.summary[*]": "properties.sharingStatus.summary[*]",
+      "Microsoft.Compute/galleries/sharingStatus.summary[*].details": "properties.sharingStatus.summary[*].details",
+      "Microsoft.Compute/galleries/sharingStatus.summary[*].region": "properties.sharingStatus.summary[*].region",
+      "Microsoft.Compute/galleries/sharingStatus.summary[*].state": "properties.sharingStatus.summary[*].state",
       "Microsoft.Compute/galleries/softDeletePolicy": "properties.softDeletePolicy",
       "Microsoft.Compute/galleries/softDeletePolicy.isSoftDeleteEnabled": "properties.softDeletePolicy.isSoftDeleteEnabled"
     },
     "resourceType": "galleries",
     "apiVersions": [
+      "2022-03-03",
       "2022-01-03",
       "2021-10-01",
       "2021-07-01",
@@ -1715,7 +1795,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1730,6 +1811,7 @@
     },
     "resourceType": "galleries/applications",
     "apiVersions": [
+      "2022-03-03",
       "2022-01-03",
       "2021-10-01",
       "2021-07-01",
@@ -1775,7 +1857,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1799,6 +1882,24 @@
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.source.fileName": "properties.publishingProfile.source.fileName",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.source.mediaLink": "properties.publishingProfile.source.mediaLink",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.storageAccountType": "properties.publishingProfile.storageAccountType",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations": "properties.publishingProfile.targetExtendedLocations",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*]": "properties.publishingProfile.targetExtendedLocations[*]",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].encryption": "properties.publishingProfile.targetExtendedLocations[*].encryption",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages": "properties.publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages[*]": "properties.publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages[*]",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages[*].diskEncryptionSetId": "properties.publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages[*].diskEncryptionSetId",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages[*].lun": "properties.publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages[*].lun",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].encryption.osDiskImage": "properties.publishingProfile.targetExtendedLocations[*].encryption.osDiskImage",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.diskEncryptionSetId": "properties.publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.diskEncryptionSetId",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.securityProfile": "properties.publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.securityProfile",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.securityProfile.confidentialVMEncryptionType": "properties.publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.securityProfile.confidentialVMEncryptionType",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.securityProfile.secureVMDiskEncryptionSetId": "properties.publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.securityProfile.secureVMDiskEncryptionSetId",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].extendedLocation": "properties.publishingProfile.targetExtendedLocations[*].extendedLocation",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].extendedLocation.name": "properties.publishingProfile.targetExtendedLocations[*].extendedLocation.name",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].extendedLocation.type": "properties.publishingProfile.targetExtendedLocations[*].extendedLocation.type",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].extendedLocationReplicaCount": "properties.publishingProfile.targetExtendedLocations[*].extendedLocationReplicaCount",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].name": "properties.publishingProfile.targetExtendedLocations[*].name",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].storageAccountType": "properties.publishingProfile.targetExtendedLocations[*].storageAccountType",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions": "properties.publishingProfile.targetRegions",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*]": "properties.publishingProfile.targetRegions[*]",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].encryption": "properties.publishingProfile.targetRegions[*].encryption",
@@ -1808,6 +1909,9 @@
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].encryption.dataDiskImages[*].lun": "properties.publishingProfile.targetRegions[*].encryption.dataDiskImages[*].lun",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].encryption.osDiskImage": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.diskEncryptionSetId": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.diskEncryptionSetId",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.confidentialVMEncryptionType": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.confidentialVMEncryptionType",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.secureVMDiskEncryptionSetId": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.secureVMDiskEncryptionSetId",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].name": "properties.publishingProfile.targetRegions[*].name",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].regionalReplicaCount": "properties.publishingProfile.targetRegions[*].regionalReplicaCount",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].storageAccountType": "properties.publishingProfile.targetRegions[*].storageAccountType",
@@ -1822,6 +1926,7 @@
     },
     "resourceType": "galleries/applications/versions",
     "apiVersions": [
+      "2022-03-03",
       "2022-01-03",
       "2021-10-01",
       "2021-07-01",
@@ -1867,12 +1972,14 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
   {
     "aliases": {
+      "Microsoft.Compute/galleries/images/architecture": "properties.architecture",
       "Microsoft.Compute/galleries/images/description": "properties.description",
       "Microsoft.Compute/galleries/images/disallowed": "properties.disallowed",
       "Microsoft.Compute/galleries/images/disallowed.diskTypes": "properties.disallowed.diskTypes",
@@ -1907,6 +2014,7 @@
     },
     "resourceType": "galleries/images",
     "apiVersions": [
+      "2022-03-03",
       "2022-01-03",
       "2021-10-01",
       "2021-07-01",
@@ -1953,7 +2061,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -1970,6 +2079,24 @@
       "Microsoft.Compute/galleries/images/versions/publishingProfile.source.managedImage": "properties.publishingProfile.source.managedImage",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.source.managedImage.id": "properties.publishingProfile.source.managedImage.id",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.storageAccountType": "properties.publishingProfile.storageAccountType",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations": "properties.publishingProfile.targetExtendedLocations",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*]": "properties.publishingProfile.targetExtendedLocations[*]",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].encryption": "properties.publishingProfile.targetExtendedLocations[*].encryption",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages": "properties.publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages[*]": "properties.publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages[*]",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages[*].diskEncryptionSetId": "properties.publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages[*].diskEncryptionSetId",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages[*].lun": "properties.publishingProfile.targetExtendedLocations[*].encryption.dataDiskImages[*].lun",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].encryption.osDiskImage": "properties.publishingProfile.targetExtendedLocations[*].encryption.osDiskImage",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.diskEncryptionSetId": "properties.publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.diskEncryptionSetId",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.securityProfile": "properties.publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.securityProfile",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.securityProfile.confidentialVMEncryptionType": "properties.publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.securityProfile.confidentialVMEncryptionType",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.securityProfile.secureVMDiskEncryptionSetId": "properties.publishingProfile.targetExtendedLocations[*].encryption.osDiskImage.securityProfile.secureVMDiskEncryptionSetId",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].extendedLocation": "properties.publishingProfile.targetExtendedLocations[*].extendedLocation",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].extendedLocation.name": "properties.publishingProfile.targetExtendedLocations[*].extendedLocation.name",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].extendedLocation.type": "properties.publishingProfile.targetExtendedLocations[*].extendedLocation.type",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].extendedLocationReplicaCount": "properties.publishingProfile.targetExtendedLocations[*].extendedLocationReplicaCount",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].name": "properties.publishingProfile.targetExtendedLocations[*].name",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].storageAccountType": "properties.publishingProfile.targetExtendedLocations[*].storageAccountType",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions": "properties.publishingProfile.targetRegions",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*]": "properties.publishingProfile.targetRegions[*]",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].encryption": "properties.publishingProfile.targetRegions[*].encryption",
@@ -1979,6 +2106,9 @@
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].encryption.dataDiskImages[*].lun": "properties.publishingProfile.targetRegions[*].encryption.dataDiskImages[*].lun",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].encryption.osDiskImage": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.diskEncryptionSetId": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.diskEncryptionSetId",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.confidentialVMEncryptionType": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.confidentialVMEncryptionType",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.secureVMDiskEncryptionSetId": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.secureVMDiskEncryptionSetId",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].name": "properties.publishingProfile.targetRegions[*].name",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].regionalReplicaCount": "properties.publishingProfile.targetRegions[*].regionalReplicaCount",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].storageAccountType": "properties.publishingProfile.targetRegions[*].storageAccountType",
@@ -2011,6 +2141,7 @@
     },
     "resourceType": "galleries/images/versions",
     "apiVersions": [
+      "2022-03-03",
       "2022-01-03",
       "2021-10-01",
       "2021-07-01",
@@ -2057,7 +2188,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2073,6 +2205,7 @@
     },
     "resourceType": "hostGroups",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -2121,7 +2254,8 @@
       "Australia East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -2241,6 +2375,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -2282,7 +2424,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -2330,12 +2476,14 @@
       "Microsoft.Compute/hostGroups/hosts/sku.capacity": "sku.capacity",
       "Microsoft.Compute/hostGroups/hosts/sku.name": "sku.name",
       "Microsoft.Compute/hostGroups/hosts/sku.tier": "sku.tier",
+      "Microsoft.Compute/hostGroups/hosts/timeCreated": "properties.timeCreated",
       "Microsoft.Compute/hostGroups/hosts/virtualMachines": "properties.virtualMachines",
       "Microsoft.Compute/hostGroups/hosts/virtualMachines[*]": "properties.virtualMachines[*]",
       "Microsoft.Compute/hostGroups/hosts/virtualMachines[*].id": "properties.virtualMachines[*].id"
     },
     "resourceType": "hostGroups/hosts",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -2384,7 +2532,8 @@
       "Australia East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -2504,6 +2653,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -2545,7 +2702,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -2618,6 +2779,7 @@
     },
     "resourceType": "images",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -2672,7 +2834,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2680,6 +2843,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -2746,6 +2910,7 @@
     "aliases": null,
     "resourceType": "locations/capsoperations",
     "apiVersions": [
+      "2022-03-03",
       "2022-01-03",
       "2021-10-01",
       "2021-07-01",
@@ -2793,7 +2958,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2801,6 +2967,7 @@
     "aliases": null,
     "resourceType": "locations/cloudServiceOsFamilies",
     "apiVersions": [
+      "2022-04-04",
       "2021-03-01"
     ],
     "locations": [
@@ -2839,7 +3006,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2847,6 +3015,7 @@
     "aliases": null,
     "resourceType": "locations/cloudServiceOsVersions",
     "apiVersions": [
+      "2022-04-04",
       "2021-03-01"
     ],
     "locations": [
@@ -2885,7 +3054,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2893,6 +3063,8 @@
     "aliases": null,
     "resourceType": "locations/communityGalleries",
     "apiVersions": [
+      "2022-08-01",
+      "2022-03-03",
       "2022-03-01",
       "2022-01-03",
       "2021-11-01",
@@ -2952,7 +3124,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2960,6 +3133,7 @@
     "aliases": null,
     "resourceType": "locations/csoperations",
     "apiVersions": [
+      "2022-04-04",
       "2021-03-01",
       "2020-10-01-preview"
     ],
@@ -2999,7 +3173,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3099,6 +3274,7 @@
     "aliases": null,
     "resourceType": "locations/diskoperations",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -3152,7 +3328,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3160,6 +3337,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3174,6 +3352,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/publishers",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3217,7 +3396,61 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/edgeZones/vmimages",
+    "apiVersions": [
+      "2022-08-01",
+      "2022-03-01",
+      "2021-11-01",
+      "2021-07-01",
+      "2021-04-01",
+      "2021-03-01",
+      "2020-12-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US",
+      "Central US",
+      "North Central US",
+      "South Central US",
+      "North Europe",
+      "West Europe",
+      "East Asia",
+      "Southeast Asia",
+      "Japan East",
+      "Japan West",
+      "Australia East",
+      "Australia Southeast",
+      "Australia Central",
+      "Brazil South",
+      "South India",
+      "Central India",
+      "West India",
+      "Canada Central",
+      "Canada East",
+      "West US 2",
+      "West Central US",
+      "UK South",
+      "UK West",
+      "Korea Central",
+      "Korea South",
+      "France Central",
+      "South Africa North",
+      "UAE North",
+      "Switzerland North",
+      "Germany West Central",
+      "Norway East",
+      "Jio India West",
+      "West US 3",
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3225,6 +3458,7 @@
     "aliases": null,
     "resourceType": "locations/galleries",
     "apiVersions": [
+      "2022-03-03",
       "2022-01-03",
       "2021-10-01",
       "2021-07-01",
@@ -3271,7 +3505,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3279,6 +3514,7 @@
     "aliases": null,
     "resourceType": "locations/logAnalytics",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3330,7 +3566,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3338,6 +3575,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3396,7 +3634,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3404,6 +3643,8 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2022-08-01",
+      "2022-03-03",
       "2022-03-01",
       "2022-01-03",
       "2021-11-01",
@@ -3463,7 +3704,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3471,6 +3713,7 @@
     "aliases": null,
     "resourceType": "locations/recommendations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01"
@@ -3511,7 +3754,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3519,6 +3763,7 @@
     "aliases": null,
     "resourceType": "locations/runCommands",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3571,7 +3816,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3579,6 +3825,8 @@
     "aliases": null,
     "resourceType": "locations/sharedGalleries",
     "apiVersions": [
+      "2022-08-01",
+      "2022-03-03",
       "2022-03-01",
       "2022-01-03",
       "2021-11-01",
@@ -3638,7 +3886,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3646,6 +3895,7 @@
     "aliases": null,
     "resourceType": "locations/spotEvictionRates",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3690,7 +3940,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3698,6 +3949,7 @@
     "aliases": null,
     "resourceType": "locations/spotPriceHistory",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3742,7 +3994,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3750,6 +4003,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3807,7 +4061,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3815,6 +4070,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachines",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3868,7 +4124,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3876,6 +4133,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachineScaleSets",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3929,7 +4187,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -3937,6 +4196,7 @@
     "aliases": null,
     "resourceType": "locations/vmSizes",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -3994,7 +4254,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -4002,6 +4263,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4058,7 +4320,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -4101,6 +4364,7 @@
     },
     "resourceType": "proximityPlacementGroups",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4151,7 +4415,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -4271,6 +4536,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -4312,7 +4585,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -4458,6 +4735,8 @@
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.storageProfile.osDisk.name": "properties.restorePoints[*].properties.sourceMetadata.storageProfile.osDisk.name",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.storageProfile.osDisk.osType": "properties.restorePoints[*].properties.sourceMetadata.storageProfile.osDisk.osType",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.vmId": "properties.restorePoints[*].properties.sourceMetadata.vmId",
+      "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceRestorePoint": "properties.restorePoints[*].properties.sourceRestorePoint",
+      "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceRestorePoint.id": "properties.restorePoints[*].properties.sourceRestorePoint.id",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].timeCreated": "properties.restorePoints[*].properties.timeCreated",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].type": "properties.restorePoints[*].type",
       "Microsoft.Compute/restorePointCollections/source": "properties.source",
@@ -4466,6 +4745,7 @@
     },
     "resourceType": "restorePointCollections",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4518,7 +4798,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -4607,6 +4888,8 @@
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.dataDisks[*].lun": "properties.sourceMetadata.storageProfile.dataDisks[*].lun",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.dataDisks[*].managedDisk": "properties.sourceMetadata.storageProfile.dataDisks[*].managedDisk",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.dataDisks[*].managedDisk.id": "properties.sourceMetadata.storageProfile.dataDisks[*].managedDisk.id",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.dataDisks[*].managedDisk.securityProfile": "properties.sourceMetadata.storageProfile.dataDisks[*].managedDisk.securityProfile",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.dataDisks[*].managedDisk.securityProfile.securityEncryptionType": "properties.sourceMetadata.storageProfile.dataDisks[*].managedDisk.securityProfile.securityEncryptionType",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.dataDisks[*].managedDisk.storageAccountType": "properties.sourceMetadata.storageProfile.dataDisks[*].managedDisk.storageAccountType",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.dataDisks[*].name": "properties.sourceMetadata.storageProfile.dataDisks[*].name",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.osDisk": "properties.sourceMetadata.storageProfile.osDisk",
@@ -4626,14 +4909,19 @@
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault.id": "properties.sourceMetadata.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault.id",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.osDisk.managedDisk": "properties.sourceMetadata.storageProfile.osDisk.managedDisk",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.osDisk.managedDisk.id": "properties.sourceMetadata.storageProfile.osDisk.managedDisk.id",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.osDisk.managedDisk.securityProfile": "properties.sourceMetadata.storageProfile.osDisk.managedDisk.securityProfile",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.osDisk.managedDisk.securityProfile.securityEncryptionType": "properties.sourceMetadata.storageProfile.osDisk.managedDisk.securityProfile.securityEncryptionType",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.osDisk.managedDisk.storageAccountType": "properties.sourceMetadata.storageProfile.osDisk.managedDisk.storageAccountType",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.osDisk.name": "properties.sourceMetadata.storageProfile.osDisk.name",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.osDisk.osType": "properties.sourceMetadata.storageProfile.osDisk.osType",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.vmId": "properties.sourceMetadata.vmId",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceRestorePoint": "properties.sourceRestorePoint",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceRestorePoint.id": "properties.sourceRestorePoint.id",
       "Microsoft.Compute/restorePointCollections/restorePoints/timeCreated": "properties.timeCreated"
     },
     "resourceType": "restorePointCollections/restorePoints",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -4686,7 +4974,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -4694,6 +4983,7 @@
     "aliases": null,
     "resourceType": "restorePointCollections/restorePoints/diskRestorePoints",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -4737,7 +5027,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -4836,6 +5127,7 @@
       "Microsoft.Compute/snapshots/creationData.sourceUri": "properties.creationData.sourceUri",
       "Microsoft.Compute/snapshots/creationData.storageAccountId": "properties.creationData.storageAccountId",
       "Microsoft.Compute/snapshots/creationData.uploadSizeBytes": "properties.creationData.uploadSizeBytes",
+      "Microsoft.Compute/snapshots/dataAccessAuthMode": "properties.dataAccessAuthMode",
       "Microsoft.Compute/snapshots/diskAccessId": "properties.diskAccessId",
       "Microsoft.Compute/snapshots/diskSizeBytes": "properties.diskSizeBytes",
       "Microsoft.Compute/snapshots/diskSizeGB": "properties.diskSizeGB",
@@ -4887,12 +5179,14 @@
       "Microsoft.Compute/snapshots/sku.tier": "sku.tier",
       "Microsoft.Compute/snapshots/supportedCapabilities": "properties.supportedCapabilities",
       "Microsoft.Compute/snapshots/supportedCapabilities.acceleratedNetwork": "properties.supportedCapabilities.acceleratedNetwork",
+      "Microsoft.Compute/snapshots/supportedCapabilities.architecture": "properties.supportedCapabilities.architecture",
       "Microsoft.Compute/snapshots/supportsHibernation": "properties.supportsHibernation",
       "Microsoft.Compute/snapshots/timeCreated": "properties.timeCreated",
       "Microsoft.Compute/snapshots/uniqueId": "properties.uniqueId"
     },
     "resourceType": "snapshots",
     "apiVersions": [
+      "2022-07-02",
       "2022-03-02",
       "2021-12-01",
       "2021-08-01",
@@ -4946,7 +5240,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -4956,6 +5251,7 @@
     },
     "resourceType": "sshPublicKeys",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -5001,7 +5297,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -5192,6 +5489,8 @@
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].managedDisk.diskEncryptionSet": "properties.storageProfile.dataDisks[*].managedDisk.diskEncryptionSet",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].managedDisk.diskEncryptionSet.id": "properties.storageProfile.dataDisks[*].managedDisk.diskEncryptionSet.id",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].managedDisk.id": "properties.storageProfile.dataDisks[*].managedDisk.id",
+      "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].managedDisk.securityProfile": "properties.storageProfile.dataDisks[*].managedDisk.securityProfile",
+      "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].managedDisk.securityProfile.securityEncryptionType": "properties.storageProfile.dataDisks[*].managedDisk.securityProfile.securityEncryptionType",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].managedDisk.storageAccountType": "properties.storageProfile.dataDisks[*].managedDisk.storageAccountType",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].name": "properties.storageProfile.dataDisks[*].name",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].toBeDetached": "properties.storageProfile.dataDisks[*].toBeDetached",
@@ -5199,6 +5498,7 @@
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].vhd.uri": "properties.storageProfile.dataDisks[*].vhd.uri",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].writeAcceleratorEnabled": "properties.storageProfile.dataDisks[*].writeAcceleratorEnabled",
       "Microsoft.Compute/virtualMachines/storageProfile.imageReference": "properties.storageProfile.imageReference",
+      "Microsoft.Compute/virtualMachines/storageProfile.imageReference.communityGalleryImageId": "properties.storageProfile.imageReference.communityGalleryImageId",
       "Microsoft.Compute/virtualMachines/storageProfile.imageReference.exactVersion": "properties.storageProfile.imageReference.exactVersion",
       "Microsoft.Compute/virtualMachines/storageProfile.imageReference.id": "properties.storageProfile.imageReference.id",
       "Microsoft.Compute/virtualMachines/storageProfile.imageReference.offer": "properties.storageProfile.imageReference.offer",
@@ -5230,12 +5530,15 @@
       "Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.diskEncryptionSet": "properties.storageProfile.osDisk.managedDisk.diskEncryptionSet",
       "Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.diskEncryptionSet.id": "properties.storageProfile.osDisk.managedDisk.diskEncryptionSet.id",
       "Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.id": "properties.storageProfile.osDisk.managedDisk.id",
+      "Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.securityProfile": "properties.storageProfile.osDisk.managedDisk.securityProfile",
+      "Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.securityProfile.securityEncryptionType": "properties.storageProfile.osDisk.managedDisk.securityProfile.securityEncryptionType",
       "Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType": "properties.storageProfile.osDisk.managedDisk.storageAccountType",
       "Microsoft.Compute/virtualMachines/storageProfile.osDisk.name": "properties.storageProfile.osDisk.name",
       "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType": "properties.storageProfile.osDisk.osType",
       "Microsoft.Compute/virtualMachines/storageProfile.osDisk.vhd": "properties.storageProfile.osDisk.vhd",
       "Microsoft.Compute/virtualMachines/storageProfile.osDisk.vhd.uri": "properties.storageProfile.osDisk.vhd.uri",
       "Microsoft.Compute/virtualMachines/storageProfile.osDisk.writeAcceleratorEnabled": "properties.storageProfile.osDisk.writeAcceleratorEnabled",
+      "Microsoft.Compute/virtualMachines/timeCreated": "properties.timeCreated",
       "Microsoft.Compute/virtualMachines/userData": "properties.userData",
       "Microsoft.Compute/virtualMachines/virtualMachineScaleSet": "properties.virtualMachineScaleSet",
       "Microsoft.Compute/virtualMachines/virtualMachineScaleSet.id": "properties.virtualMachineScaleSet.id",
@@ -5245,6 +5548,7 @@
     },
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -5302,7 +5606,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -5422,6 +5727,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -5463,7 +5776,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -5529,6 +5846,7 @@
     },
     "resourceType": "virtualMachines/extensions",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -5586,7 +5904,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -5632,7 +5951,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -5660,6 +5980,7 @@
     },
     "resourceType": "virtualMachines/runCommands",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -5705,7 +6026,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -5723,6 +6045,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/automaticRepairsPolicy": "properties.automaticRepairsPolicy",
       "Microsoft.Compute/virtualMachineScaleSets/automaticRepairsPolicy.enabled": "properties.automaticRepairsPolicy.enabled",
       "Microsoft.Compute/virtualMachineScaleSets/automaticRepairsPolicy.gracePeriod": "properties.automaticRepairsPolicy.gracePeriod",
+      "Microsoft.Compute/virtualMachineScaleSets/automaticRepairsPolicy.repairAction": "properties.automaticRepairsPolicy.repairAction",
       "Microsoft.Compute/VirtualMachineScaleSets/computerNamePrefix": "properties.virtualMachineProfile.computerNamePrefix",
       "Microsoft.Compute/virtualMachineScaleSets/doNotRunExtensionsOnOverprovisionedVMs": "properties.doNotRunExtensionsOnOverprovisionedVMs",
       "Microsoft.Compute/VirtualMachineScaleSets/extensionProfile": "properties.virtualMachineProfile.extensionProfile",
@@ -5773,6 +6096,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/spotRestorePolicy": "properties.spotRestorePolicy",
       "Microsoft.Compute/virtualMachineScaleSets/spotRestorePolicy.enabled": "properties.spotRestorePolicy.enabled",
       "Microsoft.Compute/virtualMachineScaleSets/spotRestorePolicy.restoreTimeout": "properties.spotRestorePolicy.restoreTimeout",
+      "Microsoft.Compute/virtualMachineScaleSets/timeCreated": "properties.timeCreated",
       "Microsoft.Compute/virtualMachineScaleSets/uniqueId": "properties.uniqueId",
       "Microsoft.Compute/virtualMachineScaleSets/upgradePolicy": "properties.upgradePolicy",
       "Microsoft.Compute/VirtualMachineScaleSets/upgradePolicy.automaticOSUpgrade": "properties.upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade",
@@ -5827,6 +6151,10 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.extensionProfile.extensions[*].type": "properties.virtualMachineProfile.extensionProfile.extensions[*].properties.type",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.extensionProfile.extensions[*].typeHandlerVersion": "properties.virtualMachineProfile.extensionProfile.extensions[*].properties.typeHandlerVersion",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.extensionProfile.extensionsTimeBudget": "properties.virtualMachineProfile.extensionProfile.extensionsTimeBudget",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.hardwareProfile": "properties.virtualMachineProfile.hardwareProfile",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.hardwareProfile.vmSizeProperties": "properties.virtualMachineProfile.hardwareProfile.vmSizeProperties",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.hardwareProfile.vmSizeProperties.vCPUsAvailable": "properties.virtualMachineProfile.hardwareProfile.vmSizeProperties.vCPUsAvailable",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.hardwareProfile.vmSizeProperties.vCPUsPerCore": "properties.virtualMachineProfile.hardwareProfile.vmSizeProperties.vCPUsPerCore",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.licenseType": "properties.virtualMachineProfile.licenseType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile": "properties.virtualMachineProfile.networkProfile",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.healthProbe": "properties.virtualMachineProfile.networkProfile.healthProbe",
@@ -5881,6 +6209,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile": "properties.virtualMachineProfile.osProfile",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.adminPassword": "properties.virtualMachineProfile.osProfile.adminPassword",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.adminUsername": "properties.virtualMachineProfile.osProfile.adminUsername",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.allowExtensionOperations": "properties.virtualMachineProfile.osProfile.allowExtensionOperations",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.computerNamePrefix": "properties.virtualMachineProfile.osProfile.computerNamePrefix",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.customData": "properties.virtualMachineProfile.osProfile.customData",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.linuxConfiguration": "properties.virtualMachineProfile.osProfile.linuxConfiguration",
@@ -5944,10 +6273,15 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.dataDisks[*].managedDisk": "properties.virtualMachineProfile.storageProfile.dataDisks[*].managedDisk",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.diskEncryptionSet": "properties.virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.diskEncryptionSet",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.diskEncryptionSet.id": "properties.virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.diskEncryptionSet.id",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.securityProfile": "properties.virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.securityProfile",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.securityProfile.diskEncryptionSet": "properties.virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.securityProfile.diskEncryptionSet",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.securityProfile.diskEncryptionSet.id": "properties.virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.securityProfile.diskEncryptionSet.id",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.securityProfile.securityEncryptionType": "properties.virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.securityProfile.securityEncryptionType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.storageAccountType": "properties.virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.storageAccountType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.dataDisks[*].name": "properties.virtualMachineProfile.storageProfile.dataDisks[*].name",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.dataDisks[*].writeAcceleratorEnabled": "properties.virtualMachineProfile.storageProfile.dataDisks[*].writeAcceleratorEnabled",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.imageReference": "properties.virtualMachineProfile.storageProfile.imageReference",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.imageReference.communityGalleryImageId": "properties.virtualMachineProfile.storageProfile.imageReference.communityGalleryImageId",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.imageReference.exactVersion": "properties.virtualMachineProfile.storageProfile.imageReference.exactVersion",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.imageReference.id": "properties.virtualMachineProfile.storageProfile.imageReference.id",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.imageReference.offer": "properties.virtualMachineProfile.storageProfile.imageReference.offer",
@@ -5967,6 +6301,10 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.managedDisk": "properties.virtualMachineProfile.storageProfile.osDisk.managedDisk",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.managedDisk.diskEncryptionSet": "properties.virtualMachineProfile.storageProfile.osDisk.managedDisk.diskEncryptionSet",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.managedDisk.diskEncryptionSet.id": "properties.virtualMachineProfile.storageProfile.osDisk.managedDisk.diskEncryptionSet.id",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.managedDisk.securityProfile": "properties.virtualMachineProfile.storageProfile.osDisk.managedDisk.securityProfile",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.managedDisk.securityProfile.diskEncryptionSet": "properties.virtualMachineProfile.storageProfile.osDisk.managedDisk.securityProfile.diskEncryptionSet",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.managedDisk.securityProfile.diskEncryptionSet.id": "properties.virtualMachineProfile.storageProfile.osDisk.managedDisk.securityProfile.diskEncryptionSet.id",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.managedDisk.securityProfile.securityEncryptionType": "properties.virtualMachineProfile.storageProfile.osDisk.managedDisk.securityProfile.securityEncryptionType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType": "properties.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.name": "properties.virtualMachineProfile.storageProfile.osDisk.name",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.osType": "properties.virtualMachineProfile.storageProfile.osDisk.osType",
@@ -5980,6 +6318,7 @@
     },
     "resourceType": "virtualMachineScaleSets",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6038,7 +6377,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": [
       {
@@ -6158,6 +6498,14 @@
         ]
       },
       {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -6199,7 +6547,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -6253,6 +6605,7 @@
     },
     "resourceType": "virtualMachineScaleSets/extensions",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6311,7 +6664,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -6319,6 +6673,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/networkInterfaces",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6379,7 +6734,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -6387,6 +6743,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/publicIPAddresses",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6439,7 +6796,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -6648,6 +7006,8 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].managedDisk.diskEncryptionSet": "properties.storageProfile.dataDisks[*].managedDisk.diskEncryptionSet",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].managedDisk.diskEncryptionSet.id": "properties.storageProfile.dataDisks[*].managedDisk.diskEncryptionSet.id",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].managedDisk.id": "properties.storageProfile.dataDisks[*].managedDisk.id",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/storageProfile.dataDisks[*].managedDisk.securityProfile": "properties.storageProfile.dataDisks[*].managedDisk.securityProfile",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/storageProfile.dataDisks[*].managedDisk.securityProfile.securityEncryptionType": "properties.storageProfile.dataDisks[*].managedDisk.securityProfile.securityEncryptionType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].managedDisk.storageAccountType": "properties.storageProfile.dataDisks[*].managedDisk.storageAccountType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].name": "properties.storageProfile.dataDisks[*].name",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].toBeDetached": "properties.storageProfile.dataDisks[*].toBeDetached",
@@ -6655,6 +7015,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].vhd.uri": "properties.storageProfile.dataDisks[*].vhd.uri",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].writeAcceleratorEnabled": "properties.storageProfile.dataDisks[*].writeAcceleratorEnabled",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.imageReference": "properties.storageProfile.imageReference",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/storageProfile.imageReference.communityGalleryImageId": "properties.storageProfile.imageReference.communityGalleryImageId",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.imageReference.exactVersion": "properties.storageProfile.imageReference.exactVersion",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.imageReference.id": "properties.storageProfile.imageReference.id",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.imageReference.offer": "properties.storageProfile.imageReference.offer",
@@ -6686,6 +7047,8 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.osDisk.managedDisk.diskEncryptionSet": "properties.storageProfile.osDisk.managedDisk.diskEncryptionSet",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.osDisk.managedDisk.diskEncryptionSet.id": "properties.storageProfile.osDisk.managedDisk.diskEncryptionSet.id",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.osDisk.managedDisk.id": "properties.storageProfile.osDisk.managedDisk.id",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/storageProfile.osDisk.managedDisk.securityProfile": "properties.storageProfile.osDisk.managedDisk.securityProfile",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/storageProfile.osDisk.managedDisk.securityProfile.securityEncryptionType": "properties.storageProfile.osDisk.managedDisk.securityProfile.securityEncryptionType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType": "properties.storageProfile.osDisk.managedDisk.storageAccountType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.osDisk.name": "properties.storageProfile.osDisk.name",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.osDisk.osType": "properties.storageProfile.osDisk.osType",
@@ -6699,6 +7062,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6757,7 +7121,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -6776,6 +7141,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines/extensions",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6834,7 +7200,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -6842,6 +7209,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/virtualMachines/networkInterfaces",
     "apiVersions": [
+      "2022-08-01",
       "2022-03-01",
       "2021-11-01",
       "2021-07-01",
@@ -6902,7 +7270,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },

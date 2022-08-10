@@ -46,7 +46,9 @@
       "Japan East",
       "Southeast Asia",
       "Australia East",
-      "North Europe"
+      "North Europe",
+      "Canada Central",
+      "Brazil South"
     ],
     "zoneMappings": null
   },
@@ -71,7 +73,9 @@
       "Japan East",
       "Southeast Asia",
       "Australia East",
-      "North Europe"
+      "North Europe",
+      "Canada Central",
+      "Brazil South"
     ],
     "zoneMappings": null
   },
@@ -96,7 +100,9 @@
       "Japan East",
       "Southeast Asia",
       "Australia East",
-      "North Europe"
+      "North Europe",
+      "Canada Central",
+      "Brazil South"
     ],
     "zoneMappings": null
   },

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "agreements",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -13,6 +14,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -23,6 +25,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -59,6 +62,7 @@
     },
     "resourceType": "monitors",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -71,6 +75,7 @@
     "aliases": null,
     "resourceType": "monitors/getDefaultKey",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -84,6 +89,7 @@
     "aliases": null,
     "resourceType": "monitors/listApiKeys",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -97,6 +103,7 @@
     "aliases": null,
     "resourceType": "monitors/listHosts",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -110,6 +117,7 @@
     "aliases": null,
     "resourceType": "monitors/listLinkedResources",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -123,6 +131,7 @@
     "aliases": null,
     "resourceType": "monitors/listMonitoredResources",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -136,6 +145,7 @@
     "aliases": null,
     "resourceType": "monitors/refreshSetPasswordLink",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -149,6 +159,7 @@
     "aliases": null,
     "resourceType": "monitors/setDefaultKey",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -167,6 +178,7 @@
     },
     "resourceType": "monitors/singleSignOnConfigurations",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -196,6 +208,7 @@
     },
     "resourceType": "monitors/tagRules",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -208,6 +221,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],
@@ -218,6 +232,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2022-06-01",
       "2021-03-01",
       "2020-02-01-preview"
     ],

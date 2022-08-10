@@ -50,8 +50,10 @@
   },
   {
     "aliases": {
+      "Microsoft.AppConfiguration/configurationStores/createMode": "properties.createMode",
       "Microsoft.AppConfiguration/configurationStores/creationDate": "properties.creationDate",
       "Microsoft.AppConfiguration/configurationStores/disableLocalAuth": "properties.disableLocalAuth",
+      "Microsoft.AppConfiguration/configurationStores/enablePurgeProtection": "properties.enablePurgeProtection",
       "Microsoft.AppConfiguration/configurationStores/encryption": "properties.encryption",
       "Microsoft.AppConfiguration/configurationStores/encryption.keyVaultProperties": "properties.encryption.keyVaultProperties",
       "Microsoft.AppConfiguration/configurationStores/encryption.keyVaultProperties.identityClientId": "properties.encryption.keyVaultProperties.identityClientId",
@@ -72,7 +74,8 @@
       "Microsoft.AppConfiguration/configurationStores/provisioningState": "properties.provisioningState",
       "Microsoft.AppConfiguration/configurationStores/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.AppConfiguration/configurationStores/sku": "sku",
-      "Microsoft.AppConfiguration/configurationStores/sku.name": "sku.name"
+      "Microsoft.AppConfiguration/configurationStores/sku.name": "sku.name",
+      "Microsoft.AppConfiguration/configurationStores/softDeleteRetentionInDays": "properties.softDeleteRetentionInDays"
     },
     "resourceType": "configurationStores",
     "apiVersions": [
@@ -221,6 +224,19 @@
       "West US 3",
       "Brazil Southeast",
       "Sweden Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurationStores/replicas",
+    "apiVersions": [
+      "2022-03-01-preview"
+    ],
+    "locations": [
+      "West Central US",
+      "West US",
+      "East US"
     ],
     "zoneMappings": null
   },

@@ -58,7 +58,7 @@ spec:
 # Synopsis: Authenticate publishing clients with Azure AD identities.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
-metadata: 
+metadata:
   name: Azure.EventGrid.DisableLocalAuth
   ref: AZR-000100
   tags:

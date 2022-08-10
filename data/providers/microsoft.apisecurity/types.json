@@ -1,0 +1,68 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "apiCollectionDetails",
+    "apiVersions": [
+      "2022-03-02-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "apiCollections",
+    "apiVersions": [
+      "2022-03-02-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "apiCollectionsMeta",
+    "apiVersions": [
+      "2022-03-02-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "apiCollectionsMeta/apiCollectionMetaDetails",
+    "apiVersions": [
+      "2022-03-02-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "East US 2 EUAP"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2022-03-02-privatepreview",
+      "2021-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -22,6 +23,7 @@
     "aliases": null,
     "resourceType": "deletedManagedHSMs",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -62,6 +64,7 @@
     "aliases": null,
     "resourceType": "deletedVaults",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -109,7 +112,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -117,6 +121,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -135,6 +140,7 @@
     "aliases": null,
     "resourceType": "locations/deletedManagedHSMs",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -175,6 +181,7 @@
     "aliases": null,
     "resourceType": "locations/deletedVaults",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -222,7 +229,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -230,6 +238,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -277,7 +286,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -285,6 +295,7 @@
     "aliases": null,
     "resourceType": "locations/managedHsmOperationResults",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -323,8 +334,23 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
+    "apiVersions": [
+      "2022-07-01",
+      "2022-02-01-preview"
+    ],
+    "locations": [
+      "North Central US",
+      "Central US EUAP",
+      "East US 2 EUAP"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -372,7 +398,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -414,6 +441,7 @@
     },
     "resourceType": "managedHSMs",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -455,6 +483,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -528,6 +557,7 @@
     },
     "resourceType": "vaults",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -576,7 +606,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -584,6 +615,7 @@
     "aliases": null,
     "resourceType": "vaults/accessPolicies",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -632,7 +664,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -640,6 +673,7 @@
     "aliases": null,
     "resourceType": "vaults/eventGridFilters",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -686,7 +720,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -721,6 +756,7 @@
     },
     "resourceType": "vaults/keys",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -765,7 +801,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -773,6 +810,7 @@
     "aliases": null,
     "resourceType": "vaults/keys/versions",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -817,7 +855,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -836,6 +875,7 @@
     },
     "resourceType": "vaults/secrets",
     "apiVersions": [
+      "2022-07-01",
       "2022-02-01-preview",
       "2021-11-01-preview",
       "2021-10-01",
@@ -884,7 +924,8 @@
       "Norway East",
       "West US 3",
       "Jio India West",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-08-01",
       "2022-05-01-preview",
       "2021-09-01-preview"
     ],
@@ -21,6 +22,7 @@
     },
     "resourceType": "grafana",
     "apiVersions": [
+      "2022-08-01",
       "2022-05-01-preview",
       "2021-09-01-preview"
     ],
@@ -36,6 +38,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-08-01",
       "2022-05-01-preview",
       "2021-09-01-preview"
     ],
@@ -46,6 +49,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2022-08-01",
       "2022-05-01-preview",
       "2021-09-01-preview"
     ],
@@ -57,7 +61,10 @@
       "East US",
       "East US 2",
       "West Central US",
-      "Australia East"
+      "Australia East",
+      "Sweden Central",
+      "West US 3",
+      "East Asia"
     ],
     "zoneMappings": null
   },
@@ -65,6 +72,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-08-01",
       "2022-05-01-preview",
       "2021-09-01-preview"
     ],

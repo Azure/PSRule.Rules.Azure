@@ -20,6 +20,50 @@
       "West US 2",
       "North Europe",
       "Australia East",
+      "East Asia",
+      "Japan East",
+      "Canada Central"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/sapVirtualInstanceMetadata",
+    "apiVersions": [
+      "2021-12-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe",
+      "Australia East",
+      "East Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors",
+    "apiVersions": [
+      "2021-12-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe",
+      "Australia East",
+      "East Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "monitors/providerInstances",
+    "apiVersions": [
+      "2021-12-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe",
+      "Australia East",
       "East Asia"
     ],
     "zoneMappings": null
@@ -31,6 +75,86 @@
       "2021-12-01-preview"
     ],
     "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "phpWorkloads",
+    "apiVersions": [
+      "2021-12-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "phpWorkloads/wordpressInstances",
+    "apiVersions": [
+      "2021-12-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "sapVirtualInstances",
+    "apiVersions": [
+      "2021-12-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe",
+      "Australia East",
+      "East Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "sapVirtualInstances/applicationInstances",
+    "apiVersions": [
+      "2021-12-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe",
+      "Australia East",
+      "East Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "sapVirtualInstances/centralInstances",
+    "apiVersions": [
+      "2021-12-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe",
+      "Australia East",
+      "East Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "sapVirtualInstances/databaseInstances",
+    "apiVersions": [
+      "2021-12-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "North Europe",
+      "Australia East",
+      "East Asia"
+    ],
     "zoneMappings": null
   }
 ]
