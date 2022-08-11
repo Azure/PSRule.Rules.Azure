@@ -44,7 +44,7 @@ function global:GetSubResources {
     process {
         return @($TargetObject.resources | Where-Object -FilterScript {
             ($_.ResourceType -in $ResourceType -or $_.Type -in $ResourceType -or $_.ExtensionResourceType -in $ResourceType) -and
-            ($Null -eq $Name -or $Name.Length -eq 0 -or $_.Name -in $Name -or $_.ResourceName -in $Name)
+            ($Null -eq $Name -or $Name.Length -eq 0 -or [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.Name) -in $Name -or [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.ResourceName) -in $Name)
             })
     }
 }

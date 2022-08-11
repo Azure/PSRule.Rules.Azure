@@ -351,6 +351,43 @@ Describe 'Azure.APIM' -Tag 'APIM' {
         }
     }
 
+    Context 'With Template' {
+        BeforeAll {
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.APIM.json;
+            Export-AzRuleTemplateData -TemplateFile (Join-Path -Path $here -ChildPath 'apim.tests.json') -OutputPath $outputFile;
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
+        }
+
+        It 'Azure.APIM.HTTPBackend' {
+            $filteredResult = $result | Where-Object {
+                $_.RuleName -eq 'Azure.APIM.HTTPBackend' -and
+                (
+                    $_.TargetType -eq 'Microsoft.ApiManagement/service' -or
+                    $_.TargetType -eq 'Microsoft.ApiManagement/service/apis' -or
+                    $_.TargetType -eq 'Microsoft.ApiManagement/service/backends'
+                )
+            };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            # $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'apim-02/api-02';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            # $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'apim-01', 'apim-03/api-03';
+        }
+    }
+
     Context 'Resource name' {
         BeforeAll {
             $invokeParams = @{

@@ -5,13 +5,13 @@
     "_generator": {
       "name": "bicep",
       "version": "0.9.1.41621",
-      "templateHash": "12511286077090340745"
+      "templateHash": "8465082131311311071"
     }
   },
   "parameters": {
     "name": {
       "type": "string",
-      "defaultValue": "apim-contoso-test-eus-001",
+      "defaultValue": "apim",
       "metadata": {
         "description": "The name of the API Management service."
       }
@@ -42,7 +42,7 @@
     {
       "type": "Microsoft.ApiManagement/service",
       "apiVersion": "2021-08-01",
-      "name": "[parameters('name')]",
+      "name": "[format('{0}-01', parameters('name'))]",
       "location": "[parameters('location')]",
       "sku": {
         "name": "Premium",
@@ -76,7 +76,7 @@
     {
       "type": "Microsoft.ApiManagement/service/products",
       "apiVersion": "2021-08-01",
-      "name": "[format('{0}/{1}', parameters('name'), 'echo')]",
+      "name": "[format('{0}/{1}', format('{0}-01', parameters('name')), 'product-01')]",
       "properties": {
         "displayName": "Echo",
         "description": "Echo API services for Contoso.",
@@ -84,26 +84,26 @@
         "subscriptionRequired": true
       },
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service', parameters('name'))]"
+        "[resourceId('Microsoft.ApiManagement/service', format('{0}-01', parameters('name')))]"
       ]
     },
     {
       "type": "Microsoft.ApiManagement/service/apiVersionSets",
       "apiVersion": "2021-08-01",
-      "name": "[format('{0}/{1}', parameters('name'), 'echo')]",
+      "name": "[format('{0}/{1}', format('{0}-01', parameters('name')), 'version-01')]",
       "properties": {
         "displayName": "Echo API",
         "description": "An echo API service.",
         "versioningScheme": "Segment"
       },
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service', parameters('name'))]"
+        "[resourceId('Microsoft.ApiManagement/service', format('{0}-01', parameters('name')))]"
       ]
     },
     {
       "type": "Microsoft.ApiManagement/service/apis",
       "apiVersion": "2021-08-01",
-      "name": "[format('{0}/{1}', parameters('name'), 'echo-v1')]",
+      "name": "[format('{0}/{1}', format('{0}-01', parameters('name')), 'api-01')]",
       "properties": {
         "displayName": "Echo API",
         "description": "An echo API service.",
@@ -113,18 +113,47 @@
           "https"
         ],
         "apiVersion": "v1",
-        "apiVersionSetId": "[resourceId('Microsoft.ApiManagement/service/apiVersionSets', parameters('name'), 'echo')]",
+        "apiVersionSetId": "[resourceId('Microsoft.ApiManagement/service/apiVersionSets', format('{0}-01', parameters('name')), 'version-01')]",
         "subscriptionRequired": true
       },
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service', parameters('name'))]",
-        "[resourceId('Microsoft.ApiManagement/service/apiVersionSets', parameters('name'), 'echo')]"
+        "[resourceId('Microsoft.ApiManagement/service', format('{0}-01', parameters('name')))]",
+        "[resourceId('Microsoft.ApiManagement/service/apiVersionSets', format('{0}-01', parameters('name')), 'version-01')]"
       ]
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2021-08-01",
+      "name": "apim-02/api-02",
+      "properties": {
+        "displayName": "Echo API",
+        "description": "An echo API service.",
+        "path": "echo",
+        "serviceUrl": "http://echo.contoso.com",
+        "protocols": [
+          "https"
+        ],
+        "subscriptionRequired": true
+      }
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2021-08-01",
+      "name": "apim-03/api-03",
+      "properties": {
+        "displayName": "Echo API",
+        "description": "An echo API service.",
+        "path": "echo",
+        "protocols": [
+          "https"
+        ],
+        "subscriptionRequired": true
+      }
     },
     {
       "type": "Microsoft.ApiManagement/service/backends",
       "apiVersion": "2021-08-01",
-      "name": "[format('{0}/{1}', parameters('name'), 'echo')]",
+      "name": "[format('{0}/{1}', format('{0}-01', parameters('name')), 'backend-01')]",
       "properties": {
         "title": "echo",
         "description": "A backend service for the Each API.",
@@ -132,7 +161,7 @@
         "url": "https://echo.contoso.com"
       },
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service', parameters('name'))]"
+        "[resourceId('Microsoft.ApiManagement/service', format('{0}-01', parameters('name')))]"
       ]
     }
   ]

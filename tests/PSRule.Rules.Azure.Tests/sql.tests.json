@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.8.9.13224",
-      "templateHash": "4205854155642746064"
+      "version": "0.9.1.41621",
+      "templateHash": "3848875806484314797"
     }
   },
   "parameters": {
@@ -40,7 +40,40 @@
       "type": "Microsoft.Sql/servers",
       "apiVersion": "2021-11-01-preview",
       "name": "[format('sql-{0}-01', parameters('name'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "administrators": {
+          "administratorType": "ActiveDirectory",
+          "principalType": "Group",
+          "login": "sql-admins",
+          "sid": "00000000-0000-0000-0000-000000000000"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2021-11-01-preview",
+      "name": "[format('sql-{0}-02', parameters('name'))]",
       "location": "[parameters('location')]"
+    },
+    {
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2021-11-01-preview",
+      "name": "[format('sql-{0}-03', parameters('name'))]",
+      "location": "[parameters('location')]"
+    },
+    {
+      "type": "Microsoft.Sql/servers/administrators",
+      "apiVersion": "2021-11-01-preview",
+      "name": "[format('{0}/{1}', format('sql-{0}-03', parameters('name')), 'ActiveDirectory')]",
+      "properties": {
+        "administratorType": "ActiveDirectory",
+        "login": "sql-admins",
+        "sid": "00000000-0000-0000-0000-000000000000"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', format('sql-{0}-03', parameters('name')))]"
+      ]
     },
     {
       "type": "Microsoft.Sql/servers/databases",
