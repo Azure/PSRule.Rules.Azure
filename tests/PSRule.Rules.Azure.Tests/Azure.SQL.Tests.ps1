@@ -142,9 +142,17 @@ Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
             $ruleResult.TargetName | Should -BeIn 'server-B', 'server-C';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Sql/servers/administrators'' has not been specified.';
+            $ruleResult[0].Reason | Should -BeIn @(
+                'Path properties.administrators.administratorType: Does not exist.'
+                'Path properties.administrators.login: Does not exist.'
+                'Path properties.administrators.sid: Does not exist.'
+            );
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Sql/servers/administrators'' has not been specified.';
+            $ruleResult[1].Reason | Should -BeIn @(
+                'Path properties.administrators.administratorType: Does not exist.'
+                'Path properties.administrators.login: Does not exist.'
+                'Path properties.administrators.sid: Does not exist.'
+            );
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -344,8 +352,31 @@ Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
                 Module = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
                 ErrorAction = 'Stop'
+                Name = @(
+                    'Azure.SQL.AAD'
+                    'Azure.SQL.TDE'
+                )
             }
             $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
+        }
+
+        It 'Azure.SQL.AAD' {
+            $filteredResult = $result | Where-Object {
+                $_.RuleName -eq 'Azure.SQL.AAD' -and
+                ($_.TargetType -eq 'Microsoft.Sql/servers' -or $_.TargetType -eq 'Microsoft.Sql/servers/administrators')
+            };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'sql-sql-02';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'sql-sql-01', 'sql-sql-03';
         }
 
         It 'Azure.SQL.TDE' {

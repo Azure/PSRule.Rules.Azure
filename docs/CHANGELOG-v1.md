@@ -19,7 +19,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.18.0:
+What's changed since v1.18.1:
 
 - General improvements:
   - Updated rule level for the following rules by @BernieWhite:
@@ -38,6 +38,16 @@ What's changed since v1.18.0:
     [#1557](https://github.com/Azure/PSRule.Rules.Azure/pull/1557)
   - Bump Microsoft.NET.Test.Sdk to v17.3.0.
     [#1563](https://github.com/Azure/PSRule.Rules.Azure/pull/1563)
+
+## v1.18.1
+
+What's changed since v1.18.0:
+
+- Bug fixes:
+  - Fixed `Azure.APIM.HTTPBackend` reports failure when service URL is not defined by @BernieWhite.
+    [#1555](https://github.com/Azure/PSRule.Rules.Azure/issues/1555)
+  - Fixed `Azure.SQL.AAD` failure with newer API by @BernieWhite.
+    [#1302](https://github.com/Azure/PSRule.Rules.Azure/issues/1302)
 
 ## v1.18.0
 
