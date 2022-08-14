@@ -6,11 +6,11 @@ resource: All resources
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Resource.adminUsername/
 ---
 
-# Use allowed regions
+# Administrator Username Types
 
 ## SYNOPSIS
 
-The adminUsername property should not be a string literal in nested templates.
+The adminUsername or administratorUsername property should not be a string literal in nested templates.
 
 ## DESCRIPTION
 

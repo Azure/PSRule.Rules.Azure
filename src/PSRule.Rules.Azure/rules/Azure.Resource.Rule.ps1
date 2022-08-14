@@ -37,20 +37,16 @@ Rule 'Azure.ResourceGroup.Name' -Ref 'AZR-000168' -Type 'Microsoft.Resources/res
 
 
 # Synopsis: Ensure all properties named `adminUsername` within a deployment are expressions (not literal strings)
-Rule 'Azure.Resource.adminUsername' -Ref 'AZR-000280' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_06' } {  
-    $deploymentResources = @($TargetObject.properties.template.resources);
+Rule 'Azure.Resource.adminUsername' -Ref 'AZR-000280' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_08' } {  
+    $deploymentTemplate = @($TargetObject.properties.template);
 
-    if ($deploymentResources.Length -eq 0 ) {
+    if (($deploymentTemplate.resources).Length -eq 0 ) {
         return $Assert.Pass();
-    } 
-
-    foreach ($resource in $deploymentResources) {
-        global:FindAdminUsername -InputObject $resource
-
-        # 
-
+    } else {
+        foreach ($resource in $deploymentTemplate.resources.properties) {
+            global:FindAdminUsername -InputObject $resource
+        }
     }
-    
 }
 
 ## Functions
@@ -58,13 +54,15 @@ function global:FindAdminUsername {
     param ([PSObject]$InputObject)
     process {
       foreach ($property in $InputObject.PSObject.properties) {
-        if ($property.Name -eq 'adminUsername' ) {
-          Write-Output "Found adminUsername" 
-          return $Assert.Pass();
-        }
-        # elseif ($property.Value -is [PSObject]) {
-        #     Write-Output "Didn't find adminUsername"
-        # }
+            if ($property.Name -eq 'adminUsername' -or  $property.Name -eq 'administratorLogin') {
+                Write-Host "$($property.Name) matched sensitive property list" 
+                Write-Host "Type: $($property.TypeNameOfValue)"
+                if($property.TypeNameOfValue -eq "System.String"){
+                    return $Assert.Fail();
+                } else {
+                    return $Assert.Pass();
+                }      
+            }
       }
     }
   }
