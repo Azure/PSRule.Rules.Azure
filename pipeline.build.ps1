@@ -375,6 +375,9 @@ task BuildRuleDocs Build, Dependencies, {
             RuleSet = $_.Tag.ruleSet
             Level = $_.Level.ToString()
             Method = $_.Tag.method
+            DisplayName = $_.Info.DisplayName
+            Synopsis = $_.Info.Synopsis
+            Recommendation = $_.Info.Recommendation
         }
     }
     $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/en/rules/metadata.json -Force;

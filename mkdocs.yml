@@ -131,3 +131,9 @@ extra:
 
   local:
     social_preview: https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654
+
+  giscus:
+    repo: Azure/PSRule.Rules.Azure
+    repo_id: MDEwOlJlcG9zaXRvcnkxODQxNTQ2Njg=
+    category: Documentation
+    category_id: DIC_kwDOCvn6LM4CQqE6
