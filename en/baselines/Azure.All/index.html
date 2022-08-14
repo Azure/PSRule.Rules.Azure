@@ -61,10 +61,15 @@
     
   
 
+  <!-- Determine description -->
+  
+  
+
   <!-- The image needs to have an absolute URL -->
   
 
   <!-- Open graph meta tags -->
+  <meta property="og:site_name" content="PSRule for Azure" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="PSRule for Azure - Azure.All" />
   <meta property="og:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
@@ -6254,18 +6259,18 @@
             <article class="md-content__inner md-typeset">
               
 
-<!-- Edit button -->
+  <!-- Edit button -->
+  
 
+  <!--
+    Hack: check whether the content contains a h1 headline. If it
+    doesn't, the page title (or respectively site name) is used
+    as the main headline.
+  -->
+  
 
-<!--
-  Hack: check whether the content contains a h1 headline. If it
-  doesn't, the page title (or respectively site name) is used
-  as the main headline.
--->
-
-
-<!-- Markdown content -->
-<h1 id="azureall">Azure.All<a class="headerlink" href="#azureall" title="Permanent link">#</a></h1>
+  <!-- Markdown content -->
+  <h1 id="azureall">Azure.All<a class="headerlink" href="#azureall" title="Permanent link">#</a></h1>
 <p>Includes all Azure rules.</p>
 <h2 id="rules">Rules<a class="headerlink" href="#rules" title="Permanent link">#</a></h2>
 <p>The following rules are included within <code>Azure.All</code>. This baseline includes a total of 283 rules.</p>
@@ -7696,10 +7701,10 @@
 </tbody>
 </table>
 
-<!-- Last update of source file -->
-
+  <!-- Last update of source file -->
   
-    <hr>
+    
+      <hr>
 <div class="md-source-file">
   <small>
     
@@ -7708,6 +7713,9 @@
     
   </small>
 </div>
+    
+  
+
   
 
 

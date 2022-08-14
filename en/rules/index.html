@@ -61,10 +61,15 @@
     
   
 
+  <!-- Determine description -->
+  
+  
+
   <!-- The image needs to have an absolute URL -->
   
 
   <!-- Open graph meta tags -->
+  <meta property="og:site_name" content="PSRule for Azure" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="PSRule for Azure - Index" />
   <meta property="og:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
@@ -6211,18 +6216,18 @@
             <article class="md-content__inner md-typeset">
               
 
-<!-- Edit button -->
+  <!-- Edit button -->
+  
 
+  <!--
+    Hack: check whether the content contains a h1 headline. If it
+    doesn't, the page title (or respectively site name) is used
+    as the main headline.
+  -->
+  
 
-<!--
-  Hack: check whether the content contains a h1 headline. If it
-  doesn't, the page title (or respectively site name) is used
-  as the main headline.
--->
-
-
-<!-- Markdown content -->
-<h1 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">#</a></h1>
+  <!-- Markdown content -->
+  <h1 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">#</a></h1>
 <p>The following rules and features are included in PSRule for Azure.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -7944,18 +7949,21 @@ To include rules for preview features see <a href="../../working-with-baselines/
 </tbody>
 </table>
 
-<!-- Last update of source file -->
-
+  <!-- Last update of source file -->
   
-    <hr>
+    
+      <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      2022-08-14
+      2022-08-15
     
   </small>
 </div>
+    
+  
+
   
 
 

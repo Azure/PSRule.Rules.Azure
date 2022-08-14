@@ -61,10 +61,15 @@
     
   
 
+  <!-- Determine description -->
+  
+  
+
   <!-- The image needs to have an absolute URL -->
   
 
   <!-- Open graph meta tags -->
+  <meta property="og:site_name" content="PSRule for Azure" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="PSRule for Azure - By pillar" />
   <meta property="og:description" content="Ready to go validation and governance controls for Azure Infrastructure as Code (IaC)." />
@@ -6928,18 +6933,18 @@
             <article class="md-content__inner md-typeset">
               
 
-<!-- Edit button -->
+  <!-- Edit button -->
+  
 
+  <!--
+    Hack: check whether the content contains a h1 headline. If it
+    doesn't, the page title (or respectively site name) is used
+    as the main headline.
+  -->
+  
 
-<!--
-  Hack: check whether the content contains a h1 headline. If it
-  doesn't, the page title (or respectively site name) is used
-  as the main headline.
--->
-
-
-<!-- Markdown content -->
-<h1 id="rulesbypillar">Rules by pillar<a class="headerlink" href="#rulesbypillar" title="Permanent link">#</a></h1>
+  <!-- Markdown content -->
+  <h1 id="rulesbypillar">Rules by pillar<a class="headerlink" href="#rulesbypillar" title="Permanent link">#</a></h1>
 <p>PSRule for Azure includes the following rules across five pillars of the Microsoft Azure Well-Architected Framework.</p>
 <h2 id="costoptimization">Cost Optimization<a class="headerlink" href="#costoptimization" title="Permanent link">#</a></h2>
 <h3 id="pricingandbillingmodel">Pricing and billing model<a class="headerlink" href="#pricingandbillingmodel" title="Permanent link">#</a></h3>
@@ -9165,10 +9170,10 @@
 </tbody>
 </table>
 
-<!-- Last update of source file -->
-
+  <!-- Last update of source file -->
   
-    <hr>
+    
+      <hr>
 <div class="md-source-file">
   <small>
     
@@ -9177,6 +9182,9 @@
     
   </small>
 </div>
+    
+  
+
   
 
 
