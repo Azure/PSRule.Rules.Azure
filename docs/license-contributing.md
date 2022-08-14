@@ -1,5 +1,6 @@
 ---
 author: BernieWhite
+discussion: false
 ---
 
 # License and contributing

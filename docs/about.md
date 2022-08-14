@@ -1,5 +1,6 @@
 ---
 author: BernieWhite
+discussion: false
 ---
 
 # What is PSRule for Azure?

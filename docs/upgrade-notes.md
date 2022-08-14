@@ -1,3 +1,7 @@
+---
+discussion: false
+---
+
 # Upgrade notes
 
 This document contains notes to help upgrade from previous versions of PSRule for Azure.
