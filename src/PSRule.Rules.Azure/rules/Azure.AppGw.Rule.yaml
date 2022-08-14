@@ -44,7 +44,7 @@ spec:
   type:
   - Microsoft.Network/applicationGateways
   condition:
-    field: Properties.sku.name
+    field: properties.sku.name
     in:
     - WAF_Medium
     - Standard_Medium
@@ -67,7 +67,7 @@ spec:
   with:
   - Azure.IsAppGwPublic
   condition:
-    field: Properties.sku.tier
+    field: properties.sku.tier
     in:
     - WAF
     - WAF_v2
@@ -87,7 +87,7 @@ spec:
   - Microsoft.Network/applicationGateways
   condition:
     anyOf:
-    - field: Properties.sslPolicy.policyName
+    - field: properties.sslPolicy.policyName
       in:
       - AppGwSslPolicy20170401S
       - AppGwSslPolicy20220101

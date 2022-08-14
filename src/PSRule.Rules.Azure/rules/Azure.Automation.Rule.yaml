@@ -21,7 +21,7 @@ spec:
   type:
   - Microsoft.Automation/automationAccounts
   condition:
-    field: Identity.Type
+    field: identity.type
     in:
     - SystemAssigned
     - UserAssigned

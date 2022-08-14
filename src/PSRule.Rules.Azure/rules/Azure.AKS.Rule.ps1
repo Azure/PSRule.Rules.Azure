@@ -223,7 +223,7 @@ Rule 'Azure.AKS.PlatformLogs' -Ref 'AZR-000023' -Type 'Microsoft.ContainerServic
             $logCategoriesJoinedString
         );
     }
-} -Configure @{ 
+} -Configure @{
     AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST = @(
         'cluster-autoscaler', 
         'kube-apiserver', 

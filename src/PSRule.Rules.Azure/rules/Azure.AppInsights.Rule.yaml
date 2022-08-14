@@ -21,7 +21,7 @@ spec:
   type:
   - microsoft.insights/components
   condition:
-    field: 'properties.WorkspaceResourceId'
+    field: 'properties.workspaceResourceId'
     hasValue: true
 
 ---

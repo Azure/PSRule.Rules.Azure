@@ -44,6 +44,7 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 6;
             $ruleResult.TargetName | Should -BeIn 'appgw-B', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G', 'appgw-H';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'Properties.sku.capacity', 'Properties.autoscaleConfiguration.minCapacity';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -60,6 +61,7 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'appgw-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.sku.name';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -76,6 +78,7 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'appgw-F', 'appgw-G';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.sku.tier';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -92,6 +95,7 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'appgw-B', 'appgw-C';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'Properties.sslPolicy.policyName', 'Properties.sslPolicy.minProtocolVersion';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -108,6 +112,7 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'appgw-C';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.webApplicationFirewallConfiguration.firewallMode';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -130,6 +135,7 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'appgw-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.webApplicationFirewallConfiguration.enabled', 'properties.firewallPolicy.id';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -146,6 +152,7 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'appgw-A';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.webApplicationFirewallConfiguration.ruleSetType', 'properties.webApplicationFirewallConfiguration.ruleSetVersion';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -162,6 +169,7 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'appgw-C';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.webApplicationFirewallConfiguration.disabledRuleGroups';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -178,6 +186,7 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.requestRoutingRules[0].properties.redirectConfiguration.id';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -194,11 +203,12 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'appgw-E', 'appgw-F';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'zones';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The application gateway (appgw-E) deployed to region (australiaeast) should use following availability zones [1, 2, 3].";
+            $ruleResult[0].Reason | Should -BeExactly "Path zones: The application gateway (appgw-E) deployed to region (australiaeast) should use following availability zones [1, 2, 3].";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The application gateway (appgw-F) deployed to region (Australia East) should use following availability zones [1, 2, 3].";
+            $ruleResult[1].Reason | Should -BeExactly "Path zones: The application gateway (appgw-F) deployed to region (Australia East) should use following availability zones [1, 2, 3].";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -248,15 +258,16 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult | Should -HaveCount 5;
             $ruleResult.TargetName | Should -BeIn 'appgw-C', 'appgw-E', 'appgw-F', 'appgw-G', 'appgw-H';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'zones';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The application gateway (appgw-C) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].";
+            $ruleResult[0].Reason | Should -BeExactly "Path zones: The application gateway (appgw-C) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The application gateway (appgw-E) deployed to region (australiaeast) should use following availability zones [1, 2, 3].";
+            $ruleResult[1].Reason | Should -BeExactly "Path zones: The application gateway (appgw-E) deployed to region (australiaeast) should use following availability zones [1, 2, 3].";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The application gateway (appgw-F) deployed to region (Australia East) should use following availability zones [1, 2, 3].";
+            $ruleResult[2].Reason | Should -BeExactly "Path zones: The application gateway (appgw-F) deployed to region (Australia East) should use following availability zones [1, 2, 3].";
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[3].Reason | Should -BeExactly "The application gateway (appgw-G) deployed to region (antarcticasouth) should use following availability zones [1, 2, 3].";
+            $ruleResult[3].Reason | Should -BeExactly "Path zones: The application gateway (appgw-G) deployed to region (antarcticasouth) should use following availability zones [1, 2, 3].";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -280,15 +291,16 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult | Should -HaveCount 5;
             $ruleResult.TargetName | Should -BeIn 'appgw-C', 'appgw-E', 'appgw-F', 'appgw-G', 'appgw-H';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'zones';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The application gateway (appgw-C) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].";
+            $ruleResult[0].Reason | Should -BeExactly "Path zones: The application gateway (appgw-C) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The application gateway (appgw-E) deployed to region (australiaeast) should use following availability zones [1, 2, 3].";
+            $ruleResult[1].Reason | Should -BeExactly "Path zones: The application gateway (appgw-E) deployed to region (australiaeast) should use following availability zones [1, 2, 3].";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The application gateway (appgw-F) deployed to region (Australia East) should use following availability zones [1, 2, 3].";
+            $ruleResult[2].Reason | Should -BeExactly "Path zones: The application gateway (appgw-F) deployed to region (Australia East) should use following availability zones [1, 2, 3].";
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[3].Reason | Should -BeExactly "The application gateway (appgw-G) deployed to region (antarcticasouth) should use following availability zones [1, 2, 3].";
+            $ruleResult[3].Reason | Should -BeExactly "Path zones: The application gateway (appgw-G) deployed to region (antarcticasouth) should use following availability zones [1, 2, 3].";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

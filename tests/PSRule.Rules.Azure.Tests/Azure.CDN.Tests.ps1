@@ -44,6 +44,7 @@ Describe 'Azure.CDN' -Tag 'CDN' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'cdn-endpoint-A';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.isHttpAllowed';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -60,6 +61,7 @@ Describe 'Azure.CDN' -Tag 'CDN' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'cdn-endpoint-C';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'resources[0].properties.customHttpsParameters.minimumTlsVersion';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -114,6 +116,7 @@ Describe 'Azure.CDN' -Tag 'CDN' {
             $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.CDN.EndpointName';
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Outcome | Should -Be 'Fail';
+            # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn 'name';
         }
     }
 }

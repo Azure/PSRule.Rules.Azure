@@ -12,7 +12,8 @@ Rule 'Azure.Automation.EncryptVariables' -Ref 'AZR-000086' -Type 'Microsoft.Auto
         return $Assert.Pass();
     }
     foreach ($var in $variables) {
-        $Assert.HasFieldValue($var, 'properties.isEncrypted', $True);
+        $path = $var._PSRule.path;
+        $Assert.HasFieldValue($var, 'properties.isEncrypted', $True).PathPrefix($path);
     }
 }
 
@@ -23,8 +24,9 @@ Rule 'Azure.Automation.WebHookExpiry' -Ref 'AZR-000087' -Type 'Microsoft.Automat
         return $Assert.Pass();
     }
     foreach ($webhook in $webhooks) {
-        $days = [math]::Abs([int]((Get-Date) - $webhook.properties.expiryTime).Days)
-        $Assert.Less($days, '.', 365);
+        $path = $webhook._PSRule.path;
+        $days = [math]::Abs([int]((Get-Date) - $webhook.properties.expiryTime).Days);
+        $Assert.Less($days, '.', 365).PathPrefix("$path.properties.expiryTime");
     }
 }
 
@@ -38,16 +40,18 @@ Rule 'Azure.Automation.AuditLogs' -Ref 'AZR-000088' -Type 'Microsoft.Automation/
     $joinedLogCategoryGroups = $logCategoryGroups -join ', ';
 
     foreach ($setting in $diagnosticLogs) {
+        $path = $setting._PSRule.path;
         $auditLogs = @($setting.Properties.logs | Where-Object {
             ($_.category -eq 'AuditEvent' -or $_.categoryGroup -in $logCategoryGroups) -and $_.enabled
         });
 
-        $Assert.Greater($auditLogs, 'Length', 0).Reason(
-            $LocalizedData.AutomationAccountDiagnosticSetting, 
-            $setting.name, 
-            'AuditEvent', 
+        $Assert.Greater($auditLogs, 'Length', 0).ReasonFrom(
+            'properties.logs',
+            $LocalizedData.AutomationAccountDiagnosticSetting,
+            $setting.name,
+            'AuditEvent',
             $joinedLogCategoryGroups
-        );
+        ).PathPrefix($path);
     }
 }
 
@@ -95,6 +99,7 @@ Rule 'Azure.Automation.PlatformLogs' -Ref 'AZR-000089' -Type 'Microsoft.Automati
     $logCategoriesJoinedString = $configurationLogCategoriesList -join ', ';
 
     foreach ($setting in $diagnosticLogs) {
+        $path = $setting._PSRule.path;
         $allLogs = @($setting.Properties.logs | Where-Object {
             $_.enabled -and $_.categoryGroup -eq 'allLogs'
         });
@@ -116,12 +121,13 @@ Rule 'Azure.Automation.PlatformLogs' -Ref 'AZR-000089' -Type 'Microsoft.Automati
                                $Assert.HasFieldValue($metricLogs, 'Length', $metricCategoriesNeeded).Result;
 
         $Assert.Create(
-            $platformLogsEnabled, 
-            $LocalizedData.AutomationAccountDiagnosticSetting, 
-            $setting.name, 
+            'properties.logs',
+            $platformLogsEnabled,
+            $LocalizedData.AutomationAccountDiagnosticSetting,
+            $setting.name,
             $logCategoriesJoinedString,
             'allLogs'
-        );
+        ).PathPrefix($path);
     }
 
 } -Configure @{

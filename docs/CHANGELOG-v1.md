@@ -19,12 +19,18 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.19.0-B0010:
+
+- General improvements:
+  - Improve reporting of failing resource property for rules by @BernieWhite.
+    [#1429](https://github.com/Azure/PSRule.Rules.Azure/issues/1429)
+
 ## v1.19.0-B0010 (pre-release)
 
 What's changed since v1.18.1:
 
 - General improvements:
-  - Updated rule level for the following rules by @BernieWhite:
+  - Updated rule level for the following rules by @BernieWhite.
     [#1551](https://github.com/Azure/PSRule.Rules.Azure/issues/1551)
     - Set `Azure.APIM.APIDescriptors` to warning from error.
     - Set `Azure.APIM.ProductDescriptors` to warning from error.

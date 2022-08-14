@@ -42,10 +42,25 @@ function global:GetSubResources {
         [String[]]$Name
     )
     process {
-        return @($TargetObject.resources | Where-Object -FilterScript {
-            ($_.ResourceType -in $ResourceType -or $_.Type -in $ResourceType -or $_.ExtensionResourceType -in $ResourceType) -and
-            ($Null -eq $Name -or $Name.Length -eq 0 -or [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.Name) -in $Name -or [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.ResourceName) -in $Name)
-            })
+        $results = @();
+        $resources = @($TargetObject.resources);
+        for ($i = 0; $i -lt $resources.Length; $i++) {
+            $path = "resources[$i]";
+            if (($resources[$i].ResourceType -in $ResourceType -or $resources[$i].Type -in $ResourceType -or $resources[$i].ExtensionResourceType -in $ResourceType) -and
+                ($Null -eq $Name -or $Name.Length -eq 0 -or [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($resources[$i].Name) -in $Name -or [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($resources[$i].ResourceName) -in $Name)) {
+                $resource = $resources[$i];
+                if (!([bool]$resource.PSObject.Members['_PSRule'])) {
+                    $Null = Add-Member -InputObject $resource -MemberType NoteProperty -Name '_PSRule' -Value @{
+                        path = $path;
+                    }
+                }
+                elseif (!([bool]$resource._PSRule.PSObject.Members['path'])) {
+                    $Null = Add-Member -InputObject $resource._PSRule -MemberType NoteProperty -Force -Name 'path' -Value $path;
+                }
+                $results += $resource;
+            }
+        }
+        return $results;
     }
 }
 

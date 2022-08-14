@@ -7,12 +7,12 @@
 
 # Synopsis: App Service Plan should use a minimum number of instances for failover.
 Rule 'Azure.AppService.PlanInstanceCount' -Ref 'AZR-000071' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) -and !(IsElasticPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.GreaterOrEqual($TargetObject, 'Sku.capacity', 2);
+    $Assert.GreaterOrEqual($TargetObject, 'sku.capacity', 2);
 }
 
 # Synopsis: Use at least a Standard App Service Plan.
 Rule 'Azure.AppService.MinPlan' -Ref 'AZR-000072' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) -and !(IsElasticPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.In($TargetObject, 'Sku.tier', @('PremiumV3', 'PremiumV2', 'Premium', 'Standard'))
+    $Assert.In($TargetObject, 'sku.tier', @('PremiumV3', 'PremiumV2', 'Premium', 'Standard'))
 }
 
 # Synopsis: Use at least TLS 1.2
@@ -20,13 +20,14 @@ Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'M
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
         return $Assert.
-            HasFieldValue($TargetObject, 'Properties.siteConfig.minTlsVersion', '1.2').
-            Reason($LocalizedData.MinTLSVersion, $TargetObject.Properties.siteConfig.minTlsVersion);
+            HasFieldValue($TargetObject, 'properties.siteConfig.minTlsVersion', '1.2').
+            ReasonFrom('properties.siteConfig.minTlsVersion', $LocalizedData.MinTLSVersion, $TargetObject.properties.siteConfig.minTlsVersion);
     }
     foreach ($siteConfig in $siteConfigs) {
+        $path = $siteConfig._PSRule.path;
         $Assert.
-            HasFieldValue($siteConfig, 'Properties.minTlsVersion', '1.2').
-            Reason($LocalizedData.MinTLSVersion, $siteConfig.Properties.minTlsVersion);
+            HasFieldValue($siteConfig, 'properties.minTlsVersion', '1.2').
+            ReasonFrom('properties.minTlsVersion', $LocalizedData.MinTLSVersion, $siteConfig.properties.minTlsVersion).PathPrefix($path);
     }
 }
 
@@ -34,10 +35,11 @@ Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'M
 Rule 'Azure.AppService.RemoteDebug' -Ref 'AZR-000074' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
-        return $Assert.HasDefaultValue($TargetObject, 'Properties.siteConfig.remoteDebuggingEnabled', $False);
+        return $Assert.HasDefaultValue($TargetObject, 'properties.siteConfig.remoteDebuggingEnabled', $False);
     }
     foreach ($siteConfig in $siteConfigs) {
-        $Assert.HasDefaultValue($siteConfig, 'Properties.remoteDebuggingEnabled', $False);
+        $path = $siteConfig._PSRule.path;
+        $Assert.HasDefaultValue($siteConfig, 'properties.remoteDebuggingEnabled', $False).PathPrefix($path);
     }
 }
 
@@ -48,14 +50,15 @@ Rule 'Azure.AppService.NETVersion' -Ref 'AZR-000075' -Type 'Microsoft.Web/sites'
     })
     if ($siteConfigs.Length -eq 0) {
         return AnyOf {
-            $Assert.HasDefaultValue($TargetObject, 'Properties.siteConfig.netFrameworkVersion', 'OFF')
-            $Assert.Version($TargetObject, 'Properties.siteConfig.netFrameworkVersion', '>=4.0')
+            $Assert.HasDefaultValue($TargetObject, 'properties.siteConfig.netFrameworkVersion', 'OFF');
+            $Assert.Version($TargetObject, 'properties.siteConfig.netFrameworkVersion', '>=4.0');
         }
     }
     foreach ($siteConfig in $siteConfigs) {
+        $path = $siteConfig._PSRule.path;
         AnyOf {
-            $Assert.HasFieldValue($siteConfig, 'Properties.netFrameworkVersion', 'OFF')
-            $Assert.Version($siteConfig, 'Properties.netFrameworkVersion', '>=4.0')
+            $Assert.HasFieldValue($siteConfig, 'properties.netFrameworkVersion', 'OFF').PathPrefix($path)
+            $Assert.Version($siteConfig, 'properties.netFrameworkVersion', '>=4.0').PathPrefix($path)
         }
     }
 }
