@@ -44,6 +44,7 @@ Describe 'Azure.AppInsights' -Tag 'AppInsights' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'insights-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.workspaceResourceId';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -129,6 +130,7 @@ Describe 'Azure.AppInsights' -Tag 'AppInsights' {
             $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AppInsights.Name';
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'name';
         }
     }
 }

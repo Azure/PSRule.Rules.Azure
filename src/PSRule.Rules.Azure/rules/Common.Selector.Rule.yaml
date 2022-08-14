@@ -121,3 +121,16 @@ spec:
         - Microsoft.Automation/automationAccounts/python2Packages
         - Microsoft.Automation/automationAccounts/watchers
         - Microsoft.Resources/templateSpecs/versions
+
+---
+# Synopsis: Identities resources that have been exported from an Azure subscription.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Resource.Export
+  annotations:
+    export: false
+spec:
+  if:
+    field: subscriptionId
+    exists: true

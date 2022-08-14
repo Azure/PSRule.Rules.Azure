@@ -69,6 +69,7 @@ Describe 'Azure.ASG' -Tag 'Network', 'ASG' {
             $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ASG.Name';
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'name';
         }
     }
 }

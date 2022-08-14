@@ -33,7 +33,8 @@ Rule 'Azure.CDN.MinTLS' -Ref 'AZR-000092' -Type 'Microsoft.Cdn/profiles/endpoint
         return $Assert.Pass();
     }
     foreach ($customDomain in $customDomains) {
-        $Assert.HasFieldValue($customDomain, 'properties.customHttpsParameters.minimumTlsVersion', 'TLS12')
+        $path = $customDomain._PSRule.path;
+        $Assert.HasFieldValue($customDomain, 'properties.customHttpsParameters.minimumTlsVersion', 'TLS12').PathPrefix($path)
     }
 }
 

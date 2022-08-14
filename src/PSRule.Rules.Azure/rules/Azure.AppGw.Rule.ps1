@@ -14,13 +14,15 @@ Rule 'Azure.AppGw.UseHTTPS' -Ref 'AZR-000059' -Type 'Microsoft.Network/applicati
     if ($listeners.Length -eq 0 -or $requestRoutingRules.Length -eq 0) {
         return $Assert.Pass();
     }
-    foreach ($requestRoutingRule in $requestRoutingRules) {
+    for ($i = 0; $i -lt $requestRoutingRules.Length; $i++) {
+        $requestRoutingRule = $requestRoutingRules[$i];
+        $path = "properties.requestRoutingRules[$i]";
         $listener = $listeners | Where-Object { $_.name -eq $requestRoutingRule.properties.httpListener.id.Split('/')[-1] };
         if ($Null -eq $listener) {
             $Assert.Pass();
         }
         else {
-            $Assert.HasFieldValue($requestRoutingRule, 'properties.redirectConfiguration.id');
+            $Assert.HasFieldValue($requestRoutingRule, 'properties.redirectConfiguration.id').PathPrefix($path);
         }
     }
 }
@@ -40,7 +42,7 @@ Rule 'Azure.AppGw.AvailabilityZone' -Ref 'AZR-000060' -With 'Azure.IsAppGwV2Sku'
     }
 
     $Assert.HasFieldValue($TargetObject, 'zones').
-        Reason($LocalizedData.AppGWAvailabilityZone, $TargetObject.name, $TargetObject.Location, ($availabilityZones -join ', '));
+        ReasonFrom('zones', $LocalizedData.AppGWAvailabilityZone, $TargetObject.name, $TargetObject.Location, ($availabilityZones -join ', '));
 
 } -Configure @{ AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 

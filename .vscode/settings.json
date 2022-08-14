@@ -59,6 +59,7 @@
         "kubelet",
         "kubenet",
         "Kubernetes",
+        "Kusto",
         "LESSOREQUAL",
         "LESSOREQUALS",
         "lifecycle",
@@ -116,6 +117,7 @@
     "PSRule.documentation.customSnippetPath": ".vscode/markdown.code-snippets",
     "PSRule.documentation.snippet": "Azure rule documentation",
     "git.branchProtection": [
-        "main"
+        "main",
+        "release/*"
     ]
 }

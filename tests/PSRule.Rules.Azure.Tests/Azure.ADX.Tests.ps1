@@ -45,6 +45,7 @@ Describe 'Azure.ADX' -Tag 'ADX' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'cluster-A';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'Identity.Type';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -61,6 +62,7 @@ Describe 'Azure.ADX' -Tag 'ADX' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'Properties.enableDiskEncryption';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -77,6 +79,7 @@ Describe 'Azure.ADX' -Tag 'ADX' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'cluster-A';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'sku.tier';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -93,6 +96,7 @@ Describe 'Azure.ADX' -Tag 'ADX' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'cluster-C';
+            # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn '';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

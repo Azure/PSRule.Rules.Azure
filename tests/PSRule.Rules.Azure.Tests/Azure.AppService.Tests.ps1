@@ -44,6 +44,7 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'plan-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'sku.capacity';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -60,6 +61,7 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'plan-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'sku.tier';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -76,6 +78,7 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.clientAffinityEnabled';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -92,6 +95,7 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.httpsOnly';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -108,11 +112,12 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.siteConfig.minTlsVersion', 'resources[0].properties.minTlsVersion';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "Minimum TLS version is set to 1.1.";
+            $ruleResult[0].Reason | Should -BeExactly "Path resources[0].properties.minTlsVersion: Minimum TLS version is set to 1.1.";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "Minimum TLS version is set to 1.1.";
+            $ruleResult[1].Reason | Should -BeExactly "Path resources[0].properties.minTlsVersion: Minimum TLS version is set to 1.1.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -129,6 +134,7 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+            # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.siteConfig.remoteDebuggingEnabled';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -145,6 +151,7 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.siteConfig.netFrameworkVersion', 'resources[0].properties.netFrameworkVersion';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

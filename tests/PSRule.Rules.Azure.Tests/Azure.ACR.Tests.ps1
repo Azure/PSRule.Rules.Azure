@@ -45,6 +45,7 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-D';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'Properties.adminUserEnabled';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -61,6 +62,7 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'registry-A';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'Sku.name';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -77,6 +79,7 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-B', 'registry-D';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'Properties.policies.quarantinePolicy.status';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -93,6 +96,7 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'registry-D';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'Properties.policies.trustPolicy.status';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -115,6 +119,7 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'registry-D';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'Properties.policies.retentionPolicy.status';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -137,6 +142,7 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-B', 'registry-D', 'registry-E';
+            # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn '';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -153,6 +159,7 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-D';
+            # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn 'resources';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The results for a valid assessment was not found.";
@@ -172,6 +179,7 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'registry-B', 'registry-E';
+            # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn '';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "An assessment is reporting one or more issues.";
@@ -197,6 +205,10 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-D';
+            # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn '';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "A replica in a secondary region was not found.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -250,6 +262,7 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ACR.Name';
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'name';
         }
     }
 }
