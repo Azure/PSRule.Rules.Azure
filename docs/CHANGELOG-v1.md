@@ -28,6 +28,9 @@ What's changed since pre-release v1.19.0-B0010:
 - General improvements:
   - Improve reporting of failing resource property for rules by @BernieWhite.
     [#1429](https://github.com/Azure/PSRule.Rules.Azure/issues/1429)
+- Engineering:
+  - Bump PSRule to v2.3.2.
+    [#1574](https://github.com/Azure/PSRule.Rules.Azure/pull/1574)
 
 ## v1.19.0-B0010 (pre-release)
 
