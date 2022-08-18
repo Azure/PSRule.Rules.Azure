@@ -59,6 +59,30 @@ See [Bicep compilation timeout][1] for details on how to configure this option.
 
   [1]: setup/configuring-expansion.md#bicepcompilationtimeout
 
+## My parameter file reports property metadata is not allow warning
+
+You may find while editing a `.json` parameter file the root `metadata` property is flagged with a warning.
+
+```text
+The property 'metadata' is not allowed.
+```
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "template": "./storage.template.json"
+    },
+    "parameters": {
+    }
+}
+```
+
+This doesn't affect the workings of the parameter file or deployment.
+The reason is that the `metadata` property has not been added to the parameter file JSON schema as it exists in template files.
+However, the top level `metadata` property is ignored by Azure Resource Manager when deploying a template.
+
 ## Could not load file or assembly YamlDotNet
 
 PSRule **>=1.3.0** uses an updated version of the YamlDotNet library.

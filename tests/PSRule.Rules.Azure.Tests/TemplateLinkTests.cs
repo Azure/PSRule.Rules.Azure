@@ -27,10 +27,30 @@ namespace PSRule.Rules.Azure
         public void GetBicepParameters()
         {
             var helper = new TemplateLinkHelper(GetContext(), AppDomain.CurrentDomain.BaseDirectory, true);
-            var link = helper.ProcessParameterFile(GetSourcePath("Tests.Bicep.1.Parameters.json"));
+
+            // From metadata
+            var link = helper.ProcessParameterFile(GetSourcePath("Tests.Bicep.1.metalink.json"));
             Assert.NotNull(link);
             Assert.NotNull(link.TemplateFile);
+            Assert.EndsWith("Tests.Bicep.1.bicep", link.TemplateFile);
             Assert.NotNull(link.ParameterFile);
+            Assert.EndsWith("Tests.Bicep.1.metalink.json", link.ParameterFile);
+
+            // From naming convention
+            link = helper.ProcessParameterFile(GetSourcePath("Tests.Bicep.1.parameters.json"));
+            Assert.NotNull(link);
+            Assert.NotNull(link.TemplateFile);
+            Assert.EndsWith("Tests.Bicep.1.bicep", link.TemplateFile);
+            Assert.NotNull(link.ParameterFile);
+            Assert.EndsWith("Tests.Bicep.1.parameters.json", link.ParameterFile);
+
+            // From naming convention when both .bicep and .json exist
+            link = helper.ProcessParameterFile(GetSourcePath("Tests.Bicep.2.parameters.json"));
+            Assert.NotNull(link);
+            Assert.NotNull(link.TemplateFile);
+            Assert.EndsWith("Tests.Bicep.2.json", link.TemplateFile);
+            Assert.NotNull(link.ParameterFile);
+            Assert.EndsWith("Tests.Bicep.2.parameters.json", link.ParameterFile);
         }
 
         #region Helper methods
