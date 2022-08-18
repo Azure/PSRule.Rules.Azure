@@ -85,9 +85,9 @@ There is a few common causes of this issue including:
 
 You may find while editing a `.json` parameter file the root `metadata` property is flagged with a warning.
 
-```text
-The property 'metadata' is not allowed.
-```
+!!! Warning
+
+    The property 'metadata' is not allowed.
 
 ```json title="Azure parameter file" hl_lines="4"
 {
