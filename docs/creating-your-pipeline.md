@@ -68,6 +68,10 @@ For a full list of parameters see the readme for [GitHub Actions][6] or [Azure P
 
 You can use the `inputPath` parameter to limit the analysis to a specific path.
 
+!!! Tip
+    The `inputPath` parameter only accepts a relative path.
+    For example: `azure/modules/` if you use have a `azure/modules/` directory in the root of your repository.
+
 === "GitHub Actions"
 
     ```yaml hl_lines="6"
