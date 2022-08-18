@@ -7,7 +7,7 @@ author: BernieWhite
 PSRule for Azure supports analyzing resources contained within Azure Infrastructure as Code.
 
 !!! Abstract
-    This topic covers what source expansion is and how to use it within PSRule for Azure.
+    This topic covers what source expansion is, why it's important, and how to use it within PSRule for Azure.
 
 ## Source expansion
 

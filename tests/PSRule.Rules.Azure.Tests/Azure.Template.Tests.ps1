@@ -592,7 +592,11 @@ Describe 'Azure.Template' -Tag 'Template' {
         }
 
         It 'Azure.Template.MetadataLink' {
-            $dataPath = Join-Path -Path $here -ChildPath '*.Parameters.json';
+            $dataPath = @(
+                (Join-Path -Path $here -ChildPath '*.Parameters.json')
+                (Join-Path -Path $here -ChildPath '*.parameters.json')
+                (Join-Path -Path $here -ChildPath '*.metalink.json')
+            );
             $options = @{
                 'Configuration.AZURE_PARAMETER_FILE_METADATA_LINK' = $True
             }
@@ -602,8 +606,12 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'tests/PSRule.Rules.Azure.Tests/Resources.ServiceFabric.Parameters.json';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn @(
+                'tests/PSRule.Rules.Azure.Tests/Tests.Bicep.1.Parameters.json'
+                'tests/PSRule.Rules.Azure.Tests/Tests.Bicep.2.Parameters.json'
+                'tests/PSRule.Rules.Azure.Tests/Resources.ServiceFabric.Parameters.json'
+            );
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
