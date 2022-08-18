@@ -9,6 +9,7 @@
             "kind: Rule",
             "metadata:",
             "  name: ${1}",
+            "  ref: AZR-000nnn",
             "  tags:",
             "    release: 'GA'",
             "    ruleSet: '${3}'",

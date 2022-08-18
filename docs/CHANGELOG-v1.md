@@ -31,6 +31,8 @@ What's changed since pre-release v1.19.0-B0010:
 - Engineering:
   - Bump PSRule to v2.3.2.
     [#1574](https://github.com/Azure/PSRule.Rules.Azure/pull/1574)
+  - Bump support projects to .NET 6 by @BernieWhite.
+    [#1560](https://github.com/Azure/PSRule.Rules.Azure/issues/1560)
 
 ## v1.19.0-B0010 (pre-release)
 

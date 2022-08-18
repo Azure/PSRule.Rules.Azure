@@ -16,6 +16,7 @@ namespace PSRule.Rules.Azure.Pipeline
             _PolicyAssignmentHelper = new PolicyAssignmentHelper(context);
         }
 
+        /// <inheritdoc/>
         public override void Process(PSObject sourceObject)
         {
             if (sourceObject == null || !(sourceObject.BaseObject is PolicyAssignmentSource source))

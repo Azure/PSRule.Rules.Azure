@@ -442,7 +442,7 @@ task ScaffoldHelp Build, BuildRuleDocs, {
 
 task Benchmark {
     if ($Benchmark -or $BuildTask -eq 'Benchmark') {
-        dotnet run --project src/PSRule.Rules.Azure.Benchmark -f netcoreapp3.1 -c Release -- benchmark --output $PWD;
+        dotnet run --project src/PSRule.Rules.Azure.Benchmark -f net6.0 -c Release -- benchmark --output $PWD;
     }
 }
 

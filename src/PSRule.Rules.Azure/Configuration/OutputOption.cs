@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -33,6 +33,7 @@ namespace PSRule.Rules.Azure.Configuration
             Path = option.Path;
         }
 
+        /// <inheritdoc/>
         public override bool Equals(object obj)
         {
             return obj is OutputOption option && Equals(option);
@@ -45,6 +46,7 @@ namespace PSRule.Rules.Azure.Configuration
                 Path == other.Path;
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine
