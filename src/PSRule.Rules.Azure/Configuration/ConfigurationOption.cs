@@ -45,6 +45,7 @@ namespace PSRule.Rules.Azure.Configuration
             Deployment = option.Deployment;
         }
 
+        /// <inheritdoc/>
         public override bool Equals(object obj)
         {
             return obj is ConfigurationOption option && Equals(option);
@@ -61,6 +62,7 @@ namespace PSRule.Rules.Azure.Configuration
                 Deployment == other.Deployment;
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine

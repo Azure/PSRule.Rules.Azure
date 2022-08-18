@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -7,6 +7,9 @@ using YamlDotNet.Serialization;
 
 namespace PSRule.Rules.Azure.Configuration
 {
+    /// <summary>
+    /// Options that affect the properties of the <c>tenant()</c> object during expansion.
+    /// </summary>
     public sealed class TenantOption : IEquatable<TenantOption>
     {
         private const string DEFAULT_COUNTRYCODE = "US";
@@ -24,6 +27,9 @@ namespace PSRule.Rules.Azure.Configuration
 
         private string _TenantId;
 
+        /// <summary>
+        /// Creates an empty tenant option.
+        /// </summary>
         public TenantOption()
         {
             CountryCode = null;
@@ -48,6 +54,7 @@ namespace PSRule.Rules.Azure.Configuration
             DisplayName = displayName ?? DEFAULT_DISPLAYNAME;
         }
 
+        /// <inheritdoc/>
         public override bool Equals(object obj)
         {
             return obj is TenantOption option && Equals(option);
@@ -77,6 +84,7 @@ namespace PSRule.Rules.Azure.Configuration
                 (!object.Equals(null, o1) && o1.Equals(o2));
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine
@@ -100,6 +108,9 @@ namespace PSRule.Rules.Azure.Configuration
             return result;
         }
 
+        /// <summary>
+        /// A country code identifier for the tenant.
+        /// </summary>
         [DefaultValue(null)]
         public string CountryCode { get; set; }
 
@@ -126,6 +137,9 @@ namespace PSRule.Rules.Azure.Configuration
             }
         }
 
+        /// <summary>
+        /// The display name of the tenant.
+        /// </summary>
         [DefaultValue(null)]
         public string DisplayName { get; set; }
     }

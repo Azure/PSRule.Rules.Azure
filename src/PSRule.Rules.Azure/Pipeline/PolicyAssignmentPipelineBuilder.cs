@@ -8,8 +8,15 @@ using PSRule.Rules.Azure.Pipeline.Output;
 
 namespace PSRule.Rules.Azure.Pipeline
 {
+    /// <summary>
+    /// A builder for a policy assignment export pipeline.
+    /// </summary>
     public interface IPolicyAssignmentPipelineBuilder : IPipelineBuilder
     {
+        /// <summary>
+        /// Enable pass-through of output from the pipeline.
+        /// </summary>
+        /// <param name="passThru">Enable pass-through.</param>
         void PassThru(bool passThru);
     }
 
@@ -51,6 +58,7 @@ namespace PSRule.Rules.Azure.Pipeline
             Option.Configuration.Subscription = SubscriptionOption.Combine(subscription, Option.Configuration.Subscription);
         }
 
+        /// <inheritdoc/>
         public void PassThru(bool passThru)
         {
             _PassThru = passThru;
@@ -76,6 +84,7 @@ namespace PSRule.Rules.Azure.Pipeline
             return _PassThru ? base.PrepareWriter() : new JsonOutputWriter(GetOutput(), Option);
         }
 
+        /// <inheritdoc/>
         public override IPipeline Build()
         {
             return new PolicyAssignmentPipeline(PrepareContext());

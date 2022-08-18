@@ -27,6 +27,7 @@ namespace PSRule.Rules.Azure.Configuration
             _Defaults = new Dictionary<string, object>(option._Defaults, StringComparer.OrdinalIgnoreCase);
         }
 
+        /// <inheritdoc/>
         public override bool Equals(object obj)
         {
             return obj is ParameterDefaultsOption option && Equals(option);
@@ -67,6 +68,7 @@ namespace PSRule.Rules.Azure.Configuration
                 (!object.Equals(null, o1) && o1.Equals(o2));
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine
