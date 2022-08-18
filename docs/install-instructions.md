@@ -104,9 +104,9 @@ Additionally, exporting data from an subscription requires:
 
 !!! Note
     Azure PowerShell modules are not installed automatically when installing PSRule for Azure.
-    This has been changed from v1.16.0 due with [module dependency chains in Azure DevOps][3].
+    This has been changed from v1.16.0 due to [module dependency chains in Azure DevOps][3].
     In most cases these modules will be pre-installed on the CI worker.
-    For private CI workers, consider pre-installing these module in a previous step.
+    For private CI workers, consider pre-installing these modules in a previous step.
 
   [3]: troubleshooting.md#an-earlier-version-of-azaccounts-is-imported
 

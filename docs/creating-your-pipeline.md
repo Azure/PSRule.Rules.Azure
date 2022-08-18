@@ -53,6 +53,133 @@ Within the root directory of your infrastructure as code repository:
 
 This will automatically install compatible versions of all dependencies.
 
+## Parameters
+
+Several parameters are available to customize the behavior of the pipeline.
+In addition, many of these parameters are also available as configuration options configurable within `ps-rule.yaml`.
+
+Some of the most common parameters are listed below.
+For a full list of parameters see the readme for [GitHub Actions][6] or [Azure Pipelines][7].
+
+  [6]: https://github.com/microsoft/ps-rule#inputs
+  [7]: https://github.com/microsoft/PSRule-pipelines/blob/main/docs/tasks.md#ps-rule-assert
+
+### Limiting input to a specific path
+
+You can use the `inputPath` parameter to limit the analysis to a specific path.
+
+!!! Tip
+    The `inputPath` parameter only accepts a relative path.
+    For example: `azure/modules/` if you use have a `azure/modules/` directory in the root of your repository.
+
+=== "GitHub Actions"
+
+    ```yaml hl_lines="6"
+    # Analyze Azure resources using PSRule for Azure
+    - name: Analyze Azure template files
+      uses: microsoft/ps-rule@v2.3.2
+      with:
+        modules: 'PSRule.Rules.Azure'
+        inputPath: azure/modules/
+    ```
+
+=== "Azure Pipelines"
+
+    ```yaml hl_lines="6"
+    # Analyze Azure resources using PSRule for Azure
+    - task: ps-rule-assert@2
+      displayName: Analyze Azure template files
+      inputs:
+        modules: 'PSRule.Rules.Azure'
+        inputPath: azure/modules/
+    ```
+
+### Configuring a baseline
+
+You can set the `baseline` parameter to specify the name of a baseline to use.
+A baseline is a set of rules and configuration.
+PSRule for Azure ships with multiple baselines to choose from.
+See [working with baselines][8] for more information.
+
+  [8]: working-with-baselines.md
+
+=== "GitHub Actions"
+
+    ```yaml hl_lines="6"
+    # Analyze Azure resources using PSRule for Azure
+    - name: Analyze Azure template files
+      uses: microsoft/ps-rule@v2.3.2
+      with:
+        modules: 'PSRule.Rules.Azure'
+        baseline: Azure.GA_2022_06
+    ```
+
+=== "Azure Pipelines"
+
+    ```yaml hl_lines="6"
+    # Analyze Azure resources using PSRule for Azure
+    - task: ps-rule-assert@2
+      displayName: Analyze Azure template files
+      inputs:
+        modules: 'PSRule.Rules.Azure'
+        baseline: Azure.GA_2022_06
+    ```
+
+### Adding additional modules
+
+You can add additional modules to the `modules` parameter by using comma (`,`) separating each module name.
+
+=== "GitHub Actions"
+
+    ```yaml hl_lines="5"
+    # Analyze Azure resources using PSRule for Azure
+    - name: Analyze Azure template files
+      uses: microsoft/ps-rule@v2.3.2
+      with:
+        modules: 'PSRule.Rules.Azure,PSRule.Monitor'
+    ```
+
+=== "Azure Pipelines"
+
+    ```yaml hl_lines="5"
+    # Analyze Azure resources using PSRule for Azure
+    - task: ps-rule-assert@2
+      displayName: Analyze Azure template files
+      inputs:
+        modules: 'PSRule.Rules.Azure,PSRule.Monitor'
+    ```
+
+### Outputting results
+
+You can configure PSRule to output results into a file by using the `outputFormat` and `outputPath` parameters.
+For details on the formats that are supported see [analysis output][9].
+
+=== "GitHub Actions"
+
+    ```yaml hl_lines="5-6"
+    # Analyze Azure resources using PSRule for Azure
+    - name: Analyze Azure template files
+      uses: microsoft/ps-rule@v2.3.2
+      with:
+        modules: 'PSRule.Rules.Azure'
+        outputFormat: Sarif
+        outputPath: reports/ps-rule-results.sarif
+    ```
+
+=== "Azure Pipelines"
+
+    ```yaml hl_lines="5-6"
+    # Analyze Azure resources using PSRule for Azure
+    - task: ps-rule-assert@2
+      displayName: Analyze Azure template files
+      inputs:
+        modules: 'PSRule.Rules.Azure'
+        outputFormat: Sarif
+        outputPath: reports/ps-rule-results.sarif
+    ```
+
+  [9]: https://microsoft.github.io/PSRule/v2/analysis-output/
+
 ## Configuration
 
 Configuration options for PSRule for Azure are set within the `ps-rule.yaml` file.
