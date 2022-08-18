@@ -70,7 +70,9 @@ You can use the `inputPath` parameter to limit the analysis to a specific path.
 
 !!! Tip
     The `inputPath` parameter only accepts a relative path.
-    For example: `azure/modules/` if you use have a `azure/modules/` directory in the root of your repository.
+    For example: `azure/modules/` if you have a `azure/modules/` directory in the root of your repository.
+    Becareful not to specify a leading `/` such as `/azure/modules/`.
+    On Linux `/` is the root directory, which makes this a fully qualified path instead of a relative path.
 
 === "GitHub Actions"
 
@@ -156,7 +158,7 @@ For details on the formats that are supported see [analysis output][9].
 
 === "GitHub Actions"
 
-    ```yaml hl_lines="5-6"
+    ```yaml hl_lines="6-7"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
       uses: microsoft/ps-rule@v2.3.2
@@ -168,7 +170,7 @@ For details on the formats that are supported see [analysis output][9].
 
 === "Azure Pipelines"
 
-    ```yaml hl_lines="5-6"
+    ```yaml hl_lines="6-7"
     # Analyze Azure resources using PSRule for Azure
     - task: ps-rule-assert@2
       displayName: Analyze Azure template files
