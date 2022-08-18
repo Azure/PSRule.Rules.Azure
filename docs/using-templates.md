@@ -35,6 +35,9 @@ PSRule for Azure automatically detects parameter files and uses the following lo
     Metadata links take priority over naming convention.
     For details on both options continue reading.
 
+!!! Tip
+    Linking templates also applies to Bicep modules when you are using `.json` parameter files.
+
 ### By metadata
 
 A parameter file can be linked to an associated template or Bicep module by setting metadata.
@@ -102,16 +105,35 @@ Additional benefits you get by using metadata links include:
     Bicep modules can also be expanded from parameter files.
     Instead of specifing a template path, you can specify the path to a Bicep file.
 
+!!! Note
+    You may find while editing a `.json` parameter file the root `metadata` property is flagged with a warning.
+    For example `Property metadata is not allowed.`.
+    This doesn't affect the workings of the parameter file or deployment.
+    If you like a detailed description continue reading [Troubleshooting][9].
+
   [2]: setup/configuring-expansion.md#requiretemplatemetadatalink
+  [9]: troubleshooting.md
 
 ### By naming convention
 
-When metadata links are not set, PSRule for Azure will use a naming convention to link to template files.
-PSRule for Azure uses the parameter file prefix `<templateName>.parameters.json` to link to a template.
-When linking using naming convention, the template and the parameter file must be in the same sub-directory.
+When metadata links are not set, PSRule will fallback to use a naming convention to link to template files.
 
 !!! Example
     A parameter file named `azuredeploy.parameters.json` links to the template file named `azuredeploy.json`.
+
+PSRule for Azure supports linking by naming convention when:
+
+- Parameter files end with `.parameters.json` linking to ARM templates or Bicep modules.
+- The parameter file prefix matches the file name of the template or Bicep module.
+  For example, `azuredeploy.parameters.json` links to `azuredeploy.json` or `azuredeploy.bicep`.
+- If both an ARM template and Bicep module exist, the template (`.json`) is preferred.
+  For example, `azuredeploy.parameters.json` chooses `azuredeploy.json` over `azuredeploy.bicep` if both exist.
+- Both parameter file and template or Bicep module must be in the same directory.
+
+The following is not currently supported:
+
+- Using a different naming convention for parameter files such as `<templateName>.param.json`.
+- Template or parameter files with alternative file extensions such as `.jsonc`.
 
 *[WAF]: Well-Architected Framework
 *[ARM]: Azure Resource Manager
