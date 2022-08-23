@@ -32,6 +32,10 @@ What's changed since v1.18.0:
 - Engineering:
   - Added publishing of symbols for NuGet packages by @BernieWhite.
     [#1549](https://github.com/Azure/PSRule.Rules.Azure/issues/1549)
+- New rules:
+  - Azure Resources:
+    - Check that nested deployments securely pass through administrator usernames @ms-sambell.
+      [#1479]https://github.com/Azure/PSRule.Rules.Azure/issues/1479
 
 ## v1.18.0
 
