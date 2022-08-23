@@ -17,12 +17,112 @@
                     {
                         "type": "Microsoft.Sql/servers",
                         "apiVersion": "2022-02-01-preview",
-                        "name": "sql-example-1",
+                        "name": "sql-example",
                         "location": "australiaeast",
                         "properties": {
-                            "administratorLogin": "admin",
-                            "administratorLoginPassword": "password",
-                            "minimalTlsVersion": "1.2"
+                            "administratorLogin": "admin"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "nestedDeployment-B",
+        "type": "Microsoft.Resources/deployments",
+        "apiVersion": "2020-10-01",
+        "properties": {
+            "expressionEvaluationOptions": {
+                "scope": "inner"
+            },
+            "mode": "Incremental",
+            "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                    "adminUser": {
+                        "type": "SecureString"
+                    }
+                },
+                "variables": {},
+                "resources": [
+                    {
+                        "type": "Microsoft.Sql/servers",
+                        "apiVersion": "2022-02-01-preview",
+                        "name": "sql-example",
+                        "location": "australiaeast",
+                        "properties": {
+                            "administratorLogin": "[parameters('adminUser')]"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "nestedDeployment-C",
+        "type": "Microsoft.Resources/deployments",
+        "apiVersion": "2020-10-01",
+        "properties": {
+            "expressionEvaluationOptions": {
+                "scope": "inner"
+            },
+            "mode": "Incremental",
+            "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                    "adminUser": {
+                        "type": "SecureString"
+                    }
+                },
+                "variables": {},
+                "resources": [
+                    {
+                        "apiVersion": "2019-12-01",
+                        "type": "Microsoft.Compute/virtualMachines",
+                        "name": "vm-example",
+                        "location": "australiaeast",
+                        "properties": {
+                            "osProfile": {
+                                "computerName": "vm-example",
+                                "adminUsername": "[parameters('adminUser')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "nestedDeployment-D",
+        "type": "Microsoft.Resources/deployments",
+        "apiVersion": "2020-10-01",
+        "properties": {
+            "expressionEvaluationOptions": {
+                "scope": "inner"
+            },
+            "mode": "Incremental",
+            "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                    "adminUser": {
+                        "type": "SecureString"
+                    }
+                },
+                "variables": {},
+                "resources": [
+                    {
+                        "apiVersion": "2019-12-01",
+                        "type": "Microsoft.Compute/virtualMachines",
+                        "name": "vm-example",
+                        "location": "australiaeast",
+                        "properties": {
+                            "osProfile": {
+                                "computerName": "vm-example",
+                                "adminUsername": "username"
+                            }
                         }
                     }
                 ]

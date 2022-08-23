@@ -31,6 +31,12 @@ spec:
 
     # Configure minimum AKS cluster version
     AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.22.6'
+    AZURE_TEMPLATE_SENSITIVE_PROPERTY_NAMES:
+      - adminUsername
+      - administratorLogin
+      - administratorLoginPassword
+
+
   convention:
     include:
     - 'Azure.DeprecatedOptions'

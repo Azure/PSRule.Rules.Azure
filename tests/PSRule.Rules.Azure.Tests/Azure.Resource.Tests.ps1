@@ -174,24 +174,6 @@ Describe 'Azure.Resource' -Tag 'Resource' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetType | Should -BeIn 'Microsoft.Resources/deployments';
         }
-
-        It 'Azure.Resource.adminUsername' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Resource.adminUsername' };
-
-             # Fail
-             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-             $ruleResult | Should -Not -BeNullOrEmpty;
-             Write-Host $($ruleResult | ConvertTo-Json)
-             Write-Host "Target Name: $ruleResult.TargetName"
-             $ruleResult.Length | Should -Be 0;
-            #  $ruleResult.TargetName | Should -BeIn 'route-subnet1', 'route-subnet2', 'nsg-subnet1', 'nsg-subnet2', 'nsg-extra';
- 
-             # Pass
-             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-             $ruleResult | Should -Not -BeNullOrEmpty;
-             $ruleResult.Length | Should -Be 1;
-             $ruleResult.TargetName | Should -Be 'nestedDeployment-A';
-        }
     }
 }
 
@@ -267,16 +249,14 @@ Describe 'Azure.Resource.adminUsername' -Tag 'Resource' {
              # Fail
              $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
              $ruleResult | Should -Not -BeNullOrEmpty;
-             Write-Host $($ruleResult | ConvertTo-Json)
-             Write-Host "Target Name: $ruleResult.TargetName"
-             $ruleResult.Length | Should -Be 0;
-            #  $ruleResult.TargetName | Should -BeIn 'route-subnet1', 'route-subnet2', 'nsg-subnet1', 'nsg-subnet2', 'nsg-extra';
+             $ruleResult.Length | Should -Be 2;
+             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-A', 'nestedDeployment-D';
  
              # Pass
              $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
              $ruleResult | Should -Not -BeNullOrEmpty;
-             $ruleResult.Length | Should -Be 1;
-             $ruleResult.TargetName | Should -Be 'nestedDeployment-A';
+             $ruleResult.Length | Should -Be 2;
+             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-B', 'nestedDeployment-C';
         }
     }
 }

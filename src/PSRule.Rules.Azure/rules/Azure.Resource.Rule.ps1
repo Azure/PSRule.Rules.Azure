@@ -36,8 +36,8 @@ Rule 'Azure.ResourceGroup.Name' -Ref 'AZR-000168' -Type 'Microsoft.Resources/res
 }
 
 
-# Synopsis: Ensure all properties named `adminUsername` within a deployment are expressions (not literal strings)
-Rule 'Azure.Resource.adminUsername' -Ref 'AZR-000280' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_08' } {  
+# Synopsis: Ensure all properties named used for setting a username within a deployment are expressions (e.g. an ARM function not a string)
+Rule 'Azure.Resource.adminUsername' -Ref 'AZR-000284' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {  
     $deploymentTemplate = @($TargetObject.properties.template);
 
     if (($deploymentTemplate.resources).Length -eq 0 ) {
@@ -53,16 +53,29 @@ Rule 'Azure.Resource.adminUsername' -Ref 'AZR-000280' -Type 'Microsoft.Resources
 function global:FindAdminUsername {
     param ([PSObject]$InputObject)
     process {
-      foreach ($property in $InputObject.PSObject.properties) {
-            if ($property.Name -eq 'adminUsername' -or  $property.Name -eq 'administratorLogin') {
-                Write-Host "$($property.Name) matched sensitive property list" 
-                Write-Host "Type: $($property.TypeNameOfValue)"
-                if($property.TypeNameOfValue -eq "System.String"){
-                    return $Assert.Fail();
-                } else {
-                    return $Assert.Pass();
-                }      
+    foreach ($property in $InputObject.PSObject.properties) {
+        ## Loop again if the property is a nested object
+        if($property.Value.GetType().Name -eq 'PSCustomObject') {
+            foreach($nestedProperty in $property.Value.PSObject.Properties ){
+                global:CheckSensitiveProperties -InputObject $nestedProperty
             }
+        } elseif ($property.value.GetType().Name -eq 'String') {
+            global:CheckSensitiveProperties -InputObject $property
+        } 
       }
+    }
+  }
+
+  function global:CheckSensitiveProperties {
+    param (
+        [PSObject]$InputObject
+        )
+    process {
+        if ($Configuration.GetStringValues('AZURE_TEMPLATE_SENSITIVE_PROPERTY_NAMES') -contains $InputObject.Name) {
+            $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($InputObject.Value);
+            $Assert.Match($cleanValue, '.', '\[[^\]]+\]')   
+        } else {
+            $Assert.Pass()
+        }
     }
   }
