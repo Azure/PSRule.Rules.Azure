@@ -375,6 +375,9 @@ task BuildRuleDocs Build, Dependencies, {
             RuleSet = $_.Tag.ruleSet
             Level = $_.Level.ToString()
             Method = $_.Tag.method
+            DisplayName = $_.Info.DisplayName
+            Synopsis = $_.Info.Synopsis
+            Recommendation = $_.Info.Recommendation
         }
     }
     $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/en/rules/metadata.json -Force;
@@ -439,7 +442,7 @@ task ScaffoldHelp Build, BuildRuleDocs, {
 
 task Benchmark {
     if ($Benchmark -or $BuildTask -eq 'Benchmark') {
-        dotnet run --project src/PSRule.Rules.Azure.Benchmark -f netcoreapp3.1 -c Release -- benchmark --output $PWD;
+        dotnet run --project src/PSRule.Rules.Azure.Benchmark -f net6.0 -c Release -- benchmark --output $PWD;
     }
 }
 

@@ -24,7 +24,7 @@ Install and use PSRule for Azure with GitHub Actions by referencing the `microso
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.2.0
+      uses: microsoft/ps-rule@v2.3.2
       with:
         modules: 'PSRule.Rules.Azure'
     ```
@@ -35,7 +35,7 @@ Install and use PSRule for Azure with GitHub Actions by referencing the `microso
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.2.0
+      uses: microsoft/ps-rule@v2.3.2
       with:
         modules: 'PSRule.Rules.Azure'
         prerelease: true
@@ -110,9 +110,9 @@ PowerShell modules:
 
 !!! Note
     Azure PowerShell modules are not installed automatically when installing PSRule for Azure.
-    This has been changed from v1.16.0 due with [module dependency chains in Azure DevOps][3].
+    This has been changed from v1.16.0 due to [module dependency chains in Azure DevOps][3].
     In most cases these modules will be pre-installed on the CI worker.
-    For private CI workers, consider pre-installing these module in a previous step.
+    For private CI workers, consider pre-installing these modules in a previous step.
 
   [3]: troubleshooting.md#an-earlier-version-of-azaccounts-is-imported
 
@@ -211,9 +211,9 @@ The following dependencies will be automatically installed if the required versi
 
 These dependencies are only required for building and running tests for PSRule for Azure.
 
-Additionally .NET Core SDK v3.1 is required.
-.NET Core will not be automatically downloaded and installed.
-To download and install the latest SDK see [Download .NET Core 3.1][dotnet].
+Additionally .NET SDK v6 is required.
+.NET will not be automatically downloaded and installed.
+To download and install the latest SDK see [Download .NET 6][dotnet].
 
 ### Building from source
 
@@ -272,4 +272,4 @@ After downloading the modules, copy the module directories to devices with restr
 *[CI]: continuous integration
 
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
-[dotnet]: https://dotnet.microsoft.com/download/dotnet-core/3.1
+[dotnet]: https://dotnet.microsoft.com/download/dotnet/6.0

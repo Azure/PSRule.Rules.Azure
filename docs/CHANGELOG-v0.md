@@ -1,3 +1,7 @@
+---
+discussion: false
+---
+
 # Change log
 
 ## v0.19.0

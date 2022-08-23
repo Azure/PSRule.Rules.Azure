@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ProjectGuid>{9bb90abe-25f9-4110-af9f-149b0618b2a0}</ProjectGuid>
     <RepositoryUrl>https://github.com/Azure/PSRule.Rules.Azure</RepositoryUrl>
@@ -31,8 +31,8 @@
     <PackageReference Include="Microsoft.PowerShell.5.1.ReferenceAssemblies" Version="1.0.0" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.0.6" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.6" />
   </ItemGroup>
 
   <ItemGroup>

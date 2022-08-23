@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -22,16 +22,18 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTYNAME_NAME = "name";
         private const string PROPERTYNAME_DESCRIPTION = "description";
 
-        private const string PARAMETER_FILE_SUFFIX = ".parameters.json";
+        private const string PARAMETER_FILE_SUFFIX = ".parameters";
+        private const string TEMPLATE_FILE_EXTENSION_JSON = ".json";
+        private const string TEMPLATE_FILE_EXTENSION_BICEP = ".bicep";
 
         private const char SLASH = '/';
 
         private readonly bool _SkipUnlinked;
-        private readonly PipelineContext Context;
+        private readonly PipelineContext _Context;
 
         public TemplateLinkHelper(PipelineContext context, string basePath, bool skipUnlinked)
         {
-            Context = context;
+            _Context = context;
             _SkipUnlinked = skipUnlinked;
         }
 
@@ -44,7 +46,8 @@ namespace PSRule.Rules.Azure.Data.Template
                 return null;
 
             // Check if metadata property exists
-            if (!(TryMetadata(parameterObject, rootedParameterFile, out var metadata, out var templateFile) || TryTemplateByName(parameterFile, out templateFile)))
+            if (!(TryMetadata(parameterObject, rootedParameterFile, out var metadata, out var templateFile) ||
+                TryTemplateByName(PARAMETER_FILE_SUFFIX, parameterFile, out templateFile)))
             {
                 if (metadata == null && !_SkipUnlinked)
                     throw new InvalidTemplateLinkException(string.Format(CultureInfo.CurrentCulture, PSRuleResources.MetadataNotFound, parameterFile));
@@ -116,6 +119,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 schemaUri.PathAndQuery.EndsWith("/tenantDeploymentParameters.json", StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Try to find the template file from a root metadata property.
+        /// </summary>
         private bool TryMetadata(JObject parameterObject, string parameterFile, out JObject metadata, out string templateFile)
         {
             metadata = null;
@@ -125,7 +131,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 metadata = property;
                 return TryTemplateFile(metadata, parameterFile, out templateFile);
             }
-            Context.Writer.VerboseMetadataNotFound(parameterFile);
+            _Context.Writer.VerboseMetadataNotFound(parameterFile);
             return false;
         }
 
@@ -134,7 +140,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!TryStringProperty(metadata, PROPERTYNAME_TEMPLATE, out templateFile))
             {
                 if (_SkipUnlinked)
-                    Context.Writer.VerboseTemplateLinkNotFound(parameterFile);
+                    _Context.Writer.VerboseTemplateLinkNotFound(parameterFile);
 
                 return false;
             }
@@ -147,7 +153,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             if (!File.Exists(templateFile))
             {
-                Context.Writer.VerboseTemplateFileNotFound(templateFile);
+                _Context.Writer.VerboseTemplateFileNotFound(templateFile);
                 throw new FileNotFoundException(
                     string.Format(CultureInfo.CurrentCulture, PSRuleResources.TemplateFileReferenceNotFound, parameterFile),
                     new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, PSRuleResources.TemplateFileNotFound, templateFile))
@@ -159,17 +165,28 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// Try to match using templateName.parameters.json.
         /// </summary>
-        private static bool TryTemplateByName(string parameterFile, out string templateFile)
+        private static bool TryTemplateByName(string suffix, string parameterFile, out string templateFile)
         {
             templateFile = null;
             var parentPath = Path.GetDirectoryName(parameterFile);
-            var parameterPrefix = Path.GetFileName(parameterFile);
-            if (string.IsNullOrEmpty(parameterPrefix) || string.IsNullOrEmpty(parentPath) || parameterPrefix.Length <= 16 || !parameterPrefix.EndsWith(PARAMETER_FILE_SUFFIX, StringComparison.OrdinalIgnoreCase))
+            var filename = Path.GetFileNameWithoutExtension(parameterFile);
+
+            if (string.IsNullOrEmpty(suffix) ||
+                string.IsNullOrEmpty(filename) ||
+                string.IsNullOrEmpty(parentPath) ||
+                filename.Length <= suffix.Length ||
+                !filename.EndsWith(suffix, StringComparison.OrdinalIgnoreCase))
                 return false;
 
-            parameterPrefix = parameterPrefix.Remove(parameterPrefix.Length - 16, 11);
-            templateFile = Path.Combine(parentPath, parameterPrefix);
-            return File.Exists(templateFile);
+            var baseFilename = filename.Remove(filename.Length - suffix.Length);
+            var jsonTemplateFile = Path.Combine(parentPath, string.Concat(baseFilename, TEMPLATE_FILE_EXTENSION_JSON));
+            var bicepTemplateFile = Path.Combine(parentPath, string.Concat(baseFilename, TEMPLATE_FILE_EXTENSION_BICEP));
+            if (File.Exists(jsonTemplateFile))
+                templateFile = jsonTemplateFile;
+            else if (File.Exists(bicepTemplateFile))
+                templateFile = bicepTemplateFile;
+
+            return templateFile != null;
         }
 
         private static bool TryStringProperty(JObject o, string propertyName, out string value)

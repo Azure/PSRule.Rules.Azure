@@ -40,6 +40,7 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'automation-b';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'resources[0].properties.isEncrypted';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -56,6 +57,7 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'automation-a', 'automation-b';
+            # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn 'resources[1].properties.expiryTime';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -72,6 +74,7 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -Be 'automation-a', 'automation-b', 'automation-c';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'identity.type';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -88,13 +91,14 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -Be 'automation-e', 'automation-f', 'automation-g';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'resources[0].properties.logs';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (AuditEvent) or category group (audit, allLogs).";
+            $ruleResult[0].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (AuditEvent) or category group (audit, allLogs).";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (AuditEvent) or category group (audit, allLogs).";
+            $ruleResult[1].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (AuditEvent) or category group (audit, allLogs).";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (AuditEvent) or category group (audit, allLogs).";
+            $ruleResult[2].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (AuditEvent) or category group (audit, allLogs).";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -111,15 +115,16 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -Be 'automation-b', 'automation-c', 'automation-f', 'automation-g';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'resources[0].properties.logs', 'resources[2].properties.logs';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus, AllMetrics) or category group (allLogs).";
+            $ruleResult[0].Reason | Should -BeExactly "Path resources[2].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus, AllMetrics) or category group (allLogs).";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus, AllMetrics) or category group (allLogs).";
+            $ruleResult[1].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus, AllMetrics) or category group (allLogs).";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus, AllMetrics) or category group (allLogs).";
+            $ruleResult[2].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus, AllMetrics) or category group (allLogs).";
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[3].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus, AllMetrics) or category group (allLogs).";
+            $ruleResult[3].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus, AllMetrics) or category group (allLogs).";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -160,13 +165,13 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult.TargetName | Should -Be 'automation-b', 'automation-c', 'automation-f', 'automation-g';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus) or category group (allLogs).";
+            $ruleResult[0].Reason | Should -BeExactly "Path resources[2].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus) or category group (allLogs).";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus) or category group (allLogs).";
+            $ruleResult[1].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus) or category group (allLogs).";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus) or category group (allLogs).";
+            $ruleResult[2].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus) or category group (allLogs).";
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[3].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus) or category group (allLogs).";
+            $ruleResult[3].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams, DscNodeStatus) or category group (allLogs).";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -194,11 +199,11 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult.TargetName | Should -Be 'automation-b', 'automation-c', 'automation-f';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams, AllMetrics) or category group (allLogs).";
+            $ruleResult[0].Reason | Should -BeExactly "Path resources[2].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams, AllMetrics) or category group (allLogs).";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams, AllMetrics) or category group (allLogs).";
+            $ruleResult[1].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams, AllMetrics) or category group (allLogs).";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams, AllMetrics) or category group (allLogs).";
+            $ruleResult[2].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams, AllMetrics) or category group (allLogs).";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -225,11 +230,11 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult.TargetName | Should -Be 'automation-b', 'automation-c', 'automation-f';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams) or category group (allLogs).";
+            $ruleResult[0].Reason | Should -BeExactly "Path resources[2].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams) or category group (allLogs).";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams) or category group (allLogs).";
+            $ruleResult[1].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams) or category group (allLogs).";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, JobStreams) or category group (allLogs).";
+            $ruleResult[2].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, JobStreams) or category group (allLogs).";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -249,9 +254,9 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult.TargetName | Should -Be 'automation-b', 'automation-c';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, AllMetrics) or category group (allLogs).";
+            $ruleResult[0].Reason | Should -BeExactly "Path resources[2].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, AllMetrics) or category group (allLogs).";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The diagnostic setting (metrics) should enable (JobLogs, AllMetrics) or category group (allLogs)."
+            $ruleResult[1].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (JobLogs, AllMetrics) or category group (allLogs)."
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

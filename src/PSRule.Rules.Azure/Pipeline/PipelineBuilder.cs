@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -15,44 +15,96 @@ namespace PSRule.Rules.Azure.Pipeline
     /// </summary>
     public static class PipelineBuilder
     {
+        /// <summary>
+        /// Create a builder for a template expanding pipeline.
+        /// </summary>
+        /// <param name="option">Options that configure PSRule for Azure.</param>
+        /// <returns>A builder object to configure the pipeline.</returns>
         public static ITemplatePipelineBuilder Template(PSRuleOption option)
         {
             return new TemplatePipelineBuilder(option);
         }
 
+        /// <summary>
+        /// Create a builder for a template link discovery pipeline.
+        /// </summary>
+        /// <param name="path">The base path to search from.</param>
+        /// <returns>A builder object to configure the pipeline.</returns>
         public static ITemplateLinkPipelineBuilder TemplateLink(string path)
         {
             return new TemplateLinkPipelineBuilder(path);
         }
 
+        /// <summary>
+        /// Create a builder for a policy assignment export pipeline.
+        /// </summary>
+        /// <param name="option">Options that configure PSRule for Azure.</param>
+        /// <returns>A builder object to configure the pipeline.</returns>
         public static IPolicyAssignmentPipelineBuilder Assignment(PSRuleOption option)
         {
             return new PolicyAssignmentPipelineBuilder(option);
         }
 
+        /// <summary>
+        /// Create a builder for a policy to rule generation pipeline.
+        /// </summary>
+        /// <param name="path">The base path to search from.</param>
+        /// <returns>A builder object to configure the pipeline.</returns>
         public static IPolicyAssignmentSearchPipelineBuilder AssignmentSearch(string path)
         {
             return new PolicyAssignmentSearchPipelineBuilder(path);
         }
     }
 
+    /// <summary>
+    /// A helper to build a PSRule for Azure pipeline.
+    /// </summary>
     public interface IPipelineBuilder
     {
+        /// <summary>
+        /// Configure the pipeline with cmdlet runtime information.
+        /// </summary>
         void UseCommandRuntime(PSCmdlet commandRuntime);
 
+        /// <summary>
+        /// Configure the pipeline with a PowerShell execution context.
+        /// </summary>
         void UseExecutionContext(EngineIntrinsics executionContext);
 
+        /// <summary>
+        /// Configure the pipeline with options.
+        /// </summary>
+        /// <param name="option">Options that configure PSRule for Azure.</param>
+        /// <returns></returns>
         IPipelineBuilder Configure(PSRuleOption option);
 
+        /// <summary>
+        /// Build the pipeline.
+        /// </summary>
+        /// <returns>An instance of a configured pipeline.</returns>
         IPipeline Build();
     }
 
+    /// <summary>
+    /// An instance of a PSRule for Azure pipeline.
+    /// </summary>
     public interface IPipeline
     {
+        /// <summary>
+        /// Initalize the pipeline and results. Call this method once prior to calling Process.
+        /// </summary>
         void Begin();
 
+        /// <summary>
+        /// Process an object through the pipeline.
+        /// </summary>
+        /// <param name="sourceObject">The object to process.</param>
         void Process(PSObject sourceObject);
 
+        /// <summary>
+        /// Clean up and flush pipeline results. Call this method once after processing any objects through the pipeline.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1716:Identifiers should not match keywords", Justification = "Matches PowerShell pipeline.")]
         void End();
     }
 
@@ -119,7 +171,7 @@ namespace PSRule.Rules.Azure.Pipeline
         protected readonly PipelineContext Context;
 
         // Track whether Dispose has been called.
-        private bool _Disposed = false;
+        private bool _Disposed;
 
 
         protected PipelineBase(PipelineContext context)
@@ -129,16 +181,19 @@ namespace PSRule.Rules.Azure.Pipeline
 
         #region IPipeline
 
+        /// <inheritdoc/>
         public virtual void Begin()
         {
-            //Reader.Open();
+            // Do nothing
         }
 
+        /// <inheritdoc/>
         public virtual void Process(PSObject sourceObject)
         {
             // Do nothing
         }
 
+        /// <inheritdoc/>
         public virtual void End()
         {
             Context.Writer.End();

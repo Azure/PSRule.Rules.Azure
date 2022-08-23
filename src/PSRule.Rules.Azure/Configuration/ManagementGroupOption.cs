@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -7,6 +7,9 @@ using YamlDotNet.Serialization;
 
 namespace PSRule.Rules.Azure.Configuration
 {
+    /// <summary>
+    /// Options that affect the properties of the <c>managementGroup()</c> object during expansion.
+    /// </summary>
     public sealed class ManagementGroupOption : IEquatable<ManagementGroupOption>
     {
         private const string DEFAULT_NAME = "psrule-test";
@@ -27,6 +30,9 @@ namespace PSRule.Rules.Azure.Configuration
 
         private string _Name;
 
+        /// <summary>
+        /// Creates an empty management group option.
+        /// </summary>
         public ManagementGroupOption()
         {
             Name = null;
@@ -64,12 +70,21 @@ namespace PSRule.Rules.Azure.Configuration
                 Details = new ManagementGroupDetails();
             }
 
+            /// <summary>
+            /// The display name of the management group.
+            /// </summary>
             [DefaultValue(null)]
             public string DisplayName { get; set; }
 
+            /// <summary>
+            /// A GUID for the tenant that the management group belongs to.
+            /// </summary>
             [YamlIgnore]
             public string TenantId { get; internal set; }
 
+            /// <summary>
+            /// Additional details of the management group.
+            /// </summary>
             public ManagementGroupDetails Details { get; internal set; }
         }
 
@@ -83,15 +98,27 @@ namespace PSRule.Rules.Azure.Configuration
                 Version = DEFAULT_VERSION;
             }
 
+            /// <summary>
+            /// Additional details about the parent of the management group.
+            /// </summary>
             [YamlIgnore]
             public ManagementGroupParent Parent { get; private set; }
 
+            /// <summary>
+            /// What identity last updated the management group.
+            /// </summary>
             [DefaultValue(null)]
             public string UpdatedBy { get; set; }
 
+            /// <summary>
+            /// When the management group was last updated.
+            /// </summary>
             [DefaultValue(null)]
             public string UpdatedTime { get; set; }
 
+            /// <summary>
+            /// The version.
+            /// </summary>
             [DefaultValue(null)]
             public string Version { get; set; }
         }
@@ -112,9 +139,15 @@ namespace PSRule.Rules.Azure.Configuration
                 DisplayName = displayName ?? DEFAULT_PARENT_DISPLAYNAME;
             }
 
+            /// <summary>
+            /// The resource identifier for the parent.
+            /// </summary>
             [YamlIgnore]
             public string Id { get; private set; }
 
+            /// <summary>
+            /// The name of the parent.
+            /// </summary>
             [DefaultValue(null)]
             public string Name
             {
@@ -126,10 +159,14 @@ namespace PSRule.Rules.Azure.Configuration
                 }
             }
 
+            /// <summary>
+            /// The display name of the parent.
+            /// </summary>
             [DefaultValue(null)]
             public string DisplayName { get; set; }
         }
 
+        /// <inheritdoc/>
         public override bool Equals(object obj)
         {
             return obj is ManagementGroupOption option && Equals(option);
@@ -158,6 +195,7 @@ namespace PSRule.Rules.Azure.Configuration
                 (!object.Equals(null, o1) && o1.Equals(o2));
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine
@@ -179,6 +217,9 @@ namespace PSRule.Rules.Azure.Configuration
             return result;
         }
 
+        /// <summary>
+        /// The Azure resource type.
+        /// </summary>
         [YamlIgnore]
         public string Type => DEFAULT_TYPE;
 
@@ -205,6 +246,9 @@ namespace PSRule.Rules.Azure.Configuration
             }
         }
 
+        /// <summary>
+        /// Additional properties of the management group.
+        /// </summary>
         public ManagementGroupProperties Properties { get; set; }
     }
 }

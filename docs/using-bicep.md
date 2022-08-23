@@ -14,7 +14,9 @@ To enable this feature, you need to:
 
 !!! Abstract
     This topic covers how you can validate Azure resources within `.bicep` files.
-    To learn more about why this is important see [Expanding source files](expanding-source-files.md).
+    To learn more about why this is important see [Expanding source files][8].
+
+  [8]: expanding-source-files.md
 
 ## Enabling expansion
 
@@ -28,7 +30,7 @@ configuration:
 
 !!! Note
     If you are using JSON parameter files exclusively, you do not need to set this option.
-    Instead continue reading [Using parameter files](#usingparameterfiles).
+    Instead continue reading [using parameter files](#usingparameterfiles).
 
 ### Setup Bicep
 
@@ -45,13 +47,16 @@ PSRule will automatically detect and build `.bicep` files.
 You may choose to pre-build `.bicep` files if the Bicep CLI is not available when PSRule is run.
 
 !!! Important
-    If using this method, follow [Using templates](using-templates.md) instead.
+    If using this method, follow [using templates](using-templates.md) instead.
     Using `bicep build` transpiles Bicep code into an Azure template `.json`.
 
 ## Testing Bicep modules
 
 Bicep allows you to separate out complex details into separate files called [modules][2].
 To expand resources, any parameters must be resolved.
+
+!!! Tip
+    If you are not familar with the concept of expansion within PSRule for Azure see [Expanding source files][8].
 
 Two types of parameters exist, _required_ (also called mandatory) and _optional_.
 An optional parameter is any parameter with a default value.
@@ -144,7 +149,7 @@ You may need to [configure credentials][4] to access the private registry from a
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.2.0
+      uses: microsoft/ps-rule@v2.3.2
       with:
         modules: PSRule.Rules.Azure,PSRule.Monitor
         conventions: Monitor.LogAnalytics.Import
@@ -175,9 +180,9 @@ You may need to [configure credentials][4] to access the private registry from a
         AZURE_TENANT_ID: $(BICEPREGISTRYTENANTID)
     ```
 
-  !!! Important
-      Variables can be configured in YAML, on the pipeline, or referenced from a defined variable group.
-      To keep `BICEPREGISTRYCLIENTSECRET` secure, use a [variable group][6] linked to an Azure Key Vault.
+    !!! Important
+        Variables can be configured in YAML, on the pipeline, or referenced from a defined variable group.
+        To keep `BICEPREGISTRYCLIENTSECRET` secure, use a [variable group][6] linked to an Azure Key Vault.
 
   [3]: https://docs.microsoft.com/azure/azure-resource-manager/bicep/bicep-config#credential-precedence
   [4]: https://docs.microsoft.com/dotnet/api/azure.identity.environmentcredential

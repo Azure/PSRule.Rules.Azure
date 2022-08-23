@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -8,6 +8,9 @@ using YamlDotNet.Serialization;
 
 namespace PSRule.Rules.Azure.Configuration
 {
+    /// <summary>
+    /// Options that affect the properties of the <c>resourceGroup()</c> object during expansion.
+    /// </summary>
     public sealed class ResourceGroupOption : IEquatable<ResourceGroupOption>
     {
         private const string DEFAULT_SUBSCRIPTIONID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
@@ -34,6 +37,9 @@ namespace PSRule.Rules.Azure.Configuration
         private string _SubscriptionId;
         private string _Name;
 
+        /// <summary>
+        /// Creates an empty resource group option.
+        /// </summary>
         public ResourceGroupOption()
         {
             Name = null;
@@ -64,10 +70,11 @@ namespace PSRule.Rules.Azure.Configuration
             Properties = new ResourceGroupProperties(provisioningState);
         }
 
+        /// <summary>
+        /// A set of resource group properties.
+        /// </summary>
         public sealed class ResourceGroupProperties
         {
-            public readonly string ProvisioningState;
-
             public ResourceGroupProperties()
             {
                 ProvisioningState = DEFAULT_PROVISIONINGSTATE;
@@ -77,8 +84,14 @@ namespace PSRule.Rules.Azure.Configuration
             {
                 ProvisioningState = provisioningState ?? DEFAULT_PROVISIONINGSTATE;
             }
+
+            /// <summary>
+            /// The provisioning state of the resource group.
+            /// </summary>
+            public string ProvisioningState { get; }
         }
 
+        /// <inheritdoc/>
         public override bool Equals(object obj)
         {
             return obj is ResourceGroupOption option && Equals(option);
@@ -111,6 +124,7 @@ namespace PSRule.Rules.Azure.Configuration
                 (!object.Equals(null, o1) && o1.Equals(o2));
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine
@@ -180,18 +194,33 @@ namespace PSRule.Rules.Azure.Configuration
             }
         }
 
+        /// <summary>
+        /// The Azure resource type.
+        /// </summary>
         [YamlIgnore]
         public string Type => DEFAULT_TYPE;
 
+        /// <summary>
+        /// The location of the resource group.
+        /// </summary>
         [DefaultValue(null)]
         public string Location { get; set; }
 
+        /// <summary>
+        /// The value of the managed by property.
+        /// </summary>
         [DefaultValue(null)]
         public string ManagedBy { get; set; }
 
+        /// <summary>
+        /// Any tags assigned to the resource group.
+        /// </summary>
         [DefaultValue(null)]
         public Hashtable Tags { get; set; }
 
+        /// <summary>
+        /// Additional properties for the resource group.
+        /// </summary>
         [DefaultValue(null)]
         public ResourceGroupProperties Properties { get; set; }
     }

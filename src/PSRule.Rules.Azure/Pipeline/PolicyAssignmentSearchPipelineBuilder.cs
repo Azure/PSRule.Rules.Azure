@@ -3,6 +3,9 @@
 
 namespace PSRule.Rules.Azure.Pipeline
 {
+    /// <summary>
+    /// A builder for a policy to rule generation pipeline.
+    /// </summary>
     public interface IPolicyAssignmentSearchPipelineBuilder : IPipelineBuilder
     {
 
@@ -17,6 +20,7 @@ namespace PSRule.Rules.Azure.Pipeline
             _BasePath = basePath;
         }
 
+        /// <inheritdoc/>
         public override IPipeline Build()
         {
             return new PolicyAssignmentSearchPipeline(PrepareContext(), _BasePath);

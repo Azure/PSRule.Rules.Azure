@@ -43,7 +43,7 @@ spec:
   - Microsoft.Web/sites
   - Microsoft.Web/sites/slots
   condition:
-    field: Properties.clientAffinityEnabled
+    field: properties.clientAffinityEnabled
     equals: false
 
 ---
@@ -61,7 +61,7 @@ spec:
   - Microsoft.Web/sites
   - Microsoft.Web/sites/slots
   condition:
-    field: Properties.httpsOnly
+    field: properties.httpsOnly
     equals: true
 
 #endregion Rules

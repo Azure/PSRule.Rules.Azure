@@ -16,6 +16,7 @@ namespace PSRule.Rules.Azure.Pipeline
             _PathBuilder = new PathBuilder(context.Writer, basePath, DEFAULT_ASSIGNMENTSEARCH_PATTERN);
         }
 
+        /// <inheritdoc/>
         public override void Process(PSObject sourceObject)
         {
             if (sourceObject == null | !sourceObject.GetPath(out var path))

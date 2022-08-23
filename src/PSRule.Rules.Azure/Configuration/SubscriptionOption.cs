@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -8,6 +8,9 @@ using YamlDotNet.Serialization;
 
 namespace PSRule.Rules.Azure.Configuration
 {
+    /// <summary>
+    /// Options that affect the properties of the <c>subscription()</c> object during expansion.
+    /// </summary>
     public sealed class SubscriptionOption : IEquatable<SubscriptionOption>
     {
         private const string DEFAULT_SUBSCRIPTIONID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
@@ -27,6 +30,9 @@ namespace PSRule.Rules.Azure.Configuration
 
         private string _SubscriptionId;
 
+        /// <summary>
+        /// Creates an empty subscription option.
+        /// </summary>
         public SubscriptionOption()
         {
             SubscriptionId = null;
@@ -54,6 +60,7 @@ namespace PSRule.Rules.Azure.Configuration
             State = state ?? DEFAULT_STATE;
         }
 
+        /// <inheritdoc/>
         public override bool Equals(object obj)
         {
             return obj is SubscriptionOption option && Equals(option);
@@ -84,6 +91,7 @@ namespace PSRule.Rules.Azure.Configuration
                 (!object.Equals(null, o1) && o1.Equals(o2));
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine
@@ -132,12 +140,21 @@ namespace PSRule.Rules.Azure.Configuration
             }
         }
 
+        /// <summary>
+        /// A GUID identifier for the tenant.
+        /// </summary>
         [DefaultValue(null)]
         public string TenantId { get; set; }
 
+        /// <summary>
+        /// The display name of the tenant.
+        /// </summary>
         [DefaultValue(null)]
         public string DisplayName { get; set; }
 
+        /// <summary>
+        /// The current state of the tenant.
+        /// </summary>
         [DefaultValue(null)]
         public string State { get; set; }
     }

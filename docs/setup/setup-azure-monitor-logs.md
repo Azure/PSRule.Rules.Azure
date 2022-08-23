@@ -30,6 +30,8 @@ Centrally storing PSRule results enables the following scenarios:
 Logging of PSRule results into a workspace is done using the _PSRule for Azure Monitor_ module.
 PSRule for Azure Monitor extends the PSRule pipeline to import results into the specified workspace.
 
+Once configured, PSRule will log results into the `PSRule_CL` custom log table of the chosen workspace.
+
 !!! Info
     Integration between PSRule and Azure Monitor is done by means of a convention.
     Conventions extend the pipeline to be able to upload results after rules have run.
@@ -68,7 +70,7 @@ Import analysis results into Azure Monitor with GitHub Actions by:
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.2.0
+      uses: microsoft/ps-rule@v2.3.2
       with:
         modules: PSRule.Rules.Azure,PSRule.Monitor
         conventions: Monitor.LogAnalytics.Import
@@ -84,7 +86,7 @@ Import analysis results into Azure Monitor with GitHub Actions by:
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.2.0
+      uses: microsoft/ps-rule@v2.3.2
       with:
         modules: PSRule.Rules.Azure,PSRule.Monitor
         conventions: Monitor.LogAnalytics.Import
@@ -163,6 +165,29 @@ Import analysis results into Azure Monitor with Azure Pipelines by:
 
   [9]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
   [10]: https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups
+
+## Sample queries
+
+Continue reading for some sample queries you can try out Azure Monitor integration.
+
+### Results with annotations
+
+```kql
+// Show extended info
+PSRule_CL
+| where TimeGenerated > ago(30d)
+| extend Pillar = tostring(parse_json(Annotations_s).pillar)
+| extend Link = tostring(parse_json(Annotations_s).["online version"])
+```
+
+### Summarize results by run
+
+```kql
+// Group by run
+PSRule_CL
+| where TimeGenerated > ago(30d)
+| summarize Pass=countif(Outcome_s == "Pass"), Fail=countif(Outcome_s  == "Fail") by RunId_s
+```
 
 *[SIEM]: security information event management
 

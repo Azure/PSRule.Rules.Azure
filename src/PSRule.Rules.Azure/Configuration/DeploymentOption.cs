@@ -7,6 +7,9 @@ using System.ComponentModel;
 
 namespace PSRule.Rules.Azure.Configuration
 {
+    /// <summary>
+    /// Options that affect the properties of the <c>deployment()</c> object during expansion.
+    /// </summary>
     public sealed class DeploymentOption : IEquatable<DeploymentOption>
     {
         private const string DEFAULT_NAME = "ps-rule-test-deployment";
@@ -18,6 +21,9 @@ namespace PSRule.Rules.Azure.Configuration
 
         private string _Name;
 
+        /// <summary>
+        /// Creates an empty deployment option.
+        /// </summary>
         public DeploymentOption()
         {
             Name = null;
@@ -36,6 +42,7 @@ namespace PSRule.Rules.Azure.Configuration
             Name = name ?? DEFAULT_NAME;
         }
 
+        /// <inheritdoc/>
         public override bool Equals(object obj)
         {
             return obj is DeploymentOption option && Equals(option);
@@ -63,6 +70,7 @@ namespace PSRule.Rules.Azure.Configuration
                 (!object.Equals(null, o1) && o1.Equals(o2));
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine
@@ -82,6 +90,9 @@ namespace PSRule.Rules.Azure.Configuration
             return result;
         }
 
+        /// <summary>
+        /// The name of the deployment.
+        /// </summary>
         [DefaultValue(null)]
         public string Name
         {
@@ -103,6 +114,9 @@ namespace PSRule.Rules.Azure.Configuration
             FromName = true;
         }
 
+        /// <summary>
+        /// The name of the deployment.
+        /// </summary>
         public string Name { get; set; }
 
         public bool FromName { get; private set; }

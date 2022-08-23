@@ -21,10 +21,17 @@
     },
     "[json]": {
         "editor.formatOnSave": true,
-        "editor.tabSize": 2
+        "editor.tabSize": 2,
+        "files.insertFinalNewline": true
+    },
+    "[jsonc]": {
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2,
+        "files.insertFinalNewline": true
     },
     "[markdown]": {
-        "editor.tabSize": 2
+        "editor.tabSize": 2,
+        "files.insertFinalNewline": true
     },
     "[arm-template]": {
         "editor.tabSize": 4,
@@ -59,6 +66,7 @@
         "kubelet",
         "kubenet",
         "Kubernetes",
+        "Kusto",
         "LESSOREQUAL",
         "LESSOREQUALS",
         "lifecycle",
@@ -96,7 +104,7 @@
     ],
     "cSpell.enabledLanguageIds": [
         "csharp",
-        "git-commit", 
+        "git-commit",
         "markdown",
         "plaintext",
         "powershell",
@@ -104,7 +112,7 @@
         "yaml",
         "yml"
     ],
-    "[csharp]": { 
+    "[csharp]": {
         "editor.formatOnSave": true
     },
     "omnisharp.enableImportCompletion": true,
@@ -116,6 +124,7 @@
     "PSRule.documentation.customSnippetPath": ".vscode/markdown.code-snippets",
     "PSRule.documentation.snippet": "Azure rule documentation",
     "git.branchProtection": [
-        "main"
+        "main",
+        "release/*"
     ]
 }

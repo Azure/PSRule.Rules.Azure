@@ -1,10 +1,20 @@
 ---
+title: Reference
 generated: True
 ---
 
 # Reference
 
 The following rules and features are included in PSRule for Azure.
+
+!!! Info
+    The rule _release_ indicates if the Azure feature is _generally available (GA)_ or available under _preview_.
+    Features provided under previews may have additional limits, availablity restrictions, or [terms][1].
+    By default, PSRule for Azure will not provide recommendations that relate to preview features.
+    To include rules for preview features see [working with baselines][2].
+
+  [1]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+  [2]: ../../working-with-baselines.md
 
 ## Rules
 
@@ -295,3 +305,5 @@ AZR-000280 | [Azure.Cognitive.PublicAccess](Azure.Cognitive.PublicAccess.md) | R
 AZR-000281 | [Azure.Cognitive.ManagedIdentity](Azure.Cognitive.ManagedIdentity.md) | Configure managed identities to access Azure resources. | GA
 AZR-000282 | [Azure.Cognitive.DisableLocalAuth](Azure.Cognitive.DisableLocalAuth.md) | Authenticate requests to Cognitive Services with Azure AD identities. | GA
 AZR-000283 | [Azure.Cognitive.PrivateEndpoints](Azure.Cognitive.PrivateEndpoints.md) | Use Private Endpoints to access Cognitive Services accounts. | GA
+
+*[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

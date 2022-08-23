@@ -1,3 +1,7 @@
+---
+discussion: false
+---
+
 # Change log
 
 See [upgrade notes][1] for helpful information when upgrading from previous versions.
@@ -19,10 +23,26 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.18.0:
+What's changed since pre-release v1.19.0-B0010:
 
 - General improvements:
-  - Updated rule level for the following rules by @BernieWhite:
+  - Improve reporting of failing resource property for rules by @BernieWhite.
+    [#1429](https://github.com/Azure/PSRule.Rules.Azure/issues/1429)
+- Engineering:
+  - Bump PSRule to v2.3.2.
+    [#1574](https://github.com/Azure/PSRule.Rules.Azure/pull/1574)
+  - Bump support projects to .NET 6 by @BernieWhite.
+    [#1560](https://github.com/Azure/PSRule.Rules.Azure/issues/1560)
+- Bug fixes:
+  - Fixed parameter files linked to bicep code via naming convention is not working by @BernieWhite.
+    [#1582](https://github.com/Azure/PSRule.Rules.Azure/issues/1582)
+
+## v1.19.0-B0010 (pre-release)
+
+What's changed since v1.18.1:
+
+- General improvements:
+  - Updated rule level for the following rules by @BernieWhite.
     [#1551](https://github.com/Azure/PSRule.Rules.Azure/issues/1551)
     - Set `Azure.APIM.APIDescriptors` to warning from error.
     - Set `Azure.APIM.ProductDescriptors` to warning from error.
@@ -32,10 +52,29 @@ What's changed since v1.18.0:
 - Engineering:
   - Added publishing of symbols for NuGet packages by @BernieWhite.
     [#1549](https://github.com/Azure/PSRule.Rules.Azure/issues/1549)
+<<<<<<< HEAD
 - New rules:
   - Azure Resources:
     - Check that nested deployments securely pass through administrator usernames @ms-sambell.
       [#1479]https://github.com/Azure/PSRule.Rules.Azure/issues/1479
+=======
+  - Bump PSRule to v2.3.1.
+    [#1561](https://github.com/Azure/PSRule.Rules.Azure/pull/1561)
+  - Bump Az.Resources to v6.1.0.
+    [#1557](https://github.com/Azure/PSRule.Rules.Azure/pull/1557)
+  - Bump Microsoft.NET.Test.Sdk to v17.3.0.
+    [#1563](https://github.com/Azure/PSRule.Rules.Azure/pull/1563)
+
+## v1.18.1
+
+What's changed since v1.18.0:
+
+- Bug fixes:
+  - Fixed `Azure.APIM.HTTPBackend` reports failure when service URL is not defined by @BernieWhite.
+    [#1555](https://github.com/Azure/PSRule.Rules.Azure/issues/1555)
+  - Fixed `Azure.SQL.AAD` failure with newer API by @BernieWhite.
+    [#1302](https://github.com/Azure/PSRule.Rules.Azure/issues/1302)
+>>>>>>> main
 
 ## v1.18.0
 

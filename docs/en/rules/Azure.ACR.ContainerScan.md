@@ -93,7 +93,7 @@ Set-AzSecurityPricing -Name 'ContainerRegistry' -PricingTier 'Standard'
 
 ## NOTES
 
-This rule applies when analyzing resources deployed to Azure.
+This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 

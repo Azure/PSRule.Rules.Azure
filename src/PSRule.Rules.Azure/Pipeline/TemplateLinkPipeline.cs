@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -25,6 +25,7 @@ namespace PSRule.Rules.Azure.Pipeline
             _TemplateHelper = new TemplateLinkHelper(context, _BasePath, skipUnlinked);
         }
 
+        /// <inheritdoc/>
         public override void Process(PSObject sourceObject)
         {
             if (sourceObject == null || !sourceObject.GetPath(out var path))
