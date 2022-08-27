@@ -237,7 +237,7 @@ This option will discover Bicep files from parameter metadata.
     }
     ```
 
-  [7]: using-templates.md#bymetadata
+  [7]: using-templates.md#by-metadata
 
 *[WAF]: Well-Architected Framework
 *[ARM]: Azure Resource Manager

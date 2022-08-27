@@ -73,9 +73,9 @@ In addition, currently the following limitation apply to using Bicep source file
 - Expansion of Bicep source files times out after 5 seconds by default.
   The timeout can be overridden by setting the [AZURE_BICEP_FILE_EXPANSION_TIMEOUT][3] option.
 
-  [1]: using-templates.md#featuresupport
-  [2]: setup/configuring-expansion.md#excludingfiles
-  [3]: setup/setup-bicep.md#configuringtimeout
+  [1]: using-templates.md#using-templates
+  [2]: setup/configuring-expansion.md#excluding-files
+  [3]: setup/setup-bicep.md#configuring-timeout
 
 ## Strong type
 
@@ -138,7 +138,7 @@ displayName: 'PSRule Test Subscription'
 state: 'NotDefined'
 ```
 
-To override, configure [`AZURE_SUBSCRIPTION`](setup/configuring-expansion.md#deploymentsubscription).
+To override, configure [`AZURE_SUBSCRIPTION`](setup/configuring-expansion.md#deployment-subscription).
 
 ### Resource Group
 
@@ -152,7 +152,7 @@ properties:
   provisioningState: 'Succeeded'
 ```
 
-To override, configure [`AZURE_RESOURCE_GROUP`](setup/configuring-expansion.md#deploymentresourcegroup).
+To override, configure [`AZURE_RESOURCE_GROUP`](setup/configuring-expansion.md#deployment-resource-group).
 
 ### Tenant
 
@@ -164,7 +164,7 @@ tenantId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
 displayName: 'PSRule'
 ```
 
-To override, configure [`AZURE_TENANT`](setup/configuring-expansion.md#deploymenttenant).
+To override, configure [`AZURE_TENANT`](setup/configuring-expansion.md#deployment-tenant).
 
 ### Management Group
 
@@ -176,7 +176,7 @@ properties:
   displyName: 'PSRule Test Management Group'
 ```
 
-To override, configure [`AZURE_MANAGEMENT_GROUP`](setup/configuring-expansion.md#deploymentmanagementgroup).
+To override, configure [`AZURE_MANAGEMENT_GROUP`](setup/configuring-expansion.md#deployment-management-group).
 
 *[WAF]: Well-Architected Framework
 *[ARM]: Azure Resource Manager

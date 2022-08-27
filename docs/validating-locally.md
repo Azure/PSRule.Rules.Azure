@@ -11,7 +11,7 @@ PSRule for Azure can be installed locally on MacOS, Linux, and Windows for local
     If you haven't already, follow the instructions on [Installing locally][1] before continuing.
     If analyzing Azure resources from Bicep source files, complete [Setup Bicep][2].
 
-  [1]: install-instructions.md#installinglocally
+  [1]: install-instructions.md#installing-locally
   [2]: setup/setup-bicep.md
 
 ## With Visual Studio Code
