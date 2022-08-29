@@ -22,7 +22,7 @@ spec:
   - Microsoft.CognitiveServices/accounts
   condition:
     anyOf:
-    - field: Properties.publicNetworkAccess
+    - field: properties.publicNetworkAccess
       equals: Disabled
     - field: Properties.networkAcls.defaultAction
       equals: Deny

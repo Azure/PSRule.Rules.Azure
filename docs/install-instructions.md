@@ -96,8 +96,8 @@ You can also use this option to install on CI workers that are not natively supp
 | Windows | Windows PowerShell | Support for version 5.1 with .NET Framework 4.7.2 or greater. |  [link](https://dotnet.microsoft.com/download/dotnet-framework/net48) |
 | Windows, MacOS, Linux | PowerShell | Version 7.2 or greater is support. | [link](https://github.com/PowerShell/PowerShell#get-powershell) |
 | - | - | Multiple PowerShell modules are required (PlatyPS, Pester, PSScriptAnalyzer, PowerShellGet, PackageManagement, InvokeBuild, PSRule). | Installed when you run the `build.ps1` script |
-| - | .NET | .NET Core SDK v3.1 is required. | [link](https://dotnet.microsoft.com/download/dotnet-core/3.1) |
-| - | Bicep CLI | PsRule depends on the Bicep CLI to decompile (expand) bicep modules to ARM | Installed when you run the `build.ps1` script |
+| - | .NET | .NET SDK v6 is required. | [link](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) |
+| - | Bicep CLI | PsRule depends on the Bicep CLI to decompile (expand) Bicep modules to ARM | Installed when you run the `build.ps1` script |
 
 To use PSRule for Azure, PSRule a separate PowerShell module must be installed.
 The required version will automatically be installed along-side PSRule for Azure.
@@ -210,10 +210,6 @@ The following dependencies will be automatically installed if the required versi
 - Bicep CLI
 
 These dependencies are only required for building and running tests for PSRule for Azure.
-
-Additionally .NET SDK v6 is required.
-.NET will not be automatically downloaded and installed.
-To download and install the latest SDK see [Download .NET 6][dotnet].
 
 ### Building from source
 

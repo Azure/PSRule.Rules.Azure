@@ -249,8 +249,8 @@ Describe 'Azure.Resource.adminUsername' -Tag 'Resource' {
              # Fail
              $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
              $ruleResult | Should -Not -BeNullOrEmpty;
-             $ruleResult.Length | Should -Be 2;
-             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-A', 'nestedDeployment-D';
+             $ruleResult.Length | Should -Be 3;
+             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-A', 'nestedDeployment-D', 'nestedDeployment-E';
  
              # Pass
              $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

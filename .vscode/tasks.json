@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Test",
+            "label": "test",
             "detail": "Build and run unit tests.",
             "type": "shell",
             "command": "Invoke-Build Test -AssertStyle Client",
@@ -19,7 +19,7 @@
                 "clear": true,
                 "panel": "dedicated"
             },
-            "linux":{
+            "linux": {
                 "options": {
                     "shell": {
                         "executable": "pwsh",
@@ -31,7 +31,7 @@
             }
         },
         {
-            "label": "Run Pester test group",
+            "label": "run pester test group",
             "detail": "Runs a specific group for Pester tests.",
             "type": "shell",
             "command": "Invoke-Build Test -AssertStyle Client -TestGroup '${input:pesterTestGroup}'",
@@ -43,7 +43,7 @@
                 "clear": true,
                 "panel": "dedicated"
             },
-            "linux":{
+            "linux": {
                 "options": {
                     "shell": {
                         "executable": "pwsh",
@@ -67,7 +67,7 @@
             }
         },
         {
-            "label": "Build",
+            "label": "build",
             "detail": "Build module.",
             "type": "shell",
             "command": "Invoke-Build Build",
@@ -80,7 +80,7 @@
                 "clear": true,
                 "panel": "dedicated"
             },
-            "linux":{
+            "linux": {
                 "options": {
                     "shell": {
                         "executable": "pwsh",
@@ -96,7 +96,7 @@
             "type": "shell",
             "command": "Invoke-Build Clean",
             "problemMatcher": [],
-            "linux":{
+            "linux": {
                 "options": {
                     "shell": {
                         "executable": "pwsh",
@@ -108,7 +108,7 @@
             }
         },
         {
-            "label": "script-analyzer",
+            "label": "script analyzer",
             "type": "shell",
             "command": "Invoke-Build Analyze",
             "problemMatcher": [],
@@ -118,11 +118,11 @@
             }
         },
         {
-            "label": "build-docs",
+            "label": "build docs",
             "type": "shell",
             "command": "Invoke-Build BuildHelp",
             "problemMatcher": [],
-            "linux":{
+            "linux": {
                 "options": {
                     "shell": {
                         "executable": "pwsh",
@@ -134,18 +134,18 @@
             }
         },
         {
-            "label": "scaffold-docs",
+            "label": "scaffold docs",
             "type": "shell",
             "command": "Invoke-Build ScaffoldHelp",
             "problemMatcher": []
         },
         {
-            "label": "Rule docs",
+            "label": "rule docs",
             "detail": "Generate rule and baseline documentation.",
             "type": "shell",
             "command": "Invoke-Build BuildDocs",
             "problemMatcher": [],
-            "linux":{
+            "linux": {
                 "options": {
                     "shell": {
                         "executable": "pwsh",
@@ -157,12 +157,12 @@
             }
         },
         {
-            "label": "Export data",
+            "label": "export data",
             "detail": "Export a list of resource providers from an Azure subscription.",
             "type": "shell",
             "command": "Invoke-Build ExportData",
             "problemMatcher": [],
-            "linux":{
+            "linux": {
                 "options": {
                     "shell": {
                         "executable": "pwsh",
@@ -182,7 +182,7 @@
                 "clear": true,
                 "panel": "dedicated"
             },
-            "linux":{
+            "linux": {
                 "options": {
                     "shell": {
                         "executable": "pwsh",
@@ -194,7 +194,7 @@
             }
         },
         {
-            "label": "Serve docs",
+            "label": "serve docs",
             "detail": "Build and run documentation site locally.",
             "type": "shell",
             "command": "mkdocs serve",
@@ -205,7 +205,7 @@
             }
         },
         {
-            "label": "Install Python dependencies",
+            "label": "install python dependencies",
             "detail": "Install or upgrade dependencies to build and debug mkdocs documentation locally.",
             "type": "shell",
             "command": "python3 -m pip install -r requirements-docs.txt",

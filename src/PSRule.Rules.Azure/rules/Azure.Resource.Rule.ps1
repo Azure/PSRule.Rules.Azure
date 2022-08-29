@@ -37,7 +37,7 @@ Rule 'Azure.ResourceGroup.Name' -Ref 'AZR-000168' -Type 'Microsoft.Resources/res
 
 
 # Synopsis: Ensure all properties named used for setting a username within a deployment are expressions (e.g. an ARM function not a string)
-Rule 'Azure.Resource.adminUsername' -Ref 'AZR-000284' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {  
+Rule 'Azure.Deployment.AdminUsername' -Ref 'AZR-000284' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {  
     $deploymentTemplate = @($TargetObject.properties.template);
 
     if (($deploymentTemplate.resources).Length -eq 0 ) {
@@ -71,9 +71,9 @@ function global:FindAdminUsername {
         [PSObject]$InputObject
         )
     process {
-        if ($Configuration.GetStringValues('AZURE_TEMPLATE_SENSITIVE_PROPERTY_NAMES') -contains $InputObject.Name) {
+        if ($Configuration.GetStringValues('AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES') -contains $InputObject.Name) {
             $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($InputObject.Value);
-            $Assert.Match($cleanValue, '.', '\[[^\]]+\]')   
+            $Assert.Match($cleanValue, '.', '\[p[^\]]+\]')   
         } else {
             $Assert.Pass()
         }

@@ -128,5 +128,38 @@
                 ]
             }
         }
+    },
+    {
+        "name": "nestedDeployment-E",
+        "type": "Microsoft.Resources/deployments",
+        "apiVersion": "2020-10-01",
+        "properties": {
+            "expressionEvaluationOptions": {
+                "scope": "inner"
+            },
+            "mode": "Incremental",
+            "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {},
+                "variables": {
+                    "adminUsername": "sensitive"
+                },
+                "resources": [
+                    {
+                        "apiVersion": "2019-12-01",
+                        "type": "Microsoft.Compute/virtualMachines",
+                        "name": "vm-example",
+                        "location": "australiaeast",
+                        "properties": {
+                            "osProfile": {
+                                "computerName": "vm-example",
+                                "adminUsername": "[variables('adminUsername')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
     }
 ]
