@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -48,6 +49,9 @@ namespace PSRule.Rules.Azure
     internal static class JsonExtensions
     {
         private const string PROPERTY_DEPENDSON = "dependsOn";
+        private const string PROPERTY_RESOURCES = "resources";
+        private const string PROPERTY_NAME = "name";
+        private const string PROPERTY_TYPE = "type";
         private const string TARGETINFO_KEY = "_PSRule";
         private const string TARGETINFO_SOURCE = "source";
         private const string TARGETINFO_FILE = "file";
@@ -95,10 +99,51 @@ namespace PSRule.Rules.Azure
                 token.AddAnnotation(annotation);
         }
 
+        internal static bool TryGetResources(this JObject resource, out JObject[] resources)
+        {
+            if (!resource.TryGetProperty<JArray>(PROPERTY_RESOURCES, out var jArray) || jArray.Count == 0)
+            {
+                resources = null;
+                return false;
+            }
+            resources = jArray.Values<JObject>().ToArray();
+            return true;
+        }
+
+        internal static bool TryGetResources(this JObject resource, string type, out JObject[] resources)
+        {
+            if (!resource.TryGetProperty<JArray>(PROPERTY_RESOURCES, out var jArray) || jArray.Count == 0)
+            {
+                resources = null;
+                return false;
+            }
+            var results = new List<JObject>();
+            foreach (var item in jArray.Values<JObject>())
+                if (item.PropertyEquals(PROPERTY_TYPE, type))
+                    results.Add(item);
+
+            resources = results.Count > 0 ? results.ToArray() : null;
+            return results.Count > 0;
+        }
+
+        internal static bool PropertyEquals(this JObject o, string propertyName, string value)
+        {
+            return o.TryGetProperty(propertyName, out var s) && string.Equals(s, value, StringComparison.OrdinalIgnoreCase);
+        }
+
+        internal static bool ResourceNameEquals(this JObject o, string name)
+        {
+            if (!o.TryGetProperty(PROPERTY_NAME, out var n))
+                return false;
+
+            n = n.SplitLastSegment('/');
+            return string.Equals(n, name, StringComparison.OrdinalIgnoreCase);
+        }
+
         internal static bool TryGetProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken
         {
             value = null;
-            if (o.TryGetValue(propertyName, System.StringComparison.OrdinalIgnoreCase, out var v))
+            if (o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var v))
             {
                 value = (TValue)v;
                 return value != null;

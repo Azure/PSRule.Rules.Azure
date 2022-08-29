@@ -1,6 +1,7 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -22,17 +23,19 @@ namespace PSRule.Rules.Azure.Pipeline
         private static readonly char[] PathLiteralStopCharacters = new char[] { '*', '[', '?' };
         private static readonly char[] PathSeparatorCharacters = new char[] { '\\', '/' };
 
-        private readonly ILogger Logger;
+        private readonly ILogger _Logger;
         private readonly List<FileInfo> _Source;
         private readonly string _BasePath;
         private readonly string _DefaultSearchPattern;
+        private readonly HashSet<string> _Existing;
 
         internal PathBuilder(ILogger logger, string basePath, string searchPattern)
         {
-            Logger = logger;
+            _Logger = logger;
             _Source = new List<FileInfo>();
             _BasePath = PSRuleOption.GetRootedBasePath(basePath);
             _DefaultSearchPattern = searchPattern;
+            _Existing = new HashSet<string>(StringComparer.Ordinal);
         }
 
         public void Add(string[] path)
@@ -61,12 +64,13 @@ namespace PSRule.Rules.Azure.Pipeline
             finally
             {
                 _Source.Clear();
+                _Existing.Clear();
             }
         }
 
         private void FindFiles(string path)
         {
-            Logger.VerboseFindFiles(path);
+            _Logger.VerboseFindFiles(path);
             if (TryAddFile(path))
                 return;
 
@@ -94,8 +98,13 @@ namespace PSRule.Rules.Azure.Pipeline
 
         private void AddFile(string path)
         {
-            Logger.VerboseFoundFile(path);
+            // Avoid adding duplicates.
+            if (_Existing.Contains(path))
+                return;
+
+            _Logger.VerboseFoundFile(path);
             _Source.Add(new FileInfo(path));
+            _Existing.Add(path);
         }
 
         private string GetRootedPath(string path)

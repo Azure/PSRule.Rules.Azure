@@ -30,6 +30,12 @@ namespace PSRule.Rules.Azure
             return new string[] { firstPart, secondPart };
         }
 
+        internal static string SplitLastSegment(this string str, char c)
+        {
+            var lastSubstringIndex = str.LastIndexOf(c);
+            return str.Substring(lastSubstringIndex + 1);
+        }
+
         internal static bool IsExpressionString(this string str)
         {
             return str != null &&

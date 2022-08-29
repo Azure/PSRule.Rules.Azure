@@ -36,6 +36,8 @@ What's changed since pre-release v1.19.0-B0010:
 - Bug fixes:
   - Fixed parameter files linked to bicep code via naming convention is not working by @BernieWhite.
     [#1582](https://github.com/Azure/PSRule.Rules.Azure/issues/1582)
+  - Fixed handling of storage accounts sub-resources with CMK by @BernieWhite.
+    [#1575](https://github.com/Azure/PSRule.Rules.Azure/issues/1575)
 
 ## v1.19.0-B0010 (pre-release)
 
