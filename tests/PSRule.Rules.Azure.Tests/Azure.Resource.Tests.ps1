@@ -243,8 +243,8 @@ Describe 'Azure.Resource.adminUsername' -Tag 'Resource' {
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
         }
 
-        It 'Azure.Resource.adminUsername' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Resource.adminUsername' };
+        It 'Azure.Deployment.AdminUsername' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Deployment.AdminUsername' };
 
              # Fail
              $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
