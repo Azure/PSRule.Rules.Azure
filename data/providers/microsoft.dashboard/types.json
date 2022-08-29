@@ -30,13 +30,27 @@
       "South Central US",
       "West Central US",
       "West Europe",
-      "East US"
+      "East US",
+      "Australia East",
+      "Sweden Central",
+      "West US 3"
     ],
     "zoneMappings": null
   },
   {
     "aliases": null,
     "resourceType": "locations",
+    "apiVersions": [
+      "2022-08-01",
+      "2022-05-01-preview",
+      "2021-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
       "2022-08-01",
       "2022-05-01-preview",

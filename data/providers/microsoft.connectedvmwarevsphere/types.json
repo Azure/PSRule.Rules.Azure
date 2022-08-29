@@ -29,7 +29,8 @@
     "locations": [
       "East US",
       "West Europe",
-      "Australia East"
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -59,7 +60,8 @@
     "locations": [
       "East US",
       "West Europe",
-      "Australia East"
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -89,7 +91,8 @@
     "locations": [
       "East US",
       "West Europe",
-      "Australia East"
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -115,7 +118,9 @@
       "East US 2 EUAP",
       "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "Southeast Asia",
+      "UK South"
     ],
     "zoneMappings": null
   },
@@ -161,7 +166,8 @@
     "locations": [
       "East US",
       "West Europe",
-      "Australia East"
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -195,7 +201,8 @@
     "locations": [
       "East US",
       "West Europe",
-      "Australia East"
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -246,7 +253,8 @@
     "locations": [
       "East US",
       "West Europe",
-      "Australia East"
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -371,7 +379,8 @@
     "locations": [
       "East US",
       "West Europe",
-      "Australia East"
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -402,7 +411,8 @@
     "locations": [
       "East US",
       "West Europe",
-      "Australia East"
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -435,7 +445,8 @@
     "locations": [
       "East US",
       "West Europe",
-      "Australia East"
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -457,7 +468,8 @@
     "locations": [
       "East US",
       "West Europe",
-      "Australia East"
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -536,7 +548,8 @@
     "locations": [
       "East US",
       "West Europe",
-      "Australia East"
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   },
@@ -566,7 +579,8 @@
     "locations": [
       "East US",
       "West Europe",
-      "Australia East"
+      "Australia East",
+      "Canada Central"
     ],
     "zoneMappings": null
   }

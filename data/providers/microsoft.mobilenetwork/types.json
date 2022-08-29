@@ -5,8 +5,7 @@
     "apiVersions": [
       "2022-04-01-preview",
       "2022-03-01-preview",
-      "2021-04-01-preview",
-      "2020-06-01-preview"
+      "2021-04-01-preview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -23,7 +22,6 @@
       "East US 2 EUAP",
       "Central US EUAP",
       "West Central US",
-      "West Europe",
       "East US"
     ],
     "zoneMappings": null
@@ -34,8 +32,7 @@
     "apiVersions": [
       "2022-04-01-preview",
       "2022-03-01-preview",
-      "2021-04-01-preview",
-      "2020-06-01-preview"
+      "2021-04-01-preview"
     ],
     "locations": [],
     "zoneMappings": null

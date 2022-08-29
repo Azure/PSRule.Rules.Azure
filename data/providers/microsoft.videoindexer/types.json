@@ -3,21 +3,13 @@
     "aliases": null,
     "resourceType": "accounts",
     "apiVersions": [
+      "2022-08-01",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview",
       "2021-10-18-preview"
     ],
     "locations": [
-      "West US 3",
-      "Australia Central",
-      "Germany West Central",
-      "Australia Southeast",
-      "UAE North",
-      "Norway East",
-      "UK West",
-      "Canada East",
-      "Sweden Central",
       "Southeast Asia",
       "East Asia",
       "North Europe",
@@ -48,6 +40,7 @@
     "aliases": null,
     "resourceType": "checknameavailability",
     "apiVersions": [
+      "2022-08-01",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview",
@@ -60,6 +53,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-08-01",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview",
@@ -72,20 +66,12 @@
     "aliases": null,
     "resourceType": "locations/classicaccounts",
     "apiVersions": [
+      "2022-08-01",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview"
     ],
     "locations": [
-      "West US 3",
-      "Australia Central",
-      "Germany West Central",
-      "Australia Southeast",
-      "UAE North",
-      "Norway East",
-      "UK West",
-      "Canada East",
-      "Sweden Central",
       "Southeast Asia",
       "East Asia",
       "North Europe",
@@ -116,6 +102,7 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2022-08-01",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview",
@@ -160,20 +147,12 @@
     "aliases": null,
     "resourceType": "locations/userclassicaccounts",
     "apiVersions": [
+      "2022-08-01",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview"
     ],
     "locations": [
-      "West US 3",
-      "Australia Central",
-      "Germany West Central",
-      "Australia Southeast",
-      "UAE North",
-      "Norway East",
-      "UK West",
-      "Canada East",
-      "Sweden Central",
       "Southeast Asia",
       "East Asia",
       "North Europe",
@@ -204,6 +183,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-08-01",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview",

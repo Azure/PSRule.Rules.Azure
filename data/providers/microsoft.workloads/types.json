@@ -79,30 +79,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "phpWorkloads",
-    "apiVersions": [
-      "2021-12-01-preview"
-    ],
-    "locations": [
-      "East US 2",
-      "North Europe"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "phpWorkloads/wordpressInstances",
-    "apiVersions": [
-      "2021-12-01-preview"
-    ],
-    "locations": [
-      "East US 2",
-      "North Europe"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
     "resourceType": "sapVirtualInstances",
     "apiVersions": [
       "2021-12-01-preview"

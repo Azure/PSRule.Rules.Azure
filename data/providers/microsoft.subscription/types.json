@@ -10,6 +10,26 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "acceptOwnership",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-01-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "acceptOwnershipStatus",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-01-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.Subscription/aliases/subscriptionId": "properties.subscriptionId"
     },
@@ -105,6 +125,16 @@
     "locations": [
       "West US"
     ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "policies",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-01-01-privatepreview"
+    ],
+    "locations": [],
     "zoneMappings": null
   },
   {

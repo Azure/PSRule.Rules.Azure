@@ -11,51 +11,6 @@
     "zoneMappings": null
   },
   {
-    "aliases": {
-      "Microsoft.OperationsManagement/managementconfigurations/applicationId": "properties.applicationId",
-      "Microsoft.OperationsManagement/managementconfigurations/parameters": "properties.parameters",
-      "Microsoft.OperationsManagement/managementconfigurations/parameters[*]": "properties.parameters[*]",
-      "Microsoft.OperationsManagement/managementconfigurations/parameters[*].name": "properties.parameters[*].name",
-      "Microsoft.OperationsManagement/managementconfigurations/parameters[*].value": "properties.parameters[*].value",
-      "Microsoft.OperationsManagement/managementconfigurations/parentResourceType": "properties.parentResourceType",
-      "Microsoft.OperationsManagement/managementconfigurations/provisioningState": "properties.provisioningState",
-      "Microsoft.OperationsManagement/managementconfigurations/template": "properties.template"
-    },
-    "resourceType": "managementconfigurations",
-    "apiVersions": [
-      "2015-11-01-preview"
-    ],
-    "locations": [
-      "East US",
-      "West Europe",
-      "Southeast Asia",
-      "Australia Southeast",
-      "West Central US",
-      "Japan East",
-      "UK South",
-      "Central India",
-      "Canada Central",
-      "West US 2",
-      "Australia East",
-      "Australia Central",
-      "France Central",
-      "Korea Central",
-      "North Europe",
-      "Central Us",
-      "East Us 2",
-      "East Asia",
-      "West Us",
-      "South Central Us",
-      "North Central US",
-      "UK West",
-      "South Africa North",
-      "Brazil South",
-      "Switzerland North",
-      "Switzerland West"
-    ],
-    "zoneMappings": null
-  },
-  {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [

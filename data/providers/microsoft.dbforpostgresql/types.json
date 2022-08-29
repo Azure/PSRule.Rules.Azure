@@ -1,6 +1,41 @@
 [
   {
     "aliases": null,
+    "resourceType": "availableEngineVersions",
+    "apiVersions": [
+      "2020-10-05-privatepreview"
+    ],
+    "locations": [
+      "East US 2",
+      "East US",
+      "North Europe",
+      "Southeast Asia",
+      "West Europe",
+      "West US 2",
+      "North Central US",
+      "Canada Central",
+      "Australia East",
+      "UK South",
+      "Japan East",
+      "Central US",
+      "Korea Central",
+      "Central India",
+      "East Asia",
+      "France Central",
+      "Switzerland North",
+      "Switzerland West",
+      "Brazil South",
+      "Germany West Central",
+      "Japan West",
+      "West Central US",
+      "West US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [],
     "locations": [
@@ -129,6 +164,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany West Central",
       "Korea Central",
       "Korea South",
@@ -138,11 +174,13 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
       "South India",
       "Switzerland North",
+      "Switzerland West",
       "Sweden Central",
       "UAE North",
       "UK South",
@@ -264,6 +302,14 @@
       },
       {
         "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Qatar Central",
         "zones": [
           "1",
           "2",
@@ -597,6 +643,7 @@
     "resourceType": "locations/capabilities",
     "apiVersions": [
       "2022-03-08-privatepreview",
+      "2022-01-20-preview",
       "2021-06-01-preview",
       "2021-06-01",
       "2020-11-05-preview",
@@ -648,6 +695,8 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-03-08-privatepreview",
+      "2022-01-20-preview",
       "2021-06-01-preview",
       "2021-06-01",
       "2020-11-05-preview",

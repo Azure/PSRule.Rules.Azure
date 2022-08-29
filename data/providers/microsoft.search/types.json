@@ -25,6 +25,17 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
+    "apiVersions": [
+      "2021-06-06-preview"
+    ],
+    "locations": [
+      "Central US EUAP"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2021-04-01-Preview",
@@ -50,6 +61,7 @@
       "2015-08-19"
     ],
     "locations": [
+      "Qatar Central",
       "Sweden Central",
       "UK West",
       "Korea South",
@@ -163,6 +175,7 @@
       "2014-07-31-Preview"
     ],
     "locations": [
+      "Qatar Central",
       "Sweden Central",
       "UK West",
       "Korea South",

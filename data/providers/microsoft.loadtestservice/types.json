@@ -39,7 +39,8 @@
       "Southeast Asia",
       "Australia East",
       "East US 2",
-      "South Central US"
+      "South Central US",
+      "UK South"
     ],
     "zoneMappings": null
   },
@@ -69,14 +70,14 @@
       "2020-09-01-preview"
     ],
     "locations": [
-      "East US 2 EUAP",
       "North Europe",
       "Southeast Asia",
       "Australia East",
       "East US",
       "East US 2",
       "South Central US",
-      "West US 2"
+      "West US 2",
+      "UK South"
     ],
     "zoneMappings": null
   },

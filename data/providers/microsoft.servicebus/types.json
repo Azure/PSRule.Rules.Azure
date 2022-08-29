@@ -155,7 +155,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -171,11 +172,12 @@
       "2021-06-01-preview",
       "2021-01-01-preview",
       "2018-01-01-preview",
-      "2017-04-01",
-      "2015-08-01",
-      "2014-09-01"
+      "2017-04-01"
     ],
-    "locations": [],
+    "locations": [
+      "North Central US",
+      "West Central US"
+    ],
     "zoneMappings": null
   },
   {
@@ -258,7 +260,8 @@
       "Norway East",
       "Jio India West",
       "West US 3",
-      "Sweden Central"
+      "Sweden Central",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -384,6 +387,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -439,6 +443,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -491,6 +496,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -543,6 +549,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -595,6 +602,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -647,6 +655,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",

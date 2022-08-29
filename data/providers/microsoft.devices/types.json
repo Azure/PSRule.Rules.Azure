@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-04-30-preview",
       "2021-07-15-preview",
       "2021-07-02-preview",
       "2021-07-02",
@@ -204,6 +205,7 @@
     },
     "resourceType": "IotHubs",
     "apiVersions": [
+      "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",
       "2021-07-01-preview",
@@ -326,6 +328,7 @@
     "aliases": null,
     "resourceType": "IotHubs/failover",
     "apiVersions": [
+      "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",
       "2021-07-01-preview",
@@ -446,6 +449,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",
       "2021-07-01-preview",
@@ -486,6 +490,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",
       "2021-07-01-preview",
@@ -559,6 +564,7 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",
       "2021-07-01-preview",
@@ -599,6 +605,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",
       "2021-07-01-preview",
@@ -752,6 +759,7 @@
     "aliases": null,
     "resourceType": "usages",
     "apiVersions": [
+      "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",
       "2021-07-01-preview",

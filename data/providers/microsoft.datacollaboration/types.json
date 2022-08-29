@@ -12,6 +12,7 @@
       "West US 2",
       "UK South",
       "Southeast Asia",
+      "North Europe",
       "East US 2",
       "West Europe",
       "West US"
@@ -42,6 +43,7 @@
       "West US 2",
       "UK South",
       "Southeast Asia",
+      "North Europe",
       "East US 2",
       "West Europe",
       "West US"
@@ -61,6 +63,7 @@
       "West US 2",
       "UK South",
       "Southeast Asia",
+      "North Europe",
       "East US 2",
       "West Europe",
       "West US"
@@ -76,7 +79,8 @@
     "locations": [
       "East US",
       "Australia East",
-      "Southeast Asia"
+      "Southeast Asia",
+      "North Europe"
     ],
     "zoneMappings": null
   },

@@ -89,7 +89,9 @@
       "2017-03-01-preview"
     ],
     "locations": [
-      "Global"
+      "Global",
+      "Sweden Central",
+      "Germany West Central"
     ],
     "zoneMappings": null
   },
@@ -345,6 +347,7 @@
     },
     "resourceType": "autoscalesettings",
     "apiVersions": [
+      "2022-10-01",
       "2021-05-01-preview",
       "2015-04-01",
       "2014-04-01"
@@ -391,8 +394,7 @@
       "Norway West",
       "West US 3",
       "Jio India West",
-      "Sweden Central",
-      "Qatar Central"
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -1643,7 +1645,8 @@
       "Sweden Central",
       "Canada East",
       "Jio India Central",
-      "Jio India West"
+      "Jio India West",
+      "Qatar Central"
     ],
     "zoneMappings": null
   },
@@ -2393,8 +2396,7 @@
       "Norway West",
       "West US 3",
       "Jio India West",
-      "Sweden Central",
-      "Qatar Central"
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -2447,8 +2449,7 @@
       "Norway West",
       "West US 3",
       "Jio India West",
-      "Sweden Central",
-      "Qatar Central"
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -2522,8 +2523,7 @@
       "Norway West",
       "West US 3",
       "Jio India West",
-      "Sweden Central",
-      "Qatar Central"
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -2872,6 +2872,7 @@
       "South Africa West",
       "UAE Central",
       "UAE North",
+      "Qatar Central",
       "Switzerland North",
       "Switzerland West",
       "Germany North",
@@ -2926,6 +2927,7 @@
       "South Africa West",
       "UAE Central",
       "UAE North",
+      "Qatar Central",
       "Switzerland North",
       "Switzerland West",
       "Germany North",
@@ -2987,6 +2989,7 @@
       "South Africa West",
       "UAE Central",
       "UAE North",
+      "Qatar Central",
       "Switzerland North",
       "Switzerland West",
       "Germany North",
@@ -3346,6 +3349,7 @@
     },
     "resourceType": "scheduledqueryrules",
     "apiVersions": [
+      "2022-06-15",
       "2021-08-01",
       "2021-02-01-preview",
       "2020-05-01-preview",

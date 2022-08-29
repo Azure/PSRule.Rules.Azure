@@ -204,6 +204,7 @@
     },
     "resourceType": "containerGroups",
     "apiVersions": [
+      "2022-09-01",
       "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
@@ -242,6 +243,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -258,209 +260,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": [
-      {
-        "location": "Australia East",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Brazil South",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Canada Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Central India",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Central US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "East Asia",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "East US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "East US 2",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "France Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Germany West Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Japan East",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Korea Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "North Central US",
-        "zones": []
-      },
-      {
-        "location": "North Europe",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Norway East",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "South Africa North",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "South Central US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Southeast Asia",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Sweden Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Switzerland North",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "UAE North",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "UK South",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "West Europe",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "West US 2",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "West US 3",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      }
-    ]
+    "zoneMappings": null
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-09-01",
       "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
@@ -485,6 +291,7 @@
     "aliases": null,
     "resourceType": "locations/cachedImages",
     "apiVersions": [
+      "2022-09-01",
       "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
@@ -523,6 +330,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -545,6 +353,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2022-09-01",
       "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
@@ -583,6 +392,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -605,6 +415,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2022-09-01",
       "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
@@ -644,6 +455,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -666,6 +478,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2022-09-01",
       "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
@@ -704,6 +517,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -726,6 +540,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2022-09-01",
       "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
@@ -764,6 +579,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -786,6 +602,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2022-09-01",
       "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
@@ -824,6 +641,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -846,6 +664,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-01",
       "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
@@ -870,6 +689,7 @@
     "aliases": null,
     "resourceType": "serviceAssociationLinks",
     "apiVersions": [
+      "2022-09-01",
       "2022-04-01-preview",
       "2021-10-01",
       "2021-09-01",
@@ -908,6 +728,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",

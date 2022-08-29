@@ -149,6 +149,28 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "prometheusRuleGroups",
+    "apiVersions": [
+      "2021-07-22-preview"
+    ],
+    "locations": [
+      "North Central US",
+      "East US",
+      "East US 2",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "Central US",
+      "South Central US",
+      "Brazil South",
+      "Southeast Asia",
+      "Central India",
+      "North Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.AlertsManagement/smartDetectorAlertRules/actionGroups": "properties.actionGroups",
       "Microsoft.AlertsManagement/smartDetectorAlertRules/actionGroups.customEmailSubject": "properties.actionGroups.customEmailSubject",

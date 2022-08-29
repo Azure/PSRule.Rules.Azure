@@ -52,5 +52,18 @@
     ],
     "locations": [],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/eventgridfilters",
+    "apiVersions": [
+      "2022-02-01-privatepreview"
+    ],
+    "locations": [
+      "West Europe",
+      "North Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
   }
 ]

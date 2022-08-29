@@ -23,7 +23,13 @@
     "apiVersions": [
       "2022-05-17-preview"
     ],
-    "locations": [],
+    "locations": [
+      "Central US EUAP",
+      "North Europe",
+      "West Europe",
+      "East US",
+      "West US"
+    ],
     "zoneMappings": null
   },
   {
@@ -42,8 +48,6 @@
       "2022-05-17-preview"
     ],
     "locations": [
-      "West Central US",
-      "West US 2",
       "North Europe",
       "West Europe",
       "East US",

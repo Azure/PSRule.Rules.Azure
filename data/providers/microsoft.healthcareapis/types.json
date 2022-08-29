@@ -53,7 +53,8 @@
       "Switzerland North",
       "Central India",
       "West US 3",
-      "Korea Central"
+      "Korea Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -93,7 +94,8 @@
       "Switzerland North",
       "Central India",
       "West US 3",
-      "Korea Central"
+      "Korea Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -132,7 +134,8 @@
       "Switzerland North",
       "Central India",
       "West US 3",
-      "Korea Central"
+      "Korea Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -209,7 +212,8 @@
       "South Africa North",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -324,7 +328,8 @@
       "Switzerland North",
       "Central India",
       "West US 3",
-      "Southeast Asia"
+      "Southeast Asia",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -366,7 +371,8 @@
       "South Africa North",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -400,7 +406,8 @@
       "South Africa North",
       "Switzerland North",
       "Central India",
-      "West US 3"
+      "West US 3",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -430,7 +437,8 @@
       "West US 3",
       "Central India",
       "Southeast Asia",
-      "Korea Central"
+      "Korea Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -465,7 +473,8 @@
       "Central India",
       "West US 3",
       "Southeast Asia",
-      "Korea Central"
+      "Korea Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -492,7 +501,8 @@
       "Central India",
       "West US 3",
       "Southeast Asia",
-      "Korea Central"
+      "Korea Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -543,7 +553,8 @@
       "Central India",
       "West US 3",
       "Southeast Asia",
-      "Korea Central"
+      "Korea Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -578,7 +589,8 @@
       "Central India",
       "West US 3",
       "Southeast Asia",
-      "Korea Central"
+      "Korea Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -611,7 +623,8 @@
       "Central India",
       "West US 3",
       "Southeast Asia",
-      "Korea Central"
+      "Korea Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -638,7 +651,8 @@
       "Central India",
       "West US 3",
       "Southeast Asia",
-      "Korea Central"
+      "Korea Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -665,7 +679,8 @@
       "Central India",
       "West US 3",
       "Southeast Asia",
-      "Korea Central"
+      "Korea Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   },
@@ -692,7 +707,8 @@
       "Central India",
       "West US 3",
       "Southeast Asia",
-      "Korea Central"
+      "Korea Central",
+      "Sweden Central"
     ],
     "zoneMappings": null
   }

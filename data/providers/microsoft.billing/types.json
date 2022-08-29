@@ -116,6 +116,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/billingRoleDefinitions",
     "apiVersions": [
+      "2020-12-15-privatepreview",
       "2020-05-01",
       "2019-10-01-preview"
     ],
@@ -235,6 +236,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/invoiceSections/billingRoleDefinitions",
     "apiVersions": [
+      "2020-12-15-privatepreview",
       "2020-05-01",
       "2019-10-01-preview"
     ],
@@ -453,6 +455,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingRoleDefinitions",
     "apiVersions": [
+      "2020-12-15-privatepreview",
       "2020-05-01",
       "2019-10-01-preview"
     ],
@@ -548,11 +551,38 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/customers/billingRoleAssignments",
+    "apiVersions": [
+      "2020-12-15-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/customers/billingRoleDefinitions",
+    "apiVersions": [
+      "2020-12-15-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/customers/billingSubscriptions",
     "apiVersions": [
       "2020-05-01",
       "2019-10-01-preview",
       "2018-11-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/customers/createBillingRoleAssignment",
+    "apiVersions": [
+      "2020-12-15-privatepreview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -653,6 +683,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/departments/billingRoleDefinitions",
     "apiVersions": [
+      "2020-12-15-privatepreview",
       "2020-05-01",
       "2019-10-01-preview"
     ],
@@ -714,6 +745,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/enrollmentAccounts/billingRoleDefinitions",
     "apiVersions": [
+      "2020-12-15-privatepreview",
       "2020-05-01",
       "2019-10-01-preview"
     ],
