@@ -13,17 +13,23 @@ namespace PSRule.Rules.Azure.Configuration
     {
         private const OutputEncoding DEFAULT_ENCODING = OutputEncoding.Default;
 
-        internal static readonly OutputOption Default = new OutputOption
+        internal static readonly OutputOption Default = new()
         {
             Encoding = DEFAULT_ENCODING
         };
 
+        /// <summary>
+        /// Create an empty output option.
+        /// </summary>
         public OutputOption()
         {
             Encoding = null;
             Path = null;
         }
 
+        /// <summary>
+        /// Create a output option based on an existing option.
+        /// </summary>
         public OutputOption(OutputOption option)
         {
             if (option == null)
@@ -39,6 +45,7 @@ namespace PSRule.Rules.Azure.Configuration
             return obj is OutputOption option && Equals(option);
         }
 
+        /// <inheritdoc/>
         public bool Equals(OutputOption other)
         {
             return other != null &&
