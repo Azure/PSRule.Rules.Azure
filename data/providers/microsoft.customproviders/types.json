@@ -29,12 +29,12 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
-      "East US",
-      "West US 2",
-      "West Europe",
-      "North Europe",
       "Canada Central",
-      "Canada East"
+      "Canada East",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -70,12 +70,12 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
-      "East US",
-      "West US 2",
-      "West Europe",
-      "North Europe",
       "Canada Central",
-      "Canada East"
+      "Canada East",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   }

@@ -250,6 +250,8 @@
     "aliases": null,
     "resourceType": "reservationOrders",
     "apiVersions": [
+      "2022-06-02-privatepreview",
+      "2022-06-02-beta",
       "2022-03-01-beta",
       "2022-03-01",
       "2021-07-01-beta",
@@ -329,6 +331,8 @@
     "aliases": null,
     "resourceType": "reservationOrders/reservations",
     "apiVersions": [
+      "2022-06-02-privatepreview",
+      "2022-06-02-beta",
       "2022-03-01-beta",
       "2022-03-01",
       "2021-07-01-beta",
@@ -440,6 +444,8 @@
     "aliases": null,
     "resourceType": "reservations",
     "apiVersions": [
+      "2022-06-02-privatepreview",
+      "2022-06-02-beta",
       "2022-03-01-beta",
       "2022-03-01",
       "2021-07-01-beta",

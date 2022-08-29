@@ -21,17 +21,17 @@
       "2020-12-08"
     ],
     "locations": [
-      "East US",
-      "West Europe",
-      "East US 2",
-      "West US 2",
-      "South Central US",
-      "UK South",
-      "North Europe",
-      "Southeast Asia",
       "Australia East",
       "Central India",
-      "West Central US"
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -53,18 +53,18 @@
       "2020-12-08"
     ],
     "locations": [
-      "East US",
-      "West Europe",
-      "East US 2",
-      "West US 2",
-      "South Central US",
-      "UK South",
-      "North Europe",
-      "Southeast Asia",
       "Australia East",
-      "East US 2 EUAP",
       "Central India",
-      "West Central US"
+      "East US",
+      "East US 2",
+      "East US 2 EUAP",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },

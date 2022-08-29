@@ -3,14 +3,16 @@
     "aliases": null,
     "resourceType": "accounts",
     "apiVersions": [
+      "2022-03-01-preview",
       "2022-02-01",
       "2021-02-01-preview"
     ],
     "locations": [
       "East US",
-      "West US",
+      "Korea Central",
       "North Europe",
-      "West Europe"
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -18,14 +20,16 @@
     "aliases": null,
     "resourceType": "accounts/modeling",
     "apiVersions": [
+      "2022-03-01-preview",
       "2022-02-01",
       "2021-02-01-preview"
     ],
     "locations": [
-      "West US",
-      "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "Korea Central",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -33,14 +37,16 @@
     "aliases": null,
     "resourceType": "accounts/serviceEndpoints",
     "apiVersions": [
+      "2022-03-01-preview",
       "2022-02-01",
       "2021-02-01-preview"
     ],
     "locations": [
       "East US",
-      "West US",
+      "Korea Central",
       "North Europe",
-      "West Europe"
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -48,6 +54,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-03-01-preview",
       "2022-02-01",
       "2021-02-01-preview"
@@ -59,6 +66,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-03-01-preview",
       "2022-02-01",
       "2021-02-01-preview"
@@ -70,18 +78,19 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2022-03-01-preview",
       "2022-02-01",
       "2021-02-01-preview"
     ],
     "locations": [
-      "East US",
-      "West US",
-      "North Europe",
-      "West Europe",
       "Australia East",
       "Canada Central",
       "Central US EUAP",
-      "East US 2 EUAP"
+      "East US",
+      "Korea Central",
+      "North Europe",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -89,6 +98,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-03-01-preview",
       "2022-02-01",
       "2021-02-01-preview"

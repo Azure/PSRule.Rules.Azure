@@ -610,6 +610,29 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
         }
 
+        [Fact]
+        public void MaterializedView()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.8.json"), null);
+            Assert.NotNull(resources);
+            Assert.Equal(8, resources.Length);
+
+            var storage = resources.FirstOrDefault(r => r["type"].ToString() == "Microsoft.Storage/storageAccounts");
+            Assert.NotNull(storage);
+            Assert.Equal("Standard_LRS", storage["sku"]["name"].ToString());
+            Assert.Equal("TLS1_0", storage["properties"]["minimumTlsVersion"].ToString());
+            Assert.True(storage["properties"]["allowBlobPublicAccess"].Value<bool>());
+            var subResources = storage["resources"].Values<JObject>().ToArray();
+            Assert.Single(subResources);
+            Assert.False(subResources[0]["properties"]["deleteRetentionPolicy"]["enabled"].Value<bool>());
+
+            var web = resources.FirstOrDefault(r => r["type"].ToString() == "Microsoft.Web/sites");
+            Assert.Equal("1.0", web["properties"]["siteConfig"]["minTlsVersion"].ToString());
+
+            var sqlServer = resources.FirstOrDefault(r => r["type"].ToString() == "Microsoft.Sql/servers");
+            Assert.Equal("abc", sqlServer["properties"]["administrators"]["login"].ToString());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

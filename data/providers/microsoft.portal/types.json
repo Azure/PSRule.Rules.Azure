@@ -83,8 +83,8 @@
       "South Africa North",
       "South Africa West",
       "South Central US",
-      "Southeast Asia",
       "South India",
+      "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -139,8 +139,8 @@
       "South Africa North",
       "South Africa West",
       "South Central US",
-      "Southeast Asia",
       "South India",
+      "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -181,15 +181,15 @@
       "2017-01-01-preview"
     ],
     "locations": [
-      "West US",
-      "East US",
       "Central India",
+      "Central US",
+      "East US",
+      "East US 2",
       "North Europe",
-      "West Europe",
       "South Central US",
       "Southeast Asia",
-      "East US 2",
-      "Central US"
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -204,15 +204,15 @@
       "2017-01-01-preview"
     ],
     "locations": [
-      "West US",
-      "East US",
       "Central India",
+      "Central US",
+      "East US",
+      "East US 2",
       "North Europe",
-      "West Europe",
       "South Central US",
       "Southeast Asia",
-      "East US 2",
-      "Central US"
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -253,8 +253,8 @@
       "South Africa North",
       "South Africa West",
       "South Central US",
-      "Southeast Asia",
       "South India",
+      "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -309,8 +309,8 @@
       "South Africa North",
       "South Africa West",
       "South Central US",
-      "Southeast Asia",
       "South India",
+      "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",

@@ -57,6 +57,7 @@
     },
     "resourceType": "botServices",
     "apiVersions": [
+      "2022-06-15-preview",
       "2021-05-01-preview",
       "2021-03-01",
       "2020-06-02",
@@ -206,6 +207,7 @@
     },
     "resourceType": "botServices/channels",
     "apiVersions": [
+      "2022-06-15-preview",
       "2021-05-01-preview",
       "2021-03-01",
       "2020-06-02",
@@ -240,6 +242,7 @@
     },
     "resourceType": "botServices/connections",
     "apiVersions": [
+      "2022-06-15-preview",
       "2021-05-01-preview",
       "2021-03-01",
       "2020-06-02",
@@ -257,6 +260,7 @@
     "aliases": null,
     "resourceType": "botServices/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2022-06-15-preview",
       "2021-05-01-preview",
       "2021-03-01"
     ],
@@ -279,6 +283,7 @@
     },
     "resourceType": "botServices/privateEndpointConnections",
     "apiVersions": [
+      "2022-06-15-preview",
       "2021-05-01-preview",
       "2021-03-01"
     ],
@@ -293,6 +298,7 @@
     "aliases": null,
     "resourceType": "botServices/privateLinkResources",
     "apiVersions": [
+      "2022-06-15-preview",
       "2021-05-01-preview",
       "2021-03-01"
     ],
@@ -307,6 +313,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-06-15-preview",
       "2021-05-01-preview",
       "2021-03-01",
       "2020-06-02",
@@ -322,6 +329,7 @@
     "aliases": null,
     "resourceType": "hostSettings",
     "apiVersions": [
+      "2022-06-15-preview",
       "2021-05-01-preview",
       "2021-03-01"
     ],
@@ -334,6 +342,7 @@
     "aliases": null,
     "resourceType": "listAuthServiceProviders",
     "apiVersions": [
+      "2022-06-15-preview",
       "2021-05-01-preview",
       "2021-03-01",
       "2020-06-02",
@@ -347,8 +356,20 @@
   },
   {
     "aliases": null,
+    "resourceType": "listQnAMakerEndpointKeys",
+    "apiVersions": [
+      "2022-06-15-preview"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2022-06-15-preview",
       "2021-05-01-preview",
       "2021-03-01"
     ],
@@ -361,6 +382,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-06-15-preview",
       "2021-05-01-preview",
       "2021-03-01",
       "2020-06-02",

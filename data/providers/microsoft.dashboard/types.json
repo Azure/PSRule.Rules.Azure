@@ -27,16 +27,30 @@
       "2021-09-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "East US",
       "South Central US",
+      "Sweden Central",
       "West Central US",
       "West Europe",
-      "East US"
+      "West US 3"
     ],
     "zoneMappings": null
   },
   {
     "aliases": null,
     "resourceType": "locations",
+    "apiVersions": [
+      "2022-08-01",
+      "2022-05-01-preview",
+      "2021-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
       "2022-08-01",
       "2022-05-01-preview",
@@ -54,17 +68,17 @@
       "2021-09-01-preview"
     ],
     "locations": [
-      "East US 2 EUAP",
+      "Australia East",
       "Central US EUAP",
-      "South Central US",
-      "West Europe",
+      "East Asia",
       "East US",
       "East US 2",
-      "West Central US",
-      "Australia East",
+      "East US 2 EUAP",
+      "South Central US",
       "Sweden Central",
-      "West US 3",
-      "East Asia"
+      "West Central US",
+      "West Europe",
+      "West US 3"
     ],
     "zoneMappings": null
   },

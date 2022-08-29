@@ -18,7 +18,7 @@ namespace PSRule.Rules.Azure.Configuration
 
         private const string ID_PREFIX = "/tenants/";
 
-        internal readonly static TenantOption Default = new TenantOption
+        internal readonly static TenantOption Default = new()
         {
             CountryCode = DEFAULT_COUNTRYCODE,
             TenantId = DEFAULT_TENANTID,
@@ -60,6 +60,7 @@ namespace PSRule.Rules.Azure.Configuration
             return obj is TenantOption option && Equals(option);
         }
 
+        /// <inheritdoc/>
         public bool Equals(TenantOption other)
         {
             return other != null &&
@@ -68,16 +69,25 @@ namespace PSRule.Rules.Azure.Configuration
                 DisplayName == other.DisplayName;
         }
 
+        /// <summary>
+        /// Compares two tenant options to determine if they are equal.
+        /// </summary>
         public static bool operator ==(TenantOption o1, TenantOption o2)
         {
             return Equals(o1, o2);
         }
 
+        /// <summary>
+        /// Compares two tenant options to determine if they are not equal.
+        /// </summary>
         public static bool operator !=(TenantOption o1, TenantOption o2)
         {
             return !Equals(o1, o2);
         }
 
+        /// <summary>
+        /// Compares two tenant options to determine if they are equal.
+        /// </summary>
         public static bool Equals(TenantOption o1, TenantOption o2)
         {
             return (object.Equals(null, o1) && object.Equals(null, o2)) ||

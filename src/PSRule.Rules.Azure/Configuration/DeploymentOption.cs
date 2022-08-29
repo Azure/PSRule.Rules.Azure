@@ -14,7 +14,7 @@ namespace PSRule.Rules.Azure.Configuration
     {
         private const string DEFAULT_NAME = "ps-rule-test-deployment";
 
-        internal readonly static DeploymentOption Default = new DeploymentOption
+        internal readonly static DeploymentOption Default = new()
         {
             Name = DEFAULT_NAME
         };
@@ -48,22 +48,32 @@ namespace PSRule.Rules.Azure.Configuration
             return obj is DeploymentOption option && Equals(option);
         }
 
+        /// <inheritdoc/>
         public bool Equals(DeploymentOption other)
         {
             return other != null &&
                 Name == other.Name;
         }
 
+        /// <summary>
+        /// Compares two deployment options to determine if they are equal.
+        /// </summary>
         public static bool operator ==(DeploymentOption o1, DeploymentOption o2)
         {
             return Equals(o1, o2);
         }
 
+        /// <summary>
+        /// Compares two deployment options to determine if they are not equal.
+        /// </summary>
         public static bool operator !=(DeploymentOption o1, DeploymentOption o2)
         {
             return !Equals(o1, o2);
         }
 
+        /// <summary>
+        /// Compares two deployment options to determine if they are equal.
+        /// </summary>
         public static bool Equals(DeploymentOption o1, DeploymentOption o2)
         {
             return (object.Equals(null, o1) && object.Equals(null, o2)) ||
@@ -104,6 +114,9 @@ namespace PSRule.Rules.Azure.Configuration
         }
     }
 
+    /// <summary>
+    /// A reference to a deployment.
+    /// </summary>
     public sealed class DeploymentReference
     {
         private DeploymentReference() { }
@@ -119,36 +132,53 @@ namespace PSRule.Rules.Azure.Configuration
         /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Determines if the reference is created from a display name.
+        /// </summary>
         public bool FromName { get; private set; }
 
+        /// <summary>
+        /// Create a deployment reference from a hashtable.
+        /// </summary>
         public static implicit operator DeploymentReference(Hashtable hashtable)
         {
             return FromHashtable(hashtable);
         }
 
-        public static implicit operator DeploymentReference(string resourceGroupName)
+        /// <summary>
+        /// Create a deployment reference from a name.
+        /// </summary>
+        public static implicit operator DeploymentReference(string deploymentName)
         {
-            return FromString(resourceGroupName);
+            return FromString(deploymentName);
         }
 
+        /// <summary>
+        /// Create a deployment reference from a hashtable.
+        /// </summary>
         public static DeploymentReference FromHashtable(Hashtable hashtable)
         {
             var option = new DeploymentReference();
             if (hashtable != null)
             {
                 var index = PSRuleOption.BuildIndex(hashtable);
-
                 if (index.TryPopValue("Name", out string svalue))
                     option.Name = svalue;
             }
             return option;
         }
 
-        public static DeploymentReference FromString(string resourceGroupName)
+        /// <summary>
+        /// Create a deployment reference from a name.
+        /// </summary>
+        public static DeploymentReference FromString(string deploymentName)
         {
-            return new DeploymentReference(resourceGroupName);
+            return new DeploymentReference(deploymentName);
         }
 
+        /// <summary>
+        /// Convert the reference to an option.
+        /// </summary>
         public DeploymentOption ToDeploymentOption()
         {
             return new DeploymentOption(Name);

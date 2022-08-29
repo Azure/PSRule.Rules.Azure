@@ -30,10 +30,10 @@
       "2020-02-01-preview"
     ],
     "locations": [
-      "West US 2",
-      "UK South",
       "Central US EUAP",
-      "East US 2 EUAP"
+      "East US 2 EUAP",
+      "UK South",
+      "West US 2"
     ],
     "zoneMappings": null
   },

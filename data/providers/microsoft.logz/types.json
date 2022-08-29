@@ -21,8 +21,8 @@
     "locations": [
       "Central US EUAP",
       "East US 2 EUAP",
-      "West US 2",
-      "West Europe"
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -35,8 +35,8 @@
       "2020-10-01"
     ],
     "locations": [
-      "West US 2",
-      "West Europe"
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -49,8 +49,8 @@
       "2020-10-01"
     ],
     "locations": [
-      "West US 2",
-      "West Europe"
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -63,8 +63,8 @@
       "2020-10-01"
     ],
     "locations": [
-      "West US 2",
-      "West Europe"
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -77,8 +77,8 @@
       "2020-10-01"
     ],
     "locations": [
-      "West US 2",
-      "West Europe"
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -91,8 +91,8 @@
       "2020-10-01"
     ],
     "locations": [
-      "West US 2",
-      "West Europe"
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },

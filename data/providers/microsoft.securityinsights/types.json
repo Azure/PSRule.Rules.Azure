@@ -6,17 +6,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -59,6 +59,8 @@
     "resourceType": "alertRules",
     "apiVersions": [
       "2022-09-01-preview",
+      "2022-08-01-preview",
+      "2022-08-01",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -72,17 +74,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -91,6 +93,8 @@
     "resourceType": "alertRuleTemplates",
     "apiVersions": [
       "2022-09-01-preview",
+      "2022-08-01-preview",
+      "2022-08-01",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -104,17 +108,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -171,7 +175,10 @@
     },
     "resourceType": "automationRules",
     "apiVersions": [
+      "2023-02-01-preview",
       "2022-09-01-preview",
+      "2022-08-01-preview",
+      "2022-08-01",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -183,17 +190,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -226,6 +233,8 @@
     },
     "resourceType": "bookmarks",
     "apiVersions": [
+      "2022-08-01-preview",
+      "2022-08-01",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -238,17 +247,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -290,17 +299,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -308,21 +317,22 @@
     "aliases": null,
     "resourceType": "confidentialWatchlists",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -330,20 +340,20 @@
     "aliases": null,
     "resourceType": "dataConnectorDefinitions",
     "apiVersions": [
-      "2022-08-01-preview"
+      "2022-09-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -395,6 +405,8 @@
     },
     "resourceType": "dataConnectors",
     "apiVersions": [
+      "2022-08-01-preview",
+      "2022-08-01",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -408,17 +420,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -426,6 +438,7 @@
     "aliases": null,
     "resourceType": "dataConnectorsCheckRequirements",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -436,17 +449,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -454,6 +467,7 @@
     "aliases": null,
     "resourceType": "enrichment",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -464,17 +478,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -482,6 +496,7 @@
     "aliases": null,
     "resourceType": "entities",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -492,17 +507,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -510,6 +525,7 @@
     "aliases": null,
     "resourceType": "entityQueries",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -521,17 +537,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -539,6 +555,7 @@
     "aliases": null,
     "resourceType": "entityQueryTemplates",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -550,17 +567,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -568,22 +585,44 @@
     "aliases": null,
     "resourceType": "fileImports",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "huntsessions",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -626,6 +665,9 @@
     },
     "resourceType": "incidents",
     "apiVersions": [
+      "2023-02-01-preview",
+      "2022-08-01-preview",
+      "2022-08-01",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -640,17 +682,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -658,6 +700,7 @@
     "aliases": null,
     "resourceType": "listrepositories",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -668,17 +711,17 @@
       "2021-03-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -686,6 +729,7 @@
     "aliases": null,
     "resourceType": "metadata",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -696,17 +740,17 @@
       "2021-03-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -714,6 +758,7 @@
     "aliases": null,
     "resourceType": "MitreCoverageRecords",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -721,17 +766,17 @@
       "2022-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -739,6 +784,7 @@
     "aliases": null,
     "resourceType": "officeConsents",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -749,17 +795,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -767,6 +813,8 @@
     "aliases": null,
     "resourceType": "onboardingStates",
     "apiVersions": [
+      "2022-08-01-preview",
+      "2022-08-01",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -778,17 +826,17 @@
       "2021-03-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -796,6 +844,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-08-01-preview",
+      "2022-08-01",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -819,17 +869,17 @@
       "2022-09-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -840,17 +890,17 @@
       "2022-11-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -858,22 +908,23 @@
     "aliases": null,
     "resourceType": "securityMLAnalyticsSettings",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -885,6 +936,7 @@
     },
     "resourceType": "settings",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -896,17 +948,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -914,6 +966,7 @@
     "aliases": null,
     "resourceType": "sourceControls",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -924,17 +977,17 @@
       "2021-03-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -942,6 +995,8 @@
     "aliases": null,
     "resourceType": "threatIntelligence",
     "apiVersions": [
+      "2022-08-01-preview",
+      "2022-08-01",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -954,17 +1009,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -1001,6 +1056,8 @@
     },
     "resourceType": "watchlists",
     "apiVersions": [
+      "2022-08-01-preview",
+      "2022-08-01",
       "2022-07-01-preview",
       "2022-06-01-preview",
       "2022-05-01-preview",
@@ -1014,17 +1071,17 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "West Europe",
-      "North Europe",
       "France Central",
-      "UK South",
-      "UK West",
       "France South",
-      "Switzerland North",
-      "Switzerland West",
+      "Germany West Central",
+      "North Europe",
       "Norway East",
       "Norway West",
-      "Germany West Central"
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },

@@ -57,21 +57,26 @@ You can take steps to reduce your code complexity and reduce the time a build ta
 To increase the timeout value, set the `AZURE_BICEP_FILE_EXPANSION_TIMEOUT` configuration option.
 See [Bicep compilation timeout][1] for details on how to configure this option.
 
-  [1]: setup/configuring-expansion.md#bicepcompilationtimeout
+  [1]: setup/configuring-expansion.md#bicep-compilation-timeout
 
-## My pipeline is not finding any Azure resources
+## No rules or no Azure resources are found
 
 There is a few common causes of this issue including:
 
-- Your pipeline is configured with the parameter `inputType` set to `inputPath`.
-  PSRule for Azure will not work with this setting.
-  Only `inputType` set to `repository` _(default)_ is supported.
-  You may have set this parameter because you wanted to use the `inputPath` parameter.
-  Setting the `inputType` is not a requirement for using the `inputPath` parameter.
-  The `inputPath` can be used independently.
-- You have not enabled expansion for Azure parameter files or Bicep source files.
+- **Check input format** &mdash; PSRule for Azure must discover files to expand them.
+  - When running PSRule for Azure using GitHub Actions or the Azure Pipelines extension:
+    - Your pipeline **must** be set to `inputType: repository`, which is the default value.
+    - PSRule for Azure will not work with `inputType` set to `inputPath`.
+    - You may have set this parameter because you wanted to use the `inputPath` parameter.
+      Setting the `inputType` is not a requirement for using the `inputPath` parameter.
+      The `inputPath` parameter can be used independently.
+  - When running PSRule for Azure from PowerShell:
+    - Your command-line **must** use the `-Format File` parameter.
+    - Your command-line **must** use the `-InputPath` or `-f` parameter followed by a file or directory path.
+    - For example: `Assert-PSRule -Module PSRule.Rules.Azure -Format File -f 'modules/'`.
+- **Check expansion is enabled** &mdash; Expansion must be enabled to analyze Azure Infrastructure as Code.
   See [using templates][2] and [using Bicep source][3] for details on how to enable expansion.
-- You are using parameter files to but haven't linked them to templates or Bicep source files.
+- **Check parameter files are linked** &mdash; Parameter files must be linked to ARM templates or Bicep source files.
   See [using templates][2] for details on how to link using metadata or naming convention.
 
 !!! Note
@@ -80,6 +85,32 @@ There is a few common causes of this issue including:
   [2]: using-templates.md
   [3]: using-bicep.md
   [4]: https://github.com/Azure/PSRule.Rules.Azure/discussions
+
+## Custom rules are not running
+
+There is a few common causes of this issue including:
+
+- **Check rule path** &mdash; By default, PSRule will look for rules in the `.ps-rule/` directory.
+  This directory is the root for your repository or the current working path by default.
+  On case-sensitive file systems such as Linux, this directory name is case-sensitive.
+  See [Storing and naming rules][4] for more information.
+- **Check file name suffix** &mdash; PSRule only looks for files with the `.Rule.ps1`, `.Rule.yaml`, or `.Rule.jsonc` suffix.
+  On case-sensitive file systems such as Linux, this file siffix is case-sensitive.
+  See [Storing and naming rules][4] for more information.
+- **Check binding configuration** &mdash; PSRule uses _binding_ to work out which property to use for a resource type.
+  To be able to use the `-Type` parameter or `type` properties in rules definitions, binding must be set.
+  This is automatically configured for PSRule for Azure, however must be set in `ps-rule.yaml` for custom rules.
+  See [binding type][6] for more information.
+- **Check modules** &mdash; PSRule for Azure is responsible for expanding Azure resources from Infrastructure as Code.
+  Expansion occurs automatically in memory when enabled.
+  For this to work, the module `PSRule.Rules.Azure` must be run with any custom rules.
+  See [using templates][2] and [using Bicep source][3] for details on how to enable expansion.
+
+!!! Tip
+    You may be able to use `git mv` to change the case of a file if it is commited to the repository inorrectly.
+
+  [5]: https://aka.ms/ps-rule/naming
+  [6]: customization/enforce-custom-tags.md#binding-type
 
 ## Parameter file warns of metadata property
 

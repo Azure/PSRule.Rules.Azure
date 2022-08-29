@@ -6,7 +6,6 @@
       "2022-05-01-preview"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -17,6 +16,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -24,10 +24,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -138,7 +138,6 @@
       "2021-06-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -149,6 +148,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -156,10 +156,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -183,7 +183,6 @@
       "2015-06-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -194,6 +193,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -201,10 +201,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -226,7 +226,6 @@
       "2016-10-02"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -237,6 +236,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -244,10 +244,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -271,7 +271,6 @@
       "2015-06-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -282,6 +281,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -289,10 +289,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -303,7 +303,6 @@
       "2022-05-01-preview"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -314,6 +313,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -321,10 +321,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -348,7 +348,6 @@
       "2015-06-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -359,6 +358,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -366,10 +366,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -393,7 +393,6 @@
       "2015-06-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -404,6 +403,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -411,10 +411,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -427,7 +427,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -438,6 +437,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -460,7 +460,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -471,6 +470,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -493,7 +493,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -504,6 +503,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -537,7 +537,6 @@
       "2015-06-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -548,6 +547,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -555,10 +555,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -582,7 +582,6 @@
       "2015-06-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -593,6 +592,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -600,10 +600,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -619,7 +619,6 @@
       "2019-12-31"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -630,6 +629,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -663,7 +663,6 @@
       "2015-06-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -674,6 +673,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -681,10 +681,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -697,7 +697,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -708,6 +707,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -730,7 +730,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -741,6 +740,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -763,7 +763,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -774,6 +773,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -796,7 +796,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -807,6 +806,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -829,7 +829,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -840,6 +839,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -862,7 +862,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -873,6 +872,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -906,7 +906,6 @@
       "2015-06-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -917,6 +916,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -924,10 +924,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -963,7 +963,6 @@
       "2015-06-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -974,6 +973,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -981,10 +981,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -1005,7 +1005,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -1016,6 +1015,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -1068,7 +1068,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -1079,6 +1078,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -1119,7 +1119,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -1130,6 +1129,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -1527,7 +1527,6 @@
       "2015-06-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -1538,6 +1537,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -1545,10 +1545,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -1574,7 +1574,6 @@
       "2015-06-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -1585,6 +1584,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -1592,10 +1592,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -1630,7 +1630,6 @@
       "2019-12-31"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -1641,6 +1640,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -1648,10 +1648,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -1690,7 +1690,6 @@
       "2015-06-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -1701,6 +1700,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -1708,10 +1708,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -1746,7 +1746,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -1757,6 +1756,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -1800,7 +1800,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -1811,6 +1810,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -1833,7 +1833,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -1844,6 +1843,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -2116,7 +2116,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -2127,6 +2126,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -2174,7 +2174,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -2185,6 +2184,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -2224,7 +2224,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -2235,6 +2234,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -2265,7 +2265,6 @@
       "2017-04-02"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -2276,6 +2275,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",
@@ -2283,10 +2283,10 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
-      "West US",
-      "West Central US"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -2299,7 +2299,6 @@
       "2020-09-01"
     ],
     "locations": [
-      "global",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -2310,6 +2309,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "global",
       "Japan East",
       "Japan West",
       "North Central US",

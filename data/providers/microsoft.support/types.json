@@ -26,21 +26,21 @@
       "2019-05-01-preview"
     ],
     "locations": [
-      "North Central US",
-      "South Central US",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
       "Central US",
-      "West Europe",
-      "North Europe",
-      "West US",
+      "East Asia",
       "East US",
       "East US 2",
       "Japan East",
       "Japan West",
-      "Brazil South",
+      "North Central US",
+      "North Europe",
+      "South Central US",
       "Southeast Asia",
-      "East Asia",
-      "Australia East",
-      "Australia Southeast"
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -55,21 +55,21 @@
       "2015-03-01"
     ],
     "locations": [
-      "North Central US",
-      "South Central US",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
       "Central US",
-      "West Europe",
-      "North Europe",
-      "West US",
+      "East Asia",
       "East US",
       "East US 2",
       "Japan East",
       "Japan West",
-      "Brazil South",
+      "North Central US",
+      "North Europe",
+      "South Central US",
       "Southeast Asia",
-      "East Asia",
-      "Australia East",
-      "Australia Southeast"
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -81,21 +81,21 @@
       "2019-05-01-preview"
     ],
     "locations": [
-      "North Central US",
-      "South Central US",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
       "Central US",
-      "West Europe",
-      "North Europe",
-      "West US",
+      "East Asia",
       "East US",
       "East US 2",
       "Japan East",
       "Japan West",
-      "Brazil South",
+      "North Central US",
+      "North Europe",
+      "South Central US",
       "Southeast Asia",
-      "East Asia",
-      "Australia East",
-      "Australia Southeast"
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -107,21 +107,21 @@
       "2019-05-01-preview"
     ],
     "locations": [
-      "North Central US",
-      "South Central US",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
       "Central US",
-      "West Europe",
-      "North Europe",
-      "West US",
+      "East Asia",
       "East US",
       "East US 2",
       "Japan East",
       "Japan West",
-      "Brazil South",
+      "North Central US",
+      "North Europe",
+      "South Central US",
       "Southeast Asia",
-      "East Asia",
-      "Australia East",
-      "Australia Southeast"
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -133,21 +133,21 @@
       "2019-05-01-preview"
     ],
     "locations": [
-      "North Central US",
-      "South Central US",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
       "Central US",
-      "West Europe",
-      "North Europe",
-      "West US",
+      "East Asia",
       "East US",
       "East US 2",
       "Japan East",
       "Japan West",
-      "Brazil South",
+      "North Central US",
+      "North Europe",
+      "South Central US",
       "Southeast Asia",
-      "East Asia",
-      "Australia East",
-      "Australia Southeast"
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -161,21 +161,21 @@
       "2015-03-01"
     ],
     "locations": [
-      "North Central US",
-      "South Central US",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
       "Central US",
-      "West Europe",
-      "North Europe",
-      "West US",
+      "East Asia",
       "East US",
       "East US 2",
       "Japan East",
       "Japan West",
-      "Brazil South",
+      "North Central US",
+      "North Europe",
+      "South Central US",
       "Southeast Asia",
-      "East Asia",
-      "Australia East",
-      "Australia Southeast"
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   }

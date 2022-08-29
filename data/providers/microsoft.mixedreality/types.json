@@ -97,16 +97,16 @@
       "2019-12-02-preview"
     ],
     "locations": [
-      "East US 2",
-      "East US",
-      "Southeast Asia",
-      "West Europe",
-      "West US 2",
-      "Japan East",
       "Australia East",
+      "East US",
+      "East US 2",
+      "Japan East",
       "North Europe",
       "South Central US",
-      "UK South"
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -136,10 +136,10 @@
       "East US 2",
       "Korea Central",
       "North Europe",
-      "West Europe",
       "South Central US",
-      "UK South",
       "Southeast Asia",
+      "UK South",
+      "West Europe",
       "West US 2"
     ],
     "zoneMappings": null

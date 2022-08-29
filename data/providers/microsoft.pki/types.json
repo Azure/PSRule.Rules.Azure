@@ -6,8 +6,8 @@
       "2021-03-01-preview"
     ],
     "locations": [
-      "West US",
-      "West Central US"
+      "West Central US",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -18,8 +18,8 @@
       "2021-03-01-preview"
     ],
     "locations": [
-      "West US",
-      "West Central US"
+      "West Central US",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -30,8 +30,8 @@
       "2021-03-01-preview"
     ],
     "locations": [
-      "West US",
-      "West Central US"
+      "West Central US",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -42,8 +42,8 @@
       "2021-03-01-preview"
     ],
     "locations": [
-      "West US",
-      "West Central US"
+      "West Central US",
+      "West US"
     ],
     "zoneMappings": null
   }
