@@ -27,12 +27,12 @@
       "2021-09-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "East US",
       "South Central US",
+      "Sweden Central",
       "West Central US",
       "West Europe",
-      "East US",
-      "Australia East",
-      "Sweden Central",
       "West US 3"
     ],
     "zoneMappings": null
@@ -68,17 +68,17 @@
       "2021-09-01-preview"
     ],
     "locations": [
-      "East US 2 EUAP",
+      "Australia East",
       "Central US EUAP",
-      "South Central US",
-      "West Europe",
+      "East Asia",
       "East US",
       "East US 2",
-      "West Central US",
-      "Australia East",
+      "East US 2 EUAP",
+      "South Central US",
       "Sweden Central",
-      "West US 3",
-      "East Asia"
+      "West Central US",
+      "West Europe",
+      "West US 3"
     ],
     "zoneMappings": null
   },

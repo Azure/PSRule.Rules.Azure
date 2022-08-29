@@ -9,10 +9,10 @@
     ],
     "locations": [
       "East US",
-      "West US",
+      "Korea Central",
       "North Europe",
       "West Europe",
-      "Korea Central"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -25,11 +25,11 @@
       "2021-02-01-preview"
     ],
     "locations": [
-      "West US",
-      "West Europe",
       "Australia East",
       "Canada Central",
-      "Korea Central"
+      "Korea Central",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -43,10 +43,10 @@
     ],
     "locations": [
       "East US",
-      "West US",
+      "Korea Central",
       "North Europe",
       "West Europe",
-      "Korea Central"
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -83,14 +83,14 @@
       "2021-02-01-preview"
     ],
     "locations": [
-      "East US",
-      "West US",
-      "North Europe",
-      "West Europe",
       "Australia East",
       "Canada Central",
+      "Central US EUAP",
+      "East US",
       "Korea Central",
-      "Central US EUAP"
+      "North Europe",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },

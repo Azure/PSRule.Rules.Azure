@@ -19,10 +19,10 @@
       "2021-04-01-preview"
     ],
     "locations": [
-      "East US 2 EUAP",
       "Central US EUAP",
-      "West Central US",
-      "East US"
+      "East US",
+      "East US 2 EUAP",
+      "West Central US"
     ],
     "zoneMappings": null
   },

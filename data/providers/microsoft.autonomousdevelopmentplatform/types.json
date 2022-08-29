@@ -60,9 +60,9 @@
       "2022-02-01-privatepreview"
     ],
     "locations": [
-      "West Europe",
       "North Europe",
-      "West Central US"
+      "West Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   }

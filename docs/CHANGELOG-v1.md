@@ -37,6 +37,8 @@ What's changed since pre-release v1.19.0-B0010:
     [#1593](https://github.com/Azure/PSRule.Rules.Azure/pull/1593)
   - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.2.
     [#1594](https://github.com/Azure/PSRule.Rules.Azure/pull/1594)
+  - Updated provider data for analysis.
+    [#1598](https://github.com/Azure/PSRule.Rules.Azure/pull/1598)
 - Bug fixes:
   - Fixed parameter files linked to bicep code via naming convention is not working by @BernieWhite.
     [#1582](https://github.com/Azure/PSRule.Rules.Azure/issues/1582)
@@ -94,7 +96,6 @@ What's changed since v1.17.1:
     [#1440](https://github.com/Azure/PSRule.Rules.Azure/issues/1440)
   - Added support for `join` ARM function by @BernieWhite.
     [#1535](https://github.com/Azure/PSRule.Rules.Azure/issues/1535)
-- General improvements:
   - Improved output of full path to emitted resources by @BernieWhite.
     [#1523](https://github.com/Azure/PSRule.Rules.Azure/issues/1523)
 - Engineering:

@@ -25,10 +25,10 @@
     ],
     "locations": [
       "Central US EUAP",
-      "West Central US",
-      "West US 2",
       "North Europe",
-      "West Europe"
+      "West Central US",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },

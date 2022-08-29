@@ -559,7 +559,7 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(actual1);
             Assert.Equal("sites", actual1.ResourceType);
             Assert.Equal("2022-03-01", actual1.ApiVersions[0]);
-            Assert.Equal("South Central US", actual1.Locations[0]);
+            Assert.Equal("Australia Central", actual1.Locations[0]);
 
             var actual2 = Functions.Providers(context, new object[] { "Microsoft.Web" }) as ResourceProviderType[];
             Assert.NotNull(actual1);

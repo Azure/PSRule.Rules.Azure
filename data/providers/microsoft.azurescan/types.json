@@ -25,9 +25,9 @@
     ],
     "locations": [
       "Central US EUAP",
+      "East US",
       "North Europe",
       "West Europe",
-      "East US",
       "West US"
     ],
     "zoneMappings": null
@@ -48,9 +48,9 @@
       "2022-05-17-preview"
     ],
     "locations": [
+      "East US",
       "North Europe",
       "West Europe",
-      "East US",
       "West US"
     ],
     "zoneMappings": null

@@ -15,14 +15,14 @@
       "2021-12-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Canada Central",
+      "East Asia",
       "East US",
       "East US 2",
-      "West US 2",
-      "North Europe",
-      "Australia East",
-      "East Asia",
       "Japan East",
-      "Canada Central"
+      "North Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -33,10 +33,10 @@
       "2021-12-01-preview"
     ],
     "locations": [
-      "East US 2",
-      "North Europe",
       "Australia East",
-      "East Asia"
+      "East Asia",
+      "East US 2",
+      "North Europe"
     ],
     "zoneMappings": null
   },
@@ -47,10 +47,10 @@
       "2021-12-01-preview"
     ],
     "locations": [
-      "East US 2",
-      "North Europe",
       "Australia East",
-      "East Asia"
+      "East Asia",
+      "East US 2",
+      "North Europe"
     ],
     "zoneMappings": null
   },
@@ -61,10 +61,10 @@
       "2021-12-01-preview"
     ],
     "locations": [
-      "East US 2",
-      "North Europe",
       "Australia East",
-      "East Asia"
+      "East Asia",
+      "East US 2",
+      "North Europe"
     ],
     "zoneMappings": null
   },
@@ -84,10 +84,10 @@
       "2021-12-01-preview"
     ],
     "locations": [
-      "East US 2",
-      "North Europe",
       "Australia East",
-      "East Asia"
+      "East Asia",
+      "East US 2",
+      "North Europe"
     ],
     "zoneMappings": null
   },
@@ -98,10 +98,10 @@
       "2021-12-01-preview"
     ],
     "locations": [
-      "East US 2",
-      "North Europe",
       "Australia East",
-      "East Asia"
+      "East Asia",
+      "East US 2",
+      "North Europe"
     ],
     "zoneMappings": null
   },
@@ -112,10 +112,10 @@
       "2021-12-01-preview"
     ],
     "locations": [
-      "East US 2",
-      "North Europe",
       "Australia East",
-      "East Asia"
+      "East Asia",
+      "East US 2",
+      "North Europe"
     ],
     "zoneMappings": null
   },
@@ -126,10 +126,10 @@
       "2021-12-01-preview"
     ],
     "locations": [
-      "East US 2",
-      "North Europe",
       "Australia East",
-      "East Asia"
+      "East Asia",
+      "East US 2",
+      "North Europe"
     ],
     "zoneMappings": null
   }

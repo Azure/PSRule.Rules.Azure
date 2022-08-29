@@ -7,8 +7,8 @@
       "2018-02-16-preview"
     ],
     "locations": [
-      "West US",
-      "East US"
+      "East US",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -20,9 +20,9 @@
       "2018-02-16-preview"
     ],
     "locations": [
-      "West US",
       "East US",
-      "West Central US"
+      "West Central US",
+      "West US"
     ],
     "zoneMappings": null
   }

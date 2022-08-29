@@ -33,14 +33,14 @@
       "2020-09-01-preview"
     ],
     "locations": [
-      "East US",
-      "North Europe",
-      "West US 2",
-      "Southeast Asia",
       "Australia East",
+      "East US",
       "East US 2",
+      "North Europe",
       "South Central US",
-      "UK South"
+      "Southeast Asia",
+      "UK South",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -70,14 +70,14 @@
       "2020-09-01-preview"
     ],
     "locations": [
-      "North Europe",
-      "Southeast Asia",
       "Australia East",
       "East US",
       "East US 2",
+      "North Europe",
       "South Central US",
-      "West US 2",
-      "UK South"
+      "Southeast Asia",
+      "UK South",
+      "West US 2"
     ],
     "zoneMappings": null
   },

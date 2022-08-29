@@ -8,9 +8,9 @@
       "2020-01-01-preview"
     ],
     "locations": [
-      "West Europe",
+      "East US",
       "Southeast Asia",
-      "East US"
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -34,11 +34,11 @@
     ],
     "locations": [
       "Central US EUAP",
+      "East US",
       "East US 2 EUAP",
-      "West Central US",
       "Southeast Asia",
-      "West Europe",
-      "East US"
+      "West Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -53,9 +53,9 @@
       "2020-01-01-preview"
     ],
     "locations": [
+      "East US",
       "Southeast Asia",
-      "West Europe",
-      "East US"
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -66,9 +66,9 @@
       "2022-09-01-preview"
     ],
     "locations": [
+      "East US",
       "Southeast Asia",
-      "West Europe",
-      "East US"
+      "West Europe"
     ],
     "zoneMappings": null
   },

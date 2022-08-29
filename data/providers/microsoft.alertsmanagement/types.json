@@ -155,18 +155,18 @@
       "2021-07-22-preview"
     ],
     "locations": [
-      "North Central US",
+      "Brazil South",
+      "Central India",
+      "Central US",
       "East US",
       "East US 2",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
       "West Europe",
       "West US",
-      "West US 2",
-      "Central US",
-      "South Central US",
-      "Brazil South",
-      "Southeast Asia",
-      "Central India",
-      "North Europe"
+      "West US 2"
     ],
     "zoneMappings": null
   },

@@ -12,11 +12,11 @@
     ],
     "locations": [
       "Australia East",
-      "South Central US",
+      "Canada Central",
       "East US",
-      "West Europe",
+      "South Central US",
       "Southeast Asia",
-      "Canada Central"
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -32,11 +32,11 @@
     ],
     "locations": [
       "Australia East",
-      "South Central US",
+      "Canada Central",
       "East US",
-      "West Europe",
+      "South Central US",
       "Southeast Asia",
-      "Canada Central"
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -52,11 +52,11 @@
     ],
     "locations": [
       "Australia East",
-      "South Central US",
+      "Canada Central",
       "East US",
-      "West Europe",
+      "South Central US",
       "Southeast Asia",
-      "Canada Central"
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -69,8 +69,8 @@
     "locations": [
       "Australia East",
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -83,8 +83,8 @@
     "locations": [
       "Australia East",
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -97,8 +97,8 @@
     "locations": [
       "Australia East",
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -111,8 +111,8 @@
     "locations": [
       "Australia East",
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -125,8 +125,8 @@
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -163,17 +163,17 @@
       "2020-10-01"
     ],
     "locations": [
-      "East US",
-      "East US 2 EUAP",
-      "West Europe",
-      "Southeast Asia",
-      "Central US EUAP",
+      "Australia East",
       "Central US",
+      "Central US EUAP",
+      "East US",
+      "East US 2",
+      "East US 2 EUAP",
       "Japan East",
       "North Europe",
-      "Australia East",
-      "East US 2",
-      "South Central US"
+      "South Central US",
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -186,8 +186,8 @@
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -218,8 +218,8 @@
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -232,8 +232,8 @@
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -246,8 +246,8 @@
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -259,8 +259,8 @@
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -272,8 +272,8 @@
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -286,8 +286,8 @@
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   }

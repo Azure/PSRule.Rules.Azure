@@ -7,15 +7,15 @@
       "2021-09-15-preview"
     ],
     "locations": [
-      "West Central US",
-      "East US",
-      "West US",
       "Central US",
-      "UK South",
-      "West Europe",
+      "East US",
+      "East US 2",
       "Japan East",
       "North Central US",
-      "East US 2"
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -37,17 +37,17 @@
       "2021-09-15-preview"
     ],
     "locations": [
-      "West Central US",
-      "East US",
       "Central US",
-      "West US 3",
-      "UK South",
-      "West US",
-      "North Europe",
-      "West Europe",
-      "Japan East",
+      "East US",
       "East US 2",
-      "North Central US"
+      "Japan East",
+      "North Central US",
+      "North Europe",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -72,17 +72,17 @@
       "2021-09-15-preview"
     ],
     "locations": [
-      "West Central US",
-      "East US",
       "Central US",
-      "West US 3",
-      "UK South",
-      "North Europe",
-      "West US",
-      "West Europe",
+      "East US",
+      "East US 2",
       "Japan East",
       "North Central US",
-      "East US 2"
+      "North Europe",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 3"
     ],
     "zoneMappings": null
   }

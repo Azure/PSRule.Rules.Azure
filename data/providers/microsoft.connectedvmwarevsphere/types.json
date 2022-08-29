@@ -27,10 +27,10 @@
       "2020-10-01-preview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "East US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -58,10 +58,10 @@
       "2020-10-01-preview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "East US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -89,10 +89,10 @@
       "2020-10-01-preview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "East US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -114,13 +114,13 @@
       "2020-10-01-preview"
     ],
     "locations": [
-      "East US",
-      "East US 2 EUAP",
-      "West Europe",
       "Australia East",
       "Canada Central",
+      "East US",
+      "East US 2 EUAP",
       "Southeast Asia",
-      "UK South"
+      "UK South",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -164,10 +164,10 @@
       "2020-10-01-preview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "East US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -199,10 +199,10 @@
       "2020-10-01-preview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "East US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -251,10 +251,10 @@
       "2020-10-01-preview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "East US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -377,10 +377,10 @@
       "2020-10-01-preview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "East US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -409,10 +409,10 @@
       "2020-10-01-preview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "East US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -443,10 +443,10 @@
       "2020-10-01-preview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "East US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -466,10 +466,10 @@
       "2020-10-01-preview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "East US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -546,10 +546,10 @@
       "2020-10-01-preview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "East US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -577,10 +577,10 @@
       "2020-10-01-preview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
       "Australia East",
-      "Canada Central"
+      "Canada Central",
+      "East US",
+      "West Europe"
     ],
     "zoneMappings": null
   }

@@ -7,14 +7,14 @@
       "2021-04-04-preview"
     ],
     "locations": [
-      "West US 2",
-      "West US 3",
-      "West US",
-      "East US",
-      "South Central US",
-      "Norway East",
       "Australia East",
-      "Sweden Central"
+      "East US",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -27,14 +27,14 @@
       "2020-09-01-preview"
     ],
     "locations": [
-      "West US 2",
-      "West US 3",
-      "West US",
-      "East US",
-      "South Central US",
-      "Norway East",
       "Australia East",
-      "Sweden Central"
+      "East US",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -45,13 +45,13 @@
       "2022-03-01"
     ],
     "locations": [
-      "West US 2",
-      "West US 3",
-      "West US",
-      "South Central US",
-      "Norway East",
       "Australia East",
-      "Sweden Central"
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -62,14 +62,14 @@
       "2022-03-01"
     ],
     "locations": [
-      "West US 2",
-      "West US 3",
-      "West US",
-      "East US",
-      "South Central US",
-      "Norway East",
       "Australia East",
-      "Sweden Central"
+      "East US",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -82,14 +82,14 @@
       "2020-09-01-preview"
     ],
     "locations": [
-      "West US 2",
-      "West US 3",
-      "West US",
-      "East US",
-      "South Central US",
-      "Norway East",
       "Australia East",
-      "Sweden Central"
+      "East US",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -102,14 +102,14 @@
       "2020-09-01-preview"
     ],
     "locations": [
-      "West US 2",
-      "West US 3",
-      "West US",
-      "East US",
-      "South Central US",
-      "Norway East",
       "Australia East",
-      "Sweden Central"
+      "East US",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -122,14 +122,14 @@
       "2020-09-01-preview"
     ],
     "locations": [
-      "West US 2",
-      "West US 3",
-      "West US",
-      "East US",
-      "South Central US",
-      "Norway East",
       "Australia East",
-      "Sweden Central"
+      "East US",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   }
