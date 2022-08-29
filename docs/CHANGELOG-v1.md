@@ -33,6 +33,8 @@ What's changed since pre-release v1.19.0-B0010:
     [#1574](https://github.com/Azure/PSRule.Rules.Azure/pull/1574)
   - Bump support projects to .NET 6 by @BernieWhite.
     [#1560](https://github.com/Azure/PSRule.Rules.Azure/issues/1560)
+  - Bump BenchmarkDotNet to v0.13.2.
+    [#1593](https://github.com/Azure/PSRule.Rules.Azure/pull/1593)
 - Bug fixes:
   - Fixed parameter files linked to bicep code via naming convention is not working by @BernieWhite.
     [#1582](https://github.com/Azure/PSRule.Rules.Azure/issues/1582)
