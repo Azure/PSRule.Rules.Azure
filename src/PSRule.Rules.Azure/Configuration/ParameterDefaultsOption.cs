@@ -8,12 +8,19 @@ using Newtonsoft.Json.Linq;
 
 namespace PSRule.Rules.Azure.Configuration
 {
+    /// <summary>
+    /// Options that set parameter defaults for expansion.
+    /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "Not a generic dictionary.")]
     public sealed class ParameterDefaultsOption : IEquatable<ParameterDefaultsOption>, IDictionary<string, object>
     {
-        internal readonly static ParameterDefaultsOption Default = new ParameterDefaultsOption();
+        internal readonly static ParameterDefaultsOption Default = new();
 
         private readonly Dictionary<string, object> _Defaults;
 
+        /// <summary>
+        /// Create an empty parameter defaults option.
+        /// </summary>
         public ParameterDefaultsOption()
         {
             _Defaults = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
@@ -33,6 +40,7 @@ namespace PSRule.Rules.Azure.Configuration
             return obj is ParameterDefaultsOption option && Equals(option);
         }
 
+        /// <inheritdoc/>
         public bool Equals(ParameterDefaultsOption other)
         {
             return other != null &&
@@ -52,16 +60,25 @@ namespace PSRule.Rules.Azure.Configuration
             return true;
         }
 
+        /// <summary>
+        /// Compares two parameter default options to determine if they are equal.
+        /// </summary>
         public static bool operator ==(ParameterDefaultsOption o1, ParameterDefaultsOption o2)
         {
             return Equals(o1, o2);
         }
 
+        /// <summary>
+        /// Compares two parameter default options to determine if they are not equal.
+        /// </summary>
         public static bool operator !=(ParameterDefaultsOption o1, ParameterDefaultsOption o2)
         {
             return !Equals(o1, o2);
         }
 
+        /// <summary>
+        /// Compares two parameter default options to determine if they are equal.
+        /// </summary>
         public static bool Equals(ParameterDefaultsOption o1, ParameterDefaultsOption o2)
         {
             return (object.Equals(null, o1) && object.Equals(null, o2)) ||
@@ -147,6 +164,7 @@ namespace PSRule.Rules.Azure.Configuration
 
         bool ICollection<KeyValuePair<string, object>>.IsReadOnly => false;
 
+        /// <inheritdoc/>
         public object this[string key] { get => ((IDictionary<string, object>)_Defaults)[key]; set => ((IDictionary<string, object>)_Defaults)[key] = value; }
 
         void IDictionary<string, object>.Add(string key, object value)
