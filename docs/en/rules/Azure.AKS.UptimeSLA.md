@@ -123,5 +123,5 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-06-02-preview' = {
 
 ## LINKS
 
-- [Azure Kubernetes Service (AKS) Uptime SLA](https://docs.microsoft.com/en-us/azure/aks/uptime-sla)
-- [Azure template reference](https://docs.microsoft.com/en-us/azure/templates/microsoft.containerservice/managedclusters)
+- [Azure Kubernetes Service (AKS) Uptime SLA](https://docs.microsoft.com/azure/aks/uptime-sla)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
