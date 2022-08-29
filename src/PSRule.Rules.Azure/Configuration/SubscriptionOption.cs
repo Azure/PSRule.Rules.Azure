@@ -20,7 +20,7 @@ namespace PSRule.Rules.Azure.Configuration
 
         private const string ID_PREFIX = "/subscriptions/";
 
-        internal readonly static SubscriptionOption Default = new SubscriptionOption
+        internal readonly static SubscriptionOption Default = new()
         {
             SubscriptionId = DEFAULT_SUBSCRIPTIONID,
             TenantId = DEFAULT_TENANTID,
@@ -66,6 +66,7 @@ namespace PSRule.Rules.Azure.Configuration
             return obj is SubscriptionOption option && Equals(option);
         }
 
+        /// <inheritdoc/>
         public bool Equals(SubscriptionOption other)
         {
             return other != null &&
@@ -75,16 +76,25 @@ namespace PSRule.Rules.Azure.Configuration
                 State == other.State;
         }
 
+        /// <summary>
+        /// Compares two subscription options to determine if they are equal.
+        /// </summary>
         public static bool operator ==(SubscriptionOption o1, SubscriptionOption o2)
         {
             return Equals(o1, o2);
         }
 
+        /// <summary>
+        /// Compares two subscription options to determine if they are not equal.
+        /// </summary>
         public static bool operator !=(SubscriptionOption o1, SubscriptionOption o2)
         {
             return !Equals(o1, o2);
         }
 
+        /// <summary>
+        /// Compares two subscription options to determine if they are equal.
+        /// </summary>
         public static bool Equals(SubscriptionOption o1, SubscriptionOption o2)
         {
             return (object.Equals(null, o1) && object.Equals(null, o2)) ||
@@ -159,6 +169,9 @@ namespace PSRule.Rules.Azure.Configuration
         public string State { get; set; }
     }
 
+    /// <summary>
+    /// A reference to a subscription.
+    /// </summary>
     public sealed class SubscriptionReference
     {
         private SubscriptionReference() { }
@@ -169,26 +182,50 @@ namespace PSRule.Rules.Azure.Configuration
             FromName = true;
         }
 
+        /// <summary>
+        /// A unique identifier for the subscription.
+        /// </summary>
         public string SubscriptionId { get; set; }
 
+        /// <summary>
+        /// A GUID identifier for the tenant.
+        /// </summary>
         public string TenantId { get; set; }
 
+        /// <summary>
+        /// The display name of the tenant.
+        /// </summary>
         public string DisplayName { get; set; }
 
+        /// <summary>
+        /// The current state of the tenant.
+        /// </summary>
         public string State { get; set; }
 
+        /// <summary>
+        /// Determines if the reference is created from a display name.
+        /// </summary>
         public bool FromName { get; private set; }
 
+        /// <summary>
+        /// Create a subscription reference from a hashtable.
+        /// </summary>
         public static implicit operator SubscriptionReference(Hashtable hashtable)
         {
             return FromHashtable(hashtable);
         }
 
+        /// <summary>
+        /// Create a subscription reference from a display name.
+        /// </summary>
         public static implicit operator SubscriptionReference(string displayName)
         {
             return FromString(displayName);
         }
 
+        /// <summary>
+        /// Create a subscription reference from a hashtable.
+        /// </summary>
         public static SubscriptionReference FromHashtable(Hashtable hashtable)
         {
             var option = new SubscriptionReference();
@@ -210,11 +247,17 @@ namespace PSRule.Rules.Azure.Configuration
             return option;
         }
 
+        /// <summary>
+        /// Create a subscription reference from a display name.
+        /// </summary>
         public static SubscriptionReference FromString(string displayName)
         {
             return new SubscriptionReference(displayName);
         }
 
+        /// <summary>
+        /// Convert the reference to an option.
+        /// </summary>
         public SubscriptionOption ToSubscriptionOption()
         {
             return new SubscriptionOption(SubscriptionId, TenantId, DisplayName, State);

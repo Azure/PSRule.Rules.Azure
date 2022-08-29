@@ -24,7 +24,7 @@ namespace PSRule.Rules.Azure.Configuration
         private const string ID_PREFIX = "/subscriptions/";
         private const string RGID_PREFIX = "/resourceGroups/";
 
-        internal readonly static ResourceGroupOption Default = new ResourceGroupOption
+        internal readonly static ResourceGroupOption Default = new()
         {
             SubscriptionId = DEFAULT_SUBSCRIPTIONID,
             Name = DEFAULT_NAME,
@@ -75,6 +75,9 @@ namespace PSRule.Rules.Azure.Configuration
         /// </summary>
         public sealed class ResourceGroupProperties
         {
+            /// <summary>
+            /// Create default resource group properties.
+            /// </summary>
             public ResourceGroupProperties()
             {
                 ProvisioningState = DEFAULT_PROVISIONINGSTATE;
@@ -97,6 +100,7 @@ namespace PSRule.Rules.Azure.Configuration
             return obj is ResourceGroupOption option && Equals(option);
         }
 
+        /// <inheritdoc/>
         public bool Equals(ResourceGroupOption other)
         {
             return other != null &&
@@ -108,16 +112,25 @@ namespace PSRule.Rules.Azure.Configuration
                 Properties == other.Properties;
         }
 
+        /// <summary>
+        /// Compares two resource group options to determine if they are equal.
+        /// </summary>
         public static bool operator ==(ResourceGroupOption o1, ResourceGroupOption o2)
         {
             return Equals(o1, o2);
         }
 
+        /// <summary>
+        /// Compares two resource group options to determine if they are not equal.
+        /// </summary>
         public static bool operator !=(ResourceGroupOption o1, ResourceGroupOption o2)
         {
             return !Equals(o1, o2);
         }
 
+        /// <summary>
+        /// Compares two resource group options to determine if they are equal.
+        /// </summary>
         public static bool Equals(ResourceGroupOption o1, ResourceGroupOption o2)
         {
             return (object.Equals(null, o1) && object.Equals(null, o2)) ||
@@ -180,6 +193,9 @@ namespace PSRule.Rules.Azure.Configuration
         [YamlIgnore]
         public string Id { get; private set; }
 
+        /// <summary>
+        /// The name of the resource group.
+        /// </summary>
         [DefaultValue(null)]
         public string Name
         {
@@ -198,6 +214,7 @@ namespace PSRule.Rules.Azure.Configuration
         /// The Azure resource type.
         /// </summary>
         [YamlIgnore]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Must be instance property for later evaluation.")]
         public string Type => DEFAULT_TYPE;
 
         /// <summary>
@@ -225,6 +242,9 @@ namespace PSRule.Rules.Azure.Configuration
         public ResourceGroupProperties Properties { get; set; }
     }
 
+    /// <summary>
+    /// A reference to a resource group.
+    /// </summary>
     public sealed class ResourceGroupReference
     {
         private ResourceGroupReference() { }
@@ -235,35 +255,61 @@ namespace PSRule.Rules.Azure.Configuration
             FromName = true;
         }
 
+        /// <summary>
+        /// The name of the resource group.
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// The location of the resource group.
+        /// </summary>
         public string Location { get; set; }
 
+        /// <summary>
+        /// The value of the managed by property.
+        /// </summary>
         public string ManagedBy { get; set; }
 
+        /// <summary>
+        /// Any tags assigned to the resource group.
+        /// </summary>
         public Hashtable Tags { get; set; }
 
+        /// <summary>
+        /// The provisioning state for the resource group.
+        /// </summary>
         public string ProvisioningState { get; set; }
 
+        /// <summary>
+        /// Determines if the reference is created from a resource group name.
+        /// </summary>
         public bool FromName { get; private set; }
 
+        /// <summary>
+        /// Create a resource group reference from a hashtable.
+        /// </summary>
         public static implicit operator ResourceGroupReference(Hashtable hashtable)
         {
             return FromHashtable(hashtable);
         }
 
+        /// <summary>
+        /// Create a resource group reference from a resource group name.
+        /// </summary>
         public static implicit operator ResourceGroupReference(string resourceGroupName)
         {
             return FromString(resourceGroupName);
         }
 
+        /// <summary>
+        /// Create a resource group reference from a hashtable.
+        /// </summary>
         public static ResourceGroupReference FromHashtable(Hashtable hashtable)
         {
             var option = new ResourceGroupReference();
             if (hashtable != null)
             {
                 var index = PSRuleOption.BuildIndex(hashtable);
-
                 if (index.TryPopValue("Name", out string svalue))
                     option.Name = svalue;
 
@@ -282,11 +328,17 @@ namespace PSRule.Rules.Azure.Configuration
             return option;
         }
 
+        /// <summary>
+        /// Create a resource group reference from a resource group name.
+        /// </summary>
         public static ResourceGroupReference FromString(string resourceGroupName)
         {
             return new ResourceGroupReference(resourceGroupName);
         }
 
+        /// <summary>
+        /// Convert the reference to an option.
+        /// </summary>
         public ResourceGroupOption ToResourceGroupOption()
         {
             return new ResourceGroupOption(Name, Location, ManagedBy, Tags, ProvisioningState);
