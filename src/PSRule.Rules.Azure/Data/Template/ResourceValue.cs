@@ -30,6 +30,11 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             return resource.DependsOn(other);
         }
+
+        public static bool IsType(this IResourceValue resource, string type)
+        {
+            return string.Equals(resource.Type, type, StringComparison.OrdinalIgnoreCase);
+        }
     }
 
     internal abstract class BaseResourceValue
