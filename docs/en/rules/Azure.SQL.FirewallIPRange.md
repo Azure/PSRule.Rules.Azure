@@ -11,16 +11,19 @@ ms-content-id: a25b1927-f04c-4a6a-8a3d-42d59d4722ff
 
 ## SYNOPSIS
 
-Determine if there is an excessive number of permitted IP addresses.
+Determine if there is an excessive number of permitted IP addresses set in the allowed IP list (CIDR range).
 
 ## DESCRIPTION
 
-Typically the number of IP address rules permitted through the firewall is minimal, with management connectivity from on-premises and cloud application connectivity the most common.
+Typically the number of IP address rules permitted through the firewall is minimal, with management connectivity from
+on-premises and cloud application connectivity the most common. This rule checks the IP addresses IP list
+(CIDR range of each IP provided) set in the SQL allowed address isn't excess.
 
 ## RECOMMENDATION
 
-SQL Server has greater then ten (10) public IP addresses that are permitted network access.
-Some rules may not be needed or can be reduced.
+Reduce the size of the IP ranges set in the each allowed IP rule to less than (10) per entry (less than a /27).
+
+## Example
 
 ## LINKS
 
