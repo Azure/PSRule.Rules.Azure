@@ -5,6 +5,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -77,6 +78,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -182,6 +184,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -240,6 +243,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -297,7 +301,8 @@
     "resourceType": "locations/advancedThreatProtectionAzureAsyncOperation",
     "apiVersions": [
       "2022-02-01-preview",
-      "2021-11-01-preview"
+      "2021-11-01-preview",
+      "2021-11-01"
     ],
     "locations": [
       "Australia Central",
@@ -345,7 +350,8 @@
     "resourceType": "locations/advancedThreatProtectionOperationResults",
     "apiVersions": [
       "2022-02-01-preview",
-      "2021-11-01-preview"
+      "2021-11-01-preview",
+      "2021-11-01"
     ],
     "locations": [
       "Australia Central",
@@ -394,6 +400,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -452,6 +459,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -510,6 +518,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -573,6 +582,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -632,6 +642,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -691,6 +702,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -748,7 +760,8 @@
     "resourceType": "locations/databaseEncryptionProtectorRevalidateAzureAsyncOperation",
     "apiVersions": [
       "2022-02-01-preview",
-      "2021-11-01-preview"
+      "2021-11-01-preview",
+      "2021-11-01"
     ],
     "locations": [
       "Australia Central",
@@ -796,7 +809,8 @@
     "resourceType": "locations/databaseEncryptionProtectorRevalidateOperationResults",
     "apiVersions": [
       "2022-02-01-preview",
-      "2021-11-01-preview"
+      "2021-11-01-preview",
+      "2021-11-01"
     ],
     "locations": [
       "Australia Central",
@@ -939,6 +953,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -997,6 +1012,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1055,6 +1071,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1115,6 +1132,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1175,6 +1193,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1235,6 +1254,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1289,6 +1309,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1343,6 +1364,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview"
     ],
@@ -1393,6 +1415,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview"
     ],
@@ -1443,6 +1466,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1501,6 +1525,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1559,6 +1584,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1619,6 +1645,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1679,6 +1706,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1738,6 +1766,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1797,6 +1826,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1855,6 +1885,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -1912,7 +1943,8 @@
     "resourceType": "locations/externalPolicyBasedAuthorizationsAzureAsycOperation",
     "apiVersions": [
       "2022-02-01-preview",
-      "2021-11-01-preview"
+      "2021-11-01-preview",
+      "2021-11-01"
     ],
     "locations": [
       "Australia Central",
@@ -1960,7 +1992,8 @@
     "resourceType": "locations/externalPolicyBasedAuthorizationsOperationResults",
     "apiVersions": [
       "2022-02-01-preview",
-      "2021-11-01-preview"
+      "2021-11-01-preview",
+      "2021-11-01"
     ],
     "locations": [
       "Australia Central",
@@ -2009,6 +2042,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2068,6 +2102,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2127,6 +2162,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2186,6 +2222,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2245,6 +2282,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2300,6 +2338,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2355,6 +2394,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2412,6 +2452,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2485,6 +2526,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2542,6 +2584,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2598,6 +2641,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2654,6 +2698,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2712,6 +2757,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2770,6 +2816,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview"
@@ -2821,6 +2868,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview"
@@ -2872,6 +2920,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2930,6 +2979,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -2988,6 +3038,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3046,6 +3097,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3102,6 +3154,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3158,6 +3211,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3214,6 +3268,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3270,6 +3325,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3328,6 +3384,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3386,6 +3443,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3444,6 +3502,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3502,6 +3561,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3558,6 +3618,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3614,6 +3675,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview"
@@ -3665,6 +3727,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview"
@@ -3716,6 +3779,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3774,6 +3838,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3832,6 +3897,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -3889,7 +3955,8 @@
     "resourceType": "locations/managedDnsAliasAsyncOperation",
     "apiVersions": [
       "2022-02-01-preview",
-      "2021-11-01-preview"
+      "2021-11-01-preview",
+      "2021-11-01"
     ],
     "locations": [
       "Australia Central",
@@ -3937,7 +4004,8 @@
     "resourceType": "locations/managedDnsAliasOperationResults",
     "apiVersions": [
       "2022-02-01-preview",
-      "2021-11-01-preview"
+      "2021-11-01-preview",
+      "2021-11-01"
     ],
     "locations": [
       "Australia Central",
@@ -4080,6 +4148,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4135,10 +4204,58 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/managedInstanceDtcAzureAsyncOperation",
+    "apiVersions": [
+      "2022-02-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/managedInstanceEncryptionProtectorAzureAsyncOperation",
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4196,6 +4313,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4253,6 +4371,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4310,6 +4429,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4367,6 +4487,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4423,6 +4544,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4479,6 +4601,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4538,6 +4661,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4593,6 +4717,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4648,6 +4773,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4703,6 +4829,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4758,6 +4885,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4815,6 +4943,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4872,6 +5001,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4930,6 +5060,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -4988,6 +5119,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5046,6 +5178,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5104,6 +5237,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5159,6 +5293,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5214,6 +5349,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5273,6 +5409,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview"
@@ -5335,6 +5472,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview"
@@ -5386,6 +5524,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview"
@@ -5437,6 +5576,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5493,6 +5633,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5549,6 +5690,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5605,6 +5747,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5661,6 +5804,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5720,6 +5864,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5779,6 +5924,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5837,6 +5983,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5895,6 +6042,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -5951,6 +6099,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6007,6 +6156,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6066,6 +6216,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6125,6 +6276,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6184,6 +6336,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6243,6 +6396,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview"
     ],
@@ -6293,6 +6447,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview"
     ],
@@ -6343,6 +6498,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6397,6 +6553,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6457,6 +6614,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6511,6 +6669,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6568,6 +6727,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6625,6 +6785,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6684,6 +6845,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6743,6 +6905,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6802,6 +6965,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6861,6 +7025,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6918,6 +7083,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -6975,6 +7141,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7030,6 +7197,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7085,6 +7253,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7146,6 +7315,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7205,6 +7375,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7264,6 +7435,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7324,6 +7496,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7384,6 +7557,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7441,6 +7615,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7554,6 +7729,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7622,6 +7798,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7745,6 +7922,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7859,6 +8037,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7938,6 +8117,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -7995,7 +8175,8 @@
     "resourceType": "managedInstances/dnsAliases",
     "apiVersions": [
       "2022-02-01-preview",
-      "2021-11-01-preview"
+      "2021-11-01-preview",
+      "2021-11-01"
     ],
     "locations": [
       "Australia Central",
@@ -8044,6 +8225,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -8102,6 +8284,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -8160,6 +8343,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -8217,6 +8401,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -8274,6 +8459,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -8348,6 +8534,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -8404,6 +8591,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -8503,6 +8691,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -8625,6 +8814,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -8683,7 +8873,8 @@
     "resourceType": "servers/advancedThreatProtectionSettings",
     "apiVersions": [
       "2022-02-01-preview",
-      "2021-11-01-preview"
+      "2021-11-01-preview",
+      "2021-11-01"
     ],
     "locations": [
       "Australia Central",
@@ -8795,6 +8986,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -8929,6 +9121,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -8996,6 +9189,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -9109,6 +9303,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -9297,6 +9492,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -9359,7 +9555,8 @@
     "resourceType": "servers/databases/advancedThreatProtectionSettings",
     "apiVersions": [
       "2022-02-01-preview",
-      "2021-11-01-preview"
+      "2021-11-01-preview",
+      "2021-11-01"
     ],
     "locations": [
       "Australia Central",
@@ -9471,6 +9668,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -9555,6 +9753,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -9614,6 +9813,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -9681,6 +9881,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -9753,6 +9954,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -9816,6 +10018,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -10086,6 +10289,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview"
@@ -10235,6 +10439,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -10319,6 +10524,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -10406,6 +10612,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -10478,6 +10685,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -10640,6 +10848,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -10699,6 +10908,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -10777,6 +10987,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -10835,6 +11046,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -10894,6 +11106,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -10960,6 +11173,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -11070,6 +11284,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -11181,6 +11396,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -11239,6 +11455,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -11319,6 +11536,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -11383,6 +11601,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -11552,6 +11771,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -11635,6 +11855,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -11708,6 +11929,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -11767,6 +11989,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -11964,6 +12187,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -12031,6 +12255,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -12089,6 +12314,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -12170,6 +12396,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -12235,6 +12462,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -12441,6 +12669,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -12519,6 +12748,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -12635,6 +12865,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -12694,6 +12925,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -12804,6 +13036,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -12880,6 +13113,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",
@@ -12942,6 +13176,7 @@
     "apiVersions": [
       "2022-02-01-preview",
       "2021-11-01-preview",
+      "2021-11-01",
       "2021-08-01-preview",
       "2021-05-01-preview",
       "2021-02-01-preview",

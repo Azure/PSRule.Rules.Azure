@@ -8,10 +8,10 @@
       "2019-07-01-alpha"
     ],
     "locations": [
-      "West Europe",
       "East US",
-      "West Us 2",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe",
+      "West Us 2"
     ],
     "zoneMappings": null
   },
@@ -43,10 +43,10 @@
       "2019-07-01-alpha"
     ],
     "locations": [
-      "West Europe",
       "East US",
-      "West Us 2",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe",
+      "West Us 2"
     ],
     "zoneMappings": null
   },

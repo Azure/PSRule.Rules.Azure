@@ -24,10 +24,10 @@
       "2020-12-01-preview"
     ],
     "locations": [
-      "West US 2",
-      "West Europe",
       "East US",
-      "North Europe"
+      "North Europe",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },

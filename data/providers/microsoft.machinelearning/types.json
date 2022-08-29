@@ -27,12 +27,12 @@
       "2016-05-01-preview"
     ],
     "locations": [
-      "South Central US",
-      "West Europe",
-      "Southeast Asia",
-      "Japan East",
       "East US 2",
-      "West Central US"
+      "Japan East",
+      "South Central US",
+      "Southeast Asia",
+      "West Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -56,12 +56,12 @@
       "2016-05-01-preview"
     ],
     "locations": [
-      "South Central US",
-      "West Europe",
-      "Southeast Asia",
-      "Japan East",
       "East US 2",
-      "West Central US"
+      "Japan East",
+      "South Central US",
+      "Southeast Asia",
+      "West Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -73,12 +73,12 @@
       "2016-05-01-preview"
     ],
     "locations": [
-      "South Central US",
-      "West Europe",
-      "Southeast Asia",
-      "Japan East",
       "East US 2",
-      "West Central US"
+      "Japan East",
+      "South Central US",
+      "Southeast Asia",
+      "West Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -198,12 +198,12 @@
       "2016-05-01-preview"
     ],
     "locations": [
-      "South Central US",
-      "West Europe",
-      "Southeast Asia",
-      "Japan East",
       "East US 2",
-      "West Central US"
+      "Japan East",
+      "South Central US",
+      "Southeast Asia",
+      "West Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -226,11 +226,11 @@
       "2016-04-01"
     ],
     "locations": [
-      "South Central US",
-      "West Europe",
-      "Southeast Asia",
       "Japan East",
-      "West Central US"
+      "South Central US",
+      "Southeast Asia",
+      "West Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   }

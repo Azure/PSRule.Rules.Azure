@@ -15,9 +15,9 @@
       "2020-11-01-preview"
     ],
     "locations": [
-      "West US",
       "Japan East",
-      "North Europe"
+      "North Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -28,9 +28,9 @@
       "2020-11-01-preview"
     ],
     "locations": [
-      "West US",
       "Japan East",
-      "North Europe"
+      "North Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -41,9 +41,9 @@
       "2020-11-01-preview"
     ],
     "locations": [
+      "North Europe",
       "West US",
-      "West US 2",
-      "North Europe"
+      "West US 2"
     ],
     "zoneMappings": null
   }

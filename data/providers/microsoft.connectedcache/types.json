@@ -7,9 +7,9 @@
       "2019-12-04-preview"
     ],
     "locations": [
-      "West US",
       "East US",
-      "West Central US"
+      "West Central US",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -20,9 +20,9 @@
       "2021-09-15-preview"
     ],
     "locations": [
-      "West US",
       "East US",
-      "West Central US"
+      "West Central US",
+      "West US"
     ],
     "zoneMappings": null
   }

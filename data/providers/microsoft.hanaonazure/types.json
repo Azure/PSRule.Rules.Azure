@@ -6,17 +6,17 @@
       "2017-11-03-preview"
     ],
     "locations": [
-      "Germany West Central",
-      "West US",
-      "West US 2",
-      "East US",
-      "East US 2",
-      "West Europe",
-      "North Europe",
-      "Japan East",
       "Australia East",
       "Australia Southeast",
-      "South Central US"
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "Japan East",
+      "North Europe",
+      "South Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -36,20 +36,20 @@
       "2017-11-03-preview"
     ],
     "locations": [
-      "Germany West Central",
-      "West US",
-      "West US 2",
-      "East US",
-      "East US 2",
-      "West Europe",
-      "North Europe",
-      "Japan East",
-      "Japan West",
       "Australia East",
       "Australia Southeast",
-      "Southeast Asia",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "North Europe",
       "South Central US",
-      "UK South"
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -60,20 +60,20 @@
       "2017-11-03-preview"
     ],
     "locations": [
-      "Germany West Central",
-      "West US",
-      "West US 2",
-      "East US",
-      "East US 2",
-      "West Europe",
-      "North Europe",
-      "Japan East",
-      "Japan West",
       "Australia East",
       "Australia Southeast",
-      "Southeast Asia",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "North Europe",
       "South Central US",
-      "UK South"
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -84,20 +84,20 @@
       "2017-11-03-preview"
     ],
     "locations": [
-      "Germany West Central",
-      "West US",
-      "West US 2",
-      "East US",
-      "East US 2",
-      "West Europe",
-      "North Europe",
-      "Japan East",
-      "Japan West",
       "Australia East",
       "Australia Southeast",
-      "Southeast Asia",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "North Europe",
       "South Central US",
-      "UK South"
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -109,20 +109,20 @@
       "2017-11-03-preview"
     ],
     "locations": [
-      "Germany West Central",
-      "West US",
-      "West US 2",
-      "East US",
-      "East US 2",
-      "West Europe",
-      "North Europe",
-      "Japan East",
-      "Japan West",
       "Australia East",
       "Australia Southeast",
-      "Southeast Asia",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "North Europe",
       "South Central US",
-      "UK South"
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": null
   }

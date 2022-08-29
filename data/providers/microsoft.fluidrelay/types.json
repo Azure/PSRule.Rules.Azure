@@ -31,16 +31,17 @@
       "2021-03-12-preview"
     ],
     "locations": [
+      "Australia East",
       "East US",
       "East US 2",
-      "South Central US",
-      "West US 2",
-      "West US 3",
-      "Australia East",
-      "Southeast Asia",
       "North Europe",
+      "South Central US",
+      "Southeast Asia",
       "Sweden Central",
-      "West Europe"
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -57,16 +58,17 @@
       "2021-08-30-preview"
     ],
     "locations": [
+      "Australia East",
       "East US",
       "East US 2",
-      "South Central US",
-      "West US 2",
-      "West US 3",
-      "Australia East",
-      "Southeast Asia",
       "North Europe",
+      "South Central US",
+      "Southeast Asia",
       "Sweden Central",
-      "West Europe"
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -86,9 +88,9 @@
       "2021-08-30-preview"
     ],
     "locations": [
-      "West US 2",
       "Southeast Asia",
-      "West Europe"
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },

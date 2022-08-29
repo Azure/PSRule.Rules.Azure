@@ -12,9 +12,11 @@
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "South Central US",
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -30,9 +32,11 @@
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "South Central US",
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -48,9 +52,11 @@
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "South Central US",
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -63,8 +69,8 @@
     "locations": [
       "Australia East",
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -77,8 +83,8 @@
     "locations": [
       "Australia East",
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -91,8 +97,8 @@
     "locations": [
       "Australia East",
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -105,22 +111,22 @@
     "locations": [
       "Australia East",
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "galleryimages",
+    "resourceType": "galleryImages",
     "apiVersions": [
       "2021-09-01-preview",
       "2021-07-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -128,6 +134,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-05-01",
       "2022-03-01",
       "2022-01-01",
@@ -143,8 +150,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/operationstatuses",
+    "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-05-01",
       "2022-03-01",
       "2022-01-01",
@@ -155,17 +163,17 @@
       "2020-10-01"
     ],
     "locations": [
-      "East US",
-      "East US 2 EUAP",
-      "West Europe",
-      "Southeast Asia",
-      "Central US EUAP",
+      "Australia East",
       "Central US",
+      "Central US EUAP",
+      "East US",
+      "East US 2",
+      "East US 2 EUAP",
       "Japan East",
       "North Europe",
-      "Australia East",
-      "East US 2",
-      "South Central US"
+      "South Central US",
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -178,8 +186,8 @@
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -187,6 +195,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-05-01",
       "2022-03-01",
       "2022-01-01",
@@ -203,14 +212,14 @@
   },
   {
     "aliases": null,
-    "resourceType": "storagecontainers",
+    "resourceType": "storageContainers",
     "apiVersions": [
       "2021-09-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -223,8 +232,8 @@
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -237,21 +246,21 @@
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "virtualmachines/extensions",
+    "resourceType": "virtualMachines/extensions",
     "apiVersions": [
       "2021-09-01-preview"
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -263,8 +272,8 @@
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -277,8 +286,8 @@
     ],
     "locations": [
       "East US",
-      "West Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   }

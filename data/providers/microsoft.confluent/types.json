@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "agreements",
     "apiVersions": [
+      "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
@@ -17,6 +18,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
@@ -31,6 +33,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
@@ -45,6 +48,7 @@
     "aliases": null,
     "resourceType": "locations/OperationStatuses",
     "apiVersions": [
+      "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
@@ -53,25 +57,25 @@
       "2020-03-01"
     ],
     "locations": [
-      "West US 2",
-      "East US 2 EUAP",
-      "West Central US",
       "Australia East",
-      "Japan East",
-      "South Africa North",
       "Brazil South",
-      "Germany West Central",
-      "South Central US",
-      "France Central",
       "Canada Central",
-      "East US",
-      "UK South",
-      "West Europe",
       "Central US",
+      "Central US EUAP",
+      "East US",
       "East US 2",
+      "East US 2 EUAP",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
       "North Europe",
+      "South Africa North",
+      "South Central US",
       "Southeast Asia",
-      "Central US EUAP"
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -79,6 +83,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
@@ -93,6 +98,7 @@
     "aliases": null,
     "resourceType": "organizations",
     "apiVersions": [
+      "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
@@ -101,23 +107,23 @@
       "2020-03-01"
     ],
     "locations": [
-      "West US 2",
-      "South Central US",
-      "Brazil South",
-      "West Central US",
       "Australia East",
-      "Japan East",
-      "France Central",
+      "Brazil South",
       "Canada Central",
-      "East US",
-      "UK South",
-      "West Europe",
-      "South Africa North",
-      "Germany West Central",
       "Central US",
+      "East US",
       "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
       "North Europe",
-      "Southeast Asia"
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -125,6 +131,7 @@
     "aliases": null,
     "resourceType": "validations",
     "apiVersions": [
+      "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",

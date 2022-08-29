@@ -15,13 +15,13 @@
       "2022-04-01-preview"
     ],
     "locations": [
-      "South Central US",
-      "West US 3",
-      "East US",
-      "East Asia",
-      "Sweden Central",
       "Australia East",
-      "Japan East"
+      "East Asia",
+      "East US",
+      "Japan East",
+      "South Central US",
+      "Sweden Central",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -32,13 +32,13 @@
       "2022-04-01-preview"
     ],
     "locations": [
-      "South Central US",
-      "West US 3",
-      "East US",
-      "East Asia",
-      "Sweden Central",
       "Australia East",
-      "Japan East"
+      "East Asia",
+      "East US",
+      "Japan East",
+      "South Central US",
+      "Sweden Central",
+      "West US 3"
     ],
     "zoneMappings": null
   }
