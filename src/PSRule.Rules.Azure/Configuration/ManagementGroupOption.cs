@@ -22,7 +22,7 @@ namespace PSRule.Rules.Azure.Configuration
 
         private const string DEFAULT_TYPE = "/providers/Microsoft.Management/managementGroups";
 
-        internal readonly static ManagementGroupOption Default = new ManagementGroupOption
+        internal readonly static ManagementGroupOption Default = new()
         {
             Name = DEFAULT_NAME,
             Properties = new ManagementGroupProperties(DEFAULT_DISPLAYNAME, DEFAULT_TENANTID),
@@ -54,8 +54,14 @@ namespace PSRule.Rules.Azure.Configuration
             Properties = new ManagementGroupProperties(displayName, tenantId);
         }
 
+        /// <summary>
+        /// Properties for the management group.
+        /// </summary>
         public sealed class ManagementGroupProperties
         {
+            /// <summary>
+            /// Create a default management group properties.
+            /// </summary>
             public ManagementGroupProperties()
             {
                 DisplayName = DEFAULT_DISPLAYNAME;
@@ -88,8 +94,14 @@ namespace PSRule.Rules.Azure.Configuration
             public ManagementGroupDetails Details { get; internal set; }
         }
 
+        /// <summary>
+        /// Details for the management group.
+        /// </summary>
         public sealed class ManagementGroupDetails
         {
+            /// <summary>
+            /// Create a default management group details.
+            /// </summary>
             public ManagementGroupDetails()
             {
                 Parent = new ManagementGroupParent();
@@ -123,10 +135,16 @@ namespace PSRule.Rules.Azure.Configuration
             public string Version { get; set; }
         }
 
+        /// <summary>
+        /// Parent properties for the management group.
+        /// </summary>
         public sealed class ManagementGroupParent
         {
             private string _Name;
 
+            /// <summary>
+            /// Create a default management group parent.
+            /// </summary>
             public ManagementGroupParent()
             {
                 Name = DEFAULT_TENANTID;
@@ -172,6 +190,7 @@ namespace PSRule.Rules.Azure.Configuration
             return obj is ManagementGroupOption option && Equals(option);
         }
 
+        /// <inheritdoc/>
         public bool Equals(ManagementGroupOption other)
         {
             return other != null &&
@@ -179,16 +198,25 @@ namespace PSRule.Rules.Azure.Configuration
                 Properties == other.Properties;
         }
 
+        /// <summary>
+        /// Compares two management group options to determine if they are equal.
+        /// </summary>
         public static bool operator ==(ManagementGroupOption o1, ManagementGroupOption o2)
         {
             return Equals(o1, o2);
         }
 
+        /// <summary>
+        /// Compares two management group options to determine if they are not equal.
+        /// </summary>
         public static bool operator !=(ManagementGroupOption o1, ManagementGroupOption o2)
         {
             return !Equals(o1, o2);
         }
 
+        /// <summary>
+        /// Compares two management group options to determine if they are equal.
+        /// </summary>
         public static bool Equals(ManagementGroupOption o1, ManagementGroupOption o2)
         {
             return (object.Equals(null, o1) && object.Equals(null, o2)) ||
@@ -221,6 +249,7 @@ namespace PSRule.Rules.Azure.Configuration
         /// The Azure resource type.
         /// </summary>
         [YamlIgnore]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Must be instance property for later evaluation.")]
         public string Type => DEFAULT_TYPE;
 
         /// <summary>
