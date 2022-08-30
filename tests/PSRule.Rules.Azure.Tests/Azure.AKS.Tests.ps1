@@ -1314,6 +1314,7 @@ Describe 'Azure.AKS' -Tag AKS {
         }
         
         It 'Azure.AKS.UptimeSLA' {
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.UptimeSLA' };
 
             # Fail
