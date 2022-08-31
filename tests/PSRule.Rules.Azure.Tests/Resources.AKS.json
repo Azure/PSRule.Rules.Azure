@@ -1626,7 +1626,7 @@
         },
         "sku": {
             "name": "Basic",
-            "tier": "Free"
+            "tier": "Paid"
         }
     },
     {
@@ -1813,7 +1813,7 @@
         },
         "sku": {
             "name": "Basic",
-            "tier": "Free"
+            "tier": "Paid"
         }
     }
 ]
