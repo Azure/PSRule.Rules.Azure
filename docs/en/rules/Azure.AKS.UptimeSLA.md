@@ -1,6 +1,6 @@
 ---
 severity: Important
-pillar: Operational Excellence
+pillar: Reliability
 category: Requirements
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.UptimeSLA/
@@ -123,5 +123,6 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-06-02-preview' = {
 
 ## LINKS
 
+- [Target and non-functional requirements](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
 - [Azure Kubernetes Service (AKS) Uptime SLA](https://docs.microsoft.com/azure/aks/uptime-sla)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
