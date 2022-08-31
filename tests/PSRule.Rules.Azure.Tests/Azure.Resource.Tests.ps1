@@ -230,7 +230,7 @@ Describe 'Azure.ResourceGroup' -Tag 'ResourceGroup' {
     }
 }
 
-Describe 'Azure.Resource.adminUsername' -Tag 'Resource' {
+Describe 'Azure.Deployment.AdminUsername' -Tag 'Resource' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{

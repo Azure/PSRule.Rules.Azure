@@ -21,5 +21,8 @@ This means that the value is passed through insecurely and is a security risk.
 
 Sensitive properties for nested deployments should be set by a secureString parameter.
 
-- [Use KeyVault Secrets in Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/key-vault-parameter)
-- [Use KeyVault Secret in Parameter File](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-use-key-vault#edit-the-parameters-file)
+## LINKS
+
+- [Use KeyVault Secrets in Bicep](https://docs.microsoft.com/azure/azure-resource-manager/bicep/key-vault-parameter)
+- [Use KeyVault Secret in Parameter File](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-use-key-vault#edit-the-parameters-file)
+- [Well Architected Framework - IAC](https://docs.microsoft.com/en-us/azure/architecture/framework/security/deploy-infrastructure)
