@@ -23,6 +23,15 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.19.0-B0077 (pre-release)
+
+What's changed since pre-release v1.19.0-B0077:
+
+- New rules:
+  - Azure Kubernetes Service:
+    - Check clusters use uptime SLA by @bengeset96.
+      [#1601](https://github.com/Azure/PSRule.Rules.Azure/issues/1601)
+
 ## v1.19.0-B0042 (pre-release)
 
 What's changed since pre-release v1.19.0-B0010:
