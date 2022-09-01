@@ -105,6 +105,7 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2022-08-02-preview",
       "2022-07-02-preview",
       "2022-03-01"
     ],
@@ -276,6 +277,8 @@
     "aliases": null,
     "resourceType": "locations/orchestrators",
     "apiVersions": [
+      "2022-08-02-preview",
+      "2022-08-01",
       "2022-07-02-preview",
       "2022-07-01",
       "2022-06-02-preview",
@@ -366,6 +369,8 @@
     "aliases": null,
     "resourceType": "locations/osOptions",
     "apiVersions": [
+      "2022-08-02-preview",
+      "2022-08-01",
       "2022-07-02-preview",
       "2022-07-01",
       "2022-06-02-preview",
@@ -755,6 +760,8 @@
     },
     "resourceType": "managedClusters",
     "apiVersions": [
+      "2022-08-02-preview",
+      "2022-08-01",
       "2022-07-02-preview",
       "2022-07-01",
       "2022-06-02-preview",
@@ -863,6 +870,7 @@
     },
     "resourceType": "managedclustersnapshots",
     "apiVersions": [
+      "2022-08-02-preview",
       "2022-07-02-preview",
       "2022-06-02-preview",
       "2022-05-02-preview",
@@ -948,6 +956,8 @@
     },
     "resourceType": "snapshots",
     "apiVersions": [
+      "2022-08-02-preview",
+      "2022-08-01",
       "2022-07-02-preview",
       "2022-07-01",
       "2022-06-02-preview",

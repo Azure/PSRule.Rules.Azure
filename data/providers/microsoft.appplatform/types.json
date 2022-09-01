@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01-preview",
       "2022-04-01",
       "2022-03-01-preview",
@@ -19,6 +20,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01-preview",
       "2022-04-01",
       "2022-03-01-preview",
@@ -60,6 +62,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01-preview",
       "2022-04-01",
       "2022-03-01-preview",
@@ -101,6 +104,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01-preview",
       "2022-04-01",
       "2022-03-01-preview",
@@ -142,6 +146,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01-preview",
       "2022-04-01",
       "2022-03-01-preview",
@@ -245,9 +250,28 @@
       "Microsoft.AppPlatform/Spring/configServerProperties.error.message": "properties.configServerProperties.error.message",
       "Microsoft.AppPlatform/Spring/configServerProperties.state": "properties.configServerProperties.state",
       "Microsoft.AppPlatform/Spring/networkProfile": "properties.networkProfile",
+      "Microsoft.AppPlatform/Spring/networkProfile.appNetworkResourceGroup": "properties.networkProfile.appNetworkResourceGroup",
+      "Microsoft.AppPlatform/Spring/networkProfile.appSubnetId": "properties.networkProfile.appSubnetId",
+      "Microsoft.AppPlatform/Spring/networkProfile.outboundIPs": "properties.networkProfile.outboundIPs",
+      "Microsoft.AppPlatform/Spring/networkProfile.outboundIPs.publicIPs": "properties.networkProfile.outboundIPs.publicIPs",
+      "Microsoft.AppPlatform/Spring/networkProfile.outboundIPs.publicIPs[*]": "properties.networkProfile.outboundIPs.publicIPs[*]",
+      "Microsoft.AppPlatform/Spring/networkProfile.requiredTraffics": "properties.networkProfile.requiredTraffics",
+      "Microsoft.AppPlatform/Spring/networkProfile.requiredTraffics[*]": "properties.networkProfile.requiredTraffics[*]",
+      "Microsoft.AppPlatform/Spring/networkProfile.requiredTraffics[*].direction": "properties.networkProfile.requiredTraffics[*].direction",
+      "Microsoft.AppPlatform/Spring/networkProfile.requiredTraffics[*].fqdns": "properties.networkProfile.requiredTraffics[*].fqdns",
+      "Microsoft.AppPlatform/Spring/networkProfile.requiredTraffics[*].fqdns[*]": "properties.networkProfile.requiredTraffics[*].fqdns[*]",
+      "Microsoft.AppPlatform/Spring/networkProfile.requiredTraffics[*].ips": "properties.networkProfile.requiredTraffics[*].ips",
+      "Microsoft.AppPlatform/Spring/networkProfile.requiredTraffics[*].ips[*]": "properties.networkProfile.requiredTraffics[*].ips[*]",
+      "Microsoft.AppPlatform/Spring/networkProfile.requiredTraffics[*].port": "properties.networkProfile.requiredTraffics[*].port",
+      "Microsoft.AppPlatform/Spring/networkProfile.requiredTraffics[*].protocol": "properties.networkProfile.requiredTraffics[*].protocol",
+      "Microsoft.AppPlatform/Spring/networkProfile.serviceCidr": "properties.networkProfile.serviceCidr",
+      "Microsoft.AppPlatform/Spring/networkProfile.serviceRuntimeNetworkResourceGroup": "properties.networkProfile.serviceRuntimeNetworkResourceGroup",
       "Microsoft.AppPlatform/Spring/networkProfile.serviceRuntimeSubnetId": "properties.networkProfile.serviceRuntimeSubnetId",
       "Microsoft.AppPlatform/Spring/provisioningState": "properties.provisioningState",
       "Microsoft.AppPlatform/Spring/serviceId": "properties.serviceId",
+      "Microsoft.AppPlatform/Spring/sku": "sku",
+      "Microsoft.AppPlatform/Spring/sku.capacity": "sku.capacity",
+      "Microsoft.AppPlatform/Spring/sku.name": "sku.name",
       "Microsoft.AppPlatform/Spring/sku.tier": "sku.tier",
       "Microsoft.AppPlatform/Spring/trace": "properties.trace",
       "Microsoft.AppPlatform/Spring/trace.appInsightInstrumentationKey": "properties.trace.appInsightInstrumentationKey",
@@ -260,6 +284,7 @@
     },
     "resourceType": "Spring",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01-preview",
       "2022-04-01",
       "2022-03-01-preview",
@@ -298,9 +323,25 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AppPlatform/Spring/apps/activeDeploymentName": "properties.activeDeploymentName",
+      "Microsoft.AppPlatform/Spring/apps/createdTime": "properties.createdTime",
+      "Microsoft.AppPlatform/Spring/apps/fqdn": "properties.fqdn",
+      "Microsoft.AppPlatform/Spring/apps/httpsOnly": "properties.httpsOnly",
+      "Microsoft.AppPlatform/Spring/apps/persistentDisk": "properties.persistentDisk",
+      "Microsoft.AppPlatform/Spring/apps/persistentDisk.mountPath": "properties.persistentDisk.mountPath",
+      "Microsoft.AppPlatform/Spring/apps/persistentDisk.sizeInGB": "properties.persistentDisk.sizeInGB",
+      "Microsoft.AppPlatform/Spring/apps/persistentDisk.usedInGB": "properties.persistentDisk.usedInGB",
+      "Microsoft.AppPlatform/Spring/apps/provisioningState": "properties.provisioningState",
+      "Microsoft.AppPlatform/Spring/apps/public": "properties.public",
+      "Microsoft.AppPlatform/Spring/apps/temporaryDisk": "properties.temporaryDisk",
+      "Microsoft.AppPlatform/Spring/apps/temporaryDisk.mountPath": "properties.temporaryDisk.mountPath",
+      "Microsoft.AppPlatform/Spring/apps/temporaryDisk.sizeInGB": "properties.temporaryDisk.sizeInGB",
+      "Microsoft.AppPlatform/Spring/apps/url": "properties.url"
+    },
     "resourceType": "Spring/apps",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01-preview",
       "2022-04-01",
       "2022-03-01-preview",
@@ -339,9 +380,40 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AppPlatform/Spring/apps/deployments/active": "properties.active",
+      "Microsoft.AppPlatform/Spring/apps/deployments/appName": "properties.appName",
+      "Microsoft.AppPlatform/Spring/apps/deployments/createdTime": "properties.createdTime",
+      "Microsoft.AppPlatform/Spring/apps/deployments/deploymentSettings": "properties.deploymentSettings",
+      "Microsoft.AppPlatform/Spring/apps/deployments/deploymentSettings.cpu": "properties.deploymentSettings.cpu",
+      "Microsoft.AppPlatform/Spring/apps/deployments/deploymentSettings.environmentVariables": "properties.deploymentSettings.environmentVariables",
+      "Microsoft.AppPlatform/Spring/apps/deployments/deploymentSettings.instanceCount": "properties.deploymentSettings.instanceCount",
+      "Microsoft.AppPlatform/Spring/apps/deployments/deploymentSettings.jvmOptions": "properties.deploymentSettings.jvmOptions",
+      "Microsoft.AppPlatform/Spring/apps/deployments/deploymentSettings.memoryInGB": "properties.deploymentSettings.memoryInGB",
+      "Microsoft.AppPlatform/Spring/apps/deployments/deploymentSettings.netCoreMainEntryPath": "properties.deploymentSettings.netCoreMainEntryPath",
+      "Microsoft.AppPlatform/Spring/apps/deployments/deploymentSettings.runtimeVersion": "properties.deploymentSettings.runtimeVersion",
+      "Microsoft.AppPlatform/Spring/apps/deployments/instances": "properties.instances",
+      "Microsoft.AppPlatform/Spring/apps/deployments/instances[*]": "properties.instances[*]",
+      "Microsoft.AppPlatform/Spring/apps/deployments/instances[*].discoveryStatus": "properties.instances[*].discoveryStatus",
+      "Microsoft.AppPlatform/Spring/apps/deployments/instances[*].name": "properties.instances[*].name",
+      "Microsoft.AppPlatform/Spring/apps/deployments/instances[*].reason": "properties.instances[*].reason",
+      "Microsoft.AppPlatform/Spring/apps/deployments/instances[*].startTime": "properties.instances[*].startTime",
+      "Microsoft.AppPlatform/Spring/apps/deployments/instances[*].status": "properties.instances[*].status",
+      "Microsoft.AppPlatform/Spring/apps/deployments/provisioningState": "properties.provisioningState",
+      "Microsoft.AppPlatform/Spring/apps/deployments/sku": "sku",
+      "Microsoft.AppPlatform/Spring/apps/deployments/sku.capacity": "sku.capacity",
+      "Microsoft.AppPlatform/Spring/apps/deployments/sku.name": "sku.name",
+      "Microsoft.AppPlatform/Spring/apps/deployments/sku.tier": "sku.tier",
+      "Microsoft.AppPlatform/Spring/apps/deployments/source": "properties.source",
+      "Microsoft.AppPlatform/Spring/apps/deployments/source.artifactSelector": "properties.source.artifactSelector",
+      "Microsoft.AppPlatform/Spring/apps/deployments/source.relativePath": "properties.source.relativePath",
+      "Microsoft.AppPlatform/Spring/apps/deployments/source.type": "properties.source.type",
+      "Microsoft.AppPlatform/Spring/apps/deployments/source.version": "properties.source.version",
+      "Microsoft.AppPlatform/Spring/apps/deployments/status": "properties.status"
+    },
     "resourceType": "Spring/apps/deployments",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01-preview",
       "2022-04-01",
       "2022-03-01-preview",
@@ -378,5 +450,92 @@
       "West US 3"
     ],
     "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.AppPlatform/Spring/apps/bindings/bindingParameters": "properties.bindingParameters",
+      "Microsoft.AppPlatform/Spring/apps/bindings/createdAt": "properties.createdAt",
+      "Microsoft.AppPlatform/Spring/apps/bindings/generatedProperties": "properties.generatedProperties",
+      "Microsoft.AppPlatform/Spring/apps/bindings/key": "properties.key",
+      "Microsoft.AppPlatform/Spring/apps/bindings/resourceId": "properties.resourceId",
+      "Microsoft.AppPlatform/Spring/apps/bindings/resourceName": "properties.resourceName",
+      "Microsoft.AppPlatform/Spring/apps/bindings/resourceType": "properties.resourceType",
+      "Microsoft.AppPlatform/Spring/apps/bindings/updatedAt": "properties.updatedAt"
+    },
+    "resourceType": "spring/apps/bindings"
+  },
+  {
+    "aliases": {
+      "Microsoft.AppPlatform/Spring/apps/domains/appName": "properties.appName",
+      "Microsoft.AppPlatform/Spring/apps/domains/certName": "properties.certName",
+      "Microsoft.AppPlatform/Spring/apps/domains/thumbprint": "properties.thumbprint"
+    },
+    "resourceType": "spring/apps/domains"
+  },
+  {
+    "aliases": {
+      "Microsoft.AppPlatform/Spring/certificates/activateDate": "properties.activateDate",
+      "Microsoft.AppPlatform/Spring/certificates/certVersion": "properties.certVersion",
+      "Microsoft.AppPlatform/Spring/certificates/dnsNames": "properties.dnsNames",
+      "Microsoft.AppPlatform/Spring/certificates/dnsNames[*]": "properties.dnsNames[*]",
+      "Microsoft.AppPlatform/Spring/certificates/expirationDate": "properties.expirationDate",
+      "Microsoft.AppPlatform/Spring/certificates/issuedDate": "properties.issuedDate",
+      "Microsoft.AppPlatform/Spring/certificates/issuer": "properties.issuer",
+      "Microsoft.AppPlatform/Spring/certificates/keyVaultCertName": "properties.keyVaultCertName",
+      "Microsoft.AppPlatform/Spring/certificates/subjectName": "properties.subjectName",
+      "Microsoft.AppPlatform/Spring/certificates/thumbprint": "properties.thumbprint",
+      "Microsoft.AppPlatform/Spring/certificates/vaultUri": "properties.vaultUri"
+    },
+    "resourceType": "spring/certificates"
+  },
+  {
+    "aliases": {
+      "Microsoft.AppPlatform/Spring/configServers/configServer": "properties.configServer",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty": "properties.configServer.gitProperty",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.hostKey": "properties.configServer.gitProperty.hostKey",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.hostKeyAlgorithm": "properties.configServer.gitProperty.hostKeyAlgorithm",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.label": "properties.configServer.gitProperty.label",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.password": "properties.configServer.gitProperty.password",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.privateKey": "properties.configServer.gitProperty.privateKey",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories": "properties.configServer.gitProperty.repositories",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*]": "properties.configServer.gitProperty.repositories[*]",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*].hostKey": "properties.configServer.gitProperty.repositories[*].hostKey",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*].hostKeyAlgorithm": "properties.configServer.gitProperty.repositories[*].hostKeyAlgorithm",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*].label": "properties.configServer.gitProperty.repositories[*].label",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*].name": "properties.configServer.gitProperty.repositories[*].name",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*].password": "properties.configServer.gitProperty.repositories[*].password",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*].pattern": "properties.configServer.gitProperty.repositories[*].pattern",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*].pattern[*]": "properties.configServer.gitProperty.repositories[*].pattern[*]",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*].privateKey": "properties.configServer.gitProperty.repositories[*].privateKey",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*].searchPaths": "properties.configServer.gitProperty.repositories[*].searchPaths",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*].searchPaths[*]": "properties.configServer.gitProperty.repositories[*].searchPaths[*]",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*].strictHostKeyChecking": "properties.configServer.gitProperty.repositories[*].strictHostKeyChecking",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*].uri": "properties.configServer.gitProperty.repositories[*].uri",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.repositories[*].username": "properties.configServer.gitProperty.repositories[*].username",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.searchPaths": "properties.configServer.gitProperty.searchPaths",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.searchPaths[*]": "properties.configServer.gitProperty.searchPaths[*]",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.strictHostKeyChecking": "properties.configServer.gitProperty.strictHostKeyChecking",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.uri": "properties.configServer.gitProperty.uri",
+      "Microsoft.AppPlatform/Spring/configServers/configServer.gitProperty.username": "properties.configServer.gitProperty.username",
+      "Microsoft.AppPlatform/Spring/configServers/error": "properties.error",
+      "Microsoft.AppPlatform/Spring/configServers/error.code": "properties.error.code",
+      "Microsoft.AppPlatform/Spring/configServers/error.message": "properties.error.message",
+      "Microsoft.AppPlatform/Spring/configServers/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "spring/configservers"
+  },
+  {
+    "aliases": {
+      "Microsoft.AppPlatform/Spring/monitoringSettings/appInsightsAgentVersions": "properties.appInsightsAgentVersions",
+      "Microsoft.AppPlatform/Spring/monitoringSettings/appInsightsAgentVersions.java": "properties.appInsightsAgentVersions.java",
+      "Microsoft.AppPlatform/Spring/monitoringSettings/appInsightsInstrumentationKey": "properties.appInsightsInstrumentationKey",
+      "Microsoft.AppPlatform/Spring/monitoringSettings/appInsightsSamplingRate": "properties.appInsightsSamplingRate",
+      "Microsoft.AppPlatform/Spring/monitoringSettings/error": "properties.error",
+      "Microsoft.AppPlatform/Spring/monitoringSettings/error.code": "properties.error.code",
+      "Microsoft.AppPlatform/Spring/monitoringSettings/error.message": "properties.error.message",
+      "Microsoft.AppPlatform/Spring/monitoringSettings/provisioningState": "properties.provisioningState",
+      "Microsoft.AppPlatform/Spring/monitoringSettings/traceEnabled": "properties.traceEnabled"
+    },
+    "resourceType": "spring/monitoringsettings"
   }
 ]
