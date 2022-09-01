@@ -23,9 +23,54 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-## v1.19.0-B0077 (pre-release)
+## v1.19.0
+
+What's changed since v1.18.1:
+
+- New rules:
+  - Azure Kubernetes Service:
+    - Check clusters use uptime SLA by @bengeset96.
+      [#1601](https://github.com/Azure/PSRule.Rules.Azure/issues/1601)
+- General improvements:
+  - Updated rule level for the following rules by @BernieWhite.
+    [#1551](https://github.com/Azure/PSRule.Rules.Azure/issues/1551)
+    - Set `Azure.APIM.APIDescriptors` to warning from error.
+    - Set `Azure.APIM.ProductDescriptors` to warning from error.
+    - Set `Azure.Template.UseLocationParameter` to warning from error.
+    - Set `Azure.Template.UseComments` to information from error.
+    - Set `Azure.Template.UseDescriptions` to information from error.
+  - Improve reporting of failing resource property for rules by @BernieWhite.
+    [#1429](https://github.com/Azure/PSRule.Rules.Azure/issues/1429)
+- Engineering:
+  - Added publishing of symbols for NuGet packages by @BernieWhite.
+    [#1549](https://github.com/Azure/PSRule.Rules.Azure/issues/1549)
+  - Bump Az.Resources to v6.1.0.
+    [#1557](https://github.com/Azure/PSRule.Rules.Azure/pull/1557)
+  - Bump Microsoft.NET.Test.Sdk to v17.3.0.
+    [#1563](https://github.com/Azure/PSRule.Rules.Azure/pull/1563)
+  - Bump PSRule to v2.3.2.
+    [#1574](https://github.com/Azure/PSRule.Rules.Azure/pull/1574)
+  - Bump support projects to .NET 6 by @BernieWhite.
+    [#1560](https://github.com/Azure/PSRule.Rules.Azure/issues/1560)
+  - Bump BenchmarkDotNet to v0.13.2.
+    [#1593](https://github.com/Azure/PSRule.Rules.Azure/pull/1593)
+  - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.2.
+    [#1594](https://github.com/Azure/PSRule.Rules.Azure/pull/1594)
+  - Updated provider data for analysis.
+    [#1598](https://github.com/Azure/PSRule.Rules.Azure/pull/1598)
+- Bug fixes:
+  - Fixed parameter files linked to bicep code via naming convention is not working by @BernieWhite.
+    [#1582](https://github.com/Azure/PSRule.Rules.Azure/issues/1582)
+  - Fixed handling of storage accounts sub-resources with CMK by @BernieWhite.
+    [#1575](https://github.com/Azure/PSRule.Rules.Azure/issues/1575)
 
 What's changed since pre-release v1.19.0-B0077:
+
+- No additional changes.
+
+## v1.19.0-B0077 (pre-release)
+
+What's changed since pre-release v1.19.0-B0042:
 
 - New rules:
   - Azure Kubernetes Service:
