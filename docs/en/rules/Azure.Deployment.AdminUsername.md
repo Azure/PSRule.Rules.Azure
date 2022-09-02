@@ -25,4 +25,4 @@ Sensitive properties for nested deployments should be set by a secureString para
 
 - [Use KeyVault Secrets in Bicep](https://docs.microsoft.com/azure/azure-resource-manager/bicep/key-vault-parameter)
 - [Use KeyVault Secret in Parameter File](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-use-key-vault#edit-the-parameters-file)
-- [Well Architected Framework - IAC](https://docs.microsoft.com/en-us/azure/architecture/framework/security/deploy-infrastructure)
+- [Well Architected Framework - IAC](https://docs.microsoft.com/azure/architecture/framework/security/deploy-infrastructure)
