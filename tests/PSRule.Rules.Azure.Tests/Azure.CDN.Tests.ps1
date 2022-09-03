@@ -120,6 +120,7 @@ Describe 'Azure.CDN' -Tag 'CDN' {
         }
         
         It 'Azure.CDN.IsStandardSKUOrPremiumSKU' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.CDN.json'
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.CDN.IsStandardSKUOrPremiumSKU' };
 
