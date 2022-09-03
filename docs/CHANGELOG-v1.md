@@ -28,6 +28,10 @@ What's changed since v1.19.0:
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.3.1.
     [#1603](https://github.com/Azure/PSRule.Rules.Azure/pull/1603)
+- New rules:
+  - Azure Resources:
+    - Check that nested deployments securely pass through administrator usernames @ms-sambell.
+      [#1479](https://github.com/Azure/PSRule.Rules.Azure/issues/1479)
 
 ## v1.19.0
 
@@ -106,10 +110,6 @@ What's changed since pre-release v1.19.0-B0010:
     [#1582](https://github.com/Azure/PSRule.Rules.Azure/issues/1582)
   - Fixed handling of storage accounts sub-resources with CMK by @BernieWhite.
     [#1575](https://github.com/Azure/PSRule.Rules.Azure/issues/1575)
-- New rules:
-  - Azure Resources:
-    - Check that nested deployments securely pass through administrator usernames @ms-sambell.
-      [#1479](https://github.com/Azure/PSRule.Rules.Azure/issues/1479)
   
 ## v1.19.0-B0010 (pre-release)
 
