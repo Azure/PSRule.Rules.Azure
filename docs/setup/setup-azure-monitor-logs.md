@@ -190,3 +190,9 @@ PSRule_CL
 ```
 
 *[SIEM]: security information event management
+
+### Querying The Data
+
+Once the results have been published to the Log Analytics workspace, they can be queried by executing
+results against the `PSRule_CL` table (under Custom Logs). For more information on how to write Log
+Analytics querys, review the [Log Analytics tutortial](https://docs.microsoft.com/azure/azure-monitor/logs/log-analytics-tutorial)
