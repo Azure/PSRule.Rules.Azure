@@ -38,4 +38,25 @@ Rule 'Azure.CDN.MinTLS' -Ref 'AZR-000092' -Type 'Microsoft.Cdn/profiles/endpoint
     }
 }
 
+# Synopsis: Use the latest version of Azure Front Door Standard and Premium Client Library or SDK to fix issues.
+Rule 'Azure.CDN.IsStandardSKUOrPremiumSKU' -Ref 'AZR-000286' -Type 'Microsoft.Cdn/profiles' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+    IsStandardSKUOrPremiumSKU;
+}
+
 #endregion Rules
+
+#region Helper functions
+
+function global:IsStandardSKUOrPremiumSKU {
+    [CmdletBinding()]
+    [OutputType([PSRule.Runtime.AssertResult])]
+    param ()
+    process {
+        return $Assert.AnyOf(
+            $Assert.Contains($TargetObject, 'sku.name', 'Standard_AzureFrontDoor'),
+            $Assert.Contains($TargetObject, 'sku.name', 'Premium_AzureFrontDoor')
+        )
+    }
+}
+
+#endregion Helper functions
