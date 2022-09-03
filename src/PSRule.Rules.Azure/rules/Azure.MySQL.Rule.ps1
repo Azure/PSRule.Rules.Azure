@@ -5,16 +5,6 @@
 # Validation rules for Azure Database for MySQL
 #
 
-# Synopsis: Use encrypted MySQL connections
-Rule 'Azure.MySQL.UseSSL' -Ref 'AZR-000131' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.sslEnforcement', 'Enabled');
-}
-
-# Synopsis: Consider configuring the minimum supported TLS version to be 1.2.
-Rule 'Azure.MySQL.MinTLS' -Ref 'AZR-000132' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.minimalTlsVersion', 'TLS1_2');
-}
-
 # Synopsis: Determine if there is an excessive number of firewall rules
 Rule 'Azure.MySQL.FirewallRuleCount' -Ref 'AZR-000133' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/servers/firewallRules');

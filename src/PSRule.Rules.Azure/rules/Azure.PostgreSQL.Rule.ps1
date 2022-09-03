@@ -5,16 +5,6 @@
 # Validation rules for Azure Database for PostgreSQL
 #
 
-# Synopsis: Use encrypted PostgreSQL connections
-Rule 'Azure.PostgreSQL.UseSSL' -Ref 'AZR-000147' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.sslEnforcement', 'Enabled');
-}
-
-# Synopsis: Consider configuring the minimum supported TLS version to be 1.2.
-Rule 'Azure.PostgreSQL.MinTLS' -Ref 'AZR-000148' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.minimalTlsVersion', 'TLS1_2');
-}
-
 # Synopsis: Determine if there is an excessive number of firewall rules
 Rule 'Azure.PostgreSQL.FirewallRuleCount' -Ref 'AZR-000149' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforPostgreSQL/servers/firewallRules');

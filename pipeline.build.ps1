@@ -378,6 +378,8 @@ task BuildRuleDocs Build, Dependencies, {
             DisplayName = $_.Info.DisplayName
             Synopsis = $_.Info.Synopsis
             Recommendation = $_.Info.Recommendation
+            Pillar = $_.Tag.'Azure.WAF/pillar'
+            Control = $_.Tag.'Azure.ASB.v3/control'
         }
     }
     $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/en/rules/metadata.json -Force;
@@ -395,7 +397,7 @@ task BuildBaselineDocs Build, Dependencies, {
             Rules    = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline $_.Name -WarningAction SilentlyContinue)
         }
         $baselineDoc;
-    } | Invoke-PSDocument -Name baseline -OutputPath ./docs/en/baselines/ -Path ./BaselineToc.Doc.ps1 -Convention 'NameBaseline';
+    } | Invoke-PSDocument -OutputPath ./docs/en/baselines/ -Path ./BaselineToc.Doc.ps1 -Convention 'NameBaseline';
 }
 
 # Synopsis: Build help

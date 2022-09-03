@@ -15,8 +15,8 @@ Rule 'Azure.AppService.MinPlan' -Ref 'AZR-000072' -Type 'Microsoft.Web/serverfar
     $Assert.In($TargetObject, 'sku.tier', @('PremiumV3', 'PremiumV2', 'Premium', 'Standard'))
 }
 
-# Synopsis: Use at least TLS 1.2
-Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+# Synopsis: App Service should reject TLS versions older then 1.2.
+Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.ASB.v3/control' = 'DP-3' } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
         return $Assert.

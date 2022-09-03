@@ -1,0 +1,29 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure SQL Database
+#
+
+#region Rules
+
+---
+# Synopsis: Azure SQL Database servers should reject TLS versions older than 1.2.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.SQL.MinTLS
+  ref: AZR-000189
+  tags:
+    release: 'GA'
+    ruleSet: '2020_09'
+    Azure.WAF/pillar: 'Security'
+    Azure.ASB.v3/control: 'DP-3'
+spec:
+  type:
+  - Microsoft.Sql/servers
+  condition:
+    field: properties.minimalTlsVersion
+    version: '>=1.2'
+
+#endregion Region
