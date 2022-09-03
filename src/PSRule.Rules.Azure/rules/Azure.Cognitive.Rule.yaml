@@ -24,7 +24,7 @@ spec:
     anyOf:
     - field: properties.publicNetworkAccess
       equals: Disabled
-    - field: properties.networkAcls.defaultAction
+    - field: Properties.networkAcls.defaultAction
       equals: Deny
 
 ---
