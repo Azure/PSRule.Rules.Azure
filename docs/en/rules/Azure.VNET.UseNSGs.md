@@ -27,6 +27,8 @@ These subnets are:
 - `GatewaySubnet` - used for hybrid connectivity with VPN and ExpressRoute gateways.
 - `AzureFirewallSubnet` and `AzureFirewallManagementSubnet` - are for Azure Firewall.
   Azure Firewall includes an intrinsic NSG that is not directly manageable or visible.
+- `RouteServerSubnet` - used by managed routing provided by Azure Route Server.
+- Any subnet delegated to a dedicated HSM with `Microsoft.HardwareSecurityModules/dedicatedHSMs`.
 
 ## RECOMMENDATION
 
@@ -149,4 +151,6 @@ Set-AzVirtualNetworkSubnetConfig -Name '<subnet>' -VirtualNetwork $vnet -Address
 - [Network Security Best Practices](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
 - [Azure Firewall FAQ](https://docs.microsoft.com/azure/firewall/firewall-faq#are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet)
 - [Forced tunneling configuration](https://docs.microsoft.com/azure/firewall/forced-tunneling#forced-tunneling-configuration)
+- [Azure Route Server FAQ](https://docs.microsoft.com/azure/route-server/route-server-faq#can-i-associate-a-network-security-group-nsg-to-the-routeserversubnet)
+- [Azure Dedicated HSM networking](https://docs.microsoft.com/azure/dedicated-hsm/networking#subnets)
 - [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)

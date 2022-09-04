@@ -23,15 +23,24 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.19.0:
+What's changed since v1.19.1:
 
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.3.1.
     [#1603](https://github.com/Azure/PSRule.Rules.Azure/pull/1603)
 - New rules:
   - Azure Resources:
-    - Check that nested deployments securely pass through administrator usernames @ms-sambell.
+    - Check that nested deployments securely pass through administrator usernames by @ms-sambell.
       [#1479](https://github.com/Azure/PSRule.Rules.Azure/issues/1479)
+
+## v1.19.1
+
+What's changed since v1.19.0:
+
+- Bug fixes:
+  - Fixed `Azure.VNET.UseNSGs` is missing exceptions by @BernieWhite.
+    [#1609](https://github.com/Azure/PSRule.Rules.Azure/issues/1609)
+    - Added exclusions for `RouteServerSubnet` and any subnet with a dedicated HSM delegation.
 
 ## v1.19.0
 
