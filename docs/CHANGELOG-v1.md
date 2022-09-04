@@ -23,15 +23,17 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.20.0-B0004 (pre-release)
+
 What's changed since v1.19.1:
 
-- Engineering:
-  - Bump Microsoft.NET.Test.Sdk to v17.3.1.
-    [#1603](https://github.com/Azure/PSRule.Rules.Azure/pull/1603)
 - New rules:
   - Azure Resources:
     - Check that nested deployments securely pass through administrator usernames by @ms-sambell.
       [#1479](https://github.com/Azure/PSRule.Rules.Azure/issues/1479)
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk to v17.3.1.
+    [#1603](https://github.com/Azure/PSRule.Rules.Azure/pull/1603)
 
 ## v1.19.1
 
