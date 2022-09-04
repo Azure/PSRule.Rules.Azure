@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Data protection
+category: Encryption
 resource: App Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.MinTLS/
 ms-content-id: e19fbe7e-da05-47d4-8de1-2fdf52ada662
@@ -96,4 +96,4 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Insecure protocols](https://docs.microsoft.com/Azure/app-service/overview-security#insecure-protocols-http-tls-10-ftp)
 - [Azure Policy built-in definitions for Azure App Service](https://docs.microsoft.com/azure/app-service/policy-reference)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)

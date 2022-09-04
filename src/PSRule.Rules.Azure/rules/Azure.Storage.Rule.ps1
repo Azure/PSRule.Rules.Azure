@@ -15,11 +15,6 @@ Rule 'Azure.Storage.UseReplication' -Ref 'AZR-000195' -Type 'Microsoft.Storage/s
     ));
 }
 
-# Synopsis: Storage accounts should only accept secure traffic
-Rule 'Azure.Storage.SecureTransfer' -Ref 'AZR-000196' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.supportsHttpsTrafficOnly', $True);
-}
-
 # Synopsis: Enable soft delete on Storage Accounts
 Rule 'Azure.Storage.SoftDelete' -Ref 'AZR-000197' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices' -If { !(IsCloudShell) -and !(IsHnsStorage) -and !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $services = @($TargetObject);
@@ -32,11 +27,6 @@ Rule 'Azure.Storage.SoftDelete' -Ref 'AZR-000197' -Type 'Microsoft.Storage/stora
     foreach ($service in $services) {
         $Assert.HasFieldValue($service, 'properties.deleteRetentionPolicy.enabled', $True);
     }
-}
-
-# Synopsis: Disallow blob containers with public access types.
-Rule 'Azure.Storage.BlobPublicAccess' -Ref 'AZR-000198' -Type 'Microsoft.Storage/storageAccounts' -If { !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.allowBlobPublicAccess', $False);
 }
 
 # Synopsis: Use containers configured with a private access type that requires authorization.
@@ -52,11 +42,6 @@ Rule 'Azure.Storage.BlobAccessType' -Ref 'AZR-000199' -Type 'Microsoft.Storage/s
         $Assert.HasDefaultValue($container, 'Properties.publicAccess', 'None').
             Reason($LocalizedData.PublicAccessStorageContainer, $container.name, $container.Properties.publicAccess);
     }
-}
-
-# Synopsis: Storage Accounts should reject TLS versions older than 1.2.
-Rule 'Azure.Storage.MinTLS' -Ref 'AZR-000200' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.minimumTlsVersion', 'TLS1_2');
 }
 
 # Synopsis: Use Storage naming requirements

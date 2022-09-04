@@ -1,0 +1,46 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure Database for PostgreSQL
+#
+
+#region Rules
+
+---
+# Synopsis: Enforce encrypted PostgreSQL connections.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.PostgreSQL.UseSSL
+  ref: AZR-000147
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.DBforPostgreSQL/servers
+  condition:
+    field: properties.sslEnforcement
+    equals: Enabled
+
+---
+# Synopsis: PostgreSQL DB servers should reject TLS versions older than 1.2.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.PostgreSQL.MinTLS
+  ref: AZR-000148
+  tags:
+    release: 'GA'
+    ruleSet: '2020_09'
+    Azure.WAF/pillar: 'Security'
+    Azure.ASB.v3/control: 'DP-3'
+spec:
+  type:
+  - Microsoft.DBforPostgreSQL/servers
+  condition:
+    field: properties.minimalTlsVersion
+    equals: TLS1_2
+
+#endregion Region
