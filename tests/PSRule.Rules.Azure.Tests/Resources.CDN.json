@@ -374,7 +374,7 @@
           "tagName2": null
         },
         "sku": {
-          "name": "Classic"
+          "name": "Standard_Microsoft"
         },
         "properties": {
           "extendedProperties": {},

@@ -38,24 +38,21 @@ Rule 'Azure.CDN.MinTLS' -Ref 'AZR-000092' -Type 'Microsoft.Cdn/profiles/endpoint
     }
 }
 
-# Synopsis: Use the latest version of Azure Front Door Standard and Premium Client Library or SDK to fix issues.
-Rule 'Azure.CDN.IsStandardSKUOrPremiumSKU' -Ref 'AZR-000286' -Type 'Microsoft.Cdn/profiles' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
-    IsStandardSKUOrPremiumSKU;
+# Synopsis: Use Azure Front Door Standard or Premium SKU to improve the performance of web pages with dynamic content and overall capabilities.
+Rule 'Azure.CDN.UseFrontDoor' -Ref 'AZR-000286' -Type 'Microsoft.Cdn/profiles' -If { IsStandard_MicrosoftSKU } -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+    $Assert.In($TargetObject, 'sku.name', @('Standard_AzureFrontDoor', 'Premium_AzureFrontDoor'));
 }
 
 #endregion Rules
 
 #region Helper functions
 
-function global:IsStandardSKUOrPremiumSKU {
+function global:IsStandard_MicrosoftSKU {
     [CmdletBinding()]
-    [OutputType([PSRule.Runtime.AssertResult])]
+    [OutputType([System.Boolean])]
     param ()
     process {
-        return $Assert.AnyOf(
-            $Assert.Contains($TargetObject, 'sku.name', 'Standard_AzureFrontDoor'),
-            $Assert.Contains($TargetObject, 'sku.name', 'Premium_AzureFrontDoor')
-        )
+        return $Assert.Contains($TargetObject, 'sku.name', 'Standard_Microsoft');
     }
 }
 
