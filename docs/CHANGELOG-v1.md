@@ -23,6 +23,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.19.0:
+
+- Bug fixes:
+  - Fixed `Azure.VNET.UseNSGs` is missing exceptions by @BernieWhite.
+    [#1609](https://github.com/Azure/PSRule.Rules.Azure/issues/1609)
+    - Added exclusions for `RouteServerSubnet` and any subnet with a dedicated HSM delegation.
+
 ## v1.19.0
 
 What's changed since v1.18.1:
