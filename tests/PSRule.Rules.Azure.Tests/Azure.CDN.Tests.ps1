@@ -119,7 +119,7 @@ Describe 'Azure.CDN' -Tag 'CDN' {
             # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn 'name';
         }
         
-        It 'Azure.CDN.IsStandardSKUOrPremiumSKU' {
+        It 'Azure.CDN.UseFrontDoor' {
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.CDN.json'
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.CDN.UseFrontDoor' };
