@@ -173,6 +173,7 @@
                     "count": 3,
                     "vmSize": "Standard_B2ms",
                     "osDiskSizeGB": 100,
+                    "osDiskType": "Ephemeral",
                     "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-C",
                     "maxPods": 50,
                     "type": "VirtualMachineScaleSets",
