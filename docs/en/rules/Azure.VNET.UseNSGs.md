@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Network security and containment
+category: Network segmentation
 resource: Virtual Network
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.UseNSGs/
 ---
@@ -149,4 +149,4 @@ Set-AzVirtualNetworkSubnetConfig -Name '<subnet>' -VirtualNetwork $vnet -Address
 - [Network Security Best Practices](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
 - [Azure Firewall FAQ](https://docs.microsoft.com/azure/firewall/firewall-faq#are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet)
 - [Forced tunneling configuration](https://docs.microsoft.com/azure/firewall/forced-tunneling#forced-tunneling-configuration)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks?tabs=json)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)

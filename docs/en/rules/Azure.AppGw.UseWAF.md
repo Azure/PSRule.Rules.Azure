@@ -1,11 +1,10 @@
 ---
+reviewed: 2021-07-25
 severity: Critical
 pillar: Security
-category: Network security and containment
+category: Application endpoints
 resource: Application Gateway
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.UseWAF/
-author: BernieWhite
-ms-date: 2021/07/25
 ---
 
 # Application Gateway uses WAF SKU
@@ -104,4 +103,4 @@ $AppGw = Set-AzApplicationGatewaySku -ApplicationGateway $AppGw -Name 'WAF_v2' -
 - [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
 - [Securing PaaS deployments](https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
 - [What is Azure Web Application Firewall on Azure Application Gateway?](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)
