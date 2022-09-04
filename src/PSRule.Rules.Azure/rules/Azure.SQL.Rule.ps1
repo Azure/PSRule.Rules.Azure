@@ -78,11 +78,6 @@ Rule 'Azure.SQL.AAD' -Ref 'AZR-000188' -Type 'Microsoft.Sql/servers', 'Microsoft
     }
 }
 
-# Synopsis: Consider configuring the minimum supported TLS version to be 1.2.
-Rule 'Azure.SQL.MinTLS' -Ref 'AZR-000189' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
-    $Assert.Version($TargetObject, 'Properties.minimalTlsVersion', '>=1.2');
-}
-
 # Synopsis: Azure SQL logical server names should meet naming requirements.
 Rule 'Azure.SQL.ServerName' -Ref 'AZR-000190' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
     # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql

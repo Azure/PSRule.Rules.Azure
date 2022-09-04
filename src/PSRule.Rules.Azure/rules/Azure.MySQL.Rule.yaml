@@ -1,0 +1,46 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure Database for MySQL
+#
+
+#region Rules
+
+---
+# Synopsis: Enforce encrypted MySQL connections.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.MySQL.UseSSL
+  ref: AZR-000131
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+spec:
+  type:
+  - Microsoft.DBforMySQL/servers
+  condition:
+    field: properties.sslEnforcement
+    equals: Enabled
+
+---
+# Synopsis: MySQL DB servers should reject TLS versions older than 1.2.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.MySQL.MinTLS
+  ref: AZR-000132
+  tags:
+    release: 'GA'
+    ruleSet: '2020_09'
+    Azure.WAF/pillar: 'Security'
+    Azure.ASB.v3/control: 'DP-3'
+spec:
+  type:
+  - Microsoft.DBforMySQL/servers
+  condition:
+    field: properties.minimalTlsVersion
+    equals: TLS1_2
+
+#endregion Region

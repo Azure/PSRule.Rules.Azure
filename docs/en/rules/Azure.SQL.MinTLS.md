@@ -83,4 +83,4 @@ resource server 'Microsoft.Sql/servers@2022-02-01-preview' = {
 - [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Minimal TLS Version](https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#minimal-tls-version)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.sql/servers#serverproperties)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.sql/servers#serverproperties)
