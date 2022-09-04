@@ -129,13 +129,13 @@ Describe 'Azure.CDN' -Tag 'CDN' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-A';
-            $ruleResult.Detail.Reason.Path | Should -Be 'sku.name'
+            $ruleResult.Detail.Reason.Path | Should -Be 'sku.name';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 0;
-            $ruleResult.TargetName | Should -Be $null
+            $ruleResult.TargetName | Should -Be $null;
         }
     }
 }
