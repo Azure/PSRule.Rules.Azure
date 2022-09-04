@@ -553,8 +553,7 @@
                     "10.99.0.37"
                 ]
             },
-            "subnets": [
-            ],
+            "subnets": [],
             "virtualNetworkPeerings": [],
             "enableDdosProtection": false,
             "enableVmProtection": false
@@ -2395,8 +2394,7 @@
             "vpnType": "PolicyBased",
             "enableBgp": false,
             "activeActive": false,
-            "remoteVirtualNetworkPeerings": [
-            ],
+            "remoteVirtualNetworkPeerings": [],
             "vpnGatewayGeneration": "None"
         },
         "ResourceGroupName": "test-rg",
