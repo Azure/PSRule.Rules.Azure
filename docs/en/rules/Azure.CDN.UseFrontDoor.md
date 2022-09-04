@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Performance efficiency checklist
 resource: Front Door
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CDN.IsStandardSKUOrPremiumSKU/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CDN.UseFrontDoor/
 ---
 
 # Use Front Door Standard Or Premium SKU
