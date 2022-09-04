@@ -1,6 +1,6 @@
 ---
 severity: Important
-pillar: Performance efficiency
+pillar: Performance Efficiency
 category: Performance efficiency checklist
 resource: Front Door
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CDN.UseFrontDoor/
