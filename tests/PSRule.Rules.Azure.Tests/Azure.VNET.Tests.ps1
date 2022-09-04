@@ -256,7 +256,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
 
     Context 'With Template' {
         BeforeAll {
-            $templatePath = Join-Path -Path $here -ChildPath 'Resources.VNET.Template.json';
+            $templatePath = Join-Path -Path $here -ChildPath 'vnet.tests.json';
             $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualNetwork.json;
             Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
             $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop -Culture 'en-US';
