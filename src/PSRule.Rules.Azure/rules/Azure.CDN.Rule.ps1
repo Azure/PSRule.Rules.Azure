@@ -52,7 +52,7 @@ function global:IsStandard_MicrosoftSKU {
     [OutputType([System.Boolean])]
     param ()
     process {
-        return $Assert.Contains($TargetObject, 'sku.name', 'Standard_Microsoft');
+        return $Assert.In($TargetObject, 'sku.name', @('Standard_Microsoft', 'Standard_AzureFrontDoor', 'Premium_AzureFrontDoor'));
     }
 }
 

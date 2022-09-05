@@ -133,8 +133,9 @@ Describe 'Azure.CDN' -Tag 'CDN' {
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 0;
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-B', 'frontDoorProfile-C';
         }
     }
 }
