@@ -363,5 +363,56 @@
                 "ETag": null
             }
         ]
+    },
+    {   "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+        "type": "Microsoft.Cdn/profiles",
+        "name": "frontDoorProfile-A",
+        "location": "global",
+        "tags": {
+          "tagName1": null,
+          "tagName2": null
+        },
+        "sku": {
+          "name": "Standard_Microsoft"
+        },
+        "properties": {
+          "extendedProperties": {},
+          "originResponseTimeoutSeconds": "int"
+        }
+    },
+    {   "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+        "type": "Microsoft.Cdn/profiles",
+        "name": "frontDoorProfile-B",
+        "location": "global",
+        "tags": {
+          "tagName1": null,
+          "tagName2": null
+        },
+        "sku": {
+          "name": "Standard_AzureFrontDoor"
+        },
+        "properties": {
+          "extendedProperties": {},
+          "originResponseTimeoutSeconds": "int"
+        }
+    },
+    {   "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+        "type": "Microsoft.Cdn/profiles",
+        "name": "frontDoorProfile-C",
+        "location": "global",
+        "tags": {
+          "tagName1": null,
+          "tagName2": null
+        },
+        "sku": {
+          "name": "Premium_AzureFrontDoor"
+        },
+        "properties": {
+          "extendedProperties": {},
+          "originResponseTimeoutSeconds": "int"
+        }
     }
 ]
