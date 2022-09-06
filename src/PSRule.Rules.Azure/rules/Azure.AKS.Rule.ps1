@@ -245,8 +245,9 @@ Rule 'Azure.AKS.EphemeralOSDisk' -Ref 'AZR-000287' -Type 'Microsoft.ContainerSer
         return $Assert.Pass();
     }
     foreach ($agentPool in $agentPools) {
-        $Assert.Contains($agentPool, 'osDiskType', 'Ephemeral')
-    };
+        $Assert.In($agentPool, 'osDiskType', 'Ephemeral').
+        Reason($LocalizedData.AKSEphemeralOSDiskNotConfigured, $agentPool.osDiskType);
+    }
 }
 
 #region Helper functions
