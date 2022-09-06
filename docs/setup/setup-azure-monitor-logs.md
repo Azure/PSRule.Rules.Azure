@@ -22,9 +22,8 @@ Centrally storing PSRule results enables the following scenarios:
   [2]: https://docs.microsoft.com/azure/sentinel/overview
   [3]: https://docs.microsoft.com/azure/azure-monitor/logs/queries
   [4]: https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview
-  [5]: https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-create-workbook
-  [6]: https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log
-  [7]: https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-common-schema-integrations
+  [5]: https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log
+  [6]: https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-common-schema-integrations
 
 ## Logging into a Log Analytics workspace
 
@@ -102,8 +101,8 @@ Import analysis results into Azure Monitor with GitHub Actions by:
     Environment variables can be configured in the workflow or from a secret.
     To keep `MONITOR_WORKSPACE_KEY` secure, use an [encrypted secret][8].
 
-  [8]: https://github.com/marketplace/actions/psrule
-  [9]: https://docs.github.com/actions/reference/encrypted-secrets
+  [7]: https://github.com/marketplace/actions/psrule
+  [8]: https://docs.github.com/actions/reference/encrypted-secrets
 
 ### With Azure Pipelines
 
@@ -164,8 +163,8 @@ Import analysis results into Azure Monitor with Azure Pipelines by:
     Variables can be configured in YAML, on the pipeline, or referenced from a defined variable group.
     To keep `MONITORWORKSPACEKEY` secure, use a [variable group][10] linked to an Azure Key Vault.
 
-  [10]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
-  [11]: https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups
+  [9]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
+  [10]: https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups
 
 ## Samples
 
@@ -205,5 +204,5 @@ Analytics querys, review the [Log Analytics tutortial](https://docs.microsoft.co
 A sample Azure Workbook is available in the PSRule for Azure GitHub repository.
 The Workbook is available in the `data` directory and is called `workbook.json`.
 This Workbook can be imported directly into Azure monitor and used as a foundation to build from.
-Review the [Workbook creation tutorial](https://docs.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-create-workbook)
+Review the [Workbook creation tutorial](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-create-workbook)
 for instructions on how to work with the sample Workbook.
