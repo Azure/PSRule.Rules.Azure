@@ -23,6 +23,16 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.20.0-B0004:
+
+- New rules:
+  - CDN:
+    - Check CDN profile used Front Door Standard or Premium tier by @bengeset96.
+      [#1612](https://github.com/Azure/PSRule.Rules.Azure/issues/1612)
+- Engineering:
+  - Bump PSRule to v2.4.0.
+    [#1620](https://github.com/Azure/PSRule.Rules.Azure/pull/1620)
+
 ## v1.20.0-B0004 (pre-release)
 
 What's changed since v1.19.1:
