@@ -707,6 +707,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2_6">
@@ -757,6 +759,20 @@
     <li class="md-nav__item">
       <a href="../../../customization/enforce-codeowners/" class="md-nav__link">
         Enforcing code ownership
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../customization/permit-outbound-management/" class="md-nav__link">
+        Permit outbound management
       </a>
     </li>
   
@@ -6453,6 +6469,7 @@ Management protocols originating from application workload hosts should be block
 <p>Consider configuring NSGs rules to block common outbound management traffic from non-management hosts.</p>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <p>Specifically this rule checks if either 3389 (RDP) or 22 (SSH) has been blocked for outbound traffic.</p>
+<p>To suppress this rule for NSGs protecting subnets expected to allow outbound management traffic see <a href="https://azure.github.io/PSRule.Rules.Azure/customization/permit-outbound-management/">Permit outbound management</a>.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
 <h3 id="configure-with-azure-template">Configure with Azure template<a class="headerlink" href="#configure-with-azure-template" title="Permanent link">#</a></h3>
 <p>To deploy NSGs that pass this rule:</p>
@@ -6521,8 +6538,9 @@ Management protocols originating from application workload hosts should be block
 <li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-network-segmentation">Implement network segmentation patterns on Azure</a></li>
 <li><a href="https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets">Logically segment subnets</a></li>
 <li><a href="https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm#segmentation">Plan virtual networks</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules">Azure template reference</a></li>
 <li><a href="https://docs.microsoft.com/azure/virtual-network/security-overview">Network security groups</a></li>
+<li><a href="https://azure.github.io/PSRule.Rules.Azure/customization/permit-outbound-management/">Permit outbound management</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -6533,7 +6551,7 @@ Management protocols originating from application workload hosts should be block
   <small>
     
       Last update:
-      2021-07-25
+      2022-09-09
     
   </small>
 </div>

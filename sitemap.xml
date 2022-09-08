@@ -216,6 +216,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/customization/permit-outbound-management/</loc>
+         <lastmod>2022-09-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/customization/storing-custom-rules/</loc>
          <lastmod>2022-09-08</lastmod>
          <changefreq>daily</changefreq>
