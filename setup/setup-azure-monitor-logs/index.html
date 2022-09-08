@@ -1183,11 +1183,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-queries" class="md-nav__link">
-    Sample queries
+  <a href="#samples" class="md-nav__link">
+    Samples
   </a>
   
-    <nav class="md-nav" aria-label="Sample queries">
+    <nav class="md-nav" aria-label="Samples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-analytics-queries" class="md-nav__link">
+    Log Analytics Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Log Analytics Queries">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1207,6 +1215,18 @@
           <li class="md-nav__item">
   <a href="#querying-the-data" class="md-nav__link">
     Querying The Data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workbook" class="md-nav__link">
+    Workbook
   </a>
   
 </li>
@@ -6422,11 +6442,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-queries" class="md-nav__link">
-    Sample queries
+  <a href="#samples" class="md-nav__link">
+    Samples
   </a>
   
-    <nav class="md-nav" aria-label="Sample queries">
+    <nav class="md-nav" aria-label="Samples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-analytics-queries" class="md-nav__link">
+    Log Analytics Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Log Analytics Queries">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6446,6 +6474,18 @@
           <li class="md-nav__item">
   <a href="#querying-the-data" class="md-nav__link">
     Querying The Data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workbook" class="md-nav__link">
+    Workbook
   </a>
   
 </li>
@@ -6620,32 +6660,39 @@ To keep <code>MONITOR_WORKSPACE_KEY</code> secure, use an <a href="https://docs.
 <p>Variables can be configured in YAML, on the pipeline, or referenced from a defined variable group.
 To keep <code>MONITORWORKSPACEKEY</code> secure, use a <a href="https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups">variable group</a> linked to an Azure Key Vault.</p>
 </div>
-<h2 id="sample-queries">Sample queries<a class="headerlink" href="#sample-queries" title="Permanent link">#</a></h2>
-<p>Continue reading for some sample queries you can try out Azure Monitor integration.</p>
-<h3 id="results-with-annotations">Results with annotations<a class="headerlink" href="#results-with-annotations" title="Permanent link">#</a></h3>
+<h2 id="samples">Samples<a class="headerlink" href="#samples" title="Permanent link">#</a></h2>
+<p>Continue reading for some sample resources you can try once this integration is setup Azure Monitor integration.</p>
+<h3 id="log-analytics-queries">Log Analytics Queries<a class="headerlink" href="#log-analytics-queries" title="Permanent link">#</a></h3>
+<h4 id="results-with-annotations">Results with annotations<a class="headerlink" href="#results-with-annotations" title="Permanent link">#</a></h4>
 <div class="highlight"><pre><span></span><code>// Show extended info
 PSRule_CL
 | where TimeGenerated &gt; ago(30d)
 | extend Pillar = tostring(parse_json(Annotations_s).pillar)
 | extend Link = tostring(parse_json(Annotations_s).[&quot;online version&quot;])
 </code></pre></div>
-<h3 id="summarize-results-by-run">Summarize results by run<a class="headerlink" href="#summarize-results-by-run" title="Permanent link">#</a></h3>
+<h4 id="summarize-results-by-run">Summarize results by run<a class="headerlink" href="#summarize-results-by-run" title="Permanent link">#</a></h4>
 <div class="highlight"><pre><span></span><code>// Group by run
 PSRule_CL
 | where TimeGenerated &gt; ago(30d)
 | summarize Pass=countif(Outcome_s == &quot;Pass&quot;), Fail=countif(Outcome_s  == &quot;Fail&quot;) by RunId_s
 </code></pre></div>
-<h3 id="querying-the-data">Querying The Data<a class="headerlink" href="#querying-the-data" title="Permanent link">#</a></h3>
+<h4 id="querying-the-data">Querying The Data<a class="headerlink" href="#querying-the-data" title="Permanent link">#</a></h4>
 <p>Once the results have been published to the Log Analytics workspace, they can be queried by executing
 results against the <code>PSRule_CL</code> table (under Custom Logs). For more information on how to write Log
 Analytics querys, review the <a href="https://docs.microsoft.com/azure/azure-monitor/logs/log-analytics-tutorial">Log Analytics tutortial</a></p>
+<h3 id="workbook">Workbook<a class="headerlink" href="#workbook" title="Permanent link">#</a></h3>
+<p>A sample Azure Workbook is available in the PSRule for Azure GitHub repository.
+The Workbook is available in the <code>data</code> directory and is called <code>workbook.json</code>.
+This Workbook can be imported directly into Azure monitor and used as a foundation to build from.
+Review the <a href="https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-create-workbook">Workbook creation tutorial</a>
+for instructions on how to work with the sample Workbook.</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      2022-09-03
+      2022-09-09
     
   </small>
 </div>
