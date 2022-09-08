@@ -5,7 +5,7 @@ author: BernieWhite
 
 # Permit outbound management
 
-As discussed in [Azure.NSG.LateralTraversal][1], outbound management traffic is expected for for some subnets.
+As discussed in [Azure.NSG.LateralTraversal][1], outbound management traffic is expected from some subnets.
 Subnets that are expected allow outbound management traffic may include:
 
 - Privileged access workstations (PAWs)
