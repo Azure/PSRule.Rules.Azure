@@ -4,7 +4,7 @@
     {
       "type": 1,
       "content": {
-        "json": "# PsRule - For Azure Workbook\r\n\r\nPsRule for Azure scans Azure Infrastructure As Code (IAC) templates/modules and evaluates the state of the templates (`Bicep` and `ARM`) against the Azure Well Architected Framework. The data shown in this workbook is from a GitHub action test executing against a GitHub repository containing IAC. When the scan occurs, the results are published to a Log Analytics workspace.\r\n\r\nFor information on the rules that are being Assessed click [here](https://azure.github.io/PSRule.Rules.Azure/en/rules/).\r\n\r\n<br>"
+        "json": "# PSRule - For Azure Workbook\r\n\r\nPSRule for Azure scans Azure Infrastructure as Code (IaC) templates/modules and evaluates the state of the templates (`Bicep` and `ARM`) against the Azure Well-Architected Framework.  To see any data information must be ingested into an Azure Monitor Log Analytics Workspace. For instructions on setup please see [Setup Azure Monitor logs](https://aka.ms/ps-rule-azure/monitor). \r\n\r\nFor information on the rules that are being Assessed click [here](https://azure.github.io/PSRule.Rules.Azure/en/rules/).\r\n\r\n<br>"
       },
       "name": "overview-md"
     },
@@ -68,15 +68,12 @@
             "crossComponentResources": [
               "value::all"
             ],
-            "value": [
-              "/subscriptions/d6d94deb-09b7-40cb-b64f-e63d1beda4f2/resourceGroups/defaultresourcegroup-eus/providers/Microsoft.OperationalInsights/workspaces/defaultworkspace-d6d94deb-09b7-40cb-b64f-e63d1beda4f2-eus",
-              "/subscriptions/892bcc8c-4ef7-4891-a300-6162ad690045/resourceGroups/IAC-PsRule-Demos/providers/Microsoft.OperationalInsights/workspaces/sb-demo-psrule"
-            ],
+            "value": [],
             "typeSettings": {
               "additionalResourceOptions": [
                 "value::all"
               ],
-              "showDefault": false
+              "showDefault": true
             },
             "queryType": 1,
             "resourceType": "microsoft.resourcegraph/resources"
@@ -86,7 +83,7 @@
         "queryType": 1,
         "resourceType": "microsoft.resourcegraph/resources"
       },
-      "name": "parameters - 4"
+      "name": "workspaceParameter"
     },
     {
       "type": 11,
@@ -766,7 +763,7 @@
           {
             "type": 1,
             "content": {
-              "json": "# {selectedTab} - Pillar\r\n\r\nThe {selectedTab} Pillar provides guidance around governing costs of resources in the Cloud. This includes checklists, principals and tradeoffs.\r\n\r\nFor more information about this pillar: \r\n\r\n- [Well Archited Framework - {selectedTab}](https://docs.microsoft.com/en-us/azure/architecture/framework/#cost-optimization)\r\n- [PSRule for Azure {selectedTab} Rules](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#cost-optimization)\r\n\r\n<br>"
+              "json": "# {selectedTab} - Pillar\r\n\r\nThe {selectedTab} Pillar provides guidance around governing costs of resources in the Cloud. This includes checklists, principals and tradeoffs.\r\n\r\nFor more information about this pillar: \r\n\r\n- [Well-Archited Framework - {selectedTab}](https://docs.microsoft.com/azure/architecture/framework/#cost-optimization)\r\n- [PSRule for Azure {selectedTab} Rules](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#cost-optimization)\r\n\r\n<br>"
             },
             "conditionalVisibility": {
               "parameterName": "selectedTab",
@@ -778,7 +775,7 @@
           {
             "type": 1,
             "content": {
-              "json": "# {selectedTab} - Pillar\r\n\r\nThe {selectedTab} Pillar provides guidance around building highly resiliency solutions in Azure. It details recommendations for different services and best practices for ensuring solutions are as resilient as possible. \r\n\r\nFor more information about this pillar: \r\n\r\n- [Well Archited Framework - {selectedTab}](https://docs.microsoft.com/en-us/azure/architecture/framework/resiliency)\r\n- [PSRule for Azure {selectedTab} Rules](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#reliability)\r\n\r\n<br>"
+              "json": "# {selectedTab} - Pillar\r\n\r\nThe {selectedTab} Pillar provides guidance around building highly resiliency solutions in Azure. It details recommendations for different services and best practices for ensuring solutions are as resilient as possible. \r\n\r\nFor more information about this pillar: \r\n\r\n- [Well-Archited Framework - {selectedTab}](https://docs.microsoft.com/azure/architecture/framework/resiliency)\r\n- [PSRule for Azure {selectedTab} Rules](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#reliability)\r\n\r\n<br>"
             },
             "conditionalVisibility": {
               "parameterName": "selectedTab",
@@ -790,7 +787,7 @@
           {
             "type": 1,
             "content": {
-              "json": "# {selectedTab} - Pillar\r\n\r\nThe {selectedTab} Pillar provides guidance and best practices for securiting resources running in Azure. It details recommendations for different services and checklists to increase the security of a solution. \r\n\r\nFor more information about this pillar: \r\n\r\n- [Well Archited Framework - {selectedTab}](https://docs.microsoft.com/en-us/azure/architecture/framework/security/)\r\n- [PSRule for Azure {selectedTab} Rules](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#security)\r\n\r\n<br>"
+              "json": "# {selectedTab} - Pillar\r\n\r\nThe {selectedTab} Pillar provides guidance and best practices for securing resources running in Azure. It details recommendations for different services and checklists to increase the security of a solution. \r\n\r\nFor more information about this pillar: \r\n\r\n- [Well-Archited Framework - {selectedTab}](https://docs.microsoft.com/azure/architecture/framework/security/)\r\n- [PSRule for Azure {selectedTab} Rules](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#security)\r\n\r\n<br>"
             },
             "conditionalVisibility": {
               "parameterName": "selectedTab",
@@ -802,7 +799,7 @@
           {
             "type": 1,
             "content": {
-              "json": "# {selectedTab} - Pillar\r\n\r\nThe {selectedTab} Pillar provides guidance and best practices for optimising a solution for performance. This includes tips for horizontally scaling and which services to pick for the best performance. \r\n\r\nFor more information about this pillar: \r\n\r\n- [Well Archited Framework - {selectedTab}](https://docs.microsoft.com/en-us/azure/architecture/framework/scalability/)\r\n- [PSRule for Azure {selectedTab} Rules](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#performance-efficiency)\r\n\r\n<br>"
+              "json": "# {selectedTab} - Pillar\r\n\r\nThe {selectedTab} Pillar provides guidance and best practices for optimising a solution for performance. This includes tips for horizontally scaling and which services to pick for the best performance. \r\n\r\nFor more information about this pillar: \r\n\r\n- [Well-Archited Framework - {selectedTab}](https://docs.microsoft.com/azure/architecture/framework/scalability/)\r\n- [PSRule for Azure {selectedTab} Rules](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#performance-efficiency)\r\n\r\n<br>"
             },
             "conditionalVisibility": {
               "parameterName": "selectedTab",
@@ -814,7 +811,7 @@
           {
             "type": 1,
             "content": {
-              "json": "# {selectedTab} - Pillar\r\n\r\nThe {selectedTab} Pillar provides guidance on operational excellency.\r\n\r\nFor more information about this pillar: \r\n\r\n- [Well Archited Framework - {selectedTab}](https://docs.microsoft.com/en-us/azure/architecture/framework/devops/)\r\n- [PSRule for Azure {selectedTab} Rules](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#operational-excellence)\r\n\r\n<br>"
+              "json": "# {selectedTab} - Pillar\r\n\r\nThe {selectedTab} Pillar provides guidance on operational excellency.\r\n\r\nFor more information about this pillar: \r\n\r\n- [Well-Archited Framework - {selectedTab}](https://docs.microsoft.com/azure/architecture/framework/devops/)\r\n- [PSRule for Azure {selectedTab} Rules](https://azure.github.io/PSRule.Rules.Azure/en/rules/module/#operational-excellence)\r\n\r\n<br>"
             },
             "conditionalVisibility": {
               "parameterName": "selectedTab",
@@ -838,7 +835,7 @@
               "version": "KqlItem/1.0",
               "query": "PSRule_CL\r\n| project Annotations_s, Outcome_s\r\n| extend annotations=parsejson(Annotations_s)\r\n| where annotations.pillar == \"{selectedTab}\"\r\n| summarize count() by Outcome_s",
               "size": 0,
-              "title": "Total - Rules Assessedby Results",
+              "title": "Total - Rules assessed by result",
               "timeContextFromParameter": "Timeframe",
               "queryType": 0,
               "resourceType": "microsoft.operationalinsights/workspaces",
