@@ -59,6 +59,7 @@ nav:
       - Storing custom rules: customization/storing-custom-rules.md
       - Enforcing custom tags: customization/enforce-custom-tags.md
       - Enforcing code ownership: customization/enforce-codeowners.md
+      - Permit outbound management: customization/permit-outbound-management.md
     - Troubleshooting: troubleshooting.md
     - Samples: samples.md
     - License and contributing: license-contributing.md
