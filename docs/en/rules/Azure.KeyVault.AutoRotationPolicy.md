@@ -1,7 +1,8 @@
 ---
+reviewed: 2022-09-09
 severity: Important
 pillar: Security
-category: Data Protection
+category: Key and secret management
 resource: Key Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.AutoRotationPolicy/
 ---
@@ -17,12 +18,12 @@ Key Vault keys should have auto-rotation enabled.
 Automated key rotation in Key Vault allows users to configure Key Vault to automatically generate a new
 key version at a specified frequency.
 
-Key rotation is often a cause of many application outages. It's critical that the rotation of keys be
-scheduled and automated to ensure effectiveness.
+Key rotation is often a cause of many application outages.
+It's critical that the rotation of keys be scheduled and automated to ensure effectiveness.
 
 ## RECOMMENDATION
 
-Consider enabling auto-rotation on keys.
+Consider enabling auto-rotation on Key Vault keys.
 
 ## EXAMPLES
 
@@ -31,8 +32,7 @@ Consider enabling auto-rotation on keys.
 To set auto-rotation for a key:
 
 - Set `properties.rotationPolicy.lifetimeActions[*].action.type` to `Rotate`.
-- Set `properties.rotationPolicy.lifetimeActions[*].trigger.timeAfterCreate` to the time duration
-after key creation to rotate.
+- Set `properties.rotationPolicy.lifetimeActions[*].trigger.timeAfterCreate` to the time duration after key creation to rotate.
 
 For example:
 
@@ -41,7 +41,6 @@ For example:
   "type": "Microsoft.KeyVault/vaults/keys",
   "apiVersion": "2021-06-01-preview",
   "name": "[concat(parameters('vaultName'), '/', 'key1')]",
-  "tags": {},
   "properties": {
     "keyOps": [
       "sign",
@@ -91,7 +90,6 @@ For example:
 resource vaultName_key1 'Microsoft.KeyVault/vaults/keys@2021-06-01-preview' = {
   parent: vaultName_resource
   name: 'key1'
-  tags: {}
   properties: {
     keyOps: [
       'sign'
@@ -129,6 +127,7 @@ resource vaultName_key1 'Microsoft.KeyVault/vaults/keys@2021-06-01-preview' = {
 
 ## LINKS
 
-- [Configure key auto-rotation in Azure Key Vault (preview)](https://docs.microsoft.com/azure/key-vault/keys/how-to-configure-key-rotation)
 - [Operational considerations](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-keys#operational-considerations)
-- [Template reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/keys?tabs=bicep)
+- [IM-3: Manage application identities securely and automatically](https://docs.microsoft.com/security/benchmark/azure/security-controls-v3-identity-management#im-3-manage-application-identities-securely-and-automatically)
+- [Configure cryptographic key auto-rotation in Azure Key Vault](https://docs.microsoft.com/azure/key-vault/keys/how-to-configure-key-rotation)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/keys)
