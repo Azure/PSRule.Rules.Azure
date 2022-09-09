@@ -113,7 +113,7 @@ When enabled, PSRule for Azure automatically expands and analyzes Azure resource
 To enabled this feature, set the `Configuration.AZURE_BICEP_FILE_EXPANSION` to `true`.
 This option can be set within the `ps-rule.yaml` file.
 
-```yaml
+```yaml title="ps-rule.yaml"
 configuration:
   # Enable automatic expansion of bicep source files.
   AZURE_BICEP_FILE_EXPANSION: true
@@ -142,7 +142,7 @@ This can occur if your Bicep deployments are:
 If you are experincing timeout errors you can increase the default timeout of 5 seconds.
 To configure the timeout, set `Configuration.AZURE_BICEP_FILE_EXPANSION_TIMEOUT` to the timeout in seconds.
 
-```yaml
+```yaml title="ps-rule.yaml"
 configuration:
   # Enable automatic expansion of bicep source files.
   AZURE_BICEP_FILE_EXPANSION: true

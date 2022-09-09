@@ -174,7 +174,7 @@ Continue reading for some sample resources you can try once this integration is 
 
 #### Results with annotations
 
-```kql
+```kql title="Kusto"
 // Show extended info
 PSRule_CL
 | where TimeGenerated > ago(30d)
@@ -184,7 +184,7 @@ PSRule_CL
 
 #### Summarize results by run
 
-```kql
+```kql title="Kusto"
 // Group by run
 PSRule_CL
 | where TimeGenerated > ago(30d)
