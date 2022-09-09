@@ -45,7 +45,7 @@ For example:
         }
     },
     "properties": {
-        "kubernetesVersion": "1.22.6",
+        "kubernetesVersion": "1.23.8",
         "enableRBAC": true,
         "dnsPrefix": "[parameters('dnsPrefix')]",
         "agentPoolProfiles": "[variables('allPools')]",
@@ -122,7 +122,7 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
     }
   }
   properties: {
-    kubernetesVersion: '1.22.6'
+    kubernetesVersion: '1.23.8'
     enableRBAC: true
     dnsPrefix: dnsPrefix
     agentPoolProfiles: allPools
@@ -180,13 +180,13 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
 ### Configure with Azure CLI
 
 ```bash
-az aks upgrade -n '<name>' -g '<resource_group>' --kubernetes-version '1.22.6'
+az aks upgrade -n '<name>' -g '<resource_group>' --kubernetes-version '1.23.8'
 ```
 
 ### Configure with Azure PowerShell
 
 ```powershell
-Set-AzAksCluster -Name '<name>' -ResourceGroupName '<resource_group>' -KubernetesVersion '1.22.6'
+Set-AzAksCluster -Name '<name>' -ResourceGroupName '<resource_group>' -KubernetesVersion '1.23.8'
 ```
 
 ## NOTES
@@ -201,4 +201,4 @@ To configure this rule:
 - [Target and non-functional requirements](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
 - [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
 - [Support policies for Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/support-policies)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
