@@ -166,11 +166,13 @@ Import analysis results into Azure Monitor with Azure Pipelines by:
   [9]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
   [10]: https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups
 
-## Sample queries
+## Samples
 
-Continue reading for some sample queries you can try out Azure Monitor integration.
+Continue reading for some sample resources you can try once this integration is setup Azure Monitor integration.
 
-### Results with annotations
+### Log Analytics Queries
+
+#### Results with annotations
 
 ```kql
 // Show extended info
@@ -180,7 +182,7 @@ PSRule_CL
 | extend Link = tostring(parse_json(Annotations_s).["online version"])
 ```
 
-### Summarize results by run
+#### Summarize results by run
 
 ```kql
 // Group by run
@@ -191,8 +193,16 @@ PSRule_CL
 
 *[SIEM]: security information event management
 
-### Querying The Data
+#### Querying The Data
 
 Once the results have been published to the Log Analytics workspace, they can be queried by executing
 results against the `PSRule_CL` table (under Custom Logs). For more information on how to write Log
 Analytics querys, review the [Log Analytics tutortial](https://docs.microsoft.com/azure/azure-monitor/logs/log-analytics-tutorial)
+
+### Workbook
+
+A sample Azure Workbook is available in the PSRule for Azure GitHub repository.
+The Workbook is available in the `data` directory and is called `workbook.json`.
+This Workbook can be imported directly into Azure monitor and used as a foundation to build from.
+Review the [Workbook creation tutorial](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-create-workbook)
+for instructions on how to work with the sample Workbook.

@@ -27,8 +27,19 @@ What's changed since pre-release v1.20.0-B0004:
 
 - New rules:
   - CDN:
-    - Check CDN profile used Front Door Standard or Premium tier by @bengeset96.
+    - Check CDN profile uses Front Door Standard or Premium tier by @bengeset96.
       [#1612](https://github.com/Azure/PSRule.Rules.Azure/issues/1612)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.23.8` by @BernieWhite.
+      [#1627](https://github.com/Azure/PSRule.Rules.Azure/issues/1627)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+  - Event Grid:
+    - Promoted `Azure.EventGrid.DisableLocalAuth` to GA rule set by @BernieWhite.
+      [#1628](https://github.com/Azure/PSRule.Rules.Azure/issues/1628)
+  - Key Vault:
+    - Promoted `Azure.KeyVault.AutoRotationPolicy` to GA rule set by @BernieWhite.
+      [#1629](https://github.com/Azure/PSRule.Rules.Azure/issues/1629)
 - Engineering:
   - Bump PSRule to v2.4.0.
     [#1620](https://github.com/Azure/PSRule.Rules.Azure/pull/1620)
