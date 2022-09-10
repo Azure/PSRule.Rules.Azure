@@ -1364,7 +1364,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'cluster-C', 'system'  'cluster-L';
+            $ruleResult.TargetName | Should -BeIn 'cluster-C', 'system', 'cluster-L';
         }
     }
 }
