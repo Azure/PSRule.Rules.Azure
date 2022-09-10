@@ -238,15 +238,15 @@ Rule 'Azure.AKS.UptimeSLA' -Ref 'AZR-000285' -Type 'Microsoft.ContainerService/m
     $Assert.Contains($TargetObject, 'sku.tier', 'Paid');
 }
 
-# Synopsis: AKS clusters should use ephemeral ephemeral OS disks which can provide lower read/write latency, along with faster node scaling and cluster upgrades.
-Rule 'Azure.AKS.EphemeralOSDisk' -Ref 'AZR-000287' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+# Synopsis: AKS clusters should use ephemeral OS disks which can provide lower read/write latency, along with faster node scaling and cluster upgrades.
+Rule 'Azure.AKS.EphemeralOSDisk' -Ref 'AZR-000287' -Level Warning -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
     $agentPools = @(GetAgentPoolProfiles);
     if ($agentPools.Length -eq 0) {
         return $Assert.Pass();
     }
     foreach ($agentPool in $agentPools) {
         $Assert.In($agentPool, 'osDiskType', 'Ephemeral').
-        Reason($LocalizedData.AKSEphemeralOSDiskNotConfigured, $agentPool.osDiskType);
+        ReasonIf($agentPool.osDiskType, $LocalizedData.AKSEphemeralOSDiskNotConfigured);
     }
 }
 
