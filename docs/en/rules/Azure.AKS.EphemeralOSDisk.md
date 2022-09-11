@@ -22,7 +22,7 @@ Like the temporary disk, an ephemeral OS disk is included in the price of the vi
 
 NB: When a user does not explicitly request managed disks for the OS, AKS will default to ephemeral OS if possible for a given node pool configuration. The rule is therefore configured with `-Level Warning` as it can give inaccurate information.
 
-When using ephemeral OS, the OS disk must fit in the VM cache. The sizes for VM cache are available in the [Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/dv2-dsv2-series) in parentheses next to IO throughput ("cache size in GiB").
+When using ephemeral OS, the OS disk must fit in the VM cache. The sizes for VM cache are available in the [Azure documentation](https://docs.microsoft.com/azure/virtual-machines/dv2-dsv2-series) in parentheses next to IO throughput ("cache size in GiB").
 
 Examples:
 
@@ -93,103 +93,20 @@ For example:
 ```json
 {
   "type": "Microsoft.ContainerService/managedClusters/agentPools",
-  "name": "string",
+  "apiVersion": "2022-07-01",
+  "name": "[format('{0}/{1}', parameters('clusterName'), variables('poolName'))]",
   "properties": {
-    "availabilityZones": [ "string" ],
-    "capacityReservationGroupID": "string",
-    "count": "int",
-    "creationData": {
-      "sourceResourceId": "string"
-    },
-    "enableAutoScaling": "bool",
-    "enableCustomCATrust": "bool",
-    "enableEncryptionAtHost": "bool",
-    "enableFIPS": "bool",
-    "enableNodePublicIP": "bool",
-    "enableUltraSSD": "bool",
-    "gpuInstanceProfile": "string",
-    "hostGroupID": "string",
-    "kubeletConfig": {
-      "allowedUnsafeSysctls": [ "string" ],
-      "containerLogMaxFiles": "int",
-      "containerLogMaxSizeMB": "int",
-      "cpuCfsQuota": "bool",
-      "cpuCfsQuotaPeriod": "string",
-      "cpuManagerPolicy": "string",
-      "failSwapOn": "bool",
-      "imageGcHighThreshold": "int",
-      "imageGcLowThreshold": "int",
-      "podMaxPids": "int",
-      "topologyManagerPolicy": "string"
-    },
-    "kubeletDiskType": "string",
-    "linuxOSConfig": {
-      "swapFileSizeMB": "int",
-      "sysctls": {
-        "fsAioMaxNr": "int",
-        "fsFileMax": "int",
-        "fsInotifyMaxUserWatches": "int",
-        "fsNrOpen": "int",
-        "kernelThreadsMax": "int",
-        "netCoreNetdevMaxBacklog": "int",
-        "netCoreOptmemMax": "int",
-        "netCoreRmemDefault": "int",
-        "netCoreRmemMax": "int",
-        "netCoreSomaxconn": "int",
-        "netCoreWmemDefault": "int",
-        "netCoreWmemMax": "int",
-        "netIpv4IpLocalPortRange": "string",
-        "netIpv4NeighDefaultGcThresh1": "int",
-        "netIpv4NeighDefaultGcThresh2": "int",
-        "netIpv4NeighDefaultGcThresh3": "int",
-        "netIpv4TcpFinTimeout": "int",
-        "netIpv4TcpkeepaliveIntvl": "int",
-        "netIpv4TcpKeepaliveProbes": "int",
-        "netIpv4TcpKeepaliveTime": "int",
-        "netIpv4TcpMaxSynBacklog": "int",
-        "netIpv4TcpMaxTwBuckets": "int",
-        "netIpv4TcpTwReuse": "bool",
-        "netNetfilterNfConntrackBuckets": "int",
-        "netNetfilterNfConntrackMax": "int",
-        "vmMaxMapCount": "int",
-        "vmSwappiness": "int",
-        "vmVfsCachePressure": "int"
-      },
-      "transparentHugePageDefrag": "string",
-      "transparentHugePageEnabled": "string"
-    },
-    "maxCount": "int",
-    "maxPods": "int",
-    "messageOfTheDay": "string",
-    "minCount": "int",
-    "mode": "string",
-    "nodeLabels": {},
-    "nodePublicIPPrefixID": "string",
-    "nodeTaints": [ "string" ],
-    "orchestratorVersion": "string",
-    "osDiskSizeGB": "60",
+    "count": "[variables('minCount')]",
+    "vmSize": "[variables('vmSize')]",
+    "osDiskSizeGB": 60,
+    "osType": "Linux",
     "osDiskType": "Ephemeral",
-    "osSKU": "string",
-    "osType": "string",
-    "podSubnetID": "string",
-    "powerState": {
-      "code": "string"
-    },
-    "proximityPlacementGroupID": "string",
-    "scaleDownMode": "string",
-    "scaleSetEvictionPolicy": "string",
-    "scaleSetPriority": "string",
-    "spotMaxPrice": "int",
-    "tags": {},
-    "type": "string",
-    "upgradeSettings": {
-      "maxSurge": "string"
-    },
-    "vmSize": "string",
-    "vnetSubnetID": "string",
-    "workloadRuntime": "string"
-  }
-}
+    "maxPods": 50,
+    "mode": "User"
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))]"
+  ]
 ```
 
 ### Configure with Bicep
@@ -245,91 +162,18 @@ To deploy an AKS agent pool that pass this rule:
 For example:
 
 ```bicep
-resource aksagentpool 'Microsoft.ContainerService/managedClusters/agentPools@2022-07-02-preview' = {
-  name: agentPoolName
-  parent: clusterName
+resource userPool 'Microsoft.ContainerService/managedClusters/agentPools@2022-07-01' = {
+  parent: cluster
+  name: poolName
   properties: {
-    availabilityZones: [
-      'string'
-    ]
-    capacityReservationGroupID: 'string'
-    count: int
-    creationData: {
-      sourceResourceId: 'string'
-    }
-    enableAutoScaling: bool
-    enableCustomCATrust: bool
-    enableEncryptionAtHost: bool
-    enableFIPS: bool
-    enableNodePublicIP: bool
-    enableUltraSSD: bool
-    gpuInstanceProfile: 'string'
-    hostGroupID: 'string'
-    kubeletConfig: {
-      allowedUnsafeSysctls: [
-        'string'
-      ]
-      containerLogMaxFiles: int
-      containerLogMaxSizeMB: int
-      cpuCfsQuota: bool
-      cpuCfsQuotaPeriod: 'string'
-      cpuManagerPolicy: 'string'
-      failSwapOn: bool
-      imageGcHighThreshold: int
-      imageGcLowThreshold: int
-      podMaxPids: int
-      topologyManagerPolicy: 'string'
-    }
-    kubeletDiskType: 'string'
-    linuxOSConfig: {
-      swapFileSizeMB: int
-      sysctls: {
-        fsAioMaxNr: int
-        fsFileMax: int
-        fsInotifyMaxUserWatches: int
-        fsNrOpen: int
-        kernelThreadsMax: int
-        netCoreNetdevMaxBacklog: int
-        netCoreOptmemMax: int
-        netCoreRmemDefault: int
-        netCoreRmemMax: int
-        netCoreSomaxconn: int
-        netCoreWmemDefault: int
-        netCoreWmemMax: int
-        netIpv4IpLocalPortRange: 'string'
-        netIpv4NeighDefaultGcThresh1: int
-        netIpv4NeighDefaultGcThresh2: int
-        netIpv4NeighDefaultGcThresh3: int
-        netIpv4TcpFinTimeout: int
-        netIpv4TcpkeepaliveIntvl: int
-        netIpv4TcpKeepaliveProbes: int
-        netIpv4TcpKeepaliveTime: int
-        netIpv4TcpMaxSynBacklog: int
-        netIpv4TcpMaxTwBuckets: int
-        netIpv4TcpTwReuse: bool
-        netNetfilterNfConntrackBuckets: int
-        netNetfilterNfConntrackMax: int
-        vmMaxMapCount: int
-        vmSwappiness: int
-        vmVfsCachePressure: int
-      }
-      transparentHugePageDefrag: 'string'
-      transparentHugePageEnabled: 'string'
-    }
-    orchestratorVersion: 'string'
+    count: minCount
+    vmSize: vmSize
     osDiskSizeGB: 60
+    osType: 'Linux'
     osDiskType: 'Ephemeral'
-    osSKU: 'string'
-    osType: 'string'
-    podSubnetID: 'string'
-    powerState: {
-      code: 'string'
-    }
-    vmSize: 'string'
-    vnetSubnetID: 'string'
-    workloadRuntime: 'string'
+    maxPods: 50
+    mode: 'User'
   }
-}
 ```
 
 ## LINKS

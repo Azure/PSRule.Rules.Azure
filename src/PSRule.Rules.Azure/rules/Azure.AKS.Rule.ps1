@@ -245,7 +245,7 @@ Rule 'Azure.AKS.EphemeralOSDisk' -Ref 'AZR-000287' -Level Warning -Type 'Microso
         return $Assert.Pass();
     }
     foreach ($agentPool in $agentPools) {
-        $Assert.In($agentPool, 'osDiskType', 'Ephemeral').
+        $Assert.HasDefaultValue($agentPool, 'osDiskType', 'Ephemeral').
         ReasonIf($agentPool.osDiskType, $LocalizedData.AKSEphemeralOSDiskNotConfigured);
     }
 }
