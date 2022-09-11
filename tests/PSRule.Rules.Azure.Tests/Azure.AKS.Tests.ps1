@@ -1338,33 +1338,17 @@ Describe 'Azure.AKS' -Tag AKS {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-F', 'cluster-K';
 
-            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "Path osDiskType: Does not exist.";
-            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "Path osDiskType: Does not exist.";
-            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "Path osDiskType: Does not exist.";
-            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[3].Reason | Should -BeExactly "The OS disk type 'Managed' should be of type 'Ephemeral'.";
-            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "Path osDiskType: Does not exist.";
-            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[5].Reason | Should -BeExactly "Path osDiskType: Does not exist.";
-            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[6].Reason | Should -BeExactly "Path osDiskType: Does not exist.";
-            $ruleResult[7].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[7].Reason | Should -BeExactly "Path osDiskType: Does not exist.";
-            $ruleResult[8].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[8].Reason | Should -BeExactly "The OS disk type 'Managed' should be of type 'Ephemeral'.";
+            $ruleResult[0].Reason | Should -BeExactly "The OS disk type 'Managed' should be of type 'Ephemeral'.";
+            $ruleResult[1].Reason | Should -BeExactly "The OS disk type 'Managed' should be of type 'Ephemeral'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'cluster-C', 'system', 'cluster-L';
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'system', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-L';
         }
     }
 }

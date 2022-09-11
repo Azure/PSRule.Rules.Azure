@@ -65,7 +65,7 @@ For example:
         "osDiskSizeGB": 60,
         "count": "[parameters('agentCount')]",
         "vmSize": "[parameters('agentVMSize')]",
-        "osDiskType": "Ephemeral"
+        "osDiskType": "Ephemeral",
         "osType": "Linux",
         "mode": "System"
       }
@@ -107,6 +107,7 @@ For example:
   "dependsOn": [
     "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))]"
   ]
+}
 ```
 
 ### Configure with Bicep
@@ -174,6 +175,7 @@ resource userPool 'Microsoft.ContainerService/managedClusters/agentPools@2022-07
     maxPods: 50
     mode: 'User'
   }
+}
 ```
 
 ## LINKS
