@@ -33,7 +33,9 @@
     "blanks-around-headers": true,
     "header-start-left": true,
     "no-duplicate-header": true,
-    "single-h1": true,
+    "single-h1": {
+        "front_matter_title": ""
+    },
     "no-trailing-punctuation": {
         "punctuation": ".,;:!"
     },
