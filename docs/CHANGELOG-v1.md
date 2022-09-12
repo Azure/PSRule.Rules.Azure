@@ -23,6 +23,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - AKS:
+    - Check clusters use Ephemeral OS disk by @bengeset96.
+      [#1618](https://github.com/Azure/PSRule.Rules.Azure/issues/1618)
+
 What's changed since pre-release v1.20.0-B0004:
 
 - New rules:

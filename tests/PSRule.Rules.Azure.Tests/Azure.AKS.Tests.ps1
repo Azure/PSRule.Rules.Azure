@@ -1330,5 +1330,25 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'cluster-K', 'cluster-L';  
         }
+
+        It 'Azure.AKS.EphemeralOSDisk' {
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.EphemeralOSDisk' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-F', 'cluster-K';
+
+            $ruleResult[0].Reason | Should -BeExactly "The OS disk type 'Managed' should be of type 'Ephemeral'.";
+            $ruleResult[1].Reason | Should -BeExactly "The OS disk type 'Managed' should be of type 'Ephemeral'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'system', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-L';
+        }
     }
 }
