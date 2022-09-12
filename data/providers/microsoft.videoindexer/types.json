@@ -4,6 +4,7 @@
     "resourceType": "accounts",
     "apiVersions": [
       "2022-08-01",
+      "2022-07-20-preview",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview",
@@ -41,6 +42,7 @@
     "resourceType": "checknameavailability",
     "apiVersions": [
       "2022-08-01",
+      "2022-07-20-preview",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview",
@@ -54,6 +56,7 @@
     "resourceType": "locations",
     "apiVersions": [
       "2022-08-01",
+      "2022-07-20-preview",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview",
@@ -67,6 +70,7 @@
     "resourceType": "locations/classicaccounts",
     "apiVersions": [
       "2022-08-01",
+      "2022-07-20-preview",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview"
@@ -103,6 +107,7 @@
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
       "2022-08-01",
+      "2022-07-20-preview",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview",
@@ -148,6 +153,7 @@
     "resourceType": "locations/userclassicaccounts",
     "apiVersions": [
       "2022-08-01",
+      "2022-07-20-preview",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview"
@@ -184,6 +190,7 @@
     "resourceType": "operations",
     "apiVersions": [
       "2022-08-01",
+      "2022-07-20-preview",
       "2022-04-13-preview",
       "2021-11-10-preview",
       "2021-10-27-preview",
