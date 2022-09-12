@@ -48,6 +48,11 @@ What's changed since pre-release v1.20.0-B0004:
     [#1620](https://github.com/Azure/PSRule.Rules.Azure/pull/1620)
   - Updated provider data for analysis.
     [#1605](https://github.com/Azure/PSRule.Rules.Azure/pull/1605)
+- Bug fixes:
+  - Fixed function `dateTimeAdd` errors handling `utcNow` output by @BernieWhite.
+    [#1637](https://github.com/Azure/PSRule.Rules.Azure/issues/1637)
+  - Fixed inconclusive failure of `Azure.Deployment.AdminUsername` by @BernieWhite.
+    [#1631](https://github.com/Azure/PSRule.Rules.Azure/issues/1631)
 
 ## v1.20.0-B0004 (pre-release)
 

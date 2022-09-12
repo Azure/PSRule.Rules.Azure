@@ -1123,6 +1123,9 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// dateTimeAdd(base, duration, [format])
         /// </summary>
+        /// <remarks>
+        /// See <seealso href="https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-date#datetimeadd"/>.
+        /// </remarks>
         internal static object DateTimeAdd(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
@@ -1417,7 +1420,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// indexOf(stringToSearch, stringToFind)
         /// </summary>
         /// <remarks>
-        /// <seealso href="https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#indexof"/>
+        /// See <seealso href="https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#indexof"/>.
         /// </remarks>
         private static object IndexOfString(string stringToSearch, string stringToFind)
         {
@@ -1433,7 +1436,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// indexOf(arrayToSearch, itemToFind)
         /// </summary>
         /// <remarks>
-        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#indexof
+        /// See <seealso href="https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#indexof"/>.
         /// </remarks>
         private static object IndexOfArray(object o1, object o2, bool first)
         {
