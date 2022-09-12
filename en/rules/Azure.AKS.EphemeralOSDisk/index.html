@@ -6,20 +6,20 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Redis Cache should reject TLS versions older then 1.2.">
+        <meta name="description" content="AKS clusters should use ephemeral OS disks which can provide lower read/write latency, along with faster node scaling and cluster upgrades.">
       
       
         <meta name="author" content="Microsoft">
       
       
-        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.MinTLS/">
+        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.EphemeralOSDisk/">
       
       <link rel="icon" href="../../../assets/ms_icon.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.3">
     
     
       
-        <title>Azure.Redis.MinTLS - PSRule for Azure</title>
+        <title>Azure.AKS.EphemeralOSDisk - PSRule for Azure</title>
       
     
     
@@ -73,20 +73,20 @@
   <!-- Open graph meta tags -->
   <meta property="og:site_name" content="PSRule for Azure" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PSRule for Azure - Azure.Redis.MinTLS" />
-  <meta property="og:description" content="Redis Cache should reject TLS versions older then 1.2." />
-  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.MinTLS/" />
+  <meta property="og:title" content="PSRule for Azure - Azure.AKS.EphemeralOSDisk" />
+  <meta property="og:description" content="AKS clusters should use ephemeral OS disks which can provide lower read/write latency, along with faster node scaling and cluster upgrades." />
+  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.EphemeralOSDisk/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1280" />
   <meta property="og:image:height" content="640" />
-  <meta property="og:image:alt" content="Redis Cache should reject TLS versions older then 1.2." />
+  <meta property="og:image:alt" content="AKS clusters should use ephemeral OS disks which can provide lower read/write latency, along with faster node scaling and cluster upgrades." />
 
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - Azure.Redis.MinTLS" />
-  <meta name="twitter:description" content="Redis Cache should reject TLS versions older then 1.2." />
+  <meta name="twitter:title" content="PSRule for Azure - Azure.AKS.EphemeralOSDisk" />
+  <meta name="twitter:description" content="AKS clusters should use ephemeral OS disks which can provide lower read/write latency, along with faster node scaling and cluster upgrades." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
 
@@ -108,7 +108,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#redis-cache-minimum-tls-version" class="md-skip">
+        <a href="#use-aks-ephemeral-os-disk" class="md-skip">
           Skip to content
         </a>
       
@@ -144,7 +144,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Azure.Redis.MinTLS
+              Azure.AKS.EphemeralOSDisk
             
           </span>
         </div>
@@ -2156,11 +2156,93 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Azure.AKS.EphemeralOSDisk/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Azure.AKS.EphemeralOSDisk
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Azure.AKS.EphemeralOSDisk
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-azure-template" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-bicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4326,66 +4408,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Azure.Redis.MinTLS
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Azure.Redis.MinTLS/" class="md-nav__link">
         Azure.Redis.MinTLS
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommendation" class="md-nav__link">
-    Recommendation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    Links
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -6349,6 +6376,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-azure-template" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-bicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#links" class="md-nav__link">
     Links
   </a>
@@ -6371,7 +6425,7 @@
   
     
       <a
-        href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Redis.MinTLS.md"
+        href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AKS.EphemeralOSDisk.md"
         title="Edit this page"
         class="md-content__button md-icon"
       >
@@ -6388,27 +6442,162 @@
   
 
   <!-- Markdown content -->
-  <h1 id="redis-cache-minimum-tls-version">Redis Cache minimum TLS version<a class="headerlink" href="#redis-cache-minimum-tls-version" title="Permanent link">#</a></h1>
-<nav class="md-tags"><span class="md-tag">Azure.Redis.MinTLS</span><span class="md-tag">AZR-000164</span><span class="md-tag">Error</span></nav>
-<p><a href="../module/#security"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0l-9.272-9.272zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0l-9.273 9.272z"/></svg></span> Security</a>
- · <a href="../resource/#azure-cache-for-redis"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M13.152.682a2.25 2.25 0 0 1 2.269 0l.007.004 6.957 4.276a2.276 2.276 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003a2.276 2.276 0 0 1-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026a2.28 2.28 0 0 1 .82-.827h.002L13.152.681zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.776.776 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003zM18 9.709l-3.25 1.9v7.548L18 17.245V9.709zm1.5-.878v7.532l2.124-1.25a.777.777 0 0 0 .387-.671V7.363L19.5 8.831zm-9.09 5.316 2.84-1.66v7.552l-3.233 1.902v-7.612c.134-.047.265-.107.391-.18l.002-.002zm-1.893 7.754V14.33a2.277 2.277 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232z"/></svg></span> Azure Cache for Redis</a>
- · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/><path fill-rule="evenodd" d="M2.5 1A1.5 1.5 0 0 0 1 2.5v8.44c0 .397.158.779.44 1.06l10.25 10.25a1.5 1.5 0 0 0 2.12 0l8.44-8.44a1.5 1.5 0 0 0 0-2.12L12 1.44A1.5 1.5 0 0 0 10.94 1H2.5zm0 1.5h8.44l10.25 10.25-8.44 8.44L2.5 10.94V2.5z"/></svg></span> 2020_06</p>
-<p>Redis Cache should reject TLS versions older then 1.2.</p>
+  <h1 id="use-aks-ephemeral-os-disk">Use AKS Ephemeral OS disk<a class="headerlink" href="#use-aks-ephemeral-os-disk" title="Permanent link">#</a></h1>
+<nav class="md-tags"><span class="md-tag">Azure.AKS.EphemeralOSDisk</span><span class="md-tag">AZR-000287</span><span class="md-tag">Warning</span></nav>
+<p><a href="../module/#performance-efficiency"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0l-9.272-9.272zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0l-9.273 9.272z"/></svg></span> Performance Efficiency</a>
+ · <a href="../resource/#azure-kubernetes-service"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M13.152.682a2.25 2.25 0 0 1 2.269 0l.007.004 6.957 4.276a2.276 2.276 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003a2.276 2.276 0 0 1-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026a2.28 2.28 0 0 1 .82-.827h.002L13.152.681zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.776.776 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003zM18 9.709l-3.25 1.9v7.548L18 17.245V9.709zm1.5-.878v7.532l2.124-1.25a.777.777 0 0 0 .387-.671V7.363L19.5 8.831zm-9.09 5.316 2.84-1.66v7.552l-3.233 1.902v-7.612c.134-.047.265-.107.391-.18l.002-.002zm-1.893 7.754V14.33a2.277 2.277 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232z"/></svg></span> Azure Kubernetes Service</a>
+ · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/><path fill-rule="evenodd" d="M2.5 1A1.5 1.5 0 0 0 1 2.5v8.44c0 .397.158.779.44 1.06l10.25 10.25a1.5 1.5 0 0 0 2.12 0l8.44-8.44a1.5 1.5 0 0 0 0-2.12L12 1.44A1.5 1.5 0 0 0 10.94 1H2.5zm0 1.5h8.44l10.25 10.25-8.44 8.44L2.5 10.94V2.5z"/></svg></span> 2022_09</p>
+<p>AKS clusters should use ephemeral OS disks which can provide lower read/write latency, along with faster node scaling and cluster upgrades.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>The minimum version of TLS that Redis Cache accepts is configurable.
-Older TLS versions are no longer considered secure by industry standards, such as PCI DSS.</p>
-<p>Azure lets you disable outdated protocols and require connections to use a minimum of TLS 1.2.
-By default, TLS 1.0, TLS 1.1, and TLS 1.2 is accepted.</p>
+<p>By default, Azure automatically replicates the operating system disk for a virtual machine to Azure storage to avoid data loss if the VM needs to be relocated to another host. However, since containers aren't designed to have local state persisted, this behavior offers limited value while providing some drawbacks, including slower node provisioning and higher read/write latency.</p>
+<p>By contrast, ephemeral OS disks are stored only on the host machine, just like a temporary disk. This provides lower read/write latency, along with faster node scaling and cluster upgrades.</p>
+<p>Like the temporary disk, an ephemeral OS disk is included in the price of the virtual machine, so you incur no additional storage costs.</p>
+<p>NB: When a user does not explicitly request managed disks for the OS, AKS will default to ephemeral OS if possible for a given node pool configuration. The rule is therefore configured with <code>-Level Warning</code> as it can give inaccurate information.</p>
+<p>When using ephemeral OS, the OS disk must fit in the VM cache. The sizes for VM cache are available in the <a href="https://docs.microsoft.com/azure/virtual-machines/dv2-dsv2-series">Azure documentation</a> in parentheses next to IO throughput ("cache size in GiB").</p>
+<p>Examples:</p>
+<ul>
+<li>Using the AKS default VM size Standard_DS2_v2 with the default OS disk size of 100GB as an example, this VM size supports ephemeral OS but only has 86GB of cache size. This configuration would default to managed disks if the user does not specify explicitly. If a user explicitly requested ephemeral OS, they would receive a validation error.</li>
+</ul>
+<ul>
+<li>If a user requests the same Standard_DS2_v2 with a 60GB OS disk, this configuration would default to ephemeral OS: the requested size of 60GB is smaller than the maximum cache size of 86GB.</li>
+</ul>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider configuring the minimum supported TLS version to be 1.2.
-Support for TLS 1.0/ 1.1 version will be removed.</p>
+<p>AKS clusters should use ephemeral OS disks.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configure-with-azure-template">Configure with Azure template<a class="headerlink" href="#configure-with-azure-template" title="Permanent link">#</a></h3>
+<p>To deploy an AKS cluster that pass this rule:</p>
+<ul>
+<li>Set <code>properties.agentPoolProfiles.osDiskType</code> to <code>Ephemeral</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ContainerService/managedClusters&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-02-preview&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;clusterName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Basic&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Paid&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SystemAssigned&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;dnsPrefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;dnsPrefix&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;agentPoolProfiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;agentpool&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;osDiskSizeGB&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;agentCount&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;vmSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;agentVMSize&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;osDiskType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ephemeral&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;osType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Linux&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;System&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;linuxProfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;adminUsername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;linuxAdminUsername&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;ssh&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;publicKeys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;keyData&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;sshRSAPublicKey&#39;)]&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>To deploy an AKS agent pool that pass this rule:</p>
+<ul>
+<li>Set <code>properties.osDiskType</code> to <code>Ephemeral</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ContainerService/managedClusters/agentPools&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-07-01&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[format(&#39;{0}/{1}&#39;, parameters(&#39;clusterName&#39;), variables(&#39;poolName&#39;))]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[variables(&#39;minCount&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;vmSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[variables(&#39;vmSize&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;osDiskSizeGB&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;osType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Linux&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;osDiskType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ephemeral&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;maxPods&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;[resourceId(&#39;Microsoft.ContainerService/managedClusters&#39;, parameters(&#39;clusterName&#39;))]&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="configure-with-bicep">Configure with Bicep<a class="headerlink" href="#configure-with-bicep" title="Permanent link">#</a></h3>
+<p>To deploy an AKS cluster that pass this rule:</p>
+<ul>
+<li>Set <code>properties.agentPoolProfiles.osDiskType</code> to <code>Ephemeral</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource aks &#39;Microsoft.ContainerService/managedClusters@2022-06-02-preview&#39; = {
+  name: clusterName
+  location: location
+  sku: {
+    name: &#39;Basic&#39;
+    tier: &#39;Paid&#39;
+  }
+  identity: {
+    type: &#39;SystemAssigned&#39;
+  }
+  properties: {
+    dnsPrefix: dnsPrefix
+    agentPoolProfiles: [
+      {
+        name: &#39;agentpool&#39;
+        osDiskSizeGB: 60
+        count: agentCount
+        vmSize: agentVMSize
+        osDiskType: &#39;Ephemeral&#39;
+        osType: &#39;Linux&#39;
+        mode: &#39;System&#39;
+      }
+    ]
+    linuxProfile: {
+      adminUsername: linuxAdminUsername
+      ssh: {
+        publicKeys: [
+          {
+            keyData: sshRSAPublicKey
+          }
+        ]
+      }
+    }
+  }
+}
+</code></pre></div>
+<p>To deploy an AKS agent pool that pass this rule:</p>
+<ul>
+<li>Set <code>properties.osDiskType</code> to <code>Ephemeral</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource userPool &#39;Microsoft.ContainerService/managedClusters/agentPools@2022-07-01&#39; = {
+  parent: cluster
+  name: poolName
+  properties: {
+    count: minCount
+    vmSize: vmSize
+    osDiskSizeGB: 60
+    osType: &#39;Linux&#39;
+    osDiskType: &#39;Ephemeral&#39;
+    maxPods: 50
+    mode: &#39;User&#39;
+  }
+}
+</code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit">Data encryption in Azure</a></li>
-<li><a href="https://docs.microsoft.com/azure/azure-cache-for-redis/cache-remove-tls-10-11">Remove TLS 1.0 and 1.1 from use with Azure Cache for Redis</a></li>
-<li><a href="https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-ports">Configure Azure Cache for Redis settings</a></li>
-<li><a href="https://azure.microsoft.com/updates/azuretls12/">Preparing for TLS 1.2 in Microsoft Azure</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.cache/redis#RedisCreateProperties">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/architecture/framework/scalability/performance-efficiency">Performance efficiency checklist</a></li>
+<li><a href="https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os">Azure Kubernetes Service (AKS) Ephemeral OS</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters/agentpools">Azure template reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -6419,7 +6608,7 @@ Support for TLS 1.0/ 1.1 version will be removed.</p>
   <small>
     
       Last update:
-      2021-07-25
+      2022-09-12
     
   </small>
 </div>
@@ -6442,7 +6631,7 @@ Support for TLS 1.0/ 1.1 version will be removed.</p>
       data-category="Documentation"
       data-category-id="DIC_kwDOCvn6LM4CQqE6"
       data-mapping="specific"
-      data-term="Azure.Redis.MinTLS"
+      data-term="Azure.AKS.EphemeralOSDisk"
       data-strict="0"
       data-reactions-enabled="1"
       data-emit-metadata="0"
