@@ -1,8 +1,8 @@
 ---
 severity: Awareness
 pillar: Security
-category: Design
-resource: All resources
+category: Infrastructure provisioning
+resource: Deployment
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Deployment.AdminUsername/
 ---
 
@@ -23,6 +23,6 @@ Sensitive properties for nested deployments should be set by a secureString para
 
 ## LINKS
 
+- [Infrastructure provisioning considerations in Azure](https://docs.microsoft.com/azure/architecture/framework/security/deploy-infrastructure)
 - [Use KeyVault Secrets in Bicep](https://docs.microsoft.com/azure/azure-resource-manager/bicep/key-vault-parameter)
 - [Use KeyVault Secret in Parameter File](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-use-key-vault#edit-the-parameters-file)
-- [Well Architected Framework - IAC](https://docs.microsoft.com/azure/architecture/framework/security/deploy-infrastructure)
