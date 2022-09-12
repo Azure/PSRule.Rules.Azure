@@ -56,3 +56,35 @@ Describe 'Azure.Deployment' -Tag 'Deployment' {
         }
     }
 }
+
+
+Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
+    Context 'Conditions' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Deployments.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
+        }
+
+        It 'Azure.Deployment.AdminUsername' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Deployment.AdminUsername' };
+
+             # Fail
+             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+             $ruleResult | Should -Not -BeNullOrEmpty;
+             $ruleResult.Length | Should -Be 3;
+             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-A', 'nestedDeployment-D', 'nestedDeployment-E';
+ 
+             # Pass
+             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+             $ruleResult | Should -Not -BeNullOrEmpty;
+             $ruleResult.Length | Should -Be 4;
+             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-B', 'nestedDeployment-C', 'nestedDeployment-F', 'nestedDeployment-G';
+        }
+    }
+}
