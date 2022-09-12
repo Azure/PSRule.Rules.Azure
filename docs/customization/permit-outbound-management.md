@@ -70,5 +70,5 @@ Some key points to call out with the [suppression group][2] snippet include:
   [2]: https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_SuppressionGroups/
   [3]: https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/
 
-^[NSGs]: Network Security Groups
-^[NSG]: Network Security Group
+*[NSGs]: Network Security Groups
+*[NSG]: Network Security Group

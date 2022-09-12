@@ -40,11 +40,14 @@ Source expansion is supported with:
 
 - **Azure template and parameter files** &mdash; Azure templates are expanded from parameter files.
   Link parameter files to templates by metadata or naming convention.
-  See [Using templates](using-templates.md) for a detailed explanation of how to do this.
+  See [Using templates][1] for a detailed explanation of how to do this.
 - **Azure Bicep deployments** &mdash; Files with the `.bicep` extension are detected and expanded.
-  See [Using Bicep source](using-bicep.md) for a detailed explanation of how to do this.
+  See [Using Bicep source][2] for a detailed explanation of how to do this.
 - **Azure Bicep modules with tests** &mdash; Reusable Bicep modules can be expanded with tests.
-  See [Using Bicep source](using-bicep.md) for a detailed explanation of how to do this.
+  See [Using Bicep source][2] for a detailed explanation of how to do this.
+
+  [1]: using-templates.md
+  [2]: using-bicep.md
 
 ### Limitations
 
@@ -73,8 +76,6 @@ In addition, currently the following limitation apply to using Bicep source file
 - Expansion of Bicep source files times out after 5 seconds by default.
   The timeout can be overridden by setting the [AZURE_BICEP_FILE_EXPANSION_TIMEOUT][3] option.
 
-  [1]: using-templates.md#using-templates
-  [2]: setup/configuring-expansion.md#excluding-files
   [3]: setup/setup-bicep.md#configuring-timeout
 
 ## Strong type
