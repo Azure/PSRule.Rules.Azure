@@ -23,6 +23,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.19.2
+
 What's changed since v1.19.1:
 
 - Bug fixes:
