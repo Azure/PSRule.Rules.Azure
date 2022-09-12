@@ -620,7 +620,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = token.Value<DateTime>();
                 return true;
             }
-            value = default(DateTime);
+            value = default;
             return false;
         }
 
@@ -632,10 +632,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (TryDateTime(o, out value))
                 return true;
 
-            if (TryString(o, out var svalue) && DateTime.TryParse(svalue, AzureCulture, style, out value))
-                return true;
-
-            return false;
+            return TryString(o, out var svalue) &&
+                (DateTime.TryParseExact(svalue, "yyyyMMddTHHmmssZ", AzureCulture, style, out value) ||
+                DateTime.TryParse(svalue, AzureCulture, style, out value));
         }
 
         internal static bool TryJToken(object o, out JToken value)
