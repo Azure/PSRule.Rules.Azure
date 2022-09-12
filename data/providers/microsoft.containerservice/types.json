@@ -586,6 +586,12 @@
       "Microsoft.ContainerService/managedClusters/autoScalerProfile.expander": "properties.autoScalerProfile.expander",
       "Microsoft.ContainerService/managedClusters/autoUpgradeProfile": "properties.autoUpgradeProfile",
       "Microsoft.ContainerService/managedClusters/autoUpgradeProfile.upgradeChannel": "properties.autoUpgradeProfile.upgradeChannel",
+      "Microsoft.ContainerService/managedClusters/azureMonitorProfile": "properties.azureMonitorProfile",
+      "Microsoft.ContainerService/managedClusters/azureMonitorProfile.metrics": "properties.azureMonitorProfile.metrics",
+      "Microsoft.ContainerService/managedClusters/azureMonitorProfile.metrics.enabled": "properties.azureMonitorProfile.metrics.enabled",
+      "Microsoft.ContainerService/managedClusters/azureMonitorProfile.metrics.kubeStateMetrics": "properties.azureMonitorProfile.metrics.kubeStateMetrics",
+      "Microsoft.ContainerService/managedClusters/azureMonitorProfile.metrics.kubeStateMetrics.metricAnnotationsAllowList": "properties.azureMonitorProfile.metrics.kubeStateMetrics.metricAnnotationsAllowList",
+      "Microsoft.ContainerService/managedClusters/azureMonitorProfile.metrics.kubeStateMetrics.metricLabelsAllowlist": "properties.azureMonitorProfile.metrics.kubeStateMetrics.metricLabelsAllowlist",
       "Microsoft.ContainerService/managedClusters/azurePortalFQDN": "properties.azurePortalFQDN",
       "Microsoft.ContainerService/managedClusters/creationData": "properties.creationData",
       "Microsoft.ContainerService/managedClusters/creationData.sourceResourceId": "properties.creationData.sourceResourceId",
@@ -723,6 +729,11 @@
       "Microsoft.ContainerService/managedClusters/securityProfile.defender.logAnalyticsWorkspaceResourceId": "properties.securityProfile.defender.logAnalyticsWorkspaceResourceId",
       "Microsoft.ContainerService/managedClusters/securityProfile.defender.securityMonitoring": "properties.securityProfile.defender.securityMonitoring",
       "Microsoft.ContainerService/managedClusters/securityProfile.defender.securityMonitoring.enabled": "properties.securityProfile.defender.securityMonitoring.enabled",
+      "Microsoft.ContainerService/managedClusters/securityProfile.imageCleaner": "properties.securityProfile.imageCleaner",
+      "Microsoft.ContainerService/managedClusters/securityProfile.imageCleaner.enabled": "properties.securityProfile.imageCleaner.enabled",
+      "Microsoft.ContainerService/managedClusters/securityProfile.imageCleaner.intervalHours": "properties.securityProfile.imageCleaner.intervalHours",
+      "Microsoft.ContainerService/managedClusters/securityProfile.nodeRestriction": "properties.securityProfile.nodeRestriction",
+      "Microsoft.ContainerService/managedClusters/securityProfile.nodeRestriction.enabled": "properties.securityProfile.nodeRestriction.enabled",
       "Microsoft.ContainerService/managedClusters/securityProfile.workloadIdentity": "properties.securityProfile.workloadIdentity",
       "Microsoft.ContainerService/managedClusters/securityProfile.workloadIdentity.enabled": "properties.securityProfile.workloadIdentity.enabled",
       "Microsoft.ContainerService/managedClusters/servicePrincipalProfile": "properties.servicePrincipalProfile",
@@ -756,7 +767,11 @@
       "Microsoft.ContainerService/managedClusters/windowsProfile.licenseType": "properties.windowsProfile.licenseType",
       "Microsoft.ContainerService/managedClusters/workloadAutoScalerProfile": "properties.workloadAutoScalerProfile",
       "Microsoft.ContainerService/managedClusters/workloadAutoScalerProfile.keda": "properties.workloadAutoScalerProfile.keda",
-      "Microsoft.ContainerService/managedClusters/workloadAutoScalerProfile.keda.enabled": "properties.workloadAutoScalerProfile.keda.enabled"
+      "Microsoft.ContainerService/managedClusters/workloadAutoScalerProfile.keda.enabled": "properties.workloadAutoScalerProfile.keda.enabled",
+      "Microsoft.ContainerService/managedClusters/workloadAutoScalerProfile.verticalPodAutoscaler": "properties.workloadAutoScalerProfile.verticalPodAutoscaler",
+      "Microsoft.ContainerService/managedClusters/workloadAutoScalerProfile.verticalPodAutoscaler.controlledValues": "properties.workloadAutoScalerProfile.verticalPodAutoscaler.controlledValues",
+      "Microsoft.ContainerService/managedClusters/workloadAutoScalerProfile.verticalPodAutoscaler.enabled": "properties.workloadAutoScalerProfile.verticalPodAutoscaler.enabled",
+      "Microsoft.ContainerService/managedClusters/workloadAutoScalerProfile.verticalPodAutoscaler.updateMode": "properties.workloadAutoScalerProfile.verticalPodAutoscaler.updateMode"
     },
     "resourceType": "managedClusters",
     "apiVersions": [
@@ -1024,6 +1039,23 @@
       "West US 3"
     ],
     "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ContainerService/fleets/hubProfile": "properties.hubProfile",
+      "Microsoft.ContainerService/fleets/hubProfile.dnsPrefix": "properties.hubProfile.dnsPrefix",
+      "Microsoft.ContainerService/fleets/hubProfile.fqdn": "properties.hubProfile.fqdn",
+      "Microsoft.ContainerService/fleets/hubProfile.kubernetesVersion": "properties.hubProfile.kubernetesVersion",
+      "Microsoft.ContainerService/fleets/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "fleets"
+  },
+  {
+    "aliases": {
+      "Microsoft.ContainerService/fleets/members/clusterResourceId": "properties.clusterResourceId",
+      "Microsoft.ContainerService/fleets/members/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "fleets/members"
   },
   {
     "aliases": {
