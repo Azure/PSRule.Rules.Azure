@@ -166,13 +166,15 @@ Import analysis results into Azure Monitor with Azure Pipelines by:
   [9]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
   [10]: https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups
 
-## Sample queries
+## Samples
 
-Continue reading for some sample queries you can try out Azure Monitor integration.
+Continue reading for some sample resources you can try once this integration is setup Azure Monitor integration.
 
-### Results with annotations
+### Log Analytics Queries
 
-```kql
+#### Results with annotations
+
+```kql title="Kusto"
 // Show extended info
 PSRule_CL
 | where TimeGenerated > ago(30d)
@@ -180,9 +182,9 @@ PSRule_CL
 | extend Link = tostring(parse_json(Annotations_s).["online version"])
 ```
 
-### Summarize results by run
+#### Summarize results by run
 
-```kql
+```kql title="Kusto"
 // Group by run
 PSRule_CL
 | where TimeGenerated > ago(30d)
@@ -191,8 +193,21 @@ PSRule_CL
 
 *[SIEM]: security information event management
 
-### Querying The Data
+#### Querying The Data
 
 Once the results have been published to the Log Analytics workspace, they can be queried by executing
 results against the `PSRule_CL` table (under Custom Logs). For more information on how to write Log
-Analytics querys, review the [Log Analytics tutortial](https://docs.microsoft.com/azure/azure-monitor/logs/log-analytics-tutorial)
+Analytics querys, review the [Log Analytics tutortial][11].
+
+  [11]: https://docs.microsoft.com/azure/azure-monitor/logs/log-analytics-tutorial
+
+### Workbook
+
+[:octicons-code-square-24: Workbook][13]
+
+A [sample Azure Monitor Workbook][13] is available in the PSRule for Azure GitHub repository.
+This workbook can be imported directly into Azure Monitor and used as a foundation to build from.
+Review the [Workbook creation tutorial][12] for instructions on how to work with the sample Workbook.
+
+  [12]: https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-create-workbook
+  [13]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/setup/workbook.json

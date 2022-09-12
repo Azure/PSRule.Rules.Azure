@@ -23,15 +23,52 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.19.0:
+- New rules:
+  - AKS:
+    - Check clusters use Ephemeral OS disk by @bengeset96.
+      [#1618](https://github.com/Azure/PSRule.Rules.Azure/issues/1618)
 
+What's changed since pre-release v1.20.0-B0004:
+
+- New rules:
+  - CDN:
+    - Check CDN profile uses Front Door Standard or Premium tier by @bengeset96.
+      [#1612](https://github.com/Azure/PSRule.Rules.Azure/issues/1612)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.23.8` by @BernieWhite.
+      [#1627](https://github.com/Azure/PSRule.Rules.Azure/issues/1627)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+  - Event Grid:
+    - Promoted `Azure.EventGrid.DisableLocalAuth` to GA rule set by @BernieWhite.
+      [#1628](https://github.com/Azure/PSRule.Rules.Azure/issues/1628)
+  - Key Vault:
+    - Promoted `Azure.KeyVault.AutoRotationPolicy` to GA rule set by @BernieWhite.
+      [#1629](https://github.com/Azure/PSRule.Rules.Azure/issues/1629)
+- Engineering:
+  - Bump PSRule to v2.4.0.
+    [#1620](https://github.com/Azure/PSRule.Rules.Azure/pull/1620)
+
+## v1.20.0-B0004 (pre-release)
+
+What's changed since v1.19.1:
+
+- New rules:
+  - Azure Resources:
+    - Check that nested deployments securely pass through administrator usernames by @ms-sambell.
+      [#1479](https://github.com/Azure/PSRule.Rules.Azure/issues/1479)
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.3.1.
     [#1603](https://github.com/Azure/PSRule.Rules.Azure/pull/1603)
-- New rules:
-  - Azure Resources:
-    - Check that nested deployments securely pass through administrator usernames @ms-sambell.
-      [#1479](https://github.com/Azure/PSRule.Rules.Azure/issues/1479)
+
+## v1.19.1
+
+What's changed since v1.19.0:
+
+- Bug fixes:
+  - Fixed `Azure.VNET.UseNSGs` is missing exceptions by @BernieWhite.
+    [#1609](https://github.com/Azure/PSRule.Rules.Azure/issues/1609)
+    - Added exclusions for `RouteServerSubnet` and any subnet with a dedicated HSM delegation.
 
 ## v1.19.0
 
