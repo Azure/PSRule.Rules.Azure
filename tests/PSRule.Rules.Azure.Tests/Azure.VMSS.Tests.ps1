@@ -233,5 +233,25 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Outcome | Should -Be 'Fail';
         }
+
+        It 'Azure.VMSS.DisablePasswordAuthentication' {
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.DisablePasswordAuthentication' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vmss-02', 'vmss-03';
+
+            $ruleResult[0].Reason | Should -BeExactly "The virtual machine scale set 'vmss-002' should have password authentication disabled.";
+            $ruleResult[1].Reason | Should -BeExactly "The virtual machine scale set 'vmss-003' should have password authentication disabled.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vmss-01';
+        }
     }
 }

@@ -44,4 +44,23 @@ Rule 'Azure.VMSS.ComputerName' -Ref 'AZR-000262' -Type 'Microsoft.Compute/virtua
     Match 'Properties.virtualMachineProfile.osProfile.computerNamePrefix' $matchExpression
 }
 
+# Synopsis: Use SSH keys instead of common credentials to secure virtual machine scale sets against malicious activities.
+Rule 'Azure.VMSS.DisablePasswordAuthentication' -Ref 'AZR-000288' -Type 'Microsoft.Compute/virtualMachineScaleSets' -If { IsLinuxVMSS } -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+    $Assert.In($TargetObject, 'properties.virtualMachineProfile.OsProfile.linuxConfiguration.disablePasswordAuthentication', $True).
+    Reason($LocalizedData.VMSSDisablePasswordAuthentication, $TargetObject.name)
+}
+
 #endregion Virtual machine scale set
+
+#region Helper functions
+
+function global:IsLinuxVMSS {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        return $Assert.HasField($TargetObject, 'properties.virtualMachineProfile.OsProfile.linuxConfiguration')
+    }
+}
+
+#endregion Helper functions

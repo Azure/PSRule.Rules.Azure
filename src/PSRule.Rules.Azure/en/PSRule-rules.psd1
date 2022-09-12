@@ -63,4 +63,5 @@
     # DeprecatedSupportsTags = "The 'SupportsTags' PowerShell function has been replaced with the selector 'Azure.Resource.SupportsTags'. The 'SupportsTags' function is deprecated and will no longer work in the next major version. Please update your PowerShell rules to the selector instead. See https://aka.ms/ps-rule-azure/upgrade."
     KeyVaultAutoRotationPolicy = "The key ({0}) should enable a auto-rotation policy."
     ReplicaNotFound = "A replica in a secondary region was not found."
+    VMSSDisablePasswordAuthentication = "The virtual machine scale set '{0}' should have password authentication disabled."
 }
