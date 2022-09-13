@@ -236,7 +236,7 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
 
         It 'Azure.VMSS.PublicKey' {
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.VMSS.json';
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.PublicKey' };
 
             # Fail
