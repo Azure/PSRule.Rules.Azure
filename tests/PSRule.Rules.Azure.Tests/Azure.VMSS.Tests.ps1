@@ -48,8 +48,8 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'vmss-001';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-02', 'vmss-03';
         }
 
         It 'Azure.VMSS.ComputerName' {
@@ -62,8 +62,8 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'vmss-001';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-02', 'vmss-03';
         }
     }
 
@@ -235,6 +235,7 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
         }
 
         It 'Azure.VMSS.PublicKey' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VMSS.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.PublicKey' };
 
