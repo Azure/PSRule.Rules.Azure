@@ -18,9 +18,6 @@ Linux virtual machine scale sets should have password authentication disabled to
 
 A common tactic observed used by adversaries against customers running Linux Virtual Machines (VMs) in Azure is password-based attacks.
 
-[Azure security baseline for Linux Virtual Machines](https://docs.microsoft.com/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline)
-[Detailed steps: Create and manage SSH keys for authentication to a Linux VM in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed)
-
 ## RECOMMENDATION
 
 Linux virtual machine scale sets should have password authentication disabled and instead use SSH keys.
