@@ -234,9 +234,9 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult.Outcome | Should -Be 'Fail';
         }
 
-        It 'Azure.VMSS.DisablePasswordAuthentication' {
+        It 'Azure.VMSS.PublicKey' {
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.DisablePasswordAuthentication' };
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.PublicKey' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
