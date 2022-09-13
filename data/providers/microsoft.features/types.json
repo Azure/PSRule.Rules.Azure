@@ -73,5 +73,29 @@
     ],
     "locations": [],
     "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/approvalType": "properties.approvalType",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/authorizationProfile": "properties.authorizationProfile",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/authorizationProfile.approvedTime": "properties.authorizationProfile.approvedTime",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/authorizationProfile.approver": "properties.authorizationProfile.approver",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/authorizationProfile.requestedTime": "properties.authorizationProfile.requestedTime",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/authorizationProfile.requester": "properties.authorizationProfile.requester",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/authorizationProfile.requesterObjectId": "properties.authorizationProfile.requesterObjectId",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/description": "properties.description",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/displayName": "properties.displayName",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/documentationLink": "properties.documentationLink",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/featureName": "properties.featureName",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/metadata": "properties.metadata",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/providerNamespace": "properties.providerNamespace",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/registrationDate": "properties.registrationDate",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/releaseDate": "properties.releaseDate",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/shouldFeatureDisplayInPortal": "properties.shouldFeatureDisplayInPortal",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/state": "properties.state",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/subscriptionId": "properties.subscriptionId",
+      "Microsoft.Features/featureProviders/subscriptionFeatureRegistrations/tenantId": "properties.tenantId"
+    },
+    "resourceType": "featureproviders/subscriptionfeatureregistrations"
   }
 ]

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-07-15-preview",
       "2022-05-05-preview",
       "2022-04-12-preview",
       "2022-03-02-preview"
@@ -14,6 +15,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2022-07-15-preview",
       "2022-05-05-preview",
       "2022-04-12-preview",
       "2022-03-02-preview"
@@ -27,6 +29,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-07-15-preview",
       "2022-05-05-preview",
       "2022-04-12-preview",
       "2022-03-02-preview"

@@ -37,6 +37,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -73,6 +74,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -122,6 +124,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -129,148 +132,7 @@
       "West US",
       "West US 2"
     ],
-    "zoneMappings": [
-      {
-        "location": "Australia East",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Brazil South",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Canada Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Central US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "East Asia",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "East US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "East US 2",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "France Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Germany West Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Japan East",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "North Central US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "North Europe",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "South Africa North",
-        "zones": []
-      },
-      {
-        "location": "South Central US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Southeast Asia",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "UK South",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "West Europe",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "West US 2",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      }
-    ]
+    "zoneMappings": null
   },
   {
     "aliases": null,
@@ -299,6 +161,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -335,6 +198,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -370,6 +234,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -407,6 +272,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -443,6 +309,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -477,6 +344,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -511,6 +379,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -547,6 +416,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -583,6 +453,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -618,6 +489,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -653,6 +525,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -688,6 +561,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -724,6 +598,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -760,6 +635,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -796,6 +672,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -832,6 +709,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -868,6 +746,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -904,6 +783,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -939,6 +819,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -975,6 +856,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -1011,6 +893,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -1047,6 +930,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",

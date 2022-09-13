@@ -26,6 +26,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since pre-release v1.20.0-B0004:
 
 - New rules:
+  - AKS:
+    - Check clusters use Ephemeral OS disk by @bengeset96.
+      [#1618](https://github.com/Azure/PSRule.Rules.Azure/issues/1618)
   - CDN:
     - Check CDN profile uses Front Door Standard or Premium tier by @bengeset96.
       [#1612](https://github.com/Azure/PSRule.Rules.Azure/issues/1612)
@@ -43,6 +46,13 @@ What's changed since pre-release v1.20.0-B0004:
 - Engineering:
   - Bump PSRule to v2.4.0.
     [#1620](https://github.com/Azure/PSRule.Rules.Azure/pull/1620)
+  - Updated provider data for analysis.
+    [#1605](https://github.com/Azure/PSRule.Rules.Azure/pull/1605)
+- Bug fixes:
+  - Fixed function `dateTimeAdd` errors handling `utcNow` output by @BernieWhite.
+    [#1637](https://github.com/Azure/PSRule.Rules.Azure/issues/1637)
+  - Fixed inconclusive failure of `Azure.Deployment.AdminUsername` by @BernieWhite.
+    [#1631](https://github.com/Azure/PSRule.Rules.Azure/issues/1631)
 
 ## v1.20.0-B0004 (pre-release)
 
