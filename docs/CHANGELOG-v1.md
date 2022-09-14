@@ -66,6 +66,14 @@ What's changed since v1.19.1:
   - Bump Microsoft.NET.Test.Sdk to v17.3.1.
     [#1603](https://github.com/Azure/PSRule.Rules.Azure/pull/1603)
 
+## v1.19.2
+
+What's changed since v1.19.1:
+
+- Bug fixes:
+  - Fixed function `dateTimeAdd` errors handling `utcNow` output by @BernieWhite.
+    [#1637](https://github.com/Azure/PSRule.Rules.Azure/issues/1637)
+
 ## v1.19.1
 
 What's changed since v1.19.0:
