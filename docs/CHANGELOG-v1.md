@@ -23,10 +23,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-- New rules:
-  - VMSS:
-    - Check Linux VMSS has disabled password authentication by @bengeset96.
-      [#1635](https://github.com/Azure/PSRule.Rules.Azure/issues/1635)
+## v1.20.0-B0028 (pre-release)
 
 What's changed since pre-release v1.20.0-B0004:
 
@@ -37,6 +34,9 @@ What's changed since pre-release v1.20.0-B0004:
   - CDN:
     - Check CDN profile uses Front Door Standard or Premium tier by @bengeset96.
       [#1612](https://github.com/Azure/PSRule.Rules.Azure/issues/1612)
+  - VMSS:
+    - Check Linux VMSS has disabled password authentication by @bengeset96.
+      [#1635](https://github.com/Azure/PSRule.Rules.Azure/issues/1635)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use latest stable version `1.23.8` by @BernieWhite.
