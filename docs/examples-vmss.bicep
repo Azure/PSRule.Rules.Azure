@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 // An example simple Linux VMSS
 
 resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
