@@ -48,8 +48,8 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'vmss-001';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002', 'vmss-003';
         }
 
         It 'Azure.VMSS.ComputerName' {
@@ -62,8 +62,8 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'vmss-001';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002', 'vmss-003';
         }
     }
 
@@ -232,6 +232,27 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VMSS.ComputerName';
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Outcome | Should -Be 'Fail';
+        }
+
+        It 'Azure.VMSS.PublicKey' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VMSS.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.PublicKey' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vmss-002', 'vmss-003';
+
+            $ruleResult[0].Reason | Should -BeExactly "The virtual machine scale set 'vmss-002' should have password authentication disabled.";
+            $ruleResult[1].Reason | Should -BeExactly "The virtual machine scale set 'vmss-003' should have password authentication disabled.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001';
         }
     }
 }
