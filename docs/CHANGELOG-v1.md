@@ -23,6 +23,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - VMSS:
+    - Check Linux VMSS has disabled password authentication by @bengeset96.
+      [#1635](https://github.com/Azure/PSRule.Rules.Azure/issues/1635)
+
 What's changed since pre-release v1.20.0-B0004:
 
 - New rules:
