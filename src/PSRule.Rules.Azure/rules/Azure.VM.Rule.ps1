@@ -5,6 +5,8 @@
 # Validation rules for Azure Virtual Machines
 #
 
+Import-Module .\LinuxOffers.ps1
+
 #region Virtual machine
 
 # Synopsis: Virtual machines should use managed disks
@@ -118,6 +120,25 @@ Rule 'Azure.VM.ComputerName' -Ref 'AZR-000249' -Type 'Microsoft.Compute/virtualM
     # Alphanumerics and hyphens
     # Start and end with alphanumeric
     Match 'Properties.osProfile.computerName' $matchExpression
+}
+
+# Synopsis: TODO
+Rule 'Azure.VM.LinuxVMMustUseSSHKey' -Ref 'AZR-TODO' -Level Error -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06' } { # TODO check ruleSet    
+    $imageReference = $TargetObject.Properties.virtualMachineProfile.storageProfile.imageReference
+
+    $isLinuxMachine = $False
+    foreach ($linuxOffer in $LinuxOffers) {
+        if ($linuxOffer.item1 -ieq $imageReference.publisher -and $linuxOffer.item2 -ieq $imageReference.offer) {
+            $isLinuxMachine = $True
+            return
+        }
+    }
+
+    if ($isLinuxMachine) {
+        $Assert.HasFieldValue($TargetObject, 'Properties.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication', $True)
+    } else {
+        $Assert.Pass()
+    }
 }
 
 #endregion Virtual machine
