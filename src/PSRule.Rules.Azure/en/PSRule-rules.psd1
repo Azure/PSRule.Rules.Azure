@@ -14,6 +14,7 @@
     AKSAvailabilityZone = "The agent pool ({0}) deployed to region ({1}) should use following availability zones [{2}]."
     AKSAuditLogs = "The diagnostic setting ({0}) logs should enable at least one of (kube-audit, kube-audit-admin) and guard."
     AKSPlatformLogs = "The diagnostic setting ({0}) logs should enable ({1})."
+    AKSEphemeralOSDiskNotConfigured = "The OS disk type 'Managed' should be of type 'Ephemeral'."
     SubnetNSGNotConfigured = "The subnet ({0}) has no NSG associated."
     ServiceUrlNotHttps = "The service URL for '{0}' is not a HTTPS endpoint."
     BackendUrlNotHttps = "The backend URL for '{0}' is not a HTTPS endpoint."
@@ -63,4 +64,5 @@
     # DeprecatedSupportsTags = "The 'SupportsTags' PowerShell function has been replaced with the selector 'Azure.Resource.SupportsTags'. The 'SupportsTags' function is deprecated and will no longer work in the next major version. Please update your PowerShell rules to the selector instead. See https://aka.ms/ps-rule-azure/upgrade."
     KeyVaultAutoRotationPolicy = "The key ({0}) should enable a auto-rotation policy."
     ReplicaNotFound = "A replica in a secondary region was not found."
+    VMSSPublicKey = "The virtual machine scale set '{0}' should have password authentication disabled."
 }

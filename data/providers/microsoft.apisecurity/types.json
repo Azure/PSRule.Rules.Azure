@@ -1,8 +1,9 @@
 [
   {
     "aliases": null,
-    "resourceType": "apiCollectionDetails",
+    "resourceType": "apiCollections",
     "apiVersions": [
+      "2022-09-12-privatepreview",
       "2022-03-02-privatepreview"
     ],
     "locations": [],
@@ -10,7 +11,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "apiCollections",
+    "resourceType": "apiCollections/apiCollectionDetails",
     "apiVersions": [
       "2022-03-02-privatepreview"
     ],
@@ -59,6 +60,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2022-09-12-privatepreview",
       "2022-03-02-privatepreview",
       "2021-03-01-preview"
     ],

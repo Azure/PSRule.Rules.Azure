@@ -441,6 +441,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-08-09-privatepreview",
       "2022-07-05-preview",
       "2022-06-03-privatepreview",
       "2022-04-01-preview",

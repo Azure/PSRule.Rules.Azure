@@ -23,15 +23,41 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.20.0-B0028 (pre-release)
+
 What's changed since pre-release v1.20.0-B0004:
 
 - New rules:
+  - AKS:
+    - Check clusters use Ephemeral OS disk by @bengeset96.
+      [#1618](https://github.com/Azure/PSRule.Rules.Azure/issues/1618)
   - CDN:
-    - Check CDN profile used Front Door Standard or Premium tier by @bengeset96.
+    - Check CDN profile uses Front Door Standard or Premium tier by @bengeset96.
       [#1612](https://github.com/Azure/PSRule.Rules.Azure/issues/1612)
+  - VMSS:
+    - Check Linux VMSS has disabled password authentication by @bengeset96.
+      [#1635](https://github.com/Azure/PSRule.Rules.Azure/issues/1635)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.23.8` by @BernieWhite.
+      [#1627](https://github.com/Azure/PSRule.Rules.Azure/issues/1627)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+  - Event Grid:
+    - Promoted `Azure.EventGrid.DisableLocalAuth` to GA rule set by @BernieWhite.
+      [#1628](https://github.com/Azure/PSRule.Rules.Azure/issues/1628)
+  - Key Vault:
+    - Promoted `Azure.KeyVault.AutoRotationPolicy` to GA rule set by @BernieWhite.
+      [#1629](https://github.com/Azure/PSRule.Rules.Azure/issues/1629)
 - Engineering:
   - Bump PSRule to v2.4.0.
     [#1620](https://github.com/Azure/PSRule.Rules.Azure/pull/1620)
+  - Updated provider data for analysis.
+    [#1605](https://github.com/Azure/PSRule.Rules.Azure/pull/1605)
+- Bug fixes:
+  - Fixed function `dateTimeAdd` errors handling `utcNow` output by @BernieWhite.
+    [#1637](https://github.com/Azure/PSRule.Rules.Azure/issues/1637)
+  - Fixed inconclusive failure of `Azure.Deployment.AdminUsername` by @BernieWhite.
+    [#1631](https://github.com/Azure/PSRule.Rules.Azure/issues/1631)
 
 ## v1.20.0-B0004 (pre-release)
 
@@ -44,6 +70,14 @@ What's changed since v1.19.1:
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.3.1.
     [#1603](https://github.com/Azure/PSRule.Rules.Azure/pull/1603)
+
+## v1.19.2
+
+What's changed since v1.19.1:
+
+- Bug fixes:
+  - Fixed function `dateTimeAdd` errors handling `utcNow` output by @BernieWhite.
+    [#1637](https://github.com/Azure/PSRule.Rules.Azure/issues/1637)
 
 ## v1.19.1
 

@@ -62,8 +62,10 @@ metadata:
   name: Azure.EventGrid.DisableLocalAuth
   ref: AZR-000100
   tags:
-    release: preview
-    ruleSet: 2021_12
+    release: 'GA'
+    ruleSet: '2022_09'
+    Azure.WAF/pillar: 'Security'
+    Azure.ASB.v3/control: 'IM-1'
 spec:
   type:
   - Microsoft.EventGrid/topics

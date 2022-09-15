@@ -97,7 +97,7 @@ Rule 'Azure.KeyVault.KeyName' -Ref 'AZR-000122' -Type 'Microsoft.KeyVault/vaults
 }
 
 # Synopsis: Key Vault keys should have auto-rotation enabled.
-Rule 'Azure.KeyVault.AutoRotationPolicy' -Ref 'AZR-000123' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/keys' -Tag @{ release = 'preview'; ruleSet = '2022_03'; } {
+Rule 'Azure.KeyVault.AutoRotationPolicy' -Ref 'AZR-000123' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/keys' -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Security'; 'Azure.ASB.v3/control' = 'IM-3' } {
     $keys = @($TargetObject);
 
     if ($PSRule.TargetType -eq 'Microsoft.KeyVault/vaults') {

@@ -62,7 +62,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.TargetName | Should -BeIn 'cluster-B';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "Path Properties.kubernetesVersion: The version '1.13.8' does not match the constraint '>=1.22.6'.";
+            $ruleResult[0].Reason | Should -BeExactly "Path Properties.kubernetesVersion: The version '1.13.8' does not match the constraint '>=1.23.8'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -986,7 +986,7 @@ Describe 'Azure.AKS' -Tag AKS {
         It 'Azure.AKS.Version - HashTable option' {
             # With AZURE_AKS_CLUSTER_MINIMUM_VERSION
             $option = @{
-                'Configuration.AZURE_AKS_CLUSTER_MINIMUM_VERSION' = '1.23.5'
+                'Configuration.AZURE_AKS_CLUSTER_MINIMUM_VERSION' = '1.24.3'
             }
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $option
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.Version' };
@@ -997,7 +997,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 11;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
             $ruleResult.Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.23.5'.";
+            $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.24.3'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -1008,7 +1008,7 @@ Describe 'Azure.AKS' -Tag AKS {
             # With Azure_AKSMinimumVersion
             $option = @{
                 'Configuration.AZURE_AKS_CLUSTER_MINIMUM_VERSION' = '1.0.0'
-                'Configuration.Azure_AKSMinimumVersion'           = '1.23.5'
+                'Configuration.Azure_AKSMinimumVersion'           = '1.24.3'
             }
             $invokeOldParams = @{
                 Baseline      = 'Azure.All'
@@ -1030,7 +1030,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 11;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
             $ruleResult.Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.23.5'.";
+            $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.24.3'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -1050,7 +1050,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 11;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
             $ruleResult.Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.23.5'.";
+            $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.24.3'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -1079,7 +1079,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 11;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
             $ruleResult.Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.23.5'.";
+            $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.24.3'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -1329,6 +1329,26 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'cluster-K', 'cluster-L';  
+        }
+
+        It 'Azure.AKS.EphemeralOSDisk' {
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.EphemeralOSDisk' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-F', 'cluster-K';
+
+            $ruleResult[0].Reason | Should -BeExactly "The OS disk type 'Managed' should be of type 'Ephemeral'.";
+            $ruleResult[1].Reason | Should -BeExactly "The OS disk type 'Managed' should be of type 'Ephemeral'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'system', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-L';
         }
     }
 }

@@ -82,8 +82,22 @@
       "2017-04-01"
     ],
     "locations": [
+      "Australia Southeast",
+      "Canada Central",
+      "East Asia",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Korea South",
       "North Central US",
-      "West Central US"
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West US 2"
     ],
     "zoneMappings": null
   },

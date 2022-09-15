@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-04-15-preview",
       "2022-04-01-preview",
       "2021-12-01-preview",
@@ -26,11 +27,30 @@
     },
     "resourceType": "loadtests",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-04-15-preview",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-09-01-preview",
       "2020-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "loadtests/outboundNetworkDependenciesEndpoints",
+    "apiVersions": [
+      "2022-08-01-preview"
     ],
     "locations": [
       "Australia East",
@@ -48,6 +68,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-04-15-preview",
       "2022-04-01-preview",
       "2021-12-01-preview",
@@ -62,6 +83,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-04-15-preview",
       "2022-04-01-preview",
       "2021-12-01-preview",
@@ -83,8 +105,42 @@
   },
   {
     "aliases": null,
+    "resourceType": "Locations/Quotas",
+    "apiVersions": [
+      "2022-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-08-01-preview",
+      "2022-04-15-preview",
+      "2022-04-01-preview",
+      "2021-12-01-preview",
+      "2021-11-01-preview",
+      "2021-09-01-preview",
+      "2020-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registeredSubscriptions",
+    "apiVersions": [
+      "2022-08-01-preview",
       "2022-04-15-preview",
       "2022-04-01-preview",
       "2021-12-01-preview",
