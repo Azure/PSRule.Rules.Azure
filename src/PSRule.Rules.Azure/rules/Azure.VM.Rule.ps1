@@ -5,8 +5,6 @@
 # Validation rules for Azure Virtual Machines
 #
 
-Import-Module .\LinuxOffers.ps1
-
 #region Virtual machine
 
 # Synopsis: Virtual machines should use managed disks
@@ -70,7 +68,7 @@ Rule 'Azure.VM.AcceleratedNetworking' -Ref 'AZR-000244' -If { SupportsAccelerate
 }
 
 # Synopsis: Linux VMs should use public key pair
-Rule 'Azure.VM.PublicKey' -Ref 'AZR-000245' -If { IsLinuxOS } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VM.PublicKey' -Ref 'AZR-000245' -If { VMHasLinuxOS } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.osProfile.linuxConfiguration.disablePasswordAuthentication', $True)
 }
 
@@ -120,25 +118,6 @@ Rule 'Azure.VM.ComputerName' -Ref 'AZR-000249' -Type 'Microsoft.Compute/virtualM
     # Alphanumerics and hyphens
     # Start and end with alphanumeric
     Match 'Properties.osProfile.computerName' $matchExpression
-}
-
-# Synopsis: TODO
-Rule 'Azure.VM.LinuxVMMustUseSSHKey' -Ref 'AZR-TODO' -Level Error -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06' } { # TODO check ruleSet    
-    $imageReference = $TargetObject.Properties.virtualMachineProfile.storageProfile.imageReference
-
-    $isLinuxMachine = $False
-    foreach ($linuxOffer in $LinuxOffers) {
-        if ($linuxOffer.item1 -ieq $imageReference.publisher -and $linuxOffer.item2 -ieq $imageReference.offer) {
-            $isLinuxMachine = $True
-            return
-        }
-    }
-
-    if ($isLinuxMachine) {
-        $Assert.HasFieldValue($TargetObject, 'Properties.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication', $True)
-    } else {
-        $Assert.Pass()
-    }
 }
 
 #endregion Virtual machine

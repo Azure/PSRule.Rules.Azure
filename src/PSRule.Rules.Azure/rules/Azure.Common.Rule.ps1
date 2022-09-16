@@ -178,7 +178,25 @@ function global:SupportsHybridUse {
     }
 }
 
-function global:IsLinuxOS {
+function global:IsLinuxOS { # TODO doesn't need to be global
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ($imageReference)
+    process {
+        $isLinuxOS = $False
+        
+        foreach ($linuxOffer in $LinuxOffers) {
+            if ($linuxOffer.item1 -ieq $imageReference.publisher -and $linuxOffer.item2 -ieq $imageReference.offer) {
+                $isLinuxOS = $True
+                break
+            }
+        }
+
+        return $isLinuxOS
+    }
+ }
+ 
+function global:VMHasLinuxOS {
     [CmdletBinding()]
     [OutputType([System.Boolean])]
     param ()
@@ -186,7 +204,21 @@ function global:IsLinuxOS {
         if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachines') {
             return $False;
         }
-        return $TargetObject.Properties.storageProfile.osDisk.osType -eq 'Linux';
+
+        return IsLinuxOS($TargetObject.Properties.storageProfile.imageReference)
+    }
+}
+
+function global:VMSSHasLinuxOS {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachineScaleSets') {
+            return $False;
+        }
+
+        return IsLinuxOS($TargetObject.Properties.virtualMachineProfile.storageProfile.imageReference)
     }
 }
 

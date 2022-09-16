@@ -81,7 +81,7 @@ function CopyModuleFiles {
     process {
         $sourcePath = Resolve-Path -Path $Path;
 
-        Get-ChildItem -Path $sourcePath -Recurse -File -Include *.ps1, *.psm1, *.psd1, *.ps1xml, *.yaml | Where-Object -FilterScript {
+        Get-ChildItem -Path $sourcePath -Recurse -File -Include *.ps1, *.psm1, *.psd1, *.ps1xml, *.yaml, *.txt | Where-Object -FilterScript {
             ($_.FullName -notmatch '(\.(cs|csproj)|(\\|\/)(obj|bin))')
         } | ForEach-Object -Process {
             $filePath = $_.FullName.Replace($sourcePath, $destinationPath);
