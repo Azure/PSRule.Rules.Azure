@@ -23,6 +23,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.20.0-B0028:
+
+- Bug fixes:
+  - Fixed continue processing policy assignments on error by @BernieWhite.
+    [#1651](https://github.com/Azure/PSRule.Rules.Azure/issues/1651)
+
 ## v1.20.0-B0028 (pre-release)
 
 What's changed since pre-release v1.20.0-B0004:
