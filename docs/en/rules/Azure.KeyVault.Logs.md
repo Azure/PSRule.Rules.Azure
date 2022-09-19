@@ -74,6 +74,51 @@ For example:
 }
 ```
 
+### Configure with Bicep Template
+
+To deploy key vaults that pass this rule:
+
+- Deploy a diagnostic settings sub-resource.
+- Enable logging for the `AuditEvent` category.
+
+For example:
+
+```bicep
+param vaultName string = ''
+param location string = resourceGroup().location
+param workspaceId string = ''
+
+resource keyVaultResource 'Microsoft.KeyVault/vaults@2019-09-01' = {
+  name: vaultName
+  location: location
+  properties: {
+    accessPolicies: []
+    tenantId: subscription().tenantId
+    sku: {
+      name: 'standard'
+      family: 'A'
+    }
+  }
+}
+
+resource keyVaultInsightsResource 'Microsoft.KeyVault/vaults/providers/diagnosticSettings@2016-09-01' = {
+  name: '${vaultName}/Microsoft.Insights/service'
+  dependsOn: [
+    keyVaultResource
+  ]
+  location: location
+  properties: {
+    workspaceId: workspaceId
+    logs: [
+      {
+        category: 'AuditEvent'
+        enabled: true
+      }
+    ]
+  }
+}
+```
+
 ## LINKS
 
 - [Best practices to use Key Vault](https://docs.microsoft.com/azure/key-vault/general/best-practices)
