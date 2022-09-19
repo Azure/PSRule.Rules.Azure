@@ -16,12 +16,12 @@ Determine if there is an excessive number of permitted IP addresses set in the a
 ## DESCRIPTION
 
 Typically the number of IP address rules permitted through the firewall is minimal, with management connectivity from
-on-premises and cloud application connectivity the most common. This rule checks the IP addresses IP list
-(CIDR range of each IP provided) set in the SQL allowed address isn't excess.
+on-premises and cloud application connectivity the most common. This rule assesses the combined IP addresses from each
+Allowed IP firewall entry to check that the total allowed addresses is less than (10).
 
 ## RECOMMENDATION
 
-Reduce the size of the IP ranges set in the each allowed IP rule to less than (10) per entry (less than a /27).
+Reduce the size or count of the IP ranges set in the Firewall rules so that the total Allowed IPs are less than (10).
 
 ## Example
 
