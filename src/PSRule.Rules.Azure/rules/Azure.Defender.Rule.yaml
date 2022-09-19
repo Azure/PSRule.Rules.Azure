@@ -1,0 +1,31 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Azure Defender
+#
+
+#region Rules
+
+---
+# Synopsis: 
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Defender.Containers
+  ref: AZR-000289
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  level: Error
+  type:
+  - Microsoft.Security/pricings
+  condition:
+    allOf:
+      - name: '.'
+        equals: 'Containers'
+      - field: 'properties.pricingTier'
+        equals: 'Standard'
+    
+#endregion Rules

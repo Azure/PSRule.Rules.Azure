@@ -17,6 +17,14 @@
       "properties": {
         "pricingTier": "Standard"
       }
+    },
+    {
+      "type": "Microsoft.Security/pricings",
+      "apiVersion": "2022-03-01",
+      "name": "Containers",
+      "properties": {
+        "pricingTier": "Standard"
+      }
     }
   ]
 }
