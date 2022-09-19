@@ -14,12 +14,12 @@
       "2016-02-10-privatepreview"
     ],
     "locations": [
-      "Global",
-      "United States",
-      "Europe",
       "Asia Pacific",
       "Australia",
-      "Japan"
+      "Europe",
+      "Global",
+      "Japan",
+      "United States"
     ],
     "zoneMappings": null
   },
@@ -34,12 +34,12 @@
       "2016-02-10-privatepreview"
     ],
     "locations": [
-      "Global",
-      "United States",
-      "Europe",
       "Asia Pacific",
       "Australia",
-      "Japan"
+      "Europe",
+      "Global",
+      "Japan",
+      "United States"
     ],
     "zoneMappings": null
   },
@@ -55,12 +55,12 @@
       "2019-01-01-preview"
     ],
     "locations": [
-      "Global",
-      "United States",
-      "Europe",
       "Asia Pacific",
       "Australia",
-      "Japan"
+      "Europe",
+      "Global",
+      "Japan",
+      "United States"
     ],
     "zoneMappings": null
   },
@@ -74,12 +74,12 @@
       "2020-05-01-preview"
     ],
     "locations": [
-      "Global",
-      "United States",
-      "Europe",
       "Asia Pacific",
       "Australia",
-      "Japan"
+      "Europe",
+      "Global",
+      "Japan",
+      "United States"
     ],
     "zoneMappings": null
   },
@@ -98,12 +98,12 @@
       "2016-02-10-privatepreview"
     ],
     "locations": [
-      "Global",
-      "United States",
-      "Europe",
       "Asia Pacific",
       "Australia",
-      "Japan"
+      "Europe",
+      "Global",
+      "Japan",
+      "United States"
     ],
     "zoneMappings": null
   }

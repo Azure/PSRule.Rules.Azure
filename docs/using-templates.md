@@ -26,7 +26,7 @@ configuration:
 
 ## Linking templates
 
-PSRule for Azure automatically detects parameter files and uses the following logic to link templates.
+PSRule for Azure automatically detects parameter files and uses the following logic to link templates or Bicep modules.
 
 - **By metadata** &mdash; Check parameter file for a metadata link identifying the associated template.
 - **By naming convention** &mdash; Check for matching template files using file naming convention.
@@ -111,7 +111,7 @@ Additional benefits you get by using metadata links include:
     This doesn't affect the workings of the parameter file or deployment.
     If you like a detailed description continue reading [Troubleshooting][9].
 
-  [2]: setup/configuring-expansion.md#requiretemplatemetadatalink
+  [2]: setup/configuring-expansion.md#require-template-metadata-link
   [9]: troubleshooting.md
 
 ### By naming convention

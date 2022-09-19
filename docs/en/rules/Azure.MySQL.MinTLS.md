@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Data protection
+category: Encryption
 resource: Azure Database for MySQL
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.MinTLS/
 ---
@@ -30,4 +30,4 @@ Consider configuring the minimum supported TLS version to be 1.2.
 - [TLS enforcement in Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/concepts-ssl-connection-security#tls-enforcement-in-azure-database-for-mysql)
 - [Set TLS configurations for Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/howto-tls-configurations#set-tls-configurations-for-azure-database-for-mysql)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.dbformysql/servers#ServerPropertiesForCreate)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.dbformysql/servers#ServerPropertiesForCreate)

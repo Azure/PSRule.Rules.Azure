@@ -89,15 +89,21 @@ This will automatically install compatible versions of all dependencies.
 PSRule for Azure can be installed locally from the PowerShell Gallery using PowerShell.
 You can also use this option to install on CI workers that are not natively supported.
 
-The following platforms are supported:
+### PreRequisites
 
-- Windows PowerShell 5.1 with .NET Framework 4.7.2 or greater.
-- PowerShell 7.2 or greater on MacOS, Linux, and Windows.
+| Operating System | Tool | Overview | Installation Link |
+| ----- | ----- | ----- | ---  |
+| Windows | Windows PowerShell | Support for version 5.1 with .NET Framework 4.7.2 or greater. |  [link](https://dotnet.microsoft.com/download/dotnet-framework/net48) |
+| Windows, MacOS, Linux | PowerShell | Version 7.2 or greater is support. | [link](https://github.com/PowerShell/PowerShell#get-powershell) |
+| - | - | Multiple PowerShell modules are required (PlatyPS, Pester, PSScriptAnalyzer, PowerShellGet, PackageManagement, InvokeBuild, PSRule). | Installed when you run the `build.ps1` script |
+| - | .NET | .NET SDK v6 is required. | [link](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) |
+| - | Bicep CLI | PsRule depends on the Bicep CLI to decompile (expand) Bicep modules to ARM | Installed when you run the `build.ps1` script |
 
 To use PSRule for Azure, PSRule a separate PowerShell module must be installed.
 The required version will automatically be installed along-side PSRule for Azure.
 
-Additionally, exporting data from an subscription requires:
+Additionally, the exporting data from a subscription functionality requires the additional
+PowerShell modules:
 
 - Az.Accounts
 - Az.Resources
@@ -190,20 +196,6 @@ To use a pre-release version of PSRule for Azure add the `-AllowPrerelease` swit
     Install-Module -Name PSRule.Rules.Azure -Repository PSGallery -Scope AllUsers -AllowPrerelease
     ```
 
-### Building from source
-
-[:octicons-file-code-24: Source][6]
-
-PSRule for Azure is provided as open source on GitHub.
-To build PSRule for Azure from source code:
-
-1. Clone the GitHub [repository][6].
-2. Run `./build.ps1` from a PowerShell terminal in the cloned path.
-
-This build script will compile the module and documentation then output the result into `out/modules/PSRule.Rules.Azure`.
-
-  [6]: https://github.com/Azure/PSRule.Rules.Azure.git
-
 #### Development dependencies
 
 The following dependencies will be automatically installed if the required versions are not present:
@@ -219,9 +211,29 @@ The following dependencies will be automatically installed if the required versi
 
 These dependencies are only required for building and running tests for PSRule for Azure.
 
-Additionally .NET SDK v6 is required.
-.NET will not be automatically downloaded and installed.
-To download and install the latest SDK see [Download .NET 6][dotnet].
+### Building from source
+
+[:octicons-file-code-24: Source][6]
+
+PSRule for Azure is provided as open source on GitHub.
+To build PSRule for Azure from source code:
+
+1. Clone the GitHub [repository][6].
+2. Run `./build.ps1` from a PowerShell terminal in the cloned path.
+
+This build script will compile the module and documentation then output the result into `out/modules/PSRule.Rules.Azure`.
+
+  [6]: https://github.com/Azure/PSRule.Rules.Azure.git
+
+#### Troubleshooting
+
+If the `./build.ps1` script fails, you can start troubleshooting this by:
+
+- Checking the prerequisites are installed installed (and the specific versions)
+  - Check the **PowerShell** version enter the following statement in the PowerShell terminal: `$PSVersionTable.PSVersion`
+  - Check the installed **.NET** version by entering the `dotnet --list-sdks` command in your terminal.
+- Check if your .NET setup is connected to any Nuget repositories and if there's any 
+connectivity or authentication issues.
 
 ### Limited access networks
 

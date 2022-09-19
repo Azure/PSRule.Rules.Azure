@@ -8,13 +8,13 @@
       "2016-06-01"
     ],
     "locations": [
-      "West US",
-      "North Europe",
-      "West Europe",
       "East US",
-      "West US 2",
+      "North Europe",
+      "Southeast Asia",
       "West Central US",
-      "Southeast Asia"
+      "West Europe",
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": null
   },

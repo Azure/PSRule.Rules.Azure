@@ -229,3 +229,34 @@ Describe 'Azure.ResourceGroup' -Tag 'ResourceGroup' {
         }
     }
 }
+
+Describe 'Azure.Deployment.AdminUsername' -Tag 'Resource' {
+    Context 'Conditions' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Deployments.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
+        }
+
+        It 'Azure.Deployment.AdminUsername' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Deployment.AdminUsername' };
+
+             # Fail
+             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+             $ruleResult | Should -Not -BeNullOrEmpty;
+             $ruleResult.Length | Should -Be 3;
+             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-A', 'nestedDeployment-D', 'nestedDeployment-E';
+ 
+             # Pass
+             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+             $ruleResult | Should -Not -BeNullOrEmpty;
+             $ruleResult.Length | Should -Be 2;
+             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-B', 'nestedDeployment-C';
+        }
+    }
+}

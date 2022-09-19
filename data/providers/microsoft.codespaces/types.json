@@ -33,10 +33,10 @@
       "2020-06-16"
     ],
     "locations": [
-      "West Europe",
       "East US",
-      "West Us 2",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe",
+      "West Us 2"
     ],
     "zoneMappings": null
   },

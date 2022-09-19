@@ -1,14 +1,57 @@
 [
   {
     "aliases": null,
+    "resourceType": "availableGroundStations",
+    "apiVersions": [
+      "2022-03-01",
+      "2021-04-04-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "contactProfiles",
+    "apiVersions": [
+      "2022-03-01",
+      "2021-04-04-preview",
+      "2020-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
       "2022-03-01"
     ],
     "locations": [
+      "Australia East",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
       "West US 2",
-      "West US 3",
-      "West US"
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -19,9 +62,14 @@
       "2022-03-01"
     ],
     "locations": [
+      "Australia East",
+      "East US",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
       "West US 2",
-      "West US 3",
-      "West US"
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -34,9 +82,54 @@
       "2020-09-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "East US",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
       "West US 2",
-      "West US 3",
-      "West US"
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "spacecrafts",
+    "apiVersions": [
+      "2022-03-01",
+      "2021-04-04-preview",
+      "2020-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "spacecrafts/contacts",
+    "apiVersions": [
+      "2022-03-01",
+      "2021-04-04-preview",
+      "2020-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   }

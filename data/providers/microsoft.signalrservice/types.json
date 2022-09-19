@@ -53,14 +53,14 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3",
-      "UAE North"
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -101,14 +101,14 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3",
-      "UAE North"
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -149,14 +149,14 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3",
-      "UAE North"
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -197,14 +197,14 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3",
-      "UAE North"
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -223,12 +223,12 @@
       "2018-03-01-preview"
     ],
     "locations": [
-      "West Central US",
-      "West US 2",
+      "Central US",
       "East US",
       "East US 2",
+      "West Central US",
       "West US",
-      "Central US"
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -356,14 +356,14 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3",
-      "UAE North"
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -404,14 +404,14 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3",
-      "UAE North"
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -532,14 +532,14 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3",
-      "UAE North"
+      "West US 3"
     ],
     "zoneMappings": null
   },

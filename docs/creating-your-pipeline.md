@@ -206,7 +206,7 @@ configuration:
   AZURE_PARAMETER_FILE_EXPANSION: true
 ```
 
-  [1]: setup/configuring-expansion.md#parameterfileexpansion
+  [1]: setup/configuring-expansion.md#parameter-file-expansion
 
 ### Expand Bicep source files
 
@@ -224,7 +224,7 @@ configuration:
   AZURE_BICEP_FILE_EXPANSION: true
 ```
 
-  [2]: setup/configuring-expansion.md#bicepsourceexpansion
+  [2]: setup/configuring-expansion.md#bicep-source-expansion
 
 ### Ignoring rules
 

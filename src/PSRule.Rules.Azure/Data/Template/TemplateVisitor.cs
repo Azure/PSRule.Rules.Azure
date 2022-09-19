@@ -1123,6 +1123,7 @@ namespace PSRule.Rules.Azure.Data.Template
             resource.TryGetDependencies(out var dependencies);
             var resourceId = ResourceHelper.CombineResourceId(context.Subscription.SubscriptionId, context.ResourceGroup.Name, type, name);
             context.UpdateResourceScope(resource);
+            resource[PROPERTY_ID] = resourceId;
             return new ResourceValue(resourceId, name, type, resource, dependencies, copyIndex.Clone());
         }
 

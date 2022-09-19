@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -17,13 +17,16 @@ namespace PSRule.Rules.Azure.Configuration
     /// </summary>
     internal delegate string PathDelegate();
 
+    /// <summary>
+    /// Options for configuration PSRule for Azure.
+    /// </summary>
     public sealed class PSRuleOption
     {
         private const string DEFAULT_FILENAME = "ps-rule.yaml";
 
-        private string SourcePath;
+        private string _SourcePath;
 
-        internal static readonly PSRuleOption Default = new PSRuleOption
+        internal static readonly PSRuleOption Default = new()
         {
             Configuration = ConfigurationOption.Default,
             Output = OutputOption.Default
@@ -34,6 +37,9 @@ namespace PSRule.Rules.Azure.Configuration
         /// </summary>
         private static PathDelegate _GetWorkingPath = () => Directory.GetCurrentDirectory();
 
+        /// <summary>
+        /// Create an empty PSRule option.
+        /// </summary>
         public PSRuleOption()
         {
             // Set defaults
@@ -43,13 +49,16 @@ namespace PSRule.Rules.Azure.Configuration
 
         private PSRuleOption(string sourcePath, PSRuleOption option)
         {
-            SourcePath = sourcePath;
+            _SourcePath = sourcePath;
 
             // Set from existing option instance
             Configuration = new ConfigurationOption(option?.Configuration);
             Output = new OutputOption(option?.Output);
         }
 
+        /// <summary>
+        /// Options for configuring PSRule for Azure.
+        /// </summary>
         public ConfigurationOption Configuration { get; set; }
 
         /// <summary>
@@ -74,6 +83,9 @@ namespace PSRule.Rules.Azure.Configuration
             _GetWorkingPath = () => executionContext.SessionState.Path.CurrentFileSystemLocation.Path;
         }
 
+        /// <summary>
+        /// Get the current working path.
+        /// </summary>
         public static string GetWorkingPath()
         {
             return _GetWorkingPath();
@@ -99,7 +111,7 @@ namespace PSRule.Rules.Azure.Configuration
 
         private static PSRuleOption Combine(PSRuleOption o1, PSRuleOption o2)
         {
-            var result = new PSRuleOption(o1?.SourcePath ?? o2?.SourcePath, o1)
+            var result = new PSRuleOption(o1?._SourcePath ?? o2?._SourcePath, o1)
             {
                 Configuration = ConfigurationOption.Combine(o1?.Configuration, o2?.Configuration),
                 Output = OutputOption.Combine(o1?.Output, o2?.Output)
@@ -115,7 +127,7 @@ namespace PSRule.Rules.Azure.Configuration
                 .Build();
 
             var option = d.Deserialize<PSRuleOption>(yaml) ?? new PSRuleOption();
-            option.SourcePath = path;
+            option._SourcePath = path;
             return option;
         }
 

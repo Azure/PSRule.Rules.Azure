@@ -163,13 +163,13 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-D', 'storage-F';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "Path Properties.minimumTlsVersion: Is set to 'TLS1_0'.";
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.minimumTlsVersion: Is set to 'TLS1_0'.";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "Path Properties.minimumTlsVersion: Does not exist.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.minimumTlsVersion: The field 'properties.minimumTlsVersion' does not exist.";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "Path Properties.minimumTlsVersion: Does not exist.";
+            $ruleResult[2].Reason | Should -BeExactly "Path properties.minimumTlsVersion: The field 'properties.minimumTlsVersion' does not exist.";
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[3].Reason | Should -BeExactly "Path Properties.minimumTlsVersion: Does not exist.";
+            $ruleResult[3].Reason | Should -BeExactly "Path properties.minimumTlsVersion: The field 'properties.minimumTlsVersion' does not exist.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

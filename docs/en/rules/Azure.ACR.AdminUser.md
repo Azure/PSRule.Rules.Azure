@@ -1,8 +1,8 @@
 ---
-reviewed: 2021/11/13
+reviewed: 2021-11-13
 severity: Critical
 pillar: Security
-category: Identity and access management
+category: Authentication
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.AdminUser/
 ms-content-id: bbf194a7-6ca3-4b1d-9170-6217eb26620d
@@ -126,4 +126,4 @@ Update-AzContainerRegistry -ResourceGroupName '<resource_group>' -Name '<name>' 
 - [Use an Azure managed identity to authenticate to an Azure container registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity)
 - [Azure Container Registry roles and permissions](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 - [What is Azure role-based access control (Azure RBAC)?](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)

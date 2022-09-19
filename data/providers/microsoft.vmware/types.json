@@ -18,9 +18,9 @@
     ],
     "locations": [
       "East US",
-      "West US",
       "East US 2 EUAP",
-      "West Europe"
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -42,8 +42,8 @@
     ],
     "locations": [
       "East US",
-      "West US",
-      "West Europe"
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   }

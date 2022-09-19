@@ -20,13 +20,13 @@
       "2015-07-01-preview"
     ],
     "locations": [
-      "East US",
-      "West US",
       "Australia East",
-      "West Europe",
+      "East US",
       "North Europe",
       "Southeast Asia",
-      "West Central US"
+      "West Central US",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -60,13 +60,13 @@
       "2015-07-01-preview"
     ],
     "locations": [
-      "East US",
-      "West US",
       "Australia East",
-      "West Europe",
+      "East US",
       "North Europe",
       "Southeast Asia",
-      "West Central US"
+      "West Central US",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },

@@ -7,10 +7,11 @@
       "2020-08-26"
     ],
     "locations": [
-      "West US 2",
-      "West Central US",
       "East US",
-      "North Europe"
+      "North Europe",
+      "West Central US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -32,11 +33,11 @@
       "2020-08-26"
     ],
     "locations": [
+      "East US",
+      "North Europe",
       "West Central US",
       "West US 2",
-      "West US 3",
-      "East US",
-      "North Europe"
+      "West US 3"
     ],
     "zoneMappings": null
   },

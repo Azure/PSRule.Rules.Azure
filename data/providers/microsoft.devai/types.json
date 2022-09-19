@@ -6,6 +6,7 @@
       "2022-02-17-preview"
     ],
     "locations": [
+      "Brazil South",
       "Canada Central",
       "East US",
       "North Europe",
@@ -14,8 +15,7 @@
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3",
-      "Brazil South"
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -26,6 +26,7 @@
       "2022-02-17-preview"
     ],
     "locations": [
+      "Brazil South",
       "Canada Central",
       "East US",
       "North Europe",
@@ -34,8 +35,7 @@
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3",
-      "Brazil South"
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -46,6 +46,7 @@
       "2022-02-17-preview"
     ],
     "locations": [
+      "Brazil South",
       "Canada Central",
       "East US",
       "North Europe",
@@ -54,8 +55,7 @@
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3",
-      "Brazil South"
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -66,6 +66,7 @@
       "2022-02-17-preview"
     ],
     "locations": [
+      "Brazil South",
       "Canada Central",
       "East US",
       "North Europe",
@@ -74,8 +75,7 @@
       "West Europe",
       "West US",
       "West US 2",
-      "West US 3",
-      "Brazil South"
+      "West US 3"
     ],
     "zoneMappings": null
   },

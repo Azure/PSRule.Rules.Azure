@@ -24,7 +24,7 @@ Rule 'Azure.CDN.EndpointName' -Ref 'AZR-000091' -Type 'Microsoft.Cdn/profiles/en
 }
 
 # Synopsis: Consider configuring the minimum supported TLS version to be 1.2.
-Rule 'Azure.CDN.MinTLS' -Ref 'AZR-000092' -Type 'Microsoft.Cdn/profiles/endpoints', 'Microsoft.Cdn/profiles/endpoints/customdomains' -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.CDN.MinTLS' -Ref 'AZR-000092' -Type 'Microsoft.Cdn/profiles/endpoints', 'Microsoft.Cdn/profiles/endpoints/customdomains' -Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Security'; 'Azure.ASB.v3/control' = 'DP-3' } {
     $customDomains = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Cdn/profiles/endpoints') {
         $customDomains = @(GetSubResources -ResourceType 'Microsoft.Cdn/profiles/endpoints/customdomains');
@@ -38,4 +38,22 @@ Rule 'Azure.CDN.MinTLS' -Ref 'AZR-000092' -Type 'Microsoft.Cdn/profiles/endpoint
     }
 }
 
+# Synopsis: Use Azure Front Door Standard or Premium SKU to improve the performance of web pages with dynamic content and overall capabilities.
+Rule 'Azure.CDN.UseFrontDoor' -Ref 'AZR-000286' -Type 'Microsoft.Cdn/profiles' -If { IsStandard_MicrosoftSKU } -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+    $Assert.In($TargetObject, 'sku.name', @('Standard_AzureFrontDoor', 'Premium_AzureFrontDoor'));
+}
+
 #endregion Rules
+
+#region Helper functions
+
+function global:IsStandard_MicrosoftSKU {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        return $Assert.In($TargetObject, 'sku.name', @('Standard_Microsoft', 'Standard_AzureFrontDoor', 'Premium_AzureFrontDoor'));
+    }
+}
+
+#endregion Helper functions

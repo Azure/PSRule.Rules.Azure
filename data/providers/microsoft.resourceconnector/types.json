@@ -6,12 +6,12 @@
       "2021-10-31-preview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
-      "UK South",
       "Australia East",
+      "Canada Central",
+      "East US",
       "Southeast Asia",
-      "Canada Central"
+      "UK South",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -34,12 +34,12 @@
       "2020-07-15-privatepreview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
-      "UK South",
       "Australia East",
+      "Canada Central",
+      "East US",
       "Southeast Asia",
-      "Canada Central"
+      "UK South",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -51,12 +51,12 @@
       "2020-07-15-privatepreview"
     ],
     "locations": [
-      "East US",
-      "West Europe",
-      "UK South",
       "Australia East",
+      "Canada Central",
+      "East US",
       "Southeast Asia",
-      "Canada Central"
+      "UK South",
+      "West Europe"
     ],
     "zoneMappings": null
   },

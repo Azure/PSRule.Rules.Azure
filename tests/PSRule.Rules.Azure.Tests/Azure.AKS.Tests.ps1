@@ -1312,5 +1312,23 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -HaveCount 2;
             $ruleResult.TargetName | Should -BeIn 'cluster-H', 'cluster-J';
         }
+        
+        It 'Azure.AKS.UptimeSLA' {
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.UptimeSLA' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'sku.tier';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-K', 'cluster-L';  
+        }
     }
 }

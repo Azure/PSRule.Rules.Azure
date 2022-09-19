@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "azureTrafficCollectors",
     "apiVersions": [
+      "2022-08-01",
       "2022-05-01",
       "2021-09-01-preview"
     ],
@@ -23,6 +24,7 @@
     "aliases": null,
     "resourceType": "azureTrafficCollectors/collectorPolicies",
     "apiVersions": [
+      "2022-08-01",
       "2022-05-01",
       "2021-09-01-preview"
     ],
@@ -43,6 +45,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-08-01",
       "2022-05-01",
       "2021-09-01-preview",
       "2021-08-01-preview"
@@ -54,6 +57,7 @@
     "aliases": null,
     "resourceType": "locations/nfvOperationResults",
     "apiVersions": [
+      "2022-08-01",
       "2022-05-01",
       "2021-09-01-preview",
       "2021-08-01-preview"
@@ -65,6 +69,7 @@
     "aliases": null,
     "resourceType": "locations/nfvOperations",
     "apiVersions": [
+      "2022-08-01",
       "2022-05-01",
       "2021-09-01-preview",
       "2021-08-01-preview"
@@ -79,12 +84,12 @@
       "2021-08-01-preview"
     ],
     "locations": [
-      "West US",
       "East US",
-      "West Central US",
       "North Central US",
       "North Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Central US",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -95,12 +100,12 @@
       "2021-08-01-preview"
     ],
     "locations": [
-      "West US",
       "East US",
-      "West Central US",
       "North Central US",
       "North Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Central US",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -111,12 +116,12 @@
       "2021-08-01-preview"
     ],
     "locations": [
-      "West US",
       "East US",
-      "West Central US",
       "North Central US",
       "North Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Central US",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -127,12 +132,12 @@
       "2021-08-01-preview"
     ],
     "locations": [
-      "West US",
       "East US",
-      "West Central US",
       "North Central US",
       "North Europe",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Central US",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -140,6 +145,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-08-01",
       "2022-05-01",
       "2021-09-01-preview"
     ],

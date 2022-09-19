@@ -27,9 +27,9 @@
       "2021-12-01"
     ],
     "locations": [
-      "West Europe",
       "East US",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -41,9 +41,9 @@
       "2021-12-01"
     ],
     "locations": [
-      "West Europe",
       "East US",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -55,9 +55,9 @@
       "2021-12-01"
     ],
     "locations": [
-      "West Europe",
       "East US",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -81,9 +81,9 @@
       "2021-12-01"
     ],
     "locations": [
-      "West Europe",
       "East US",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -95,9 +95,9 @@
       "2021-12-01"
     ],
     "locations": [
-      "West Europe",
       "East US",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -109,9 +109,9 @@
       "2021-12-01"
     ],
     "locations": [
-      "West Europe",
       "East US",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -251,9 +251,9 @@
       "2021-12-01"
     ],
     "locations": [
-      "West Europe",
       "East US",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -265,9 +265,9 @@
       "2021-12-01"
     ],
     "locations": [
-      "West Europe",
       "East US",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -279,9 +279,9 @@
       "2021-12-01"
     ],
     "locations": [
-      "West Europe",
       "East US",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Europe"
     ],
     "zoneMappings": null
   }

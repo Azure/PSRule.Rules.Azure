@@ -1,6 +1,26 @@
 [
   {
     "aliases": null,
+    "resourceType": "calculateMigrationCost",
+    "apiVersions": [
+      "2021-07-01-privatepreview",
+      "2021-07-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationResults",
+    "apiVersions": [
+      "2021-07-01-privatepreview",
+      "2021-07-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2021-07-01-privatepreview",

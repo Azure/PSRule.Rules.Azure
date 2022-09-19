@@ -15,19 +15,19 @@
       "2016-01-29"
     ],
     "locations": [
-      "South Central US",
-      "North Central US",
-      "East US 2",
-      "West US",
-      "West Europe",
-      "North Europe",
-      "Brazil South",
-      "Southeast Asia",
       "Australia Southeast",
+      "Brazil South",
       "Canada Central",
+      "East US 2",
       "Japan East",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
       "UK South",
-      "West India"
+      "West Europe",
+      "West India",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -76,19 +76,19 @@
       "2016-01-29"
     ],
     "locations": [
-      "South Central US",
-      "North Central US",
-      "East US 2",
-      "West US",
-      "West Europe",
-      "North Europe",
-      "Brazil South",
-      "Southeast Asia",
       "Australia Southeast",
+      "Brazil South",
       "Canada Central",
+      "East US 2",
       "Japan East",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
       "UK South",
-      "West India"
+      "West Europe",
+      "West India",
+      "West US"
     ],
     "zoneMappings": null
   }

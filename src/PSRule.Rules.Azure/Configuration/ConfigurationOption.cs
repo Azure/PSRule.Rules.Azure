@@ -12,7 +12,7 @@ namespace PSRule.Rules.Azure.Configuration
     /// </summary>
     public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
     {
-        internal static readonly ConfigurationOption Default = new ConfigurationOption
+        internal static readonly ConfigurationOption Default = new()
         {
             Subscription = SubscriptionOption.Default,
             ResourceGroup = ResourceGroupOption.Default,
@@ -22,6 +22,9 @@ namespace PSRule.Rules.Azure.Configuration
             Deployment = DeploymentOption.Default,
         };
 
+        /// <summary>
+        /// Create an empty configuration option.
+        /// </summary>
         public ConfigurationOption()
         {
             Subscription = null;
@@ -51,6 +54,7 @@ namespace PSRule.Rules.Azure.Configuration
             return obj is ConfigurationOption option && Equals(option);
         }
 
+        /// <inheritdoc/>
         public bool Equals(ConfigurationOption other)
         {
             return other != null &&
@@ -125,6 +129,7 @@ namespace PSRule.Rules.Azure.Configuration
         /// </summary>
         [DefaultValue(null)]
         [YamlMember(Alias = "AZURE_PARAMETER_DEFAULTS", ApplyNamingConventions = false)]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Must be able to be deserialized using standard pattern.")]
         public ParameterDefaultsOption ParameterDefaults { get; set; }
 
         /// <summary>

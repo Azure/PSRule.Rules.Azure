@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Identity and access management
+category: Authentication
 resource: Storage Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.BlobPublicAccess/
 ---
@@ -93,4 +93,4 @@ resource st0000001 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 - [Remediate anonymous public access](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent#remediate-anonymous-public-access)
 - [Use Azure Policy to enforce authorized access](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent#use-azure-policy-to-enforce-authorized-access)
 - [Authorize access to blobs using Azure Active Directory](https://docs.microsoft.com/azure/storage/blobs/authorize-access-azure-active-directory)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts#StorageAccountPropertiesCreateParameters)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts#StorageAccountPropertiesCreateParameters)

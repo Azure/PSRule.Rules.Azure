@@ -20,18 +20,18 @@
       "2014-09-01"
     ],
     "locations": [
-      "West US",
-      "East US",
-      "North Europe",
-      "West Europe",
+      "Australia East",
+      "Australia Southeast",
       "Brazil South",
       "East Asia",
-      "Southeast Asia",
-      "West Central US",
+      "East US",
       "Japan East",
       "Japan West",
-      "Australia East",
-      "Australia Southeast"
+      "North Europe",
+      "Southeast Asia",
+      "West Central US",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": null
   },
@@ -46,8 +46,8 @@
       "2014-09-01"
     ],
     "locations": [
-      "West Central US",
-      "Southeast Asia"
+      "Southeast Asia",
+      "West Central US"
     ],
     "zoneMappings": null
   },

@@ -1,0 +1,14 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-08-11-preview"
+    ],
+    "locations": [
+      "Central US EUAP",
+      "East US 2 EUAP"
+    ],
+    "zoneMappings": null
+  }
+]

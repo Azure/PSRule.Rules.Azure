@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-07-30-preview",
       "2022-04-29-preview"
     ],
     "locations": [
@@ -14,11 +15,12 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2022-07-30-preview",
       "2022-04-29-preview"
     ],
     "locations": [
-      "West US 3",
-      "East US"
+      "East US",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -26,6 +28,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-07-30-preview",
       "2022-04-29-preview"
     ],
     "locations": [

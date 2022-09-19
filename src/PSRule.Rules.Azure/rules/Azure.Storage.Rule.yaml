@@ -15,8 +15,8 @@ metadata:
   name: Azure.Storage.Firewall
   ref: AZR-000202
   tags:
-    release: GA
-    ruleSet: 2021_09
+    release: 'GA'
+    ruleSet: '2021_09'
 spec:
   type:
   - Microsoft.Storage/storageAccounts
@@ -26,4 +26,81 @@ spec:
     field: properties.networkAcls.defaultAction
     equals: deny
 
-#endregion Region
+---
+# Synopsis: Storage Accounts should reject TLS versions older than 1.2.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Storage.MinTLS
+  ref: AZR-000200
+  tags:
+    release: 'GA'
+    ruleSet: '2020_09'
+    Azure.WAF/pillar: 'Security'
+    Azure.ASB.v3/control: 'DP-3'
+spec:
+  type:
+  - Microsoft.Storage/storageAccounts
+  condition:
+    field: properties.minimumTlsVersion
+    equals: TLS1_2
+
+---
+# Synopsis: Storage accounts should only accept encrypted connections.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Storage.SecureTransfer
+  ref: AZR-000196
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+    Azure.WAF/pillar: 'Security'
+    Azure.ASB.v3/control: 'DP-3'
+spec:
+  type:
+  - Microsoft.Storage/storageAccounts
+  condition:
+    field: properties.supportsHttpsTrafficOnly
+    equals: true
+
+---
+# Synopsis: Disallow blob containers with public access types.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Storage.BlobPublicAccess
+  ref: AZR-000198
+  tags:
+    release: 'GA'
+    ruleSet: '2020_09'
+spec:
+  type:
+  - Microsoft.Storage/storageAccounts
+  with:
+  - Azure.Storage.NotFileStorage
+  condition:
+    field: properties.allowBlobPublicAccess
+    equals: false
+
+#endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: Determines if Storage Account is file storage.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Storage.NotFileStorage
+  annotations:
+    export: false
+spec:
+  if:
+    allOf:
+    - type: '.'
+      equals: Microsoft.Storage/storageAccounts
+    - field: kind
+      notEquals: FileStorage
+
+#endregion Selectors

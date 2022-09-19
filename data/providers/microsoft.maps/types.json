@@ -27,12 +27,12 @@
       "2017-01-01-preview"
     ],
     "locations": [
-      "West Central US",
-      "Global",
-      "West US 2",
       "East US",
+      "Global",
+      "North Europe",
+      "West Central US",
       "West Europe",
-      "North Europe"
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -47,12 +47,12 @@
       "2020-02-01-preview"
     ],
     "locations": [
-      "North Europe",
-      "West Europe",
       "East US 2",
-      "West US 2",
       "Europe",
-      "United States"
+      "North Europe",
+      "United States",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -67,12 +67,12 @@
       "2018-05-01"
     ],
     "locations": [
-      "West Central US",
-      "West US 2",
       "East US",
-      "West Europe",
+      "Global",
       "North Europe",
-      "Global"
+      "West Central US",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },

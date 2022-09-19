@@ -21,8 +21,8 @@
       "2021-08-01-preview"
     ],
     "locations": [
-      "East US 2 EUAP",
       "East US",
+      "East US 2 EUAP",
       "West Europe"
     ],
     "zoneMappings": null

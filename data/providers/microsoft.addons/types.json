@@ -7,9 +7,9 @@
       "2017-05-15"
     ],
     "locations": [
-      "West Central US",
-      "South Central US",
       "East US",
+      "South Central US",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": null
@@ -22,9 +22,9 @@
       "2017-05-15"
     ],
     "locations": [
-      "West Central US",
-      "South Central US",
       "East US",
+      "South Central US",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": null
@@ -37,9 +37,9 @@
       "2017-05-15"
     ],
     "locations": [
-      "West Central US",
-      "South Central US",
       "East US",
+      "South Central US",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": null
