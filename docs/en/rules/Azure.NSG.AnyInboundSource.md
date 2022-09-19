@@ -6,11 +6,11 @@ resource: Network Security Group
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.AnyInboundSource/
 ---
 
-# Avoid rules that allow any inbound source
+# Avoid rules that allow "any" as an inbound source
 
 ## SYNOPSIS
 
-Network security groups (NSGs) should avoid rules that allow any inbound source.
+Network security groups (NSGs) should avoid rules that allow "any" as an inbound source.
 
 ## DESCRIPTION
 
@@ -18,7 +18,7 @@ NSGs filter network traffic for Azure services connected to a virtual network su
 In addition to the built-in security rules, a number of custom rules may be defined.
 Custom security rules can be defined that _allow_ or _deny_ _inbound_ or _outbound_ communication.
 
-When defining custom rules, avoid using rules that allow **any** inbound source.
+When defining custom rules, avoid using rules that allow **any** as the inbound source.
 The intent of custom rules that allow any inbound source may not be clearly understood by support teams.
 Additionally, custom rules with any inbound source may expose services if a public IP address is attached.
 
@@ -29,11 +29,26 @@ When inbound network traffic from the Internet is intended also consider the fol
 
 ## RECOMMENDATION
 
-Consider updating inbound rules to use a specified source such as an IP range or service tag.
+Consider updating inbound rules to use a specified source such as an IP range, application security group or service tag.
 If inbound access from Internet-based sources is intended, consider using the service tag `Internet`.
+
+To create a Microsoft.Network/applicationSecurityGroups resource, add the following Bicep to your template.
+
+```Bicep
+resource symbolicname 'Microsoft.Network/applicationSecurityGroups@2022-01-01' = {
+  name: 'string'
+  location: 'string'
+  tags: {
+    tagName1: 'tagValue1'
+    tagName2: 'tagValue2'
+  }
+  properties: {}
+}
+```
 
 ## LINKS
 
+- [Service Tags Overview](https://learn.microsoft.com/en-us/azure/virtual-network/service-tags-overview)
 - [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
 - [Network Security Groups](https://docs.microsoft.com/azure/virtual-network/security-overview)
 - [Logically segment subnets](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
