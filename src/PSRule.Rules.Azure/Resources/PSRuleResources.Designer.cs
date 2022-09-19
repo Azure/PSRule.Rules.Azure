@@ -133,7 +133,7 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to expand the specified assignment file &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Unable to expand the specified assignment file &apos;{0}&apos;. {1}.
         /// </summary>
         internal static string AssignmentFileExpandFailed {
             get {

@@ -429,6 +429,7 @@
     "aliases": null,
     "resourceType": "locations/environments/managedClusterVersions",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
@@ -483,6 +484,7 @@
     "aliases": null,
     "resourceType": "locations/managedClusterOperationResults",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
@@ -537,6 +539,7 @@
     "aliases": null,
     "resourceType": "locations/managedClusterOperations",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
@@ -591,6 +594,7 @@
     "aliases": null,
     "resourceType": "locations/managedClusterVersions",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
@@ -645,6 +649,7 @@
     "aliases": null,
     "resourceType": "locations/managedUnsupportedVMSizes",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
@@ -897,6 +902,7 @@
     "aliases": null,
     "resourceType": "managedclusters",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
@@ -951,6 +957,7 @@
     "aliases": null,
     "resourceType": "managedclusters/applications",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
@@ -1004,6 +1011,7 @@
     "aliases": null,
     "resourceType": "managedclusters/applications/services",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
@@ -1057,6 +1065,7 @@
     "aliases": null,
     "resourceType": "managedclusters/applicationTypes",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
@@ -1110,6 +1119,7 @@
     "aliases": null,
     "resourceType": "managedclusters/applicationTypes/versions",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
@@ -1163,6 +1173,7 @@
     "aliases": null,
     "resourceType": "managedclusters/nodetypes",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",
@@ -1217,6 +1228,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-06-01-preview",
       "2022-02-01-preview",
       "2022-01-01",

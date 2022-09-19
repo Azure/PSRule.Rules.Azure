@@ -293,6 +293,8 @@
     "aliases": null,
     "resourceType": "reservationOrders/calculateRefund",
     "apiVersions": [
+      "2022-03-01-beta",
+      "2022-03-01",
       "2020-10-01-preview",
       "2020-10-01-beta",
       "2020-06-01-beta",
@@ -391,6 +393,8 @@
     "aliases": null,
     "resourceType": "reservationOrders/return",
     "apiVersions": [
+      "2022-03-01-beta",
+      "2022-03-01",
       "2020-10-01-preview",
       "2020-10-01-beta",
       "2020-06-01-beta",

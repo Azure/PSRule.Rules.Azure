@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-10-01",
@@ -73,6 +74,7 @@
     "aliases": null,
     "resourceType": "locations/checkFilePathAvailability",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-10-01",
@@ -143,6 +145,7 @@
     "aliases": null,
     "resourceType": "locations/CheckInventory",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-10-01",
@@ -256,6 +259,7 @@
     "aliases": null,
     "resourceType": "locations/checkQuotaAvailability",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-10-01",
@@ -316,6 +320,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-10-01",
@@ -386,6 +391,7 @@
     "aliases": null,
     "resourceType": "locations/QuotaLimits",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-10-01",
@@ -518,6 +524,7 @@
     },
     "resourceType": "netAppAccounts",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-10-01",
@@ -598,6 +605,7 @@
     },
     "resourceType": "netAppAccounts/capacityPools",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-10-01",
@@ -763,6 +771,7 @@
     },
     "resourceType": "netAppAccounts/capacityPools/volumes",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-10-01",
@@ -1084,6 +1093,7 @@
     },
     "resourceType": "netAppAccounts/capacityPools/volumes/snapshots",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-10-01",
@@ -1179,6 +1189,7 @@
     },
     "resourceType": "netAppAccounts/snapshotPolicies",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-10-01",
@@ -1339,6 +1350,7 @@
     },
     "resourceType": "netAppAccounts/volumeGroups",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-10-01",
@@ -1392,6 +1404,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-01",
       "2022-03-01",
       "2022-01-01",
       "2021-10-01",

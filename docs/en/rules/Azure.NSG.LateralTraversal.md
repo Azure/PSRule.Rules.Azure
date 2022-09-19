@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Network security and containment
+category: Network Segmentation
 resource: Network Security Group
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.LateralTraversal/
 ---
@@ -42,6 +42,8 @@ Consider configuring NSGs rules to block common outbound management traffic from
 ## NOTES
 
 Specifically this rule checks if either 3389 (RDP) or 22 (SSH) has been blocked for outbound traffic.
+
+To suppress this rule for NSGs protecting subnets expected to allow outbound management traffic see [Permit outbound management](https://azure.github.io/PSRule.Rules.Azure/customization/permit-outbound-management/).
 
 ## EXAMPLES
 
@@ -120,5 +122,6 @@ resource nsg 'Microsoft.Network/networkSecurityGroups@2021-02-01' = {
 - [Implement network segmentation patterns on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
 - [Logically segment subnets](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
 - [Plan virtual networks](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm#segmentation)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)
 - [Network security groups](https://docs.microsoft.com/azure/virtual-network/security-overview)
+- [Permit outbound management](https://azure.github.io/PSRule.Rules.Azure/customization/permit-outbound-management/)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)
