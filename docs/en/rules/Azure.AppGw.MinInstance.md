@@ -49,7 +49,6 @@ For example:
     "2",
     "3"
   ],
-  "tags": {},
   "properties": {
     "sku": {
       "capacity": 2, // Manual Scale
@@ -94,7 +93,6 @@ resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
     '2'
     '3'
   ]
-  tags: {}
   properties: {
     sku: {
       capacity: 2 // Manual scale
@@ -118,5 +116,5 @@ resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
 ## LINKS
 
 - [Azure Application Gateway SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/)
-- [Azure template reference](https://learn.microsoft.com/en-us/azure/templates/microsoft.network/applicationgateways?pivots=deployment-language-bicep)
-- [Azure Well-Architected Framework - Reliability](https://learn.microsoft.com/en-us/azure/architecture/framework/resiliency/)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/applicationgateways?pivots=deployment-language-bicep)
+- [Azure Well-Architected Framework - Reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/)

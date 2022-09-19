@@ -105,4 +105,4 @@ resource appGw 'Microsoft.Network/applicationGateways@2021-02-01' = {
 - [Securing PaaS deployments](https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
 - [What is Azure Web Application Firewall on Azure Application Gateway?](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
 - [Web Application Firewall CRS rule groups and rules](https://docs.microsoft.com/azure/web-application-firewall/ag/application-gateway-crs-rulegroups-rules)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)

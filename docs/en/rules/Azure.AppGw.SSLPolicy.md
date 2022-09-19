@@ -76,4 +76,4 @@ resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
 - [Application Gateway SSL policy overview](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview)
 - [Configure SSL policy versions and cipher suites on Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-configure-ssl-policy-powershell)
 - [Overview of TLS termination and end to end TLS with Application Gateway](https://docs.microsoft.com/azure/application-gateway/ssl-overview)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)
