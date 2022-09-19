@@ -24,3 +24,4 @@ When auto-scaling is enabled with Application Gateway v2, configure the minimum 
 ## LINKS
 
 - [Azure Application Gateway SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways?tabs=json)
