@@ -30,6 +30,6 @@ Consider enabling Flow Logs on all critical subnets in your subscription as an a
 ## LINKS
 
 - [Network security groups](https://docs.microsoft.com/azure/virtual-network/security-overview)
-- [Introduction to flow logging for network security groups](https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-nsg-flow-logging-overview)
+- [Introduction to flow logging for network security groups](https://learn.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)
 - [Virtual network service tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)

@@ -48,7 +48,7 @@ resource symbolicname 'Microsoft.Network/applicationSecurityGroups@2022-01-01' =
 
 ## LINKS
 
-- [Service Tags Overview](https://learn.microsoft.com/en-us/azure/virtual-network/service-tags-overview)
+- [Service Tags Overview](https://learn.microsoft.com/azure/virtual-network/service-tags-overview)
 - [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
 - [Network Security Groups](https://docs.microsoft.com/azure/virtual-network/security-overview)
 - [Logically segment subnets](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
