@@ -90,8 +90,8 @@ Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
             $ruleResult.TargetName | Should -BeIn 'server-A', 'server-C';
         }
 
-        It 'Azure.SQL.ThreatDetection' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQL.ThreatDetection' };
+        It 'Azure.SQL.DefenderCloud' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQL.DefenderCloud' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

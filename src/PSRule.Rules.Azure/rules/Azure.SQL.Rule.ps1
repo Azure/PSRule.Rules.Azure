@@ -32,8 +32,8 @@ Rule 'Azure.SQL.FirewallIPRange' -Ref 'AZR-000185' -Type 'Microsoft.Sql/servers'
         WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True);
 }
 
-# Synopsis: Enable Advanced Thread Protection for Azure SQL logical server
-Rule 'Azure.SQL.ThreatDetection' -Ref 'AZR-000186' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+# Synopsis: Enable Microsoft Defender for Cloud for Azure SQL logical server
+Rule 'Azure.SQL.DefenderCloud' -Alias 'Azure.SQL.ThreatDetection' -Ref 'AZR-000186' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/securityAlertPolicies');
     if ($configs.Length -eq 0) {
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/securityAlertPolicies');
