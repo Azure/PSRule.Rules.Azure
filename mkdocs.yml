@@ -82,6 +82,7 @@ nav:
     - Index: en/rules/index.md
     - By pillar: en/rules/module.md
     - By resource: en/rules/resource.md
+    - Azure Security Benchmark: en/asb-v3.md
 
 markdown_extensions:
   - admonition
