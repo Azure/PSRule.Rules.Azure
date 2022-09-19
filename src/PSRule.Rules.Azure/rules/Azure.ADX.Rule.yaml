@@ -17,6 +17,8 @@ metadata:
   tags:
     release: GA
     ruleSet: 2022_03
+    Azure.WAF/pillar: 'Security'
+    Azure.ASB.v3/control: [ 'IM-1', 'IM-3' ]    
 spec:
   type:
   - Microsoft.Kusto/clusters
@@ -37,6 +39,8 @@ metadata:
   tags:
     release: GA
     ruleSet: 2022_03
+    Azure.WAF/pillar: 'Security'
+    Azure.ASB.v3/control: [ 'DP-3', 'DP-4' ]  
 spec:
   type:
   - Microsoft.Kusto/clusters

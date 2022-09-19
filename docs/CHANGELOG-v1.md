@@ -25,6 +25,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.20.0-B0028:
 
+- General Improvements:
+- Azure Security Benchmark Mapping by @jagoodwin
+  [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
 - Bug fixes:
   - Fixed continue processing policy assignments on error by @BernieWhite.
     [#1651](https://github.com/Azure/PSRule.Rules.Azure/issues/1651)
