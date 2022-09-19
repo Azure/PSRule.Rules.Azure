@@ -32,7 +32,7 @@ For example:
 {
     "type": "Microsoft.Network/applicationGateways",
     "apiVersion": "2020-11-01",
-    "name": "[parameters('appGwName')]",
+    "name": "appGw-001",
     "location": "[resourceGroup().location]",
     "properties": {
         "sku": {
@@ -56,7 +56,7 @@ For example:
 
 ```bicep
 resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
-  name: name
+  name: 'appGw-001'
   location: location
   properties: {
     sku: {

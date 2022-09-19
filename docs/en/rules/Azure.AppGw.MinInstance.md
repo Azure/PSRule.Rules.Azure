@@ -40,55 +40,35 @@ For example:
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "name": {
-      "type": "string",
-      "metadata": {
-        "description": "The name of the Application Gateway."
-      }
+  "name": "appGw-001",
+  "type": "Microsoft.Network/applicationGateways",
+  "apiVersion": "2019-09-01",
+  "location": "[resourceGroup().location]",
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ],
+  "tags": {},
+  "properties": {
+    "sku": {
+      "capacity": 2, // Manual Scale
+      "name": "WAF_v2",
+      "tier": "WAF_v2"
     },
-    "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-        "description": "The location resources will be deployed."
-      }
+    "autoscaleConfiguration": { //Autoscale
+      "minCapacity": 2,
+      "maxCapacity": 3
+    },
+    "webApplicationFirewallConfiguration": {
+      "enabled": true,
+      "firewallMode": "Detection",
+      "ruleSetType": "OWASP",
+      "ruleSetVersion": "3.0"
     }
-  },
-  "resources": [
-    {
-      "name": "[parameters('name')]",
-      "type": "Microsoft.Network/applicationGateways",
-      "apiVersion": "2019-09-01",
-      "location": "[parameters('location')]",
-      "zones": [
-        "1",
-        "2",
-        "3"
-      ],
-      "tags": {},
-      "properties": {
-        "sku": {
-          "capacity": 2, // Manual Scale
-          "name": "WAF_v2",
-          "tier": "WAF_v2"
-        },
-        "autoscaleConfiguration": { //Autoscale
-          "minCapacity": 2,
-          "maxCapacity": 3
-        },
-        "webApplicationFirewallConfiguration": {
-          "enabled": true,
-          "firewallMode": "Detection",
-          "ruleSetType": "OWASP",
-          "ruleSetVersion": "3.0"
-        }
-      }
-    }
-  ]
+  }
 }
+
 ```
 
 ### Configure with Bicep
@@ -106,14 +86,8 @@ Manual Scaling:
 For example:
 
 ```bicep
-@description('The name of the Application Gateway.')
-param name string
-
-@description('The location resources will be deployed.')
-param location string = resourceGroup().location
-
 resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
-  name: name
+  name: 'appGw-001'
   location: location
   zones: [
     '1'

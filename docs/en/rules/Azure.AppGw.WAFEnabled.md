@@ -16,7 +16,8 @@ Application Gateway Web Application Firewall (WAF) must be enabled to protect ba
 
 Security features of Application Gateways deployed with WAF may be toggled on or off.
 
-When WAF is disabled network traffic is still processed by the Application Gateway however detection and/ or prevention of malicious attacks does not occur.
+When WAF is disabled network traffic is still processed by the Application Gateway however detection and/ or
+prevention of malicious attacks does not occur.
 
 To protect backend resources from potentially malicious network traffic, WAF must be enabled.
 
@@ -38,7 +39,7 @@ For example:
 {
     "type": "Microsoft.Network/applicationGateways",
     "apiVersion": "2020-11-01",
-    "name": "[parameters('appGwName')]",
+    "name": "appGw-001",
     "location": "[resourceGroup().location]",
     "properties": {
         "sku": {
@@ -70,6 +71,7 @@ For example:
 ```bicep
 resource appGw 'Microsoft.Network/applicationGateways@2021-02-01' = {
   name: 'appGw-001'
+  location: location
   properties: {
     sku: {
       name: 'WAF_v2'
