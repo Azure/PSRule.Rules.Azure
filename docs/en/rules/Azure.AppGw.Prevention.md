@@ -70,8 +70,9 @@ To deploy Application Gateways that pass this rule:
 For example:
 
 ```bicep
-resource appGw 'Microsoft.Network/applicationGateways@2021-02-01' = {
-  name: 'appGw-001'
+resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
+  name: name
+  location: location
   properties: {
     sku: {
       name: 'WAF_v2'
@@ -82,6 +83,10 @@ resource appGw 'Microsoft.Network/applicationGateways@2021-02-01' = {
       firewallMode: 'Prevention'
       ruleSetType: 'OWASP'
       ruleSetVersion: '3.2'
+      disabledRuleGroups: []
+      requestBodyCheck: true
+      maxRequestBodySizeInKb: 128
+      fileUploadLimitInMb: 100
     }
   }
 }

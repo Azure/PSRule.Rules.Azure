@@ -14,9 +14,8 @@ Application Gateway Web Application Firewall (WAF) should use OWASP 3.x rules.
 
 ## DESCRIPTION
 
-Application Gateways deployed with WAF features support configuration of OWASP rule sets for detection and/ or prevention of malicious attacks.
-
-Two rule set versions are available; OWASP 2.x and OWASP 3.x.
+Application Gateways deployed with WAF features support configuration of OWASP rule sets for detection and /
+or prevention of malicious attacks. Two rule set versions are available; OWASP 2.x and OWASP 3.x.
 
 ## RECOMMENDATION
 

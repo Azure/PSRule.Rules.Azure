@@ -103,4 +103,4 @@ $AppGw = Set-AzApplicationGatewaySku -ApplicationGateway $AppGw -Name 'WAF_v2' -
 - [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
 - [Securing PaaS deployments](https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
 - [What is Azure Web Application Firewall on Azure Application Gateway?](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)
+- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)

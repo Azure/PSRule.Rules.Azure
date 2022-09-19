@@ -10,25 +10,30 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.
 
 ## SYNOPSIS
 
-Application gateways deployed with should use availability zones in supported regions for high availability.
+Application gateways should use availability zones in supported regions for high availability.
 
 ## DESCRIPTION
 
-Application gateways using availability zones improve reliability and ensure availability during failure scenarios affecting a data center within a region.
-A zone redundant Application gateway or WAF deployment can spread across multiple availability zones, which ensures the application gateway will continue running even if another zone has gone down.
-Backend pools for applications can be similarly distributed across availability zones.
+Application gateways using availability zones improve reliability and ensure availability during failure scenarios
+affecting a data center within a region. A zone redundant Application gateway or Web Application Firewall (WAF)
+deployment can spread across multiple availability zones, which ensures the application gateway will continue
+running even if another zone has gone down. Backend pools for applications can be similarly distributed across
+availability zones.
 
 ## RECOMMENDATION
 
-Consider using availability zones for Application gateways deployed with V2 SKU(Standard_v2, WAF_v2).
+Consider using availability zones for Application gateways deployed with V2 SKU (Standard_v2, WAF_v2).
 
 ## NOTES
 
 This rule applies when analyzing resources deployed to Azure using *pre-flight* and *in-flight* data.
 
-This rule fails when `"zones"` is `null`, `[]` or not set when the Application gateway is deployed with V2 SKU(Standard_v2, WAF_v2) and there are supported availability zones for the given region.
+This rule fails when `"zones"` is `null`, `[]` or not set when the Application gateway is deployed with V2
+SKU (Standard_v2, WAF_v2) and there are supported availability zones for the given region.
 
-Configure `AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/) for namespace `Microsoft.Network` and resource type `applicationGateways`.
+Configure `AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be
+supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/)
+for namespace `Microsoft.Network` and resource type `applicationGateways`.
 
 ```yaml
 # YAML: The default AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option
@@ -38,7 +43,7 @@ configuration:
 
 ## EXAMPLES
 
-### Configure with Azure template
+### Configure via Infrastructure as Code template
 
 To set availability zones for an Application gateway
 
@@ -49,119 +54,85 @@ For example:
 
 ```json
 {
-    "name": "[parameters('applicationGatewayName')]",
-    "type": "Microsoft.Network/applicationGateways",
-    "apiVersion": "2019-09-01",
-    "location": "[parameters('location')]",
-    "zones": [
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Application Gateway."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "name": "[parameters('name')]",
+      "type": "Microsoft.Network/applicationGateways",
+      "apiVersion": "2019-09-01",
+      "location": "[parameters('location')]",
+      "zones": [
         "1",
         "2",
         "3"
-    ],
-    "dependsOn": [
-        "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
-        "[concat('Microsoft.Network/publicIPAddresses/', parameters('publicIpAddressName'))]"
-    ],
-    "tags": {},
-    "properties": {
+      ],
+      "tags": {},
+      "properties": {
         "sku": {
-            "name": "WAF_v2",
-            "tier": "WAF_v2"
+          "name": "WAF_v2",
+          "tier": "WAF_v2"
         },
-        "gatewayIPConfigurations": [
-            {
-                "name": "appGatewayIpConfig",
-                "properties": {
-                    "subnet": {
-                        "id": "[variables('subnetRef')]"
-                    }
-                }
-            }
-        ],
-        "frontendIPConfigurations": [
-            {
-                "name": "appGwPublicFrontendIp",
-                "properties": {
-                    "PublicIPAddress": {
-                        "id": "[variables('publicIPRef')]"
-                    }
-                }
-            }
-        ],
-        "frontendPorts": [
-            {
-                "name": "port_80",
-                "properties": {
-                    "Port": 80
-                }
-            }
-        ],
-        "backendAddressPools": [
-            {
-                "name": "bepool",
-                "properties": {
-                    "backendAddresses": []
-                }
-            }
-        ],
-        "backendHttpSettingsCollection": [
-            {
-                "name": "http_settings",
-                "properties": {
-                    "Port": 80,
-                    "Protocol": "Http",
-                    "cookieBasedAffinity": "Disabled",
-                    "requestTimeout": 20
-                }
-            }
-        ],
-        "httpListeners": [
-            {
-                "name": "http-listener",
-                "properties": {
-                    "frontendIPConfiguration": {
-                        "id": "[concat(variables('applicationGatewayId'), '/frontendIPConfigurations/appGwPublicFrontendIp')]"
-                    },
-                    "frontendPort": {
-                        "id": "[concat(variables('applicationGatewayId'), '/frontendPorts/port_80')]"
-                    },
-                    "protocol": "Http",
-                    "sslCertificate": null
-                }
-            }
-        ],
-        "requestRoutingRules": [
-            {
-                "Name": "http-rule",
-                "properties": {
-                    "RuleType": "Basic",
-                    "httpListener": {
-                        "id": "[concat(variables('applicationGatewayId'), '/httpListeners/http-listener')]"
-                    },
-                    "priority": null,
-                    "backendAddressPool": {
-                        "id": "[concat(variables('applicationGatewayId'), '/backendAddressPools/bepool')]"
-                    },
-                    "backendHttpSettings": {
-                        "id": "[concat(variables('applicationGatewayId'), '/backendHttpSettingsCollection/http_settings')]"
-                    }
-                }
-            }
-        ],
-        "enableHttp2": false,
-        "sslCertificates": [],
-        "probes": [],
         "autoscaleConfiguration": {
-            "minCapacity": "[parameters('capacity')]",
-            "maxCapacity": "[parameters('autoScaleMaxCapacity')]"
-        },
-        "webApplicationFirewallConfiguration": {
-            "enabled": true,
-            "firewallMode": "Detection",
-            "ruleSetType": "OWASP",
-            "ruleSetVersion": "3.0"
+          "minCapacity": 2,
+          "maxCapacity": 3
         }
+      }
     }
+  ]
+}
+```
+
+### Configure with Bicep
+
+To set availability zones for an Application gateway
+
+- Set `zones` to any or all of `["1", "2", "3"]`.
+- Set `properties.sku.name` and `properties.sku.tier` to `Standard_v2` or `WAF_v2`.
+
+For example:
+
+```bicep
+@description('The name of the Application Gateway.')
+param name string
+
+@description('The location resources will be deployed.')
+param location string = resourceGroup().location
+
+resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
+  name: name
+  location: location
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
+  tags: {}
+  properties: {
+    sku: {
+      name: 'WAF_v2'
+      tier: 'WAF_v2'
+    }
+    autoscaleConfiguration: {
+      minCapacity: 2
+      maxCapacity: 3
+    }
+  }
 }
 ```
 
@@ -185,6 +156,7 @@ az network application-gateway create \
 
 ## LINKS
 
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways?tabs=json)
+- [Azure Application Gateway IAC Documentation](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways?tabs=json)
 - [Autoscaling and Zone-redundant Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
 - [Use zone-aware services](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
+- [Azure Well-Architected Framework - Reliability](https://learn.microsoft.com/en-us/azure/architecture/framework/resiliency/)
