@@ -40,7 +40,7 @@ For example:
 {
     "type": "Microsoft.Network/applicationGateways",
     "apiVersion": "2020-11-01",
-    "name": "[parameters('appGwName')]",
+    "name": "appGw-001",
     "location": "[resourceGroup().location]",
     "properties": {
         "sku": {
@@ -70,8 +70,9 @@ To deploy Application Gateways that pass this rule:
 For example:
 
 ```bicep
-resource appGw 'Microsoft.Network/applicationGateways@2021-02-01' = {
+resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
   name: 'appGw-001'
+  location: location
   properties: {
     sku: {
       name: 'WAF_v2'
@@ -82,6 +83,10 @@ resource appGw 'Microsoft.Network/applicationGateways@2021-02-01' = {
       firewallMode: 'Prevention'
       ruleSetType: 'OWASP'
       ruleSetVersion: '3.2'
+      disabledRuleGroups: []
+      requestBodyCheck: true
+      maxRequestBodySizeInKb: 128
+      fileUploadLimitInMb: 100
     }
   }
 }
@@ -104,4 +109,4 @@ Set-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway 
 
 - [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
 - [Application Gateway WAF modes](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview#waf-modes)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)
