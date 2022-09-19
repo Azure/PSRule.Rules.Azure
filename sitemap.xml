@@ -836,6 +836,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.DefenderCloud.Contact/</loc>
+         <lastmod>2022-09-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.DefenderCloud.Provisioning/</loc>
+         <lastmod>2022-09-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Deployment.AdminUsername/</loc>
          <lastmod>2022-09-19</lastmod>
          <changefreq>daily</changefreq>
@@ -1271,6 +1281,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.DefenderCloud/</loc>
+         <lastmod>2022-09-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.FGName/</loc>
          <lastmod>2022-09-19</lastmod>
          <changefreq>daily</changefreq>
@@ -1301,11 +1316,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.ThreatDetection/</loc>
-         <lastmod>2022-09-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQLMI.Name/</loc>
          <lastmod>2022-09-19</lastmod>
          <changefreq>daily</changefreq>
@@ -1332,16 +1342,6 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.SKU/</loc>
-         <lastmod>2022-09-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SecurityCenter.Contact/</loc>
-         <lastmod>2022-09-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SecurityCenter.Provisioning/</loc>
          <lastmod>2022-09-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
