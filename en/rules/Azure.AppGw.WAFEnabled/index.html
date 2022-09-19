@@ -6497,7 +6497,8 @@
 <p>Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
 <p>Security features of Application Gateways deployed with WAF may be toggled on or off.</p>
-<p>When WAF is disabled network traffic is still processed by the Application Gateway however detection and/ or prevention of malicious attacks does not occur.</p>
+<p>When WAF is disabled network traffic is still processed by the Application Gateway however detection and/ or
+prevention of malicious attacks does not occur.</p>
 <p>To protect backend resources from potentially malicious network traffic, WAF must be enabled.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
 <p>Consider enabling WAF for Application Gateway instances connected to un-trusted or low-trust networks such as the Internet.</p>
@@ -6511,7 +6512,7 @@
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/applicationGateways&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-11-01&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;appGwName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;appGw-001&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[resourceGroup().location]&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -6539,6 +6540,7 @@
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code>resource appGw &#39;Microsoft.Network/applicationGateways@2021-02-01&#39; = {
   name: &#39;appGw-001&#39;
+  location: location
   properties: {
     sku: {
       name: &#39;WAF_v2&#39;
@@ -6565,7 +6567,7 @@
 <li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints">Best practices for endpoint security on Azure</a></li>
 <li><a href="https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall">Securing PaaS deployments</a></li>
 <li><a href="https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview">What is Azure Web Application Firewall on Azure Application Gateway?</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -6576,7 +6578,7 @@
   <small>
     
       Last update:
-      2021-07-25
+      2022-09-19
     
   </small>
 </div>

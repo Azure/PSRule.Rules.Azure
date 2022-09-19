@@ -6514,7 +6514,7 @@
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/applicationGateways&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-11-01&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;appGwName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;appGw-001&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[resourceGroup().location]&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -6540,8 +6540,9 @@
 <li>Set the <code>properties.webApplicationFirewallConfiguration.firewallMode</code> property to <code>Prevention</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource appGw &#39;Microsoft.Network/applicationGateways@2021-02-01&#39; = {
+<div class="highlight"><pre><span></span><code>resource name_resource &#39;Microsoft.Network/applicationGateways@2019-09-01&#39; = {
   name: &#39;appGw-001&#39;
+  location: location
   properties: {
     sku: {
       name: &#39;WAF_v2&#39;
@@ -6552,6 +6553,10 @@
       firewallMode: &#39;Prevention&#39;
       ruleSetType: &#39;OWASP&#39;
       ruleSetVersion: &#39;3.2&#39;
+      disabledRuleGroups: []
+      requestBodyCheck: true
+      maxRequestBodySizeInKb: 128
+      fileUploadLimitInMb: 100
     }
   }
 }
@@ -6567,7 +6572,7 @@
 <ul>
 <li><a href="https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints">Best practices for endpoint security on Azure</a></li>
 <li><a href="https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview#waf-modes">Application Gateway WAF modes</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -6578,7 +6583,7 @@
   <small>
     
       Last update:
-      2021-07-25
+      2022-09-19
     
   </small>
 </div>

@@ -6511,7 +6511,7 @@ When configured, every incoming request is filtered by the WAF policy.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/applicationGateways&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-11-01&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;appGwName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;appGw-001&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[resourceGroup().location]&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -6539,6 +6539,7 @@ When configured, every incoming request is filtered by the WAF policy.</p>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code>resource appGw &#39;Microsoft.Network/applicationGateways@2021-02-01&#39; = {
   name: &#39;appGw-001&#39;
+  location: location
   properties: {
     sku: {
       name: &#39;WAF_v2&#39;
@@ -6576,7 +6577,7 @@ When configured, every incoming request is filtered by the WAF policy.</p>
   <small>
     
       Last update:
-      2022-09-04
+      2022-09-19
     
   </small>
 </div>
