@@ -97,7 +97,7 @@ You can also use this option to install on CI workers that are not natively supp
 | Windows, MacOS, Linux | PowerShell | Version 7.2 or greater is support. | [link](https://github.com/PowerShell/PowerShell#get-powershell) |
 | - | - | Multiple PowerShell modules are required (PlatyPS, Pester, PSScriptAnalyzer, PowerShellGet, PackageManagement, InvokeBuild, PSRule). | Installed when you run the `build.ps1` script |
 | - | .NET | .NET SDK v6 is required. | [link](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) |
-| - | Bicep CLI | PsRule depends on the Bicep CLI to decompile (expand) Bicep modules to ARM | Installed when you run the `build.ps1` script |
+| - | Bicep CLI | PsRule depends on the Bicep CLI to decompile (expand) Bicep modules to ARM | [link](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/install) |
 
 To use PSRule for Azure, PSRule a separate PowerShell module must be installed.
 The required version will automatically be installed along-side PSRule for Azure.
