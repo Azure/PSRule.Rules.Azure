@@ -23,4 +23,4 @@ Consider configuring Microsoft Defender for Cloud email and phone contact detail
 
 ## LINK
 
-- [Quickstart: Configure email notifications for security alerts](https://docs.microsoft.com/en-us/azure/defender-for-cloud/configure-email-notifications)
+- [Quickstart: Configure email notifications for security alerts](https://docs.microsoft.com/azure/defender-for-cloud/configure-email-notifications)
