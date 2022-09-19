@@ -43,7 +43,7 @@ configuration:
 
 ## EXAMPLES
 
-### Configure via Infrastructure as Code template
+### Configure with Azure template
 
 To set availability zones for an Application gateway
 

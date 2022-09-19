@@ -24,7 +24,7 @@ When auto-scaling is enabled with Application Gateway v2, configure the minimum 
 
 ## EXAMPLES
 
-### Configure via Infrastructure as Code template
+### Configure with Azure template
 
 To set capacity for an Application gateway
 

@@ -26,7 +26,7 @@ Small instance sizes are intended for development and testing scenarios.
 
 ## EXAMPLES
 
-### Configure via Infrastructure as Code template
+### Configure with Azure template
 
 To set the instance size for an Application Gateway V1:
 
