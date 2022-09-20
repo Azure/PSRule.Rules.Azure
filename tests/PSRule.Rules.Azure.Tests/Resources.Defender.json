@@ -65,5 +65,31 @@
       "pricingTier": "Standard",
       "subPlan": "P1"
     }
+  },
+  {
+    "Name": "defenderF",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/SqlServers",
+    "ResourceName": "SqlServers",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Standard"
+    }
+  },
+  {
+    "Name": "defenderG",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/SqlServers",
+    "ResourceName": "SqlServers",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Free"
+    }
   }
 ]

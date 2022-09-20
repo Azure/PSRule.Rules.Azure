@@ -4,11 +4,10 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.4.1008.15138",
-      "templateHash": "12703429750249310477"
+      "version": "0.10.61.36676",
+      "templateHash": "882837898670468380"
     }
   },
-  "functions": [],
   "resources": [
     {
       "type": "Microsoft.Security/pricings",
@@ -33,6 +32,14 @@
       "properties": {
         "pricingTier": "Standard",
         "subPlan": "P2"
+      }
+    },
+    {
+      "type": "Microsoft.Security/pricings",
+      "apiVersion": "2022-03-01",
+      "name": "SqlServers",
+      "properties": {
+        "pricingTier": "Standard"
       }
     }
   ]

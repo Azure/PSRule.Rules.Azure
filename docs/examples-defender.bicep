@@ -29,3 +29,11 @@ resource defenderForServers 'Microsoft.Security/pricings@2022-03-01' = {
     subPlan: 'P2'
   }
 }
+
+// Configures Azure Defender for SQL.
+resource defenderForSQL 'Microsoft.Security/pricings@2022-03-01' = {
+  name: 'SqlServers'
+  properties: {
+    pricingTier: 'Standard'
+  }
+}
