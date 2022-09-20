@@ -27,6 +27,140 @@ Geo-replicating container registries provides the following benefits:
 
 Consider using a geo-replicated container registry for multi-region deployments.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To enable geo-replication for Container Registries that pass this rule:
+
+- Set `sku.name` to `Premium` (required for geo-replication).
+- Add `replications` child resource with `location` set to the region to replicate to.
+
+For example:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.5.6.12127",
+      "templateHash": "12610175857982700190"
+    }
+  },
+  "parameters": {
+    "acrName": {
+      "type": "string",
+      "defaultValue": "[format('acr{0}', uniqueString(resourceGroup().id))]",
+      "maxLength": 50,
+      "minLength": 5,
+      "metadata": {
+        "description": "Globally unique name of your Azure Container Registry"
+      }
+    },
+    "acrAdminUserEnabled": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Enable admin user that has push / pull permission to the registry."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for registry home replica."
+      }
+    },
+    "acrSku": {
+      "type": "string",
+      "defaultValue": "Premium",
+      "allowedValues": [
+        "Premium"
+      ],
+      "metadata": {
+        "description": "Tier of your Azure Container Registry. Geo-replication requires Premium SKU."
+      }
+    },
+    "acrReplicaLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "Short name for registry replica location."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ContainerRegistry/registries",
+      "apiVersion": "2019-12-01-preview",
+      "name": "[parameters('acrName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('acrSku')]"
+      },
+      "tags": {
+        "displayName": "Container Registry",
+        "container.registry": "[parameters('acrName')]"
+      },
+      "properties": {
+        "adminUserEnabled": "[parameters('acrAdminUserEnabled')]"
+      }
+    },
+    {
+      "type": "Microsoft.ContainerRegistry/registries/replications",
+      "apiVersion": "2019-12-01-preview",
+      "name": "[format('{0}/{1}', parameters('acrName'), parameters('acrReplicaLocation'))]",
+      "location": "[parameters('acrReplicaLocation')]",
+      "properties": {},
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName'))]"
+      ]
+    }
+  ],
+  "outputs": {
+    "acrLoginServer": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName'))).loginServer]"
+    }
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy Container Registries that pass this rule:
+
+- Set `sku.name` to `Premium` (required for geo-replication).
+- Add `replications` child resource with `location` set to the region to replicate to.
+
+For example:
+
+```bicep
+resource containerRegistry 'Microsoft.ContainerRegistry/registries@2019-12-01-preview' = {
+  name: acrName
+  location: location
+  sku: {
+    name: 'Premium'
+  }
+  tags: {
+    displayName: 'Container Registry'
+    'container.registry': acrName
+  }
+  properties: {
+    adminUserEnabled: acrAdminUserEnabled
+  }
+}
+
+resource containerRegistryReplica 'Microsoft.ContainerRegistry/registries/replications@2019-12-01-preview' = {
+  parent: containerRegistry
+  name: '${acrReplicaLocation}'
+  location: acrReplicaLocation
+  properties: {
+  }
+}
+```
+
 ## NOTES
 
 This rule applies when analyzing resources deployed (in-flight) to Azure.
