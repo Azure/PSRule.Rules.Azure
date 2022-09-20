@@ -40,7 +40,7 @@ What's changed since pre-release v1.20.0-B0028:
     [#1608](https://github.com/Azure/PSRule.Rules.Azure/issues/1608)
   - Updated SQL firewall rules documentation by @ms-sambell.
     [#1569](https://github.com/Azure/PSRule.Rules.Azure/issues/1569)
-  - Updated Container Apps documentation and rule to new Resource Type by @marie-schmidt.
+  - Updated Container Apps documentation and rule to new resource type by @marie-schmidt.
     [#1672](https://github.com/Azure/PSRule.Rules.Azure/issues/1672)
 - Bug fixes:
   - Fixed continue processing policy assignments on error by @BernieWhite.
