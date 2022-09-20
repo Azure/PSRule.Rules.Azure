@@ -17,6 +17,8 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: 'Security'
+    Azure.ASB.v3/control: 'NS-2'
 spec:
   type:
   - Microsoft.DBforPostgreSQL/servers

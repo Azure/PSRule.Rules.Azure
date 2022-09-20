@@ -33,7 +33,7 @@ Rule 'Azure.SQL.FirewallIPRange' -Ref 'AZR-000185' -Type 'Microsoft.Sql/servers'
 }
 
 # Synopsis: Enable Microsoft Defender for Cloud for Azure SQL logical server
-Rule 'Azure.SQL.DefenderCloud' -Alias 'Azure.SQL.ThreatDetection' -Ref 'AZR-000186' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.DefenderCloud' -Alias 'Azure.SQL.ThreatDetection' -Ref 'AZR-000186' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.ASB.v3/control' = 'DP-3' } {
     $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/securityAlertPolicies');
     if ($configs.Length -eq 0) {
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/securityAlertPolicies');
@@ -55,7 +55,7 @@ Rule 'Azure.SQL.Auditing' -Ref 'AZR-000187' -Type 'Microsoft.Sql/servers' -Tag @
 }
 
 # Synopsis: Use Azure Active Directory (AAD) authentication with Azure SQL databases.
-Rule 'Azure.SQL.AAD' -Ref 'AZR-000188' -Type 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/administrators' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.AAD' -Ref 'AZR-000188' -Type 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/administrators' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.ASB.v3/control' = 'IM-1' } {
     # NB: Microsoft.Sql/servers/administrators overrides properties.administrators property.
 
     $configs = @($TargetObject);
@@ -96,7 +96,7 @@ Rule 'Azure.SQL.ServerName' -Ref 'AZR-000190' -Type 'Microsoft.Sql/servers' -Tag
 #region SQL Database
 
 # Synopsis: Enable transparent data encryption
-Rule 'Azure.SQL.TDE' -Ref 'AZR-000191' -Type 'Microsoft.Sql/servers/databases', 'Microsoft.Sql/servers/databases/transparentDataEncryption' -If { !(IsMasterDatabase) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.TDE' -Ref 'AZR-000191' -Type 'Microsoft.Sql/servers/databases', 'Microsoft.Sql/servers/databases/transparentDataEncryption' -If { !(IsMasterDatabase) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.ASB.v3/control' = 'DP-3' } {
     $configs = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Sql/servers/databases') {
         $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/databases/transparentDataEncryption');
