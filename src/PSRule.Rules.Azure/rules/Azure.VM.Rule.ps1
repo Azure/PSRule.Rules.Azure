@@ -260,13 +260,15 @@ Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000290' -Type 'Microsoft.Compute/virt
         return $Assert.Pass();
     }
 
+    
     ## Extension Prof
     $customScriptProperties = @('CustomScript', 'CustomScriptExtension', 'CustomScriptForLinux')
     if ($vmConfig.properties.type -in $customScriptProperties) {
-        Write-Host "vmConfig.properties.type: $($vmConfig.properties.type)"
+        Write-Host "VmConfig: $vmConfig"
+        Write-Host "properties: $($vmConfig.Properties)"
         Write-Host "Settings: $($vmConfig.properties.settings)"
         $cleanValue =  $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($vmConfig.properties.settings.commandToExecute);
-        Write-Host "cleanValue: $cleanValue"
+        # Write-Host "cleanValue: $cleanValue"
         $Assert.NotMatch($cleanValue, '.', "secureString\('.*'\)")
         
     } else {
