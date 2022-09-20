@@ -62,11 +62,15 @@ Rule 'Azure.Storage.FileStorageSoftDelete' -Ref 'AZR-000298' -Type 'Microsoft.St
     if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
         $services = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/fileServices/shares');
     }
+
     if ($services.Length -eq 0) {
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Storage/storageAccounts/fileServices/shares');
     }
+
     foreach ($service in $services) {
         $Assert.HasFieldValue($service, 'properties.deleteRetentionPolicy.enabled', $True);
+
+        $Assert.HasFieldValue((($services, 'properties.deleteRetentionPolicy.days', 7)));
     }
 }
 
