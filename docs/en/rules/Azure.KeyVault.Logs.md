@@ -6,7 +6,7 @@ resource: Key Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.Logs/
 ---
 
-# Audit Key Vault data access
+# Audit Key Vault Data Access
 
 ## SYNOPSIS
 
@@ -74,7 +74,7 @@ For example:
 }
 ```
 
-### Configure with Bicep Template
+### Configure with Bicep
 
 To deploy key vaults that pass this rule:
 
@@ -84,13 +84,9 @@ To deploy key vaults that pass this rule:
 For example:
 
 ```bicep
-param vaultName string = ''
-param location string = resourceGroup().location
-param workspaceId string = ''
-
 resource keyVaultResource 'Microsoft.KeyVault/vaults@2019-09-01' = {
-  name: vaultName
-  location: location
+  name: parmVaultName
+  location: parmLocation
   properties: {
     accessPolicies: []
     tenantId: subscription().tenantId
@@ -102,13 +98,13 @@ resource keyVaultResource 'Microsoft.KeyVault/vaults@2019-09-01' = {
 }
 
 resource keyVaultInsightsResource 'Microsoft.KeyVault/vaults/providers/diagnosticSettings@2016-09-01' = {
-  name: '${vaultName}/Microsoft.Insights/service'
+  name: '${parmVaultName}/Microsoft.Insights/service'
   dependsOn: [
     keyVaultResource
   ]
-  location: location
+  location: parmLocation
   properties: {
-    workspaceId: workspaceId
+    workspaceId: parmWorkspaceId
     logs: [
       {
         category: 'AuditEvent'
@@ -125,3 +121,4 @@ resource keyVaultInsightsResource 'Microsoft.KeyVault/vaults/providers/diagnosti
 - [Azure Key Vault logging](https://docs.microsoft.com/azure/key-vault/general/logging)
 - [Azure Key Vault security](https://docs.microsoft.com/azure/key-vault/general/security-overview#logging-and-monitoring)
 - [Monitoring your key vault service with Azure Monitor for Key Vault](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview)
+- [Security logs and alerts using Azure services](https://learn.microsoft.com/azure/architecture/framework/security/monitor-logs-alerts)
