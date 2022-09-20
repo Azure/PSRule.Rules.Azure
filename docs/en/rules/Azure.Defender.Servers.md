@@ -2,11 +2,11 @@
 severity: Critical
 pillar: Security
 category: Virtual Machine
-resource: Microsoft Defender for Containers
+resource: Microsoft Defender for Servers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.Servers/
 ---
 
-# Name of rule
+# Configure Microsoft Defender for Servers to the Standard tier and P2
 
 ## SYNOPSIS
 
@@ -14,7 +14,15 @@ Enable Microsoft Defender for Servers.
 
 ## DESCRIPTION
 
-{{ A detailed description of the rule }}
+Microsoft Defender for Servers automatically deploys an agent into your Windows and Linux machines to protect them.
+
+With the unified integration of Microsoft Defender for Endpoint (MDE) you benefit from features like:
+- Threat and vulnerability management : to discover vulnerabilities and misconfigurations in real time
+- Security Policy and Regulatory Compliance integration
+- Qualys integration for real time identification of vulnerabilities without any license needed
+- Threat detection at OS level, network layer and control plane
+- Just-in-time (JIT) access : to reduce your machine's surface attack
+- And more.
 
 ## RECOMMENDATION
 
