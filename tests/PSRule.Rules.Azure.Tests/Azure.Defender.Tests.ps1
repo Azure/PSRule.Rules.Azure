@@ -51,5 +51,21 @@ Describe 'Azure.Defender' -Tag 'Defender' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetObject.Name | Should -BeIn 'defenderA';
         }
+        
+        It 'Azure.Defender.Servers' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Defender.Servers' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderD', 'defenderE';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderC';
+        }
     }
 }

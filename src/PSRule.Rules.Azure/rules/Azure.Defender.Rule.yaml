@@ -26,6 +26,30 @@ spec:
   - Microsoft.Security/pricings
   condition:
     field: 'properties.pricingTier'
-    equals: 'Standard'  
+    equals: 'Standard'
+
+---
+# Synopsis: 
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Defender.Servers
+  ref: AZR-000290
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  level: Error
+  where:
+    name: '.'
+    equals: VirtualMachines
+  type:
+  - Microsoft.Security/pricings
+  condition:
+    allOf:
+      - field: 'properties.pricingTier'
+        equals: 'Standard'
+      - field: 'properties.subPlan'
+        equals: 'P2' 
 
 #endregion Rules

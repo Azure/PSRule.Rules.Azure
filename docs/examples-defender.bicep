@@ -20,3 +20,12 @@ resource defenderForContainers 'Microsoft.Security/pricings@2022-03-01' = {
     pricingTier: 'Standard'
   }
 }
+
+// Configures Azure Defender for Servers.
+resource defenderForServers 'Microsoft.Security/pricings@2022-03-01' = {
+  name: 'VirtualMachines'
+  properties: {
+    pricingTier: 'Standard'
+    subPlan: 'P2'
+  }
+}
