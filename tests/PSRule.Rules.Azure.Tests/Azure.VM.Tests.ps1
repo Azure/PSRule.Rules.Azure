@@ -511,6 +511,21 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'ReplicaVM_DataDisk_0-ASRReplica', 'disk-A', 'disk-B', 'disk-C';
         }
+
+        It 'Azure.VM.ScriptExtensions' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ScriptExtensions' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 16;
+
+        }
     }
 
     Context 'Resource name - Azure.VM.Name' {

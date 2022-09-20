@@ -249,14 +249,27 @@ Rule 'Azure.VM.PPGName' -Ref 'AZR-000260' -Type 'Microsoft.Compute/proximityPlac
 #endregion Proximity Placement Groups
 
 # Synopsis: Protect Custom Script Extensions commands
-Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000290' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000290' -Type 'Microsoft.Compute/virtualMachines', 'Microsoft.Computer/virtualMachines/CustomScriptExtension', 'Microsoft.Compute/virtualMachines/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
     $vmConfig = @($TargetObject);
+
+    if ($PSRule.TargetType -eq 'Microsoft.Compute/virtualMachines') {
+        $vmConfig = @(GetSubResources -ResourceType 'Microsoft.Compute/virtualMachines/CustomScriptExtension' );
+    }
+
+    if ($vmConfig.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    ## Extension Prof
     $customScriptProperties = @('CustomScript', 'CustomScriptExtension', 'CustomScriptForLinux')
-    foreach ($property in $vmConfig) {
-        if ($property -in $customScriptProperties){
-            Write-Host "Property $property"
-        } else {
-            $Assert.Pass()
-        }
-    } 
+    if ($vmConfig.properties.type -in $customScriptProperties) {
+        Write-Host "vmConfig.properties.type: $($vmConfig.properties.type)"
+        Write-Host "Settings: $($vmConfig.properties.settings)"
+        $cleanValue =  $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($vmConfig.properties.settings.commandToExecute);
+        Write-Host "cleanValue: $cleanValue"
+        $Assert.NotMatch($cleanValue, '.', "secureString\('.*'\)")
+        
+    } else {
+        return $Assert.Pass();
+    }
 }
