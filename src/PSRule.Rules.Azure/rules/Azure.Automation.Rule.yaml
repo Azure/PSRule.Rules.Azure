@@ -17,6 +17,8 @@ metadata:
   tags:
     release: GA
     ruleSet: 2021_12
+    Azure.WAF/pillar: 'Security'
+    Azure.ASB.v3/control: 'IM-2'
 spec:
   type:
   - Microsoft.Automation/automationAccounts
