@@ -4,7 +4,7 @@ severity: Important
 pillar: Reliability
 category: Data Management
 resource: Storage Account
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/FileStorageSoftDelete/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.FileStorageSoftDelete/
 ---
 
 # Use fileshare soft delete
