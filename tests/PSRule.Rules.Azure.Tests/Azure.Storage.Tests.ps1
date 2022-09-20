@@ -199,6 +199,34 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'storage-D';
         }
+
+        It 'Azure.Storage.FileShareSoftDelete' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.FileShareSoftDelete' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-F';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Storage/storageAccounts/fileServices'' has not been specified.';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-G';
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly 'Path properties.shareDeleteRetentionPolicy.enabled: Is set to ''True''.';
+
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-B', 'storage-C', 'storage-D', 'storage-E';
+        }
     }
 
     Context 'Resource name' {
@@ -341,6 +369,20 @@ Describe 'Azure.Storage' -Tag Storage {
 
         It 'Azure.Storage.Firewall' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.Firewall' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage1';
+        }
+
+        It 'Azure.Storage.FileShareSoftDelete' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.FileShareSoftDelete' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
