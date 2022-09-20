@@ -28,84 +28,75 @@ Display name and description fields should be human readable and easy to underst
 
 To set the display name and the description
 
+For APIs :
 set properties.displayName	for the resource type "apis". Dispaly name must be 1 to 300 characters long.
+set	properties.description resource type "apis". May include HTML formatting tags.
 
+For Operations:
+set properties.displayName	for the resource type "apis". Dispaly name must be 1 to 300 characters long.
 set	properties.description resource type "apis". May include HTML formatting tags.
 
 For example:
 
+**API deployment template**
+
 ```json
+
 {
-  "apiVersion": "2021-08-01",
-  "name": "apiService-001",
-  "type": "Microsoft.ApiManagement/service",
-  "location": "[resourceGroup().location]",
-  "tags": {},
-  "sku": {
-    "name": "Standard",
-    "capacity": "1"
-  },
+  "type": "Microsoft.ApiManagement/service/apis",
+  "apiVersion": "2021-01-01-preview",
+  "name": "apim-contoso-test-001",
   "properties": {
-    "publisherEmail": "noreply@contoso.com",
-    "publisherName": "Contoso"
-  },
-  "resources": [
-    {
-      "apiVersion": "2017-03-01",
-      "type": "apis",
-      "name": "exampleApi",
-      "dependsOn": [
-        "[concat('Microsoft.ApiManagement/service/apiService-001')]"
-      ],
-      "properties": {
-        "displayName": "Example API Name",
-        "description": "Description for example API",
-        "serviceUrl": "https://example.net",
-        "path": "exampleapipath",
-        "protocols": [  
-          "HTTPS"
-        ]
-      },
-      "resources": [
-        {
-          "apiVersion": "2017-03-01",
-          "type": "operations",
-          "name": "exampleOperationsGET",
-          "dependsOn": [
-            "[concat('Microsoft.ApiManagement/service/apiService-001/apis/exampleApi')]"
-          ],
-          "properties": {
-            "displayName": "GET resource",
-            "method": "GET",
-            "urlTemplate": "/resource",
-            "description": "A demonstration of a GET call"
-          },
-        }
-      ]
-    }
-  ]
+    "displayName": "Example Echo v1 API", # <----------------- Display name
+    "description": "An echo API service.", # <----------------- Descriotion 
+    "path": "echo",
+    "serviceUrl": "https://echo.contoso.com",
+    "protocols": [
+      "https"
+    ],
+    "apiVersion": "v1",
+    "subscriptionRequired": true
+  }
 }
 
 ```
+**Operation deployment template**
 
+```json
+
+{
+  "apiVersion": "2021-01-01-preview",
+  "type": "Microsoft.ApiManagement/service/apis/operations",
+  "name": "exampleOperationsGET",
+  "dependsOn": [
+    "[concat('Microsoft.ApiManagement/service/apim-contoso-test-001/apis/echo')]"
+  ],
+  "properties": {
+    "displayName": "GET resource", # <----------------- Display name
+    "method": "GET", 
+    "urlTemplate": "/resource",
+    "description": "A demonstration of a GET call" # <----------------- Description
+  },
+}
+
+
+
+```
 ### Configure with Bicep
 
-To set the display name and the description
-
-set properties.displayName	for the resource "Microsoft.ApiManagement/service/apis@2021-08-01". Dispaly name must be 1 to 300 characters long.
-
-set	properties.description for the resource "Microsoft.ApiManagement/service/apis@2021-08-01". May include HTML formatting tags.
 
 For example:
+
+**API deployment template**
 
 ```bicep
 
 resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
   parent: service
-  name: 'echo-v1'
+  name: 'apim-contoso-test-001'
   properties: {
-    displayName: 'Echo API'
-    description: 'An echo API service.'
+    displayName: 'Example Echo v1 API' // <----------------- Display name
+    description: 'An echo API service.' // <----------------- Descriptiuon
     path: 'echo'
     serviceUrl: 'https://echo.contoso.com'
     protocols: [
@@ -116,10 +107,29 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
     subscriptionRequired: true
   }
 }
+
 ```
+
+**Operation deployment template**
+
+```bicep
+
+resource operation 'Microsoft.ApiManagement/service/apis/operations@2021-12-01-preview' = {
+  name: 'exampleOperationsGET'
+  parent: api
+  properties: {
+    description: 'A demonstration of a GET call' // <----------------- Descriptiuon
+    displayName: 'GET resource' // <----------------- Display name
+    method: 'GET'
+    urlTemplate: '/resource'
+  }
+}
+
+```
+
 
 
 ## LINKS
 
 - [Import and publish your first API](https://docs.microsoft.com/azure/api-management/import-and-publish)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis#ApiCreateOrUpdateProperties)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis#ApiCreateOrUpdateProperties)

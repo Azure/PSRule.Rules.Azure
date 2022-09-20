@@ -51,130 +51,122 @@ For example:
 {
     "type": "Microsoft.ApiManagement/service",
     "apiVersion": "2021-01-01-preview",
-    "name": "[parameters('service_api_mgmt_test2_name')]",
-    "location": "Australia East",
+    "name": "apim-contoso-test-001",
+    "location": "[resourceGroup().location]",
     "sku": {
         "name": "Premium",
-        "capacity": 3
+        "capacity": 3 # <-----------------  sku name
     },
-    "zones": [
+    "zones": [ # <----------------- Zones 
         "1",
         "2",
         "3"
     ],
     "properties": {
-        "publisherEmail": "john.doe@contoso.com",
-        "publisherName": "contoso",
-        "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
-        "hostnameConfigurations": [
-            {
-                "type": "Proxy",
-                "hostName": "[concat(parameters('service_api_mgmt_test2_name'), '.azure-api.net')]",
-                "negotiateClientCertificate": false,
-                "defaultSslBinding": true,
-                "certificateSource": "BuiltIn"
-            }
-        ],
+        "publisherEmail": "noreply@contoso.com",
+        "publisherName": "Contoso"        
+    }
+}
+
+{
+    "type": "Microsoft.ApiManagement/service",
+    "apiVersion": "2021-01-01-preview",
+    "name": "apim-contoso-test-001",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "Premium",
+        "capacity": 3 # <-----------------  sku name
+    },
+    "zones": [ # <----------------- Zones 
+        "1",
+        "2",
+        "3"
+    ],
+    "properties": {
+        "publisherEmail": "noreply@contoso.com",
+        "publisherName": "Contoso",
         "additionalLocations": [
             {
                 "location": "East US",
                 "sku": {
-                    "name": "Premium",
+                    "name": "Premium",  # <-----------------  sku name
                     "capacity": 3
                 },
-                "zones": [
+                "zones": [ # <-----------------  Zones
                     "1",
                     "2",
                     "3"
                 ],
                 "disableGateway": false
             }
-        ],
-        "customProperties": {
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "false",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "false",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "false",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30": "false",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11": "false",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": "false",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "false",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": "false"
-        },
-        "virtualNetworkType": "None",
-        "disableGateway": false,
-        "apiVersionConstraint": {}
+        ]
     }
 }
+
 ```
 
 ### Configure with Bicep
 
-To set availability zones for a API management service
-
-- Set `zones` to a minimum of two zones from `["1", "2", "3"]`, ensuring the number of zones match `sku.capacity`.
-- Set `properties.additionalLocations[*].zones` to a minimum of two zones from `["1", "2", "3"]`, ensuring the number of zones match `properties.additionalLocations[*].sku.capacity`. 
-- Set `sku.name` and/or `properties.additionalLocations[*].sku.name` to `Premium`.
-
 For example:
 
 ```bicep
-resource service_api_mgmt_test2_name_resource 'Microsoft.ApiManagement/service@2021-01-01-preview' = {
-  name: service_api_mgmt_test2_name
-  location: 'Australia East'
+resource service 'Microsoft.ApiManagement/service@2021-12-01-preview' = {
+  name: apim-contoso-test-001
+  location: [resourceGroup().location]
   sku: {
-    name: 'Premium'
+    name: 'Premium' // # <-----------------  sku name
     capacity: 3
   }
-  zones: [
-    '1',
-    '2',
+  zones:{//<-----------------  Zones
+    '1'
+    '2'
     '3'
-  ]
+  }
   properties: {
-    publisherEmail: 'john.doe@contoso.com'
-    publisherName: 'contoso'
-    notificationSenderEmail: 'apimgmt-noreply@mail.windowsazure.com'
-    hostnameConfigurations: [
-      {
-        type: 'Proxy'
-        hostName: '${service_api_mgmt_test2_name}.azure-api.net'
-        negotiateClientCertificate: false
-        defaultSslBinding: true
-        certificateSource: 'BuiltIn'
-      }
-    ]
-    additionalLocations: [
-      {
-        location: 'East US'
-        sku: {
-          name: 'Premium'
-          capacity: 1
-        }
-        zones: [
-          '1'
-        ]
-        disableGateway: false
-      }
-    ]
-    customProperties: {
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168': 'false'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11': 'false'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10': 'false'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30': 'false'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11': 'false'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10': 'false'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30': 'false'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2': 'false'
-    }
-    virtualNetworkType: 'None'
-    disableGateway: false
-    apiVersionConstraint: {}
+    publisherEmail: 'noreply@contoso.com'
+    publisherName: 'Contoso'
   }
 }
+
+
+resource service 'Microsoft.ApiManagement/service@2021-12-01-preview' = {
+  name: apim-contoso-test-001
+  location: [resourceGroup().location]
+  sku: {
+    name: 'Premium' // # <-----------------  sku name
+    capacity: 3
+  }
+  zones:{//<-----------------  Zones
+    '1'
+    '2'
+    '3'
+  }
+  properties: {
+    publisherEmail: 'noreply@contoso.com'
+    publisherName: 'Contoso'
+    additionalLocations: [
+      {
+        disableGateway: false
+        location: 'East US'
+        sku: {
+          capacity: 3
+          name: 'Premium' // # <-----------------  sku name
+        }
+        zones: [ //<-----------------  Zones
+          '1'
+          '2'
+          '3'
+        ]
+      }
+    ]
+  }
+}
+
+
 ```
 
 ## LINKS
 
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service?tabs=json)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service?tabs=json)
 - [Availability zone support for Azure API Management](https://docs.microsoft.com/azure/api-management/zone-redundancy)
 - [Use zone-aware services](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
