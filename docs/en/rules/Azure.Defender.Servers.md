@@ -17,6 +17,7 @@ Enable Microsoft Defender for Servers.
 Microsoft Defender for Servers automatically deploys an agent into your Windows and Linux machines to protect them.
 
 With the unified integration of Microsoft Defender for Endpoint (MDE) you benefit from features like:
+
 - Threat and vulnerability management : to discover vulnerabilities and misconfigurations in real time
 - Security Policy and Regulatory Compliance integration
 - Qualys integration for real time identification of vulnerabilities without any license needed
@@ -67,6 +68,7 @@ resource defenderForContainerRegistry 'Microsoft.Security/pricings@2022-03-01' =
   }
 }
 ```
+
 ### Configure with Azure CLI
 
 ```bash
