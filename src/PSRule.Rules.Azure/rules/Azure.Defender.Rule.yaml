@@ -19,13 +19,13 @@ metadata:
     ruleSet: '2022_09'
 spec:
   level: Error
+  where:
+    name: '.'
+    equals: Containers
   type:
   - Microsoft.Security/pricings
   condition:
-    allOf:
-      - name: '.'
-        equals: 'Containers'
-      - field: 'properties.pricingTier'
-        equals: 'Standard'
-    
+    field: 'properties.pricingTier'
+    equals: 'Standard'  
+
 #endregion Rules
