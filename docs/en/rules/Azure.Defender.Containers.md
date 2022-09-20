@@ -25,7 +25,7 @@ One option for doing so is to use Microsoft Defender for Containers.
 
 Defender for Cloud continuously assesses the configurations of your clusters.
 If any misconfigurations is found, it generates security recommendations.
-The recommendations available in the Recommandations page allow you to investigate and remediate issues.
+The recommendations available in the Recommendations page allow you to investigate and remediate issues.
 
 Defender for Containers also provides real-time threat protection for your containerized environments.
 If any suspicious activities is detected, Defender for Container generates an alert.
