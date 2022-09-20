@@ -112,7 +112,7 @@ Describe 'Azure.Storage' -Tag Storage {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
+            $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
