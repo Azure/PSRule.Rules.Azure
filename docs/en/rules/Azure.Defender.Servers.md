@@ -1,5 +1,4 @@
 ---
-reviewed: 2022-mm-dd
 severity: Critical
 pillar: Security
 category: Virtual Machine
