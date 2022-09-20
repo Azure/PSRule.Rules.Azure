@@ -113,7 +113,9 @@
                                 "publisher": "Microsoft.Azure.Extensions",
                                 "type": "CustomScript",
                                 "typeHandlerVersion": "2.0",
-                                "settings": {}
+                                "settings": {
+                                    "commandToExecute": "[concat('Write-Output ', secureString('adminPassword'))]"
+                                }
                             }
                         },
                         {
@@ -410,7 +412,9 @@
                                 "publisher": "Microsoft.Azure.Extensions",
                                 "type": "CustomScript",
                                 "typeHandlerVersion": "2.0",
-                                "settings": {}
+                                "settings": {
+                                    "commandToExecute": "touch test2.txt"
+                                }
                             }
                         },
                         {

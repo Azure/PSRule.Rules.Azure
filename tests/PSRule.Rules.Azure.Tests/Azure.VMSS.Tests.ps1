@@ -65,6 +65,23 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002', 'vmss-003';
         }
+
+        It 'Azure.VMSS.ScriptExtensions' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.ScriptExtensions' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vmss-001'
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vmss-002', 'vmss-003';
+
+        }
     }
 
     Context 'Resource name - Azure.VMSS.Name' {
