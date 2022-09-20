@@ -14,7 +14,7 @@ Remove container images with known vulnerabilities.
 
 ## DESCRIPTION
 
-When Microsoft Defender for container registries is enabled, Microsoft Defender scans container images.
+When Azure Defender for container registries is enabled, Azure Defender scans container images.
 Container images are scanned for known vulnerabilities and marked as healthy or unhealthy.
 Vulnerable container images should not be used.
 
@@ -29,5 +29,6 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 ## LINKS
 
 - [Introduction to Azure Defender for container registries](https://docs.microsoft.com/azure/security-center/defender-for-container-registries-introduction)
-- [Overview of Microsoft Defender for Containers](https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction)
+- [Container security in Security Center](https://docs.microsoft.com/azure/security-center/container-security)
 - [Secure the images and run time](https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)
+- [Follow best practices for container security](https://docs.microsoft.com/azure/architecture/framework/security/applications-services#follow-best-practices-for-container-security)

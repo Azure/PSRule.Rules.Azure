@@ -28,9 +28,6 @@ The requirements for NSG names are:
 
 Consider using names that meet Network Security Group naming requirements.
 Additionally consider naming resources with a standard naming convention.
-If creating resources using CI/CD pipelines consider programmatically Generating Cloud Resource Names using
-[PowerShell](https://blog.tyang.org/2022/09/10/programmatically-generate-cloud-resource-names-part-1/) or
-[Bicep](https://4bes.nl/2021/10/10/get-a-consistent-azure-naming-convention-with-bicep-modules/)
 
 ## NOTES
 
