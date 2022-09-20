@@ -8,7 +8,7 @@
 #region Rules
 
 ---
-# Synopsis: 
+# Synopsis: Consider enabling Defender for Containers
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
@@ -29,7 +29,7 @@ spec:
     equals: 'Standard'
 
 ---
-# Synopsis: 
+# Synopsis: Consider enabling Defender for Servers
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
