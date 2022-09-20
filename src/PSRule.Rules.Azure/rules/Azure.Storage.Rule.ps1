@@ -56,6 +56,20 @@ Rule 'Azure.Storage.Name' -Ref 'AZR-000201' -Type 'Microsoft.Storage/storageAcco
     Match 'Name' '^[a-z0-9]{3,24}$' -CaseSensitive
 }
 
+# Synopsis: Enable soft delete on blob containers
+Rule 'Azure.Storage.ContainerSoftDelete' -Ref 'AZR-000289' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices' -If { !(IsCloudShell) -and !(IsHnsStorage) -and !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+    $services = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
+        $services = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices');
+    }
+    if ($services.Length -eq 0) {
+        return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Storage/storageAccounts/blobServices');
+    }
+    foreach ($service in $services) {
+        $Assert.HasFieldValue($service, 'properties.containerDeleteRetentionPolicy.enabled', $True);
+    }
+}
+
 #region Helper functions
 
 function global:ShouldStorageReplicate {

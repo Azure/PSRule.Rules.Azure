@@ -20,7 +20,7 @@ BeforeAll {
     # Setup tests paths
     $rootPath = $PWD;
     Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-    $here = (Resolve-Path $PSScriptRoot).Path; 
+    $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
 Describe 'Azure.Storage' -Tag Storage {
@@ -90,6 +90,33 @@ Describe 'Azure.Storage' -Tag Storage {
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly 'Path properties.deleteRetentionPolicy.enabled: Is set to ''False''.';
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Storage/storageAccounts/blobServices'' has not been specified.';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-G';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-E', 'storage-F';
+        }
+
+        It 'Azure.Storage.ContainerSoftDelete' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.ContainerSoftDelete' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly 'Path properties.containerDeleteRetentionPolicy.enabled: Is set to ''False''.';
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[1].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Storage/storageAccounts/blobServices'' has not been specified.';
 
@@ -309,6 +336,20 @@ Describe 'Azure.Storage' -Tag Storage {
 
         It 'Azure.Storage.SoftDelete' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.SoftDelete' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage1';
+        }
+
+        It 'Azure.Storage.ContainerSoftDelete' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.ContainerSoftDelete' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
