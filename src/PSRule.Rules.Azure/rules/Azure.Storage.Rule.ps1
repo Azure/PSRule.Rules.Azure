@@ -57,20 +57,20 @@ Rule 'Azure.Storage.Name' -Ref 'AZR-000201' -Type 'Microsoft.Storage/storageAcco
 }
 
 # Synopsis: Enable soft delete for file shares
-Rule 'Azure.Storage.FileShareSoftDelete' -Ref 'AZR-000298' -Type 'Microsoft.Storage/storageAccounts' -If {(IsFileStorage) -and !(IsCloudShell) -and !(IsHnsStorage)} -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+Rule 'Azure.Storage.FileShareSoftDelete' -Ref 'AZR-000298' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/fileServices' -If {(IsFileStorage) -and !(IsCloudShell) -and !(IsHnsStorage)} -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
     $services = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
-        $services = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/fileServices/shares');
+        $services = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/fileServices');
     }
 
     if ($services.Length -eq 0) {
-        return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Storage/storageAccounts/fileServices/shares');
+        return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Storage/storageAccounts/fileServices');
     }
 
     foreach ($service in $services) {
         $Assert.HasFieldValue($service, 'properties.deleteRetentionPolicy.enabled', $True);
 
-        $Assert.HasFieldValue((($services, 'properties.deleteRetentionPolicy.days', 7)));
+        $Assert.HasFieldValue($services, 'properties.deleteRetentionPolicy.days', 7);
     }
 }
 
