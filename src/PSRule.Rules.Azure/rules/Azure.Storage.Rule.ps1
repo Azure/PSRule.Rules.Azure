@@ -57,7 +57,7 @@ Rule 'Azure.Storage.Name' -Ref 'AZR-000201' -Type 'Microsoft.Storage/storageAcco
 }
 
 # Synopsis: Enable soft delete for file shares
-Rule 'Azure.Storage.FileStorageSoftDelete' -Ref 'AZR-000298' -Type 'Microsoft.Storage/storageAccounts' -If {IsFileStorage} -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+Rule 'Azure.Storage.FileStorageSoftDelete' -Ref 'AZR-000298' -Type 'Microsoft.Storage/storageAccounts' -If {IsFileStorage -and !(IsCloudShell) -and !(IsHnsStorage)} -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
     $services = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
         $services = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/fileServices/shares');
