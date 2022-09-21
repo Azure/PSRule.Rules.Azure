@@ -14,7 +14,7 @@ Avoid denying all inbound traffic.
 
 ## DESCRIPTION
 
-Network Security Groups can be configured to block all inbound network traffic.
+Network Security Groups (NSGs) are configured to block all inbound network traffic by default.
 Blocking all inbound traffic will fail load balancer health probes and other required traffic.
 
 When using a custom deny all inbound rule, also add rules to allow permitted traffic.
@@ -25,9 +25,11 @@ Rules with a lower priority number will be processed first.
 ## RECOMMENDATION
 
 Consider using a higher priority number for deny all rules to allow permitted traffic rules to be added.
+Consider enabling Flow Logs on all critical subnets in your subscription as an auditability and security best practice.
 
 ## LINKS
 
 - [Network security groups](https://docs.microsoft.com/azure/virtual-network/security-overview)
+- [Introduction to flow logging for network security groups](https://learn.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)
 - [Virtual network service tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)
