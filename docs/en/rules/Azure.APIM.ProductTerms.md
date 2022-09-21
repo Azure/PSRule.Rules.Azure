@@ -85,6 +85,7 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
     terms: 'Accept this legal terms for the usage of the custom product, to call the APIs' // <----------------- Terms
   }
 }
+
 ```
 
 
