@@ -253,7 +253,7 @@ Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000290' -Type 'Microsoft.Compute/virt
     $vmConfig = @($TargetObject);
 
     if ($PSRule.TargetType -eq 'Microsoft.Compute/virtualMachines') {
-        $vmConfig = @(GetSubResources -ResourceType 'extensions' );
+        $vmConfig = @(GetSubResources -ResourceType 'extensions', 'Microsoft.Compute/virtualMachines/extensions' );
     }
 
     if ($vmConfig.Length -eq 0) {
@@ -264,7 +264,7 @@ Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000290' -Type 'Microsoft.Compute/virt
     $customScriptProperties = @('CustomScript', 'CustomScriptExtension', 'CustomScriptForLinux')
     if ($vmConfig.properties.type -in $customScriptProperties) {
         $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($vmConfig.properties.settings.commandToExecute);
-        $Assert.NotMatch($cleanValue, '.', "secureString\('.*'\)")
+        $Assert.NotMatch($cleanValue, '.', "secureString")
         
     } else {
         return $Assert.Pass();

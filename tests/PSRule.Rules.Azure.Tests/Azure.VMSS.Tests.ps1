@@ -65,23 +65,6 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002', 'vmss-003';
         }
-
-        It 'Azure.VMSS.ScriptExtensions' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.ScriptExtensions' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vmss-001'
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'vmss-002', 'vmss-003';
-
-        }
     }
 
     Context 'Resource name - Azure.VMSS.Name' {
@@ -272,4 +255,29 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult.TargetName | Should -BeIn 'vmss-001';
         }
     }
+
+    Context 'With template' {
+        BeforeAll {
+            $templatePath = Join-Path -Path $here -ChildPath 'Resources.VMSS.Template.json';
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VMSS.json;
+            Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
+            $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        }
+
+        It 'Azure.VMSS.ScriptExtensions' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.ScriptExtensions' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vmss-003', 'vmss-004'
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002';
+
+        }
 }

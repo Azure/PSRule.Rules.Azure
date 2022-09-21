@@ -429,24 +429,6 @@
         },
         "resources": [
             {
-                "type": "extensions",
-                "name": "CustomScriptExtension",
-                "apiVersion": "2020-12-01",
-                "location": "region",
-                "properties": {
-                    "publisher": "Microsoft.Compute",
-                    "type": "CustomScriptExtension",
-                    "typeHandlerVersion": "1.8",
-                    "autoUpgradeMinorVersion": true,
-                    "settings": {
-                        "fileUris": [
-                            "[uri(parameters('_artifactsLocation'), concat(variables('scriptFolder'),'/',variables('scriptFileName'), parameters('_artifactsLocationSasToken')))]"
-                        ],
-                        "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', '/', variables('scriptFileName'), ' ', variables('scriptParameters'))]"
-                    }
-                }
-            },
-            {
                 "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
                 "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
                 "Location": "region",
@@ -1448,24 +1430,6 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "resources": [
             {
-                "type": "extensions",
-                "name": "CustomScriptExtension",
-                "apiVersion": "2020-12-01",
-                "location": "region",
-                "properties": {
-                    "publisher": "Microsoft.Compute",
-                    "type": "CustomScriptExtension",
-                    "typeHandlerVersion": "1.8",
-                    "autoUpgradeMinorVersion": true,
-                    "settings": {
-                        "fileUris": [
-                            "[uri(parameters('_artifactsLocation'), concat(variables('scriptFolder'),'/',variables('scriptFileName'), parameters('_artifactsLocationSasToken')))]"
-                        ],
-                        "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', secureString('adminUsername'), '/', variables('scriptFileName'), ' ', variables('scriptParameters'))]"
-                    }
-                }
-            },
-            {
                 "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic",
                 "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic",
                 "Identity": null,
@@ -1629,47 +1593,5 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "CreatedTime": null,
         "ChangedTime": null
-    },
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/installcustomscript')]",
-        "apiVersion": "2015-06-15",
-        "location": "[parameters('location')]",
-        "dependsOn": [
-            "[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.Azure.Extensions",
-            "type": "CustomScript",
-            "typeHandlerVersion": "2.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "fileUris": [
-                    "[variables('fileUris')]"
-                ],
-                "commandToExecute": "Write-Output 'hello'"
-            }
-        }
-    },
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/installcustomscript')]",
-        "apiVersion": "2015-06-15",
-        "location": "[parameters('location')]",
-        "dependsOn": [
-            "[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.Azure.Extensions",
-            "type": "CustomScript",
-            "typeHandlerVersion": "2.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "fileUris": [
-                    "[variables('fileUris')]"
-                ],
-                "commandToExecute": "[concat('Write-output', secureString('adminPassword'))]"
-            }
-        }
     }
 ]

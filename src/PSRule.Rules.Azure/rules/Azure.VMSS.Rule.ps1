@@ -59,7 +59,7 @@ Rule 'Azure.VMSS.ScriptExtensions' -Ref 'AZR-000291' -Type 'Microsoft.Compute/vi
 
         foreach($extensions in $vmssConfig.properties.virtualMachineProfile.extensionProfile.extensions ) {
             $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($extensions.properties.settings.commandToExecute);
-            $Assert.NotMatch($cleanValue, '.', "secureString\('.*'\)")
+            $Assert.NotMatch($cleanValue, '.', "secureString")
         } 
 
     } else {
