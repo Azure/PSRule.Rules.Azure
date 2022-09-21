@@ -116,9 +116,11 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-A';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly 'Path properties.containerDeleteRetentionPolicy.enabled: Is set to ''False''.';
+            $ruleResult[0].Reason | Should -BeExactly 'Path properties.containerDeleteRetentionPolicy.enabled: Does not exist.';
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Storage/storageAccounts/blobServices'' has not been specified.';
+            $ruleResult[1].Reason | Should -BeExactly 'Path properties.containerDeleteRetentionPolicy.enabled: Does not exist.';
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Storage/storageAccounts/blobServices'' has not been specified.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
