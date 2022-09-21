@@ -668,7 +668,9 @@
             {
                 "type": "Microsoft.Storage/storageAccounts/fileServices",
                 "apiVersion": "2021-04-01",
-                "name": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-002/providers/Microsoft.Storage/storageAccounts/storage-H/fileServices/default",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-002/providers/Microsoft.Storage/storageAccounts/storage-H/fileServices/default",
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-002/providers/Microsoft.Storage/storageAccounts/storage-H/fileServices/default",
+                "Name": "default",			
                 "sku": {
                     "name": "Standard_LRS",
                     "tier": "Standard"
