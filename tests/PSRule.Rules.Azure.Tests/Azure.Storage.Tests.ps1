@@ -113,7 +113,7 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C';
+            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-A';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly 'Path properties.containerDeleteRetentionPolicy.enabled: Is set to ''False''.';
