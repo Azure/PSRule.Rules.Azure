@@ -15,9 +15,9 @@ Deny outbound management connections from non-management hosts.
 ## DESCRIPTION
 
 Network Security Groups (NSGs) are basic stateful firewalls that provide network isolation and security.
-NSGs allow or deny traffic between virtual machines (VMs) and other supported services on a virtual network.
+NSGs allow or deny network traffic to and from Azure resources in an Azure virtual network.
 i.e. Traffic between VMs on the same or different subnet can be restricted.
-NSGs do this by enforcing ordered access rules for all traffic in/ out services attached to a subnet.
+NSGs do this by enforcing ordered access rules for all traffic in or out services attached to a subnet.
 
 This micro-segmentation approach provides a control to reduce lateral movement between services.
 
