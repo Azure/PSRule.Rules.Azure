@@ -67,6 +67,7 @@ Rule 'Azure.Storage.ContainerSoftDelete' -Ref 'AZR-000289' -Type 'Microsoft.Stor
     }
     foreach ($service in $services) {
         $Assert.HasFieldValue($service, 'properties.containerDeleteRetentionPolicy.enabled', $True);
+        $Assert.GreaterOrEqual($service, 'properties.containerDeleteRetentionPolicy.days', 1);
     }
 }
 
