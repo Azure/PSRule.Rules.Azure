@@ -25,9 +25,29 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.20.0-B0028:
 
+- Updated rules:
+  - Updated rules, tests and docs with Microsoft Defender for Cloud by @jonathanruiz.
+    [#545](https://github.com/Azure/PSRule.Rules.Azure/issues/545)
+    - The following rules have been renamed with aliases:
+      - Renamed `Azure.SQL.ThreatDetection` to `Azure.SQL.DefenderCloud`.
+      - Renamed `Azure.SecurityCenter.Contact` to `Azure.DefenderCloud.Contact`.
+      - Renamed `Azure.SecurityCenter.Provisioning` to `Azure.DefenderCloud.Provisioning`.
+    - If you are referencing the old names please consider updating to the new names.
+- General improvements:
+  - Updated NSG documentation with code snippets and links by @simone-bennett.
+    [#1607](https://github.com/Azure/PSRule.Rules.Azure/issues/1607)
+  - Updated Application Gateway documentation with code snippets by @ms-sambell.
+    [#1608](https://github.com/Azure/PSRule.Rules.Azure/issues/1608)
+  - Updated SQL firewall rules documentation by @ms-sambell.
+    [#1569](https://github.com/Azure/PSRule.Rules.Azure/issues/1569)
+  - Updated Container Apps documentation and rule to new resource type by @marie-schmidt.
+    [#1672](https://github.com/Azure/PSRule.Rules.Azure/issues/1672)
 - Bug fixes:
   - Fixed continue processing policy assignments on error by @BernieWhite.
     [#1651](https://github.com/Azure/PSRule.Rules.Azure/issues/1651)
+- New rules:
+  - AKS:
+    - Check AKS managed NSGs don't contain custom rules by @ms-sambell
 
 ## v1.20.0-B0028 (pre-release)
 

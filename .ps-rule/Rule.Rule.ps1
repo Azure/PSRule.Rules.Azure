@@ -67,5 +67,6 @@ Rule 'Rule.NonCultureMSDocs' -Type 'PSRule.Rules.Rule' -If { $Assert.Greater($Ta
     }
     foreach ($link in $links) {
         $Assert.NotMatch($link, 'Uri', 'https\:\/\/docs\.microsoft\.com\/[a-z]{2,2}-[a-z]{2,2}\/\w{1,}')
+        $Assert.NotMatch($link, 'Uri', 'https\:\/\/learn\.microsoft\.com\/[a-z]{2,2}-[a-z]{2,2}\/\w{1,}')
     }
 }
