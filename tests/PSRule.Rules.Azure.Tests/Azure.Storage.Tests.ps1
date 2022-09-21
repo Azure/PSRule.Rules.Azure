@@ -116,23 +116,25 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-A';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly 'Path properties.containerDeleteRetentionPolicy.enabled: Does not exist.';
+            #$ruleResult[0].Reason | Should -BeExactly 'Path properties.containerDeleteRetentionPolicy.enabled: Does not exist.';
+            $ruleResult[0].Reason | Should -BeIn @('Path properties.containerDeleteRetentionPolicy.enabled: Does not exist.', 'Path properties.containerDeleteRetentionPolicy.days: Does not exist.');
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly 'Path properties.containerDeleteRetentionPolicy.enabled: Does not exist.';
+            #$ruleResult[1].Reason | Should -BeExactly 'Path properties.containerDeleteRetentionPolicy.enabled: Does not exist.';
+            $ruleResult[1].Reason | Should -BeIn @('Path properties.containerDeleteRetentionPolicy.enabled: Does not exist.', 'Path properties.containerDeleteRetentionPolicy.days: Does not exist.');
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[2].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Storage/storageAccounts/blobServices'' has not been specified.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'storage-G';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'storage-G', 'storage-E';
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-E', 'storage-F';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-F';
         }
 
         It 'Azure.Storage.BlobPublicAccess' {
