@@ -120,4 +120,4 @@ resource frontDoorInsightsResource 'Microsoft.Insights/diagnosticSettings@2020-0
 
 - [Monitoring metrics and logs in Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-diagnostics#diagnostic-logging)
 - [Create a Front Door Standard/Premium using Bicep](https://learn.microsoft.com/azure/frontdoor/create-front-door-bicep?tabs=CLI)
-- [Security logs and alerts using Azure services](https://learn.microsoft.com/eazure/architecture/framework/security/monitor-logs-alerts)
+- [Security logs and alerts using Azure services](https://learn.microsoft.com/azure/architecture/framework/security/monitor-logs-alerts)
