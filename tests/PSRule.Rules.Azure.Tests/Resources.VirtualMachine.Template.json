@@ -422,7 +422,7 @@
                 "type": "CustomScript",
                 "typeHandlerVersion": "2.0",
                 "autoUpgradeMinorVersion": true,
-                "settings": {
+                "secureSettings": {
                     "commandToExecute": "[concat('Write-Output ', parameters('adminPassword'))]"
                 }
             }

@@ -280,4 +280,5 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002';
 
         }
+    }
 }
