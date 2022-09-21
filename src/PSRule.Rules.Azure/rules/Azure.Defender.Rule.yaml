@@ -94,4 +94,25 @@ spec:
     field: 'properties.pricingTier'
     equals: 'Standard'
 
+---
+# Synopsis: Consider enabling Defender for Storage
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Defender.Storage
+  ref: AZR-000293
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  level: Error
+  where:
+    name: '.'
+    equals: StorageAccounts
+  type:
+  - Microsoft.Security/pricings
+  condition:
+    field: 'properties.pricingTier'
+    equals: 'Standard'
+
 #endregion Rules

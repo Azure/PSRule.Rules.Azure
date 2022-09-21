@@ -45,3 +45,11 @@ resource defenderForAppServices 'Microsoft.Security/pricings@2022-03-01' = {
     pricingTier: 'Standard'
   }
 }
+
+// Configures Azure Defender for Storage.
+resource defenderForStorage 'Microsoft.Security/pricings@2022-03-01' = {
+  name: 'StorageAccounts'
+  properties: {
+    pricingTier: 'Standard'
+  }
+}
