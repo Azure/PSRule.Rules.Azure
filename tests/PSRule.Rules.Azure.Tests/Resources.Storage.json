@@ -619,9 +619,6 @@
             "name": "Standard_LRS",
             "tier": "Standard"
         },
-		"Tags": {
-            "ms-resource-usage": "azure-cloud-shell"
-        },
         "properties": {
             "defaultToOAuthAuthentication": false,
             "keyCreationTime": {
