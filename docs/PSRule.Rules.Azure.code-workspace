@@ -1,0 +1,58 @@
+{
+	"folders": [
+		{
+			"name": "PSRule.Rules.Azure",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"reports/": true,
+			"out/": true,
+			".vs/": true,
+			"**/bin/": true,
+			"**/obj/": true,
+			".venv/": true
+		},
+		"search.exclude": {
+			"out/": true
+		},
+		"editor.insertSpaces": true,
+		"editor.tabSize": 4,
+		"[yaml]": {
+			"editor.tabSize": 2
+		},
+		"[json]": {
+			"editor.formatOnSave": true,
+			"editor.tabSize": 2,
+			"files.insertFinalNewline": true
+		},
+		"[jsonc]": {
+			"editor.formatOnSave": true,
+			"editor.tabSize": 2,
+			"files.insertFinalNewline": true
+		},
+		"[markdown]": {
+			"editor.tabSize": 2,
+			"files.insertFinalNewline": true
+		},
+		"files.associations": {
+			"**/.azure-pipelines/*.yaml": "azure-pipelines",
+			"**/.azure-pipelines/jobs/*.yaml": "azure-pipelines",
+			"**/.azure-pipelines/steps/*.yaml": "azure-pipelines",
+			"**/tests/**/Resources*.Template*.json": "arm-template"
+		},
+		"omnisharp.enableImportCompletion": true,
+		"omnisharp.organizeImportsOnFormat": true,
+		"omnisharp.enableEditorConfigSupport": true,
+		"omnisharp.enableRoslynAnalyzers": true,
+		"PSRule.documentation.path": "docs",
+		"PSRule.documentation.localePath": "en/rules/",
+		"PSRule.documentation.customSnippetPath": ".vscode/markdown.code-snippets",
+		"PSRule.documentation.snippet": "Azure rule documentation",
+		"git.branchProtection": [
+			"main",
+			"release/*"
+		]
+	}
+}

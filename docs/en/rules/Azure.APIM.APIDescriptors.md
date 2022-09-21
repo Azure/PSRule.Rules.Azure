@@ -33,8 +33,8 @@ set properties.displayName	for the resource type "apis". Dispaly name must be 1 
 set	properties.description resource type "apis". May include HTML formatting tags.
 
 For Operations:
-set properties.displayName	for the resource type "apis". Dispaly name must be 1 to 300 characters long.
-set	properties.description resource type "apis". May include HTML formatting tags.
+set properties.displayName	for the resource type "operations". Dispaly name must be 1 to 300 characters long.
+set	properties.description resource type "operations". May include HTML formatting tags.
 
 For example:
 

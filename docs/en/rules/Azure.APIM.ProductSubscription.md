@@ -36,55 +36,19 @@ set	properties.description resource type "apis". May include HTML formatting tag
 For example:
 
 ```json
+
 {
-  "apiVersion": "2021-08-01",
-  "name": "apiService-001",
-  "type": "Microsoft.ApiManagement/service",
-  "location": "[resourceGroup().location]",
-  "tags": {},
-  "sku": {
-    "name": "Standard",
-    "capacity": "1"
-  },
+  "type": "Microsoft.ApiManagement/service/products",
+  "apiVersion": "2021-12-01-preview",
+  "name": "apim-contoso-test-001/custom-product",
   "properties": {
-    "publisherEmail": "noreply@contoso.com",
-    "publisherName": "Contoso"
-  },
-  "resources": [
-    {
-      "apiVersion": "2017-03-01",
-      "type": "apis",
-      "name": "exampleApi",
-      "dependsOn": [
-        "[concat('Microsoft.ApiManagement/service/apiService-001')]"
-      ],
-      "properties": {
-        "displayName": "Example API Name",
-        "description": "Description for example API",
-        "serviceUrl": "https://example.net",
-        "path": "exampleapipath",
-        "protocols": [  
-          "HTTPS"
-        ]
-      },
-      "resources": [
-        {
-          "apiVersion": "2017-03-01",
-          "type": "operations",
-          "name": "exampleOperationsGET",
-          "dependsOn": [
-            "[concat('Microsoft.ApiManagement/service/apiService-001/apis/exampleApi')]"
-          ],
-          "properties": {
-            "displayName": "GET resource",
-            "method": "GET",
-            "urlTemplate": "/resource",
-            "description": "A demonstration of a GET call"
-          },
-        }
-      ]
-    }
-  ]
+    "approvalRequired": true, 
+    "description": "Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso", 
+    "displayName": "Custom Product", 
+    "state": "published",
+    "subscriptionRequired": true, # <----------------- Subscription required enabled
+    "subscriptionsLimit": 1
+  }
 }
 
 ```
@@ -114,7 +78,7 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
     ]
     apiVersion: 'v1'
     apiVersionSetId: version.id
-    subscriptionRequired: true
+    subscriptionRequired: true // <----------------- Subscription required enabled
   }
 }
 ```
