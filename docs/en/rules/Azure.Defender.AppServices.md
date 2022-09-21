@@ -35,7 +35,7 @@ Consider using Microsoft Defender for App Service to protect your web apps and A
 
 ### Configure with Azure template
 
-To enable Defender for Containers:
+To enable Defender for App Service:
 
 - Set the `Standard` pricing tier for Microsoft Defender for App Service.
 
@@ -54,7 +54,7 @@ For example:
 
 ### Configure with Bicep
 
-To enable Defender for Containers:
+To enable Defender for App Service:
 
 - Set the `Standard` pricing tier for Microsoft Defender for App Service.
 
