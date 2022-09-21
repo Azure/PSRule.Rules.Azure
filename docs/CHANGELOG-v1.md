@@ -28,6 +28,9 @@ What's changed since pre-release v1.20.0-B0028:
 - Bug fixes:
   - Fixed continue processing policy assignments on error by @BernieWhite.
     [#1651](https://github.com/Azure/PSRule.Rules.Azure/issues/1651)
+- New rules:
+  - AKS:
+    - Check AKS managed NSGs don't contain custom rules by @ms-sambell
 
 ## v1.20.0-B0028 (pre-release)
 
