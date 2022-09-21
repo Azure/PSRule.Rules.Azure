@@ -81,6 +81,7 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
     subscriptionRequired: true // <----------------- Subscription required enabled
   }
 }
+
 ```
 
 
