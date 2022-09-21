@@ -29,4 +29,39 @@ spec:
     - name: '.'
       match: '^[a-z0-9]([a-z0-9_.-]{0,78}[a-z0-9_])?$'
 
+--- 
+
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.NSG.AKSManaged
+spec:
+  if:
+    allOf:
+    - type: '.'
+      equals: 'Microsoft.Network/networkSecurityGroups'
+    - name: '.'
+      match: 'aks-[a-z].{0,30}-[0-9].{0,31}-nsg'
+
+---
+# Synopsis: AKS Network Security Groups (NSG) shouldn't contain custom rules
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.NSG.AKSRules
+  ref: AZR-000292
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  with: 
+  - Azure.NSG.AKSManaged
+  type:
+  - Microsoft.Network/networkSecurityGroups
+  condition:
+    field: properties.securityRules
+    allOf:
+    - field: name
+      match: '([a-z0-9].{0,31})-(TCP|UDP)-([a-z0-9].{0,2})-.*'
+
 #endregion Rules
