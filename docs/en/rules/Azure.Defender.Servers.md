@@ -60,7 +60,7 @@ To enable Defender for Servers:
 For example:
 
 ```bicep
-resource defenderForContainerRegistry 'Microsoft.Security/pricings@2022-03-01' = {
+resource defenderForServers 'Microsoft.Security/pricings@2022-03-01' = {
   name: 'VirtualMachines'
   properties: {
     pricingTier: 'Standard',

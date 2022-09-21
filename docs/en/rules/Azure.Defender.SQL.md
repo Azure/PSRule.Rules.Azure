@@ -32,7 +32,7 @@ Consider using Microsoft Defender for SQL to protect your SQL databases.
 
 ### Configure with Azure template
 
-To enable Defender for Servers:
+To enable Defender for SQL:
 
 - Set the `Standard` pricing tier for Microsoft Defender for SQL.
 
@@ -51,14 +51,14 @@ For example:
 
 ### Configure with Bicep
 
-To enable Defender for Servers:
+To enable Defender for SQL:
 
 - Set the `Standard` pricing tier for Microsoft Defender for SQL.
 
 For example:
 
 ```bicep
-resource defenderForContainerRegistry 'Microsoft.Security/pricings@2022-03-01' = {
+resource defenderForSQL 'Microsoft.Security/pricings@2022-03-01' = {
   name: 'SqlServers'
   properties: {
     pricingTier: 'Standard'

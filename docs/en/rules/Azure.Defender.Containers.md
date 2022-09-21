@@ -70,7 +70,7 @@ To enable Defender for Containers:
 For example:
 
 ```bicep
-resource defenderForContainerRegistry 'Microsoft.Security/pricings@2022-03-01' = {
+resource defenderForContainers 'Microsoft.Security/pricings@2022-03-01' = {
   name: 'Containers'
   properties: {
     pricingTier: 'Standard'
