@@ -25,6 +25,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.20.0-B0028:
 
+- New rules:
+  - Enabled storage container soft delete by @pazdedav
+    [[#1671](https://github.com/Azure/PSRule.Rules.Azure/issues/1671)]
 - Updated rules:
   - Updated rules, tests and docs with Microsoft Defender for Cloud by @jonathanruiz.
     [#545](https://github.com/Azure/PSRule.Rules.Azure/issues/545)
@@ -193,7 +196,7 @@ What's changed since pre-release v1.19.0-B0010:
     [#1582](https://github.com/Azure/PSRule.Rules.Azure/issues/1582)
   - Fixed handling of storage accounts sub-resources with CMK by @BernieWhite.
     [#1575](https://github.com/Azure/PSRule.Rules.Azure/issues/1575)
-  
+
 ## v1.19.0-B0010 (pre-release)
 
 What's changed since v1.18.1:
