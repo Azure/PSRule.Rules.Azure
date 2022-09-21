@@ -59,8 +59,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-C', 'storage-F', 'storage-G';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-C', 'storage-F', 'storage-G', 'storage-H';
         }
 
         It 'Azure.Storage.SecureTransfer' {
@@ -75,8 +75,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-F', 'storage-G';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-F', 'storage-G', 'storage-H';
         }
 
         It 'Azure.Storage.SoftDelete' {
@@ -102,8 +102,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-E', 'storage-F';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-E', 'storage-F', 'storage-H';
         }
 
         It 'Azure.Storage.BlobPublicAccess' {
@@ -124,8 +124,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'storage-F';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'storage-F', 'storage-H';
         }
 
         It 'Azure.Storage.BlobAccessType' {
@@ -149,8 +149,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'storage-F';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'storage-F', 'storage-H';
         }
 
         It 'Azure.Storage.MinTLS' {
@@ -174,8 +174,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-G';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-G', 'storage-H';
         }
 
         It 'Azure.Storage.Firewall' {
@@ -196,8 +196,8 @@ Describe 'Azure.Storage' -Tag Storage {
             # None, skip Azure Cloud Shell storage accounts
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'storage-D';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-H';
         }
 
         It 'Azure.Storage.FileShareSoftDelete' {
@@ -216,7 +216,7 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'storage-G';
+            $ruleResult.TargetName | Should -BeIn 'storage-H';
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly 'Path properties.shareDeleteRetentionPolicy.enabled: Is set to ''True''.';
 
