@@ -6513,7 +6513,7 @@ This secure by default behaviour can be overriden by allowing insecure HTTP traf
 </ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Web/containerApps&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.App/containerApps&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-03-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;appName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -6540,7 +6540,7 @@ This secure by default behaviour can be overriden by allowing insecure HTTP traf
 <li>Set <code>properties.configuration.ingress.allowInsecure</code> to <code>false</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource containerApp &#39;Microsoft.Web/containerApps@2021-03-01&#39; = {
+<div class="highlight"><pre><span></span><code>resource containerApp &#39;Microsoft.App/containerApps@2021-03-01&#39; = {
   name: appName
   location: location
   properties: {
@@ -6574,7 +6574,7 @@ This secure by default behaviour can be overriden by allowing insecure HTTP traf
   <small>
     
       Last update:
-      2022-02-15
+      2022-09-21
     
   </small>
 </div>
