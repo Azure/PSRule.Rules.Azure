@@ -46,7 +46,7 @@ Consider using Microsoft Defender for Containers to protect your container-based
 
 To enable Defender for Containers:
 
-- Set the `Standard` pricing tier for Microsoft Defender for container registries.
+- Set the `Standard` pricing tier for Microsoft Defender for Containers.
 
 For example:
 
@@ -65,7 +65,7 @@ For example:
 
 To enable Defender for Containers:
 
-- Set the `Standard` pricing tier for Microsoft Defender for container registries.
+- Set the `Standard` pricing tier for Microsoft Defender for Containers.
 
 For example:
 

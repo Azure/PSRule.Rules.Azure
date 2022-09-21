@@ -73,4 +73,25 @@ spec:
     field: 'properties.pricingTier'
     equals: 'Standard'
 
+---
+# Synopsis: Consider enabling Defender for App Service
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Defender.AppServices
+  ref: AZR-000292
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  level: Error
+  where:
+    name: '.'
+    equals: AppServices
+  type:
+  - Microsoft.Security/pricings
+  condition:
+    field: 'properties.pricingTier'
+    equals: 'Standard'
+
 #endregion Rules

@@ -37,3 +37,11 @@ resource defenderForSQL 'Microsoft.Security/pricings@2022-03-01' = {
     pricingTier: 'Standard'
   }
 }
+
+// Configures Azure Defender for App Service.
+resource defenderForAppServices 'Microsoft.Security/pricings@2022-03-01' = {
+  name: 'AppServices'
+  properties: {
+    pricingTier: 'Standard'
+  }
+}
