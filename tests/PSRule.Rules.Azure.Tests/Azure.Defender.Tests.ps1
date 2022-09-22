@@ -115,5 +115,21 @@ Describe 'Azure.Defender' -Tag 'Defender' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetObject.Name | Should -BeIn 'defenderJ';
         }
+
+        It 'Azure.Defender.SQLOnVM' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Defender.SQLOnVM' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderM';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderL';
+        }
     }
 }

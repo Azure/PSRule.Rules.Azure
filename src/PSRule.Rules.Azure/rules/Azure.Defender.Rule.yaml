@@ -13,7 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Defender.Containers
-  ref: AZR-000289
+  ref: AZR-000290
   tags:
     release: 'GA'
     ruleSet: '2022_09'
@@ -34,7 +34,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Defender.Servers
-  ref: AZR-000290
+  ref: AZR-000293
   tags:
     release: 'GA'
     ruleSet: '2022_09'
@@ -58,7 +58,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Defender.SQL
-  ref: AZR-000291
+  ref: AZR-000294
   tags:
     release: 'GA'
     ruleSet: '2022_09'
@@ -79,7 +79,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Defender.AppServices
-  ref: AZR-000293
+  ref: AZR-000295
   tags:
     release: 'GA'
     ruleSet: '2022_09'
@@ -100,7 +100,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Defender.Storage
-  ref: AZR-000294
+  ref: AZR-000296
   tags:
     release: 'GA'
     ruleSet: '2022_09'
@@ -109,6 +109,27 @@ spec:
   where:
     name: '.'
     equals: StorageAccounts
+  type:
+  - Microsoft.Security/pricings
+  condition:
+    field: 'properties.pricingTier'
+    equals: 'Standard'
+
+---
+# Synopsis: Consider enabling Defender for SQL Servers on machines
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Defender.SQLOnVM
+  ref: AZR-000297
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  level: Error
+  where:
+    name: '.'
+    equals: SqlServerVirtualMachines
   type:
   - Microsoft.Security/pricings
   condition:

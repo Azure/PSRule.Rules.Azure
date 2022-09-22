@@ -53,3 +53,11 @@ resource defenderForStorage 'Microsoft.Security/pricings@2022-03-01' = {
     pricingTier: 'Standard'
   }
 }
+
+// Configures Azure Defender for SQL Servers on machines.
+resource defenderForSQLOnVM 'Microsoft.Security/pricings@2022-03-01' = {
+  name: 'SqlServerVirtualMachines'
+  properties: {
+    pricingTier: 'Standard'
+  }
+}
