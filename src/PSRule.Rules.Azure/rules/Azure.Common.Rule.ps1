@@ -186,7 +186,7 @@ function global:IsLinuxOS { # TODO doesn't need to be global
         $isLinuxOS = $False
         
         foreach ($linuxOffer in $LinuxOffers) {
-            if ($linuxOffer.item1 -ieq $imageReference.publisher -and $linuxOffer.item2 -ieq $imageReference.offer) {
+            if ($linuxOffer[0] -ieq $imageReference.publisher -and $linuxOffer[1] -ieq $imageReference.offer) {
                 $isLinuxOS = $True
                 break
             }
