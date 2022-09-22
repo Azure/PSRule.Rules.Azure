@@ -570,7 +570,7 @@
             "sslPort": 6380,
             "linkedServers": []
         }
-    }
+    },
     {
         "Name": "redis-S",
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-S",
