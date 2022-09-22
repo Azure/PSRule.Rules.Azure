@@ -23,5 +23,5 @@ The Redis cache has greater than ten (10) public IP addresses that are permitted
 
 ## Links
 
-- [How to configure Azure Cache for Redis - Firewall](https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/cache-configure#default-redis-server-configuration#firewall)
+- [How to configure Azure Cache for Redis - Firewall](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#default-redis-server-configuration#firewall)
 - [Microsoft.Cache redis/firewallRules](https://docs.microsoft.com/azure/templates/microsoft.cache/2022-05-01/redis/firewallrules)
