@@ -26,10 +26,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since pre-release v1.20.0-B0028:
 
 - New rules:
-  - Enabled storage container soft delete by @pazdedav
-    [[#1671](https://github.com/Azure/PSRule.Rules.Azure/issues/1671)]
-  - Enabled fileshare soft delete by @jonathanruiz
-    [[#966]](https://github.com/Azure/PSRule.Rules.Azure/issues/966)
+  - Storage Account:
+    - Check blob container soft delete is enabled by @pazdedav.
+      [#1671](https://github.com/Azure/PSRule.Rules.Azure/issues/1671)
+    - Check file share soft delete is enabled by @jonathanruiz.
+      [#966](https://github.com/Azure/PSRule.Rules.Azure/issues/966)
+  - App Configuration:
+    - Use identity-based authentication for App Configuration by @pazdedav
+      [#1691](https://github.com/Azure/PSRule.Rules.Azure/issues/1691)
 - Updated rules:
   - Updated rules, tests and docs with Microsoft Defender for Cloud by @jonathanruiz.
     [#545](https://github.com/Azure/PSRule.Rules.Azure/issues/545)
@@ -38,7 +42,7 @@ What's changed since pre-release v1.20.0-B0028:
       - Renamed `Azure.SecurityCenter.Contact` to `Azure.DefenderCloud.Contact`.
       - Renamed `Azure.SecurityCenter.Provisioning` to `Azure.DefenderCloud.Provisioning`.
     - If you are referencing the old names please consider updating to the new names.
-  - Added Bicep/ARM examples to KeyVault.Logs.md, FrontDoor.Logs.md, FrontDoor.MinTLS.md, and FrontDoor.Probe\*.md by @lluppesms
+  - Added Bicep/ARM examples to KeyVault.Logs.md, FrontDoor.Logs.md, FrontDoor.MinTLS.md, and FrontDoor.Probe*.md by @lluppesms
     [#1667](https://github.com/Azure/PSRule.Rules.Azure/issues/1667)
 - General improvements:
   - Updated NSG documentation with code snippets and links by @simone-bennett.
@@ -49,6 +53,8 @@ What's changed since pre-release v1.20.0-B0028:
     [#1569](https://github.com/Azure/PSRule.Rules.Azure/issues/1569)
   - Updated Container Apps documentation and rule to new resource type by @marie-schmidt.
     [#1672](https://github.com/Azure/PSRule.Rules.Azure/issues/1672)
+  - Updated KeyVault and FrontDoor documentation with code snippets by @lluppesms.
+    [#1667](https://github.com/Azure/PSRule.Rules.Azure/issues/1667)
 - Bug fixes:
   - Fixed continue processing policy assignments on error by @BernieWhite.
     [#1651](https://github.com/Azure/PSRule.Rules.Azure/issues/1651)
