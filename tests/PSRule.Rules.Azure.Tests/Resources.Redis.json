@@ -574,7 +574,7 @@
     {
         "Name": "redis-S",
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-S",
-        "ResourceName": "redis-P",
+        "ResourceName": "redis-S",
         "ResourceType": "Microsoft.Cache/redisEnterprise",
         "ResourceGroupName": "test-rg",
         "Location": "australiaeast",
@@ -582,7 +582,7 @@
         "Tags": {},
         "Properties": {
             "minimumTlsVersion": "1.2",
-            "hostName": "redis-P.redis.cache.windows.net"
+            "hostName": "redis-S.redis.cache.windows.net"
         },
         "sku": {
             "name": "EnterpriseFlash_F1500",
