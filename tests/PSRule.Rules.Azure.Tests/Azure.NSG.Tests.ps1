@@ -49,8 +49,8 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'nsg-A', 'nsg-C', 'nsg-D', 'nsg-E';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'nsg-A', 'nsg-C', 'nsg-D', 'nsg-E', 'aks-agentpool-00000000-nsg', 'aks-agentpool-00000001-nsg';
         }
 
         It 'Azure.NSG.DenyAllInbound' {
@@ -68,8 +68,8 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'nsg-A', 'nsg-B', 'nsg-D', 'nsg-E';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'nsg-A', 'nsg-B', 'nsg-D', 'nsg-E', 'aks-agentpool-00000000-nsg', 'aks-agentpool-00000001-nsg';
         }
 
         It 'Azure.NSG.LateralTraversal' {
@@ -78,8 +78,8 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'nsg-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'nsg-C', 'aks-agentpool-00000000-nsg', 'aks-agentpool-00000001-nsg';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "A rule to limit lateral traversal was not found.";
@@ -114,6 +114,23 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'nsg-A';
+        }
+
+        It 'Azure.NSG.AKSRules' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.NSG.AKSRules' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            
+            $ruleResult.TargetName | Should -Be 'aks-agentpool-00000001-nsg';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'aks-agentpool-00000000-nsg';
         }
     }
 
