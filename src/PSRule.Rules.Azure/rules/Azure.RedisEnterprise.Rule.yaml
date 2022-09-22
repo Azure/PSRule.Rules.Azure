@@ -42,7 +42,7 @@ spec:
   if:
     allOf:
     - type: '.'
-      equals: Microsoft.Cache/Redis
+      equals: Microsoft.Cache/RedisEnterprise
     - field: properties.sku.capacity
       exists: true
     - field: properties.sku.family
