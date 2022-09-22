@@ -4,7 +4,14 @@
         "apiVersion": "github.com/microsoft/PSRule/v1",
         "kind": "Rule",
         "metadata": {
-            "name": "Deny Storage Account Not Using Minumum TLS version"
+            "name": "Deny Storage Account Not Using Minumum TLS version",
+            "tags": {
+                "Azure.Policy/category": "Storage"
+            },
+            "annotations": {
+                "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/Deny-Storage-Account-Not-Using-Minimum-TLS-Version",
+                "Azure.Policy/version": "1.0.0"
+            }
         },
         "spec": {
             "condition": {
@@ -26,7 +33,14 @@
         "apiVersion": "github.com/microsoft/PSRule/v1",
         "kind": "Rule",
         "metadata": {
-            "name": "Deploy Log Analytics extension for Linux VMs"
+            "name": "Deploy Log Analytics extension for Linux VMs",
+            "tags": {
+                "Azure.Policy/category": "Monitoring"
+            },
+            "annotations": {
+                "Azure.Policy/id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+                "Azure.Policy/version": "2.0.1"
+            }
         },
         "spec": {
             "condition": {
@@ -321,7 +335,14 @@
         "apiVersion": "github.com/microsoft/PSRule/v1",
         "kind": "Rule",
         "metadata": {
-            "name": "FunctionAppPullFromSpecifiedRegistry"
+            "name": "FunctionAppPullFromSpecifiedRegistry",
+            "tags": {
+                "Azure.Policy/category": "App Service"
+            },
+            "annotations": {
+                "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000000",
+                "Azure.Policy/version": "1.0.0"
+            }
         },
         "spec": {
             "condition": {
@@ -367,7 +388,10 @@
         "apiVersion": "github.com/microsoft/PSRule/v1",
         "kind": "Rule",
         "metadata": {
-            "name": "DisableLBRuleSNAT"
+            "name": "DisableLBRuleSNAT",
+            "annotations": {
+                "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+            }
         },
         "spec": {
             "condition": {
@@ -389,7 +413,10 @@
         "apiVersion": "github.com/microsoft/PSRule/v1",
         "kind": "Rule",
         "metadata": {
-            "name": "EnsureAtleastOneLBRule"
+            "name": "EnsureAtleastOneLBRule",
+            "annotations": {
+                "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+            }
         },
         "spec": {
             "condition": {
@@ -411,7 +438,10 @@
         "apiVersion": "github.com/microsoft/PSRule/v1",
         "kind": "Rule",
         "metadata": {
-            "name": "UniqueDescriptionNSG"
+            "name": "UniqueDescriptionNSG",
+            "annotations": {
+                "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+            }
         },
         "spec": {
             "condition": {
@@ -433,7 +463,10 @@
         "apiVersion": "github.com/microsoft/PSRule/v1",
         "kind": "Rule",
         "metadata": {
-            "name": "DenyNSGRDPInboundPort"
+            "name": "DenyNSGRDPInboundPort",
+            "annotations": {
+                "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+            }
         },
         "spec": {
             "condition": {
@@ -451,7 +484,10 @@
         "apiVersion": "github.com/microsoft/PSRule/v1",
         "kind": "Rule",
         "metadata": {
-            "name": "DenyPortsNSG"
+            "name": "DenyPortsNSG",
+            "annotations": {
+                "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+            }
         },
         "spec": {
             "condition": {
@@ -503,7 +539,10 @@
         "apiVersion": "github.com/microsoft/PSRule/v1",
         "kind": "Rule",
         "metadata": {
-            "name": "PreventSubnetsWithoutNSG"
+            "name": "PreventSubnetsWithoutNSG",
+            "annotations": {
+                "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+            }
         },
         "spec": {
             "condition": {
@@ -548,7 +587,10 @@
         "apiVersion": "github.com/microsoft/PSRule/v1",
         "kind": "Rule",
         "metadata": {
-            "name": "DenyPrivateEndpointSpecificSubnet"
+            "name": "DenyPrivateEndpointSpecificSubnet",
+            "annotations": {
+                "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+            }
         },
         "spec": {
             "condition": {

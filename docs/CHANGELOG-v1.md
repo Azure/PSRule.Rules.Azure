@@ -55,6 +55,8 @@ What's changed since pre-release v1.20.0-B0028:
     [#1672](https://github.com/Azure/PSRule.Rules.Azure/issues/1672)
   - Updated KeyVault and FrontDoor documentation with code snippets by @lluppesms.
     [#1667](https://github.com/Azure/PSRule.Rules.Azure/issues/1667)
+  - Added tag and annotation metadata from policy for rules generation by @BernieWhite.
+    [#1652](https://github.com/Azure/PSRule.Rules.Azure/issues/1652)
 - Bug fixes:
   - Fixed continue processing policy assignments on error by @BernieWhite.
     [#1651](https://github.com/Azure/PSRule.Rules.Azure/issues/1651)
