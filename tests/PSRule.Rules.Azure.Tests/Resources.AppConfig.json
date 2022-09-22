@@ -17,7 +17,8 @@
             "encryption": {
                 "keyVaultProperties": null
             },
-            "privateEndpointConnections": null
+            "privateEndpointConnections": null,
+            "disableLocalAuth": true
         },
         "ResourceGroupName": "rg-test",
         "Type": "Microsoft.AppConfiguration/configurationStores",
