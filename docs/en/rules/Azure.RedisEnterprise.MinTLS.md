@@ -26,6 +26,14 @@ By default, TLS 1.0, TLS 1.1, and TLS 1.2 is accepted.
 Consider configuring the minimum supported TLS version to be 1.2.
 Support for TLS 1.0/ 1.1 version will be removed.
 
+## Examples
+
+To disable old versions of TLS on Redis Cache Enterprise using PowerShell
+
+```PowerShell
+Set-AzRedisCache -Name <YourRedisName> -MinimumTlsVersion "1.2"
+```
+
 ## LINKS
 
 - [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
