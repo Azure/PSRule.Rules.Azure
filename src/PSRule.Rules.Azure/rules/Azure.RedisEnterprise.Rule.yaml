@@ -31,7 +31,7 @@ spec:
 #region Selectors
 
 ---
-# Synopsis: Azure Cache for Redis with a SKU set.
+# Synopsis: Azure Cache for Redis Enterprise with a SKU set.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Selector
 metadata:

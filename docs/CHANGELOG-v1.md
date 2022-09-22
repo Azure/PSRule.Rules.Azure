@@ -2192,5 +2192,7 @@ What's changed since v0.19.0:
   - Added support for `environment` template function. [#517](https://github.com/Azure/PSRule.Rules.Azure/issues/517)
 - Engineering:
   - Bump PSRule dependency to v1.0.1. [#611](https://github.com/Azure/PSRule.Rules.Azure/issues/611)
+- Redis Cache Enterprise
+  - Check Redis Cache Enterprise uses minimum TLS 1.2 [1179](https://github.com/Azure/PSRule.Rules.Azure/issues/1179)
 
 [troubleshooting guide]: troubleshooting.md

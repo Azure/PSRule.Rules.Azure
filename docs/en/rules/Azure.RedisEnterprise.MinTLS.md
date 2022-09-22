@@ -2,7 +2,7 @@
 severity: Critical
 pillar: Security
 category: Data protection
-resource: Azure Cache for Redis
+resource: Azure Cache for Redis Enterprise
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.MinTLS/
 ms-content-id: 31240bca-b04f-4267-9c31-cfca4e91cfbf
 ---
