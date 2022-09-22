@@ -84,10 +84,24 @@ Rule 'Azure.RedisEnterprise.Zones' -Ref 'AZR-000162' -Type 'Microsoft.Cache/redi
 } -Configure @{ AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses for the Redis Cache
-Rule 'Azure.Redis.FirewallIPRange' -Ref 'AZR-000293' -Type 'Microsoft.Cache/Redis' -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+Rule 'Azure.Redis.FirewallIPRange' -Ref 'AZR-000293' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+
+    $services = @($TargetObject);
+
+    if ($PSRule.TargetType -eq 'Microsoft.Cache/redis') {
+        $services = @(GetSubResources -ResourceType 'Microsoft.Cache/redis/firewallRules');
+    }
+
+    if ($services.Length -eq 0) {
+        return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Cache/redis/firewallRules');
+    }
 
     $summary = GetIPAddressSummary
-    $Assert.LessOrEqual($summary, 'Public', 10).WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True);
+    $summary.Public = [int32]$summary.Public # Had to convert $summary.Public to int32 from uint64.
+    
+    $Assert.
+        LessOrEqual($summary, 'Public', 10).
+        WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True); 
     
 }
 
