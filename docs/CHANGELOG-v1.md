@@ -6,7 +6,7 @@ discussion: false
 
 See [upgrade notes][1] for helpful information when upgrading from previous versions.
 
-  [1]: upgrade-notes.md
+[1]: upgrade-notes.md
 
 **Important notes**:
 
@@ -28,6 +28,8 @@ What's changed since pre-release v1.20.0-B0028:
 - New rules:
   - Enabled storage container soft delete by @pazdedav
     [[#1671](https://github.com/Azure/PSRule.Rules.Azure/issues/1671)]
+  - Enabled fileshare soft delete by @jonathanruiz
+    [[#966]](https://github.com/Azure/PSRule.Rules.Azure/issues/966)
 - Updated rules:
   - Updated rules, tests and docs with Microsoft Defender for Cloud by @jonathanruiz.
     [#545](https://github.com/Azure/PSRule.Rules.Azure/issues/545)
@@ -36,7 +38,7 @@ What's changed since pre-release v1.20.0-B0028:
       - Renamed `Azure.SecurityCenter.Contact` to `Azure.DefenderCloud.Contact`.
       - Renamed `Azure.SecurityCenter.Provisioning` to `Azure.DefenderCloud.Provisioning`.
     - If you are referencing the old names please consider updating to the new names.
-  - Added Bicep/ARM examples to KeyVault.Logs.md, FrontDoor.Logs.md, FrontDoor.MinTLS.md, and FrontDoor.Probe*.md by @lluppesms 
+  - Added Bicep/ARM examples to KeyVault.Logs.md, FrontDoor.Logs.md, FrontDoor.MinTLS.md, and FrontDoor.Probe\*.md by @lluppesms
     [#1667](https://github.com/Azure/PSRule.Rules.Azure/issues/1667)
 - General improvements:
   - Updated NSG documentation with code snippets and links by @simone-bennett.
@@ -899,7 +901,7 @@ What's changed since v1.11.1:
       - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
   - Azure API Management:
     - Check service disabled insecure ciphers.
-    [#1128](https://github.com/Azure/PSRule.Rules.Azure/issues/1128)
+      [#1128](https://github.com/Azure/PSRule.Rules.Azure/issues/1128)
     - Refactored the cipher and protocol rule into individual rules.
       - `Azure.APIM.Protocols`
       - `Azure.APIM.Ciphers`
@@ -957,7 +959,7 @@ What's changed since v1.11.1:
       - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
   - Azure API Management:
     - Check service disabled insecure ciphers.
-    [#1128](https://github.com/Azure/PSRule.Rules.Azure/issues/1128)
+      [#1128](https://github.com/Azure/PSRule.Rules.Azure/issues/1128)
     - Refactored the cipher and protocol rule into individual rules.
       - `Azure.APIM.Protocols`
       - `Azure.APIM.Ciphers`
