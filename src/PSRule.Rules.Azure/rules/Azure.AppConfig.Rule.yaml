@@ -48,4 +48,23 @@ spec:
     - name: '.'
       match: '^[A-Za-z0-9](-|[A-Za-z0-9]){3,48}[A-Za-z0-9]$'
 
+---
+# Synopsis: Use identity-based authentication for App Configuration.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppConfig.DisableLocalAuth
+  ref: AZR-000291
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+    Azure.WAF/pillar: 'Security'
+    Azure.ASB.v3/control: 'IM-1'
+spec:
+  type:
+  - Microsoft.AppConfiguration/configurationStores
+  condition:
+    field: properties.disableLocalAuth
+    equals: true
+
 #endregion Rules
