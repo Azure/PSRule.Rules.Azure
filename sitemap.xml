@@ -611,6 +611,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.DisableLocalAuth/</loc>
+         <lastmod>2022-09-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.Name/</loc>
          <lastmod>2022-09-22</lastmod>
          <changefreq>daily</changefreq>
