@@ -31,6 +31,10 @@ What's changed since pre-release v1.20.0-B0028:
       [#1671](https://github.com/Azure/PSRule.Rules.Azure/issues/1671)
     - Check file share soft delete is enabled by @jonathanruiz.
       [#966](https://github.com/Azure/PSRule.Rules.Azure/issues/966)
+    - Limit number of firewall rules for Redis @jonathanruiz
+      [#544](https://github.com/Azure/PSRule.Rules.Azure/issues/544)
+    - Limit number of IP addresses in firewall rules for Redis @jonathanruiz
+      [#544](https://github.com/Azure/PSRule.Rules.Azure/issues/544)
   - App Configuration:
     - Use identity-based authentication for App Configuration by @pazdedav
       [#1691](https://github.com/Azure/PSRule.Rules.Azure/issues/1691)
