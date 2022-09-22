@@ -20,7 +20,7 @@ BeforeAll {
     # Setup tests paths
     $rootPath = $PWD;
     Import-Module (Join-Path -Path $rootPath -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-    $here = (Resolve-Path $PSScriptRoot).Path; 
+    $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
 Describe 'Azure.Storage' -Tag Storage {
@@ -104,6 +104,37 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-E', 'storage-F', 'storage-H';
+        }
+
+        It 'Azure.Storage.ContainerSoftDelete' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.ContainerSoftDelete' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-A';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            #$ruleResult[0].Reason | Should -BeExactly 'Path properties.containerDeleteRetentionPolicy.enabled: Does not exist.';
+            $ruleResult[0].Reason | Should -BeIn @('Path properties.containerDeleteRetentionPolicy.enabled: Does not exist.', 'Path properties.containerDeleteRetentionPolicy.days: Does not exist.');
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            #$ruleResult[1].Reason | Should -BeExactly 'Path properties.containerDeleteRetentionPolicy.enabled: Does not exist.';
+            $ruleResult[1].Reason | Should -BeIn @('Path properties.containerDeleteRetentionPolicy.enabled: Does not exist.', 'Path properties.containerDeleteRetentionPolicy.days: Does not exist.');
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Storage/storageAccounts/blobServices'' has not been specified.';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-G';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'storage-D', 'storage-F', 'storage-E';
         }
 
         It 'Azure.Storage.BlobPublicAccess' {
@@ -335,6 +366,20 @@ Describe 'Azure.Storage' -Tag Storage {
 
         It 'Azure.Storage.SoftDelete' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.SoftDelete' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage1';
+        }
+
+        It 'Azure.Storage.ContainerSoftDelete' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.ContainerSoftDelete' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
