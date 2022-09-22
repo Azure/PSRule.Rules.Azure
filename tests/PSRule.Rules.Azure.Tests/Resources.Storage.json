@@ -606,5 +606,80 @@
                 }
             }
         ]
+    },
+    {
+		"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-002/providers/Microsoft.Storage/storageAccounts/storage-H",
+		"Name": "storage-H",
+		"ResourceName": "storage-H",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Type": "Microsoft.Storage/storageAccounts",
+        "Kind": "FileStorage",
+        "location": "region",
+        "sku": {
+            "name": "Standard_LRS",
+            "tier": "Standard"
+        },
+        "properties": {
+            "defaultToOAuthAuthentication": false,
+            "keyCreationTime": {
+                "key1": "2021-09-16T06:51:27.5840355Z",
+                "key2": "2021-09-16T06:51:27.5840355Z"
+            },
+            "allowCrossTenantReplication": true,
+            "privateEndpointConnections": [],
+            "minimumTlsVersion": "TLS1_2",
+            "allowSharedKeyAccess": true,
+            "largeFileSharesState": "Enabled",
+            "networkAcls": {
+                "bypass": "AzureServices",
+                "virtualNetworkRules": [],
+                "ipRules": [],
+                "defaultAction": "Allow"
+            },
+            "supportsHttpsTrafficOnly": true,
+            "encryption": {
+                "services": {
+                    "file": {
+                        "keyType": "Account",
+                        "enabled": true,
+                        "lastEnabledTime": "2021-09-16T06:51:27.5997091Z"
+                    }
+                },
+                "keySource": "Microsoft.Storage"
+            },
+            "accessTier": "Hot",
+            "provisioningState": "Succeeded",
+            "creationTime": "2021-09-16T06:51:27.4590405Z",
+            "primaryEndpoints": {
+                "dfs": "https://storage-H.dfs.core.windows.net/",
+                "web": "https://storage-H.z13.web.core.windows.net/",
+                "blob": "https://storage-H.blob.core.windows.net/",
+                "queue": "https://storage-H.queue.core.windows.net/",
+                "table": "https://storage-H.table.core.windows.net/",
+                "file": "https://storage-H.file.core.windows.net/"
+            },
+            "primaryLocation": "region",
+            "statusOfPrimary": "available"
+        },
+        "resources": [
+            {
+                "type": "Microsoft.Storage/storageAccounts/fileServices",
+                "apiVersion": "2021-04-01",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-002/providers/Microsoft.Storage/storageAccounts/storage-H/fileServices/default",
+                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-002/providers/Microsoft.Storage/storageAccounts/storage-H/fileServices/default",
+                "Name": "default",			
+                "sku": {
+                    "name": "Standard_LRS",
+                    "tier": "Standard"
+                },
+                "properties": {
+
+                    "shareDeleteRetentionPolicy": {
+                        "enabled": true,
+                        "days": 7
+                    }
+                }
+            }
+        ]
     }
 ]
