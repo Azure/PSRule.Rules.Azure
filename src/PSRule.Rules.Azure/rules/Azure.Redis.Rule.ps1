@@ -87,9 +87,7 @@ Rule 'Azure.RedisEnterprise.Zones' -Ref 'AZR-000162' -Type 'Microsoft.Cache/redi
 Rule 'Azure.Redis.FirewallIPRange' -Ref 'AZR-000293' -Type 'Microsoft.Cache/Redis' -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
 
     $summary = GetIPAddressSummary
-    $Assert
-        .LessOrEqual($summary, 'Public', 10)
-        .WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True);
+    $Assert.LessOrEqual($summary, 'Public', 10).WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True);
     
 }
 
