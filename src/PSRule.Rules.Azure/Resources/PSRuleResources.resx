@@ -142,7 +142,7 @@
     <value>The number of arguments '{1}' is not within the allowed range for '{0}'.</value>
   </data>
   <data name="AssignmentFileExpandFailed" xml:space="preserve">
-    <value>Unable to expand the specified assignment file '{0}'.</value>
+    <value>Unable to expand the specified assignment file '{0}'. {1}</value>
   </data>
   <data name="AssignmentFileNotFound" xml:space="preserve">
     <value>Unable to find the specified assignment file '{0}'.</value>
