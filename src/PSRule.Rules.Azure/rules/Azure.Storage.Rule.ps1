@@ -69,7 +69,7 @@ Rule 'Azure.Storage.FileShareSoftDelete' -Ref 'AZR-000298' -Type 'Microsoft.Stor
 
     foreach ($service in $services) {
         $Assert.HasFieldValue($service, 'properties.shareDeleteRetentionPolicy.enabled', $True);
-        $Assert.HasFieldValue($services, 'properties.shareDeleteRetentionPolicy.days', 7);
+        $Assert.HasFieldValue($service, 'properties.shareDeleteRetentionPolicy.days', 7);
     }
 }
 
