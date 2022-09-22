@@ -79,7 +79,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Defender.AppServices
-  ref: AZR-000292
+  ref: AZR-000293
   tags:
     release: 'GA'
     ruleSet: '2022_09'
@@ -100,7 +100,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Defender.Storage
-  ref: AZR-000293
+  ref: AZR-000294
   tags:
     release: 'GA'
     ruleSet: '2022_09'
