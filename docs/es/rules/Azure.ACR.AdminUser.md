@@ -117,7 +117,7 @@ az acr update --admin-enabled false -n '<name>' -g '<resource_group>'
 Update-AzContainerRegistry -ResourceGroupName '<resource_group>' -Name '<name>' -DisableAdminUser
 ```
 
-## LINKS
+## Elances
 
 - [Uso de la autenticación basada en identidad](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
 - [Autenticación con un registro de contenedor de Azure](https://docs.microsoft.com/azure/container-registry/container-registry-authentication?tabs=azure-cli)
