@@ -67,7 +67,7 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
+            $ruleResult.Length | Should -Be 8;
             $ruleResult.TargetName | Should -BeIn 'registry-B', 'registry-C', 'registry-D', 'registry-E', 'registry-F', 'registry-G', 'registry-H', 'registry-I';
         }
 
