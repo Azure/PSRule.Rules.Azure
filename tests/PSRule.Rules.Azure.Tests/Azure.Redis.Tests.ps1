@@ -226,7 +226,7 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 10;
+            $ruleResult.Length | Should -Be 9;
             $ruleResult.TargetName | Should -BeIn 'redis-C', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R', 'redis-S';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
@@ -267,7 +267,7 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 9;
+            $ruleResult.Length | Should -Be 8;
             $ruleResult.TargetName | Should -BeIn 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R', 'redis-S';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
@@ -332,13 +332,13 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-D';
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-D'; 
 
             # None 
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S';
         }
 
         It 'Azure.Redis.FirewallIPRange' {
@@ -376,8 +376,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None 
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S';
         }
     }
 
