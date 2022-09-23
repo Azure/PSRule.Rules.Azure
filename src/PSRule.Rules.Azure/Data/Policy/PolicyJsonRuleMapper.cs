@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 
 namespace PSRule.Rules.Azure.Data.Policy
 {
+    /// <summary>
+    /// Serializes a policy definition to a rule.
+    /// </summary>
     internal static class PolicyJsonRuleMapper
     {
         private const string SYNOPSIS_COMMENT = "Synopsis: ";
@@ -16,6 +19,11 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_NAME = "name";
         private const string PROPERTY_SPEC = "spec";
         private const string PROPERTY_CONDITION = "condition";
+        private const string PROPERTY_TAGS = "tags";
+        private const string PROPERTY_ANNOTATIONS = "annotations";
+        private const string PROPERTY_CATEGORY = "Azure.Policy/category";
+        private const string PROPERTY_VERSION = "Azure.Policy/version";
+        private const string PROPERTY_ID = "Azure.Policy/id";
 
         internal static void MapRule(JsonWriter writer, JsonSerializer serializer, PolicyDefinition definition)
         {
@@ -37,6 +45,8 @@ namespace PSRule.Rules.Azure.Data.Policy
             writer.WriteStartObject();
             writer.WritePropertyName(PROPERTY_NAME);
             writer.WriteValue(definition.Name);
+            WriteTags(writer, definition);
+            WriteAnnotations(writer, definition);
             writer.WriteEndObject();
 
             // Spec
@@ -46,6 +56,39 @@ namespace PSRule.Rules.Azure.Data.Policy
             serializer.Serialize(writer, definition.Condition);
             writer.WriteEndObject();
 
+            writer.WriteEndObject();
+        }
+
+        private static void WriteTags(JsonWriter writer, PolicyDefinition definition)
+        {
+            if (string.IsNullOrEmpty(definition.Category))
+                return;
+
+            writer.WritePropertyName(PROPERTY_TAGS);
+            writer.WriteStartObject();
+            writer.WritePropertyName(PROPERTY_CATEGORY);
+            writer.WriteValue(definition.Category);
+            writer.WriteEndObject();
+        }
+
+        private static void WriteAnnotations(JsonWriter writer, PolicyDefinition definition)
+        {
+            if (string.IsNullOrEmpty(definition.Version) &&
+                string.IsNullOrEmpty(definition.DefinitionId))
+                return;
+
+            writer.WritePropertyName(PROPERTY_ANNOTATIONS);
+            writer.WriteStartObject();
+            if (!string.IsNullOrEmpty(definition.DefinitionId))
+            {
+                writer.WritePropertyName(PROPERTY_ID);
+                writer.WriteValue(definition.DefinitionId);
+            }
+            if (!string.IsNullOrEmpty(definition.Version))
+            {
+                writer.WritePropertyName(PROPERTY_VERSION);
+                writer.WriteValue(definition.Version);
+            }
             writer.WriteEndObject();
         }
     }
