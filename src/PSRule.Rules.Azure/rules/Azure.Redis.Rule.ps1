@@ -84,7 +84,7 @@ Rule 'Azure.RedisEnterprise.Zones' -Ref 'AZR-000162' -Type 'Microsoft.Cache/redi
 } -Configure @{ AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
 # Synopsis: Determine if there is an excessive number of firewall rules for the Redis Cache
-Rule 'Azure.Redis.FirewallRuleCount' -Ref 'AZR-000293' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+Rule 'Azure.Redis.FirewallRuleCount' -Ref 'AZR-000299' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
 
     $services = @($TargetObject);
 
