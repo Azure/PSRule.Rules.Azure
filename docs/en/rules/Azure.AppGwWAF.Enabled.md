@@ -72,18 +72,25 @@ To deploy Application Gateways that pass this rule:
 For example:
 
 ```bicep
-resource appGw 'Microsoft.Network/applicationGateways@2021-02-01' = {
-  name: 'appGw-001'
+resource waf 'Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies@2022-01-01' = {
+  name: 'agwwaf'
+  location: location
   properties: {
-    sku: {
-      name: 'WAF_v2'
-      tier: 'WAF_v2'
+    managedRules: {
+      managedRuleSets: [
+        {
+          ruleSetType: 'OWASP'
+          ruleSetVersion: '3.2'
+        }
+        {
+          ruleSetType: 'Microsoft_BotManagerRuleSet'
+          ruleSetVersion: '0.1'
+        }
+      ]
     }
-    webApplicationFirewallConfiguration: {
-      enabled: true
-      firewallMode: 'Prevention'
-      ruleSetType: 'OWASP'
-      ruleSetVersion: '3.2'
+    policySettings: {
+      state: 'Enabled'
+      mode: 'Prevention'
     }
   }
 }
