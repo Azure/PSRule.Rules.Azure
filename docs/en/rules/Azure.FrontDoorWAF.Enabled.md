@@ -30,4 +30,4 @@ Consider enabling WAF policy.
 - [Securing PaaS deployments](https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
 - [Policy settings for Web Application Firewall on Azure Front Door](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-policy-settings#waf-state)
 - [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/frontdoorwebapplicationfirewallpolicies)
-- [Web Application Firewall best practices](https://learn.microsoft.com/en-us/azure/web-application-firewall/afds/waf-front-door-best-practices)
+- [Web Application Firewall best practices](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-best-practices)

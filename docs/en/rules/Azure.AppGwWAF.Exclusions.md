@@ -33,4 +33,4 @@ Alternatively consider updating application code to use safe web standards.
 - [Securing PaaS deployments](https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
 - [What is Azure Web Application Firewall on Azure Application Gateway?](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
 - [Web Application Firewall CRS rule groups and rules](https://docs.microsoft.com/azure/web-application-firewall/ag/application-gateway-crs-rulegroups-rules)
-- [Web Application Firewall best practices](https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/best-practices)
+- [Web Application Firewall best practices](https://learn.microsoft.com/azure/web-application-firewall/ag/best-practices)

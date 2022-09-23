@@ -106,4 +106,4 @@ Set-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway 
 - [Securing PaaS deployments](https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
 - [What is Azure Web Application Firewall on Azure Application Gateway?](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)
-- [Web Application Firewall best practices](https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/best-practices)
+- [Web Application Firewall best practices](https://learn.microsoft.com/azure/web-application-firewall/ag/best-practices)
