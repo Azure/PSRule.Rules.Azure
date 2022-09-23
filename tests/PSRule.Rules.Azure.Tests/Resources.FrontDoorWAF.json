@@ -91,11 +91,11 @@
     "ResourceName": "frontdoorwaf-C",
     "Name": "frontdoorwaf-C",
     "sku": {
-      "name": "Premium"
+      "name": "Premium_AzureFrontDoor"
     },
     "properties": {
       "sku": {
-        "Name": "Premium"
+        "Name": "Premium_AzureFrontDoor"
       },
       "policySettings": {
         "enabledState": "Enabled",
