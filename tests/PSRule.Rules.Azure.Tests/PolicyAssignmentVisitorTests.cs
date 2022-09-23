@@ -1,16 +1,16 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using System.IO;
 using System;
+using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Policy;
 using PSRule.Rules.Azure.Pipeline;
 using Xunit;
 using static PSRule.Rules.Azure.Data.Policy.PolicyAssignmentVisitor;
-using PSRule.Rules.Azure.Configuration;
-using System.Linq;
 
 namespace PSRule.Rules.Azure
 {
@@ -35,13 +35,13 @@ namespace PSRule.Rules.Azure
 
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
-            Assert.True(definitions.Length >= 183);
+            Assert.True(definitions.Length >= 111);
 
             // Check category and version
-            var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/a4fe33eb-e377-4efb-ab31-0784311bc499");
+            var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
             Assert.NotNull(actual);
-            Assert.Equal("Security Center", actual.Category);
-            Assert.Equal("1.0.0", actual.Version);
+            Assert.Equal("Storage", actual.Category);
+            Assert.Equal("1.1.1", actual.Version);
         }
 
         #region Helper methods
