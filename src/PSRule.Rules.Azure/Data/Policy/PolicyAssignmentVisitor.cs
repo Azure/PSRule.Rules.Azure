@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Text;
 using System.Threading;
 using Newtonsoft.Json.Linq;
@@ -22,10 +23,12 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_DEFINITIONS = "policyDefinitions";
         private const string PROPERTY_PROPERTIES = "properties";
         private const string PROPERTY_POLICYRULE = "policyRule";
+        private const string PROPERTY_MODE = "mode";
         private const string PROPERTY_CONDITION = "if";
-        private const string PROPERTY_EFFECT_BLOCK = "then";
+        private const string PROPERTY_THEN = "then";
         private const string PROPERTY_EFFECT = "effect";
-        private const string DISABLED_EFFECT = "disabled";
+        private const string EFFECT_DISABLED = "Disabled";
+        private const string EFFECT_AUDITIFNOTEXISTS = "AuditIfNotExists";
         private const string PROPERTY_DETAILS = "details";
         private const string PROPERTY_EXISTENCE_CONDITION = "existenceCondition";
         private const string PROPERTY_FIELD = "field";
@@ -65,6 +68,11 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const char SLASH = '/';
         private const char GROUP_OPEN = '(';
         private const char GROUP_CLOSE = ')';
+        private const string TYPE_SECURITYASSESSMENTS = "Microsoft.Security/assessments";
+        private const string TYPE_GUESTCONFIGURATIONASSIGNMENTS = "Microsoft.GuestConfiguration/guestConfigurationAssignments";
+        private const string TYPE_BACKUPPROTECTEDITEMS = "Microsoft.RecoveryServices/backupprotecteditems";
+        private const string MODE_INDEXED = "Indexed";
+        private const string MODE_ALL = "All";
 
         public sealed class PolicyAssignmentContext : ITemplateContext
         {
@@ -140,17 +148,15 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 // A definition must have properties, policyRule, and a non-disabled effect.
                 if (!definition.TryObjectProperty(PROPERTY_PROPERTIES, out var properties) ||
-                    !properties.TryObjectProperty(PROPERTY_POLICYRULE, out var policyRule) ||
-                    !TryPolicyRuleEffect(policyRule, out var effect) ||
-                    effect.Equals(DISABLED_EFFECT, StringComparison.OrdinalIgnoreCase))
+                    !properties.TryObjectProperty(PROPERTY_POLICYRULE, out var policyRule))
+                    return;
+
+                if (properties.TryStringProperty(PROPERTY_MODE, out var mode) && IsRuntimeMode(mode))
                     return;
 
                 properties.TryStringProperty(PROPERTY_DISPLAYNAME, out var displayName);
                 properties.TryStringProperty(PROPERTY_DESCRIPTION, out var description);
-                var policyDefinition = new PolicyDefinition(definitionId, displayName, description, definition)
-                {
-                    Effect = effect
-                };
+                var policyDefinition = new PolicyDefinition(definitionId, displayName, description, definition);
 
                 // Set annotations
                 if (properties.TryObjectProperty(PROPERTY_METADATA, out var metadata))
@@ -160,7 +166,6 @@ namespace PSRule.Rules.Azure.Data.Policy
 
                     if (metadata.TryStringProperty(PROPERTY_VERSION, out var version))
                         policyDefinition.Version = version;
-
                 }
 
                 // Set parameters
@@ -176,10 +181,43 @@ namespace PSRule.Rules.Azure.Data.Policy
                 RemovePolicyRuleDeployment(policyRule);
                 ExpandPolicyRule(policyRule);
                 MergePolicyRuleConditions(policyRule);
+
+                if (!TryPolicyRuleEffect(policyRule, out var effect) ||
+                    ShouldFilterRule(policyRule, effect))
+                    return;
+
+                policyDefinition.Effect = effect;
                 if (policyRule.TryObjectProperty(PROPERTY_CONDITION, out var condition))
                     policyDefinition.Condition = condition;
 
                 _Definitions.Add(policyDefinition);
+            }
+
+            private static bool ShouldFilterRule(JObject policyRule, string effect)
+            {
+                if (effect.Equals(EFFECT_DISABLED, StringComparison.OrdinalIgnoreCase))
+                    return true;
+
+                // Check if AuditIfNotExists type is a runtime type.
+                return policyRule.TryObjectProperty(PROPERTY_THEN, out var then) &&
+                    then.TryObjectProperty(PROPERTY_DETAILS, out var details) &&
+                    details.TryStringProperty(PROPERTY_TYPE, out var type) &&
+                    effect.Equals(EFFECT_AUDITIFNOTEXISTS, StringComparison.OrdinalIgnoreCase) &&
+                    IsRuntimeType(type);
+            }
+
+            private static bool IsRuntimeType(string type)
+            {
+                return type.Equals(TYPE_SECURITYASSESSMENTS, StringComparison.OrdinalIgnoreCase) ||
+                    type.Equals(TYPE_GUESTCONFIGURATIONASSIGNMENTS, StringComparison.OrdinalIgnoreCase) ||
+                    type.Equals(TYPE_BACKUPPROTECTEDITEMS, StringComparison.OrdinalIgnoreCase);
+            }
+
+            private static bool IsRuntimeMode(string mode)
+            {
+                return !(string.IsNullOrEmpty(mode) ||
+                    mode.Equals(MODE_INDEXED, StringComparison.OrdinalIgnoreCase) ||
+                    mode.Equals(MODE_ALL, StringComparison.OrdinalIgnoreCase));
             }
 
             private void SetDefinitionParameterAssignment(PolicyDefinition definition, JProperty parameter)
@@ -208,7 +246,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             private static void MergePolicyRuleConditions(JObject policyRule)
             {
                 if (policyRule.TryObjectProperty(PROPERTY_CONDITION, out var condition)
-                    && policyRule.TryObjectProperty(PROPERTY_EFFECT_BLOCK, out var effectBlock)
+                    && policyRule.TryObjectProperty(PROPERTY_THEN, out var effectBlock)
                     && effectBlock.TryObjectProperty(PROPERTY_DETAILS, out var details)
                     && details.TryStringProperty(PROPERTY_TYPE, out var detailsType)
                     && details.TryObjectProperty(PROPERTY_EXISTENCE_CONDITION, out var existenceCondition))
@@ -241,18 +279,18 @@ namespace PSRule.Rules.Azure.Data.Policy
             private static bool TryPolicyRuleEffect(JObject policyRule, out string effect)
             {
                 effect = string.Empty;
-                return policyRule.TryObjectProperty(PROPERTY_EFFECT_BLOCK, out var effectBlock)
+                return policyRule.TryObjectProperty(PROPERTY_THEN, out var effectBlock)
                     && effectBlock.TryStringProperty(PROPERTY_EFFECT, out effect);
             }
 
             private static void RemovePolicyRuleDeployment(JObject policyRule)
             {
-                if (policyRule.TryObjectProperty(PROPERTY_EFFECT_BLOCK, out var effectBlock)
+                if (policyRule.TryObjectProperty(PROPERTY_THEN, out var effectBlock)
                     && effectBlock.TryObjectProperty(PROPERTY_DETAILS, out var details)
                     && details.TryObjectProperty(PROPERTY_DEPLOYMENT, out _))
                 {
                     details.Remove(PROPERTY_DEPLOYMENT);
-                    policyRule[PROPERTY_EFFECT_BLOCK][PROPERTY_DETAILS] = details;
+                    policyRule[PROPERTY_THEN][PROPERTY_DETAILS] = details;
                 }
             }
 
@@ -698,10 +736,17 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             foreach (var definition in definitions)
             {
-                if (definition.TryStringProperty(PROPERTY_POLICYDEFINITIONID, out var definitionId))
+                try
                 {
-                    context.SetDefinitionId(definitionId);
-                    context.AddDefinition(definition, definitionId);
+                    if (definition.TryStringProperty(PROPERTY_POLICYDEFINITIONID, out var definitionId))
+                    {
+                        context.SetDefinitionId(definitionId);
+                        context.AddDefinition(definition, definitionId);
+                    }
+                }
+                catch (Exception inner)
+                {
+                    context.Pipeline.Writer?.WriteError(inner, inner.GetBaseException().GetType().FullName, errorCategory: ErrorCategory.NotSpecified, targetObject: definition);
                 }
             }
         }
