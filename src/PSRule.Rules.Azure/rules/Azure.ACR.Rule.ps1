@@ -48,4 +48,13 @@ Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry
     return $Assert.Fail($LocalizedData.ReplicaNotFound);
 }
 
+# Synopsis: Azure Container Registries should have soft delete policy enabled and retention period to 90 days.
+Rule 'Azure.ACR.SoftDelete' -Ref 'AZR-000299' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'Preview'; ruleSet = '2022_09'; } {
+    $notGeoReplica = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/replications')
+    $Assert.Count($notGeoReplica, '.', 0).Reason($LocalizedData.ACRNotGeoReplica, $TargetObject.name)
+    $Assert.HasDefaultValue($TargetObject, 'properties.policies.retentionPolicy.status', 'disabled').Reason($LocalizedData.ACRNotRetentionPolicy, $TargetObject.name)
+    $Assert.In($TargetObject, 'properties.policies.softDeletePolicy.status', 'enabled').Reason($LocalizedData.ACRSoftDeletePolicy, $TargetObject.name)
+    $Assert.In($TargetObject, 'properties.policies.softDeletePolicy.retentionDays', 90).Reason($LocalizedData.ACRSoftDeletePolicyRetention, $TargetObject.name)
+}
+
 #endregion Rules
