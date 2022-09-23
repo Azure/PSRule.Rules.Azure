@@ -48,13 +48,25 @@ Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry
     return $Assert.Fail($LocalizedData.ReplicaNotFound);
 }
 
-# Synopsis: Azure Container Registries should have soft delete policy enabled and retention period to 90 days.
-Rule 'Azure.ACR.SoftDelete' -Ref 'AZR-000299' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'Preview'; ruleSet = '2022_09'; } {
-    $notGeoReplica = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/replications')
-    $Assert.Count($notGeoReplica, '.', 0).Reason($LocalizedData.ACRNotGeoReplica, $TargetObject.name)
-    $Assert.HasDefaultValue($TargetObject, 'properties.policies.retentionPolicy.status', 'disabled').Reason($LocalizedData.ACRNotRetentionPolicy, $TargetObject.name)
-    $Assert.In($TargetObject, 'properties.policies.softDeletePolicy.status', 'enabled').Reason($LocalizedData.ACRSoftDeletePolicy, $TargetObject.name)
-    $Assert.In($TargetObject, 'properties.policies.softDeletePolicy.retentionDays', 90).Reason($LocalizedData.ACRSoftDeletePolicyRetention, $TargetObject.name)
+# Synopsis: Azure Container Registries should have soft delete policy enabled.
+Rule 'Azure.ACR.SoftDelete' -Ref 'AZR-000310' -Type 'Microsoft.ContainerRegistry/registries' -If { GetPreviewLimitations }-Tag @{ release = 'Preview'; ruleSet = '2022_09'; } {
+    $Assert.HasFieldValue($TargetObject, 'properties.policies.softDeletePolicy.status', 'enabled').Reason($LocalizedData.ACRSoftDeletePolicy, $TargetObject.name)
+    $Assert.HasFieldValue($TargetObject, 'properties.policies.softDeletePolicy.retentionDays').Reason($LocalizedData.ACRSoftDeletePolicyRetention, $TargetObject.name)
 }
 
 #endregion Rules
+
+#region Helper functions
+
+function global:GetPreviewLimitations {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        $notGeoReplica = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/replications')
+        $notRetentionPolicy = $Assert.HasDefaultValue($TargetObject, 'properties.policies.retentionPolicy.status', 'disabled').Result
+        ($notGeoReplica.Count -eq 0) -and ($notRetentionPolicy -eq $true)
+    }   
+}
+
+#endregion Helper functions

@@ -66,7 +66,5 @@
     ReplicaNotFound = "A replica in a secondary region was not found."
     VMSSPublicKey = "The virtual machine scale set '{0}' should have password authentication disabled."
     ACRSoftDeletePolicy = "The container registry '{0}' should have soft delete policy enabled."
-    ACRSoftDeletePolicyRetention = "The container registry '{0}' should have 90 days retention period."
-    ACRNotGeoReplica = "The soft delete policy doesn't support the geo-replicated container registry '{0}'."
-    ACRNotRetentionPolicy = "The container registry '{0}' doesn't allow enabling both the retention policy and the soft delete policy."
+    ACRSoftDeletePolicyRetention = "The container registry '{0}' should have retention retention period value between one to 90 days."
 }
