@@ -216,6 +216,28 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'registry-B', 'registry-C', 'registry-E';
         }
+
+        It 'Azure.ACR.SoftDelete' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.ACR.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACR.SoftDelete' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-D', 'registry-H';
+
+            $ruleResult[0].Reason | Should -BeExactly "The container registry 'registry-A' should have soft delete policy enabled.", "The container registry 'registry-A' should have retention period value between one to 90 days for the soft delete policy.";
+            $ruleResult[1].Reason | Should -BeExactly "The container registry 'registry-D' should have soft delete policy enabled.", "The container registry 'registry-D' should have retention period value between one to 90 days for the soft delete policy.";
+            $ruleResult[2].Reason | Should -BeExactly "The container registry 'registry-H' should have soft delete policy enabled.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'registry-G', 'registry-I';
+        }
     }
 
     Context 'Resource name' {

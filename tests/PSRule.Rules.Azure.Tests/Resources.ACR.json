@@ -614,7 +614,7 @@
         },
         "softDeletePolicy": {
           "retentionDays": 90,
-          "status": "enabled"
+          "status": "disabled"
         }
       }
     },
