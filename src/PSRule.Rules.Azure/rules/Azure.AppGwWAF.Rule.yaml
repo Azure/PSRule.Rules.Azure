@@ -13,7 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.AppGwWAF.Enabled
-  ref: AZR-000301
+  ref: AZR-000309
   tags:
     release: 'GA'
     ruleSet: '2022_09'
