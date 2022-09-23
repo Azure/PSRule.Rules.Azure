@@ -14,9 +14,8 @@ Application Gateway Web Application Firewall (WAF) should use OWASP 3.x rules.
 
 ## DESCRIPTION
 
-Application Gateways deployed with WAF features support configuration of OWASP rule sets for detection and/ or prevention of malicious attacks.
-
-Two rule set versions are available; OWASP 2.x and OWASP 3.x.
+Application Gateways deployed with WAF features support configuration of OWASP rule sets for detection and /
+or prevention of malicious attacks. Two rule set versions are available; OWASP 2.x and OWASP 3.x.
 
 ## RECOMMENDATION
 
@@ -37,7 +36,7 @@ For example:
 {
     "type": "Microsoft.Network/applicationGateways",
     "apiVersion": "2020-11-01",
-    "name": "[parameters('appGwName')]",
+    "name": "appGw-001",
     "location": "[resourceGroup().location]",
     "properties": {
         "sku": {
@@ -70,6 +69,7 @@ For example:
 ```bicep
 resource appGw 'Microsoft.Network/applicationGateways@2021-02-01' = {
   name: 'appGw-001'
+  location: location
   properties: {
     sku: {
       name: 'WAF_v2'
@@ -102,4 +102,4 @@ Set-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway 
 
 - [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
 - [OWASP ModSecurity Core Rule Set](https://owasp.org/www-project-modsecurity-core-rule-set/)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)
