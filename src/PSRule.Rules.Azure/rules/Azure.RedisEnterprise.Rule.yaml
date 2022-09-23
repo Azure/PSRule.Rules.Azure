@@ -17,7 +17,7 @@ metadata:
   ref: AZR-000299
   tags:
     release: GA
-    ruleSet: 2020_06
+    ruleSet: 2022_09
 spec:
   type:
   - 'Microsoft.Cache/redisEnterprise'

@@ -581,7 +581,6 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "Tags": {},
         "Properties": {
-            "minimumTlsVersion": "1.2",
             "hostName": "redis-S.redis.cache.windows.net"
         },
         "sku": {

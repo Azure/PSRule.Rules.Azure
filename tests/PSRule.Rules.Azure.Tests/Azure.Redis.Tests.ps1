@@ -66,8 +66,24 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 14;
-            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J','redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-Q', 'redis-R', 'redis-S';
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R';
+        }
+
+        It 'Azure.RedisEnterprise.MinTLS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RedisEnterprise.MinTLS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'redis-S';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P';
         }
 
         It 'Azure.Redis.MinSKU' {
@@ -84,12 +100,6 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 9;
             $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J';
-
-            # None
-             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
-             $ruleResult | Should -Not -BeNullOrEmpty;
-             $ruleResult.Length | Should -Be 8;
-             $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-R', 'redis-S';
         }
 
         It 'Azure.Redis.MaxMemoryReserved' {
@@ -110,8 +120,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
              # None
              $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
              $ruleResult | Should -Not -BeNullOrEmpty;
-             $ruleResult.Length | Should -Be 8;
-             $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-R', 'redis-S';
+             $ruleResult.Length | Should -Be 7;
+             $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-R';
         }
 
         It 'Azure.Redis.AvailabilityZone' {
@@ -138,8 +148,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 13;
-            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-Q', 'redis-R', 'redis-S';
+            $ruleResult.Length | Should -Be 12;
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-Q', 'redis-R';
         }
 
         It 'Azure.RedisEnterprise.Zones' {
@@ -148,8 +158,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'redis-L', 'redis-P', 'redis-S';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'redis-L', 'redis-P';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The enterprise redis cache (redis-L) deployed to region (australiaeast) should be zone-redundant.";
@@ -206,8 +216,88 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P';
+        }
+
+        It 'Azure.Redis.FirewallRuleCount' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Redis.FirewallRuleCount' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'redis-C', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The number of firewall rules (11) exceeded 10.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "The number of firewall rules (11) exceeded 10.";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[6].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+            $ruleResult[7].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[7].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+            $ruleResult[8].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[8].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-D';
+
+            # None 
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P';
+        }
+
+        It 'Azure.Redis.FirewallIPRange' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Redis.FirewallIPRange' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 8;
+            $ruleResult.TargetName | Should -BeIn 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R';
+
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -BeExactly "The number of public IP addresses permitted (11) exceeded 10.";
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+            $ruleResult[6].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[6].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+            $ruleResult[7].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[7].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Cache/redis/firewallRules' has not been specified.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C', 'redis-D';
+
+            # None 
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P';
         }
     }
 
@@ -265,8 +355,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 13;
-            $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-Q', 'redis-R', 'redis-S';
+            $ruleResult.Length | Should -Be 12;
+            $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-Q', 'redis-R';
         }
 
         It 'Azure.Redis.AvailabilityZone - YAML file option' {
@@ -299,8 +389,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 13;
-            $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-Q', 'redis-R', 'redis-S';
+            $ruleResult.Length | Should -Be 12;
+            $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-Q', 'redis-R';
         }
 
         It 'Azure.RedisEnterprise.Zones - HashTable option' {
@@ -322,8 +412,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -Be 'redis-L', 'redis-M', 'redis-N', 'redis-P', 'redis-S';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'redis-L', 'redis-M', 'redis-N', 'redis-P';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The enterprise redis cache (redis-L) deployed to region (australiaeast) should be zone-redundant.";
@@ -353,8 +443,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -Be 'redis-L', 'redis-M', 'redis-N', 'redis-P', 'redis-S';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'redis-L', 'redis-M', 'redis-N', 'redis-P';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The enterprise redis cache (redis-L) deployed to region (australiaeast) should be zone-redundant.";
