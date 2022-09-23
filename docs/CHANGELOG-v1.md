@@ -38,6 +38,19 @@ What's changed since pre-release v1.20.0-B0028:
   - App Configuration:
     - Use identity-based authentication for App Configuration by @pazdedav
       [#1691](https://github.com/Azure/PSRule.Rules.Azure/issues/1691)
+  - Defender for Cloud:
+    - Check Microsoft Defender for Cloud is enabled for Containers by @jdewisscher
+      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for Cloud is enabled for Virtual Machines by @jdewisscher
+      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for Cloud is enabled for SQL Servers by @jdewisscher
+      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for Cloud is enabled for App Services by @jdewisscher
+      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for Cloud is enabled for Storage Accounts by @jdewisscher
+      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for Cloud is enabled for SQL Servers on machines by @jdewisscher
+      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
 - Updated rules:
   - Updated rules, tests and docs with Microsoft Defender for Cloud by @jonathanruiz.
     [#545](https://github.com/Azure/PSRule.Rules.Azure/issues/545)
@@ -61,6 +74,8 @@ What's changed since pre-release v1.20.0-B0028:
     [#1672](https://github.com/Azure/PSRule.Rules.Azure/issues/1672)
   - Updated KeyVault and FrontDoor documentation with code snippets by @lluppesms.
     [#1667](https://github.com/Azure/PSRule.Rules.Azure/issues/1667)
+  - Added tag and annotation metadata from policy for rules generation by @BernieWhite.
+    [#1652](https://github.com/Azure/PSRule.Rules.Azure/issues/1652)
 - Bug fixes:
   - Fixed continue processing policy assignments on error by @BernieWhite.
     [#1651](https://github.com/Azure/PSRule.Rules.Azure/issues/1651)
@@ -2204,5 +2219,7 @@ What's changed since v0.19.0:
   - Added support for `environment` template function. [#517](https://github.com/Azure/PSRule.Rules.Azure/issues/517)
 - Engineering:
   - Bump PSRule dependency to v1.0.1. [#611](https://github.com/Azure/PSRule.Rules.Azure/issues/611)
+- Redis Cache Enterprise
+  - Check Redis Cache Enterprise uses minimum TLS 1.2 [1179](https://github.com/Azure/PSRule.Rules.Azure/issues/1179)
 
 [troubleshooting guide]: troubleshooting.md

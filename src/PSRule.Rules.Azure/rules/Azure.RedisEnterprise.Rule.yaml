@@ -1,0 +1,29 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Redis Cache Enterprise
+#
+
+#region Rules
+
+
+---
+# Synopsis: Redis Cache Enterprise should reject TLS versions older than 1.2.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.RedisEnterprise.MinTLS
+  ref: AZR-000301
+  tags:
+    release: GA
+    ruleSet: 2022_09
+spec:
+  type:
+  - 'Microsoft.Cache/redisEnterprise'
+  condition:
+    field: properties.minimumTlsVersion
+    version: '>=1.2'
+
+
+#endregion Rules
