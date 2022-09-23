@@ -48,6 +48,8 @@ What's changed since pre-release v1.20.0-B0028:
     - If you are referencing the old names please consider updating to the new names.
   - Added Bicep/ARM examples to KeyVault.Logs.md, FrontDoor.Logs.md, FrontDoor.MinTLS.md, and FrontDoor.Probe*.md by @lluppesms
     [#1667](https://github.com/Azure/PSRule.Rules.Azure/issues/1667)
+  - Improved the way we check that VM or VMSS has Linux by @verabe
+    [#1704](https://github.com/Azure/PSRule.Rules.Azure/issues/1704)
 - General improvements:
   - Updated NSG documentation with code snippets and links by @simone-bennett.
     [#1607](https://github.com/Azure/PSRule.Rules.Azure/issues/1607)
