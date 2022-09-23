@@ -38,26 +38,28 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Network/applicationGateways",
-    "apiVersion": "2020-11-01",
-    "name": "[parameters('appGwName')]",
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "sku": {
-            "name": "WAF_v2",
-            "tier": "WAF_v2"
+  "type": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+  "apiVersion": "2022-01-01",
+  "name": "agwwaf",
+  "location": "[parameters('location')]",
+  "properties": {
+    "managedRules": {
+      "managedRuleSets": [
+        {
+          "ruleSetType": "OWASP",
+          "ruleSetVersion": "3.2"
         },
-        "webApplicationFirewallConfiguration": {
-            "enabled": true,
-            "firewallMode": "Prevention",
-            "ruleSetType": "OWASP",
-            "ruleSetVersion": "3.2",
-            "disabledRuleGroups": [],
-            "requestBodyCheck": true,
-            "maxRequestBodySizeInKb": 128,
-            "fileUploadLimitInMb": 100
+        {
+          "ruleSetType": "Microsoft_BotManagerRuleSet",
+          "ruleSetVersion": "0.1"
         }
+      ]
+    },
+    "policySettings": {
+      "state": "Enabled",
+      "mode": "Prevention"
     }
+  }
 }
 ```
 
