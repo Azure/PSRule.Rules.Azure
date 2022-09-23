@@ -6,13 +6,7 @@
     "Location": "Global",
     "ResourceName": "frontdoorwaf-A",
     "Name": "frontdoorwaf-A",
-    "sku": {
-      "name": "Premium_AzureFrontDoor"
-    },
     "properties": {
-      "sku": {
-        "name": "Premium_AzureFrontDoor"
-      },
       "policySettings": {
         "enabledState": "Enabled",
         "mode": "Prevention",
@@ -48,13 +42,7 @@
     "Location": "Global",
     "ResourceName": "frontdoorwaf-B",
     "Name": "frontdoorwaf-B",
-    "sku": {
-      "name": "Premium_AzureFrontDoor"
-    },
     "properties": {
-      "sku": {
-        "name": "Premium_AzureFrontDoor"
-      },
       "policySettings": {
         "enabledState": "Disabled",
         "mode": "Prevention",
@@ -90,13 +78,7 @@
     "Location": "Global",
     "ResourceName": "frontdoorwaf-C",
     "Name": "frontdoorwaf-C",
-    "sku": {
-      "name": "Premium_AzureFrontDoor"
-    },
     "properties": {
-      "sku": {
-        "Name": "Premium_AzureFrontDoor"
-      },
       "policySettings": {
         "enabledState": "Enabled",
         "mode": "Detection",

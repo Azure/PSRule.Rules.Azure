@@ -7,21 +7,6 @@
 
 #region Rules
 
----
-# Synopsis: Azure Front Door using a Premium SKU.
-apiVersion: github.com/microsoft/PSRule/v1
-kind: Selector
-metadata:
-  name: Azure.FrontDoor.IsPremiumSKU
-spec:
-  if:
-    allOf:
-    - type: '.'
-      equals: 'Microsoft.Network/frontdoorwebapplicationfirewallpolicies'
-    - field: sku.name
-      equals: 'Premium_AzureFrontDoor'
-
----
 # Synopsis: FrontDoor should use a WAF.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
@@ -32,8 +17,6 @@ metadata:
     release: 'GA'
     ruleSet: '2022_09'
 spec:
-  with:
-  - Azure.FrontDoor.IsPremiumSKU
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
   condition:
@@ -53,8 +36,6 @@ metadata:
     release: 'GA'
     ruleSet: '2022_09'
 spec:
-  with:
-  - Azure.FrontDoor.IsPremiumSKU
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
   condition:
@@ -75,8 +56,6 @@ metadata:
     release: 'GA'
     ruleSet: '2022_09'
 spec:
-  with:
-  - Azure.FrontDoor.IsPremiumSKU
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
   condition:
@@ -99,8 +78,6 @@ metadata:
     release: 'GA'
     ruleSet: '2022_09'
 spec:
-  with:
-  - Azure.FrontDoor.IsPremiumSKU
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
   condition:
