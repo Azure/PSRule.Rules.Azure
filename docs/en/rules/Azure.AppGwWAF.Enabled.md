@@ -32,7 +32,7 @@ Consider enabling WAF for Application Gateway instances connected to un-trusted 
 
 To deploy Application Gateways that pass this rule:
 
-- Set the `properties.webApplicationFirewallConfiguration.enabled` property to `true`.
+- Set the `properties.policySettings.state` property to `Enabled`.
 
 For example:
 
