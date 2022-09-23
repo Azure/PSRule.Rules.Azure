@@ -178,7 +178,7 @@ function global:SupportsHybridUse {
     }
 }
 
-function global:IsLinuxOS { # TODO doesn't need to be global
+function global:IsLinuxOS {
     [CmdletBinding()]
     [OutputType([System.Boolean])]
     param ($imageReference)
