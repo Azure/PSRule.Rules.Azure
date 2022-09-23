@@ -66,8 +66,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R';
+            $ruleResult.Length | Should -Be 14;
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J','redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-Q', 'redis-R', 'redis-S';
         }
 
         It 'Azure.Redis.MinSKU' {
@@ -84,6 +84,12 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 9;
             $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J';
+
+            # None
+             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+             $ruleResult | Should -Not -BeNullOrEmpty;
+             $ruleResult.Length | Should -Be 8;
+             $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-R', 'redis-S';
         }
 
         It 'Azure.Redis.MaxMemoryReserved' {
