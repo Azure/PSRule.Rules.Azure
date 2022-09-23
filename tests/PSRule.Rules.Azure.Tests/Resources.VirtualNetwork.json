@@ -2624,5 +2624,78 @@
         "Sku": null,
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "type": "Microsoft.Network/networkSecurityGroups",
+        "resourceType": "Microsoft.Network/networkSecurityGroups",
+        "apiVersion": "2020-11-01",
+        "name": "aks-agentpool-00000000-nsg",
+        "location": "region",
+        "properties": {
+            "securityRules": [
+                {
+                    "name": "a1b7b90cbd0be46cba31fb4a41b27b41-TCP-80-Internet",
+                    "properties": {
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "80",
+                        "sourceAddressPrefix": "Internet",
+                        "destinationAddressPrefix": "20.237.73.217",
+                        "access": "Allow",
+                        "priority": 500,
+                        "direction": "Inbound",
+                        "sourcePortRanges": [],
+                        "destinationPortRanges": [],
+                        "sourceAddressPrefixes": [],
+                        "destinationAddressPrefixes": []
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "type": "Microsoft.Network/networkSecurityGroups",
+        "resourceType": "Microsoft.Network/networkSecurityGroups",
+        "apiVersion": "2020-11-01",
+        "name": "aks-agentpool-00000001-nsg",
+        "location": "region",
+        "properties": {
+            "securityRules": [
+                {
+                    "name": "a1b7b90cbd0be46cba31fb4a41b27b41-TCP-80-Internet",
+                    "properties": {
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "80",
+                        "sourceAddressPrefix": "Internet",
+                        "destinationAddressPrefix": "20.237.73.217",
+                        "access": "Allow",
+                        "priority": 500,
+                        "direction": "Inbound",
+                        "sourcePortRanges": [],
+                        "destinationPortRanges": [],
+                        "sourceAddressPrefixes": [],
+                        "destinationAddressPrefixes": []
+                    }
+                },
+                {
+                    "name": "custom-rule",
+                    "properties": {
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "443",
+                        "sourceAddressPrefix": "Internet",
+                        "destinationAddressPrefix": "20.237.73.217",
+                        "access": "Allow",
+                        "priority": 501,
+                        "direction": "Inbound",
+                        "sourcePortRanges": [],
+                        "destinationPortRanges": [],
+                        "sourceAddressPrefixes": [],
+                        "destinationAddressPrefixes": []
+                    }
+                }
+            ]
+        }
     }
 ]

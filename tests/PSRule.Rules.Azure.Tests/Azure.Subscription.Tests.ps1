@@ -156,7 +156,7 @@ Describe 'Azure.RBAC' -Tag 'Subscription', 'RBAC' {
     }
 }
 
-Describe 'Azure.SecurityCenter' -Tag 'Subscription', 'SecurityCenter' {
+Describe 'Azure.DefenderCloud' -Tag 'Subscription', 'DefenderCloud' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
@@ -168,8 +168,8 @@ Describe 'Azure.SecurityCenter' -Tag 'Subscription', 'SecurityCenter' {
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
 
-        It 'Azure.SecurityCenter.Contact' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SecurityCenter.Contact' };
+        It 'Azure.DefenderCloud.Contact' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.DefenderCloud.Contact' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -198,8 +198,8 @@ Describe 'Azure.SecurityCenter' -Tag 'Subscription', 'SecurityCenter' {
             $ruleResult.TargetName | Should -Be 'subscription-C';
         }
 
-        It 'Azure.SecurityCenter.Provisioning' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SecurityCenter.Provisioning' };
+        It 'Azure.DefenderCloud.Provisioning' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.DefenderCloud.Provisioning' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

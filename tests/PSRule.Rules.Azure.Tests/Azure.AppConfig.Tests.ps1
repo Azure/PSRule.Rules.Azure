@@ -52,6 +52,23 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'app-config-A';
         }
+
+        It 'Azure.AppConfig.DisableLocalAuth' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppConfig.DisableLocalAuth' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'app-config-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'Properties.disableLocalAuth';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'app-config-A';
+        }
     }
 
     Context 'Resource name' {

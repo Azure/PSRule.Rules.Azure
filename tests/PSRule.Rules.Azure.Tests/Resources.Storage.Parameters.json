@@ -47,6 +47,9 @@
         },
         "softDeleteDays": {
             "value": 7
+        },
+        "containerSoftDeleteDays": {
+            "value": 7
         }
     }
 }
