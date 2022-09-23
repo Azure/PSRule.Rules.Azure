@@ -1,6 +1,7 @@
 [
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoorwaf-A",
+    "type": "Microsoft.Network/frontdoorwebapplicationfirewallpolicies",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoorwaf-A",
     "Location": "Global",
     "ResourceName": "frontdoorwaf-A",
