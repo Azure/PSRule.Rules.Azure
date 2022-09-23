@@ -107,7 +107,7 @@ Rule 'Azure.Redis.FirewallRuleCount' -Ref 'AZR-000299' -Type 'Microsoft.Cache/re
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses for the Redis Cache
-Rule 'Azure.Redis.FirewallIPRange' -Ref 'AZR-000294' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+Rule 'Azure.Redis.FirewallIPRange' -Ref 'AZR-000300' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
 
     $services = @($TargetObject);
 
