@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Text;
 using System.Threading;
 using Newtonsoft.Json.Linq;
@@ -698,10 +699,17 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             foreach (var definition in definitions)
             {
-                if (definition.TryStringProperty(PROPERTY_POLICYDEFINITIONID, out var definitionId))
+                try
                 {
-                    context.SetDefinitionId(definitionId);
-                    context.AddDefinition(definition, definitionId);
+                    if (definition.TryStringProperty(PROPERTY_POLICYDEFINITIONID, out var definitionId))
+                    {
+                        context.SetDefinitionId(definitionId);
+                        context.AddDefinition(definition, definitionId);
+                    }
+                }
+                catch (Exception inner)
+                {
+                    context.Pipeline.Writer?.WriteError(inner, inner.GetBaseException().GetType().FullName, errorCategory: ErrorCategory.NotSpecified, targetObject: definition);
                 }
             }
         }

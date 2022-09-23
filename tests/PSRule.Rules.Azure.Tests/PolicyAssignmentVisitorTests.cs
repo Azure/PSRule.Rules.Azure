@@ -29,13 +29,13 @@ namespace PSRule.Rules.Azure
                 }
                 catch
                 {
-                    // Sink exceptions, current there are bugs that need to be fixed.
+                    // Sink exceptions, currently there are bugs that need to be fixed.
                 }
             }
 
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
-            Assert.True(definitions.Length >= 9);
+            Assert.True(definitions.Length >= 183);
 
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/a4fe33eb-e377-4efb-ab31-0784311bc499");
