@@ -2,8 +2,8 @@
 severity: Critical
 pillar: Security
 category: Data protection
-resource: Azure Cache for Redis
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.MinTLS/
+resource: Azure Cache for Redis Enterprise
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RedisEnterprise.MinTLS/
 ms-content-id: 31240bca-b04f-4267-9c31-cfca4e91cfbf
 ---
 
@@ -25,6 +25,14 @@ By default, TLS 1.0, TLS 1.1, and TLS 1.2 is accepted.
 
 Consider configuring the minimum supported TLS version to be 1.2.
 Support for TLS 1.0/ 1.1 version will be removed.
+
+## Examples
+
+To disable old versions of TLS on Redis Cache Enterprise using PowerShell
+
+```PowerShell
+Set-AzRedisCache -Name <YourRedisName> -MinimumTlsVersion "1.2"
+```
 
 ## LINKS
 
