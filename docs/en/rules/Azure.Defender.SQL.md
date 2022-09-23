@@ -2,7 +2,7 @@
 severity: Critical
 pillar: Security
 category: Security operations
-resource: SQL Database
+resource: Microsoft Defender for Cloud
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.SQL/
 ---
 
