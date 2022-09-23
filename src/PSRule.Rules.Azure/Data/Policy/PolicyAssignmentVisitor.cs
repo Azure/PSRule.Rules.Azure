@@ -13,6 +13,9 @@ using PSRule.Rules.Azure.Pipeline;
 
 namespace PSRule.Rules.Azure.Data.Policy
 {
+    /// <summary>
+    /// This visitor processes each assignment to convert the assignment in to one or mny rules.
+    /// </summary>
     internal abstract class PolicyAssignmentVisitor
     {
         private const string PROPERTY_PARAMETERS = "parameters";
@@ -42,6 +45,9 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string FIELD_EXISTS = "exists";
         private const string PROPERTY_DISPLAYNAME = "displayName";
         private const string PROPERTY_DESCRIPTION = "description";
+        private const string PROPERTY_METADATA = "metadata";
+        private const string PROPERTY_VERSION = "version";
+        private const string PROPERTY_CATEGORY = "category";
         private const string PROPERTY_DEPLOYMENT = "deployment";
         private const string PROPERTY_VALUE = "value";
         private const string PROPERTY_COUNT = "count";
@@ -132,40 +138,48 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             public void AddDefinition(JObject definition, string definitionId)
             {
+                // A definition must have properties, policyRule, and a non-disabled effect.
+                if (!definition.TryObjectProperty(PROPERTY_PROPERTIES, out var properties) ||
+                    !properties.TryObjectProperty(PROPERTY_POLICYRULE, out var policyRule) ||
+                    !TryPolicyRuleEffect(policyRule, out var effect) ||
+                    effect.Equals(DISABLED_EFFECT, StringComparison.OrdinalIgnoreCase))
+                    return;
 
-                if (definition.TryObjectProperty(PROPERTY_PROPERTIES, out var properties))
+                properties.TryStringProperty(PROPERTY_DISPLAYNAME, out var displayName);
+                properties.TryStringProperty(PROPERTY_DESCRIPTION, out var description);
+                var policyDefinition = new PolicyDefinition(definitionId, displayName, description, definition)
                 {
-                    properties.TryStringProperty(PROPERTY_DISPLAYNAME, out var displayName);
-                    properties.TryStringProperty(PROPERTY_DESCRIPTION, out var description);
+                    Effect = effect
+                };
 
-                    var policyDefinition = new PolicyDefinition(definitionId, displayName, description, definition);
+                // Set annotations
+                if (properties.TryObjectProperty(PROPERTY_METADATA, out var metadata))
+                {
+                    if (metadata.TryStringProperty(PROPERTY_CATEGORY, out var category))
+                        policyDefinition.Category = category;
 
-                    // Set parameters
-                    if (properties.TryObjectProperty(PROPERTY_PARAMETERS, out var parameters))
-                    {
-                        foreach (var parameter in parameters.Properties())
-                            SetDefinitionParameterAssignment(policyDefinition, parameter);
+                    if (metadata.TryStringProperty(PROPERTY_VERSION, out var version))
+                        policyDefinition.Version = version;
 
-                        _DefinitionIds.Add(definitionId, policyDefinition);
-                    }
-
-                    // Modify policy rule
-                    if (properties.TryObjectProperty(PROPERTY_POLICYRULE, out var policyRule))
-                    {
-                        RemovePolicyRuleDeployment(policyRule);
-                        ExpandPolicyRule(policyRule);
-                        MergePolicyRuleConditions(policyRule);
-                        if (policyRule.TryObjectProperty(PROPERTY_CONDITION, out var condition))
-                            policyDefinition.Condition = condition;
-
-                        if (TryPolicyRuleEffect(policyRule, out var effect))
-                            policyDefinition.Effect = effect;
-                    }
-
-                    // Skip adding definitions with disabled effect
-                    if (!policyDefinition.Effect.Equals(DISABLED_EFFECT, StringComparison.OrdinalIgnoreCase))
-                        _Definitions.Add(policyDefinition);
                 }
+
+                // Set parameters
+                if (properties.TryObjectProperty(PROPERTY_PARAMETERS, out var parameters))
+                {
+                    foreach (var parameter in parameters.Properties())
+                        SetDefinitionParameterAssignment(policyDefinition, parameter);
+
+                    _DefinitionIds.Add(definitionId, policyDefinition);
+                }
+
+                // Modify policy rule
+                RemovePolicyRuleDeployment(policyRule);
+                ExpandPolicyRule(policyRule);
+                MergePolicyRuleConditions(policyRule);
+                if (policyRule.TryObjectProperty(PROPERTY_CONDITION, out var condition))
+                    policyDefinition.Condition = condition;
+
+                _Definitions.Add(policyDefinition);
             }
 
             private void SetDefinitionParameterAssignment(PolicyDefinition definition, JProperty parameter)
@@ -674,6 +688,9 @@ namespace PSRule.Rules.Azure.Data.Policy
                 context.AddParameterAssignment(parameter.Name, parameter.Value);
         }
 
+        /// <summary>
+        /// Process each policy definition of the assignment.
+        /// </summary>
         protected virtual void VisitDefinitions(PolicyAssignmentContext context, IEnumerable<JObject> definitions)
         {
             if (definitions == null || !definitions.Any())
@@ -689,10 +706,11 @@ namespace PSRule.Rules.Azure.Data.Policy
             }
         }
 
+        /// <summary>
+        /// Process each policy assignment and linked definitions.
+        /// </summary>
         protected virtual void Assignment(PolicyAssignmentContext context, JObject assignment)
         {
-            // Process assignment sections
-
             // Assignment Properties
             if (assignment.TryObjectProperty(PROPERTY_PROPERTIES, out var properties))
             {

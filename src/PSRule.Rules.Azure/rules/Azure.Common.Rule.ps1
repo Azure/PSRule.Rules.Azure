@@ -181,12 +181,44 @@ function global:SupportsHybridUse {
 function global:IsLinuxOS {
     [CmdletBinding()]
     [OutputType([System.Boolean])]
+    param ($imageReference)
+    process {
+        $isLinuxOS = $False
+        
+        foreach ($linuxOffer in $LinuxOffers) {
+            if ($linuxOffer[0] -ieq $imageReference.publisher -and $linuxOffer[1] -ieq $imageReference.offer) {
+                $isLinuxOS = $True
+                break
+            }
+        }
+
+        return $isLinuxOS
+    }
+ }
+ 
+function global:VMHasLinuxOS {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
     param ()
     process {
         if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachines') {
             return $False;
         }
-        return $TargetObject.Properties.storageProfile.osDisk.osType -eq 'Linux';
+
+        return IsLinuxOS($TargetObject.Properties.storageProfile.imageReference)
+    }
+}
+
+function global:VMSSHasLinuxOS {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachineScaleSets') {
+            return $False;
+        }
+
+        return IsLinuxOS($TargetObject.Properties.virtualMachineProfile.storageProfile.imageReference)
     }
 }
 

@@ -533,7 +533,7 @@ Describe 'Get-AzRuleTemplateLink' -Tag 'Cmdlet', 'Get-AzRuleTemplateLink' {
 
 #region Export-AzPolicyAssignmentData
 
-Describe 'Export-AzPolicyAssignmentData' -Tag 'Cmdlet', 'Export-AzPolicyAssignmentData' {
+Describe 'Export-AzPolicyAssignmentData' -Tag 'Cmdlet', 'Export-AzPolicyAssignmentData', 'assignment' {
     Context 'With Defaults' {
         BeforeAll {
             Mock -CommandName 'GetAzureContext' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith ${function:MockSingleSubscription};
@@ -654,7 +654,7 @@ Describe 'Export-AzPolicyAssignmentData' -Tag 'Cmdlet', 'Export-AzPolicyAssignme
 
 #region Export-AzPolicyAssignmentRuleData
 
-Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssignmentRuleData' {
+Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssignmentRuleData', 'assignment' {
     BeforeAll {
         $emittedJsonRulesDataFile = Join-Path -Path $here -ChildPath 'emittedJsonRulesData.jsonc';
         $jsonRulesData = ((Get-Content -Path $emittedJsonRulesDataFile) -replace '^\s*//.*') | ConvertFrom-Json;
@@ -733,14 +733,14 @@ Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssi
 
 #region Get-AzPolicyAssignmentDataSource
 
-Describe 'Get-AzPolicyAssignmentDataSource' -Tag 'Cmdlet', 'Get-AzPolicyAssignmentDataSource' {
+Describe 'Get-AzPolicyAssignmentDataSource' -Tag 'Cmdlet', 'Get-AzPolicyAssignmentDataSource', 'assignment' {
     BeforeAll {
         $emittedJsonRulesDataFile = Join-Path -Path $here -ChildPath 'emittedJsonRulesData.jsonc';
         $jsonRulesData = ((Get-Content -Path $emittedJsonRulesDataFile) -replace '^\s*//.*') | ConvertFrom-Json;
     }
 
     It 'Get assignment sources from current working directory' {
-        $sources = Get-AzPolicyAssignmentDataSource | Sort-Object { [int](Split-Path -Path $_.AssignmentFile -Leaf).Split('.')[0].TrimStart('test') }
+        $sources = Get-AzPolicyAssignmentDataSource | Where-Object { $_.AssignmentFile -notlike "*Policy.assignment.json" } | Sort-Object { [int](Split-Path -Path $_.AssignmentFile -Leaf).Split('.')[0].TrimStart('test') }
         $sources.Length | Should -Be 10;
         $sources[0].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test.assignment.json');
         $sources[1].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test2.assignment.json');
@@ -755,7 +755,7 @@ Describe 'Get-AzPolicyAssignmentDataSource' -Tag 'Cmdlet', 'Get-AzPolicyAssignme
     }
 
     It 'Get assignment sources from tests folder' {
-        $sources = Get-AzPolicyAssignmentDataSource -Path $here | Sort-Object { [int](Split-Path -Path $_.AssignmentFile -Leaf).Split('.')[0].TrimStart('test') }
+        $sources = Get-AzPolicyAssignmentDataSource -Path $here | Where-Object { $_.AssignmentFile -notlike "*Policy.assignment.json" } | Sort-Object { [int](Split-Path -Path $_.AssignmentFile -Leaf).Split('.')[0].TrimStart('test') }
         $sources.Length | Should -Be 10;
         $sources[0].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test.assignment.json');
         $sources[1].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test2.assignment.json');
@@ -770,7 +770,7 @@ Describe 'Get-AzPolicyAssignmentDataSource' -Tag 'Cmdlet', 'Get-AzPolicyAssignme
     }
 
     It 'Pipe to Export-AzPolicyAssignmentRuleData and generate JSON rules' {
-        $result = @(Get-AzPolicyAssignmentDataSource | Sort-Object { [int](Split-Path -Path $_.AssignmentFile -Leaf).Split('.')[0].TrimStart('test') } | Export-AzPolicyAssignmentRuleData -Name 'tests' -OutputPath $outputPath);
+        $result = @(Get-AzPolicyAssignmentDataSource | Where-Object { $_.AssignmentFile -notlike "*Policy.assignment.json" } | Sort-Object { [int](Split-Path -Path $_.AssignmentFile -Leaf).Split('.')[0].TrimStart('test') } | Export-AzPolicyAssignmentRuleData -Name 'tests' -OutputPath $outputPath);
         $result.Length | Should -Be 1;
         $result | Should -BeOfType System.IO.FileInfo;
         $filename = Split-Path -Path $result.FullName -Leaf;
