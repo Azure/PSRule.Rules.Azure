@@ -108,6 +108,12 @@ resource acr 'Microsoft.ContainerRegistry/registries@2022-02-01-preview' = {
 }
 ```
 
+### Configure with Azure CLI
+
+```bash
+az acr config soft-delete update -r MyRegistry --days 90 --status enabled
+```
+
 ## LINKS
 
 - [Data Management for Reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/data-management)
