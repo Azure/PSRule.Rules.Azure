@@ -14,7 +14,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.RedisEnterprise.MinTLS
-  ref: AZR-000299
+  ref: AZR-000301
   tags:
     release: GA
     ruleSet: 2022_09
