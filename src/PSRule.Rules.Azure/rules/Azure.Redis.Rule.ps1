@@ -83,6 +83,51 @@ Rule 'Azure.RedisEnterprise.Zones' -Ref 'AZR-000162' -Type 'Microsoft.Cache/redi
 
 } -Configure @{ AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
+# Synopsis: Determine if there is an excessive number of firewall rules for the Redis Cache
+Rule 'Azure.Redis.FirewallRuleCount' -Ref 'AZR-000299' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+
+    $services = @($TargetObject);
+
+    if ($PSRule.TargetType -eq 'Microsoft.Cache/redis') {
+        $services = @(GetSubResources -ResourceType 'Microsoft.Cache/redis/firewallRules');
+    }
+
+    if ($services.Length -eq 0) {
+        return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Cache/redis/firewallRules');
+    }
+
+    $summary = GetIPAddressSummary
+    $summary.Public = [int32]$summary.Public # Had to convert $summary.Public to int32 from uint64.
+
+    $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Cache/redis/firewallRules');
+    $Assert.
+        LessOrEqual($firewallRules, '.', 10).
+        WithReason(($LocalizedData.DBServerFirewallRuleCount -f $firewallRules.Length, 10), $True);
+    
+}
+
+# Synopsis: Determine if there is an excessive number of permitted IP addresses for the Redis Cache
+Rule 'Azure.Redis.FirewallIPRange' -Ref 'AZR-000300' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+
+    $services = @($TargetObject);
+
+    if ($PSRule.TargetType -eq 'Microsoft.Cache/redis') {
+        $services = @(GetSubResources -ResourceType 'Microsoft.Cache/redis/firewallRules');
+    }
+
+    if ($services.Length -eq 0) {
+        return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Cache/redis/firewallRules');
+    }
+
+    $summary = GetIPAddressSummary
+    $summary.Public = [int32]$summary.Public # Had to convert $summary.Public to int32 from uint64.
+
+    $Assert.
+        LessOrEqual($summary, 'Public', 10).
+        WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True); 
+    
+}
+
 #region Helper functions
 
 function global:GetCacheMemory {
