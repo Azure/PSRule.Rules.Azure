@@ -3,7 +3,7 @@ reviewed: 2022-09-22
 severity: Important
 pillar: Security
 category: Authentication
-resource: resource
+resource: App Configuration
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.DisableLocalAuth/
 ---
 
@@ -35,52 +35,54 @@ Then disable authentication based on access keys or SAS tokens.
 
 ### Configure with Azure template
 
-To deploy App Configuration that pass this rule:
+To deploy configuration stores that pass this rule:
 
 - Set the `properties.disableLocalAuth` property to `true`.
 
 For example:
 
 ```json
-    {
-      "type": "Microsoft.AppConfiguration/configurationStores",
-      "apiVersion": "2022-05-01",
-      "name": "[parameters('configStoreName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "[parameters('skuName')]"
-      },
-      "properties": {
-        "disableLocalAuth": true
-      }
-    }
+{
+  "type": "Microsoft.AppConfiguration/configurationStores",
+  "apiVersion": "2022-05-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "standard"
+  },
+  "properties": {
+    "disableLocalAuth": true,
+    "enablePurgeProtection": true
+  }
+}
 ```
 
 ### Configure with Bicep
 
-To deploy App Configuration that pass this rule:
+To deploy configuration stores that pass this rule:
 
 - Set the `properties.disableLocalAuth` property to `true`.
 
 For example:
 
 ```bicep
-resource configStore 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
-  name: configStoreName
+resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
+  name: name
   location: location
   sku: {
-    name: skuName
+    name: 'standard'
   }
   properties: {
     disableLocalAuth: true
+    enablePurgeProtection: true
   }
 }
 ```
 
 ## LINKS
 
-- [Use identity-based authentication](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Centralize all identity systems](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#centralize-all-identity-systems)
 - [IM-1: Use centralized identity and authentication system](https://docs.microsoft.com/security/benchmark/azure/security-controls-v3-identity-management#im-1-use-centralized-identity-and-authentication-system)
 - [Authorize access to Azure App Configuration using Azure Active Directory](https://learn.microsoft.com/azure/azure-app-configuration/concept-enable-rbac)
-- [Disable access key authentication](https://learn.microsoft.com/azure/azure-app-configuration/howto-disable-access-key-authentication?tabs=portal)
+- [Disable access key authentication](https://learn.microsoft.com/azure/azure-app-configuration/howto-disable-access-key-authentication)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)

@@ -1,5 +1,5 @@
 ---
-reviewed: 2021/12/20
+reviewed: 2022-09-24
 severity: Important
 pillar: Reliability
 category: Requirements
@@ -28,7 +28,7 @@ Free instances are intended only for early development and testing scenarios.
 
 ### Configure with Azure template
 
-To deploy App Configuration Stores that pass this rule:
+To deploy configuration stores that pass this rule:
 
 - Set `sku.name` to `standard`.
 
@@ -37,36 +37,44 @@ For example:
 ```json
 {
   "type": "Microsoft.AppConfiguration/configurationStores",
-  "apiVersion": "2020-06-01",
-  "name": "[parameters('storeName')]",
+  "apiVersion": "2022-05-01",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
     "name": "standard"
+  },
+  "properties": {
+    "disableLocalAuth": true,
+    "enablePurgeProtection": true
   }
 }
 ```
 
 ### Configure with Bicep
 
-To deploy App Configuration Stores that pass this rule:
+To deploy configuration stores that pass this rule:
 
 - Set `sku.name` to `standard`.
 
 For example:
 
 ```bicep
-resource configStore 'Microsoft.AppConfiguration/configurationStores@2020-06-01' = {
-  name: storeName
+resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
+  name: name
   location: location
   sku: {
     name: 'standard'
+  }
+  properties: {
+    disableLocalAuth: true
+    enablePurgeProtection: true
   }
 }
 ```
 
 ## LINKS
 
-- [Target and non-functional requirements](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
+- [Meet application platform requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
 - [App Configuration pricing](https://azure.microsoft.com/pricing/details/app-configuration/)
-- [Which App Configuration tier should I use?](https://docs.microsoft.com/azure/azure-app-configuration/faq#which-app-configuration-tier-should-i-use)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)
+- [Which App Configuration tier should I use?](https://learn.microsoft.com/azure/azure-app-configuration/faq#which-app-configuration-tier-should-i-use)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)
