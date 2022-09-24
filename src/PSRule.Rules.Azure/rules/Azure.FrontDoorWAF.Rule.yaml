@@ -1,0 +1,98 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Selectors for Front Door
+#
+
+#region Rules
+
+# Synopsis: FrontDoor should use a WAF.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.FrontDoorWAF.Enabled
+  ref: AZR-000305
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  type:
+  - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
+  condition:
+    allOf:
+    # WAF policy is enabled
+    - field: Properties.policySettings.enabledState
+      equals: 'Enabled'
+
+---
+# Synopsis: FrontDoor WAF should be in prevention mode.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.FrontDoorWAF.PreventionMode
+  ref: AZR-000306
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  type:
+  - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
+  condition:
+    allOf:
+    # WAF policy is set to prevention mode
+    - field: Properties.policySettings.mode
+      equals: 'Prevention'
+
+---
+
+# Synopsis: FrontDoor WAF should have no exclusions.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.FrontDoorWAF.Exclusions
+  ref: AZR-000307
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  type:
+  - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
+  condition:
+    allOf:
+    # WAF policy has no exclusions
+    - field: Properties.managedRules.managedRuleSets[0].exclusions
+      count: 0
+    - field: Properties.managedRules.managedRuleSets[1].exclusions
+      count: 0
+
+---
+
+# Synopsis: FrontDoor WAF should have at least 2 Rule Groups. One for OWASP and one for Microsoft_BotManagerRuleSet.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.FrontDoorWAF.RuleGroups
+  ref: AZR-000308
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  type:
+  - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
+  condition:
+    allOf:
+    # WAF policy has at least two rule groups. OWASP 3.1 is the minimum. Microsoft_BotManagerRuleSet 0.1 is the minimum.
+    - field: Properties.managedRules.managedRuleSets
+      greaterOrEquals: 2
+    - field: Properties.managedRules.managedRuleSets[0].ruleSetType
+      equals: 'Microsoft_DefaultRuleSet'
+    - field: Properties.managedRules.managedRuleSets[0].ruleSetVersion
+      version: '>=2.0'
+    - field: Properties.managedRules.managedRuleSets[1].ruleSetType
+      equals: 'Microsoft_BotManagerRuleSet'
+    - field: Properties.managedRules.managedRuleSets[1].ruleSetVersion
+      version: '>=1.0'
+
+
+#endregion Rules

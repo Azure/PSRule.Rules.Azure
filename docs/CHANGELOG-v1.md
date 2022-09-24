@@ -31,21 +31,26 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since pre-release v1.20.0-B0028:
 
 - New rules:
+  - Azure Cache for Redis:
+    - Check the number of firewall rules for caches by @jonathanruiz.
+      [#544](https://github.com/Azure/PSRule.Rules.Azure/issues/544)
+    - Check the number of IP addresses in firewall rules for caches by @jonathanruiz.
+      [#544](https://github.com/Azure/PSRule.Rules.Azure/issues/544)
   - App Configuration:
-    - Use identity-based authentication for App Configuration by @pazdedav
+    - Check identity-based authentication is used for configuration stores by @pazdedav.
       [#1691](https://github.com/Azure/PSRule.Rules.Azure/issues/1691)
   - Defender for Cloud:
-    - Check Microsoft Defender for Cloud is enabled for Containers by @jdewisscher
+    - Check Microsoft Defender for Cloud is enabled for Containers by @jdewisscher.
       [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
-    - Check Microsoft Defender for Cloud is enabled for Virtual Machines by @jdewisscher
+    - Check Microsoft Defender for Cloud is enabled for Virtual Machines by @jdewisscher.
       [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
-    - Check Microsoft Defender for Cloud is enabled for SQL Servers by @jdewisscher
+    - Check Microsoft Defender for Cloud is enabled for SQL Servers by @jdewisscher.
       [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
-    - Check Microsoft Defender for Cloud is enabled for App Services by @jdewisscher
+    - Check Microsoft Defender for Cloud is enabled for App Services by @jdewisscher.
       [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
-    - Check Microsoft Defender for Cloud is enabled for Storage Accounts by @jdewisscher
+    - Check Microsoft Defender for Cloud is enabled for Storage Accounts by @jdewisscher.
       [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
-    - Check Microsoft Defender for Cloud is enabled for SQL Servers on machines by @jdewisscher
+    - Check Microsoft Defender for Cloud is enabled for SQL Servers on machines by @jdewisscher.
       [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
   - Network Security Group:
     - Check AKS managed NSGs don't contain custom rules by @ms-sambell.
@@ -55,10 +60,6 @@ What's changed since pre-release v1.20.0-B0028:
       [#1671](https://github.com/Azure/PSRule.Rules.Azure/issues/1671)
     - Check file share soft delete is enabled by @jonathanruiz.
       [#966](https://github.com/Azure/PSRule.Rules.Azure/issues/966)
-    - Limit number of firewall rules for Redis @jonathanruiz
-      [#544](https://github.com/Azure/PSRule.Rules.Azure/issues/544)
-    - Limit number of IP addresses in firewall rules for Redis @jonathanruiz
-      [#544](https://github.com/Azure/PSRule.Rules.Azure/issues/544)
 - Updated rules:
   - **Important change**: Updated rules, tests and docs with Microsoft Defender for Cloud by @jonathanruiz.
     [#545](https://github.com/Azure/PSRule.Rules.Azure/issues/545)
