@@ -6774,7 +6774,7 @@ NSGs that are not associated with a network interface or subnet perform no purpo
 Also consider using Resource Groups to help manage the lifecycle of related resources together.
 Apply tags to all resources to help identify resources that are attached to specific workloads</p>
 <p>To find orphaned NSG's run the following Azure CLI command</p>
-<div class="highlight"><pre><span></span><code>az network nsg list -g $rgName --query &quot;[?(subnets==null) &amp;&amp; (networkInterfaces==null)].id&quot; -o tsv
+<div class="highlight"><pre><span></span><code>az network nsg list -g <span class="nv">$rgName</span> --query <span class="s2">&quot;[?(subnets==null) &amp;&amp; (networkInterfaces==null)].id&quot;</span> -o tsv
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
@@ -6793,7 +6793,7 @@ Apply tags to all resources to help identify resources that are attached to spec
   <small>
     
       Last update:
-      2022-09-20
+      2022-09-24
     
   </small>
 </div>
