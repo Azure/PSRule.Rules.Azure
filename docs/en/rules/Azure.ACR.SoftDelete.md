@@ -2,7 +2,7 @@
 severity: Important
 pillar: Reliability
 category: Data management
-resource: Azure Container Registry
+resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.SoftDelete/
 ---
 
