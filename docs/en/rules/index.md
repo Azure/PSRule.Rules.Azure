@@ -1,6 +1,6 @@
 ---
-generated: True
 title: Reference
+generated: True
 ---
 
 # Reference
@@ -81,7 +81,7 @@ AZR-000056 | [Azure.APIM.Name](Azure.APIM.Name.md) | API Management service name
 AZR-000057 | [Azure.AppConfig.SKU](Azure.AppConfig.SKU.md) | App Configuration should use a minimum size of Standard. | GA
 AZR-000058 | [Azure.AppConfig.Name](Azure.AppConfig.Name.md) | App Configuration store names should meet naming requirements. | GA
 AZR-000059 | [Azure.AppGw.UseHTTPS](Azure.AppGw.UseHTTPS.md) | Application Gateways should only expose frontend HTTP endpoints over HTTPS. | GA
-AZR-000060 | [Azure.AppGw.AvailabilityZone](Azure.AppGw.AvailabilityZone.md) | Application gateways deployed with should use availability zones in supported regions for high availability. | GA
+AZR-000060 | [Azure.AppGw.AvailabilityZone](Azure.AppGw.AvailabilityZone.md) | Application gateways should use availability zones in supported regions for high availability. | GA
 AZR-000061 | [Azure.AppGw.MinInstance](Azure.AppGw.MinInstance.md) | Application Gateways should use a minimum of two instances. | GA
 AZR-000062 | [Azure.AppGw.MinSku](Azure.AppGw.MinSku.md) | Application Gateway should use a minimum instance size of Medium. | GA
 AZR-000063 | [Azure.AppGw.UseWAF](Azure.AppGw.UseWAF.md) | Internet accessible Application Gateways should use protect endpoints with WAF. | GA
@@ -121,7 +121,7 @@ AZR-000096 | [Azure.Cosmos.AccountName](Azure.Cosmos.AccountName.md) | Cosmos DB
 AZR-000097 | [Azure.DataFactory.Version](Azure.DataFactory.Version.md) | Consider migrating to DataFactory v2. | GA
 AZR-000098 | [Azure.EventGrid.TopicPublicAccess](Azure.EventGrid.TopicPublicAccess.md) | Use Private Endpoints to access Event Grid topics and domains. | GA
 AZR-000099 | [Azure.EventGrid.ManagedIdentity](Azure.EventGrid.ManagedIdentity.md) | Use managed identities to deliver Event Grid Topic events. | GA
-AZR-000100 | [Azure.EventGrid.DisableLocalAuth](Azure.EventGrid.DisableLocalAuth.md) | Authenticate publishing clients with Azure AD identities. | Preview
+AZR-000100 | [Azure.EventGrid.DisableLocalAuth](Azure.EventGrid.DisableLocalAuth.md) | Authenticate publishing clients with Azure AD identities. | GA
 AZR-000101 | [Azure.EventHub.Usage](Azure.EventHub.Usage.md) | Regularly remove unused resources to reduce costs. | GA
 AZR-000102 | [Azure.EventHub.DisableLocalAuth](Azure.EventHub.DisableLocalAuth.md) | Authenticate Event Hub publishers and consumers with Azure AD identities. | GA
 AZR-000103 | [Azure.Firewall.Name](Azure.Firewall.Name.md) | Firewall names should meet naming requirements. | GA
@@ -144,7 +144,7 @@ AZR-000119 | [Azure.KeyVault.Logs](Azure.KeyVault.Logs.md) | Audit and monitor a
 AZR-000120 | [Azure.KeyVault.Name](Azure.KeyVault.Name.md) | Key Vault names should meet naming requirements. | GA
 AZR-000121 | [Azure.KeyVault.SecretName](Azure.KeyVault.SecretName.md) | Key Vault Secret names should meet naming requirements. | GA
 AZR-000122 | [Azure.KeyVault.KeyName](Azure.KeyVault.KeyName.md) | Key Vault Key names should meet naming requirements. | GA
-AZR-000123 | [Azure.KeyVault.AutoRotationPolicy](Azure.KeyVault.AutoRotationPolicy.md) | Key Vault keys should have auto-rotation enabled. | Preview
+AZR-000123 | [Azure.KeyVault.AutoRotationPolicy](Azure.KeyVault.AutoRotationPolicy.md) | Key Vault keys should have auto-rotation enabled. | GA
 AZR-000124 | [Azure.KeyVault.SoftDelete](Azure.KeyVault.SoftDelete.md) | Enable Soft Delete on Key Vaults to protect vaults and vault items from accidental deletion. | GA
 AZR-000125 | [Azure.KeyVault.PurgeProtect](Azure.KeyVault.PurgeProtect.md) | Enable Purge Protection on Key Vaults to prevent early purge of vaults and vault items. | GA
 AZR-000126 | [Azure.LB.Probe](Azure.LB.Probe.md) | Use a specific probe for web protocols. | GA
@@ -158,7 +158,7 @@ AZR-000133 | [Azure.MySQL.FirewallRuleCount](Azure.MySQL.FirewallRuleCount.md) |
 AZR-000134 | [Azure.MySQL.AllowAzureAccess](Azure.MySQL.AllowAzureAccess.md) | Determine if access from Azure services is required. | GA
 AZR-000135 | [Azure.MySQL.FirewallIPRange](Azure.MySQL.FirewallIPRange.md) | Determine if there is an excessive number of permitted IP addresses. | GA
 AZR-000136 | [Azure.MySQL.ServerName](Azure.MySQL.ServerName.md) | Azure MySQL DB server names should meet naming requirements. | GA
-AZR-000137 | [Azure.NSG.AnyInboundSource](Azure.NSG.AnyInboundSource.md) | Network security groups (NSGs) should avoid rules that allow any inbound source. | GA
+AZR-000137 | [Azure.NSG.AnyInboundSource](Azure.NSG.AnyInboundSource.md) | Network security groups (NSGs) should avoid rules that allow "any" as an inbound source. | GA
 AZR-000138 | [Azure.NSG.DenyAllInbound](Azure.NSG.DenyAllInbound.md) | Avoid denying all inbound traffic. | GA
 AZR-000139 | [Azure.NSG.LateralTraversal](Azure.NSG.LateralTraversal.md) | Deny outbound management connections from non-management hosts. | GA
 AZR-000140 | [Azure.NSG.Associated](Azure.NSG.Associated.md) | Network Security Groups (NSGs) should be associated to a subnet or network interface. | GA
@@ -206,8 +206,8 @@ AZR-000181 | [Azure.SignalR.ManagedIdentity](Azure.SignalR.ManagedIdentity.md) |
 AZR-000182 | [Azure.SignalR.SLA](Azure.SignalR.SLA.md) | Use SKUs that include an SLA when configuring SignalR Services. | GA
 AZR-000183 | [Azure.SQL.FirewallRuleCount](Azure.SQL.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules. | GA
 AZR-000184 | [Azure.SQL.AllowAzureAccess](Azure.SQL.AllowAzureAccess.md) | Determine if access from Azure services is required. | GA
-AZR-000185 | [Azure.SQL.FirewallIPRange](Azure.SQL.FirewallIPRange.md) | Determine if there is an excessive number of permitted IP addresses. | GA
-AZR-000186 | [Azure.SQL.ThreatDetection](Azure.SQL.ThreatDetection.md) | Enable Advanced Thread Protection for Azure SQL logical server. | GA
+AZR-000185 | [Azure.SQL.FirewallIPRange](Azure.SQL.FirewallIPRange.md) | Determine if there is an excessive number of permitted IP addresses set in the allowed IP list (CIDR range). | GA
+AZR-000186 | [Azure.SQL.DefenderCloud](Azure.SQL.DefenderCloud.md) | Enable Microsoft Defender for Azure SQL logical server. | GA
 AZR-000187 | [Azure.SQL.Auditing](Azure.SQL.Auditing.md) | Enable auditing for Azure SQL logical server. | GA
 AZR-000188 | [Azure.SQL.AAD](Azure.SQL.AAD.md) | Use Azure Active Directory (AAD) authentication with Azure SQL databases. | GA
 AZR-000189 | [Azure.SQL.MinTLS](Azure.SQL.MinTLS.md) | Azure SQL Database servers should reject TLS versions older than 1.2. | GA
@@ -230,8 +230,8 @@ AZR-000205 | [Azure.RBAC.LimitMGDelegation](Azure.RBAC.LimitMGDelegation.md) | L
 AZR-000206 | [Azure.RBAC.CoAdministrator](Azure.RBAC.CoAdministrator.md) | Delegate access to manage Azure resources using role-based access control (RBAC). | GA
 AZR-000207 | [Azure.RBAC.UseRGDelegation](Azure.RBAC.UseRGDelegation.md) | Use RBAC assignments on resource groups instead of individual resources. | GA
 AZR-000208 | [Azure.RBAC.PIM](Azure.RBAC.PIM.md) | Use just-in-time (JiT) activation of roles instead of persistent role assignment. | GA
-AZR-000209 | [Azure.SecurityCenter.Contact](Azure.SecurityCenter.Contact.md) | Security Center email and phone contact details should be set. | GA
-AZR-000210 | [Azure.SecurityCenter.Provisioning](Azure.SecurityCenter.Provisioning.md) | Enable auto-provisioning on to improve Azure Security Center insights. | GA
+AZR-000209 | [Azure.DefenderCloud.Contact](Azure.DefenderCloud.Contact.md) | Microsoft Defender for Cloud email and phone contact details should be set. | GA
+AZR-000210 | [Azure.DefenderCloud.Provisioning](Azure.DefenderCloud.Provisioning.md) | Enable auto-provisioning on to improve Microsoft Defender for Cloud insights. | GA
 AZR-000211 | [Azure.Monitor.ServiceHealth](Azure.Monitor.ServiceHealth.md) | Configure Service Health alerts to notify administrators. | GA
 AZR-000212 | [Azure.Template.TemplateFile](Azure.Template.TemplateFile.md) | Use ARM template files that are valid. | GA
 AZR-000213 | [Azure.Template.TemplateSchema](Azure.Template.TemplateSchema.md) | Use a more recent version of the Azure template schema. | GA
@@ -308,5 +308,29 @@ AZR-000283 | [Azure.Cognitive.PrivateEndpoints](Azure.Cognitive.PrivateEndpoints
 AZR-000284 | [Azure.Deployment.AdminUsername](Azure.Deployment.AdminUsername.md) | The adminUsername or administratorUsername property should not be a string literal in nested templates. | GA
 AZR-000285 | [Azure.AKS.UptimeSLA](Azure.AKS.UptimeSLA.md) | AKS clusters should have Uptime SLA enabled to ensure availability of control plane components for production workloads. | GA
 AZR-000286 | [Azure.CDN.UseFrontDoor](Azure.CDN.UseFrontDoor.md) | Use Azure Front Door Standard or Premium SKU to improve the performance of web pages with dynamic content and overall capabilities. | GA
+AZR-000287 | [Azure.AKS.EphemeralOSDisk](Azure.AKS.EphemeralOSDisk.md) | AKS clusters should use ephemeral OS disks which can provide lower read/write latency, along with faster node scaling and cluster upgrades. | GA
+AZR-000288 | [Azure.VMSS.PublicKey](Azure.VMSS.PublicKey.md) | Use SSH keys instead of common credentials to secure virtual machine scale sets against malicious activities. | GA
+AZR-000289 | [Azure.Storage.ContainerSoftDelete](Azure.Storage.ContainerSoftDelete.md) | Enable container soft delete on Storage Accounts. | GA
+AZR-000290 | [Azure.Defender.Containers](Azure.Defender.Containers.md) | Enable Microsoft Defender for Containers. | GA
+AZR-000291 | [Azure.AppConfig.DisableLocalAuth](Azure.AppConfig.DisableLocalAuth.md) | Authenticate App Configuration clients with Azure AD identities. | GA
+AZR-000292 | [Azure.NSG.AKSRules](Azure.NSG.AKSRules.md) | AKS Network Security Group (NSG) should not have custom rules. | GA
+AZR-000293 | [Azure.Defender.Servers](Azure.Defender.Servers.md) | Enable Microsoft Defender for Servers. | GA
+AZR-000294 | [Azure.Defender.SQL](Azure.Defender.SQL.md) | Enable Defender for SQL servers. | GA
+AZR-000295 | [Azure.Defender.AppServices](Azure.Defender.AppServices.md) | Enable Microsoft Defender for App Service. | GA
+AZR-000296 | [Azure.Defender.Storage](Azure.Defender.Storage.md) | Enable Microsoft Defender for Storage. | GA
+AZR-000297 | [Azure.Defender.SQLOnVM](Azure.Defender.SQLOnVM.md) | Enable Defender for SQL servers on machines. | GA
+AZR-000298 | [Azure.Storage.FileShareSoftDelete](Azure.Storage.FileShareSoftDelete.md) | Enable fileshare soft delete on Storage Accounts | GA
+AZR-000299 | [Azure.Redis.FirewallRuleCount](Azure.Redis.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules for the Redis cache. | GA
+AZR-000300 | [Azure.Redis.FirewallIPRange](Azure.Redis.FirewallIPRange.md) | Determine if there is an excessive nunber of permitted IP addresses for the Redis cache. | GA
+AZR-000301 | [Azure.RedisEnterprise.MinTLS](Azure.RedisEnterprise.MinTLS.md) | Redis Cache should reject TLS versions older than 1.2. | GA
+AZR-000302 | [Azure.AppGwWAF.PreventionMode](Azure.AppGwWAF.PreventionMode.md) | Use protection mode in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | GA
+AZR-000303 | [Azure.AppGwWAF.Exclusions](Azure.AppGwWAF.Exclusions.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | GA
+AZR-000304 | [Azure.AppGwWAF.RuleGroups](Azure.AppGwWAF.RuleGroups.md) | Use recommended rule groups in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | GA
+AZR-000305 | [Azure.FrontDoorWAF.Enabled](Azure.FrontDoorWAF.Enabled.md) | Front Door Web Application Firewall (WAF) policy must be enabled to protect back end resources. | GA
+AZR-000306 | [Azure.FrontDoorWAF.PreventionMode](Azure.FrontDoorWAF.PreventionMode.md) | Use protection mode in Front Door Web Application Firewall (WAF) policies to protect back end resources. | GA
+AZR-000307 | [Azure.FrontDoorWAF.Exclusions](Azure.FrontDoorWAF.Exclusions.md) | Use recommended rule groups in Front Door Web Application Firewall (WAF) policies to protect back end resources. Avoid configuring rule exclusions. | GA
+AZR-000308 | [Azure.FrontDoorWAF.RuleGroups](Azure.FrontDoorWAF.RuleGroups.md) | Use recommended rule groups in Front Door Web Application Firewall (WAF) policies to protect back end resources. | GA
+AZR-000309 | [Azure.AppGwWAF.Enabled](Azure.AppGwWAF.Enabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | GA
+AZR-000310 | [Azure.ACR.SoftDelete](Azure.ACR.SoftDelete.md) | Azure Container Registries should have soft delete policy enabled. | Preview
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

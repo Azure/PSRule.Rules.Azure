@@ -62,7 +62,10 @@ nav:
       - Permit outbound management: customization/permit-outbound-management.md
     - Troubleshooting: troubleshooting.md
     - Samples: samples.md
-    - License and contributing: license-contributing.md
+    - License and contributing:
+      - Index: license-contributing/index.md
+      - Writing documentation: license-contributing/writing-documentation.md
+      - Past hackathons: license-contributing/hackathons.md
     - Related projects: related-projects.md
     - Releases:
       - Change log:
@@ -120,8 +123,9 @@ plugins:
 - tags
 - redirects:
     redirect_maps:
-      'using-metadata.md': 'using-templates.md'
-      'customization/index.md': 'customization/storing-custom-rules.md'
+      using-metadata.md: using-templates.md
+      customization/index.md: customization/storing-custom-rules.md
+      license-contributing.md: contributing/index.md
 
 extra:
   version:
