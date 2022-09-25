@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -34,6 +34,9 @@ namespace PSRule.Rules.Azure.Pipeline
         protected PipelineException(string message, Exception innerException)
             : base(message, innerException) { }
 
+        /// <summary>
+        /// Create the exception from serialized data.
+        /// </summary>
         protected PipelineException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
     }
@@ -66,9 +69,15 @@ namespace PSRule.Rules.Azure.Pipeline
         public PipelineSerializationException(string message, Exception innerException)
             : base(message, innerException) { }
 
+        /// <summary>
+        /// Create the exception from serialized data.
+        /// </summary>
         private PipelineSerializationException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
 
+        /// <summary>
+        /// Serialize the exception.
+        /// </summary>
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
@@ -107,13 +116,23 @@ namespace PSRule.Rules.Azure.Pipeline
         public TemplateReadException(string message, Exception innerException)
             : base(message, innerException) { }
 
-        public TemplateReadException(string message, Exception innerException, string templateFile, string parameterFile)
+        /// <summary>
+        /// Creates a template read exception.
+        /// </summary>
+        /// <param name="message">The detail of the exception.</param>
+        /// <param name="innerException">A nested exception that caused the issue.</param>
+        /// <param name="templateFile">The path to the ARM template file that is being used.</param>
+        /// <param name="parameterFile">The path to the ARM template parameter file that is being used.</param>
+        internal TemplateReadException(string message, Exception innerException, string templateFile, string parameterFile)
             : this(message, innerException)
         {
             TemplateFile = templateFile;
             ParameterFile = parameterFile;
         }
 
+        /// <summary>
+        /// Create the exception from serialized data.
+        /// </summary>
         private TemplateReadException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
 
@@ -127,6 +146,9 @@ namespace PSRule.Rules.Azure.Pipeline
         /// </summary>
         public string ParameterFile { get; }
 
+        /// <summary>
+        /// Serialize the exception.
+        /// </summary>
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
@@ -165,9 +187,15 @@ namespace PSRule.Rules.Azure.Pipeline
         public InvalidTemplateLinkException(string message, Exception innerException)
             : base(message, innerException) { }
 
+        /// <summary>
+        /// Create the exception from serialized data.
+        /// </summary>
         private InvalidTemplateLinkException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
 
+        /// <summary>
+        /// Serialize the exception.
+        /// </summary>
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
@@ -184,16 +212,35 @@ namespace PSRule.Rules.Azure.Pipeline
     [Serializable]
     public sealed class BicepCompileException : PipelineException
     {
+        /// <summary>
+        /// Creates a Bicep compile exception.
+        /// </summary>
         public BicepCompileException()
         {
         }
 
+        /// <summary>
+        /// Creates a Bicep compile exception.
+        /// </summary>
+        /// <param name="message">The detail of the exception.</param>
         public BicepCompileException(string message)
             : base(message) { }
 
+        /// <summary>
+        /// Creates a Bicep compile exception.
+        /// </summary>
+        /// <param name="message">The detail of the exception.</param>
+        /// <param name="innerException">A nested exception that caused the issue.</param>
         public BicepCompileException(string message, Exception innerException)
             : base(message, innerException) { }
 
+        /// <summary>
+        /// Creates a Bicep compile exception.
+        /// </summary>
+        /// <param name="message">The detail of the exception.</param>
+        /// <param name="innerException">A nested exception that caused the issue.</param>
+        /// <param name="sourceFile">The path to the Bicep source file.</param>
+        /// <param name="version">Specifies the version of Bicep runtime being used.</param>
         internal BicepCompileException(string message, Exception innerException, string sourceFile, string version)
             : base(message, innerException)
         {
@@ -201,6 +248,9 @@ namespace PSRule.Rules.Azure.Pipeline
             Version = version;
         }
 
+        /// <summary>
+        /// Create the exception from serialized data.
+        /// </summary>
         private BicepCompileException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
 
@@ -214,6 +264,9 @@ namespace PSRule.Rules.Azure.Pipeline
         /// </summary>
         public string Version { get; }
 
+        /// <summary>
+        /// Serialize the exception.
+        /// </summary>
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {

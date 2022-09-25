@@ -90,6 +90,8 @@ What's changed since pre-release v1.20.0-B0028:
     [#1651](https://github.com/Azure/PSRule.Rules.Azure/issues/1651)
   - Fixed handling of runtime assessment data by @BernieWhite.
     [#1707](https://github.com/Azure/PSRule.Rules.Azure/issues/1707)
+  - Fixed conversion of type conditions to pre-conditions by @BernieWhite
+    [#1708](https://github.com/Azure/PSRule.Rules.Azure/issues/1708)
 
 ## v1.20.0-B0028 (pre-release)
 
