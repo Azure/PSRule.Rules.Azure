@@ -1,0 +1,124 @@
+[
+  {
+    "Identity": null,
+    "Location": null,
+    "Name": "000000000000000000000000",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "ResourceName": "000000000000000000000000",
+    "ResourceGroupName": null,
+    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Sku": null,
+    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "Properties": {
+      "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+      "NotScopes": [],
+      "DisplayName": "TestInitiative",
+      "Description": null,
+      "Metadata": {
+        "assignedBy": "Armaan McLeod",
+        "parameterScopes": {},
+        "createdBy": "e8c9aad1-7d2c-4d2a-9945-611b7379ee5d",
+        "createdOn": "2022-09-25T10:40:28.8553851Z",
+        "updatedBy": null,
+        "updatedOn": null
+      },
+      "EnforcementMode": 0,
+      "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/000000000000000000000000",
+      "Parameters": {},
+      "NonComplianceMessages": []
+    },
+    "PolicyDefinitions": [
+      {
+        "Name": "00000000-0000-0000-0000-000000000000",
+        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+        "ResourceName": "00000000-0000-0000-0000-000000000000",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": null,
+        "Properties": {
+          "Description": "CMA_0544 - View and configure system diagnostic data",
+          "DisplayName": "View and configure system diagnostic data",
+          "Metadata": {
+            "version": "1.0.0",
+            "category": "Regulatory Compliance",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CMA_0544"
+          },
+          "Mode": "All",
+          "Parameters": {
+            "effect": {
+              "type": "String",
+              "metadata": {
+                "displayName": "Effect",
+                "description": "Enable or disable the execution of the policy"
+              },
+              "allowedValues": [
+                "Manual",
+                "Disabled"
+              ],
+              "defaultValue": "Manual"
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "field": "type",
+              "equals": "Microsoft.Resources/subscriptions"
+            },
+            "then": {
+              "effect": "[parameters('effect')]",
+              "details": {
+                "defaultState": "NonCompliant"
+              }
+            }
+          },
+          "PolicyType": 2
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "Name": "00000000-0000-0000-0000-000000000000",
+        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+        "ResourceName": "00000000-0000-0000-0000-000000000000",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": null,
+        "Properties": {
+          "Description": "CMA_0544 - View and configure system diagnostic data",
+          "DisplayName": "View and configure system diagnostic data",
+          "Metadata": {
+            "version": "1.0.0",
+            "category": "Regulatory Compliance",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CMA_0544"
+          },
+          "Mode": "All",
+          "Parameters": {
+            "effect": {
+              "type": "String",
+              "metadata": {
+                "displayName": "Effect",
+                "description": "Enable or disable the execution of the policy"
+              },
+              "allowedValues": [
+                "Manual",
+                "Disabled"
+              ],
+              "defaultValue": "Manual"
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "field": "type",
+              "equals": "Microsoft.Resources/subscriptions"
+            },
+            "then": {
+              "effect": "[parameters('effect')]",
+              "details": {
+                "defaultState": "NonCompliant"
+              }
+            }
+          },
+          "PolicyType": 2
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
+]

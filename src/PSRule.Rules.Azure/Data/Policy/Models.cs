@@ -63,17 +63,20 @@ namespace PSRule.Rules.Azure.Data.Policy
     /// </summary>
     internal sealed class PolicyDefinition
     {
-        private readonly IDictionary<string, IParameterValue> _Parameters;
-
         public PolicyDefinition(string definitionId, string name, string description, JObject value)
         {
             DefinitionId = definitionId;
             Name = name;
             Description = description;
             Value = value;
-            _Parameters = new Dictionary<string, IParameterValue>(StringComparer.OrdinalIgnoreCase);
+            Parameters = new Dictionary<string, IParameterValue>(StringComparer.OrdinalIgnoreCase);
             Types = new List<string>();
         }
+
+        /// <summary>
+        /// The policy definition parameters
+        /// </summary>
+        public readonly IDictionary<string, IParameterValue> Parameters;
 
         /// <summary>
         /// The policy definition id.
@@ -122,17 +125,17 @@ namespace PSRule.Rules.Azure.Data.Policy
 
         internal void AddParameter(string name, ParameterType type, object value)
         {
-            _Parameters.Add(name, new SimpleParameterValue(name, type, value));
+            Parameters.Add(name, new SimpleParameterValue(name, type, value));
         }
 
         internal void AddParameter(IParameterValue value)
         {
-            _Parameters.Add(value.Name, value);
+            Parameters.Add(value.Name, value);
         }
 
         internal bool TryParameter(string parameterName, out IParameterValue value)
         {
-            return _Parameters.TryGetValue(parameterName, out value);
+            return Parameters.TryGetValue(parameterName, out value);
         }
     }
 

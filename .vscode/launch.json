@@ -14,7 +14,7 @@
             "name": "Debug PSRule.Rules.Azure Cmdlets",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "Build",
+            "preLaunchTask": "build",
             "program": "pwsh",
             "args": [
                 "-NoExit",

@@ -673,6 +673,27 @@ namespace PSRule.Rules.Azure.Data.Policy
             }
         }
 
+        private static bool AreParametersEqual(PolicyAssignmentContext context, IParameterValue paramA, IParameterValue paramB)
+        {
+            var typeA = paramA.Type;
+            var typeB = paramB.Type;
+            var valueA = paramA.GetValue(context);
+            var valueB = paramB.GetValue(context);
+
+            if (typeA == ParameterType.String && typeB == ParameterType.String)
+                return valueA.ToString().Equals(valueB.ToString(), StringComparison.OrdinalIgnoreCase);
+
+            if (typeA == ParameterType.Integer && typeB == ParameterType.Integer)
+                return Convert.ToInt32(valueA, Thread.CurrentThread.CurrentCulture) == Convert.ToInt32(valueB, Thread.CurrentThread.CurrentCulture);
+
+            if (typeA == ParameterType.Boolean && typeB == ParameterType.Boolean)
+                return Convert.ToBoolean(valueA, Thread.CurrentThread.CurrentCulture) == Convert.ToBoolean(valueB, Thread.CurrentThread.CurrentCulture);
+
+            // TODO: Handle more types
+
+            return true;
+        }
+
         /// <summary>
         /// Convert each definition into <see cref="PolicyDefinition"/>.
         /// </summary>
@@ -710,7 +731,36 @@ namespace PSRule.Rules.Azure.Data.Policy
                 foreach (var parameter in parameters.Properties())
                     context.SetDefinitionParameterAssignment(result, parameter);
 
-                context.DefinitionIds.Add(policyDefinitionId, result);
+                // Check if definition with same parameters has already been added
+                if (context.DefinitionIds.ContainsKey(policyDefinitionId))
+                {
+                    var previousDefinition = context.DefinitionIds[policyDefinitionId];
+
+                    var foundDuplicateDefinition = true;
+                    foreach (var currentParameter in result.Parameters)
+                    {
+                        if (previousDefinition.TryParameter(currentParameter.Key, out var previousParameterValue))
+                        {
+                            if (!AreParametersEqual(context, previousParameterValue, currentParameter.Value))
+                            {
+                                foundDuplicateDefinition = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Overwrite definition if we found differences
+                    if (!foundDuplicateDefinition)
+                        context.DefinitionIds[policyDefinitionId] = result;
+
+                    // Otherwise skip adding definition
+                    else
+                        return false;
+                }
+
+                // Add definition for the first time
+                else
+                    context.DefinitionIds.Add(policyDefinitionId, result);
             }
 
             // Modify policy rule

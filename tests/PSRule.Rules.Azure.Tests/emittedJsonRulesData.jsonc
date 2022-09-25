@@ -641,5 +641,29 @@
         ]
       }
     }
+  },
+  {
+    // Synopsis: CMA_0544 - View and configure system diagnostic data
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Rule",
+    "metadata": {
+      "name": "View and configure system diagnostic data",
+      "tags": {
+        "Azure.Policy/category": "Regulatory Compliance"
+      },
+      "annotations": {
+        "Azure.Policy/id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+        "Azure.Policy/version": "1.0.0"
+      }
+    },
+    "spec": {
+      "type": [
+        "Microsoft.Resources/subscriptions"
+      ],
+      "condition": {
+        "equals": "Microsoft.Resources/subscriptions",
+        "type": "."
+      }
+    }
   }
 ]
