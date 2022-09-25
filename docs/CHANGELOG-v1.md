@@ -23,10 +23,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-- New rules:
-  - Azure Container Registry:
-    - Check soft delete policy enabled by @bengeset96
-      [#1674](https://github.com/Azure/PSRule.Rules.Azure/issues/1674)
+## v1.20.0-B0085 (pre-release)
 
 What's changed since pre-release v1.20.0-B0028:
 
@@ -39,6 +36,9 @@ What's changed since pre-release v1.20.0-B0028:
   - App Configuration:
     - Check identity-based authentication is used for configuration stores by @pazdedav.
       [#1691](https://github.com/Azure/PSRule.Rules.Azure/issues/1691)
+  - Container Registry:
+    - Check soft delete policy is enabled by @bengeset96.
+      [#1674](https://github.com/Azure/PSRule.Rules.Azure/issues/1674)
   - Defender for Cloud:
     - Check Microsoft Defender for Cloud is enabled for Containers by @jdewisscher.
       [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
