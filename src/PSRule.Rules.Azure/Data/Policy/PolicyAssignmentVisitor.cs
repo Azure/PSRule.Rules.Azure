@@ -673,7 +673,10 @@ namespace PSRule.Rules.Azure.Data.Policy
             }
         }
 
-        private static bool AreParametersEqual(PolicyAssignmentContext context, IParameterValue paramA, IParameterValue paramB)
+        /// <summary>
+        /// Checks if two parameters are equal
+        /// </summary>
+        private static bool ParametersEqual(PolicyAssignmentContext context, IParameterValue paramA, IParameterValue paramB)
         {
             var typeA = paramA.Type;
             var typeB = paramB.Type;
@@ -741,7 +744,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                     {
                         if (previousDefinition.TryParameter(currentParameter.Key, out var previousParameterValue))
                         {
-                            if (!AreParametersEqual(context, previousParameterValue, currentParameter.Value))
+                            if (!ParametersEqual(context, previousParameterValue, currentParameter.Value))
                             {
                                 foundDuplicateDefinition = false;
                                 break;
