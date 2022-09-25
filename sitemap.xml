@@ -1886,6 +1886,21 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/license-contributing/</loc>
+         <lastmod>2022-09-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/license-contributing/hackathons/</loc>
+         <lastmod>2022-09-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/license-contributing/writing-documentation/</loc>
+         <lastmod>2022-09-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/scenarios/azure-pipelines-ci/azure-pipelines-ci/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
