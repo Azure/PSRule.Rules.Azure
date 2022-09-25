@@ -47,7 +47,7 @@ namespace PSRule.Rules.Azure
             Assert.Empty(actual4);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Array(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Array(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Array(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Array(context, new object[] { "abcd", "efgh" }));
         }
 
@@ -69,7 +69,7 @@ namespace PSRule.Rules.Azure
             Assert.Null(actual5);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Coalesce(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Coalesce(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Coalesce(context, System.Array.Empty<object>()));
         }
 
         [Fact]
@@ -114,7 +114,7 @@ namespace PSRule.Rules.Azure
             var actual2 = Functions.CreateArray(context, new object[] { "efgh" }) as JArray;
             var actual3 = Functions.CreateArray(context, new object[] { JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }"), JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }") }) as JArray;
             var actual4 = Functions.CreateArray(context, null) as JArray;
-            var actual5 = Functions.CreateArray(context, new object[] { }) as JArray;
+            var actual5 = Functions.CreateArray(context, System.Array.Empty<object>()) as JArray;
             var actual6 = Functions.CreateArray(context, new object[] {
                 "value1",
                 new MockResource("Microsoft.Resources/deployments").MockMember("outputs").MockMember("aksSubnetId").MockMember("value"),
@@ -143,7 +143,7 @@ namespace PSRule.Rules.Azure
                 "objectProp", Functions.CreateObject(context, new object[] { "key1", "value1" }),
                 "mockProp", new MockResource("Microsoft.Resources/deployments").MockMember("outputs").MockMember("aksSubnetId").MockMember("value"),
             }) as JObject;
-            var actual2 = Functions.CreateObject(context, new object[] { }) as JObject;
+            var actual2 = Functions.CreateObject(context, System.Array.Empty<object>()) as JObject;
             var actual3 = Functions.CreateObject(context, new object[] {
                 "intProp", new MockInteger(1),
                 "stringProp", new MockString("mock"),
@@ -212,7 +212,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("one", actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.First(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.First(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.First(context, System.Array.Empty<object>()));
         }
 
         [Fact]
@@ -234,7 +234,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("c", actual2["three"]);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Intersection(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Intersection(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Intersection(context, System.Array.Empty<object>()));
             Assert.Throws<ArgumentException>(() => Functions.Intersection(context, new object[] { "one", "two", "three" }));
         }
 
@@ -260,7 +260,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("b", actual1["a"]);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Json(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Json(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Json(context, System.Array.Empty<object>()));
         }
 
         [Fact]
@@ -270,7 +270,7 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             var actual1 = Functions.Null(context, null);
-            var actual2 = Functions.Null(context, new object[] { });
+            var actual2 = Functions.Null(context, System.Array.Empty<object>());
 
             Assert.Null(actual1);
             Assert.Null(actual2);
@@ -310,7 +310,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal(4, actual3);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Length(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Length(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Length(context, System.Array.Empty<object>()));
         }
 
         [Fact]
@@ -336,7 +336,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal(8, actual6);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Max(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Max(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Max(context, System.Array.Empty<object>()));
             Assert.Throws<ArgumentException>(() => Functions.Max(context, new object[] { "one", "two" }));
             Assert.Throws<ArgumentException>(() => Functions.Max(context, new object[] { 1, "0" }));
         }
@@ -364,7 +364,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal(4, actual6);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Min(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Min(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Min(context, System.Array.Empty<object>()));
             Assert.Throws<ArgumentException>(() => Functions.Min(context, new object[] { "one", "two" }));
             Assert.Throws<ArgumentException>(() => Functions.Min(context, new object[] { 1, "0" }));
         }
@@ -388,7 +388,7 @@ namespace PSRule.Rules.Azure
             Assert.Empty(actual3);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, new object[] { 1 }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, new object[] { "one", "two" }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, new object[] { 1, "0" }));
@@ -460,8 +460,10 @@ namespace PSRule.Rules.Azure
         public void Union()
         {
             var context = GetContext();
-            var hashtable = new Hashtable();
-            hashtable["a"] = 200;
+            var hashtable = new Hashtable
+            {
+                ["a"] = 200
+            };
 
             // Union objects
             var actual1 = Functions.Union(context, new object[] { JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }"), JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }"), JObject.Parse("{ \"i\": \"j\" }"), JObject.Parse("{ \"a\": \"100\" }") }) as JObject;
@@ -984,7 +986,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal(utc.AddYears(3), actual4);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, new object[] { 1, 2 }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeAdd(context, new object[] { utc.ToString("u"), 2 }));
         }
@@ -1004,7 +1006,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("2023-05-02T15:16:13Z", actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeFromEpoch(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeFromEpoch(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeFromEpoch(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeFromEpoch(context, new object[] { 1, 2 }));
         }
 
@@ -1023,7 +1025,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal(1683040573, actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeToEpoch(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeToEpoch(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeToEpoch(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.DateTimeToEpoch(context, new object[] { 1, 2 }));
         }
 
@@ -1034,7 +1036,7 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
             var utc = DateTime.UtcNow;
 
-            var actual1 = Functions.UtcNow(context, new object[] { }) as string;
+            var actual1 = Functions.UtcNow(context, System.Array.Empty<object>()) as string;
             var actual2 = Functions.UtcNow(context, new object[] { "d" }) as string;
             var actual3 = Functions.UtcNow(context, new object[] { "M d" }) as string;
             Assert.Matches("[0-9]{8}T[0-9]{6}Z", actual1);
@@ -1088,7 +1090,7 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             var actual1 = (bool)Functions.False(context, null);
-            var actual2 = (bool)Functions.False(context, new object[] { });
+            var actual2 = (bool)Functions.False(context, System.Array.Empty<object>());
             Assert.False(actual1);
             Assert.False(actual2);
 
@@ -1146,7 +1148,7 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             var actual1 = (bool)Functions.True(context, null);
-            var actual2 = (bool)Functions.True(context, new object[] { });
+            var actual2 = (bool)Functions.True(context, System.Array.Empty<object>());
             Assert.True(actual1);
             Assert.True(actual2);
 
@@ -1240,7 +1242,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal(3.0f, actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Float(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Float(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Float(context, System.Array.Empty<object>()));
             Assert.Throws<FormatException>(() => Functions.Float(context, new object[] { "one" }));
         }
 
@@ -1259,7 +1261,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal(4, actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Int(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Int(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Int(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Int(context, new object[] { "one" }));
         }
 
@@ -1330,7 +1332,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("eydvbmUnOiAnYScsICd0d28nOiAnYid9", actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Base64(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Base64(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Base64(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Base64(context, new object[] { 1 }));
         }
 
@@ -1345,7 +1347,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("b", actual1["two"]);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToJson(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToJson(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToJson(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToJson(context, new object[] { 1 }));
         }
 
@@ -1359,7 +1361,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("one, two, three", actual1);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToString(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToString(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToString(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Base64ToString(context, new object[] { 1 }));
         }
 
@@ -1373,7 +1375,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("data:text/plain;charset=utf8;base64,SGVsbG8=", actual1);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.DataUri(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.DataUri(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DataUri(context, System.Array.Empty<object>()));
             Assert.Throws<ArgumentException>(() => Functions.DataUri(context, new object[] { 1 }));
         }
 
@@ -1391,7 +1393,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Hello", actual3);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.DataUriToString(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.DataUriToString(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.DataUriToString(context, System.Array.Empty<object>()));
             Assert.Throws<ArgumentException>(() => Functions.DataUriToString(context, new object[] { 1 }));
             Assert.Throws<ArgumentException>(() => Functions.DataUriToString(context, new object[] { "SGVsbG8sIFdvcmxkIQ==" }));
         }
@@ -1546,7 +1548,7 @@ namespace PSRule.Rules.Azure
         {
             var context = GetContext();
 
-            var actual1 = Functions.NewGuid(context, new object[] { }) as string;
+            var actual1 = Functions.NewGuid(context, System.Array.Empty<object>()) as string;
             Assert.Equal(36, actual1.Length);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.NewGuid(context, new object[] { "test" }));
@@ -1564,7 +1566,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("       123", actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.PadLeft(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.PadLeft(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.PadLeft(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.PadLeft(context, new object[] { "test" }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.PadLeft(context, new object[] { "test", 10, "test", "test" }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.PadLeft(context, new object[] { 10, "10" }));
@@ -1672,7 +1674,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("o", actual4);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.ToLower(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.ToLower(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ToLower(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.ToLower(context, new object[] { "One", "Two", "Three" }));
             Assert.Throws<ArgumentException>(() => Functions.ToLower(context, new object[] { 2 }));
         }
@@ -1696,7 +1698,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("O", actual4);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.ToUpper(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.ToUpper(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ToUpper(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.ToUpper(context, new object[] { "One", "Two", "Three" }));
             Assert.Throws<ArgumentException>(() => Functions.ToUpper(context, new object[] { 2 }));
         }
@@ -1713,7 +1715,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("one two three", actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Trim(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Trim(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Trim(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Trim(context, new object[] { "One", "Two", "Three" }));
             Assert.Throws<ArgumentException>(() => Functions.Trim(context, new object[] { 2 }));
         }
@@ -1730,7 +1732,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("4b9fe86f643d6", actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.UniqueString(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.UniqueString(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.UniqueString(context, System.Array.Empty<object>()));
             Assert.Throws<ArgumentException>(() => Functions.UniqueString(context, new object[] { "One", 2, "Three" }));
         }
 
@@ -1750,7 +1752,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("http://contoso.org/firstpath/azuredeploy.json/myscript.sh", actual4);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Uri(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Uri(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Uri(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Uri(context, new object[] { "http://contoso.org/firstpath", 2 }));
         }
 
@@ -1764,7 +1766,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("http%3a%2f%2fcontoso.com%2fresources%2fnested%2fazuredeploy.json", actual1);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponent(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponent(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponent(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponent(context, new object[] { 2 }));
         }
 
@@ -1778,7 +1780,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("http://contoso.com/resources/nested/azuredeploy.json", actual1);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponentToString(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponentToString(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponentToString(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.UriComponentToString(context, new object[] { 2 }));
         }
 

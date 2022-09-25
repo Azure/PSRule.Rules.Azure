@@ -19,8 +19,6 @@ namespace PSRule.Rules.Azure.Configuration
             Name = DEFAULT_NAME
         };
 
-        private string _Name;
-
         /// <summary>
         /// Creates an empty deployment option.
         /// </summary>
@@ -104,14 +102,7 @@ namespace PSRule.Rules.Azure.Configuration
         /// The name of the deployment.
         /// </summary>
         [DefaultValue(null)]
-        public string Name
-        {
-            get => _Name;
-            set
-            {
-                _Name = value;
-            }
-        }
+        public string Name { get; set; }
     }
 
     /// <summary>
