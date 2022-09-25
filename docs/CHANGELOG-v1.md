@@ -23,6 +23,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Container Registry:
+    - Check soft delete policy enabled by @bengeset96
+      [#1674](https://github.com/Azure/PSRule.Rules.Azure/issues/1674)
+
 What's changed since pre-release v1.20.0-B0028:
 
 - New rules:
