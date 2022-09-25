@@ -6,20 +6,20 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Configure a dedicated path for health probe requests.">
+        <meta name="description" content="Azure Container Registries should have soft delete policy enabled.">
       
       
         <meta name="author" content="Microsoft">
       
       
-        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.ProbePath/">
+        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.SoftDelete/">
       
       <link rel="icon" href="../../../assets/ms_icon.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.3">
     
     
       
-        <title>Azure.FrontDoor.ProbePath - PSRule for Azure</title>
+        <title>Azure.ACR.SoftDelete - PSRule for Azure</title>
       
     
     
@@ -75,20 +75,20 @@
   <!-- Open graph meta tags -->
   <meta property="og:site_name" content="PSRule for Azure" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PSRule for Azure - Azure.FrontDoor.ProbePath" />
-  <meta property="og:description" content="Configure a dedicated path for health probe requests." />
-  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.ProbePath/" />
+  <meta property="og:title" content="PSRule for Azure - Azure.ACR.SoftDelete" />
+  <meta property="og:description" content="Azure Container Registries should have soft delete policy enabled." />
+  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.SoftDelete/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1280" />
   <meta property="og:image:height" content="640" />
-  <meta property="og:image:alt" content="Configure a dedicated path for health probe requests." />
+  <meta property="og:image:alt" content="Azure Container Registries should have soft delete policy enabled." />
 
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - Azure.FrontDoor.ProbePath" />
-  <meta name="twitter:description" content="Configure a dedicated path for health probe requests." />
+  <meta name="twitter:title" content="PSRule for Azure - Azure.ACR.SoftDelete" />
+  <meta name="twitter:description" content="Azure Container Registries should have soft delete policy enabled." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
 
@@ -110,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#use-a-dedicated-health-endpoint-for-front-door-backends" class="md-skip">
+        <a href="#use-acr-soft-delete-policy" class="md-skip">
           Skip to content
         </a>
       
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Azure.FrontDoor.ProbePath
+              Azure.ACR.SoftDelete
             
           </span>
         </div>
@@ -2010,11 +2010,100 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Azure.ACR.SoftDelete/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Azure.ACR.SoftDelete
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Azure.ACR.SoftDelete
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-azure-template" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-bicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-azure-cli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3746,100 +3835,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Azure.FrontDoor.ProbePath
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Azure.FrontDoor.ProbePath/" class="md-nav__link">
         Azure.FrontDoor.ProbePath
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommendation" class="md-nav__link">
-    Recommendation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
-  </a>
-  
-    <nav class="md-nav" aria-label="Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-cli" class="md-nav__link">
-    Configure with Azure CLI
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-powershell" class="md-nav__link">
-    Configure with Azure PowerShell
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-template" class="md-nav__link">
-    Configure with Azure template
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    Links
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -6777,22 +6777,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configure-with-azure-cli" class="md-nav__link">
-    Configure with Azure CLI
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-powershell" class="md-nav__link">
-    Configure with Azure PowerShell
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#configure-with-azure-template" class="md-nav__link">
     Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-bicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-azure-cli" class="md-nav__link">
+    Configure with Azure CLI
   </a>
   
 </li>
@@ -6826,7 +6826,7 @@
   
     
       <a
-        href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.ProbePath.md"
+        href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.ACR.SoftDelete.md"
         title="Edit this page"
         class="md-content__button md-icon"
       >
@@ -6843,128 +6843,103 @@
   
 
   <!-- Markdown content -->
-  <h1 id="use-a-dedicated-health-endpoint-for-front-door-backends">Use a Dedicated Health Endpoint for Front Door backends<a class="headerlink" href="#use-a-dedicated-health-endpoint-for-front-door-backends" title="Permanent link">#</a></h1>
-<nav class="md-tags"><span class="md-tag">Azure.FrontDoor.ProbePath</span><span class="md-tag">AZR-000110</span><span class="md-tag">Error</span></nav>
+  <h1 id="use-acr-soft-delete-policy">Use ACR soft delete policy<a class="headerlink" href="#use-acr-soft-delete-policy" title="Permanent link">#</a></h1>
+<nav class="md-tags"><span class="md-tag">Azure.ACR.SoftDelete</span><span class="md-tag">AZR-000310</span><span class="md-tag">Error</span></nav>
 <p><a href="../module/#reliability"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0l-9.272-9.272zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0l-9.273 9.272z"/></svg></span> Reliability</a>
- · <a href="../resource/#front-door"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M13.152.682a2.25 2.25 0 0 1 2.269 0l.007.004 6.957 4.276a2.276 2.276 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003a2.276 2.276 0 0 1-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026a2.28 2.28 0 0 1 .82-.827h.002L13.152.681zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.776.776 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003zM18 9.709l-3.25 1.9v7.548L18 17.245V9.709zm1.5-.878v7.532l2.124-1.25a.777.777 0 0 0 .387-.671V7.363L19.5 8.831zm-9.09 5.316 2.84-1.66v7.552l-3.233 1.902v-7.612c.134-.047.265-.107.391-.18l.002-.002zm-1.893 7.754V14.33a2.277 2.277 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232z"/></svg></span> Front Door</a>
- · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/><path fill-rule="evenodd" d="M2.5 1A1.5 1.5 0 0 0 1 2.5v8.44c0 .397.158.779.44 1.06l10.25 10.25a1.5 1.5 0 0 0 2.12 0l8.44-8.44a1.5 1.5 0 0 0 0-2.12L12 1.44A1.5 1.5 0 0 0 10.94 1H2.5zm0 1.5h8.44l10.25 10.25-8.44 8.44L2.5 10.94V2.5z"/></svg></span> 2021_03</p>
-<p>Configure a dedicated path for health probe requests.</p>
+ · <a href="../resource/#container-registry"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M13.152.682a2.25 2.25 0 0 1 2.269 0l.007.004 6.957 4.276a2.276 2.276 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003a2.276 2.276 0 0 1-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026a2.28 2.28 0 0 1 .82-.827h.002L13.152.681zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.776.776 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003zM18 9.709l-3.25 1.9v7.548L18 17.245V9.709zm1.5-.878v7.532l2.124-1.25a.777.777 0 0 0 .387-.671V7.363L19.5 8.831zm-9.09 5.316 2.84-1.66v7.552l-3.233 1.902v-7.612c.134-.047.265-.107.391-.18l.002-.002zm-1.893 7.754V14.33a2.277 2.277 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232z"/></svg></span> Container Registry</a>
+ · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/><path fill-rule="evenodd" d="M2.5 1A1.5 1.5 0 0 0 1 2.5v8.44c0 .397.158.779.44 1.06l10.25 10.25a1.5 1.5 0 0 0 2.12 0l8.44-8.44a1.5 1.5 0 0 0 0-2.12L12 1.44A1.5 1.5 0 0 0 10.94 1H2.5zm0 1.5h8.44l10.25 10.25-8.44 8.44L2.5 10.94V2.5z"/></svg></span> 2022_09</p>
+<p>Azure Container Registries should have soft delete policy enabled.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>Azure Front Door monitors a specific path for each backend to determine health status.
-The monitored path should implement functional checks to determine if the backend is performing correctly.
-The checks should include dependencies including those that may not be regularly called.</p>
-<p>Regular checks of the monitored path allow Front Door to make load balancing decisions based on status.</p>
-<h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider using a dedicated health probe endpoint that implements functional checks.</p>
-<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
-<h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>az network front-door probe update --front-door-name <span class="s1">&#39;&lt;front_door&gt;&#39;</span> -n <span class="s1">&#39;&lt;probe_name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> --path <span class="s1">&#39;&lt;path&gt;&#39;</span>
-</code></pre></div>
-<h3 id="configure-with-azure-powershell">Configure with Azure PowerShell<a class="headerlink" href="#configure-with-azure-powershell" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nv">$probeSetting</span> <span class="p">=</span> <span class="nb">New-AzFrontDoorHealthProbeSettingObject</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;probe_name&gt;&#39;</span> <span class="n">-Path</span> <span class="s1">&#39;&lt;path&gt;&#39;</span>
-<span class="nb">Set-AzFrontDoor</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;front_door&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> <span class="n">-HealthProbeSetting</span> <span class="nv">$probeSetting</span>
-</code></pre></div>
-<h3 id="configure-with-azure-template">Configure with Azure template<a class="headerlink" href="#configure-with-azure-template" title="Permanent link">#</a></h3>
-<p>To deploy a Front Door resource that passes this rule:</p>
+<p>Azure Container Registry (ACR) allows you to enable the soft delete policy to recover any accidentally deleted artifacts for a set retention period.</p>
+<p>This feature is available in all the service tiers (also known as SKUs). For information about registry service tiers, see Azure Container Registry service tiers.</p>
+<p>Once you enable the soft delete policy, ACR manages the deleted artifacts as the soft deleted artifacts with a set retention period. Thereby you have ability to list, filter, and restore the soft deleted artifacts. Once the retention period is complete, all the soft deleted artifacts are auto-purged.</p>
+<p>Current preview limitations:</p>
 <ul>
-<li>Configure the healthProbeSettings.probePath on the OriginGroup</li>
+<li>ACR currently doesn't support manually purging soft deleted artifacts.</li>
+<li>The soft delete policy doesn't support a geo-replicated registry.</li>
+<li>ACR doesn't allow enabling both the retention policy and the soft delete policy. See retention policy for untagged manifests.</li>
+</ul>
+<h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
+<p>Azure Container Registries should have soft delete policy enabled.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configure-with-azure-template">Configure with Azure template<a class="headerlink" href="#configure-with-azure-template" title="Permanent link">#</a></h3>
+<p>To deploy an Azure Container Registry that pass this rule:</p>
+<ul>
+<li>Set <code>properties.policies.softDeletePolicy.status</code> to <code>enabled</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Cdn/profiles&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;frontDoorName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Global&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Standard_AzureFrontDoor&quot;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ContainerRegistry/registries&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-02-01-preview&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;registryName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Premium&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SystemAssigned&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;adminUserEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;policies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;quarantinePolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;enabled&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;trustPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;enabled&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Notary&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;softDeletePolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;retentionDays&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;enabled&quot;</span><span class="w"></span>
 <span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Cdn/profiles/afdEndpoints&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[format(&#39;{0}/{1}&#39;, parameters(&#39;frontDoorName&#39;), variables(&#39;frontDoorEndpointName&#39;))]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Global&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;enabledState&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;[resourceId(&#39;Microsoft.Cdn/profiles&#39;, parameters(&#39;frontDoorName&#39;))]&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Cdn/profiles/originGroups&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[format(&#39;{0}/{1}&#39;, parameters(&#39;frontDoorName&#39;), variables(&#39;frontDoorDefaultOriginGroupName&#39;))]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;loadBalancingSettings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;sampleSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;successfulSamplesRequired&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;healthProbeSettings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;probePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;probeRequestType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HEAD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;probeProtocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Http&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;probeIntervalInSeconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;[resourceId(&#39;Microsoft.Cdn/profiles&#39;, parameters(&#39;frontDoorName&#39;))]&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="err">```</span><span class="w"></span>
-
-<span class="err">###</span><span class="w"> </span><span class="err">Co</span><span class="kc">nf</span><span class="err">igure</span><span class="w"> </span><span class="err">wi</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="err">Bicep</span><span class="w"></span>
-
-<span class="err">To</span><span class="w"> </span><span class="err">deploy</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">Fro</span><span class="kc">nt</span><span class="w"> </span><span class="err">Door</span><span class="w"> </span><span class="err">resource</span><span class="w"> </span><span class="kc">t</span><span class="err">ha</span><span class="kc">t</span><span class="w"> </span><span class="err">passes</span><span class="w"> </span><span class="kc">t</span><span class="err">his</span><span class="w"> </span><span class="err">rule</span><span class="p">:</span><span class="w"></span>
-
-<span class="mi">-</span><span class="w"> </span><span class="err">Co</span><span class="kc">nf</span><span class="err">igure</span><span class="w"> </span><span class="kc">t</span><span class="err">he</span><span class="w"> </span><span class="err">heal</span><span class="kc">t</span><span class="err">hProbeSe</span><span class="kc">tt</span><span class="err">i</span><span class="kc">n</span><span class="err">gs.probePa</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="err">o</span><span class="kc">n</span><span class="w"> </span><span class="kc">t</span><span class="err">he</span><span class="w"> </span><span class="err">Origi</span><span class="kc">n</span><span class="err">Group</span><span class="w"></span>
-
-<span class="err">For</span><span class="w"> </span><span class="err">example</span><span class="p">:</span><span class="w"></span>
-
-<span class="err">```bicep</span><span class="w"></span>
-<span class="err">resource</span><span class="w"> </span><span class="kc">fr</span><span class="err">o</span><span class="kc">nt</span><span class="err">DoorResource</span><span class="w"> </span><span class="err">&#39;Microso</span><span class="kc">ft</span><span class="err">.Cd</span><span class="kc">n</span><span class="err">/pro</span><span class="kc">f</span><span class="err">iles@</span><span class="mi">2021-06-01</span><span class="err">&#39;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kc">na</span><span class="err">me</span><span class="p">:</span><span class="w"> </span><span class="kc">fr</span><span class="err">o</span><span class="kc">nt</span><span class="err">DoorName</span><span class="w"></span>
-<span class="w">  </span><span class="err">loca</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;Global&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="err">sku</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kc">na</span><span class="err">me</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;S</span><span class="kc">tan</span><span class="err">dard_AzureFro</span><span class="kc">nt</span><span class="err">Door&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="err">resource</span><span class="w"> </span><span class="kc">fr</span><span class="err">o</span><span class="kc">nt</span><span class="err">DoorE</span><span class="kc">n</span><span class="err">dpoi</span><span class="kc">nt</span><span class="w"> </span><span class="err">&#39;Microso</span><span class="kc">ft</span><span class="err">.Cd</span><span class="kc">n</span><span class="err">/pro</span><span class="kc">f</span><span class="err">iles/a</span><span class="kc">f</span><span class="err">de</span><span class="kc">n</span><span class="err">dpoi</span><span class="kc">nts</span><span class="err">@</span><span class="mi">2021-06-01</span><span class="err">&#39;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="err">pare</span><span class="kc">nt</span><span class="p">:</span><span class="w"> </span><span class="kc">fr</span><span class="err">o</span><span class="kc">nt</span><span class="err">DoorResource</span><span class="w"></span>
-<span class="w">  </span><span class="kc">na</span><span class="err">me</span><span class="p">:</span><span class="w"> </span><span class="kc">fr</span><span class="err">o</span><span class="kc">nt</span><span class="err">DoorE</span><span class="kc">n</span><span class="err">dpoi</span><span class="kc">nt</span><span class="err">Name</span><span class="w"></span>
-<span class="w">  </span><span class="err">loca</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;Global&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="err">proper</span><span class="kc">t</span><span class="err">ies</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="err">e</span><span class="kc">na</span><span class="err">bledS</span><span class="kc">tate</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;E</span><span class="kc">na</span><span class="err">bled&#39;</span><span class="w"> </span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="err">resource</span><span class="w"> </span><span class="kc">fr</span><span class="err">o</span><span class="kc">nt</span><span class="err">DoorOrigi</span><span class="kc">n</span><span class="err">Group</span><span class="w"> </span><span class="err">&#39;Microso</span><span class="kc">ft</span><span class="err">.Cd</span><span class="kc">n</span><span class="err">/pro</span><span class="kc">f</span><span class="err">iles/origi</span><span class="kc">n</span><span class="err">groups@</span><span class="mi">2021-06-01</span><span class="err">&#39;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kc">na</span><span class="err">me</span><span class="p">:</span><span class="w"> </span><span class="kc">fr</span><span class="err">o</span><span class="kc">nt</span><span class="err">DoorDe</span><span class="kc">fault</span><span class="err">Origi</span><span class="kc">n</span><span class="err">GroupName</span><span class="w"></span>
-<span class="w">  </span><span class="err">pare</span><span class="kc">nt</span><span class="p">:</span><span class="w"> </span><span class="kc">fr</span><span class="err">o</span><span class="kc">nt</span><span class="err">DoorResource</span><span class="w"></span>
-<span class="w">  </span><span class="err">proper</span><span class="kc">t</span><span class="err">ies</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="err">loadBala</span><span class="kc">n</span><span class="err">ci</span><span class="kc">n</span><span class="err">gSe</span><span class="kc">tt</span><span class="err">i</span><span class="kc">n</span><span class="err">gs</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="err">sampleSize</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
-<span class="w">      </span><span class="err">success</span><span class="kc">ful</span><span class="err">SamplesRequired</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="err">heal</span><span class="kc">t</span><span class="err">hProbeSe</span><span class="kc">tt</span><span class="err">i</span><span class="kc">n</span><span class="err">gs</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="err">probePa</span><span class="kc">t</span><span class="err">h</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;/&#39;</span><span class="w"></span>
-<span class="w">      </span><span class="err">probeReques</span><span class="kc">t</span><span class="err">Type</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;HEAD&#39;</span><span class="w"></span>
-<span class="w">      </span><span class="err">probePro</span><span class="kc">t</span><span class="err">ocol</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;H</span><span class="kc">tt</span><span class="err">p&#39;</span><span class="w"></span>
-<span class="w">      </span><span class="err">probeI</span><span class="kc">nter</span><span class="err">valI</span><span class="kc">n</span><span class="err">Seco</span><span class="kc">n</span><span class="err">ds</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="configure-with-bicep">Configure with Bicep<a class="headerlink" href="#configure-with-bicep" title="Permanent link">#</a></h3>
+<p>To deploy an Azure Container Registry that pass this rule:</p>
+<ul>
+<li>Set <code>properties.policies.softDeletePolicy.status</code> to <code>enabled</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource acr &#39;Microsoft.ContainerRegistry/registries@2022-02-01-preview&#39; = {
+  name: registryName
+  location: location
+  sku: {
+    name: &#39;Premium&#39;
+  }
+  identity: {
+    type: &#39;SystemAssigned&#39;
+  }
+  properties: {
+    adminUserEnabled: false
+    policies: {
+      quarantinePolicy: {
+        status: &#39;enabled&#39;
+      }
+      trustPolicy: {
+        status: &#39;enabled&#39;
+        type: &#39;Notary&#39;
+      }
+      softDeletePolicy: {
+        retentionDays: 90
+        status: &#39;enabled&#39;
+      }
+    }
+  }
+}
+</code></pre></div>
+<h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code>az acr config soft-delete update -r MyRegistry --days <span class="m">90</span> --status enabled
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/frontdoor/front-door-health-probes">Health probes</a></li>
-<li><a href="https://docs.microsoft.com/azure/frontdoor/front-door-health-probes#how-front-door-determines-backend-health">How Front Door determines backend health</a></li>
-<li><a href="https://docs.microsoft.com/azure/architecture/framework/resiliency/monitoring#creating-good-health-probes">Creating good health probes</a></li>
-<li><a href="https://docs.microsoft.com/azure/architecture/patterns/health-endpoint-monitoring">Health Endpoint Monitoring pattern</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/frontdoors#HealthProbeSettingsProperties">Azure resource template</a></li>
+<li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/data-management">Data Management for Reliability</a></li>
+<li><a href="https://learn.microsoft.com/azure/container-registry/container-registry-soft-delete-policy">Azure Container Registry (ACR) soft delete policy</a></li>
+<li><a href="https://learn.microsoft.com/azure/container-registry/container-registry-skus">Azure Container Registry service tiers</a></li>
+<li><a href="https://learn.microsoft.com/azure/container-registry/container-registry-retention-policy">Policy for untagged manifests</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries">Azure template reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -6975,7 +6950,7 @@ The checks should include dependencies including those that may not be regularly
   <small>
     
       Last update:
-      2022-09-21
+      2022-09-25
     
   </small>
 </div>
@@ -6998,7 +6973,7 @@ The checks should include dependencies including those that may not be regularly
       data-category="Documentation"
       data-category-id="DIC_kwDOCvn6LM4CQqE6"
       data-mapping="specific"
-      data-term="Azure.FrontDoor.ProbePath"
+      data-term="Azure.ACR.SoftDelete"
       data-strict="0"
       data-reactions-enabled="1"
       data-emit-metadata="0"
