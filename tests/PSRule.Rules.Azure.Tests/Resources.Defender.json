@@ -1,0 +1,173 @@
+[
+  {
+    "Name": "defenderA",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/Containers",
+    "ResourceName": "Containers",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Standard"
+    }
+  },
+  {
+    "Name": "defenderB",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/Containers",
+    "ResourceName": "Containers",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Free"
+    }
+  },
+  {
+    "Name": "defenderC",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/VirtualMachines",
+    "ResourceName": "VirtualMachines",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Standard",
+      "subPlan": "P2"
+    }
+  },
+  {
+    "Name": "defenderD",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/VirtualMachines",
+    "ResourceName": "VirtualMachines",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Free"
+    }
+  },
+  {
+    "Name": "defenderE",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/VirtualMachines",
+    "ResourceName": "VirtualMachines",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Standard",
+      "subPlan": "P1"
+    }
+  },
+  {
+    "Name": "defenderF",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/SqlServers",
+    "ResourceName": "SqlServers",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Standard"
+    }
+  },
+  {
+    "Name": "defenderG",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/SqlServers",
+    "ResourceName": "SqlServers",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Free"
+    }
+  },
+  {
+    "Name": "defenderH",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/AppServices",
+    "ResourceName": "AppServices",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Standard"
+    }
+  },
+  {
+    "Name": "defenderI",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/AppServices",
+    "ResourceName": "AppServices",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Free"
+    }
+  },
+  {
+    "Name": "defenderJ",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/StorageAccounts",
+    "ResourceName": "StorageAccounts",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Standard"
+    }
+  },
+  {
+    "Name": "defenderK",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/StorageAccounts",
+    "ResourceName": "StorageAccounts",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Free"
+    }
+  },
+  {
+    "Name": "defenderL",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/SqlServerVirtualMachines",
+    "ResourceName": "SqlServerVirtualMachines",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Standard"
+    }
+  },
+  {
+    "Name": "defenderM",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Security/pricings/SqlServerVirtualMachines",
+    "ResourceName": "SqlServerVirtualMachines",
+    "ResourceType": "Microsoft.Security/pricings",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "pricingTier": "Free"
+    }
+  }
+]
