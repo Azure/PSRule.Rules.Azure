@@ -35,13 +35,17 @@ namespace PSRule.Rules.Azure
 
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
-            Assert.True(definitions.Length >= 111);
+            Assert.Equal(111, definitions.Length);
 
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
             Assert.NotNull(actual);
             Assert.Equal("Storage", actual.Category);
             Assert.Equal("1.1.1", actual.Version);
+            Assert.Single(actual.Types);
+            Assert.Equal("Microsoft.Storage/storageAccounts", actual.Types[0]);
+            Assert.Null(actual.Where);
+            Assert.Equal("{\"allOf\":[{\"equals\":\"Microsoft.Storage/storageAccounts\",\"type\":\".\"},{\"field\":\"properties.networkAcls.defaultAction\",\"notEquals\":\"Deny\"}]}", actual.Condition.ToString(Formatting.None));
         }
 
         #region Helper methods

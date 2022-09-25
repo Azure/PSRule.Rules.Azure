@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace PSRule.Rules.Azure.Data.Policy
@@ -19,6 +21,8 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_NAME = "name";
         private const string PROPERTY_SPEC = "spec";
         private const string PROPERTY_CONDITION = "condition";
+        private const string PROPERTY_WHERE = "where";
+        private const string PROPERTY_TYPE = "type";
         private const string PROPERTY_TAGS = "tags";
         private const string PROPERTY_ANNOTATIONS = "annotations";
         private const string PROPERTY_CATEGORY = "Azure.Policy/category";
@@ -52,11 +56,43 @@ namespace PSRule.Rules.Azure.Data.Policy
             // Spec
             writer.WritePropertyName(PROPERTY_SPEC);
             writer.WriteStartObject();
-            writer.WritePropertyName(PROPERTY_CONDITION);
-            serializer.Serialize(writer, definition.Condition);
+            WriteType(writer, serializer, definition);
+            WriteWhere(writer, serializer, definition);
+            WriteCondition(writer, serializer, definition);
             writer.WriteEndObject();
 
             writer.WriteEndObject();
+        }
+
+        /// <summary>
+        /// Emit type pre-conditions.
+        /// </summary>
+        private static void WriteType(JsonWriter writer, JsonSerializer serializer, PolicyDefinition definition)
+        {
+            if (definition.Types == null || definition.Types.Count == 0)
+                return;
+
+            var types = new HashSet<string>(definition.Types, StringComparer.OrdinalIgnoreCase);
+            writer.WritePropertyName(PROPERTY_TYPE);
+            serializer.Serialize(writer, types);
+        }
+
+        /// <summary>
+        /// Emit sub-selector pre-condition.
+        /// </summary>
+        private static void WriteWhere(JsonWriter writer, JsonSerializer serializer, PolicyDefinition definition)
+        {
+            if (definition.Where == null)
+                return;
+
+            writer.WritePropertyName(PROPERTY_WHERE);
+            serializer.Serialize(writer, definition.Where);
+        }
+
+        private static void WriteCondition(JsonWriter writer, JsonSerializer serializer, PolicyDefinition definition)
+        {
+            writer.WritePropertyName(PROPERTY_CONDITION);
+            serializer.Serialize(writer, definition.Condition);
         }
 
         private static void WriteTags(JsonWriter writer, PolicyDefinition definition)
