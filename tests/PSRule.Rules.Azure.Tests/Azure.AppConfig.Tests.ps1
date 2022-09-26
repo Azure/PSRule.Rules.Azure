@@ -69,6 +69,33 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'app-config-A';
         }
+
+        It 'Azure.AppConfig.AuditLogs' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppConfig.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppConfig.AuditLogs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-C', 'app-config-D', 'app-config-E', 'app-config-F', 'app-config-G', 'app-config-H';
+
+            $ruleResult[0].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (app-config-A-diagnostic) should enable (Audit) or category group (audit, allLogs).";
+            $ruleResult[1].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (app-config-C-diagnostic) should enable (Audit) or category group (audit, allLogs).";
+            $ruleResult[2].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (app-config-D-diagnostic) should enable (Audit) or category group (audit, allLogs).";
+            $ruleResult[3].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (app-config-E-diagnostic) should enable (Audit) or category group (audit, allLogs).";
+            $ruleResult[4].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (app-config-F-diagnostic) should enable (Audit) or category group (audit, allLogs).";
+            $ruleResult[5].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (app-config-G-diagnostic) should enable (Audit) or category group (audit, allLogs).";
+            $ruleResult[5].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'app-config-B', 'app-config-I';
+        }
     }
 
     Context 'Resource name' {
