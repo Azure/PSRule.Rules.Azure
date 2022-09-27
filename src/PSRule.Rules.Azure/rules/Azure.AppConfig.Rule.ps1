@@ -17,6 +17,7 @@ Rule 'Azure.AppConfig.AuditLogs' -Ref 'AZR-000311' -Type 'Microsoft.AppConfigura
                 ($_.category -eq 'Audit' -or $_.categoryGroup -in $logCategoryGroups) -and $_.enabled
             }
         })
+        
     $Assert.Greater($diagnostics, '.', 0).ReasonFrom(
         'properties.logs',
         $LocalizedData.AppConfigStoresDiagnosticSetting, 
