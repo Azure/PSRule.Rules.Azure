@@ -82,7 +82,7 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-C', 'app-config-E', 'app-config-G', 'app-config-H';
 
             $ruleResult[0].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (Audit) configured or category group (audit, allLogs) configured.";
-            $ruleResult[1].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (Audit) configured or category group (audit, allLogs) configured..";
+            $ruleResult[1].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (Audit) configured or category group (audit, allLogs) configured.";
             $ruleResult[2].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (Audit) configured or category group (audit, allLogs) configured.";
             $ruleResult[3].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (Audit) configured or category group (audit, allLogs) configured.";
             $ruleResult[4].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (Audit) configured or category group (audit, allLogs) configured.";
