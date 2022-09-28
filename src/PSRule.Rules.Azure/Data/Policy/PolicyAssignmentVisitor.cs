@@ -750,18 +750,12 @@ namespace PSRule.Rules.Azure.Data.Policy
                         }
                     }
 
-                    // Overwrite definition if we found differences
-                    if (!foundDuplicateDefinition)
-                        context.DefinitionParameterMap[policyDefinitionId] = policyDefinition.Parameters;
-
-                    // Otherwise skip adding definition
-                    else
+                    // Skip adding definition if duplicate parameters found
+                    if (foundDuplicateDefinition)
                         return false;
                 }
 
-                // Add definition for the first time
-                else
-                    context.DefinitionParameterMap.Add(policyDefinitionId, policyDefinition.Parameters);
+                context.DefinitionParameterMap[policyDefinitionId] = result.Parameters;
             }
 
             // Modify policy rule
