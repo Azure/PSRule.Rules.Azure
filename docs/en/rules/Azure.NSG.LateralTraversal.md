@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Network Segmentation
+category: Network segmentation
 resource: Network Security Group
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.LateralTraversal/
 ---

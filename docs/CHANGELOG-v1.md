@@ -1,5 +1,6 @@
 ---
 discussion: false
+link_users: true
 ---
 
 # Change log
@@ -23,6 +24,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.20.0-B0085 (pre-release)
+
 What's changed since pre-release v1.20.0-B0028:
 
 - New rules:
@@ -34,6 +37,9 @@ What's changed since pre-release v1.20.0-B0028:
   - App Configuration:
     - Check identity-based authentication is used for configuration stores by @pazdedav.
       [#1691](https://github.com/Azure/PSRule.Rules.Azure/issues/1691)
+  - Container Registry:
+    - Check soft delete policy is enabled by @bengeset96.
+      [#1674](https://github.com/Azure/PSRule.Rules.Azure/issues/1674)
   - Defender for Cloud:
     - Check Microsoft Defender for Cloud is enabled for Containers by @jdewisscher.
       [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
@@ -65,7 +71,7 @@ What's changed since pre-release v1.20.0-B0028:
     - If you are referencing the old names please consider updating to the new names.
   - Updated documentation examples for Front Door and Key Vault rules by @lluppesms.
     [#1667](https://github.com/Azure/PSRule.Rules.Azure/issues/1667)
-  - Improved the way we check that VM or VMSS has Linux by @verabe
+  - Improved the way we check that VM or VMSS has Linux by @verabe.
     [#1704](https://github.com/Azure/PSRule.Rules.Azure/issues/1704)
 - General improvements:
   - Updated NSG documentation with code snippets and links by @simone-bennett.
@@ -85,6 +91,8 @@ What's changed since pre-release v1.20.0-B0028:
     [#1651](https://github.com/Azure/PSRule.Rules.Azure/issues/1651)
   - Fixed handling of runtime assessment data by @BernieWhite.
     [#1707](https://github.com/Azure/PSRule.Rules.Azure/issues/1707)
+  - Fixed conversion of type conditions to pre-conditions by @BernieWhite.
+    [#1708](https://github.com/Azure/PSRule.Rules.Azure/issues/1708)
 
 ## v1.20.0-B0028 (pre-release)
 

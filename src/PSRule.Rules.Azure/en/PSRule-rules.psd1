@@ -66,4 +66,6 @@
     ReplicaNotFound = "A replica in a secondary region was not found."
     VMSSPublicKey = "The virtual machine scale set '{0}' should have password authentication disabled."
     AppConfigStoresDiagnosticSetting = "Minimum one diagnostic setting should have ({0}) configured or category group ({1}) configured."
+    ACRSoftDeletePolicy = "The container registry '{0}' should have soft delete policy enabled."
+    ACRSoftDeletePolicyRetention = "The container registry '{0}' should have retention period value between one to 90 days for the soft delete policy."
 }

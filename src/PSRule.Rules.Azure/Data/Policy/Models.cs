@@ -72,6 +72,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             Description = description;
             Value = value;
             _Parameters = new Dictionary<string, IParameterValue>(StringComparer.OrdinalIgnoreCase);
+            Types = new List<string>();
         }
 
         /// <summary>
@@ -90,11 +91,6 @@ namespace PSRule.Rules.Azure.Data.Policy
         public string Description { get; set; }
 
         /// <summary>
-        /// The resulting effect of the policy.
-        /// </summary>
-        public string Effect { get; set; }
-
-        /// <summary>
         /// The raw original policy definition.
         /// </summary>
         public JObject Value { get; set; }
@@ -103,6 +99,16 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// The spec condition for the rule.
         /// </summary>
         public JObject Condition { get; set; }
+
+        /// <summary>
+        /// The spec where pre-condition for the rule.
+        /// </summary>
+        public JObject Where { get; set; }
+
+        /// <summary>
+        /// The spec type pre-condition for the rule.
+        /// </summary>
+        public List<string> Types { get; }
 
         /// <summary>
         /// An optional metadata category of the policy.
