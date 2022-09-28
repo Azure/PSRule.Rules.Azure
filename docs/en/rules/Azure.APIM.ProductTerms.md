@@ -29,11 +29,9 @@ Consider configuring legal terms for all products to declare acceptable use of i
 
 ### Configure with Azure template
 
-To set the display name and the description
+To set the Terms
 
-set properties.displayName	for the resource type "apis". Dispaly name must be 1 to 300 characters long.
-
-set	properties.description resource type "apis". May include HTML formatting tags.
+set properties.terms	for the resource type "products".
 
 For example:
 
@@ -50,19 +48,14 @@ For example:
     "state": "published",
     "subscriptionRequired": true, 
     "subscriptionsLimit": 1,
-    "terms" : "Accept this legal terms for the usage of the custom product, to call the APIs" # <----------------- Terms
+    # ------ Terms ------
+    "terms" : "Accept this legal terms for the usage of the custom product, to call the APIs"
   }
 }
 
 ```
 
 ### Configure with Bicep
-
-To set the display name and the description
-
-set properties.displayName	for the resource "Microsoft.ApiManagement/service/apis@2021-08-01". Dispaly name must be 1 to 300 characters long.
-
-set	properties.description for the resource "Microsoft.ApiManagement/service/apis@2021-08-01". May include HTML formatting tags.
 
 For example:
 
@@ -82,7 +75,8 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
     apiVersion: 'v1'
     apiVersionSetId: version.id
     subscriptionRequired: true
-    terms: 'Accept this legal terms for the usage of the custom product, to call the APIs' // <----------------- Terms
+    // ------ Terms ------
+    terms: 'Accept this legal terms for the usage of the custom product, to call the APIs'
   }
 }
 

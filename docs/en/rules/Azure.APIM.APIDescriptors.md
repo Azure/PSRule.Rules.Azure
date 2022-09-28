@@ -47,8 +47,10 @@ For example:
   "apiVersion": "2021-01-01-preview",
   "name": "apim-contoso-test-001",
   "properties": {
-    "displayName": "Example Echo v1 API", # <----------------- Display name
-    "description": "An echo API service.", # <----------------- Descriotion 
+    # ------ Display name ------
+    "displayName": "Example Echo v1 API", 
+    # ------ Descriotion ------
+    "description": "An echo API service.",  
     "path": "echo",
     "serviceUrl": "https://echo.contoso.com",
     "protocols": [
@@ -72,10 +74,12 @@ For example:
     "[concat('Microsoft.ApiManagement/service/apim-contoso-test-001/apis/echo')]"
   ],
   "properties": {
-    "displayName": "GET resource", # <----------------- Display name
+    # ------ Display name ------
+    "displayName": "GET resource", 
     "method": "GET", 
     "urlTemplate": "/resource",
-    "description": "A demonstration of a GET call" # <----------------- Description
+    # ------ Description ------
+    "description": "A demonstration of a GET call" 
   },
 }
 
@@ -95,8 +99,10 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
   parent: service
   name: 'apim-contoso-test-001'
   properties: {
-    displayName: 'Example Echo v1 API' // <----------------- Display name
-    description: 'An echo API service.' // <----------------- Descriptiuon
+    // ------ Display name ------
+    displayName: 'Example Echo v1 API' 
+    // ------ Descriptiuon ------
+    description: 'An echo API service.' 
     path: 'echo'
     serviceUrl: 'https://echo.contoso.com'
     protocols: [
@@ -118,8 +124,10 @@ resource operation 'Microsoft.ApiManagement/service/apis/operations@2021-12-01-p
   name: 'exampleOperationsGET'
   parent: api
   properties: {
-    description: 'A demonstration of a GET call' // <----------------- Descriptiuon
-    displayName: 'GET resource' // <----------------- Display name
+    // ------ Description ------
+    description: 'A demonstration of a GET call'
+    // ------ Display name ------
+    displayName: 'GET resource'
     method: 'GET'
     urlTemplate: '/resource'
   }

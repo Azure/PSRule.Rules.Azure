@@ -55,9 +55,11 @@ For example:
     "location": "[resourceGroup().location]",
     "sku": {
         "name": "Premium",
-        "capacity": 3 # <-----------------  sku name
+        # ------  sku name ------ 
+        "capacity": 3  
     },
-    "zones": [ # <----------------- Zones 
+    # ------ zones ------
+    "zones": [  
         "1",
         "2",
         "3"
@@ -75,9 +77,11 @@ For example:
     "location": "[resourceGroup().location]",
     "sku": {
         "name": "Premium",
-        "capacity": 3 # <-----------------  sku name
+        # ------ sku name ------
+        "capacity": 3 
     },
-    "zones": [ # <----------------- Zones 
+    # ------ zones ------
+    "zones": [  
         "1",
         "2",
         "3"
@@ -89,10 +93,12 @@ For example:
             {
                 "location": "East US",
                 "sku": {
-                    "name": "Premium",  # <-----------------  sku name
+                    # ------ sku name ------
+                    "name": "Premium", 
                     "capacity": 3
                 },
-                "zones": [ # <-----------------  Zones
+                # ------ zones ------
+                "zones": [ 
                     "1",
                     "2",
                     "3"
@@ -114,10 +120,12 @@ resource service 'Microsoft.ApiManagement/service@2021-12-01-preview' = {
   name: apim-contoso-test-001
   location: [resourceGroup().location]
   sku: {
-    name: 'Premium' // # <-----------------  sku name
+    // ------ sku name ------
+    name: 'Premium' 
     capacity: 3
   }
-  zones:{//<-----------------  Zones
+  // ------ zones ------
+  zones:{
     '1'
     '2'
     '3'
@@ -133,10 +141,12 @@ resource service 'Microsoft.ApiManagement/service@2021-12-01-preview' = {
   name: apim-contoso-test-001
   location: [resourceGroup().location]
   sku: {
-    name: 'Premium' // # <-----------------  sku name
+    // ------ sku name ------
+    name: 'Premium' 
     capacity: 3
   }
-  zones:{//<-----------------  Zones
+  // ------ zones ------
+  zones:{
     '1'
     '2'
     '3'
@@ -150,9 +160,11 @@ resource service 'Microsoft.ApiManagement/service@2021-12-01-preview' = {
         location: 'East US'
         sku: {
           capacity: 3
-          name: 'Premium' // # <-----------------  sku name
+          // ------ sku name ------
+          name: 'Premium' 
         }
-        zones: [ //<-----------------  Zones
+        // ------ zones ------
+        zones: [ 
           '1'
           '2'
           '3'

@@ -47,7 +47,8 @@ For example:
     "properties": {
       "displayName": "SampleNamedValueId",
       "value": "SecretValue",
-      "secret": true # <----------------- marking value as secret  
+      # ------ marking value as secret ------
+      "secret": true   
     }
   }
 
@@ -58,8 +59,10 @@ For example:
     "name": "apim-contoso-test-001/sampleNameValue",
     "properties": {
       "displayName": "SampleNamedValueId",
-      "keyVault": { # <----------------- value read from the Keyvault
-          "identityClientId": "identityClientId", # <----------------- client id of the user assigned identity 
+      # ------ value read from the Keyvault ------
+      "keyVault": { 
+          # ------ client id of the user assigned identity ------
+          "identityClientId": "identityClientId",  
           "secretIdentifier": "SampleNamedValueId"
         },  
     }
@@ -72,8 +75,10 @@ For example:
     "name": "apim-contoso-test-001/sampleNameValue",
     "properties": {
       "displayName": "SampleNamedValueId",
-      "keyVault": { # <----------------- value read from the Keyvault
-          "identityClientId": null, # <----------------- null indicates to use the system assigned identity 
+      # ------ value read from the Keyvault ------
+      "keyVault": { 
+          # ------ null indicates to use the system assigned identity ------
+          "identityClientId": null,  
           "secretIdentifier": "SampleNamedValueId"
         },  
     }
@@ -95,6 +100,7 @@ resource namedValue 'Microsoft.ApiManagement/service/namedValues@2021-12-01-prev
   parent: service
   properties: {
     displayName: 'SampleNamedValueId'
+    // ------ marking value as secret ------
     secret: true
     value: 'SecretValue'
   }
@@ -106,7 +112,9 @@ resource namedValue 'Microsoft.ApiManagement/service/namedValues@2021-12-01-prev
   parent: service
   properties: {
     displayName: 'SampleNamedValueId'
+    // ------ value read from the Keyvault ------
     keyVault: {
+      // ------ client id of the user assigned identity ------
       identityClientId: 'identityClientId'
       secretIdentifier: 'SampleNamedValueId'
     }
@@ -118,7 +126,9 @@ resource namedValue 'Microsoft.ApiManagement/service/namedValues@2021-12-01-prev
   parent: service
   properties: {
     displayName: 'SampleNamedValueId'
+    // ------ value read from the Keyvault ------
     keyVault: {
+      // ------ null indicates to use the system assigned identity ------
       identityClientId: null
       secretIdentifier: 'SampleNamedValueId'
     }

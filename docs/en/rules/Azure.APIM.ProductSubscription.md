@@ -46,7 +46,8 @@ For example:
     "description": "Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso", 
     "displayName": "Custom Product", 
     "state": "published",
-    "subscriptionRequired": true, # <----------------- Subscription required enabled
+    # ------ Subscription required enabled ------
+    "subscriptionRequired": true, 
     "subscriptionsLimit": 1
   }
 }
@@ -55,11 +56,6 @@ For example:
 
 ### Configure with Bicep
 
-To set the display name and the description
-
-set properties.displayName	for the resource "Microsoft.ApiManagement/service/apis@2021-08-01". Dispaly name must be 1 to 300 characters long.
-
-set	properties.description for the resource "Microsoft.ApiManagement/service/apis@2021-08-01". May include HTML formatting tags.
 
 For example:
 
@@ -78,7 +74,8 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
     ]
     apiVersion: 'v1'
     apiVersionSetId: version.id
-    subscriptionRequired: true // <----------------- Subscription required enabled
+    // ------ Subscription required enabled ------
+    subscriptionRequired: true  
   }
 }
 

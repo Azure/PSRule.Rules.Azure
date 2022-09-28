@@ -27,12 +27,6 @@ In the portal, this is done by configuring the HTTPS URL scheme.
 
 ### Configure with Azure template
 
-To set the display name and the description
-
-set properties.displayName	for the resource type "apis". Dispaly name must be 1 to 300 characters long.
-
-set	properties.description resource type "apis". May include HTML formatting tags.
-
 For example:
 
 ```json
@@ -46,7 +40,8 @@ For example:
     "path": "echo",
     "serviceUrl": "https://echo.contoso.com",
     "protocols": [
-      "https" # <----------------- making sure the http end point is https 
+      # ------ making sure the http end point is https ------
+      "https" 
     ],
     "apiVersion": "v1",
     "subscriptionRequired": true
@@ -55,12 +50,6 @@ For example:
 ```
 
 ### Configure with Bicep
-
-To set the display name and the description
-
-set properties.displayName	for the resource "Microsoft.ApiManagement/service/apis@2021-08-01". Dispaly name must be 1 to 300 characters long.
-
-set	properties.description for the resource "Microsoft.ApiManagement/service/apis@2021-08-01". May include HTML formatting tags.
 
 For example:
 
@@ -75,6 +64,7 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-12-01-preview' = {
     path: 'echo'
     serviceUrl: 'https://echo.contoso.com'
     protocols: [
+      // ------ making sure the http end point is https ------
       'https'
     ]
     apiVersion: 'v1'

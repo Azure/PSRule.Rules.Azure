@@ -45,14 +45,22 @@ For example:
     "publisherEmail": "noreply@contoso.com",
     "publisherName": "Contoso",
     "customProperties": {
-        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False", # <----------------- ciphers TripleDes168 disabled  
-        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA": "False", # <----------------- ciphers TLS_RSA_WITH_AES_128_CBC_SHA disabled  
-        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA": "False", # <----------------- ciphers TLS_RSA_WITH_AES_256_CBC_SHA disabled  
-        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256": "False", # <----------------- ciphers TLS_RSA_WITH_AES_128_CBC_SHA256 disabled
-        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA": "False", # <----------------- ciphers TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA disabled
-        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256": "False", # <----------------- ciphers TLS_RSA_WITH_AES_256_CBC_SHA256 disabled
-        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA": "False", # <----------------- ciphers TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA disabled
-        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256": "False" # <----------------- ciphers TLS_RSA_WITH_AES_128_GCM_SHA256 disabled
+        # ------ ciphers TripleDes168 disabled ------
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False",
+        # ------ ciphers TLS_RSA_WITH_AES_128_CBC_SHA disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA": "False",   
+        # ------ ciphers TLS_RSA_WITH_AES_256_CBC_SHA disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA": "False",   
+        # ------ ciphers TLS_RSA_WITH_AES_128_CBC_SHA256 disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256": "False",
+        # ------ ciphers TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA": "False",  
+        # ------ ciphers TLS_RSA_WITH_AES_256_CBC_SHA256 disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256": "False", 
+        # ------ ciphers TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA": "False", 
+        # ------ ciphers TLS_RSA_WITH_AES_128_GCM_SHA256 disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256": "False" 
       }
   }
 }
@@ -71,10 +79,10 @@ resource service 'Microsoft.ApiManagement/service@2021-12-01-preview' = {
   name: apim-contoso-test-001
   location: [resourceGroup().location]
   sku: {
-    name: 'Standard' // # <-----------------  sku name
+    name: 'Standard'
     capacity: 1
   }
-  zones:{//<-----------------  Zones
+  zones:{
     '1'
     '2'
     '3'
@@ -90,13 +98,21 @@ resource service 'Microsoft.ApiManagement/service@2021-12-01-preview' = {
       'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11': 'False'
       'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30': 'False'
       'Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2': 'True'
+      // ------ ciphers TripleDes168 disabled ------
       'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168': 'False'
+      // ------ ciphers TLS_RSA_WITH_AES_128_CBC_SHA disabled ------ 
       'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA': 'False'
+      //  ------ ciphers TLS_RSA_WITH_AES_256_CBC_SHA disabled ------ 
       'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA': 'False'
+      // ------ ciphers TLS_RSA_WITH_AES_256_CBC_SHA256 disabled ------
       'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256': 'False'
+      // ------ ciphers TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA disabled ------
       'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA': 'False'
+      // ------ ciphers TLS_RSA_WITH_AES_256_CBC_SHA256 disabled ------ 
       'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256': 'False'
+      // ------ ciphers TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA disabled ------
       'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA': 'False'
+      // ------ ciphers TLS_RSA_WITH_AES_128_GCM_SHA256 disabled ------ 
       'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256': 'False'
       }
   }

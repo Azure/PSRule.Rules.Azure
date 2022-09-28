@@ -27,8 +27,6 @@ Consider configuring all API Management products to require approval.
 
 ### Configure with Azure template
 
-
-
 For example:
 
 ```json
@@ -38,7 +36,8 @@ For example:
   "apiVersion": "2021-12-01-preview",
   "name": "apim-contoso-test-001/custom-product",
   "properties": {
-    "approvalRequired": true, # <----------------- approval required is enabled
+    # ------ approval required is enabled ------
+    "approvalRequired": true, 
     "description": "Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso",
     "displayName": "Custom Product",
     "state": "published",
@@ -51,7 +50,6 @@ For example:
 
 ### Configure with Bicep
 
-
 For example:
 
 ```bicep
@@ -59,7 +57,8 @@ For example:
 resource product 'Microsoft.ApiManagement/service/products@2021-12-01-preview' = {
   name: 'apim-contoso-test-001/custom-product'
   properties: {
-    approvalRequired: true // <----------------- approval required is enabled
+    // ------ approval required is enabled ------
+    approvalRequired: true 
     description: 'Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso'
     displayName: 'Custom Product'
     state: 'published'

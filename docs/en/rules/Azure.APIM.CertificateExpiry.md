@@ -27,6 +27,8 @@ Consider renewing certificates before expiry to prevent service issues.
 
 ### Configure with Azure template
 
+
+
 For example:
 
 ```json
@@ -85,11 +87,6 @@ For example:
 
 ### Configure with Bicep
 
-To set the display name and the description
-
-set properties.displayName	for the resource "Microsoft.ApiManagement/service/apis@2021-08-01". Dispaly name must be 1 to 300 characters long.
-
-set	properties.description for the resource "Microsoft.ApiManagement/service/apis@2021-08-01". May include HTML formatting tags.
 
 For example:
 

@@ -48,7 +48,8 @@ For example:
         "capacity": 1
     },
     "identity": {
-        "type": "SystemAssigned" # <----------------- Identity type set to System Assigned
+        # ------ Identity type set to System Assigned ------ 
+        "type": "SystemAssigned" 
     },
     "protocols": [
       "https"  
@@ -73,7 +74,8 @@ For example:
         "capacity": 1
     },
     "identity": {
-        "type": "UserAssigned" # <----------------- Identity type set to User Assigned
+        # ------  Identity type set to User Assigned ------ 
+        "type": "UserAssigned"
         "userAssignedIdentities":"[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'identityName'))]": {}
     },
     "protocols": [
@@ -102,8 +104,8 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
   parent: service
   name: 'apim-contoso-test-001'
   properties: {
-    displayName: 'Example Echo v1 API' // <----------------- Display name
-    description: 'An echo API service.' // <----------------- Descriptiuon
+    displayName: 'Example Echo v1 API'
+    description: 'An echo API service.' 
     path: 'echo'
     serviceUrl: 'https://echo.contoso.com'
     sku: [
@@ -111,6 +113,7 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
       capacity:1
     ]
     identity:[
+      // ------ Identity type set to System Assigned ------ 
       type: 'SystemAssigned'
     ]
     protocols: [
@@ -125,8 +128,8 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
   parent: service
   name: 'apim-contoso-test-001'
   properties: {
-    displayName: 'Example Echo v1 API' // <----------------- Display name
-    description: 'An echo API service.' // <----------------- Descriptiuon
+    displayName: 'Example Echo v1 API' 
+    description: 'An echo API service.' 
     path: 'echo'
     serviceUrl: 'https://echo.contoso.com'
     sku: [
@@ -134,6 +137,7 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
       capacity:1
     ]
     identity:[
+      // ------  Identity type set to User Assigned ------ 
       type: 'UserAssigned'
       userAssignedIdentities:'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
 providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'

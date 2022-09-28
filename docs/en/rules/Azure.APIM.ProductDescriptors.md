@@ -42,8 +42,10 @@ For example:
   "name": "apim-contoso-test-001/custom-product",
   "properties": {
     "approvalRequired": true, 
-    "description": "Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso", # <----------------- description
-    "displayName": "Custom Product", # <----------------- display name
+    # ------ description ------
+    "description": "Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso", 
+    # ------ display name ------
+    "displayName": "Custom Product",
     "state": "published",
     "subscriptionRequired": true,
     "subscriptionsLimit": 1
@@ -54,12 +56,6 @@ For example:
 
 ### Configure with Bicep
 
-To set the display name and the description
-
-set properties.displayName	for the resource "Microsoft.ApiManagement/service/apis@2021-08-01". Dispaly name must be 1 to 300 characters long.
-
-set	properties.description for the resource "Microsoft.ApiManagement/service/apis@2021-08-01". May include HTML formatting tags.
-
 For example:
 
 ```bicep
@@ -68,8 +64,10 @@ resource product 'Microsoft.ApiManagement/service/products@2021-12-01-preview' =
   name: 'apim-contoso-test-001/custom-product'
   properties: {
     approvalRequired: true 
-    description: 'Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso'  // <----------------- description
-    displayName: 'Custom Product' // <----------------- display name
+    // ------ description ------
+    description: 'Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso'
+    // ------ display name ------
+    displayName: 'Custom Product' 
     state: 'published'
     subscriptionRequired: true
     subscriptionsLimit: 1
