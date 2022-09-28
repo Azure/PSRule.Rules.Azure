@@ -7,7 +7,7 @@
 
 #region Rules
 
-# Synopsis: Ensure app configuration stores audit diagnostic logs are enabled.
+# Synopsis: Ensure app configuration store audit diagnostic logs are enabled.
 Rule 'Azure.AppConfig.AuditLogs' -Ref 'AZR-000311' -Type 'Microsoft.AppConfiguration/configurationStores' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
     
     $logCategoryGroups = 'audit', 'allLogs'
@@ -17,7 +17,7 @@ Rule 'Azure.AppConfig.AuditLogs' -Ref 'AZR-000311' -Type 'Microsoft.AppConfigura
                 ($_.category -eq 'Audit' -or $_.categoryGroup -in $logCategoryGroups) -and $_.enabled
             }
         })
-        
+
     $Assert.Greater($diagnostics, '.', 0).ReasonFrom(
         'properties.logs',
         $LocalizedData.AppConfigStoresDiagnosticSetting, 

@@ -637,9 +637,9 @@
         "Kind": null,
         "Location": "australiaeast",
         "ManagedBy": null,
-        "ResourceName": "app-config-I-diagnostic",
-        "Name": "app-config-I-diagnostic",
-        "ExtensionResourceName": "app-config-I-diagnostic",
+        "ResourceName": "app-config-I-diagnostic1",
+        "Name": "app-config-I-diagnostic1",
+        "ExtensionResourceName": "app-config-I-diagnostic1",
         "ParentResource": null,
         "Plan": null,
         "Properties": {
@@ -653,6 +653,49 @@
               "category": null,
               "categoryGroup": "audit",
               "enabled": true,
+              "retentionPolicy": {
+                "days": 30,
+                "enabled": true
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.AppConfiguration/configurationStores",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+        "ExtensionResourceType": "Microsoft.Insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-I/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-I/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "australiaeast",
+        "ManagedBy": null,
+        "ResourceName": "app-config-I-diagnostic2",
+        "Name": "app-config-I-diagnostic2",
+        "ExtensionResourceName": "app-config-I-diagnostic2",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "logs": [
+            {
+              "category": null,
+              "categoryGroup": "allLogs",
+              "enabled": false,
               "retentionPolicy": {
                 "days": 30,
                 "enabled": true
