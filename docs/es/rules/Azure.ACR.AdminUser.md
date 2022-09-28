@@ -2,7 +2,7 @@
 reviewed: 2022-09-22
 severity: Critico
 pillar: Seguridad
-category: Authentication
+category: Autenticación
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/es/rules/Azure.ACR.AdminUser/
 ---

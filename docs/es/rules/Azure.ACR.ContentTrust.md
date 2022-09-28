@@ -21,7 +21,7 @@ Para habilitar la confianza en el contenido, el registro del contenedor debe usa
 
 ## Recomendación
 
-Consider enabling content trust on registries, clients, and sign container images.
+Considere habilitar la confianza en el contenido en registros, clientes e imágenes de contenedores de firmas.
 
 ## Ejemplos
 
