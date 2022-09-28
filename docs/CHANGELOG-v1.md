@@ -1,5 +1,6 @@
 ---
 discussion: false
+link_users: true
 ---
 
 # Change log
@@ -70,7 +71,7 @@ What's changed since pre-release v1.20.0-B0028:
     - If you are referencing the old names please consider updating to the new names.
   - Updated documentation examples for Front Door and Key Vault rules by @lluppesms.
     [#1667](https://github.com/Azure/PSRule.Rules.Azure/issues/1667)
-  - Improved the way we check that VM or VMSS has Linux by @verabe
+  - Improved the way we check that VM or VMSS has Linux by @verabe.
     [#1704](https://github.com/Azure/PSRule.Rules.Azure/issues/1704)
 - General improvements:
   - Updated NSG documentation with code snippets and links by @simone-bennett.
@@ -90,7 +91,7 @@ What's changed since pre-release v1.20.0-B0028:
     [#1651](https://github.com/Azure/PSRule.Rules.Azure/issues/1651)
   - Fixed handling of runtime assessment data by @BernieWhite.
     [#1707](https://github.com/Azure/PSRule.Rules.Azure/issues/1707)
-  - Fixed conversion of type conditions to pre-conditions by @BernieWhite
+  - Fixed conversion of type conditions to pre-conditions by @BernieWhite.
     [#1708](https://github.com/Azure/PSRule.Rules.Azure/issues/1708)
 
 ## v1.20.0-B0028 (pre-release)
