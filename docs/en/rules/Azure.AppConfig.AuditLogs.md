@@ -2,11 +2,11 @@
 severity: Important
 pillar: Security
 category: Monitor
-resource: App Configuration Stores
+resource: App Configuration
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.AuditLogs/
 ---
 
-# Audit App Configuration Stores
+# Audit App Configuration Store
 
 ## SYNOPSIS
 
@@ -14,7 +14,7 @@ Ensure app configuration store audit diagnostic logs are enabled.
 
 ## DESCRIPTION
 
-To capture logs that record interactions with data or the settings of the service, diagnostic settings must be configured.
+To capture logs that record interactions with data or the settings of the app configuration store, diagnostic settings must be configured.
 
 When configuring diagnostic settings, enabled one of the following:
 
