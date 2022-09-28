@@ -687,10 +687,16 @@ namespace PSRule.Rules.Azure.Data.Policy
                 return valueA.ToString().Equals(valueB.ToString(), StringComparison.OrdinalIgnoreCase);
 
             if (typeA == ParameterType.Integer && typeB == ParameterType.Integer)
-                return Convert.ToInt32(valueA, Thread.CurrentThread.CurrentCulture) == Convert.ToInt32(valueB, Thread.CurrentThread.CurrentCulture);
+                return Convert.ToInt64(valueA, Thread.CurrentThread.CurrentCulture) == Convert.ToInt64(valueB, Thread.CurrentThread.CurrentCulture);
 
             if (typeA == ParameterType.Boolean && typeB == ParameterType.Boolean)
                 return Convert.ToBoolean(valueA, Thread.CurrentThread.CurrentCulture) == Convert.ToBoolean(valueB, Thread.CurrentThread.CurrentCulture);
+
+            if (typeA == ParameterType.Array && typeB == ParameterType.Array)
+                return JToken.DeepEquals(JArray.FromObject(valueA), JArray.FromObject(valueB));
+
+            if (typeA == ParameterType.Object && typeB == ParameterType.Object)
+                return JToken.DeepEquals(JObject.FromObject(valueA), JObject.FromObject(valueB));
 
             // TODO: Handle more types
 
