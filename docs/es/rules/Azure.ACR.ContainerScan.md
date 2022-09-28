@@ -40,7 +40,7 @@ Escaneo de vulnerabilidades de imágenes de contenedores con Microsoft Defender 
 
 Considere usar Microsoft Defender para la nube para buscar vulnerabilidades de seguridad en imágenes de contenedores.
 
-## Ejemples
+## Ejemplos
 
 ### Configurar con plantilla de ARM
 
