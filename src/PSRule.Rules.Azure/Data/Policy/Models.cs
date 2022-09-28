@@ -132,11 +132,6 @@ namespace PSRule.Rules.Azure.Data.Policy
         {
             Parameters.Add(value.Name, value);
         }
-
-        internal bool TryParameter(string parameterName, out IParameterValue value)
-        {
-            return Parameters.TryGetValue(parameterName, out value);
-        }
     }
 
     internal interface ILazyValue

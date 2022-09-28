@@ -90,7 +90,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             private readonly PolicyAliasProviderHelper _PolicyAliasProviderHelper;
             internal string AssignmentFile { get; private set; }
             private readonly IList<PolicyDefinition> _Definitions;
-            internal readonly IDictionary<string, PolicyDefinition> DefinitionIds;
+            internal readonly IDictionary<string, IDictionary<string, IParameterValue>> DefinitionParameterMap;
             internal readonly PipelineContext Pipeline;
             private readonly TemplateValidator _Validator;
             private readonly IDictionary<string, JToken> _ParameterAssignments;
@@ -101,7 +101,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 _ExpressionBuilder = new ExpressionBuilder(_ExpressionFactory);
                 _PolicyAliasProviderHelper = new PolicyAliasProviderHelper();
                 _Definitions = new List<PolicyDefinition>();
-                DefinitionIds = new Dictionary<string, PolicyDefinition>(StringComparer.OrdinalIgnoreCase);
+                DefinitionParameterMap = new Dictionary<string, IDictionary<string, IParameterValue>>(StringComparer.OrdinalIgnoreCase);
                 _Validator = new TemplateValidator();
                 _ParameterAssignments = new Dictionary<string, JToken>();
                 Pipeline = context;
@@ -581,8 +581,8 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 value = null;
 
-                if (DefinitionIds.TryGetValue(PolicyDefinitionId, out var definition)
-                    && definition.TryParameter(parameterName, out var parameterValue))
+                if (DefinitionParameterMap.TryGetValue(PolicyDefinitionId, out var definitionParameters)
+                    && definitionParameters.TryGetValue(parameterName, out var parameterValue))
                 {
                     value = parameterValue.GetValue(this);
                     return true;
@@ -735,14 +735,12 @@ namespace PSRule.Rules.Azure.Data.Policy
                     context.SetDefinitionParameterAssignment(result, parameter);
 
                 // Check if definition with same parameters has already been added
-                if (context.DefinitionIds.ContainsKey(policyDefinitionId))
+                if (context.DefinitionParameterMap.TryGetValue(policyDefinitionId, out var previousDefinitionParameters))
                 {
-                    var previousDefinition = context.DefinitionIds[policyDefinitionId];
-
                     var foundDuplicateDefinition = true;
                     foreach (var currentParameter in result.Parameters)
                     {
-                        if (previousDefinition.TryParameter(currentParameter.Key, out var previousParameterValue))
+                        if (previousDefinitionParameters.TryGetValue(currentParameter.Key, out var previousParameterValue))
                         {
                             if (!ParametersEqual(context, previousParameterValue, currentParameter.Value))
                             {
@@ -754,7 +752,7 @@ namespace PSRule.Rules.Azure.Data.Policy
 
                     // Overwrite definition if we found differences
                     if (!foundDuplicateDefinition)
-                        context.DefinitionIds[policyDefinitionId] = result;
+                        context.DefinitionParameterMap[policyDefinitionId] = policyDefinition.Parameters;
 
                     // Otherwise skip adding definition
                     else
@@ -763,7 +761,7 @@ namespace PSRule.Rules.Azure.Data.Policy
 
                 // Add definition for the first time
                 else
-                    context.DefinitionIds.Add(policyDefinitionId, result);
+                    context.DefinitionParameterMap.Add(policyDefinitionId, policyDefinition.Parameters);
             }
 
             // Modify policy rule
