@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - App Configuration:
+    - Check app configuration store audit diagnostic logs are enabled by @bengeset96.
+      [#1690](https://github.com/Azure/PSRule.Rules.Azure/issues/1690)
+
 ## v1.20.0-B0085 (pre-release)
 
 What's changed since pre-release v1.20.0-B0028:
