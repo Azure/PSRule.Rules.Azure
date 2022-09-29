@@ -30,6 +30,9 @@ What's changed since pre-release v1.20.0-B0085:
   - App Configuration:
     - Check app configuration store audit diagnostic logs are enabled by @bengeset96.
       [#1690](https://github.com/Azure/PSRule.Rules.Azure/issues/1690)
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk to v17.3.2.
+    [#1719](https://github.com/Azure/PSRule.Rules.Azure/pull/1719)
 - Bug fixes:
   - Fixed error expanding with `json()` and single quotes by @BernieWhite.
     [#1656](https://github.com/Azure/PSRule.Rules.Azure/issues/1656)
