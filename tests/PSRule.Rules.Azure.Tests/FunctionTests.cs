@@ -257,10 +257,24 @@ namespace PSRule.Rules.Azure
 
             // Object
             var actual1 = Functions.Json(context, new object[] { "{ \"a\": \"b\" }" }) as JObject;
-            Assert.Equal("b", actual1["a"]);
+            Assert.Equal("b", actual1["a"].Value<string>());
+            actual1 = Functions.Json(context, new object[] { "{'a': 'b'}" }) as JObject;
+            Assert.Equal("b", actual1["a"].Value<string>());
+            actual1 = Functions.Json(context, new object[] { "{''a'': ''b''}" }) as JObject;
+            Assert.Equal("b", actual1["a"].Value<string>());
+            actual1 = Functions.Json(context, new object[] { Functions.Format(context, new object[] { "{{''a'': ''{0}''}}", "b" }) }) as JObject;
+            Assert.Equal("b", actual1["a"].Value<string>());
+            var actual2 = Functions.Json(context, new object[] { "\"\"" }) as string;
+            Assert.Equal("", actual2);
+            actual2 = Functions.Json(context, new object[] { "''" }) as string;
+            Assert.Equal("", actual2);
+            actual2 = Functions.Json(context, new object[] { "" }) as string;
+            Assert.Null(actual2);
+            var actual3 = Functions.Json(context, new object[] { "null" });
+            Assert.Null(actual3);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Json(context, null));
-            Assert.Throws<ExpressionArgumentException>(() => Functions.Json(context, new object[] { }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Json(context, System.Array.Empty<object>()));
         }
 
         [Fact]
