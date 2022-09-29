@@ -16,7 +16,7 @@ Ensure app configuration store audit diagnostic logs are enabled.
 
 To capture logs that record interactions with data or the settings of the app configuration store, diagnostic settings must be configured.
 
-When configuring diagnostic settings, enabled one of the following:
+When configuring diagnostic settings, enable one of the following:
 
 - `Audit` category.
 - `audit` category group.
