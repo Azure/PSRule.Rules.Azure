@@ -5,7 +5,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Runtime;
 using System.Text;
 using System.Threading;
 using System.Web;
@@ -13,6 +16,7 @@ using System.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Resources;
+using YamlDotNet.Core.Tokens;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -32,6 +36,9 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_OPERAND2 = "operand2";
         private const string PROPERTY_VALUETOCONVERT = "valueToConvert";
         private const string FORMAT_ISO8601 = "yyyy-MM-ddTHH:mm:ssZ";
+
+        private const char SINGLE_QUOTE = '\'';
+        private const char DOUBLE_QUOTE = '"';
 
         internal readonly static IFunctionDescriptor[] Builtin = new IFunctionDescriptor[]
         {
@@ -395,7 +402,38 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args == null || args.Length != 1 || !ExpressionHelpers.TryString(args[0], out var json))
                 throw ArgumentsOutOfRange(nameof(Json), args);
 
-            return JsonConvert.DeserializeObject(json);
+            return JsonConvert.DeserializeObject(DecodeJsonString(json));
+        }
+
+        private static string DecodeJsonString(string s)
+        {
+            if (s.Length == 2 && s[0] == SINGLE_QUOTE && s[1] == SINGLE_QUOTE)
+                return s;
+
+            var pos = 0;
+            var c = new char[s.Length];
+            var quoted = false;
+            for (var i = 0; i < s.Length; i++)
+            {
+                if (!(s[i] == DOUBLE_QUOTE || s[i] == SINGLE_QUOTE) || i == s.Length - 1)
+                {
+                    c[pos++] = s[i];
+                }
+                else if (s[i] == DOUBLE_QUOTE)
+                {
+                    c[pos++] = s[i];
+                    quoted = !quoted;
+                }
+                else if (!quoted && s[i] == SINGLE_QUOTE && s[i + 1] == SINGLE_QUOTE)
+                {
+                    c[pos++] = s[i++];
+                }
+                else
+                {
+                    c[pos++] = s[i];
+                }
+            }
+            return new string(c, 0, pos);
         }
 
         /// <summary>
