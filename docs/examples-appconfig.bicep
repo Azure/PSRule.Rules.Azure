@@ -9,6 +9,10 @@ param name string
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
+param locationsec string = 'northeurope' 
+
+param repname string = 'replica01'
+
 @description('The resource id of the Log Analytics workspace to send diagnostic logs to.')
 param workspaceId string
 
@@ -23,6 +27,13 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
     disableLocalAuth: true
     enablePurgeProtection: true
   }
+}
+
+resource replica 'Microsoft.AppConfiguration/configurationStores/replicas@2022-03-01-preview' = {
+  name: repname
+  location: locationsec
+  parent: store
+
 }
 
 resource diagnostic 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {

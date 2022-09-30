@@ -93,6 +93,28 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'app-config-B', 'app-config-D', 'app-config-F', 'app-config-I';
         }
+
+        It 'Azure.AppConfig.GeoReplica' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppConfig.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppConfig.GeoReplica' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-F', 'app-config-H';
+
+            $ruleResult[0].Reason | Should -BeExactly "A replica was not found.";
+            $ruleResult[1].Reason | Should -BeExactly "A replica was not found.";
+            $ruleResult[2].Reason | Should -BeExactly "A replica in a secondary region was not found.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'app-config-I';
+        }
     }
 
     Context 'Resource name' {
