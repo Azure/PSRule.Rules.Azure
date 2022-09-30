@@ -21,8 +21,8 @@ The app configuration geo-replication feature allows you to replicate your confi
 Replicating your configuration store adds the following benefits:
 
 - Added resiliency for Azure outages.
-- Redistribution of request limits,
-- Regional compartmentalization,
+- Redistribution of request limits.
+- Regional compartmentalization.
 
 ## RECOMMENDATION
 
