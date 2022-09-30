@@ -11,7 +11,7 @@ ms-content-id: e19fbe7e-da05-47d4-8de1-2fdf52ada662
 
 ## SYNOPSIS
 
-App Service should reject TLS versions older then 1.2.
+App Service should reject TLS versions older than 1.2.
 
 ## DESCRIPTION
 

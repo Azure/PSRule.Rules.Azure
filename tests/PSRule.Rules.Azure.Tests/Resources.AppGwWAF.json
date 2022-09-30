@@ -1,0 +1,119 @@
+[
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/appgwwaf-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/appgwwaf-A",
+    "Location": "australiaeast",
+    "ResourceName": "appgwwaf-A",
+    "Name": "appgwwaf-A",
+    "properties": {
+      "customRules": [],
+      "policySettings": {
+        "requestBodyCheck": true,
+        "maxRequestBodySizeInKb": 128,
+        "fileUploadLimitInMb": 100,
+        "state": "Enabled",
+        "mode": "Prevention"
+      },
+      "managedRules": {
+        "managedRuleSets": [
+          {
+            "ruleSetType": "OWASP",
+            "ruleSetVersion": "3.2",
+            "ruleGroupOverrides": []
+          },
+          {
+            "ruleSetType": "Microsoft_BotManagerRuleSet",
+            "ruleSetVersion": "0.1",
+            "ruleGroupOverrides": []
+          }
+        ],
+        "exclusions": []
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+    "ResourceType": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/appgwwaf-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/appgwwaf-B",
+    "Location": "australiaeast",
+    "ResourceName": "appgwwaf-B",
+    "Name": "appgwwaf-B",
+    "properties": {
+      "customRules": [],
+      "policySettings": {
+        "requestBodyCheck": true,
+        "maxRequestBodySizeInKb": 128,
+        "fileUploadLimitInMb": 100,
+        "state": "Disabled",
+        "mode": "Prevention"
+      },
+      "managedRules": {
+        "managedRuleSets": [
+          {
+            "ruleSetType": "OWASP",
+            "ruleSetVersion": "3.2",
+            "ruleGroupOverrides": []
+          },
+          {
+            "ruleSetType": "Microsoft_BotManagerRuleSet",
+            "ruleSetVersion": "0.1",
+            "ruleGroupOverrides": []
+          }
+        ],
+        "exclusions": []
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+    "ResourceType": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/appgwwaf-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/appgwwaf-C",
+    "Location": "australiaeast",
+    "ResourceName": "appgwwaf-C",
+    "Name": "appgwwaf-C",
+    "properties": {
+      "customRules": [],
+      "policySettings": {
+        "requestBodyCheck": true,
+        "maxRequestBodySizeInKb": 128,
+        "fileUploadLimitInMb": 100,
+        "state": "Enabled",
+        "mode": "Detection"
+      },
+      "managedRules": {
+        "managedRuleSets": [
+          {
+            "ruleSetType": "OWASP",
+            "ruleSetVersion": "3.0",
+            "ruleGroupOverrides": []
+          },
+          {
+            "ruleSetType": "Microsoft_BotManagerRuleSet",
+            "ruleSetVersion": "0.1",
+            "ruleGroupOverrides": []
+          }
+        ],
+        "exclusions": [
+          {
+            "matchVariable": "RequestHeaderNames",
+            "selectorMatchOperator": "StartsWith",
+            "selector": "test.com"
+          }
+        ]
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+    "ResourceType": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
+]
