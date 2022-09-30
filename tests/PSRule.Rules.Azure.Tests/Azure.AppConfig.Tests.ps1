@@ -42,8 +42,8 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 8;
-            $ruleResult.TargetName | Should -Be 'app-config-B', 'app-config-C', 'app-config-D', 'app-config-E', 'app-config-F', 'app-config-G', 'app-config-H', 'app-config-I';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -Be 'app-config-B', 'app-config-C', 'app-config-D', 'app-config-E', 'app-config-G';
             $ruleResult.Detail.Reason.Path | Should -BeIn 'Sku.name';
 
             # Pass
