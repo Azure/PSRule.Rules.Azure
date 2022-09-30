@@ -36,12 +36,11 @@
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
-          "Description": "CMA_0544 - View and configure system diagnostic data",
+          "Description": "View and configure system diagnostic data",
           "DisplayName": "View and configure system diagnostic data",
           "Metadata": {
             "version": "1.0.0",
-            "category": "Regulatory Compliance",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CMA_0544"
+            "category": "Regulatory Compliance"
           },
           "Mode": "All",
           "Parameters": {
@@ -81,12 +80,11 @@
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
-          "Description": "CMA_0544 - View and configure system diagnostic data",
+          "Description": "View and configure system diagnostic data",
           "DisplayName": "View and configure system diagnostic data",
           "Metadata": {
             "version": "1.0.0",
-            "category": "Regulatory Compliance",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CMA_0544"
+            "category": "Regulatory Compliance"
           },
           "Mode": "All",
           "Parameters": {

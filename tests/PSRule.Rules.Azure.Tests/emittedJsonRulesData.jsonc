@@ -643,7 +643,7 @@
     }
   },
   {
-    // Synopsis: CMA_0544 - View and configure system diagnostic data
+    // Synopsis: View and configure system diagnostic data
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
