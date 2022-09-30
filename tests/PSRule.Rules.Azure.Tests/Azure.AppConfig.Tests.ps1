@@ -49,8 +49,8 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'app-config-A';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'app-config-A', 'app-config-F', 'app-config-H', 'app-config-I';
         }
 
         It 'Azure.AppConfig.DisableLocalAuth' {
