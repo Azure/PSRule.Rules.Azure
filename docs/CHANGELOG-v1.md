@@ -24,6 +24,31 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.20.0-B0148:
+
+- Engineering:
+  - Bump PSRule to v2.4.1.
+    [#1636](https://github.com/Azure/PSRule.Rules.Azure/pull/1636)
+  - Bump Az.Resources to v6.2.0.
+    [#1636](https://github.com/Azure/PSRule.Rules.Azure/pull/1636)
+  - Bump PSScriptAnalyzer to v1.21.0.
+    [#1636](https://github.com/Azure/PSRule.Rules.Azure/pull/1636)
+
+## v1.20.0-B0148 (pre-release)
+
+What's changed since pre-release v1.20.0-B0085:
+
+- New rules:
+  - App Configuration:
+    - Check app configuration store audit diagnostic logs are enabled by @bengeset96.
+      [#1690](https://github.com/Azure/PSRule.Rules.Azure/issues/1690)
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk to v17.3.2.
+    [#1719](https://github.com/Azure/PSRule.Rules.Azure/pull/1719)
+- Bug fixes:
+  - Fixed error expanding with `json()` and single quotes by @BernieWhite.
+    [#1656](https://github.com/Azure/PSRule.Rules.Azure/issues/1656)
+
 ## v1.20.0-B0085 (pre-release)
 
 What's changed since pre-release v1.20.0-B0028:
