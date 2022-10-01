@@ -31,7 +31,7 @@ Rule 'Azure.Automation.WebHookExpiry' -Ref 'AZR-000087' -Type 'Microsoft.Automat
 }
 
 # Synopsis: Ensure automation account audit diagnostic logs are enabled.
-Rule 'Azure.Automation.AuditLogs' -Ref 'AZR-000088' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+Rule 'Azure.Automation.AuditLogs' -Ref 'AZR-000088' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
     $logCategoryGroups = 'audit', 'allLogs'
     $joinedLogCategoryGroups = $logCategoryGroups -join ', '
     $diagnostics = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.Automation/automationAccounts/providers/diagnosticSettings' |
