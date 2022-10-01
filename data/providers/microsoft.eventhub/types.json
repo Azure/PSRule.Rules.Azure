@@ -125,6 +125,7 @@
       "East US",
       "East US 2",
       "Japan East",
+      "North Europe",
       "South Central US",
       "West Europe",
       "West US"
@@ -315,10 +316,7 @@
       "2015-08-01",
       "2014-09-01"
     ],
-    "locations": [
-      "North Central US",
-      "West Central US"
-    ],
+    "locations": [],
     "zoneMappings": null
   },
   {

@@ -10,6 +10,39 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-06-01",
+      "2018-08-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/edgeZones",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-06-01",
+      "2018-08-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/edgeZones/products",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-06-01",
+      "2018-08-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "macc",
     "apiVersions": [
       "2018-08-01-beta"

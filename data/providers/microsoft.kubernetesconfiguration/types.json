@@ -55,6 +55,7 @@
     },
     "resourceType": "extensions",
     "apiVersions": [
+      "2022-07-01",
       "2022-04-02-preview",
       "2022-03-01",
       "2021-09-01",
@@ -182,6 +183,7 @@
     },
     "resourceType": "fluxConfigurations",
     "apiVersions": [
+      "2022-07-01",
       "2022-03-01",
       "2022-01-01-preview",
       "2021-11-01-preview",
@@ -419,6 +421,7 @@
     },
     "resourceType": "sourceControlConfigurations",
     "apiVersions": [
+      "2022-07-01",
       "2022-03-01",
       "2021-03-01",
       "2020-10-01-preview",

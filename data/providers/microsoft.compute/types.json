@@ -1762,6 +1762,7 @@
     },
     "resourceType": "galleries",
     "apiVersions": [
+      "2022-08-03",
       "2022-03-03",
       "2022-01-03",
       "2021-10-01",
@@ -1825,6 +1826,7 @@
     },
     "resourceType": "galleries/applications",
     "apiVersions": [
+      "2022-08-03",
       "2022-03-03",
       "2022-01-03",
       "2021-10-01",
@@ -1944,6 +1946,7 @@
     },
     "resourceType": "galleries/applications/versions",
     "apiVersions": [
+      "2022-08-03",
       "2022-03-03",
       "2022-01-03",
       "2021-10-01",
@@ -2032,6 +2035,7 @@
     },
     "resourceType": "galleries/images",
     "apiVersions": [
+      "2022-08-03",
       "2022-03-03",
       "2022-01-03",
       "2021-10-01",
@@ -2159,6 +2163,7 @@
     },
     "resourceType": "galleries/images/versions",
     "apiVersions": [
+      "2022-08-03",
       "2022-03-03",
       "2022-01-03",
       "2021-10-01",
@@ -2930,6 +2935,7 @@
     "aliases": null,
     "resourceType": "locations/capsoperations",
     "apiVersions": [
+      "2022-08-03",
       "2022-03-03",
       "2022-01-03",
       "2021-10-01",
@@ -3478,6 +3484,7 @@
     "aliases": null,
     "resourceType": "locations/galleries",
     "apiVersions": [
+      "2022-08-03",
       "2022-03-03",
       "2022-01-03",
       "2021-10-01",
@@ -5863,6 +5870,56 @@
     ]
   },
   {
+    "aliases": null,
+    "resourceType": "virtualMachines/applications",
+    "apiVersions": [
+      "2022-08-01",
+      "2022-03-01",
+      "2021-11-01",
+      "2021-07-01"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.Compute/virtualMachines/extensions/autoUpgradeMinorVersion": "properties.autoUpgradeMinorVersion",
       "Microsoft.Compute/virtualMachines/extensions/enableAutomaticUpgrade": "properties.enableAutomaticUpgrade",
@@ -6641,6 +6698,56 @@
         ]
       }
     ]
+  },
+  {
+    "aliases": null,
+    "resourceType": "virtualMachineScaleSets/applications",
+    "apiVersions": [
+      "2022-08-01",
+      "2022-03-01",
+      "2021-11-01",
+      "2021-07-01"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
   },
   {
     "aliases": {

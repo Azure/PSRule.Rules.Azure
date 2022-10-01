@@ -19,6 +19,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-10-27",
       "2022-04-15-preview",
       "2021-10-31-preview",
       "2020-09-15-privatepreview"

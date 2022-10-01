@@ -1,6 +1,17 @@
 [
   {
     "aliases": null,
+    "resourceType": "azureDevOpsConnectors",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "azureDevOpsConnectors/orgs",
     "apiVersions": [
       "2022-09-01-preview"
@@ -34,8 +45,31 @@
   },
   {
     "aliases": null,
-    "resourceType": "gitHubConnectors/gitHubRepos",
+    "resourceType": "azureDevOpsConnectors/repos",
     "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "azureDevOpsConnectors/stats",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "gitHubConnectors",
+    "apiVersions": [
+      "2022-09-01-preview",
       "2021-10-01-preview"
     ],
     "locations": [
@@ -57,6 +91,28 @@
   {
     "aliases": null,
     "resourceType": "gitHubConnectors/owners/repos",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "gitHubConnectors/repos",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "gitHubConnectors/stats",
     "apiVersions": [
       "2022-09-01-preview"
     ],

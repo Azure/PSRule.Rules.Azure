@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "backupInstances",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-03-31-preview"
     ],
     "locations": [
@@ -67,6 +68,7 @@
     },
     "resourceType": "BackupVaults",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -126,6 +128,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -146,6 +149,7 @@
     "aliases": null,
     "resourceType": "locations/checkFeatureSupport",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -205,6 +209,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -264,6 +269,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -323,6 +329,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -382,6 +389,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -402,6 +410,7 @@
     "aliases": null,
     "resourceType": "ResourceGuards",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",

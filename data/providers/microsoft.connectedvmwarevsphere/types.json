@@ -21,7 +21,7 @@
       "Microsoft.ConnectedVMwarevSphere/clusters/uuid": "properties.uuid",
       "Microsoft.ConnectedVMwarevSphere/clusters/vCenterId": "properties.vCenterId"
     },
-    "resourceType": "Clusters",
+    "resourceType": "clusters",
     "apiVersions": [
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -30,6 +30,8 @@
       "Australia East",
       "Canada Central",
       "East US",
+      "Southeast Asia",
+      "UK South",
       "West Europe"
     ],
     "zoneMappings": null
@@ -52,7 +54,7 @@
       "Microsoft.ConnectedVMwarevSphere/datastores/uuid": "properties.uuid",
       "Microsoft.ConnectedVMwarevSphere/datastores/vCenterId": "properties.vCenterId"
     },
-    "resourceType": "Datastores",
+    "resourceType": "datastores",
     "apiVersions": [
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -61,6 +63,8 @@
       "Australia East",
       "Canada Central",
       "East US",
+      "Southeast Asia",
+      "UK South",
       "West Europe"
     ],
     "zoneMappings": null
@@ -83,7 +87,7 @@
       "Microsoft.ConnectedVMwarevSphere/hosts/uuid": "properties.uuid",
       "Microsoft.ConnectedVMwarevSphere/hosts/vCenterId": "properties.vCenterId"
     },
-    "resourceType": "Hosts",
+    "resourceType": "hosts",
     "apiVersions": [
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -92,6 +96,8 @@
       "Australia East",
       "Canada Central",
       "East US",
+      "Southeast Asia",
+      "UK South",
       "West Europe"
     ],
     "zoneMappings": null
@@ -161,7 +167,7 @@
       "Microsoft.ConnectedVMwarevSphere/resourcePools/uuid": "properties.uuid",
       "Microsoft.ConnectedVMwarevSphere/resourcePools/vCenterId": "properties.vCenterId"
     },
-    "resourceType": "ResourcePools",
+    "resourceType": "resourcepools",
     "apiVersions": [
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -170,6 +176,8 @@
       "Australia East",
       "Canada Central",
       "East US",
+      "Southeast Asia",
+      "UK South",
       "West Europe"
     ],
     "zoneMappings": null
@@ -205,6 +213,8 @@
       "Australia East",
       "Canada Central",
       "East US",
+      "Southeast Asia",
+      "UK South",
       "West Europe"
     ],
     "zoneMappings": null
@@ -248,7 +258,7 @@
       "Microsoft.ConnectedVMwarevSphere/vcenters/inventoryItems/VirtualMachineTemplate.osName": "properties.osName",
       "Microsoft.ConnectedVMwarevSphere/vcenters/inventoryItems/VirtualMachineTemplate.osType": "properties.osType"
     },
-    "resourceType": "VCenters/InventoryItems",
+    "resourceType": "vcenters/inventoryitems",
     "apiVersions": [
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -257,6 +267,8 @@
       "Australia East",
       "Canada Central",
       "East US",
+      "Southeast Asia",
+      "UK South",
       "West Europe"
     ],
     "zoneMappings": null
@@ -374,7 +386,7 @@
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/vCenterId": "properties.vCenterId",
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/vmId": "properties.vmId"
     },
-    "resourceType": "VirtualMachines",
+    "resourceType": "virtualmachines",
     "apiVersions": [
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -383,6 +395,8 @@
       "Australia East",
       "Canada Central",
       "East US",
+      "Southeast Asia",
+      "UK South",
       "West Europe"
     ],
     "zoneMappings": null
@@ -406,7 +420,7 @@
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/extensions/type": "properties.type",
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/extensions/typeHandlerVersion": "properties.typeHandlerVersion"
     },
-    "resourceType": "VirtualMachines/Extensions",
+    "resourceType": "virtualmachines/extensions",
     "apiVersions": [
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -415,6 +429,8 @@
       "Australia East",
       "Canada Central",
       "East US",
+      "Southeast Asia",
+      "UK South",
       "West Europe"
     ],
     "zoneMappings": null
@@ -440,7 +456,7 @@
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/guestAgents/statuses[*].type": "properties.statuses[*].type",
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/guestAgents/uuid": "properties.uuid"
     },
-    "resourceType": "VirtualMachines/GuestAgents",
+    "resourceType": "virtualmachines/guestagents",
     "apiVersions": [
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -449,6 +465,8 @@
       "Australia East",
       "Canada Central",
       "East US",
+      "Southeast Asia",
+      "UK South",
       "West Europe"
     ],
     "zoneMappings": null
@@ -463,7 +481,7 @@
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/hybridIdentityMetadata/publicKey": "properties.publicKey",
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/hybridIdentityMetadata/vmId": "properties.vmId"
     },
-    "resourceType": "VirtualMachines/HybridIdentityMetadata",
+    "resourceType": "virtualmachines/hybrididentitymetadata",
     "apiVersions": [
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -472,6 +490,8 @@
       "Australia East",
       "Canada Central",
       "East US",
+      "Southeast Asia",
+      "UK South",
       "West Europe"
     ],
     "zoneMappings": null
@@ -543,7 +563,7 @@
       "Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/uuid": "properties.uuid",
       "Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/vCenterId": "properties.vCenterId"
     },
-    "resourceType": "VirtualMachineTemplates",
+    "resourceType": "virtualmachinetemplates",
     "apiVersions": [
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -552,6 +572,8 @@
       "Australia East",
       "Canada Central",
       "East US",
+      "Southeast Asia",
+      "UK South",
       "West Europe"
     ],
     "zoneMappings": null
@@ -574,7 +596,7 @@
       "Microsoft.ConnectedVMwarevSphere/virtualNetworks/uuid": "properties.uuid",
       "Microsoft.ConnectedVMwarevSphere/virtualNetworks/vCenterId": "properties.vCenterId"
     },
-    "resourceType": "VirtualNetworks",
+    "resourceType": "virtualnetworks",
     "apiVersions": [
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -583,6 +605,8 @@
       "Australia East",
       "Canada Central",
       "East US",
+      "Southeast Asia",
+      "UK South",
       "West Europe"
     ],
     "zoneMappings": null

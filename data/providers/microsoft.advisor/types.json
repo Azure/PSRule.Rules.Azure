@@ -1,15 +1,6 @@
 [
   {
     "aliases": null,
-    "resourceType": "advisorScore",
-    "apiVersions": [
-      "2020-07-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
     "resourceType": "configurations",
     "apiVersions": [
       "2020-01-01",

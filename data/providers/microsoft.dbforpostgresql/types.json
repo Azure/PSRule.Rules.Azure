@@ -23,6 +23,7 @@
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UK South",
@@ -791,6 +792,18 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/getCachedServerName",
+    "apiVersions": [
+      "2022-03-08-privatepreview"
+    ],
+    "locations": [
+      "North Europe",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [],
     "locations": [
@@ -1499,6 +1512,7 @@
       "South Central US",
       "Southeast Asia",
       "Switzerland North",
+      "Switzerland West",
       "UK South",
       "West Central US",
       "West Europe",

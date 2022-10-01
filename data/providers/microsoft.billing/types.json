@@ -775,6 +775,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/invoices/summary",
+    "apiVersions": [
+      "2020-11-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/invoices/transactions",
     "apiVersions": [
       "2020-11-01-privatepreview",

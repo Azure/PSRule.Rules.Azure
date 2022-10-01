@@ -183,6 +183,28 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/availableManagedEnvironmentsWorkloadProfileTypes",
+    "apiVersions": [
+      "2022-06-01-preview"
+    ],
+    "locations": [
+      "North Central US (Stage)"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/billingMeters",
+    "apiVersions": [
+      "2022-06-01-preview"
+    ],
+    "locations": [
+      "North Central US (Stage)"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/connectedEnvironmentOperationResults",
     "apiVersions": [
       "2022-06-01-preview"

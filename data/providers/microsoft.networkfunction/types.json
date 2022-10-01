@@ -85,10 +85,12 @@
     ],
     "locations": [
       "East US",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Southeast Asia",
       "West Central US",
+      "West Europe",
       "West US"
     ],
     "zoneMappings": null
@@ -101,10 +103,12 @@
     ],
     "locations": [
       "East US",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Southeast Asia",
       "West Central US",
+      "West Europe",
       "West US"
     ],
     "zoneMappings": null
@@ -117,10 +121,12 @@
     ],
     "locations": [
       "East US",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Southeast Asia",
       "West Central US",
+      "West Europe",
       "West US"
     ],
     "zoneMappings": null
@@ -133,10 +139,12 @@
     ],
     "locations": [
       "East US",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Southeast Asia",
       "West Central US",
+      "West Europe",
       "West US"
     ],
     "zoneMappings": null

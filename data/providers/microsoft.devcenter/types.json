@@ -298,5 +298,25 @@
       "West US 3"
     ],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "projects/pools/schedules",
+    "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "South Central US",
+      "UK South",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
   }
 ]

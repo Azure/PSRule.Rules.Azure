@@ -185,15 +185,18 @@
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "East US",
       "East US 2",
       "japan East",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "UK South",
       "West Central US",
       "West Europe",
+      "West US",
       "West US 2"
     ],
     "zoneMappings": null
@@ -361,15 +364,18 @@
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "East US",
       "East US 2",
       "Japan East",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "UK South",
       "West Central US",
       "West Europe",
+      "West US",
       "West US 2"
     ],
     "zoneMappings": null
@@ -461,15 +467,18 @@
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "East US",
       "East US 2",
       "Japan East",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "UK South",
       "West Central US",
       "West Europe",
+      "West US",
       "West US 2"
     ],
     "zoneMappings": null

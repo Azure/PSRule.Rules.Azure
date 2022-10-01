@@ -207,5 +207,15 @@
       "West US 2"
     ],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "servicePrincipals",
+    "apiVersions": [
+      "2022-05-04",
+      "2021-04-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
   }
 ]

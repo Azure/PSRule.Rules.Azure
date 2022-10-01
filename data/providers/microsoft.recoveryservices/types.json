@@ -52,6 +52,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",
@@ -460,6 +462,8 @@
     "aliases": null,
     "resourceType": "locations/backupPreValidateProtection",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",
@@ -519,6 +523,8 @@
     "aliases": null,
     "resourceType": "locations/backupStatus",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",
@@ -579,6 +585,8 @@
     "aliases": null,
     "resourceType": "locations/backupValidateFeatures",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",
@@ -732,6 +740,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",
@@ -784,6 +794,8 @@
     "aliases": null,
     "resourceType": "replicationEligibilityResults",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",
@@ -897,6 +909,8 @@
     },
     "resourceType": "vaults",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",

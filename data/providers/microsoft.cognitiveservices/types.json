@@ -119,6 +119,7 @@
     },
     "resourceType": "accounts",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01",
       "2021-04-30",
@@ -205,6 +206,7 @@
     "aliases": null,
     "resourceType": "accounts/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01",
       "2021-04-30",
@@ -260,6 +262,7 @@
     },
     "resourceType": "accounts/privateEndpointConnections",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01",
       "2021-04-30",
@@ -304,6 +307,7 @@
     "aliases": null,
     "resourceType": "accounts/privateLinkResources",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01",
       "2021-04-30",
@@ -348,6 +352,7 @@
     "aliases": null,
     "resourceType": "checkDomainAvailability",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01",
       "2021-04-30",
@@ -393,6 +398,7 @@
     "aliases": null,
     "resourceType": "deletedAccounts",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01",
       "2021-04-30"
@@ -436,6 +442,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01",
       "2021-04-30",
@@ -481,6 +488,7 @@
     "aliases": null,
     "resourceType": "locations/checkSkuAvailability",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01",
       "2021-04-30",
@@ -526,6 +534,7 @@
     "aliases": null,
     "resourceType": "locations/commitmentTiers",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01"
     ],
@@ -568,6 +577,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01",
       "2021-04-30",
@@ -626,6 +636,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01",
       "2021-04-30",
@@ -671,6 +682,7 @@
     "aliases": null,
     "resourceType": "locations/resourceGroups",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01",
       "2021-04-30"
@@ -714,6 +726,7 @@
     "aliases": null,
     "resourceType": "locations/resourceGroups/deletedAccounts",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01",
       "2021-04-30"
@@ -757,6 +770,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-10-01",
       "2022-03-01",
       "2021-10-01",
       "2021-04-30",

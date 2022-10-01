@@ -1,6 +1,17 @@
 [
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.ExtendedLocation/customLocations/authentication": "properties.authentication",
+      "Microsoft.ExtendedLocation/customLocations/authentication.type": "properties.authentication.type",
+      "Microsoft.ExtendedLocation/customLocations/authentication.value": "properties.authentication.value",
+      "Microsoft.ExtendedLocation/customLocations/clusterExtensionIds": "properties.clusterExtensionIds",
+      "Microsoft.ExtendedLocation/customLocations/clusterExtensionIds[*]": "properties.clusterExtensionIds[*]",
+      "Microsoft.ExtendedLocation/customLocations/displayName": "properties.displayName",
+      "Microsoft.ExtendedLocation/customLocations/hostResourceId": "properties.hostResourceId",
+      "Microsoft.ExtendedLocation/customLocations/hostType": "properties.hostType",
+      "Microsoft.ExtendedLocation/customLocations/namespace": "properties.namespace",
+      "Microsoft.ExtendedLocation/customLocations/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "customLocations",
     "apiVersions": [
       "2021-08-31-preview",
@@ -62,7 +73,19 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.ExtendedLocation/customLocations/resourceSyncRules/priority": "properties.priority",
+      "Microsoft.ExtendedLocation/customLocations/resourceSyncRules/provisioningState": "properties.provisioningState",
+      "Microsoft.ExtendedLocation/customLocations/resourceSyncRules/selector": "properties.selector",
+      "Microsoft.ExtendedLocation/customLocations/resourceSyncRules/selector.matchExpressions": "properties.selector.matchExpressions",
+      "Microsoft.ExtendedLocation/customLocations/resourceSyncRules/selector.matchExpressions[*]": "properties.selector.matchExpressions[*]",
+      "Microsoft.ExtendedLocation/customLocations/resourceSyncRules/selector.matchExpressions[*].key": "properties.selector.matchExpressions[*].key",
+      "Microsoft.ExtendedLocation/customLocations/resourceSyncRules/selector.matchExpressions[*].operator": "properties.selector.matchExpressions[*].operator",
+      "Microsoft.ExtendedLocation/customLocations/resourceSyncRules/selector.matchExpressions[*].values": "properties.selector.matchExpressions[*].values",
+      "Microsoft.ExtendedLocation/customLocations/resourceSyncRules/selector.matchExpressions[*].values[*]": "properties.selector.matchExpressions[*].values[*]",
+      "Microsoft.ExtendedLocation/customLocations/resourceSyncRules/selector.matchLabels": "properties.selector.matchLabels",
+      "Microsoft.ExtendedLocation/customLocations/resourceSyncRules/targetResourceGroup": "properties.targetResourceGroup"
+    },
     "resourceType": "customLocations/resourceSyncRules",
     "apiVersions": [
       "2021-08-31-preview"
