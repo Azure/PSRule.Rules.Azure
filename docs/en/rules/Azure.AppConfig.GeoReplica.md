@@ -32,7 +32,7 @@ Consider replication for app configuration store to ensure resiliency to region 
 
 ### Configure with Azure template
 
-To deploy an App Configuration Store that pass this rule:
+To deploy App Configuration Stores that pass this rule:
 
 - Set `sku.name` to `Standard` (required for geo-replication).
 - Deploy a replica sub-resource (child resource).
@@ -101,7 +101,7 @@ For example:
 
 ### Configure with Bicep
 
-To deploy an App Configuration Store that pass this rule:
+To deploy App Configuration Stores that pass this rule:
 
 - Set `sku.name` to `Standard` (required for geo-replication).
 - Deploy a replica sub-resource (child resource).

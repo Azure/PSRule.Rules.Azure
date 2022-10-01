@@ -28,18 +28,12 @@ Rule 'Azure.AppConfig.AuditLogs' -Ref 'AZR-000311' -Type 'Microsoft.AppConfigura
 
 # Synopsis: Consider replication for app configuration store to ensure resiliency to region outages.
 Rule 'Azure.AppConfig.GeoReplica' -Ref 'AZR-000312' -Type 'Microsoft.AppConfiguration/configurationStores' -If { IsAppConfigStandardSKU } -Tag @{ release = 'Preview'; ruleSet = '2022_09' } {
-    $replicas = @(GetSubResources -ResourceType 'Microsoft.AppConfiguration/configurationStores/replicas')
     $appConfigLocation = GetNormalLocation -Location $TargetObject.Location
-
-    if ($replicas) { 
-        foreach ($replica in $replicas) {
-            $replicaLocation = GetNormalLocation -Location $replica.Location
-            if ($appConfigLocation -ne $replicaLocation) { $Assert.Pass() } else { $Assert.Fail($LocalizedData.ReplicaInSecondaryNotFound) }
-        }
-    }
-    else {
-        $Assert.Fail($LocalizedData.ReplicaNotFound)
-    }
+    $replicas = @(GetSubResources -ResourceType 'Microsoft.AppConfiguration/configurationStores/replicas' | 
+        ForEach-Object { GetNormalLocation -Location $_.Location } |
+        Where-Object { $_ -ne $appConfigLocation })
+    
+    $Assert.Greater($replicas, '.', 0).Reason($LocalizedData.ReplicaInSecondaryNotFound)
 }
 
 #endregion Rules

@@ -105,8 +105,8 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-F', 'app-config-H';
 
-            $ruleResult[0].Reason | Should -BeExactly "A replica was not found.";
-            $ruleResult[1].Reason | Should -BeExactly "A replica was not found.";
+            $ruleResult[0].Reason | Should -BeExactly "A replica in a secondary region was not found.";
+            $ruleResult[1].Reason | Should -BeExactly "A replica in a secondary region was not found.";
             $ruleResult[2].Reason | Should -BeExactly "A replica in a secondary region was not found.";
 
             # Pass
