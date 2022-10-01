@@ -41,7 +41,7 @@ Rule 'Azure.Automation.AuditLogs' -Ref 'AZR-000088' -Type 'Microsoft.Automation/
 
     $Assert.Greater($diagnostics, '.', 0).ReasonFrom(
         'properties.logs',
-        $LocalizedData.AutomationAccountDiagnosticSetting,
+        $LocalizedData.AutomationAccountAuditDiagnosticSetting,
         'AuditEvent',
         $joinedLogCategoryGroups
     ).PathPrefix('resources')

@@ -91,14 +91,14 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -Be 'automation-e', 'automation-f', 'automation-g';
-            $ruleResult.Detail.Reason.Path | Should -BeIn 'resources[0].properties.logs';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'resources.properties.logs';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (AuditEvent) or category group (audit, allLogs).";
+            $ruleResult[0].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (AuditEvent) configured or category group (audit, allLogs) configured.";
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (AuditEvent) or category group (audit, allLogs).";
+            $ruleResult[1].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (AuditEvent) configured or category group (audit, allLogs) configured.";
             $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[2].Reason | Should -BeExactly "Path resources[0].properties.logs: The diagnostic setting (metrics) should enable (AuditEvent) or category group (audit, allLogs).";
+            $ruleResult[2].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (AuditEvent) configured or category group (audit, allLogs) configured.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
