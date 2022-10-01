@@ -248,14 +248,14 @@ namespace PSRule.Rules.Azure.Data.Template
     [DebuggerDisplay("Function: {Name}")]
     internal sealed class FunctionDescriptor : IFunctionDescriptor
     {
-        private readonly ExpressionFn Fn;
-        private readonly bool DelayBinding;
+        private readonly ExpressionFn _Fn;
+        private readonly bool _DelayBinding;
 
         public FunctionDescriptor(string name, ExpressionFn fn, bool delayBinding = false)
         {
             Name = name;
-            Fn = fn;
-            DelayBinding = delayBinding;
+            _Fn = fn;
+            _DelayBinding = delayBinding;
         }
 
         public string Name { get; }
@@ -264,9 +264,9 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             var parameters = new object[args.Length];
             for (var i = 0; i < args.Length; i++)
-                parameters[i] = DelayBinding ? args[i] : args[i](context);
+                parameters[i] = _DelayBinding ? args[i] : args[i](context);
 
-            return Fn(context, parameters);
+            return _Fn(context, parameters);
         }
     }
 

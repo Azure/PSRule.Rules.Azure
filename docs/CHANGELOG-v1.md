@@ -38,6 +38,9 @@ What's changed since pre-release v1.20.0-B0148:
     [#1636](https://github.com/Azure/PSRule.Rules.Azure/pull/1636)
   - Bump PSScriptAnalyzer to v1.21.0.
     [#1636](https://github.com/Azure/PSRule.Rules.Azure/pull/1636)
+- Bug fixes:
+  - Handle key collision with duplicate definitions using same parameters by @ArmaanMcleod.
+    [#1653](https://github.com/Azure/PSRule.Rules.Azure/issues/1653)
 
 ## v1.20.0-B0148 (pre-release)
 

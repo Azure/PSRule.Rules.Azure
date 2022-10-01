@@ -24,7 +24,7 @@ namespace PSRule.Rules.Azure
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (!(value is PSObject obj))
+            if (value is not PSObject obj)
                 throw new ArgumentException(message: PSRuleResources.SerializeNullPSObject, paramName: nameof(value));
 
             if (value is FileSystemInfo fileSystemInfo)
