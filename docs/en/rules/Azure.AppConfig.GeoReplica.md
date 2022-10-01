@@ -24,6 +24,9 @@ Replicating your configuration store adds the following benefits:
 - Redistribution of request limits.
 - Regional compartmentalization.
 
+Geo-replication is currently a **preview** feature.
+During the preview geo-replication has additional limitations including support and regional availability.
+
 ## RECOMMENDATION
 
 Consider replication for app configuration store to ensure resiliency to region outages.
