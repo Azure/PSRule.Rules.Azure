@@ -158,7 +158,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("uriComponentToString", UriComponentToString),
         };
 
-        private static readonly CultureInfo AzureCulture = new CultureInfo("en-US");
+        private static readonly CultureInfo AzureCulture = new("en-US");
 
         #region Array and object
 
@@ -387,9 +387,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 var result = new JArray();
                 foreach (var item in jObject.Properties().OrderBy(p => p.Name))
                 {
-                    var i = new JObject();
-                    i.Add("key", item.Name);
-                    i.Add("value", item.Value);
+                    var i = new JObject
+                    {
+                        { "key", item.Name },
+                        { "value", item.Value }
+                    };
                     result.Add(i);
                 }
                 return result;
