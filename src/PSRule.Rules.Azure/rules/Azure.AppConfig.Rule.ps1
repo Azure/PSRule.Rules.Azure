@@ -33,7 +33,7 @@ Rule 'Azure.AppConfig.GeoReplica' -Ref 'AZR-000312' -Type 'Microsoft.AppConfigur
         ForEach-Object { GetNormalLocation -Location $_.Location } |
         Where-Object { $_ -ne $appConfigLocation })
     
-    $Assert.Greater($replicas, '.', 0).Reason($LocalizedData.ReplicaInSecondaryNotFound)
+    $Assert.Greater($replicas, '.', 0).Reason($LocalizedData.ReplicaInSecondaryNotFound).PathPrefix('resources')
 }
 
 #endregion Rules
