@@ -63,9 +63,11 @@
     AKSMinimumVersionReplace = "The configuration option 'Azure_AKSMinimumVersion' has been replaced with 'AZURE_AKS_CLUSTER_MINIMUM_VERSION'. The option 'Azure_AKSMinimumVersion' is deprecated and will no longer work in the next major version. Please update your configuration to the new name. See https://aka.ms/ps-rule-azure/upgrade."
     # DeprecatedSupportsTags = "The 'SupportsTags' PowerShell function has been replaced with the selector 'Azure.Resource.SupportsTags'. The 'SupportsTags' function is deprecated and will no longer work in the next major version. Please update your PowerShell rules to the selector instead. See https://aka.ms/ps-rule-azure/upgrade."
     KeyVaultAutoRotationPolicy = "The key ({0}) should enable a auto-rotation policy."
-    ReplicaNotFound = "A replica in a secondary region was not found."
+    ReplicaNotFound = "A replica was not found."
+    ReplicaInSecondaryNotFound = "A replica in a secondary region was not found."
     VMSSPublicKey = "The virtual machine scale set '{0}' should have password authentication disabled."
     ACRSoftDeletePolicy = "The container registry '{0}' should have soft delete policy enabled."
     ACRSoftDeletePolicyRetention = "The container registry '{0}' should have retention period value between one to 90 days for the soft delete policy."
     AppConfigStoresDiagnosticSetting = "Minimum one diagnostic setting should have ({0}) configured or category group ({1}) configured."
+    
 }
