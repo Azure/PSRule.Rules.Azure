@@ -65,4 +65,4 @@ resource symbolicname 'Microsoft.Cache/redis/firewallRules@2022-05-01' = {
 ## LINKS
 
 - [How to configure Azure Cache for Redis - Firewall](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#default-redis-server-configuration#firewall)
-- [Azure deployment reference](https://learn.microsoft.com/en-au/azure/templates/microsoft.cache/redis)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redis)
