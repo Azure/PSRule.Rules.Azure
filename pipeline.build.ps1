@@ -402,6 +402,7 @@ task BuildBaselineDocs Build, Dependencies, {
 
 # Synopsis: Build help
 task BuildHelp BuildModule, Dependencies, {
+    # Culture for English
     if (!(Test-Path out/modules/PSRule.Rules.Azure/en/)) {
         $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en/ -ItemType Directory -Force;
     }
@@ -413,6 +414,14 @@ task BuildHelp BuildModule, Dependencies, {
     }
     if (!(Test-Path out/modules/PSRule.Rules.Azure/en-GB/)) {
         $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en-GB/ -ItemType Directory -Force;
+    }
+
+    # Culture for Spanish
+    if (!(Test-Path out/modules/PSRule.Rules.Azure/es/)) {
+        $Null = New-Item -Path out/modules/PSRule.Rules.Azure/es/ -ItemType Directory -Force;
+    }
+    if (!(Test-Path out/modules/PSRule.Rules.Azure/es-us/)) {
+        $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en-US/ -ItemType Directory -Force;
     }
 
     $Null = Copy-Item -Path docs/en/rules/*.md -Destination out/modules/PSRule.Rules.Azure/en/;
