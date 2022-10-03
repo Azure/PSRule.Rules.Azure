@@ -29,6 +29,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check app configuration store has one or more replicas by @bengeset96.
       [#1688](https://github.com/Azure/PSRule.Rules.Azure/issues/1688)
 
+- Updated rules:
+  - Automation Account:
+    - Fixed bug requiring all diagnostic logs settings to have auditing enabled by @bengeset96.
+      [#1726](https://github.com/Azure/PSRule.Rules.Azure/issues/1726)
+
 What's changed since pre-release v1.20.0-B0148:
 
 - Engineering:
