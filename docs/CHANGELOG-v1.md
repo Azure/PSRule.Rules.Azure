@@ -24,13 +24,17 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.20.0-B0148:
+
+- New features:
+  - Added September 2022 baselines `Azure.GA_2022_09` and `Azure.Preview_2022_09` by @BernieWhite.
+    [#1738](https://github.com/Azure/PSRule.Rules.Azure/issues/1738)
+    - Includes rules released before or during September 2022.
+    - Marked `Azure.GA_2022_06` and `Azure.Preview_2022_06` baselines as obsolete.
 - New rules:
   - App Configuration:
     - Check app configuration store has one or more replicas by @bengeset96.
       [#1688](https://github.com/Azure/PSRule.Rules.Azure/issues/1688)
-
-What's changed since pre-release v1.20.0-B0148:
-
 - Engineering:
   - Bump PSRule to v2.4.1.
     [#1636](https://github.com/Azure/PSRule.Rules.Azure/pull/1636)
@@ -39,8 +43,10 @@ What's changed since pre-release v1.20.0-B0148:
   - Bump PSScriptAnalyzer to v1.21.0.
     [#1636](https://github.com/Azure/PSRule.Rules.Azure/pull/1636)
 - Bug fixes:
-  - Handle key collision with duplicate definitions using same parameters by @ArmaanMcleod.
+  - Fixed handling key collision with duplicate definitions using same parameters by @ArmaanMcleod.
     [#1653](https://github.com/Azure/PSRule.Rules.Azure/issues/1653)
+  - Fixed bug requiring all diagnostic logs settings to have auditing enabled by @bengeset96.
+    [#1726](https://github.com/Azure/PSRule.Rules.Azure/issues/1726)
 
 ## v1.20.0-B0148 (pre-release)
 
