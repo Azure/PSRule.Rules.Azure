@@ -19,7 +19,7 @@ namespace PSRule.Rules.Azure.Pipeline
         /// <inheritdoc/>
         public override void Process(PSObject sourceObject)
         {
-            if (sourceObject == null || !(sourceObject.BaseObject is TemplateSource source))
+            if (sourceObject == null || sourceObject.BaseObject is not TemplateSource source)
                 return;
 
             if (source.ParametersFile == null || source.ParametersFile.Length == 0)

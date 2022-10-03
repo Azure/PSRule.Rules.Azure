@@ -58,38 +58,79 @@ namespace PSRule.Rules.Azure.Data.Policy
         }
     }
 
+    /// <summary>
+    /// Defines an Azure Policy Definition represented as a PSRule rule.
+    /// </summary>
     internal sealed class PolicyDefinition
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Effect { get; set; }
-        public JObject Value { get; set; }
-        public JObject Condition { get; set; }
-        private readonly IDictionary<string, IParameterValue> _Parameters;
-
-        public PolicyDefinition(string id, string name, string description, JObject value)
+        public PolicyDefinition(string definitionId, string name, string description, JObject value)
         {
-            Id = id;
+            DefinitionId = definitionId;
             Name = name;
             Description = description;
             Value = value;
-            _Parameters = new Dictionary<string, IParameterValue>(StringComparer.OrdinalIgnoreCase);
+            Parameters = new Dictionary<string, IParameterValue>(StringComparer.OrdinalIgnoreCase);
+            Types = new List<string>();
         }
+
+        /// <summary>
+        /// The policy definition parameters
+        /// </summary>
+        public readonly IDictionary<string, IParameterValue> Parameters;
+
+        /// <summary>
+        /// The policy definition id.
+        /// </summary>
+        public string DefinitionId { get; set; }
+
+        /// <summary>
+        /// The name of the rule.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// The synopsis of the rule.
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The raw original policy definition.
+        /// </summary>
+        public JObject Value { get; set; }
+
+        /// <summary>
+        /// The spec condition for the rule.
+        /// </summary>
+        public JObject Condition { get; set; }
+
+        /// <summary>
+        /// The spec where pre-condition for the rule.
+        /// </summary>
+        public JObject Where { get; set; }
+
+        /// <summary>
+        /// The spec type pre-condition for the rule.
+        /// </summary>
+        public List<string> Types { get; }
+
+        /// <summary>
+        /// An optional metadata category of the policy.
+        /// </summary>
+        public string Category { get; internal set; }
+
+        /// <summary>
+        /// An optional metadata version of the policy.
+        /// </summary>
+        public string Version { get; internal set; }
 
         internal void AddParameter(string name, ParameterType type, object value)
         {
-            _Parameters.Add(name, new SimpleParameterValue(name, type, value));
+            Parameters.Add(name, new SimpleParameterValue(name, type, value));
         }
 
         internal void AddParameter(IParameterValue value)
         {
-            _Parameters.Add(value.Name, value);
-        }
-
-        internal bool TryParameter(string parameterName, out IParameterValue value)
-        {
-            return _Parameters.TryGetValue(parameterName, out value);
+            Parameters.Add(value.Name, value);
         }
     }
 

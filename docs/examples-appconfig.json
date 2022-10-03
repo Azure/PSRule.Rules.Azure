@@ -4,12 +4,12 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.4.1124.51302",
-      "templateHash": "17843007109288324703"
+      "version": "0.10.61.36676",
+      "templateHash": "16473115016755753924"
     }
   },
   "parameters": {
-    "storeName": {
+    "name": {
       "type": "string",
       "metadata": {
         "description": "The name of the App Configuration Store."
@@ -21,17 +21,49 @@
       "metadata": {
         "description": "The location resources will be deployed."
       }
+    },
+    "workspaceId": {
+      "type": "string",
+      "metadata": {
+        "description": "The resource id of the Log Analytics workspace to send diagnostic logs to."
+      }
     }
   },
   "resources": [
     {
       "type": "Microsoft.AppConfiguration/configurationStores",
-      "apiVersion": "2020-06-01",
-      "name": "[parameters('storeName')]",
+      "apiVersion": "2022-05-01",
+      "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "sku": {
         "name": "standard"
+      },
+      "properties": {
+        "disableLocalAuth": true,
+        "enablePurgeProtection": true
       }
+    },
+    {
+      "type": "Microsoft.Insights/diagnosticSettings",
+      "apiVersion": "2021-05-01-preview",
+      "scope": "[format('Microsoft.AppConfiguration/configurationStores/{0}', parameters('name'))]",
+      "name": "[format('{0}-diagnostic', parameters('name'))]",
+      "properties": {
+        "logs": [
+          {
+            "categoryGroup": "audit",
+            "enabled": true,
+            "retentionPolicy": {
+              "days": 90,
+              "enabled": true
+            }
+          }
+        ],
+        "workspaceId": "[parameters('workspaceId')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.AppConfiguration/configurationStores', parameters('name'))]"
+      ]
     }
   ]
 }

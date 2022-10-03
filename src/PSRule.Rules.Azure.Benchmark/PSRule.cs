@@ -118,7 +118,7 @@ namespace PSRule.Rules.Azure.Benchmark
             _ResourceProviderHelper.GetResourceType("Microsoft.ContainerService", "managedClusters");
         }
 
-        private void RunPipelineTargets(IPipeline pipeline, PSObject templateSource)
+        private static void RunPipelineTargets(IPipeline pipeline, PSObject templateSource)
         {
             pipeline.Begin();
             for (var i = 0; i < 100; i++)

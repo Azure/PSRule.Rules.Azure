@@ -10,7 +10,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontD
 
 ## SYNOPSIS
 
-Front Door should reject TLS versions older then 1.2.
+Front Door should reject TLS versions older than 1.2.
 
 ## DESCRIPTION
 

@@ -163,6 +163,9 @@
   <data name="CloudEnvironmentInvalid" xml:space="preserve">
     <value>Failed to read cloud environment content.</value>
   </data>
+  <data name="EmptyConditionExpandResult" xml:space="preserve">
+    <value>The expand resulted in an empty condition being returned for '{0}' from '{1}'.</value>
+  </data>
   <data name="ExpressionEvaluateError" xml:space="preserve">
     <value>An error occurred evaluating expression '{0}' line {1}. {2}</value>
   </data>
