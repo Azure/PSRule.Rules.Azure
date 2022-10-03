@@ -2928,6 +2928,26 @@
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4_5">
@@ -7310,6 +7330,146 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../es/rules/Azure.ACR.AdminUser/" class="md-nav__link">
+        Azure.ACR.AdminUser
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../es/rules/Azure.ACR.ContainerScan/" class="md-nav__link">
+        Azure.ACR.ContainerScan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../es/rules/Azure.ACR.ContentTrust/" class="md-nav__link">
+        Azure.ACR.ContentTrust
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../es/rules/Azure.ACR.GeoReplica/" class="md-nav__link">
+        Azure.ACR.GeoReplica
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../es/rules/Azure.ACR.ImageHealth/" class="md-nav__link">
+        Azure.ACR.ImageHealth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../es/rules/Azure.ACR.MinSku/" class="md-nav__link">
+        Azure.ACR.MinSku
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../es/rules/Azure.ACR.Name/" class="md-nav__link">
+        Azure.ACR.Name
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../es/rules/Azure.ACR.Quarantine/" class="md-nav__link">
+        Azure.ACR.Quarantine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../es/rules/Azure.ACR.Retention/" class="md-nav__link">
+        Azure.ACR.Retention
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../es/rules/Azure.ACR.Usage/" class="md-nav__link">
+        Azure.ACR.Usage
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -7330,6 +7490,10 @@
       
       
       
+        
+          
+        
+          
         
           
         
@@ -7537,6 +7701,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../en/baselines/Azure.GA_2022_09/" class="md-nav__link">
+        Azure.GA_2022_09
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../en/baselines/Azure.Preview/" class="md-nav__link">
         Azure.Preview
       </a>
@@ -7595,6 +7773,20 @@
     <li class="md-nav__item">
       <a href="../en/baselines/Azure.Preview_2022_06/" class="md-nav__link">
         Azure.Preview_2022_06
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/baselines/Azure.Preview_2022_09/" class="md-nav__link">
+        Azure.Preview_2022_09
       </a>
     </li>
   
@@ -8754,7 +8946,17 @@
   See <a href="../upgrade-notes/">upgrade notes</a> for more information.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<p>What's changed since pre-release v1.20.0-B0148:</p>
 <ul>
+<li>New features:<ul>
+<li>Added September 2022 baselines <code>Azure.GA_2022_09</code> and <code>Azure.Preview_2022_09</code> by @BernieWhite.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1738">#1738</a><ul>
+<li>Includes rules released before or during September 2022.</li>
+<li>Marked <code>Azure.GA_2022_06</code> and <code>Azure.Preview_2022_06</code> baselines as obsolete.</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>New rules:<ul>
 <li>App Configuration:<ul>
 <li>Check app configuration store has one or more replicas by @bengeset96.
@@ -8763,9 +8965,6 @@
 </li>
 </ul>
 </li>
-</ul>
-<p>What's changed since pre-release v1.20.0-B0148:</p>
-<ul>
 <li>Engineering:<ul>
 <li>Bump PSRule to v2.4.1.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/1636">#1636</a></li>
@@ -8776,8 +8975,10 @@
 </ul>
 </li>
 <li>Bug fixes:<ul>
-<li>Handle key collision with duplicate definitions using same parameters by @ArmaanMcleod.
+<li>Fixed handling key collision with duplicate definitions using same parameters by @ArmaanMcleod.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1653">#1653</a></li>
+<li>Fixed bug requiring all diagnostic logs settings to have auditing enabled by @bengeset96.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1726">#1726</a></li>
 </ul>
 </li>
 </ul>
@@ -11933,7 +12134,7 @@
   <small>
     
       Last update:
-      2022-10-02
+      2022-10-03
     
   </small>
 </div>
