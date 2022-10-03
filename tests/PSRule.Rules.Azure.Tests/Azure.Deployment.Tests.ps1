@@ -86,5 +86,36 @@ Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
              $ruleResult.Length | Should -Be 4;
              $ruleResult.TargetName | Should -BeIn 'nestedDeployment-B', 'nestedDeployment-C', 'nestedDeployment-F', 'nestedDeployment-G';
         }
+
+        Context 'With Template' {
+            BeforeAll {
+                $templatePath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Template.json';
+                $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Deployments.Template.json;
+                Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
+                $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+            }
+        
+            It 'Azure.Deployment.OuterSecret' {
+                $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Deployment.OuterSecret' };
+        
+                 # Fail
+                 $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+                 $ruleResult | Should -Not -BeNullOrEmpty;
+                 $ruleResult.Length | Should -Be 2;
+                 $ruleResult.TargetName | Should -BeIn 'nestedDeployment-D', 'nestedDeployment-E';
+        
+                 # Pass
+                 $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+                 $ruleResult | Should -Not -BeNullOrEmpty;
+                 $ruleResult.Length | Should -Be 3;
+                 $ruleResult.TargetName | Should -BeIn 'nestedDeployment-A', 'nestedDeployment-B', 'nestedDeployment-C';
+            }
+        
+        }
+
+        
     }
 }
+
+
+
