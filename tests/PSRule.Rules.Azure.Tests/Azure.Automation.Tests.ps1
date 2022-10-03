@@ -92,9 +92,9 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -Be 'automation-e', 'automation-f', 'automation-g';
 
-            $ruleResult[0].Reason | Should -BeExactly "Minimum one diagnostic setting should have (AuditEvent) configured or category group (audit, allLogs) configured";
-            $ruleResult[1].Reason | Should -BeExactly "Minimum one diagnostic setting should have (AuditEvent) configured or category group (audit, allLogs) configured";
-            $ruleResult[2].Reason | Should -BeExactly "Minimum one diagnostic setting should have (AuditEvent) configured or category group (audit, allLogs) configured";
+            $ruleResult[0].Reason | Should -BeExactly "Minimum one diagnostic setting should have (AuditEvent) configured or category group (audit, allLogs) configured.";
+            $ruleResult[1].Reason | Should -BeExactly "Minimum one diagnostic setting should have (AuditEvent) configured or category group (audit, allLogs) configured.";
+            $ruleResult[2].Reason | Should -BeExactly "Minimum one diagnostic setting should have (AuditEvent) configured or category group (audit, allLogs) configured.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
