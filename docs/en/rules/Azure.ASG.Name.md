@@ -1,5 +1,5 @@
 ---
-reviewed: 2021/11/27
+reviewed: 2021-11-27
 severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
@@ -7,7 +7,7 @@ resource: Application Security Group
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ASG.Name/
 ---
 
-# Use valid NSG names
+# Use valid ASG names
 
 ## SYNOPSIS
 
@@ -29,6 +29,42 @@ The requirements for ASG names are:
 Consider using names that meet Application Security Group naming requirements.
 Additionally consider naming resources with a standard naming convention.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy Application Security Groups that pass this rule:
+
+- Set `name` to a value that meets the requirements.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Network/applicationSecurityGroups",
+  "apiVersion": "2022-01-01",
+  "name": "[parameters('asgName')]",
+  "location": "[parameters('location')]",
+  "properties": {}
+}
+```
+
+### Configure with Bicep
+
+To deploy Application Security Groups that pass this rule:
+
+- Set `name` to a value that meets the requirements.
+
+For example:
+
+```bicep
+resource asg 'Microsoft.Network/applicationSecurityGroups@2022-01-01' = {
+  name: asgName
+  location:location
+  properties: {}
+}
+```
+
 ## NOTES
 
 This rule does not check if ASG names are unique.
@@ -37,5 +73,5 @@ This rule does not check if ASG names are unique.
 
 - [Repeatable infrastructure](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationSecurityGroups)
-- [Recommended abbreviations for Azure resource types](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+- [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationSecurityGroups)

@@ -64,6 +64,7 @@ metadata:
     release: 'GA'
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'NS-6'
 spec:
   with:
@@ -85,6 +86,7 @@ metadata:
     release: 'GA'
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'NS-8'
 spec:
   type:
@@ -129,6 +131,7 @@ metadata:
     release: 'GA'
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'NS-6'
 spec:
   with:

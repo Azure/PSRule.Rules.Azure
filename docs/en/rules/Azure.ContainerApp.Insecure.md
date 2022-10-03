@@ -37,7 +37,7 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Web/containerApps",
+    "type": "Microsoft.App/containerApps",
     "apiVersion": "2021-03-01",
     "name": "[parameters('appName')]",
     "location": "[parameters('location')]",
@@ -68,7 +68,7 @@ To deploy resource that pass this rule:
 For example:
 
 ```bicep
-resource containerApp 'Microsoft.Web/containerApps@2021-03-01' = {
+resource containerApp 'Microsoft.App/containerApps@2021-03-01' = {
   name: appName
   location: location
   properties: {

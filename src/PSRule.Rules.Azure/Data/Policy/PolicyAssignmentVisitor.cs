@@ -4,49 +4,63 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Text;
 using System.Threading;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
+using PSRule.Rules.Azure.Resources;
 
 namespace PSRule.Rules.Azure.Data.Policy
 {
+    /// <summary>
+    /// This visitor processes each assignment to convert the assignment in to one or mny rules.
+    /// </summary>
     internal abstract class PolicyAssignmentVisitor
     {
+        private const string PROPERTY_POLICYASSIGNMENTID = "policyAssignmentId";
         private const string PROPERTY_PARAMETERS = "parameters";
-        private const string PROPERTY_DEFINITIONS = "policyDefinitions";
+        private const string PROPERTY_POLICYDEFINITIONS = "policyDefinitions";
         private const string PROPERTY_PROPERTIES = "properties";
         private const string PROPERTY_POLICYRULE = "policyRule";
-        private const string PROPERTY_CONDITION = "if";
-        private const string PROPERTY_EFFECT_BLOCK = "then";
+        private const string PROPERTY_MODE = "mode";
+        private const string PROPERTY_IF = "if";
+        private const string PROPERTY_THEN = "then";
         private const string PROPERTY_EFFECT = "effect";
-        private const string DISABLED_EFFECT = "disabled";
         private const string PROPERTY_DETAILS = "details";
-        private const string PROPERTY_EXISTENCE_CONDITION = "existenceCondition";
+        private const string PROPERTY_EXISTENCECONDITION = "existenceCondition";
         private const string PROPERTY_FIELD = "field";
         private const string PROPERTY_POLICYDEFINITIONID = "policyDefinitionId";
         private const string PROPERTY_TYPE = "type";
+        private const string PROPERTY_NAME = "name";
         private const string PROPERTY_DEFAULTVALUE = "defaultValue";
         private const string PROPERTY_ALL_OF = "allOf";
         private const string PROPERTY_ANY_OF = "anyOf";
-        private const string FIELD_EQUALS = "equals";
+        private const string PROPERTY_EQUALS = "equals";
         private const string FIELD_NOTEQUALS = "notEquals";
         private const string FIELD_GREATER = "greater";
-        private const string FIELD_GREATEROREQUALS = "greaterOrEquals";
+        private const string PROPERTY_GREATEROREQUALS = "greaterOrEquals";
         private const string FIELD_LESS = "less";
         private const string FIELD_LESSOREQUALS = "lessOrEquals";
         private const string FIELD_IN = "in";
         private const string FIELD_NOTIN = "notIn";
-        private const string FIELD_EXISTS = "exists";
+        private const string PROPERTY_EXISTS = "exists";
         private const string PROPERTY_DISPLAYNAME = "displayName";
         private const string PROPERTY_DESCRIPTION = "description";
+        private const string PROPERTY_METADATA = "metadata";
+        private const string PROPERTY_VERSION = "version";
+        private const string PROPERTY_CATEGORY = "category";
         private const string PROPERTY_DEPLOYMENT = "deployment";
         private const string PROPERTY_VALUE = "value";
         private const string PROPERTY_COUNT = "count";
         private const string PROPERTY_NOTCOUNT = "notCount";
         private const string PROPERTY_WHERE = "where";
+        private const string PROPERTY_RESOURCES = "resources";
+        private const string EFFECT_DISABLED = "Disabled";
+        private const string EFFECT_AUDITIFNOTEXISTS = "AuditIfNotExists";
+        private const string EFFECT_DEPLOYIFNOTEXISTS = "DeployIfNotExists";
         private const string COLLECTION_ALIAS = "[*]";
         private const string AND_CLAUSE = "&&";
         private const string OR_CLAUSE = "||";
@@ -56,10 +70,19 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string LESSOREQUAL_OPERATOR = "<=";
         private const string GREATER_OPERATOR = ">";
         private const string GREATEROREQUAL_OPERATOR = ">=";
+        private const string DOT = ".";
         private const char SLASH = '/';
         private const char GROUP_OPEN = '(';
         private const char GROUP_CLOSE = ')';
+        private const string TYPE_SECURITYASSESSMENTS = "Microsoft.Security/assessments";
+        private const string TYPE_GUESTCONFIGURATIONASSIGNMENTS = "Microsoft.GuestConfiguration/guestConfigurationAssignments";
+        private const string TYPE_BACKUPPROTECTEDITEMS = "Microsoft.RecoveryServices/backupprotecteditems";
+        private const string MODE_INDEXED = "Indexed";
+        private const string MODE_ALL = "All";
 
+        /// <summary>
+        /// A context state used during expanding policy assignments and definitions.
+        /// </summary>
         public sealed class PolicyAssignmentContext : ITemplateContext
         {
             private readonly ExpressionFactory _ExpressionFactory;
@@ -67,19 +90,10 @@ namespace PSRule.Rules.Azure.Data.Policy
             private readonly PolicyAliasProviderHelper _PolicyAliasProviderHelper;
             internal string AssignmentFile { get; private set; }
             private readonly IList<PolicyDefinition> _Definitions;
-            private readonly IDictionary<string, PolicyDefinition> _DefinitionIds;
+            internal readonly IDictionary<string, IDictionary<string, IParameterValue>> DefinitionParameterMap;
             internal readonly PipelineContext Pipeline;
-            public TemplateVisitor.TemplateContext.CopyIndexStore CopyIndex { get; }
-            public DeploymentValue Deployment { get; }
-            public string TemplateFile { get; }
-            public string ParameterFile { get; }
-            public ResourceGroupOption ResourceGroup { get; }
-            public SubscriptionOption Subscription { get; }
-            public TenantOption Tenant { get; }
-            public ManagementGroupOption ManagementGroup { get; }
             private readonly TemplateValidator _Validator;
             private readonly IDictionary<string, JToken> _ParameterAssignments;
-            internal string DefinitionId { get; private set; }
 
             internal PolicyAssignmentContext(PipelineContext context)
             {
@@ -87,7 +101,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 _ExpressionBuilder = new ExpressionBuilder(_ExpressionFactory);
                 _PolicyAliasProviderHelper = new PolicyAliasProviderHelper();
                 _Definitions = new List<PolicyDefinition>();
-                _DefinitionIds = new Dictionary<string, PolicyDefinition>(StringComparer.OrdinalIgnoreCase);
+                DefinitionParameterMap = new Dictionary<string, IDictionary<string, IParameterValue>>(StringComparer.OrdinalIgnoreCase);
                 _Validator = new TemplateValidator();
                 _ParameterAssignments = new Dictionary<string, JToken>();
                 Pipeline = context;
@@ -109,9 +123,33 @@ namespace PSRule.Rules.Azure.Data.Policy
                     ManagementGroup = context?.Option?.Configuration?.ManagementGroup;
             }
 
+            public TemplateVisitor.TemplateContext.CopyIndexStore CopyIndex { get; }
+            public DeploymentValue Deployment { get; }
+            public string TemplateFile { get; }
+            public string ParameterFile { get; }
+            public ResourceGroupOption ResourceGroup { get; }
+            public SubscriptionOption Subscription { get; }
+            public TenantOption Tenant { get; }
+            public ManagementGroupOption ManagementGroup { get; }
+
+            /// <summary>
+            /// A unique identifer for the current assignment that is being processed.
+            /// </summary>
+            internal string AssignmentId { get; private set; }
+
+            /// <summary>
+            /// A unique identifer for the current policy definition that is being processed.
+            /// </summary>
+            internal string PolicyDefinitionId { get; private set; }
+
             public ExpressionFnOuter BuildExpression(string expression)
             {
                 return _ExpressionBuilder.Build(expression);
+            }
+
+            private JToken GetExpression(JProperty child)
+            {
+                return TemplateVisitor.ExpandPropertyToken(this, child.Value);
             }
 
             public bool TryGetResource(string resourceId, out IResourceValue resource)
@@ -130,45 +168,34 @@ namespace PSRule.Rules.Azure.Data.Policy
                 _ParameterAssignments.Add(name, value);
             }
 
-            public void AddDefinition(JObject definition, string definitionId)
+            public void AddDefinition(PolicyDefinition policyDefinition)
             {
+                _Definitions.Add(policyDefinition);
+            }
 
-                if (definition.TryObjectProperty(PROPERTY_PROPERTIES, out var properties))
+            private static string ExpressionToObjectPathComparisonOperator(string expression) => expression switch
+            {
+                PROPERTY_EQUALS => EQUALITY_OPERATOR,
+                FIELD_NOTEQUALS => INEQUALITY_OPERATOR,
+                FIELD_GREATER => GREATER_OPERATOR,
+                PROPERTY_GREATEROREQUALS => GREATEROREQUAL_OPERATOR,
+                FIELD_LESS => LESS_OPERATOR,
+                FIELD_LESSOREQUALS => LESSOREQUAL_OPERATOR,
+                _ => null
+            };
+
+            private void SetPolicyRuleType(string type)
+            {
+                if (type.CountCharacterOccurrences(SLASH) > 0)
                 {
-                    properties.TryStringProperty(PROPERTY_DISPLAYNAME, out var displayName);
-                    properties.TryStringProperty(PROPERTY_DESCRIPTION, out var description);
-
-                    var policyDefinition = new PolicyDefinition(definitionId, displayName, description, definition);
-
-                    // Set parameters
-                    if (properties.TryObjectProperty(PROPERTY_PARAMETERS, out var parameters))
-                    {
-                        foreach (var parameter in parameters.Properties())
-                            SetDefinitionParameterAssignment(policyDefinition, parameter);
-
-                        _DefinitionIds.Add(definitionId, policyDefinition);
-                    }
-
-                    // Modify policy rule
-                    if (properties.TryObjectProperty(PROPERTY_POLICYRULE, out var policyRule))
-                    {
-                        RemovePolicyRuleDeployment(policyRule);
-                        ExpandPolicyRule(policyRule);
-                        MergePolicyRuleConditions(policyRule);
-                        if (policyRule.TryObjectProperty(PROPERTY_CONDITION, out var condition))
-                            policyDefinition.Condition = condition;
-
-                        if (TryPolicyRuleEffect(policyRule, out var effect))
-                            policyDefinition.Effect = effect;
-                    }
-
-                    // Skip adding definitions with disabled effect
-                    if (!policyDefinition.Effect.Equals(DISABLED_EFFECT, StringComparison.OrdinalIgnoreCase))
-                        _Definitions.Add(policyDefinition);
+                    var contents = type.Split(new char[] { SLASH }, count: 2);
+                    var providerNamespace = contents[0];
+                    var resourceType = contents[1];
+                    _PolicyAliasProviderHelper.SetPolicyRuleType(providerNamespace, resourceType);
                 }
             }
 
-            private void SetDefinitionParameterAssignment(PolicyDefinition definition, JProperty parameter)
+            internal void SetDefinitionParameterAssignment(PolicyDefinition definition, JProperty parameter)
             {
                 var type = GetParameterType(parameter.Value);
                 var parameterName = parameter.Name;
@@ -191,79 +218,6 @@ namespace PSRule.Rules.Azure.Data.Policy
                 }
             }
 
-            private static void MergePolicyRuleConditions(JObject policyRule)
-            {
-                if (policyRule.TryObjectProperty(PROPERTY_CONDITION, out var condition)
-                    && policyRule.TryObjectProperty(PROPERTY_EFFECT_BLOCK, out var effectBlock)
-                    && effectBlock.TryObjectProperty(PROPERTY_DETAILS, out var details)
-                    && details.TryStringProperty(PROPERTY_TYPE, out var detailsType)
-                    && details.TryObjectProperty(PROPERTY_EXISTENCE_CONDITION, out var existenceCondition))
-                {
-                    var existenceConditionExpression = new JArray();
-                    var typeExpression = new JObject {
-                        { PROPERTY_FIELD, PROPERTY_TYPE },
-                        { FIELD_EQUALS, detailsType }
-                    };
-                    existenceConditionExpression.Add(typeExpression);
-                    existenceConditionExpression.Add(existenceCondition);
-
-                    var existenceConditionAllOfExpression = new JObject
-                    {
-                        { PROPERTY_ALL_OF, existenceConditionExpression }
-                    };
-
-                    var mergedConditions = new JArray
-                    {
-                        condition,
-                        existenceConditionAllOfExpression
-                    };
-
-                    policyRule[PROPERTY_CONDITION] = new JObject {
-                        { PROPERTY_ALL_OF, mergedConditions }
-                    };
-                }
-            }
-
-            private static bool TryPolicyRuleEffect(JObject policyRule, out string effect)
-            {
-                effect = string.Empty;
-                return policyRule.TryObjectProperty(PROPERTY_EFFECT_BLOCK, out var effectBlock)
-                    && effectBlock.TryStringProperty(PROPERTY_EFFECT, out effect);
-            }
-
-            private static void RemovePolicyRuleDeployment(JObject policyRule)
-            {
-                if (policyRule.TryObjectProperty(PROPERTY_EFFECT_BLOCK, out var effectBlock)
-                    && effectBlock.TryObjectProperty(PROPERTY_DETAILS, out var details)
-                    && details.TryObjectProperty(PROPERTY_DEPLOYMENT, out _))
-                {
-                    details.Remove(PROPERTY_DEPLOYMENT);
-                    policyRule[PROPERTY_EFFECT_BLOCK][PROPERTY_DETAILS] = details;
-                }
-            }
-
-            private static string ExpressionToObjectPathComparisonOperator(string expression) => expression switch
-            {
-                FIELD_EQUALS => EQUALITY_OPERATOR,
-                FIELD_NOTEQUALS => INEQUALITY_OPERATOR,
-                FIELD_GREATER => GREATER_OPERATOR,
-                FIELD_GREATEROREQUALS => GREATEROREQUAL_OPERATOR,
-                FIELD_LESS => LESS_OPERATOR,
-                FIELD_LESSOREQUALS => LESSOREQUAL_OPERATOR,
-                _ => null
-            };
-
-            private void SetPolicyRuleType(string type)
-            {
-                if (type.CountCharacterOccurrences(SLASH) > 0)
-                {
-                    var contents = type.Split(new char[] { SLASH }, count: 2);
-                    var providerNamespace = contents[0];
-                    var resourceType = contents[1];
-                    _PolicyAliasProviderHelper.SetPolicyRuleType(providerNamespace, resourceType);
-                }
-            }
-
             private string GetFieldObjectPathArrayFilter(JObject obj)
             {
                 if (obj.TryStringProperty(PROPERTY_FIELD, out var fieldProperty))
@@ -272,24 +226,18 @@ namespace PSRule.Rules.Azure.Data.Policy
 
                     // If we come across a type, set the .type sub property in the object path
                     // Also set the current type for any further alias expansion
-                    if (fieldProperty.Equals(PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase)
-                        && obj.TryStringProperty(FIELD_EQUALS, out var fieldType))
+                    if (fieldProperty.Equals(PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase) &&
+                        obj.TryStringProperty(PROPERTY_EQUALS, out var fieldType))
                     {
                         subProperty = $".{PROPERTY_TYPE}";
                         SetPolicyRuleType(fieldType);
                     }
-                    else
+                    else if (TryPolicyAliasPath(fieldProperty, out var fieldAliasPath))
                     {
-                        var fieldAliasPath = ResolvePolicyAliasPath(fieldProperty);
-                        if (fieldAliasPath != null)
-                        {
-                            var splitAliasPath = fieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
-                            subProperty = splitAliasPath[1];
-                        }
+                        subProperty = fieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS)[1];
                     }
 
-                    var comparisonExpression = obj
-                        .Children<JProperty>()
+                    var comparisonExpression = obj.Children<JProperty>()
                         .FirstOrDefault(prop => !prop.Name.Equals(PROPERTY_FIELD, StringComparison.OrdinalIgnoreCase));
 
                     if (comparisonExpression != null)
@@ -306,7 +254,8 @@ namespace PSRule.Rules.Azure.Data.Policy
                             return FormatObjectPathArrayFilter(
                                 subProperty,
                                 objectPathComparisonOperator,
-                                comparisonValue);
+                                comparisonValue
+                            );
                         }
                         else
                         {
@@ -331,7 +280,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                             }
 
                             // Convert exists expression
-                            else if (comparisonExpression.Name.Equals(FIELD_EXISTS, StringComparison.OrdinalIgnoreCase))
+                            else if (comparisonExpression.Name.Equals(PROPERTY_EXISTS, StringComparison.OrdinalIgnoreCase))
                             {
                                 var existsValue = comparisonValue.Value<bool>();
 
@@ -423,7 +372,10 @@ namespace PSRule.Rules.Azure.Data.Policy
                 }
             }
 
-            private void ExpandPolicyRule(JToken policyRule)
+            /// <summary>
+            /// Converts the policy condition to a PSRule rule condition.
+            /// </summary>
+            internal void ExpandPolicyRule(JToken policyRule, IList<string> types)
             {
                 if (policyRule.Type == JTokenType.Object)
                 {
@@ -434,41 +386,32 @@ namespace PSRule.Rules.Azure.Data.Policy
                     foreach (var child in policyRule.Children<JProperty>().OrderBy(prop => prop, new PropertyNameComparer()))
                     {
                         // Expand field aliases
-                        if (child.Name.Equals(PROPERTY_FIELD, StringComparison.OrdinalIgnoreCase))
+                        if (child.TryGetProperty(PROPERTY_FIELD, out var field))
                         {
-                            if (child.Value.Type == JTokenType.String)
+                            if (field.Equals(PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase))
                             {
-                                var field = child.Value.Value<string>();
-                                if (field.Equals(PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase))
-                                    hasFieldType = true;
-
-                                var aliasPath = ResolvePolicyAliasPath(field);
-                                if (aliasPath != null)
-                                    policyRule[child.Name] = aliasPath;
+                                hasFieldType = true;
+                                child.Parent[PROPERTY_TYPE] = DOT;
+                                child.Remove();
                             }
+
+                            if (TryPolicyAliasPath(field, out var aliasPath))
+                                policyRule[child.Name] = aliasPath;
                         }
 
                         // Set policy rule type
-                        else if (hasFieldType
-                            && child.Name.Equals(FIELD_EQUALS, StringComparison.OrdinalIgnoreCase)
-                            && child.Value.Type == JTokenType.String)
+                        else if (hasFieldType && child.TryGetProperty(PROPERTY_EQUALS, out field))
                         {
-                            var field = child.Value.Value<string>();
+                            types.Add(field);
                             SetPolicyRuleType(field);
                         }
 
                         // Replace equals with count if field count expression is currently being visited
-                        else if (hasFieldCount && child.Name.Equals(FIELD_EQUALS, StringComparison.OrdinalIgnoreCase))
-                        {
-                            policyRule[FIELD_EQUALS].Parent.Remove();
-                            policyRule[PROPERTY_COUNT] = child.Value;
-                        }
-
                         // Replace notEquals with notCount if field count expression is currently being visited
-                        else if (hasFieldCount && child.Name.Equals(FIELD_NOTEQUALS, StringComparison.OrdinalIgnoreCase))
+                        else if (hasFieldCount && (child.TryRenameProperty(PROPERTY_EQUALS, PROPERTY_COUNT) ||
+                            child.TryRenameProperty(FIELD_NOTEQUALS, PROPERTY_NOTCOUNT)))
                         {
-                            policyRule[FIELD_NOTEQUALS].Parent.Remove();
-                            policyRule[PROPERTY_NOTCOUNT] = child.Value;
+                            // Do nothing.
                         }
 
                         // Expand field count expressions
@@ -479,74 +422,69 @@ namespace PSRule.Rules.Azure.Data.Policy
                             if (child.Value.Type == JTokenType.Object)
                             {
                                 var countObject = child.Value.ToObject<JObject>();
-
-                                if (countObject.TryStringProperty(PROPERTY_FIELD, out var outerFieldAlias))
+                                if (countObject.TryStringProperty(PROPERTY_FIELD, out var outerFieldAlias) &&
+                                    TryPolicyAliasPath(outerFieldAlias, out var outerFieldAliasPath))
                                 {
-                                    var outerFieldAliasPath = ResolvePolicyAliasPath(outerFieldAlias);
-
-                                    if (outerFieldAliasPath != null)
+                                    if (countObject.TryObjectProperty(PROPERTY_WHERE, out var whereExpression))
                                     {
-                                        if (countObject.TryObjectProperty(PROPERTY_WHERE, out var whereExpression))
+                                        // field in where expression
+                                        var fieldFilter = GetFieldObjectPathArrayFilter(whereExpression);
+                                        if (fieldFilter != null)
                                         {
-                                            // field in where expression
-                                            var fieldFilter = GetFieldObjectPathArrayFilter(whereExpression);
-                                            if (fieldFilter != null)
-                                            {
-                                                var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
-                                                policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], fieldFilter);
-                                            }
-
-                                            // nested allOf in where expression
-                                            else if (whereExpression.TryArrayProperty(PROPERTY_ALL_OF, out var allofExpression))
-                                            {
-                                                var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
-                                                var filter = new StringBuilder();
-                                                ExpressionToObjectPathArrayFilter(allofExpression, AND_CLAUSE, filter);
-                                                policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], filter.ToString());
-                                            }
-
-                                            // nested anyOf in where expression
-                                            else if (whereExpression.TryArrayProperty(PROPERTY_ANY_OF, out var anyOfExpression))
-                                            {
-                                                var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
-                                                var filter = new StringBuilder();
-                                                ExpressionToObjectPathArrayFilter(anyOfExpression, OR_CLAUSE, filter);
-                                                policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], filter.ToString());
-                                            }
+                                            var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
+                                            policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], fieldFilter);
                                         }
 
-                                        // Single field in count expression
-                                        else
-                                            policyRule[PROPERTY_FIELD] = outerFieldAliasPath;
+                                        // nested allOf in where expression
+                                        else if (whereExpression.TryArrayProperty(PROPERTY_ALL_OF, out var allofExpression))
+                                        {
+                                            var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
+                                            var filter = new StringBuilder();
+                                            ExpressionToObjectPathArrayFilter(allofExpression, AND_CLAUSE, filter);
+                                            policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], filter.ToString());
+                                        }
 
-                                        // Remove the count property when we're done
-                                        policyRule[PROPERTY_COUNT].Parent.Remove();
+                                        // nested anyOf in where expression
+                                        else if (whereExpression.TryArrayProperty(PROPERTY_ANY_OF, out var anyOfExpression))
+                                        {
+                                            var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
+                                            var filter = new StringBuilder();
+                                            ExpressionToObjectPathArrayFilter(anyOfExpression, OR_CLAUSE, filter);
+                                            policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], filter.ToString());
+                                        }
                                     }
+
+                                    // Single field in count expression
+                                    else
+                                        policyRule[PROPERTY_FIELD] = outerFieldAliasPath;
+
+                                    // Remove the count property when we're done
+                                    policyRule[PROPERTY_COUNT].Parent.Remove();
                                 }
                             }
                         }
 
                         // Convert string booleans for exists expression
-                        else if (child.Name.Equals(FIELD_EXISTS, StringComparison.OrdinalIgnoreCase) && child.Value.Type == JTokenType.String)
+                        else if (child.Name.Equals(PROPERTY_EXISTS, StringComparison.OrdinalIgnoreCase) && child.Value.Type == JTokenType.String)
                             policyRule[child.Name] = child.Value.Value<bool>();
 
                         // Expand string expressions
                         else if (child.Value.Type == JTokenType.String)
                         {
-                            var expression = TemplateVisitor.ExpandPropertyToken(this, child.Value);
+                            var expression = GetExpression(child);
                             policyRule[child.Name] = expression;
                         }
 
                         // Recurse any objects or arrays
                         else if (child.Value.Type == JTokenType.Object || child.Value.Type == JTokenType.Array)
-                            ExpandPolicyRule(child.Value);
+                            ExpandPolicyRule(child.Value, types);
                     }
                 }
 
                 // Recurse arrays
                 else if (policyRule.Type == JTokenType.Array)
-                    foreach (var child in policyRule.Children())
-                        ExpandPolicyRule(child);
+                    foreach (var child in policyRule.Children().ToArray())
+                        ExpandPolicyRule(child, types);
             }
 
             private static ParameterType GetParameterType(JToken parameter)
@@ -593,12 +531,11 @@ namespace PSRule.Rules.Azure.Data.Policy
                 return _Definitions.ToArray();
             }
 
-            public string ResolvePolicyAliasPath(string aliasName)
+            internal bool TryPolicyAliasPath(string aliasName, out string aliasPath)
             {
-                return !string.IsNullOrEmpty(aliasName)
-                    && _PolicyAliasProviderHelper.ResolvePolicyAliasPath(aliasName, out var aliasPath)
-                    ? aliasPath
-                    : null;
+                aliasPath = null;
+                return !string.IsNullOrEmpty(aliasName) &&
+                    _PolicyAliasProviderHelper.ResolvePolicyAliasPath(aliasName, out aliasPath);
             }
 
             internal void SetSource(string assignmentFile)
@@ -644,8 +581,8 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 value = null;
 
-                if (_DefinitionIds.TryGetValue(DefinitionId, out var definition)
-                    && definition.TryParameter(parameterName, out var parameterValue))
+                if (DefinitionParameterMap.TryGetValue(PolicyDefinitionId, out var definitionParameters)
+                    && definitionParameters.TryGetValue(parameterName, out var parameterValue))
                 {
                     value = parameterValue.GetValue(this);
                     return true;
@@ -654,9 +591,20 @@ namespace PSRule.Rules.Azure.Data.Policy
                 return false;
             }
 
-            internal void SetDefinitionId(string definitionId)
+            /// <summary>
+            /// Set the Id for the assignment that is being processed.
+            /// </summary>
+            internal void SetAssignmentId(string assignmentId)
             {
-                DefinitionId = definitionId;
+                AssignmentId = assignmentId;
+            }
+
+            /// <summary>
+            /// Set the Id for the policy definition that is being processed.
+            /// </summary>
+            internal void SetPolicyDefinitionId(string definitionId)
+            {
+                PolicyDefinitionId = definitionId;
             }
         }
 
@@ -665,7 +613,32 @@ namespace PSRule.Rules.Azure.Data.Policy
             Assignment(context, assignment);
         }
 
-        protected virtual void VisitAssignmentParameters(PolicyAssignmentContext context, JObject parameters)
+        /// <summary>
+        /// Process each policy assignment and linked definitions.
+        /// </summary>
+        protected virtual void Assignment(PolicyAssignmentContext context, JObject assignment)
+        {
+            // Get the Id of the assignment for logging.
+            if (assignment.TryGetProperty(PROPERTY_POLICYASSIGNMENTID, out var assignmentId))
+                context.SetAssignmentId(assignmentId);
+
+            // Get assignment Properties
+            if (assignment.TryObjectProperty(PROPERTY_PROPERTIES, out var properties))
+            {
+                // Get assignment parameters
+                if (properties.TryObjectProperty(PROPERTY_PARAMETERS, out var parameters))
+                    AssignmentParameters(context, parameters);
+            }
+
+            // Get assignment policy definitions Definitions
+            if (assignment.TryArrayProperty(PROPERTY_POLICYDEFINITIONS, out var definitions))
+                Definitions(context, definitions.Values<JObject>());
+        }
+
+        /// <summary>
+        /// Add parameters for the assignment to the context.
+        /// </summary>
+        protected virtual void AssignmentParameters(PolicyAssignmentContext context, JObject parameters)
         {
             if (parameters == null || parameters.Count == 0)
                 return;
@@ -674,36 +647,295 @@ namespace PSRule.Rules.Azure.Data.Policy
                 context.AddParameterAssignment(parameter.Name, parameter.Value);
         }
 
-        protected virtual void VisitDefinitions(PolicyAssignmentContext context, IEnumerable<JObject> definitions)
+        /// <summary>
+        /// Process each policy definition of the assignment.
+        /// </summary>
+        protected virtual void Definitions(PolicyAssignmentContext context, IEnumerable<JObject> definitions)
         {
             if (definitions == null || !definitions.Any())
                 return;
 
             foreach (var definition in definitions)
             {
-                if (definition.TryStringProperty(PROPERTY_POLICYDEFINITIONID, out var definitionId))
+                try
                 {
-                    context.SetDefinitionId(definitionId);
-                    context.AddDefinition(definition, definitionId);
+                    if (definition.TryStringProperty(PROPERTY_POLICYDEFINITIONID, out var definitionId))
+                    {
+                        context.SetPolicyDefinitionId(definitionId);
+                        if (TryPolicyDefinition(context, definition, definitionId, out var policyDefinition))
+                            context.AddDefinition(policyDefinition);
+                    }
+                }
+                catch (Exception inner)
+                {
+                    context.Pipeline.Writer?.WriteError(inner, inner.GetBaseException().GetType().FullName, errorCategory: ErrorCategory.NotSpecified, targetObject: definition);
                 }
             }
         }
 
-        protected virtual void Assignment(PolicyAssignmentContext context, JObject assignment)
+        /// <summary>
+        /// Checks if two parameters are equal
+        /// </summary>
+        private static bool ParametersEqual(PolicyAssignmentContext context, IParameterValue paramA, IParameterValue paramB)
         {
-            // Process assignment sections
+            var typeA = paramA.Type;
+            var typeB = paramB.Type;
+            var valueA = paramA.GetValue(context);
+            var valueB = paramB.GetValue(context);
 
-            // Assignment Properties
-            if (assignment.TryObjectProperty(PROPERTY_PROPERTIES, out var properties))
+            if (typeA == ParameterType.String && typeB == ParameterType.String)
+                return valueA.ToString().Equals(valueB.ToString(), StringComparison.OrdinalIgnoreCase);
+
+            if (typeA == ParameterType.Integer && typeB == ParameterType.Integer)
+                return Convert.ToInt64(valueA, Thread.CurrentThread.CurrentCulture) == Convert.ToInt64(valueB, Thread.CurrentThread.CurrentCulture);
+
+            if (typeA == ParameterType.Boolean && typeB == ParameterType.Boolean)
+                return Convert.ToBoolean(valueA, Thread.CurrentThread.CurrentCulture) == Convert.ToBoolean(valueB, Thread.CurrentThread.CurrentCulture);
+
+            if (typeA == ParameterType.Array && typeB == ParameterType.Array)
+                return JToken.DeepEquals(JArray.FromObject(valueA), JArray.FromObject(valueB));
+
+            if (typeA == ParameterType.Object && typeB == ParameterType.Object)
+                return JToken.DeepEquals(JObject.FromObject(valueA), JObject.FromObject(valueB));
+
+            // TODO: Handle more types
+
+            return true;
+        }
+
+        /// <summary>
+        /// Convert each definition into <see cref="PolicyDefinition"/>.
+        /// </summary>
+        protected virtual bool TryPolicyDefinition(PolicyAssignmentContext context, JObject definition, string policyDefinitionId, out PolicyDefinition policyDefinition)
+        {
+            policyDefinition = null;
+
+            // A definition must have properties, policyRule, and a non-disabled effect.
+            if (!definition.TryObjectProperty(PROPERTY_PROPERTIES, out var properties) ||
+                !properties.TryObjectProperty(PROPERTY_POLICYRULE, out var policyRule) ||
+                !policyRule.TryObjectProperty(PROPERTY_IF, out _) ||
+                !policyRule.TryObjectProperty(PROPERTY_THEN, out var then))
+                return false;
+
+            if (properties.TryStringProperty(PROPERTY_MODE, out var mode) && IsRuntimeMode(mode))
+                return false;
+
+            properties.TryStringProperty(PROPERTY_DISPLAYNAME, out var displayName);
+            properties.TryStringProperty(PROPERTY_DESCRIPTION, out var description);
+            var result = new PolicyDefinition(policyDefinitionId, displayName, description, definition);
+
+            // Set annotations
+            if (properties.TryObjectProperty(PROPERTY_METADATA, out var metadata))
             {
-                // Assignment Parameters
-                if (properties.TryObjectProperty(PROPERTY_PARAMETERS, out var parameters))
-                    VisitAssignmentParameters(context, parameters);
+                if (metadata.TryStringProperty(PROPERTY_CATEGORY, out var category))
+                    result.Category = category;
+
+                if (metadata.TryStringProperty(PROPERTY_VERSION, out var version))
+                    result.Version = version;
             }
 
-            // Assignment Definitions
-            if (assignment.TryArrayProperty(PROPERTY_DEFINITIONS, out var definitions))
-                VisitDefinitions(context, definitions.Values<JObject>());
+            // Set parameters
+            if (properties.TryObjectProperty(PROPERTY_PARAMETERS, out var parameters))
+            {
+                foreach (var parameter in parameters.Properties())
+                    context.SetDefinitionParameterAssignment(result, parameter);
+
+                // Check if definition with same parameters has already been added
+                if (context.DefinitionParameterMap.TryGetValue(policyDefinitionId, out var previousDefinitionParameters))
+                {
+                    var foundDuplicateDefinition = true;
+                    foreach (var currentParameter in result.Parameters)
+                    {
+                        if (previousDefinitionParameters.TryGetValue(currentParameter.Key, out var previousParameterValue))
+                        {
+                            if (!ParametersEqual(context, previousParameterValue, currentParameter.Value))
+                            {
+                                foundDuplicateDefinition = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Skip adding definition if duplicate parameters found
+                    if (foundDuplicateDefinition)
+                        return false;
+                }
+
+                context.DefinitionParameterMap[policyDefinitionId] = result.Parameters;
+            }
+
+            // Modify policy rule
+            TrimPolicyRule(policyRule);
+            context.ExpandPolicyRule(policyRule, result.Types);
+            if (!TryPolicyRuleEffect(then, out var effect) ||
+                ShouldFilterRule(then, effect))
+                return false;
+
+            if (policyRule.TryObjectProperty(PROPERTY_IF, out var condition))
+                result.Condition = condition;
+
+            EffectConditions(result, policyRule);
+            policyDefinition = result;
+
+            // Check for an resulting empty condition.
+            if (policyDefinition.Condition == null || policyDefinition.Condition.Count == 0)
+                throw ThrowEmptyConditionExpandResult(context, policyDefinitionId);
+
+            return true;
+        }
+
+        /// <summary>
+        /// Handle conditions or pre-conditions associated with the effect of the policy definition.
+        /// </summary>
+        private static void EffectConditions(PolicyDefinition policyDefinition, JObject policyRule)
+        {
+            if (!policyRule.TryObjectProperty(PROPERTY_THEN, out var then) ||
+                !then.TryObjectProperty(PROPERTY_DETAILS, out var details))
+                return;
+
+            if (IsIfNotExistsEffect(then))
+            {
+                policyDefinition.Where = policyDefinition.Condition;
+                policyDefinition.Condition = AndExistanceExpression(details, DefaultEffectConditions(details));
+            }
+            else
+            {
+                policyDefinition.Condition = AndCondition(policyDefinition.Condition, DefaultEffectConditions(details));
+            }
+        }
+
+        /// <summary>
+        /// Determines if the effect is AuditIfNotExists or DeployIfNotExists.
+        /// </summary>
+        private static bool IsIfNotExistsEffect(JObject then)
+        {
+            return TryPolicyRuleEffect(then, out var effect) &&
+                (StringComparer.OrdinalIgnoreCase.Equals(effect, EFFECT_AUDITIFNOTEXISTS) ||
+                StringComparer.OrdinalIgnoreCase.Equals(effect, EFFECT_DEPLOYIFNOTEXISTS));
+        }
+
+        /// <summary>
+        /// Update the condition if then policy effect is Audit, Deny, Modify, or Append.
+        /// </summary>
+        private static JObject DefaultEffectConditions(JObject details)
+        {
+            return AndNameCondition(details, TypeExpression(details));
+        }
+
+        private static JObject TypeExpression(JObject details)
+        {
+            return details == null || !details.TryStringProperty(PROPERTY_TYPE, out var type) ? null : new JObject {
+                { PROPERTY_TYPE, DOT },
+                { PROPERTY_EQUALS, type }
+            };
+        }
+
+        private static JObject AndExistanceExpression(JObject details, JObject subselector)
+        {
+            if (details == null || !details.TryObjectProperty(PROPERTY_EXISTENCECONDITION, out var existenceCondition))
+            {
+                existenceCondition = new JObject
+                {
+                    { PROPERTY_VALUE, true },
+                    { PROPERTY_EQUALS, true }
+                };
+            }
+
+            var allOf = new JArray
+            {
+                existenceCondition
+            };
+            var existanceExpression = new JObject
+            {
+                { PROPERTY_FIELD, PROPERTY_RESOURCES },
+                { PROPERTY_ALL_OF, allOf }
+            };
+            if (subselector != null && subselector.Count > 0)
+                existanceExpression[PROPERTY_WHERE] = subselector;
+
+            return existanceExpression;
+        }
+
+        private static JObject AndNameCondition(JObject details, JObject condition)
+        {
+            if (details == null || !details.TryStringProperty(PROPERTY_NAME, out var name))
+                return condition;
+
+            var nameCondition = new JObject {
+                { PROPERTY_NAME, DOT },
+                { PROPERTY_EQUALS, name }
+            };
+            return AndCondition(condition, nameCondition);
+        }
+
+        private static JObject AndCondition(JObject left, JObject right)
+        {
+            if (left != null && left.Count > 0 && right != null && right.Count > 0)
+            {
+                var allOf = new JArray
+                {
+                    left,
+                    right
+                };
+                return new JObject
+                {
+                    { PROPERTY_ALL_OF, allOf }
+                };
+            }
+            return left == null || left.Count == 0 ? right : left;
+        }
+
+        private static bool TryPolicyRuleEffect(JObject then, out string effect)
+        {
+            return then.TryStringProperty(PROPERTY_EFFECT, out effect);
+        }
+
+        /// <summary>
+        /// Removes unneeded properties from the policy rule object.
+        /// </summary>
+        private static void TrimPolicyRule(JObject policyRule)
+        {
+            if (policyRule.TryObjectProperty(PROPERTY_THEN, out var effectBlock) &&
+                effectBlock.TryObjectProperty(PROPERTY_DETAILS, out var details) &&
+                details.TryObjectProperty(PROPERTY_DEPLOYMENT, out _))
+            {
+                details.Remove(PROPERTY_DEPLOYMENT);
+                policyRule[PROPERTY_THEN][PROPERTY_DETAILS] = details;
+            }
+        }
+
+        /// <summary>
+        /// Determines if the policy definition should be skipped and not generate a rule.
+        /// </summary>
+        private static bool ShouldFilterRule(JObject then, string effect)
+        {
+            if (effect.Equals(EFFECT_DISABLED, StringComparison.OrdinalIgnoreCase))
+                return true;
+
+            // Check if AuditIfNotExists type is a runtime type.
+            return then.TryObjectProperty(PROPERTY_DETAILS, out var details) &&
+                details.TryStringProperty(PROPERTY_TYPE, out var type) &&
+                effect.Equals(EFFECT_AUDITIFNOTEXISTS, StringComparison.OrdinalIgnoreCase) &&
+                IsRuntimeType(type);
+        }
+
+        private static bool IsRuntimeType(string type)
+        {
+            return type.Equals(TYPE_SECURITYASSESSMENTS, StringComparison.OrdinalIgnoreCase) ||
+                type.Equals(TYPE_GUESTCONFIGURATIONASSIGNMENTS, StringComparison.OrdinalIgnoreCase) ||
+                type.Equals(TYPE_BACKUPPROTECTEDITEMS, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static bool IsRuntimeMode(string mode)
+        {
+            return !(string.IsNullOrEmpty(mode) ||
+                mode.Equals(MODE_INDEXED, StringComparison.OrdinalIgnoreCase) ||
+                mode.Equals(MODE_ALL, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private static PolicyDefinitionEmptyConditionException ThrowEmptyConditionExpandResult(PolicyAssignmentContext context, string policyDefinitionId)
+        {
+            return new PolicyDefinitionEmptyConditionException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.EmptyConditionExpandResult, policyDefinitionId, context.AssignmentId), context.AssignmentFile, context.AssignmentId, policyDefinitionId);
         }
     }
 

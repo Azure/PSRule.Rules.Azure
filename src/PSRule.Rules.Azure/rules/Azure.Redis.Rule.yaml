@@ -25,7 +25,7 @@ spec:
     equals: false
 
 ---
-# Synopsis: Redis Cache should reject TLS versions older then 1.2.
+# Synopsis: Redis Cache should reject TLS versions older than 1.2.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:

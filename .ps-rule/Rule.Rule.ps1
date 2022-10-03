@@ -37,11 +37,19 @@ Rule 'Rule.RuleSet' -Type 'PSRule.Rules.Rule' {
 Rule 'Rule.Pillar' -Type 'PSRule.Rules.Rule' {
     $Assert.HasFieldValue($TargetObject, 'Info.Annotations.pillar')
     $Assert.In($TargetObject, 'Info.Annotations.pillar', @(
+        # English
         'Cost Optimization'
         'Operational Excellence'
         'Performance Efficiency'
         'Reliability'
         'Security'
+        
+        # Spanish
+        'Confiabilidad'
+        'Seguridad'
+        'Optimización de costos'
+        'Excelencia operativa'
+        'Eficiencia del rendimiento'
     ))
 }
 

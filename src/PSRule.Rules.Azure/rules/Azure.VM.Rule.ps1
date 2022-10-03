@@ -68,7 +68,7 @@ Rule 'Azure.VM.AcceleratedNetworking' -Ref 'AZR-000244' -If { SupportsAccelerate
 }
 
 # Synopsis: Linux VMs should use public key pair
-Rule 'Azure.VM.PublicKey' -Ref 'AZR-000245' -If { IsLinuxOS } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VM.PublicKey' -Ref 'AZR-000245' -If { VMHasLinuxOS } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.osProfile.linuxConfiguration.disablePasswordAuthentication', $True)
 }
 

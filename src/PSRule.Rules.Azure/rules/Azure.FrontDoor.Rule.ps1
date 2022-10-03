@@ -7,7 +7,7 @@
 
 #region Front Door
 
-# Synopsis: Front Door should reject TLS versions older then 1.2.
+# Synopsis: Front Door should reject TLS versions older than 1.2.
 Rule 'Azure.FrontDoor.MinTLS' -Ref 'AZR-000106' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.ASB.v3/control' = 'DP-3' } {
     $endpoints = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
