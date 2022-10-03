@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "adminUsername": {
-            "type": "securestring",
+            "type": "secureString",
             "defaultValue": "admin"
         },
         "adminObject": {
@@ -14,7 +14,6 @@
             }
         }
     },
-    "variables": {},
     "resources": [
         {
             "name": "nestedDeployment-A",
@@ -30,14 +29,13 @@
                     "contentVersion": "1.0.0.0",
                     "parameters": {
                         "adminUsername": {
-                            "type": "securestring"
+                            "type": "secureString"
                         }
                     },
-                    "variables": {},
                     "resources": [
                         {
-                            "apiVersion": "2019-12-01",
                             "type": "Microsoft.Compute/virtualMachines",
+                            "apiVersion": "2019-12-01",
                             "name": "vm-example",
                             "location": "australiaeast",
                             "properties": {

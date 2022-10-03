@@ -38,7 +38,7 @@ Rule 'Azure.Deployment.AdminUsername' -Ref 'AZR-000284' -Type 'Microsoft.Resourc
 }
 
 # Synopsis: Ensure Outer scope deployments aren't using SecureString or SecureObject Parameters
-Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000301' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000313' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
     
     if($TargetObject.properties.expressionEvaluationOptions.scope -eq 'Outer'){
         $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($TargetObject);
