@@ -91,7 +91,6 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -Be 'automation-e', 'automation-f', 'automation-g';
-            $ruleResult.Detail.Reason.Path | Should -BeIn 'resources.properties.logs';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (AuditEvent) configured or category group (audit, allLogs) configured.";

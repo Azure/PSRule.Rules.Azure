@@ -39,8 +39,7 @@ Rule 'Azure.Automation.AuditLogs' -Ref 'AZR-000088' -Type 'Microsoft.Automation/
             Where-Object { ($_.category -eq 'AuditEvent' -or $_.categoryGroup -in $logCategoryGroups) -and $_.enabled }
         })
 
-    $Assert.Greater($diagnostics, '.', 0).ReasonFrom(
-        'properties.logs',
+    $Assert.Greater($diagnostics, '.', 0).Reason(
         $LocalizedData.AutomationAccountAuditDiagnosticSetting,
         'AuditEvent',
         $joinedLogCategoryGroups
