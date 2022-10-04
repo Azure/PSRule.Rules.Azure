@@ -109,6 +109,16 @@ namespace PSRule.Rules.Azure.Data.Policy
         public JObject Where { get; set; }
 
         /// <summary>
+        /// The unique hash of the condition and pre-condition for the rule.
+        /// </summary>
+        public string HashKey { get; set; }
+
+        /// <summary>
+        /// The prefix for the policy rule.
+        /// </summary>
+        public string Prefix { get; set; }
+
+        /// <summary>
         /// The spec type pre-condition for the rule.
         /// </summary>
         public List<string> Types { get; }

@@ -25,6 +25,7 @@ The following configurations options are available for use:
 - [AZURE_POLICY_WAIVER_MAX_EXPIRY](#azure_policy_waiver_max_expiry)
 - [AZURE_RESOURCE_GROUP](#azure_resource_group)
 - [AZURE_SUBSCRIPTION](#azure_subscription)
+- [AZURE_POLICY_RULE_PREFIX](#azure_policy_rule_prefix)
 
   [1]: https://aka.ms/ps-rule/options
 
@@ -283,6 +284,34 @@ Example:
 # YAML: Override the display name of the subscription object
   AZURE_SUBSCRIPTION:
     displayName: 'My test subscription'
+```
+
+### AZURE_POLICY_RULE_PREFIX
+
+This configuration option sets the prefix for names of exported rules.
+Configure this option to change the prefix, which defaults to `Azure`.
+
+This configuration option will be ignored when `-Prefix` is used with `Export-AzPolicyAssignmentRuleData`.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_POLICY_RULE_PREFIX: string
+```
+
+Default:
+
+```yaml
+configuration:
+  AZURE_POLICY_RULE_PREFIX: 'Azure'
+```
+
+Example:
+
+```yaml
+# YAML: Override the prefix of exported policy rules
+  AZURE_POLICY_RULE_PREFIX: 'AzureCustomPrefix'
 ```
 
 ## NOTE

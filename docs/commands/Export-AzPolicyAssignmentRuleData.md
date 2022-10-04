@@ -16,7 +16,7 @@ Export JSON based rules from policy assignment data.
 ### Default (Default)
 
 ```text
-Export-AzPolicyAssignmentRuleData [[-Name] <string>] [-AssignmentFile] <string> [[-ResourceGroup] <ResourceGroupReference>] [[-Subscription] <SubscriptionReference>] [[-OutputPath] <string>] [-PassThru] [<CommonParameters>]
+Export-AzPolicyAssignmentRuleData [[-Name] <string>] [-AssignmentFile] <string> [[-ResourceGroup] <ResourceGroupReference>] [[-Subscription] <SubscriptionReference>] [[-OutputPath] <string>] [[-RulePrefix] <string>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +47,9 @@ The `resourceGroup()` function will return the following unless overridden:
   - provisioningState: 'Succeeded'
 
 To override, set the `AZURE_SUBSCRIPTION` and `AZURE_RESOURCE_GROUP` in configuration.
+
+The rule prefix `Azure` is also applied to the policy names unless overridden with `-RulePrefix` or `AZURE_POLICY_RULE_PREFIX`
+in configuration.
 
 Currently the following limitations apply:
 
@@ -160,6 +163,26 @@ Aliases:
 Required: False
 Position: Named
 Default value: $PWD
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RulePrefix
+
+By default, policy rule names use the `Azure` prefix e.g. `Azure.Policy.e749c2d003da`.
+
+When `-RulePrefix` is specified, the default prefix is overridden with this prefix.
+
+For example, with `-RulePrefix 'CustomPolicyPrefix'`, this would generate the policy rule name `CustomPolicyPrefix.Policy.e749c2d003da`.
+
+```yaml
+Type: String
+Parameter Sets: Default
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

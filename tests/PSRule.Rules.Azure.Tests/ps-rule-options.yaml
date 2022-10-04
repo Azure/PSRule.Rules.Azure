@@ -99,3 +99,4 @@ configuration:
       - "1"
       - "2"
       - "3"
+  AZURE_POLICY_RULE_PREFIX: 'AzureCustomPrefix'

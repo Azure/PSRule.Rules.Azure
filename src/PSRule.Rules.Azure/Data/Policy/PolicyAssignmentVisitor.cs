@@ -5,8 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
@@ -121,6 +123,10 @@ namespace PSRule.Rules.Azure.Data.Policy
                 ManagementGroup = ManagementGroupOption.Default;
                 if (context?.Option?.Configuration?.ManagementGroup != null)
                     ManagementGroup = context?.Option?.Configuration?.ManagementGroup;
+
+                PolicyRulePrefix = ConfigurationOption.Default.PolicyRulePrefix;
+                if (context?.Option?.Configuration?.PolicyRulePrefix != null)
+                    PolicyRulePrefix = context?.Option?.Configuration?.PolicyRulePrefix;
             }
 
             public TemplateVisitor.TemplateContext.CopyIndexStore CopyIndex { get; }
@@ -131,6 +137,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             public SubscriptionOption Subscription { get; }
             public TenantOption Tenant { get; }
             public ManagementGroupOption ManagementGroup { get; }
+            public string PolicyRulePrefix { get; }
 
             /// <summary>
             /// A unique identifer for the current assignment that is being processed.
@@ -781,7 +788,45 @@ namespace PSRule.Rules.Azure.Data.Policy
             if (policyDefinition.Condition == null || policyDefinition.Condition.Count == 0)
                 throw ThrowEmptyConditionExpandResult(context, policyDefinitionId);
 
+            policyDefinition.HashKey = GetPolicyRuleHashKey(policyDefinitionId, policyDefinition.Condition, policyDefinition.Where);
+            policyDefinition.Prefix = context.PolicyRulePrefix;
+
             return true;
+        }
+
+        /// <summary>
+        /// Get hash of definitionID + condition + pre-condition
+        /// </summary>
+        private static string GetPolicyRuleHashKey(string definitionId, JObject condition, JObject preCondition, int length = 6)
+        {
+            using var hashAlgorithm = SHA256.Create();
+
+            var definitionIdGuidBytes = !string.IsNullOrEmpty(definitionId)
+                && Guid.TryParse(definitionId.SplitLastSegment(SLASH), out var definitionIdGuid)
+                ? definitionIdGuid.ToByteArray()
+                : Array.Empty<byte>();
+
+            hashAlgorithm.TransformBlock(definitionIdGuidBytes, 0, definitionIdGuidBytes.Length, null, 0);
+
+            var conditionBytes = condition != null
+                ? Encoding.UTF8.GetBytes(condition.ToString(Formatting.None))
+                : Array.Empty<byte>();
+
+            hashAlgorithm.TransformBlock(conditionBytes, 0, conditionBytes.Length, null, 0);
+
+            var preConditionBytes = preCondition != null
+                ? Encoding.UTF8.GetBytes(preCondition.ToString(Formatting.None))
+                : Array.Empty<byte>();
+
+            hashAlgorithm.TransformFinalBlock(preConditionBytes, 0, preConditionBytes.Length);
+
+            var hash = hashAlgorithm.Hash;
+
+            var builder = new StringBuilder();
+            for (var i = 0; i < hash.Length && i < length; i++)
+                builder.Append(hash[i].ToString("x2", Thread.CurrentThread.CurrentCulture));
+
+            return builder.ToString();
         }
 
         /// <summary>
