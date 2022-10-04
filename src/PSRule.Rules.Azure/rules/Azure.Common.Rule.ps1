@@ -185,8 +185,6 @@ function global:IsLinuxOffering {
     process {
         $configLinuxOffers = $Configuration.GetStringValues('AZURE_LINUX_OS_OFFERS');
         foreach ($configLinuxOffer in $configLinuxOffers) {
-            Write-Host "found a config linux offer"
-            Write-Host $configLinuxOffer
             if ($configLinuxOffer -ieq $imageReference.offer) {
                 return $True
             }
