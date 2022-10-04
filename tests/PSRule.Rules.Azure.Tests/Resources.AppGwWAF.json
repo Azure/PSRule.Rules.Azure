@@ -63,8 +63,7 @@
             "ruleSetVersion": "0.1",
             "ruleGroupOverrides": []
           }
-        ],
-        "exclusions": []
+        ]
       }
     },
     "ResourceGroupName": "test-rg",

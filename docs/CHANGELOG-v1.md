@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.20.0-B0223:
+
+- Bug fixes:
+  - Fixed `Azure.FrontDoorWAF.Exclusions` reports exclusions when none are specified by @BernieWhite.
+    [#1751](https://github.com/Azure/PSRule.Rules.Azure/issues/1751)
+
 ## v1.20.0-B0223 (pre-release)
 
 What's changed since pre-release v1.20.0-B0148:
