@@ -49,6 +49,8 @@ What's changed since pre-release v1.20.0-B0148:
     [#1653](https://github.com/Azure/PSRule.Rules.Azure/issues/1653)
   - Fixed bug requiring all diagnostic logs settings to have auditing enabled by @bengeset96.
     [#1726](https://github.com/Azure/PSRule.Rules.Azure/issues/1726)
+  - Consider private offerings when checking that a VM or VMSS has Linux by @verabe.
+    [#1725](https://github.com/Azure/PSRule.Rules.Azure/issues/1725)
 
 ## v1.20.0-B0148 (pre-release)
 
