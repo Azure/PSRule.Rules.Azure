@@ -112,5 +112,37 @@
         ]
       }
     }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoorwaf-D",
+    "type": "Microsoft.Network/frontdoorwebapplicationfirewallpolicies",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoorwaf-D",
+    "Location": "Global",
+    "ResourceName": "frontdoorwaf-D",
+    "Name": "frontdoorwaf-D",
+    "properties": {
+      "policySettings": {
+        "enabledState": "Enabled",
+        "mode": "Prevention",
+        "customBlockResponseStatusCode": 403,
+        "requestBodyCheck": "Enabled"
+      },
+      "customRules": {
+        "rules": []
+      },
+      "managedRules": {
+        "managedRuleSets": [
+          {
+            "ruleSetType": "Microsoft_DefaultRuleSet",
+            "ruleSetVersion": "2.0",
+            "ruleSetAction": "Block"
+          },
+          {
+            "ruleSetType": "Microsoft_BotManagerRuleSet",
+            "ruleSetVersion": "1.0"
+          }
+        ]
+      }
+    }
   }
 ]
