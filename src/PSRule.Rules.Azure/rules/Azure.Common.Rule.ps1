@@ -183,20 +183,29 @@ function global:IsLinuxOffering {
     [OutputType([System.Boolean])]
     param ($imageReference)
     process {
-        $someLinuxOSNames = @('ubuntu', 'linux', 'rhel', 'centos', 'redhat', 'debian', 'suse')
-        if ($null -ne ($someLinuxOSNames | Where-Object { $imageReference.offer -match $_ })) {
-            return $True
-        }
-        
-        $isLinuxPublicOffering = $False
-        foreach ($publicLinuxOffering in $PublicLinuxOfferings) {
-            if ($publicLinuxOffering[0] -ieq $imageReference.publisher -and $publicLinuxOffering[1] -ieq $imageReference.offer) {
-                $isLinuxPublicOffering = $True
-                break
+        $configLinuxOffers = $Configuration.GetStringValues('AZURE_LINUX_OS_OFFERS');
+        foreach ($configLinuxOffer in $configLinuxOffers) {
+            Write-Host "found a config linux offer"
+            Write-Host $configLinuxOffer
+            if ($configLinuxOffer -ieq $imageReference.offer) {
+                return $True
             }
         }
 
-        return $isLinuxPublicOffering
+        $someLinuxOSNames = @('ubuntu', 'linux', 'rhel', 'centos', 'redhat', 'debian', 'suse')
+        foreach ($linuxOSName in $someLinuxOSNames) {
+            if ($imageReference.offer -match $linuxOSName) {
+                return $True
+            }
+        }
+        
+        foreach ($publicLinuxOffering in $PublicLinuxOfferings) {
+            if ($publicLinuxOffering[0] -ieq $imageReference.publisher -and $publicLinuxOffering[1] -ieq $imageReference.offer) {
+                return $True
+            }
+        }
+
+        return $False
     }
  }
  
