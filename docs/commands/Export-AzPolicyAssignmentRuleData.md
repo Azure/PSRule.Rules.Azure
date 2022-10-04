@@ -171,9 +171,9 @@ Accept wildcard characters: False
 
 By default, policy rule names use the `Azure` prefix e.g. `Azure.Policy.e749c2d003da`.
 
-When `-RulePrefix` is specified, the default prefix is overridden with this prefix.
+When `-RulePrefix` is specified, the default prefix is overridden.
 
-For example, with `-RulePrefix 'CustomPolicyPrefix'`, this would generate the policy rule name `CustomPolicyPrefix.Policy.e749c2d003da`.
+For example, with `-RulePrefix 'CustomPolicyPrefix'` this would generate the policy rule name `CustomPolicyPrefix.Policy.e749c2d003da`.
 
 ```yaml
 Type: String

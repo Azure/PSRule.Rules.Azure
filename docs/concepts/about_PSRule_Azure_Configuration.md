@@ -303,6 +303,7 @@ configuration:
 Default:
 
 ```yaml
+# YAML: The default AZURE_POLICY_RULE_PREFIX configuration option
 configuration:
   AZURE_POLICY_RULE_PREFIX: 'Azure'
 ```
@@ -316,7 +317,7 @@ Example:
 
 ## NOTE
 
-An online version of this document is available at https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/concepts/about_PSRule_Azure_Configuration.md.
+An online version of this document is available at <https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/concepts/about_PSRule_Azure_Configuration.md>.
 
 ## KEYWORDS
 
