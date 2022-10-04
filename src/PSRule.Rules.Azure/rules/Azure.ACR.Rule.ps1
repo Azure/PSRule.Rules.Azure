@@ -45,7 +45,7 @@ Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry
             return $Assert.Pass();
         }
     }
-    return $Assert.Fail($LocalizedData.ReplicaNotFound);
+    return $Assert.Fail($LocalizedData.ReplicaInSecondaryNotFound);
 }
 
 # Synopsis: Azure Container Registries should have soft delete policy enabled.
