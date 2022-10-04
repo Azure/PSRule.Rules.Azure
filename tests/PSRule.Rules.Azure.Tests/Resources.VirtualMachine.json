@@ -1593,5 +1593,73 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "CreatedTime": null,
         "ChangedTime": null
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/offerSaysLinux",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/offerSaysLinux",
+        "Identity": {
+            "PrincipalId": "00000000-0000-0000-0000-000000000000",
+            "TenantId": "00000000-0000-0000-0000-000000000000",
+            "Type": "SystemAssigned",
+            "UserAssignedIdentities": null
+        },
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "offerSaysLinux",
+        "Name": "offerSaysLinux",
+        "Properties": {
+            "vmId": "00000000-0000-0000-0000-000000000000",
+            "storageProfile": {
+                "imageReference": {
+                    "publisher": "anUnkownPublisher",
+                    "offer": "anOfferThatSaysLinux",
+                    "sku": "16.04-LTS",
+                    "version": "latest",
+                    "exactVersion": "16.04.201708151"
+                }
+            },
+            "provisioningState": "Succeeded"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachines",
+        "ResourceType": "Microsoft.Compute/virtualMachines",
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/offerInConfig",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/offerInConfig",
+        "Identity": {
+            "PrincipalId": "00000000-0000-0000-0000-000000000000",
+            "TenantId": "00000000-0000-0000-0000-000000000000",
+            "Type": "SystemAssigned",
+            "UserAssignedIdentities": null
+        },
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "offerInConfig",
+        "Name": "offerInConfig",
+        "Properties": {
+            "vmId": "00000000-0000-0000-0000-000000000000",
+            "storageProfile": {
+                "imageReference": {
+                    "publisher": "anUnkownPublisher",
+                    "offer": "anOfferName",
+                    "sku": "16.04-LTS",
+                    "version": "latest",
+                    "exactVersion": "16.04.201708151"
+                }
+            },
+            "provisioningState": "Succeeded"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachines",
+        "ResourceType": "Microsoft.Compute/virtualMachines",
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
     }
 ]
