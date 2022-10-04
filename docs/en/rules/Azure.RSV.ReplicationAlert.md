@@ -64,7 +64,6 @@ For example:
 ```bicep
 resource testRecoveryServices 'Microsoft.RecoveryServices/vaults/replicationAlertSettings@2021-08-01' = {
   name: 'replicationAlert'
-  location: 'string'
   parent: resourceSymbolicName
   properties: {
     sendToOwners: 'Sender'
