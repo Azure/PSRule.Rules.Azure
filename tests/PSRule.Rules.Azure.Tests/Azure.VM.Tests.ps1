@@ -31,6 +31,7 @@ Describe 'Azure.VM' -Tag 'VM' {
                 Module = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
                 ErrorAction = 'Stop'
+                Option = (Join-Path -Path $here -ChildPath 'ps-rule-options.yaml')
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.json'
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
