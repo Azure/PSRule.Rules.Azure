@@ -59,6 +59,8 @@ alert via a Bicep either configure the `sendToOwners` or `CustomerEmailAddress` 
 - Set `properties.sendToOwners` to `Send`.
 - Set `properties.customEmailAddresses` to `[ "example@email.com" ]`
 
+with the locale property you can define the locale for the email notification.
+
 For example:
 
 ```bicep
@@ -70,6 +72,7 @@ resource testRecoveryServices 'Microsoft.RecoveryServices/vaults/replicationAler
     customEmailAddresses: [
       'example@email.com'
     ]
+    locale: 'en-US'
   }
 }
 ```
