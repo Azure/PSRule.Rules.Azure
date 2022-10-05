@@ -178,21 +178,32 @@ function global:SupportsHybridUse {
     }
 }
 
-function global:IsLinuxOS {
+function global:IsLinuxOffering {
     [CmdletBinding()]
     [OutputType([System.Boolean])]
     param ($imageReference)
     process {
-        $isLinuxOS = $False
-        
-        foreach ($linuxOffer in $LinuxOffers) {
-            if ($linuxOffer[0] -ieq $imageReference.publisher -and $linuxOffer[1] -ieq $imageReference.offer) {
-                $isLinuxOS = $True
-                break
+        $configLinuxOffers = $Configuration.GetStringValues('AZURE_LINUX_OS_OFFERS');
+        foreach ($configLinuxOffer in $configLinuxOffers) {
+            if ($configLinuxOffer -ieq $imageReference.offer) {
+                return $True
             }
         }
 
-        return $isLinuxOS
+        $someLinuxOSNames = @('ubuntu', 'linux', 'rhel', 'centos', 'redhat', 'debian', 'suse')
+        foreach ($linuxOSName in $someLinuxOSNames) {
+            if ($imageReference.offer -match $linuxOSName) {
+                return $True
+            }
+        }
+        
+        foreach ($publicLinuxOffering in $PublicLinuxOfferings) {
+            if ($publicLinuxOffering[0] -ieq $imageReference.publisher -and $publicLinuxOffering[1] -ieq $imageReference.offer) {
+                return $True
+            }
+        }
+
+        return $False
     }
  }
  
@@ -205,7 +216,9 @@ function global:VMHasLinuxOS {
             return $False;
         }
 
-        return IsLinuxOS($TargetObject.Properties.storageProfile.imageReference)
+        return $TargetObject.Properties.storageProfile.osDisk.osType -eq 'Linux' -or
+            $Assert.HasField($TargetObject, 'properties.osProfile.linuxConfiguration').Result -or
+            (IsLinuxOffering($TargetObject.Properties.storageProfile.imageReference))
     }
 }
 
@@ -218,7 +231,9 @@ function global:VMSSHasLinuxOS {
             return $False;
         }
 
-        return IsLinuxOS($TargetObject.Properties.virtualMachineProfile.storageProfile.imageReference)
+        return $TargetObject.Properties.virtualMachineProfile.storageProfile.osDisk.osType -eq 'Linux' -or
+            $Assert.HasField($TargetObject, 'properties.virtualMachineProfile.osProfile.linuxConfiguration').Result -or
+            (IsLinuxOffering($TargetObject.Properties.virtualMachineProfile.storageProfile.imageReference))
     }
 }
 
