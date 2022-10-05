@@ -29,6 +29,8 @@ What's changed since pre-release v1.20.0-B0223:
 - Bug fixes:
   - Fixed `Azure.FrontDoorWAF.Exclusions` reports exclusions when none are specified by @BernieWhite.
     [#1751](https://github.com/Azure/PSRule.Rules.Azure/issues/1751)
+  - Fixed `Azure.Deployment.AdminUsername` does not match the pattern by @BernieWhite.
+    [#1758](https://github.com/Azure/PSRule.Rules.Azure/issues/1758)
 
 ## v1.20.0-B0223 (pre-release)
 

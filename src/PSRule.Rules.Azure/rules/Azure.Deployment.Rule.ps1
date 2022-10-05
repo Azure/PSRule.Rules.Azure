@@ -29,8 +29,7 @@ Rule 'Azure.Deployment.AdminUsername' -Ref 'AZR-000284' -Type 'Microsoft.Resourc
                 }
                 else {
                     Write-Debug "Found property name: $propertyName";
-                    $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($found);
-                    $Assert.Match($cleanValue, '.', '\[p[^\]]+\]');
+                    $Assert.Create(![PSRule.Rules.Azure.Runtime.Helper]::HasLiteralValue($found), $LocalizedData.LiteralSensitiveProperty, $propertyName);
                 }
             }
         }
