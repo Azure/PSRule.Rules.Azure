@@ -60,9 +60,11 @@ spec:
   type:
   - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
   condition:
-    allOf:
+    anyOf:
     # WAF policy has no exclusions
-    - field: Properties.managedRules.exclusions
+    - field: properties.managedRules.exclusions
+      exists: false
+    - field: properties.managedRules.exclusions
       count: 0
 
 ---

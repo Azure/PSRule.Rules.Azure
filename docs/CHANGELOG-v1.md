@@ -30,6 +30,9 @@ What's changed since pre-release v1.20.0-B0223:
   - Bump PSRule to v2.4.2.
     [#1753](https://github.com/Azure/PSRule.Rules.Azure/pull/1753)
     [#1748](https://github.com/Azure/PSRule.Rules.Azure/issues/1748)
+- Bug fixes:
+  - Fixed `Azure.FrontDoorWAF.Exclusions` reports exclusions when none are specified by @BernieWhite.
+    [#1751](https://github.com/Azure/PSRule.Rules.Azure/issues/1751)
 
 ## v1.20.0-B0223 (pre-release)
 
