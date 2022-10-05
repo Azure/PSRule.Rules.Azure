@@ -22,7 +22,7 @@ spec:
   condition:
     allOf:
     # WAF policy is enabled
-    - field: Properties.policySettings.enabledState
+    - field: properties.policySettings.enabledState
       equals: 'Enabled'
 
 ---
@@ -45,7 +45,6 @@ spec:
       equals: 'Prevention'
 
 ---
-
 # Synopsis: FrontDoor WAF should have no exclusions.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
@@ -58,16 +57,19 @@ metadata:
 spec:
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
+  where:
+    field: properties.managedRules.managedRuleSets
+    greaterOrEquals: 1
   condition:
-    allOf:
+    field: properties.managedRules.managedRuleSets
+    anyOf:
     # WAF policy has no exclusions
-    - field: Properties.managedRules.managedRuleSets[0].exclusions
-      count: 0
-    - field: Properties.managedRules.managedRuleSets[1].exclusions
+    - field: exclusions
+      exists: false
+    - field: exclusions
       count: 0
 
 ---
-
 # Synopsis: FrontDoor WAF should have at least 2 Rule Groups. One for OWASP and one for Microsoft_BotManagerRuleSet.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
@@ -93,6 +95,5 @@ spec:
       equals: 'Microsoft_BotManagerRuleSet'
     - field: Properties.managedRules.managedRuleSets[1].ruleSetVersion
       version: '>=1.0'
-
 
 #endregion Rules
