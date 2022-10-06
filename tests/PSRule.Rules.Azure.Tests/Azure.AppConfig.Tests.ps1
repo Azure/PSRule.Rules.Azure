@@ -112,8 +112,8 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'app-config-I';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'app-config-E', 'app-config-I';
         }
 
         It 'Azure.AppConfig.PurgeProtect' {
