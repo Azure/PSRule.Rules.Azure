@@ -8,8 +8,7 @@
 #region Rules
 
 # Synopsis: Ensure app configuration store audit diagnostic logs are enabled.
-Rule 'Azure.AppConfig.AuditLogs' -Ref 'AZR-000311' -Type 'Microsoft.AppConfiguration/configurationStores' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
-    
+Rule 'Azure.AppConfig.AuditLogs' -Ref 'AZR-000311' -Type 'Microsoft.AppConfiguration/configurationStores' -Tag @{ release = 'GA'; ruleSet = '2022_09' } { 
     $logCategoryGroups = 'audit', 'allLogs'
     $joinedLogCategoryGroups = $logCategoryGroups -join ', '
     $diagnostics = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings' | ForEach-Object {
@@ -34,6 +33,11 @@ Rule 'Azure.AppConfig.GeoReplica' -Ref 'AZR-000312' -Type 'Microsoft.AppConfigur
         Where-Object { $_ -ne $appConfigLocation })
     
     $Assert.Greater($replicas, '.', 0).Reason($LocalizedData.ReplicaInSecondaryNotFound).PathPrefix('resources')
+}
+
+# Synopsis: Consider purge protection for app configuration store to ensure store cannot be purged in the retention period.
+Rule 'Azure.AppConfig.PurgeProtect' -Ref 'AZR-000313' -Type 'Microsoft.AppConfiguration/configurationStores' -If { IsAppConfigStandardSKU } -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+    $Assert.HasFieldValue($TargetObject, 'properties.enablePurgeProtection', $true).Reason($LocalizedData.AppConfigPurgeProtection, $TargetObject.name)
 }
 
 #endregion Rules

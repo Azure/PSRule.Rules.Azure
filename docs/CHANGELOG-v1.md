@@ -26,6 +26,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.20.0-B0304:
 
+- New rules:
+  - App Configuration:
+    - Check app configuration store has purge protection enabled by @bengeset96.
+      [#1689](https://github.com/Azure/PSRule.Rules.Azure/issues/1689)
 - Bug fixes:
   - Fixed `Azure.Deployment.AdminUsername` incorrectly fails with nested deployments by @BernieWhite.
     [#1762](https://github.com/Azure/PSRule.Rules.Azure/issues/1762)
