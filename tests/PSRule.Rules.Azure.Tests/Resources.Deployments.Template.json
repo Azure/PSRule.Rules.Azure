@@ -3,15 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "adminUsername": {
-            "type": "secureString",
-            "defaultValue": "admin"
+            "type": "secureString"
         },
         "adminObject": {
-            "type": "secureObject",
-            "defaultValue": {
-                "adminUsername": "admin",
-                "adminPassword": "password"
-            }
+            "type": "secureObject"
         }
     },
     "resources": [

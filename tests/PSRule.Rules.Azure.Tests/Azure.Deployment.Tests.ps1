@@ -67,8 +67,9 @@ Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
                 WarningAction = 'Ignore'
                 ErrorAction = 'Stop'
             }
-            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Deployments.json';
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
+            $templatePath = Join-Path -Path $here -ChildPath 'Resources.Deployments.json';
+            $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
+            $result = Invoke-PSRule @invokeParams -TemplateFile $templatePath -ParameterFile $parameterPath -Outcome All;
         }
 
         It 'Azure.Deployment.AdminUsername' {

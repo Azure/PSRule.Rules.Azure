@@ -42,7 +42,7 @@ Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000313' -Type 'Microsoft.Resources
     
     if($TargetObject.properties.expressionEvaluationOptions.scope -eq 'Outer'){
         $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($TargetObject);
-        $Assert.NotMatch($cleanValue, '.', 'secure');
+        $Assert.NotMatch($cleanValue, '.', 'SecretReference');
     } else {
         $Assert.Pass()
     }
