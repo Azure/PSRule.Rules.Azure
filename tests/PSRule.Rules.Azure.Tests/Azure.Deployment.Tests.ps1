@@ -84,8 +84,8 @@ Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
              # Pass
              $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
              $ruleResult | Should -Not -BeNullOrEmpty;
-             $ruleResult.Length | Should -Be 4;
-             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-B', 'nestedDeployment-C', 'nestedDeployment-F', 'nestedDeployment-G';
+             $ruleResult.Length | Should -Be 5;
+             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-B', 'nestedDeployment-C', 'nestedDeployment-F', 'nestedDeployment-G', 'nestedDeployment-H';
         }
 
         Context 'With Template' {

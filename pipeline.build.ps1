@@ -360,12 +360,13 @@ task BuildDocs BuildRuleDocs, BuildBaselineDocs
 # Synopsis: Build table of content for rules
 task BuildRuleDocs Build, Dependencies, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name index -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
-    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name module -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
-    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
 
+    # English
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name index -OutputPath ./docs/en/rules/ -Culture 'en' -Path ./RuleToc.Doc.ps1;
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name module -OutputPath ./docs/en/rules/ -Culture 'en' -Path ./RuleToc.Doc.ps1;
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/en/rules/ -Culture 'en' -Path ./RuleToc.Doc.ps1;
     $metadata = @{}
-    Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All | ForEach-Object {
+    Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -Culture 'en' | ForEach-Object {
         $metadata[$_.Name] = [PSCustomObject]@{
             Name = $_.Name
             Ref = $_.Ref
@@ -383,6 +384,30 @@ task BuildRuleDocs Build, Dependencies, {
         }
     }
     $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/en/rules/metadata.json -Force;
+
+    # Spanish
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name index -OutputPath ./docs/es/rules/ -Culture 'es' -Path ./RuleToc.Doc.ps1;
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name module -OutputPath ./docs/es/rules/ -Culture 'es' -Path ./RuleToc.Doc.ps1;
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/es/rules/ -Culture 'es' -Path ./RuleToc.Doc.ps1;
+    $metadata = @{}
+    Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -Culture 'es' | ForEach-Object {
+        $metadata[$_.Name] = [PSCustomObject]@{
+            Name = $_.Name
+            Ref = $_.Ref
+            Alias = @($_.Alias)
+            Flags = $_.Flags
+            Release = $_.Tag.release
+            RuleSet = $_.Tag.ruleSet
+            Level = $_.Level.ToString()
+            Method = $_.Tag.method
+            DisplayName = $_.Info.DisplayName
+            Synopsis = $_.Info.Synopsis
+            Recommendation = $_.Info.Recommendation
+            Pillar = $_.Tag.'Azure.WAF/pillar'
+            Control = $_.Tag.'Azure.ASB.v3/control'
+        }
+    }
+    $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/es/rules/metadata.json -Force;
 }
 
 # Synopsis: Build table of content for baselines

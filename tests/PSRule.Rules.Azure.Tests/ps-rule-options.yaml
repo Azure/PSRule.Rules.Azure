@@ -99,3 +99,5 @@ configuration:
       - "1"
       - "2"
       - "3"
+  AZURE_LINUX_OS_OFFERS:
+  - 'anOfferName'
