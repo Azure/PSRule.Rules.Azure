@@ -125,7 +125,7 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'app-config-F', 'app-config-H', 'app-config-I';
+            $ruleResult.TargetName | Should -BeIn 'app-config-F', 'app-config-E', 'app-config-H', 'app-config-I';
 
             $ruleResult[0].Reason | Should -BeExactly "The app configuration store 'app-config-F' should have purge protection enabled.";
             $ruleResult[1].Reason | Should -BeExactly "The app configuration store 'app-config-H' should have purge protection enabled.";
@@ -134,8 +134,8 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-E';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'app-config-A';
         }
     }
 

@@ -398,7 +398,7 @@
         "keyVaultProperties": null
       },
       "privateEndpointConnections": null,
-      "enablePurgeProtection": true
+      "enablePurgeProtection": false
     },
     "ResourceGroupName": "rg-test",
     "Type": "Microsoft.AppConfiguration/configurationStores",
