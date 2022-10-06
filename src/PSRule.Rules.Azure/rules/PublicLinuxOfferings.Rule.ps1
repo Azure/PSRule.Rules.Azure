@@ -1,7 +1,7 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
-$global:LinuxOffers = @(
+$global:PublicLinuxOfferings = @(
 ("128technology", "128technology_conductor_hourly"),
 ("1580863854728", "accountadapterplus"),
 ("1583465680865", "sangforaf8011en"),
