@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - App Configuration:
+    - Check app configuration store has purge protection enabled by @bengeset96.
+      [#1689](https://github.com/Azure/PSRule.Rules.Azure/issues/1689)
+
 What's changed since pre-release v1.20.0-B0223:
 
 - Bug fixes:

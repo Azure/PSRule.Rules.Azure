@@ -115,6 +115,29 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'app-config-I';
         }
+
+        It 'Azure.AppConfig.PurgeProtect' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppConfig.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppConfig.PurgeProtect' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-F', 'app-config-H', 'app-config-I';
+
+            $ruleResult[0].Reason | Should -BeExactly "The app configuration store 'app-config-A' should have purge protection enabled.";
+            $ruleResult[1].Reason | Should -BeExactly "The app configuration store 'app-config-F' should have purge protection enabled.";
+            $ruleResult[2].Reason | Should -BeExactly "The app configuration store 'app-config-H' should have purge protection enabled.";
+            $ruleResult[3].Reason | Should -BeExactly "The app configuration store 'app-config-I' should have purge protection enabled.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-E';
+        }
     }
 
     Context 'Resource name' {
