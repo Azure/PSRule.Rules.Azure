@@ -70,5 +70,5 @@
     ACRSoftDeletePolicy = "The container registry '{0}' should have soft delete policy enabled."
     ACRSoftDeletePolicyRetention = "The container registry '{0}' should have retention period value between one to 90 days for the soft delete policy."
     AppConfigStoresDiagnosticSetting = "Minimum one diagnostic setting should have ({0}) configured or category group ({1}) configured."
-    
+    LiteralSensitiveProperty = "The property '{0}' uses a deterministic literal value."
 }

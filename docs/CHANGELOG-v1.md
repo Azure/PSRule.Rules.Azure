@@ -24,6 +24,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.20.0-B0304:
+
+- Bug fixes:
+  - Fixed `Azure.Deployment.AdminUsername` incorrectly fails with nested deployments by @BernieWhite.
+    [#1762](https://github.com/Azure/PSRule.Rules.Azure/issues/1762)
+
+## v1.20.0-B0304 (pre-release)
+
 What's changed since pre-release v1.20.0-B0223:
 
 - Engineering:
@@ -33,6 +41,8 @@ What's changed since pre-release v1.20.0-B0223:
 - Bug fixes:
   - Fixed `Azure.FrontDoorWAF.Exclusions` reports exclusions when none are specified by @BernieWhite.
     [#1751](https://github.com/Azure/PSRule.Rules.Azure/issues/1751)
+  - Fixed `Azure.Deployment.AdminUsername` does not match the pattern by @BernieWhite.
+    [#1758](https://github.com/Azure/PSRule.Rules.Azure/issues/1758)
   - Consider private offerings when checking that a VM or VMSS has Linux by @verabe.
     [#1725](https://github.com/Azure/PSRule.Rules.Azure/issues/1725)
 
