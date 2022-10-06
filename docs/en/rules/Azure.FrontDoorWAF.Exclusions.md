@@ -26,6 +26,98 @@ However, it should be allowed and only used as a last resort.
 
 Avoid configuring Front Door WAF rule exclusions.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy WAF policies that pass this rule:
+
+- Remove any rule exclusions by:
+  - Set the `exclusions` property for each managed rule group to an empty array. **OR**
+  - Remove the `exclusions` property for each managed rule group.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
+  "apiVersion": "2022-05-01",
+  "name": "[parameters('name')]",
+  "location": "Global",
+  "sku": {
+    "name": "Premium_AzureFrontDoor"
+  },
+  "properties": {
+    "managedRules": {
+      "managedRuleSets": [
+        {
+          "ruleSetType": "Microsoft_DefaultRuleSet",
+          "ruleSetVersion": "2.0",
+          "ruleSetAction": "Block",
+          "exclusions": [],
+          "ruleGroupOverrides": []
+        },
+        {
+          "ruleSetType": "Microsoft_BotManagerRuleSet",
+          "ruleSetVersion": "1.0",
+          "ruleSetAction": "Block",
+          "exclusions": [],
+          "ruleGroupOverrides": []
+        }
+      ]
+    },
+    "policySettings": {
+      "enabledState": "Enabled",
+      "mode": "Prevention"
+    }
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy WAF policies that pass this rule:
+
+- Remove any rule exclusions by:
+  - Set the `exclusions` property for each managed rule group to an empty array. **OR**
+  - Remove the `exclusions` property for each managed rule group.
+
+For example:
+
+```bicep
+resource waf 'Microsoft.Network/FrontDoorWebApplicationFirewallPolicies@2022-05-01' = {
+  name: name
+  location: 'Global'
+  sku: {
+    name: 'Premium_AzureFrontDoor'
+  }
+  properties: {
+    managedRules: {
+      managedRuleSets: [
+        {
+          ruleSetType: 'Microsoft_DefaultRuleSet'
+          ruleSetVersion: '2.0'
+          ruleSetAction: 'Block'
+          exclusions: []
+          ruleGroupOverrides: []
+        }
+        {
+          ruleSetType: 'Microsoft_BotManagerRuleSet'
+          ruleSetVersion: '1.0'
+          ruleSetAction: 'Block'
+          exclusions: []
+          ruleGroupOverrides: []
+        }
+      ]
+    }
+    policySettings: {
+      enabledState: 'Enabled'
+      mode: 'Prevention'
+    }
+  }
+}
+```
+
 ## LINKS
 
 - [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
@@ -34,3 +126,4 @@ Avoid configuring Front Door WAF rule exclusions.
 - [Web Application Firewall CRS rule groups and rules](https://docs.microsoft.com/azure/web-application-firewall/ag/application-gateway-crs-rulegroups-rules)
 - [Bot protection overview](https://docs.microsoft.com/azure/web-application-firewall/ag/bot-protection-overview)
 - [Web Application Firewall best practices](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-best-practices)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/frontdoorwebapplicationfirewallpolicies)

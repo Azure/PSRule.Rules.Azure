@@ -49,8 +49,8 @@ Describe 'Azure.FrontDoorWAF' -Tag 'Network', 'FrontDoorWAF' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'frontdoorwaf-A', 'frontdoorwaf-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'frontdoorwaf-A', 'frontdoorwaf-C', 'frontdoorwaf-D';
         }
         It 'Azure.FrontDoorWAF.PreventionMode' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoorWAF.PreventionMode' };
@@ -64,8 +64,8 @@ Describe 'Azure.FrontDoorWAF' -Tag 'Network', 'FrontDoorWAF' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'frontdoorwaf-A', 'frontdoorwaf-B';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'frontdoorwaf-A', 'frontdoorwaf-B', 'frontdoorwaf-D';
         }
         It 'Azure.FrontDoorWAF.Exclusions' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoorWAF.Exclusions' };
@@ -79,8 +79,8 @@ Describe 'Azure.FrontDoorWAF' -Tag 'Network', 'FrontDoorWAF' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'frontdoorwaf-A', 'frontdoorwaf-B';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'frontdoorwaf-A', 'frontdoorwaf-B', 'frontdoorwaf-D';
         }
         It 'Azure.FrontDoorWAF.RuleGroups' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoorWAF.RuleGroups' };
@@ -94,8 +94,8 @@ Describe 'Azure.FrontDoorWAF' -Tag 'Network', 'FrontDoorWAF' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'frontdoorwaf-A', 'frontdoorwaf-B';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'frontdoorwaf-A', 'frontdoorwaf-B', 'frontdoorwaf-D';
         }
     }
 }

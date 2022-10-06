@@ -26,6 +26,100 @@ It is recommended to use the latest rule set.
 
 Consider configuring Front Door WAF policy to use the recommended rule sets.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy WAF policies that pass this rule:
+
+- Add the `Microsoft_DefaultRuleSet` rule set to the `properties.managedRules.managedRuleSets` property.
+  - Use the rule set version `2.0` or greater.
+- Add the `Microsoft_BotManagerRuleSet` rule set to the `properties.managedRules.managedRuleSets` property.
+  - Use the rule set version `1.0` or greater.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
+  "apiVersion": "2022-05-01",
+  "name": "[parameters('name')]",
+  "location": "Global",
+  "sku": {
+    "name": "Premium_AzureFrontDoor"
+  },
+  "properties": {
+    "managedRules": {
+      "managedRuleSets": [
+        {
+          "ruleSetType": "Microsoft_DefaultRuleSet",
+          "ruleSetVersion": "2.0",
+          "ruleSetAction": "Block",
+          "exclusions": [],
+          "ruleGroupOverrides": []
+        },
+        {
+          "ruleSetType": "Microsoft_BotManagerRuleSet",
+          "ruleSetVersion": "1.0",
+          "ruleSetAction": "Block",
+          "exclusions": [],
+          "ruleGroupOverrides": []
+        }
+      ]
+    },
+    "policySettings": {
+      "enabledState": "Enabled",
+      "mode": "Prevention"
+    }
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy WAF policies that pass this rule:
+
+- Add the `Microsoft_DefaultRuleSet` rule set to the `properties.managedRules.managedRuleSets` property.
+  - Use the rule set version `2.0` or greater.
+- Add the `Microsoft_BotManagerRuleSet` rule set to the `properties.managedRules.managedRuleSets` property.
+  - Use the rule set version `1.0` or greater.
+
+For example:
+
+```bicep
+resource waf 'Microsoft.Network/FrontDoorWebApplicationFirewallPolicies@2022-05-01' = {
+  name: name
+  location: 'Global'
+  sku: {
+    name: 'Premium_AzureFrontDoor'
+  }
+  properties: {
+    managedRules: {
+      managedRuleSets: [
+        {
+          ruleSetType: 'Microsoft_DefaultRuleSet'
+          ruleSetVersion: '2.0'
+          ruleSetAction: 'Block'
+          exclusions: []
+          ruleGroupOverrides: []
+        }
+        {
+          ruleSetType: 'Microsoft_BotManagerRuleSet'
+          ruleSetVersion: '1.0'
+          ruleSetAction: 'Block'
+          exclusions: []
+          ruleGroupOverrides: []
+        }
+      ]
+    }
+    policySettings: {
+      enabledState: 'Enabled'
+      mode: 'Prevention'
+    }
+  }
+}
+```
+
 ## LINKS
 
 - [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
@@ -34,3 +128,4 @@ Consider configuring Front Door WAF policy to use the recommended rule sets.
 - [Web Application Firewall CRS rule groups and rules](https://docs.microsoft.com/azure/web-application-firewall/ag/application-gateway-crs-rulegroups-rules)
 - [Bot protection overview](https://docs.microsoft.com/azure/web-application-firewall/ag/bot-protection-overview)
 - [Web Application Firewall best practices](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-best-practices)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/frontdoorwebapplicationfirewallpolicies)
