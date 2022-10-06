@@ -26,11 +26,17 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.20.0-B0223:
 
+- Engineering:
+  - Bump PSRule to v2.4.2.
+    [#1753](https://github.com/Azure/PSRule.Rules.Azure/pull/1753)
+    [#1748](https://github.com/Azure/PSRule.Rules.Azure/issues/1748)
 - Bug fixes:
   - Fixed `Azure.FrontDoorWAF.Exclusions` reports exclusions when none are specified by @BernieWhite.
     [#1751](https://github.com/Azure/PSRule.Rules.Azure/issues/1751)
   - Fixed `Azure.Deployment.AdminUsername` does not match the pattern by @BernieWhite.
     [#1758](https://github.com/Azure/PSRule.Rules.Azure/issues/1758)
+  - Consider private offerings when checking that a VM or VMSS has Linux by @verabe.
+    [#1725](https://github.com/Azure/PSRule.Rules.Azure/issues/1725)
 
 ## v1.20.0-B0223 (pre-release)
 
@@ -57,8 +63,6 @@ What's changed since pre-release v1.20.0-B0148:
     [#1653](https://github.com/Azure/PSRule.Rules.Azure/issues/1653)
   - Fixed bug requiring all diagnostic logs settings to have auditing enabled by @bengeset96.
     [#1726](https://github.com/Azure/PSRule.Rules.Azure/issues/1726)
-  - Consider private offerings when checking that a VM or VMSS has Linux by @verabe.
-    [#1725](https://github.com/Azure/PSRule.Rules.Azure/issues/1725)
 
 ## v1.20.0-B0148 (pre-release)
 
