@@ -19,7 +19,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string TRUE = "True";
         private const string FALSE = "False";
 
-        private static readonly CultureInfo AzureCulture = new CultureInfo("en-US");
+        private static readonly CultureInfo AzureCulture = new("en-US");
 
         internal static bool TryString(object o, out string value)
         {
@@ -307,7 +307,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = mock.Value;
                 return true;
             }
-            value = default(long);
+            value = default;
             return false;
         }
 
@@ -322,7 +322,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (TryString(o, out var svalue) && long.TryParse(svalue, out value))
                 return true;
 
-            value = default(long);
+            value = default;
             return false;
         }
 
@@ -351,7 +351,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = (int)mock.Value;
                 return true;
             }
-            value = default(int);
+            value = default;
             return false;
         }
 
@@ -372,7 +372,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (TryString(o, out var s) && int.TryParse(s, out value))
                 return true;
 
-            value = default(int);
+            value = default;
             return false;
         }
 
@@ -396,7 +396,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = mock.Value;
                 return true;
             }
-            value = default(bool);
+            value = default;
             return false;
         }
 
@@ -419,7 +419,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static bool TryArray<T>(object o, out T value) where T : class
         {
-            value = default(T);
+            value = default;
             if (o is JArray jArray)
             {
                 value = jArray as T;

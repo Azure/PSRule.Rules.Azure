@@ -1096,5 +1096,23 @@
             "sslPort": 6380,
             "linkedServers": []
         }
+    },
+    {
+        "Name": "redis-S",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-S",
+        "ResourceName": "redis-S",
+        "ResourceType": "Microsoft.Cache/redisEnterprise",
+        "ResourceGroupName": "test-rg",
+        "Location": "australiaeast",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Tags": {},
+        "Properties": {
+            "hostName": "redis-S.redis.cache.windows.net"
+        },
+        "sku": {
+            "name": "EnterpriseFlash_F1500",
+            "capacity": 15
+        },
+        "zones": []
     }
 ]

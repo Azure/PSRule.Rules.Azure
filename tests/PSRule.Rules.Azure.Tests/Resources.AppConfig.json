@@ -1,73 +1,870 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-A",
-        "Identity": null,
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "app-config-A",
-        "Name": "app-config-A",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "endpoint": "https://app-config-A.azconfig.io",
-            "encryption": {
-                "keyVaultProperties": null
-            },
-            "privateEndpointConnections": null,
-            "disableLocalAuth": true
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.AppConfiguration/configurationStores",
-        "ResourceType": "Microsoft.AppConfiguration/configurationStores",
-        "ExtensionResourceType": null,
-        "Sku": {
-            "Name": "standard",
-            "Tier": null,
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-A",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "app-config-A",
+    "Name": "app-config-A",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://app-config-A.azconfig.io",
+      "encryption": {
+        "keyVaultProperties": null
+      },
+      "privateEndpointConnections": null,
+      "disableLocalAuth": true,
+      "enablePurgeProtection": true
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-B",
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.AppConfiguration/configurationStores",
+    "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "standard",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-A/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-A/providers/microsoft.insights/diagnosticSettings/metrics",
         "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": "australiaeast",
         "ManagedBy": null,
-        "ResourceName": "app-config-B",
-        "Name": "app-config-B",
-        "ExtensionResourceName": null,
+        "ResourceName": "app-config-A-diagnostic",
+        "Name": "app-config-A-diagnostic",
+        "ExtensionResourceName": "app-config-A-diagnostic",
         "ParentResource": null,
         "Plan": null,
         "Properties": {
-            "provisioningState": "Succeeded",
-            "endpoint": "https://app-config-B.azconfig.io",
-            "encryption": {
-                "keyVaultProperties": null
-            },
-            "privateEndpointConnections": null
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "logs": [
+            {
+              "category": null,
+              "categoryGroup": "audit",
+              "enabled": false,
+              "retentionPolicy": {
+                "days": 90,
+                "enabled": true
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
         },
         "ResourceGroupName": "rg-test",
         "Type": "Microsoft.AppConfiguration/configurationStores",
         "ResourceType": "Microsoft.AppConfiguration/configurationStores",
-        "ExtensionResourceType": null,
-        "Sku": {
-            "Name": "free",
-            "Tier": null,
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
+        "ExtensionResourceType": "Microsoft.Insights/diagnosticSettings",
+        "Sku": null,
         "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    }
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-B",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "app-config-B",
+    "Name": "app-config-B",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://app-config-B.azconfig.io",
+      "encryption": {
+        "keyVaultProperties": null
+      },
+      "privateEndpointConnections": null
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.AppConfiguration/configurationStores",
+    "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "free",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-B/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-B/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "australiaeast",
+        "ManagedBy": null,
+        "ResourceName": "app-config-B-diagnostic",
+        "Name": "app-config-B-diagnostic",
+        "ExtensionResourceName": "app-config-B-diagnostic",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "logs": [
+            {
+              "category": null,
+              "categoryGroup": "audit",
+              "enabled": true,
+              "retentionPolicy": {
+                "days": 90,
+                "enabled": true
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.AppConfiguration/configurationStores",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+        "ExtensionResourceType": "Microsoft.Insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-B/replicas/region2",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-B/replicas/region2",
+        "Identity": null,
+        "Kind": null,
+        "Location": "northeurope",
+        "ManagedBy": null,
+        "ResourceName": "region2",
+        "Name": "region2",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "status": {
+            "displayStatus": "Ready"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.AppConfiguration/configurationStores/replicas",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores/replicas",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-C",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "app-config-C",
+    "Name": "app-config-C",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://app-config-C.azconfig.io",
+      "encryption": {
+        "keyVaultProperties": null
+      },
+      "privateEndpointConnections": null
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.AppConfiguration/configurationStores",
+    "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "free",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-C/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-C/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "westeurope",
+        "ManagedBy": null,
+        "ResourceName": "app-config-C-diagnostic",
+        "Name": "app-config-C-diagnostic",
+        "ExtensionResourceName": "app-config-C-diagnostic",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "logs": [
+            {
+              "category": null,
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "days": 90,
+                "enabled": true
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.AppConfiguration/configurationStores",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+        "ExtensionResourceType": "Microsoft.Insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-C/replicas/region",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-C/replicas/region",
+        "Identity": null,
+        "Kind": null,
+        "Location": "westeurope",
+        "ManagedBy": null,
+        "ResourceName": "region",
+        "Name": "region",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "status": {
+            "displayStatus": "Ready"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.AppConfiguration/configurationStores/replicas",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores/replicas",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-D",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "app-config-D",
+    "Name": "app-config-D",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://app-config-D.azconfig.io",
+      "encryption": {
+        "keyVaultProperties": null
+      },
+      "privateEndpointConnections": null
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.AppConfiguration/configurationStores",
+    "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "free",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-C/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-C/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "westeurope",
+        "ManagedBy": null,
+        "ResourceName": "app-config-D-diagnostic",
+        "Name": "app-config-D-diagnostic",
+        "ExtensionResourceName": "app-config-D-diagnostic",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "logs": [
+            {
+              "category": "Audit",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "days": 90,
+                "enabled": true
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.AppConfiguration/configurationStores",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+        "ExtensionResourceType": "Microsoft.Insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-E",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-E",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "app-config-E",
+    "Name": "app-config-E",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://app-config-E.azconfig.io",
+      "encryption": {
+        "keyVaultProperties": null
+      },
+      "privateEndpointConnections": null,
+      "enablePurgeProtection": false
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.AppConfiguration/configurationStores",
+    "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "standard",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-E/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-E/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "westeurope",
+        "ManagedBy": null,
+        "ResourceName": "app-config-E-diagnostic",
+        "Name": "app-config-E-diagnostic",
+        "ExtensionResourceName": "app-config-E-diagnostic",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "logs": [
+            {
+              "category": null,
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "days": 90,
+                "enabled": true
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.AppConfiguration/configurationStores",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+        "ExtensionResourceType": "Microsoft.Insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-E/replicas/region",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-E/replicas/region",
+        "Identity": null,
+        "Kind": null,
+        "Location": "westeurope",
+        "ManagedBy": null,
+        "ResourceName": "region",
+        "Name": "region",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "status": {
+            "displayStatus": "Ready"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.AppConfiguration/configurationStores/replicas",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores/replicas",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-F",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-F",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "app-config-F",
+    "Name": "app-config-F",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://app-config-F.azconfig.io",
+      "encryption": {
+        "keyVaultProperties": null
+      },
+      "privateEndpointConnections": null
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.AppConfiguration/configurationStores",
+    "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Standard",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-F/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-F/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "westeurope",
+        "ManagedBy": null,
+        "ResourceName": "app-config-F-diagnostic",
+        "Name": "app-config-F-diagnostic",
+        "ExtensionResourceName": "app-config-F-diagnostic",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "logs": [
+            {
+              "category": "Audit",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "days": 90,
+                "enabled": true
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.AppConfiguration/configurationStores",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+        "ExtensionResourceType": "Microsoft.Insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-G",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-G",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "app-config-G",
+    "Name": "app-config-G",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://app-config-G.azconfig.io",
+      "encryption": {
+        "keyVaultProperties": null
+      },
+      "privateEndpointConnections": null
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.AppConfiguration/configurationStores",
+    "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "free",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-G/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-G/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "westeurope",
+        "ManagedBy": null,
+        "ResourceName": "app-config-G-diagnostic",
+        "Name": "app-config-G-diagnostic",
+        "ExtensionResourceName": "app-config-G-diagnostic",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "logs": [
+            {
+              "category": "HTTP Requests",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "days": 90,
+                "enabled": true
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.AppConfiguration/configurationStores",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+        "ExtensionResourceType": "Microsoft.Insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-H",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-H",
+    "Identity": null,
+    "Kind": null,
+    "Location": "westeurope",
+    "ManagedBy": null,
+    "ResourceName": "app-config-H",
+    "Name": "app-config-H",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://app-config-H.azconfig.io",
+      "encryption": {
+        "keyVaultProperties": null
+      },
+      "privateEndpointConnections": null
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.AppConfiguration/configurationStores",
+    "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Standard",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-H/replicas/region",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-H/replicas/region",
+        "Identity": null,
+        "Kind": null,
+        "Location": "westeurope",
+        "ManagedBy": null,
+        "ResourceName": "region",
+        "Name": "region",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "status": {
+            "displayStatus": "Ready"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.AppConfiguration/configurationStores/replicas",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores/replicas",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-I",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-I",
+    "Identity": null,
+    "Kind": null,
+    "Location": "westeurope",
+    "ManagedBy": null,
+    "ResourceName": "app-config-I",
+    "Name": "app-config-I",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://app-config-I.azconfig.io",
+      "encryption": {
+        "keyVaultProperties": null
+      },
+      "privateEndpointConnections": null
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.AppConfiguration/configurationStores",
+    "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Standard",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-I/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-I/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "australiaeast",
+        "ManagedBy": null,
+        "ResourceName": "app-config-I-diagnostic1",
+        "Name": "app-config-I-diagnostic1",
+        "ExtensionResourceName": "app-config-I-diagnostic1",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "logs": [
+            {
+              "category": null,
+              "categoryGroup": "audit",
+              "enabled": true,
+              "retentionPolicy": {
+                "days": 30,
+                "enabled": true
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.AppConfiguration/configurationStores",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+        "ExtensionResourceType": "Microsoft.Insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-I/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-I/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "northeurope",
+        "ManagedBy": null,
+        "ResourceName": "app-config-I-diagnostic2",
+        "Name": "app-config-I-diagnostic2",
+        "ExtensionResourceName": "app-config-I-diagnostic2",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "logs": [
+            {
+              "category": null,
+              "categoryGroup": "allLogs",
+              "enabled": false,
+              "retentionPolicy": {
+                "days": 30,
+                "enabled": true
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.AppConfiguration/configurationStores",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores",
+        "ExtensionResourceType": "Microsoft.Insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-I/replicas/region2",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-I/replicas/region2",
+        "Identity": null,
+        "Kind": null,
+        "Location": "northeurope",
+        "ManagedBy": null,
+        "ResourceName": "region2",
+        "Name": "region2",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "status": {
+            "displayStatus": "Ready"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.AppConfiguration/configurationStores/replicas",
+        "ResourceType": "Microsoft.AppConfiguration/configurationStores/replicas",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  }
 ]
