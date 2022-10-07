@@ -30,6 +30,34 @@ What's changed since pre-release v1.20.0-B0223:
   - Added hash to `name` and `ref` properties for policy rules. [#1653]
     - Use `AZURE_POLICY_RULE_PREFIX` or `Export-AzPolicyAssignmentRuleData -RulePrefix` to override rule prefix.
 
+## v1.20.0-B0389 (pre-release)
+
+What's changed since pre-release v1.20.0-B0304:
+
+- New rules:
+  - App Configuration:
+    - Check app configuration store has purge protection enabled by @bengeset96.
+      [#1689](https://github.com/Azure/PSRule.Rules.Azure/issues/1689)
+- Bug fixes:
+  - Fixed `Azure.Deployment.AdminUsername` incorrectly fails with nested deployments by @BernieWhite.
+    [#1762](https://github.com/Azure/PSRule.Rules.Azure/issues/1762)
+
+## v1.20.0-B0304 (pre-release)
+
+What's changed since pre-release v1.20.0-B0223:
+
+- Engineering:
+  - Bump PSRule to v2.4.2.
+    [#1753](https://github.com/Azure/PSRule.Rules.Azure/pull/1753)
+    [#1748](https://github.com/Azure/PSRule.Rules.Azure/issues/1748)
+- Bug fixes:
+  - Fixed `Azure.FrontDoorWAF.Exclusions` reports exclusions when none are specified by @BernieWhite.
+    [#1751](https://github.com/Azure/PSRule.Rules.Azure/issues/1751)
+  - Fixed `Azure.Deployment.AdminUsername` does not match the pattern by @BernieWhite.
+    [#1758](https://github.com/Azure/PSRule.Rules.Azure/issues/1758)
+  - Consider private offerings when checking that a VM or VMSS has Linux by @verabe.
+    [#1725](https://github.com/Azure/PSRule.Rules.Azure/issues/1725)
+
 ## v1.20.0-B0223 (pre-release)
 
 What's changed since pre-release v1.20.0-B0148:
