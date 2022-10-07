@@ -67,7 +67,7 @@ namespace PSRule.Rules.Azure.Configuration
                 ManagementGroup == other.ManagementGroup &&
                 ParameterDefaults == other.ParameterDefaults &&
                 Deployment == other.Deployment &&
-                PolicyRulePrefix.Equals(other.PolicyRulePrefix, StringComparison.OrdinalIgnoreCase);
+                PolicyRulePrefix == other.PolicyRulePrefix;
         }
 
         /// <inheritdoc/>

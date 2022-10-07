@@ -63,10 +63,9 @@ namespace PSRule.Rules.Azure.Data.Policy
     /// </summary>
     internal sealed class PolicyDefinition
     {
-        public PolicyDefinition(string definitionId, string name, string description, JObject value)
+        public PolicyDefinition(string definitionId, string description, JObject value)
         {
             DefinitionId = definitionId;
-            Name = name;
             Description = description;
             Value = value;
             Parameters = new Dictionary<string, IParameterValue>(StringComparer.OrdinalIgnoreCase);
@@ -107,16 +106,6 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// The spec where pre-condition for the rule.
         /// </summary>
         public JObject Where { get; set; }
-
-        /// <summary>
-        /// The unique hash of the condition and pre-condition for the rule.
-        /// </summary>
-        public string HashKey { get; set; }
-
-        /// <summary>
-        /// The prefix for the policy rule.
-        /// </summary>
-        public string Prefix { get; set; }
 
         /// <summary>
         /// The spec type pre-condition for the rule.

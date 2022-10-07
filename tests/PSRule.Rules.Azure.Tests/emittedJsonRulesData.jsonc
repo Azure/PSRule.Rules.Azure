@@ -4,8 +4,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.540aef9f0a2c",
-      "ref": "Azure.Policy.540aef9f0a2c",
+      "name": "Azure.Policy.711b248c2a36",
+      "ref": "Azure.Policy.711b248c2a36",
       "tags": {
         "Azure.Policy/category": "Storage"
       },
@@ -37,8 +37,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.34055f756c31",
-      "ref": "Azure.Policy.34055f756c31",
+      "name": "Azure.Policy.ed3cdd1a0b36",
+      "ref": "Azure.Policy.ed3cdd1a0b36",
       "tags": {
         "Azure.Policy/category": "Monitoring"
       },
@@ -340,8 +340,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.74ba9b9620a4",
-      "ref": "Azure.Policy.74ba9b9620a4",
+      "name": "Azure.Policy.96bdb80b8c7b",
+      "ref": "Azure.Policy.96bdb80b8c7b",
       "tags": {
         "Azure.Policy/category": "App Service"
       },
@@ -402,8 +402,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.5d3cb456c9ab",
-      "ref": "Azure.Policy.5d3cb456c9ab",
+      "name": "Azure.Policy.e561b2d6f013",
+      "ref": "Azure.Policy.e561b2d6f013",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -431,8 +431,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.f352fe1e1157",
-      "ref": "Azure.Policy.f352fe1e1157",
+      "name": "Azure.Policy.ae2444286cb0",
+      "ref": "Azure.Policy.ae2444286cb0",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -460,8 +460,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.9603d3aad976",
-      "ref": "Azure.Policy.9603d3aad976",
+      "name": "Azure.Policy.57d149e93fed",
+      "ref": "Azure.Policy.57d149e93fed",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -489,8 +489,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.343a7dd58a69",
-      "ref": "Azure.Policy.343a7dd58a69",
+      "name": "Azure.Policy.5c4e6dfa7d1d",
+      "ref": "Azure.Policy.5c4e6dfa7d1d",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -511,8 +511,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.82c4bc14b5f1",
-      "ref": "Azure.Policy.82c4bc14b5f1",
+      "name": "Azure.Policy.5a3cb5575682",
+      "ref": "Azure.Policy.5a3cb5575682",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -571,8 +571,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.f8777997f0ae",
-      "ref": "Azure.Policy.f8777997f0ae",
+      "name": "Azure.Policy.9c992e3a1370",
+      "ref": "Azure.Policy.9c992e3a1370",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -624,8 +624,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.016099c79a4c",
-      "ref": "Azure.Policy.016099c79a4c",
+      "name": "Azure.Policy.dcf8e21e0a26",
+      "ref": "Azure.Policy.dcf8e21e0a26",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -657,8 +657,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.f5388351250d",
-      "ref": "Azure.Policy.f5388351250d",
+      "name": "Azure.Policy.95078a87385b",
+      "ref": "Azure.Policy.95078a87385b",
       "tags": {
         "Azure.Policy/category": "Regulatory Compliance"
       },

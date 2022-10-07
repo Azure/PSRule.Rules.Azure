@@ -4,8 +4,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "AzureCustomPrefix.Policy.d3e14e636bdc",
-      "ref": "AzureCustomPrefix.Policy.d3e14e636bdc",
+      "name": "AzureCustomPrefix.Policy.5ab09e70cb94",
+      "ref": "AzureCustomPrefix.Policy.5ab09e70cb94",
       "tags": {
         "Azure.Policy/category": "General"
       },

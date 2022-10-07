@@ -49,9 +49,9 @@ namespace PSRule.Rules.Azure.Data.Policy
             writer.WritePropertyName(PROPERTY_METADATA);
             writer.WriteStartObject();
             writer.WritePropertyName(PROPERTY_NAME);
-            writer.WriteValue($"{definition.Prefix}.Policy.{definition.HashKey}");
+            writer.WriteValue(definition.Name);
             writer.WritePropertyName(PROPERTY_REF);
-            writer.WriteValue($"{definition.Prefix}.Policy.{definition.HashKey}");
+            writer.WriteValue(definition.Name);
             WriteTags(writer, definition);
             WriteAnnotations(writer, definition);
             writer.WriteEndObject();
