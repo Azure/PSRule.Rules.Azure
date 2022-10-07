@@ -790,7 +790,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             if (policyDefinition.Condition == null || policyDefinition.Condition.Count == 0)
                 throw ThrowEmptyConditionExpandResult(context, policyDefinitionId);
 
-            var policyRuleHash = GetPolicyRuleHashKey(policyDefinitionId, policyDefinition.Condition, policyDefinition.Where);
+            var policyRuleHash = GetPolicyRuleHash(policyDefinitionId, policyDefinition.Condition, policyDefinition.Where);
             policyDefinition.Name = $"{context.PolicyRulePrefix}.Policy.{policyRuleHash}";
 
             return true;
@@ -799,7 +799,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// <summary>
         /// Get hash of definitionID + condition + pre-condition
         /// </summary>
-        private static string GetPolicyRuleHashKey(string definitionId, JObject condition, JObject preCondition, int length = 6)
+        private static string GetPolicyRuleHash(string definitionId, JObject condition, JObject preCondition, int length = 6)
         {
             using var hashAlgorithm = SHA256.Create();
 
