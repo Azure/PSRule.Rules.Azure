@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.20.0-B0223:
+
+- New features:
+  - Added hash to `name` and `ref` properties for policy rules. [#1653]
+    - Use `AZURE_POLICY_RULE_PREFIX` or `Export-AzPolicyAssignmentRuleData -RulePrefix` to override rule prefix.
+
 ## v1.20.0-B0389 (pre-release)
 
 What's changed since pre-release v1.20.0-B0304:

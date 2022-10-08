@@ -3,10 +3,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
@@ -79,6 +82,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string TYPE_BACKUPPROTECTEDITEMS = "Microsoft.RecoveryServices/backupprotecteditems";
         private const string MODE_INDEXED = "Indexed";
         private const string MODE_ALL = "All";
+        private static readonly CultureInfo AzureCulture = new("en-US");
 
         /// <summary>
         /// A context state used during expanding policy assignments and definitions.
@@ -121,6 +125,10 @@ namespace PSRule.Rules.Azure.Data.Policy
                 ManagementGroup = ManagementGroupOption.Default;
                 if (context?.Option?.Configuration?.ManagementGroup != null)
                     ManagementGroup = context?.Option?.Configuration?.ManagementGroup;
+
+                PolicyRulePrefix = ConfigurationOption.Default.PolicyRulePrefix;
+                if (context?.Option?.Configuration?.PolicyRulePrefix != null)
+                    PolicyRulePrefix = context?.Option?.Configuration?.PolicyRulePrefix;
             }
 
             public TemplateVisitor.TemplateContext.CopyIndexStore CopyIndex { get; }
@@ -131,6 +139,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             public SubscriptionOption Subscription { get; }
             public TenantOption Tenant { get; }
             public ManagementGroupOption ManagementGroup { get; }
+            public string PolicyRulePrefix { get; }
 
             /// <summary>
             /// A unique identifer for the current assignment that is being processed.
@@ -722,7 +731,7 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             properties.TryStringProperty(PROPERTY_DISPLAYNAME, out var displayName);
             properties.TryStringProperty(PROPERTY_DESCRIPTION, out var description);
-            var result = new PolicyDefinition(policyDefinitionId, displayName, description, definition);
+            var result = new PolicyDefinition(policyDefinitionId, description, definition);
 
             // Set annotations
             if (properties.TryObjectProperty(PROPERTY_METADATA, out var metadata))
@@ -781,7 +790,47 @@ namespace PSRule.Rules.Azure.Data.Policy
             if (policyDefinition.Condition == null || policyDefinition.Condition.Count == 0)
                 throw ThrowEmptyConditionExpandResult(context, policyDefinitionId);
 
+            var policyRuleHash = GetPolicyRuleHash(policyDefinitionId, policyDefinition.Condition, policyDefinition.Where);
+            policyDefinition.Name = $"{context.PolicyRulePrefix}.Policy.{policyRuleHash}";
+
             return true;
+        }
+
+        /// <summary>
+        /// Get hash of definitionID + condition + pre-condition
+        /// </summary>
+        private static string GetPolicyRuleHash(string definitionId, JObject condition, JObject preCondition, int length = 6)
+        {
+            using var hashAlgorithm = SHA256.Create();
+
+            var seed = new Guid("bce66f73-3809-4740-b3c3-f52958e7ab51").ToByteArray();
+            hashAlgorithm.TransformBlock(seed, 0, seed.Length, null, 0);
+
+            if (!string.IsNullOrEmpty(definitionId))
+            {
+                var bytes = Encoding.UTF8.GetBytes(definitionId);
+                hashAlgorithm.TransformBlock(bytes, 0, bytes.Length, null, 0);
+            }
+
+            var conditionBytes = condition != null
+                ? Encoding.UTF8.GetBytes(condition.ToString(Formatting.None))
+                : Array.Empty<byte>();
+
+            hashAlgorithm.TransformBlock(conditionBytes, 0, conditionBytes.Length, null, 0);
+
+            var preConditionBytes = preCondition != null
+                ? Encoding.UTF8.GetBytes(preCondition.ToString(Formatting.None))
+                : Array.Empty<byte>();
+
+            hashAlgorithm.TransformFinalBlock(preConditionBytes, 0, preConditionBytes.Length);
+
+            var hash = hashAlgorithm.Hash;
+
+            var builder = new StringBuilder();
+            for (var i = 0; i < hash.Length && i < length; i++)
+                builder.Append(hash[i].ToString("x2", AzureCulture));
+
+            return builder.ToString();
         }
 
         /// <summary>
