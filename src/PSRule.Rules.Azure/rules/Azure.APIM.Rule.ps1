@@ -41,7 +41,7 @@ Rule 'Azure.APIM.APIDescriptors' -Ref 'AZR-000043' -Level Warning -Type 'Microso
 }
 
 # Synopsis: Use HTTPS for communication to backend services.
-Rule 'Azure.APIM.HTTPBackend' -Ref 'AZR-000044' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/backends', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } @{ 'Azure.ASB.v3/control' = 'DP-3' } {
+Rule 'Azure.APIM.HTTPBackend' -Ref 'AZR-000044' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/backends', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'DP-3' } {
     $apis = @();
     $backends = @();
 
