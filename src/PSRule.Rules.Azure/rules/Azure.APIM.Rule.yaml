@@ -19,7 +19,7 @@ metadata:
     ruleSet: 2020_06
     Azure.WAF/pillar: 'Security'
   labels:
-    Azure.ASB.v3/control: 'IM-3'
+    Azure.ASB.v3/control: [ 'IM-1', 'PA-7' ]
 spec:
   type:
   - Microsoft.ApiManagement/service
@@ -42,7 +42,7 @@ metadata:
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
   labels:
-    Azure.ASB.v3/control: 'DP-3'
+    Azure.ASB.v3/control: [ 'DP-3', 'DP-4' ] 
 spec:
   type:
   - Microsoft.ApiManagement/service
@@ -73,7 +73,7 @@ metadata:
     ruleSet: '2022_03'
     Azure.WAF/pillar: 'Security'
   labels:
-    Azure.ASB.v3/control: 'DP-3'
+    Azure.ASB.v3/control: 'DP-4'
 spec:
   type:
   - Microsoft.ApiManagement/service
