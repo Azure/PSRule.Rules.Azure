@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.20.0:
+
+- Engineering:
+  - Bump PSRule to v2.5.0.
+    [#1769](https://github.com/Azure/PSRule.Rules.Azure/pull/1769)
+
 ## v1.20.0
 
 What's changed since pre-release v1.19.2:
