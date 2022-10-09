@@ -35,6 +35,7 @@ metadata:
     release: 'GA'
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: [ 'IM-1', 'IM-2' ]
 spec:
   type:
@@ -73,6 +74,7 @@ metadata:
     release: 'GA'
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'NS-1'
 spec:
   type:
@@ -94,6 +96,7 @@ metadata:
     release: 'GA'
     ruleSet: '2020_12'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'AM-2'
 spec:
   type:
@@ -113,6 +116,7 @@ metadata:
     release: 'GA'
     ruleSet: '2021_06'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: [ 'IM-1', 'IM-2' ]
 spec:
   type:
@@ -132,6 +136,7 @@ metadata:
     release: 'GA'
     ruleSet: '2021_06'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'NS-1'
 spec:
   type:
@@ -151,6 +156,7 @@ metadata:
     release: 'preview'
     ruleSet: '2021_06'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: [ 'IM-1', 'PA-7' ]
 spec:
   type:
@@ -170,6 +176,7 @@ metadata:
     release: 'GA'
     ruleSet: '2021_06'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: [ 'IM-1', 'PA-7' ]
 spec:
   type:
@@ -189,6 +196,7 @@ metadata:
     release: 'GA'
     ruleSet: '2021_12'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'IM-8'
 spec:
   type:
@@ -208,6 +216,7 @@ metadata:
     release: 'GA'
     ruleSet: '2021_12'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'DP-7'
 spec:
   type:
@@ -229,6 +238,7 @@ metadata:
     release: 'GA'
     ruleSet: '2021_12'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: [ 'NS-1', 'DP-4' ]
 spec:
   type:
@@ -251,6 +261,7 @@ metadata:
     release: 'GA'
     ruleSet: '2021_12'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'PV-7'
 spec:
   type:
@@ -273,6 +284,7 @@ metadata:
     release: 'preview'
     ruleSet: '2021_12'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: [ 'IM-1', 'IM-2' ]
 spec:
   type:
@@ -294,6 +306,7 @@ metadata:
     release: 'GA'
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: [ 'IM-1','PA-7' ]
 spec:
   type:
@@ -361,6 +374,7 @@ metadata:
     release: 'GA'
     ruleSet: '2021_09'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'LT-3'
 spec:
   type:
