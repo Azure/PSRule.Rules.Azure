@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Ensure variables are encrypted
-Rule 'Azure.Automation.EncryptVariables' -Ref 'AZR-000086' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.ASB.v3/control' = 'DP-5' } {
+Rule 'Azure.Automation.EncryptVariables' -Ref 'AZR-000086' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'DP-5' } {
     $variables = GetSubResources -ResourceType 'Microsoft.Automation/automationAccounts/variables';
     if ($variables.Length -eq 0) {
         return $Assert.Pass();
