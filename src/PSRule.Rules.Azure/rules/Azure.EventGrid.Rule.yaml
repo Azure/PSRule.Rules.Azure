@@ -18,6 +18,7 @@ metadata:
     release: GA
     ruleSet: 2021_12
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'NS-2'
 spec:
   type:
@@ -41,6 +42,7 @@ metadata:
     release: GA
     ruleSet: 2021_12
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: [ 'IM-1', 'IM-3' ]
 spec:
   type:
