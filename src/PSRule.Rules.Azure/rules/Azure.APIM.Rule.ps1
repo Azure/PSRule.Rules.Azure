@@ -177,7 +177,7 @@ Rule 'Azure.APIM.ProductTerms' -Ref 'AZR-000050' -Type 'Microsoft.ApiManagement/
 }
 
 # Synopsis: Renew expired certificates
-Rule 'Azure.APIM.CertificateExpiry' -Ref 'AZR-000051' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels { 'Azure.ASB.v3/control' = 'DP-7' } {
+Rule 'Azure.APIM.CertificateExpiry' -Ref 'AZR-000051' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'DP-7' } {
     $configurations = @($TargetObject.Properties.hostnameConfigurations | Where-Object {
         $Null -ne $_.certificate
     })
