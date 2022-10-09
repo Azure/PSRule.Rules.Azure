@@ -27,6 +27,166 @@ Rules with a lower priority number will be processed first.
 Consider using a higher priority number for deny all rules to allow permitted traffic rules to be added.
 Consider enabling Flow Logs on all critical subnets in your subscription as an auditability and security best practice.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy Network Security Groups that pass this rule:
+
+- Set the priority of rules to a number less than a deny all rule.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Network/networkSecurityGroups",
+  "apiVersion": "2022-01-01",
+  "name": "[parameters('nsgName')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "securityRules": [
+      {
+        "name": "AllowLoadBalancerHealthInbound",
+        "properties": {
+          "description": "Allow inbound Azure Load Balancer health check.",
+          "access": "Allow",
+          "direction": "Inbound",
+          "priority": 100,
+          "protocol": "*",
+          "sourcePortRange": "*",
+          "sourceAddressPrefix": "AzureLoadBalancer",
+          "destinationPortRange": "*",
+          "destinationAddressPrefix": "*"
+        }
+      },
+      {
+        "name": "AllowApplicationInbound",
+        "properties": {
+          "description": "Allow internal web traffic into application.",
+          "access": "Allow",
+          "direction": "Inbound",
+          "priority": 300,
+          "protocol": "Tcp",
+          "sourcePortRange": "*",
+          "sourceAddressPrefix": "10.0.0.0/8",
+          "destinationPortRange": "443",
+          "destinationAddressPrefix": "VirtualNetwork"
+        }
+      },
+      {
+        "name": "DenyAllInbound",
+        "properties": {
+          "description": "Deny all other inbound traffic.",
+          "access": "Deny",
+          "direction": "Inbound",
+          "priority": 4000,
+          "protocol": "*",
+          "sourcePortRange": "*",
+          "sourceAddressPrefix": "*",
+          "destinationPortRange": "*",
+          "destinationAddressPrefix": "*"
+        }
+      },
+      {
+        "name": "DenyTraversalOutbound",
+        "properties": {
+          "description": "Deny outbound double hop traversal.",
+          "access": "Deny",
+          "direction": "Outbound",
+          "priority": 200,
+          "protocol": "Tcp",
+          "sourcePortRange": "*",
+          "sourceAddressPrefix": "VirtualNetwork",
+          "destinationAddressPrefix": "*",
+          "destinationPortRanges": [
+            "3389",
+            "22"
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy Network Security Groups that pass this rule:
+
+- Set the priority of rules to a number less than a deny all rule.
+
+For example:
+
+```bicep
+resource nsg 'Microsoft.Network/networkSecurityGroups@2022-01-01' = {
+  name: nsgName
+  location: location
+  properties: {
+    securityRules: [
+      {
+        name: 'AllowLoadBalancerHealthInbound'
+        properties: {
+          description: 'Allow inbound Azure Load Balancer health check.'
+          access: 'Allow'
+          direction: 'Inbound'
+          priority: 100
+          protocol: '*'
+          sourcePortRange: '*'
+          sourceAddressPrefix: 'AzureLoadBalancer'
+          destinationPortRange: '*'
+          destinationAddressPrefix: '*'
+        }
+      }
+      {
+        name: 'AllowApplicationInbound'
+        properties: {
+          description: 'Allow internal web traffic into application.'
+          access: 'Allow'
+          direction: 'Inbound'
+          priority: 300
+          protocol: 'Tcp'
+          sourcePortRange: '*'
+          sourceAddressPrefix: '10.0.0.0/8'
+          destinationPortRange: '443'
+          destinationAddressPrefix: 'VirtualNetwork'
+        }
+      }
+      {
+        name: 'DenyAllInbound'
+        properties: {
+          description: 'Deny all other inbound traffic.'
+          access: 'Deny'
+          direction: 'Inbound'
+          priority: 4000
+          protocol: '*'
+          sourcePortRange: '*'
+          sourceAddressPrefix: '*'
+          destinationPortRange: '*'
+          destinationAddressPrefix: '*'
+        }
+      }
+      {
+        name: 'DenyTraversalOutbound'
+        properties: {
+          description: 'Deny outbound double hop traversal.'
+          access: 'Deny'
+          direction: 'Outbound'
+          priority: 200
+          protocol: 'Tcp'
+          sourcePortRange: '*'
+          sourceAddressPrefix: 'VirtualNetwork'
+          destinationAddressPrefix: '*'
+          destinationPortRanges: [
+            '3389'
+            '22'
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
 ## LINKS
 
 - [Network security groups](https://docs.microsoft.com/azure/virtual-network/security-overview)

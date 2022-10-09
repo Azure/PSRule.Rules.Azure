@@ -7,14 +7,29 @@ using PSRule.Rules.Azure.Pipeline.Output;
 
 namespace PSRule.Rules.Azure.Pipeline
 {
+    /// <summary>
+    /// A helper for building a template expansion pipeline.
+    /// </summary>
     public interface ITemplatePipelineBuilder : IPipelineBuilder
     {
+        /// <summary>
+        /// Configures the name of the deployment.
+        /// </summary>
         void Deployment(string deploymentName);
 
+        /// <summary>
+        /// Configures properties of the resource group.
+        /// </summary>
         void ResourceGroup(ResourceGroupOption resourceGroup);
 
+        /// <summary>
+        /// Configures properties of the subscription.
+        /// </summary>
         void Subscription(SubscriptionOption subscription);
 
+        /// <summary>
+        /// Determines if expanded resources are passed through to the pipeline.
+        /// </summary>
         void PassThru(bool passThru);
     }
 
@@ -34,6 +49,7 @@ namespace PSRule.Rules.Azure.Pipeline
             Configure(option);
         }
 
+        /// <inheritdoc/>
         public void Deployment(string deploymentName)
         {
             if (string.IsNullOrEmpty(deploymentName))
@@ -43,6 +59,7 @@ namespace PSRule.Rules.Azure.Pipeline
             _DeploymentName = deploymentName;
         }
 
+        /// <inheritdoc/>
         public void ResourceGroup(ResourceGroupOption resourceGroup)
         {
             if (resourceGroup == null)
@@ -51,6 +68,7 @@ namespace PSRule.Rules.Azure.Pipeline
             Option.Configuration.ResourceGroup = ResourceGroupOption.Combine(resourceGroup, Option.Configuration.ResourceGroup);
         }
 
+        /// <inheritdoc/>
         public void Subscription(SubscriptionOption subscription)
         {
             if (subscription == null)
@@ -59,11 +77,13 @@ namespace PSRule.Rules.Azure.Pipeline
             Option.Configuration.Subscription = SubscriptionOption.Combine(subscription, Option.Configuration.Subscription);
         }
 
+        /// <inheritdoc/>
         public void PassThru(bool passThru)
         {
             _PassThru = passThru;
         }
 
+        /// <inheritdoc/>
         protected override PipelineWriter GetOutput()
         {
             // Redirect to file instead
@@ -79,11 +99,13 @@ namespace PSRule.Rules.Azure.Pipeline
                 : base.GetOutput();
         }
 
+        /// <inheritdoc/>
         protected override PipelineWriter PrepareWriter()
         {
             return _PassThru ? base.PrepareWriter() : new JsonOutputWriter(GetOutput(), Option);
         }
 
+        /// <inheritdoc/>
         public override IPipeline Build()
         {
             return new TemplatePipeline(PrepareContext());

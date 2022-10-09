@@ -20,7 +20,7 @@ namespace PSRule.Rules.Azure.Data
         /// <summary>
         /// Settings for JSON deserialization.
         /// </summary>
-        private static readonly JsonSerializerSettings _Settings = new JsonSerializerSettings
+        private static readonly JsonSerializerSettings _Settings = new()
         {
             Converters = new List<JsonConverter>
             {

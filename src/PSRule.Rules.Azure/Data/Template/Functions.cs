@@ -33,6 +33,9 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_VALUETOCONVERT = "valueToConvert";
         private const string FORMAT_ISO8601 = "yyyy-MM-ddTHH:mm:ssZ";
 
+        private const char SINGLE_QUOTE = '\'';
+        private const char DOUBLE_QUOTE = '"';
+
         internal readonly static IFunctionDescriptor[] Builtin = new IFunctionDescriptor[]
         {
             // Array and object
@@ -151,7 +154,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("uriComponentToString", UriComponentToString),
         };
 
-        private static readonly CultureInfo AzureCulture = new CultureInfo("en-US");
+        private static readonly CultureInfo AzureCulture = new("en-US");
 
         #region Array and object
 
@@ -380,9 +383,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 var result = new JArray();
                 foreach (var item in jObject.Properties().OrderBy(p => p.Name))
                 {
-                    var i = new JObject();
-                    i.Add("key", item.Name);
-                    i.Add("value", item.Value);
+                    var i = new JObject
+                    {
+                        { "key", item.Name },
+                        { "value", item.Value }
+                    };
                     result.Add(i);
                 }
                 return result;
@@ -395,7 +400,38 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args == null || args.Length != 1 || !ExpressionHelpers.TryString(args[0], out var json))
                 throw ArgumentsOutOfRange(nameof(Json), args);
 
-            return JsonConvert.DeserializeObject(json);
+            return JsonConvert.DeserializeObject(DecodeJsonString(json));
+        }
+
+        private static string DecodeJsonString(string s)
+        {
+            if (s.Length == 2 && s[0] == SINGLE_QUOTE && s[1] == SINGLE_QUOTE)
+                return s;
+
+            var pos = 0;
+            var c = new char[s.Length];
+            var quoted = false;
+            for (var i = 0; i < s.Length; i++)
+            {
+                if (!(s[i] == DOUBLE_QUOTE || s[i] == SINGLE_QUOTE) || i == s.Length - 1)
+                {
+                    c[pos++] = s[i];
+                }
+                else if (s[i] == DOUBLE_QUOTE)
+                {
+                    c[pos++] = s[i];
+                    quoted = !quoted;
+                }
+                else if (!quoted && s[i] == SINGLE_QUOTE && s[i + 1] == SINGLE_QUOTE)
+                {
+                    c[pos++] = s[i++];
+                }
+                else
+                {
+                    c[pos++] = s[i];
+                }
+            }
+            return new string(c, 0, pos);
         }
 
         /// <summary>

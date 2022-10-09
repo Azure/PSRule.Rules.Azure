@@ -1,572 +1,680 @@
 [
-    {
-        // Synopsis: Minmum TLS version must be used on Storage accounts
-        "apiVersion": "github.com/microsoft/PSRule/v1",
-        "kind": "Rule",
-        "metadata": {
-            "name": "Deny Storage Account Not Using Minumum TLS version"
-        },
-        "spec": {
-            "condition": {
-                "allOf": [
-                    {
-                        "field": "type",
-                        "equals": "Microsoft.Storage/storageAccounts"
-                    },
-                    {
-                        "field": "properties.minimumTlsVersion",
-                        "notEquals": "TLS1_2"
-                    }
-                ]
-            }
-        }
+  {
+    // Synopsis: Minmum TLS version must be used on Storage accounts
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Rule",
+    "metadata": {
+      "name": "Azure.Policy.711b248c2a36",
+      "ref": "Azure.Policy.711b248c2a36",
+      "tags": {
+        "Azure.Policy/category": "Storage"
+      },
+      "annotations": {
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/Deny-Storage-Account-Not-Using-Minimum-TLS-Version",
+        "Azure.Policy/version": "1.0.0"
+      }
     },
-    {
-        // Synopsis: Deploy Log Analytics extension for Linux VMs if the VM Image (OS) is in the list defined and the extension is not installed.
-        "apiVersion": "github.com/microsoft/PSRule/v1",
-        "kind": "Rule",
-        "metadata": {
-            "name": "Deploy Log Analytics extension for Linux VMs"
-        },
-        "spec": {
-            "condition": {
-                "allOf": [
-                    {
-                        "allOf": [
-                            {
-                                "field": "type",
-                                "equals": "Microsoft.Compute/virtualMachines"
-                            },
-                            {
-                                "anyOf": [
-                                    {
-                                        "field": "properties.storageProfile.imageReference.id",
-                                        "in": [
-                                            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Compute/galleries/gallery_image/images/image_name/versions/0.0.1"
-                                        ]
-                                    },
-                                    {
-                                        "allOf": [
-                                            {
-                                                "field": "properties.storageProfile.imageReference.publisher",
-                                                "equals": "RedHat"
-                                            },
-                                            {
-                                                "field": "properties.storageProfile.imageReference.offer",
-                                                "in": [
-                                                    "RHEL",
-                                                    "RHEL-SAP-HANA"
-                                                ]
-                                            },
-                                            {
-                                                "anyOf": [
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "6.*"
-                                                    },
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "7*"
-                                                    },
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "8*"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "allOf": [
-                                            {
-                                                "field": "properties.storageProfile.imageReference.publisher",
-                                                "equals": "SUSE"
-                                            },
-                                            {
-                                                "anyOf": [
-                                                    {
-                                                        "allOf": [
-                                                            {
-                                                                "field": "properties.storageProfile.imageReference.offer",
-                                                                "in": [
-                                                                    "SLES",
-                                                                    "SLES-HPC",
-                                                                    "SLES-HPC-Priority",
-                                                                    "SLES-SAP",
-                                                                    "SLES-SAP-BYOS",
-                                                                    "SLES-Priority",
-                                                                    "SLES-BYOS",
-                                                                    "SLES-SAPCAL",
-                                                                    "SLES-Standard"
-                                                                ]
-                                                            },
-                                                            {
-                                                                "anyOf": [
-                                                                    {
-                                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                                        "like": "12*"
-                                                                    },
-                                                                    {
-                                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                                        "like": "15*"
-                                                                    }
-                                                                ]
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "allOf": [
-                                                            {
-                                                                "anyOf": [
-                                                                    {
-                                                                        "field": "properties.storageProfile.imageReference.offer",
-                                                                        "like": "sles-12-sp*"
-                                                                    },
-                                                                    {
-                                                                        "field": "properties.storageProfile.imageReference.offer",
-                                                                        "like": "sles-15-sp*"
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "field": "properties.storageProfile.imageReference.sku",
-                                                                "in": [
-                                                                    "gen1",
-                                                                    "gen2"
-                                                                ]
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "allOf": [
-                                            {
-                                                "field": "properties.storageProfile.imageReference.publisher",
-                                                "equals": "Canonical"
-                                            },
-                                            {
-                                                "field": "properties.storageProfile.imageReference.offer",
-                                                "in": [
-                                                    "UbuntuServer",
-                                                    "0001-com-ubuntu-server-focal"
-                                                ]
-                                            },
-                                            {
-                                                "anyOf": [
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "14.04*LTS"
-                                                    },
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "16.04*LTS"
-                                                    },
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "16_04*lts-gen2"
-                                                    },
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "18.04*LTS"
-                                                    },
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "18_04*lts-gen2"
-                                                    },
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "20_04*lts"
-                                                    },
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "20_04*lts-gen2"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "allOf": [
-                                            {
-                                                "field": "properties.storageProfile.imageReference.publisher",
-                                                "equals": "credativ"
-                                            },
-                                            {
-                                                "field": "properties.storageProfile.imageReference.offer",
-                                                "equals": "Debian"
-                                            },
-                                            {
-                                                "anyOf": [
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "8*"
-                                                    },
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "9*"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "allOf": [
-                                            {
-                                                "field": "properties.storageProfile.imageReference.publisher",
-                                                "equals": "Oracle"
-                                            },
-                                            {
-                                                "field": "properties.storageProfile.imageReference.offer",
-                                                "equals": "Oracle-Linux"
-                                            },
-                                            {
-                                                "anyOf": [
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "6.*"
-                                                    },
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "7.*"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "allOf": [
-                                            {
-                                                "field": "properties.storageProfile.imageReference.publisher",
-                                                "equals": "OpenLogic"
-                                            },
-                                            {
-                                                "field": "properties.storageProfile.imageReference.offer",
-                                                "in": [
-                                                    "CentOS",
-                                                    "Centos-LVM",
-                                                    "CentOS-SRIOV"
-                                                ]
-                                            },
-                                            {
-                                                "anyOf": [
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "6.*"
-                                                    },
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "7*"
-                                                    },
-                                                    {
-                                                        "field": "properties.storageProfile.imageReference.sku",
-                                                        "like": "8*"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "allOf": [
-                                            {
-                                                "field": "properties.storageProfile.imageReference.publisher",
-                                                "equals": "cloudera"
-                                            },
-                                            {
-                                                "field": "properties.storageProfile.imageReference.offer",
-                                                "equals": "cloudera-centos-os"
-                                            },
-                                            {
-                                                "field": "properties.storageProfile.imageReference.sku",
-                                                "like": "7*"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "allOf": [
-                            {
-                                "field": "type",
-                                "equals": "Microsoft.Compute/virtualMachines/extensions"
-                            },
-                            {
-                                "allOf": [
-                                    {
-                                        "field": "properties.type",
-                                        "equals": "OmsAgentForLinux"
-                                    },
-                                    {
-                                        "field": "properties.publisher",
-                                        "equals": "Microsoft.EnterpriseCloud.Monitoring"
-                                    },
-                                    {
-                                        "field": "properties.provisioningState",
-                                        "equals": "Succeeded"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        }
-    },
-    {
-        // Synopsis: Function app must pull from specified registry
-        "apiVersion": "github.com/microsoft/PSRule/v1",
-        "kind": "Rule",
-        "metadata": {
-            "name": "FunctionAppPullFromSpecifiedRegistry"
-        },
-        "spec": {
-            "condition": {
-                "allOf": [
-                    {
-                        "allOf": [
-                            {
-                                "equals": "Microsoft.Web/sites",
-                                "field": "type"
-                            },
-                            {
-                                "field": "kind",
-                                "contains": "functionapp"
-                            }
-                        ]
-                    },
-                    {
-                        "allOf": [
-                            {
-                                "field": "type",
-                                "equals": "Microsoft.Web/sites/config"
-                            },
-                            {
-                                "anyOf": [
-                                    {
-                                        "field": "properties.linuxFxVersion",
-                                        "like": "DOCKER|acrtest.azurecr.io/*"
-                                    },
-                                    {
-                                        "field": "properties.linuxFxVersion",
-                                        "notLike": "DOCKER|*"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        }
-    },
-    {
-        // Synopsis: Enforce disabling of SNAT on load balancing rules
-        "apiVersion": "github.com/microsoft/PSRule/v1",
-        "kind": "Rule",
-        "metadata": {
-            "name": "DisableLBRuleSNAT"
-        },
-        "spec": {
-            "condition": {
-                "allOf": [
-                    {
-                        "equals": "Microsoft.Network/loadBalancers",
-                        "field": "type"
-                    },
-                    {
-                        "greaterOrEquals": 1,
-                        "field": "properties.loadBalancingRules[?@.properties.disableOutboundSnat == False]"
-                    }
-                ]
-            }
-        }
-    },
-    {
-        // Synopsis: Enforce atleast more than one LB rule
-        "apiVersion": "github.com/microsoft/PSRule/v1",
-        "kind": "Rule",
-        "metadata": {
-            "name": "EnsureAtleastOneLBRule"
-        },
-        "spec": {
-            "condition": {
-                "allOf": [
-                    {
-                        "equals": "Microsoft.Network/loadBalancers",
-                        "field": "type"
-                    },
-                    {
-                        "greaterOrEquals": 1,
-                        "field": "properties.loadBalancingRules[*]"
-                    }
-                ]
-            }
-        }
-    },
-    {
-        // Synopsis: Enforce unique description on one NSG rule
-        "apiVersion": "github.com/microsoft/PSRule/v1",
-        "kind": "Rule",
-        "metadata": {
-            "name": "UniqueDescriptionNSG"
-        },
-        "spec": {
-            "condition": {
-                "allOf": [
-                    {
-                        "equals": "Microsoft.Network/networkSecurityGroups",
-                        "field": "type"
-                    },
-                    {
-                        "field": "properties.securityRules[?@.properties.description == 'My unique description']",
-                        "count": 1
-                    }
-                ]
-            }
-        }
-    },
-    {
-        // Synopsis: Denies RDP port on inbound NSG rules
-        "apiVersion": "github.com/microsoft/PSRule/v1",
-        "kind": "Rule",
-        "metadata": {
-            "name": "DenyNSGRDPInboundPort"
-        },
-        "spec": {
-            "condition": {
-                "allOf": [
-                    {
-                        "greater": 0,
-                        "field": "properties.securityRules[?@.type == 'Microsoft.Network/networkSecurityGroups/securityRules' && @.properties.direction == 'Inbound' && @.properties.access == 'Allow' && @.properties.destinationPortRange == '3389']"
-                    }
-                ]
-            }
-        }
-    },
-    {
-        // Synopsis: Deny common ports on NSG rules
-        "apiVersion": "github.com/microsoft/PSRule/v1",
-        "kind": "Rule",
-        "metadata": {
-            "name": "DenyPortsNSG"
-        },
-        "spec": {
-            "condition": {
-                "anyOf": [
-                    {
-                        "allOf": [
-                            {
-                                "field": "type",
-                                "equals": "Microsoft.Network/networkSecurityGroups/securityRules"
-                            },
-                            {
-                                "not": {
-                                    "field": "properties.sourceAddressPrefix",
-                                    "notEquals": "*"
-                                }
-                            },
-                            {
-                                "anyOf": [
-                                    {
-                                        "field": "properties.destinationPortRange",
-                                        "equals": "22"
-                                    },
-                                    {
-                                        "field": "properties.destinationPortRange",
-                                        "equals": "3389"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "allOf": [
-                            {
-                                "field": "type",
-                                "equals": "Microsoft.Network/networkSecurityGroups"
-                            },
-                            {
-                                "greater": 0,
-                                "field": "properties.securityRules[?@.properties.sourceAddressPrefix == '*' && (@.properties.destinationPortRange == '22' || @.properties.destinationPortRange == '3389')]"
-                            }
-                        ]
-                    }
-                ]
-            }
-        }
-    },
-    {
-        // Synopsis: Prevent subnets without NSG
-        "apiVersion": "github.com/microsoft/PSRule/v1",
-        "kind": "Rule",
-        "metadata": {
-            "name": "PreventSubnetsWithoutNSG"
-        },
-        "spec": {
-            "condition": {
-                "anyOf": [
-                    {
-                        "allOf": [
-                            {
-                                "equals": "Microsoft.Network/virtualNetworks/subnets",
-                                "field": "type"
-                            },
-                            {
-                                "exists": false,
-                                "field": "properties.routeTable.id"
-                            },
-                            {
-                                "field": "name",
-                                "notIn": [
-                                    "AzureFirewallSubnet",
-                                    "AzureFirewallManagementSubnet"
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "allOf": [
-                            {
-                                "equals": "Microsoft.Network/virtualNetworks",
-                                "field": "type"
-                            },
-                            {
-                                "field": "properties.subnets[?@.properties.routeTable.id == null && (@.name != 'AzureFirewallManagementSubnet' && @.name != 'AzureFirewallSubnet')]",
-                                "notCount": 0
-                            }
-                        ]
-                    }
-                ]
-            }
-        }
-    },
-    {
-        // Synopsis: Prevent private endpoint being created in specific subnet
-        "apiVersion": "github.com/microsoft/PSRule/v1",
-        "kind": "Rule",
-        "metadata": {
-            "name": "DenyPrivateEndpointSpecificSubnet"
-        },
-        "spec": {
-            "condition": {
-                "allOf": [
-                    {
-                        "field": "type",
-                        "equals": "Microsoft.Network/privateEndpoints"
-                    },
-                    {
-                        "field": "properties.subnet.id",
-                        "notContains": "pls"
-                    },
-                    {
-                        "greaterOrEquals": 1,
-                        "field": "properties.privateLinkServiceConnections[*].properties.groupIds[?(@ != 'blob' && @ != 'sqlServer')]"
-                    }
-                ]
-            }
-        }
+    "spec": {
+      "type": [
+        "Microsoft.Storage/storageAccounts"
+      ],
+      "condition": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Storage/storageAccounts",
+            "type": "."
+          },
+          {
+            "field": "properties.minimumTlsVersion",
+            "notEquals": "TLS1_2"
+          }
+        ]
+      }
     }
+  },
+  {
+    // Synopsis: Deploy Log Analytics extension for Linux VMs if the VM Image (OS) is in the list defined and the extension is not installed.
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Rule",
+    "metadata": {
+      "name": "Azure.Policy.ed3cdd1a0b36",
+      "ref": "Azure.Policy.ed3cdd1a0b36",
+      "tags": {
+        "Azure.Policy/category": "Monitoring"
+      },
+      "annotations": {
+        "Azure.Policy/id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+        "Azure.Policy/version": "2.0.1"
+      }
+    },
+    "spec": {
+      "type": [
+        "Microsoft.Compute/virtualMachines"
+      ],
+      "where": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Compute/virtualMachines",
+            "type": "."
+          },
+          {
+            "anyOf": [
+              {
+                "field": "properties.storageProfile.imageReference.id",
+                "in": [
+                  "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Compute/galleries/gallery_image/images/image_name/versions/0.0.1"
+                ]
+              },
+              {
+                "allOf": [
+                  {
+                    "field": "properties.storageProfile.imageReference.publisher",
+                    "equals": "RedHat"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.offer",
+                    "in": [
+                      "RHEL",
+                      "RHEL-SAP-HANA"
+                    ]
+                  },
+                  {
+                    "anyOf": [
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "6.*"
+                      },
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "7*"
+                      },
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "8*"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "allOf": [
+                  {
+                    "field": "properties.storageProfile.imageReference.publisher",
+                    "equals": "SUSE"
+                  },
+                  {
+                    "anyOf": [
+                      {
+                        "allOf": [
+                          {
+                            "field": "properties.storageProfile.imageReference.offer",
+                            "in": [
+                              "SLES",
+                              "SLES-HPC",
+                              "SLES-HPC-Priority",
+                              "SLES-SAP",
+                              "SLES-SAP-BYOS",
+                              "SLES-Priority",
+                              "SLES-BYOS",
+                              "SLES-SAPCAL",
+                              "SLES-Standard"
+                            ]
+                          },
+                          {
+                            "anyOf": [
+                              {
+                                "field": "properties.storageProfile.imageReference.sku",
+                                "like": "12*"
+                              },
+                              {
+                                "field": "properties.storageProfile.imageReference.sku",
+                                "like": "15*"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "allOf": [
+                          {
+                            "anyOf": [
+                              {
+                                "field": "properties.storageProfile.imageReference.offer",
+                                "like": "sles-12-sp*"
+                              },
+                              {
+                                "field": "properties.storageProfile.imageReference.offer",
+                                "like": "sles-15-sp*"
+                              }
+                            ]
+                          },
+                          {
+                            "field": "properties.storageProfile.imageReference.sku",
+                            "in": [
+                              "gen1",
+                              "gen2"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "allOf": [
+                  {
+                    "field": "properties.storageProfile.imageReference.publisher",
+                    "equals": "Canonical"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.offer",
+                    "in": [
+                      "UbuntuServer",
+                      "0001-com-ubuntu-server-focal"
+                    ]
+                  },
+                  {
+                    "anyOf": [
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "14.04*LTS"
+                      },
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "16.04*LTS"
+                      },
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "16_04*lts-gen2"
+                      },
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "18.04*LTS"
+                      },
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "18_04*lts-gen2"
+                      },
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "20_04*lts"
+                      },
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "20_04*lts-gen2"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "allOf": [
+                  {
+                    "field": "properties.storageProfile.imageReference.publisher",
+                    "equals": "credativ"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.offer",
+                    "equals": "Debian"
+                  },
+                  {
+                    "anyOf": [
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "8*"
+                      },
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "9*"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "allOf": [
+                  {
+                    "field": "properties.storageProfile.imageReference.publisher",
+                    "equals": "Oracle"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.offer",
+                    "equals": "Oracle-Linux"
+                  },
+                  {
+                    "anyOf": [
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "6.*"
+                      },
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "7.*"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "allOf": [
+                  {
+                    "field": "properties.storageProfile.imageReference.publisher",
+                    "equals": "OpenLogic"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.offer",
+                    "in": [
+                      "CentOS",
+                      "Centos-LVM",
+                      "CentOS-SRIOV"
+                    ]
+                  },
+                  {
+                    "anyOf": [
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "6.*"
+                      },
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "7*"
+                      },
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "like": "8*"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "allOf": [
+                  {
+                    "field": "properties.storageProfile.imageReference.publisher",
+                    "equals": "cloudera"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.offer",
+                    "equals": "cloudera-centos-os"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "7*"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "condition": {
+        "field": "resources",
+        "allOf": [
+          {
+            "allOf": [
+              {
+                "field": "properties.type",
+                "equals": "OmsAgentForLinux"
+              },
+              {
+                "field": "properties.publisher",
+                "equals": "Microsoft.EnterpriseCloud.Monitoring"
+              },
+              {
+                "field": "properties.provisioningState",
+                "equals": "Succeeded"
+              }
+            ]
+          }
+        ],
+        "where": {
+          "type": ".",
+          "equals": "Microsoft.Compute/virtualMachines/extensions"
+        }
+      }
+    }
+  },
+  {
+    // Synopsis: Function app must pull from specified registry
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Rule",
+    "metadata": {
+      "name": "Azure.Policy.96bdb80b8c7b",
+      "ref": "Azure.Policy.96bdb80b8c7b",
+      "tags": {
+        "Azure.Policy/category": "App Service"
+      },
+      "annotations": {
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000000",
+        "Azure.Policy/version": "1.0.0"
+      }
+    },
+    "spec": {
+      "type": [
+        "Microsoft.Web/sites"
+      ],
+      "where": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Web/sites",
+            "type": "."
+          },
+          {
+            "field": "kind",
+            "contains": "functionapp"
+          }
+        ]
+      },
+      "condition": {
+        "field": "resources",
+        "allOf": [
+          {
+            "anyOf": [
+              {
+                "field": "properties.linuxFxVersion",
+                "like": "DOCKER|acrtest.azurecr.io/*"
+              },
+              {
+                "field": "properties.linuxFxVersion",
+                "notLike": "DOCKER|*"
+              }
+            ]
+          }
+        ],
+        "where": {
+          "allOf": [
+            {
+              "type": ".",
+              "equals": "Microsoft.Web/sites/config"
+            },
+            {
+              "name": ".",
+              "equals": "web"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    // Synopsis: Enforce disabling of SNAT on load balancing rules
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Rule",
+    "metadata": {
+      "name": "Azure.Policy.e561b2d6f013",
+      "ref": "Azure.Policy.e561b2d6f013",
+      "annotations": {
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+      }
+    },
+    "spec": {
+      "type": [
+        "Microsoft.Network/loadBalancers"
+      ],
+      "condition": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Network/loadBalancers",
+            "type": "."
+          },
+          {
+            "greaterOrEquals": 1,
+            "field": "properties.loadBalancingRules[?@.properties.disableOutboundSnat == False]"
+          }
+        ]
+      }
+    }
+  },
+  {
+    // Synopsis: Enforce atleast more than one LB rule
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Rule",
+    "metadata": {
+      "name": "Azure.Policy.ae2444286cb0",
+      "ref": "Azure.Policy.ae2444286cb0",
+      "annotations": {
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+      }
+    },
+    "spec": {
+      "type": [
+        "Microsoft.Network/loadBalancers"
+      ],
+      "condition": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Network/loadBalancers",
+            "type": "."
+          },
+          {
+            "greaterOrEquals": 1,
+            "field": "properties.loadBalancingRules[*]"
+          }
+        ]
+      }
+    }
+  },
+  {
+    // Synopsis: Enforce unique description on one NSG rule
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Rule",
+    "metadata": {
+      "name": "Azure.Policy.57d149e93fed",
+      "ref": "Azure.Policy.57d149e93fed",
+      "annotations": {
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+      }
+    },
+    "spec": {
+      "type": [
+        "Microsoft.Network/networkSecurityGroups"
+      ],
+      "condition": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Network/networkSecurityGroups",
+            "type": "."
+          },
+          {
+            "field": "properties.securityRules[?@.properties.description == 'My unique description']",
+            "count": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    // Synopsis: Denies RDP port on inbound NSG rules
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Rule",
+    "metadata": {
+      "name": "Azure.Policy.5c4e6dfa7d1d",
+      "ref": "Azure.Policy.5c4e6dfa7d1d",
+      "annotations": {
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+      }
+    },
+    "spec": {
+      "condition": {
+        "allOf": [
+          {
+            "greater": 0,
+            "field": "properties.securityRules[?@.type == 'Microsoft.Network/networkSecurityGroups/securityRules' && @.properties.direction == 'Inbound' && @.properties.access == 'Allow' && @.properties.destinationPortRange == '3389']"
+          }
+        ]
+      }
+    }
+  },
+  {
+    // Synopsis: Deny common ports on NSG rules
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Rule",
+    "metadata": {
+      "name": "Azure.Policy.5a3cb5575682",
+      "ref": "Azure.Policy.5a3cb5575682",
+      "annotations": {
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+      }
+    },
+    "spec": {
+      "type": [
+        "Microsoft.Network/networkSecurityGroups/securityRules",
+        "Microsoft.Network/networkSecurityGroups"
+      ],
+      "condition": {
+        "anyOf": [
+          {
+            "allOf": [
+              {
+                "equals": "Microsoft.Network/networkSecurityGroups/securityRules",
+                "type": "."
+              },
+              {
+                "not": {
+                  "field": "properties.sourceAddressPrefix",
+                  "notEquals": "*"
+                }
+              },
+              {
+                "anyOf": [
+                  {
+                    "field": "properties.destinationPortRange",
+                    "equals": "22"
+                  },
+                  {
+                    "field": "properties.destinationPortRange",
+                    "equals": "3389"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "equals": "Microsoft.Network/networkSecurityGroups",
+                "type": "."
+              },
+              {
+                "greater": 0,
+                "field": "properties.securityRules[?@.properties.sourceAddressPrefix == '*' && (@.properties.destinationPortRange == '22' || @.properties.destinationPortRange == '3389')]"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    // Synopsis: Prevent subnets without NSG
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Rule",
+    "metadata": {
+      "name": "Azure.Policy.9c992e3a1370",
+      "ref": "Azure.Policy.9c992e3a1370",
+      "annotations": {
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+      }
+    },
+    "spec": {
+      "type": [
+        "Microsoft.Network/virtualNetworks/subnets",
+        "Microsoft.Network/virtualNetworks"
+      ],
+      "condition": {
+        "anyOf": [
+          {
+            "allOf": [
+              {
+                "equals": "Microsoft.Network/virtualNetworks/subnets",
+                "type": "."
+              },
+              {
+                "exists": false,
+                "field": "properties.routeTable.id"
+              },
+              {
+                "field": "name",
+                "notIn": [
+                  "AzureFirewallSubnet",
+                  "AzureFirewallManagementSubnet"
+                ]
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "equals": "Microsoft.Network/virtualNetworks",
+                "type": "."
+              },
+              {
+                "field": "properties.subnets[?@.properties.routeTable.id == null && (@.name != 'AzureFirewallManagementSubnet' && @.name != 'AzureFirewallSubnet')]",
+                "notCount": 0
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    // Synopsis: Prevent private endpoint being created in specific subnet
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Rule",
+    "metadata": {
+      "name": "Azure.Policy.dcf8e21e0a26",
+      "ref": "Azure.Policy.dcf8e21e0a26",
+      "annotations": {
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+      }
+    },
+    "spec": {
+      "type": [
+        "Microsoft.Network/privateEndpoints"
+      ],
+      "condition": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Network/privateEndpoints",
+            "type": "."
+          },
+          {
+            "field": "properties.subnet.id",
+            "notContains": "pls"
+          },
+          {
+            "greaterOrEquals": 1,
+            "field": "properties.privateLinkServiceConnections[*].properties.groupIds[?(@ != 'blob' && @ != 'sqlServer')]"
+          }
+        ]
+      }
+    }
+  },
+  {
+    // Synopsis: View and configure system diagnostic data
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Rule",
+    "metadata": {
+      "name": "Azure.Policy.95078a87385b",
+      "ref": "Azure.Policy.95078a87385b",
+      "tags": {
+        "Azure.Policy/category": "Regulatory Compliance"
+      },
+      "annotations": {
+        "Azure.Policy/id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+        "Azure.Policy/version": "1.0.0"
+      }
+    },
+    "spec": {
+      "type": [
+        "Microsoft.Resources/subscriptions"
+      ],
+      "condition": {
+        "equals": "Microsoft.Resources/subscriptions",
+        "type": "."
+      }
+    }
+  }
 ]

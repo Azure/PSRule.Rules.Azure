@@ -50,8 +50,8 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
     },
     {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/containerApps/capp-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/containerApps/capp-A",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-A",
         "Identity": null,
         "Kind": null,
         "Location": "Canada Central",
@@ -100,15 +100,15 @@
             }
         },
         "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Web/containerApps",
-        "ResourceType": "Microsoft.Web/containerApps",
+        "Type": "Microsoft.App/containerApps",
+        "ResourceType": "Microsoft.App/containerApps",
         "Sku": null,
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     },
     {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/containerApps/capp-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/containerApps/capp-B",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-B",
         "Identity": null,
         "Kind": null,
         "Location": "Canada Central",
@@ -157,8 +157,8 @@
             }
         },
         "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Web/containerApps",
-        "ResourceType": "Microsoft.Web/containerApps",
+        "Type": "Microsoft.App/containerApps",
+        "ResourceType": "Microsoft.App/containerApps",
         "Sku": null,
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",

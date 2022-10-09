@@ -29,19 +29,189 @@ When inbound network traffic from the Internet is intended also consider the fol
 
 ## RECOMMENDATION
 
-Consider updating inbound rules to use a specified source such as an IP range, application security group or service tag.
+Consider updating inbound rules to use a specified source such as an IP range, application security group, or service tag.
 If inbound access from Internet-based sources is intended, consider using the service tag `Internet`.
 
-To create a Microsoft.Network/applicationSecurityGroups resource, add the following Bicep to your template.
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy Network Security Groups that pass this rule:
+
+- Set the `sourceAddressPrefix` or `sourceAddressPrefixes` to a value other then `*` for inbound allow rules.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Network/networkSecurityGroups",
+  "apiVersion": "2022-01-01",
+  "name": "[parameters('nsgName')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "securityRules": [
+      {
+        "name": "AllowLoadBalancerHealthInbound",
+        "properties": {
+          "description": "Allow inbound Azure Load Balancer health check.",
+          "access": "Allow",
+          "direction": "Inbound",
+          "priority": 100,
+          "protocol": "*",
+          "sourcePortRange": "*",
+          "sourceAddressPrefix": "AzureLoadBalancer",
+          "destinationPortRange": "*",
+          "destinationAddressPrefix": "*"
+        }
+      },
+      {
+        "name": "AllowApplicationInbound",
+        "properties": {
+          "description": "Allow internal web traffic into application.",
+          "access": "Allow",
+          "direction": "Inbound",
+          "priority": 300,
+          "protocol": "Tcp",
+          "sourcePortRange": "*",
+          "sourceAddressPrefix": "10.0.0.0/8",
+          "destinationPortRange": "443",
+          "destinationAddressPrefix": "VirtualNetwork"
+        }
+      },
+      {
+        "name": "DenyAllInbound",
+        "properties": {
+          "description": "Deny all other inbound traffic.",
+          "access": "Deny",
+          "direction": "Inbound",
+          "priority": 4000,
+          "protocol": "*",
+          "sourcePortRange": "*",
+          "sourceAddressPrefix": "*",
+          "destinationPortRange": "*",
+          "destinationAddressPrefix": "*"
+        }
+      },
+      {
+        "name": "DenyTraversalOutbound",
+        "properties": {
+          "description": "Deny outbound double hop traversal.",
+          "access": "Deny",
+          "direction": "Outbound",
+          "priority": 200,
+          "protocol": "Tcp",
+          "sourcePortRange": "*",
+          "sourceAddressPrefix": "VirtualNetwork",
+          "destinationAddressPrefix": "*",
+          "destinationPortRanges": [
+            "3389",
+            "22"
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+To create an Application Security Group, use the `Microsoft.Network/applicationSecurityGroups` resource.
+For example:
+
+```json
+{
+  "type": "Microsoft.Network/applicationSecurityGroups",
+  "apiVersion": "2022-01-01",
+  "name": "[parameters('asgName')]",
+  "location": "[parameters('location')]",
+  "properties": {}
+}
+```
+
+### Configure with Bicep
+
+To deploy Network Security Groups that pass this rule:
+
+- Set the `sourceAddressPrefix` or `sourceAddressPrefixes` to a value other then `*` for inbound allow rules.
+
+For example:
+
+```bicep
+resource nsg 'Microsoft.Network/networkSecurityGroups@2022-01-01' = {
+  name: nsgName
+  location: location
+  properties: {
+    securityRules: [
+      {
+        name: 'AllowLoadBalancerHealthInbound'
+        properties: {
+          description: 'Allow inbound Azure Load Balancer health check.'
+          access: 'Allow'
+          direction: 'Inbound'
+          priority: 100
+          protocol: '*'
+          sourcePortRange: '*'
+          sourceAddressPrefix: 'AzureLoadBalancer'
+          destinationPortRange: '*'
+          destinationAddressPrefix: '*'
+        }
+      }
+      {
+        name: 'AllowApplicationInbound'
+        properties: {
+          description: 'Allow internal web traffic into application.'
+          access: 'Allow'
+          direction: 'Inbound'
+          priority: 300
+          protocol: 'Tcp'
+          sourcePortRange: '*'
+          sourceAddressPrefix: '10.0.0.0/8'
+          destinationPortRange: '443'
+          destinationAddressPrefix: 'VirtualNetwork'
+        }
+      }
+      {
+        name: 'DenyAllInbound'
+        properties: {
+          description: 'Deny all other inbound traffic.'
+          access: 'Deny'
+          direction: 'Inbound'
+          priority: 4000
+          protocol: '*'
+          sourcePortRange: '*'
+          sourceAddressPrefix: '*'
+          destinationPortRange: '*'
+          destinationAddressPrefix: '*'
+        }
+      }
+      {
+        name: 'DenyTraversalOutbound'
+        properties: {
+          description: 'Deny outbound double hop traversal.'
+          access: 'Deny'
+          direction: 'Outbound'
+          priority: 200
+          protocol: 'Tcp'
+          sourcePortRange: '*'
+          sourceAddressPrefix: 'VirtualNetwork'
+          destinationAddressPrefix: '*'
+          destinationPortRanges: [
+            '3389'
+            '22'
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+To create an Application Security Group, use the `Microsoft.Network/applicationSecurityGroups` resource.
+For example:
 
 ```Bicep
-resource symbolicname 'Microsoft.Network/applicationSecurityGroups@2022-01-01' = {
-  name: 'string'
-  location: 'string'
-  tags: {
-    tagName1: 'tagValue1'
-    tagName2: 'tagValue2'
-  }
+resource asg 'Microsoft.Network/applicationSecurityGroups@2022-01-01' = {
+  name: asgName
+  location:location
   properties: {}
 }
 ```

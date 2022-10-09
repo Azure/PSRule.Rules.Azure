@@ -87,15 +87,20 @@ namespace PSRule.Rules.Azure
             return false;
         }
 
+        /// <summary>
+        /// Add an item to the dictionary if it doesn't already exist in the dictionary.
+        /// </summary>
         [DebuggerStepThrough]
         public static void AddUnique(this IDictionary<string, object> dictionary, IEnumerable<KeyValuePair<string, object>> values)
         {
-            if (values == null)
+            if (values == null || dictionary == null)
                 return;
 
             foreach (var kv in values)
+            {
                 if (!dictionary.ContainsKey(kv.Key))
                     dictionary.Add(kv.Key, kv.Value);
+            }
         }
     }
 }

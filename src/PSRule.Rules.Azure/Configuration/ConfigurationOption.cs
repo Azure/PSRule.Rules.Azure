@@ -12,6 +12,8 @@ namespace PSRule.Rules.Azure.Configuration
     /// </summary>
     public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
     {
+        private const string DEFAULT_POLICYRULEPREFIX = "Azure";
+
         internal static readonly ConfigurationOption Default = new()
         {
             Subscription = SubscriptionOption.Default,
@@ -20,6 +22,7 @@ namespace PSRule.Rules.Azure.Configuration
             ManagementGroup = ManagementGroupOption.Default,
             ParameterDefaults = ParameterDefaultsOption.Default,
             Deployment = DeploymentOption.Default,
+            PolicyRulePrefix = DEFAULT_POLICYRULEPREFIX,
         };
 
         /// <summary>
@@ -33,6 +36,8 @@ namespace PSRule.Rules.Azure.Configuration
             ManagementGroup = null;
             ParameterDefaults = null;
             Deployment = null;
+            PolicyIgnoreList = null;
+            PolicyRulePrefix = null;
         }
 
         internal ConfigurationOption(ConfigurationOption option)
@@ -46,6 +51,8 @@ namespace PSRule.Rules.Azure.Configuration
             ManagementGroup = option.ManagementGroup;
             ParameterDefaults = option.ParameterDefaults;
             Deployment = option.Deployment;
+            PolicyIgnoreList = option.PolicyIgnoreList;
+            PolicyRulePrefix = option.PolicyRulePrefix;
         }
 
         /// <inheritdoc/>
@@ -63,7 +70,9 @@ namespace PSRule.Rules.Azure.Configuration
                 Tenant == other.Tenant &&
                 ManagementGroup == other.ManagementGroup &&
                 ParameterDefaults == other.ParameterDefaults &&
-                Deployment == other.Deployment;
+                Deployment == other.Deployment &&
+                PolicyIgnoreList == other.PolicyIgnoreList &&
+                PolicyRulePrefix == other.PolicyRulePrefix;
         }
 
         /// <inheritdoc/>
@@ -78,6 +87,8 @@ namespace PSRule.Rules.Azure.Configuration
                 hash = hash * 23 + (ManagementGroup != null ? ManagementGroup.GetHashCode() : 0);
                 hash = hash * 23 + (ParameterDefaults != null ? ParameterDefaults.GetHashCode() : 0);
                 hash = hash * 23 + (Deployment != null ? Deployment.GetHashCode() : 0);
+                hash = hash * 23 + (PolicyIgnoreList != null ? PolicyIgnoreList.GetHashCode() : 0);
+                hash = hash * 23 + (PolicyRulePrefix != null ? PolicyRulePrefix.GetHashCode() : 0);
                 return hash;
             }
         }
@@ -92,6 +103,8 @@ namespace PSRule.Rules.Azure.Configuration
                 ManagementGroup = ManagementGroupOption.Combine(o1?.ManagementGroup, o2?.ManagementGroup),
                 ParameterDefaults = ParameterDefaultsOption.Combine(o1?.ParameterDefaults, o2?.ParameterDefaults),
                 Deployment = DeploymentOption.Combine(o1?.Deployment, o2?.Deployment),
+                PolicyIgnoreList = o1?.PolicyIgnoreList ?? o2?.PolicyIgnoreList,
+                PolicyRulePrefix = o1?.PolicyRulePrefix ?? o2?.PolicyRulePrefix
             };
             return result;
         }
@@ -138,5 +151,19 @@ namespace PSRule.Rules.Azure.Configuration
         [DefaultValue(null)]
         [YamlMember(Alias = "AZURE_DEPLOYMENT", ApplyNamingConventions = false)]
         public DeploymentOption Deployment { get; set; }
+
+        /// <summary>
+        /// Configures the policy rule prefix.
+        /// </summary>
+        [DefaultValue(null)]
+        [YamlMember(Alias = "AZURE_POLICY_RULE_PREFIX", ApplyNamingConventions = false)]
+        public string PolicyRulePrefix { get; set; }
+
+        /// <summary>
+        /// Configures a list of policy definitions to ignore.
+        /// </summary>
+        [DefaultValue(null)]
+        [YamlMember(Alias = "AZURE_POLICY_IGNORE_LIST", ApplyNamingConventions = false)]
+        public string[] PolicyIgnoreList { get; set; }
     }
 }

@@ -26,10 +26,9 @@ Apply tags to all resources to help identify resources that are attached to spec
 
 To find orphaned NSG's run the following Azure CLI command
 
-```CLI
+```bash
 az network nsg list -g $rgName --query "[?(subnets==null) && (networkInterfaces==null)].id" -o tsv
 ```
-
 
 ## LINKS
 

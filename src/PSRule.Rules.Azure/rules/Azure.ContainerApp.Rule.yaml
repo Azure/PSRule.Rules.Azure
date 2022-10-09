@@ -40,7 +40,7 @@ spec:
   if:
     allOf:
     - type: '.'
-      equals: Microsoft.Web/containerApps
+      equals: Microsoft.App/containerApps
     - field: 'properties.configuration.ingress'
       exists: true
 

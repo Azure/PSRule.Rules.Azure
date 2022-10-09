@@ -69,6 +69,7 @@ metadata:
     release: 'GA'
     ruleSet: '2022_09'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'IM-1'
 spec:
   type:
