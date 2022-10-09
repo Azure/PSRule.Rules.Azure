@@ -161,6 +161,36 @@ namespace PSRule.Rules.Azure
             return true;
         }
 
+        internal static bool TryGetProperty(this JProperty property, string propertyName, out string value)
+        {
+            value = null;
+            if (property == null || property.Value.Type != JTokenType.String || !property.Name.Equals(propertyName, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            value = property.Value.Value<string>();
+            return true;
+        }
+
+        internal static bool TryRenameProperty(this JProperty property, string oldName, string newName)
+        {
+            if (property == null || !property.Name.Equals(oldName, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            property.Parent[newName] = property.Value;
+            property.Remove();
+            return true;
+        }
+
+        internal static bool TryRenameProperty(this JProperty property, string newName)
+        {
+            if (property == null || property.Name == newName)
+                return false;
+
+            property.Parent[newName] = property.Value;
+            property.Remove();
+            return true;
+        }
+
         internal static void UseProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken, new()
         {
             if (!o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var v))

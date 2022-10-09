@@ -64,6 +64,7 @@ metadata:
     release: 'GA'
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'NS-6'
 spec:
   with:
@@ -85,7 +86,8 @@ metadata:
     release: 'GA'
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
-    Azure.ASB.v3/control: 'DP-3'
+  labels:
+    Azure.ASB.v3/control: 'NS-8'
 spec:
   type:
   - Microsoft.Network/applicationGateways
@@ -129,6 +131,7 @@ metadata:
     release: 'GA'
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'NS-6'
 spec:
   with:

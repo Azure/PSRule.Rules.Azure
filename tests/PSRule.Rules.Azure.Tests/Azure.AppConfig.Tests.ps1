@@ -42,15 +42,101 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'app-config-B';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'app-config-B', 'app-config-C', 'app-config-D', 'app-config-G';
             $ruleResult.Detail.Reason.Path | Should -BeIn 'Sku.name';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -Be 'app-config-A', 'app-config-E', 'app-config-F', 'app-config-H', 'app-config-I';
+        }
+
+        It 'Azure.AppConfig.DisableLocalAuth' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppConfig.DisableLocalAuth' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 8;
+            $ruleResult.TargetName | Should -Be 'app-config-B', 'app-config-C', 'app-config-D', 'app-config-E', 'app-config-F', 'app-config-G', 'app-config-H', 'app-config-I';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'Properties.disableLocalAuth';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'app-config-A';
+        }
+
+        It 'Azure.AppConfig.AuditLogs' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppConfig.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppConfig.AuditLogs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-C', 'app-config-E', 'app-config-G', 'app-config-H';
+
+            $ruleResult[0].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (Audit) configured or category group (audit, allLogs) configured.";
+            $ruleResult[1].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (Audit) configured or category group (audit, allLogs) configured.";
+            $ruleResult[2].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (Audit) configured or category group (audit, allLogs) configured.";
+            $ruleResult[3].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (Audit) configured or category group (audit, allLogs) configured.";
+            $ruleResult[4].Reason | Should -BeExactly "Path resources.properties.logs: Minimum one diagnostic setting should have (Audit) configured or category group (audit, allLogs) configured.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'app-config-B', 'app-config-D', 'app-config-F', 'app-config-I';
+        }
+
+        It 'Azure.AppConfig.GeoReplica' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppConfig.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppConfig.GeoReplica' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-F', 'app-config-H';
+
+            $ruleResult[0].Reason | Should -BeExactly "A replica in a secondary region was not found.";
+            $ruleResult[1].Reason | Should -BeExactly "A replica in a secondary region was not found.";
+            $ruleResult[2].Reason | Should -BeExactly "A replica in a secondary region was not found.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'app-config-E', 'app-config-I';
+        }
+
+        It 'Azure.AppConfig.PurgeProtect' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppConfig.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppConfig.PurgeProtect' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'app-config-E', 'app-config-F', 'app-config-H', 'app-config-I';
+
+            $ruleResult[0].Reason | Should -BeExactly "The app configuration store 'app-config-E' should have purge protection enabled.";
+            $ruleResult[1].Reason | Should -BeExactly "The app configuration store 'app-config-F' should have purge protection enabled.";
+            $ruleResult[2].Reason | Should -BeExactly "The app configuration store 'app-config-H' should have purge protection enabled.";
+            $ruleResult[3].Reason | Should -BeExactly "The app configuration store 'app-config-I' should have purge protection enabled.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'app-config-A';
         }
     }
 

@@ -2,23 +2,44 @@
 // Licensed under the MIT License.
 
 using Newtonsoft.Json;
+using static System.Net.WebRequestMethods;
 
 namespace PSRule.Rules.Azure.Data
 {
+    /// <summary>
+    /// Properties of an Azure Cloud Environment.
+    /// This object is exposed by the ARM <c>environment()</c> function.
+    /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-deployment#environment">docs</seealso>.
+    /// </summary>
     public sealed class CloudEnvironment
     {
+        /// <summary>
+        /// The name of the cloud environment.
+        /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// The gallery endpoint.
+        /// </summary>
         [JsonProperty(PropertyName = "gallery")]
         public string Gallery { get; set; }
 
+        /// <summary>
+        /// The Microsoft Graph endpoint.
+        /// </summary>
         [JsonProperty(PropertyName = "graph")]
         public string Graph { get; set; }
 
+        /// <summary>
+        /// The Azure Portal endpoint.
+        /// </summary>
         [JsonProperty(PropertyName = "portal")]
         public string Portal { get; set; }
 
+        /// <summary>
+        /// The audience for Microsoft Graph.
+        /// </summary>
         [JsonProperty(PropertyName = "graphAudience")]
         public string GraphAudience { get; set; }
 

@@ -1,0 +1,148 @@
+[
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoorwaf-A",
+    "type": "Microsoft.Network/frontdoorwebapplicationfirewallpolicies",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoorwaf-A",
+    "Location": "Global",
+    "ResourceName": "frontdoorwaf-A",
+    "Name": "frontdoorwaf-A",
+    "properties": {
+      "policySettings": {
+        "enabledState": "Enabled",
+        "mode": "Prevention",
+        "customBlockResponseStatusCode": 403,
+        "requestBodyCheck": "Enabled"
+      },
+      "customRules": {
+        "rules": []
+      },
+      "managedRules": {
+        "managedRuleSets": [
+          {
+            "ruleSetType": "Microsoft_DefaultRuleSet",
+            "ruleSetVersion": "2.0",
+            "ruleSetAction": "Block",
+            "ruleGroupOverrides": [],
+            "exclusions": []
+          },
+          {
+            "ruleSetType": "Microsoft_BotManagerRuleSet",
+            "ruleSetVersion": "1.0",
+            "ruleGroupOverrides": [],
+            "exclusions": []
+          }
+        ]
+      }
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoorwaf-B",
+    "type": "Microsoft.Network/frontdoorwebapplicationfirewallpolicies",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoorwaf-B",
+    "Location": "Global",
+    "ResourceName": "frontdoorwaf-B",
+    "Name": "frontdoorwaf-B",
+    "properties": {
+      "policySettings": {
+        "enabledState": "Disabled",
+        "mode": "Prevention",
+        "customBlockResponseStatusCode": 403,
+        "requestBodyCheck": "Enabled"
+      },
+      "customRules": {
+        "rules": []
+      },
+      "managedRules": {
+        "managedRuleSets": [
+          {
+            "ruleSetType": "Microsoft_DefaultRuleSet",
+            "ruleSetVersion": "2.0",
+            "ruleSetAction": "Block",
+            "ruleGroupOverrides": [],
+            "exclusions": []
+          },
+          {
+            "ruleSetType": "Microsoft_BotManagerRuleSet",
+            "ruleSetVersion": "1.0",
+            "ruleGroupOverrides": [],
+            "exclusions": []
+          }
+        ]
+      }
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoorwaf-C",
+    "type": "Microsoft.Network/frontdoorwebapplicationfirewallpolicies",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoorwaf-C",
+    "Location": "Global",
+    "ResourceName": "frontdoorwaf-C",
+    "Name": "frontdoorwaf-C",
+    "properties": {
+      "policySettings": {
+        "enabledState": "Enabled",
+        "mode": "Detection",
+        "customBlockResponseStatusCode": 403,
+        "requestBodyCheck": "Enabled"
+      },
+      "customRules": {
+        "rules": []
+      },
+      "managedRules": {
+        "managedRuleSets": [
+          {
+            "ruleSetType": "Microsoft_DefaultRuleSet",
+            "ruleSetVersion": "1.0",
+            "ruleSetAction": "Block",
+            "ruleGroupOverrides": [],
+            "exclusions": [
+              {
+                "matchVariable": "RequestHeaderNames",
+                "selectorMatchOperator": "StartsWith",
+                "selector": "test.com"
+              }
+            ]
+          },
+          {
+            "ruleSetType": "Microsoft_BotManagerRuleSet",
+            "ruleSetVersion": "1.0",
+            "ruleGroupOverrides": [],
+            "exclusions": []
+          }
+        ]
+      }
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoorwaf-D",
+    "type": "Microsoft.Network/frontdoorwebapplicationfirewallpolicies",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/frontdoorwaf-D",
+    "Location": "Global",
+    "ResourceName": "frontdoorwaf-D",
+    "Name": "frontdoorwaf-D",
+    "properties": {
+      "policySettings": {
+        "enabledState": "Enabled",
+        "mode": "Prevention",
+        "customBlockResponseStatusCode": 403,
+        "requestBodyCheck": "Enabled"
+      },
+      "customRules": {
+        "rules": []
+      },
+      "managedRules": {
+        "managedRuleSets": [
+          {
+            "ruleSetType": "Microsoft_DefaultRuleSet",
+            "ruleSetVersion": "2.0",
+            "ruleSetAction": "Block"
+          },
+          {
+            "ruleSetType": "Microsoft_BotManagerRuleSet",
+            "ruleSetVersion": "1.0"
+          }
+        ]
+      }
+    }
+  }
+]

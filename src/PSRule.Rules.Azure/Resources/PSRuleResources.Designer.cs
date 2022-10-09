@@ -196,6 +196,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The expand resulted in an empty condition being returned for &apos;{0}&apos; from &apos;{1}&apos;..
+        /// </summary>
+        internal static string EmptyConditionExpandResult {
+            get {
+                return ResourceManager.GetString("EmptyConditionExpandResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error occurred evaluating expression &apos;{0}&apos; line {1}. {2}.
         /// </summary>
         internal static string ExpressionEvaluateError {
@@ -300,6 +309,15 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string PathTraversal {
             get {
                 return ResourceManager.GetString("PathTraversal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to the policy ignore content..
+        /// </summary>
+        internal static string PolicyIgnoreInvalid {
+            get {
+                return ResourceManager.GetString("PolicyIgnoreInvalid", resourceCulture);
             }
         }
         

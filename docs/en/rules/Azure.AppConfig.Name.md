@@ -1,5 +1,5 @@
 ---
-reviewed: 2021/12/20
+reviewed: 2022-09-24
 severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
@@ -28,12 +28,61 @@ The requirements for App Configuration store names are:
 Consider using names that meet App Configuration store naming requirements.
 Additionally consider naming resources with a standard naming convention.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy configuration stores that pass this rule:
+
+- Set `name` to a value that meets the requirements.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.AppConfiguration/configurationStores",
+  "apiVersion": "2022-05-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "standard"
+  },
+  "properties": {
+    "disableLocalAuth": true,
+    "enablePurgeProtection": true
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy configuration stores that pass this rule:
+
+- Set `name` to a value that meets the requirements.
+
+For example:
+
+```bicep
+resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
+  name: name
+  location: location
+  sku: {
+    name: 'standard'
+  }
+  properties: {
+    disableLocalAuth: true
+    enablePurgeProtection: true
+  }
+}
+```
+
 ## NOTES
 
 This rule does not check if App Configuration store names are unique.
 
 ## LINKS
 
-- [Repeatable infrastructure](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
-- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftappconfiguration)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)
+- [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
+- [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftappconfiguration)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)
+- [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
