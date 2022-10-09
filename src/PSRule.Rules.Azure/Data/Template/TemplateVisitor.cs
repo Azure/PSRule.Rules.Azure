@@ -376,7 +376,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             private static JToken SecretPlaceholder(string placeholder)
             {
-                return new JValue(string.Concat("{{ SecretReference:", placeholder, "}}"));
+                return new JValue(string.Concat("{{SecretReference:", placeholder, "}}"));
             }
 
             [DebuggerDisplay("{Name}: {Index} of {Count}")]

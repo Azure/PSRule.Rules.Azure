@@ -54,45 +54,13 @@ Describe 'Azure.Deployment' -Tag 'Deployment' {
             $targetNames = $ruleResult | ForEach-Object { $_.TargetObject.name };
             $targetNames | Should -BeIn 'good';
         }
-    }
-}
-
-
-Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
-    Context 'Conditions' {
-        BeforeAll {
-            $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
-                WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
-            }
-            $templatePath = Join-Path -Path $here -ChildPath 'Resources.Deployments.json';
-            $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
-            $result = Invoke-PSRule @invokeParams -TemplateFile $templatePath -ParameterFile $parameterPath -Outcome All;
-        }
-
-        It 'Azure.Deployment.AdminUsername' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Deployment.AdminUsername' };
-
-             # Fail
-             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-             $ruleResult | Should -Not -BeNullOrEmpty;
-             $ruleResult.Length | Should -Be 3;
-             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-A', 'nestedDeployment-D', 'nestedDeployment-E';
- 
-             # Pass
-             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-             $ruleResult | Should -Not -BeNullOrEmpty;
-             $ruleResult.Length | Should -Be 5;
-             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-B', 'nestedDeployment-C', 'nestedDeployment-F', 'nestedDeployment-G', 'nestedDeployment-H';
-        }
 
         Context 'With Template' {
             BeforeAll {
                 $templatePath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Template.json';
+                $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Parameters.json';
                 $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Deployments.Template.json;
-                Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
+                Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
                 $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
             }
         
@@ -113,8 +81,46 @@ Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
             }
         
         }
+    }
+}
 
+
+Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
+    Context 'Conditions' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+        }
+
+        Context 'With Template' {
+            BeforeAll {
+                $templatePath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Template.json';
+                $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Parameters.json';
+                $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Deployments.Template.json;
+                Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
+                $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+            }
         
+            It 'Azure.Deployment.AdminUsername' {
+                $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Deployment.AdminUsername' };
+
+                # Fail
+                $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Length | Should -Be 3;
+                $ruleResult.TargetName | Should -BeIn 'nestedDeployment-A', 'nestedDeployment-D', 'nestedDeployment-E';
+    
+                # Pass
+                $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+                $ruleResult | Should -Not -BeNullOrEmpty;
+                $ruleResult.Length | Should -Be 5;
+                $ruleResult.TargetName | Should -BeIn 'nestedDeployment-B', 'nestedDeployment-C', 'nestedDeployment-F', 'nestedDeployment-G', 'nestedDeployment-H';
+            }
+        }
     }
 }
 

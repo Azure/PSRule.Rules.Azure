@@ -19,6 +19,11 @@
                     "scope": "inner"
                 },
                 "mode": "Incremental",
+                "parameters": {
+                    "adminUsername": {
+                        "value": "[parameters('adminUsername')]"
+                    }
+                },
                 "template": {
                     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
                     "contentVersion": "1.0.0.0",
@@ -53,6 +58,11 @@
                     "scope": "inner"
                 },
                 "mode": "Incremental",
+                "parameters": {
+                    "adminObject": {
+                        "value": "[parameters('adminObject')]"
+                    }
+                },
                 "template": {
                     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
                     "contentVersion": "1.0.0.0",
@@ -69,10 +79,7 @@
                             "name": "vm-example",
                             "location": "australiaeast",
                             "properties": {
-                                "osProfile": {
-                                    "computerName": "vm-example",
-                                    "adminUsername": "[parameters('adminObject')]"
-                                }
+                                "osProfile": "[parameters('adminObject')]"
                             }
                         }
                     ]
@@ -157,10 +164,7 @@
                             "name": "vm-example",
                             "location": "australiaeast",
                             "properties": {
-                                "osProfile": {
-                                    "computerName": "vm-example",
-                                    "adminUsername": "[parameters('adminObject')]"
-                                }
+                                "osProfile": "[parameters('adminObject')]"
                             }
                         }
                     ]
