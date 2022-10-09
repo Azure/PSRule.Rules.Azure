@@ -17,6 +17,9 @@ metadata:
   tags:
     release: GA
     ruleSet: 2022_09
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: 'NS-2'
 spec:
   type:
   - Microsoft.CognitiveServices/accounts
@@ -37,6 +40,9 @@ metadata:
   tags:
     release: GA
     ruleSet: 2022_09
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: [ 'IM-1', 'IM-3' ]
 spec:
   type:
   - Microsoft.CognitiveServices/accounts
@@ -57,6 +63,9 @@ metadata:
   tags:
     release: GA
     ruleSet: 2022_09
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: [ 'IM-1', 'IM-3' ]
 spec:
   type:
   - Microsoft.CognitiveServices/accounts
@@ -74,6 +83,9 @@ metadata:
   tags:
     release: GA
     ruleSet: 2022_09
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: 'NS-2'
 spec:
   type:
   - Microsoft.CognitiveServices/accounts

@@ -8,7 +8,7 @@
 #region Virtual machine
 
 # Synopsis: Virtual machines should use managed disks
-Rule 'Azure.VM.UseManagedDisks' -Ref 'AZR-000238' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VM.UseManagedDisks' -Ref 'AZR-000238' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'DP-4' } {
     # Check OS disk
     $Assert.
         NullOrEmpty($TargetObject, 'properties.storageProfile.osDisk.vhd.uri').
@@ -79,7 +79,7 @@ Rule 'Azure.VM.Agent' -Ref 'AZR-000246' -Type 'Microsoft.Compute/virtualMachines
 }
 
 # Synopsis: Ensure automatic updates are enabled at deployment
-Rule 'Azure.VM.Updates' -Ref 'AZR-000247' -Type 'Microsoft.Compute/virtualMachines' -If { IsWindowsOS } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VM.Updates' -Ref 'AZR-000247' -Type 'Microsoft.Compute/virtualMachines' -If { IsWindowsOS } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'ES-3' } {
     $Assert.HasDefaultValue($TargetObject, 'Properties.osProfile.windowsConfiguration.enableAutomaticUpdates', $True)
 }
 
@@ -125,7 +125,7 @@ Rule 'Azure.VM.ComputerName' -Ref 'AZR-000249' -Type 'Microsoft.Compute/virtualM
 #region Managed Disks
 
 # Synopsis: Managed disks should be attached to virtual machines
-Rule 'Azure.VM.DiskAttached' -Ref 'AZR-000250' -Type 'Microsoft.Compute/disks' -If { ($TargetObject.ResourceName -notlike '*-ASRReplica') -and (IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VM.DiskAttached' -Ref 'AZR-000250' -Type 'Microsoft.Compute/disks' -If { ($TargetObject.ResourceName -notlike '*-ASRReplica') -and (IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'DP-4' } {
     # Disks should be attached unless they are used by ASR, which are not attached until fail over
     # Disks for VMs that are off are marked as Reserved
     Within 'properties.diskState' 'Attached', 'Reserved' -Reason $LocalizedData.ResourceNotAssociated
@@ -151,7 +151,7 @@ Rule 'Azure.VM.DiskSizeAlignment' -Ref 'AZR-000251' -Type 'Microsoft.Compute/dis
 # TODO: Check number of disks
 
 # Synopsis: Use Azure Disk Encryption
-Rule 'Azure.VM.ADE' -Ref 'AZR-000252' -Type 'Microsoft.Compute/disks' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VM.ADE' -Ref 'AZR-000252' -Type 'Microsoft.Compute/disks' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'DP-3' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.encryptionSettingsCollection.enabled', $True)
     $Assert.HasFieldValue($TargetObject, 'Properties.encryptionSettingsCollection.encryptionSettings')
 }
