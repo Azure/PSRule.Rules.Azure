@@ -54,6 +54,27 @@ Describe 'Azure.Deployment' -Tag 'Deployment' {
             $targetNames = $ruleResult | ForEach-Object { $_.TargetObject.name };
             $targetNames | Should -BeIn 'good';
         }
+
+        It 'Azure.Deployment.SecureValue' {
+            $sourcePath = Join-Path -Path $here -ChildPath 'Tests.Bicep.9.json';
+            $data = Export-AzRuleTemplateData -TemplateFile $sourcePath -PassThru;
+            $result = $data | Invoke-PSRule @invokeParams -Name 'Azure.Deployment.SecureValue';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Deployment.SecureValue' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            # $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetObject.name };
+            $targetNames | Should -BeIn 'secret_bad', 'ps-rule-test-deployment';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetObject.name };
+            $targetNames | Should -BeIn 'secret_good';
+        }
     }
 }
 

@@ -8,13 +8,18 @@
 #region Rules
 
 # Synopsis: Avoid outputting sensitive deployment values.
-Rule 'Azure.Deployment.OutputSecretValue' -Ref 'AZR-000279' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_06'; } {
+Rule 'Azure.Deployment.OutputSecretValue' -Ref 'AZR-000279' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $Assert.Create($PSRule.Issue.Get('PSRule.Rules.Azure.Template.OutputSecretValue'));
 }
 
 # Synopsis: Ensure all properties named used for setting a username within a deployment are expressions (e.g. an ARM function not a string)
-Rule 'Azure.Deployment.AdminUsername' -Ref 'AZR-000284' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+Rule 'Azure.Deployment.AdminUsername' -Ref 'AZR-000284' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Security'; } {
     RecurseDeploymentSensitive -Deployment $TargetObject
+}
+
+# Synopsis: Use secure parameters for setting properties of resources that contain sensitive information.
+Rule 'Azure.Deployment.SecureValue' -Ref 'AZR-000314' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
+    RecurseSecureValue -Deployment $TargetObject
 }
 
 #endregion Rules
@@ -50,6 +55,54 @@ function global:RecurseDeploymentSensitive {
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+# Check resource properties that should be set by secure parameters.
+function global:RecurseSecureValue {
+    param (
+        [Parameter(Mandatory = $True)]
+        [PSObject]$Deployment
+    )
+    process {
+        $resources = @($Deployment.properties.template.resources);
+        if ($resources.Length -eq 0) {
+            return $Assert.Pass();
+        }
+
+        $secureParameters = @($Deployment.properties.template.parameters.PSObject.properties | Where-Object {
+            $_.Value.type -eq 'secureString' -or $_.Value.type -eq 'secureObject'
+        } | ForEach-Object {
+            $_.Name
+        });
+        Write-Debug -Message "Secure parameters are: $($secureParameters -join ', ')";
+
+        foreach ($resource in $resources) {
+            if ($resource.type -eq 'Microsoft.Resources/deployments') {
+                RecurseSecureValue -Deployment $resource;
+            }
+            elseif ($resource.type -eq 'Microsoft.Compute/virtualMachineScaleSets') {
+                if ($resource.properties.virtualMachineProfile.osProfile.adminPassword) {
+                    $isSecure = [PSRule.Rules.Azure.Runtime.Helper]::HasValueFromSecureParameter($resource.properties.virtualMachineProfile.osProfile.adminPassword, $secureParameters);
+                    $Assert.Create($isSecure).Reason($LocalizedData.SecureParameterRequired, 'properties.virtualMachineProfile.osProfile.adminPassword');
+                }
+                else {
+                    $Assert.Pass();
+                }
+            }
+            elseif ($resource.type -eq 'Microsoft.KeyVault/vaults/secrets') {
+                if ($resource.properties.value) {
+                    $isSecure = [PSRule.Rules.Azure.Runtime.Helper]::HasValueFromSecureParameter($resource.properties.value, $secureParameters);
+                    $Assert.Create($isSecure).Reason($LocalizedData.SecureParameterRequired, 'properties.value');
+                }
+                else {
+                    $Assert.Pass();
+                }
+            }
+            else {
+                $Assert.Pass();
             }
         }
     }

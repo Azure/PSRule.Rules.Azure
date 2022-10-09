@@ -29,6 +29,10 @@ What's changed since pre-release v1.20.0:
 - New features:
   - Mapping of Azure Security Benchmark v3 to security rules by @jagoodwin.
     [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
+- New rules:
+  - Deployment:
+    - Check sensitive resource values use secure parameters by @BernieWhite.
+      [#1773](https://github.com/Azure/PSRule.Rules.Azure/issues/1773)
 - General improvements:
   - Added built-in list of ignored policy definitions by @BernieWhite.
     [#1730](https://github.com/Azure/PSRule.Rules.Azure/issues/1730)

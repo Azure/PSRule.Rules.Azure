@@ -1,7 +1,9 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data;
@@ -33,6 +35,25 @@ namespace PSRule.Rules.Azure.Runtime
         {
             return !IsTemplateExpression(expression) ||
                 TokenStreamValidator.HasLiteralValue(ExpressionParser.Parse(expression));
+        }
+
+        /// <summary>
+        /// Get the name of parameters that would be assigned as values.
+        /// </summary>
+        internal static string[] GetParameterTokenValue(string expression)
+        {
+            return !IsTemplateExpression(expression)
+                ? Array.Empty<string>()
+                : TokenStreamValidator.GetParameterTokenValue(ExpressionParser.Parse(expression));
+        }
+
+        /// <summary>
+        /// Checks if any parameters specified in the expression are secure.
+        /// </summary>
+        public static bool HasValueFromSecureParameter(string expression, string[] secureParameters)
+        {
+            var p = GetParameterTokenValue(expression);
+            return p != null && p.Length > 0 && p.Intersect(secureParameters, StringComparer.OrdinalIgnoreCase).Count() == p.Length;
         }
 
         /// <summary>
