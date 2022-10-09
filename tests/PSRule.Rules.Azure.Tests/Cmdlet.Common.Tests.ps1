@@ -657,7 +657,9 @@ Describe 'Export-AzPolicyAssignmentData' -Tag 'Cmdlet', 'Export-AzPolicyAssignme
 Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssignmentRuleData', 'assignment' {
     BeforeAll {
         $emittedJsonRulesDataFile = Join-Path -Path $here -ChildPath 'emittedJsonRulesData.jsonc';
+        $emittedJsonRulesPrefixDataFile = Join-Path -Path $here -ChildPath 'emittedJsonRulesPrefixData.jsonc';
         $jsonRulesData = ((Get-Content -Path $emittedJsonRulesDataFile) -replace '^\s*//.*') | ConvertFrom-Json;
+        $jsonRulesPrefixData = ((Get-Content -Path $emittedJsonRulesPrefixDataFile) -replace '^\s*//.*') | ConvertFrom-Json;
     }
 
     BeforeDiscovery {
@@ -732,6 +734,19 @@ Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssi
         $compressedExpected = $jsonRulesData[$Index] | ConvertTo-Json -Depth 100 -Compress;
         $compressedResult | Should -BeExactly $compressedExpected;
     }
+
+    It 'RulePrefix is overridden when specified' {
+        $testFile = Join-Path -Path $here -ChildPath 'test12.assignment.json'
+        $result = @(Export-AzPolicyAssignmentRuleData -Name 'test12' -AssignmentFile $testFile -OutputPath $outputPath -RulePrefix 'AzureCustomPrefix');
+        $result.Length | Should -Be 1;
+        $result | Should -BeOfType System.IO.FileInfo;
+        $filename = Split-Path -Path $result.FullName -Leaf;
+        $filename | Should -BeExactly "definitions-test12.Rule.jsonc";
+        $resultJson = ((Get-Content -Path $result.FullName) -replace '^\s*//.*') | ConvertFrom-Json;
+        $compressedResult = $resultJson | ConvertTo-Json -Depth 100 -Compress;
+        $compressedExpected = $jsonRulesPrefixData | ConvertTo-Json -Depth 100 -Compress;
+        $compressedResult | Should -BeExactly $compressedExpected;
+    }
 }
 
 #endregion Export-AzPolicyAssignmentRuleData
@@ -746,7 +761,7 @@ Describe 'Get-AzPolicyAssignmentDataSource' -Tag 'Cmdlet', 'Get-AzPolicyAssignme
 
     It 'Get assignment sources from current working directory' {
         $sources = Get-AzPolicyAssignmentDataSource | Where-Object { $_.AssignmentFile -notlike "*Policy.assignment.json" } | Sort-Object { [int](Split-Path -Path $_.AssignmentFile -Leaf).Split('.')[0].TrimStart('test') }
-        $sources.Length | Should -Be 11;
+        $sources.Length | Should -Be 12;
         $sources[0].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test.assignment.json');
         $sources[1].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test2.assignment.json');
         $sources[2].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test3.assignment.json');
@@ -758,11 +773,12 @@ Describe 'Get-AzPolicyAssignmentDataSource' -Tag 'Cmdlet', 'Get-AzPolicyAssignme
         $sources[8].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test9.assignment.json');
         $sources[9].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test10.assignment.json');
         $sources[10].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test11.assignment.json');
+        $sources[11].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test12.assignment.json');
     }
 
     It 'Get assignment sources from tests folder' {
         $sources = Get-AzPolicyAssignmentDataSource -Path $here | Where-Object { $_.AssignmentFile -notlike "*Policy.assignment.json" } | Sort-Object { [int](Split-Path -Path $_.AssignmentFile -Leaf).Split('.')[0].TrimStart('test') }
-        $sources.Length | Should -Be 11;
+        $sources.Length | Should -Be 12;
         $sources[0].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test.assignment.json');
         $sources[1].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test2.assignment.json');
         $sources[2].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test3.assignment.json');
@@ -774,10 +790,11 @@ Describe 'Get-AzPolicyAssignmentDataSource' -Tag 'Cmdlet', 'Get-AzPolicyAssignme
         $sources[8].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test9.assignment.json');
         $sources[9].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test10.assignment.json');
         $sources[10].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test11.assignment.json');
+        $sources[11].AssignmentFile | Should -BeExactly (Join-Path -Path $here -ChildPath 'test12.assignment.json');
     }
 
     It 'Pipe to Export-AzPolicyAssignmentRuleData and generate JSON rules' {
-        $result = @(Get-AzPolicyAssignmentDataSource | Where-Object { $_.AssignmentFile -notlike "*Policy.assignment.json" } | Sort-Object { [int](Split-Path -Path $_.AssignmentFile -Leaf).Split('.')[0].TrimStart('test') } | Export-AzPolicyAssignmentRuleData -Name 'tests' -OutputPath $outputPath);
+        $result = @(Get-AzPolicyAssignmentDataSource | Where-Object { $_.AssignmentFile -notlike "*Policy.assignment.json" -and $_.AssignmentFile -notlike '*test12.assignment.json' } | Sort-Object { [int](Split-Path -Path $_.AssignmentFile -Leaf).Split('.')[0].TrimStart('test') } | Export-AzPolicyAssignmentRuleData -Name 'tests' -OutputPath $outputPath);
         $result.Length | Should -Be 1;
         $result | Should -BeOfType System.IO.FileInfo;
         $filename = Split-Path -Path $result.FullName -Leaf;

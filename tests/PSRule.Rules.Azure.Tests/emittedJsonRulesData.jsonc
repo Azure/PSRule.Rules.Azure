@@ -4,7 +4,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Deny Storage Account Not Using Minumum TLS version",
+      "name": "Azure.Policy.711b248c2a36",
+      "ref": "Azure.Policy.711b248c2a36",
       "tags": {
         "Azure.Policy/category": "Storage"
       },
@@ -36,7 +37,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Deploy Log Analytics extension for Linux VMs",
+      "name": "Azure.Policy.ed3cdd1a0b36",
+      "ref": "Azure.Policy.ed3cdd1a0b36",
       "tags": {
         "Azure.Policy/category": "Monitoring"
       },
@@ -338,7 +340,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "FunctionAppPullFromSpecifiedRegistry",
+      "name": "Azure.Policy.96bdb80b8c7b",
+      "ref": "Azure.Policy.96bdb80b8c7b",
       "tags": {
         "Azure.Policy/category": "App Service"
       },
@@ -399,7 +402,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "DisableLBRuleSNAT",
+      "name": "Azure.Policy.e561b2d6f013",
+      "ref": "Azure.Policy.e561b2d6f013",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -427,7 +431,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "EnsureAtleastOneLBRule",
+      "name": "Azure.Policy.ae2444286cb0",
+      "ref": "Azure.Policy.ae2444286cb0",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -455,7 +460,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "UniqueDescriptionNSG",
+      "name": "Azure.Policy.57d149e93fed",
+      "ref": "Azure.Policy.57d149e93fed",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -483,7 +489,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "DenyNSGRDPInboundPort",
+      "name": "Azure.Policy.5c4e6dfa7d1d",
+      "ref": "Azure.Policy.5c4e6dfa7d1d",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -504,7 +511,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "DenyPortsNSG",
+      "name": "Azure.Policy.5a3cb5575682",
+      "ref": "Azure.Policy.5a3cb5575682",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -563,7 +571,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "PreventSubnetsWithoutNSG",
+      "name": "Azure.Policy.9c992e3a1370",
+      "ref": "Azure.Policy.9c992e3a1370",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -615,7 +624,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "DenyPrivateEndpointSpecificSubnet",
+      "name": "Azure.Policy.dcf8e21e0a26",
+      "ref": "Azure.Policy.dcf8e21e0a26",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -647,7 +657,8 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "View and configure system diagnostic data",
+      "name": "Azure.Policy.95078a87385b",
+      "ref": "Azure.Policy.95078a87385b",
       "tags": {
         "Azure.Policy/category": "Regulatory Compliance"
       },

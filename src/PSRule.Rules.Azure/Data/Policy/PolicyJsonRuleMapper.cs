@@ -19,6 +19,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string KIND_VALUE = "Rule";
         private const string PROPERTY_METADATA = "metadata";
         private const string PROPERTY_NAME = "name";
+        private const string PROPERTY_REF = "ref";
         private const string PROPERTY_SPEC = "spec";
         private const string PROPERTY_CONDITION = "condition";
         private const string PROPERTY_WHERE = "where";
@@ -48,6 +49,8 @@ namespace PSRule.Rules.Azure.Data.Policy
             writer.WritePropertyName(PROPERTY_METADATA);
             writer.WriteStartObject();
             writer.WritePropertyName(PROPERTY_NAME);
+            writer.WriteValue(definition.Name);
+            writer.WritePropertyName(PROPERTY_REF);
             writer.WriteValue(definition.Name);
             WriteTags(writer, definition);
             WriteAnnotations(writer, definition);
