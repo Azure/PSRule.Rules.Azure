@@ -14,22 +14,41 @@ Rule 'Azure.Deployment.OutputSecretValue' -Ref 'AZR-000279' -Type 'Microsoft.Res
 
 # Synopsis: Ensure all properties named used for setting a username within a deployment are expressions (e.g. an ARM function not a string)
 Rule 'Azure.Deployment.AdminUsername' -Ref 'AZR-000284' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
-    $resources = @($TargetObject.properties.template.resources);
-    if ($resources.Length -eq 0 ) {
-        return $Assert.Pass();
-    }
-    else {
+    RecurseDeploymentSensitive -Deployment $TargetObject
+}
+
+#endregion Rules
+
+#region Helpers
+
+function global:RecurseDeploymentSensitive {
+    param (
+        [Parameter(Mandatory = $True)]
+        [PSObject]$Deployment
+    )
+    process {
         $propertyNames = $Configuration.GetStringValues('AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES');
+        $resources = @($Deployment.properties.template.resources);
+        if ($resources.Length -eq 0) {
+            return $Assert.Pass();
+        }
 
         foreach ($resource in $resources) {
-            foreach ($propertyName in $propertyNames) {
-                $found = $PSRule.GetPath($resource, "$..$propertyName");
-                if ($found -eq $Null -or $found.Length -eq 0) {
-                    $Assert.Pass();
-                }
-                else {
-                    Write-Debug "Found property name: $propertyName";
-                    $Assert.Create(![PSRule.Rules.Azure.Runtime.Helper]::HasLiteralValue($found), $LocalizedData.LiteralSensitiveProperty, $propertyName);
+            if ($resource.type -eq 'Microsoft.Resources/deployments') {
+                RecurseDeploymentSensitive -Deployment $resource;
+            }
+            else {
+                foreach ($propertyName in $propertyNames) {
+                    $found = $PSRule.GetPath($resource, "$..$propertyName");
+                    if ($Null -eq $found -or $found.Length -eq 0) {
+                        $Assert.Pass();
+                    }
+                    else {
+                        Write-Debug "Found property name: $propertyName";
+                        foreach ($value in $found) {
+                            $Assert.Create(![PSRule.Rules.Azure.Runtime.Helper]::HasLiteralValue($value), $LocalizedData.LiteralSensitiveProperty, $propertyName);
+                        }
+                    }
                 }
             }
         }
@@ -37,14 +56,23 @@ Rule 'Azure.Deployment.AdminUsername' -Ref 'AZR-000284' -Type 'Microsoft.Resourc
 }
 
 # Synopsis: Ensure Outer scope deployments aren't using SecureString or SecureObject Parameters
-Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000313' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
-    
-    if($TargetObject.properties.expressionEvaluationOptions.scope -eq 'Outer'){
-        $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($TargetObject);
-        $Assert.NotMatch($cleanValue, '.', 'SecretReference');
-    } else {
-        $Assert.Pass()
+Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000314' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_12' } { 
+    foreach($deployments in $TargetObject.properties.template.resources){
+        if($deployments.properties.expressionEvaluationOptions.scope -eq 'outer'){
+            Write-Host "Scope matched outer"
+            foreach ($outerDeployment in $deployments.properties.template.resources){
+                Write-Host "outerDeployment: $outerDeployment"
+                Write-Host "outerDeployment.properties: $($outerDeployment.properties)"
+                $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($outerDeployment.properties);
+                Write-Host "Cleanvalue: $cleanValue"
+                $Assert.NotMatch($cleanValue, '.', 'SecretReference');
+            }
+            
+        } else {
+            $Assert.Pass()
+        }
     }
+    
 }
 
 

@@ -42,15 +42,15 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -Be 'app-config-B', 'app-config-C', 'app-config-D', 'app-config-E', 'app-config-G';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'app-config-B', 'app-config-C', 'app-config-D', 'app-config-G';
             $ruleResult.Detail.Reason.Path | Should -BeIn 'Sku.name';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -Be 'app-config-A', 'app-config-F', 'app-config-H', 'app-config-I';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -Be 'app-config-A', 'app-config-E', 'app-config-F', 'app-config-H', 'app-config-I';
         }
 
         It 'Azure.AppConfig.DisableLocalAuth' {
@@ -112,8 +112,31 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'app-config-E', 'app-config-I';
+        }
+
+        It 'Azure.AppConfig.PurgeProtect' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppConfig.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppConfig.PurgeProtect' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'app-config-E', 'app-config-F', 'app-config-H', 'app-config-I';
+
+            $ruleResult[0].Reason | Should -BeExactly "The app configuration store 'app-config-E' should have purge protection enabled.";
+            $ruleResult[1].Reason | Should -BeExactly "The app configuration store 'app-config-F' should have purge protection enabled.";
+            $ruleResult[2].Reason | Should -BeExactly "The app configuration store 'app-config-H' should have purge protection enabled.";
+            $ruleResult[3].Reason | Should -BeExactly "The app configuration store 'app-config-I' should have purge protection enabled.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'app-config-I';
+            $ruleResult.TargetName | Should -BeIn 'app-config-A';
         }
     }
 

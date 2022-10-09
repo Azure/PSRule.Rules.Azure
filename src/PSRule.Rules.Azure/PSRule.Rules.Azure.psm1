@@ -376,6 +376,9 @@ function Export-AzPolicyAssignmentRuleData {
         [String]$OutputPath = $PWD,
 
         [Parameter(Mandatory = $False)]
+        [String]$RulePrefix,
+
+        [Parameter(Mandatory = $False)]
         [Switch]$PassThru = $False
     )
     begin {
@@ -383,6 +386,10 @@ function Export-AzPolicyAssignmentRuleData {
 
         $option = [PSRule.Rules.Azure.Configuration.PSRuleOption]::FromFileOrDefault($PWD);
         $option.Output.Path = $OutputPath;
+
+        if ($PSBoundParameters.ContainsKey('RulePrefix')) {
+            $option.Configuration.PolicyRulePrefix = $RulePrefix
+        }
 
         # Build the pipeline
         $builder = [PSRule.Rules.Azure.Pipeline.PipelineBuilder]::Assignment($option);

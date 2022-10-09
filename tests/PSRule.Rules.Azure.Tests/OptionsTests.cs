@@ -24,6 +24,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("US", actual.Configuration.Tenant.CountryCode);
             Assert.Equal("psrule-test", actual.Configuration.ManagementGroup.Name);
             Assert.Equal("PSRule Test Management Group", actual.Configuration.ManagementGroup.Properties.DisplayName);
+            Assert.Equal("Azure", actual.Configuration.PolicyRulePrefix);
 
             actual = PSRuleOption.FromFileOrDefault("test-template-options.yaml");
             Assert.NotNull(actual);
@@ -40,6 +41,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("unit-test-mg", actual.Configuration.ManagementGroup.Name);
             Assert.Equal("My test management group", actual.Configuration.ManagementGroup.Properties.DisplayName);
             Assert.Equal("deployment-from-yaml", actual.Configuration.Deployment.Name);
+            Assert.Equal("AzureCustomPrefix", actual.Configuration.PolicyRulePrefix);
         }
 
         [Fact]

@@ -63,10 +63,9 @@ namespace PSRule.Rules.Azure.Data.Policy
     /// </summary>
     internal sealed class PolicyDefinition
     {
-        public PolicyDefinition(string definitionId, string name, string description, JObject value)
+        public PolicyDefinition(string definitionId, string description, JObject value)
         {
             DefinitionId = definitionId;
-            Name = name;
             Description = description;
             Value = value;
             Parameters = new Dictionary<string, IParameterValue>(StringComparer.OrdinalIgnoreCase);
