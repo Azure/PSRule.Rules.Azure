@@ -18,16 +18,34 @@ namespace PSRule.Rules.Azure.Runtime
     /// </summary>
     public static class Helper
     {
+        /// <summary>
+        /// Parse and reformat the expression by removing whitespace.
+        /// </summary>
         public static string CompressExpression(string expression)
         {
             return !IsTemplateExpression(expression) ? expression : ExpressionParser.Parse(expression).AsString();
         }
 
+        /// <summary>
+        /// Look for literals and variable usage.
+        /// </summary>
+        public static bool HasLiteralValue(string expression)
+        {
+            return !IsTemplateExpression(expression) ||
+                TokenStreamValidator.HasLiteralValue(ExpressionParser.Parse(expression));
+        }
+
+        /// <summary>
+        /// Check it the string is an expression.
+        /// </summary>
         public static bool IsTemplateExpression(string expression)
         {
             return ExpressionParser.IsExpression(expression);
         }
 
+        /// <summary>
+        /// Expand resources from a parameter file and linked template/ bicep files.
+        /// </summary>
         public static PSObject[] GetResources(string parameterFile, int timeout)
         {
             var context = GetContext();
@@ -41,16 +59,25 @@ namespace PSRule.Rules.Azure.Runtime
                 GetTemplateResources(link.TemplateFile, link.ParameterFile, context);
         }
 
+        /// <summary>
+        /// Expand resources from a bicep file.
+        /// </summary>
         public static PSObject[] GetBicepResources(string bicepFile, PSCmdlet commandRuntime, int timeout)
         {
             return GetBicepResources(bicepFile, null, commandRuntime, timeout);
         }
 
+        /// <summary>
+        /// Get the linked template path.
+        /// </summary>
         public static string GetMetadataLinkPath(string parameterFile, string templateFile)
         {
             return TemplateLinkHelper.GetMetadataLinkPath(parameterFile, templateFile);
         }
 
+        /// <summary>
+        /// Evaluate NSG rules.
+        /// </summary>
         public static INetworkSecurityGroupEvaluator GetNetworkSecurityGroup(PSObject[] securityRules)
         {
             var builder = new NetworkSecurityGroupEvaluator();
@@ -58,6 +85,9 @@ namespace PSRule.Rules.Azure.Runtime
             return builder;
         }
 
+        /// <summary>
+        /// Get resource type information.
+        /// </summary>
         public static ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
         {
             var resourceProviderHelper = new ResourceProviderHelper();

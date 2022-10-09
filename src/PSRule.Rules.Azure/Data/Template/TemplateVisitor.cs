@@ -1653,7 +1653,7 @@ namespace PSRule.Rules.Azure.Data.Template
         protected static T EvaluateExpression<T>(ITemplateContext context, JToken value)
         {
             if (value.Type != JTokenType.String)
-                return default(T);
+                return default;
 
             var svalue = value.Value<string>();
             var lineInfo = value.TryLineInfo();
@@ -1663,7 +1663,7 @@ namespace PSRule.Rules.Azure.Data.Template
         protected static T EvaluateExpression<T>(ITemplateContext context, string value, IJsonLineInfo lineInfo)
         {
             if (string.IsNullOrEmpty(value))
-                return default(T);
+                return default;
 
             var exp = Expression<T>(context, value);
             try

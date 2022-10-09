@@ -135,4 +135,29 @@ namespace PSRule.Rules.Azure.Data
             throw new NotImplementedException();
         }
     }
+
+    internal sealed class HashSetConverter : JsonConverter<HashSet<string>>
+    {
+        private readonly IEqualityComparer<string> _Comparer;
+
+        public HashSetConverter(IEqualityComparer<string> comparer)
+        {
+            _Comparer = comparer;
+        }
+
+        public override HashSet<string> ReadJson(JsonReader reader, Type objectType, HashSet<string> existingValue, bool hasExistingValue, JsonSerializer serializer)
+        {
+            if (reader == null || serializer == null || reader.TokenType != JsonToken.StartArray)
+                return null;
+
+            var d = new HashSet<string>(_Comparer);
+            serializer.Populate(reader, d);
+            return d;
+        }
+
+        public override void WriteJson(JsonWriter writer, HashSet<string> value, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

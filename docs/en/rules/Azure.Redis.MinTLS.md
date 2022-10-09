@@ -11,7 +11,7 @@ ms-content-id: 31240bca-b04f-4267-9c31-cfca4e91cfbf
 
 ## SYNOPSIS
 
-Redis Cache should reject TLS versions older then 1.2.
+Redis Cache should reject TLS versions older than 1.2.
 
 ## DESCRIPTION
 

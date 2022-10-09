@@ -45,7 +45,28 @@ Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry
             return $Assert.Pass();
         }
     }
-    return $Assert.Fail($LocalizedData.ReplicaNotFound);
+    return $Assert.Fail($LocalizedData.ReplicaInSecondaryNotFound);
+}
+
+# Synopsis: Azure Container Registries should have soft delete policy enabled.
+Rule 'Azure.ACR.SoftDelete' -Ref 'AZR-000310' -Type 'Microsoft.ContainerRegistry/registries' -If { GetACRSoftDeletePreviewLimitations } -Tag @{ release = 'Preview'; ruleSet = '2022_09'; } {
+    $Assert.HasFieldValue($TargetObject, 'properties.policies.softDeletePolicy.status', 'enabled').Reason($LocalizedData.ACRSoftDeletePolicy, $TargetObject.name)
+    $Assert.HasFieldValue($TargetObject, 'properties.policies.softDeletePolicy.retentionDays').Reason($LocalizedData.ACRSoftDeletePolicyRetention, $TargetObject.name)
 }
 
 #endregion Rules
+
+#region Helper functions
+
+function global:GetACRSoftDeletePreviewLimitations {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        $notGeoReplica = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/replications')
+        $notRetentionPolicy = $Assert.HasDefaultValue($TargetObject, 'properties.policies.retentionPolicy.status', 'disabled').Result
+        ($notGeoReplica.Count -eq 0) -and ($notRetentionPolicy -eq $true)
+    }   
+}
+
+#endregion Helper functions

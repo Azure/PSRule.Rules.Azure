@@ -31,28 +31,19 @@ Rule 'Azure.Automation.WebHookExpiry' -Ref 'AZR-000087' -Type 'Microsoft.Automat
 }
 
 # Synopsis: Ensure automation account audit diagnostic logs are enabled.
-Rule 'Azure.Automation.AuditLogs' -Ref 'AZR-000088' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2021_12'; 'Azure.WAF/pillar' = 'Security'; 'Azure.ASB.v3/control' = 'LT-4' } {
-    $diagnosticLogs = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.Automation/automationAccounts/providers/diagnosticSettings');
+Rule 'Azure.Automation.AuditLogs' -Ref 'AZR-000088' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2021_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'LT-4' } {
+    $logCategoryGroups = 'audit', 'allLogs'
+    $joinedLogCategoryGroups = $logCategoryGroups -join ', '
+    $diagnostics = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.Automation/automationAccounts/providers/diagnosticSettings' |
+        ForEach-Object { $_.Properties.logs |
+            Where-Object { ($_.category -eq 'AuditEvent' -or $_.categoryGroup -in $logCategoryGroups) -and $_.enabled }
+        })
 
-    $Assert.Greater($diagnosticLogs, '.', 0).Reason($LocalizedData.DiagnosticSettingsNotConfigured);
-
-    $logCategoryGroups = 'audit', 'allLogs';
-    $joinedLogCategoryGroups = $logCategoryGroups -join ', ';
-
-    foreach ($setting in $diagnosticLogs) {
-        $path = $setting._PSRule.path;
-        $auditLogs = @($setting.Properties.logs | Where-Object {
-            ($_.category -eq 'AuditEvent' -or $_.categoryGroup -in $logCategoryGroups) -and $_.enabled
-        });
-
-        $Assert.Greater($auditLogs, 'Length', 0).ReasonFrom(
-            'properties.logs',
-            $LocalizedData.AutomationAccountDiagnosticSetting,
-            $setting.name,
-            'AuditEvent',
-            $joinedLogCategoryGroups
-        ).PathPrefix($path);
-    }
+    $Assert.Greater($diagnostics, '.', 0).Reason(
+        $LocalizedData.AutomationAccountAuditDiagnosticSetting,
+        'AuditEvent',
+        $joinedLogCategoryGroups
+    ).PathPrefix('resources')
 }
 
 # Synopsis: Ensure automation account platform diagnostic logs are enabled.
@@ -68,7 +59,7 @@ Rule 'Azure.Automation.PlatformLogs' -Ref 'AZR-000089' -Type 'Microsoft.Automati
     $Assert.Greater($diagnosticLogs, '.', 0).Reason($LocalizedData.DiagnosticSettingsNotConfigured);
 
     $availableLogCategories = @{
-        Logs = @(
+        Logs    = @(
             'JobLogs',
             'JobStreams',
             'DscNodeStatus'
@@ -79,12 +70,12 @@ Rule 'Azure.Automation.PlatformLogs' -Ref 'AZR-000089' -Type 'Microsoft.Automati
     };
 
     $configurationLogCategories = @($configurationLogCategoriesList | Where-Object {
-        $_ -in $availableLogCategories.Logs
-    });
+            $_ -in $availableLogCategories.Logs
+        });
 
     $configurationMetricCategories = @($configurationLogCategoriesList | Where-Object {
-        $_ -in $availableLogCategories.Metrics
-    });
+            $_ -in $availableLogCategories.Metrics
+        });
 
     $logCategoriesNeeded = [System.Math]::Min(
         $configurationLogCategories.Length, 
@@ -101,24 +92,24 @@ Rule 'Azure.Automation.PlatformLogs' -Ref 'AZR-000089' -Type 'Microsoft.Automati
     foreach ($setting in $diagnosticLogs) {
         $path = $setting._PSRule.path;
         $allLogs = @($setting.Properties.logs | Where-Object {
-            $_.enabled -and $_.categoryGroup -eq 'allLogs'
-        });
+                $_.enabled -and $_.categoryGroup -eq 'allLogs'
+            });
 
         $platformLogs = @($setting.Properties.logs | Where-Object {
-            $_.enabled -and
-            $_.category -in $configurationLogCategories -and
-            $_.category -in $availableLogCategories.Logs
-        });
+                $_.enabled -and
+                $_.category -in $configurationLogCategories -and
+                $_.category -in $availableLogCategories.Logs
+            });
 
         $metricLogs = @($setting.Properties.metrics | Where-Object {
-            $_.enabled -and 
-            $_.category -in $configurationMetricCategories -and
-            $_.category -in $availableLogCategories.Metrics
-        });
+                $_.enabled -and 
+                $_.category -in $configurationMetricCategories -and
+                $_.category -in $availableLogCategories.Metrics
+            });
 
         $platformLogsEnabled = ($Assert.HasFieldValue($platformLogs, 'Length', $logCategoriesNeeded).Result -or 
-                                $Assert.Greater($allLogs, 'Length', 0).Result) -and 
-                               $Assert.HasFieldValue($metricLogs, 'Length', $metricCategoriesNeeded).Result;
+            $Assert.Greater($allLogs, 'Length', 0).Result) -and 
+        $Assert.HasFieldValue($metricLogs, 'Length', $metricCategoriesNeeded).Result;
 
         $Assert.Create(
             'properties.logs',
