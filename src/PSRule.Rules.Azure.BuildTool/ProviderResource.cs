@@ -34,6 +34,7 @@ namespace PSRule.Rules.Azure.BuildTool
             BuildIndex(options);
             MinifyTypes(options);
             MinifyEnvironments(options);
+            MinifyPolicyIgnore(options);
         }
 
         private static void MinifyEnvironments(ProviderResourceOption options)
@@ -41,6 +42,13 @@ namespace PSRule.Rules.Azure.BuildTool
             Console.WriteLine("BuildTool -- Minify environments");
             var environments = ReadFile<JObject>(GetSourcePath("./data/environments.json"));
             WriteFile(GetSourcePath("./data/environments.min.json"), environments);
+        }
+
+        private static void MinifyPolicyIgnore(ProviderResourceOption options)
+        {
+            Console.WriteLine("BuildTool -- Minify policy-ignore");
+            var policyIgnore = ReadFile<string[]>(GetSourcePath("./data/policy-ignore.json"));
+            WriteFile(GetSourcePath("./data/policy-ignore.min.json"), policyIgnore);
         }
 
         private static void MinifyTypes(ProviderResourceOption options)
