@@ -35,7 +35,7 @@ namespace PSRule.Rules.Azure
 
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
-            Assert.Equal(111, definitions.Length);
+            Assert.Equal(101, definitions.Length);
 
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
@@ -48,11 +48,42 @@ namespace PSRule.Rules.Azure
             Assert.Equal("{\"allOf\":[{\"equals\":\"Microsoft.Storage/storageAccounts\",\"type\":\".\"},{\"field\":\"properties.networkAcls.defaultAction\",\"notEquals\":\"Deny\"}]}", actual.Condition.ToString(Formatting.None));
         }
 
+        [Fact]
+        public void GetPolicyDefinitionWithIgnore()
+        {
+            var options = new PSRuleOption();
+            options.Configuration.PolicyIgnoreList = new string[]
+            {
+                "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c"
+            };
+            var context = new PolicyAssignmentContext(GetContext(options));
+            var visitor = new PolicyAssignmentDataExportVisitor();
+            foreach (var assignment in GetAssignmentData())
+            {
+                try
+                {
+                    visitor.Visit(context, assignment);
+                }
+                catch
+                {
+                    // Sink exceptions, currently there are bugs that need to be fixed.
+                }
+            }
+
+            var definitions = context.GetDefinitions();
+            Assert.NotNull(definitions);
+            Assert.Equal(100, definitions.Length);
+
+            // Check category and version
+            var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
+            Assert.Null(actual);
+        }
+
         #region Helper methods
 
-        private static PipelineContext GetContext()
+        private static PipelineContext GetContext(PSRuleOption option = null)
         {
-            return new PipelineContext(new PSRuleOption(), null);
+            return new PipelineContext(option ?? new PSRuleOption(), null);
         }
 
         private static string GetSourcePath(string fileName)
