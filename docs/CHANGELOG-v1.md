@@ -26,6 +26,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.20.0:
 
+- New features:
+  - Mapping of Azure Security Benchmark v3 to security rules by @jagoodwin.
+    [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
 - Engineering:
   - Bump PSRule to v2.5.0.
     [#1769](https://github.com/Azure/PSRule.Rules.Azure/pull/1769)
@@ -268,9 +271,6 @@ What's changed since pre-release v1.20.0-B0085:
 
 What's changed since pre-release v1.20.0-B0028:
 
-- New features:
-  - Mapping of Azure Security Benchmark v3 to security rules by @jagoodwin.
-    [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
 - New rules:
   - Azure Cache for Redis:
     - Check the number of firewall rules for caches by @jonathanruiz.
