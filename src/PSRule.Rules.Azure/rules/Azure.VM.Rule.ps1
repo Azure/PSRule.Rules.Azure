@@ -22,16 +22,6 @@ Rule 'Azure.VM.UseManagedDisks' -Ref 'AZR-000238' -Type 'Microsoft.Compute/virtu
     }
 }
 
-# Synopsis: VMs should not use expired promo SKU
-Rule 'Azure.VM.PromoSku' -Ref 'AZR-000240' -If { IsVMPromoSku } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Match 'Properties.hardwareProfile.vmSize' -Not -Expression 'Standard_DS{0,1}1{0,1}[1-9]{1}_v2_Promo'
-}
-
-# Synopsis: VMs should not use Basic SKU
-Rule 'Azure.VM.BasicSku' -Ref 'AZR-000241' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Match 'Properties.hardwareProfile.vmSize' -Not -Expression 'Basic_A[0-4]'
-}
-
 # Synopsis: Check disk caching is configured correctly for the workload
 Rule 'Azure.VM.DiskCaching' -Ref 'AZR-000242' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     # Check OS disk
@@ -58,11 +48,13 @@ Rule 'Azure.VM.UseHybridUseBenefit' -Ref 'AZR-000243' -If { SupportsHybridUse } 
     $Assert.HasFieldValue($TargetObject, 'properties.licenseType', 'Windows_Server');
 }
 
-# Synopsis: Enabled accelerated networking for supported operating systems
+# Synopsis: Use accelerated networking for supported operating systems and VM types.
 Rule 'Azure.VM.AcceleratedNetworking' -Ref 'AZR-000244' -If { SupportsAcceleratedNetworking } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $networkInterfaces = GetSubResources -ResourceType 'Microsoft.Network/networkInterfaces';
-    $Null -ne $networkInterfaces;
-    foreach ($interface in $networkInterfaces) {
+    $resources = @(GetSubResources -ResourceType 'Microsoft.Network/networkInterfaces');
+    if ($resources.Length -eq 0) {
+        return $Assert.Pass();
+    }
+    foreach ($interface in $resources) {
         $Assert.HasFieldValue($interface, 'Properties.enableAcceleratedNetworking', $True);
     }
 }
@@ -174,11 +166,6 @@ Rule 'Azure.VM.DiskName' -Ref 'AZR-000253' -Type 'Microsoft.Compute/disks' -Tag 
 
 #region Availability set
 
-# Synopsis: Availability sets should be aligned
-Rule 'Azure.VM.ASAlignment' -Ref 'AZR-000254' -Type 'Microsoft.Compute/availabilitySets' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'sku.name', 'aligned');
-}
-
 # Synopsis: Availability sets should be deployed with at least two members
 Rule 'Azure.VM.ASMinMembers' -Ref 'AZR-000255' -Type 'Microsoft.Compute/availabilitySets' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.GreaterOrEqual($TargetObject, 'properties.virtualMachines', 2)
@@ -208,11 +195,6 @@ Rule 'Azure.VM.NICAttached' -Ref 'AZR-000257' -Type 'Microsoft.Network/networkIn
         $Assert.HasFieldValue($TargetObject, 'Properties.virtualMachine.id'),
         $Assert.HasFieldValue($TargetObject, 'Properties.privateEndpoint.id')
     )
-}
-
-# Synopsis: Network interfaces should inherit from virtual network
-Rule 'Azure.VM.UniqueDns' -Ref 'AZR-000258' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.NullOrEmpty($TargetObject, 'Properties.dnsSettings.dnsServers')
 }
 
 # Synopsis: Use NIC naming requirements

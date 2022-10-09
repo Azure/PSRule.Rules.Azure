@@ -463,16 +463,6 @@ function global:WithinCIDR {
     }
 }
 
-# Determine if the VM is using a promo SKU.
-function global:IsVMPromoSku {
-    process {
-        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachines') {
-            return $False;
-        }
-        return $TargetObject.Properties.hardwareProfile.vmSize -like '*_Promo';
-    }
-}
-
 # Normalizes the location for comparison.
 function global:GetNormalLocation {
     [CmdletBinding()]

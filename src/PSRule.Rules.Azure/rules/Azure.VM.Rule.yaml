@@ -17,6 +17,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Reliability
 spec:
   type:
   - Microsoft.Compute/virtualMachines
@@ -33,6 +34,81 @@ spec:
         equals: Premium_LRS
       - field: properties.storageProfile.dataDisks[?@.managedDisk.storageAccountType != 'Premium_LRS' && @.managedDisk.storageAccountType != 'Premium_ZRS' && @.managedDisk.storageAccountType != 'UltraSSD_LRS']
         count: 0
+
+---
+# Synopsis: Virtual machines (VMs) should not use expired promotional SKU.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.VM.PromoSku
+  ref: AZR-000240
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+    Azure.WAF/pillar: Cost Optimization
+spec:
+  type:
+  - Microsoft.Compute/virtualMachines
+  where:
+    field: properties.hardwareProfile.vmSize
+    endsWith: _Promo
+  condition:
+    field: properties.hardwareProfile.vmSize
+    notMatch: Standard_DS{0,1}1{0,1}[1-9]{1}_v2_Promo
+
+---
+# Synopsis: Virtual machines (VMs) should not use Basic sizes.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.VM.BasicSku
+  ref: AZR-000241
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+    Azure.WAF/pillar: Operational Excellence
+spec:
+  type:
+  - Microsoft.Compute/virtualMachines
+  condition:
+    field: properties.hardwareProfile.vmSize
+    notMatch: Basic_A[0-4]
+
+---
+# Synopsis: Use availability sets aligned with managed disks fault domains.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.VM.ASAlignment
+  ref: AZR-000254
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+  - Microsoft.Compute/availabilitySets
+  condition:
+    field: sku.name
+    equals: aligned
+
+---
+# Synopsis: Network interfaces (NICs) should inherit DNS from virtual networks.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.VM.UniqueDns
+  ref: AZR-000258
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+    Azure.WAF/pillar: Operational Excellence
+spec:
+  type:
+  - Microsoft.Network/networkInterfaces
+  condition:
+    field: properties.dnsSettings.dnsServers
+    hasValue: false
 
 #endregion Rules
 
