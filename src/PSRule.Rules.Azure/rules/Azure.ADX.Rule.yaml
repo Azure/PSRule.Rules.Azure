@@ -24,8 +24,7 @@ spec:
   type:
   - Microsoft.Kusto/clusters
   condition:
-    field: 
-      Identity.Type
+    field: Identity.Type
     in:
     - SystemAssigned
     - UserAssigned
