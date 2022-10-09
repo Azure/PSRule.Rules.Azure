@@ -98,6 +98,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             internal readonly PipelineContext Pipeline;
             private readonly TemplateValidator _Validator;
             private readonly IDictionary<string, JToken> _ParameterAssignments;
+            private readonly HashSet<string> _PolicyIgnore;
 
             internal PolicyAssignmentContext(PipelineContext context)
             {
@@ -129,6 +130,10 @@ namespace PSRule.Rules.Azure.Data.Policy
                 PolicyRulePrefix = ConfigurationOption.Default.PolicyRulePrefix;
                 if (context?.Option?.Configuration?.PolicyRulePrefix != null)
                     PolicyRulePrefix = context?.Option?.Configuration?.PolicyRulePrefix;
+
+                _PolicyIgnore = new PolicyIgnoreData().GetIndex();
+                if (context?.Option?.Configuration?.PolicyIgnoreList != null)
+                    _PolicyIgnore.UnionWith(context?.Option?.Configuration?.PolicyIgnoreList);
             }
 
             public TemplateVisitor.TemplateContext.CopyIndexStore CopyIndex { get; }
@@ -615,6 +620,14 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 PolicyDefinitionId = definitionId;
             }
+
+            /// <summary>
+            /// Determines if the policy definition should be skipped.
+            /// </summary>
+            internal bool ShouldIgnorePolicyDefinition(string definitionId)
+            {
+                return _PolicyIgnore.Contains(definitionId);
+            }
         }
 
         internal void Visit(PolicyAssignmentContext context, JObject assignment)
@@ -668,7 +681,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 try
                 {
-                    if (definition.TryStringProperty(PROPERTY_POLICYDEFINITIONID, out var definitionId))
+                    if (definition.TryStringProperty(PROPERTY_POLICYDEFINITIONID, out var definitionId) && !ShouldFilterDefinition(context, definitionId))
                     {
                         context.SetPolicyDefinitionId(definitionId);
                         if (TryPolicyDefinition(context, definition, definitionId, out var policyDefinition))
@@ -680,6 +693,11 @@ namespace PSRule.Rules.Azure.Data.Policy
                     context.Pipeline.Writer?.WriteError(inner, inner.GetBaseException().GetType().FullName, errorCategory: ErrorCategory.NotSpecified, targetObject: definition);
                 }
             }
+        }
+
+        private static bool ShouldFilterDefinition(PolicyAssignmentContext context, string definitionId)
+        {
+            return context.ShouldIgnorePolicyDefinition(definitionId);
         }
 
         /// <summary>

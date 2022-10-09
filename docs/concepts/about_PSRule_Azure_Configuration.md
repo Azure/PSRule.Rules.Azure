@@ -25,6 +25,7 @@ The following configurations options are available for use:
 - [AZURE_POLICY_WAIVER_MAX_EXPIRY](#azure_policy_waiver_max_expiry)
 - [AZURE_RESOURCE_GROUP](#azure_resource_group)
 - [AZURE_SUBSCRIPTION](#azure_subscription)
+- [AZURE_POLICY_IGNORE_LIST](#azure_policy_ignore_list)
 - [AZURE_POLICY_RULE_PREFIX](#azure_policy_rule_prefix)
 
   [1]: https://aka.ms/ps-rule/options
@@ -284,6 +285,41 @@ Example:
 # YAML: Override the display name of the subscription object
   AZURE_SUBSCRIPTION:
     displayName: 'My test subscription'
+```
+
+### AZURE_POLICY_IGNORE_LIST
+
+This configuration option configures a custom list policy definitions to ignore when exporting policy to rules.
+In addition to the custom list, a built-in list of policies are ignored.
+The built-in list can be found [here](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/policy-ignore.json).
+
+Configure this option to ignore policy definitions that:
+
+- Already have a rule defined.
+- Are not relevant to testing Infrastructure as Code.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_POLICY_IGNORE_LIST: array
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_POLICY_IGNORE_LIST configuration option
+configuration:
+  AZURE_POLICY_IGNORE_LIST: []
+```
+
+Example:
+
+```yaml
+# YAML: Add a custom policy definition to ignore
+  AZURE_POLICY_IGNORE_LIST:
+  - '/providers/Microsoft.Authorization/policyDefinitions/1f314764-cb73-4fc9-b863-8eca98ac36e9'
+  - '/providers/Microsoft.Authorization/policyDefinitions/b54ed75b-3e1a-44ac-a333-05ba39b99ff0'
 ```
 
 ### AZURE_POLICY_RULE_PREFIX

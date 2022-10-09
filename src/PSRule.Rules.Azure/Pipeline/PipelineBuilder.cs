@@ -123,18 +123,21 @@ namespace PSRule.Rules.Azure.Pipeline
             _Output = new PSPipelineWriter(Option);
         }
 
+        /// <inheritdoc/>
         public virtual void UseCommandRuntime(PSCmdlet commandRuntime)
         {
             CmdletContext = commandRuntime;
             _Output.UseCommandRuntime(commandRuntime);
         }
 
+        /// <inheritdoc/>
         public void UseExecutionContext(EngineIntrinsics executionContext)
         {
             ExecutionContext = executionContext;
             _Output.UseExecutionContext(executionContext);
         }
 
+        /// <inheritdoc/>
         public virtual IPipelineBuilder Configure(PSRuleOption option)
         {
             if (option == null)
@@ -145,6 +148,7 @@ namespace PSRule.Rules.Azure.Pipeline
             return this;
         }
 
+        /// <inheritdoc/>
         public abstract IPipeline Build();
 
         protected PipelineContext PrepareContext()
