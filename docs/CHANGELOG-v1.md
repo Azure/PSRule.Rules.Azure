@@ -26,6 +26,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.20.0:
 
+- New features:
+  - Mapping of Azure Security Benchmark v3 to security rules by @jagoodwin.
+    [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
 - General improvements:
   - Added built-in list of ignored policy definitions by @BernieWhite.
     [#1730](https://github.com/Azure/PSRule.Rules.Azure/issues/1730)
