@@ -124,8 +124,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetObject.ResourceType -eq 'Microsoft.Network/virtualNetworks' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'vnet-D', 'vnet-E', 'vnet-F';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -Be 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-J', 'vnet-K', 'vnet-L';
         }
 
         It 'Azure.VNET.Name' {
