@@ -155,6 +155,31 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $ruleResult.Length | Should -Be 6;
             $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F';
         }
+
+        It 'Azure.VNET.BastionSubnet' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.BastionSubnet' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-H', 'vnet-J';
+
+            $ruleResult[0].Reason | Should -BeExactly "The virtual network 'vnet-A' with a GatewaySubnet also should have an AzureBastionSubnet configured.";
+            $ruleResult[1].Reason | Should -BeExactly "The virtual network 'vnet-B' with a GatewaySubnet also should have an AzureBastionSubnet configured.";
+            $ruleResult[2].Reason | Should -BeExactly "The virtual network 'vnet-C' with a GatewaySubnet also should have an AzureBastionSubnet configured.";
+            $ruleResult[3].Reason | Should -BeExactly "The virtual network 'vnet-D' with a GatewaySubnet also should have an AzureBastionSubnet configured.";
+            $ruleResult[4].Reason | Should -BeExactly "The virtual network 'vnet-H' with a GatewaySubnet also should have an AzureBastionSubnet configured.";
+            $ruleResult[5].Reason | Should -BeExactly "The virtual network 'vnet-J' with a GatewaySubnet also should have an AzureBastionSubnet configured.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vnet-G', 'vnet-I', 'vnet-K';
+        }
     }
 
     Context 'Resource name - Azure.VNET.Name' {

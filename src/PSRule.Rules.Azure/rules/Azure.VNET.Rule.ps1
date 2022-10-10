@@ -14,8 +14,8 @@ Rule 'Azure.VNET.UseNSGs' -Ref 'AZR-000263' -Type 'Microsoft.Network/virtualNetw
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
         # Get subnets
         $subnet = @($TargetObject.properties.subnets | Where-Object {
-            $_.Name -notin $excludedSubnets -and @($_.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -eq 0
-        });
+                $_.Name -notin $excludedSubnets -and @($_.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -eq 0
+            });
         if ($subnet.Length -eq 0 -or !$Assert.HasFieldValue($TargetObject, 'properties.subnets').Result) {
             return $Assert.Pass();
         }
@@ -26,8 +26,8 @@ Rule 'Azure.VNET.UseNSGs' -Ref 'AZR-000263' -Type 'Microsoft.Network/virtualNetw
     }
     foreach ($sn in $subnet) {
         $Assert.
-            HasFieldValue($sn, 'properties.networkSecurityGroup.id').
-            WithReason(($LocalizedData.SubnetNSGNotConfigured -f $sn.Name), $True);
+        HasFieldValue($sn, 'properties.networkSecurityGroup.id').
+        WithReason(($LocalizedData.SubnetNSGNotConfigured -f $sn.Name), $True);
     }
 }
 
@@ -107,4 +107,37 @@ Rule 'Azure.VNET.SubnetName' -Ref 'AZR-000267' -Type 'Microsoft.Network/virtualN
     }
 }
 
+# Synopsis: VNETs with a GatewaySubnet should have an AzureBastionSubnet to allow for out of band remote access to VMs.
+Rule 'Azure.VNET.BastionSubnet' -Ref 'AZR-000314' -Type 'Microsoft.Network/virtualNetworks' -If { IsGatewaySubnet } -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+    $subnets = @(GetVirtualNetworkSubnets)
+    if ($subnets | Where-Object { $_.name -eq 'AzureBastionSubnet' }) { $Assert.Pass() } else { $Assert.Fail().Reason($LocalizedData.BastionSubnetNotFound, $TargetObject.name) }
+}
+
 #endregion Virtual Network
+
+#region Helper functions
+
+function global:IsGatewaySubnet {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        ($TargetObject.Properties.subnets | Where-Object { $_.name -eq 'GatewaySubnet' }) -or
+        (@(GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets' |
+            Where-Object { $_.name -eq 'GatewaySubnet' }))
+    }
+}
+
+function global:GetVirtualNetworkSubnets {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param ()
+    process {
+        $TargetObject.Properties.subnets
+        @(GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets' | ForEach-Object {
+                [PSCustomObject]@{ name = $_.name }
+            })
+    }
+}
+
+#endregion Helper functions
