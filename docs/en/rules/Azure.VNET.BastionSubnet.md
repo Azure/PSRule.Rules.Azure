@@ -43,6 +43,7 @@ For example:
 ```json
 {
   "apiVersion": "2022-01-01",
+  "type": "Microsoft.Network/virtualNetworks",
   "name": "vnet-01",
   "location": "[parameters('location')]",
   "properties": {
@@ -73,6 +74,7 @@ For example:
 ```json
 {
   "apiVersion": "2022-01-01",
+  "type": "Microsoft.Network/virtualNetworks/subnets",
   "name": "[format('{0}/{1}', 'vnet-01', 'AzureBastionSubnet')]",
   "properties": {
     "addressPrefix": "10.0.0.0/26"
