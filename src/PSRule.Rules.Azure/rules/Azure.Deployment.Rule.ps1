@@ -60,6 +60,35 @@ function global:RecurseDeploymentSensitive {
     }
 }
 
+function global:CheckPropertyUsesSecureParameter {
+    param (
+        [Parameter(Mandatory = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [AllowEmptyCollection()]
+        [PSObject]$SecureParameters,
+
+        [Parameter(Mandatory = $True)]
+        [String]$PropertyPath
+    )
+    process {
+        $propertiesInPath = $PropertyPath.Split(".")
+        $propertyValue = $Resource
+        foreach($aPropertyInThePath in $propertiesInPath) {
+            $propertyValue = $propertyValue."$aPropertyInThePath"
+        }
+
+        if ($propertyValue) {
+            $isSecure = [PSRule.Rules.Azure.Runtime.Helper]::HasValueFromSecureParameter($propertyValue, $SecureParameters);
+            $Assert.Create($isSecure).Reason($LocalizedData.SecureParameterRequired, $PropertyPath);
+        }
+        else {
+            $Assert.Pass();
+        }
+    }
+}
+
 # Check resource properties that should be set by secure parameters.
 function global:RecurseSecureValue {
     param (
@@ -80,29 +109,20 @@ function global:RecurseSecureValue {
         Write-Debug -Message "Secure parameters are: $($secureParameters -join ', ')";
 
         foreach ($resource in $resources) {
-            if ($resource.type -eq 'Microsoft.Resources/deployments') {
-                RecurseSecureValue -Deployment $resource;
-            }
-            elseif ($resource.type -eq 'Microsoft.Compute/virtualMachineScaleSets') {
-                if ($resource.properties.virtualMachineProfile.osProfile.adminPassword) {
-                    $isSecure = [PSRule.Rules.Azure.Runtime.Helper]::HasValueFromSecureParameter($resource.properties.virtualMachineProfile.osProfile.adminPassword, $secureParameters);
-                    $Assert.Create($isSecure).Reason($LocalizedData.SecureParameterRequired, 'properties.virtualMachineProfile.osProfile.adminPassword');
+            switch ($resource.type)
+            {
+                'Microsoft.Resources/deployments' { 
+                    RecurseSecureValue -Deployment $resource;
                 }
-                else {
+                'Microsoft.Compute/virtualMachineScaleSets' {
+                    CheckPropertyUsesSecureParameter -Resource $resource -SecureParameters $secureParameters -PropertyPath 'properties.virtualMachineProfile.osProfile.adminPassword'
+                }
+                'Microsoft.KeyVault/vaults/secrets' {
+                    CheckPropertyUsesSecureParameter -Resource $resource -SecureParameters $secureParameters -PropertyPath 'properties.value'
+                }
+                Default {
                     $Assert.Pass();
                 }
-            }
-            elseif ($resource.type -eq 'Microsoft.KeyVault/vaults/secrets') {
-                if ($resource.properties.value) {
-                    $isSecure = [PSRule.Rules.Azure.Runtime.Helper]::HasValueFromSecureParameter($resource.properties.value, $secureParameters);
-                    $Assert.Create($isSecure).Reason($LocalizedData.SecureParameterRequired, 'properties.value');
-                }
-                else {
-                    $Assert.Pass();
-                }
-            }
-            else {
-                $Assert.Pass();
             }
         }
     }
