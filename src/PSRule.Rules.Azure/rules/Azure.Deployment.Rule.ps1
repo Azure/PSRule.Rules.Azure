@@ -80,7 +80,7 @@ function global:CheckPropertyUsesSecureParameter {
         }
 
         if ($propertyValue) {
-            $isSecure = [PSRule.Rules.Azure.Runtime.Helper]::HasValueFromSecureParameter($propertyValue, $SecureParameters);
+            $isSecure = [PSRule.Rules.Azure.Runtime.Helper]::HasSecureValue($propertyValue, $SecureParameters);
             $Assert.Create($isSecure).Reason($LocalizedData.SecureParameterRequired, $PropertyPath);
         }
         else {
