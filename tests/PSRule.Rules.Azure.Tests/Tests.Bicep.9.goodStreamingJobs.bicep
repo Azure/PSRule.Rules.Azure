@@ -23,14 +23,8 @@ resource goodStreamingJobs 'Microsoft.StreamAnalytics/streamingjobs@2021-10-01-p
     ]
     outputs: [
       {
-        name: 'outputWithSecretPassword'
+        name: 'outputWithoutPassword'
         properties: {
-          datasource: {
-            type: 'Microsoft.DBForPostgreSQL/servers/databases'
-            properties: {
-              password: secret
-            }
-          }
         }
       }
     ]

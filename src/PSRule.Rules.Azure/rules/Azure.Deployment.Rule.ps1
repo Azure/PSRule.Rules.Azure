@@ -75,7 +75,6 @@ function global:CheckPropertyUsesSecureParameter {
     process {
         $propertiesInPath = $PropertyPath.Split(".")
         $propertyValue = $Resource
-        # TODO add test for when the whole property path is not present in the template
         foreach($aPropertyInThePath in $propertiesInPath) {
             $propertyValue = $propertyValue."$aPropertyInThePath"
         }
@@ -286,10 +285,10 @@ function global:RecurseSecureValue {
                     CheckPropertyUsesSecureParameter -Resource $resource -SecureParameters $secureParameters -PropertyPath "properties.accessKey.value"
                 }
                 'Microsoft.StreamAnalytics/Streamingjobs' {
-                    $passwords = ($resource.properties.inputs + $resource.properties.outputs) | Where-Object { $null -ne $_.properties.datasource.properties.password } # TODO check for null or another way to check is defined?
+                    $objectsWithPasswords = $resource.properties.inputs + $resource.properties.outputs
 
-                    foreach ($password in $passwords) {
-                        CheckPropertyUsesSecureParameter -Resource $password -SecureParameters $secureParameters -PropertyPath "properties.datasource.properties.password"
+                    foreach ($objectWithPassword in $objectsWithPasswords) {
+                        CheckPropertyUsesSecureParameter -Resource $objectWithPassword -SecureParameters $secureParameters -PropertyPath "properties.datasource.properties.password"
                     }
                 }
                 'Microsoft.StreamAnalytics/Streamingjobs/Outputs' {
