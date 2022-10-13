@@ -64,16 +64,16 @@ Describe 'Azure.Deployment' -Tag 'Deployment' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            # $ruleResult.Length | Should -Be 1;
+            $ruleResult.Length | Should -Be 3;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetObject.name };
-            $targetNames | Should -BeIn 'secret_bad', 'ps-rule-test-deployment';
+            $targetNames | Should -BeIn 'secret_bad', 'ps-rule-test-deployment', 'streaming_jobs_bad';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
+            $ruleResult.Length | Should -Be 2;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetObject.name };
-            $targetNames | Should -BeIn 'secret_good';
+            $targetNames | Should -BeIn 'secret_good', 'streaming_jobs_good';
         }
     }
 }
