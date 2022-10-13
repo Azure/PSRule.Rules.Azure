@@ -43,7 +43,7 @@ namespace PSRule.Rules.Azure
             var secureParameters = new string[] { "adminPassword" };
 
             Assert.True(Helper.HasSecureValue("[parameters('adminPassword')]", secureParameters));
-            Assert.True(Helper.HasSecureValue("[parameters('adminPassword')]", secureParameters));
+            Assert.True(Helper.HasSecureValue("[parameters('adminPassword')]", new string[] { "AdminPassword" }));
             Assert.False(Helper.HasSecureValue("[variables('adminPassword')]", secureParameters));
             Assert.False(Helper.HasSecureValue("password", secureParameters));
             Assert.False(Helper.HasSecureValue("[parameters('notSecure')]", secureParameters));
