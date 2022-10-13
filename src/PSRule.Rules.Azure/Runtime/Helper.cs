@@ -52,8 +52,17 @@ namespace PSRule.Rules.Azure.Runtime
         /// </summary>
         public static bool HasValueFromSecureParameter(string expression, string[] secureParameters)
         {
-            var p = GetParameterTokenValue(expression);
-            return p != null && p.Length > 0 && p.Intersect(secureParameters, StringComparer.OrdinalIgnoreCase).Count() == p.Length;
+            var parameterNamesInExpression = GetParameterTokenValue(expression);
+
+            if (parameterNamesInExpression == null || parameterNamesInExpression.Length == 0)
+            {
+                // TODO improve, move to TokenStreamValidator? More ways of using listKeys and keyVault?
+                return expression.StartsWith("{{Secure", StringComparison.OrdinalIgnoreCase) || expression.Contains("[listKeys(");
+            }
+            else
+            {
+                return parameterNamesInExpression.Length > 0 && parameterNamesInExpression.Intersect(secureParameters, StringComparer.OrdinalIgnoreCase).Count() == parameterNamesInExpression.Length;
+            }
         }
 
         /// <summary>

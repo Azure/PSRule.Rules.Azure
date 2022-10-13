@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.11.1.770",
-      "templateHash": "7041311305354495742"
+      "templateHash": "13697280230530537471"
     }
   },
   "resources": [
@@ -105,6 +105,14 @@
         "parameters": {
           "secret": {
             "value": ""
+          },
+          "secretFromKeyVault": {
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId('Microsoft.KeyVault/vaults', 'aKeyVault')]"
+              },
+              "secretName": "aSecretName"
+            }
           }
         },
         "template": {
@@ -114,15 +122,23 @@
             "_generator": {
               "name": "bicep",
               "version": "0.11.1.770",
-              "templateHash": "7069623184034973455"
+              "templateHash": "12671604694843835576"
             }
           },
           "parameters": {
             "secret": {
               "type": "secureString"
+            },
+            "secretFromKeyVault": {
+              "type": "secureString"
             }
           },
           "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2021-09-01",
+              "name": "aStorageAccount"
+            },
             {
               "type": "Microsoft.StreamAnalytics/streamingjobs",
               "apiVersion": "2021-10-01-preview",
@@ -140,6 +156,30 @@
                         }
                       }
                     }
+                  },
+                  {
+                    "name": "inputUsingListKeys",
+                    "properties": {
+                      "type": "Reference",
+                      "datasource": {
+                        "type": "Microsoft.Sql/Server/Database",
+                        "properties": {
+                          "password": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'aStorageAccount'), '2021-09-01').keys[0].value]"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "name": "inputUsingKeyVault",
+                    "properties": {
+                      "type": "Reference",
+                      "datasource": {
+                        "type": "Microsoft.Sql/Server/Database",
+                        "properties": {
+                          "password": "[parameters('secretFromKeyVault')]"
+                        }
+                      }
+                    }
                   }
                 ],
                 "outputs": [
@@ -148,7 +188,10 @@
                     "properties": {}
                   }
                 ]
-              }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', 'aStorageAccount')]"
+              ]
             }
           ]
         }

@@ -15,10 +15,15 @@ module secret_bad 'Tests.Bicep.9.badSecret.bicep' = {
   }
 }
 
+resource vault 'Microsoft.KeyVault/vaults@2022-07-01' existing = {
+  name: 'aKeyVault'
+}
+
 module streaming_jobs_good 'Tests.Bicep.9.goodStreamingJobs.bicep' = {
   name: 'streaming_jobs_good'
   params: {
     secret: ''
+    secretFromKeyVault: vault.getSecret('aSecretName')
   }
 }
 
