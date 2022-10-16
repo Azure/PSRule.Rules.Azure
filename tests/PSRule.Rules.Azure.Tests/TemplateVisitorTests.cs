@@ -636,8 +636,9 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void ParameterFunctionVariable()
         {
-            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.9.json"), null);
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.10.json"), null);
             Assert.NotNull(resources);
+            Assert.Equal(3, resources.Length);
         }
 
         #region Helper methods

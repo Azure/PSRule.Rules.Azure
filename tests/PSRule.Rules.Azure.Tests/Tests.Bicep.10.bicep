@@ -3,11 +3,11 @@
 
 targetScope = 'subscription'
 
-param config object = loadJsonContent('Tests.Bicep.9.content.json')
+param config object = loadJsonContent('Tests.Bicep.10.content.json')
 param location string = config.location
 param resourceGroups array = config.resourceGroups
 
-module resourceGroup 'Tests.Bicep.9.child.bicep' = [for resourceGroup in resourceGroups: {
+module resourceGroup 'Tests.Bicep.10.child.bicep' = [for resourceGroup in resourceGroups: {
   scope: subscription()
   name: '${resourceGroup}-deploy'
   params: {

@@ -160,7 +160,7 @@
     <None Update="Tests.Bicep.8.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Tests.Bicep.9.json">
+    <None Update="Tests.Bicep.10.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
