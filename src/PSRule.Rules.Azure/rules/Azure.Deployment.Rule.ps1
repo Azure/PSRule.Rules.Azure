@@ -18,7 +18,7 @@ Rule 'Azure.Deployment.AdminUsername' -Ref 'AZR-000284' -Type 'Microsoft.Resourc
 }
 
 # Synopsis: Use secure parameters for setting properties of resources that contain sensitive information.
-Rule 'Azure.Deployment.SecureValue' -Ref 'AZR-000314' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.Deployment.SecureValue' -Ref 'AZR-000316' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
     RecurseSecureValue -Deployment $TargetObject
 }
 
