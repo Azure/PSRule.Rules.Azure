@@ -37,6 +37,14 @@ What's changed since pre-release v1.20.0:
   - Bump PSRule to v2.5.0.
     [#1769](https://github.com/Azure/PSRule.Rules.Azure/pull/1769)
 
+## v1.20.1
+
+What's changed since pre-release v1.20.0:
+
+- Bug fixes:
+  - Fixed expand bicep source when reading JsonContent into a parameter by @BernieWhite.
+    [#1780](https://github.com/Azure/PSRule.Rules.Azure/issues/1780)
+
 ## v1.20.0
 
 What's changed since pre-release v1.19.2:
