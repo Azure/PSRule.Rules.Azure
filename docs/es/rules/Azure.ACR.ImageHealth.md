@@ -1,7 +1,7 @@
 ---
 severity: Critico
 pillar: Seguridad
-category: Aplicaciones y servicios
+category: Revisión y corrección
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/es/rules/Azure.ACR.ImageHealth/
 ---
@@ -28,6 +28,7 @@ Esta regla se aplica cuando se analizan los recursos implementados en Azure.
 
 ## Enlaces
 
+- [Recomendaciones de revisión y corrección](https://learn.microsoft.com/azure/architecture/framework/security/monitor-remediate#review-and-remediate-recommendations)
 - [Introducción a Microsoft Defender para registros de contenedor](https://docs.microsoft.com/azure/security-center/defender-for-container-registries-introduction)
 - [Introducción a Microsoft Defender for Containers](https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction)
 - [Proteger las imágenes y el tiempo de ejecución](https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)

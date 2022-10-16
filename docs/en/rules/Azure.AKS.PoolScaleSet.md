@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Performance Efficiency
-category: Capacity planning
+category: Scalability
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.PoolScaleSet/
 ---
@@ -28,6 +28,7 @@ Consider redeploying the AKS cluster with VM Scale Sets instead of Availability 
 
 ## LINKS
 
+- [Scalability](https://learn.microsoft.com/azure/architecture/framework/scalability/design-scale)
 - [Create and manage multiple node pools for a cluster in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/use-multiple-node-pools)
 - [Cluster autoscaler](https://docs.microsoft.com/azure/aks/concepts-scale#cluster-autoscaler)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

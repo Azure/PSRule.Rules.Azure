@@ -101,6 +101,6 @@ resource webApp 'Microsoft.Web/sites@2021-03-01' = {
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Deploy your app to Azure App Service using FTP/S](https://docs.microsoft.com/eazure/app-service/deploy-ftp)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteproperties)

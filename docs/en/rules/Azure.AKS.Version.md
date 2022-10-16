@@ -198,7 +198,7 @@ To configure this rule:
 
 ## LINKS
 
-- [Target and non-functional requirements](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
+- [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
 - [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
 - [Support policies for Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/support-policies)
 - [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

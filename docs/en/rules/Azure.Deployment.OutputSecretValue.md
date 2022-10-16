@@ -101,7 +101,7 @@ output accountPassword string = adminPassword
 
 ## LINKS
 
-- [Pipeline secret management](https://docs.microsoft.com/azure/architecture/framework/security/deploy-infrastructure#pipeline-secret-management)
+- [Pipeline secret management](https://learn.microsoft.com/azure/architecture/framework/security/deploy-infrastructure#pipeline-secret-management)
 - [Test cases for ARM templates](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-test-cases#outputs-cant-include-secrets)
 - [Outputs should not contain secrets](https://docs.microsoft.com/azure/azure-resource-manager/bicep/linter-rule-outputs-should-not-contain-secrets)
 - [List function](https://docs.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-resource#list)

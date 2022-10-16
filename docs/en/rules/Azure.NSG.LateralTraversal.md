@@ -119,7 +119,7 @@ resource nsg 'Microsoft.Network/networkSecurityGroups@2021-02-01' = {
 
 ## LINKS
 
-- [Implement network segmentation patterns on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
+- [Implement network segmentation patterns on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
 - [Logically segment subnets](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
 - [Plan virtual networks](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm#segmentation)
 - [Network security groups](https://docs.microsoft.com/azure/virtual-network/security-overview)

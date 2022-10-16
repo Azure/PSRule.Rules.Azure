@@ -86,6 +86,6 @@ resource service 'Microsoft.SignalRService/webPubSub@2021-10-01' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
 - [Managed identities for Azure Web PubSub Service](https://docs.microsoft.com/azure/azure-web-pubsub/howto-use-managed-identity)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.signalrservice/webpubsub)

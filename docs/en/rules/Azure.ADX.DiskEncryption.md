@@ -78,6 +78,6 @@ resource adx 'Microsoft.Kusto/clusters@2021-08-27' = {
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption)
 - [Secure your cluster using Disk Encryption in Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/cluster-disk-encryption)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.kusto/clusters)
