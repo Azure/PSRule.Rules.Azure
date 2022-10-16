@@ -21,6 +21,104 @@ These Ciphers are enabled by default and need to be set to False.
 ## RECOMMENDATION
 
 Consider disabling weak or deprecated ciphers.
+## EXAMPLES
+
+### Configure with Azure template
+
+
+
+For example:
+
+```json
+
+  {
+  "apiVersion": "2021-01-01-preview",
+  "name": "apim-contoso-test-001",
+  "type": "Microsoft.ApiManagement/service",
+  "location": "[resourceGroup().location]",
+  "tags": {},
+  "sku": {
+    "name": "Standard",
+    "capacity": "1"
+  },
+  "properties": {
+    "publisherEmail": "noreply@contoso.com",
+    "publisherName": "Contoso",
+    "customProperties": {
+        # ------ ciphers TripleDes168 disabled ------
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False",
+        # ------ ciphers TLS_RSA_WITH_AES_128_CBC_SHA disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA": "False",   
+        # ------ ciphers TLS_RSA_WITH_AES_256_CBC_SHA disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA": "False",   
+        # ------ ciphers TLS_RSA_WITH_AES_128_CBC_SHA256 disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256": "False",
+        # ------ ciphers TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA": "False",  
+        # ------ ciphers TLS_RSA_WITH_AES_256_CBC_SHA256 disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256": "False", 
+        # ------ ciphers TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA": "False", 
+        # ------ ciphers TLS_RSA_WITH_AES_128_GCM_SHA256 disabled ------   
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256": "False" 
+      }
+  }
+}
+
+
+```
+
+### Configure with Bicep
+
+
+For example:
+
+```bicep
+
+resource service 'Microsoft.ApiManagement/service@2021-12-01-preview' = {
+  name: apim-contoso-test-001
+  location: [resourceGroup().location]
+  sku: {
+    name: 'Standard'
+    capacity: 1
+  }
+  zones:{
+    '1'
+    '2'
+    '3'
+  }
+  properties: {
+    publisherEmail: 'noreply@contoso.com'
+    publisherName: 'Contoso',
+    customProperties: {
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2': 'True'
+      // ------ ciphers TripleDes168 disabled ------
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168': 'False'
+      // ------ ciphers TLS_RSA_WITH_AES_128_CBC_SHA disabled ------ 
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA': 'False'
+      //  ------ ciphers TLS_RSA_WITH_AES_256_CBC_SHA disabled ------ 
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA': 'False'
+      // ------ ciphers TLS_RSA_WITH_AES_256_CBC_SHA256 disabled ------
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256': 'False'
+      // ------ ciphers TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA disabled ------
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA': 'False'
+      // ------ ciphers TLS_RSA_WITH_AES_256_CBC_SHA256 disabled ------ 
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256': 'False'
+      // ------ ciphers TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA disabled ------
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA': 'False'
+      // ------ ciphers TLS_RSA_WITH_AES_128_GCM_SHA256 disabled ------ 
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256': 'False'
+      }
+  }
+}
+
+```
 
 ## LINKS
 

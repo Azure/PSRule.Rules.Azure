@@ -23,7 +23,53 @@ When products do not require approval, users can create a subscription for a pro
 
 Consider configuring all API Management products to require approval.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+For example:
+
+```json
+
+{
+  "type": "Microsoft.ApiManagement/service/products",
+  "apiVersion": "2021-12-01-preview",
+  "name": "apim-contoso-test-001/custom-product",
+  "properties": {
+    # ------ approval required is enabled ------
+    "approvalRequired": true, 
+    "description": "Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso",
+    "displayName": "Custom Product",
+    "state": "published",
+    "subscriptionRequired": true,
+    "subscriptionsLimit": 1
+  }
+}
+
+```
+
+### Configure with Bicep
+
+For example:
+
+```bicep
+
+resource product 'Microsoft.ApiManagement/service/products@2021-12-01-preview' = {
+  name: 'apim-contoso-test-001/custom-product'
+  properties: {
+    // ------ approval required is enabled ------
+    approvalRequired: true 
+    description: 'Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso'
+    displayName: 'Custom Product'
+    state: 'published'
+    subscriptionRequired: true
+    subscriptionsLimit: 1
+  }
+}
+
+```
+
 ## LINKS
 
 - [Create and publish a product](https://docs.microsoft.com/azure/api-management/api-management-howto-add-products)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/2019-12-01/service/products)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/2019-12-01/service/products)

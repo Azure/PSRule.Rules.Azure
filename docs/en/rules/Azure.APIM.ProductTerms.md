@@ -25,7 +25,65 @@ Acceptance of legal terms is bypassed when an administrator creates a subscripti
 
 Consider configuring legal terms for all products to declare acceptable use of included APIs.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To set the Terms
+
+set properties.terms	for the resource type "products".
+
+For example:
+
+```json
+
+{
+  "type": "Microsoft.ApiManagement/service/products",
+  "apiVersion": "2021-12-01-preview",
+  "name": "apim-contoso-test-001/custom-product",
+  "properties": {
+    "approvalRequired": true, 
+    "description": "Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso", 
+    "displayName": "Custom Product", 
+    "state": "published",
+    "subscriptionRequired": true, 
+    "subscriptionsLimit": 1,
+    # ------ Terms ------
+    "terms" : "Accept this legal terms for the usage of the custom product, to call the APIs"
+  }
+}
+
+```
+
+### Configure with Bicep
+
+For example:
+
+```bicep
+
+resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
+  parent: service
+  name: 'echo-v1'
+  properties: {
+    displayName: 'Echo API'
+    description: 'An echo API service.'
+    path: 'echo'
+    serviceUrl: 'https://echo.contoso.com'
+    protocols: [
+      'https'
+    ]
+    apiVersion: 'v1'
+    apiVersionSetId: version.id
+    subscriptionRequired: true
+    // ------ Terms ------
+    terms: 'Accept this legal terms for the usage of the custom product, to call the APIs'
+  }
+}
+
+```
+
+
 ## LINKS
 
 - [Create and publish a product](https://docs.microsoft.com/azure/api-management/api-management-howto-add-products)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/products#ProductContractProperties)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/products#ProductContractProperties)

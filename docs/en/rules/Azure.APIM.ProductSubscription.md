@@ -23,8 +23,67 @@ When combined with policies, subscriptions allow controls such as throttling to 
 
 Consider configuring all API Management products to require a subscription.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To set the display name and the description
+
+set properties.displayName	for the resource type "apis". Dispaly name must be 1 to 300 characters long.
+
+set	properties.description resource type "apis". May include HTML formatting tags.
+
+For example:
+
+```json
+
+{
+  "type": "Microsoft.ApiManagement/service/products",
+  "apiVersion": "2021-12-01-preview",
+  "name": "apim-contoso-test-001/custom-product",
+  "properties": {
+    "approvalRequired": true, 
+    "description": "Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso", 
+    "displayName": "Custom Product", 
+    "state": "published",
+    # ------ Subscription required enabled ------
+    "subscriptionRequired": true, 
+    "subscriptionsLimit": 1
+  }
+}
+
+```
+
+### Configure with Bicep
+
+
+For example:
+
+```bicep
+
+resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
+  parent: service
+  name: 'echo-v1'
+  properties: {
+    displayName: 'Echo API'
+    description: 'An echo API service.'
+    path: 'echo'
+    serviceUrl: 'https://echo.contoso.com'
+    protocols: [
+      'https'
+    ]
+    apiVersion: 'v1'
+    apiVersionSetId: version.id
+    // ------ Subscription required enabled ------
+    subscriptionRequired: true  
+  }
+}
+
+```
+
+
 ## LINKS
 
 - [Subscriptions in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-subscriptions)
 - [Create and publish a product](https://docs.microsoft.com/azure/api-management/api-management-howto-add-products)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/2019-12-01/service/products)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/2019-12-01/service/products)

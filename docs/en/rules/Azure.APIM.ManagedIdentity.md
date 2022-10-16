@@ -35,39 +35,58 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.ApiManagement/service",
-    "apiVersion": "2021-08-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
+  "type": "Microsoft.ApiManagement/service/apis",
+  "apiVersion": "2021-01-01-preview",
+  "name": "apim-contoso-test-001",
+  "properties": {
+    "displayName": "Example Echo v1 API", 
+    "description": "An echo API service.", 
+    "path": "echo",
+    "serviceUrl": "https://echo.contoso.com",
     "sku": {
         "name": "Premium",
         "capacity": 1
     },
     "identity": {
-        "type": "SystemAssigned"
+        # ------ Identity type set to System Assigned ------ 
+        "type": "SystemAssigned" 
     },
-    "properties": {
-        "publisherEmail": "[parameters('publisherEmail')]",
-        "publisherName": "[parameters('publisherName')]",
-        "customProperties": {
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": "True",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA": "False",
-            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256": "False"
-        }
-    }
+    "protocols": [
+      "https"  
+    ],
+    "apiVersion": "v1",
+    "subscriptionRequired": true
+  }
 }
+
+
+{
+  "type": "Microsoft.ApiManagement/service/apis",
+  "apiVersion": "2021-01-01-preview",
+  "name": "apim-contoso-test-001",
+  "properties": {
+    "displayName": "Example Echo v1 API", 
+    "description": "An echo API service.", 
+    "path": "echo",
+    "serviceUrl": "https://echo.contoso.com",
+    "sku": {
+        "name": "Premium",
+        "capacity": 1
+    },
+    "identity": {
+        # ------  Identity type set to User Assigned ------ 
+        "type": "UserAssigned"
+        "userAssignedIdentities":"[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'identityName'))]": {}
+    },
+    "protocols": [
+      "https"  
+    ],
+    "apiVersion": "v1",
+    "subscriptionRequired": true
+  }
+}
+
+
 ```
 
 ### Configure with Bicep
@@ -80,38 +99,61 @@ To deploy App Services that pass this rule:
 For example:
 
 ```bicep
-resource service 'Microsoft.ApiManagement/service@2021-08-01' = {
-  name: name
-  location: location
-  sku: {
-    name: 'Premium'
-    capacity: 1
-  }
-  identity: {
-    type: 'SystemAssigned'
-  }
+
+resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
+  parent: service
+  name: 'apim-contoso-test-001'
   properties: {
-    publisherEmail: publisherEmail
-    publisherName: publisherName
-    customProperties: {
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10': 'False'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11': 'False'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30': 'False'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10': 'False'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11': 'False'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30': 'False'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2': 'True'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168': 'False'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA': 'False'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA': 'False'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256': 'False'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA': 'False'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256': 'False'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA': 'False'
-      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256': 'False'
-    }
+    displayName: 'Example Echo v1 API'
+    description: 'An echo API service.' 
+    path: 'echo'
+    serviceUrl: 'https://echo.contoso.com'
+    sku: [
+      name: 'Premium'
+      capacity:1
+    ]
+    identity:[
+      // ------ Identity type set to System Assigned ------ 
+      type: 'SystemAssigned'
+    ]
+    protocols: [
+      'https'
+    ]
+    apiVersion: 'v1'
+    subscriptionRequired: true
   }
 }
+
+resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
+  parent: service
+  name: 'apim-contoso-test-001'
+  properties: {
+    displayName: 'Example Echo v1 API' 
+    description: 'An echo API service.' 
+    path: 'echo'
+    serviceUrl: 'https://echo.contoso.com'
+    sku: [
+      name: 'Premium'
+      capacity:1
+    ]
+    identity:[
+      // ------  Identity type set to User Assigned ------ 
+      type: 'UserAssigned'
+      userAssignedIdentities:'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
+providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'
+    ]
+    protocols: [
+      'https'
+    ]
+    apiVersion: 'v1'
+    subscriptionRequired: true
+  }
+}
+
+
+
+
+
 ```
 
 ## LINKS
@@ -119,4 +161,4 @@ resource service 'Microsoft.ApiManagement/service@2021-08-01' = {
 - [Use identity-based authentication](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
 - [Use managed identities in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity)
 - [Authenticate with managed identity](https://docs.microsoft.com/azure/api-management/api-management-authentication-policies#ManagedIdentity)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service)

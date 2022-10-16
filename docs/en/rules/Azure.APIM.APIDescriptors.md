@@ -22,7 +22,122 @@ This information is visible within the developer portal and exported OpenAPI def
 Consider using display name and description fields on APIs to convey intended purpose and usage.
 Display name and description fields should be human readable and easy to understand.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To set the display name and the description
+
+For APIs :
+set properties.displayName	for the resource type "apis". Dispaly name must be 1 to 300 characters long.
+set	properties.description resource type "apis". May include HTML formatting tags.
+
+For Operations:
+set properties.displayName	for the resource type "operations". Dispaly name must be 1 to 300 characters long.
+set	properties.description resource type "operations". May include HTML formatting tags.
+
+For example:
+
+**API deployment template**
+
+```json
+
+{
+  "type": "Microsoft.ApiManagement/service/apis",
+  "apiVersion": "2021-01-01-preview",
+  "name": "apim-contoso-test-001",
+  "properties": {
+    # ------ Display name ------
+    "displayName": "Example Echo v1 API", 
+    # ------ Descriotion ------
+    "description": "An echo API service.",  
+    "path": "echo",
+    "serviceUrl": "https://echo.contoso.com",
+    "protocols": [
+      "https"
+    ],
+    "apiVersion": "v1",
+    "subscriptionRequired": true
+  }
+}
+
+```
+**Operation deployment template**
+
+```json
+
+{
+  "apiVersion": "2021-01-01-preview",
+  "type": "Microsoft.ApiManagement/service/apis/operations",
+  "name": "exampleOperationsGET",
+  "dependsOn": [
+    "[concat('Microsoft.ApiManagement/service/apim-contoso-test-001/apis/echo')]"
+  ],
+  "properties": {
+    # ------ Display name ------
+    "displayName": "GET resource", 
+    "method": "GET", 
+    "urlTemplate": "/resource",
+    # ------ Description ------
+    "description": "A demonstration of a GET call" 
+  },
+}
+
+
+
+```
+### Configure with Bicep
+
+
+For example:
+
+**API deployment template**
+
+```bicep
+
+resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
+  parent: service
+  name: 'apim-contoso-test-001'
+  properties: {
+    // ------ Display name ------
+    displayName: 'Example Echo v1 API' 
+    // ------ Descriptiuon ------
+    description: 'An echo API service.' 
+    path: 'echo'
+    serviceUrl: 'https://echo.contoso.com'
+    protocols: [
+      'https'
+    ]
+    apiVersion: 'v1'
+    apiVersionSetId: version.id
+    subscriptionRequired: true
+  }
+}
+
+```
+
+**Operation deployment template**
+
+```bicep
+
+resource operation 'Microsoft.ApiManagement/service/apis/operations@2021-12-01-preview' = {
+  name: 'exampleOperationsGET'
+  parent: api
+  properties: {
+    // ------ Description ------
+    description: 'A demonstration of a GET call'
+    // ------ Display name ------
+    displayName: 'GET resource'
+    method: 'GET'
+    urlTemplate: '/resource'
+  }
+}
+
+```
+
+
+
 ## LINKS
 
 - [Import and publish your first API](https://docs.microsoft.com/azure/api-management/import-and-publish)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis#ApiCreateOrUpdateProperties)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis#ApiCreateOrUpdateProperties)

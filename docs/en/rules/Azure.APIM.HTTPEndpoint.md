@@ -23,6 +23,56 @@ When using HTTP, sensitive information may be exposed to an untrusted party.
 Consider setting the each API to only accept HTTPS connections.
 In the portal, this is done by configuring the HTTPS URL scheme.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+For example:
+
+```json
+{
+  "type": "Microsoft.ApiManagement/service/apis",
+  "apiVersion": "2021-01-01-preview",
+  "name": "apim-contoso-test-001",
+  "properties": {
+    "displayName": "Example Echo v1 API", 
+    "description": "An echo API service.", 
+    "path": "echo",
+    "serviceUrl": "https://echo.contoso.com",
+    "protocols": [
+      # ------ making sure the http end point is https ------
+      "https" 
+    ],
+    "apiVersion": "v1",
+    "subscriptionRequired": true
+  }
+}
+```
+
+### Configure with Bicep
+
+For example:
+
+```bicep
+
+resource api 'Microsoft.ApiManagement/service/apis@2021-12-01-preview' = {
+  parent: service
+  name: 'apim-contoso-test-001'
+  properties: {
+    displayName: 'Example Echo v1 API'
+    description: 'An echo API service.'
+    path: 'echo'
+    serviceUrl: 'https://echo.contoso.com'
+    protocols: [
+      // ------ making sure the http end point is https ------
+      'https'
+    ]
+    apiVersion: 'v1'
+    subscriptionRequired: true
+  }
+}
+```
+
 ## LINKS
 
 - [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)

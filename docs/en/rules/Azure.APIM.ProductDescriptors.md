@@ -22,7 +22,61 @@ This information is visible within the developer portal.
 Consider using display name and description fields on products to convey intended purpose and usage.
 Display name and description fields should be human readable and easy to understand.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To set the display name and the description
+
+set properties.displayName	for the resource type "apis". Dispaly name must be 1 to 300 characters long.
+
+set	properties.description resource type "apis". May include HTML formatting tags.
+
+For example:
+
+```json
+
+{
+  "type": "Microsoft.ApiManagement/service/products",
+  "apiVersion": "2021-12-01-preview",
+  "name": "apim-contoso-test-001/custom-product",
+  "properties": {
+    "approvalRequired": true, 
+    # ------ description ------
+    "description": "Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso", 
+    # ------ display name ------
+    "displayName": "Custom Product",
+    "state": "published",
+    "subscriptionRequired": true,
+    "subscriptionsLimit": 1
+  }
+}
+
+```
+
+### Configure with Bicep
+
+For example:
+
+```bicep
+
+resource product 'Microsoft.ApiManagement/service/products@2021-12-01-preview' = {
+  name: 'apim-contoso-test-001/custom-product'
+  properties: {
+    approvalRequired: true 
+    // ------ description ------
+    description: 'Custom Product, subscription and approval is required to get the subscription key to call the APIs in Contoso'
+    // ------ display name ------
+    displayName: 'Custom Product' 
+    state: 'published'
+    subscriptionRequired: true
+    subscriptionsLimit: 1
+  }
+}
+
+```
+
 ## LINKS
 
 - [Create and publish a product](https://docs.microsoft.com/azure/api-management/api-management-howto-add-products)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/products#ProductContractProperties)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/products#ProductContractProperties)
