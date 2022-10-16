@@ -34,8 +34,10 @@ What's changed since pre-release v1.20.0:
     [#1730](https://github.com/Azure/PSRule.Rules.Azure/issues/1730)
     - To ignore additional policy definitions, use the `AZURE_POLICY_IGNORE_LIST` configuration option.
 - Engineering:
-  - Bump PSRule to v2.5.0.
-    [#1769](https://github.com/Azure/PSRule.Rules.Azure/pull/1769)
+  - Bump PSRule to v2.5.1.
+    [#1782](https://github.com/Azure/PSRule.Rules.Azure/pull/1782)
+  - Bump Az.Resources to v6.3.0.
+    [#1782](https://github.com/Azure/PSRule.Rules.Azure/pull/1782)
 
 ## v1.20.0
 
