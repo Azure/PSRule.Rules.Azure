@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.20.0:
+
+- Bug fixes:
+  - Fixed expand bicep source when reading JsonContent into a parameter by @BernieWhite.
+    [#1780](https://github.com/Azure/PSRule.Rules.Azure/issues/1780)
+
 ## v1.20.0
 
 What's changed since pre-release v1.19.2:
