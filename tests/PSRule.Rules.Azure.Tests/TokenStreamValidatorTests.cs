@@ -31,16 +31,27 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
-        public void HasValueFromSecureParameter()
+        public void UsesListKeysFunction()
         {
-            Assert.True(Helper.HasValueFromSecureParameter("[parameters('adminPassword')]", new string[] { "adminPassword" }));
-            Assert.True(Helper.HasValueFromSecureParameter("[parameters('adminPassword')]", new string[] { "AdminPassword" }));
-            Assert.False(Helper.HasValueFromSecureParameter("[variables('adminPassword')]", new string[] { "adminPassword" }));
-            Assert.False(Helper.HasValueFromSecureParameter("password", new string[] { "adminPassword" }));
-            Assert.False(Helper.HasValueFromSecureParameter("[parameters('notSecure')]", new string[] { "adminPassword" }));
-            Assert.False(Helper.HasValueFromSecureParameter("[parameters('notSecure')]", System.Array.Empty<string>()));
-            Assert.True(Helper.HasValueFromSecureParameter("[if(true(), parameters('adminPassword2'), parameters('adminPassword1'))]", new string[] { "adminPassword1", "adminPassword2" }));
-            Assert.False(Helper.HasValueFromSecureParameter("[if(true(), parameters('notSecure'), parameters('adminPassword1'))]", new string[] { "adminPassword1" }));
+            Assert.True(Helper.UsesListKeysFunction("[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'aStorageAccount'), '2021-09-01').keys[0].value]"));
+            Assert.True(Helper.UsesListKeysFunction("[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'aStorageAccount'), '2021-09-01')]"));
+        }
+
+        [Fact]
+        public void HasSecureValue()
+        {
+            var secureParameters = new string[] { "adminPassword" };
+
+            Assert.True(Helper.HasSecureValue("[parameters('adminPassword')]", secureParameters));
+            Assert.True(Helper.HasSecureValue("[parameters('adminPassword')]", new string[] { "AdminPassword" }));
+            Assert.False(Helper.HasSecureValue("[variables('adminPassword')]", secureParameters));
+            Assert.False(Helper.HasSecureValue("password", secureParameters));
+            Assert.False(Helper.HasSecureValue("[parameters('notSecure')]", secureParameters));
+            Assert.False(Helper.HasSecureValue("[parameters('notSecure')]", System.Array.Empty<string>()));
+            Assert.True(Helper.HasSecureValue("[if(true(), parameters('adminPassword2'), parameters('adminPassword1'))]", new string[] { "adminPassword1", "adminPassword2" }));
+            Assert.False(Helper.HasSecureValue("[if(true(), parameters('notSecure'), parameters('adminPassword'))]", secureParameters));
+            Assert.True(Helper.HasSecureValue("[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'aStorageAccount'), '2021-09-01').keys[0].value]", secureParameters));
+            Assert.True(Helper.HasSecureValue("{{SecretReference aName}}", secureParameters));
         }
     }
 }

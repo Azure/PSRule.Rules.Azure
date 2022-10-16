@@ -48,12 +48,30 @@ namespace PSRule.Rules.Azure.Runtime
         }
 
         /// <summary>
-        /// Checks if any parameters specified in the expression are secure.
+        /// Returns true if it contains a call to the function listKeys.
         /// </summary>
-        public static bool HasValueFromSecureParameter(string expression, string[] secureParameters)
+        internal static bool UsesListKeysFunction(string expression)
         {
-            var p = GetParameterTokenValue(expression);
-            return p != null && p.Length > 0 && p.Intersect(secureParameters, StringComparer.OrdinalIgnoreCase).Count() == p.Length;
+            return IsTemplateExpression(expression) && TokenStreamValidator.UsesListKeysFunction(ExpressionParser.Parse(expression));
+        }
+
+        /// <summary>
+        /// Checks if the value of the expresion is secure, whether by using secure parameters, references to KeyVault, or the ListKeys function.
+        /// </summary>
+        public static bool HasSecureValue(string expression, string[] secureParameters)
+        {
+            if ((!string.IsNullOrEmpty(expression) && expression.StartsWith("{{Secret", StringComparison.OrdinalIgnoreCase)) || UsesListKeysFunction(expression))
+            {
+                return true;
+            }
+            else
+            {
+                var parameterNamesInExpression = GetParameterTokenValue(expression);
+
+                return parameterNamesInExpression != null &&
+                parameterNamesInExpression.Length > 0 &&
+                parameterNamesInExpression.Intersect(secureParameters, StringComparer.OrdinalIgnoreCase).Count() == parameterNamesInExpression.Length;
+            }
         }
 
         /// <summary>

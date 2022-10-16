@@ -15,6 +15,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string FN_PARAMETERS = "parameters";
         private const string FN_VARIABLES = "variables";
         private const string FN_IF = "if";
+        private const string FN_LISTKEYS = "listKeys";
 
         /// <summary>
         /// Look for literal values or use of variables().
@@ -55,6 +56,28 @@ namespace PSRule.Rules.Azure.Data.Template
                     list.Add(parameterName);
             }
             return list.ToArray();
+        }
+
+        /// <summary>
+        /// Returns true if it contains a call to the function listKeys.
+        /// </summary>
+        public static bool UsesListKeysFunction(TokenStream stream)
+        {
+            while (stream.Count > 0)
+            {
+                if (!stream.TryTokenType(ExpressionTokenType.Element, out var token))
+                {
+                    stream.Pop();
+                    continue;
+                }
+
+                if (IsFunction(token, FN_LISTKEYS))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private static bool TryParameters(TokenStream stream, ExpressionToken token, out string parameterName)
