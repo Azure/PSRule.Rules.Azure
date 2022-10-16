@@ -60,7 +60,7 @@ namespace PSRule.Rules.Azure.Runtime
         /// </summary>
         public static bool HasSecureValue(string expression, string[] secureParameters)
         {
-            if (expression.StartsWith("{{Secret", StringComparison.OrdinalIgnoreCase) || UsesListKeysFunction(expression))
+            if ((!string.IsNullOrEmpty(expression) && expression.StartsWith("{{Secret", StringComparison.OrdinalIgnoreCase)) || UsesListKeysFunction(expression))
             {
                 return true;
             }
