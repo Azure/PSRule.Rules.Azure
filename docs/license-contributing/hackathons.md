@@ -11,6 +11,9 @@ link_users: true
 
 Thanks to the team who made the following contributions during the hackathon:
 
+- New features:
+  - Mapping of Azure Security Benchmark v3 to security rules by @jagoodwin.
+    [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
 - New rules:
   - Azure Cache for Redis:
     - Check the number of firewall rules for caches by @jonathanruiz.
