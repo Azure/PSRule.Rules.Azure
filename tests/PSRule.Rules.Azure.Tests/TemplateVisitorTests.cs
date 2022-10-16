@@ -633,6 +633,13 @@ namespace PSRule.Rules.Azure
             Assert.Equal("abc", sqlServer["properties"]["administrators"]["login"].ToString());
         }
 
+        [Fact]
+        public void ParameterFunctionVariable()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.9.json"), null);
+            Assert.NotNull(resources);
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
