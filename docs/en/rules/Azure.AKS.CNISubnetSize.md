@@ -40,6 +40,6 @@ configuration:
 ## LINKS
 
 - [Configure Azure CNI networking in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-azure-cni)
-- [Plan for growth](https://docs.microsoft.com/azure/architecture/framework/scalability/design-scale#plan-for-growth)
+- [Plan for growth](https://learn.microsoft.com/azure/architecture/framework/scalability/design-scale#plan-for-growth)
 - [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-kubenet)
 - [Tutorial: Configure Azure CNI networking in Azure Kubernetes Service (AKS) using Ansible](https://docs.microsoft.com/azure/developer/ansible/aks-configure-cni-networking?tabs=ansible)

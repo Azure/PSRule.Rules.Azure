@@ -87,7 +87,7 @@ resource st0000001 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Require secure transfer in Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)
 - [Sample policy for ensuring https traffic](https://docs.microsoft.com/azure/governance/policy/samples/ensure-https-stor-acct)
 - [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)

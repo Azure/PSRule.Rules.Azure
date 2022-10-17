@@ -32,7 +32,7 @@ Esta regla se aplica cuando se analizan los recursos implementados en Azure.
 
 ## Enlaces
 
-- [Generar informes de costos](https://docs.microsoft.com/azure/architecture/framework/cost/monitor-reports)
+- [Generar informes de costos](https://learn.microsoft.com/azure/architecture/framework/cost/monitor-reports)
 - [Niveles del servicio Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-skus)
 - [Almacenamiento escalable](https://docs.microsoft.com/azure/container-registry/container-registry-storage#scalable-storage)
 - [Administración del tamaño del registro](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#manage-registry-size)

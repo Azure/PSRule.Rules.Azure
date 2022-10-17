@@ -77,7 +77,7 @@ resource eventGrid 'Microsoft.EventGrid/topics@2021-06-01-preview' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
 - [Assign a managed identity to an Event Grid custom topic or domain](https://docs.microsoft.com/azure/event-grid/enable-identity-custom-topics-domains)
 - [Authenticate event delivery to event handlers](https://docs.microsoft.com/azure/event-grid/security-authentication)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics)

@@ -29,5 +29,5 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 
-- [Generate cost reports](https://docs.microsoft.com/azure/architecture/framework/cost/monitor-reports)
+- [Generate cost reports](https://learn.microsoft.com/azure/architecture/framework/cost/monitor-reports)
 - [Pricing](https://azure.microsoft.com/pricing/details/event-hubs/)

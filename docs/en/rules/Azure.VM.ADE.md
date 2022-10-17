@@ -32,6 +32,6 @@ This rule will be skipped when validating Azure template files.
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-at-rest)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-at-rest)
 - [Creating and configuring a key vault for Azure Disk Encryption](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-key-vault)
 - [Azure Disk Encryption scenarios on Windows VMs](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-windows)

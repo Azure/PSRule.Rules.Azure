@@ -62,4 +62,4 @@ For example:
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.search/searchservices#sku-object)
 - [SLA for Azure Cognitive Search](https://azure.microsoft.com/support/legal/sla/search)
 - [Estimate and manage capacity of an Azure Cognitive Search service](https://docs.microsoft.com/azure/search/search-capacity-planning)
-- [Choosing the right resources](https://docs.microsoft.com/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)
+- [Choosing the right resources](https://learn.microsoft.com/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)

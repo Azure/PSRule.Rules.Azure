@@ -145,6 +145,6 @@ resource frontDoorOriginGroup 'Microsoft.Cdn/profiles/origingroups@2021-06-01' =
 
 - [Supported HTTP methods for health probes](https://docs.microsoft.com/azure/frontdoor/front-door-health-probes#supported-http-methods-for-health-probes)
 - [How Front Door determines backend health](https://docs.microsoft.com/azure/frontdoor/front-door-health-probes#how-front-door-determines-backend-health)
-- [Creating good health probes](https://docs.microsoft.com/azure/architecture/framework/resiliency/monitoring#creating-good-health-probes)
+- [Creating good health probes](https://learn.microsoft.com/azure/architecture/framework/resiliency/monitoring#creating-good-health-probes)
 - [Health Endpoint Monitoring pattern](https://docs.microsoft.com/azure/architecture/patterns/health-endpoint-monitoring)
 - [Azure resource template](https://docs.microsoft.com/azure/templates/microsoft.network/frontdoors#HealthProbeSettingsProperties)

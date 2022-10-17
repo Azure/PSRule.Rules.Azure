@@ -63,7 +63,7 @@ For example:
 
 ## LINKS
 
-- [Use identity-based authentication](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
 - [What are managed identities for Azure resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 - [Set up an indexer connection to a data source using a managed identity](https://docs.microsoft.com/azure/search/search-howto-managed-identities-data-sources)
 - [Indexer access to Azure Storage using the trusted service exception (Azure Cognitive Search)](https://docs.microsoft.com/azure/search/search-indexer-howto-access-trusted-service-exception)

@@ -84,6 +84,6 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 
-- [Azure SQL Database and security](https://docs.microsoft.com/azure/architecture/framework/services/data/azure-sql-database-well-architected-framework#azure-sql-database-and-security)
+- [Azure SQL Database and security](https://learn.microsoft.com/azure/architecture/framework/services/data/azure-sql-database-well-architected-framework#azure-sql-database-and-security)
 - [Introduction to Microsoft Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql)
 - [Azure Security Benchmark - Data protection](https://docs.microsoft.com/security/benchmark/azure/security-controls-v2-data-protection)

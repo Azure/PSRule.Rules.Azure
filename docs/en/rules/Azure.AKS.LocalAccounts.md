@@ -199,8 +199,8 @@ To use this feature you must first opt-in by registering the feature on a per-su
 
 ## LINKS
 
-- [Authorization with Azure AD](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authorization)
-- [Security design principles](https://docs.microsoft.com/azure/architecture/framework/security/security-principles)
+- [Authorization with Azure AD](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authorization)
+- [Security design principles](https://learn.microsoft.com/azure/architecture/framework/security/security-principles)
 - [Disable local accounts (preview)](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview)
 - [Access and identity options for Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/concepts-identity#azure-ad-integration)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#managedclusterproperties-object)
