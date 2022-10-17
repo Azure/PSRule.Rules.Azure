@@ -327,6 +327,14 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
         }
 
         It 'Azure.VNET.BastionSubnet' {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.BastionSubnet' };
 
             # Fail
