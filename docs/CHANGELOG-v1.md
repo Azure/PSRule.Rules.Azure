@@ -25,18 +25,20 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
-  - VNET:
-    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @bengeset96.
-      [#1761](https://github.com/Azure/PSRule.Rules.Azure/issues/1761)
   - Service Bus:
     - Check service bus namespaces uses TLS 1.2 version by @bengeset96.
       [#1777](https://github.com/Azure/PSRule.Rules.Azure/issues/1777)
+## v1.21.0-B0011 (pre-release)
 
-What's changed since pre-release v1.20.0:
+What's changed since pre-release v1.20.1:
 
 - New features:
   - Mapping of Azure Security Benchmark v3 to security rules by @jagoodwin.
     [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
+- New rules:
+  - Virtual Network:
+    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @bengeset96.
+      [#1761](https://github.com/Azure/PSRule.Rules.Azure/issues/1761)
 - General improvements:
   - Added built-in list of ignored policy definitions by @BernieWhite.
     [#1730](https://github.com/Azure/PSRule.Rules.Azure/issues/1730)
