@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - VNET:
+    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @bengeset96.
+      [#1761](https://github.com/Azure/PSRule.Rules.Azure/issues/1761)
+
 What's changed since pre-release v1.20.0:
 
 - New features:
