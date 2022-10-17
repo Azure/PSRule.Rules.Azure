@@ -48,6 +48,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -HaveCount 3;
             $ruleResult[0].Reason | Should -Be @(
+                "The subnet (AzureBastionSubnet) has no NSG associated.",
                 "The subnet (subnet-B) has no NSG associated.", 
                 "The subnet (subnet-C) has no NSG associated.", 
                 "The subnet (subnet-D) has no NSG associated."
@@ -326,8 +327,6 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
         }
 
         It 'Azure.VNET.BastionSubnet' {
-            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.BastionSubnet' };
 
             # Fail
