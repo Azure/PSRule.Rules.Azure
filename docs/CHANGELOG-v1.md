@@ -24,20 +24,24 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-- New rules:
-  - VNET:
-    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @bengeset96.
-      [#1761](https://github.com/Azure/PSRule.Rules.Azure/issues/1761)
+What's changed since pre-release v1.21.0-B0011:
 
-What's changed since pre-release v1.20.0:
+- New rules:
+  - Deployment:
+    - Check sensitive resource values use secure parameters by @BernieWhite.
+      [#1773](https://github.com/Azure/PSRule.Rules.Azure/issues/1773)
+
+## v1.21.0-B0011 (pre-release)
+
+What's changed since v1.20.1:
 
 - New features:
   - Mapping of Azure Security Benchmark v3 to security rules by @jagoodwin.
     [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
 - New rules:
-  - Deployment:
-    - Check sensitive resource values use secure parameters by @BernieWhite.
-      [#1773](https://github.com/Azure/PSRule.Rules.Azure/issues/1773)
+  - Virtual Network:
+    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @bengeset96.
+      [#1761](https://github.com/Azure/PSRule.Rules.Azure/issues/1761)
 - General improvements:
   - Added built-in list of ignored policy definitions by @BernieWhite.
     [#1730](https://github.com/Azure/PSRule.Rules.Azure/issues/1730)
@@ -50,7 +54,7 @@ What's changed since pre-release v1.20.0:
 
 ## v1.20.1
 
-What's changed since pre-release v1.20.0:
+What's changed since v1.20.0:
 
 - Bug fixes:
   - Fixed expand bicep source when reading JsonContent into a parameter by @BernieWhite.
@@ -58,7 +62,7 @@ What's changed since pre-release v1.20.0:
 
 ## v1.20.0
 
-What's changed since pre-release v1.19.2:
+What's changed since v1.19.2:
 
 - New features:
   - Added September 2022 baselines `Azure.GA_2022_09` and `Azure.Preview_2022_09` by @BernieWhite.
