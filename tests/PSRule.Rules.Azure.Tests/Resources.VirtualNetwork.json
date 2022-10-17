@@ -2774,7 +2774,7 @@
             "sourceAddressPrefix": "Internet",
             "destinationAddressPrefix": "20.237.73.217",
             "access": "Allow",
-            "priority": 501,
+            "priority": 502,
             "direction": "Inbound",
             "sourcePortRanges": [],
             "destinationPortRanges": [],
