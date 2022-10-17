@@ -28,7 +28,7 @@ Support for TLS 1.0/ 1.1 version will be removed.
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Remove TLS 1.0 and 1.1 from use with Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-remove-tls-10-11)
 - [Configure Azure Cache for Redis settings](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-ports)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)

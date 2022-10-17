@@ -30,4 +30,4 @@ Consider disabling debugging of nested deployments before release.
 
 - [Troubleshoot deployment errors](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors#nested-template)
 - [DebugSetting](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments#DebugSetting)
-- [Release deployment](https://docs.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)
+- [Release deployment](https://learn.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)

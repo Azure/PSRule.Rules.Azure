@@ -29,4 +29,4 @@ Consider using a minimum of a Standard C1 instance for production workloads.
 - [Best practices for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-best-practices)
 - [Azure Cache for Redis pricing](https://azure.microsoft.com/pricing/details/cache/)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.cache/redis#sku-object)
-- [Choosing the right resources](https://docs.microsoft.com/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)
+- [Choosing the right resources](https://learn.microsoft.com/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)

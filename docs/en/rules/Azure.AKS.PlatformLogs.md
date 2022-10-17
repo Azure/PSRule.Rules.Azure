@@ -185,7 +185,7 @@ For example:
 
 ## LINKS
 
-- [Platform Monitoring](https://docs.microsoft.com/azure/architecture/framework/devops/monitoring#platform-monitoring)
+- [Platform Monitoring](https://learn.microsoft.com/azure/architecture/framework/devops/monitoring#platform-monitoring)
 - [Monitoring AKS data reference](https://docs.microsoft.com/azure/aks/monitor-aks-reference)
 - [Collect resource logs](https://docs.microsoft.com/azure/aks/monitor-aks#collect-resource-logs)
 - [Template reference](https://docs.microsoft.com/azure/templates/microsoft.insights/diagnosticsettings?tabs=json)

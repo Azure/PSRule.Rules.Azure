@@ -79,4 +79,4 @@ resource testRecoveryServices 'Microsoft.RecoveryServices/vaults/replicationAler
 - [Recovery Services Vault - Overview](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview#storage-settings-in-the-recovery-services-vault)
 - [Recovery Services Vault - Replication Alerts](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#configuring-notifications-for-alerts)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.recoveryservices/vaults/replicationalertsettings?tabs=bicep)
-- [Well Architected Framework - Reliability](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
+- [Well Architected Framework - Reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)

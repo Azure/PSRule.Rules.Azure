@@ -83,7 +83,7 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 
-- [Monitor Azure resources in Microsoft Defender for Cloud](https://docs.microsoft.com/azure/architecture/framework/security/monitor-resources#virtual-machines)
+- [Monitor Azure resources in Microsoft Defender for Cloud](https://learn.microsoft.com/azure/architecture/framework/security/monitor-resources#virtual-machines)
 - [Introduction to Microsoft Defender for SQL Servers on machines](https://docs.microsoft.com/azure/defender-for-cloud/defender-for-sql-usage)
 - [Security considerations for SQL Server on Azure Virtual Machines](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/security-considerations-best-practices?view=azuresql)
 - [Azure Security Benchmark - Data protection](https://docs.microsoft.com/security/benchmark/azure/security-controls-v2-data-protection)

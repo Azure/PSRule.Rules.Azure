@@ -21,7 +21,7 @@ To help you align your Infrastructure as Code (IaC) to WAF principles, PSRule fo
 Included are examples, references to WAF and product documentation.
 This allows you to explore and learn the context of each WAF principle.
 
-  [2]: https://docs.microsoft.com/azure/architecture/framework/
+  [2]: https://learn.microsoft.com/azure/architecture/framework/
 
 ## Ready to go
 

@@ -147,7 +147,7 @@ Set-AzVirtualNetworkSubnetConfig -Name '<subnet>' -VirtualNetwork $vnet -Address
 
 ## LINKS
 
-- [Implement network segmentation patterns on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
+- [Implement network segmentation patterns on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
 - [Network Security Best Practices](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
 - [Azure Firewall FAQ](https://docs.microsoft.com/azure/firewall/firewall-faq#are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet)
 - [Forced tunneling configuration](https://docs.microsoft.com/azure/firewall/forced-tunneling#forced-tunneling-configuration)

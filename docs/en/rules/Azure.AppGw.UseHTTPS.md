@@ -94,6 +94,6 @@ resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Create an application gateway with HTTP to HTTPS redirection using the Azure portal](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
 - [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)

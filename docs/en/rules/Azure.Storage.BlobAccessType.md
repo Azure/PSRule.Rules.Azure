@@ -73,7 +73,7 @@ resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@20
 
 ## LINKS
 
-- [Authentication with Azure AD](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication)
+- [Authentication with Azure AD](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication)
 - [About anonymous public read access](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-configure#about-anonymous-public-read-access)
 - [Use Azure Policy to enforce authorized access](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent#use-azure-policy-to-enforce-authorized-access)
 - [How a shared access signature works](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works)

@@ -155,5 +155,5 @@ resource automationAccountName_Microsoft_Insights_service 'Microsoft.Insights/di
 
 ## LINKS
 
-- [Security audits](https://docs.microsoft.com/azure/architecture/framework/security/monitor-audit)
+- [Security audits](https://learn.microsoft.com/azure/architecture/framework/security/monitor-audit)
 - [Template Reference](https://docs.microsoft.com/azure/templates/microsoft.insights/diagnosticsettings)
