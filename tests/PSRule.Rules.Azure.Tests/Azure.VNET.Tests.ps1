@@ -324,5 +324,26 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'vnet-001';
         }
+
+        It 'Azure.VNET.BastionSubnet' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.BastionSubnet' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-C';
+
+            $ruleResult[0].Reason | Should -BeExactly "The virtual network 'vnet-A' with a GatewaySubnet also should have an AzureBastionSubnet configured.";
+            $ruleResult[1].Reason | Should -BeExactly "The virtual network 'vnet-C' with a GatewaySubnet also should have an AzureBastionSubnet configured.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-D', 'vnet-E';
+        }
     }
 }
