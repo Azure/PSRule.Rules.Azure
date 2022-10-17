@@ -28,6 +28,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Service Bus:
     - Check service bus namespaces uses TLS 1.2 version by @bengeset96.
       [#1777](https://github.com/Azure/PSRule.Rules.Azure/issues/1777)
+
 ## v1.21.0-B0011 (pre-release)
 
 What's changed since pre-release v1.20.1:
