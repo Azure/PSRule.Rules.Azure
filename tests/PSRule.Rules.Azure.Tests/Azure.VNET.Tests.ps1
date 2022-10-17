@@ -46,7 +46,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D';
             
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -HaveCount 3;
+            $ruleResult[0].Reason | Should -HaveCount 4;
             $ruleResult[0].Reason | Should -Be @(
                 "The subnet (AzureBastionSubnet) has no NSG associated.",
                 "The subnet (subnet-B) has no NSG associated.", 
