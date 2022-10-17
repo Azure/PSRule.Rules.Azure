@@ -95,6 +95,6 @@ resource service 'Microsoft.SignalRService/signalR@2021-10-01' = {
 
 ## LINKS
 
-- [Target and non-functional requirements](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-requirements#availability-targets)
+- [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#availability-targets)
 - [Azure SignalR Service pricing](https://azure.microsoft.com/pricing/details/signalr-service/)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.signalrservice/signalr)

@@ -111,7 +111,7 @@ La cuarentena de imágenes para Azure Container Registry se encuentra actualment
 
 ## Enlaces
 
-- [Supervisión de recursos de Azure en Microsoft Defender for Cloud](https://docs.microsoft.com/azure/architecture/framework/security/monitor-resources#containers)
+- [Supervisión de recursos de Azure en Microsoft Defender for Cloud](https://learn.microsoft.com/azure/architecture/framework/security/monitor-resources#containers)
 - [¿Cómo se habilita la cuarentena automática de imágenes para un registro?](https://docs.microsoft.com/azure/container-registry/container-registry-faq#how-do-i-enable-automatic-image-quarantine-for-a-registry-)
 - [Patrón de cuarentena](https://github.com/Azure/acr/tree/main/docs/preview/quarantine)
 - [Proteger las imágenes y el tiempo de ejecución](https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)

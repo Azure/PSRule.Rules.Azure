@@ -99,7 +99,7 @@ resource webApp 'Microsoft.Web/sites@2021-03-01' = {
 
 ## LINKS
 
-- [Creating good health probes](https://docs.microsoft.com/azure/architecture/framework/resiliency/monitor-model#create-good-health-probes)
+- [Creating good health probes](https://learn.microsoft.com/azure/architecture/framework/resiliency/monitor-model#create-good-health-probes)
 - [Health check path](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-get-started#health-check-path)
 - [Health Check is now Generally Available](https://azure.github.io/AppService/2020/08/24/healthcheck-on-app-service.html)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteproperties)

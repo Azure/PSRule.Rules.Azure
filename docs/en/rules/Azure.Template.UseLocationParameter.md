@@ -112,4 +112,4 @@ Generated templates from these tools may not require any parameters to be set.
 
 - [ARM template best practices](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#location-recommendations-for-parameters)
 - [Parameters](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-syntax#parameters)
-- [Release deployment](https://docs.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)
+- [Release deployment](https://learn.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)

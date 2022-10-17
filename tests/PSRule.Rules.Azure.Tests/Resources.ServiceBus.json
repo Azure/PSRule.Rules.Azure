@@ -48,6 +48,7 @@
     "Plan": null,
     "Properties": {
       "disableLocalAuth": true,
+      "minimumTlsVersion": "1.0",
       "zoneRedundant": false,
       "provisioningState": "Succeeded",
       "createdAt": "2020-06-30T13:23:58.58Z",

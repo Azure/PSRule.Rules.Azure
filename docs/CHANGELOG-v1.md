@@ -25,6 +25,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+  - VNET:
+    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @bengeset96.
+      [#1761](https://github.com/Azure/PSRule.Rules.Azure/issues/1761)
   - Service Bus:
     - Check service bus namespaces uses TLS 1.2 version by @bengeset96.
       [#1777](https://github.com/Azure/PSRule.Rules.Azure/issues/1777)
@@ -39,8 +42,18 @@ What's changed since pre-release v1.20.0:
     [#1730](https://github.com/Azure/PSRule.Rules.Azure/issues/1730)
     - To ignore additional policy definitions, use the `AZURE_POLICY_IGNORE_LIST` configuration option.
 - Engineering:
-  - Bump PSRule to v2.5.0.
-    [#1769](https://github.com/Azure/PSRule.Rules.Azure/pull/1769)
+  - Bump PSRule to v2.5.1.
+    [#1782](https://github.com/Azure/PSRule.Rules.Azure/pull/1782)
+  - Bump Az.Resources to v6.3.0.
+    [#1782](https://github.com/Azure/PSRule.Rules.Azure/pull/1782)
+
+## v1.20.1
+
+What's changed since pre-release v1.20.0:
+
+- Bug fixes:
+  - Fixed expand bicep source when reading JsonContent into a parameter by @BernieWhite.
+    [#1780](https://github.com/Azure/PSRule.Rules.Azure/issues/1780)
 
 ## v1.20.0
 

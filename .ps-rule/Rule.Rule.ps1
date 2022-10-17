@@ -43,7 +43,26 @@ Rule 'Rule.Pillar' -Type 'PSRule.Rules.Rule' {
         'Performance Efficiency'
         'Reliability'
         'Security'
-        
+
+        # Spanish
+        'Confiabilidad'
+        'Seguridad'
+        'Optimización de costos'
+        'Excelencia operativa'
+        'Eficiencia del rendimiento'
+    ))
+}
+
+# Synopsis: Add tag to rules for a valid Well-Architected Framework pillar.
+Rule 'Rule.PillarTag' -Type 'PSRule.Rules.Rule' -Level Warning {
+    $Assert.In($TargetObject, 'Tag.''Azure.WAF/pillar''', @(
+        # English
+        'Cost Optimization'
+        'Operational Excellence'
+        'Performance Efficiency'
+        'Reliability'
+        'Security'
+
         # Spanish
         'Confiabilidad'
         'Seguridad'
@@ -77,4 +96,12 @@ Rule 'Rule.NonCultureMSDocs' -Type 'PSRule.Rules.Rule' -If { $Assert.Greater($Ta
         $Assert.NotMatch($link, 'Uri', 'https\:\/\/docs\.microsoft\.com\/[a-z]{2,2}-[a-z]{2,2}\/\w{1,}')
         $Assert.NotMatch($link, 'Uri', 'https\:\/\/learn\.microsoft\.com\/[a-z]{2,2}-[a-z]{2,2}\/\w{1,}')
     }
+}
+
+# Synopsis: Rules must reference the Azure Well-Architected Framework.
+Rule 'Rule.WAFReference' -Type 'PSRule.Rules.Rule' -Level Warning {
+    $references = @($TargetObject.Info.Links | Where-Object {
+        $_.Uri -like 'https://learn.microsoft.com/azure/architecture/framework/*'
+    })
+    $Assert.GreaterOrEqual($references, '.', 1);
 }

@@ -90,5 +90,5 @@ resource Redis__resource 'Microsoft.Cache/Redis@2021-06-01' = {
 ## LINKS
 
 - [Azure Cache for Redis with Azure Private Link](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link)
-- [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
+- [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
 - [What is Azure Private Endpoint?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
