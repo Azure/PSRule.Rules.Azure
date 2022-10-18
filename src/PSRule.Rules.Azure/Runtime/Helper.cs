@@ -1,7 +1,9 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data;
@@ -33,6 +35,43 @@ namespace PSRule.Rules.Azure.Runtime
         {
             return !IsTemplateExpression(expression) ||
                 TokenStreamValidator.HasLiteralValue(ExpressionParser.Parse(expression));
+        }
+
+        /// <summary>
+        /// Get the name of parameters that would be assigned as values.
+        /// </summary>
+        internal static string[] GetParameterTokenValue(string expression)
+        {
+            return !IsTemplateExpression(expression)
+                ? Array.Empty<string>()
+                : TokenStreamValidator.GetParameterTokenValue(ExpressionParser.Parse(expression));
+        }
+
+        /// <summary>
+        /// Returns true if it contains a call to the function listKeys.
+        /// </summary>
+        internal static bool UsesListKeysFunction(string expression)
+        {
+            return IsTemplateExpression(expression) && TokenStreamValidator.UsesListKeysFunction(ExpressionParser.Parse(expression));
+        }
+
+        /// <summary>
+        /// Checks if the value of the expresion is secure, whether by using secure parameters, references to KeyVault, or the ListKeys function.
+        /// </summary>
+        public static bool HasSecureValue(string expression, string[] secureParameters)
+        {
+            if ((!string.IsNullOrEmpty(expression) && expression.StartsWith("{{Secret", StringComparison.OrdinalIgnoreCase)) || UsesListKeysFunction(expression))
+            {
+                return true;
+            }
+            else
+            {
+                var parameterNamesInExpression = GetParameterTokenValue(expression);
+
+                return parameterNamesInExpression != null &&
+                parameterNamesInExpression.Length > 0 &&
+                parameterNamesInExpression.Intersect(secureParameters, StringComparer.OrdinalIgnoreCase).Count() == parameterNamesInExpression.Length;
+            }
         }
 
         /// <summary>

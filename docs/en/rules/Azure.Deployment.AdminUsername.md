@@ -155,5 +155,5 @@ By default the following values are used:
 ## LINKS
 
 - [Infrastructure provisioning considerations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/deploy-infrastructure)
-- [Use KeyVault Secrets in Bicep](https://docs.microsoft.com/azure/azure-resource-manager/bicep/key-vault-parameter)
-- [Use KeyVault Secret in Parameter File](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-use-key-vault#edit-the-parameters-file)
+- [Use Azure Key Vault to pass secure parameter value during Bicep deployment](https://learn.microsoft.com/azure/azure-resource-manager/bicep/key-vault-parameter)
+- [Integrate Azure Key Vault in your ARM template deployment](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-use-key-vault#edit-the-parameters-file)
