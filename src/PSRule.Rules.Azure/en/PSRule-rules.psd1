@@ -72,5 +72,7 @@
     AppConfigStoresDiagnosticSetting = "Minimum one diagnostic setting should have ({0}) configured or category group ({1}) configured."
     AppConfigPurgeProtection = "The app configuration store '{0}' should have purge protection enabled." 
     LiteralSensitiveProperty = "The property '{0}' uses a deterministic literal value."
+    SecureParameterRequired = "The property '{0}' must use a secure parameter but does not."
     BastionSubnetNotFound = "The virtual network '{0}' with a GatewaySubnet also should have an AzureBastionSubnet configured."
+    ServiceBusMinTLS = "The service bus namespace '{0}' should minimum use TLS 1.2 version."
 }
