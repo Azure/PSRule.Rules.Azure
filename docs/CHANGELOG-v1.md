@@ -24,11 +24,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.21.0-B0027 (pre-release)
+
 What's changed since pre-release v1.21.0-B0011:
 
 - New rules:
   - Deployment:
-    - Check sensitive resource values use secure parameters by @BernieWhite.
+    - Check sensitive resource values use secure parameters by @VeraBE @BernieWhite.
       [#1773](https://github.com/Azure/PSRule.Rules.Azure/issues/1773)
   - Service Bus:
     - Check service bus namespaces uses TLS 1.2 version by @bengeset96.
