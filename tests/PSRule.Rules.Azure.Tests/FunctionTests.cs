@@ -94,14 +94,20 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // String
-            var actual1 = (bool)Functions.Contains(context, new object[] { "OneTwoThree", "e" });
-            var actual2 = (bool)Functions.Contains(context, new object[] { "OneTwoThree", "z" });
-            Assert.True(actual1);
-            Assert.False(actual2);
+            Assert.True((bool)Functions.Contains(context, new object[] { "OneTwoThree", "e" }));
+            Assert.False((bool)Functions.Contains(context, new object[] { "OneTwoThree", "z" }));
 
             // Object
+            Assert.True((bool)Functions.Contains(context, new object[] { JObject.Parse("{ \"one\": \"a\", \"two\": \"b\", \"three\": \"c\" }"), "two" }));
+            Assert.True((bool)Functions.Contains(context, new object[] { JObject.Parse("{ \"one\": \"a\", \"two\": \"b\", \"three\": \"c\" }"), "Two" }));
+            Assert.False((bool)Functions.Contains(context, new object[] { JObject.Parse("{ \"one\": \"a\", \"two\": \"b\", \"three\": \"c\" }"), "four" }));
 
             // Array
+            Assert.True((bool)Functions.Contains(context, new object[] { new string[] { "one", "two", "three" }, "two" }));
+            Assert.True((bool)Functions.Contains(context, new object[] { new object[] { "one", "two", "three" }, "two" }));
+            Assert.False((bool)Functions.Contains(context, new object[] { new object[] { "one", "two", "three" }, "Two" }));
+            Assert.False((bool)Functions.Contains(context, new object[] { new object[] { "one", "two", "three" }, "four" }));
+            Assert.True((bool)Functions.Contains(context, new object[] { new object[] { 1, 2, 3 }, 3 }));
         }
 
         [Fact]
