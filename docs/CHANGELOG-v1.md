@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.20.1:
+
+- Bug fixes:
+  - Fixed contains function unable to match array by @BernieWhite.
+    [#1793](https://github.com/Azure/PSRule.Rules.Azure/issues/1793)
+
 ## v1.20.1
 
 What's changed since pre-release v1.20.0:
