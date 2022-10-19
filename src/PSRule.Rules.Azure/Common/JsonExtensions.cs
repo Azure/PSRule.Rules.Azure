@@ -140,6 +140,11 @@ namespace PSRule.Rules.Azure
             return string.Equals(n, name, StringComparison.OrdinalIgnoreCase);
         }
 
+        internal static bool ContainsKeyInsensitive(this JObject o, string propertyName)
+        {
+            return o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out _);
+        }
+
         internal static bool TryGetProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken
         {
             value = null;
