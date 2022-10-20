@@ -205,7 +205,7 @@ function global:IsLinuxOffering {
 
         return $False
     }
- }
+}
  
 function global:VMHasLinuxOS {
     [CmdletBinding()]
@@ -217,7 +217,7 @@ function global:VMHasLinuxOS {
         }
 
         return $TargetObject.Properties.storageProfile.osDisk.osType -eq 'Linux' -or
-            $Assert.HasField($TargetObject, 'properties.osProfile.linuxConfiguration').Result -or
+        $Assert.HasField($TargetObject, 'properties.osProfile.linuxConfiguration').Result -or
             (IsLinuxOffering($TargetObject.Properties.storageProfile.imageReference))
     }
 }
@@ -232,7 +232,7 @@ function global:VMSSHasLinuxOS {
         }
 
         return $TargetObject.Properties.virtualMachineProfile.storageProfile.osDisk.osType -eq 'Linux' -or
-            $Assert.HasField($TargetObject, 'properties.virtualMachineProfile.osProfile.linuxConfiguration').Result -or
+        $Assert.HasField($TargetObject, 'properties.virtualMachineProfile.osProfile.linuxConfiguration').Result -or
             (IsLinuxOffering($TargetObject.Properties.virtualMachineProfile.storageProfile.imageReference))
     }
 }
@@ -395,7 +395,7 @@ function global:GetIPAddressSummary {
     param ()
     process {
         $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
-                $_.Type -like "*/firewallRules"
+                $_.Type -like '*/firewallRules'
             } | ForEach-Object -Process {
                 if (!($_.ResourceName -eq 'AllowAllWindowsAzureIps' -or ($_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0'))) {
                     $_;
@@ -406,7 +406,7 @@ function global:GetIPAddressSummary {
         $public = 0;
 
         foreach ($fwRule in $firewallRules) {
-            if ($fwRule.Properties.startIpAddress -like "10.*" -or $fwRule.Properties.startIpAddress -like "172.*" -or $fwRule.Properties.startIpAddress -like "192.168.*") {
+            if ($fwRule.Properties.startIpAddress -like '10.*' -or $fwRule.Properties.startIpAddress -like '172.*' -or $fwRule.Properties.startIpAddress -like '192.168.*') {
                 $private += GetIPAddressCount -Start $fwRule.Properties.startIpAddress -End $fwRule.Properties.endIpAddress;
             }
             else {
@@ -519,4 +519,14 @@ function global:PrependConfigurationZoneWithProviderZone {
         
         return $ProviderZone;
     }
+}
+
+function global:HasLogAnalyticsAgent {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        @(GetSubResources -ResourceType 'Microsoft.Compute/virtualMachines/extensions', 'Microsoft.Compute/virtualMachineScaleSets/extensions' |
+            Where-Object { $_.Properties.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring' })    
+    } 
 }

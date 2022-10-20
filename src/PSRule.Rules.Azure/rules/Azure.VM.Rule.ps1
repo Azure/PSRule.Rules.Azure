@@ -11,14 +11,14 @@
 Rule 'Azure.VM.UseManagedDisks' -Ref 'AZR-000238' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'DP-4' } {
     # Check OS disk
     $Assert.
-        NullOrEmpty($TargetObject, 'properties.storageProfile.osDisk.vhd.uri').
-        WithReason(($LocalizedData.UnmanagedDisk -f $TargetObject.properties.storageProfile.osDisk.name), $True);
+    NullOrEmpty($TargetObject, 'properties.storageProfile.osDisk.vhd.uri').
+    WithReason(($LocalizedData.UnmanagedDisk -f $TargetObject.properties.storageProfile.osDisk.name), $True);
 
     # Check data disks
     foreach ($dataDisk in $TargetObject.properties.storageProfile.dataDisks) {
         $Assert.
-            NullOrEmpty($dataDisk, 'vhd.uri').
-            WithReason(($LocalizedData.UnmanagedDisk -f $dataDisk.name), $True);
+        NullOrEmpty($dataDisk, 'vhd.uri').
+        WithReason(($LocalizedData.UnmanagedDisk -f $dataDisk.name), $True);
     }
 }
 
@@ -29,8 +29,8 @@ Rule 'Azure.VM.DiskCaching' -Ref 'AZR-000242' -Type 'Microsoft.Compute/virtualMa
 
     # Check data disks
     $dataDisks = @($TargetObject.properties.storageProfile.dataDisks | Where-Object {
-        $Null -ne $_
-    })
+            $Null -ne $_
+        })
     if ($dataDisks.Length -gt 0) {
         foreach ($disk in $dataDisks) {
             if ($disk.managedDisk.storageAccountType -eq 'Premium_LRS') {
@@ -229,3 +229,12 @@ Rule 'Azure.VM.PPGName' -Ref 'AZR-000260' -Type 'Microsoft.Compute/proximityPlac
 }
 
 #endregion Proximity Placement Groups
+
+#region Azure Monitor Agent
+
+# Synopsis: Use Azure Monitor Agent as replacement for Log Analytics Agent.
+Rule 'Azure.VM.AMA' -Ref 'AZR-000317' -Type 'Microsoft.Compute/virtualMachines' -If { HasLogAnalyticsAgent } -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+    $Assert.Fail($LocalizedData.LogAnalyticsAgentDeprecated)
+}
+
+#endregion Azure Monitor Agent
