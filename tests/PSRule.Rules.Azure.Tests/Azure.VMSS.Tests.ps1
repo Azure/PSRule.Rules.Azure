@@ -254,5 +254,27 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'vmss-001';
         }
+
+        It 'Azure.VMSS.MigrateAMA' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VMSS.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.MigrateAMA' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vmss-002', 'vmss-004', 'vmss-005';
+
+            $ruleResult[0].Reason | Should -BeExactly "The legacy Log Analytics Agent is deprecated and will be retired on August 31, 2024. Migrate to the Azure Monitor Agent.";
+            $ruleResult[1].Reason | Should -BeExactly "The legacy Log Analytics Agent is deprecated and will be retired on August 31, 2024. Migrate to the Azure Monitor Agent.";
+            $ruleResult[2].Reason | Should -BeExactly "The legacy Log Analytics Agent is deprecated and will be retired on August 31, 2024. Migrate to the Azure Monitor Agent.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-003';
+        }
     }
 }

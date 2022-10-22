@@ -50,4 +50,17 @@ Rule 'Azure.VMSS.PublicKey' -Ref 'AZR-000288' -Type 'Microsoft.Compute/virtualMa
     Reason($LocalizedData.VMSSPublicKey, $PSRule.TargetName)
 }
 
+# Synopsis: Use Azure Monitor Agent as replacement for Log Analytics Agent.
+Rule 'Azure.VMSS.MigrateAMA' -Ref 'AZR-000318' -Type 'Microsoft.Compute/virtualMachineScaleSets' -If { HasOMSOrAMAExtension } -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+    $property = $TargetObject.Properties.virtualMachineProfile.extensionProfile.extensions.properties |
+        Where-Object { (($_.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.type -eq 'MicrosoftMonitoringAgent')) -or
+            (($_.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.type -eq 'OmsAgentForLinux')) }
+                $subresource = @(GetSubResources -ResourceType 'Microsoft.Compute/virtualMachineScaleSets/extensions' |
+                    Where-Object { (($_.Properties.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.Properties.type -eq 'MicrosoftMonitoringAgent')) -or
+                        (($_.Properties.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.Properties.type -eq 'OmsAgentForLinux')) })
+    
+    $extensions = @($property; $subresource)
+    $Assert.Less($extensions, '.', 1).Reason($LocalizedData.LogAnalyticsAgentDeprecated).PathPrefix('resources')
+}
+
 #endregion Virtual machine scale set

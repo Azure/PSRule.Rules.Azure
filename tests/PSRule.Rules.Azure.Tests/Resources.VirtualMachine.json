@@ -349,6 +349,30 @@
         "ResourceType": "Microsoft.Network/networkInterfaces",
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A/extensions/AzureMonitorWindowsAgent",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A/extensions/AzureMonitorWindowsAgent",
+        "Location": "region",
+        "ResourceName": "AzureMonitorWindowsAgent",
+        "Name": "AzureMonitorWindowsAgent",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualMachines/vm-A",
+        "Properties": {
+          "publisher": "Microsoft.Azure.Monitor",
+          "type": "AzureMonitorWindowsAgent",
+          "typeHandlerVersion": "1.0",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+            "workspaceId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachines/extensions",
+        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
       }
     ]
   },
@@ -478,7 +502,7 @@
         "ParentResource": "virtualMachines/vm-B",
         "Properties": {
           "publisher": "Microsoft.EnterpriseCloud.Monitoring",
-          "type": "MicrosoftMonitorAgent",
+          "type": "MicrosoftMonitoringAgent",
           "typeHandlerVersion": "1.0",
           "autoUpgradeMinorVersion": true,
           "settings": {
@@ -1215,6 +1239,30 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [
       {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C/extensions/AzureMonitorLinuxAgent",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C/extensions/AzureMonitorLinuxAgent",
+        "Location": "region",
+        "ResourceName": "AzureMonitorLinuxAgent",
+        "Name": "AzureMonitorLinuxAgent",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualMachines/vm-C",
+        "Properties": {
+          "publisher": "Microsoft.Azure.Monitor",
+          "type": "AzureMonitorLinuxAgent",
+          "typeHandlerVersion": "1.21",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+            "workspaceId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachines/extensions",
+        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      },
+      {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC",
         "Identity": null,
@@ -1494,7 +1542,7 @@
         "ParentResource": "virtualMachines/vm-D",
         "Properties": {
           "publisher": "Microsoft.EnterpriseCloud.Monitoring",
-          "type": "MicrosoftMonitorAgent",
+          "type": "MicrosoftMonitoringAgent",
           "typeHandlerVersion": "1.0",
           "autoUpgradeMinorVersion": true,
           "settings": {

@@ -75,5 +75,5 @@
     SecureParameterRequired = "The property '{0}' must use a secure parameter but does not."
     BastionSubnetNotFound = "The virtual network '{0}' with a GatewaySubnet also should have an AzureBastionSubnet configured."
     ServiceBusMinTLS = "The service bus namespace '{0}' should minimum use TLS 1.2 version."
-    LogAnalyticsAgentDeprecated = "The Log Analytics is deprecated and will be retired on August 31, 2024. Migrate to the Azure Monitor Agent."
+    LogAnalyticsAgentDeprecated = "The legacy Log Analytics Agent is deprecated and will be retired on August 31, 2024. Migrate to the Azure Monitor Agent."
 }

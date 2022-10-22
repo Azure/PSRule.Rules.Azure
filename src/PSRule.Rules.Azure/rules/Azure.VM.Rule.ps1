@@ -233,8 +233,12 @@ Rule 'Azure.VM.PPGName' -Ref 'AZR-000260' -Type 'Microsoft.Compute/proximityPlac
 #region Azure Monitor Agent
 
 # Synopsis: Use Azure Monitor Agent as replacement for Log Analytics Agent.
-Rule 'Azure.VM.AMA' -Ref 'AZR-000317' -Type 'Microsoft.Compute/virtualMachines' -If { HasLogAnalyticsAgent } -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
-    $Assert.Fail($LocalizedData.LogAnalyticsAgentDeprecated)
+Rule 'Azure.VM.MigrateAMA' -Ref 'AZR-000317' -Type 'Microsoft.Compute/virtualMachines' -If { HasOMSOrAMAExtension } -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+    $extensions = @(GetSubResources -ResourceType 'Microsoft.Compute/virtualMachines/extensions' |
+        Where-Object { (($_.Properties.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.Properties.type -eq 'MicrosoftMonitoringAgent')) -or
+            (($_.Properties.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.Properties.type -eq 'OmsAgentForLinux')) })
+
+    $Assert.Less($extensions, '.', 1).Reason($LocalizedData.LogAnalyticsAgentDeprecated).PathPrefix('resources')
 }
 
 #endregion Azure Monitor Agent
