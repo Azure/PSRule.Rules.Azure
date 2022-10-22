@@ -35,7 +35,7 @@ If the cluster is stopped, this rule is ignored.
 
 ## LINKS
 
-- [Generate cost reports](https://docs.microsoft.com/azure/architecture/framework/cost/monitor-reports)
+- [Generate cost reports](https://learn.microsoft.com/azure/architecture/framework/cost/monitor-reports)
 - [Pricing](https://azure.microsoft.com/pricing/details/data-explorer/)
 - [Stop and restart the cluster](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal#stop-and-restart-the-cluster)
 - [Automatic stop of inactive Azure Data Explorer clusters](https://docs.microsoft.com/azure/data-explorer/auto-stop-clusters)

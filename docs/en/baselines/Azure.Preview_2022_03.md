@@ -6,7 +6,7 @@ Include rules released March 2022 or prior for Azure preview only features.
 
 ## Rules
 
-The following rules are included within `Azure.Preview_2022_03`. This baseline includes a total of 7 rules.
+The following rules are included within `Azure.Preview_2022_03`. This baseline includes a total of 5 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -15,5 +15,3 @@ Name | Synopsis | Severity
 [Azure.AKS.LocalAccounts](../rules/Azure.AKS.LocalAccounts.md) | Enforce named user accounts with RBAC assigned permissions. | Important
 [Azure.AKS.PodIdentity](../rules/Azure.AKS.PodIdentity.md) | Configure AKS clusters to use AAD pod identities to access Azure resources securely. | Important
 [Azure.ContainerApp.Insecure](../rules/Azure.ContainerApp.Insecure.md) | Ensure insecure inbound traffic is not permitted to the container app. | Important
-[Azure.EventGrid.DisableLocalAuth](../rules/Azure.EventGrid.DisableLocalAuth.md) | Authenticate publishing clients with Azure AD identities. | Important
-[Azure.KeyVault.AutoRotationPolicy](../rules/Azure.KeyVault.AutoRotationPolicy.md) | Key Vault keys should have auto-rotation enabled. | Important

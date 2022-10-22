@@ -180,7 +180,7 @@ resource userPool 'Microsoft.ContainerService/managedClusters/agentPools@2022-07
 
 ## LINKS
 
-- [Performance efficiency checklist](https://docs.microsoft.com/azure/architecture/framework/scalability/performance-efficiency)
+- [Performance efficiency checklist](https://learn.microsoft.com/azure/architecture/framework/scalability/performance-efficiency)
 - [Azure Kubernetes Service (AKS) Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters/agentpools)

@@ -315,3 +315,34 @@ Example:
 configuration:
   AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: ['JobLogs', 'AllMetrics']
 ```
+
+### Azure Linux OS offers
+
+This configurations specifies names of offers corresponding to the Linux OS.
+It's mostly intended to be used when analyzing templates that use private Linux offerings.
+Rules that check if a VM or VMSS has Linux OS also validate against the values set by this configuration.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_LINUX_OS_OFFERS: array # An array of offer names
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_LINUX_OS_OFFERS configuration option
+configuration:
+  AZURE_LINUX_OS_OFFERS: []
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_LINUX_OS_OFFERS configuration option to aLinuxOffer, anotherLinuxOffer
+configuration:
+  AZURE_LINUX_OS_OFFERS:
+  - 'aLinuxOffer'
+  - 'anotherLinuxOffer'
+```

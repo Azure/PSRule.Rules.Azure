@@ -21,12 +21,11 @@ To help you align your Infrastructure as Code (IaC) to WAF principles, PSRule fo
 Included are examples, references to WAF and product documentation.
 This allows you to explore and learn the context of each WAF principle.
 
-  [1]: https://microsoft.github.io/PSRule/
-  [2]: https://docs.microsoft.com/azure/architecture/framework/
+  [2]: https://learn.microsoft.com/azure/architecture/framework/
 
 ## Ready to go
 
-PSRule for Azure includes over 280 rules for validating resources against configuration recommendations.
+PSRule for Azure includes over 300 rules for validating resources against configuration recommendations.
 Rules automatically detect and analyze resources from Azure IaC artifacts.
 This allows you to quickly light up unit testing of Azure resources from templates and Bicep deployments.
 
@@ -40,7 +39,7 @@ As new built-in rules are added and improved, download the latest version to sta
     For detailed information on building custom rules see:
 
     - [Enforcing custom tags][3].
-    - [Enforcing code ownership][3].
+    - [Enforcing code ownership][4].
 
   [3]: customization/enforce-custom-tags.md
   [4]: customization/enforce-codeowners.md

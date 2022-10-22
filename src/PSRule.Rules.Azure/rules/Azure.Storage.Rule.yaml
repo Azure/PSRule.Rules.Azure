@@ -37,6 +37,7 @@ metadata:
     release: 'GA'
     ruleSet: '2020_09'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'DP-3'
 spec:
   type:
@@ -56,6 +57,7 @@ metadata:
     release: 'GA'
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
+  labels:
     Azure.ASB.v3/control: 'DP-3'
 spec:
   type:
@@ -74,6 +76,9 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_09'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: 'NS-2'
 spec:
   type:
   - Microsoft.Storage/storageAccounts

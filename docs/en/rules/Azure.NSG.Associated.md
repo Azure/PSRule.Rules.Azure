@@ -26,14 +26,13 @@ Apply tags to all resources to help identify resources that are attached to spec
 
 To find orphaned NSG's run the following Azure CLI command
 
-```CLI
+```bash
 az network nsg list -g $rgName --query "[?(subnets==null) && (networkInterfaces==null)].id" -o tsv
 ```
 
-
 ## LINKS
 
-- [Operational excellence principles](https://docs.microsoft.com/azure/architecture/framework/devops/principles)
+- [Operational excellence principles](https://learn.microsoft.com/azure/architecture/framework/devops/principles)
 - [Orphaned Resources Workbook](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/azure-orphan-resources/ba-p/3492198)
 - [Modify, create and delete NSG's using the CLI](https://learn.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-delete)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)

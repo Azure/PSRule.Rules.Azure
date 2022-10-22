@@ -1,0 +1,6 @@
+{
+  "location": "eastus",
+  "resourceGroups": [
+    "rg-001"
+  ]
+}

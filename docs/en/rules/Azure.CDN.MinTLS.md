@@ -28,7 +28,7 @@ Consider configuring a custom domain and setting the minimum supported TLS versi
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [REST API Custom Domains - Enable Custom Https](https://docs.microsoft.com/rest/api/cdn/customdomains/enablecustomhttps#minimumtlsversion)
 - [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.cdn/profiles/endpoints)

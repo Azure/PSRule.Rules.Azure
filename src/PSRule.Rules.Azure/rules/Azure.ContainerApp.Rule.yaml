@@ -17,6 +17,9 @@ metadata:
   tags:
     release: 'preview'
     ruleSet: '2022_03'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: 'NS-2'
 spec:
   with:
   - Azure.ContainerApp.WithIngress

@@ -1,0 +1,99 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Selectors for Application Gateways
+#
+
+#region Rules
+
+---
+# Synopsis: Application Gateways should use a WAF.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGwWAF.Enabled
+  ref: AZR-000309
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  type:
+  - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
+  condition:
+    allOf:
+    # WAF policy is enabled
+    - field: Properties.policySettings.state
+      equals: 'Enabled'
+
+---
+# Synopsis: Application Gateways WAF should be in prevention mode.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGwWAF.PreventionMode
+  ref: AZR-000302
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  type:
+  - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
+  condition:
+    allOf:
+    # WAF policy is set to prevention mode
+    - field: Properties.policySettings.mode
+      equals: 'Prevention'
+
+---
+
+# Synopsis: Application Gateways WAF should have no exclusions.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGwWAF.Exclusions
+  ref: AZR-000303
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  type:
+  - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
+  condition:
+    anyOf:
+    # WAF policy has no exclusions
+    - field: properties.managedRules.exclusions
+      exists: false
+    - field: properties.managedRules.exclusions
+      count: 0
+
+---
+
+# Synopsis: Application Gateways WAF should have at least 2 Rule Groups. One for OWASP and one for Microsoft_BotManagerRuleSet.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGwWAF.RuleGroups
+  ref: AZR-000304
+  tags:
+    release: 'GA'
+    ruleSet: '2022_09'
+spec:
+  type:
+  - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
+  condition:
+    allOf:
+    # WAF policy has at least two rule groups. OWASP 3.1 is the minimum. Microsoft_BotManagerRuleSet 0.1 is the minimum.
+    - field: Properties.managedRules.managedRuleSets
+      greaterOrEquals: 2
+    - field: Properties.managedRules.managedRuleSets[0].ruleSetType
+      equals: OWASP 
+    - field: Properties.managedRules.managedRuleSets[0].ruleSetVersion
+      version: '^3.1'
+    - field: Properties.managedRules.managedRuleSets[1].ruleSetType
+      equals: Microsoft_BotManagerRuleSet
+    - field: Properties.managedRules.managedRuleSets[1].ruleSetVersion
+      version: '^0.1'
+
+
+#endregion Rules

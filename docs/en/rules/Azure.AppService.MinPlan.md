@@ -77,7 +77,7 @@ resource appPlan 'Microsoft.Web/serverfarms@2021-01-15' = {
 
 ## LINKS
 
-- [Choose the right resources](https://docs.microsoft.com/azure/architecture/framework/scalability/design-capacity#choose-the-right-resources)
+- [Choose the right resources](https://learn.microsoft.com/azure/architecture/framework/scalability/design-capacity#choose-the-right-resources)
 - [Azure App Service plan overview](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)
 - [Manage an App Service plan in Azure](https://docs.microsoft.com/azure/app-service/app-service-plan-manage)
 - [Configure PremiumV3 tier for Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-configure-premium-tier)

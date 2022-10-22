@@ -191,7 +191,7 @@ Azure Policy for AKS Engine and Arc enabled Kubernetes are currently in preview.
 
 ## LINKS
 
-- [Governance, risk, and compliance](https://docs.microsoft.com/azure/architecture/framework/security/governance#audit-and-enforce-policy-compliance)
+- [Governance, risk, and compliance](https://learn.microsoft.com/azure/architecture/framework/security/governance#audit-and-enforce-policy-compliance)
 - [Understand Azure Policy for Kubernetes clusters](https://docs.microsoft.com/azure/governance/policy/concepts/policy-for-kubernetes)
 - [Secure your cluster with Azure Policy](https://docs.microsoft.com/azure/aks/use-azure-policy)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

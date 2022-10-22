@@ -619,7 +619,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             internal void Variable(string variableName, object value)
             {
-                Variables.Add(variableName, value);
+                Variables[variableName] = value;
             }
 
             public bool TryVariable(string variableName, out object value)
@@ -910,13 +910,17 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (TryStringProperty(template, PROPERTY_CONTENTVERSION, out var contentVersion))
                     ContentVersion(context, contentVersion);
 
+                // Handle compile time function variables
+                if (TryObjectProperty(template, PROPERTY_VARIABLES, out var variables))
+                    FunctionVariables(context, variables);
+
                 if (TryObjectProperty(template, PROPERTY_PARAMETERS, out var parameters))
                     Parameters(context, parameters);
 
                 if (TryArrayProperty(template, PROPERTY_FUNCTIONS, out var functions))
                     Functions(context, functions);
 
-                if (TryObjectProperty(template, PROPERTY_VARIABLES, out var variables))
+                if (TryObjectProperty(template, PROPERTY_VARIABLES, out variables))
                     Variables(context, variables);
 
                 if (TryArrayProperty(template, PROPERTY_RESOURCES, out var resources))
@@ -1237,6 +1241,18 @@ namespace PSRule.Rules.Azure.Data.Template
         #endregion Resources
 
         #region Variables
+
+        protected virtual void FunctionVariables(TemplateContext context, JObject variables)
+        {
+            if (variables == null || variables.Count == 0)
+                return;
+
+            foreach (var variable in variables)
+            {
+                if (variable.Key.StartsWith("$fxv#"))
+                    Variable(context, variable.Key, variable.Value);
+            }
+        }
 
         protected virtual void Variables(TemplateContext context, JObject variables)
         {
@@ -1653,7 +1669,7 @@ namespace PSRule.Rules.Azure.Data.Template
         protected static T EvaluateExpression<T>(ITemplateContext context, JToken value)
         {
             if (value.Type != JTokenType.String)
-                return default(T);
+                return default;
 
             var svalue = value.Value<string>();
             var lineInfo = value.TryLineInfo();
@@ -1663,7 +1679,7 @@ namespace PSRule.Rules.Azure.Data.Template
         protected static T EvaluateExpression<T>(ITemplateContext context, string value, IJsonLineInfo lineInfo)
         {
             if (string.IsNullOrEmpty(value))
-                return default(T);
+                return default;
 
             var exp = Expression<T>(context, value);
             try

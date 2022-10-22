@@ -29,4 +29,4 @@ Consider configuring `maxmemory-reserved` to at least 10% of available cache mem
 
 - [Best practices for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-best-practices)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.cache/redis#rediscreateproperties-object)
-- [Choosing the right resources](https://docs.microsoft.com/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)
+- [Choosing the right resources](https://learn.microsoft.com/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)

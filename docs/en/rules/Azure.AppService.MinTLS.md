@@ -11,7 +11,7 @@ ms-content-id: e19fbe7e-da05-47d4-8de1-2fdf52ada662
 
 ## SYNOPSIS
 
-App Service should reject TLS versions older then 1.2.
+App Service should reject TLS versions older than 1.2.
 
 ## DESCRIPTION
 
@@ -91,7 +91,7 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Enforce TLS versions](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings#enforce-tls-versions)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Insecure protocols](https://docs.microsoft.com/Azure/app-service/overview-security#insecure-protocols-http-tls-10-ftp)

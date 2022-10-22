@@ -195,7 +195,7 @@ AKS clusters must be redeployed to enable Network Policy.
 
 ## LINKS
 
-- [Implement network segmentation patterns on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
+- [Implement network segmentation patterns on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
 - [Secure traffic between pods using network policies in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/use-network-policies)
 - [Best practices for network connectivity and security in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies)
 - [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
