@@ -24,6 +24,17 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.21.0-B0027:
+
+- Engineering:
+  - Bump PSRule to v2.5.3.
+    [#1800](https://github.com/Azure/PSRule.Rules.Azure/pull/1800)
+  - Bump Az.Resources to v6.3.1.
+    [#1800](https://github.com/Azure/PSRule.Rules.Azure/pull/1800)
+- Bug fixes:
+  - Fixed contains function unable to match array by @BernieWhite.
+    [#1793](https://github.com/Azure/PSRule.Rules.Azure/issues/1793)
+
 ## v1.21.0-B0027 (pre-release)
 
 What's changed since pre-release v1.21.0-B0011:
