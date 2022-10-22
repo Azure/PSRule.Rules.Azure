@@ -205,11 +205,10 @@ For example:
 
 ### Configure with Bicep
 
-To deploy virtual machines that pass this rule:
+To deploy virtual machine scale sets that pass this rule:
 
-- Deploy a extension sub-resource (extension resource).
-- Set `properties.publisher` to `'Microsoft.Azure.Monitor'`.
-- Set `properties.type` to `'AzureMonitorWindowsAgent'` (Windows) or `'AzureMonitorLinuxAgent'` (Linux).
+- Set `properties.virtualMachineProfile.extensionProfile.extensions.properties.publisher` to `'Microsoft.Azure.Monitor'`.
+- Set `properties.virtualMachineProfile.extensionProfile.extensions.properties.type` to `'AzureMonitorWindowsAgent'` (Windows) or `'AzureMonitorLinuxAgent'` (Linux).
 
 For example:
 
