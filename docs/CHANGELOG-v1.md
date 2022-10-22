@@ -24,6 +24,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Virtual Machine:
+    - Check virtual machines uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @bengeset96.
+      [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
+  - Virtual Machine Scale Sets:
+    - Check virtual machine scale sets uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @bengeset96.
+      [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
+
 What's changed since pre-release v1.21.0-B0027:
 
 - Engineering:
