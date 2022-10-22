@@ -48,8 +48,8 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002', 'vmss-003';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002', 'vmss-003', 'vmss-004', 'vmss-005';
         }
 
         It 'Azure.VMSS.ComputerName' {
@@ -62,8 +62,8 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002', 'vmss-003';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002', 'vmss-003', 'vmss-004', 'vmss-005';
         }
     }
 
@@ -251,8 +251,8 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'vmss-001';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-005';
         }
 
         It 'Azure.VMSS.MigrateAMA' {
