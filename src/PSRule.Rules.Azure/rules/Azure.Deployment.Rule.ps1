@@ -59,15 +59,12 @@ function global:RecurseDeploymentSensitive {
 Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000314' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_12' } { 
     foreach($deployments in $TargetObject.properties.template.resources){
         if($deployments.properties.expressionEvaluationOptions.scope -eq 'outer'){
-            Write-Host "Scope matched outer"
             foreach ($outerDeployment in $deployments.properties.template.resources){
-                Write-Host "outerDeployment: $outerDeployment"
-                Write-Host "outerDeployment.properties: $($outerDeployment.properties)"
-                $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($outerDeployment.properties);
-                Write-Host "Cleanvalue: $cleanValue"
-                $Assert.NotMatch($cleanValue, '.', 'SecretReference');
+                foreach ($property in $outerDeployment.properties){
+                    $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($property);
+                    $Assert.NotMatch($cleanValue, '.', 'SecretReference');
+                }
             }
-            
         } else {
             $Assert.Pass()
         }

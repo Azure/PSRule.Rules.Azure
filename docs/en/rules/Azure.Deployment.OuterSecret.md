@@ -15,12 +15,16 @@ Do not use Outer deployments when references SecureString or SecureObject parame
 
 ## DESCRIPTION
 
-Template child deployments can be scoped as either `outer` or `inner`. The `outer` scope uses parameters from the parent
-template which can be render into clear text. This exposes the secure information.
+Template child deployments can be scoped as either `outer` or `inner`.
+When using `outer` scope evaluated deployments, parameters from the parent template are used directly within nested
+templates instead of enforcing `secureString` and `secureObject` types.
+
+When passing secure values to nested deployments always use `inner` scope deployments to ensure secure values are not logging.
+Bicep modules always use `inner` scope evaluated deployments.
 
 ## RECOMMENDATION
 
-Consider scoping the deployment to `inner` instead.
+Consider using `inner` deployments to prevent secure values from being exposed.
 
 ## EXAMPLES
 
