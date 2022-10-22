@@ -57,6 +57,7 @@ function global:RecurseDeploymentSensitive {
 
 # Synopsis: Ensure Outer scope deployments aren't using SecureString or SecureObject Parameters
 Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000314' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_12' } { 
+
     foreach($deployments in $TargetObject.properties.template.resources){
         if($deployments.properties.expressionEvaluationOptions.scope -eq 'outer'){
             foreach ($outerDeployment in $deployments.properties.template.resources){
