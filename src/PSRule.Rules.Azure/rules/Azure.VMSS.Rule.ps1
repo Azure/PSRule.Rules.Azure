@@ -51,7 +51,7 @@ Rule 'Azure.VMSS.PublicKey' -Ref 'AZR-000288' -Type 'Microsoft.Compute/virtualMa
 }
 
 # Synopsis: Protect Custom Script Extensions commands
-Rule 'Azure.VMSS.ScriptExtensions' -Ref 'AZR-000291' -Type 'Microsoft.Compute/virtualMachineScaleSets', 'Microsoft.Computer/virtualMachineScaleSets/CustomScriptExtension', 'Microsoft.Compute/virtualMachineScaleSets/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+Rule 'Azure.VMSS.ScriptExtensions' -Ref 'AZR-000318' -Type 'Microsoft.Compute/virtualMachineScaleSets', 'Microsoft.Computer/virtualMachineScaleSets/CustomScriptExtension', 'Microsoft.Compute/virtualMachineScaleSets/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
     $vmssConfig = @($TargetObject);
 
     ## Extension Prof
@@ -59,7 +59,7 @@ Rule 'Azure.VMSS.ScriptExtensions' -Ref 'AZR-000291' -Type 'Microsoft.Compute/vi
 
         foreach($extensions in $vmssConfig.properties.virtualMachineProfile.extensionProfile.extensions ) {
             $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($extensions.properties.settings.commandToExecute);
-            $Assert.NotMatch($cleanValue, '.', "secureString")
+            $Assert.NotMatch($cleanValue, '.', "SecretReference")
         } 
 
     } else {

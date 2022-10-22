@@ -23,13 +23,15 @@ section instead.
 
 ## RECOMMENDATION
 
-Move the script in the `properties.settings` property to the `properties.protectedSettings` property.
+Consider specifying secure values within `protectedSettings` to avoid exposing secrets during extension deployments.
 
 ## EXAMPLES
 
 ### Configure with Azure template
 
-ARM
+To deploy VM extensions that pass this rule:
+
+- Set any secure values within `properties.protectedSettings`.
 
 ```json
 {
@@ -50,6 +52,10 @@ ARM
 ```
 
 ### Configure with Bicep
+
+To deploy VM extensions that pass this rule:
+
+- Set any secure values within `properties.protectedSettings`.
 
 ```bicep
 resource script 'Microsoft.Compute/virtualMachines/extensions@2015-06-15' = {

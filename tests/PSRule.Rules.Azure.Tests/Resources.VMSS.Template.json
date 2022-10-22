@@ -42,8 +42,7 @@
             "defaultValue": "vm-admin"
         },
         "adminPassword": {
-            "type": "secureString",
-            "defaultValue": "$CREDENTIAL_PLACEHOLDER$"
+            "type": "secureString"
         },
         "vmssSku": {
             "defaultValue": "Standard_D4S_v3",

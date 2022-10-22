@@ -23,12 +23,14 @@ section instead.
 
 ## RECOMMENDATION
 
-Recommendation
+Cpnsider specifying secure values within  `properties.extensionProfile.extensions.protectedSettings` to avoid exposing
+secrets during extension deployments.
 
 ## EXAMPLES
 
-Instead of using `properties.extensionProfile.extensions.settings` use
-`properties.extensionProfile.extensions.protectedSettings`.
+To deploy VMSS extensions that pass this rule:
+
+- Set any secure values within `properties.extensionProfile.extensions.protectedSettings`
 
 ### Configure with Azure template
 
@@ -52,6 +54,10 @@ Instead of using `properties.extensionProfile.extensions.settings` use
 ```
 
 ### Configure with Bicep
+
+To deploy VMSS extensions that pass this rule:
+
+- Set any secure values within `properties.extensionProfile.extensions.protectedSettings`
 
 ```Bicep
 extensionProfile: {

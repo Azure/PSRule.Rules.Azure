@@ -109,8 +109,7 @@
             "defaultValue": "vm-admin"
         },
         "adminPassword": {
-            "type": "secureString",
-            "defaultValue": "$CREDENTIAL_PLACEHOLDER$"
+            "type": "secureString"
         },
         "sqlStorageWorkloadType": {
             "type": "string",
@@ -415,7 +414,7 @@
             "apiVersion": "2015-06-15",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Compute/virtualMachines', variables('vm3'))]"
+                "[resourceId('Microsoft.Compute/virtualMachines', variables('vm4'))]"
             ],
             "properties": {
                 "publisher": "Microsoft.Azure.Extensions",

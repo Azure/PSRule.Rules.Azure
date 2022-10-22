@@ -249,7 +249,7 @@ Rule 'Azure.VM.PPGName' -Ref 'AZR-000260' -Type 'Microsoft.Compute/proximityPlac
 #endregion Proximity Placement Groups
 
 # Synopsis: Protect Custom Script Extensions commands
-Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000290' -Type 'Microsoft.Compute/virtualMachines', 'Microsoft.Computer/virtualMachines/CustomScriptExtension', 'Microsoft.Compute/virtualMachines/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000317' -Type 'Microsoft.Compute/virtualMachines', 'Microsoft.Computer/virtualMachines/CustomScriptExtension', 'Microsoft.Compute/virtualMachines/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
     $vmConfig = @($TargetObject);
 
     if ($PSRule.TargetType -eq 'Microsoft.Compute/virtualMachines') {
@@ -264,7 +264,7 @@ Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000290' -Type 'Microsoft.Compute/virt
     $customScriptProperties = @('CustomScript', 'CustomScriptExtension', 'CustomScriptForLinux')
     if ($vmConfig.properties.type -in $customScriptProperties) {
         $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($vmConfig.properties.settings.commandToExecute);
-        $Assert.NotMatch($cleanValue, '.', "secureString")
+        $Assert.NotMatch($cleanValue, '.', "SecretReference")
         
     } else {
         return $Assert.Pass();
