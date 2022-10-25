@@ -46,7 +46,7 @@ Describe 'Azure.ASE' -Tag 'ASE' {
             $ruleResult.TargetName | Should -BeIn 'environment-A', 'environment-B', 'environment-D';
 
             $ruleResult[0].Reason | Should -BeExactly "The app service environment 'environment-A' with version 'ASEV1' is deprecated and will be retired on August 31, 2024. Migrate to ASEv3.";
-            $ruleResult[1].Reason | Should -BeExactly "The app service environment 'environment-A' with version 'ASEV2' is deprecated and will be retired on August 31, 2024. Migrate to ASEv3.";
+            $ruleResult[1].Reason | Should -BeExactly "The app service environment 'environment-B' with version 'ASEV2' is deprecated and will be retired on August 31, 2024. Migrate to ASEv3.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
