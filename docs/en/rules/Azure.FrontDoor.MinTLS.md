@@ -161,7 +161,7 @@ resource appResource 'Microsoft.Web/sites@2020-06-01' = {
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [What TLS versions are supported by Azure Front Door Service?](https://docs.microsoft.com/azure/frontdoor/front-door-faq#what-tls-versions-are-supported-by-azure-front-door-service)
 - [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/frontdoors/frontendendpoints)

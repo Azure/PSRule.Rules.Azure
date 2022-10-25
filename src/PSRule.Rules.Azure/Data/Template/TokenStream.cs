@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System.Collections.Generic;
@@ -177,6 +177,24 @@ namespace PSRule.Rules.Azure.Data.Template
 
             Pop();
             return true;
+        }
+
+        public void SkipGroup()
+        {
+            if (!TryTokenType(ExpressionTokenType.GroupStart, out _))
+                return;
+
+            var inner = 0;
+            while (inner >= 0 && Count > 0)
+            {
+                if (Current.Type == ExpressionTokenType.GroupStart)
+                    inner++;
+
+                if (Current.Type == ExpressionTokenType.GroupEnd)
+                    inner--;
+
+                Pop();
+            }
         }
 
         public void Add(ExpressionToken token)

@@ -8,28 +8,18 @@
 #region Virtual machine
 
 # Synopsis: Virtual machines should use managed disks
-Rule 'Azure.VM.UseManagedDisks' -Ref 'AZR-000238' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VM.UseManagedDisks' -Ref 'AZR-000238' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'DP-4' } {
     # Check OS disk
     $Assert.
-        NullOrEmpty($TargetObject, 'properties.storageProfile.osDisk.vhd.uri').
-        WithReason(($LocalizedData.UnmanagedDisk -f $TargetObject.properties.storageProfile.osDisk.name), $True);
+    NullOrEmpty($TargetObject, 'properties.storageProfile.osDisk.vhd.uri').
+    WithReason(($LocalizedData.UnmanagedDisk -f $TargetObject.properties.storageProfile.osDisk.name), $True);
 
     # Check data disks
     foreach ($dataDisk in $TargetObject.properties.storageProfile.dataDisks) {
         $Assert.
-            NullOrEmpty($dataDisk, 'vhd.uri').
-            WithReason(($LocalizedData.UnmanagedDisk -f $dataDisk.name), $True);
+        NullOrEmpty($dataDisk, 'vhd.uri').
+        WithReason(($LocalizedData.UnmanagedDisk -f $dataDisk.name), $True);
     }
-}
-
-# Synopsis: VMs should not use expired promo SKU
-Rule 'Azure.VM.PromoSku' -Ref 'AZR-000240' -If { IsVMPromoSku } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Match 'Properties.hardwareProfile.vmSize' -Not -Expression 'Standard_DS{0,1}1{0,1}[1-9]{1}_v2_Promo'
-}
-
-# Synopsis: VMs should not use Basic SKU
-Rule 'Azure.VM.BasicSku' -Ref 'AZR-000241' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Match 'Properties.hardwareProfile.vmSize' -Not -Expression 'Basic_A[0-4]'
 }
 
 # Synopsis: Check disk caching is configured correctly for the workload
@@ -39,8 +29,8 @@ Rule 'Azure.VM.DiskCaching' -Ref 'AZR-000242' -Type 'Microsoft.Compute/virtualMa
 
     # Check data disks
     $dataDisks = @($TargetObject.properties.storageProfile.dataDisks | Where-Object {
-        $Null -ne $_
-    })
+            $Null -ne $_
+        })
     if ($dataDisks.Length -gt 0) {
         foreach ($disk in $dataDisks) {
             if ($disk.managedDisk.storageAccountType -eq 'Premium_LRS') {
@@ -58,11 +48,13 @@ Rule 'Azure.VM.UseHybridUseBenefit' -Ref 'AZR-000243' -If { SupportsHybridUse } 
     $Assert.HasFieldValue($TargetObject, 'properties.licenseType', 'Windows_Server');
 }
 
-# Synopsis: Enabled accelerated networking for supported operating systems
+# Synopsis: Use accelerated networking for supported operating systems and VM types.
 Rule 'Azure.VM.AcceleratedNetworking' -Ref 'AZR-000244' -If { SupportsAcceleratedNetworking } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $networkInterfaces = GetSubResources -ResourceType 'Microsoft.Network/networkInterfaces';
-    $Null -ne $networkInterfaces;
-    foreach ($interface in $networkInterfaces) {
+    $resources = @(GetSubResources -ResourceType 'Microsoft.Network/networkInterfaces');
+    if ($resources.Length -eq 0) {
+        return $Assert.Pass();
+    }
+    foreach ($interface in $resources) {
         $Assert.HasFieldValue($interface, 'Properties.enableAcceleratedNetworking', $True);
     }
 }
@@ -79,7 +71,7 @@ Rule 'Azure.VM.Agent' -Ref 'AZR-000246' -Type 'Microsoft.Compute/virtualMachines
 }
 
 # Synopsis: Ensure automatic updates are enabled at deployment
-Rule 'Azure.VM.Updates' -Ref 'AZR-000247' -Type 'Microsoft.Compute/virtualMachines' -If { IsWindowsOS } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VM.Updates' -Ref 'AZR-000247' -Type 'Microsoft.Compute/virtualMachines' -If { IsWindowsOS } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'ES-3' } {
     $Assert.HasDefaultValue($TargetObject, 'Properties.osProfile.windowsConfiguration.enableAutomaticUpdates', $True)
 }
 
@@ -125,7 +117,7 @@ Rule 'Azure.VM.ComputerName' -Ref 'AZR-000249' -Type 'Microsoft.Compute/virtualM
 #region Managed Disks
 
 # Synopsis: Managed disks should be attached to virtual machines
-Rule 'Azure.VM.DiskAttached' -Ref 'AZR-000250' -Type 'Microsoft.Compute/disks' -If { ($TargetObject.ResourceName -notlike '*-ASRReplica') -and (IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VM.DiskAttached' -Ref 'AZR-000250' -Type 'Microsoft.Compute/disks' -If { ($TargetObject.ResourceName -notlike '*-ASRReplica') -and (IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'DP-4' } {
     # Disks should be attached unless they are used by ASR, which are not attached until fail over
     # Disks for VMs that are off are marked as Reserved
     Within 'properties.diskState' 'Attached', 'Reserved' -Reason $LocalizedData.ResourceNotAssociated
@@ -151,7 +143,7 @@ Rule 'Azure.VM.DiskSizeAlignment' -Ref 'AZR-000251' -Type 'Microsoft.Compute/dis
 # TODO: Check number of disks
 
 # Synopsis: Use Azure Disk Encryption
-Rule 'Azure.VM.ADE' -Ref 'AZR-000252' -Type 'Microsoft.Compute/disks' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VM.ADE' -Ref 'AZR-000252' -Type 'Microsoft.Compute/disks' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'DP-3' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.encryptionSettingsCollection.enabled', $True)
     $Assert.HasFieldValue($TargetObject, 'Properties.encryptionSettingsCollection.encryptionSettings')
 }
@@ -173,11 +165,6 @@ Rule 'Azure.VM.DiskName' -Ref 'AZR-000253' -Type 'Microsoft.Compute/disks' -Tag 
 #endregion Managed Disks
 
 #region Availability set
-
-# Synopsis: Availability sets should be aligned
-Rule 'Azure.VM.ASAlignment' -Ref 'AZR-000254' -Type 'Microsoft.Compute/availabilitySets' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'sku.name', 'aligned');
-}
 
 # Synopsis: Availability sets should be deployed with at least two members
 Rule 'Azure.VM.ASMinMembers' -Ref 'AZR-000255' -Type 'Microsoft.Compute/availabilitySets' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
@@ -208,11 +195,6 @@ Rule 'Azure.VM.NICAttached' -Ref 'AZR-000257' -Type 'Microsoft.Network/networkIn
         $Assert.HasFieldValue($TargetObject, 'Properties.virtualMachine.id'),
         $Assert.HasFieldValue($TargetObject, 'Properties.privateEndpoint.id')
     )
-}
-
-# Synopsis: Network interfaces should inherit from virtual network
-Rule 'Azure.VM.UniqueDns' -Ref 'AZR-000258' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.NullOrEmpty($TargetObject, 'Properties.dnsSettings.dnsServers')
 }
 
 # Synopsis: Use NIC naming requirements
@@ -247,3 +229,16 @@ Rule 'Azure.VM.PPGName' -Ref 'AZR-000260' -Type 'Microsoft.Compute/proximityPlac
 }
 
 #endregion Proximity Placement Groups
+
+#region Azure Monitor Agent
+
+# Synopsis: Use Azure Monitor Agent as replacement for Log Analytics Agent.
+Rule 'Azure.VM.MigrateAMA' -Ref 'AZR-000317' -Type 'Microsoft.Compute/virtualMachines' -If { HasOMSOrAMAExtension } -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+    $extensions = @(GetSubResources -ResourceType 'Microsoft.Compute/virtualMachines/extensions' |
+        Where-Object { (($_.Properties.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.Properties.type -eq 'MicrosoftMonitoringAgent')) -or
+            (($_.Properties.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.Properties.type -eq 'OmsAgentForLinux')) })
+
+    $Assert.Less($extensions, '.', 1).Reason($LocalizedData.LogAnalyticsAgentDeprecated).PathPrefix('resources')
+}
+
+#endregion Azure Monitor Agent

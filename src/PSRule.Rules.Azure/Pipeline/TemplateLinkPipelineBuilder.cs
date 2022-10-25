@@ -3,8 +3,14 @@
 
 namespace PSRule.Rules.Azure.Pipeline
 {
+    /// <summary>
+    /// A helper to build a template link pipeline.
+    /// </summary>
     public interface ITemplateLinkPipelineBuilder : IPipelineBuilder
     {
+        /// <summary>
+        /// Determines if unlinked parameter files are skipped or error.
+        /// </summary>
         void SkipUnlinked(bool skipUnlinked);
     }
 
@@ -19,11 +25,13 @@ namespace PSRule.Rules.Azure.Pipeline
             _BasePath = basePath;
         }
 
+        /// <inheritdoc/>
         public void SkipUnlinked(bool skipUnlinked)
         {
             _SkipUnlinked = skipUnlinked;
         }
 
+        /// <inheritdoc/>
         public override IPipeline Build()
         {
             return new TemplateLinkPipeline(PrepareContext(), _BasePath, _SkipUnlinked);

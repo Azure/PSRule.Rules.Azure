@@ -11,6 +11,9 @@ link_users: true
 
 Thanks to the team who made the following contributions during the hackathon:
 
+- New features:
+  - Mapping of Azure Security Benchmark v3 to security rules by @jagoodwin.
+    [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
 - New rules:
   - Azure Cache for Redis:
     - Check the number of firewall rules for caches by @jonathanruiz.
@@ -20,6 +23,15 @@ Thanks to the team who made the following contributions during the hackathon:
   - App Configuration:
     - Check identity-based authentication is used for configuration stores by @pazdedav.
       [#1691](https://github.com/Azure/PSRule.Rules.Azure/issues/1691)
+  - Application Gateway WAF:
+    - Check policy is enabled by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+    - Check policy uses prevention mode by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+    - Check policy uses managed rule sets by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+    - Check policy does not have any exclusions defined by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
   - Defender for Cloud:
     - Check Microsoft Defender for Cloud is enabled for Containers by @jdewisscher.
       [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
@@ -33,6 +45,15 @@ Thanks to the team who made the following contributions during the hackathon:
       [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
     - Check Microsoft Defender for Cloud is enabled for SQL Servers on machines by @jdewisscher.
       [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+  - Front Door WAF:
+    - Check policy is enabled by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+    - Check policy uses prevention mode by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+    - Check policy uses managed rule sets by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+    - Check policy does not have any exclusions defined by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
   - Network Security Group:
     - Check AKS managed NSGs don't contain custom rules by @ms-sambell.
       [#8](https://github.com/Azure/PSRule.Rules.Azure/issues/8)

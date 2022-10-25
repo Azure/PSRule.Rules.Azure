@@ -33,7 +33,7 @@ This rule does not check if Front Door WAF policy names are unique.
 
 ## LINKS
 
-- [Repeatable infrastructure](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
+- [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/frontdoorwebapplicationfirewallpolicies)
-- [Tagging and resource naming](https://docs.microsoft.com/azure/architecture/framework/devops/app-design#tagging-and-resource-naming)
+- [Tagging and resource naming](https://learn.microsoft.com/azure/architecture/framework/devops/app-design#tagging-and-resource-naming)

@@ -313,6 +313,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to the policy ignore content..
+        /// </summary>
+        internal static string PolicyIgnoreInvalid {
+            get {
+                return ResourceManager.GetString("PolicyIgnoreInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The language expression property &apos;{0}&apos; doesn&apos;t exist..
         /// </summary>
         internal static string PropertyNotFound {

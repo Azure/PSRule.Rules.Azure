@@ -219,6 +219,6 @@ resource automationAccountName_Microsoft_Insights_service 'Microsoft.Insights/di
 
 ## LINKS
 
-- [Platform Monitoring](https://docs.microsoft.com/azure/architecture/framework/devops/monitoring#platform-monitoring)
+- [Platform Monitoring](https://learn.microsoft.com/azure/architecture/framework/devops/monitoring#platform-monitoring)
 - [Forward Azure Automation job data to Azure Monitor logs](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)
 - [Template Reference](https://docs.microsoft.com/azure/templates/microsoft.insights/diagnosticsettings?tabs=bicep)

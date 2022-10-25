@@ -1,1597 +1,1737 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/ReplicaVM_DataDisk_0-ASRReplica",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/ReplicaVM_DataDisk_0-ASRReplica",
-        "Location": "region",
-        "ResourceName": "ReplicaVM_DataDisk_0-ASRReplica",
-        "Name": "ReplicaVM_DataDisk_0-ASRReplica",
-        "Properties": {
-            "creationData": {
-                "createOption": "Empty"
-            },
-            "diskSizeGB": 200,
-            "diskIOPSReadWrite": 1100,
-            "diskMBpsReadWrite": 125,
-            "diskState": "ActiveSAS"
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Compute/disks",
-        "ResourceType": "Microsoft.Compute/disks",
-        "Sku": {
-            "Name": "Premium_LRS",
-            "Tier": "Premium",
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
-        "Tags": {
-            "ASR-ReplicaDisk-00000000-0000-0000-0000-000000000000": "This resource is in use by Recovery Services vault."
-        },
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/ReplicaVM_DataDisk_0-ASRReplica",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/ReplicaVM_DataDisk_0-ASRReplica",
+    "Location": "region",
+    "ResourceName": "ReplicaVM_DataDisk_0-ASRReplica",
+    "Name": "ReplicaVM_DataDisk_0-ASRReplica",
+    "Properties": {
+      "creationData": {
+        "createOption": "Empty"
+      },
+      "diskSizeGB": 200,
+      "diskIOPSReadWrite": 1100,
+      "diskMBpsReadWrite": 125,
+      "diskState": "ActiveSAS"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-A",
-        "Location": "region",
-        "ResourceName": "disk-A",
-        "Name": "disk-A",
-        "Properties": {
-            "osType": "Windows",
-            "creationData": {
-                "createOption": "FromImage",
-                "imageReference": {
-                    "id": "/Subscriptions/00000000-0000-0000-0000-000000000000/Providers/Microsoft.Compute/Locations/region/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2016-Datacenter/Versions/2016.000.00000000"
-                }
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/disks",
+    "ResourceType": "Microsoft.Compute/disks",
+    "Sku": {
+      "Name": "Premium_LRS",
+      "Tier": "Premium",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": {
+      "ASR-ReplicaDisk-00000000-0000-0000-0000-000000000000": "This resource is in use by Recovery Services vault."
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-A",
+    "Location": "region",
+    "ResourceName": "disk-A",
+    "Name": "disk-A",
+    "Properties": {
+      "osType": "Windows",
+      "creationData": {
+        "createOption": "FromImage",
+        "imageReference": {
+          "id": "/Subscriptions/00000000-0000-0000-0000-000000000000/Providers/Microsoft.Compute/Locations/region/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2016-Datacenter/Versions/2016.000.00000000"
+        }
+      },
+      "diskSizeGB": 127,
+      "diskIOPSReadWrite": 500,
+      "diskMBpsReadWrite": 100,
+      "encryptionSettingsCollection": {
+        "enabled": true,
+        "encryptionSettings": [
+          {
+            "diskEncryptionKey": {
+              "sourceVault": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/keyvault-A"
+              },
+              "secretUrl": "https://keyvault-A.vault.azure.net/secrets/secret-A/version-A"
             },
-            "diskSizeGB": 127,
-            "diskIOPSReadWrite": 500,
-            "diskMBpsReadWrite": 100,
-            "encryptionSettingsCollection": {
-                "enabled": true,
-                "encryptionSettings": [
-                    {
-                        "diskEncryptionKey": {
-                            "sourceVault": {
-                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/keyvault-A"
-                            },
-                            "secretUrl": "https://keyvault-A.vault.azure.net/secrets/secret-A/version-A"
-                        },
-                        "keyEncryptionKey": {
-                            "sourceVault": {
-                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/keyvault-A"
-                            },
-                            "keyUrl": "https://keyvault-A.vault.azure.net/keys/key-A/version-A"
-                        }
-                    }
-                ],
-                "encryptionSettingsVersion": "1.1"
-            },
+            "keyEncryptionKey": {
+              "sourceVault": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/keyvault-A"
+              },
+              "keyUrl": "https://keyvault-A.vault.azure.net/keys/key-A/version-A"
+            }
+          }
+        ],
+        "encryptionSettingsVersion": "1.1"
+      },
+      "provisioningState": "Succeeded",
+      "diskState": "Attached"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/disks",
+    "ResourceType": "Microsoft.Compute/disks",
+    "Sku": {
+      "Name": "Premium_LRS",
+      "Tier": "Premium",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/snapshots/disk-A-snap",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/snapshots/disk-A-snap",
+    "Location": "region",
+    "ResourceName": "disk-A-snap",
+    "Name": "disk-A-snap",
+    "Properties": {
+      "osType": "Windows",
+      "creationData": {
+        "createOption": "Copy",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-A"
+      },
+      "diskSizeGB": 127,
+      "provisioningState": "Succeeded",
+      "diskState": "Unattached"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/snapshots",
+    "ResourceType": "Microsoft.Compute/snapshots",
+    "Sku": {
+      "Name": "Standard_LRS",
+      "Tier": "Standard",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-B",
+    "Location": "region",
+    "ResourceName": "disk-B",
+    "Name": "disk-B",
+    "Properties": {
+      "creationData": {
+        "createOption": "Empty"
+      },
+      "diskSizeGB": 100,
+      "diskIOPSReadWrite": 500,
+      "diskMBpsReadWrite": 100,
+      "encryptionSettingsCollection": {
+        "enabled": false,
+        "encryptionSettings": [],
+        "encryptionSettingsVersion": "1.0"
+      },
+      "provisioningState": "Succeeded",
+      "diskState": "Unattached"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/disks",
+    "ResourceType": "Microsoft.Compute/disks",
+    "Sku": {
+      "Name": "Premium_LRS",
+      "Tier": "Premium",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-C",
+    "Location": "region",
+    "ResourceName": "disk-C",
+    "Name": "disk-C",
+    "Properties": {
+      "creationData": {
+        "createOption": "Empty"
+      },
+      "diskSizeGB": 100,
+      "diskIOPSReadWrite": 500,
+      "diskMBpsReadWrite": 100,
+      "encryptionSettingsCollection": {
+        "enabled": false,
+        "encryptionSettings": [],
+        "encryptionSettingsVersion": "1.0"
+      },
+      "provisioningState": "Succeeded",
+      "diskState": "Unattached"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/disks",
+    "ResourceType": "Microsoft.Compute/disks",
+    "Sku": {
+      "Name": "Premium_LRS",
+      "Tier": "Premium",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
+    "Location": "region",
+    "ResourceName": "nic-A",
+    "Name": "nic-A",
+    "Properties": {
+      "ipConfigurations": [
+        {
+          "name": "ipconfig1",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A/ipConfigurations/ipconfig1",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
             "provisioningState": "Succeeded",
-            "diskState": "Attached"
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Compute/disks",
-        "ResourceType": "Microsoft.Compute/disks",
-        "Sku": {
-            "Name": "Premium_LRS",
-            "Tier": "Premium",
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+            "privateIPAddress": "10.0.0.4",
+            "privateIPAllocationMethod": "Static",
+            "publicIPAddress": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-A-pip"
+            },
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+            },
+            "primary": true,
+            "privateIPAddressVersion": "IPv4"
+          }
+        }
+      ],
+      "dnsSettings": {
+        "dnsServers": ["8.8.8.8"],
+        "appliedDnsServers": ["8.8.8.8"],
+        "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
+      },
+      "macAddress": "00-00-00-00-00-00",
+      "enableAcceleratedNetworking": false,
+      "enableIPForwarding": false,
+      "primary": true,
+      "virtualMachine": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
+      },
+      "hostedWorkloads": [],
+      "tapConfigurations": []
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/snapshots/disk-A-snap",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/snapshots/disk-A-snap",
-        "Location": "region",
-        "ResourceName": "disk-A-snap",
-        "Name": "disk-A-snap",
-        "Properties": {
-            "osType": "Windows",
-            "creationData": {
-                "createOption": "Copy",
-                "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-A"
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/networkInterfaces",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "vm-A",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A",
+    "ResourceName": "vm-A",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "hardwareProfile": {
+        "vmSize": "Standard_E32s_v3"
+      },
+      "storageProfile": {
+        "imageReference": {
+          "publisher": "MicrosoftSQLServer",
+          "offer": "SQL2017-WS2016",
+          "sku": "Enterprise",
+          "version": "latest"
+        },
+        "osDisk": {
+          "osType": "Windows",
+          "name": "vm-A_OsDisk_1_0000000000000000000000000000000",
+          "createOption": "FromImage",
+          "caching": "ReadWrite",
+          "managedDisk": {
+            "storageAccountType": "StandardSSD_LRS",
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-A_OsDisk_1_0000000000000000000000000000000"
+          },
+          "diskSizeGB": 127
+        },
+        "dataDisks": [
+          {
+            "lun": 0,
+            "name": "vm-A_disk2_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "managedDisk": {
+              "storageAccountType": "StandardSSD_LRS",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-A_disk2_0000000000000000000000000000000"
             },
-            "diskSizeGB": 127,
-            "provisioningState": "Succeeded",
-            "diskState": "Unattached"
+            "diskSizeGB": 1023
+          }
+        ]
+      },
+      "osProfile": {
+        "computerName": "vm-A",
+        "adminUsername": "vm-admin",
+        "windowsConfiguration": {
+          "provisionVMAgent": true,
+          "enableAutomaticUpdates": true
         },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Compute/snapshots",
-        "ResourceType": "Microsoft.Compute/snapshots",
-        "Sku": {
-            "Name": "Standard_LRS",
-            "Tier": "Standard",
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+        "secrets": [],
+        "allowExtensionOperations": true
+      },
+      "networkProfile": {
+        "networkInterfaces": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-A-nic"
+          }
+        ]
+      },
+      "diagnosticsProfile": {
+        "bootDiagnostics": {
+          "enabled": true,
+          "storageUri": "https://storage-A.blob.core.windows.net/"
+        }
+      },
+      "licenseType": "Windows_Server"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-B",
-        "Location": "region",
-        "ResourceName": "disk-B",
-        "Name": "disk-B",
-        "Properties": {
-            "creationData": {
-                "createOption": "Empty"
-            },
-            "diskSizeGB": 100,
-            "diskIOPSReadWrite": 500,
-            "diskMBpsReadWrite": 100,
-            "encryptionSettingsCollection": {
-                "enabled": false,
-                "encryptionSettings": [],
-                "encryptionSettingsVersion": "1.0"
-            },
-            "provisioningState": "Succeeded",
-            "diskState": "Unattached"
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Compute/disks",
-        "ResourceType": "Microsoft.Compute/disks",
-        "Sku": {
-            "Name": "Premium_LRS",
-            "Tier": "Premium",
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-C",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-C",
-        "Location": "region",
-        "ResourceName": "disk-C",
-        "Name": "disk-C",
-        "Properties": {
-            "creationData": {
-                "createOption": "Empty"
-            },
-            "diskSizeGB": 100,
-            "diskIOPSReadWrite": 500,
-            "diskMBpsReadWrite": 100,
-            "encryptionSettingsCollection": {
-                "enabled": false,
-                "encryptionSettings": [],
-                "encryptionSettingsVersion": "1.0"
-            },
-            "provisioningState": "Succeeded",
-            "diskState": "Unattached"
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Compute/disks",
-        "ResourceType": "Microsoft.Compute/disks",
-        "Sku": {
-            "Name": "Premium_LRS",
-            "Tier": "Premium",
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
+    "resources": [
+      {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
         "Location": "region",
         "ResourceName": "nic-A",
         "Name": "nic-A",
         "Properties": {
-            "ipConfigurations": [
-                {
-                    "name": "ipconfig1",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A/ipConfigurations/ipconfig1",
-                    "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                    "properties": {
-                        "provisioningState": "Succeeded",
-                        "privateIPAddress": "10.0.0.4",
-                        "privateIPAllocationMethod": "Static",
-                        "publicIPAddress": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-A-pip"
-                        },
-                        "subnet": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
-                        },
-                        "primary": true,
-                        "privateIPAddressVersion": "IPv4"
-                    }
-                }
-            ],
-            "dnsSettings": {
-                "dnsServers": [
-                    "8.8.8.8"
-                ],
-                "appliedDnsServers": [
-                    "8.8.8.8"
-                ],
-                "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
-            },
-            "macAddress": "00-00-00-00-00-00",
-            "enableAcceleratedNetworking": false,
-            "enableIPForwarding": false,
-            "primary": true,
-            "virtualMachine": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
-            },
-            "hostedWorkloads": [],
-            "tapConfigurations": []
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Network/networkInterfaces",
-        "ResourceType": "Microsoft.Network/networkInterfaces",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "Name": "vm-A",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A",
-        "ResourceName": "vm-A",
-        "ResourceType": "Microsoft.Compute/virtualMachines",
-        "ResourceGroupName": "test-rg",
-        "Location": "region",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Properties": {
-            "hardwareProfile": {
-                "vmSize": "Standard_E32s_v3"
-            },
-            "storageProfile": {
-                "imageReference": {
-                    "publisher": "MicrosoftSQLServer",
-                    "offer": "SQL2017-WS2016",
-                    "sku": "Enterprise",
-                    "version": "latest"
-                },
-                "osDisk": {
-                    "osType": "Windows",
-                    "name": "vm-A_OsDisk_1_0000000000000000000000000000000",
-                    "createOption": "FromImage",
-                    "caching": "ReadWrite",
-                    "managedDisk": {
-                        "storageAccountType": "StandardSSD_LRS",
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-A_OsDisk_1_0000000000000000000000000000000"
-                    },
-                    "diskSizeGB": 127
-                },
-                "dataDisks": [
-                    {
-                        "lun": 0,
-                        "name": "vm-A_disk2_0000000000000000000000000000000",
-                        "createOption": "Empty",
-                        "caching": "ReadOnly",
-                        "managedDisk": {
-                            "storageAccountType": "StandardSSD_LRS",
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-A_disk2_0000000000000000000000000000000"
-                        },
-                        "diskSizeGB": 1023
-                    }
-                ]
-            },
-            "osProfile": {
-                "computerName": "vm-A",
-                "adminUsername": "vm-admin",
-                "windowsConfiguration": {
-                    "provisionVMAgent": true,
-                    "enableAutomaticUpdates": true
-                },
-                "secrets": [],
-                "allowExtensionOperations": true
-            },
-            "networkProfile": {
-                "networkInterfaces": [
-                    {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-A-nic"
-                    }
-                ]
-            },
-            "diagnosticsProfile": {
-                "bootDiagnostics": {
-                    "enabled": true,
-                    "storageUri": "https://storage-A.blob.core.windows.net/"
-                }
-            },
-            "licenseType": "Windows_Server"
-        },
-        "resources": [
+          "ipConfigurations": [
             {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
-                "Location": "region",
-                "ResourceName": "nic-A",
-                "Name": "nic-A",
-                "Properties": {
-                    "ipConfigurations": [
-                        {
-                            "name": "ipconfig1",
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A/ipConfigurations/ipconfig1",
-                            "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                            "properties": {
-                                "provisioningState": "Succeeded",
-                                "privateIPAddress": "10.0.0.4",
-                                "privateIPAllocationMethod": "Static",
-                                "publicIPAddress": {
-                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-A-pip"
-                                },
-                                "subnet": {
-                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
-                                },
-                                "primary": true,
-                                "privateIPAddressVersion": "IPv4"
-                            }
-                        }
-                    ],
-                    "dnsSettings": {
-                        "dnsServers": [
-                            "8.8.8.8"
-                        ],
-                        "appliedDnsServers": [
-                            "8.8.8.8"
-                        ],
-                        "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
-                    },
-                    "macAddress": "00-00-00-00-00-00",
-                    "enableAcceleratedNetworking": true,
-                    "enableIPForwarding": false,
-                    "primary": true,
-                    "virtualMachine": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
-                    },
-                    "hostedWorkloads": [],
-                    "tapConfigurations": []
+              "name": "ipconfig1",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A/ipConfigurations/ipconfig1",
+              "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "privateIPAddress": "10.0.0.4",
+                "privateIPAllocationMethod": "Static",
+                "publicIPAddress": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-A-pip"
                 },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Network/networkInterfaces",
-                "ResourceType": "Microsoft.Network/networkInterfaces",
-                "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+                "subnet": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+                },
+                "primary": true,
+                "privateIPAddressVersion": "IPv4"
+              }
             }
-        ]
-    },
-    {
-        "Name": "vm-B",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-B",
-        "ResourceName": "vm-B",
-        "ResourceType": "Microsoft.Compute/virtualMachines",
-        "ResourceGroupName": "test-rg",
-        "Location": "region",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Properties": {
-            "hardwareProfile": {
-                "vmSize": "Standard_E32s_v3"
-            },
-            "storageProfile": {
-                "imageReference": {
-                    "publisher": "MicrosoftSQLServer",
-                    "offer": "SQL2017-WS2016",
-                    "sku": "Enterprise",
-                    "version": "latest"
-                },
-                "osDisk": {
-                    "osType": "Windows",
-                    "name": "vm-B_OsDisk_1_0000000000000000000000000000000",
-                    "createOption": "FromImage",
-                    "caching": "ReadWrite",
-                    "managedDisk": {
-                        "storageAccountType": "StandardSSD_LRS",
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-B_OsDisk_1_0000000000000000000000000000000"
-                    },
-                    "diskSizeGB": 127
-                },
-                "dataDisks": [
-                    {
-                        "lun": 0,
-                        "name": "vm-B_disk2_0000000000000000000000000000000",
-                        "createOption": "Empty",
-                        "caching": "ReadOnly",
-                        "diskSizeGB": 1023,
-                        "vhd": {
-                            "uri": "[concat('http://testsa.blob.core.windows.net/vhds/vm-B_disk2_0000000000000000000000000000000.vhd')]"
-                        }
-                    }
-                ]
-            },
-            "osProfile": {
-                "computerName": "vm-B",
-                "adminUsername": "vm-admin",
-                "windowsConfiguration": {
-                    "provisionVMAgent": false,
-                    "enableAutomaticUpdates": false
-                },
-                "secrets": [],
-                "allowExtensionOperations": false
-            },
-            "networkProfile": {
-                "networkInterfaces": [
-                    {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-B-nic"
-                    }
-                ]
-            },
-            "diagnosticsProfile": {
-                "bootDiagnostics": {
-                    "enabled": true,
-                    "storageUri": "https://storage-A.blob.core.windows.net/"
-                }
-            }
-        },
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
-                "Location": "region",
-                "ResourceName": "nic-A",
-                "Name": "nic-A",
-                "Properties": {
-                    "ipConfigurations": [
-                        {
-                            "name": "ipconfig1",
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A/ipConfigurations/ipconfig1",
-                            "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                            "properties": {
-                                "provisioningState": "Succeeded",
-                                "privateIPAddress": "10.0.0.4",
-                                "privateIPAllocationMethod": "Static",
-                                "publicIPAddress": {
-                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-A-pip"
-                                },
-                                "subnet": {
-                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
-                                },
-                                "primary": true,
-                                "privateIPAddressVersion": "IPv4"
-                            }
-                        }
-                    ],
-                    "dnsSettings": {
-                        "dnsServers": [
-                            "8.8.8.8"
-                        ],
-                        "appliedDnsServers": [
-                            "8.8.8.8"
-                        ],
-                        "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
-                    },
-                    "macAddress": "00-00-00-00-00-00",
-                    "enableAcceleratedNetworking": false,
-                    "enableIPForwarding": false,
-                    "primary": true,
-                    "virtualMachine": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-B"
-                    },
-                    "hostedWorkloads": [],
-                    "tapConfigurations": []
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Network/networkInterfaces",
-                "ResourceType": "Microsoft.Network/networkInterfaces",
-                "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            }
-        ]
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1",
-        "Location": "region",
-        "ResourceName": "aks-agentpool-00000000-1",
-        "Name": "aks-agentpool-00000000-1",
-        "Properties": {
-            "availabilitySet": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/AGENTPOOL-AVAILABILITYSET-00000000"
-            },
-            "hardwareProfile": {
-                "vmSize": "Standard_F2s_v2"
-            },
-            "storageProfile": {
-                "imageReference": {
-                    "publisher": "microsoft-aks",
-                    "offer": "aks",
-                    "sku": "aks-ubuntu-1604-201902",
-                    "version": "2019.02.28"
-                },
-                "osDisk": {
-                    "osType": "Linux",
-                    "name": "aks-agentpool-00000000-1_OsDisk_1_0000000000000000000000000000000",
-                    "createOption": "FromImage",
-                    "caching": "ReadWrite",
-                    "managedDisk": {
-                        "storageAccountType": "Premium_LRS",
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/disks/aks-agentpool-00000000-1_OsDisk_1_0000000000000000000000000000000"
-                    },
-                    "diskSizeGB": 30
-                }
-            },
-            "osProfile": {
-                "computerName": "aks-agentpool-00000000-1",
-                "adminUsername": "azureuser",
-                "linuxConfiguration": {
-                    "disablePasswordAuthentication": true,
-                    "ssh": {
-                        "publicKeys": [
-                            {
-                                "path": "/home/azureuser/.ssh/authorized_keys",
-                                "keyData": "ssh-rsa 000000\n"
-                            }
-                        ]
-                    },
-                    "provisionVMAgent": true
-                },
-                "secrets": [],
-                "allowExtensionOperations": true
-            },
-            "networkProfile": {
-                "networkInterfaces": [
-                    {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-1"
-                    }
-                ]
-            }
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/virtualMachines",
-        "ResourceType": "Microsoft.Compute/virtualMachines",
-        "Tags": {
-            "resourceNameSuffix": "00000000",
-            "orchestrator": "Kubernetes:1.12.6",
-            "aksEngineVersion": "v0.30.1-aks",
-            "poolName": "agentpool",
-            "creationSource": "aksengine-aks-agentpool-00000000-1"
-        },
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1/extensions/computeAksLinuxBilling",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1/extensions/computeAksLinuxBilling",
-        "Location": "region",
-        "ResourceName": "computeAksLinuxBilling",
-        "Name": "computeAksLinuxBilling",
-        "Properties": {
-            "autoUpgradeMinorVersion": true,
-            "settings": {},
-            "provisioningState": "Succeeded",
-            "publisher": "Microsoft.AKS",
-            "type": "Compute.AKS.Linux.Billing",
-            "typeHandlerVersion": "1.0"
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/virtualMachines/extensions",
-        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1/extensions/cse-agent-1",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1/extensions/cse-agent-1",
-        "Location": "region",
-        "ResourceName": "cse-agent-1",
-        "Name": "cse-agent-1",
-        "Properties": {
-            "autoUpgradeMinorVersion": true,
-            "settings": {},
-            "provisioningState": "Succeeded",
-            "publisher": "Microsoft.Azure.Extensions",
-            "type": "CustomScript",
-            "typeHandlerVersion": "2.0"
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/virtualMachines/extensions",
-        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1/extensions/OmsAgentForLinux",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1/extensions/OmsAgentForLinux",
-        "Location": "region",
-        "ResourceName": "OmsAgentForLinux",
-        "Name": "OmsAgentForLinux",
-        "Properties": {
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "workspaceId": "00000000-0000-0000-0000-000000000000",
-                "stopOnMultipleConnections": true
-            },
-            "provisioningState": "Succeeded",
-            "publisher": "Microsoft.EnterpriseCloud.Monitoring",
-            "type": "OmsAgentForLinux",
-            "typeHandlerVersion": "1.0"
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/virtualMachines/extensions",
-        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2",
-        "Location": "region",
-        "ResourceName": "aks-agentpool-00000000-2",
-        "Name": "aks-agentpool-00000000-2",
-        "Properties": {
-            "availabilitySet": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/AGENTPOOL-AVAILABILITYSET-00000000"
-            },
-            "hardwareProfile": {
-                "vmSize": "Standard_F2s_v2"
-            },
-            "storageProfile": {
-                "imageReference": {
-                    "publisher": "microsoft-aks",
-                    "offer": "aks",
-                    "sku": "aks-ubuntu-1604-201902",
-                    "version": "2019.02.28"
-                },
-                "osDisk": {
-                    "osType": "Linux",
-                    "name": "aks-agentpool-00000000-2_OsDisk_1_0000000000000000000000000000000",
-                    "createOption": "FromImage",
-                    "caching": "ReadWrite",
-                    "managedDisk": {
-                        "storageAccountType": "Premium_LRS",
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/disks/aks-agentpool-00000000-2_OsDisk_1_0000000000000000000000000000000"
-                    },
-                    "diskSizeGB": 30
-                },
-                "dataDisks": []
-            },
-            "osProfile": {
-                "computerName": "aks-agentpool-00000000-2",
-                "adminUsername": "azureuser",
-                "linuxConfiguration": {
-                    "disablePasswordAuthentication": true,
-                    "ssh": {
-                        "publicKeys": [
-                            {
-                                "path": "/home/azureuser/.ssh/authorized_keys",
-                                "keyData": "ssh-rsa 000000\n"
-                            }
-                        ]
-                    },
-                    "provisionVMAgent": true
-                },
-                "secrets": [],
-                "allowExtensionOperations": true
-            },
-            "networkProfile": {
-                "networkInterfaces": [
-                    {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-2"
-                    }
-                ]
-            },
-            "provisioningState": "Succeeded"
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/virtualMachines",
-        "ResourceType": "Microsoft.Compute/virtualMachines",
-        "Tags": {
-            "resourceNameSuffix": "00000000",
-            "orchestrator": "Kubernetes:1.12.6",
-            "aksEngineVersion": "v0.30.1-aks",
-            "poolName": "agentpool",
-            "creationSource": "aksengine-aks-agentpool-00000000-2"
-        },
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2/extensions/computeAksLinuxBilling",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2/extensions/computeAksLinuxBilling",
-        "Location": "region",
-        "ResourceName": "computeAksLinuxBilling",
-        "Name": "computeAksLinuxBilling",
-        "Properties": {
-            "autoUpgradeMinorVersion": true,
-            "settings": {},
-            "provisioningState": "Succeeded",
-            "publisher": "Microsoft.AKS",
-            "type": "Compute.AKS.Linux.Billing",
-            "typeHandlerVersion": "1.0"
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/virtualMachines/extensions",
-        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2/extensions/cse-agent-2",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2/extensions/cse-agent-2",
-        "Location": "region",
-        "ResourceName": "cse-agent-2",
-        "Name": "cse-agent-2",
-        "Properties": {
-            "autoUpgradeMinorVersion": true,
-            "settings": {},
-            "provisioningState": "Succeeded",
-            "publisher": "Microsoft.Azure.Extensions",
-            "type": "CustomScript",
-            "typeHandlerVersion": "2.0"
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/virtualMachines/extensions",
-        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2/extensions/OmsAgentForLinux",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2/extensions/OmsAgentForLinux",
-        "Location": "region",
-        "ResourceName": "OmsAgentForLinux",
-        "Name": "OmsAgentForLinux",
-        "Properties": {
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "workspaceId": "00000000-0000-0000-0000-000000000000",
-                "stopOnMultipleConnections": true
-            },
-            "provisioningState": "Succeeded",
-            "publisher": "Microsoft.EnterpriseCloud.Monitoring",
-            "type": "OmsAgentForLinux",
-            "typeHandlerVersion": "1.0"
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/virtualMachines/extensions",
-        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3",
-        "Location": "region",
-        "ResourceName": "aks-agentpool-00000000-3",
-        "Name": "aks-agentpool-00000000-3",
-        "Properties": {
-            "availabilitySet": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/AGENTPOOL-AVAILABILITYSET-00000000"
-            },
-            "hardwareProfile": {
-                "vmSize": "Standard_F2s_v2"
-            },
-            "storageProfile": {
-                "imageReference": {
-                    "publisher": "microsoft-aks",
-                    "offer": "aks",
-                    "sku": "aks-ubuntu-1604-201902",
-                    "version": "2019.02.28"
-                },
-                "osDisk": {
-                    "osType": "Linux",
-                    "name": "aks-agentpool-00000000-3_OsDisk_1_0000000000000000000000000000000",
-                    "createOption": "FromImage",
-                    "caching": "ReadWrite",
-                    "managedDisk": {
-                        "storageAccountType": "Premium_LRS",
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/disks/aks-agentpool-00000000-3_OsDisk_1_0000000000000000000000000000000"
-                    },
-                    "diskSizeGB": 30
-                },
-                "dataDisks": []
-            },
-            "osProfile": {
-                "computerName": "aks-agentpool-00000000-3",
-                "adminUsername": "azureuser",
-                "linuxConfiguration": {
-                    "disablePasswordAuthentication": true,
-                    "ssh": {
-                        "publicKeys": [
-                            {
-                                "path": "/home/azureuser/.ssh/authorized_keys",
-                                "keyData": "ssh-rsa 000000\n"
-                            }
-                        ]
-                    },
-                    "provisionVMAgent": true
-                },
-                "secrets": [],
-                "allowExtensionOperations": true
-            },
-            "networkProfile": {
-                "networkInterfaces": [
-                    {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-3"
-                    }
-                ]
-            },
-            "provisioningState": "Succeeded"
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/virtualMachines",
-        "ResourceType": "Microsoft.Compute/virtualMachines",
-        "Tags": {
-            "resourceNameSuffix": "00000000",
-            "orchestrator": "Kubernetes:1.12.6",
-            "aksEngineVersion": "v0.30.1-aks",
-            "poolName": "agentpool",
-            "creationSource": "aksengine-aks-agentpool-00000000-3"
-        },
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3/extensions/computeAksLinuxBilling",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3/extensions/computeAksLinuxBilling",
-        "Location": "region",
-        "ResourceName": "computeAksLinuxBilling",
-        "Name": "computeAksLinuxBilling",
-        "Properties": {
-            "autoUpgradeMinorVersion": true,
-            "settings": {},
-            "provisioningState": "Succeeded",
-            "publisher": "Microsoft.AKS",
-            "type": "Compute.AKS.Linux.Billing",
-            "typeHandlerVersion": "1.0"
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/virtualMachines/extensions",
-        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3/extensions/cse-agent-3",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3/extensions/cse-agent-3",
-        "Location": "region",
-        "ResourceName": "cse-agent-3",
-        "Name": "cse-agent-3",
-        "Properties": {
-            "autoUpgradeMinorVersion": true,
-            "settings": {},
-            "provisioningState": "Succeeded",
-            "publisher": "Microsoft.Azure.Extensions",
-            "type": "CustomScript",
-            "typeHandlerVersion": "2.0"
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/virtualMachines/extensions",
-        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3/extensions/OmsAgentForLinux",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3/extensions/OmsAgentForLinux",
-        "Location": "region",
-        "ResourceName": "OmsAgentForLinux",
-        "Name": "OmsAgentForLinux",
-        "Properties": {
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "workspaceId": "00000000-0000-0000-0000-000000000000",
-                "stopOnMultipleConnections": true
-            },
-            "provisioningState": "Succeeded",
-            "publisher": "Microsoft.EnterpriseCloud.Monitoring",
-            "type": "OmsAgentForLinux",
-            "typeHandlerVersion": "1.0"
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/virtualMachines/extensions",
-        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-1",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-1",
-        "Location": "region",
-        "ResourceName": "aks-agentpool-00000000-nic-1",
-        "Name": "aks-agentpool-00000000-nic-1",
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "ipConfigurations": [
-                {
-                    "name": "ipconfig1",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-1/ipConfigurations/ipconfig1",
-                    "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                    "properties": {
-                        "provisioningState": "Succeeded",
-                        "privateIPAddress": "10.1.1.36",
-                        "privateIPAllocationMethod": "Dynamic",
-                        "subnet": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
-                        },
-                        "primary": true,
-                        "privateIPAddressVersion": "IPv4",
-                        "loadBalancerBackendAddressPools": [
-                            {
-                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "ipconfig2",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-1/ipConfigurations/ipconfig2",
-                    "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                    "properties": {
-                        "provisioningState": "Succeeded",
-                        "privateIPAddress": "10.1.1.37",
-                        "privateIPAllocationMethod": "Dynamic",
-                        "subnet": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
-                        },
-                        "primary": false,
-                        "privateIPAddressVersion": "IPv4"
-                    }
-                }
-            ],
-            "dnsSettings": {
-                "dnsServers": [],
-                "appliedDnsServers": [],
-                "internalDomainNameSuffix": "nnn.nn.internal.cloudapp.net"
-            },
-            "macAddress": "00-00-00-00-00-00",
-            "enableAcceleratedNetworking": false,
-            "enableIPForwarding": false,
-            "networkSecurityGroup": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkSecurityGroups/aks-agentpool-00000000-nsg"
-            },
-            "primary": true,
-            "virtualMachine": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1"
-            },
-            "hostedWorkloads": [],
-            "tapConfigurations": []
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Network/networkInterfaces",
-        "ResourceType": "Microsoft.Network/networkInterfaces",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-2",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-2",
-        "Location": "region",
-        "ResourceName": "aks-agentpool-00000000-nic-2",
-        "Name": "aks-agentpool-00000000-nic-2",
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "ipConfigurations": [
-                {
-                    "name": "ipconfig1",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-2/ipConfigurations/ipconfig1",
-                    "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                    "properties": {
-                        "provisioningState": "Succeeded",
-                        "privateIPAddress": "10.1.1.35",
-                        "privateIPAllocationMethod": "Dynamic",
-                        "subnet": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
-                        },
-                        "primary": true,
-                        "privateIPAddressVersion": "IPv4",
-                        "loadBalancerBackendAddressPools": [
-                            {
-                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "ipconfig2",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-2/ipConfigurations/ipconfig2",
-                    "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                    "properties": {
-                        "provisioningState": "Succeeded",
-                        "privateIPAddress": "10.1.1.66",
-                        "privateIPAllocationMethod": "Dynamic",
-                        "subnet": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
-                        },
-                        "primary": false,
-                        "privateIPAddressVersion": "IPv4"
-                    }
-                }
-            ],
-            "dnsSettings": {
-                "dnsServers": [],
-                "appliedDnsServers": [],
-                "internalDomainNameSuffix": "nnn.nn.internal.cloudapp.net"
-            },
-            "macAddress": "00-00-00-00-00-00",
-            "enableAcceleratedNetworking": false,
-            "enableIPForwarding": false,
-            "networkSecurityGroup": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkSecurityGroups/aks-agentpool-00000000-nsg"
-            },
-            "primary": true,
-            "virtualMachine": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2"
-            },
-            "hostedWorkloads": [],
-            "tapConfigurations": []
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Network/networkInterfaces",
-        "ResourceType": "Microsoft.Network/networkInterfaces",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-3",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-3",
-        "Location": "region",
-        "ResourceName": "aks-agentpool-00000000-nic-3",
-        "Name": "aks-agentpool-00000000-nic-3",
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "ipConfigurations": [
-                {
-                    "name": "ipconfig1",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-3/ipConfigurations/ipconfig1",
-                    "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                    "properties": {
-                        "provisioningState": "Succeeded",
-                        "privateIPAddress": "10.1.1.97",
-                        "privateIPAllocationMethod": "Dynamic",
-                        "subnet": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
-                        },
-                        "primary": true,
-                        "privateIPAddressVersion": "IPv4",
-                        "loadBalancerBackendAddressPools": [
-                            {
-                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "dnsSettings": {
-                "dnsServers": [],
-                "appliedDnsServers": [],
-                "internalDomainNameSuffix": "nnn.nn.internal.cloudapp.net"
-            },
-            "macAddress": "00-00-00-00-00-00",
-            "enableAcceleratedNetworking": false,
-            "enableIPForwarding": false,
-            "networkSecurityGroup": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkSecurityGroups/aks-agentpool-00000000-nsg"
-            },
-            "primary": true,
-            "virtualMachine": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3"
-            },
-            "hostedWorkloads": [],
-            "tapConfigurations": []
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Network/networkInterfaces",
-        "ResourceType": "Microsoft.Network/networkInterfaces",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/agentpool-availabilitySet-00000000",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/agentpool-availabilitySet-00000000",
-        "Location": "region",
-        "ResourceName": "agentpool-availabilitySet-00000000",
-        "Name": "agentpool-availabilitySet-00000000",
-        "Properties": {
-            "platformUpdateDomainCount": 3,
-            "platformFaultDomainCount": 2,
-            "virtualMachines": [
-                {
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/AKS-AGENTPOOL-00000000-1"
-                },
-                {
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/AKS-AGENTPOOL-00000000-2"
-                },
-                {
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/AKS-AGENTPOOL-00000000-3"
-                }
-            ]
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/availabilitySets",
-        "ResourceType": "Microsoft.Compute/availabilitySets",
-        "Sku": {
-            "Name": "Aligned",
-            "Tier": null,
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/availabilitySet-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/availabilitySet-B",
-        "Location": "region",
-        "ResourceName": "availabilitySet-B",
-        "Name": "availabilitySet-B",
-        "Properties": {
-            "platformUpdateDomainCount": 3,
-            "platformFaultDomainCount": 2,
-            "virtualMachines": [
-                {
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/AKS-AGENTPOOL-00000000-1"
-                }
-            ]
-        },
-        "ResourceGroupName": "MC_test-rg",
-        "Type": "Microsoft.Compute/availabilitySets",
-        "ResourceType": "Microsoft.Compute/availabilitySets",
-        "Sku": {
-            "Name": "Classic",
-            "Tier": null,
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C",
-        "Identity": {
-            "PrincipalId": "00000000-0000-0000-0000-000000000000",
-            "TenantId": "00000000-0000-0000-0000-000000000000",
-            "Type": "SystemAssigned",
-            "UserAssignedIdentities": null
-        },
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "vm-C",
-        "Name": "vm-C",
-        "Properties": {
-            "vmId": "00000000-0000-0000-0000-000000000000",
-            "hardwareProfile": {
-                "vmSize": "Standard_D8s_v3"
-            },
-            "storageProfile": {
-                "imageReference": {
-                    "publisher": "Canonical",
-                    "offer": "UbuntuServer",
-                    "sku": "16.04-LTS",
-                    "version": "latest",
-                    "exactVersion": "16.04.201708151"
-                },
-                "osDisk": {
-                    "osType": "Linux",
-                    "name": "vm-C_OsDisk_1",
-                    "createOption": "FromImage",
-                    "caching": "ReadWrite",
-                    "managedDisk": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-C_OsDisk_1"
-                    }
-                },
-                "dataDisks": []
-            },
-            "osProfile": {
-                "computerName": "vm-C",
-                "adminUsername": "admin-account",
-                "linuxConfiguration": {
-                    "disablePasswordAuthentication": false,
-                    "provisionVMAgent": false
-                },
-                "secrets": []
-            },
-            "networkProfile": {
-                "networkInterfaces": [
-                    {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC"
-                    }
-                ]
-            },
-            "provisioningState": "Succeeded"
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Compute/virtualMachines",
-        "ResourceType": "Microsoft.Compute/virtualMachines",
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC",
-                "Identity": null,
-                "Kind": null,
-                "Location": "region",
-                "ManagedBy": null,
-                "ResourceName": "vm-C-NIC",
-                "Name": "vm-C-NIC",
-                "Properties": {
-                    "provisioningState": "Succeeded",
-                    "ipConfigurations": [
-                        {
-                            "name": "ipconfig1",
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC/ipConfigurations/ipconfig1",
-                            "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                            "properties": {
-                                "provisioningState": "Succeeded",
-                                "privateIPAddress": "10.5.0.4",
-                                "privateIPAllocationMethod": "Dynamic",
-                                "publicIPAddress": {
-                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/vm-C-ip"
-                                },
-                                "subnet": {
-                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
-                                },
-                                "primary": true,
-                                "privateIPAddressVersion": "IPv4"
-                            }
-                        }
-                    ],
-                    "dnsSettings": {
-                        "dnsServers": [],
-                        "appliedDnsServers": []
-                    },
-                    "macAddress": "00-00-00-00-00-00",
-                    "enableAcceleratedNetworking": false,
-                    "enableIPForwarding": false,
-                    "networkSecurityGroup": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
-                    },
-                    "primary": true,
-                    "virtualMachine": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C"
-                    }
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Network/networkInterfaces",
-                "ResourceType": "Microsoft.Network/networkInterfaces",
-                "Sku": null,
-                "Tags": null,
-                "SubscriptionId": null
-            }
-        ]
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-B",
-        "Location": "region",
-        "ResourceName": "nic-B",
-        "Name": "nic-B",
-        "Properties": {
-            "ipConfigurations": [
-                {
-                    "name": "ipconfig1",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-B/ipConfigurations/ipconfig1",
-                    "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                    "properties": {
-                        "provisioningState": "Succeeded",
-                        "privateIPAddress": "10.0.0.4",
-                        "privateIPAllocationMethod": "Static",
-                        "publicIPAddress": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-B-pip"
-                        },
-                        "subnet": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
-                        },
-                        "primary": true,
-                        "privateIPAddressVersion": "IPv4"
-                    }
-                }
-            ],
-            "dnsSettings": {
-                "dnsServers": [
-                    "8.8.8.8"
-                ],
-                "appliedDnsServers": [
-                    "8.8.8.8"
-                ],
-                "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
-            },
-            "macAddress": "00-00-00-00-00-00",
-            "enableAcceleratedNetworking": false,
-            "enableIPForwarding": false,
-            "primary": true,
-            "virtualMachine": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
-            },
-            "hostedWorkloads": [],
-            "tapConfigurations": []
+          ],
+          "dnsSettings": {
+            "dnsServers": ["8.8.8.8"],
+            "appliedDnsServers": ["8.8.8.8"],
+            "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
+          },
+          "macAddress": "00-00-00-00-00-00",
+          "enableAcceleratedNetworking": true,
+          "enableIPForwarding": false,
+          "primary": true,
+          "virtualMachine": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
+          },
+          "hostedWorkloads": [],
+          "tapConfigurations": []
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Network/networkInterfaces",
         "ResourceType": "Microsoft.Network/networkInterfaces",
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-C",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-C",
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A/extensions/AzureMonitorWindowsAgent",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A/extensions/AzureMonitorWindowsAgent",
         "Location": "region",
-        "ResourceName": "nic-C",
-        "Name": "nic-C",
+        "ResourceName": "AzureMonitorWindowsAgent",
+        "Name": "AzureMonitorWindowsAgent",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualMachines/vm-A",
         "Properties": {
-            "ipConfigurations": [
-                {
-                    "name": "ipconfig1",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-C/ipConfigurations/ipconfig1",
-                    "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                    "properties": {
-                        "provisioningState": "Succeeded",
-                        "privateIPAddress": "10.0.0.5",
-                        "privateIPAllocationMethod": "Static",
-                        "publicIPAddress": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-C-pip"
-                        },
-                        "subnet": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
-                        },
-                        "primary": true,
-                        "privateIPAddressVersion": "IPv4"
-                    }
-                }
-            ],
-            "dnsSettings": {
-                "dnsServers": [
-                    "8.8.8.8"
-                ],
-                "appliedDnsServers": [
-                    "8.8.8.8"
-                ],
-                "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
-            },
-            "macAddress": "00-00-00-00-00-00",
-            "enableAcceleratedNetworking": false,
-            "enableIPForwarding": false,
-            "primary": true,
-            "hostedWorkloads": [],
-            "tapConfigurations": []
+          "publisher": "Microsoft.Azure.Monitor",
+          "type": "AzureMonitorWindowsAgent",
+          "typeHandlerVersion": "1.0",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+            "workspaceId": "00000000-0000-0000-0000-000000000000"
+          }
         },
         "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Network/networkInterfaces",
-        "ResourceType": "Microsoft.Network/networkInterfaces",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-D",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-D",
-        "Identity": null,
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "vm-D",
-        "Name": "vm-D",
-        "Plan": null,
-        "Properties": {
-            "hardwareProfile": {
-                "vmSize": "Standard_DS2_v2"
-            },
-            "storageProfile": {
-                "imageReference": {
-                    "publisher": "MicrosoftWindowsDesktop",
-                    "offer": "windows-10",
-                    "sku": "19h2-pro",
-                    "version": "latest"
-                },
-                "osDisk": {
-                    "osType": "Windows",
-                    "name": "vm-D-os",
-                    "createOption": "FromImage",
-                    "caching": "ReadWrite",
-                    "writeAcceleratorEnabled": false,
-                    "managedDisk": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-D-os"
-                    }
-                },
-                "dataDisks": []
-            },
-            "osProfile": {
-                "computerName": "vm-D",
-                "adminUsername": "vm-admin",
-                "windowsConfiguration": {
-                    "provisionVMAgent": true,
-                    "enableAutomaticUpdates": false,
-                    "patchSettings": {
-                        "patchMode": "Manual"
-                    }
-                },
-                "secrets": [],
-                "allowExtensionOperations": true,
-                "requireGuestProvisionSignal": true
-            },
-            "networkProfile": {
-                "networkInterfaces": [
-                    {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic"
-                    }
-                ]
-            },
-            "diagnosticsProfile": {
-                "bootDiagnostics": {
-                    "enabled": true,
-                    "storageUri": "https://storage-A.blob.core.windows.net/"
-                }
-            },
-            "licenseType": "Windows_Client",
-            "provisioningState": "Succeeded"
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Compute/virtualMachines",
-        "ResourceType": "Microsoft.Compute/virtualMachines",
+        "Type": "Microsoft.Compute/virtualMachines/extensions",
+        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
         "ExtensionResourceType": null,
         "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic",
-                "Identity": null,
-                "Kind": null,
-                "Location": "region",
-                "ManagedBy": null,
-                "ResourceName": "vm-D-nic",
-                "Name": "vm-D-nic",
-                "Plan": null,
-                "Properties": {
-                    "provisioningState": "Succeeded",
-                    "ipConfigurations": [
-                        {
-                            "name": "ipconfig1",
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic/ipConfigurations/ipconfig1",
-                            "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                            "properties": {
-                                "provisioningState": "Succeeded",
-                                "privateIPAddress": "10.0.0.10",
-                                "privateIPAllocationMethod": "Dynamic",
-                                "subnet": {
-                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
-                                },
-                                "primary": true,
-                                "privateIPAddressVersion": "IPv4"
-                            }
-                        }
-                    ],
-                    "dnsSettings": {
-                        "dnsServers": [],
-                        "appliedDnsServers": []
-                    },
-                    "enableAcceleratedNetworking": false,
-                    "enableIPForwarding": false,
-                    "networkSecurityGroup": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/vm-D-nsg"
-                    },
-                    "primary": true,
-                    "virtualMachine": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-D"
-                    }
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Network/networkInterfaces",
-                "ResourceType": "Microsoft.Network/networkInterfaces",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "Tags": null,
-                "SubscriptionId": null
+        "SubscriptionId": null
+      }
+    ]
+  },
+  {
+    "Name": "vm-B",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-B",
+    "ResourceName": "vm-B",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "hardwareProfile": {
+        "vmSize": "Standard_E32s_v3"
+      },
+      "storageProfile": {
+        "imageReference": {
+          "publisher": "MicrosoftSQLServer",
+          "offer": "SQL2017-WS2016",
+          "sku": "Enterprise",
+          "version": "latest"
+        },
+        "osDisk": {
+          "osType": "Windows",
+          "name": "vm-B_OsDisk_1_0000000000000000000000000000000",
+          "createOption": "FromImage",
+          "caching": "ReadWrite",
+          "managedDisk": {
+            "storageAccountType": "StandardSSD_LRS",
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-B_OsDisk_1_0000000000000000000000000000000"
+          },
+          "diskSizeGB": 127
+        },
+        "dataDisks": [
+          {
+            "lun": 0,
+            "name": "vm-B_disk2_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "diskSizeGB": 1023,
+            "vhd": {
+              "uri": "[concat('http://testsa.blob.core.windows.net/vhds/vm-B_disk2_0000000000000000000000000000000.vhd')]"
             }
+          }
         ]
+      },
+      "osProfile": {
+        "computerName": "vm-B",
+        "adminUsername": "vm-admin",
+        "windowsConfiguration": {
+          "provisionVMAgent": false,
+          "enableAutomaticUpdates": false
+        },
+        "secrets": [],
+        "allowExtensionOperations": false
+      },
+      "networkProfile": {
+        "networkInterfaces": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-B-nic"
+          }
+        ]
+      },
+      "diagnosticsProfile": {
+        "bootDiagnostics": {
+          "enabled": true,
+          "storageUri": "https://storage-A.blob.core.windows.net/"
+        }
+      }
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/pe-001",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/pe-001",
-        "Identity": null,
-        "Kind": null,
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
         "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "pe-001",
-        "Name": "pe-001",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
+        "ResourceName": "nic-A",
+        "Name": "nic-A",
         "Properties": {
-            "ipConfigurations": [
-                {
-                    "name": "redisCache-redisCache.privateEndpoint",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/pe-001/ipConfigurations/redisCache-redisCache.privateEndpoint",
-                    "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
-                    "properties": {
-                        "privateIPAddress": "10.0.0.4",
-                        "privateIPAllocationMethod": "Dynamic",
-                        "subnet": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/sub-pe"
-                        },
-                        "primary": true,
-                        "privateIPAddressVersion": "IPv4",
-                        "privateLinkConnectionProperties": {
-                            "groupId": "redisCache",
-                            "requiredMemberName": "redisCache",
-                            "fqdns": [
-                                "redis-001.redis.cache.windows.net"
-                            ]
-                        }
-                    }
-                }
-            ],
-            "dnsSettings": {
-                "dnsServers": [],
-                "appliedDnsServers": []
-            },
-            "macAddress": "",
-            "enableAcceleratedNetworking": false,
-            "vnetEncryptionSupported": false,
-            "enableIPForwarding": false,
-            "hostedWorkloads": [],
-            "tapConfigurations": [],
-            "privateEndpoint": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001"
-            },
-            "nicType": "Standard"
+          "ipConfigurations": [
+            {
+              "name": "ipconfig1",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A/ipConfigurations/ipconfig1",
+              "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "privateIPAddress": "10.0.0.4",
+                "privateIPAllocationMethod": "Static",
+                "publicIPAddress": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-A-pip"
+                },
+                "subnet": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+                },
+                "primary": true,
+                "privateIPAddressVersion": "IPv4"
+              }
+            }
+          ],
+          "dnsSettings": {
+            "dnsServers": ["8.8.8.8"],
+            "appliedDnsServers": ["8.8.8.8"],
+            "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
+          },
+          "macAddress": "00-00-00-00-00-00",
+          "enableAcceleratedNetworking": false,
+          "enableIPForwarding": false,
+          "primary": true,
+          "virtualMachine": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-B"
+          },
+          "hostedWorkloads": [],
+          "tapConfigurations": []
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Network/networkInterfaces",
         "ResourceType": "Microsoft.Network/networkInterfaces",
-        "ExtensionResourceType": null,
-        "Sku": null,
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001",
-        "Identity": null,
-        "Kind": null,
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-B/extensions/OMSExtension",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-B/extensions/OMSExtension",
         "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "pe-001",
-        "Name": "pe-001",
+        "ResourceName": "OMSExtension",
+        "Name": "OMSExtension",
         "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
+        "ParentResource": "virtualMachines/vm-B",
         "Properties": {
-            "privateLinkServiceConnections": [
-                {
-                    "name": "pec-001",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001/privateLinkServiceConnections/pec-001",
-                    "properties": {
-                        "privateLinkServiceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-001",
-                        "groupIds": [
-                            "redisCache"
-                        ],
-                        "privateLinkServiceConnectionState": {
-                            "status": "Approved",
-                            "description": "Auto-Approved",
-                            "actionsRequired": "None"
-                        }
-                    },
-                    "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
-                }
-            ],
-            "manualPrivateLinkServiceConnections": [],
+          "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+          "type": "MicrosoftMonitoringAgent",
+          "typeHandlerVersion": "1.0",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+            "workspaceId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachines/extensions",
+        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1",
+    "Location": "region",
+    "ResourceName": "aks-agentpool-00000000-1",
+    "Name": "aks-agentpool-00000000-1",
+    "Properties": {
+      "availabilitySet": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/AGENTPOOL-AVAILABILITYSET-00000000"
+      },
+      "hardwareProfile": {
+        "vmSize": "Standard_F2s_v2"
+      },
+      "storageProfile": {
+        "imageReference": {
+          "publisher": "microsoft-aks",
+          "offer": "aks",
+          "sku": "aks-ubuntu-1604-201902",
+          "version": "2019.02.28"
+        },
+        "osDisk": {
+          "osType": "Linux",
+          "name": "aks-agentpool-00000000-1_OsDisk_1_0000000000000000000000000000000",
+          "createOption": "FromImage",
+          "caching": "ReadWrite",
+          "managedDisk": {
+            "storageAccountType": "Premium_LRS",
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/disks/aks-agentpool-00000000-1_OsDisk_1_0000000000000000000000000000000"
+          },
+          "diskSizeGB": 30
+        }
+      },
+      "osProfile": {
+        "computerName": "aks-agentpool-00000000-1",
+        "adminUsername": "azureuser",
+        "linuxConfiguration": {
+          "disablePasswordAuthentication": true,
+          "ssh": {
+            "publicKeys": [
+              {
+                "path": "/home/azureuser/.ssh/authorized_keys",
+                "keyData": "ssh-rsa 000000\n"
+              }
+            ]
+          },
+          "provisionVMAgent": true
+        },
+        "secrets": [],
+        "allowExtensionOperations": true
+      },
+      "networkProfile": {
+        "networkInterfaces": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-1"
+          }
+        ]
+      }
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/virtualMachines",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "Tags": {
+      "resourceNameSuffix": "00000000",
+      "orchestrator": "Kubernetes:1.12.6",
+      "aksEngineVersion": "v0.30.1-aks",
+      "poolName": "agentpool",
+      "creationSource": "aksengine-aks-agentpool-00000000-1"
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1/extensions/computeAksLinuxBilling",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1/extensions/computeAksLinuxBilling",
+    "Location": "region",
+    "ResourceName": "computeAksLinuxBilling",
+    "Name": "computeAksLinuxBilling",
+    "Properties": {
+      "autoUpgradeMinorVersion": true,
+      "settings": {},
+      "provisioningState": "Succeeded",
+      "publisher": "Microsoft.AKS",
+      "type": "Compute.AKS.Linux.Billing",
+      "typeHandlerVersion": "1.0"
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/virtualMachines/extensions",
+    "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1/extensions/cse-agent-1",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1/extensions/cse-agent-1",
+    "Location": "region",
+    "ResourceName": "cse-agent-1",
+    "Name": "cse-agent-1",
+    "Properties": {
+      "autoUpgradeMinorVersion": true,
+      "settings": {},
+      "provisioningState": "Succeeded",
+      "publisher": "Microsoft.Azure.Extensions",
+      "type": "CustomScript",
+      "typeHandlerVersion": "2.0"
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/virtualMachines/extensions",
+    "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1/extensions/OmsAgentForLinux",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1/extensions/OmsAgentForLinux",
+    "Location": "region",
+    "ResourceName": "OmsAgentForLinux",
+    "Name": "OmsAgentForLinux",
+    "Properties": {
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "stopOnMultipleConnections": true
+      },
+      "provisioningState": "Succeeded",
+      "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+      "type": "OmsAgentForLinux",
+      "typeHandlerVersion": "1.0"
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/virtualMachines/extensions",
+    "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2",
+    "Location": "region",
+    "ResourceName": "aks-agentpool-00000000-2",
+    "Name": "aks-agentpool-00000000-2",
+    "Properties": {
+      "availabilitySet": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/AGENTPOOL-AVAILABILITYSET-00000000"
+      },
+      "hardwareProfile": {
+        "vmSize": "Standard_F2s_v2"
+      },
+      "storageProfile": {
+        "imageReference": {
+          "publisher": "microsoft-aks",
+          "offer": "aks",
+          "sku": "aks-ubuntu-1604-201902",
+          "version": "2019.02.28"
+        },
+        "osDisk": {
+          "osType": "Linux",
+          "name": "aks-agentpool-00000000-2_OsDisk_1_0000000000000000000000000000000",
+          "createOption": "FromImage",
+          "caching": "ReadWrite",
+          "managedDisk": {
+            "storageAccountType": "Premium_LRS",
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/disks/aks-agentpool-00000000-2_OsDisk_1_0000000000000000000000000000000"
+          },
+          "diskSizeGB": 30
+        },
+        "dataDisks": []
+      },
+      "osProfile": {
+        "computerName": "aks-agentpool-00000000-2",
+        "adminUsername": "azureuser",
+        "linuxConfiguration": {
+          "disablePasswordAuthentication": true,
+          "ssh": {
+            "publicKeys": [
+              {
+                "path": "/home/azureuser/.ssh/authorized_keys",
+                "keyData": "ssh-rsa 000000\n"
+              }
+            ]
+          },
+          "provisionVMAgent": true
+        },
+        "secrets": [],
+        "allowExtensionOperations": true
+      },
+      "networkProfile": {
+        "networkInterfaces": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-2"
+          }
+        ]
+      },
+      "provisioningState": "Succeeded"
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/virtualMachines",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "Tags": {
+      "resourceNameSuffix": "00000000",
+      "orchestrator": "Kubernetes:1.12.6",
+      "aksEngineVersion": "v0.30.1-aks",
+      "poolName": "agentpool",
+      "creationSource": "aksengine-aks-agentpool-00000000-2"
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2/extensions/computeAksLinuxBilling",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2/extensions/computeAksLinuxBilling",
+    "Location": "region",
+    "ResourceName": "computeAksLinuxBilling",
+    "Name": "computeAksLinuxBilling",
+    "Properties": {
+      "autoUpgradeMinorVersion": true,
+      "settings": {},
+      "provisioningState": "Succeeded",
+      "publisher": "Microsoft.AKS",
+      "type": "Compute.AKS.Linux.Billing",
+      "typeHandlerVersion": "1.0"
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/virtualMachines/extensions",
+    "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2/extensions/cse-agent-2",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2/extensions/cse-agent-2",
+    "Location": "region",
+    "ResourceName": "cse-agent-2",
+    "Name": "cse-agent-2",
+    "Properties": {
+      "autoUpgradeMinorVersion": true,
+      "settings": {},
+      "provisioningState": "Succeeded",
+      "publisher": "Microsoft.Azure.Extensions",
+      "type": "CustomScript",
+      "typeHandlerVersion": "2.0"
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/virtualMachines/extensions",
+    "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2/extensions/OmsAgentForLinux",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2/extensions/OmsAgentForLinux",
+    "Location": "region",
+    "ResourceName": "OmsAgentForLinux",
+    "Name": "OmsAgentForLinux",
+    "Properties": {
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "stopOnMultipleConnections": true
+      },
+      "provisioningState": "Succeeded",
+      "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+      "type": "OmsAgentForLinux",
+      "typeHandlerVersion": "1.0"
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/virtualMachines/extensions",
+    "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3",
+    "Location": "region",
+    "ResourceName": "aks-agentpool-00000000-3",
+    "Name": "aks-agentpool-00000000-3",
+    "Properties": {
+      "availabilitySet": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/AGENTPOOL-AVAILABILITYSET-00000000"
+      },
+      "hardwareProfile": {
+        "vmSize": "Standard_F2s_v2"
+      },
+      "storageProfile": {
+        "imageReference": {
+          "publisher": "microsoft-aks",
+          "offer": "aks",
+          "sku": "aks-ubuntu-1604-201902",
+          "version": "2019.02.28"
+        },
+        "osDisk": {
+          "osType": "Linux",
+          "name": "aks-agentpool-00000000-3_OsDisk_1_0000000000000000000000000000000",
+          "createOption": "FromImage",
+          "caching": "ReadWrite",
+          "managedDisk": {
+            "storageAccountType": "Premium_LRS",
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/disks/aks-agentpool-00000000-3_OsDisk_1_0000000000000000000000000000000"
+          },
+          "diskSizeGB": 30
+        },
+        "dataDisks": []
+      },
+      "osProfile": {
+        "computerName": "aks-agentpool-00000000-3",
+        "adminUsername": "azureuser",
+        "linuxConfiguration": {
+          "disablePasswordAuthentication": true,
+          "ssh": {
+            "publicKeys": [
+              {
+                "path": "/home/azureuser/.ssh/authorized_keys",
+                "keyData": "ssh-rsa 000000\n"
+              }
+            ]
+          },
+          "provisionVMAgent": true
+        },
+        "secrets": [],
+        "allowExtensionOperations": true
+      },
+      "networkProfile": {
+        "networkInterfaces": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-3"
+          }
+        ]
+      },
+      "provisioningState": "Succeeded"
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/virtualMachines",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "Tags": {
+      "resourceNameSuffix": "00000000",
+      "orchestrator": "Kubernetes:1.12.6",
+      "aksEngineVersion": "v0.30.1-aks",
+      "poolName": "agentpool",
+      "creationSource": "aksengine-aks-agentpool-00000000-3"
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3/extensions/computeAksLinuxBilling",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3/extensions/computeAksLinuxBilling",
+    "Location": "region",
+    "ResourceName": "computeAksLinuxBilling",
+    "Name": "computeAksLinuxBilling",
+    "Properties": {
+      "autoUpgradeMinorVersion": true,
+      "settings": {},
+      "provisioningState": "Succeeded",
+      "publisher": "Microsoft.AKS",
+      "type": "Compute.AKS.Linux.Billing",
+      "typeHandlerVersion": "1.0"
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/virtualMachines/extensions",
+    "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3/extensions/cse-agent-3",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3/extensions/cse-agent-3",
+    "Location": "region",
+    "ResourceName": "cse-agent-3",
+    "Name": "cse-agent-3",
+    "Properties": {
+      "autoUpgradeMinorVersion": true,
+      "settings": {},
+      "provisioningState": "Succeeded",
+      "publisher": "Microsoft.Azure.Extensions",
+      "type": "CustomScript",
+      "typeHandlerVersion": "2.0"
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/virtualMachines/extensions",
+    "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3/extensions/OmsAgentForLinux",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3/extensions/OmsAgentForLinux",
+    "Location": "region",
+    "ResourceName": "OmsAgentForLinux",
+    "Name": "OmsAgentForLinux",
+    "Properties": {
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "stopOnMultipleConnections": true
+      },
+      "provisioningState": "Succeeded",
+      "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+      "type": "OmsAgentForLinux",
+      "typeHandlerVersion": "1.0"
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/virtualMachines/extensions",
+    "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-1",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-1",
+    "Location": "region",
+    "ResourceName": "aks-agentpool-00000000-nic-1",
+    "Name": "aks-agentpool-00000000-nic-1",
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "ipConfigurations": [
+        {
+          "name": "ipconfig1",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-1/ipConfigurations/ipconfig1",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.1.1.36",
+            "privateIPAllocationMethod": "Dynamic",
             "subnet": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/sub-pe"
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
             },
-            "ipConfigurations": [],
-            "networkInterfaces": [
-                {
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/pe-001"
-                }
-            ],
-            "customDnsConfigs": []
+            "primary": true,
+            "privateIPAddressVersion": "IPv4",
+            "loadBalancerBackendAddressPools": [
+              {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
+              }
+            ]
+          }
+        },
+        {
+          "name": "ipconfig2",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-1/ipConfigurations/ipconfig2",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.1.1.37",
+            "privateIPAllocationMethod": "Dynamic",
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+            },
+            "primary": false,
+            "privateIPAddressVersion": "IPv4"
+          }
+        }
+      ],
+      "dnsSettings": {
+        "dnsServers": [],
+        "appliedDnsServers": [],
+        "internalDomainNameSuffix": "nnn.nn.internal.cloudapp.net"
+      },
+      "macAddress": "00-00-00-00-00-00",
+      "enableAcceleratedNetworking": false,
+      "enableIPForwarding": false,
+      "networkSecurityGroup": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkSecurityGroups/aks-agentpool-00000000-nsg"
+      },
+      "primary": true,
+      "virtualMachine": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-1"
+      },
+      "hostedWorkloads": [],
+      "tapConfigurations": []
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Network/networkInterfaces",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-2",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-2",
+    "Location": "region",
+    "ResourceName": "aks-agentpool-00000000-nic-2",
+    "Name": "aks-agentpool-00000000-nic-2",
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "ipConfigurations": [
+        {
+          "name": "ipconfig1",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-2/ipConfigurations/ipconfig1",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.1.1.35",
+            "privateIPAllocationMethod": "Dynamic",
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+            },
+            "primary": true,
+            "privateIPAddressVersion": "IPv4",
+            "loadBalancerBackendAddressPools": [
+              {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
+              }
+            ]
+          }
+        },
+        {
+          "name": "ipconfig2",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-2/ipConfigurations/ipconfig2",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.1.1.66",
+            "privateIPAllocationMethod": "Dynamic",
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+            },
+            "primary": false,
+            "privateIPAddressVersion": "IPv4"
+          }
+        }
+      ],
+      "dnsSettings": {
+        "dnsServers": [],
+        "appliedDnsServers": [],
+        "internalDomainNameSuffix": "nnn.nn.internal.cloudapp.net"
+      },
+      "macAddress": "00-00-00-00-00-00",
+      "enableAcceleratedNetworking": false,
+      "enableIPForwarding": false,
+      "networkSecurityGroup": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkSecurityGroups/aks-agentpool-00000000-nsg"
+      },
+      "primary": true,
+      "virtualMachine": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-2"
+      },
+      "hostedWorkloads": [],
+      "tapConfigurations": []
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Network/networkInterfaces",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-3",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-3",
+    "Location": "region",
+    "ResourceName": "aks-agentpool-00000000-nic-3",
+    "Name": "aks-agentpool-00000000-nic-3",
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "ipConfigurations": [
+        {
+          "name": "ipconfig1",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-3/ipConfigurations/ipconfig1",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.1.1.97",
+            "privateIPAllocationMethod": "Dynamic",
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+            },
+            "primary": true,
+            "privateIPAddressVersion": "IPv4",
+            "loadBalancerBackendAddressPools": [
+              {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
+              }
+            ]
+          }
+        }
+      ],
+      "dnsSettings": {
+        "dnsServers": [],
+        "appliedDnsServers": [],
+        "internalDomainNameSuffix": "nnn.nn.internal.cloudapp.net"
+      },
+      "macAddress": "00-00-00-00-00-00",
+      "enableAcceleratedNetworking": false,
+      "enableIPForwarding": false,
+      "networkSecurityGroup": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkSecurityGroups/aks-agentpool-00000000-nsg"
+      },
+      "primary": true,
+      "virtualMachine": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/aks-agentpool-00000000-3"
+      },
+      "hostedWorkloads": [],
+      "tapConfigurations": []
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Network/networkInterfaces",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/agentpool-availabilitySet-00000000",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/agentpool-availabilitySet-00000000",
+    "Location": "region",
+    "ResourceName": "agentpool-availabilitySet-00000000",
+    "Name": "agentpool-availabilitySet-00000000",
+    "Properties": {
+      "platformUpdateDomainCount": 3,
+      "platformFaultDomainCount": 2,
+      "virtualMachines": [
+        {
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/AKS-AGENTPOOL-00000000-1"
+        },
+        {
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/AKS-AGENTPOOL-00000000-2"
+        },
+        {
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/AKS-AGENTPOOL-00000000-3"
+        }
+      ]
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/availabilitySets",
+    "ResourceType": "Microsoft.Compute/availabilitySets",
+    "Sku": {
+      "Name": "Aligned",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/availabilitySet-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/availabilitySets/availabilitySet-B",
+    "Location": "region",
+    "ResourceName": "availabilitySet-B",
+    "Name": "availabilitySet-B",
+    "Properties": {
+      "platformUpdateDomainCount": 3,
+      "platformFaultDomainCount": 2,
+      "virtualMachines": [
+        {
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Compute/virtualMachines/AKS-AGENTPOOL-00000000-1"
+        }
+      ]
+    },
+    "ResourceGroupName": "MC_test-rg",
+    "Type": "Microsoft.Compute/availabilitySets",
+    "ResourceType": "Microsoft.Compute/availabilitySets",
+    "Sku": {
+      "Name": "Classic",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C",
+    "Identity": {
+      "PrincipalId": "00000000-0000-0000-0000-000000000000",
+      "TenantId": "00000000-0000-0000-0000-000000000000",
+      "Type": "SystemAssigned",
+      "UserAssignedIdentities": null
+    },
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "vm-C",
+    "Name": "vm-C",
+    "Properties": {
+      "vmId": "00000000-0000-0000-0000-000000000000",
+      "hardwareProfile": {
+        "vmSize": "Standard_D8s_v3"
+      },
+      "storageProfile": {
+        "imageReference": {
+          "publisher": "Canonical",
+          "offer": "UbuntuServer",
+          "sku": "16.04-LTS",
+          "version": "latest",
+          "exactVersion": "16.04.201708151"
+        },
+        "osDisk": {
+          "osType": "Linux",
+          "name": "vm-C_OsDisk_1",
+          "createOption": "FromImage",
+          "caching": "ReadWrite",
+          "managedDisk": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-C_OsDisk_1"
+          }
+        },
+        "dataDisks": []
+      },
+      "osProfile": {
+        "computerName": "vm-C",
+        "adminUsername": "admin-account",
+        "linuxConfiguration": {
+          "disablePasswordAuthentication": false,
+          "provisionVMAgent": false
+        },
+        "secrets": []
+      },
+      "networkProfile": {
+        "networkInterfaces": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC"
+          }
+        ]
+      },
+      "provisioningState": "Succeeded"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/virtualMachines",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C/extensions/AzureMonitorLinuxAgent",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C/extensions/AzureMonitorLinuxAgent",
+        "Location": "region",
+        "ResourceName": "AzureMonitorLinuxAgent",
+        "Name": "AzureMonitorLinuxAgent",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualMachines/vm-C",
+        "Properties": {
+          "publisher": "Microsoft.Azure.Monitor",
+          "type": "AzureMonitorLinuxAgent",
+          "typeHandlerVersion": "1.21",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+            "workspaceId": "00000000-0000-0000-0000-000000000000"
+          }
         },
         "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Network/privateEndpoints",
-        "ResourceType": "Microsoft.Network/privateEndpoints",
+        "Type": "Microsoft.Compute/virtualMachines/extensions",
+        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "vm-C-NIC",
+        "Name": "vm-C-NIC",
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "ipConfigurations": [
+            {
+              "name": "ipconfig1",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-C-NIC/ipConfigurations/ipconfig1",
+              "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "privateIPAddress": "10.5.0.4",
+                "privateIPAllocationMethod": "Dynamic",
+                "publicIPAddress": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/vm-C-ip"
+                },
+                "subnet": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+                },
+                "primary": true,
+                "privateIPAddressVersion": "IPv4"
+              }
+            }
+          ],
+          "dnsSettings": {
+            "dnsServers": [],
+            "appliedDnsServers": []
+          },
+          "macAddress": "00-00-00-00-00-00",
+          "enableAcceleratedNetworking": false,
+          "enableIPForwarding": false,
+          "networkSecurityGroup": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
+          },
+          "primary": true,
+          "virtualMachine": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/networkInterfaces",
+        "ResourceType": "Microsoft.Network/networkInterfaces",
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-B",
+    "Location": "region",
+    "ResourceName": "nic-B",
+    "Name": "nic-B",
+    "Properties": {
+      "ipConfigurations": [
+        {
+          "name": "ipconfig1",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-B/ipConfigurations/ipconfig1",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.0.0.4",
+            "privateIPAllocationMethod": "Static",
+            "publicIPAddress": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-B-pip"
+            },
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+            },
+            "primary": true,
+            "privateIPAddressVersion": "IPv4"
+          }
+        }
+      ],
+      "dnsSettings": {
+        "dnsServers": ["8.8.8.8"],
+        "appliedDnsServers": ["8.8.8.8"],
+        "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
+      },
+      "macAddress": "00-00-00-00-00-00",
+      "enableAcceleratedNetworking": false,
+      "enableIPForwarding": false,
+      "primary": true,
+      "virtualMachine": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
+      },
+      "hostedWorkloads": [],
+      "tapConfigurations": []
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/networkInterfaces",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-C",
+    "Location": "region",
+    "ResourceName": "nic-C",
+    "Name": "nic-C",
+    "Properties": {
+      "ipConfigurations": [
+        {
+          "name": "ipconfig1",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-C/ipConfigurations/ipconfig1",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.0.0.5",
+            "privateIPAllocationMethod": "Static",
+            "publicIPAddress": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-C-pip"
+            },
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+            },
+            "primary": true,
+            "privateIPAddressVersion": "IPv4"
+          }
+        }
+      ],
+      "dnsSettings": {
+        "dnsServers": ["8.8.8.8"],
+        "appliedDnsServers": ["8.8.8.8"],
+        "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
+      },
+      "macAddress": "00-00-00-00-00-00",
+      "enableAcceleratedNetworking": false,
+      "enableIPForwarding": false,
+      "primary": true,
+      "hostedWorkloads": [],
+      "tapConfigurations": []
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/networkInterfaces",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-D",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "vm-D",
+    "Name": "vm-D",
+    "Plan": null,
+    "Properties": {
+      "hardwareProfile": {
+        "vmSize": "Standard_DS2_v2"
+      },
+      "storageProfile": {
+        "imageReference": {
+          "publisher": "MicrosoftWindowsDesktop",
+          "offer": "windows-10",
+          "sku": "19h2-pro",
+          "version": "latest"
+        },
+        "osDisk": {
+          "osType": "Windows",
+          "name": "vm-D-os",
+          "createOption": "FromImage",
+          "caching": "ReadWrite",
+          "writeAcceleratorEnabled": false,
+          "managedDisk": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-D-os"
+          }
+        },
+        "dataDisks": []
+      },
+      "osProfile": {
+        "computerName": "vm-D",
+        "adminUsername": "vm-admin",
+        "windowsConfiguration": {
+          "provisionVMAgent": true,
+          "enableAutomaticUpdates": false,
+          "patchSettings": {
+            "patchMode": "Manual"
+          }
+        },
+        "secrets": [],
+        "allowExtensionOperations": true,
+        "requireGuestProvisionSignal": true
+      },
+      "networkProfile": {
+        "networkInterfaces": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic"
+          }
+        ]
+      },
+      "diagnosticsProfile": {
+        "bootDiagnostics": {
+          "enabled": true,
+          "storageUri": "https://storage-A.blob.core.windows.net/"
+        }
+      },
+      "licenseType": "Windows_Client",
+      "provisioningState": "Succeeded"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/virtualMachines",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "vm-D-nic",
+        "Name": "vm-D-nic",
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "ipConfigurations": [
+            {
+              "name": "ipconfig1",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-D-nic/ipConfigurations/ipconfig1",
+              "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "privateIPAddress": "10.0.0.10",
+                "privateIPAllocationMethod": "Dynamic",
+                "subnet": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+                },
+                "primary": true,
+                "privateIPAddressVersion": "IPv4"
+              }
+            }
+          ],
+          "dnsSettings": {
+            "dnsServers": [],
+            "appliedDnsServers": []
+          },
+          "enableAcceleratedNetworking": false,
+          "enableIPForwarding": false,
+          "networkSecurityGroup": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/vm-D-nsg"
+          },
+          "primary": true,
+          "virtualMachine": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-D"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/networkInterfaces",
+        "ResourceType": "Microsoft.Network/networkInterfaces",
         "ExtensionResourceType": null,
         "Sku": null,
         "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null
-    }
+        "SubscriptionId": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-D/extensions/OMSExtension",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-D/extensions/OMSExtension",
+        "Location": "region",
+        "ResourceName": "OMSExtension",
+        "Name": "OMSExtension",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualMachines/vm-D",
+        "Properties": {
+          "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+          "type": "MicrosoftMonitoringAgent",
+          "typeHandlerVersion": "1.0",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+            "workspaceId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachines/extensions",
+        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/pe-001",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/pe-001",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "pe-001",
+    "Name": "pe-001",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "ipConfigurations": [
+        {
+          "name": "redisCache-redisCache.privateEndpoint",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/pe-001/ipConfigurations/redisCache-redisCache.privateEndpoint",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "privateIPAddress": "10.0.0.4",
+            "privateIPAllocationMethod": "Dynamic",
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/sub-pe"
+            },
+            "primary": true,
+            "privateIPAddressVersion": "IPv4",
+            "privateLinkConnectionProperties": {
+              "groupId": "redisCache",
+              "requiredMemberName": "redisCache",
+              "fqdns": ["redis-001.redis.cache.windows.net"]
+            }
+          }
+        }
+      ],
+      "dnsSettings": {
+        "dnsServers": [],
+        "appliedDnsServers": []
+      },
+      "macAddress": "",
+      "enableAcceleratedNetworking": false,
+      "vnetEncryptionSupported": false,
+      "enableIPForwarding": false,
+      "hostedWorkloads": [],
+      "tapConfigurations": [],
+      "privateEndpoint": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001"
+      },
+      "nicType": "Standard"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/networkInterfaces",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "pe-001",
+    "Name": "pe-001",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "privateLinkServiceConnections": [
+        {
+          "name": "pec-001",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001/privateLinkServiceConnections/pec-001",
+          "properties": {
+            "privateLinkServiceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-001",
+            "groupIds": ["redisCache"],
+            "privateLinkServiceConnectionState": {
+              "status": "Approved",
+              "description": "Auto-Approved",
+              "actionsRequired": "None"
+            }
+          },
+          "type": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections"
+        }
+      ],
+      "manualPrivateLinkServiceConnections": [],
+      "subnet": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/sub-pe"
+      },
+      "ipConfigurations": [],
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/pe-001"
+        }
+      ],
+      "customDnsConfigs": []
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/privateEndpoints",
+    "ResourceType": "Microsoft.Network/privateEndpoints",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "CreatedTime": null,
+    "ChangedTime": null
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/offerSaysLinux",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/offerSaysLinux",
+    "Identity": {
+      "PrincipalId": "00000000-0000-0000-0000-000000000000",
+      "TenantId": "00000000-0000-0000-0000-000000000000",
+      "Type": "SystemAssigned",
+      "UserAssignedIdentities": null
+    },
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "offerSaysLinux",
+    "Name": "offerSaysLinux",
+    "Properties": {
+      "vmId": "00000000-0000-0000-0000-000000000000",
+      "storageProfile": {
+        "imageReference": {
+          "publisher": "anUnkownPublisher",
+          "offer": "anOfferThatSaysLinux",
+          "sku": "16.04-LTS",
+          "version": "latest",
+          "exactVersion": "16.04.201708151"
+        }
+      },
+      "provisioningState": "Succeeded"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/virtualMachines",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/offerInConfig",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/offerInConfig",
+    "Identity": {
+      "PrincipalId": "00000000-0000-0000-0000-000000000000",
+      "TenantId": "00000000-0000-0000-0000-000000000000",
+      "Type": "SystemAssigned",
+      "UserAssignedIdentities": null
+    },
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "offerInConfig",
+    "Name": "offerInConfig",
+    "Properties": {
+      "vmId": "00000000-0000-0000-0000-000000000000",
+      "storageProfile": {
+        "imageReference": {
+          "publisher": "anUnkownPublisher",
+          "offer": "anOfferName",
+          "sku": "16.04-LTS",
+          "version": "latest",
+          "exactVersion": "16.04.201708151"
+        }
+      },
+      "provisioningState": "Succeeded"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/virtualMachines",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
 ]

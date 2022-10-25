@@ -30,5 +30,5 @@ Consider updating the parameter value to a value that matches the specifed stron
 
 ## LINKS
 
-- [Deployment considerations for DevOps](https://docs.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)
+- [Deployment considerations for DevOps](https://learn.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)
 - [Strong type](https://azure.github.io/PSRule.Rules.Azure/using-templates/#strongtype)

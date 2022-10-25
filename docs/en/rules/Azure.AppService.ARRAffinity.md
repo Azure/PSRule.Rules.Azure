@@ -29,6 +29,6 @@ Consider disabling ARR affinity for stateless applications.
 ## LINKS
 
 - [Configure an App Service app](https://docs.microsoft.com/azure/app-service/configure-common#configure-general-settings)
-- [Overview of the performance efficiency pillar](https://docs.microsoft.com/azure/architecture/framework/scalability/overview)
-- [Session affinity](https://docs.microsoft.com/azure/architecture/framework/scalability/app-design#session-affinity)
-- [Performance efficiency checklist](https://docs.microsoft.com/azure/architecture/framework/scalability/performance-efficiency)
+- [Overview of the performance efficiency pillar](https://learn.microsoft.com/azure/architecture/framework/scalability/overview)
+- [Session affinity](https://learn.microsoft.com/azure/architecture/framework/scalability/app-design#session-affinity)
+- [Performance efficiency checklist](https://learn.microsoft.com/azure/architecture/framework/scalability/performance-efficiency)

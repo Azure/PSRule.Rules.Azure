@@ -1,0 +1,92 @@
+[
+  {
+    "Identity": null,
+    "Location": null,
+    "Name": "000000000000000000000000",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "ResourceName": "000000000000000000000000",
+    "ResourceGroupName": null,
+    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Sku": null,
+    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "Properties": {
+      "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+      "NotScopes": [],
+      "DisplayName": "Allowed locations",
+      "Description": null,
+      "Metadata": {
+        "assignedBy": "Armaan McLeod",
+        "parameterScopes": {
+          "listOfAllowedLocations": "/subscriptions/00000000-0000-0000-0000-000000000000"
+        },
+        "createdBy": "e8c9aad1-7d2c-4d2a-9945-611b7379ee5d",
+        "createdOn": "2022-10-04T13:02:13.3679174Z",
+        "updatedBy": null,
+        "updatedOn": null
+      },
+      "EnforcementMode": 0,
+      "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+      "Parameters": {
+        "listOfAllowedLocations": {
+          "value": [
+            "australiaeast",
+            "australiasoutheast"
+          ]
+        }
+      },
+      "NonComplianceMessages": []
+    },
+    "PolicyDefinitions": [
+      {
+        "Name": "00000000-0000-0000-0000-000000000000",
+        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+        "ResourceName": "00000000-0000-0000-0000-000000000000",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": null,
+        "Properties": {
+          "Description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region.",
+          "DisplayName": "Allowed locations",
+          "Metadata": {
+            "version": "1.0.0",
+            "category": "General"
+          },
+          "Mode": "Indexed",
+          "Parameters": {
+            "listOfAllowedLocations": {
+              "type": "Array",
+              "metadata": {
+                "description": "The list of locations that can be specified when deploying resources.",
+                "strongType": "location",
+                "displayName": "Allowed locations"
+              }
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "allOf": [
+                {
+                  "field": "location",
+                  "notIn": "[parameters('listOfAllowedLocations')]"
+                },
+                {
+                  "field": "location",
+                  "notEquals": "global"
+                },
+                {
+                  "field": "type",
+                  "notEquals": "Microsoft.AzureActiveDirectory/b2cDirectories"
+                }
+              ]
+            },
+            "then": {
+              "effect": "deny"
+            }
+          },
+          "PolicyType": 2
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
+]

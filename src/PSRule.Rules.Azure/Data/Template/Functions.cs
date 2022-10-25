@@ -5,10 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Net.Http.Headers;
-using System.Runtime;
 using System.Text;
 using System.Threading;
 using System.Web;
@@ -16,7 +13,6 @@ using System.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Resources;
-using YamlDotNet.Core.Tokens;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -257,6 +253,12 @@ namespace PSRule.Rules.Azure.Data.Template
             return false;
         }
 
+        /// <summary>
+        /// contains(container, itemToFind)
+        /// </summary>
+        /// <remarks>
+        /// https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#contains
+        /// </remarks>
         internal static object Contains(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
@@ -271,7 +273,7 @@ namespace PSRule.Rules.Azure.Data.Template
             else if (args[0] is string svalue)
                 return svalue.Contains(objectToFind.ToString());
             else if (args[0] is JObject jObject)
-                return jObject.ContainsKey(objectToFind.ToString());
+                return jObject.ContainsKeyInsensitive(objectToFind.ToString());
 
             return false;
         }
@@ -1785,7 +1787,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             for (var i = 0; i < array.Length; i++)
             {
-                if (ExpressionHelpers.ObjectEquals(array.GetValue(i), objectToFind))
+                if (ExpressionHelpers.Equal(array.GetValue(i), objectToFind))
                     return true;
             }
             return false;

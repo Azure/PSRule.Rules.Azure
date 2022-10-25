@@ -18,7 +18,8 @@
         "keyVaultProperties": null
       },
       "privateEndpointConnections": null,
-      "disableLocalAuth": true
+      "disableLocalAuth": true,
+      "enablePurgeProtection": true
     },
     "ResourceGroupName": "rg-test",
     "Type": "Microsoft.AppConfiguration/configurationStores",
@@ -396,14 +397,15 @@
       "encryption": {
         "keyVaultProperties": null
       },
-      "privateEndpointConnections": null
+      "privateEndpointConnections": null,
+      "enablePurgeProtection": false
     },
     "ResourceGroupName": "rg-test",
     "Type": "Microsoft.AppConfiguration/configurationStores",
     "ResourceType": "Microsoft.AppConfiguration/configurationStores",
     "ExtensionResourceType": null,
     "Sku": {
-      "Name": "free",
+      "Name": "standard",
       "Tier": null,
       "Size": null,
       "Family": null,

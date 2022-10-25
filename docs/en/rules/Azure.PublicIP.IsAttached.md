@@ -23,5 +23,5 @@ Consider removing Public IP addresses that are no longer required reduce complex
 
 ## LINKS
 
-- [Principles of cost optimization](https://docs.microsoft.com/azure/architecture/framework/cost/overview)
+- [Principles of cost optimization](https://learn.microsoft.com/azure/architecture/framework/cost/overview)
 - [Public IP address pricing](https://azure.microsoft.com/pricing/details/ip-addresses/)

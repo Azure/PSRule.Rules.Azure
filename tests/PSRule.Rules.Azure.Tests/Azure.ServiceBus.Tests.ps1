@@ -48,8 +48,8 @@ Describe 'Azure.ServiceBus' -Tag 'ServiceBus' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'servicens-B';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'servicens-B', 'servicens-C';
         }
 
         It 'Azure.ServiceBus.Usage' {
@@ -64,8 +64,29 @@ Describe 'Azure.ServiceBus' -Tag 'ServiceBus' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'servicens-B', 'servicens-C';
+        }
+
+        It 'Azure.ServiceBus.MinTLS' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.ServiceBus.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ServiceBus.MinTLS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'servicens-A', 'servicens-B';
+
+            $ruleResult[0].Reason | Should -BeExactly "The service bus namespace 'servicens-A' should minimum use TLS 1.2 version.";
+            $ruleResult[1].Reason | Should -BeExactly "The service bus namespace 'servicens-B' should minimum use TLS 1.2 version.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'servicens-B';
+            $ruleResult.TargetName | Should -BeIn 'servicens-C';
         }
     }
 

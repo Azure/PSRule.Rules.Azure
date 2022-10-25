@@ -26,7 +26,7 @@ Consider configuring the minimum supported TLS version to be 1.2.
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [TLS enforcement in Azure Database for PostgreSQL Single server](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security#tls-enforcement-in-azure-database-for-postgresql-single-server)
 - [Set TLS configurations for Azure Database for PostgreSQL - Single server](https://docs.microsoft.com/azure/postgresql/howto-tls-configurations#set-tls-configurations-for-azure-database-for-postgresql---single-server)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
