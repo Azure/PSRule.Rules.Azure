@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - App Service Environment:
+    - Check app service environments uses version 3 (ASEv3) instead of classic version 1 (ASEv1) and version 2 (ASEv2) by @bengeset96.
+    [#1805](https://github.com/Azure/PSRule.Rules.Azure/issues/1805)
+
 ## v1.21.0-B0050 (pre-release)
 
 What's changed since pre-release v1.21.0-B0027:
