@@ -1,0 +1,171 @@
+[
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Web/hostingEnvironments/environment-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Web/hostingEnvironments/environment-A",
+    "Identity": null,
+    "Location": "westeurope",
+    "ManagedBy": null,
+    "ResourceName": "environment-A",
+    "Name": "environment-A",
+    "Kind": "ASEV1",
+    "Properties": {
+      "upgradePreference": "Early",
+      "virtualNetwork": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A",
+        "subnet": "subnet-A"
+      },
+      "zoneRedundant": true
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "microsoft.web/hostingenvironments",
+    "ResourceType": "microsoft.web/hostingenvironments",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Web/hostingEnvironments/environment-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Web/hostingEnvironments/environment-B",
+    "Identity": null,
+    "Location": "westeurope",
+    "ManagedBy": null,
+    "ResourceName": "environment-B",
+    "Name": "environment-B",
+    "Kind": "ASEV2",
+    "Properties": {
+      "upgradePreference": "Late",
+      "virtualNetwork": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A",
+        "subnet": "subnet-A"
+      },
+      "zoneRedundant": false
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "microsoft.web/hostingenvironments",
+    "ResourceType": "microsoft.web/hostingenvironments",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/hostingEnvironments/environment-B/serverfarms/plan-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/hostingEnvironments/environment-B/serverfarms/plan-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "plan-A",
+        "Name": "plan-A",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "sku": {
+          "capacity": 1,
+          "family": "I",
+          "name": "I2",
+          "size": "I2",
+          "tier": "Isolated"
+        },
+        "properties": {
+          "hostingEnvironmentProfile": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Web/hostingEnvironments/environment-B"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Web/serverfarms",
+        "ResourceType": "Microsoft.Web/serverfarms",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Web/hostingEnvironments/environment-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Web/hostingEnvironments/environment-C",
+    "Identity": null,
+    "Location": "westeurope",
+    "ManagedBy": null,
+    "ResourceName": "environment-C",
+    "Name": "environment-C",
+    "Kind": "ASEV3",
+    "Properties": {
+      "upgradePreference": "Early",
+      "virtualNetwork": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A",
+        "subnet": "subnet-A"
+      },
+      "zoneRedundant": false
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "microsoft.web/hostingenvironments",
+    "ResourceType": "microsoft.web/hostingenvironments",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/hostingEnvironments/environment-C/serverfarms/plan-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/hostingEnvironments/environment-C/serverfarms/plan-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "plan-A",
+        "Name": "plan-A",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "sku": {
+          "capacity": 1,
+          "family": "I",
+          "name": "I1v2",
+          "size": "I1v2",
+          "tier": "IsolatedV2"
+        },
+        "properties": {
+          "hostingEnvironmentProfile": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Web/hostingEnvironments/environment-C"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Web/serverfarms",
+        "ResourceType": "Microsoft.Web/serverfarms",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Web/hostingEnvironments/environment-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Web/hostingEnvironments/environment-D",
+    "Identity": null,
+    "Location": "westeurope",
+    "ManagedBy": null,
+    "ResourceName": "environment-D",
+    "Name": "environment-D",
+    "Properties": {
+      "upgradePreference": "Early",
+      "virtualNetwork": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A",
+        "subnet": "subnet-A"
+      },
+      "zoneRedundant": true
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "microsoft.web/hostingenvironments",
+    "ResourceType": "microsoft.web/hostingenvironments",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
+]
