@@ -47,12 +47,14 @@ For example:
     "sendToOwners": "Send",
     "customEmailAddresses": [
       "example@email.com"
-    ]
+    ],
+    "locale": "en-US"
   }
 }
 ```
 
 ### Configure with Bicep
+
 By default a Recovery Services vaults does not have replication alerts setup. To define a replication
 alert via a Bicep either configure the `sendToOwners` or `CustomerEmailAddress` properties:
 
@@ -74,9 +76,10 @@ resource testRecoveryServices 'Microsoft.RecoveryServices/vaults/replicationAler
   }
 }
 ```
+
 ## NOTES
 
-with the locale property you can define the locale for the email notification.
+With the `locale` property you can define the locale for the email notification.
 
 ## LINKS
 
