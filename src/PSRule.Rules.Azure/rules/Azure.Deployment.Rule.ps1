@@ -58,12 +58,37 @@ function global:RecurseDeploymentSensitive {
 # Synopsis: Ensure Outer scope deployments aren't using SecureString or SecureObject Parameters
 Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000314' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_12' } { 
 
-    foreach($deployments in $TargetObject.properties.template.resources){
+    $template = @($TargetObject.properties.template);
+    if ($template.resources.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    $secureParameters = @($template.parameters.PSObject.properties | Where-Object {
+        $_.Value.type -eq 'secureString' -or $_.Value.type -eq 'secureObject'
+    } | ForEach-Object {
+        $_.Name
+    });
+    Write-Host -Message "Secure parameters are: $($secureParameters -join ', ')";
+
+    foreach($deployments in $template.resources){
         if($deployments.properties.expressionEvaluationOptions.scope -eq 'outer'){
+            Write-Host "Name $($Deployments.name)"
             foreach ($outerDeployment in $deployments.properties.template.resources){
+                Write-Host "outerDeployment.properties: $($outerDeployment.properties)"
                 foreach ($property in $outerDeployment.properties){
-                    $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($property);
-                    $Assert.NotMatch($cleanValue, '.', 'SecretReference');
+                    Write-Host "Property: $property"
+                    # if ($Property.GetType().Name-eq 'String'){
+                    #     Write-Host "String prop"
+                    #     CheckPropertyUsesSecureParameter -SecureParameters $secureParameters -Property $property
+                    # } else {
+                    #     Write-Host "Object prop"
+                    #     Write-Host "Type: $($Property.GetType)"
+                    #     foreach ($item in $property.value){
+                    #         CheckPropertyUsesSecureParameter -SecureParameters $secureParameters -Property $property
+                    #     } 
+                    # }
+                    
+                    
                 }
             }
         } else {
@@ -75,3 +100,29 @@ Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000314' -Type 'Microsoft.Resources
 
 
 #endregion Rules
+
+function global:CheckPropertyUsesSecureParameter {
+    param (
+        [Parameter(Mandatory = $True)]
+        [AllowEmptyCollection()]
+        [PSObject]$SecureParameters,
+
+        [Parameter(Mandatory = $True)]
+        [String]$Property
+    )
+    process {
+
+        if($Property){
+            
+            $hasSecureParameter = [PSRule.Rules.Azure.Runtime.Helper]::HasSecureValue($Property, $SecureParameters);
+            Write-Host "propertyValue: $Property"
+            Write-Host "SecureParameters: $SecureParameters"
+            Write-Host "isSecure: $hasSecureParameter"
+            $Assert.Create($hasSecureParameter).Reason($LocalizedData.SecureParameterRequired, $Property);
+        } else {
+            $Assert.Pass();
+        }
+        
+        
+    }
+}
