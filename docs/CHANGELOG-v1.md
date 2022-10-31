@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.21.0:
+
+- Bug fixes:
+  - Fixed multiple nested parameter loops returns stack empty exception by @BernieWhite.
+    [#1811](https://github.com/Azure/PSRule.Rules.Azure/issues/1811)
+
 ## v1.21.0
 
 What's changed since v1.20.2:
