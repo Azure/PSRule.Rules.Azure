@@ -125,7 +125,6 @@ plugins:
     redirect_maps:
       using-metadata.md: using-templates.md
       customization/index.md: customization/storing-custom-rules.md
-      license-contributing.md: license-contributing/index.md
 
 extra:
   version:
