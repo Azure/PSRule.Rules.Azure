@@ -31,6 +31,16 @@ What's changed since v1.21.0:
     - Check app service environments uses version 3 (ASEv3) instead of classic version 1 (ASEv1) and version 2 (ASEv2) by @bengeset96.
     [#1805](https://github.com/Azure/PSRule.Rules.Azure/issues/1805)
 
+## v1.21.1
+
+What's changed since v1.21.0:
+
+- Bug fixes:
+  - Fixed multiple nested parameter loops returns stack empty exception by @BernieWhite.
+    [#1811](https://github.com/Azure/PSRule.Rules.Azure/issues/1811)
+  - Fixed `Azure.ACR.ContentTrust` when customer managed keys are enabled by @BernieWhite.
+    [#1810](https://github.com/Azure/PSRule.Rules.Azure/issues/1810)
+
 ## v1.21.0
 
 What's changed since v1.20.2:
