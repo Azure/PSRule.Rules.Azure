@@ -7240,6 +7240,8 @@
 <p>Azure Container Registry (ACR) content trust enables pushing and pulling of signed images.
 Signed images provides additional assurance that they have been built on a trusted source.</p>
 <p>To enable content trust, the container registry must be using a Premium SKU.</p>
+<p>Content trust is currently not supported in a registry that's encrypted with a customer-managed key.
+When using customer-managed keys, content trust can not be enabled.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
 <p>Consider enabling content trust on registries, clients, and sign container images.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
@@ -7315,10 +7317,11 @@ Signed images provides additional assurance that they have been built on a trust
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/container-registry/container-registry-content-trust">Content trust in Azure Container Registry</a></li>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/applications-services#follow-best-practices-for-container-security">Follow best practices for container security</a></li>
+<li><a href="https://learn.microsoft.com/azure/container-registry/container-registry-content-trust">Content trust in Azure Container Registry</a></li>
 <li><a href="https://docs.docker.com/engine/security/trust/content_trust/">Content trust in Docker</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries">Azure template reference</a></li>
+<li><a href="https://learn.microsoft.com/azure/container-registry/tutorial-customer-managed-keys#before-you-enable-a-customer-managed-key">Overview of customer-managed keys</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7329,7 +7332,7 @@ Signed images provides additional assurance that they have been built on a trust
   <small>
     
       Last update:
-      2022-10-17
+      2022-11-01
     
   </small>
 </div>
