@@ -29,6 +29,8 @@ What's changed since v1.21.0:
 - Bug fixes:
   - Fixed multiple nested parameter loops returns stack empty exception by @BernieWhite.
     [#1811](https://github.com/Azure/PSRule.Rules.Azure/issues/1811)
+  - Fixed `Azure.ACR.ContentTrust` when customer managed keys are enabled by @BernieWhite.
+    [#1810](https://github.com/Azure/PSRule.Rules.Azure/issues/1810)
 
 ## v1.21.0
 

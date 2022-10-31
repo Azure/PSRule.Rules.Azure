@@ -96,11 +96,15 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_12'
+    Azure.WAF/pillar: 'Security'
 spec:
   with:
   - Azure.ACR.IsPremiumSKU
   type:
   - Microsoft.ContainerRegistry/registries
+  where:
+    field: properties.encryption.keyVaultProperties.identity
+    exists: false
   condition:
     field: Properties.policies.trustPolicy.status
     equals: enabled

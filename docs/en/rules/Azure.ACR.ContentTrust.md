@@ -19,6 +19,9 @@ Signed images provides additional assurance that they have been built on a trust
 
 To enable content trust, the container registry must be using a Premium SKU.
 
+Content trust is currently not supported in a registry that's encrypted with a customer-managed key.
+When using customer-managed keys, content trust can not be enabled.
+
 ## RECOMMENDATION
 
 Consider enabling content trust on registries, clients, and sign container images.
@@ -105,7 +108,8 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
 
 ## LINKS
 
-- [Content trust in Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-content-trust)
 - [Follow best practices for container security](https://learn.microsoft.com/azure/architecture/framework/security/applications-services#follow-best-practices-for-container-security)
+- [Content trust in Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-content-trust)
 - [Content trust in Docker](https://docs.docker.com/engine/security/trust/content_trust/)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+- [Overview of customer-managed keys](https://learn.microsoft.com/azure/container-registry/tutorial-customer-managed-keys#before-you-enable-a-customer-managed-key)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)
