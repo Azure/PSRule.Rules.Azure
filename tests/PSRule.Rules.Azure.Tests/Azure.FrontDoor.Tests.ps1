@@ -42,8 +42,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-B', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-B', 'frontdoor-C', 'frontdoor-D';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -64,8 +64,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D';
         }
 
         It 'Azure.FrontDoor.Logs' {
@@ -83,8 +83,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D';
         }
 
         It 'Azure.FrontDoor.Probe' {
@@ -99,8 +99,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D';
         }
 
         It 'Azure.FrontDoor.ProbeMethod' {
@@ -115,8 +115,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D';
         }
 
         It 'Azure.FrontDoor.ProbePath' {
@@ -134,8 +134,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D';
         }
 
         It 'Azure.FrontDoor.UseWAF' {
@@ -150,8 +150,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D';
         }
 
         It 'Azure.FrontDoor.WAF.Mode' {
@@ -203,7 +203,7 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'frondoor-A';
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A';
         }
     }
 
