@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - API Management:
+    - Check api management instances uses API version `2021-08-01` or newer by @bengeset96.
+    [#1819](https://github.com/Azure/PSRule.Rules.Azure/issues/1819)
+
 What's changed since v1.21.0:
 
 - New rules:

@@ -349,6 +349,27 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-B', 'apim-C';
         }
+
+        It 'Azure.APIM.MinAPIVersion' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.MinAPIVersion' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'apim-C', 'apim-F', 'apim-G', 'apim-H';
+
+            $ruleResult[0].Reason | Should -BeExactly "The api management instance 'apim-C' with version '2021-04-01-preview' is deprecated and will be retired on September 30, 2023. Update to '2021-08-01' or newer.";
+            $ruleResult[1].Reason | Should -BeExactly "The api management instance 'apim-F' with version '2021-04-01-preview' is deprecated and will be retired on September 30, 2023. Update to '2021-08-01' or newer.";
+            $ruleResult[2].Reason | Should -BeExactly "The api management instance 'apim-G' with version '2021-04-01-preview' is deprecated and will be retired on September 30, 2023. Update to '2021-08-01' or newer.";
+            $ruleResult[3].Reason | Should -BeExactly "The api management instance 'apim-H' with version '2021-04-01-preview' is deprecated and will be retired on September 30, 2023. Update to '2021-08-01' or newer.";
+            
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 12;
+            $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-B', 'apim-D', 'apim-E', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';  
+        }
     }
 
     Context 'With Template' {
