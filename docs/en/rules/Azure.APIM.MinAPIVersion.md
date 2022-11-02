@@ -53,7 +53,7 @@ For example:
     },
     "publisherEmail": {
       "type": "string",
-      "defaultValue": "psruleazureadmin@psrule.com",
+      "defaultValue": "noreply@contoso.com",
       "minLength": 1,
       "metadata": {
         "description": "The email address of the owner of the service"
@@ -61,7 +61,7 @@ For example:
     },
     "publisherName": {
       "type": "string",
-      "defaultValue": "PSRuleAzure",
+      "defaultValue": "Contoso",
       "minLength": 1,
       "metadata": {
         "description": "The name of the owner of the service"
@@ -131,11 +131,11 @@ param apiManagementServiceName string = 'apiservice${uniqueString(resourceGroup(
 
 @description('The email address of the owner of the service')
 @minLength(1)
-param publisherEmail string = 'psruleazureadmin@psrule.com'
+param publisherEmail string = 'noreply@contoso.com'
 
 @description('The name of the owner of the service')
 @minLength(1)
-param publisherName string = 'PSRuleAzure'
+param publisherName string = 'Contoso'
 
 @description('The pricing tier of this API Management service')
 @allowed([

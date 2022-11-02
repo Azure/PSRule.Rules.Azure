@@ -368,7 +368,7 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 12;
-            $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-B', 'apim-D', 'apim-E', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';  
+            $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-B', 'apim-D', 'apim-E', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
     }
 
