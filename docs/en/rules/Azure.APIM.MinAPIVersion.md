@@ -171,5 +171,6 @@ resource apiManagementService 'Microsoft.ApiManagement/service@2021-12-01-previe
 
 ## LINKS
 
+- [Infrastructure provisioning](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Azure API Management API version retirements](https://learn.microsoft.com/azure/api-management/breaking-changes/api-version-retirement-sep-2023)
 - [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)
