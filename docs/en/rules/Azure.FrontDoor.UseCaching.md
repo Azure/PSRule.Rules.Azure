@@ -255,6 +255,10 @@ resource frontDoor 'Microsoft.Network/frontDoors@2021-06-01' = {
 }
 ```
 
+## NOTES
+
+This rule only applies to Front Door Classic `(Microsoft.Network/frontDoors)`.
+
 ## LINKS
 
 - [Performance patterns](https://learn.microsoft.com/azure/architecture/framework/scalability/performance-efficiency-patterns)
