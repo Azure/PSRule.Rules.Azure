@@ -244,18 +244,27 @@ Rule 'Azure.APIM.AvailabilityZone' -Ref 'AZR-000052' -Type 'Microsoft.ApiManagem
     }
 } -Configure @{ AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
-# Synopsis: API Management instances with API versions prior to 2021-08-01 must update.
-Rule 'Azure.APIM.MinAPIVersion' -Ref 'AZR-000320' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
-    [Datetime]$version = $TargetObject.apiVersion -replace '-preview', ''
-    [Datetime]$minimumVersion = '2021-08-01'
+# Synopsis: API Management instances should limit control plane API calls to API Management with version '2021-08-01' or newer.
+Rule 'Azure.APIM.MinAPIVersion' -Ref 'AZR-000322' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    if ($TargetObject.apiVersion) {
+        [datetime]$version = $TargetObject.apiVersion -replace '-preview', ''
+        [datetime]$minimumVersion = '2021-08-01'
 
-    if ($version -ge $minimumVersion) {
-        $Assert.Pass()
+        $Assert.Create($version -ge $minimumVersion, $LocalizedData.APIMVersionDeprecated, $PSRule.TargetName, $TargetObject.apiVersion).
+        PathPrefix('apiVersion')
+    }
+    if ($TargetObject.properties.apiVersionConstraint.minApiVersion) {
+        [datetime]$minApiVersionConfigured = $TargetObject.properties.apiVersionConstraint.minApiVersion -replace '-preview', ''
+        [datetime]$minApiVersionExpected = $Configuration.AZURE_APIM_MIN_API_VERSION -replace '-preview', ''
+
+        $Assert.Create($minApiVersionConfigured -ge $minApiVersionExpected, $LocalizedData.APIMVersionConstraintMinAPIVersion, $PSRule.TargetName,
+        $TargetObject.properties.apiVersionConstraint.minApiVersion, $Configuration.AZURE_APIM_MIN_API_VERSION).
+        PathPrefix('apiVersionConstraint.minApiVersion')
     }
     else {
-        $Assert.Fail().Reason($LocalizedData.APIMVersionDeprecated, $PSRule.TargetName, $TargetObject.apiVersion)
+        $Assert.Fail().Reason($LocalizedData.APIMVersionConstraintMinAPIVersionNotFound, $PSRule.TargetName)
     }
-}
+} -Configure @{ AZURE_APIM_MIN_API_VERSION = '2021-08-01' }
 
 #region Helper functions
 

@@ -755,8 +755,10 @@
     "ResourceName": "apim-C",
     "Name": "apim-C",
     "Plan": null,
-    "apiVersion": "2021-04-01-preview",
     "Properties": {
+      "apiVersionConstraint": {
+        "minApiVersion": "2021-04-01-preview"
+      },
       "publisherEmail": "email",
       "publisherName": "n/a",
       "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
@@ -1132,6 +1134,9 @@
     "Plan": null,
     "apiVersion": "2021-08-01",
     "Properties": {
+      "apiVersionConstraint": {
+        "minApiVersion": "2021-12-01-preview"
+      },
       "publisherEmail": "email",
       "publisherName": "n/a",
       "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
@@ -1237,8 +1242,11 @@
     "ResourceName": "apim-E",
     "Name": "apim-E",
     "Plan": null,
-    "apiVersion": "2021-08-01",
+    "apiVersion": "2021-04-01-preview",
     "Properties": {
+      "apiVersionConstraint": {
+        "minApiVersion": "2021-04-01-preview"
+      },
       "publisherEmail": "email",
       "publisherName": "n/a",
       "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
