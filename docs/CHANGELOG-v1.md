@@ -24,6 +24,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.22.0-B0011 (pre-release)
+
 What's changed since v1.21.0:
 
 - New rules:
