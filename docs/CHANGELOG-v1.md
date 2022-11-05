@@ -24,17 +24,27 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+<<<<<<< HEAD
 - New rules:
   - API Management:
     - Check api management instances uses API version `2021-08-01` or newer by @bengeset96.
     [#1819](https://github.com/Azure/PSRule.Rules.Azure/issues/1819)
+=======
+## v1.22.0-B0011 (pre-release)
+>>>>>>> main
 
 What's changed since v1.21.0:
 
 - New rules:
   - App Service Environment:
     - Check app service environments uses version 3 (ASEv3) instead of classic version 1 (ASEv1) and version 2 (ASEv2) by @bengeset96.
-    [#1805](https://github.com/Azure/PSRule.Rules.Azure/issues/1805)
+      [#1805](https://github.com/Azure/PSRule.Rules.Azure/issues/1805)
+  - Front Door:
+    - Check front door uses caching by @bengeset96.
+      [#548](https://github.com/Azure/PSRule.Rules.Azure/issues/548)
+  - Virtual Network:
+    - Check VNETs with a GatewaySubnet also has an AzureFirewallSubnet by @BernieWhite.
+      [#875](https://github.com/Azure/PSRule.Rules.Azure/issues/875)
 
 ## v1.21.1
 

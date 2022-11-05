@@ -31,10 +31,15 @@
     "Name": "vnet-A",
     "Properties": {
       "addressSpace": {
-        "addressPrefixes": ["10.1.0.0/24"]
+        "addressPrefixes": [
+          "10.1.0.0/24"
+        ]
       },
       "dhcpOptions": {
-        "dnsServers": ["10.1.0.36", "168.63.129.16"]
+        "dnsServers": [
+          "10.1.0.36",
+          "168.63.129.16"
+        ]
       },
       "subnets": [
         {
@@ -157,7 +162,9 @@
             "useRemoteGateways": false,
             "doNotVerifyRemoteGateways": false,
             "remoteAddressSpace": {
-              "addressPrefixes": ["10.2.0.0/24"]
+              "addressPrefixes": [
+                "10.2.0.0/24"
+              ]
             },
             "routeServiceVips": {}
           },
@@ -181,10 +188,14 @@
     "Name": "vnet-B",
     "Properties": {
       "addressSpace": {
-        "addressPrefixes": ["10.2.0.0/24"]
+        "addressPrefixes": [
+          "10.2.0.0/24"
+        ]
       },
       "dhcpOptions": {
-        "dnsServers": ["10.99.0.36"]
+        "dnsServers": [
+          "10.99.0.36"
+        ]
       },
       "subnets": [
         {
@@ -280,7 +291,9 @@
             "useRemoteGateways": false,
             "doNotVerifyRemoteGateways": false,
             "remoteAddressSpace": {
-              "addressPrefixes": ["10.1.0.0/24"]
+              "addressPrefixes": [
+                "10.1.0.0/24"
+              ]
             },
             "routeServiceVips": {}
           },
@@ -304,7 +317,9 @@
     "Name": "vnet-C",
     "Properties": {
       "addressSpace": {
-        "addressPrefixes": ["10.3.0.0/24"]
+        "addressPrefixes": [
+          "10.3.0.0/24"
+        ]
       },
       "dhcpOptions": {
         "dnsServers": []
@@ -393,7 +408,9 @@
             "useRemoteGateways": false,
             "doNotVerifyRemoteGateways": false,
             "remoteAddressSpace": {
-              "addressPrefixes": ["10.1.0.0/24"]
+              "addressPrefixes": [
+                "10.1.0.0/24"
+              ]
             },
             "routeServiceVips": {}
           },
@@ -413,7 +430,9 @@
             "useRemoteGateways": false,
             "doNotVerifyRemoteGateways": false,
             "remoteAddressSpace": {
-              "addressPrefixes": ["10.4.0.0/24"]
+              "addressPrefixes": [
+                "10.4.0.0/24"
+              ]
             },
             "routeServiceVips": {}
           },
@@ -437,10 +456,15 @@
     "Name": "vnet-D",
     "Properties": {
       "addressSpace": {
-        "addressPrefixes": ["10.4.0.0/24"]
+        "addressPrefixes": [
+          "10.4.0.0/24"
+        ]
       },
       "dhcpOptions": {
-        "dnsServers": ["10.99.0.36", "10.99.0.37"]
+        "dnsServers": [
+          "10.99.0.36",
+          "10.99.0.37"
+        ]
       },
       "subnets": [
         {
@@ -589,10 +613,15 @@
     "Name": "vnet-E",
     "Properties": {
       "addressSpace": {
-        "addressPrefixes": ["10.5.0.0/24"]
+        "addressPrefixes": [
+          "10.5.0.0/24"
+        ]
       },
       "dhcpOptions": {
-        "dnsServers": ["10.99.0.36", "10.99.0.37"]
+        "dnsServers": [
+          "10.99.0.36",
+          "10.99.0.37"
+        ]
       },
       "subnets": [],
       "virtualNetworkPeerings": [],
@@ -672,6 +701,34 @@
         "ExtensionResourceType": null,
         "Sku": null,
         "SubscriptionId": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-E/subnets/AzureFirewallSubnet",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-E/subnets/AzureFirewallSubnet",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "AzureFirewallSubnet",
+        "Name": "AzureFirewallSubnet",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualNetworks/vnet-E",
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "addressPrefix": "10.5.0.0/27",
+          "ipConfigurations": [],
+          "serviceEndpoints": [],
+          "delegations": [],
+          "privateEndpointNetworkPolicies": "Enabled",
+          "privateLinkServiceNetworkPolicies": "Enabled"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/virtualNetworks/subnets",
+        "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
       }
     ]
   },
@@ -683,10 +740,15 @@
     "Name": "vnet-F",
     "Properties": {
       "addressSpace": {
-        "addressPrefixes": ["10.5.0.0/24"]
+        "addressPrefixes": [
+          "10.5.0.0/24"
+        ]
       },
       "dhcpOptions": {
-        "dnsServers": ["10.99.0.36", "10.99.0.37"]
+        "dnsServers": [
+          "10.99.0.36",
+          "10.99.0.37"
+        ]
       },
       "virtualNetworkPeerings": [],
       "enableDdosProtection": false,
@@ -1013,7 +1075,9 @@
             "priority": 200,
             "direction": "Outbound",
             "sourcePortRanges": [],
-            "destinationPortRanges": ["3389"],
+            "destinationPortRanges": [
+              "3389"
+            ],
             "sourceAddressPrefixes": [],
             "destinationAddressPrefixes": []
           }
@@ -1409,7 +1473,10 @@
             "priority": 200,
             "direction": "Outbound",
             "sourcePortRanges": [],
-            "destinationPortRanges": ["3389", "22"],
+            "destinationPortRanges": [
+              "3389",
+              "22"
+            ],
             "sourceAddressPrefixes": [],
             "destinationAddressPrefixes": []
           }
@@ -1625,7 +1692,9 @@
             ],
             "privateIPAddressVersion": "IPv4"
           },
-          "zones": ["3"]
+          "zones": [
+            "3"
+          ]
         }
       ],
       "backendAddressPools": [
@@ -1797,7 +1866,11 @@
             ],
             "privateIPAddressVersion": "IPv4"
           },
-          "zones": ["1", "2", "3"]
+          "zones": [
+            "1",
+            "2",
+            "3"
+          ]
         }
       ],
       "backendAddressPools": [
@@ -1967,7 +2040,11 @@
             ],
             "privateIPAddressVersion": "IPv4"
           },
-          "zones": ["2", "3", "1"]
+          "zones": [
+            "2",
+            "3",
+            "1"
+          ]
         }
       ],
       "backendAddressPools": [
@@ -2137,7 +2214,11 @@
             ],
             "privateIPAddressVersion": "IPv4"
           },
-          "zones": ["2", "3", "1"]
+          "zones": [
+            "2",
+            "3",
+            "1"
+          ]
         }
       ],
       "backendAddressPools": [
