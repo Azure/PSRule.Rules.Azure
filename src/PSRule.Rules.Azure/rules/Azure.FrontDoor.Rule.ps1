@@ -23,12 +23,12 @@ Rule 'Azure.FrontDoor.Logs' -Ref 'AZR-000107' -Type 'Microsoft.Network/frontDoor
     Reason $LocalizedData.DiagnosticSettingsNotConfigured;
     $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.Network/frontDoors/providers/diagnosticSettings');
     $logCategories = @($diagnostics | ForEach-Object {
-        foreach ($log in $_.Properties.logs) {
-            if ($log.category -eq 'FrontdoorAccessLog' -and $log.enabled -eq $True) {
-                $log;
+            foreach ($log in $_.Properties.logs) {
+                if ($log.category -eq 'FrontdoorAccessLog' -and $log.enabled -eq $True) {
+                    $log;
+                }
             }
-        }
-    });
+        });
     $Null -ne $logCategories -and $logCategories.Length -gt 0;
 }
 
@@ -76,4 +76,26 @@ Rule 'Azure.FrontDoor.UseWAF' -Ref 'AZR-000111' -Type 'Microsoft.Network/frontDo
     }
 }
 
-#endregion Front Door
+# Synopsis: Use caching to reduce retrieving contents from origins.
+Rule 'Azure.FrontDoor.UseCaching' -Ref 'AZR-000320' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/rulesEngines' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
+        $cachingDisabledRoutingRules = @($TargetObject.properties.routingRules | Where-Object { $_.properties.enabledState -eq 'Enabled' -and
+            $_.properties.routeConfiguration.'@odata.type' -eq '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration' -and
+                -not $_.properties.routeConfiguration.cacheConfiguration })
+        $cachingDisabledRuleSets = @(GetSubResources -ResourceType 'Microsoft.Network/frontDoors/rulesEngines' | ForEach-Object { $_.properties.rules |
+            Where-Object { $_.action.routeConfigurationOverride -and
+                $_.action.routeConfigurationOverride.'@odata.type' -eq '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration' -and
+                    -not $_.action.routeConfigurationOverride.cacheConfiguration } })
+        
+        $cachingDisabled = @($cachingDisabledRoutingRules; $cachingDisabledRuleSets)
+
+        $Assert.Less($cachingDisabled, '.', 1).Reason($LocalizedData.FrontDoorCachingDisabled)
+    }
+    elseif ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors/rulesEngines') {
+        $cachingDisabledRuleSet = @($TargetObject.properties.rules | Where-Object { $_.action.routeConfigurationOverride -and
+            $_.action.routeConfigurationOverride.'@odata.type' -eq '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration' -and
+                -not $_.action.routeConfigurationOverride.cacheConfiguration })
+
+        $Assert.Less($cachingDisabledRuleSet, '.', 1).Reason($LocalizedData.FrontDoorCachingDisabled)
+    }
+}

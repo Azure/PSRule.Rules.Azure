@@ -77,4 +77,5 @@
     ServiceBusMinTLS = "The service bus namespace '{0}' should minimum use TLS 1.2 version."
     LogAnalyticsAgentDeprecated = "The legacy Log Analytics Agent is deprecated and will be retired on August 31, 2024. Migrate to the Azure Monitor Agent."
     ClassicASEDeprecated = "The app service environment '{0}' with version '{1}' is deprecated and will be retired on August 31, 2024. Migrate to ASEv3."
+    FrontDoorCachingDisabled = "The front door instance should have caching enabled for routing rules and rule sets to reduce retrieving contents from origins."
 }
