@@ -12,30 +12,98 @@ namespace PSRule.Rules.Azure.Data.Template
     /// </summary>
     internal static class TokenStreamValidator
     {
+        private const string FN_PARAMETERS = "parameters";
+        private const string FN_VARIABLES = "variables";
+        private const string FN_IF = "if";
+        private const string FN_LISTKEYS = "listKeys";
+
         /// <summary>
         /// Look for literal values or use of variables().
         /// </summary>
         public static bool HasLiteralValue(TokenStream stream)
         {
-            var tokens = CollectToken(stream);
+            var tokens = CollectLiteralToken(stream);
             var insecureTokens = tokens.Where(
                 t => t.Type == ExpressionTokenType.String ||
                 t.Type == ExpressionTokenType.Numeric ||
-                IsFunction(t, "variables")
+                IsFunction(t, FN_VARIABLES)
             ).Count();
             return insecureTokens > 0;
         }
 
-        private static ExpressionToken[] CollectToken(TokenStream stream)
+        /// <summary>
+        /// Get the names of parameters that would be assigned as values.
+        /// </summary>
+        public static string[] GetParameterTokenValue(TokenStream stream)
+        {
+            var list = new List<string>();
+            while (stream.Count > 0)
+            {
+                if (!stream.TryTokenType(ExpressionTokenType.Element, out var token))
+                {
+                    stream.Pop();
+                    continue;
+                }
+
+                // Skip condition part of the if() since this a value is not set using any parameters specified here
+                if (IsFunction(token, FN_IF))
+                {
+                    stream.Skip(ExpressionTokenType.GroupStart);
+                    if (stream.TryTokenType(ExpressionTokenType.Element, out _))
+                        stream.SkipGroup();
+                }
+                else if (TryParameters(stream, token, out var parameterName))
+                    list.Add(parameterName);
+            }
+            return list.ToArray();
+        }
+
+        /// <summary>
+        /// Returns true if it contains a call to the function listKeys.
+        /// </summary>
+        public static bool UsesListKeysFunction(TokenStream stream)
+        {
+            while (stream.Count > 0)
+            {
+                if (!stream.TryTokenType(ExpressionTokenType.Element, out var token))
+                {
+                    stream.Pop();
+                    continue;
+                }
+
+                if (IsFunction(token, FN_LISTKEYS))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static bool TryParameters(TokenStream stream, ExpressionToken token, out string parameterName)
+        {
+            parameterName = null;
+            if (!IsFunction(token, FN_PARAMETERS))
+                return false;
+
+            if (stream.Skip(ExpressionTokenType.GroupStart) &&
+                stream.TryTokenType(ExpressionTokenType.String, out var nameToken) &&
+                stream.Skip(ExpressionTokenType.GroupEnd))
+                parameterName = nameToken.Content;
+
+            return parameterName != null;
+        }
+
+        private static ExpressionToken[] CollectLiteralToken(TokenStream stream)
         {
             var list = new List<ExpressionToken>();
             while (stream.Count > 0)
-                CollectToken(stream, list);
+                CollectLiteralToken(stream, list);
 
             return list.ToArray();
         }
 
-        private static void CollectToken(TokenStream stream, IList<ExpressionToken> results)
+        private static void CollectLiteralToken(TokenStream stream, IList<ExpressionToken> results)
         {
             if (stream.TryTokenType(ExpressionTokenType.Element, out var token))
                 Element(stream, token, results);
@@ -72,7 +140,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private static void Element(TokenStream stream, ExpressionToken token, IList<ExpressionToken> results)
         {
             // Ignore tokens inside parameters() and variables() which are not the actual value
-            if (IsFunction(token, "parameters") || IsFunction(token, "variables"))
+            if (IsFunction(token, FN_PARAMETERS) || IsFunction(token, FN_VARIABLES))
                 stream.SkipGroup();
 
             results.Add(token);

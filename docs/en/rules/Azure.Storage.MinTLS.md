@@ -86,7 +86,7 @@ resource st0000001 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [TLS encryption in Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#tls-encryption-in-azure)
 - [Enforce a minimum required version of Transport Layer Security (TLS) for requests to a storage account](https://docs.microsoft.com/azure/storage/common/transport-layer-security-configure-minimum-version)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)

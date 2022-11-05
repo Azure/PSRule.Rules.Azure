@@ -57,4 +57,4 @@ For example:
 - [Common metadata properties](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#common-metadata-properties)
 - [Policy definition template reference](https://docs.microsoft.com/azure/templates/microsoft.authorization/policydefinitions)
 - [Initiative definition template reference](https://docs.microsoft.com/azure/templates/microsoft.authorization/policysetdefinitions)
-- [Repeatable infrastructure](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
+- [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)

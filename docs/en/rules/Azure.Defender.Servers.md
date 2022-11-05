@@ -87,6 +87,6 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 
-- [Monitor Azure resources in Microsoft Defender for Cloud](https://docs.microsoft.com/azure/architecture/framework/security/monitor-resources#virtual-machines)
+- [Monitor Azure resources in Microsoft Defender for Cloud](https://learn.microsoft.com/azure/architecture/framework/security/monitor-resources#virtual-machines)
 - [Introduction to Microsoft Defender for Containers](https://docs.microsoft.com/azure/defender-for-cloud/defender-for-servers-introduction)
 - [Azure Monitor agent auto-provisioning](https://docs.microsoft.com/azure/defender-for-cloud/auto-deploy-azure-monitoring-agent)

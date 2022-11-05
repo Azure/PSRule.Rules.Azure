@@ -148,4 +148,4 @@ az aks create \
 
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters?tabs=json)
 - [Create an Azure Kubernetes Service (AKS) cluster that uses availability zones](https://docs.microsoft.com/azure/aks/availability-zones)
-- [Use zone-aware services](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
+- [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)

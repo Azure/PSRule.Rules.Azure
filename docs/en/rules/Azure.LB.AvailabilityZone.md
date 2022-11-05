@@ -121,4 +121,4 @@ resource lb_001 'Microsoft.Network/loadBalancers@2021-02-01' = {
 
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers?tabs=json)
 - [Load Balancer and Availability Zones](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
-- [Use zone-aware services](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
+- [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)

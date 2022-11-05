@@ -619,7 +619,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             internal void Variable(string variableName, object value)
             {
-                Variables.Add(variableName, value);
+                Variables[variableName] = value;
             }
 
             public bool TryVariable(string variableName, out object value)
@@ -910,13 +910,17 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (TryStringProperty(template, PROPERTY_CONTENTVERSION, out var contentVersion))
                     ContentVersion(context, contentVersion);
 
+                // Handle compile time function variables
+                if (TryObjectProperty(template, PROPERTY_VARIABLES, out var variables))
+                    FunctionVariables(context, variables);
+
                 if (TryObjectProperty(template, PROPERTY_PARAMETERS, out var parameters))
                     Parameters(context, parameters);
 
                 if (TryArrayProperty(template, PROPERTY_FUNCTIONS, out var functions))
                     Functions(context, functions);
 
-                if (TryObjectProperty(template, PROPERTY_VARIABLES, out var variables))
+                if (TryObjectProperty(template, PROPERTY_VARIABLES, out variables))
                     Variables(context, variables);
 
                 if (TryArrayProperty(template, PROPERTY_RESOURCES, out var resources))
@@ -1164,7 +1168,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!TryObjectProperty(resource, PROPERTY_PROPERTIES, out var properties))
                 return false;
 
-            var deploymentContext = GetDeploymentContext(context, resource, properties);
+            var deploymentContext = GetDeploymentContext(context, deploymentName, resource, properties);
             if (!TryObjectProperty(properties, PROPERTY_TEMPLATE, out var template))
                 return false;
 
@@ -1180,7 +1184,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return !string.Equals(resourceType, RESOURCETYPE_DEPLOYMENT, StringComparison.OrdinalIgnoreCase);
         }
 
-        private static TemplateContext GetDeploymentContext(TemplateContext context, JObject resource, JObject properties)
+        private static TemplateContext GetDeploymentContext(TemplateContext context, string deploymentName, JObject resource, JObject properties)
         {
             if (!TryObjectProperty(properties, PROPERTY_EXPRESSIONEVALUATIONOPTIONS, out var options) ||
                 !TryStringProperty(options, PROPERTY_SCOPE, out var scope) ||
@@ -1208,7 +1212,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     if (parameter.Value is JObject parameterInner)
                     {
                         if (parameterInner.TryGetProperty(PROPERTY_VALUE, out JToken parameterValue))
-                            parameterInner[PROPERTY_VALUE] = ResolveVariable(context, parameterValue);
+                            parameterInner[PROPERTY_VALUE] = ResolveToken(context, ResolveVariable(context, parameterValue));
 
                         if (parameterInner.TryGetProperty(PROPERTY_COPY, out JArray _))
                         {
@@ -1237,6 +1241,18 @@ namespace PSRule.Rules.Azure.Data.Template
         #endregion Resources
 
         #region Variables
+
+        protected virtual void FunctionVariables(TemplateContext context, JObject variables)
+        {
+            if (variables == null || variables.Count == 0)
+                return;
+
+            foreach (var variable in variables)
+            {
+                if (variable.Key.StartsWith("$fxv#"))
+                    Variable(context, variable.Key, variable.Value);
+            }
+        }
 
         protected virtual void Variables(TemplateContext context, JObject variables)
         {
@@ -1603,7 +1619,7 @@ namespace PSRule.Rules.Azure.Data.Template
                         array.Add(ResolveToken(context, instance));
                     }
                     obj[copyIndex.Name] = array;
-                    context.CopyIndex.Pop();
+                    context.CopyIndex.Remove(copyIndex);
                 }
                 else
                 {

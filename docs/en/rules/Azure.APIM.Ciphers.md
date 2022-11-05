@@ -24,6 +24,6 @@ Consider disabling weak or deprecated ciphers.
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Manage protocols and ciphers in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-manage-protocols-ciphers)
 - [Cryptographic Recommendations](https://docs.microsoft.com/security/sdl/cryptographic-recommendations)

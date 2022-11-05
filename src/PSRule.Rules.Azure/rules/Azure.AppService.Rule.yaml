@@ -19,7 +19,7 @@ metadata:
     ruleSet: 2020_12
     Azure.WAF/pillar: 'Security'
   labels:
-    Azure.ASB.v3/control: [ 'IM-1', 'IM-3' ]
+    Azure.ASB.v3/control: [ 'IM-1', 'IM-2' ] 
 spec:
   type:
   - Microsoft.Web/sites

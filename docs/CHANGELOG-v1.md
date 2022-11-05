@@ -24,22 +24,132 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since pre-release v1.20.0:
+What's changed since v1.21.0:
+
+- New rules:
+  - App Service Environment:
+    - Check app service environments uses version 3 (ASEv3) instead of classic version 1 (ASEv1) and version 2 (ASEv2) by @bengeset96.
+    [#1805](https://github.com/Azure/PSRule.Rules.Azure/issues/1805)
+
+## v1.21.1
+
+What's changed since v1.21.0:
+
+- Bug fixes:
+  - Fixed multiple nested parameter loops returns stack empty exception by @BernieWhite.
+    [#1811](https://github.com/Azure/PSRule.Rules.Azure/issues/1811)
+  - Fixed `Azure.ACR.ContentTrust` when customer managed keys are enabled by @BernieWhite.
+    [#1810](https://github.com/Azure/PSRule.Rules.Azure/issues/1810)
+
+## v1.21.0
+
+What's changed since v1.20.2:
 
 - New features:
   - Mapping of Azure Security Benchmark v3 to security rules by @jagoodwin.
     [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
+- New rules:
+  - Deployment:
+    - Check sensitive resource values use secure parameters by @VeraBE @BernieWhite.
+      [#1773](https://github.com/Azure/PSRule.Rules.Azure/issues/1773)
+  - Service Bus:
+    - Check service bus namespaces uses TLS 1.2 version by @bengeset96.
+      [#1777](https://github.com/Azure/PSRule.Rules.Azure/issues/1777)
+  - Virtual Machine:
+    - Check virtual machines uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @bengeset96.
+      [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
+  - Virtual Machine Scale Sets:
+    - Check virtual machine scale sets uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @bengeset96.
+      [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
+  - Virtual Network:
+    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @bengeset96.
+      [#1761](https://github.com/Azure/PSRule.Rules.Azure/issues/1761)
 - General improvements:
   - Added built-in list of ignored policy definitions by @BernieWhite.
     [#1730](https://github.com/Azure/PSRule.Rules.Azure/issues/1730)
     - To ignore additional policy definitions, use the `AZURE_POLICY_IGNORE_LIST` configuration option.
 - Engineering:
-  - Bump PSRule to v2.5.0.
-    [#1769](https://github.com/Azure/PSRule.Rules.Azure/pull/1769)
+  - Bump PSRule to v2.5.3.
+    [#1800](https://github.com/Azure/PSRule.Rules.Azure/pull/1800)
+  - Bump Az.Resources to v6.3.1.
+    [#1800](https://github.com/Azure/PSRule.Rules.Azure/pull/1800)
+
+What's changed since pre-release v1.21.0-B0050:
+
+- No additional changes.
+
+## v1.21.0-B0050 (pre-release)
+
+What's changed since pre-release v1.21.0-B0027:
+
+- New rules:
+  - Virtual Machine:
+    - Check virtual machines uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @bengeset96.
+      [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
+  - Virtual Machine Scale Sets:
+    - Check virtual machine scale sets uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @bengeset96.
+      [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
+- Engineering:
+  - Bump PSRule to v2.5.3.
+    [#1800](https://github.com/Azure/PSRule.Rules.Azure/pull/1800)
+  - Bump Az.Resources to v6.3.1.
+    [#1800](https://github.com/Azure/PSRule.Rules.Azure/pull/1800)
+- Bug fixes:
+  - Fixed contains function unable to match array by @BernieWhite.
+    [#1793](https://github.com/Azure/PSRule.Rules.Azure/issues/1793)
+
+## v1.21.0-B0027 (pre-release)
+
+What's changed since pre-release v1.21.0-B0011:
+
+- New rules:
+  - Deployment:
+    - Check sensitive resource values use secure parameters by @VeraBE @BernieWhite.
+      [#1773](https://github.com/Azure/PSRule.Rules.Azure/issues/1773)
+  - Service Bus:
+    - Check service bus namespaces uses TLS 1.2 version by @bengeset96.
+      [#1777](https://github.com/Azure/PSRule.Rules.Azure/issues/1777)
+
+## v1.21.0-B0011 (pre-release)
+
+What's changed since v1.20.1:
+
+- New features:
+  - Mapping of Azure Security Benchmark v3 to security rules by @jagoodwin.
+    [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
+- New rules:
+  - Virtual Network:
+    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @bengeset96.
+      [#1761](https://github.com/Azure/PSRule.Rules.Azure/issues/1761)
+- General improvements:
+  - Added built-in list of ignored policy definitions by @BernieWhite.
+    [#1730](https://github.com/Azure/PSRule.Rules.Azure/issues/1730)
+    - To ignore additional policy definitions, use the `AZURE_POLICY_IGNORE_LIST` configuration option.
+- Engineering:
+  - Bump PSRule to v2.5.1.
+    [#1782](https://github.com/Azure/PSRule.Rules.Azure/pull/1782)
+  - Bump Az.Resources to v6.3.0.
+    [#1782](https://github.com/Azure/PSRule.Rules.Azure/pull/1782)
+
+## v1.20.2
+
+What's changed since v1.20.1:
+
+- Bug fixes:
+  - Fixed contains function unable to match array by @BernieWhite.
+    [#1793](https://github.com/Azure/PSRule.Rules.Azure/issues/1793)
+
+## v1.20.1
+
+What's changed since v1.20.0:
+
+- Bug fixes:
+  - Fixed expand bicep source when reading JsonContent into a parameter by @BernieWhite.
+    [#1780](https://github.com/Azure/PSRule.Rules.Azure/issues/1780)
 
 ## v1.20.0
 
-What's changed since pre-release v1.19.2:
+What's changed since v1.19.2:
 
 - New features:
   - Added September 2022 baselines `Azure.GA_2022_09` and `Azure.Preview_2022_09` by @BernieWhite.

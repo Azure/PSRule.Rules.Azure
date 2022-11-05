@@ -45,9 +45,22 @@ Rule 'Azure.VMSS.ComputerName' -Ref 'AZR-000262' -Type 'Microsoft.Compute/virtua
 }
 
 # Synopsis: Use SSH keys instead of common credentials to secure virtual machine scale sets against malicious activities.
-Rule 'Azure.VMSS.PublicKey' -Ref 'AZR-000288' -Type 'Microsoft.Compute/virtualMachineScaleSets' -If { VMSSHasLinuxOS } -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+Rule 'Azure.VMSS.PublicKey' -Ref 'AZR-000288' -Type 'Microsoft.Compute/virtualMachineScaleSets' -If { VMSSHasLinuxOS } -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'DP-4' } {
     $Assert.In($TargetObject, 'properties.virtualMachineProfile.OsProfile.linuxConfiguration.disablePasswordAuthentication', $True).
     Reason($LocalizedData.VMSSPublicKey, $PSRule.TargetName)
+}
+
+# Synopsis: Use Azure Monitor Agent as replacement for Log Analytics Agent.
+Rule 'Azure.VMSS.MigrateAMA' -Ref 'AZR-000318' -Type 'Microsoft.Compute/virtualMachineScaleSets' -If { HasOMSOrAMAExtension } -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+    $property = $TargetObject.Properties.virtualMachineProfile.extensionProfile.extensions.properties |
+        Where-Object { (($_.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.type -eq 'MicrosoftMonitoringAgent')) -or
+            (($_.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.type -eq 'OmsAgentForLinux')) }
+                $subresource = @(GetSubResources -ResourceType 'Microsoft.Compute/virtualMachineScaleSets/extensions' |
+                    Where-Object { (($_.Properties.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.Properties.type -eq 'MicrosoftMonitoringAgent')) -or
+                        (($_.Properties.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.Properties.type -eq 'OmsAgentForLinux')) })
+    
+    $extensions = @($property; $subresource)
+    $Assert.Less($extensions, '.', 1).Reason($LocalizedData.LogAnalyticsAgentDeprecated)
 }
 
 #endregion Virtual machine scale set

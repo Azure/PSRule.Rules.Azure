@@ -105,6 +105,6 @@ Storage Accounts with the following tags are automatically excluded from this ru
 
 ## LINKS
 
-- [Multiple and paired regions](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
+- [Multiple and paired regions](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
 - [Azure Storage redundancy](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)

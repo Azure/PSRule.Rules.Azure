@@ -154,7 +154,7 @@ the sub-resoure will override the property.
 
 ## LINKS
 
-- [Use modern password protection](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-modern-password-protection)
+- [Use modern password protection](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-modern-password-protection)
 - [Configure and manage Azure AD authentication with Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
 - [Using multi-factor Azure Active Directory authentication](https://docs.microsoft.com/azure/azure-sql/database/authentication-mfa-ssms-overview)
 - [Conditional Access with Azure SQL Database and Azure Synapse Analytics](https://docs.microsoft.com/azure/azure-sql/database/conditional-access-configure)

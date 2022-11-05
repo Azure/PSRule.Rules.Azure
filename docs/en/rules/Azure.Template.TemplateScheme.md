@@ -48,6 +48,6 @@ For example:
 
 ## LINKS
 
-- [Automate deployments with ARM Templates](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure#automate-deployments-with-arm-templates)
+- [Automate deployments with ARM Templates](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure#automate-deployments-with-arm-templates)
 - [Test cases for ARM templates](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-test-cases)
 - [Template file structure](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-syntax)
