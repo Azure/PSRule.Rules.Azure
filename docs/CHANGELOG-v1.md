@@ -24,17 +24,18 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-- New rules:
-  - Front Door:
-    - Check front door uses caching by @bengeset96.
-    [#548](https://github.com/Azure/PSRule.Rules.Azure/issues/548)
-
 What's changed since v1.21.0:
 
 - New rules:
   - App Service Environment:
     - Check app service environments uses version 3 (ASEv3) instead of classic version 1 (ASEv1) and version 2 (ASEv2) by @bengeset96.
-    [#1805](https://github.com/Azure/PSRule.Rules.Azure/issues/1805)
+      [#1805](https://github.com/Azure/PSRule.Rules.Azure/issues/1805)
+  - Front Door:
+    - Check front door uses caching by @bengeset96.
+      [#548](https://github.com/Azure/PSRule.Rules.Azure/issues/548)
+  - Virtual Network:
+    - Check VNETs with a GatewaySubnet also has an AzureFirewallSubnet by @BernieWhite.
+      [#875](https://github.com/Azure/PSRule.Rules.Azure/issues/875)
 
 ## v1.21.1
 

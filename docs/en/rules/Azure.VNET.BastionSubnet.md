@@ -6,7 +6,7 @@ resource: Virtual Network
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.BastionSubnet/
 ---
 
-# Virtual networks with a GatewaySubnet should have an AzureBastionSubnet
+# Configure VNETs with a AzureBastionSubnet subnet
 
 ## SYNOPSIS
 
@@ -14,7 +14,8 @@ VNETs with a GatewaySubnet should have an AzureBastionSubnet to allow for out of
 
 ## DESCRIPTION
 
-Azure Bastion lets you securely connect to a virtual machine using your browser or native SSH/RDP client on Windows workstations or the Azure portal. An Azure Bastion host is deployed inside an Azure Virtual Network and can access virtual machines in the virtual network (VNet), or virtual machines in peered VNets.
+Azure Bastion lets you securely connect to a virtual machine using your browser or native SSH/RDP client on Windows workstations or the Azure portal.
+An Azure Bastion host is deployed inside an Azure Virtual Network and can access virtual machines in the virtual network (VNet), or virtual machines in peered VNets.
 
 Azure Bastion is a fully managed service that provides more secure and seamless Remote Desktop Protocol (RDP) and Secure Shell Protocol (SSH) access to virtual machines (VMs), without any exposure through public IP addresses.
 
@@ -24,7 +25,8 @@ Adding Azure Bastion in your configuration adds the following benefits:
 
 - Added resiliency (out of band remote access).
 - Negates the need for hybrid connectivity.
-- Provides an extra layer of control. It enables secure and seamless RDP/SSH connectivity to your VMs directly from the Azure portal or native client in preview over a secure TLS channel.
+- Provides an extra layer of control.
+  It enables secure and seamless RDP/SSH connectivity to your VMs directly from the Azure portal or native client in preview over a secure TLS channel.
 
 ## RECOMMENDATION
 
@@ -50,14 +52,17 @@ For example:
     "addressSpace": {
       "addressPrefixes": ["10.0.0.0/16"]
     },
-    "dhcpOptions": {
-      "dnsServers": ["10.0.1.4", "10.0.1.5"]
-    },
     "subnets": [
+      {
+        "name": "GatewaySubnet",
+        "properties": {
+          "addressPrefix": "10.0.0.0/27"
+        }
+      },
       {
         "name": "AzureBastionSubnet",
         "properties": {
-          "addressPrefix": "10.0.0.0/26"
+          "addressPrefix": "10.0.1.64/26"
         }
       }
     ]
@@ -77,7 +82,7 @@ For example:
   "type": "Microsoft.Network/virtualNetworks/subnets",
   "name": "[format('{0}/{1}', 'vnet-01', 'AzureBastionSubnet')]",
   "properties": {
-    "addressPrefix": "10.0.0.0/26"
+    "addressPrefix": "10.0.1.64/26"
   },
   "dependsOn": ["[resourceId('Microsoft.Network/virtualNetworks', 'vnet-02')]"]
 }
@@ -101,17 +106,17 @@ resource vnet 'Microsoft.Network/virtualNetworks@2022-01-01' = {
         '10.0.0.0/16'
       ]
     }
-    dhcpOptions: {
-      dnsServers: [
-        '10.0.1.4'
-        '10.0.1.5'
-      ]
-    }
     subnets: [
+      {
+        name: 'GatewaySubnet'
+        properties: {
+          addressPrefix: '10.0.0.0/27'
+        }
+      }
       {
         name: 'AzureBastionSubnet'
         properties: {
-          addressPrefix: '10.0.0.0/26'
+          addressPrefix: '10.0.1.64/26'
         }
       }
     ]
@@ -130,7 +135,7 @@ resource bastionSubnet 'Microsoft.Network/virtualNetworks/subnets@2022-01-01' = 
   name: 'AzureBastionSubnet'
   parent: vnet
   properties: {
-    addressPrefix: '10.0.0.0/26'
+    addressPrefix: '10.0.1.64/26'
   }
 }
 ```
@@ -140,5 +145,5 @@ resource bastionSubnet 'Microsoft.Network/virtualNetworks/subnets@2022-01-01' = 
 - [Best practices](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices)
 - [Plan for virtual machine remote access](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-virtual-machine-remote-access)
 - [Hub-spoke network topology in Azure](https://learn.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets)
+- [Azure VNET deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks)
+- [Azure subnet deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets)
