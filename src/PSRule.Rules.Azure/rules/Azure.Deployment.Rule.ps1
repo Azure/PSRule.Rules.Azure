@@ -70,30 +70,30 @@ Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000314' -Type 'Microsoft.Resources
     });
     Write-Host -Message "Secure parameters are: $($secureParameters -join ', ')";
 
-    foreach($deployments in $template.resources){
-        if($deployments.properties.expressionEvaluationOptions.scope -eq 'outer'){
-            Write-Host "Name $($Deployments.name)"
-            foreach ($outerDeployment in $deployments.properties.template.resources){
-                Write-Host "outerDeployment.properties: $($outerDeployment.properties)"
-                foreach ($property in $outerDeployment.properties){
-                    Write-Host "Property: $property"
-                    # if ($Property.GetType().Name-eq 'String'){
-                    #     Write-Host "String prop"
-                    #     CheckPropertyUsesSecureParameter -SecureParameters $secureParameters -Property $property
-                    # } else {
-                    #     Write-Host "Object prop"
-                    #     Write-Host "Type: $($Property.GetType)"
-                    #     foreach ($item in $property.value){
-                    #         CheckPropertyUsesSecureParameter -SecureParameters $secureParameters -Property $property
-                    #     } 
-                    # }
-                    
-                    
+    foreach ($deployments in $template.resources) {
+        if ($deployments.properties.expressionEvaluationOptions.scope -eq 'outer') {
+            foreach ($outerDeployment in $deployments.properties.template.resources) {
+                if ($outerDeployment.properties.psobject.properties.count -gt 0) {
+                    Write-Host "Name $($Deployments.name)"
+                    foreach ($property in $outerDeployment.properties) {
+                        Write-Host "Property: $property"
+                        if ($property.GetType().Name -eq "PSCustomObject") { 
+                            foreach($nestedProperty in $property.PSObject.Properties.Value.PSObject.Properties ){
+                                Write-Host "NestedProp: $nestedProperty"
+                                Write-Host "nestedprop value: $($nestedProperty.Value)"
+                                CheckPropertyUsesSecureParameter -SecureParameters $SecureParameters -Property $nestedProperty.Value
+                            } 
+                        }
+                        elseif ($property.GetType().Name -eq "String") {
+                            Write-Host "String: $property"
+                        }
+                    }
+                } else {
+                    $Assert.Pass()
                 }
+                
             }
-        } else {
-            $Assert.Pass()
-        }
+        } 
     }
     
 }
