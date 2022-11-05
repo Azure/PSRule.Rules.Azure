@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Front Door:
+    - Check front door uses caching by @bengeset96.
+    [#548](https://github.com/Azure/PSRule.Rules.Azure/issues/548)
+
 What's changed since v1.21.0:
 
 - New rules:
