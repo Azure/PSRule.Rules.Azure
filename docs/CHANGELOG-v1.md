@@ -26,7 +26,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - New rules:
   - API Management:
-    - Check api management instances limits control plane API calls to apim with version '2021-08-01' or newer by @bengeset96.
+    - Check api management instances limits control plane API calls to apim with version `'2021-08-01'` or newer by @bengeset96.
     [#1819](https://github.com/Azure/PSRule.Rules.Azure/issues/1819)
 
 ## v1.22.0-B0011 (pre-release)
