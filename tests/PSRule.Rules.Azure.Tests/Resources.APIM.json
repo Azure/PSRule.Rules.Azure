@@ -1353,7 +1353,6 @@
     "ResourceName": "apim-F",
     "Name": "apim-F",
     "Plan": null,
-    "apiVersion": "2021-04-01-preview",
     "Properties": {
       "publisherEmail": "email",
       "publisherName": "n/a",
@@ -1475,7 +1474,6 @@
     "ResourceName": "apim-G",
     "Name": "apim-G",
     "Plan": null,
-    "apiVersion": "2021-04-01-preview",
     "Properties": {
       "publisherEmail": "email",
       "publisherName": "n/a",
@@ -1813,8 +1811,11 @@
     "ResourceName": "apim-J",
     "Name": "apim-J",
     "Plan": null,
-    "apiVersion": "2021-08-01",
+    "apiVersion": "2021-12-01-preview",
     "Properties": {
+      "apiVersionConstraint": {
+        "minApiVersion": "2021-12-01-preview"
+      },
       "publisherEmail": "email",
       "publisherName": "n/a",
       "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
@@ -1921,8 +1922,11 @@
     "ResourceName": "apim-K",
     "Name": "apim-K",
     "Plan": null,
-    "apiVersion": "2021-08-01",
+    "apiVersion": "2021-12-01-preview",
     "Properties": {
+      "apiVersionConstraint": {
+        "minApiVersion": "2021-08-01"
+      },
       "publisherEmail": "email",
       "publisherName": "n/a",
       "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
@@ -2517,7 +2521,6 @@
     "ResourceName": "apim-P",
     "Name": "apim-P",
     "Plan": null,
-    "apiVersion": "2021-08-01",
     "Properties": {
       "publisherEmail": "email",
       "publisherName": "n/a",

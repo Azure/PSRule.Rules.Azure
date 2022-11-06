@@ -78,7 +78,7 @@
     LogAnalyticsAgentDeprecated = "The legacy Log Analytics Agent is deprecated and will be retired on August 31, 2024. Migrate to the Azure Monitor Agent."
     ClassicASEDeprecated = "The app service environment '{0}' with version '{1}' is deprecated and will be retired on August 31, 2024. Migrate to ASEv3."
     FrontDoorCachingDisabled = "The front door instance should have caching enabled for routing rules and rule sets to reduce retrieving contents from origins."
-    APIMVersionMin = "The api management instance with version '{0}' is less than '{1}'."
+    APIMApiVersionMin = "The api management instance with api version '{0}' is less than '{1}'."
     APIMApiVersionConstraintMinApiVersion = "The api management instance with minimum api version '{0}' is less than '{1}'."
     APIMApiVersionConstraintMinApiVersionNotFound = "The api management instance is missing minimum api version configuration."
 }

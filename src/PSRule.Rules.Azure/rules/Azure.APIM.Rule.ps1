@@ -245,12 +245,12 @@ Rule 'Azure.APIM.AvailabilityZone' -Ref 'AZR-000052' -Type 'Microsoft.ApiManagem
 } -Configure @{ AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
 # Synopsis: API Management instances should limit control plane API calls to API Management with version '2021-08-01' or newer.
-Rule 'Azure.APIM.MinAPIVersion' -Ref 'AZR-000322' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.APIM.MinAPIVersion' -Ref 'AZR-000321' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
     if ($TargetObject.apiVersion) {
         [datetime]$versionConfigured = $TargetObject.apiVersion -replace '-preview', ''
         [datetime]$minimumVersionExpected = $Configuration.AZURE_APIM_MIN_API_VERSION -replace '-preview', ''
 
-        $Assert.Create($versionConfigured -ge $minimumVersionExpected, $LocalizedData.APIMVersionMin, $TargetObject.apiVersion,
+        $Assert.Create($versionConfigured -ge $minimumVersionExpected, $LocalizedData.APIMApiVersionMin, $TargetObject.apiVersion,
         $Configuration.AZURE_APIM_MIN_API_VERSION).PathPrefix('apiVersion')
     }
     if ($TargetObject.properties.apiVersionConstraint.minApiVersion) {

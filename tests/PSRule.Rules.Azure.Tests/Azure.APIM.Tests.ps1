@@ -356,19 +356,19 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'apim-C', 'apim-F', 'apim-G', 'apim-H';
+            $ruleResult.Length | Should -Be 13;
+            $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-B', 'apim-C', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
 
-            $ruleResult[0].Reason | Should -BeExactly "The api management instance 'apim-C' with version '2021-04-01-preview' is deprecated and will be retired on September 30, 2023. Update to '2021-08-01' or newer.";
-            $ruleResult[1].Reason | Should -BeExactly "The api management instance 'apim-F' with version '2021-04-01-preview' is deprecated and will be retired on September 30, 2023. Update to '2021-08-01' or newer.";
-            $ruleResult[2].Reason | Should -BeExactly "The api management instance 'apim-G' with version '2021-04-01-preview' is deprecated and will be retired on September 30, 2023. Update to '2021-08-01' or newer.";
-            $ruleResult[3].Reason | Should -BeExactly "The api management instance 'apim-H' with version '2021-04-01-preview' is deprecated and will be retired on September 30, 2023. Update to '2021-08-01' or newer.";
+            $ruleResult[0].Reason | Should -BeExactly "The api management instance is missing minimum api version configuration.";
+            $ruleResult[1].Reason | Should -BeExactly "The api management instance is missing minimum api version configuration.";
+            $ruleResult[2].Reason | Should -BeExactly "The api management instance with minimum api version '2021-04-01-preview' is less than '2021-08-01'.";
+            $ruleResult[3].Reason | Should -BeIn "The api management instance with api version '2021-04-01-preview' is less than '2021-08-01'.", "The api management instance with minimum api version '2021-04-01-preview' is less than '2021-08-01'.";
             
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 12;
-            $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-B', 'apim-D', 'apim-E', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'apim-D', 'apim-J', 'apim-K';
         }
     }
 
