@@ -10,7 +10,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.M
 
 ## SYNOPSIS
 
-API Management instances with API versions prior to 2021-08-01 must update.
+API Management instances should limit control plane API calls to API Management with version '2021-08-01' or newer.
 
 ## DESCRIPTION
 
@@ -20,7 +20,7 @@ From now through 30 September 2023, you can continue to use the templates, tools
 
 ## RECOMMENDATION
 
-Update the API version to '2021-08-01' or newer.
+Limit control plane API calls to API Management with version '2021-08-01' or newer.
 
 ## EXAMPLES
 
@@ -28,7 +28,8 @@ Update the API version to '2021-08-01' or newer.
 
 To deploy API Management instances that pass this rule:
 
-- Set the `apiVersion` to `'2021-08-01'` or newer.
+- Set the `apiVersion` property to `'2021-08-01'` or newer.
+- Set the `properties.apiVersionConstraint.minApiVersion` property to `'2021-08-01'` or newer.
 
 For example:
 
@@ -39,8 +40,8 @@ For example:
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.11.1.770",
-      "templateHash": "15781462834380085690"
+      "version": "0.12.1.58429",
+      "templateHash": "7813449534341297254"
     }
   },
   "parameters": {
@@ -48,7 +49,14 @@ For example:
       "type": "string",
       "defaultValue": "[format('apiservice{0}', uniqueString(resourceGroup().id))]",
       "metadata": {
-        "description": "The name of the API Management service instance"
+        "description": "The name of the API Management service instance."
+      }
+    },
+    "minApiVersion": {
+      "type": "string",
+      "defaultValue": "2021-08-01",
+      "metadata": {
+        "description": "Limit control plane API calls to the API Management service with version equal to or newer than this value."
       }
     },
     "publisherEmail": {
@@ -56,7 +64,7 @@ For example:
       "defaultValue": "noreply@contoso.com",
       "minLength": 1,
       "metadata": {
-        "description": "The email address of the owner of the service"
+        "description": "The email address of the owner of the service."
       }
     },
     "publisherName": {
@@ -64,7 +72,7 @@ For example:
       "defaultValue": "Contoso",
       "minLength": 1,
       "metadata": {
-        "description": "The name of the owner of the service"
+        "description": "The name of the owner of the service."
       }
     },
     "sku": {
@@ -76,7 +84,7 @@ For example:
         "Premium"
       ],
       "metadata": {
-        "description": "The pricing tier of this API Management service"
+        "description": "The pricing tier of this API Management service."
       }
     },
     "skuCount": {
@@ -109,6 +117,9 @@ For example:
         "capacity": "[parameters('skuCount')]"
       },
       "properties": {
+        "apiVersionConstraint": {
+          "minApiVersion": "[parameters('minApiVersion')]"
+        },
         "publisherEmail": "[parameters('publisherEmail')]",
         "publisherName": "[parameters('publisherName')]"
       }
@@ -121,23 +132,27 @@ For example:
 
 To deploy API Management instances that pass this rule:
 
-- Set the `apiVersion` to `'2021-08-01'` or newer.
+- Set the `apiVersion` property to `'2021-08-01'` or newer.
+- Set the `properties.apiVersionConstraint.minApiVersion` property to `'2021-08-01'` or newer.
 
 For example:
 
 ```bicep
-@description('The name of the API Management service instance')
+@description('The name of the API Management service instance.')
 param apiManagementServiceName string = 'apiservice${uniqueString(resourceGroup().id)}'
 
-@description('The email address of the owner of the service')
+@description('Limit control plane API calls to the API Management service with version equal to or newer than this value.')
+param minApiVersion string = '2021-08-01'
+
+@description('The email address of the owner of the service.')
 @minLength(1)
 param publisherEmail string = 'noreply@contoso.com'
 
-@description('The name of the owner of the service')
+@description('The name of the owner of the service.')
 @minLength(1)
 param publisherName string = 'Contoso'
 
-@description('The pricing tier of this API Management service')
+@description('The pricing tier of this API Management service.')
 @allowed([
   'Developer'
   'Standard'
@@ -163,14 +178,39 @@ resource apiManagementService 'Microsoft.ApiManagement/service@2021-12-01-previe
     capacity: skuCount
   }
   properties: {
+    apiVersionConstraint: {
+      minApiVersion: minApiVersion
+    }
     publisherEmail: publisherEmail
     publisherName: publisherName
   }
 }
 ```
 
+## NOTES
+
+This rule fails:
+
+- When the `properties.apiVersionConstraint.minApiVersion` property is not configured.
+- When the `properties.apiVersionConstraint.minApiVersion` property value is less than the default value `2021-08-01` and no configuration option property value is set to overwrite the default value.
+- When the `properties.apiVersionConstraint.minApiVersion` property value is less than the configuration option property value specified.
+
+**Important** Currently, depending on how you delete an API Management instance, the instance is either soft-deleted and recoverable during a retention period, or it's permanently deleted:
+
+- When you use the Azure portal or REST API version 2020-06-01-preview or later to delete an API Management instance, it's soft-deleted.
+- An API Management instance deleted using a REST API version before 2020-06-01-preview is permanently deleted.
+
+Configure `AZURE_APIM_MIN_API_VERSION` to set the minimum API version used for control plane API calls to the API Management instance.
+
+```yaml
+# YAML: The default AZURE_APIM_MIN_API_VERSION configuration option
+configuration:
+  AZURE_APIM_MIN_API_VERSION: '2021-08-01'
+```
+
 ## LINKS
 
 - [Infrastructure provisioning](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Azure API Management API version retirements](https://learn.microsoft.com/azure/api-management/breaking-changes/api-version-retirement-sep-2023)
+- [Azure API Management soft-delete REST API versions behaviour](https://learn.microsoft.com/azure/api-management/soft-delete)
 - [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)
