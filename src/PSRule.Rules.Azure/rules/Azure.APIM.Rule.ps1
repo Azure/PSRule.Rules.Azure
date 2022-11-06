@@ -250,7 +250,7 @@ Rule 'Azure.APIM.MinAPIVersion' -Ref 'AZR-000322' -Type 'Microsoft.ApiManagement
         [datetime]$versionConfigured = $TargetObject.apiVersion -replace '-preview', ''
         [datetime]$minimumVersionExpected = $Configuration.AZURE_APIM_MIN_API_VERSION -replace '-preview', ''
 
-        $Assert.Create($versionConfigured -ge $minimumVersionExpected, $LocalizedData.APIMVersionMin, $TargetObject.apiVersion, 
+        $Assert.Create($versionConfigured -ge $minimumVersionExpected, $LocalizedData.APIMVersionMin, $TargetObject.apiVersion,
         $Configuration.AZURE_APIM_MIN_API_VERSION).PathPrefix('apiVersion')
     }
     if ($TargetObject.properties.apiVersionConstraint.minApiVersion) {
