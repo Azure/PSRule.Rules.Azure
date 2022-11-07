@@ -212,8 +212,12 @@
         }
       ],
       "dnsSettings": {
-        "dnsServers": ["8.8.8.8"],
-        "appliedDnsServers": ["8.8.8.8"],
+        "dnsServers": [
+          "8.8.8.8"
+        ],
+        "appliedDnsServers": [
+          "8.8.8.8"
+        ],
         "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
       },
       "macAddress": "00-00-00-00-00-00",
@@ -283,6 +287,7 @@
           "provisionVMAgent": true,
           "enableAutomaticUpdates": true
         },
+        "linuxConfiguration": null,
         "secrets": [],
         "allowExtensionOperations": true
       },
@@ -330,8 +335,12 @@
             }
           ],
           "dnsSettings": {
-            "dnsServers": ["8.8.8.8"],
-            "appliedDnsServers": ["8.8.8.8"],
+            "dnsServers": [
+              "8.8.8.8"
+            ],
+            "appliedDnsServers": [
+              "8.8.8.8"
+            ],
             "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
           },
           "macAddress": "00-00-00-00-00-00",
@@ -472,8 +481,12 @@
             }
           ],
           "dnsSettings": {
-            "dnsServers": ["8.8.8.8"],
-            "appliedDnsServers": ["8.8.8.8"],
+            "dnsServers": [
+              "8.8.8.8"
+            ],
+            "appliedDnsServers": [
+              "8.8.8.8"
+            ],
             "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
           },
           "macAddress": "00-00-00-00-00-00",
@@ -1345,8 +1358,12 @@
         }
       ],
       "dnsSettings": {
-        "dnsServers": ["8.8.8.8"],
-        "appliedDnsServers": ["8.8.8.8"],
+        "dnsServers": [
+          "8.8.8.8"
+        ],
+        "appliedDnsServers": [
+          "8.8.8.8"
+        ],
         "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
       },
       "macAddress": "00-00-00-00-00-00",
@@ -1393,8 +1410,12 @@
         }
       ],
       "dnsSettings": {
-        "dnsServers": ["8.8.8.8"],
-        "appliedDnsServers": ["8.8.8.8"],
+        "dnsServers": [
+          "8.8.8.8"
+        ],
+        "appliedDnsServers": [
+          "8.8.8.8"
+        ],
         "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
       },
       "macAddress": "00-00-00-00-00-00",
@@ -1587,7 +1608,9 @@
             "privateLinkConnectionProperties": {
               "groupId": "redisCache",
               "requiredMemberName": "redisCache",
-              "fqdns": ["redis-001.redis.cache.windows.net"]
+              "fqdns": [
+                "redis-001.redis.cache.windows.net"
+              ]
             }
           }
         }
@@ -1634,7 +1657,9 @@
           "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001/privateLinkServiceConnections/pec-001",
           "properties": {
             "privateLinkServiceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-001",
-            "groupIds": ["redisCache"],
+            "groupIds": [
+              "redisCache"
+            ],
             "privateLinkServiceConnectionState": {
               "status": "Approved",
               "description": "Auto-Approved",

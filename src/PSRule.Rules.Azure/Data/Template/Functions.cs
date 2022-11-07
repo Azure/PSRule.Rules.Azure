@@ -319,6 +319,12 @@ namespace PSRule.Rules.Azure.Data.Template
             return new JObject(properties);
         }
 
+        /// <summary>
+        /// first(arg1)
+        /// </summary>
+        /// <remarks>
+        /// https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#first
+        /// </remarks>
         internal static object First(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
@@ -328,6 +334,8 @@ namespace PSRule.Rules.Azure.Data.Template
                 return avalue.GetValue(0);
             else if (args[0] is JArray jArray)
                 return jArray[0];
+            else if (args[0] is IMock mock)
+                return mock.TryGetIndex(0, out var mvalue) ? mvalue : mock;
             else if (ExpressionHelpers.TryString(args[0], out var svalue))
                 return new string(svalue[0], 1);
 
@@ -448,6 +456,12 @@ namespace PSRule.Rules.Azure.Data.Template
             return CountArgs(args) > 0 ? throw ArgumentsOutOfRange(nameof(Null), args) : (object)null;
         }
 
+        /// <summary>
+        /// last(arg1)
+        /// </summary>
+        /// <remarks>
+        /// https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#last
+        /// </remarks>
         internal static object Last(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
@@ -457,6 +471,8 @@ namespace PSRule.Rules.Azure.Data.Template
                 return avalue.GetValue(avalue.Length - 1);
             else if (args[0] is JArray jArray)
                 return jArray[jArray.Count - 1];
+            else if (args[0] is IMock mock)
+                return mock.TryGetIndex(0, out var mvalue) ? mvalue : mock;
             else if (ExpressionHelpers.TryString(args[0], out var svalue))
                 return new string(svalue[svalue.Length - 1], 1);
 

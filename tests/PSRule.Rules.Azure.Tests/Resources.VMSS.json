@@ -532,6 +532,7 @@
             "enableAutomaticUpdates": true,
             "enableVMAgentPlatformUpdates": true
           },
+          "linuxConfiguration": null,
           "secrets": [],
           "allowExtensionOperations": true,
           "requireGuestProvisionSignal": true

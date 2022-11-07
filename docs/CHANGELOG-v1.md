@@ -33,6 +33,11 @@ What's changed since pre-release v1.22.0-B0011:
 - Engineering:
   - Bump Az.Resources to v6.4.0.
     [#1829](https://github.com/Azure/PSRule.Rules.Azure/pull/1829)
+- Bug fixes:
+  - Fixed non-Linux VM images flagged as Linux by @BernieWhite.
+    [#1825](https://github.com/Azure/PSRule.Rules.Azure/issues/1825)
+  - Fixed failed to expand with last function on runtime property by @BernieWhite.
+    [#1830](https://github.com/Azure/PSRule.Rules.Azure/issues/1830)
 
 ## v1.22.0-B0011 (pre-release)
 
@@ -48,6 +53,16 @@ What's changed since v1.21.0:
   - Virtual Network:
     - Check VNETs with a GatewaySubnet also has an AzureFirewallSubnet by @BernieWhite.
       [#875](https://github.com/Azure/PSRule.Rules.Azure/issues/875)
+
+## v1.21.2
+
+What's changed since v1.21.1:
+
+- Bug fixes:
+  - Fixed non-Linux VM images flagged as Linux by @BernieWhite.
+    [#1825](https://github.com/Azure/PSRule.Rules.Azure/issues/1825)
+  - Fixed failed to expand with last function on runtime property by @BernieWhite.
+    [#1830](https://github.com/Azure/PSRule.Rules.Azure/issues/1830)
 
 ## v1.21.1
 
