@@ -137,7 +137,7 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'server-B', 'server-B';
+            $ruleResult.TargetName | Should -BeIn 'server-B', 'server-C';
         }
 
         It 'Azure.MySQL.GeoRedundantBackup' {
