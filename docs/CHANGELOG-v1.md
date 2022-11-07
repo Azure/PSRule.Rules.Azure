@@ -24,10 +24,15 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.22.0-B0011:
+
 - New rules:
   - API Management:
     - Check api management instances limits control plane API calls to apim with version `'2021-08-01'` or newer by @bengeset96.
-    [#1819](https://github.com/Azure/PSRule.Rules.Azure/issues/1819)
+      [#1819](https://github.com/Azure/PSRule.Rules.Azure/issues/1819)
+- Engineering:
+  - Bump Az.Resources to v6.4.0.
+    [#1829](https://github.com/Azure/PSRule.Rules.Azure/pull/1829)
 
 ## v1.22.0-B0011 (pre-release)
 
