@@ -32,11 +32,11 @@ Rule 'Azure.APIM.APIDescriptors' -Ref 'AZR-000043' -Level Warning -Type 'Microso
     }
     foreach ($api in $apis) {
         $Assert.
-            HasFieldValue($api, 'Properties.displayName').
-            Reason($LocalizedData.APIMDescriptors, 'API', $api.name, 'displayName');
+        HasFieldValue($api, 'Properties.displayName').
+        Reason($LocalizedData.APIMDescriptors, 'API', $api.name, 'displayName');
         $Assert.
-            HasFieldValue($api, 'Properties.description').
-            Reason($LocalizedData.APIMDescriptors, 'API', $api.name, 'description');
+        HasFieldValue($api, 'Properties.description').
+        Reason($LocalizedData.APIMDescriptors, 'API', $api.name, 'description');
     }
 }
 
@@ -47,11 +47,11 @@ Rule 'Azure.APIM.HTTPBackend' -Ref 'AZR-000044' -Type 'Microsoft.ApiManagement/s
 
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $backends = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/backends' | Where-Object {
-            $Assert.HasField($_, 'properties.url').Result
-        });
+                $Assert.HasField($_, 'properties.url').Result
+            });
         $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis' | Where-Object {
-            $Assert.HasField($_, 'properties.serviceUrl').Result
-        });
+                $Assert.HasField($_, 'properties.serviceUrl').Result
+            });
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/apis') {
         if ($Assert.HasField($TargetObject, 'properties.serviceUrl').Result) {
@@ -69,13 +69,13 @@ Rule 'Azure.APIM.HTTPBackend' -Ref 'AZR-000044' -Type 'Microsoft.ApiManagement/s
     }
     foreach ($backend in $backends) {
         $Assert.
-            NotStartsWith($backend, 'properties.url', 'http://').
-            Reason($LocalizedData.BackendUrlNotHttps, $backend.name);
+        NotStartsWith($backend, 'properties.url', 'http://').
+        Reason($LocalizedData.BackendUrlNotHttps, $backend.name);
     }
     foreach ($api in $apis) {
         $Assert.
-            NotStartsWith($api, 'properties.serviceUrl', 'http://').
-            Reason($LocalizedData.ServiceUrlNotHttps, $api.name);
+        NotStartsWith($api, 'properties.serviceUrl', 'http://').
+        Reason($LocalizedData.ServiceUrlNotHttps, $api.name);
     }
 }
 
@@ -90,8 +90,8 @@ Rule 'Azure.APIM.EncryptValues' -Ref 'AZR-000045' -Type 'Microsoft.ApiManagement
     }
     foreach ($property in $properties) {
         $Assert.
-            HasFieldValue($property, 'properties.secret', $True).
-            WithReason(($LocalizedData.APIMSecretNamedValues -f $property.name), $True);
+        HasFieldValue($property, 'properties.secret', $True).
+        WithReason(($LocalizedData.APIMSecretNamedValues -f $property.name), $True);
     }
 }
 
@@ -106,8 +106,8 @@ Rule 'Azure.APIM.ProductSubscription' -Ref 'AZR-000046' -Type 'Microsoft.ApiMana
     }
     foreach ($product in $products) {
         $Assert.
-            HasFieldValue($product, 'Properties.subscriptionRequired', $True).
-            WithReason(($LocalizedData.APIMProductSubscription -f $product.Name), $True);
+        HasFieldValue($product, 'Properties.subscriptionRequired', $True).
+        WithReason(($LocalizedData.APIMProductSubscription -f $product.Name), $True);
     }
 }
 
@@ -122,8 +122,8 @@ Rule 'Azure.APIM.ProductApproval' -Ref 'AZR-000047' -Type 'Microsoft.ApiManageme
     }
     foreach ($product in $products) {
         $Assert.
-            HasFieldValue($product, 'Properties.approvalRequired', $True).
-            WithReason(($LocalizedData.APIMProductApproval -f $product.Name), $True);
+        HasFieldValue($product, 'Properties.approvalRequired', $True).
+        WithReason(($LocalizedData.APIMProductApproval -f $product.Name), $True);
     }
 }
 
@@ -152,11 +152,11 @@ Rule 'Azure.APIM.ProductDescriptors' -Ref 'AZR-000049' -Level Warning -Type 'Mic
     }
     foreach ($product in $products) {
         $Assert.
-            HasFieldValue($product, 'Properties.displayName').
-            WithReason(($LocalizedData.APIMDescriptors -f 'product', $product.name, 'displayName'), $True);
+        HasFieldValue($product, 'Properties.displayName').
+        WithReason(($LocalizedData.APIMDescriptors -f 'product', $product.name, 'displayName'), $True);
         $Assert.
-            HasFieldValue($product, 'Properties.description').
-            WithReason(($LocalizedData.APIMDescriptors -f 'product', $product.name, 'description'), $True);
+        HasFieldValue($product, 'Properties.description').
+        WithReason(($LocalizedData.APIMDescriptors -f 'product', $product.name, 'description'), $True);
     }
 }
 
@@ -171,24 +171,24 @@ Rule 'Azure.APIM.ProductTerms' -Ref 'AZR-000050' -Type 'Microsoft.ApiManagement/
     }
     foreach ($product in $products) {
         $Assert.
-            HasFieldValue($product, 'Properties.terms').
-            WithReason(($LocalizedData.APIMProductTerms -f $product.name), $True);
+        HasFieldValue($product, 'Properties.terms').
+        WithReason(($LocalizedData.APIMProductTerms -f $product.name), $True);
     }
 }
 
 # Synopsis: Renew expired certificates
 Rule 'Azure.APIM.CertificateExpiry' -Ref 'AZR-000051' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'DP-7' } {
     $configurations = @($TargetObject.Properties.hostnameConfigurations | Where-Object {
-        $Null -ne $_.certificate
-    })
+            $Null -ne $_.certificate
+        })
     if ($configurations.Length -eq 0) {
         return $Assert.Pass();
     }
     foreach ($configuration in $configurations) {
         $remaining = ($configuration.certificate.expiry - [DateTime]::Now).Days;
         $Assert.
-            GreaterOrEqual($remaining, '.', $Configuration.Azure_MinimumCertificateLifetime).
-            WithReason(($LocalizedData.APIMCertificateExpiry -f $configuration.hostName, $configuration.certificate.expiry.ToString('yyyy/MM/dd')), $True);
+        GreaterOrEqual($remaining, '.', $Configuration.Azure_MinimumCertificateLifetime).
+        WithReason(($LocalizedData.APIMCertificateExpiry -f $configuration.hostName, $configuration.certificate.expiry.ToString('yyyy/MM/dd')), $True);
     }
 } -Configure @{ Azure_MinimumCertificateLifetime = 30 }
 
@@ -243,6 +243,28 @@ Rule 'Azure.APIM.AvailabilityZone' -Ref 'AZR-000052' -Type 'Microsoft.ApiManagem
         }
     }
 } -Configure @{ AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
+
+# Synopsis: API Management instances should limit control plane API calls to API Management with version '2021-08-01' or newer.
+Rule 'Azure.APIM.MinAPIVersion' -Ref 'AZR-000321' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    if ($TargetObject.apiVersion) {
+        [datetime]$versionConfigured = $TargetObject.apiVersion -replace '-preview', ''
+        [datetime]$minimumVersionExpected = $Configuration.AZURE_APIM_MIN_API_VERSION -replace '-preview', ''
+
+        $Assert.Create($versionConfigured -ge $minimumVersionExpected, $LocalizedData.APIMApiVersionMin, $TargetObject.apiVersion,
+        $Configuration.AZURE_APIM_MIN_API_VERSION).PathPrefix('apiVersion')
+    }
+    if ($TargetObject.properties.apiVersionConstraint.minApiVersion) {
+        [datetime]$minApiVersionConfigured = $TargetObject.properties.apiVersionConstraint.minApiVersion -replace '-preview', ''
+        [datetime]$minApiVersionExpected = $Configuration.AZURE_APIM_MIN_API_VERSION -replace '-preview', ''
+
+        $Assert.Create($minApiVersionConfigured -ge $minApiVersionExpected, $LocalizedData.APIMApiVersionConstraintMinApiVersion,
+        $TargetObject.properties.apiVersionConstraint.minApiVersion, $Configuration.AZURE_APIM_MIN_API_VERSION).
+        PathPrefix('properties.apiVersionConstraint.minApiVersion')
+    }
+    else {
+        $Assert.Fail().Reason($LocalizedData.APIMApiVersionConstraintMinApiVersionNotFound)
+    }
+} -Configure @{ AZURE_APIM_MIN_API_VERSION = '2021-08-01' }
 
 #region Helper functions
 
