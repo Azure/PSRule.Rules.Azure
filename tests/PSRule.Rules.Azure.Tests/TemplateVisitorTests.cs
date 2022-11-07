@@ -642,9 +642,16 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
-        public void aa()
+        public void NestedParameterValueLoops()
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.11.json"), null);
+            Assert.NotNull(resources);
+        }
+
+        [Fact]
+        public void SplitLastRuntimeProperties()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.12.json"), null);
             Assert.NotNull(resources);
         }
 
