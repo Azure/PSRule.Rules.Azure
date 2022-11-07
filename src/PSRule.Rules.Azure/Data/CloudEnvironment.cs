@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 
 using Newtonsoft.Json;
-using static System.Net.WebRequestMethods;
 
 namespace PSRule.Rules.Azure.Data
 {

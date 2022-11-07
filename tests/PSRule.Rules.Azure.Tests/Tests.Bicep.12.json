@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.12.1.58429",
+      "templateHash": "47057801879936824"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "moduleName",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "keyName": {
+            "value": "vault1/key1"
+          },
+          "keyVersion": {
+            "value": "[last(split(reference(resourceId('Microsoft.KeyVault/vaults/keys', split('vault1/key1', '/')[0], split('vault1/key1', '/')[1]), '2022-07-01').keyUriWithVersion, '/'))]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.12.1.58429",
+              "templateHash": "13628866652143049380"
+            }
+          },
+          "parameters": {
+            "keyName": {
+              "type": "string"
+            },
+            "keyVersion": {
+              "type": "string"
+            }
+          },
+          "resources": []
+        }
+      }
+    }
+  ]
+}
