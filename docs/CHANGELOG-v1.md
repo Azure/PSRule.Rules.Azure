@@ -29,6 +29,8 @@ What's changed since v1.21.1:
 - Bug fixes:
   - Fixed non-Linux VM images flagged as Linux by @BernieWhite.
     [#1825](https://github.com/Azure/PSRule.Rules.Azure/issues/1825)
+  - Fixed failed to expand with last function on runtime property by @BernieWhite.
+    [#1830](https://github.com/Azure/PSRule.Rules.Azure/issues/1830)
 
 ## v1.21.1
 
