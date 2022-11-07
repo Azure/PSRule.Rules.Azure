@@ -35,96 +35,19 @@ For example:
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "metadata": {
-    "_generator": {
-      "name": "bicep",
-      "version": "0.12.1.58429",
-      "templateHash": "7813449534341297254"
-    }
+  "type": "Microsoft.ApiManagement/service",
+  "apiVersion": "2021-12-01-preview",
+  "name": "[parameters('apiManagementServiceName')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "[parameters('sku')]",
+    "capacity": "[parameters('skuCount')]"
   },
-  "parameters": {
-    "apiManagementServiceName": {
-      "type": "string",
-      "defaultValue": "[format('apiservice{0}', uniqueString(resourceGroup().id))]",
-      "metadata": {
-        "description": "The name of the API Management service instance."
-      }
-    },
-    "minApiVersion": {
-      "type": "string",
-      "defaultValue": "2021-08-01",
-      "metadata": {
-        "description": "Limit control plane API calls to the API Management service with version equal to or newer than this value."
-      }
-    },
-    "publisherEmail": {
-      "type": "string",
-      "defaultValue": "noreply@contoso.com",
-      "minLength": 1,
-      "metadata": {
-        "description": "The email address of the owner of the service."
-      }
-    },
-    "publisherName": {
-      "type": "string",
-      "defaultValue": "Contoso",
-      "minLength": 1,
-      "metadata": {
-        "description": "The name of the owner of the service."
-      }
-    },
-    "sku": {
-      "type": "string",
-      "defaultValue": "Developer",
-      "allowedValues": [
-        "Developer",
-        "Standard",
-        "Premium"
-      ],
-      "metadata": {
-        "description": "The pricing tier of this API Management service."
-      }
-    },
-    "skuCount": {
-      "type": "int",
-      "defaultValue": 1,
-      "allowedValues": [
-        1,
-        2
-      ],
-      "metadata": {
-        "description": "The instance size of this API Management service."
-      }
-    },
-    "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-        "description": "Location for all resources."
-      }
+  "properties": {
+    "apiVersionConstraint": {
+      "minApiVersion": "2021-08-01"
     }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.ApiManagement/service",
-      "apiVersion": "2021-12-01-preview",
-      "name": "[parameters('apiManagementServiceName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "[parameters('sku')]",
-        "capacity": "[parameters('skuCount')]"
-      },
-      "properties": {
-        "apiVersionConstraint": {
-          "minApiVersion": "[parameters('minApiVersion')]"
-        },
-        "publisherEmail": "[parameters('publisherEmail')]",
-        "publisherName": "[parameters('publisherName')]"
-      }
-    }
-  ]
+  }
 }
 ```
 
@@ -138,38 +61,6 @@ To deploy API Management instances that pass this rule:
 For example:
 
 ```bicep
-@description('The name of the API Management service instance.')
-param apiManagementServiceName string = 'apiservice${uniqueString(resourceGroup().id)}'
-
-@description('Limit control plane API calls to the API Management service with version equal to or newer than this value.')
-param minApiVersion string = '2021-08-01'
-
-@description('The email address of the owner of the service.')
-@minLength(1)
-param publisherEmail string = 'noreply@contoso.com'
-
-@description('The name of the owner of the service.')
-@minLength(1)
-param publisherName string = 'Contoso'
-
-@description('The pricing tier of this API Management service.')
-@allowed([
-  'Developer'
-  'Standard'
-  'Premium'
-])
-param sku string = 'Developer'
-
-@description('The instance size of this API Management service.')
-@allowed([
-  1
-  2
-])
-param skuCount int = 1
-
-@description('Location for all resources.')
-param location string = resourceGroup().location
-
 resource apiManagementService 'Microsoft.ApiManagement/service@2021-12-01-preview' = {
   name: apiManagementServiceName
   location: location
@@ -179,10 +70,8 @@ resource apiManagementService 'Microsoft.ApiManagement/service@2021-12-01-previe
   }
   properties: {
     apiVersionConstraint: {
-      minApiVersion: minApiVersion
+      minApiVersion: '2021-08-01'
     }
-    publisherEmail: publisherEmail
-    publisherName: publisherName
   }
 }
 ```

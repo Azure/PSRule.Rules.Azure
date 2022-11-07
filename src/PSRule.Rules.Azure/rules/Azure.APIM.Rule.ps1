@@ -259,7 +259,7 @@ Rule 'Azure.APIM.MinAPIVersion' -Ref 'AZR-000321' -Type 'Microsoft.ApiManagement
 
         $Assert.Create($minApiVersionConfigured -ge $minApiVersionExpected, $LocalizedData.APIMApiVersionConstraintMinApiVersion,
         $TargetObject.properties.apiVersionConstraint.minApiVersion, $Configuration.AZURE_APIM_MIN_API_VERSION).
-        PathPrefix('apiVersionConstraint.minApiVersion')
+        PathPrefix('properties.apiVersionConstraint.minApiVersion')
     }
     else {
         $Assert.Fail().Reason($LocalizedData.APIMApiVersionConstraintMinApiVersionNotFound)
