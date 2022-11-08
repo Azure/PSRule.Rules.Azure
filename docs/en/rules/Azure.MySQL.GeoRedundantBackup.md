@@ -40,7 +40,7 @@ For example:
   "location": "[parameters('location')]",
   "sku": {
     "name": "[parameters('skuName')]",
-    "tier": "[parameters('SkuTier')]",
+    "tier": "GeneralPurpose",
     "capacity": "[parameters('skuCapacity')]",
     "size": "[format('{0}', parameters('SkuSizeMB'))]",
     "family": "[parameters('skuFamily')]"
@@ -73,7 +73,7 @@ resource mysqlDbServer 'Microsoft.DBforMySQL/servers@2017-12-01' = {
   location: location
   sku: {
     name: skuName
-    tier: SkuTier
+    tier: 'GeneralPurpose'
     capacity: skuCapacity
     size: '${SkuSizeMB}'
     family: skuFamily
@@ -91,6 +91,10 @@ resource mysqlDbServer 'Microsoft.DBforMySQL/servers@2017-12-01' = {
   }
 }
 ```
+
+## NOTES
+
+This rule is only applicable for Azure Database for MySQL servers with `'General Purpose'` and `'Memory Optimized'` tiers. The `'Basic'` tier does not support geo-redundant backup storage.
 
 ## LINKS
 

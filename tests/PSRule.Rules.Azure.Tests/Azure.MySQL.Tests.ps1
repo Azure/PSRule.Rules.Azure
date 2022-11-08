@@ -122,24 +122,6 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             $ruleResult.TargetName | Should -BeIn 'server-A', 'server-C';
         }
 
-        It 'Azure.MySQL.Backup' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.Backup' };
-            
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'server-A';
-
-            $ruleResult[0].Reason | Should -BeExactly "The azure database for MySQL 'server-A' should have backup configured.";
-                  
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'server-B', 'server-C';
-        }
-
         It 'Azure.MySQL.GeoRedundantBackup' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.GeoRedundantBackup' };
             
