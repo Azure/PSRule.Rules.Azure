@@ -94,7 +94,9 @@ resource mysqlDbServer 'Microsoft.DBforMySQL/servers@2017-12-01' = {
 
 ## NOTES
 
-This rule is only applicable for Azure Database for MySQL servers with `'General Purpose'` and `'Memory Optimized'` tiers. The `'Basic'` tier does not support geo-redundant backup storage.
+This rule is only applicable for Azure Database for MySQL servers deployed in the Single Server deployment model with `'General Purpose'` and `'Memory Optimized'` tiers. The `'Basic'` tier does not support geo-redundant backup storage.
+
+Currently this rule does not run against Azure Database for MySQL using the Flexible Server deployment model.
 
 ## LINKS
 

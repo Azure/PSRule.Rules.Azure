@@ -131,8 +131,8 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
 
-            $ruleResult[0].Reason | Should -BeExactly "The azure database for MySQL 'server-B' should have geo-redundant backup configured.";
-            $ruleResult[1].Reason | Should -BeExactly "The azure database for MySQL 'server-A' should have geo-redundant backup configured.";
+            $ruleResult[0].Reason | Should -BeExactly "The Azure Database for MySQL 'server-B' should have geo-redundant backup configured.";
+            $ruleResult[1].Reason | Should -BeExactly "The Azure Database for MySQL 'server-A' should have geo-redundant backup configured.";
            
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
