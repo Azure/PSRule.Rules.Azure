@@ -540,6 +540,28 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-C';
         }
+
+        It 'Azure.VM.SQLServerDisk' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.SQLServerDisk' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'vm-E';
+
+            $ruleResult[0].Reason | Should -BeExactly "The virtual machine 'vm-A' used for running SQL Server should use Premium disks or greater.";
+            $ruleResult[1].Reason | Should -BeExactly "The virtual machine 'vm-B' used for running SQL Server should use Premium disks or greater.";
+            $ruleResult[2].Reason | Should -BeExactly "The virtual machine 'vm-E' used for running SQL Server should use Premium disks or greater.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vm-F';
+        }
     }
 
     Context 'Resource name - Azure.VM.Name' {
