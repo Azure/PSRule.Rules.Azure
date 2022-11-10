@@ -25,8 +25,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+  - Virtual Machine:
+    - Check virtual machines running SQL Server uses Premium disks or above by @bengeset96.
+      [#9](https://github.com/Azure/PSRule.Rules.Azure/issues/9)
   - Azure Database for MySQL:
-    -  Check Azure Database for MySQL servers have geo-redundant backup configured by @bengeset96.
+    - Check Azure Database for MySQL servers have geo-redundant backup configured by @bengeset96.
       [#284](https://github.com/Azure/PSRule.Rules.Azure/issues/284)
 
 ## v1.22.0-B0026 (pre-release)
