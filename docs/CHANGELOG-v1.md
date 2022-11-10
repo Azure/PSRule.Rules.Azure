@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Database for MySQL:
+    -  Check Azure Database for MySQL servers have geo-redundant backup configured by @bengeset96.
+      [#284](https://github.com/Azure/PSRule.Rules.Azure/issues/284)
+
 ## v1.22.0-B0026 (pre-release)
 
 What's changed since pre-release v1.22.0-B0011:

@@ -81,4 +81,5 @@
     APIMApiVersionMin = "The api management instance with api version '{0}' is less than '{1}'."
     APIMApiVersionConstraintMinApiVersion = "The api management instance with minimum api version '{0}' is less than '{1}'."
     APIMApiVersionConstraintMinApiVersionNotFound = "The api management instance is missing minimum api version configuration."
+    MySQLGeoRedundantBackupNotConfigured = "The Azure Database for MySQL '{0}' should have geo-redundant backup configured."
 }
