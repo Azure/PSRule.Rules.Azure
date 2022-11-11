@@ -16,7 +16,7 @@ Azure Database for MySQL should store backups in a geo-redundant storage.
 
 Geo-redundant backup helps to protect your Azure Database for MySQL Servers against outages impacting backup storage in the primary region and allows you to restore your server to the geo-paired region in the event of a disaster.
 
-When the backups are stored in geo-redundant backup storage, they are not only stored within the region in which your server is hosted, but are also replicated to a paired data center. Both the Azure Database for MySQL Flexible Servers and the Azure Database for MySQL Single Servers deployment model supports geo-redundant backup.
+When the backups are stored in geo-redundant backup storage, they are not only stored within the region in which your server is hosted, but are also replicated to a paired data center. Both the Azure Database for MySQL Flexible Server and the Azure Database for MySQL Single Server deployment model supports geo-redundant backup.
 
 For the flexible deployment model the geo-redundant backup is supported for all tiers, but for the single deployment model either `General Purpose` or `Memory Optimized` tier is required.
 
