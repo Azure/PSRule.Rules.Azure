@@ -248,7 +248,7 @@ Rule 'Azure.VM.MigrateAMA' -Ref 'AZR-000317' -Type 'Microsoft.Compute/virtualMac
 # Synopsis: Use Premium SSD disks or greater for data and log files for production SQL Server workloads.
 Rule 'Azure.VM.SQLServerDisk' -Ref 'AZR-000324' -Type 'Microsoft.Compute/virtualMachines' -If { HasPublisherMicrosoftSQLServer } -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
     $disks = @(GetOSAndDataDisks)
-    $Assert.Less($disks, '.', 1).Reason($LocalizedData.SQLServerVMDisks, $PSRule.TargetName).
+    $Assert.Less($disks, '.', 1).Reason($LocalizedData.SQLServerVMDisks).
     PathPrefix('properties.storageProfile')
 }
 

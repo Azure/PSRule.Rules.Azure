@@ -28,8 +28,8 @@ Configure Premium SSD disks or greater for data and log files for production SQL
 
 To deploy Virtual Machines that pass this rule:
 
-- Set the `properties.storageProfile.osDisk.managedDisk.storageAccountType` property to `'Premium_LRS'` or greater.
-- Set the `properties.storageProfile.dataDisks.managedDisk.storageAccountType` property to `'Premium_LRS'` or greater.
+- Set the `properties.storageProfile.osDisk.managedDisk.storageAccountType` property to `Premium_LRS` or greater.
+- Configure each data disk included in `properties.storageProfile.dataDisks` to use `Premium_LRS` or greater by setting the property `managedDisk.storageAccountType`.
 
 For example:
 
@@ -97,8 +97,8 @@ For example:
 
 To deploy Virtual Machines that pass this rule:
 
-- Set the `properties.storageProfile.osDisk.managedDisk.storageAccountType` property to `'Premium_LRS'` or greater.
-- Set the `properties.storageProfile.dataDisks.managedDisk.storageAccountType` property to `'Premium_LRS'` or greater.
+- Set the `properties.storageProfile.osDisk.managedDisk.storageAccountType` property to `Premium_LRS` or greater.
+- Configure each data disk included in `properties.storageProfile.dataDisks` to use `Premium_LRS` or greater by setting the property `managedDisk.storageAccountType`.
 
 For example:
 
