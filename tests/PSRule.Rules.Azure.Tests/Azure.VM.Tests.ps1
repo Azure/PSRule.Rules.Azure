@@ -552,9 +552,9 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'vm-E';
 
-            $ruleResult[0].Reason | Should -BeExactly "The virtual machine 'vm-A' used for running SQL Server should use Premium disks or greater.";
-            $ruleResult[1].Reason | Should -BeExactly "The virtual machine 'vm-B' used for running SQL Server should use Premium disks or greater.";
-            $ruleResult[2].Reason | Should -BeExactly "The virtual machine 'vm-E' used for running SQL Server should use Premium disks or greater.";
+            $ruleResult[0].Reason | Should -BeExactly "The virtual machine used for running SQL Server should use Premium disks or greater.";
+            $ruleResult[1].Reason | Should -BeExactly "The virtual machine used for running SQL Server should use Premium disks or greater.";
+            $ruleResult[2].Reason | Should -BeExactly "The virtual machine used for running SQL Server should use Premium disks or greater.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
