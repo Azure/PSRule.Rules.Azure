@@ -9,16 +9,16 @@
 Rule 'Azure.MySQL.FirewallRuleCount' -Ref 'AZR-000133' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/servers/firewallRules');
     $Assert.
-        LessOrEqual($firewallRules, '.', 10).
-        WithReason(($LocalizedData.DBServerFirewallRuleCount -f $firewallRules.Length, 10), $True);
+    LessOrEqual($firewallRules, '.', 10).
+    WithReason(($LocalizedData.DBServerFirewallRuleCount -f $firewallRules.Length, 10), $True);
 }
 
 # Synopsis: Determine if access from Azure services is required
 Rule 'Azure.MySQL.AllowAzureAccess' -Ref 'AZR-000134' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/servers/firewallRules' | Where-Object {
-        $_.ResourceName -eq 'AllowAllWindowsAzureIps' -or
+            $_.ResourceName -eq 'AllowAllWindowsAzureIps' -or
         ($_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0')
-    })
+        })
     $firewallRules.Length -eq 0;
 }
 
@@ -26,8 +26,8 @@ Rule 'Azure.MySQL.AllowAzureAccess' -Ref 'AZR-000134' -Type 'Microsoft.DBforMySQ
 Rule 'Azure.MySQL.FirewallIPRange' -Ref 'AZR-000135' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $summary = GetIPAddressSummary
     $Assert.
-        LessOrEqual($summary, 'Public', 10).
-        WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True);
+    LessOrEqual($summary, 'Public', 10).
+    WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True);
 }
 
 # Synopsis: Azure SQL logical server names should meet naming requirements.
@@ -47,6 +47,16 @@ Rule 'Azure.MySQL.ServerName' -Ref 'AZR-000136' -Type 'Microsoft.DBforMySQL/serv
 Rule 'Azure.MySQL.GeoRedundantBackup' -Ref 'AZR-000323' -Type 'Microsoft.DBforMySQL/servers' -If { HasGeneralPurposeOrMemoryOptimizedTier } -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
     $Assert.HasFieldValue($TargetObject, 'properties.storageProfile.geoRedundantBackup', 'Enabled').
     Reason($LocalizedData.MySQLGeoRedundantBackupNotConfigured, $PSRule.TargetName)
+}
+
+# Synopsis: Use Azure Database for MySQL Flexible Server deployment model.
+Rule 'Azure.MySQL.UseFlexible' -Ref 'AZR-000325' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    if ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/flexibleServers') {
+        $Assert.Pass()
+    }
+    elseif ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/servers') {
+        $Assert.Fail($LocalizedData.SingleDeploymentModelRetirement)
+    }
 }
 
 #region Helper functions
