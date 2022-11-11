@@ -14,27 +14,13 @@ Azure Database for MySQL should store backups in a geo-redundant storage.
 
 ## DESCRIPTION
 
-### Azure Database for MySQL Flexible Server
+Geo-redundant backup helps to protect your Azure Database for MySQL Servers against outages impacting backup storage in the primary region and allows you to restore your server to the geo-paired region in the event of a disaster.
 
-Azure Database for MySQL stores multiple copies of your backups so that your data is protected from planned and unplanned events, including transient hardware failures, network or power outages, and massive natural disasters. Azure Database for MySQL provides the flexibility to choose between locally redundant, zone-redundant or geo-redundant backup storage in Basic, General Purpose and Business Critical tiers. By default, Azure Database for MySQL server backup storage is locally redundant for servers with same-zone high availability (HA) or no high availability configuration, and zone redundant for servers with zone-redundant HA configuration.
+When the backups are stored in geo-redundant backup storage, they are not only stored within the region in which your server is hosted, but are also replicated to a paired data center. Both the Azure Database for MySQL Flexible Servers and the Azure Database for MySQL Single Servers deployment model supports geo-redundant backup.
 
-**Geo-Redundant backup storage**: When the backups are stored in geo-redundant backup storage, multiple copies are not only stored within the region in which your server is hosted, but are also replicated to its geo-paired region. This provides better protection and ability to restore your server in a different region in the event of a disaster. Also this provides at least 99.99999999999999% (16 9's) durability of Backups objects over a given year.One can enable Geo-Redundancy option at server create time to ensure geo-redundant backup storage. Additionally, you can move from locally redundant storage to geo-redundant storage post server create. Geo redundancy is supported for servers hosted in any of the Azure paired regions.
+For the flexible deployment model the geo-redundant backup is supported for all tiers, but for the single deployment model either `General Purpose` or `Memory Optimized` tier is required.
 
-**Note** Zone-redundant High Availability to support zone redundancy is current surfaced as a create time operation only. Currently, for a Zone-redundant High Availability server geo-redundancy can only be enabled/disabled at server create time.
-
-#### Moving from other backup storage options to geo-redundant backup storage
-
-You can move your existing backups storage to geo-redundant storage using the following suggested ways:
-
-- **Moving from locally redundant to geo-redundant backup storage** - In order to move your backup storage from locally redundant storage to geo-redundant storage, you can change the Compute + Storage server configuration from Azure portal to enable Geo-redundancy for the locally redundant source server. Same Zone Redundant HA servers can also be restored as a geo-redundant server in a similar fashion as the underlying backup storage is locally redundant for the same.
-
-- **Moving from zone-redundant to geo-redundant backup storage** - Azure Database for MySQL does not support zone-redundant storage to geo-redundant storage conversion through Compute + Storage settings change or point-in-time restore operation. In order to move your backup storage from zone-redundant storage to geo-redundant storage, creating a new server and migrating the data using dump and restore is the only supported option.
-
-### Azure Database for MySQL Single Server
-
-Azure Database for MySQL provides the flexibility to choose between locally redundant or geo-redundant backup storage in the General Purpose and Memory Optimized tiers. When the backups are stored in geo-redundant backup storage, they are not only stored within the region in which your server is hosted, but are also replicated to a paired data center. This geo-redundancy provides better protection and ability to restore your server in a different region in the event of a disaster. The Basic tier only offers locally redundant backup storage.
-
-**Important** Configuring locally redundant or geo-redundant storage for backup is only allowed during server create. Once the server is provisioned, you cannot change the backup storage redundancy option. In order to move your backup storage from locally redundant storage to geo-redundant storage, creating a new server and migrating the data using dump and restore is the only supported option.
+Check out the `NOTES` section for more details about geo-redundant backup for each of the deployment models.
 
 ## RECOMMENDATION
 
@@ -193,5 +179,5 @@ For the Single Server deployment model, it runs only against `'General Purpose'`
 - [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
 - [Backup and restore in Azure Database for MySQL flexible servers](https://learn.microsoft.com/azure/mysql/flexible-server/concepts-backup-restore)
 - [Backup and restore in Azure Database for MySQL single servers](https://learn.microsoft.com/azure/mysql/single-server/concepts-backup)
-- [Azure template reference flexible servers](https://learn.microsoft.com/en-us/azure/templates/microsoft.dbforpostgresql/flexibleservers)
+- [Azure template reference flexible servers](https://learn.microsoft.com/azure/templates/microsoft.dbforpostgresql/flexibleservers)
 - [Azure template reference single servers](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers)
