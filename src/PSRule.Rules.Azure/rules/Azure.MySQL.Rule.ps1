@@ -44,7 +44,7 @@ Rule 'Azure.MySQL.ServerName' -Ref 'AZR-000136' -Type 'Microsoft.DBforMySQL/serv
 }
 
 # Synopsis: Azure Database for MySQL should store backups in a geo-redundant storage.
-Rule 'Azure.MySQL.GeoRedundantBackup' -Ref 'AZR-000323' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/servers' -If { HasTierSupportingGeoRedundantBackup } -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.MySQL.GeoRedundantBackup' -Ref 'AZR-000323' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/servers' -If { HasMySQLTierSupportingGeoRedundantBackup } -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
     if ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/flexibleServers') {
         $Assert.HasFieldValue($TargetObject, 'properties.backup.geoRedundantBackup', 'Enabled').
         Reason($LocalizedData.MySQLGeoRedundantBackupNotConfigured, $PSRule.TargetName)
@@ -57,7 +57,7 @@ Rule 'Azure.MySQL.GeoRedundantBackup' -Ref 'AZR-000323' -Type 'Microsoft.DBforMy
 
 #region Helper functions
 
-function global:HasTierSupportingGeoRedundantBackup {
+function global:HasMySQLTierSupportingGeoRedundantBackup {
     [CmdletBinding()]
     [OutputType([System.Boolean])]
     param ()
