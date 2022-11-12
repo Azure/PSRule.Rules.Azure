@@ -45,7 +45,7 @@ Rule 'Azure.PostgreSQL.ServerName' -Ref 'AZR-000152' -Type 'Microsoft.DBforPostg
 
 # Synopsis: Azure Database for PostgreSQL should store backups in a geo-redundant storage.
 Rule 'Azure.PostgreSQL.GeoRedundantBackup' -Ref 'AZR-000326' -Type 'Microsoft.DBforPostgreSQL/flexibleServers', 'Microsoft.DBforPostgreSQL/servers' -If { HasPostgreSQLTierSupportingGeoRedundantBackup } -Tag @{ release = ''; ruleSet = ''; } {
-    if (PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/flexibleServers') {
+    if ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/flexibleServers') {
         $Assert.HasFieldValue($TargetObject, 'properties.backup.geoRedundantBackup', 'Enabled').
         Reason($LocalizedData.PostgreSQLGeoRedundantBackupNotConfigured, $PSRule.TargetName)
     }
