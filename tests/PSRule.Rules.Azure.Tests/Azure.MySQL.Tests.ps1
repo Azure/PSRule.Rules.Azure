@@ -128,7 +128,7 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
+            $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B', 'server-E', 'server-F';
 
             $ruleResult[0].Reason | Should -BeExactly "The Azure Database for MySQL 'server-B' should have geo-redundant backup configured.";
