@@ -146,11 +146,15 @@ Describe 'Azure.Deployment.OuterSecret' -Tag 'Deployment' {
 
         Context 'With Template' {
             BeforeAll {
-                $templatePath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Template.json';
-                $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Parameters.json';
-                $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Deployments.Template.json;
-                Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
-                $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+                $failTemplatePath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Template.2.json';
+                $failParameterPath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Parameters.2.json';
+                $passTemplatePath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Template.1.json';
+                $passParameterPath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Parameters.1.json';
+                $passOutputFile = Join-Path -Path $rootPath -ChildPath 'out/tests/Resources.Deployments.Template.1.json';
+                $failOutputFile = Join-Path -Path $rootPath -ChildPath 'out/tests/Resources.Deployments.Template.2.json';
+                Export-AzRuleTemplateData -TemplateFile $failTemplatePath -ParameterFile $failParameterPath -OutputPath $failOutputFile;
+                Export-AzRuleTemplateData -TemplateFile $passTemplatePath -ParameterFile $passParameterPath -OutputPath $passOutputFile;
+                $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $passOutputFile,$failOutputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
             }
 
             It 'Azure.Deployment.OuterSecret' {
@@ -159,20 +163,16 @@ Describe 'Azure.Deployment.OuterSecret' -Tag 'Deployment' {
                  # Fail
                  $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
                  $ruleResult | Should -Not -BeNullOrEmpty;
-                 $ruleResult.Length | Should -Be 2;
-                 $ruleResult.TargetName | Should -BeIn 'nestedDeployment-D', 'nestedDeployment-E';
+                 $ruleResult.Length | Should -Be 1;
+                 $ruleResult.TargetName | Should -Be $failParameterPath
             
                  # Pass
                  $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
                  $ruleResult | Should -Not -BeNullOrEmpty;
-                 Write-Host "Pass: $($ruleResult)"
-                 $ruleResult.Length | Should -Be 3;
-                 $ruleResult.TargetName | Should -BeIn 'nestedDeployment-A', 'nestedDeployment-B', 'nestedDeployment-C';
+                 $ruleResult.Length | Should -Be 1;
+                 $ruleResult.TargetName | Should -Be $passParameterPath;
             }
         }
-
-       
-
     }
 
 }

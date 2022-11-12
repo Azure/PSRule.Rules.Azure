@@ -109,7 +109,8 @@
             "defaultValue": "vm-admin"
         },
         "adminPassword": {
-            "type": "secureString"
+            "type": "secureString",
+            "defaultValue": "$CREDENTIAL_PLACEHOLDER$"
         },
         "sqlStorageWorkloadType": {
             "type": "string",

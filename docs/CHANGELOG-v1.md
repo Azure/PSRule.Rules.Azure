@@ -28,6 +28,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Azure Database for MySQL:
     -  Check Azure Database for MySQL servers have geo-redundant backup configured by @bengeset96.
       [#284](https://github.com/Azure/PSRule.Rules.Azure/issues/284)
+  - Azure Resource Deployments:
+    - Check for nested deployment that are scoped to `outer` and passing secure values by @ms-sambell.
+      [#1475](https://github.com/Azure/PSRule.Rules.Azure/issues/1475)
 
 ## v1.22.0-B0026 (pre-release)
 
