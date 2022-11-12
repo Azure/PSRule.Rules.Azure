@@ -176,4 +176,4 @@ For the Single Server deployment model, it runs only against `'General Purpose'`
 - [Backup and restore in Azure Database for PostgreSQL flexible servers](https://learn.microsoft.com/azure/postgresql/flexible-server/concepts-backup-restore)
 - [Backup and restore in Azure Database for PostgreSQL single servers](https://learn.microsoft.com/azure/postgresql/single-server/concepts-backup)
 - [Azure template reference flexible servers](https://learn.microsoft.com/azure/templates/microsoft.dbforpostgresql/flexibleservers)
-- [Azure template reference single servers](https://learn.microsoft.com/azure/templates/Microsoft.DBforPostgreSQL/servers)
+- [Azure template reference single servers](https://learn.microsoft.com/azure/templates/microsoft.dbforpostgresql/servers)
