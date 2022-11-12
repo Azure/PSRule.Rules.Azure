@@ -78,15 +78,6 @@ Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000324' -Type 'Microsoft.Resources
             foreach ($outerDeployment in $deployments.properties.template.resources) {
                 foreach ($property in $outerDeployment.properties) {
                     RecursivePropertiesSecretEvaluation -Resource $outerDeployment -SecureParameters $secureParameters -ShouldUseSecret $False -Property $property
-
-                    # $propertyName = $property.psObject.properties.Name 
-                    # foreach ($nestedProperty in $property.PSObject.Properties.Value.PSObject.Properties ) {
-                    #     if($nestedProperty.MemberType -eq 'NoteProperty'){
-                    #         CheckPropertyUsesSecureParameter -Resource $outerDeployment -SecureParameters $secureParameters -PropertyPath "properties.$($propertyName).$($nestedProperty.Name)" -ShouldUseSecret $False
-                    #     } else {
-                    #         CheckPropertyUsesSecureParameter -Resource $outerDeployment -SecureParameters $secureParameters -PropertyPath "properties.$($propertyName)" -ShouldUseSecret $False
-                    #     }
-                    # } 
                 }
             }
         } else {
