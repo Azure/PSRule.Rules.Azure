@@ -264,7 +264,7 @@
       "highAvailability": {
         "mode": "Disabled"
       },
-      "version": "'8.0.21",
+      "version": "8.0.21",
       "createMode": "Default"
     },
     "ResourceGroupName": "test-rg",
@@ -296,7 +296,7 @@
       "highAvailability": {
         "mode": "Disabled"
       },
-      "version": "'8.0.21",
+      "version": "8.0.21",
       "createMode": "Default"
     },
     "ResourceGroupName": "test-rg",
@@ -329,7 +329,7 @@
       "highAvailability": {
         "mode": "Disabled"
       },
-      "version": "'8.0.21",
+      "version": "8.0.21",
       "createMode": "Default"
     },
     "ResourceGroupName": "test-rg",
