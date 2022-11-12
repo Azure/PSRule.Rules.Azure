@@ -190,13 +190,16 @@ function global:IsLinuxOffering {
             }
         }
 
-        $someLinuxOSNames = @('ubuntu', 'linux', 'rhel', 'centos', 'redhat', 'debian', 'suse')
-        foreach ($linuxOSName in $someLinuxOSNames) {
-            if ($imageReference.offer -match $linuxOSName) {
-                return $True
-            }
+        $someWindowsOSNames = @('windows')
+        if ($Assert.Contains($imageReference.offer, '.', $someWindowsOSNames).Result) {
+            return $False
         }
-        
+
+        $someLinuxOSNames = @('ubuntu', 'linux', 'rhel', 'centos', 'redhat', 'debian', 'suse')
+        if ($Assert.Contains($imageReference.offer, '.', $someLinuxOSNames).Result) {
+            return $True
+        }
+
         foreach ($publicLinuxOffering in $PublicLinuxOfferings) {
             if ($publicLinuxOffering[0] -ieq $imageReference.publisher -and $publicLinuxOffering[1] -ieq $imageReference.offer) {
                 return $True
@@ -206,18 +209,18 @@ function global:IsLinuxOffering {
         return $False
     }
 }
- 
+
 function global:VMHasLinuxOS {
     [CmdletBinding()]
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachines') {
+        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachines' -or $TargetObject.Properties.storageProfile.osDisk.osType -eq 'Windows') {
             return $False;
         }
 
         return $TargetObject.Properties.storageProfile.osDisk.osType -eq 'Linux' -or
-        $Assert.HasField($TargetObject, 'properties.osProfile.linuxConfiguration').Result -or
+        $Assert.HasFieldValue($TargetObject, 'properties.osProfile.linuxConfiguration').Result -or
             (IsLinuxOffering($TargetObject.Properties.storageProfile.imageReference))
     }
 }
@@ -227,12 +230,12 @@ function global:VMSSHasLinuxOS {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachineScaleSets') {
+        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachineScaleSets' -or $TargetObject.Properties.virtualMachineProfile.storageProfile.osDisk.osType -eq 'Windows') {
             return $False;
         }
 
         return $TargetObject.Properties.virtualMachineProfile.storageProfile.osDisk.osType -eq 'Linux' -or
-        $Assert.HasField($TargetObject, 'properties.virtualMachineProfile.osProfile.linuxConfiguration').Result -or
+        $Assert.HasFieldValue($TargetObject, 'properties.virtualMachineProfile.osProfile.linuxConfiguration').Result -or
             (IsLinuxOffering($TargetObject.Properties.virtualMachineProfile.storageProfile.imageReference))
     }
 }

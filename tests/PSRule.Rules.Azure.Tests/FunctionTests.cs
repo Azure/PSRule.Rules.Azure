@@ -210,12 +210,14 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // String
-            var actual1 = (string)Functions.First(context, new object[] { "one" });
+            var actual1 = Functions.First(context, new object[] { "one" }) as string;
             Assert.Equal("o", actual1);
 
             // Array
-            var actual2 = Functions.First(context, new object[] { new string[] { "one", "two", "three" } }) as string;
-            Assert.Equal("one", actual2);
+            actual1 = Functions.First(context, new object[] { new string[] { "one", "two", "three" } }) as string;
+            Assert.Equal("one", actual1);
+            var actual2 = Functions.First(context, new object[] { new MockArray(null) });
+            Assert.NotNull(actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.First(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.First(context, System.Array.Empty<object>()));
@@ -303,12 +305,14 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // String
-            var actual1 = (string)Functions.Last(context, new object[] { "one" });
+            var actual1 = Functions.Last(context, new object[] { "one" }) as string;
             Assert.Equal("e", actual1);
 
             // Array
-            var actual2 = Functions.Last(context, new object[] { new string[] { "one", "two", "three" } }) as string;
-            Assert.Equal("three", actual2);
+            actual1 = Functions.Last(context, new object[] { new string[] { "one", "two", "three" } }) as string;
+            Assert.Equal("three", actual1);
+            var actual2 = Functions.Last(context, new object[] { new MockArray(null) });
+            Assert.NotNull(actual2);
         }
 
         [Fact]

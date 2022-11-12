@@ -25,16 +25,51 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
-  - Front Door:
-    - Check front door uses caching by @bengeset96.
-    [#548](https://github.com/Azure/PSRule.Rules.Azure/issues/548)
+  - Azure Database for MySQL:
+    -  Check Azure Database for MySQL servers have geo-redundant backup configured by @bengeset96.
+      [#284](https://github.com/Azure/PSRule.Rules.Azure/issues/284)
+
+## v1.22.0-B0026 (pre-release)
+
+What's changed since pre-release v1.22.0-B0011:
+
+- New rules:
+  - API Management:
+    - Check api management instances limits control plane API calls to apim with version `'2021-08-01'` or newer by @bengeset96.
+      [#1819](https://github.com/Azure/PSRule.Rules.Azure/issues/1819)
+- Engineering:
+  - Bump Az.Resources to v6.4.0.
+    [#1829](https://github.com/Azure/PSRule.Rules.Azure/pull/1829)
+- Bug fixes:
+  - Fixed non-Linux VM images flagged as Linux by @BernieWhite.
+    [#1825](https://github.com/Azure/PSRule.Rules.Azure/issues/1825)
+  - Fixed failed to expand with last function on runtime property by @BernieWhite.
+    [#1830](https://github.com/Azure/PSRule.Rules.Azure/issues/1830)
+
+## v1.22.0-B0011 (pre-release)
 
 What's changed since v1.21.0:
 
 - New rules:
   - App Service Environment:
     - Check app service environments uses version 3 (ASEv3) instead of classic version 1 (ASEv1) and version 2 (ASEv2) by @bengeset96.
-    [#1805](https://github.com/Azure/PSRule.Rules.Azure/issues/1805)
+      [#1805](https://github.com/Azure/PSRule.Rules.Azure/issues/1805)
+  - Front Door:
+    - Check front door uses caching by @bengeset96.
+      [#548](https://github.com/Azure/PSRule.Rules.Azure/issues/548)
+  - Virtual Network:
+    - Check VNETs with a GatewaySubnet also has an AzureFirewallSubnet by @BernieWhite.
+      [#875](https://github.com/Azure/PSRule.Rules.Azure/issues/875)
+
+## v1.21.2
+
+What's changed since v1.21.1:
+
+- Bug fixes:
+  - Fixed non-Linux VM images flagged as Linux by @BernieWhite.
+    [#1825](https://github.com/Azure/PSRule.Rules.Azure/issues/1825)
+  - Fixed failed to expand with last function on runtime property by @BernieWhite.
+    [#1830](https://github.com/Azure/PSRule.Rules.Azure/issues/1830)
 
 ## v1.21.1
 

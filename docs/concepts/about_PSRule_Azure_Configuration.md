@@ -27,6 +27,7 @@ The following configurations options are available for use:
 - [AZURE_SUBSCRIPTION](#azure_subscription)
 - [AZURE_POLICY_IGNORE_LIST](#azure_policy_ignore_list)
 - [AZURE_POLICY_RULE_PREFIX](#azure_policy_rule_prefix)
+- [AZURE_APIM_MIN_API_VERSION](#azure_apim_min_api_version)
 
   [1]: https://aka.ms/ps-rule/options
 
@@ -349,6 +350,34 @@ Example:
 ```yaml
 # YAML: Override the prefix of exported policy rules
   AZURE_POLICY_RULE_PREFIX: 'AzureCustomPrefix'
+```
+
+### AZURE_APIM_MIN_API_VERSION
+
+This configuration option sets the minimum API version used for control plane API calls to API Management instances.
+Configure this option to change the minimum API version, which defaults to `'2021-08-01'`.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_APIM_MIN_API_VERSION: string
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_APIM_MIN_API_VERSION configuration option
+configuration:
+  AZURE_APIM_MIN_API_VERSION: '2021-08-01'
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_APIM_MIN_API_VERSION configuration option to '2021-12-01-preview'
+configuration:
+  AZURE_APIM_MIN_API_VERSION: '2021-12-01-preview'
 ```
 
 ## NOTE
