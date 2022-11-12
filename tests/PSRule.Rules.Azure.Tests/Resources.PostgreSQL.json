@@ -297,7 +297,7 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DBforPostgreSQL/flexibleServers",
-    "ResourceType": "MMicrosoft.DBforPostgreSQL/flexibleServers",
+    "ResourceType": "Microsoft.DBforPostgreSQL/flexibleServers",
     "Sku": {
       "Name": "Standard_D16ads_v5",
       "Tier": "GeneralPurpose"
