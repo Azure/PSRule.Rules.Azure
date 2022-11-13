@@ -55,6 +55,23 @@ Rule 'Azure.MySQL.GeoRedundantBackup' -Ref 'AZR-000323' -Type 'Microsoft.DBforMy
     }
 }
 
+# Synopsis: Enable Microsoft Defender for Cloud for Azure Database for MySQL.
+Rule 'Azure.MySQL.DefenderCloud' -Ref 'AZR-000328' -Type 'Microsoft.DBforMySQL/servers', 'Microsoft.DBforMySQL/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    if ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/servers') {
+        $defenderConfigs = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/servers/securityAlertPolicies')
+        if ($defenderConfigs.Length -eq 0) {
+            $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.DBforMySQL/servers/securityAlertPolicies')
+        }
+        foreach ($defenderConfig in $defenderConfigs) {
+            $Assert.HasFieldValue($defenderConfig, 'properties.state', 'Enabled').
+            PathPrefix('resources')
+        }
+    }
+    elseif ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/servers/securityAlertPolicies') {
+        $Assert.HasFieldValue($TargetObject, 'properties.state', 'Enabled')
+    }
+}
+
 #region Helper functions
 
 function global:HasMySQLTierSupportingGeoRedundantBackup {

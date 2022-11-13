@@ -26,6 +26,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - New rules:
   - Azure Database for MySQL:
+    - Check Azure Database for MySQL servers have Microsoft Defender configured by @bengeset96.
+      [#287](https://github.com/Azure/PSRule.Rules.Azure/issues/287)
     - Check Azure Database for MySQL Flexible Servers have geo-redundant backup configured by @bengeset96.
       [#1840](https://github.com/Azure/PSRule.Rules.Azure/issues/1840)
     - Check Azure Database for MySQL servers have geo-redundant backup configured by @bengeset96.
