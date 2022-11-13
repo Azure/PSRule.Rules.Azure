@@ -26,6 +26,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - New rules:
   - Azure Database for PostgreSQL:
+    - Check Azure Database for PostgreSQL servers have Microsoft Defender configured by @bengeset96.
+      [#286](https://github.com/Azure/PSRule.Rules.Azure/issues/286)
     - Check Azure Database for PostgreSQL servers have geo-redundant backup configured by @bengeset96.
       [#285](https://github.com/Azure/PSRule.Rules.Azure/issues/285)
   - Azure Database for MySQL:
