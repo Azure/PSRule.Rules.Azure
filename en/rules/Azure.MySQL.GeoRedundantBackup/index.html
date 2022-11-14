@@ -7331,13 +7331,49 @@
  · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/><path fill-rule="evenodd" d="M2.5 1A1.5 1.5 0 0 0 1 2.5v8.44c0 .397.158.779.44 1.06l10.25 10.25a1.5 1.5 0 0 0 2.12 0l8.44-8.44a1.5 1.5 0 0 0 0-2.12L12 1.44A1.5 1.5 0 0 0 10.94 1H2.5zm0 1.5h8.44l10.25 10.25-8.44 8.44L2.5 10.94V2.5z"/></svg></span> 2022_12</p>
 <p>Azure Database for MySQL should store backups in a geo-redundant storage.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>Azure Database for MySQL provides the flexibility to choose between locally redundant or geo-redundant backup storage in the General Purpose and Memory Optimized tiers. When the backups are stored in geo-redundant backup storage, they are not only stored within the region in which your server is hosted, but are also replicated to a paired data center. This geo-redundancy provides better protection and ability to restore your server in a different region in the event of a disaster. The Basic tier only offers locally redundant backup storage.</p>
-<p><strong>Important</strong> Configuring locally redundant or geo-redundant storage for backup is only allowed during server create. Once the server is provisioned, you cannot change the backup storage redundancy option. In order to move your backup storage from locally redundant storage to geo-redundant storage, creating a new server and migrating the data using dump and restore is the only supported option.</p>
+<p>Geo-redundant backup helps to protect your Azure Database for MySQL Servers against outages impacting backup storage in the primary region and allows you to restore your server to the geo-paired region in the event of a disaster.</p>
+<p>When the backups are stored in geo-redundant backup storage, they are not only stored within the region in which your server is hosted, but are also replicated to a paired data center. Both the Azure Database for MySQL Flexible Server and the Azure Database for MySQL Single Server deployment model supports geo-redundant backup.</p>
+<p>For the flexible deployment model the geo-redundant backup is supported for all tiers, but for the single deployment model either <code>General Purpose</code> or <code>Memory Optimized</code> tier is required.</p>
+<p>Check out the <code>NOTES</code> section for more details about geo-redundant backup for each of the deployment models.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
 <p>Configure geo-redundant backup for Azure Database for MySQL.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
 <h3 id="configure-with-azure-template">Configure with Azure template<a class="headerlink" href="#configure-with-azure-template" title="Permanent link">#</a></h3>
-<p>To deploy Azure Database for MySQL servers that pass this rule:</p>
+<p>To deploy Azure Database for MySQL Flexible Servers that pass this rule:</p>
+<ul>
+<li>Set the <code>properties.backup.geoRedundantBackup</code> property to the value <code>'Enabled'</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.DBforMySQL/flexibleServers&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-12-01-preview&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;serverName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Standard_D16as&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GeneralPurpose&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;administratorLogin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;administratorLogin&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;administratorLoginPassword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;administratorLoginPassword&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;autoGrow&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;iops&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;StorageIops&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;storageSizeGB&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;StorageSizeGB&#39;)]&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;createMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Default&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;mysqlVersion&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;backup&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;backupRetentionDays&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;geoRedundantBackup&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;highAvailability&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Disabled&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>To deploy Azure Database for MySQL Single Servers that pass this rule:</p>
 <ul>
 <li>Set the <code>properties.storageProfile.geoRedundantBackup</code> property to the value <code>'Enabled'</code>.</li>
 </ul>
@@ -7368,7 +7404,39 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h3 id="configure-with-bicep">Configure with Bicep<a class="headerlink" href="#configure-with-bicep" title="Permanent link">#</a></h3>
-<p>To deploy Azure Database for MySQL servers that pass this rule:</p>
+<p>To deploy Azure Database for MySQL Flexible Servers that pass this rule:</p>
+<ul>
+<li>Set the <code>properties.backup.geoRedundantBackup</code> property to the value <code>'Enabled'</code>.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>resource mysqlDbServer &#39;Microsoft.DBforMySQL/flexibleServers@2021-12-01-preview&#39; = {
+  name: serverName
+  location: location
+  sku: {
+    name: &#39;Standard_D16as&#39;
+    tier: &#39;GeneralPurpose&#39;
+  }
+  properties: {
+    administratorLogin: administratorLogin
+    administratorLoginPassword: administratorLoginPassword
+    storage: {
+      autoGrow: &#39;Enabled&#39;
+      iops: StorageIops
+      storageSizeGB: StorageSizeGB
+    }
+    createMode: &#39;Default&#39;
+    version: mysqlVersion
+    backup: {
+      backupRetentionDays: 7
+      geoRedundantBackup: &#39;Enabled&#39;
+    }
+    highAvailability: {
+      mode: &#39;Disabled&#39;
+    }
+  }
+}
+</code></pre></div>
+<p>To deploy Azure Database for MySQL Single Servers that pass this rule:</p>
 <ul>
 <li>Set the <code>properties.storageProfile.geoRedundantBackup</code> property to the value <code>'Enabled'</code>.</li>
 </ul>
@@ -7397,13 +7465,15 @@
 }
 </code></pre></div>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
-<p>This rule is only applicable for Azure Database for MySQL servers deployed in the Single Server deployment model with <code>'General Purpose'</code> and <code>'Memory Optimized'</code> tiers. The <code>'Basic'</code> tier does not support geo-redundant backup storage.</p>
-<p>Currently this rule does not run against Azure Database for MySQL using the Flexible Server deployment model.</p>
+<p>This rule is applicable for both the Azure Database for MySQL Flexible Server deployment model and the Azure Database for MySQL Single Server deployment model.</p>
+<p>For the Single Server deployment model, it runs only against <code>'General Purpose'</code> and <code>'Memory Optimized'</code> tiers. The <code>'Basic'</code> tier does not support geo-redundant backup storage.</p>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements">Target and non-functional requirements</a></li>
-<li><a href="https://learn.microsoft.com/azure/mysql/single-server/concepts-backup">Backup and restore in Azure Database for MySQL</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers">Azure template reference</a></li>
+<li><a href="https://learn.microsoft.com/azure/mysql/flexible-server/concepts-backup-restore">Backup and restore in Azure Database for MySQL flexible servers</a></li>
+<li><a href="https://learn.microsoft.com/azure/mysql/single-server/concepts-backup">Backup and restore in Azure Database for MySQL single servers</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.dbformysql/flexibleservers">Azure template reference flexible servers</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers">Azure template reference single servers</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7414,7 +7484,7 @@
   <small>
     
       Last update:
-      2022-11-10
+      2022-11-14
     
   </small>
 </div>
