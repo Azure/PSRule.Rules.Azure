@@ -110,7 +110,7 @@
         },
         "adminPassword": {
             "type": "secureString",
-            "defaultValue": "SECRET"
+            "defaultValue": "PLACEHOLDER"
         },
         "sqlStorageWorkloadType": {
             "type": "string",
