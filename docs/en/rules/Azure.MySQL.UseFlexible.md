@@ -18,7 +18,7 @@ Azure Database for MySQL Single Server is on the retirement path. Upgrade to Azu
 
 Azure Database for MySQL Flexible Server to bring you the best of Azure’s open-source database platform.
 
-Check out the `NOTES` section for more details about the retirement path and migration steps.
+Check out the `LINKS` section for more details about the retirement path and migration steps.
 
 ## RECOMMENDATION
 
