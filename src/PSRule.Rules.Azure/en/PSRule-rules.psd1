@@ -82,5 +82,6 @@
     APIMApiVersionConstraintMinApiVersion = "The api management instance with minimum api version '{0}' is less than '{1}'."
     APIMApiVersionConstraintMinApiVersionNotFound = "The api management instance is missing minimum api version configuration."
     MySQLGeoRedundantBackupNotConfigured = "The Azure Database for MySQL '{0}' should have geo-redundant backup configured."
+    PostgreSQLGeoRedundantBackupNotConfigured = "The Azure Database for PostgreSQL '{0}' should have geo-redundant backup configured."
     SQLServerVMDisks = "The virtual machine used for running SQL Server should use Premium disks or greater."
 }
