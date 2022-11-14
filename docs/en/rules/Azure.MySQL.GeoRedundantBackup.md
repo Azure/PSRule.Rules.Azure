@@ -14,9 +14,13 @@ Azure Database for MySQL should store backups in a geo-redundant storage.
 
 ## DESCRIPTION
 
-Azure Database for MySQL provides the flexibility to choose between locally redundant or geo-redundant backup storage in the General Purpose and Memory Optimized tiers. When the backups are stored in geo-redundant backup storage, they are not only stored within the region in which your server is hosted, but are also replicated to a paired data center. This geo-redundancy provides better protection and ability to restore your server in a different region in the event of a disaster. The Basic tier only offers locally redundant backup storage.
+Geo-redundant backup helps to protect your Azure Database for MySQL Servers against outages impacting backup storage in the primary region and allows you to restore your server to the geo-paired region in the event of a disaster.
 
-**Important** Configuring locally redundant or geo-redundant storage for backup is only allowed during server create. Once the server is provisioned, you cannot change the backup storage redundancy option. In order to move your backup storage from locally redundant storage to geo-redundant storage, creating a new server and migrating the data using dump and restore is the only supported option.
+When the backups are stored in geo-redundant backup storage, they are not only stored within the region in which your server is hosted, but are also replicated to a paired data center. Both the Azure Database for MySQL Flexible Server and the Azure Database for MySQL Single Server deployment model supports geo-redundant backup.
+
+For the flexible deployment model the geo-redundant backup is supported for all tiers, but for the single deployment model either `General Purpose` or `Memory Optimized` tier is required.
+
+Check out the `NOTES` section for more details about geo-redundant backup for each of the deployment models.
 
 ## RECOMMENDATION
 
@@ -26,7 +30,44 @@ Configure geo-redundant backup for Azure Database for MySQL.
 
 ### Configure with Azure template
 
-To deploy Azure Database for MySQL servers that pass this rule:
+To deploy Azure Database for MySQL Flexible Servers that pass this rule:
+
+- Set the `properties.backup.geoRedundantBackup` property to the value `'Enabled'`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.DBforMySQL/flexibleServers",
+  "apiVersion": "2021-12-01-preview",
+  "name": "[parameters('serverName')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard_D16as",
+    "tier": "GeneralPurpose"
+  },
+  "properties": {
+    "administratorLogin": "[parameters('administratorLogin')]",
+    "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+    "storage": {
+      "autoGrow": "Enabled",
+      "iops": "[parameters('StorageIops')]",
+      "storageSizeGB": "[parameters('StorageSizeGB')]"
+    },
+    "createMode": "Default",
+    "version": "[parameters('mysqlVersion')]",
+    "backup": {
+      "backupRetentionDays": 7,
+      "geoRedundantBackup": "Enabled"
+    },
+    "highAvailability": {
+      "mode": "Disabled"
+    }
+  }
+}
+```
+
+To deploy Azure Database for MySQL Single Servers that pass this rule:
 
 - Set the `properties.storageProfile.geoRedundantBackup` property to the value `'Enabled'`.
 
@@ -61,7 +102,42 @@ For example:
 
 ### Configure with Bicep
 
-To deploy Azure Database for MySQL servers that pass this rule:
+To deploy Azure Database for MySQL Flexible Servers that pass this rule:
+
+- Set the `properties.backup.geoRedundantBackup` property to the value `'Enabled'`.
+
+For example:
+
+```bicep
+resource mysqlDbServer 'Microsoft.DBforMySQL/flexibleServers@2021-12-01-preview' = {
+  name: serverName
+  location: location
+  sku: {
+    name: 'Standard_D16as'
+    tier: 'GeneralPurpose'
+  }
+  properties: {
+    administratorLogin: administratorLogin
+    administratorLoginPassword: administratorLoginPassword
+    storage: {
+      autoGrow: 'Enabled'
+      iops: StorageIops
+      storageSizeGB: StorageSizeGB
+    }
+    createMode: 'Default'
+    version: mysqlVersion
+    backup: {
+      backupRetentionDays: 7
+      geoRedundantBackup: 'Enabled'
+    }
+    highAvailability: {
+      mode: 'Disabled'
+    }
+  }
+}
+```
+
+To deploy Azure Database for MySQL Single Servers that pass this rule:
 
 - Set the `properties.storageProfile.geoRedundantBackup` property to the value `'Enabled'`.
 
@@ -94,12 +170,14 @@ resource mysqlDbServer 'Microsoft.DBforMySQL/servers@2017-12-01' = {
 
 ## NOTES
 
-This rule is only applicable for Azure Database for MySQL servers deployed in the Single Server deployment model with `'General Purpose'` and `'Memory Optimized'` tiers. The `'Basic'` tier does not support geo-redundant backup storage.
+This rule is applicable for both the Azure Database for MySQL Flexible Server deployment model and the Azure Database for MySQL Single Server deployment model.
 
-Currently this rule does not run against Azure Database for MySQL using the Flexible Server deployment model.
+For the Single Server deployment model, it runs only against `'General Purpose'` and `'Memory Optimized'` tiers. The `'Basic'` tier does not support geo-redundant backup storage.
 
 ## LINKS
 
 - [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
-- [Backup and restore in Azure Database for MySQL](https://learn.microsoft.com/azure/mysql/single-server/concepts-backup)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers)
+- [Backup and restore in Azure Database for MySQL flexible servers](https://learn.microsoft.com/azure/mysql/flexible-server/concepts-backup-restore)
+- [Backup and restore in Azure Database for MySQL single servers](https://learn.microsoft.com/azure/mysql/single-server/concepts-backup)
+- [Azure template reference flexible servers](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/flexibleservers)
+- [Azure template reference single servers](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers)

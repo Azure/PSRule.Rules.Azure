@@ -44,9 +44,15 @@ Rule 'Azure.MySQL.ServerName' -Ref 'AZR-000136' -Type 'Microsoft.DBforMySQL/serv
 }
 
 # Synopsis: Azure Database for MySQL should store backups in a geo-redundant storage.
-Rule 'Azure.MySQL.GeoRedundantBackup' -Ref 'AZR-000323' -Type 'Microsoft.DBforMySQL/servers' -If { HasGeneralPurposeOrMemoryOptimizedTier } -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
-    $Assert.HasFieldValue($TargetObject, 'properties.storageProfile.geoRedundantBackup', 'Enabled').
-    Reason($LocalizedData.MySQLGeoRedundantBackupNotConfigured, $PSRule.TargetName)
+Rule 'Azure.MySQL.GeoRedundantBackup' -Ref 'AZR-000323' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/servers' -If { HasMySQLTierSupportingGeoRedundantBackup } -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    if ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/flexibleServers') {
+        $Assert.HasFieldValue($TargetObject, 'properties.backup.geoRedundantBackup', 'Enabled').
+        Reason($LocalizedData.MySQLGeoRedundantBackupNotConfigured, $PSRule.TargetName)
+    }
+    elseif ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/servers') {
+        $Assert.HasFieldValue($TargetObject, 'properties.storageProfile.geoRedundantBackup', 'Enabled').
+        Reason($LocalizedData.MySQLGeoRedundantBackupNotConfigured, $PSRule.TargetName)
+    }
 }
 
 # Synopsis: Use Azure Database for MySQL Flexible Server deployment model.
@@ -61,12 +67,17 @@ Rule 'Azure.MySQL.UseFlexible' -Ref 'AZR-000325' -Type 'Microsoft.DBforMySQL/fle
 
 #region Helper functions
 
-function global:HasGeneralPurposeOrMemoryOptimizedTier {
+function global:HasMySQLTierSupportingGeoRedundantBackup {
     [CmdletBinding()]
     [OutputType([System.Boolean])]
     param ()
     process {
-        $Assert.In($TargetObject, 'sku.tier', @('GeneralPurpose', 'MemoryOptimized')).Result
+        if ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/flexibleServers') {
+            $True
+        }
+        elseif ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/servers') {
+            $Assert.In($TargetObject, 'sku.tier', @('GeneralPurpose', 'MemoryOptimized')).Result
+        }
     }
 }
 
