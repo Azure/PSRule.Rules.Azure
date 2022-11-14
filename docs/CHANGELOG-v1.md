@@ -25,6 +25,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+  - Azure Database for PostgreSQL:
+    - Check Azure Database for PostgreSQL servers have geo-redundant backup configured by @bengeset96.
+      [#285](https://github.com/Azure/PSRule.Rules.Azure/issues/285)
   - Azure Database for MySQL:
     - Check Azure Database for MySQL Flexible Servers have geo-redundant backup configured by @bengeset96.
       [#1840](https://github.com/Azure/PSRule.Rules.Azure/issues/1840)
