@@ -1228,17 +1228,18 @@ Describe 'Azure.VM' -Tag 'VM' {
         It 'Azure.VM.ScriptExtensions' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ScriptExtensions' };
 
+            
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            ruleResult.TargetName | Should -BeIn 'vm-B', 'vm-C';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vm-B', 'vm-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            ruleResult.TargetName | Should -Be 'vm-D';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vm-C/installcustomscript', 'vm-D/installcustomscript', 'vm-A';
 
         }
     }
