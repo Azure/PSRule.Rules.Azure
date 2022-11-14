@@ -641,6 +641,20 @@ namespace PSRule.Rules.Azure
             Assert.Equal(3, resources.Length);
         }
 
+        [Fact]
+        public void NestedParameterValueLoops()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.11.json"), null);
+            Assert.NotNull(resources);
+        }
+
+        [Fact]
+        public void SplitLastRuntimeProperties()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.12.json"), null);
+            Assert.NotNull(resources);
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

@@ -1168,7 +1168,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!TryObjectProperty(resource, PROPERTY_PROPERTIES, out var properties))
                 return false;
 
-            var deploymentContext = GetDeploymentContext(context, resource, properties);
+            var deploymentContext = GetDeploymentContext(context, deploymentName, resource, properties);
             if (!TryObjectProperty(properties, PROPERTY_TEMPLATE, out var template))
                 return false;
 
@@ -1184,7 +1184,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return !string.Equals(resourceType, RESOURCETYPE_DEPLOYMENT, StringComparison.OrdinalIgnoreCase);
         }
 
-        private static TemplateContext GetDeploymentContext(TemplateContext context, JObject resource, JObject properties)
+        private static TemplateContext GetDeploymentContext(TemplateContext context, string deploymentName, JObject resource, JObject properties)
         {
             if (!TryObjectProperty(properties, PROPERTY_EXPRESSIONEVALUATIONOPTIONS, out var options) ||
                 !TryStringProperty(options, PROPERTY_SCOPE, out var scope) ||
@@ -1212,7 +1212,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     if (parameter.Value is JObject parameterInner)
                     {
                         if (parameterInner.TryGetProperty(PROPERTY_VALUE, out JToken parameterValue))
-                            parameterInner[PROPERTY_VALUE] = ResolveVariable(context, parameterValue);
+                            parameterInner[PROPERTY_VALUE] = ResolveToken(context, ResolveVariable(context, parameterValue));
 
                         if (parameterInner.TryGetProperty(PROPERTY_COPY, out JArray _))
                         {
@@ -1619,7 +1619,7 @@ namespace PSRule.Rules.Azure.Data.Template
                         array.Add(ResolveToken(context, instance));
                     }
                     obj[copyIndex.Name] = array;
-                    context.CopyIndex.Pop();
+                    context.CopyIndex.Remove(copyIndex);
                 }
                 else
                 {

@@ -1,0 +1,143 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.11.1.770",
+      "templateHash": "10181333672663573062"
+    }
+  },
+  "parameters": {
+    "value1": {
+      "type": "array",
+      "defaultValue": []
+    },
+    "value2": {
+      "type": "array",
+      "defaultValue": []
+    }
+  },
+  "variables": {
+    "ip": "10.0.0.4"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "child1",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "value3": {
+            "value": "[parameters('value1')]"
+          },
+          "value4": {
+            "value": "[parameters('value2')]"
+          },
+          "staticIP": {
+            "value": "[variables('ip')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.11.1.770",
+              "templateHash": "4847064190022154594"
+            }
+          },
+          "parameters": {
+            "value3": {
+              "type": "array"
+            },
+            "value4": {
+              "type": "array"
+            },
+            "staticIP": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-10-01",
+              "name": "child2",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "value5": {
+                    "value": [
+                      {
+                        "copy": [
+                          {
+                            "name": "value6",
+                            "count": "[length(parameters('value3'))]",
+                            "input": {
+                              "id": "[parameters('value3')[copyIndex('value6')].id]"
+                            }
+                          },
+                          {
+                            "name": "value7",
+                            "count": "[length(parameters('value4'))]",
+                            "input": {
+                              "id": "[parameters('value4')[copyIndex('value7')].id]"
+                            }
+                          }
+                        ],
+                        "privateIPAllocationMethod": "[if(not(empty(parameters('staticIP'))), 'Static', 'Dynamic')]",
+                        "staticPublicIP": "[parameters('staticIP')]"
+                      }
+                    ]
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.11.1.770",
+                      "templateHash": "9725952132250623687"
+                    }
+                  },
+                  "parameters": {
+                    "value5": {
+                      "type": "array"
+                    }
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.Storage/storageAccounts",
+                      "apiVersion": "2022-05-01",
+                      "name": "[parameters('value5')[0].staticPublicIP]",
+                      "kind": "StorageV2",
+                      "sku": {
+                        "name": "Standard_LRS"
+                      },
+                      "location": "[resourceGroup().location]",
+                      "properties": {},
+                      "tags": {
+                        "value6": "[parameters('value5')[0].value6]",
+                        "value7": "[parameters('value5')[0].value7]",
+                        "ip": "[parameters('value5')[0].staticPublicIP]"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

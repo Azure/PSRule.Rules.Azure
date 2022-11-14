@@ -421,6 +421,12 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetType -eq 'Microsoft.Compute/virtualMachines' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'vm-D';
         }
 
         It 'Azure.VM.Agent' {
@@ -514,6 +520,26 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.TargetName | Should -BeIn 'ReplicaVM_DataDisk_0-ASRReplica', 'disk-A', 'disk-B', 'disk-C';
         }
 
+        It 'Azure.VM.MigrateAMA' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.MigrateAMA' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vm-B', 'vm-D';
+
+            $ruleResult[0].Reason | Should -BeExactly "The legacy Log Analytics Agent is deprecated and will be retired on August 31, 2024. Migrate to the Azure Monitor Agent.";
+            $ruleResult[1].Reason | Should -BeExactly "The legacy Log Analytics Agent is deprecated and will be retired on August 31, 2024. Migrate to the Azure Monitor Agent.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-C';
+        }
     }
 
     Context 'Resource name - Azure.VM.Name' {

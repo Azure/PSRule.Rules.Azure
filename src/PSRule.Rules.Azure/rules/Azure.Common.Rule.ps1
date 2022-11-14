@@ -190,13 +190,16 @@ function global:IsLinuxOffering {
             }
         }
 
-        $someLinuxOSNames = @('ubuntu', 'linux', 'rhel', 'centos', 'redhat', 'debian', 'suse')
-        foreach ($linuxOSName in $someLinuxOSNames) {
-            if ($imageReference.offer -match $linuxOSName) {
-                return $True
-            }
+        $someWindowsOSNames = @('windows')
+        if ($Assert.Contains($imageReference.offer, '.', $someWindowsOSNames).Result) {
+            return $False
         }
-        
+
+        $someLinuxOSNames = @('ubuntu', 'linux', 'rhel', 'centos', 'redhat', 'debian', 'suse')
+        if ($Assert.Contains($imageReference.offer, '.', $someLinuxOSNames).Result) {
+            return $True
+        }
+
         foreach ($publicLinuxOffering in $PublicLinuxOfferings) {
             if ($publicLinuxOffering[0] -ieq $imageReference.publisher -and $publicLinuxOffering[1] -ieq $imageReference.offer) {
                 return $True
@@ -205,19 +208,19 @@ function global:IsLinuxOffering {
 
         return $False
     }
- }
- 
+}
+
 function global:VMHasLinuxOS {
     [CmdletBinding()]
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachines') {
+        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachines' -or $TargetObject.Properties.storageProfile.osDisk.osType -eq 'Windows') {
             return $False;
         }
 
         return $TargetObject.Properties.storageProfile.osDisk.osType -eq 'Linux' -or
-            $Assert.HasField($TargetObject, 'properties.osProfile.linuxConfiguration').Result -or
+        $Assert.HasFieldValue($TargetObject, 'properties.osProfile.linuxConfiguration').Result -or
             (IsLinuxOffering($TargetObject.Properties.storageProfile.imageReference))
     }
 }
@@ -227,12 +230,12 @@ function global:VMSSHasLinuxOS {
     [OutputType([System.Boolean])]
     param ()
     process {
-        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachineScaleSets') {
+        if ($PSRule.TargetType -ne 'Microsoft.Compute/virtualMachineScaleSets' -or $TargetObject.Properties.virtualMachineProfile.storageProfile.osDisk.osType -eq 'Windows') {
             return $False;
         }
 
         return $TargetObject.Properties.virtualMachineProfile.storageProfile.osDisk.osType -eq 'Linux' -or
-            $Assert.HasField($TargetObject, 'properties.virtualMachineProfile.osProfile.linuxConfiguration').Result -or
+        $Assert.HasFieldValue($TargetObject, 'properties.virtualMachineProfile.osProfile.linuxConfiguration').Result -or
             (IsLinuxOffering($TargetObject.Properties.virtualMachineProfile.storageProfile.imageReference))
     }
 }
@@ -395,7 +398,7 @@ function global:GetIPAddressSummary {
     param ()
     process {
         $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
-                $_.Type -like "*/firewallRules"
+                $_.Type -like '*/firewallRules'
             } | ForEach-Object -Process {
                 if (!($_.ResourceName -eq 'AllowAllWindowsAzureIps' -or ($_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0'))) {
                     $_;
@@ -406,7 +409,7 @@ function global:GetIPAddressSummary {
         $public = 0;
 
         foreach ($fwRule in $firewallRules) {
-            if ($fwRule.Properties.startIpAddress -like "10.*" -or $fwRule.Properties.startIpAddress -like "172.*" -or $fwRule.Properties.startIpAddress -like "192.168.*") {
+            if ($fwRule.Properties.startIpAddress -like '10.*' -or $fwRule.Properties.startIpAddress -like '172.*' -or $fwRule.Properties.startIpAddress -like '192.168.*') {
                 $private += GetIPAddressCount -Start $fwRule.Properties.startIpAddress -End $fwRule.Properties.endIpAddress;
             }
             else {
@@ -518,5 +521,28 @@ function global:PrependConfigurationZoneWithProviderZone {
         }
         
         return $ProviderZone;
+    }
+}
+
+function global:HasOMSOrAMAExtension {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($PSRule.TargetType -eq 'Microsoft.Compute/virtualMachines') {
+            $extensions = @(GetSubResources -ResourceType 'Microsoft.Compute/virtualMachines/extensions' |
+                Where-Object { ($_.Properties.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -or ($_.Properties.publisher -eq 'Microsoft.Azure.Monitor') })
+            
+            $Assert.Greater($extensions, '.', 0).Result
+        }
+        elseif ($PSRule.TargetType -eq 'Microsoft.Compute/virtualMachineScaleSets') {
+            $property = $TargetObject.Properties.virtualMachineProfile.extensionProfile.extensions.properties |
+                Where-Object { ($_.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -or ($_.publisher -eq 'Microsoft.Azure.Monitor') }
+                    $subresource = @(GetSubResources -ResourceType 'Microsoft.Compute/virtualMachineScaleSets/extensions' |
+                        Where-Object { ($_.Properties.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -or ($_.Properties.publisher -eq 'Microsoft.Azure.Monitor') })
+                      
+            $extensions = @($property; $subresource)
+            $Assert.Greater($extensions, '.', 0).Result
+        }
     }
 }

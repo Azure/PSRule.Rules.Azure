@@ -42,8 +42,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-B', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-B', 'frontdoor-C', 'frontdoor-D';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -64,8 +64,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D';
         }
 
         It 'Azure.FrontDoor.Logs' {
@@ -83,8 +83,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D';
         }
 
         It 'Azure.FrontDoor.Probe' {
@@ -99,8 +99,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D';
         }
 
         It 'Azure.FrontDoor.ProbeMethod' {
@@ -115,8 +115,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D';
         }
 
         It 'Azure.FrontDoor.ProbePath' {
@@ -134,8 +134,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D';
         }
 
         It 'Azure.FrontDoor.UseWAF' {
@@ -150,8 +150,8 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D';
         }
 
         It 'Azure.FrontDoor.WAF.Mode' {
@@ -184,6 +184,26 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'frontdoor-waf-A';
+        }
+
+        It 'Azure.FrontDoor.UseCaching' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.UseCaching' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-B', 'frontdoor-C', 'frontdoor-D';
+
+            $ruleResult[0].Reason | Should -BeExactly "The front door instance should have caching enabled for routing rules and rule sets to reduce retrieving contents from origins.";
+            $ruleResult[1].Reason | Should -BeExactly "The front door instance should have caching enabled for routing rules and rule sets to reduce retrieving contents from origins.";
+            $ruleResult[2].Reason | Should -BeExactly "The front door instance should have caching enabled for routing rules and rule sets to reduce retrieving contents from origins.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A';
         }
     }
 
