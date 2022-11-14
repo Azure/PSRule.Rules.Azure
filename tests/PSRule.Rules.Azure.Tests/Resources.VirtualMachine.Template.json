@@ -423,7 +423,7 @@
                 "typeHandlerVersion": "2.0",
                 "autoUpgradeMinorVersion": true,
                 "secureSettings": {
-                    "commandToExecute": "[concat('Write-Output password:', parameters('adminPassword'))]"
+                    "commandToExecute": "[concat('Write-Output example:', parameters('adminPassword'))]"
                 }
             }
         }
