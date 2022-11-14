@@ -20,7 +20,7 @@ When the backups are stored in geo-redundant backup storage, they are not only s
 
 For the flexible deployment model the geo-redundant backup is supported for all tiers, but for the single deployment model either `General Purpose` or `Memory Optimized` tier is required.
 
-Check out the `NOTES` section for more details about geo-redundant backup for each of the deployment models.
+Check out the `NOTES` and the `LINKS` section for more details about geo-redundant backup for each of the deployment models.
 
 ## RECOMMENDATION
 
