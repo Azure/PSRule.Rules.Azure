@@ -121,6 +121,27 @@ Describe 'Azure.PostgreSQL' -Tag 'PostgreSQL' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'server-A', 'server-C';
         }
+
+        It 'Azure.PostgreSQL.GeoRedundantBackup' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PostgreSQL.GeoRedundantBackup' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B', 'server-E', 'server-F';
+
+            $ruleResult[0].Reason | Should -BeExactly "The Azure Database for PostgreSQL 'server-B' should have geo-redundant backup configured.";
+            $ruleResult[1].Reason | Should -BeExactly "The Azure Database for PostgreSQL 'server-A' should have geo-redundant backup configured.";
+            $ruleResult[2].Reason | Should -BeExactly "The Azure Database for PostgreSQL 'server-E' should have geo-redundant backup configured.";
+            $ruleResult[3].Reason | Should -BeExactly "The Azure Database for PostgreSQL 'server-F' should have geo-redundant backup configured.";
+           
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-C', 'server-D';
+        }
     }
 
     Context 'Resource name - Azure.PostgreSQL.ServerName' {
