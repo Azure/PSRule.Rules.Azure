@@ -264,3 +264,40 @@ Rule 'Azure.VM.MigrateAMA' -Ref 'AZR-000317' -Type 'Microsoft.Compute/virtualMac
 }
 
 #endregion Azure Monitor Agent
+
+#region IaaS SQL Server disks
+
+# Synopsis: Use Premium SSD disks or greater for data and log files for production SQL Server workloads.
+Rule 'Azure.VM.SQLServerDisk' -Ref 'AZR-000324' -Type 'Microsoft.Compute/virtualMachines' -If { HasPublisherMicrosoftSQLServer } -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    $disks = @(GetOSAndDataDisks)
+    $Assert.Less($disks, '.', 1).Reason($LocalizedData.SQLServerVMDisks).
+    PathPrefix('properties.storageProfile')
+}
+
+#endregion IaaS SQL Server disks
+
+#region Helper functions
+
+function global:HasPublisherMicrosoftSQLServer {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        $Assert.HasFieldValue($TargetObject, 'properties.storageProfile.imageReference.publisher', 'MicrosoftSQLServer').Result
+    }
+}
+
+function global:GetOSAndDataDisks {
+    [CmdletBinding()]
+    [OutputType([PSObject[]])]
+    param ()
+    process {
+        $allowedSkuTypes = @('UltraSSD_LRS', 'PremiumV2_LRS', 'Premium_ZRS', 'Premium_LRS')
+        $TargetObject.properties.storageProfile.osDisk.managedDisk |
+            Where-Object { $_.storageAccountType -and $_.storageAccountType -notin $allowedSkuTypes }
+                $TargetObject.properties.storageProfile.dataDisks |
+                    Where-Object { $_.managedDisk.storageAccountType -and $_.managedDisk.storageAccountType -notin $allowedSkuTypes }
+    }
+}
+
+#endregion Helper functions

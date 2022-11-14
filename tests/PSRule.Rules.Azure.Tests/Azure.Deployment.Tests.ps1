@@ -131,3 +131,50 @@ Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
         }
     }
 }
+
+Describe 'Azure.Deployment.OuterSecret' -Tag 'Deployment' {
+    Context 'Conditions' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            
+        }
+
+        Context 'With Template' {
+            BeforeAll {
+                $failTemplatePath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Template.2.json';
+                $failParameterPath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Parameters.2.json';
+                $passTemplatePath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Template.1.json';
+                $passParameterPath = Join-Path -Path $here -ChildPath 'Resources.Deployments.Parameters.1.json';
+                $passOutputFile = Join-Path -Path $rootPath -ChildPath 'out/tests/Resources.Deployments.Template.1.json';
+                $failOutputFile = Join-Path -Path $rootPath -ChildPath 'out/tests/Resources.Deployments.Template.2.json';
+                Export-AzRuleTemplateData -TemplateFile $failTemplatePath -ParameterFile $failParameterPath -OutputPath $failOutputFile;
+                Export-AzRuleTemplateData -TemplateFile $passTemplatePath -ParameterFile $passParameterPath -OutputPath $passOutputFile;
+                $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $passOutputFile,$failOutputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+            }
+
+            It 'Azure.Deployment.OuterSecret' {
+                $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Deployment.OuterSecret' };
+            
+                 # Fail
+                 $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+                 $ruleResult | Should -Not -BeNullOrEmpty;
+                 $ruleResult.Length | Should -Be 1;
+                 $ruleResult.TargetName | Should -Be $failParameterPath
+            
+                 # Pass
+                 $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+                 $ruleResult | Should -Not -BeNullOrEmpty;
+                 $ruleResult.Length | Should -Be 1;
+                 $ruleResult.TargetName | Should -Be $passParameterPath;
+            }
+        }
+    }
+
+}
+
+
