@@ -1,5 +1,5 @@
 ---
-reviewed: 2022-07-09
+reviewed: 2022-11-16
 severity: Important
 pillar: Security
 category: Secrets
