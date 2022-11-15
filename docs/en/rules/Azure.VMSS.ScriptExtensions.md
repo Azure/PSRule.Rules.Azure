@@ -23,7 +23,7 @@ section instead.
 
 ## RECOMMENDATION
 
-Cpnsider specifying secure values within  `properties.extensionProfile.extensions.protectedSettings` to avoid exposing
+Consider specifying secure values within  `properties.extensionProfile.extensions.protectedSettings` to avoid exposing
 secrets during extension deployments.
 
 ## EXAMPLES
@@ -59,7 +59,7 @@ To deploy VMSS extensions that pass this rule:
 
 - Set any secure values within `properties.extensionProfile.extensions.protectedSettings`
 
-```Bicep
+```bicep
 extensionProfile: {
   extensions: [
     {
@@ -80,5 +80,5 @@ extensionProfile: {
 
 ## LINKS
 
-- [Azure deployment references](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets/extensions?pivots=deployment-language-bicep)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets/extensions)
 - [Azure VMSS Extensions Overview](https://learn.microsoft.com/azure/virtual-machines/extensions/overview)
