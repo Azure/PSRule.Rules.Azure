@@ -10,7 +10,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MariaD
 
 ## SYNOPSIS
 
-Azure Database for MariaDB should only accept encrypted connections.
+Azure Database for MariaDB servers should only accept encrypted connections.
 
 ## DESCRIPTION
 
