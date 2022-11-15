@@ -163,6 +163,27 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
         }
     }
 
+    It 'Azure.MySQL.UseFlexible' {
+        $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.UseFlexible' };
+        
+        # Fail
+        $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+        $ruleResult | Should -Not -BeNullOrEmpty;
+        $ruleResult.Length | Should -Be 3;
+        $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B', 'server-C';
+
+        $ruleResult[0].Reason | Should -BeExactly "The Azure Database for MySQL Single Server deployment model is on the retirement path. Upgrade to the Azure Database for MySQL Flexible Server deployment model.";
+        $ruleResult[1].Reason | Should -BeExactly "The Azure Database for MySQL Single Server deployment model is on the retirement path. Upgrade to the Azure Database for MySQL Flexible Server deployment model.";
+        $ruleResult[2].Reason | Should -BeExactly "The Azure Database for MySQL Single Server deployment model is on the retirement path. Upgrade to the Azure Database for MySQL Flexible Server deployment model.";
+       
+        # Pass
+        $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+        $ruleResult | Should -Not -BeNullOrEmpty;
+        $ruleResult.Length | Should -Be 3;
+        $ruleResult.TargetName | Should -BeIn 'server-D', 'server-E', 'server-F';
+    }
+}
+
     Context 'Resource name - Azure.MySQL.ServerName' {
         BeforeAll {
             $invokeParams = @{

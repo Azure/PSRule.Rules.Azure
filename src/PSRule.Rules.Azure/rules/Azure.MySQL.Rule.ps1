@@ -55,6 +55,11 @@ Rule 'Azure.MySQL.GeoRedundantBackup' -Ref 'AZR-000323' -Type 'Microsoft.DBforMy
     }
 }
 
+# Synopsis: Use Azure Database for MySQL Flexible Server deployment model.
+Rule 'Azure.MySQL.UseFlexible' -Ref 'AZR-000325' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/servers' -Level Warning -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    $Assert.Create($PSRule.TargetType -eq 'Microsoft.DBforMySQL/flexibleServers', $LocalizedData.SingleDeploymentModelRetirement)
+}
+
 # Synopsis: Enable Microsoft Defender for Cloud for Azure Database for MySQL.
 Rule 'Azure.MySQL.DefenderCloud' -Ref 'AZR-000328' -Type 'Microsoft.DBforMySQL/servers', 'Microsoft.DBforMySQL/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
     if ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/servers') {
@@ -71,6 +76,8 @@ Rule 'Azure.MySQL.DefenderCloud' -Ref 'AZR-000328' -Type 'Microsoft.DBforMySQL/s
         $Assert.HasFieldValue($TargetObject, 'properties.state', 'Enabled')
     }
 }
+
+
 
 #region Helper functions
 

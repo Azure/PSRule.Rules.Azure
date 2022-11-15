@@ -1,0 +1,22 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "reference": {
+                "keyVault": {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-A"
+                },
+                "secretName": "string"
+            }
+        },
+        "adminObject": {
+            "reference": {
+                "keyVault": {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-A"
+                },
+                "secretName": "object"
+            }
+        }
+    }
+}
