@@ -925,11 +925,12 @@ Describe 'Azure.VM' -Tag 'VM' {
         }
     }
 
-    Context 'With template' {
+    Context 'With template and parameter file' {
         BeforeAll {
             $templatePath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.Template.json';
-            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualMachine.json;
-            Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
+            $parameterPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.Parameters.json';
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualMachineTemplate.json;
+            Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
             $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
         }
 
@@ -1262,17 +1263,6 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.TargetName | Should -BeIn 'vm-A-nic1';
         }
 
-    }
-
-    Context 'With Parameters' {
-        BeforeAll {
-            $templatePath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.Template.json';
-            $parameterPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.Parameters.json';
-            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualMachineTemplate.json;
-            Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
-            $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
-        }
-
         It 'Azure.VM.ScriptExtensions' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ScriptExtensions' };
 
@@ -1290,5 +1280,6 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.TargetName | Should -BeIn 'vm-C/installcustomscript', 'vm-D/installcustomscript', 'vm-A';
 
         }
+
     }
 }
