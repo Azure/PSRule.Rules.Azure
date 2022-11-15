@@ -212,12 +212,8 @@
         }
       ],
       "dnsSettings": {
-        "dnsServers": [
-          "8.8.8.8"
-        ],
-        "appliedDnsServers": [
-          "8.8.8.8"
-        ],
+        "dnsServers": ["8.8.8.8"],
+        "appliedDnsServers": ["8.8.8.8"],
         "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
       },
       "macAddress": "00-00-00-00-00-00",
@@ -261,7 +257,7 @@
           "createOption": "FromImage",
           "caching": "ReadWrite",
           "managedDisk": {
-            "storageAccountType": "StandardSSD_LRS",
+            "storageAccountType": "UltraSSD_LRS",
             "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-A_OsDisk_1_0000000000000000000000000000000"
           },
           "diskSizeGB": 127
@@ -275,6 +271,17 @@
             "managedDisk": {
               "storageAccountType": "StandardSSD_LRS",
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-A_disk2_0000000000000000000000000000000"
+            },
+            "diskSizeGB": 1023
+          },
+          {
+            "lun": 1,
+            "name": "vm-A_disk3_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "managedDisk": {
+              "storageAccountType": "PremiumV2_LRS",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-A_disk3_0000000000000000000000000000000"
             },
             "diskSizeGB": 1023
           }
@@ -335,12 +342,8 @@
             }
           ],
           "dnsSettings": {
-            "dnsServers": [
-              "8.8.8.8"
-            ],
-            "appliedDnsServers": [
-              "8.8.8.8"
-            ],
+            "dnsServers": ["8.8.8.8"],
+            "appliedDnsServers": ["8.8.8.8"],
             "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
           },
           "macAddress": "00-00-00-00-00-00",
@@ -425,6 +428,17 @@
             "vhd": {
               "uri": "[concat('http://testsa.blob.core.windows.net/vhds/vm-B_disk2_0000000000000000000000000000000.vhd')]"
             }
+          },
+          {
+            "lun": 1,
+            "name": "vm-B_disk3_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "managedDisk": {
+              "storageAccountType": "PremiumV2_LRS",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-B_disk3_0000000000000000000000000000000"
+            },
+            "diskSizeGB": 1023
           }
         ]
       },
@@ -481,12 +495,8 @@
             }
           ],
           "dnsSettings": {
-            "dnsServers": [
-              "8.8.8.8"
-            ],
-            "appliedDnsServers": [
-              "8.8.8.8"
-            ],
+            "dnsServers": ["8.8.8.8"],
+            "appliedDnsServers": ["8.8.8.8"],
             "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
           },
           "macAddress": "00-00-00-00-00-00",
@@ -1358,12 +1368,8 @@
         }
       ],
       "dnsSettings": {
-        "dnsServers": [
-          "8.8.8.8"
-        ],
-        "appliedDnsServers": [
-          "8.8.8.8"
-        ],
+        "dnsServers": ["8.8.8.8"],
+        "appliedDnsServers": ["8.8.8.8"],
         "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
       },
       "macAddress": "00-00-00-00-00-00",
@@ -1410,12 +1416,8 @@
         }
       ],
       "dnsSettings": {
-        "dnsServers": [
-          "8.8.8.8"
-        ],
-        "appliedDnsServers": [
-          "8.8.8.8"
-        ],
+        "dnsServers": ["8.8.8.8"],
+        "appliedDnsServers": ["8.8.8.8"],
         "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
       },
       "macAddress": "00-00-00-00-00-00",
@@ -1608,9 +1610,7 @@
             "privateLinkConnectionProperties": {
               "groupId": "redisCache",
               "requiredMemberName": "redisCache",
-              "fqdns": [
-                "redis-001.redis.cache.windows.net"
-              ]
+              "fqdns": ["redis-001.redis.cache.windows.net"]
             }
           }
         }
@@ -1657,9 +1657,7 @@
           "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/pe-001/privateLinkServiceConnections/pec-001",
           "properties": {
             "privateLinkServiceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-001",
-            "groupIds": [
-              "redisCache"
-            ],
+            "groupIds": ["redisCache"],
             "privateLinkServiceConnectionState": {
               "status": "Approved",
               "description": "Auto-Approved",
@@ -1758,5 +1756,361 @@
     "Sku": null,
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "vm-E",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-E",
+    "ResourceName": "vm-E",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "hardwareProfile": {
+        "vmSize": "Standard_E32s_v3"
+      },
+      "storageProfile": {
+        "imageReference": {
+          "publisher": "MicrosoftSQLServer",
+          "offer": "SQL2017-WS2016",
+          "sku": "Enterprise",
+          "version": "latest"
+        },
+        "osDisk": {
+          "osType": "Windows",
+          "name": "vm-E_OsDisk_1_0000000000000000000000000000000",
+          "createOption": "FromImage",
+          "caching": "ReadWrite",
+          "managedDisk": {
+            "storageAccountType": "StandardSSD_LRS",
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-E_OsDisk_1_0000000000000000000000000000000"
+          },
+          "diskSizeGB": 127
+        },
+        "dataDisks": [
+          {
+            "lun": 0,
+            "name": "vm-E_disk2_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "managedDisk": {
+              "storageAccountType": "StandardSSD_LRS",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-E_disk2_0000000000000000000000000000000"
+            },
+            "diskSizeGB": 1023
+          },
+          {
+            "lun": 1,
+            "name": "vm-E_disk3_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "managedDisk": {
+              "storageAccountType": "PremiumV2_LRS",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-E_disk3_0000000000000000000000000000000"
+            },
+            "diskSizeGB": 1023
+          },
+          {
+            "lun": 2,
+            "name": "vm-E_disk4_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "managedDisk": {
+              "storageAccountType": "PremiumV2_LRS",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-E_disk4_0000000000000000000000000000000"
+            },
+            "diskSizeGB": 1023
+          },
+          {
+            "lun": 3,
+            "name": "vm-E_disk5_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "managedDisk": {
+              "storageAccountType": "PremiumV2_LRS",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-E_disk5_0000000000000000000000000000000"
+            },
+            "diskSizeGB": 1023
+          }
+        ]
+      },
+      "osProfile": {
+        "computerName": "vm-E",
+        "adminUsername": "vm-admin",
+        "windowsConfiguration": {
+          "provisionVMAgent": true,
+          "enableAutomaticUpdates": true
+        },
+        "linuxConfiguration": null,
+        "secrets": [],
+        "allowExtensionOperations": true
+      },
+      "networkProfile": {
+        "networkInterfaces": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-E-nic"
+          }
+        ]
+      },
+      "diagnosticsProfile": {
+        "bootDiagnostics": {
+          "enabled": true,
+          "storageUri": "https://storage-A.blob.core.windows.net/"
+        }
+      },
+      "licenseType": "Windows_Server"
+    },
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
+        "Location": "region",
+        "ResourceName": "nic-A",
+        "Name": "nic-A",
+        "Properties": {
+          "ipConfigurations": [
+            {
+              "name": "ipconfig1",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A/ipConfigurations/ipconfig1",
+              "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "privateIPAddress": "10.0.0.4",
+                "privateIPAllocationMethod": "Static",
+                "publicIPAddress": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-A-pip"
+                },
+                "subnet": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+                },
+                "primary": true,
+                "privateIPAddressVersion": "IPv4"
+              }
+            }
+          ],
+          "dnsSettings": {
+            "dnsServers": ["8.8.8.8"],
+            "appliedDnsServers": ["8.8.8.8"],
+            "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
+          },
+          "macAddress": "00-00-00-00-00-00",
+          "enableAcceleratedNetworking": true,
+          "enableIPForwarding": false,
+          "primary": true,
+          "virtualMachine": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-E"
+          },
+          "hostedWorkloads": [],
+          "tapConfigurations": []
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/networkInterfaces",
+        "ResourceType": "Microsoft.Network/networkInterfaces",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-E/extensions/AzureMonitorWindowsAgent",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-E/extensions/AzureMonitorWindowsAgent",
+        "Location": "region",
+        "ResourceName": "AzureMonitorWindowsAgent",
+        "Name": "AzureMonitorWindowsAgent",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualMachines/vm-E",
+        "Properties": {
+          "publisher": "Microsoft.Azure.Monitor",
+          "type": "AzureMonitorWindowsAgent",
+          "typeHandlerVersion": "1.0",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+            "workspaceId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachines/extensions",
+        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      }
+    ]
+  },
+  {
+    "Name": "vm-F",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-F",
+    "ResourceName": "vm-F",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "hardwareProfile": {
+        "vmSize": "Standard_E32s_v3"
+      },
+      "storageProfile": {
+        "imageReference": {
+          "publisher": "MicrosoftSQLServer",
+          "offer": "SQL2017-WS2016",
+          "sku": "Enterprise",
+          "version": "latest"
+        },
+        "osDisk": {
+          "osType": "Windows",
+          "name": "vm-F_OsDisk_1_0000000000000000000000000000000",
+          "createOption": "FromImage",
+          "caching": "ReadWrite",
+          "managedDisk": {
+            "storageAccountType": "Premium_ZRS",
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-F_OsDisk_1_0000000000000000000000000000000"
+          },
+          "diskSizeGB": 127
+        },
+        "dataDisks": [
+          {
+            "lun": 0,
+            "name": "vm-F_disk2_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "managedDisk": {
+              "storageAccountType": "Premium_ZRS",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-F_disk2_0000000000000000000000000000000"
+            },
+            "diskSizeGB": 1023
+          },
+          {
+            "lun": 1,
+            "name": "vm-F_disk3_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "managedDisk": {
+              "storageAccountType": "Premium_ZRS",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-F_disk3_0000000000000000000000000000000"
+            },
+            "diskSizeGB": 1023
+          },
+          {
+            "lun": 2,
+            "name": "vm-F_disk4_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "managedDisk": {
+              "storageAccountType": "Premium_ZRS",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-F_disk4_0000000000000000000000000000000"
+            },
+            "diskSizeGB": 1023
+          },
+          {
+            "lun": 3,
+            "name": "vm-F_disk5_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "managedDisk": {
+              "storageAccountType": "Premium_ZRS",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-F_disk5_0000000000000000000000000000000"
+            },
+            "diskSizeGB": 1023
+          }
+        ]
+      },
+      "osProfile": {
+        "computerName": "vm-F",
+        "adminUsername": "vm-admin",
+        "windowsConfiguration": {
+          "provisionVMAgent": true,
+          "enableAutomaticUpdates": true
+        },
+        "linuxConfiguration": null,
+        "secrets": [],
+        "allowExtensionOperations": true
+      },
+      "networkProfile": {
+        "networkInterfaces": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-F-nic"
+          }
+        ]
+      },
+      "diagnosticsProfile": {
+        "bootDiagnostics": {
+          "enabled": true,
+          "storageUri": "https://storage-A.blob.core.windows.net/"
+        }
+      },
+      "licenseType": "Windows_Server"
+    },
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
+        "Location": "region",
+        "ResourceName": "nic-A",
+        "Name": "nic-A",
+        "Properties": {
+          "ipConfigurations": [
+            {
+              "name": "ipconfig1",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A/ipConfigurations/ipconfig1",
+              "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "privateIPAddress": "10.0.0.4",
+                "privateIPAllocationMethod": "Static",
+                "publicIPAddress": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-A-pip"
+                },
+                "subnet": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+                },
+                "primary": true,
+                "privateIPAddressVersion": "IPv4"
+              }
+            }
+          ],
+          "dnsSettings": {
+            "dnsServers": ["8.8.8.8"],
+            "appliedDnsServers": ["8.8.8.8"],
+            "internalDomainNameSuffix": "example.nn.internal.cloudapp.net"
+          },
+          "macAddress": "00-00-00-00-00-00",
+          "enableAcceleratedNetworking": true,
+          "enableIPForwarding": false,
+          "primary": true,
+          "virtualMachine": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-F"
+          },
+          "hostedWorkloads": [],
+          "tapConfigurations": []
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/networkInterfaces",
+        "ResourceType": "Microsoft.Network/networkInterfaces",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-F/extensions/AzureMonitorWindowsAgent",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-F/extensions/AzureMonitorWindowsAgent",
+        "Location": "region",
+        "ResourceName": "AzureMonitorWindowsAgent",
+        "Name": "AzureMonitorWindowsAgent",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualMachines/vm-F",
+        "Properties": {
+          "publisher": "Microsoft.Azure.Monitor",
+          "type": "AzureMonitorWindowsAgent",
+          "typeHandlerVersion": "1.0",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+            "workspaceId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachines/extensions",
+        "ResourceType": "Microsoft.Compute/virtualMachines/extensions",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      }
+    ]
   }
 ]
