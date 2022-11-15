@@ -18,7 +18,7 @@ Geo-redundant backup helps to protect your Azure Database for MariaDB Servers ag
 
 When the backups are stored in geo-redundant backup storage, they are not only stored within the region in which your server is hosted, but are also replicated to a paired data center.
 
-Check out the `NOTES` section for more details about geo-redundant backup.
+Check out the `NOTES` and the `LINKS` section for more details about geo-redundant backup.
 
 ## RECOMMENDATION
 
@@ -101,5 +101,5 @@ This rule is only applicable for Azure Database for Maria DB Servers with `Gener
 ## LINKS
 
 - [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
-- [Backup and restore in Azure Database for MariaDB](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers)
+- [Backup and restore in Azure Database for MariaDB](https://learn.microsoft.com/azure/mariadb/concepts-backup)
 - [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers)
