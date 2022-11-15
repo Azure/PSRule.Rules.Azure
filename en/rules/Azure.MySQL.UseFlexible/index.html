@@ -6,20 +6,20 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources.">
+        <meta name="description" content="Use Azure Database for MySQL Flexible Server deployment model.">
       
       
         <meta name="author" content="Microsoft">
       
       
-        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.WAFEnabled/">
+        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.UseFlexible/">
       
       <link rel="icon" href="../../../assets/ms_icon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.9">
     
     
       
-        <title>Azure.AppGw.WAFEnabled - PSRule for Azure</title>
+        <title>Azure.MySQL.UseFlexible - PSRule for Azure</title>
       
     
     
@@ -75,20 +75,20 @@
   <!-- Open graph meta tags -->
   <meta property="og:site_name" content="PSRule for Azure" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PSRule for Azure - Azure.AppGw.WAFEnabled" />
-  <meta property="og:description" content="Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources." />
-  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.WAFEnabled/" />
+  <meta property="og:title" content="PSRule for Azure - Azure.MySQL.UseFlexible" />
+  <meta property="og:description" content="Use Azure Database for MySQL Flexible Server deployment model." />
+  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.UseFlexible/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1280" />
   <meta property="og:image:height" content="640" />
-  <meta property="og:image:alt" content="Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources." />
+  <meta property="og:image:alt" content="Use Azure Database for MySQL Flexible Server deployment model." />
 
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - Azure.AppGw.WAFEnabled" />
-  <meta name="twitter:description" content="Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources." />
+  <meta name="twitter:title" content="PSRule for Azure - Azure.MySQL.UseFlexible" />
+  <meta name="twitter:description" content="Use Azure Database for MySQL Flexible Server deployment model." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
 
@@ -110,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#application-gateway-waf-is-enabled" class="md-skip">
+        <a href="#use-azure-database-for-mysql-flexible-server" class="md-skip">
           Skip to content
         </a>
       
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Azure.AppGw.WAFEnabled
+              Azure.MySQL.UseFlexible
             
           </span>
         </div>
@@ -3069,107 +3069,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Azure.AppGw.WAFEnabled
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Azure.AppGw.WAFEnabled/" class="md-nav__link">
         Azure.AppGw.WAFEnabled
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommendation" class="md-nav__link">
-    Recommendation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
-  </a>
-  
-    <nav class="md-nav" aria-label="Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-template" class="md-nav__link">
-    Configure with Azure template
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-bicep" class="md-nav__link">
-    Configure with Bicep
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-cli" class="md-nav__link">
-    Configure with Azure CLI
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-powershell" class="md-nav__link">
-    Configure with Azure PowerShell
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    Links
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4523,11 +4427,66 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Azure.MySQL.UseFlexible/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Azure.MySQL.UseFlexible
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Azure.MySQL.UseFlexible
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -7321,47 +7280,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
-  </a>
-  
-    <nav class="md-nav" aria-label="Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-template" class="md-nav__link">
-    Configure with Azure template
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-bicep" class="md-nav__link">
-    Configure with Bicep
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-cli" class="md-nav__link">
-    Configure with Azure CLI
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-powershell" class="md-nav__link">
-    Configure with Azure PowerShell
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#links" class="md-nav__link">
     Links
   </a>
@@ -7385,7 +7303,7 @@
   
     
       <a
-        href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.WAFEnabled.md"
+        href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.MySQL.UseFlexible.md"
         title="Edit this page"
         class="md-content__button md-icon"
       >
@@ -7402,85 +7320,24 @@
   
 
   <!-- Markdown content -->
-  <h1 id="application-gateway-waf-is-enabled">Application Gateway WAF is enabled<a class="headerlink" href="#application-gateway-waf-is-enabled" title="Permanent link">#</a></h1>
-<nav class="md-tags"><span class="md-tag">Azure.AppGw.WAFEnabled</span><span class="md-tag">AZR-000066</span><span class="md-tag">Error</span></nav>
-<p><a href="../module/#security"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0l-9.272-9.272zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0l-9.273 9.272z"/></svg></span> Security</a>
- · <a href="../resource/#application-gateway"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M13.152.682a2.25 2.25 0 0 1 2.269 0l.007.004 6.957 4.276a2.276 2.276 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003a2.276 2.276 0 0 1-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026a2.28 2.28 0 0 1 .82-.827h.002L13.152.681zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.776.776 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003zM18 9.709l-3.25 1.9v7.548L18 17.245V9.709zm1.5-.878v7.532l2.124-1.25a.777.777 0 0 0 .387-.671V7.363L19.5 8.831zm-9.09 5.316 2.84-1.66v7.552l-3.233 1.902v-7.612c.134-.047.265-.107.391-.18l.002-.002zm-1.893 7.754V14.33a2.277 2.277 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232z"/></svg></span> Application Gateway</a>
- · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/><path fill-rule="evenodd" d="M2.5 1A1.5 1.5 0 0 0 1 2.5v8.44c0 .397.158.779.44 1.06l10.25 10.25a1.5 1.5 0 0 0 2.12 0l8.44-8.44a1.5 1.5 0 0 0 0-2.12L12 1.44A1.5 1.5 0 0 0 10.94 1H2.5zm0 1.5h8.44l10.25 10.25-8.44 8.44L2.5 10.94V2.5z"/></svg></span> 2020_06</p>
-<p>Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources.</p>
+  <h1 id="use-azure-database-for-mysql-flexible-server">Use Azure Database for MySQL Flexible Server<a class="headerlink" href="#use-azure-database-for-mysql-flexible-server" title="Permanent link">#</a></h1>
+<nav class="md-tags"><span class="md-tag">Azure.MySQL.UseFlexible</span><span class="md-tag">AZR-000325</span><span class="md-tag">Warning</span></nav>
+<p><a href="../module/#operational-excellence"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0l-9.272-9.272zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0l-9.273 9.272z"/></svg></span> Operational Excellence</a>
+ · <a href="../resource/#azure-database-for-mysql"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M13.152.682a2.25 2.25 0 0 1 2.269 0l.007.004 6.957 4.276a2.276 2.276 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003a2.276 2.276 0 0 1-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026a2.28 2.28 0 0 1 .82-.827h.002L13.152.681zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.776.776 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003zM18 9.709l-3.25 1.9v7.548L18 17.245V9.709zm1.5-.878v7.532l2.124-1.25a.777.777 0 0 0 .387-.671V7.363L19.5 8.831zm-9.09 5.316 2.84-1.66v7.552l-3.233 1.902v-7.612c.134-.047.265-.107.391-.18l.002-.002zm-1.893 7.754V14.33a2.277 2.277 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232z"/></svg></span> Azure Database for MySQL</a>
+ · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/><path fill-rule="evenodd" d="M2.5 1A1.5 1.5 0 0 0 1 2.5v8.44c0 .397.158.779.44 1.06l10.25 10.25a1.5 1.5 0 0 0 2.12 0l8.44-8.44a1.5 1.5 0 0 0 0-2.12L12 1.44A1.5 1.5 0 0 0 10.94 1H2.5zm0 1.5h8.44l10.25 10.25-8.44 8.44L2.5 10.94V2.5z"/></svg></span> 2022_12</p>
+<p>Use Azure Database for MySQL Flexible Server deployment model.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>Security features of Application Gateways deployed with WAF may be toggled on or off.</p>
-<p>When WAF is disabled network traffic is still processed by the Application Gateway however detection and/ or
-prevention of malicious attacks does not occur.</p>
-<p>To protect backend resources from potentially malicious network traffic, WAF must be enabled.</p>
+<p>Azure Database for MySQL Single Server is on the retirement path. Upgrade to Azure Database for MySQL Flexible Server.</p>
+<p>Azure Database for MySQL Flexible Server provides additional options for resilience and scalability above the Single Server deployment model.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider enabling WAF for Application Gateway instances connected to un-trusted or low-trust networks such as the Internet.</p>
-<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
-<h3 id="configure-with-azure-template">Configure with Azure template<a class="headerlink" href="#configure-with-azure-template" title="Permanent link">#</a></h3>
-<p>To deploy Application Gateways that pass this rule:</p>
-<ul>
-<li>Set the <code>properties.webApplicationFirewallConfiguration.enabled</code> property to <code>true</code>.</li>
-</ul>
-<p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/applicationGateways&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-11-01&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;appGw-001&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[resourceGroup().location]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WAF_v2&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WAF_v2&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;webApplicationFirewallConfiguration&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;firewallMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Prevention&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;ruleSetType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OWASP&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;ruleSetVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.2&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;disabledRuleGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;requestBodyCheck&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;maxRequestBodySizeInKb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;fileUploadLimitInMb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<h3 id="configure-with-bicep">Configure with Bicep<a class="headerlink" href="#configure-with-bicep" title="Permanent link">#</a></h3>
-<p>To deploy Application Gateways that pass this rule:</p>
-<ul>
-<li>Set the <code>properties.webApplicationFirewallConfiguration.enabled</code> property to <code>true</code>.</li>
-</ul>
-<p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource appGw &#39;Microsoft.Network/applicationGateways@2021-02-01&#39; = {
-  name: &#39;appGw-001&#39;
-  location: location
-  properties: {
-    sku: {
-      name: &#39;WAF_v2&#39;
-      tier: &#39;WAF_v2&#39;
-    }
-    webApplicationFirewallConfiguration: {
-      enabled: true
-      firewallMode: &#39;Prevention&#39;
-      ruleSetType: &#39;OWASP&#39;
-      ruleSetVersion: &#39;3.2&#39;
-    }
-  }
-}
-</code></pre></div>
-<h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>az network application-gateway waf-config <span class="nb">set</span> --enabled <span class="nb">true</span> -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
-</code></pre></div>
-<h3 id="configure-with-azure-powershell">Configure with Azure PowerShell<a class="headerlink" href="#configure-with-azure-powershell" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nv">$AppGw</span> <span class="p">=</span> <span class="nb">Get-AzApplicationGateway</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;name&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
-<span class="nb">Set-AzApplicationGatewayWebApplicationFirewallConfiguration</span> <span class="n">-ApplicationGateway</span> <span class="nv">$AppGw</span> <span class="n">-Enabled</span> <span class="nv">$True</span> <span class="n">-FirewallMode</span> <span class="s1">&#39;Prevention&#39;</span>
-</code></pre></div>
+<p>Migrate to Azure Database for MySQL Flexible Server deployment model.</p>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints">Best practices for endpoint security on Azure</a></li>
-<li><a href="https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall">Securing PaaS deployments</a></li>
-<li><a href="https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview">What is Azure Web Application Firewall on Azure Application Gateway?</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways">Azure deployment reference</a></li>
+<li><a href="https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure">Infrastructure provisioning</a></li>
+<li><a href="https://learn.microsoft.com/azure/mysql/single-server/whats-happening-to-mysql-single-server">Azure Database for MySQL Single Server deployment model retirement</a></li>
+<li><a href="https://learn.microsoft.com/azure/mysql/single-server/whats-happening-to-mysql-single-server#migrate-from-single-server-to-flexible-server">Migrate from Single Server to Flexible Server</a></li>
+<li><a href="https://learn.microsoft.com/azure/mysql/single-server/select-right-deployment-type#comparing-the-mysql-deployment-options-in-azure">Comparing the MySQL deployment options in Azure</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.dbformysql/flexibleservers">Azure template reference flexible servers</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7491,7 +7348,7 @@ prevention of malicious attacks does not occur.</p>
   <small>
     
       Last update:
-      2022-10-17
+      2022-11-15
     
   </small>
 </div>
@@ -7514,7 +7371,7 @@ prevention of malicious attacks does not occur.</p>
       data-category="Documentation"
       data-category-id="DIC_kwDOCvn6LM4CQqE6"
       data-mapping="specific"
-      data-term="Azure.AppGw.WAFEnabled"
+      data-term="Azure.MySQL.UseFlexible"
       data-strict="0"
       data-reactions-enabled="1"
       data-emit-metadata="0"

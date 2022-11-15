@@ -1176,6 +1176,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.UseFlexible/</loc>
+         <lastmod>2022-11-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.UseSSL/</loc>
          <lastmod>2022-11-15</lastmod>
          <changefreq>daily</changefreq>
