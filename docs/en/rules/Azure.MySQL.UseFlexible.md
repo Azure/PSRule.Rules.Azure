@@ -16,16 +16,14 @@ Use Azure Database for MySQL Flexible Server deployment model.
 
 Azure Database for MySQL Single Server is on the retirement path. Upgrade to Azure Database for MySQL Flexible Server.
 
-Azure Database for MySQL Flexible Server to bring you the best of Azure’s open-source database platform.
-
-Check out the `LINKS` section for more details about the retirement path and migration steps.
+Azure Database for MySQL Flexible Server provides additional options for resilience and scalability above the Single Server deployment model.
 
 ## RECOMMENDATION
 
-Upgrade to Azure Database for MySQL Flexible Server deployment model.
+Migrate to Azure Database for MySQL Flexible Server deployment model.
 
 ## LINKS
 
 - [Infrastructure provisioning](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Azure Database for MySQL Single Server deployment model retirement](https://learn.microsoft.com/azure/mysql/single-server/whats-happening-to-mysql-single-server)
-- [Azure template reference flexible servers](https://learn.microsoft.com/azure/templates/microsoft.dbforpostgresql/flexibleservers)
+- [Azure template reference flexible servers](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/flexibleservers)
