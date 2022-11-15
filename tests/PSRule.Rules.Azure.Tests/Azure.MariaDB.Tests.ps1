@@ -73,4 +73,22 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'server-C';
     }
+
+    It 'Azure.MariaDB.MinTLS' {
+        $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MariaDB.MinTLS' };
+
+        # Fail
+        $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+        $ruleResult | Should -Not -BeNullOrEmpty;
+        $ruleResult.Length | Should -Be 2;
+        $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
+
+        $ruleResult[0].Reason | Should -BeExactly "Minimum TLS version is set to TLS1_0.";
+        $ruleResult[1].Reason | Should -BeExactly "Minimum TLS version is set to {0}.";
+
+        # Pass
+        $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+        $ruleResult | Should -Not -BeNullOrEmpty;
+        $ruleResult.Length | Should -Be 1;
+        $ruleResult.TargetName | Should -BeIn 'server-C';
 }

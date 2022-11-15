@@ -13,9 +13,15 @@ Rule 'Azure.MariaDB.GeoRedundantBackup' -Ref 'AZR-000329' -Type 'Microsoft.DBfor
     Reason($LocalizedData.MariaDBGeoRedundantBackupNotConfigured, $PSRule.TargetName)
 }
 
-# Synopsis: Azure Database for MariaDB should only accept encrypted connections.
+# Synopsis: Azure Database for MariaDB servers should only accept encrypted connections.
 Rule 'Azure.MariaDB.UseSSL' -Ref 'AZR-000332' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
     $Assert.HasFieldValue($TargetObject, 'properties.sslEnforcement', 'Enabled').Reason($LocalizedData.MariaDBEncryptedConnection)
+}
+
+# Synopsis: Azure Database for MariaDB servers should reject TLS versions older than 1.2.
+Rule 'Azure.MariaDB.MinTLS' -Ref 'AZR-000333' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    $Assert.HasFieldValue($TargetObject, 'properties.minimalTlsVersion', 'TLS1_2').
+    Reason($LocalizedData.MinTLSVersion, $TargetObject.properties.minimalTlsVersion)
 }
 
 #endregion Rules
