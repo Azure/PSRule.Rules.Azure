@@ -101,5 +101,5 @@ This rule is only applicable for Azure Database for Maria DB Servers with `Gener
 ## LINKS
 
 - [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
-- [Backup and restore in Azure Database for MariaDB](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers)
+- [Backup and restore in Azure Database for MariaDB](https://learn.microsoft.com/azure/mariadb/concepts-backup)
 - [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers)
