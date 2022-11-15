@@ -231,7 +231,7 @@ Rule 'Azure.VM.PPGName' -Ref 'AZR-000260' -Type 'Microsoft.Compute/proximityPlac
 #endregion Proximity Placement Groups
 
 # Synopsis: Protect Custom Script Extensions commands
-Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000324' -Type 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachines/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000332' -Type 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachines/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
     $vmConfig = @($TargetObject);
 
     if ($PSRule.TargetType -eq 'Microsoft.Compute/virtualMachines') {
