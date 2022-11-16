@@ -1,0 +1,96 @@
+#
+# Repository analysis
+#
+
+# NOTES:
+# This workflow uses PSRule, CodeQL, and DevSkim.
+# You can read more about these linting tools and configuration options here:
+#   PSRule - https://aka.ms/ps-rule and https://github.com/Microsoft/PSRule.Rules.MSFT.OSS
+#   CodeQL - https://codeql.github.com/docs/codeql-overview/about-codeql/
+#   DevSkim - https://github.com/microsoft/DevSkim-Action and https://github.com/Microsoft/DevSkim
+
+name: Build
+on:
+  push:
+    branches: [ main, 'release/*' ]
+  pull_request:
+    branches: [ main, 'release/*' ]
+  workflow_dispatch:
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  build:
+    name: Analyze with PSRule
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+
+    - name: Install dependencies
+      shell: pwsh
+      run: ./.azure-pipelines/pipeline-deps.ps1
+
+    - name: Build module
+      shell: pwsh
+      run: Invoke-Build -Configuration Release
+
+    - name: Upload module
+      uses: actions/upload-artifact@v3
+      with:
+        name: module-release
+        path: ./out/modules/PSRule.Rules.Azure/*
+        if-no-files-found: error
+
+  test:
+    name: Test module (${{ matrix.rid }})
+    runs-on: ${{ matrix.os }}
+    needs: build
+    permissions:
+      contents: read
+
+    strategy:
+      # Get full test results from all platforms.
+      fail-fast: false
+
+      matrix:
+        include:
+          - os: windows-latest
+            rid: win-x64
+          - os: ubuntu-latest
+            rid: linux-x64
+          - os: ubuntu-latest
+            rid: linux-musl-x64
+          - os: macos-latest
+            rid: osx-x64
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+
+    - name: Install dependencies
+      shell: pwsh
+      run: ./.azure-pipelines/pipeline-deps.ps1
+
+    - name: Download module
+      uses: actions/download-artifact@v3
+      with:
+        name: module-release
+        path: ./out/modules/PSRule.Rules.Azure
+
+    - name: Test module
+      shell: pwsh
+      run: Invoke-Build TestModule -Configuration Release
