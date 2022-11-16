@@ -925,7 +925,7 @@ Describe 'Azure.VM' -Tag 'VM' {
         }
     }
 
-    Context 'With template and parameter file' {
+    Context 'With template' {
         BeforeAll {
             $templatePath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.Template.json';
             $parameterPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.Parameters.json';
@@ -1266,7 +1266,6 @@ Describe 'Azure.VM' -Tag 'VM' {
         It 'Azure.VM.ScriptExtensions' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ScriptExtensions' };
 
-            
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -1278,8 +1277,6 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'vm-C/installcustomscript', 'vm-D/installcustomscript', 'vm-A';
-
         }
-
     }
 }

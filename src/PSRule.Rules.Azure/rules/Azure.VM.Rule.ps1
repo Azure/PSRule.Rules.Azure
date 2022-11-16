@@ -252,6 +252,7 @@ Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000332' -Type 'Microsoft.Compute/virt
         return $Assert.Pass();
     }
 }
+
 #region Azure Monitor Agent
 
 # Synopsis: Use Azure Monitor Agent as replacement for Log Analytics Agent.

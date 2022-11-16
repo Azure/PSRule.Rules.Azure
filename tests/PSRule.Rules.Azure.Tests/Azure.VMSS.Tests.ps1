@@ -333,7 +333,7 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
         }
     }
 
-    Context 'With parameters' {
+    Context 'With template' {
         BeforeAll {
             $templatePath = Join-Path -Path $here -ChildPath 'Resources.VMSS.Template.json';
             $parameterPath = Join-Path -Path $here -ChildPath 'Resources.VMSS.Parameters.json';
@@ -356,7 +356,6 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002';
-
         }
     }
 }

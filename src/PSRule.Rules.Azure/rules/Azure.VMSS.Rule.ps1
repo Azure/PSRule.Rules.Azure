@@ -78,6 +78,7 @@ Rule 'Azure.VMSS.MigrateAMA' -Ref 'AZR-000318' -Type 'Microsoft.Compute/virtualM
     $extensions = @($property; $subresource)
     $Assert.Less($extensions, '.', 1).Reason($LocalizedData.LogAnalyticsAgentDeprecated)
 }
+
 #endregion Virtual machine scale set
 
 #region Helper functions
