@@ -606,11 +606,13 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
+            $ruleResult.Length | Should -Be 5;
             $ruleResult.TargetName | Should -BeIn @(
                 'tests/PSRule.Rules.Azure.Tests/Tests.Bicep.1.Parameters.json'
                 'tests/PSRule.Rules.Azure.Tests/Tests.Bicep.2.Parameters.json'
                 'tests/PSRule.Rules.Azure.Tests/Resources.ServiceFabric.Parameters.json'
+                'tests/PSRule.Rules.Azure.Tests/Resources.VirtualMachine.Parameters.json'
+                'tests/PSRule.Rules.Azure.Tests/Resources.VMSS.Parameters.json'
             );
 
             # Pass
