@@ -244,12 +244,14 @@ Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000332' -Type 'Microsoft.Compute/virt
 
     ## Extension Prof
     $customScriptProperties = @('CustomScript', 'CustomScriptExtension', 'CustomScriptForLinux')
-    if ($vmConfig.properties.type -in $customScriptProperties) {
-        $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($vmConfig.properties.settings.commandToExecute);
-        $Assert.NotMatch($cleanValue, '.', "SecretReference")
-    }
-    else {
-        return $Assert.Pass();
+    foreach ($config in $vmConfig) {
+        if ($config.properties.type -in $customScriptProperties) {
+            $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($config.properties.settings.commandToExecute);
+            $Assert.NotMatch($cleanValue, '.', "SecretReference")
+        }
+        else {
+            return $Assert.Pass();
+        }
     }
 }
 
