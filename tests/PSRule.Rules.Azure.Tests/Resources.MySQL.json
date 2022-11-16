@@ -213,8 +213,12 @@
         "Name": "Default",
         "Properties": {
           "state": "Disabled",
-          "disabledAlerts": [""],
-          "emailAddresses": [""],
+          "disabledAlerts": [
+            ""
+          ],
+          "emailAddresses": [
+            ""
+          ],
           "emailAccountAdmins": true,
           "storageEndpoint": "https://account.blob.core.windows.net",
           "storageAccountAccessKey": "",
@@ -272,8 +276,12 @@
         "Name": "Default",
         "Properties": {
           "state": "Enabled",
-          "disabledAlerts": [""],
-          "emailAddresses": [""],
+          "disabledAlerts": [
+            ""
+          ],
+          "emailAddresses": [
+            ""
+          ],
           "emailAccountAdmins": true,
           "storageEndpoint": "https://account.blob.core.windows.net",
           "storageAccountAccessKey": "",
@@ -285,104 +293,6 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
-  },
-  {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-D",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-D",
-    "Location": "region",
-    "ResourceName": "server-D",
-    "Name": "server-D",
-    "Properties": {
-      "administratorLogin": "db-admin",
-      "storage": {
-        "autoGrow": "Enabled",
-        "iops": 360,
-        "storageSizeGB": 20
-      },
-      "backup": {
-        "backupRetentionDays": 35,
-        "geoRedundantBackup": "Enabled"
-      },
-      "highAvailability": {
-        "mode": "Disabled"
-      },
-      "version": "8.0.21",
-      "createMode": "Default"
-    },
-    "ResourceGroupName": "test-rg",
-    "Type": "Microsoft.DBforMySQL/flexibleServers",
-    "ResourceType": "Microsoft.DBforMySQL/flexibleServers",
-    "Sku": {
-      "Name": "Standard_B8ms",
-      "Tier": "Burstable"
-    },
-    "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-  },
-  {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-E",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-E",
-    "Location": "region",
-    "ResourceName": "server-E",
-    "Name": "server-E",
-    "Properties": {
-      "administratorLogin": "db-admin",
-      "storage": {
-        "autoGrow": "Enabled",
-        "iops": 360,
-        "storageSizeGB": 20
-      },
-      "backup": {
-        "backupRetentionDays": 7
-      },
-      "highAvailability": {
-        "mode": "Disabled"
-      },
-      "version": "8.0.21",
-      "createMode": "Default"
-    },
-    "ResourceGroupName": "test-rg",
-    "Type": "Microsoft.DBforMySQL/flexibleServers",
-    "ResourceType": "Microsoft.DBforMySQL/flexibleServers",
-    "Sku": {
-      "Name": "Standard_D16ads_v5",
-      "Tier": "GeneralPurpose"
-    },
-    "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-  },
-  {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-F",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-F",
-    "Location": "region",
-    "ResourceName": "server-F",
-    "Name": "server-F",
-    "Properties": {
-      "administratorLogin": "db-admin",
-      "storage": {
-        "autoGrow": "Enabled",
-        "iops": 360,
-        "storageSizeGB": 20
-      },
-      "backup": {
-        "backupRetentionDays": 7,
-        "geoRedundantBackup": "Disabled"
-      },
-      "highAvailability": {
-        "mode": "Disabled"
-      },
-      "version": "8.0.21",
-      "createMode": "Default"
-    },
-    "ResourceGroupName": "test-rg",
-    "Type": "Microsoft.DBforMySQL/flexibleServers",
-    "ResourceType": "Microsoft.DBforMySQL/flexibleServers",
-    "Sku": {
-      "Name": "E64",
-      "Tier": "MemoryOptimized"
-    },
-    "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-D",
