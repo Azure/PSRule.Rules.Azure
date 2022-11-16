@@ -38,6 +38,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check Azure Database for PostgreSQL servers have geo-redundant backup configured by @bengeset96.
       [#285](https://github.com/Azure/PSRule.Rules.Azure/issues/285)
   - Azure Database for MySQL:
+    - Check Azure Database for MySQL servers have Microsoft Defender configured by @bengeset96.
+      [#287](https://github.com/Azure/PSRule.Rules.Azure/issues/287)
     - Check Azure Database for MySQL servers uses the flexible deployment model by @bengeset96.
       [#1841](https://github.com/Azure/PSRule.Rules.Azure/issues/1841)
     - Check Azure Database for MySQL Flexible Servers have geo-redundant backup configured by @bengeset96.
