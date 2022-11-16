@@ -24,6 +24,23 @@ Rule 'Azure.MariaDB.MinTLS' -Ref 'AZR-000333' -Type 'Microsoft.DBforMariaDB/serv
     Reason($LocalizedData.MinTLSVersion, $TargetObject.properties.minimalTlsVersion)
 }
 
+# Synopsis: Enable Microsoft Defender for Cloud for Azure Database for MariaDB.
+Rule 'Azure.MariaDB.DefenderCloud' -Ref 'AZR-000330' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
+        $defenderConfigs = @(GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/securityAlertPolicies')
+        if ($defenderConfigs.Length -eq 0) {
+            $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.DBforMariaDB/servers/securityAlertPolicies')
+        }
+        foreach ($defenderConfig in $defenderConfigs) {
+            $Assert.HasFieldValue($defenderConfig, 'properties.state', 'Enabled').
+            PathPrefix('resources')
+        }
+    }
+    elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/securityAlertPolicies') {
+        $Assert.HasFieldValue($TargetObject, 'properties.state', 'Enabled')
+    }
+}
+
 #endregion Rules
 
 #region Helper functions
