@@ -152,9 +152,9 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B', 'server-C';
 
-            $ruleResult[0].Reason | Should -BeExactly "The Azure Database for MySQL Single Server deployment model is on the retirement path. Upgrade to the Azure Database for MySQL Flexible Server deployment model.";
-            $ruleResult[1].Reason | Should -BeExactly "The Azure Database for MySQL Single Server deployment model is on the retirement path. Upgrade to the Azure Database for MySQL Flexible Server deployment model.";
-            $ruleResult[2].Reason | Should -BeExactly "The Azure Database for MySQL Single Server deployment model is on the retirement path. Upgrade to the Azure Database for MySQL Flexible Server deployment model.";
+            $ruleResult[0].Reason | Should -BeExactly "The Azure Database for MySQL Single Server deployment model is on the retirement path. Migrate to the Azure Database for MySQL Flexible Server deployment model.";
+            $ruleResult[1].Reason | Should -BeExactly "The Azure Database for MySQL Single Server deployment model is on the retirement path. Migrate to the Azure Database for MySQL Flexible Server deployment model.";
+            $ruleResult[2].Reason | Should -BeExactly "The Azure Database for MySQL Single Server deployment model is on the retirement path. Migrate to the Azure Database for MySQL Flexible Server deployment model.";
         
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

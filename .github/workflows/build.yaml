@@ -1,20 +1,16 @@
 #
-# Repository analysis
+# CI Pipeline
 #
 
 # NOTES:
-# This workflow uses PSRule, CodeQL, and DevSkim.
-# You can read more about these linting tools and configuration options here:
-#   PSRule - https://aka.ms/ps-rule and https://github.com/Microsoft/PSRule.Rules.MSFT.OSS
-#   CodeQL - https://codeql.github.com/docs/codeql-overview/about-codeql/
-#   DevSkim - https://github.com/microsoft/DevSkim-Action and https://github.com/Microsoft/DevSkim
+# This workflow builds and tests module updates.
 
 name: Build
 on:
-  push:
-    branches: [ main, 'release/*' ]
-  pull_request:
-    branches: [ main, 'release/*' ]
+  # push:
+  #   branches: [ main, 'release/*' ]
+  # pull_request:
+  #   branches: [ main, 'release/*' ]
   workflow_dispatch:
 
 env:
@@ -51,6 +47,22 @@ jobs:
       with:
         name: module-release
         path: ./out/modules/PSRule.Rules.Azure/*
+        if-no-files-found: error
+
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: Module.DotNet.TestResults
+        path: ./reports/*.trx
+        if-no-files-found: error
+
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: Module.PSRule.TestResults
+        path: ./reports/ps-rule*.xml
         if-no-files-found: error
 
   Test:
