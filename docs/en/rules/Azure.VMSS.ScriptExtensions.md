@@ -80,5 +80,6 @@ extensionProfile: {
 
 ## LINKS
 
+- [Secure application configuration and dependencies](https://learn.microsoft.com/azure/architecture/framework/security/design-app-dependencies)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets/extensions)
 - [Azure VMSS Extensions Overview](https://learn.microsoft.com/azure/virtual-machines/extensions/overview)

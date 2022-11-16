@@ -75,6 +75,7 @@ resource script 'Microsoft.Compute/virtualMachines/extensions@2015-06-15' = {
 
 ## LINKS
 
+- [Secure application configuration and dependencies](https://learn.microsoft.com/azure/architecture/framework/security/design-app-dependencies)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines?pivots=deployment-language-bicep)
 - [Windows Custom Script Extensions](https://learn.microsoft.com/azure/virtual-machines/extensions/custom-script-windows)
 - [Linux Custom Script Extensions](https://learn.microsoft.com/azure/virtual-machines/extensions/custom-script-linux)
