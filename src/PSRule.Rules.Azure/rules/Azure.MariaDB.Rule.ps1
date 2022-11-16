@@ -36,8 +36,6 @@ Rule 'Azure.MariaDB.MinTLS' -Ref 'AZR-000333' -Type 'Microsoft.DBforMariaDB/serv
     Reason($LocalizedData.MinTLSVersion, $TargetObject.properties.minimalTlsVersion)
 }
 
-
-
 #endregion Rules
 
 #region Helper functions
@@ -50,7 +48,5 @@ function global:HasMariaDBTierSupportingGeoRedundantBackup {
         $Assert.in($TargetObject, 'sku.tier', @('GeneralPurpose', 'MemoryOptimized')).Result
     }
 }
-
-
 
 #endregion Helper functions
