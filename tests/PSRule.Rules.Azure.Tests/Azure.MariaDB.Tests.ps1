@@ -55,25 +55,6 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
             $ruleResult.TargetName | Should -BeIn 'server-C';
         }
 
-        It 'Azure.MariaDB.UseSSL' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MariaDB.UseSSL' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
-
-            $ruleResult[0].Reason | Should -BeExactly "The Azure Database for MariaDB should only accept encrypted connections.";
-            $ruleResult[1].Reason | Should -BeExactly "The Azure Database for MariaDB should only accept encrypted connections.";
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'server-C';
-    }
-
     It 'Azure.MariaDB.MinTLS' {
         $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MariaDB.MinTLS' };
 
