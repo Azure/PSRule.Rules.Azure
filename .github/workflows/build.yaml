@@ -22,8 +22,8 @@ env:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 jobs:
-  build:
-    name: Analyze with PSRule
+  Build:
+    name: Build
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -35,6 +35,8 @@ jobs:
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.x
 
     - name: Install dependencies
       shell: pwsh
@@ -51,10 +53,10 @@ jobs:
         path: ./out/modules/PSRule.Rules.Azure/*
         if-no-files-found: error
 
-  test:
+  Test:
     name: Test module (${{ matrix.rid }})
     runs-on: ${{ matrix.os }}
-    needs: build
+    needs: Build
     permissions:
       contents: read
 
