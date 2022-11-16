@@ -13,6 +13,22 @@ Rule 'Azure.MariaDB.GeoRedundantBackup' -Ref 'AZR-000329' -Type 'Microsoft.DBfor
     Reason($LocalizedData.MariaDBGeoRedundantBackupNotConfigured, $PSRule.TargetName)
 }
 
+# Synopsis: Enable Microsoft Defender for Cloud for Azure Database for MariaDB.
+Rule 'Azure.MariaDB.DefenderCloud' -Ref 'AZR-000330' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
+        $defenderConfigs = @(GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/securityAlertPolicies')
+        if ($defenderConfigs.Length -eq 0) {
+            $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.DBforMariaDB/servers/securityAlertPolicies')
+        }
+        foreach ($defenderConfig in $defenderConfigs) {
+            $Assert.HasFieldValue($defenderConfig, 'properties.state', 'Enabled').
+            PathPrefix('resources')
+        }
+    }
+    elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/securityAlertPolicies') {
+        $Assert.HasFieldValue($TargetObject, 'properties.state', 'Enabled')
+    }
+}
 
 # Synopsis: Azure Database for MariaDB servers should reject TLS versions older than 1.2.
 Rule 'Azure.MariaDB.MinTLS' -Ref 'AZR-000333' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
@@ -20,11 +36,7 @@ Rule 'Azure.MariaDB.MinTLS' -Ref 'AZR-000333' -Type 'Microsoft.DBforMariaDB/serv
     Reason($LocalizedData.MinTLSVersion, $TargetObject.properties.minimalTlsVersion)
 }
 
-# Synopsis: Azure Database for MariaDB resources should meet naming requirements.
-Rule 'Azure.MariaDB.ServerName' -Ref 'AZR-000334' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/databases', 'Microsoft.DBforMariaDB/servers/firewallRules', 'Microsoft.DBforMariaDB/servers/virtualNetworkRules' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
-    # https://learn.microsoft.com/nb-no/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformariadb
 
-}
 
 #endregion Rules
 
