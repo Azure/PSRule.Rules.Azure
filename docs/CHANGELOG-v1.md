@@ -26,6 +26,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - New rules:
   - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers have Microsoft Defender configured by @bengeset96.
+      [#1850](https://github.com/Azure/PSRule.Rules.Azure/issues/1850)
+    - Check Azure Database for MariaDB servers have geo-redundant backup configured by @bengeset96.
+      [#1848](https://github.com/Azure/PSRule.Rules.Azure/issues/1848)
     - Check Azure Database for MariaDB servers have geo-redundant backup configured by @bengeset96.
       [#1848](https://github.com/Azure/PSRule.Rules.Azure/issues/1848)
   - Azure Database for PostgreSQL:
