@@ -1981,6 +1981,10 @@
         
           
         
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4_5">
@@ -6229,6 +6233,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../en/rules/Azure.VM.ScriptExtensions/" class="md-nav__link">
+        Azure.VM.ScriptExtensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../en/rules/Azure.VM.Standalone/" class="md-nav__link">
         Azure.VM.Standalone
       </a>
@@ -6343,6 +6361,20 @@
     <li class="md-nav__item">
       <a href="../../../en/rules/Azure.VMSS.PublicKey/" class="md-nav__link">
         Azure.VMSS.PublicKey
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../en/rules/Azure.VMSS.ScriptExtensions/" class="md-nav__link">
+        Azure.VMSS.ScriptExtensions
       </a>
     </li>
   
@@ -7589,6 +7621,13 @@
           <li class="md-nav__item">
   <a href="#review-and-remediate" class="md-nav__link">
     Review and remediate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets" class="md-nav__link">
+    Secrets
   </a>
   
 </li>
@@ -10139,6 +10178,31 @@
 <td><a href="../Azure.ACR.ImageHealth/">Azure.ACR.ImageHealth</a></td>
 <td>Remove container images with known vulnerabilities.</td>
 <td>Critical</td>
+<td>Error</td>
+</tr>
+</tbody>
+</table>
+<h3 id="secrets">Secrets<a class="headerlink" href="#secrets" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Synopsis</th>
+<th>Severity</th>
+<th>Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Azure.VM.ScriptExtensions.md">Azure.VM.ScriptExtensions</a></td>
+<td>Custom Script Extensions scripts that reference secret values must use the protectedSettings.</td>
+<td>Important</td>
+<td>Error</td>
+</tr>
+<tr>
+<td><a href="Azure.VMSS.ScriptExtensions.md">Azure.VMSS.ScriptExtensions</a></td>
+<td>Custom Script Extensions scripts that reference secret values must use the protectedSettings.</td>
+<td>Important</td>
 <td>Error</td>
 </tr>
 </tbody>
