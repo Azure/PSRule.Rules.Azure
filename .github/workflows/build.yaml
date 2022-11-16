@@ -44,7 +44,7 @@ jobs:
 
     - name: Build module
       shell: pwsh
-      run: Invoke-Build -Configuration Release
+      run: Invoke-Build -Configuration Release -AssertStyle GitHubActions
 
     - name: Upload module
       uses: actions/upload-artifact@v3
@@ -82,6 +82,8 @@ jobs:
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.x
 
     - name: Install dependencies
       shell: pwsh
@@ -95,4 +97,4 @@ jobs:
 
     - name: Test module
       shell: pwsh
-      run: Invoke-Build TestModule -Configuration Release
+      run: Invoke-Build TestModule -Configuration Release -AssertStyle GitHubActions

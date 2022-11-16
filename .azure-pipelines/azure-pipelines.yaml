@@ -37,6 +37,11 @@ stages:
     displayName: 'Module'
     steps:
 
+    - task: UseDotNet@2
+      displayName: Setup .NET
+      inputs:
+        version: 6.x
+
     # Install pipeline dependencies
     - powershell: ./.azure-pipelines/pipeline-deps.ps1
       displayName: 'Install dependencies'
