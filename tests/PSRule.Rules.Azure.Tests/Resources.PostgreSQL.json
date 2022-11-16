@@ -213,8 +213,12 @@
         "Name": "Default",
         "Properties": {
           "state": "Disabled",
-          "disabledAlerts": [""],
-          "emailAddresses": [""],
+          "disabledAlerts": [
+            ""
+          ],
+          "emailAddresses": [
+            ""
+          ],
           "emailAccountAdmins": true,
           "storageEndpoint": "https://account.blob.core.windows.net",
           "storageAccountAccessKey": "",
@@ -272,8 +276,12 @@
         "Name": "Default",
         "Properties": {
           "state": "Enabled",
-          "disabledAlerts": [""],
-          "emailAddresses": [""],
+          "disabledAlerts": [
+            ""
+          ],
+          "emailAddresses": [
+            ""
+          ],
           "emailAccountAdmins": true,
           "storageEndpoint": "https://account.blob.core.windows.net",
           "storageAccountAccessKey": "",

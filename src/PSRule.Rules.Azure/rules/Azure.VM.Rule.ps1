@@ -230,6 +230,31 @@ Rule 'Azure.VM.PPGName' -Ref 'AZR-000260' -Type 'Microsoft.Compute/proximityPlac
 
 #endregion Proximity Placement Groups
 
+# Synopsis: Protect Custom Script Extensions commands
+Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000332' -Type 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachines/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+    $vmConfig = @($TargetObject);
+
+    if ($PSRule.TargetType -eq 'Microsoft.Compute/virtualMachines') {
+        $vmConfig = @(GetSubResources -ResourceType 'extensions', 'Microsoft.Compute/virtualMachines/extensions' );
+    }
+
+    if ($vmConfig.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    ## Extension Prof
+    $customScriptProperties = @('CustomScript', 'CustomScriptExtension', 'CustomScriptForLinux')
+    foreach ($config in $vmConfig) {
+        if ($config.properties.type -in $customScriptProperties) {
+            $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($config.properties.settings.commandToExecute);
+            $Assert.NotMatch($cleanValue, '.', "SecretReference")
+        }
+        else {
+            return $Assert.Pass();
+        }
+    }
+}
+
 #region Azure Monitor Agent
 
 # Synopsis: Use Azure Monitor Agent as replacement for Log Analytics Agent.
@@ -242,3 +267,40 @@ Rule 'Azure.VM.MigrateAMA' -Ref 'AZR-000317' -Type 'Microsoft.Compute/virtualMac
 }
 
 #endregion Azure Monitor Agent
+
+#region IaaS SQL Server disks
+
+# Synopsis: Use Premium SSD disks or greater for data and log files for production SQL Server workloads.
+Rule 'Azure.VM.SQLServerDisk' -Ref 'AZR-000324' -Type 'Microsoft.Compute/virtualMachines' -If { HasPublisherMicrosoftSQLServer } -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    $disks = @(GetOSAndDataDisks)
+    $Assert.Less($disks, '.', 1).Reason($LocalizedData.SQLServerVMDisks).
+    PathPrefix('properties.storageProfile')
+}
+
+#endregion IaaS SQL Server disks
+
+#region Helper functions
+
+function global:HasPublisherMicrosoftSQLServer {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        $Assert.HasFieldValue($TargetObject, 'properties.storageProfile.imageReference.publisher', 'MicrosoftSQLServer').Result
+    }
+}
+
+function global:GetOSAndDataDisks {
+    [CmdletBinding()]
+    [OutputType([PSObject[]])]
+    param ()
+    process {
+        $allowedSkuTypes = @('UltraSSD_LRS', 'PremiumV2_LRS', 'Premium_ZRS', 'Premium_LRS')
+        $TargetObject.properties.storageProfile.osDisk.managedDisk |
+            Where-Object { $_.storageAccountType -and $_.storageAccountType -notin $allowedSkuTypes }
+                $TargetObject.properties.storageProfile.dataDisks |
+                    Where-Object { $_.managedDisk.storageAccountType -and $_.managedDisk.storageAccountType -notin $allowedSkuTypes }
+    }
+}
+
+#endregion Helper functions

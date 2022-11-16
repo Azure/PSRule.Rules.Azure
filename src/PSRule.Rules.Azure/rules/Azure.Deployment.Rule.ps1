@@ -60,6 +60,64 @@ function global:RecurseDeploymentSensitive {
     }
 }
 
+# Synopsis: Ensure Outer scope deployments aren't using SecureString or SecureObject Parameters
+Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000331' -Type 'Microsoft.Resources/deployments' -If { IsParentDeployment } -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } { 
+
+    $template = @($TargetObject.properties.template);
+    if ($template.resources.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    $secureParameters = @($template.parameters.PSObject.properties | Where-Object {
+            $_.Value.type -eq 'secureString' -or $_.Value.type -eq 'secureObject'
+        } | ForEach-Object {
+            $_.Name
+        });
+    foreach ($deployments in $template.resources) {
+        if ($deployments.properties.expressionEvaluationOptions.scope -eq 'outer') {
+            foreach ($outerDeployment in $deployments.properties.template.resources) {
+                foreach ($property in $outerDeployment.properties) {
+                    RecursivePropertiesSecretEvaluation -Resource $outerDeployment -SecureParameters $secureParameters -ShouldUseSecret $False -Property $property
+                }
+            }
+        } else {
+            $Assert.Pass()
+        }
+        
+    }
+}
+
+
+#endregion Rules
+function global:RecursivePropertiesSecretEvaluation {
+    param (
+        [Parameter(Mandatory = $True)]
+        [PSObject]$Resource,
+
+        [Parameter(Mandatory = $True)]
+        [PSObject]$Property,
+
+        [Parameter(Mandatory = $True)]
+        [AllowEmptyCollection()]
+        [PSObject]$SecureParameters,
+
+        [Parameter(Mandatory = $False)]
+        [Bool]$ShouldUseSecret = $True
+
+    )
+    process {
+
+        $PropertyName = $Property.psObject.properties.Name 
+        foreach ($NestedProperty in $Property.PSObject.Properties.Value.PSObject.Properties ) {
+            if($NestedProperty.MemberType -eq 'NoteProperty'){
+                RecursivePropertiesSecretEvaluation -Resource $Resource -SecureParameters $SecureParameters -Property $NestedProperty -ShouldUseSecret $ShouldUseSecret
+            } else {
+                CheckPropertyUsesSecureParameter -Resource $Resource -SecureParameters $SecureParameters -PropertyPath "properties.$($PropertyName)" -ShouldUseSecret $ShouldUseSecret
+            }
+        } 
+    }
+}
+
 function global:CheckPropertyUsesSecureParameter {
     param (
         [Parameter(Mandatory = $True)]
@@ -70,18 +128,22 @@ function global:CheckPropertyUsesSecureParameter {
         [PSObject]$SecureParameters,
 
         [Parameter(Mandatory = $True)]
-        [String]$PropertyPath
+        [String]$PropertyPath,
+
+        [Parameter(Mandatory = $False)]
+        [Bool]$ShouldUseSecret = $True
+
     )
     process {
-        $propertiesInPath = $PropertyPath.Split(".")
+        $propertiesInPath = $PropertyPath.Split(".") # properties.example.name
         $propertyValue = $Resource
-        foreach($aPropertyInThePath in $propertiesInPath) {
-            $propertyValue = $propertyValue."$aPropertyInThePath"
+        foreach ($aPropertyInThePath in $propertiesInPath) {
+            $propertyValue = $propertyValue."$aPropertyInThePath"  
         }
 
         if ($propertyValue) {
-            $isSecure = [PSRule.Rules.Azure.Runtime.Helper]::HasSecureValue($propertyValue, $SecureParameters);
-            $Assert.Create($isSecure).Reason($LocalizedData.SecureParameterRequired, $PropertyPath);
+            $hasSecureParam = [PSRule.Rules.Azure.Runtime.Helper]::HasSecureValue($propertyValue, $SecureParameters);
+            $Assert.Create($hasSecureParam -eq $ShouldUseSecret, $LocalizedData.SecureParameterRequired, $PropertyPath);
         }
         else {
             $Assert.Pass();
@@ -102,15 +164,14 @@ function global:RecurseSecureValue {
         }
 
         $secureParameters = @($Deployment.properties.template.parameters.PSObject.properties | Where-Object {
-            $_.Value.type -eq 'secureString' -or $_.Value.type -eq 'secureObject'
-        } | ForEach-Object {
-            $_.Name
-        });
+                $_.Value.type -eq 'secureString' -or $_.Value.type -eq 'secureObject'
+            } | ForEach-Object {
+                $_.Name
+            });
         Write-Debug -Message "Secure parameters are: $($secureParameters -join ', ')";
 
         foreach ($resource in $resources) {
-            switch ($resource.type)
-            {
+            switch ($resource.type) {
                 'Microsoft.Resources/Deployments' { 
                     RecurseSecureValue -Deployment $resource;
                 }
@@ -308,4 +369,16 @@ function global:RecurseSecureValue {
     }
 }
 
+
+# Check if the TargetObject is a parent deployment, with scoped deployments or a rendered deployment
+function global:IsParentDeployment {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        foreach ($deployment in $TargetObject.properties.template.resources){
+            return $Assert.HasField($deployment, 'properties.expressionEvaluationOptions.scope').Result;
+        }
+    }
+}
 #endregion Helpers

@@ -52,8 +52,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 8;
-            $ruleResult.TargetName | Should -BeIn 'vm-A', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-C', 'vm-D', 'offerSaysLinux', 'offerInConfig';
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-C', 'vm-D', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F';
         }
 
         It 'Azure.VM.Standalone' {
@@ -69,8 +69,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -Be 'vm-A', 'vm-B', 'vm-C', 'offerSaysLinux', 'offerInConfig';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -Be 'vm-A', 'vm-B', 'vm-C', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -178,8 +178,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -Be 'vm-A', 'vm-B', 'offerSaysLinux', 'offerInConfig';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -Be 'vm-A', 'vm-B', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -274,8 +274,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vm-A';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'vm-A', 'vm-E', 'vm-F';
         }
 
         It 'Azure.VM.AcceleratedNetworking' {
@@ -290,8 +290,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vm-A';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'vm-A', 'vm-E', 'vm-F';
 
             # Check which SKUs are excluded
             $anDisabledSku = @(
@@ -425,8 +425,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetType -eq 'Microsoft.Compute/virtualMachines' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'vm-D';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'vm-D', 'vm-E', 'vm-F';
         }
 
         It 'Azure.VM.Agent' {
@@ -441,8 +441,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -BeIn 'vm-A', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-D', 'offerSaysLinux', 'offerInConfig';
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-D', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F';
         }
 
         It 'Azure.VM.Updates' {
@@ -457,8 +457,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vm-A';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'vm-A', 'vm-E', 'vm-F';
         }
 
         It 'Azure.VM.NICAttached' {
@@ -487,8 +487,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'vm-C', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-D', 'offerSaysLinux', 'offerInConfig';
+            $ruleResult.Length | Should -Be 11;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'vm-C', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-D', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F';
         }
 
         It 'Azure.VM.ComputerName' {
@@ -502,8 +502,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'vm-C', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-D';
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'vm-C', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-D', 'vm-E', 'vm-F';
         }
 
         It 'Azure.VM.DiskName' {
@@ -537,8 +537,30 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-C', 'vm-E', 'vm-F';
+        }
+
+        It 'Azure.VM.SQLServerDisk' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.SQLServerDisk' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'vm-E';
+
+            $ruleResult[0].Reason | Should -BeExactly "The virtual machine used for running SQL Server should use Premium disks or greater.";
+            $ruleResult[1].Reason | Should -BeExactly "The virtual machine used for running SQL Server should use Premium disks or greater.";
+            $ruleResult[2].Reason | Should -BeExactly "The virtual machine used for running SQL Server should use Premium disks or greater.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vm-F';
         }
     }
 
@@ -906,8 +928,9 @@ Describe 'Azure.VM' -Tag 'VM' {
     Context 'With template' {
         BeforeAll {
             $templatePath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.Template.json';
-            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualMachine.json;
-            Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
+            $parameterPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.Parameters.json';
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualMachineTemplate.json;
+            Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
             $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
         }
 
@@ -1238,6 +1261,22 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'vm-A-nic1';
+        }
+
+        It 'Azure.VM.ScriptExtensions' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ScriptExtensions' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vm-B', 'vm-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vm-C/installcustomscript', 'vm-D/installcustomscript', 'vm-A';
         }
     }
 }

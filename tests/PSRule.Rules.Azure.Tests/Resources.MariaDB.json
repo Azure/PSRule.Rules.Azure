@@ -1,0 +1,136 @@
+[
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-A",
+    "Location": "region",
+    "ResourceName": "server-A",
+    "Name": "server-A",
+    "Properties": {
+      "administratorLogin": "db-admin",
+      "storageProfile": {
+        "storageMB": 51200,
+        "backupRetentionDays": 7,
+        "geoRedundantBackup": "Disabled",
+        "storageAutogrow": "Disabled"
+      },
+      "version": "10.3",
+      "sslEnforcement": "Disabled",
+      "minimalTlsVersion": "TLS1_2"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.DBforMariaDB/servers",
+    "ResourceType": "Microsoft.DBforMariaDB/servers",
+    "Sku": {
+      "Name": "GP_Gen5_2",
+      "Tier": "GeneralPurpose",
+      "Size": "51200",
+      "Family": "Gen5",
+      "Capacity": 2
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers//Microsoft.DBforMariaDB/servers/server-B",
+    "Location": "region",
+    "ResourceName": "server-B",
+    "Name": "server-B",
+    "Properties": {
+      "administratorLogin": "db-admin",
+      "storageProfile": {
+        "storageMB": 51200,
+        "backupRetentionDays": 7,
+        "storageAutogrow": "Disabled"
+      },
+      "version": "10.3",
+      "sslEnforcement": "Disabled",
+      "minimalTlsVersion": "TLS1_2"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.DBforMariaDB/servers",
+    "ResourceType": "Microsoft.DBforMariaDB/servers",
+    "Sku": {
+      "Name": "GP_Gen5_2",
+      "Tier": "GeneralPurpose",
+      "Size": "51200",
+      "Family": "Gen5",
+      "Capacity": 2
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-B/securityAlertPolicies/Default",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-B/securityAlertPolicies/Default",
+        "ResourceName": "Default",
+        "Name": "Default",
+        "Properties": {
+          "state": "Disabled",
+          "disabledAlerts": [""],
+          "emailAddresses": [""],
+          "emailAccountAdmins": true,
+          "storageEndpoint": "https://account.blob.core.windows.net",
+          "storageAccountAccessKey": "",
+          "retentionDays": 0
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/securityAlertPolicies",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/securityAlertPolicies",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers//Microsoft.DBforMariaDB/servers/server-C",
+    "Location": "region",
+    "ResourceName": "server-C",
+    "Name": "server-C",
+    "Properties": {
+      "administratorLogin": "db-admin",
+      "storageProfile": {
+        "storageMB": 51200,
+        "backupRetentionDays": 7,
+        "geoRedundantBackup": "Enabled",
+        "storageAutogrow": "Disabled"
+      },
+      "version": "10.3",
+      "sslEnforcement": "Disabled",
+      "minimalTlsVersion": "TLS1_2"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.DBforMariaDB/servers",
+    "ResourceType": "Microsoft.DBforMariaDB/servers",
+    "Sku": {
+      "Name": "Standard_E4as_v5",
+      "Tier": "MemoryOptimized",
+      "Size": "51200",
+      "Family": "Gen5",
+      "Capacity": 4
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-C/securityAlertPolicies/Default",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-C/securityAlertPolicies/Default",
+        "ResourceName": "Default",
+        "Name": "Default",
+        "Properties": {
+          "state": "Enabled",
+          "disabledAlerts": [""],
+          "emailAddresses": [""],
+          "emailAccountAdmins": true,
+          "storageEndpoint": "https://account.blob.core.windows.net",
+          "storageAccountAccessKey": "",
+          "retentionDays": 0
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/securityAlertPolicies",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/securityAlertPolicies",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
+]
