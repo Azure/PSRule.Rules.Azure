@@ -31,7 +31,7 @@ Rule 'Azure.MariaDB.DefenderCloud' -Ref 'AZR-000330' -Type 'Microsoft.DBforMaria
 }
 
 # Synopsis: Azure Database for MariaDB servers should only accept encrypted connections.
-Rule 'Azure.MariaDB.UseSSL' -Ref 'AZR-000332' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.MariaDB.UseSSL' -Ref 'AZR-000334' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
     $Assert.HasFieldValue($TargetObject, 'properties.sslEnforcement', 'Enabled').Reason($LocalizedData.MariaDBEncryptedConnection)
 }
 
