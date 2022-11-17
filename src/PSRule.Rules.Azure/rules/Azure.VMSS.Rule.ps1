@@ -50,6 +50,22 @@ Rule 'Azure.VMSS.PublicKey' -Ref 'AZR-000288' -Type 'Microsoft.Compute/virtualMa
     Reason($LocalizedData.VMSSPublicKey, $PSRule.TargetName)
 }
 
+# Synopsis: Protect Custom Script Extensions commands
+Rule 'Azure.VMSS.ScriptExtensions' -Ref 'AZR-000333' -Type 'Microsoft.Compute/virtualMachineScaleSets', 'Microsoft.Computer/virtualMachineScaleSets/CustomScriptExtension', 'Microsoft.Compute/virtualMachineScaleSets/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+    $vmssConfig = @($TargetObject);
+
+    ## Extension Prof
+    if ($vmssConfig.properties.virtualMachineProfile.extensionProfile.extensions) {
+        foreach($extensions in $vmssConfig.properties.virtualMachineProfile.extensionProfile.extensions ) {
+            $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($extensions.properties.settings.commandToExecute);
+            $Assert.NotMatch($cleanValue, '.', "SecretReference")
+        } 
+
+    } else {
+        return $Assert.Pass();
+    }
+}
+
 # Synopsis: Use Azure Monitor Agent as replacement for Log Analytics Agent.
 Rule 'Azure.VMSS.MigrateAMA' -Ref 'AZR-000318' -Type 'Microsoft.Compute/virtualMachineScaleSets' -If { HasOMSOrAMAExtension } -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
     $property = $TargetObject.Properties.virtualMachineProfile.extensionProfile.extensions.properties |
@@ -64,3 +80,16 @@ Rule 'Azure.VMSS.MigrateAMA' -Ref 'AZR-000318' -Type 'Microsoft.Compute/virtualM
 }
 
 #endregion Virtual machine scale set
+
+#region Helper functions
+
+function global:IsLinuxVMSS {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        return $Assert.HasField($TargetObject, 'properties.virtualMachineProfile.OsProfile.linuxConfiguration').Result
+    }
+}
+
+#endregion Helper functions

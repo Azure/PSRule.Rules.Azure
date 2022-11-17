@@ -5,7 +5,7 @@ variables:
   version: '1.20.0'
   buildConfiguration: 'Release'
   disable.coverage.autogenerate: 'true'
-  imageName: 'ubuntu-20.04'
+  imageName: 'ubuntu-22.04'
 
  # Use build number format, i.e. 1.20.0-B2202001
 name: $(version)-B$(date:yyMM)$(rev:rrr)
@@ -32,8 +32,15 @@ stages:
   - job:
     pool:
       vmImage: $(imageName)
+    container:
+      image: 'mcr.microsoft.com/powershell:7.2-ubuntu-20.04'
     displayName: 'Module'
     steps:
+
+    - task: UseDotNet@2
+      displayName: Setup .NET
+      inputs:
+        version: 6.x
 
     # Install pipeline dependencies
     - powershell: ./.azure-pipelines/pipeline-deps.ps1
