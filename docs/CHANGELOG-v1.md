@@ -33,6 +33,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check Azure Database for MariaDB servers have geo-redundant backup configured by @bengeset96.
       [#1848](https://github.com/Azure/PSRule.Rules.Azure/issues/1848)
   - Azure Database for PostgreSQL:
+    - Check Azure Database for PostgreSQL servers have Microsoft Defender configured by @bengeset96.
+      [#286](https://github.com/Azure/PSRule.Rules.Azure/issues/286)
     - Check Azure Database for PostgreSQL servers have geo-redundant backup configured by @bengeset96.
       [#285](https://github.com/Azure/PSRule.Rules.Azure/issues/285)
   - Azure Database for MySQL:
@@ -47,6 +49,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Azure Resource Deployments:
     - Check for nested deployment that are scoped to `outer` and passing secure values by @ms-sambell.
       [#1475](https://github.com/Azure/PSRule.Rules.Azure/issues/1475)
+    - Check custom script extension uses protected settings for secure values by @ms-sambell.
+      [#1478](https://github.com/Azure/PSRule.Rules.Azure/issues/1478)
   - Virtual Machine:
     - Check virtual machines running SQL Server uses Premium disks or above by @bengeset96.
       [#9](https://github.com/Azure/PSRule.Rules.Azure/issues/9)

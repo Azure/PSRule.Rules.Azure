@@ -142,6 +142,25 @@ Describe 'Azure.PostgreSQL' -Tag 'PostgreSQL' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'server-C', 'server-D';
         }
+
+        It 'Azure.PostgreSQL.DefenderCloud' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PostgreSQL.DefenderCloud' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
+
+            $ruleResult[0].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.DBforPostgreSQL/servers/securityAlertPolicies' has not been specified.";
+            $ruleResult[1].Reason | Should -BeExactly "Path resources.properties.state: Is set to 'Disabled'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'server-C';
+        }
     }
 
     Context 'Resource name - Azure.PostgreSQL.ServerName' {
