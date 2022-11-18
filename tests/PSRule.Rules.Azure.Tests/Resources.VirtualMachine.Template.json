@@ -109,8 +109,7 @@
             "defaultValue": "vm-admin"
         },
         "adminPassword": {
-            "type": "secureString",
-            "defaultValue": "$CREDENTIAL_PLACEHOLDER$"
+            "type": "secureString"
         },
         "sqlStorageWorkloadType": {
             "type": "string",
@@ -157,7 +156,9 @@
         "subnetRef": "[concat(parameters('vnetId'), '/subnets/', parameters('subnetName'))]",
         "networkInterfaceName": "[concat(parameters('virtualMachineName'), '-nic1')]",
         "availabilitySetName": "[concat(parameters('virtualMachineName'), '-as1')]",
-        "vm2": "vm-B"
+        "vm2": "vm-B",
+        "vm3": "vm-C",
+        "vm4": "vm-D"
     },
     "resources": [
         {
@@ -370,7 +371,60 @@
                     }
                 }
             },
+            "resources": [
+                {
+                    "type": "extensions",
+                    "name": "CustomScriptExtension",
+                    "apiVersion": "2020-12-01",
+                    "location": "region",
+                    "properties": {
+                        "publisher": "Microsoft.Compute",
+                        "type": "CustomScriptExtension",
+                        "typeHandlerVersion": "1.8",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                            "commandToExecute": "[concat('Write-Output ', parameters('adminPassword'))]"
+                        }
+                    }
+                }
+            ],
             "tags": "[parameters('tags')]"
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vm3'),'/installcustomscript')]",
+            "apiVersion": "2015-06-15",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', variables('vm3'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "commandToExecute": "Write-Output 'hello'"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vm4'),'/installcustomscript')]",
+            "apiVersion": "2015-06-15",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', variables('vm4'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.0",
+                "autoUpgradeMinorVersion": true,
+                "secureSettings": {
+                    "commandToExecute": "[concat('Write-Output example:', parameters('adminPassword'))]"
+                }
+            }
         }
     ]
 }

@@ -230,6 +230,31 @@ Rule 'Azure.VM.PPGName' -Ref 'AZR-000260' -Type 'Microsoft.Compute/proximityPlac
 
 #endregion Proximity Placement Groups
 
+# Synopsis: Protect Custom Script Extensions commands
+Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000332' -Type 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachines/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+    $vmConfig = @($TargetObject);
+
+    if ($PSRule.TargetType -eq 'Microsoft.Compute/virtualMachines') {
+        $vmConfig = @(GetSubResources -ResourceType 'extensions', 'Microsoft.Compute/virtualMachines/extensions' );
+    }
+
+    if ($vmConfig.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    ## Extension Prof
+    $customScriptProperties = @('CustomScript', 'CustomScriptExtension', 'CustomScriptForLinux')
+    foreach ($config in $vmConfig) {
+        if ($config.properties.type -in $customScriptProperties) {
+            $cleanValue = [PSRule.Rules.Azure.Runtime.Helper]::CompressExpression($config.properties.settings.commandToExecute);
+            $Assert.NotMatch($cleanValue, '.', "SecretReference")
+        }
+        else {
+            return $Assert.Pass();
+        }
+    }
+}
+
 #region Azure Monitor Agent
 
 # Synopsis: Use Azure Monitor Agent as replacement for Log Analytics Agent.
