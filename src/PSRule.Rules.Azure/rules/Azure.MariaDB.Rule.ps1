@@ -31,7 +31,7 @@ Rule 'Azure.MariaDB.DefenderCloud' -Ref 'AZR-000330' -Type 'Microsoft.DBforMaria
 }
 
 # Synopsis: Azure Database for MariaDB servers should reject TLS versions older than 1.2.
-Rule 'Azure.MariaDB.MinTLS' -Ref 'AZR-000333' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.MariaDB.MinTLS' -Ref 'AZR-000335' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
     $Assert.HasFieldValue($TargetObject, 'properties.minimalTlsVersion', 'TLS1_2').
     Reason($LocalizedData.MinTLSVersion, $TargetObject.properties.minimalTlsVersion)
 }
