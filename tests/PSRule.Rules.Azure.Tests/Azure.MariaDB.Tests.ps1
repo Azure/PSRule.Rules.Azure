@@ -93,4 +93,197 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
             $ruleResult.TargetName | Should -BeIn 'server-C';
         }
     }
+
+    Context 'Resource name - Azure.MariaDB.ServerName' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.DBforMariaDB/servers'
+            }
+        }
+
+        BeforeDiscovery {
+            $validNames = @(
+                'mariadbserver1'
+                'mariadbserver-1'
+                'mariadbserver'
+            )
+
+            $invalidNames = @(
+                '-mariadbserver1'
+                'mariadbserver1-'
+                'mariadbserver.1'
+                'mariadbserver_1'
+                'MARIADBServer1'
+            )
+        }
+
+        # Pass
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.MariaDB.ServerName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
+        }
+
+        # Fail
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.MariaDB.ServerName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
+        }
+    }
+
+    Context 'Resource name - Azure.MariaDB.DatabaseName' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.DBforMariaDB/servers/databases'
+            }
+        }
+
+        BeforeDiscovery {
+            $validNames = @(
+                'mariadbdatabase1'
+                'MARIADBDATABASE1'
+                'mariadb-DATABASE1'
+                'MARIADB-DATABASE1'
+            )
+
+            $invalidNames = @(
+                '_mariadbdatabase1'
+                'mariadbdatabase1_'
+                'mariadbdatabase.1'
+                'MARIA.DB.DATABASE.1'
+            )
+        }
+
+        # Pass
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.MariaDB.DatabaseName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
+        }
+
+        # Fail
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.MariaDB.DatabaseName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
+        }
+    }
+
+    Context 'Resource name - Azure.MariaDB.FirewallRuleName' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.DBforMariaDB/servers/firewallRules'
+            }
+        }
+
+        BeforeDiscovery {
+            $validNames = @(
+                'rule1'
+                'default'
+                'allowed-developer'
+                'blocked-all'
+                'BLOCKED-ALL'
+            )
+
+            $invalidNames = @(
+                'rule.1'
+                'allowed.developer'
+                'blocked.all'
+                'BLOCKED.ALL'
+            )
+        }
+
+        # Pass
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.MariaDB.FirewallRuleName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
+        }
+
+        # Fail
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.MariaDB.FirewallRuleName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
+        }
+    }
+
+    Context 'Resource name - Azure.MariaDB.VNETRuleName' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.DBforMariaDB/servers/virtualNetworkRules'
+            }
+        }
+
+        BeforeDiscovery {
+            $validNames = @(
+                'AllowSubnet'
+                'Out-Default'
+                'IN-DEFAULT'
+                'AllowPeeredSubnet'
+            )
+
+            $invalidNames = @(
+                'Allow_Subnet'
+                'Allow.Subnet'
+                'OUT_DEFAULT'
+                'Allow_All'
+            )
+        }
+
+        # Pass
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.MariaDB.VNETRuleName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
+        }
+
+        # Fail
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.MariaDB.VNETRuleName';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
+        }
+    }
 }

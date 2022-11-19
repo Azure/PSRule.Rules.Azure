@@ -26,6 +26,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - New rules:
   - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers, databases, firewall rules and VNET rules names meet naming requirements by @BenjaminEngeset.
+      [#1854](https://github.com/Azure/PSRule.Rules.Azure/issues/1854)
     - Check Azure Database for MariaDB servers only accept encrypted connections by @bengeset96.
       [#1852](https://github.com/Azure/PSRule.Rules.Azure/issues/1852)
     - Check Azure Database for MariaDB servers have Microsoft Defender configured by @bengeset96.
