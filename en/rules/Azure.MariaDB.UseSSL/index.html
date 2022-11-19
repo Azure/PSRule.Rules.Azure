@@ -6,20 +6,20 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Use Premium SSD disks or greater for data and log files for production SQL Server workloads.">
+        <meta name="description" content="Azure Database for MariaDB servers should only accept encrypted connections.">
       
       
         <meta name="author" content="Microsoft">
       
       
-        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.SQLServerDisk/">
+        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MariaDB.UseSSL/">
       
       <link rel="icon" href="../../../assets/ms_icon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Azure.VM.SQLServerDisk - PSRule for Azure</title>
+        <title>Azure.MariaDB.UseSSL - PSRule for Azure</title>
       
     
     
@@ -75,20 +75,20 @@
   <!-- Open graph meta tags -->
   <meta property="og:site_name" content="PSRule for Azure" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PSRule for Azure - Azure.VM.SQLServerDisk" />
-  <meta property="og:description" content="Use Premium SSD disks or greater for data and log files for production SQL Server workloads." />
-  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.SQLServerDisk/" />
+  <meta property="og:title" content="PSRule for Azure - Azure.MariaDB.UseSSL" />
+  <meta property="og:description" content="Azure Database for MariaDB servers should only accept encrypted connections." />
+  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MariaDB.UseSSL/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1280" />
   <meta property="og:image:height" content="640" />
-  <meta property="og:image:alt" content="Use Premium SSD disks or greater for data and log files for production SQL Server workloads." />
+  <meta property="og:image:alt" content="Azure Database for MariaDB servers should only accept encrypted connections." />
 
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - Azure.VM.SQLServerDisk" />
-  <meta name="twitter:description" content="Use Premium SSD disks or greater for data and log files for production SQL Server workloads." />
+  <meta name="twitter:title" content="PSRule for Azure - Azure.MariaDB.UseSSL" />
+  <meta name="twitter:description" content="Azure Database for MariaDB servers should only accept encrypted connections." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
 
@@ -110,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configure-premium-disks-or-above" class="md-skip">
+        <a href="#encrypted-connections" class="md-skip">
           Skip to content
         </a>
       
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Azure.VM.SQLServerDisk
+              Azure.MariaDB.UseSSL
             
           </span>
         </div>
@@ -4355,11 +4355,93 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Azure.MariaDB.UseSSL/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Azure.MariaDB.UseSSL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Azure.MariaDB.UseSSL
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-azure-template" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-bicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -6273,100 +6355,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Azure.VM.SQLServerDisk
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Azure.VM.SQLServerDisk/" class="md-nav__link">
         Azure.VM.SQLServerDisk
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommendation" class="md-nav__link">
-    Recommendation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
-  </a>
-  
-    <nav class="md-nav" aria-label="Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-template" class="md-nav__link">
-    Configure with Azure template
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-bicep" class="md-nav__link">
-    Configure with Bicep
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    Notes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    Links
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -7437,13 +7430,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    Notes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#links" class="md-nav__link">
     Links
   </a>
@@ -7467,7 +7453,7 @@
   
     
       <a
-        href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VM.SQLServerDisk.md"
+        href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.MariaDB.UseSSL.md"
         title="Edit this page"
         class="md-content__button md-icon"
       >
@@ -7484,151 +7470,91 @@
   
 
   <!-- Markdown content -->
-  <h1 id="configure-premium-disks-or-above">Configure Premium disks or above<a class="headerlink" href="#configure-premium-disks-or-above" title="Permanent link">#</a></h1>
-<nav class="md-tags"><span class="md-tag">Azure.VM.SQLServerDisk</span><span class="md-tag">AZR-000324</span><span class="md-tag">Error</span></nav>
-<p><a href="../module/#performance-efficiency"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0l-9.272-9.272zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0l-9.273 9.272z"/></svg></span> Performance Efficiency</a>
- · <a href="../resource/#virtual-machine"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M13.152.682a2.25 2.25 0 0 1 2.269 0l.007.004 6.957 4.276a2.276 2.276 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003a2.276 2.276 0 0 1-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026a2.28 2.28 0 0 1 .82-.827h.002L13.152.681zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.776.776 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003zM18 9.709l-3.25 1.9v7.548L18 17.245V9.709zm1.5-.878v7.532l2.124-1.25a.777.777 0 0 0 .387-.671V7.363L19.5 8.831zm-9.09 5.316 2.84-1.66v7.552l-3.233 1.902v-7.612c.134-.047.265-.107.391-.18l.002-.002zm-1.893 7.754V14.33a2.277 2.277 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232z"/></svg></span> Virtual Machine</a>
+  <h1 id="encrypted-connections">Encrypted connections<a class="headerlink" href="#encrypted-connections" title="Permanent link">#</a></h1>
+<nav class="md-tags"><span class="md-tag">Azure.MariaDB.UseSSL</span><span class="md-tag">AZR-000334</span><span class="md-tag">Error</span></nav>
+<p><a href="../module/#security"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0l-9.272-9.272zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0l-9.273 9.272z"/></svg></span> Security</a>
+ · <a href="../resource/#azure-database-for-mariadb"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M13.152.682a2.25 2.25 0 0 1 2.269 0l.007.004 6.957 4.276a2.276 2.276 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003a2.276 2.276 0 0 1-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026a2.28 2.28 0 0 1 .82-.827h.002L13.152.681zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.776.776 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003zM18 9.709l-3.25 1.9v7.548L18 17.245V9.709zm1.5-.878v7.532l2.124-1.25a.777.777 0 0 0 .387-.671V7.363L19.5 8.831zm-9.09 5.316 2.84-1.66v7.552l-3.233 1.902v-7.612c.134-.047.265-.107.391-.18l.002-.002zm-1.893 7.754V14.33a2.277 2.277 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232z"/></svg></span> Azure Database for MariaDB</a>
  · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/><path fill-rule="evenodd" d="M2.5 1A1.5 1.5 0 0 0 1 2.5v8.44c0 .397.158.779.44 1.06l10.25 10.25a1.5 1.5 0 0 0 2.12 0l8.44-8.44a1.5 1.5 0 0 0 0-2.12L12 1.44A1.5 1.5 0 0 0 10.94 1H2.5zm0 1.5h8.44l10.25 10.25-8.44 8.44L2.5 10.94V2.5z"/></svg></span> 2022_12</p>
-<p>Use Premium SSD disks or greater for data and log files for production SQL Server workloads.</p>
+<p>Azure Database for MariaDB servers should only accept encrypted connections.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>Use premium SSD disks or greater for data and log files for production SQL Server workloads.</p>
-<p>This is an advanced topic with many considerations, so we highly suggest to follow the <code>LINKS</code> section for more around this with aligned and up-to-date documentation.</p>
+<p>Azure Database for MariaDB is configured to only accept encrypted connections by default.
+When the setting <em>enforce SSL connections</em> is disabled, encrypted and unencrypted connections are permitted.
+This does not indicate that unencrypted connections are being used.</p>
+<p>Unencrypted communication to MariaDB server instances could allow disclosure of information to an untrusted party.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Configure Premium SSD disks or greater for data and log files for production SQL Server workloads.</p>
+<p>Azure Database for MariaDB should be configured to only accept encrypted connections.
+Unless explicitly required, consider enabling <em>enforce SSL connections</em>.</p>
+<p>Also consider using Azure Policy to audit or enforce this configuration.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
 <h3 id="configure-with-azure-template">Configure with Azure template<a class="headerlink" href="#configure-with-azure-template" title="Permanent link">#</a></h3>
-<p>To deploy Virtual Machines that pass this rule:</p>
+<p>To deploy Azure Database for MariaDB Servers that pass this rule:</p>
 <ul>
-<li>Set the <code>properties.storageProfile.osDisk.managedDisk.storageAccountType</code> property to <code>Premium_LRS</code> or greater.</li>
-<li>Configure each data disk included in <code>properties.storageProfile.dataDisks</code> to use <code>Premium_LRS</code> or greater by setting the property <code>managedDisk.storageAccountType</code>.</li>
+<li>Set the <code>properties.sslEnforcement</code> property to <code>Enabled</code>.</li>
 </ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Compute/virtualMachines&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-03-01&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;virtualMachineName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.DBforMariaDB/servers&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-06-01&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;serverName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;hardwareProfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;vmSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;virtualMachineSize&#39;)]&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;storageProfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;osDisk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;createOption&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FromImage&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;managedDisk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;storageAccountType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Premium_LRS&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;diskSizeGB&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">127</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;imageReference&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;publisher&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MicrosoftSQLServer&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;offer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SQL2019-WS2019&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enterprise&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;latest&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;dataDisks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;lun&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;caching&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ReadOnly&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;createOption&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Empty&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;writeAcceleratorEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;managedDisk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;storageAccountType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UltraSSD_LRS&quot;</span><span class="w"></span>
-<span class="w">          </span><span class="p">},</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;diskSizeGB&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1023</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;networkProfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;networkInterfaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[resourceId(&#39;Microsoft.Network/networkInterfaces&#39;, variables(&#39;networkInterfaceName&#39;))]&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;osProfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;computerName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;virtualMachineName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;adminUsername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;adminUsername&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;adminPassword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;adminPassword&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;windowsConfiguration&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;enableAutomaticUpdates&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;provisionVMAgent&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;skuName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GeneralPurpose&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;capacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;SkuCapacity&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[format(&#39;{0}&#39;, parameters(&#39;skuSizeMB&#39;))]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;family&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;skuFamily&#39;)]&quot;</span><span class="w"></span>
 <span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;[resourceId(&#39;Microsoft.Network/networkInterfaces&#39;, variables(&#39;networkInterfaceName&#39;))]&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;sslEnforcement&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;minimalTlsVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLS1_2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;createMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Default&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;mariadbVersion&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;administratorLogin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;administratorLogin&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;administratorLoginPassword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;administratorLoginPassword&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;storageProfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;storageMB&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;skuSizeMB&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;backupRetentionDays&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;geoRedundantBackup&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h3 id="configure-with-bicep">Configure with Bicep<a class="headerlink" href="#configure-with-bicep" title="Permanent link">#</a></h3>
-<p>To deploy Virtual Machines that pass this rule:</p>
+<p>To deploy Azure Database for MariaDB Servers that pass this rule:</p>
 <ul>
-<li>Set the <code>properties.storageProfile.osDisk.managedDisk.storageAccountType</code> property to <code>Premium_LRS</code> or greater.</li>
-<li>Configure each data disk included in <code>properties.storageProfile.dataDisks</code> to use <code>Premium_LRS</code> or greater by setting the property <code>managedDisk.storageAccountType</code>.</li>
+<li>Set the <code>properties.sslEnforcement</code> property to <code>Enabled</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource virtualMachine &#39;Microsoft.Compute/virtualMachines@2022-03-01&#39; = {
-  name: virtualMachineName
+<div class="highlight"><pre><span></span><code>resource mariaDbServer &#39;Microsoft.DBforMariaDB/servers@2018-06-01&#39; = {
+  name: serverName
   location: location
+  sku: {
+    name: skuName
+    tier: &#39;GeneralPurpose&#39;
+    capacity: skuCapacity
+    size: &#39;${skuSizeMB}&#39; 
+    family: skuFamily
+  }
   properties: {
-    hardwareProfile: {
-      vmSize: virtualMachineSize
-    }
+    sslEnforcement: &#39;Enabled&#39;
+    minimalTlsVersion: &#39;TLS1_2&#39;
+    createMode: &#39;Default&#39;
+    version: mariadbVersion
+    administratorLogin: administratorLogin
+    administratorLoginPassword: administratorLoginPassword
     storageProfile: {
-      osDisk: {
-        createOption: &#39;FromImage&#39;
-        managedDisk: {
-          storageAccountType: &#39;Premium_LRS&#39;
-        }
-        diskSizeGB: 127
-      }
-      imageReference: {
-        publisher: &#39;MicrosoftSQLServer&#39;
-        offer: &#39;SQL2019-WS2019&#39;
-        sku: &#39;Enterprise&#39;
-        version: &#39;latest&#39;
-      }
-      dataDisks: [
-        {
-          lun: 0
-          caching: &#39;ReadOnly&#39;
-          createOption: &#39;Empty&#39;
-          writeAcceleratorEnabled: false
-          managedDisk: {
-            storageAccountType: &#39;UltraSSD_LRS&#39;
-          }
-          diskSizeGB: 1023
-        }
-      ]
-    }
-    networkProfile: {
-      networkInterfaces: [
-        {
-          id: networkInterface.id
-        }
-      ]
-    }
-    osProfile: {
-      computerName: virtualMachineName
-      adminUsername: adminUsername
-      adminPassword: adminPassword
-      windowsConfiguration: {
-        enableAutomaticUpdates: true
-        provisionVMAgent: true
-      }
+      storageMB: skuSizeMB
+      backupRetentionDays: 7
+      geoRedundantBackup: &#39;Enabled&#39;
     }
   }
 }
 </code></pre></div>
-<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
-<p>This rule is only applicable for OS disk and data disks configured with the property <code>properties.storageProfile.osDisk.managedDisk.storageAccountType</code> and the property <code>properties.storageProfile.dataDisks.managedDisk.storageAccountType</code>.</p>
-<p>Resources declarations can therefore pass the rule which are using not using Premium disks or above.</p>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://learn.microsoft.com/azure/architecture/framework/scalability/design-checklist">Design for performance</a></li>
-<li><a href="https://learn.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices-storage">Performance best practices for SQL Server on Azure VMs</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines">Azure template reference</a></li>
+<li><a href="https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit">Data encryption in Azure</a></li>
+<li><a href="https://learn.microsoft.com/azure/mariadb/concepts-ssl-connection-security">SSL connectivity in Azure Database for MariaDB</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers">Template reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7639,7 +7565,7 @@
   <small>
     
       Last update:
-      2022-11-14
+      2022-11-19
     
   </small>
 </div>
@@ -7662,7 +7588,7 @@
       data-category="Documentation"
       data-category-id="DIC_kwDOCvn6LM4CQqE6"
       data-mapping="specific"
-      data-term="Azure.VM.SQLServerDisk"
+      data-term="Azure.MariaDB.UseSSL"
       data-strict="0"
       data-reactions-enabled="1"
       data-emit-metadata="0"
