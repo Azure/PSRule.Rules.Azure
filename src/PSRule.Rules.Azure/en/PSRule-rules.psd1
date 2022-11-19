@@ -87,4 +87,5 @@
     PostgreSQLGeoRedundantBackupNotConfigured = "The Azure Database for PostgreSQL '{0}' should have geo-redundant backup configured."
     SQLServerVMDisks = "The virtual machine used for running SQL Server should use Premium disks or greater."
     KeyVaultAuditDiagnosticSetting = "Minimum one diagnostic setting should have ({0}) configured or category group ({1}) configured."
+    MariaDBEncryptedConnection = "The Azure Database for MariaDB should only accept encrypted connections."
 }
