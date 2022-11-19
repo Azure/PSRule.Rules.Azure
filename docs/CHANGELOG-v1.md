@@ -54,6 +54,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Virtual Machine:
     - Check virtual machines running SQL Server uses Premium disks or above by @bengeset96.
       [#9](https://github.com/Azure/PSRule.Rules.Azure/issues/9)
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk to v17.4.0
+    [#1838](https://github.com/Azure/PSRule.Rules.Azure/pull/1838)
 
 ## v1.22.0-B0026 (pre-release)
 
