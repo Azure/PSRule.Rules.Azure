@@ -82,7 +82,7 @@ Rule 'Azure.MariaDB.FirewallRuleName' -Ref 'AZR-000338' -Type 'Microsoft.DBforMa
 Rule 'Azure.MariaDB.VNETRuleName' -Ref 'AZR-000339' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/virtualNetworkRules' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
     # https://learn.microsoft.com/nb-no/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformariadb
 
-    $virtualNetworkRules = @(global:GetMariaDBVNETRuleName)
+    $virtualNetworkRules = @(GetMariaDBVNETRuleName)
 
     foreach ($virtualNetworkRule in $virtualNetworkRules) {
         # Between 1 and 128 characters long
@@ -113,7 +113,7 @@ function global:GetMariaDBDatabaseName {
     param ()
     process {
         if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
-            Get-SubResources -ResourceType 'Microsoft.DBforMariaDB/servers/databases' |
+            GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/databases' |
                 ForEach-Object { $_.name }
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/databases') {
@@ -128,7 +128,7 @@ function global:GetMariaDBFirewallRuleName {
     param ()
     process {
         if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
-            Get-SubResources -ResourceType 'Microsoft.DBforMariaDB/servers/firewallRules' |
+            GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/firewallRules' |
                 ForEach-Object { $_.name }
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/firewallRules') {
@@ -143,7 +143,7 @@ function global:GetMariaDBVNETRuleName {
     param ()
     process {
         if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
-            Get-SubResources -ResourceType 'Microsoft.DBforMariaDB/servers/virtualNetworkRules' |
+            GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/virtualNetworkRules' |
                 ForEach-Object { $_.name }
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/virtualNetworkRules') {
