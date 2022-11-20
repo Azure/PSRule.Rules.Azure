@@ -24,32 +24,29 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-- Bug fixes:
-  - Fixed missing support for diagnostic settings category groups by @bengeset96.
-    [#1873](https://github.com/Azure/PSRule.Rules.Azure/issues/1873)
 - New rules:
   - Azure Database for MariaDB:
-    - Check Azure Database for MariaDB servers only uses TLS 1.2 version by @bengeset96.
+    - Check Azure Database for MariaDB servers only uses TLS 1.2 version by @BenjaminEngeset.
       [#1853](https://github.com/Azure/PSRule.Rules.Azure/issues/1853)
-    - Check Azure Database for MariaDB servers only accept encrypted connections by @bengeset96.
+    - Check Azure Database for MariaDB servers only accept encrypted connections by @BenjaminEngeset.
       [#1852](https://github.com/Azure/PSRule.Rules.Azure/issues/1852)
-    - Check Azure Database for MariaDB servers have Microsoft Defender configured by @bengeset96.
+    - Check Azure Database for MariaDB servers have Microsoft Defender configured by @BenjaminEngeset.
       [#1850](https://github.com/Azure/PSRule.Rules.Azure/issues/1850)
-    - Check Azure Database for MariaDB servers have geo-redundant backup configured by @bengeset96.
+    - Check Azure Database for MariaDB servers have geo-redundant backup configured by @BenjaminEngeset.
       [#1848](https://github.com/Azure/PSRule.Rules.Azure/issues/1848)
   - Azure Database for PostgreSQL:
-    - Check Azure Database for PostgreSQL servers have Microsoft Defender configured by @bengeset96.
+    - Check Azure Database for PostgreSQL servers have Microsoft Defender configured by @BenjaminEngeset.
       [#286](https://github.com/Azure/PSRule.Rules.Azure/issues/286)
-    - Check Azure Database for PostgreSQL servers have geo-redundant backup configured by @bengeset96.
+    - Check Azure Database for PostgreSQL servers have geo-redundant backup configured by @BenjaminEngeset.
       [#285](https://github.com/Azure/PSRule.Rules.Azure/issues/285)
   - Azure Database for MySQL:
-    - Check Azure Database for MySQL servers have Microsoft Defender configured by @bengeset96.
+    - Check Azure Database for MySQL servers have Microsoft Defender configured by @BenjaminEngeset.
       [#287](https://github.com/Azure/PSRule.Rules.Azure/issues/287)
-    - Check Azure Database for MySQL servers uses the flexible deployment model by @bengeset96.
+    - Check Azure Database for MySQL servers uses the flexible deployment model by @BenjaminEngeset.
       [#1841](https://github.com/Azure/PSRule.Rules.Azure/issues/1841)
-    - Check Azure Database for MySQL Flexible Servers have geo-redundant backup configured by @bengeset96.
+    - Check Azure Database for MySQL Flexible Servers have geo-redundant backup configured by @BenjaminEngeset.
       [#1840](https://github.com/Azure/PSRule.Rules.Azure/issues/1840)
-    - Check Azure Database for MySQL servers have geo-redundant backup configured by @bengeset96.
+    - Check Azure Database for MySQL servers have geo-redundant backup configured by @BenjaminEngeset.
       [#284](https://github.com/Azure/PSRule.Rules.Azure/issues/284)
   - Azure Resource Deployments:
     - Check for nested deployment that are scoped to `outer` and passing secure values by @ms-sambell.
@@ -57,11 +54,16 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check custom script extension uses protected settings for secure values by @ms-sambell.
       [#1478](https://github.com/Azure/PSRule.Rules.Azure/issues/1478)
   - Virtual Machine:
-    - Check virtual machines running SQL Server uses Premium disks or above by @bengeset96.
+    - Check virtual machines running SQL Server uses Premium disks or above by @BenjaminEngeset.
       [#9](https://github.com/Azure/PSRule.Rules.Azure/issues/9)
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.4.0
     [#1838](https://github.com/Azure/PSRule.Rules.Azure/pull/1838)
+  - Bump coverlet.collector to v3.2.0.
+    [#1814](https://github.com/Azure/PSRule.Rules.Azure/pull/1814)
+- Bug fixes:
+  - Fixed missing support for diagnostic settings category groups by @BenjaminEngeset.
+    [#1873](https://github.com/Azure/PSRule.Rules.Azure/issues/1873)
 
 ## v1.22.0-B0026 (pre-release)
 
@@ -69,7 +71,7 @@ What's changed since pre-release v1.22.0-B0011:
 
 - New rules:
   - API Management:
-    - Check api management instances limits control plane API calls to apim with version `'2021-08-01'` or newer by @bengeset96.
+    - Check api management instances limits control plane API calls to apim with version `'2021-08-01'` or newer by @BenjaminEngeset.
       [#1819](https://github.com/Azure/PSRule.Rules.Azure/issues/1819)
 - Engineering:
   - Bump Az.Resources to v6.4.0.
@@ -86,10 +88,10 @@ What's changed since v1.21.0:
 
 - New rules:
   - App Service Environment:
-    - Check app service environments uses version 3 (ASEv3) instead of classic version 1 (ASEv1) and version 2 (ASEv2) by @bengeset96.
+    - Check app service environments uses version 3 (ASEv3) instead of classic version 1 (ASEv1) and version 2 (ASEv2) by @BenjaminEngeset.
       [#1805](https://github.com/Azure/PSRule.Rules.Azure/issues/1805)
   - Front Door:
-    - Check front door uses caching by @bengeset96.
+    - Check front door uses caching by @BenjaminEngeset.
       [#548](https://github.com/Azure/PSRule.Rules.Azure/issues/548)
   - Virtual Network:
     - Check VNETs with a GatewaySubnet also has an AzureFirewallSubnet by @BernieWhite.
@@ -127,16 +129,16 @@ What's changed since v1.20.2:
     - Check sensitive resource values use secure parameters by @VeraBE @BernieWhite.
       [#1773](https://github.com/Azure/PSRule.Rules.Azure/issues/1773)
   - Service Bus:
-    - Check service bus namespaces uses TLS 1.2 version by @bengeset96.
+    - Check service bus namespaces uses TLS 1.2 version by @BenjaminEngeset.
       [#1777](https://github.com/Azure/PSRule.Rules.Azure/issues/1777)
   - Virtual Machine:
-    - Check virtual machines uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @bengeset96.
+    - Check virtual machines uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @BenjaminEngeset.
       [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
   - Virtual Machine Scale Sets:
-    - Check virtual machine scale sets uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @bengeset96.
+    - Check virtual machine scale sets uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @BenjaminEngeset.
       [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
   - Virtual Network:
-    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @bengeset96.
+    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @BenjaminEngeset.
       [#1761](https://github.com/Azure/PSRule.Rules.Azure/issues/1761)
 - General improvements:
   - Added built-in list of ignored policy definitions by @BernieWhite.
@@ -158,10 +160,10 @@ What's changed since pre-release v1.21.0-B0027:
 
 - New rules:
   - Virtual Machine:
-    - Check virtual machines uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @bengeset96.
+    - Check virtual machines uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @BenjaminEngeset.
       [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
   - Virtual Machine Scale Sets:
-    - Check virtual machine scale sets uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @bengeset96.
+    - Check virtual machine scale sets uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @BenjaminEngeset.
       [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
 - Engineering:
   - Bump PSRule to v2.5.3.
@@ -181,7 +183,7 @@ What's changed since pre-release v1.21.0-B0011:
     - Check sensitive resource values use secure parameters by @VeraBE @BernieWhite.
       [#1773](https://github.com/Azure/PSRule.Rules.Azure/issues/1773)
   - Service Bus:
-    - Check service bus namespaces uses TLS 1.2 version by @bengeset96.
+    - Check service bus namespaces uses TLS 1.2 version by @BenjaminEngeset.
       [#1777](https://github.com/Azure/PSRule.Rules.Azure/issues/1777)
 
 ## v1.21.0-B0011 (pre-release)
@@ -193,7 +195,7 @@ What's changed since v1.20.1:
     [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
 - New rules:
   - Virtual Network:
-    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @bengeset96.
+    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @BenjaminEngeset.
       [#1761](https://github.com/Azure/PSRule.Rules.Azure/issues/1761)
 - General improvements:
   - Added built-in list of ignored policy definitions by @BernieWhite.
@@ -232,14 +234,14 @@ What's changed since v1.19.2:
     - Marked `Azure.GA_2022_06` and `Azure.Preview_2022_06` baselines as obsolete.
 - New rules:
   - AKS:
-    - Check clusters use Ephemeral OS disk by @bengeset96.
+    - Check clusters use Ephemeral OS disk by @BenjaminEngeset.
       [#1618](https://github.com/Azure/PSRule.Rules.Azure/issues/1618)
   - App Configuration:
-    - Check app configuration store has purge protection enabled by @bengeset96.
+    - Check app configuration store has purge protection enabled by @BenjaminEngeset.
       [#1689](https://github.com/Azure/PSRule.Rules.Azure/issues/1689)
-    - Check app configuration store has one or more replicas by @bengeset96.
+    - Check app configuration store has one or more replicas by @BenjaminEngeset.
       [#1688](https://github.com/Azure/PSRule.Rules.Azure/issues/1688)
-    - Check app configuration store audit diagnostic logs are enabled by @bengeset96.
+    - Check app configuration store audit diagnostic logs are enabled by @BenjaminEngeset.
       [#1690](https://github.com/Azure/PSRule.Rules.Azure/issues/1690)
     - Check identity-based authentication is used for configuration stores by @pazdedav.
       [#1691](https://github.com/Azure/PSRule.Rules.Azure/issues/1691)
@@ -258,10 +260,10 @@ What's changed since v1.19.2:
     - Check the number of IP addresses in firewall rules for caches by @jonathanruiz.
       [#544](https://github.com/Azure/PSRule.Rules.Azure/issues/544)
   - CDN:
-    - Check CDN profile uses Front Door Standard or Premium tier by @bengeset96.
+    - Check CDN profile uses Front Door Standard or Premium tier by @BenjaminEngeset.
       [#1612](https://github.com/Azure/PSRule.Rules.Azure/issues/1612)
   - Container Registry:
-    - Check soft delete policy is enabled by @bengeset96.
+    - Check soft delete policy is enabled by @BenjaminEngeset.
       [#1674](https://github.com/Azure/PSRule.Rules.Azure/issues/1674)
   - Defender for Cloud:
     - Check Microsoft Defender for Cloud is enabled for Containers by @jdewisscher.
@@ -297,7 +299,7 @@ What's changed since v1.19.2:
     - Check file share soft delete is enabled by @jonathanruiz.
       [#966](https://github.com/Azure/PSRule.Rules.Azure/issues/966)
   - VMSS:
-    - Check Linux VMSS has disabled password authentication by @bengeset96.
+    - Check Linux VMSS has disabled password authentication by @BenjaminEngeset.
       [#1635](https://github.com/Azure/PSRule.Rules.Azure/issues/1635)
 - Updated rules:
   - **Important change**: Updated rules, tests and docs with Microsoft Defender for Cloud by @jonathanruiz.
@@ -362,7 +364,7 @@ What's changed since v1.19.2:
     [#1656](https://github.com/Azure/PSRule.Rules.Azure/issues/1656)
   - Fixed handling key collision with duplicate definitions using same parameters by @ArmaanMcleod.
     [#1653](https://github.com/Azure/PSRule.Rules.Azure/issues/1653)
-  - Fixed bug requiring all diagnostic logs settings to have auditing enabled by @bengeset96.
+  - Fixed bug requiring all diagnostic logs settings to have auditing enabled by @BenjaminEngeset.
     [#1726](https://github.com/Azure/PSRule.Rules.Azure/issues/1726)
   - Fixed `Azure.Deployment.AdminUsername` incorrectly fails with nested deployments by @BernieWhite.
     [#1762](https://github.com/Azure/PSRule.Rules.Azure/issues/1762)
@@ -392,7 +394,7 @@ What's changed since pre-release v1.20.0-B0304:
 
 - New rules:
   - App Configuration:
-    - Check app configuration store has purge protection enabled by @bengeset96.
+    - Check app configuration store has purge protection enabled by @BenjaminEngeset.
       [#1689](https://github.com/Azure/PSRule.Rules.Azure/issues/1689)
 - Bug fixes:
   - Fixed `Azure.Deployment.AdminUsername` incorrectly fails with nested deployments by @BernieWhite.
@@ -425,7 +427,7 @@ What's changed since pre-release v1.20.0-B0148:
     - Marked `Azure.GA_2022_06` and `Azure.Preview_2022_06` baselines as obsolete.
 - New rules:
   - App Configuration:
-    - Check app configuration store has one or more replicas by @bengeset96.
+    - Check app configuration store has one or more replicas by @BenjaminEngeset.
       [#1688](https://github.com/Azure/PSRule.Rules.Azure/issues/1688)
 - Engineering:
   - Bump PSRule to v2.4.1.
@@ -437,7 +439,7 @@ What's changed since pre-release v1.20.0-B0148:
 - Bug fixes:
   - Fixed handling key collision with duplicate definitions using same parameters by @ArmaanMcleod.
     [#1653](https://github.com/Azure/PSRule.Rules.Azure/issues/1653)
-  - Fixed bug requiring all diagnostic logs settings to have auditing enabled by @bengeset96.
+  - Fixed bug requiring all diagnostic logs settings to have auditing enabled by @BenjaminEngeset.
     [#1726](https://github.com/Azure/PSRule.Rules.Azure/issues/1726)
 
 ## v1.20.0-B0148 (pre-release)
@@ -446,7 +448,7 @@ What's changed since pre-release v1.20.0-B0085:
 
 - New rules:
   - App Configuration:
-    - Check app configuration store audit diagnostic logs are enabled by @bengeset96.
+    - Check app configuration store audit diagnostic logs are enabled by @BenjaminEngeset.
       [#1690](https://github.com/Azure/PSRule.Rules.Azure/issues/1690)
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.3.2.
@@ -469,7 +471,7 @@ What's changed since pre-release v1.20.0-B0028:
     - Check identity-based authentication is used for configuration stores by @pazdedav.
       [#1691](https://github.com/Azure/PSRule.Rules.Azure/issues/1691)
   - Container Registry:
-    - Check soft delete policy is enabled by @bengeset96.
+    - Check soft delete policy is enabled by @BenjaminEngeset.
       [#1674](https://github.com/Azure/PSRule.Rules.Azure/issues/1674)
   - Defender for Cloud:
     - Check Microsoft Defender for Cloud is enabled for Containers by @jdewisscher.
@@ -531,13 +533,13 @@ What's changed since pre-release v1.20.0-B0004:
 
 - New rules:
   - AKS:
-    - Check clusters use Ephemeral OS disk by @bengeset96.
+    - Check clusters use Ephemeral OS disk by @BenjaminEngeset.
       [#1618](https://github.com/Azure/PSRule.Rules.Azure/issues/1618)
   - CDN:
-    - Check CDN profile uses Front Door Standard or Premium tier by @bengeset96.
+    - Check CDN profile uses Front Door Standard or Premium tier by @BenjaminEngeset.
       [#1612](https://github.com/Azure/PSRule.Rules.Azure/issues/1612)
   - VMSS:
-    - Check Linux VMSS has disabled password authentication by @bengeset96.
+    - Check Linux VMSS has disabled password authentication by @BenjaminEngeset.
       [#1635](https://github.com/Azure/PSRule.Rules.Azure/issues/1635)
 - Updated rules:
   - Azure Kubernetes Service:
@@ -596,7 +598,7 @@ What's changed since v1.18.1:
 
 - New rules:
   - Azure Kubernetes Service:
-    - Check clusters use uptime SLA by @bengeset96.
+    - Check clusters use uptime SLA by @BenjaminEngeset.
       [#1601](https://github.com/Azure/PSRule.Rules.Azure/issues/1601)
 - General improvements:
   - Updated rule level for the following rules by @BernieWhite.
@@ -641,7 +643,7 @@ What's changed since pre-release v1.19.0-B0042:
 
 - New rules:
   - Azure Kubernetes Service:
-    - Check clusters use uptime SLA by @bengeset96.
+    - Check clusters use uptime SLA by @BenjaminEngeset.
       [#1601](https://github.com/Azure/PSRule.Rules.Azure/issues/1601)
 
 ## v1.19.0-B0042 (pre-release)
