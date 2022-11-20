@@ -63,7 +63,6 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
-
             $ruleResult[0].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.DBforMariaDB/servers/securityAlertPolicies' has not been specified.";
             $ruleResult[1].Reason | Should -BeExactly "Path resources.properties.state: Is set to 'Disabled'.";
 
@@ -73,7 +72,6 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'server-C';
         }
-        
         It 'Azure.MariaDB.UseSSL' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MariaDB.UseSSL' };
 
@@ -85,6 +83,25 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
 
             $ruleResult[0].Reason | Should -BeExactly "The Azure Database for MariaDB should only accept encrypted connections.";
             $ruleResult[1].Reason | Should -BeExactly "The Azure Database for MariaDB should only accept encrypted connections.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'server-C';
+        }
+
+        It 'Azure.MariaDB.MinTLS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MariaDB.MinTLS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
+
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.minimalTlsVersion: Is set to 'TLS1_0'.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.minimalTlsVersion: Does not exist.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
