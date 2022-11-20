@@ -15,7 +15,7 @@
       },
       "version": "10.3",
       "sslEnforcement": "Disabled",
-      "minimalTlsVersion": "TLS1_2"
+      "minimalTlsVersion": "TLS1_0"
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DBforMariaDB/servers",
@@ -43,8 +43,7 @@
         "backupRetentionDays": 7,
         "storageAutogrow": "Disabled"
       },
-      "version": "10.3",
-      "minimalTlsVersion": "TLS1_2"
+      "version": "10.3"
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DBforMariaDB/servers",
@@ -66,8 +65,12 @@
         "Name": "Default",
         "Properties": {
           "state": "Disabled",
-          "disabledAlerts": [""],
-          "emailAddresses": [""],
+          "disabledAlerts": [
+            ""
+          ],
+          "emailAddresses": [
+            ""
+          ],
           "emailAccountAdmins": true,
           "storageEndpoint": "https://account.blob.core.windows.net",
           "storageAccountAccessKey": "",
@@ -118,8 +121,12 @@
         "Name": "Default",
         "Properties": {
           "state": "Enabled",
-          "disabledAlerts": [""],
-          "emailAddresses": [""],
+          "disabledAlerts": [
+            ""
+          ],
+          "emailAddresses": [
+            ""
+          ],
           "emailAccountAdmins": true,
           "storageEndpoint": "https://account.blob.core.windows.net",
           "storageAccountAccessKey": "",

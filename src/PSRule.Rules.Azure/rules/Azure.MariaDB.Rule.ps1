@@ -35,6 +35,11 @@ Rule 'Azure.MariaDB.UseSSL' -Ref 'AZR-000334' -Type 'Microsoft.DBforMariaDB/serv
     $Assert.HasFieldValue($TargetObject, 'properties.sslEnforcement', 'Enabled').Reason($LocalizedData.MariaDBEncryptedConnection)
 }
 
+# Synopsis: Azure Database for MariaDB servers should reject TLS versions older than 1.2.
+Rule 'Azure.MariaDB.MinTLS' -Ref 'AZR-000335' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    $Assert.HasFieldValue($TargetObject, 'properties.minimalTlsVersion', 'TLS1_2')
+}
+
 #endregion Rules
 
 #region Helper functions
