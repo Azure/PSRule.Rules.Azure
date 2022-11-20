@@ -93,19 +93,18 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -BeIn 'keyvault-B', 'keyvault-C', 'keyvault-D', 'keyvault-E', 'keyvault-F', 'keyvault-G', 'keyvault-H';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-B', 'keyvault-C', 'keyvault-D', 'keyvault-E', 'keyvault-G';
 
-            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "Diagnostic settings is not configured to log events for 'AuditEvent'.";
-            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "Diagnostic settings is not configured to log events for 'AuditEvent'.";
+            $ruleResult[0].Reason | Should -BeExactly "Minimum one diagnostic setting should have (AuditEvent) configured or category group (audit, allLogs) configured.";
+            $ruleResult[1].Reason | Should -BeExactly "Minimum one diagnostic setting should have (AuditEvent) configured or category group (audit, allLogs) configured.";
+            $ruleResult[2].Reason | Should -BeExactly "Minimum one diagnostic setting should have (AuditEvent) configured or category group (audit, allLogs) configured.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'keyvault-A';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-F', 'keyvault-H';
         }
 
         It 'Azure.KeyVault.AutoRotationPolicy' {

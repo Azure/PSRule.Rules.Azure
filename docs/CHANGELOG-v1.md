@@ -24,6 +24,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- Bug fixes:
+  - Fixed missing support for diagnostic settings category groups by @bengeset96.
+    [#1873](https://github.com/Azure/PSRule.Rules.Azure/issues/1873)
 - New rules:
   - Azure Database for MariaDB:
     - Check Azure Database for MariaDB servers only uses TLS 1.2 version by @bengeset96.

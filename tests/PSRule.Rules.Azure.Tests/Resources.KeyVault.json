@@ -1,631 +1,723 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-A",
-        "Identity": null,
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "keyvault-A",
-        "Name": "keyvault-A",
-        "Properties": {
-            "sku": {
-                "family": "A",
-                "name": "Premium"
-            },
-            "tenantId": "00000000-0000-0000-0000-000000000000",
-            "accessPolicies": [
-                {
-                    "tenantId": "00000000-0000-0000-0000-000000000000",
-                    "objectId": "00000000-0000-0000-0000-000000000000",
-                    "permissions": {
-                        "certificates": [
-                            "Get",
-                            "List"
-                        ],
-                        "keys": [
-                            "Get",
-                            "List"
-                        ],
-                        "secrets": [
-                            "Get",
-                            "List",
-                            "Set"
-                        ]
-                    }
-                }
-            ],
-            "enabledForDeployment": true,
-            "enabledForDiskEncryption": true,
-            "enabledForTemplateDeployment": true,
-            "enableSoftDelete": true,
-            "enablePurgeProtection": true,
-            "vaultUri": "https://keyvault-A.vault.azure.net/",
-            "provisioningState": "Succeeded"
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.KeyVault/vaults",
-        "ResourceType": "Microsoft.KeyVault/vaults",
-        "Sku": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-A/providers/microsoft.insights/diagnosticSettings/monitor",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-A/providers/microsoft.insights/diagnosticSettings/monitor",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "monitor",
-                "Name": "monitor",
-                "ExtensionResourceName": "monitor",
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [
-                        {
-                            "category": "AllMetrics",
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logs": [
-                        {
-                            "category": "AuditEvent",
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "microsoft.keyvault/vaults",
-                "ResourceType": "microsoft.keyvault/vaults",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            }
-        ]
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-A",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "keyvault-A",
+    "Name": "keyvault-A",
+    "Properties": {
+      "sku": {
+        "family": "A",
+        "name": "Premium"
+      },
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "accessPolicies": [
+        {
+          "tenantId": "00000000-0000-0000-0000-000000000000",
+          "objectId": "00000000-0000-0000-0000-000000000000",
+          "permissions": {
+            "certificates": ["Get", "List"],
+            "keys": ["Get", "List"],
+            "secrets": ["Get", "List", "Set"]
+          }
+        }
+      ],
+      "enabledForDeployment": true,
+      "enabledForDiskEncryption": true,
+      "enabledForTemplateDeployment": true,
+      "enableSoftDelete": true,
+      "enablePurgeProtection": true,
+      "vaultUri": "https://keyvault-A.vault.azure.net/",
+      "provisioningState": "Succeeded"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-B",
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.KeyVault/vaults",
+    "ResourceType": "Microsoft.KeyVault/vaults",
+    "Sku": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-A/providers/microsoft.insights/diagnosticSettings/monitor",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-A/providers/microsoft.insights/diagnosticSettings/monitor",
         "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": null,
         "ManagedBy": null,
-        "ResourceName": "keyvault-B",
-        "Name": "keyvault-B",
+        "ResourceName": "monitor",
+        "Name": "monitor",
+        "ExtensionResourceName": "monitor",
         "Properties": {
-            "sku": {
-                "family": "A",
-                "name": "Premium"
-            },
-            "tenantId": "00000000-0000-0000-0000-000000000000",
-            "accessPolicies": [
-                {
-                    "tenantId": "00000000-0000-0000-0000-000000000000",
-                    "objectId": "00000000-0000-0000-0000-000000000000",
-                    "permissions": {
-                        "certificates": [
-                            "All"
-                        ],
-                        "keys": [
-                            "All"
-                        ],
-                        "secrets": [
-                            "Get",
-                            "Set",
-                            "List",
-                            "Purge"
-                        ]
-                    }
-                }
-            ],
-            "enabledForDeployment": true,
-            "enabledForDiskEncryption": true,
-            "enabledForTemplateDeployment": true,
-            "enableSoftDelete": false,
-            "vaultUri": "https://keyvault-B.vault.azure.net/",
-            "provisioningState": "Succeeded"
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [
+            {
+              "category": "AllMetrics",
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logs": [
+            {
+              "category": "AuditEvent",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.KeyVault/vaults",
-        "ResourceType": "Microsoft.KeyVault/vaults",
+        "Type": "microsoft.keyvault/vaults",
+        "ResourceType": "microsoft.keyvault/vaults",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
         "Sku": null,
+        "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-B",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "keyvault-B",
+    "Name": "keyvault-B",
+    "Properties": {
+      "sku": {
+        "family": "A",
+        "name": "Premium"
+      },
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "accessPolicies": [
+        {
+          "tenantId": "00000000-0000-0000-0000-000000000000",
+          "objectId": "00000000-0000-0000-0000-000000000000",
+          "permissions": {
+            "certificates": ["All"],
+            "keys": ["All"],
+            "secrets": ["Get", "Set", "List", "Purge"]
+          }
+        }
+      ],
+      "enabledForDeployment": true,
+      "enabledForDiskEncryption": true,
+      "enabledForTemplateDeployment": true,
+      "enableSoftDelete": false,
+      "vaultUri": "https://keyvault-B.vault.azure.net/",
+      "provisioningState": "Succeeded"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-C",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-C",
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.KeyVault/vaults",
+    "ResourceType": "Microsoft.KeyVault/vaults",
+    "Sku": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-C",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "keyvault-C",
+    "Name": "keyvault-C",
+    "Properties": {
+      "sku": {
+        "family": "A",
+        "name": "Premium"
+      },
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "accessPolicies": [],
+      "enabledForDeployment": true,
+      "enabledForDiskEncryption": true,
+      "enabledForTemplateDeployment": true,
+      "enableSoftDelete": true,
+      "enablePurgeProtection": false,
+      "vaultUri": "https://keyvault-C.vault.azure.net/",
+      "provisioningState": "Succeeded"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.KeyVault/vaults",
+    "ResourceType": "Microsoft.KeyVault/vaults",
+    "Sku": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-B/providers/microsoft.insights/diagnosticSettings/monitor",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-B/providers/microsoft.insights/diagnosticSettings/monitor",
         "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": null,
         "ManagedBy": null,
-        "ResourceName": "keyvault-C",
-        "Name": "keyvault-C",
+        "ResourceName": "monitor",
+        "Name": "monitor",
+        "ExtensionResourceName": "monitor",
         "Properties": {
-            "sku": {
-                "family": "A",
-                "name": "Premium"
-            },
-            "tenantId": "00000000-0000-0000-0000-000000000000",
-            "accessPolicies": [],
-            "enabledForDeployment": true,
-            "enabledForDiskEncryption": true,
-            "enabledForTemplateDeployment": true,
-            "enableSoftDelete": true,
-            "enablePurgeProtection": false,
-            "vaultUri": "https://keyvault-C.vault.azure.net/",
-            "provisioningState": "Succeeded"
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [
+            {
+              "category": "AllMetrics",
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logs": [
+            {
+              "category": "AuditEvent",
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.KeyVault/vaults",
-        "ResourceType": "Microsoft.KeyVault/vaults",
+        "Type": "microsoft.keyvault/vaults",
+        "ResourceType": "microsoft.keyvault/vaults",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
         "Sku": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-B/providers/microsoft.insights/diagnosticSettings/monitor",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-B/providers/microsoft.insights/diagnosticSettings/monitor",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "monitor",
-                "Name": "monitor",
-                "ExtensionResourceName": "monitor",
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [
-                        {
-                            "category": "AllMetrics",
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logs": [
-                        {
-                            "category": "AuditEvent",
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "microsoft.keyvault/vaults",
-                "ResourceType": "microsoft.keyvault/vaults",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            }
-        ]
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-D",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "keyvault-D",
+    "Name": "keyvault-D",
+    "Properties": {
+      "sku": {
+        "family": "A",
+        "name": "Premium"
+      },
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "accessPolicies": [],
+      "enabledForDeployment": true,
+      "enabledForDiskEncryption": true,
+      "enabledForTemplateDeployment": true,
+      "enableSoftDelete": true,
+      "enablePurgeProtection": true,
+      "vaultUri": "https://keyvault-D.vault.azure.net/",
+      "provisioningState": "Succeeded"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-D",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-D",
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.KeyVault/vaults",
+    "ResourceType": "Microsoft.KeyVault/vaults",
+    "Sku": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-B/providers/microsoft.insights/diagnosticSettings/monitor",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-B/providers/microsoft.insights/diagnosticSettings/monitor",
         "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": null,
         "ManagedBy": null,
-        "ResourceName": "keyvault-D",
-        "Name": "keyvault-D",
+        "ResourceName": "monitor",
+        "Name": "monitor",
+        "ExtensionResourceName": "monitor",
         "Properties": {
-            "sku": {
-                "family": "A",
-                "name": "Premium"
-            },
-            "tenantId": "00000000-0000-0000-0000-000000000000",
-            "accessPolicies": [],
-            "enabledForDeployment": true,
-            "enabledForDiskEncryption": true,
-            "enabledForTemplateDeployment": true,
-            "enableSoftDelete": true,
-            "enablePurgeProtection": true,
-            "vaultUri": "https://keyvault-D.vault.azure.net/",
-            "provisioningState": "Succeeded"
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [
+            {
+              "category": "AllMetrics",
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.KeyVault/vaults",
-        "ResourceType": "Microsoft.KeyVault/vaults",
+        "Type": "microsoft.keyvault/vaults",
+        "ResourceType": "microsoft.keyvault/vaults",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
         "Sku": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-B/providers/microsoft.insights/diagnosticSettings/monitor",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-B/providers/microsoft.insights/diagnosticSettings/monitor",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "monitor",
-                "Name": "monitor",
-                "ExtensionResourceName": "monitor",
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [
-                        {
-                            "category": "AllMetrics",
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "microsoft.keyvault/vaults",
-                "ResourceType": "microsoft.keyvault/vaults",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            }
-        ]
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-E",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-E",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "keyvault-E",
+    "Name": "keyvault-E",
+    "Properties": {
+      "sku": {
+        "family": "A",
+        "name": "Premium"
+      },
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "accessPolicies": [],
+      "enabledForDeployment": true,
+      "enabledForDiskEncryption": true,
+      "enabledForTemplateDeployment": true,
+      "enableSoftDelete": true,
+      "enablePurgeProtection": true,
+      "vaultUri": "https://keyvault-E.vault.azure.net/",
+      "provisioningState": "Succeeded"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-E",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-E",
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.KeyVault/vaults",
+    "ResourceType": "Microsoft.KeyVault/vaults",
+    "Sku": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-E/providers/microsoft.insights/diagnosticSettings/monitor",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-E/providers/microsoft.insights/diagnosticSettings/monitor",
         "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": null,
         "ManagedBy": null,
-        "ResourceName": "keyvault-E",
-        "Name": "keyvault-E",
+        "ResourceName": "monitor",
+        "Name": "monitor",
+        "ExtensionResourceName": "monitor",
         "Properties": {
-            "sku": {
-                "family": "A",
-                "name": "Premium"
-            },
-            "tenantId": "00000000-0000-0000-0000-000000000000",
-            "accessPolicies": [],
-            "enabledForDeployment": true,
-            "enabledForDiskEncryption": true,
-            "enabledForTemplateDeployment": true,
-            "enableSoftDelete": true,
-            "enablePurgeProtection": true,
-            "vaultUri": "https://keyvault-E.vault.azure.net/",
-            "provisioningState": "Succeeded"
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [""],
+          "logs": [
+            {
+              "categoryGroup": "audit",
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.KeyVault/vaults",
-        "ResourceType": "Microsoft.KeyVault/vaults",
+        "Type": "microsoft.keyvault/vaults",
+        "ResourceType": "microsoft.keyvault/vaults",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
         "Sku": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-B/providers/microsoft.insights/diagnosticSettings/monitor",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-B/providers/microsoft.insights/diagnosticSettings/monitor",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "monitor",
-                "Name": "monitor",
-                "ExtensionResourceName": "monitor",
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [
-                        {
-                            "category": "AllMetrics",
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logs": [],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "microsoft.keyvault/vaults",
-                "ResourceType": "microsoft.keyvault/vaults",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            }
-        ]
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-F",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-F",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "keyvault-F",
+    "Name": "keyvault-F",
+    "Properties": {
+      "sku": {
+        "family": "A",
+        "name": "Premium"
+      },
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "accessPolicies": [],
+      "enabledForDeployment": true,
+      "enabledForDiskEncryption": true,
+      "enabledForTemplateDeployment": true,
+      "enableSoftDelete": true,
+      "enablePurgeProtection": true,
+      "vaultUri": "https://keyvault-F.vault.azure.net/",
+      "provisioningState": "Succeeded"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-F",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-F",
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.KeyVault/vaults",
+    "ResourceType": "Microsoft.KeyVault/vaults",
+    "Sku": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-F/keys/key1",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-F/keys/key1",
         "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": "australiaeast",
         "ManagedBy": null,
-        "ResourceName": "keyvault-F",
-        "Name": "keyvault-F",
+        "ResourceName": "key1",
+        "Name": "key1",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
         "Properties": {
-            "sku": {
-                "family": "A",
-                "name": "Premium"
-            },
-            "tenantId": "00000000-0000-0000-0000-000000000000",
-            "accessPolicies": [],
-            "enabledForDeployment": true,
-            "enabledForDiskEncryption": true,
-            "enabledForTemplateDeployment": true,
-            "enableSoftDelete": true,
-            "enablePurgeProtection": true,
-            "vaultUri": "https://keyvault-F.vault.azure.net/",
-            "provisioningState": "Succeeded"
+          "attributes": {
+            "enabled": true,
+            "created": 1644675924,
+            "updated": 1644675924,
+            "recoveryLevel": "Recoverable+Purgeable"
+          },
+          "rotationPolicy": {
+            "lifetimeActions": [
+              {
+                "trigger": {
+                  "timeAfterCreate": "P18D"
+                },
+                "action": {
+                  "type": "Rotate"
+                }
+              },
+              {
+                "trigger": {
+                  "timeBeforeExpiry": "P30D"
+                },
+                "action": {
+                  "type": "Notify"
+                }
+              }
+            ],
+            "attributes": {
+              "created": 1644675957,
+              "updated": 1644675957
+            }
+          },
+          "kty": "RSA",
+          "keyOps": [
+            "sign",
+            "verify",
+            "wrapKey",
+            "unwrapKey",
+            "encrypt",
+            "decrypt"
+          ],
+          "keySize": 2048,
+          "keyUri": "https://keyvault-F.vault.azure.net/keys/key1",
+          "keyUriWithVersion": "https://keyvault-F.vault.azure.net/keys/key1/00000000000000000000000000000000"
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.KeyVault/vaults",
-        "ResourceType": "Microsoft.KeyVault/vaults",
+        "Type": "Microsoft.KeyVault/vaults/keys",
+        "ResourceType": "Microsoft.KeyVault/vaults/keys",
+        "ExtensionResourceType": null,
         "Sku": null,
+        "Tags": {},
+        "TagsTable": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-F/keys/key1",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-F/keys/key1",
-                "Identity": null,
-                "Kind": null,
-                "Location": "australiaeast",
-                "ManagedBy": null,
-                "ResourceName": "key1",
-                "Name": "key1",
-                "ExtensionResourceName": null,
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "attributes": {
-                        "enabled": true,
-                        "created": 1644675924,
-                        "updated": 1644675924,
-                        "recoveryLevel": "Recoverable+Purgeable"
-                    },
-                    "rotationPolicy": {
-                        "lifetimeActions": [
-                            {
-                                "trigger": {
-                                    "timeAfterCreate": "P18D"
-                                },
-                                "action": {
-                                    "type": "Rotate"
-                                }
-                            },
-                            {
-                                "trigger": {
-                                    "timeBeforeExpiry": "P30D"
-                                },
-                                "action": {
-                                    "type": "Notify"
-                                }
-                            }
-                        ],
-                        "attributes": {
-                            "created": 1644675957,
-                            "updated": 1644675957
-                        }
-                    },
-                    "kty": "RSA",
-                    "keyOps": [
-                        "sign",
-                        "verify",
-                        "wrapKey",
-                        "unwrapKey",
-                        "encrypt",
-                        "decrypt"
-                    ],
-                    "keySize": 2048,
-                    "keyUri": "https://keyvault-F.vault.azure.net/keys/key1",
-                    "keyUriWithVersion": "https://keyvault-F.vault.azure.net/keys/key1/00000000000000000000000000000000"
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.KeyVault/vaults/keys",
-                "ResourceType": "Microsoft.KeyVault/vaults/keys",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "Tags": {},
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-F/providers/microsoft.insights/diagnosticSettings/monitor",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-F/providers/microsoft.insights/diagnosticSettings/monitor",
         "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": null,
         "ManagedBy": null,
-        "ResourceName": "keyvault-G",
-        "Name": "keyvault-G",
+        "ResourceName": "monitor",
+        "Name": "monitor",
+        "ExtensionResourceName": "monitor",
         "Properties": {
-            "sku": {
-                "family": "A",
-                "name": "Premium"
-            },
-            "tenantId": "00000000-0000-0000-0000-000000000000",
-            "accessPolicies": [],
-            "enabledForDeployment": true,
-            "enabledForDiskEncryption": true,
-            "enabledForTemplateDeployment": true,
-            "enableSoftDelete": true,
-            "enablePurgeProtection": true,
-            "vaultUri": "https://keyvault-G.vault.azure.net/",
-            "provisioningState": "Succeeded"
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [""],
+          "logs": [
+            {
+              "categoryGroup": "audit",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.KeyVault/vaults",
-        "ResourceType": "Microsoft.KeyVault/vaults",
+        "Type": "microsoft.keyvault/vaults",
+        "ResourceType": "microsoft.keyvault/vaults",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
         "Sku": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G/keys/key1",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G/keys/key1",
-                "Identity": null,
-                "Kind": null,
-                "Location": "australiaeast",
-                "ManagedBy": null,
-                "ResourceName": "key1",
-                "Name": "key1",
-                "ExtensionResourceName": null,
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "attributes": {
-                        "enabled": true,
-                        "created": 1644675924,
-                        "updated": 1644675924,
-                        "recoveryLevel": "Recoverable+Purgeable"
-                    },
-                    "rotationPolicy": {
-                        "lifetimeActions": [
-                            {
-                                "trigger": {
-                                    "timeBeforeExpiry": "P30D"
-                                },
-                                "action": {
-                                    "type": "Notify"
-                                }
-                            }
-                        ],
-                        "attributes": {
-                            "created": 1644675957,
-                            "updated": 1644675957
-                        }
-                    },
-                    "kty": "RSA",
-                    "keyOps": [
-                        "sign",
-                        "verify",
-                        "wrapKey",
-                        "unwrapKey",
-                        "encrypt",
-                        "decrypt"
-                    ],
-                    "keySize": 2048,
-                    "keyUri": "https://keyvault-G.vault.azure.net/keys/key1",
-                    "keyUriWithVersion": "https://keyvault-G.vault.azure.net/keys/key1/00000000000000000000000000000000"
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.KeyVault/vaults/keys",
-                "ResourceType": "Microsoft.KeyVault/vaults/keys",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "Tags": {},
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "keyvault-G",
+    "Name": "keyvault-G",
+    "Properties": {
+      "sku": {
+        "family": "A",
+        "name": "Premium"
+      },
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "accessPolicies": [],
+      "enabledForDeployment": true,
+      "enabledForDiskEncryption": true,
+      "enabledForTemplateDeployment": true,
+      "enableSoftDelete": true,
+      "enablePurgeProtection": true,
+      "vaultUri": "https://keyvault-G.vault.azure.net/",
+      "provisioningState": "Succeeded"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-H",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-H",
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.KeyVault/vaults",
+    "ResourceType": "Microsoft.KeyVault/vaults",
+    "Sku": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G/keys/key1",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G/keys/key1",
         "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": "australiaeast",
         "ManagedBy": null,
-        "ResourceName": "keyvault-H",
-        "Name": "keyvault-H",
+        "ResourceName": "key1",
+        "Name": "key1",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
         "Properties": {
-            "sku": {
-                "family": "A",
-                "name": "Premium"
-            },
-            "tenantId": "00000000-0000-0000-0000-000000000000",
-            "accessPolicies": [],
-            "enabledForDeployment": true,
-            "enabledForDiskEncryption": true,
-            "enabledForTemplateDeployment": true,
-            "enableSoftDelete": true,
-            "enablePurgeProtection": true,
-            "vaultUri": "https://keyvault-H.vault.azure.net/",
-            "provisioningState": "Succeeded"
+          "attributes": {
+            "enabled": true,
+            "created": 1644675924,
+            "updated": 1644675924,
+            "recoveryLevel": "Recoverable+Purgeable"
+          },
+          "rotationPolicy": {
+            "lifetimeActions": [
+              {
+                "trigger": {
+                  "timeBeforeExpiry": "P30D"
+                },
+                "action": {
+                  "type": "Notify"
+                }
+              }
+            ],
+            "attributes": {
+              "created": 1644675957,
+              "updated": 1644675957
+            }
+          },
+          "kty": "RSA",
+          "keyOps": [
+            "sign",
+            "verify",
+            "wrapKey",
+            "unwrapKey",
+            "encrypt",
+            "decrypt"
+          ],
+          "keySize": 2048,
+          "keyUri": "https://keyvault-G.vault.azure.net/keys/key1",
+          "keyUriWithVersion": "https://keyvault-G.vault.azure.net/keys/key1/00000000000000000000000000000000"
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.KeyVault/vaults",
-        "ResourceType": "Microsoft.KeyVault/vaults",
+        "Type": "Microsoft.KeyVault/vaults/keys",
+        "ResourceType": "Microsoft.KeyVault/vaults/keys",
+        "ExtensionResourceType": null,
         "Sku": null,
+        "Tags": {},
+        "TagsTable": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-G/providers/microsoft.insights/diagnosticSettings/monitor",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-G/providers/microsoft.insights/diagnosticSettings/monitor",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "monitor",
+        "Name": "monitor",
+        "ExtensionResourceName": "monitor",
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [""],
+          "logs": [
             {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G/keys/key1",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G/keys/key1",
-                "Identity": null,
-                "Kind": null,
-                "Location": "australiaeast",
-                "ManagedBy": null,
-                "ResourceName": "key1",
-                "Name": "key1",
-                "ExtensionResourceName": null,
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "attributes": {
-                        "enabled": true,
-                        "created": 1644675924,
-                        "updated": 1644675924,
-                        "recoveryLevel": "Recoverable+Purgeable"
-                    },
-                    "kty": "RSA",
-                    "keyOps": [
-                        "sign",
-                        "verify",
-                        "wrapKey",
-                        "unwrapKey",
-                        "encrypt",
-                        "decrypt"
-                    ],
-                    "keySize": 2048,
-                    "keyUri": "https://keyvault-H.vault.azure.net/keys/key1",
-                    "keyUriWithVersion": "https://keyvault-H.vault.azure.net/keys/key1/00000000000000000000000000000000"
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.KeyVault/vaults/keys",
-                "ResourceType": "Microsoft.KeyVault/vaults/keys",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "Tags": {},
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
+              "categoryGroup": "allLogs",
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
             }
-        ]
-    }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "microsoft.keyvault/vaults",
+        "ResourceType": "microsoft.keyvault/vaults",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-H",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-H",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "keyvault-H",
+    "Name": "keyvault-H",
+    "Properties": {
+      "sku": {
+        "family": "A",
+        "name": "Premium"
+      },
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "accessPolicies": [],
+      "enabledForDeployment": true,
+      "enabledForDiskEncryption": true,
+      "enabledForTemplateDeployment": true,
+      "enableSoftDelete": true,
+      "enablePurgeProtection": true,
+      "vaultUri": "https://keyvault-H.vault.azure.net/",
+      "provisioningState": "Succeeded"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.KeyVault/vaults",
+    "ResourceType": "Microsoft.KeyVault/vaults",
+    "Sku": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G/keys/key1",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/keyvault-G/keys/key1",
+        "Identity": null,
+        "Kind": null,
+        "Location": "australiaeast",
+        "ManagedBy": null,
+        "ResourceName": "key1",
+        "Name": "key1",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "attributes": {
+            "enabled": true,
+            "created": 1644675924,
+            "updated": 1644675924,
+            "recoveryLevel": "Recoverable+Purgeable"
+          },
+          "kty": "RSA",
+          "keyOps": [
+            "sign",
+            "verify",
+            "wrapKey",
+            "unwrapKey",
+            "encrypt",
+            "decrypt"
+          ],
+          "keySize": 2048,
+          "keyUri": "https://keyvault-H.vault.azure.net/keys/key1",
+          "keyUriWithVersion": "https://keyvault-H.vault.azure.net/keys/key1/00000000000000000000000000000000"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.KeyVault/vaults/keys",
+        "ResourceType": "Microsoft.KeyVault/vaults/keys",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": {},
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-H/providers/microsoft.insights/diagnosticSettings/monitor",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.keyvault/vaults/keyvault-H/providers/microsoft.insights/diagnosticSettings/monitor",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "monitor",
+        "Name": "monitor",
+        "ExtensionResourceName": "monitor",
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [""],
+          "logs": [
+            {
+              "categoryGroup": "allLogs",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "microsoft.keyvault/vaults",
+        "ResourceType": "microsoft.keyvault/vaults",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
 ]
