@@ -24,6 +24,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.22.0-B0062 (pre-release)
+
+What's changed since pre-release v1.22.0-B0026:
+
 - New rules:
   - Azure Database for MariaDB:
     - Check Azure Database for MariaDB servers only uses TLS 1.2 version by @BenjaminEngeset.
