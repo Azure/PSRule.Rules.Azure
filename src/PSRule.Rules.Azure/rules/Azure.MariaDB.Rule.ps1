@@ -53,6 +53,10 @@ Rule 'Azure.MariaDB.DatabaseName' -Ref 'AZR-000337' -Type 'Microsoft.DBforMariaD
     # https://learn.microsoft.com/nb-no/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformariadb
 
     $databases = @(GetMariaDBDatabaseName)
+    if ($databases.Length -eq 0) {
+        $Assert.Pass()
+    }
+
     foreach ($database in $databases) {
         # Between 1 and 63 characters long
         $Assert.GreaterOrEqual($database, '.', 1)
@@ -68,6 +72,10 @@ Rule 'Azure.MariaDB.FirewallRuleName' -Ref 'AZR-000338' -Type 'Microsoft.DBforMa
     # https://learn.microsoft.com/nb-no/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformariadb
 
     $firewallRules = @(GetMariaDBFirewallRuleName)
+    if ($firewallRules.Length -eq 0) {
+        $Assert.Pass()
+    }
+
     foreach ($firewallRule in $firewallRules) {
         # Between 1 and 128 characters long
         $Assert.GreaterOrEqual($firewallRule, '.', 1)
@@ -83,6 +91,9 @@ Rule 'Azure.MariaDB.VNETRuleName' -Ref 'AZR-000339' -Type 'Microsoft.DBforMariaD
     # https://learn.microsoft.com/nb-no/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformariadb
 
     $virtualNetworkRules = @(GetMariaDBVNETRuleName)
+    if ($virtualNetworkRules.Length -eq 0) {
+        $Assert.Pass()
+    }
 
     foreach ($virtualNetworkRule in $virtualNetworkRules) {
         # Between 1 and 128 characters long
@@ -114,10 +125,10 @@ function global:GetMariaDBDatabaseName {
     process {
         if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
             GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/databases' |
-                ForEach-Object { $_.name }
+            ForEach-Object { $_.name }
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/databases') {
-            $TargetObject.TargetName
+            $PSRule.TargetName
         }
     }
 }
@@ -129,10 +140,10 @@ function global:GetMariaDBFirewallRuleName {
     process {
         if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
             GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/firewallRules' |
-                ForEach-Object { $_.name }
+            ForEach-Object { $_.name }
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/firewallRules') {
-            $TargetObject.TargetName
+            $PSRule.TargetName
         }
     }
 }
@@ -144,10 +155,10 @@ function global:GetMariaDBVNETRuleName {
     process {
         if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
             GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/virtualNetworkRules' |
-                ForEach-Object { $_.name }
+            ForEach-Object { $_.name }
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/virtualNetworkRules') {
-            $TargetObject.TargetName
+            $PSRule.TargetName
         }
     }
 }
