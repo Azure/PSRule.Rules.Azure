@@ -54,7 +54,7 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'server-C';
         }
-        
+
         It 'Azure.MariaDB.DefenderCloud' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MariaDB.DefenderCloud' };
 
@@ -72,43 +72,42 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'server-C';
         }
+        It 'Azure.MariaDB.UseSSL' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MariaDB.UseSSL' };
 
-      It 'Azure.MariaDB.MinTLS' {
-          $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MariaDB.MinTLS' };
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
 
-          # Fail
-          $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-          $ruleResult | Should -Not -BeNullOrEmpty;
-          $ruleResult.Length | Should -Be 2;
-          $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
+            $ruleResult[0].Reason | Should -BeExactly "The Azure Database for MariaDB should only accept encrypted connections.";
+            $ruleResult[1].Reason | Should -BeExactly "The Azure Database for MariaDB should only accept encrypted connections.";
 
-          $ruleResult[0].Reason | Should -BeExactly "Path properties.minimalTlsVersion: Is set to 'TLS1_0'.";
-          $ruleResult[1].Reason | Should -BeExactly "Path properties.minimalTlsVersion: Does not exist.";
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'server-C';
+        }
 
-          # Pass
-          $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-          $ruleResult | Should -Not -BeNullOrEmpty;
-          $ruleResult.Length | Should -Be 1;
-          $ruleResult.TargetName | Should -BeIn 'server-C';
-       }
-        
-      It 'Azure.MariaDB.UseSSL' {
-          $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MariaDB.UseSSL' };
+        It 'Azure.MariaDB.MinTLS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MariaDB.MinTLS' };
 
-          # Fail
-          $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-          $ruleResult | Should -Not -BeNullOrEmpty;
-          $ruleResult.Length | Should -Be 2;
-          $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
 
-          $ruleResult[0].Reason | Should -BeExactly "The Azure Database for MariaDB should only accept encrypted connections.";
-          $ruleResult[1].Reason | Should -BeExactly "The Azure Database for MariaDB should only accept encrypted connections.";
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.minimalTlsVersion: Is set to 'TLS1_0'.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.minimalTlsVersion: Does not exist.";
 
-          # Pass
-          $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-          $ruleResult | Should -Not -BeNullOrEmpty;
-          $ruleResult.Length | Should -Be 1;
-          $ruleResult.TargetName | Should -BeIn 'server-C';
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'server-C';
         }
     }
 }
