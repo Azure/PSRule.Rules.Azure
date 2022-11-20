@@ -24,12 +24,17 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- Bug fixes:
+  - Fixed missing support for diagnostic settings category groups by @bengeset96.
+    [#1873](https://github.com/Azure/PSRule.Rules.Azure/issues/1873)
 - New rules:
   - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers only uses TLS 1.2 version by @bengeset96.
+      [#1853](https://github.com/Azure/PSRule.Rules.Azure/issues/1853)
+    - Check Azure Database for MariaDB servers only accept encrypted connections by @bengeset96.
+      [#1852](https://github.com/Azure/PSRule.Rules.Azure/issues/1852)
     - Check Azure Database for MariaDB servers have Microsoft Defender configured by @bengeset96.
       [#1850](https://github.com/Azure/PSRule.Rules.Azure/issues/1850)
-    - Check Azure Database for MariaDB servers have geo-redundant backup configured by @bengeset96.
-      [#1848](https://github.com/Azure/PSRule.Rules.Azure/issues/1848)
     - Check Azure Database for MariaDB servers have geo-redundant backup configured by @bengeset96.
       [#1848](https://github.com/Azure/PSRule.Rules.Azure/issues/1848)
   - Azure Database for PostgreSQL:
