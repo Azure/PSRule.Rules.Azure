@@ -25,6 +25,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+- API Management:
+  - Check API management instances uses multi-region deployment by @BenjaminEngeset.
+      [#1030](https://github.com/Azure/PSRule.Rules.Azure/issues/1030)
   - Azure Database for MariaDB:
     - Check Azure Database for MariaDB servers, databases, firewall rules and VNET rules names meet naming requirements by @BenjaminEngeset.
       [#1854](https://github.com/Azure/PSRule.Rules.Azure/issues/1854)
