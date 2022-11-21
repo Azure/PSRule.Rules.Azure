@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers, databases, firewall rules and VNET rules names meet naming requirements by @BenjaminEngeset.
+      [#1854](https://github.com/Azure/PSRule.Rules.Azure/issues/1854)
+
 ## v1.22.0-B0062 (pre-release)
 
 What's changed since pre-release v1.22.0-B0026:
