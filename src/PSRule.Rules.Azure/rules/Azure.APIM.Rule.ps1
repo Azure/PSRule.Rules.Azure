@@ -266,10 +266,10 @@ Rule 'Azure.APIM.MinAPIVersion' -Ref 'AZR-000321' -Type 'Microsoft.ApiManagement
     }
 } -Configure @{ AZURE_APIM_MIN_API_VERSION = '2021-08-01' }
 
-# Synopsis: API Management instances should use multi-region deployment to reduce request latency perceived by geographically distributed API consumers.
+# Synopsis: API Management instances should use multi-region deployment to improve service availability.
 Rule 'Azure.APIM.MultiRegion' -Ref 'AZR-000340' -Type 'Microsoft.ApiManagement/service' -If { IsPremiumAPIM } -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
     $multiRegion = @($TargetObject.properties.additionalLocations |
-        Where-Object { $_.location -and ($_.location -ne $TargetObject.location) -and ($_.sku.name -eq 'Premium') -and ($_.sku.capacity -ge 1) })
+        Where-Object { $_.location })
     
     $Assert.GreaterOrEqual($multiRegion, '.', 1).Reason($LocalizedData.APIMMultiRegion, $PSRule.TargetName)
 }

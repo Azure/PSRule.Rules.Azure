@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Best practices
+category: Resiliency and dependencies
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.MultiRegion/
 ---
@@ -10,17 +10,17 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.M
 
 ## SYNOPSIS
 
-API Management instances should use multi-region deployment to reduce request latency perceived by geographically distributed API consumers.
+API Management instances should use multi-region deployment to improve service availability.
 
 ## DESCRIPTION
 
-Azure API Management supports multi-region deployment, which enables API publishers to add regional API gateways to an existing API Management instance in one or more supported Azure regions. Multi-region deployment helps reduce request latency perceived by geographically distributed API consumers. It also improves the service availability if one region goes offline.
+Azure API Management supports multi-region deployment. Multi-region deployment provides availability of the API gateway in more than one region and provides service availability if one region goes offline.
 
 This feature is currently only available for the Premium tier of API Management.
 
 ## RECOMMENDATION
 
-Consider to use multi-region deployment to reduce request latency perceived by geographically distributed API consumers and improves service availability if one region goes offline.
+Consider to use multi-region deployment to improve service availability.
 
 ## EXAMPLES
 
@@ -96,11 +96,8 @@ It is recommended to configure zone redundancy if the region supports it.
 
 Virtual network settings must be configured in the added region, if networking is configured in the existing region or regions. The rule does not take this into consideration.
 
-When using the `resourceGroup()` function PSRule for Azure will provide a default meaning that can be configured. Check out the `LINKS` section for more information.
-
 ## LINKS
 
-- [Best practices](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices)
+- [Resiliency and dependencies](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
 - [Azure API Management instance multi-region](https://learn.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region)
-- [PSRule for Azure resourceGroup() function](https://azure.github.io/PSRule.Rules.Azure/expanding-source-files/#resource-group)
 - [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)
