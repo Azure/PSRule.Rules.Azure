@@ -380,9 +380,9 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult.Length | Should -Be 6;
             $ruleResult.TargetName | Should -BeIn 'apim-D', 'apim-E', 'apim-H', 'apim-I', 'apim-J', 'apim-O';
 
-            $ruleResult[0].Reason | Should -BeExactly "The API management instance 'apim-D' should use multi-region deployment.";
-            $ruleResult[1].Reason | Should -BeExactly "The API management instance 'apim-E' should use multi-region deployment.";
-            $ruleResult[2].Reason | Should -BeExactly "The API management instance 'apim-H' should use multi-region deployment.";
+            $ruleResult[0].Reason | Should -BeExactly "The API management instance should use multi-region deployment.";
+            $ruleResult[1].Reason | Should -BeExactly "The API management instance should use multi-region deployment.";
+            $ruleResult[2].Reason | Should -BeExactly "The API management instance should use multi-region deployment.";
             
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
