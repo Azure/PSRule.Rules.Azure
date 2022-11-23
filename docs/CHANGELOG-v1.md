@@ -31,6 +31,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 - Bug fixes:
   - Fixed ref and name duplicated by @BernieWhite.
     [#1876](https://github.com/Azure/PSRule.Rules.Azure/issues/1876)
+- Engineering:
+  - Bump PSRule to v2.6.0.
+    [#1883](https://github.com/Azure/PSRule.Rules.Azure/pull/1883)
+  - Bump Az.Resources to v6.4.1.
+    [#1883](https://github.com/Azure/PSRule.Rules.Azure/pull/1883)
 
 ## v1.22.0-B0062 (pre-release)
 
