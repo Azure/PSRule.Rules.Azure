@@ -370,6 +370,26 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'apim-D', 'apim-J', 'apim-K';
         }
+
+        It 'Azure.APIM.MultiRegion' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.MultiRegion' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'apim-D', 'apim-E', 'apim-H', 'apim-I', 'apim-J', 'apim-O';
+
+            $ruleResult[0].Reason | Should -BeExactly "The API management instance should use multi-region deployment.";
+            $ruleResult[1].Reason | Should -BeExactly "The API management instance should use multi-region deployment.";
+            $ruleResult[2].Reason | Should -BeExactly "The API management instance should use multi-region deployment.";
+            
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'apim-F', 'apim-G', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-P';
+        }
     }
 
     Context 'With Template' {
