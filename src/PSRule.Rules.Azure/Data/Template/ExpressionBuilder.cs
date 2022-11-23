@@ -222,11 +222,18 @@ namespace PSRule.Rules.Azure.Data.Template
     {
         private readonly Dictionary<string, IFunctionDescriptor> _Descriptors;
 
-        public ExpressionFactory()
+        public ExpressionFactory(bool policy = false)
         {
             _Descriptors = new Dictionary<string, IFunctionDescriptor>(StringComparer.OrdinalIgnoreCase);
-            foreach (var d in Functions.Builtin)
+            foreach (var d in Functions.Common)
                 With(d);
+
+            // Azure policy specific functions should be added
+            if (policy)
+            {
+                foreach (var d in Functions.Policy)
+                    With(d);
+            }
         }
 
         public bool TryDescriptor(string name, out IFunctionDescriptor descriptor)

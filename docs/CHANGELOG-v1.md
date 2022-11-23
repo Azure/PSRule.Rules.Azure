@@ -24,6 +24,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.22.0-B0062:
+
 - New rules:
   - API Management:
     - Check API management instances uses multi-region deployment by @BenjaminEngeset.
@@ -41,6 +43,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     [#1876](https://github.com/Azure/PSRule.Rules.Azure/issues/1876)
   - Fixed an item with the same key for parameters by @BernieWhite
     [#1871](https://github.com/Azure/PSRule.Rules.Azure/issues/1871)
+  - Fixed policy parse of `requestContext` function by @BernieWhite.
+    [#1654](https://github.com/Azure/PSRule.Rules.Azure/issues/1654)
+  - Fixed handling of policy type field by @BernieWhite.
+    [#1323](https://github.com/Azure/PSRule.Rules.Azure/issues/1323)
 
 ## v1.22.0-B0062 (pre-release)
 
