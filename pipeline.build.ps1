@@ -193,13 +193,15 @@ task TestDotNet {
     if ($CodeCoverage) {
         exec {
             # Test library
-            dotnet test --collect:"Code Coverage" --logger trx -r (Join-Path $PWD -ChildPath reports/) tests/PSRule.Rules.Azure.Tests
+            # dotnet test --collect:"Code Coverage" --logger trx -r (Join-Path $PWD -ChildPath reports/) tests/PSRule.Rules.Azure.Tests
+            dotnet test tests/PSRule.Rules.Azure.Tests
         }
     }
     else {
         exec {
             # Test library
-            dotnet test --logger trx -r (Join-Path $PWD -ChildPath reports/) tests/PSRule.Rules.Azure.Tests
+            # dotnet test --logger trx -r (Join-Path $PWD -ChildPath reports/) tests/PSRule.Rules.Azure.Tests
+            dotnet test tests/PSRule.Rules.Azure.Tests
         }
     }
 }

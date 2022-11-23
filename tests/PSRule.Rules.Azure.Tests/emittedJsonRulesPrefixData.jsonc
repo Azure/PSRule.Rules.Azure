@@ -5,7 +5,6 @@
     "kind": "Rule",
     "metadata": {
       "name": "AzureCustomPrefix.Policy.5ab09e70cb94",
-      "ref": "AzureCustomPrefix.Policy.5ab09e70cb94",
       "tags": {
         "Azure.Policy/category": "General"
       },

@@ -35,11 +35,12 @@ namespace PSRule.Rules.Azure
 
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
-            Assert.Equal(101, definitions.Length);
+            Assert.Equal(103, definitions.Length);
 
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
             Assert.NotNull(actual);
+            Assert.Equal("Azure.Policy.41ba16ba2225", actual.Name);
             Assert.Equal("Storage", actual.Category);
             Assert.Equal("1.1.1", actual.Version);
             Assert.Single(actual.Types);
@@ -72,11 +73,33 @@ namespace PSRule.Rules.Azure
 
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
-            Assert.Equal(100, definitions.Length);
+            Assert.Equal(102, definitions.Length);
 
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
             Assert.Null(actual);
+        }
+
+        [Fact]
+        public void GetAssignmentWithSameParameters()
+        {
+            var context = new PolicyAssignmentContext(GetContext());
+            var visitor = new PolicyAssignmentDataExportVisitor();
+            foreach (var assignment in GetAssignmentData().Where(a => a["Name"].Value<string>().StartsWith("CustomAllowedLocations-")))
+            {
+                try
+                {
+                    visitor.Visit(context, assignment);
+                }
+                catch
+                {
+                    // Sink exceptions, currently there are bugs that need to be fixed.
+                }
+            }
+
+            var definitions = context.GetDefinitions();
+            Assert.NotNull(definitions);
+            Assert.Equal(2, definitions.Length);
         }
 
         #region Helper methods
