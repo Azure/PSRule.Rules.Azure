@@ -50,8 +50,8 @@ For example:
           "name": "Premium",
           "capacity": 1
         },
-        "disableGateway": true
-        }
+        "disableGateway": false
+      }
     ]
   }
 }
@@ -81,7 +81,7 @@ resource apiManagementService 'Microsoft.ApiManagement/service@2021-12-01-previe
           name: 'Premium'
           capacity: 1
         }
-        disableGateway: true
+        disableGateway: false
       }
     ]
   }
