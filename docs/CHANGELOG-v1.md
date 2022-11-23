@@ -28,14 +28,16 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Azure Database for MariaDB:
     - Check Azure Database for MariaDB servers, databases, firewall rules and VNET rules names meet naming requirements by @BenjaminEngeset.
       [#1854](https://github.com/Azure/PSRule.Rules.Azure/issues/1854)
-- Bug fixes:
-  - Fixed ref and name duplicated by @BernieWhite.
-    [#1876](https://github.com/Azure/PSRule.Rules.Azure/issues/1876)
 - Engineering:
   - Bump PSRule to v2.6.0.
     [#1883](https://github.com/Azure/PSRule.Rules.Azure/pull/1883)
   - Bump Az.Resources to v6.4.1.
     [#1883](https://github.com/Azure/PSRule.Rules.Azure/pull/1883)
+- Bug fixes:
+  - Fixed ref and name duplicated by @BernieWhite.
+    [#1876](https://github.com/Azure/PSRule.Rules.Azure/issues/1876)
+  - Fixed an item with the same key for parameters by @BernieWhite
+    [#1871](https://github.com/Azure/PSRule.Rules.Azure/issues/1871)
 
 ## v1.22.0-B0062 (pre-release)
 

@@ -23,7 +23,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             _PipelineContext = pipelineContext;
         }
 
-        internal PolicyDefinition[] ProcessAssignment(string assignmentFile, out PolicyAssignmentVisitor.PolicyAssignmentContext assignmentContext)
+        internal PolicyDefinition[] ProcessAssignment(string assignmentFile, out PolicyAssignmentVisitor.PolicyAssignmentContext context)
         {
             var rootedAssignmentFile = PSRuleOption.GetRootedPath(assignmentFile);
             if (!File.Exists(rootedAssignmentFile))
@@ -35,19 +35,19 @@ namespace PSRule.Rules.Azure.Data.Policy
                     rootedAssignmentFile);
 
             var visitor = new PolicyAssignmentDataExportVisitor();
-            assignmentContext = new PolicyAssignmentVisitor.PolicyAssignmentContext(_PipelineContext);
-            assignmentContext.SetSource(assignmentFile);
+            context = new PolicyAssignmentVisitor.PolicyAssignmentContext(_PipelineContext);
+            context.SetSource(assignmentFile);
 
             try
             {
-                var assignmentArray = ReadFileArray(rootedAssignmentFile);
+                var assignments = ReadFileArray(rootedAssignmentFile);
 
                 // Process each assignment object
-                foreach (var assignment in assignmentArray)
+                foreach (var assignment in assignments)
                 {
                     try
                     {
-                        visitor.Visit(assignmentContext, assignment);
+                        visitor.Visit(context, assignment);
                     }
                     catch (Exception inner)
                     {
@@ -66,8 +66,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                     inner,
                     rootedAssignmentFile);
             }
-
-            return assignmentContext.GetDefinitions();
+            return context.GetDefinitions();
         }
 
         private static JObject[] ReadFileArray(string path)

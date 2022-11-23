@@ -17314,5 +17314,187 @@
         "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0a9fbe0d-c5c4-4da8-87d8-f4fd77338835"
       }
     ]
+  },
+  {
+    "Identity": null,
+    "Location": null,
+    "Name": "CustomAllowedLocations-eastus",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/CustomAllowedLocations-eastus",
+    "ResourceName": "CustomAllowedLocations-eastus",
+    "ResourceGroupName": null,
+    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Sku": null,
+    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/CustomAllowedLocations-eastus",
+    "Properties": {
+      "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+      "NotScopes": [],
+      "DisplayName": "Allowed locations (eastus)",
+      "Description": null,
+      "Metadata": {
+        "assignedBy": "Bernie White",
+        "parameterScopes": {
+          "listOfAllowedLocations": "/subscriptions/00000000-0000-0000-0000-000000000000"
+        }
+      },
+      "EnforcementMode": 1,
+      "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
+      "Parameters": {
+        "listOfAllowedLocations": {
+          "value": [
+            "eastus"
+          ]
+        }
+      },
+      "NonComplianceMessages": [
+        {
+          "Message": "See corp policy for azure resource deployment.",
+          "PolicyDefinitionReferenceId": null
+        }
+      ]
+    },
+    "PolicyDefinitions": [
+      {
+        "Name": "e56962a6-4747-49cd-b67b-bf8b01975c4c",
+        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
+        "ResourceName": "e56962a6-4747-49cd-b67b-bf8b01975c4c",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": null,
+        "Properties": {
+          "Description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region.",
+          "DisplayName": "Allowed locations",
+          "Metadata": {
+            "version": "1.0.0",
+            "category": "General"
+          },
+          "Mode": "Indexed",
+          "Parameters": {
+            "listOfAllowedLocations": {
+              "type": "Array",
+              "metadata": {
+                "description": "The list of locations that can be specified when deploying resources.",
+                "strongType": "location",
+                "displayName": "Allowed locations"
+              }
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "allOf": [
+                {
+                  "field": "location",
+                  "notIn": "[parameters('listOfAllowedLocations')]"
+                },
+                {
+                  "field": "location",
+                  "notEquals": "global"
+                },
+                {
+                  "field": "type",
+                  "notEquals": "Microsoft.AzureActiveDirectory/b2cDirectories"
+                }
+              ]
+            },
+            "then": {
+              "effect": "deny"
+            }
+          },
+          "PolicyType": 2
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c"
+      }
+    ]
+  },
+  {
+    "Identity": null,
+    "Location": null,
+    "Name": "CustomAllowedLocations-australiaeast",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/CustomAllowedLocations-australiaeast",
+    "ResourceName": "CustomAllowedLocations-australiaeast",
+    "ResourceGroupName": null,
+    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Sku": null,
+    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/CustomAllowedLocations-australiaeast",
+    "Properties": {
+      "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+      "NotScopes": [],
+      "DisplayName": "Allowed locations (australiaeast)",
+      "Description": null,
+      "Metadata": {
+        "assignedBy": "Bernie White",
+        "parameterScopes": {
+          "listOfAllowedLocations": "/subscriptions/00000000-0000-0000-0000-000000000000"
+        },
+        "updatedBy": null,
+        "updatedOn": null
+      },
+      "EnforcementMode": 1,
+      "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
+      "Parameters": {
+        "listOfAllowedLocations": {
+          "value": [
+            "australiaeast"
+          ]
+        }
+      },
+      "NonComplianceMessages": [
+        {
+          "Message": "See corp policy for azure resource deployment.",
+          "PolicyDefinitionReferenceId": null
+        }
+      ]
+    },
+    "PolicyDefinitions": [
+      {
+        "Name": "e56962a6-4747-49cd-b67b-bf8b01975c4c",
+        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
+        "ResourceName": "e56962a6-4747-49cd-b67b-bf8b01975c4c",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": null,
+        "Properties": {
+          "Description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region.",
+          "DisplayName": "Allowed locations",
+          "Metadata": {
+            "version": "1.0.0",
+            "category": "General"
+          },
+          "Mode": "Indexed",
+          "Parameters": {
+            "listOfAllowedLocations": {
+              "type": "Array",
+              "metadata": {
+                "description": "The list of locations that can be specified when deploying resources.",
+                "strongType": "location",
+                "displayName": "Allowed locations"
+              }
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "allOf": [
+                {
+                  "field": "location",
+                  "notIn": "[parameters('listOfAllowedLocations')]"
+                },
+                {
+                  "field": "location",
+                  "notEquals": "global"
+                },
+                {
+                  "field": "type",
+                  "notEquals": "Microsoft.AzureActiveDirectory/b2cDirectories"
+                }
+              ]
+            },
+            "then": {
+              "effect": "deny"
+            }
+          },
+          "PolicyType": 2
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c"
+      }
+    ]
   }
 ]

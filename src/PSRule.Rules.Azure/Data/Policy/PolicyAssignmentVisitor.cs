@@ -608,9 +608,19 @@ namespace PSRule.Rules.Azure.Data.Policy
             /// <summary>
             /// Set the Id for the assignment that is being processed.
             /// </summary>
-            internal void SetAssignmentId(string assignmentId)
+            internal void EnterAssignment(string assignmentId)
             {
                 AssignmentId = assignmentId;
+            }
+
+            /// <summary>
+            /// Clean up after processing an assignment.
+            /// </summary>
+            internal void ExitAssignment()
+            {
+                AssignmentId = null;
+                PolicyDefinitionId = null;
+                _ParameterAssignments.Clear();
             }
 
             /// <summary>
@@ -640,21 +650,30 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// </summary>
         protected virtual void Assignment(PolicyAssignmentContext context, JObject assignment)
         {
-            // Get the Id of the assignment for logging.
-            if (assignment.TryGetProperty(PROPERTY_POLICYASSIGNMENTID, out var assignmentId))
-                context.SetAssignmentId(assignmentId);
-
-            // Get assignment Properties
-            if (assignment.TryObjectProperty(PROPERTY_PROPERTIES, out var properties))
+            try
             {
-                // Get assignment parameters
-                if (properties.TryObjectProperty(PROPERTY_PARAMETERS, out var parameters))
-                    AssignmentParameters(context, parameters);
-            }
+                if (!assignment.TryGetProperty(PROPERTY_POLICYASSIGNMENTID, out var assignmentId))
+                    return;
 
-            // Get assignment policy definitions Definitions
-            if (assignment.TryArrayProperty(PROPERTY_POLICYDEFINITIONS, out var definitions))
-                Definitions(context, definitions.Values<JObject>());
+                // Get the Id of the assignment for logging.
+                context.EnterAssignment(assignmentId);
+
+                // Get assignment Properties
+                if (assignment.TryObjectProperty(PROPERTY_PROPERTIES, out var properties))
+                {
+                    // Get assignment parameters
+                    if (properties.TryObjectProperty(PROPERTY_PARAMETERS, out var parameters))
+                        AssignmentParameters(context, parameters);
+                }
+
+                // Get assignment policy definitions Definitions
+                if (assignment.TryArrayProperty(PROPERTY_POLICYDEFINITIONS, out var definitions))
+                    Definitions(context, definitions.Values<JObject>());
+            }
+            finally
+            {
+                context.ExitAssignment();
+            }
         }
 
         /// <summary>
