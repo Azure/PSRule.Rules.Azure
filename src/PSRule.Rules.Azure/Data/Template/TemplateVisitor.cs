@@ -15,6 +15,9 @@ using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
+    /// <summary>
+    /// A string expression.
+    /// </summary>
     public delegate T StringExpression<T>();
 
     internal interface IValidationContext
@@ -60,7 +63,7 @@ namespace PSRule.Rules.Azure.Data.Template
     /// <summary>
     /// The base class for a template visitor.
     /// </summary>
-    internal abstract class TemplateVisitor
+    internal abstract class TemplateVisitor : ResourceManagerVisitor
     {
         private const string RESOURCETYPE_DEPLOYMENT = "Microsoft.Resources/deployments";
         private const string DEPLOYMENTSCOPE_INNER = "inner";

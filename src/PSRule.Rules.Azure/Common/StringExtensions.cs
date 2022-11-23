@@ -36,6 +36,10 @@ namespace PSRule.Rules.Azure
             return str.Substring(lastSubstringIndex + 1);
         }
 
+        /// <summary>
+        /// Check if the string is an Azure Resource Manager expression.
+        /// Expression use the <c>[function()]</c> syntax.
+        /// </summary>
         internal static bool IsExpressionString(this string str)
         {
             return str != null &&
