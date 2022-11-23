@@ -20,7 +20,7 @@ This feature is currently only available for the Premium tier of API Management.
 
 ## RECOMMENDATION
 
-Consider to use multi-region deployment to improve service availability.
+Consider deploying an API Management service across multiple regions to improve service availability.
 
 ## EXAMPLES
 
