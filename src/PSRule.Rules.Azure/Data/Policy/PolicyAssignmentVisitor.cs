@@ -21,7 +21,7 @@ namespace PSRule.Rules.Azure.Data.Policy
     /// <summary>
     /// This visitor processes each assignment to convert the assignment in to one or mny rules.
     /// </summary>
-    internal abstract class PolicyAssignmentVisitor
+    internal abstract class PolicyAssignmentVisitor : ResourceManagerVisitor
     {
         private const string PROPERTY_POLICYASSIGNMENTID = "policyAssignmentId";
         private const string PROPERTY_PARAMETERS = "parameters";
@@ -39,8 +39,8 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_TYPE = "type";
         private const string PROPERTY_NAME = "name";
         private const string PROPERTY_DEFAULTVALUE = "defaultValue";
-        private const string PROPERTY_ALL_OF = "allOf";
-        private const string PROPERTY_ANY_OF = "anyOf";
+        private const string PROPERTY_ALLOF = "allOf";
+        private const string PROPERTY_ANYOF = "anyOf";
         private const string PROPERTY_EQUALS = "equals";
         private const string FIELD_NOTEQUALS = "notEquals";
         private const string FIELD_GREATER = "greater";
@@ -102,7 +102,7 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             internal PolicyAssignmentContext(PipelineContext context)
             {
-                _ExpressionFactory = new ExpressionFactory();
+                _ExpressionFactory = new ExpressionFactory(policy: true);
                 _ExpressionBuilder = new ExpressionBuilder(_ExpressionFactory);
                 _PolicyAliasProviderHelper = new PolicyAliasProviderHelper();
                 _Definitions = new List<PolicyDefinition>();
@@ -322,7 +322,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                         clauseSeparator = $" {clause} ";
                     }
 
-                    else if (obj.TryArrayProperty(PROPERTY_ALL_OF, out var allOfExpression))
+                    else if (obj.TryArrayProperty(PROPERTY_ALLOF, out var allOfExpression))
                     {
                         objectPath.Append($" {clause} ");
                         objectPath.Append(GROUP_OPEN);
@@ -330,7 +330,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                         objectPath.Append(GROUP_CLOSE);
                     }
 
-                    else if (obj.TryArrayProperty(PROPERTY_ANY_OF, out var anyOfExpression))
+                    else if (obj.TryArrayProperty(PROPERTY_ANYOF, out var anyOfExpression))
                     {
                         objectPath.Append($" {clause} ");
                         objectPath.Append(GROUP_OPEN);
@@ -450,7 +450,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                                         }
 
                                         // nested allOf in where expression
-                                        else if (whereExpression.TryArrayProperty(PROPERTY_ALL_OF, out var allofExpression))
+                                        else if (whereExpression.TryArrayProperty(PROPERTY_ALLOF, out var allofExpression))
                                         {
                                             var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
                                             var filter = new StringBuilder();
@@ -459,7 +459,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                                         }
 
                                         // nested anyOf in where expression
-                                        else if (whereExpression.TryArrayProperty(PROPERTY_ANY_OF, out var anyOfExpression))
+                                        else if (whereExpression.TryArrayProperty(PROPERTY_ANYOF, out var anyOfExpression))
                                         {
                                             var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
                                             var filter = new StringBuilder();
@@ -812,6 +812,8 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             // Modify policy rule
             TrimPolicyRule(policyRule);
+            VisitPolicyRule(context, policyRule);
+
             context.ExpandPolicyRule(policyRule, result.Types);
             if (!TryPolicyRuleEffect(then, out var effect) ||
                 ShouldFilterRule(then, effect))
@@ -831,6 +833,67 @@ namespace PSRule.Rules.Azure.Data.Policy
             policyDefinition.Name = $"{context.PolicyRulePrefix}.Policy.{policyRuleHash}";
 
             return true;
+        }
+
+        /// <summary>
+        /// Visit the policyRule node.
+        /// </summary>
+        private static void VisitPolicyRule(PolicyAssignmentContext context, JObject policyRule)
+        {
+            if (policyRule.TryObjectProperty(PROPERTY_IF, out var condition))
+                VisitCondition(context, condition);
+        }
+
+        /// <summary>
+        /// Visit a policy condition node.
+        /// </summary>
+        private static void VisitCondition(PolicyAssignmentContext context, JObject condition)
+        {
+            if (condition.TryArrayProperty(PROPERTY_ALLOF, out var allOf))
+            {
+                foreach (var item in allOf.Values<JObject>())
+                {
+                    VisitCondition(context, item);
+                }
+            }
+            else if (condition.TryArrayProperty(PROPERTY_ANYOF, out var anyOf))
+            {
+                foreach (var item in anyOf.Values<JObject>())
+                {
+                    VisitCondition(context, item);
+                }
+            }
+            else
+            {
+                if (condition.TryStringProperty(PROPERTY_VALUE, out var s) && s.IsExpressionString())
+                {
+                    VisitValueExpression(context, condition, s);
+                }
+            }
+        }
+
+        private static void VisitValueExpression(PolicyAssignmentContext context, JObject condition, string s)
+        {
+            var tokens = ExpressionParser.Parse(s);
+
+            // Handle [requestContext().apiVersion]
+            if (tokens.ConsumeFunction("requestContext") &&
+                tokens.ConsumeGroup() &&
+                tokens.ConsumePropertyName("apiVersion"))
+            {
+                condition.Remove(PROPERTY_VALUE);
+                condition.Add(PROPERTY_FIELD, "apiVersion");
+            }
+
+            // Handle "[field('type')]
+            else if (tokens.ConsumeFunction("field") &&
+                tokens.TryTokenType(ExpressionTokenType.GroupStart, out _) &&
+                tokens.ConsumeString("type") &&
+                tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _))
+            {
+                condition.Remove(PROPERTY_VALUE);
+                condition.Add(PROPERTY_TYPE, DOT);
+            }
         }
 
         /// <summary>
@@ -934,7 +997,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             var existanceExpression = new JObject
             {
                 { PROPERTY_FIELD, PROPERTY_RESOURCES },
-                { PROPERTY_ALL_OF, allOf }
+                { PROPERTY_ALLOF, allOf }
             };
             if (subselector != null && subselector.Count > 0)
                 existanceExpression[PROPERTY_WHERE] = subselector;
@@ -965,7 +1028,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 };
                 return new JObject
                 {
-                    { PROPERTY_ALL_OF, allOf }
+                    { PROPERTY_ALLOF, allOf }
                 };
             }
             return left == null || left.Count == 0 ? right : left;

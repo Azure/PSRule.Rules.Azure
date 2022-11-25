@@ -35,7 +35,7 @@ namespace PSRule.Rules.Azure
 
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
-            Assert.Equal(103, definitions.Length);
+            Assert.Equal(105, definitions.Length);
 
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
@@ -73,7 +73,7 @@ namespace PSRule.Rules.Azure
 
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
-            Assert.Equal(102, definitions.Length);
+            Assert.Equal(104, definitions.Length);
 
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
@@ -100,6 +100,19 @@ namespace PSRule.Rules.Azure
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
             Assert.Equal(2, definitions.Length);
+        }
+
+        [Fact]
+        public void ConvertRequestContext()
+        {
+            var context = new PolicyAssignmentContext(GetContext());
+            var visitor = new PolicyAssignmentDataExportVisitor();
+            foreach (var assignment in GetAssignmentData().Where(a => a["Name"].Value<string>() == "RequestContext"))
+                visitor.Visit(context, assignment);
+
+            var definitions = context.GetDefinitions();
+            Assert.NotNull(definitions);
+            Assert.Single(definitions);
         }
 
         #region Helper methods
