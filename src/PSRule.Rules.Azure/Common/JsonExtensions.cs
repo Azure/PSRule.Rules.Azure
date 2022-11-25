@@ -366,5 +366,12 @@ namespace PSRule.Rules.Azure
             var value = token.Value<string>();
             return value != null && value.IsExpressionString();
         }
+
+        internal static bool IsEmpty(this JToken value)
+        {
+            return value.Type == JTokenType.None ||
+                value.Type == JTokenType.Null ||
+                (value.Type == JTokenType.String && string.IsNullOrEmpty(value.Value<string>()));
+        }
     }
 }
