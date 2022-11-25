@@ -24,6 +24,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.22.0-B0106:
+
+- Bug fixes:
+  - Fixed managed identity flagged as secret by `Azure.Deployment.OutputSecretValue` by @BernieWhite.
+    [#1826](https://github.com/Azure/PSRule.Rules.Azure/issues/1826)
+    [#1886](https://github.com/Azure/PSRule.Rules.Azure/issues/1886)
+
 ## v1.22.0-B0106 (pre-release)
 
 What's changed since pre-release v1.22.0-B0062:

@@ -562,7 +562,8 @@ namespace PSRule.Rules.Azure.Data.Template
             /// </summary>
             internal void TrackSecureValue(string name, ParameterType type, object value)
             {
-                if (type != ParameterType.SecureString && type != ParameterType.SecureObject)
+                if (value == null || !(type == ParameterType.SecureString || type == ParameterType.SecureObject) ||
+                    (value is JValue jValue && jValue.IsEmpty()))
                     return;
 
                 _SecureValues.Add(value);
