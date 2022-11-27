@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers does not have Azure services bypassed on firewall by @BenjaminEngeset.
+      [#1910](https://github.com/Azure/PSRule.Rules.Azure/issues/1910)
+
 ## v1.22.0-B0203 (pre-release)
 
 What's changed since pre-release v1.22.0-B0153:
