@@ -1419,7 +1419,7 @@
           "privateIPAddresses": null,
           "virtualNetworkConfiguration": null,
           "gatewayRegionalUrl": "https://apim-F-eastus-01.regional.azure-api.ne",
-          "disableGateway": false
+          "disableGateway": true
         }
       ],
       "virtualNetworkConfiguration": null,
@@ -1540,7 +1540,7 @@
           "privateIPAddresses": null,
           "virtualNetworkConfiguration": null,
           "gatewayRegionalUrl": "https://apim-F-eastus-01.regional.azure-api.ne",
-          "disableGateway": false
+          "disableGateway": true
         }
       ],
       "virtualNetworkConfiguration": null,
@@ -1992,7 +1992,7 @@
           "privateIPAddresses": null,
           "virtualNetworkConfiguration": null,
           "gatewayRegionalUrl": "https://apim-K-eastus-01.regional.azure-api.ne",
-          "disableGateway": false
+          "disableGateway": true
         }
       ],
       "virtualNetworkConfiguration": null,

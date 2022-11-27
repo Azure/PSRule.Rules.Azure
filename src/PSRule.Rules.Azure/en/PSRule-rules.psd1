@@ -89,4 +89,5 @@
     KeyVaultAuditDiagnosticSetting = "Minimum one diagnostic setting should have ({0}) configured or category group ({1}) configured."
     MariaDBEncryptedConnection = "The Azure Database for MariaDB should only accept encrypted connections."
     APIMMultiRegion = "The API management instance should use multi-region deployment."
+    APIMMultiRegionGateway = "The API management instance should have multi-region deployment gateways enabled."
 }

@@ -271,6 +271,14 @@ Rule 'Azure.APIM.MultiRegion' -Ref 'AZR-000340' -Type 'Microsoft.ApiManagement/s
     $Assert.GreaterOrEqual($TargetObject, 'properties.additionalLocations', 1).Reason($LocalizedData.APIMMultiRegion)
 }
 
+# Synopsis: API Management instances should have multi-region deployment gateways enabled.
+Rule 'Azure.APIM.MultiRegionGateway' -Ref 'AZR-000341' -Type 'Microsoft.ApiManagement/service' -If { (IsPremiumAPIM) -and (IsMultiRegion) } -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    $gateways = @($TargetObject.properties.additionalLocations |
+        Where-Object { $_.PSObject.Properties.Name -contains 'disableGateway' -and $_.disableGateway -ne $false })
+    
+    $Assert.Less($gateways, '.', 1).Reason($LocalizedData.APIMMultiRegionGateway)
+}
+
 #region Helper functions
 
 function global:IsPremiumAPIM {
@@ -279,6 +287,15 @@ function global:IsPremiumAPIM {
     param ()
     process {
         return $Assert.HasFieldValue($TargetObject, 'sku.name', 'Premium').Result;
+    }
+}
+
+function global:IsMultiRegion {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        $Assert.GreaterOrEqual($TargetObject, 'properties.additionalLocations', 1).Result
     }
 }
 

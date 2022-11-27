@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - API Management:
+    - Check API management instances has multi-region deployment gateways enabled by @BenjaminEngeset.
+      [#1910](https://github.com/Azure/PSRule.Rules.Azure/issues/1910)
+
 ## v1.22.0-B0203 (pre-release)
 
 What's changed since pre-release v1.22.0-B0153:
