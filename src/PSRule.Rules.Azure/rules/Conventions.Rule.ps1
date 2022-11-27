@@ -61,11 +61,12 @@ Export-PSRuleConvention 'Azure.BicepInstall' -If { $Configuration.AZURE_BICEP_FI
 }
 
 Export-PSRuleConvention 'Azure.ExpandBicep' -If { $Configuration.AZURE_BICEP_FILE_EXPANSION -eq $True -and $TargetObject.Extension -eq '.bicep' } -Begin {
-    Write-Verbose "[Azure.ExpandBicep] -- Expanding bicep source: $($TargetObject.FullName)";
-    $timeout = $Configuration.GetIntegerOrDefault('AZURE_BICEP_FILE_EXPANSION_TIMEOUT', 5);
+    Write-Verbose "[Azure.ExpandBicep] -- Start expanding bicep source: $($TargetObject.FullName)";
     try {
+        $timeout = $Configuration.GetIntegerOrDefault('AZURE_BICEP_FILE_EXPANSION_TIMEOUT', 5);
         $data = [PSRule.Rules.Azure.Runtime.Helper]::GetBicepResources($TargetObject.FullName, $PSCmdlet, $timeout);
         if ($Null -ne $data) {
+            Write-Verbose "[Azure.ExpandBicep] -- Importing $($data.Length) Bicep resources.";
             $PSRule.Import($data);
         }
     }
@@ -78,6 +79,7 @@ Export-PSRuleConvention 'Azure.ExpandBicep' -If { $Configuration.AZURE_BICEP_FIL
     catch {
         Write-Error -Message "Failed to expand bicep source '$($TargetObject.FullName)'. $($_.Exception.Message)" -ErrorId 'Azure.ExpandBicep.ConventionException';
     }
+    Write-Verbose "[Azure.ExpandBicep] -- Complete expanding bicep source: $($TargetObject.FullName)";
 }
 
 #endregion Bicep

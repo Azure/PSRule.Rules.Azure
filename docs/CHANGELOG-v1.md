@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.22.0-B0153:
+
+- General improvements:
+  - Added debug logging improvements for Bicep expansion by @BernieWhite.
+    [#1901](https://github.com/Azure/PSRule.Rules.Azure/issues/1901)
+
 ## v1.22.0-B0153 (pre-release)
 
 What's changed since pre-release v1.22.0-B0106:
