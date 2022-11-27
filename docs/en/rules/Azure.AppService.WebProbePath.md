@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Load balancing and failover
+category: Health modeling
 resource: App Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.WebProbePath/
 ---
@@ -102,4 +102,4 @@ resource webApp 'Microsoft.Web/sites@2021-03-01' = {
 - [Creating good health probes](https://learn.microsoft.com/azure/architecture/framework/resiliency/monitor-model#create-good-health-probes)
 - [Health check path](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-get-started#health-check-path)
 - [Health Check is now Generally Available](https://azure.github.io/AppService/2020/08/24/healthcheck-on-app-service.html)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteproperties)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteproperties)

@@ -95,7 +95,7 @@
     },
     "resources": [
         {
-            "apiVersion": "2018-11-01",
+            "apiVersion": "2022-03-01",
             "name": "[parameters('appName')]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('location')]",
@@ -146,7 +146,7 @@
             "condition": "[not(empty(parameters('slots')))]",
             "name": "[concat(parameters('appName'), '/', if(empty(parameters('slots')), 'empty', parameters('slots')[copyIndex('slotCount')]))]",
             "type": "Microsoft.Web/sites/slots",
-            "apiVersion": "2018-11-01",
+            "apiVersion": "2022-03-01",
             "location": "[parameters('location')]",
             "tags": "[parameters('tags')]",
             "copy": {
@@ -197,7 +197,7 @@
             }
         },
         {
-            "apiVersion": "2018-11-01",
+            "apiVersion": "2022-03-01",
             "name": "[parameters('planName')]",
             "type": "Microsoft.Web/serverfarms",
             "location": "[parameters('location')]",
@@ -214,7 +214,7 @@
             }
         },
         {
-            "apiVersion": "2015-05-01",
+            "apiVersion": "2020-02-02",
             "name": "[parameters('appName')]",
             "type": "microsoft.insights/components",
             "location": "[parameters('location')]",
@@ -226,27 +226,29 @@
         },
         {
             "type": "Microsoft.Web/serverfarms",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2022-03-01",
             "name": "[variables('planName2')]",
             "location": "[parameters('location')]",
             "sku": {
                 "name": "S1",
                 "tier": "Standard",
                 "capacity": 2
-            }
+            },
+            "properties": {}
         },
         {
             "type": "Microsoft.Web/serverfarms",
-            "apiVersion": "2021-01-15",
+            "apiVersion": "2022-03-01",
             "name": "[variables('planName3')]",
             "location": "[parameters('location')]",
             "sku": {
                 "name": "EP1",
                 "tier": "ElasticPremium"
-            }
+            },
+            "properties": {}
         },
         {
-            "apiVersion": "2018-11-01",
+            "apiVersion": "2022-03-01",
             "name": "[variables('appName2')]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('location')]",
@@ -264,7 +266,8 @@
                     "netFrameworkVersion": "OFF",
                     "alwaysOn": "[parameters('alwaysOn')]",
                     "minTlsVersion": "1.2",
-                    "http20Enabled": true
+                    "http20Enabled": true,
+                    "healthCheckPath": "/"
                 },
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', variables('planName2'))]",
                 "clientAffinityEnabled": false,
@@ -272,7 +275,7 @@
             }
         },
         {
-            "apiVersion": "2018-11-01",
+            "apiVersion": "2022-03-01",
             "name": "[variables('appName3')]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('location')]",
@@ -293,7 +296,8 @@
                     "netFrameworkVersion": "v6.0",
                     "alwaysOn": "[parameters('alwaysOn')]",
                     "minTlsVersion": "1.2",
-                    "http20Enabled": true
+                    "http20Enabled": true,
+                    "healthCheckPath": "/healthz"
                 },
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', variables('planName2'))]",
                 "clientAffinityEnabled": false,

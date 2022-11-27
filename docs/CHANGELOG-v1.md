@@ -29,6 +29,9 @@ What's changed since pre-release v1.22.0-B0153:
 - General improvements:
   - Added debug logging improvements for Bicep expansion by @BernieWhite.
     [#1901](https://github.com/Azure/PSRule.Rules.Azure/issues/1901)
+- Bug fixes:
+  - Fixed `Azure.AppService.WebProbe` with non-boolean value set by @BernieWhite.
+    [#1906](https://github.com/Azure/PSRule.Rules.Azure/issues/1906)
 
 ## v1.22.0-B0153 (pre-release)
 

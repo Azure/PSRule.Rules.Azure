@@ -6,12 +6,12 @@
 #
 
 # Synopsis: App Service Plan should use a minimum number of instances for failover.
-Rule 'Azure.AppService.PlanInstanceCount' -Ref 'AZR-000071' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) -and !(IsElasticPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.AppService.PlanInstanceCount' -Ref 'AZR-000071' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) -and !(IsElasticPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $Assert.GreaterOrEqual($TargetObject, 'sku.capacity', 2);
 }
 
 # Synopsis: Use at least a Standard App Service Plan.
-Rule 'Azure.AppService.MinPlan' -Ref 'AZR-000072' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) -and !(IsElasticPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.AppService.MinPlan' -Ref 'AZR-000072' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) -and !(IsElasticPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
     $Assert.In($TargetObject, 'sku.tier', @('PremiumV3', 'PremiumV2', 'Premium', 'Standard'))
 }
 
@@ -44,7 +44,7 @@ Rule 'Azure.AppService.RemoteDebug' -Ref 'AZR-000074' -Type 'Microsoft.Web/sites
 }
 
 # Synopsis: Configure applications to use newer .NET Framework versions.
-Rule 'Azure.AppService.NETVersion' -Ref 'AZR-000075' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
+Rule 'Azure.AppService.NETVersion' -Ref 'AZR-000075' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Security'; } {
     $siteConfigs = @(GetWebSiteConfig | Where-Object {
         ![String]::IsNullOrEmpty($_.Properties.netFrameworkVersion)
     })
@@ -64,7 +64,7 @@ Rule 'Azure.AppService.NETVersion' -Ref 'AZR-000075' -Type 'Microsoft.Web/sites'
 }
 
 # Synopsis: Configure applications to use newer PHP runtime versions.
-Rule 'Azure.AppService.PHPVersion' -Ref 'AZR-000076' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
+Rule 'Azure.AppService.PHPVersion' -Ref 'AZR-000076' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Security'; } {
     $siteConfigs = @(GetWebSiteConfig | Where-Object {
         ![String]::IsNullOrEmpty($_.Properties.phpVersion)
     })
@@ -83,7 +83,7 @@ Rule 'Azure.AppService.PHPVersion' -Ref 'AZR-000076' -Type 'Microsoft.Web/sites'
 }
 
 # Synopsis: Configure Always On for App Service apps.
-Rule 'Azure.AppService.AlwaysOn' -Ref 'AZR-000077' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
+Rule 'Azure.AppService.AlwaysOn' -Ref 'AZR-000077' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
         return $Assert.HasFieldValue($TargetObject, 'Properties.siteConfig.alwaysOn', $True);
@@ -94,7 +94,7 @@ Rule 'Azure.AppService.AlwaysOn' -Ref 'AZR-000077' -Type 'Microsoft.Web/sites', 
 }
 
 # Synopsis: Use HTTP/2 for App Service apps.
-Rule 'Azure.AppService.HTTP2' -Ref 'AZR-000078' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+Rule 'Azure.AppService.HTTP2' -Ref 'AZR-000078' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
         return $Assert.HasFieldValue($TargetObject, 'Properties.siteConfig.http20Enabled', $True);
@@ -107,28 +107,28 @@ Rule 'Azure.AppService.HTTP2' -Ref 'AZR-000078' -Type 'Microsoft.Web/sites', 'Mi
 #region Web Apps
 
 # Synopsis: Configure and enable instance health probes.
-Rule 'Azure.AppService.WebProbe' -Ref 'AZR-000079' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; } {
+Rule 'Azure.AppService.WebProbe' -Ref 'AZR-000079' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $siteConfigs = @(GetWebSiteConfig | Where-Object {
         $Assert.HasField($_, 'Properties.healthCheckPath').Result
     });
     if ($siteConfigs.Length -eq 0) {
-        return $Assert.HasFieldValue($TargetObject, 'Properties.siteConfig.healthCheckPath', $True);
+        return $Assert.HasFieldValue($TargetObject, 'properties.siteConfig.healthCheckPath');
     }
     foreach ($siteConfig in $siteConfigs) {
-        $Assert.HasFieldValue($siteConfig, 'Properties.healthCheckPath');
+        $Assert.HasFieldValue($siteConfig, 'properties.healthCheckPath');
     }
 }
 
 # Synopsis: Web apps should use a dedicated health check path.
-Rule 'Azure.AppService.WebProbePath' -Ref 'AZR-000080' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; } {
+Rule 'Azure.AppService.WebProbePath' -Ref 'AZR-000080' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $siteConfigs = @(GetWebSiteConfig | Where-Object {
-        $Assert.HasField($_, 'Properties.healthCheckPath').Result
+        $Assert.HasField($_, 'properties.healthCheckPath').Result
     });
     if ($siteConfigs.Length -eq 0) {
-        return $Assert.Greater($TargetObject, 'Properties.siteConfig.healthCheckPath', 1);
+        return $Assert.Greater($TargetObject, 'properties.siteConfig.healthCheckPath', 1);
     }
     foreach ($siteConfig in $siteConfigs) {
-        $Assert.Greater($siteConfig, 'Properties.healthCheckPath', 1);
+        $Assert.Greater($siteConfig, 'properties.healthCheckPath', 1);
     }
 }
 

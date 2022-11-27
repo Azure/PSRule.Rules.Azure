@@ -384,6 +384,36 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'app-b', 'app-c';
         }
+
+        It 'Azure.AppService.WebProbe' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.WebProbe' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'app-a';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'app-b', 'app-c';
+        }
+
+        It 'Azure.AppService.WebProbePath' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.WebProbePath' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'app-a', 'app-b';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'app-c';
+        }
     }
 
     Context 'Web App' {
