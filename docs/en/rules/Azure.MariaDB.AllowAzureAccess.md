@@ -32,7 +32,7 @@ Determine if access from Azure services is required for the services connecting 
 To deploy Azure Database for MariaDB Servers that pass this rule:
 
 - Deploy a `Microsoft.DBforMariaDB servers/firewallRules` sub-resource (child resource).
-- Set the `properties.startIpAddress` and `properties.endIpAddress` property to `0.0.0.0`.
+- Set the `properties.startIpAddress` and `properties.endIpAddress` property to a valid IPv4 address format.
 
 For example:
 
@@ -79,9 +79,8 @@ For example:
 
 ### Configure with Bicep
 
-To deploy Azure Database for MariaDB Servers that pass this rule:
-
-- Set the `properties.storageProfile.geoRedundantBackup` property to `Enabled`.
+- Deploy a `Microsoft.DBforMariaDB servers/firewallRules` sub-resource (child resource).
+- Set the `properties.startIpAddress` and `properties.endIpAddress` property to a valid IPv4 address format.
 
 For example:
 
