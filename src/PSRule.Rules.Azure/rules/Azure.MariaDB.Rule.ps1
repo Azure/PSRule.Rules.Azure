@@ -182,11 +182,10 @@ function global:GetMariaDBFirewallRule {
     param ()
     process {
         if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
-            GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/firewallRules' |
-            ForEach-Object { $_ }
+            GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/firewallRules'
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/firewallRules') {
-            $PSRule.TargetName
+            $TargetObject
         }
     }
 }
