@@ -28,6 +28,90 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Azure Database for MariaDB:
     - Check Azure Database for MariaDB servers does not have Azure services bypassed on firewall by @BenjaminEngeset.
       [#1857](https://github.com/Azure/PSRule.Rules.Azure/issues/1857)
+## v1.22.0
+
+What's changed since v1.21.2:
+
+- New rules:
+  - API Management:
+    - Check API management instances uses multi-region deployment by @BenjaminEngeset.
+      [#1030](https://github.com/Azure/PSRule.Rules.Azure/issues/1030)
+    - Check api management instances limits control plane API calls to apim with version `'2021-08-01'` or newer by @BenjaminEngeset.
+      [#1819](https://github.com/Azure/PSRule.Rules.Azure/issues/1819)
+  - App Service Environment:
+    - Check app service environments uses version 3 (ASEv3) instead of classic version 1 (ASEv1) and version 2 (ASEv2) by @BenjaminEngeset.
+      [#1805](https://github.com/Azure/PSRule.Rules.Azure/issues/1805)
+  - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers, databases, firewall rules and VNET rules names meet naming requirements by @BenjaminEngeset.
+      [#1854](https://github.com/Azure/PSRule.Rules.Azure/issues/1854)
+    - Check Azure Database for MariaDB servers only uses TLS 1.2 version by @BenjaminEngeset.
+      [#1853](https://github.com/Azure/PSRule.Rules.Azure/issues/1853)
+    - Check Azure Database for MariaDB servers only accept encrypted connections by @BenjaminEngeset.
+      [#1852](https://github.com/Azure/PSRule.Rules.Azure/issues/1852)
+    - Check Azure Database for MariaDB servers have Microsoft Defender configured by @BenjaminEngeset.
+      [#1850](https://github.com/Azure/PSRule.Rules.Azure/issues/1850)
+    - Check Azure Database for MariaDB servers have geo-redundant backup configured by @BenjaminEngeset.
+      [#1848](https://github.com/Azure/PSRule.Rules.Azure/issues/1848)
+  - Azure Database for PostgreSQL:
+    - Check Azure Database for PostgreSQL servers have Microsoft Defender configured by @BenjaminEngeset.
+      [#286](https://github.com/Azure/PSRule.Rules.Azure/issues/286)
+    - Check Azure Database for PostgreSQL servers have geo-redundant backup configured by @BenjaminEngeset.
+      [#285](https://github.com/Azure/PSRule.Rules.Azure/issues/285)
+  - Azure Database for MySQL:
+    - Check Azure Database for MySQL servers have Microsoft Defender configured by @BenjaminEngeset.
+      [#287](https://github.com/Azure/PSRule.Rules.Azure/issues/287)
+    - Check Azure Database for MySQL servers uses the flexible deployment model by @BenjaminEngeset.
+      [#1841](https://github.com/Azure/PSRule.Rules.Azure/issues/1841)
+    - Check Azure Database for MySQL Flexible Servers have geo-redundant backup configured by @BenjaminEngeset.
+      [#1840](https://github.com/Azure/PSRule.Rules.Azure/issues/1840)
+    - Check Azure Database for MySQL servers have geo-redundant backup configured by @BenjaminEngeset.
+      [#284](https://github.com/Azure/PSRule.Rules.Azure/issues/284)
+  - Azure Resource Deployments:
+    - Check for nested deployment that are scoped to `outer` and passing secure values by @ms-sambell.
+      [#1475](https://github.com/Azure/PSRule.Rules.Azure/issues/1475)
+    - Check custom script extension uses protected settings for secure values by @ms-sambell.
+      [#1478](https://github.com/Azure/PSRule.Rules.Azure/issues/1478)
+  - Front Door:
+    - Check front door uses caching by @BenjaminEngeset.
+      [#548](https://github.com/Azure/PSRule.Rules.Azure/issues/548)
+  - Virtual Machine:
+    - Check virtual machines running SQL Server uses Premium disks or above by @BenjaminEngeset.
+      [#9](https://github.com/Azure/PSRule.Rules.Azure/issues/9)
+  - Virtual Network:
+    - Check VNETs with a GatewaySubnet also has an AzureFirewallSubnet by @BernieWhite.
+      [#875](https://github.com/Azure/PSRule.Rules.Azure/issues/875)
+- General improvements:
+  - Added debug logging improvements for Bicep expansion by @BernieWhite.
+    [#1901](https://github.com/Azure/PSRule.Rules.Azure/issues/1901)
+- Engineering:
+  - Bump PSRule to v2.6.0.
+    [#1883](https://github.com/Azure/PSRule.Rules.Azure/pull/1883)
+  - Bump Az.Resources to v6.4.1.
+    [#1883](https://github.com/Azure/PSRule.Rules.Azure/pull/1883)
+  - Bump Microsoft.NET.Test.Sdk to v17.4.0
+    [#1838](https://github.com/Azure/PSRule.Rules.Azure/pull/1838)
+  - Bump coverlet.collector to v3.2.0.
+    [#1814](https://github.com/Azure/PSRule.Rules.Azure/pull/1814)
+- Bug fixes:
+  - Fixed ref and name duplicated by @BernieWhite.
+    [#1876](https://github.com/Azure/PSRule.Rules.Azure/issues/1876)
+  - Fixed an item with the same key for parameters by @BernieWhite
+    [#1871](https://github.com/Azure/PSRule.Rules.Azure/issues/1871)
+  - Fixed policy parse of `requestContext` function by @BernieWhite.
+    [#1654](https://github.com/Azure/PSRule.Rules.Azure/issues/1654)
+  - Fixed handling of policy type field by @BernieWhite.
+    [#1323](https://github.com/Azure/PSRule.Rules.Azure/issues/1323)
+  - Fixed `Azure.AppService.WebProbe` with non-boolean value set by @BernieWhite.
+    [#1906](https://github.com/Azure/PSRule.Rules.Azure/issues/1906)
+  - Fixed managed identity flagged as secret by `Azure.Deployment.OutputSecretValue` by @BernieWhite.
+    [#1826](https://github.com/Azure/PSRule.Rules.Azure/issues/1826)
+    [#1886](https://github.com/Azure/PSRule.Rules.Azure/issues/1886)
+  - Fixed missing support for diagnostic settings category groups by @BenjaminEngeset.
+    [#1873](https://github.com/Azure/PSRule.Rules.Azure/issues/1873)
+
+What's changed since pre-release v1.22.0-B0203:
+
+- No additional changes.
 
 ## v1.22.0-B0203 (pre-release)
 
