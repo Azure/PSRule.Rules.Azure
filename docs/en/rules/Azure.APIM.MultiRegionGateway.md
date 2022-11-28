@@ -14,11 +14,21 @@ API Management instances should have multi-region deployment gateways enabled.
 
 ## DESCRIPTION
 
-Azure API Management supports multi-region deployment. If the *primary* region goes offline, the secondary regions continue to serve API requests using the most recent gateway configuration. If a *region* goes offline, API requests are automatically routed around the failed region to the next closest gateway.
+Azure API Management supports multi-region deployment.
+Deploy API Management in multiple locations to:
+
+- Provide active-active redundancy for API gateway requests across Azure regions.
+- Serve the request from the closest API gateway region to the original request.
+
+API gateways can be disabled to enabled you to test failover of your API workloads to another region.
+When disabled, an API gateway will not route API traffic.
+You should reenable API gateways after you have concluded failover testing to ensure that the API gateway is available for failover if another region becomes unavailable.
+
+If a region goes offline, API requests are automatically routed around the failed region to the next closest gateway.
 
 ## RECOMMENDATION
 
-Enable multi-region deployment gateways.
+Consider enabling each regional API gateway location for multi-region redundancy.
 
 ## EXAMPLES
 

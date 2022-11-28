@@ -400,8 +400,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'apim-F', 'apim-G', 'apim-K';
 
-            $ruleResult[0].Reason | Should -BeExactly "The API management instance should have multi-region deployment gateways enabled.";
-            $ruleResult[1].Reason | Should -BeExactly "The API management instance should have multi-region deployment gateways enabled.";
+            $ruleResult[0].Reason | Should -BeExactly "The field 'disableGateway' is set to 'True'.";
+            $ruleResult[1].Reason | Should -BeExactly "The field 'disableGateway' is set to 'True'.";
             
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
