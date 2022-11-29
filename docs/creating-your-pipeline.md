@@ -32,7 +32,7 @@ Within the root directory of your infrastructure as code repository:
 
         # Analyze Azure resources using PSRule for Azure
         - name: Analyze Azure template files
-          uses: microsoft/ps-rule@v2.5.2
+          uses: microsoft/ps-rule@v2.6.0
           with:
             modules: 'PSRule.Rules.Azure'
     ```
@@ -79,7 +79,7 @@ You can use the `inputPath` parameter to limit the analysis to a specific path.
     ```yaml hl_lines="6"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.5.2
+      uses: microsoft/ps-rule@v2.6.0
       with:
         modules: 'PSRule.Rules.Azure'
         inputPath: azure/modules/
@@ -110,7 +110,7 @@ See [working with baselines][8] for more information.
     ```yaml hl_lines="6"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.5.2
+      uses: microsoft/ps-rule@v2.6.0
       with:
         modules: 'PSRule.Rules.Azure'
         baseline: Azure.GA_2022_09
@@ -136,7 +136,7 @@ You can add additional modules to the `modules` parameter by using comma (`,`) s
     ```yaml hl_lines="5"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.5.2
+      uses: microsoft/ps-rule@v2.6.0
       with:
         modules: 'PSRule.Rules.Azure,PSRule.Monitor'
     ```
@@ -161,7 +161,7 @@ For details on the formats that are supported see [analysis output][9].
     ```yaml hl_lines="6-7"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.5.2
+      uses: microsoft/ps-rule@v2.6.0
       with:
         modules: 'PSRule.Rules.Azure'
         outputFormat: Sarif
