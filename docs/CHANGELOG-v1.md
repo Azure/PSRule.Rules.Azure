@@ -24,8 +24,6 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.22.0:
-
 - New rules:
   - Azure Database for MariaDB:
     - Check Azure Database for MariaDB servers does not have Azure services bypassed on firewall by @BenjaminEngeset.
