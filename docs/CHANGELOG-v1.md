@@ -24,10 +24,16 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.22.0:
+
 - New rules:
+  - API Management:
+    - Check API management instances has multi-region deployment gateways enabled by @BenjaminEngeset.
+      [#1910](https://github.com/Azure/PSRule.Rules.Azure/issues/1910)
   - Azure Database for MariaDB:
     - Check Azure Database for MariaDB servers does not have Azure services bypassed on firewall by @BenjaminEngeset.
       [#1857](https://github.com/Azure/PSRule.Rules.Azure/issues/1857)
+
 ## v1.22.0
 
 What's changed since v1.21.2:

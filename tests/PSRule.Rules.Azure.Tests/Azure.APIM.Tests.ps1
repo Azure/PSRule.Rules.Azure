@@ -390,6 +390,25 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult.Length | Should -Be 7;
             $ruleResult.TargetName | Should -BeIn 'apim-F', 'apim-G', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-P';
         }
+
+        It 'Azure.APIM.MultiRegionGateway' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.MultiRegionGateway' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'apim-F', 'apim-G', 'apim-K';
+
+            $ruleResult[0].Reason | Should -BeExactly "The field 'disableGateway' is set to 'True'.";
+            $ruleResult[1].Reason | Should -BeExactly "The field 'disableGateway' is set to 'True'.";
+            
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'apim-l', 'apim-M', 'apim-N', 'apim-P';
+        }
     }
 
     Context 'With Template' {
