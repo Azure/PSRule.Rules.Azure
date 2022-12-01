@@ -110,6 +110,13 @@ Rule 'Azure.MariaDB.VNETRuleName' -Ref 'AZR-000339' -Type 'Microsoft.DBforMariaD
     }
 }
 
+# Synopsis: Determine if there is an excessive number of firewall rules.
+Rule 'Azure.MariaDB.FirewallRuleCount'-Ref 'AZR-000343' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/firewallRules')
+
+    $Assert.LessOrEqual($firewallRules, '.', 10).Reason($LocalizedData.DBServerFirewallRuleCount, $firewallRules.Length, 10)
+}
+
 #endregion Rules
 
 #region Helper functions

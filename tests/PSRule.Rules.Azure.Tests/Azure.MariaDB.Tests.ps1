@@ -109,6 +109,24 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'server-C';
         }
+
+        It 'Azure.MariaDB.FirewallRuleCount' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MariaDB.FirewallRuleCount' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'server-A';
+
+            $ruleResult[0].Reason | Should -BeExactly "The number of firewall rules (11) exceeded 10.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-B', 'server-C';
+        }
     }
 
     Context 'Resource name - Azure.MariaDB.ServerName' {
