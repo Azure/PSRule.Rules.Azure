@@ -109,6 +109,26 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'server-C';
         }
+
+        It 'Azure.MariaDB.AllowAzureAccess' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MariaDB.AllowAzureAccess' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B', 'rule-A';
+
+            $ruleResult[0].Reason | Should -BeExactly "The Azure Database for MariaDB should not allow access to Azure services unless explicitly needed.";
+            $ruleResult[1].Reason | Should -BeExactly "The Azure Database for MariaDB should not allow access to Azure services unless explicitly needed.";
+            $ruleResult[2].Reason | Should -BeExactly "The Azure Database for MariaDB should not allow access to Azure services unless explicitly needed.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-C', 'rule-B';
+        }
     }
 
     Context 'Resource name - Azure.MariaDB.ServerName' {
