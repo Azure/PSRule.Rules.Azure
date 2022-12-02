@@ -131,4 +131,4 @@ resource testrediscache 'Microsoft.Cache/redis@2021-06-01' = {
 - [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
 - [Enable zone redundancy for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-zone-redundancy)
 - [High availability for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-high-availability)
-- [Azure Template reference](https://docs.microsoft.com/azure/templates/microsoft.cache/2018-03-01/redis?tabs=json)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.cache/2018-03-01/redis?tabs=json)

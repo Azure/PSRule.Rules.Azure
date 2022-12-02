@@ -32,4 +32,4 @@ Support for TLS 1.0/ 1.1 version will be removed.
 - [Remove TLS 1.0 and 1.1 from use with Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-remove-tls-10-11)
 - [Configure Azure Cache for Redis settings](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-ports)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.cache/redis#RedisCreateProperties)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.cache/redis#RedisCreateProperties)

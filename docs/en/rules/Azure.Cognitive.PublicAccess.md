@@ -95,4 +95,4 @@ resource account 'Microsoft.CognitiveServices/accounts@2022-03-01' = {
 - [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints#public-endpoints)
 - [Configure Azure Cognitive Services virtual networks](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks)
 - [Azure Policy built-in policy definitions for Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/policy-reference)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts)

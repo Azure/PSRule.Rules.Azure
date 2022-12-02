@@ -179,5 +179,5 @@ For the Single Server deployment model, it runs only against `'General Purpose'`
 - [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
 - [Backup and restore in Azure Database for MySQL flexible servers](https://learn.microsoft.com/azure/mysql/flexible-server/concepts-backup-restore)
 - [Backup and restore in Azure Database for MySQL single servers](https://learn.microsoft.com/azure/mysql/single-server/concepts-backup)
-- [Azure template reference flexible servers](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/flexibleservers)
-- [Azure template reference single servers](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers)
+- [Azure deployment reference flexible servers](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/flexibleservers)
+- [Azure deployment reference single servers](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers)

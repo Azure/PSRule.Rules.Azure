@@ -80,9 +80,9 @@ When authoring and improving rule documentation, please follow these guidelines:
   Examples of good documentation links include:
   - Best practices for the Azure service.
   - Instructions on how to configure the Azure service.
-  - [Azure template reference](https://docs.microsoft.com/azure/templates/).
-- For links to _https://docs.microsoft.com/_ remove culture from path to make it more generic.
-  For example _https://docs.microsoft.com/azure/aks/concepts-scale_ instead of _https://docs.microsoft.com/en-us/azure/aks/concepts-scale_.
+  - [Azure deployment reference](https://learn.microsoft.com/azure/templates/).
+- For links to _https://learn.microsoft.com/_ remove culture from path to make it more generic.
+  For example _https://learn.microsoft.com/azure/aks/concepts-scale_ instead of _https://learn.microsoft.com/en-us/azure/aks/concepts-scale_.
 - Add examples of a Azure resource that would pass the rule.
   At a minimum where applicable provide an example of a Azure template resource.
   Also consider including example Bicep code.

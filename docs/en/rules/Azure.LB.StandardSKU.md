@@ -112,7 +112,7 @@ resource lb_001 'Microsoft.Network/loadBalancers@2021-02-01' = {
 
 ## LINKS
 
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers?tabs=json)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers?tabs=json)
 - [Why use Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#why-use-azure-load-balancer)
 - [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus)
 - [Meet application platform requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)

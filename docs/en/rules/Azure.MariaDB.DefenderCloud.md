@@ -125,4 +125,4 @@ resource mariaDbDefender 'Microsoft.DBforMariaDB/servers/securityAlertPolicies@2
 
 - [Security operations](https://learn.microsoft.com/azure/architecture/framework/security/security-operations)
 - [Enable Microsoft Defender for open-source relational databases](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-databases-usage)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers/securityalertpolicies)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers/securityalertpolicies)

@@ -88,4 +88,4 @@ resource ns 'Microsoft.ServiceBus/namespaces@2022-01-01-preview' = {
 
 - [Information protection and storage](https://learn.microsoft.com/azure/architecture/framework/security/storage-data-encryption)
 - [Enforce a minimum requires version of TLS](https://learn.microsoft.com/azure/service-bus-messaging/transport-layer-security-enforce-minimum-version)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.servicebus/namespaces)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.servicebus/namespaces)

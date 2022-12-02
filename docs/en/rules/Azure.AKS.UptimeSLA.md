@@ -125,4 +125,4 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-06-02-preview' = {
 
 - [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
 - [Azure Kubernetes Service (AKS) Uptime SLA](https://docs.microsoft.com/azure/aks/uptime-sla)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

@@ -28,4 +28,4 @@ Migrate to Azure Database for MySQL Flexible Server deployment model.
 - [Azure Database for MySQL Single Server deployment model retirement](https://learn.microsoft.com/azure/mysql/single-server/whats-happening-to-mysql-single-server)
 - [Migrate from Single Server to Flexible Server](https://learn.microsoft.com/azure/mysql/single-server/whats-happening-to-mysql-single-server#migrate-from-single-server-to-flexible-server)
 - [Comparing the MySQL deployment options in Azure](https://learn.microsoft.com/azure/mysql/single-server/select-right-deployment-type#comparing-the-mysql-deployment-options-in-azure)
-- [Azure template reference flexible servers](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/flexibleservers)
+- [Azure deployment reference flexible servers](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/flexibleservers)

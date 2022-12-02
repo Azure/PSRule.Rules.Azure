@@ -70,4 +70,4 @@ resource frontDoorProfile 'Microsoft.Cdn/profiles@2021-06-01' = {
 - [Performance efficiency checklist](https://learn.microsoft.com/azure/architecture/framework/scalability/performance-efficiency)
 - [Azure Front Door tiers](https://docs.microsoft.com/azure/frontdoor/standard-premium/tier-comparison)
 - [What are the comparisons between Azure CDN product features?](https://docs.microsoft.com/azure/cdn/cdn-features)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.cdn/profiles)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.cdn/profiles)

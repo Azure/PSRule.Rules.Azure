@@ -30,4 +30,4 @@ Also consider using Resource Groups to help manage the lifecycle of related reso
 
 ## LINKS
 
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)

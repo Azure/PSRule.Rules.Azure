@@ -28,7 +28,141 @@
       "Capacity": 2
     },
     "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceName": "AllowAllWindowsAzureIps",
+        "Name": "AllowAllWindowsAzureIps",
+        "Properties": {
+          "startIpAddress": "0.0.0.0",
+          "endIpAddress": "0.0.0.0"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_1",
+        "Name": "ClientIPAddress_1",
+        "Properties": {
+          "startIpAddress": "10.1.1.1",
+          "endIpAddress": "10.1.1.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_2",
+        "Name": "ClientIPAddress_2",
+        "Properties": {
+          "startIpAddress": "10.1.2.1",
+          "endIpAddress": "10.1.2.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_3",
+        "Name": "ClientIPAddress_3",
+        "Properties": {
+          "startIpAddress": "10.1.3.1",
+          "endIpAddress": "10.1.3.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_4",
+        "Name": "ClientIPAddress_4",
+        "Properties": {
+          "startIpAddress": "10.1.4.1",
+          "endIpAddress": "10.1.4.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_5",
+        "Name": "ClientIPAddress_5",
+        "Properties": {
+          "startIpAddress": "10.1.5.1",
+          "endIpAddress": "10.1.5.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_6",
+        "Name": "ClientIPAddress_6",
+        "Properties": {
+          "startIpAddress": "10.1.6.1",
+          "endIpAddress": "10.1.6.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_7",
+        "Name": "ClientIPAddress_7",
+        "Properties": {
+          "startIpAddress": "10.1.7.1",
+          "endIpAddress": "10.1.7.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_8",
+        "Name": "ClientIPAddress_8",
+        "Properties": {
+          "startIpAddress": "10.1.8.1",
+          "endIpAddress": "10.1.8.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_9",
+        "Name": "ClientIPAddress_9",
+        "Properties": {
+          "startIpAddress": "10.1.9.1",
+          "endIpAddress": "10.1.9.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_10",
+        "Name": "ClientIPAddress_10",
+        "Properties": {
+          "startIpAddress": "17.1.10.1",
+          "endIpAddress": "17.1.10.255"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-B",
@@ -65,12 +199,8 @@
         "Name": "Default",
         "Properties": {
           "state": "Disabled",
-          "disabledAlerts": [
-            ""
-          ],
-          "emailAddresses": [
-            ""
-          ],
+          "disabledAlerts": [""],
+          "emailAddresses": [""],
           "emailAccountAdmins": true,
           "storageEndpoint": "https://account.blob.core.windows.net",
           "storageAccountAccessKey": "",
@@ -79,6 +209,28 @@
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.DBforMariaDB/servers/securityAlertPolicies",
         "ResourceType": "Microsoft.DBforMariaDB/servers/securityAlertPolicies",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "Name": "FunctionApp",
+        "Properties": {
+          "startIpAddress": "20.67.176.40",
+          "endIpAddress": "20.67.176.40"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "Name": "AllowAllWindowsAzureIps",
+        "Properties": {
+          "startIpAddress": "0.0.0.0",
+          "endIpAddress": "0.0.0.0"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
@@ -121,12 +273,8 @@
         "Name": "Default",
         "Properties": {
           "state": "Enabled",
-          "disabledAlerts": [
-            ""
-          ],
-          "emailAddresses": [
-            ""
-          ],
+          "disabledAlerts": [""],
+          "emailAddresses": [""],
           "emailAccountAdmins": true,
           "storageEndpoint": "https://account.blob.core.windows.net",
           "storageAccountAccessKey": "",
@@ -136,7 +284,50 @@
         "Type": "Microsoft.DBforMariaDB/servers/securityAlertPolicies",
         "ResourceType": "Microsoft.DBforMariaDB/servers/securityAlertPolicies",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "Name": "FunctionApp",
+        "Properties": {
+          "startIpAddress": "20.67.176.40",
+          "endIpAddress": "20.67.176.40"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-D/firewallRules/rule-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-D/firewallRules/rule-A",
+    "Location": "region",
+    "ResourceName": "rule-A",
+    "Name": "rule-A",
+    "Properties": {
+      "startIpAddress": "0.0.0.0",
+      "endIpAddress": "0.0.0.0"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+    "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-D/firewallRules/rule-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-D/firewallRules/rule-B",
+    "Location": "region",
+    "ResourceName": "rule-B",
+    "Name": "rule-B",
+    "Properties": {
+      "startIpAddress": "20.67.176.40",
+      "endIpAddress": "20.67.176.40"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.DBforMariaDB/servers/firewallRules",
+    "ResourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]

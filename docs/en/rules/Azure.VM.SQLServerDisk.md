@@ -167,4 +167,4 @@ Resources declarations can therefore pass the rule which are using not using Pre
 
 - [Design for performance](https://learn.microsoft.com/azure/architecture/framework/scalability/design-checklist)
 - [Performance best practices for SQL Server on Azure VMs](https://learn.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices-storage)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines)

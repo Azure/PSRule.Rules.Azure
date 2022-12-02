@@ -120,4 +120,4 @@ az acr config soft-delete update -r MyRegistry --days 90 --status enabled
 - [Azure Container Registry (ACR) soft delete policy](https://learn.microsoft.com/azure/container-registry/container-registry-soft-delete-policy)
 - [Azure Container Registry service tiers](https://learn.microsoft.com/azure/container-registry/container-registry-skus)
 - [Policy for untagged manifests](https://learn.microsoft.com/azure/container-registry/container-registry-retention-policy)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)
