@@ -118,6 +118,14 @@ Rule 'Azure.MariaDB.AllowAzureAccess' -Ref 'AZR-000342' -Type 'Microsoft.DBforMa
     $Assert.Less($firewallAllowAzureServices, '.', 1).Reason($LocalizedData.MariaDBFirewallAllowAzureServices)
 }
 
+# Synopsis: Determine if there is an excessive number of firewall rules.
+Rule 'Azure.MariaDB.FirewallRuleCount'-Ref 'AZR-000343' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/firewallRules')
+
+    $Assert.LessOrEqual($firewallRules, '.', 10).
+    Reason($LocalizedData.DBServerFirewallRuleCount, $firewallRules.Length, 10).PathPrefix('resources')
+}
+
 #endregion Rules
 
 #region Helper functions

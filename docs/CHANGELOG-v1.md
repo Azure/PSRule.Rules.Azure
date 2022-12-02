@@ -26,6 +26,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - New rules:
   - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers limits the amount of firewall rules allowed by @BenjaminEngeset.
+      [#1855](https://github.com/Azure/PSRule.Rules.Azure/issues/1855)
     - Check Azure Database for MariaDB servers does not have Azure services bypassed on firewall by @BenjaminEngeset.
       [#1857](https://github.com/Azure/PSRule.Rules.Azure/issues/1857)
   - API Management:
