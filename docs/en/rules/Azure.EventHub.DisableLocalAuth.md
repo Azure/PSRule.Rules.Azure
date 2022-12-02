@@ -90,4 +90,4 @@ resource ns 'Microsoft.EventHub/namespaces@2021-11-01' = {
 - [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
 - [Authorize access to Event Hubs resources using Azure Active Directory](https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory)
 - [Disabling Local/SAS Key authentication](https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature#disabling-localsas-key-authentication)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.eventhub/namespaces)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.eventhub/namespaces)

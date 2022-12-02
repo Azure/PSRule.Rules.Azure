@@ -36,4 +36,4 @@ This rule does not check if SignalR service names are unique.
 
 - [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.signalrservice/signalr)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.signalrservice/signalr)

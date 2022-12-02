@@ -101,4 +101,4 @@ Azure storage firewall is not supported for Cloud Shell storage accounts.
 - [Configure Azure Storage firewalls and virtual networks](https://docs.microsoft.com/azure/storage/common/storage-network-security)
 - [Use private endpoints for Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-private-endpoints)
 - [Persist files in Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts#NetworkRuleSet)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts#NetworkRuleSet)

@@ -99,4 +99,4 @@ resource webAppPHP 'Microsoft.Web/sites@2021-03-01' = {
 
 - [Security design principles](https://learn.microsoft.com/azure/architecture/framework/security/security-principles#protect-against-code-level-vulnerabilities)
 - [Set PHP Version](https://docs.microsoft.com/azure/app-service/configure-language-php#set-php-version)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig)

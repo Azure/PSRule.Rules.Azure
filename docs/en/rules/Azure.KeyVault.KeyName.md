@@ -34,5 +34,5 @@ This rule does not check if Key names are unique.
 
 - [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)
 - [Tagging and resource naming](https://learn.microsoft.com/azure/architecture/framework/devops/app-design#tagging-and-resource-naming)

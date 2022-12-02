@@ -134,5 +134,5 @@ resource backend 'Microsoft.ApiManagement/service/backends@2021-08-01' = {
 - [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Manage protocols and ciphers in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-manage-protocols-ciphers)
 - [Secure backend services using client certificate authentication in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
-- [Azure template reference for APIs](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis)
-- [Azure template reference for backends](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/backends)
+- [Azure deployment reference for APIs](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis)
+- [Azure deployment reference for backends](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/backends)

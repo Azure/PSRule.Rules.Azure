@@ -140,4 +140,4 @@ az aks nodepool update \
 - [Autoscaling](https://docs.microsoft.com/azure/architecture/best-practices/auto-scaling)
 - [Automatically scale a cluster to meet application demands on Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/cluster-autoscaler)
 - [Scaling options for applications in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/concepts-scale)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object)

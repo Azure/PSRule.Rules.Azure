@@ -220,4 +220,4 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
 - [Use managed identities in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/use-managed-identity)
 - [What are managed identities for Azure resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 - [AAD Pod Identity](https://github.com/Azure/aad-pod-identity)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

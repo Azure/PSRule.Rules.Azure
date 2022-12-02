@@ -155,4 +155,4 @@ resource diagnostic 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' =
 ## LINKS
 
 - [Security audits](https://learn.microsoft.com/azure/architecture/framework/security/monitor-audit)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.insights/diagnosticsetting)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.insights/diagnosticsetting)
