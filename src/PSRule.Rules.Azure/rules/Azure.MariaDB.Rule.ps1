@@ -110,11 +110,20 @@ Rule 'Azure.MariaDB.VNETRuleName' -Ref 'AZR-000339' -Type 'Microsoft.DBforMariaD
     }
 }
 
+# Synopsis: Determine if access from Azure services is required.
+Rule 'Azure.MariaDB.AllowAzureAccess' -Ref 'AZR-000342' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+    $firewallAllowAzureServices = @(GetMariaDBFirewallRule |
+        Where-Object { $_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0' })
+    
+    $Assert.Less($firewallAllowAzureServices, '.', 1).Reason($LocalizedData.MariaDBFirewallAllowAzureServices)
+}
+
 # Synopsis: Determine if there is an excessive number of firewall rules.
 Rule 'Azure.MariaDB.FirewallRuleCount'-Ref 'AZR-000343' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/firewallRules')
 
-    $Assert.LessOrEqual($firewallRules, '.', 10).Reason($LocalizedData.DBServerFirewallRuleCount, $firewallRules.Length, 10)
+    $Assert.LessOrEqual($firewallRules, '.', 10).
+    Reason($LocalizedData.DBServerFirewallRuleCount, $firewallRules.Length, 10).PathPrefix('resources')
 }
 
 #endregion Rules
@@ -171,6 +180,20 @@ function global:GetMariaDBVNETRuleName {
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/virtualNetworkRules') {
             $PSRule.TargetName
+        }
+    }
+}
+
+function global:GetMariaDBFirewallRule {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param ()
+    process {
+        if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
+            GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/firewallRules'
+        }
+        elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/firewallRules') {
+            $TargetObject
         }
     }
 }

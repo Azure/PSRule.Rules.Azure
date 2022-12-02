@@ -20,7 +20,7 @@ Server-level firewall rules apply to all databases on the Azure Database for Mar
 
 ## RECOMMENDATION
 
-Review Azure for MariaDB server firewall rules.
+Review the amount of Azure for MariaDB server firewall rules and consider to reduce the amount where it is possible.
 
 ## LINKS
 
