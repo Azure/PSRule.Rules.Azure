@@ -7665,7 +7665,7 @@ Además, considere nombrar recursos con una convención de nomenclatura estánda
 <p>Puede asegurarse de que el parámetro <code>acrName</code> cumpla con los requisitos de nomenclatura utilizando las propiedades de los parámetros <code>MinLength</code> y <code>maxLength</code>.
 También puede usar una función <code>uniqueString()</code> para asegurarse de que el nombre sea globalmente único.</p>
 <p>Por ejemplo</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -7724,7 +7724,7 @@ También puede usar una función <code>uniqueString()</code> para asegurarse de 
 <p>Puede asegurarse de que el parámetro <code>acrName</code> cumpla con los requisitos de nomenclatura utilizando las propiedades de los parámetros <code>MinLength</code> y <code>maxLength</code>.
 También puede usar una función <code>uniqueString()</code> para asegurarse de que el nombre sea globalmente único.</p>
 <p>Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code>@description(&#39;Globally unique name of your Azure Container Registry&#39;)
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>@description(&#39;Globally unique name of your Azure Container Registry&#39;)
 @minLength(5)
 @maxLength(50)
 param acrName string = &#39;acr${uniqueString(resourceGroup().id)}&#39;

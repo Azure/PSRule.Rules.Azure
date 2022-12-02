@@ -7634,7 +7634,7 @@ Development SKUs are designed for early non-production use and do not include an
 <li>Set <code>sku.name</code> to non-development SKU such as <code>Standard_D11_v2</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Kusto/clusters&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-08-27&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7658,7 +7658,7 @@ Development SKUs are designed for early non-production use and do not include an
 <li>Set <code>sku.name</code> to non-development SKU such as <code>Standard_D11_v2</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource adx &#39;Microsoft.Kusto/clusters@2021-08-27&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource adx &#39;Microsoft.Kusto/clusters@2021-08-27&#39; = {
   name: name
   location: location
   sku: {
@@ -7677,7 +7677,7 @@ Development SKUs are designed for early non-production use and do not include an
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#availability-targets">Target and non-functional requirements</a></li>
 <li><a href="https://azure.microsoft.com/pricing/details/data-explorer/">Azure Data Explorer pricing</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.kusto/clusters">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.kusto/clusters">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7688,7 +7688,7 @@ Development SKUs are designed for early non-production use and do not include an
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

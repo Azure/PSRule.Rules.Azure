@@ -7652,7 +7652,7 @@
 <li>Set <code>properties.type</code> to <code>'AzureMonitorWindowsAgent'</code> (Windows) or <code>'AzureMonitorLinuxAgent'</code> (Linux).</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -7699,7 +7699,7 @@
 <li>Set <code>properties.type</code> to <code>'AzureMonitorWindowsAgent'</code> (Windows) or <code>'AzureMonitorLinuxAgent'</code> (Linux).</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>param vmName string
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>param vmName string
 param location string
 param userAssignedManagedIdentity string
 
@@ -7728,7 +7728,7 @@ resource windowsAgent &#39;Microsoft.Compute/virtualMachines/extensions@2022-08-
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/devops/checklist">Monitoring</a></li>
 <li><a href="https://azure.microsoft.com/updates/were-retiring-the-log-analytics-agent-in-azure-monitor-on-31-august-2024">Log Analytics agent retiring</a></li>
 <li><a href="https://learn.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-migration">Migrate to Azure Monitor Agent from Log Analytics Agent</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions">Azure template reference</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7739,7 +7739,7 @@ resource windowsAgent &#39;Microsoft.Compute/virtualMachines/extensions@2022-08-
   <small>
     
       Last update:
-      2022-10-23
+      2022-12-03
     
   </small>
 </div>

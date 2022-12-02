@@ -7658,7 +7658,7 @@ Normally upgraded weekly.</li>
 <li>Set <code>properties.autoUpgradeProfile.upgradeChannel</code> to an upgrade channel such as <code>stable</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ContainerService/managedClusters&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-07-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;clusterName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7730,7 +7730,7 @@ Normally upgraded weekly.</li>
 <li>Set <code>properties.autoUpgradeProfile.upgradeChannel</code> to an upgrade channel such as <code>stable</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-07-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-07-01&#39; = {
   location: location
   name: clusterName
   identity: {
@@ -7792,7 +7792,7 @@ Normally upgraded weekly.</li>
 }
 </code></pre></div>
 <h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>az aks update -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> --auto-upgrade-channel <span class="s1">&#39;stable&#39;</span>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az aks update -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> --auto-upgrade-channel <span class="s1">&#39;stable&#39;</span>
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
@@ -7800,7 +7800,7 @@ Normally upgraded weekly.</li>
 <li><a href="https://docs.microsoft.com/azure/aks/supported-kubernetes-versions">Supported Kubernetes versions in Azure Kubernetes Service</a></li>
 <li><a href="https://docs.microsoft.com/azure/aks/support-policies">Support policies for Azure Kubernetes Service</a></li>
 <li><a href="https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel">Set auto-upgrade channel</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7811,7 +7811,7 @@ Normally upgraded weekly.</li>
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

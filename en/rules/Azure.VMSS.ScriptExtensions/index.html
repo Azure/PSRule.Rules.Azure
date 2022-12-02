@@ -7635,7 +7635,7 @@ secrets during extension deployments.</p>
 <li>Set any secure values within <code>properties.extensionProfile.extensions.protectedSettings</code></li>
 </ul>
 <h3 id="configure-with-azure-template">Configure with Azure template<a class="headerlink" href="#configure-with-azure-template" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;extensionProfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="nt">&quot;extensionProfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;extensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;customScript&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7657,7 +7657,7 @@ secrets during extension deployments.</p>
 <ul>
 <li>Set any secure values within <code>properties.extensionProfile.extensions.protectedSettings</code></li>
 </ul>
-<div class="highlight"><pre><span></span><code>extensionProfile: {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>extensionProfile: {
   extensions: [
     {
       name: &#39;customScript&#39;

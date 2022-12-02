@@ -7634,7 +7634,7 @@ Redis powered by Azure Private Link.</p>
 <li>Set <code>properties.publicNetworkAccess</code> to <code>Disabled</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Cache/Redis&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;Redis_name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7662,7 +7662,7 @@ Redis powered by Azure Private Link.</p>
 <li>Set <code>properties.publicNetworkAccess</code> to <code>Disabled</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource Redis__resource &#39;Microsoft.Cache/Redis@2021-06-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource Redis__resource &#39;Microsoft.Cache/Redis@2021-06-01&#39; = {
   name: Redis_name
   location: &#39;Australia East&#39;
   properties: {

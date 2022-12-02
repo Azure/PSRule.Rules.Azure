@@ -7642,7 +7642,7 @@
 <li>Set <code>properties.agentPoolProfiles.osDiskType</code> to <code>Ephemeral</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ContainerService/managedClusters&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-02-preview&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;clusterName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7685,7 +7685,7 @@
 <li>Set <code>properties.osDiskType</code> to <code>Ephemeral</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ContainerService/managedClusters/agentPools&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-07-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[format(&#39;{0}/{1}&#39;, parameters(&#39;clusterName&#39;), variables(&#39;poolName&#39;))]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7709,7 +7709,7 @@
 <li>Set <code>properties.agentPoolProfiles.osDiskType</code> to <code>Ephemeral</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource aks &#39;Microsoft.ContainerService/managedClusters@2022-06-02-preview&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource aks &#39;Microsoft.ContainerService/managedClusters@2022-06-02-preview&#39; = {
   name: clusterName
   location: location
   sku: {
@@ -7750,7 +7750,7 @@
 <li>Set <code>properties.osDiskType</code> to <code>Ephemeral</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource userPool &#39;Microsoft.ContainerService/managedClusters/agentPools@2022-07-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource userPool &#39;Microsoft.ContainerService/managedClusters/agentPools@2022-07-01&#39; = {
   parent: cluster
   name: poolName
   properties: {
@@ -7768,8 +7768,8 @@
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/scalability/performance-efficiency">Performance efficiency checklist</a></li>
 <li><a href="https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os">Azure Kubernetes Service (AKS) Ephemeral OS</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters">Azure template reference</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters/agentpools">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters">Azure deployment reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters/agentpools">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7780,7 +7780,7 @@
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

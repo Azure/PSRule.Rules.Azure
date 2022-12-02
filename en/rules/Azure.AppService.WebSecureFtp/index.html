@@ -7636,7 +7636,7 @@ Also consider using Azure Policy to audit or enforce this configuration.</p>
 <li>Set <code>properties.siteConfig.ftpsState</code> to <code>FtpsOnly</code> or <code>Disabled</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Web/sites&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-03-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7670,7 +7670,7 @@ Also consider using Azure Policy to audit or enforce this configuration.</p>
 <li>Set <code>properties.siteConfig.ftpsState</code> to <code>FtpsOnly</code> or <code>Disabled</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource webApp &#39;Microsoft.Web/sites@2021-03-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource webApp &#39;Microsoft.Web/sites@2021-03-01&#39; = {
   name: name
   location: location
   identity: {

@@ -7635,7 +7635,7 @@ It's critical that the rotation of keys be scheduled and automated to ensure eff
 <li>Set <code>properties.rotationPolicy.lifetimeActions[*].trigger.timeAfterCreate</code> to the time duration after key creation to rotate.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.KeyVault/vaults/keys&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01-preview&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[concat(parameters(&#39;vaultName&#39;), &#39;/&#39;, &#39;key1&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7681,7 +7681,7 @@ It's critical that the rotation of keys be scheduled and automated to ensure eff
 after key creation to rotate.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource vaultName_key1 &#39;Microsoft.KeyVault/vaults/keys@2021-06-01-preview&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource vaultName_key1 &#39;Microsoft.KeyVault/vaults/keys@2021-06-01-preview&#39; = {
   parent: vaultName_resource
   name: &#39;key1&#39;
   properties: {

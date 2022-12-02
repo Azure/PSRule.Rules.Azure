@@ -7634,7 +7634,7 @@ You can have at most two user-assigned identities assigned to a topic or domain.
 <li>If <code>identity.type</code> is <code>UserAssigned</code>, reference the identity with <code>identity.userAssignedIdentities</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.EventGrid/topics&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01-preview&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;topicName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7656,7 +7656,7 @@ You can have at most two user-assigned identities assigned to a topic or domain.
 <li>If <code>identity.type</code> is <code>UserAssigned</code>, reference the identity with <code>identity.userAssignedIdentities</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource eventGrid &#39;Microsoft.EventGrid/topics@2021-06-01-preview&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource eventGrid &#39;Microsoft.EventGrid/topics@2021-06-01-preview&#39; = {
   name: topicName
   location: location
   identity: {
@@ -7674,7 +7674,7 @@ You can have at most two user-assigned identities assigned to a topic or domain.
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication">Use identity-based authentication</a></li>
 <li><a href="https://docs.microsoft.com/azure/event-grid/enable-identity-custom-topics-domains">Assign a managed identity to an Event Grid custom topic or domain</a></li>
 <li><a href="https://docs.microsoft.com/azure/event-grid/security-authentication">Authenticate event delivery to event handlers</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7685,7 +7685,7 @@ You can have at most two user-assigned identities assigned to a topic or domain.
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

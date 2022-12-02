@@ -7639,7 +7639,7 @@ The action to perform is configurable for each WAF rule.</li>
 <li>Set the <code>properties.policySettings.mode</code> property to <code>Prevention</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/FrontDoorWebApplicationFirewallPolicies&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-05-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7679,7 +7679,7 @@ The action to perform is configurable for each WAF rule.</li>
 <li>Set the <code>properties.policySettings.mode</code> property to <code>Prevention</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource waf &#39;Microsoft.Network/FrontDoorWebApplicationFirewallPolicies@2022-05-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource waf &#39;Microsoft.Network/FrontDoorWebApplicationFirewallPolicies@2022-05-01&#39; = {
   name: name
   location: &#39;Global&#39;
   sku: {

@@ -7672,7 +7672,7 @@
 <li>Set Log Analytics workspace ID with <code>properties.addonProfiles.omsAgent.config.logAnalyticsWorkspaceResourceID</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;comments&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Azure Kubernetes Cluster&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-12-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
@@ -7749,13 +7749,13 @@
 </code></pre></div>
 <h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
 <h4 id="enable-for-default-log-analytics-workspace">Enable for default Log Analytics workspace<a class="headerlink" href="#enable-for-default-log-analytics-workspace" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code>az aks enable-addons <span class="se">\</span>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az aks enable-addons <span class="se">\</span>
   --addons monitoring <span class="se">\</span>
   --name <span class="s1">&#39;&lt;cluster_name&gt;&#39;</span> <span class="se">\</span>
   --resource-group <span class="s1">&#39;&lt;cluster_resource_group&gt;&#39;</span>
 </code></pre></div>
 <h4 id="enable-for-an-existing-log-analytics-workspace">Enable for an existing Log Analytics workspace<a class="headerlink" href="#enable-for-an-existing-log-analytics-workspace" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code>az aks enable-addons <span class="se">\</span>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az aks enable-addons <span class="se">\</span>
   --addons monitoring <span class="se">\</span>
   --name <span class="s1">&#39;&lt;cluster_name&gt;&#39;</span> <span class="se">\</span>
   --resource-group <span class="s1">&#39;&lt;cluster_resource_group&gt;&#39;</span> <span class="se">\</span>
@@ -7768,7 +7768,7 @@
 <li><a href="https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-overview">Container insights overview</a></li>
 <li><a href="https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-enable-new-cluster">Enable monitoring of a new Azure Kubernetes Service (AKS) cluster</a></li>
 <li><a href="https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-enable-existing-clusters">Enable monitoring of Azure Kubernetes Service (AKS) cluster already deployed</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7779,7 +7779,7 @@
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

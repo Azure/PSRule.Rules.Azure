@@ -7624,7 +7624,7 @@ Alternatively, consider using firewall policies to manage Azure Firewalls at sca
 <li>Set the <code>properties.threatIntelMode</code> to <code>Deny</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/azureFirewalls&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-05-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[format(&#39;{0}_classic&#39;, parameters(&#39;name&#39;))]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7643,7 +7643,7 @@ Alternatively, consider using firewall policies to manage Azure Firewalls at sca
 <li>Set the <code>properties.threatIntelMode</code> to <code>Deny</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource firewall_classic &#39;Microsoft.Network/azureFirewalls@2021-05-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource firewall_classic &#39;Microsoft.Network/azureFirewalls@2021-05-01&#39; = {
   name: &#39;${name}_classic&#39;
   location: location
   properties: {
@@ -7659,7 +7659,7 @@ Alternatively, consider using firewall policies to manage Azure Firewalls at sca
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/design-network-segmentation">Implement network segmentation patterns on Azure</a></li>
 <li><a href="https://docs.microsoft.com/azure/firewall/threat-intel">Azure Firewall threat intelligence-based filtering</a></li>
 <li><a href="https://docs.microsoft.com/azure/security/fundamentals/network-overview#azure-firewall">Azure network security overview</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/azurefirewalls">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/azurefirewalls">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7670,7 +7670,7 @@ Alternatively, consider using firewall policies to manage Azure Firewalls at sca
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

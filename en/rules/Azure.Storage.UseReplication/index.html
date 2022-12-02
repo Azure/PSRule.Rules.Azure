@@ -7656,7 +7656,7 @@ Geo-zone-redundant storage is only available in supported regions.</p>
   Such as <code>Standard_GRS</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;comments&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Storage Account&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Storage/storageAccounts&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-06-01&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7682,7 +7682,7 @@ Geo-zone-redundant storage is only available in supported regions.</p>
   Such as <code>Standard_GRS</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource st0000001 &#39;Microsoft.Storage/storageAccounts@2021-04-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource st0000001 &#39;Microsoft.Storage/storageAccounts@2021-04-01&#39; = {
   name: &#39;st0000001&#39;
   location: location
   sku: {
@@ -7715,7 +7715,7 @@ Storage Accounts with the following tags are automatically excluded from this ru
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements">Multiple and paired regions</a></li>
 <li><a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure Storage redundancy</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7726,7 +7726,7 @@ Storage Accounts with the following tags are automatically excluded from this ru
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

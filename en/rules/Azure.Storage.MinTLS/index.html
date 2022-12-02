@@ -7635,7 +7635,7 @@ Also consider enforcing this setting using Azure Policy.</p>
 <li>Set the <code>properties.minimumTlsVersion</code> property to <code>TLS1_2</code> or newer.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;comments&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Storage Account&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Storage/storageAccounts&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-06-01&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7660,7 +7660,7 @@ Also consider enforcing this setting using Azure Policy.</p>
 <li>Set the <code>properties.minimumTlsVersion</code> property to <code>TLS1_2</code> or newer.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource st0000001 &#39;Microsoft.Storage/storageAccounts@2021-04-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource st0000001 &#39;Microsoft.Storage/storageAccounts@2021-04-01&#39; = {
   name: &#39;st0000001&#39;
   location: location
   sku: {

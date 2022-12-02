@@ -7645,20 +7645,20 @@ Azure resources that rely on Azure AD as an identity provider.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
 <h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
 <p>Register <code>EnablePodIdentityPreview</code> feature:</p>
-<div class="highlight"><pre><span></span><code>az feature register --name EnablePodIdentityPreview --namespace Microsoft.ContainerService
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az feature register --name EnablePodIdentityPreview --namespace Microsoft.ContainerService
 </code></pre></div>
 <p>Install the <code>aks-preview</code> Azure CLI:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Install the aks-preview extension</span>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code><span class="c1"># Install the aks-preview extension</span>
 az extension add --name aks-preview
 
 <span class="c1"># Update the extension to make sure you have the latest version installed</span>
 az extension update --name aks-preview
 </code></pre></div>
 <p>Create AKS cluster with AAD Pod identity enabled:</p>
-<div class="highlight"><pre><span></span><code>az aks create -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> -n <span class="s1">&#39;&lt;cluster_name&gt;&#39;</span> --enable-pod-identity --network-plugin azure
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az aks create -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> -n <span class="s1">&#39;&lt;cluster_name&gt;&#39;</span> --enable-pod-identity --network-plugin azure
 </code></pre></div>
 <p>Update an existing AKS cluster with AAD pod identity enabled:</p>
-<div class="highlight"><pre><span></span><code>az aks update -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> -n <span class="s1">&#39;&lt;cluster_name&gt;&#39;</span> --enable-pod-identity
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az aks update -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> -n <span class="s1">&#39;&lt;cluster_name&gt;&#39;</span> --enable-pod-identity
 </code></pre></div>
 <h3 id="configure-with-azure-template">Configure with Azure template<a class="headerlink" href="#configure-with-azure-template" title="Permanent link">#</a></h3>
 <p>To deploy AKS clusters that pass this rule:</p>
@@ -7667,7 +7667,7 @@ az extension update --name aks-preview
 <li>Set <code>Properties.podIdentityProfile.enabled</code> to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ContainerService/managedClusters&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-07-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;clusterName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7743,7 +7743,7 @@ az extension update --name aks-preview
 <li>Set <code>Properties.podIdentityProfile.enabled</code> to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>// Cluster
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>// Cluster
 resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-07-01&#39; = {
   location: location
   name: clusterName
@@ -7815,7 +7815,7 @@ resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-07-01&#39;
 <li><a href="https://docs.microsoft.com/azure/aks/use-managed-identity">Use managed identities in Azure Kubernetes Service</a></li>
 <li><a href="https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview">What are managed identities for Azure resources?</a></li>
 <li><a href="https://github.com/Azure/aad-pod-identity">AAD Pod Identity</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7826,7 +7826,7 @@ resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-07-01&#39;
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

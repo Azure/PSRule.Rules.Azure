@@ -7633,7 +7633,7 @@ To limit access to Event Grid topics and domains, disable public access.</p>
 <li>Set the <code>properties.publicNetworkAccess</code> property to <code>Disabled</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.EventGrid/topics&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01-preview&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;topicName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7654,7 +7654,7 @@ To limit access to Event Grid topics and domains, disable public access.</p>
 <li>Set the <code>properties.publicNetworkAccess</code> property to <code>Disabled</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource eventGrid &#39;Microsoft.EventGrid/topics@2021-06-01-preview&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource eventGrid &#39;Microsoft.EventGrid/topics@2021-06-01-preview&#39; = {
   name: topicName
   location: location
   identity: {
@@ -7671,7 +7671,7 @@ To limit access to Event Grid topics and domains, disable public access.</p>
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/design-network-flow#data-exfiltration">Traffic flow security in Azure</a></li>
 <li><a href="https://docs.microsoft.com/azure/event-grid/network-security#private-endpoints">Private Endpoints</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics?tabs=json">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics?tabs=json">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7682,7 +7682,7 @@ To limit access to Event Grid topics and domains, disable public access.</p>
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

@@ -7701,7 +7701,7 @@ for namespace <code>Microsoft.Network</code> and resource type <code>application
 <li>Set <code>properties.sku.name</code> and <code>properties.sku.tier</code> to <code>Standard_v2</code> or <code>WAF_v2</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;appGw-001&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/applicationGateways&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-09-01&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7731,7 +7731,7 @@ for namespace <code>Microsoft.Network</code> and resource type <code>application
 <li>Set <code>properties.sku.name</code> and <code>properties.sku.tier</code> to <code>Standard_v2</code> or <code>WAF_v2</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource name_resource &#39;Microsoft.Network/applicationGateways@2019-09-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource name_resource &#39;Microsoft.Network/applicationGateways@2019-09-01&#39; = {
   name: &#39;appGw-001&#39;
   location: location
   zones: [
@@ -7754,7 +7754,7 @@ for namespace <code>Microsoft.Network</code> and resource type <code>application
 </code></pre></div>
 <h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
 <h4 id="create-wafv2-application-gateway-in-zone-1-2-and-3">Create WAFv2 Application Gateway in Zone 1, 2 and 3<a class="headerlink" href="#create-wafv2-application-gateway-in-zone-1-2-and-3" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code>az network application-gateway create <span class="se">\</span>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az network application-gateway create <span class="se">\</span>
   --name <span class="s1">&#39;&lt;application_gateway_name&gt;&#39;</span> <span class="se">\</span>
   --location <span class="s1">&#39;&lt;location&gt;&#39;</span> <span class="se">\</span>
   --resource-group <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> <span class="se">\</span>

@@ -7647,7 +7647,7 @@
 <li>Set the <code>properties.apiVersionConstraint.minApiVersion</code> property to <code>'2021-08-01'</code> or newer.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ApiManagement/service&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-12-01-preview&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;apiManagementServiceName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7670,7 +7670,7 @@
 <li>Set the <code>properties.apiVersionConstraint.minApiVersion</code> property to <code>'2021-08-01'</code> or newer.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource apiManagementService &#39;Microsoft.ApiManagement/service@2021-12-01-preview&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource apiManagementService &#39;Microsoft.ApiManagement/service@2021-12-01-preview&#39; = {
   name: apiManagementServiceName
   location: location
   sku: {
@@ -7706,7 +7706,7 @@
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure">Infrastructure provisioning</a></li>
 <li><a href="https://learn.microsoft.com/azure/api-management/breaking-changes/api-version-retirement-sep-2023">Azure API Management API version retirements</a></li>
 <li><a href="https://learn.microsoft.com/azure/api-management/soft-delete">Azure API Management soft-delete REST API versions behaviour</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service">Azure template reference</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7717,7 +7717,7 @@
   <small>
     
       Last update:
-      2022-11-07
+      2022-12-03
     
   </small>
 </div>

@@ -7647,7 +7647,7 @@
 <li>Configure each data disk included in <code>properties.storageProfile.dataDisks</code> to use <code>Premium_LRS</code> or greater by setting the property <code>managedDisk.storageAccountType</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Compute/virtualMachines&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-03-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;virtualMachineName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7712,7 +7712,7 @@
 <li>Configure each data disk included in <code>properties.storageProfile.dataDisks</code> to use <code>Premium_LRS</code> or greater by setting the property <code>managedDisk.storageAccountType</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource virtualMachine &#39;Microsoft.Compute/virtualMachines@2022-03-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource virtualMachine &#39;Microsoft.Compute/virtualMachines@2022-03-01&#39; = {
   name: virtualMachineName
   location: location
   properties: {
@@ -7772,7 +7772,7 @@
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/scalability/design-checklist">Design for performance</a></li>
 <li><a href="https://learn.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices-storage">Performance best practices for SQL Server on Azure VMs</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines">Azure template reference</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7783,7 +7783,7 @@
   <small>
     
       Last update:
-      2022-11-14
+      2022-12-03
     
   </small>
 </div>

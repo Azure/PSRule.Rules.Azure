@@ -7635,7 +7635,7 @@ If network based access is permitted, authentication is still required.</p>
 <li>Set the <code>properties.startIpAddress</code> and <code>properties.endIpAddress</code> property to a valid IPv4 address format.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.DBforMariaDB/servers&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-06-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;serverName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7680,7 +7680,7 @@ If network based access is permitted, authentication is still required.</p>
 <li>Set the <code>properties.startIpAddress</code> and <code>properties.endIpAddress</code> property to a valid IPv4 address format.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource mariaDbServer &#39;Microsoft.DBforMariaDB/servers@2018-06-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource mariaDbServer &#39;Microsoft.DBforMariaDB/servers@2018-06-01&#39; = {
   name: serverName
   location: location
   sku: {

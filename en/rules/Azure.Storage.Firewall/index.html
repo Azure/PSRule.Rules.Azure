@@ -7655,7 +7655,7 @@ Also consider enforcing this setting using Azure Policy.</p>
 <li>Set the <code>properties.networkAcls.defaultAction</code> property to <code>Deny</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Storage/storageAccounts&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-04-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;st0000001&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7681,7 +7681,7 @@ Also consider enforcing this setting using Azure Policy.</p>
 <li>Set the <code>properties.networkAcls.defaultAction</code> property to <code>Deny</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource st0000001 &#39;Microsoft.Storage/storageAccounts@2021-04-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource st0000001 &#39;Microsoft.Storage/storageAccounts@2021-04-01&#39; = {
   name: &#39;st0000001&#39;
   location: location
   sku: {
@@ -7708,7 +7708,7 @@ Azure storage firewall is not supported for Cloud Shell storage accounts.</p>
 <li><a href="https://docs.microsoft.com/azure/storage/common/storage-network-security">Configure Azure Storage firewalls and virtual networks</a></li>
 <li><a href="https://docs.microsoft.com/azure/storage/common/storage-private-endpoints">Use private endpoints for Azure Storage</a></li>
 <li><a href="https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage">Persist files in Azure Cloud Shell</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts#NetworkRuleSet">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts#NetworkRuleSet">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7719,7 +7719,7 @@ Azure storage firewall is not supported for Cloud Shell storage accounts.</p>
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

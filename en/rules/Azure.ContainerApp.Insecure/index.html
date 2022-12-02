@@ -7649,7 +7649,7 @@ This secure by default behaviour can be overriden by allowing insecure HTTP traf
 <li>Set <code>properties.configuration.ingress.allowInsecure</code> to <code>false</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.App/containerApps&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-03-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;appName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7677,7 +7677,7 @@ This secure by default behaviour can be overriden by allowing insecure HTTP traf
 <li>Set <code>properties.configuration.ingress.allowInsecure</code> to <code>false</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource containerApp &#39;Microsoft.App/containerApps@2021-03-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource containerApp &#39;Microsoft.App/containerApps@2021-03-01&#39; = {
   name: appName
   location: location
   properties: {
@@ -7700,7 +7700,7 @@ This secure by default behaviour can be overriden by allowing insecure HTTP traf
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit">Data encryption in Azure</a></li>
 <li><a href="https://docs.microsoft.com/azure/container-apps/ingress#configuration">Set up HTTPS ingress in Azure Container Apps</a></li>
-<li><a href="https://docs.microsoft.com/azure/container-apps/azure-resource-manager-api-spec">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/container-apps/azure-resource-manager-api-spec">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7711,7 +7711,7 @@ This secure by default behaviour can be overriden by allowing insecure HTTP traf
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

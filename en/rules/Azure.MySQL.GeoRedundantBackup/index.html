@@ -7648,7 +7648,7 @@
 <li>Set the <code>properties.backup.geoRedundantBackup</code> property to the value <code>'Enabled'</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.DBforMySQL/flexibleServers&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-12-01-preview&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;serverName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7682,7 +7682,7 @@
 <li>Set the <code>properties.storageProfile.geoRedundantBackup</code> property to the value <code>'Enabled'</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.DBforMySQL/servers&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2017-12-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;serverName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7713,7 +7713,7 @@
 <li>Set the <code>properties.backup.geoRedundantBackup</code> property to the value <code>'Enabled'</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource mysqlDbServer &#39;Microsoft.DBforMySQL/flexibleServers@2021-12-01-preview&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource mysqlDbServer &#39;Microsoft.DBforMySQL/flexibleServers@2021-12-01-preview&#39; = {
   name: serverName
   location: location
   sku: {
@@ -7745,7 +7745,7 @@
 <li>Set the <code>properties.storageProfile.geoRedundantBackup</code> property to the value <code>'Enabled'</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource mysqlDbServer &#39;Microsoft.DBforMySQL/servers@2017-12-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource mysqlDbServer &#39;Microsoft.DBforMySQL/servers@2017-12-01&#39; = {
   name: serverName
   location: location
   sku: {
@@ -7776,8 +7776,8 @@
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements">Target and non-functional requirements</a></li>
 <li><a href="https://learn.microsoft.com/azure/mysql/flexible-server/concepts-backup-restore">Backup and restore in Azure Database for MySQL flexible servers</a></li>
 <li><a href="https://learn.microsoft.com/azure/mysql/single-server/concepts-backup">Backup and restore in Azure Database for MySQL single servers</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.dbformysql/flexibleservers">Azure template reference flexible servers</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers">Azure template reference single servers</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.dbformysql/flexibleservers">Azure deployment reference flexible servers</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers">Azure deployment reference single servers</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7788,7 +7788,7 @@
   <small>
     
       Last update:
-      2022-11-14
+      2022-12-03
     
   </small>
 </div>

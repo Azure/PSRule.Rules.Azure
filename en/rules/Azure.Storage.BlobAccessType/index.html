@@ -7637,7 +7637,7 @@ Also consider, disabling public access for the storage account.</p>
 <li>Set the <code>properties.publicAccess</code> property to <code>None</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Storage/storageAccounts/blobServices/containers&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[format(&#39;{0}/{1}/{2}&#39;, parameters(&#39;name&#39;), &#39;default&#39;, variables(&#39;containerName&#39;))]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7656,7 +7656,7 @@ Also consider, disabling public access for the storage account.</p>
 <li>Set the <code>properties.publicAccess</code> property to <code>None</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource container &#39;Microsoft.Storage/storageAccounts/blobServices/containers@2021-06-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource container &#39;Microsoft.Storage/storageAccounts/blobServices/containers@2021-06-01&#39; = {
   parent: blobService
   name: containerName
   properties: {
@@ -7670,7 +7670,7 @@ Also consider, disabling public access for the storage account.</p>
 <li><a href="https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-configure#about-anonymous-public-read-access">About anonymous public read access</a></li>
 <li><a href="https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent#use-azure-policy-to-enforce-authorized-access">Use Azure Policy to enforce authorized access</a></li>
 <li><a href="https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works">How a shared access signature works</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7681,7 +7681,7 @@ Also consider, disabling public access for the storage account.</p>
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

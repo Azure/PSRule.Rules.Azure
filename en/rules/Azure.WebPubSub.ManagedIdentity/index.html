@@ -7641,7 +7641,7 @@ Also consider using managed identities to authenticate to related Azure services
 <li>If <code>identity.type</code> is <code>UserAssigned</code>, reference the identity with <code>identity.userAssignedIdentities</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.SignalRService/webPubSub&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7664,7 +7664,7 @@ Also consider using managed identities to authenticate to related Azure services
 <li>If <code>identity.type</code> is <code>UserAssigned</code>, reference the identity with <code>identity.userAssignedIdentities</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource service &#39;Microsoft.SignalRService/webPubSub@2021-10-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource service &#39;Microsoft.SignalRService/webPubSub@2021-10-01&#39; = {
   name: name
   location: location
   sku: {
@@ -7682,7 +7682,7 @@ Also consider using managed identities to authenticate to related Azure services
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication">Use identity-based authentication</a></li>
 <li><a href="https://docs.microsoft.com/azure/azure-web-pubsub/howto-use-managed-identity">Managed identities for Azure Web PubSub Service</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.signalrservice/webpubsub">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.signalrservice/webpubsub">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7693,7 +7693,7 @@ Also consider using managed identities to authenticate to related Azure services
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

@@ -7662,7 +7662,7 @@ and/ or prevention of malicious attacks does not occur.</p>
 <li>Set the <code>properties.policySettings.state</code> property to <code>Enabled</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;agwwaf&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7693,7 +7693,7 @@ and/ or prevention of malicious attacks does not occur.</p>
 <li>Set the <code>properties.policySettings.state</code> property to <code>Enabled</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource waf &#39;Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies@2022-01-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource waf &#39;Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies@2022-01-01&#39; = {
   name: &#39;agwwaf&#39;
   location: location
   properties: {
@@ -7717,10 +7717,10 @@ and/ or prevention of malicious attacks does not occur.</p>
 }
 </code></pre></div>
 <h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>az network application-gateway waf-config <span class="nb">set</span> --enabled <span class="nb">true</span> -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az network application-gateway waf-config <span class="nb">set</span> --enabled <span class="nb">true</span> -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
 </code></pre></div>
 <h3 id="configure-with-azure-powershell">Configure with Azure PowerShell<a class="headerlink" href="#configure-with-azure-powershell" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nv">$AppGw</span> <span class="p">=</span> <span class="nb">Get-AzApplicationGateway</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;name&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
+<div class="highlight"><span class="filename">Azure PowerShell snippet</span><pre><span></span><code><span class="nv">$AppGw</span> <span class="p">=</span> <span class="nb">Get-AzApplicationGateway</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;name&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
 <span class="nb">Set-AzApplicationGatewayWebApplicationFirewallConfiguration</span> <span class="n">-ApplicationGateway</span> <span class="nv">$AppGw</span> <span class="n">-Enabled</span> <span class="nv">$True</span> <span class="n">-FirewallMode</span> <span class="s1">&#39;Prevention&#39;</span>
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
@@ -7728,7 +7728,7 @@ and/ or prevention of malicious attacks does not occur.</p>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints">Best practices for endpoint security on Azure</a></li>
 <li><a href="https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall">Securing PaaS deployments</a></li>
 <li><a href="https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview">What is Azure Web Application Firewall on Azure Application Gateway?</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways">Azure deployment reference</a></li>
 <li><a href="https://learn.microsoft.com/azure/web-application-firewall/ag/best-practices">Web Application Firewall best practices</a></li>
 </ul>
 
@@ -7740,7 +7740,7 @@ and/ or prevention of malicious attacks does not occur.</p>
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

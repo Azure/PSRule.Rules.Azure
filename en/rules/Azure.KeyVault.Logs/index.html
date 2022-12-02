@@ -7639,7 +7639,7 @@
 <li>Enable <code>AuditEvent</code> category or <code>audit</code> category group or <code>allLogs</code> category group.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;comments&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create or update a Key Vault.&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.KeyVault/vaults&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;vaultName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7683,7 +7683,7 @@
 <li>Enable <code>AuditEvent</code> category or <code>audit</code> category group or <code>allLogs</code> category group.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource keyVaultResource &#39;Microsoft.KeyVault/vaults@2022-07-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource keyVaultResource &#39;Microsoft.KeyVault/vaults@2022-07-01&#39; = {
   name: parmVaultName
   location: parmLocation
   properties: {

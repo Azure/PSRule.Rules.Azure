@@ -7638,7 +7638,7 @@ Production workloads are best suited to standard and premium plans with <code>Pr
   For example: <code>PremiumV3</code>, <code>PremiumV2</code>, <code>Premium</code>, <code>Standard</code></li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Web/serverfarms&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-01-15&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;planName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7657,7 +7657,7 @@ Production workloads are best suited to standard and premium plans with <code>Pr
   For example: <code>PremiumV3</code>, <code>PremiumV2</code>, <code>Premium</code>, <code>Standard</code></li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource appPlan &#39;Microsoft.Web/serverfarms@2021-01-15&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource appPlan &#39;Microsoft.Web/serverfarms@2021-01-15&#39; = {
   name: planName
   location: location
   sku: {
@@ -7674,7 +7674,7 @@ Production workloads are best suited to standard and premium plans with <code>Pr
 <li><a href="https://docs.microsoft.com/azure/app-service/app-service-plan-manage">Manage an App Service plan in Azure</a></li>
 <li><a href="https://docs.microsoft.com/azure/app-service/app-service-configure-premium-tier">Configure PremiumV3 tier for Azure App Service</a></li>
 <li><a href="https://azure.microsoft.com/pricing/details/app-service/windows/">App Service pricing</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.web/serverfarms">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.web/serverfarms">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7685,7 +7685,7 @@ Production workloads are best suited to standard and premium plans with <code>Pr
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

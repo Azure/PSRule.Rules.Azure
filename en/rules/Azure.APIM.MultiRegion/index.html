@@ -7646,7 +7646,7 @@
 <li>Configure the <code>properties.additionalLocations</code> property.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ApiManagement/service&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-12-01-preview&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;apiManagementServiceName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7675,7 +7675,7 @@
 <li>Configure the <code>properties.additionalLocations</code> property.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource apiManagementService &#39;Microsoft.ApiManagement/service@2021-12-01-preview&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource apiManagementService &#39;Microsoft.ApiManagement/service@2021-12-01-preview&#39; = {
   name: apiManagementServiceName
   location: &#39;eastus&#39;
   sku: {
@@ -7704,7 +7704,7 @@
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency">Resiliency and dependencies</a></li>
 <li><a href="https://learn.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region">Azure API Management instance multi-region</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service">Azure template reference</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7715,7 +7715,7 @@
   <small>
     
       Last update:
-      2022-11-23
+      2022-12-03
     
   </small>
 </div>

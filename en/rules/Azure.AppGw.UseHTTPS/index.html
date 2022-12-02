@@ -7619,7 +7619,7 @@ For client applications such as progressive web apps, consider redirecting HTTP 
 <li>Set the <code>properties.frontendPorts.properties.port</code> property to <code>443</code>.</li>
 </ul>
 <p>Fors example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/applicationGateways&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-11-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;appGw-001&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7649,7 +7649,7 @@ For client applications such as progressive web apps, consider redirecting HTTP 
 <li>Set the <code>properties.frontendPorts.properties.port</code> property to <code>443</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource name_resource &#39;Microsoft.Network/applicationGateways@2019-09-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource name_resource &#39;Microsoft.Network/applicationGateways@2019-09-01&#39; = {
   name: &#39;appGw-001&#39;
   location: location
   properties: {

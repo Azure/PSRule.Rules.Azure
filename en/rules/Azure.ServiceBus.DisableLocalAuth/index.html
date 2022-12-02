@@ -7636,7 +7636,7 @@ Then disable authentication based on access keys or SAS tokens.</p>
 <li>Set the <code>properties.disableLocalAuth</code> property to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ServiceBus/namespaces&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-11-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7658,7 +7658,7 @@ Then disable authentication based on access keys or SAS tokens.</p>
 <li>Set the <code>properties.disableLocalAuth</code> property to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource ns &#39;Microsoft.ServiceBus/namespaces@2021-11-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource ns &#39;Microsoft.ServiceBus/namespaces@2021-11-01&#39; = {
   name: name
   location: location
   identity: {
@@ -7676,7 +7676,7 @@ Then disable authentication based on access keys or SAS tokens.</p>
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication">Use identity-based authentication</a></li>
 <li><a href="https://docs.microsoft.com/azure/service-bus-messaging/service-bus-authentication-and-authorization">Service Bus authentication and authorization</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7687,7 +7687,7 @@ Then disable authentication based on access keys or SAS tokens.</p>
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

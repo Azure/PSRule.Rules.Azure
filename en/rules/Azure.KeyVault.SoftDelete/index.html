@@ -7635,7 +7635,7 @@ When soft delete is enabled, it is possible to purge soft deleted vaults and vau
 <li>Set the <code>properties.enableSoftDelete</code> property to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.KeyVault/vaults&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7658,7 +7658,7 @@ When soft delete is enabled, it is possible to purge soft deleted vaults and vau
 <li>Set the <code>properties.enableSoftDelete</code> property to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource vault &#39;Microsoft.KeyVault/vaults@2021-10-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource vault &#39;Microsoft.KeyVault/vaults@2021-10-01&#39; = {
   name: name
   location: location
   properties: {
@@ -7677,7 +7677,7 @@ When soft delete is enabled, it is possible to purge soft deleted vaults and vau
 <ul>
 <li><a href="https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview">Azure Key Vault soft-delete overview</a></li>
 <li><a href="https://docs.microsoft.com/azure/key-vault/general/security-overview#backup-and-recovery">Azure Key Vault security</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7688,7 +7688,7 @@ When soft delete is enabled, it is possible to purge soft deleted vaults and vau
   <small>
     
       Last update:
-      2022-06-01
+      2022-12-03
     
   </small>
 </div>

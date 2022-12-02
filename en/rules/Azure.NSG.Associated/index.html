@@ -7575,14 +7575,14 @@ NSGs that are not associated with a network interface or subnet perform no purpo
 Also consider using Resource Groups to help manage the lifecycle of related resources together.
 Apply tags to all resources to help identify resources that are attached to specific workloads</p>
 <p>To find orphaned NSG's run the following Azure CLI command</p>
-<div class="highlight"><pre><span></span><code>az network nsg list -g <span class="nv">$rgName</span> --query <span class="s2">&quot;[?(subnets==null) &amp;&amp; (networkInterfaces==null)].id&quot;</span> -o tsv
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az network nsg list -g <span class="nv">$rgName</span> --query <span class="s2">&quot;[?(subnets==null) &amp;&amp; (networkInterfaces==null)].id&quot;</span> -o tsv
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/devops/principles">Operational excellence principles</a></li>
 <li><a href="https://techcommunity.microsoft.com/t5/fasttrack-for-azure/azure-orphan-resources/ba-p/3492198">Orphaned Resources Workbook</a></li>
 <li><a href="https://learn.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-delete">Modify, create and delete NSG's using the CLI</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules">Azure deployment reference</a></li>
 <li><a href="https://docs.microsoft.com/azure/virtual-network/security-overview">Network security groups</a></li>
 </ul>
 
@@ -7594,7 +7594,7 @@ Apply tags to all resources to help identify resources that are attached to spec
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

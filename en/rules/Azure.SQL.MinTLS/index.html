@@ -7634,7 +7634,7 @@ By default, TLS 1.0, TLS 1.1, and TLS 1.2 is accepted.</p>
 <li>Set the <code>properties.minimalTlsVersion</code> to <code>1.2</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Sql/servers&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-02-01-preview&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7657,7 +7657,7 @@ By default, TLS 1.0, TLS 1.1, and TLS 1.2 is accepted.</p>
 <li>Set the <code>properties.minimalTlsVersion</code> to <code>1.2</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource server &#39;Microsoft.Sql/servers@2022-02-01-preview&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource server &#39;Microsoft.Sql/servers@2022-02-01-preview&#39; = {
   name: name
   location: location
   properties: {

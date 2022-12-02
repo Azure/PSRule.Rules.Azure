@@ -7637,7 +7637,7 @@ Consider enabling Flow Logs on all critical subnets in your subscription as an a
 <li>Set the priority of rules to a number less than a deny all rule.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/networkSecurityGroups&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;nsgName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7713,7 +7713,7 @@ Consider enabling Flow Logs on all critical subnets in your subscription as an a
 <li>Set the priority of rules to a number less than a deny all rule.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource nsg &#39;Microsoft.Network/networkSecurityGroups@2022-01-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource nsg &#39;Microsoft.Network/networkSecurityGroups@2022-01-01&#39; = {
   name: nsgName
   location: location
   properties: {
@@ -7786,7 +7786,7 @@ Consider enabling Flow Logs on all critical subnets in your subscription as an a
 <li><a href="https://docs.microsoft.com/azure/virtual-network/security-overview">Network security groups</a></li>
 <li><a href="https://learn.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview">Introduction to flow logging for network security groups</a></li>
 <li><a href="https://docs.microsoft.com/azure/virtual-network/service-tags-overview">Virtual network service tags</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7797,7 +7797,7 @@ Consider enabling Flow Logs on all critical subnets in your subscription as an a
   <small>
     
       Last update:
-      2022-09-24
+      2022-12-03
     
   </small>
 </div>

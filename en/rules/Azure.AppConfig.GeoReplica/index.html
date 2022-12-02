@@ -7642,7 +7642,7 @@ During the preview geo-replication has additional limitations including support 
 <li>Set <code>location</code> on replica sub-resource to a different location than the app configuration store.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;appConfigName&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7707,7 +7707,7 @@ During the preview geo-replication has additional limitations including support 
 <li>Set <code>location</code> on replica sub-resource to a different location than the app configuration store.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>@description(&#39;The name of the app configuration store.&#39;)
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>@description(&#39;The name of the app configuration store.&#39;)
 param appConfigName string = &#39;configstore01&#39;
 
 @description(&#39;The name of the replica.&#39;)
@@ -7743,7 +7743,7 @@ resource replica &#39;Microsoft.AppConfiguration/configurationStores/replicas@20
 <li><a href="https://learn.microsoft.com/azure/azure-app-configuration/concept-disaster-recovery">Resiliency and diaster recovery</a></li>
 <li><a href="https://learn.microsoft.com/azure/azure-app-configuration/concept-geo-replication">Geo-replication overview</a></li>
 <li><a href="https://learn.microsoft.com/azure/azure-app-configuration/howto-geo-replication">Enable geo-replication</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores/replicas">Azure template reference</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores/replicas">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7754,7 +7754,7 @@ resource replica &#39;Microsoft.AppConfiguration/configurationStores/replicas@20
   <small>
     
       Last update:
-      2022-10-02
+      2022-12-03
     
   </small>
 </div>

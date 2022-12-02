@@ -7635,7 +7635,7 @@ It also provides new diagnostics insights with multi-dimensional metrics in Azur
 <li>Set <code>sku.name</code> to <code>Standard</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-07-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/loadBalancers&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7679,7 +7679,7 @@ It also provides new diagnostics insights with multi-dimensional metrics in Azur
 <li>Set <code>sku.name</code> to <code>Standard</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource lb_001 &#39;Microsoft.Network/loadBalancers@2021-02-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource lb_001 &#39;Microsoft.Network/loadBalancers@2021-02-01&#39; = {
   name: lbName
   location: location
   sku: {
@@ -7707,7 +7707,7 @@ It also provides new diagnostics insights with multi-dimensional metrics in Azur
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers?tabs=json">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers?tabs=json">Azure deployment reference</a></li>
 <li><a href="https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#why-use-azure-load-balancer">Why use Azure Load Balancer?</a></li>
 <li><a href="https://docs.microsoft.com/azure/load-balancer/skus">Azure Load Balancer SKUs</a></li>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements">Meet application platform requirements</a></li>
@@ -7721,7 +7721,7 @@ It also provides new diagnostics insights with multi-dimensional metrics in Azur
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

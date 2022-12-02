@@ -7655,7 +7655,7 @@ Azure Network Policies are supported by Azure support and engineering teams.</p>
 <li>Set <code>Properties.networkProfile.networkPolicy</code> to <code>azure</code> or <code>calico</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ContainerService/managedClusters&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-07-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;clusterName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7730,7 +7730,7 @@ Azure Network Policies are supported by Azure support and engineering teams.</p>
 <li>Set <code>Properties.networkProfile.networkPolicy</code> to <code>azure</code> or <code>calico</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-07-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-07-01&#39; = {
   location: location
   name: clusterName
   identity: {
@@ -7803,7 +7803,7 @@ AKS clusters must be redeployed to enable Network Policy.</p>
 <li><a href="https://docs.microsoft.com/azure/aks/use-network-policies">Secure traffic between pods using network policies in Azure Kubernetes Service (AKS)</a></li>
 <li><a href="https://docs.microsoft.com/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies">Best practices for network connectivity and security in Azure Kubernetes Service (AKS)</a></li>
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">Network Policies</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7814,7 +7814,7 @@ AKS clusters must be redeployed to enable Network Policy.</p>
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

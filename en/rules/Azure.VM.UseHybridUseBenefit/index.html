@@ -7649,7 +7649,7 @@
 </li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Compute/virtualMachines&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-07-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7700,7 +7700,7 @@
 </li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource vm &#39;Microsoft.Compute/virtualMachines@2021-07-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource vm &#39;Microsoft.Compute/virtualMachines@2021-07-01&#39; = {
   name: name
   location: location
   properties: {
@@ -7737,7 +7737,7 @@
 }
 </code></pre></div>
 <h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>az vm update -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> --set <span class="nv">licenseType</span><span class="o">=</span>Windows_Server
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az vm update -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> --set <span class="nv">licenseType</span><span class="o">=</span>Windows_Server
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>

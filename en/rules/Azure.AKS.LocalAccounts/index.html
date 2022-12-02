@@ -7667,7 +7667,7 @@ For example, using <code>az aks get-credentials -g '&lt;resource-group&gt;' -n '
 <li>Set <code>properties.disableLocalAccounts</code> to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ContainerService/managedClusters&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;clusterName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7743,7 +7743,7 @@ For example, using <code>az aks get-credentials -g '&lt;resource-group&gt;' -n '
 <li>Set <code>properties.disableLocalAccounts</code> to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-10-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-10-01&#39; = {
   location: location
   name: clusterName
   identity: {
@@ -7809,7 +7809,7 @@ For example, using <code>az aks get-credentials -g '&lt;resource-group&gt;' -n '
 }
 </code></pre></div>
 <h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>az aks update -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> --enable-aad --aad-admin-group-object-ids <span class="s1">&#39;&lt;aad-group-id&gt;&#39;</span> --disable-local
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az aks update -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> --enable-aad --aad-admin-group-object-ids <span class="s1">&#39;&lt;aad-group-id&gt;&#39;</span> --disable-local
 </code></pre></div>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <p>This Azure feature is currently in preview.
@@ -7820,7 +7820,7 @@ To use this feature you must first opt-in by registering the feature on a per-su
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/security-principles">Security design principles</a></li>
 <li><a href="https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview">Disable local accounts (preview)</a></li>
 <li><a href="https://docs.microsoft.com/azure/aks/concepts-identity#azure-ad-integration">Access and identity options for Azure Kubernetes Service (AKS)</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#managedclusterproperties-object">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#managedclusterproperties-object">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7831,7 +7831,7 @@ To use this feature you must first opt-in by registering the feature on a per-su
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

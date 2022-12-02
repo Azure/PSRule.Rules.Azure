@@ -7638,7 +7638,7 @@ The output from a template is stored in the deployment history, so a malicious u
 <li>Avoid returning a secret in output values.</li>
 </ul>
 <p>Example using <code>secureString</code> type:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -7653,7 +7653,7 @@ The output from a template is stored in the deployment history, so a malicious u
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>The following example fails because it returns a secret:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;contentVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0.0&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -7680,12 +7680,12 @@ The output from a template is stored in the deployment history, so a malicious u
 <li>Avoid returning a secret in output values.</li>
 </ul>
 <p>Example using <code>@secure()</code> annotation:</p>
-<div class="highlight"><pre><span></span><code>@secure()
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>@secure()
 @description(&#39;Local administrator password for virtual machine.&#39;)
 param adminPassword string
 </code></pre></div>
 <p>The following example fails because it returns a secret:</p>
-<div class="highlight"><pre><span></span><code>output accountPassword string = adminPassword
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>output accountPassword string = adminPassword
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>

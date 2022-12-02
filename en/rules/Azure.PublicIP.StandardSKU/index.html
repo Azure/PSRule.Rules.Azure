@@ -7635,7 +7635,7 @@ It can also choose routing preferences between Microsoft global network and the 
 <li>Set <code>sku.name</code> to <code>Standard</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/publicIPAddresses&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-11-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;publicIPAddresses_test_ip_name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7665,7 +7665,7 @@ It can also choose routing preferences between Microsoft global network and the 
 </ul>
 <p>For example:</p>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource publicIPAddresses_resource &#39;Microsoft.Network/publicIPAddresses@2020-11-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource publicIPAddresses_resource &#39;Microsoft.Network/publicIPAddresses@2020-11-01&#39; = {
   name: name
   location: location
   sku: {
@@ -7688,7 +7688,7 @@ It can also choose routing preferences between Microsoft global network and the 
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses?tabs=json">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses?tabs=json">Azure deployment reference</a></li>
 <li><a href="https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#standard">Standard Public IP addresses</a></li>
 <li><a href="https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones">Load Balancer and Availability Zones</a></li>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements">Meet application platform requirements</a></li>
@@ -7702,7 +7702,7 @@ It can also choose routing preferences between Microsoft global network and the 
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

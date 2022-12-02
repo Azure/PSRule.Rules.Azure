@@ -7654,7 +7654,7 @@ Additionally, assign one or more Azure Policy definitions to security controls.<
 <li>Set <code>properties.addonProfiles.azurepolicy.enabled</code> to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ContainerService/managedClusters&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;clusterName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7729,7 +7729,7 @@ Additionally, assign one or more Azure Policy definitions to security controls.<
 <li>Set <code>properties.addonProfiles.azurepolicy.enabled</code> to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-10-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-10-01&#39; = {
   location: location
   name: clusterName
   identity: {
@@ -7801,7 +7801,7 @@ Azure Policy for AKS Engine and Arc enabled Kubernetes are currently in preview.
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/governance#audit-and-enforce-policy-compliance">Governance, risk, and compliance</a></li>
 <li><a href="https://docs.microsoft.com/azure/governance/policy/concepts/policy-for-kubernetes">Understand Azure Policy for Kubernetes clusters</a></li>
 <li><a href="https://docs.microsoft.com/azure/aks/use-azure-policy">Secure your cluster with Azure Policy</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7812,7 +7812,7 @@ Azure Policy for AKS Engine and Arc enabled Kubernetes are currently in preview.
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

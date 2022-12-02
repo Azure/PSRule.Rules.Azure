@@ -7634,7 +7634,7 @@ section instead.</p>
 <ul>
 <li>Set any secure values within <code>properties.protectedSettings</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Compute/virtualMachines/extensions&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;installcustomscript&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-06-15&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7655,7 +7655,7 @@ section instead.</p>
 <ul>
 <li>Set any secure values within <code>properties.protectedSettings</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>resource script &#39;Microsoft.Compute/virtualMachines/extensions@2015-06-15&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource script &#39;Microsoft.Compute/virtualMachines/extensions@2015-06-15&#39; = {
   name: &#39;installcustomscript&#39;
   location: location
   properties: {

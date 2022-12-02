@@ -7661,7 +7661,7 @@ or prevention of malicious attacks. Two rule set versions are available; OWASP 2
 <li>Set the <code>properties.webApplicationFirewallConfiguration.ruleSetVersion</code> property to a minimum of <code>3.2</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/applicationGateways&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-11-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;appGw-001&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7691,7 +7691,7 @@ or prevention of malicious attacks. Two rule set versions are available; OWASP 2
 <li>Set the <code>properties.webApplicationFirewallConfiguration.ruleSetVersion</code> property to a minimum of <code>3.2</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource appGw &#39;Microsoft.Network/applicationGateways@2021-02-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource appGw &#39;Microsoft.Network/applicationGateways@2021-02-01&#39; = {
   name: &#39;appGw-001&#39;
   location: location
   properties: {
@@ -7709,10 +7709,10 @@ or prevention of malicious attacks. Two rule set versions are available; OWASP 2
 }
 </code></pre></div>
 <h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>az network application-gateway waf-config <span class="nb">set</span> --enabled <span class="nb">true</span> --rule-set-type OWASP --rule-set-version <span class="s1">&#39;3.2&#39;</span> -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az network application-gateway waf-config <span class="nb">set</span> --enabled <span class="nb">true</span> --rule-set-type OWASP --rule-set-version <span class="s1">&#39;3.2&#39;</span> -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
 </code></pre></div>
 <h3 id="configure-with-azure-powershell">Configure with Azure PowerShell<a class="headerlink" href="#configure-with-azure-powershell" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nv">$AppGw</span> <span class="p">=</span> <span class="nb">Get-AzApplicationGateway</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;name&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
+<div class="highlight"><span class="filename">Azure PowerShell snippet</span><pre><span></span><code><span class="nv">$AppGw</span> <span class="p">=</span> <span class="nb">Get-AzApplicationGateway</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;name&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
 <span class="nb">Set-AzApplicationGatewayWebApplicationFirewallConfiguration</span> <span class="n">-ApplicationGateway</span> <span class="nv">$AppGw</span> <span class="n">-Enabled</span> <span class="nv">$True</span> <span class="n">-FirewallMode</span> <span class="s1">&#39;Prevention&#39;</span> <span class="n">-RuleSetType</span> <span class="s1">&#39;OWASP&#39;</span> <span class="n">-RuleSetVersion</span> <span class="s1">&#39;3.2&#39;</span>
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>

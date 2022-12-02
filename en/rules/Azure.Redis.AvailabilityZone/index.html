@@ -7667,7 +7667,7 @@ By spreading node pools across multiple zones, nodes in one node pool will conti
 </li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;testrediscache&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Cache/redis&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7709,7 +7709,7 @@ By spreading node pools across multiple zones, nodes in one node pool will conti
 </li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource testrediscache &#39;Microsoft.Cache/redis@2021-06-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource testrediscache &#39;Microsoft.Cache/redis@2021-06-01&#39; = {
   name: &#39;testrediscache&#39;
   location: &#39;australiaeast&#39;
   properties: {
@@ -7737,7 +7737,7 @@ By spreading node pools across multiple zones, nodes in one node pool will conti
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services">Use zone-aware services</a></li>
 <li><a href="https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-zone-redundancy">Enable zone redundancy for Azure Cache for Redis</a></li>
 <li><a href="https://docs.microsoft.com/azure/azure-cache-for-redis/cache-high-availability">High availability for Azure Cache for Redis</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.cache/2018-03-01/redis?tabs=json">Azure Template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.cache/2018-03-01/redis?tabs=json">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7748,7 +7748,7 @@ By spreading node pools across multiple zones, nodes in one node pool will conti
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

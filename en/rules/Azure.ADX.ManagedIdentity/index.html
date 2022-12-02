@@ -7641,7 +7641,7 @@ Also consider using managed identities to authenticate to related Azure services
 <li>If <code>identity.type</code> is <code>UserAssigned</code>, reference the identity with <code>identity.userAssignedIdentities</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Kusto/clusters&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-08-27&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7665,7 +7665,7 @@ Also consider using managed identities to authenticate to related Azure services
 <li>If <code>identity.type</code> is <code>UserAssigned</code>, reference the identity with <code>identity.userAssignedIdentities</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource adx &#39;Microsoft.Kusto/clusters@2021-08-27&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource adx &#39;Microsoft.Kusto/clusters@2021-08-27&#39; = {
   name: name
   location: location
   sku: {
@@ -7686,7 +7686,7 @@ Also consider using managed identities to authenticate to related Azure services
 <li><a href="https://docs.microsoft.com/azure/data-explorer/managed-identities-overview">Managed identities overview</a></li>
 <li><a href="https://docs.microsoft.com/azure/data-explorer/configure-managed-identities-cluster">Configure managed identities for your Azure Data Explorer cluster</a></li>
 <li><a href="https://docs.microsoft.com/azure/data-explorer/security#managed-identities-for-azure-resources">Managed identities for Azure resources</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.kusto/clusters">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.kusto/clusters">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7697,7 +7697,7 @@ Also consider using managed identities to authenticate to related Azure services
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

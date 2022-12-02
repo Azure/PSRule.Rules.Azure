@@ -7661,7 +7661,7 @@
 <li>Configure the <code>properties.deleteRetentionPolicy.days</code> property to the number of days to retain files.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Storage/storageAccounts/fileServices&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-05-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7680,7 +7680,7 @@
 <li>Configure the <code>properties.deleteRetentionPolicy.days</code> property to the number of days to retain files.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource  &#39;Microsoft.Storage/storageAccounts/fileServices@2022-05-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource  &#39;Microsoft.Storage/storageAccounts/fileServices@2022-05-01&#39; = {
   name: &#39;default&#39;
   parent: st0000001
     shareDeleteRetentionPolicy: {

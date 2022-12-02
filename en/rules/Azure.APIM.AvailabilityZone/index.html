@@ -7656,7 +7656,7 @@ With zone redundancy, the gateway and the control plane of your API Management i
 <li>Set <code>sku.name</code> and/or <code>properties.additionalLocations[*].sku.name</code> to <code>Premium</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ApiManagement/service&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-01-01-preview&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;service_api_mgmt_test2_name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7722,7 +7722,7 @@ With zone redundancy, the gateway and the control plane of your API Management i
 <li>Set <code>sku.name</code> and/or <code>properties.additionalLocations[*].sku.name</code> to <code>Premium</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource service_api_mgmt_test2_name_resource &#39;Microsoft.ApiManagement/service@2021-01-01-preview&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource service_api_mgmt_test2_name_resource &#39;Microsoft.ApiManagement/service@2021-01-01-preview&#39; = {
   name: service_api_mgmt_test2_name
   location: &#39;Australia East&#39;
   sku: {
@@ -7778,7 +7778,7 @@ With zone redundancy, the gateway and the control plane of your API Management i
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service?tabs=json">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service?tabs=json">Azure deployment reference</a></li>
 <li><a href="https://docs.microsoft.com/azure/api-management/zone-redundancy">Availability zone support for Azure API Management</a></li>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services">Use zone-aware services</a></li>
 </ul>
@@ -7791,7 +7791,7 @@ With zone redundancy, the gateway and the control plane of your API Management i
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

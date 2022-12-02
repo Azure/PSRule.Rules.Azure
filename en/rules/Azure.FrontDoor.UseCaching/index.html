@@ -7648,7 +7648,7 @@
 </ul>
 <p><strong>Important</strong> The rule checks also for rule sets (child resources) that are overwriting the cache configuration from routing rules. Check the link <code>Routing architecture overview</code> for more information around this.</p>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/frontDoors&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;frontDoorName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7750,7 +7750,7 @@
 </ul>
 <p><strong>Important</strong> The rule checks also for rule sets (child resources) that are overwriting the cache configuration from routing rules. Check the link <code>Routing architecture overview</code> for more information around this.</p>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>@description(&#39;The name of the frontdoor resource.&#39;)
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>@description(&#39;The name of the frontdoor resource.&#39;)
 param frontDoorName string
 
 @description(&#39;The hostname of the backend. Must be an IP address or FQDN.&#39;)
@@ -7867,8 +7867,8 @@ resource frontDoor &#39;Microsoft.Network/frontDoors@2021-06-01&#39; = {
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/scalability/performance-efficiency-patterns">Performance patterns</a></li>
 <li><a href="https://learn.microsoft.com/azure/frontdoor/front-door-caching">Caching with Azure Front Door</a></li>
 <li><a href="https://learn.microsoft.com/azure/frontdoor/front-door-routing-architecture">Routing architecture overview</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors">Azure template reference</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors/rulesengines">Azure template reference</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors">Azure deployment reference</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors/rulesengines">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7879,7 +7879,7 @@ resource frontDoor &#39;Microsoft.Network/frontDoors@2021-06-01&#39; = {
   <small>
     
       Last update:
-      2022-11-05
+      2022-12-03
     
   </small>
 </div>

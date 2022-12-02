@@ -7648,7 +7648,7 @@ Avoid using deterministic values for sensitive properties.</p>
 <li>Use parameters to specify sensitive properties.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Compute/virtualMachines&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-03-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7701,7 +7701,7 @@ Avoid using deterministic values for sensitive properties.</p>
 <li>steps</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>@secure()
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>@secure()
 @description(&#39;The name of the local administrator account.&#39;)
 param adminUsername string
 

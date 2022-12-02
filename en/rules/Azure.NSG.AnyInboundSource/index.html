@@ -7642,7 +7642,7 @@ If inbound access from Internet-based sources is intended, consider using the se
 <li>Set the <code>sourceAddressPrefix</code> or <code>sourceAddressPrefixes</code> to a value other then <code>*</code> for inbound allow rules.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/networkSecurityGroups&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;nsgName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7714,7 +7714,7 @@ If inbound access from Internet-based sources is intended, consider using the se
 </code></pre></div>
 <p>To create an Application Security Group, use the <code>Microsoft.Network/applicationSecurityGroups</code> resource.
 For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/applicationSecurityGroups&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;asgName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7728,7 +7728,7 @@ For example:</p>
 <li>Set the <code>sourceAddressPrefix</code> or <code>sourceAddressPrefixes</code> to a value other then <code>*</code> for inbound allow rules.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource nsg &#39;Microsoft.Network/networkSecurityGroups@2022-01-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource nsg &#39;Microsoft.Network/networkSecurityGroups@2022-01-01&#39; = {
   name: nsgName
   location: location
   properties: {

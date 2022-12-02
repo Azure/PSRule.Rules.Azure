@@ -7682,7 +7682,7 @@ By spreading node pools across multiple zones, nodes in one node pool will conti
 <li>Set <code>properties.agentPoolProfiles[*].type</code> to <code>VirtualMachineScaleSets</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;comments&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Azure Kubernetes Cluster&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-12-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
@@ -7764,7 +7764,7 @@ By spreading node pools across multiple zones, nodes in one node pool will conti
 </code></pre></div>
 <h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
 <h4 id="create-aks-cluster-in-zone-1-2-and-3">Create AKS Cluster in Zone 1, 2 and 3<a class="headerlink" href="#create-aks-cluster-in-zone-1-2-and-3" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code>az aks create <span class="se">\</span>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az aks create <span class="se">\</span>
   --resource-group <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> <span class="se">\</span>
   --name <span class="s1">&#39;&lt;cluster_name&gt;&#39;</span> <span class="se">\</span>
   --generate-ssh-keys <span class="se">\</span>
@@ -7775,7 +7775,7 @@ By spreading node pools across multiple zones, nodes in one node pool will conti
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters?tabs=json">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters?tabs=json">Azure deployment reference</a></li>
 <li><a href="https://docs.microsoft.com/azure/aks/availability-zones">Create an Azure Kubernetes Service (AKS) cluster that uses availability zones</a></li>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services">Use zone-aware services</a></li>
 </ul>
@@ -7788,7 +7788,7 @@ By spreading node pools across multiple zones, nodes in one node pool will conti
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

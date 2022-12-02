@@ -7646,7 +7646,7 @@
 <li>Set the <code>properties.state</code> property to <code>Enabled</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.DBforPostgreSQL/servers&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2017-12-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;serverName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7694,7 +7694,7 @@
 <li>Set the <code>properties.state</code> property to <code>Enabled</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource postgresqlDbServer &#39;Microsoft.DBforPostgreSQL/servers@2017-12-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource postgresqlDbServer &#39;Microsoft.DBforPostgreSQL/servers@2017-12-01&#39; = {
   name: serverName
   location: location
   sku: {
@@ -7737,7 +7737,7 @@ resource postgresqlDefender &#39;Microsoft.DBforPostgreSQL/servers/securityAlert
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/security-operations">Security operations</a></li>
 <li><a href="https://learn.microsoft.com/azure/defender-for-cloud/defender-for-databases-usage">Enable Microsoft Defender for open-source relational databases</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.dbforpostgresql/servers/securityalertpolicies">Azure template reference</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.dbforpostgresql/servers/securityalertpolicies">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7748,7 +7748,7 @@ resource postgresqlDefender &#39;Microsoft.DBforPostgreSQL/servers/securityAlert
   <small>
     
       Last update:
-      2022-11-18
+      2022-12-03
     
   </small>
 </div>

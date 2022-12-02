@@ -7664,7 +7664,7 @@ Deploying VPN gateways in Azure Availability Zones physically and logically sepa
 </li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-11-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/virtualNetworkGateways&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7712,7 +7712,7 @@ Deploying VPN gateways in Azure Availability Zones physically and logically sepa
 </li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource name_resource &#39;Microsoft.Network/virtualNetworkGateways@2020-11-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource name_resource &#39;Microsoft.Network/virtualNetworkGateways@2020-11-01&#39; = {
   name: name
   location: location
   tags: {}
@@ -7746,7 +7746,7 @@ Deploying VPN gateways in Azure Availability Zones physically and logically sepa
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways?tabs=json">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways?tabs=json">Azure deployment reference</a></li>
 <li><a href="https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways">About zone-redundant virtual network gateways in Azure Availability Zones</a></li>
 <li><a href="https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#gwsku">VPN gateway SKUs</a></li>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services">Use zone-aware services</a></li>
@@ -7760,7 +7760,7 @@ Deploying VPN gateways in Azure Availability Zones physically and logically sepa
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

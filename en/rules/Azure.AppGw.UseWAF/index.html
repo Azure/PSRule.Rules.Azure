@@ -7661,7 +7661,7 @@ When configured, every incoming request is filtered by the WAF policy.</p>
 <li>Deploy an Application Gateway with the <code>WAF</code> or <code>WAF_v2</code> SKU.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/applicationGateways&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-11-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;appGw-001&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7690,7 +7690,7 @@ When configured, every incoming request is filtered by the WAF policy.</p>
 <li>Deploy an Application Gateway with the <code>WAF</code> or <code>WAF_v2</code> SKU.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource appGw &#39;Microsoft.Network/applicationGateways@2021-02-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource appGw &#39;Microsoft.Network/applicationGateways@2021-02-01&#39; = {
   name: &#39;appGw-001&#39;
   location: location
   properties: {
@@ -7708,10 +7708,10 @@ When configured, every incoming request is filtered by the WAF policy.</p>
 }
 </code></pre></div>
 <h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>az network application-gateway update --sku WAF_v2 -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az network application-gateway update --sku WAF_v2 -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
 </code></pre></div>
 <h3 id="configure-with-azure-powershell">Configure with Azure PowerShell<a class="headerlink" href="#configure-with-azure-powershell" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nv">$AppGw</span> <span class="p">=</span> <span class="nb">Get-AzApplicationGateway</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;name&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
+<div class="highlight"><span class="filename">Azure PowerShell snippet</span><pre><span></span><code><span class="nv">$AppGw</span> <span class="p">=</span> <span class="nb">Get-AzApplicationGateway</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;name&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
 <span class="nv">$AppGw</span> <span class="p">=</span> <span class="nb">Set-AzApplicationGatewaySku</span> <span class="n">-ApplicationGateway</span> <span class="nv">$AppGw</span> <span class="n">-Name</span> <span class="s1">&#39;WAF_v2&#39;</span> <span class="n">-Tier</span> <span class="s1">&#39;WAF_v2&#39;</span>
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>

@@ -7651,7 +7651,7 @@ Use a Managed Identity when possible instead of cryptographic keys or a regular 
 <li>Set <code>Properties.addonProfiles.azureKeyvaultSecretsProvider.enabled</code> to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ContainerService/managedClusters&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-07-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;clusterName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7723,7 +7723,7 @@ Use a Managed Identity when possible instead of cryptographic keys or a regular 
 <li>Set <code>Properties.addonProfiles.azureKeyvaultSecretsProvider.enabled</code> to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-07-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource cluster &#39;Microsoft.ContainerService/managedClusters@2021-07-01&#39; = {
   location: location
   name: clusterName
   identity: {
@@ -7785,7 +7785,7 @@ Use a Managed Identity when possible instead of cryptographic keys or a regular 
 }
 </code></pre></div>
 <h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>az aks enable-addons --addons azure-keyvault-secrets-provider -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az aks enable-addons --addons azure-keyvault-secrets-provider -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
@@ -7794,7 +7794,7 @@ Use a Managed Identity when possible instead of cryptographic keys or a regular 
 <li><a href="https://docs.microsoft.com/azure/aks/csi-secrets-store-driver">Use the Azure Key Vault Provider for Secrets Store CSI Driver in an AKS cluster</a></li>
 <li><a href="https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation">Automate the rotation of a secret for resources that use one set of authentication credentials</a></li>
 <li><a href="https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation-dual">Automate the rotation of a secret for resources that have two sets of authentication credentials</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7805,7 +7805,7 @@ Use a Managed Identity when possible instead of cryptographic keys or a regular 
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

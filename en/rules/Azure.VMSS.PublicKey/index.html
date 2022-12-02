@@ -7632,7 +7632,7 @@
 <li>Set <code>properties.virtualMachineProfile.OsProfile.linuxConfiguration.disablePasswordAuthentication</code> to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Compute/virtualMachineScaleSets&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-11-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vmss-01&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7718,7 +7718,7 @@
 <li>Set <code>properties.virtualMachineProfile.OsProfile.linuxConfiguration.disablePasswordAuthentication</code> to <code>true</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource vmScaleSet &#39;Microsoft.Compute/virtualMachineScaleSets@2021-11-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource vmScaleSet &#39;Microsoft.Compute/virtualMachineScaleSets@2021-11-01&#39; = {
   name: &#39;vmss-01&#39;
   location: resourceGroup().location
   sku: {
@@ -7801,7 +7801,7 @@
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/design-identity">Identity and access management</a></li>
 <li><a href="https://docs.microsoft.com/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline">Azure security baseline for Linux Virtual Machines</a></li>
 <li><a href="https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed">Detailed steps: Create and manage SSH keys for authentication to a Linux VM in Azure</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7812,7 +7812,7 @@
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

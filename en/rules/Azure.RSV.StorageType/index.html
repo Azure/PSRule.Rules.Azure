@@ -7641,7 +7641,7 @@ defining the backup config in an ARM template:</p>
 <li>Set <code>properties.storageType</code> to either <code>GeoRedundant</code> or <code>ReadAccessGeoZoneRedundant</code>.
 For example:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.RecoveryServices/vaults/backupconfig&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vaultconfig-a&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7659,7 +7659,7 @@ defining the backup config via Bicep:</p>
 <li>Set <code>properties.storageType</code> to either <code>GeoRedundant</code> or <code>ReadAccessGeoZoneRedundant</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource testRecoveryServices &#39;Microsoft.RecoveryServices/vaults/backupconfig@2021-10-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource testRecoveryServices &#39;Microsoft.RecoveryServices/vaults/backupconfig@2021-10-01&#39; = {
   name: &#39;vaultconfig&#39;
   location: &#39;string&#39;
   parent: resourceSymbolicName
@@ -7672,7 +7672,7 @@ defining the backup config via Bicep:</p>
 <ul>
 <li><a href="https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview#storage-settings-in-the-recovery-services-vault">Recovery Services Vault - Overview</a></li>
 <li><a href="https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy">Recovery Services Vault - Storage Settings</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.recoveryservices/vaults/backupconfig?tabs=bicep">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.recoveryservices/vaults/backupconfig?tabs=bicep">Azure deployment reference</a></li>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency">Well Architected Framework - Reliability</a></li>
 </ul>
 
@@ -7684,7 +7684,7 @@ defining the backup config via Bicep:</p>
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

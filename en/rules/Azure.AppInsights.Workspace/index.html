@@ -7644,7 +7644,7 @@ When configured as workspace-based, telemetry is sent from App Insights to a com
 <li>Set the <code>properties.WorkspaceResourceId</code> property to a valid Log Analytics workspace.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;microsoft.insights/components&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-02-02&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7664,7 +7664,7 @@ When configured as workspace-based, telemetry is sent from App Insights to a com
 <li>Set the <code>properties.WorkspaceResourceId</code> property to a valid Log Analytics workspace.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource appInsights &#39;Microsoft.Insights/components@2020-02-02&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource appInsights &#39;Microsoft.Insights/components@2020-02-02&#39; = {
   name: name
   location: location
   kind: &#39;web&#39;

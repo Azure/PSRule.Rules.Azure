@@ -7623,14 +7623,14 @@ To allow only the outbound public IP of the Standard SKU load balancer, use <cod
 Include output IP addresses for cluster nodes and any range where administration will occur from.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
 <h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>az aks update -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> --api-server-authorized-ip-ranges <span class="s1">&#39;0.0.0.0/32&#39;</span>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az aks update -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> --api-server-authorized-ip-ranges <span class="s1">&#39;0.0.0.0/32&#39;</span>
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/design-network">Network security</a></li>
 <li><a href="https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges">Secure access to the API server using authorized IP address ranges in Azure Kubernetes Service (AKS)</a></li>
 <li><a href="https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-security#secure-access-to-the-api-server-and-cluster-nodes">Best practices for cluster security and upgrades in Azure Kubernetes Service (AKS)</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7641,7 +7641,7 @@ Include output IP addresses for cluster nodes and any range where administration
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

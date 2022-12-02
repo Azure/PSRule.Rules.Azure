@@ -7626,7 +7626,7 @@
 <p>Consider enabling Advanced Data Security and configuring Microsoft Defender for SQL logical servers.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
 <h3 id="configure-with-azure-template">Configure with Azure template<a class="headerlink" href="#configure-with-azure-template" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;comments&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create or update an Azure SQL logical server.&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Sql/servers&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-06-01-preview&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7660,13 +7660,13 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h3 id="configure-with-azure-powershell">Configure with Azure PowerShell<a class="headerlink" href="#configure-with-azure-powershell" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nb">Set-AzSqlDatabaseThreatDetectionPolicy</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> <span class="n">-ServerName</span> <span class="s1">&#39;&lt;server_name&gt;&#39;</span> <span class="n">-DatabaseName</span> <span class="s1">&#39;&lt;database&gt;&#39;</span> <span class="n">-StorageAccountName</span> <span class="s1">&#39;&lt;account_name&gt;&#39;</span> <span class="n">-NotificationRecipientsEmails</span> <span class="s1">&#39;&lt;email&gt;&#39;</span> <span class="n">-EmailAdmins</span> <span class="nv">$False</span>
+<div class="highlight"><span class="filename">Azure PowerShell snippet</span><pre><span></span><code><span class="nb">Set-AzSqlDatabaseThreatDetectionPolicy</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> <span class="n">-ServerName</span> <span class="s1">&#39;&lt;server_name&gt;&#39;</span> <span class="n">-DatabaseName</span> <span class="s1">&#39;&lt;database&gt;&#39;</span> <span class="n">-StorageAccountName</span> <span class="s1">&#39;&lt;account_name&gt;&#39;</span> <span class="n">-NotificationRecipientsEmails</span> <span class="s1">&#39;&lt;email&gt;&#39;</span> <span class="n">-EmailAdmins</span> <span class="nv">$False</span>
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview">Advanced Threat Protection for Azure SQL Database</a></li>
 <li><a href="https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql">Microsoft Defender for SQL</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7677,7 +7677,7 @@
   <small>
     
       Last update:
-      2022-09-19
+      2022-12-03
     
   </small>
 </div>

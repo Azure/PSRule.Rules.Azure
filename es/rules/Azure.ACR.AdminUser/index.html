@@ -7679,7 +7679,7 @@ RBAC se puede usar para delegar permisos de registro a una identidad de Azure AD
 <li>Establezca <code>properties.adminUserEnabled</code> a <code>false</code>.</li>
 </ul>
 <p>Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.ContainerRegistry/registries&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01-preview&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;registryName&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7714,7 +7714,7 @@ RBAC se puede usar para delegar permisos de registro a una identidad de Azure AD
 <li>Establezca <code>properties.adminUserEnabled</code> a <code>false</code>.</li>
 </ul>
 <p>Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code>resource acr &#39;Microsoft.ContainerRegistry/registries@2021-06-01-preview&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource acr &#39;Microsoft.ContainerRegistry/registries@2021-06-01-preview&#39; = {
   name: registryName
   location: location
   sku: {
@@ -7742,10 +7742,10 @@ RBAC se puede usar para delegar permisos de registro a una identidad de Azure AD
 }
 </code></pre></div>
 <h3 id="configurar-con-azure-cli">Configurar con Azure CLI<a class="headerlink" href="#configurar-con-azure-cli" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>az acr update --admin-enabled <span class="nb">false</span> -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az acr update --admin-enabled <span class="nb">false</span> -n <span class="s1">&#39;&lt;name&gt;&#39;</span> -g <span class="s1">&#39;&lt;resource_group&gt;&#39;</span>
 </code></pre></div>
 <h3 id="configurar-con-azure-powershell">Configurar con Azure PowerShell<a class="headerlink" href="#configurar-con-azure-powershell" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nb">Update-AzContainerRegistry</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;name&gt;&#39;</span> <span class="n">-DisableAdminUser</span>
+<div class="highlight"><span class="filename">Azure PowerShell snippet</span><pre><span></span><code><span class="nb">Update-AzContainerRegistry</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;name&gt;&#39;</span> <span class="n">-DisableAdminUser</span>
 </code></pre></div>
 <h2 id="enlaces">Enlaces<a class="headerlink" href="#enlaces" title="Permanent link">#</a></h2>
 <ul>

@@ -7640,7 +7640,7 @@ Azure automatically generates tokens and performs rotation.</li>
 <li>If <code>identity.type</code> is <code>UserAssigned</code>, reference the identity with <code>identity.userAssignedIdentities</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.CognitiveServices/accounts&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-03-01&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7668,7 +7668,7 @@ Azure automatically generates tokens and performs rotation.</li>
 <li>If <code>identity.type</code> is <code>UserAssigned</code>, reference the identity with <code>identity.userAssignedIdentities</code>.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource account &#39;Microsoft.CognitiveServices/accounts@2022-03-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource account &#39;Microsoft.CognitiveServices/accounts@2022-03-01&#39; = {
   name: name
   location: location
   identity: {
@@ -7691,7 +7691,7 @@ Azure automatically generates tokens and performs rotation.</li>
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication">Use identity-based authentication</a></li>
 <li><a href="https://docs.microsoft.com/azure/cognitive-services/policy-reference">Azure Policy built-in policy definitions for Azure Cognitive Services</a></li>
-<li><a href="https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts">Azure template reference</a></li>
+<li><a href="https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -7702,7 +7702,7 @@ Azure automatically generates tokens and performs rotation.</li>
   <small>
     
       Last update:
-      2022-10-17
+      2022-12-03
     
   </small>
 </div>

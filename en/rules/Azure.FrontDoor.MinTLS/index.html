@@ -7634,7 +7634,7 @@ By default, a minimum of TLS 1.2 is enforced.</p>
 <li>Set the minTlsVersion to be '1.2'</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="w">  </span><span class="nt">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Cdn/profiles&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01&quot;</span><span class="p">,</span><span class="w"></span>
@@ -7702,7 +7702,7 @@ By default, a minimum of TLS 1.2 is enforced.</p>
 <li>Set the minTlsVersion to be '1.2'</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>resource frontDoorResource &#39;Microsoft.Cdn/profiles@2021-06-01&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource frontDoorResource &#39;Microsoft.Cdn/profiles@2021-06-01&#39; = {
   name: frontDoorName
   location: &#39;Global&#39;
   sku: {
